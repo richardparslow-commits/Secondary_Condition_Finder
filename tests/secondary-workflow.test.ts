@@ -11,6 +11,20 @@ import {
   workflowStateToSearchParams,
 } from "@/lib/secondary-workflow/state";
 
+function toQueryParams(searchParams: URLSearchParams): Record<string, string | string[]> {
+  const keys = new Set<string>();
+  for (const [key] of searchParams.entries()) {
+    keys.add(key);
+  }
+
+  const params: Record<string, string | string[]> = {};
+  for (const key of keys) {
+    const values = searchParams.getAll(key);
+    params[key] = values.length === 1 ? values[0] : values;
+  }
+  return params;
+}
+
 const catalog = conditionCatalogSchema.parse([
   {
     id: "ptsd",
@@ -114,7 +128,7 @@ describe("secondary workflow state parsing", () => {
     };
 
     const parsed = parseWorkflowState(
-      Object.fromEntries(workflowStateToSearchParams(initial).entries()),
+      toQueryParams(workflowStateToSearchParams(initial)),
       catalog,
     );
 

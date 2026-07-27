@@ -78,8 +78,14 @@ Routes:
 
 ```
 /                     Path chooser: secondary vs presumptive
-/secondary            Secondary intake
-/results              Secondary results
+/secondary            Secondary workflow overview
+/secondary/diagnosed  Secondary step 1: diagnosed conditions
+/secondary/service-connected
+/secondary/ratings
+/secondary/upload
+/secondary/suggestions
+/secondary/evidence
+/results              Legacy query-based secondary results (scenario path)
 /presumptive          Service history intake
 /presumptive/results  Presumptive results
 /scenarios            Demo walkthroughs
