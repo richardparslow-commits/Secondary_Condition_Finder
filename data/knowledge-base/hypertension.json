@@ -1,0 +1,99 @@
+{
+  "id": "hypertension",
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Renal impairment is commonly explored where long-term blood pressure elevation is documented, especially when laboratory trends show declining kidney function.",
+      "evidenceGaps": [
+        "Kidney function laboratory trends (creatinine, eGFR, urine protein)",
+        "Formal diagnosis and stage of chronic kidney disease",
+        "Medical opinion addressing causation or aggravation from the service-connected hypertension"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Schedule of ratings, genitourinary system diagnoses.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "ischemic-heart-disease",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Coronary disease is sometimes explored in longstanding hypertension histories, but the nexus opinion should address alternative risk factors and chronology.",
+      "evidenceGaps": [
+        "Cardiology diagnosis and objective testing (for example stress test or imaging) confirming ischemic disease",
+        "Timeline of hypertension severity and cardiac findings",
+        "Nexus opinion discussing whether hypertension caused or aggravated the condition"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Heart failure is sometimes explored where records show prolonged hypertension with progressive cardiac symptoms.",
+      "evidenceGaps": [
+        "Current diagnosis and objective cardiac findings (such as ejection fraction)",
+        "Longitudinal blood pressure and treatment records",
+        "Opinion addressing whether hypertension caused or aggravated heart failure"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "erectile-dysfunction",
+      "rank": 4,
+      "prevalence": "occasionally-explored",
+      "rationale": "Erectile dysfunction is occasionally explored where vascular effects of hypertension or side effects from antihypertensive treatment are documented in the record.",
+      "evidenceGaps": [
+        "Current diagnosis from a qualified clinician",
+        "Medication history showing antihypertensive treatment and onset timing",
+        "Nexus opinion addressing vascular and treatment-related aggravation theories"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Schedule of ratings, genitourinary system diagnoses.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

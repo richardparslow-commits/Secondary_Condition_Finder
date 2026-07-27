@@ -40,6 +40,10 @@ describe("mapping integrity", () => {
         expect(suggestion.rationale.length).toBeGreaterThan(0);
         expect(suggestion.evidenceGaps.length).toBeGreaterThan(0);
         expect(suggestion.sourceReferences.length).toBeGreaterThan(0);
+        for (const reference of suggestion.sourceReferences) {
+          expect(reference.citation.trim().length).toBeGreaterThan(0);
+          expect(reference.verified).toBe(false);
+        }
       }
     }
   });

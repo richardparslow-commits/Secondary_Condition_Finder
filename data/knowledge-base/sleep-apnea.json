@@ -1,0 +1,99 @@
+{
+  "id": "sleep-apnea",
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "hypertension",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Sleep-disordered breathing with chronic oxygen desaturation is commonly explored alongside elevated blood pressure, especially when treatment records discuss persistent daytime fatigue and fragmented sleep.",
+      "evidenceGaps": [
+        "Sleep study confirming the current diagnosis and severity",
+        "Blood pressure trend records over time, including readings before and after sleep apnea treatment",
+        "Medical opinion addressing whether sleep apnea caused or aggravated the blood pressure condition"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Long-term sleep disruption is sometimes explored alongside depressive symptoms. The relationship generally requires a qualified mental health diagnosis and a nexus opinion that addresses competing contributors.",
+      "evidenceGaps": [
+        "Mental health diagnosis from a qualified provider",
+        "Records documenting onset and persistence of mood symptoms with sleep impairment",
+        "Opinion addressing causation or aggravation in relation to sleep apnea"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Claims sometimes explore anxiety symptoms where severe sleep interruption and functional decline are documented over time.",
+      "evidenceGaps": [
+        "Qualified mental health diagnosis",
+        "Treatment records tying anxiety symptom progression to ongoing sleep impairment",
+        "Nexus opinion addressing causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "gerd",
+      "rank": 4,
+      "prevalence": "occasionally-explored",
+      "rationale": "GERD is occasionally explored where nocturnal reflux and disrupted sleep are documented together, but the direction of aggravation should be addressed explicitly in the medical opinion.",
+      "evidenceGaps": [
+        "Confirmed GERD diagnosis with treatment history",
+        "Records describing nighttime reflux symptoms and sleep disturbance",
+        "Opinion clarifying whether and how the conditions aggravate each other"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}
