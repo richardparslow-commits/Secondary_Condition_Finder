@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
+import { conditionCatalogSchema } from "@/lib/catalog/schema";
 import { loadKnowledgeBase } from "@/lib/kb/load";
+import { knowledgeBaseSchema } from "@/lib/kb/schema";
 import { recommend } from "@/lib/engine/recommend";
 import { intakeSchema, type Intake } from "@/lib/engine/types";
 
@@ -191,6 +193,54 @@ describe("recommend", () => {
         "occasionally-explored",
       ]).toContain(recommendation.prevalence);
     }
+  });
+
+  it("ignores draft mappings when building recommendations", () => {
+    const syntheticCatalog = conditionCatalogSchema.parse([
+      {
+        id: "primary-condition",
+        name: "Primary Condition",
+        aliases: [],
+        bodySystem: "Test",
+        ratingSchedule: [],
+        reviewNotes: ["test fixture"],
+      },
+      {
+        id: "secondary-condition",
+        name: "Secondary Condition",
+        aliases: [],
+        bodySystem: "Test",
+        ratingSchedule: [],
+        reviewNotes: ["test fixture"],
+      },
+    ]);
+    const syntheticKb = knowledgeBaseSchema.parse([
+      {
+        id: "primary-condition",
+        draft: true,
+        todo: ["human review pending"],
+        suggestions: [
+          {
+            conditionId: "secondary-condition",
+            rank: 1,
+            prevalence: "commonly-explored",
+            rationale: "draft only",
+            evidenceGaps: ["draft only"],
+            sourceReferences: [{ citation: "test", note: "test", verified: false }],
+          },
+        ],
+      },
+    ]);
+
+    const result = recommend(
+      syntheticCatalog,
+      syntheticKb,
+      intake({ primaryConditions: ["primary-condition"] }),
+    );
+
+    expect(result.recommendations).toEqual([]);
+    expect(result.recognizedPrimaries).toEqual([]);
+    expect(result.unmappedPrimaries).toEqual(["Primary Condition"]);
   });
 });
 

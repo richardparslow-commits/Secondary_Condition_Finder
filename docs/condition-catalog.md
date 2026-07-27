@@ -34,7 +34,8 @@ One file per body system, 14 systems plus a carried-over file. 191 conditions.
 The catalog is the single source of condition identity. Mapping files carry
 only `conditionId` references, so a display name cannot drift between two
 files. Referential integrity is enforced by test: every id referenced by a
-mapping must exist in the catalog.
+mapping must exist in the catalog. The same check also runs at load time before
+recommendations are computed.
 
 ## Coverage
 
@@ -45,7 +46,7 @@ mapping must exist in the catalog.
   `contralateral-knee-condition`, `diabetic-retinopathy`, `insomnia`, and
   `substance-use-disorder`. No citation was supplied and none was inferred.
   Each carries a `reviewNotes` entry saying so.
-- 5 conditions have published secondary mappings, about 2.6 percent of the
+- 8 conditions have published secondary mappings, about 4.2 percent of the
   catalog. Intake states this plainly rather than implying full coverage.
 
 ## Known gaps in the source list
