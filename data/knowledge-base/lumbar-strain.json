@@ -1,0 +1,83 @@
+{
+  "id": "lumbar-strain",
+  "name": "Lumbar strain",
+  "aliases": [
+    "lower back strain",
+    "low back pain",
+    "lumbosacral strain"
+  ],
+  "suggestions": [
+    {
+      "conditionId": "radiculopathy",
+      "condition": "Radiculopathy (lower extremity)",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Neurologic symptoms radiating into the legs are a recognized associated finding with chronic lumbar spine conditions. VA guidance directs that associated objective neurologic abnormalities be evaluated separately.",
+      "evidenceGaps": [
+        "Exam or imaging documenting radiculopathy and the affected nerve",
+        "Identification of which extremity or extremities are involved",
+        "Severity characterization (mild, moderate, or severe incomplete paralysis)"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "General Rating Formula for Diseases and Injuries of the Spine, Note (1), addressing separate evaluation of associated objective neurologic abnormalities.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions, including the sciatic nerve.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "sciatica",
+      "condition": "Sciatica",
+      "rank": 2,
+      "prevalence": "commonly-explored",
+      "rationale": "Frequently assessed where radiating leg pain is documented. Overlaps substantially with radiculopathy; the two should not be claimed in a way that double-counts the same impairment.",
+      "evidenceGaps": [
+        "Clinical findings distinguishing sciatica from other sources of leg pain",
+        "Documentation of which nerve distribution is involved",
+        "Review for overlap with any radiculopathy claim"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions, sciatic nerve.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.14",
+          "note": "Avoidance of pyramiding.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "condition": "Depressive disorder",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Sustained chronic pain is sometimes linked to depressive symptoms. Requires a diagnosis from a qualified mental health provider and an opinion addressing the pain relationship.",
+      "evidenceGaps": [
+        "Mental health diagnosis from a qualified provider",
+        "Documentation of pain chronicity and functional impact",
+        "Nexus opinion addressing chronic pain as the cause or aggravating factor"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "single-primary-ptsd",
+    "title": "Single primary condition",
+    "description": "A veteran service connected for PTSD exploring what else may be related.",
+    "intake": {
+      "primaryConditions": ["PTSD"],
+      "symptoms": ["trouble staying asleep", "daytime fatigue"],
+      "medications": ["sertraline"],
+      "exposures": [],
+      "notes": "Sleep problems have worsened over the last two years."
+    }
+  },
+  {
+    "id": "multiple-primaries-overlap",
+    "title": "Multiple primaries with an overlapping suggestion",
+    "description": "Knee injury and lumbar strain both point toward overlapping musculoskeletal and pain-related theories.",
+    "intake": {
+      "primaryConditions": ["Knee injury", "Lumbar strain"],
+      "symptoms": ["limping", "radiating leg pain"],
+      "medications": ["meloxicam"],
+      "exposures": [],
+      "notes": "Gait has been altered since the original knee injury."
+    }
+  },
+  {
+    "id": "unrecognized-primary",
+    "title": "Partially recognized intake",
+    "description": "One condition resolves against the knowledge base and one does not, demonstrating graceful handling.",
+    "intake": {
+      "primaryConditions": ["Tinnitus", "Plantar fasciitis"],
+      "symptoms": ["ringing worse at night"],
+      "medications": [],
+      "exposures": ["aircraft engine noise"],
+      "notes": ""
+    }
+  }
+]

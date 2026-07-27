@@ -1,0 +1,100 @@
+{
+  "id": "ptsd",
+  "name": "PTSD",
+  "aliases": [
+    "post traumatic stress disorder",
+    "post-traumatic stress disorder"
+  ],
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "condition": "Sleep apnea",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Sleep disruption is a core PTSD symptom, and claims frequently explore whether a sleep-disordered breathing diagnosis is proximately due to or aggravated by the service-connected psychiatric condition.",
+      "evidenceGaps": [
+        "Sleep study (polysomnography) confirming a current sleep apnea diagnosis",
+        "Medical opinion linking the sleep condition to PTSD rather than to independent risk factors",
+        "Treatment records documenting sleep complaints alongside PTSD symptoms"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "condition": "Depressive disorder",
+      "rank": 2,
+      "prevalence": "commonly-explored",
+      "rationale": "Depressive symptoms often co-occur with PTSD. Note that VA generally evaluates all service-connected mental health conditions under a single rating, so this may affect the existing evaluation rather than add a separate one.",
+      "evidenceGaps": [
+        "Mental health records distinguishing depressive symptoms from existing PTSD symptoms",
+        "Clarification of whether a separate diagnosis has been made by a qualified provider"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.14",
+          "note": "Avoidance of pyramiding; relevant when symptoms overlap.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "migraine-headaches",
+      "condition": "Migraine headaches",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Headache complaints appear in some records where chronic stress and sleep deficit are documented. The connection is less direct than sleep or mood claims and generally needs a supporting medical opinion.",
+      "evidenceGaps": [
+        "Neurology records or headache diagnosis from a qualified provider",
+        "Documentation of headache frequency, duration, and whether attacks are prostrating",
+        "Nexus opinion addressing causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "gerd",
+      "condition": "Gastroesophageal reflux disease (GERD)",
+      "rank": 4,
+      "prevalence": "occasionally-explored",
+      "rationale": "Sometimes explored where reflux symptoms are documented alongside psychiatric medication use. Medication-induced aggravation is a distinct theory from direct causation and should be stated explicitly.",
+      "evidenceGaps": [
+        "Confirmed GERD diagnosis with documented symptoms",
+        "Complete medication history showing prescriptions for the service-connected condition",
+        "Opinion addressing whether medication side effects caused or aggravated the condition"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}
