@@ -26,7 +26,10 @@ This plan defines a narrow, defensible delivery path that proves product value w
 
 - Version 1 functional specification and acceptance criteria.
 - Intake flow supporting one or more service-connected primary conditions.
+- Explicit secondary wizard flow: diagnosed conditions, service-connected
+  status, ratings, optional upload flag, grouped suggestions, evidence review.
 - Optional intake fields for symptoms, medications, exposures, and notes.
+- Truthful MVP upload step that does not parse or interpret records.
 - Structured condition knowledge base replacing hardcoded prototype lookups.
 - Recommendation output that includes:
   - possible secondary conditions to explore

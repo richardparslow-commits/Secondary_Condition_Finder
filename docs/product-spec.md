@@ -41,13 +41,19 @@ exposure presumptions that may apply and the conditions each covers. See
 
 ### FR-1 Intake
 
-- Users select one or more primary conditions from the condition catalog.
-- Intake can optionally filter to only conditions with published
-  secondary-condition research.
-- Optional free-text fields: symptoms, medications, exposures, notes.
-- Submission is blocked until at least one primary condition is selected.
-- Optional fields influence display only, never ranking. Inferring clinical
-  significance from a symptom list would be diagnostic behavior.
+- Secondary intake is a six-step workflow:
+  1) diagnosed conditions,
+  2) service-connected status,
+  3) current ratings,
+  4) optional document-upload flag,
+  5) grouped suggestions,
+  6) evidence review.
+- Diagnosed selections come only from catalog condition ids.
+- Service-connected step only shows diagnosed selections.
+- Ratings step only shows service-connected selections and accepts 0–100 or
+  decline.
+- The upload step is explicit MVP scaffolding: no document parsing, no medical
+  file interpretation, no persisted file contents.
 
 ### FR-2 Recommendations
 
@@ -59,6 +65,8 @@ Each suggestion shows:
 - Rationale, attributed to each contributing primary condition
 - Evidence gaps: what a claim on this theory typically still needs
 - Source references, each flagged verified or unverified
+- Suggestions grouped by selected service-connected primary condition in the
+  workflow UI
 
 Ordering: rank 1 contributes 1.0, rank 2 contributes 0.5, rank n contributes
 1/n. Contributions from multiple primaries add, so a suggestion supported by
@@ -131,6 +139,15 @@ Each run records a UUID, timestamp, resolved primary names, unrecognized count,
 recommended condition ids, and engine version. Intake free text is never
 persisted. SQLite locally when `EVENT_LOG_SQLITE_PATH` is set, otherwise
 structured stdout lines.
+
+### FR-10 Evidence review page
+
+- The workflow ends with a structured evidence checklist grouped by
+  service-connected primary condition.
+- Checklist content is sourced from authored `evidenceGaps` in published
+  secondary mappings.
+- The page must state that it is organizational support only and does not
+  interpret uploaded documents.
 
 ## Data model
 

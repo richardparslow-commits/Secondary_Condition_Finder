@@ -76,8 +76,19 @@ tests/                 Vitest
 docs/                  Product spec, catalog and presumptive scope, planning
 ```
 
-Routes: `/` chooser, `/secondary` and `/results`, `/presumptive` and
-`/presumptive/results`, `/scenarios`.
+Routes:
+
+- `/` chooser
+- `/secondary` workflow overview plus:
+  - `/secondary/diagnosed`
+  - `/secondary/service-connected`
+  - `/secondary/ratings`
+  - `/secondary/upload` (MVP checklist flag only; no file parsing)
+  - `/secondary/suggestions`
+  - `/secondary/evidence`
+- `/results` legacy query-based secondary results (still used by scenarios)
+- `/presumptive` and `/presumptive/results`
+- `/scenarios`
 
 ## Coverage
 
