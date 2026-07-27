@@ -1,0 +1,21 @@
+{
+  "id": "anxiety-disorder",
+  "name": "Anxiety disorder",
+  "aliases": [
+    "anxiety",
+    "generalized anxiety disorder",
+    "gad"
+  ],
+  "draft": true,
+  "todo": [
+    "List the secondary conditions commonly explored from this primary, in rank order starting at 1.",
+    "Write a rationale for each, using non-diagnostic language (\"commonly explored alongside\", not \"is caused by\").",
+    "Assign each a prevalence band: commonly-explored, sometimes-explored, or occasionally-explored.",
+    "List at least one evidence gap per suggestion: what a claim on that theory typically still needs.",
+    "Supply at least one source reference per suggestion. Do not guess a citation. Leave the entry draft until a real one is confirmed.",
+    "Reuse the canonical conditionId and display label for any secondary that already appears in another file.",
+    "Confirm this condition does not list itself as its own secondary.",
+    "Set draft to false and clear this todo list once every item above is done."
+  ],
+  "suggestions": []
+}

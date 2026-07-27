@@ -40,14 +40,48 @@ export const suggestionSchema = z.object({
   sourceReferences: z.array(sourceReferenceSchema).min(1),
 });
 
-export const primaryConditionSchema = z.object({
-  /** Stable slug. Must match the filename. */
-  id: z.string().regex(/^[a-z0-9-]+$/),
-  name: z.string().min(1),
-  /** Alternate spellings and abbreviations users may type. */
-  aliases: z.array(z.string().min(1)),
-  suggestions: z.array(suggestionSchema).min(1),
-});
+export const primaryConditionSchema = z
+  .object({
+    /** Stable slug. Must match the filename. */
+    id: z.string().regex(/^[a-z0-9-]+$/),
+    name: z.string().min(1),
+    /** Alternate spellings and abbreviations users may type. */
+    aliases: z.array(z.string().min(1)),
+    /**
+     * Draft entries are scaffolding awaiting human-authored mappings. They are
+     * validated and version controlled but never surfaced in the UI, so an
+     * unfinished entry cannot reach a veteran.
+     */
+    draft: z.boolean().default(false),
+    /** Checklist of what a reviewer must supply. Only meaningful on drafts. */
+    todo: z.array(z.string().min(1)).default([]),
+    suggestions: z.array(suggestionSchema).default([]),
+  })
+  .superRefine((condition, ctx) => {
+    if (!condition.draft && condition.suggestions.length === 0) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["suggestions"],
+        message:
+          "A published condition needs at least one suggestion. Mark it draft: true while it is incomplete.",
+      });
+    }
+    if (!condition.draft && condition.todo.length > 0) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["todo"],
+        message:
+          "Resolve every todo before publishing, or keep the entry draft: true.",
+      });
+    }
+    if (condition.draft && condition.todo.length === 0) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["todo"],
+        message: "A draft must state what is still needed.",
+      });
+    }
+  });
 
 export const knowledgeBaseSchema = z.array(primaryConditionSchema);
 

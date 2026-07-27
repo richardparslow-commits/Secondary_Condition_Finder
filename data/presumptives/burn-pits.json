@@ -1,0 +1,245 @@
+{
+  "id": "burn-pits",
+  "name": "Burn pits and other airborne hazards",
+  "authority": "PACT Act (Public Law 117-168)",
+  "summary": "If you served in one of these locations during the qualifying window, VA presumes you were exposed to burn pits and fine particulate matter. You do not need to prove exposure or show a link between your service and the condition. You still need a current diagnosis.",
+  "sourceCheckedOn": "2026-07-27",
+  "qualifyingService": [
+    {
+      "id": "southwest-asia-1990",
+      "label": "Southwest Asia theater of operations, on or after 2 August 1990",
+      "locations": [
+        "Bahrain",
+        "Iraq",
+        "Kuwait",
+        "Oman",
+        "Qatar",
+        "Saudi Arabia",
+        "Somalia",
+        "United Arab Emirates",
+        "Neutral zone between Iraq and Saudi Arabia",
+        "Arabian Sea",
+        "Gulf of Aden",
+        "Gulf of Oman",
+        "Persian Gulf",
+        "Red Sea"
+      ],
+      "startDate": "1990-08-02",
+      "endDate": null,
+      "note": "Includes the airspace above these locations."
+    },
+    {
+      "id": "post-911-locations",
+      "label": "Additional locations, on or after 11 September 2001",
+      "locations": [
+        "Afghanistan",
+        "Djibouti",
+        "Egypt",
+        "Jordan",
+        "Lebanon",
+        "Syria",
+        "Uzbekistan",
+        "Yemen"
+      ],
+      "startDate": "2001-09-11",
+      "endDate": null,
+      "note": "Includes the airspace above these locations."
+    }
+  ],
+  "conditions": [
+    {
+      "conditionId": "asthma",
+      "name": "Asthma",
+      "group": "Respiratory conditions",
+      "qualifier": "Must be diagnosed after service."
+    },
+    {
+      "conditionId": "chronic-bronchitis",
+      "name": "Chronic bronchitis",
+      "group": "Respiratory conditions",
+      "qualifier": null
+    },
+    {
+      "conditionId": "copd",
+      "name": "Chronic obstructive pulmonary disease (COPD)",
+      "group": "Respiratory conditions",
+      "qualifier": null
+    },
+    {
+      "conditionId": "chronic-rhinitis",
+      "name": "Chronic rhinitis",
+      "group": "Respiratory conditions",
+      "qualifier": null
+    },
+    {
+      "conditionId": "chronic-sinusitis",
+      "name": "Chronic sinusitis",
+      "group": "Respiratory conditions",
+      "qualifier": "Includes rhinosinusitis."
+    },
+    {
+      "conditionId": "bronchiolitis",
+      "name": "Constrictive or obliterative bronchiolitis",
+      "group": "Respiratory conditions",
+      "qualifier": null
+    },
+    {
+      "conditionId": "emphysema",
+      "name": "Emphysema",
+      "group": "Respiratory conditions",
+      "qualifier": null
+    },
+    {
+      "conditionId": "granulomatous-disease",
+      "name": "Granulomatous disease",
+      "group": "Respiratory conditions",
+      "qualifier": null
+    },
+    {
+      "conditionId": "interstitial-lung-disease",
+      "name": "Interstitial lung disease (ILD)",
+      "group": "Respiratory conditions",
+      "qualifier": null
+    },
+    {
+      "conditionId": "pleuritis",
+      "name": "Pleuritis",
+      "group": "Respiratory conditions",
+      "qualifier": null
+    },
+    {
+      "conditionId": "pulmonary-fibrosis",
+      "name": "Pulmonary fibrosis",
+      "group": "Respiratory conditions",
+      "qualifier": null
+    },
+    {
+      "conditionId": "sarcoidosis",
+      "name": "Sarcoidosis",
+      "group": "Respiratory conditions",
+      "qualifier": null
+    },
+    {
+      "conditionId": "brain-cancer",
+      "name": "Brain cancer",
+      "group": "Cancers",
+      "qualifier": null
+    },
+    {
+      "conditionId": "glioblastoma",
+      "name": "Glioblastoma",
+      "group": "Cancers",
+      "qualifier": null
+    },
+    {
+      "conditionId": "gastrointestinal-cancer",
+      "name": "Gastrointestinal cancer",
+      "group": "Cancers",
+      "qualifier": "Any type."
+    },
+    {
+      "conditionId": "head-cancer",
+      "name": "Head cancer",
+      "group": "Cancers",
+      "qualifier": "Any type."
+    },
+    {
+      "conditionId": "neck-cancer",
+      "name": "Neck cancer",
+      "group": "Cancers",
+      "qualifier": "Any type."
+    },
+    {
+      "conditionId": "kidney-cancer",
+      "name": "Kidney cancer",
+      "group": "Cancers",
+      "qualifier": null
+    },
+    {
+      "conditionId": "lymphoma",
+      "name": "Lymphoma",
+      "group": "Cancers",
+      "qualifier": "Any type."
+    },
+    {
+      "conditionId": "melanoma",
+      "name": "Melanoma",
+      "group": "Cancers",
+      "qualifier": "Melanoma only. Basal cell and squamous cell skin cancers are not on this list."
+    },
+    {
+      "conditionId": "pancreatic-cancer",
+      "name": "Pancreatic cancer",
+      "group": "Cancers",
+      "qualifier": null
+    },
+    {
+      "conditionId": "reproductive-cancer",
+      "name": "Reproductive cancer",
+      "group": "Cancers",
+      "qualifier": "Any type."
+    },
+    {
+      "conditionId": "respiratory-cancer",
+      "name": "Respiratory cancer",
+      "group": "Cancers",
+      "qualifier": "Any type."
+    },
+    {
+      "conditionId": "bladder-cancer",
+      "name": "Urinary bladder cancer",
+      "group": "Cancers",
+      "qualifier": "Includes overlapping sites."
+    },
+    {
+      "conditionId": "ureter-cancer",
+      "name": "Ureter cancer",
+      "group": "Cancers",
+      "qualifier": "Includes ureteric orifice and urachus."
+    },
+    {
+      "conditionId": "leukemia",
+      "name": "Acute and chronic leukemias",
+      "group": "Blood and bone marrow",
+      "qualifier": null
+    },
+    {
+      "conditionId": "multiple-myeloma",
+      "name": "Multiple myelomas",
+      "group": "Blood and bone marrow",
+      "qualifier": "Includes monoclonal gammopathy of undetermined significance (MGUS)."
+    },
+    {
+      "conditionId": "myelodysplastic-syndromes",
+      "name": "Myelodysplastic syndromes",
+      "group": "Blood and bone marrow",
+      "qualifier": null
+    },
+    {
+      "conditionId": "myelofibrosis",
+      "name": "Myelofibrosis",
+      "group": "Blood and bone marrow",
+      "qualifier": null
+    }
+  ],
+  "sourceReferences": [
+    {
+      "citation": "PACT Act of 2022 (Public Law 117-168)",
+      "note": "Statute establishing these presumptions.",
+      "url": "https://www.va.gov/disability/eligibility/hazardous-materials-exposure/specific-environmental-hazards/",
+      "verified": false
+    },
+    {
+      "citation": "VA, Presumptive Service Connection Eligibility (updated 4 February 2026)",
+      "note": "VA reference sheet listing conditions, locations, and date windows.",
+      "url": "https://www.va.gov/files/2026-03/presumptive-service-connection-information_0.pdf",
+      "verified": false
+    },
+    {
+      "citation": "38 CFR 3.307",
+      "note": "General presumptive service connection requirements, including exposure and manifestation periods.",
+      "url": "https://www.law.cornell.edu/cfr/text/38/3.307",
+      "verified": false
+    }
+  ]
+}
