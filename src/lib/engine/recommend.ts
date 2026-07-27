@@ -1,5 +1,7 @@
-import { findPrimaryCondition, normalizeConditionName } from "@/lib/kb/lookup";
+import type { ConditionCatalog } from "@/lib/catalog/schema";
+import { findCondition, indexById, normalizeConditionName } from "@/lib/catalog/lookup";
 import type { KnowledgeBase, SourceReference } from "@/lib/kb/schema";
+import { publishedMappings } from "@/lib/kb/lookup";
 
 import type {
   ContributingPrimary,
@@ -61,7 +63,6 @@ function matchIntakeContext(condition: string, intake: Intake): string[] {
 
 interface Accumulated {
   conditionId: string;
-  condition: string;
   score: number;
   prevalenceRank: number;
   contributingPrimaries: ContributingPrimary[];
@@ -70,33 +71,46 @@ interface Accumulated {
 }
 
 export function recommend(
+  catalog: ConditionCatalog,
   kb: KnowledgeBase,
   intake: Intake,
 ): RecommendationResult {
+  const byId = indexById(catalog);
+  const mappings = publishedMappings(kb);
+
   const recognizedPrimaries: string[] = [];
+  const unmappedPrimaries: string[] = [];
   const unrecognizedPrimaries: string[] = [];
-  const recognizedPrimaryIds = new Set<string>();
-  const accumulator = new Map<string, Accumulated>();
+  const recognizedIds = new Set<string>();
 
   for (const input of dedupe(intake.primaryConditions.map((c) => c.trim()))) {
-    const primary = findPrimaryCondition(kb, input);
+    const condition = findCondition(catalog, input);
 
-    if (!primary) {
+    if (!condition) {
       unrecognizedPrimaries.push(input);
       continue;
     }
-    if (recognizedPrimaryIds.has(primary.id)) continue;
+    if (recognizedIds.has(condition.id) || unmappedPrimaries.includes(condition.name)) {
+      continue;
+    }
+    if (!mappings.has(condition.id)) {
+      unmappedPrimaries.push(condition.name);
+      continue;
+    }
 
-    recognizedPrimaryIds.add(primary.id);
-    recognizedPrimaries.push(primary.name);
+    recognizedIds.add(condition.id);
+    recognizedPrimaries.push(condition.name);
   }
 
-  for (const primaryId of recognizedPrimaryIds) {
-    const primary = kb.find((condition) => condition.id === primaryId)!;
+  const accumulator = new Map<string, Accumulated>();
 
-    for (const suggestion of primary.suggestions) {
+  for (const primaryId of recognizedIds) {
+    const mapping = mappings.get(primaryId)!;
+    const primary = byId.get(primaryId)!;
+
+    for (const suggestion of mapping.suggestions) {
       // Do not suggest something the user already listed as service connected.
-      if (recognizedPrimaryIds.has(suggestion.conditionId)) continue;
+      if (recognizedIds.has(suggestion.conditionId)) continue;
 
       const existing = accumulator.get(suggestion.conditionId);
       const contribution: ContributingPrimary = {
@@ -124,7 +138,6 @@ export function recommend(
       } else {
         accumulator.set(suggestion.conditionId, {
           conditionId: suggestion.conditionId,
-          condition: suggestion.condition,
           score: rankWeight(suggestion.rank),
           prevalenceRank: PREVALENCE_ORDER[suggestion.prevalence],
           contributingPrimaries: [contribution],
@@ -136,19 +149,34 @@ export function recommend(
   }
 
   const recommendations: Recommendation[] = [...accumulator.values()]
-    .map((entry) => ({
-      conditionId: entry.conditionId,
-      condition: entry.condition,
-      prevalence: PREVALENCE_BY_RANK[entry.prevalenceRank],
-      score: Number(entry.score.toFixed(4)),
-      contributingPrimaries: [...entry.contributingPrimaries].sort(
-        (a, b) => a.rank - b.rank || a.name.localeCompare(b.name),
-      ),
-      evidenceGaps: entry.evidenceGaps,
-      sourceReferences: entry.sourceReferences,
-      matchedIntakeContext: matchIntakeContext(entry.condition, intake),
-    }))
+    .map((entry) => {
+      const catalogEntry = byId.get(entry.conditionId);
+      if (!catalogEntry) {
+        // Referential integrity is enforced by test; this guards runtime.
+        throw new Error(
+          `Suggestion references unknown catalog condition "${entry.conditionId}".`,
+        );
+      }
+      return {
+        conditionId: entry.conditionId,
+        condition: catalogEntry.name,
+        bodySystem: catalogEntry.bodySystem,
+        prevalence: PREVALENCE_BY_RANK[entry.prevalenceRank],
+        score: Number(entry.score.toFixed(4)),
+        contributingPrimaries: [...entry.contributingPrimaries].sort(
+          (a, b) => a.rank - b.rank || a.name.localeCompare(b.name),
+        ),
+        evidenceGaps: entry.evidenceGaps,
+        sourceReferences: entry.sourceReferences,
+        matchedIntakeContext: matchIntakeContext(catalogEntry.name, intake),
+      };
+    })
     .sort((a, b) => b.score - a.score || a.condition.localeCompare(b.condition));
 
-  return { recommendations, recognizedPrimaries, unrecognizedPrimaries };
+  return {
+    recommendations,
+    recognizedPrimaries,
+    unmappedPrimaries,
+    unrecognizedPrimaries,
+  };
 }

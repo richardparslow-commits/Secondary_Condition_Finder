@@ -1,0 +1,84 @@
+{
+  "bodySystem": "Carried over from the knowledge base",
+  "conditions": [
+    {
+      "id": "hip-strain",
+      "name": "Hip strain",
+      "aliases": [
+        "hip condition",
+        "hip pain"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one."
+      ]
+    },
+    {
+      "id": "ankle-strain",
+      "name": "Ankle strain",
+      "aliases": [
+        "ankle condition",
+        "ankle injury",
+        "ankle instability"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one."
+      ]
+    },
+    {
+      "id": "contralateral-knee-condition",
+      "name": "Contralateral (opposite) knee condition",
+      "aliases": [
+        "opposite knee condition"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one.",
+        "Modeling gap: this is not a distinct diagnosis, it is the same condition on the opposite side. Laterality should eventually be an attribute rather than a separate condition."
+      ]
+    },
+    {
+      "id": "diabetic-retinopathy",
+      "name": "Diabetic retinopathy",
+      "aliases": [
+        "retinopathy"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one."
+      ]
+    },
+    {
+      "id": "insomnia",
+      "name": "Chronic insomnia",
+      "aliases": [
+        "chronic sleep impairment",
+        "insomnia"
+      ],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one."
+      ]
+    },
+    {
+      "id": "substance-use-disorder",
+      "name": "Substance use disorder",
+      "aliases": [
+        "alcohol use disorder",
+        "alcoholism",
+        "substance abuse"
+      ],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one."
+      ]
+    }
+  ]
+}

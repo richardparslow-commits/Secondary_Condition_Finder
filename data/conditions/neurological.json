@@ -1,0 +1,272 @@
+{
+  "bodySystem": "Neurological Conditions & Convulsive Disorders",
+  "conditions": [
+    {
+      "id": "traumatic-brain-injury",
+      "name": "Traumatic Brain Injury (TBI)",
+      "aliases": [
+        "traumatic brain injury"
+      ],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "migraine-headaches",
+      "name": "Migraines / Tension Headaches",
+      "aliases": [
+        "migraines",
+        "tension headaches"
+      ],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "sciatica",
+      "name": "Sciatica (Sciatic Nerve Paralysis / Neuritis)",
+      "aliases": [
+        "sciatic nerve paralysis",
+        "sciatica"
+      ],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "femoral-nerve-paralysis",
+      "name": "Femoral Nerve Paralysis",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "radial-nerve-paralysis",
+      "name": "Radial Nerve Paralysis",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "median-nerve-paralysis",
+      "name": "Median Nerve Paralysis",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "ulnar-nerve-paralysis",
+      "name": "Ulnar Nerve Paralysis",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "peripheral-neuropathy",
+      "name": "Peripheral Neuropathy",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "radiculopathy",
+      "name": "Radiculopathy",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "cranial-neuralgia",
+      "name": "Cranial Neuralgia / Neuritis",
+      "aliases": [
+        "cranial neuralgia"
+      ],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "trigeminal-neuralgia",
+      "name": "Trigeminal Neuralgia",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "multiple-sclerosis",
+      "name": "Multiple Sclerosis",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "parkinsons-disease",
+      "name": "Parkinson's Disease",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "epilepsy",
+      "name": "Epilepsy / Seizure Disorders",
+      "aliases": [
+        "epilepsy",
+        "seizure disorders"
+      ],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "cerebral-palsy",
+      "name": "Cerebral Palsy",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "als",
+      "name": "Amyotrophic Lateral Sclerosis (ALS)",
+      "aliases": [
+        "amyotrophic lateral sclerosis"
+      ],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "restless-leg-syndrome",
+      "name": "Restless Leg Syndrome",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "narcolepsy",
+      "name": "Narcolepsy",
+      "aliases": [],
+      "bodySystem": "Neurological Conditions & Convulsive Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    }
+  ]
+}

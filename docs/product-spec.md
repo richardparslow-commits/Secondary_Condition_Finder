@@ -71,9 +71,19 @@ alphabetically. The score is an ordering heuristic and is never displayed.
   secondary of another primary.
 - Duplicate or differently-cased entries for the same condition collapse.
 
-### FR-4 Unrecognized conditions
+### FR-4 Unmapped and unrecognized conditions
 
-- Conditions absent from the knowledge base are listed back to the user
+Three outcomes, reported separately, because they mean different things.
+
+- **Mapped**: the condition is in the catalog and has authored research.
+- **Unmapped**: the condition is in the catalog but nobody has written its
+  secondary research yet. Named explicitly, with a note that absence implies
+  nothing about whether a claim is possible.
+- **Unrecognized**: the input matched nothing in the catalog.
+
+Additional rules:
+
+- Conditions absent from the catalog are listed back to the user
   explicitly.
 - The message states that absence implies nothing about whether a claim is
   possible.
@@ -120,15 +130,21 @@ recommended condition ids, and engine version. Intake free text is never
 persisted. SQLite locally when `EVENT_LOG_SQLITE_PATH` is set, otherwise
 structured stdout lines.
 
-## Knowledge base
+## Data model
 
-Source of truth is `data/knowledge-base/*.json`, one file per primary
-condition, validated by Zod at load. Validation failures throw rather than
-degrade.
+Three layers, deliberately separate. See `docs/condition-catalog.md`.
 
-JSON in git rather than a database so every change to a condition mapping or
-citation is a reviewable pull request diff. That audit trail is a Phase 3
-compliance asset.
+- `data/conditions/` is the catalog: condition identity and rating schedule
+  citations, one file per body system. 191 conditions, 14 systems.
+- `data/knowledge-base/` holds secondary mappings, referencing catalog ids.
+- `data/presumptives/` holds exposure categories.
+
+The catalog is the single source of display names, so a label cannot drift
+between mapping files. Referential integrity is enforced by test.
+
+JSON in git rather than a database so every change to a mapping or a citation
+is a reviewable pull request diff. That audit trail is a Phase 3 compliance
+asset.
 
 ## Acceptance criteria
 
@@ -148,9 +164,9 @@ Mapped to `docs/phase-plan.md`.
    reviewer must confirm each one. The diabetic retinopathy reference was
    already corrected once: the prototype cited 38 CFR 4.119 (DC 7913), the
    diagnostic code for diabetes itself, where an eye citation belongs.
-2. **Knowledge base coverage.** The fourteen staged stubs now ship with
-   authored mappings, bringing the catalog to nineteen published primary
-   conditions. Continue expanding coverage based on reviewer-prioritized gaps.
+2. **Knowledge base coverage.** 5 of 191 catalog conditions have published
+   mappings, about 2.6 percent. The catalog gives the app its vocabulary; the
+   mappings are the remaining work and cannot be generated.
 3. **Accessibility audit.** Keyboard and screen reader passes have not been run.
 4. **No authentication.** Deliberate for Phase 1, since no user data is stored.
    Revisit before any deployment that handles veteran-specific data.

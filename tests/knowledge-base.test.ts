@@ -1,22 +1,42 @@
 import { describe, expect, it } from "vitest";
 
+import { loadConditionCatalog } from "@/lib/catalog/load";
+import { indexById } from "@/lib/catalog/lookup";
 import { loadKnowledgeBase } from "@/lib/kb/load";
+import { draftMappings, mappedConditionIds } from "@/lib/kb/lookup";
 
+const catalog = loadConditionCatalog();
 const kb = loadKnowledgeBase();
+const byId = indexById(catalog);
 
-describe("knowledge base integrity", () => {
-  it("loads and validates every entry against the schema", () => {
-    expect(kb.length).toBeGreaterThan(0);
+describe("referential integrity between mappings and the catalog", () => {
+  it("resolves every mapping id to a catalog condition", () => {
+    for (const mapping of kb) {
+      expect(byId.has(mapping.id), `mapping "${mapping.id}" has no catalog entry`).toBe(true);
+    }
   });
 
-  it("uses unique ids", () => {
-    const ids = kb.map((condition) => condition.id);
+  it("resolves every suggestion to a catalog condition", () => {
+    for (const mapping of kb) {
+      for (const suggestion of mapping.suggestions) {
+        expect(
+          byId.has(suggestion.conditionId),
+          `"${mapping.id}" suggests unknown condition "${suggestion.conditionId}"`,
+        ).toBe(true);
+      }
+    }
+  });
+});
+
+describe("mapping integrity", () => {
+  it("uses unique mapping ids", () => {
+    const ids = kb.map((m) => m.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
 
   it("gives every suggestion a rationale, an evidence gap, and a citation", () => {
-    for (const condition of kb) {
-      for (const suggestion of condition.suggestions) {
+    for (const mapping of kb) {
+      for (const suggestion of mapping.suggestions) {
         expect(suggestion.rationale.length).toBeGreaterThan(0);
         expect(suggestion.evidenceGaps.length).toBeGreaterThan(0);
         expect(suggestion.sourceReferences.length).toBeGreaterThan(0);
@@ -24,47 +44,67 @@ describe("knowledge base integrity", () => {
     }
   });
 
-  it("uses unique, gapless ranks within each condition", () => {
-    for (const condition of kb) {
-      const ranks = condition.suggestions.map((s) => s.rank).sort((a, b) => a - b);
+  it("uses unique, gapless ranks within each mapping", () => {
+    for (const mapping of kb) {
+      const ranks = mapping.suggestions.map((s) => s.rank).sort((a, b) => a - b);
       expect(ranks).toEqual(ranks.map((_, index) => index + 1));
     }
   });
 
-  it("uses one display label per canonical conditionId", () => {
-    // Guards the merge key: if two files label the same conditionId
-    // differently, results would render inconsistently.
-    const labels = new Map<string, Set<string>>();
-    for (const condition of kb) {
-      for (const suggestion of condition.suggestions) {
-        const set = labels.get(suggestion.conditionId) ?? new Set<string>();
-        set.add(suggestion.condition);
-        labels.set(suggestion.conditionId, set);
-      }
-    }
-    for (const [conditionId, set] of labels) {
-      expect(
-        [...set],
-        `conditionId "${conditionId}" has multiple labels`,
-      ).toHaveLength(1);
+  it("never suggests a condition as a secondary of itself", () => {
+    for (const mapping of kb) {
+      expect(mapping.suggestions.map((s) => s.conditionId)).not.toContain(mapping.id);
     }
   });
 
-  it("does not suggest a condition as a secondary of itself", () => {
-    for (const condition of kb) {
-      const ids = condition.suggestions.map((s) => s.conditionId);
-      expect(ids).not.toContain(condition.id);
+  it("never duplicates a conditionId within one mapping", () => {
+    for (const mapping of kb) {
+      const ids = mapping.suggestions.map((s) => s.conditionId);
+      expect(new Set(ids).size).toBe(ids.length);
     }
   });
 
   it("does not mark any citation verified without human review", () => {
-    // Citations ship unverified until a qualified human signs off. This test is
-    // the tripwire: flipping `verified` to true is a deliberate, reviewed act.
-    const verified = kb.flatMap((condition) =>
-      condition.suggestions.flatMap((suggestion) =>
+    const verified = kb.flatMap((mapping) =>
+      mapping.suggestions.flatMap((suggestion) =>
         suggestion.sourceReferences.filter((reference) => reference.verified),
       ),
     );
     expect(verified).toEqual([]);
+  });
+
+  it("keeps published mappings free of placeholder text", () => {
+    const authored = kb
+      .filter((m) => !m.draft)
+      .flatMap((mapping) =>
+        mapping.suggestions.flatMap((suggestion) => [
+          suggestion.rationale,
+          ...suggestion.evidenceGaps,
+          ...suggestion.sourceReferences.flatMap((r) => [r.citation, r.note]),
+        ]),
+      );
+    for (const text of authored) {
+      expect(text).not.toMatch(/TODO|FIXME|placeholder|lorem ipsum|TBD/i);
+    }
+  });
+});
+
+describe("draft mappings", () => {
+  it("gives every draft a todo checklist and keeps it out of the published set", () => {
+    const published = mappedConditionIds(kb);
+    for (const draft of draftMappings(kb)) {
+      expect(draft.todo.length).toBeGreaterThan(0);
+      expect(published.has(draft.id)).toBe(false);
+    }
+  });
+});
+
+describe("coverage", () => {
+  it("reports how much of the catalog has published mappings", () => {
+    const mapped = mappedConditionIds(kb);
+    // Not an assertion about the target, just a guard that the relationship
+    // stays sane: you cannot have more mappings than catalog conditions.
+    expect(mapped.size).toBeLessThanOrEqual(catalog.length);
+    expect(mapped.size).toBeGreaterThan(0);
   });
 });
