@@ -4,7 +4,10 @@ import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
 import { SecondaryWorkflowHiddenFields } from "@/components/SecondaryWorkflowHiddenFields";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
-import { parseDiagnosedSelection } from "@/lib/secondary-workflow/state";
+import {
+  parseDiagnosedSelection,
+  parseServiceConnectedPrefill,
+} from "@/lib/secondary-workflow/state";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +21,8 @@ export default async function ServiceConnectedStepPage({
   const params = await searchParams;
 
   let diagnosedConditionIds: string[];
+  let selectedServiceConnectedIds = new Set<string>();
+  let hasPriorSelection = false;
 
   try {
     diagnosedConditionIds = parseDiagnosedSelection(params, catalog).diagnosedConditionIds;
@@ -35,13 +40,26 @@ export default async function ServiceConnectedStepPage({
     );
   }
 
+  selectedServiceConnectedIds = new Set(
+    parseServiceConnectedPrefill(params, catalog).serviceConnectedConditionIds,
+  );
+  hasPriorSelection =
+    selectedServiceConnectedIds.size > 0 ||
+    params.serviceConnected !== undefined ||
+    diagnosedConditionIds.some((id) => params[`serviceConnected-${id}`] !== undefined);
+
   const diagnosed = diagnosedConditionIds
     .map((id) => byId.get(id))
     .filter((condition): condition is NonNullable<typeof condition> => condition !== undefined);
 
   return (
     <main>
-      <Link href="/secondary/diagnosed" className="text-sm underline hover:text-slate-900">
+      <Link
+        href={`/secondary/diagnosed?${new URLSearchParams(
+          diagnosedConditionIds.map((id) => ["diagnosed", id]),
+        ).toString()}`}
+        className="text-sm underline hover:text-slate-900"
+      >
         Back to diagnosed conditions
       </Link>
 
@@ -75,7 +93,11 @@ export default async function ServiceConnectedStepPage({
                   type="radio"
                   name={`serviceConnected-${condition.id}`}
                   value="yes"
-                  defaultChecked
+                  defaultChecked={
+                    hasPriorSelection
+                      ? selectedServiceConnectedIds.has(condition.id)
+                      : true
+                  }
                   className="h-4 w-4 border-slate-300"
                 />
                 Yes, already service connected
@@ -85,6 +107,11 @@ export default async function ServiceConnectedStepPage({
                   type="radio"
                   name={`serviceConnected-${condition.id}`}
                   value="no"
+                  defaultChecked={
+                    hasPriorSelection
+                      ? !selectedServiceConnectedIds.has(condition.id)
+                      : false
+                  }
                   className="h-4 w-4 border-slate-300"
                 />
                 No, not service connected

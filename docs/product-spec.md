@@ -54,6 +54,9 @@ exposure presumptions that may apply and the conditions each covers. See
   decline.
 - The upload step is explicit MVP scaffolding: no document parsing, no medical
   file interpretation, no persisted file contents.
+- Steps 2 through 6 are guarded against invalid or incomplete prior-step state.
+- Back navigation preserves prior workflow selections through query state so users
+  can revise earlier choices without starting over.
 
 ### FR-2 Recommendations
 
@@ -67,6 +70,8 @@ Each suggestion shows:
 - Source references, each flagged verified or unverified
 - Suggestions grouped by selected service-connected primary condition in the
   workflow UI
+- For recognized conditions with no authored mappings, the UI must say they are
+  recognized-but-unmapped and that absence implies nothing about claim viability.
 
 Ordering: rank 1 contributes 1.0, rank 2 contributes 0.5, rank n contributes
 1/n. Contributions from multiple primaries add, so a suggestion supported by
@@ -112,6 +117,10 @@ Additional rules:
 Three runnable scenarios in `data/demo-scenarios.json`: a single primary, two
 primaries with an overlapping suggestion, and a partially recognized intake. A
 test asserts each runs end to end.
+
+Scenario compatibility note: `/scenarios` currently targets the legacy
+query-based `/results` route for repeatable demos. Keep this route stable until
+scenario migration is completed.
 
 ### FR-7 Presumptive matching
 

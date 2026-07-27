@@ -6,7 +6,12 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { groupSuggestionsByPrimary } from "@/lib/secondary-workflow/suggestions";
-import { parseWorkflowState, workflowStateToSearchParams } from "@/lib/secondary-workflow/state";
+import {
+  parseRatingsSelection,
+  parseWorkflowState,
+  ratingFieldName,
+  workflowStateToSearchParams,
+} from "@/lib/secondary-workflow/state";
 
 export const dynamic = "force-dynamic";
 
@@ -21,18 +26,36 @@ export default async function EvidenceReviewStepPage({
   const params = await searchParams;
 
   let state;
+  let guardHref = "/secondary/diagnosed";
+  let guardLabel = "Start over at diagnosed conditions";
 
   try {
     state = parseWorkflowState(params, catalog);
   } catch {
+    try {
+      const parsed = parseRatingsSelection(params, catalog);
+      guardHref = `/secondary/upload?${new URLSearchParams([
+        ...parsed.diagnosedConditionIds.map((id) => ["diagnosed", id] as const),
+        ...parsed.serviceConnectedConditionIds.map((id) => ["serviceConnected", id] as const),
+        ...parsed.serviceConnectedConditionIds.map((id) => [
+          ratingFieldName(id),
+          parsed.ratingsByConditionId[id] === null ? "decline" : String(parsed.ratingsByConditionId[id]),
+        ]),
+      ]).toString()}`;
+      guardLabel = "Back to optional document upload";
+    } catch {
+      // Fall back to diagnosed step.
+    }
+
     return (
       <main>
         <h1 className="text-2xl font-semibold tracking-tight">Complete prior steps first</h1>
         <p className="mt-2 text-sm text-slate-600">
-          We need your workflow selections before building an evidence checklist.
+          We need your full workflow selections, including the upload-step choice, before building
+          an evidence checklist.
         </p>
-        <Link href="/secondary/diagnosed" className="mt-5 inline-block text-sm underline hover:text-slate-900">
-          Start over at diagnosed conditions
+        <Link href={guardHref} className="mt-5 inline-block text-sm underline hover:text-slate-900">
+          {guardLabel}
         </Link>
       </main>
     );
@@ -65,8 +88,8 @@ export default async function EvidenceReviewStepPage({
         <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Step 6 of 6</p>
         <h1 className="mt-1 text-2xl font-semibold tracking-tight">Evidence review checklist</h1>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          This checklist helps organize what to gather. It does not interpret files or determine
-          eligibility.
+          This page is a structured gap review to help you organize evidence for follow-up with a
+          provider or accredited representative. It does not parse records or determine eligibility.
         </p>
       </header>
 
@@ -97,9 +120,8 @@ export default async function EvidenceReviewStepPage({
       <section className="mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">Document processing limits</h2>
         <p className="mt-2 text-sm leading-relaxed text-slate-700">
-          This MVP does not parse uploaded files, read C-files, or extract findings from medical
-          records. Use this page as a preparation checklist for manual review with your provider
-          or representative.
+          This MVP does not read C-files, parse uploaded records, or extract medical findings. Use
+          this page as an organizer for manual review with your provider or representative.
         </p>
       </section>
 
@@ -110,7 +132,8 @@ export default async function EvidenceReviewStepPage({
             <h3 className="text-base font-semibold text-slate-900">{group.primaryName}</h3>
             {group.recommendations.length === 0 ? (
               <p className="mt-2 text-sm text-slate-700">
-                No authored mappings yet for this primary condition.
+                This primary condition is recognized, but no authored secondary mappings are
+                published for it yet.
               </p>
             ) : (
               <ul className="mt-3 space-y-3 text-sm text-slate-700">

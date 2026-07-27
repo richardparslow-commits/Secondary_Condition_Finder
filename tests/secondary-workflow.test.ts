@@ -4,7 +4,10 @@ import { conditionCatalogSchema } from "@/lib/catalog/schema";
 import type { Recommendation } from "@/lib/engine/types";
 import { groupSuggestionsByPrimary } from "@/lib/secondary-workflow/suggestions";
 import {
+  parseDiagnosedPrefill,
+  parseDocumentsSelection,
   parseDiagnosedSelection,
+  parseServiceConnectedPrefill,
   parseRatingsSelection,
   parseServiceConnectedSelection,
   parseWorkflowState,
@@ -58,11 +61,30 @@ describe("secondary workflow state parsing", () => {
   });
 
   it("keeps diagnosed selections limited to catalog ids", () => {
-    const parsed = parseDiagnosedSelection(
+    const prefill = parseDiagnosedPrefill(
       { diagnosed: ["ptsd", "unknown", "tinnitus"] },
       catalog,
     );
-    expect(parsed.diagnosedConditionIds).toEqual(["ptsd", "tinnitus"]);
+    expect(prefill).toEqual(["ptsd", "tinnitus"]);
+    expect(parseDiagnosedSelection({ diagnosed: prefill }, catalog).diagnosedConditionIds).toEqual([
+      "ptsd",
+      "tinnitus",
+    ]);
+  });
+
+  it("prefills service-connected selections when present", () => {
+    const parsed = parseServiceConnectedPrefill(
+      {
+        diagnosed: ["ptsd", "tinnitus"],
+        serviceConnected: ["ptsd"],
+      },
+      catalog,
+    );
+
+    expect(parsed).toEqual({
+      diagnosedConditionIds: ["ptsd", "tinnitus"],
+      serviceConnectedConditionIds: ["ptsd"],
+    });
   });
 
   it("accepts service-connected status only for diagnosed conditions", () => {
@@ -133,6 +155,19 @@ describe("secondary workflow state parsing", () => {
     );
 
     expect(parsed).toEqual(initial);
+  });
+
+  it("requires upload-step selection before suggestions/evidence", () => {
+    expect(() =>
+      parseDocumentsSelection(
+        {
+          diagnosed: ["ptsd"],
+          serviceConnected: ["ptsd"],
+          "rating-ptsd": "70",
+        },
+        catalog,
+      ),
+    ).toThrow();
   });
 });
 

@@ -83,12 +83,19 @@ Routes:
   - `/secondary/diagnosed`
   - `/secondary/service-connected`
   - `/secondary/ratings`
-  - `/secondary/upload` (MVP checklist flag only; no file parsing)
+  - `/secondary/upload` (optional checklist flag only; no file parsing or medical interpretation)
   - `/secondary/suggestions`
   - `/secondary/evidence`
-- `/results` legacy query-based secondary results (still used by scenarios)
+- `/results` legacy query-based secondary results (kept for scenario/demo compatibility)
 - `/presumptive` and `/presumptive/results`
 - `/scenarios`
+
+Wizard notes:
+
+- Later secondary steps are route-guarded and require valid prior-step query state.
+- Back links preserve prior selections so users can revise choices without restarting.
+- Suggestions and evidence pages require an explicit upload-step choice (`documentsShared`)
+  even though file upload itself is optional.
 
 ## Coverage
 
@@ -96,6 +103,10 @@ Routes:
 secondary-condition mappings, about 4.2 percent. Intake labels the rest
 "no mappings yet" rather than implying full coverage. See
 `docs/condition-catalog.md`.
+
+In the secondary wizard, an unmapped condition is shown as recognized but not yet
+authored, with explicit language that absence of mappings does not imply that a
+secondary claim is impossible.
 
 ## Adding a condition
 
