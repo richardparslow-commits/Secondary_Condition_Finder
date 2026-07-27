@@ -6,18 +6,22 @@ Secondary Condition Finder helps veterans, advocates, and claim-preparation
 staff research VA disability claims. It is a research aid. It does not
 diagnose, determine eligibility, or give medical or legal advice.
 
-It covers two legally distinct paths. Do not merge them.
+It models three concepts that are easy to conflate. Keep them apart.
 
-- **Secondary service connection** (38 CFR 3.310): condition B was caused or
-  aggravated by service-connected condition A. Needs a nexus opinion. Data
-  lives in `data/knowledge-base/`.
-- **Presumptive service connection** (38 CFR 3.307 and 3.309): VA presumes the
-  connection based on where and when someone served. No nexus, no other
-  service-connected condition required. Data lives in `data/presumptives/`.
+- **Condition catalog** (`data/conditions/`): does this condition exist, what
+  is it called, how is severity rated under 38 CFR Part 4. A rating citation
+  says nothing about service connection and must never be presented as if it
+  does.
+- **Secondary service connection** (`data/knowledge-base/`, 38 CFR 3.310):
+  condition B was caused or aggravated by service-connected condition A. Needs
+  a nexus opinion.
+- **Presumptive service connection** (`data/presumptives/`, 38 CFR 3.307 and
+  3.309): VA presumes the connection based on where and when someone served.
+  No nexus, no other service-connected condition required.
 
 Presenting a presumptive condition as a secondary would push a veteran toward
 a harder claim than the one they qualify for. Keep the tracks separate in data,
-in code, and in copy.
+in code, and in copy. See `docs/condition-catalog.md`.
 
 Phase 1 runs with no live VA data. See `docs/product-spec.md` for scope and
 `docs/phase-plan.md` for the roadmap.
@@ -47,13 +51,17 @@ These exist because wrong output in a claims tool causes real harm.
    who the app tells a veteran they may be eligible.
 7. **Never publish a draft entry.** Setting `draft: false` means the mappings
    and citations were authored and reviewed by a qualified human.
+8. **Never treat a rating schedule citation as evidence of service
+   connection.** 38 CFR Part 4 governs severity, not entitlement.
 
 ## Architecture
 
 ```
-data/knowledge-base/*.json   Secondary conditions, one file per primary
+data/conditions/*.json       Condition catalog, one file per body system
+data/knowledge-base/*.json   Secondary mappings, one file per primary
 data/presumptives/*.json     Exposure categories, locations, date windows
-src/lib/kb/                  Zod schema, loader, lookup
+src/lib/catalog/             Zod schema, loader, lookup. Condition identity.
+src/lib/kb/                  Zod schema, loader, mapping helpers
 src/lib/engine/              Pure recommendation logic. No I/O.
 src/lib/presumptive/         Zod schema, loader, service-history matcher
 src/lib/log/                 Event logging behind an EventLogger interface
@@ -61,6 +69,10 @@ src/app/                     App Router pages
 src/components/              Presentational React components
 tests/                       Vitest
 ```
+
+The catalog is the single source of condition identity. Mapping files carry
+`conditionId` references only. Never duplicate a display name into a mapping
+file: resolve it from the catalog so it cannot drift.
 
 Routes:
 
@@ -77,8 +89,8 @@ Boundaries to respect:
 
 - `src/lib/engine/` stays pure. It takes a knowledge base and an intake object
   and returns data. No filesystem, no network, no environment variables.
-- Only `src/lib/kb/load.ts` and `src/lib/presumptive/load.ts` read data files
-  from disk.
+- Only the `load.ts` in `src/lib/catalog/`, `src/lib/kb/`, and
+  `src/lib/presumptive/` read data files from disk.
 - `src/lib/presumptive/match.ts` stays pure, same rule as the engine.
 - Swap storage by adding an `EventLogger` implementation. Never let a caller
   import `better-sqlite3` directly.
@@ -108,14 +120,23 @@ least one `sourceReferences` entry carrying a public URL.
   cell and squamous cell carcinoma are not. Precision here is the product.
 - Bump `sourceCheckedOn` whenever you re-verify against va.gov.
 
+## Catalog edits
+
+- Unique kebab-case `id`, display `name`, `bodySystem`, and unambiguous
+  `aliases`. A test rejects an alias claimed by two conditions or colliding
+  with another condition's name or id.
+- Include a rating citation only if you have a real one. Otherwise leave
+  `ratingSchedule` empty and add a `reviewNotes` entry explaining why.
+- Adding a condition to the catalog does not make it appear in results. It
+  needs a mapping file for that, and intake labels it "no mappings yet".
+
 ## Knowledge base edits
 
-Every entry needs `conditionId`, `condition`, `rank`, `prevalence`,
-`rationale`, at least one `evidenceGaps` item, and at least one
-`sourceReferences` item.
+Every suggestion needs `conditionId`, `rank`, `prevalence`, `rationale`, at
+least one `evidenceGaps` item, and at least one `sourceReferences` item.
 
-- `conditionId` is the merge key. The same clinical concept must use the same
-  id and the same display label in every file. A test enforces this.
+- `conditionId` must resolve to a catalog entry. A test enforces this.
+- Display names come from the catalog. Do not add a `condition` field.
 - `rank` must be unique and gapless within a file, starting at 1.
 - A condition must not list itself as its own secondary.
 - Changing a mapping or a citation is a substantive change. Call it out in the

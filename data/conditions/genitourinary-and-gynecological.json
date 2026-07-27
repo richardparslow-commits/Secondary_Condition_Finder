@@ -1,0 +1,190 @@
+{
+  "bodySystem": "Genitourinary & Gynecological Systems",
+  "conditions": [
+    {
+      "id": "chronic-kidney-disease",
+      "name": "Chronic Kidney Disease / Renal Failure",
+      "aliases": [
+        "chronic kidney disease",
+        "renal failure"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Ratings of the genitourinary system, diagnoses.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "kidney-stones",
+      "name": "Kidney Stones (Nephrolithiasis)",
+      "aliases": [
+        "kidney stones",
+        "nephrolithiasis"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Ratings of the genitourinary system, diagnoses.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "cystitis-or-neurogenic-bladder",
+      "name": "Chronic Cystitis / Neurogenic Bladder",
+      "aliases": [
+        "chronic cystitis",
+        "neurogenic bladder"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Ratings of the genitourinary system, diagnoses.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "urinary-incontinence",
+      "name": "Urinary Incontinence / Frequency",
+      "aliases": [
+        "frequency",
+        "urinary incontinence"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Ratings of the genitourinary system, diagnoses.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "erectile-dysfunction",
+      "name": "Erectile Dysfunction",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Ratings of the genitourinary system, diagnoses.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "benign-prostatic-hyperplasia",
+      "name": "Benign Prostatic Hyperplasia (BPH)",
+      "aliases": [
+        "benign prostatic hyperplasia"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Ratings of the genitourinary system, diagnoses.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "prostatitis",
+      "name": "Prostatitis",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Ratings of the genitourinary system, diagnoses.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "endometriosis",
+      "name": "Endometriosis",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.116",
+          "note": "Schedule of ratings, gynecological conditions and disorders of the breast.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "polycystic-ovary-syndrome",
+      "name": "Polycystic Ovary Syndrome (PCOS)",
+      "aliases": [
+        "pcos",
+        "polycystic ovary syndrome"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.116",
+          "note": "Schedule of ratings, gynecological conditions and disorders of the breast.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "pelvic-inflammatory-disease",
+      "name": "Pelvic Inflammatory Disease",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.116",
+          "note": "Schedule of ratings, gynecological conditions and disorders of the breast.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "uterine-fibroids",
+      "name": "Uterine Fibroids",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.116",
+          "note": "Schedule of ratings, gynecological conditions and disorders of the breast.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "female-sexual-arousal-disorder",
+      "name": "Female Sexual Arousal Disorder",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.116",
+          "note": "Schedule of ratings, gynecological conditions and disorders of the breast.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { z } from "zod";
 import type { Prevalence, SourceReference } from "@/lib/kb/schema";
 
 export const intakeSchema = z.object({
-  /** One or more service-connected primary conditions. Free text. */
+  /** Catalog ids, names, or aliases of conditions already service connected. */
   primaryConditions: z.array(z.string().min(1)).min(1, {
     message: "Enter at least one service-connected condition.",
   }),
@@ -24,7 +24,9 @@ export interface ContributingPrimary {
 
 export interface Recommendation {
   conditionId: string;
+  /** Resolved from the catalog, never stored in the mapping file. */
   condition: string;
+  bodySystem: string;
   prevalence: Prevalence;
   /**
    * Ordering weight only. Not a probability, not a confidence score, and never
@@ -44,8 +46,14 @@ export interface Recommendation {
 
 export interface RecommendationResult {
   recommendations: Recommendation[];
-  /** Primary conditions we resolved against the knowledge base. */
+  /** Conditions resolved against the catalog that have published mappings. */
   recognizedPrimaries: string[];
-  /** Primary conditions we could not resolve. Surfaced to the user. */
+  /**
+   * Conditions that exist in the catalog but have no published mappings yet.
+   * Distinct from unrecognized: the condition is real, the research is not
+   * written. Saying so is more useful than silence.
+   */
+  unmappedPrimaries: string[];
+  /** Input that resolved to nothing in the catalog. */
   unrecognizedPrimaries: string[];
 }

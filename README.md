@@ -61,36 +61,51 @@ Open http://localhost:3000. Try `/scenarios` for repeatable demo walkthroughs.
 ## Layout
 
 ```
-data/knowledge-base/   Secondary conditions, one JSON file per primary
+data/conditions/       Condition catalog, one JSON file per body system
+data/knowledge-base/   Secondary mappings, one JSON file per primary
 data/presumptives/     Exposure categories, locations, and date windows
 data/demo-scenarios.json
-src/lib/kb/            Zod schema, loader, lookup
+src/lib/catalog/       Zod schema, loader, lookup. Condition identity.
+src/lib/kb/            Zod schema, loader, mapping helpers
 src/lib/engine/        Pure recommendation logic, no I/O
 src/lib/presumptive/   Zod schema, loader, service-history matcher
 src/lib/log/           Event logging behind an EventLogger interface
 src/app/               App Router pages
 src/components/        Presentational components
 tests/                 Vitest
-docs/                  Product spec, presumptive scope, phase planning
+docs/                  Product spec, catalog and presumptive scope, planning
 ```
 
 Routes: `/` chooser, `/secondary` and `/results`, `/presumptive` and
 `/presumptive/results`, `/scenarios`.
 
-## Adding a primary condition
+## Coverage
 
-Create `data/knowledge-base/<slug>.json` where the filename matches the `id`
-field. Each suggestion needs `conditionId`, `condition`, `rank`, `prevalence`,
-`rationale`, at least one evidence gap, and at least one source reference with
-`verified: false`. Run `npm test` to check the integrity invariants.
+191 conditions across 14 body systems are in the catalog. 5 have authored
+secondary-condition mappings, about 2.6 percent. Intake labels the rest
+"no mappings yet" rather than implying full coverage. See
+`docs/condition-catalog.md`.
 
-### Draft entries
+## Adding a condition
 
-An entry may ship as `draft: true` with an empty `suggestions` array and a
-`todo` checklist of what a reviewer must supply. Drafts are validated and
-version controlled but never appear in the UI and never resolve through lookup,
-so an unfinished entry cannot reach a veteran. Fourteen are staged now. Fill in
-the content, clear the `todo`, then set `draft: false`.
+Two steps, and they are separate on purpose.
+
+1. **Catalog.** Add it to the matching `data/conditions/<body-system>.json`
+   with a unique id, name, aliases, and a rating citation if you have a real
+   one. This makes the condition selectable.
+2. **Mappings.** Create `data/knowledge-base/<id>.json` where the filename
+   matches the `id`. Each suggestion needs `conditionId`, `rank`, `prevalence`,
+   `rationale`, at least one evidence gap, and at least one source reference
+   with `verified: false`. This makes it return results.
+
+Run `npm test` to check the integrity invariants, including that every
+`conditionId` resolves to a catalog entry.
+
+### Draft mappings
+
+A mapping may ship as `draft: true` with an empty `suggestions` array and a
+`todo` checklist. Drafts are validated and version controlled but never appear
+in the UI, so unfinished research cannot reach a veteran.
 
 Contribution rules for humans and agents alike are in
 `.github/copilot-instructions.md`. The citation rules there are not optional.

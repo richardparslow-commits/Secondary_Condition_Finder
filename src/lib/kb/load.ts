@@ -4,10 +4,10 @@ import fs from "node:fs";
 import path from "node:path";
 
 import {
+  conditionMappingSchema,
   knowledgeBaseSchema,
-  primaryConditionSchema,
+  type ConditionMapping,
   type KnowledgeBase,
-  type PrimaryCondition,
 } from "./schema";
 
 const KB_DIR = path.join(process.cwd(), "data", "knowledge-base");
@@ -15,10 +15,10 @@ const KB_DIR = path.join(process.cwd(), "data", "knowledge-base");
 let cached: KnowledgeBase | null = null;
 
 /**
- * Reads and validates every knowledge base file.
+ * Reads and validates every mapping file.
  *
- * Validation failures throw rather than degrade. A malformed condition entry in
- * a claims tool is a correctness problem, not something to silently skip.
+ * Validation failures throw rather than degrade. A malformed mapping in a
+ * claims tool is a correctness problem, not something to silently skip.
  */
 export function loadKnowledgeBase(): KnowledgeBase {
   if (cached) return cached;
@@ -28,27 +28,25 @@ export function loadKnowledgeBase(): KnowledgeBase {
     .filter((file) => file.endsWith(".json"))
     .sort();
 
-  const conditions: PrimaryCondition[] = files.map((file) => {
+  const mappings: ConditionMapping[] = files.map((file) => {
     const raw = fs.readFileSync(path.join(KB_DIR, file), "utf8");
-    const parsed = primaryConditionSchema.safeParse(JSON.parse(raw));
+    const parsed = conditionMappingSchema.safeParse(JSON.parse(raw));
 
     if (!parsed.success) {
-      throw new Error(
-        `Invalid knowledge base entry in ${file}: ${parsed.error.message}`,
-      );
+      throw new Error(`Invalid mapping in ${file}: ${parsed.error.message}`);
     }
 
     const expectedId = path.basename(file, ".json");
     if (parsed.data.id !== expectedId) {
       throw new Error(
-        `Knowledge base id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`,
+        `Mapping id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`,
       );
     }
 
     return parsed.data;
   });
 
-  cached = knowledgeBaseSchema.parse(conditions);
+  cached = knowledgeBaseSchema.parse(mappings);
   return cached;
 }
 

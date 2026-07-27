@@ -1,0 +1,251 @@
+{
+  "bodySystem": "Mental Disorders",
+  "conditions": [
+    {
+      "id": "ptsd",
+      "name": "Post-Traumatic Stress Disorder (PTSD)",
+      "aliases": [
+        "post-traumatic stress disorder",
+        "ptsd"
+      ],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "depressive-disorder",
+      "name": "Major Depressive Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "persistent-depressive-disorder",
+      "name": "Persistent Depressive Disorder (Dysthymia)",
+      "aliases": [
+        "dysthymia",
+        "persistent depressive disorder"
+      ],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "anxiety-disorder",
+      "name": "Generalized Anxiety Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "panic-disorder",
+      "name": "Panic Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "social-anxiety-disorder",
+      "name": "Social Anxiety Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "agoraphobia",
+      "name": "Agoraphobia",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "ocd",
+      "name": "Obsessive-Compulsive Disorder (OCD)",
+      "aliases": [
+        "obsessive-compulsive disorder"
+      ],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "bipolar-disorder",
+      "name": "Bipolar Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "adjustment-disorder",
+      "name": "Adjustment Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "cyclothymic-disorder",
+      "name": "Cyclothymic Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "schizophrenia",
+      "name": "Schizophrenia",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "schizoaffective-disorder",
+      "name": "Schizoaffective Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "anorexia-nervosa",
+      "name": "Anorexia Nervosa",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "bulimia-nervosa",
+      "name": "Bulimia Nervosa",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "binge-eating-disorder",
+      "name": "Binge Eating Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "somatic-symptom-disorder",
+      "name": "Somatic Symptom Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    }
+  ]
+}
