@@ -5,6 +5,7 @@ import { SecondaryWorkflowHiddenFields } from "@/components/SecondaryWorkflowHid
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import {
+  parseDiagnosedSelection,
   parseServiceConnectedSelection,
   ratingFieldName,
 } from "@/lib/secondary-workflow/state";
@@ -24,20 +25,32 @@ export default async function RatingsStepPage({
 
   let diagnosedConditionIds: string[];
   let serviceConnectedConditionIds: string[];
+  let guardHref = "/secondary/diagnosed";
+  let guardLabel = "Start over at diagnosed conditions";
 
   try {
     const parsed = parseServiceConnectedSelection(params, catalog);
     diagnosedConditionIds = parsed.diagnosedConditionIds;
     serviceConnectedConditionIds = parsed.serviceConnectedConditionIds;
   } catch {
+    try {
+      const diagnosed = parseDiagnosedSelection(params, catalog);
+      guardHref = `/secondary/service-connected?${new URLSearchParams(
+        diagnosed.diagnosedConditionIds.map((id) => ["diagnosed", id]),
+      ).toString()}`;
+      guardLabel = "Back to service-connected status";
+    } catch {
+      // Fall back to diagnosed step.
+    }
+
     return (
       <main>
         <h1 className="text-2xl font-semibold tracking-tight">Set service-connected status first</h1>
         <p className="mt-2 text-sm text-slate-600">
           Mark at least one condition as already service connected before entering ratings.
         </p>
-        <Link href="/secondary/diagnosed" className="mt-5 inline-block text-sm underline hover:text-slate-900">
-          Start over at diagnosed conditions
+        <Link href={guardHref} className="mt-5 inline-block text-sm underline hover:text-slate-900">
+          {guardLabel}
         </Link>
       </main>
     );
@@ -49,8 +62,14 @@ export default async function RatingsStepPage({
 
   return (
     <main>
-      <Link href="/secondary/diagnosed" className="text-sm underline hover:text-slate-900">
-        Back to diagnosed conditions
+      <Link
+        href={`/secondary/service-connected?${new URLSearchParams([
+          ...diagnosedConditionIds.map((id) => ["diagnosed", id]),
+          ...serviceConnectedConditionIds.map((id) => ["serviceConnected", id]),
+        ]).toString()}`}
+        className="text-sm underline hover:text-slate-900"
+      >
+        Back to service-connected status
       </Link>
 
       <header className="mt-3 mb-6">

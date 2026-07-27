@@ -4,11 +4,20 @@ import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { mappedConditionIds } from "@/lib/kb/lookup";
+import { parseDiagnosedPrefill } from "@/lib/secondary-workflow/state";
 
-export default function DiagnosedConditionsPage() {
+export const dynamic = "force-dynamic";
+
+export default async function DiagnosedConditionsPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const catalog = loadConditionCatalog();
   const mapped = mappedConditionIds(loadKnowledgeBase());
   const conditions = [...catalog].sort((a, b) => a.name.localeCompare(b.name));
+  const params = await searchParams;
+  const selectedDiagnosed = new Set(parseDiagnosedPrefill(params, catalog));
 
   return (
     <main>
@@ -33,7 +42,8 @@ export default function DiagnosedConditionsPage() {
         <fieldset>
           <legend className="text-sm font-semibold text-slate-900">Diagnosed conditions</legend>
           <p className="mt-1 text-sm text-slate-600">
-            Select one or more conditions, then continue.
+            Select one or more conditions, then continue. A “no mappings yet” label means the
+            condition is recognized, but secondary research has not been authored yet.
           </p>
 
           <ul className="mt-3 max-h-[28rem] divide-y divide-slate-100 overflow-y-auto rounded-lg border border-slate-200 bg-white">
@@ -44,6 +54,7 @@ export default function DiagnosedConditionsPage() {
                     type="checkbox"
                     name="diagnosed"
                     value={condition.id}
+                    defaultChecked={selectedDiagnosed.has(condition.id)}
                     className="mt-1 h-4 w-4 rounded border-slate-300"
                   />
                   <span className="text-sm text-slate-700">

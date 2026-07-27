@@ -4,7 +4,11 @@ import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
 import { SecondaryWorkflowHiddenFields } from "@/components/SecondaryWorkflowHiddenFields";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
-import { parseRatingsSelection } from "@/lib/secondary-workflow/state";
+import {
+  parseRatingsSelection,
+  parseServiceConnectedSelection,
+  ratingFieldName,
+} from "@/lib/secondary-workflow/state";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +24,8 @@ export default async function UploadStepPage({
   let diagnosedConditionIds: string[];
   let serviceConnectedConditionIds: string[];
   let ratingsByConditionId: Record<string, number | null>;
+  let guardHref = "/secondary/diagnosed";
+  let guardLabel = "Start over at diagnosed conditions";
 
   try {
     const parsed = parseRatingsSelection(params, catalog);
@@ -27,14 +33,25 @@ export default async function UploadStepPage({
     serviceConnectedConditionIds = parsed.serviceConnectedConditionIds;
     ratingsByConditionId = parsed.ratingsByConditionId;
   } catch {
+    try {
+      const parsed = parseServiceConnectedSelection(params, catalog);
+      guardHref = `/secondary/ratings?${new URLSearchParams([
+        ...parsed.diagnosedConditionIds.map((id) => ["diagnosed", id]),
+        ...parsed.serviceConnectedConditionIds.map((id) => ["serviceConnected", id]),
+      ]).toString()}`;
+      guardLabel = "Back to current ratings";
+    } catch {
+      // Fall back to diagnosed step.
+    }
+
     return (
       <main>
         <h1 className="text-2xl font-semibold tracking-tight">Enter ratings first</h1>
         <p className="mt-2 text-sm text-slate-600">
           Complete the ratings step before you continue to document upload.
         </p>
-        <Link href="/secondary/diagnosed" className="mt-5 inline-block text-sm underline hover:text-slate-900">
-          Start over at diagnosed conditions
+        <Link href={guardHref} className="mt-5 inline-block text-sm underline hover:text-slate-900">
+          {guardLabel}
         </Link>
       </main>
     );
@@ -42,7 +59,17 @@ export default async function UploadStepPage({
 
   return (
     <main>
-      <Link href="/secondary/ratings" className="text-sm underline hover:text-slate-900">
+      <Link
+        href={`/secondary/ratings?${new URLSearchParams([
+          ...diagnosedConditionIds.map((id) => ["diagnosed", id]),
+          ...serviceConnectedConditionIds.map((id) => ["serviceConnected", id]),
+          ...serviceConnectedConditionIds.map((id) => [
+            ratingFieldName(id),
+            ratingsByConditionId[id] === null ? "decline" : String(ratingsByConditionId[id]),
+          ]),
+        ]).toString()}`}
+        className="text-sm underline hover:text-slate-900"
+      >
         Back to current ratings
       </Link>
 
@@ -50,8 +77,8 @@ export default async function UploadStepPage({
         <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Step 4 of 6</p>
         <h1 className="mt-1 text-2xl font-semibold tracking-tight">Optional document upload</h1>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          You can gather documents for your own review checklist. Phase 1 does not extract,
-          interpret, or store file contents.
+          Uploads are optional. Use this step only if you want a reminder in your checklist that
+          you have records to review manually with your provider or representative.
         </p>
       </header>
 
@@ -63,8 +90,8 @@ export default async function UploadStepPage({
         <h2 className="font-semibold text-slate-900">What this step does today</h2>
         <ul className="mt-2 list-disc space-y-1 pl-5">
           <li>Helps you prepare a document checklist for your next representative meeting.</li>
-          <li>Does not read, parse, or rate medical records.</li>
-          <li>Does not save document text in event logs or accounts.</li>
+          <li>Does not medically interpret, summarize, or rate what is inside your files.</li>
+          <li>Does not save document text in event logs or user accounts.</li>
         </ul>
       </section>
 
@@ -78,7 +105,7 @@ export default async function UploadStepPage({
         <label className="block rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
           <span className="block text-sm font-semibold text-slate-900">Optional local file picker</span>
           <span className="mt-1 block text-xs text-slate-500">
-            Files you select here remain local to your browser in this Phase 1 MVP.
+            Files selected here are not uploaded for AI analysis in this Phase 1 MVP.
           </span>
           <input
             type="file"
@@ -93,7 +120,7 @@ export default async function UploadStepPage({
             Do you want this reflected in your checklist?
           </legend>
           <p id="upload-processing-limit" className="mt-1 text-sm text-slate-600">
-            This flag only affects checklist wording. It does not trigger file analysis.
+            This choice only updates checklist wording. It does not trigger document parsing.
           </p>
           <div className="mt-3 space-y-2 text-sm text-slate-700">
             <label className="flex items-center gap-2">

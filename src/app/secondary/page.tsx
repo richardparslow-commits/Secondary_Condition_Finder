@@ -23,9 +23,22 @@ export default function SecondaryLandingPage() {
           Secondary service-connection workflow
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          Use this track when you already have at least one service-connected condition and
-          want to organize possible secondary conditions to discuss with a qualified provider
-          or accredited representative.
+          Use this track when you already have at least one service-connected condition and want to
+          organize other diagnosed conditions that may be related.
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          In plain language: a secondary claim can involve a condition that may have been caused by
+          a service-connected disability, or a condition that already existed but may have been
+          aggravated (made worse beyond normal progression) by it. This workflow helps organize
+          questions and evidence for those two theories.
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          This is separate from presumptive service connection. Presumptive claims are based on
+          qualifying service exposures, not on one condition causing or worsening another.
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          Citations shown in this app are unverified starting points in Phase 1 and should be
+          confirmed against current VA guidance.
         </p>
       </header>
 

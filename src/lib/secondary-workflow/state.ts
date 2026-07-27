@@ -38,6 +38,10 @@ const serviceConnectedSelectionSchema = z
     },
   );
 
+const documentsSharedSchema = z.object({
+  documentsShared: z.enum(["yes", "no"]),
+});
+
 function toArray(value: QueryValue): string[] {
   if (!value) return [];
 
@@ -80,6 +84,28 @@ function parseRawServiceConnectedConditionIds(
   return diagnosedConditionIds.filter(
     (id) => first(params[`serviceConnected-${id}`]) === "yes",
   );
+}
+
+export function parseDiagnosedPrefill(
+  params: QueryParams,
+  catalog: ConditionCatalog,
+): string[] {
+  return parseRawDiagnosedConditionIds(params, catalog);
+}
+
+export function parseServiceConnectedPrefill(
+  params: QueryParams,
+  catalog: ConditionCatalog,
+): { diagnosedConditionIds: string[]; serviceConnectedConditionIds: string[] } {
+  const diagnosedConditionIds = parseDiagnosedPrefill(params, catalog);
+
+  return {
+    diagnosedConditionIds,
+    serviceConnectedConditionIds: parseRawServiceConnectedConditionIds(
+      params,
+      diagnosedConditionIds,
+    ),
+  };
 }
 
 export function parseDiagnosedSelection(
@@ -144,19 +170,35 @@ export function parseRatingsSelection(
 }
 
 function parseDocumentsShared(value: QueryValue): boolean {
-  return first(value) === "yes";
+  const parsed = documentsSharedSchema.parse({
+    documentsShared: first(value),
+  });
+
+  return parsed.documentsShared === "yes";
 }
 
-export function parseWorkflowState(
+export function parseDocumentsSelection(
   params: QueryParams,
   catalog: ConditionCatalog,
-): SecondaryWorkflowState {
+): {
+  diagnosedConditionIds: string[];
+  serviceConnectedConditionIds: string[];
+  ratingsByConditionId: Record<string, number | null>;
+  documentsShared: boolean;
+} {
   const ratings = parseRatingsSelection(params, catalog);
 
   return {
     ...ratings,
     documentsShared: parseDocumentsShared(params.documentsShared),
   };
+}
+
+export function parseWorkflowState(
+  params: QueryParams,
+  catalog: ConditionCatalog,
+): SecondaryWorkflowState {
+  return parseDocumentsSelection(params, catalog);
 }
 
 export function workflowStateToSearchParams(
