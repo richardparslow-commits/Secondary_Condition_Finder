@@ -1,15 +1,10 @@
 {
   "id": "knee-injury",
-  "name": "Knee injury",
-  "aliases": [
-    "knee condition",
-    "knee strain",
-    "knee pain"
-  ],
+  "draft": false,
+  "todo": [],
   "suggestions": [
     {
       "conditionId": "hip-strain",
-      "condition": "Hip strain",
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "Altered gait to protect an injured knee can place additional load on the hip over time. Claims typically rest on documented gait alteration rather than the knee diagnosis alone.",
@@ -33,7 +28,6 @@
     },
     {
       "conditionId": "ankle-strain",
-      "condition": "Ankle strain",
       "rank": 2,
       "prevalence": "sometimes-explored",
       "rationale": "Changed weight-bearing patterns may affect ankle mechanics on either the affected or opposite side.",
@@ -57,7 +51,6 @@
     },
     {
       "conditionId": "lumbar-strain",
-      "condition": "Lumbar strain",
       "rank": 3,
       "prevalence": "sometimes-explored",
       "rationale": "Biomechanical compensation over an extended period is sometimes advanced as a contributor to lower back strain. Generally needs a supporting medical opinion.",
@@ -81,7 +74,6 @@
     },
     {
       "conditionId": "contralateral-knee-condition",
-      "condition": "Contralateral (opposite) knee condition",
       "rank": 4,
       "prevalence": "sometimes-explored",
       "rationale": "Overuse of the unaffected knee to compensate is a recognized theory where the service-connected knee has significant functional limitation.",

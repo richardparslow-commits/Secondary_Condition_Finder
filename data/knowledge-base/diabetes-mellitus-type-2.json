@@ -1,16 +1,10 @@
 {
   "id": "diabetes-mellitus-type-2",
-  "name": "Diabetes mellitus type II",
-  "aliases": [
-    "diabetes mellitus type ii",
-    "type 2 diabetes",
-    "diabetes",
-    "dm2"
-  ],
+  "draft": false,
+  "todo": [],
   "suggestions": [
     {
       "conditionId": "peripheral-neuropathy",
-      "condition": "Peripheral neuropathy",
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "Nerve damage in the extremities is a well-documented complication of long-standing diabetes. Each affected extremity is generally evaluated separately.",
@@ -34,7 +28,6 @@
     },
     {
       "conditionId": "diabetic-retinopathy",
-      "condition": "Diabetic retinopathy",
       "rank": 2,
       "prevalence": "commonly-explored",
       "rationale": "A recognized diabetes-related eye complication. Evaluation depends on visual impairment and any incapacitating episodes.",
@@ -58,7 +51,6 @@
     },
     {
       "conditionId": "chronic-kidney-disease",
-      "condition": "Chronic kidney disease",
       "rank": 3,
       "prevalence": "commonly-explored",
       "rationale": "Renal impairment is a documented complication in persistent or poorly controlled diabetes.",
@@ -82,7 +74,6 @@
     },
     {
       "conditionId": "hypertension",
-      "condition": "Hypertension",
       "rank": 4,
       "prevalence": "sometimes-explored",
       "rationale": "Often claimed as aggravated rather than caused. Aggravation claims require a documented baseline level of severity before the aggravation occurred.",

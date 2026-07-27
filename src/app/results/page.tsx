@@ -6,6 +6,7 @@ import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
 import { SuggestionCard } from "@/components/SuggestionCard";
 import { ENGINE_VERSION, recommend } from "@/lib/engine/recommend";
 import { intakeSchema } from "@/lib/engine/types";
+import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { getEventLogger } from "@/lib/log";
 
@@ -53,7 +54,11 @@ export default async function ResultsPage({
     );
   }
 
-  const result = recommend(loadKnowledgeBase(), parsed.data);
+  const result = recommend(
+    loadConditionCatalog(),
+    loadKnowledgeBase(),
+    parsed.data,
+  );
 
   const eventLogger = await getEventLogger();
   eventLogger.record({
@@ -85,15 +90,27 @@ export default async function ResultsPage({
         <DisclaimerBanner />
       </div>
 
-      {result.unrecognizedPrimaries.length > 0 && (
+      {result.unmappedPrimaries.length > 0 && (
         <div className="mb-6 rounded-lg border border-slate-300 bg-white p-4 text-sm text-slate-700">
           <p className="font-medium text-slate-900">
-            Not yet in the knowledge base
+            No secondary research written yet
           </p>
           <p className="mt-1">
-            {result.unrecognizedPrimaries.join(", ")}. Nothing below reflects
-            these conditions. Their absence here says nothing about whether a
-            secondary claim is possible.
+            {result.unmappedPrimaries.join(", ")}. These are recognized
+            conditions, but nobody has authored the secondary-condition
+            research for them yet. Nothing below reflects them, and their
+            absence says nothing about whether a secondary claim is possible.
+          </p>
+        </div>
+      )}
+
+      {result.unrecognizedPrimaries.length > 0 && (
+        <div className="mb-6 rounded-lg border border-slate-300 bg-white p-4 text-sm text-slate-700">
+          <p className="font-medium text-slate-900">Not recognized</p>
+          <p className="mt-1">
+            {result.unrecognizedPrimaries.join(", ")}. We could not match these
+            to a known condition. Check the spelling, or search for them on the
+            intake page.
           </p>
         </div>
       )}

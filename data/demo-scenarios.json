@@ -4,9 +4,16 @@
     "title": "Single primary condition",
     "description": "A veteran service connected for PTSD exploring what else may be related.",
     "intake": {
-      "primaryConditions": ["PTSD"],
-      "symptoms": ["trouble staying asleep", "daytime fatigue"],
-      "medications": ["sertraline"],
+      "primaryConditions": [
+        "ptsd"
+      ],
+      "symptoms": [
+        "trouble staying asleep",
+        "daytime fatigue"
+      ],
+      "medications": [
+        "sertraline"
+      ],
       "exposures": [],
       "notes": "Sleep problems have worsened over the last two years."
     }
@@ -16,22 +23,37 @@
     "title": "Multiple primaries with an overlapping suggestion",
     "description": "Knee injury and lumbar strain both point toward overlapping musculoskeletal and pain-related theories.",
     "intake": {
-      "primaryConditions": ["Knee injury", "Lumbar strain"],
-      "symptoms": ["limping", "radiating leg pain"],
-      "medications": ["meloxicam"],
+      "primaryConditions": [
+        "knee-injury",
+        "lumbar-strain"
+      ],
+      "symptoms": [
+        "limping",
+        "radiating leg pain"
+      ],
+      "medications": [
+        "meloxicam"
+      ],
       "exposures": [],
       "notes": "Gait has been altered since the original knee injury."
     }
   },
   {
     "id": "unrecognized-primary",
-    "title": "Partially recognized intake",
-    "description": "One condition resolves against the knowledge base and one does not, demonstrating graceful handling.",
+    "title": "Recognized condition with no mappings yet",
+    "description": "One condition has authored secondary research and one does not, demonstrating how the app distinguishes an unmapped condition from an unrecognized one.",
     "intake": {
-      "primaryConditions": ["Tinnitus", "Plantar fasciitis"],
-      "symptoms": ["ringing worse at night"],
+      "primaryConditions": [
+        "tinnitus",
+        "plantar-fasciitis"
+      ],
+      "symptoms": [
+        "ringing worse at night"
+      ],
       "medications": [],
-      "exposures": ["aircraft engine noise"],
+      "exposures": [
+        "aircraft engine noise"
+      ],
       "notes": ""
     }
   }

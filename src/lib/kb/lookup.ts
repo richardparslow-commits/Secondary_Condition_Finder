@@ -1,48 +1,22 @@
-import type { KnowledgeBase, PrimaryCondition } from "./schema";
+import type { KnowledgeBase, ConditionMapping } from "./schema";
 
-/** Collapses case, trims, and squeezes internal whitespace. */
-export function normalizeConditionName(condition: string): string {
-  return condition.trim().toLowerCase().split(/\s+/).filter(Boolean).join(" ");
-}
-
-/**
- * Resolves free-text input to a published primary condition by id, name, or
- * alias. Exact match only. Fuzzy matching is deliberately out of scope for
- * Phase 1: silently resolving "knee" to the wrong entry is worse than
- * returning nothing. Draft entries are never resolvable.
- */
-export function findPrimaryCondition(
+/** Published mappings, keyed by catalog id. Excludes drafts. */
+export function publishedMappings(
   kb: KnowledgeBase,
-  input: string,
-): PrimaryCondition | null {
-  const normalized = normalizeConditionName(input);
-  if (!normalized) return null;
-
-  return (
-    kb.filter((condition) => !condition.draft).find((condition) => {
-      const candidates = [
-        condition.id,
-        condition.id.replace(/-/g, " "),
-        condition.name,
-        ...condition.aliases,
-      ];
-      return candidates.some(
-        (candidate) => normalizeConditionName(candidate) === normalized,
-      );
-    }) ?? null
+): Map<string, ConditionMapping> {
+  return new Map(
+    kb.filter((mapping) => !mapping.draft).map((mapping) => [mapping.id, mapping]),
   );
 }
 
-/** Published primary conditions, sorted by display name. Excludes drafts. */
-export function listPrimaryConditions(kb: KnowledgeBase): PrimaryCondition[] {
-  return kb
-    .filter((condition) => !condition.draft)
-    .sort((a, b) => a.name.localeCompare(b.name));
+/** Ids that have published mappings, so intake can show which are covered. */
+export function mappedConditionIds(kb: KnowledgeBase): Set<string> {
+  return new Set(
+    kb.filter((mapping) => !mapping.draft).map((mapping) => mapping.id),
+  );
 }
 
-/** Draft entries awaiting human-authored mappings. For tooling and review. */
-export function listDraftConditions(kb: KnowledgeBase): PrimaryCondition[] {
-  return kb
-    .filter((condition) => condition.draft)
-    .sort((a, b) => a.name.localeCompare(b.name));
+/** Draft mappings awaiting human-authored content. For tooling and review. */
+export function draftMappings(kb: KnowledgeBase): ConditionMapping[] {
+  return kb.filter((mapping) => mapping.draft);
 }

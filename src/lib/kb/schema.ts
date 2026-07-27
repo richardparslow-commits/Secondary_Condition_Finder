@@ -25,13 +25,10 @@ export const sourceReferenceSchema = z.object({
 
 export const suggestionSchema = z.object({
   /**
-   * Canonical identity for the secondary condition. Suggestions from different
-   * primary conditions merge on this, not on display text, so "Depressive
-   * disorder" from two sources becomes one recommendation.
+   * Catalog id of the secondary condition. Display names are resolved from the
+   * catalog, so a label can never drift between two mapping files.
    */
   conditionId: z.string().regex(/^[a-z0-9-]+$/),
-  /** Display label. Must be identical for every entry sharing a conditionId. */
-  condition: z.string().min(1),
   rank: z.number().int().positive(),
   prevalence: prevalenceSchema,
   rationale: z.string().min(1),
@@ -40,53 +37,69 @@ export const suggestionSchema = z.object({
   sourceReferences: z.array(sourceReferenceSchema).min(1),
 });
 
-export const primaryConditionSchema = z
+/**
+ * Secondary-condition mappings for one primary. Identity (name, aliases, body
+ * system, rating citations) lives in the catalog; this file holds only the
+ * edges out of that condition.
+ */
+export const conditionMappingSchema = z
   .object({
-    /** Stable slug. Must match the filename. */
+    /** Catalog id. Must match the filename. */
     id: z.string().regex(/^[a-z0-9-]+$/),
-    name: z.string().min(1),
-    /** Alternate spellings and abbreviations users may type. */
-    aliases: z.array(z.string().min(1)),
     /**
-     * Draft entries are scaffolding awaiting human-authored mappings. They are
-     * validated and version controlled but never surfaced in the UI, so an
-     * unfinished entry cannot reach a veteran.
+     * Draft mappings are validated and version controlled but never surfaced.
+     * Use while authoring is in progress.
      */
     draft: z.boolean().default(false),
     /** Checklist of what a reviewer must supply. Only meaningful on drafts. */
     todo: z.array(z.string().min(1)).default([]),
     suggestions: z.array(suggestionSchema).default([]),
   })
-  .superRefine((condition, ctx) => {
-    if (!condition.draft && condition.suggestions.length === 0) {
+  .superRefine((mapping, ctx) => {
+    if (!mapping.draft && mapping.suggestions.length === 0) {
       ctx.addIssue({
         code: "custom",
         path: ["suggestions"],
         message:
-          "A published condition needs at least one suggestion. Mark it draft: true while it is incomplete.",
+          "A published mapping needs at least one suggestion. Mark it draft: true while it is incomplete.",
       });
     }
-    if (!condition.draft && condition.todo.length > 0) {
+    if (!mapping.draft && mapping.todo.length > 0) {
       ctx.addIssue({
         code: "custom",
         path: ["todo"],
         message:
-          "Resolve every todo before publishing, or keep the entry draft: true.",
+          "Resolve every todo before publishing, or keep the mapping draft: true.",
       });
     }
-    if (condition.draft && condition.todo.length === 0) {
+    if (mapping.draft && mapping.todo.length === 0) {
       ctx.addIssue({
         code: "custom",
         path: ["todo"],
         message: "A draft must state what is still needed.",
       });
     }
+    const ranks = mapping.suggestions.map((s) => s.rank).sort((a, b) => a - b);
+    if (ranks.some((rank, index) => rank !== index + 1)) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["suggestions"],
+        message: "Ranks must be unique and gapless, starting at 1.",
+      });
+    }
+    if (mapping.suggestions.some((s) => s.conditionId === mapping.id)) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["suggestions"],
+        message: "A condition cannot be a secondary of itself.",
+      });
+    }
   });
 
-export const knowledgeBaseSchema = z.array(primaryConditionSchema);
+export const knowledgeBaseSchema = z.array(conditionMappingSchema);
 
 export type Prevalence = z.infer<typeof prevalenceSchema>;
 export type SourceReference = z.infer<typeof sourceReferenceSchema>;
 export type Suggestion = z.infer<typeof suggestionSchema>;
-export type PrimaryCondition = z.infer<typeof primaryConditionSchema>;
+export type ConditionMapping = z.infer<typeof conditionMappingSchema>;
 export type KnowledgeBase = z.infer<typeof knowledgeBaseSchema>;

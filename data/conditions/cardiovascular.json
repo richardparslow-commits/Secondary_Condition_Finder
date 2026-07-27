@@ -1,0 +1,194 @@
+{
+  "bodySystem": "Cardiovascular System",
+  "conditions": [
+    {
+      "id": "hypertension",
+      "name": "Hypertensive Vascular Disease (Hypertension)",
+      "aliases": [
+        "hypertension",
+        "hypertensive vascular disease"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "ischemic-heart-disease",
+      "name": "Coronary Artery Disease / Ischemic Heart Disease",
+      "aliases": [
+        "coronary artery disease",
+        "ischemic heart disease"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "myocardial-infarction",
+      "name": "Myocardial Infarction (Heart Attack)",
+      "aliases": [
+        "heart attack",
+        "myocardial infarction"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "congestive-heart-failure",
+      "name": "Congestive Heart Failure",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "cardiac-arrhythmia",
+      "name": "Cardiac Arrhythmias (Atrial Fibrillation, Tachycardia)",
+      "aliases": [
+        "atrial fibrillation",
+        "cardiac arrhythmias",
+        "tachycardia"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "heart-valve-disorders",
+      "name": "Heart Valve Disorders",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "cardiac-inflammatory-disease",
+      "name": "Pericarditis / Endocarditis / Myocarditis",
+      "aliases": [
+        "endocarditis",
+        "myocarditis",
+        "pericarditis"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "peripheral-vascular-disease",
+      "name": "Peripheral Vascular Disease",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "raynauds-syndrome",
+      "name": "Raynaud's Syndrome",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "varicose-veins",
+      "name": "Varicose Veins",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "aortic-aneurysm",
+      "name": "Aortic Aneurysm",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "deep-vein-thrombosis",
+      "name": "Deep Vein Thrombosis (DVT) / Phlebitis",
+      "aliases": [
+        "deep vein thrombosis",
+        "deep vein thrombosis / phlebitis",
+        "phlebitis"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    }
+  ]
+}
