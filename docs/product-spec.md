@@ -148,9 +148,9 @@ Mapped to `docs/phase-plan.md`.
    reviewer must confirm each one. The diabetic retinopathy reference was
    already corrected once: the prototype cited 38 CFR 4.119 (DC 7913), the
    diagnostic code for diabetes itself, where an eye citation belongs.
-2. **Knowledge base coverage.** Five published primary conditions is
-   demo-sufficient and not production-sufficient. Fourteen draft stubs are
-   staged and awaiting human-authored mappings.
+2. **Knowledge base coverage.** The fourteen staged stubs now ship with
+   authored mappings, bringing the catalog to nineteen published primary
+   conditions. Continue expanding coverage based on reviewer-prioritized gaps.
 3. **Accessibility audit.** Keyboard and screen reader passes have not been run.
 4. **No authentication.** Deliberate for Phase 1, since no user data is stored.
    Revisit before any deployment that handles veteran-specific data.

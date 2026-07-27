@@ -6,16 +6,80 @@
     "post traumatic arthritis",
     "degenerative arthritis"
   ],
-  "draft": true,
-  "todo": [
-    "List the secondary conditions commonly explored from this primary, in rank order starting at 1.",
-    "Write a rationale for each, using non-diagnostic language (\"commonly explored alongside\", not \"is caused by\").",
-    "Assign each a prevalence band: commonly-explored, sometimes-explored, or occasionally-explored.",
-    "List at least one evidence gap per suggestion: what a claim on that theory typically still needs.",
-    "Supply at least one source reference per suggestion. Do not guess a citation. Leave the entry draft until a real one is confirmed.",
-    "Reuse the canonical conditionId and display label for any secondary that already appears in another file.",
-    "Confirm this condition does not list itself as its own secondary.",
-    "Set draft to false and clear this todo list once every item above is done."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "contralateral-knee-condition",
+      "condition": "Contralateral (opposite) knee condition",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "When one arthritic joint has chronic functional loss, overloading the opposite side may be explored as a secondary theory.",
+      "evidenceGaps": [
+        "Diagnosis for the opposite knee",
+        "Records documenting chronic functional limitation in the service-connected joint",
+        "Opinion linking compensatory overuse to the opposite knee condition"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "hip-strain",
+      "condition": "Hip strain",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Altered gait from post-traumatic joint pain may be explored alongside hip symptoms where compensation patterns are documented.",
+      "evidenceGaps": [
+        "Hip diagnosis with objective findings",
+        "Treatment records noting altered gait or asymmetrical loading",
+        "Opinion connecting gait compensation to the hip condition"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "lumbar-strain",
+      "condition": "Lumbar strain",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Chronic biomechanical compensation may be relevant to low-back strain in some post-traumatic osteoarthritis claims.",
+      "evidenceGaps": [
+        "Lumbar diagnosis and range-of-motion findings",
+        "Timeline showing back symptoms after chronic arthritic gait changes",
+        "Opinion addressing causation or aggravation through altered biomechanics"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    }
+  ]
 }

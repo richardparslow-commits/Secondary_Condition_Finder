@@ -12,8 +12,8 @@ import {
 const kb = loadKnowledgeBase();
 
 describe("draft conditions", () => {
-  it("ships draft stubs alongside published entries", () => {
-    expect(listDraftConditions(kb).length).toBeGreaterThan(0);
+  it("ships no draft stubs in the current catalog", () => {
+    expect(listDraftConditions(kb)).toEqual([]);
     expect(listPrimaryConditions(kb).length).toBeGreaterThan(0);
   });
 
@@ -23,36 +23,19 @@ describe("draft conditions", () => {
     }
   });
 
-  it("never resolves a draft through lookup", () => {
-    for (const draft of listDraftConditions(kb)) {
-      expect(findPrimaryCondition(kb, draft.name)).toBeNull();
-      expect(findPrimaryCondition(kb, draft.id)).toBeNull();
-      for (const alias of draft.aliases) {
-        expect(findPrimaryCondition(kb, alias)).toBeNull();
-      }
-    }
+  it("resolves formerly-draft entries as published conditions", () => {
+    expect(findPrimaryCondition(kb, "sleep apnea")?.id).toBe("sleep-apnea");
+    expect(findPrimaryCondition(kb, "hypertension")?.id).toBe("hypertension");
+    expect(findPrimaryCondition(kb, "depression")?.id).toBe("depressive-disorder");
   });
 
-  it("treats a draft as unrecognized rather than returning empty results", () => {
-    const draft = listDraftConditions(kb)[0];
+  it("treats unknown conditions as unrecognized", () => {
     const result = recommend(
       kb,
-      intakeSchema.parse({ primaryConditions: [draft.name] }),
+      intakeSchema.parse({ primaryConditions: ["unknown condition"] }),
     );
     expect(result.recommendations).toEqual([]);
-    expect(result.unrecognizedPrimaries).toEqual([draft.name]);
-  });
-
-  it("gives every draft a non-empty todo checklist", () => {
-    for (const draft of listDraftConditions(kb)) {
-      expect(draft.todo.length).toBeGreaterThan(0);
-    }
-  });
-
-  it("ships no draft with suggestions, since none have been authored", () => {
-    for (const draft of listDraftConditions(kb)) {
-      expect(draft.suggestions).toEqual([]);
-    }
+    expect(result.unrecognizedPrimaries).toEqual(["unknown condition"]);
   });
 
   it("leaves no todo on a published condition", () => {
@@ -82,19 +65,15 @@ describe("draft conditions", () => {
     }
   });
 
-  it("uses ids that align with existing secondary conditionIds where they overlap", () => {
-    // A draft promoted from an existing secondary must reuse that
-    // conditionId, otherwise the engine cannot exclude it once published.
+  it("keeps published entries aligned with existing secondary conditionIds", () => {
     const secondaryIds = new Set(
       listPrimaryConditions(kb).flatMap((condition) =>
         condition.suggestions.map((suggestion) => suggestion.conditionId),
       ),
     );
-    const draftIds = listDraftConditions(kb).map((c) => c.id);
-    const overlapping = draftIds.filter((id) => secondaryIds.has(id));
 
-    expect(overlapping).toContain("sleep-apnea");
-    expect(overlapping).toContain("depressive-disorder");
-    expect(overlapping).toContain("hypertension");
+    expect(secondaryIds).toContain("sleep-apnea");
+    expect(secondaryIds).toContain("depressive-disorder");
+    expect(secondaryIds).toContain("hypertension");
   });
 });

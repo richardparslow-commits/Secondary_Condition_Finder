@@ -45,6 +45,7 @@ describe("listPrimaryConditions", () => {
     const names = listPrimaryConditions(kb).map((c) => c.name);
     expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b)));
     expect(names).toContain("PTSD");
-    expect(names).toHaveLength(5);
+    expect(names).toContain("Obstructive sleep apnea");
+    expect(names).toHaveLength(19);
   });
 });

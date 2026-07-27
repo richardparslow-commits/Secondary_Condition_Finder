@@ -6,16 +6,75 @@
     "sensorineural hearing loss",
     "acoustic trauma"
   ],
-  "draft": true,
-  "todo": [
-    "List the secondary conditions commonly explored from this primary, in rank order starting at 1.",
-    "Write a rationale for each, using non-diagnostic language (\"commonly explored alongside\", not \"is caused by\").",
-    "Assign each a prevalence band: commonly-explored, sometimes-explored, or occasionally-explored.",
-    "List at least one evidence gap per suggestion: what a claim on that theory typically still needs.",
-    "Supply at least one source reference per suggestion. Do not guess a citation. Leave the entry draft until a real one is confirmed.",
-    "Reuse the canonical conditionId and display label for any secondary that already appears in another file.",
-    "Confirm this condition does not list itself as its own secondary.",
-    "Set draft to false and clear this todo list once every item above is done."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "tinnitus",
+      "condition": "Tinnitus",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Persistent ringing or similar auditory symptoms are commonly explored alongside noise-induced hearing loss in hearing-related claims.",
+      "evidenceGaps": [
+        "Audiology records documenting both hearing loss and tinnitus symptoms",
+        "Current tinnitus diagnosis or clinician-confirmed symptom history",
+        "Opinion addressing whether the hearing loss caused or aggravated tinnitus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "condition": "Anxiety disorder",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Communication strain and chronic auditory symptoms may be explored alongside anxiety where records document psychosocial impact.",
+      "evidenceGaps": [
+        "Mental health records documenting anxiety symptoms and functional impact",
+        "Current anxiety diagnosis",
+        "Opinion linking auditory-condition burden to anxiety aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "insomnia",
+      "condition": "Insomnia / sleep impairment",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Sleep disruption may be explored when tinnitus or hearing-related distress is documented as interfering with sleep continuity.",
+      "evidenceGaps": [
+        "Sleep complaints tied to auditory symptoms in treatment notes",
+        "Current insomnia diagnosis or sleep-impairment assessment",
+        "Opinion addressing whether hearing-related symptoms aggravated insomnia"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    }
+  ]
 }

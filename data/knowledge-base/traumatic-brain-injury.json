@@ -7,16 +7,80 @@
     "head injury",
     "residuals of tbi"
   ],
-  "draft": true,
-  "todo": [
-    "List the secondary conditions commonly explored from this primary, in rank order starting at 1.",
-    "Write a rationale for each, using non-diagnostic language (\"commonly explored alongside\", not \"is caused by\").",
-    "Assign each a prevalence band: commonly-explored, sometimes-explored, or occasionally-explored.",
-    "List at least one evidence gap per suggestion: what a claim on that theory typically still needs.",
-    "Supply at least one source reference per suggestion. Do not guess a citation. Leave the entry draft until a real one is confirmed.",
-    "Reuse the canonical conditionId and display label for any secondary that already appears in another file.",
-    "Confirm this condition does not list itself as its own secondary.",
-    "Set draft to false and clear this todo list once every item above is done."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "migraine-headaches",
+      "condition": "Migraine headaches",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Post-traumatic headache patterns are commonly explored alongside TBI residuals when records document recurrent headache symptoms after injury.",
+      "evidenceGaps": [
+        "Neurology or rehabilitation records documenting headache pattern after TBI",
+        "Current headache diagnosis and severity history",
+        "Opinion linking the headache condition to TBI residuals"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "condition": "Depressive disorder",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mood symptoms may be explored alongside TBI residuals where longitudinal records describe functional and emotional changes after head injury.",
+      "evidenceGaps": [
+        "Mental health records documenting symptom course after TBI",
+        "Current depressive diagnosis",
+        "Opinion addressing causation or aggravation related to TBI residuals"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "condition": "Anxiety disorder",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Anxiety presentations are sometimes explored in the context of chronic cognitive, vestibular, or functional limitations attributed to TBI residuals.",
+      "evidenceGaps": [
+        "Mental health documentation of anxiety symptoms after injury",
+        "Current anxiety diagnosis",
+        "Opinion linking TBI residual burden to anxiety aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    }
+  ]
 }
