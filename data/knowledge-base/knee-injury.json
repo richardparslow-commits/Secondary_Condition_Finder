@@ -1,0 +1,107 @@
+{
+  "id": "knee-injury",
+  "name": "Knee injury",
+  "aliases": [
+    "knee condition",
+    "knee strain",
+    "knee pain"
+  ],
+  "suggestions": [
+    {
+      "conditionId": "hip-strain",
+      "condition": "Hip strain",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Altered gait to protect an injured knee can place additional load on the hip over time. Claims typically rest on documented gait alteration rather than the knee diagnosis alone.",
+      "evidenceGaps": [
+        "Treatment records documenting altered gait, limp, or antalgic gait",
+        "Current hip diagnosis with range-of-motion findings",
+        "Opinion connecting the gait change to the hip condition"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "ankle-strain",
+      "condition": "Ankle strain",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Changed weight-bearing patterns may affect ankle mechanics on either the affected or opposite side.",
+      "evidenceGaps": [
+        "Ankle diagnosis with range-of-motion measurements",
+        "Records establishing which side is affected and why",
+        "Documentation of weight-bearing or gait changes"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "lumbar-strain",
+      "condition": "Lumbar strain",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Biomechanical compensation over an extended period is sometimes advanced as a contributor to lower back strain. Generally needs a supporting medical opinion.",
+      "evidenceGaps": [
+        "Lumbar spine diagnosis and range-of-motion findings",
+        "Timeline showing back symptoms developing after the knee condition",
+        "Nexus opinion addressing the compensatory mechanism"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system, including the General Rating Formula for the spine.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "contralateral-knee-condition",
+      "condition": "Contralateral (opposite) knee condition",
+      "rank": 4,
+      "prevalence": "sometimes-explored",
+      "rationale": "Overuse of the unaffected knee to compensate is a recognized theory where the service-connected knee has significant functional limitation.",
+      "evidenceGaps": [
+        "Diagnosis for the opposite knee",
+        "Evidence of significant functional loss in the service-connected knee",
+        "Opinion addressing overuse of the opposite side"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

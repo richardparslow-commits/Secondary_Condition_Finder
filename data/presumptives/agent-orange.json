@@ -1,0 +1,222 @@
+{
+  "id": "agent-orange",
+  "name": "Agent Orange and other herbicides",
+  "authority": "38 CFR 3.309(e), expanded by the PACT Act",
+  "summary": "If you served in one of these locations during the qualifying window, VA presumes you were exposed to herbicide agents. You do not need to prove exposure or show a link between your service and the condition. You still need a current diagnosis.",
+  "sourceCheckedOn": "2026-07-27",
+  "qualifyingService": [
+    {
+      "id": "vietnam",
+      "label": "Republic of Vietnam",
+      "locations": [
+        "Republic of Vietnam"
+      ],
+      "startDate": "1962-01-09",
+      "endDate": "1975-05-07",
+      "note": "Includes inland waterways and territorial waters within 12 nautical miles of shore."
+    },
+    {
+      "id": "korean-dmz",
+      "label": "Korean Demilitarized Zone",
+      "locations": [
+        "Korean Demilitarized Zone"
+      ],
+      "startDate": "1967-09-01",
+      "endDate": "1971-08-31",
+      "note": null
+    },
+    {
+      "id": "thailand",
+      "label": "Thailand military bases",
+      "locations": [
+        "Thailand"
+      ],
+      "startDate": "1962-01-09",
+      "endDate": "1976-06-30",
+      "note": "Any US or Royal Thai base, regardless of where on the base you served or your job."
+    },
+    {
+      "id": "laos",
+      "label": "Laos",
+      "locations": [
+        "Laos"
+      ],
+      "startDate": "1965-12-01",
+      "endDate": "1969-09-30",
+      "note": null
+    },
+    {
+      "id": "cambodia",
+      "label": "Cambodia, Mimot or Krek in Kampong Cham Province",
+      "locations": [
+        "Cambodia"
+      ],
+      "startDate": "1969-04-16",
+      "endDate": "1969-04-30",
+      "note": "Limited to Mimot and Krek."
+    },
+    {
+      "id": "guam-american-samoa",
+      "label": "Guam or American Samoa",
+      "locations": [
+        "Guam",
+        "American Samoa"
+      ],
+      "startDate": "1962-01-09",
+      "endDate": "1980-07-31",
+      "note": "Includes territorial waters."
+    },
+    {
+      "id": "johnston-atoll",
+      "label": "Johnston Atoll",
+      "locations": [
+        "Johnston Atoll"
+      ],
+      "startDate": "1972-01-01",
+      "endDate": "1977-09-30",
+      "note": "Includes service aboard a ship that called at Johnston Atoll."
+    }
+  ],
+  "conditions": [
+    {
+      "conditionId": "al-amyloidosis",
+      "name": "AL amyloidosis",
+      "group": "Other illnesses",
+      "qualifier": null
+    },
+    {
+      "conditionId": "chloracne",
+      "name": "Chloracne or other acneform disease consistent with chloracne",
+      "group": "Other illnesses",
+      "qualifier": "Must be at least 10 percent disabling within one year of exposure."
+    },
+    {
+      "conditionId": "type-2-diabetes",
+      "name": "Type 2 diabetes mellitus",
+      "group": "Other illnesses",
+      "qualifier": null
+    },
+    {
+      "conditionId": "ischemic-heart-disease",
+      "name": "Ischemic heart disease",
+      "group": "Other illnesses",
+      "qualifier": "Does not include hypertension or peripheral manifestations of arteriosclerosis."
+    },
+    {
+      "conditionId": "parkinsons-disease",
+      "name": "Parkinson's disease",
+      "group": "Other illnesses",
+      "qualifier": null
+    },
+    {
+      "conditionId": "parkinsonism",
+      "name": "Parkinsonism",
+      "group": "Other illnesses",
+      "qualifier": null
+    },
+    {
+      "conditionId": "peripheral-neuropathy-early-onset",
+      "name": "Early-onset peripheral neuropathy",
+      "group": "Other illnesses",
+      "qualifier": "Must be at least 10 percent disabling within one year of exposure."
+    },
+    {
+      "conditionId": "porphyria-cutanea-tarda",
+      "name": "Porphyria cutanea tarda",
+      "group": "Other illnesses",
+      "qualifier": "Must be at least 10 percent disabling within one year of exposure."
+    },
+    {
+      "conditionId": "hypothyroidism",
+      "name": "Hypothyroidism",
+      "group": "Other illnesses",
+      "qualifier": null
+    },
+    {
+      "conditionId": "hypertension",
+      "name": "Hypertension (high blood pressure)",
+      "group": "Other illnesses",
+      "qualifier": "Added by the PACT Act."
+    },
+    {
+      "conditionId": "mgus",
+      "name": "Monoclonal gammopathy of undetermined significance (MGUS)",
+      "group": "Other illnesses",
+      "qualifier": "Added by the PACT Act."
+    },
+    {
+      "conditionId": "prostate-cancer",
+      "name": "Prostate cancer",
+      "group": "Cancers",
+      "qualifier": null
+    },
+    {
+      "conditionId": "bladder-cancer",
+      "name": "Bladder cancer",
+      "group": "Cancers",
+      "qualifier": null
+    },
+    {
+      "conditionId": "respiratory-cancer",
+      "name": "Respiratory cancers",
+      "group": "Cancers",
+      "qualifier": "Cancer of the lung, bronchus, larynx, or trachea."
+    },
+    {
+      "conditionId": "hodgkins-disease",
+      "name": "Hodgkin's disease",
+      "group": "Cancers",
+      "qualifier": null
+    },
+    {
+      "conditionId": "non-hodgkins-lymphoma",
+      "name": "Non-Hodgkin's lymphoma",
+      "group": "Cancers",
+      "qualifier": null
+    },
+    {
+      "conditionId": "multiple-myeloma",
+      "name": "Multiple myeloma",
+      "group": "Cancers",
+      "qualifier": null
+    },
+    {
+      "conditionId": "chronic-b-cell-leukemia",
+      "name": "All chronic B-cell leukemias",
+      "group": "Cancers",
+      "qualifier": "Includes hairy-cell leukemia and chronic lymphocytic leukemia."
+    },
+    {
+      "conditionId": "soft-tissue-sarcoma",
+      "name": "Soft-tissue sarcoma",
+      "group": "Cancers",
+      "qualifier": "Excludes osteosarcoma, chondrosarcoma, Kaposi's sarcoma, and mesothelioma."
+    }
+  ],
+  "sourceReferences": [
+    {
+      "citation": "38 CFR 3.309(e)",
+      "note": "Diseases associated with exposure to certain herbicide agents.",
+      "url": "https://www.law.cornell.edu/cfr/text/38/3.309",
+      "verified": false
+    },
+    {
+      "citation": "38 CFR 3.307(a)(6)",
+      "note": "Herbicide exposure requirements for the presumption to apply.",
+      "url": "https://www.law.cornell.edu/cfr/text/38/3.307",
+      "verified": false
+    },
+    {
+      "citation": "VA, Agent Orange exposure and disability compensation",
+      "note": "VA list of presumptive conditions and qualifying locations.",
+      "url": "https://www.va.gov/disability/eligibility/hazardous-materials-exposure/agent-orange/",
+      "verified": false
+    },
+    {
+      "citation": "VA, Presumptive Service Connection Eligibility (updated 4 February 2026)",
+      "note": "VA reference sheet listing conditions, locations, and date windows.",
+      "url": "https://www.va.gov/files/2026-03/presumptive-service-connection-information_0.pdf",
+      "verified": false
+    }
+  ]
+}
