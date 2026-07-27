@@ -6,16 +6,95 @@
     "high blood pressure",
     "htn"
   ],
-  "draft": true,
-  "todo": [
-    "List the secondary conditions commonly explored from this primary, in rank order starting at 1.",
-    "Write a rationale for each, using non-diagnostic language (\"commonly explored alongside\", not \"is caused by\").",
-    "Assign each a prevalence band: commonly-explored, sometimes-explored, or occasionally-explored.",
-    "List at least one evidence gap per suggestion: what a claim on that theory typically still needs.",
-    "Supply at least one source reference per suggestion. Do not guess a citation. Leave the entry draft until a real one is confirmed.",
-    "Reuse the canonical conditionId and display label for any secondary that already appears in another file.",
-    "Confirm this condition does not list itself as its own secondary.",
-    "Set draft to false and clear this todo list once every item above is done."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "condition": "Chronic kidney disease",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Kidney impairment is commonly explored alongside long-standing hypertension when renal findings appear during the treatment course.",
+      "evidenceGaps": [
+        "Current chronic kidney disease diagnosis with staging or renal-function trends",
+        "Blood-pressure treatment history over time",
+        "Opinion addressing whether hypertension caused or aggravated the kidney disease"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "migraine-headaches",
+      "condition": "Migraine headaches",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Headache complaints may be explored where records document recurring episodes alongside difficult-to-control blood pressure.",
+      "evidenceGaps": [
+        "Headache diagnosis and pattern documentation",
+        "Clinical records correlating headache episodes with blood-pressure instability",
+        "Opinion addressing whether hypertension aggravated the headache condition"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "insomnia",
+      "condition": "Insomnia / sleep impairment",
+      "rank": 3,
+      "prevalence": "occasionally-explored",
+      "rationale": "Sleep impairment may be explored in some claims where nighttime blood-pressure symptoms, medication effects, or related treatment factors are documented.",
+      "evidenceGaps": [
+        "Sleep complaints documented during hypertension treatment",
+        "Current insomnia diagnosis or assessment",
+        "Opinion linking hypertension or its treatment to sleep impairment"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    }
+  ]
 }

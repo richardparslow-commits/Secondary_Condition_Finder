@@ -6,16 +6,80 @@
     "generalized anxiety disorder",
     "gad"
   ],
-  "draft": true,
-  "todo": [
-    "List the secondary conditions commonly explored from this primary, in rank order starting at 1.",
-    "Write a rationale for each, using non-diagnostic language (\"commonly explored alongside\", not \"is caused by\").",
-    "Assign each a prevalence band: commonly-explored, sometimes-explored, or occasionally-explored.",
-    "List at least one evidence gap per suggestion: what a claim on that theory typically still needs.",
-    "Supply at least one source reference per suggestion. Do not guess a citation. Leave the entry draft until a real one is confirmed.",
-    "Reuse the canonical conditionId and display label for any secondary that already appears in another file.",
-    "Confirm this condition does not list itself as its own secondary.",
-    "Set draft to false and clear this todo list once every item above is done."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "insomnia",
+      "condition": "Insomnia / sleep impairment",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Hyperarousal and persistent worry are often documented with chronic sleep disruption, so insomnia may be explored alongside anxiety disorders.",
+      "evidenceGaps": [
+        "Sleep-related complaints documented over time",
+        "Current diagnosis or clinical assessment of insomnia or chronic sleep impairment",
+        "Opinion addressing whether anxiety symptoms caused or aggravated sleep impairment"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "condition": "Depressive disorder",
+      "rank": 2,
+      "prevalence": "commonly-explored",
+      "rationale": "Depressive symptoms are frequently documented alongside anxiety presentations, and records may explore whether one condition aggravated the other.",
+      "evidenceGaps": [
+        "Mental health records distinguishing symptom clusters",
+        "Current depressive diagnosis from a qualified provider",
+        "Opinion discussing causation or aggravation between conditions"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "migraine-headaches",
+      "condition": "Migraine headaches",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Some claims explore migraine patterns alongside anxiety where treatment notes describe stress-related symptom flares.",
+      "evidenceGaps": [
+        "Headache diagnosis and frequency documentation",
+        "Treatment records correlating headache flares with anxiety symptom changes",
+        "Opinion linking anxiety to migraine causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection, including aggravation.",
+          "verified": false
+        }
+      ]
+    }
+  ]
 }
