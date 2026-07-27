@@ -81,8 +81,8 @@ Routes: `/` chooser, `/secondary` and `/results`, `/presumptive` and
 
 ## Coverage
 
-191 conditions across 14 body systems are in the catalog. 5 have authored
-secondary-condition mappings, about 2.6 percent. Intake labels the rest
+191 conditions across 14 body systems are in the catalog. 8 have authored
+secondary-condition mappings, about 4.2 percent. Intake labels the rest
 "no mappings yet" rather than implying full coverage. See
 `docs/condition-catalog.md`.
 
