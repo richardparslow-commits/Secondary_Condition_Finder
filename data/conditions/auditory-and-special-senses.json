@@ -1,0 +1,235 @@
+{
+  "bodySystem": "Auditory & Special Senses",
+  "conditions": [
+    {
+      "id": "tinnitus",
+      "name": "Tinnitus",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Schedule of ratings, ear.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "noise-induced-hearing-loss",
+      "name": "Noise-Induced Hearing Loss",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.85",
+          "note": "Evaluation of hearing impairment.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Schedule of ratings, ear.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "otitis-media",
+      "name": "Otitis Media",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Schedule of ratings, ear.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "menieres-disease",
+      "name": "Meniere's Disease",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Schedule of ratings, ear.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "labyrinthitis",
+      "name": "Labyrinthitis",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Schedule of ratings, ear.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "vestibular-disorder",
+      "name": "Vertigo / Vestibular Disorders",
+      "aliases": [
+        "vertigo",
+        "vestibular disorders"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Schedule of ratings, ear.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "anosmia",
+      "name": "Loss of Smell (Anosmia)",
+      "aliases": [
+        "anosmia",
+        "loss of smell"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87a",
+          "note": "Schedule of ratings, other sense organs.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "ageusia",
+      "name": "Loss of Taste (Ageusia)",
+      "aliases": [
+        "ageusia",
+        "loss of taste"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87a",
+          "note": "Schedule of ratings, other sense organs.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "cataracts",
+      "name": "Cataracts",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "glaucoma",
+      "name": "Glaucoma",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "macular-degeneration",
+      "name": "Macular Degeneration",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "retinal-detachment",
+      "name": "Retinal Detachment",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "optic-neuritis",
+      "name": "Optic Neuritis",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "diplopia",
+      "name": "Diplopia (Double Vision)",
+      "aliases": [
+        "diplopia",
+        "double vision"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "visual-impairment",
+      "name": "Visual Acuity / Field Impairment",
+      "aliases": [
+        "field impairment",
+        "visual acuity"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.75",
+          "note": "Schedule of ratings, impairment of visual acuity.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    }
+  ]
+}

@@ -1,14 +1,24 @@
 import Link from "next/link";
 
 import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
-import { IntakeForm } from "@/components/IntakeForm";
+import { IntakeForm, type IntakeOption } from "@/components/IntakeForm";
+import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
-import { listPrimaryConditions } from "@/lib/kb/lookup";
+import { mappedConditionIds } from "@/lib/kb/lookup";
 
 export default function SecondaryIntakePage() {
-  const conditions = listPrimaryConditions(loadKnowledgeBase()).map(
-    ({ id, name }) => ({ id, name }),
-  );
+  const catalog = loadConditionCatalog();
+  const mapped = mappedConditionIds(loadKnowledgeBase());
+
+  const options: IntakeOption[] = [...catalog]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((condition) => ({
+      id: condition.id,
+      name: condition.name,
+      bodySystem: condition.bodySystem,
+      aliases: condition.aliases,
+      hasResearch: mapped.has(condition.id),
+    }));
 
   return (
     <main>
@@ -31,7 +41,7 @@ export default function SecondaryIntakePage() {
         <DisclaimerBanner />
       </div>
 
-      <IntakeForm conditions={conditions} />
+      <IntakeForm options={options} />
 
       <p className="mt-8 text-sm text-slate-600">
         Want to see how it works first?{" "}

@@ -1,15 +1,10 @@
 {
   "id": "lumbar-strain",
-  "name": "Lumbar strain",
-  "aliases": [
-    "lower back strain",
-    "low back pain",
-    "lumbosacral strain"
-  ],
+  "draft": false,
+  "todo": [],
   "suggestions": [
     {
       "conditionId": "radiculopathy",
-      "condition": "Radiculopathy (lower extremity)",
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "Neurologic symptoms radiating into the legs are a recognized associated finding with chronic lumbar spine conditions. VA guidance directs that associated objective neurologic abnormalities be evaluated separately.",
@@ -33,7 +28,6 @@
     },
     {
       "conditionId": "sciatica",
-      "condition": "Sciatica",
       "rank": 2,
       "prevalence": "commonly-explored",
       "rationale": "Frequently assessed where radiating leg pain is documented. Overlaps substantially with radiculopathy; the two should not be claimed in a way that double-counts the same impairment.",
@@ -57,7 +51,6 @@
     },
     {
       "conditionId": "depressive-disorder",
-      "condition": "Depressive disorder",
       "rank": 3,
       "prevalence": "sometimes-explored",
       "rationale": "Sustained chronic pain is sometimes linked to depressive symptoms. Requires a diagnosis from a qualified mental health provider and an opinion addressing the pain relationship.",

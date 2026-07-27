@@ -1,61 +1,148 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
-import type { PrimaryCondition } from "@/lib/kb/schema";
+export interface IntakeOption {
+  id: string;
+  name: string;
+  bodySystem: string;
+  aliases: string[];
+  /** True when authored secondary-condition research exists for this entry. */
+  hasResearch: boolean;
+}
 
 interface Props {
-  conditions: Pick<PrimaryCondition, "id" | "name">[];
+  options: IntakeOption[];
 }
 
 const fieldClass =
   "w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900";
 
-export function IntakeForm({ conditions }: Props) {
-  const [selected, setSelected] = useState<string[]>([]);
+const MAX_VISIBLE = 40;
 
-  function toggle(name: string) {
-    setSelected((current) =>
-      current.includes(name)
-        ? current.filter((item) => item !== name)
-        : [...current, name],
-    );
-  }
+export function IntakeForm({ options }: Props) {
+  const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState<IntakeOption[]>([]);
+  const [researchOnly, setResearchOnly] = useState(true);
+
+  const selectedIds = useMemo(
+    () => new Set(selected.map((option) => option.id)),
+    [selected],
+  );
+
+  const matches = useMemo(() => {
+    const needle = query.trim().toLowerCase();
+    return options
+      .filter((option) => !selectedIds.has(option.id))
+      .filter((option) => (researchOnly ? option.hasResearch : true))
+      .filter((option) => {
+        if (!needle) return true;
+        return (
+          option.name.toLowerCase().includes(needle) ||
+          option.bodySystem.toLowerCase().includes(needle) ||
+          option.aliases.some((alias) => alias.toLowerCase().includes(needle))
+        );
+      });
+  }, [options, query, researchOnly, selectedIds]);
+
+  const visible = matches.slice(0, MAX_VISIBLE);
+  const researchCount = options.filter((option) => option.hasResearch).length;
 
   return (
     <form action="/results" method="get" className="space-y-8">
       <fieldset>
         <legend className="text-sm font-semibold text-slate-900">
-          Service-connected conditions
+          Conditions you are already rated for
         </legend>
         <p className="mt-1 text-sm text-slate-600">
-          Select every condition you are already service connected for. Pick at
-          least one.
+          Search {options.length} conditions and select every one you are
+          service connected for.
         </p>
 
-        <div className="mt-3 grid gap-2 sm:grid-cols-2">
-          {conditions.map((condition) => (
-            <label
-              key={condition.id}
-              className="flex cursor-pointer items-center gap-3 rounded-md border border-slate-200 bg-white px-3 py-2.5 text-sm hover:border-slate-400"
-            >
-              <input
-                type="checkbox"
-                name="primary"
-                value={condition.name}
-                checked={selected.includes(condition.name)}
-                onChange={() => toggle(condition.name)}
-                className="h-4 w-4 rounded border-slate-300"
-              />
-              <span>{condition.name}</span>
-            </label>
+        {selected.length > 0 && (
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {selected.map((option) => (
+              <li key={option.id}>
+                <input type="hidden" name="primary" value={option.id} />
+                <button
+                  type="button"
+                  onClick={() =>
+                    setSelected((current) =>
+                      current.filter((item) => item.id !== option.id),
+                    )
+                  }
+                  className="flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1.5 text-sm text-white hover:bg-slate-700"
+                >
+                  {option.name}
+                  <span aria-hidden className="text-slate-300">
+                    &times;
+                  </span>
+                  <span className="sr-only">Remove {option.name}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <input
+          type="search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Search by condition or body system"
+          aria-label="Search conditions"
+          className={`mt-3 ${fieldClass}`}
+        />
+
+        <label className="mt-3 flex items-center gap-2 text-sm text-slate-700">
+          <input
+            type="checkbox"
+            checked={researchOnly}
+            onChange={(event) => setResearchOnly(event.target.checked)}
+            className="h-4 w-4 rounded border-slate-300"
+          />
+          Only show the {researchCount} conditions with secondary research
+          written
+        </label>
+
+        <ul className="mt-3 max-h-80 divide-y divide-slate-100 overflow-y-auto rounded-md border border-slate-200 bg-white">
+          {visible.length === 0 && (
+            <li className="px-3 py-4 text-sm text-slate-600">
+              No conditions match that search.
+            </li>
+          )}
+          {visible.map((option) => (
+            <li key={option.id}>
+              <button
+                type="button"
+                onClick={() => setSelected((current) => [...current, option])}
+                className="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left text-sm hover:bg-slate-50"
+              >
+                <span>
+                  {option.name}
+                  <span className="mt-0.5 block text-xs text-slate-500">
+                    {option.bodySystem}
+                  </span>
+                </span>
+                {option.hasResearch ? (
+                  <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700">
+                    research available
+                  </span>
+                ) : (
+                  <span className="shrink-0 rounded-full bg-amber-50 px-2 py-0.5 text-xs text-amber-800">
+                    no mappings yet
+                  </span>
+                )}
+              </button>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        <p className="mt-3 text-xs text-slate-500">
-          Only these {conditions.length} conditions are in the Phase 1 knowledge
-          base. More are coming.
-        </p>
+        {matches.length > visible.length && (
+          <p className="mt-2 text-xs text-slate-500">
+            Showing {visible.length} of {matches.length}. Keep typing to narrow
+            the list.
+          </p>
+        )}
       </fieldset>
 
       <fieldset className="space-y-4">

@@ -1,0 +1,155 @@
+{
+  "bodySystem": "Hemic, Lymphatic & Immune Systems",
+  "conditions": [
+    {
+      "id": "anemia",
+      "name": "Anemia (Iron Deficiency, Sickle Cell, Aplastic)",
+      "aliases": [
+        "anemia",
+        "aplastic",
+        "iron deficiency",
+        "sickle cell"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Schedule of ratings, hemic and lymphatic systems.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "thrombocytopenia",
+      "name": "Thrombocytopenia",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Schedule of ratings, hemic and lymphatic systems.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "polycythemia-vera",
+      "name": "Polycythemia Vera",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Schedule of ratings, hemic and lymphatic systems.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "agranulocytosis",
+      "name": "Agranulocytosis",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Schedule of ratings, hemic and lymphatic systems.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "chronic-fatigue-syndrome",
+      "name": "Chronic Fatigue Syndrome",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88a",
+          "note": "Chronic fatigue syndrome.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Schedule of ratings, infectious diseases, immune disorders and nutritional deficiencies.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "fibromyalgia",
+      "name": "Fibromyalgia",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Schedule of ratings, infectious diseases, immune disorders and nutritional deficiencies.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "systemic-lupus-erythematosus",
+      "name": "Systemic Lupus Erythematosus (SLE)",
+      "aliases": [
+        "systemic lupus erythematosus"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Schedule of ratings, infectious diseases, immune disorders and nutritional deficiencies.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "al-amyloidosis",
+      "name": "AL Amyloidosis",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Schedule of ratings, hemic and lymphatic systems.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Schedule of ratings, infectious diseases, immune disorders and nutritional deficiencies.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hiv-aids",
+      "name": "HIV / AIDS",
+      "aliases": [
+        "aids"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Schedule of ratings, infectious diseases, immune disorders and nutritional deficiencies.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    }
+  ]
+}

@@ -1,14 +1,10 @@
 {
   "id": "tinnitus",
-  "name": "Tinnitus",
-  "aliases": [
-    "ringing in ears",
-    "ringing in the ears"
-  ],
+  "draft": false,
+  "todo": [],
   "suggestions": [
     {
       "conditionId": "insomnia",
-      "condition": "Insomnia / sleep impairment",
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "Persistent ringing frequently interferes with falling or staying asleep. Note that sleep impairment is often evaluated as a symptom within a mental health rating rather than as a standalone condition.",
@@ -32,7 +28,6 @@
     },
     {
       "conditionId": "anxiety-disorder",
-      "condition": "Anxiety disorder",
       "rank": 2,
       "prevalence": "sometimes-explored",
       "rationale": "Chronic, unrelenting symptom burden is sometimes linked to anxiety. Requires a diagnosis from a qualified mental health provider.",
@@ -56,7 +51,6 @@
     },
     {
       "conditionId": "depressive-disorder",
-      "condition": "Depressive disorder",
       "rank": 3,
       "prevalence": "occasionally-explored",
       "rationale": "Mood effects are sometimes documented with long-standing, severe tinnitus. If a mental health condition is already service connected, this may affect the existing rating rather than add a new one.",

@@ -1,14 +1,10 @@
 {
   "id": "ptsd",
-  "name": "PTSD",
-  "aliases": [
-    "post traumatic stress disorder",
-    "post-traumatic stress disorder"
-  ],
+  "draft": false,
+  "todo": [],
   "suggestions": [
     {
       "conditionId": "sleep-apnea",
-      "condition": "Sleep apnea",
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "Sleep disruption is a core PTSD symptom, and claims frequently explore whether a sleep-disordered breathing diagnosis is proximately due to or aggravated by the service-connected psychiatric condition.",
@@ -27,7 +23,6 @@
     },
     {
       "conditionId": "depressive-disorder",
-      "condition": "Depressive disorder",
       "rank": 2,
       "prevalence": "commonly-explored",
       "rationale": "Depressive symptoms often co-occur with PTSD. Note that VA generally evaluates all service-connected mental health conditions under a single rating, so this may affect the existing evaluation rather than add a separate one.",
@@ -50,7 +45,6 @@
     },
     {
       "conditionId": "migraine-headaches",
-      "condition": "Migraine headaches",
       "rank": 3,
       "prevalence": "sometimes-explored",
       "rationale": "Headache complaints appear in some records where chronic stress and sleep deficit are documented. The connection is less direct than sleep or mood claims and generally needs a supporting medical opinion.",
@@ -74,7 +68,6 @@
     },
     {
       "conditionId": "gerd",
-      "condition": "Gastroesophageal reflux disease (GERD)",
       "rank": 4,
       "prevalence": "occasionally-explored",
       "rationale": "Sometimes explored where reflux symptoms are documented alongside psychiatric medication use. Medication-induced aggravation is a distinct theory from direct causation and should be stated explicitly.",

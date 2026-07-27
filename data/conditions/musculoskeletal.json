@@ -1,0 +1,378 @@
+{
+  "bodySystem": "Musculoskeletal System",
+  "conditions": [
+    {
+      "id": "degenerative-disc-disease",
+      "name": "Degenerative Disc Disease",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "intervertebral-disc-syndrome",
+      "name": "Intervertebral Disc Syndrome",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "lumbar-strain",
+      "name": "Lumbar Strain",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "cervical-strain",
+      "name": "Cervical Strain",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "spinal-stenosis",
+      "name": "Spinal Stenosis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "scoliosis",
+      "name": "Scoliosis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "ankylosing-spondylitis",
+      "name": "Ankylosing Spondylitis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "osteoarthritis",
+      "name": "Osteoarthritis / Degenerative Arthritis",
+      "aliases": [
+        "degenerative arthritis",
+        "osteoarthritis"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "rheumatoid-arthritis",
+      "name": "Rheumatoid Arthritis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "post-traumatic-osteoarthritis",
+      "name": "Post-Traumatic Arthritis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "osteomyelitis",
+      "name": "Osteomyelitis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "plantar-fasciitis",
+      "name": "Plantar Fasciitis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "flatfoot",
+      "name": "Flatfoot (Pes Planus)",
+      "aliases": [
+        "flatfoot",
+        "pes planus"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hallux-valgus",
+      "name": "Hallux Valgus (Bunions)",
+      "aliases": [
+        "bunions",
+        "hallux valgus"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "rotator-cuff-injury",
+      "name": "Rotator Cuff Tendonitis / Tear",
+      "aliases": [
+        "rotator cuff tendonitis",
+        "tear"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "shoulder-condition",
+      "name": "Shoulder Impingement / Instability",
+      "aliases": [
+        "instability",
+        "shoulder impingement"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "epicondylitis",
+      "name": "Lateral / Medial Epicondylitis (Tennis / Golfer's Elbow)",
+      "aliases": [
+        "golfer's elbow",
+        "lateral",
+        "lateral / medial epicondylitis",
+        "medial epicondylitis",
+        "tennis"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "carpal-tunnel-syndrome",
+      "name": "Carpal Tunnel Syndrome",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "patellofemoral-pain-syndrome",
+      "name": "Patellofemoral Pain Syndrome",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "knee-injury",
+      "name": "Knee Instability / Meniscus Tear",
+      "aliases": [
+        "knee instability",
+        "meniscus tear"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "shin-splints",
+      "name": "Shin Splints",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "amputation-or-loss-of-use",
+      "name": "Amputation / Loss of Use of Limbs or Digits",
+      "aliases": [
+        "amputation",
+        "loss of use of limbs or digits"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "muscle-injury",
+      "name": "Muscle Injuries / Atrophy",
+      "aliases": [
+        "atrophy",
+        "muscle injuries"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.73",
+          "note": "Schedule of ratings, muscle injuries.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "scars",
+      "name": "Scars (Painful or Unstable)",
+      "aliases": [
+        "scars"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Schedule of ratings, skin.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    }
+  ]
+}
