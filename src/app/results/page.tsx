@@ -44,7 +44,7 @@ export default async function ResultsPage({
           Select at least one service-connected condition to see suggestions.
         </p>
         <Link
-          href="/"
+          href="/secondary"
           className="mt-6 inline-block text-sm underline hover:text-slate-900"
         >
           Back to intake
@@ -68,7 +68,7 @@ export default async function ResultsPage({
   return (
     <main>
       <header className="mb-6">
-        <Link href="/" className="text-sm underline hover:text-slate-900">
+        <Link href="/secondary" className="text-sm underline hover:text-slate-900">
           Back to intake
         </Link>
         <h1 className="mt-3 text-2xl font-semibold tracking-tight">

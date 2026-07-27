@@ -29,7 +29,7 @@ export default function ScenariosPage() {
   return (
     <main>
       <Link href="/" className="text-sm underline hover:text-slate-900">
-        Back to intake
+        Back to start
       </Link>
 
       <h1 className="mt-3 text-2xl font-semibold tracking-tight">

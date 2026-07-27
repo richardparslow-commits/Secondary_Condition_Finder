@@ -18,9 +18,16 @@ representatives and is unevenly distributed.
 
 ## What Phase 1 does
 
-Given one or more service-connected primary conditions, the app returns ranked
-**possible secondary conditions to explore**, each with reasoning, the evidence
-a claim on that theory typically needs, and citations to verify.
+Two research paths, chosen at `/` because they need different evidence.
+
+**Secondary track.** Given one or more service-connected primary conditions,
+returns ranked **possible secondary conditions to explore**, each with
+reasoning, the evidence a claim on that theory typically needs, and citations
+to verify.
+
+**Presumptive track.** Given where and when someone served, returns the
+exposure presumptions that may apply and the conditions each covers. See
+`docs/presumptive-track.md`.
 
 ## What Phase 1 explicitly does not do
 
@@ -86,7 +93,27 @@ Three runnable scenarios in `data/demo-scenarios.json`: a single primary, two
 primaries with an overlapping suggestion, and a partially recognized intake. A
 test asserts each runs end to end.
 
-### FR-7 Event logging
+### FR-7 Presumptive matching
+
+- Users select service locations and optionally a service date range.
+- Matching is exact on location and inclusive on date boundaries.
+- Omitted dates produce a match on location alone, flagged explicitly in the UI.
+- Unmatched locations are reported back with a note that a claim is still
+  possible with supporting evidence.
+- Categories out of scope are named on the results screen so the list does not
+  read as exhaustive.
+- Every category carries source URLs and a `sourceCheckedOn` date.
+
+### FR-8 Draft conditions
+
+- A condition may ship as `draft: true` with an empty `suggestions` array and a
+  non-empty `todo` checklist.
+- Drafts are validated and version controlled but never resolvable through
+  lookup and never listed in the UI.
+- Schema rejects a published entry with no suggestions, and rejects a published
+  entry with an unresolved todo.
+
+### FR-9 Event logging
 
 Each run records a UUID, timestamp, resolved primary names, unrecognized count,
 recommended condition ids, and engine version. Intake free text is never
@@ -121,8 +148,9 @@ Mapped to `docs/phase-plan.md`.
    reviewer must confirm each one. The diabetic retinopathy reference was
    already corrected once: the prototype cited 38 CFR 4.119 (DC 7913), the
    diagnostic code for diabetes itself, where an eye citation belongs.
-2. **Knowledge base coverage.** Five primary conditions is demo-sufficient and
-   not production-sufficient.
+2. **Knowledge base coverage.** Five published primary conditions is
+   demo-sufficient and not production-sufficient. Fourteen draft stubs are
+   staged and awaiting human-authored mappings.
 3. **Accessibility audit.** Keyboard and screen reader passes have not been run.
 4. **No authentication.** Deliberate for Phase 1, since no user data is stored.
    Revisit before any deployment that handles veteran-specific data.

@@ -6,9 +6,10 @@ export function normalizeConditionName(condition: string): string {
 }
 
 /**
- * Resolves free-text input to a primary condition by id, name, or alias.
- * Exact match only. Fuzzy matching is deliberately out of scope for Phase 1:
- * silently resolving "knee" to the wrong entry is worse than returning nothing.
+ * Resolves free-text input to a published primary condition by id, name, or
+ * alias. Exact match only. Fuzzy matching is deliberately out of scope for
+ * Phase 1: silently resolving "knee" to the wrong entry is worse than
+ * returning nothing. Draft entries are never resolvable.
  */
 export function findPrimaryCondition(
   kb: KnowledgeBase,
@@ -18,7 +19,7 @@ export function findPrimaryCondition(
   if (!normalized) return null;
 
   return (
-    kb.find((condition) => {
+    kb.filter((condition) => !condition.draft).find((condition) => {
       const candidates = [
         condition.id,
         condition.id.replace(/-/g, " "),
@@ -32,7 +33,16 @@ export function findPrimaryCondition(
   );
 }
 
-/** All supported primary conditions, sorted by display name. */
+/** Published primary conditions, sorted by display name. Excludes drafts. */
 export function listPrimaryConditions(kb: KnowledgeBase): PrimaryCondition[] {
-  return [...kb].sort((a, b) => a.name.localeCompare(b.name));
+  return kb
+    .filter((condition) => !condition.draft)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/** Draft entries awaiting human-authored mappings. For tooling and review. */
+export function listDraftConditions(kb: KnowledgeBase): PrimaryCondition[] {
+  return kb
+    .filter((condition) => condition.draft)
+    .sort((a, b) => a.name.localeCompare(b.name));
 }

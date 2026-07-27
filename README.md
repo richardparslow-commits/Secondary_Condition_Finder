@@ -1,9 +1,17 @@
 # Secondary Condition Finder
 
-A claim-preparation research aid for exploring possible secondary VA
-conditions. Given one or more service-connected primary conditions, it returns
-ranked conditions to explore, each with reasoning, the evidence a claim would
-typically need, and citations to verify.
+A claim-preparation research aid for VA disability claims. It covers two
+legally distinct paths and keeps them separate, because they need different
+evidence.
+
+- **Secondary** (38 CFR 3.310): given a service-connected condition, returns
+  ranked conditions to explore, each with reasoning, evidence gaps, and
+  citations. Needs a nexus opinion.
+- **Presumptive** (38 CFR 3.307 and 3.309): given where and when you served,
+  returns the exposure presumptions that may apply. No nexus opinion needed.
+
+Covers the PACT Act burn pit list and the Agent Orange list. See
+`docs/presumptive-track.md` for scope and what is deliberately excluded.
 
 **This is not medical or legal advice.** It does not diagnose conditions,
 determine eligibility, or estimate ratings. Every suggestion is a possibility
@@ -53,16 +61,21 @@ Open http://localhost:3000. Try `/scenarios` for repeatable demo walkthroughs.
 ## Layout
 
 ```
-data/knowledge-base/   Source of truth, one JSON file per primary condition
+data/knowledge-base/   Secondary conditions, one JSON file per primary
+data/presumptives/     Exposure categories, locations, and date windows
 data/demo-scenarios.json
 src/lib/kb/            Zod schema, loader, lookup
 src/lib/engine/        Pure recommendation logic, no I/O
+src/lib/presumptive/   Zod schema, loader, service-history matcher
 src/lib/log/           Event logging behind an EventLogger interface
 src/app/               App Router pages
 src/components/        Presentational components
 tests/                 Vitest
-docs/                  Product spec and phase planning
+docs/                  Product spec, presumptive scope, phase planning
 ```
+
+Routes: `/` chooser, `/secondary` and `/results`, `/presumptive` and
+`/presumptive/results`, `/scenarios`.
 
 ## Adding a primary condition
 
@@ -70,6 +83,14 @@ Create `data/knowledge-base/<slug>.json` where the filename matches the `id`
 field. Each suggestion needs `conditionId`, `condition`, `rank`, `prevalence`,
 `rationale`, at least one evidence gap, and at least one source reference with
 `verified: false`. Run `npm test` to check the integrity invariants.
+
+### Draft entries
+
+An entry may ship as `draft: true` with an empty `suggestions` array and a
+`todo` checklist of what a reviewer must supply. Drafts are validated and
+version controlled but never appear in the UI and never resolve through lookup,
+so an unfinished entry cannot reach a veteran. Fourteen are staged now. Fill in
+the content, clear the `todo`, then set `draft: false`.
 
 Contribution rules for humans and agents alike are in
 `.github/copilot-instructions.md`. The citation rules there are not optional.
