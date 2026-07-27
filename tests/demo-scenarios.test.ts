@@ -3,11 +3,13 @@ import { describe, expect, it } from "vitest";
 import scenarios from "../data/demo-scenarios.json";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
+import { draftMappings } from "@/lib/kb/lookup";
 import { recommend } from "@/lib/engine/recommend";
 import { intakeSchema } from "@/lib/engine/types";
 
 const catalog = loadConditionCatalog();
 const kb = loadKnowledgeBase();
+const draftPrimaryIds = new Set(draftMappings(kb).map((mapping) => mapping.id));
 
 describe("demo scenarios", () => {
   it("ships at least three scenarios", () => {
@@ -24,6 +26,9 @@ describe("demo scenarios", () => {
       for (const recommendation of result.recommendations) {
         expect(recommendation.contributingPrimaries[0].rationale).toBeTruthy();
         expect(recommendation.sourceReferences.length).toBeGreaterThan(0);
+        for (const primary of recommendation.contributingPrimaries) {
+          expect(draftPrimaryIds.has(primary.id)).toBe(false);
+        }
       }
     },
   );

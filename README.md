@@ -99,13 +99,15 @@ Two steps, and they are separate on purpose.
    with `verified: false`. This makes it return results.
 
 Run `npm test` to check the integrity invariants, including that every
-`conditionId` resolves to a catalog entry.
+`conditionId` resolves to a catalog entry. The app also validates these
+references at load time, so drift fails fast before recommendations run.
 
 ### Draft mappings
 
 A mapping may ship as `draft: true` with an empty `suggestions` array and a
 `todo` checklist. Drafts are validated and version controlled but never appear
-in the UI, so unfinished research cannot reach a veteran.
+in the search, scenario, or recommendation UI flows, so unfinished research
+cannot reach a veteran.
 
 Contribution rules for humans and agents alike are in
 `.github/copilot-instructions.md`. The citation rules there are not optional.

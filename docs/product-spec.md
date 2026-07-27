@@ -41,7 +41,9 @@ exposure presumptions that may apply and the conditions each covers. See
 
 ### FR-1 Intake
 
-- Users select one or more primary conditions from the knowledge base.
+- Users select one or more primary conditions from the condition catalog.
+- Intake can optionally filter to only conditions with published
+  secondary-condition research.
 - Optional free-text fields: symptoms, medications, exposures, notes.
 - Submission is blocked until at least one primary condition is selected.
 - Optional fields influence display only, never ranking. Inferring clinical
@@ -140,7 +142,8 @@ Three layers, deliberately separate. See `docs/condition-catalog.md`.
 - `data/presumptives/` holds exposure categories.
 
 The catalog is the single source of display names, so a label cannot drift
-between mapping files. Referential integrity is enforced by test.
+between mapping files. Referential integrity is enforced by tests and by
+load-time validation before recommendation logic runs.
 
 JSON in git rather than a database so every change to a mapping or a citation
 is a reviewable pull request diff. That audit trail is a Phase 3 compliance

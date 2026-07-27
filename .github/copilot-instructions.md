@@ -136,6 +136,8 @@ Every suggestion needs `conditionId`, `rank`, `prevalence`, `rationale`, at
 least one `evidenceGaps` item, and at least one `sourceReferences` item.
 
 - `conditionId` must resolve to a catalog entry. A test enforces this.
+- The same `conditionId` integrity check runs at load time; bad references must
+  fail fast, never degrade silently at runtime.
 - Display names come from the catalog. Do not add a `condition` field.
 - `rank` must be unique and gapless within a file, starting at 1.
 - A condition must not list itself as its own secondary.

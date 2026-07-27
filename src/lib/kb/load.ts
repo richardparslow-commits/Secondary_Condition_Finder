@@ -3,12 +3,15 @@ import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 
+import { loadConditionCatalog } from "@/lib/catalog/load";
+
 import {
   conditionMappingSchema,
   knowledgeBaseSchema,
   type ConditionMapping,
   type KnowledgeBase,
 } from "./schema";
+import { validateKnowledgeBaseAgainstCatalog } from "./validate";
 
 const KB_DIR = path.join(process.cwd(), "data", "knowledge-base");
 
@@ -46,7 +49,9 @@ export function loadKnowledgeBase(): KnowledgeBase {
     return parsed.data;
   });
 
-  cached = knowledgeBaseSchema.parse(mappings);
+  const parsed = knowledgeBaseSchema.parse(mappings);
+  validateKnowledgeBaseAgainstCatalog(loadConditionCatalog(), parsed);
+  cached = parsed;
   return cached;
 }
 

@@ -2,8 +2,11 @@ import { describe, expect, it } from "vitest";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { indexById } from "@/lib/catalog/lookup";
+import { conditionCatalogSchema } from "@/lib/catalog/schema";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { draftMappings, mappedConditionIds } from "@/lib/kb/lookup";
+import { knowledgeBaseSchema } from "@/lib/kb/schema";
+import { validateKnowledgeBaseAgainstCatalog } from "@/lib/kb/validate";
 
 const catalog = loadConditionCatalog();
 const kb = loadKnowledgeBase();
@@ -110,5 +113,83 @@ describe("coverage", () => {
     // stays sane: you cannot have more mappings than catalog conditions.
     expect(mapped.size).toBeLessThanOrEqual(catalog.length);
     expect(mapped.size).toBeGreaterThan(0);
+  });
+});
+
+describe("validateKnowledgeBaseAgainstCatalog", () => {
+  it("throws when a mapping id is not in the catalog", () => {
+    const catalog = conditionCatalogSchema.parse([
+      {
+        id: "known-primary",
+        name: "Known Primary",
+        aliases: [],
+        bodySystem: "Test",
+        ratingSchedule: [],
+        reviewNotes: ["test fixture"],
+      },
+      {
+        id: "known-secondary",
+        name: "Known Secondary",
+        aliases: [],
+        bodySystem: "Test",
+        ratingSchedule: [],
+        reviewNotes: ["test fixture"],
+      },
+    ]);
+    const kb = knowledgeBaseSchema.parse([
+      {
+        id: "missing-primary",
+        draft: false,
+        todo: [],
+        suggestions: [
+          {
+            conditionId: "known-secondary",
+            rank: 1,
+            prevalence: "commonly-explored",
+            rationale: "test",
+            evidenceGaps: ["test"],
+            sourceReferences: [{ citation: "test", note: "test", verified: false }],
+          },
+        ],
+      },
+    ]);
+
+    expect(() => validateKnowledgeBaseAgainstCatalog(catalog, kb)).toThrow(
+      'Mapping "missing-primary" has no matching condition in data/conditions.',
+    );
+  });
+
+  it("throws when a suggestion id is not in the catalog", () => {
+    const catalog = conditionCatalogSchema.parse([
+      {
+        id: "known-primary",
+        name: "Known Primary",
+        aliases: [],
+        bodySystem: "Test",
+        ratingSchedule: [],
+        reviewNotes: ["test fixture"],
+      },
+    ]);
+    const kb = knowledgeBaseSchema.parse([
+      {
+        id: "known-primary",
+        draft: false,
+        todo: [],
+        suggestions: [
+          {
+            conditionId: "missing-secondary",
+            rank: 1,
+            prevalence: "commonly-explored",
+            rationale: "test",
+            evidenceGaps: ["test"],
+            sourceReferences: [{ citation: "test", note: "test", verified: false }],
+          },
+        ],
+      },
+    ]);
+
+    expect(() => validateKnowledgeBaseAgainstCatalog(catalog, kb)).toThrow(
+      'Mapping "known-primary" suggests unknown condition "missing-secondary".',
+    );
   });
 });
