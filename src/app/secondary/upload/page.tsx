@@ -36,8 +36,8 @@ export default async function UploadStepPage({
     try {
       const parsed = parseServiceConnectedSelection(params, catalog);
       guardHref = `/secondary/ratings?${new URLSearchParams([
-        ...parsed.diagnosedConditionIds.map((id) => ["diagnosed", id] as const),
-        ...parsed.serviceConnectedConditionIds.map((id) => ["serviceConnected", id] as const),
+        ...parsed.diagnosedConditionIds.map((id) => ["diagnosed", id]),
+        ...parsed.serviceConnectedConditionIds.map((id) => ["serviceConnected", id]),
       ]).toString()}`;
       guardLabel = "Back to current ratings";
     } catch {
@@ -61,8 +61,8 @@ export default async function UploadStepPage({
     <main>
       <Link
         href={`/secondary/ratings?${new URLSearchParams([
-          ...diagnosedConditionIds.map((id) => ["diagnosed", id] as const),
-          ...serviceConnectedConditionIds.map((id) => ["serviceConnected", id] as const),
+          ...diagnosedConditionIds.map((id) => ["diagnosed", id]),
+          ...serviceConnectedConditionIds.map((id) => ["serviceConnected", id]),
           ...serviceConnectedConditionIds.map((id) => [
             ratingFieldName(id),
             ratingsByConditionId[id] === null ? "decline" : String(ratingsByConditionId[id]),

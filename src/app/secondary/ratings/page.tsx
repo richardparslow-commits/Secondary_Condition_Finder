@@ -64,8 +64,8 @@ export default async function RatingsStepPage({
     <main>
       <Link
         href={`/secondary/service-connected?${new URLSearchParams([
-          ...diagnosedConditionIds.map((id) => ["diagnosed", id] as const),
-          ...serviceConnectedConditionIds.map((id) => ["serviceConnected", id] as const),
+          ...diagnosedConditionIds.map((id) => ["diagnosed", id]),
+          ...serviceConnectedConditionIds.map((id) => ["serviceConnected", id]),
         ]).toString()}`}
         className="text-sm underline hover:text-slate-900"
       >

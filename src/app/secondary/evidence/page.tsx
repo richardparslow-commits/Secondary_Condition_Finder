@@ -35,8 +35,8 @@ export default async function EvidenceReviewStepPage({
     try {
       const parsed = parseRatingsSelection(params, catalog);
       guardHref = `/secondary/upload?${new URLSearchParams([
-        ...parsed.diagnosedConditionIds.map((id) => ["diagnosed", id] as const),
-        ...parsed.serviceConnectedConditionIds.map((id) => ["serviceConnected", id] as const),
+        ...parsed.diagnosedConditionIds.map((id) => ["diagnosed", id]),
+        ...parsed.serviceConnectedConditionIds.map((id) => ["serviceConnected", id]),
         ...parsed.serviceConnectedConditionIds.map((id) => [
           ratingFieldName(id),
           parsed.ratingsByConditionId[id] === null ? "decline" : String(parsed.ratingsByConditionId[id]),
