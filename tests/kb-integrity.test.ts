@@ -2,15 +2,32 @@ import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 
+interface SourceReference {
+  citation: string;
+  verified: boolean;
+}
+
+interface Suggestion {
+  conditionId: string;
+  rank: number;
+  evidenceGaps: string[];
+  sourceReferences?: SourceReference[];
+}
+
+interface KBFileSchema {
+  draft?: boolean;
+  suggestions?: Suggestion[];
+}
+
 describe('Knowledge Base Cross-File Integrity & Quality Gates', () => {
   const kbDir = path.join(process.cwd(), 'data', 'knowledge-base');
-  const files = fs.readdirSync(kbDir).filter(f => f.endsWith('.json'));
+  const files = fs.readdirSync(kbDir).filter((f: string) => f.endsWith('.json'));
 
   it('validates cross-file invariants, rank continuity, and placeholder limits', () => {
-    files.forEach(file => {
+    files.forEach((file: string) => {
       const filePath = path.join(kbDir, file);
       const content = fs.readFileSync(filePath, 'utf8');
-      const data = JSON.parse(content);
+      const data: KBFileSchema = JSON.parse(content);
       const conditionId = file.replace('.json', '');
 
       // If marked as published/non-draft, strictly forbid placeholder strings
@@ -20,9 +37,9 @@ describe('Knowledge Base Cross-File Integrity & Quality Gates', () => {
       }
 
       if (data.suggestions && Array.isArray(data.suggestions)) {
-        const seenTargets = new Set();
+        const seenTargets = new Set<string>();
         
-        data.suggestions.forEach((s, idx) => {
+        data.suggestions.forEach((s: Suggestion, idx: number) => {
           // 1. Non-self reference check
           expect(s.conditionId).not.toBe(conditionId);
 
@@ -39,7 +56,7 @@ describe('Knowledge Base Cross-File Integrity & Quality Gates', () => {
 
           // 5. Source references citation and unverified flag check
           if (s.sourceReferences && Array.isArray(s.sourceReferences)) {
-            s.sourceReferences.forEach(ref => {
+            s.sourceReferences.forEach((ref: SourceReference) => {
               expect(ref.citation).toBeDefined();
               expect(typeof ref.verified).toBe('boolean');
             });
