@@ -20,7 +20,7 @@
         {
           "citation": "38 CFR 4.71a",
           "note": "Osteoarthritis / Degenerative arthritis",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -37,7 +37,7 @@
         {
           "citation": "38 CFR 4.71a",
           "note": "Diagnostic code 5269",
-          "verified": true
+          "verified": false
         }
       ]
     }

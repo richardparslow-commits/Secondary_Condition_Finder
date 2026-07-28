@@ -20,7 +20,7 @@
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary mental health condition due to physical disability",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -37,7 +37,7 @@
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary connection via medication side effects",
-          "verified": true
+          "verified": false
         }
       ]
     }

@@ -19,7 +19,7 @@
         {
           "citation": "38 CFR 4.114",
           "note": "Diagnostic code 7319",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -35,7 +35,7 @@
         {
           "citation": "38 CFR 4.114",
           "note": "Diagnostic code 7336",
-          "verified": true
+          "verified": false
         }
       ]
     }
