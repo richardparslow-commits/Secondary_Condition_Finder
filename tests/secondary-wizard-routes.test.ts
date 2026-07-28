@@ -51,6 +51,42 @@ describe("secondary wizard route progression", () => {
     );
   });
 
+  it("prefills prior rating selections when returning to ratings", async () => {
+    const html = renderToStaticMarkup(
+      await RatingsStepPage({
+        searchParams: Promise.resolve({
+          diagnosed: ["ptsd", "tinnitus"],
+          serviceConnected: ["ptsd", "tinnitus"],
+          "rating-ptsd": "70",
+          "rating-tinnitus": "decline",
+        }),
+      }),
+    );
+
+    expect(html).toMatch(
+      /name="rating-ptsd"[\s\S]*<option value="70" selected="">70%<\/option>/,
+    );
+    expect(html).toMatch(
+      /name="rating-tinnitus"[\s\S]*<option value="decline" selected="">I prefer not to answer<\/option>/,
+    );
+  });
+
+  it("prefills prior upload selection when returning to upload", async () => {
+    const html = renderToStaticMarkup(
+      await UploadStepPage({
+        searchParams: Promise.resolve({
+          diagnosed: ["ptsd"],
+          serviceConnected: ["ptsd"],
+          "rating-ptsd": "70",
+          documentsShared: "yes",
+        }),
+      }),
+    );
+
+    expect(html).toContain('name="documentsShared" checked="" value="yes"');
+    expect(html).not.toContain('name="documentsShared" checked="" value="no"');
+  });
+
   it("blocks suggestions step when upload selection is missing", async () => {
     const html = renderToStaticMarkup(
       await SuggestionsStepPage({

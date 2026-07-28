@@ -5,6 +5,7 @@ import { SecondaryWorkflowHiddenFields } from "@/components/SecondaryWorkflowHid
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import {
+  parseDocumentsSharedPrefill,
   parseRatingsSelection,
   parseServiceConnectedSelection,
   ratingFieldName,
@@ -24,6 +25,7 @@ export default async function UploadStepPage({
   let diagnosedConditionIds: string[];
   let serviceConnectedConditionIds: string[];
   let ratingsByConditionId: Record<string, number | null>;
+  const documentsShared = parseDocumentsSharedPrefill(params.documentsShared);
   let guardHref = "/secondary/diagnosed";
   let guardLabel = "Start over at diagnosed conditions";
 
@@ -124,7 +126,13 @@ export default async function UploadStepPage({
           </p>
           <div className="mt-3 space-y-2 text-sm text-slate-700">
             <label className="flex items-center gap-2">
-              <input type="radio" name="documentsShared" value="yes" className="h-4 w-4" />
+              <input
+                type="radio"
+                name="documentsShared"
+                value="yes"
+                defaultChecked={documentsShared}
+                className="h-4 w-4"
+              />
               Yes, I have documents ready to review manually
             </label>
             <label className="flex items-center gap-2">
@@ -132,7 +140,7 @@ export default async function UploadStepPage({
                 type="radio"
                 name="documentsShared"
                 value="no"
-                defaultChecked
+                defaultChecked={!documentsShared}
                 className="h-4 w-4"
               />
               No, continue without documents
