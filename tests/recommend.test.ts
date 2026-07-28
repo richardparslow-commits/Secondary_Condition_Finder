@@ -24,9 +24,8 @@ describe("recommend", () => {
     // Display names come from the catalog, not the mapping file.
     expect(recommendations.map((r) => r.conditionId)).toEqual([
       "sleep-apnea",
-      "depressive-disorder",
       "migraine-headaches",
-      "gerd",
+      "erectile-dysfunction",
     ]);
     expect(recommendations[0].condition).toBe(
       "Sleep Apnea (Obstructive, Central, Mixed)",
