@@ -99,9 +99,9 @@ Wizard notes:
 
 ## Coverage
 
-191 conditions across 14 body systems are in the catalog. 8 have authored
-secondary-condition mappings, about 4.2 percent. Intake labels the rest
-"no mappings yet" rather than implying full coverage. See
+191 conditions across 14 body systems are in the catalog. 191 have authored
+secondary-condition mappings, about 100
+ percent. Intake labels the rest "no mappings yet" rather than implying full coverage. See
 `docs/condition-catalog.md`.
 
 In the secondary wizard, an unmapped condition is shown as recognized but not yet
