@@ -9,7 +9,7 @@
   "suggestions": [
     {
       "conditionId": "plantar-fasciitis",
-      "rank": 2,
+      "rank": 1,
       "prevalence": "sometimes-explored",
       "rationale": "Biomechanical changes in ankle, knee, or hip mechanics alter foot strike dynamics, stressing the plantar fascia.",
       "evidenceGaps": [
