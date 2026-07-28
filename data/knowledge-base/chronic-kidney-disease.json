@@ -38,22 +38,6 @@
           "verified": false
         }
       ]
-    },
-    {
-      "conditionId": "chronic-kidney-disease",
-      "rank": 3,
-      "prevalence": "sometimes-explored",
-      "rationale": "Metabolic and hypertensive microvascular stress degrades renal filtration function over time.",
-      "evidenceGaps": [
-        "eGFR and eCr lab trends over 3+ months"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.115a",
-          "note": "Renal rating schedule",
-          "verified": false
-        }
-      ]
     }
   ]
 }

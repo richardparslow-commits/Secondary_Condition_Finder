@@ -23,23 +23,6 @@
           "verified": false
         }
       ]
-    },
-    {
-      "conditionId": "plantar-fasciitis",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Biomechanical changes in ankle, knee, or hip mechanics alter foot strike dynamics, stressing the plantar fascia.",
-      "evidenceGaps": [
-        "Podiatry evaluation",
-        "Documentation of conservative treatment failure"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.71a",
-          "note": "Diagnostic code 5269",
-          "verified": false
-        }
-      ]
     }
   ]
 }
