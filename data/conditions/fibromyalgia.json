@@ -5,7 +5,9 @@
       "name": "Fibromyalgia",
       "aliases": [],
       "bodySystem": "uncategorized",
-      "diagnosticCode": "TODO"
+      "diagnosticCode": "TODO",
+      "ratingSchedule": [],
+      "reviewNotes": []
     }
   ]
 }

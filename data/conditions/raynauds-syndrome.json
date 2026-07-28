@@ -5,7 +5,9 @@
       "name": "Raynauds Syndrome",
       "aliases": [],
       "bodySystem": "uncategorized",
-      "diagnosticCode": "TODO"
+      "diagnosticCode": "TODO",
+      "ratingSchedule": [],
+      "reviewNotes": []
     }
   ]
 }

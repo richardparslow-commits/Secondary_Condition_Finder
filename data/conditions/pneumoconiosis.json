@@ -5,7 +5,9 @@
       "name": "Pneumoconiosis",
       "aliases": [],
       "bodySystem": "uncategorized",
-      "diagnosticCode": "TODO"
+      "diagnosticCode": "TODO",
+      "ratingSchedule": [],
+      "reviewNotes": []
     }
   ]
 }

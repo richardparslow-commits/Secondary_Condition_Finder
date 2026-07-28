@@ -5,7 +5,9 @@
       "name": "Glaucoma",
       "aliases": [],
       "bodySystem": "uncategorized",
-      "diagnosticCode": "TODO"
+      "diagnosticCode": "TODO",
+      "ratingSchedule": [],
+      "reviewNotes": []
     }
   ]
 }

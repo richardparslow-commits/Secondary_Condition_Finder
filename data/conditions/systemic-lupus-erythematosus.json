@@ -5,7 +5,9 @@
       "name": "Systemic Lupus Erythematosus",
       "aliases": [],
       "bodySystem": "uncategorized",
-      "diagnosticCode": "TODO"
+      "diagnosticCode": "TODO",
+      "ratingSchedule": [],
+      "reviewNotes": []
     }
   ]
 }
