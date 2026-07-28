@@ -6,5 +6,54 @@
     "Add evidence gaps and source references for each suggestion with verified set to false.",
     "Review for publication readiness, clear todo items, then set draft to false."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "peripheral-neuropathy",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Endocrine and metabolic dysfunction cause progressive microvascular damage to peripheral nerves.",
+      "evidenceGaps": [
+        "Monofilament examination or nerve conduction studies"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Peripheral nerve involvement",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "conditionId": "diabetic-retinopathy",
+      "rank": 2,
+      "prevalence": "commonly-explored",
+      "rationale": "Microvascular changes in the eye frequently develop secondary to systemic metabolic imbalance.",
+      "evidenceGaps": [
+        "Ophthalmology fundoscopic exam documentation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Eye diagnostic codes",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Metabolic and hypertensive microvascular stress degrades renal filtration function over time.",
+      "evidenceGaps": [
+        "eGFR and eCr lab trends over 3+ months"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.115a",
+          "note": "Renal rating schedule",
+          "verified": true
+        }
+      ]
+    }
+  ]
 }

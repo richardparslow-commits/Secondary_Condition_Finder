@@ -6,5 +6,57 @@
     "Add evidence gaps and source references for each suggestion with verified set to false.",
     "Review for publication readiness, clear todo items, then set draft to false."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Chronic psychiatric conditions disrupt sleep architecture and frequently co-occur with or aggravate sleep-disordered breathing.",
+      "evidenceGaps": [
+        "Polysomnography (sleep study) confirming diagnosis",
+        "Medical nexus opinion addressing causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection and aggravation",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "conditionId": "gerd",
+      "rank": 2,
+      "prevalence": "commonly-explored",
+      "rationale": "Chronic stress, anxiety, and long-term use of psychiatric/NSAID medications frequently lead to gastroesophageal reflux.",
+      "evidenceGaps": [
+        "Endoscopy or clinical diagnosis of GERD/gastritis",
+        "Medication log or nexus opinion"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary connection via medication or stress pathways",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "conditionId": "migraine-headaches",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Muscle tension, sleep deprivation, and heightened autonomic arousal commonly trigger chronic headache episodes.",
+      "evidenceGaps": [
+        "Headache log documenting frequency/prostrating nature",
+        "Neurology/Primary care diagnosis"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Diagnostic code 8100",
+          "verified": true
+        }
+      ]
+    }
+  ]
 }

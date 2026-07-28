@@ -6,5 +6,40 @@
     "Add evidence gaps and source references for each suggestion with verified set to false.",
     "Review for publication readiness, clear todo items, then set draft to false."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Chronic airway inflammation and altered pulmonary mechanics increase the likelihood of upper airway collapse during sleep.",
+      "evidenceGaps": [
+        "Sleep study (polysomnography) with AHI index",
+        "Pulmonary or sleep specialist nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "conditionId": "cardiac-arrhythmia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Chronic nocturnal hypoxia and respiratory strain place stress on the cardiovascular system.",
+      "evidenceGaps": [
+        "ECG or Holter monitor records",
+        "Cardiology evaluation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Cardiovascular diagnostic codes",
+          "verified": true
+        }
+      ]
+    }
+  ]
 }

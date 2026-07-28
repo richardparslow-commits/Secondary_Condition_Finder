@@ -6,5 +6,55 @@
     "Add evidence gaps and source references for each suggestion with verified set to false.",
     "Review for publication readiness, clear todo items, then set draft to false."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "radiculopathy",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Nerve root compression in the spinal column commonly causes radiating pain, numbness, or weakness down the extremities.",
+      "evidenceGaps": [
+        "EMG/Nerve conduction study or clinical exam documenting neurological deficit",
+        "Medical nexus opinion"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Neurological involvement secondary to spinal pathology",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "conditionId": "sciatica",
+      "rank": 2,
+      "prevalence": "commonly-explored",
+      "rationale": "Lower back strain and disc degeneration directly impinge the sciatic nerve causing lower extremity radicular symptoms.",
+      "evidenceGaps": [
+        "Neurological evaluation or positive straight leg raise testing"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Sciatic nerve paralysis/neuritis",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "conditionId": "contralateral-knee-condition",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Altered gait dynamics and weight-bearing compensation place secondary mechanical strain on adjacent lower extremity joints.",
+      "evidenceGaps": [
+        "Gait analysis or physical therapy notes documenting compensatory mechanics"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary mechanical aggravation",
+          "verified": true
+        }
+      ]
+    }
+  ]
 }
