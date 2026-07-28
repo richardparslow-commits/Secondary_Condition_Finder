@@ -6,6 +6,7 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import {
   parseDiagnosedSelection,
+  parseRatingsPrefill,
   parseServiceConnectedSelection,
   ratingFieldName,
 } from "@/lib/secondary-workflow/state";
@@ -59,6 +60,7 @@ export default async function RatingsStepPage({
   const serviceConnected = serviceConnectedConditionIds
     .map((id) => byId.get(id))
     .filter((condition): condition is NonNullable<typeof condition> => condition !== undefined);
+  const ratingsByConditionId = parseRatingsPrefill(params, serviceConnectedConditionIds);
 
   return (
     <main>
@@ -102,7 +104,11 @@ export default async function RatingsStepPage({
             <select
               name={ratingFieldName(condition.id)}
               className="mt-3 w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
-              defaultValue="decline"
+              defaultValue={
+                ratingsByConditionId[condition.id] === null
+                  ? "decline"
+                  : String(ratingsByConditionId[condition.id])
+              }
             >
               <option value="decline">I prefer not to answer</option>
               {RATING_OPTIONS.map((rating) => (

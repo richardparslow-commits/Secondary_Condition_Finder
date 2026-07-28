@@ -169,12 +169,33 @@ export function parseRatingsSelection(
   };
 }
 
+export function parseRatingsPrefill(
+  params: QueryParams,
+  conditionIds: string[],
+): Record<string, number | null> {
+  const ratingsByConditionId: Record<string, number | null> = {};
+
+  for (const id of conditionIds) {
+    try {
+      ratingsByConditionId[id] = parseRatingValue(first(params[ratingFieldName(id)]));
+    } catch {
+      ratingsByConditionId[id] = null;
+    }
+  }
+
+  return ratingsByConditionId;
+}
+
 function parseDocumentsShared(value: QueryValue): boolean {
   const parsed = documentsSharedSchema.parse({
     documentsShared: first(value),
   });
 
   return parsed.documentsShared === "yes";
+}
+
+export function parseDocumentsSharedPrefill(value: QueryValue): boolean {
+  return first(value) === "yes";
 }
 
 export function parseDocumentsSelection(
