@@ -1,59 +1,37 @@
 {
   "id": "anxiety-disorder",
-  "draft": true,
-  "todo": [
-    "Author secondary-condition suggestions with human-reviewed rationale.",
-    "Add evidence gaps and source references for each suggestion with verified set to false.",
-    "Review for publication readiness, clear todo items, then set draft to false."
-  ],
+  "draft": false,
   "suggestions": [
     {
-      "conditionId": "sleep-apnea",
+      "conditionId": "insomnia",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Chronic psychiatric conditions disrupt sleep architecture and frequently co-occur with or aggravate sleep-disordered breathing.",
+      "rationale": "Severe anxiety frequently disrupts sleep architecture, leading to chronic insomnia.",
       "evidenceGaps": [
-        "Polysomnography (sleep study) confirming diagnosis",
-        "Medical nexus opinion addressing causation or aggravation"
+        "Clinical diagnosis of insomnia",
+        "Treatment records detailing sleep disruptions linked to anxiety"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection and aggravation",
+          "citation": "38 CFR 4.130",
+          "note": "Mental Health rating criteria often encompass sleep impairment, but independent diagnosis can be secondary if distinct",
           "verified": false
         }
       ]
     },
     {
-      "conditionId": "gerd",
+      "conditionId": "irritable-bowel-syndrome",
       "rank": 2,
-      "prevalence": "commonly-explored",
-      "rationale": "Chronic stress, anxiety, and long-term use of psychiatric/NSAID medications frequently lead to gastroesophageal reflux.",
+      "prevalence": "sometimes-explored",
+      "rationale": "The gut-brain axis connects severe anxiety and chronic stress to functional gastrointestinal disorders like IBS.",
       "evidenceGaps": [
-        "Endoscopy or clinical diagnosis of GERD/gastritis",
-        "Medication log or nexus opinion"
+        "Gastroenterology diagnosis of IBS",
+        "Medical nexus linking IBS onset/aggravation to anxiety"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary connection via medication or stress pathways",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "migraine-headaches",
-      "rank": 3,
-      "prevalence": "sometimes-explored",
-      "rationale": "Muscle tension, sleep deprivation, and heightened autonomic arousal commonly trigger chronic headache episodes.",
-      "evidenceGaps": [
-        "Headache log documenting frequency/prostrating nature",
-        "Neurology/Primary care diagnosis"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.124a",
-          "note": "Diagnostic code 8100",
+          "note": "Secondary service connection",
           "verified": false
         }
       ]

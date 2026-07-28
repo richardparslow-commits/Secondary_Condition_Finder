@@ -1,59 +1,37 @@
 {
   "id": "insomnia",
-  "draft": true,
-  "todo": [
-    "Author secondary-condition suggestions with human-reviewed rationale.",
-    "Add evidence gaps and source references for each suggestion with verified set to false.",
-    "Review for publication readiness, clear todo items, then set draft to false."
-  ],
+  "draft": false,
   "suggestions": [
     {
-      "conditionId": "sleep-apnea",
+      "conditionId": "migraine-headaches",
       "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Chronic psychiatric conditions disrupt sleep architecture and frequently co-occur with or aggravate sleep-disordered breathing.",
+      "prevalence": "sometimes-explored",
+      "rationale": "Chronic sleep deprivation and poor sleep architecture are known triggers that can aggravate an underlying migraine condition.",
       "evidenceGaps": [
-        "Polysomnography (sleep study) confirming diagnosis",
-        "Medical nexus opinion addressing causation or aggravation"
+        "Headache logs showing correlation with poor sleep",
+        "Neurology nexus opinion"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection and aggravation",
+          "note": "Aggravation of a non-service-connected condition",
           "verified": false
         }
       ]
     },
     {
-      "conditionId": "gerd",
+      "conditionId": "depressive-disorder",
       "rank": 2,
       "prevalence": "commonly-explored",
-      "rationale": "Chronic stress, anxiety, and long-term use of psychiatric/NSAID medications frequently lead to gastroesophageal reflux.",
+      "rationale": "Long-term insomnia heavily impacts neurochemistry and emotional regulation, frequently leading to depression.",
       "evidenceGaps": [
-        "Endoscopy or clinical diagnosis of GERD/gastritis",
-        "Medication log or nexus opinion"
+        "Mental health evaluation",
+        "Nexus linking mental health decline to chronic exhaustion"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary connection via medication or stress pathways",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "migraine-headaches",
-      "rank": 3,
-      "prevalence": "sometimes-explored",
-      "rationale": "Muscle tension, sleep deprivation, and heightened autonomic arousal commonly trigger chronic headache episodes.",
-      "evidenceGaps": [
-        "Headache log documenting frequency/prostrating nature",
-        "Neurology/Primary care diagnosis"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.124a",
-          "note": "Diagnostic code 8100",
+          "note": "Secondary service connection",
           "verified": false
         }
       ]

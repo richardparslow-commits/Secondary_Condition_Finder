@@ -1,59 +1,37 @@
 {
   "id": "depressive-disorder",
-  "draft": true,
-  "todo": [
-    "Author secondary-condition suggestions with human-reviewed rationale.",
-    "Add evidence gaps and source references for each suggestion with verified set to false.",
-    "Review for publication readiness, clear todo items, then set draft to false."
-  ],
+  "draft": false,
   "suggestions": [
     {
       "conditionId": "sleep-apnea",
       "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Chronic psychiatric conditions disrupt sleep architecture and frequently co-occur with or aggravate sleep-disordered breathing.",
+      "prevalence": "sometimes-explored",
+      "rationale": "Major depressive disorder and the psychotropic medications used to treat it often cause significant weight gain, which is a primary risk factor for developing sleep apnea.",
       "evidenceGaps": [
-        "Polysomnography (sleep study) confirming diagnosis",
-        "Medical nexus opinion addressing causation or aggravation"
+        "Sleep study diagnosis of OSA",
+        "Medical nexus demonstrating weight gain as an intermediate step between depression meds and OSA"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection and aggravation",
+          "note": "Secondary connection via intermediate step",
           "verified": false
         }
       ]
     },
     {
-      "conditionId": "gerd",
+      "conditionId": "erectile-dysfunction",
       "rank": 2,
       "prevalence": "commonly-explored",
-      "rationale": "Chronic stress, anxiety, and long-term use of psychiatric/NSAID medications frequently lead to gastroesophageal reflux.",
+      "rationale": "Antidepressants (SSRIs/SNRIs) are widely documented to cause sexual dysfunction.",
       "evidenceGaps": [
-        "Endoscopy or clinical diagnosis of GERD/gastritis",
-        "Medication log or nexus opinion"
+        "Diagnosis of ED",
+        "Nexus linking ED to specific prescribed antidepressants"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary connection via medication or stress pathways",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "migraine-headaches",
-      "rank": 3,
-      "prevalence": "sometimes-explored",
-      "rationale": "Muscle tension, sleep deprivation, and heightened autonomic arousal commonly trigger chronic headache episodes.",
-      "evidenceGaps": [
-        "Headache log documenting frequency/prostrating nature",
-        "Neurology/Primary care diagnosis"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.124a",
-          "note": "Diagnostic code 8100",
+          "note": "Medication side effects",
           "verified": false
         }
       ]

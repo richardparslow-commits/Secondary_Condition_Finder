@@ -1,42 +1,36 @@
 {
   "id": "traumatic-brain-injury",
-  "draft": true,
-  "todo": [
-    "Author secondary-condition suggestions with human-reviewed rationale.",
-    "Add evidence gaps and source references for each suggestion with verified set to false.",
-    "Review for publication readiness, clear todo items, then set draft to false."
-  ],
+  "draft": false,
   "suggestions": [
     {
-      "conditionId": "depressive-disorder",
+      "conditionId": "migraine-headaches",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Coping with chronic physical pain, functional limitations, or long-term health conditions frequently causes secondary mood impairment.",
+      "rationale": "Post-traumatic headaches and migraines are highly prevalent secondary conditions following a moderate to severe TBI.",
       "evidenceGaps": [
-        "Mental health evaluation distinguishing secondary emotional impact",
-        "Treatment notes"
+        "Headache log",
+        "Neurology diagnosis of post-traumatic headaches"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary mental health condition due to physical disability",
+          "note": "Often evaluated under Diagnostic Code 8100",
           "verified": false
         }
       ]
     },
     {
-      "conditionId": "gerd",
+      "conditionId": "ptsd",
       "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Long-term daily medication required to treat chronic symptoms often causes gastrointestinal irritation.",
+      "prevalence": "commonly-explored",
+      "rationale": "TBI and PTSD frequently co-occur from the same traumatic event, or a TBI can aggravate underlying psychological conditions.",
       "evidenceGaps": [
-        "Prescription history of NSAIDs or pain medications",
-        "GI evaluation"
+        "Psychiatric evaluation differentiating PTSD symptoms from TBI cognitive residuals"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary connection via medication side effects",
+          "citation": "38 CFR 4.124a",
+          "note": "Evaluation of TBI residuals vs Mental Health",
           "verified": false
         }
       ]

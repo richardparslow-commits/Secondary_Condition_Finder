@@ -1,96 +1,37 @@
 {
   "id": "migraine-headaches",
   "draft": false,
-  "todo": [],
   "suggestions": [
     {
-      "conditionId": "insomnia",
+      "conditionId": "depressive-disorder",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Frequent or prolonged headache episodes are commonly explored alongside difficulty initiating or maintaining sleep, especially when treatment notes describe a repeating headache-sleep disruption cycle.",
+      "rationale": "Living with chronic, severe, and prostrating pain from migraines can proximately cause secondary mental health conditions such as depression.",
       "evidenceGaps": [
-        "Headache treatment records documenting attack frequency and duration",
-        "Sleep-related records showing persistent insomnia symptoms",
-        "Opinion addressing whether migraine symptoms caused or aggravated chronic sleep impairment"
+        "Psychological evaluation",
+        "Therapy notes connecting depressive onset to chronic pain/limitations"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 4.124a",
-          "note": "Schedule of ratings, neurological conditions.",
-          "verified": false
-        },
-        {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection.",
+          "note": "Mental health secondary to physical condition",
           "verified": false
         }
       ]
     },
     {
-      "conditionId": "anxiety-disorder",
+      "conditionId": "insomnia",
       "rank": 2,
       "prevalence": "sometimes-explored",
-      "rationale": "Anxiety is sometimes explored where chronic migraine burden and functional limitations are documented over a sustained period.",
+      "rationale": "Chronic migraine pain can severely disrupt sleep patterns, causing a secondary diagnosis of insomnia.",
       "evidenceGaps": [
-        "Qualified mental health diagnosis",
-        "Clinical records documenting migraine-related functional impact",
-        "Nexus opinion addressing causation or aggravation"
+        "Sleep logs",
+        "Medical diagnosis of insomnia distinct from the headache episodes"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 4.130",
-          "note": "Schedule of ratings, mental disorders.",
-          "verified": false
-        },
-        {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 3,
-      "prevalence": "sometimes-explored",
-      "rationale": "Depressive symptoms are sometimes explored in records with persistent migraine pain and reduced daily functioning.",
-      "evidenceGaps": [
-        "Mental health diagnosis from a qualified provider",
-        "Documentation of symptom onset and chronicity relative to migraine history",
-        "Medical opinion addressing whether migraines caused or aggravated depressive symptoms"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.130",
-          "note": "Schedule of ratings, mental disorders.",
-          "verified": false
-        },
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "gerd",
-      "rank": 4,
-      "prevalence": "occasionally-explored",
-      "rationale": "GERD is occasionally explored where medication history and gastrointestinal symptoms suggest headache-treatment side effects or symptom aggravation.",
-      "evidenceGaps": [
-        "Confirmed GERD diagnosis with symptom timeline",
-        "Medication history showing migraine treatment and gastrointestinal side effects",
-        "Opinion addressing whether treatment for migraines caused or aggravated reflux symptoms"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Schedule of ratings, digestive system.",
-          "verified": false
-        },
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection, including medication-related aggravation theories.",
+          "note": "Secondary service connection",
           "verified": false
         }
       ]
