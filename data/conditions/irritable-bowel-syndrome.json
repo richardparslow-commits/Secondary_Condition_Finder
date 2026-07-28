@@ -1,7 +1,11 @@
 {
-  "id": "irritable-bowel-syndrome",
-  "name": "Irritable Bowel Syndrome",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "irritable-bowel-syndrome",
+      "name": "Irritable Bowel Syndrome",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

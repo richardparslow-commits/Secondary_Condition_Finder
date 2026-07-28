@@ -1,7 +1,11 @@
 {
-  "id": "labyrinthitis",
-  "name": "Labyrinthitis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "labyrinthitis",
+      "name": "Labyrinthitis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "bulimia-nervosa",
-  "name": "Bulimia Nervosa",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "bulimia-nervosa",
+      "name": "Bulimia Nervosa",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

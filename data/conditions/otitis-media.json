@@ -1,7 +1,11 @@
 {
-  "id": "otitis-media",
-  "name": "Otitis Media",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "otitis-media",
+      "name": "Otitis Media",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

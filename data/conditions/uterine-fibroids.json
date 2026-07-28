@@ -1,7 +1,11 @@
 {
-  "id": "uterine-fibroids",
-  "name": "Uterine Fibroids",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "uterine-fibroids",
+      "name": "Uterine Fibroids",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

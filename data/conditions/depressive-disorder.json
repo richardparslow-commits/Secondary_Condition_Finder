@@ -1,7 +1,11 @@
 {
-  "id": "depressive-disorder",
-  "name": "Depressive Disorder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "depressive-disorder",
+      "name": "Depressive Disorder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

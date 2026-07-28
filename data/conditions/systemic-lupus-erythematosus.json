@@ -1,7 +1,11 @@
 {
-  "id": "systemic-lupus-erythematosus",
-  "name": "Systemic Lupus Erythematosus",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "systemic-lupus-erythematosus",
+      "name": "Systemic Lupus Erythematosus",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

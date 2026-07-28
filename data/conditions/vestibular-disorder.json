@@ -1,7 +1,11 @@
 {
-  "id": "vestibular-disorder",
-  "name": "Vestibular Disorder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "vestibular-disorder",
+      "name": "Vestibular Disorder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

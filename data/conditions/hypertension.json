@@ -1,7 +1,11 @@
 {
-  "id": "hypertension",
-  "name": "Hypertension",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "hypertension",
+      "name": "Hypertension",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

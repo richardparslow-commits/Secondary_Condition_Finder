@@ -1,7 +1,11 @@
 {
-  "id": "endometriosis",
-  "name": "Endometriosis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "endometriosis",
+      "name": "Endometriosis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

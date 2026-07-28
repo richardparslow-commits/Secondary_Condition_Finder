@@ -1,7 +1,11 @@
 {
-  "id": "intervertebral-disc-syndrome",
-  "name": "Intervertebral Disc Syndrome",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "intervertebral-disc-syndrome",
+      "name": "Intervertebral Disc Syndrome",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

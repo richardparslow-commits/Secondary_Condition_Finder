@@ -1,7 +1,11 @@
 {
-  "id": "ptsd",
-  "name": "Ptsd",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "ptsd",
+      "name": "Ptsd",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

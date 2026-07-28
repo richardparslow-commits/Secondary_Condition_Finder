@@ -1,7 +1,11 @@
 {
-  "id": "diabetes-mellitus-type-1",
-  "name": "Diabetes Mellitus Type 1",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "diabetes-mellitus-type-1",
+      "name": "Diabetes Mellitus Type 1",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

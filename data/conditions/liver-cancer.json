@@ -1,7 +1,11 @@
 {
-  "id": "liver-cancer",
-  "name": "Liver Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "liver-cancer",
+      "name": "Liver Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "kidney-stones",
-  "name": "Kidney Stones",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "kidney-stones",
+      "name": "Kidney Stones",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

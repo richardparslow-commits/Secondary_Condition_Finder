@@ -1,7 +1,11 @@
 {
-  "id": "cyclothymic-disorder",
-  "name": "Cyclothymic Disorder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "cyclothymic-disorder",
+      "name": "Cyclothymic Disorder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

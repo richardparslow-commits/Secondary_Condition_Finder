@@ -1,7 +1,11 @@
 {
-  "id": "deep-vein-thrombosis",
-  "name": "Deep Vein Thrombosis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "deep-vein-thrombosis",
+      "name": "Deep Vein Thrombosis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

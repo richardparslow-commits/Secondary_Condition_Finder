@@ -1,7 +1,11 @@
 {
-  "id": "pelvic-inflammatory-disease",
-  "name": "Pelvic Inflammatory Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "pelvic-inflammatory-disease",
+      "name": "Pelvic Inflammatory Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

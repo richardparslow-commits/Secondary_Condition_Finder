@@ -1,7 +1,11 @@
 {
-  "id": "addisons-disease",
-  "name": "Addisons Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "addisons-disease",
+      "name": "Addisons Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "stomach-cancer",
-  "name": "Stomach Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "stomach-cancer",
+      "name": "Stomach Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

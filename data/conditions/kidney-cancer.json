@@ -1,7 +1,11 @@
 {
-  "id": "kidney-cancer",
-  "name": "Kidney Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "kidney-cancer",
+      "name": "Kidney Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

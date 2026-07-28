@@ -1,7 +1,11 @@
 {
-  "id": "pancreatic-cancer",
-  "name": "Pancreatic Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "pancreatic-cancer",
+      "name": "Pancreatic Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

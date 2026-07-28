@@ -1,7 +1,11 @@
 {
-  "id": "panic-disorder",
-  "name": "Panic Disorder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "panic-disorder",
+      "name": "Panic Disorder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

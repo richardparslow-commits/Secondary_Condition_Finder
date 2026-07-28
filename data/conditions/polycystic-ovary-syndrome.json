@@ -1,7 +1,11 @@
 {
-  "id": "polycystic-ovary-syndrome",
-  "name": "Polycystic Ovary Syndrome",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "polycystic-ovary-syndrome",
+      "name": "Polycystic Ovary Syndrome",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

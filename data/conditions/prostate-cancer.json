@@ -1,7 +1,11 @@
 {
-  "id": "prostate-cancer",
-  "name": "Prostate Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "prostate-cancer",
+      "name": "Prostate Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "colorectal-cancer",
-  "name": "Colorectal Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "colorectal-cancer",
+      "name": "Colorectal Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

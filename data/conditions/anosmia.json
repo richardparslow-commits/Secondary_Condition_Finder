@@ -1,7 +1,11 @@
 {
-  "id": "anosmia",
-  "name": "Anosmia",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "anosmia",
+      "name": "Anosmia",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

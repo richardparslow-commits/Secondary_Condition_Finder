@@ -1,7 +1,11 @@
 {
-  "id": "spinal-stenosis",
-  "name": "Spinal Stenosis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "spinal-stenosis",
+      "name": "Spinal Stenosis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

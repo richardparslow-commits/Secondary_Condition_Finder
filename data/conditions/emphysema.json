@@ -1,7 +1,11 @@
 {
-  "id": "emphysema",
-  "name": "Emphysema",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "emphysema",
+      "name": "Emphysema",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "flatfoot",
-  "name": "Flatfoot",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "flatfoot",
+      "name": "Flatfoot",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

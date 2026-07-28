@@ -1,7 +1,11 @@
 {
-  "id": "pulmonary-fibrosis",
-  "name": "Pulmonary Fibrosis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "pulmonary-fibrosis",
+      "name": "Pulmonary Fibrosis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

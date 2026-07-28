@@ -1,7 +1,11 @@
 {
-  "id": "anxiety-disorder",
-  "name": "Anxiety Disorder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "anxiety-disorder",
+      "name": "Anxiety Disorder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

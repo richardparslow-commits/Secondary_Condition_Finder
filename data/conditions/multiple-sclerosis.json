@@ -1,7 +1,11 @@
 {
-  "id": "multiple-sclerosis",
-  "name": "Multiple Sclerosis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "multiple-sclerosis",
+      "name": "Multiple Sclerosis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

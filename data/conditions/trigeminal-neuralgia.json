@@ -1,7 +1,11 @@
 {
-  "id": "trigeminal-neuralgia",
-  "name": "Trigeminal Neuralgia",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "trigeminal-neuralgia",
+      "name": "Trigeminal Neuralgia",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

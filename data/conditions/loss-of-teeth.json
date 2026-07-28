@@ -1,7 +1,11 @@
 {
-  "id": "loss-of-teeth",
-  "name": "Loss Of Teeth",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "loss-of-teeth",
+      "name": "Loss Of Teeth",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

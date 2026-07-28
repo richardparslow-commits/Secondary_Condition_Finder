@@ -1,7 +1,11 @@
 {
-  "id": "deviated-nasal-septum",
-  "name": "Deviated Nasal Septum",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "deviated-nasal-septum",
+      "name": "Deviated Nasal Septum",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "cataracts",
-  "name": "Cataracts",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "cataracts",
+      "name": "Cataracts",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

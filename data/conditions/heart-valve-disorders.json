@@ -1,7 +1,11 @@
 {
-  "id": "heart-valve-disorders",
-  "name": "Heart Valve Disorders",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "heart-valve-disorders",
+      "name": "Heart Valve Disorders",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

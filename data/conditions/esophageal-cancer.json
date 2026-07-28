@@ -1,7 +1,11 @@
 {
-  "id": "esophageal-cancer",
-  "name": "Esophageal Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "esophageal-cancer",
+      "name": "Esophageal Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

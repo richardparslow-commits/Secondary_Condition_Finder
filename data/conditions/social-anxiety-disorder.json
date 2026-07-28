@@ -1,7 +1,11 @@
 {
-  "id": "social-anxiety-disorder",
-  "name": "Social Anxiety Disorder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "social-anxiety-disorder",
+      "name": "Social Anxiety Disorder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

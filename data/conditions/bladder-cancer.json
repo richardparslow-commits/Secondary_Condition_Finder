@@ -1,7 +1,11 @@
 {
-  "id": "bladder-cancer",
-  "name": "Bladder Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "bladder-cancer",
+      "name": "Bladder Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

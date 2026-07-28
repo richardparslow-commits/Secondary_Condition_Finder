@@ -1,7 +1,11 @@
 {
-  "id": "post-traumatic-osteoarthritis",
-  "name": "Post Traumatic Osteoarthritis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "post-traumatic-osteoarthritis",
+      "name": "Post Traumatic Osteoarthritis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

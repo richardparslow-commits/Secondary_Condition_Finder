@@ -1,7 +1,11 @@
 {
-  "id": "narcolepsy",
-  "name": "Narcolepsy",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "narcolepsy",
+      "name": "Narcolepsy",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

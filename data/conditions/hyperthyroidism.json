@@ -1,7 +1,11 @@
 {
-  "id": "hyperthyroidism",
-  "name": "Hyperthyroidism",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "hyperthyroidism",
+      "name": "Hyperthyroidism",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

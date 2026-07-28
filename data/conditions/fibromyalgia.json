@@ -1,7 +1,11 @@
 {
-  "id": "fibromyalgia",
-  "name": "Fibromyalgia",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "fibromyalgia",
+      "name": "Fibromyalgia",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

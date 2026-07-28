@@ -1,7 +1,11 @@
 {
-  "id": "gallbladder-disease",
-  "name": "Gallbladder Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "gallbladder-disease",
+      "name": "Gallbladder Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

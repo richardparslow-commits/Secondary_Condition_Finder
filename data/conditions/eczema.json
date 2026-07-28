@@ -1,7 +1,11 @@
 {
-  "id": "eczema",
-  "name": "Eczema",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "eczema",
+      "name": "Eczema",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

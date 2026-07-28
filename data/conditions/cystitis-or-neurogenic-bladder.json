@@ -1,7 +1,11 @@
 {
-  "id": "cystitis-or-neurogenic-bladder",
-  "name": "Cystitis Or Neurogenic Bladder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "cystitis-or-neurogenic-bladder",
+      "name": "Cystitis Or Neurogenic Bladder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

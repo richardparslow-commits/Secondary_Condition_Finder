@@ -1,7 +1,11 @@
 {
-  "id": "osteomyelitis",
-  "name": "Osteomyelitis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "osteomyelitis",
+      "name": "Osteomyelitis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

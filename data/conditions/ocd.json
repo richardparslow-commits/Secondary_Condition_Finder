@@ -1,7 +1,11 @@
 {
-  "id": "ocd",
-  "name": "Ocd",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "ocd",
+      "name": "Ocd",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

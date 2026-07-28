@@ -1,7 +1,11 @@
 {
-  "id": "glaucoma",
-  "name": "Glaucoma",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "glaucoma",
+      "name": "Glaucoma",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

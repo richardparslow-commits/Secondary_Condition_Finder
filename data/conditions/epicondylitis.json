@@ -1,7 +1,11 @@
 {
-  "id": "epicondylitis",
-  "name": "Epicondylitis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "epicondylitis",
+      "name": "Epicondylitis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

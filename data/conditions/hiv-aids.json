@@ -1,7 +1,11 @@
 {
-  "id": "hiv-aids",
-  "name": "Hiv Aids",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "hiv-aids",
+      "name": "Hiv Aids",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

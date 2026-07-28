@@ -1,7 +1,11 @@
 {
-  "id": "fungal-skin-infection",
-  "name": "Fungal Skin Infection",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "fungal-skin-infection",
+      "name": "Fungal Skin Infection",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

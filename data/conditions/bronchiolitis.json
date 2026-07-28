@@ -1,7 +1,11 @@
 {
-  "id": "bronchiolitis",
-  "name": "Bronchiolitis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "bronchiolitis",
+      "name": "Bronchiolitis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

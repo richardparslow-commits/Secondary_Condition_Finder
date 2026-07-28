@@ -1,7 +1,11 @@
 {
-  "id": "parkinsons-disease",
-  "name": "Parkinsons Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "parkinsons-disease",
+      "name": "Parkinsons Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

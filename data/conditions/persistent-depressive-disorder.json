@@ -1,7 +1,11 @@
 {
-  "id": "persistent-depressive-disorder",
-  "name": "Persistent Depressive Disorder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "persistent-depressive-disorder",
+      "name": "Persistent Depressive Disorder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "peripheral-vascular-disease",
-  "name": "Peripheral Vascular Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "peripheral-vascular-disease",
+      "name": "Peripheral Vascular Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

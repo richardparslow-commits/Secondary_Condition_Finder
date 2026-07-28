@@ -1,7 +1,11 @@
 {
-  "id": "skin-cancer",
-  "name": "Skin Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "skin-cancer",
+      "name": "Skin Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

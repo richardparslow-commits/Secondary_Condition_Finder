@@ -1,7 +1,11 @@
 {
-  "id": "schizoaffective-disorder",
-  "name": "Schizoaffective Disorder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "schizoaffective-disorder",
+      "name": "Schizoaffective Disorder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

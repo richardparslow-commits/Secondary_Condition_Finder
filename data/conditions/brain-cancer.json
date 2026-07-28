@@ -1,7 +1,11 @@
 {
-  "id": "brain-cancer",
-  "name": "Brain Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "brain-cancer",
+      "name": "Brain Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

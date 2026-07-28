@@ -1,7 +1,11 @@
 {
-  "id": "anemia",
-  "name": "Anemia",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "anemia",
+      "name": "Anemia",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

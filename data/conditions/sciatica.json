@@ -1,7 +1,11 @@
 {
-  "id": "sciatica",
-  "name": "Sciatica",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "sciatica",
+      "name": "Sciatica",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

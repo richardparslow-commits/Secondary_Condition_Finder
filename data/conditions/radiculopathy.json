@@ -1,7 +1,11 @@
 {
-  "id": "radiculopathy",
-  "name": "Radiculopathy",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "radiculopathy",
+      "name": "Radiculopathy",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

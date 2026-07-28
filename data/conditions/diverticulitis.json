@@ -1,7 +1,11 @@
 {
-  "id": "diverticulitis",
-  "name": "Diverticulitis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "diverticulitis",
+      "name": "Diverticulitis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

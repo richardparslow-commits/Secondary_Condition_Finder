@@ -1,7 +1,11 @@
 {
-  "id": "hyperparathyroidism",
-  "name": "Hyperparathyroidism",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "hyperparathyroidism",
+      "name": "Hyperparathyroidism",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

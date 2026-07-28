@@ -1,7 +1,11 @@
 {
-  "id": "pancreatitis",
-  "name": "Pancreatitis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "pancreatitis",
+      "name": "Pancreatitis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

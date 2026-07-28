@@ -1,7 +1,11 @@
 {
-  "id": "shin-splints",
-  "name": "Shin Splints",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "shin-splints",
+      "name": "Shin Splints",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

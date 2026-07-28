@@ -1,7 +1,11 @@
 {
-  "id": "leukemia",
-  "name": "Leukemia",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "leukemia",
+      "name": "Leukemia",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

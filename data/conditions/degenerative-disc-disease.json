@@ -1,7 +1,11 @@
 {
-  "id": "degenerative-disc-disease",
-  "name": "Degenerative Disc Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "degenerative-disc-disease",
+      "name": "Degenerative Disc Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

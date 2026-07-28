@@ -1,7 +1,11 @@
 {
-  "id": "migraine-headaches",
-  "name": "Migraine Headaches",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "migraine-headaches",
+      "name": "Migraine Headaches",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "campylobacter-jejuni-infection",
-  "name": "Campylobacter Jejuni Infection",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "campylobacter-jejuni-infection",
+      "name": "Campylobacter Jejuni Infection",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

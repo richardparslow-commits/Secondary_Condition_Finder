@@ -1,7 +1,11 @@
 {
-  "id": "hemorrhoids",
-  "name": "Hemorrhoids",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "hemorrhoids",
+      "name": "Hemorrhoids",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

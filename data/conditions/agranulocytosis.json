@@ -1,7 +1,11 @@
 {
-  "id": "agranulocytosis",
-  "name": "Agranulocytosis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "agranulocytosis",
+      "name": "Agranulocytosis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

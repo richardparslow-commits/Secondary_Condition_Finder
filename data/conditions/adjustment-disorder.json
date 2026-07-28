@@ -1,7 +1,11 @@
 {
-  "id": "adjustment-disorder",
-  "name": "Adjustment Disorder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "adjustment-disorder",
+      "name": "Adjustment Disorder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "retinal-detachment",
-  "name": "Retinal Detachment",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "retinal-detachment",
+      "name": "Retinal Detachment",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

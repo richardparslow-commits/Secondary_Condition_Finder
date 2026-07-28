@@ -1,7 +1,11 @@
 {
-  "id": "malaria",
-  "name": "Malaria",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "malaria",
+      "name": "Malaria",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

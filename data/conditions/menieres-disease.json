@@ -1,7 +1,11 @@
 {
-  "id": "menieres-disease",
-  "name": "Menieres Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "menieres-disease",
+      "name": "Menieres Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

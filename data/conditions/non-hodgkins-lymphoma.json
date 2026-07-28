@@ -1,7 +1,11 @@
 {
-  "id": "non-hodgkins-lymphoma",
-  "name": "Non Hodgkins Lymphoma",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "non-hodgkins-lymphoma",
+      "name": "Non Hodgkins Lymphoma",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

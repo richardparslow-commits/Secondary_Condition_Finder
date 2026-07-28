@@ -1,7 +1,11 @@
 {
-  "id": "sarcoidosis",
-  "name": "Sarcoidosis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "sarcoidosis",
+      "name": "Sarcoidosis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

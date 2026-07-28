@@ -1,7 +1,11 @@
 {
-  "id": "cardiac-arrhythmia",
-  "name": "Cardiac Arrhythmia",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "cardiac-arrhythmia",
+      "name": "Cardiac Arrhythmia",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

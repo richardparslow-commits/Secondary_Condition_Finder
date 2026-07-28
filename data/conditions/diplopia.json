@@ -1,7 +1,11 @@
 {
-  "id": "diplopia",
-  "name": "Diplopia",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "diplopia",
+      "name": "Diplopia",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

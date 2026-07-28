@@ -1,7 +1,11 @@
 {
-  "id": "contralateral-knee-condition",
-  "name": "Contralateral Knee Condition",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "contralateral-knee-condition",
+      "name": "Contralateral Knee Condition",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

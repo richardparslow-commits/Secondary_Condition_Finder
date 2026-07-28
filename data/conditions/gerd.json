@@ -1,7 +1,11 @@
 {
-  "id": "gerd",
-  "name": "Gerd",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "gerd",
+      "name": "Gerd",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

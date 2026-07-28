@@ -1,7 +1,11 @@
 {
-  "id": "female-sexual-arousal-disorder",
-  "name": "Female Sexual Arousal Disorder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "female-sexual-arousal-disorder",
+      "name": "Female Sexual Arousal Disorder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

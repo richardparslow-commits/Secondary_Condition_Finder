@@ -1,7 +1,11 @@
 {
-  "id": "raynauds-syndrome",
-  "name": "Raynauds Syndrome",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "raynauds-syndrome",
+      "name": "Raynauds Syndrome",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

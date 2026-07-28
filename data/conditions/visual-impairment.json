@@ -1,7 +1,11 @@
 {
-  "id": "visual-impairment",
-  "name": "Visual Impairment",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "visual-impairment",
+      "name": "Visual Impairment",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

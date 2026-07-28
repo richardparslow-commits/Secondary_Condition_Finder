@@ -1,7 +1,11 @@
 {
-  "id": "anorexia-nervosa",
-  "name": "Anorexia Nervosa",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "anorexia-nervosa",
+      "name": "Anorexia Nervosa",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

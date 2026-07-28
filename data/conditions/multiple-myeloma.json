@@ -1,7 +1,11 @@
 {
-  "id": "multiple-myeloma",
-  "name": "Multiple Myeloma",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "multiple-myeloma",
+      "name": "Multiple Myeloma",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

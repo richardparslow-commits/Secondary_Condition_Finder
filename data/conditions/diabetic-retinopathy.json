@@ -1,7 +1,11 @@
 {
-  "id": "diabetic-retinopathy",
-  "name": "Diabetic Retinopathy",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "diabetic-retinopathy",
+      "name": "Diabetic Retinopathy",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

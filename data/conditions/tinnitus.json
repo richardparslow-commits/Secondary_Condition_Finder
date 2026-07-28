@@ -1,7 +1,11 @@
 {
-  "id": "tinnitus",
-  "name": "Tinnitus",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "tinnitus",
+      "name": "Tinnitus",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

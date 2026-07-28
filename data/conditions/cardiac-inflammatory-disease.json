@@ -1,7 +1,11 @@
 {
-  "id": "cardiac-inflammatory-disease",
-  "name": "Cardiac Inflammatory Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "cardiac-inflammatory-disease",
+      "name": "Cardiac Inflammatory Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

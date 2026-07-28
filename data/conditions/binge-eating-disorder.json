@@ -1,7 +1,11 @@
 {
-  "id": "binge-eating-disorder",
-  "name": "Binge Eating Disorder",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "binge-eating-disorder",
+      "name": "Binge Eating Disorder",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

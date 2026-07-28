@@ -1,7 +1,11 @@
 {
-  "id": "cervical-strain",
-  "name": "Cervical Strain",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "cervical-strain",
+      "name": "Cervical Strain",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

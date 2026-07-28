@@ -1,7 +1,11 @@
 {
-  "id": "optic-neuritis",
-  "name": "Optic Neuritis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "optic-neuritis",
+      "name": "Optic Neuritis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

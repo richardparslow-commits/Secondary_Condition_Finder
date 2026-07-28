@@ -1,7 +1,11 @@
 {
-  "id": "thyroid-cancer",
-  "name": "Thyroid Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "thyroid-cancer",
+      "name": "Thyroid Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

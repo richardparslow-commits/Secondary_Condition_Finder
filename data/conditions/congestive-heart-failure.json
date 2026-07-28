@@ -1,7 +1,11 @@
 {
-  "id": "congestive-heart-failure",
-  "name": "Congestive Heart Failure",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "congestive-heart-failure",
+      "name": "Congestive Heart Failure",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

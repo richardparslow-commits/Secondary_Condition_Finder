@@ -1,7 +1,11 @@
 {
-  "id": "rotator-cuff-injury",
-  "name": "Rotator Cuff Injury",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "rotator-cuff-injury",
+      "name": "Rotator Cuff Injury",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "al-amyloidosis",
-  "name": "Al Amyloidosis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "al-amyloidosis",
+      "name": "Al Amyloidosis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

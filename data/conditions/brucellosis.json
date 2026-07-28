@@ -1,7 +1,11 @@
 {
-  "id": "brucellosis",
-  "name": "Brucellosis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "brucellosis",
+      "name": "Brucellosis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "interstitial-lung-disease",
-  "name": "Interstitial Lung Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "interstitial-lung-disease",
+      "name": "Interstitial Lung Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

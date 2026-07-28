@@ -1,7 +1,11 @@
 {
-  "id": "insomnia",
-  "name": "Insomnia",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "insomnia",
+      "name": "Insomnia",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "epilepsy",
-  "name": "Epilepsy",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "epilepsy",
+      "name": "Epilepsy",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

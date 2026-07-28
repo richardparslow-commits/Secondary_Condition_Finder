@@ -1,7 +1,11 @@
 {
-  "id": "ischemic-heart-disease",
-  "name": "Ischemic Heart Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "ischemic-heart-disease",
+      "name": "Ischemic Heart Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

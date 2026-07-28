@@ -1,7 +1,11 @@
 {
-  "id": "osteoarthritis",
-  "name": "Osteoarthritis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "osteoarthritis",
+      "name": "Osteoarthritis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

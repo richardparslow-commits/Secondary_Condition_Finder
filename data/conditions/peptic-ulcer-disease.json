@@ -1,7 +1,11 @@
 {
-  "id": "peptic-ulcer-disease",
-  "name": "Peptic Ulcer Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "peptic-ulcer-disease",
+      "name": "Peptic Ulcer Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

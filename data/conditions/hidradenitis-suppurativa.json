@@ -1,7 +1,11 @@
 {
-  "id": "hidradenitis-suppurativa",
-  "name": "Hidradenitis Suppurativa",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "hidradenitis-suppurativa",
+      "name": "Hidradenitis Suppurativa",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

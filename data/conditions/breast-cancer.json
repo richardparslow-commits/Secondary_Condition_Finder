@@ -1,7 +1,11 @@
 {
-  "id": "breast-cancer",
-  "name": "Breast Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "breast-cancer",
+      "name": "Breast Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

@@ -1,7 +1,11 @@
 {
-  "id": "aortic-aneurysm",
-  "name": "Aortic Aneurysm",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "aortic-aneurysm",
+      "name": "Aortic Aneurysm",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

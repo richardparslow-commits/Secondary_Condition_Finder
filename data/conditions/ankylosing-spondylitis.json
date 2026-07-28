@@ -1,7 +1,11 @@
 {
-  "id": "ankylosing-spondylitis",
-  "name": "Ankylosing Spondylitis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "ankylosing-spondylitis",
+      "name": "Ankylosing Spondylitis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

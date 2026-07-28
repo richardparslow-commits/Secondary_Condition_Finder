@@ -1,7 +1,11 @@
 {
-  "id": "psoriasis",
-  "name": "Psoriasis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "psoriasis",
+      "name": "Psoriasis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

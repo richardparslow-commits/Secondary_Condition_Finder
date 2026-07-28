@@ -1,7 +1,11 @@
 {
-  "id": "chronic-sinusitis",
-  "name": "Chronic Sinusitis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "chronic-sinusitis",
+      "name": "Chronic Sinusitis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

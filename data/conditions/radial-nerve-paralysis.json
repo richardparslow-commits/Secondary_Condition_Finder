@@ -1,7 +1,11 @@
 {
-  "id": "radial-nerve-paralysis",
-  "name": "Radial Nerve Paralysis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "radial-nerve-paralysis",
+      "name": "Radial Nerve Paralysis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

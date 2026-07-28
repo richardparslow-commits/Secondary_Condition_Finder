@@ -1,7 +1,11 @@
 {
-  "id": "abdominal-hernia",
-  "name": "Abdominal Hernia",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "abdominal-hernia",
+      "name": "Abdominal Hernia",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

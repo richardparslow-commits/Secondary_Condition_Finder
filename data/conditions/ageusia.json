@@ -1,7 +1,11 @@
 {
-  "id": "ageusia",
-  "name": "Ageusia",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "ageusia",
+      "name": "Ageusia",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

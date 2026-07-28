@@ -1,7 +1,11 @@
 {
-  "id": "lyme-disease",
-  "name": "Lyme Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "lyme-disease",
+      "name": "Lyme Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

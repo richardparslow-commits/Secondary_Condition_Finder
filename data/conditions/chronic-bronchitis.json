@@ -1,7 +1,11 @@
 {
-  "id": "chronic-bronchitis",
-  "name": "Chronic Bronchitis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "chronic-bronchitis",
+      "name": "Chronic Bronchitis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

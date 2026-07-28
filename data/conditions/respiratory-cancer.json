@@ -1,7 +1,11 @@
 {
-  "id": "respiratory-cancer",
-  "name": "Respiratory Cancer",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "respiratory-cancer",
+      "name": "Respiratory Cancer",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

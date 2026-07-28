@@ -1,7 +1,11 @@
 {
-  "id": "scoliosis",
-  "name": "Scoliosis",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "scoliosis",
+      "name": "Scoliosis",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

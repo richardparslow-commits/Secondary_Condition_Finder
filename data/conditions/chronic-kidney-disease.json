@@ -1,7 +1,11 @@
 {
-  "id": "chronic-kidney-disease",
-  "name": "Chronic Kidney Disease",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "chronic-kidney-disease",
+      "name": "Chronic Kidney Disease",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }

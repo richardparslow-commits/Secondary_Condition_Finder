@@ -1,7 +1,11 @@
 {
-  "id": "muscle-injury",
-  "name": "Muscle Injury",
-  "aliases": [],
-  "bodySystem": "uncategorized",
-  "diagnosticCode": "TODO"
+  "conditions": [
+    {
+      "id": "muscle-injury",
+      "name": "Muscle Injury",
+      "aliases": [],
+      "bodySystem": "uncategorized",
+      "diagnosticCode": "TODO"
+    }
+  ]
 }
