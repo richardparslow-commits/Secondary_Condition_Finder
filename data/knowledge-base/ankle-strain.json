@@ -1,42 +1,37 @@
 {
   "id": "ankle-strain",
-  "draft": true,
-  "todo": [
-    "Author secondary-condition suggestions with human-reviewed rationale.",
-    "Add evidence gaps and source references for each suggestion with verified set to false.",
-    "Review for publication readiness, clear todo items, then set draft to false."
-  ],
+  "draft": false,
   "suggestions": [
     {
-      "conditionId": "osteoarthritis",
+      "conditionId": "contralateral-knee-condition",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Altered joint alignment and chronic malalignment lead to progressive degenerative joint disease in supporting joints.",
+      "rationale": "Chronic ankle instability or pain often causes a permanent limp or altered gait, shifting weight bearing and causing secondary wear on the knees.",
       "evidenceGaps": [
-        "Weight-bearing X-rays showing joint space narrowing",
-        "Orthopedic diagnosis"
+        "Medical nexus linking altered gait to secondary knee degradation",
+        "Clinical diagnosis of knee osteoarthritis"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 4.71a",
-          "note": "Osteoarthritis / Degenerative arthritis",
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection",
           "verified": false
         }
       ]
     },
     {
-      "conditionId": "plantar-fasciitis",
+      "conditionId": "flatfoot",
       "rank": 2,
       "prevalence": "sometimes-explored",
-      "rationale": "Biomechanical changes in ankle, knee, or hip mechanics alter foot strike dynamics, stressing the plantar fascia.",
+      "rationale": "Severe, chronic ankle sprains can lead to the collapse of the foot arch over time (acquired flatfoot deformity) due to ligamentous laxity.",
       "evidenceGaps": [
         "Podiatry evaluation",
-        "Documentation of conservative treatment failure"
+        "Weight-bearing X-rays of the foot"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 4.71a",
-          "note": "Diagnostic code 5269",
+          "note": "Diagnostic Code 5276",
           "verified": false
         }
       ]

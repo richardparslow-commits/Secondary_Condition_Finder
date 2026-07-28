@@ -1,50 +1,37 @@
 {
   "id": "lumbar-strain",
   "draft": false,
-  "todo": [],
   "suggestions": [
     {
       "conditionId": "radiculopathy",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Neurologic symptoms radiating into the legs are a recognized associated finding with chronic lumbar spine conditions. VA guidance directs that associated objective neurologic abnormalities be evaluated separately.",
+      "rationale": "Chronic lumbar strain frequently causes nerve root compression (radiculopathy), specifically radiating down the sciatic nerve.",
       "evidenceGaps": [
-        "Exam or imaging documenting radiculopathy and the affected nerve",
-        "Identification of which extremity or extremities are involved",
-        "Severity characterization (mild, moderate, or severe incomplete paralysis)"
+        "EMG/Nerve Conduction Study",
+        "Clinical documentation of lower extremity radicular pain/numbness"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 4.71a",
-          "note": "General Rating Formula for Diseases and Injuries of the Spine, Note (1), addressing separate evaluation of associated objective neurologic abnormalities.",
-          "verified": false
-        },
-        {
-          "citation": "38 CFR 4.124a",
-          "note": "Schedule of ratings, neurological conditions, including the sciatic nerve.",
+          "note": "Spine rating formula and nerve involvement",
           "verified": false
         }
       ]
     },
     {
-      "conditionId": "sciatica",
+      "conditionId": "contralateral-knee-condition",
       "rank": 2,
-      "prevalence": "commonly-explored",
-      "rationale": "Frequently assessed where radiating leg pain is documented. Overlaps substantially with radiculopathy; the two should not be claimed in a way that double-counts the same impairment.",
+      "prevalence": "sometimes-explored",
+      "rationale": "An altered gait (limping) resulting from severe lumbar strain can cause degenerative changes or aggravate existing conditions in the knees over time.",
       "evidenceGaps": [
-        "Clinical findings distinguishing sciatica from other sources of leg pain",
-        "Documentation of which nerve distribution is involved",
-        "Review for overlap with any radiculopathy claim"
+        "Medical nexus linking gait alteration to secondary joint degradation",
+        "Current diagnosis of knee osteoarthritis or strain"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 4.124a",
-          "note": "Schedule of ratings, neurological conditions, sciatic nerve.",
-          "verified": false
-        },
-        {
-          "citation": "38 CFR 4.14",
-          "note": "Avoidance of pyramiding.",
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection via altered biomechanics",
           "verified": false
         }
       ]
@@ -53,21 +40,15 @@
       "conditionId": "depressive-disorder",
       "rank": 3,
       "prevalence": "sometimes-explored",
-      "rationale": "Sustained chronic pain is sometimes linked to depressive symptoms. Requires a diagnosis from a qualified mental health provider and an opinion addressing the pain relationship.",
+      "rationale": "Chronic severe pain and subsequent loss of mobility from lumbar conditions can proximately cause depressive disorders.",
       "evidenceGaps": [
-        "Mental health diagnosis from a qualified provider",
-        "Documentation of pain chronicity and functional impact",
-        "Nexus opinion addressing chronic pain as the cause or aggravating factor"
+        "Mental health diagnosis by a qualified provider",
+        "Treatment notes associating onset of depression with chronic pain limitations"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 4.130",
-          "note": "Schedule of ratings, mental disorders.",
-          "verified": false
-        },
-        {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection.",
+          "note": "Secondary service connection for mental health proximately caused by physical disability",
           "verified": false
         }
       ]

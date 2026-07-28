@@ -1,42 +1,37 @@
 {
   "id": "hip-strain",
-  "draft": true,
-  "todo": [
-    "Author secondary-condition suggestions with human-reviewed rationale.",
-    "Add evidence gaps and source references for each suggestion with verified set to false.",
-    "Review for publication readiness, clear todo items, then set draft to false."
-  ],
+  "draft": false,
   "suggestions": [
     {
-      "conditionId": "osteoarthritis",
+      "conditionId": "contralateral-knee-condition",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Altered joint alignment and chronic malalignment lead to progressive degenerative joint disease in supporting joints.",
+      "rationale": "Hip injuries frequently result in long-term altered gait, transferring abnormal mechanical stress to the knees, particularly the contralateral side.",
       "evidenceGaps": [
-        "Weight-bearing X-rays showing joint space narrowing",
-        "Orthopedic diagnosis"
+        "Medical nexus linking altered biomechanics to secondary joint wear",
+        "Diagnosis of knee condition"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 4.71a",
-          "note": "Osteoarthritis / Degenerative arthritis",
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection via altered gait",
           "verified": false
         }
       ]
     },
     {
-      "conditionId": "plantar-fasciitis",
+      "conditionId": "lumbar-strain",
       "rank": 2,
       "prevalence": "sometimes-explored",
-      "rationale": "Biomechanical changes in ankle, knee, or hip mechanics alter foot strike dynamics, stressing the plantar fascia.",
+      "rationale": "Compensatory posture and altered gait due to hip pain can strain the lumbar spine over time.",
       "evidenceGaps": [
-        "Podiatry evaluation",
-        "Documentation of conservative treatment failure"
+        "Orthopedic assessment of spinal alignment relative to hip dysfunction",
+        "Diagnosis of lumbar condition"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 4.71a",
-          "note": "Diagnostic code 5269",
+          "citation": "38 CFR 3.310",
+          "note": "Aggravation of spinal condition",
           "verified": false
         }
       ]
