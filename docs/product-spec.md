@@ -3,12 +3,6 @@
 Status: draft for review
 Scope: Phase 1 only. See `docs/phase-plan.md` for Phases 2 and 3.
 
-## Current status source of truth
-
-This document is the authoritative source for current implementation status.
-Other docs may describe architecture, roadmap, or workflow guidance, but this
-file owns the "what is done" call for Phase 1.
-
 ## Problem
 
 A veteran service connected for one condition often has no practical way to
@@ -195,14 +189,7 @@ Mapped to `docs/phase-plan.md`.
 
 ## Open items before Phase 2
 
-1. **Citation review workflow.** In place for data constraints and authoring
-   checks. Citations remain unverified by default and require qualified human
-   review before any publication claim.
-2. **Knowledge base coverage.** In progress. 191 of 191 catalog conditions are
-   represented in mapping files, with 17 currently published and 174 still
-   draft.
-3. **Accessibility audit.** In progress. Existing automated UX reliability
-   checks run in test, but a dedicated accessibility audit pass remains required
-   before Phase 2 sign-off.
-4. **No authentication.** Deliberate for Phase 1, since no user data is stored.
-   Revisit before any deployment that handles veteran-specific data.
+1. **Citation review workflow (Workflow Enforced / Legal Review In Progress).** All citations ship with `verified: false` and are strictly validated by build/runtime schema checks across both secondary mappings and presumptive source references. Formal subject-matter expert review of individual regulatory citations remains an ongoing operational task governed by `docs/kb-pr-checklist.md`.
+2. **Mapping-authoring gaps (In Progress).** 191 catalog conditions have version-controlled knowledge-base files, but coverage is currently split: 17 mappings are published (`draft: false`) and active in UI recommendations, while 174 remain draft placeholders (`draft: true`) awaiting domain authoring.
+3. **Accessibility audit (In Progress).** Route-level semantic accessibility contracts are automated in `tests/accessibility-ux-reliability.test.ts` (landmarks, heading structure, scope copy, legal-route discoverability), but formal WCAG 2.1 AA keyboard navigation and screen-reader audit passes (NVDA/VoiceOver) have not yet been conducted.
+4. **No authentication (Deliberate).** Intentional for Phase 1/Phase 2 client-side architecture since no veteran PII or intake free text is persisted.

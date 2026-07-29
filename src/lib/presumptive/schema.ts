@@ -13,7 +13,7 @@ export const presumptiveSourceSchema = z.object({
    * True only after a qualified human has confirmed the citation. Never set by
    * an automated agent, same rule as the secondary-condition knowledge base.
    */
-  verified: z.boolean(),
+  verified: z.literal(false),
 });
 
 /**
