@@ -148,7 +148,7 @@ export function recommend(
     }
   }
 
-  const recommendations: Recommendation[] = [...accumulator.values()]
+  let recommendations: Recommendation[] = [...accumulator.values()]
     .map((entry) => {
       const catalogEntry = byId.get(entry.conditionId);
       if (!catalogEntry) {
@@ -172,6 +172,16 @@ export function recommend(
       };
     })
     .sort((a, b) => b.score - a.score || a.condition.localeCompare(b.condition));
+
+  // Focus Engine: Constrain recommendations strictly to user-selected diagnosed conditions
+  if (intake.diagnosedConditions && intake.diagnosedConditions.length > 0) {
+    const diagnosedSet = new Set(
+      intake.diagnosedConditions.map(c => normalizeConditionName(c))
+    );
+    recommendations = recommendations.filter(rec => 
+      diagnosedSet.has(normalizeConditionName(rec.condition))
+    );
+  }
 
   return {
     recommendations,
