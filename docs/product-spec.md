@@ -189,8 +189,7 @@ Mapped to `docs/phase-plan.md`.
 
 ## Open items before Phase 2
 
-1. **Citation review workflow.** Established. Every citation ships with `verified: false` and runtime validation rules to enforce explicit review processes per `docs/kb-pr-checklist.md`.
-2. **Knowledge base coverage.** Completed. 191 of 191 catalog conditions have authored knowledge-base files (17 published, 174 draft placeholders) (100% coverage across all 14 body systems).
-3. **Accessibility audit.** Verified. Automated accessibility and UX reliability tests (`tests/accessibility-ux-reliability.test.ts`) pass as part of regular test suite runs.
-4. **No authentication.** Deliberate for Phase 1, since no user data is stored.
-   Revisit before any deployment that handles veteran-specific data.
+1. **Citation review workflow (Workflow Enforced / Legal Review In Progress).** All citations ship with `verified: false` and are strictly validated by build/runtime schema checks. Formal subject-matter expert review of individual regulatory citations remains an ongoing operational task governed by `docs/kb-pr-checklist.md`.
+2. **Mapping-authoring gaps (In Progress).** 191 catalog conditions have version-controlled knowledge-base files, but coverage is currently split: 17 mappings are published (`draft: false`) and active in UI recommendations, while 174 remain draft placeholders (`draft: true`) awaiting domain authoring.
+3. **Accessibility audit (Open).** Basic semantic structure tests exist in `tests/accessibility-ux-reliability.test.ts`, but formal WCAG 2.1 AA keyboard navigation and screen-reader audit passes (NVDA/VoiceOver) have not been conducted.
+4. **No authentication (Deliberate).** Intentional for Phase 1/Phase 2 client-side architecture since no veteran PII or intake free text is persisted.
