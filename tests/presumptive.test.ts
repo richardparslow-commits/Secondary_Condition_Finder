@@ -1,3 +1,5 @@
+import path from "path";
+import fs from "fs";
 import { describe, it, expect } from 'vitest';
 
 // Presumptive evaluation helper mock or import
