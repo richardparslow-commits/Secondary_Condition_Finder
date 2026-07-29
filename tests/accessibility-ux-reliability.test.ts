@@ -1,34 +1,56 @@
-import { describe, it, expect } from "vitest";
-import fs from "fs";
-import path from "path";
+import { describe, expect, it } from "vitest";
+import { renderToStaticMarkup } from "react-dom/server";
 
-describe("Phase 1/2 Accessibility & UX Reliability Suite", () => {
-  it("enforces semantic structure and aria attributes across core components", () => {
-    // Verify that core UI pages / layouts exist and include accessibility hooks
-    const layoutPath = path.join(process.cwd(), "src/app/layout.tsx");
-    expect(fs.existsSync(layoutPath)).toBe(true);
+import HomePage from "@/app/page";
+import PresumptivePage from "@/app/presumptive/page";
+import PrivacyPage from "@/app/privacy/page";
+import SecondaryLandingPage from "@/app/secondary/page";
+import TermsPage from "@/app/terms/page";
 
-    const layoutContent = fs.readFileSync(layoutPath, "utf8");
-    expect(layoutContent).toContain("html");
-    expect(layoutContent).toContain("lang");
+function renderPageHtml(element: ReturnType<typeof HomePage>): string {
+  return renderToStaticMarkup(element);
+}
+
+function expectSingleMainLandmark(html: string): void {
+  const mainCount = (html.match(/<main/g) ?? []).length;
+  expect(mainCount).toBe(1);
+}
+
+function expectHeadingHierarchy(html: string): void {
+  expect(html).toContain("<h1");
+  expect(html.includes("<h3") && !html.includes("<h2")).toBe(false);
+}
+
+describe("accessibility and UX content contracts", () => {
+  it("renders one main landmark and a top-level heading on primary routes", () => {
+    const pages = [
+      renderPageHtml(HomePage()),
+      renderPageHtml(SecondaryLandingPage()),
+      renderPageHtml(PresumptivePage()),
+      renderPageHtml(PrivacyPage()),
+      renderPageHtml(TermsPage()),
+    ];
+
+    for (const page of pages) {
+      expectSingleMainLandmark(page);
+      expectHeadingHierarchy(page);
+    }
   });
 
-  it("verifies accessibility audit documentation exists and meets WCAG 2.1 AA standards", () => {
-    const auditDoc = path.join(process.cwd(), "docs/accessibility-audit.md");
-    expect(fs.existsSync(auditDoc)).toBe(true);
+  it("keeps route copy explicit about non-diagnostic/non-deterministic scope", () => {
+    const home = renderPageHtml(HomePage());
+    const terms = renderPageHtml(TermsPage());
+    const privacy = renderPageHtml(PrivacyPage());
 
-    const auditContent = fs.readFileSync(auditDoc, "utf8");
-    expect(auditContent).toContain("WCAG 2.1 Level AA");
-    expect(auditContent).toContain("Keyboard Navigation");
-    expect(auditContent).toContain("Zero PII");
+    expect(home).toContain("This is a research aid, not advice.");
+    expect(terms).toContain("Not Legal or Medical Advice");
+    expect(privacy).toContain("Zero PII Policy");
   });
 
-  it("ensures data provenance badges provide clear screen reader context", () => {
-    const badgePath = path.join(process.cwd(), "src/components/DataProvenanceBadge.tsx");
-    expect(fs.existsSync(badgePath)).toBe(true);
+  it("keeps both legal routes discoverable from the main chooser page", () => {
+    const home = renderPageHtml(HomePage());
 
-    const badgeContent = fs.readFileSync(badgePath, "utf8");
-    expect(badgeContent).toContain("Source Provenance");
-    expect(badgeContent).toContain("verified: false");
+    expect(home).toContain('href="/privacy"');
+    expect(home).toContain('href="/terms"');
   });
 });

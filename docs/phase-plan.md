@@ -25,7 +25,7 @@ This plan defines a narrow, defensible delivery path that proves product value w
 ### Phase 1 Validation Gate Status
 - [x] **Clear user problem:** Claim-preparation research aid distinguishing 38 CFR 3.310 (secondary) from 38 CFR 3.307/3.309 (presumptive).
 - [x] **No live-data dependency:** Fully operational client-side research tool with offline fallback.
-- [x] **Minimal API need:** Local JSON datasets with optional client-side VA sandbox adapter (`src/lib/va/sandbox-adapter.ts`).
+- [x] **Minimal API need:** Local JSON datasets with optional client-side VA sandbox adapter boundary (`src/lib/va/adapter.ts`).
 - [x] **Demo readiness:** Repeatable walkthroughs and scenarios (`/scenarios`) validated by green test suites.
 - [x] **Public privacy/terms/scope publication:** Live dedicated routes at `/privacy` and `/terms`.
 - [x] **Transparent coverage state:** Documentation explicitly states 191 catalog conditions exist (17 published mappings active in UI, 174 draft placeholders excluded from recommendations).

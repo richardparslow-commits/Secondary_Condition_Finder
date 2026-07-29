@@ -19,36 +19,32 @@ export interface VaAdapterResult<T> {
   error?: string;
 }
 
-/**
-  * Canonical unified VA Adapter client function.
-  * Handles feature flags, simulated timeouts, upstream server errors (500),
-  * and graceful fallback to local data models.
-  */
 export async function fetchSandboxVABits(
   userId: string,
-  config: VaAdapterConfig = { enabled: true, timeoutMs: 1000, mockFailureMode: "none" }
+  config: VaAdapterConfig = { enabled: true, timeoutMs: 1000, mockFailureMode: "none" },
 ): Promise<VaAdapterResult<VaDisabilityRating>> {
   if (!config.enabled) {
     return {
       success: false,
       data: null,
       source: "local-fallback",
-      error: "VA API integration is disabled by feature flag."
+      error: "VA API integration is disabled by feature flag.",
     };
   }
 
   const timeout = config.timeoutMs || 1000;
 
-  // Handle simulated failure modes for resilience testing
   if (config.mockFailureMode === "timeout") {
     try {
-      await new Promise((_, reject) => setTimeout(() => reject(new Error("Gateway Timeout")), timeout));
-    } catch (err) {
+      await new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Gateway Timeout")), timeout),
+      );
+    } catch {
       return {
         success: false,
         data: null,
         source: "local-fallback",
-        error: "Gateway Timeout: Upstream VA API did not respond within threshold."
+        error: "Gateway Timeout: Upstream VA API did not respond within threshold.",
       };
     }
   }
@@ -58,21 +54,24 @@ export async function fetchSandboxVABits(
       success: false,
       data: null,
       source: "local-fallback",
-      error: "Internal Server Error (500): VA API backend failure."
+      error: "Internal Server Error (500): VA API backend failure.",
     };
   }
 
-  // Simulate successful normal operation
   return {
     success: true,
     data: {
       ratingPercentage: 70,
       effectiveDate: "2024-01-01",
       conditionsConnected: [
-        { name: "Post-Traumatic Stress Disorder (PTSD)", diagnosticCode: "9411", serviceConnected: true },
-        { name: "Tinnitus", diagnosticCode: "6260", serviceConnected: true }
-      ]
+        {
+          name: "Post-Traumatic Stress Disorder (PTSD)",
+          diagnosticCode: "9411",
+          serviceConnected: true,
+        },
+        { name: "Tinnitus", diagnosticCode: "6260", serviceConnected: true },
+      ],
     },
-    source: "va-sandbox-api"
+    source: "va-sandbox-api",
   };
 }
