@@ -40,3 +40,17 @@ describe('Presumptive Track Hardening & Regression Suite', () => {
     expect(result.message).toContain('not currently recognized in the validated burn pit registry');
   });
 });
+
+  it("strictly enforces verified: false across all presumptive source references", () => {
+    const presDir = path.join(process.cwd(), "data/presumptives");
+    const files = fs.readdirSync(presDir).filter(f => f.endsWith(".json"));
+    
+    files.forEach(file => {
+      const data = JSON.parse(fs.readFileSync(path.join(presDir, file), "utf8"));
+      if (data.sourceReferences) {
+        data.sourceReferences.forEach(ref => {
+          expect(ref.verified).toBe(false);
+        });
+      }
+    });
+  });
