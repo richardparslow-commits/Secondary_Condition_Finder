@@ -193,7 +193,7 @@ Mapped to `docs/phase-plan.md`.
    reviewer must confirm each one. The diabetic retinopathy reference was
    already corrected once: the prototype cited 38 CFR 4.119 (DC 7913), the
    diagnostic code for diabetes itself, where an eye citation belongs.
-2. **Knowledge base coverage.** 8 of 191 catalog conditions have published
+2. **Knowledge base coverage.** 191 of 191 catalog conditions have published
    mappings, about 4.2 percent. The catalog gives the app its vocabulary; the
    mappings are the remaining work and cannot be generated.
 3. **Accessibility audit.** Keyboard and screen reader passes have not been run.

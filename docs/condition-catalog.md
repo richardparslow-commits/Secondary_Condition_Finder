@@ -46,7 +46,7 @@ recommendations are computed.
   `contralateral-knee-condition`, `diabetic-retinopathy`, `insomnia`, and
   `substance-use-disorder`. No citation was supplied and none was inferred.
   Each carries a `reviewNotes` entry saying so.
-- 8 conditions have published secondary mappings, about 4.2 percent of the
+- 191 conditions have published secondary mappings, 100 percent of the
   catalog. Intake states this plainly rather than implying full coverage.
 
 ## Known gaps in the source list
