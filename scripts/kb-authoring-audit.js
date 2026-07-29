@@ -31,7 +31,7 @@ catalogFiles.forEach(catFile => {
 
 console.log("================ BODY SYSTEM AUTHORING STATUS ================");
 Object.entries(systemSummary).forEach(([sys, stats]) => {
-  const pct = Math.round((stats.published / stats.total) * 100);
+  const pct = stats.total > 0 ? Math.round((stats.published / stats.total) * 100) : 0;
   console.log(`[${sys}] Total: ${stats.total} | Published: ${stats.published} | Drafts: ${stats.draft} (${pct}% complete)`);
 });
 console.log("==============================================================\n");
