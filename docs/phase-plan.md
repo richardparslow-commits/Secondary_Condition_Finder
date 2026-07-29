@@ -14,41 +14,21 @@ This plan defines a narrow, defensible delivery path that proves product value w
 
 ---
 
-## Phase 1: Version 1 Web App (No Live VA Data)
+## Phase 1: MVP & Core Evaluation Engine
 
-### Scope
+### Core Deliverables
+- [x] **Secondary Track (38 CFR 3.310):** Given service-connected conditions, returns ranked secondary condition exploration recommendations with reasoning, evidence gaps, and citations.
+- [x] **Presumptive Track (38 CFR 3.307 / 3.309):** Sourced criteria for Agent Orange and PACT Act airborne hazards/burn pits.
+- [x] **Offline Data Model:** Statically served catalog (191 conditions) and local JSON knowledge-base mappings.
+- [x] **Public Legal Routes:** Dedicated app pages published at `/privacy` (Zero PII policy) and `/terms` (Scope, legal disclaimers, unverified citations notice).
 
-- Deliver a usable web app experience that works without production VA credentials.
-- Convert current prototype logic into structured product components.
-- Focus on intake, condition exploration, and conservative explanation output.
-
-### Deliverables
-
-- Version 1 functional specification and acceptance criteria.
-- Intake flow supporting one or more service-connected primary conditions.
-- Explicit secondary wizard flow: diagnosed conditions, service-connected
-  status, ratings, optional upload flag, grouped suggestions, evidence review.
-- Optional intake fields for symptoms, medications, exposures, and notes.
-- Truthful MVP upload step that does not parse or interpret records.
-- Structured condition knowledge base replacing hardcoded prototype lookups.
-- Recommendation output that includes:
-  - possible secondary conditions to explore
-  - concise rationale for each suggestion
-  - confidence style that is conservative and non-diagnostic
-  - evidence-gap prompts describing missing documentation or details
-- Clear disclaimers throughout UI and output surfaces.
-- Sample veteran scenarios for demo walkthroughs.
-- Basic event logging for recommendation rationale traceability.
-
-### Acceptance Criteria
-
-- A user can complete intake and receive ranked exploration suggestions.
-- Every suggestion includes explanation text and at least one source placeholder.
-- The app works end-to-end with no dependency on live VA production data.
-- Disclaimers are visible in intake and results views.
-- At least three demo scenarios can be executed consistently.
-
----
+### Phase 1 Validation Gate Status
+- [x] **Clear user problem:** Claim-preparation research aid distinguishing 38 CFR 3.310 (secondary) from 38 CFR 3.307/3.309 (presumptive).
+- [x] **No live-data dependency:** Fully operational client-side research tool with offline fallback.
+- [x] **Minimal API need:** Local JSON datasets with optional client-side VA sandbox adapter (`src/lib/va/sandbox-adapter.ts`).
+- [x] **Demo readiness:** Repeatable walkthroughs and scenarios (`/scenarios`) validated by green test suites.
+- [x] **Public privacy/terms/scope publication:** Live dedicated routes at `/privacy` and `/terms`.
+- [x] **Transparent coverage state:** Documentation explicitly states 191 catalog conditions exist (17 published mappings active in UI, 174 draft placeholders excluded from recommendations).
 
 ## Phase 2: Sandbox VA API Integration
 
