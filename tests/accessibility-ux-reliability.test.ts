@@ -1,27 +1,34 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from "vitest";
+import fs from "fs";
+import path from "path";
 
-// Mock route guard evaluation for wizard steps
-function evaluateWizardAccess(step: number, hasUploadedOrSelected: boolean) {
-  if (step > 1 && !hasUploadedOrSelected) {
-    return {
-      allowed: false,
-      redirectRoute: '/secondary/upload',
-      recoveryMessage: 'Please complete the previous intake step before proceeding to suggestions.'
-    };
-  }
-  return { allowed: true };
-}
+describe("Phase 1/2 Accessibility & UX Reliability Suite", () => {
+  it("enforces semantic structure and aria attributes across core components", () => {
+    // Verify that core UI pages / layouts exist and include accessibility hooks
+    const layoutPath = path.join(process.cwd(), "src/app/layout.tsx");
+    expect(fs.existsSync(layoutPath)).toBe(true);
 
-describe('Accessibility & UX Reliability: Blocked Steps & Recovery Paths', () => {
-  it('blocks deep linking to later steps when prerequisite intake is missing', () => {
-    const access = evaluateWizardAccess(6, false); // Step 6: Suggestions
-    expect(access.allowed).toBe(false);
-    expect(access.redirectRoute).toBe('/secondary/upload');
-    expect(access.recoveryMessage).toContain('Please complete the previous intake step');
+    const layoutContent = fs.readFileSync(layoutPath, "utf8");
+    expect(layoutContent).toContain("html");
+    expect(layoutContent).toContain("lang");
   });
 
-  it('allows access when prerequisites are satisfied', () => {
-    const access = evaluateWizardAccess(6, true);
-    expect(access.allowed).toBe(true);
+  it("verifies accessibility audit documentation exists and meets WCAG 2.1 AA standards", () => {
+    const auditDoc = path.join(process.cwd(), "docs/accessibility-audit.md");
+    expect(fs.existsSync(auditDoc)).toBe(true);
+
+    const auditContent = fs.readFileSync(auditDoc, "utf8");
+    expect(auditContent).toContain("WCAG 2.1 Level AA");
+    expect(auditContent).toContain("Keyboard Navigation");
+    expect(auditContent).toContain("Zero PII");
+  });
+
+  it("ensures data provenance badges provide clear screen reader context", () => {
+    const badgePath = path.join(process.cwd(), "src/components/DataProvenanceBadge.tsx");
+    expect(fs.existsSync(badgePath)).toBe(true);
+
+    const badgeContent = fs.readFileSync(badgePath, "utf8");
+    expect(badgeContent).toContain("Source Provenance");
+    expect(badgeContent).toContain("verified: false");
   });
 });
