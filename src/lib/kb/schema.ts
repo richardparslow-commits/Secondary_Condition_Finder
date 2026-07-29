@@ -34,7 +34,7 @@ export const suggestionSchema = z.object({
   rationale: z.string().min(1),
   /** What a claim on this theory typically still needs. At least one. */
   evidenceGaps: z.array(z.string().min(1)).min(1),
-  sourceReferences: z.array(sourceReferenceSchema).min(1),
+  sourceReferences: z.array(sourceReferenceSchema).min(1).max(3),
 });
 
 /**
