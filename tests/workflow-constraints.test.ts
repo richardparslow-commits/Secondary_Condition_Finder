@@ -6,9 +6,9 @@ import type { Recommendation } from "../src/lib/engine/types";
 
 describe("P1 Ticket 5: Suggestion Constraints to Diagnosed Set", () => {
   const mockCatalog: ConditionCatalog = [
-    { id: "lumbar-strain", name: "Lumbar Strain", bodySystem: "Musculoskeletal", aliases: [], ratingSchedule: [] },
-    { id: "radiculopathy", name: "Radiculopathy", bodySystem: "Neurological", aliases: [], ratingSchedule: [] },
-    { id: "depression", name: "Major Depressive Disorder", bodySystem: "Mental Health", aliases: [], ratingSchedule: [] }
+    { id: "lumbar-strain", name: "Lumbar Strain", bodySystem: "Musculoskeletal", aliases: [], ratingSchedule: [], reviewNotes: ["Verified"] },
+    { id: "radiculopathy", name: "Radiculopathy", bodySystem: "Neurological", aliases: [], ratingSchedule: [], reviewNotes: ["Verified"] },
+    { id: "depression", name: "Major Depressive Disorder", bodySystem: "Mental Health", aliases: [], ratingSchedule: [], reviewNotes: ["Verified"] }
   ];
 
   const mockKb: KnowledgeBase = [
