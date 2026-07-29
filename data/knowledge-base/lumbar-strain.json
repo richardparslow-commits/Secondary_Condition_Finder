@@ -1,54 +1,62 @@
 {
   "id": "lumbar-strain",
   "draft": false,
+  "todo": [],
   "suggestions": [
     {
-      "conditionId": "radiculopathy",
+      "conditionId": "radiculopathy-sciatic",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Chronic lumbar strain frequently causes nerve root compression (radiculopathy), specifically radiating down the sciatic nerve.",
+      "rationale": "Degenerative changes or bulging discs in the lumbar spine frequently compress the sciatic nerve roots, causing radiating pain, numbness, or tingling down the leg (sciatica).",
       "evidenceGaps": [
-        "EMG/Nerve Conduction Study",
-        "Clinical documentation of lower extremity radicular pain/numbness"
+        "Current diagnosis of sciatic radiculopathy",
+        "EMG/NCS test results showing nerve impingement",
+        "Medical nexus connecting nerve compression to the service-connected lumbar condition"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 4.71a",
-          "note": "Spine rating formula and nerve involvement",
+          "citation": "38 CFR § 3.310(a)",
+          "note": "Authorizes secondary connection for disabilities proximately caused by a service-connected condition.",
+          "verified": false
+        },
+        {
+          "citation": "VA M21-1, Part V, Subpart iii, Chapter 1, Section B",
+          "note": "Guidelines on evaluating peripheral nerve conditions secondary to spinal disorders.",
           "verified": false
         }
       ]
     },
     {
-      "conditionId": "contralateral-knee-condition",
+      "conditionId": "radiculopathy-femoral",
       "rank": 2,
       "prevalence": "sometimes-explored",
-      "rationale": "An altered gait (limping) resulting from severe lumbar strain can cause degenerative changes or aggravate existing conditions in the knees over time.",
+      "rationale": "Compression of the upper lumbar nerve roots (L2-L4) can cause femoral nerve radiculopathy, resulting in anterior thigh pain and weakness.",
       "evidenceGaps": [
-        "Medical nexus linking gait alteration to secondary joint degradation",
-        "Current diagnosis of knee osteoarthritis or strain"
+        "Current diagnosis of femoral radiculopathy",
+        "Imaging (MRI) showing upper lumbar nerve root compression"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection via altered biomechanics",
+          "citation": "38 CFR § 3.310(a)",
+          "note": "Authorizes secondary connection for disabilities proximately caused by a service-connected condition.",
           "verified": false
         }
       ]
     },
     {
-      "conditionId": "depressive-disorder",
+      "conditionId": "major-depressive-disorder",
       "rank": 3,
       "prevalence": "sometimes-explored",
-      "rationale": "Chronic severe pain and subsequent loss of mobility from lumbar conditions can proximately cause depressive disorders.",
+      "rationale": "Chronic, severe lower back pain and resulting functional limitations can lead to the development of secondary depression.",
       "evidenceGaps": [
-        "Mental health diagnosis by a qualified provider",
-        "Treatment notes associating onset of depression with chronic pain limitations"
+        "Current mental health diagnosis",
+        "Treatment records showing pain interfering with sleep and daily activities",
+        "Nexus opinion linking depression specifically to chronic pain from the back condition"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection for mental health proximately caused by physical disability",
+          "citation": "38 CFR § 3.310(a)",
+          "note": "Authorizes secondary connection for mental health conditions proximately caused by the chronic pain of a service-connected physical condition.",
           "verified": false
         }
       ]
