@@ -99,11 +99,8 @@ Wizard notes:
 
 ## Coverage
 
-191 conditions across 14 body systems are in the catalog. All 191 have authored knowledge-base files, split into 17 published mappings (active in recommendations) and 174 draft placeholders (excluded from UI flows until completed). Intake labels unmapped/draft conditions as "no mappings yet" rather than implying full coverage. See `docs/condition-catalog.md`.
+191 conditions across 14 body systems are in the catalog. All 191 have authored knowledge-base files, split into 17 published mappings (active in recommendations) and 174 draft placeholders (excluded from UI flows until completed). Intake labels unmapped or draft conditions as "no mappings yet" rather than implying full usable coverage. See `docs/condition-catalog.md`.
 
-In the secondary wizard, an unmapped condition is shown as recognized but not yet
-authored, with explicit language that absence of mappings does not imply that a
-secondary claim is impossible.
 
 ## Adding a condition
 
