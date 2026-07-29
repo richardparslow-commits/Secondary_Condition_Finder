@@ -99,7 +99,7 @@ Wizard notes:
 
 ## Coverage
 
-191 conditions across 14 body systems are in the catalog. 191 have authored
+191 conditions across 14 body systems are in the catalog. All 191 have authored mapping files (17 published, 174 draft placeholders).
 secondary-condition mappings, about 100
  percent. Intake labels the rest "no mappings yet" rather than implying full coverage. See
 `docs/condition-catalog.md`.

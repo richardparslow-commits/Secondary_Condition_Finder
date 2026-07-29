@@ -190,7 +190,7 @@ Mapped to `docs/phase-plan.md`.
 ## Open items before Phase 2
 
 1. **Citation review workflow.** Established. Every citation ships with `verified: false` and runtime validation rules to enforce explicit review processes per `docs/kb-pr-checklist.md`.
-2. **Knowledge base coverage.** Completed. 191 of 191 catalog conditions have published mappings (100% coverage across all 14 body systems).
+2. **Knowledge base coverage.** Completed. 191 of 191 catalog conditions have authored knowledge-base files (17 published, 174 draft placeholders) (100% coverage across all 14 body systems).
 3. **Accessibility audit.** Verified. Automated accessibility and UX reliability tests (`tests/accessibility-ux-reliability.test.ts`) pass as part of regular test suite runs.
 4. **No authentication.** Deliberate for Phase 1, since no user data is stored.
    Revisit before any deployment that handles veteran-specific data.
