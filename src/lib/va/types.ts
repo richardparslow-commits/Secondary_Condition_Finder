@@ -1,19 +1,17 @@
-export interface VaApiCondition {
-  id: string;
-  name: string;
-  icdCode?: string;
-  diagnosticCode?: string;
+export interface VaDisabilityRating {
+  ratingPercentage: number;
+  effectiveDate: string;
+  conditionsConnected: { name: string; diagnosticCode: string }[];
 }
 
-export interface VaAdapterConfig {
-  baseUrl?: string;
-  apiKey?: string;
+export interface VaAdapterOptions {
   timeoutMs?: number;
-  enableSandbox?: boolean;
+  forceFallback?: boolean;
 }
 
-export interface VaAdapterResult<T> {
+export interface VaAdapterResponse<T> {
+  success: boolean;
   data: T | null;
-  source: 'va-api' | 'local-fallback';
+  source: "va-sandbox-api" | "local-fallback";
   error?: string;
 }
