@@ -108,9 +108,6 @@ Wizard notes:
 Intake labels unpublished conditions as "no mappings yet" rather than implying
 full coverage. See `docs/condition-catalog.md`.
 
-In the secondary wizard, an unmapped condition is shown as recognized but not yet
-authored, with explicit language that absence of mappings does not imply that a
-secondary claim is impossible.
 
 ## Adding a condition
 
