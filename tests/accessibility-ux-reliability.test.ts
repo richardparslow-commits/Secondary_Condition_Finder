@@ -7,7 +7,7 @@ import PrivacyPage from "@/app/privacy/page";
 import SecondaryLandingPage from "@/app/secondary/page";
 import TermsPage from "@/app/terms/page";
 
-function renderPageHtml(element: React.ReactElement): string {
+function renderPageHtml(element: ReturnType<typeof HomePage>): string {
   return renderToStaticMarkup(element);
 }
 
@@ -24,11 +24,11 @@ function expectHeadingHierarchy(html: string): void {
 describe("accessibility and UX content contracts", () => {
   it("renders one main landmark and a top-level heading on primary routes", () => {
     const pages = [
-      renderPageHtml(<HomePage />),
-      renderPageHtml(<SecondaryLandingPage />),
-      renderPageHtml(<PresumptivePage />),
-      renderPageHtml(<PrivacyPage />),
-      renderPageHtml(<TermsPage />),
+      renderPageHtml(HomePage()),
+      renderPageHtml(SecondaryLandingPage()),
+      renderPageHtml(PresumptivePage()),
+      renderPageHtml(PrivacyPage()),
+      renderPageHtml(TermsPage()),
     ];
 
     for (const page of pages) {
@@ -38,9 +38,9 @@ describe("accessibility and UX content contracts", () => {
   });
 
   it("keeps route copy explicit about non-diagnostic/non-deterministic scope", () => {
-    const home = renderPageHtml(<HomePage />);
-    const terms = renderPageHtml(<TermsPage />);
-    const privacy = renderPageHtml(<PrivacyPage />);
+    const home = renderPageHtml(HomePage());
+    const terms = renderPageHtml(TermsPage());
+    const privacy = renderPageHtml(PrivacyPage());
 
     expect(home).toContain("This is a research aid, not advice.");
     expect(terms).toContain("Not Legal or Medical Advice");
@@ -48,7 +48,7 @@ describe("accessibility and UX content contracts", () => {
   });
 
   it("keeps both legal routes discoverable from the main chooser page", () => {
-    const home = renderPageHtml(<HomePage />);
+    const home = renderPageHtml(HomePage());
 
     expect(home).toContain('href="/privacy"');
     expect(home).toContain('href="/terms"');
