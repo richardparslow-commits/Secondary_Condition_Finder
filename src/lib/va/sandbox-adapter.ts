@@ -1,4 +1,4 @@
-import { VaAdapterConfig, VaAdapterResult, VaApiCondition } from './types';
+import { VaAdapterConfig, VaAdapterResult } from './types';
 
 const DEFAULT_TIMEOUT_MS = 3000;
 
@@ -53,11 +53,13 @@ export class VaSandboxAdapter {
         data: json as T,
         source: 'va-api',
       };
-    } catch (err: any) {
+    } catch (err: unknown) {
       clearTimeout(timeoutId);
-      const errorMessage = err.name === 'AbortError' 
-        ? `VA API request timed out after ${this.config.timeoutMs}ms`
-        : err.message || 'Unknown VA API error';
+      const errorMessage = err instanceof Error
+        ? (err.name === 'AbortError'
+          ? `VA API request timed out after ${this.config.timeoutMs}ms`
+          : err.message)
+        : 'Unknown VA API error';
 
       return {
         data: fallbackData,
