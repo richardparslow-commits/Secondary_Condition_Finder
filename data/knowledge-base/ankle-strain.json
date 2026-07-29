@@ -36,5 +36,14 @@
         }
       ]
     }
-  ]
+  ],
+  "sourceReferences": [
+    {
+      "citation": "38 CFR 3.310",
+      "note": "Secondary service connection regulations.",
+      "url": "https://www.law.cornell.edu/cfr/text/38/3.310",
+      "verified": false
+    }
+  ],
+  "todo": []
 }
