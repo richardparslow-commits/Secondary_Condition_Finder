@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { sanitizeAndValidateEventPayload, PROHIBITED_LOG_FIELDS } from '../src/lib/events/privacy-guard';
+import { sanitizeAndValidateEventPayload } from '../src/lib/events/privacy-guard';
 
 describe('Event Logger Privacy & Schema Evolution Suite', () => {
   it('detects and strips prohibited intake free text and PII fields', () => {
