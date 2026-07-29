@@ -1,7 +1,7 @@
 {
   "id": "burn-pits",
   "name": "Burn pits and other airborne hazards",
-  "authority": "PACT Act (Public Law 117-168)",
+  "authority": "38 CFR 3.320 / 38 U.S.C. 1120 (PACT Act)",
   "summary": "If you served in one of these locations during the qualifying window, VA presumes you were exposed to burn pits and fine particulate matter. You do not need to prove exposure or show a link between your service and the condition. You still need a current diagnosis.",
   "sourceCheckedOn": "2026-07-27",
   "qualifyingService": [
