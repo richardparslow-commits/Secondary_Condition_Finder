@@ -19,8 +19,9 @@ to discuss with a qualified provider or an accredited representative.
 
 ## Status
 
-Phase 1: web app with no live VA data. See `docs/product-spec.md` for scope and
-`docs/phase-plan.md` for the full roadmap.
+Phase 1: web app with no live VA data. The single source of truth for current
+completion status is `docs/product-spec.md` (including open items and phase
+gates). `docs/phase-plan.md` remains the roadmap.
 
 All source citations currently ship as **unverified**. They have not been
 confirmed by a qualified reviewer and are displayed as starting points for your
@@ -99,10 +100,10 @@ Wizard notes:
 
 ## Coverage
 
-191 conditions across 14 body systems are in the catalog. 191 have authored
-secondary-condition mappings, about 100
- percent. Intake labels the rest "no mappings yet" rather than implying full coverage. See
-`docs/condition-catalog.md`.
+191 conditions across 14 body systems are in the catalog. Mapping authoring is
+still in progress, and draft mappings are intentionally excluded from
+published suggestions. See `docs/product-spec.md` for current published-vs-draft
+status and `docs/condition-catalog.md` for catalog scope.
 
 In the secondary wizard, an unmapped condition is shown as recognized but not yet
 authored, with explicit language that absence of mappings does not imply that a

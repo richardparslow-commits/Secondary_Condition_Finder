@@ -3,6 +3,12 @@
 Status: draft for review
 Scope: Phase 1 only. See `docs/phase-plan.md` for Phases 2 and 3.
 
+## Current status source of truth
+
+This document is the authoritative source for current implementation status.
+Other docs may describe architecture, roadmap, or workflow guidance, but this
+file owns the "what is done" call for Phase 1.
+
 ## Problem
 
 A veteran service connected for one condition often has no practical way to
@@ -189,8 +195,14 @@ Mapped to `docs/phase-plan.md`.
 
 ## Open items before Phase 2
 
-1. **Citation review workflow.** Established. Every citation ships with `verified: false` and runtime validation rules to enforce explicit review processes per `docs/kb-pr-checklist.md`.
-2. **Knowledge base coverage.** Completed. 191 of 191 catalog conditions have published mappings (100% coverage across all 14 body systems).
-3. **Accessibility audit.** Verified. Automated accessibility and UX reliability tests (`tests/accessibility-ux-reliability.test.ts`) pass as part of regular test suite runs.
+1. **Citation review workflow.** In place for data constraints and authoring
+   checks. Citations remain unverified by default and require qualified human
+   review before any publication claim.
+2. **Knowledge base coverage.** In progress. 191 of 191 catalog conditions are
+   represented in mapping files, with 17 currently published and 174 still
+   draft.
+3. **Accessibility audit.** In progress. Existing automated UX reliability
+   checks run in test, but a dedicated accessibility audit pass remains required
+   before Phase 2 sign-off.
 4. **No authentication.** Deliberate for Phase 1, since no user data is stored.
    Revisit before any deployment that handles veteran-specific data.
