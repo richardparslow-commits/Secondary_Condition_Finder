@@ -32,3 +32,6 @@ Automated tests in `tests/accessibility-ux-reliability.test.ts` validate:
 | **Tab Traversal** | Physical Keyboard (Tab / Shift+Tab) | Focus moves logically through interactive intake elements without traps. | Verified |
 | **Screen Reader Announcement** | NVDA (Windows) / VoiceOver (macOS) | Form inputs announce labels, error states, and result counts correctly. | Verified |
 | **High Contrast Mode** | OS High Contrast / Dark Mode | All text and badges remain legible and meet contrast thresholds. | Verified |
+
+## 5. Privacy & Zero PII Policy
+- **Zero PII:** Ensures zero collection or persistence of veteran personal data during accessibility and screen-reader interactions.
