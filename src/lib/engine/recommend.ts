@@ -176,7 +176,7 @@ export function recommend(
   // Focus Engine: Constrain recommendations strictly to user-selected diagnosed conditions
   if (intake.diagnosedConditions && intake.diagnosedConditions.length > 0) {
     const diagnosedSet = new Set(
-      intake.diagnosedConditions.map(c => normalizeConditionName(c))
+      intake.diagnosedConditions.map((c: string) => normalizeConditionName(c))
     );
     recommendations = recommendations.filter(rec => 
       diagnosedSet.has(normalizeConditionName(rec.condition))
