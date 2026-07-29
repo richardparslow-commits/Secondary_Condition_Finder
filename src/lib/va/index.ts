@@ -41,13 +41,16 @@ export async function fetchSandboxVABits(
 
   // Handle simulated failure modes for resilience testing
   if (config.mockFailureMode === "timeout") {
-    await new Promise((_, reject) => setTimeout(() => reject(new Error("Gateway Timeout")), timeout > 50 ? 60 : timeout));
-    return {
-      success: false,
-      data: null,
-      source: "local-fallback",
-      error: "Gateway Timeout: Upstream VA API did not respond within threshold."
-    };
+    try {
+      await new Promise((_, reject) => setTimeout(() => reject(new Error("Gateway Timeout")), timeout));
+    } catch (err) {
+      return {
+        success: false,
+        data: null,
+        source: "local-fallback",
+        error: "Gateway Timeout: Upstream VA API did not respond within threshold."
+      };
+    }
   }
 
   if (config.mockFailureMode === "error") {
