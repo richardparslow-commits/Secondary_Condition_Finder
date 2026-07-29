@@ -1,42 +1,100 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from "vitest";
 
-// Presumptive evaluation helper mock or import
-function evaluatePresumptiveClaim(location: string, serviceDate: string, category: string) {
-  const normalizedLoc = location.trim().toLowerCase();
-  const date = new Date(serviceDate);
+import { loadExposureCatalog } from "@/lib/presumptive/load";
+import { matchPresumptives } from "@/lib/presumptive/match";
+import { exposureCategorySchema, presumptiveSourceSchema } from "@/lib/presumptive/schema";
 
-  const validBurnPitLocationsiraq = ['baghdad', 'balad', 'camp bucca', 'ali al salem'];
-  const pactActStart = new Date('2001-09-11');
-
-  if (category === 'burn-pits') {
-    if (date < pactActStart) {
-      return { eligible: false, reason: 'Service date precedes post-9/11 burn pit presumptive window (Sep 11, 2001).' };
-    }
-    if (!validBurnPitLocationsiraq.includes(normalizedLoc)) {
-      return { eligible: false, unmatchedLocation: true, message: `Location '${location}' is not currently recognized in the validated burn pit registry. Professional nexus evidence may be required.` };
-    }
-    return { eligible: true, category: 'burn-pits' };
-  }
-
-  return { eligible: false, message: 'Unrecognized category.' };
-}
-
-describe('Presumptive Track Hardening & Regression Suite', () => {
-  it('rejects burn pit claims prior to PACT Act date boundaries (Sep 11, 2001)', () => {
-    const result = evaluatePresumptiveClaim('Baghdad', '2000-05-01', 'burn-pits');
-    expect(result.eligible).toBe(false);
-    expect(result.reason).toContain('precedes post-9/11 burn pit presumptive window');
+describe("presumptive source validation", () => {
+  it("rejects source references marked verified true", () => {
+    const result = presumptiveSourceSchema.safeParse({
+      citation: "VA source",
+      note: "Human review required",
+      url: "https://www.va.gov/",
+      verified: true,
+    });
+    expect(result.success).toBe(false);
   });
 
-  it('accepts burn pit claims on or after PACT Act date boundaries with recognized locations', () => {
-    const result = evaluatePresumptiveClaim('Balad', '2005-06-15', 'burn-pits');
-    expect(result.eligible).toBe(true);
+  it("loads every shipped category with unverified source references", () => {
+    const catalog = loadExposureCatalog();
+    expect(catalog.length).toBeGreaterThan(0);
+    for (const category of catalog) {
+      for (const source of category.sourceReferences) {
+        expect(source.verified).toBe(false);
+      }
+    }
+  });
+});
+
+describe("presumptive matching integration", () => {
+  const catalog = loadExposureCatalog();
+
+  it("matches burn pit service windows when location and dates overlap", () => {
+    const result = matchPresumptives(catalog, {
+      locations: ["Iraq"],
+      serviceStart: "2006-01-01",
+      serviceEnd: "2007-01-01",
+    });
+
+    expect(result.matches.some((match) => match.category.id === "burn-pits")).toBe(true);
   });
 
-  it('returns explicit unmatched-location messaging for unrecognized deployment sites', () => {
-    const result = evaluatePresumptiveClaim('UnknownForwardBaseX', '2008-01-01', 'burn-pits');
-    expect(result.eligible).toBe(false);
-    expect(result.unmatchedLocation).toBe(true);
-    expect(result.message).toContain('not currently recognized in the validated burn pit registry');
+  it("keeps unmatched locations explicit", () => {
+    const result = matchPresumptives(catalog, {
+      locations: ["UnknownForwardBaseX"],
+      serviceStart: "2008-01-01",
+      serviceEnd: "2009-01-01",
+    });
+
+    expect(result.matches.length).toBe(0);
+    expect(result.unmatchedLocations).toEqual(["UnknownForwardBaseX"]);
+  });
+
+  it("flags location-only matching when dates are omitted", () => {
+    const result = matchPresumptives(catalog, {
+      locations: ["Republic of Vietnam"],
+      serviceStart: null,
+      serviceEnd: null,
+    });
+
+    expect(result.hasUnconfirmedDates).toBe(true);
+    expect(result.matches.length).toBeGreaterThan(0);
+    expect(
+      result.matches.some((match) =>
+        match.matchedPeriods.some((period) => period.datesConfirmed === false),
+      ),
+    ).toBe(true);
+  });
+});
+
+describe("presumptive category schema", () => {
+  it("requires sourceCheckedOn and at least one source reference", () => {
+    const result = exposureCategorySchema.safeParse({
+      id: "test-category",
+      name: "Test Category",
+      authority: "Authority",
+      summary: "Summary",
+      qualifyingService: [
+        {
+          id: "test-period",
+          label: "Test period",
+          locations: ["Test"],
+          startDate: "2000-01-01",
+          endDate: null,
+          note: null,
+        },
+      ],
+      conditions: [
+        {
+          conditionId: "test-condition",
+          name: "Test condition",
+          group: "Test group",
+          qualifier: null,
+        },
+      ],
+      sourceReferences: [],
+    });
+
+    expect(result.success).toBe(false);
   });
 });

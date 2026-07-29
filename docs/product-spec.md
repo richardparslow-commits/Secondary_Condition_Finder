@@ -189,7 +189,7 @@ Mapped to `docs/phase-plan.md`.
 
 ## Open items before Phase 2
 
-1. **Citation review workflow (Workflow Enforced / Legal Review In Progress).** All citations ship with `verified: false` and are strictly validated by build/runtime schema checks. Formal subject-matter expert review of individual regulatory citations remains an ongoing operational task governed by `docs/kb-pr-checklist.md`.
+1. **Citation review workflow (Workflow Enforced / Legal Review In Progress).** All citations ship with `verified: false` and are strictly validated by build/runtime schema checks across both secondary mappings and presumptive source references. Formal subject-matter expert review of individual regulatory citations remains an ongoing operational task governed by `docs/kb-pr-checklist.md`.
 2. **Mapping-authoring gaps (In Progress).** 191 catalog conditions have version-controlled knowledge-base files, but coverage is currently split: 17 mappings are published (`draft: false`) and active in UI recommendations, while 174 remain draft placeholders (`draft: true`) awaiting domain authoring.
-3. **Accessibility audit (Open).** Basic semantic structure tests exist in `tests/accessibility-ux-reliability.test.ts`, but formal WCAG 2.1 AA keyboard navigation and screen-reader audit passes (NVDA/VoiceOver) have not been conducted.
+3. **Accessibility audit (In Progress).** Route-level semantic accessibility contracts are automated in `tests/accessibility-ux-reliability.test.ts` (landmarks, heading structure, scope copy, legal-route discoverability), but formal WCAG 2.1 AA keyboard navigation and screen-reader audit passes (NVDA/VoiceOver) have not yet been conducted.
 4. **No authentication (Deliberate).** Intentional for Phase 1/Phase 2 client-side architecture since no veteran PII or intake free text is persisted.

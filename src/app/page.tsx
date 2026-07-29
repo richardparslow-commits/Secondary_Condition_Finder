@@ -74,6 +74,18 @@ export default function HomePage() {
         .
       </p>
 
+      <p className="mt-2 text-sm text-slate-600">
+        Read our{" "}
+        <Link href="/privacy" className="underline hover:text-slate-900">
+          privacy policy
+        </Link>{" "}
+        and{" "}
+        <Link href="/terms" className="underline hover:text-slate-900">
+          terms of use
+        </Link>
+        .
+      </p>
+
       <DisclaimerFooter />
     </main>
   );
