@@ -1,0 +1,39 @@
+{
+  "id": "micro-traumatic-brain-injury",
+  "draft": false,
+  "suggestions": [
+    {
+      "conditionId": "migraine-headaches",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Even low-level traumatic brain injuries can leave chronic post-traumatic headache syndromes.",
+      "evidenceGaps": [
+        "Neurology diagnosis of chronic post-traumatic headaches",
+        "Treatment history showing persistent headache burden after injury"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "insomnia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Sleep-wake dysregulation commonly follows brain trauma and may meet criteria for chronic insomnia.",
+      "evidenceGaps": [
+        "Sleep history documenting persistent difficulty initiating or maintaining sleep"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "penetrating-head-trauma",
+  "draft": false,
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Penetrating head trauma often leaves major functional changes that can proximately cause depressive disorders.",
+      "evidenceGaps": [
+        "Behavioral health diagnosis with nexus to head trauma residuals",
+        "Functional assessments documenting lasting impairment"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "migraine-headaches",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Residual neurologic injury from penetrating trauma can produce chronic headache disorders.",
+      "evidenceGaps": [
+        "Neurology evaluation confirming headache diagnosis tied to prior penetrating injury"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

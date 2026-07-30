@@ -115,6 +115,19 @@
         }
       ],
       "reviewNotes": []
+    },
+    {
+      "id": "hypogonadism",
+      "name": "Hypogonadism",
+      "aliases": [
+        "testosterone deficiency",
+        "male hypogonadism"
+      ],
+      "bodySystem": "Endocrine System",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Added for requested condition expansion; rating schedule citation requires qualified reviewer confirmation."
+      ]
     }
   ]
 }
