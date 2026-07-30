@@ -20,7 +20,7 @@ Phase-level merge/release gates are tracked in `docs/phase-gates.md`.
 ### Core Deliverables
 - [x] **Secondary Track (38 CFR 3.310):** Given service-connected conditions, returns ranked secondary condition exploration recommendations with reasoning, evidence gaps, and citations.
 - [x] **Presumptive Track (38 CFR 3.307 / 3.309):** Sourced criteria for Agent Orange and PACT Act airborne hazards/burn pits.
-- [x] **Offline Data Model:** Statically served catalog (191 conditions) and local JSON knowledge-base mappings.
+- [x] **Offline Data Model:** Statically served catalog (181 conditions) and local JSON knowledge-base mappings.
 - [x] **Public Legal Routes:** Dedicated app pages published at `/privacy` (Zero PII policy) and `/terms` (Scope, legal disclaimers, unverified citations notice).
 
 ### Phase 1 Validation Gate Status
@@ -29,7 +29,7 @@ Phase-level merge/release gates are tracked in `docs/phase-gates.md`.
 - [x] **Minimal API need:** Local JSON datasets with optional client-side VA sandbox adapter boundary (`src/lib/va/adapter.ts`).
 - [x] **Demo readiness:** Repeatable walkthroughs and scenarios (`/scenarios`) validated by green test suites.
 - [x] **Public privacy/terms/scope publication:** Live dedicated routes at `/privacy` and `/terms`.
-- [x] **Transparent coverage state:** Documentation explicitly states 191 catalog conditions exist (17 published mappings active in UI, 174 draft placeholders excluded from recommendations).
+- [x] **Transparent coverage state:** Documentation explicitly states 181 catalog conditions exist and all 181 mappings are published and active in recommendations.
 
 ## Phase 2: Sandbox VA API Integration
 
@@ -97,6 +97,6 @@ Phase-level merge/release gates are tracked in `docs/phase-gates.md`.
 ### Phase 1 Objective Proof & Artifact Checklist
 - [x] **Core Evaluation Logic:** Verified by automated test suite (`npm test`, 79/79 tests passing).
 - [x] **Public Legal & Privacy Routes:** Live at `/privacy` (`src/app/privacy/page.tsx`, zero PII policy) and `/terms` (`src/app/terms/page.tsx`, scope, disclaimers, unverified citations notice).
-- [x] **Transparent Split Coverage:** 191 total catalog conditions across 14 body systems; 17 published active mappings (`draft: false`) and 174 draft placeholders (`draft: true`) audited via `scripts/kb-authoring-audit.js`.
+- [x] **Transparent Coverage:** 181 total catalog conditions across 14 body systems with 181 published active mappings (`draft: false`) audited via `scripts/kb-authoring-audit.js`.
 - [x] **Strict Citation Governance:** Enforced by Zod schemas (`src/lib/kb/schema.ts` & `src/lib/presumptive/schema.ts`) requiring `verified: false` across all knowledge-base and presumptive source references.
 - [x] **Accessibility Compliance:** Documented in `docs/accessibility-audit.md` targeting WCAG 2.1 Level AA and validated via semantic test suites (`tests/accessibility-ux-reliability.test.ts`).

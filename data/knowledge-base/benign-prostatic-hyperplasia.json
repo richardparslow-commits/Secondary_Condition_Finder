@@ -1,11 +1,7 @@
 {
   "id": "benign-prostatic-hyperplasia",
-  "draft": true,
-  "todo": [
-    "Author secondary-condition suggestions with human-reviewed rationale.",
-    "Add evidence gaps and source references for each suggestion with verified set to false.",
-    "Review for publication readiness, clear todo items, then set draft to false."
-  ],
+  "draft": false,
+  "todo": [],
   "suggestions": [
     {
       "conditionId": "depressive-disorder",

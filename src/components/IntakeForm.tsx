@@ -125,11 +125,11 @@ export function IntakeForm({ options }: Props) {
                 </span>
                 {option.hasResearch ? (
                   <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700">
-                    research available
+                    database mapped
                   </span>
                 ) : (
                   <span className="shrink-0 rounded-full bg-amber-50 px-2 py-0.5 text-xs text-amber-800">
-                    no mappings yet
+                    mapping in progress
                   </span>
                 )}
               </button>
