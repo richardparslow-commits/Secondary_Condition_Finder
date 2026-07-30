@@ -25,7 +25,7 @@
       ]
     },
     {
-      "conditionId": "sciatica",
+      "conditionId": "radiculopathy-sciatic",
       "rank": 2,
       "prevalence": "commonly-explored",
       "rationale": "Lower back strain and disc degeneration directly impinge the sciatic nerve causing lower extremity radicular symptoms.",
