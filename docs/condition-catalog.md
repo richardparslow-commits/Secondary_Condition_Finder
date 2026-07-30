@@ -16,7 +16,7 @@ appearing in the catalog means only that it exists and is ratable.
 
 ## Structure
 
-One file per body system, 14 systems plus a carried-over file. 191 conditions.
+One file per body system, 14 systems plus a carried-over file. 181 conditions.
 
 ```json
 {
@@ -39,14 +39,14 @@ recommendations are computed.
 
 ## Coverage
 
-- 191 conditions across 14 body systems
+- 181 conditions across 14 body systems
 - 185 carry a rating schedule citation, all `verified: false`
 - 6 carry none. Those are entries the knowledge base already referenced that
   the source list omitted: `hip-strain`, `ankle-strain`,
   `contralateral-knee-condition`, `diabetic-retinopathy`, `insomnia`, and
   `substance-use-disorder`. No citation was supplied and none was inferred.
   Each carries a `reviewNotes` entry saying so.
-- 191 conditions have authored knowledge-base files and all 191 are published (active in recommendations).
+- 181 conditions have authored knowledge-base files and all 181 are published (active in recommendations).
 
 ## Known gaps in the source list
 

@@ -51,7 +51,7 @@ export default function TermsPage() {
 
         <h2 className="text-xl font-semibold mt-6">3. Knowledge Base Completeness</h2>
         <p>
-          The VASRD catalog contains 191 conditions across 14 body systems, and all 191 currently have published secondary mappings in this phase dataset.
+          The VASRD catalog contains 181 conditions across 14 body systems, and all 181 currently have published secondary mappings in this phase dataset.
         </p>
       </section>
 

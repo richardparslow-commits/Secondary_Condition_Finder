@@ -15,7 +15,7 @@
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR § 3.310(a)",
+          "citation": "38 CFR \u00a7 3.310(a)",
           "note": "Authorizes secondary connection for disabilities proximately caused by a service-connected condition.",
           "verified": false
         },
@@ -37,14 +37,14 @@
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR § 3.310(a)",
+          "citation": "38 CFR \u00a7 3.310(a)",
           "note": "Authorizes secondary connection for disabilities proximately caused by a service-connected condition.",
           "verified": false
         }
       ]
     },
     {
-      "conditionId": "major-depressive-disorder",
+      "conditionId": "depressive-disorder",
       "rank": 3,
       "prevalence": "sometimes-explored",
       "rationale": "Chronic, severe lower back pain and resulting functional limitations can lead to the development of secondary depression.",
@@ -55,7 +55,7 @@
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR § 3.310(a)",
+          "citation": "38 CFR \u00a7 3.310(a)",
           "note": "Authorizes secondary connection for mental health conditions proximately caused by the chronic pain of a service-connected physical condition.",
           "verified": false
         }
