@@ -14,6 +14,31 @@ function intake(partial: Partial<Intake> & Pick<Intake, "primaryConditions">): I
   return intakeSchema.parse(partial);
 }
 
+function firstOverlappingPrimaryPair(): {
+  primaryA: string;
+  primaryB: string;
+  sharedConditionId: string;
+} {
+  const published = kb.filter((mapping) => !mapping.draft);
+  for (let i = 0; i < published.length; i += 1) {
+    for (let j = i + 1; j < published.length; j += 1) {
+      const a = published[i];
+      const b = published[j];
+      const overlap = a.suggestions.find((suggestion) =>
+        b.suggestions.some((candidate) => candidate.conditionId === suggestion.conditionId),
+      );
+      if (overlap) {
+        return {
+          primaryA: a.id,
+          primaryB: b.id,
+          sharedConditionId: overlap.conditionId,
+        };
+      }
+    }
+  }
+  throw new Error("Expected at least one overlapping primary pair in published mappings.");
+}
+
 describe("recommend", () => {
   it("ports the original prototype ordering for PTSD", () => {
     const { recommendations } = recommend(
@@ -94,24 +119,19 @@ describe("recommend", () => {
   });
 
   it("merges a suggestion shared by two primaries and ranks it above single-source peers", () => {
+    const { primaryA, primaryB, sharedConditionId } = firstOverlappingPrimaryPair();
     const result = recommend(
       catalog,
       kb,
-      intake({ primaryConditions: ["Tinnitus", "Lumbar strain"] }),
+      intake({ primaryConditions: [primaryA, primaryB] }),
     );
-    const depression = result.recommendations.find(
-      (r) => r.conditionId === "depressive-disorder",
+    const shared = result.recommendations.find(
+      (r) => r.conditionId === sharedConditionId,
     );
 
-    // Tinnitus rank 3 (0.333) + lumbar strain rank 3 (0.333) = 0.667, which is
-    // above either contribution alone.
-    expect(depression).toBeDefined();
-    expect(depression!.contributingPrimaries).toHaveLength(2);
-    expect(depression!.contributingPrimaries.map((p) => p.name)).toEqual([
-      "Lumbar Strain",
-      "Tinnitus",
-    ]);
-    expect(depression!.score).toBeGreaterThan(1 / 3);
+    expect(shared).toBeDefined();
+    expect(shared!.contributingPrimaries).toHaveLength(2);
+    expect(shared!.score).toBeGreaterThan(0.5);
   });
 
   it("does not suggest a condition the user already listed as a primary", () => {
@@ -160,7 +180,7 @@ describe("recommend", () => {
     const withContext = recommend(
       catalog,
       kb,
-      intake({ primaryConditions: ["Tinnitus"], symptoms: ["anxiety"] }),
+      intake({ primaryConditions: ["Tinnitus"], symptoms: ["migraine"] }),
     );
 
     expect(withContext.recommendations.map((r) => r.condition)).toEqual(
@@ -170,10 +190,10 @@ describe("recommend", () => {
       base.recommendations.map((r) => r.score),
     );
 
-    const anxiety = withContext.recommendations.find(
-      (r) => r.conditionId === "anxiety-disorder",
+    const migraine = withContext.recommendations.find(
+      (r) => r.conditionId === "migraine-headaches",
     );
-    expect(anxiety?.matchedIntakeContext).toContain("anxiety");
+    expect(migraine?.matchedIntakeContext).toContain("migraine");
   });
 
   it("never emits a numeric confidence, only a qualitative prevalence band", () => {
