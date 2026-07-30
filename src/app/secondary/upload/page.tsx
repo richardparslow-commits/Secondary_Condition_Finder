@@ -49,6 +49,9 @@ export default async function UploadStepPage({
     return (
       <main>
         <h1 className="text-2xl font-semibold tracking-tight">Enter ratings first</h1>
+<div className="my-4 p-4 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-900">
+    <span className="font-semibold">🔒 Evidence Upload Privacy Contract:</span> Uploading documents is strictly optional. Files are processed locally or through secure non-retentive extraction boundaries. We do <span className="underline font-semibold">not</span> store raw text logs, medical record files, or personal identifiers (PII).
+  </div>
         <p className="mt-2 text-sm text-slate-600">
           Complete the ratings step before you continue to document upload.
         </p>

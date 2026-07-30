@@ -10,4 +10,4 @@ export const TRACK_DISTINCTION_NOTICE =
 export const UNVERIFIED_REFERENCE_NOTICE =
   "Citations shown in this app are unverified starting points in Phase 1 and should be confirmed against current VA guidance.";
 
-export const SECONDARY_CONTINUE_CTA = "Click here to continue to Step 1";
+export const SECONDARY_CONTINUE_CTA = "Click Here to Proceed to Wizard Step 1";
