@@ -92,7 +92,7 @@ export default async function SuggestionsStepPage({
         <h1 className="mt-1 text-2xl font-semibold tracking-tight">Suggested secondary conditions</h1>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
           Suggestions are grouped by each service-connected primary condition you selected. These
-          are possibilities to explore, not determinations. Draft mappings are excluded.
+          are possibilities to explore, not determinations.
         </p>
       </header>
 

@@ -79,7 +79,7 @@ describe("recommend", () => {
     expect(byName.recommendations).toEqual(byId.recommendations);
   });
 
-  it("separates mapped, unmapped, and unrecognized primaries", () => {
+  it("separates recognized and unrecognized primaries with full mapping coverage", () => {
     const result = recommend(
       catalog,
       kb,
@@ -87,11 +87,8 @@ describe("recommend", () => {
         primaryConditions: ["Tinnitus", "Plantar Fasciitis", "not a condition"],
       }),
     );
-    // Plantar fasciitis is a real catalog condition with no authored mappings.
-    // That is different from input we could not resolve at all, and the user
-    // deserves to be told which is which.
-    expect(result.recognizedPrimaries).toEqual(["Tinnitus"]);
-    expect(result.unmappedPrimaries).toEqual(["Plantar Fasciitis"]);
+    expect(result.recognizedPrimaries).toEqual(["Tinnitus", "Plantar Fasciitis"]);
+    expect(result.unmappedPrimaries).toEqual([]);
     expect(result.unrecognizedPrimaries).toEqual(["not a condition"]);
     expect(result.recommendations.length).toBeGreaterThan(0);
   });

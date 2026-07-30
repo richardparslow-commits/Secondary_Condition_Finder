@@ -42,8 +42,8 @@ export default async function DiagnosedConditionsPage({
         <fieldset>
           <legend className="text-sm font-semibold text-slate-900">Diagnosed conditions</legend>
           <p className="mt-1 text-sm text-slate-600">
-            Select one or more conditions, then continue. A “no mappings yet” label means the
-            condition is recognized, but secondary research has not been authored yet.
+            Select one or more conditions, then continue. These catalog conditions are
+            knowledge-base mapped for secondary research exploration.
           </p>
 
           <ul className="mt-3 max-h-[28rem] divide-y divide-slate-100 overflow-y-auto rounded-lg border border-slate-200 bg-white">
@@ -63,11 +63,11 @@ export default async function DiagnosedConditionsPage({
                   </span>
                   {mapped.has(condition.id) ? (
                     <span className="ml-auto shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700">
-                      research available
+                      database mapped
                     </span>
                   ) : (
                     <span className="ml-auto shrink-0 rounded-full bg-amber-50 px-2 py-0.5 text-xs text-amber-800">
-                      no mappings yet
+                      mapping in progress
                     </span>
                   )}
                 </label>

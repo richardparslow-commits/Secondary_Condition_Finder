@@ -51,7 +51,7 @@ export default function TermsPage() {
 
         <h2 className="text-xl font-semibold mt-6">3. Knowledge Base Completeness</h2>
         <p>
-          The VASRD catalog contains 191 conditions across 14 body systems. Published secondary mappings actively return exploration suggestions, while draft placeholders are strictly excluded from recommendation results. Absence of a published mapping does not imply a secondary connection is legally invalid.
+          The VASRD catalog contains 191 conditions across 14 body systems, and all 191 currently have published secondary mappings in this phase dataset.
         </p>
       </section>
 

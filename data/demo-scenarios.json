@@ -40,12 +40,12 @@
   },
   {
     "id": "unrecognized-primary",
-    "title": "Recognized condition with no mappings yet",
-    "description": "One condition has authored secondary research and one does not, demonstrating how the app distinguishes an unmapped condition from an unrecognized one.",
+    "title": "Recognized and unrecognized mix",
+    "description": "One condition resolves to the catalog and one does not, demonstrating how the app reports unrecognized input while still returning mapped suggestions.",
     "intake": {
       "primaryConditions": [
         "tinnitus",
-        "plantar-fasciitis"
+        "not-a-condition"
       ],
       "symptoms": [
         "ringing worse at night"
