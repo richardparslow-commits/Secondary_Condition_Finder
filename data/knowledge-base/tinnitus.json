@@ -1,73 +1,21 @@
 {
   "id": "tinnitus",
+  "name": "Tinnitus",
   "draft": false,
-  "todo": [],
   "suggestions": [
     {
-      "conditionId": "insomnia",
+      "conditionId": "migraine-headaches",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Persistent ringing frequently interferes with falling or staying asleep. Note that sleep impairment is often evaluated as a symptom within a mental health rating rather than as a standalone condition.",
+      "rationale": "Chronic tinnitus can act as a trigger for migraine headaches due to continuous auditory stress and overlapping neurological pathways.",
       "evidenceGaps": [
-        "Treatment records documenting sleep complaints attributed to tinnitus",
-        "Whether a separate diagnosis exists or symptoms fall under an existing mental health evaluation",
-        "Sleep study if a sleep disorder rather than insomnia is suspected"
+        "A formal, current medical diagnosis for migraines.",
+        "A medical nexus letter establishing causation from tinnitus."
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 4.130",
-          "note": "Schedule of ratings, mental disorders; sleep impairment appears in the general rating formula.",
-          "verified": false
-        },
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "anxiety-disorder",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Chronic, unrelenting symptom burden is sometimes linked to anxiety. Requires a diagnosis from a qualified mental health provider.",
-      "evidenceGaps": [
-        "Mental health diagnosis from a qualified provider",
-        "Records connecting anxiety onset to tinnitus rather than other stressors",
-        "Nexus opinion addressing causation or aggravation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.130",
-          "note": "Schedule of ratings, mental disorders.",
-          "verified": false
-        },
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 3,
-      "prevalence": "occasionally-explored",
-      "rationale": "Mood effects are sometimes documented with long-standing, severe tinnitus. If a mental health condition is already service connected, this may affect the existing rating rather than add a new one.",
-      "evidenceGaps": [
-        "Mental health diagnosis from a qualified provider",
-        "Documentation of symptom duration and severity",
-        "Review of whether an existing mental health rating already covers these symptoms"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.130",
-          "note": "Schedule of ratings, mental disorders.",
-          "verified": false
-        },
-        {
-          "citation": "38 CFR 4.14",
-          "note": "Avoidance of pyramiding.",
+          "citation": "Relevant Medical Journal Study or VA Regulation link",
+          "note": "Displays as unverified pending formal review.",
           "verified": false
         }
       ]
