@@ -22,7 +22,7 @@
       ]
     },
     {
-      "conditionId": "migraines",
+      "conditionId": "migraine-headaches",
       "rank": 2,
       "prevalence": "sometimes-explored",
       "rationale": "Cervicogenic headaches or muscle tension originating from the cervical spine can trigger or severely aggravate underlying migraine conditions.",
