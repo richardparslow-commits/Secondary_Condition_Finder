@@ -111,6 +111,9 @@ Additional rules:
 - A footer on every page notes that suggestions are not ranked by approval
   likelihood and that citations are unverified starting points.
 - Unverified citations carry an inline badge.
+- Secondary legal citation text rendered in routes must come from the canonical
+  module at `src/lib/legal/secondaryReferences.ts` rather than route-level
+  hardcoded copies.
 
 ### FR-6 Demo scenarios
 

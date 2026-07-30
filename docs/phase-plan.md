@@ -3,6 +3,7 @@
 ## Purpose
 
 This plan defines a narrow, defensible delivery path that proves product value without requiring sensitive live VA data up front. It is organized into three phases so the team can build a working product, validate usefulness, and then pursue only the minimum required production API access.
+Phase-level merge/release gates are tracked in `docs/phase-gates.md`.
 
 ## Product Guardrails (applies to all phases)
 
