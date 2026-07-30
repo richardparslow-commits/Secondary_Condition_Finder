@@ -1,19 +1,26 @@
 import Link from "next/link";
 
 import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
+import {
+  CAUSED_AGGRAVATED_DISTINCTION,
+  SECONDARY_TRACK_OVERVIEW,
+  TRACK_DISTINCTION_NOTICE,
+  UNVERIFIED_REFERENCE_NOTICE,
+} from "@/lib/legal/phrases";
+import { SECONDARY_REFERENCE_BY_ID } from "@/lib/legal/secondaryReferences";
 
 const paths = [
   {
     href: "/secondary",
     title: "A condition related to one I already have",
-    mechanism: "Secondary service connection, 38 CFR 3.310",
-    body: "You are already service connected for something, and another condition may have been caused or worsened by it. These claims generally need a medical opinion linking the two.",
-    cta: "Explore secondary conditions",
+    mechanism: `Secondary service connection, ${SECONDARY_REFERENCE_BY_ID["secondary-basis"].citation}`,
+    body: SECONDARY_TRACK_OVERVIEW,
+    cta: "Click here to continue",
   },
   {
     href: "/presumptive",
     title: "A condition tied to where and when I served",
-    mechanism: "Presumptive service connection, 38 CFR 3.307 and 3.309",
+    mechanism: `Presumptive service connection, ${SECONDARY_REFERENCE_BY_ID["presumptive-distinction"].citation}`,
     body: "For certain exposures, VA presumes your service caused the condition. No linking opinion is needed and no other service-connected condition is required. This is usually the easier path when it applies.",
     cta: "Check presumptive conditions",
   },
@@ -50,6 +57,19 @@ export default function HomePage() {
             <p className="mt-3 text-sm leading-relaxed text-slate-700">
               {path.body}
             </p>
+            {path.href === "/secondary" ? (
+              <>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                  {CAUSED_AGGRAVATED_DISTINCTION}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                  {TRACK_DISTINCTION_NOTICE}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                  {UNVERIFIED_REFERENCE_NOTICE}
+                </p>
+              </>
+            ) : null}
             <Link
               href={path.href}
               className="mt-4 inline-block rounded-md bg-slate-900 px-3.5 py-2 text-sm font-medium text-white hover:bg-slate-700"

@@ -1,5 +1,11 @@
-import React from "react";
 import Link from "next/link";
+
+import {
+  CAUSED_AGGRAVATED_DISTINCTION,
+  TRACK_DISTINCTION_NOTICE,
+  UNVERIFIED_REFERENCE_NOTICE,
+} from "@/lib/legal/phrases";
+import { SECONDARY_LEGAL_REFERENCES } from "@/lib/legal/secondaryReferences";
 
 export default function TermsPage() {
   return (
@@ -20,13 +26,27 @@ export default function TermsPage() {
           Users must distinguish between legally distinct claim paths:
         </p>
         <ul className="list-disc pl-6 space-y-1 text-xs">
-          <li><strong>Secondary Service Connection (38 CFR 3.310):</strong> Requires an established primary service-connected disability and formal medical nexus evidence.</li>
-          <li><strong>Presumptive Service Connection (38 CFR 3.307 / 3.309):</strong> Based on qualifying service dates/locations (e.g., PACT Act airborne hazards) without requiring a direct nexus opinion.</li>
+          {SECONDARY_LEGAL_REFERENCES.map((reference) => (
+            <li key={reference.id}>
+              <strong>{reference.label} ({reference.citation}):</strong>{" "}
+              {reference.explanation}
+            </li>
+          ))}
         </ul>
+        <p className="text-xs">
+          {CAUSED_AGGRAVATED_DISTINCTION}
+        </p>
+        <p className="text-xs">
+          {TRACK_DISTINCTION_NOTICE}
+        </p>
 
         <h2 className="text-xl font-semibold mt-6">2. Citation Verification Notice</h2>
         <p>
-          All regulatory references (such as 38 CFR citations) are provided as unverified starting points (<code className="bg-gray-100 px-1 rounded">verified: false</code>) requiring verification by a qualified Veterans Service Officer (VSO) or accredited representative.
+          {UNVERIFIED_REFERENCE_NOTICE} All regulatory references (such as 38
+          CFR citations) are provided as unverified starting points (
+          <code className="bg-gray-100 px-1 rounded">verified: false</code>)
+          requiring verification by a qualified Veterans Service Officer (VSO)
+          or accredited representative.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">3. Knowledge Base Completeness</h2>

@@ -1,6 +1,14 @@
 import Link from "next/link";
 
 import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
+import {
+  CAUSED_AGGRAVATED_DISTINCTION,
+  SECONDARY_CONTINUE_CTA,
+  SECONDARY_TRACK_OVERVIEW,
+  TRACK_DISTINCTION_NOTICE,
+  UNVERIFIED_REFERENCE_NOTICE,
+} from "@/lib/legal/phrases";
+import { SECONDARY_LEGAL_REFERENCES } from "@/lib/legal/secondaryReferences";
 
 const steps = [
   "Diagnosed conditions",
@@ -23,23 +31,31 @@ export default function SecondaryLandingPage() {
           Secondary service-connection workflow
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          Use this track when you already have at least one service-connected condition and want to
-          organize other diagnosed conditions that may be related.
+          {SECONDARY_TRACK_OVERVIEW}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          In plain language: a secondary claim can involve a condition that may have been caused by
-          a service-connected disability, or a condition that already existed but may have been
-          aggravated (made worse beyond normal progression) by it. This workflow helps organize
-          questions and evidence for those two theories.
+          {CAUSED_AGGRAVATED_DISTINCTION} This workflow helps organize questions
+          and evidence for those two theories.
         </p>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          This is separate from presumptive service connection. Presumptive claims are based on
-          qualifying service exposures, not on one condition causing or worsening another.
+          {TRACK_DISTINCTION_NOTICE}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          Citations shown in this app are unverified starting points in Phase 1 and should be
-          confirmed against current VA guidance.
+          {UNVERIFIED_REFERENCE_NOTICE}
         </p>
+        <section className="mt-3 rounded-md border border-slate-200 bg-slate-50 p-3">
+          <h2 className="text-sm font-semibold text-slate-800">
+            Supporting references
+          </h2>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-xs text-slate-700">
+            {SECONDARY_LEGAL_REFERENCES.map((reference) => (
+              <li key={reference.id}>
+                <span className="font-medium">{reference.citation}</span>:{" "}
+                {reference.explanation}
+              </li>
+            ))}
+          </ul>
+        </section>
       </header>
 
       <div className="mb-6">
@@ -60,7 +76,7 @@ export default function SecondaryLandingPage() {
           href="/secondary/diagnosed"
           className="mt-5 inline-block rounded-md bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-700"
         >
-          Start secondary workflow
+          {SECONDARY_CONTINUE_CTA}
         </Link>
       </section>
 
