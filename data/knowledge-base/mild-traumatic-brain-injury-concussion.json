@@ -1,0 +1,39 @@
+{
+  "id": "mild-traumatic-brain-injury-concussion",
+  "draft": false,
+  "suggestions": [
+    {
+      "conditionId": "migraine-headaches",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Concussion can produce chronic post-traumatic migraine or migraine-like headache disorders.",
+      "evidenceGaps": [
+        "Neurology evaluation diagnosing migraine/post-traumatic headache",
+        "Timeline linking symptom onset to mTBI"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Cognitive and functional limitations after mTBI can contribute to secondary depressive disorders.",
+      "evidenceGaps": [
+        "Mental health assessment connecting depressive symptoms to post-concussive limitations"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

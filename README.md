@@ -99,10 +99,10 @@ Wizard notes:
 
 ## Coverage
 
-181 conditions across 14 body systems are in the catalog.
+193 conditions across 14 body systems are in the catalog.
 
-- 181 have version-controlled mapping files.
-- 181 are published (`draft: false`) and active in recommendations.
+- 193 have version-controlled mapping files.
+- 193 are published (`draft: false`) and active in recommendations.
 
 
 ## Adding a condition

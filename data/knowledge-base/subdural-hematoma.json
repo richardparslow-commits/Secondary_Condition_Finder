@@ -1,0 +1,39 @@
+{
+  "id": "subdural-hematoma",
+  "draft": false,
+  "suggestions": [
+    {
+      "conditionId": "migraine-headaches",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Residual effects after subdural hematoma frequently include chronic headache disorders.",
+      "evidenceGaps": [
+        "Neurology or primary care records diagnosing persistent headaches after hematoma",
+        "Imaging/history confirming subdural hematoma"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Long-term cognitive and functional effects of subdural hematoma can drive secondary depression.",
+      "evidenceGaps": [
+        "Mental health diagnosis supported by link to residual neurologic impairment"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "rem-sleep-disorder",
+  "draft": false,
+  "suggestions": [
+    {
+      "conditionId": "insomnia",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "REM sleep behavior episodes can fragment sleep and drive chronic insomnia symptoms.",
+      "evidenceGaps": [
+        "Sleep medicine diagnosis documenting persistent insomnia symptoms",
+        "Partner or caregiver observations of nocturnal behaviors and sleep disruption"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Recurrent violent dream enactment and sleep disruption can exacerbate or precipitate chronic anxiety symptoms.",
+      "evidenceGaps": [
+        "Mental health evaluation linking anxiety onset/worsening to chronic sleep disturbance"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

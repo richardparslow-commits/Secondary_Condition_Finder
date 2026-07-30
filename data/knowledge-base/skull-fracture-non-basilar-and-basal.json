@@ -1,0 +1,39 @@
+{
+  "id": "skull-fracture-non-basilar-and-basal",
+  "draft": false,
+  "suggestions": [
+    {
+      "conditionId": "migraine-headaches",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Skull fractures can lead to chronic post-traumatic headache syndromes after the acute injury phase.",
+      "evidenceGaps": [
+        "Diagnosis of chronic headaches following skull fracture",
+        "Records documenting fracture and subsequent persistent symptoms"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Persistent pain and neurologic sequelae from skull fractures can contribute to depression.",
+      "evidenceGaps": [
+        "Mental health records linking depressive symptoms to chronic post-fracture limitations"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

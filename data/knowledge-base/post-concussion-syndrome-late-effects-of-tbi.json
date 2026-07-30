@@ -1,0 +1,39 @@
+{
+  "id": "post-concussion-syndrome-late-effects-of-tbi",
+  "draft": false,
+  "suggestions": [
+    {
+      "conditionId": "migraine-headaches",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Post-concussion syndrome frequently includes chronic headache patterns that become independently diagnosable.",
+      "evidenceGaps": [
+        "Diagnosis of chronic post-concussive headaches/migraines",
+        "Symptom timeline showing persistence beyond acute concussion period"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Persistent cognitive and somatic symptoms after concussion can contribute to anxiety disorders.",
+      "evidenceGaps": [
+        "Mental health documentation linking anxiety to ongoing post-concussion symptoms"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}
