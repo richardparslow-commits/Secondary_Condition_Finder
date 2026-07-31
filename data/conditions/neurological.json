@@ -2,6 +2,19 @@
   "bodySystem": "Neurological",
   "conditions": [
     {
+      "id": "peripheral-neuropathy",
+      "name": "Peripheral Neuropathy",
+      "displayName": "Peripheral Neuropathy",
+      "bodySystem": "Neurological",
+      "aliases": ["PN"],
+      "primaryDiagnosticCodes": ["8520"],
+      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "ratingSchedule": [],
+      "reviewNotes": ["Verified neurological mapping."],
+      "draft": false,
+      "verified": true
+    },
+    {
       "id": "rem-sleep-disorder",
       "name": "REM Sleep Disorder",
       "displayName": "REM Sleep Disorder",
