@@ -492,15 +492,36 @@
     },
     {
       "id": "skull-fracture-non-basilar-and-basal",
-      "name": "skull fracture non basilar and basal",
-      "displayName": "skull fracture non basilar and basal",
+      "name": "Skull Fracture (Non-basilar and Basal)",
+      "displayName": "Skull Fracture (Non-basilar and Basal)",
       "bodySystem": "Neurological",
-      "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
-      "ratingSchedule": [],
+      "aliases": [
+        "Basal Skull Fracture",
+        "Non-basilar Skull Fracture"
+      ],
+      "primaryDiagnosticCodes": [
+        "5296",
+        "8045"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.71a",
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system, including skull loss.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and residuals of brain trauma.",
+          "verified": false
+        }
+      ],
       "reviewNotes": [
-        "Pending manual review"
+        "Diagnostic code selection and fracture variant details still require human review."
       ],
       "draft": false,
       "verified": false
