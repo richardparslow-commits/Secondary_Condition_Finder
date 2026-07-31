@@ -1,36 +1,142 @@
 {
   "id": "skull-fracture-non-basilar-and-basal",
   "draft": false,
+  "todo": [],
   "suggestions": [
     {
       "conditionId": "migraine-headaches",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Skull fractures can lead to chronic post-traumatic headache syndromes after the acute injury phase.",
+      "rationale": "Skull fractures commonly leave veterans with chronic post-traumatic headache patterns that later meet a separate migraine diagnosis.",
       "evidenceGaps": [
-        "Diagnosis of chronic headaches following skull fracture",
-        "Records documenting fracture and subsequent persistent symptoms"
+        "Current diagnosis of migraine or chronic post-traumatic headache disorder",
+        "Records documenting the skull fracture and persistent headache symptoms after the acute injury",
+        "Medical opinion linking the current headache disorder to the skull fracture residuals"
       ],
       "sourceReferences": [
         {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions, including migraine headaches and traumatic brain injury residuals.",
+          "verified": false
+        },
+        {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "note": "Secondary service connection framework for residual headache disorders caused or aggravated by skull fracture residuals.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "post-concussion-syndrome",
+      "rank": 2,
+      "prevalence": "commonly-explored",
+      "rationale": "Skull fractures often involve overlapping head trauma, and persistent cognitive, sensory, or headache residuals may later be recognized as post-concussion syndrome.",
+      "evidenceGaps": [
+        "Clinical documentation of ongoing cognitive, sensory, or headache residuals after the skull fracture",
+        "Timeline showing symptoms persisted beyond the acute recovery period",
+        "Medical opinion identifying the skull fracture trauma as the cause of the post-concussive residuals"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions, including residuals of traumatic brain injury.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework for chronic residuals developing from the original skull fracture trauma.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "tinnitus",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Temporal or basilar skull trauma can sometimes leave chronic ringing or other auditory symptoms that become independently diagnosable as tinnitus.",
+      "evidenceGaps": [
+        "Current tinnitus diagnosis or competent report of recurrent ringing in the ears",
+        "ENT or audiology records documenting onset after the skull fracture",
+        "Medical opinion connecting the auditory symptoms to the skull fracture residuals"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Schedule of ratings, ear, including tinnitus.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework for auditory residuals caused by the skull fracture.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "vestibular-disorder",
+      "rank": 4,
+      "prevalence": "sometimes-explored",
+      "rationale": "Skull fractures that affect the inner ear or surrounding structures can leave chronic dizziness, imbalance, or vertigo that is separately rated as a vestibular disorder.",
+      "evidenceGaps": [
+        "ENT, neurology, or vestibular testing documenting chronic dizziness or balance impairment",
+        "Records showing vestibular symptoms began after the skull fracture",
+        "Medical nexus opinion tying the vestibular disorder to the skull fracture residuals"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Schedule of ratings, ear, including peripheral vestibular disorders.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework for chronic dizziness or vertigo caused by skull fracture residuals.",
           "verified": false
         }
       ]
     },
     {
       "conditionId": "depressive-disorder",
-      "rank": 2,
+      "rank": 5,
       "prevalence": "sometimes-explored",
-      "rationale": "Persistent pain and neurologic sequelae from skull fractures can contribute to depression.",
+      "rationale": "Persistent pain, cosmetic change, neurologic limitations, and chronic post-traumatic symptoms from a skull fracture can contribute to a separately diagnosable depressive disorder.",
       "evidenceGaps": [
-        "Mental health records linking depressive symptoms to chronic post-fracture limitations"
+        "Mental health diagnosis from a qualified provider",
+        "Treatment records linking depressive symptoms to skull fracture residuals and resulting functional limits",
+        "Nexus opinion addressing causation or aggravation by the skull fracture residuals"
       ],
       "sourceReferences": [
         {
+          "citation": "38 CFR 4.130",
+          "note": "Schedule of ratings, mental disorders.",
+          "verified": false
+        },
+        {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
+          "note": "Secondary service connection framework for mental health conditions caused or aggravated by skull fracture residuals.",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "conditionId": "anosmia",
+      "rank": 6,
+      "prevalence": "occasionally-explored",
+      "rationale": "Skull fractures can occasionally damage olfactory pathways, leading to a chronic loss of smell that is separately compensable.",
+      "evidenceGaps": [
+        "Current diagnosis or objective testing confirming loss of smell",
+        "Clinical records showing the smell deficit began after the skull fracture",
+        "Medical opinion connecting the anosmia to the skull fracture residuals"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "38 CFR 4.87a",
+          "note": "Schedule of ratings, other sense organs, including loss of smell.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework for sensory loss caused by skull fracture residuals.",
           "verified": false
         }
       ]
