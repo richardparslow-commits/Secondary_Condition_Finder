@@ -3,6 +3,17 @@ import fs from "fs";
 import path from "path";
 import { VALID_RATINGS } from "../src/lib/secondary-workflow";
 
+interface ConditionCatalogEntry {
+  id: string;
+  primaryDiagnosticCodes: string[];
+  cfrCitations: string[];
+  verified: boolean;
+}
+
+interface ConditionCatalogFile {
+  conditions?: ConditionCatalogEntry[];
+}
+
 describe("Phase 1/2 Ratings & Condition Catalog Expansion Suite", () => {
   it("includes all required rating tiers up to 100% P&T", () => {
     const expectedRatings = [
@@ -31,9 +42,9 @@ describe("Phase 1/2 Ratings & Condition Catalog Expansion Suite", () => {
     const conditionsDir = path.join(process.cwd(), "data/conditions");
     const catalogFiles = fs.readdirSync(conditionsDir).filter(f => f.endsWith(".json"));
 
-    const allConditions: any[] = [];
+    const allConditions: ConditionCatalogEntry[] = [];
     for (const file of catalogFiles) {
-      const content = JSON.parse(fs.readFileSync(path.join(conditionsDir, file), "utf8"));
+      const content: ConditionCatalogFile = JSON.parse(fs.readFileSync(path.join(conditionsDir, file), "utf8"));
       if (content.conditions && Array.isArray(content.conditions)) {
         allConditions.push(...content.conditions);
       }
