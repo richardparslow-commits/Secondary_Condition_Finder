@@ -53,9 +53,9 @@ describe("Phase 1/2 Ratings & Condition Catalog Expansion Suite", () => {
     for (const id of expectedConditionIds) {
       const found = allConditions.find(c => c.id === id);
       expect(found, `Condition missing from catalog: ${id}`).toBeDefined();
-      expect(found?.primaryDiagnosticCodes).toBeInstanceOf(Array);
-      expect(found?.cfrCitations).toBeInstanceOf(Array);
-      expect(found?.verified).toBe(false);
+      expect(found!.primaryDiagnosticCodes).toBeInstanceOf(Array);
+      expect(found!.cfrCitations).toBeInstanceOf(Array);
+      expect(found!.verified).toBe(false);
     }
   });
 });

@@ -6,9 +6,10 @@ export interface SafeIngestionResult {
 }
 
 /**
- * Safe, non-PII-retentive file ingestion adapter.
- * Extracts minimal derived metadata (e.g. file counts, format categories)
- * without storing raw file contents or personal identifiers.
+ * Classifies file names and summarizes their formats without retaining file contents.
+ *
+ * @param fileNames - File names to classify by extension
+ * @returns An ingestion result with the file count, unique `format-<extension>` indicators, and an error message when processing fails
  */
 export function processEvidenceFiles(fileNames: string[]): SafeIngestionResult {
   try {
