@@ -31,9 +31,9 @@ describe("Phase 1/2 Ratings & Condition Catalog Expansion Suite", () => {
     const conditionsDir = path.join(process.cwd(), "data/conditions");
     const catalogFiles = fs.readdirSync(conditionsDir).filter(f => f.endsWith(".json"));
 
-    const allConditions: any[] = [];
+    const allConditions: Array<{ id: string; primaryDiagnosticCodes: unknown[]; cfrCitations: unknown[]; verified: unknown }> = [];
     for (const file of catalogFiles) {
-      const content = JSON.parse(fs.readFileSync(path.join(conditionsDir, file), "utf8"));
+      const content = JSON.parse(fs.readFileSync(path.join(conditionsDir, file), "utf8")) as { conditions?: Array<{ id: string; primaryDiagnosticCodes: unknown[]; cfrCitations: unknown[]; verified: unknown }> };
       if (content.conditions && Array.isArray(content.conditions)) {
         allConditions.push(...content.conditions);
       }
@@ -42,9 +42,9 @@ describe("Phase 1/2 Ratings & Condition Catalog Expansion Suite", () => {
     for (const id of expectedConditionIds) {
       const found = allConditions.find(c => c.id === id);
       expect(found, `Condition missing from catalog: ${id}`).toBeDefined();
-      expect(found.primaryDiagnosticCodes).toBeInstanceOf(Array);
-      expect(found.cfrCitations).toBeInstanceOf(Array);
-      expect(found.verified).toBe(false);
+      expect(found!.primaryDiagnosticCodes).toBeInstanceOf(Array);
+      expect(found!.cfrCitations).toBeInstanceOf(Array);
+      expect(found!.verified).toBe(false);
     }
   });
 });

@@ -27,7 +27,7 @@ export function processEvidenceFiles(fileNames: string[]): SafeIngestionResult {
       fileCount: fileNames.length,
       derivedIndicators: [...new Set(derivedIndicators)]
     };
-  } catch (err) {
+  } catch {
     return { success: false, fileCount: 0, derivedIndicators: [], error: "Ingestion processing error" };
   }
 }
