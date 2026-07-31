@@ -6,11 +6,21 @@
       "name": "Hypogonadism",
       "displayName": "Hypogonadism",
       "bodySystem": "Endocrine",
-      "aliases": ["Testicular Hypofunction"],
-      "primaryDiagnosticCodes": ["7903", "7919"],
-      "cfrCitations": ["38 CFR § 4.119", "38 CFR § 3.310"],
+      "aliases": [
+        "Testicular Hypofunction"
+      ],
+      "primaryDiagnosticCodes": [
+        "7903",
+        "7919"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.119",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     },
@@ -19,11 +29,20 @@
       "name": "Addison's Disease",
       "displayName": "Addison's Disease",
       "bodySystem": "Endocrine",
-      "aliases": ["Primary Adrenal Insufficiency"],
-      "primaryDiagnosticCodes": ["7911"],
-      "cfrCitations": ["38 CFR § 4.119", "38 CFR § 3.310"],
+      "aliases": [
+        "Primary Adrenal Insufficiency"
+      ],
+      "primaryDiagnosticCodes": [
+        "7911"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.119",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Verified endocrine mapping."],
+      "reviewNotes": [
+        "Verified endocrine mapping."
+      ],
       "draft": false,
       "verified": true
     }

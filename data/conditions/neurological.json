@@ -6,11 +6,20 @@
       "name": "Peripheral Neuropathy",
       "displayName": "Peripheral Neuropathy",
       "bodySystem": "Neurological",
-      "aliases": ["PN"],
-      "primaryDiagnosticCodes": ["8520"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "aliases": [
+        "PN"
+      ],
+      "primaryDiagnosticCodes": [
+        "8520"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Verified neurological mapping."],
+      "reviewNotes": [
+        "Verified neurological mapping."
+      ],
       "draft": false,
       "verified": true
     },
@@ -19,11 +28,21 @@
       "name": "REM Sleep Disorder",
       "displayName": "REM Sleep Disorder",
       "bodySystem": "Neurological",
-      "aliases": ["REM Sleep Behavior Disorder"],
-      "primaryDiagnosticCodes": ["8108", "6847"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "aliases": [
+        "REM Sleep Behavior Disorder"
+      ],
+      "primaryDiagnosticCodes": [
+        "8108",
+        "6847"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     },
@@ -32,11 +51,20 @@
       "name": "Micro TBI",
       "displayName": "Micro TBI",
       "bodySystem": "Neurological",
-      "aliases": ["Micro Traumatic Brain Injury"],
-      "primaryDiagnosticCodes": ["8045"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "aliases": [
+        "Micro Traumatic Brain Injury"
+      ],
+      "primaryDiagnosticCodes": [
+        "8045"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     },
@@ -45,11 +73,21 @@
       "name": "Mild Traumatic Brain Injury (mTBI) / Concussion",
       "displayName": "Mild Traumatic Brain Injury (mTBI) / Concussion",
       "bodySystem": "Neurological",
-      "aliases": ["mTBI", "Concussion"],
-      "primaryDiagnosticCodes": ["8045"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "aliases": [
+        "mTBI",
+        "Concussion"
+      ],
+      "primaryDiagnosticCodes": [
+        "8045"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     },
@@ -58,11 +96,20 @@
       "name": "Post-Concussion Syndrome / Late Effects of TBI",
       "displayName": "Post-Concussion Syndrome / Late Effects of TBI",
       "bodySystem": "Neurological",
-      "aliases": ["PCS"],
-      "primaryDiagnosticCodes": ["8045"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "aliases": [
+        "PCS"
+      ],
+      "primaryDiagnosticCodes": [
+        "8045"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     },
@@ -71,11 +118,20 @@
       "name": "Intracranial Injury Without Skull Fracture",
       "displayName": "Intracranial Injury Without Skull Fracture",
       "bodySystem": "Neurological",
-      "aliases": ["Intracranial Injury"],
-      "primaryDiagnosticCodes": ["8045"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "aliases": [
+        "Intracranial Injury"
+      ],
+      "primaryDiagnosticCodes": [
+        "8045"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     },
@@ -84,11 +140,21 @@
       "name": "Cerebral Contusion/Diffuse Axonal Injury (DAI)",
       "displayName": "Cerebral Contusion/Diffuse Axonal Injury (DAI)",
       "bodySystem": "Neurological",
-      "aliases": ["DAI", "Cerebral Contusion"],
-      "primaryDiagnosticCodes": ["8045"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "aliases": [
+        "DAI",
+        "Cerebral Contusion"
+      ],
+      "primaryDiagnosticCodes": [
+        "8045"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     },
@@ -97,11 +163,21 @@
       "name": "Skull Fracture (Non-basilar and Basal)",
       "displayName": "Skull Fracture (Non-basilar and Basal)",
       "bodySystem": "Neurological",
-      "aliases": ["Basilar Skull Fracture"],
-      "primaryDiagnosticCodes": ["8002", "8004"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "aliases": [
+        "Basilar Skull Fracture"
+      ],
+      "primaryDiagnosticCodes": [
+        "8002",
+        "8004"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     },
@@ -110,11 +186,20 @@
       "name": "Subdural Hematoma",
       "displayName": "Subdural Hematoma",
       "bodySystem": "Neurological",
-      "aliases": ["SDH"],
-      "primaryDiagnosticCodes": ["8045"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "aliases": [
+        "SDH"
+      ],
+      "primaryDiagnosticCodes": [
+        "8045"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     },
@@ -123,11 +208,21 @@
       "name": "Epidural Hematoma",
       "displayName": "Epidural Hematoma",
       "bodySystem": "Neurological",
-      "aliases": ["EDH"],
-      "primaryDiagnosticCodes": ["8045", "8046"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "aliases": [
+        "EDH"
+      ],
+      "primaryDiagnosticCodes": [
+        "8045",
+        "8046"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     },
@@ -136,11 +231,21 @@
       "name": "Traumatic Subarachnoid Hemorrhage",
       "displayName": "Traumatic Subarachnoid Hemorrhage",
       "bodySystem": "Neurological",
-      "aliases": ["TSAH"],
-      "primaryDiagnosticCodes": ["8045", "8046"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 3.310"],
+      "aliases": [
+        "TSAH"
+      ],
+      "primaryDiagnosticCodes": [
+        "8045",
+        "8046"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     },
@@ -149,11 +254,22 @@
       "name": "Penetrating Head Trauma",
       "displayName": "Penetrating Head Trauma",
       "bodySystem": "Neurological",
-      "aliases": ["Penetrating Brain Injury"],
-      "primaryDiagnosticCodes": ["8045", "5296"],
-      "cfrCitations": ["38 CFR § 4.124a", "38 CFR § 4.71a", "38 CFR § 3.310"],
+      "aliases": [
+        "Penetrating Brain Injury"
+      ],
+      "primaryDiagnosticCodes": [
+        "8045",
+        "5296"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 4.71a",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
       "draft": true,
       "verified": false
     }

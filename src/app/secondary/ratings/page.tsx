@@ -57,14 +57,11 @@ export default async function RatingsPage({ searchParams }: PageProps) {
                   className="w-full p-2 border rounded"
                 >
                   <option value="">Select current rating...</option>
-                  {VALID_RATINGS.map((rating) => {
-                    const val = rating.replace('%', '');
-                    return (
-                      <option key={rating} value={val === '100% P&T' ? '100% P&T' : val}>
-                        {rating}
-                      </option>
-                    );
-                  })}
+                  {VALID_RATINGS.map((rating) => (
+                    <option key={rating} value={rating.replace('%', '')}>
+                      {rating}
+                    </option>
+                  ))}
                 </select>
               </div>
             );
