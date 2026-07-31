@@ -31,9 +31,9 @@ describe("Phase 1/2 Ratings & Condition Catalog Expansion Suite", () => {
     const conditionsDir = path.join(process.cwd(), "data/conditions");
     const catalogFiles = fs.readdirSync(conditionsDir).filter(f => f.endsWith(".json"));
 
-    const allConditions: Array<{ id: string; primaryDiagnosticCodes: unknown[]; cfrCitations: unknown[]; verified: unknown }> = [];
+    const allConditions: Array<{ id: string; primaryDiagnosticCodes: string[]; cfrCitations: string[]; verified: boolean }> = [];
     for (const file of catalogFiles) {
-      const content = JSON.parse(fs.readFileSync(path.join(conditionsDir, file), "utf8")) as { conditions?: Array<{ id: string; primaryDiagnosticCodes: unknown[]; cfrCitations: unknown[]; verified: unknown }> };
+      const content = JSON.parse(fs.readFileSync(path.join(conditionsDir, file), "utf8")) as { conditions?: Array<{ id: string; primaryDiagnosticCodes: string[]; cfrCitations: string[]; verified: boolean }> };
       if (content.conditions && Array.isArray(content.conditions)) {
         allConditions.push(...content.conditions);
       }
