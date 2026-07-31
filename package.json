@@ -21,7 +21,8 @@
     "zod": "^4.4.3"
   },
   "overrides": {
-    "@eslint/config-array": ">=0.23.5"
+    "@eslint/config-array": ">=0.23.5",
+    "postcss": ">=8.5.18"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
