@@ -15,7 +15,7 @@
         {
           "citation": "38 CFR 4.124a",
           "note": "Peripheral nerve involvement",
-          "verified": false
+          "verified": true
         }
       ]
     },
@@ -31,7 +31,7 @@
         {
           "citation": "38 CFR 4.79",
           "note": "Eye diagnostic codes",
-          "verified": false
+          "verified": true
         }
       ]
     },
@@ -47,7 +47,7 @@
         {
           "citation": "38 CFR 4.115a",
           "note": "Renal rating schedule",
-          "verified": false
+          "verified": true
         }
       ]
     }

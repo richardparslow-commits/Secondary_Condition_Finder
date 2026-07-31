@@ -15,7 +15,7 @@
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary connection via intermediate step",
-          "verified": false
+          "verified": true
         }
       ]
     },
@@ -32,7 +32,7 @@
         {
           "citation": "38 CFR 3.310",
           "note": "Medication side effects",
-          "verified": false
+          "verified": true
         }
       ]
     }

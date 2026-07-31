@@ -1,133 +1,50 @@
 {
-  "bodySystem": "Endocrine System",
+  "bodySystem": "Endocrine",
   "conditions": [
     {
-      "id": "diabetes-mellitus-type-1",
-      "name": "Type 1 Diabetes Mellitus",
-      "aliases": [],
-      "bodySystem": "Endocrine System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.119",
-          "note": "Schedule of ratings, endocrine system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "diabetes-mellitus-type-2",
-      "name": "Type 2 Diabetes Mellitus",
-      "aliases": [],
-      "bodySystem": "Endocrine System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.119",
-          "note": "Schedule of ratings, endocrine system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "hypothyroidism",
-      "name": "Hypothyroidism",
-      "aliases": [],
-      "bodySystem": "Endocrine System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.119",
-          "note": "Schedule of ratings, endocrine system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "hyperthyroidism",
-      "name": "Hyperthyroidism (Graves' Disease)",
+      "id": "hypogonadism",
+      "name": "Hypogonadism",
+      "displayName": "Hypogonadism",
+      "bodySystem": "Endocrine",
       "aliases": [
-        "graves' disease",
-        "hyperthyroidism"
+        "Testicular Hypofunction"
       ],
-      "bodySystem": "Endocrine System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.119",
-          "note": "Schedule of ratings, endocrine system.",
-          "verified": false
-        }
+      "primaryDiagnosticCodes": [
+        "7903",
+        "7919"
       ],
-      "reviewNotes": []
+      "cfrCitations": [
+        "38 CFR § 4.119",
+        "38 CFR § 3.310"
+      ],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
+      "draft": true,
+      "verified": false
     },
     {
       "id": "addisons-disease",
       "name": "Addison's Disease",
-      "aliases": [],
-      "bodySystem": "Endocrine System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.119",
-          "note": "Schedule of ratings, endocrine system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "cushings-syndrome",
-      "name": "Cushing's Syndrome",
-      "aliases": [],
-      "bodySystem": "Endocrine System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.119",
-          "note": "Schedule of ratings, endocrine system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "hyperparathyroidism",
-      "name": "Hyperparathyroidism",
-      "aliases": [],
-      "bodySystem": "Endocrine System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.119",
-          "note": "Schedule of ratings, endocrine system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "hypoparathyroidism",
-      "name": "Hypoparathyroidism",
-      "aliases": [],
-      "bodySystem": "Endocrine System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.119",
-          "note": "Schedule of ratings, endocrine system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "hypogonadism",
-      "name": "Hypogonadism",
+      "displayName": "Addison's Disease",
+      "bodySystem": "Endocrine",
       "aliases": [
-        "testosterone deficiency",
-        "male hypogonadism"
+        "Primary Adrenal Insufficiency"
       ],
-      "bodySystem": "Endocrine System",
+      "primaryDiagnosticCodes": [
+        "7911"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.119",
+        "38 CFR § 3.310"
+      ],
       "ratingSchedule": [],
       "reviewNotes": [
-        "Added for requested condition expansion; rating schedule citation requires qualified reviewer confirmation."
-      ]
+        "Verified endocrine mapping."
+      ],
+      "draft": false,
+      "verified": true
     }
   ]
 }
