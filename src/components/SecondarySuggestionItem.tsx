@@ -6,6 +6,15 @@ const PREVALENCE_LABEL: Record<Recommendation["prevalence"], string> = {
   "occasionally-explored": "Occasionally explored",
 };
 
+const PREVALENCE_EXPLANATION: Record<Recommendation["prevalence"], string> = {
+  "commonly-explored":
+    "Commonly explored means this secondary relationship appears frequently in authored mappings.",
+  "sometimes-explored":
+    "Sometimes explored means this secondary relationship appears in a moderate number of authored mappings.",
+  "occasionally-explored":
+    "Occasionally explored means this secondary relationship appears less often in authored mappings.",
+};
+
 interface Props {
   recommendation: Recommendation;
   primaryId: string;
@@ -23,10 +32,16 @@ export function SecondarySuggestionItem({ recommendation, primaryId }: Props) {
           <p className="text-xs uppercase tracking-wide text-slate-500">Possible secondary condition</p>
           <h3 className="text-base font-semibold text-slate-900">{recommendation.condition}</h3>
         </div>
-        <span className="rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-700">
+        <span
+          className="rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-700"
+          title={PREVALENCE_EXPLANATION[recommendation.prevalence]}
+        >
           {PREVALENCE_LABEL[recommendation.prevalence]}
         </span>
       </header>
+      <p className="mt-1.5 text-xs text-slate-500">
+        {PREVALENCE_EXPLANATION[recommendation.prevalence]}
+      </p>
 
       {primaryContext && (
         <p className="mt-2 text-sm text-slate-700">
@@ -37,7 +52,9 @@ export function SecondarySuggestionItem({ recommendation, primaryId }: Props) {
 
       {primaryContext && (
         <p className="mt-2 text-sm leading-relaxed text-slate-700">
-          <span className="font-medium text-slate-900">Why this may be worth exploring: </span>
+          <span className="font-medium text-slate-900">
+            How this could relate to your service-connected condition:{" "}
+          </span>
           {primaryContext.rationale}
         </p>
       )}
