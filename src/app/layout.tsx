@@ -1,3 +1,4 @@
+import '@/lib/appInsights';
 import type { Metadata } from "next";
 
 import "./globals.css";
