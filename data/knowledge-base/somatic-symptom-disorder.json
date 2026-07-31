@@ -16,7 +16,7 @@
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection and aggravation",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -33,7 +33,7 @@
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary connection via medication or stress pathways",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -50,7 +50,7 @@
         {
           "citation": "38 CFR 4.124a",
           "note": "Diagnostic code 8100",
-          "verified": true
+          "verified": false
         }
       ]
     }

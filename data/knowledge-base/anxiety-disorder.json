@@ -15,7 +15,7 @@
         {
           "citation": "38 CFR 4.130",
           "note": "Mental Health rating criteria often encompass sleep impairment, but independent diagnosis can be secondary if distinct",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -32,7 +32,7 @@
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection",
-          "verified": true
+          "verified": false
         }
       ]
     }

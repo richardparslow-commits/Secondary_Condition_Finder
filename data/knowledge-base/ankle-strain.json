@@ -15,7 +15,7 @@
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -32,7 +32,7 @@
         {
           "citation": "38 CFR 4.71a",
           "note": "Diagnostic Code 5276",
-          "verified": true
+          "verified": false
         }
       ]
     }

@@ -17,12 +17,12 @@
         {
           "citation": "38 CFR 4.104",
           "note": "Schedule of ratings, cardiovascular system.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection, including aggravation.",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -40,12 +40,12 @@
         {
           "citation": "38 CFR 4.130",
           "note": "Schedule of ratings, mental disorders.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection.",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -63,12 +63,12 @@
         {
           "citation": "38 CFR 4.130",
           "note": "Schedule of ratings, mental disorders.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection.",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -86,12 +86,12 @@
         {
           "citation": "38 CFR 4.114",
           "note": "Schedule of ratings, digestive system.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection, including aggravation.",
-          "verified": true
+          "verified": false
         }
       ]
     }

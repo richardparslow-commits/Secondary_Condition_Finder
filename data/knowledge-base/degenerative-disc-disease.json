@@ -16,7 +16,7 @@
         {
           "citation": "38 CFR 4.71a",
           "note": "Neurological involvement secondary to spinal pathology",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -32,7 +32,7 @@
         {
           "citation": "38 CFR 4.124a",
           "note": "Sciatic nerve paralysis/neuritis",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -48,7 +48,7 @@
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary mechanical aggravation",
-          "verified": true
+          "verified": false
         }
       ]
     }
