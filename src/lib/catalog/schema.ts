@@ -8,7 +8,7 @@ export const ratingReferenceSchema = z.object({
    * True only after a qualified human has confirmed the citation. Never set by
    * an automated agent.
    */
-  verified: z.boolean(),
+  verified: z.literal(false),
 });
 
 /**

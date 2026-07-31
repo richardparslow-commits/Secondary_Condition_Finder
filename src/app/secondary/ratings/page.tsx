@@ -62,7 +62,8 @@ export default async function RatingsPage({ searchParams }: PageProps) {
                       {rating}
                     </option>
                   ))}
-                </select>
+                  <option value="decline">I prefer not to answer</option>
+</select>
               </div>
             );
           })

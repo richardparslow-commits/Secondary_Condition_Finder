@@ -45,6 +45,29 @@
       ],
       "draft": false,
       "verified": true
+    },
+    {
+      "id": "diabetes-mellitus-type-2",
+      "name": "Diabetes Mellitus Type 2",
+      "displayName": "Diabetes Mellitus Type 2",
+      "bodySystem": "Endocrine",
+      "aliases": [
+        "Type 2 Diabetes",
+        "DM2"
+      ],
+      "primaryDiagnosticCodes": [
+        "7913"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.119",
+        "38 CFR § 3.310"
+      ],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": true
     }
   ]
 }

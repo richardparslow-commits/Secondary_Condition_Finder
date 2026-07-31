@@ -17,7 +17,7 @@
         {
           "citation": "38 CFR § 3.310(a)",
           "note": "Authorizes secondary connection for disabilities proximately caused by a service-connected condition.",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -35,7 +35,7 @@
         {
           "citation": "38 CFR § 3.310(b)",
           "note": "Authorizes secondary connection for a pre-existing condition that is legally aggravated by a service-connected condition.",
-          "verified": true
+          "verified": false
         }
       ]
     }

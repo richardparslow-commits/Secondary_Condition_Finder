@@ -20,7 +20,7 @@ export const sourceReferenceSchema = z.object({
    * True only after a qualified human has confirmed the citation is accurate
    * and applies to this suggestion. Never set to true by an automated agent.
    */
-  verified: z.boolean(),
+  verified: z.literal(false),
 });
 
 export const suggestionSchema = z.object({

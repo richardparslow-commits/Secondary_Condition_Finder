@@ -272,6 +272,248 @@
       ],
       "draft": true,
       "verified": false
+    },
+    {
+      "id": "migraine-headaches",
+      "name": "Migraine Headaches",
+      "displayName": "Migraine Headaches",
+      "bodySystem": "Neurological",
+      "aliases": [
+        "Migraines"
+      ],
+      "primaryDiagnosticCodes": [
+        "8100"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": true
+    },
+    {
+      "id": "als",
+      "name": "als",
+      "displayName": "als",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "cerebral-contusion-diffuse-axonal-injury",
+      "name": "cerebral contusion diffuse axonal injury",
+      "displayName": "cerebral contusion diffuse axonal injury",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "cerebral-palsy",
+      "name": "cerebral palsy",
+      "displayName": "cerebral palsy",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "cushings-syndrome",
+      "name": "cushings syndrome",
+      "displayName": "cushings syndrome",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "diabetes-mellitus-type-1",
+      "name": "diabetes mellitus type 1",
+      "displayName": "diabetes mellitus type 1",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "hyperparathyroidism",
+      "name": "hyperparathyroidism",
+      "displayName": "hyperparathyroidism",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "hyperthyroidism",
+      "name": "hyperthyroidism",
+      "displayName": "hyperthyroidism",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "hypoparathyroidism",
+      "name": "hypoparathyroidism",
+      "displayName": "hypoparathyroidism",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "hypothyroidism",
+      "name": "hypothyroidism",
+      "displayName": "hypothyroidism",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "radiculopathy-femoral",
+      "name": "radiculopathy femoral",
+      "displayName": "radiculopathy femoral",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "radiculopathy-sciatic",
+      "name": "radiculopathy sciatic",
+      "displayName": "radiculopathy sciatic",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "radiculopathy-upper-extremity",
+      "name": "radiculopathy upper extremity",
+      "displayName": "radiculopathy upper extremity",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "radiculopathy",
+      "name": "radiculopathy",
+      "displayName": "radiculopathy",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "skull-fracture-non-basilar-and-basal",
+      "name": "skull fracture non basilar and basal",
+      "displayName": "skull fracture non basilar and basal",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "mild-tbi",
+      "name": "Mild Tbi",
+      "bodySystem": "neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending human review"
+      ],
+      "aliases": []
     }
   ]
 }

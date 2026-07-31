@@ -17,12 +17,12 @@
         {
           "citation": "38 CFR 4.124a",
           "note": "Schedule of ratings, neurological conditions, including peripheral nerves.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection.",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -40,12 +40,12 @@
         {
           "citation": "38 CFR 4.79",
           "note": "Schedule of ratings, eye. NOTE: the prior prototype cited 38 CFR 4.119 (DC 7913) here, which is the diagnostic code for diabetes mellitus itself under the endocrine schedule, not for retinopathy. Corrected pending human review.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection.",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -63,12 +63,12 @@
         {
           "citation": "38 CFR 4.115a",
           "note": "Ratings for renal dysfunction.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection.",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -86,12 +86,12 @@
         {
           "citation": "38 CFR 4.104",
           "note": "Schedule of ratings, cardiovascular system.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection, including aggravation and baseline requirements.",
-          "verified": true
+          "verified": false
         }
       ]
     }
