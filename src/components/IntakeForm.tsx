@@ -19,6 +19,8 @@ const fieldClass =
   "w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900";
 
 const MAX_VISIBLE = 40;
+const DATABASE_MAPPED_EXPLANATION =
+  "Database mapped means this condition already has authored secondary-condition relationships in the knowledge base.";
 
 export function IntakeForm({ options }: Props) {
   const [query, setQuery] = useState("");
@@ -57,6 +59,11 @@ export function IntakeForm({ options }: Props) {
         <p className="mt-1 text-sm text-slate-600">
           Search {options.length} conditions and select every one you are
           service connected for.
+        </p>
+        <p className="mt-1 text-xs text-slate-500">
+          <span className="font-medium text-slate-700">Database mapped</span>{" "}
+          means the condition already has authored secondary-condition links in
+          this app&apos;s knowledge base.
         </p>
 
         {selected.length > 0 && (
@@ -124,7 +131,10 @@ export function IntakeForm({ options }: Props) {
                   </span>
                 </span>
                 {option.hasResearch ? (
-                  <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700">
+                  <span
+                    className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700"
+                    title={DATABASE_MAPPED_EXPLANATION}
+                  >
                     database mapped
                   </span>
                 ) : (

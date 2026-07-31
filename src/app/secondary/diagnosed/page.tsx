@@ -7,6 +7,8 @@ import { mappedConditionIds } from "@/lib/kb/lookup";
 import { parseDiagnosedPrefill } from "@/lib/secondary-workflow/state";
 
 export const dynamic = "force-dynamic";
+const DATABASE_MAPPED_EXPLANATION =
+  "Database mapped means this condition already has authored secondary-condition relationships in the knowledge base.";
 
 export default async function DiagnosedConditionsPage({
   searchParams,
@@ -45,6 +47,11 @@ export default async function DiagnosedConditionsPage({
             Select one or more conditions, then continue. These catalog conditions are
             knowledge-base mapped for secondary research exploration.
           </p>
+          <p className="mt-1 text-xs text-slate-500">
+            <span className="font-medium text-slate-700">Database mapped</span>{" "}
+            means the condition already has authored secondary-condition links in this
+            app&apos;s knowledge base.
+          </p>
 
           <ul className="mt-3 max-h-[28rem] divide-y divide-slate-100 overflow-y-auto rounded-lg border border-slate-200 bg-white">
             {conditions.map((condition) => (
@@ -62,7 +69,10 @@ export default async function DiagnosedConditionsPage({
                     <span className="block text-xs text-slate-500">{condition.bodySystem}</span>
                   </span>
                   {mapped.has(condition.id) ? (
-                    <span className="ml-auto shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700">
+                    <span
+                      className="ml-auto shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700"
+                      title={DATABASE_MAPPED_EXPLANATION}
+                    >
                       database mapped
                     </span>
                   ) : (

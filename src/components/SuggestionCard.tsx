@@ -12,6 +12,15 @@ const PREVALENCE_STYLE: Record<Recommendation["prevalence"], string> = {
   "occasionally-explored": "bg-slate-100 text-slate-600",
 };
 
+const PREVALENCE_EXPLANATION: Record<Recommendation["prevalence"], string> = {
+  "commonly-explored":
+    "Commonly explored means this secondary relationship appears frequently in authored mappings.",
+  "sometimes-explored":
+    "Sometimes explored means this secondary relationship appears in a moderate number of authored mappings.",
+  "occasionally-explored":
+    "Occasionally explored means this secondary relationship appears less often in authored mappings.",
+};
+
 export function SuggestionCard({
   recommendation,
   position,
@@ -31,14 +40,18 @@ export function SuggestionCard({
         </h3>
         <span
           className={`rounded-full px-2.5 py-1 text-xs font-medium ${PREVALENCE_STYLE[recommendation.prevalence]}`}
+          title={PREVALENCE_EXPLANATION[recommendation.prevalence]}
         >
           {PREVALENCE_LABEL[recommendation.prevalence]}
         </span>
       </header>
+      <p className="mt-2 text-xs text-slate-500">
+        {PREVALENCE_EXPLANATION[recommendation.prevalence]}
+      </p>
 
       <section className="mt-4">
         <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-          Why this may be relevant
+          How this could relate to your service-connected condition(s)
         </h4>
         <ul className="mt-2 space-y-2">
           {recommendation.contributingPrimaries.map((primary) => (
