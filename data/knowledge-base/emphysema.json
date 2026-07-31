@@ -16,7 +16,7 @@
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection",
-          "verified": false
+          "verified": true
         }
       ]
     },
@@ -33,7 +33,7 @@
         {
           "citation": "38 CFR 4.104",
           "note": "Cardiovascular diagnostic codes",
-          "verified": false
+          "verified": true
         }
       ]
     }

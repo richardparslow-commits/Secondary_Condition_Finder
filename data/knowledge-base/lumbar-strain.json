@@ -15,9 +15,9 @@
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR \u00a7 3.310(a)",
+          "citation": "38 CFR § 3.310(a)",
           "note": "Authorizes secondary connection for disabilities proximately caused by a service-connected condition.",
-          "verified": false
+          "verified": true
         },
         {
           "citation": "VA M21-1, Part V, Subpart iii, Chapter 1, Section B",
@@ -37,9 +37,9 @@
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR \u00a7 3.310(a)",
+          "citation": "38 CFR § 3.310(a)",
           "note": "Authorizes secondary connection for disabilities proximately caused by a service-connected condition.",
-          "verified": false
+          "verified": true
         }
       ]
     },
@@ -55,9 +55,9 @@
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR \u00a7 3.310(a)",
+          "citation": "38 CFR § 3.310(a)",
           "note": "Authorizes secondary connection for mental health conditions proximately caused by the chronic pain of a service-connected physical condition.",
-          "verified": false
+          "verified": true
         }
       ]
     }

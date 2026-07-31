@@ -15,7 +15,7 @@
         {
           "citation": "38 CFR 4.71a",
           "note": "Rating formula for diseases and injuries of the spine",
-          "verified": false
+          "verified": true
         }
       ]
     },
@@ -32,7 +32,7 @@
         {
           "citation": "38 CFR 4.115a",
           "note": "Ratings of the genitourinary system",
-          "verified": false
+          "verified": true
         }
       ]
     }
