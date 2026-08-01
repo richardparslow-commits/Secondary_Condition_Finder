@@ -13,6 +13,12 @@ export default async function RatingsPage({ searchParams }: PageProps) {
     : diagnosedRaw
     ? [diagnosedRaw]
     : [];
+  const serviceConnectedRaw = resolvedParams.serviceConnected;
+  const serviceConnectedConditions = Array.isArray(serviceConnectedRaw)
+    ? serviceConnectedRaw
+    : serviceConnectedRaw
+    ? [serviceConnectedRaw]
+    : diagnosedConditions.filter((id) => resolvedParams[`serviceConnected-${id}`] === "yes");
 
   const queryString = new URLSearchParams(
     Object.entries(resolvedParams).flatMap(([key, value]) =>
@@ -26,7 +32,7 @@ export default async function RatingsPage({ searchParams }: PageProps) {
     <div className="max-w-2xl mx-auto p-6 space-y-6">
       <h1 className="text-2xl font-bold">Current Disability Ratings</h1>
       <p className="text-sm text-gray-600">
-        Select your current percentage rating for each diagnosed condition.
+        Select your current percentage rating for each service-connected condition.
       </p>
 
       <form method="GET" action="/secondary/upload" className="space-y-4">
@@ -38,10 +44,10 @@ export default async function RatingsPage({ searchParams }: PageProps) {
           ) : null
         )}
 
-        {diagnosedConditions.length === 0 ? (
+        {serviceConnectedConditions.length === 0 ? (
           <p className="text-gray-500 italic">No service-connected conditions selected.</p>
         ) : (
-          diagnosedConditions.map((conditionId) => {
+          serviceConnectedConditions.map((conditionId) => {
             const ratingKey = `rating-${conditionId}`;
             const currentRatingValue = typeof resolvedParams[ratingKey] === 'string' ? resolvedParams[ratingKey] : '';
 

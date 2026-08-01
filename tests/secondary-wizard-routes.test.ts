@@ -71,6 +71,21 @@ describe("secondary wizard route progression", () => {
     );
   });
 
+  it("renders rating inputs only for service-connected conditions", async () => {
+    const html = renderToStaticMarkup(
+      await RatingsStepPage({
+        searchParams: Promise.resolve({
+          diagnosed: ["ptsd", "tinnitus"],
+          serviceConnected: ["ptsd"],
+        }),
+      }),
+    );
+
+    expect(html).toContain("for each service-connected condition");
+    expect(html).toContain('name="rating-ptsd"');
+    expect(html).not.toContain('name="rating-tinnitus"');
+  });
+
   it("prefills prior upload selection when returning to upload", async () => {
     const html = renderToStaticMarkup(
       await UploadStepPage({
