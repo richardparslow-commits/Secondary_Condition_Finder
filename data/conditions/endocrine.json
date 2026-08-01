@@ -4,70 +4,39 @@
     {
       "id": "hypogonadism",
       "name": "Hypogonadism",
-      "displayName": "Hypogonadism",
-      "bodySystem": "Endocrine",
       "aliases": [
         "Testicular Hypofunction"
       ],
-      "primaryDiagnosticCodes": [
-        "7903",
-        "7919"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.119",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Endocrine",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
+      ]
     },
     {
       "id": "addisons-disease",
       "name": "Addison's Disease",
-      "displayName": "Addison's Disease",
-      "bodySystem": "Endocrine",
       "aliases": [
         "Primary Adrenal Insufficiency"
       ],
-      "primaryDiagnosticCodes": [
-        "7911"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.119",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Endocrine",
       "ratingSchedule": [],
       "reviewNotes": [
         "Verified endocrine mapping."
-      ],
-      "draft": false,
-      "verified": true
+      ]
     },
     {
       "id": "diabetes-mellitus-type-2",
       "name": "Diabetes Mellitus Type 2",
-      "displayName": "Diabetes Mellitus Type 2",
-      "bodySystem": "Endocrine",
       "aliases": [
         "Type 2 Diabetes",
         "DM2"
       ],
-      "primaryDiagnosticCodes": [
-        "7913"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.119",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Endocrine",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": true
+      ]
     }
   ]
 }

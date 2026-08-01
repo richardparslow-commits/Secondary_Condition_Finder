@@ -9,7 +9,7 @@ export const ratingReferenceSchema = z.object({
    * an automated agent.
    */
   verified: z.literal(false),
-});
+}).strict();
 
 /**
  * One condition, identified once for the whole app. The catalog answers "does
@@ -29,12 +29,12 @@ export const catalogConditionSchema = z.object({
   ratingSchedule: z.array(ratingReferenceSchema),
   /** Open questions a reviewer must resolve. */
   reviewNotes: z.array(z.string().min(1)),
-});
+}).strict();
 
 export const catalogFileSchema = z.object({
   bodySystem: z.string().min(1),
   conditions: z.array(catalogConditionSchema).min(1),
-});
+}).strict();
 
 export const conditionCatalogSchema = z.array(catalogConditionSchema);
 

@@ -1,6 +1,5 @@
 {
   "id": "tinnitus",
-  "name": "Tinnitus",
   "draft": false,
   "suggestions": [
     {
@@ -14,8 +13,8 @@
       ],
       "sourceReferences": [
         {
-          "citation": "Relevant Medical Journal Study or VA Regulation link",
-          "note": "Displays as unverified pending formal review.",
+          "citation": "38 CFR 3.310",
+          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
           "verified": false
         }
       ]

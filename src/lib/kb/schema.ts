@@ -21,7 +21,7 @@ export const sourceReferenceSchema = z.object({
    * and applies to this suggestion. Never set to true by an automated agent.
    */
   verified: z.literal(false),
-});
+}).strict();
 
 export const suggestionSchema = z.object({
   /**
@@ -35,7 +35,7 @@ export const suggestionSchema = z.object({
   /** What a claim on this theory typically still needs. At least one. */
   evidenceGaps: z.array(z.string().min(1)).min(1),
   sourceReferences: z.array(sourceReferenceSchema).min(1).max(3),
-});
+}).strict();
 
 /**
  * Secondary-condition mappings for one primary. Identity (name, aliases, body
@@ -55,6 +55,7 @@ export const conditionMappingSchema = z
     todo: z.array(z.string().min(1)).default([]),
     suggestions: z.array(suggestionSchema).default([]),
   })
+  .strict()
   .superRefine((mapping, ctx) => {
     if (!mapping.draft && mapping.suggestions.length === 0) {
       ctx.addIssue({
@@ -93,6 +94,28 @@ export const conditionMappingSchema = z
         path: ["suggestions"],
         message: "A condition cannot be a secondary of itself.",
       });
+    }
+    if (!mapping.draft) {
+      const weakCitationPattern =
+        /\b(relevant|placeholder|journal study|regulation link|link|example|todo|tbd|unknown)\b/i;
+      for (const [suggestionIndex, suggestion] of mapping.suggestions.entries()) {
+        for (const [referenceIndex, reference] of suggestion.sourceReferences.entries()) {
+          if (weakCitationPattern.test(reference.citation)) {
+            ctx.addIssue({
+              code: "custom",
+              path: [
+                "suggestions",
+                suggestionIndex,
+                "sourceReferences",
+                referenceIndex,
+                "citation",
+              ],
+              message:
+                "Published mappings must use traceable citation text, not placeholders.",
+            });
+          }
+        }
+      }
     }
   });
 
