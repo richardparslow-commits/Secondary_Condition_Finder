@@ -25,13 +25,28 @@ if (!data.suggestions || data.suggestions.length === 0) {
 if (data.todo && data.todo.length > 0) {
   errors.push("Unresolved items remain in the 'todo' checklist.");
 }
-if (!data.sourceReferences || data.sourceReferences.length === 0) {
-  errors.push("At least one source reference citation is required.");
-} else {
-  data.sourceReferences.forEach((ref, idx) => {
-    if (ref.verified !== false) {
-      errors.push(`Source reference [${idx}] must have 'verified: false'.`);
-    }
+if (Array.isArray(data.suggestions) && data.suggestions.length > 0) {
+  const missingRefs = data.suggestions
+    .map((suggestion, idx) => ({ suggestion, idx }))
+    .filter(({ suggestion }) => !Array.isArray(suggestion.sourceReferences) || suggestion.sourceReferences.length === 0)
+    .map(({ idx }) => idx);
+
+  if (missingRefs.length > 0) {
+    errors.push(
+      `Each suggestion must include at least one source reference citation. Missing on suggestion index(es): ${missingRefs.join(", ")}.`,
+    );
+  }
+
+  data.suggestions.forEach((suggestion, suggestionIdx) => {
+    if (!Array.isArray(suggestion.sourceReferences)) return;
+
+    suggestion.sourceReferences.forEach((ref, refIdx) => {
+      if (ref.verified !== false) {
+        errors.push(
+          `Suggestion [${suggestionIdx}] source reference [${refIdx}] must have 'verified: false'.`,
+        );
+      }
+    });
   });
 }
 

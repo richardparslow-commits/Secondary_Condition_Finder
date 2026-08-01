@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import { VALID_RATINGS } from '@/lib/secondary-workflow';
+import { indexById } from '@/lib/catalog/lookup';
+import { loadConditionCatalog } from '@/lib/catalog/load';
 
 interface PageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export default async function RatingsPage({ searchParams }: PageProps) {
+  const catalog = loadConditionCatalog();
+  const catalogById = indexById(catalog);
   const resolvedParams = await searchParams;
   const diagnosedRaw = resolvedParams.diagnosed;
   const diagnosedConditions = Array.isArray(diagnosedRaw)
@@ -50,11 +54,12 @@ export default async function RatingsPage({ searchParams }: PageProps) {
           serviceConnectedConditions.map((conditionId) => {
             const ratingKey = `rating-${conditionId}`;
             const currentRatingValue = typeof resolvedParams[ratingKey] === 'string' ? resolvedParams[ratingKey] : '';
+            const conditionName = catalogById.get(conditionId)?.name ?? conditionId.replace(/-/g, ' ');
 
             return (
               <div key={conditionId} className="p-4 border rounded-lg bg-white space-y-2">
                 <label className="block font-medium capitalize" htmlFor={ratingKey}>
-                  Rating for {conditionId.replace(/-/g, ' ')}
+                  Rating for {conditionName}
                 </label>
                 <select
                   id={ratingKey}

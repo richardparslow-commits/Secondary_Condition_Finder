@@ -84,6 +84,7 @@ describe("secondary wizard route progression", () => {
     expect(html).toContain("for each service-connected condition");
     expect(html).toContain('name="rating-ptsd"');
     expect(html).not.toContain('name="rating-tinnitus"');
+    expect(html).toContain("Rating for Post-Traumatic Stress Disorder (PTSD)");
   });
 
   it("prefills prior upload selection when returning to upload", async () => {
