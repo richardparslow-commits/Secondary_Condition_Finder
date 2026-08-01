@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+import { loadConditionCatalog } from "@/lib/catalog/load";
+import { groupByBodySystem } from "@/lib/catalog/lookup";
+import { loadKnowledgeBase } from "@/lib/kb/load";
+import { mappedConditionIds } from "@/lib/kb/lookup";
 import {
   CAUSED_AGGRAVATED_DISTINCTION,
   TRACK_DISTINCTION_NOTICE,
@@ -7,7 +11,13 @@ import {
 } from "@/lib/legal/phrases";
 import { SECONDARY_LEGAL_REFERENCES } from "@/lib/legal/secondaryReferences";
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const catalog = loadConditionCatalog();
+  const kb = loadKnowledgeBase();
+  const totalConditions = catalog.length;
+  const totalBodySystems = groupByBodySystem(catalog).length;
+  const publishedMappingCount = mappedConditionIds(kb).size;
+
   return (
     <main className="max-w-4xl mx-auto px-4 py-8 text-gray-900">
       <h1 className="text-3xl font-bold mb-4">Terms of Use & Legal Disclaimers</h1>
@@ -51,7 +61,7 @@ export default function TermsPage() {
 
         <h2 className="text-xl font-semibold mt-6">3. Knowledge Base Completeness</h2>
         <p>
-          The VASRD catalog contains 181 conditions across 14 body systems, and all 181 currently have published secondary mappings in this phase dataset.
+          The VASRD catalog contains {totalConditions} conditions across {totalBodySystems} body systems, and {publishedMappingCount} currently have published secondary mappings in this phase dataset.
         </p>
       </section>
 
