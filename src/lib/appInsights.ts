@@ -1,13 +1,19 @@
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 
-export const appInsights = new ApplicationInsights({
-  config: {
-    connectionString: process.env.NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING,
-    enableAutoRouteTracking: true, // Automatically track page route changes in Next.js
-  },
-});
+const connectionString = process.env.NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING;
+const isBrowser = typeof window !== 'undefined';
 
-if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING) {
+export const appInsights =
+  isBrowser && connectionString
+    ? new ApplicationInsights({
+        config: {
+          connectionString,
+          enableAutoRouteTracking: true, // Automatically track page route changes in Next.js
+        },
+      })
+    : null;
+
+if (appInsights) {
   appInsights.loadAppInsights();
   appInsights.trackPageView();
 }
