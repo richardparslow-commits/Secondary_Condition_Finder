@@ -12,6 +12,8 @@ evidence.
 
 Covers the PACT Act burn pit list and the Agent Orange list. See
 `docs/presumptive-track.md` for scope and what is deliberately excluded.
+Data governance rules for condition IDs, schema strictness, and citation
+quality are in `docs/data-governance-note.md`.
 
 **This is not medical or legal advice.** It does not diagnose conditions,
 determine eligibility, or estimate ratings. Every suggestion is a possibility
@@ -103,6 +105,7 @@ Wizard notes:
 
 - 193 have version-controlled mapping files.
 - 193 are published (`draft: false`) and active in recommendations.
+- Coverage is hard-enforced by tests to remain 1:1 with the catalog.
 
 
 ## Adding a condition
@@ -120,6 +123,8 @@ Two steps, and they are separate on purpose.
 Run `npm test` to check the integrity invariants, including that every
 `conditionId` resolves to a catalog entry. The app also validates these
 references at load time, so drift fails fast before recommendations run.
+Strict schema parsing also fails on unknown JSON keys so data contract drift
+cannot be silently accepted.
 
 ### Draft mappings
 

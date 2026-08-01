@@ -10,7 +10,7 @@ const systemSummary = {};
 
 catalogFiles.forEach(catFile => {
   const catData = JSON.parse(fs.readFileSync(path.join(catalogDir, catFile), "utf8"));
-  const systemName = catData.systemName || catFile.replace(".json", "");
+  const systemName = catData.bodySystem || catFile.replace(".json", "");
   const conditionIds = catData.conditions.map(c => c.id);
 
   let published = 0;
@@ -33,6 +33,6 @@ catalogFiles.forEach(catFile => {
 console.log("================ BODY SYSTEM AUTHORING STATUS ================");
 Object.entries(systemSummary).forEach(([sys, stats]) => {
   const pct = stats.total > 0 ? Math.round((stats.published / stats.total) * 100) : 0;
-  console.log(`[${sys}] Total: ${stats.total} | Published: ${stats.published} | Drafts: ${stats.draft} (${pct}% complete)`);
+  console.log(`[${sys}] Total: ${stats.total} | Published: ${stats.published} | Drafts: ${stats.drafts} (${pct}% complete)`);
 });
 console.log("==============================================================\n");

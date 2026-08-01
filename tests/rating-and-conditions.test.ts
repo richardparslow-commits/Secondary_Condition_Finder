@@ -2,12 +2,15 @@ import { describe, it, expect } from "vitest";
 import fs from "fs";
 import path from "path";
 import { VALID_RATINGS } from "../src/lib/secondary-workflow";
+import { catalogConditionSchema } from "../src/lib/catalog/schema";
 
 interface ConditionCatalogEntry {
   id: string;
-  primaryDiagnosticCodes: string[];
-  cfrCitations: string[];
-  verified: boolean;
+  name: string;
+  aliases: string[];
+  bodySystem: string;
+  ratingSchedule: unknown[];
+  reviewNotes: string[];
 }
 
 interface ConditionCatalogFile {
@@ -28,11 +31,11 @@ describe("Phase 1/2 Ratings & Condition Catalog Expansion Suite", () => {
       "rem-sleep-disorder",
       "hypogonadism",
       "micro-tbi",
-      "mild-traumatic-brain-injury",
+      "mild-tbi",
       "post-concussion-syndrome",
       "intracranial-injury-without-skull-fracture",
-      "cerebral-contusion-dai",
-      "skull-fracture",
+      "cerebral-contusion-diffuse-axonal-injury",
+      "skull-fracture-non-basilar-and-basal",
       "subdural-hematoma",
       "epidural-hematoma",
       "traumatic-subarachnoid-hemorrhage",
@@ -53,9 +56,7 @@ describe("Phase 1/2 Ratings & Condition Catalog Expansion Suite", () => {
     for (const id of expectedConditionIds) {
       const found = allConditions.find(c => c.id === id);
       expect(found, `Condition missing from catalog: ${id}`).toBeDefined();
-      expect(found!.primaryDiagnosticCodes).toBeInstanceOf(Array);
-      expect(found!.cfrCitations).toBeInstanceOf(Array);
-      expect(found!.verified).toBe(false);
+      expect(() => catalogConditionSchema.parse(found)).not.toThrow();
     }
   });
 });

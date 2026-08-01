@@ -4,510 +4,261 @@
     {
       "id": "peripheral-neuropathy",
       "name": "Peripheral Neuropathy",
-      "displayName": "Peripheral Neuropathy",
-      "bodySystem": "Neurological",
       "aliases": [
         "PN"
       ],
-      "primaryDiagnosticCodes": [
-        "8520"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Verified neurological mapping."
-      ],
-      "draft": false,
-      "verified": true
+      ]
     },
     {
       "id": "rem-sleep-disorder",
       "name": "REM Sleep Disorder",
-      "displayName": "REM Sleep Disorder",
-      "bodySystem": "Neurological",
       "aliases": [
         "REM Sleep Behavior Disorder"
       ],
-      "primaryDiagnosticCodes": [
-        "8108",
-        "6847"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
+      ]
     },
     {
       "id": "micro-tbi",
       "name": "Micro TBI",
-      "displayName": "Micro TBI",
-      "bodySystem": "Neurological",
       "aliases": [
         "Micro Traumatic Brain Injury"
       ],
-      "primaryDiagnosticCodes": [
-        "8045"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
-      "ratingSchedule": [],
-      "reviewNotes": [
-        "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
-    },
-    {
-      "id": "mild-traumatic-brain-injury",
-      "name": "Mild Traumatic Brain Injury (mTBI) / Concussion",
-      "displayName": "Mild Traumatic Brain Injury (mTBI) / Concussion",
       "bodySystem": "Neurological",
-      "aliases": [
-        "mTBI",
-        "Concussion"
-      ],
-      "primaryDiagnosticCodes": [
-        "8045"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
+      ]
     },
     {
       "id": "post-concussion-syndrome",
       "name": "Post-Concussion Syndrome / Late Effects of TBI",
-      "displayName": "Post-Concussion Syndrome / Late Effects of TBI",
-      "bodySystem": "Neurological",
       "aliases": [
         "PCS"
       ],
-      "primaryDiagnosticCodes": [
-        "8045"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
+      ]
     },
     {
       "id": "intracranial-injury-without-skull-fracture",
       "name": "Intracranial Injury Without Skull Fracture",
-      "displayName": "Intracranial Injury Without Skull Fracture",
-      "bodySystem": "Neurological",
       "aliases": [
         "Intracranial Injury"
       ],
-      "primaryDiagnosticCodes": [
-        "8045"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
-      "ratingSchedule": [],
-      "reviewNotes": [
-        "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
-    },
-    {
-      "id": "cerebral-contusion-dai",
-      "name": "Cerebral Contusion/Diffuse Axonal Injury (DAI)",
-      "displayName": "Cerebral Contusion/Diffuse Axonal Injury (DAI)",
       "bodySystem": "Neurological",
-      "aliases": [
-        "DAI",
-        "Cerebral Contusion"
-      ],
-      "primaryDiagnosticCodes": [
-        "8045"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
-    },
-    {
-      "id": "skull-fracture",
-      "name": "Skull Fracture (Non-basilar and Basal)",
-      "displayName": "Skull Fracture (Non-basilar and Basal)",
-      "bodySystem": "Neurological",
-      "aliases": [
-        "Basilar Skull Fracture"
-      ],
-      "primaryDiagnosticCodes": [
-        "8002",
-        "8004"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
-      "ratingSchedule": [],
-      "reviewNotes": [
-        "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
+      ]
     },
     {
       "id": "subdural-hematoma",
       "name": "Subdural Hematoma",
-      "displayName": "Subdural Hematoma",
-      "bodySystem": "Neurological",
       "aliases": [
         "SDH"
       ],
-      "primaryDiagnosticCodes": [
-        "8045"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
+      ]
     },
     {
       "id": "epidural-hematoma",
       "name": "Epidural Hematoma",
-      "displayName": "Epidural Hematoma",
-      "bodySystem": "Neurological",
       "aliases": [
         "EDH"
       ],
-      "primaryDiagnosticCodes": [
-        "8045",
-        "8046"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
+      ]
     },
     {
       "id": "traumatic-subarachnoid-hemorrhage",
       "name": "Traumatic Subarachnoid Hemorrhage",
-      "displayName": "Traumatic Subarachnoid Hemorrhage",
-      "bodySystem": "Neurological",
       "aliases": [
         "TSAH"
       ],
-      "primaryDiagnosticCodes": [
-        "8045",
-        "8046"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
+      ]
     },
     {
       "id": "penetrating-head-trauma",
       "name": "Penetrating Head Trauma",
-      "displayName": "Penetrating Head Trauma",
-      "bodySystem": "Neurological",
       "aliases": [
         "Penetrating Brain Injury"
       ],
-      "primaryDiagnosticCodes": [
-        "8045",
-        "5296"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 4.71a",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review of 38 CFR rating codes."
-      ],
-      "draft": true,
-      "verified": false
+      ]
     },
     {
       "id": "migraine-headaches",
       "name": "Migraine Headaches",
-      "displayName": "Migraine Headaches",
-      "bodySystem": "Neurological",
       "aliases": [
         "Migraines"
       ],
-      "primaryDiagnosticCodes": [
-        "8100"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": true
+      ]
     },
     {
       "id": "als",
       "name": "als",
-      "displayName": "als",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "cerebral-contusion-diffuse-axonal-injury",
       "name": "cerebral contusion diffuse axonal injury",
-      "displayName": "cerebral contusion diffuse axonal injury",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "cerebral-palsy",
       "name": "cerebral palsy",
-      "displayName": "cerebral palsy",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "cushings-syndrome",
       "name": "cushings syndrome",
-      "displayName": "cushings syndrome",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "diabetes-mellitus-type-1",
       "name": "diabetes mellitus type 1",
-      "displayName": "diabetes mellitus type 1",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "hyperparathyroidism",
       "name": "hyperparathyroidism",
-      "displayName": "hyperparathyroidism",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "hyperthyroidism",
       "name": "hyperthyroidism",
-      "displayName": "hyperthyroidism",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "hypoparathyroidism",
       "name": "hypoparathyroidism",
-      "displayName": "hypoparathyroidism",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "hypothyroidism",
       "name": "hypothyroidism",
-      "displayName": "hypothyroidism",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "radiculopathy-femoral",
       "name": "radiculopathy femoral",
-      "displayName": "radiculopathy femoral",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "radiculopathy-sciatic",
       "name": "radiculopathy sciatic",
-      "displayName": "radiculopathy sciatic",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "radiculopathy-upper-extremity",
       "name": "radiculopathy upper extremity",
-      "displayName": "radiculopathy upper extremity",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "radiculopathy",
       "name": "radiculopathy",
-      "displayName": "radiculopathy",
-      "bodySystem": "Neurological",
       "aliases": [],
-      "primaryDiagnosticCodes": [],
-      "cfrCitations": [],
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review"
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "skull-fracture-non-basilar-and-basal",
       "name": "Skull Fracture (Non-basilar and Basal)",
-      "displayName": "Skull Fracture (Non-basilar and Basal)",
-      "bodySystem": "Neurological",
       "aliases": [
         "Basal Skull Fracture",
         "Non-basilar Skull Fracture"
       ],
-      "primaryDiagnosticCodes": [
-        "5296",
-        "8045"
-      ],
-      "cfrCitations": [
-        "38 CFR § 4.71a",
-        "38 CFR § 4.124a",
-        "38 CFR § 3.310"
-      ],
+      "bodySystem": "Neurological",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.71a",
@@ -522,19 +273,17 @@
       ],
       "reviewNotes": [
         "Diagnostic code selection and fracture variant details still require human review."
-      ],
-      "draft": false,
-      "verified": false
+      ]
     },
     {
       "id": "mild-tbi",
       "name": "Mild Tbi",
+      "aliases": [],
       "bodySystem": "neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending human review"
-      ],
-      "aliases": []
+      ]
     }
   ]
 }

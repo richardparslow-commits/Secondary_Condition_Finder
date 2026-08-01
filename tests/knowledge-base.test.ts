@@ -107,12 +107,9 @@ describe("draft mappings", () => {
 });
 
 describe("coverage", () => {
-  it("reports how much of the catalog has published mappings", () => {
+  it("keeps published mappings in 1:1 coverage with catalog conditions", () => {
     const mapped = mappedConditionIds(kb);
-    // Not an assertion about the target, just a guard that the relationship
-    // stays sane: you cannot have more mappings than catalog conditions.
-    expect(mapped.size).toBeLessThanOrEqual(catalog.length);
-    expect(mapped.size).toBeGreaterThan(0);
+    expect(mapped.size).toBe(catalog.length);
   });
 });
 

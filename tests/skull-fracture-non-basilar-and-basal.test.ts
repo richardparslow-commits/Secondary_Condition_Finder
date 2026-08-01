@@ -91,10 +91,7 @@ describe("catalog entry: skull-fracture-non-basilar-and-basal", () => {
   });
 });
 
-describe("catalog entry: raw JSON fields not covered by the zod schema", () => {
-  // primaryDiagnosticCodes, cfrCitations, displayName, and verified are part
-  // of the raw data files but are not modeled in catalogConditionSchema, so
-  // they must be checked directly against the file contents.
+describe("catalog entry: canonical schema-only JSON contract", () => {
   const rawFile = path.join(
     process.cwd(),
     "data",
@@ -106,26 +103,12 @@ describe("catalog entry: raw JSON fields not covered by the zod schema", () => {
     (c: { id: string }) => c.id === CONDITION_ID,
   );
 
-  it("sets displayName equal to name", () => {
-    expect(rawCondition.displayName).toBe("Skull Fracture (Non-basilar and Basal)");
-    expect(rawCondition.displayName).toBe(rawCondition.name);
-  });
-
-  it("lists the expected primary diagnostic codes", () => {
-    expect(rawCondition.primaryDiagnosticCodes).toEqual(["5296", "8045"]);
-  });
-
-  it("lists the expected CFR citations", () => {
-    expect(rawCondition.cfrCitations).toEqual([
-      "38 CFR § 4.71a",
-      "38 CFR § 4.124a",
-      "38 CFR § 3.310",
-    ]);
-  });
-
-  it("remains unverified and non-draft pending human review", () => {
-    expect(rawCondition.draft).toBe(false);
-    expect(rawCondition.verified).toBe(false);
+  it("does not contain legacy ad-hoc fields", () => {
+    expect(rawCondition).not.toHaveProperty("displayName");
+    expect(rawCondition).not.toHaveProperty("primaryDiagnosticCodes");
+    expect(rawCondition).not.toHaveProperty("cfrCitations");
+    expect(rawCondition).not.toHaveProperty("draft");
+    expect(rawCondition).not.toHaveProperty("verified");
   });
 });
 
