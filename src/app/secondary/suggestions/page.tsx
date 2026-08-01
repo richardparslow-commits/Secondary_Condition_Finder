@@ -9,7 +9,10 @@ import { SecondarySuggestionItem } from "@/components/SecondarySuggestionItem";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
-import { groupSuggestionsByPrimary } from "@/lib/secondary-workflow/suggestions";
+import {
+  findLinkedNonServiceConnectedConditions,
+  groupSuggestionsByPrimary,
+} from "@/lib/secondary-workflow/suggestions";
 import {
   parseRatingsSelection,
   parseWorkflowState,
@@ -72,6 +75,12 @@ export default async function SuggestionsStepPage({
     notes: "",
   });
 
+  const linked = findLinkedNonServiceConnectedConditions(
+    state.diagnosedConditionIds,
+    state.serviceConnectedConditionIds,
+    recommendationsResult.recommendations,
+  );
+
   const grouped = groupSuggestionsByPrimary(
     catalog,
     state.serviceConnectedConditionIds,
@@ -99,6 +108,53 @@ export default async function SuggestionsStepPage({
       <div className="mb-6">
         <DisclaimerBanner />
       </div>
+
+      {linked.length > 0 && (
+        <section className="mb-8">
+          <h2 className="mb-3 text-base font-semibold text-slate-900">
+            Your diagnosed conditions that may qualify as secondaries
+          </h2>
+          <p className="mb-4 text-sm text-slate-600">
+            The following conditions are already in your diagnosis history but are not yet service
+            connected. Based on your service-connected conditions, each one may qualify as a
+            secondary condition.
+          </p>
+          <div className="space-y-4">
+            {linked.map((item) => (
+              <article
+                key={item.conditionId}
+                className="rounded-lg border border-blue-200 bg-blue-50 p-4 shadow-sm"
+              >
+                <header className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">
+                      Already diagnosed — not yet service connected
+                    </p>
+                    <h3 className="mt-0.5 text-base font-semibold text-slate-900">
+                      {item.conditionName}
+                    </h3>
+                    <p className="text-xs text-slate-500">{item.bodySystem}</p>
+                  </div>
+                </header>
+
+                <section className="mt-3">
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    Why this could be linked to your service-connected condition(s)
+                  </h4>
+                  <ul className="mt-2 space-y-2">
+                    {item.linkingPrimaries.map((primary) => (
+                      <li key={primary.id} className="text-sm leading-relaxed text-slate-700">
+                        <span className="font-medium text-slate-900">{primary.name}:</span>{" "}
+                        {primary.rationale}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       {recommendationsResult.unmappedPrimaries.length > 0 && (
         <section className="mb-6 rounded-lg border border-slate-300 bg-white p-4 text-sm text-slate-700">

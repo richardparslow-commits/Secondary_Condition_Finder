@@ -2,7 +2,10 @@ import { describe, expect, it } from "vitest";
 
 import { conditionCatalogSchema } from "@/lib/catalog/schema";
 import type { Recommendation } from "@/lib/engine/types";
-import { groupSuggestionsByPrimary } from "@/lib/secondary-workflow/suggestions";
+import {
+  findLinkedNonServiceConnectedConditions,
+  groupSuggestionsByPrimary,
+} from "@/lib/secondary-workflow/suggestions";
 import {
   parseDiagnosedPrefill,
   parseDocumentsSelection,
@@ -199,5 +202,93 @@ describe("groupSuggestionsByPrimary", () => {
     expect(grouped).toHaveLength(2);
     expect(grouped[0].recommendations).toHaveLength(1);
     expect(grouped[1].recommendations).toHaveLength(1);
+  });
+});
+
+describe("findLinkedNonServiceConnectedConditions", () => {
+  const baseRecommendation: Recommendation = {
+    conditionId: "sleep-apnea",
+    condition: "Sleep Apnea",
+    bodySystem: "Respiratory",
+    prevalence: "commonly-explored",
+    score: 1,
+    contributingPrimaries: [
+      { id: "ptsd", name: "Post-Traumatic Stress Disorder (PTSD)", rank: 1, rationale: "PTSD disrupts sleep architecture." },
+    ],
+    evidenceGaps: ["nexus letter"],
+    sourceReferences: [{ citation: "38 CFR 3.310", note: "direct service connection", verified: false }],
+    matchedIntakeContext: [],
+  };
+
+  it("returns a diagnosed non-SC condition that appears in recommendations", () => {
+    const linked = findLinkedNonServiceConnectedConditions(
+      ["ptsd", "sleep-apnea"],
+      ["ptsd"],
+      [baseRecommendation],
+    );
+
+    expect(linked).toHaveLength(1);
+    expect(linked[0].conditionId).toBe("sleep-apnea");
+    expect(linked[0].conditionName).toBe("Sleep Apnea");
+    expect(linked[0].bodySystem).toBe("Respiratory");
+    expect(linked[0].prevalence).toBe("commonly-explored");
+    expect(linked[0].linkingPrimaries).toHaveLength(1);
+    expect(linked[0].linkingPrimaries[0].rationale).toBe("PTSD disrupts sleep architecture.");
+  });
+
+  it("returns nothing when the non-SC condition is not in any recommendation", () => {
+    const linked = findLinkedNonServiceConnectedConditions(
+      ["ptsd", "tinnitus"],
+      ["ptsd"],
+      [baseRecommendation],
+    );
+
+    expect(linked).toHaveLength(0);
+  });
+
+  it("returns nothing when all diagnosed conditions are already service connected", () => {
+    const linked = findLinkedNonServiceConnectedConditions(
+      ["ptsd", "sleep-apnea"],
+      ["ptsd", "sleep-apnea"],
+      [baseRecommendation],
+    );
+
+    expect(linked).toHaveLength(0);
+  });
+
+  it("returns nothing when there are no diagnosed conditions", () => {
+    const linked = findLinkedNonServiceConnectedConditions(
+      [],
+      [],
+      [baseRecommendation],
+    );
+
+    expect(linked).toHaveLength(0);
+  });
+
+  it("returns multiple linked conditions when several non-SC conditions are in recommendations", () => {
+    const tinnitusSC: Recommendation = {
+      conditionId: "tinnitus",
+      condition: "Tinnitus",
+      bodySystem: "Auditory",
+      prevalence: "sometimes-explored",
+      score: 0.5,
+      contributingPrimaries: [
+        { id: "ptsd", name: "Post-Traumatic Stress Disorder (PTSD)", rank: 2, rationale: "Hypervigilance worsens tinnitus." },
+      ],
+      evidenceGaps: ["audiology records"],
+      sourceReferences: [{ citation: "38 CFR 3.310", note: "test", verified: false }],
+      matchedIntakeContext: [],
+    };
+
+    const linked = findLinkedNonServiceConnectedConditions(
+      ["ptsd", "sleep-apnea", "tinnitus"],
+      ["ptsd"],
+      [baseRecommendation, tinnitusSC],
+    );
+
+    expect(linked).toHaveLength(2);
+    expect(linked.map((l) => l.conditionId)).toContain("sleep-apnea");
+    expect(linked.map((l) => l.conditionId)).toContain("tinnitus");
   });
 });
