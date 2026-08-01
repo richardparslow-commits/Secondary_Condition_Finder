@@ -34,11 +34,11 @@ describe("legal copy contracts", () => {
     expect(ctaIndex).toBeGreaterThan(referencesIndex);
   });
 
-  it("renders secondary citations from the canonical legal references module", () => {
+  it("renders secondary citations from the canonical legal references module", async () => {
     const pages = [
       renderToStaticMarkup(HomePage()),
       renderToStaticMarkup(SecondaryLandingPage()),
-      renderToStaticMarkup(TermsPage()),
+      renderToStaticMarkup(await TermsPage()),
     ];
     const allowed = new Set(
       SECONDARY_LEGAL_REFERENCES.map((reference) => reference.citation),
@@ -52,11 +52,11 @@ describe("legal copy contracts", () => {
     }
   });
 
-  it("keeps non-diagnostic and non-deterministic language contracts", () => {
+  it("keeps non-diagnostic and non-deterministic language contracts", async () => {
     const pages = [
       renderToStaticMarkup(HomePage()),
       renderToStaticMarkup(SecondaryLandingPage()),
-      renderToStaticMarkup(TermsPage()),
+      renderToStaticMarkup(await TermsPage()),
     ];
 
     for (const page of pages) {

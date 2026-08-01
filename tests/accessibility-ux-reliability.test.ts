@@ -22,13 +22,13 @@ function expectHeadingHierarchy(html: string): void {
 }
 
 describe("accessibility and UX content contracts", () => {
-  it("renders one main landmark and a top-level heading on primary routes", () => {
+  it("renders one main landmark and a top-level heading on primary routes", async () => {
     const pages = [
       renderPageHtml(HomePage()),
       renderPageHtml(SecondaryLandingPage()),
       renderPageHtml(PresumptivePage()),
       renderPageHtml(PrivacyPage()),
-      renderPageHtml(TermsPage()),
+      renderToStaticMarkup(await TermsPage()),
     ];
 
     for (const page of pages) {
@@ -37,9 +37,9 @@ describe("accessibility and UX content contracts", () => {
     }
   });
 
-  it("keeps route copy explicit about non-diagnostic/non-deterministic scope", () => {
+  it("keeps route copy explicit about non-diagnostic/non-deterministic scope", async () => {
     const home = renderPageHtml(HomePage());
-    const terms = renderPageHtml(TermsPage());
+    const terms = renderToStaticMarkup(await TermsPage());
     const privacy = renderPageHtml(PrivacyPage());
 
     expect(home).toContain("This is a research aid, not advice.");
