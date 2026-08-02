@@ -8,14 +8,24 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      close_environment:
+        description: 'Close a stale PR staging environment to free up slots (set to true)'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
+    concurrency:
+      group: azure-swa-deploy-${{ github.ref }}
+      cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
           lfs: false
@@ -34,7 +44,7 @@ jobs:
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    if: (github.event_name == 'pull_request' && github.event.action == 'closed') || (github.event_name == 'workflow_dispatch' && inputs.close_environment == 'true')
     runs-on: ubuntu-latest
     name: Close Pull Request Job
     steps:
