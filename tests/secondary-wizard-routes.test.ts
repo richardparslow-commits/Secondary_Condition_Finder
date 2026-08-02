@@ -71,6 +71,20 @@ describe("secondary wizard route progression", () => {
     );
   });
 
+  it("renders 100% P&T with a numeric submitted value", async () => {
+    const html = renderToStaticMarkup(
+      await RatingsStepPage({
+        searchParams: Promise.resolve({
+          diagnosed: ["ptsd"],
+          serviceConnected: ["ptsd"],
+          "rating-ptsd": "100",
+        }),
+      }),
+    );
+
+    expect(html).toContain('<option value="100">100% P&amp;T</option>');
+  });
+
   it("renders rating inputs only for service-connected conditions", async () => {
     const html = renderToStaticMarkup(
       await RatingsStepPage({
@@ -85,6 +99,23 @@ describe("secondary wizard route progression", () => {
     expect(html).toContain('name="rating-ptsd"');
     expect(html).not.toContain('name="rating-tinnitus"');
     expect(html).toContain("Rating for Post-Traumatic Stress Disorder (PTSD)");
+  });
+
+  it("does not re-emit stale rating params as hidden inputs on the ratings step", async () => {
+    const html = renderToStaticMarkup(
+      await RatingsStepPage({
+        searchParams: Promise.resolve({
+          diagnosed: ["ptsd"],
+          serviceConnected: ["ptsd"],
+          "rating-ptsd": "40",
+          documentsShared: "yes",
+        }),
+      }),
+    );
+
+    expect(html.match(/name="rating-ptsd"/g)).toHaveLength(1);
+    expect(html).not.toContain('type="hidden" name="rating-ptsd"');
+    expect(html).toContain('type="hidden" name="documentsShared" value="yes"');
   });
 
   it("prefills prior upload selection when returning to upload", async () => {

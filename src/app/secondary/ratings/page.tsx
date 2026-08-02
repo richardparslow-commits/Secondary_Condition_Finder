@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SecondaryWorkflowHiddenFields } from '@/components/SecondaryWorkflowHiddenFields';
 import { VALID_RATINGS } from '@/lib/secondary-workflow';
 import { indexById } from '@/lib/catalog/lookup';
 import { loadConditionCatalog } from '@/lib/catalog/load';
@@ -23,6 +24,16 @@ export default async function RatingsPage({ searchParams }: PageProps) {
     : serviceConnectedRaw
     ? [serviceConnectedRaw]
     : diagnosedConditions.filter((id) => resolvedParams[`serviceConnected-${id}`] === "yes");
+  const documentsSharedRaw = resolvedParams.documentsShared;
+  const documentsSharedValue = Array.isArray(documentsSharedRaw)
+    ? documentsSharedRaw[0]
+    : documentsSharedRaw;
+  const documentsShared =
+    documentsSharedValue === 'yes' ? true : documentsSharedValue === 'no' ? false : undefined;
+  const ratingOptions = VALID_RATINGS.map((rating) => ({
+    label: rating,
+    value: rating === '100% P&T' ? '100' : rating.replace('%', ''),
+  }));
 
   const queryString = new URLSearchParams(
     Object.entries(resolvedParams).flatMap(([key, value]) =>
@@ -40,13 +51,11 @@ export default async function RatingsPage({ searchParams }: PageProps) {
       </p>
 
       <form method="GET" action="/secondary/upload" className="space-y-4">
-        {Object.entries(resolvedParams).map(([key, value]) =>
-          Array.isArray(value) ? (
-            value.map((v, i) => <input key={`${key}-${i}`} type="hidden" name={key} value={v} />)
-          ) : value ? (
-            <input key={key} type="hidden" name={key} value={value} />
-          ) : null
-        )}
+        <SecondaryWorkflowHiddenFields
+          diagnosedConditionIds={diagnosedConditions}
+          serviceConnectedConditionIds={serviceConnectedConditions}
+          documentsShared={documentsShared}
+        />
 
         {serviceConnectedConditions.length === 0 ? (
           <p className="text-gray-500 italic">No service-connected conditions selected.</p>
@@ -68,9 +77,9 @@ export default async function RatingsPage({ searchParams }: PageProps) {
                   className="w-full p-2 border rounded"
                 >
                   <option value="">Select current rating...</option>
-                  {VALID_RATINGS.map((rating) => (
-                    <option key={rating} value={rating.replace('%', '')}>
-                      {rating}
+                  {ratingOptions.map((rating) => (
+                    <option key={rating.label} value={rating.value}>
+                      {rating.label}
                     </option>
                   ))}
                   <option value="decline">I prefer not to answer</option>
