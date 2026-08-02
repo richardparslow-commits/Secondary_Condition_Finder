@@ -24,7 +24,7 @@ export function formatClaimSummary(
     
     if (evaluation) {
       lines.push(`   Satisfied Gaps: ${evaluation.satisfiedGaps.join("; ") || "None yet"}`);
-      lines.push(`   Remaining Gaps: ${evaluation.remainingGaps.join("; ")}`);
+      lines.push(`   Remaining Gaps: ${evaluation.remainingGaps.join("; ") || "None yet"}`);
     }
 
     lines.push("   Key Sources:");

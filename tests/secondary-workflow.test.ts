@@ -131,6 +131,20 @@ describe("secondary workflow state parsing", () => {
     });
   });
 
+  it("round-trips a 100 percent rating as a numeric value", () => {
+    const initial = {
+      diagnosedConditionIds: ["ptsd"],
+      serviceConnectedConditionIds: ["ptsd"],
+      ratingsByConditionId: { ptsd: 100 },
+      documentsShared: false,
+    };
+
+    const searchParams = workflowStateToSearchParams(initial);
+
+    expect(searchParams.get("rating-ptsd")).toBe("100");
+    expect(parseWorkflowState(toQueryParams(searchParams), catalog)).toEqual(initial);
+  });
+
   it("rejects rating values outside 0 through 100", () => {
     expect(() =>
       parseRatingsSelection(

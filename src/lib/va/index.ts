@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export interface VaDisabilityRating {
   ratingPercentage: number;
   effectiveDate: string;
@@ -19,6 +21,27 @@ export interface VaAdapterResult<T> {
   error?: string;
 }
 
+const vaDisabilityRatingSchema = z.object({
+  ratingPercentage: z.number().min(0).max(100),
+  effectiveDate: z.string().min(1),
+  conditionsConnected: z.array(
+    z.object({
+      name: z.string().min(1),
+      diagnosticCode: z.string().min(1),
+      serviceConnected: z.boolean(),
+    }),
+  ),
+});
+
+function missingConfigError(message: string): VaAdapterResult<VaDisabilityRating> {
+  return {
+    success: false,
+    data: null,
+    source: "local-fallback",
+    error: message,
+  };
+}
+
 export async function fetchSandboxVABits(
   userId: string,
   config: VaAdapterConfig = { enabled: true, timeoutMs: 1000, mockFailureMode: "none" },
@@ -33,6 +56,19 @@ export async function fetchSandboxVABits(
   }
 
   const timeout = config.timeoutMs || 1000;
+  const normalizedUserId = userId.trim();
+
+  if (!normalizedUserId) {
+    return missingConfigError("VA API request requires a non-empty userId.");
+  }
+
+  if (!config.baseUrl?.trim()) {
+    return missingConfigError("VA API baseUrl is required when integration is enabled.");
+  }
+
+  if (!config.apiKey?.trim()) {
+    return missingConfigError("VA API apiKey is required when integration is enabled.");
+  }
 
   if (config.mockFailureMode === "timeout") {
     try {
@@ -58,20 +94,70 @@ export async function fetchSandboxVABits(
     };
   }
 
-  return {
-    success: true,
-    data: {
-      ratingPercentage: 70,
-      effectiveDate: "2024-01-01",
-      conditionsConnected: [
-        {
-          name: "Post-Traumatic Stress Disorder (PTSD)",
-          diagnosticCode: "9411",
-          serviceConnected: true,
-        },
-        { name: "Tinnitus", diagnosticCode: "6260", serviceConnected: true },
-      ],
-    },
-    source: "va-sandbox-api",
-  };
+  let endpoint: URL;
+
+  try {
+    endpoint = new URL(config.baseUrl);
+  } catch {
+    return missingConfigError("VA API baseUrl must be a valid absolute URL.");
+  }
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Bearer " + config.apiKey,
+        "X-User-Id": normalizedUserId,
+      },
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      return {
+        success: false,
+        data: null,
+        source: "local-fallback",
+        error: `VA API request failed with status ${response.status}.`,
+      };
+    }
+
+    const parsedPayload = vaDisabilityRatingSchema.safeParse(await response.json());
+
+    if (!parsedPayload.success) {
+      return {
+        success: false,
+        data: null,
+        source: "local-fallback",
+        error: "VA API returned an invalid disability rating payload.",
+      };
+    }
+
+    return {
+      success: true,
+      data: parsedPayload.data,
+      source: "va-sandbox-api",
+    };
+  } catch (error) {
+    if (error instanceof Error && error.name === "AbortError") {
+      return {
+        success: false,
+        data: null,
+        source: "local-fallback",
+        error: "Gateway Timeout: Upstream VA API did not respond within threshold.",
+      };
+    }
+
+    return {
+      success: false,
+      data: null,
+      source: "local-fallback",
+      error: "VA API request failed before a valid response was received.",
+    };
+  } finally {
+    clearTimeout(timeoutId);
+  }
 }

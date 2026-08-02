@@ -31,6 +31,7 @@ describe("P2 Ticket 10: PDF/Text Export for Representative Meetings", () => {
     expect(summary).toContain("SECONDARY CLAIM RESEARCH & EVIDENCE CHECKLIST");
     expect(summary).toContain("Radiculopathy");
     expect(summary).toContain("38 CFR § 3.310");
+    expect(summary).toContain("Remaining Gaps: None yet");
     expect(summary).toContain("educational and research preparation purposes only");
   });
 });
