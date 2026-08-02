@@ -30,10 +30,16 @@ export default async function RatingsPage({ searchParams }: PageProps) {
     : documentsSharedRaw;
   const documentsShared =
     documentsSharedValue === 'yes' ? true : documentsSharedValue === 'no' ? false : undefined;
-  const ratingOptions = VALID_RATINGS.map((rating) => ({
-    label: rating,
-    value: rating === '100% P&T' ? '100' : rating.replace('%', ''),
-  }));
+  const ratingOptions = Array.from(
+    VALID_RATINGS.reduce(
+      (options, rating) =>
+        options.set(rating === '100% P&T' ? '100' : rating.replace('%', ''), {
+          label: rating,
+          value: rating === '100% P&T' ? '100' : rating.replace('%', ''),
+        }),
+      new Map<string, { label: string; value: string }>(),
+    ).values(),
+  );
 
   const queryString = new URLSearchParams(
     Object.entries(resolvedParams).flatMap(([key, value]) =>
@@ -70,25 +76,19 @@ export default async function RatingsPage({ searchParams }: PageProps) {
                 <label className="block font-medium capitalize" htmlFor={ratingKey}>
                   Rating for {conditionName}
                 </label>
-                <select
-                  id={ratingKey}
-                  name={ratingKey}
+               <select
+                 id={ratingKey}
+                 name={ratingKey}
+                 defaultValue={currentRatingValue}
                  className="w-full p-2 border rounded"
                >
-                  <option value="" selected={currentRatingValue === ''}>Select current rating...</option>
+                  <option value="">Select current rating...</option>
                   {ratingOptions.map((rating) => (
-                    <option
-                      key={rating.label}
-                      value={rating.value}
-                      selected={
-                        currentRatingValue === rating.value &&
-                        (rating.value !== '100' || rating.label === '100% P&T')
-                      }
-                    >
+                    <option key={rating.label} value={rating.value}>
                       {rating.label}
                     </option>
                   ))}
-                  <option value="decline" selected={currentRatingValue === 'decline'}>I prefer not to answer</option>
+                  <option value="decline">I prefer not to answer</option>
 </select>
              </div>
            );

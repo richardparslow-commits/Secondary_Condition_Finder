@@ -82,7 +82,8 @@ describe("secondary wizard route progression", () => {
       }),
     );
 
-    expect(html).toContain('<option value="100">100% P&amp;T</option>');
+    expect(html).toMatch(/<option value="100" selected="">100% P&amp;T<\/option>/);
+    expect(html).not.toContain('>100%</option>');
   });
 
   it("renders rating inputs only for service-connected conditions", async () => {
