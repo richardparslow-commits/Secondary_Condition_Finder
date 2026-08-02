@@ -2,11 +2,15 @@
 
 import { useEffect } from "react";
 
-import { createAppInsights } from "@/lib/appInsights";
-
 export function AppInsightsInit() {
   useEffect(() => {
-    createAppInsights();
+    let mounted = true;
+    void import("@/lib/appInsights").then(({ createAppInsights }) => {
+      if (mounted) createAppInsights();
+    });
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return null;

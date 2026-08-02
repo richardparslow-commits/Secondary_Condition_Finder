@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 
-import { AppInsightsInit } from "@/components/AppInsightsInit";
 import "./globals.css";
+
+const AppInsightsInit = dynamic(
+  () => import("@/components/AppInsightsInit").then((mod) => mod.AppInsightsInit),
+  { ssr: false },
+);
 
 export const metadata: Metadata = {
   title: "Secondary Condition Finder",

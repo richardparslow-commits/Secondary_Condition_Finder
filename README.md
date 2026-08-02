@@ -54,6 +54,13 @@ Open http://localhost:3000. Try `/scenarios` for repeatable demo walkthroughs.
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 
+## Hydration troubleshooting
+
+If you see a hydration warning that shows an attribute mismatch with little or
+no useful server/client diff, test once in a clean browser profile with
+extensions disabled. Some extensions inject or rewrite DOM attributes before
+React hydrates, which can cause this warning even when app markup is stable.
+
 ## Configuration
 
 | Variable | Default | Purpose |
