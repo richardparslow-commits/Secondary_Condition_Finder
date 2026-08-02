@@ -73,19 +73,25 @@ export default async function RatingsPage({ searchParams }: PageProps) {
                 <select
                   id={ratingKey}
                   name={ratingKey}
-                  defaultValue={currentRatingValue}
-                  className="w-full p-2 border rounded"
-                >
-                  <option value="">Select current rating...</option>
+                 className="w-full p-2 border rounded"
+               >
+                  <option value="" selected={currentRatingValue === ''}>Select current rating...</option>
                   {ratingOptions.map((rating) => (
-                    <option key={rating.label} value={rating.value}>
+                    <option
+                      key={rating.label}
+                      value={rating.value}
+                      selected={
+                        currentRatingValue === rating.value &&
+                        (rating.value !== '100' || rating.label === '100% P&T')
+                      }
+                    >
                       {rating.label}
                     </option>
                   ))}
-                  <option value="decline">I prefer not to answer</option>
+                  <option value="decline" selected={currentRatingValue === 'decline'}>I prefer not to answer</option>
 </select>
-              </div>
-            );
+             </div>
+           );
           })
         )}
 
