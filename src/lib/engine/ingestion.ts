@@ -9,7 +9,7 @@ export interface SafeIngestionResult {
  * Classifies file names and summarizes their formats without retaining file contents.
  *
  * @param fileNames - File names to classify by extension
- * @returns An ingestion result with the file count, unique `format-<extension>` indicators, and an error message when processing fails
+ * @returns An ingestion result with the file count, unique structural `format-<extension>` indicators, and an error message when processing fails
  */
 export function processEvidenceFiles(fileNames: string[]): SafeIngestionResult {
   try {
