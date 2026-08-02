@@ -54,21 +54,47 @@ export default async function ResultsPage({
     );
   }
 
-  const result = recommend(
-    loadConditionCatalog(),
-    loadKnowledgeBase(),
-    parsed.data,
-  );
+  let result;
+  try {
+    result = recommend(
+      loadConditionCatalog(),
+      loadKnowledgeBase(),
+      parsed.data,
+    );
+  } catch (error) {
+    console.error("Failed to build recommendation results.", error);
+    return (
+      <main>
+        <h1 className="text-2xl font-semibold tracking-tight">
+          Results are temporarily unavailable
+        </h1>
+        <p className="mt-2 text-sm text-slate-600">
+          We could not generate suggestions for this request right now. Please
+          return to intake and try again.
+        </p>
+        <Link
+          href="/secondary"
+          className="mt-6 inline-block text-sm underline hover:text-slate-900"
+        >
+          Back to intake
+        </Link>
+      </main>
+    );
+  }
 
-  const eventLogger = await getEventLogger();
-  eventLogger.record({
-    id: randomUUID(),
-    createdAt: new Date().toISOString(),
-    recognizedPrimaries: result.recognizedPrimaries,
-    unrecognizedPrimaryCount: result.unrecognizedPrimaries.length,
-    recommendedConditions: result.recommendations.map((r) => r.conditionId),
-    engineVersion: ENGINE_VERSION,
-  });
+  try {
+    const eventLogger = await getEventLogger();
+    eventLogger.record({
+      id: randomUUID(),
+      createdAt: new Date().toISOString(),
+      recognizedPrimaries: result.recognizedPrimaries,
+      unrecognizedPrimaryCount: result.unrecognizedPrimaries.length,
+      recommendedConditions: result.recommendations.map((r) => r.conditionId),
+      engineVersion: ENGINE_VERSION,
+    });
+  } catch (error) {
+    console.error("Failed to record recommendation event.", error);
+  }
 
   return (
     <main>

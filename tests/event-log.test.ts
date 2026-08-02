@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { createMemoryLogger } from "@/lib/log/memory";
 import type { RecommendationEvent } from "@/lib/log/types";
@@ -31,5 +31,29 @@ describe("memory event logger", () => {
     logger.record(event({ id: "c" }));
 
     expect(logger.recent(2)).toHaveLength(2);
+  });
+
+  it("emits a structured line to stdout by default", () => {
+    const spy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+    const logger = createMemoryLogger();
+    const sample = event({ id: "evt_default" });
+
+    logger.record(sample);
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(
+      JSON.stringify({ type: "recommendation", ...sample }),
+    );
+    spy.mockRestore();
+  });
+
+  it("does not emit stdout lines when silent mode is enabled", () => {
+    const spy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+    const logger = createMemoryLogger({ silent: true });
+
+    logger.record(event({ id: "evt_silent" }));
+
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockRestore();
   });
 });

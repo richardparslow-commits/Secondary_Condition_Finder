@@ -1,11 +1,31 @@
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
-import { createAppInsights } from "@/lib/appInsights";
+import {
+  initializeAppInsights,
+  resetAppInsightsForTests,
+} from "@/lib/appInsights";
 
 describe("app insights server safety", () => {
-  it("does not instantiate browser sdk during server-side execution", () => {
-    // createAppInsights is a factory function — no SDK is instantiated at module
-    // import time, so importing the module in a server/test environment is safe.
-    expect(typeof createAppInsights).toBe("function");
+  beforeEach(() => {
+    resetAppInsightsForTests();
+  });
+
+  it("does not instantiate browser sdk during server-side execution", async () => {
+    await expect(initializeAppInsights()).resolves.toBeUndefined();
+  });
+
+  it("does nothing when connection string is missing", async () => {
+    const original = process.env.NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING;
+    delete process.env.NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING;
+
+    try {
+      await expect(initializeAppInsights()).resolves.toBeUndefined();
+    } finally {
+      if (original === undefined) {
+        delete process.env.NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING;
+      } else {
+        process.env.NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING = original;
+      }
+    }
   });
 });
