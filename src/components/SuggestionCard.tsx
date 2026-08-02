@@ -1,24 +1,13 @@
 import type { Recommendation } from "@/lib/engine/types";
-
-const PREVALENCE_LABEL: Record<Recommendation["prevalence"], string> = {
-  "commonly-explored": "Commonly explored",
-  "sometimes-explored": "Sometimes explored",
-  "occasionally-explored": "Occasionally explored",
-};
+import {
+  PREVALENCE_EXPLANATION,
+  PREVALENCE_LABEL,
+} from "@/lib/recommendation-prevalence";
 
 const PREVALENCE_STYLE: Record<Recommendation["prevalence"], string> = {
   "commonly-explored": "bg-slate-900 text-white",
   "sometimes-explored": "bg-slate-200 text-slate-800",
   "occasionally-explored": "bg-slate-100 text-slate-600",
-};
-
-const PREVALENCE_EXPLANATION: Record<Recommendation["prevalence"], string> = {
-  "commonly-explored":
-    "Commonly explored means this secondary relationship appears frequently in authored mappings.",
-  "sometimes-explored":
-    "Sometimes explored means this secondary relationship appears in a moderate number of authored mappings.",
-  "occasionally-explored":
-    "Occasionally explored means this secondary relationship appears less often in authored mappings.",
 };
 
 export function SuggestionCard({
