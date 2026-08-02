@@ -18,12 +18,33 @@ function toDate(value: string | string[] | undefined): string | null {
 }
 
 function formatDate(iso: string): string {
-  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
-  });
+  const [year, month, day] = iso.split("-");
+  const monthIndex = Number(month) - 1;
+  const dayNumber = Number(day);
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  if (!year || Number.isNaN(monthIndex) || Number.isNaN(dayNumber)) {
+    return iso;
+  }
+  const monthLabel = monthNames[monthIndex];
+  if (!monthLabel || dayNumber < 1 || dayNumber > 31) {
+    return iso;
+  }
+
+  return `${monthLabel} ${dayNumber}, ${year}`;
 }
 
 function groupConditions(
