@@ -40,7 +40,7 @@ export default function HomePage() {
         </p>
       </header>
 
-      <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="mb-8 grid grid-cols-1 gap-6 md:ml-[-25%] md:w-[150%] md:grid-cols-2">
         {/* Left column — Secondary Service Connection */}
         <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
           <h2 className="text-base font-semibold text-slate-900">
