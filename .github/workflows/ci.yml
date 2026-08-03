@@ -21,6 +21,11 @@ jobs:
         id: test
       - run: npm run build
         id: build
+      - name: Ensure ci-failure label exists
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh label create "ci-failure" --color "d73a49" --description "CI pipeline failure" --force 2>/dev/null || true
       - name: Create issue on failure
         if: failure()
         env:
