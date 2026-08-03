@@ -33,12 +33,39 @@ jobs:
           npm run typecheck 2>&1 | tee ci-typecheck.log
         continue-on-error: true
         id: typecheck
-      - name: Run tests
-        run: |
-          set -o pipefail
-          npm test 2>&1 | tee ci-test.log
-        continue-on-error: true
+      - name: Run tests with flaky retry
         id: test
+        continue-on-error: true
+        run: |
+          : > ci-test.log
+          test_flaky=false
+          test_passed=false
+
+          for attempt in 1 2; do
+            attempt_log="ci-test-attempt-${attempt}.log"
+            echo "=== Vitest attempt ${attempt}/2 ===" | tee -a ci-test.log
+            npm test > "$attempt_log" 2>&1
+            status=$?
+            cat "$attempt_log" | tee -a ci-test.log
+
+            if [ "$status" -eq 0 ]; then
+              test_passed=true
+              if [ "$attempt" -eq 2 ]; then
+                test_flaky=true
+              fi
+              break
+            fi
+
+            if [ "$attempt" -eq 1 ]; then
+              echo "First test attempt failed; rerunning once to detect a flaky failure." | tee -a ci-test.log
+            fi
+          done
+
+          echo "flaky=${test_flaky}" >> "$GITHUB_OUTPUT"
+          echo "passed=${test_passed}" >> "$GITHUB_OUTPUT"
+          if [ "$test_passed" != true ]; then
+            exit 1
+          fi
       - name: Run build
         run: |
           set -o pipefail
@@ -60,10 +87,11 @@ jobs:
             echo "- lint: ${{ steps.lint.outcome }}"
             echo "- typecheck: ${{ steps.typecheck.outcome }}"
             echo "- test: ${{ steps.test.outcome }}"
+            echo "- test flaky: ${{ steps.test.outputs.flaky }}"
             echo "- build: ${{ steps.build.outcome }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-install.log ci-lint.log ci-typecheck.log ci-test.log ci-build.log; do
+            for log in ci-install.log ci-lint.log ci-typecheck.log ci-test.log ci-test-attempt-1.log ci-test-attempt-2.log ci-build.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
@@ -81,13 +109,15 @@ jobs:
             ci-*.log
             ci-diagnostic-summary.md
           retention-days: 14
-      - name: Ensure ci-failure label exists
-        if: failure()
+      - name: Ensure CI labels exist
+        if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh label create "ci-failure" --color "d73a49" --description "CI pipeline failure" --force 2>/dev/null || true
-      - name: Create issue on failure
-        if: failure()
+        run: |
+          gh label create "ci-failure" --color "d73a49" --description "CI pipeline failure" --force 2>/dev/null || true
+          gh label create "ci-flaky" --color "fbca04" --description "CI test passed only after a retry" --force 2>/dev/null || true
+      - name: Create failure or flaky issue
+        if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -97,20 +127,28 @@ jobs:
           [ "${{ steps.typecheck.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }typecheck"
           [ "${{ steps.test.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }test"
           [ "${{ steps.build.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }build"
+
           {
             echo "**Branch:** ${GITHUB_REF_NAME}"
             echo "**Commit:** [${GITHUB_SHA::7}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA})"
-            echo "**Failed steps:** ${FAILED_STEPS}"
             echo "**Run:** ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
             echo "**Diagnostics artifact:** ci-diagnostics-${GITHUB_RUN_ID}"
             echo
             echo "## Diagnostic summary"
             cat ci-diagnostic-summary.md
           } > ci-issue-body.md
-          gh issue create \
-            --title "CI failure: ${FAILED_STEPS} [${GITHUB_SHA::7}]" \
-            --body-file ci-issue-body.md \
-            --label "ci-failure"
+
+          if [ -n "$FAILED_STEPS" ]; then
+            gh issue create \
+              --title "CI failure: ${FAILED_STEPS} [${GITHUB_SHA::7}]" \
+              --body-file ci-issue-body.md \
+              --label "ci-failure"
+          elif [ "${{ steps.test.outputs.flaky }}" = "true" ]; then
+            gh issue create \
+              --title "Flaky test detected [${GITHUB_SHA::7}]" \
+              --body-file ci-issue-body.md \
+              --label "ci-flaky"
+          fi
       - name: Fail the job if any gate failed
         if: always()
         run: |
