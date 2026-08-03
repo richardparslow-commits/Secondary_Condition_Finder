@@ -3,6 +3,9 @@ on:
   push:
     branches: [main]
   pull_request:
+permissions:
+  contents: read
+  issues: write
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -12,15 +15,72 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run lint
+      - name: Install dependencies
+        run: |
+          set -o pipefail
+          npm ci 2>&1 | tee ci-install.log
+        continue-on-error: true
+        id: install
+      - name: Run lint
+        run: |
+          set -o pipefail
+          npm run lint 2>&1 | tee ci-lint.log
+        continue-on-error: true
         id: lint
-      - run: npm run typecheck
+      - name: Run typecheck
+        run: |
+          set -o pipefail
+          npm run typecheck 2>&1 | tee ci-typecheck.log
+        continue-on-error: true
         id: typecheck
-      - run: npm test
+      - name: Run tests
+        run: |
+          set -o pipefail
+          npm test 2>&1 | tee ci-test.log
+        continue-on-error: true
         id: test
-      - run: npm run build
+      - name: Run build
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee ci-build.log
+        continue-on-error: true
         id: build
+      - name: Collect diagnostic summary
+        if: always()
+        id: diagnostics
+        run: |
+          {
+            echo "# CI diagnostic summary"
+            echo
+            echo "Commit: ${GITHUB_SHA}"
+            echo "Branch: ${GITHUB_REF_NAME}"
+            echo
+            echo "## Step outcomes"
+            echo "- install: ${{ steps.install.outcome }}"
+            echo "- lint: ${{ steps.lint.outcome }}"
+            echo "- typecheck: ${{ steps.typecheck.outcome }}"
+            echo "- test: ${{ steps.test.outcome }}"
+            echo "- build: ${{ steps.build.outcome }}"
+            echo
+            echo "## Failure excerpts"
+            for log in ci-install.log ci-lint.log ci-typecheck.log ci-test.log ci-build.log; do
+              if [ -f "$log" ]; then
+                echo
+                echo "### $log"
+                grep -E -i -m 20 'error|fail|failed|failing|exception|assert| ✘ |✖' "$log" || tail -n 20 "$log"
+              fi
+            done
+          } > ci-diagnostic-summary.md
+          cat ci-diagnostic-summary.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload diagnostic logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-diagnostics-${{ github.run_id }}
+          path: |
+            ci-*.log
+            ci-diagnostic-summary.md
+          retention-days: 14
       - name: Ensure ci-failure label exists
         if: failure()
         env:
@@ -32,11 +92,33 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           FAILED_STEPS=""
-          [ "${{ steps.lint.outcome }}" = "failure" ] && FAILED_STEPS="lint"
+          [ "${{ steps.install.outcome }}" = "failure" ] && FAILED_STEPS="install"
+          [ "${{ steps.lint.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }lint"
           [ "${{ steps.typecheck.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }typecheck"
           [ "${{ steps.test.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }test"
           [ "${{ steps.build.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }build"
+          {
+            echo "**Branch:** ${GITHUB_REF_NAME}"
+            echo "**Commit:** [${GITHUB_SHA::7}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA})"
+            echo "**Failed steps:** ${FAILED_STEPS}"
+            echo "**Run:** ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            echo "**Diagnostics artifact:** ci-diagnostics-${GITHUB_RUN_ID}"
+            echo
+            echo "## Diagnostic summary"
+            cat ci-diagnostic-summary.md
+          } > ci-issue-body.md
           gh issue create \
             --title "CI failure: ${FAILED_STEPS} [${GITHUB_SHA::7}]" \
-            --body "**Branch:** \'${GITHUB_REF_NAME}\'\n**Commit:** [${GITHUB_SHA::7}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA})\n**Failed steps:** ${FAILED_STEPS}\n**Run:** ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            --body-file ci-issue-body.md \
             --label "ci-failure"
+      - name: Fail the job if any gate failed
+        if: always()
+        run: |
+          if [ "${{ steps.install.outcome }}" = "failure" ] || \
+             [ "${{ steps.lint.outcome }}" = "failure" ] || \
+             [ "${{ steps.typecheck.outcome }}" = "failure" ] || \
+             [ "${{ steps.test.outcome }}" = "failure" ] || \
+             [ "${{ steps.build.outcome }}" = "failure" ]; then
+            echo "One or more CI gates failed. See the diagnostic summary and artifact."
+            exit 1
+          fi
