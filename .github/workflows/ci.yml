@@ -14,6 +14,24 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+        id: lint
       - run: npm run typecheck
+        id: typecheck
       - run: npm test
+        id: test
       - run: npm run build
+        id: build
+      - name: Create issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          FAILED_STEPS=""
+          [ "${{ steps.lint.outcome }}" = "failure" ] && FAILED_STEPS="lint"
+          [ "${{ steps.typecheck.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }typecheck"
+          [ "${{ steps.test.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }test"
+          [ "${{ steps.build.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }build"
+          gh issue create \
+            --title "CI failure: ${FAILED_STEPS} [${GITHUB_SHA::7}]" \
+            --body "**Branch:** \'${GITHUB_REF_NAME}\'\n**Commit:** [${GITHUB_SHA::7}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA})\n**Failed steps:** ${FAILED_STEPS}\n**Run:** ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            --label "ci-failure"
