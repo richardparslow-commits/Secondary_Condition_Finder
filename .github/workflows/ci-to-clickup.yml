@@ -1,0 +1,94 @@
+name: Post CI Failures to ClickUp
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  post-to-clickup:
+    if: github.event.workflow_run.conclusion == 'failure' || github.event.workflow_run.conclusion == 'cancelled'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Collect failed job names
+        id: jobs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          FAILED_JOBS=$(gh api \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/jobs" \
+            --jq '[.jobs[] | select(.conclusion == "failure" or .conclusion == "cancelled") | .name] | join(", ")')
+          echo "failed_jobs=${FAILED_JOBS:-unknown}" >> "$GITHUB_OUTPUT"
+
+      - name: Download diagnostic logs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/logs" \
+            > ci-logs.zip
+          unzip -q ci-logs.zip -d ci-logs || true
+          grep -R -E -i -m 40 'error|fail|failed|failing|exception|assert| ✘ |✖' ci-logs \
+            > ci-error-excerpts.txt || true
+          if [ ! -s ci-error-excerpts.txt ]; then
+            echo "No matching error excerpt found. Open the Actions run for full logs." > ci-error-excerpts.txt
+          fi
+
+      - name: Create ClickUp task
+        env:
+          CLICKUP_API_TOKEN: ${{ secrets.CLICKUP_API_TOKEN }}
+          CLICKUP_LIST_ID: ${{ secrets.CLICKUP_LIST_ID || '4024047935635909435' }}
+          RUN: ${{ toJSON(github.event.workflow_run) }}
+          FAILED_JOBS: ${{ steps.jobs.outputs.failed_jobs }}
+        run: |
+          set -euo pipefail
+          test -n "$CLICKUP_API_TOKEN" || {
+            echo "Missing repository secret CLICKUP_API_TOKEN" >&2
+            exit 1
+          }
+
+          RUN_ID=$(printf '%s' "$RUN" | jq -r '.id')
+          CONCLUSION=$(printf '%s' "$RUN" | jq -r '.conclusion')
+          BRANCH=$(printf '%s' "$RUN" | jq -r '.head_branch')
+          SHA=$(printf '%s' "$RUN" | jq -r '.head_sha')
+          RUN_URL=$(printf '%s' "$RUN" | jq -r '.html_url')
+          SHORT_SHA=${SHA:0:7}
+          TITLE="Investigate CI ${CONCLUSION}: ${FAILED_JOBS} [${SHORT_SHA}]"
+
+          DESCRIPTION=$(cat <<EOF
+          ## CI failure
+
+          **Workflow:** CI
+          **Conclusion:** ${CONCLUSION}
+          **Failed jobs:** ${FAILED_JOBS}
+          **Branch:** ${BRANCH}
+          **Commit:** [${SHORT_SHA}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${SHA})
+          **Actions run:** [Open failed run](${RUN_URL})
+
+          ## First error excerpts
+
+          $(cat ci-error-excerpts.txt)
+
+          ## Fix protocol
+
+          Diagnose the first meaningful error before touching code. Classify it as code, test, data, dependency/tooling, runner/infrastructure, or flaky. Reproduce locally, fix one failure at a time, then run lint, typecheck, focused tests, full test suite, and build before pushing.
+          EOF
+          )
+
+          jq -n \
+            --arg name "$TITLE" \
+            --arg description "$DESCRIPTION" \
+            '{name:$name, description:$description, priority:2, notify_all:false}' \
+          | curl --fail-with-body -sS -X POST \
+              "https://api.clickup.com/api/v2/list/${CLICKUP_LIST_ID}/task" \
+              -H "Authorization: ${CLICKUP_API_TOKEN}" \
+              -H "Content-Type: application/json" \
+              --data-binary @-
