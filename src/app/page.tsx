@@ -42,11 +42,11 @@ export default function HomePage() {
       </header>
 
       {/* 2. Two separate links (md:grid-cols-2, negative-margin bleed to 150% width on desktop) */}
-      <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 md:-ml-[-25%] md:w-[150%]">
+      <div className="mb-8 flex flex-col gap-6 md:flex-row items-start md:items-center justify-center" style={{ maxWidth: '1200px' }}>
         {/* Left Link — Secondary (Caused By) - Deep Explainer */}
         <Link
           href="/secondary"
-          className="flex flex-col md:flex-row items-start md:items-center gap-4 p-6 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-colors"
+          className="flex flex-col md:flex-row items-start md:items-center gap-4 p-6 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-colors md:-ml-[-30px]"
         >
           <div className="flex-1 w-full">
             <h3 className="font-semibold text-slate-900">
@@ -61,8 +61,8 @@ export default function HomePage() {
 
         {/* Right Link — Secondary via Aggravation */}
         <Link
-          href="/secondary"
-          className="flex flex-col md:flex-row items-start md:items-center gap-4 p-6 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-colors"
+          href="/presumptive"
+          className="flex flex-col md:flex-row items-start md:items-center gap-4 p-6 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-colors md:-mr-[-30px]"
         >
           <div className="flex-1 w-full">
             <h3 className="font-semibold text-slate-900">
