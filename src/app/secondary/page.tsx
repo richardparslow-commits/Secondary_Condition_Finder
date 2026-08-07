@@ -22,7 +22,7 @@ export default function SecondaryLandingPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-8 text-gray-900">
       <Link href="/" className="text-sm underline hover:text-slate-900">
-        Back to start
+        ← Back to start
       </Link>
 
       <header className="mt-3 mb-6">
@@ -33,8 +33,7 @@ export default function SecondaryLandingPage() {
           {SECONDARY_TRACK_OVERVIEW}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          {CAUSED_AGGRAVATED_DISTINCTION} This workflow helps organize questions
-          and evidence for those two theories.
+          {CAUSED_AGGRAVATED_DISTINCTION}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
           {TRACK_DISTINCTION_NOTICE}
@@ -96,12 +95,25 @@ export default function SecondaryLandingPage() {
           Workflow steps
         </h2>
         <ol className="mt-3 space-y-2 text-sm text-slate-700">
-          {steps.map((step, index) => (
-            <li key={step}>
-              <span className="font-medium text-slate-900">{index + 1}.</span>{" "}
-              {step}
-            </li>
-          ))}
+          {steps.map((step, index) => {
+            const getRomanNumeral = (n: number) => {
+              const romans: Record<number, string> = {
+              1: 'i',
+              2: 'ii',
+              3: 'iii',
+              4: 'iv',
+              5: 'v',
+              6: 'vi',
+            };
+              return romans[n] || String(n);
+            };
+            return (
+              <li key={step}>
+                <span className="font-medium text-slate-900">{getRomanNumeral(index + 1)}.</span>{" "}
+                {step}
+              </li>
+            );
+          })}
         </ol>
       </section>
 
