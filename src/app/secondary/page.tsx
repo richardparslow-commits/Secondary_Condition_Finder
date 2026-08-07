@@ -2,12 +2,13 @@ import Link from "next/link";
 
 import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
 import {
-  CAUSED_AGGRAVATED_DISTINCTION,
   SECONDARY_TRACK_OVERVIEW,
+  CAUSED_AGGRAVATED_DISTINCTION,
   TRACK_DISTINCTION_NOTICE,
   UNVERIFIED_REFERENCE_NOTICE,
+  SECONDARY_CONTINUE_CTA,
 } from "@/lib/legal/phrases";
-import { CANONICAL_REFERENCES, DISCLAIMERS } from "@/lib/legal/references";
+import { CANONICAL_REFERENCES } from "@/lib/legal/references";
 
 const steps = [
   "Diagnosed conditions",
@@ -87,7 +88,7 @@ export default function SecondaryLandingPage() {
 
       <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-8 rounded text-xs text-yellow-900">
         <span className="font-semibold">Compliance Note:</span>{" "}
-        {DISCLAIMERS.nonDiagnostic}
+        {DISCLAIMER_NONDIAGNOSTIC}
       </div>
 
       <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
@@ -129,7 +130,7 @@ export default function SecondaryLandingPage() {
           href="/secondary/diagnosed"
           className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-colors"
         >
-          Click Here to Proceed to Wizard Step 1
+          {SECONDARY_CONTINUE_CTA}
         </Link>
       </div>
 
