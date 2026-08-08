@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
+import { DisclaimerBanner } from "@/components/Disclaimer";
+import { DISCLAIMER_NONDIAGNOSTIC, DISCLAIMER_FULL } from "@/lib/legal/phrases";
 import {
   SECONDARY_TRACK_OVERVIEW,
   CAUSED_AGGRAVATED_DISTINCTION,
