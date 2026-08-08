@@ -11,7 +11,7 @@ export default function HomePage() {
         <h1 className="text-4xl font-bold tracking-tight">
           SECONDARY CONDITIONS
         </h1>
-        <p className="mt-3 text-lg text-gray-300">
+        <p className="mt-3 text-lg text-black">
           A research aid for VA claim preparation. Choose a track below to explore how your condition may connect to your service.
         </p>
       </header>
@@ -140,7 +140,7 @@ export default function HomePage() {
       </div>
 
       {/* Footer — Large red button with links */}
-      <footer className="bg-red-600 px-6 py-6">
+      <footer className="bg-red-800 px-6 py-6">
         <div className="flex flex-col sm:flex-row justify-center gap-6 text-white">
           <Link href="/scenarios" className="hover:underline text-sm">Demo Scenarios</Link>
           <Link href="/privacy" className="hover:underline text-sm">Privacy</Link>

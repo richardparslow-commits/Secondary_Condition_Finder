@@ -34,7 +34,7 @@ export default function ConditionCausedByPage() {
       <div className="px-6 mb-6">
         <Link
           href="/secondary"
-          className="inline-flex items-center gap-2 rounded-md border border-blue-300 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-100 transition-colors"
+          className="inline-flex items-center gap-2 rounded-md border border-blue-900 bg-blue-900 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 transition-colors"
         >
           ← Back to Secondary Conditions
         </Link>
@@ -50,7 +50,7 @@ export default function ConditionCausedByPage() {
       </div>
 
       {/* Orange Main Content Area */}
-      <div className="rounded-lg border border-orange-200 bg-orange-50 p-6 mb-8">
+      <div className="rounded-lg border border-black bg-orange-500 p-6 mb-8">
         <CausedByExplainer />
       </div>
 
