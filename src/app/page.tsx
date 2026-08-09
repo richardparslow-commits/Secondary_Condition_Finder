@@ -1,175 +1,153 @@
 import Link from "next/link";
 
 import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
-import {
-  SECONDARY_TRACK_OVERVIEW,
-  CAUSED_AGGRAVATED_DISTINCTION,
-  TRACK_DISTINCTION_NOTICE,
-  UNVERIFIED_REFERENCE_NOTICE,
-  SECONDARY_CONTINUE_CTA,
-  PRESUMPTIVE_TRACK_OVERVIEW,
-  PRESUMPTIVE_CONTINUE_CTA,
-  CitationLabel,
-  CausedByExplainer,
-  AggravatedByExplainer,
-  DISCLAIMER_NONDIAGNOSTIC,
-} from "@/lib/legal/phrases";
-import { CANONICAL_REFERENCES } from "@/lib/legal/references";
-
-// Helper function to dynamically filter presumptive statute citations
-const getPresumptiveCitations = () => {
-  return CANONICAL_REFERENCES
-    .filter(
-      ref =>
-        ref.sourceType === "Statute" &&
-        (ref.title.toLowerCase().includes("presumption") ||
-          ref.title.toLowerCase().includes("presumptive"))
-    )
-    .map(ref => ref.citation);
-};
+import { CausedByExplainer, AggravatedByExplainer } from "@/lib/legal/phrases";
 
 export default function HomePage() {
   return (
-    <main>
-      {/* 1. Header — "Secondary Condition Finder" title + short description */}
-      <header className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight">
-          Secondary Condition Finder
+    <main className="min-h-screen">
+      {/* Header — Gray background with black text, large title with subtitle */}
+      <header className="bg-gray-100 text-black px-6 py-8">
+        <h1 className="text-4xl font-bold tracking-tight">
+          SECONDARY CONDITIONS
         </h1>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+        <p className="mt-3 text-lg text-black">
           A research aid for VA claim preparation. Choose a track below to explore how your condition may connect to your service.
         </p>
       </header>
 
-      {/* 2. Two separate links (md:grid-cols-2, negative-margin bleed to 150% width on desktop) */}
-      <div className="mb-8 flex flex-col gap-6 md:flex-row items-start md:items-center justify-center" style={{ maxWidth: '1200px' }}>
-        {/* Left Link — Secondary (Caused By) - Deep Explainer */}
+      {/* Two Secondary Cards — Side by side with gray background */}
+      <div className="flex flex-col md:flex-row items-stretch gap-6 px-6 py-8 mb-8">
+        {/* Left Card — Secondary Condition Caused By Service Connected Condition */}
         <Link
-          href="/secondary"
-          className="flex flex-col md:flex-row items-start md:items-center gap-4 p-6 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-colors md:-ml-[-30px]"
+          href="/secondary/condition-caused-by"
+          className="flex flex-col md:flex-row items-start md:items-center gap-6 p-6 rounded-lg border border-gray-200 bg-gray-100 hover:bg-gray-200 transition-colors"
         >
           <div className="flex-1 w-full">
-            <h3 className="font-semibold text-slate-900">
-              Secondary Service Connection
-            </h3>
-            <p className="text-sm text-slate-600 mt-1">
-              Caused By (Direct Secondary)
+            <div className="mb-2">
+              <span className="font-bold text-2xl block">Secondary</span>
+              <span className="text-gray-900 font-semibold">Condition Caused By Service Connected Condition</span>
+            </div>
+            <p className="text-sm text-gray-600 mt-2">
+              A secondary claim that is <strong>proximately due to or the result of</strong> your service-connected disability.
             </p>
             <CausedByExplainer />
           </div>
+          <Link
+            href="/secondary/condition-caused-by"
+            className="px-6 py-3 rounded-full bg-red-600 text-white font-medium hover:bg-red-700 transition-colors mt-6 md:mt-0 shadow-sm"
+          >
+            Learn More
+          </Link>
         </Link>
 
-        {/* Right Link — Secondary via Aggravation */}
+        {/* Right Card — Secondary Conditions via Aggravation */}
         <Link
-          href="/presumptive"
-          className="flex flex-col md:flex-row items-start md:items-center gap-4 p-6 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-colors md:-mr-[-30px]"
+          href="/secondary/condition-aggravation"
+          className="flex flex-col md:flex-row items-start md:items-center gap-6 p-6 rounded-lg border border-gray-200 bg-gray-100 hover:bg-gray-200 transition-colors"
         >
           <div className="flex-1 w-full">
-            <h3 className="font-semibold text-slate-900">
-              Secondary Service Connection
-            </h3>
-            <p className="text-sm text-slate-600 mt-1">
-              Via Aggravation (Worsening)
+            <div className="mb-2">
+              <span className="font-bold text-2xl block">SECONDARY</span>
+              <span className="text-gray-900 font-semibold">Conditions via Aggravation</span>
+            </div>
+            <p className="text-sm text-gray-600 mt-2">
+              A pre-existing condition that was <strong>permanently worsened</strong> beyond its natural progression by your service.
             </p>
             <AggravatedByExplainer />
           </div>
+          <Link
+            href="/secondary/condition-aggravation"
+            className="px-6 py-3 rounded-full bg-red-600 text-white font-medium hover:bg-red-700 transition-colors mt-6 md:mt-0 shadow-sm"
+          >
+            Learn More
+          </Link>
         </Link>
       </div>
 
-      {/* DisclaimerBanner component */}
-      <div className="mb-8">
-        <DisclaimerBanner />
-      </div>
-
-      {/* 3. Path-selection cards (space-y-4) — two article cards */}
-      <div className="space-y-4">
-        {/* Secondary path card (/secondary) */}
-        <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-slate-900">
-            Secondary Service Connection
-          </h2>
-          <p className="mt-1 text-xs text-slate-500">
-            {SECONDARY_TRACK_OVERVIEW}
+      {/* Green Disclaimer Box — Centered */}
+      <div className="flex justify-center px-6 mb-8">
+        <div
+          role="note"
+          className="rounded-lg border border-green-300 bg-green-100 p-6 text-sm leading-relaxed text-green-900 max-w-4xl"
+        >
+          <p className="font-semibold">This is a research aid, not advice.</p>
+          <p className="mt-2">
+            This tool helps organize claim-preparation research. It does not
+            diagnose conditions, determine eligibility, or provide medical or legal
+            advice. Every suggestion is a possibility to explore with a qualified
+            provider or an accredited representative, not a determination.
           </p>
-
-          <div className="mt-4 space-y-3">
-            {/* Causal mechanism description */}
-            <div className="text-sm text-slate-700">
-              {CAUSED_AGGRAVATED_DISTINCTION}
-            </div>
-
-            {/* Track distinction notice */}
-            <p className="text-sm text-slate-600">
-              {TRACK_DISTINCTION_NOTICE}
-            </p>
-
-            {/* Unverified reference notice */}
-            <p className="text-sm text-slate-600">
-              {UNVERIFIED_REFERENCE_NOTICE}
-            </p>
-          </div>
-
-          {/* CitationLabel for Secondary card */}
-  <div className="mt-3 flex flex-wrap gap-2">
-    <CitationLabel citation="38 CFR § 3.310(a)" />
-  </div>
-
-  {/* CTA button for Secondary path */}
-  <Link
-    href="/secondary"
-    className="mt-6 inline-block rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 transition-colors"
-  >
-    {SECONDARY_CONTINUE_CTA}
-  </Link>
-        </article>
-
-        {/* Presumptive path card (/presumptive) */}
-        <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-slate-900">
-            Presumptive Service Connection
-          </h2>
-          <p className="mt-1 text-xs text-slate-500">
-            {PRESUMPTIVE_TRACK_OVERVIEW}
-          </p>
-
-          {/* CitationLabel for Presumptive card - dynamically generated */}
-          <div className="mt-3 flex flex-wrap gap-2">
-            {getPresumptiveCitations().map(citation => (
-              <CitationLabel key={citation} citation={citation} />
-            ))}
-          </div>
-
-          {/* CTA button for Presumptive path */}
-          <Link
-            href="/presumptive"
-            className="mt-6 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
-          >
-            Check Presumptive Conditions
-          </Link>
-        </article>
-      </div>
-
-      {/* 4. Footer copy — tracks are not mutually exclusive */}
-      <div className="mt-8 text-xs text-slate-500">
-        <p className="mb-3">
-          <strong>Note:</strong> The Secondary and Presumptive tracks are not 
-          mutually exclusive. Your claim may involve elements from both. You 
-          can explore each track independently using the links above.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4 mt-3">
-          <Link href="/scenarios" className="text-blue-600 hover:underline">
-            Demo Scenarios
-          </Link>
-          <Link href="/privacy" className="text-slate-600 hover:underline">
-            Privacy
-          </Link>
-          <Link href="/terms" className="text-slate-600 hover:underline">
-            Terms
-          </Link>
         </div>
       </div>
 
-      {/* DisclaimerFooter component */}
+      {/* Gray Disclaimer Box — Below green banner, centered */}
+      <div className="flex justify-center px-6 mb-8">
+        <div className="rounded-lg border border-gray-300 bg-gray-50 p-6 text-sm leading-relaxed text-gray-900 max-w-4xl">
+          <p>
+            This page is for research purposes only and not a replacement for legal or professional advice.
+            The content provided is based on general research and should be verified with official VA resources.
+          </p>
+        </div>
+      </div>
+
+      {/* Presumptive Service Connection Box — Gray */}
+      <div className="max-w-4xl px-6 mb-8">
+        <article className="rounded-lg border border-gray-200 bg-gray-100 p-6 shadow-sm">
+          <h2 className="text-xl font-semibold text-gray-900">
+            Presumptive Service Connection
+          </h2>
+          <p className="text-sm text-gray-700 mt-2 leading-relaxed">
+            Presumptive service connection applies to conditions tied to qualifying service exposures
+            (e.g., herbicide, radiation, burn pit, cold exposure). VA presumes service connection if you
+            served during a qualifying period and are diagnosed with a recognized condition. No nexus opinion required.
+          </p>
+
+          <Link
+            href="/presumptive"
+            className="mt-6 inline-block px-6 py-3 rounded-full bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition-colors"
+          >
+            Check Presumptive / Continuous Check
+          </Link>
+        </article>
+      </div>
+
+      {/* Secondary Service Connection Box — Gray */}
+      <div className="max-w-4xl px-6 mb-8">
+        <article className="rounded-lg border border-gray-200 bg-gray-100 p-6 shadow-sm">
+          <h2 className="text-xl font-semibold text-gray-900">
+            Secondary Service Connection
+          </h2>
+          <p className="text-sm text-gray-700 mt-2 leading-relaxed">
+            Explore conditions caused by or aggravated by your service-connected disability. This track
+            involves organizing your conditions to identify potential secondary connections.
+          </p>
+
+          <Link
+            href="/secondary"
+            className="mt-6 inline-block px-6 py-3 rounded-full bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition-colors"
+          >
+            Click Here to Proceed to Wizard Step 1
+          </Link>
+        </article>
+      </div>
+
+      {/* Note about tracks not being mutually exclusive — Centered, small text */}
+      <div className="text-center px-6 mb-8">
+        <p className="text-xs text-gray-600">
+          Note: The Secondary and Presumptive tracks are not mutually exclusive. A condition may be claimable through both Secondary and Presumptive paths if the evidence supports both theories.
+        </p>
+      </div>
+
+      {/* Footer — Large red button with links */}
+      <footer className="bg-red-800 px-6 py-6">
+        <div className="flex flex-col sm:flex-row justify-center gap-6 text-white">
+          <Link href="/scenarios" className="hover:underline text-sm">Demo Scenarios</Link>
+          <Link href="/privacy" className="hover:underline text-sm">Privacy</Link>
+          <Link href="/terms" className="hover:underline text-sm">Terms</Link>
+        </div>
+      </footer>
+
       <DisclaimerFooter />
     </main>
   );

@@ -1,0 +1,67 @@
+import Link from "next/link";
+
+import { DisclaimerBanner } from "@/components/Disclaimer";
+import { AggravatedByExplainer } from "@/lib/legal/phrases";
+import { SECONDARY_AGGRAVATED_BY_TITLE } from "@/lib/legal/secondary-title";
+
+export const metadata = {
+  title: "Secondary Condition via Aggravation | VA Secondary Connection Finder",
+  description:
+    "Explore conditions that were aggravated by your service-connected disability. This track is for conditions that were worsened beyond their natural progression by your service.",
+};
+
+export default function ConditionAggravationPage() {
+  return (
+    <main className="min-h-screen bg-orange-500">
+      {/* Header — Black full-width background with white text */}
+      <header className="bg-black text-white">
+        <div className="px-6 py-8">
+          <h1 className="text-4xl font-bold tracking-tight mb-3">{SECONDARY_AGGRAVATED_BY_TITLE}</h1>
+          <p className="mt-3 text-lg text-gray-100">
+            Exploring conditions that were aggravated by your service-connected disability. This track is for conditions that
+            <strong>were permanently worsened</strong> beyond their natural progression by your service.
+          </p>
+        </div>
+      </header>
+
+      {/* Green Disclaimer Box — Centered */}
+      <div className="flex justify-center px-6 mb-6">
+        <DisclaimerBanner />
+      </div>
+
+      {/* Back Button — Blue, pointing to /secondary */}
+      <div className="px-6 mb-6">
+        <Link
+          href="/secondary"
+          className="inline-flex items-center gap-2 rounded-md border border-blue-900 bg-blue-900 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 transition-colors"
+        >
+          ← Back to Secondary Conditions
+        </Link>
+      </div>
+
+      {/* Knowledge Base Disclaimer Box — Dark gray */}
+      <div className="px-6 mb-6">
+        <div className="rounded-lg border border-gray-700 bg-gray-900 p-6 text-sm leading-relaxed text-gray-100">
+          <p>
+            Suggestions come from a curated knowledge base, not from your medical records, and are not ranked by likelihood of approval. Citations are starting points for your own verification and have not yet been confirmed by a qualified reviewer. Confirm everything against current VA guidance at va.gov and consult an accredited representative or VSO before filing.
+          </p>
+        </div>
+      </div>
+
+      {/* Orange Main Content Area */}
+      <div className="rounded-lg border border-black bg-orange-500 p-6 mb-8">
+        <AggravatedByExplainer />
+      </div>
+
+      {/* Footer — Large red button with white text */}
+      <footer className="px-6 py-4">
+        <Link
+          href="/secondary"
+          className="inline-flex items-center justify-center w-full gap-2 rounded-md border border-red-600 bg-red-600 px-8 py-4 text-base font-semibold text-white hover:bg-red-700 transition-colors"
+        >
+          Secondary Conditions | Demo Scenarios | Privacy | Terms
+        </Link>
+      </footer>
+    </main>
+  );
+}
