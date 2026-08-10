@@ -21,6 +21,12 @@ jobs:
           npm ci 2>&1 | tee ci-install.log
         continue-on-error: true
         id: install
+      - name: Audit high-severity dependencies
+        run: |
+          set -o pipefail
+          npm run audit:high 2>&1 | tee ci-audit.log
+        continue-on-error: true
+        id: audit
       - name: Run lint
         run: |
           set -o pipefail
@@ -84,6 +90,7 @@ jobs:
             echo
             echo "## Step outcomes"
             echo "- install: ${{ steps.install.outcome }}"
+            echo "- audit: ${{ steps.audit.outcome }}"
             echo "- lint: ${{ steps.lint.outcome }}"
             echo "- typecheck: ${{ steps.typecheck.outcome }}"
             echo "- test: ${{ steps.test.outcome }}"
@@ -91,11 +98,11 @@ jobs:
             echo "- build: ${{ steps.build.outcome }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-install.log ci-lint.log ci-typecheck.log ci-test.log ci-test-attempt-1.log ci-test-attempt-2.log ci-build.log; do
+            for log in ci-install.log ci-audit.log ci-lint.log ci-typecheck.log ci-test.log ci-test-attempt-1.log ci-test-attempt-2.log ci-build.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
-                grep -E -i -m 20 'error|fail|failed|failing|exception|assert| ✘ |✖' "$log" || tail -n 20 "$log"
+                grep -E -i -m 20 'error|fail|failed|failing|exception|assert| ✘ |✖|vulnerabilit' "$log" || tail -n 20 "$log"
               fi
             done
           } > ci-diagnostic-summary.md
@@ -123,6 +130,7 @@ jobs:
         run: |
           FAILED_STEPS=""
           [ "${{ steps.install.outcome }}" = "failure" ] && FAILED_STEPS="install"
+          [ "${{ steps.audit.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }audit"
           [ "${{ steps.lint.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }lint"
           [ "${{ steps.typecheck.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }typecheck"
           [ "${{ steps.test.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }test"
@@ -153,6 +161,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ steps.install.outcome }}" = "failure" ] || \
+             [ "${{ steps.audit.outcome }}" = "failure" ] || \
              [ "${{ steps.lint.outcome }}" = "failure" ] || \
              [ "${{ steps.typecheck.outcome }}" = "failure" ] || \
              [ "${{ steps.test.outcome }}" = "failure" ] || \
