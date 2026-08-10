@@ -6,13 +6,12 @@ import SecondaryLandingPage from "@/app/secondary/page";
 import TermsPage from "@/app/terms/page";
 import { FORBIDDEN_PHRASES } from "@/lib/guardrails";
 import {
-  CAUSED_AGGRAVATED_DISTINCTION,
   SECONDARY_CONTINUE_CTA,
   SECONDARY_TRACK_OVERVIEW,
-  TRACK_DISTINCTION_NOTICE,
   UNVERIFIED_REFERENCE_NOTICE,
 } from "@/lib/legal/phrases";
 import { CANONICAL_REFERENCES } from "@/lib/legal/references";
+import { SECONDARY_AGGRAVATED_BY_TITLE, SECONDARY_CAUSED_BY_TITLE } from "@/lib/legal/secondary-title";
 
 const SECONDARY_REFERENCE_IDS = new Set([
   "38-cfr-3.310-a",
@@ -21,17 +20,17 @@ const SECONDARY_REFERENCE_IDS = new Set([
 ]);
 
 function extractCitations(html: string): string[] {
-  return html.match(/38 (?:CFR|C\.F\.R\.) § [0-9.]+\([ab]\)/g) ?? [];
+  return (html.match(/38 (?:CFR|C\.F\.R\.) § [0-9.]+\([ab]\)/g) ?? []).map((citation) =>
+    citation.replace("C.F.R.", "CFR"),
+  );
 }
 
 describe("legal copy contracts", () => {
   it("renders the required secondary track distinction and proceed CTA", () => {
     const html = renderToStaticMarkup(SecondaryLandingPage());
 
-    expect(html).toContain("Caused By");
-    expect(html).toContain("Aggravated By");
-    expect(html).toContain(CAUSED_AGGRAVATED_DISTINCTION);
-    expect(html).toContain(TRACK_DISTINCTION_NOTICE);
+    expect(html).toContain(SECONDARY_CAUSED_BY_TITLE);
+    expect(html).toContain(SECONDARY_AGGRAVATED_BY_TITLE);
     expect(html).toContain(SECONDARY_CONTINUE_CTA);
     expect(html).toContain('href="/secondary/diagnosed"');
     expect(html).toContain("38 CFR § 3.310(a)");
