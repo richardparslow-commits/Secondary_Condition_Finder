@@ -22,8 +22,15 @@ jobs:
       - name: Run Qwen Code Action
         uses: QwenLM/qwen-code-action@v1
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           openai_api_key: ${{ secrets.QWEN_API_KEY }}
           openai_base_url: ${{ secrets.QWEN_OPENAI_BASE_URL }}
-          openai_model: "qwen3.8-max"
+          openai_model: "qwen-max"
           qwen_debug: "true"
-          prompt: "You are an autonomous AI coding agent. You must ALWAYS propose file changes and create a Pull Request. If the user asks for a code review, audit, or general question, you must write your findings into a markdown file named 'QWEN_AUDIT.md' in the root directory and commit it, ensuring a Pull Request is successfully generated."
+          prompt: |
+            You are an autonomous AI coding agent operating inside a GitHub repository.
+            Analyze the issue or comment that triggered this workflow.
+            If asked to review or audit code, write your findings into a file 
+            called 'QWEN_AUDIT.md' in the repository root.
+            If asked to fix or implement something, make the necessary code changes.
+            Always produce at least one file change so a Pull Request can be created.
