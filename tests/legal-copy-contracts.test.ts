@@ -12,43 +12,54 @@ import {
   TRACK_DISTINCTION_NOTICE,
   UNVERIFIED_REFERENCE_NOTICE,
 } from "@/lib/legal/phrases";
-import { SECONDARY_LEGAL_REFERENCES } from "@/lib/legal/secondaryReferences";
+import { CANONICAL_REFERENCES } from "@/lib/legal/references";
+
+const SECONDARY_REFERENCE_IDS = new Set([
+  "38-cfr-3.310-a",
+  "38-cfr-3.310-b",
+  "m21-1-v-ii-2",
+]);
 
 function extractCitations(html: string): string[] {
-  return html.match(/38 CFR [0-9.]+(?: and [0-9.]+)?/g) ?? [];
+  return html.match(/38 (?:CFR|C\.F\.R\.) § [0-9.]+\([ab]\)/g) ?? [];
 }
 
 describe("legal copy contracts", () => {
-  it("keeps secondary explainer order and proceed CTA before step one", () => {
+  it("renders the required secondary track distinction and proceed CTA", () => {
     const html = renderToStaticMarkup(SecondaryLandingPage());
-    const overviewIndex = html.indexOf(SECONDARY_TRACK_OVERVIEW);
-    const causedAggravatedIndex = html.indexOf(CAUSED_AGGRAVATED_DISTINCTION);
-    const distinctionIndex = html.indexOf(TRACK_DISTINCTION_NOTICE);
-    const referencesIndex = html.indexOf("Supporting references");
-    const ctaIndex = html.indexOf(SECONDARY_CONTINUE_CTA);
 
-    expect(overviewIndex).toBeGreaterThan(-1);
-    expect(causedAggravatedIndex).toBeGreaterThan(overviewIndex);
-    expect(distinctionIndex).toBeGreaterThan(causedAggravatedIndex);
-    expect(referencesIndex).toBeGreaterThan(distinctionIndex);
-    expect(ctaIndex).toBeGreaterThan(referencesIndex);
+    expect(html).toContain("Caused By");
+    expect(html).toContain("Aggravated By");
+    expect(html).toContain(CAUSED_AGGRAVATED_DISTINCTION);
+    expect(html).toContain(TRACK_DISTINCTION_NOTICE);
+    expect(html).toContain(SECONDARY_CONTINUE_CTA);
+    expect(html).toContain('href="/secondary/diagnosed"');
+    expect(html).toContain("38 CFR § 3.310(a)");
+    expect(html).toContain("38 CFR § 3.310(b)");
   });
 
-  it("renders secondary citations from the canonical legal references module", async () => {
+  it("renders secondary citations only from the canonical legal references module", async () => {
     const pages = [
       renderToStaticMarkup(HomePage()),
       renderToStaticMarkup(SecondaryLandingPage()),
       renderToStaticMarkup(await TermsPage()),
     ];
     const allowed = new Set(
-      SECONDARY_LEGAL_REFERENCES.map((reference) => reference.citation),
+      CANONICAL_REFERENCES
+        .filter((reference) => SECONDARY_REFERENCE_IDS.has(reference.id))
+        .map((reference) => reference.citation),
     );
 
     for (const page of pages) {
-      const citations = extractCitations(page);
-      for (const citation of citations) {
+      for (const citation of extractCitations(page)) {
         expect(allowed.has(citation)).toBe(true);
       }
+    }
+  });
+
+  it("keeps canonical citation statuses unverified", () => {
+    for (const reference of CANONICAL_REFERENCES) {
+      expect(reference.verificationStatus).toBe("unverified");
     }
   });
 
@@ -66,5 +77,11 @@ describe("legal copy contracts", () => {
         expect(lower).not.toContain(phrase.toLowerCase());
       }
     }
+  });
+
+  it("keeps the canonical secondary overview available to the landing route", () => {
+    const html = renderToStaticMarkup(SecondaryLandingPage());
+    expect(SECONDARY_TRACK_OVERVIEW).toBeDefined();
+    expect(html).toContain("Secondary Service Connection Conditions");
   });
 });
