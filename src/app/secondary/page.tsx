@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { DisclaimerBanner } from "@/components/Disclaimer";
-import { DISCLAIMER_FULL, DISCLAIMER_NONDIAGNOSTIC, SECONDARY_CONTINUE_CTA } from "@/lib/legal/phrases";
+import { DISCLAIMER_NONDIAGNOSTIC, SECONDARY_CONTINUE_CTA } from "@/lib/legal/phrases";
 import { SECONDARY_AGGRAVATED_BY_TITLE, SECONDARY_CAUSED_BY_TITLE } from "@/lib/legal/secondary-title";
 import { CANONICAL_REFERENCES } from "@/lib/legal/references";
 
@@ -40,7 +40,7 @@ export default function SecondaryLandingPage() {
             </h2>
             <p className="text-sm text-gray-800">
               A secondary condition that is proximately due to or the result of
-              your already service-connected primary condition. Governed by{" }"
+              your already service-connected primary condition. Governed by{" "}
               <strong>38 CFR § 3.310(a)</strong>.
             </p>
           </Link>
@@ -56,7 +56,7 @@ export default function SecondaryLandingPage() {
             <p className="text-sm text-gray-800">
               A pre-existing or non-service-connected condition that was
               permanently worsened or accelerated beyond its natural progression
-              by your service-connected condition. Governed by{" }"
+              by your service-connected condition. Governed by{" "}
               <strong>38 CFR § 3.310(b)</strong>.
             </p>
           </Link>
@@ -66,7 +66,7 @@ export default function SecondaryLandingPage() {
       {/* Dark Gray Box */}
       <div className="bg-gray-900 text-white rounded-lg p-6 mb-8">
         <p className="text-sm leading-relaxed">
-          {DISCLAIMER_FULL}
+          {DISCLAIMER_NONDIAGNOSTIC}
         </p>
         <p className="mt-4 text-sm leading-relaxed">
           {CANONICAL_REFERENCES.map((reference) => (
@@ -81,7 +81,7 @@ export default function SecondaryLandingPage() {
       <section className="mt-8 mb-6 bg-slate-100 rounded-lg p-4 text-center">
         <p className="text-sm text-gray-800">
           If your condition may be tied to where and when you served, use the
-          separate{" }"
+          separate{" "}
           <Link href="/presumptive" className="underline hover:text-slate-900">
             presumptive track
           </Link>
