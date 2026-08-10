@@ -10,7 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "citations:weak": "node scripts/report-weak-citations.js"
+    "citations:weak": "node scripts/report-weak-citations.js",
+    "audit:high": "npm audit --audit-level=high"
   },
   "dependencies": {
     "@microsoft/applicationinsights-web": "^3.4.3",
@@ -23,7 +24,8 @@
   },
   "overrides": {
     "@eslint/config-array": ">=0.23.5",
-    "postcss": ">=8.5.18"
+    "postcss": ">=8.5.18",
+    "brace-expansion": "5.0.9"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -34,6 +36,7 @@
     "@vitejs/plugin-react": "^6.0.4",
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
+    "patch-package": "8.0.1",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.10"
@@ -42,5 +45,6 @@
     "better-sqlite3@13.0.1": true,
     "sharp@0.34.5": true,
     "unrs-resolver@1.12.2": true
-  }
+  },
+  "postinstall": "patch-package --error-on-fail"
 }
