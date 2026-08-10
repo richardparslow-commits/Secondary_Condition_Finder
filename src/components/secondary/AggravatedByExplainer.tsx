@@ -11,7 +11,7 @@ export function AggravatedByExplainer() {
       <div className="rounded-md border border-indigo-200 bg-indigo-50 p-3">
         <p className="mb-2 font-medium">Adjudicative Mechanics:</p>
         <ul className="list-disc space-y-1 pl-5">
-          <li><strong>Baseline evidence:</strong> Evidence showing the condition's status before the service-connected disability was established</li>
+          <li><strong>Baseline evidence:</strong> Evidence showing the condition&apos;s status before the service-connected disability was established</li>
           <li><strong>Benefit-of-the-doubt:</strong> Applied when evidence is in relative equipoise</li>
           <li><strong>Medical theory standard:</strong> Any medical theory for causation/aggravation must be accepted or reasonably capable of acceptance</li>
         </ul>
