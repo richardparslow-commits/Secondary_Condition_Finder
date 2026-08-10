@@ -22,5 +22,6 @@ jobs:
       - name: Run Qwen Code Action
         uses: QwenLM/qwen-code-action@v1
         with:
-          qwen_api_key: ${{ secrets.QWEN_API_KEY }}
-          qwen_model: "qwen3.7-plus"
+          openai_api_key: ${{ secrets.QWEN_API_KEY }}
+          openai_base_url: ${{ secrets.QWEN_OPENAI_BASE_URL }}
+          openai_model: "qwen3.7-plus"
