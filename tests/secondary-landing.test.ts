@@ -1,23 +1,22 @@
-import { describe, it, expect } from "vitest";
-import fs from "fs";
-import path from "path";
+import { describe, expect, it } from "vitest";
+import { renderToStaticMarkup } from "react-dom/server";
+
+import SecondaryLandingPage from "@/app/secondary/page";
 
 describe("P0 Ticket 2: Secondary Landing Explainer & CTA Flow", () => {
-  it("contains required caused vs aggravated distinction and canonical legal references", () => {
-    const pagePath = path.join(process.cwd(), "src/app/secondary/page.tsx");
-    expect(fs.existsSync(pagePath)).toBe(true);
+  it("renders the required caused vs aggravated distinction and canonical legal references", () => {
+    const html = renderToStaticMarkup(SecondaryLandingPage());
 
-    const content = fs.readFileSync(pagePath, "utf8");
-    expect(content).toContain("Caused By");
-    expect(content).toContain("Aggravated By");
-    expect(content).toContain("38 CFR § 3.310(a)");
-    expect(content).toContain("38 CFR § 3.310(b)");
+    expect(html).toContain("Caused By");
+    expect(html).toContain("Aggravated By");
+    expect(html).toContain("38 CFR § 3.310(a)");
+    expect(html).toContain("38 CFR § 3.310(b)");
   });
 
-  it("provides an obvious proceed CTA linking directly to Step 1", () => {
-    const pagePath = path.join(process.cwd(), "src/app/secondary/page.tsx");
-    const content = fs.readFileSync(pagePath, "utf8");
-    expect(content).toContain("href=\"/secondary/diagnosed\"");
-    expect(content).toContain("Click Here to Proceed to Wizard Step 1");
+  it("renders an obvious proceed CTA linking directly to Step 1", () => {
+    const html = renderToStaticMarkup(SecondaryLandingPage());
+
+    expect(html).toContain('href="/secondary/diagnosed"');
+    expect(html).toContain("Click Here to Proceed to Wizard Step 1");
   });
 });
