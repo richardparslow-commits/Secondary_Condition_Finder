@@ -10,20 +10,23 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "citations:weak": "node scripts/report-weak-citations.js"
+    "citations:weak": "node scripts/report-weak-citations.js",
+    "audit:high": "npm audit --audit-level=high"
   },
   "dependencies": {
     "@microsoft/applicationinsights-web": "^3.4.3",
     "better-sqlite3": "^13.0.1",
-    "next": "16.2.12",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "next": "16.3.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "server-only": "^0.0.1",
     "zod": "^4.4.3"
   },
   "overrides": {
     "@eslint/config-array": ">=0.23.5",
-    "postcss": ">=8.5.18"
+    "postcss": ">=8.5.18",
+    "js-yaml": "4.3.1",
+    "nanoid": "3.3.17"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -33,14 +36,14 @@
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6.0.4",
     "eslint": "^9",
-    "eslint-config-next": "16.2.12",
+    "eslint-config-next": "16.3.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.10"
   },
   "allowScripts": {
     "better-sqlite3@13.0.1": true,
-    "sharp@0.34.5": true,
+    "sharp@0.35.0": true,
     "unrs-resolver@1.12.2": true
   }
 }
