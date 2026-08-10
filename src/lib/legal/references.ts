@@ -40,28 +40,28 @@ export const CANONICAL_REFERENCES: LegalReference[] = [
     sourceType: "M21-1",
     verificationStatus: "unverified"
   },
-  // ==================== PRESUMPTIVE SERVICE CONNECTION STATUTES ====================
+  // Presumptive references remain explicitly unverified until qualified review.
   {
     id: "81-us-c-1276d",
     citation: "81 U.S.C. § 1276d",
     title: "Agent Orange (Herbicide) Presumption",
-    description: "Presumptive service connection for herbicide-exposure-related disabilities for veterans who served in the Vietnam theater or other designated areas during the specified periods.",
+    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
     sourceType: "Statute",
-    verificationStatus: "verified"
+    verificationStatus: "unverified"
   },
   {
     id: "pub-l-109-4-115",
     citation: "Pub. L. 109-4 (38 U.S.C. 115)",
-    title: "Gulf War (5/9/1991–8/14/2006) Presumption",
-    description: "Presumptive service connection for disabilities related to specified illnesses for veterans who served during the Gulf War era, including Agent Orange, Burn Pit, and Ionizing Radiation exposures.",
+    title: "Gulf War Presumption",
+    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
     sourceType: "Statute",
-    verificationStatus: "verified"
+    verificationStatus: "unverified"
   },
   {
     id: "81-us-c-1276a",
     citation: "81 U.S.C. § 1276a",
     title: "Ionizing Radiation Presumption",
-    description: "Presumptive service connection for cancer and other conditions related to ionizing radiation exposure for veterans who served during specified Cold War or nuclear test periods.",
+    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
     sourceType: "Statute",
     verificationStatus: "unverified"
   },
@@ -69,33 +69,32 @@ export const CANONICAL_REFERENCES: LegalReference[] = [
     id: "81-us-c-1276d-e",
     citation: "81 U.S.C. § 1276d(e)",
     title: "Agent Orange Presumptive Service Connection",
-    description: "Amendment clarifying that disabilities listed in § 1276d are presumptively service-connected when diagnosed within the specified timeframes.",
+    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
     sourceType: "Statute",
-    verificationStatus: "verified"
+    verificationStatus: "unverified"
   },
   {
     id: "81-us-c-1276-b",
     citation: "81 U.S.C. § 1276(b)",
     title: "Vietnam Era Presumption (Agent Orange)",
-    description: "Presumes veteran was exposed to herbicide agent(s) listed in 28 C.F.R. § 0.1000 if service was during the Vietnam period (Feb 28, 1962 – May 7, 1975).",
+    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
     sourceType: "Statute",
-    verificationStatus: "verified"
+    verificationStatus: "unverified"
   },
   {
     id: "81-us-c-1276-c",
     citation: "81 U.S.C. § 1276(c)",
-    title: "Vietnam Era Presumption (RANCHOW)",
-    description: "Presumes veteran was exposed to herbicide agent(s) during service in the Republic of Camboya, Republic of Thailand, or Korean Demilitarized Zone during the Vietnam period.",
+    title: "Vietnam Era Presumption",
+    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
     sourceType: "Statute",
-    verificationStatus: "verified"
+    verificationStatus: "unverified"
   },
   {
     id: "81-us-c-1276-d",
     citation: "81 U.S.C. § 1276(d)",
-    title: "Vietnam Era Presumption (TIGER CAMP)",
-    description: "Presumes veteran was exposed to herbicide agent(s) if they served as crewman, signalman, or in certain support roles during the Vietnam period.",
+    title: "Vietnam Era Presumption",
+    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
     sourceType: "Statute",
-    verificationStatus: "verified"
+    verificationStatus: "unverified"
   },
-  // ==================== END PRESUMPTIVE SERVICE CONNECTION STATUTES ====================
 ];
