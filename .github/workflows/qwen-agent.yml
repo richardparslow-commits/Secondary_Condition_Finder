@@ -1,14 +1,14 @@
 name: Qwen Code Assistant
 
 on:
+  issues:
+    types: [opened]
   issue_comment:
-    types: [created]
-  pull_request_review_comment:
     types: [created]
 
 jobs:
   qwen-agent:
-    if: contains(github.event.comment.body, '@qwencoder')
+    if: contains(github.event.comment.body, '@qwencoder') || contains(github.event.issue.body, '@qwencoder')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -22,6 +22,5 @@ jobs:
       - name: Run Qwen Code Action
         uses: QwenLM/qwen-code-action@v1
         with:
-          openai_api_key: ${{ secrets.QWEN_API_KEY }}
-          openai_base_url: ${{ secrets.QWEN_OPENAI_BASE_URL }}
-          openai_model: "qwen3.7-plus"
+          qwen_api_key: ${{ secrets.QWEN_API_KEY }}
+          qwen_model: "qwen3.7-plus"
