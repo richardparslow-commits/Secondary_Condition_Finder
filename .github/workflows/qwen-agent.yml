@@ -24,4 +24,6 @@ jobs:
         with:
           openai_api_key: ${{ secrets.QWEN_API_KEY }}
           openai_base_url: ${{ secrets.QWEN_OPENAI_BASE_URL }}
-          openai_model: "qwen3.7-plus"
+          openai_model: "qwen3.8-max"
+          qwen_debug: "true"
+          prompt: "You are an autonomous AI coding agent. You must ALWAYS propose file changes and create a Pull Request. If the user asks for a code review, audit, or general question, you must write your findings into a markdown file named 'QWEN_AUDIT.md' in the root directory and commit it, ensuring a Pull Request is successfully generated."
