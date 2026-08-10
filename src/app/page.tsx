@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
+import { DisclaimerFooter } from "@/components/Disclaimer";
 import { CausedByExplainer } from "@/components/secondary/CausedByExplainer";
 import { AggravatedByExplainer } from "@/components/secondary/AggravatedByExplainer";
 import { UNVERIFIED_REFERENCE_NOTICE } from "@/lib/legal/phrases";
@@ -10,21 +10,14 @@ export default function HomePage() {
     <main className="min-h-screen">
       <header className="bg-gray-100 px-6 py-8 text-black">
         <h1 className="text-4xl font-bold tracking-tight">SECONDARY CONDITIONS</h1>
-        <p className="mt-3 text-lg text-black">
-          A research aid for VA claim preparation. Choose a track below to explore how your condition may connect to your service.
-        </p>
+        <p className="mt-3 text-lg text-black">A research aid for VA claim preparation. Choose a track below to explore how your condition may connect to your service.</p>
       </header>
 
       <div className="mb-8 flex flex-col items-stretch gap-6 px-6 py-8 md:flex-row">
         <Link href="/secondary/condition-caused-by" className="flex flex-col items-start gap-6 rounded-lg border border-gray-200 bg-gray-100 p-6 transition-colors hover:bg-gray-200 md:flex-row md:items-center">
           <div className="w-full flex-1">
-            <div className="mb-2">
-              <span className="block text-2xl font-bold">Secondary</span>
-              <span className="font-semibold text-gray-900">Condition Caused By Service Connected Condition</span>
-            </div>
-            <p className="mt-2 text-sm text-gray-600">
-              A secondary claim that is <strong>proximately due to or the result of</strong> your service-connected disability.
-            </p>
+            <div className="mb-2"><span className="block text-2xl font-bold">Secondary</span><span className="font-semibold text-gray-900">Condition Caused By Service Connected Condition</span></div>
+            <p className="mt-2 text-sm text-gray-600">A secondary claim that is <strong>proximately due to or the result of</strong> your service-connected disability.</p>
             <CausedByExplainer />
           </div>
           <span className="mt-6 rounded-full bg-red-600 px-6 py-3 font-medium text-white shadow-sm transition-colors hover:bg-red-700 md:mt-0">Learn More</span>
@@ -32,13 +25,8 @@ export default function HomePage() {
 
         <Link href="/secondary/condition-aggravation" className="flex flex-col items-start gap-6 rounded-lg border border-gray-200 bg-gray-100 p-6 transition-colors hover:bg-gray-200 md:flex-row md:items-center">
           <div className="w-full flex-1">
-            <div className="mb-2">
-              <span className="block text-2xl font-bold">SECONDARY</span>
-              <span className="font-semibold text-gray-900">Conditions via Aggravation</span>
-            </div>
-            <p className="mt-2 text-sm text-gray-600">
-              A pre-existing condition that was <strong>permanently worsened</strong> beyond its natural progression by your service.
-            </p>
+            <div className="mb-2"><span className="block text-2xl font-bold">SECONDARY</span><span className="font-semibold text-gray-900">Conditions via Aggravation</span></div>
+            <p className="mt-2 text-sm text-gray-600">A pre-existing condition that was <strong>permanently worsened</strong> beyond its natural progression by your service.</p>
             <AggravatedByExplainer />
           </div>
           <span className="mt-6 rounded-full bg-red-600 px-6 py-3 font-medium text-white shadow-sm transition-colors hover:bg-red-700 md:mt-0">Learn More</span>
@@ -71,13 +59,11 @@ export default function HomePage() {
         <article className="rounded-lg border border-gray-200 bg-gray-100 p-6 shadow-sm">
           <h2 className="text-xl font-semibold text-gray-900">Secondary Service Connection</h2>
           <p className="mt-2 text-sm leading-relaxed text-gray-700">Explore conditions caused by or aggravated by your service-connected disability. This track involves organizing your conditions to identify potential secondary connections.</p>
-          <Link href="/secondary" className="mt-6 inline-block rounded-full bg-red-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-red-700">Click Here to Proceed to Wizard Step 1</Link>
+          <Link href="/secondary" className="mt-6 inline-block rounded-full bg-red-600 px-6 py-3 font-medium text-white transition-colors hover:bg-red-700">Click Here to Proceed to Wizard Step 1</Link>
         </article>
       </div>
 
-      <div className="mb-8 px-6 text-center">
-        <p className="text-xs text-gray-600">Note: The Secondary and Presumptive tracks are not mutually exclusive. A condition may be claimable through both Secondary and Presumptive paths if the evidence supports both theories.</p>
-      </div>
+      <div className="mb-8 px-6 text-center"><p className="text-xs text-gray-600">Note: The Secondary and Presumptive tracks are not mutually exclusive. A condition may be claimable through both Secondary and Presumptive paths if the evidence supports both theories.</p></div>
 
       <footer className="bg-red-800 px-6 py-6">
         <div className="flex flex-col justify-center gap-6 text-white sm:flex-row">
@@ -87,7 +73,6 @@ export default function HomePage() {
         </div>
       </footer>
 
-      <DisclaimerBanner />
       <DisclaimerFooter />
     </main>
   );
