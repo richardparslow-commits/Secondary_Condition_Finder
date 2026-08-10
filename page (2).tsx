@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
 import {
   SECONDARY_TRACK_OVERVIEW,
@@ -9,11 +7,10 @@ import {
   SECONDARY_CONTINUE_CTA,
   PRESUMPTIVE_TRACK_OVERVIEW,
   PRESUMPTIVE_CONTINUE_CTA,
-  CitationLabel,
-  CausedByExplainer,
-  AggravatedByExplainer,
   DISCLAIMER_NONDIAGNOSTIC,
 } from "@/lib/legal/phrases";
+import { CitationLabel } from "./components/CitationLabel";
+import { CausedByExplainer, AggravatedByExplainer } from "@/lib/legal/phrases";
 import { CANONICAL_REFERENCES } from "@/lib/legal/references";
 
 // Helper function to dynamically filter presumptive statute citations
@@ -26,6 +23,12 @@ const getPresumptiveCitations = () => {
           ref.title.toLowerCase().includes("presumptive"))
     )
     .map(ref => ref.citation);
+};
+
+// Custom Link component wrapper for client-side navigation (Next.js 14+ compatibility)
+// Uses href="/path" for client-side navigation using Next.js router
+const Link: React.FC<React.AnchorProps> = (props) => {
+  return <a href={props.href}>{props.children}</a>;
 };
 
 export default function HomePage() {
@@ -42,47 +45,7 @@ export default function HomePage() {
       </header>
 
       {/* 2. Two separate links (md:grid-cols-2, negative-margin bleed to 150% width on desktop) */}
-      <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 md:-ml-[-25%] md:w-[150%]">
-        {/* Left Link — Secondary (Caused By) - Deep Explainer */}
-        <Link
-          href="/secondary"
-          className="flex flex-col md:flex-row items-start md:items-center gap-4 p-6 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-colors"
-        >
-          <div className="flex-1 w-full">
-            <h3 className="font-semibold text-slate-900">
-              Secondary Service Connection
-            </h3>
-            <p className="text-sm text-slate-600 mt-1">
-              Caused By (Direct Secondary)
-            </p>
-            <CausedByExplainer />
-          </div>
-        </Link>
-
-        {/* Right Link — Secondary via Aggravation */}
-        <Link
-          href="/presumptive"
-          className="flex flex-col md:flex-row items-start md:items-center gap-4 p-6 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-colors"
-        >
-          <div className="flex-1 w-full">
-            <h3 className="font-semibold text-slate-900">
-              Secondary Service Connection
-            </h3>
-            <p className="text-sm text-slate-600 mt-1">
-              Via Aggravation (Worsening)
-            </p>
-            <AggravatedByExplainer />
-          </div>
-        </Link>
-      </div>
-
-      {/* DisclaimerBanner component */}
-      <div className="mb-8">
-        <DisclaimerBanner />
-      </div>
-
-      {/* 3. Path-selection cards (space-y-4) — two article cards */}
-      <div className="space-y-4">
+      <div className="md:grid md:grid-cols-2 gap-6 md:gap-10 mt-2 -mt-12 px-4">
         {/* Secondary path card (/secondary) */}
         <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-slate-900">
@@ -92,35 +55,20 @@ export default function HomePage() {
             {SECONDARY_TRACK_OVERVIEW}
           </p>
 
-          <div className="mt-4 space-y-3">
-            {/* Causal mechanism description */}
-            <div className="text-sm text-slate-700">
-              {CAUSED_AGGRAVATED_DISTINCTION}
-            </div>
-
-            {/* Track distinction notice */}
-            <p className="text-sm text-slate-600">
-              {TRACK_DISTINCTION_NOTICE}
-            </p>
-
-            {/* Unverified reference notice */}
-            <p className="text-sm text-slate-600">
-              {UNVERIFIED_REFERENCE_NOTICE}
-            </p>
+          {/* CitationLabel for Secondary card - dynamically generated */}
+          <div className="mt-3 flex flex-wrap gap-2">
+            {getPresumptiveCitations().map(citation => (
+              <CitationLabel key={citation} citation={citation} />
+            ))}
           </div>
 
-          {/* CitationLabel for Secondary card */}
-  <div className="mt-3 flex flex-wrap gap-2">
-    <CitationLabel citation="38 CFR § 3.310(a)" />
-  </div>
-
-  {/* CTA button for Secondary path */}
-  <Link
-    href="/secondary"
-    className="mt-6 inline-block rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 transition-colors"
-  >
-    {SECONDARY_CONTINUE_CTA}
-  </Link>
+          {/* CTA button for Secondary path */}
+          <a
+            href="/secondary"
+            className="mt-6 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+          >
+            Check Secondary Conditions
+          </a>
         </article>
 
         {/* Presumptive path card (/presumptive) */}
@@ -140,12 +88,12 @@ export default function HomePage() {
           </div>
 
           {/* CTA button for Presumptive path */}
-          <Link
+          <a
             href="/presumptive"
             className="mt-6 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
           >
             Check Presumptive Conditions
-          </Link>
+          </a>
         </article>
       </div>
 
@@ -157,15 +105,15 @@ export default function HomePage() {
           can explore each track independently using the links above.
         </p>
         <div className="flex flex-wrap justify-center gap-4 mt-3">
-          <Link href="/scenarios" className="text-blue-600 hover:underline">
+          <a href="/scenarios" className="text-blue-600 hover:underline">
             Demo Scenarios
-          </Link>
-          <Link href="/privacy" className="text-slate-600 hover:underline">
+          </a>
+          <a href="/privacy" className="text-slate-600 hover:underline">
             Privacy
-          </Link>
-          <Link href="/terms" className="text-slate-600 hover:underline">
+          </a>
+          <a href="/terms" className="text-slate-600 hover:underline">
             Terms
-          </Link>
+          </a>
         </div>
       </div>
 
