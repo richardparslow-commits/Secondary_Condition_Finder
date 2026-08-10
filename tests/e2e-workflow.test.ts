@@ -3,8 +3,8 @@ import { recommend } from "../src/lib/engine/recommend";
 import { loadConditionCatalog } from "../src/lib/catalog/load";
 import { loadKnowledgeBase } from "../src/lib/kb/load";
 
-describe("Phase 4 E2E: Secondary Claim Wizard Workflow", () => {
-  it("successfully executes the complete intake-to-recommendation pipeline with document choice", () => {
+describe("Secondary recommendation pipeline", () => {
+  it("executes the complete intake-to-recommendation pipeline with document choice", () => {
     const catalog = loadConditionCatalog();
     const kb = loadKnowledgeBase();
 
@@ -14,12 +14,17 @@ describe("Phase 4 E2E: Secondary Claim Wizard Workflow", () => {
       symptoms: ["Lower back pain", "Numbness in leg"],
       medications: ["Ibuprofen"],
       exposures: ["Burn pits"],
-      notes: "Service connected back injury."
+      notes: "Service connected back injury.",
     };
 
     const result = recommend(catalog, kb, intake);
 
     expect(result.recognizedPrimaries).toContain("Lumbar Strain");
-    expect(result.recommendations.length).toBeGreaterThanOrEqual(0);
+    expect(result.unrecognizedPrimaries).toEqual([]);
+    expect(result.recommendations.every((recommendation) =>
+      intake.diagnosedConditions.some(
+        (condition) => condition.toLowerCase() === recommendation.condition.toLowerCase(),
+      ),
+    )).toBe(true);
   });
 });
