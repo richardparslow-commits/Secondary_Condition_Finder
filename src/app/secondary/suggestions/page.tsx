@@ -21,7 +21,7 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
 
   let state;
   try { state = parseWorkflowState(workflowSessionToQueryParams(session), catalog); }
-  catch { return <main><header className="page-hero"><h1>Complete prior steps first</h1><p>We need the prior workflow selections before showing grouped suggestions.</p></header><Link href="/secondary/upload" className="ui-button">Back to supporting documents</Link></main>; }
+  catch { return <main><header className="page-hero"><h1>Complete prior steps first</h1><p>We need the prior workflow selections before showing grouped suggestions.</p></header><Link href="/secondary/upload" className="ui-button">Back to optional document upload</Link></main>; }
 
   const recommendationsResult = recommend(catalog, kb, { primaryConditions: state.serviceConnectedConditionIds, symptoms: [], medications: [], exposures: [], notes: "" });
   const linked = findLinkedNonServiceConnectedConditions(state.diagnosedConditionIds, state.serviceConnectedConditionIds, recommendationsResult.recommendations);
