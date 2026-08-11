@@ -1,0 +1,130 @@
+name: VA Sandbox Smoke Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  smoke:
+    name: Exercise public VA sandbox APIs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      VA_SANDBOX_API_KEY: ${{ secrets.VA_SANDBOX_API_KEY }}
+    steps:
+      - name: Require sandbox API key
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${VA_SANDBOX_API_KEY:-}" ]; then
+            echo "::error::Repository secret VA_SANDBOX_API_KEY is not configured."
+            exit 1
+          fi
+
+      - name: Exercise VA Forms and Benefits Reference Data
+        id: smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          tmpdir="$(mktemp -d)"
+          trap 'rm -rf "$tmpdir"' EXIT
+
+          timestamp="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          forms_request_id="$(cat /proc/sys/kernel/random/uuid)"
+          reference_request_id="$(cat /proc/sys/kernel/random/uuid)"
+
+          forms_status="$(curl --silent --show-error \
+            --output "$tmpdir/forms.json" \
+            --write-out '%{http_code}' \
+            --header 'Accept: application/json' \
+            --header "apikey: ${VA_SANDBOX_API_KEY}" \
+            --header "X-Request-ID: ${forms_request_id}" \
+            'https://sandbox-api.va.gov/services/va_forms/v0/forms?query=21-526EZ')"
+
+          if [ "$forms_status" != "200" ]; then
+            echo "::error::VA Forms sandbox request returned HTTP ${forms_status}."
+            exit 1
+          fi
+          if ! jq -e '.data | type == "array"' "$tmpdir/forms.json" >/dev/null; then
+            echo "::error::VA Forms sandbox response failed shape validation."
+            exit 1
+          fi
+          forms_count="$(jq '.data | length' "$tmpdir/forms.json")"
+          if [ "$forms_count" -lt 1 ]; then
+            echo "::error::VA Forms sandbox returned no matches for 21-526EZ."
+            exit 1
+          fi
+
+          reference_status="$(curl --silent --show-error \
+            --output "$tmpdir/reference.json" \
+            --write-out '%{http_code}' \
+            --header 'Accept: application/json' \
+            --header "apikey: ${VA_SANDBOX_API_KEY}" \
+            --header "X-Request-ID: ${reference_request_id}" \
+            'https://sandbox-api.va.gov/services/benefits-reference-data/v1/disabilities')"
+
+          if [ "$reference_status" != "200" ]; then
+            echo "::error::Benefits Reference Data sandbox request returned HTTP ${reference_status}."
+            exit 1
+          fi
+          if ! jq -e '.items | type == "array"' "$tmpdir/reference.json" >/dev/null; then
+            echo "::error::Benefits Reference Data response failed shape validation."
+            exit 1
+          fi
+          reference_count="$(jq '.items | length' "$tmpdir/reference.json")"
+          if [ "$reference_count" -lt 1 ]; then
+            echo "::error::Benefits Reference Data sandbox returned an empty disability list."
+            exit 1
+          fi
+
+          {
+            echo "timestamp=${timestamp}"
+            echo "forms_request_id=${forms_request_id}"
+            echo "forms_status=${forms_status}"
+            echo "forms_count=${forms_count}"
+            echo "reference_request_id=${reference_request_id}"
+            echo "reference_status=${reference_status}"
+            echo "reference_count=${reference_count}"
+          } >> "$GITHUB_OUTPUT"
+
+          {
+            echo "# VA sandbox smoke-test evidence"
+            echo
+            echo "- Timestamp (UTC): ${timestamp}"
+            echo "- VA Forms: HTTP ${forms_status}; request ID \`${forms_request_id}\`; validated result count ${forms_count}."
+            echo "- Benefits Reference Data: HTTP ${reference_status}; request ID \`${reference_request_id}\`; validated result count ${reference_count}."
+            echo "- Raw response payloads and the API key were not retained as workflow artifacts or written to this summary."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Record Phase 2 gate evidence
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TIMESTAMP: ${{ steps.smoke.outputs.timestamp }}
+          FORMS_REQUEST_ID: ${{ steps.smoke.outputs.forms_request_id }}
+          FORMS_STATUS: ${{ steps.smoke.outputs.forms_status }}
+          FORMS_COUNT: ${{ steps.smoke.outputs.forms_count }}
+          REFERENCE_REQUEST_ID: ${{ steps.smoke.outputs.reference_request_id }}
+          REFERENCE_STATUS: ${{ steps.smoke.outputs.reference_status }}
+          REFERENCE_COUNT: ${{ steps.smoke.outputs.reference_count }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          body_file="$(mktemp)"
+          trap 'rm -f "$body_file"' EXIT
+          cat > "$body_file" <<EOF
+          Credentialed VA sandbox smoke test passed.
+
+          - Timestamp (UTC): ${TIMESTAMP}
+          - VA Forms: HTTP ${FORMS_STATUS}; request ID \`${FORMS_REQUEST_ID}\`; validated result count ${FORMS_COUNT}.
+          - Benefits Reference Data: HTTP ${REFERENCE_STATUS}; request ID \`${REFERENCE_REQUEST_ID}\`; validated result count ${REFERENCE_COUNT}.
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - No API key or raw response payload is recorded in this evidence.
+
+          This satisfies the external proof defined in issue #189.
+          EOF
+          gh issue comment 189 --body-file "$body_file"
+          gh issue close 189 --reason completed
