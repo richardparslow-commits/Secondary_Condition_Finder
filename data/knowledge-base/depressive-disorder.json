@@ -6,16 +6,40 @@
       "conditionId": "sleep-apnea",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Major depressive disorder and the psychotropic medications used to treat it often cause significant weight gain, which is a primary risk factor for developing sleep apnea.",
+      "rationale": "Some antidepressant therapies are associated with weight gain, and weight gain/obesity are established risk factors for obstructive sleep apnea. This supports a clinically plausible intermediate-step theory, but it does not establish that a particular veteran's antidepressant exposure caused obesity or that obesity caused or aggravated OSA; the individual medication, timing, weight trajectory, and alternative OSA risk factors require case-specific medical review.",
       "evidenceGaps": [
         "Sleep study diagnosis of OSA",
-        "Medical nexus demonstrating weight gain as an intermediate step between depression meds and OSA"
+        "Prescription history identifying the specific antidepressant, dose, duration, and timing",
+        "Documented weight trajectory and clinical assessment of other OSA risk factors",
+        "Medical nexus addressing the medication-to-weight-to-OSA intermediate step in the individual case"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary connection via intermediate step",
-          "verified": false
+          "citation": "Alonso-Pedrero et al., Effects of antidepressant and antipsychotic use on weight gain: A systematic review, PMID 31524318",
+          "note": "Systematic review of antidepressant and antipsychotic use and weight gain; supports medication-associated weight change, not an individual medication-to-OSA nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31524318/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "PMID 31524318; systematic review"
+        },
+        {
+          "citation": "Esmaeili et al., The relationship between obesity and obstructive sleep apnea in four community-based cohorts: an individual participant data meta-analysis, PMID 40330547",
+          "note": "Individual participant data meta-analysis found substantially higher odds of OSA with overweight and obesity; supports the obesity-OSA relationship, not an individual antidepressant causation theory.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40330547/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "PMID 40330547; IPD meta-analysis"
+        },
+        {
+          "citation": "38 CFR 3.310(a)-(b)",
+          "note": "Legal framework for secondary service connection and aggravation; does not establish the medical medication-to-weight-to-OSA relationship.",
+          "verificationScope": "legal-framework",
+          "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "§ 3.310(a)-(b)"
         }
       ]
     },
@@ -23,16 +47,40 @@
       "conditionId": "erectile-dysfunction",
       "rank": 2,
       "prevalence": "commonly-explored",
-      "rationale": "Antidepressants (SSRIs/SNRIs) are widely documented to cause sexual dysfunction.",
+      "rationale": "SSRIs are associated with sexual dysfunction, including clinically important impairment of orgasm and sexual satisfaction. A medication-related secondary theory requires evidence that the veteran used the relevant antidepressant, experienced the relevant adverse effect, and has a diagnosed sexual disorder medically linked to that exposure.",
       "evidenceGaps": [
-        "Diagnosis of ED",
-        "Nexus linking ED to specific prescribed antidepressants"
+        "Diagnosis of erectile dysfunction or other documented sexual dysfunction",
+        "Prescription records showing the specific SSRI/SNRI exposure, dose, duration, and timing",
+        "Medical assessment addressing baseline sexual function and alternative causes",
+        "Medical nexus addressing the individual relationship between medication exposure and the diagnosed condition"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Medication side effects",
-          "verified": false
+          "citation": "Ferraz et al., Sexual dysfunction associated with selective serotonin reuptake inhibitors in adults with depression: a systematic review and meta-analysis, PMID 41721013",
+          "note": "Systematic review and meta-analysis of randomized trials found SSRI use was associated with increased orgasmic dysfunction and reduced sexual satisfaction; supports medication-associated sexual dysfunction, not an individual nexus by itself.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41721013/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "PMID 41721013; systematic review and meta-analysis"
+        },
+        {
+          "citation": "Erectile and Ejaculatory Dysfunction Associated with Use of Psychotropic Drugs: A Systematic Review, PMID 34247952",
+          "note": "Systematic review of randomized trials found significant associations between antidepressant therapy and sexual dysfunction, including erectile dysfunction in the analyzed male populations; does not establish an individual medication nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34247952/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "PMID 34247952; systematic review"
+        },
+        {
+          "citation": "38 CFR 3.310(a)-(b)",
+          "note": "Legal framework for secondary service connection and aggravation; does not establish antidepressant adverse effects or an individual sexual-dysfunction nexus.",
+          "verificationScope": "legal-framework",
+          "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "§ 3.310(a)-(b)"
         }
       ]
     }
