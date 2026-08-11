@@ -1,40 +1,8 @@
 {
   "id": "hypogonadism",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Hormonal dysregulation and associated fatigue/functional decline can contribute to secondary depressive symptoms.",
-      "evidenceGaps": [
-        "Endocrinology records confirming chronic hypogonadism",
-        "Mental health documentation linking mood symptoms to endocrine condition"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "erectile-dysfunction",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Low testosterone states can lead to persistent sexual dysfunction that is separately diagnosable.",
-      "evidenceGaps": [
-        "Urology or primary care diagnosis of erectile dysfunction",
-        "Clinical notes connecting dysfunction to underlying hypogonadism"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }
