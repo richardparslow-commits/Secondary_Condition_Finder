@@ -33,6 +33,12 @@ jobs:
           npm run audit:high 2>&1 | tee ci-audit.log
         continue-on-error: true
         id: audit
+      - name: Audit citation verification
+        run: |
+          set -o pipefail
+          npm run citations:audit 2>&1 | tee ci-citations.log
+        continue-on-error: true
+        id: citations
       - name: Run lint
         run: |
           set -o pipefail
@@ -97,6 +103,7 @@ jobs:
             echo "## Step outcomes"
             echo "- install: ${{ steps.install.outcome }}"
             echo "- audit: ${{ steps.audit.outcome }}"
+            echo "- citations: ${{ steps.citations.outcome }}"
             echo "- lint: ${{ steps.lint.outcome }}"
             echo "- typecheck: ${{ steps.typecheck.outcome }}"
             echo "- test: ${{ steps.test.outcome }}"
@@ -104,7 +111,7 @@ jobs:
             echo "- build: ${{ steps.build.outcome }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-install.log ci-audit.log ci-lint.log ci-typecheck.log ci-test.log ci-test-attempt-1.log ci-test-attempt-2.log ci-build.log; do
+            for log in ci-install.log ci-audit.log ci-citations.log ci-lint.log ci-typecheck.log ci-test.log ci-test-attempt-1.log ci-test-attempt-2.log ci-build.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
@@ -138,6 +145,7 @@ jobs:
           FAILED_STEPS=""
           [ "${{ steps.install.outcome }}" = "failure" ] && FAILED_STEPS="install"
           [ "${{ steps.audit.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }audit"
+          [ "${{ steps.citations.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }citations"
           [ "${{ steps.lint.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }lint"
           [ "${{ steps.typecheck.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }typecheck"
           [ "${{ steps.test.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }test"
@@ -157,10 +165,7 @@ jobs:
             ISSUE_TITLE="CI failure: ${FAILED_STEPS} [${GITHUB_SHA::7}]"
             EXISTING_ISSUE=$(gh issue list --state open --label ci-failure --search "in:title ${ISSUE_TITLE}" --json number --jq '.[0].number')
             if [ -z "$EXISTING_ISSUE" ]; then
-              gh issue create \
-                --title "$ISSUE_TITLE" \
-                --body-file ci-issue-body.md \
-                --label "ci-failure"
+              gh issue create --title "$ISSUE_TITLE" --body-file ci-issue-body.md --label "ci-failure"
             else
               echo "An open CI failure issue already exists (#${EXISTING_ISSUE}); not creating a duplicate."
             fi
@@ -168,10 +173,7 @@ jobs:
             ISSUE_TITLE="Flaky test detected [${GITHUB_SHA::7}]"
             EXISTING_ISSUE=$(gh issue list --state open --label ci-flaky --search "in:title ${ISSUE_TITLE}" --json number --jq '.[0].number')
             if [ -z "$EXISTING_ISSUE" ]; then
-              gh issue create \
-                --title "$ISSUE_TITLE" \
-                --body-file ci-issue-body.md \
-                --label "ci-flaky"
+              gh issue create --title "$ISSUE_TITLE" --body-file ci-issue-body.md --label "ci-flaky"
             else
               echo "An open flaky-test issue already exists (#${EXISTING_ISSUE}); not creating a duplicate."
             fi
@@ -181,6 +183,7 @@ jobs:
         run: |
           if [ "${{ steps.install.outcome }}" = "failure" ] || \
              [ "${{ steps.audit.outcome }}" = "failure" ] || \
+             [ "${{ steps.citations.outcome }}" = "failure" ] || \
              [ "${{ steps.lint.outcome }}" = "failure" ] || \
              [ "${{ steps.typecheck.outcome }}" = "failure" ] || \
              [ "${{ steps.test.outcome }}" = "failure" ] || \
