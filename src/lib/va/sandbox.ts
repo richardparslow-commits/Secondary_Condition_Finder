@@ -9,6 +9,8 @@ const DEFAULT_REFERENCE_SANDBOX_BASE_URL =
 const DEFAULT_TIMEOUT_MS = 4_000;
 const RETRYABLE_STATUS = new Set([429, 503, 504]);
 
+type VaSandboxEnvironment = Record<string, string | undefined>;
+
 export interface VaSandboxConfig {
   enabled: boolean;
   apiKey?: string;
@@ -75,7 +77,7 @@ export type VaFormIndex = z.infer<typeof formsIndexSchema>;
 export type VaDisabilityReference = z.infer<typeof disabilityReferenceSchema>;
 
 export function loadVaSandboxConfig(
-  env: NodeJS.ProcessEnv = process.env,
+  env: VaSandboxEnvironment = process.env,
 ): VaSandboxConfig {
   const timeout = Number(env.VA_SANDBOX_TIMEOUT_MS ?? DEFAULT_TIMEOUT_MS);
 
