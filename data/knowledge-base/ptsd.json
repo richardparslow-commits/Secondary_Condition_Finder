@@ -6,16 +6,30 @@
       "conditionId": "sleep-apnea",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "PTSD can aggravate or proximately cause Obstructive Sleep Apnea, often mediated through weight gain from psychotropic medications or chronic sleep disturbances.",
+      "rationale": "PTSD is associated with obstructive sleep apnea in the published literature, but association alone does not establish causation or aggravation in an individual claim. A secondary theory requires evidence specific to the veteran, including a competent medical nexus; an obesity intermediate-step theory requires evidence addressing whether a service-connected condition caused or aggravated obesity and whether obesity was an intermediate step to OSA.",
       "evidenceGaps": [
-        "Sleep study (Polysomnography) confirming OSA diagnosis",
-        "Medical nexus opinion linking OSA to PTSD or PTSD medications"
+        "Sleep study (polysomnography or qualifying home sleep test) confirming OSA diagnosis",
+        "Medical nexus opinion addressing PTSD, treatment/medications, obesity if applicable, and causation or aggravation",
+        "If relying on obesity as an intermediate step, evidence addressing baseline weight, change in weight, and the medical relationship to OSA"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection via intermediate step (weight gain)",
-          "verified": false
+          "citation": "38 CFR 3.310(a)-(b)",
+          "note": "Legal framework for secondary service connection and aggravation; the regulation does not itself establish medical causation.",
+          "verificationScope": "legal-framework",
+          "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-10",
+          "sourceLocator": "§ 3.310(a)-(b)"
+        },
+        {
+          "citation": "Zhang et al., Sleep Medicine (2017), PMID 28735910",
+          "note": "Meta-analysis found OSA is commonly seen in patients with PTSD; this supports association/comorbidity, not individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28735910/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-10",
+          "sourceLocator": "PMID 28735910"
         }
       ]
     },
@@ -23,16 +37,29 @@
       "conditionId": "migraine-headaches",
       "rank": 2,
       "prevalence": "commonly-explored",
-      "rationale": "Chronic stress, tension, and sleep deprivation associated with PTSD can trigger or aggravate chronic migraine headaches.",
+      "rationale": "PTSD and migraine show a consistent positive association in the literature, but epidemiologic association does not by itself establish that PTSD caused or aggravated a particular veteran's migraine disorder.",
       "evidenceGaps": [
         "Headache log (frequency, duration, severity)",
-        "Neurological or medical nexus linking migraines to PTSD symptoms"
+        "Neurological or medical nexus opinion addressing causation or aggravation in the individual case"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection",
-          "verified": false
+          "citation": "38 CFR 3.310(a)-(b)",
+          "note": "Legal framework for secondary service connection and aggravation; the regulation does not itself establish medical causation.",
+          "verificationScope": "legal-framework",
+          "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-10",
+          "sourceLocator": "§ 3.310(a)-(b)"
+        },
+        {
+          "citation": "Nitsche et al., Headache (2026), PMID 41705319",
+          "note": "Systematic review found a positive association between PTSD and migraine across included studies; it does not establish individual-level causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41705319/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-10",
+          "sourceLocator": "PMID 41705319"
         }
       ]
     },
@@ -40,16 +67,30 @@
       "conditionId": "erectile-dysfunction",
       "rank": 3,
       "prevalence": "sometimes-explored",
-      "rationale": "Medications commonly prescribed for PTSD (like SSRIs) frequently cause sexual dysfunction, including ED, as a side effect.",
+      "rationale": "SSRIs are associated with sexual dysfunction, which can include erectile difficulties, but a medication-related secondary theory requires evidence that the veteran used the medication, experienced the relevant adverse effect, and has a condition medically linked to that exposure.",
       "evidenceGaps": [
-        "Prescription records showing SSRI usage",
-        "Urology or primary care diagnosis of ED"
+        "Prescription records showing the relevant SSRI exposure and timing",
+        "Urology or primary care diagnosis of erectile dysfunction",
+        "Medical opinion addressing medication exposure, alternative causes, and causation or aggravation"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary to service-connected medication side effects",
-          "verified": false
+          "citation": "38 CFR 3.310(a)-(b)",
+          "note": "Legal framework for secondary service connection and aggravation; the regulation does not itself establish medication causation.",
+          "verificationScope": "legal-framework",
+          "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-10",
+          "sourceLocator": "§ 3.310(a)-(b)"
+        },
+        {
+          "citation": "Brugi et al., Journal of Sexual Medicine (2026), PMID 42466890",
+          "note": "Systematic review found SSRI-associated sexual dysfunction across studies; it does not establish that any particular veteran's erectile dysfunction was caused by an SSRI.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42466890/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-10",
+          "sourceLocator": "PMID 42466890"
         }
       ]
     }
