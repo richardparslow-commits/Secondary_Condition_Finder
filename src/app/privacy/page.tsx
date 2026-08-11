@@ -5,24 +5,34 @@ export default function PrivacyPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-8 text-gray-900">
       <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
-      <p className="text-sm text-gray-600 mb-6">Last updated: July 2026</p>
-      
+      <p className="text-sm text-gray-600 mb-6">Last updated: August 2026</p>
+
       <section className="space-y-4 text-sm leading-relaxed">
         <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
-          <h2 className="font-semibold text-blue-900">Zero PII Policy</h2>
+          <h2 className="font-semibold text-blue-900">Privacy by design</h2>
           <p className="text-blue-800 text-xs mt-1">
-            This tool does not collect, persist, or transmit Personally Identifiable Information (PII), medical records, or raw intake free text.
+            Secondary-workflow selections are not placed in page URLs. They are kept in a short-lived, first-party session cookie scoped to the secondary workflow and are not attached to analytics events.
           </p>
         </div>
 
-        <h2 className="text-xl font-semibold mt-6">1. Data Storage & Local Event Logging</h2>
+        <h2 className="text-xl font-semibold mt-6">1. Workflow session state</h2>
         <p>
-          All claim research calculations run entirely in your local browser environment. Event logging is strictly anonymized and confined to an offline local database recording only aggregate condition selection counts.
+          Diagnosed-condition selections, service-connected selections, rating choices, and the document-checklist choice are submitted to this application only to move between workflow steps. The app stores that state in an HttpOnly, SameSite=Strict session cookie scoped to <code>/secondary</code>. The cookie expires after 30 minutes and is not used as an advertising or cross-site tracking identifier.
         </p>
 
-        <h2 className="text-xl font-semibold mt-6">2. External Network Communications</h2>
+        <h2 className="text-xl font-semibold mt-6">2. URLs and browser history</h2>
         <p>
-          No personal data is sent to external servers or third-party analytics services. Optional VA Sandbox integrations operate purely on a client-side pull model with immediate local fallback when offline.
+          The secondary workflow does not encode diagnosis, service-connected status, disability ratings, or document-sharing choices in query strings. This reduces exposure through copied links, browser history, referrer headers, and URL-based logs.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-6">3. Application telemetry</h2>
+        <p>
+          When Application Insights is configured, page-view telemetry is limited to the route path. Automatic route, AJAX, and fetch tracking are disabled, and telemetry URLs are stripped of query strings and fragments before transmission. Workflow selections and disability ratings are not intentionally included in telemetry payloads.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-6">4. Optional document picker</h2>
+        <p>
+          The Phase 1 document picker is optional and does not upload files for AI analysis. The workflow records only whether you want the checklist to note that documents are available for manual review.
         </p>
       </section>
 
