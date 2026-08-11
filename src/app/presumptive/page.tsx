@@ -10,37 +10,45 @@ export default function PresumptivePage() {
 
   return (
     <main>
-      <Link href="/" className="text-sm underline hover:text-slate-900">
-        Back to start
-      </Link>
-
-      <header className="mt-3 mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight">
-          Presumptive conditions by exposure
-        </h1>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          For some conditions, VA presumes your service caused them based on
-          where and when you served. You do not need a nexus opinion or a
-          related service-connected condition. This is a different and usually
-          easier path than a secondary claim.
-        </p>
+      <header className="page-hero text-center">
+        <p className="ui-kicker">Exposure-based research track</p>
+        <h1>Presumptive Service Connection</h1>
+        <p className="mx-auto mt-3 max-w-3xl text-lg">Explore conditions that may be linked to qualifying service locations, dates, and recognized exposures.</p>
       </header>
 
-      <div
-        role="note"
-        className="mb-8 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm leading-relaxed text-amber-900"
-      >
-        <p className="font-semibold">This is not an eligibility decision.</p>
-        <p className="mt-1">
-          This screen shows which presumptions may apply to your service. VA
-          also considers your discharge characterization, your diagnosis, and
-          evidence that can rebut a presumption. Confirm everything with an
-          accredited representative or VSO.
-        </p>
+      <div className="mb-5"><Link href="/" className="ui-button-secondary">← Back to Home</Link></div>
+
+      <div className="ui-grid">
+        <aside className="ui-stack">
+          <section className="ui-card">
+            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Eligibility Basics</h2></div>
+            <ul className="list-disc space-y-3 pl-5 text-sm"><li>Qualifying active military service is required.</li><li>The presumption must match a recognized exposure, location, period, or other statutory/regulatory criterion.</li><li>A current diagnosed condition is still required.</li><li>A separate medical nexus opinion generally is not required when the applicable presumption is satisfied.</li></ul>
+          </section>
+          <section className="ui-card">
+            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">⌖</span><h2 className="text-xl font-bold">Covered Exposure Tracks</h2></div>
+            <p className="text-sm">The local presumptive catalog includes exposure/location rules used by the matching tool. Select your actual service locations and dates in the form.</p>
+          </section>
+        </aside>
+
+        <section className="ui-card">
+          <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><h2 className="text-2xl font-bold">Presumptive Service Connection</h2><p className="text-sm text-slate-600">Enter service history without putting it in the URL.</p></div></div>
+          <p className="mb-5">For some conditions, VA presumes a relationship to service when specific legal criteria are met. This track is separate from secondary service connection, which concerns one disability causing or aggravating another.</p>
+          <ServiceHistoryForm locations={locations} />
+        </section>
+
+        <aside className="ui-stack">
+          <section className="ui-card">
+            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">?</span><h2 className="text-xl font-bold">How Matching Works</h2></div>
+            <ul className="space-y-4 text-sm"><li><strong>Location.</strong><p>Your selected service locations are compared with catalog exposure rules.</p></li><li><strong>Dates.</strong><p>When provided, service dates are compared with qualifying periods.</p></li><li><strong>Recognized conditions.</strong><p>Results show catalog conditions associated with matched presumptive rules.</p></li></ul>
+          </section>
+          <section className="ui-card">
+            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">Important Disclaimer</h2></div>
+            <p className="text-sm">This is not an eligibility decision. VA also considers discharge characterization, diagnosis, and evidence that can rebut a presumption. Confirm current requirements with official VA sources or an accredited representative or VSO.</p>
+          </section>
+        </aside>
       </div>
 
-      <ServiceHistoryForm locations={locations} />
-
+      <div className="ui-footer-note" role="note"><strong>Note:</strong> Secondary and Presumptive tracks are not mutually exclusive. A claim may involve elements from both.</div>
       <DisclaimerFooter />
     </main>
   );
