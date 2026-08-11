@@ -1,41 +1,8 @@
 {
   "id": "colorectal-cancer",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Coping with chronic physical pain, functional limitations, or long-term health conditions frequently causes secondary mood impairment.",
-      "evidenceGaps": [
-        "Mental health evaluation distinguishing secondary emotional impact",
-        "Treatment notes"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary mental health condition due to physical disability",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "gerd",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Long-term daily medication required to treat chronic symptoms often causes gastrointestinal irritation.",
-      "evidenceGaps": [
-        "Prescription history of NSAIDs or pain medications",
-        "GI evaluation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary connection via medication side effects",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence; retain legal authorities only as legal framework."
+  ],
+  "suggestions": []
 }
