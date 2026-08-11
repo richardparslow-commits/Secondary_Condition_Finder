@@ -3,6 +3,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -11,6 +12,7 @@ concurrency:
 permissions:
   contents: read
   issues: write
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -58,32 +60,24 @@ jobs:
           : > ci-test.log
           test_flaky=false
           test_passed=false
-
           for attempt in 1 2; do
             attempt_log="ci-test-attempt-${attempt}.log"
             echo "=== Vitest attempt ${attempt}/2 ===" | tee -a ci-test.log
             npm test > "$attempt_log" 2>&1
             status=$?
             cat "$attempt_log" | tee -a ci-test.log
-
             if [ "$status" -eq 0 ]; then
               test_passed=true
-              if [ "$attempt" -eq 2 ]; then
-                test_flaky=true
-              fi
+              if [ "$attempt" -eq 2 ]; then test_flaky=true; fi
               break
             fi
-
             if [ "$attempt" -eq 1 ]; then
               echo "First test attempt failed; rerunning once to detect a flaky failure." | tee -a ci-test.log
             fi
           done
-
           echo "flaky=${test_flaky}" >> "$GITHUB_OUTPUT"
           echo "passed=${test_passed}" >> "$GITHUB_OUTPUT"
-          if [ "$test_passed" != true ]; then
-            exit 1
-          fi
+          if [ "$test_passed" != true ]; then exit 1; fi
       - name: Run build
         run: |
           set -o pipefail
@@ -99,6 +93,7 @@ jobs:
             echo
             echo "Commit: ${GITHUB_SHA}"
             echo "Branch: ${GITHUB_REF_NAME}"
+            echo "Event: ${GITHUB_EVENT_NAME}"
             echo
             echo "## Step outcomes"
             echo "- install: ${{ steps.install.outcome }}"
@@ -150,7 +145,6 @@ jobs:
           [ "${{ steps.typecheck.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }typecheck"
           [ "${{ steps.test.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }test"
           [ "${{ steps.build.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }build"
-
           {
             echo "**Branch:** ${GITHUB_REF_NAME}"
             echo "**Commit:** [${GITHUB_SHA::7}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA})"
@@ -160,34 +154,19 @@ jobs:
             echo "## Diagnostic summary"
             cat ci-diagnostic-summary.md
           } > ci-issue-body.md
-
           if [ -n "$FAILED_STEPS" ]; then
             ISSUE_TITLE="CI failure: ${FAILED_STEPS} [${GITHUB_SHA::7}]"
             EXISTING_ISSUE=$(gh issue list --state open --label ci-failure --search "in:title ${ISSUE_TITLE}" --json number --jq '.[0].number')
-            if [ -z "$EXISTING_ISSUE" ]; then
-              gh issue create --title "$ISSUE_TITLE" --body-file ci-issue-body.md --label "ci-failure"
-            else
-              echo "An open CI failure issue already exists (#${EXISTING_ISSUE}); not creating a duplicate."
-            fi
+            if [ -z "$EXISTING_ISSUE" ]; then gh issue create --title "$ISSUE_TITLE" --body-file ci-issue-body.md --label "ci-failure"; else echo "An open CI failure issue already exists (#${EXISTING_ISSUE}); not creating a duplicate."; fi
           elif [ "${{ steps.test.outputs.flaky }}" = "true" ]; then
             ISSUE_TITLE="Flaky test detected [${GITHUB_SHA::7}]"
             EXISTING_ISSUE=$(gh issue list --state open --label ci-flaky --search "in:title ${ISSUE_TITLE}" --json number --jq '.[0].number')
-            if [ -z "$EXISTING_ISSUE" ]; then
-              gh issue create --title "$ISSUE_TITLE" --body-file ci-issue-body.md --label "ci-flaky"
-            else
-              echo "An open flaky-test issue already exists (#${EXISTING_ISSUE}); not creating a duplicate."
-            fi
+            if [ -z "$EXISTING_ISSUE" ]; then gh issue create --title "$ISSUE_TITLE" --body-file ci-issue-body.md --label "ci-flaky"; else echo "An open flaky-test issue already exists (#${EXISTING_ISSUE}); not creating a duplicate."; fi
           fi
       - name: Fail the job if any gate failed
         if: always()
         run: |
-          if [ "${{ steps.install.outcome }}" = "failure" ] || \
-             [ "${{ steps.audit.outcome }}" = "failure" ] || \
-             [ "${{ steps.citations.outcome }}" = "failure" ] || \
-             [ "${{ steps.lint.outcome }}" = "failure" ] || \
-             [ "${{ steps.typecheck.outcome }}" = "failure" ] || \
-             [ "${{ steps.test.outcome }}" = "failure" ] || \
-             [ "${{ steps.build.outcome }}" = "failure" ]; then
+          if [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ]; then
             echo "One or more CI gates failed. See the diagnostic summary and artifact."
             exit 1
           fi
