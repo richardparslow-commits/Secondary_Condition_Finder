@@ -1,40 +1,8 @@
 {
   "id": "hip-strain",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "contralateral-knee-condition",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Hip injuries frequently result in long-term altered gait, transferring abnormal mechanical stress to the knees, particularly the contralateral side.",
-      "evidenceGaps": [
-        "Medical nexus linking altered biomechanics to secondary joint wear",
-        "Diagnosis of knee condition"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection via altered gait",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "lumbar-strain",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Compensatory posture and altered gait due to hip pain can strain the lumbar spine over time.",
-      "evidenceGaps": [
-        "Orthopedic assessment of spinal alignment relative to hip dysfunction",
-        "Diagnosis of lumbar condition"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Aggravation of spinal condition",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }
