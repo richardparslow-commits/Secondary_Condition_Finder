@@ -45,7 +45,8 @@ describe("accessibility and UX content contracts", () => {
     expect(home).toContain("This is a research aid, not advice.");
     expect(terms).toContain("Not Legal or Medical Advice");
     expect(privacy).toContain("Privacy by design");
-    expect(privacy).toContain("Secondary-workflow selections are not placed in page URLs.");
+    expect(privacy).toContain("are not placed in page URLs");
+    expect(privacy).toContain("presumptive workflow does not encode selected service locations or service dates in query strings");
     expect(privacy).toContain("Automatic route, AJAX, and fetch tracking are disabled");
   });
 
