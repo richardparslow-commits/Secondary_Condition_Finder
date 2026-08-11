@@ -7,14 +7,22 @@ import { recommend } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { findLinkedNonServiceConnectedConditions, groupSuggestionsByPrimary } from "@/lib/secondary-workflow/suggestions";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
-import { readSecondaryWorkflowSession, workflowSessionToQueryParams } from "@/lib/secondary-workflow/session";
+import {
+  readSecondaryWorkflowSession,
+  workflowSessionToQueryParams,
+  type StoredSecondaryWorkflowState,
+} from "@/lib/secondary-workflow/session";
+
+interface SuggestionsPageProps {
+  workflowState?: StoredSecondaryWorkflowState;
+}
 
 export const dynamic = "force-dynamic";
 
-export default async function SuggestionsStepPage() {
+export default async function SuggestionsStepPage({ workflowState }: SuggestionsPageProps = {}) {
   const catalog = loadConditionCatalog();
   const kb = loadKnowledgeBase();
-  const session = await readSecondaryWorkflowSession();
+  const session = workflowState ?? (await readSecondaryWorkflowSession());
 
   let state;
   try {
@@ -24,7 +32,7 @@ export default async function SuggestionsStepPage() {
       <main>
         <h1 className="text-2xl font-semibold tracking-tight">Complete prior steps first</h1>
         <p className="mt-2 text-sm text-slate-600">We need your diagnosed conditions, service-connected selections, ratings context, and upload-step choice before showing grouped suggestions.</p>
-        <Link href="/secondary/diagnosed" className="mt-5 inline-block text-sm underline hover:text-slate-900">Start over at diagnosed conditions</Link>
+        <Link href="/secondary/upload" className="mt-5 inline-block text-sm underline hover:text-slate-900">Back to optional document upload</Link>
       </main>
     );
   }
