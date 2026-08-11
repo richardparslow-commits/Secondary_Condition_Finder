@@ -14,9 +14,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
+      <body>
         <AppInsightsInit />
-        <div className="mx-auto max-w-3xl px-5 py-10">{children}</div>
+        <div className="app-shell">{children}</div>
       </body>
     </html>
   );

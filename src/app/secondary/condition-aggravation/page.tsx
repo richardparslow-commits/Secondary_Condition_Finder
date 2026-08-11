@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { DisclaimerBanner } from "@/components/Disclaimer";
-import { AggravatedByExplainer } from "@/components/secondary/AggravatedByExplainer";
+import { CAUSED_AGGRAVATED_DISTINCTION, SECONDARY_TRACK_OVERVIEW, TRACK_DISTINCTION_NOTICE, UNVERIFIED_REFERENCE_NOTICE } from "@/lib/legal/phrases";
 import { SECONDARY_AGGRAVATED_BY_TITLE } from "@/lib/legal/secondary-title";
 
 export const metadata = {
@@ -12,44 +12,71 @@ export const metadata = {
 
 export default function ConditionAggravationPage() {
   return (
-    <main className="min-h-screen bg-orange-500">
-      <header className="bg-black text-white">
-        <div className="px-6 py-8">
-          <h1 className="mb-3 text-4xl font-bold tracking-tight">{SECONDARY_AGGRAVATED_BY_TITLE}</h1>
-          <p className="mt-3 text-lg text-gray-100">
-            Exploring conditions that were aggravated by your service-connected disability. This track is for conditions that
-            <strong> were permanently worsened</strong> beyond their natural progression by your service.
-          </p>
-        </div>
+    <main>
+      <header className="page-hero text-center">
+        <p className="ui-kicker">Aggravation pathway</p>
+        <h1>{SECONDARY_AGGRAVATED_BY_TITLE}</h1>
+        <p className="mx-auto mt-3 max-w-3xl text-lg">Organize research about a condition that already existed but may have been made worse beyond its natural progression by an established service-connected disability.</p>
       </header>
 
-      <div className="mb-6 flex justify-center px-6">
-        <DisclaimerBanner />
+      <div className="mb-5">
+        <Link href="/secondary" className="ui-button-secondary">← Back to Secondary Conditions</Link>
       </div>
 
-      <div className="mb-6 px-6">
-        <Link href="/secondary" className="inline-flex items-center gap-2 rounded-md border border-blue-900 bg-blue-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-800">
-          ← Back to Secondary Conditions
-        </Link>
-      </div>
+      <div className="ui-grid">
+        <div className="ui-stack">
+          <article className="ui-card">
+            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">§</span><h2 className="text-xl font-bold">Legal / Regulatory Basis</h2></div>
+            <ul className="list-disc space-y-3 pl-5 text-sm">
+              <li>38 CFR § 3.310(b) provides the legal framework for aggravation of a non-service-connected disability by a service-connected disability.</li>
+              <li>The research question focuses on worsening beyond the condition&apos;s natural progression and the evidence needed to describe that change.</li>
+            </ul>
+          </article>
 
-      <div className="mb-6 px-6">
-        <div className="rounded-lg border border-gray-700 bg-gray-900 p-6 text-sm leading-relaxed text-gray-100">
-          <p>
-            Suggestions come from a curated knowledge base, not from your medical records, and are not ranked by likelihood of approval. Citations are starting points for your own verification and have not yet been confirmed by a qualified reviewer. Confirm everything against current VA guidance at va.gov and consult an accredited representative or VSO before filing.
-          </p>
+          <article className="ui-card">
+            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">+</span><h2 className="text-xl font-bold">Primary Clinical Pathways</h2></div>
+            <ul className="space-y-3 text-sm">
+              <li><strong>Biomechanical:</strong> compensatory stress or altered movement patterns</li>
+              <li><strong>Metabolic / endocrine:</strong> physiological changes affecting another condition</li>
+              <li><strong>Mental health / physiologic interaction:</strong> clinically supported pathways requiring condition-specific evidence</li>
+              <li><strong>Medication side effects:</strong> adverse effects or treatment-related pathways</li>
+              <li><strong>Obesity-related chains:</strong> an intermediate-factor theory where supported by evidence</li>
+            </ul>
+          </article>
+        </div>
+
+        <article className="ui-card">
+          <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><h2 className="text-xl font-bold">Secondary Service Connection</h2></div>
+          <div className="ui-callout"><p>{SECONDARY_TRACK_OVERVIEW}</p></div>
+          <p className="mt-5">{CAUSED_AGGRAVATED_DISTINCTION}</p>
+          <p className="mt-4">{TRACK_DISTINCTION_NOTICE}</p>
+          <div className="ui-divider" />
+          <p><strong>Important:</strong> {UNVERIFIED_REFERENCE_NOTICE}</p>
+          <div className="ui-callout mt-5"><p>See 38 CFR § 3.310(a) and § 3.310(b) for the legal secondary-service-connection framework. Clinical support still must come from appropriate medical evidence.</p></div>
+          <Link href="/secondary/diagnosed" className="ui-button mt-6 w-full">Proceed to Step 1 <span aria-hidden="true">→</span></Link>
+        </article>
+
+        <div className="ui-stack">
+          <article className="ui-card">
+            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Adjudicative Mechanics</h2></div>
+            <div className="space-y-5">
+              <div><h3 className="font-bold">Baseline evidence</h3><p className="mt-1 text-sm">Identify evidence describing severity before the claimed aggravation when the regulation requires a baseline comparison.</p></div>
+              <div className="ui-divider" />
+              <div><h3 className="font-bold">Current severity</h3><p className="mt-1 text-sm">Organize evidence describing the present level of severity and the course of the condition.</p></div>
+              <div className="ui-divider" />
+              <div><h3 className="font-bold">Medical theory / nexus support</h3><p className="mt-1 text-sm">A condition-specific medical explanation should address how the service-connected disability may have contributed to worsening beyond natural progression.</p></div>
+            </div>
+          </article>
+
+          <article className="ui-card">
+            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">Disclaimer</h2></div>
+            <p className="text-sm">Suggestions come from a curated knowledge base and are not ranked by likelihood of approval. Confirm current VA guidance and consider an accredited representative or VSO before filing.</p>
+          </article>
         </div>
       </div>
 
-      <div className="mb-8 rounded-lg border border-black bg-orange-500 p-6">
-        <AggravatedByExplainer />
-      </div>
-
-      <footer className="px-6 py-4">
-        <Link href="/secondary" className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-red-600 bg-red-600 px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-red-700">
-          Secondary Conditions | Demo Scenarios | Privacy | Terms
-        </Link>
-      </footer>
+      <div className="ui-footer-note" role="note"><strong>Note:</strong> The Secondary and Presumptive tracks are not mutually exclusive. A claim may involve elements from both.</div>
+      <div className="mt-5"><DisclaimerBanner /></div>
     </main>
   );
 }

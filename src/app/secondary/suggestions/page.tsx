@@ -1,74 +1,63 @@
 import Link from "next/link";
 
-import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
+import { DisclaimerFooter } from "@/components/Disclaimer";
 import { SecondarySuggestionItem } from "@/components/SecondarySuggestionItem";
+import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { findLinkedNonServiceConnectedConditions, groupSuggestionsByPrimary } from "@/lib/secondary-workflow/suggestions";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
-import {
-  readSecondaryWorkflowSession,
-  workflowSessionToQueryParams,
-  type StoredSecondaryWorkflowState,
-} from "@/lib/secondary-workflow/session";
+import { readSecondaryWorkflowSession, workflowSessionToQueryParams, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
 
-interface SuggestionsPageProps {
-  workflowState?: StoredSecondaryWorkflowState;
-}
-
+interface SuggestionsPageProps { workflowState?: StoredSecondaryWorkflowState; }
 export const dynamic = "force-dynamic";
 
 export default async function SuggestionsStepPage({ workflowState }: SuggestionsPageProps = {}) {
   const catalog = loadConditionCatalog();
+  const byId = indexById(catalog);
   const kb = loadKnowledgeBase();
   const session = workflowState ?? (await readSecondaryWorkflowSession());
 
   let state;
-  try {
-    state = parseWorkflowState(workflowSessionToQueryParams(session), catalog);
-  } catch {
-    return (
-      <main>
-        <h1 className="text-2xl font-semibold tracking-tight">Complete prior steps first</h1>
-        <p className="mt-2 text-sm text-slate-600">We need your diagnosed conditions, service-connected selections, ratings context, and upload-step choice before showing grouped suggestions.</p>
-        <Link href="/secondary/upload" className="mt-5 inline-block text-sm underline hover:text-slate-900">Back to optional document upload</Link>
-      </main>
-    );
-  }
+  try { state = parseWorkflowState(workflowSessionToQueryParams(session), catalog); }
+  catch { return <main><header className="page-hero"><h1>Complete prior steps first</h1><p>We need the prior workflow selections before showing grouped suggestions.</p></header><Link href="/secondary/upload" className="ui-button">Back to optional document upload</Link></main>; }
 
   const recommendationsResult = recommend(catalog, kb, { primaryConditions: state.serviceConnectedConditionIds, symptoms: [], medications: [], exposures: [], notes: "" });
   const linked = findLinkedNonServiceConnectedConditions(state.diagnosedConditionIds, state.serviceConnectedConditionIds, recommendationsResult.recommendations);
   const grouped = groupSuggestionsByPrimary(catalog, state.serviceConnectedConditionIds, recommendationsResult.recommendations);
+  const diagnosedNames = state.diagnosedConditionIds.map((id) => byId.get(id)?.name).filter(Boolean);
+  const primaryNames = state.serviceConnectedConditionIds.map((id) => byId.get(id)?.name).filter(Boolean);
 
   return (
     <main>
-      <Link href="/secondary/upload" className="text-sm underline hover:text-slate-900">Back to optional document upload</Link>
-      <header className="mt-3 mb-6">
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Step 5 of 6</p>
-        <h1 className="mt-1 text-2xl font-semibold tracking-tight">Suggested secondary conditions</h1>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">Suggestions are grouped by each service-connected primary condition you selected. These are possibilities to explore, not determinations.</p>
-      </header>
-      <div className="mb-6"><DisclaimerBanner /></div>
+      <header className="page-hero text-center"><p className="ui-kicker">Step 5 of 6</p><h1>Secondary Suggestions</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Possible claim-preparation pathways based on your selected service-connected conditions and published knowledge-base mappings.</p></header>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><strong className="text-blue-700">5 Suggestions</strong><span>6 Evidence</span></div>
 
-      {linked.length > 0 && (
-        <section className="mb-8">
-          <h2 className="mb-3 text-base font-semibold text-slate-900">Your diagnosed conditions that may qualify as secondaries</h2>
-          <p className="mb-4 text-sm text-slate-600">The following conditions are already in your diagnosis history but are not yet service connected. Based on your service-connected conditions, each one may qualify as a secondary condition.</p>
-          <div className="space-y-4">{linked.map((item) => (
-            <article key={item.conditionId} className="rounded-lg border border-blue-200 bg-blue-50 p-4 shadow-sm">
-              <header><p className="text-xs font-semibold uppercase tracking-wide text-blue-700">Already diagnosed — not yet service connected</p><h3 className="mt-0.5 text-base font-semibold text-slate-900">{item.conditionName}</h3><p className="text-xs text-slate-500">{item.bodySystem}</p></header>
-              <section className="mt-3"><h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Why this could be linked to your service-connected condition(s)</h4><ul className="mt-2 space-y-2">{item.linkingPrimaries.map((primary) => <li key={primary.id} className="text-sm leading-relaxed text-slate-700"><span className="font-medium text-slate-900">{primary.name}:</span>{" "}{primary.rationale}</li>)}</ul></section>
-            </article>
-          ))}</div>
+      <div className="ui-grid">
+        <aside className="ui-card">
+          <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Your Inputs</h2></div>
+          <h3 className="font-bold">Diagnosed conditions</h3><div className="mt-2 flex flex-wrap gap-2">{diagnosedNames.map((name) => <span key={name} className="rounded-lg border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs text-blue-900">{name}</span>)}</div>
+          <div className="ui-divider" />
+          <h3 className="font-bold">Service-connected conditions</h3><div className="mt-2 flex flex-wrap gap-2">{primaryNames.map((name) => <span key={name} className="rounded-lg border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs text-blue-900">{name}</span>)}</div>
+          <div className="ui-callout mt-5 text-sm">These inputs were used to generate the suggestions shown. Suggestions are not approval predictions.</div>
+          <Link href="/secondary/diagnosed" className="ui-button-secondary mt-5 w-full">Edit Inputs</Link>
+        </aside>
+
+        <section className="ui-card">
+          <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><h2 className="text-xl font-bold">Published Secondary Pathways</h2><p className="text-sm text-slate-600">Grouped by service-connected primary condition.</p></div></div>
+          {linked.length > 0 && <div className="mb-6 rounded-xl border border-blue-200 bg-blue-50 p-4"><h3 className="font-bold">Already diagnosed, not yet service connected</h3><ul className="mt-3 space-y-3">{linked.map((item) => <li key={item.conditionId}><strong>{item.conditionName}</strong><ul className="mt-1 list-disc pl-5 text-sm">{item.linkingPrimaries.map((primary) => <li key={primary.id}><strong>{primary.name}:</strong> {primary.rationale}</li>)}</ul></li>)}</ul></div>}
+          {recommendationsResult.unmappedPrimaries.length > 0 && <div className="ui-callout mb-5 text-sm"><strong>Recognized, but not yet mapped:</strong> {recommendationsResult.unmappedPrimaries.join(", ")}. Their absence does not mean a secondary claim is impossible.</div>}
+          {grouped.length === 0 ? <p className="rounded-xl border border-slate-200 p-5 text-sm">No authored secondary mappings were found for the selected primary conditions.</p> : <div className="space-y-5">{grouped.map((group, index) => <article key={group.primaryId} className="rounded-xl border border-slate-200 p-4 shadow-none"><div className="flex gap-3"><span className="ui-icon" aria-hidden="true">{index + 1}</span><div><h3 className="text-lg font-bold">{group.primaryName}</h3><p className="text-xs uppercase tracking-wide text-slate-500">Service-connected primary condition</p></div></div>{group.recommendations.length === 0 ? <p className="mt-3 text-sm">This condition is recognized, but no authored secondary mappings are published for it yet.</p> : <div className="mt-4 space-y-3">{group.recommendations.map((recommendation) => <SecondarySuggestionItem key={`${group.primaryId}-${recommendation.conditionId}`} recommendation={recommendation} primaryId={group.primaryId} />)}</div>}</article>)}</div>}
         </section>
-      )}
 
-      {recommendationsResult.unmappedPrimaries.length > 0 && <section className="mb-6 rounded-lg border border-slate-300 bg-white p-4 text-sm text-slate-700"><h2 className="font-semibold text-slate-900">Recognized, but not yet mapped</h2><p className="mt-1 leading-relaxed">{recommendationsResult.unmappedPrimaries.join(", ")} {recommendationsResult.unmappedPrimaries.length === 1 ? "is" : "are"} in the catalog, but no authored secondary mappings are published yet. Their absence here does not mean a secondary claim is impossible.</p></section>}
+        <aside className="ui-stack">
+          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">How to Interpret Results</h2></div><ul className="space-y-4 text-sm"><li><strong>Not ranked by likelihood.</strong><p>Results are not approval probabilities or rankings.</p></li><li><strong>Starting points only.</strong><p>Use suggestions to guide evidence gathering and questions for qualified professionals.</p></li><li><strong>Confirm with evidence.</strong><p>Each pathway must be evaluated against your actual medical history and current VA requirements.</p></li></ul></section>
+          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Next Review</h2></div><p className="text-sm">The final workflow page turns published recommendation evidence gaps into a structured review checklist.</p></section>
+        </aside>
+      </div>
 
-      {grouped.length === 0 ? <p className="rounded-lg border border-slate-200 bg-white p-5 text-sm text-slate-700">No authored secondary mappings were found for the currently selected service-connected conditions.</p> : <div className="space-y-6">{grouped.map((group) => <section key={group.primaryId} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"><h2 className="text-base font-semibold text-slate-900">{group.primaryName}</h2><p className="mt-1 text-xs uppercase tracking-wide text-slate-500">Service-connected primary condition</p>{group.recommendations.length === 0 ? <p className="mt-3 rounded-md bg-slate-50 p-4 text-sm text-slate-700">This condition is recognized, but no authored secondary mappings are published for it yet.</p> : <div className="mt-4 space-y-3">{group.recommendations.map((recommendation) => <SecondarySuggestionItem key={`${group.primaryId}-${recommendation.conditionId}`} recommendation={recommendation} primaryId={group.primaryId} />)}</div>}</section>)}</div>}
-
-      <Link href="/secondary/evidence" className="mt-8 inline-block rounded-md bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-700">Continue to evidence review</Link>
+      <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href="/secondary/evidence" className="ui-button">Open Evidence Checklist <span aria-hidden="true">→</span></Link></div>
       <DisclaimerFooter />
     </main>
   );
