@@ -11,23 +11,23 @@ export default function PrivacyPage() {
         <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
           <h2 className="font-semibold text-blue-900">Privacy by design</h2>
           <p className="text-blue-800 text-xs mt-1">
-            Secondary-workflow selections are not placed in page URLs. They are kept in a short-lived, encrypted first-party session cookie scoped to the secondary workflow and are not attached to analytics events.
+            Secondary-workflow health/disability selections and presumptive-workflow service history are not placed in page URLs. Short-lived first-party workflow cookies are encrypted and authenticated before being sent to the browser and are not attached to analytics events.
           </p>
         </div>
 
         <h2 className="text-xl font-semibold mt-6">1. Workflow session state</h2>
         <p>
-          Diagnosed-condition selections, service-connected selections, rating choices, and the document-checklist choice are submitted to this application only to move between workflow steps. The app encrypts and authenticates that state with AES-256-GCM before placing it in an HttpOnly, SameSite=Strict session cookie scoped to <code>/secondary</code>. The cookie expires after 30 minutes and is not used as an advertising or cross-site tracking identifier. Modified or invalid session cookies are rejected rather than processed.
+          Diagnosed-condition selections, service-connected selections, rating choices, document-checklist choices, selected service locations, and service dates are submitted only to move through their respective workflows. The app encrypts and authenticates workflow state with AES-256-GCM before placing it in HttpOnly, SameSite=Strict cookies scoped to the applicable workflow path. These cookies expire after 30 minutes and are not used as advertising or cross-site tracking identifiers. Modified or invalid workflow cookies are rejected rather than processed.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">2. URLs and browser history</h2>
         <p>
-          The secondary workflow does not encode diagnosis, service-connected status, disability ratings, or document-sharing choices in query strings. The legacy query-based secondary-results route no longer processes health-related URL state. This reduces exposure through copied links, browser history, referrer headers, and URL-based logs.
+          The secondary workflow does not encode diagnosis, service-connected status, disability ratings, or document-sharing choices in query strings. The presumptive workflow does not encode selected service locations or service dates in query strings. The legacy query-based secondary-results route no longer processes health-related URL state. This reduces exposure through copied links, browser history, referrer headers, and URL-based logs.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">3. Application telemetry and operational logs</h2>
         <p>
-          When Application Insights is configured, page-view telemetry is limited to the route path. Automatic route, AJAX, and fetch tracking are disabled, and telemetry URLs are stripped of query strings and fragments before transmission. Workflow selections and disability ratings are not intentionally included in telemetry payloads. Recommendation event logging is limited to aggregate operational counts and does not retain condition identifiers, diagnoses, symptoms, medications, exposures, or intake notes.
+          When Application Insights is configured, page-view telemetry is limited to the route path. Automatic route, AJAX, and fetch tracking are disabled, and telemetry URLs are stripped of query strings and fragments before transmission. Workflow selections, disability ratings, service locations, and service dates are not intentionally included in telemetry payloads. Recommendation event logging is limited to aggregate operational counts and does not retain condition identifiers, diagnoses, symptoms, medications, exposures, or intake notes.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">4. Optional document picker</h2>
