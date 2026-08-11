@@ -11,6 +11,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "citations:weak": "node scripts/report-weak-citations.js",
+    "authoring:tracker": "node scripts/generate-authoring-tracker.js",
     "audit:high": "npm audit --audit-level=high"
   },
   "dependencies": {
