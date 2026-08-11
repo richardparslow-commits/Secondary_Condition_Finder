@@ -66,12 +66,13 @@ React hydrates, which can cause this warning even when app markup is stable.
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | `EVENT_LOG_SQLITE_PATH` | unset | Path to a SQLite file for aggregate recommendation event metrics. When unset, aggregate events are written as structured stdout lines instead. |
-| `SECONDARY_WORKFLOW_SESSION_SECRET` | development-only fallback outside production | Server-only secret used to encrypt and authenticate the secondary-workflow cookie with AES-256-GCM. Production requires at least 32 characters and fails closed if it is missing or too short. |
+| `WORKFLOW_SESSION_SECRET` | development-only fallback outside production | Preferred server-only secret used to encrypt and authenticate secondary and presumptive workflow cookies with AES-256-GCM. Production requires at least 32 characters and fails closed if it is missing or too short. |
+| `SECONDARY_WORKFLOW_SESSION_SECRET` | unset | Backward-compatible fallback for deployments created during the secondary-workflow privacy migration. Prefer `WORKFLOW_SESSION_SECRET` for new deployments. |
 
-For production, generate `SECONDARY_WORKFLOW_SESSION_SECRET` with a
-cryptographically secure secret manager or random generator and store it only
-as a server-side deployment secret. Do not expose it through a `NEXT_PUBLIC_*`
-variable or commit it to the repository.
+For production, generate `WORKFLOW_SESSION_SECRET` with a cryptographically
+secure secret manager or random generator and store it only as a server-side
+deployment secret. Do not expose it through a `NEXT_PUBLIC_*` variable or commit
+it to the repository.
 
 ## Layout
 
@@ -83,7 +84,7 @@ data/demo-scenarios.json
 src/lib/catalog/       Zod schema, loader, lookup. Condition identity.
 src/lib/kb/            Zod schema, loader, mapping helpers
 src/lib/engine/        Pure recommendation logic, no I/O
-src/lib/presumptive/   Zod schema, loader, service-history matcher
+src/lib/presumptive/   Zod schema, loader, service-history matcher/session
 src/lib/log/           Aggregate event logging behind an EventLogger interface
 src/app/               App Router pages
 src/components/        Presentational components
@@ -105,12 +106,14 @@ Routes:
 - `/presumptive` and `/presumptive/results`
 - `/scenarios`
 
-Wizard notes:
+Workflow notes:
 
-- Secondary workflow state is submitted with server actions rather than encoded
-  into query strings.
-- Later steps read the prior state from a short-lived encrypted, authenticated,
-  HttpOnly, SameSite=Strict cookie scoped to `/secondary`.
+- Secondary health/disability state is submitted with server actions rather
+  than encoded into query strings.
+- Presumptive service locations and service dates are also submitted with a
+  server action rather than `GET` query parameters.
+- Later steps read prior state from short-lived encrypted, authenticated,
+  HttpOnly, SameSite=Strict cookies scoped to their respective workflow paths.
 - Back links use clean route paths so selections do not enter browser history,
   referrer headers, or copied URLs.
 - Suggestions and evidence pages require an explicit upload-step choice
@@ -152,9 +155,10 @@ Contribution rules for humans and agents alike are in
 ## Privacy
 
 The secondary workflow does not place diagnosis, service-connected status,
-rating choices, or document-checklist state in URLs. Its short-lived workflow
-cookie is encrypted and authenticated before being sent to the browser.
-Application Insights is configured for path-only page views with automatic
-route/AJAX/fetch tracking disabled. Recommendation event logs retain aggregate
-counts only; they do not persist condition identifiers, diagnoses, symptoms,
-medications, exposures, or intake free text.
+rating choices, or document-checklist state in URLs. The presumptive workflow
+does not place selected service locations or service dates in URLs. Both use
+short-lived workflow cookies that are encrypted and authenticated before being
+sent to the browser. Application Insights is configured for path-only page
+views with automatic route/AJAX/fetch tracking disabled. Recommendation event
+logs retain aggregate counts only; they do not persist condition identifiers,
+diagnoses, symptoms, medications, exposures, or intake free text.
