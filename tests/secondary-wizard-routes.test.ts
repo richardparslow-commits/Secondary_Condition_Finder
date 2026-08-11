@@ -19,47 +19,46 @@ vi.mock("next/link", () => ({
 }));
 
 describe("secondary wizard route progression", () => {
-  it("keeps prior query state in ratings back navigation", async () => {
+  it("keeps ratings back navigation free of workflow query state", async () => {
     const html = renderToStaticMarkup(
       await RatingsStepPage({
-        searchParams: Promise.resolve({
-          diagnosed: ["ptsd", "tinnitus"],
-          serviceConnected: ["ptsd"],
-        }),
+        workflowState: {
+          diagnosedConditionIds: ["ptsd", "tinnitus"],
+          serviceConnectedConditionIds: ["ptsd"],
+          ratingsByConditionId: {},
+        },
       }),
     );
 
-    expect(html).toContain(
-      'href="/secondary/service-connected?diagnosed=ptsd&amp;diagnosed=tinnitus&amp;serviceConnected=ptsd"',
-    );
+    expect(html).toContain('href="/secondary/service-connected"');
+    expect(html).not.toContain("?diagnosed=");
+    expect(html).not.toContain("serviceConnected=");
   });
 
-  it("keeps prior query state in upload back navigation", async () => {
+  it("keeps upload back navigation free of workflow query state", async () => {
     const html = renderToStaticMarkup(
       await UploadStepPage({
-        searchParams: Promise.resolve({
-          diagnosed: ["ptsd", "tinnitus"],
-          serviceConnected: ["ptsd", "tinnitus"],
-          "rating-ptsd": "70",
-          "rating-tinnitus": "decline",
-        }),
+        workflowState: {
+          diagnosedConditionIds: ["ptsd", "tinnitus"],
+          serviceConnectedConditionIds: ["ptsd", "tinnitus"],
+          ratingsByConditionId: { ptsd: 70, tinnitus: null },
+        },
       }),
     );
 
-    expect(html).toContain(
-      "href=\"/secondary/ratings?diagnosed=ptsd&amp;diagnosed=tinnitus&amp;serviceConnected=ptsd&amp;serviceConnected=tinnitus&amp;rating-ptsd=70&amp;rating-tinnitus=decline\"",
-    );
+    expect(html).toContain('href="/secondary/ratings"');
+    expect(html).not.toContain("?diagnosed=");
+    expect(html).not.toContain("rating-ptsd=70");
   });
 
-  it("prefills prior rating selections when returning to ratings", async () => {
+  it("prefills prior rating selections from private workflow state", async () => {
     const html = renderToStaticMarkup(
       await RatingsStepPage({
-        searchParams: Promise.resolve({
-          diagnosed: ["ptsd", "tinnitus"],
-          serviceConnected: ["ptsd", "tinnitus"],
-          "rating-ptsd": "70",
-          "rating-tinnitus": "decline",
-        }),
+        workflowState: {
+          diagnosedConditionIds: ["ptsd", "tinnitus"],
+          serviceConnectedConditionIds: ["ptsd", "tinnitus"],
+          ratingsByConditionId: { ptsd: 70, tinnitus: null },
+        },
       }),
     );
 
@@ -74,11 +73,11 @@ describe("secondary wizard route progression", () => {
   it("renders 100% P&T with a numeric submitted value", async () => {
     const html = renderToStaticMarkup(
       await RatingsStepPage({
-        searchParams: Promise.resolve({
-          diagnosed: ["ptsd"],
-          serviceConnected: ["ptsd"],
-          "rating-ptsd": "100",
-        }),
+        workflowState: {
+          diagnosedConditionIds: ["ptsd"],
+          serviceConnectedConditionIds: ["ptsd"],
+          ratingsByConditionId: { ptsd: 100 },
+        },
       }),
     );
 
@@ -89,10 +88,11 @@ describe("secondary wizard route progression", () => {
   it("renders rating inputs only for service-connected conditions", async () => {
     const html = renderToStaticMarkup(
       await RatingsStepPage({
-        searchParams: Promise.resolve({
-          diagnosed: ["ptsd", "tinnitus"],
-          serviceConnected: ["ptsd"],
-        }),
+        workflowState: {
+          diagnosedConditionIds: ["ptsd", "tinnitus"],
+          serviceConnectedConditionIds: ["ptsd"],
+          ratingsByConditionId: {},
+        },
       }),
     );
 
@@ -102,32 +102,34 @@ describe("secondary wizard route progression", () => {
     expect(html).toContain("Rating for Post-Traumatic Stress Disorder (PTSD)");
   });
 
-  it("does not re-emit stale rating params as hidden inputs on the ratings step", async () => {
+  it("does not emit workflow state as hidden inputs on the ratings step", async () => {
     const html = renderToStaticMarkup(
       await RatingsStepPage({
-        searchParams: Promise.resolve({
-          diagnosed: ["ptsd"],
-          serviceConnected: ["ptsd"],
-          "rating-ptsd": "40",
-          documentsShared: "yes",
-        }),
+        workflowState: {
+          diagnosedConditionIds: ["ptsd"],
+          serviceConnectedConditionIds: ["ptsd"],
+          ratingsByConditionId: { ptsd: 40 },
+          documentsShared: true,
+        },
       }),
     );
 
     expect(html.match(/name="rating-ptsd"/g)).toHaveLength(1);
     expect(html).not.toContain('type="hidden" name="rating-ptsd"');
-    expect(html).toContain('type="hidden" name="documentsShared" value="yes"');
+    expect(html).not.toContain('type="hidden" name="documentsShared"');
+    expect(html).not.toContain('type="hidden" name="diagnosed"');
+    expect(html).not.toContain('type="hidden" name="serviceConnected"');
   });
 
-  it("prefills prior upload selection when returning to upload", async () => {
+  it("prefills prior upload selection from private workflow state", async () => {
     const html = renderToStaticMarkup(
       await UploadStepPage({
-        searchParams: Promise.resolve({
-          diagnosed: ["ptsd"],
-          serviceConnected: ["ptsd"],
-          "rating-ptsd": "70",
-          documentsShared: "yes",
-        }),
+        workflowState: {
+          diagnosedConditionIds: ["ptsd"],
+          serviceConnectedConditionIds: ["ptsd"],
+          ratingsByConditionId: { ptsd: 70 },
+          documentsShared: true,
+        },
       }),
     );
 
@@ -138,18 +140,18 @@ describe("secondary wizard route progression", () => {
   it("blocks suggestions step when upload selection is missing", async () => {
     const html = renderToStaticMarkup(
       await SuggestionsStepPage({
-        searchParams: Promise.resolve({
-          diagnosed: ["ptsd"],
-          serviceConnected: ["ptsd"],
-          "rating-ptsd": "70",
-        }),
+        workflowState: {
+          diagnosedConditionIds: ["ptsd"],
+          serviceConnectedConditionIds: ["ptsd"],
+          ratingsByConditionId: { ptsd: 70 },
+        },
       }),
     );
 
     expect(html).toContain("Complete prior steps first");
     expect(html).toContain("Back to optional document upload");
-    expect(html).toContain(
-      'href="/secondary/upload?diagnosed=ptsd&amp;serviceConnected=ptsd&amp;rating-ptsd=70"',
-    );
+    expect(html).toContain('href="/secondary/upload"');
+    expect(html).not.toContain("?diagnosed=");
+    expect(html).not.toContain("rating-ptsd=70");
   });
 });
