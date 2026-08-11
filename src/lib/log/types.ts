@@ -1,16 +1,17 @@
 /**
- * Traceability record for a single recommendation run.
+ * Data-minimized traceability record for a recommendation run.
  *
- * Phase 1 stores no personally identifying information. Intake free text is
- * NOT persisted: only the resolved condition names and counts, which is
- * enough to explain why a given set of suggestions was produced.
+ * Health-condition identifiers, intake free text, symptoms, medications,
+ * exposures, diagnoses, and recommendation identifiers must never be persisted
+ * in this operational event stream. Only aggregate counts needed for basic
+ * service diagnostics are retained.
  */
 export interface RecommendationEvent {
   id: string;
   createdAt: string;
-  recognizedPrimaries: string[];
+  recognizedPrimaryCount: number;
   unrecognizedPrimaryCount: number;
-  recommendedConditions: string[];
+  recommendedConditionCount: number;
   engineVersion: string;
 }
 
