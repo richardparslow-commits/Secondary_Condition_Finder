@@ -11,8 +11,10 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "citations:weak": "node scripts/report-weak-citations.js",
-    "citations:audit": "node scripts/audit-citation-verification.js",
-    "audit:high": "npm audit --audit-level=high"
+"citations:audit": "node scripts/audit-citation-verification.js",
+"kb:validate": "node scripts/validate-knowledge-base.js",
+"authoring:tracker": "node scripts/generate-authoring-tracker.js",
+"audit:high": "npm audit --audit-level=high"
   },
   "dependencies": {
     "@microsoft/applicationinsights-web": "^3.4.3",
