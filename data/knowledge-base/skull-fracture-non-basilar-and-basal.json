@@ -21,8 +21,9 @@
         },
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework for residual headache disorders caused or aggravated by skull fracture residuals.",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": false,
+          "verificationScope": "legal-framework"
         }
       ]
     },
@@ -44,8 +45,9 @@
         },
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework for chronic residuals developing from the original skull fracture trauma.",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": false,
+          "verificationScope": "legal-framework"
         }
       ]
     },
@@ -67,8 +69,9 @@
         },
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework for auditory residuals caused by the skull fracture.",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": false,
+          "verificationScope": "legal-framework"
         }
       ]
     },
@@ -90,8 +93,9 @@
         },
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework for chronic dizziness or vertigo caused by skull fracture residuals.",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": false,
+          "verificationScope": "legal-framework"
         }
       ]
     },
@@ -113,8 +117,9 @@
         },
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework for mental health conditions caused or aggravated by skull fracture residuals.",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": false,
+          "verificationScope": "legal-framework"
         }
       ]
     },
@@ -136,8 +141,9 @@
         },
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework for sensory loss caused by skull fracture residuals.",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": false,
+          "verificationScope": "legal-framework"
         }
       ]
     }
