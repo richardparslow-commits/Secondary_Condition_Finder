@@ -4,12 +4,19 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { VALID_RATINGS } from "@/lib/secondary-workflow";
 import { ratingFieldName } from "@/lib/secondary-workflow/state";
-import { readSecondaryWorkflowSession } from "@/lib/secondary-workflow/session";
+import {
+  readSecondaryWorkflowSession,
+  type StoredSecondaryWorkflowState,
+} from "@/lib/secondary-workflow/session";
 import { saveRatingsSelection } from "../actions";
 
 interface RatingOption {
   label: string;
   value: string;
+}
+
+interface RatingsPageProps {
+  workflowState?: StoredSecondaryWorkflowState;
 }
 
 function getRatingOptions(): RatingOption[] {
@@ -24,10 +31,10 @@ function getRatingOptions(): RatingOption[] {
 
 export const dynamic = "force-dynamic";
 
-export default async function RatingsPage() {
+export default async function RatingsPage({ workflowState }: RatingsPageProps = {}) {
   const catalog = loadConditionCatalog();
   const catalogById = indexById(catalog);
-  const session = await readSecondaryWorkflowSession();
+  const session = workflowState ?? (await readSecondaryWorkflowSession());
   const diagnosedConditionIds = session.diagnosedConditionIds ?? [];
   const serviceConnectedConditionIds = session.serviceConnectedConditionIds ?? [];
   const ratingsByConditionId = session.ratingsByConditionId ?? {};
