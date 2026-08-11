@@ -1,18 +1,12 @@
 import Link from "next/link";
 
-import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
+import { DisclaimerFooter } from "@/components/Disclaimer";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
-import {
-  readSecondaryWorkflowSession,
-  type StoredSecondaryWorkflowState,
-} from "@/lib/secondary-workflow/session";
+import { readSecondaryWorkflowSession, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
 import { saveDocumentsSelection } from "../actions";
 
-interface UploadPageProps {
-  workflowState?: StoredSecondaryWorkflowState;
-}
-
+interface UploadPageProps { workflowState?: StoredSecondaryWorkflowState; }
 export const dynamic = "force-dynamic";
 
 export default async function UploadStepPage({ workflowState }: UploadPageProps = {}) {
@@ -24,102 +18,52 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
   const ratingsByConditionId = session.ratingsByConditionId;
   const documentsShared = session.documentsShared ?? false;
 
-  if (
-    diagnosedConditionIds.length === 0 ||
-    serviceConnectedConditionIds.length === 0 ||
-    !ratingsByConditionId ||
-    serviceConnectedConditionIds.some((id) => ratingsByConditionId[id] === undefined)
-  ) {
-    return (
-      <main>
-        <h1 className="text-2xl font-semibold tracking-tight">Enter ratings first</h1>
-        <div className="my-4 p-4 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-900">
-          <span className="font-semibold">🔒 Evidence Upload Privacy Contract:</span> Uploading documents is strictly optional. Files are processed locally or through secure non-retentive extraction boundaries. We do <span className="underline font-semibold">not</span> store raw text logs, medical record files, or personal identifiers (PII).
-        </div>
-        <p className="mt-2 text-sm text-slate-600">
-          Complete the ratings step before you continue to document upload.
-        </p>
-        <Link href="/secondary/ratings" className="mt-5 inline-block text-sm underline hover:text-slate-900">
-          Back to current ratings
-        </Link>
-      </main>
-    );
+  if (diagnosedConditionIds.length === 0 || serviceConnectedConditionIds.length === 0 || !ratingsByConditionId || serviceConnectedConditionIds.some((id) => ratingsByConditionId[id] === undefined)) {
+    return <main><header className="page-hero"><h1>Enter ratings first</h1><p>Complete the ratings step before continuing to document availability.</p></header><div className="ui-callout mb-5 text-sm"><strong>🔒 Evidence Upload Privacy Contract:</strong> Uploading documents is <strong>strictly optional</strong>. Files are processed locally or through secure non-retentive extraction boundaries. We do not store <strong>raw text logs</strong>, medical record files, or personal identifiers (PII).</div><Link href="/secondary/ratings" className="ui-button">Back to current ratings</Link></main>;
   }
 
   return (
     <main>
-      <Link href="/secondary/ratings" className="text-sm underline hover:text-slate-900">
-        Back to current ratings
-      </Link>
+      <header className="page-hero text-center"><p className="ui-kicker">Step 4 of 6</p><h1>Supporting Documents</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Track whether you have records available for manual review. This step does not interpret or score your documents.</p></header>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><strong className="text-blue-700">4 Documents</strong><span>5 Suggestions</span><span>6 Evidence</span></div>
 
-      <header className="mt-3 mb-6">
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Step 4 of 6</p>
-        <h1 className="mt-1 text-2xl font-semibold tracking-tight">Optional document upload</h1>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          Uploads are optional. Use this step only if you want a reminder in your checklist that
-          you have records to review manually with your provider or representative.
-        </p>
-      </header>
+      <form action={saveDocumentsSelection}>
+        <div className="ui-grid">
+          <aside className="ui-card">
+            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Optional Document Checklist</h2></div>
+            <p className="text-sm">Use this step to note whether you have supporting documents ready to review with a provider or representative.</p>
+            <div className="ui-divider" />
+            <div className="ui-callout text-sm"><strong>This is a research aid, not a decision.</strong><p className="mt-1">Files selected here are not uploaded for AI analysis in this Phase 1 MVP. This page does not medically interpret, summarize, or rate file contents.</p></div>
+            <p className="mt-5 text-sm">You are not required to provide every possible record. Include only what you actually have and intend to review.</p>
+          </aside>
 
-      <div className="mb-6"><DisclaimerBanner /></div>
-
-      <section className="mb-5 rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700">
-        <h2 className="font-semibold text-slate-900">What this step does today</h2>
-        <ul className="mt-2 list-disc space-y-1 pl-5">
-          <li>Helps you prepare a document checklist for your next representative meeting.</li>
-          <li>Does not medically interpret, summarize, or rate what is inside your files.</li>
-          <li>Does not save document text in event logs or user accounts.</li>
-        </ul>
-      </section>
-
-      <form action={saveDocumentsSelection} className="space-y-6">
-        <label className="block rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-          <span className="block text-sm font-semibold text-slate-900">Optional local file picker</span>
-          <span className="mt-1 block text-xs text-slate-500">
-            Files selected here are not uploaded for AI analysis in this Phase 1 MVP.
-          </span>
-          <input type="file" multiple className="mt-3 block w-full text-sm text-slate-700 file:mr-3 file:rounded-md file:border-0 file:bg-slate-900 file:px-3 file:py-2 file:text-sm file:font-medium file:text-white" aria-describedby="upload-processing-limit" />
-        </label>
-
-        <fieldset>
-          <legend className="text-sm font-semibold text-slate-900">Do you want this reflected in your checklist?</legend>
-          <p id="upload-processing-limit" className="mt-1 text-sm text-slate-600">
-            This choice only updates checklist wording. It does not trigger document parsing.
-          </p>
-          <div className="mt-3 space-y-2 text-sm text-slate-700">
-            <label className="flex items-center gap-2">
-              <input type="radio" name="documentsShared" value="yes" defaultChecked={documentsShared} className="h-4 w-4" />
-              Yes, I have documents ready to review manually
+          <section className="ui-card">
+            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">□</span><div><h2 className="text-xl font-bold">Document Availability</h2><p className="text-sm text-slate-600">This choice only updates checklist wording; it does not trigger parsing.</p></div></div>
+            <label className="block rounded-xl border border-slate-200 p-4">
+              <span className="block font-semibold">Optional local file picker</span>
+              <span className="mt-1 block text-sm text-slate-600">Select files locally if useful for your own organization. The app does not analyze them in this step.</span>
+              <input type="file" multiple className="mt-4 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-blue-700 file:px-4 file:py-2 file:font-semibold file:text-white" aria-describedby="upload-processing-limit" />
             </label>
-            <label className="flex items-center gap-2">
-              <input type="radio" name="documentsShared" value="no" defaultChecked={!documentsShared} className="h-4 w-4" />
-              No, continue without documents
-            </label>
-          </div>
-        </fieldset>
 
-        <section className="rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700">
-          <h2 className="font-semibold text-slate-900">Your service-connected conditions in this run</h2>
-          <ul className="mt-2 space-y-1">
-            {serviceConnectedConditionIds.map((id) => {
-              const condition = byId.get(id);
-              if (!condition) return null;
-              const rating = ratingsByConditionId[id];
-              return (
-                <li key={id}>
-                  <span className="font-medium text-slate-900">{condition.name}</span>
-                  <span className="text-slate-600"> — {rating === null ? "rating not provided" : `${rating}%`}</span>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
+            <fieldset className="mt-5 rounded-xl border border-slate-200 p-4 shadow-none">
+              <legend className="font-semibold">Do you want document availability reflected in your checklist?</legend>
+              <p id="upload-processing-limit" className="mt-1 text-sm text-slate-600">No document parsing is triggered by this choice.</p>
+              <div className="mt-4 grid gap-3">
+                <label className="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-3"><input type="radio" name="documentsShared" value="yes" defaultChecked={documentsShared} className="h-5 w-5" />Yes, I have documents ready to review manually</label>
+                <label className="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-3"><input type="radio" name="documentsShared" value="no" defaultChecked={!documentsShared} className="h-5 w-5" />No, continue without documents</label>
+              </div>
+            </fieldset>
 
-        <button type="submit" className="rounded-md bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-700">
-          Continue to suggested secondary conditions
-        </button>
+            <div className="ui-callout mt-5 text-sm"><strong>Evidence Upload Privacy Contract:</strong> Uploading documents is <strong>strictly optional</strong>. This workflow does not store raw medical document content in <strong>raw text logs</strong>, event logs, or user accounts.</div>
+          </section>
+
+          <aside className="ui-stack">
+            <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">★</span><h2 className="text-xl font-bold">What Strong Evidence Often Includes</h2></div><ul className="list-disc space-y-3 pl-5 text-sm"><li>Current diagnosis and treatment records</li><li>A timeline showing onset and progression</li><li>Relevant treatment history and medication records</li><li>A medical opinion when the relationship requires medical expertise</li></ul></section>
+            <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Current Run</h2></div><ul className="space-y-2 text-sm">{serviceConnectedConditionIds.map((id) => { const condition = byId.get(id); if (!condition) return null; const rating = ratingsByConditionId[id]; return <li key={id} className="flex justify-between gap-3 border-b border-slate-100 pb-2"><span className="font-medium">{condition.name}</span><span className="text-blue-700">{rating === null ? "Not provided" : `${rating}%`}</span></li>; })}</ul></section>
+          </aside>
+        </div>
+        <div className="ui-actions"><Link href="/secondary/ratings" className="ui-button-secondary">← Back to Step 3</Link><button type="submit" className="ui-button">View Suggestions <span aria-hidden="true">→</span></button></div>
       </form>
-
       <DisclaimerFooter />
     </main>
   );
