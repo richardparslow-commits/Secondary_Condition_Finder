@@ -1,13 +1,13 @@
 # Phase 2 VA Sandbox Integration
 
-## Scope of the first integration slice
+## Current low-sensitivity integrations
 
-This slice implements the roadmap's lowest-sensitivity sandbox integrations:
+Phase 2 currently uses two public/reference VA APIs behind one dedicated adapter layer:
 
 - VA Forms API: form search and current form metadata.
 - Benefits Reference Data API: disability reference values.
 
-These adapters are deliberately separate from authenticated Veteran-specific APIs. The Benefits Reference Data API is documented by VA as sending and receiving no PII or PHI, and VA Forms exposes public form information.
+These integrations remain separate from authenticated Veteran-specific APIs. VA documents Benefits Reference Data as sending and receiving no PII or PHI, while VA Forms exposes public form information.
 
 ## Runtime configuration
 
@@ -41,6 +41,24 @@ The adapter:
 6. Returns `local-fallback` rather than throwing upstream failures into the core workflow.
 7. Generates a request ID and optionally emits structured observations containing service, path, attempt, status/outcome, and duration only.
 
+## User-facing Phase 2 demonstrations
+
+### `/va-forms`
+
+- Bounded reference for VA Form 21-526EZ.
+- Uses validated VA Forms sandbox metadata when enabled.
+- Clearly labeled local VA.gov reference fallback when sandbox access is disabled or unavailable.
+- Does not access a Veteran account or transmit claim, diagnosis, health, or service-history state.
+
+### `/va-reference`
+
+- Loads the public Benefits Reference Data disability list through `/disabilities` when sandbox access is enabled.
+- The server sends no user condition/search input to VA; the endpoint is called without user parameters.
+- User filtering happens only in a client component after the public list has loaded.
+- Filter text is not written into the URL and is not sent back to the sandbox adapter.
+- When sandbox access is unavailable, the page clearly switches to the app's local condition catalog and explicitly states that the fallback is not an official VA list.
+- Matching a term is never presented as a diagnosis, eligibility decision, service-connection determination, or rating.
+
 ## Observability privacy contract
 
 Observers must not receive:
@@ -66,18 +84,17 @@ Automated coverage verifies:
 - observations omit query values and credentials
 - invalid response shapes fail closed
 - non-HTTPS endpoint overrides fail closed
-
-## Integration gate
-
-The combined privacy and Phase 2 delivery must pass the repository's complete CI gate against `main` before merge.
+- disability-reference UI filters retired/end-dated values from sandbox results
+- disability-reference UI falls back cleanly when sandbox data is absent
+- user filtering is not implemented through URL search parameters or client network requests
 
 ## Known limitations
 
-- This slice does not place sandbox-backed data into the veteran-facing UI yet.
-- It does not integrate Benefits Intake, claims, health, or other authenticated Veteran-specific APIs.
 - Sandbox data is test data and may not be current.
-- Production access and production endpoint use remain out of scope until sandbox behavior is demonstrated and the production-access package is approved.
+- The current Benefits Reference Data UI demonstrates only disability terminology; other public reference endpoints remain unused.
+- The app does not integrate Benefits Intake, Benefits Claims, health, or other authenticated Veteran-specific APIs.
+- Production API access remains out of scope until the sandbox demonstrations and production-access package are deliberately reviewed.
 
-## Next Phase 2 slice
+## Next Phase 2 decision point
 
-After this adapter remains green in CI, wire one bounded, clearly labeled sandbox-backed reference feature into the app with local fallback and a demo scenario. VA Forms is the preferred first UI integration because the data is public and directly supports claim-preparation form discovery.
+After both public-reference demonstrations remain green in CI and deployment, the next expansion should be chosen by explicit user value rather than API breadth. Preferred candidates are another bounded Benefits Reference Data view (for example service branches or treatment centers) or a more complete VA Forms experience. Authenticated Veteran-specific APIs should remain out of scope until the privacy, authentication, and production-access boundaries are reviewed separately.
