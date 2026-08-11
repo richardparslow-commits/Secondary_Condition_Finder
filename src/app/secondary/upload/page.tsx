@@ -3,15 +3,22 @@ import Link from "next/link";
 import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
-import { readSecondaryWorkflowSession } from "@/lib/secondary-workflow/session";
+import {
+  readSecondaryWorkflowSession,
+  type StoredSecondaryWorkflowState,
+} from "@/lib/secondary-workflow/session";
 import { saveDocumentsSelection } from "../actions";
+
+interface UploadPageProps {
+  workflowState?: StoredSecondaryWorkflowState;
+}
 
 export const dynamic = "force-dynamic";
 
-export default async function UploadStepPage() {
+export default async function UploadStepPage({ workflowState }: UploadPageProps = {}) {
   const catalog = loadConditionCatalog();
   const byId = indexById(catalog);
-  const session = await readSecondaryWorkflowSession();
+  const session = workflowState ?? (await readSecondaryWorkflowSession());
   const diagnosedConditionIds = session.diagnosedConditionIds ?? [];
   const serviceConnectedConditionIds = session.serviceConnectedConditionIds ?? [];
   const ratingsByConditionId = session.ratingsByConditionId;
