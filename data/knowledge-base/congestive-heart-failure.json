@@ -7,16 +7,26 @@
       "conditionId": "depressive-disorder",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Coping with chronic physical pain, functional limitations, or long-term health conditions frequently causes secondary mood impairment.",
+      "rationale": "Depressive symptoms are common in people with heart failure and warrant clinical assessment; an individual secondary relationship requires case-specific medical evidence.",
       "evidenceGaps": [
         "Mental health evaluation distinguishing secondary emotional impact",
         "Treatment notes"
       ],
       "sourceReferences": [
         {
+          "citation": "Depression in Heart Failure: A Systematic Review",
+          "note": "Clinical evidence documenting depression as a common comorbidity in heart failure",
+          "verified": true,
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32802590/",
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "PMID 32802590; systematic review",
+          "verificationScope": "clinical-evidence"
+        },
+        {
           "citation": "38 CFR 3.310",
-          "note": "Secondary mental health condition due to physical disability",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship",
+          "verified": false,
+          "verificationScope": "legal-authority"
         }
       ]
     },
@@ -24,16 +34,26 @@
       "conditionId": "gerd",
       "rank": 2,
       "prevalence": "sometimes-explored",
-      "rationale": "Long-term daily medication required to treat chronic symptoms often causes gastrointestinal irritation.",
+      "rationale": "Long-term NSAID treatment is associated with gastrointestinal adverse effects; where NSAID exposure is documented, evaluate the specific gastrointestinal diagnosis and medical nexus rather than assuming causation.",
       "evidenceGaps": [
         "Prescription history of NSAIDs or pain medications",
         "GI evaluation"
       ],
       "sourceReferences": [
         {
+          "citation": "Systematic review: the lower gastrointestinal adverse effects of non-steroidal anti-inflammatory drugs",
+          "note": "Clinical evidence that non-selective NSAIDs are associated with gastrointestinal injury and clinical events",
+          "verified": true,
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16918879/",
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "PMID 16918879; systematic review",
+          "verificationScope": "clinical-evidence"
+        },
+        {
           "citation": "38 CFR 3.310",
-          "note": "Secondary connection via medication side effects",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship",
+          "verified": false,
+          "verificationScope": "legal-authority"
         }
       ]
     }
