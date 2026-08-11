@@ -39,8 +39,6 @@ export async function saveDiagnosedSelection(formData: FormData): Promise<void> 
 
   await writeSecondaryWorkflowSession({
     diagnosedConditionIds: parsed.diagnosedConditionIds,
-    serviceConnectedConditionIds: [],
-    ratingsByConditionId: {},
   });
 
   redirect("/secondary/service-connected");
