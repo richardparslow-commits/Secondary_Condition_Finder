@@ -11,6 +11,7 @@ Do not submit until all blocking items are complete.
 - [ ] Latest `main` CI is green.
 - [ ] Latest Azure deployment for the same `main` commit is green.
 - [ ] Final deployed-app demo rehearsal passes `docs/phase3-demo-script.md`.
+- [ ] Issue #195 is closed with recorded manual Section 508 accessibility evidence and any material findings remediated/retested.
 - [ ] Final accessibility/Section 508 evidence is reviewed and the form answer is supportable.
 
 ## Applicant and organization information
@@ -147,9 +148,10 @@ Prepare the operating sequence:
 Before answering the form:
 
 - [ ] Review `docs/accessibility-audit.md` and current regression tests.
-- [ ] Run the final deployed-app accessibility checklist.
-- [ ] Record any known limitations.
-- [ ] Answer VA's compliance question based on objective current evidence, not project intent alone.
+- [ ] Complete issue #195 against the exact deployed production build, using synthetic/non-sensitive data only.
+- [ ] Record tester/date/OS/browser/assistive-technology evidence for the required keyboard, screen-reader, zoom/reflow, contrast, and forced-colors checks.
+- [ ] Record any known limitations and remediation/retest links.
+- [ ] Answer VA's compliance question based on objective current evidence, not project intent or automated tests alone.
 
 ## Demo package
 
@@ -167,4 +169,5 @@ Before answering the form:
 - [ ] Legal/medical scope matches `/terms`.
 - [ ] API list matches implemented routes and `docs/va-api-access-strategy.md`.
 - [ ] No claim is made that live sandbox validation is complete unless issue #189 is closed.
+- [ ] No claim is made that Section 508 conformance is complete unless issue #195 is closed with objective evidence.
 - [ ] No unsupported business, accessibility, security-certification, or regulatory-compliance claim is included.
