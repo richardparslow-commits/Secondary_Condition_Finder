@@ -53,7 +53,7 @@ export default async function RatingsPage({ workflowState }: RatingsPageProps = 
                 const stored = ratingsByConditionId[conditionId];
                 const currentValue = stored === null ? "decline" : typeof stored === "number" ? String(stored) : "";
                 const conditionName = catalogById.get(conditionId)?.name ?? conditionId.replace(/-/g, " ");
-                return <div key={conditionId} className="grid items-center gap-3 rounded-xl border border-slate-200 p-4 sm:grid-cols-[1fr_11rem]"><label className="font-semibold" htmlFor={fieldName}>{conditionName}</label><select id={fieldName} name={fieldName} defaultValue={currentValue} className="w-full px-3"><option value="">Select current rating...</option>{ratingOptions.map((rating) => <option key={rating.label} value={rating.value}>{rating.label}</option>)}<option value="decline">I prefer not to answer</option></select></div>;
+                return <div key={conditionId} className="grid items-center gap-3 rounded-xl border border-slate-200 p-4 sm:grid-cols-[1fr_11rem]"><label className="font-semibold" htmlFor={fieldName}>Rating for {conditionName}</label><select id={fieldName} name={fieldName} defaultValue={currentValue} className="w-full px-3"><option value="">Select current rating...</option>{ratingOptions.map((rating) => <option key={rating.label} value={rating.value}>{rating.label}</option>)}<option value="decline">I prefer not to answer</option></select></div>;
               })}
             </div>
             <div className="ui-callout mt-5 text-sm"><strong>Important:</strong> Use the rating currently in effect, not a future or requested increase. You can revise these selections before continuing.</div>
