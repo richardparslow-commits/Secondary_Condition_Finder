@@ -19,10 +19,37 @@ function addReview(message) {
   reviewFindings.push(message);
 }
 
+const causalLanguage = /\b(caus(?:e|es|ed|ing)|causal|cause-and-effect|aggravat(?:e|es|ed|ing)|worsen(?:s|ed|ing)?|leads? to|result(?:s|ed|ing) in|due to|secondary (?:to|from)|proximately due)\b/i;
+const medicationLanguage = /\b(medication|medications|drug|drugs|NSAID|SSRI|antidepressant|treatment side effect|side effect|pharmacologic)\b/i;
+const legalCitation = /^(38 CFR|38 C\.F\.R\.|M21-1|VAOPGCPREC|Allen v\.|Walsh v\.)/i;
+
 for (const file of files) {
   const mapping = JSON.parse(fs.readFileSync(path.join(kbDir, file), "utf8"));
+
   for (const [suggestionIndex, suggestion] of (mapping.suggestions || []).entries()) {
-    for (const [referenceIndex, reference] of (suggestion.sourceReferences || []).entries()) {
+    const refs = suggestion.sourceReferences || [];
+    const hasClinicalEvidence = refs.some((reference) => reference.verificationScope === "clinical-evidence");
+    const hasOnlyLegalReferences = refs.length > 0 && refs.every((reference) => legalCitation.test(reference.citation || ""));
+    const rationale = suggestion.rationale || "";
+
+    // A medical causation/aggravation proposition must have a clinical source;
+    // a VA regulation can establish the legal pathway but cannot establish the
+    // underlying medical relationship.
+    if (causalLanguage.test(rationale) && !hasClinicalEvidence) {
+      addHard(`${file}: suggestions[${suggestionIndex}]: causal/aggravation language has no clinical-evidence reference`);
+    }
+
+    // Medication causation claims require clinical/pharmacologic evidence rather
+    // than a legal secondary-service-connection citation alone.
+    if (medicationLanguage.test(rationale) && !hasClinicalEvidence) {
+      addHard(`${file}: suggestions[${suggestionIndex}]: medication/treatment claim has no clinical-evidence reference`);
+    }
+
+    if (hasOnlyLegalReferences && (causalLanguage.test(rationale) || medicationLanguage.test(rationale))) {
+      addHard(`${file}: suggestions[${suggestionIndex}]: medical proposition is supported only by legal/administrative authority`);
+    }
+
+    for (const [referenceIndex, reference] of refs.entries()) {
       references += 1;
       if (reference.verified === true) verified += 1;
       if (reference.verificationScope === "clinical-evidence") {
@@ -67,6 +94,7 @@ const report = {
 console.log(JSON.stringify(report, null, 2));
 
 // P3-C policy: incomplete verification remains a review item until the claim
-// is actually checked. Unsafe provenance and legal/clinical category errors are
-// hard CI failures; they must be corrected before the P3-C branch can merge.
+// is actually checked. Unsafe provenance, legal/clinical category errors, and
+// unsupported medical causation/aggravation or medication propositions are hard
+// CI failures; they must be corrected before the P3-C branch can merge.
 process.exitCode = hardFindings.length > 0 ? 1 : 0;
