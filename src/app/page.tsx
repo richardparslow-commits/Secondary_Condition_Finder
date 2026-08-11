@@ -86,7 +86,8 @@ export default function HomePage() {
       <div className="mb-8 px-6 text-center"><p className="text-xs text-gray-600">Note: The Secondary and Presumptive tracks are not mutually exclusive. A condition may be claimable through both Secondary and Presumptive paths if the evidence supports both theories.</p></div>
 
       <footer className="bg-red-800 px-6 py-6">
-        <div className="flex flex-col justify-center gap-6 text-white sm:flex-row">
+        <div className="flex flex-col justify-center gap-6 text-white sm:flex-row sm:flex-wrap">
+          <Link href="/about" className="text-sm hover:underline">About</Link>
           <Link href="/scenarios" className="text-sm hover:underline">Demo Scenarios</Link>
           <Link href="/va-forms" className="text-sm hover:underline">VA Form Reference</Link>
           <Link href="/va-reference" className="text-sm hover:underline">VA Reference Terms</Link>
