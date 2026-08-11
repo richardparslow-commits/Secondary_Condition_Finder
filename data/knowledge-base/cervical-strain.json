@@ -1,43 +1,8 @@
 {
   "id": "cervical-strain",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "radiculopathy-upper-extremity",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Degeneration or bulging discs in the cervical spine frequently compress nerve roots in the neck, causing radiating pain, numbness, or tingling down the arms.",
-      "evidenceGaps": [
-        "Current diagnosis of upper extremity radiculopathy",
-        "EMG/NCS test results",
-        "Medical nexus connecting nerve compression to the service-connected cervical condition"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR § 3.310(a)",
-          "note": "Authorizes secondary connection for disabilities proximately caused by a service-connected condition.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "migraine-headaches",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Cervicogenic headaches or muscle tension originating from the cervical spine can trigger or severely aggravate underlying migraine conditions.",
-      "evidenceGaps": [
-        "Current diagnosis of migraines or cervicogenic headaches",
-        "Migraine log showing frequency and severity",
-        "Nexus opinion differentiating cervical-origin headaches from standalone migraines"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR § 3.310(b)",
-          "note": "Authorizes secondary connection for a pre-existing condition that is legally aggravated by a service-connected condition.",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }
