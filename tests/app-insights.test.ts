@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 import {
   initializeAppInsights,
   resetAppInsightsForTests,
+  sanitizeTelemetryUrl,
 } from "@/lib/appInsights";
 
 describe("app insights server safety", () => {
@@ -27,5 +28,13 @@ describe("app insights server safety", () => {
         process.env.NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING = original;
       }
     }
+  });
+
+  it("strips query strings and fragments from telemetry urls", () => {
+    expect(
+      sanitizeTelemetryUrl(
+        "https://example.test/secondary/ratings?diagnosed=ptsd&rating-ptsd=100#step",
+      ),
+    ).toBe("https://example.test/secondary/ratings");
   });
 });
