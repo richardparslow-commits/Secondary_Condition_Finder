@@ -22,8 +22,8 @@ function read(relativePath: string): string {
   return fs.readFileSync(path.join(process.cwd(), relativePath), "utf8");
 }
 
-describe("secondary workflow privacy", () => {
-  it("does not propagate sensitive workflow state through URLs", () => {
+describe("workflow privacy", () => {
+  it("does not propagate sensitive secondary-workflow state through URLs", () => {
     for (const file of workflowPages) {
       const source = read(file);
       expect(source).not.toContain("workflowStateToSearchParams");
@@ -32,16 +32,36 @@ describe("secondary workflow privacy", () => {
     }
   });
 
-  it("stores workflow state in a short-lived hardened first-party cookie", () => {
-    const source = read("src/lib/secondary-workflow/session.ts");
-    expect(source).toContain("httpOnly: true");
-    expect(source).toContain('sameSite: "strict"');
-    expect(source).toContain('path: "/secondary"');
-    expect(source).toContain("30 * 60");
-    expect(source).toContain('createCipheriv("aes-256-gcm"');
+  it("keeps presumptive service history out of query strings", () => {
+    const form = read("src/components/ServiceHistoryForm.tsx");
+    const results = read("src/app/presumptive/results/page.tsx");
+
+    expect(form).toContain("action={saveServiceHistory}");
+    expect(form).not.toMatch(/method=["']get["']/i);
+    expect(form).not.toContain('action="/presumptive/results"');
+    expect(results).not.toContain("searchParams");
+    expect(results).not.toContain("params.location");
+    expect(results).not.toContain("params.serviceStart");
+    expect(results).not.toContain("params.serviceEnd");
   });
 
-  it("encrypts workflow state without exposing condition IDs or ratings", () => {
+  it("stores workflow state in short-lived hardened first-party cookies", () => {
+    const secondary = read("src/lib/secondary-workflow/session.ts");
+    const presumptive = read("src/lib/presumptive/session.ts");
+    const crypto = read("src/lib/workflow-session-crypto.ts");
+
+    for (const source of [secondary, presumptive]) {
+      expect(source).toContain("httpOnly: true");
+      expect(source).toContain('sameSite: "strict"');
+      expect(source).toContain("30 * 60");
+    }
+    expect(secondary).toContain('path: "/secondary"');
+    expect(presumptive).toContain('path: "/presumptive"');
+    expect(crypto).toContain('createCipheriv("aes-256-gcm"');
+    expect(crypto).toContain("WORKFLOW_SESSION_SECRET");
+  });
+
+  it("encrypts secondary workflow state without exposing condition IDs or ratings", () => {
     const state = {
       diagnosedConditionIds: ["ptsd", "sleep-apnea"],
       serviceConnectedConditionIds: ["ptsd"],
