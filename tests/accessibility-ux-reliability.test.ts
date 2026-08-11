@@ -37,14 +37,16 @@ describe("accessibility and UX content contracts", () => {
     }
   });
 
-  it("keeps route copy explicit about non-diagnostic/non-deterministic scope", async () => {
+  it("keeps route copy explicit about non-diagnostic and privacy scope", async () => {
     const home = renderPageHtml(HomePage());
     const terms = renderToStaticMarkup(await TermsPage());
     const privacy = renderPageHtml(PrivacyPage());
 
     expect(home).toContain("This is a research aid, not advice.");
     expect(terms).toContain("Not Legal or Medical Advice");
-    expect(privacy).toContain("Zero PII Policy");
+    expect(privacy).toContain("Privacy by design");
+    expect(privacy).toContain("Secondary-workflow selections are not placed in page URLs.");
+    expect(privacy).toContain("Automatic route, AJAX, and fetch tracking are disabled");
   });
 
   it("keeps both legal routes discoverable from the main chooser page", () => {
