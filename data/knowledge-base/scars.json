@@ -1,6 +1,6 @@
 {
   "id": "scars",
-  "draft": false,
+  "draft": true,
   "todo": [
     "Rebuild scar-related secondary-condition suggestions with condition-specific clinical evidence; prior generic mood and medication-to-GERD pathways lacked direct supporting citations."
   ],

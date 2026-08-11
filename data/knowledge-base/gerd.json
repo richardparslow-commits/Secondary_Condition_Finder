@@ -1,6 +1,6 @@
 {
   "id": "gerd",
-  "draft": false,
+  "draft": true,
   "todo": [
     "Rebuild GERD-related secondary-condition suggestions with condition-specific clinical evidence. Existing IBS and hemorrhoid pathways relied on VA diagnostic-code citations rather than clinical evidence for the relationship."
   ],
