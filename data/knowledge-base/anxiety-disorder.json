@@ -6,15 +6,15 @@
       "conditionId": "insomnia",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Severe anxiety frequently disrupts sleep architecture, leading to chronic insomnia.",
+      "rationale": "Severe anxiety is associated with disrupted sleep architecture and chronic insomnia.",
       "evidenceGaps": [
         "Clinical diagnosis of insomnia",
-        "Treatment records detailing sleep disruptions linked to anxiety"
+        "Treatment records documenting sleep disruptions associated with anxiety"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 4.130",
-          "note": "Mental Health rating criteria often encompass sleep impairment, but independent diagnosis can be secondary if distinct",
+          "note": "Mental Health rating criteria; not clinical evidence establishing an anxiety-insomnia relationship",
           "verified": false
         }
       ]
@@ -23,15 +23,15 @@
       "conditionId": "irritable-bowel-syndrome",
       "rank": 2,
       "prevalence": "sometimes-explored",
-      "rationale": "The gut-brain axis connects severe anxiety and chronic stress to functional gastrointestinal disorders like IBS.",
+      "rationale": "The gut-brain axis is associated with relationships between severe anxiety, chronic stress, and functional gastrointestinal disorders such as IBS.",
       "evidenceGaps": [
         "Gastroenterology diagnosis of IBS",
-        "Medical nexus linking IBS onset/aggravation to anxiety"
+        "Medical nexus addressing any individual relationship between IBS and anxiety"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection",
+          "note": "Legal framework for secondary service connection; not clinical evidence of the relationship",
           "verified": false
         }
       ]
