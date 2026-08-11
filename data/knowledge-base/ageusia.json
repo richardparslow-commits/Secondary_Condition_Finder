@@ -24,7 +24,7 @@
       "conditionId": "gerd",
       "rank": 2,
       "prevalence": "sometimes-explored",
-      "rationale": "Long-term medication use for chronic symptoms has been associated with gastrointestinal irritation in some clinical contexts.",
+      "rationale": "Long-term treatment for chronic symptoms has been associated with gastrointestinal irritation in some clinical contexts.",
       "evidenceGaps": [
         "Prescription history of NSAIDs or pain medications",
         "GI evaluation"
@@ -32,7 +32,7 @@
       "sourceReferences": [
         {
           "citation": "38 CFR 3.310",
-          "note": "Legal framework for secondary service connection; not clinical evidence of medication effects",
+          "note": "Legal framework for secondary service connection; not clinical evidence of treatment effects",
           "verified": false
         }
       ]
