@@ -86,19 +86,30 @@ Remaining external gate: perform and record a credentialed sandbox smoke test ag
 
 ### Deliverables
 
-- [ ] Public-facing product description page.
+- [x] Public-facing product description page at `/about`.
 - [x] Privacy policy and terms of service pages.
-- [ ] End-user definition (veterans and/or authorized representatives) with explicit use-case boundaries.
-- [ ] Minimal production API request package and rationale per API.
-- [ ] Demo script and materials for VA platform review.
-- [~] Data-handling, authentication, credential, rate-limit, retry, and deployment documentation. Substantial Phase 2 documentation exists; the Phase 3 request-specific package remains to be assembled.
+- [x] End-user definition with explicit first-production-use-case boundaries.
+- [x] Minimal production API request package and per-API rationale in `docs/phase3-production-access-package.md`.
+- [x] 30–60 minute VA platform review script in `docs/phase3-demo-script.md`.
+- [x] Submission-field checklist in `docs/phase3-submission-checklist.md` covering applicant, business model, API scope, credentials, PII/PHI, security, incident response, vulnerability management, rate limits, accessibility, and demo preparation.
+- [x] Data-handling, authentication, credential, rate-limit, retry, and deployment documentation consolidated across the Phase 3 package and existing readiness docs.
 
 ### Acceptance Criteria
 
-- [ ] A 30–60 minute production-review demo can be run without blockers.
-- [ ] Production request package is complete and aligned to actual implemented workflows.
-- [ ] Requested API list is minimal, justified, and mapped to explicit user value.
-- [x] Privacy, terms, and scope limitations are published in plain language.
+- [~] **A 30–60 minute production-review demo can be run without blockers.** Script and route sequence are complete; final deployed-app rehearsal remains required before submission.
+- [~] **Production request package is complete and aligned to actual implemented workflows.** Repository package is assembled; applicant/business details, absolute deployed URLs, accessibility response, and external sandbox evidence must be filled from verified real-world information before submission.
+- [x] **Requested API list is minimal, justified, and mapped to explicit user value.** Initial request is limited to VA Forms and Benefits Reference Data.
+- [x] **Privacy, terms, product scope, and end-user boundaries are published in plain language.**
+
+### Phase 3 Submission Gate
+
+See:
+
+- `docs/phase3-production-access-package.md`
+- `docs/phase3-demo-script.md`
+- `docs/phase3-submission-checklist.md`
+
+Do not submit until issue #189 is closed, production runtime settings are verified, the accessibility answer is supported by current deployed evidence, truthful applicant/business details are supplied, and the final demo rehearsal passes.
 
 ---
 
@@ -109,16 +120,21 @@ Remaining external gate: perform and record a credentialed sandbox smoke test ag
 3. Expand condition knowledge base and explanation outputs. **Ongoing under citation/publication governance.**
 4. Add rationale/source governance and privacy-safe operational logging. **Complete for current scope.**
 5. Implement sandbox API adapters and targeted integrations. **Code-complete; live sandbox smoke test pending.**
-6. Prepare production-readiness documents and demo package. **Next active step.**
-7. Submit production-access request for minimum necessary APIs. **Not started; gated on package completion and live sandbox proof.**
+6. Prepare production-readiness documents and demo package. **Repository drafting complete; final external fields/rehearsal pending.**
+7. Submit production-access request for minimum necessary APIs. **Not started; gated by the Phase 3 submission checklist.**
 
 ## Validation Gate Before Production Request
 
 - [x] Core evaluation logic passes the repository CI gate.
 - [x] Public privacy and terms routes are deployed.
+- [x] Public product/end-user route is implemented for deployment.
 - [x] Catalog/knowledge-base structural validation and citation audits are part of CI.
 - [x] Privacy-sensitive workflow state is excluded from URL propagation.
 - [x] Phase 2 public/reference integrations are isolated behind a feature toggle and local fallback.
 - [x] Production deployment has repository-enforced runtime/security controls and a documented Azure settings boundary.
+- [x] Phase 3 production-access request package, demo script, and submission checklist are assembled in the repository.
 - [ ] Credentialed live VA sandbox smoke test recorded for VA Forms and Benefits Reference Data.
-- [ ] Phase 3 production-access/demo package completed and reviewed against implemented behavior.
+- [ ] Production Azure runtime settings manually verified.
+- [ ] Final deployed-app accessibility/Section 508 evidence reviewed.
+- [ ] Truthful applicant/business model and absolute public URLs filled into the submission package.
+- [ ] Final 30–60 minute demo rehearsal completed without blockers.
