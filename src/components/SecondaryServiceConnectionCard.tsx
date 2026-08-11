@@ -2,7 +2,6 @@
 // Supports both blue and gray theme variants
 
 import Link from "next/link";
-import { SECONDARY_AGGRAVATED_BY_TITLE, SECONDARY_CAUSED_BY_TITLE } from "@/lib/legal/secondary-title";
 
 interface SecondaryServiceConnectionCardProps {
   theme: "blue" | "gray";
@@ -20,7 +19,6 @@ export function SecondaryServiceConnectionCard({ theme }: SecondaryServiceConnec
 
   const cardTheme = theme === "blue" ? "bg-blue-50" : "bg-gray-50";
   const borderTheme = theme === "blue" ? "border-blue-200" : "border-gray-200";
-  const hoverTheme = theme === "blue" ? "hover:bg-blue-100" : "hover:bg-gray-100";
 
   return (
     <div className="max-w-4xl px-6 mb-8">

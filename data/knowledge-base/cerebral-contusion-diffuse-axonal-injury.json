@@ -1,39 +1,8 @@
 {
   "id": "cerebral-contusion-diffuse-axonal-injury",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Diffuse axonal injury and cerebral contusions can leave long-term functional deficits associated with secondary depression.",
-      "evidenceGaps": [
-        "Neuropsychological testing showing persistent deficits",
-        "Mental health documentation linking depressive symptoms to traumatic brain injury residuals"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "insomnia",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "DAI-related neurologic disruption can cause chronic sleep initiation and maintenance problems.",
-      "evidenceGaps": [
-        "Sleep-related clinical documentation after contusion/DAI"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }

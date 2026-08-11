@@ -32,13 +32,18 @@ describe("strict schema contract for catalog and knowledge base JSON", () => {
       mappingUnknown.unknownField = true;
       expect(() => conditionMappingSchema.parse(mappingUnknown)).toThrow();
 
-      const suggestionUnknown = structuredClone(parsed);
-      suggestionUnknown.suggestions[0].unknownField = true;
-      expect(() => conditionMappingSchema.parse(suggestionUnknown)).toThrow();
+      if (parsed.suggestions.length > 0) {
+        const suggestionUnknown = structuredClone(parsed);
+        suggestionUnknown.suggestions[0].unknownField = true;
+        expect(() => conditionMappingSchema.parse(suggestionUnknown)).toThrow();
 
-      const sourceUnknown = structuredClone(parsed);
-      sourceUnknown.suggestions[0].sourceReferences[0].unknownField = true;
-      expect(() => conditionMappingSchema.parse(sourceUnknown)).toThrow();
+        const sourceReferences = parsed.suggestions[0].sourceReferences ?? [];
+        if (sourceReferences.length > 0) {
+          const sourceUnknown = structuredClone(parsed);
+          sourceUnknown.suggestions[0].sourceReferences[0].unknownField = true;
+          expect(() => conditionMappingSchema.parse(sourceUnknown)).toThrow();
+        }
+      }
     }
   });
 });

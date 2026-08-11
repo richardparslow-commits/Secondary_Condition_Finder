@@ -1,65 +1,8 @@
 {
   "id": "lumbar-strain",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "radiculopathy-sciatic",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Degenerative changes or bulging discs in the lumbar spine frequently compress the sciatic nerve roots, causing radiating pain, numbness, or tingling down the leg (sciatica).",
-      "evidenceGaps": [
-        "Current diagnosis of sciatic radiculopathy",
-        "EMG/NCS test results showing nerve impingement",
-        "Medical nexus connecting nerve compression to the service-connected lumbar condition"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR § 3.310(a)",
-          "note": "Authorizes secondary connection for disabilities proximately caused by a service-connected condition.",
-          "verified": false
-        },
-        {
-          "citation": "VA M21-1, Part V, Subpart iii, Chapter 1, Section B",
-          "note": "Guidelines on evaluating peripheral nerve conditions secondary to spinal disorders.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "radiculopathy-femoral",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Compression of the upper lumbar nerve roots (L2-L4) can cause femoral nerve radiculopathy, resulting in anterior thigh pain and weakness.",
-      "evidenceGaps": [
-        "Current diagnosis of femoral radiculopathy",
-        "Imaging (MRI) showing upper lumbar nerve root compression"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR § 3.310(a)",
-          "note": "Authorizes secondary connection for disabilities proximately caused by a service-connected condition.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 3,
-      "prevalence": "sometimes-explored",
-      "rationale": "Chronic, severe lower back pain and resulting functional limitations can lead to the development of secondary depression.",
-      "evidenceGaps": [
-        "Current mental health diagnosis",
-        "Treatment records showing pain interfering with sleep and daily activities",
-        "Nexus opinion linking depression specifically to chronic pain from the back condition"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR § 3.310(a)",
-          "note": "Authorizes secondary connection for mental health conditions proximately caused by the chronic pain of a service-connected physical condition.",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }

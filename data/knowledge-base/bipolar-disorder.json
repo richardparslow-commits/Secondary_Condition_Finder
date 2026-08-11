@@ -7,52 +7,25 @@
       "conditionId": "sleep-apnea",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Chronic psychiatric conditions disrupt sleep architecture and frequently co-occur with or aggravate sleep-disordered breathing.",
-      "evidenceGaps": [
-        "Polysomnography (sleep study) confirming diagnosis",
-        "Medical nexus opinion addressing causation or aggravation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection and aggravation",
-          "verified": false
-        }
-      ]
+      "rationale": "Chronic psychiatric conditions are associated with sleep-disordered breathing and frequently co-occur with it.",
+      "evidenceGaps": ["Polysomnography (sleep study) confirming diagnosis", "Medical nexus opinion addressing causation or aggravation"],
+      "sourceReferences": [{"citation":"38 CFR 3.310","note":"Legal framework for secondary service connection; not clinical evidence","verified":false}]
     },
     {
       "conditionId": "gerd",
       "rank": 2,
       "prevalence": "commonly-explored",
-      "rationale": "Chronic stress, anxiety, and long-term use of psychiatric/NSAID medications frequently lead to gastroesophageal reflux.",
-      "evidenceGaps": [
-        "Endoscopy or clinical diagnosis of GERD/gastritis",
-        "Medication log or nexus opinion"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary connection via medication or stress pathways",
-          "verified": false
-        }
-      ]
+      "rationale": "Chronic stress and anxiety are associated with gastroesophageal reflux.",
+      "evidenceGaps": ["Endoscopy or clinical diagnosis of GERD/gastritis", "Medication log or nexus opinion"],
+      "sourceReferences": [{"citation":"38 CFR 3.310","note":"Legal framework for secondary service connection; not clinical evidence","verified":false}]
     },
     {
       "conditionId": "migraine-headaches",
       "rank": 3,
       "prevalence": "sometimes-explored",
-      "rationale": "Muscle tension, sleep deprivation, and heightened autonomic arousal commonly trigger chronic headache episodes.",
-      "evidenceGaps": [
-        "Headache log documenting frequency/prostrating nature",
-        "Neurology/Primary care diagnosis"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.124a",
-          "note": "Diagnostic code 8100",
-          "verified": false
-        }
-      ]
+      "rationale": "Muscle tension, sleep deprivation, and heightened autonomic arousal are associated with chronic headache episodes.",
+      "evidenceGaps": ["Headache log documenting frequency/prostrating nature", "Neurology/Primary care diagnosis"],
+      "sourceReferences": [{"citation":"38 CFR 4.124a","note":"Diagnostic code 8100","verified":false}]
     }
   ]
 }

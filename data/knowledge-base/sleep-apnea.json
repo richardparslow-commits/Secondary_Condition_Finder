@@ -21,8 +21,9 @@
         },
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection, including aggravation.",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": false,
+          "verificationScope": "legal-framework"
         }
       ]
     },
@@ -44,8 +45,9 @@
         },
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection.",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": false,
+          "verificationScope": "legal-framework"
         }
       ]
     },
@@ -67,8 +69,9 @@
         },
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection.",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": false,
+          "verificationScope": "legal-framework"
         }
       ]
     },
@@ -90,8 +93,9 @@
         },
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection, including aggravation.",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": false,
+          "verificationScope": "legal-framework"
         }
       ]
     }

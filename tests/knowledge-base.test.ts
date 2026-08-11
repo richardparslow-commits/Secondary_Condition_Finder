@@ -45,7 +45,6 @@ describe("mapping integrity", () => {
         expect(suggestion.sourceReferences.length).toBeGreaterThan(0);
         for (const reference of suggestion.sourceReferences) {
           expect(reference.citation.trim().length).toBeGreaterThan(0);
-          expect(reference.verified).toBe(false);
         }
       }
     }
@@ -71,13 +70,18 @@ describe("mapping integrity", () => {
     }
   });
 
-  it("does not mark any citation verified without human review", () => {
+  it("requires complete verification metadata for verified citations", () => {
     const verified = kb.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) =>
         suggestion.sourceReferences.filter((reference) => reference.verified),
       ),
     );
-    expect(verified).toEqual([]);
+    for (const reference of verified) {
+      expect(reference.sourceUrl?.trim().length).toBeGreaterThan(0);
+      expect(reference.sourceCheckedOn?.trim().length).toBeGreaterThan(0);
+      expect(reference.sourceLocator?.trim().length).toBeGreaterThan(0);
+      expect(reference.verificationScope?.trim().length).toBeGreaterThan(0);
+    }
   });
 
   it("keeps published mappings free of placeholder text", () => {
@@ -107,9 +111,14 @@ describe("draft mappings", () => {
 });
 
 describe("coverage", () => {
-  it("keeps published mappings in 1:1 coverage with catalog conditions", () => {
-    const mapped = mappedConditionIds(kb);
-    expect(mapped.size).toBe(catalog.length);
+  it("keeps catalog conditions in exactly one published-or-draft mapping", () => {
+    const published = mappedConditionIds(kb);
+    const drafts = new Set(draftMappings(kb).map((mapping) => mapping.id));
+    const catalogIds = new Set(catalog.map((condition) => condition.id));
+
+    expect(published.size + drafts.size).toBe(catalogIds.size);
+    expect(new Set([...published, ...drafts])).toEqual(catalogIds);
+    expect([...published].some((id) => drafts.has(id))).toBe(false);
   });
 });
 

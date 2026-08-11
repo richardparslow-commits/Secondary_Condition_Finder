@@ -1,40 +1,8 @@
 {
   "id": "migraine-headaches",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Living with chronic, severe, and prostrating pain from migraines can proximately cause secondary mental health conditions such as depression.",
-      "evidenceGaps": [
-        "Psychological evaluation",
-        "Therapy notes connecting depressive onset to chronic pain/limitations"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Mental health secondary to physical condition",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "insomnia",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Chronic migraine pain can severely disrupt sleep patterns, causing a secondary diagnosis of insomnia.",
-      "evidenceGaps": [
-        "Sleep logs",
-        "Medical diagnosis of insomnia distinct from the headache episodes"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }

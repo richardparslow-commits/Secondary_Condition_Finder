@@ -1,24 +1,8 @@
 {
   "id": "plantar-fasciitis",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "osteoarthritis",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Altered joint alignment and chronic malalignment lead to progressive degenerative joint disease in supporting joints.",
-      "evidenceGaps": [
-        "Weight-bearing X-rays showing joint space narrowing",
-        "Orthopedic diagnosis"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.71a",
-          "note": "Osteoarthritis / Degenerative arthritis",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }

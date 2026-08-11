@@ -1,40 +1,8 @@
 {
   "id": "intervertebral-disc-syndrome",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "radiculopathy",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Herniated or bulging discs (IVDS) frequently compress adjacent nerve roots, causing radiating pain, tingling, and weakness into the arms or legs.",
-      "evidenceGaps": [
-        "MRI confirming disc herniation/stenosis",
-        "EMG/Nerve Conduction Study confirming nerve root impingement"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.71a",
-          "note": "Rating formula for diseases and injuries of the spine",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "cystitis-or-neurogenic-bladder",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Severe lower lumbar disc compression (Cauda Equina Syndrome) can compromise the nerves controlling bowel and bladder function.",
-      "evidenceGaps": [
-        "Urology evaluation",
-        "Neurological confirmation of sacral nerve root compression"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.115a",
-          "note": "Ratings of the genitourinary system",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }

@@ -1,39 +1,8 @@
 {
   "id": "intracranial-injury-without-skull-fracture",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "migraine-headaches",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Intracranial trauma without fracture can still cause persistent post-traumatic headache disorders.",
-      "evidenceGaps": [
-        "Clinical diagnosis of chronic headaches after intracranial injury",
-        "Imaging or treatment records documenting initial traumatic event"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "anxiety-disorder",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Ongoing neurologic symptoms after intracranial injury can worsen chronic anxiety symptoms.",
-      "evidenceGaps": [
-        "Behavioral health documentation linking anxiety to post-injury symptom burden"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }

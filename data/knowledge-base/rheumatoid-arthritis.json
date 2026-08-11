@@ -7,16 +7,30 @@
       "conditionId": "depressive-disorder",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Coping with chronic physical pain, functional limitations, or long-term health conditions frequently causes secondary mood impairment.",
+      "rationale": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish that rheumatoid arthritis caused or aggravated an individual's depressive disorder.",
       "evidenceGaps": [
-        "Mental health evaluation distinguishing secondary emotional impact",
-        "Treatment notes"
+        "Mental health evaluation and diagnosis",
+        "Documentation of chronic pain, functional limitations, and their timing",
+        "Clinical opinion addressing the individual relationship when a secondary theory is asserted"
       ],
       "sourceReferences": [
         {
+          "citation": "IsHak et al., Pain and Depression: A Systematic Review, PMID 30407234",
+          "note": "Systematic review found pain and depression are frequently comorbid and associated with impaired functioning; supports association, not individual causation.",
+          "verified": true,
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "PMID 30407234; systematic review",
+          "verificationScope": "clinical-evidence"
+        },
+        {
           "citation": "38 CFR 3.310",
-          "note": "Secondary mental health condition due to physical disability",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": true,
+          "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "§ 3.310(a)-(b)",
+          "verificationScope": "legal-framework"
         }
       ]
     },
@@ -24,16 +38,30 @@
       "conditionId": "gerd",
       "rank": 2,
       "prevalence": "sometimes-explored",
-      "rationale": "Long-term daily medication required to treat chronic symptoms often causes gastrointestinal irritation.",
+      "rationale": "When NSAIDs are used for chronic pain, published evidence supports an increased risk of gastrointestinal injury and adverse events. The specific medication, dose, duration, diagnosis, and individual nexus should be evaluated rather than assuming that treatment caused GERD.",
       "evidenceGaps": [
-        "Prescription history of NSAIDs or pain medications",
-        "GI evaluation"
+        "Prescription history identifying NSAID exposure, dose, and duration",
+        "Documented gastrointestinal diagnosis and clinical evaluation",
+        "Medical opinion addressing the individual relationship when a medication-related theory is asserted"
       ],
       "sourceReferences": [
         {
+          "citation": "Laine et al., Systematic review: the lower gastrointestinal adverse effects of non-steroidal anti-inflammatory drugs, PMID 16918879",
+          "note": "Systematic review found increased lower gastrointestinal injury and clinical events with non-selective NSAIDs; supports medication-associated GI risk, not a diagnosis-specific individual nexus.",
+          "verified": true,
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16918879/",
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "PMID 16918879; systematic review",
+          "verificationScope": "clinical-evidence"
+        },
+        {
           "citation": "38 CFR 3.310",
-          "note": "Secondary connection via medication side effects",
-          "verified": false
+          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+          "verified": true,
+          "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "sourceCheckedOn": "2026-08-11",
+          "sourceLocator": "§ 3.310(a)-(b)",
+          "verificationScope": "legal-framework"
         }
       ]
     }

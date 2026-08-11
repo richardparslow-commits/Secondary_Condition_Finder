@@ -1,23 +1,8 @@
 {
   "id": "tinnitus",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "migraine-headaches",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Chronic tinnitus can act as a trigger for migraine headaches due to continuous auditory stress and overlapping neurological pathways.",
-      "evidenceGaps": [
-        "A formal, current medical diagnosis for migraines.",
-        "A medical nexus letter establishing causation from tinnitus."
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }

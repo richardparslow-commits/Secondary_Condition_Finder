@@ -1,39 +1,8 @@
 {
   "id": "gerd",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "irritable-bowel-syndrome",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Gut-brain axis dysregulation and inflammatory medication side effects frequently alter bowel motility.",
-      "evidenceGaps": [
-        "Gastroenterology diagnosis ruling out structural causes"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Diagnostic code 7319",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "hemorrhoids",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Chronic altered bowel habits and abdominal pressure secondary to GI distress strain anorectal vasculature.",
-      "evidenceGaps": [
-        "Clinical exam documenting persistent internal/external hemorrhoids"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Diagnostic code 7336",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild GERD-related secondary-condition suggestions with condition-specific clinical evidence. Existing IBS and hemorrhoid pathways relied on VA diagnostic-code citations rather than clinical evidence for the relationship."
+  ],
+  "suggestions": []
 }

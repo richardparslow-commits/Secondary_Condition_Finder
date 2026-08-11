@@ -6,7 +6,7 @@
       "conditionId": "contralateral-knee-condition",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Chronic ankle instability or pain often causes a permanent limp or altered gait, shifting weight bearing and causing secondary wear on the knees.",
+      "rationale": "Chronic ankle instability or pain is associated with altered gait and weight-bearing patterns that may affect the knees. The population-level relationship does not by itself establish an individual medical nexus.",
       "evidenceGaps": [
         "Medical nexus linking altered gait to secondary knee degradation",
         "Clinical diagnosis of knee osteoarthritis"
@@ -14,8 +14,9 @@
       "sourceReferences": [
         {
           "citation": "38 CFR 3.310",
-          "note": "Secondary service connection",
-          "verified": false
+          "note": "Legal framework for evaluating a secondary relationship; does not establish the underlying medical relationship.",
+          "verified": false,
+          "verificationScope": "legal-framework"
         }
       ]
     },
@@ -23,7 +24,7 @@
       "conditionId": "flatfoot",
       "rank": 2,
       "prevalence": "sometimes-explored",
-      "rationale": "Severe, chronic ankle sprains can lead to the collapse of the foot arch over time (acquired flatfoot deformity) due to ligamentous laxity.",
+      "rationale": "Severe, chronic ankle sprains may be associated with acquired flatfoot deformity in some clinical contexts; individual examination and imaging are needed to determine whether that relationship applies.",
       "evidenceGaps": [
         "Podiatry evaluation",
         "Weight-bearing X-rays of the foot"

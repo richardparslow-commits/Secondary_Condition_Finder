@@ -104,7 +104,7 @@ describe("recommend", () => {
     expect(byName.recommendations).toEqual(byId.recommendations);
   });
 
-  it("separates recognized and unrecognized primaries with full mapping coverage", () => {
+  it("separates recognized, unmapped, and unrecognized primaries", () => {
     const result = recommend(
       catalog,
       kb,
@@ -113,9 +113,9 @@ describe("recommend", () => {
       }),
     );
     expect(result.recognizedPrimaries).toEqual(["Tinnitus", "Plantar Fasciitis"]);
-    expect(result.unmappedPrimaries).toEqual([]);
+    expect(result.unmappedPrimaries).toEqual(["Tinnitus", "Plantar Fasciitis"]);
     expect(result.unrecognizedPrimaries).toEqual(["not a condition"]);
-    expect(result.recommendations.length).toBeGreaterThan(0);
+    expect(result.recommendations).toEqual([]);
   });
 
   it("merges a suggestion shared by two primaries and ranks it above single-source peers", () => {
@@ -176,11 +176,11 @@ describe("recommend", () => {
   });
 
   it("surfaces matching intake context without changing the ranking", () => {
-    const base = recommend(catalog, kb, intake({ primaryConditions: ["Tinnitus"] }));
+    const base = recommend(catalog, kb, intake({ primaryConditions: ["PTSD"] }));
     const withContext = recommend(
       catalog,
       kb,
-      intake({ primaryConditions: ["Tinnitus"], symptoms: ["migraine"] }),
+      intake({ primaryConditions: ["PTSD"], symptoms: ["migraine"] }),
     );
 
     expect(withContext.recommendations.map((r) => r.condition)).toEqual(
@@ -255,7 +255,7 @@ describe("recommend", () => {
     );
 
     expect(result.recommendations).toEqual([]);
-    expect(result.recognizedPrimaries).toEqual([]);
+    expect(result.recognizedPrimaries).toEqual(["Primary Condition"]);
     expect(result.unmappedPrimaries).toEqual(["Primary Condition"]);
   });
 });

@@ -23,7 +23,7 @@ describe("P1 Ticket 5: Suggestion Constraints to Diagnosed Set", () => {
           prevalence: "commonly-explored",
           rationale: "Nerve root compression due to lumbar spine pathology.",
           evidenceGaps: ["Current diagnosis"],
-          sourceReferences: [{ citation: "38 CFR 3.310", note: "Direct secondary", verified: false }]
+          sourceReferences: [{ citation: "38 CFR 3.310", note: "Direct secondary", verificationScope: "legal-framework", verified: false }]
         },
         {
           conditionId: "depression",
@@ -31,7 +31,7 @@ describe("P1 Ticket 5: Suggestion Constraints to Diagnosed Set", () => {
           prevalence: "sometimes-explored",
           rationale: "Chronic pain leading to depressive symptoms.",
           evidenceGaps: ["Mental health diagnosis"],
-          sourceReferences: [{ citation: "38 CFR 3.310", note: "Secondary pain effect", verified: false }]
+          sourceReferences: [{ citation: "38 CFR 3.310", note: "Secondary pain effect", verificationScope: "legal-framework", verified: false }]
         }
       ]
     }
