@@ -2,20 +2,11 @@ import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
-import { matchPresumptives, serviceHistorySchema } from "@/lib/presumptive/match";
+import { matchPresumptives } from "@/lib/presumptive/match";
 import type { PresumptiveCondition } from "@/lib/presumptive/schema";
+import { readPresumptiveSession } from "@/lib/presumptive/session";
 
 export const dynamic = "force-dynamic";
-
-function toArray(value: string | string[] | undefined): string[] {
-  if (!value) return [];
-  return (Array.isArray(value) ? value : [value]).map((v) => v.trim()).filter(Boolean);
-}
-
-function toDate(value: string | string[] | undefined): string | null {
-  const raw = Array.isArray(value) ? value[0] : value;
-  return raw && /^\d{4}-\d{2}-\d{2}$/.test(raw) ? raw : null;
-}
 
 function formatDate(iso: string): string {
   const [year, month, day] = iso.split("-");
@@ -57,28 +48,17 @@ function groupConditions(
   return [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]));
 }
 
-export default async function PresumptiveResultsPage({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
-  const params = await searchParams;
+export default async function PresumptiveResultsPage() {
+  const history = await readPresumptiveSession();
 
-  const parsed = serviceHistorySchema.safeParse({
-    locations: toArray(params.location),
-    serviceStart: toDate(params.serviceStart),
-    serviceEnd: toDate(params.serviceEnd),
-  });
-
-  if (!parsed.success) {
+  if (!history) {
     return (
       <main>
         <h1 className="text-2xl font-semibold tracking-tight">
           Nothing to show yet
         </h1>
         <p className="mt-2 text-sm text-slate-600">
-          {parsed.error.issues[0]?.message ??
-            "Select at least one location where you served."}
+          Select at least one location where you served.
         </p>
         <Link
           href="/presumptive"
@@ -90,7 +70,7 @@ export default async function PresumptiveResultsPage({
     );
   }
 
-  const result = matchPresumptives(loadExposureCatalog(), parsed.data);
+  const result = matchPresumptives(loadExposureCatalog(), history);
 
   return (
     <main>
@@ -102,9 +82,9 @@ export default async function PresumptiveResultsPage({
         Presumptions that may apply
       </h1>
       <p className="mt-2 text-sm text-slate-600">
-        Based on {parsed.data.locations.join(", ")}
-        {parsed.data.serviceStart && parsed.data.serviceEnd
-          ? `, ${formatDate(parsed.data.serviceStart)} to ${formatDate(parsed.data.serviceEnd)}`
+        Based on {history.locations.join(", ")}
+        {history.serviceStart && history.serviceEnd
+          ? `, ${formatDate(history.serviceStart)} to ${formatDate(history.serviceEnd)}`
           : ""}
         .
       </p>
