@@ -82,7 +82,11 @@ describe("workflow privacy", () => {
       { diagnosedConditionIds: ["ptsd"] },
       TEST_SECRET,
     );
-    const tampered = `${sealed.slice(0, -1)}${sealed.endsWith("A") ? "B" : "A"}`;
+    const parts = sealed.split(".");
+    const ciphertext = Buffer.from(parts[2], "base64url");
+    ciphertext[0] = ciphertext[0] ^ 0x01;
+    parts[2] = ciphertext.toString("base64url");
+    const tampered = parts.join(".");
 
     expect(openWorkflowState(tampered, TEST_SECRET)).toBeNull();
     expect(
