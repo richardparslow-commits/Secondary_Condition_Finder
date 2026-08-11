@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { saveServiceHistory } from "@/app/presumptive/actions";
+
 interface Props {
   locations: string[];
 }
@@ -21,7 +23,7 @@ export function ServiceHistoryForm({ locations }: Props) {
   }
 
   return (
-    <form action="/presumptive/results" method="get" className="space-y-8">
+    <form action={saveServiceHistory} className="space-y-8">
       <fieldset>
         <legend className="text-sm font-semibold text-slate-900">
           Where did you serve?
