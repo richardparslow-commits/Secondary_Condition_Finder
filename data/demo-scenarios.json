@@ -21,7 +21,7 @@
   {
     "id": "multiple-primaries-overlap",
     "title": "Multiple primaries with an overlapping suggestion",
-    "description": "Knee injury and lumbar strain both point toward overlapping musculoskeletal and pain-related theories.",
+    "description": "Knee injury and lumbar strain demonstrate how published and draft mappings can coexist while known conditions remain recognized.",
     "intake": {
       "primaryConditions": [
         "knee-injury",
@@ -41,14 +41,14 @@
   {
     "id": "unrecognized-primary",
     "title": "Recognized and unrecognized mix",
-    "description": "One condition resolves to the catalog and one does not, demonstrating how the app reports unrecognized input while still returning mapped suggestions.",
+    "description": "One published condition resolves to the catalog and one does not, demonstrating how the app reports unrecognized input while still returning evidence-backed published suggestions.",
     "intake": {
       "primaryConditions": [
-        "tinnitus",
+        "ptsd",
         "not-a-condition"
       ],
       "symptoms": [
-        "ringing worse at night"
+        "trouble staying asleep"
       ],
       "medications": [],
       "exposures": [
