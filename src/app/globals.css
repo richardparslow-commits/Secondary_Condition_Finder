@@ -24,314 +24,85 @@
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+html { background: var(--background); color-scheme: light; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; line-height: 1.55; }
+a { color: var(--primary); text-underline-offset: 3px; }
+a:hover { color: var(--primary-hover); }
+button, input, select, textarea { font: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
-html {
-  background: var(--background);
-  color-scheme: light;
-}
-
-body {
-  margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.55;
-}
-
-a {
-  color: var(--primary);
-  text-underline-offset: 3px;
-}
-
-a:hover {
-  color: var(--primary-hover);
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
-}
-
-.app-shell {
-  width: min(100%, 1200px);
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 24px;
-}
-
-.app-shell main {
-  min-height: calc(100vh - 48px);
-  background: transparent !important;
-  color: var(--foreground) !important;
-}
+.app-shell { width: min(100%, 1200px); min-height: 100vh; margin: 0 auto; padding: 24px; }
+.app-shell main { min-height: calc(100vh - 48px); max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; background: transparent !important; color: var(--foreground) !important; }
 
 .page-hero,
 .app-shell main > header {
-  margin-bottom: 22px;
-  padding: 28px 34px;
-  border: 2px solid var(--primary);
-  border-radius: 22px;
-  background: var(--surface) !important;
-  color: var(--foreground) !important;
-  box-shadow: var(--shadow);
+  margin-bottom: 22px; padding: 28px 34px; border: 2px solid var(--primary); border-radius: 22px;
+  background: var(--surface) !important; color: var(--foreground) !important; box-shadow: var(--shadow);
 }
 
-.page-hero h1,
-.app-shell main > header h1 {
-  margin: 0;
-  color: var(--foreground) !important;
-  font-size: clamp(2rem, 4vw, 3.25rem);
-  line-height: 1.05;
-  letter-spacing: -0.035em;
+/* Utility/informational routes that historically rendered a bare title inherit the same page-title language. */
+.app-shell main > h1 {
+  margin: 0 0 20px; padding: 26px 32px; border: 2px solid var(--primary); border-radius: 22px;
+  background: var(--surface); color: var(--foreground); box-shadow: var(--shadow);
+  font-size: clamp(2rem, 4vw, 3rem); line-height: 1.08; letter-spacing: -0.035em;
 }
 
-.page-hero p,
-.app-shell main > header p {
-  color: var(--muted) !important;
-}
+.page-hero h1, .app-shell main > header h1 { margin: 0; color: var(--foreground) !important; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -0.035em; }
+.page-hero p, .app-shell main > header p { color: var(--muted) !important; }
 
-.ui-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 20px;
-  align-items: start;
-}
+.ui-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.ui-stack { display: grid; gap: 18px; }
+.ui-card, .app-shell main article, .app-shell main fieldset, .app-shell main > section { border: 1px solid var(--border) !important; border-radius: var(--radius) !important; background: var(--surface) !important; color: var(--foreground) !important; box-shadow: var(--shadow); }
+.ui-card { padding: 24px; }
+.ui-card h2, .ui-card h3, .app-shell main article h2, .app-shell main article h3, .app-shell main section h2, .app-shell main section h3 { color: var(--foreground) !important; }
+.ui-card p, .ui-card li, .app-shell main article p, .app-shell main article li, .app-shell main section p, .app-shell main section li { color: var(--foreground); }
+.ui-kicker { color: var(--primary); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.ui-icon { display: inline-grid; width: 44px; height: 44px; place-items: center; flex: 0 0 auto; border-radius: 999px; background: var(--primary-soft); color: var(--primary); font-size: 1.15rem; font-weight: 800; }
+.ui-heading-row { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
+.ui-divider { height: 1px; margin: 18px 0; background: var(--border); }
+.ui-callout, .app-shell [role="note"] { border: 1px solid var(--border-strong) !important; border-radius: 14px !important; background: var(--primary-soft) !important; color: var(--foreground) !important; padding: 16px; }
 
-.ui-stack {
-  display: grid;
-  gap: 18px;
+.ui-button, .ui-button-secondary,
+.app-shell a[class*="bg-red-"], .app-shell a[class*="bg-slate-9"], .app-shell a[class*="bg-green-"],
+.app-shell button[class*="bg-slate-9"], .app-shell button[class*="bg-green-"], .app-shell button[class*="bg-blue-6"] {
+  display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 10px; border-radius: 10px !important;
+  padding: 11px 18px; border: 2px solid var(--primary) !important; background: var(--primary) !important; color: #fff !important;
+  font-weight: 700; text-decoration: none; transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
-
-.ui-card,
-.app-shell main article,
-.app-shell main fieldset,
-.app-shell main > section {
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius) !important;
-  background: var(--surface) !important;
-  color: var(--foreground) !important;
-  box-shadow: var(--shadow);
+.ui-button:hover, .app-shell a[class*="bg-red-"]:hover, .app-shell a[class*="bg-slate-9"]:hover, .app-shell a[class*="bg-green-"]:hover,
+.app-shell button[class*="bg-slate-9"]:hover, .app-shell button[class*="bg-green-"]:hover, .app-shell button[class*="bg-blue-6"]:hover {
+  border-color: var(--primary-hover) !important; background: var(--primary-hover) !important; color: #fff !important;
 }
+.ui-button-secondary { background: var(--surface) !important; color: var(--primary) !important; }
+.ui-button-secondary:hover { background: var(--primary-soft) !important; color: var(--primary-hover) !important; }
+.ui-footer-note { margin-top: 20px; padding: 16px 20px; border: 1px solid var(--border-strong); border-radius: 14px; background: var(--surface); color: var(--foreground); font-size: 0.9rem; }
+.ui-actions { display: flex; gap: 16px; justify-content: space-between; align-items: center; margin-top: 20px; padding: 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
 
-.ui-card {
+.app-shell input[type="text"], .app-shell input[type="search"], .app-shell input[type="number"], .app-shell input[type="date"], .app-shell select, .app-shell textarea { min-height: 44px; border: 1px solid var(--border) !important; border-radius: 10px !important; background: var(--surface) !important; color: var(--foreground) !important; }
+.app-shell input[type="checkbox"], .app-shell input[type="radio"] { accent-color: var(--primary); }
+
+/* Normalize legacy high-saturation page styling into the approved palette without touching page logic. */
+.app-shell [class*="bg-orange-"], .app-shell [class*="bg-black"], .app-shell [class*="bg-gray-8"], .app-shell [class*="bg-gray-9"], .app-shell footer[class*="bg-red-"] { background: var(--surface) !important; color: var(--foreground) !important; border-color: var(--border) !important; }
+.app-shell [class*="text-white"]:not(.ui-button):not([class*="bg-blue-"]):not([class*="bg-red-"]):not([class*="bg-green-"]):not([class*="bg-slate-9"]) { color: var(--foreground) !important; }
+.app-shell [class*="bg-red-"] { background: var(--primary) !important; }
+.app-shell [class*="hover:bg-red-"]:hover, .app-shell [class*="hover:bg-slate-7"]:hover { background: var(--primary-hover) !important; }
+.app-shell ul[class*="border"], .app-shell ol[class*="border"] { border-color: var(--border) !important; border-radius: 14px !important; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05); }
+.app-shell label:hover { background: var(--primary-soft); }
+
+/* Long-form About/Privacy/Terms-style content uses the same white container language. */
+.app-shell main > section.space-y-4,
+.app-shell main > section.space-y-5 {
   padding: 24px;
 }
 
-.ui-card h2,
-.ui-card h3,
-.app-shell main article h2,
-.app-shell main article h3,
-.app-shell main section h2,
-.app-shell main section h3 {
-  color: var(--foreground) !important;
-}
-
-.ui-card p,
-.ui-card li,
-.app-shell main article p,
-.app-shell main article li,
-.app-shell main section p,
-.app-shell main section li {
-  color: var(--foreground);
-}
-
-.ui-kicker {
-  color: var(--primary);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.ui-icon {
-  display: inline-grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  flex: 0 0 auto;
-  border-radius: 999px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  font-size: 1.15rem;
-  font-weight: 800;
-}
-
-.ui-heading-row {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.ui-divider {
-  height: 1px;
-  margin: 18px 0;
-  background: var(--border);
-}
-
-.ui-callout,
-.app-shell [role="note"] {
-  border: 1px solid var(--border-strong) !important;
-  border-radius: 14px !important;
-  background: var(--primary-soft) !important;
-  color: var(--foreground) !important;
-  padding: 16px;
-}
-
-.ui-button,
-.ui-button-secondary,
-.app-shell a[class*="bg-red-"],
-.app-shell a[class*="bg-slate-9"],
-.app-shell a[class*="bg-green-"],
-.app-shell button[class*="bg-slate-9"],
-.app-shell button[class*="bg-green-"] {
-  display: inline-flex;
-  min-height: 46px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-radius: 10px !important;
-  padding: 11px 18px;
-  border: 2px solid var(--primary) !important;
-  background: var(--primary) !important;
-  color: #ffffff !important;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
-}
-
-.ui-button:hover,
-.app-shell a[class*="bg-red-"]:hover,
-.app-shell a[class*="bg-slate-9"]:hover,
-.app-shell a[class*="bg-green-"]:hover,
-.app-shell button[class*="bg-slate-9"]:hover,
-.app-shell button[class*="bg-green-"]:hover {
-  border-color: var(--primary-hover) !important;
-  background: var(--primary-hover) !important;
-  color: #ffffff !important;
-}
-
-.ui-button-secondary {
-  background: var(--surface) !important;
-  color: var(--primary) !important;
-}
-
-.ui-button-secondary:hover {
-  background: var(--primary-soft) !important;
-  color: var(--primary-hover) !important;
-}
-
-.ui-footer-note {
-  margin-top: 20px;
-  padding: 16px 20px;
-  border: 1px solid var(--border-strong);
-  border-radius: 14px;
-  background: var(--surface);
-  color: var(--foreground);
-  font-size: 0.9rem;
-}
-
-.ui-actions {
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-  padding: 18px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--surface);
-}
-
-.app-shell input[type="text"],
-.app-shell input[type="search"],
-.app-shell input[type="number"],
-.app-shell select,
-.app-shell textarea {
-  min-height: 44px;
-  border: 1px solid var(--border) !important;
-  border-radius: 10px !important;
-  background: var(--surface) !important;
-  color: var(--foreground) !important;
-}
-
-.app-shell input[type="checkbox"],
-.app-shell input[type="radio"] {
-  accent-color: var(--primary);
-}
-
-/* Migrate legacy high-saturation panels into the approved palette without changing workflow logic. */
-.app-shell [class*="bg-orange-"],
-.app-shell [class*="bg-black"],
-.app-shell [class*="bg-gray-8"],
-.app-shell [class*="bg-gray-9"],
-.app-shell footer[class*="bg-red-"] {
-  background: var(--surface) !important;
-  color: var(--foreground) !important;
-  border-color: var(--border) !important;
-}
-
-.app-shell [class*="text-white"]:not(.ui-button):not([class*="bg-blue-"]):not([class*="bg-red-"]):not([class*="bg-green-"]):not([class*="bg-slate-9"]) {
-  color: var(--foreground) !important;
-}
-
-.app-shell [class*="bg-red-"] {
-  background: var(--primary) !important;
-}
-
-.app-shell [class*="hover:bg-red-"]:hover,
-.app-shell [class*="hover:bg-slate-7"]:hover {
-  background: var(--primary-hover) !important;
-}
-
-.app-shell ul[class*="border"],
-.app-shell ol[class*="border"] {
-  border-color: var(--border) !important;
-  border-radius: 14px !important;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
-}
-
-.app-shell label:hover {
-  background: var(--primary-soft);
-}
-
 @media (max-width: 900px) {
-  .app-shell {
-    padding: 16px;
-  }
-
-  .ui-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-hero,
-  .app-shell main > header {
-    padding: 22px;
-  }
-
-  .ui-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
+  .app-shell { padding: 16px; }
+  .ui-grid { grid-template-columns: 1fr; }
+  .page-hero, .app-shell main > header, .app-shell main > h1 { padding: 22px; }
+  .ui-actions { flex-direction: column; align-items: stretch; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-  }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
