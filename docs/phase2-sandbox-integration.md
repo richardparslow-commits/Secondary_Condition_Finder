@@ -67,6 +67,10 @@ Automated coverage verifies:
 - invalid response shapes fail closed
 - non-HTTPS endpoint overrides fail closed
 
+## Integration gate
+
+The combined privacy and Phase 2 delivery must pass the repository's complete CI gate against `main` before merge.
+
 ## Known limitations
 
 - This slice does not place sandbox-backed data into the veteran-facing UI yet.
