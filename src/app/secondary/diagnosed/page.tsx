@@ -4,22 +4,19 @@ import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { mappedConditionIds } from "@/lib/kb/lookup";
-import { parseDiagnosedPrefill } from "@/lib/secondary-workflow/state";
+import { readSecondaryWorkflowSession } from "@/lib/secondary-workflow/session";
+import { saveDiagnosedSelection } from "../actions";
 
 export const dynamic = "force-dynamic";
 const DATABASE_MAPPED_EXPLANATION =
   "Database mapped means this condition already has authored secondary-condition relationships in the knowledge base.";
 
-export default async function DiagnosedConditionsPage({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
+export default async function DiagnosedConditionsPage() {
   const catalog = loadConditionCatalog();
   const mapped = mappedConditionIds(loadKnowledgeBase());
   const conditions = [...catalog].sort((a, b) => a.name.localeCompare(b.name));
-  const params = await searchParams;
-  const selectedDiagnosed = new Set(parseDiagnosedPrefill(params, catalog));
+  const session = await readSecondaryWorkflowSession();
+  const selectedDiagnosed = new Set(session.diagnosedConditionIds ?? []);
 
   return (
     <main>
@@ -40,7 +37,7 @@ export default async function DiagnosedConditionsPage({
         <DisclaimerBanner />
       </div>
 
-      <form action="/secondary/service-connected" method="get">
+      <form action={saveDiagnosedSelection}>
         <fieldset>
           <legend className="text-sm font-semibold text-slate-900">Diagnosed conditions</legend>
           <p className="mt-1 text-sm text-slate-600">

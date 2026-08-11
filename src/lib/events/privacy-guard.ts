@@ -1,6 +1,7 @@
 /**
  * Event Logging Privacy & Schema Evolution Guard
- * Ensures zero persistence of intake free text, clinical notes, or PII.
+ * Ensures zero persistence of intake free text, health-condition identifiers,
+ * clinical notes, or PII.
  */
 
 export const PROHIBITED_LOG_FIELDS = [
@@ -10,8 +11,21 @@ export const PROHIBITED_LOG_FIELDS = [
   "ssn",
   "diagnosisNotes",
   "medicalHistoryText",
-  "userInputValue"
-];
+  "userInputValue",
+  "conditionId",
+  "conditionIds",
+  "diagnosis",
+  "diagnoses",
+  "primaryCondition",
+  "primaryConditions",
+  "recognizedPrimaries",
+  "recommendedCondition",
+  "recommendedConditions",
+  "symptoms",
+  "medications",
+  "exposures",
+  "notes",
+] as const;
 
 export interface EventPayload {
   eventType: string;
@@ -26,24 +40,25 @@ export function sanitizeAndValidateEventPayload(payload: EventPayload): {
   violations: string[];
 } {
   const violations: string[] = [];
-  const sanitizedPayload: EventPayload = { ...payload };
+  const sanitizedPayload: EventPayload = {
+    ...payload,
+    metadata: payload.metadata ? { ...payload.metadata } : undefined,
+  };
 
-  PROHIBITED_LOG_FIELDS.forEach(field => {
+  PROHIBITED_LOG_FIELDS.forEach((field) => {
     if (field in sanitizedPayload) {
       violations.push(field);
       delete sanitizedPayload[field];
     }
-    if (sanitizedPayload.metadata && typeof sanitizedPayload.metadata === 'object') {
-      if (field in sanitizedPayload.metadata) {
-        violations.push(`metadata.${field}`);
-        delete (sanitizedPayload.metadata as Record<string, unknown>)[field];
-      }
+    if (sanitizedPayload.metadata && field in sanitizedPayload.metadata) {
+      violations.push(`metadata.${field}`);
+      delete sanitizedPayload.metadata[field];
     }
   });
 
   return {
     isValid: violations.length === 0,
     sanitizedPayload,
-    violations
+    violations,
   };
 }

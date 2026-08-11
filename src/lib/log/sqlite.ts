@@ -9,34 +9,37 @@ import type { EventLogger } from "./types";
 
 /**
  * Local, file-backed logger for development and self-hosted deployments.
- * Not suitable for serverless targets with ephemeral disks; see index.ts for
- * how the logger is selected at runtime.
+ * Stores aggregate operational counts only; no condition identifiers or
+ * health-related intake values are persisted.
  */
 export function createSqliteLogger(filePath: string): EventLogger {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   const db = new Database(filePath);
 
   db.pragma("journal_mode = WAL");
+
+  // Purge the legacy table because it stored condition-level identifiers.
+  db.exec("DROP TABLE IF EXISTS recommendation_events;");
   db.exec(`
-    CREATE TABLE IF NOT EXISTS recommendation_events (
+    CREATE TABLE IF NOT EXISTS recommendation_event_metrics (
       id TEXT PRIMARY KEY,
       created_at TEXT NOT NULL,
-      recognized_primaries TEXT NOT NULL,
+      recognized_primary_count INTEGER NOT NULL,
       unrecognized_primary_count INTEGER NOT NULL,
-      recommended_conditions TEXT NOT NULL,
+      recommended_condition_count INTEGER NOT NULL,
       engine_version TEXT NOT NULL
     );
   `);
 
   const insert = db.prepare(`
-    INSERT INTO recommendation_events
-      (id, created_at, recognized_primaries, unrecognized_primary_count,
-       recommended_conditions, engine_version)
+    INSERT INTO recommendation_event_metrics
+      (id, created_at, recognized_primary_count, unrecognized_primary_count,
+       recommended_condition_count, engine_version)
     VALUES (?, ?, ?, ?, ?, ?)
   `);
 
   const select = db.prepare(`
-    SELECT * FROM recommendation_events ORDER BY created_at DESC LIMIT ?
+    SELECT * FROM recommendation_event_metrics ORDER BY created_at DESC LIMIT ?
   `);
 
   return {
@@ -44,9 +47,9 @@ export function createSqliteLogger(filePath: string): EventLogger {
       insert.run(
         event.id,
         event.createdAt,
-        JSON.stringify(event.recognizedPrimaries),
+        event.recognizedPrimaryCount,
         event.unrecognizedPrimaryCount,
-        JSON.stringify(event.recommendedConditions),
+        event.recommendedConditionCount,
         event.engineVersion,
       );
     },
@@ -55,9 +58,9 @@ export function createSqliteLogger(filePath: string): EventLogger {
       return rows.map((row) => ({
         id: String(row.id),
         createdAt: String(row.created_at),
-        recognizedPrimaries: JSON.parse(String(row.recognized_primaries)),
+        recognizedPrimaryCount: Number(row.recognized_primary_count),
         unrecognizedPrimaryCount: Number(row.unrecognized_primary_count),
-        recommendedConditions: JSON.parse(String(row.recommended_conditions)),
+        recommendedConditionCount: Number(row.recommended_condition_count),
         engineVersion: String(row.engine_version),
       }));
     },

@@ -63,11 +63,23 @@ export default function HomePage() {
         </article>
       </div>
 
+      <div className="mb-8 max-w-4xl px-6">
+        <article className="rounded-lg border border-blue-200 bg-blue-50 p-6 shadow-sm">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="text-xl font-semibold text-gray-900">VA Form Reference</h2>
+            <span className="rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-900">Phase 2 sandbox demo</span>
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-gray-700">View a bounded reference for VA Form 21-526EZ. When sandbox access is configured, the page validates public VA Forms metadata through the adapter layer; otherwise it uses a local reference and clearly labels the fallback.</p>
+          <Link href="/va-forms" className="mt-6 inline-block rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-slate-700">Open VA Form Reference</Link>
+        </article>
+      </div>
+
       <div className="mb-8 px-6 text-center"><p className="text-xs text-gray-600">Note: The Secondary and Presumptive tracks are not mutually exclusive. A condition may be claimable through both Secondary and Presumptive paths if the evidence supports both theories.</p></div>
 
       <footer className="bg-red-800 px-6 py-6">
         <div className="flex flex-col justify-center gap-6 text-white sm:flex-row">
           <Link href="/scenarios" className="text-sm hover:underline">Demo Scenarios</Link>
+          <Link href="/va-forms" className="text-sm hover:underline">VA Form Reference</Link>
           <Link href="/privacy" className="text-sm hover:underline">Privacy</Link>
           <Link href="/terms" className="text-sm hover:underline">Terms</Link>
         </div>
