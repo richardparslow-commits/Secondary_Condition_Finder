@@ -1,23 +1,8 @@
 {
   "id": "radiculopathy",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "sometimes-explored",
-      "rationale": "Chronic, severe radiating nerve pain and loss of limb function can proximately cause depressive or anxiety disorders.",
-      "evidenceGaps": [
-        "Mental health evaluation",
-        "Treatment records linking psychological distress directly to chronic nerve pain"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }
