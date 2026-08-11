@@ -1,55 +1,8 @@
 {
   "id": "thyroid-cancer",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "peripheral-neuropathy",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Endocrine and metabolic dysfunction cause progressive microvascular damage to peripheral nerves.",
-      "evidenceGaps": [
-        "Monofilament examination or nerve conduction studies"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.124a",
-          "note": "Peripheral nerve involvement",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "diabetic-retinopathy",
-      "rank": 2,
-      "prevalence": "commonly-explored",
-      "rationale": "Microvascular changes in the eye frequently develop secondary to systemic metabolic imbalance.",
-      "evidenceGaps": [
-        "Ophthalmology fundoscopic exam documentation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.79",
-          "note": "Eye diagnostic codes",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "chronic-kidney-disease",
-      "rank": 3,
-      "prevalence": "sometimes-explored",
-      "rationale": "Metabolic and hypertensive microvascular stress degrades renal filtration function over time.",
-      "evidenceGaps": [
-        "eGFR and eCr lab trends over 3+ months"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.115a",
-          "note": "Renal rating schedule",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+  ],
+  "suggestions": []
 }
