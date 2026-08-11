@@ -90,26 +90,30 @@ export function recommend(
       unrecognizedPrimaries.push(input);
       continue;
     }
-    if (recognizedIds.has(condition.id) || unmappedPrimaries.includes(condition.name)) {
-      continue;
-    }
-    if (!mappings.has(condition.id)) {
-      unmappedPrimaries.push(condition.name);
+    if (recognizedIds.has(condition.id)) {
       continue;
     }
 
+    // Catalog recognition and mapping publication are separate concerns. A
+    // known condition remains recognized even when its mapping is draft-only;
+    // in that case it is reported as unmapped and contributes no suggestions.
     recognizedIds.add(condition.id);
     recognizedPrimaries.push(condition.name);
+    if (!mappings.has(condition.id)) {
+      unmappedPrimaries.push(condition.name);
+    }
   }
 
   const accumulator = new Map<string, Accumulated>();
 
   for (const primaryId of recognizedIds) {
-    const mapping = mappings.get(primaryId)!;
+    const mapping = mappings.get(primaryId);
+    if (!mapping) continue;
     const primary = byId.get(primaryId)!;
 
     for (const suggestion of mapping.suggestions) {
-      // Do not suggest something the user already listed as service connected.
+      // Do not suggest something the user already listed as service connected,
+      // including a recognized primary whose own mapping is currently draft.
       if (recognizedIds.has(suggestion.conditionId)) continue;
 
       const existing = accumulator.get(suggestion.conditionId);
@@ -176,10 +180,10 @@ export function recommend(
   // Focus Engine: Constrain recommendations strictly to user-selected diagnosed conditions
   if (intake.diagnosedConditions && intake.diagnosedConditions.length > 0) {
     const diagnosedSet = new Set(
-      intake.diagnosedConditions.map((c: string) => normalizeConditionName(c))
+      intake.diagnosedConditions.map((c: string) => normalizeConditionName(c)),
     );
-    recommendations = recommendations.filter(rec => 
-      diagnosedSet.has(normalizeConditionName(rec.condition))
+    recommendations = recommendations.filter((rec) =>
+      diagnosedSet.has(normalizeConditionName(rec.condition)),
     );
   }
 
