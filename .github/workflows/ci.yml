@@ -14,6 +14,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -153,15 +154,27 @@ jobs:
           } > ci-issue-body.md
 
           if [ -n "$FAILED_STEPS" ]; then
-            gh issue create \
-              --title "CI failure: ${FAILED_STEPS} [${GITHUB_SHA::7}]" \
-              --body-file ci-issue-body.md \
-              --label "ci-failure"
+            ISSUE_TITLE="CI failure: ${FAILED_STEPS} [${GITHUB_SHA::7}]"
+            EXISTING_ISSUE=$(gh issue list --state open --label ci-failure --search "in:title ${ISSUE_TITLE}" --json number --jq '.[0].number')
+            if [ -z "$EXISTING_ISSUE" ]; then
+              gh issue create \
+                --title "$ISSUE_TITLE" \
+                --body-file ci-issue-body.md \
+                --label "ci-failure"
+            else
+              echo "An open CI failure issue already exists (#${EXISTING_ISSUE}); not creating a duplicate."
+            fi
           elif [ "${{ steps.test.outputs.flaky }}" = "true" ]; then
-            gh issue create \
-              --title "Flaky test detected [${GITHUB_SHA::7}]" \
-              --body-file ci-issue-body.md \
-              --label "ci-flaky"
+            ISSUE_TITLE="Flaky test detected [${GITHUB_SHA::7}]"
+            EXISTING_ISSUE=$(gh issue list --state open --label ci-flaky --search "in:title ${ISSUE_TITLE}" --json number --jq '.[0].number')
+            if [ -z "$EXISTING_ISSUE" ]; then
+              gh issue create \
+                --title "$ISSUE_TITLE" \
+                --body-file ci-issue-body.md \
+                --label "ci-flaky"
+            else
+              echo "An open flaky-test issue already exists (#${EXISTING_ISSUE}); not creating a duplicate."
+            fi
           fi
       - name: Fail the job if any gate failed
         if: always()
