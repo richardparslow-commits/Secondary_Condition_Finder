@@ -24,15 +24,15 @@ to discuss with a qualified provider or an accredited representative.
 Phase 1: web app with no live VA data. See `docs/product-spec.md` for scope and
 `docs/phase-plan.md` for the full roadmap.
 
-All source citations currently ship as **unverified**. They have not been
-confirmed by a qualified reviewer and are displayed as starting points for your
-own verification, not as authority.
+Published sources may still be marked **unverified** until a qualified reviewer
+has independently checked them. Unverified references are displayed as starting
+points for review, not as independently verified authority.
 
 ## Stack
 
 Next.js (App Router), TypeScript, Tailwind, Zod, Vitest. The knowledge base is
 JSON in version control so every change to a condition mapping or a citation
-arrives as a reviewable diff. SQLite backs local event logging.
+arrives as a reviewable diff. SQLite can back local aggregate event metrics.
 
 ## Getting started
 
@@ -65,7 +65,13 @@ React hydrates, which can cause this warning even when app markup is stable.
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
-| `EVENT_LOG_SQLITE_PATH` | unset | Path to a SQLite file for recommendation event logs. When unset, events are written as structured stdout lines instead. |
+| `EVENT_LOG_SQLITE_PATH` | unset | Path to a SQLite file for aggregate recommendation event metrics. When unset, aggregate events are written as structured stdout lines instead. |
+| `SECONDARY_WORKFLOW_SESSION_SECRET` | development-only fallback outside production | Server-only secret used to encrypt and authenticate the secondary-workflow cookie with AES-256-GCM. Production requires at least 32 characters and fails closed if it is missing or too short. |
+
+For production, generate `SECONDARY_WORKFLOW_SESSION_SECRET` with a
+cryptographically secure secret manager or random generator and store it only
+as a server-side deployment secret. Do not expose it through a `NEXT_PUBLIC_*`
+variable or commit it to the repository.
 
 ## Layout
 
@@ -78,7 +84,7 @@ src/lib/catalog/       Zod schema, loader, lookup. Condition identity.
 src/lib/kb/            Zod schema, loader, mapping helpers
 src/lib/engine/        Pure recommendation logic, no I/O
 src/lib/presumptive/   Zod schema, loader, service-history matcher
-src/lib/log/           Event logging behind an EventLogger interface
+src/lib/log/           Aggregate event logging behind an EventLogger interface
 src/app/               App Router pages
 src/components/        Presentational components
 tests/                 Vitest
@@ -95,25 +101,26 @@ Routes:
   - `/secondary/upload` (optional checklist flag only; no file parsing or medical interpretation)
   - `/secondary/suggestions`
   - `/secondary/evidence`
-- `/results` legacy query-based secondary results (kept for scenario/demo compatibility)
+- `/results` legacy route that now redirects to `/secondary` and does not process query-based health state
 - `/presumptive` and `/presumptive/results`
 - `/scenarios`
 
 Wizard notes:
 
-- Later secondary steps are route-guarded and require valid prior-step query state.
-- Back links preserve prior selections so users can revise choices without restarting.
-- Suggestions and evidence pages require an explicit upload-step choice (`documentsShared`)
-  even though file upload itself is optional.
+- Secondary workflow state is submitted with server actions rather than encoded
+  into query strings.
+- Later steps read the prior state from a short-lived encrypted, authenticated,
+  HttpOnly, SameSite=Strict cookie scoped to `/secondary`.
+- Back links use clean route paths so selections do not enter browser history,
+  referrer headers, or copied URLs.
+- Suggestions and evidence pages require an explicit upload-step choice
+  (`documentsShared`) even though file upload itself is optional.
 
 ## Coverage
 
-193 conditions across 14 body systems are in the catalog.
-
-- 193 have version-controlled mapping files.
-- 193 are published (`draft: false`) and active in recommendations.
-- Coverage is hard-enforced by tests to remain 1:1 with the catalog.
-
+193 conditions are present in the catalog and have version-controlled mapping
+files. Draft mappings remain excluded from recommendation output until their
+publication requirements are satisfied.
 
 ## Adding a condition
 
@@ -123,15 +130,14 @@ Two steps, and they are separate on purpose.
    with a unique id, name, aliases, and a rating citation if you have a real
    one. This makes the condition selectable.
 2. **Mappings.** Create `data/knowledge-base/<id>.json` where the filename
-   matches the `id`. Each suggestion needs `conditionId`, `rank`, `prevalence`,
-   `rationale`, at least one evidence gap, and at least one source reference
-   with `verified: false`. This makes it return results.
+   matches the `id`. Each published suggestion needs `conditionId`, `rank`,
+   `prevalence`, `rationale`, evidence gaps, and source references that satisfy
+   the repository's current citation and publication rules.
 
-Run `npm test` to check the integrity invariants, including that every
-`conditionId` resolves to a catalog entry. The app also validates these
-references at load time, so drift fails fast before recommendations run.
-Strict schema parsing also fails on unknown JSON keys so data contract drift
-cannot be silently accepted.
+Run `npm run kb:validate`, `npm run citations:audit`, and `npm test` to check the
+integrity invariants. The app also validates references at load time, so drift
+fails fast before recommendations run. Strict schema parsing rejects unknown
+JSON keys so data-contract drift cannot be silently accepted.
 
 ### Draft mappings
 
@@ -145,6 +151,10 @@ Contribution rules for humans and agents alike are in
 
 ## Privacy
 
-No accounts, no personally identifying information, and no intake free text is
-persisted. Event logs record resolved condition names, counts, and a timestamp
-only, which is enough to explain why a given set of suggestions was produced.
+The secondary workflow does not place diagnosis, service-connected status,
+rating choices, or document-checklist state in URLs. Its short-lived workflow
+cookie is encrypted and authenticated before being sent to the browser.
+Application Insights is configured for path-only page views with automatic
+route/AJAX/fetch tracking disabled. Recommendation event logs retain aggregate
+counts only; they do not persist condition identifiers, diagnoses, symptoms,
+medications, exposures, or intake free text.
