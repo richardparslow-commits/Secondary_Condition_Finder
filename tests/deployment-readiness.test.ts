@@ -116,6 +116,28 @@ describe("production deployment readiness", () => {
     expect(workflow).not.toContain("NEXT_PUBLIC_VA_SANDBOX_API_KEY");
   });
 
+  it("completes the standalone package before Azure Static Web Apps deploys it", () => {
+    const workflow = read(
+      ".github/workflows/azure-static-web-apps-gentle-tree-04b340f0f.yml",
+    );
+    const packageJson = JSON.parse(read("package.json")) as {
+      scripts?: Record<string, string>;
+    };
+    const packagingScript = read("scripts/package-next-standalone.mjs");
+
+    expect(workflow).toContain('app_build_command: "npm run build:azure"');
+    expect(packageJson.scripts?.["build:azure"]).toBe(
+      "next build && node scripts/package-next-standalone.mjs",
+    );
+    expect(packagingScript).toContain('path.join(root, ".next", "standalone")');
+    expect(packagingScript).toContain('path.join(root, ".next", "static")');
+    expect(packagingScript).toContain('path.join(standaloneDir, ".next", "static")');
+    expect(packagingScript).toContain('path.join(root, "public")');
+    expect(packagingScript).toContain('path.join(standaloneDir, "public")');
+    expect(packagingScript).toContain("await cp(staticSource, staticDestination");
+    expect(packagingScript).toContain("await cp(publicSource, publicDestination");
+  });
+
   it("documents the Azure runtime-setting verification boundary", () => {
     const runbook = read("docs/deployment-readiness.md");
 
