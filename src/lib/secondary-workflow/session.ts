@@ -31,11 +31,17 @@ export type StoredSecondaryWorkflowState = z.infer<
   typeof storedWorkflowStateSchema
 >;
 
+export function parseStoredSecondaryWorkflowState(
+  value: unknown,
+): StoredSecondaryWorkflowState {
+  return storedWorkflowStateSchema.parse(value);
+}
+
 export function sealWorkflowState(
   state: StoredSecondaryWorkflowState,
   secret = workflowSessionSecret(),
 ): string {
-  return sealSessionPayload(storedWorkflowStateSchema.parse(state), secret);
+  return sealSessionPayload(parseStoredSecondaryWorkflowState(state), secret);
 }
 
 export function openWorkflowState(
@@ -43,7 +49,7 @@ export function openWorkflowState(
   secret = workflowSessionSecret(),
 ): StoredSecondaryWorkflowState | null {
   try {
-    return storedWorkflowStateSchema.parse(openSessionPayload(sealed, secret));
+    return parseStoredSecondaryWorkflowState(openSessionPayload(sealed, secret));
   } catch {
     return null;
   }
