@@ -37,7 +37,7 @@ export interface Recommendation {
     citation: string;
     note: string;
     verified: boolean;
-    verificationScope: SourceVerificationScope;
+    verificationScope?: SourceVerificationScope;
   }>;
   matchedIntakeContext: string[];
 }
