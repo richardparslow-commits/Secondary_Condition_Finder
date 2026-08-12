@@ -27,12 +27,20 @@ export default function PrivacyPage() {
 
         <h2 className="text-xl font-semibold mt-6">3. Application telemetry and operational logs</h2>
         <p>
-          When Application Insights is configured, page-view telemetry is limited to the route path. Automatic route, AJAX, and fetch tracking are disabled, and telemetry URLs are stripped of query strings and fragments before transmission. Workflow selections, disability ratings, service locations, and service dates are not intentionally included in telemetry payloads. Recommendation event logging is limited to aggregate operational counts and does not retain condition identifiers, diagnoses, symptoms, medications, exposures, or intake notes.
+          When Application Insights is configured, page-view telemetry is limited to the route path. Automatic route, AJAX, and fetch tracking are disabled, and telemetry URLs are stripped of query strings and fragments before transmission. Workflow selections, disability ratings, service locations, and service dates are not intentionally included in telemetry payloads. Recommendation event logging is limited to aggregate operational counts and does not retain condition identifiers, diagnoses, symptoms, medications, exposures, intake notes, uploaded document text, or extracted evidence quotations.
         </p>
 
-        <h2 className="text-xl font-semibold mt-6">4. Optional document picker</h2>
+        <h2 className="text-xl font-semibold mt-6">4. Optional browser-local evidence review</h2>
         <p>
-          The Phase 1 document picker is optional and does not upload files for AI analysis. The workflow records only whether you want the checklist to note that documents are available for manual review.
+          Supporting-document review is optional. Supported text files and pasted evidence text are analyzed locally in your browser. Raw document text is not submitted to the application server, added to workflow cookies, written to application logs, or stored in a user account. The browser may temporarily retain only the extracted evidence excerpts and their source/locator metadata in session storage so they can be displayed on Step 6. Session storage is scoped to the current browser tab and is cleared when the tab is closed; you can also clear the local evidence from Step 4 at any time.
+        </p>
+        <p>
+          Direct PDF and DOCX parsing is not enabled in the current privacy-first evidence-review slice. For those formats, you may copy or export relevant text and provide a page or section locator before local analysis. Scanned-image records require OCR outside this application before text can be reviewed.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-6">5. Evidence classification limits</h2>
+        <p>
+          The local evidence classifier is intentionally conservative. An excerpt is labeled “nexus-relevant” only when you identify the source as clinician-authored, the excerpt includes causation or aggravation language, and it mentions at least one condition selected in the workflow. This label does not determine legal competency, credibility, probative weight, medical correctness, or whether VA will find the evidence sufficient.
         </p>
       </section>
 
