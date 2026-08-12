@@ -39,7 +39,7 @@ jobs:
             --header 'Accept: application/json' \
             --output "$body_file" \
             --write-out '%{http_code}' \
-            "$PRODUCTION_BASE_URL/api/runtime-readiness")"
+            "$PRODUCTION_BASE_URL/runtime-readiness")"
           curl_status=$?
           set -e
 
@@ -96,7 +96,7 @@ jobs:
           The response body was not printed or attached. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded. The gate remains open.
           EOF
 
-          gh issue comment "$RUNTIME_READINESS_ISSUE" --body-file runtime-failure.md
+          gh issue comment "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY" --body-file runtime-failure.md
 
       - name: Record successful runtime evidence
         if: steps.readiness.outputs.ready == 'true'
@@ -120,5 +120,5 @@ jobs:
           No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded.
           EOF
 
-          gh issue comment "$RUNTIME_READINESS_ISSUE" --body-file runtime-evidence.md
-          gh issue close "$RUNTIME_READINESS_ISSUE" --reason completed
+          gh issue comment "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY" --body-file runtime-evidence.md
+          gh issue close "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY" --reason completed
