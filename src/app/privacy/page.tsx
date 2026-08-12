@@ -17,17 +17,20 @@ export default function PrivacyPage() {
 
         <h2 className="text-xl font-semibold mt-6">1. Workflow session state</h2>
         <p>
-          Diagnosed-condition selections, service-connected selections, rating choices, document-checklist choices, selected service locations, and service dates are submitted only to move through their respective workflows. The app encrypts and authenticates workflow state with AES-256-GCM before placing it in HttpOnly, SameSite=Strict cookies scoped to the applicable workflow path. These cookies expire after 30 minutes and are not used as advertising or cross-site tracking identifiers. Modified or invalid workflow cookies are rejected rather than processed.
+          Diagnosed-condition selections, service-connected selections, rating choices, document-checklist choices, optional bounded medication/treatment context, selected service locations, and service dates are submitted only to move through their respective workflows. The app encrypts and authenticates workflow state with AES-256-GCM before placing it in HttpOnly, SameSite=Strict cookies scoped to the applicable workflow path. These cookies expire after 30 minutes and are not used as advertising or cross-site tracking identifiers. Modified or invalid workflow cookies are rejected rather than processed.
+        </p>
+        <p>
+          Medication/treatment context is optional and limited to short entries intended for pathway research. Users should provide only the minimum necessary medication, treatment, procedure, or device terms and should not enter Social Security numbers, claim numbers, addresses, or unrelated medical details in those fields.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">2. URLs and browser history</h2>
         <p>
-          The secondary workflow does not encode diagnosis, service-connected status, disability ratings, or document-sharing choices in query strings. The presumptive workflow does not encode selected service locations or service dates in query strings. The legacy query-based secondary-results route no longer processes health-related URL state. This reduces exposure through copied links, browser history, referrer headers, and URL-based logs.
+          The secondary workflow does not encode diagnosis, service-connected status, disability ratings, document-sharing choices, or medication/treatment context in query strings. The presumptive workflow does not encode selected service locations or service dates in query strings. The legacy query-based secondary-results route no longer processes health-related URL state. This reduces exposure through copied links, browser history, referrer headers, and URL-based logs.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">3. Application telemetry and operational logs</h2>
         <p>
-          When Application Insights is configured, page-view telemetry is limited to the route path. Automatic route, AJAX, and fetch tracking are disabled, and telemetry URLs are stripped of query strings and fragments before transmission. Workflow selections, disability ratings, service locations, and service dates are not intentionally included in telemetry payloads. Recommendation event logging is limited to aggregate operational counts and does not retain condition identifiers, diagnoses, symptoms, medications, exposures, intake notes, uploaded document text, or extracted evidence quotations.
+          When Application Insights is configured, page-view telemetry is limited to the route path. Automatic route, AJAX, and fetch tracking are disabled, and telemetry URLs are stripped of query strings and fragments before transmission. Workflow selections, disability ratings, medication/treatment context, service locations, and service dates are not intentionally included in telemetry payloads. Recommendation event logging is limited to aggregate operational counts and does not retain condition identifiers, diagnoses, symptoms, medications, treatments, exposures, intake notes, uploaded document text, or extracted evidence quotations.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">4. Optional browser-local evidence review</h2>
@@ -41,9 +44,12 @@ export default function PrivacyPage() {
           Image-only or scanned PDF pages may contain no extractable text. The app reports those pages instead of guessing or sending the record to an OCR provider. OCR must be performed separately in a trusted tool before that text can be reviewed here.
         </p>
 
-        <h2 className="text-xl font-semibold mt-6">5. Evidence classification limits</h2>
+        <h2 className="text-xl font-semibold mt-6">5. Evidence and context classification limits</h2>
         <p>
           The local evidence classifier is intentionally conservative. An excerpt is labeled “nexus-relevant” only when you identify the source as clinician-authored, the excerpt includes causation, aggravation, or alternative-cause language, and it mentions at least one condition selected in the workflow. This label does not determine legal competency, credibility, probative weight, medical correctness, or whether VA will find the evidence sufficient.
+        </p>
+        <p>
+          Medication/treatment entries are used only to surface literal normalized text overlap with authored recommendation rationale or evidence-gap text. A match does not change recommendation ranking, infer a drug class or mechanism, or establish individual causation, aggravation, or medical nexus.
         </p>
       </section>
 
