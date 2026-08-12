@@ -23,11 +23,13 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
   try { state = parseWorkflowState(workflowSessionToQueryParams(session), catalog); }
   catch { return <main><header className="page-hero"><h1>Complete prior steps first</h1><p>We need the prior workflow selections before showing grouped suggestions.</p></header><Link href="/secondary/upload" className="ui-button">Back to optional document upload</Link></main>; }
 
+  const medications = state.medications ?? [];
+  const treatments = state.treatments ?? [];
   const recommendationsResult = recommend(catalog, kb, {
     primaryConditions: state.serviceConnectedConditionIds,
     symptoms: [],
-    medications: state.medications,
-    treatments: state.treatments,
+    medications,
+    treatments,
     exposures: [],
     notes: "",
   });
@@ -47,7 +49,7 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
           <h3 className="font-bold">Diagnosed conditions</h3><div className="mt-2 flex flex-wrap gap-2">{diagnosedNames.map((name) => <span key={name} className="rounded-lg border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs text-blue-900">{name}</span>)}</div>
           <div className="ui-divider" />
           <h3 className="font-bold">Service-connected conditions</h3><div className="mt-2 flex flex-wrap gap-2">{primaryNames.map((name) => <span key={name} className="rounded-lg border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs text-blue-900">{name}</span>)}</div>
-          {(state.medications.length > 0 || state.treatments.length > 0) && <><div className="ui-divider" /><h3 className="font-bold">Optional treatment context</h3>{state.medications.length > 0 && <div className="mt-2"><p className="text-xs uppercase tracking-wide text-slate-500">Medications</p><div className="mt-1 flex flex-wrap gap-2">{state.medications.map((item) => <span key={`med-${item}`} className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs">{item}</span>)}</div></div>}{state.treatments.length > 0 && <div className="mt-3"><p className="text-xs uppercase tracking-wide text-slate-500">Treatments / procedures / devices</p><div className="mt-1 flex flex-wrap gap-2">{state.treatments.map((item) => <span key={`tx-${item}`} className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs">{item}</span>)}</div></div>}</>}
+          {(medications.length > 0 || treatments.length > 0) && <><div className="ui-divider" /><h3 className="font-bold">Optional treatment context</h3>{medications.length > 0 && <div className="mt-2"><p className="text-xs uppercase tracking-wide text-slate-500">Medications</p><div className="mt-1 flex flex-wrap gap-2">{medications.map((item) => <span key={`med-${item}`} className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs">{item}</span>)}</div></div>}{treatments.length > 0 && <div className="mt-3"><p className="text-xs uppercase tracking-wide text-slate-500">Treatments / procedures / devices</p><div className="mt-1 flex flex-wrap gap-2">{treatments.map((item) => <span key={`tx-${item}`} className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs">{item}</span>)}</div></div>}</>}
           <div className="ui-callout mt-5 text-sm">Medication/treatment context is used only to flag literal overlap with authored pathway or evidence-gap text. It does not change recommendation rank, prove causation, or establish a medical nexus.</div>
           <Link href="/secondary/diagnosed" className="ui-button-secondary mt-5 w-full">Edit Inputs</Link>
         </aside>
