@@ -7,7 +7,7 @@ Use this checklist immediately before completing the VA API Platform production-
 Do not submit until all blocking items are complete.
 
 - [x] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence for VA Forms and Benefits Reference Data.
-- [ ] Issue #213 is closed with non-sensitive production `/api/runtime-readiness` evidence proving the primary `WORKFLOW_SESSION_SECRET` is usable by the deployed runtime.
+- [ ] Issue #213 is closed with non-sensitive production `/runtime-readiness` evidence proving the primary `WORKFLOW_SESSION_SECRET` is usable by the deployed runtime.
 - [ ] Latest `main` CI is green.
 - [ ] Latest Azure deployment for the same `main` commit is green.
 - [ ] Final deployed-app demo rehearsal passes `docs/phase3-demo-script.md`.
@@ -108,7 +108,7 @@ Include:
 - payload validation and fail-closed fallback;
 - pinned Azure deployment action;
 - production deployment verification on the exact `main` commit;
-- non-sensitive runtime verification of the primary workflow-session secret through `/api/runtime-readiness`.
+- non-sensitive runtime verification of the primary workflow-session secret through `/runtime-readiness`.
 
 ## Unauthorized or duplicate request safeguards
 
