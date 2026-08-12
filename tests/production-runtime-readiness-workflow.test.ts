@@ -19,6 +19,18 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).toContain("github.event.workflow_run.head_branch == 'main'");
   });
 
+  it("records a status-only host capability matrix", () => {
+    const workflow = read(workflowPath);
+
+    expect(workflow).toContain("Probe production route matrix");
+    expect(workflow).toContain("probe_status() {");
+    expect(workflow).toContain("probe_status '/'");
+    expect(workflow).toContain("probe_status '/about'");
+    expect(workflow).toContain("probe_status '/va-forms'");
+    expect(workflow).toContain("--output /dev/null");
+    expect(workflow).toContain("Route matrix:");
+  });
+
   it("checks only the non-sensitive dynamic-page readiness marker", () => {
     const workflow = read(workflowPath);
 
@@ -41,9 +53,9 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).toContain('outcome="payload_not_ready"');
     expect(workflow).toContain('outcome="unexpected_payload"');
     expect(workflow).toContain("Record failed runtime evidence");
-    expect(workflow).toContain("Request outcome:");
-    expect(workflow).toContain("HTTP status:");
-    expect(workflow).toContain("The response body was not printed or attached");
+    expect(workflow).toContain("Readiness request outcome:");
+    expect(workflow).toContain("Readiness HTTP status:");
+    expect(workflow).toContain("The readiness response body was not printed or attached");
   });
 
   it("targets the repository explicitly when recording issue evidence", () => {
