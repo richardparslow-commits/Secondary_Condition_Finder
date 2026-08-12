@@ -9,6 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "postinstall": "node scripts/copy-pdf-worker.js",
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
