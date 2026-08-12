@@ -108,3 +108,35 @@ export function openSessionPayload(
     return null;
   }
 }
+
+export function workflowSessionRuntimeReady(): boolean {
+  if (process.env.NODE_ENV !== "production") return false;
+
+  const configured = process.env.WORKFLOW_SESSION_SECRET;
+  if (
+    !configured ||
+    configured.length < MIN_WORKFLOW_SESSION_SECRET_LENGTH
+  ) {
+    return false;
+  }
+
+  try {
+    const probe = {
+      kind: "workflow-session-runtime-readiness",
+      version: 1,
+    };
+    const sealed = sealSessionPayload(probe, configured);
+    const opened = openSessionPayload(sealed, configured);
+
+    return (
+      typeof opened === "object" &&
+      opened !== null &&
+      "kind" in opened &&
+      opened.kind === probe.kind &&
+      "version" in opened &&
+      opened.version === probe.version
+    );
+  } catch {
+    return false;
+  }
+}
