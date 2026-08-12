@@ -3,11 +3,16 @@ import { z } from "zod";
 import { indexById } from "@/lib/catalog/lookup";
 import type { ConditionCatalog } from "@/lib/catalog/schema";
 
+const MAX_CONTEXT_ITEMS = 20;
+const MAX_CONTEXT_ITEM_LENGTH = 160;
+
 export interface SecondaryWorkflowState {
   diagnosedConditionIds: string[];
   serviceConnectedConditionIds: string[];
   ratingsByConditionId: Record<string, number | null>;
   documentsShared: boolean;
+  medications?: string[];
+  treatments?: string[];
 }
 
 export type QueryValue = string | string[] | undefined;
@@ -58,6 +63,26 @@ function first(value: QueryValue): string | undefined {
 
 function dedupe(values: string[]): string[] {
   return [...new Set(values)];
+}
+
+function parseContextEntries(value: QueryValue, label: string): string[] {
+  if (!value) return [];
+  const entries = dedupe(
+    (Array.isArray(value) ? value : [value])
+      .flatMap((entry) => entry.split(/\r?\n/))
+      .map((entry) => entry.trim())
+      .filter(Boolean),
+  );
+
+  if (entries.length > MAX_CONTEXT_ITEMS) {
+    throw new Error(`${label} context is limited to ${MAX_CONTEXT_ITEMS} entries.`);
+  }
+  if (entries.some((entry) => entry.length > MAX_CONTEXT_ITEM_LENGTH)) {
+    throw new Error(
+      `${label} entries must be ${MAX_CONTEXT_ITEM_LENGTH} characters or fewer.`,
+    );
+  }
+  return entries;
 }
 
 function toKnownConditionIds(catalog: ConditionCatalog, ids: string[]): string[] {
@@ -201,17 +226,16 @@ export function parseDocumentsSharedPrefill(value: QueryValue): boolean {
 export function parseDocumentsSelection(
   params: QueryParams,
   catalog: ConditionCatalog,
-): {
-  diagnosedConditionIds: string[];
-  serviceConnectedConditionIds: string[];
-  ratingsByConditionId: Record<string, number | null>;
-  documentsShared: boolean;
-} {
+): SecondaryWorkflowState {
   const ratings = parseRatingsSelection(params, catalog);
+  const medications = parseContextEntries(params.medications, "Medication");
+  const treatments = parseContextEntries(params.treatments, "Treatment");
 
   return {
     ...ratings,
     documentsShared: parseDocumentsShared(params.documentsShared),
+    ...(medications.length > 0 ? { medications } : {}),
+    ...(treatments.length > 0 ? { treatments } : {}),
   };
 }
 
@@ -242,5 +266,7 @@ export function workflowStateToSearchParams(
 
   searchParams.set("documentsShared", state.documentsShared ? "yes" : "no");
 
+  // Medication and treatment context is intentionally excluded from URL
+  // serialization. It belongs only in the encrypted short-lived workflow session.
   return searchParams;
 }

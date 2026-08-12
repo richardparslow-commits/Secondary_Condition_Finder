@@ -48,6 +48,24 @@ export function SecondarySuggestionItem({ recommendation, primaryId }: Props) {
         </p>
       )}
 
+      {recommendation.matchedIntakeContext.length > 0 && (
+        <section className="mt-3 rounded-md border border-blue-200 bg-blue-50 p-3">
+          <h4 className="text-xs font-semibold uppercase tracking-wide text-blue-900">
+            Reported context appearing in this authored pathway
+          </h4>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {recommendation.matchedIntakeContext.map((item) => (
+              <span key={item} className="rounded-md border border-blue-200 bg-white px-2 py-1 text-xs text-blue-900">
+                {item}
+              </span>
+            ))}
+          </div>
+          <p className="mt-2 text-xs text-slate-700">
+            This is a literal text-overlap cue only. It does not change recommendation rank or establish individual causation, aggravation, or medical nexus.
+          </p>
+        </section>
+      )}
+
       <section className="mt-3 rounded-md bg-slate-50 p-3">
         <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
           Evidence that may help

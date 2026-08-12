@@ -47,16 +47,35 @@ function dedupeReferences(references: SourceReference[]): SourceReference[] {
   return [...seen.values()];
 }
 
-/** Intake terms whose text overlaps the suggestion. Display only. */
-function matchIntakeContext(condition: string, intake: Intake): string[] {
-  const terms = [...intake.symptoms, ...intake.medications, ...intake.exposures];
-  const target = normalizeConditionName(condition);
+/**
+ * Intake context is display-only. A term is surfaced only when its normalized
+ * text literally overlaps authored recommendation content. It does not alter
+ * ranking and does not infer drug classes, mechanisms, or individual causation.
+ */
+function matchIntakeContext(
+  condition: string,
+  contributingPrimaries: ContributingPrimary[],
+  evidenceGaps: string[],
+  intake: Intake,
+): string[] {
+  const terms = [
+    ...intake.symptoms,
+    ...intake.medications,
+    ...(intake.treatments ?? []),
+    ...intake.exposures,
+  ];
+  const authoredText = normalizeConditionName(
+    [
+      condition,
+      ...contributingPrimaries.map((primary) => primary.rationale),
+      ...evidenceGaps,
+    ].join(" "),
+  );
 
   return dedupe(
     terms.filter((term) => {
       const normalized = normalizeConditionName(term);
-      if (normalized.length < 3) return false;
-      return target.includes(normalized) || normalized.includes(target);
+      return normalized.length >= 3 && authoredText.includes(normalized);
     }),
   );
 }
@@ -161,18 +180,24 @@ export function recommend(
           `Suggestion references unknown catalog condition "${entry.conditionId}".`,
         );
       }
+      const contributingPrimaries = [...entry.contributingPrimaries].sort(
+        (a, b) => a.rank - b.rank || a.name.localeCompare(b.name),
+      );
       return {
         conditionId: entry.conditionId,
         condition: catalogEntry.name,
         bodySystem: catalogEntry.bodySystem,
         prevalence: PREVALENCE_BY_RANK[entry.prevalenceRank],
         score: Number(entry.score.toFixed(4)),
-        contributingPrimaries: [...entry.contributingPrimaries].sort(
-          (a, b) => a.rank - b.rank || a.name.localeCompare(b.name),
-        ),
+        contributingPrimaries,
         evidenceGaps: entry.evidenceGaps,
         sourceReferences: entry.sourceReferences,
-        matchedIntakeContext: matchIntakeContext(catalogEntry.name, intake),
+        matchedIntakeContext: matchIntakeContext(
+          catalogEntry.name,
+          contributingPrimaries,
+          entry.evidenceGaps,
+          intake,
+        ),
       };
     })
     .sort((a, b) => b.score - a.score || a.condition.localeCompare(b.condition));

@@ -23,7 +23,16 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
   try { state = parseWorkflowState(workflowSessionToQueryParams(session), catalog); }
   catch { return <main><header className="page-hero"><h1>Complete prior steps first</h1><p>We need the prior workflow selections before showing grouped suggestions.</p></header><Link href="/secondary/upload" className="ui-button">Back to optional document upload</Link></main>; }
 
-  const recommendationsResult = recommend(catalog, kb, { primaryConditions: state.serviceConnectedConditionIds, symptoms: [], medications: [], exposures: [], notes: "" });
+  const medications = state.medications ?? [];
+  const treatments = state.treatments ?? [];
+  const recommendationsResult = recommend(catalog, kb, {
+    primaryConditions: state.serviceConnectedConditionIds,
+    symptoms: [],
+    medications,
+    treatments,
+    exposures: [],
+    notes: "",
+  });
   const linked = findLinkedNonServiceConnectedConditions(state.diagnosedConditionIds, state.serviceConnectedConditionIds, recommendationsResult.recommendations);
   const grouped = groupSuggestionsByPrimary(catalog, state.serviceConnectedConditionIds, recommendationsResult.recommendations);
   const diagnosedNames = state.diagnosedConditionIds.map((id) => byId.get(id)?.name).filter(Boolean);
@@ -31,7 +40,7 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
 
   return (
     <main>
-      <header className="page-hero text-center"><p className="ui-kicker">Step 5 of 6</p><h1>Secondary Suggestions</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Possible claim-preparation pathways based on your selected service-connected conditions and published knowledge-base mappings.</p></header>
+      <header className="page-hero text-center"><p className="ui-kicker">Step 5 of 6</p><h1>Secondary Suggestions</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Possible claim-preparation pathways based on your selected service-connected conditions, published knowledge-base mappings, and any optional medication/treatment context you supplied.</p></header>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><strong className="text-blue-700">5 Suggestions</strong><span>6 Evidence</span></div>
 
       <div className="ui-grid">
@@ -40,7 +49,8 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
           <h3 className="font-bold">Diagnosed conditions</h3><div className="mt-2 flex flex-wrap gap-2">{diagnosedNames.map((name) => <span key={name} className="rounded-lg border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs text-blue-900">{name}</span>)}</div>
           <div className="ui-divider" />
           <h3 className="font-bold">Service-connected conditions</h3><div className="mt-2 flex flex-wrap gap-2">{primaryNames.map((name) => <span key={name} className="rounded-lg border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs text-blue-900">{name}</span>)}</div>
-          <div className="ui-callout mt-5 text-sm">These inputs were used to generate the suggestions shown. Suggestions are not approval predictions.</div>
+          {(medications.length > 0 || treatments.length > 0) && <><div className="ui-divider" /><h3 className="font-bold">Optional treatment context</h3>{medications.length > 0 && <div className="mt-2"><p className="text-xs uppercase tracking-wide text-slate-500">Medications</p><div className="mt-1 flex flex-wrap gap-2">{medications.map((item) => <span key={`med-${item}`} className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs">{item}</span>)}</div></div>}{treatments.length > 0 && <div className="mt-3"><p className="text-xs uppercase tracking-wide text-slate-500">Treatments / procedures / devices</p><div className="mt-1 flex flex-wrap gap-2">{treatments.map((item) => <span key={`tx-${item}`} className="rounded-lg border border-slate-200 px-2.5 py-1 text-xs">{item}</span>)}</div></div>}</>}
+          <div className="ui-callout mt-5 text-sm">Medication/treatment context is used only to flag literal overlap with authored pathway or evidence-gap text. It does not change recommendation rank, prove causation, or establish a medical nexus.</div>
           <Link href="/secondary/diagnosed" className="ui-button-secondary mt-5 w-full">Edit Inputs</Link>
         </aside>
 
@@ -52,7 +62,7 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
         </section>
 
         <aside className="ui-stack">
-          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">How to Interpret Results</h2></div><ul className="space-y-4 text-sm"><li><strong>Not ranked by likelihood.</strong><p>Results are not approval probabilities or rankings.</p></li><li><strong>Starting points only.</strong><p>Use suggestions to guide evidence gathering and questions for qualified professionals.</p></li><li><strong>Confirm with evidence.</strong><p>Each pathway must be evaluated against your actual medical history and current VA requirements.</p></li></ul></section>
+          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">How to Interpret Results</h2></div><ul className="space-y-4 text-sm"><li><strong>Not ranked by likelihood.</strong><p>Results are not approval probabilities or rankings.</p></li><li><strong>Starting points only.</strong><p>Use suggestions to guide evidence gathering and questions for qualified professionals.</p></li><li><strong>Context match is not proof.</strong><p>A medication/treatment match means only that your reported term appears in authored pathway text.</p></li><li><strong>Confirm with evidence.</strong><p>Each pathway must be evaluated against your actual medical history and current VA requirements.</p></li></ul></section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Next Review</h2></div><p className="text-sm">The final workflow page turns published recommendation evidence gaps into a structured review checklist.</p></section>
         </aside>
       </div>
