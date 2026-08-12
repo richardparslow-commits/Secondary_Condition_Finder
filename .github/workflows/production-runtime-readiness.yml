@@ -30,13 +30,13 @@ jobs:
           umask 077
           tmp_dir="$(mktemp -d)"
           trap 'rm -rf "$tmp_dir"' EXIT
-          body_file="$tmp_dir/body.json"
+          body_file="$tmp_dir/body.html"
 
           set +e
           http_status="$(curl --silent --show-error --location \
             --connect-timeout 10 \
             --max-time 20 \
-            --header 'Accept: application/json' \
+            --header 'Accept: text/html' \
             --output "$body_file" \
             --write-out '%{http_code}' \
             "$PRODUCTION_BASE_URL/runtime-readiness")"
@@ -50,11 +50,13 @@ jobs:
             http_status="${http_status:-000}"
           elif [ "$http_status" != "200" ]; then
             outcome="http_error"
-          elif jq -e '.status == "ready" and .checks.workflowSessionCrypto == true' "$body_file" >/dev/null; then
+          elif grep -Fq 'data-runtime-readiness="ready"' "$body_file"; then
             ready=true
             outcome="ready"
-          else
+          elif grep -Fq 'data-runtime-readiness="not_ready"' "$body_file"; then
             outcome="payload_not_ready"
+          else
+            outcome="unexpected_payload"
           fi
 
           echo "http_status=$http_status" >> "$GITHUB_OUTPUT"
