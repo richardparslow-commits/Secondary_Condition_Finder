@@ -15,7 +15,7 @@ const mockRecs: Recommendation[] = [
     score: 1.0,
     contributingPrimaries: [{ id: "lumbar-strain", name: "Lumbar Strain", rank: 1, rationale: "Direct nerve impact" }],
     evidenceGaps: ["Current diagnosis records"],
-    sourceReferences: [{ citation: "38 CFR § 3.310", note: "Authority note", verified: false }],
+    sourceReferences: [{ citation: "38 CFR § 3.310", note: "Authority note", verificationScope: "legal-framework", verified: false }],
     matchedIntakeContext: ["SSRI"]
   }
 ];
