@@ -27,15 +27,15 @@ Azure Static Web Apps request-time environment variables are resource settings, 
 
 Issue #213 tracks the production runtime gate for `WORKFLOW_SESSION_SECRET`.
 
-The application exposes a deliberately non-sensitive server-side self-test at `/runtime-readiness`. It is intentionally outside Azure Static Web Apps' reserved `/api` prefix. It does **not** return the secret, its length, a hash, key material, cookie content, or environment-variable values. The response is non-cacheable.
+The application exposes a deliberately non-sensitive force-dynamic server-rendered page at `/runtime-readiness`. Two production deployments showed that standalone Next.js Route Handlers at this diagnostic path were not reachable through the current Azure Static Web Apps deployment, so the verification surface uses the same server-rendered page model as the application's dynamic pages instead. The page does **not** return the secret, its length, a hash, key material, cookie content, or environment-variable values.
 
-The self-test reports HTTP 200 with `{"status":"ready","checks":{"workflowSessionCrypto":true}}` only when all of the following are true at request time:
+At request time, the page calls the real workflow-session crypto self-test and renders exactly one high-level marker: `data-runtime-readiness="ready"` or `data-runtime-readiness="not_ready"`. It reports `ready` only when all of the following are true:
 
 1. the server is running with `NODE_ENV=production`;
 2. the primary `WORKFLOW_SESSION_SECRET` variable is present with at least 32 characters;
 3. the real AES-256-GCM workflow-session implementation can seal and reopen an in-memory probe successfully.
 
-It reports HTTP 503 with `not_ready` otherwise. The legacy `SECONDARY_WORKFLOW_SESSION_SECRET` fallback is intentionally insufficient to pass this readiness gate.
+The page is configured with `dynamic = "force-dynamic"` and `revalidate = 0`. The legacy `SECONDARY_WORKFLOW_SESSION_SECRET` fallback is intentionally insufficient to produce the `ready` marker.
 
 ### Evidence to record
 
@@ -43,9 +43,10 @@ After deploying the intended `main` commit:
 
 1. confirm repository CI is green for that exact commit;
 2. confirm the Azure Static Web Apps deployment is green for the same commit;
-3. request the production `/runtime-readiness` route;
-4. record only timestamp, deployed commit, production URL, HTTP status, and the high-level `ready` result in issue #213;
-5. never paste, print, log, attach, or otherwise record the secret value.
+3. request the production `/runtime-readiness` page;
+4. require HTTP 200 and the `data-runtime-readiness="ready"` marker;
+5. record only timestamp, deployed commit, production URL, HTTP status, and the high-level readiness result in issue #213;
+6. never paste, print, log, attach, or otherwise record the response body or secret value.
 
 A successful runtime self-test proves that the current production process can access and use a valid primary workflow-session secret. It does not authorize disclosure of that secret or prove unrelated Azure settings.
 
@@ -91,7 +92,7 @@ After every production deployment:
 
 1. Confirm the Azure deployment workflow succeeded.
 2. Confirm the normal repository CI workflow succeeded on the same `main` commit.
-3. Request `/runtime-readiness` and require HTTP 200 / `ready` before treating the workflow-session runtime as configured.
+3. Request `/runtime-readiness` and require HTTP 200 plus `data-runtime-readiness="ready"` before treating the workflow-session runtime as configured.
 4. Open `/` and verify the home page renders.
 5. Open `/va-forms` with sandbox disabled and verify it renders `Local reference` without an error.
 6. Start the secondary workflow and verify advancing from the diagnosed-condition step succeeds.
