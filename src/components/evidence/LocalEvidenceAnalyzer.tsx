@@ -219,7 +219,12 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
       {message && <p role="status" className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm text-blue-900">{message}</p>}
       {warnings.length > 0 && (
-        <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-950">
+        <div
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-950"
+        >
           <strong>Extraction notices</strong>
           <ul className="mt-2 list-disc space-y-1 pl-5">{warnings.map((warning) => <li key={warning}>{warning}</li>)}</ul>
         </div>
@@ -229,7 +234,14 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h3 className="font-semibold">Evidence excerpt summary</h3>
-            <p className="text-sm text-slate-600">{totals.nexus} nexus-relevant excerpt(s); {totals.supporting} supporting excerpt(s) retained for this browser tab.</p>
+            <p
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+              className="text-sm text-slate-600"
+            >
+              {totals.nexus} nexus-relevant excerpt(s); {totals.supporting} supporting excerpt(s) retained for this browser tab.
+            </p>
           </div>
           <button type="button" className="ui-button-secondary" onClick={clearEvidence}>Clear local evidence</button>
         </div>

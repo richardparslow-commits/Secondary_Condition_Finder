@@ -40,7 +40,12 @@ export function DisabilityReferenceExplorer({ items }: Props) {
         className="mt-3 w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
       />
 
-      <div className="mt-4 flex items-center justify-between gap-4 text-xs text-slate-600">
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="mt-4 flex items-center justify-between gap-4 text-xs text-slate-600"
+      >
         <span>
           Showing {matches.length} of {items.length} loaded reference terms
         </span>

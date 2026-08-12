@@ -16,7 +16,9 @@ The product may pursue newer WCAG guidance as an additional quality target, but 
 
 **Status: PARTIAL EVIDENCE — MANUAL CONFORMANCE REVIEW PENDING**
 
-The current automated suite proves structural, content, keyboard-entry, focus-style, reflow-safeguard, forced-colors, and reduced-motion contracts. It still does **not** prove complete Section 508 or WCAG conformance. Until the manual checks below are completed and recorded, the production-access package must not represent the application as verified Section 508 compliant.
+The current automated suite proves structural, content, keyboard-entry, focus-style, reflow-safeguard, forced-colors, reduced-motion, and selected live-status announcement contracts. It still does **not** prove complete Section 508 or WCAG conformance. Until the manual checks below are completed and recorded, the production-access package must not represent the application as verified Section 508 compliant.
+
+The deployed manual review tracked in issue #195 also requires a reachable intended production build. If the production host is unavailable or returns routing errors, that is a hosting blocker rather than accessibility evidence and the manual review remains pending.
 
 ## Automated evidence currently enforced
 
@@ -31,7 +33,9 @@ The current automated suite proves structural, content, keyboard-entry, focus-st
 - a global `:focus-visible` indicator contract;
 - wrapping/min-width safeguards intended to reduce clipping and horizontal-overflow risk at narrow widths and browser zoom;
 - a dedicated `forced-colors: active` ruleset that preserves borders/focus/control affordances rather than relying on the normal palette alone;
-- a reduced-motion ruleset for users who request reduced motion.
+- a reduced-motion ruleset for users who request reduced motion;
+- a polite atomic live-status contract for the browser-local `/va-reference` filter count;
+- polite atomic live-status contracts for local evidence extraction notices and excerpt-summary changes.
 
 Other route-specific tests cover selected form-label, source-label, privacy, evidence-processing, and workflow behaviors where those components are exercised.
 
@@ -49,6 +53,7 @@ These assertions are regression evidence only. They do not test every WCAG succe
 | Reflow/overflow safeguards | Global CSS regression contract | Verified structurally | 200% zoom and narrow viewport still require deployed browser testing |
 | Forced-colors support | Global CSS regression contract | Verified structurally | Windows forced-colors/high-contrast still requires deployed OS/browser testing |
 | Reduced-motion support | Global CSS regression contract | Verified structurally | Positive evidence, limited scope |
+| Selected dynamic status announcements | Source-level regression contracts for VA reference filtering and local evidence status surfaces | Verified structurally | Must still be confirmed with screen reader on deployed app |
 | Accessible names / labels for interactive workflow controls | Route/component regression tests where implemented | Partial | Must be reviewed across deployed flows |
 | Keyboard-only traversal and focus order | Manual deployed-app test | **Pending** | Blocking manual evidence |
 | Keyboard traps / modal or disclosure behavior | Manual deployed-app test | **Pending** | Blocking manual evidence |
@@ -81,7 +86,9 @@ Use at least one representative desktop screen reader (NVDA on Windows or VoiceO
 3. Confirm form controls announce their labels, state, and required/error information.
 4. Confirm dynamic result/source labels are understandable in reading order.
 5. Confirm links have meaningful accessible names out of surrounding visual context.
-6. Confirm evidence-review status text and dynamically revealed content are understandable without relying on visual placement or color.
+6. Confirm the `/va-reference` filtered-result count is announced when the filter changes without forcing an interruptive announcement.
+7. Confirm local evidence reading, extraction notices, analysis completion messages, clear-state messages, and excerpt-summary changes are announced appropriately.
+8. Confirm evidence-review status text and dynamically revealed content are understandable without relying on visual placement or color.
 
 ### Zoom, reflow, and contrast
 
