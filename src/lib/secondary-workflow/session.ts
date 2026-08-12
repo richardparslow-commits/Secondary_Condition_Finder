@@ -14,6 +14,7 @@ import {
 
 const WORKFLOW_COOKIE = "secondary-workflow-v2";
 const WORKFLOW_MAX_AGE_SECONDS = 30 * 60;
+const contextEntrySchema = z.string().min(1).max(160);
 
 const storedWorkflowStateSchema = z.object({
   diagnosedConditionIds: z.array(z.string().min(1)).optional(),
@@ -22,6 +23,8 @@ const storedWorkflowStateSchema = z.object({
     .record(z.string(), z.number().int().min(0).max(100).nullable())
     .optional(),
   documentsShared: z.boolean().optional(),
+  medications: z.array(contextEntrySchema).max(20).optional(),
+  treatments: z.array(contextEntrySchema).max(20).optional(),
 });
 
 export type StoredSecondaryWorkflowState = z.infer<
@@ -96,6 +99,8 @@ export function workflowSessionToQueryParams(
   if (typeof state.documentsShared === "boolean") {
     params.documentsShared = state.documentsShared ? "yes" : "no";
   }
+  if (state.medications?.length) params.medications = [...state.medications];
+  if (state.treatments?.length) params.treatments = [...state.treatments];
 
   return params;
 }
@@ -117,5 +122,7 @@ export function toCompleteWorkflowState(
     serviceConnectedConditionIds: [...state.serviceConnectedConditionIds],
     ratingsByConditionId: { ...state.ratingsByConditionId },
     documentsShared: state.documentsShared,
+    medications: [...(state.medications ?? [])],
+    treatments: [...(state.treatments ?? [])],
   };
 }
