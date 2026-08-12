@@ -10,8 +10,8 @@ import { loadKnowledgeBase } from "@/lib/kb/load";
 import { draftMappings } from "@/lib/kb/lookup";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import {
+  parseStoredSecondaryWorkflowState,
   workflowSessionToQueryParams,
-  type StoredSecondaryWorkflowState,
 } from "@/lib/secondary-workflow/session";
 
 const catalog = loadConditionCatalog();
@@ -36,7 +36,7 @@ describe("demo scenarios", () => {
   it.each(scenarios.map((scenario) => [scenario.id, scenario] as const))(
     "runs %s through the current workflow contract without manual fixes",
     (_id, scenario) => {
-      const workflow = scenario.workflow as StoredSecondaryWorkflowState;
+      const workflow = parseStoredSecondaryWorkflowState(scenario.workflow);
       const state = parseWorkflowState(
         workflowSessionToQueryParams(workflow),
         catalog,
@@ -77,6 +77,7 @@ describe("demo scenarios", () => {
     expect(form).not.toContain("sendBeacon");
 
     expect(action).toContain('formData.get("scenarioId")');
+    expect(action).toContain("parseStoredSecondaryWorkflowState(scenario.workflow)");
     expect(action).toContain("parseWorkflowState(workflowSessionToQueryParams(workflow), catalog)");
     expect(action).toContain("await writeSecondaryWorkflowSession(workflow)");
     expect(action).toContain('redirect("/secondary/suggestions")');
