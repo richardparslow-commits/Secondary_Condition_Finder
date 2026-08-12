@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+import type {
+  PathwayIntelligence,
+  SourceVerificationScope,
+} from "@/lib/kb/schema";
+
 export const intakeSchema = z.object({
   diagnosedConditions: z.array(z.string()).optional(),
   primaryConditions: z.array(z.string().min(1)).min(1),
@@ -17,6 +22,7 @@ export interface ContributingPrimary {
   name: string;
   rank: number;
   rationale: string;
+  pathwayIntelligence?: PathwayIntelligence;
 }
 
 export interface Recommendation {
@@ -27,7 +33,12 @@ export interface Recommendation {
   score: number;
   contributingPrimaries: ContributingPrimary[];
   evidenceGaps: string[];
-  sourceReferences: Array<{ citation: string; note: string; verified: boolean }>;
+  sourceReferences: Array<{
+    citation: string;
+    note: string;
+    verified: boolean;
+    verificationScope?: SourceVerificationScope;
+  }>;
   matchedIntakeContext: string[];
 }
 

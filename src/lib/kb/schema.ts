@@ -2,6 +2,30 @@ import { z } from "zod";
 
 export const prevalenceSchema = z.enum(["commonly-explored", "sometimes-explored", "occasionally-explored"]);
 export const sourceVerificationScopeSchema = z.enum(["legal-framework", "clinical-evidence", "procedural-guidance"]);
+export const secondaryPathwayTypeSchema = z.enum([
+  "direct-secondary",
+  "aggravation",
+  "medication-related",
+  "treatment-complication",
+  "biomechanical",
+  "intermediate-chain",
+  "disease-progression",
+  "somatopsychic",
+  "neuroautonomic",
+  "adaptive-equipment",
+  "care-obstacle",
+]);
+
+export const pathwayIntelligenceSchema = z.object({
+  pathways: z.array(secondaryPathwayTypeSchema).min(1).max(4),
+  causalChain: z.string().trim().min(1).max(500).optional(),
+  developmentQuestions: z.array(z.string().trim().min(1).max(300)).max(6).default([]),
+  issuesToResolve: z.array(z.string().trim().min(1).max(300)).max(5).default([]),
+}).strict().superRefine((intelligence, ctx) => {
+  if (new Set(intelligence.pathways).size !== intelligence.pathways.length) {
+    ctx.addIssue({ code: "custom", path: ["pathways"], message: "Pathway labels must be unique." });
+  }
+});
 
 export const sourceReferenceSchema = z.object({
   citation: z.string().trim().min(1),
@@ -22,6 +46,7 @@ export const suggestionSchema = z.object({
   rank: z.number().int().positive(),
   prevalence: prevalenceSchema,
   rationale: z.string().min(1),
+  pathwayIntelligence: pathwayIntelligenceSchema.optional(),
   evidenceGaps: z.array(z.string().min(1)).min(1),
   sourceReferences: z.array(sourceReferenceSchema).min(1).max(3),
 }).strict();
@@ -52,6 +77,8 @@ export const conditionMappingSchema = z.object({
 export const knowledgeBaseSchema = z.array(conditionMappingSchema);
 export type Prevalence = z.infer<typeof prevalenceSchema>;
 export type SourceVerificationScope = z.infer<typeof sourceVerificationScopeSchema>;
+export type SecondaryPathwayType = z.infer<typeof secondaryPathwayTypeSchema>;
+export type PathwayIntelligence = z.infer<typeof pathwayIntelligenceSchema>;
 export type SourceReference = z.infer<typeof sourceReferenceSchema>;
 export type Suggestion = z.infer<typeof suggestionSchema>;
 export type ConditionMapping = z.infer<typeof conditionMappingSchema>;

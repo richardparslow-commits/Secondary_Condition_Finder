@@ -35,6 +35,7 @@ exposure presumptions that may apply and the conditions each covers. See
 - Diagnose, or suggest that any condition is present
 - Estimate approval likelihood, ratings, or compensation
 - Treat medication/treatment matches or local evidence excerpts as proof of causation, aggravation, nexus, competency, credibility, or VA acceptance
+- Treat authored Step 5 pathway labels, causal chains, development questions, or issues to resolve as proof of an individual medical or legal conclusion
 - File claims or generate completed VA claim forms
 - Persist raw uploaded medical records in application-server storage
 
@@ -77,23 +78,40 @@ Each suggestion shows:
   Never a number, never a percentage.
 - Rationale, attributed to each contributing primary condition
 - Evidence gaps: what a claim on this theory typically still needs
-- Source references, each flagged verified or unverified
+- Source references, each flagged verified or unverified and labeled by source
+  role: Legal framework, Clinical evidence, or Procedural guidance
 - Suggestions grouped by selected service-connected primary condition in the
   workflow UI
 - For recognized conditions with no authored mappings, the UI must say they are
   recognized-but-unmapped and that absence implies nothing about claim viability.
 
+Where a subject-matter author has explicitly supplied it for a specific
+primary-to-secondary mapping, Step 5 may additionally show:
+
+- one or more bounded **Pathway to evaluate** labels;
+- an authored causal-chain summary;
+- bounded questions to develop with a clinician or representative; and
+- bounded issues to resolve before relying on the theory.
+
+Pathway intelligence is optional and primary-specific. The application does not
+infer these fields from medication/treatment entries, uploaded evidence excerpts,
+or other Veteran-entered context. An un-authored mapping must remain un-labeled.
+The displayed pathway metadata is explanatory research content only and does not
+establish causation, aggravation, nexus, eligibility, or likelihood of approval.
+
 Ordering: rank 1 contributes 1.0, rank 2 contributes 0.5, rank n contributes
 1/n. Contributions from multiple primaries add, so a suggestion supported by
 two conditions outranks a single-source suggestion at the same rank. Ties break
 alphabetically. The score is an ordering heuristic and is never displayed.
-Optional medication/treatment literal matches are research cues only and do not
-alter this ordering.
+Optional medication/treatment literal matches and authored pathway intelligence
+are research/display cues only and do not alter this ordering, filtering, or
+prevalence.
 
 ### FR-3 Multiple primaries
 
 - Suggestions shared across primaries merge on `conditionId`, combining
-  rationale, evidence gaps, and citations.
+  evidence gaps and citations while retaining each contributing primary's own
+  rationale and optional authored pathway intelligence.
 - A condition the user already listed as primary is never suggested as a
   secondary of another primary.
 - Duplicate or differently-cased entries for the same condition collapse.
@@ -117,9 +135,11 @@ paths and is not reintroduced into the current catalog-only workflow.
 - The UI states that suggestions are not approval probabilities and citations
   are research starting points to verify.
 - Unverified citations carry an inline badge where applicable.
+- Source-role labels distinguish legal framework, clinical evidence, and
+  procedural guidance so a legal authority is not presented as medical nexus
+  evidence.
 - Secondary legal citation text rendered in routes must come from the canonical
-  module at `src/lib/legal/secondaryReferences.ts` rather than route-level
-  hardcoded copies.
+  legal reference modules rather than route-level hardcoded copies.
 
 ### FR-6 Demo scenarios
 
@@ -177,6 +197,8 @@ added to recommendation logs or telemetry.
 - Browser-local evidence review may show extracted excerpts with provenance from
   Step 4. This is organizational/research support, not an adjudicative or medical
   sufficiency determination.
+- Step 5 pathway intelligence frames authored theories and development questions;
+  it does not replace or duplicate the Step 6 evidence-gap review.
 - Step 6 provides a browser-generated consultation summary text export using
   authored recommendation content, contributing primaries, evidence gaps, and
   citations. Raw local-evidence excerpts and optional medication/treatment match
@@ -189,15 +211,16 @@ Three layers are deliberately separate. See `docs/condition-catalog.md`.
 - `data/conditions/` is the catalog: condition identity and rating schedule
   citations, currently 193 conditions across 15 catalog files.
 - `data/knowledge-base/` holds one secondary-mapping file per catalog condition,
-  referencing catalog ids.
+  referencing catalog ids. Individual suggestions may optionally contain bounded
+  `pathwayIntelligence` authored for that exact primary-to-secondary mapping.
 - `data/presumptives/` holds exposure categories.
 
 The catalog is the single source of display names, so a label cannot drift
 between mapping files. Referential integrity is enforced by tests and by
 load-time validation before recommendation logic runs.
 
-JSON in git rather than an opaque production database keeps mapping and citation
-changes reviewable as pull request diffs.
+JSON in git rather than an opaque production database keeps mapping, pathway
+intelligence, and citation changes reviewable as pull request diffs.
 
 ## Acceptance criteria
 
@@ -208,6 +231,7 @@ changes reviewable as pull request diffs.
 | 3 | Raw local evidence remains browser-local and is not required for server recommendation execution | Met, enforced by privacy tests |
 | 4 | Disclaimers and non-adjudicative boundaries are visible in workflow/results views | Met, enforced by copy/contracts |
 | 5 | At least three synthetic demo scenarios launch through the current encrypted workflow rather than legacy query-state URLs | Met, enforced by `tests/demo-scenarios.test.ts` |
+| 6 | Step 5 can expose bounded, authored-only pathway intelligence and source roles without changing recommendation order, scores, prevalence, or intake matching | Met, enforced by `tests/step5-pathway-intelligence.test.ts` and CI |
 
 ## External/manual truth gates
 

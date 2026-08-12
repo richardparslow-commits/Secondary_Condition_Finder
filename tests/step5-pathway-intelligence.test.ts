@@ -1,0 +1,163 @@
+import fs from "fs";
+import path from "path";
+import { describe, expect, it } from "vitest";
+
+import { loadConditionCatalog } from "@/lib/catalog/load";
+import { recommend } from "@/lib/engine/recommend";
+import { loadKnowledgeBase } from "@/lib/kb/load";
+import {
+  pathwayIntelligenceSchema,
+  type KnowledgeBase,
+} from "@/lib/kb/schema";
+
+const read = (relativePath: string) =>
+  fs.readFileSync(path.join(process.cwd(), relativePath), "utf8");
+
+function stripPathwayIntelligence(kb: KnowledgeBase): KnowledgeBase {
+  return kb.map((mapping) => ({
+    ...mapping,
+    suggestions: mapping.suggestions.map((suggestion) => ({
+      conditionId: suggestion.conditionId,
+      rank: suggestion.rank,
+      prevalence: suggestion.prevalence,
+      rationale: suggestion.rationale,
+      evidenceGaps: suggestion.evidenceGaps,
+      sourceReferences: suggestion.sourceReferences,
+    })),
+  }));
+}
+
+describe("Step 5 authored pathway intelligence", () => {
+  it("keeps the authored metadata bounded and rejects duplicate pathway labels", () => {
+    expect(
+      pathwayIntelligenceSchema.safeParse({
+        pathways: ["direct-secondary", "intermediate-chain"],
+        causalChain: "Primary → intermediate mechanism → secondary",
+        developmentQuestions: ["What mechanism should be evaluated?"],
+        issuesToResolve: ["Confirm the individual medical relationship."],
+      }).success,
+    ).toBe(true);
+
+    expect(
+      pathwayIntelligenceSchema.safeParse({
+        pathways: ["direct-secondary", "direct-secondary"],
+      }).success,
+    ).toBe(false);
+
+    expect(
+      pathwayIntelligenceSchema.safeParse({
+        pathways: [
+          "direct-secondary",
+          "aggravation",
+          "medication-related",
+          "biomechanical",
+          "intermediate-chain",
+        ],
+      }).success,
+    ).toBe(false);
+
+    expect(
+      pathwayIntelligenceSchema.safeParse({
+        pathways: ["direct-secondary"],
+        developmentQuestions: Array.from({ length: 7 }, (_, index) => `Question ${index}`),
+      }).success,
+    ).toBe(false);
+
+    expect(
+      pathwayIntelligenceSchema.safeParse({
+        pathways: ["direct-secondary"],
+        issuesToResolve: Array.from({ length: 6 }, (_, index) => `Issue ${index}`),
+      }).success,
+    ).toBe(false);
+  });
+
+  it("carries only explicitly authored pathway intelligence on the contributing primary", () => {
+    const catalog = loadConditionCatalog();
+    const kb = loadKnowledgeBase();
+
+    const ptsd = recommend(catalog, kb, {
+      primaryConditions: ["ptsd"],
+      symptoms: [],
+      medications: [],
+      treatments: [],
+      exposures: [],
+      notes: "",
+    });
+    const osa = ptsd.recommendations.find((item) => item.conditionId === "sleep-apnea");
+    const ed = ptsd.recommendations.find((item) => item.conditionId === "erectile-dysfunction");
+
+    expect(osa?.contributingPrimaries[0]?.pathwayIntelligence?.pathways).toEqual(
+      expect.arrayContaining(["direct-secondary", "aggravation", "intermediate-chain"]),
+    );
+    expect(ed?.contributingPrimaries[0]?.pathwayIntelligence?.pathways).toEqual([
+      "medication-related",
+    ]);
+
+    const knee = recommend(catalog, kb, {
+      primaryConditions: ["knee-injury"],
+      symptoms: [],
+      medications: [],
+      treatments: [],
+      exposures: [],
+      notes: "",
+    });
+    const hip = knee.recommendations.find((item) => item.conditionId === "hip-strain");
+    const ankle = knee.recommendations.find((item) => item.conditionId === "ankle-strain");
+
+    expect(hip?.contributingPrimaries[0]?.pathwayIntelligence?.pathways).toEqual([
+      "biomechanical",
+    ]);
+    expect(ankle?.contributingPrimaries[0]?.pathwayIntelligence).toBeUndefined();
+  });
+
+  it("does not let pathway intelligence affect recommendation order, score, or prevalence", () => {
+    const catalog = loadConditionCatalog();
+    const kb = loadKnowledgeBase();
+    const intake = {
+      primaryConditions: ["ptsd", "knee-injury"],
+      symptoms: [] as string[],
+      medications: [] as string[],
+      treatments: [] as string[],
+      exposures: [] as string[],
+      notes: "",
+    };
+
+    const enriched = recommend(catalog, kb, intake).recommendations.map((item) => ({
+      conditionId: item.conditionId,
+      score: item.score,
+      prevalence: item.prevalence,
+    }));
+    const stripped = recommend(
+      catalog,
+      stripPathwayIntelligence(kb),
+      intake,
+    ).recommendations.map((item) => ({
+      conditionId: item.conditionId,
+      score: item.score,
+      prevalence: item.prevalence,
+    }));
+
+    expect(enriched).toEqual(stripped);
+  });
+
+  it("keeps pathway intelligence out of intake matching and wires conservative Step 5 presentation", () => {
+    const engine = read("src/lib/engine/recommend.ts");
+    const component = read("src/components/SecondarySuggestionItem.tsx");
+    const page = read("src/app/secondary/suggestions/page.tsx");
+
+    expect(engine).toContain("pathwayIntelligence: suggestion.pathwayIntelligence");
+    expect(engine).toContain("Authored pathway-intelligence fields are deliberately excluded");
+
+    expect(component).toContain("Pathway to evaluate");
+    expect(component).toContain("Authored causal chain to review");
+    expect(component).toContain("Questions to develop with a clinician or representative");
+    expect(component).toContain("Issues to resolve");
+    expect(component).toContain("They do not establish causation, aggravation, medical nexus, eligibility, or likelihood of approval");
+    expect(component).toContain("Legal framework");
+    expect(component).toContain("Clinical evidence");
+    expect(component).toContain("Procedural guidance");
+
+    expect(page).toContain("They are not inferred from your intake and do not affect recommendation rank");
+    expect(page).toContain("Step 6 remains the place to review evidence gaps");
+  });
+});

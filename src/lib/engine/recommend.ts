@@ -51,6 +51,9 @@ function dedupeReferences(references: SourceReference[]): SourceReference[] {
  * Intake context is display-only. A term is surfaced only when its normalized
  * text literally overlaps authored recommendation content. It does not alter
  * ranking and does not infer drug classes, mechanisms, or individual causation.
+ *
+ * Authored pathway-intelligence fields are deliberately excluded from this
+ * matcher so adding richer Step 5 explanation cannot create new intake matches.
  */
 function matchIntakeContext(
   condition: string,
@@ -141,6 +144,7 @@ export function recommend(
         name: primary.name,
         rank: suggestion.rank,
         rationale: suggestion.rationale,
+        pathwayIntelligence: suggestion.pathwayIntelligence,
       };
 
       if (existing) {
