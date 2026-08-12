@@ -6,6 +6,24 @@ This runbook covers the production controls required after the Phase 2 privacy a
 
 The repository deploys `main` to Azure Static Web Apps as a hybrid Next.js application. The deployment pipeline builds the standalone Next.js backend and Azure hosts dynamic routes on its managed backend runtime.
 
+## Current Azure resource-level blocker
+
+The repository build/package path has been exercised through the production Azure pipeline and is no longer the leading explanation for the current whole-site 404 state.
+
+For commit `efa01671859e302e9e8c8a2b84820975f26482db`, Azure Static Web Apps deployment #406 completed successfully. Its Oryx log confirms that the workflow used `npm run build:azure`, Next.js built successfully, `.next/static` and `public` were copied into `.next/standalone`, Azure detected the standalone folder, repackaged the Next.js backend, uploaded the artifacts, and reported deployment success.
+
+The independent Production Runtime Readiness #20 probe then still returned HTTP 404 for `/`, `/about`, `/va-forms`, and `/runtime-readiness` on the Azure-reported production hostname. Therefore the current evidence does **not** establish that `WORKFLOW_SESSION_SECRET` is missing or invalid; the readiness page is not being reached.
+
+Before making another repository framework/package change, inspect the Azure resource boundary:
+
+1. In the Azure portal, open the Static Web App associated with this deployment and confirm its displayed default hostname is `gentle-tree-04b340f0f.7.azurestaticapps.net`.
+2. Confirm the production environment/deployment shows commit `efa01671859e302e9e8c8a2b84820975f26482db` as the active production deployment.
+3. Under **Environment variables / application settings**, verify that the production environment contains a setting named `WORKFLOW_SESSION_SECRET`. Do not copy, print, or record its value.
+4. Use **Diagnose and solve problems** and, where available, Application Insights **Failures** to inspect backend/runtime errors produced by requests to `/` and `/runtime-readiness`.
+5. If Azure identifies the exact commit above as the active production deployment while the resource's own default hostname still returns 404 for all routes, escalate as an Azure Static Web Apps hybrid-runtime/resource issue using Azure deployment #406 and Production Runtime Readiness #20 as the non-sensitive evidence set.
+
+Do not switch this application to static HTML export merely to bypass the blocker: the current product uses dynamic/server-rendered routes and server-side workflow-session crypto. Do not downgrade Next.js without objective compatibility evidence.
+
 ## Required Azure runtime setting
 
 Configure the following in the **production environment variables / application settings** for the Azure Static Web Apps resource:
@@ -102,4 +120,4 @@ After every production deployment:
 
 ## Known external verification boundary
 
-Repository CI can verify implementation, fail-closed behavior, configuration parsing, deployment workflow structure, and the safety contract of `/runtime-readiness`. It cannot by itself prove the current value of Azure resource application settings. Objective production proof therefore requires requesting `/runtime-readiness` on the deployed production build and recording the non-sensitive result in issue #213. Any intentionally enabled VA sandbox credentials remain separately governed and must never be exposed.
+Repository CI can verify implementation, fail-closed behavior, configuration parsing, deployment workflow structure, standalone packaging, and the safety contract of `/runtime-readiness`. It cannot prove which Azure resource/environment currently owns the reported hostname, whether the managed hybrid backend is healthy, or the current value of Azure resource application settings. Objective production proof therefore requires a reachable production deployment, the `/runtime-readiness` self-test, and the non-sensitive result recorded in issue #213. Any intentionally enabled VA sandbox credentials remain separately governed and must never be exposed.
