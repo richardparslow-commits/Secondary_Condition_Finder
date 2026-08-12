@@ -103,4 +103,31 @@ For asthma → cardiac-arrhythmia, the existing rationale notes that medication 
 
 ## Batch 4 — Systemic / Medical (#250)
 
-Pending Batch 3 production verification.
+### Backfilled
+
+| Primary | Secondary | Authored pathway(s) | Existing support used |
+|---|---|---|---|
+| stomach-cancer | depressive-disorder | somatopsychic | Existing chronic-pain/functional-impact rationale plus published pain/depression systematic review and § 3.310 framework. The causal chain is explicitly conditional on individual documentation of pain or functional limitation. |
+| abdominal-hernia | depressive-disorder | somatopsychic | Existing chronic-pain/functional-impact rationale plus published pain/depression systematic review and § 3.310 framework. The causal chain is explicitly conditional on individual documentation of pain or functional limitation. |
+
+### Reviewed and intentionally left unlabeled
+
+The following Systemic / Medical edges remain unlabeled despite having some clinical evidence because the attached source set does not support enough of the specific primary→mechanism/treatment chain to author the stronger pathway metadata:
+
+- stomach-cancer → gerd — NSAID gastrointestinal-risk evidence does not establish that stomach-cancer treatment produced the relevant NSAID exposure.
+- abdominal-hernia → gerd — NSAID gastrointestinal-risk evidence does not establish that hernia treatment produced the relevant NSAID exposure.
+- erectile-dysfunction → gerd — NSAID/GERD association evidence does not establish any erectile-dysfunction→NSAID indication link.
+- congestive-heart-failure → depressive-disorder — the attached review supports depression as a heart-failure comorbidity, but not enough mechanism for a physical→mental-health pathway label under this backfill threshold.
+- congestive-heart-failure → gerd — NSAID gastrointestinal-risk evidence does not establish a heart-failure→NSAID treatment link.
+
+The following published Systemic / Medical mappings/edges remain unlabeled because their attached source sets are legal/rating-framework only or otherwise insufficient:
+
+- hypertension
+- al-amyloidosis
+- agranulocytosis
+- alopecia-areata
+- anorexia-nervosa
+- addisons-disease
+- erectile-dysfunction → depressive-disorder
+
+This completes the four-category published-mapping review. Intentionally-unlabeled edges remain eligible for future enrichment only after their underlying published source sets are strengthened; the backfill program does not infer missing medical links.
