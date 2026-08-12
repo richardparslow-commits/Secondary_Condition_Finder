@@ -228,12 +228,14 @@ export function parseDocumentsSelection(
   catalog: ConditionCatalog,
 ): SecondaryWorkflowState {
   const ratings = parseRatingsSelection(params, catalog);
+  const medications = parseContextEntries(params.medications, "Medication");
+  const treatments = parseContextEntries(params.treatments, "Treatment");
 
   return {
     ...ratings,
     documentsShared: parseDocumentsShared(params.documentsShared),
-    medications: parseContextEntries(params.medications, "Medication"),
-    treatments: parseContextEntries(params.treatments, "Treatment"),
+    ...(medications.length > 0 ? { medications } : {}),
+    ...(treatments.length > 0 ? { treatments } : {}),
   };
 }
 
