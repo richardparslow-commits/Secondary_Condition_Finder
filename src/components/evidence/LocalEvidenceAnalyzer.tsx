@@ -2,24 +2,34 @@
 
 import { useMemo, useState } from "react";
 
+import { extractLocalEvidenceDocument } from "@/lib/evidence/document-extract";
 import {
-  analyzeEvidenceText,
+  analyzeEvidenceSegments,
   evidenceAnalysisStorageKey,
   type ClinicianCredential,
   type EvidenceAnalysis,
+  type EvidenceTextSegment,
 } from "@/lib/evidence/extract";
 
 interface Props {
   conditionTerms: string[];
 }
 
-const MAX_FILE_BYTES = 5 * 1024 * 1024;
+const MAX_FILE_BYTES = 20 * 1024 * 1024;
 const MAX_SOURCES = 10;
-const SUPPORTED_EXTENSIONS = [".txt", ".md", ".csv", ".json", ".log"];
+const SUPPORTED_TEXT_EXTENSIONS = [".txt", ".md", ".csv", ".json", ".log"];
 
-function isSupportedTextFile(file: File): boolean {
+function isSupportedFile(file: File): boolean {
   const lower = file.name.toLocaleLowerCase();
-  return file.type.startsWith("text/") || file.type === "application/json" || SUPPORTED_EXTENSIONS.some((ext) => lower.endsWith(ext));
+  return (
+    file.type.startsWith("text/") ||
+    file.type === "application/json" ||
+    file.type === "application/pdf" ||
+    file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+    lower.endsWith(".pdf") ||
+    lower.endsWith(".docx") ||
+    SUPPORTED_TEXT_EXTENSIONS.some((ext) => lower.endsWith(ext))
+  );
 }
 
 function loadStored(): EvidenceAnalysis[] {
@@ -39,6 +49,15 @@ function saveStored(analyses: EvidenceAnalysis[]): void {
   window.sessionStorage.setItem(evidenceAnalysisStorageKey, JSON.stringify(analyses.slice(-MAX_SOURCES)));
 }
 
+function withUserLocatorPrefix(segments: EvidenceTextSegment[], prefix: string): EvidenceTextSegment[] {
+  const trimmed = prefix.trim();
+  if (!trimmed) return segments;
+  return segments.map((segment) => ({
+    ...segment,
+    locatorPrefix: `${trimmed}, ${segment.locatorPrefix}`,
+  }));
+}
+
 export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   const [credential, setCredential] = useState<ClinicianCredential>("unknown");
   const [locatorPrefix, setLocatorPrefix] = useState("");
@@ -46,6 +65,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   const [pastedText, setPastedText] = useState("");
   const [analyses, setAnalyses] = useState<EvidenceAnalysis[]>(() => loadStored());
   const [message, setMessage] = useState<string | null>(null);
+  const [warnings, setWarnings] = useState<string[]>([]);
+  const [busy, setBusy] = useState(false);
 
   const totals = useMemo(
     () => ({
@@ -56,58 +77,84 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   );
 
   function commitAnalysis(analysis: EvidenceAnalysis) {
-    const next = [...analyses.filter((existing) => existing.sourceName !== analysis.sourceName), analysis].slice(-MAX_SOURCES);
-    setAnalyses(next);
-    saveStored(next);
+    setAnalyses((current) => {
+      const next = [...current.filter((existing) => existing.sourceName !== analysis.sourceName), analysis].slice(-MAX_SOURCES);
+      saveStored(next);
+      return next;
+    });
   }
 
   async function handleFiles(files: FileList | null) {
     if (!files?.length) return;
     setMessage(null);
+    setWarnings([]);
+    setBusy(true);
 
-    for (const file of Array.from(files).slice(0, MAX_SOURCES)) {
-      if (file.size > MAX_FILE_BYTES) {
-        setMessage(`${file.name} was not analyzed because it exceeds the 5 MB local-analysis limit.`);
-        continue;
-      }
-      if (!isSupportedTextFile(file)) {
-        setMessage(`${file.name} is not a directly supported text format. For PDF/DOCX records, paste text exported from the document and provide the page or section locator below.`);
-        continue;
+    const nextWarnings: string[] = [];
+    let processed = 0;
+
+    try {
+      for (const file of Array.from(files).slice(0, MAX_SOURCES)) {
+        if (file.size > MAX_FILE_BYTES) {
+          nextWarnings.push(`${file.name} was not analyzed because it exceeds the 20 MB local-analysis limit.`);
+          continue;
+        }
+        if (!isSupportedFile(file)) {
+          nextWarnings.push(`${file.name} is not a supported local-analysis format. Use PDF, DOCX, TXT, Markdown, CSV, JSON, LOG, or paste exact text below.`);
+          continue;
+        }
+
+        try {
+          const extracted = await extractLocalEvidenceDocument(file);
+          nextWarnings.push(...extracted.warnings.map((warning) => `${file.name}: ${warning}`));
+          if (extracted.segments.length === 0) continue;
+
+          const analysis = analyzeEvidenceSegments(
+            withUserLocatorPrefix(extracted.segments, locatorPrefix),
+            { sourceName: extracted.sourceName, credential },
+            conditionTerms,
+          );
+          commitAnalysis(analysis);
+          processed += 1;
+        } catch (error) {
+          const detail = error instanceof Error ? error.message : "Unknown extraction error";
+          nextWarnings.push(`${file.name} could not be analyzed locally: ${detail}`);
+        }
       }
 
-      const text = await file.text();
-      const analysis = analyzeEvidenceText(
-        text,
-        { sourceName: file.name, credential, locatorPrefix: locatorPrefix.trim() || undefined },
-        conditionTerms,
-      );
-      commitAnalysis(analysis);
+      setWarnings(nextWarnings);
+      setMessage(processed > 0 ? `Analyzed ${processed} document${processed === 1 ? "" : "s"} locally in this browser tab.` : "No document produced extractable text.");
+    } finally {
+      setBusy(false);
     }
   }
 
   function analyzePastedText() {
     setMessage(null);
+    setWarnings([]);
     const text = pastedText.trim();
     if (!text) {
       setMessage("Paste source text before running local evidence analysis.");
       return;
     }
-    const analysis = analyzeEvidenceText(
-      text,
+    const segments = withUserLocatorPrefix([{ text, locatorPrefix: "pasted text" }], locatorPrefix);
+    const analysis = analyzeEvidenceSegments(
+      segments,
       {
         sourceName: pastedSourceName.trim() || "Pasted medical record text",
         credential,
-        locatorPrefix: locatorPrefix.trim() || undefined,
       },
       conditionTerms,
     );
     commitAnalysis(analysis);
     setPastedText("");
+    setMessage("Pasted text was analyzed locally in this browser tab.");
   }
 
   function clearEvidence() {
     window.sessionStorage.removeItem(evidenceAnalysisStorageKey);
     setAnalyses([]);
+    setWarnings([]);
     setMessage("Local evidence excerpts were cleared from this browser tab.");
   }
 
@@ -116,7 +163,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       <div>
         <h2 id="local-evidence-heading" className="text-xl font-bold">Local Evidence Review</h2>
         <p className="mt-1 text-sm text-slate-600">
-          Evidence text is analyzed in this browser tab. Raw document text is not submitted to the application server, stored in workflow cookies, or written to application logs.
+          PDF, DOCX, and supported text records are read in this browser tab. Raw document bytes and raw document text are not submitted to the application server, stored in workflow cookies, or written to application logs.
         </p>
       </div>
 
@@ -137,26 +184,28 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           </select>
         </label>
         <label className="block text-sm font-medium">
-          Page / section locator (optional)
-          <input className="mt-1 w-full px-3" value={locatorPrefix} onChange={(event) => setLocatorPrefix(event.target.value)} placeholder="Example: page 14 or Assessment section" />
+          Additional locator context (optional)
+          <input className="mt-1 w-full px-3" value={locatorPrefix} onChange={(event) => setLocatorPrefix(event.target.value)} placeholder="Example: C-file export or Assessment section" />
         </label>
       </div>
 
       <label className="block rounded-xl border border-slate-200 p-4">
-        <span className="block font-semibold">Analyze supported text files locally</span>
-        <span className="mt-1 block text-sm text-slate-600">Supported directly: TXT, Markdown, CSV, JSON and other text files, up to 5 MB each. Files stay in the browser.</span>
+        <span className="block font-semibold">Analyze evidence files locally</span>
+        <span className="mt-1 block text-sm text-slate-600">Supported directly: PDF, DOCX, TXT, Markdown, CSV, JSON and other text files, up to 20 MB each. PDF excerpts retain page numbers; DOCX excerpts retain paragraph numbers. Files stay in the browser.</span>
         <input
           type="file"
           multiple
-          accept="text/*,.txt,.md,.csv,.json,.log"
+          accept="application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/*,.pdf,.docx,.txt,.md,.csv,.json,.log"
           className="mt-4 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-blue-700 file:px-4 file:py-2 file:font-semibold file:text-white"
           onChange={(event) => void handleFiles(event.target.files)}
+          disabled={busy}
         />
+        {busy && <span role="status" className="mt-3 block text-sm font-medium text-blue-800">Reading selected documents locally…</span>}
       </label>
 
       <div className="rounded-xl border border-slate-200 p-4">
-        <h3 className="font-semibold">PDF / DOCX or other records</h3>
-        <p className="mt-1 text-sm text-slate-600">Direct PDF/DOCX parsing is not enabled in this privacy-first slice. Export or copy the relevant text from the document, enter a page/section locator above, and analyze it locally here. Scanned-image records require OCR outside this app before text can be reviewed.</p>
+        <h3 className="font-semibold">OCR and manual text fallback</h3>
+        <p className="mt-1 text-sm text-slate-600">Image-only/scanned PDF pages may contain no selectable text. The app reports those pages instead of guessing. Run OCR in a trusted tool first, then paste the exact text here with any available page/section context.</p>
         <label className="mt-4 block text-sm font-medium">
           Source name
           <input className="mt-1 w-full px-3" value={pastedSourceName} onChange={(event) => setPastedSourceName(event.target.value)} />
@@ -168,7 +217,13 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         <button type="button" className="ui-button mt-3" onClick={analyzePastedText}>Analyze pasted text locally</button>
       </div>
 
-      {message && <p role="status" className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">{message}</p>}
+      {message && <p role="status" className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm text-blue-900">{message}</p>}
+      {warnings.length > 0 && (
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-950">
+          <strong>Extraction notices</strong>
+          <ul className="mt-2 list-disc space-y-1 pl-5">{warnings.map((warning) => <li key={warning}>{warning}</li>)}</ul>
+        </div>
+      )}
 
       <div className="rounded-xl border border-slate-200 p-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
