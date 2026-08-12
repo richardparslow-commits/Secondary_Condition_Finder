@@ -10,6 +10,7 @@
 | **REQ-EVD-01** | Non-retentive evidence ingestion and metadata extraction | P2-T8 | `tests/ingestion-privacy.test.ts` | ✅ PASS |
 | **REQ-EVD-02** | User-reachable, browser-local structured review of authored evidence gaps, with conservative engine evaluation helper retained for explicit semantic indicators | #233 / P2-T9 | `tests/evidence-evaluation.test.ts` | ✅ PASS |
 | **REQ-EXP-01** | User-reachable VSO/representative consultation summary text export from Step 6, generated in-browser with privacy exclusions | #231 / P2-T10 | `tests/export-summary.test.ts` | ✅ PASS |
+| **REQ-DEMO-01** | Synthetic demo scenarios launch through validated encrypted current-workflow state without serializing scenario medical/context content into URLs | #240 | `tests/demo-scenarios.test.ts` | ✅ PASS |
 | **REQ-E2E-01** | End-to-end multi-step wizard workflow scenario coverage | Phase 4-T13 | `tests/e2e-workflow.test.ts` | ✅ PASS |
 
 ## Release Gates
