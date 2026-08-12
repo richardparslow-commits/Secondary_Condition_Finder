@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated verbatim from the pinned pdfjs-dist package during postinstall.
+    "public/pdf.worker.min.mjs",
   ]),
 ]);
 

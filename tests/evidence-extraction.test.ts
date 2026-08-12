@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { analyzeEvidenceText } from "../src/lib/evidence/extract";
+import { analyzeEvidenceSegments, analyzeEvidenceText } from "../src/lib/evidence/extract";
 
 describe("browser-local evidence extraction", () => {
   it("preserves an exact clinician-authored causation quote and locator", () => {
@@ -21,6 +21,21 @@ describe("browser-local evidence extraction", () => {
     expect(nexus?.locator).toBe("page 4, line 2");
     expect(nexus?.category).toBe("causation");
     expect(nexus?.matchedTerms).toEqual(["PTSD", "Erectile Dysfunction"]);
+  });
+
+  it("retains page/paragraph provenance when analysis receives extracted document segments", () => {
+    const analysis = analyzeEvidenceSegments(
+      [
+        { text: "Assessment: obstructive sleep apnea.", locatorPrefix: "page 2" },
+        { text: "The obstructive sleep apnea is aggravated by PTSD-related chronic sleep disruption.", locatorPrefix: "page 7" },
+      ],
+      { sourceName: "sleep-opinion.pdf", credential: "physician" },
+      ["obstructive sleep apnea", "PTSD"],
+    );
+
+    const nexus = analysis.excerpts.find((excerpt) => excerpt.strength === "nexus-relevant");
+    expect(nexus?.locator).toBe("page 7, line 1");
+    expect(nexus?.quote).toBe("The obstructive sleep apnea is aggravated by PTSD-related chronic sleep disruption.");
   });
 
   it("does not label a lay causation statement as nexus-relevant", () => {

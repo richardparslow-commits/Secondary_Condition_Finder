@@ -32,15 +32,18 @@ export default function PrivacyPage() {
 
         <h2 className="text-xl font-semibold mt-6">4. Optional browser-local evidence review</h2>
         <p>
-          Supporting-document review is optional. Supported text files and pasted evidence text are analyzed locally in your browser. Raw document text is not submitted to the application server, added to workflow cookies, written to application logs, or stored in a user account. The browser may temporarily retain only the extracted evidence excerpts and their source/locator metadata in session storage so they can be displayed on Step 6. Session storage is scoped to the current browser tab and is cleared when the tab is closed; you can also clear the local evidence from Step 4 at any time.
+          Supporting-document review is optional. PDF, DOCX, supported text files, and pasted evidence text are analyzed locally in your browser. Raw document bytes and raw document text are not submitted to the application server, added to workflow cookies, written to application logs, or stored in a user account. PDF.js and Mammoth are bundled application libraries; the selected record is not uploaded to those projects, a CDN, or another document-analysis service.
         </p>
         <p>
-          Direct PDF and DOCX parsing is not enabled in the current privacy-first evidence-review slice. For those formats, you may copy or export relevant text and provide a page or section locator before local analysis. Scanned-image records require OCR outside this application before text can be reviewed.
+          The browser may temporarily retain only the extracted evidence excerpts and their source/locator metadata in session storage so they can be displayed on Step 6. Session storage is scoped to the current browser tab and is cleared when the tab is closed; you can also clear the local evidence from Step 4 at any time. PDF excerpts retain page-level provenance. DOCX excerpts retain paragraph provenance because DOCX does not reliably contain stable rendered page numbers.
+        </p>
+        <p>
+          Image-only or scanned PDF pages may contain no extractable text. The app reports those pages instead of guessing or sending the record to an OCR provider. OCR must be performed separately in a trusted tool before that text can be reviewed here.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">5. Evidence classification limits</h2>
         <p>
-          The local evidence classifier is intentionally conservative. An excerpt is labeled “nexus-relevant” only when you identify the source as clinician-authored, the excerpt includes causation or aggravation language, and it mentions at least one condition selected in the workflow. This label does not determine legal competency, credibility, probative weight, medical correctness, or whether VA will find the evidence sufficient.
+          The local evidence classifier is intentionally conservative. An excerpt is labeled “nexus-relevant” only when you identify the source as clinician-authored, the excerpt includes causation, aggravation, or alternative-cause language, and it mentions at least one condition selected in the workflow. This label does not determine legal competency, credibility, probative weight, medical correctness, or whether VA will find the evidence sufficient.
         </p>
       </section>
 
