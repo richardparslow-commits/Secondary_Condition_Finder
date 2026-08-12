@@ -11,8 +11,8 @@ export interface SecondaryWorkflowState {
   serviceConnectedConditionIds: string[];
   ratingsByConditionId: Record<string, number | null>;
   documentsShared: boolean;
-  medications: string[];
-  treatments: string[];
+  medications?: string[];
+  treatments?: string[];
 }
 
 export type QueryValue = string | string[] | undefined;
