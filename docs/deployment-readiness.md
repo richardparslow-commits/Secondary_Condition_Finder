@@ -10,17 +10,28 @@ The repository deploys `main` to Azure Static Web Apps as a hybrid Next.js appli
 
 The repository build/package path has been exercised through the production Azure pipeline and is no longer the leading explanation for the current whole-site 404 state.
 
-For commit `efa01671859e302e9e8c8a2b84820975f26482db`, Azure Static Web Apps deployment #406 completed successfully. Its Oryx log confirms that the workflow used `npm run build:azure`, Next.js built successfully, `.next/static` and `public` were copied into `.next/standalone`, Azure detected the standalone folder, repackaged the Next.js backend, uploaded the artifacts, and reported deployment success.
+Current objective checkpoint on `main`:
 
-The independent Production Runtime Readiness #20 probe then still returned HTTP 404 for `/`, `/about`, `/va-forms`, and `/runtime-readiness` on the Azure-reported production hostname. Therefore the current evidence does **not** establish that `WORKFLOW_SESSION_SECRET` is missing or invalid; the readiness page is not being reached.
+- Production commit: `8b98a05ff92cf476c51600885d1360d33d09e1d4`.
+- Repository CI #707 completed successfully on that exact commit.
+- Azure Static Web Apps deployment #456 completed successfully on that exact commit.
+- The #456 Azure/Oryx log confirms that the workflow used `npm run build:azure`, Next.js built successfully, `.next/static` and `public` were copied into `.next/standalone`, Azure detected the standalone folder, repackaged the Next.js backend, uploaded the artifacts, and reported deployment success.
+- The same Azure deployment log explicitly reported `https://gentle-tree-04b340f0f.7.azurestaticapps.net` as the deployed site URL.
+- Production Runtime Readiness #70 (run `31625779916`) then probed that exact hostname and received HTTP 404 for `/`, `/about`, `/va-forms`, and `/runtime-readiness`.
+
+This rules out a stale or mismatched production hostname in the repository readiness workflow. The current evidence still does **not** establish that `WORKFLOW_SESSION_SECRET` is missing or invalid because the production readiness page is not being reached, so the real workflow-session crypto path has not run.
+
+The repository's Azure deployment workflow authenticates only with the Azure Static Web Apps deployment token plus the GitHub token used for repository integration. It does not use `azure/login`, a service principal, subscription credentials, tenant credentials, or other Azure resource-management authentication. A deployment token is sufficient to publish the application but does not prove or expose the current Azure resource application settings. Resource/application-setting inspection therefore requires the Azure portal or an Azure CLI session authenticated to the owning Azure subscription/resource.
 
 Before making another repository framework/package change, inspect the Azure resource boundary:
 
 1. In the Azure portal, open the Static Web App associated with this deployment and confirm its displayed default hostname is `gentle-tree-04b340f0f.7.azurestaticapps.net`.
-2. Confirm the production environment/deployment shows commit `efa01671859e302e9e8c8a2b84820975f26482db` as the active production deployment.
+2. Confirm the production environment/deployment shows commit `8b98a05ff92cf476c51600885d1360d33d09e1d4` as the active production deployment.
 3. Under **Environment variables / application settings**, verify that the production environment contains a setting named `WORKFLOW_SESSION_SECRET`. Do not copy, print, or record its value.
 4. Use **Diagnose and solve problems** and, where available, Application Insights **Failures** to inspect backend/runtime errors produced by requests to `/` and `/runtime-readiness`.
-5. If Azure identifies the exact commit above as the active production deployment while the resource's own default hostname still returns 404 for all routes, escalate as an Azure Static Web Apps hybrid-runtime/resource issue using Azure deployment #406 and Production Runtime Readiness #20 as the non-sensitive evidence set.
+5. If Azure identifies the exact commit above as the active production deployment while the resource's own default hostname still returns 404 for all routes, escalate as an Azure Static Web Apps hybrid-runtime/resource issue using Azure deployment #456 and Production Runtime Readiness #70 as the non-sensitive evidence set.
+
+Issue #213 must remain open until the real production `/runtime-readiness` request returns HTTP 200 with the high-level `ready` marker.
 
 Do not switch this application to static HTML export merely to bypass the blocker: the current product uses dynamic/server-rendered routes and server-side workflow-session crypto. Do not downgrade Next.js without objective compatibility evidence.
 
