@@ -231,7 +231,7 @@ intelligence, and citation changes reviewable as pull request diffs.
 | 3 | Raw local evidence remains browser-local and is not required for server recommendation execution | Met, enforced by privacy tests |
 | 4 | Disclaimers and non-adjudicative boundaries are visible in workflow/results views | Met, enforced by copy/contracts |
 | 5 | At least three synthetic demo scenarios launch through the current encrypted workflow rather than legacy query-state URLs | Met, enforced by `tests/demo-scenarios.test.ts` |
-| 6 | Step 5 can expose bounded, authored-only pathway intelligence and source roles without changing recommendation order, scores, prevalence, or intake matching | Pending CI for #244 |
+| 6 | Step 5 can expose bounded, authored-only pathway intelligence and source roles without changing recommendation order, scores, prevalence, or intake matching | Met, enforced by `tests/step5-pathway-intelligence.test.ts` and CI |
 
 ## External/manual truth gates
 
