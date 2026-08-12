@@ -19,10 +19,11 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).toContain("github.event.workflow_run.head_branch == 'main'");
   });
 
-  it("checks only the non-sensitive runtime readiness response", () => {
+  it("checks only the non-sensitive runtime readiness response outside the reserved API prefix", () => {
     const workflow = read(workflowPath);
 
-    expect(workflow).toContain("/api/runtime-readiness");
+    expect(workflow).toContain("$PRODUCTION_BASE_URL/runtime-readiness");
+    expect(workflow).not.toContain("$PRODUCTION_BASE_URL/api/runtime-readiness");
     expect(workflow).toContain(".status == \"ready\"");
     expect(workflow).toContain(".checks.workflowSessionCrypto == true");
     expect(workflow).not.toContain("WORKFLOW_SESSION_SECRET");
@@ -43,12 +44,19 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).toContain("The response body was not printed or attached");
   });
 
+  it("targets the repository explicitly when recording issue evidence", () => {
+    const workflow = read(workflowPath);
+
+    expect(workflow).toContain('--repo "$GITHUB_REPOSITORY"');
+    expect(workflow).not.toContain('gh issue comment "$RUNTIME_READINESS_ISSUE" --body-file');
+  });
+
   it("transitions issue 213 to completed only after a successful readiness result", () => {
     const workflow = read(workflowPath);
 
     expect(workflow).toContain("if: steps.readiness.outputs.ready == 'true'");
-    expect(workflow).toContain('gh issue comment "$RUNTIME_READINESS_ISSUE"');
-    expect(workflow).toContain('gh issue close "$RUNTIME_READINESS_ISSUE" --reason completed');
+    expect(workflow).toContain('gh issue comment "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY"');
+    expect(workflow).toContain('gh issue close "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY" --reason completed');
     expect(workflow).toContain("No secret value, secret length, hash, derived key material");
   });
 });
