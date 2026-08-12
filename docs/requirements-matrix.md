@@ -4,6 +4,7 @@
 |---|---|---|---|---|
 | **REQ-SEC-01** | Non-diagnostic / non-approval guarantee copy protection | P0-T3 | `tests/copy-contracts.test.ts` | ✅ PASS |
 | **REQ-SEC-02** | Zero PII or raw text storage / event logging privacy | P0-T3 / P2-T8 | `tests/event-log-privacy.test.ts`, `tests/ingestion-privacy.test.ts` | ✅ PASS |
+| **REQ-SEC-03** | User-reachable completion/reset clears encrypted secondary-workflow state plus browser-local evidence/checklist state without creating a new data channel | #235 | `tests/workflow-completion-privacy.test.ts` | ✅ PASS |
 | **REQ-ENG-01** | Recommendations constrained strictly to diagnosed condition set | P1-T5 | `tests/workflow-constraints.test.ts` | ✅ PASS |
 | **REQ-KB-01** | Strict 1-to-3 source reference limits per suggestion | P1-T6 | `tests/source-count-policy.test.ts` | ✅ PASS |
 | **REQ-EVD-01** | Non-retentive evidence ingestion and metadata extraction | P2-T8 | `tests/ingestion-privacy.test.ts` | ✅ PASS |
