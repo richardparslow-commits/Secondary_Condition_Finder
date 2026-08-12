@@ -2,6 +2,8 @@
 
 import { useMemo, useSyncExternalStore } from "react";
 
+import { evidenceGapReviewStorageKey } from "@/lib/secondary-workflow/local-state";
+
 export type EvidenceGapReviewItem = {
   conditionId: string;
   condition: string;
@@ -14,7 +16,6 @@ type EvidenceGapReviewProps = {
 
 type ReviewedGapState = Record<string, true>;
 
-const STORAGE_KEY = "secondary-condition-finder:evidence-gap-review:v1";
 const CHANGE_EVENT = "secondary-condition-finder:evidence-gap-review-change";
 const EMPTY_SNAPSHOT = "{}";
 
@@ -24,7 +25,7 @@ function gapKey(conditionId: string, gap: string): string {
 
 function getSnapshot(): string {
   try {
-    return window.sessionStorage.getItem(STORAGE_KEY) ?? EMPTY_SNAPSHOT;
+    return window.sessionStorage.getItem(evidenceGapReviewStorageKey) ?? EMPTY_SNAPSHOT;
   } catch {
     return EMPTY_SNAPSHOT;
   }
@@ -56,7 +57,7 @@ function parseReviewedGapState(raw: string): ReviewedGapState {
 
 function writeReviewedGapState(state: ReviewedGapState): void {
   try {
-    window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    window.sessionStorage.setItem(evidenceGapReviewStorageKey, JSON.stringify(state));
     window.dispatchEvent(new Event(CHANGE_EVENT));
   } catch {
     // Browser storage may be unavailable. The checklist remains informational

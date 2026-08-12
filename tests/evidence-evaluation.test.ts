@@ -80,12 +80,14 @@ describe("P2 Ticket 9: Evidence Evaluation Output Model", () => {
   it("wires a user-controlled, browser-local evidence-gap review into Step 6", () => {
     const page = readRepoFile("src/app/secondary/evidence/page.tsx");
     const component = readRepoFile("src/components/evidence/EvidenceGapReview.tsx");
+    const localState = readRepoFile("src/lib/secondary-workflow/local-state.ts");
 
     expect(page).toContain("<EvidenceGapReview recommendations={evidenceGapRecommendations} />");
     expect(page).toContain("conditionId: recommendation.conditionId");
     expect(page).toContain("condition: recommendation.condition");
     expect(page).toContain("evidenceGaps: recommendation.evidenceGaps");
-    expect(component).toContain("secondary-condition-finder:evidence-gap-review:v1");
+    expect(component).toContain("evidenceGapReviewStorageKey");
+    expect(localState).toContain('"secondary-condition-finder:evidence-gap-review:v1"');
     expect(component).toContain("window.sessionStorage.setItem");
     expect(component).toContain("User-controlled research aid");
     expect(component).toContain("does not automatically mark gaps from extracted text");

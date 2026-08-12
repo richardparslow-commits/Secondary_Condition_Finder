@@ -4,6 +4,10 @@ import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDow
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { EvidenceGapReview } from "@/components/evidence/EvidenceGapReview";
 import { LocalEvidenceReview } from "@/components/evidence/LocalEvidenceReview";
+import {
+  SecondaryWorkflowCompletionActions,
+  SecondaryWorkflowRestartButton,
+} from "@/components/secondary/SecondaryWorkflowCompletionActions";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
@@ -22,7 +26,17 @@ export default async function EvidenceReviewStepPage() {
 
   let state;
   try { state = parseWorkflowState(workflowSessionToQueryParams(session), catalog); }
-  catch { return <main><header className="page-hero"><h1>Complete prior steps first</h1><p>We need the full workflow selections before building an evidence checklist.</p></header><Link href="/secondary/diagnosed" className="ui-button">Start over at diagnosed conditions</Link></main>; }
+  catch {
+    return (
+      <main>
+        <header className="page-hero">
+          <h1>Complete prior steps first</h1>
+          <p>We need the full workflow selections before building an evidence checklist.</p>
+        </header>
+        <SecondaryWorkflowRestartButton label="Clear saved review state and start over" />
+      </main>
+    );
+  }
 
   const medications = state.medications ?? [];
   const treatments = state.treatments ?? [];
@@ -77,8 +91,11 @@ export default async function EvidenceReviewStepPage() {
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
 
-      <div className="ui-actions"><Link href="/secondary/suggestions" className="ui-button-secondary">← Back to Suggestions</Link><Link href="/secondary" className="ui-button">Finish Review <span aria-hidden="true">→</span></Link></div>
-      <div className="ui-footer-note"><strong>Reminder:</strong> Suggestions come from a curated knowledge base and are not ranked by likelihood of approval. Reported medication/treatment matches, checklist selections, and locally extracted record excerpts are evidence-review aids, not adjudicative findings.</div>
+      <div className="ui-actions">
+        <Link href="/secondary/suggestions" className="ui-button-secondary">← Back to Suggestions</Link>
+        <SecondaryWorkflowCompletionActions />
+      </div>
+      <div className="ui-footer-note"><strong>Privacy on completion:</strong> Finish Review and Start a new review clear the encrypted workflow cookie, browser-local evidence excerpts, and browser-local checklist selections before leaving this review. Suggestions come from a curated knowledge base and are not ranked by likelihood of approval.</div>
       <DisclaimerFooter />
     </main>
   );
