@@ -26,6 +26,10 @@ PDF pages that contain no extractable/selectable text are reported to the user r
 
 DOCX is a flow-oriented format and does not reliably encode stable rendered page numbers. The application therefore uses paragraph locators instead of inventing DOCX page numbers.
 
+## PDF parser security boundary
+
+The application pins `pdfjs-dist` to 6.2.108, the patched release required by the repository's high-severity dependency gate for the reviewed malicious-PDF scripting advisory. PDF document loading also sets `enableScripting: false` as defense in depth. The generated PDF.js worker is copied verbatim from the pinned dependency during installation and is excluded from source-code linting; application-authored parser and worker-copy code remains linted normally.
+
 ## Evidence classification
 
 The deterministic classifier looks for narrowly defined evidence categories:
