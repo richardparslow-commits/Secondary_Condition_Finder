@@ -22,11 +22,13 @@ export default async function EvidenceReviewStepPage() {
   try { state = parseWorkflowState(workflowSessionToQueryParams(session), catalog); }
   catch { return <main><header className="page-hero"><h1>Complete prior steps first</h1><p>We need the full workflow selections before building an evidence checklist.</p></header><Link href="/secondary/diagnosed" className="ui-button">Start over at diagnosed conditions</Link></main>; }
 
+  const medications = state.medications ?? [];
+  const treatments = state.treatments ?? [];
   const recommendationsResult = recommend(catalog, kb, {
     primaryConditions: state.serviceConnectedConditionIds,
     symptoms: [],
-    medications: state.medications,
-    treatments: state.treatments,
+    medications,
+    treatments,
     exposures: [],
     notes: "",
   });
@@ -44,7 +46,7 @@ export default async function EvidenceReviewStepPage() {
           <ul className="mt-3 space-y-3">{state.serviceConnectedConditionIds.map((id) => { const condition = byId.get(id); if (!condition) return null; const rating = state.ratingsByConditionId[id]; return <li key={id} className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm"><strong className="block text-blue-900">{condition.name}</strong><span>{rating === null ? "Rating not provided" : `${rating}% current rating entered`}</span></li>; })}</ul>
           <div className="ui-divider" />
           <p className="text-sm"><strong>Documents flagged:</strong> {state.documentsShared ? "Yes — evidence available or reviewed" : "No"}</p>
-          {(state.medications.length > 0 || state.treatments.length > 0) && <div className="mt-4"><p className="text-sm font-semibold">Optional context retained for this run</p>{state.medications.length > 0 && <p className="mt-1 text-sm"><strong>Medications:</strong> {state.medications.join(", ")}</p>}{state.treatments.length > 0 && <p className="mt-1 text-sm"><strong>Treatments:</strong> {state.treatments.join(", ")}</p>}</div>}
+          {(medications.length > 0 || treatments.length > 0) && <div className="mt-4"><p className="text-sm font-semibold">Optional context retained for this run</p>{medications.length > 0 && <p className="mt-1 text-sm"><strong>Medications:</strong> {medications.join(", ")}</p>}{treatments.length > 0 && <p className="mt-1 text-sm"><strong>Treatments:</strong> {treatments.join(", ")}</p>}</div>}
           <div className="ui-callout mt-5 text-sm"><strong>Privacy boundary:</strong> Raw Step 4 evidence text and extracted excerpts do not enter server workflow state. The document yes/no flag and any bounded medication/treatment entries are stored only in the encrypted short-lived workflow cookie and are kept out of URLs, telemetry, and recommendation logs.</div>
         </aside>
 
