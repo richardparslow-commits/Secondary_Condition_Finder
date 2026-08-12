@@ -19,13 +19,14 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).toContain("github.event.workflow_run.head_branch == 'main'");
   });
 
-  it("checks only the non-sensitive runtime readiness response outside the reserved API prefix", () => {
+  it("checks only the non-sensitive dynamic-page readiness marker", () => {
     const workflow = read(workflowPath);
 
     expect(workflow).toContain("$PRODUCTION_BASE_URL/runtime-readiness");
     expect(workflow).not.toContain("$PRODUCTION_BASE_URL/api/runtime-readiness");
-    expect(workflow).toContain(".status == \"ready\"");
-    expect(workflow).toContain(".checks.workflowSessionCrypto == true");
+    expect(workflow).toContain("Accept: text/html");
+    expect(workflow).toContain('data-runtime-readiness="ready"');
+    expect(workflow).toContain('data-runtime-readiness="not_ready"');
     expect(workflow).not.toContain("WORKFLOW_SESSION_SECRET");
     expect(workflow).not.toContain("SECONDARY_WORKFLOW_SESSION_SECRET");
     expect(workflow).not.toContain("upload-artifact");
@@ -38,6 +39,7 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).toContain('outcome="network_error"');
     expect(workflow).toContain('outcome="http_error"');
     expect(workflow).toContain('outcome="payload_not_ready"');
+    expect(workflow).toContain('outcome="unexpected_payload"');
     expect(workflow).toContain("Record failed runtime evidence");
     expect(workflow).toContain("Request outcome:");
     expect(workflow).toContain("HTTP status:");
