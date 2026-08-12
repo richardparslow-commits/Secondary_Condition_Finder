@@ -7,6 +7,24 @@
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "PTSD is associated with obstructive sleep apnea in the published literature, but association alone does not establish causation or aggravation in an individual claim. A secondary theory requires evidence specific to the veteran, including a competent medical nexus; an obesity intermediate-step theory requires evidence addressing whether a service-connected condition caused or aggravated obesity and whether obesity was an intermediate step to OSA.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "direct-secondary",
+          "aggravation",
+          "intermediate-chain"
+        ],
+        "causalChain": "PTSD → claimed OSA causation or worsening; if obesity is relied on as an intermediate step, the PTSD or treatment → obesity → OSA links each require individual medical support.",
+        "developmentQuestions": [
+          "Is obstructive sleep apnea currently confirmed by an appropriate sleep study?",
+          "Does the individual medical history support causation, aggravation, or neither between PTSD and OSA?",
+          "If obesity is relied on as an intermediate step, is each link from PTSD or its treatment to obesity and from obesity to OSA medically supported?",
+          "Which alternative OSA risk factors are clinically relevant in this individual case?"
+        ],
+        "issuesToResolve": [
+          "Population-level PTSD/OSA association is not an individual medical nexus.",
+          "An obesity intermediate-step theory needs link-by-link medical support rather than an assumed chain."
+        ]
+      },
       "evidenceGaps": [
         "Sleep study (polysomnography or qualifying home sleep test) confirming OSA diagnosis",
         "Medical nexus opinion addressing PTSD, treatment/medications, obesity if applicable, and causation or aggravation",
@@ -20,7 +38,7 @@
           "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
           "verified": false,
           "sourceCheckedOn": "2026-08-10",
-          "sourceLocator": "\u00a7 3.310(a)-(b)"
+          "sourceLocator": "§ 3.310(a)-(b)"
         },
         {
           "citation": "Zhang et al., Sleep Medicine (2017), PMID 28735910",
@@ -38,6 +56,23 @@
       "rank": 2,
       "prevalence": "commonly-explored",
       "rationale": "PTSD and migraine show a consistent positive association in the literature, but epidemiologic association does not by itself establish that PTSD caused or aggravated a particular veteran's migraine disorder.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "direct-secondary",
+          "aggravation"
+        ],
+        "causalChain": "PTSD → claimed causation or worsening of a diagnosed migraine disorder → migraine headaches.",
+        "developmentQuestions": [
+          "Is there a current migraine diagnosis with a documented clinical history?",
+          "Does the individual history support a causation theory, an aggravation theory, or neither?",
+          "What temporal relationship exists between PTSD symptoms or treatment and migraine onset or worsening?",
+          "Which alternative migraine causes or contributors should the medical opinion address?"
+        ],
+        "issuesToResolve": [
+          "Epidemiologic association alone does not establish individual causation or aggravation.",
+          "The medical opinion should address the Veteran-specific history rather than relying only on general literature."
+        ]
+      },
       "evidenceGaps": [
         "Headache log (frequency, duration, severity)",
         "Neurological or medical nexus opinion addressing causation or aggravation in the individual case"
@@ -50,7 +85,7 @@
           "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
           "verified": false,
           "sourceCheckedOn": "2026-08-10",
-          "sourceLocator": "\u00a7 3.310(a)-(b)"
+          "sourceLocator": "§ 3.310(a)-(b)"
         },
         {
           "citation": "Nitsche et al., Headache (2026), PMID 41705319",
@@ -68,6 +103,22 @@
       "rank": 3,
       "prevalence": "sometimes-explored",
       "rationale": "SSRIs are associated with sexual dysfunction, which can include erectile difficulties, but a medication-related secondary theory requires evidence that the veteran used the medication, experienced the relevant adverse effect, and has a condition medically linked to that exposure.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "medication-related"
+        ],
+        "causalChain": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction causation or aggravation.",
+        "developmentQuestions": [
+          "Was the relevant SSRI prescribed for the service-connected PTSD?",
+          "Is erectile dysfunction currently diagnosed, and how does its onset or worsening relate temporally to the medication exposure?",
+          "Does the clinician consider the medication a plausible cause or aggravating factor in this individual case?",
+          "Which alternative causes of erectile dysfunction should be addressed?"
+        ],
+        "issuesToResolve": [
+          "A recognized medication association does not establish that the medication caused this Veteran's condition.",
+          "The medication indication, exposure timing, current diagnosis, and alternative causes all need individual evidence."
+        ]
+      },
       "evidenceGaps": [
         "Prescription records showing the relevant SSRI exposure and timing",
         "Urology or primary care diagnosis of erectile dysfunction",
@@ -81,7 +132,7 @@
           "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
           "verified": false,
           "sourceCheckedOn": "2026-08-10",
-          "sourceLocator": "\u00a7 3.310(a)-(b)"
+          "sourceLocator": "§ 3.310(a)-(b)"
         },
         {
           "citation": "Brugi et al., Journal of Sexual Medicine (2026), PMID 42466890",
