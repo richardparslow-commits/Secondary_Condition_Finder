@@ -4,14 +4,15 @@
 
 **Draft for VA production-access review. Do not submit yet.**
 
-Credentialed sandbox validation for VA Forms and Benefits Reference Data is complete and recorded in closed issue #189.
+Credentialed live sandbox validation for VA Forms and Benefits Reference Data remains externally pending in issue #189. The repository implementation and manual smoke-test workflow are in place, but objective workflow history currently contains no completed credentialed run.
 
 Submission remains gated on:
 
-1. Verifying the production Azure runtime settings in `docs/deployment-readiness.md`, especially `WORKFLOW_SESSION_SECRET`.
-2. Completing the deployed-app manual accessibility/Section 508 review tracked in issue #195 and remediating/retesting material findings.
-3. Supplying truthful applicant/business information and absolute deployed URLs.
-4. Completing a final demo rehearsal against the deployed application.
+1. Recording successful non-sensitive credentialed sandbox smoke-test evidence in issue #189.
+2. Verifying the production Azure runtime settings in `docs/deployment-readiness.md`, especially `WORKFLOW_SESSION_SECRET`.
+3. Completing the deployed-app manual accessibility/Section 508 review tracked in issue #195 and remediating/retesting material findings.
+4. Supplying truthful applicant/business information and absolute deployed URLs.
+5. Completing a final demo rehearsal against the deployed application.
 
 ## Product description
 
@@ -176,4 +177,4 @@ The repository performs high-severity dependency auditing in CI on every gated c
 
 ## Current readiness status
 
-Credentialed sandbox validation is complete and issue #189 is closed. Repository implementation and deployment are ready for continued Phase 3 review, but production-access submission remains blocked on production runtime-setting verification, manual accessibility/Section 508 evidence in issue #195, truthful applicant/business details and absolute deployed URLs, and the final demo rehearsal.
+Credentialed live sandbox validation remains pending in issue #189. Repository implementation is ready for continued Phase 3 review, but production-access submission remains blocked on that sandbox proof, production runtime-setting verification, manual accessibility/Section 508 evidence in issue #195, truthful applicant/business details and absolute deployed URLs, and the final demo rehearsal.
