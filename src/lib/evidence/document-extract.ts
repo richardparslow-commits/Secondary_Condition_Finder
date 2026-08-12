@@ -42,10 +42,7 @@ export async function extractPdfEvidence(file: File): Promise<LocalDocumentExtra
   }
 
   const bytes = new Uint8Array(await file.arrayBuffer());
-  const loadingTask = pdfjs.getDocument({
-    data: bytes,
-    enableScripting: false,
-  });
+  const loadingTask = pdfjs.getDocument({ data: bytes });
   const document = await loadingTask.promise;
   const segments: EvidenceTextSegment[] = [];
   const warnings: string[] = [];
@@ -63,7 +60,7 @@ export async function extractPdfEvidence(file: File): Promise<LocalDocumentExtra
       page.cleanup();
     }
   } finally {
-    await document.destroy();
+    await loadingTask.destroy();
   }
 
   if (segments.length === 0) {
