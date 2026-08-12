@@ -31,7 +31,19 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).not.toContain("cat \"$body_file\"");
   });
 
-  it("closes issue 213 only after a successful readiness result", () => {
+  it("classifies failure without exposing the response body", () => {
+    const workflow = read(workflowPath);
+
+    expect(workflow).toContain('outcome="network_error"');
+    expect(workflow).toContain('outcome="http_error"');
+    expect(workflow).toContain('outcome="payload_not_ready"');
+    expect(workflow).toContain("Record failed runtime evidence");
+    expect(workflow).toContain("Request outcome:");
+    expect(workflow).toContain("HTTP status:");
+    expect(workflow).toContain("The response body was not printed or attached");
+  });
+
+  it("transitions issue 213 to completed only after a successful readiness result", () => {
     const workflow = read(workflowPath);
 
     expect(workflow).toContain("if: steps.readiness.outputs.ready == 'true'");
