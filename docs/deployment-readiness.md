@@ -23,6 +23,32 @@ Configure the following in the **production environment variables / application 
 
 Azure Static Web Apps request-time environment variables are resource settings, not GitHub Actions repository secrets. The deployment-token secret in the workflow does not prove that `WORKFLOW_SESSION_SECRET` is configured in the Azure runtime.
 
+## Objective runtime-secret verification
+
+Issue #213 tracks the production runtime gate for `WORKFLOW_SESSION_SECRET`.
+
+The application exposes a deliberately non-sensitive server-side self-test at `/api/runtime-readiness`. It does **not** return the secret, its length, a hash, key material, cookie content, or environment-variable values. The response is non-cacheable.
+
+The self-test reports HTTP 200 with `{"status":"ready","checks":{"workflowSessionCrypto":true}}` only when all of the following are true at request time:
+
+1. the server is running with `NODE_ENV=production`;
+2. the primary `WORKFLOW_SESSION_SECRET` variable is present with at least 32 characters;
+3. the real AES-256-GCM workflow-session implementation can seal and reopen an in-memory probe successfully.
+
+It reports HTTP 503 with `not_ready` otherwise. The legacy `SECONDARY_WORKFLOW_SESSION_SECRET` fallback is intentionally insufficient to pass this readiness gate.
+
+### Evidence to record
+
+After deploying the intended `main` commit:
+
+1. confirm repository CI is green for that exact commit;
+2. confirm the Azure Static Web Apps deployment is green for the same commit;
+3. request the production `/api/runtime-readiness` route;
+4. record only timestamp, deployed commit, production URL, HTTP status, and the high-level `ready` result in issue #213;
+5. never paste, print, log, attach, or otherwise record the secret value.
+
+A successful runtime self-test proves that the current production process can access and use a valid primary workflow-session secret. It does not authorize disclosure of that secret or prove unrelated Azure settings.
+
 ## Build-time public telemetry setting
 
 `NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING` is optional. Because it uses the `NEXT_PUBLIC_*` prefix, Next.js can inline it into browser code at build time. If it is not supplied during the production build, Application Insights browser telemetry remains disabled.
@@ -65,13 +91,14 @@ After every production deployment:
 
 1. Confirm the Azure deployment workflow succeeded.
 2. Confirm the normal repository CI workflow succeeded on the same `main` commit.
-3. Open `/` and verify the home page renders.
-4. Open `/va-forms` with sandbox disabled and verify it renders `Local reference` without an error.
-5. Start the secondary workflow and verify advancing from the diagnosed-condition step succeeds. A production error at this point can indicate a missing/short `WORKFLOW_SESSION_SECRET`.
-6. Start the presumptive workflow and verify submitting service history reaches `/presumptive/results` without placing locations or dates in the URL.
-7. Inspect response headers and confirm the browser security baseline is present.
-8. If sandbox mode is intentionally enabled, confirm `/va-forms` either shows `VA sandbox reference` or safely falls back to `Local reference`; never treat sandbox data as current production VA data.
+3. Request `/api/runtime-readiness` and require HTTP 200 / `ready` before treating the workflow-session runtime as configured.
+4. Open `/` and verify the home page renders.
+5. Open `/va-forms` with sandbox disabled and verify it renders `Local reference` without an error.
+6. Start the secondary workflow and verify advancing from the diagnosed-condition step succeeds.
+7. Start the presumptive workflow and verify submitting service history reaches `/presumptive/results` without placing locations or dates in the URL.
+8. Inspect response headers and confirm the browser security baseline is present.
+9. If sandbox mode is intentionally enabled, confirm `/va-forms` either shows `VA sandbox reference` or safely falls back to `Local reference`; never treat sandbox data as current production VA data.
 
 ## Known external verification boundary
 
-Repository CI can verify implementation, fail-closed behavior, configuration parsing, and deployment workflow structure. It cannot prove the current value of Azure resource application settings. `WORKFLOW_SESSION_SECRET` and any intentionally enabled VA sandbox credentials must therefore be checked in the Azure Static Web Apps production environment settings before treating the deployment as fully runtime-ready.
+Repository CI can verify implementation, fail-closed behavior, configuration parsing, deployment workflow structure, and the safety contract of `/api/runtime-readiness`. It cannot by itself prove the current value of Azure resource application settings. Objective production proof therefore requires requesting `/api/runtime-readiness` on the deployed production build and recording the non-sensitive result in issue #213. Any intentionally enabled VA sandbox credentials remain separately governed and must never be exposed.
