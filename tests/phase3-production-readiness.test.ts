@@ -36,14 +36,16 @@ describe("Phase 3 production-access package contracts", () => {
     expect(request).toContain("excludes Benefits Intake, Benefits Claims, Benefits Documents");
   });
 
-  it("does not overstate the remaining external sandbox gate", () => {
+  it("records completed sandbox validation without overstating accessibility readiness", () => {
     const request = readRepoFile("docs/phase3-production-access-package.md");
     const checklist = readRepoFile("docs/phase3-submission-checklist.md");
 
-    expect(request).toContain("Do not submit yet");
-    expect(request).toContain("Closing issue #189");
+    expect(request).toContain("Credentialed sandbox validation is complete and issue #189 is closed");
     expect(checklist).toContain("Issue #189 is closed");
-    expect(checklist).toContain("No claim is made that live sandbox validation is complete unless issue #189 is closed");
+    expect(checklist).toContain("Credentialed sandbox validation is complete and issue #189 is closed");
+    expect(request).toContain("This is not a conformance certification");
+    expect(request).toContain("complete issue #195");
+    expect(checklist).toContain("No claim is made that Section 508 conformance is complete unless issue #195 is closed with objective evidence");
   });
 
   it("covers VA review fields without inventing unresolved applicant facts", () => {
