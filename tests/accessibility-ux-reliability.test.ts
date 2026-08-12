@@ -86,6 +86,31 @@ describe("accessibility and UX content contracts", () => {
     expect(css).toContain("@media (prefers-reduced-motion: reduce)");
   });
 
+  it("announces dynamic reference and evidence status changes without exposing extra data", () => {
+    const referenceExplorer = readFileSync(
+      "src/components/va/DisabilityReferenceExplorer.tsx",
+      "utf8",
+    );
+    const evidenceAnalyzer = readFileSync(
+      "src/components/evidence/LocalEvidenceAnalyzer.tsx",
+      "utf8",
+    );
+
+    expect(referenceExplorer).toMatch(
+      /role="status"[\s\S]*aria-live="polite"[\s\S]*aria-atomic="true"[\s\S]*Showing \{matches\.length\} of \{items\.length\}/,
+    );
+    expect(referenceExplorer).toContain('htmlFor="va-disability-reference-search"');
+    expect(referenceExplorer).toContain('id="va-disability-reference-search"');
+
+    expect(evidenceAnalyzer).toMatch(
+      /role="status"[\s\S]*aria-live="polite"[\s\S]*aria-atomic="true"[\s\S]*Extraction notices/,
+    );
+    expect(evidenceAnalyzer).toMatch(
+      /Evidence excerpt summary[\s\S]*role="status"[\s\S]*aria-live="polite"[\s\S]*aria-atomic="true"[\s\S]*\{totals\.nexus\} nexus-relevant excerpt/,
+    );
+    expect(evidenceAnalyzer).not.toContain("aria-live=\"assertive\"");
+  });
+
   it("does not overstate manual Section 508 verification in the evidence report", () => {
     const audit = readFileSync("docs/accessibility-audit.md", "utf8");
 
