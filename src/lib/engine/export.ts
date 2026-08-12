@@ -21,10 +21,12 @@ export function formatClaimSummary(
     lines.push(`${index + 1}. Recommended Theory: ${rec.condition} (${rec.bodySystem})`);
     lines.push(`   Prevalence Category: ${rec.prevalence}`);
     lines.push(`   Contributing Primaries: ${rec.contributingPrimaries.map(p => p.name).join(", ")}`);
-    
+
     if (evaluation) {
       lines.push(`   Satisfied Gaps: ${evaluation.satisfiedGaps.join("; ") || "None yet"}`);
       lines.push(`   Remaining Gaps: ${evaluation.remainingGaps.join("; ") || "None yet"}`);
+    } else {
+      lines.push(`   Evidence Gaps to Review: ${rec.evidenceGaps.join("; ") || "None listed"}`);
     }
 
     lines.push("   Key Sources:");
