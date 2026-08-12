@@ -7,7 +7,7 @@ Use this checklist immediately before completing the VA API Platform production-
 Do not submit until all blocking items are complete.
 
 - [x] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence for VA Forms and Benefits Reference Data.
-- [ ] Production `WORKFLOW_SESSION_SECRET` is verified in Azure application settings.
+- [ ] Issue #213 is closed with non-sensitive production `/api/runtime-readiness` evidence proving the primary `WORKFLOW_SESSION_SECRET` is usable by the deployed runtime.
 - [ ] Latest `main` CI is green.
 - [ ] Latest Azure deployment for the same `main` commit is green.
 - [ ] Final deployed-app demo rehearsal passes `docs/phase3-demo-script.md`.
@@ -80,7 +80,8 @@ Prepare a concise description covering:
 - no `NEXT_PUBLIC_*` API credentials;
 - sandbox/production credential separation;
 - no credential logging;
-- rotation on exposure/incident and according to VA/hosting requirements.
+- rotation on exposure/incident and according to VA/hosting requirements;
+- production workflow-session readiness is verified through a non-sensitive crypto self-test, not by exposing the secret value.
 
 ## PII/PHI and data handling answer
 
@@ -106,7 +107,8 @@ Include:
 - bounded retries and timeouts;
 - payload validation and fail-closed fallback;
 - pinned Azure deployment action;
-- production deployment verification on the exact `main` commit.
+- production deployment verification on the exact `main` commit;
+- non-sensitive runtime verification of the primary workflow-session secret through `/api/runtime-readiness`.
 
 ## Unauthorized or duplicate request safeguards
 
@@ -174,5 +176,6 @@ Before answering the form:
 - [ ] Legal/medical scope matches `/terms`.
 - [ ] API list matches implemented routes and `docs/va-api-access-strategy.md`.
 - [x] Credentialed sandbox validation is complete and issue #189 is closed.
+- [ ] Production workflow-session runtime validation is complete and issue #213 is closed.
 - [ ] No claim is made that Section 508 conformance is complete unless issue #195 is closed with objective evidence.
 - [ ] No unsupported business, accessibility, security-certification, or regulatory-compliance claim is included.
