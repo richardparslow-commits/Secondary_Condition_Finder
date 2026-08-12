@@ -144,10 +144,16 @@ describe("production deployment readiness", () => {
     expect(runbook).toContain("WORKFLOW_SESSION_SECRET");
     expect(runbook).toContain("at least 32 characters");
     expect(runbook).toContain("VA_SANDBOX_ENABLED");
-    expect(runbook).toContain("cannot by itself prove the current value of Azure resource application settings");
     expect(runbook).toContain("/runtime-readiness");
     expect(runbook).not.toContain("/api/runtime-readiness");
     expect(runbook).toContain("data-runtime-readiness");
     expect(runbook).toContain("Issue #213");
+    expect(runbook).toContain("Current Azure resource-level blocker");
+    expect(runbook).toContain("Azure Static Web Apps deployment #406");
+    expect(runbook).toContain("Production Runtime Readiness #20");
+    expect(runbook).toContain("Diagnose and solve problems");
+    expect(runbook).toContain("Application Insights **Failures**");
+    expect(runbook).toContain("Do not downgrade Next.js without objective compatibility evidence");
+    expect(runbook).toContain("cannot prove which Azure resource/environment currently owns the reported hostname");
   });
 });
