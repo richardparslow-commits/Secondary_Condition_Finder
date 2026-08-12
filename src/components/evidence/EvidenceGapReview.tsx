@@ -2,10 +2,14 @@
 
 import { useMemo, useSyncExternalStore } from "react";
 
-import type { Recommendation } from "@/lib/engine/types";
+export type EvidenceGapReviewItem = {
+  conditionId: string;
+  condition: string;
+  evidenceGaps: string[];
+};
 
 type EvidenceGapReviewProps = {
-  recommendations: Recommendation[];
+  recommendations: EvidenceGapReviewItem[];
 };
 
 type ReviewedGapState = Record<string, true>;
@@ -55,8 +59,8 @@ function writeReviewedGapState(state: ReviewedGapState): void {
     window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     window.dispatchEvent(new Event(CHANGE_EVENT));
   } catch {
-    // Browser storage may be unavailable. The checklist remains usable as
-    // informational content without weakening the workflow privacy boundary.
+    // Browser storage may be unavailable. The checklist remains informational
+    // without moving any review state to the server.
   }
 }
 
