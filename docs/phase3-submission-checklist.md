@@ -6,7 +6,7 @@ Use this checklist immediately before completing the VA API Platform production-
 
 Do not submit until all blocking items are complete.
 
-- [x] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence for VA Forms and Benefits Reference Data.
+- [ ] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence for VA Forms and Benefits Reference Data.
 - [ ] Issue #213 is closed with non-sensitive production `/runtime-readiness` evidence proving the primary `WORKFLOW_SESSION_SECRET` is usable by the deployed runtime.
 - [ ] Latest `main` CI is green.
 - [ ] Latest Azure deployment for the same `main` commit is green.
@@ -175,7 +175,7 @@ Before answering the form:
 - [ ] Data-handling statements match `/privacy` and actual implementation.
 - [ ] Legal/medical scope matches `/terms`.
 - [ ] API list matches implemented routes and `docs/va-api-access-strategy.md`.
-- [x] Credentialed sandbox validation is complete and issue #189 is closed.
+- [ ] Credentialed sandbox validation is complete and issue #189 is closed with objective sanitized success evidence.
 - [ ] Production workflow-session runtime validation is complete and issue #213 is closed.
 - [ ] No claim is made that Section 508 conformance is complete unless issue #195 is closed with objective evidence.
 - [ ] No unsupported business, accessibility, security-certification, or regulatory-compliance claim is included.
