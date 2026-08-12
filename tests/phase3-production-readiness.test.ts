@@ -36,13 +36,26 @@ describe("Phase 3 production-access package contracts", () => {
     expect(request).toContain("excludes Benefits Intake, Benefits Claims, Benefits Documents");
   });
 
-  it("records completed sandbox validation without overstating accessibility readiness", () => {
+  it("keeps credentialed sandbox validation pending until objective evidence exists", () => {
+    const request = readRepoFile("docs/phase3-production-access-package.md");
+    const checklist = readRepoFile("docs/phase3-submission-checklist.md");
+    const phasePlan = readRepoFile("docs/phase-plan.md");
+    const audit = readRepoFile("docs/phase2-completion-audit.md");
+
+    expect(request).toContain("Credentialed live sandbox validation for VA Forms and Benefits Reference Data remains externally pending in issue #189");
+    expect(request).not.toContain("Credentialed sandbox validation is complete and issue #189 is closed");
+    expect(checklist).toContain("- [ ] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence");
+    expect(checklist).not.toContain("- [x] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence");
+    expect(phasePlan).toContain("Current status: **code-complete / externally pending**");
+    expect(phasePlan).toContain("workflow ID `332298000` has zero recorded runs");
+    expect(audit).toContain("Phase 2 external completion status: PENDING ONE EXTERNAL GATE");
+    expect(audit).toContain("credentialed sandbox smoke test");
+  });
+
+  it("does not overstate accessibility readiness", () => {
     const request = readRepoFile("docs/phase3-production-access-package.md");
     const checklist = readRepoFile("docs/phase3-submission-checklist.md");
 
-    expect(request).toContain("Credentialed sandbox validation is complete and issue #189 is closed");
-    expect(checklist).toContain("Issue #189 is closed");
-    expect(checklist).toContain("Credentialed sandbox validation is complete and issue #189 is closed");
     expect(request).toContain("This is not a conformance certification");
     expect(request).toContain("complete issue #195");
     expect(checklist).toContain("No claim is made that Section 508 conformance is complete unless issue #195 is closed with objective evidence");

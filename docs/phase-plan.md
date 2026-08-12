@@ -48,7 +48,7 @@ Phase-level evidence and completion status are tracked through dedicated gate ar
 
 ### Deliverables
 
-- [x] **VA developer account setup and sandbox API key management process.** Repository process and secret-handling rules are documented, and the credentialed sandbox smoke-test gate is complete.
+- [~] **VA developer account setup and sandbox API key management process.** Repository process and secret-handling rules are documented. Credentialed live sandbox verification remains externally pending in issue #189.
 - [x] **API connector layer with environment-based configuration.** Implemented in `src/lib/va/sandbox.ts`.
 - [x] **Initial high-value, lower-sensitivity integrations.** VA Forms and Benefits Reference Data public/reference demonstrations are implemented.
 - [x] **Request observability, error handling, and retry strategy.** Request IDs, status/outcome categories, bounded retries, timeout/network handling, payload validation, and local fallback are implemented without logging credentials or user payloads.
@@ -61,7 +61,7 @@ Phase-level evidence and completion status are tracked through dedicated gate ar
 
 ### Acceptance Criteria
 
-- [x] **App can call selected sandbox APIs successfully from the integration layer.** Request construction/success behavior is covered by automated HTTP tests and the credentialed VA sandbox smoke-test evidence is recorded in closed issue #189.
+- [~] **App can call selected sandbox APIs successfully from the integration layer.** Request construction/success behavior is covered by automated HTTP tests. Credentialed live VA sandbox proof is still required in issue #189.
 - [x] **API failures degrade gracefully without breaking core intake/exploration flow.** Sandbox-dependent views fall back locally; core secondary/presumptive flows are independent.
 - [x] **Logs provide enough detail to support troubleshooting and demo explanations.** Observations contain service/path/request ID/attempt/status-or-outcome/duration only.
 - [x] **Sandbox-dependent features can be toggled off without affecting baseline V1.** `VA_SANDBOX_ENABLED` defaults to disabled, and tests assert disabled mode performs no network call.
@@ -70,7 +70,7 @@ Phase-level evidence and completion status are tracked through dedicated gate ar
 
 See `docs/phase2-completion-audit.md`.
 
-Current status: **complete**. The external credentialed smoke-test gate was closed in issue #189 with non-sensitive evidence.
+Current status: **code-complete / externally pending**. As of the latest objective check, VA Sandbox Smoke Test workflow ID `332298000` has zero recorded runs, so issue #189 remains open until a credentialed run records sanitized success evidence for both selected APIs.
 
 ---
 
@@ -95,7 +95,7 @@ Current status: **complete**. The external credentialed smoke-test gate was clos
 ### Acceptance Criteria
 
 - [~] **A 30–60 minute production-review demo can be run without blockers.** Script and route sequence are complete; final deployed-app rehearsal remains required before submission.
-- [~] **Production request package is complete and aligned to actual implemented workflows.** Repository package is assembled; applicant/business details, absolute deployed URLs, accessibility response, and production runtime verification must be filled from verified real-world information before submission.
+- [~] **Production request package is complete and aligned to actual implemented workflows.** Repository package is assembled; applicant/business details, absolute deployed URLs, accessibility response, production runtime verification, and credentialed sandbox verification must be filled from verified real-world information before submission.
 - [x] **Requested API list is minimal, justified, and mapped to explicit user value.** Initial request is limited to VA Forms and Benefits Reference Data.
 - [x] **Privacy, terms, product scope, and end-user boundaries are published in plain language.**
 
@@ -107,7 +107,7 @@ See:
 - `docs/phase3-demo-script.md`
 - `docs/phase3-submission-checklist.md`
 
-Sandbox verification is complete. Do not submit until production runtime settings are verified, the accessibility answer is supported by current deployed evidence, truthful applicant/business details are supplied, and the final demo rehearsal passes.
+Sandbox verification remains pending in issue #189. Do not submit until the credentialed sandbox gate is objectively satisfied, production runtime settings are verified, the accessibility answer is supported by current deployed evidence, truthful applicant/business details are supplied, and the final demo rehearsal passes.
 
 ---
 
@@ -117,8 +117,8 @@ Sandbox verification is complete. Do not submit until production runtime setting
 2. Build responsive intake and results experience. **Complete.**
 3. Expand condition knowledge base and explanation outputs. **Ongoing under citation/publication governance.**
 4. Add rationale/source governance and privacy-safe operational logging. **Complete for current scope.**
-5. Implement sandbox API adapters and targeted integrations. **Complete, including live credentialed sandbox smoke test.**
-6. Prepare production-readiness documents and demo package. **Repository drafting complete; final external fields/accessibility/runtime verification/rehearsal pending.**
+5. Implement sandbox API adapters and targeted integrations. **Code complete; live credentialed sandbox smoke test externally pending in issue #189.**
+6. Prepare production-readiness documents and demo package. **Repository drafting complete; final external sandbox/accessibility/runtime/fields/rehearsal gates pending.**
 7. Submit production-access request for minimum necessary APIs. **Not started; gated by the Phase 3 submission checklist.**
 
 ## Validation Gate Before Production Request
@@ -131,7 +131,7 @@ Sandbox verification is complete. Do not submit until production runtime setting
 - [x] Phase 2 public/reference integrations are isolated behind a feature toggle and local fallback.
 - [x] Production deployment has repository-enforced runtime/security controls and a documented Azure settings boundary.
 - [x] Phase 3 production-access request package, demo script, and submission checklist are assembled in the repository.
-- [x] Credentialed live VA sandbox smoke test recorded for VA Forms and Benefits Reference Data (issue #189 closed).
+- [ ] Credentialed live VA sandbox smoke test recorded for VA Forms and Benefits Reference Data (issue #189).
 - [ ] Production Azure runtime settings manually verified.
 - [ ] Final deployed-app accessibility/Section 508 evidence reviewed (issue #195).
 - [ ] Truthful applicant/business model and absolute public URLs filled into the submission package.
