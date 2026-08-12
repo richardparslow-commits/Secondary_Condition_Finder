@@ -2,28 +2,7 @@ import Link from "next/link";
 
 import scenarios from "../../../data/demo-scenarios.json";
 import { DisclaimerFooter } from "@/components/Disclaimer";
-
-function toQuery(intake: {
-  primaryConditions: string[];
-  symptoms: string[];
-  medications: string[];
-  exposures: string[];
-  notes: string;
-}): string {
-  const params = new URLSearchParams();
-  for (const condition of intake.primaryConditions) {
-    params.append("primary", condition);
-  }
-  if (intake.symptoms.length) params.set("symptoms", intake.symptoms.join(","));
-  if (intake.medications.length) {
-    params.set("medications", intake.medications.join(","));
-  }
-  if (intake.exposures.length) {
-    params.set("exposures", intake.exposures.join(","));
-  }
-  if (intake.notes) params.set("notes", intake.notes);
-  return params.toString();
-}
+import { ScenarioLaunchForm } from "@/components/ScenarioLaunchForm";
 
 export default function ScenariosPage() {
   return (
@@ -36,8 +15,13 @@ export default function ScenariosPage() {
         Demo scenarios
       </h1>
       <p className="mt-2 text-sm text-slate-600">
-        Repeatable walkthroughs for demos. Each one runs the same engine as the
-        intake form.
+        Repeatable synthetic walkthroughs that launch the same privacy-safe
+        secondary workflow used by normal intake.
+      </p>
+      <p className="mt-2 text-xs text-slate-500">
+        Demo content is synthetic. Launching submits only the scenario identifier;
+        scenario workflow state is validated on the server and stored in the
+        encrypted short-lived workflow session rather than in the URL.
       </p>
 
       <div className="mt-6 space-y-4">
@@ -53,14 +37,9 @@ export default function ScenariosPage() {
               {scenario.description}
             </p>
             <p className="mt-3 text-xs text-slate-500">
-              Conditions: {scenario.intake.primaryConditions.join(", ")}
+              Diagnosed condition ids: {scenario.workflow.diagnosedConditionIds.join(", ")}
             </p>
-            <Link
-              href={`/results?${toQuery(scenario.intake)}`}
-              className="mt-4 inline-block rounded-md bg-slate-900 px-3.5 py-2 text-sm font-medium text-white hover:bg-slate-700"
-            >
-              Run scenario
-            </Link>
+            <ScenarioLaunchForm scenarioId={scenario.id} />
           </article>
         ))}
       </div>
