@@ -23,6 +23,11 @@ export interface EvidenceSourceMetadata {
   locatorPrefix?: string;
 }
 
+export interface EvidenceTextSegment {
+  text: string;
+  locatorPrefix: string;
+}
+
 export interface EvidenceExcerpt {
   sourceName: string;
   locator: string;
@@ -168,10 +173,6 @@ export function analyzeEvidenceText(
 
     const matched = matchingTerms(unit.text, conditionTerms);
     const nexusRelevant = isNexusCategory(category) && clinicianAuthored && matched.length > 0;
-
-    // For nexus excerpts, require a clinician-authored source and at least one
-    // selected-condition term. Other clinical statements may still be useful
-    // as supporting evidence but are never labeled nexus evidence by this tool.
     const strength: EvidenceStrength = nexusRelevant ? "nexus-relevant" : "supporting";
     const key = `${category}:${unit.text.toLocaleLowerCase()}`;
     if (seen.has(key)) continue;
@@ -186,6 +187,38 @@ export function analyzeEvidenceText(
       clinicianAuthored,
       matchedTerms: matched,
     });
+  }
+
+  return {
+    version: 1,
+    sourceName: metadata.sourceName,
+    excerpts,
+    nexusRelevantCount: excerpts.filter((excerpt) => excerpt.strength === "nexus-relevant").length,
+    supportingCount: excerpts.filter((excerpt) => excerpt.strength === "supporting").length,
+  };
+}
+
+export function analyzeEvidenceSegments(
+  segments: EvidenceTextSegment[],
+  metadata: Omit<EvidenceSourceMetadata, "locatorPrefix">,
+  conditionTerms: string[],
+): EvidenceAnalysis {
+  const excerpts: EvidenceExcerpt[] = [];
+  const seen = new Set<string>();
+
+  for (const segment of segments) {
+    const analysis = analyzeEvidenceText(
+      segment.text,
+      { ...metadata, locatorPrefix: segment.locatorPrefix },
+      conditionTerms,
+    );
+
+    for (const excerpt of analysis.excerpts) {
+      const key = `${excerpt.category}:${excerpt.quote.toLocaleLowerCase()}:${excerpt.locator}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      excerpts.push(excerpt);
+    }
   }
 
   return {
