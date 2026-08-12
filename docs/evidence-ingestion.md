@@ -28,7 +28,7 @@ DOCX is a flow-oriented format and does not reliably encode stable rendered page
 
 ## PDF parser security boundary
 
-The application pins `pdfjs-dist` to 6.2.108, the patched release required by the repository's high-severity dependency gate for the reviewed malicious-PDF scripting advisory. PDF document loading also sets `enableScripting: false` as defense in depth. The generated PDF.js worker is copied verbatim from the pinned dependency during installation and is excluded from source-code linting; application-authored parser and worker-copy code remains linted normally.
+The application pins `pdfjs-dist` to 6.2.108, the patched release required by the repository's high-severity dependency gate for the reviewed malicious-PDF advisory. The earlier vulnerable pin was rejected by CI and is not retained. Extraction uses only the PDF.js display-layer text-content API, does not render the PDF viewer or execute document actions, and destroys the `PDFDocumentLoadingTask` after page text extraction. The generated PDF.js worker is copied verbatim from the pinned dependency during installation and is excluded from source-code linting; application-authored parser and worker-copy code remains linted normally.
 
 ## Evidence classification
 
