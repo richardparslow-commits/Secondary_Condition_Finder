@@ -149,8 +149,14 @@ describe("production deployment readiness", () => {
     expect(runbook).toContain("data-runtime-readiness");
     expect(runbook).toContain("Issue #213");
     expect(runbook).toContain("Current Azure resource-level blocker");
-    expect(runbook).toContain("Azure Static Web Apps deployment #406");
-    expect(runbook).toContain("Production Runtime Readiness #20");
+    expect(runbook).toContain("8b98a05ff92cf476c51600885d1360d33d09e1d4");
+    expect(runbook).toContain("Repository CI #707");
+    expect(runbook).toContain("Azure Static Web Apps deployment #456");
+    expect(runbook).toContain("Production Runtime Readiness #70");
+    expect(runbook).toContain("31625779916");
+    expect(runbook).toContain("gentle-tree-04b340f0f.7.azurestaticapps.net");
+    expect(runbook).toContain("HTTP 404");
+    expect(runbook).toContain("does not use `azure/login`");
     expect(runbook).toContain("Diagnose and solve problems");
     expect(runbook).toContain("Application Insights **Failures**");
     expect(runbook).toContain("Do not downgrade Next.js without objective compatibility evidence");
