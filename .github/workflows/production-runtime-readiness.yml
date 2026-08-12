@@ -1,0 +1,87 @@
+name: Production Runtime Readiness
+
+on:
+  workflow_run:
+    workflows:
+      - Azure Static Web Apps CI/CD
+    types:
+      - completed
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  verify-runtime:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PRODUCTION_BASE_URL: https://gentle-tree-04b340f0f.7.azurestaticapps.net
+      RUNTIME_READINESS_ISSUE: '213'
+    steps:
+      - name: Verify production runtime readiness
+        id: readiness
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          tmp_dir="$(mktemp -d)"
+          trap 'rm -rf "$tmp_dir"' EXIT
+          body_file="$tmp_dir/body.json"
+
+          http_status="$(curl --silent --show-error --location \
+            --connect-timeout 10 \
+            --max-time 20 \
+            --header 'Accept: application/json' \
+            --output "$body_file" \
+            --write-out '%{http_code}' \
+            "$PRODUCTION_BASE_URL/api/runtime-readiness")"
+
+          ready=false
+          if [ "$http_status" = "200" ] && \
+             jq -e '.status == "ready" and .checks.workflowSessionCrypto == true' "$body_file" >/dev/null; then
+            ready=true
+          fi
+
+          echo "http_status=$http_status" >> "$GITHUB_OUTPUT"
+          echo "ready=$ready" >> "$GITHUB_OUTPUT"
+
+          {
+            echo "## Production runtime readiness"
+            echo "- deployed commit: ${{ github.event.workflow_run.head_sha }}"
+            echo "- Azure deployment run: ${{ github.event.workflow_run.id }}"
+            echo "- HTTP status: $http_status"
+            echo "- workflow-session crypto: $ready"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$ready" != true ]; then
+            exit 1
+          fi
+
+      - name: Record successful runtime evidence
+        if: steps.readiness.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          timestamp="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          cat > runtime-evidence.md <<EOF
+          Production runtime readiness verified with non-sensitive evidence.
+
+          - Timestamp (UTC): $timestamp
+          - Deployed commit: \`${{ github.event.workflow_run.head_sha }}\`
+          - Production URL: \`$PRODUCTION_BASE_URL\`
+          - Azure deployment run: #${{ github.event.workflow_run.run_number }} (run ${{ github.event.workflow_run.id }})
+          - Runtime readiness HTTP status: ${{ steps.readiness.outputs.http_status }}
+          - Readiness status: \`ready\`
+          - Workflow-session crypto round trip: \`true\`
+
+          No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded.
+          EOF
+
+          gh issue comment "$RUNTIME_READINESS_ISSUE" --body-file runtime-evidence.md
+          gh issue close "$RUNTIME_READINESS_ISSUE" --reason completed
