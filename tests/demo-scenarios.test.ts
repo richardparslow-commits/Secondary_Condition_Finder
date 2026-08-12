@@ -76,11 +76,14 @@ describe("demo scenarios", () => {
     expect(form).not.toContain("fetch(");
     expect(form).not.toContain("sendBeacon");
 
-    expect(action).toContain('formData.get("scenarioId")');
+    expect(action).toContain('scenarioIdSchema.safeParse(formData.get("scenarioId"))');
+    expect(action).toContain('if (!parsedScenarioId.success) redirect("/scenarios")');
+    expect(action).toContain('if (!scenario) redirect("/scenarios")');
     expect(action).toContain("parseStoredSecondaryWorkflowState(scenario.workflow)");
     expect(action).toContain("parseWorkflowState(workflowSessionToQueryParams(workflow), catalog)");
     expect(action).toContain("await writeSecondaryWorkflowSession(workflow)");
     expect(action).toContain('redirect("/secondary/suggestions")');
+    expect(action).not.toContain("throw new Error");
     expect(action).not.toContain("console.");
   });
 });
