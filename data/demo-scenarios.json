@@ -2,59 +2,40 @@
   {
     "id": "single-primary-ptsd",
     "title": "Single primary condition",
-    "description": "A veteran service connected for PTSD exploring what else may be related.",
-    "intake": {
-      "primaryConditions": [
-        "ptsd"
-      ],
-      "symptoms": [
-        "trouble staying asleep",
-        "daytime fatigue"
-      ],
-      "medications": [
-        "sertraline"
-      ],
-      "exposures": [],
-      "notes": "Sleep problems have worsened over the last two years."
+    "description": "Synthetic demo: PTSD as the diagnosed and service-connected primary, with optional medication context for research review.",
+    "workflow": {
+      "diagnosedConditionIds": ["ptsd"],
+      "serviceConnectedConditionIds": ["ptsd"],
+      "ratingsByConditionId": {"ptsd": 70},
+      "documentsShared": false,
+      "medications": ["sertraline"],
+      "treatments": []
     }
   },
   {
     "id": "multiple-primaries-overlap",
     "title": "Multiple primaries with an overlapping suggestion",
-    "description": "Knee injury and lumbar strain demonstrate how published and draft mappings can coexist while known conditions remain recognized.",
-    "intake": {
-      "primaryConditions": [
-        "knee-injury",
-        "lumbar-strain"
-      ],
-      "symptoms": [
-        "limping",
-        "radiating leg pain"
-      ],
-      "medications": [
-        "meloxicam"
-      ],
-      "exposures": [],
-      "notes": "Gait has been altered since the original knee injury."
+    "description": "Synthetic demo: knee injury and lumbar strain show how authored suggestions can overlap across multiple service-connected primaries.",
+    "workflow": {
+      "diagnosedConditionIds": ["knee-injury", "lumbar-strain"],
+      "serviceConnectedConditionIds": ["knee-injury", "lumbar-strain"],
+      "ratingsByConditionId": {"knee-injury": 20, "lumbar-strain": 20},
+      "documentsShared": false,
+      "medications": ["meloxicam"],
+      "treatments": []
     }
   },
   {
-    "id": "unrecognized-primary",
-    "title": "Recognized and unrecognized mix",
-    "description": "One published condition resolves to the catalog and one does not, demonstrating how the app reports unrecognized input while still returning evidence-backed published suggestions.",
-    "intake": {
-      "primaryConditions": [
-        "ptsd",
-        "not-a-condition"
-      ],
-      "symptoms": [
-        "trouble staying asleep"
-      ],
+    "id": "diagnosed-linked-condition",
+    "title": "Diagnosed condition linked from a primary",
+    "description": "Synthetic demo: PTSD is service connected while sleep apnea is already diagnosed but not marked service connected, exercising the current linked-condition review path.",
+    "workflow": {
+      "diagnosedConditionIds": ["ptsd", "sleep-apnea"],
+      "serviceConnectedConditionIds": ["ptsd"],
+      "ratingsByConditionId": {"ptsd": null},
+      "documentsShared": false,
       "medications": [],
-      "exposures": [
-        "aircraft engine noise"
-      ],
-      "notes": ""
+      "treatments": ["CPAP"]
     }
   }
 ]
