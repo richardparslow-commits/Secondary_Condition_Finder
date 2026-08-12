@@ -170,7 +170,9 @@ export function SecondarySuggestionItem({ recommendation, primaryId }: Props) {
               <li key={reference.citation} className="text-sm text-slate-700">
                 <span className="font-mono text-xs text-slate-900">{reference.citation}</span>
                 <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-700">
-                  {SOURCE_ROLE_LABEL[reference.verificationScope]}
+                  {reference.verificationScope
+                    ? SOURCE_ROLE_LABEL[reference.verificationScope]
+                    : "Source role not specified"}
                 </span>
                 {!reference.verified && (
                   <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-900">
