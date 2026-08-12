@@ -32,6 +32,7 @@ jobs:
           trap 'rm -rf "$tmp_dir"' EXIT
           body_file="$tmp_dir/body.json"
 
+          set +e
           http_status="$(curl --silent --show-error --location \
             --connect-timeout 10 \
             --max-time 20 \
@@ -39,20 +40,32 @@ jobs:
             --output "$body_file" \
             --write-out '%{http_code}' \
             "$PRODUCTION_BASE_URL/api/runtime-readiness")"
+          curl_status=$?
+          set -e
 
           ready=false
-          if [ "$http_status" = "200" ] && \
-             jq -e '.status == "ready" and .checks.workflowSessionCrypto == true' "$body_file" >/dev/null; then
+          outcome="not_ready"
+          if [ "$curl_status" -ne 0 ]; then
+            outcome="network_error"
+            http_status="${http_status:-000}"
+          elif [ "$http_status" != "200" ]; then
+            outcome="http_error"
+          elif jq -e '.status == "ready" and .checks.workflowSessionCrypto == true' "$body_file" >/dev/null; then
             ready=true
+            outcome="ready"
+          else
+            outcome="payload_not_ready"
           fi
 
           echo "http_status=$http_status" >> "$GITHUB_OUTPUT"
           echo "ready=$ready" >> "$GITHUB_OUTPUT"
+          echo "outcome=$outcome" >> "$GITHUB_OUTPUT"
 
           {
             echo "## Production runtime readiness"
             echo "- deployed commit: ${{ github.event.workflow_run.head_sha }}"
             echo "- Azure deployment run: ${{ github.event.workflow_run.id }}"
+            echo "- request outcome: $outcome"
             echo "- HTTP status: $http_status"
             echo "- workflow-session crypto: $ready"
           } >> "$GITHUB_STEP_SUMMARY"
@@ -60,6 +73,30 @@ jobs:
           if [ "$ready" != true ]; then
             exit 1
           fi
+
+      - name: Record failed runtime evidence
+        if: failure() && steps.readiness.outputs.ready != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          timestamp="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          cat > runtime-failure.md <<EOF
+          Production runtime readiness did not satisfy the gate.
+
+          - Timestamp (UTC): $timestamp
+          - Deployed commit: \`${{ github.event.workflow_run.head_sha }}\`
+          - Production URL: \`$PRODUCTION_BASE_URL\`
+          - Azure deployment run: #${{ github.event.workflow_run.run_number }} (run ${{ github.event.workflow_run.id }})
+          - Request outcome: \`${{ steps.readiness.outputs.outcome }}\`
+          - HTTP status: \`${{ steps.readiness.outputs.http_status }}\`
+          - Workflow-session crypto readiness: \`false\`
+
+          The response body was not printed or attached. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded. The gate remains open.
+          EOF
+
+          gh issue comment "$RUNTIME_READINESS_ISSUE" --body-file runtime-failure.md
 
       - name: Record successful runtime evidence
         if: steps.readiness.outputs.ready == 'true'
