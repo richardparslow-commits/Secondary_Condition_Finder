@@ -58,7 +58,7 @@ describe("production deployment readiness", () => {
   });
 
   it("keeps the runtime-readiness endpoint non-sensitive and non-cacheable", () => {
-    const route = read("src/app/api/runtime-readiness/route.ts");
+    const route = read("src/app/runtime-readiness/route.ts");
 
     expect(route).toContain('status: ready ? "ready" : "not_ready"');
     expect(route).toContain("workflowSessionCrypto: ready");
@@ -120,7 +120,8 @@ describe("production deployment readiness", () => {
     expect(runbook).toContain("at least 32 characters");
     expect(runbook).toContain("VA_SANDBOX_ENABLED");
     expect(runbook).toContain("cannot by itself prove the current value of Azure resource application settings");
-    expect(runbook).toContain("/api/runtime-readiness");
+    expect(runbook).toContain("/runtime-readiness");
+    expect(runbook).not.toContain("/api/runtime-readiness");
     expect(runbook).toContain("Issue #213");
   });
 });
