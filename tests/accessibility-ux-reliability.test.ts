@@ -68,6 +68,24 @@ describe("accessibility and UX content contracts", () => {
     expect(about).toContain('href="/terms"');
   });
 
+  it("enforces global keyboard, reflow, forced-colors, and reduced-motion safeguards", () => {
+    const layout = readFileSync("src/app/layout.tsx", "utf8");
+    const css = readFileSync("src/app/globals.css", "utf8");
+
+    expect(layout).toContain('className="skip-link"');
+    expect(layout).toContain('href="#main-content"');
+    expect(layout).toContain('id="main-content"');
+    expect(layout).toContain("tabIndex={-1}");
+
+    expect(css).toContain(":focus-visible");
+    expect(css).toContain("outline: 3px solid var(--focus)");
+    expect(css).toContain("overflow-wrap: anywhere");
+    expect(css).toContain("min-width: 0");
+    expect(css).toContain("@media (forced-colors: active)");
+    expect(css).toContain("forced-color-adjust: auto");
+    expect(css).toContain("@media (prefers-reduced-motion: reduce)");
+  });
+
   it("does not overstate manual Section 508 verification in the evidence report", () => {
     const audit = readFileSync("docs/accessibility-audit.md", "utf8");
 
