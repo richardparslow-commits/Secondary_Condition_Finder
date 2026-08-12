@@ -7,6 +7,24 @@
       "rank": 1,
       "prevalence": "sometimes-explored",
       "rationale": "Some antidepressant therapies are associated with weight gain, and weight gain/obesity are established risk factors for obstructive sleep apnea. This supports a clinically plausible intermediate-step theory, but it does not establish that a particular veteran's antidepressant exposure caused obesity or that obesity caused or aggravated OSA; the individual medication, timing, weight trajectory, and alternative OSA risk factors require case-specific medical review.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "medication-related",
+          "intermediate-chain"
+        ],
+        "causalChain": "Depressive disorder → antidepressant treatment, if applicable → medication-associated weight gain or obesity → claimed OSA causation or worsening; each link requires individual medical support.",
+        "developmentQuestions": [
+          "Which antidepressant was prescribed for the service-connected depressive disorder, at what dose, and for what duration?",
+          "Does the documented weight trajectory show clinically meaningful weight gain after the relevant medication exposure?",
+          "Is obstructive sleep apnea currently confirmed by an appropriate sleep study?",
+          "Can a qualified clinician address each link from medication exposure to weight change and from weight/obesity to OSA causation or worsening?",
+          "Which alternative explanations for weight change and other OSA risk factors should be addressed?"
+        ],
+        "issuesToResolve": [
+          "Medication-associated weight gain and obesity/OSA risk evidence do not establish the Veteran-specific intermediate chain by themselves.",
+          "The medication indication, timing, weight trajectory, OSA diagnosis, and alternative risk factors need link-by-link review."
+        ]
+      },
       "evidenceGaps": [
         "Sleep study diagnosis of OSA",
         "Prescription history identifying the specific antidepressant, dose, duration, and timing",
@@ -48,6 +66,23 @@
       "rank": 2,
       "prevalence": "commonly-explored",
       "rationale": "SSRIs are associated with sexual dysfunction, including clinically important impairment of orgasm and sexual satisfaction. A medication-related secondary theory requires evidence that the veteran used the relevant antidepressant, experienced the relevant adverse effect, and has a diagnosed sexual disorder medically linked to that exposure.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "medication-related"
+        ],
+        "causalChain": "Depressive disorder → SSRI or other relevant antidepressant treatment, if applicable → claimed erectile or other diagnosed sexual dysfunction.",
+        "developmentQuestions": [
+          "Was the relevant antidepressant prescribed for the service-connected depressive disorder?",
+          "Is erectile dysfunction or another sexual disorder currently diagnosed, and what was the baseline sexual function before medication exposure?",
+          "How does onset or worsening relate temporally to the specific medication, dose, and duration?",
+          "Can a qualified clinician address whether the medication caused or aggravated the diagnosed sexual dysfunction in this individual case?",
+          "Which alternative medical, psychiatric, medication, or lifestyle causes should be addressed?"
+        ],
+        "issuesToResolve": [
+          "Population-level medication adverse-effect evidence does not establish an individual medication nexus.",
+          "The medication indication, exposure timing, baseline function, current diagnosis, and alternative causes require individual review."
+        ]
+      },
       "evidenceGaps": [
         "Diagnosis of erectile dysfunction or other documented sexual dysfunction",
         "Prescription records showing the specific SSRI/SNRI exposure, dose, duration, and timing",

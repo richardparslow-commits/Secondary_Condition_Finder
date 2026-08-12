@@ -8,6 +8,23 @@
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "Psychiatric disorders and obstructive sleep apnea can co-occur, but an individual secondary relationship requires case-specific medical evidence rather than a legal citation alone.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "direct-secondary",
+          "aggravation"
+        ],
+        "causalChain": "Adjustment disorder or associated psychiatric symptoms → claimed causation or worsening of diagnosed obstructive sleep apnea; population-level comorbidity does not establish the individual link.",
+        "developmentQuestions": [
+          "Is obstructive sleep apnea currently confirmed by an appropriate sleep study?",
+          "Does the individual history support a causation theory, an aggravation theory, or neither between the adjustment disorder and OSA?",
+          "What is the temporal relationship between the psychiatric condition and OSA onset or worsening?",
+          "Which alternative OSA risk factors should the medical opinion address?"
+        ],
+        "issuesToResolve": [
+          "Psychiatric/OSA comorbidity evidence does not establish an individual medical nexus.",
+          "A qualified clinician should address the Veteran-specific timeline, mechanism, and alternative OSA risk factors."
+        ]
+      },
       "evidenceGaps": [
         "Polysomnography (sleep study) confirming diagnosis",
         "Medical nexus opinion addressing causation or aggravation"
@@ -35,6 +52,24 @@
       "rank": 2,
       "prevalence": "commonly-explored",
       "rationale": "Psychosocial disorders are associated with GERD, and NSAID use has also been associated with GERD symptoms; an individual medication-related nexus requires documentation of the medication, timing, diagnosis, and case-specific medical evidence.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "direct-secondary",
+          "aggravation"
+        ],
+        "causalChain": "Adjustment disorder or associated psychosocial symptoms → claimed causation or worsening of GERD; any separate medication theory requires evidence tying the medication exposure to treatment of a service-connected condition.",
+        "developmentQuestions": [
+          "Is GERD currently diagnosed and clinically characterized?",
+          "Does the individual history support causation, aggravation, or neither between the adjustment disorder and GERD?",
+          "What is the temporal relationship between psychiatric symptoms and GERD onset or worsening?",
+          "If medication exposure is relied on, was that medication actually prescribed because of treatment for a service-connected condition?",
+          "Which alternative gastrointestinal causes or contributors should the medical opinion address?"
+        ],
+        "issuesToResolve": [
+          "Psychosocial/GERD association evidence does not establish an individual medical nexus.",
+          "The NSAID association source does not by itself connect an NSAID exposure to the adjustment disorder; medication indication and timing would need separate support."
+        ]
+      },
       "evidenceGaps": [
         "Endoscopy or clinical diagnosis of GERD/gastritis",
         "Medication log identifying NSAID exposure, dose, duration, and timing",
