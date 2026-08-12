@@ -2,7 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { workflowSessionSecret } from "@/lib/workflow-session-crypto";
+import {
+  workflowSessionRuntimeReady,
+  workflowSessionSecret,
+} from "@/lib/workflow-session-crypto";
 import { loadVaSandboxConfig } from "@/lib/va/sandbox";
 
 function read(relativePath: string): string {
@@ -20,6 +23,49 @@ describe("production deployment readiness", () => {
     vi.stubEnv("SECONDARY_WORKFLOW_SESSION_SECRET", "");
 
     expect(() => workflowSessionSecret()).toThrow(/WORKFLOW_SESSION_SECRET/);
+  });
+
+  it("requires the primary production secret for runtime readiness", () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("WORKFLOW_SESSION_SECRET", "");
+    vi.stubEnv(
+      "SECONDARY_WORKFLOW_SESSION_SECRET",
+      "legacy-fallback-secret-that-is-long-enough-for-tests",
+    );
+
+    expect(workflowSessionRuntimeReady()).toBe(false);
+  });
+
+  it("proves runtime readiness only after a production crypto round trip", () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv(
+      "WORKFLOW_SESSION_SECRET",
+      "primary-production-secret-that-is-long-enough-for-tests",
+    );
+    vi.stubEnv("SECONDARY_WORKFLOW_SESSION_SECRET", "");
+
+    expect(workflowSessionRuntimeReady()).toBe(true);
+  });
+
+  it("does not report production runtime readiness in non-production mode", () => {
+    vi.stubEnv("NODE_ENV", "test");
+    vi.stubEnv(
+      "WORKFLOW_SESSION_SECRET",
+      "primary-production-secret-that-is-long-enough-for-tests",
+    );
+
+    expect(workflowSessionRuntimeReady()).toBe(false);
+  });
+
+  it("keeps the runtime-readiness endpoint non-sensitive and non-cacheable", () => {
+    const route = read("src/app/api/runtime-readiness/route.ts");
+
+    expect(route).toContain('status: ready ? "ready" : "not_ready"');
+    expect(route).toContain("workflowSessionCrypto: ready");
+    expect(route).toContain('"Cache-Control": "no-store, max-age=0"');
+    expect(route).toContain("status: ready ? 200 : 503");
+    expect(route).not.toContain("process.env.WORKFLOW_SESSION_SECRET");
+    expect(route).not.toContain("SECONDARY_WORKFLOW_SESSION_SECRET");
   });
 
   it("keeps the VA sandbox disabled by default and requires a key when enabled", () => {
@@ -74,5 +120,7 @@ describe("production deployment readiness", () => {
     expect(runbook).toContain("at least 32 characters");
     expect(runbook).toContain("VA_SANDBOX_ENABLED");
     expect(runbook).toContain("cannot prove the current value of Azure resource application settings");
+    expect(runbook).toContain("/api/runtime-readiness");
+    expect(runbook).toContain("Issue #213");
   });
 });
