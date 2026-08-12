@@ -15,8 +15,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <a className="skip-link" href="#main-content">
+          Skip to main content
+        </a>
         <AppInsightsInit />
-        <div className="app-shell">{children}</div>
+        <div className="app-shell" id="main-content" tabIndex={-1}>
+          {children}
+        </div>
       </body>
     </html>
   );
