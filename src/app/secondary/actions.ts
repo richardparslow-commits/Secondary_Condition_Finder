@@ -11,6 +11,7 @@ import {
   type QueryParams,
 } from "@/lib/secondary-workflow/state";
 import {
+  clearSecondaryWorkflowSession,
   readSecondaryWorkflowSession,
   workflowSessionToQueryParams,
   writeSecondaryWorkflowSession,
@@ -88,4 +89,14 @@ export async function saveDocumentsSelection(formData: FormData): Promise<void> 
 
   await writeSecondaryWorkflowSession(parsed);
   redirect("/secondary/suggestions");
+}
+
+export async function finishSecondaryWorkflow(): Promise<void> {
+  await clearSecondaryWorkflowSession();
+  redirect("/secondary");
+}
+
+export async function restartSecondaryWorkflow(): Promise<void> {
+  await clearSecondaryWorkflowSession();
+  redirect("/secondary/diagnosed");
 }
