@@ -9,6 +9,7 @@
 | **REQ-KB-01** | Strict 1-to-3 source reference limits per suggestion | P1-T6 | `tests/source-count-policy.test.ts` | ✅ PASS |
 | **REQ-SUG-01** | Step 5 exposes optional authored primary-to-secondary pathway labels, causal-chain summaries, development questions/issues, and source-role labels without intake inference or ranking effects | #244 | `tests/step5-pathway-intelligence.test.ts` | ✅ PASS |
 | **REQ-SUG-BF1** | Mental Health / Neurological pathway backfill adds metadata only to clinically-supported published edges and preserves reviewed insufficient-source edges as unlabeled | #247 | `tests/pathway-backfill-batch1.test.ts` | ✅ PASS |
+| **REQ-SUG-BF2** | Musculoskeletal pathway backfill adds metadata only to clinically-supported published edges and preserves reviewed insufficient-source edges as unlabeled | #248 | `tests/pathway-backfill-batch2.test.ts` | ✅ PASS |
 | **REQ-EVD-01** | Non-retentive evidence ingestion and metadata extraction | P2-T8 | `tests/ingestion-privacy.test.ts` | ✅ PASS |
 | **REQ-EVD-02** | User-reachable, browser-local structured review of authored evidence gaps, with conservative engine evaluation helper retained for explicit semantic indicators | #233 / P2-T9 | `tests/evidence-evaluation.test.ts` | ✅ PASS |
 | **REQ-EXP-01** | User-reachable VSO/representative consultation summary text export from Step 6, generated in-browser with privacy exclusions | #231 / P2-T10 | `tests/export-summary.test.ts` | ✅ PASS |

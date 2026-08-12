@@ -50,7 +50,27 @@ Draft mappings are outside this backfill program; for example, `migraine-headach
 
 ## Batch 2 — Musculoskeletal (#248)
 
-Pending Batch 1 production verification.
+### Backfilled
+
+| Primary | Secondary | Authored pathway(s) | Existing support used |
+|---|---|---|---|
+| rheumatoid-arthritis | depressive-disorder | somatopsychic | Published pain/depression systematic review plus § 3.310 framework; copy limits the pathway to documented pain/functional impairment and individual clinical assessment. |
+| rheumatoid-arthritis | gerd | medication-related | Published NSAID gastrointestinal-risk systematic review plus § 3.310 framework; medication indication, exposure, diagnosis, timing, and alternative causes remain individual-development questions. |
+
+Knee injury → hip strain and knee injury → lumbar strain were already enriched in #244 and are retained as the biomechanical control case.
+
+### Reviewed and intentionally left unlabeled
+
+The following published Musculoskeletal edges remain unlabeled because their attached sources are legal/rating-framework only or otherwise insufficient for new medical-pathway metadata:
+
+- ankle-strain → contralateral-knee-condition
+- ankle-strain → flatfoot
+- osteoarthritis → plantar-fasciitis
+- amputation-or-loss-of-use → depressive-disorder
+- knee-injury → ankle-strain
+- knee-injury → contralateral-knee-condition
+
+`lumbar-strain`, `cervical-strain`, `hip-strain`, `intervertebral-disc-syndrome`, and `radiculopathy` remain draft and are excluded from the published-mapping backfill.
 
 ## Batch 3 — Respiratory / ENT (#249)
 
