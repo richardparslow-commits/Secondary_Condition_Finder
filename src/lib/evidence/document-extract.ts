@@ -42,7 +42,10 @@ export async function extractPdfEvidence(file: File): Promise<LocalDocumentExtra
   }
 
   const bytes = new Uint8Array(await file.arrayBuffer());
-  const loadingTask = pdfjs.getDocument({ data: bytes });
+  const loadingTask = pdfjs.getDocument({
+    data: bytes,
+    enableScripting: false,
+  });
   const document = await loadingTask.promise;
   const segments: EvidenceTextSegment[] = [];
   const warnings: string[] = [];
