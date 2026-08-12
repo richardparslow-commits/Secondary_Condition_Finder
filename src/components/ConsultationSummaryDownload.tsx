@@ -1,13 +1,17 @@
 "use client";
 
+import { formatClaimSummary } from "@/lib/engine/export";
+import type { Recommendation } from "@/lib/engine/types";
+
 type ConsultationSummaryDownloadProps = {
-  content: string;
+  recommendations: Recommendation[];
 };
 
 const DOWNLOAD_FILENAME = "secondary-condition-research-summary.txt";
 
-export function ConsultationSummaryDownload({ content }: ConsultationSummaryDownloadProps) {
+export function ConsultationSummaryDownload({ recommendations }: ConsultationSummaryDownloadProps) {
   function downloadSummary() {
+    const content = formatClaimSummary(recommendations, []);
     const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
     const objectUrl = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
