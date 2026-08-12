@@ -119,7 +119,7 @@ describe("production deployment readiness", () => {
     expect(runbook).toContain("WORKFLOW_SESSION_SECRET");
     expect(runbook).toContain("at least 32 characters");
     expect(runbook).toContain("VA_SANDBOX_ENABLED");
-    expect(runbook).toContain("cannot prove the current value of Azure resource application settings");
+    expect(runbook).toContain("cannot by itself prove the current value of Azure resource application settings");
     expect(runbook).toContain("/api/runtime-readiness");
     expect(runbook).toContain("Issue #213");
   });
