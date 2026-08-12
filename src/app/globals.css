@@ -26,13 +26,30 @@
 
 * { box-sizing: border-box; }
 html { background: var(--background); color-scheme: light; }
-body { margin: 0; background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; line-height: 1.55; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; line-height: 1.55; overflow-wrap: anywhere; }
 a { color: var(--primary); text-underline-offset: 3px; }
 a:hover { color: var(--primary-hover); }
 button, input, select, textarea { font: inherit; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 12px;
+  left: 12px;
+  transform: translateY(-180%);
+  border: 3px solid var(--focus);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--foreground);
+  padding: 10px 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
 .app-shell { width: min(100%, 1200px); min-height: 100vh; margin: 0 auto; padding: 24px; }
+.app-shell:focus { outline: none; }
 .app-shell main { min-height: calc(100vh - 48px); max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; background: transparent !important; color: var(--foreground) !important; }
 
 .page-hero,
@@ -53,7 +70,7 @@ button, input, select, textarea { font: inherit; }
 
 .ui-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px; align-items: start; }
 .ui-stack { display: grid; gap: 18px; }
-.ui-card, .app-shell main article, .app-shell main fieldset, .app-shell main > section { border: 1px solid var(--border) !important; border-radius: var(--radius) !important; background: var(--surface) !important; color: var(--foreground) !important; box-shadow: var(--shadow); }
+.ui-card, .app-shell main article, .app-shell main fieldset, .app-shell main > section { min-width: 0; border: 1px solid var(--border) !important; border-radius: var(--radius) !important; background: var(--surface) !important; color: var(--foreground) !important; box-shadow: var(--shadow); }
 .ui-card { padding: 24px; }
 .ui-card h2, .ui-card h3, .app-shell main article h2, .app-shell main article h3, .app-shell main section h2, .app-shell main section h3 { color: var(--foreground) !important; }
 .ui-card p, .ui-card li, .app-shell main article p, .app-shell main article li, .app-shell main section p, .app-shell main section li { color: var(--foreground); }
@@ -79,7 +96,7 @@ button, input, select, textarea { font: inherit; }
 .ui-footer-note { margin-top: 20px; padding: 16px 20px; border: 1px solid var(--border-strong); border-radius: 14px; background: var(--surface); color: var(--foreground); font-size: 0.9rem; }
 .ui-actions { display: flex; gap: 16px; justify-content: space-between; align-items: center; margin-top: 20px; padding: 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
 
-.app-shell input[type="text"], .app-shell input[type="search"], .app-shell input[type="number"], .app-shell input[type="date"], .app-shell select, .app-shell textarea { min-height: 44px; border: 1px solid var(--border) !important; border-radius: 10px !important; background: var(--surface) !important; color: var(--foreground) !important; }
+.app-shell input[type="text"], .app-shell input[type="search"], .app-shell input[type="number"], .app-shell input[type="date"], .app-shell select, .app-shell textarea { min-height: 44px; max-width: 100%; border: 1px solid var(--border) !important; border-radius: 10px !important; background: var(--surface) !important; color: var(--foreground) !important; }
 .app-shell input[type="checkbox"], .app-shell input[type="radio"] { accent-color: var(--primary); }
 
 /* Normalize legacy high-saturation page styling into the approved palette without touching page logic. */
@@ -101,6 +118,35 @@ button, input, select, textarea { font: inherit; }
   .ui-grid { grid-template-columns: 1fr; }
   .page-hero, .app-shell main > header, .app-shell main > h1 { padding: 22px; }
   .ui-actions { flex-direction: column; align-items: stretch; }
+}
+
+@media (forced-colors: active) {
+  :focus-visible { outline: 3px solid Highlight; }
+  .skip-link,
+  .ui-card,
+  .app-shell main article,
+  .app-shell main fieldset,
+  .app-shell main > section,
+  .page-hero,
+  .app-shell main > header,
+  .app-shell main > h1,
+  .ui-callout,
+  .ui-footer-note,
+  .ui-actions {
+    border-color: CanvasText !important;
+    box-shadow: none !important;
+    forced-color-adjust: auto;
+  }
+  .ui-button,
+  .ui-button-secondary,
+  .app-shell button,
+  .app-shell select,
+  .app-shell input,
+  .app-shell textarea {
+    border: 2px solid ButtonText !important;
+    forced-color-adjust: auto;
+  }
+  .ui-icon { border: 1px solid CanvasText; }
 }
 
 @media (prefers-reduced-motion: reduce) {

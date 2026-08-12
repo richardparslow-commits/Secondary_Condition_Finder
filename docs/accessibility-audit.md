@@ -16,20 +16,24 @@ The product may pursue newer WCAG guidance as an additional quality target, but 
 
 **Status: PARTIAL EVIDENCE — MANUAL CONFORMANCE REVIEW PENDING**
 
-The current automated suite proves a limited set of structural and content contracts. It does **not** prove complete Section 508 or WCAG conformance. Until the manual checks below are completed and recorded, the production-access package must not represent the application as verified Section 508 compliant.
+The current automated suite proves structural, content, keyboard-entry, focus-style, reflow-safeguard, forced-colors, and reduced-motion contracts. It still does **not** prove complete Section 508 or WCAG conformance. Until the manual checks below are completed and recorded, the production-access package must not represent the application as verified Section 508 compliant.
 
 ## Automated evidence currently enforced
 
-`tests/accessibility-ux-reliability.test.ts` verifies selected primary routes for:
+`tests/accessibility-ux-reliability.test.ts` verifies selected primary routes and global application contracts for:
 
-- exactly one `<main>` landmark;
-- a top-level `<h1>`;
-- no immediate heading-level skip from no `<h2>` to an `<h3>`;
+- exactly one `<main>` landmark on tested primary routes;
+- a top-level `<h1>` and basic heading-order sanity on tested primary routes;
 - discoverability of the public privacy and terms routes;
 - explicit non-diagnostic and privacy-scope language;
-- the public `/about` route's main landmark, heading structure, audience/scope language, and legal-route navigation.
+- the public `/about` route's main landmark, heading structure, audience/scope language, and legal-route navigation;
+- a keyboard-visible **Skip to main content** link targeting the application content container;
+- a global `:focus-visible` indicator contract;
+- wrapping/min-width safeguards intended to reduce clipping and horizontal-overflow risk at narrow widths and browser zoom;
+- a dedicated `forced-colors: active` ruleset that preserves borders/focus/control affordances rather than relying on the normal palette alone;
+- a reduced-motion ruleset for users who request reduced motion.
 
-Other route-specific tests cover selected form-label, source-label, and privacy behaviors where those components are exercised.
+Other route-specific tests cover selected form-label, source-label, privacy, evidence-processing, and workflow behaviors where those components are exercised.
 
 These assertions are regression evidence only. They do not test every WCAG success criterion and do not replace browser/assistive-technology testing.
 
@@ -40,9 +44,13 @@ These assertions are regression evidence only. They do not test every WCAG succe
 | Main landmark / top-level headings on tested routes | Automated Vitest server-render assertions | Verified for tested routes | Positive evidence, limited scope |
 | Heading-order sanity on tested routes | Automated Vitest assertion | Verified for tested routes | Positive evidence, limited scope |
 | Privacy / terms discoverability | Automated Vitest assertion | Verified on home/about paths under test | Positive evidence, limited scope |
+| Keyboard bypass mechanism | Root-layout + CSS regression contract | Verified structurally | Must still be manually operated on deployed app |
+| Visible focus styling | Global CSS regression contract | Verified structurally | Must still be visually reviewed across rendered controls |
+| Reflow/overflow safeguards | Global CSS regression contract | Verified structurally | 200% zoom and narrow viewport still require deployed browser testing |
+| Forced-colors support | Global CSS regression contract | Verified structurally | Windows forced-colors/high-contrast still requires deployed OS/browser testing |
+| Reduced-motion support | Global CSS regression contract | Verified structurally | Positive evidence, limited scope |
 | Accessible names / labels for interactive workflow controls | Route/component regression tests where implemented | Partial | Must be reviewed across deployed flows |
 | Keyboard-only traversal and focus order | Manual deployed-app test | **Pending** | Blocking manual evidence |
-| Visible keyboard focus | Manual deployed-app test | **Pending** | Blocking manual evidence |
 | Keyboard traps / modal or disclosure behavior | Manual deployed-app test | **Pending** | Blocking manual evidence |
 | Screen-reader announcements and reading order | NVDA and/or VoiceOver manual test | **Pending** | Blocking manual evidence |
 | Error identification and instructions | Manual deployed workflow test | **Pending** | Blocking manual evidence |
@@ -58,10 +66,11 @@ Run against the exact deployed `main` commit intended for the VA review.
 ### Keyboard
 
 1. Navigate the home page, `/about`, `/secondary`, `/presumptive`, `/va-forms`, `/va-reference`, `/privacy`, and `/terms` using only Tab, Shift+Tab, Enter, Space, and arrow keys where applicable.
-2. Confirm focus order follows the visual/logical reading order.
-3. Confirm every interactive control has a visible focus indicator.
-4. Confirm no keyboard trap occurs.
-5. Confirm validation errors can be reached and understood without a pointer device.
+2. Confirm the **Skip to main content** link appears on keyboard focus and moves focus past repeated/global content to the application content container.
+3. Confirm focus order follows the visual/logical reading order.
+4. Confirm every interactive control has a visible focus indicator.
+5. Confirm no keyboard trap occurs.
+6. Confirm validation errors can be reached and understood without a pointer device.
 
 ### Screen reader
 
@@ -72,13 +81,15 @@ Use at least one representative desktop screen reader (NVDA on Windows or VoiceO
 3. Confirm form controls announce their labels, state, and required/error information.
 4. Confirm dynamic result/source labels are understandable in reading order.
 5. Confirm links have meaningful accessible names out of surrounding visual context.
+6. Confirm evidence-review status text and dynamically revealed content are understandable without relying on visual placement or color.
 
 ### Zoom, reflow, and contrast
 
 1. Test browser zoom at 200% on the primary review routes.
 2. Test a narrow/mobile viewport for horizontal scrolling or clipped essential content.
-3. Review text, controls, focus indicators, alerts, badges, and error states for required contrast.
-4. Test Windows forced-colors/high-contrast behavior if available.
+3. Review long condition names, source URLs/titles, evidence excerpts, and form labels for wrapping/clipping.
+4. Review text, controls, focus indicators, alerts, badges, and error states for required contrast.
+5. Test Windows forced-colors/high-contrast behavior if available and verify controls, focus, selected states, and essential boundaries remain distinguishable.
 
 ## Recording manual evidence
 
@@ -98,6 +109,8 @@ Do not use real Veteran medical, claim, or identifying data during accessibility
 ## Privacy statement for accessibility testing
 
 Accessibility testing does not change the application's data-handling model. Testers should use synthetic/sample data. The current privacy architecture keeps health/disability workflow selections and presumptive service-history state out of URLs, uses short-lived encrypted/authenticated workflow cookies, limits recommendation-event persistence to aggregate metrics, and excludes VA API credentials and raw response bodies from intentional operational logging.
+
+Browser-local evidence ingestion introduced in Priority 1/1B must also be tested with synthetic files only. Do not use real medical records during accessibility review.
 
 ## Gate rule
 

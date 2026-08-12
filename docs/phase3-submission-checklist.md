@@ -6,7 +6,7 @@ Use this checklist immediately before completing the VA API Platform production-
 
 Do not submit until all blocking items are complete.
 
-- [ ] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence for VA Forms and Benefits Reference Data.
+- [x] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence for VA Forms and Benefits Reference Data.
 - [ ] Production `WORKFLOW_SESSION_SECRET` is verified in Azure application settings.
 - [ ] Latest `main` CI is green.
 - [ ] Latest Azure deployment for the same `main` commit is green.
@@ -92,7 +92,8 @@ State only behavior that is currently implemented and verified:
 - workflow state uses short-lived encrypted/authenticated cookies;
 - recommendation event persistence is aggregate-only;
 - VA adapter observations omit credentials, query values, response bodies, and workflow selections;
-- no VA public-reference response body is intentionally persisted.
+- no VA public-reference response body is intentionally persisted;
+- optional medical-evidence ingestion is browser-local; raw document bytes/text are not sent to application server state, URLs, telemetry, logs, or user accounts.
 
 ## Security safeguards answer
 
@@ -145,11 +146,15 @@ Prepare the operating sequence:
 
 ## Accessibility / Section 508
 
+Automated preflight now enforces structural headings/landmarks, a keyboard skip link, visible-focus CSS, reflow safeguards, reduced-motion handling, and a forced-colors ruleset. These are positive regression evidence, not a conformance determination.
+
 Before answering the form:
 
-- [ ] Review `docs/accessibility-audit.md` and current regression tests.
+- [x] Review and strengthen `docs/accessibility-audit.md` and current regression tests.
 - [ ] Complete issue #195 against the exact deployed production build, using synthetic/non-sensitive data only.
-- [ ] Record tester/date/OS/browser/assistive-technology evidence for the required keyboard, screen-reader, zoom/reflow, contrast, and forced-colors checks.
+- [ ] Confirm the skip link, keyboard order, focus visibility, and absence of keyboard traps in a real browser.
+- [ ] Record tester/date/OS/browser/assistive-technology evidence for keyboard, screen-reader, zoom/reflow, contrast, and forced-colors checks.
+- [ ] Include the Priority 1/1B evidence-upload/review workflow in the manual review using synthetic documents only.
 - [ ] Record any known limitations and remediation/retest links.
 - [ ] Answer VA's compliance question based on objective current evidence, not project intent or automated tests alone.
 
@@ -168,6 +173,6 @@ Before answering the form:
 - [ ] Data-handling statements match `/privacy` and actual implementation.
 - [ ] Legal/medical scope matches `/terms`.
 - [ ] API list matches implemented routes and `docs/va-api-access-strategy.md`.
-- [ ] No claim is made that live sandbox validation is complete unless issue #189 is closed.
+- [x] Credentialed sandbox validation is complete and issue #189 is closed.
 - [ ] No claim is made that Section 508 conformance is complete unless issue #195 is closed with objective evidence.
 - [ ] No unsupported business, accessibility, security-certification, or regulatory-compliance claim is included.

@@ -4,11 +4,14 @@
 
 **Draft for VA production-access review. Do not submit yet.**
 
+Credentialed sandbox validation for VA Forms and Benefits Reference Data is complete and recorded in closed issue #189.
+
 Submission remains gated on:
 
-1. Closing issue #189 with non-sensitive evidence of credentialed sandbox success for VA Forms and Benefits Reference Data.
-2. Verifying the production Azure runtime settings in `docs/deployment-readiness.md`, especially `WORKFLOW_SESSION_SECRET`.
-3. Completing a final demo rehearsal against the deployed application.
+1. Verifying the production Azure runtime settings in `docs/deployment-readiness.md`, especially `WORKFLOW_SESSION_SECRET`.
+2. Completing the deployed-app manual accessibility/Section 508 review tracked in issue #195 and remediating/retesting material findings.
+3. Supplying truthful applicant/business information and absolute deployed URLs.
+4. Completing a final demo rehearsal against the deployed application.
 
 ## Product description
 
@@ -31,11 +34,12 @@ A Veteran uses the application to:
 
 1. Explore secondary or presumptive claim-preparation concepts using the local knowledge base.
 2. Review evidence gaps and supporting-source references without the application making an eligibility or medical determination.
-3. Confirm current public metadata for a relevant VA form through VA Forms.
-4. Review standardized public VBA disability terminology through Benefits Reference Data.
-5. Continue to VA or an accredited representative for filing, representation, or official adjudication.
+3. Optionally analyze supported medical-evidence documents locally in the browser and review exact extracted excerpts without sending raw document content to the application server.
+4. Confirm current public metadata for a relevant VA form through VA Forms.
+5. Review standardized public VBA disability terminology through Benefits Reference Data.
+6. Continue to VA or an accredited representative for filing, representation, or official adjudication.
 
-The VA API features are supporting reference capabilities. The core recommendation and presumptive workflows remain functional without VA API availability.
+The VA API features are supporting reference capabilities. The core recommendation, evidence-review, and presumptive workflows remain functional without VA API availability.
 
 ## Production APIs requested
 
@@ -71,6 +75,10 @@ Any later expansion must satisfy the decision rule in `docs/va-api-access-strate
 
 Secondary and presumptive workflow state is stored only in short-lived first-party cookies that are encrypted and authenticated with AES-256-GCM. The cookies are HttpOnly, SameSite=Strict, scoped to their workflow paths, and expire after 30 minutes. Sensitive workflow values are not placed in query strings.
 
+### Browser-local medical-evidence analysis
+
+Optional evidence ingestion is processed locally in the browser. Supported PDF, DOCX, and text sources are parsed client-side; raw document bytes and raw document text are not submitted to application server state, URLs, cookies, telemetry, logs, or user accounts. Extracted excerpt objects are retained only temporarily in tab-scoped `sessionStorage` for the evidence-review step. PDF excerpts retain page provenance; DOCX excerpts retain deterministic paragraph provenance. Image-only PDF pages are reported as requiring OCR rather than silently treated as readable text.
+
 ### Application logging
 
 Recommendation event persistence is limited to aggregate operational counts. It does not retain condition identifiers, diagnoses, symptoms, medications, exposures, intake notes, service locations, or service dates.
@@ -84,6 +92,7 @@ When Application Insights is configured, route telemetry is sanitized and automa
 ### Retention and deletion
 
 - Workflow cookies expire after 30 minutes and are rejected if modified or invalid.
+- Browser-local evidence excerpts are temporary and tab-scoped; raw selected document bytes/text are not intentionally persisted by the application.
 - The current public-reference API integrations do not create a server-side Veteran profile or persistent Veteran-specific API record.
 - Aggregate operational metrics contain no condition identifiers or free-text intake content.
 - No VA API response body is intentionally persisted by the public-reference adapter.
@@ -120,6 +129,7 @@ Current repository controls include:
 - server-only API credentials;
 - encrypted/authenticated workflow cookies;
 - query-string minimization for health/disability and service-history state;
+- browser-local medical-evidence parsing with no raw document upload endpoint;
 - aggregate-only recommendation-event persistence;
 - baseline CSP, HSTS, frame-denial, referrer, content-type, and permissions headers;
 - dependency audit, citation audit, knowledge-base validation, lint, typecheck, tests, and production build in CI;
@@ -145,7 +155,9 @@ Do not invent a revenue model for the production-access request.
 
 ## Section 508 / accessibility response
 
-The project targets WCAG 2.1 Level AA and includes accessibility/UX regression coverage. Before the production form is submitted, run the final accessibility checklist and answer VA's Section 508 question based on the actual deployed application and documented audit evidence rather than an unsupported assertion.
+The repository contains automated accessibility preflight evidence for landmarks/headings on tested routes, keyboard bypass, visible-focus styling, reflow safeguards, forced-colors handling, and reduced-motion behavior. This is not a conformance certification.
+
+Before the production form is submitted, complete issue #195 against the exact deployed build using synthetic data, including keyboard-only operation, form/error behavior, NVDA and/or VoiceOver, 200% zoom/reflow, contrast, and Windows forced-colors/high-contrast testing. Answer VA's Section 508 question only from the completed evidence record.
 
 ## Security and incident-response response
 
@@ -164,4 +176,4 @@ The repository performs high-severity dependency auditing in CI on every gated c
 
 ## Current readiness status
 
-Repository implementation and deployment are ready for Phase 3 package review. The package must still state that live credentialed sandbox verification is pending until issue #189 is closed with objective evidence.
+Credentialed sandbox validation is complete and issue #189 is closed. Repository implementation and deployment are ready for continued Phase 3 review, but production-access submission remains blocked on production runtime-setting verification, manual accessibility/Section 508 evidence in issue #195, truthful applicant/business details and absolute deployed URLs, and the final demo rehearsal.
