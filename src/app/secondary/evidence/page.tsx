@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDownload";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { LocalEvidenceReview } from "@/components/evidence/LocalEvidenceReview";
 import { indexById } from "@/lib/catalog/lookup";
@@ -33,6 +34,10 @@ export default async function EvidenceReviewStepPage() {
     notes: "",
   });
   const grouped = groupSuggestionsByPrimary(catalog, state.serviceConnectedConditionIds, recommendationsResult.recommendations);
+  const consultationRecommendations = recommendationsResult.recommendations.map((recommendation) => ({
+    ...recommendation,
+    matchedIntakeContext: [],
+  }));
 
   return (
     <main>
@@ -57,6 +62,7 @@ export default async function EvidenceReviewStepPage() {
         </section>
 
         <aside className="ui-stack">
+          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">⇩</span><h2 className="text-xl font-bold">Consultation Summary</h2></div><p className="mb-4 text-sm">Download the authored research checklist for discussion with an accredited representative or qualified provider.</p>{consultationRecommendations.length > 0 ? <ConsultationSummaryDownload recommendations={consultationRecommendations} /> : <p className="text-sm text-slate-600">No published recommendations are available to export for this run.</p>}</section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✎</span><h2 className="text-xl font-bold">Research Notes</h2></div><p className="text-sm">Use your own secure notes or records to track questions such as potential nexus literature, providers to ask, symptom history, and missing treatment records. This app does not store free-text research notes on the server.</p></section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Next Steps</h2></div><ol className="space-y-3 text-sm"><li><strong>1.</strong> Review citations and current VA guidance.</li><li><strong>2.</strong> Compare mapped evidence gaps with exact local excerpts and any reported context match.</li><li><strong>3.</strong> Discuss causation/aggravation questions with a qualified provider.</li><li><strong>4.</strong> Consider an accredited representative, attorney, or VSO.</li></ol></section>
         </aside>
