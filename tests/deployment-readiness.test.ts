@@ -57,15 +57,18 @@ describe("production deployment readiness", () => {
     expect(workflowSessionRuntimeReady()).toBe(false);
   });
 
-  it("keeps the runtime-readiness endpoint non-sensitive and non-cacheable", () => {
-    const route = read("src/app/runtime-readiness/route.ts");
+  it("keeps the runtime-readiness page dynamic and non-sensitive", () => {
+    const pagePath = "src/app/runtime-readiness/page.tsx";
+    const routePath = path.join(process.cwd(), "src/app/runtime-readiness/route.ts");
+    const page = read(pagePath);
 
-    expect(route).toContain('status: ready ? "ready" : "not_ready"');
-    expect(route).toContain("workflowSessionCrypto: ready");
-    expect(route).toContain('"Cache-Control": "no-store, max-age=0"');
-    expect(route).toContain("status: ready ? 200 : 503");
-    expect(route).not.toContain("process.env.WORKFLOW_SESSION_SECRET");
-    expect(route).not.toContain("SECONDARY_WORKFLOW_SESSION_SECRET");
+    expect(page).toContain('export const dynamic = "force-dynamic"');
+    expect(page).toContain("export const revalidate = 0");
+    expect(page).toContain('ready ? "ready" : "not_ready"');
+    expect(page).toContain("data-runtime-readiness={status}");
+    expect(page).not.toContain("process.env.WORKFLOW_SESSION_SECRET");
+    expect(page).not.toContain("SECONDARY_WORKFLOW_SESSION_SECRET");
+    expect(fs.existsSync(routePath)).toBe(false);
   });
 
   it("keeps the VA sandbox disabled by default and requires a key when enabled", () => {
@@ -122,6 +125,7 @@ describe("production deployment readiness", () => {
     expect(runbook).toContain("cannot by itself prove the current value of Azure resource application settings");
     expect(runbook).toContain("/runtime-readiness");
     expect(runbook).not.toContain("/api/runtime-readiness");
+    expect(runbook).toContain("data-runtime-readiness");
     expect(runbook).toContain("Issue #213");
   });
 });
