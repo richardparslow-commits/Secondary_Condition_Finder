@@ -22,6 +22,45 @@ jobs:
       PRODUCTION_BASE_URL: https://gentle-tree-04b340f0f.7.azurestaticapps.net
       RUNTIME_READINESS_ISSUE: '213'
     steps:
+      - name: Probe production route matrix
+        id: routes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          probe_status() {
+            local path="$1"
+            local status
+            set +e
+            status="$(curl --silent --show-error --location \
+              --connect-timeout 10 \
+              --max-time 20 \
+              --output /dev/null \
+              --write-out '%{http_code}' \
+              "$PRODUCTION_BASE_URL$path")"
+            local curl_status=$?
+            set -e
+            if [ "$curl_status" -ne 0 ]; then
+              status="000"
+            fi
+            printf '%s' "$status"
+          }
+
+          root_status="$(probe_status '/')"
+          about_status="$(probe_status '/about')"
+          va_forms_status="$(probe_status '/va-forms')"
+
+          echo "root_status=$root_status" >> "$GITHUB_OUTPUT"
+          echo "about_status=$about_status" >> "$GITHUB_OUTPUT"
+          echo "va_forms_status=$va_forms_status" >> "$GITHUB_OUTPUT"
+
+          {
+            echo "## Production route matrix"
+            echo "- /: $root_status"
+            echo "- /about: $about_status"
+            echo "- /va-forms: $va_forms_status"
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Verify production runtime readiness
         id: readiness
         shell: bash
@@ -91,11 +130,12 @@ jobs:
           - Deployed commit: \`${{ github.event.workflow_run.head_sha }}\`
           - Production URL: \`$PRODUCTION_BASE_URL\`
           - Azure deployment run: #${{ github.event.workflow_run.run_number }} (run ${{ github.event.workflow_run.id }})
-          - Request outcome: \`${{ steps.readiness.outputs.outcome }}\`
-          - HTTP status: \`${{ steps.readiness.outputs.http_status }}\`
+          - Route matrix: \`/=${{ steps.routes.outputs.root_status }}\`, \`/about=${{ steps.routes.outputs.about_status }}\`, \`/va-forms=${{ steps.routes.outputs.va_forms_status }}\`
+          - Readiness request outcome: \`${{ steps.readiness.outputs.outcome }}\`
+          - Readiness HTTP status: \`${{ steps.readiness.outputs.http_status }}\`
           - Workflow-session crypto readiness: \`false\`
 
-          The response body was not printed or attached. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded. The gate remains open.
+          Route probes record status codes only. The readiness response body was not printed or attached. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded. The gate remains open.
           EOF
 
           gh issue comment "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY" --body-file runtime-failure.md
@@ -115,11 +155,12 @@ jobs:
           - Deployed commit: \`${{ github.event.workflow_run.head_sha }}\`
           - Production URL: \`$PRODUCTION_BASE_URL\`
           - Azure deployment run: #${{ github.event.workflow_run.run_number }} (run ${{ github.event.workflow_run.id }})
+          - Route matrix: \`/=${{ steps.routes.outputs.root_status }}\`, \`/about=${{ steps.routes.outputs.about_status }}\`, \`/va-forms=${{ steps.routes.outputs.va_forms_status }}\`
           - Runtime readiness HTTP status: ${{ steps.readiness.outputs.http_status }}
           - Readiness status: \`ready\`
           - Workflow-session crypto round trip: \`true\`
 
-          No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded.
+          Route probes record status codes only. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded.
           EOF
 
           gh issue comment "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY" --body-file runtime-evidence.md
