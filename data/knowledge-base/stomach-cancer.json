@@ -8,6 +8,23 @@
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish that stomach cancer caused or aggravated an individual's depressive disorder.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "somatopsychic"
+        ],
+        "causalChain": "Stomach cancer → documented chronic pain or functional limitation, if present → claimed causation or worsening of depressive disorder.",
+        "developmentQuestions": [
+          "Is depressive disorder currently diagnosed and clinically distinguished from transient distress?",
+          "Are chronic pain or functional limitations attributable to the stomach cancer documented in this individual's record?",
+          "Does the timeline support depressive symptoms beginning or worsening after the documented physical burden?",
+          "Can a qualified clinician explain whether the documented pain or functional limitation caused or aggravated the depressive disorder in this individual case?",
+          "Which alternative psychiatric, medical, treatment-related, or social contributors should be addressed?"
+        ],
+        "issuesToResolve": [
+          "The pain/depression systematic review supports a general relationship but does not establish that stomach cancer itself caused this individual's depression.",
+          "The pathway depends on documented individual pain or functional impairment, timing, diagnosis, and assessment of alternative causes."
+        ]
+      },
       "evidenceGaps": [
         "Mental health evaluation and diagnosis",
         "Documentation of chronic pain, functional limitations, and their timing",
