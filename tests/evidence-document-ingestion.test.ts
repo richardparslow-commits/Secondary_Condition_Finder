@@ -18,7 +18,7 @@ describe("Priority 1B direct browser-local document ingestion", () => {
     expect(extractor).toContain("`paragraph ${index + 1}`");
     expect(extractor).toContain("image-only or require OCR");
     expect(extractor).toContain("No extractable PDF text was found");
-    expect(extractor).toContain("enableScripting: false");
+    expect(extractor).toContain("await loadingTask.destroy()");
   });
 
   it("pins the patched parser dependencies and copies the PDF worker from node_modules", () => {
