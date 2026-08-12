@@ -15,9 +15,13 @@ import {
 const scenarioIdSchema = z.string().min(1).max(80).regex(/^[a-z0-9-]+$/);
 
 export async function launchDemoScenario(formData: FormData): Promise<void> {
-  const scenarioId = scenarioIdSchema.parse(formData.get("scenarioId"));
-  const scenario = scenarios.find((candidate) => candidate.id === scenarioId);
-  if (!scenario) throw new Error("Unknown demo scenario");
+  const parsedScenarioId = scenarioIdSchema.safeParse(formData.get("scenarioId"));
+  if (!parsedScenarioId.success) redirect("/scenarios");
+
+  const scenario = scenarios.find(
+    (candidate) => candidate.id === parsedScenarioId.data,
+  );
+  if (!scenario) redirect("/scenarios");
 
   const workflow = parseStoredSecondaryWorkflowState(scenario.workflow);
   const catalog = loadConditionCatalog();
