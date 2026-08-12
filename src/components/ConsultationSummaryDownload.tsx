@@ -1,0 +1,35 @@
+"use client";
+
+type ConsultationSummaryDownloadProps = {
+  content: string;
+};
+
+const DOWNLOAD_FILENAME = "secondary-condition-research-summary.txt";
+
+export function ConsultationSummaryDownload({ content }: ConsultationSummaryDownloadProps) {
+  function downloadSummary() {
+    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+    const objectUrl = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+
+    anchor.href = objectUrl;
+    anchor.download = DOWNLOAD_FILENAME;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(objectUrl);
+  }
+
+  return (
+    <div>
+      <button type="button" className="ui-button w-full" onClick={downloadSummary}>
+        Download consultation summary
+      </button>
+      <p className="mt-2 text-xs text-slate-600">
+        Creates a text file in this browser only. The export includes authored research recommendations,
+        contributing primary conditions, evidence gaps, and citations. It does not include raw local-evidence
+        excerpts or optional medication/treatment context.
+      </p>
+    </div>
+  );
+}
