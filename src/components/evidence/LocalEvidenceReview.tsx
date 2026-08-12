@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useSyncExternalStore } from "react";
 
 import {
   evidenceAnalysisStorageKey,
@@ -8,10 +8,24 @@ import {
   type EvidenceExcerpt,
 } from "@/lib/evidence/extract";
 
-function loadStored(): EvidenceAnalysis[] {
+const EMPTY_SNAPSHOT = "[]";
+
+function getSnapshot(): string {
   try {
-    const raw = window.sessionStorage.getItem(evidenceAnalysisStorageKey);
-    if (!raw) return [];
+    return window.sessionStorage.getItem(evidenceAnalysisStorageKey) ?? EMPTY_SNAPSHOT;
+  } catch {
+    return EMPTY_SNAPSHOT;
+  }
+}
+
+function subscribe(): () => void {
+  // The evidence payload is written on Step 4 before this component mounts on
+  // Step 6. No live subscription is required while the review page is open.
+  return () => undefined;
+}
+
+function parseAnalyses(raw: string): EvidenceAnalysis[] {
+  try {
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return [];
     return parsed.filter((item): item is EvidenceAnalysis => Boolean(item && typeof item === "object" && (item as EvidenceAnalysis).version === 1));
@@ -25,12 +39,8 @@ function flatten(analyses: EvidenceAnalysis[]): EvidenceExcerpt[] {
 }
 
 export function LocalEvidenceReview() {
-  const [analyses, setAnalyses] = useState<EvidenceAnalysis[]>([]);
-
-  useEffect(() => {
-    setAnalyses(loadStored());
-  }, []);
-
+  const snapshot = useSyncExternalStore(subscribe, getSnapshot, () => EMPTY_SNAPSHOT);
+  const analyses = useMemo(() => parseAnalyses(snapshot), [snapshot]);
   const excerpts = useMemo(() => flatten(analyses), [analyses]);
   const nexus = excerpts.filter((excerpt) => excerpt.strength === "nexus-relevant");
   const supporting = excerpts.filter((excerpt) => excerpt.strength === "supporting");
