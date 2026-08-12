@@ -8,6 +8,23 @@
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "Altered gait to protect an injured knee can place additional load on the hip over time. Claims typically rest on documented gait alteration rather than the knee diagnosis alone.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "biomechanical"
+        ],
+        "causalChain": "Service-connected knee injury → documented altered gait or compensatory loading → claimed hip strain.",
+        "developmentQuestions": [
+          "Is altered gait, limp, antalgic gait, or another compensatory movement objectively documented?",
+          "Is there a current hip diagnosis supported by examination or appropriate testing?",
+          "Does the timeline support hip symptoms developing or worsening after the altered movement pattern?",
+          "Can a qualified clinician explain whether the documented biomechanics caused or aggravated the hip condition in this individual case?",
+          "Which alternative causes such as trauma, degeneration, or other mechanical factors should be addressed?"
+        ],
+        "issuesToResolve": [
+          "The knee diagnosis alone does not establish the claimed hip relationship; the altered-movement mechanism needs individual support.",
+          "Objective gait or movement findings and plausible alternative causes should be addressed."
+        ]
+      },
       "evidenceGaps": [
         "Treatment records documenting altered gait, limp, or antalgic gait",
         "Current hip diagnosis with range-of-motion findings",
@@ -54,6 +71,23 @@
       "rank": 3,
       "prevalence": "sometimes-explored",
       "rationale": "Biomechanical compensation over an extended period is sometimes advanced as a contributor to lower back strain. Generally needs a supporting medical opinion.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "biomechanical"
+        ],
+        "causalChain": "Service-connected knee injury → prolonged compensatory gait or movement → claimed lumbar strain.",
+        "developmentQuestions": [
+          "Is a compensatory gait or movement pattern documented over time?",
+          "Is there a current lumbar diagnosis supported by examination or appropriate testing?",
+          "Does the clinical timeline place the claimed back condition after or alongside the documented compensatory movement?",
+          "Can a qualified clinician explain whether the compensatory mechanism caused or aggravated the lumbar condition in this individual case?",
+          "Which alternative causes such as trauma or degenerative change should be addressed?"
+        ],
+        "issuesToResolve": [
+          "Biomechanical compensation is a theory to evaluate, not proof that the knee condition caused the lumbar condition.",
+          "The timeline, objective movement findings, medical mechanism, and alternative causes need individual support."
+        ]
+      },
       "evidenceGaps": [
         "Lumbar spine diagnosis and range-of-motion findings",
         "Timeline showing back symptoms developing after the knee condition",
