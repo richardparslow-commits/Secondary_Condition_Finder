@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDownload";
 import { DisclaimerFooter } from "@/components/Disclaimer";
+import { EvidenceGapReview } from "@/components/evidence/EvidenceGapReview";
 import { LocalEvidenceReview } from "@/components/evidence/LocalEvidenceReview";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
@@ -38,6 +39,11 @@ export default async function EvidenceReviewStepPage() {
     ...recommendation,
     matchedIntakeContext: [],
   }));
+  const evidenceGapRecommendations = recommendationsResult.recommendations.map((recommendation) => ({
+    conditionId: recommendation.conditionId,
+    condition: recommendation.condition,
+    evidenceGaps: recommendation.evidenceGaps,
+  }));
 
   return (
     <main>
@@ -68,10 +74,11 @@ export default async function EvidenceReviewStepPage() {
         </aside>
       </div>
 
+      <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
 
       <div className="ui-actions"><Link href="/secondary/suggestions" className="ui-button-secondary">← Back to Suggestions</Link><Link href="/secondary" className="ui-button">Finish Review <span aria-hidden="true">→</span></Link></div>
-      <div className="ui-footer-note"><strong>Reminder:</strong> Suggestions come from a curated knowledge base and are not ranked by likelihood of approval. Reported medication/treatment matches and locally extracted record excerpts are evidence-review aids, not adjudicative findings.</div>
+      <div className="ui-footer-note"><strong>Reminder:</strong> Suggestions come from a curated knowledge base and are not ranked by likelihood of approval. Reported medication/treatment matches, checklist selections, and locally extracted record excerpts are evidence-review aids, not adjudicative findings.</div>
       <DisclaimerFooter />
     </main>
   );
