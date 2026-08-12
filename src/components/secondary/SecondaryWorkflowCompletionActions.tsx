@@ -15,14 +15,24 @@ function clearBrowserLocalWorkflowState(): void {
   }
 }
 
+export function SecondaryWorkflowRestartButton({
+  label = "Start a new review",
+}: {
+  label?: string;
+}) {
+  return (
+    <form action={restartSecondaryWorkflow} onSubmit={clearBrowserLocalWorkflowState}>
+      <button type="submit" className="ui-button-secondary">
+        {label}
+      </button>
+    </form>
+  );
+}
+
 export function SecondaryWorkflowCompletionActions() {
   return (
-    <div className="ui-actions" aria-label="Complete or restart secondary workflow">
-      <form action={restartSecondaryWorkflow} onSubmit={clearBrowserLocalWorkflowState}>
-        <button type="submit" className="ui-button-secondary">
-          Start a new review
-        </button>
-      </form>
+    <div className="flex flex-wrap gap-3" aria-label="Complete or restart secondary workflow">
+      <SecondaryWorkflowRestartButton />
       <form action={finishSecondaryWorkflow} onSubmit={clearBrowserLocalWorkflowState}>
         <button type="submit" className="ui-button">
           Finish Review <span aria-hidden="true">→</span>
