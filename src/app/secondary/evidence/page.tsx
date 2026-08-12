@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
+import { LocalEvidenceReview } from "@/components/evidence/LocalEvidenceReview";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
@@ -26,7 +27,7 @@ export default async function EvidenceReviewStepPage() {
 
   return (
     <main>
-      <header className="page-hero text-center"><p className="ui-kicker">Step 6 of 6</p><h1>Evidence &amp; Research Checklist</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Organize evidence gaps and research questions to review before filing. This page does not parse records or determine eligibility.</p></header>
+      <header className="page-hero text-center"><p className="ui-kicker">Step 6 of 6</p><h1>Evidence &amp; Research Checklist</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Review published evidence gaps together with exact excerpts identified during optional browser-local evidence analysis. This page does not determine eligibility or whether VA will accept an excerpt as sufficient nexus evidence.</p></header>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><span>✓ Suggestions</span><strong className="text-blue-700">6 Evidence</strong></div>
 
       <div className="ui-grid">
@@ -35,8 +36,8 @@ export default async function EvidenceReviewStepPage() {
           <p className="ui-kicker">Service-connected context</p>
           <ul className="mt-3 space-y-3">{state.serviceConnectedConditionIds.map((id) => { const condition = byId.get(id); if (!condition) return null; const rating = state.ratingsByConditionId[id]; return <li key={id} className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm"><strong className="block text-blue-900">{condition.name}</strong><span>{rating === null ? "Rating not provided" : `${rating}% current rating entered`}</span></li>; })}</ul>
           <div className="ui-divider" />
-          <p className="text-sm"><strong>Documents flagged:</strong> {state.documentsShared ? "Yes — available for manual review" : "No"}</p>
-          <div className="ui-callout mt-5 text-sm"><strong>Document processing limit:</strong> This MVP does not read C-files, parse uploaded medical records, or extract medical findings.</div>
+          <p className="text-sm"><strong>Documents flagged:</strong> {state.documentsShared ? "Yes — evidence available or reviewed" : "No"}</p>
+          <div className="ui-callout mt-5 text-sm"><strong>Privacy boundary:</strong> Step 4 local evidence text does not enter the server workflow state. Only the yes/no document-availability flag is stored in the encrypted workflow cookie.</div>
         </aside>
 
         <section className="ui-card">
@@ -46,13 +47,15 @@ export default async function EvidenceReviewStepPage() {
         </section>
 
         <aside className="ui-stack">
-          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✎</span><h2 className="text-xl font-bold">Research Notes</h2></div><p className="text-sm">Use your own secure notes or records to track questions such as potential nexus literature, providers to ask, symptom history, and missing treatment records. This app does not store free-text research notes here.</p></section>
-          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Next Steps</h2></div><ol className="space-y-3 text-sm"><li><strong>1.</strong> Review citations and current VA guidance.</li><li><strong>2.</strong> Gather and organize relevant evidence.</li><li><strong>3.</strong> Discuss medical questions with a qualified provider.</li><li><strong>4.</strong> Consider an accredited representative, attorney, or VSO.</li></ol></section>
+          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✎</span><h2 className="text-xl font-bold">Research Notes</h2></div><p className="text-sm">Use your own secure notes or records to track questions such as potential nexus literature, providers to ask, symptom history, and missing treatment records. This app does not store free-text research notes on the server.</p></section>
+          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Next Steps</h2></div><ol className="space-y-3 text-sm"><li><strong>1.</strong> Review citations and current VA guidance.</li><li><strong>2.</strong> Compare mapped evidence gaps with the exact local excerpts below.</li><li><strong>3.</strong> Discuss causation/aggravation questions with a qualified provider.</li><li><strong>4.</strong> Consider an accredited representative, attorney, or VSO.</li></ol></section>
         </aside>
       </div>
 
+      <LocalEvidenceReview />
+
       <div className="ui-actions"><Link href="/secondary/suggestions" className="ui-button-secondary">← Back to Suggestions</Link><Link href="/secondary" className="ui-button">Finish Review <span aria-hidden="true">→</span></Link></div>
-      <div className="ui-footer-note"><strong>Reminder:</strong> Suggestions come from a curated knowledge base, not from your medical records, and are not ranked by likelihood of approval.</div>
+      <div className="ui-footer-note"><strong>Reminder:</strong> Suggestions come from a curated knowledge base and are not ranked by likelihood of approval. Locally extracted record excerpts are evidence-review aids, not adjudicative findings.</div>
       <DisclaimerFooter />
     </main>
   );
