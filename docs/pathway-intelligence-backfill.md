@@ -74,7 +74,32 @@ The following published Musculoskeletal edges remain unlabeled because their att
 
 ## Batch 3 — Respiratory / ENT (#249)
 
-Pending Batch 2 production verification.
+### Backfilled
+
+| Primary | Secondary | Authored pathway(s) | Existing support used |
+|---|---|---|---|
+| copd | sleep-apnea | direct-secondary; aggravation | COPD/OSA overlap-syndrome systematic review; copy explicitly separates population-level coexistence from an individual causation/aggravation opinion. |
+| copd | cardiac-arrhythmia | intermediate-chain | Clinical COPD cohort evidence describing nocturnal oxygen desaturation and its potential relationship to nocturnal arrhythmias, plus § 3.310 framework. |
+| asthma | sleep-apnea | direct-secondary; aggravation | Asthma/OSA systematic review and meta-analysis; copy preserves association-vs-individual-nexus distinction. |
+| asthma | cardiac-arrhythmia | direct-secondary | Asthma/atrial-fibrillation systematic review and meta-analysis with explicit warning that heterogeneity/risk of bias make the association signal low-confidence. |
+
+### Reviewed and intentionally left unlabeled
+
+The following published Respiratory / ENT mappings remain unlabeled because their attached source sets are legal/rating-framework only or otherwise insufficient for new medical-pathway metadata:
+
+- chronic-sinusitis
+- chronic-rhinitis
+- emphysema
+- chronic-bronchitis
+- pulmonary-fibrosis
+- interstitial-lung-disease
+- anosmia
+- ageusia
+- sleep-apnea
+
+For asthma → cardiac-arrhythmia, the existing rationale notes that medication effects may also contribute. That edge is **not** labeled medication-related because the attached clinical source supports the asthma/atrial-fibrillation association, not a medication-specific adverse-effect pathway.
+
+`bronchiolitis`, `sarcoidosis`, `deviated-nasal-septum`, `laryngeal-stenosis`, `pneumoconiosis`, `noise-induced-hearing-loss`, and `tinnitus` remain draft and are excluded from the published-mapping backfill.
 
 ## Batch 4 — Systemic / Medical (#250)
 

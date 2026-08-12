@@ -8,6 +8,24 @@
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "Asthma is associated with a higher frequency and risk of obstructive sleep apnea in published observational studies and meta-analyses, particularly in more severe asthma. This population-level association does not by itself establish that asthma caused or aggravated an individual veteran's OSA.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "direct-secondary",
+          "aggravation"
+        ],
+        "causalChain": "Asthma → claimed causation or worsening of diagnosed obstructive sleep apnea; the population-level association requires individual medical assessment before relying on either theory.",
+        "developmentQuestions": [
+          "Is obstructive sleep apnea currently confirmed by an appropriate sleep study?",
+          "How severe and persistent is the asthma, and how does its timeline compare with OSA onset or worsening?",
+          "Does the individual medical history support causation, aggravation, or neither between asthma and OSA?",
+          "Can a pulmonary or sleep-medicine clinician explain whether the asthma materially affected the OSA in this individual case?",
+          "Which alternative OSA risk factors, including obesity and upper-airway factors, should be addressed?"
+        ],
+        "issuesToResolve": [
+          "The asthma/OSA meta-analytic association does not establish an individual medical nexus.",
+          "Asthma severity, OSA severity, timing, and alternative OSA risk factors require case-specific review."
+        ]
+      },
       "evidenceGaps": [
         "Sleep study (polysomnography or qualifying home sleep test) confirming OSA",
         "Clinical assessment of asthma severity, obesity and other OSA risk factors",
@@ -30,6 +48,23 @@
       "rank": 2,
       "prevalence": "sometimes-explored",
       "rationale": "Asthma has been associated with a modestly increased risk of atrial fibrillation in observational studies, but the available evidence has substantial heterogeneity and risk of bias. Medication effects and other cardiovascular risk factors may also contribute, so an individual nexus requires case-specific evidence.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "direct-secondary"
+        ],
+        "causalChain": "Asthma → claimed contribution to a diagnosed cardiac arrhythmia; the published association signal is low-confidence and requires individual cardiovascular assessment.",
+        "developmentQuestions": [
+          "Is a cardiac arrhythmia objectively documented by ECG, Holter/event monitor, or other appropriate testing?",
+          "What is the temporal relationship between asthma severity or exacerbations and the arrhythmia?",
+          "Can a qualified clinician address whether asthma itself contributed to the arrhythmia in this individual case?",
+          "Which cardiovascular risk factors, medications, and alternative arrhythmia causes should be addressed?",
+          "If a medication theory is considered separately, is there medication-specific evidence supporting the relevant exposure rather than relying on the asthma/AF association study?"
+        ],
+        "issuesToResolve": [
+          "The systematic review reports high heterogeneity and serious risk of bias, so the association signal is not strong individual causal evidence.",
+          "Medication effects are a possible alternative contributor in the existing rationale but are not labeled medication-related here without a medication-specific supporting source."
+        ]
+      },
       "evidenceGaps": [
         "ECG, Holter/event monitor, or other documented arrhythmia diagnosis",
         "Medication history, especially beta-agonist exposure and timing",

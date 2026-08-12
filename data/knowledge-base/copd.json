@@ -8,6 +8,24 @@
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "COPD and obstructive sleep apnea commonly coexist as overlap syndrome. Published systematic reviews describe substantial co-occurrence and more pronounced nocturnal oxygen desaturation in people with both conditions, but the literature does not by itself establish that COPD caused or aggravated an individual veteran's OSA.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "direct-secondary",
+          "aggravation"
+        ],
+        "causalChain": "COPD → claimed causation or worsening of diagnosed obstructive sleep apnea; overlap-syndrome coexistence is a research signal, not an individual nexus.",
+        "developmentQuestions": [
+          "Is obstructive sleep apnea currently confirmed by an appropriate sleep study?",
+          "What are the documented severity and timing of COPD and OSA, including nocturnal oxygenation findings?",
+          "Does the individual medical history support causation, aggravation, or neither between COPD and OSA?",
+          "Can a pulmonary or sleep-medicine clinician distinguish overlap/coexistence from an individual causal or aggravating relationship?",
+          "Which alternative OSA risk factors, including obesity and upper-airway factors, should be addressed?"
+        ],
+        "issuesToResolve": [
+          "Overlap-syndrome co-occurrence does not establish that COPD caused or aggravated this individual's OSA.",
+          "COPD severity, OSA severity, nocturnal oxygenation, timing, and alternative OSA risk factors require case-specific review."
+        ]
+      },
       "evidenceGaps": [
         "Sleep study (polysomnography or qualifying home sleep test) confirming OSA",
         "Pulmonary or sleep-medicine opinion addressing the individual relationship between COPD and OSA",
@@ -30,6 +48,23 @@
       "rank": 2,
       "prevalence": "sometimes-explored",
       "rationale": "COPD is associated with nocturnal oxygen desaturation and cardiac arrhythmias have been observed during sleep in COPD cohorts. This supports clinical plausibility and association, but does not establish that COPD caused a particular veteran's arrhythmia.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "intermediate-chain"
+        ],
+        "causalChain": "COPD → documented nocturnal oxygen desaturation or hypoxemia, if present → claimed contribution to or worsening of a diagnosed cardiac arrhythmia.",
+        "developmentQuestions": [
+          "Is a cardiac arrhythmia objectively documented by ECG, Holter/event monitor, or other appropriate testing?",
+          "Is nocturnal oxygen desaturation or clinically significant hypoxemia documented in this individual's COPD records?",
+          "Does the timing support the proposed COPD → hypoxemia → arrhythmia chain?",
+          "Can a qualified clinician address whether documented hypoxemia materially caused or aggravated the arrhythmia in this individual case?",
+          "Which alternative cardiac, pulmonary, medication, electrolyte, or other arrhythmia causes should be addressed?"
+        ],
+        "issuesToResolve": [
+          "The published COPD cohort evidence supports plausibility of a hypoxemia-arrhythmia pathway, not an automatic individual nexus.",
+          "Each link in the proposed chain—COPD, clinically relevant desaturation, and the diagnosed arrhythmia—requires individual support."
+        ]
+      },
       "evidenceGaps": [
         "ECG, Holter/event monitor, or other documented arrhythmia diagnosis",
         "Clinical assessment of hypoxemia, COPD severity, medications and alternative arrhythmia causes",
