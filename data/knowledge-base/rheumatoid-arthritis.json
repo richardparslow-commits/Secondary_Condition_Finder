@@ -8,6 +8,23 @@
       "rank": 1,
       "prevalence": "commonly-explored",
       "rationale": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish that rheumatoid arthritis caused or aggravated an individual's depressive disorder.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "somatopsychic"
+        ],
+        "causalChain": "Rheumatoid arthritis → chronic pain and functional limitation, if documented → claimed causation or worsening of depressive disorder.",
+        "developmentQuestions": [
+          "Is depressive disorder currently diagnosed and clinically distinguished from transient distress?",
+          "How are rheumatoid-arthritis pain and functional limitations documented over time?",
+          "Does the individual timeline support depressive symptoms beginning or worsening after the relevant physical impairment?",
+          "Can a qualified clinician explain whether the physical illness, pain, or functional limitation caused or aggravated the depressive disorder in this individual case?",
+          "Which alternative psychiatric, medical, medication, or social contributors should be addressed?"
+        ],
+        "issuesToResolve": [
+          "Pain/depression comorbidity evidence does not establish an individual rheumatoid-arthritis-to-depression nexus.",
+          "The diagnosis, temporal relationship, functional impact, and plausible alternative causes require individual clinical review."
+        ]
+      },
       "evidenceGaps": [
         "Mental health evaluation and diagnosis",
         "Documentation of chronic pain, functional limitations, and their timing",
@@ -39,6 +56,23 @@
       "rank": 2,
       "prevalence": "sometimes-explored",
       "rationale": "When NSAIDs are used for chronic pain, published evidence supports an increased risk of gastrointestinal injury and adverse events. The specific medication, dose, duration, diagnosis, and individual nexus should be evaluated rather than assuming that treatment caused GERD.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "medication-related"
+        ],
+        "causalChain": "Rheumatoid arthritis → NSAID treatment for rheumatoid-arthritis pain, if documented → claimed gastrointestinal condition causation or worsening.",
+        "developmentQuestions": [
+          "Was the relevant NSAID actually used to treat the service-connected rheumatoid arthritis, and at what dose and duration?",
+          "Is GERD or another gastrointestinal condition currently diagnosed and clinically characterized?",
+          "How does gastrointestinal symptom onset or worsening relate temporally to the documented NSAID exposure?",
+          "Can a qualified clinician address whether the medication exposure caused or aggravated the diagnosed gastrointestinal condition in this individual case?",
+          "Which alternative gastrointestinal causes, medications, or risk factors should be addressed?"
+        ],
+        "issuesToResolve": [
+          "NSAID-associated gastrointestinal risk does not establish that a particular exposure caused this individual's GERD.",
+          "Medication indication, exposure details, diagnosis, timing, and alternative causes require individual review."
+        ]
+      },
       "evidenceGaps": [
         "Prescription history identifying NSAID exposure, dose, and duration",
         "Documented gastrointestinal diagnosis and clinical evaluation",
