@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:azure": "next build && node scripts/package-next-standalone.mjs",
+    "build:azure": "AZURE_STATIC_WEB_APPS_BUILD=1 next build && node scripts/package-next-standalone.mjs",
     "start": "next start",
     "postinstall": "node scripts/copy-pdf-worker.mjs",
     "lint": "eslint",
