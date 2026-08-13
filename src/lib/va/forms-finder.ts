@@ -17,6 +17,13 @@ export interface VaFormsFinderView {
   sourceLabel: string;
   notice: string;
   live: boolean;
+  retrievedAt: string | null;
+  cacheStatus: "hit" | "miss";
+}
+
+interface CachedFormsView {
+  view: VaFormsFinderView;
+  expiresAt: number;
 }
 
 const LOCAL_526EZ: VaFormSearchItem = {
@@ -27,6 +34,9 @@ const LOCAL_526EZ: VaFormSearchItem = {
   pages: null,
   validPdf: null,
 };
+
+const CACHE_TTL_MS = 5 * 60 * 1_000;
+const formsCache = new Map<string, CachedFormsView>();
 
 function localResults(query: string): VaFormSearchItem[] {
   const normalized = query.toLowerCase();
@@ -40,6 +50,13 @@ export async function loadVaFormsFinder(
   query = "21-526EZ",
 ): Promise<VaFormsFinderView> {
   const normalizedQuery = query.trim().slice(0, 120) || "21-526EZ";
+  const cacheKey = normalizedQuery.toLowerCase();
+  const now = Date.now();
+  const cached = formsCache.get(cacheKey);
+  if (cached && cached.expiresAt > now) {
+    return { ...cached.view, cacheStatus: "hit" };
+  }
+
   const result = await fetchVaForms(normalizedQuery);
 
   if (!result.success || !result.data) {
@@ -50,10 +67,12 @@ export async function loadVaFormsFinder(
       notice:
         "VA Forms search is unavailable or disabled. Only matching local references can be shown; confirm current forms on VA.gov.",
       live: false,
+      retrievedAt: null,
+      cacheStatus: "miss",
     };
   }
 
-  return {
+  const view: VaFormsFinderView = {
     query: normalizedQuery,
     items: result.data.data
       .filter((item) => !item.attributes.deleted_at)
@@ -70,5 +89,13 @@ export async function loadVaFormsFinder(
     notice:
       "Results came from the VA Forms sandbox. Sandbox data is for testing and may not be current; confirm forms on VA.gov before filing.",
     live: true,
+    retrievedAt: new Date(now).toISOString(),
+    cacheStatus: "miss",
   };
+  formsCache.set(cacheKey, { view, expiresAt: now + CACHE_TTL_MS });
+  return view;
+}
+
+export function clearVaFormsFinderCache(): void {
+  formsCache.clear();
 }
