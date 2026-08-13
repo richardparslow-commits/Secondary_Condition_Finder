@@ -169,7 +169,7 @@ describe("production deployment readiness", () => {
     expect(workflow).not.toContain("process.env.WORKFLOW_SESSION_SECRET");
   });
 
-  it("documents the verified Vercel runtime-setting boundary", () => {
+  it("documents the final verified Vercel runtime-setting boundary", () => {
     const runbook = read("docs/deployment-readiness.md");
 
     expect(runbook).toContain("WORKFLOW_SESSION_SECRET");
@@ -181,12 +181,14 @@ describe("production deployment readiness", () => {
     expect(runbook).toContain("data-runtime-readiness");
     expect(runbook).toContain("Issue #213");
     expect(runbook).toContain("Verified Vercel production runtime checkpoint");
-    expect(runbook).toContain("6ed2da05f2ef7259acc5617968480f3ecbaf2ada");
-    expect(runbook).toContain("Repository CI #712");
-    expect(runbook).toContain("dpl_CbkyoQKxbFaDbivGEv3jiSztsm2M");
+    expect(runbook).toContain("c49fe2414d7a29c50935af91f3f3a08db933c417");
+    expect(runbook).toContain("Repository CI #716");
+    expect(runbook).toContain("Production Runtime Readiness #78");
+    expect(runbook).toContain("dpl_2bMJZhr2cCCJnrGtVQeQ2NAcGebM");
     expect(runbook).toContain("https://secondary-condition-finder.vercel.app");
     expect(runbook).toContain("`/runtime-readiness=200`");
     expect(runbook).toContain('data-runtime-readiness="ready"');
+    expect(runbook).toContain("closed as completed");
     expect(runbook).toContain("Legacy Azure manual fallback");
     expect(runbook).toContain("no `push` or `pull_request` trigger");
     expect(runbook).not.toContain("Current Azure resource-level blocker");

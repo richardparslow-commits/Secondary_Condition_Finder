@@ -18,7 +18,13 @@ The product may pursue newer WCAG guidance as an additional quality target, but 
 
 The current automated suite proves structural, content, keyboard-entry, focus-style, reflow-safeguard, forced-colors, reduced-motion, and selected live-status announcement contracts. It still does **not** prove complete Section 508 or WCAG conformance. Until the manual checks below are completed and recorded, the production-access package must not represent the application as verified Section 508 compliant.
 
-The deployed manual review tracked in issue #195 also requires a reachable intended production build. If the production host is unavailable or returns routing errors, that is a hosting blocker rather than accessibility evidence and the manual review remains pending.
+### Current manual-review production target
+
+Manual review is now performed against the Vercel production application at `https://secondary-condition-finder.vercel.app`, not the historical Azure Static Web Apps hostname. At the start of each manual review session, record the exact deployed `main` commit and Vercel production deployment serving the canonical alias; do not assume a previously recorded commit is still current.
+
+The Azure → Vercel production migration was objectively verified before this accessibility review refresh: repository CI #716, Vercel deployment status, and Production Runtime Readiness #78 all succeeded for commit `c49fe2414d7a29c50935af91f3f3a08db933c417`, including HTTP 200 + `ready` from `/runtime-readiness`. That is hosting/runtime evidence only, not accessibility evidence.
+
+The deployed manual review tracked in issue #195 requires a reachable intended production build. If the current production host is unavailable or returns routing errors, that is a hosting blocker rather than accessibility evidence and the manual review remains pending.
 
 ## Automated evidence currently enforced
 
@@ -66,7 +72,7 @@ These assertions are regression evidence only. They do not test every WCAG succe
 
 ## Manual deployed-app protocol
 
-Run against the exact deployed `main` commit intended for the VA review.
+Run against the exact deployed `main` commit intended for the VA review on the canonical Vercel production URL. Record that commit and deployment identifier before testing begins.
 
 ### Keyboard
 
@@ -104,6 +110,7 @@ For each run record only non-sensitive evidence:
 
 - date/time;
 - deployed commit SHA;
+- Vercel production deployment identifier;
 - browser and version;
 - operating system;
 - assistive technology and version, if used;
