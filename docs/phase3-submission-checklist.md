@@ -109,7 +109,7 @@ State only behavior that is currently implemented and verified:
 - user disability filtering on `/va-reference` remains client-side;
 - health/disability and service-history workflow state is kept out of URLs;
 - workflow state uses short-lived encrypted/authenticated cookies;
-- the legacy aggregate event-logger abstraction has no application caller and is not relied on as an active production Veteran-data store or audit trail;
+- the current application does not persist workflow or recommendation event history through an application event logger;
 - VA adapter observations omit credentials, query values, response bodies, and workflow selections;
 - no VA public-reference response body is intentionally persisted;
 - optional medical-evidence ingestion is browser-local; raw document bytes/text are not sent to application server state, URLs, telemetry, logs, or user accounts;
