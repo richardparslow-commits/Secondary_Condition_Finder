@@ -6,10 +6,12 @@
 
 Credentialed live sandbox validation for VA Forms and Benefits Reference Data remains externally pending in issue #189. The repository implementation and manual smoke-test workflow are in place, but objective workflow history currently contains no completed credentialed run.
 
+The production workflow-session crypto path has now been verified on Vercel with non-sensitive runtime evidence. Issue #213 remains the exact-current-commit closure record until the production-readiness workflow re-verifies the final `main` commit after hosting finalization.
+
 Submission remains gated on:
 
 1. Recording successful non-sensitive credentialed sandbox smoke-test evidence in issue #189.
-2. Verifying the production Azure runtime settings in `docs/deployment-readiness.md`, especially `WORKFLOW_SESSION_SECRET`.
+2. Closing issue #213 on exact-current-commit Vercel production evidence from `docs/deployment-readiness.md`.
 3. Completing the deployed-app manual accessibility/Section 508 review tracked in issue #195 and remediating/retesting material findings.
 4. Supplying truthful applicant/business information and absolute deployed URLs.
 5. Completing a final demo rehearsal against the deployed application.
@@ -102,7 +104,8 @@ When Application Insights is configured, route telemetry is sanitized and automa
 
 - VA API keys are server-only environment settings.
 - VA API keys are never stored in source control or exposed through `NEXT_PUBLIC_*` variables.
-- Production credentials must be stored in the hosting platform's protected application settings/secrets facility and must not be logged.
+- Production credentials are stored in the hosting platform's protected environment facility and must not be logged.
+- The current production host is Vercel; production-only runtime values are configured in the Vercel **Production** environment and activated through a new production deployment.
 - Credentials should be rotated if exposed, during security incident response, and on any schedule required by VA or the hosting environment.
 - Sandbox and production credentials must remain environment-separated.
 
@@ -134,7 +137,10 @@ Current repository controls include:
 - aggregate-only recommendation-event persistence;
 - baseline CSP, HSTS, frame-denial, referrer, content-type, and permissions headers;
 - dependency audit, citation audit, knowledge-base validation, lint, typecheck, tests, and production build in CI;
-- pinned Azure deployment action and explicit Node 22 runtime contract.
+- explicit Node 22 runtime contract and Vercel-native standard Next.js build;
+- exact-commit Vercel deployment-status verification, production-alias convergence, and a non-sensitive runtime crypto self-test before production readiness is accepted.
+
+The former Azure Static Web Apps workflow is retained only as a manual legacy fallback and is no longer an automatic production deployment path.
 
 ## Privacy, terms, and product URLs
 
@@ -146,7 +152,11 @@ Public routes in the application:
 - `/va-forms` — VA Forms reference demonstration.
 - `/va-reference` — Benefits Reference Data demonstration.
 
-The actual deployed absolute URLs should be copied into the VA production-access form during final submission preparation.
+Canonical deployed application root:
+
+- `https://secondary-condition-finder.vercel.app`
+
+The exact absolute route URLs should be rechecked during final submission preparation.
 
 ## Business model response
 
@@ -173,8 +183,10 @@ For the VA form, describe the implemented preventive controls above and the oper
 
 ## Vulnerability management response
 
-The repository performs high-severity dependency auditing in CI on every gated change. Security-relevant fixes are merged only after lint, typecheck, tests, build, and other repository gates pass. Production deployments are verified against the exact `main` commit.
+The repository performs high-severity dependency auditing in CI on every gated change. Security-relevant fixes are merged only after lint, typecheck, tests, build, and other repository gates pass. Vercel production deployments are verified against the exact `main` commit before runtime readiness is accepted.
 
 ## Current readiness status
 
-Credentialed live sandbox validation remains pending in issue #189. Repository implementation is ready for continued Phase 3 review, but production-access submission remains blocked on that sandbox proof, production runtime-setting verification, manual accessibility/Section 508 evidence in issue #195, truthful applicant/business details and absolute deployed URLs, and the final demo rehearsal.
+The Vercel production workflow-session crypto path has been verified with a reachable HTTP 200 `/runtime-readiness` page and the high-level `ready` marker on a green `main` commit. Issue #213 remains open only until the final hosting-contract commit is reverified and recorded automatically.
+
+Credentialed live sandbox validation remains pending in issue #189. Production-access submission also remains blocked on manual accessibility/Section 508 evidence in issue #195, truthful applicant/business details and final absolute URLs, and the final demo rehearsal.
