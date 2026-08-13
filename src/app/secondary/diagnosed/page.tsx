@@ -11,13 +11,20 @@ export const dynamic = "force-dynamic";
 const DATABASE_MAPPED_EXPLANATION =
   "Database mapped means this condition already has authored secondary-condition relationships in the knowledge base.";
 
-export default async function DiagnosedConditionsPage() {
+interface DiagnosedConditionsPageProps {
+  searchParams?: Promise<{ error?: string | string[] }>;
+}
+
+export default async function DiagnosedConditionsPage({ searchParams }: DiagnosedConditionsPageProps = {}) {
   const catalog = loadConditionCatalog();
   const mapped = mappedConditionIds(loadKnowledgeBase());
   const conditions = [...catalog].sort((a, b) => a.name.localeCompare(b.name));
   const session = await readSecondaryWorkflowSession();
   const selectedDiagnosed = new Set(session.diagnosedConditionIds ?? []);
   const selectedConditions = conditions.filter((condition) => selectedDiagnosed.has(condition.id));
+  const params = searchParams ? await searchParams : undefined;
+  const errorCode = Array.isArray(params?.error) ? params.error[0] : params?.error;
+  const selectionError = errorCode === "diagnosed-required" ? "Select at least one diagnosed condition to continue." : null;
 
   return (
     <main>
@@ -27,11 +34,12 @@ export default async function DiagnosedConditionsPage() {
         <p className="mx-auto mt-3 max-w-3xl text-lg">Select conditions you have been formally diagnosed with and want to evaluate in this research session.</p>
       </header>
 
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress">
+      <nav className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress">
         <strong className="text-blue-700">1 Diagnosed</strong><span>2 Service-connected</span><span>3 Ratings</span><span>4 Documents</span><span>5 Suggestions</span><span>6 Evidence</span>
-      </div>
+      </nav>
 
-      <form action={saveDiagnosedSelection}>
+      <form action={saveDiagnosedSelection} aria-describedby={selectionError ? "diagnosed-selection-error" : undefined}>
+        {selectionError && <p id="diagnosed-selection-error" role="alert" className="mb-5 rounded-lg border border-red-200 bg-red-50 p-3 text-sm font-medium text-red-900">{selectionError}</p>}
         <div className="ui-grid">
           <aside className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">How to Use This Step</h2></div>
@@ -52,15 +60,8 @@ export default async function DiagnosedConditionsPage() {
                 <li key={condition.id}>
                   <label className="flex cursor-pointer items-start gap-3 px-4 py-3">
                     <input type="checkbox" name="diagnosed" value={condition.id} defaultChecked={selectedDiagnosed.has(condition.id)} className="mt-1 h-5 w-5 rounded border-slate-300" />
-                    <span className="min-w-0 text-sm">
-                      <span className="block font-semibold text-slate-900">{condition.name}</span>
-                      <span className="block text-xs text-slate-500">{condition.bodySystem}</span>
-                    </span>
-                    {mapped.has(condition.id) ? (
-                      <span className="ml-auto shrink-0 rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-800" title={DATABASE_MAPPED_EXPLANATION}>database mapped</span>
-                    ) : (
-                      <span className="ml-auto shrink-0 rounded-full bg-amber-50 px-2 py-1 text-xs font-medium text-amber-800">mapping in progress</span>
-                    )}
+                    <span className="min-w-0 text-sm"><span className="block font-semibold text-slate-900">{condition.name}</span><span className="block text-xs text-slate-500">{condition.bodySystem}</span></span>
+                    {mapped.has(condition.id) ? <span className="ml-auto shrink-0 rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-800" title={DATABASE_MAPPED_EXPLANATION}>database mapped</span> : <span className="ml-auto shrink-0 rounded-full bg-amber-50 px-2 py-1 text-xs font-medium text-amber-800">mapping in progress</span>}
                   </label>
                 </li>
               ))}
@@ -68,22 +69,12 @@ export default async function DiagnosedConditionsPage() {
           </fieldset>
 
           <aside className="ui-stack">
-            <section className="ui-card">
-              <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Selected Diagnosed Conditions</h2></div>
-              {selectedConditions.length === 0 ? <p className="text-sm text-slate-600">No saved selections yet.</p> : <ul className="space-y-2">{selectedConditions.map((condition) => <li key={condition.id} className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-900">{condition.name}</li>)}</ul>}
-            </section>
-            <section className="ui-card">
-              <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">?</span><h2 className="text-xl font-bold">Why This Matters</h2></div>
-              <p className="text-sm">Later suggestions compare your diagnosed conditions with the disabilities you identify as already service connected.</p>
-              <div className="ui-callout mt-5 text-sm">Your selections are stored in the short-lived encrypted workflow session, not placed in the URL.</div>
-            </section>
+            <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Selected Diagnosed Conditions</h2></div>{selectedConditions.length === 0 ? <p className="text-sm text-slate-600">No saved selections yet.</p> : <ul className="space-y-2">{selectedConditions.map((condition) => <li key={condition.id} className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-900">{condition.name}</li>)}</ul>}</section>
+            <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">?</span><h2 className="text-xl font-bold">Why This Matters</h2></div><p className="text-sm">Later suggestions compare your diagnosed conditions with the disabilities you identify as already service connected.</p><div className="ui-callout mt-5 text-sm">Your selections are stored in the short-lived encrypted workflow session, not placed in the URL.</div></section>
           </aside>
         </div>
 
-        <div className="ui-actions">
-          <Link href="/secondary" className="ui-button-secondary">← Back</Link>
-          <button type="submit" className="ui-button">Continue to Step 2 <span aria-hidden="true">→</span></button>
-        </div>
+        <div className="ui-actions"><Link href="/secondary" className="ui-button-secondary">← Back</Link><button type="submit" className="ui-button">Continue to Step 2 <span aria-hidden="true">→</span></button></div>
       </form>
       <DisclaimerFooter />
     </main>
