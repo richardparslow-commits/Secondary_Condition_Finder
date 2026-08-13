@@ -11,8 +11,12 @@ function textValue(formData: FormData, key: string): string | null {
   return value.trim();
 }
 
+function validationPath(code: "select-location" | "date-order" | "invalid-date"): string {
+  return `/presumptive?error=${code}`;
+}
+
 export async function saveServiceHistory(formData: FormData): Promise<void> {
-  const history = serviceHistorySchema.parse({
+  const parsed = serviceHistorySchema.safeParse({
     locations: formData
       .getAll("location")
       .filter((value): value is string => typeof value === "string")
@@ -22,6 +26,17 @@ export async function saveServiceHistory(formData: FormData): Promise<void> {
     serviceEnd: textValue(formData, "serviceEnd"),
   });
 
-  await writePresumptiveSession(history);
+  if (!parsed.success) {
+    const issues = parsed.error.issues;
+    if (issues.some((issue) => issue.path[0] === "locations")) {
+      redirect(validationPath("select-location"));
+    }
+    if (issues.some((issue) => issue.path[0] === "serviceEnd" && issue.code === "custom")) {
+      redirect(validationPath("date-order"));
+    }
+    redirect(validationPath("invalid-date"));
+  }
+
+  await writePresumptiveSession(parsed.data);
   redirect("/presumptive/results");
 }

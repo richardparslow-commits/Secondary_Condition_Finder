@@ -30,7 +30,7 @@ describe("accessibility and UX content contracts", () => {
       renderPageHtml(HomePage()),
       renderPageHtml(AboutPage()),
       renderPageHtml(SecondaryLandingPage()),
-      renderPageHtml(PresumptivePage()),
+      renderPageHtml(await PresumptivePage()),
       renderPageHtml(PrivacyPage()),
       renderToStaticMarkup(await TermsPage()),
     ];
