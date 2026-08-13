@@ -14,9 +14,10 @@ jobs:
     timeout-minutes: 5
     env:
       VA_SANDBOX_ENABLED: 'true'
-      VA_SANDBOX_API_KEY: ${{ secrets.VA_SANDBOX_API_KEY }}
+      VA_FORMS_SANDBOX_API_KEY: ${{ secrets.VA_FORMS_SANDBOX_API_KEY }}
+      VA_BENEFITS_REFERENCE_SANDBOX_API_KEY: ${{ secrets.VA_BENEFITS_REFERENCE_SANDBOX_API_KEY }}
     steps:
-      - name: Require sandbox mode and API key
+      - name: Require sandbox mode and API keys
         shell: bash
         run: |
           set -euo pipefail
@@ -24,8 +25,12 @@ jobs:
             echo "::error::VA sandbox smoke test must run with VA_SANDBOX_ENABLED=true."
             exit 1
           fi
-          if [ -z "${VA_SANDBOX_API_KEY:-}" ]; then
-            echo "::error::Repository secret VA_SANDBOX_API_KEY is not configured."
+          if [ -z "${VA_FORMS_SANDBOX_API_KEY:-}" ]; then
+            echo "::error::Repository secret VA_FORMS_SANDBOX_API_KEY is not configured."
+            exit 1
+          fi
+          if [ -z "${VA_BENEFITS_REFERENCE_SANDBOX_API_KEY:-}" ]; then
+            echo "::error::Repository secret VA_BENEFITS_REFERENCE_SANDBOX_API_KEY is not configured."
             exit 1
           fi
 
@@ -46,7 +51,7 @@ jobs:
             --output "$tmpdir/forms.json" \
             --write-out '%{http_code}' \
             --header 'Accept: application/json' \
-            --header "apikey: ${VA_SANDBOX_API_KEY}" \
+            --header "apikey: ${VA_FORMS_SANDBOX_API_KEY}" \
             --header "X-Request-ID: ${forms_request_id}" \
             'https://sandbox-api.va.gov/services/va_forms/v0/forms?query=21-526EZ')"
 
@@ -68,7 +73,7 @@ jobs:
             --output "$tmpdir/reference.json" \
             --write-out '%{http_code}' \
             --header 'Accept: application/json' \
-            --header "apikey: ${VA_SANDBOX_API_KEY}" \
+            --header "apikey: ${VA_BENEFITS_REFERENCE_SANDBOX_API_KEY}" \
             --header "X-Request-ID: ${reference_request_id}" \
             'https://sandbox-api.va.gov/services/benefits-reference-data/v1/disabilities')"
 
@@ -103,7 +108,7 @@ jobs:
             echo "- Sandbox mode: enabled for this dedicated smoke-test execution."
             echo "- VA Forms: HTTP ${forms_status}; request ID \`${forms_request_id}\`; validated result count ${forms_count}."
             echo "- Benefits Reference Data: HTTP ${reference_status}; request ID \`${reference_request_id}\`; validated result count ${reference_count}."
-            echo "- Raw response payloads and the API key were not retained as workflow artifacts or written to this summary."
+            echo "- Raw response payloads and the API keys were not retained as workflow artifacts or written to this summary."
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Record Phase 2 gate evidence

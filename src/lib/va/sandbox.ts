@@ -13,7 +13,8 @@ type VaSandboxEnvironment = Record<string, string | undefined>;
 
 export interface VaSandboxConfig {
   enabled: boolean;
-  apiKey?: string;
+  formsApiKey?: string;
+  benefitsReferenceDataApiKey?: string;
   formsBaseUrl: string;
   benefitsReferenceDataBaseUrl: string;
   timeoutMs: number;
@@ -83,7 +84,9 @@ export function loadVaSandboxConfig(
 
   return {
     enabled: env.VA_SANDBOX_ENABLED === "true",
-    apiKey: env.VA_SANDBOX_API_KEY?.trim() || undefined,
+    formsApiKey: env.VA_FORMS_SANDBOX_API_KEY?.trim() || undefined,
+    benefitsReferenceDataApiKey:
+      env.VA_BENEFITS_REFERENCE_SANDBOX_API_KEY?.trim() || undefined,
     formsBaseUrl:
       env.VA_FORMS_SANDBOX_BASE_URL?.trim() || DEFAULT_FORMS_SANDBOX_BASE_URL,
     benefitsReferenceDataBaseUrl:
@@ -116,6 +119,7 @@ function validatedBaseUrl(value: string): URL | null {
 
 async function requestSandboxJson<T>(args: {
   service: VaSandboxObservation["service"];
+  apiKey?: string;
   baseUrl: string;
   path: string;
   schema: z.ZodType<T>;
@@ -126,8 +130,10 @@ async function requestSandboxJson<T>(args: {
   if (!args.config.enabled) {
     return fallback("VA sandbox integration is disabled by feature flag.");
   }
-  if (!args.config.apiKey) {
-    return fallback("VA sandbox API key is required when integration is enabled.");
+  if (!args.apiKey) {
+    return fallback(
+      `${args.service} sandbox API key is required when integration is enabled.`,
+    );
   }
 
   const baseUrl = validatedBaseUrl(args.baseUrl);
@@ -149,7 +155,7 @@ async function requestSandboxJson<T>(args: {
         method: "GET",
         headers: {
           Accept: "application/json",
-          apikey: args.config.apiKey,
+          apikey: args.apiKey,
           "X-Request-ID": requestId,
         },
         signal: controller.signal,
@@ -239,6 +245,7 @@ export async function fetchVaForms(
 
   return requestSandboxJson({
     service: "va-forms",
+    apiKey: config.formsApiKey,
     baseUrl: config.formsBaseUrl,
     path: "/forms",
     schema: formsIndexSchema,
@@ -255,6 +262,7 @@ export async function fetchVaDisabilityReference(
 
   return requestSandboxJson({
     service: "benefits-reference-data",
+    apiKey: config.benefitsReferenceDataApiKey,
     baseUrl: config.benefitsReferenceDataBaseUrl,
     path: "/disabilities",
     schema: disabilityReferenceSchema,

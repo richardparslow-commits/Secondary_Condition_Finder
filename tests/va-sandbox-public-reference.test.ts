@@ -9,7 +9,8 @@ import {
 
 const config: VaSandboxConfig = {
   enabled: true,
-  apiKey: "sandbox-test-key",
+  formsApiKey: "forms-sandbox-test-key",
+  benefitsReferenceDataApiKey: "reference-sandbox-test-key",
   formsBaseUrl: "https://sandbox-api.va.gov/services/va_forms/v0",
   benefitsReferenceDataBaseUrl:
     "https://sandbox-api.va.gov/services/benefits-reference-data/v1",
@@ -22,10 +23,11 @@ afterEach(() => {
 });
 
 describe("Phase 2 public-reference VA sandbox adapters", () => {
-  it("loads sandbox configuration from server-side environment variables", () => {
+  it("loads service-specific sandbox configuration from server-side environment variables", () => {
     const loaded = loadVaSandboxConfig({
       VA_SANDBOX_ENABLED: "true",
-      VA_SANDBOX_API_KEY: " key-from-env ",
+      VA_FORMS_SANDBOX_API_KEY: " forms-key-from-env ",
+      VA_BENEFITS_REFERENCE_SANDBOX_API_KEY: " reference-key-from-env ",
       VA_SANDBOX_TIMEOUT_MS: "2500",
       VA_FORMS_SANDBOX_BASE_URL: "https://example.test/forms/v0",
       VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL: "https://example.test/reference/v1",
@@ -33,7 +35,8 @@ describe("Phase 2 public-reference VA sandbox adapters", () => {
 
     expect(loaded).toEqual({
       enabled: true,
-      apiKey: "key-from-env",
+      formsApiKey: "forms-key-from-env",
+      benefitsReferenceDataApiKey: "reference-key-from-env",
       timeoutMs: 2500,
       formsBaseUrl: "https://example.test/forms/v0",
       benefitsReferenceDataBaseUrl: "https://example.test/reference/v1",
@@ -54,7 +57,7 @@ describe("Phase 2 public-reference VA sandbox adapters", () => {
     expect(fetchSpy).not.toHaveBeenCalled();
   });
 
-  it("uses the official apikey header and validates VA Forms responses", async () => {
+  it("uses only the VA Forms key for VA Forms requests", async () => {
     const fetchSpy = vi.fn().mockResolvedValue(
       new Response(
         JSON.stringify({
@@ -86,25 +89,24 @@ describe("Phase 2 public-reference VA sandbox adapters", () => {
     const [url, init] = fetchSpy.mock.calls[0] as [URL, RequestInit];
     expect(url.toString()).toContain("/forms?query=21-526EZ");
     expect(init.headers).toEqual(
-      expect.objectContaining({ apikey: "sandbox-test-key" }),
+      expect.objectContaining({ apikey: "forms-sandbox-test-key" }),
     );
+    expect(JSON.stringify(init.headers)).not.toContain("reference-sandbox-test-key");
     expect(JSON.stringify(init.headers)).not.toContain("Authorization");
   });
 
-  it("validates Benefits Reference Data disability responses", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        new Response(
-          JSON.stringify({
-            totalItems: 1,
-            totalPages: 1,
-            items: [{ id: 30, name: "abnormal weight loss", endDateTime: null }],
-          }),
-          { status: 200, headers: { "Content-Type": "application/json" } },
-        ),
+  it("uses only the Benefits Reference Data key for disability reference requests", async () => {
+    const fetchSpy = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          totalItems: 1,
+          totalPages: 1,
+          items: [{ id: 30, name: "abnormal weight loss", endDateTime: null }],
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
       ),
     );
+    vi.stubGlobal("fetch", fetchSpy);
 
     const result = await fetchVaDisabilityReference({ config });
 
@@ -112,6 +114,32 @@ describe("Phase 2 public-reference VA sandbox adapters", () => {
     expect(result.data?.items).toEqual([
       { id: 30, name: "abnormal weight loss", endDateTime: null },
     ]);
+    const [, init] = fetchSpy.mock.calls[0] as [URL, RequestInit];
+    expect(init.headers).toEqual(
+      expect.objectContaining({ apikey: "reference-sandbox-test-key" }),
+    );
+    expect(JSON.stringify(init.headers)).not.toContain("forms-sandbox-test-key");
+  });
+
+  it("fails closed per service when only that service key is missing", async () => {
+    const fetchSpy = vi.fn();
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const formsResult = await fetchVaForms(undefined, {
+      config: { ...config, formsApiKey: undefined },
+    });
+    expect(formsResult.success).toBe(false);
+    expect(formsResult.error).toContain("va-forms sandbox API key");
+
+    const referenceResult = await fetchVaDisabilityReference({
+      config: { ...config, benefitsReferenceDataApiKey: undefined },
+    });
+    expect(referenceResult.success).toBe(false);
+    expect(referenceResult.error).toContain(
+      "benefits-reference-data sandbox API key",
+    );
+
+    expect(fetchSpy).not.toHaveBeenCalled();
   });
 
   it("retries one transient sandbox failure and emits payload-free observations", async () => {
@@ -145,7 +173,8 @@ describe("Phase 2 public-reference VA sandbox adapters", () => {
       }),
     );
     expect(JSON.stringify(observations)).not.toContain("claim form");
-    expect(JSON.stringify(observations)).not.toContain("sandbox-test-key");
+    expect(JSON.stringify(observations)).not.toContain("forms-sandbox-test-key");
+    expect(JSON.stringify(observations)).not.toContain("reference-sandbox-test-key");
   });
 
   it("fails closed on invalid payloads and invalid non-HTTPS endpoint configuration", async () => {
