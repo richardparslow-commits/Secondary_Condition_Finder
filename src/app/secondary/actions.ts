@@ -92,7 +92,10 @@ export async function saveDiagnosedSelection(formData: FormData): Promise<void> 
 export async function saveServiceConnectedSelection(formData: FormData): Promise<void> {
   const catalog = loadConditionCatalog();
   const current = await readSecondaryWorkflowSession();
-  const diagnosedConditionIds = current.diagnosedConditionIds ?? [];
+  const knownConditionIds = new Set(catalog.map((condition) => condition.id));
+  const diagnosedConditionIds = (current.diagnosedConditionIds ?? []).filter((id) =>
+    knownConditionIds.has(id),
+  );
 
   if (diagnosedConditionIds.length === 0) {
     redirectValidation("/secondary/diagnosed", "select-diagnosed");
@@ -102,13 +105,22 @@ export async function saveServiceConnectedSelection(formData: FormData): Promise
     formData.get(`serviceConnected-${id}`),
   );
   if (answers.some((answer) => answer !== "yes" && answer !== "no")) {
+    await writeSecondaryWorkflowSession({ diagnosedConditionIds });
     redirectValidation("/secondary/service-connected", "answer-service-connected");
   }
   if (!answers.some((answer) => answer === "yes")) {
+    await writeSecondaryWorkflowSession({
+      diagnosedConditionIds,
+      serviceConnectedConditionIds: [],
+      ratingsByConditionId: {},
+    });
     redirectValidation("/secondary/service-connected", "no-service-connected");
   }
 
-  const currentParams = workflowSessionToQueryParams(current);
+  const currentParams = workflowSessionToQueryParams({
+    ...current,
+    diagnosedConditionIds,
+  });
   delete currentParams.serviceConnected;
   const parsed = parseServiceConnectedSelection(
     appendFormData(currentParams, formData),
