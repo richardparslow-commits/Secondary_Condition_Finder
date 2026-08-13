@@ -10,13 +10,15 @@ Do not submit until all blocking items are complete.
 - [x] Issue #213 is closed with non-sensitive production `/runtime-readiness` evidence proving the primary `WORKFLOW_SESSION_SECRET` is usable by the deployed runtime.
 - [ ] Latest `main` CI is green.
 - [ ] Latest Vercel production deployment for the same `main` commit is green and serving the canonical production alias.
+- [ ] Latest Production Runtime Readiness run succeeded from that same successful `main` CI lineage.
 - [ ] Final deployed-app demo rehearsal passes `docs/phase3-demo-script.md`.
 - [ ] Issue #195 is closed with recorded manual Section 508 accessibility evidence and any material findings remediated/retested.
 - [ ] Final accessibility/Section 508 evidence is reviewed and the form answer is supportable.
+- [ ] `SECURITY.md` and `docs/security-operations.md` have been reviewed against the final production architecture.
 
 ### Verified Vercel runtime checkpoint
 
-The Azure → Vercel production migration and runtime-secret gate have passed objective non-sensitive verification:
+The Azure → Vercel production migration and runtime-secret gate passed objective non-sensitive verification at the historical #213 checkpoint:
 
 - [x] Repository CI #716 succeeded on `c49fe2414d7a29c50935af91f3f3a08db933c417`.
 - [x] Vercel deployment `dpl_2bMJZhr2cCCJnrGtVQeQ2NAcGebM` reported `success` for that same commit and served `https://secondary-condition-finder.vercel.app`.
@@ -25,7 +27,7 @@ The Azure → Vercel production migration and runtime-secret gate have passed ob
 - [x] `/runtime-readiness` reported `data-runtime-readiness="ready"` and the workflow-session crypto round trip succeeded.
 - [x] Temporary response bodies were deleted and no workflow-session secret value, secret length, hash, derivative key material, cookie payload, or environment-variable value was recorded.
 
-Issue #213 is the authoritative exact-commit closure record and is complete. The production-readiness workflow continues to run after successful `main` CI so the latest production commit can be rechecked before submission; that recurring check does not reopen the completed #213 gate by itself.
+Issue #213 is the authoritative historical closure record and is complete. The production-readiness workflow continues to run after successful `main` CI so the latest production commit can be rechecked before submission; that recurring check does not reopen the completed #213 gate by itself.
 
 ## Applicant and organization information
 
@@ -94,7 +96,8 @@ Prepare a concise description covering:
 - sandbox/production credential separation;
 - no credential logging;
 - rotation on exposure/incident and according to VA/hosting requirements;
-- production workflow-session readiness is verified through a non-sensitive crypto self-test, not by exposing the secret value.
+- production workflow-session readiness is verified through a non-sensitive crypto self-test, not by exposing the secret value;
+- security reporting and incident handling follow `SECURITY.md` and `docs/security-operations.md`.
 
 For the current production host, protected runtime settings are configured in the Vercel **Production** environment and become active on a newly created production deployment.
 
@@ -106,10 +109,12 @@ State only behavior that is currently implemented and verified:
 - user disability filtering on `/va-reference` remains client-side;
 - health/disability and service-history workflow state is kept out of URLs;
 - workflow state uses short-lived encrypted/authenticated cookies;
-- recommendation event persistence is aggregate-only;
+- the legacy aggregate event-logger abstraction has no application caller and is not relied on as an active production Veteran-data store or audit trail;
 - VA adapter observations omit credentials, query values, response bodies, and workflow selections;
 - no VA public-reference response body is intentionally persisted;
-- optional medical-evidence ingestion is browser-local; raw document bytes/text are not sent to application server state, URLs, telemetry, logs, or user accounts.
+- optional medical-evidence ingestion is browser-local; raw document bytes/text are not sent to application server state, URLs, telemetry, logs, or user accounts;
+- local evidence processing is bounded by file, batch, PDF-page, extracted-text, and retained-source limits;
+- the current production CSP restricts browser network connections to the same origin and therefore does not authorize third-party Application Insights transmission.
 
 ## Security safeguards answer
 
@@ -117,13 +122,17 @@ Include:
 
 - HTTPS-only VA endpoints;
 - encrypted/authenticated workflow cookies;
-- browser security headers;
+- source-restrictive production CSP and route-wide browser security headers;
+- read-only active CI permissions and immutable action pins;
 - dependency audit and full CI gate;
+- real Chrome/ChromeDriver end-to-end validation;
 - bounded retries and timeouts;
 - payload validation and fail-closed fallback;
+- browser-local evidence resource ceilings;
 - exact-commit Vercel deployment-status verification before production runtime probing;
 - production alias convergence to the Vercel deployment associated with the exact `main` commit;
-- non-sensitive runtime verification of the primary workflow-session secret through `/runtime-readiness`.
+- non-sensitive runtime verification of the primary workflow-session secret through `/runtime-readiness`;
+- private vulnerability reporting in `SECURITY.md` and the operational response checklist in `docs/security-operations.md`.
 
 ## Unauthorized or duplicate request safeguards
 
@@ -138,21 +147,26 @@ Explain:
 
 ## Breach/incident response answer
 
-Prepare the operating sequence:
+Use `docs/security-operations.md` as the operating source. Prepare a concise answer covering:
 
-1. revoke/rotate affected credentials;
-2. disable the affected integration or contain the deployment;
-3. preserve non-sensitive diagnostic evidence;
-4. patch through the normal review and full CI gate;
-5. redeploy and verify the exact production commit;
-6. notify VA and affected parties if required by policy, contract, or law.
+1. private reporting and minimal sanitized incident records;
+2. containment of the affected feature, integration, deployment, or provider-managed credential when continued operation would increase risk;
+3. preservation of non-sensitive evidence such as commit/run/deployment identifiers rather than copying sensitive payloads;
+4. permanent remediation through a reviewed PR and the full CI gate;
+5. recovery only after exact-commit `main`, Vercel, browser-E2E, and Production Runtime Readiness evidence agree;
+6. a post-incident review covering root cause, remediation, recovery evidence, and additional controls where appropriate.
+
+Do not invent a universal notification deadline. Any notification, contractual, or legal obligation must be answered from the applicable facts, provider terms, and VA agreement/instructions.
 
 ## Vulnerability and patch management answer
 
 - [ ] Describe high-severity dependency auditing in CI.
-- [ ] Describe lint/typecheck/test/build gating.
-- [ ] Describe security fixes through reviewed PRs.
+- [ ] Describe immutable action pins and read-only active CI permissions.
+- [ ] Describe lint/typecheck/test/build/real-browser gating.
+- [ ] Describe security fixes through reviewed PRs and exact-head validation.
 - [ ] Describe post-merge Vercel production deployment verification against the exact `main` commit.
+- [ ] Describe Production Runtime Readiness from the successful main-CI lineage.
+- [ ] Confirm `SECURITY.md` and `docs/security-operations.md` match the final production architecture.
 
 ## Rate-limit answer
 
@@ -190,7 +204,8 @@ Before answering the form:
 - [ ] Data-handling statements match `/privacy` and actual implementation.
 - [ ] Legal/medical scope matches `/terms`.
 - [ ] API list matches implemented routes and `docs/va-api-access-strategy.md`.
+- [ ] Security reporting/incident/vulnerability statements match `SECURITY.md` and `docs/security-operations.md`.
 - [ ] Credentialed sandbox validation is complete and issue #189 is closed with objective sanitized success evidence.
-- [x] Production workflow-session runtime gate #213 is complete with exact-commit Vercel evidence; latest-current-main readiness is separately checked above before submission.
+- [x] Production workflow-session runtime gate #213 is complete with historical exact-commit Vercel evidence; latest-current-main readiness is separately checked above before submission.
 - [ ] No claim is made that Section 508 conformance is complete unless issue #195 is closed with objective evidence.
 - [ ] No unsupported business, accessibility, security-certification, or regulatory-compliance claim is included.
