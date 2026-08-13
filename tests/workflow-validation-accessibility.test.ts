@@ -44,8 +44,11 @@ describe("accessible workflow validation", () => {
     expect(page).toContain("required defaultChecked={hasPriorSelection && !selectedServiceConnectedIds.has(condition.id)}");
     expect(page).not.toContain("hasPriorSelection ? selectedServiceConnectedIds.has(condition.id) : true");
     expect(page).toContain('role="alert"');
+    expect(actions).toContain("knownConditionIds.has(id)");
     expect(actions).toContain("delete currentParams.serviceConnected");
     expect(actions).toContain('answer !== "yes" && answer !== "no"');
+    expect(actions).toContain("await writeSecondaryWorkflowSession({ diagnosedConditionIds });");
+    expect(actions).toContain("serviceConnectedConditionIds: [],");
     expect(actions).toContain('redirectValidation("/secondary/service-connected", "no-service-connected")');
   });
 
