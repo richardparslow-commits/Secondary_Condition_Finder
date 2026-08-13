@@ -20,32 +20,17 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUN_ID: ${{ github.event.workflow_run.id }}
         run: |
+          set -euo pipefail
           FAILED_JOBS=$(gh api \
             -H "Accept: application/vnd.github+json" \
             "/repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/jobs" \
             --jq '[.jobs[] | select(.conclusion == "failure" or .conclusion == "cancelled") | .name] | join(", ")')
           echo "failed_jobs=${FAILED_JOBS:-unknown}" >> "$GITHUB_OUTPUT"
 
-      - name: Download diagnostic logs
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RUN_ID: ${{ github.event.workflow_run.id }}
-        run: |
-          gh api \
-            -H "Accept: application/vnd.github+json" \
-            "/repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/logs" \
-            > ci-logs.zip
-          unzip -q ci-logs.zip -d ci-logs || true
-          grep -R -E -i -m 40 'error|fail|failed|failing|exception|assert| ✘ |✖' ci-logs \
-            > ci-error-excerpts.txt || true
-          if [ ! -s ci-error-excerpts.txt ]; then
-            echo "No matching error excerpt found. Open the Actions run for full logs." > ci-error-excerpts.txt
-          fi
-
-      - name: Create ClickUp task
+      - name: Create metadata-only ClickUp task
         env:
           CLICKUP_API_TOKEN: ${{ secrets.CLICKUP_API_TOKEN }}
-          CLICKUP_LIST_ID: ${{ secrets.CLICKUP_LIST_ID || '4024047935635909435' }}
+          CLICKUP_LIST_ID: ${{ secrets.CLICKUP_LIST_ID }}
           RUN: ${{ toJSON(github.event.workflow_run) }}
           FAILED_JOBS: ${{ steps.jobs.outputs.failed_jobs }}
         run: |
@@ -54,8 +39,11 @@ jobs:
             echo "Missing repository secret CLICKUP_API_TOKEN" >&2
             exit 1
           }
+          test -n "$CLICKUP_LIST_ID" || {
+            echo "Missing repository secret CLICKUP_LIST_ID" >&2
+            exit 1
+          }
 
-          RUN_ID=$(printf '%s' "$RUN" | jq -r '.id')
           CONCLUSION=$(printf '%s' "$RUN" | jq -r '.conclusion')
           BRANCH=$(printf '%s' "$RUN" | jq -r '.head_branch')
           SHA=$(printf '%s' "$RUN" | jq -r '.head_sha')
@@ -73,9 +61,7 @@ jobs:
           **Commit:** [${SHORT_SHA}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${SHA})
           **Actions run:** [Open failed run](${RUN_URL})
 
-          ## First error excerpts
-
-          $(cat ci-error-excerpts.txt)
+          Diagnostic logs and error excerpts remain in GitHub Actions and are not copied into ClickUp. Open the Actions run to inspect failure details.
 
           ## Fix protocol
 
