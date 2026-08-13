@@ -22,6 +22,10 @@ const EXPECTED_PAGE_TITLES = [
 const EXPECTED_LAYOUT_TITLES = [
   ["src/app/privacy/layout.tsx", "Privacy | Secondary Condition Finder"],
   ["src/app/secondary/layout.tsx", "Secondary Workflow | Secondary Condition Finder"],
+  ["src/app/secondary/ratings/layout.tsx", "Disability Ratings | Secondary Condition Finder"],
+  ["src/app/secondary/suggestions/layout.tsx", "Workflow Suggestions | Secondary Condition Finder"],
+  ["src/app/secondary/evidence/layout.tsx", "Evidence & Research Checklist | Secondary Condition Finder"],
+  ["src/app/presumptive/layout.tsx", "Presumptive Research | Secondary Condition Finder"],
 ] as const;
 
 describe("manual accessibility route document titles", () => {
@@ -49,11 +53,12 @@ describe("manual accessibility route document titles", () => {
       ["/secondary", "src/app/secondary/page.tsx"],
       ["/secondary/diagnosed", "src/app/secondary/diagnosed/page.tsx"],
       ["/secondary/service-connected", "src/app/secondary/service-connected/page.tsx"],
-      ["/secondary/ratings", "src/app/secondary/layout.tsx"],
+      ["/secondary/ratings", "src/app/secondary/ratings/layout.tsx"],
       ["/secondary/upload", "src/app/secondary/upload/page.tsx"],
-      ["/secondary/suggestions", "src/app/secondary/layout.tsx"],
-      ["/secondary/evidence", "src/app/secondary/layout.tsx"],
+      ["/secondary/suggestions", "src/app/secondary/suggestions/layout.tsx"],
+      ["/secondary/evidence", "src/app/secondary/evidence/layout.tsx"],
       ["/presumptive", "src/app/presumptive/page.tsx"],
+      ["/presumptive/results", "src/app/presumptive/layout.tsx"],
       ["/va-forms", "src/app/va-forms/page.tsx"],
       ["/va-reference", "src/app/va-reference/page.tsx"],
     ]);
@@ -71,6 +76,7 @@ describe("manual accessibility route document titles", () => {
       "/secondary/suggestions",
       "/secondary/evidence",
       "/presumptive",
+      "/presumptive/results",
       "/va-forms",
       "/va-reference",
     ]);
