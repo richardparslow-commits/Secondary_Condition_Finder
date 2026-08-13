@@ -1,0 +1,56 @@
+import fs from "node:fs";
+import path from "node:path";
+import { describe, expect, it } from "vitest";
+
+function read(relativePath: string): string {
+  return fs.readFileSync(path.join(process.cwd(), relativePath), "utf8");
+}
+
+describe("automation and CI egress hardening", () => {
+  it("keeps Azure preview cleanup retired and credential-free", () => {
+    const source = read(".github/workflows/azure-static-web-apps-preview-cleanup.yml");
+
+    expect(source).toContain("workflow_dispatch:");
+    expect(source).not.toContain("schedule:");
+    expect(source).not.toContain("cron:");
+    expect(source).not.toContain("AZURE_STATIC_WEB_APPS_API_TOKEN");
+    expect(source).not.toContain("Azure/static-web-apps-deploy@");
+  });
+
+  it("keeps ClickUp failure reporting metadata-only", () => {
+    const source = read(".github/workflows/ci-to-clickup.yml");
+
+    expect(source).toContain("CLICKUP_LIST_ID: ${{ secrets.CLICKUP_LIST_ID }}");
+    expect(source).toContain(
+      "Diagnostic logs and error excerpts remain in GitHub Actions and are not copied into ClickUp.",
+    );
+    expect(source).not.toContain("/logs");
+    expect(source).not.toContain("ci-logs.zip");
+    expect(source).not.toContain("ci-error-excerpts.txt");
+    expect(source).not.toContain("4024047935635909435");
+  });
+
+  it("pins CI marketplace actions to immutable commits", () => {
+    const source = read(".github/workflows/ci.yml");
+
+    expect(source).toContain(
+      "actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+    );
+    expect(source).toContain(
+      "actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+    );
+    expect(source).toContain(
+      "actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4",
+    );
+    expect(source).not.toMatch(/actions\/(?:checkout|setup-node|upload-artifact)@v\d+/);
+  });
+
+  it("keeps the credentialed Azure deploy action itself immutable-pinned", () => {
+    const source = read(".github/workflows/azure-static-web-apps-gentle-tree-04b340f0f.yml");
+
+    expect(source).toContain(
+      "Azure/static-web-apps-deploy@1a947af9992250f3bc2e68ad0754c0b0c11566c9",
+    );
+    expect(source).not.toContain("Azure/static-web-apps-deploy@v1");
+  });
+});
