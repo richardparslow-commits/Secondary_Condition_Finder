@@ -10,13 +10,14 @@ function read(relativePath: string): string {
 describe("production runtime readiness workflow", () => {
   const workflowPath = ".github/workflows/production-runtime-readiness.yml";
 
-  it("runs only after successful Azure deployments of main", () => {
+  it("runs only after successful CI on main", () => {
     const workflow = read(workflowPath);
 
     expect(workflow).toContain("workflow_run:");
-    expect(workflow).toContain("Azure Static Web Apps CI/CD");
+    expect(workflow).toContain("workflows:\n      - CI");
     expect(workflow).toContain("github.event.workflow_run.conclusion == 'success'");
     expect(workflow).toContain("github.event.workflow_run.head_branch == 'main'");
+    expect(workflow).not.toContain("Azure Static Web Apps CI/CD");
   });
 
   it("records a status-only host capability matrix", () => {
@@ -55,7 +56,9 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).toContain("Record failed runtime evidence");
     expect(workflow).toContain("Readiness request outcome:");
     expect(workflow).toContain("Readiness HTTP status:");
-    expect(workflow).toContain("The readiness response body was not printed or attached");
+    expect(workflow).toContain(
+      "Temporary response bodies are deleted and are not printed or attached",
+    );
   });
 
   it("targets the repository explicitly when recording issue evidence", () => {
