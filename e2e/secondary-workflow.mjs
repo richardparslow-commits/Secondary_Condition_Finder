@@ -240,9 +240,10 @@ async function cleanup() {
 }
 
 async function main() {
+  const nextExecutable = path.join(process.cwd(), "node_modules", ".bin", "next");
   const nextServer = logProcess(
     "next",
-    spawn("npm", ["run", "dev", "--", "-H", "127.0.0.1", "-p", String(APP_PORT)], {
+    spawn(nextExecutable, ["dev", "-H", "127.0.0.1", "-p", String(APP_PORT)], {
       env: {
         ...process.env,
         WORKFLOW_SESSION_SECRET,
