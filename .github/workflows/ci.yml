@@ -91,6 +91,13 @@ jobs:
           npm run build 2>&1 | tee ci-build.log
         continue-on-error: true
         id: build
+      - name: Run real-browser E2E workflow
+        if: steps.build.outcome == 'success'
+        run: |
+          set -o pipefail
+          node e2e/secondary-workflow.mjs 2>&1 | tee ci-e2e.log
+        continue-on-error: true
+        id: e2e
       - name: Collect diagnostic summary
         if: always()
         id: diagnostics
@@ -112,9 +119,10 @@ jobs:
             echo "- test: ${{ steps.test.outcome }}"
             echo "- test flaky: ${{ steps.test.outputs.flaky }}"
             echo "- build: ${{ steps.build.outcome }}"
+            echo "- browser-e2e: ${{ steps.e2e.outcome }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-install.log ci-audit.log ci-citations.log ci-kb-validate.log ci-lint.log ci-typecheck.log ci-test.log ci-test-attempt-1.log ci-test-attempt-2.log ci-build.log; do
+            for log in ci-install.log ci-audit.log ci-citations.log ci-kb-validate.log ci-lint.log ci-typecheck.log ci-test.log ci-test-attempt-1.log ci-test-attempt-2.log ci-build.log ci-e2e.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
@@ -135,7 +143,7 @@ jobs:
       - name: Fail the job if any gate failed
         if: always()
         run: |
-          if [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ]; then
+          if [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ]; then
             echo "One or more CI gates failed. See the diagnostic summary and artifact."
             exit 1
           fi

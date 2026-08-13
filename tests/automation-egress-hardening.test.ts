@@ -52,4 +52,17 @@ describe("automation and CI hardening", () => {
     );
     expect(source).not.toMatch(/actions\/(?:checkout|setup-node|upload-artifact)@v\d+/);
   });
+
+  it("keeps a real Chrome browser journey in the CI gate", () => {
+    const workflow = read(".github/workflows/ci.yml");
+    const browserJourney = read("e2e/secondary-workflow.mjs");
+
+    expect(workflow).toContain("Run real-browser E2E workflow");
+    expect(workflow).toContain("node e2e/secondary-workflow.mjs");
+    expect(workflow).toContain("steps.e2e.outcome");
+    expect(workflow).toContain("ci-e2e.log");
+    expect(browserJourney).toContain('browserName: "chrome"');
+    expect(browserJourney).toContain("chromedriver");
+    expect(browserJourney).toContain("/session/${sessionId}/element");
+  });
 });
