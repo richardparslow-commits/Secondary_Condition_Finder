@@ -55,7 +55,6 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/**": ["./data/**/*.json"],
   },
-  serverExternalPackages: ["better-sqlite3"],
   async headers() {
     return [
       {

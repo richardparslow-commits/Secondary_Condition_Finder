@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@microsoft/applicationinsights-web": "^3.4.3",
-    "better-sqlite3": "^13.0.1",
     "mammoth": "1.12.1",
     "next": "16.3.0",
     "pdfjs-dist": "6.2.108",
@@ -36,11 +35,10 @@
     "@eslint/config-array": ">=0.23.5",
     "postcss": ">=8.5.18",
     "js-yaml": "4.3.1",
-    "nanoid": "3.3.17"
+    "nanoid": "3.3.18"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -52,7 +50,6 @@
     "vitest": "^4.1.10"
   },
   "allowScripts": {
-    "better-sqlite3@13.0.1": true,
     "sharp@0.35.0": true,
     "unrs-resolver@1.12.2": true
   }

@@ -32,7 +32,7 @@ points for review, not as independently verified authority.
 
 Next.js (App Router), TypeScript, Tailwind, Zod, Vitest. The knowledge base is
 JSON in version control so every change to a condition mapping or a citation
-arrives as a reviewable diff. SQLite can back local aggregate event metrics.
+arrives as a reviewable diff.
 
 ## Getting started
 
@@ -65,7 +65,6 @@ React hydrates, which can cause this warning even when app markup is stable.
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
-| `EVENT_LOG_SQLITE_PATH` | unset | Path to a SQLite file for aggregate recommendation event metrics. When unset, aggregate events are written as structured stdout lines instead. |
 | `WORKFLOW_SESSION_SECRET` | development-only fallback outside production | Preferred server-only secret used to encrypt and authenticate secondary and presumptive workflow cookies with AES-256-GCM. Production requires at least 32 characters and fails closed if it is missing or too short. |
 | `SECONDARY_WORKFLOW_SESSION_SECRET` | unset | Backward-compatible fallback for deployments created during the secondary-workflow privacy migration. Prefer `WORKFLOW_SESSION_SECRET` for new deployments. |
 
@@ -85,7 +84,6 @@ src/lib/catalog/       Zod schema, loader, lookup. Condition identity.
 src/lib/kb/            Zod schema, loader, mapping helpers
 src/lib/engine/        Pure recommendation logic, no I/O
 src/lib/presumptive/   Zod schema, loader, service-history matcher/session
-src/lib/log/           Aggregate event logging behind an EventLogger interface
 src/app/               App Router pages
 src/components/        Presentational components
 tests/                 Vitest
@@ -159,6 +157,4 @@ rating choices, or document-checklist state in URLs. The presumptive workflow
 does not place selected service locations or service dates in URLs. Both use
 short-lived workflow cookies that are encrypted and authenticated before being
 sent to the browser. Application Insights is configured for path-only page
-views with automatic route/AJAX/fetch tracking disabled. Recommendation event
-logs retain aggregate counts only; they do not persist condition identifiers,
-diagnoses, symptoms, medications, exposures, or intake free text.
+views with automatic route/AJAX/fetch tracking disabled.

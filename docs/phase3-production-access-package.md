@@ -86,7 +86,7 @@ Local analysis is bounded to 20 MB per file, 10 selected files and 50 MB per bat
 
 ### Application logging
 
-The repository contains a legacy aggregate event-logger abstraction, but repository code search shows no application caller and production does not rely on it as an active Veteran-data store, audit trail, or recommendation-history datastore. Do not describe dormant logger code as active production persistence.
+The current application does not persist workflow or recommendation event history through an application event logger. Any future persistent telemetry or event-history storage requires a separately reviewed privacy/security change before it is enabled.
 
 VA adapter observations are limited to operational metadata such as request ID, service, endpoint path, attempt, outcome/status, and duration. API keys, request query values, response bodies, and workflow selections are excluded from adapter observations.
 
@@ -99,7 +99,7 @@ The application contains an optional Application Insights initializer that disab
 - Workflow cookies expire after 30 minutes and are rejected if modified or invalid.
 - Browser-local evidence excerpts are temporary and tab-scoped; raw selected document bytes/text are not intentionally persisted by the application.
 - The current public-reference API integrations do not create a server-side Veteran profile or persistent Veteran-specific API record.
-- The legacy event-logger abstraction is not relied on as an active production datastore.
+- The current application does not persist workflow or recommendation event history through an application event logger.
 - No VA API response body is intentionally persisted by the public-reference adapter.
 
 ## Credential handling

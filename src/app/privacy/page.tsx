@@ -36,7 +36,7 @@ export default function PrivacyPage() {
           The application contains an optional Application Insights client initializer. Automatic route, AJAX, and fetch tracking are disabled in that initializer, and query strings and fragments are stripped from telemetry URLs. The current production Content Security Policy restricts browser network connections to the application&apos;s own origin, so the current production browser policy does not authorize third-party Application Insights network transmission.
         </p>
         <p>
-          The repository also contains a legacy aggregate event-logger abstraction, but it has no application caller and is not relied on as an active production data store. The application must not represent that dormant logger as a Veteran record, claims record, audit trail, or VA submission history. Any future persistent telemetry or logging integration requires a separately reviewed privacy and security change.
+          The current application does not persist workflow or recommendation event history through an application event logger. Any future persistent telemetry or logging integration requires a separately reviewed privacy and security change before it is enabled.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">4. Optional browser-local evidence review</h2>
@@ -74,7 +74,7 @@ export default function PrivacyPage() {
           <li>Encrypted workflow cookies expire after 30 minutes and can also be cleared by the workflow completion controls.</li>
           <li>Local evidence excerpts and evidence-gap checkmarks use browser session storage scoped to the current tab and can be cleared from the workflow.</li>
           <li>The local evidence feature does not create a server-side medical-record store or user account.</li>
-          <li>No active application path relies on the repository&apos;s legacy SQLite event logger as a production data store.</li>
+          <li>The current application does not persist workflow or recommendation event history through an application event logger.</li>
         </ul>
 
         <h2 className="text-xl font-semibold mt-6">8. Policy changes</h2>

@@ -19,7 +19,7 @@ Current boundaries include:
 - VA sandbox integration is disabled by default;
 - the current application does not connect to an individual Veteran's VA account or submit a disability claim;
 - production browser connectivity is constrained by the deployed Content Security Policy;
-- the legacy event-logger abstraction has no application caller and is not relied on as a production audit or Veteran-data store.
+- no application event-persistence backend is used for workflow or recommendation history.
 
 A material change to these boundaries requires corresponding privacy/security review.
 
