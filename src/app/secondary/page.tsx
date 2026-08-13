@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DisclaimerBanner } from "@/components/Disclaimer";
@@ -9,6 +10,10 @@ import {
 } from "@/lib/legal/phrases";
 import { SECONDARY_AGGRAVATED_BY_TITLE, SECONDARY_CAUSED_BY_TITLE } from "@/lib/legal/secondary-title";
 import { CANONICAL_REFERENCES } from "@/lib/legal/references";
+
+export const metadata: Metadata = {
+  title: "Secondary Workflow | Secondary Condition Finder",
+};
 
 export default function SecondaryLandingPage() {
   return (

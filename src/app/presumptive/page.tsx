@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { ServiceHistoryForm } from "@/components/ServiceHistoryForm";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { listLocations } from "@/lib/presumptive/match";
+
+export const metadata: Metadata = {
+  title: "Presumptive Research | Secondary Condition Finder",
+};
 
 export default function PresumptivePage() {
   const locations = listLocations(loadExposureCatalog());

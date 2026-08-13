@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { loadClaimFormReference } from "@/lib/va/form-reference";
+
+export const metadata: Metadata = {
+  title: "VA Form Reference | Secondary Condition Finder",
+};
 
 export const dynamic = "force-dynamic";
 

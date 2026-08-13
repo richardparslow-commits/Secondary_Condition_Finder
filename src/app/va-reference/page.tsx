@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { DisabilityReferenceExplorer } from "@/components/va/DisabilityReferenceExplorer";
 import { loadDisabilityReference } from "@/lib/va/disability-reference";
+
+export const metadata: Metadata = {
+  title: "Disability Reference | Secondary Condition Finder",
+};
 
 export const dynamic = "force-dynamic";
 
