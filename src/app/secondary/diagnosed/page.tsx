@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
@@ -6,6 +7,10 @@ import { loadKnowledgeBase } from "@/lib/kb/load";
 import { mappedConditionIds } from "@/lib/kb/lookup";
 import { readSecondaryWorkflowSession } from "@/lib/secondary-workflow/session";
 import { saveDiagnosedSelection } from "../actions";
+
+export const metadata: Metadata = {
+  title: "Diagnosed Conditions | Secondary Condition Finder",
+};
 
 export const dynamic = "force-dynamic";
 const DATABASE_MAPPED_EXPLANATION =
