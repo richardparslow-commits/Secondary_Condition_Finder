@@ -9,10 +9,22 @@ Do not submit until all blocking items are complete.
 - [ ] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence for VA Forms and Benefits Reference Data.
 - [ ] Issue #213 is closed with non-sensitive production `/runtime-readiness` evidence proving the primary `WORKFLOW_SESSION_SECRET` is usable by the deployed runtime.
 - [ ] Latest `main` CI is green.
-- [ ] Latest Azure deployment for the same `main` commit is green.
+- [ ] Latest Vercel production deployment for the same `main` commit is green and serving the canonical production alias.
 - [ ] Final deployed-app demo rehearsal passes `docs/phase3-demo-script.md`.
 - [ ] Issue #195 is closed with recorded manual Section 508 accessibility evidence and any material findings remediated/retested.
 - [ ] Final accessibility/Section 508 evidence is reviewed and the form answer is supportable.
+
+### Verified Vercel runtime checkpoint
+
+The production-host migration has passed an objective non-sensitive runtime checkpoint before this finalization change:
+
+- [x] Repository CI #712 succeeded on `6ed2da05f2ef7259acc5617968480f3ecbaf2ada`.
+- [x] Vercel deployment `dpl_CbkyoQKxbFaDbivGEv3jiSztsm2M` reached `READY` on that same commit and served `https://secondary-condition-finder.vercel.app`.
+- [x] `/`, `/about`, `/va-forms`, and `/runtime-readiness` returned HTTP 200.
+- [x] `/runtime-readiness` reported the high-level marker `data-runtime-readiness="ready"`.
+- [x] No workflow-session secret value or derivative key material was recorded in the verification evidence.
+
+Issue #213 remains the authoritative exact-commit closure record. The production-readiness workflow must re-run successfully on the final `main` commit after the Vercel finalization change before submission.
 
 ## Applicant and organization information
 
@@ -83,6 +95,8 @@ Prepare a concise description covering:
 - rotation on exposure/incident and according to VA/hosting requirements;
 - production workflow-session readiness is verified through a non-sensitive crypto self-test, not by exposing the secret value.
 
+For the current production host, protected runtime settings are configured in the Vercel **Production** environment and become active on a newly created production deployment.
+
 ## PII/PHI and data handling answer
 
 State only behavior that is currently implemented and verified:
@@ -106,8 +120,8 @@ Include:
 - dependency audit and full CI gate;
 - bounded retries and timeouts;
 - payload validation and fail-closed fallback;
-- pinned Azure deployment action;
-- production deployment verification on the exact `main` commit;
+- exact-commit Vercel deployment-status verification before production runtime probing;
+- production alias convergence to the Vercel deployment associated with the exact `main` commit;
 - non-sensitive runtime verification of the primary workflow-session secret through `/runtime-readiness`.
 
 ## Unauthorized or duplicate request safeguards
@@ -137,7 +151,7 @@ Prepare the operating sequence:
 - [ ] Describe high-severity dependency auditing in CI.
 - [ ] Describe lint/typecheck/test/build gating.
 - [ ] Describe security fixes through reviewed PRs.
-- [ ] Describe post-merge production deployment verification.
+- [ ] Describe post-merge Vercel production deployment verification against the exact `main` commit.
 
 ## Rate-limit answer
 
@@ -176,6 +190,6 @@ Before answering the form:
 - [ ] Legal/medical scope matches `/terms`.
 - [ ] API list matches implemented routes and `docs/va-api-access-strategy.md`.
 - [ ] Credentialed sandbox validation is complete and issue #189 is closed with objective sanitized success evidence.
-- [ ] Production workflow-session runtime validation is complete and issue #213 is closed.
+- [ ] Production workflow-session runtime validation is complete and issue #213 is closed on the exact current production `main` commit.
 - [ ] No claim is made that Section 508 conformance is complete unless issue #195 is closed with objective evidence.
 - [ ] No unsupported business, accessibility, security-certification, or regulatory-compliance claim is included.
