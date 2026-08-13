@@ -30,7 +30,7 @@ export default async function TermsPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 text-gray-900">
       <h1 className="mb-4 text-3xl font-bold">Terms of Use & Legal Disclaimers</h1>
-      <p className="mb-6 text-sm text-gray-600">Last updated: July 2026</p>
+      <p className="mb-6 text-sm text-gray-600">Last updated: August 2026</p>
 
       <section className="space-y-4 text-sm leading-relaxed">
         <div className="rounded border-l-4 border-amber-600 bg-amber-50 p-4">
@@ -61,6 +61,37 @@ export default async function TermsPage() {
         <h2 className="mt-6 text-xl font-semibold">3. Knowledge Base Completeness</h2>
         <p>
           The VASRD catalog contains {totalConditions} conditions across {totalBodySystems} body systems, and {publishedMappingCount} currently have published secondary mappings in this phase dataset.
+        </p>
+
+        <h2 className="mt-6 text-xl font-semibold">4. Independent Service; No VA Affiliation</h2>
+        <p>
+          The Secondary Condition Finder is an independent research aid. It is not an official U.S. Department of Veterans Affairs website, is not operated by VA, and does not speak for or bind VA. References to VA forms, regulations, manuals, programs, or APIs are provided to support research and verification, not to imply endorsement or affiliation.
+        </p>
+
+        <h2 className="mt-6 text-xl font-semibold">5. No Claim Filing, Representation, or Account Access</h2>
+        <p>
+          This phase does not file claims, submit evidence to VA, access a Veteran&apos;s VA account, represent a claimant before VA, or create an attorney-client, representative-client, or clinician-patient relationship. VA sandbox integration is disabled by default and must not be treated as live VA production connectivity.
+        </p>
+        <p>
+          Users remain responsible for deciding what, if anything, to submit through official VA channels and should use current official forms and instructions. A qualified accredited representative or clinician should be consulted when professional judgment is needed.
+        </p>
+
+        <h2 className="mt-6 text-xl font-semibold">6. User Verification Responsibility</h2>
+        <p>
+          Laws, regulations, VA manuals, forms, medical literature, and administrative procedures can change. The app&apos;s authored mappings and references are research starting points. Users should verify current source material before relying on it for a filing, medical discussion, or other consequential decision.
+        </p>
+        <p>
+          Recommendation ranking, evidence-gap text, medication/treatment text overlap, and local evidence labels are organizational aids only. They do not establish service connection, medical causation, aggravation, nexus, rating entitlement, credibility, competency, or evidentiary sufficiency for an individual claim.
+        </p>
+
+        <h2 className="mt-6 text-xl font-semibold">7. Privacy and Local Evidence Handling</h2>
+        <p>
+          Use of the application is also subject to the <Link href="/privacy" className="font-medium text-blue-700 hover:underline">Privacy Policy</Link>, which describes encrypted workflow cookies, browser-local evidence review, session-storage retention, telemetry posture, and the current VA API boundary. Users should avoid entering unrelated sensitive information and should use the minimum information needed for the research task.
+        </p>
+
+        <h2 className="mt-6 text-xl font-semibold">8. Availability and Future Integrations</h2>
+        <p>
+          Features, datasets, and integrations may change as the project is reviewed and expanded. A future VA sandbox or production API integration requires separate credential, privacy, security, and deployment review before the application may describe Veteran-specific data as being transmitted to VA. Successful local fallback behavior, automated tests, or mock responses do not prove live VA connectivity.
         </p>
       </section>
 
