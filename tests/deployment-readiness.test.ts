@@ -116,18 +116,26 @@ describe("production deployment readiness", () => {
     expect(workflow).not.toContain("NEXT_PUBLIC_VA_SANDBOX_API_KEY");
   });
 
-  it("completes the standalone package before Azure Static Web Apps deploys it", () => {
+  it("keeps normal builds Vercel-native and standalone packaging Azure-only", () => {
     const workflow = read(
       ".github/workflows/azure-static-web-apps-gentle-tree-04b340f0f.yml",
     );
     const packageJson = JSON.parse(read("package.json")) as {
       scripts?: Record<string, string>;
     };
+    const nextConfig = read("next.config.ts");
     const packagingScript = read("scripts/package-next-standalone.mjs");
 
+    expect(packageJson.scripts?.build).toBe("next build");
+    expect(nextConfig).toContain(
+      'const isAzureStaticWebAppsBuild = process.env.AZURE_STATIC_WEB_APPS_BUILD === "1"',
+    );
+    expect(nextConfig).toContain(
+      '...(isAzureStaticWebAppsBuild ? { output: "standalone" as const } : {})',
+    );
     expect(workflow).toContain('app_build_command: "npm run build:azure"');
     expect(packageJson.scripts?.["build:azure"]).toBe(
-      "next build && node scripts/package-next-standalone.mjs",
+      "AZURE_STATIC_WEB_APPS_BUILD=1 next build && node scripts/package-next-standalone.mjs",
     );
     expect(packagingScript).toContain('path.join(root, ".next", "standalone")');
     expect(packagingScript).toContain('path.join(root, ".next", "static")');
