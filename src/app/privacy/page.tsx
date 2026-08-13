@@ -33,7 +33,7 @@ export default function PrivacyPage() {
 
         <h2 className="text-xl font-semibold mt-6">3. Browser telemetry and operational logging</h2>
         <p>
-          The application contains an optional Application Insights client initializer. When configured, that initializer disables automatic route, AJAX, and fetch tracking and strips query strings and fragments from telemetry URLs. The current production Content Security Policy restricts browser network connections to the application&apos;s own origin, so the current production browser policy does not authorize third-party Application Insights network transmission.
+          The application contains an optional Application Insights client initializer. Automatic route, AJAX, and fetch tracking are disabled in that initializer, and query strings and fragments are stripped from telemetry URLs. The current production Content Security Policy restricts browser network connections to the application&apos;s own origin, so the current production browser policy does not authorize third-party Application Insights network transmission.
         </p>
         <p>
           The repository also contains a legacy aggregate event-logger abstraction, but it has no application caller and is not relied on as an active production data store. The application must not represent that dormant logger as a Veteran record, claims record, audit trail, or VA submission history. Any future persistent telemetry or logging integration requires a separately reviewed privacy and security change.
