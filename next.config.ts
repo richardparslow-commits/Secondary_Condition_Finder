@@ -18,11 +18,13 @@ const securityHeaders = [
   },
 ];
 
+const isAzureStaticWebAppsBuild = process.env.AZURE_STATIC_WEB_APPS_BUILD === "1";
+
 const nextConfig: NextConfig = {
-  output: "standalone",
+  ...(isAzureStaticWebAppsBuild ? { output: "standalone" as const } : {}),
   reactStrictMode: true,
-  // The knowledge base is read from disk at runtime, so it must be traced into
-  // the standalone output rather than bundled.
+  // The knowledge base is read from disk at runtime, so include it in server
+  // output tracing for both Vercel-native and legacy Azure standalone builds.
   outputFileTracingIncludes: {
     "/**": ["./data/**/*.json"],
   },
