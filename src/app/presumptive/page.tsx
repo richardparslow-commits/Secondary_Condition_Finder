@@ -6,12 +6,31 @@ import { ServiceHistoryForm } from "@/components/ServiceHistoryForm";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { listLocations } from "@/lib/presumptive/match";
 
+interface PresumptivePageProps {
+  searchParams?: Promise<{ error?: string | string[] }>;
+}
+
+const VALIDATION_MESSAGES = {
+  "select-location": "Select at least one location where you served.",
+  "date-order": "Service start date must be on or before the end date.",
+  "invalid-date": "Enter service dates in a valid date format or leave them blank.",
+} as const;
+
+type ValidationCode = keyof typeof VALIDATION_MESSAGES;
+
 export const metadata: Metadata = {
   title: "Presumptive Research | Secondary Condition Finder",
 };
 
-export default function PresumptivePage() {
+export default async function PresumptivePage({ searchParams }: PresumptivePageProps = {}) {
   const locations = listLocations(loadExposureCatalog());
+  const errorValue = (await searchParams)?.error;
+  const errorCode = Array.isArray(errorValue) ? errorValue[0] : errorValue;
+  const validationMessage =
+    errorCode && Object.prototype.hasOwnProperty.call(VALIDATION_MESSAGES, errorCode)
+      ? VALIDATION_MESSAGES[errorCode as ValidationCode]
+      : null;
+  const validationId = validationMessage ? "presumptive-validation-error" : undefined;
 
   return (
     <main>
@@ -22,6 +41,12 @@ export default function PresumptivePage() {
       </header>
 
       <div className="mb-5"><Link href="/" className="ui-button-secondary">← Back to Home</Link></div>
+
+      {validationMessage && (
+        <div id={validationId} role="alert" className="ui-callout mb-5 text-sm">
+          <strong>Check the service history form:</strong> {validationMessage}
+        </div>
+      )}
 
       <div className="ui-grid">
         <aside className="ui-stack">
@@ -38,7 +63,9 @@ export default function PresumptivePage() {
         <section className="ui-card">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><h2 className="text-2xl font-bold">Presumptive Service Connection</h2><p className="text-sm text-slate-600">Enter service history without putting it in the URL.</p></div></div>
           <p className="mb-5">For some conditions, VA presumes a relationship to service when specific legal criteria are met. This track is separate from secondary service connection, which concerns one disability causing or aggravating another.</p>
-          <ServiceHistoryForm locations={locations} />
+          <div role="group" aria-describedby={validationId}>
+            <ServiceHistoryForm locations={locations} />
+          </div>
         </section>
 
         <aside className="ui-stack">
