@@ -76,7 +76,7 @@ async function createSession() {
       alwaysMatch: {
         browserName: "chrome",
         "goog:chromeOptions": {
-          args: ["--headless=new", "--no-sandbox", "--disable-dev-shm-usage", "--window-size=1440,1200"],
+          args: ["--headless=new", "--no-sandbox", "--disable-dev-shm-usage", "--window-size=390,844"],
         },
       },
     },
@@ -153,6 +153,20 @@ async function setInputValue(xpath, value) {
   if (actual !== value) throw new Error(`Expected input value ${value}, received ${actual}`);
 }
 
+async function setSelectValue(elementId, value) {
+  const actual = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: `
+      const select = arguments[0];
+      select.value = arguments[1];
+      select.dispatchEvent(new Event('input', { bubbles: true }));
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      return select.value;
+    `,
+    args: [{ [ELEMENT_KEY]: elementId }, value],
+  });
+  if (actual !== value) throw new Error(`Expected select value ${value}, received ${actual}`);
+}
+
 async function currentUrl() {
   return new URL(await webdriver("GET", `/session/${sessionId}/url`));
 }
@@ -212,6 +226,22 @@ async function runJourney() {
   await waitForAlertContaining("needs at least one condition already recognized as service connected");
   await expectStaticErrorUrl("/secondary/service-connected", "no-service-connected");
 
+  const yesAnswersAfterError = await findAllByXpath("//input[starts-with(@name, 'serviceConnected-') and @value='yes']");
+  if (yesAnswersAfterError.length < 1) throw new Error("Expected a service-connected Yes choice after validation.");
+  await clickElement(yesAnswersAfterError[0]);
+  await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 3')]");
+  await waitForPath("/secondary/ratings");
+
+  await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 4')]");
+  await waitForAlertContaining("Choose a current rating or I prefer not to answer for every service-connected condition.");
+  await expectStaticErrorUrl("/secondary/ratings", "select-rating");
+
+  const ratingSelects = await findAllByXpath("//select[starts-with(@name, 'rating-')]");
+  if (ratingSelects.length < 1) throw new Error("Expected at least one rating choice on Step 3.");
+  for (const select of ratingSelects) await setSelectValue(select, "decline");
+  await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 4')]");
+  await waitForPath("/secondary/upload");
+
   await webdriver("POST", `/session/${sessionId}/url`, { url: `${APP_BASE_URL}/presumptive` });
   await waitForPath("/presumptive");
   await clickXpath("(//input[@name='location' and @type='checkbox'])[1]");
@@ -221,7 +251,7 @@ async function runJourney() {
   await waitForAlertContaining("Service start date must be on or before the end date.");
   await expectStaticErrorUrl("/presumptive", "date-order");
 
-  console.log("Validation E2E passed: accessible alerts, neutral explicit answers, and static-error privacy URLs.");
+  console.log("Validation E2E passed at mobile viewport: accessible alerts, Step 3 progression, neutral explicit answers, and static-error privacy URLs.");
 }
 
 async function cleanup() {
