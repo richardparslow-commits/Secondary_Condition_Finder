@@ -4,40 +4,35 @@ This runbook covers the production controls required after the Phase 2 privacy a
 
 ## Current host
 
-The repository deploys `main` to Azure Static Web Apps as a hybrid Next.js application. The deployment pipeline builds the standalone Next.js backend and Azure hosts dynamic routes on its managed backend runtime.
+Production is hosted on the Vercel Pro project `secondary-condition-finder` and deploys from GitHub `main` through the Vercel Git integration.
 
-## Current Azure resource-level blocker
+Canonical production URL:
 
-The repository build/package path has been exercised through the production Azure pipeline and is no longer the leading explanation for the current whole-site 404 state.
+- `https://secondary-condition-finder.vercel.app`
 
-Current objective checkpoint on `main`:
+The normal production build is the repository's standard `npm run build` / `next build` path. Vercel provides the Next.js runtime directly; the repository does not force Next.js standalone output for normal builds.
 
-- Production commit: `8b98a05ff92cf476c51600885d1360d33d09e1d4`.
-- Repository CI #707 completed successfully on that exact commit.
-- Azure Static Web Apps deployment #456 completed successfully on that exact commit.
-- The #456 Azure/Oryx log confirms that the workflow used `npm run build:azure`, Next.js built successfully, `.next/static` and `public` were copied into `.next/standalone`, Azure detected the standalone folder, repackaged the Next.js backend, uploaded the artifacts, and reported deployment success.
-- The same Azure deployment log explicitly reported `https://gentle-tree-04b340f0f.7.azurestaticapps.net` as the deployed site URL.
-- Production Runtime Readiness #70 (run `31625779916`) then probed that exact hostname and received HTTP 404 for `/`, `/about`, `/va-forms`, and `/runtime-readiness`.
+The former Azure Static Web Apps workflow remains only as an explicitly manual legacy fallback. It no longer deploys automatically on pushes or pull requests.
 
-This rules out a stale or mismatched production hostname in the repository readiness workflow. The current evidence still does **not** establish that `WORKFLOW_SESSION_SECRET` is missing or invalid because the production readiness page is not being reached, so the real workflow-session crypto path has not run.
+## Verified Vercel production runtime checkpoint
 
-The repository's Azure deployment workflow authenticates only with the Azure Static Web Apps deployment token plus the GitHub token used for repository integration. It does not use `azure/login`, a service principal, subscription credentials, tenant credentials, or other Azure resource-management authentication. A deployment token is sufficient to publish the application but does not prove or expose the current Azure resource application settings. Resource/application-setting inspection therefore requires the Azure portal or an Azure CLI session authenticated to the owning Azure subscription/resource.
+Objective pre-finalization production evidence on `main`:
 
-Before making another repository framework/package change, inspect the Azure resource boundary:
+- Production commit: `6ed2da05f2ef7259acc5617968480f3ecbaf2ada`.
+- Repository CI #712 completed successfully on that exact commit.
+- Vercel production redeploy `dpl_CbkyoQKxbFaDbivGEv3jiSztsm2M` reached `READY` on that same commit.
+- The canonical production alias serves that Vercel deployment.
+- Production route matrix: `/=200`, `/about=200`, `/va-forms=200`, `/runtime-readiness=200`.
+- `/runtime-readiness` rendered `data-runtime-readiness="ready"`.
+- Vercel runtime logs for the verification window showed ordinary route/status metadata for the checked routes and did not expose the workflow-session secret or derivative key material.
 
-1. In the Azure portal, open the Static Web App associated with this deployment and confirm its displayed default hostname is `gentle-tree-04b340f0f.7.azurestaticapps.net`.
-2. Confirm the production environment/deployment shows commit `8b98a05ff92cf476c51600885d1360d33d09e1d4` as the active production deployment.
-3. Under **Environment variables / application settings**, verify that the production environment contains a setting named `WORKFLOW_SESSION_SECRET`. Do not copy, print, or record its value.
-4. Use **Diagnose and solve problems** and, where available, Application Insights **Failures** to inspect backend/runtime errors produced by requests to `/` and `/runtime-readiness`.
-5. If Azure identifies the exact commit above as the active production deployment while the resource's own default hostname still returns 404 for all routes, escalate as an Azure Static Web Apps hybrid-runtime/resource issue using Azure deployment #456 and Production Runtime Readiness #70 as the non-sensitive evidence set.
+This proves that the production Vercel runtime can access and use a valid primary `WORKFLOW_SESSION_SECRET` through the application's real AES-256-GCM workflow-session crypto path. It does not authorize disclosure of the secret and does not prove unrelated settings.
 
-Issue #213 must remain open until the real production `/runtime-readiness` request returns HTTP 200 with the high-level `ready` marker.
+Issue #213 remains the exact-commit evidence record. The repository readiness workflow must re-verify the final `main` commit after this production-host finalization change before the issue is treated as complete.
 
-Do not switch this application to static HTML export merely to bypass the blocker: the current product uses dynamic/server-rendered routes and server-side workflow-session crypto. Do not downgrade Next.js without objective compatibility evidence.
+## Required Vercel runtime setting
 
-## Required Azure runtime setting
-
-Configure the following in the **production environment variables / application settings** for the Azure Static Web Apps resource:
+Configure production runtime settings in the Vercel project's **Production** environment. Do not place these values in source control or expose them through `NEXT_PUBLIC_*` variables.
 
 | Setting | Required | Value / behavior |
 |---|---:|---|
@@ -45,18 +40,18 @@ Configure the following in the **production environment variables / application 
 | `VA_SANDBOX_ENABLED` | No | Leave unset or `false` for the default local-reference behavior. Set to `true` only when intentionally testing the public-reference VA sandbox integration. |
 | `VA_SANDBOX_API_KEY` | Only when sandbox is enabled | Server-only VA sandbox API key. Never expose through a `NEXT_PUBLIC_*` variable. |
 | `VA_SANDBOX_TIMEOUT_MS` | No | Optional per-attempt timeout. Defaults to 4000 ms. |
-| `VA_FORMS_SANDBOX_BASE_URL` | No | Optional HTTPS override for VA Forms sandbox endpoint root. |
-| `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL` | No | Optional HTTPS override for Benefits Reference Data sandbox endpoint root. |
+| `VA_FORMS_SANDBOX_BASE_URL` | No | Optional HTTPS override for the VA Forms sandbox endpoint root. |
+| `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL` | No | Optional HTTPS override for the Benefits Reference Data sandbox endpoint root. |
 
-`SECONDARY_WORKFLOW_SESSION_SECRET` remains a backward-compatible fallback only. New deployments should configure `WORKFLOW_SESSION_SECRET`.
+`SECONDARY_WORKFLOW_SESSION_SECRET` remains a backward-compatible fallback only. New deployments must configure `WORKFLOW_SESSION_SECRET`.
 
-Azure Static Web Apps request-time environment variables are resource settings, not GitHub Actions repository secrets. The deployment-token secret in the workflow does not prove that `WORKFLOW_SESSION_SECRET` is configured in the Azure runtime.
+Vercel environment-variable changes apply to newly created deployments. After adding or rotating `WORKFLOW_SESSION_SECRET`, create a new production deployment before expecting `/runtime-readiness` to change.
 
 ## Objective runtime-secret verification
 
 Issue #213 tracks the production runtime gate for `WORKFLOW_SESSION_SECRET`.
 
-The application exposes a deliberately non-sensitive force-dynamic server-rendered page at `/runtime-readiness`. Two production deployments showed that standalone Next.js Route Handlers at this diagnostic path were not reachable through the current Azure Static Web Apps deployment, so the verification surface uses the same server-rendered page model as the application's dynamic pages instead. The page does **not** return the secret, its length, a hash, key material, cookie content, or environment-variable values.
+The application exposes a deliberately non-sensitive force-dynamic server-rendered page at `/runtime-readiness`. The page does **not** return the secret, its length, a hash, key material, cookie content, or environment-variable values.
 
 At request time, the page calls the real workflow-session crypto self-test and renders exactly one high-level marker: `data-runtime-readiness="ready"` or `data-runtime-readiness="not_ready"`. It reports `ready` only when all of the following are true:
 
@@ -66,18 +61,31 @@ At request time, the page calls the real workflow-session crypto self-test and r
 
 The page is configured with `dynamic = "force-dynamic"` and `revalidate = 0`. The legacy `SECONDARY_WORKFLOW_SESSION_SECRET` fallback is intentionally insufficient to produce the `ready` marker.
 
-### Evidence to record
+### Automated evidence contract
 
-After deploying the intended `main` commit:
+`.github/workflows/production-runtime-readiness.yml` is triggered after a successful repository `CI` workflow on `main`. It:
 
-1. confirm repository CI is green for that exact commit;
-2. confirm the Azure Static Web Apps deployment is green for the same commit;
-3. request the production `/runtime-readiness` page;
-4. require HTTP 200 and the `data-runtime-readiness="ready"` marker;
-5. record only timestamp, deployed commit, production URL, HTTP status, and the high-level readiness result in issue #213;
-6. never paste, print, log, attach, or otherwise record the response body or secret value.
+1. resolves the exact successful CI commit;
+2. waits for the GitHub commit status context `Vercel` to report `success` for that same SHA;
+3. derives the Vercel deployment identifier from that exact-commit status;
+4. waits for the canonical production alias to serve that same Vercel deployment before probing readiness;
+5. records HTTP status only for `/`, `/about`, and `/va-forms`;
+6. requests `/runtime-readiness` into a temporary private file and requires HTTP 200 plus `data-runtime-readiness="ready"`;
+7. deletes temporary response bodies and never prints or attaches them;
+8. records only non-sensitive evidence in issue #213 and closes the issue only on a successful ready result.
 
-A successful runtime self-test proves that the current production process can access and use a valid primary workflow-session secret. It does not authorize disclosure of that secret or prove unrelated Azure settings.
+The workflow also supports a manual `workflow_dispatch` verification when an exact commit needs to be rechecked deliberately.
+
+### Evidence that may be recorded
+
+- UTC timestamp;
+- exact deployed commit;
+- canonical production URL;
+- Vercel deployment identifier and high-level commit-status result;
+- route HTTP status codes;
+- high-level runtime readiness result.
+
+Never paste, print, log, attach, or otherwise record the secret value, secret length, hashes, derived key material, cookie payloads, or environment-variable values.
 
 ## Build-time public telemetry setting
 
@@ -97,7 +105,7 @@ Do not place health, disability, service-history, VA API credentials, or workflo
 
 ## Browser security baseline
 
-The Next.js application now emits the following headers on all routes:
+The Next.js application emits the following headers on all routes:
 
 - `Content-Security-Policy` restricting objects, base URI, framing, and form targets
 - `Referrer-Policy: no-referrer`
@@ -110,25 +118,41 @@ The CSP is deliberately conservative for the first enforcement pass: it protects
 
 ## Runtime and pipeline reproducibility
 
-- `package.json` declares Node `22.x`, matching the CI and Azure hybrid runtime currently used by this repository.
-- The Azure deploy action is pinned to its exact reviewed commit SHA.
-- `actions/checkout@v6` avoids the deprecated Node runtime warning emitted by the prior checkout version.
-- Next.js anonymous build telemetry is disabled in the Azure deployment build.
+- `package.json` declares Node `22.x`; Vercel honors the repository engine declaration for builds.
+- Normal `npm run build` is Vercel-native and does not force `output: "standalone"`.
+- The legacy `npm run build:azure` command explicitly sets `AZURE_STATIC_WEB_APPS_BUILD=1` and retains standalone packaging only for manual Azure fallback use.
+- The legacy Azure deployment action remains pinned to its reviewed commit SHA but is no longer an automatic production path.
+- Repository CI remains the code-quality gate before the automated Vercel production-readiness check.
+
+## Legacy Azure manual fallback
+
+`.github/workflows/azure-static-web-apps-gentle-tree-04b340f0f.yml` is retained for historical/manual fallback only.
+
+- It has no `push` or `pull_request` trigger.
+- A manual operator must explicitly set `deploy_legacy_azure=true` to attempt a legacy deployment.
+- The Azure-specific `build:azure` packaging path remains isolated from the standard Vercel build.
+- Azure deployment success or failure is no longer used as the production readiness signal for Phase 3.
+
+Do not switch this application to static HTML export merely to simplify hosting: the product uses dynamic/server-rendered routes and server-side workflow-session crypto.
 
 ## Production verification checklist
 
 After every production deployment:
 
-1. Confirm the Azure deployment workflow succeeded.
-2. Confirm the normal repository CI workflow succeeded on the same `main` commit.
-3. Request `/runtime-readiness` and require HTTP 200 plus `data-runtime-readiness="ready"` before treating the workflow-session runtime as configured.
-4. Open `/` and verify the home page renders.
-5. Open `/va-forms` with sandbox disabled and verify it renders `Local reference` without an error.
-6. Start the secondary workflow and verify advancing from the diagnosed-condition step succeeds.
-7. Start the presumptive workflow and verify submitting service history reaches `/presumptive/results` without placing locations or dates in the URL.
-8. Inspect response headers and confirm the browser security baseline is present.
-9. If sandbox mode is intentionally enabled, confirm `/va-forms` either shows `VA sandbox reference` or safely falls back to `Local reference`; never treat sandbox data as current production VA data.
+1. Confirm the normal repository CI workflow succeeded on the exact `main` commit.
+2. Confirm the Vercel `success` commit status corresponds to that same commit.
+3. Confirm the canonical production alias serves the Vercel deployment associated with that exact commit.
+4. Request `/runtime-readiness` and require HTTP 200 plus `data-runtime-readiness="ready"` before treating the workflow-session runtime as configured.
+5. Open `/` and verify the home page renders.
+6. Open `/about` and verify the product-scope page renders.
+7. Open `/va-forms` with sandbox disabled and verify it renders `Local reference` without an error.
+8. Start the secondary workflow and verify advancing from the diagnosed-condition step succeeds.
+9. Start the presumptive workflow and verify submitting service history reaches `/presumptive/results` without placing locations or dates in the URL.
+10. Inspect response headers and confirm the browser security baseline is present.
+11. If sandbox mode is intentionally enabled, confirm `/va-forms` either shows `VA sandbox reference` or safely falls back to `Local reference`; never treat sandbox data as current production VA data.
 
 ## Known external verification boundary
 
-Repository CI can verify implementation, fail-closed behavior, configuration parsing, deployment workflow structure, standalone packaging, and the safety contract of `/runtime-readiness`. It cannot prove which Azure resource/environment currently owns the reported hostname, whether the managed hybrid backend is healthy, or the current value of Azure resource application settings. Objective production proof therefore requires a reachable production deployment, the `/runtime-readiness` self-test, and the non-sensitive result recorded in issue #213. Any intentionally enabled VA sandbox credentials remain separately governed and must never be exposed.
+Repository CI and the automated production-readiness workflow verify implementation, fail-closed behavior, the exact-commit Vercel deployment status, production alias convergence, route availability, and the non-sensitive workflow-session crypto self-test. They do not prove credentialed VA sandbox access or Section 508 conformance.
+
+Credentialed VA sandbox smoke testing remains separately governed by issue #189. Manual deployed-build accessibility/Section 508 evidence remains separately governed by issue #195. Neither gate may be inferred from successful Vercel deployment or runtime-secret readiness.
