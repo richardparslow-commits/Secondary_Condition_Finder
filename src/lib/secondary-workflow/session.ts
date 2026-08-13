@@ -7,6 +7,8 @@ import {
   workflowSessionSecret,
 } from "@/lib/workflow-session-crypto";
 import {
+  MAX_CONTEXT_ITEM_LENGTH,
+  MAX_CONTEXT_ITEMS,
   ratingFieldName,
   type QueryParams,
   type SecondaryWorkflowState,
@@ -14,7 +16,8 @@ import {
 
 const WORKFLOW_COOKIE = "secondary-workflow-v2";
 const WORKFLOW_MAX_AGE_SECONDS = 30 * 60;
-const contextEntrySchema = z.string().min(1).max(160);
+export const MAX_WORKFLOW_COOKIE_VALUE_BYTES = 3800;
+const contextEntrySchema = z.string().min(1).max(MAX_CONTEXT_ITEM_LENGTH);
 
 const storedWorkflowStateSchema = z.object({
   diagnosedConditionIds: z.array(z.string().min(1)).optional(),
@@ -23,8 +26,8 @@ const storedWorkflowStateSchema = z.object({
     .record(z.string(), z.number().int().min(0).max(100).nullable())
     .optional(),
   documentsShared: z.boolean().optional(),
-  medications: z.array(contextEntrySchema).max(20).optional(),
-  treatments: z.array(contextEntrySchema).max(20).optional(),
+  medications: z.array(contextEntrySchema).max(MAX_CONTEXT_ITEMS).optional(),
+  treatments: z.array(contextEntrySchema).max(MAX_CONTEXT_ITEMS).optional(),
 });
 
 export type StoredSecondaryWorkflowState = z.infer<
@@ -41,7 +44,17 @@ export function sealWorkflowState(
   state: StoredSecondaryWorkflowState,
   secret = workflowSessionSecret(),
 ): string {
-  return sealSessionPayload(parseStoredSecondaryWorkflowState(state), secret);
+  const sealed = sealSessionPayload(
+    parseStoredSecondaryWorkflowState(state),
+    secret,
+  );
+  const valueBytes = Buffer.byteLength(sealed, "utf8");
+  if (valueBytes > MAX_WORKFLOW_COOKIE_VALUE_BYTES) {
+    throw new Error(
+      `Secondary workflow state exceeds the safe cookie value budget of ${MAX_WORKFLOW_COOKIE_VALUE_BYTES} bytes. Reduce selected workflow context and try again.`,
+    );
+  }
+  return sealed;
 }
 
 export function openWorkflowState(
