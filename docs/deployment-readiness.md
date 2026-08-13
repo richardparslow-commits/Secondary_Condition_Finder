@@ -16,19 +16,19 @@ The former Azure Static Web Apps workflow remains only as an explicitly manual l
 
 ## Verified Vercel production runtime checkpoint
 
-Objective pre-finalization production evidence on `main`:
+Objective final migration evidence on `main`:
 
-- Production commit: `6ed2da05f2ef7259acc5617968480f3ecbaf2ada`.
-- Repository CI #712 completed successfully on that exact commit.
-- Vercel production redeploy `dpl_CbkyoQKxbFaDbivGEv3jiSztsm2M` reached `READY` on that same commit.
-- The canonical production alias serves that Vercel deployment.
+- Production commit: `c49fe2414d7a29c50935af91f3f3a08db933c417`.
+- Repository CI #716 completed successfully on that exact commit.
+- Vercel deployment `dpl_2bMJZhr2cCCJnrGtVQeQ2NAcGebM` reported `success` for that same commit and served the canonical production alias.
+- Production Runtime Readiness #78 completed successfully on that exact commit after confirming production-alias convergence.
 - Production route matrix: `/=200`, `/about=200`, `/va-forms=200`, `/runtime-readiness=200`.
-- `/runtime-readiness` rendered `data-runtime-readiness="ready"`.
-- Vercel runtime logs for the verification window showed ordinary route/status metadata for the checked routes and did not expose the workflow-session secret or derivative key material.
+- `/runtime-readiness` rendered `data-runtime-readiness="ready"` and the workflow-session crypto round trip succeeded.
+- Temporary response bodies were deleted and were not printed or attached; no workflow-session secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded.
 
 This proves that the production Vercel runtime can access and use a valid primary `WORKFLOW_SESSION_SECRET` through the application's real AES-256-GCM workflow-session crypto path. It does not authorize disclosure of the secret and does not prove unrelated settings.
 
-Issue #213 remains the exact-commit evidence record. The repository readiness workflow must re-verify the final `main` commit after this production-host finalization change before the issue is treated as complete.
+Issue #213 is the authoritative exact-commit evidence record and is closed as completed on this checkpoint. Future `main` deployments continue to run the automated readiness workflow so regressions remain visible, but completion of #213 does not imply credentialed VA sandbox verification or Section 508 conformance.
 
 ## Required Vercel runtime setting
 
