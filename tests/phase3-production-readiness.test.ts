@@ -52,13 +52,29 @@ describe("Phase 3 production-access package contracts", () => {
     expect(audit).toContain("credentialed sandbox smoke test");
   });
 
-  it("does not overstate accessibility readiness", () => {
+  it("records the completed runtime gate without closing the remaining external gates", () => {
+    const checklist = readRepoFile("docs/phase3-submission-checklist.md");
+
+    expect(checklist).toContain("- [x] Issue #213 is closed with non-sensitive production `/runtime-readiness` evidence");
+    expect(checklist).toContain("c49fe2414d7a29c50935af91f3f3a08db933c417");
+    expect(checklist).toContain("Repository CI #716");
+    expect(checklist).toContain("Production Runtime Readiness #78");
+    expect(checklist).toContain("dpl_2bMJZhr2cCCJnrGtVQeQ2NAcGebM");
+    expect(checklist).toContain("- [ ] Issue #195 is closed with recorded manual Section 508 accessibility evidence");
+  });
+
+  it("does not overstate accessibility readiness and targets Vercel production", () => {
     const request = readRepoFile("docs/phase3-production-access-package.md");
     const checklist = readRepoFile("docs/phase3-submission-checklist.md");
+    const accessibility = readRepoFile("docs/accessibility-audit.md");
 
     expect(request).toContain("This is not a conformance certification");
     expect(request).toContain("complete issue #195");
     expect(checklist).toContain("No claim is made that Section 508 conformance is complete unless issue #195 is closed with objective evidence");
+    expect(accessibility).toContain("PARTIAL EVIDENCE — MANUAL CONFORMANCE REVIEW PENDING");
+    expect(accessibility).toContain("https://secondary-condition-finder.vercel.app");
+    expect(accessibility).toContain("record the exact deployed `main` commit and Vercel production deployment");
+    expect(accessibility).toContain("not the historical Azure Static Web Apps hostname");
   });
 
   it("covers VA review fields without inventing unresolved applicant facts", () => {
