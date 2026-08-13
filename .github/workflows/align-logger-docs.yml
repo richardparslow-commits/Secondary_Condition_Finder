@@ -1,4 +1,4 @@
-name: Align logger documentation
+name: Remove temporary logger documentation helper
 
 on:
   push:
@@ -9,67 +9,16 @@ permissions:
   contents: write
 
 jobs:
-  align:
+  cleanup:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Update stale logger disclosures
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          changes = {
-              "src/app/privacy/page.tsx": [
-                  (
-                      "The repository also contains a legacy aggregate event-logger abstraction, but it has no application caller and is not relied on as an active production data store. The application must not represent that dormant logger as a Veteran record, claims record, audit trail, or VA submission history. Any future persistent telemetry or logging integration requires a separately reviewed privacy and security change.",
-                      "The current application does not persist workflow or recommendation event history through an application event logger. Any future persistent telemetry or logging integration requires a separately reviewed privacy and security change before it is enabled.",
-                  ),
-                  (
-                      "No active application path relies on the repository&apos;s legacy SQLite event logger as a production data store.",
-                      "The current application does not persist workflow or recommendation event history through an application event logger.",
-                  ),
-              ],
-              "docs/phase3-production-access-package.md": [
-                  (
-                      "The repository contains a legacy aggregate event-logger abstraction, but repository code search shows no application caller and production does not rely on it as an active Veteran-data store, audit trail, or recommendation-history datastore. Do not describe dormant logger code as active production persistence.",
-                      "The current application does not persist workflow or recommendation event history through an application event logger. Any future persistent telemetry or event-history storage requires a separately reviewed privacy/security change before it is enabled.",
-                  ),
-                  (
-                      "- The legacy event-logger abstraction is not relied on as an active production datastore.",
-                      "- The current application does not persist workflow or recommendation event history through an application event logger.",
-                  ),
-              ],
-              "docs/phase3-submission-checklist.md": [
-                  (
-                      "- the legacy aggregate event-logger abstraction has no application caller and is not relied on as an active production Veteran-data store or audit trail;",
-                      "- the current application does not persist workflow or recommendation event history through an application event logger;",
-                  ),
-              ],
-          }
-
-          for filename, replacements in changes.items():
-              path = Path(filename)
-              text = path.read_text()
-              for old, new in replacements:
-                  if old not in text:
-                      raise SystemExit(f"expected text missing: {filename}: {old[:80]}")
-                  text = text.replace(old, new, 1)
-              path.write_text(text)
-          PY
-
-          if git grep -ni -E 'legacy aggregate event-logger|legacy event-logger|legacy SQLite event logger|dormant logger' -- README.md docs src/app/privacy; then
-            echo 'stale logger disclosure remains'
-            exit 1
-          fi
-          git diff --check
-
-      - name: Commit updates
+      - name: Remove temporary workflow
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add src/app/privacy/page.tsx docs/phase3-production-access-package.md docs/phase3-submission-checklist.md
-          git commit -m 'Align privacy disclosures with logger removal'
+          git rm .github/workflows/align-logger-docs.yml
+          git commit -m 'Remove temporary logger documentation helper'
           git push origin HEAD:agent/remove-dormant-event-logger
