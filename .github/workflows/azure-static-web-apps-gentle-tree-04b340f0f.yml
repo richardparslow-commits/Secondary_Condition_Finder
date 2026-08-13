@@ -1,19 +1,17 @@
 name: Azure Static Web Apps CI/CD
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
   workflow_dispatch:
     inputs:
+      deploy_legacy_azure:
+        description: 'Manually deploy the legacy Azure Static Web Apps target (set to true)'
+        required: false
+        default: false
+        type: boolean
       close_environment:
         description: 'Close a stale PR staging environment to free up slots (set to true)'
         required: false
-        default: 'false'
+        default: false
         type: boolean
 
 permissions:
@@ -21,9 +19,9 @@ permissions:
 
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push'
+    if: inputs.deploy_legacy_azure == true && inputs.close_environment != true
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
+    name: Build and Deploy Legacy Azure Target
     concurrency:
       group: azure-swa-deploy-${{ github.ref }}
       cancel-in-progress: true
@@ -39,20 +37,17 @@ jobs:
           NEXT_TELEMETRY_DISABLED: '1'
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GENTLE_TREE_04B340F0F }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
           action: "upload"
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # App source code path
-          api_location: "" # Api source code path - optional
-          output_location: "" # Built app content directory - optional
+          app_location: "/"
+          api_location: ""
+          output_location: ""
           app_build_command: "npm run build:azure"
-          ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
-    if: (github.event_name == 'pull_request' && github.event.action == 'closed') || (github.event_name == 'workflow_dispatch' && inputs.close_environment == 'true')
+    if: inputs.close_environment == true
     runs-on: ubuntu-latest
-    name: Close Pull Request Job
+    name: Close Legacy Azure Pull Request Environment
     steps:
       - name: Close Pull Request
         id: closepullrequest
