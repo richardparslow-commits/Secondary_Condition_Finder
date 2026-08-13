@@ -67,18 +67,16 @@ describe("accessible workflow validation", () => {
 
   it("turns presumptive schema failures into fixed accessible error routes", () => {
     const actions = read("src/app/presumptive/actions.ts");
-    const template = read("src/app/presumptive/template.tsx");
-    const alert = read("src/components/PresumptiveValidationQueryAlert.tsx");
+    const page = read("src/app/presumptive/page.tsx");
 
     expect(actions).toContain("serviceHistorySchema.safeParse");
     expect(actions).toContain('validationPath("date-order")');
     expect(actions).toContain('validationPath("invalid-date")');
     expect(actions).not.toContain("serviceStart=${");
     expect(actions).not.toContain("serviceEnd=${");
-    expect(template).toContain("PresumptiveValidationQueryAlert");
-    expect(alert).toContain('role="alert"');
-    expect(alert).toContain('name="serviceStart"');
-    expect(alert).toContain('name="serviceEnd"');
-    expect(alert).toContain('describedBy.add("presumptive-validation-error")');
+    expect(page).toContain('role="alert"');
+    expect(page).toContain('id={validationId}');
+    expect(page).toContain('role="group" aria-describedby={validationId}');
+    expect(page).toContain('"date-order": "Service start date must be on or before the end date."');
   });
 });
