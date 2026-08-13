@@ -6,12 +6,6 @@ on:
       - CI
     types:
       - completed
-  workflow_dispatch:
-    inputs:
-      deployed_commit:
-        description: 'Optional exact commit SHA to verify; defaults to the selected workflow ref'
-        required: false
-        type: string
 
 permissions:
   contents: read
@@ -21,9 +15,8 @@ permissions:
 jobs:
   verify-runtime:
     if: >-
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.workflow_run.conclusion == 'success' &&
-       github.event.workflow_run.head_branch == 'main')
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
@@ -34,16 +27,11 @@ jobs:
         id: commit
         env:
           WORKFLOW_RUN_SHA: ${{ github.event.workflow_run.head_sha }}
-          DISPATCH_SHA: ${{ inputs.deployed_commit }}
         shell: bash
         run: |
           set -euo pipefail
 
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            commit_sha="${DISPATCH_SHA:-$GITHUB_SHA}"
-          else
-            commit_sha="$WORKFLOW_RUN_SHA"
-          fi
+          commit_sha="$WORKFLOW_RUN_SHA"
 
           if ! [[ "$commit_sha" =~ ^[0-9a-fA-F]{40}$ ]]; then
             echo "Resolved production commit is not a full 40-character SHA." >&2
@@ -51,7 +39,7 @@ jobs:
           fi
 
           echo "sha=$commit_sha" >> "$GITHUB_OUTPUT"
-          echo "Resolved production commit: $commit_sha" >> "$GITHUB_STEP_SUMMARY"
+          echo "Resolved production commit from successful main CI: $commit_sha" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Wait for exact-commit Vercel deployment status
         id: vercel
