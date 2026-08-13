@@ -174,7 +174,7 @@ describe("production deployment readiness", () => {
 
     expect(runbook).toContain("WORKFLOW_SESSION_SECRET");
     expect(runbook).toContain("at least 32 characters");
-    expect(runbook).toContain("Vercel **Production** environment");
+    expect(runbook).toContain("Vercel project's **Production** environment");
     expect(runbook).toContain("VA_SANDBOX_ENABLED");
     expect(runbook).toContain("/runtime-readiness");
     expect(runbook).not.toContain("/api/runtime-readiness");
