@@ -20,7 +20,16 @@ Direct local parsing supports:
 - DOCX files, with deterministic paragraph provenance (`paragraph N`);
 - text formats (`text/*`, TXT, Markdown, CSV, JSON, LOG).
 
-The local-analysis limit is 20 MB per source and 10 retained sources per browser tab.
+Local analysis uses explicit browser-resource ceilings:
+
+- 20 MB maximum per selected file;
+- 10 selected files per analysis batch;
+- 50 MB maximum accepted file bytes per batch;
+- 300 pages maximum per PDF source;
+- 500,000 extracted characters maximum per source, including pasted-text input;
+- 10 retained source analyses per browser tab.
+
+The file-size check is repeated inside the document-extraction library before file bytes are read, so callers cannot bypass the UI check by invoking the parser directly. PDF page count is checked before page-by-page extraction, and cumulative extracted text is checked while PDF pages are processed. DOCX and text extraction are rejected when their extracted text exceeds the same per-source character ceiling. Sources over a limit are rejected with a local notice rather than silently truncated; users can split or narrow a source and analyze it again.
 
 PDF pages that contain no extractable/selectable text are reported to the user rather than guessed. Scanned or image-only records therefore still require OCR in a trusted tool before their text can be analyzed. The paste-text fallback remains available so OCR/exported text can be reviewed with user-supplied locator context.
 
