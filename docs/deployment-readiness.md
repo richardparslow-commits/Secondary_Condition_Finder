@@ -23,6 +23,19 @@ Current verified baseline at the time of this update:
 
 This baseline is historical evidence, not a permanent production identifier. Every later successful `main` deployment must establish a new exact-commit readiness result.
 
+## Historical Verified Vercel production runtime checkpoint
+
+Issue #213 is the historical evidence record for the first verified Vercel production runtime checkpoint. It was closed as completed after the following exact-commit evidence was established:
+
+- production commit `c49fe2414d7a29c50935af91f3f3a08db933c417`;
+- Repository CI #716 succeeded on that exact commit;
+- Vercel deployment `dpl_2bMJZhr2cCCJnrGtVQeQ2NAcGebM` reported success for that commit and served `https://secondary-condition-finder.vercel.app`;
+- Production Runtime Readiness #78 succeeded on that exact commit;
+- the historical route matrix included `/runtime-readiness=200`;
+- `/runtime-readiness` rendered `data-runtime-readiness="ready"` after the production workflow-session crypto round trip.
+
+That checkpoint remains useful historical evidence, but it does not override the current trusted-lineage design and is not a substitute for a fresh exact-commit readiness result after later `main` deployments.
+
 ## Required production runtime setting
 
 Configure production runtime settings in the Vercel project's **Production** environment. Do not place secret values in source control or expose them through `NEXT_PUBLIC_*` variables.
@@ -140,6 +153,10 @@ When sandbox access is eventually enabled, keep VA API keys server-only and run 
 - CI marketplace actions in the active CI workflow are pinned to immutable commit SHAs;
 - CI has `contents: read` only and does not create or mutate GitHub issues;
 - the real Chrome/ChromeDriver secondary-workflow journey runs after the production build and is part of the final CI gate.
+
+## Legacy Azure manual fallback
+
+The legacy Azure deployment workflow remains historical/manual fallback infrastructure only. It has no `push` or `pull_request` trigger. An operator must explicitly use the manual workflow and opt into the legacy deployment path; Azure success or failure is not used as the production readiness signal.
 
 ## Production verification checklist
 
