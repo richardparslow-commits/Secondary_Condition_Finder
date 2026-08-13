@@ -71,14 +71,16 @@ describe("production deployment readiness", () => {
     expect(fs.existsSync(routePath)).toBe(false);
   });
 
-  it("keeps the VA sandbox disabled by default and requires a key when enabled", () => {
+  it("keeps the VA sandbox disabled by default with service keys unset", () => {
     const disabled = loadVaSandboxConfig({});
     expect(disabled.enabled).toBe(false);
-    expect(disabled.apiKey).toBeUndefined();
+    expect(disabled.formsApiKey).toBeUndefined();
+    expect(disabled.benefitsReferenceDataApiKey).toBeUndefined();
 
-    const enabledWithoutKey = loadVaSandboxConfig({ VA_SANDBOX_ENABLED: "true" });
-    expect(enabledWithoutKey.enabled).toBe(true);
-    expect(enabledWithoutKey.apiKey).toBeUndefined();
+    const enabledWithoutKeys = loadVaSandboxConfig({ VA_SANDBOX_ENABLED: "true" });
+    expect(enabledWithoutKeys.enabled).toBe(true);
+    expect(enabledWithoutKeys.formsApiKey).toBeUndefined();
+    expect(enabledWithoutKeys.benefitsReferenceDataApiKey).toBeUndefined();
   });
 
   it("declares the Node 22 production runtime contract", () => {
@@ -118,7 +120,10 @@ describe("production deployment readiness", () => {
     expect(workflow).toContain("NEXT_TELEMETRY_DISABLED: '1'");
     expect(workflow).toContain('app_build_command: "npm run build:azure"');
     expect(workflow).not.toContain("NEXT_PUBLIC_WORKFLOW_SESSION_SECRET");
-    expect(workflow).not.toContain("NEXT_PUBLIC_VA_SANDBOX_API_KEY");
+    expect(workflow).not.toContain("NEXT_PUBLIC_VA_FORMS_SANDBOX_API_KEY");
+    expect(workflow).not.toContain(
+      "NEXT_PUBLIC_VA_BENEFITS_REFERENCE_SANDBOX_API_KEY",
+    );
   });
 
   it("keeps normal builds Vercel-native and standalone packaging Azure-only", () => {
@@ -176,6 +181,8 @@ describe("production deployment readiness", () => {
     expect(runbook).toContain("at least 32 characters");
     expect(runbook).toContain("Vercel project's **Production** environment");
     expect(runbook).toContain("VA_SANDBOX_ENABLED");
+    expect(runbook).toContain("VA_FORMS_SANDBOX_API_KEY");
+    expect(runbook).toContain("VA_BENEFITS_REFERENCE_SANDBOX_API_KEY");
     expect(runbook).toContain("/runtime-readiness");
     expect(runbook).not.toContain("/api/runtime-readiness");
     expect(runbook).toContain("data-runtime-readiness");
