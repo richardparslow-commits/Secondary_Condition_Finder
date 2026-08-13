@@ -2,7 +2,12 @@
 
 import { useMemo, useState } from "react";
 
-import { extractLocalEvidenceDocument } from "@/lib/evidence/document-extract";
+import {
+  extractLocalEvidenceDocument,
+  MAX_LOCAL_EVIDENCE_FILE_BYTES,
+  MAX_LOCAL_EVIDENCE_PDF_PAGES,
+  MAX_LOCAL_EVIDENCE_TEXT_CHARS,
+} from "@/lib/evidence/document-extract";
 import {
   analyzeEvidenceSegments,
   evidenceAnalysisStorageKey,
@@ -15,8 +20,8 @@ interface Props {
   conditionTerms: string[];
 }
 
-const MAX_FILE_BYTES = 20 * 1024 * 1024;
 const MAX_SOURCES = 10;
+const MAX_BATCH_BYTES = 50 * 1024 * 1024;
 const SUPPORTED_TEXT_EXTENSIONS = [".txt", ".md", ".csv", ".json", ".log"];
 
 function isSupportedFile(file: File): boolean {
@@ -91,12 +96,21 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     setBusy(true);
 
     const nextWarnings: string[] = [];
+    const selectedFiles = Array.from(files);
+    if (selectedFiles.length > MAX_SOURCES) {
+      nextWarnings.push(`Only the first ${MAX_SOURCES} selected documents are considered in one local-analysis batch.`);
+    }
     let processed = 0;
+    let acceptedBatchBytes = 0;
 
     try {
-      for (const file of Array.from(files).slice(0, MAX_SOURCES)) {
-        if (file.size > MAX_FILE_BYTES) {
+      for (const file of selectedFiles.slice(0, MAX_SOURCES)) {
+        if (file.size > MAX_LOCAL_EVIDENCE_FILE_BYTES) {
           nextWarnings.push(`${file.name} was not analyzed because it exceeds the 20 MB local-analysis limit.`);
+          continue;
+        }
+        if (acceptedBatchBytes + file.size > MAX_BATCH_BYTES) {
+          nextWarnings.push(`${file.name} was not analyzed because the selected documents would exceed the 50 MB per-batch local-analysis limit.`);
           continue;
         }
         if (!isSupportedFile(file)) {
@@ -104,6 +118,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           continue;
         }
 
+        acceptedBatchBytes += file.size;
         try {
           const extracted = await extractLocalEvidenceDocument(file);
           nextWarnings.push(...extracted.warnings.map((warning) => `${file.name}: ${warning}`));
@@ -135,6 +150,10 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     const text = pastedText.trim();
     if (!text) {
       setMessage("Paste source text before running local evidence analysis.");
+      return;
+    }
+    if (text.length > MAX_LOCAL_EVIDENCE_TEXT_CHARS) {
+      setMessage(`Pasted text is limited to ${MAX_LOCAL_EVIDENCE_TEXT_CHARS.toLocaleString("en-US")} characters per source.`);
       return;
     }
     const segments = withUserLocatorPrefix([{ text, locatorPrefix: "pasted text" }], locatorPrefix);
@@ -191,7 +210,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
       <label className="block rounded-xl border border-slate-200 p-4">
         <span className="block font-semibold">Analyze evidence files locally</span>
-        <span className="mt-1 block text-sm text-slate-600">Supported directly: PDF, DOCX, TXT, Markdown, CSV, JSON and other text files, up to 20 MB each. PDF excerpts retain page numbers; DOCX excerpts retain paragraph numbers. Files stay in the browser.</span>
+        <span className="mt-1 block text-sm text-slate-600">Supported directly: PDF, DOCX, TXT, Markdown, CSV, JSON and other text files. Limits: 20 MB per file, 10 selected files and 50 MB per batch, {MAX_LOCAL_EVIDENCE_PDF_PAGES} PDF pages per source, and {MAX_LOCAL_EVIDENCE_TEXT_CHARS.toLocaleString("en-US")} extracted characters per source. Files stay in the browser.</span>
         <input
           type="file"
           multiple
@@ -211,8 +230,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           <input className="mt-1 w-full px-3" value={pastedSourceName} onChange={(event) => setPastedSourceName(event.target.value)} />
         </label>
         <label className="mt-3 block text-sm font-medium">
-          Paste exact extracted text
-          <textarea className="mt-1 min-h-40 w-full px-3 py-2" value={pastedText} onChange={(event) => setPastedText(event.target.value)} placeholder="Paste text exactly as it appears in the source record." />
+          Paste exact extracted text (up to {MAX_LOCAL_EVIDENCE_TEXT_CHARS.toLocaleString("en-US")} characters)
+          <textarea className="mt-1 min-h-40 w-full px-3 py-2" maxLength={MAX_LOCAL_EVIDENCE_TEXT_CHARS} value={pastedText} onChange={(event) => setPastedText(event.target.value)} placeholder="Paste text exactly as it appears in the source record." />
         </label>
         <button type="button" className="ui-button mt-3" onClick={analyzePastedText}>Analyze pasted text locally</button>
       </div>
