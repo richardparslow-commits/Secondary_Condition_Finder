@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 
 import { secondaryValidationMessage } from "@/lib/secondary-workflow/validation";
 
@@ -8,14 +8,27 @@ interface SecondaryValidationQueryAlertProps {
   controlName: string;
 }
 
-export function SecondaryValidationQueryAlert({ controlName }: SecondaryValidationQueryAlertProps) {
-  const [message, setMessage] = useState<string | null>(null);
-  const alertRef = useRef<HTMLDivElement>(null);
+function subscribeToLocation(): () => void {
+  return () => {};
+}
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setMessage(secondaryValidationMessage(params.get("error") ?? undefined));
-  }, []);
+function getValidationMessage(): string | null {
+  if (typeof window === "undefined") return null;
+  const params = new URLSearchParams(window.location.search);
+  return secondaryValidationMessage(params.get("error") ?? undefined);
+}
+
+function getServerValidationMessage(): null {
+  return null;
+}
+
+export function SecondaryValidationQueryAlert({ controlName }: SecondaryValidationQueryAlertProps) {
+  const message = useSyncExternalStore(
+    subscribeToLocation,
+    getValidationMessage,
+    getServerValidationMessage,
+  );
+  const alertRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!message) return;
