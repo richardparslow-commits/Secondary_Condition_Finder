@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
@@ -5,6 +6,10 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { readSecondaryWorkflowSession } from "@/lib/secondary-workflow/session";
 import { saveServiceConnectedSelection } from "../actions";
+
+export const metadata: Metadata = {
+  title: "Service-Connected Conditions | Secondary Condition Finder",
+};
 
 export const dynamic = "force-dynamic";
 
