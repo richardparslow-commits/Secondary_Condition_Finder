@@ -5,10 +5,14 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { VALID_RATINGS } from "@/lib/secondary-workflow";
 import { ratingFieldName } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
+import { secondaryValidationMessage } from "@/lib/secondary-workflow/validation";
 import { saveRatingsSelection } from "../actions";
 
 interface RatingOption { label: string; value: string; }
-interface RatingsPageProps { workflowState?: StoredSecondaryWorkflowState; }
+interface RatingsPageProps {
+  workflowState?: StoredSecondaryWorkflowState;
+  searchParams?: Promise<{ error?: string | string[] }>;
+}
 
 function getRatingOptions(): RatingOption[] {
   return Array.from(VALID_RATINGS.reduce((options, rating) => {
@@ -20,7 +24,7 @@ function getRatingOptions(): RatingOption[] {
 
 export const dynamic = "force-dynamic";
 
-export default async function RatingsPage({ workflowState }: RatingsPageProps = {}) {
+export default async function RatingsPage({ workflowState, searchParams }: RatingsPageProps = {}) {
   const catalog = loadConditionCatalog();
   const catalogById = indexById(catalog);
   const session = workflowState ?? (await readSecondaryWorkflowSession());
@@ -28,6 +32,8 @@ export default async function RatingsPage({ workflowState }: RatingsPageProps = 
   const serviceConnectedConditionIds = session.serviceConnectedConditionIds ?? [];
   const ratingsByConditionId = session.ratingsByConditionId ?? {};
   const ratingOptions = getRatingOptions();
+  const validationMessage = secondaryValidationMessage((await searchParams)?.error);
+  const validationId = validationMessage ? "ratings-validation-error" : undefined;
 
   if (diagnosedConditionIds.length === 0 || serviceConnectedConditionIds.length === 0) {
     return <main><header className="page-hero"><h1>Set service-connected status first</h1><p>Complete the prior workflow steps before entering current ratings.</p></header><Link href="/secondary/service-connected" className="ui-button">Back to service-connected status</Link></main>;
@@ -38,7 +44,13 @@ export default async function RatingsPage({ workflowState }: RatingsPageProps = 
       <header className="page-hero text-center"><p className="ui-kicker">Step 3 of 6</p><h1>Disability Ratings</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Select the current VA evaluation for each service-connected condition in this research session, or choose not to provide it.</p></header>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><strong className="text-blue-700">3 Ratings</strong><span>4 Documents</span><span>5 Suggestions</span><span>6 Evidence</span></div>
 
-      <form action={saveRatingsSelection}>
+      {validationMessage && (
+        <div id={validationId} role="alert" className="ui-callout mb-5 text-sm">
+          <strong>Check this step:</strong> {validationMessage}
+        </div>
+      )}
+
+      <form action={saveRatingsSelection} aria-describedby={validationId}>
         <div className="ui-grid">
           <aside className="ui-stack">
             <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">%</span><h2 className="text-xl font-bold">Why Ratings Matter</h2></div><p className="text-sm">Ratings provide current context for the service-connected disabilities in this research session. The app does not calculate or predict a VA rating decision.</p></section>
@@ -53,7 +65,7 @@ export default async function RatingsPage({ workflowState }: RatingsPageProps = 
                 const stored = ratingsByConditionId[conditionId];
                 const currentValue = stored === null ? "decline" : typeof stored === "number" ? String(stored) : "";
                 const conditionName = catalogById.get(conditionId)?.name ?? conditionId.replace(/-/g, " ");
-                return <div key={conditionId} className="grid items-center gap-3 rounded-xl border border-slate-200 p-4 sm:grid-cols-[1fr_11rem]"><label className="font-semibold" htmlFor={fieldName}>Rating for {conditionName}</label><select id={fieldName} name={fieldName} defaultValue={currentValue} className="w-full px-3"><option value="">Select current rating...</option>{ratingOptions.map((rating) => <option key={rating.label} value={rating.value}>{rating.label}</option>)}<option value="decline">I prefer not to answer</option></select></div>;
+                return <div key={conditionId} className="grid items-center gap-3 rounded-xl border border-slate-200 p-4 sm:grid-cols-[1fr_11rem]"><label className="font-semibold" htmlFor={fieldName}>Rating for {conditionName}</label><select id={fieldName} name={fieldName} required aria-describedby={validationId} defaultValue={currentValue} className="w-full px-3"><option value="">Select current rating...</option>{ratingOptions.map((rating) => <option key={rating.label} value={rating.value}>{rating.label}</option>)}<option value="decline">I prefer not to answer</option></select></div>;
               })}
             </div>
             <div className="ui-callout mt-5 text-sm"><strong>Important:</strong> Use the rating currently in effect, not a future or requested increase. You can revise these selections before continuing.</div>
