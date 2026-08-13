@@ -3,8 +3,8 @@ import { z } from "zod";
 import { indexById } from "@/lib/catalog/lookup";
 import type { ConditionCatalog } from "@/lib/catalog/schema";
 
-export const MAX_CONTEXT_ITEMS = 8;
-export const MAX_CONTEXT_ITEM_LENGTH = 64;
+export const MAX_CONTEXT_ITEMS = 20;
+export const MAX_CONTEXT_ITEM_LENGTH = 160;
 
 export interface SecondaryWorkflowState {
   diagnosedConditionIds: string[];
