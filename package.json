@@ -35,7 +35,7 @@
     "@eslint/config-array": ">=0.23.5",
     "postcss": ">=8.5.18",
     "js-yaml": "4.3.1",
-    "nanoid": "3.3.17"
+    "nanoid": "3.3.18"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
