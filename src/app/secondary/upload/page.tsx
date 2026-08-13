@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
@@ -8,6 +9,11 @@ import { readSecondaryWorkflowSession, type StoredSecondaryWorkflowState } from 
 import { saveDocumentsSelection } from "../actions";
 
 interface UploadPageProps { workflowState?: StoredSecondaryWorkflowState; }
+
+export const metadata: Metadata = {
+  title: "Supporting Documents | Secondary Condition Finder",
+};
+
 export const dynamic = "force-dynamic";
 
 export default async function UploadStepPage({ workflowState }: UploadPageProps = {}) {
