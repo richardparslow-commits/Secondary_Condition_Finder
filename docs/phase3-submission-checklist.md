@@ -7,7 +7,7 @@ Use this checklist immediately before completing the VA API Platform production-
 Do not submit until all blocking items are complete.
 
 - [ ] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence for VA Forms and Benefits Reference Data.
-- [ ] Issue #213 is closed with non-sensitive production `/runtime-readiness` evidence proving the primary `WORKFLOW_SESSION_SECRET` is usable by the deployed runtime.
+- [x] Issue #213 is closed with non-sensitive production `/runtime-readiness` evidence proving the primary `WORKFLOW_SESSION_SECRET` is usable by the deployed runtime.
 - [ ] Latest `main` CI is green.
 - [ ] Latest Vercel production deployment for the same `main` commit is green and serving the canonical production alias.
 - [ ] Final deployed-app demo rehearsal passes `docs/phase3-demo-script.md`.
@@ -16,15 +16,16 @@ Do not submit until all blocking items are complete.
 
 ### Verified Vercel runtime checkpoint
 
-The production-host migration has passed an objective non-sensitive runtime checkpoint before this finalization change:
+The Azure → Vercel production migration and runtime-secret gate have passed objective non-sensitive verification:
 
-- [x] Repository CI #712 succeeded on `6ed2da05f2ef7259acc5617968480f3ecbaf2ada`.
-- [x] Vercel deployment `dpl_CbkyoQKxbFaDbivGEv3jiSztsm2M` reached `READY` on that same commit and served `https://secondary-condition-finder.vercel.app`.
+- [x] Repository CI #716 succeeded on `c49fe2414d7a29c50935af91f3f3a08db933c417`.
+- [x] Vercel deployment `dpl_2bMJZhr2cCCJnrGtVQeQ2NAcGebM` reported `success` for that same commit and served `https://secondary-condition-finder.vercel.app`.
+- [x] Production Runtime Readiness #78 succeeded after confirming the canonical production alias served that exact Vercel deployment.
 - [x] `/`, `/about`, `/va-forms`, and `/runtime-readiness` returned HTTP 200.
-- [x] `/runtime-readiness` reported the high-level marker `data-runtime-readiness="ready"`.
-- [x] No workflow-session secret value or derivative key material was recorded in the verification evidence.
+- [x] `/runtime-readiness` reported `data-runtime-readiness="ready"` and the workflow-session crypto round trip succeeded.
+- [x] Temporary response bodies were deleted and no workflow-session secret value, secret length, hash, derivative key material, cookie payload, or environment-variable value was recorded.
 
-Issue #213 remains the authoritative exact-commit closure record. The production-readiness workflow must re-run successfully on the final `main` commit after the Vercel finalization change before submission.
+Issue #213 is the authoritative exact-commit closure record and is complete. The production-readiness workflow continues to run after successful `main` CI so the latest production commit can be rechecked before submission; that recurring check does not reopen the completed #213 gate by itself.
 
 ## Applicant and organization information
 
@@ -167,7 +168,7 @@ Automated preflight now enforces structural headings/landmarks, a keyboard skip 
 Before answering the form:
 
 - [x] Review and strengthen `docs/accessibility-audit.md` and current regression tests.
-- [ ] Complete issue #195 against the exact deployed production build, using synthetic/non-sensitive data only.
+- [ ] Complete issue #195 against the exact deployed Vercel production build, using synthetic/non-sensitive data only.
 - [ ] Confirm the skip link, keyboard order, focus visibility, and absence of keyboard traps in a real browser.
 - [ ] Record tester/date/OS/browser/assistive-technology evidence for keyboard, screen-reader, zoom/reflow, contrast, and forced-colors checks.
 - [ ] Include the Priority 1/1B evidence-upload/review workflow in the manual review using synthetic documents only.
@@ -190,6 +191,6 @@ Before answering the form:
 - [ ] Legal/medical scope matches `/terms`.
 - [ ] API list matches implemented routes and `docs/va-api-access-strategy.md`.
 - [ ] Credentialed sandbox validation is complete and issue #189 is closed with objective sanitized success evidence.
-- [ ] Production workflow-session runtime validation is complete and issue #213 is closed on the exact current production `main` commit.
+- [x] Production workflow-session runtime gate #213 is complete with exact-commit Vercel evidence; latest-current-main readiness is separately checked above before submission.
 - [ ] No claim is made that Section 508 conformance is complete unless issue #195 is closed with objective evidence.
 - [ ] No unsupported business, accessibility, security-certification, or regulatory-compliance claim is included.
