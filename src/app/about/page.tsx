@@ -34,7 +34,7 @@ export default function AboutPage() {
 
         <h2 className="text-xl font-semibold">Privacy boundary</h2>
         <p>
-          Health/disability workflow selections and presumptive service-history state are kept out of page query strings. Short-lived workflow cookies are encrypted and authenticated, and recommendation-event persistence is limited to aggregate operational counts rather than condition identifiers or intake notes.
+          Health/disability workflow selections and presumptive service-history state are kept out of page query strings. Short-lived workflow cookies are encrypted and authenticated. The current application does not persist workflow or recommendation event history through an application event logger.
         </p>
 
         <h2 className="text-xl font-semibold">How to use the research</h2>
