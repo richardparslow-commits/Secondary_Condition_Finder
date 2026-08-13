@@ -5,7 +5,12 @@ import { DisclaimerFooter } from "@/components/Disclaimer";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { readSecondaryWorkflowSession } from "@/lib/secondary-workflow/session";
+import { secondaryValidationMessage } from "@/lib/secondary-workflow/validation";
 import { saveServiceConnectedSelection } from "../actions";
+
+interface ServiceConnectedPageProps {
+  searchParams?: Promise<{ error?: string | string[] }>;
+}
 
 export const metadata: Metadata = {
   title: "Service-Connected Conditions | Secondary Condition Finder",
@@ -13,7 +18,7 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function ServiceConnectedStepPage() {
+export default async function ServiceConnectedStepPage({ searchParams }: ServiceConnectedPageProps = {}) {
   const catalog = loadConditionCatalog();
   const byId = indexById(catalog);
   const session = await readSecondaryWorkflowSession();
@@ -32,6 +37,8 @@ export default async function ServiceConnectedStepPage() {
   const hasPriorSelection = session.serviceConnectedConditionIds !== undefined;
   const diagnosed = diagnosedConditionIds.map((id) => byId.get(id)).filter((condition): condition is NonNullable<typeof condition> => condition !== undefined);
   const selected = diagnosed.filter((condition) => selectedServiceConnectedIds.has(condition.id));
+  const validationMessage = secondaryValidationMessage((await searchParams)?.error);
+  const validationId = validationMessage ? "service-connected-validation-error" : undefined;
 
   return (
     <main>
@@ -43,7 +50,13 @@ export default async function ServiceConnectedStepPage() {
 
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><strong className="text-blue-700">2 Service-connected</strong><span>3 Ratings</span><span>4 Documents</span><span>5 Suggestions</span><span>6 Evidence</span></div>
 
-      <form action={saveServiceConnectedSelection}>
+      {validationMessage && (
+        <div id={validationId} role="alert" className="ui-callout mb-5 text-sm">
+          <strong>Check this step:</strong> {validationMessage}
+        </div>
+      )}
+
+      <form action={saveServiceConnectedSelection} aria-describedby={validationId}>
         <div className="ui-grid">
           <aside className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Step Guidance</h2></div>
@@ -55,15 +68,15 @@ export default async function ServiceConnectedStepPage() {
           </aside>
 
           <section className="ui-card">
-            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><h2 className="text-xl font-bold">Select Your Service-Connected Conditions</h2><p className="text-sm text-slate-600">Mark yes or no for every diagnosed condition below.</p></div></div>
+            <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><h2 className="text-xl font-bold">Select Your Service-Connected Conditions</h2><p className="text-sm text-slate-600">Mark yes or no for every diagnosed condition below. No answer is assumed for you.</p></div></div>
             <div className="space-y-3">
               {diagnosed.map((condition) => (
-                <fieldset key={condition.id} className="rounded-xl border border-slate-200 p-4 shadow-none">
+                <fieldset key={condition.id} className="rounded-xl border border-slate-200 p-4 shadow-none" aria-describedby={validationId}>
                   <legend className="font-semibold text-slate-900">{condition.name}</legend>
                   <p className="text-xs text-slate-500">{condition.bodySystem}</p>
                   <div className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
-                    <label className="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2"><input type="radio" name={`serviceConnected-${condition.id}`} value="yes" defaultChecked={hasPriorSelection ? selectedServiceConnectedIds.has(condition.id) : true} className="h-5 w-5" />Yes, already service connected</label>
-                    <label className="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2"><input type="radio" name={`serviceConnected-${condition.id}`} value="no" defaultChecked={hasPriorSelection ? !selectedServiceConnectedIds.has(condition.id) : false} className="h-5 w-5" />No, not service connected</label>
+                    <label className="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2"><input type="radio" name={`serviceConnected-${condition.id}`} value="yes" required defaultChecked={hasPriorSelection && selectedServiceConnectedIds.has(condition.id)} className="h-5 w-5" />Yes, already service connected</label>
+                    <label className="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2"><input type="radio" name={`serviceConnected-${condition.id}`} value="no" required defaultChecked={hasPriorSelection && !selectedServiceConnectedIds.has(condition.id)} className="h-5 w-5" />No, not service connected</label>
                   </div>
                 </fieldset>
               ))}
