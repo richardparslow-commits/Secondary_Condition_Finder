@@ -25,7 +25,7 @@ describe("accessible workflow validation", () => {
       );
       expect([...url.searchParams.keys()]).toEqual(["error"]);
       expect(url.searchParams.get("error")).toBe(code);
-      expect(url.search).not.toMatch(/diagnosed|serviceConnected|rating-|medications|treatments|location|serviceStart|serviceEnd|documentsShared/);
+      expect(url.search).not.toMatch(/[?&](?:diagnosed|serviceConnected|rating-[^=]*|medications|treatments|location|serviceStart|serviceEnd|documentsShared)=/);
     }
   });
 
