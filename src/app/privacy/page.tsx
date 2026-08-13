@@ -31,14 +31,20 @@ export default function PrivacyPage() {
           The secondary workflow does not encode diagnosis, service-connected status, disability ratings, document-sharing choices, or medication/treatment context in query strings. The presumptive workflow does not encode selected service locations or service dates in query strings. The legacy query-based secondary-results route no longer processes health-related URL state. This reduces exposure through copied links, browser history, referrer headers, and URL-based logs.
         </p>
 
-        <h2 className="text-xl font-semibold mt-6">3. Application telemetry and operational logs</h2>
+        <h2 className="text-xl font-semibold mt-6">3. Browser telemetry and operational logging</h2>
         <p>
-          When Application Insights is configured, page-view telemetry is limited to the route path. Automatic route, AJAX, and fetch tracking are disabled, and telemetry URLs are stripped of query strings and fragments before transmission. Workflow selections, disability ratings, medication/treatment context, service locations, and service dates are not intentionally included in telemetry payloads. Recommendation event logging is limited to aggregate operational counts and does not retain condition identifiers, diagnoses, symptoms, medications, treatments, exposures, intake notes, uploaded document text, or extracted evidence quotations.
+          The application contains an optional Application Insights client initializer. Automatic route, AJAX, and fetch tracking are disabled in that initializer, and query strings and fragments are stripped from telemetry URLs. The current production Content Security Policy restricts browser network connections to the application&apos;s own origin, so the current production browser policy does not authorize third-party Application Insights network transmission.
+        </p>
+        <p>
+          The repository also contains a legacy aggregate event-logger abstraction, but it has no application caller and is not relied on as an active production data store. The application must not represent that dormant logger as a Veteran record, claims record, audit trail, or VA submission history. Any future persistent telemetry or logging integration requires a separately reviewed privacy and security change.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">4. Optional browser-local evidence review</h2>
         <p>
           Supporting-document review is optional. PDF, DOCX, supported text files, and pasted evidence text are analyzed locally in your browser. Raw document bytes and raw document text are not submitted to the application server, added to workflow cookies, written to application logs, or stored in a user account. PDF.js and Mammoth are bundled application libraries; the selected record is not uploaded to those projects, a CDN, or another document-analysis service.
+        </p>
+        <p>
+          Local analysis is bounded to 20 MB per file, 10 selected files and 50 MB per batch, 300 pages per PDF source, and 500,000 extracted or pasted characters per source. Sources over those limits are rejected rather than silently truncated.
         </p>
         <p>
           The browser may temporarily retain only the extracted evidence excerpts and their source/locator metadata, plus user-selected evidence-gap review checkmarks, in session storage so they can be displayed on Step 6. Session storage is scoped to the current browser tab and is cleared when the tab is closed. You can clear local evidence selectively from Step 4 without ending the workflow. Finish Review and Start a new review clear both secondary-workflow session-storage stores before leaving Step 6; the clearing operation does not copy their contents to the server, telemetry, logs, or a VA API.
@@ -53,6 +59,27 @@ export default function PrivacyPage() {
         </p>
         <p>
           Medication/treatment entries are used only to surface literal normalized text overlap with authored recommendation rationale or evidence-gap text. A match does not change recommendation ranking, infer a drug class or mechanism, or establish individual causation, aggravation, or medical nexus.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-6">6. VA API and claim-submission boundary</h2>
+        <p>
+          This phase of the application does not connect to a Veteran&apos;s VA account, does not submit a disability claim, and does not upload the user&apos;s workflow or local evidence to VA. VA sandbox integration is disabled by default and is a separate future integration gate. Public VA form/reference features fall back to local reference data when sandbox access is unavailable.
+        </p>
+        <p>
+          A future credentialed VA sandbox or production integration must be separately reviewed before this policy is changed to describe Veteran data being transmitted to a VA API. Local fallback behavior or mock data must not be described as proof of live VA connectivity.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-6">7. Retention summary</h2>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Encrypted workflow cookies expire after 30 minutes and can also be cleared by the workflow completion controls.</li>
+          <li>Local evidence excerpts and evidence-gap checkmarks use browser session storage scoped to the current tab and can be cleared from the workflow.</li>
+          <li>The local evidence feature does not create a server-side medical-record store or user account.</li>
+          <li>No active application path relies on the repository&apos;s legacy SQLite event logger as a production data store.</li>
+        </ul>
+
+        <h2 className="text-xl font-semibold mt-6">8. Policy changes</h2>
+        <p>
+          This policy must be updated when application data flows materially change, including before enabling any integration that transmits Veteran-specific workflow or evidence data to an external API. The “Last updated” date above should move with those reviewed changes.
         </p>
       </section>
 
