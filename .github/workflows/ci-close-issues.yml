@@ -1,19 +1,17 @@
-name: Close CI Failure Issues
+name: Close CI Failure Issues (disabled)
+
 on:
-  workflow_run:
-    workflows: [CI]
-    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
 jobs:
-  close-issues:
-    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main'
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - name: Close open ci-failure issues
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
+      - name: Explain disabled automation
         run: |
-          ISSUES=$(gh issue list --label "ci-failure" --state open --json number --jq '.[].number')
-          for ISSUE in $ISSUES; do
-            gh issue close "$ISSUE" --comment "CI is green again on main ✅ (run: ${{ github.event.workflow_run.html_url }})"
-          done
+          echo "Automatic CI failure issue closure is disabled."
+          echo "The previous workflow closed every open ci-failure issue after any successful CI run on main."
+          echo "CI diagnostic issues now remain open until an explicitly scoped recovery workflow is reviewed and approved."
