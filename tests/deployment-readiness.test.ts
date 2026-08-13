@@ -102,16 +102,21 @@ describe("production deployment readiness", () => {
     expect(source).toContain('key: "Strict-Transport-Security"');
   });
 
-  it("pins the Azure deployment action and disables Next.js build telemetry", () => {
+  it("keeps Azure deployment manual-only while preserving the pinned legacy path", () => {
     const workflow = read(
       ".github/workflows/azure-static-web-apps-gentle-tree-04b340f0f.yml",
     );
 
+    expect(workflow).toContain("workflow_dispatch:");
+    expect(workflow).toContain("deploy_legacy_azure:");
+    expect(workflow).not.toMatch(/^\s*push:/m);
+    expect(workflow).not.toMatch(/^\s*pull_request:/m);
     expect(workflow).toContain("actions/checkout@v6");
     expect(workflow).toContain(
       "Azure/static-web-apps-deploy@1a947af9992250f3bc2e68ad0754c0b0c11566c9",
     );
     expect(workflow).toContain("NEXT_TELEMETRY_DISABLED: '1'");
+    expect(workflow).toContain('app_build_command: "npm run build:azure"');
     expect(workflow).not.toContain("NEXT_PUBLIC_WORKFLOW_SESSION_SECRET");
     expect(workflow).not.toContain("NEXT_PUBLIC_VA_SANDBOX_API_KEY");
   });
@@ -146,28 +151,44 @@ describe("production deployment readiness", () => {
     expect(packagingScript).toContain("await cp(publicSource, publicDestination");
   });
 
-  it("documents the Azure runtime-setting verification boundary", () => {
+  it("gates production readiness on exact-commit Vercel status and alias convergence", () => {
+    const workflow = read(".github/workflows/production-runtime-readiness.yml");
+
+    expect(workflow).toContain("workflows:\n      - CI");
+    expect(workflow).toContain(
+      "PRODUCTION_BASE_URL: https://secondary-condition-finder.vercel.app",
+    );
+    expect(workflow).toContain('select(.context == "Vercel")');
+    expect(workflow).toContain("data-dpl-id");
+    expect(workflow).toContain("EXPECTED_DEPLOYMENT_ID");
+    expect(workflow).toContain('data-runtime-readiness="ready"');
+    expect(workflow).toContain("Temporary response bodies are deleted");
+    expect(workflow).toContain("gh issue close");
+    expect(workflow).not.toContain("gentle-tree-04b340f0f.7.azurestaticapps.net");
+    expect(workflow).not.toContain("Azure deployment run");
+    expect(workflow).not.toContain("process.env.WORKFLOW_SESSION_SECRET");
+  });
+
+  it("documents the verified Vercel runtime-setting boundary", () => {
     const runbook = read("docs/deployment-readiness.md");
 
     expect(runbook).toContain("WORKFLOW_SESSION_SECRET");
     expect(runbook).toContain("at least 32 characters");
+    expect(runbook).toContain("Vercel project's **Production** environment");
     expect(runbook).toContain("VA_SANDBOX_ENABLED");
     expect(runbook).toContain("/runtime-readiness");
     expect(runbook).not.toContain("/api/runtime-readiness");
     expect(runbook).toContain("data-runtime-readiness");
     expect(runbook).toContain("Issue #213");
-    expect(runbook).toContain("Current Azure resource-level blocker");
-    expect(runbook).toContain("8b98a05ff92cf476c51600885d1360d33d09e1d4");
-    expect(runbook).toContain("Repository CI #707");
-    expect(runbook).toContain("Azure Static Web Apps deployment #456");
-    expect(runbook).toContain("Production Runtime Readiness #70");
-    expect(runbook).toContain("31625779916");
-    expect(runbook).toContain("gentle-tree-04b340f0f.7.azurestaticapps.net");
-    expect(runbook).toContain("HTTP 404");
-    expect(runbook).toContain("does not use `azure/login`");
-    expect(runbook).toContain("Diagnose and solve problems");
-    expect(runbook).toContain("Application Insights **Failures**");
-    expect(runbook).toContain("Do not downgrade Next.js without objective compatibility evidence");
-    expect(runbook).toContain("cannot prove which Azure resource/environment currently owns the reported hostname");
+    expect(runbook).toContain("Verified Vercel production runtime checkpoint");
+    expect(runbook).toContain("6ed2da05f2ef7259acc5617968480f3ecbaf2ada");
+    expect(runbook).toContain("Repository CI #712");
+    expect(runbook).toContain("dpl_CbkyoQKxbFaDbivGEv3jiSztsm2M");
+    expect(runbook).toContain("https://secondary-condition-finder.vercel.app");
+    expect(runbook).toContain("`/runtime-readiness=200`");
+    expect(runbook).toContain('data-runtime-readiness="ready"');
+    expect(runbook).toContain("Legacy Azure manual fallback");
+    expect(runbook).toContain("no `push` or `pull_request` trigger");
+    expect(runbook).not.toContain("Current Azure resource-level blocker");
   });
 });

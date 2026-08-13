@@ -9,9 +9,9 @@ Provide a repeatable 30–60 minute walkthrough showing the product's bounded cl
 Before the demo:
 
 - Use the deployed application on the exact green `main` commit selected for review.
-- Confirm normal repository CI and Azure deployment are green for that commit.
-- Confirm `/privacy`, `/terms`, `/about`, `/va-forms`, and `/va-reference` render.
-- Confirm `WORKFLOW_SESSION_SECRET` is configured in the production runtime.
+- Confirm normal repository CI and the Vercel production deployment are green for that same commit, and confirm the canonical production alias serves that deployment.
+- Confirm `/privacy`, `/terms`, `/about`, `/va-forms`, `/va-reference`, and `/runtime-readiness` render.
+- Require `/runtime-readiness` to return HTTP 200 with `data-runtime-readiness="ready"`; do not inspect or display the workflow-session secret value.
 - If demonstrating live sandbox-backed responses, close issue #189 first and use only approved sandbox credentials. Never display or print the API key.
 - Prepare one non-sensitive demonstration scenario. Do not use a real Veteran's PII, PHI, claim number, SSN, medical record, or service-history record.
 
@@ -92,6 +92,7 @@ Open `/privacy` and summarize:
 Explain credential handling:
 
 - server-only environment settings;
+- production runtime values are configured in the Vercel **Production** environment;
 - sandbox/production separation;
 - no `NEXT_PUBLIC_*` credential exposure;
 - no API key logging;
@@ -155,6 +156,8 @@ The application repeatedly states that it is a claim-preparation research aid, n
 
 The demo is ready when:
 
+- repository CI and the Vercel production deployment are green on the exact selected `main` commit;
+- the canonical production alias serves that Vercel deployment and `/runtime-readiness` reports `ready`;
 - all planned routes render without manual fixes;
 - secondary and presumptive scenarios complete without sensitive values in URLs;
 - both VA reference routes demonstrate sandbox-backed or clearly labeled fallback behavior;
