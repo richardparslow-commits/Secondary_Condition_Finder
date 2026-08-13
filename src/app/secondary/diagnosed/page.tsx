@@ -6,7 +6,12 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { mappedConditionIds } from "@/lib/kb/lookup";
 import { readSecondaryWorkflowSession } from "@/lib/secondary-workflow/session";
+import { secondaryValidationMessage } from "@/lib/secondary-workflow/validation";
 import { saveDiagnosedSelection } from "../actions";
+
+interface DiagnosedPageProps {
+  searchParams?: Promise<{ error?: string | string[] }>;
+}
 
 export const metadata: Metadata = {
   title: "Diagnosed Conditions | Secondary Condition Finder",
@@ -16,13 +21,15 @@ export const dynamic = "force-dynamic";
 const DATABASE_MAPPED_EXPLANATION =
   "Database mapped means this condition already has authored secondary-condition relationships in the knowledge base.";
 
-export default async function DiagnosedConditionsPage() {
+export default async function DiagnosedConditionsPage({ searchParams }: DiagnosedPageProps = {}) {
   const catalog = loadConditionCatalog();
   const mapped = mappedConditionIds(loadKnowledgeBase());
   const conditions = [...catalog].sort((a, b) => a.name.localeCompare(b.name));
   const session = await readSecondaryWorkflowSession();
   const selectedDiagnosed = new Set(session.diagnosedConditionIds ?? []);
   const selectedConditions = conditions.filter((condition) => selectedDiagnosed.has(condition.id));
+  const validationMessage = secondaryValidationMessage((await searchParams)?.error);
+  const validationId = validationMessage ? "diagnosed-validation-error" : undefined;
 
   return (
     <main>
@@ -36,7 +43,13 @@ export default async function DiagnosedConditionsPage() {
         <strong className="text-blue-700">1 Diagnosed</strong><span>2 Service-connected</span><span>3 Ratings</span><span>4 Documents</span><span>5 Suggestions</span><span>6 Evidence</span>
       </div>
 
-      <form action={saveDiagnosedSelection}>
+      {validationMessage && (
+        <div id={validationId} role="alert" className="ui-callout mb-5 text-sm">
+          <strong>Check this step:</strong> {validationMessage}
+        </div>
+      )}
+
+      <form action={saveDiagnosedSelection} aria-describedby={validationId}>
         <div className="ui-grid">
           <aside className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">How to Use This Step</h2></div>
@@ -48,7 +61,7 @@ export default async function DiagnosedConditionsPage() {
             <div className="ui-callout mt-6"><strong>Important note:</strong><p className="mt-1 text-sm">Do not include a condition solely because you suspect it. This tool does not diagnose conditions.</p></div>
           </aside>
 
-          <fieldset className="ui-card min-w-0 p-5">
+          <fieldset className="ui-card min-w-0 p-5" aria-describedby={validationId}>
             <legend className="sr-only">Diagnosed conditions</legend>
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><div><h2 className="text-xl font-bold">Select Diagnosed Conditions</h2><p className="text-sm text-slate-600">Choose one or more, then continue.</p></div></div>
             <div className="mb-4 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600">Browse {conditions.length} catalog conditions. The list does not infer diagnoses from free text.</div>
