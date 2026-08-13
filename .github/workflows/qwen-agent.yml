@@ -1,56 +1,17 @@
-name: Qwen Code Assistant
+name: Qwen Code Assistant (disabled)
 
 on:
-  issues:
-    types: [opened]
-  issue_comment:
-    types: [created]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  qwen-agent:
-    if: >-
-      contains(github.event.comment.body, '@qwencoder') ||
-      contains(github.event.issue.body, '@qwencoder')
+  disabled:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Run Qwen Code Action
-        uses: QwenLM/qwen-code-action@v1
-        with:
-          openai_api_key: ${{ secrets.QWEN_API_KEY }}
-          openai_base_url: ${{ secrets.QWEN_OPENAI_BASE_URL }}
-          openai_model: "qwen-plus"
-          qwen_debug: "true"
-          upload_artifacts: "true"
-          prompt: |
-            You are an autonomous AI coding agent operating inside a GitHub repository.
-
-            TASK:
-            Analyze the issue or comment that triggered this workflow.
-
-            RULES:
-            1. If asked to review, audit, or answer a question, write your
-               findings into a file called QWEN_AUDIT.md in the repository root.
-            2. If asked to fix, refactor, or implement code, modify the
-               relevant source files directly.
-            3. You MUST produce at least one file change.
-            4. Output every file change as a fenced code block where the
-               language tag is the file path, for example:
-
-               ```QWEN_AUDIT.md
-               # Audit Results
-               - Finding 1
-               - Finding 2
-               ```
-
-            5. Do NOT respond with prose only. A file block is required.
-            6. Be concise and specific.
+      - name: Explain disabled integration
+        run: |
+          echo "Qwen issue/comment automation is disabled."
+          echo "The previous workflow accepted issue content as instructions while holding repository write permissions."
+          echo "Re-enable only through a separately reviewed, read-only-by-default design with trusted-trigger authorization."
