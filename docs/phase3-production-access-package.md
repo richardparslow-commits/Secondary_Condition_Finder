@@ -6,12 +6,12 @@
 
 Credentialed live sandbox validation for VA Forms and Benefits Reference Data remains externally pending in issue #189. The repository implementation and manual smoke-test workflow are in place, but objective workflow history currently contains no completed credentialed run.
 
-The production workflow-session crypto path has now been verified on Vercel with non-sensitive runtime evidence. Issue #213 remains the exact-current-commit closure record until the production-readiness workflow re-verifies the final `main` commit after hosting finalization.
+The production workflow-session crypto path and exact-commit Vercel readiness lineage are operational. Issue #213 is a completed historical checkpoint; current production readiness is established continuously by successful `main` CI followed by Production Runtime Readiness on the same exact commit.
 
 Submission remains gated on:
 
 1. Recording successful non-sensitive credentialed sandbox smoke-test evidence in issue #189.
-2. Closing issue #213 on exact-current-commit Vercel production evidence from `docs/deployment-readiness.md`.
+2. Confirming the latest `main` commit has green repository CI, Vercel production deployment, and Production Runtime Readiness evidence on the same exact SHA.
 3. Completing the deployed-app manual accessibility/Section 508 review tracked in issue #195 and remediating/retesting material findings.
 4. Supplying truthful applicant/business information and absolute deployed URLs.
 5. Completing a final demo rehearsal against the deployed application.
@@ -82,22 +82,24 @@ Secondary and presumptive workflow state is stored only in short-lived first-par
 
 Optional evidence ingestion is processed locally in the browser. Supported PDF, DOCX, and text sources are parsed client-side; raw document bytes and raw document text are not submitted to application server state, URLs, cookies, telemetry, logs, or user accounts. Extracted excerpt objects are retained only temporarily in tab-scoped `sessionStorage` for the evidence-review step. PDF excerpts retain page provenance; DOCX excerpts retain deterministic paragraph provenance. Image-only PDF pages are reported as requiring OCR rather than silently treated as readable text.
 
+Local analysis is bounded to 20 MB per file, 10 selected files and 50 MB per batch, 300 pages per PDF source, 500,000 extracted or pasted characters per source, and 10 retained source analyses per browser tab.
+
 ### Application logging
 
-Recommendation event persistence is limited to aggregate operational counts. It does not retain condition identifiers, diagnoses, symptoms, medications, exposures, intake notes, service locations, or service dates.
+The repository contains a legacy aggregate event-logger abstraction, but repository code search shows no application caller and production does not rely on it as an active Veteran-data store, audit trail, or recommendation-history datastore. Do not describe dormant logger code as active production persistence.
 
 VA adapter observations are limited to operational metadata such as request ID, service, endpoint path, attempt, outcome/status, and duration. API keys, request query values, response bodies, and workflow selections are excluded from adapter observations.
 
 ### Browser telemetry
 
-When Application Insights is configured, route telemetry is sanitized and automatic AJAX/fetch tracking is disabled. Health/disability workflow state and service-history state are not intentionally attached to telemetry events.
+The application contains an optional Application Insights initializer that disables automatic route/AJAX/fetch tracking and strips query strings/fragments from telemetry URLs. The current production Content Security Policy uses `connect-src 'self'`, so the deployed browser policy does not authorize third-party Application Insights network transmission. Do not describe Application Insights as active production telemetry unless that CSP and deployment posture are deliberately changed in a separately reviewed privacy/security change.
 
 ### Retention and deletion
 
 - Workflow cookies expire after 30 minutes and are rejected if modified or invalid.
 - Browser-local evidence excerpts are temporary and tab-scoped; raw selected document bytes/text are not intentionally persisted by the application.
 - The current public-reference API integrations do not create a server-side Veteran profile or persistent Veteran-specific API record.
-- Aggregate operational metrics contain no condition identifiers or free-text intake content.
+- The legacy event-logger abstraction is not relied on as an active production datastore.
 - No VA API response body is intentionally persisted by the public-reference adapter.
 
 ## Credential handling
@@ -108,6 +110,8 @@ When Application Insights is configured, route telemetry is sanitized and automa
 - The current production host is Vercel; production-only runtime values are configured in the Vercel **Production** environment and activated through a new production deployment.
 - Credentials should be rotated if exposed, during security incident response, and on any schedule required by VA or the hosting environment.
 - Sandbox and production credentials must remain environment-separated.
+
+The repository's private vulnerability-reporting expectations are documented in `SECURITY.md`, and the operational incident/vulnerability process is documented in `docs/security-operations.md`.
 
 ## Authentication and authorization
 
@@ -133,12 +137,14 @@ Current repository controls include:
 - server-only API credentials;
 - encrypted/authenticated workflow cookies;
 - query-string minimization for health/disability and service-history state;
-- browser-local medical-evidence parsing with no raw document upload endpoint;
-- aggregate-only recommendation-event persistence;
-- baseline CSP, HSTS, frame-denial, referrer, content-type, and permissions headers;
+- browser-local medical-evidence parsing with no raw document upload endpoint and explicit resource ceilings;
+- source-restrictive production CSP with self-only browser connectivity, HSTS, frame denial, referrer, content-type, and permissions headers;
+- read-only active CI permissions and immutable pins for active CI marketplace actions;
 - dependency audit, citation audit, knowledge-base validation, lint, typecheck, tests, and production build in CI;
+- real Chrome/ChromeDriver end-to-end validation as part of the final CI gate;
 - explicit Node 22 runtime contract and Vercel-native standard Next.js build;
-- exact-commit Vercel deployment-status verification, production-alias convergence, and a non-sensitive runtime crypto self-test before production readiness is accepted.
+- exact-commit Vercel deployment-status verification, production-alias convergence, and a non-sensitive runtime crypto self-test before production readiness is accepted;
+- private vulnerability-reporting guidance in `SECURITY.md` and operational security handling in `docs/security-operations.md`.
 
 The former Azure Static Web Apps workflow is retained only as a manual legacy fallback and is no longer an automatic production deployment path.
 
@@ -172,21 +178,20 @@ Before the production form is submitted, complete issue #195 against the exact d
 
 ## Security and incident-response response
 
-For the VA form, describe the implemented preventive controls above and the operating response process:
+The operational process is defined in `SECURITY.md` and `docs/security-operations.md`. The production-access response should truthfully summarize that process: private vulnerability reporting, minimum/sanitized incident records, containment of the affected feature/integration/provider credential, reviewed remediation through the full CI gate, exact-commit Vercel/runtime-readiness recovery verification, and a post-incident control review.
 
-1. Revoke/rotate affected credentials.
-2. Contain the affected deployment or feature flag.
-3. Preserve non-sensitive diagnostic evidence.
-4. Patch and validate through the full CI gate.
-5. Redeploy and verify the exact production commit.
-6. Notify VA and affected parties when required by applicable policy, contract, or law.
+Do not place credentials, cookies, medical-record text, Veteran-specific data, or other sensitive payloads in public issues, PRs, CI logs, screenshots, or incident evidence merely for debugging.
+
+Any notification, contractual, or legal obligations must be determined from the facts of the incident and the applicable provider/VA agreement or instructions; do not invent a universal notification timeline.
 
 ## Vulnerability management response
 
-The repository performs high-severity dependency auditing in CI on every gated change. Security-relevant fixes are merged only after lint, typecheck, tests, build, and other repository gates pass. Vercel production deployments are verified against the exact `main` commit before runtime readiness is accepted.
+The repository performs high-severity dependency auditing in CI on every gated change. Active CI actions are immutable-pinned. Security-relevant fixes use reviewed PRs, exact-head validation, the full lint/typecheck/test/build/browser gate, and exact-commit Vercel plus Production Runtime Readiness verification after merge.
+
+A focused security/data-flow review is required before VA production-access submission, before enabling a new credentialed/external integration or persistent sensitive-data store, after a material architecture change, and after a security incident. The operating checklist is maintained in `docs/security-operations.md`.
 
 ## Current readiness status
 
-The Vercel production workflow-session crypto path has been verified with a reachable HTTP 200 `/runtime-readiness` page and the high-level `ready` marker on a green `main` commit. Issue #213 remains open only until the final hosting-contract commit is reverified and recorded automatically.
+The Vercel production workflow-session crypto path and trusted CI-to-runtime-readiness lineage have been verified on production. Issue #213 is a completed historical checkpoint, not a current blocker. Before submission, the latest `main` commit must still be rechecked for green CI, exact-commit Vercel production deployment, canonical-alias convergence, and Production Runtime Readiness.
 
 Credentialed live sandbox validation remains pending in issue #189. Production-access submission also remains blocked on manual accessibility/Section 508 evidence in issue #195, truthful applicant/business details and final absolute URLs, and the final demo rehearsal.
