@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import HomePage from "@/app/page";
+import SecondaryLegalPage from "@/app/secondary/legal/page";
 import SecondaryLandingPage from "@/app/secondary/page";
 import TermsPage from "@/app/terms/page";
 import { FORBIDDEN_PHRASES } from "@/lib/guardrails";
@@ -53,6 +54,19 @@ describe("legal copy contracts", () => {
       for (const citation of extractCitations(page)) {
         expect(allowed.has(citation)).toBe(true);
       }
+    }
+  });
+
+  it("never renders the retired invalid statutory placeholders", async () => {
+    const pages = [
+      renderToStaticMarkup(SecondaryLandingPage()),
+      renderToStaticMarkup(SecondaryLegalPage()),
+      renderToStaticMarkup(await TermsPage()),
+    ];
+
+    for (const page of pages) {
+      expect(page).not.toContain("81 U.S.C.");
+      expect(page).not.toContain("Pub. L. 109-4");
     }
   });
 

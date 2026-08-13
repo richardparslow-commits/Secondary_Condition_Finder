@@ -42,58 +42,42 @@ export const CANONICAL_REFERENCES: LegalReference[] = [
   },
   // Presumptive references remain explicitly unverified until qualified review.
   {
-    id: "81-us-c-1276d",
-    citation: "81 U.S.C. § 1276d",
-    title: "Agent Orange (Herbicide) Presumption",
-    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
+    id: "38-usc-1116",
+    citation: "38 U.S.C. § 1116",
+    title: "Herbicide-Agent Presumptions",
+    description: "Addresses presumptions of service connection for specified diseases associated with exposure to certain herbicide agents and covered service in specified locations.",
     sourceType: "Statute",
     verificationStatus: "unverified"
   },
   {
-    id: "pub-l-109-4-115",
-    citation: "Pub. L. 109-4 (38 U.S.C. 115)",
-    title: "Gulf War Presumption",
-    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
+    id: "38-usc-1116b",
+    citation: "38 U.S.C. § 1116B",
+    title: "Korean DMZ Herbicide Presumption",
+    description: "Addresses the presumption of herbicide exposure and specified disease service connection for qualifying veterans who served in or near the Korean Demilitarized Zone during the statutory period.",
     sourceType: "Statute",
     verificationStatus: "unverified"
   },
   {
-    id: "81-us-c-1276a",
-    citation: "81 U.S.C. § 1276a",
-    title: "Ionizing Radiation Presumption",
-    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
+    id: "38-usc-1117",
+    citation: "38 U.S.C. § 1117",
+    title: "Persian Gulf War Qualifying Chronic Disabilities",
+    description: "Authorizes compensation for qualifying chronic disabilities in Persian Gulf veterans, including undiagnosed illness and specified medically unexplained chronic multisymptom illnesses.",
     sourceType: "Statute",
     verificationStatus: "unverified"
   },
   {
-    id: "81-us-c-1276d-e",
-    citation: "81 U.S.C. § 1276d(e)",
-    title: "Agent Orange Presumptive Service Connection",
-    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
+    id: "38-usc-1112-c",
+    citation: "38 U.S.C. § 1112(c)",
+    title: "Radiation-Exposed Veteran Presumptions",
+    description: "Provides presumptions for specified diseases becoming manifest in a radiation-exposed veteran, subject to the statutory requirements.",
     sourceType: "Statute",
     verificationStatus: "unverified"
   },
   {
-    id: "81-us-c-1276-b",
-    citation: "81 U.S.C. § 1276(b)",
-    title: "Vietnam Era Presumption (Agent Orange)",
-    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
-    sourceType: "Statute",
-    verificationStatus: "unverified"
-  },
-  {
-    id: "81-us-c-1276-c",
-    citation: "81 U.S.C. § 1276(c)",
-    title: "Vietnam Era Presumption",
-    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
-    sourceType: "Statute",
-    verificationStatus: "unverified"
-  },
-  {
-    id: "81-us-c-1276-d",
-    citation: "81 U.S.C. § 1276(d)",
-    title: "Vietnam Era Presumption",
-    description: "Presumptive service connection reference requiring qualified-source review before publication as verified.",
+    id: "38-usc-1120",
+    citation: "38 U.S.C. § 1120",
+    title: "Burn Pit and Other Toxic-Exposure Presumptions",
+    description: "Provides presumptions of service connection for specified diseases associated with exposure to burn pits and other toxins in covered veterans.",
     sourceType: "Statute",
     verificationStatus: "unverified"
   },
