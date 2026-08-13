@@ -17,6 +17,16 @@ describe("VA sandbox smoke workflow", () => {
     expect(workflow).not.toContain("NEXT_PUBLIC_VA_SANDBOX_API_KEY");
   });
 
+  it("enforces the issue 189 sandbox-mode execution precondition", () => {
+    expect(workflow).toContain("VA_SANDBOX_ENABLED: 'true'");
+    expect(workflow).toContain(
+      'if [ "${VA_SANDBOX_ENABLED:-}" != "true" ]; then',
+    );
+    expect(workflow).toContain(
+      "VA sandbox smoke test must run with VA_SANDBOX_ENABLED=true.",
+    );
+  });
+
   it("exercises only the two approved low-sensitivity sandbox endpoints", () => {
     expect(workflow).toContain(
       "https://sandbox-api.va.gov/services/va_forms/v0/forms?query=21-526EZ",
@@ -31,6 +41,7 @@ describe("VA sandbox smoke workflow", () => {
 
   it("records sanitized evidence without persisting raw response files", () => {
     expect(workflow).toContain("GITHUB_STEP_SUMMARY");
+    expect(workflow).toContain("Sandbox mode: enabled for this dedicated smoke-test execution.");
     expect(workflow).toContain("gh issue comment 189");
     expect(workflow).toContain("gh issue close 189 --reason completed");
     expect(workflow).toContain("Raw response payloads and the API key were not retained");

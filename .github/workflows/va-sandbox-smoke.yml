@@ -13,12 +13,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
+      VA_SANDBOX_ENABLED: 'true'
       VA_SANDBOX_API_KEY: ${{ secrets.VA_SANDBOX_API_KEY }}
     steps:
-      - name: Require sandbox API key
+      - name: Require sandbox mode and API key
         shell: bash
         run: |
           set -euo pipefail
+          if [ "${VA_SANDBOX_ENABLED:-}" != "true" ]; then
+            echo "::error::VA sandbox smoke test must run with VA_SANDBOX_ENABLED=true."
+            exit 1
+          fi
           if [ -z "${VA_SANDBOX_API_KEY:-}" ]; then
             echo "::error::Repository secret VA_SANDBOX_API_KEY is not configured."
             exit 1
@@ -95,6 +100,7 @@ jobs:
             echo "# VA sandbox smoke-test evidence"
             echo
             echo "- Timestamp (UTC): ${timestamp}"
+            echo "- Sandbox mode: enabled for this dedicated smoke-test execution."
             echo "- VA Forms: HTTP ${forms_status}; request ID \`${forms_request_id}\`; validated result count ${forms_count}."
             echo "- Benefits Reference Data: HTTP ${reference_status}; request ID \`${reference_request_id}\`; validated result count ${reference_count}."
             echo "- Raw response payloads and the API key were not retained as workflow artifacts or written to this summary."
@@ -119,6 +125,7 @@ jobs:
           Credentialed VA sandbox smoke test passed.
 
           - Timestamp (UTC): ${TIMESTAMP}
+          - Sandbox mode: enabled for this dedicated smoke-test execution.
           - VA Forms: HTTP ${FORMS_STATUS}; request ID \`${FORMS_REQUEST_ID}\`; validated result count ${FORMS_COUNT}.
           - Benefits Reference Data: HTTP ${REFERENCE_STATUS}; request ID \`${REFERENCE_REQUEST_ID}\`; validated result count ${REFERENCE_COUNT}.
           - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
