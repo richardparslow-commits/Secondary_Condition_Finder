@@ -155,7 +155,7 @@ async function runJourney() {
     true,
   );
   await setSelected(
-    "//label[contains(normalize-space(.), 'Radiculopathy')]//input[@type='checkbox']",
+    "//label[contains(normalize-space(.), 'radiculopathy')]//input[@type='checkbox']",
     true,
   );
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 2')]");
@@ -166,7 +166,7 @@ async function runJourney() {
     true,
   );
   await setSelected(
-    "//fieldset[.//legend[contains(normalize-space(.), 'Radiculopathy')]]//input[@value='no']",
+    "//fieldset[.//legend[contains(normalize-space(.), 'radiculopathy')]]//input[@value='no']",
     true,
   );
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 3')]");
@@ -185,7 +185,7 @@ async function runJourney() {
     "Secondary Suggestions",
     "Already diagnosed, not yet service connected",
     "Lumbar Strain",
-    "Radiculopathy",
+    "radiculopathy",
     "Published Secondary Pathways",
   ];
   for (const phrase of expected) {
