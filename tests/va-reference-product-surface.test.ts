@@ -36,6 +36,17 @@ describe("VA reference product surfaces", () => {
     expect(layout).toContain('href="/va-forms/finder"');
   });
 
+  it("adds exact VA terminology status to the existing local-only reference filter", () => {
+    const explorer = source("src/components/va/DisabilityReferenceExplorer.tsx");
+    const suggestionsLayout = source("src/app/secondary/suggestions/layout.tsx");
+
+    expect(explorer).toContain("matchExactVaReferenceTerm(query, items)");
+    expect(explorer).toContain("Exact VA reference match");
+    expect(explorer).toContain("ID {exactMatch.id}");
+    expect(suggestionsLayout).toContain('href="/va-reference"');
+    expect(suggestionsLayout).toContain("Compare a suggestion name");
+  });
+
   it("exposes standardized service-branch reference data beside the service-history workflow", () => {
     const loader = source("src/lib/va/service-branches.ts");
     const page = source("src/app/va-reference/service-branches/page.tsx");
