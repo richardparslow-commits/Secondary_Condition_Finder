@@ -11,7 +11,6 @@ concurrency:
 
 permissions:
   contents: read
-  issues: write
 
 jobs:
   verify:
@@ -133,46 +132,6 @@ jobs:
             ci-*.log
             ci-diagnostic-summary.md
           retention-days: 14
-      - name: Ensure CI labels exist
-        if: always()
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh label create "ci-failure" --color "d73a49" --description "CI pipeline failure" --force 2>/dev/null || true
-          gh label create "ci-flaky" --color "fbca04" --description "CI test passed only after a retry" --force 2>/dev/null || true
-      - name: Create failure or flaky issue
-        if: always()
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          FAILED_STEPS=""
-          [ "${{ steps.install.outcome }}" = "failure" ] && FAILED_STEPS="install"
-          [ "${{ steps.audit.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }audit"
-          [ "${{ steps.citations.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }citations"
-          [ "${{ steps.kb_validate.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }kb-validate"
-          [ "${{ steps.lint.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }lint"
-          [ "${{ steps.typecheck.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }typecheck"
-          [ "${{ steps.test.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }test"
-          [ "${{ steps.build.outcome }}" = "failure" ] && FAILED_STEPS="${FAILED_STEPS:+$FAILED_STEPS, }build"
-          {
-            echo "**Branch:** ${GITHUB_REF_NAME}"
-            echo "**Commit:** [${GITHUB_SHA::7}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA})"
-            echo "**Run:** ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-            echo "**Diagnostics artifact:** ci-diagnostics-${GITHUB_RUN_ID}"
-            echo
-            echo "## Diagnostic summary"
-            cat ci-diagnostic-summary.md
-          } > ci-issue-body.md
-          if [ -n "$FAILED_STEPS" ]; then
-            ISSUE_TITLE="CI failure: ${FAILED_STEPS} [${GITHUB_SHA::7}]"
-            EXISTING_ISSUE=$(gh issue list --state open --label ci-failure --search "in:title ${ISSUE_TITLE}" --json number --jq '.[0].number')
-            if [ -z "$EXISTING_ISSUE" ]; then gh issue create --title "$ISSUE_TITLE" --body-file ci-issue-body.md --label "ci-failure"; else echo "An open CI failure issue already exists (#${EXISTING_ISSUE}); not creating a duplicate."; fi
-          elif [ "${{ steps.test.outputs.flaky }}" = "true" ]; then
-            ISSUE_TITLE="Flaky test detected [${GITHUB_SHA::7}]"
-            EXISTING_ISSUE=$(gh issue list --state open --label ci-flaky --search "in:title ${ISSUE_TITLE}" --json number --jq '.[0].number')
-            if [ -z "$EXISTING_ISSUE" ]; then gh issue create --title "$ISSUE_TITLE" --body-file ci-issue-body.md --label "ci-flaky"; else echo "An open flaky-test issue already exists (#${EXISTING_ISSUE}); not creating a duplicate."; fi
-          fi
       - name: Fail the job if any gate failed
         if: always()
         run: |
