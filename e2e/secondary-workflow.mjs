@@ -10,6 +10,9 @@ const APP_BASE_URL = `http://127.0.0.1:${APP_PORT}`;
 const DRIVER_BASE_URL = `http://127.0.0.1:${DRIVER_PORT}`;
 const WAIT_TIMEOUT_MS = 30_000;
 const WEBDRIVER_COMMAND_TIMEOUT_MS = 15_000;
+const WEBDRIVER_SESSION_TIMEOUT_MS = 30_000;
+const WEBDRIVER_SESSION_ATTEMPTS = 2;
+const WEBDRIVER_SESSION_RETRY_DELAY_MS = 1_000;
 const WORKFLOW_SESSION_SECRET =
   process.env.WORKFLOW_SESSION_SECRET ??
   "browser-e2e-workflow-secret-only-for-local-ci-2026";
@@ -65,14 +68,14 @@ async function waitForHttp(url, label) {
   throw new Error(`${label} did not become ready: ${lastError?.message ?? "timeout"}`);
 }
 
-async function webdriver(method, endpoint, body) {
+async function webdriver(method, endpoint, body, timeoutMs = WEBDRIVER_COMMAND_TIMEOUT_MS) {
   let response;
   try {
     response = await fetch(`${DRIVER_BASE_URL}${endpoint}`, {
       method,
       headers: body === undefined ? undefined : { "content-type": "application/json" },
       body: body === undefined ? undefined : JSON.stringify(body),
-      signal: AbortSignal.timeout(WEBDRIVER_COMMAND_TIMEOUT_MS),
+      signal: AbortSignal.timeout(timeoutMs),
     });
   } catch (error) {
     throw new Error(
@@ -86,6 +89,56 @@ async function webdriver(method, endpoint, body) {
     throw new Error(`WebDriver ${method} ${endpoint} failed: ${error}`);
   }
   return payload.value;
+}
+
+function isTransientSessionTransportError(error) {
+  return (
+    error instanceof Error &&
+    error.message.startsWith("WebDriver POST /session request failed or timed out:")
+  );
+}
+
+async function createWebDriverSession() {
+  const request = {
+    capabilities: {
+      alwaysMatch: {
+        browserName: "chrome",
+        "goog:chromeOptions": {
+          args: [
+            "--headless=new",
+            "--no-sandbox",
+            "--disable-dev-shm-usage",
+            "--window-size=1440,1200",
+          ],
+        },
+      },
+    },
+  };
+
+  let lastError;
+  for (let attempt = 1; attempt <= WEBDRIVER_SESSION_ATTEMPTS; attempt += 1) {
+    try {
+      return await webdriver(
+        "POST",
+        "/session",
+        request,
+        WEBDRIVER_SESSION_TIMEOUT_MS,
+      );
+    } catch (error) {
+      lastError = error;
+      if (!isTransientSessionTransportError(error) || attempt === WEBDRIVER_SESSION_ATTEMPTS) {
+        throw error;
+      }
+
+      checkpoint(
+        `Chrome session startup transport failed on attempt ${attempt}/${WEBDRIVER_SESSION_ATTEMPTS}; retrying once`,
+      );
+      await delay(WEBDRIVER_SESSION_RETRY_DELAY_MS);
+      await waitForHttp(`${DRIVER_BASE_URL}/status`, "ChromeDriver after session-start retry");
+    }
+  }
+
+  throw lastError ?? new Error("ChromeDriver session creation failed without an error.");
 }
 
 async function findByXpath(xpath, timeoutMs = 10_000) {
@@ -270,21 +323,7 @@ async function main() {
     waitForHttp(`${DRIVER_BASE_URL}/status`, "ChromeDriver"),
   ]);
 
-  const session = await webdriver("POST", "/session", {
-    capabilities: {
-      alwaysMatch: {
-        browserName: "chrome",
-        "goog:chromeOptions": {
-          args: [
-            "--headless=new",
-            "--no-sandbox",
-            "--disable-dev-shm-usage",
-            "--window-size=1440,1200",
-          ],
-        },
-      },
-    },
-  });
+  const session = await createWebDriverSession();
   sessionId = session.sessionId;
   if (!sessionId) throw new Error("ChromeDriver did not return a WebDriver session id.");
 
