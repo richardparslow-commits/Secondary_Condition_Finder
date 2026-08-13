@@ -13,6 +13,8 @@ const WORKFLOW_SESSION_SECRET =
   process.env.WORKFLOW_SESSION_SECRET ??
   "browser-e2e-workflow-secret-only-for-local-ci-2026";
 
+const PRIMARY_CONDITION = "Post-Traumatic Stress Disorder (PTSD)";
+const DIAGNOSED_SECONDARY = "Sleep Apnea (Obstructive, Central, Mixed)";
 const children = [];
 let sessionId;
 
@@ -119,9 +121,9 @@ async function bodyText() {
   return webdriver("GET", `/session/${sessionId}/element/${body}/text`);
 }
 
-async function selectRating(value) {
+async function selectPrimaryRating(value) {
   const selectId = await findByXpath(
-    "//label[contains(normalize-space(.), 'Rating for Lumbar Strain')]/following-sibling::select",
+    `//label[contains(normalize-space(.), 'Rating for ${PRIMARY_CONDITION}')]/following-sibling::select`,
   );
   const selectedValue = await webdriver(
     "POST",
@@ -151,28 +153,28 @@ async function runJourney() {
   await waitForPath("/secondary/diagnosed");
 
   await setSelected(
-    "//label[contains(normalize-space(.), 'Lumbar Strain')]//input[@type='checkbox']",
+    `//label[contains(normalize-space(.), '${PRIMARY_CONDITION}')]//input[@type='checkbox']`,
     true,
   );
   await setSelected(
-    "//label[contains(normalize-space(.), 'radiculopathy')]//input[@type='checkbox']",
+    `//label[contains(normalize-space(.), '${DIAGNOSED_SECONDARY}')]//input[@type='checkbox']`,
     true,
   );
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 2')]");
   await waitForPath("/secondary/service-connected");
 
   await setSelected(
-    "//fieldset[.//legend[contains(normalize-space(.), 'Lumbar Strain')]]//input[@value='yes']",
+    `//fieldset[.//legend[contains(normalize-space(.), '${PRIMARY_CONDITION}')]]//input[@value='yes']`,
     true,
   );
   await setSelected(
-    "//fieldset[.//legend[contains(normalize-space(.), 'radiculopathy')]]//input[@value='no']",
+    `//fieldset[.//legend[contains(normalize-space(.), '${DIAGNOSED_SECONDARY}')]]//input[@value='no']`,
     true,
   );
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 3')]");
   await waitForPath("/secondary/ratings");
 
-  await selectRating("40");
+  await selectPrimaryRating("70");
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 4')]");
   await waitForPath("/secondary/upload");
 
@@ -184,8 +186,8 @@ async function runJourney() {
   const expected = [
     "Secondary Suggestions",
     "Already diagnosed, not yet service connected",
-    "Lumbar Strain",
-    "radiculopathy",
+    PRIMARY_CONDITION,
+    DIAGNOSED_SECONDARY,
     "Published Secondary Pathways",
   ];
   for (const phrase of expected) {
