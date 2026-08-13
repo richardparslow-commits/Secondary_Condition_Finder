@@ -9,6 +9,7 @@ const DRIVER_PORT = Number(process.env.E2E_DRIVER_PORT ?? 9515);
 const APP_BASE_URL = `http://127.0.0.1:${APP_PORT}`;
 const DRIVER_BASE_URL = `http://127.0.0.1:${DRIVER_PORT}`;
 const WAIT_TIMEOUT_MS = 30_000;
+const WEBDRIVER_COMMAND_TIMEOUT_MS = 15_000;
 const WORKFLOW_SESSION_SECRET =
   process.env.WORKFLOW_SESSION_SECRET ??
   "browser-e2e-workflow-secret-only-for-local-ci-2026";
@@ -17,6 +18,10 @@ const PRIMARY_CONDITION = "Post-Traumatic Stress Disorder (PTSD)";
 const DIAGNOSED_SECONDARY = "Sleep Apnea (Obstructive, Central, Mixed)";
 const children = [];
 let sessionId;
+
+function checkpoint(message) {
+  console.log(`[journey] ${message}`);
+}
 
 function logProcess(label, child) {
   child.stdout?.on("data", (chunk) => process.stdout.write(`[${label}] ${chunk}`));
@@ -46,7 +51,10 @@ async function waitForHttp(url, label) {
   let lastError;
   while (Date.now() < deadline) {
     try {
-      const response = await fetch(url, { redirect: "manual" });
+      const response = await fetch(url, {
+        redirect: "manual",
+        signal: AbortSignal.timeout(2_000),
+      });
       if (response.status >= 200 && response.status < 500) return;
       lastError = new Error(`${label} returned HTTP ${response.status}`);
     } catch (error) {
@@ -58,11 +66,20 @@ async function waitForHttp(url, label) {
 }
 
 async function webdriver(method, endpoint, body) {
-  const response = await fetch(`${DRIVER_BASE_URL}${endpoint}`, {
-    method,
-    headers: body === undefined ? undefined : { "content-type": "application/json" },
-    body: body === undefined ? undefined : JSON.stringify(body),
-  });
+  let response;
+  try {
+    response = await fetch(`${DRIVER_BASE_URL}${endpoint}`, {
+      method,
+      headers: body === undefined ? undefined : { "content-type": "application/json" },
+      body: body === undefined ? undefined : JSON.stringify(body),
+      signal: AbortSignal.timeout(WEBDRIVER_COMMAND_TIMEOUT_MS),
+    });
+  } catch (error) {
+    throw new Error(
+      `WebDriver ${method} ${endpoint} request failed or timed out: ${error instanceof Error ? error.message : String(error)}`,
+    );
+  }
+
   const payload = await response.json();
   if (!response.ok || payload.value?.error) {
     const error = payload.value?.message ?? JSON.stringify(payload.value ?? payload);
@@ -145,12 +162,15 @@ async function selectPrimaryRating(value) {
 }
 
 async function runJourney() {
+  checkpoint("open home");
   await webdriver("POST", `/session/${sessionId}/url`, { url: APP_BASE_URL });
   await clickXpath("//a[contains(normalize-space(.), 'Proceed to Wizard Step 1')]");
   await waitForPath("/secondary");
+  checkpoint("reached secondary landing");
 
   await clickXpath("//a[@href='/secondary/diagnosed']");
   await waitForPath("/secondary/diagnosed");
+  checkpoint("reached diagnosed conditions");
 
   await setSelected(
     `//label[contains(normalize-space(.), '${PRIMARY_CONDITION}')]//input[@type='checkbox']`,
@@ -160,8 +180,10 @@ async function runJourney() {
     `//label[contains(normalize-space(.), '${DIAGNOSED_SECONDARY}')]//input[@type='checkbox']`,
     true,
   );
+  checkpoint("selected diagnosed fixture conditions");
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 2')]");
   await waitForPath("/secondary/service-connected");
+  checkpoint("reached service-connected status");
 
   await setSelected(
     `//fieldset[.//legend[contains(normalize-space(.), '${PRIMARY_CONDITION}')]]//input[@value='yes']`,
@@ -171,16 +193,20 @@ async function runJourney() {
     `//fieldset[.//legend[contains(normalize-space(.), '${DIAGNOSED_SECONDARY}')]]//input[@value='no']`,
     true,
   );
+  checkpoint("set service-connected fixture status");
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 3')]");
   await waitForPath("/secondary/ratings");
+  checkpoint("reached ratings");
 
   await selectPrimaryRating("70");
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 4')]");
   await waitForPath("/secondary/upload");
+  checkpoint("reached document choice");
 
   await setSelected("//input[@name='documentsShared' and @value='no']", true);
   await clickXpath("//button[contains(normalize-space(.), 'View Suggestions')]");
   await waitForPath("/secondary/suggestions");
+  checkpoint("reached suggestions");
 
   const text = await bodyText();
   const expected = [
