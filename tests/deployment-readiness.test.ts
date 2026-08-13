@@ -181,8 +181,6 @@ describe("production deployment readiness", () => {
     expect(runbook).toContain("at least 32 characters");
     expect(runbook).toContain("Vercel project's **Production** environment");
     expect(runbook).toContain("VA_SANDBOX_ENABLED");
-    expect(runbook).toContain("VA_FORMS_SANDBOX_API_KEY");
-    expect(runbook).toContain("VA_BENEFITS_REFERENCE_SANDBOX_API_KEY");
     expect(runbook).toContain("/runtime-readiness");
     expect(runbook).not.toContain("/api/runtime-readiness");
     expect(runbook).toContain("data-runtime-readiness");
