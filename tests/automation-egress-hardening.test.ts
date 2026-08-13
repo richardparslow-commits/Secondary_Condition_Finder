@@ -65,4 +65,21 @@ describe("automation and CI hardening", () => {
     expect(browserJourney).toContain("chromedriver");
     expect(browserJourney).toContain("/session/${sessionId}/element");
   });
+
+  it("bounds Chrome session startup retries without retrying browser journey failures", () => {
+    const browserJourney = read("e2e/secondary-workflow.mjs");
+
+    expect(browserJourney).toContain("const WEBDRIVER_SESSION_TIMEOUT_MS = 30_000;");
+    expect(browserJourney).toContain("const WEBDRIVER_SESSION_ATTEMPTS = 2;");
+    expect(browserJourney).toContain("function isTransientSessionTransportError(error)");
+    expect(browserJourney).toContain(
+      'error.message.startsWith("WebDriver POST /session request failed or timed out:")',
+    );
+    expect(browserJourney).toContain(
+      "if (!isTransientSessionTransportError(error) || attempt === WEBDRIVER_SESSION_ATTEMPTS)",
+    );
+    expect(browserJourney).toContain("const session = await createWebDriverSession();");
+    expect(browserJourney).toContain("await runJourney();");
+    expect(browserJourney).not.toContain("runJourneyAttempt");
+  });
 });
