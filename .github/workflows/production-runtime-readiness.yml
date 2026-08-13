@@ -3,25 +3,169 @@ name: Production Runtime Readiness
 on:
   workflow_run:
     workflows:
-      - Azure Static Web Apps CI/CD
+      - CI
     types:
       - completed
+  workflow_dispatch:
+    inputs:
+      deployed_commit:
+        description: 'Optional exact commit SHA to verify; defaults to the selected workflow ref'
+        required: false
+        type: string
 
 permissions:
   contents: read
+  statuses: read
   issues: write
 
 jobs:
   verify-runtime:
     if: >-
-      github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.head_branch == 'main'
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 12
     env:
-      PRODUCTION_BASE_URL: https://gentle-tree-04b340f0f.7.azurestaticapps.net
+      PRODUCTION_BASE_URL: https://secondary-condition-finder.vercel.app
       RUNTIME_READINESS_ISSUE: '213'
     steps:
+      - name: Resolve intended production commit
+        id: commit
+        env:
+          WORKFLOW_RUN_SHA: ${{ github.event.workflow_run.head_sha }}
+          DISPATCH_SHA: ${{ inputs.deployed_commit }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            commit_sha="${DISPATCH_SHA:-$GITHUB_SHA}"
+          else
+            commit_sha="$WORKFLOW_RUN_SHA"
+          fi
+
+          if ! [[ "$commit_sha" =~ ^[0-9a-fA-F]{40}$ ]]; then
+            echo "Resolved production commit is not a full 40-character SHA." >&2
+            exit 1
+          fi
+
+          echo "sha=$commit_sha" >> "$GITHUB_OUTPUT"
+          echo "Resolved production commit: $commit_sha" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Wait for exact-commit Vercel deployment status
+        id: vercel
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COMMIT_SHA: ${{ steps.commit.outputs.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          vercel_state="missing"
+          vercel_target_url=""
+
+          for attempt in $(seq 1 30); do
+            status_json="$(gh api "repos/$GITHUB_REPOSITORY/commits/$COMMIT_SHA/status")"
+            vercel_state="$(jq -r '[.statuses[] | select(.context == "Vercel")][0].state // "missing"' <<< "$status_json")"
+            vercel_target_url="$(jq -r '[.statuses[] | select(.context == "Vercel")][0].target_url // ""' <<< "$status_json")"
+
+            case "$vercel_state" in
+              success)
+                break
+                ;;
+              error|failure)
+                echo "Vercel reported terminal state '$vercel_state' for $COMMIT_SHA." >&2
+                exit 1
+                ;;
+              *)
+                if [ "$attempt" -eq 30 ]; then
+                  echo "Timed out waiting for Vercel success on $COMMIT_SHA; last state: $vercel_state." >&2
+                  exit 1
+                fi
+                sleep 10
+                ;;
+            esac
+          done
+
+          if [ -z "$vercel_target_url" ]; then
+            echo "Vercel success status did not include a deployment target URL." >&2
+            exit 1
+          fi
+
+          deployment_slug="${vercel_target_url##*/}"
+          deployment_slug="${deployment_slug%%\?*}"
+          if [ -z "$deployment_slug" ]; then
+            echo "Unable to derive the Vercel deployment identifier from the status target." >&2
+            exit 1
+          fi
+
+          deployment_id="dpl_$deployment_slug"
+          echo "state=$vercel_state" >> "$GITHUB_OUTPUT"
+          echo "target_url=$vercel_target_url" >> "$GITHUB_OUTPUT"
+          echo "deployment_id=$deployment_id" >> "$GITHUB_OUTPUT"
+
+          {
+            echo "## Exact-commit Vercel deployment"
+            echo "- commit: $COMMIT_SHA"
+            echo "- Vercel commit status: $vercel_state"
+            echo "- expected production deployment: $deployment_id"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Wait for production alias to serve exact Vercel deployment
+        id: production
+        env:
+          EXPECTED_DEPLOYMENT_ID: ${{ steps.vercel.outputs.deployment_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          tmp_dir="$(mktemp -d)"
+          trap 'rm -rf "$tmp_dir"' EXIT
+          body_file="$tmp_dir/root.html"
+
+          http_status="000"
+          served_deployment=""
+
+          for attempt in $(seq 1 30); do
+            set +e
+            http_status="$(curl --silent --show-error --location \
+              --connect-timeout 10 \
+              --max-time 20 \
+              --header 'Accept: text/html' \
+              --output "$body_file" \
+              --write-out '%{http_code}' \
+              "$PRODUCTION_BASE_URL/")"
+            curl_status=$?
+            set -e
+
+            if [ "$curl_status" -eq 0 ] && [ "$http_status" = "200" ]; then
+              served_deployment="$(grep -o 'data-dpl-id="[^"]*"' "$body_file" | head -n 1 | cut -d '"' -f 2 || true)"
+              if [ "$served_deployment" = "$EXPECTED_DEPLOYMENT_ID" ]; then
+                break
+              fi
+            fi
+
+            if [ "$attempt" -eq 30 ]; then
+              echo "Production alias did not converge on $EXPECTED_DEPLOYMENT_ID within the wait window." >&2
+              echo "Last HTTP status: $http_status" >&2
+              echo "Last observed deployment: ${served_deployment:-unresolved}" >&2
+              exit 1
+            fi
+
+            sleep 10
+          done
+
+          echo "http_status=$http_status" >> "$GITHUB_OUTPUT"
+          echo "deployment_id=$served_deployment" >> "$GITHUB_OUTPUT"
+
+          {
+            echo "## Production alias convergence"
+            echo "- production URL: $PRODUCTION_BASE_URL"
+            echo "- HTTP status: $http_status"
+            echo "- served Vercel deployment: $served_deployment"
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Probe production route matrix
         id: routes
         shell: bash
@@ -104,8 +248,8 @@ jobs:
 
           {
             echo "## Production runtime readiness"
-            echo "- deployed commit: ${{ github.event.workflow_run.head_sha }}"
-            echo "- Azure deployment run: ${{ github.event.workflow_run.id }}"
+            echo "- deployed commit: ${{ steps.commit.outputs.sha }}"
+            echo "- Vercel deployment: ${{ steps.vercel.outputs.deployment_id }}"
             echo "- request outcome: $outcome"
             echo "- HTTP status: $http_status"
             echo "- workflow-session crypto: $ready"
@@ -116,9 +260,17 @@ jobs:
           fi
 
       - name: Record failed runtime evidence
-        if: failure() && steps.readiness.outputs.ready != 'true'
+        if: failure()
         env:
           GH_TOKEN: ${{ github.token }}
+          DEPLOYED_COMMIT: ${{ steps.commit.outputs.sha }}
+          VERCEL_DEPLOYMENT: ${{ steps.vercel.outputs.deployment_id }}
+          VERCEL_STATE: ${{ steps.vercel.outputs.state }}
+          ROOT_STATUS: ${{ steps.routes.outputs.root_status }}
+          ABOUT_STATUS: ${{ steps.routes.outputs.about_status }}
+          VA_FORMS_STATUS: ${{ steps.routes.outputs.va_forms_status }}
+          READINESS_OUTCOME: ${{ steps.readiness.outputs.outcome }}
+          READINESS_HTTP_STATUS: ${{ steps.readiness.outputs.http_status }}
         shell: bash
         run: |
           set -euo pipefail
@@ -127,15 +279,15 @@ jobs:
           Production runtime readiness did not satisfy the gate.
 
           - Timestamp (UTC): $timestamp
-          - Deployed commit: \`${{ github.event.workflow_run.head_sha }}\`
+          - Deployed commit: \`${DEPLOYED_COMMIT:-unresolved}\`
           - Production URL: \`$PRODUCTION_BASE_URL\`
-          - Azure deployment run: #${{ github.event.workflow_run.run_number }} (run ${{ github.event.workflow_run.id }})
-          - Route matrix: \`/=${{ steps.routes.outputs.root_status }}\`, \`/about=${{ steps.routes.outputs.about_status }}\`, \`/va-forms=${{ steps.routes.outputs.va_forms_status }}\`
-          - Readiness request outcome: \`${{ steps.readiness.outputs.outcome }}\`
-          - Readiness HTTP status: \`${{ steps.readiness.outputs.http_status }}\`
-          - Workflow-session crypto readiness: \`false\`
+          - Vercel deployment: \`${VERCEL_DEPLOYMENT:-unresolved}\`
+          - Vercel commit status: \`${VERCEL_STATE:-unresolved}\`
+          - Route matrix: \`/=${ROOT_STATUS:-unresolved}\`, \`/about=${ABOUT_STATUS:-unresolved}\`, \`/va-forms=${VA_FORMS_STATUS:-unresolved}\`
+          - Readiness request outcome: \`${READINESS_OUTCOME:-unresolved}\`
+          - Readiness HTTP status: \`${READINESS_HTTP_STATUS:-unresolved}\`
 
-          Route probes record status codes only. The readiness response body was not printed or attached. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded. The gate remains open.
+          Route probes record status codes only. Temporary response bodies are deleted and are not printed or attached. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded. The gate remains open.
           EOF
 
           gh issue comment "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY" --body-file runtime-failure.md
@@ -152,15 +304,16 @@ jobs:
           Production runtime readiness verified with non-sensitive evidence.
 
           - Timestamp (UTC): $timestamp
-          - Deployed commit: \`${{ github.event.workflow_run.head_sha }}\`
+          - Deployed commit: \`${{ steps.commit.outputs.sha }}\`
           - Production URL: \`$PRODUCTION_BASE_URL\`
-          - Azure deployment run: #${{ github.event.workflow_run.run_number }} (run ${{ github.event.workflow_run.id }})
+          - Vercel deployment: \`${{ steps.vercel.outputs.deployment_id }}\`
+          - Vercel commit status: \`${{ steps.vercel.outputs.state }}\`
           - Route matrix: \`/=${{ steps.routes.outputs.root_status }}\`, \`/about=${{ steps.routes.outputs.about_status }}\`, \`/va-forms=${{ steps.routes.outputs.va_forms_status }}\`
           - Runtime readiness HTTP status: ${{ steps.readiness.outputs.http_status }}
           - Readiness status: \`ready\`
           - Workflow-session crypto round trip: \`true\`
 
-          Route probes record status codes only. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded.
+          The production alias was confirmed to serve the Vercel deployment associated with the exact commit status before the readiness probe ran. Route probes record status codes only. Temporary response bodies are deleted and are not printed or attached. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded.
           EOF
 
           gh issue comment "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY" --body-file runtime-evidence.md
