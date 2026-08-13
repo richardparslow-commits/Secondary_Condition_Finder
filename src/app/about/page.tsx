@@ -1,4 +1,9 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About | Secondary Condition Finder",
+};
 
 export default function AboutPage() {
   return (
