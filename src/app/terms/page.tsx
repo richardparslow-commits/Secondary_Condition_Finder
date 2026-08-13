@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
@@ -16,6 +17,10 @@ const SECONDARY_LEGAL_REFERENCE_IDS = [
   "38-cfr-3.310-b",
   "m21-1-v-ii-2",
 ] as const;
+
+export const metadata: Metadata = {
+  title: "Terms | Secondary Condition Finder",
+};
 
 export default async function TermsPage() {
   const catalog = loadConditionCatalog();
