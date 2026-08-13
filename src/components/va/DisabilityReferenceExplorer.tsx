@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 
 import type { DisabilityReferenceItem } from "@/lib/va/disability-reference";
+import { matchExactVaReferenceTerm } from "@/lib/va/terminology-match";
 
 interface Props {
   items: DisabilityReferenceItem[];
@@ -21,6 +22,10 @@ export function DisabilityReferenceExplorer({ items }: Props) {
       .filter((item) => item.name.toLocaleLowerCase().includes(normalizedQuery))
       .slice(0, MAX_VISIBLE_RESULTS);
   }, [items, normalizedQuery]);
+  const exactMatch = useMemo(
+    () => matchExactVaReferenceTerm(query, items),
+    [items, query],
+  );
 
   return (
     <section className="mt-6">
@@ -39,6 +44,16 @@ export function DisabilityReferenceExplorer({ items }: Props) {
         autoComplete="off"
         className="mt-3 w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
       />
+
+      {query.trim() && (
+        <div role="status" aria-live="polite" className="mt-3 rounded-md bg-slate-50 p-3 text-xs text-slate-700">
+          {exactMatch ? (
+            <span>Exact VA reference match: <strong>{exactMatch.name}</strong> <span className="text-slate-500">(ID {exactMatch.id})</span></span>
+          ) : (
+            <span>No exact VA reference-name match for the entered text.</span>
+          )}
+        </div>
+      )}
 
       <div
         role="status"
@@ -63,6 +78,7 @@ export function DisabilityReferenceExplorer({ items }: Props) {
           {matches.map((item) => (
             <li key={item.id} className="px-4 py-3 text-sm text-slate-800">
               {item.name}
+              <span className="ml-2 font-mono text-xs text-slate-500">{item.id}</span>
             </li>
           ))}
         </ul>
