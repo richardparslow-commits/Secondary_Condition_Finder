@@ -153,6 +153,24 @@
         "Wave 8 records the applicable mental-disorders framework while preserving the distinction between an insomnia diagnosis and a sleep-impairment symptom appearing in the general rating formula.",
         "Clinical Evidence Promotion Batch 3 physically relocates this stable identity from the historical carried-over file into the mental-disorders catalog without changing its ID, aliases, framework, or verification state."
       ]
+    },
+    {
+      "id": "substance-use-disorder",
+      "name": "Substance use disorder",
+      "aliases": ["alcohol use disorder", "alcoholism", "substance abuse"],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Mental-disorders rating framework. This broad discovery identity spans substance-specific diagnoses and is not assigned a single generic substance-use-disorder diagnostic code.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Catalog presence and a rating framework do not establish service connection or compensability. Alcohol- and drug-related legal eligibility rules are separate from rating identity and must be evaluated independently.",
+        "Clinical relationship authoring must evaluate the specific substance-use diagnosis and pathway rather than treating this discovery grouping as one etiology.",
+        "Clinical Evidence Promotion Batch 5 physically relocates this stable identity from the historical carried-over file into the mental-disorders catalog without changing its ID, aliases, framework, or verification state."
+      ]
     }
   ]
 }
