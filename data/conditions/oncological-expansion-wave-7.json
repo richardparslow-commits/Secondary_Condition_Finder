@@ -1,0 +1,56 @@
+{
+  "bodySystem": "Oncological Conditions",
+  "conditions": [
+    {
+      "id": "ovarian-cancer",
+      "name": "Ovarian Cancer",
+      "aliases": ["ovary cancer", "cancer of the ovary"],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.116",
+          "note": "DC 7627, malignant neoplasms of the gynecological system. This is a system-level malignancy code rather than an ovary-specific diagnostic code.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Keep ovarian cancer distinct from nonmalignant ovarian identities such as polycystic ovary syndrome. DC 7627 is the applicable gynecological malignancy framework and does not itself establish etiology or nexus.",
+        "After active treatment, documented chronic residuals may require evaluation under the appropriate body-system criteria."
+      ]
+    },
+    {
+      "id": "testicular-cancer",
+      "name": "Testicular Cancer",
+      "aliases": ["testis cancer", "cancer of the testis"],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "DC 7528, malignant neoplasms of the genitourinary system. This is a system-level malignancy code rather than a testis-specific cancer code.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Do not collapse active testicular malignancy into testis atrophy or removal criteria under DCs 7523 or 7524. Those criteria may be relevant only to documented residual anatomy after treatment.",
+        "DC 7528 supplies rating context only and is not clinical evidence of causation or service connection."
+      ]
+    },
+    {
+      "id": "laryngeal-cancer",
+      "name": "Laryngeal Cancer",
+      "aliases": ["cancer of the larynx", "larynx cancer"],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "DC 6819, malignant neoplasms of any specified part of the respiratory system exclusive of skin growths; this is a system-level malignancy code rather than a larynx-specific cancer code.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Keep laryngeal cancer distinct from the existing respiratory-cancer identity, which is scoped to lung, tracheal, and bronchial cancers.",
+        "When there is no local recurrence or metastasis after treatment, residuals such as laryngectomy, aphonia, stenosis, swallowing impairment, or other documented functional loss may require separate appropriate diagnostic criteria; do not infer those residuals from the cancer diagnosis alone."
+      ]
+    }
+  ]
+}
