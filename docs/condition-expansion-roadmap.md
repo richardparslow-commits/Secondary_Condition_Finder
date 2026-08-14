@@ -24,6 +24,7 @@ Clinical secondary-condition relationships must be researched separately and rem
 8. Process roughly 10-20 conditions per batch and run structural validation, citation audit, lint, typecheck, tests, production build, and real-browser E2E before merge.
 9. When the rating schedule has no single diagnosis-specific diagnostic code, record the applicable rating framework and a review note rather than inventing a code.
 10. Product-wave grouping does not override the actual Part 4 rating authority; when a condition is rated in another body-system schedule, record that schedule explicitly.
+11. When a broader regulatory umbrella overlaps an existing narrower user-facing diagnosis, keep names and aliases non-overlapping and document the relationship rather than silently collapsing or duplicating condition identity.
 
 ## Coverage target
 
@@ -36,7 +37,9 @@ Clinical secondary-condition relationships must be researched separately and rem
 | Catalog after Wave 2 | 231 |
 | Wave 3 implemented | +15 |
 | Catalog after Wave 3 | 246 |
-| Waves 4-7 planned | +54 |
+| Wave 4 implemented | +15 |
+| Catalog after Wave 4 | 261 |
+| Waves 5-7 planned | +39 |
 | Target catalog v2 | 300 |
 
 The candidate list deliberately consolidates obvious synonyms and avoids creating separate user-facing entries for every residual, laterality variant, or diagnostic-code phrasing. Laterality should eventually be modeled as an attribute rather than by multiplying diagnoses.
@@ -140,11 +143,43 @@ Wave 3 adds endocrine disease, endocrine-neoplasm, heart-disease/procedure, vasc
 | `thromboangiitis-obliterans` | Thromboangiitis Obliterans (Buerger's Disease) | 38 CFR 4.104 / DC 7115 |
 | `pulmonary-hypertension` | Pulmonary Hypertension | 38 CFR 4.97 / DC 6817 (pulmonary vascular disease); respiratory rating authority despite Wave 3 product grouping |
 
-All 15 enter Wave 3 with draft KB files and no published suggestions. Pituitary neoplasm retains behavior-dependent coding rather than an invented single code, and pulmonary hypertension retains its actual respiratory rating authority.
+All 15 entered Wave 3 with draft KB files and no published suggestions. Pituitary neoplasm retains behavior-dependent coding rather than an invented single code, and pulmonary hypertension retains its actual respiratory rating authority.
 
-## Wave 4 — respiratory, sleep, eye, and cranial-sense depth (15)
+## Wave 4 — respiratory, sleep, eye, and cranial-sense depth (15) — implemented
 
-`bronchiectasis`, `chronic-laryngitis`, `vocal-cord-paralysis`, `aphonia`, `granulomatous-rhinitis`, `bacterial-rhinitis`, `pulmonary-vascular-disease`, `diaphragm-paralysis`, `narcolepsy`, `uveitis`, `keratitis`, `dry-eye-syndrome`, `retinal-dystrophy`, `nystagmus`, `ptosis`.
+Wave 4 expands respiratory/ENT, sleep-wake, and ophthalmologic coverage while preserving the actual body-system rating authority. It also introduces an explicit overlap rule for broad regulatory umbrella identities that share a diagnostic-code framework with narrower existing catalog entries.
+
+### Respiratory and ENT (8)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `bronchiectasis` | Bronchiectasis | 38 CFR 4.97 / DC 6601 |
+| `chronic-laryngitis` | Chronic Laryngitis | 38 CFR 4.97 / DC 6516 |
+| `vocal-cord-paralysis` | Vocal Cord Paralysis | 38 CFR 4.97 / laryngeal residual framework including DCs 6516, 6519, and 6520 as documented; no single diagnosis-specific DC assigned |
+| `aphonia` | Aphonia | 38 CFR 4.97 / DC 6519 for complete organic aphonia; incomplete aphonia under DC 6516 |
+| `granulomatous-rhinitis` | Granulomatous Rhinitis | 38 CFR 4.97 / DC 6524 |
+| `bacterial-rhinitis` | Bacterial Rhinitis | 38 CFR 4.97 / DC 6523 |
+| `pulmonary-vascular-disease` | Pulmonary Vascular Disease | 38 CFR 4.97 / DC 6817; broader identity kept distinct from existing `pulmonary-hypertension` |
+| `diaphragm-paralysis` | Diaphragm Paralysis / Paresis | 38 CFR 4.97 / DC 6840 |
+
+### Neurological sleep-wake (1)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `narcolepsy` | Narcolepsy | 38 CFR 4.124a / DC 8108; rated as petit mal epilepsy |
+
+### Ophthalmologic and special sense (6)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `uveitis` | Uveitis | 38 CFR 4.79 / DC 6000 choroidopathy including uveitis |
+| `keratitis` | Keratitis | 38 CFR 4.79 / DC 6001 current keratopathy framework; current schedule uses broader nomenclature |
+| `dry-eye-syndrome` | Dry Eye Syndrome | 38 CFR 4.79 / lacrimal-apparatus or other applicable eye criteria; DC 6025 may apply depending documented pathology; no single diagnosis-specific dry-eye DC assigned |
+| `retinal-dystrophy` | Retinal Dystrophy | 38 CFR 4.79 / DC 6042; broader identity kept distinct from existing `macular-degeneration` |
+| `nystagmus` | Nystagmus | 38 CFR 4.79 / DC 6016 expressly covers central nystagmus; other types require code review |
+| `ptosis` | Ptosis | 38 CFR 4.79 / DC 6019 |
+
+All 15 enter Wave 4 with draft KB files and no published suggestions. `vocal-cord-paralysis` and `dry-eye-syndrome` remain framework-only where the current schedule lacks one diagnosis-specific code. `pulmonary-vascular-disease` and `retinal-dystrophy` intentionally omit narrower existing condition names from their aliases to preserve unambiguous catalog identity.
 
 ## Wave 5 — digestive and genitourinary depth (15)
 
@@ -171,6 +206,6 @@ A batch is complete only when:
 - lint, typecheck, unit tests, production build, and real-browser journeys pass on the exact branch head;
 - documentation counts match the implemented catalog.
 
-## After Wave 3
+## After Wave 4
 
-The catalog-expansion program now has 246 recognized conditions. The next catalog batch is Wave 4, while medical-authoring work for Waves 1 through 3 remains a separate evidence task: promote only individual relationships with adequate condition-specific clinical support and leave unsupported theories draft.
+The catalog-expansion program now has 261 recognized conditions. The next catalog batch is Wave 5, while medical-authoring work for Waves 1 through 4 remains a separate evidence task: promote only individual relationships with adequate condition-specific clinical support and leave unsupported theories draft.
