@@ -1,0 +1,22 @@
+{
+  "bodySystem": "Dental & Oral Conditions",
+  "conditions": [
+    {
+      "id": "mandibular-nonunion",
+      "name": "Mandibular Nonunion (Nonunion of Mandible)",
+      "aliases": ["mandible nonunion", "nonunion of mandible"],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "DC 9903, mandible, nonunion of, confirmed by diagnostic imaging studies.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Keep this specific nonunion residual distinct from the existing broader maxillofacial-fracture identity. A history of mandibular fracture does not by itself establish nonunion.",
+        "DC 9903 is rating context only and does not establish service connection, chronicity, or medical nexus."
+      ]
+    }
+  ]
+}
