@@ -1,0 +1,117 @@
+{
+  "bodySystem": "Mental Disorders",
+  "conditions": [
+    {
+      "id": "specific-phobia",
+      "name": "Specific Phobia",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "DC 9403, specific phobia; the same diagnostic code also names social anxiety disorder.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["Keep this identity distinct from the existing social-anxiety-disorder catalog entry even though both are named under DC 9403."]
+    },
+    {
+      "id": "dissociative-disorder",
+      "name": "Dissociative Amnesia / Dissociative Identity Disorder",
+      "aliases": ["dissociative amnesia", "dissociative identity disorder"],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "DC 9416, dissociative amnesia and dissociative identity disorder.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["The stable roadmap id is broader than the current VA diagnostic-code label. This catalog identity is intentionally scoped to the diagnoses expressly named under DC 9416 rather than every possible dissociative presentation."]
+    },
+    {
+      "id": "depersonalization-derealization-disorder",
+      "name": "Depersonalization / Derealization Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "DC 9417, depersonalization/derealization disorder.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "functional-neurological-symptom-disorder",
+      "name": "Functional Neurological Symptom Disorder (Conversion Disorder)",
+      "aliases": ["conversion disorder"],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "DC 9424, conversion disorder (functional neurological symptom disorder).",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["Catalog placement follows the mental-disorders rating schedule; this does not imply that neurological symptoms should be diagnosed or medically attributed without qualified evaluation."]
+    },
+    {
+      "id": "illness-anxiety-disorder",
+      "name": "Illness Anxiety Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "DC 9425, illness anxiety disorder.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "body-dysmorphic-disorder",
+      "name": "Body Dysmorphic Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "General Rating Formula for Mental Disorders; no single diagnosis-specific diagnostic code is assigned by this automated expansion.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["The current § 4.130 diagnostic-code table does not separately name body dysmorphic disorder. Do not borrow DC 9404 solely because DSM-5 groups the diagnosis with obsessive-compulsive and related disorders; qualified review must determine the proper rating treatment for an individual case."]
+    },
+    {
+      "id": "hoarding-disorder",
+      "name": "Hoarding Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "General Rating Formula for Mental Disorders; no single diagnosis-specific diagnostic code is assigned by this automated expansion.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["The current § 4.130 diagnostic-code table does not separately name hoarding disorder. Do not borrow DC 9404 solely because DSM-5 groups the diagnosis with obsessive-compulsive and related disorders; qualified review must determine the proper rating treatment for an individual case."]
+    },
+    {
+      "id": "delusional-disorder",
+      "name": "Delusional Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "DC 9208, delusional disorder.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    }
+  ]
+}

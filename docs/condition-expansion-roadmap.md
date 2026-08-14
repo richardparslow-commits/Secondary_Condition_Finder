@@ -26,6 +26,7 @@ Clinical secondary-condition relationships must be researched separately and rem
 10. Product-wave grouping does not override the actual Part 4 rating authority; when a condition is rated in another body-system schedule, record that schedule explicitly.
 11. When a broader regulatory umbrella overlaps an existing narrower user-facing diagnosis, keep names and aliases non-overlapping and document the relationship rather than silently collapsing or duplicating condition identity.
 12. When one roadmap identity intentionally groups related diagnoses for discovery, keep the user-facing grouping explicit but require later clinical authoring to evaluate diagnosis-specific etiologies and pathways separately.
+13. When distinct diagnoses share one rating code, preserve separate catalog identities where useful and never infer shared etiology, causation, aggravation, or secondary pathways from the common code.
 
 ## Coverage target
 
@@ -42,7 +43,9 @@ Clinical secondary-condition relationships must be researched separately and rem
 | Catalog after Wave 4 | 261 |
 | Wave 5 implemented | +15 |
 | Catalog after Wave 5 | 276 |
-| Waves 6-7 planned | +24 |
+| Wave 6 implemented | +14 |
+| Catalog after Wave 6 | 290 |
+| Wave 7 planned | +10 |
 | Target catalog v2 | 300 |
 
 The candidate list deliberately consolidates obvious synonyms and avoids creating separate user-facing entries for every residual, laterality variant, or diagnostic-code phrasing. Laterality should eventually be modeled as an attribute rather than by multiplying diagnoses.
@@ -215,9 +218,40 @@ Wave 5 expands upper-GI motility/structural, intestinal, anorectal, liver, renal
 
 All 15 enter Wave 5 with draft KB files and no published suggestions. `gastroparesis` and `varicocele-hydrocele` deliberately remain framework-only rather than borrowing an analogous code. `chronic-liver-disease` omits hepatitis/cirrhosis aliases, and `epididymitis-orchitis` remains distinct from prostatitis even where the schedule may use a shared infection framework. The combined `varicocele-hydrocele` discovery identity does not authorize future clinical authors to assume those diagnoses share one etiology or secondary pathway.
 
-## Wave 6 — mental, hematologic, autoimmune, and skin depth (14)
+## Wave 6 — mental, hematologic, autoimmune, and skin depth (14) — implemented
 
-`specific-phobia`, `dissociative-disorder`, `depersonalization-derealization-disorder`, `functional-neurological-symptom-disorder`, `illness-anxiety-disorder`, `body-dysmorphic-disorder`, `hoarding-disorder`, `delusional-disorder`, `essential-thrombocythemia`, `primary-myelofibrosis`, `myelodysplastic-syndrome`, `discoid-lupus`, `scarring-alopecia`, `hyperhidrosis`.
+Wave 6 expands named mental-disorder identities, myeloproliferative/myelodysplastic disorders, and cutaneous conditions. It preserves explicit § 4.130 codes when VA names the diagnosis and uses the general mental-disorders framework rather than borrowing an adjacent diagnosis's code when VA does not separately name the condition.
+
+### Mental disorders (8)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `specific-phobia` | Specific Phobia | 38 CFR 4.130 / DC 9403; kept distinct from existing `social-anxiety-disorder`, which shares DC 9403 |
+| `dissociative-disorder` | Dissociative Amnesia / Dissociative Identity Disorder | 38 CFR 4.130 / DC 9416; stable roadmap id scoped to diagnoses expressly named by the schedule |
+| `depersonalization-derealization-disorder` | Depersonalization / Derealization Disorder | 38 CFR 4.130 / DC 9417 |
+| `functional-neurological-symptom-disorder` | Functional Neurological Symptom Disorder (Conversion Disorder) | 38 CFR 4.130 / DC 9424 |
+| `illness-anxiety-disorder` | Illness Anxiety Disorder | 38 CFR 4.130 / DC 9425 |
+| `body-dysmorphic-disorder` | Body Dysmorphic Disorder | 38 CFR 4.130 / General Rating Formula for Mental Disorders; no single diagnosis-specific DC assigned by automated expansion |
+| `hoarding-disorder` | Hoarding Disorder | 38 CFR 4.130 / General Rating Formula for Mental Disorders; no single diagnosis-specific DC assigned by automated expansion |
+| `delusional-disorder` | Delusional Disorder | 38 CFR 4.130 / DC 9208 |
+
+### Hematologic (3)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `essential-thrombocythemia` | Essential Thrombocythemia | 38 CFR 4.117 / DC 7718; shared rating code with primary myelofibrosis but separate disease identity |
+| `primary-myelofibrosis` | Primary Myelofibrosis | 38 CFR 4.117 / DC 7718; shared rating code with essential thrombocythemia but separate disease identity |
+| `myelodysplastic-syndrome` | Myelodysplastic Syndromes | 38 CFR 4.117 / DC 7725 |
+
+### Skin and cutaneous autoimmune (3)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `discoid-lupus` | Discoid Lupus Erythematosus | 38 CFR 4.118 / DC 7809; distinct from existing systemic lupus identity |
+| `scarring-alopecia` | Scarring Alopecia | 38 CFR 4.118 / DC 7830; distinct from existing alopecia areata identity |
+| `hyperhidrosis` | Hyperhidrosis | 38 CFR 4.118 / DC 7832 |
+
+All 14 enter Wave 6 with draft KB files and no published suggestions. `body-dysmorphic-disorder` and `hoarding-disorder` deliberately remain framework-only rather than borrowing OCD's DC 9404. Shared rating codes do not collapse diagnosis identity or establish shared medical causation: `specific-phobia` remains separate from social anxiety despite DC 9403, and `essential-thrombocythemia` remains separate from `primary-myelofibrosis` despite DC 7718. `discoid-lupus` is kept separate from systemic lupus, and `scarring-alopecia` remains separate from alopecia areata.
 
 ## Wave 7 — infectious, oncological, and oral/maxillofacial depth (10)
 
@@ -236,6 +270,6 @@ A batch is complete only when:
 - lint, typecheck, unit tests, production build, and real-browser journeys pass on the exact branch head;
 - documentation counts match the implemented catalog.
 
-## After Wave 5
+## After Wave 6
 
-The catalog-expansion program now has 276 recognized conditions. The next catalog batch is Wave 6, while medical-authoring work for Waves 1 through 5 remains a separate evidence task: promote only individual relationships with adequate condition-specific clinical support and leave unsupported theories draft.
+The catalog-expansion program now has 290 recognized conditions. The final target-v2 catalog batch is Wave 7, while medical-authoring work for Waves 1 through 6 remains a separate evidence task: promote only individual relationships with adequate condition-specific clinical support and leave unsupported theories draft.

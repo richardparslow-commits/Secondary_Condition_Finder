@@ -1,0 +1,47 @@
+{
+  "bodySystem": "Hemic, Lymphatic & Immune Systems",
+  "conditions": [
+    {
+      "id": "essential-thrombocythemia",
+      "name": "Essential Thrombocythemia",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "DC 7718, essential thrombocythemia and primary myelofibrosis.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["DC 7718 is shared with primary myelofibrosis. The conditions remain separate catalog identities and later clinical pathway authoring must remain disease-specific."]
+    },
+    {
+      "id": "primary-myelofibrosis",
+      "name": "Primary Myelofibrosis",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "DC 7718, essential thrombocythemia and primary myelofibrosis.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["DC 7718 is shared with essential thrombocythemia. The conditions remain separate catalog identities and later clinical pathway authoring must remain disease-specific."]
+    },
+    {
+      "id": "myelodysplastic-syndrome",
+      "name": "Myelodysplastic Syndromes",
+      "aliases": ["myelodysplastic syndrome"],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "DC 7725, myelodysplastic syndromes.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    }
+  ]
+}

@@ -179,15 +179,15 @@ health state.
 
 ## Knowledge-base coverage and authoring
 
-276 catalog conditions have version-controlled mapping files after condition
-catalog expansion Wave 5. Waves 1 through 5 added 83 conditions in controlled
+290 catalog conditions have version-controlled mapping files after condition
+catalog expansion Wave 6. Waves 1 through 6 added 97 conditions in controlled
 musculoskeletal, neurological, endocrine, cardiovascular/pulmonary-vascular,
-respiratory/ENT, sleep-wake, ophthalmologic/special-sense, digestive, and
-genitourinary batches; all 83 expansion mappings remain safe drafts with no
-published suggestions until condition-specific clinical evidence satisfies the
-repository's publication rules. Draft mappings remain excluded from
-recommendation output. The target-v2 expansion plan is maintained in
-`docs/condition-expansion-roadmap.md`.
+respiratory/ENT, sleep-wake, ophthalmologic/special-sense, digestive,
+genitourinary, mental-disorder, hematologic, and skin/cutaneous batches; all 97
+expansion mappings remain safe drafts with no published suggestions until
+condition-specific clinical evidence satisfies the repository's publication
+rules. Draft mappings remain excluded from recommendation output. The target-v2
+expansion plan is maintained in `docs/condition-expansion-roadmap.md`.
 
 To add or change a condition:
 

@@ -1,0 +1,47 @@
+{
+  "bodySystem": "Skin Conditions",
+  "conditions": [
+    {
+      "id": "discoid-lupus",
+      "name": "Discoid Lupus Erythematosus",
+      "aliases": ["discoid lupus"],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "DC 7809, discoid lupus erythematosus; evaluate under the General Rating Formula for the Skin.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["Keep this cutaneous identity distinct from the existing systemic-lupus-erythematosus catalog entry. The rating schedule expressly cautions against combining DC 7809 with DC 6350 for the same manifestations."]
+    },
+    {
+      "id": "scarring-alopecia",
+      "name": "Scarring Alopecia",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "DC 7830, scarring alopecia.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["Keep this identity distinct from the existing alopecia-areata catalog entry, which has separate rating criteria under DC 7831."]
+    },
+    {
+      "id": "hyperhidrosis",
+      "name": "Hyperhidrosis",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "DC 7832, hyperhidrosis.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    }
+  ]
+}
