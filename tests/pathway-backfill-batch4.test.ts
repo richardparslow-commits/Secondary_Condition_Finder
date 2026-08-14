@@ -16,8 +16,6 @@ const intentionallyUnlabeledEdges = [
   ["congestive-heart-failure", "gerd"],
 ] as const;
 
-const intentionallyUnlabeledMappings = ["hypertension"] as const;
-
 const safetyWithdrawnMappings = [
   "agranulocytosis",
   "al-amyloidosis",
@@ -59,16 +57,8 @@ describe("controlled pathway backfill batch 4", () => {
     }
   });
 
-  it("keeps reviewed legal-or-rating-only Systemic mappings unpublished or unlabeled", () => {
+  it("keeps later safety withdrawals unpublished", () => {
     const kb = loadKnowledgeBase();
-
-    for (const primaryId of intentionallyUnlabeledMappings) {
-      const mapping = kb.find((entry) => entry.id === primaryId);
-      expect(mapping?.draft).toBe(false);
-      for (const suggestion of mapping?.suggestions ?? []) {
-        expect(suggestion.pathwayIntelligence).toBeUndefined();
-      }
-    }
 
     for (const primaryId of safetyWithdrawnMappings) {
       const mapping = kb.find((entry) => entry.id === primaryId);
@@ -84,6 +74,16 @@ describe("controlled pathway backfill batch 4", () => {
     expect(mapping?.draft).toBe(false);
     expect(depression?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
     expect(depression?.sourceReferences.some((source) => source.citation === "38 CFR 3.310")).toBe(false);
+  });
+
+  it("recognizes hypertension only after its four published edges are clinically repaired", () => {
+    const mapping = loadKnowledgeBase().find((entry) => entry.id === "hypertension");
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.suggestions).toHaveLength(4);
+    for (const suggestion of mapping?.suggestions ?? []) {
+      expect(suggestion.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
+      expect(suggestion.sourceReferences.some((source) => source.citation.startsWith("38 CFR"))).toBe(false);
+    }
   });
 
   it("preserves pre-backfill rank and prevalence for the newly enriched mappings", () => {
