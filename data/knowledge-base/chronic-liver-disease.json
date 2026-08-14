@@ -1,6 +1,46 @@
 {
   "id": "chronic-liver-disease",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review etiology-specific metabolic, toxic/medication, infectious, autoimmune, treatment, aggravation, and organ-system pathways only where applicable; keep this umbrella identity distinct from existing hepatitis and cirrhosis mappings and do not infer etiology from the catalog label."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "cirrhosis-of-the-liver",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Across chronic liver diseases, progressive hepatic fibrosis is a central pathway by which persistent liver injury can advance to cirrhosis. This umbrella relationship should be considered only when the individual record documents a specific chronic liver disease with progressive or advanced fibrosis preceding the cirrhosis diagnosis; the catalog label alone does not identify the underlying etiology or establish that progression occurred in a particular patient.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "disease-progression"
+        ],
+        "causalChain": "Documented chronic liver disease with persistent hepatic injury → progressive hepatic fibrosis/advanced fibrosis → claimed progression to cirrhosis.",
+        "developmentQuestions": [
+          "What specific chronic liver disease and etiology are documented rather than relying on the umbrella catalog label?",
+          "What biopsy, elastography, imaging, laboratory, or specialist evidence documents fibrosis and its progression before cirrhosis was diagnosed?",
+          "What is the chronology of the underlying liver disease, fibrosis stage, and cirrhosis diagnosis?",
+          "Which coexisting liver injuries or competing etiologies, including alcohol-related disease, viral hepatitis, metabolic liver disease, autoimmune disease, cholestatic disease, vascular disease, or hepatotoxic exposure, are documented?",
+          "Can a hepatology clinician explain whether the documented chronic liver disease and fibrosis progression caused the individual's cirrhosis?"
+        ],
+        "issuesToResolve": [
+          "Chronic liver disease is an etiologically heterogeneous umbrella identity and must not be treated as one disease mechanism.",
+          "Not every chronic liver disease progresses to cirrhosis; individual linkage requires objective fibrosis/progression evidence and etiologic review."
+        ]
+      },
+      "evidenceGaps": [
+        "Etiology-specific hepatology diagnosis and longitudinal liver-disease records",
+        "Objective fibrosis assessment such as biopsy, elastography, imaging, or validated noninvasive fibrosis testing",
+        "Chronology showing advanced/progressive fibrosis before cirrhosis and medical review of competing liver etiologies"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Chinese Society of Hepatology et al., Consensus on the diagnosis and treatment of hepatic fibrosis (2019), J Dig Dis. 2020;21:127-138. PMID 32108989",
+          "note": "Evidence-based consensus describing hepatic fibrosis as a key developmental step across chronic liver diseases leading to cirrhosis; supports a fibrosis-progression pathway, not an automatic individual nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32108989/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 32108989; abstract statement that hepatic fibrosis is a key step in chronic liver diseases leading to cirrhosis"
+        }
+      ]
+    }
+  ]
 }
