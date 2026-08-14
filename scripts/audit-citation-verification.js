@@ -7,13 +7,14 @@ const files = fs.readdirSync(kbDir).filter((file) => file.endsWith(".json")).sor
 
 // Medium-audit verification-debt ratchet. Existing review debt is not falsely
 // promoted to verified, but it may never grow silently. Lower these ceilings as
-// source-by-source verification work is completed.
+// source-by-source verification work is completed or unsafe legacy references
+// are retired.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 148,
+  references: 141,
   verified: 14,
-  unverified: 134,
-  reviewFindings: 132,
-  clinicalEvidenceWithUrls: 25,
+  unverified: 127,
+  reviewFindings: 125,
+  clinicalEvidenceWithUrls: 29,
 });
 
 const hardFindings = [];
