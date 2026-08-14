@@ -80,6 +80,16 @@
 - New clinical source checks remain `verified: false` pending qualified-human verification.
 - See `docs/clinical-evidence-promotion-batch-9.md`.
 
+### Clinical Evidence Promotion Batch 10
+- `hyperparathyroidism` → `kidney-stones`: published only for confirmed primary hyperparathyroidism, using Fifth International Workshop guideline evidence plus biochemical/stone-chronology/competing-cause safeguards.
+- `hypoparathyroidism` → `kidney-stones`: published as association-focused research using a 93-study systematic review; no causal pathway metadata is authored because disease physiology and conventional treatment can both contribute to renal risk.
+- `emphysema` and `chronic-bronchitis`: returned to draft because both published sleep-apnea and cardiac-arrhythmia claims used only legal/rating authority for medical propositions.
+- `hyperparathyroidism`: stable identity physically moved from historical neurological placement into `endocrine.json`, normalized to `Hyperparathyroidism`, and assigned the 38 CFR 4.119 / DC 7904 framework while preserving stable identity.
+- Citation debt tightens to **131 total / 14 verified / 117 unverified / 115 review findings**, while the clinical-URL floor rises to **46**.
+- The 300/300 contract remains fixed. These are legacy mappings, so the Wave 1-7 expansion ledger remains **12 promoted / 95 drafts**.
+- New source checks remain `verified: false` pending qualified-human verification.
+- See `docs/clinical-evidence-promotion-batch-10.md`.
+
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.
 2. **Citation Insertion:** Clinical claims require condition-specific clinical-evidence references with canonical URLs and source provenance. Regulatory/legal references must remain role-labeled and must not substitute for clinical causation evidence.
