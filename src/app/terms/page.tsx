@@ -75,7 +75,7 @@ export default async function TermsPage() {
 
         <h2 className="mt-6 text-xl font-semibold">5. No Claim Filing, Representation, or Account Access</h2>
         <p>
-          This phase does not file claims, submit evidence to VA, access a Veteran&apos;s VA account, represent a claimant before VA, or create an attorney-client, representative-client, or clinician-patient relationship. VA sandbox integration is disabled by default and must not be treated as live VA production connectivity.
+          This phase does not file claims, submit evidence to VA, access a Veteran&apos;s VA account, represent a claimant before VA, or create an attorney-client, representative-client, or clinician-patient relationship. The environment-aware VA public-reference adapter is disabled by default; credentialed sandbox connectivity and future production connectivity remain separate external gates and must not be treated as live VA connectivity until objectively verified.
         </p>
         <p>
           Users remain responsible for deciding what, if anything, to submit through official VA channels and should use current official forms and instructions. A qualified accredited representative or clinician should be consulted when professional judgment is needed.
