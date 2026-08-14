@@ -1,25 +1,9 @@
 {
   "id": "anorexia-nervosa",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Chronic physical pain, functional limitations, or long-term health conditions can be associated with mood impairment. This population-level relationship does not by itself establish an individual medical nexus.",
-      "evidenceGaps": [
-        "Mental health evaluation distinguishing secondary emotional impact",
-        "Treatment notes"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Legal framework for evaluating a secondary relationship; does not establish the underlying medical relationship.",
-          "verified": false,
-          "verificationScope": "legal-framework"
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild any secondary-condition suggestions using anorexia-nervosa-specific clinical evidence before publication.",
+    "The prior depression suggestion was withdrawn because 38 CFR 3.310 supplied legal framework only and the rationale used generic chronic-condition language without establishing the direction or mechanism of an anorexia-nervosa-specific relationship."
+  ],
+  "suggestions": []
 }

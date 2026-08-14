@@ -152,16 +152,6 @@
       ]
     },
     {
-      "id": "cushings-syndrome",
-      "name": "cushings syndrome",
-      "aliases": [],
-      "bodySystem": "Neurological",
-      "ratingSchedule": [],
-      "reviewNotes": [
-        "Pending manual review"
-      ]
-    },
-    {
       "id": "diabetes-mellitus-type-1",
       "name": "diabetes mellitus type 1",
       "aliases": [],

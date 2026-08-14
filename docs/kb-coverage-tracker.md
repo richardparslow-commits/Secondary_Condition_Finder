@@ -53,6 +53,15 @@
 - The new clinical source remains `verified: false` pending qualified-human verification.
 - See `docs/clinical-evidence-promotion-batch-6.md`.
 
+### Clinical Evidence Promotion Batch 7
+- `acromegaly` → `hypertension`: promoted as a direct-secondary research pathway using the 2026 international acromegaly complications consensus, with GH/IGF-I activity, sodium/water-retention mechanism, blood-pressure chronology, treatment response, and competing-cause safeguards.
+- `anorexia-nervosa`: returned to draft because its depression suggestion relied only on 38 CFR 3.310 plus generic chronic-condition language without condition-specific direction or mechanism evidence.
+- `cushings-syndrome`: stable identity physically moved from the historical neurological file into the endocrine catalog, normalized to `Cushing's Syndrome`, and assigned the express 38 CFR 4.119 / DC 7907 framework with `verified: false` preserved.
+- Citation debt ceilings remain **138 total / 14 verified / 124 unverified / 122 review findings**, while the clinical-URL floor rises to **39**.
+- The 300/300 contract remains fixed. Acromegaly is the eleventh promoted expansion mapping, so **96 of 107 Wave 1-7 expansion mappings remain drafts**.
+- The new clinical source remains `verified: false` pending qualified-human verification.
+- See `docs/clinical-evidence-promotion-batch-7.md`.
+
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.
 2. **Citation Insertion:** Clinical claims require condition-specific clinical-evidence references with canonical URLs and source provenance. Regulatory/legal references must remain role-labeled and must not substitute for clinical causation evidence.

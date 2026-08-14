@@ -15,7 +15,7 @@ const CITATION_DEBT_BASELINE = Object.freeze({
   verified: 14,
   unverified: 124,
   reviewFindings: 122,
-  clinicalEvidenceWithUrls: 38,
+  clinicalEvidenceWithUrls: 39,
 });
 
 const hardFindings = [];
