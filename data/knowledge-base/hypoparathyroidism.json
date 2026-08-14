@@ -1,8 +1,31 @@
 {
   "id": "hypoparathyroidism",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "kidney-stones",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Chronic hypoparathyroidism is associated with renal complications including nephrolithiasis and nephrocalcinosis, but the relationship can reflect both the underlying calcium-phosphate disorder and its long-term conventional calcium/active-vitamin-D treatment context. A 2022 systematic review supporting the international guideline program identified nephrocalcinosis/nephrolithiasis among the complications probably associated with chronic hypoparathyroidism. This is an association-focused research relationship, not an automatic causal attribution of an individual's kidney stones to hypoparathyroidism.",
+      "evidenceGaps": [
+        "Documentation confirming chronic hypoparathyroidism and its etiology/duration",
+        "Longitudinal calcium, phosphate, PTH, magnesium, creatinine/eGFR, and vitamin D results",
+        "Calcium and active-vitamin-D treatment history, doses, and duration",
+        "24-hour urine calcium and other metabolic stone testing when available",
+        "Renal imaging, stone chronology/composition, and clinician review of alternative stone causes"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Yao L, Hui X, Li M, et al. Complications, Symptoms, Presurgical Predictors in Patients With Chronic Hypoparathyroidism: A Systematic Review. J Bone Miner Res. 2022;37(12):2642-2653. PMID 36375810",
+          "note": "Systematic review of 93 studies and 18,973 patients identified nephrocalcinosis/nephrolithiasis among complications probably associated with chronic hypoparathyroidism; supports a conservative association-focused kidney-stone research relationship rather than individual causal attribution.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36375810/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 36375810; abstract Part I: 93 studies/18,973 patients; nephrocalcinosis/nephrolithiasis among nine complications or symptoms probably associated with chronic hypoparathyroidism"
+        }
+      ]
+    }
+  ]
 }

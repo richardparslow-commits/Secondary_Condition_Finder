@@ -33,15 +33,15 @@ The catalog is the single source of condition identity. Mapping files carry only
 
 ## Current coverage
 
-After Clinical Evidence Promotion Batch 9:
+After Clinical Evidence Promotion Batch 10:
 
 - **300 catalog conditions** remain represented across **33 catalog files**.
 - Every catalog condition still has exactly one corresponding published-or-draft file in `data/knowledge-base/`.
 - Waves 1 through 7 added **107 identities**; Wave 8 added no identities and was a catalog-quality pass.
-- Clinical Evidence Promotion Batches 1 through 9 publish twelve individually reviewed Wave 1-7 mappings: `cardiomyopathy`, `urethral-stricture`, `hypertensive-heart-disease`, `chronic-pyelonephritis`, `chronic-liver-disease`, `acl-injury`, `pcl-injury`, `barretts-esophagus`, `achalasia`, `hyperaldosteronism`, `acromegaly`, and `diabetes-mellitus-type-1`.
-- **95 of the 107 Wave 1-7 secondary mappings remain `draft: true`**.
-- `ankle-strain`, `knee-injury`, `osteoarthritis`, `ageusia`, `agranulocytosis`, `al-amyloidosis`, `addisons-disease`, and `anorexia-nervosa` are draft because previously published claims did not satisfy the condition-specific clinical-evidence publication bar.
-- Published legacy relationships for `amputation-or-loss-of-use`, `anosmia`, `alopecia-areata`, and `hypertension` have had legal/rating-only support replaced with condition-specific clinical evidence and conservative individual-review safeguards. Batch 8 also publishes the legacy draft `cushings-syndrome` → `hypertension` relationship after endocrine-specific clinical review. Batch 9 removes the unsupported `erectile-dysfunction` → `gerd` treatment chain and clinically repairs `erectile-dysfunction` → `depressive-disorder` with bidirectional association evidence and explicit causal-direction limits.
+- Clinical Evidence Promotion Batches 1 through 10 still account for twelve individually reviewed Wave 1-7 mappings: `cardiomyopathy`, `urethral-stricture`, `hypertensive-heart-disease`, `chronic-pyelonephritis`, `chronic-liver-disease`, `acl-injury`, `pcl-injury`, `barretts-esophagus`, `achalasia`, `hyperaldosteronism`, `acromegaly`, and `diabetes-mellitus-type-1`.
+- **95 of the 107 Wave 1-7 secondary mappings remain `draft: true`**. Batch 10 instead promotes two legacy mappings: `hyperparathyroidism` → `kidney-stones` for confirmed primary hyperparathyroidism and association-focused `hypoparathyroidism` → `kidney-stones` research.
+- `ankle-strain`, `knee-injury`, `osteoarthritis`, `ageusia`, `agranulocytosis`, `al-amyloidosis`, `addisons-disease`, `anorexia-nervosa`, `emphysema`, and `chronic-bronchitis` are draft because previously published claims did not satisfy the condition-specific clinical-evidence publication bar.
+- Published legacy relationships for `amputation-or-loss-of-use`, `anosmia`, `alopecia-areata`, and `hypertension` have had legal/rating-only support replaced with condition-specific clinical evidence and conservative individual-review safeguards. Batch 8 also publishes `cushings-syndrome` → `hypertension`. Batch 9 removes the unsupported `erectile-dysfunction` → `gerd` chain and clinically repairs `erectile-dysfunction` → `depressive-disorder`.
 - Rating references added or corrected by automated work remain `verified: false`. Clinical source records may be source-checked with URLs, dates, and locators, but remain `verified: false` until qualified-human verification under the Citation Verification SOP.
 - Where the rating schedule does not provide a single diagnosis-specific diagnostic code, the catalog records the applicable rating framework and an explicit review note rather than inventing authority.
 - Wave 8 records `diabetic-retinopathy` under 38 CFR 4.79 / DC 6040 and corrects `fibromyalgia` to 38 CFR 4.71a / DC 5025, removing the historical 4.88b carryover from fibromyalgia.
@@ -50,10 +50,11 @@ After Clinical Evidence Promotion Batch 9:
 - Batch 3 physically relocates `insomnia` into `mental-disorders.json`.
 - Batch 4 physically relocates `hip-strain` and `ankle-strain` into `musculoskeletal-quality-maintenance.json` while preserving stable IDs, aliases, 38 CFR 4.71a residual frameworks, and rating-reference verification state.
 - Batch 5 physically relocates `substance-use-disorder` into `mental-disorders.json` while preserving its stable identity, broad 38 CFR 4.130 framework, legal-eligibility cautions, and verification state.
-- Batch 6 narrows the existing `hyperpituitarism` display name to `Hyperpituitarism (Prolactin-Secreting Pituitary Dysfunction)`, matching DC 7916's express scope while preserving the stable ID, aliases, and rating-reference verification state.
-- Batch 7 physically relocates `cushings-syndrome` from the historical neurological file into `endocrine.json`, normalizes its display name to `Cushing's Syndrome`, and records the express 38 CFR 4.119 / DC 7907 framework while preserving its stable ID.
-- Batch 8 physically relocates `diabetes-mellitus-type-1` from the historical neurological file into `endocrine.json`, normalizes the display name/aliases, and records the current 38 CFR 4.119 / DC 7913 framework while preserving its stable ID and draft KB mapping.
-- Batch 9 physically relocates `hyperthyroidism` from the historical neurological file into `endocrine.json`, normalizes the display name to `Hyperthyroidism`, and records the current 38 CFR 4.119 / DC 7900 framework while preserving its stable ID and KB publication state.
+- Batch 6 narrows `hyperpituitarism` to `Hyperpituitarism (Prolactin-Secreting Pituitary Dysfunction)`, matching DC 7916's express scope while preserving stable identity.
+- Batch 7 physically relocates `cushings-syndrome` into `endocrine.json` and records the 38 CFR 4.119 / DC 7907 framework.
+- Batch 8 physically relocates `diabetes-mellitus-type-1` into `endocrine.json` and records the 38 CFR 4.119 / DC 7913 framework.
+- Batch 9 physically relocates `hyperthyroidism` into `endocrine.json` and records the 38 CFR 4.119 / DC 7900 framework.
+- Batch 10 physically relocates `hyperparathyroidism` into `endocrine.json`, normalizes the display name to `Hyperparathyroidism`, and records the 38 CFR 4.119 / DC 7904 framework while preserving the stable ID.
 - `carried-over.json` is reduced to the intentionally quarantined `contralateral-knee-condition` laterality placeholder.
 - `contralateral-knee-condition` remains a quarantined legacy relationship/laterality placeholder with no rating code because it is not a distinct diagnosis. Laterality should be modeled structurally before that placeholder is retired.
 - Product expansion grouping does not override the actual rating schedule, and shared diagnostic codes do not collapse distinct disease identities or establish common medical causation.
@@ -76,36 +77,37 @@ The Wave 8 regression contract is `tests/catalog-quality-wave8.test.ts`.
 
 ## Post-v2 evidence promotion and catalog maintenance
 
-Clinical Evidence Promotion Batches 1 through 9 follow a relationship-level publication rule rather than promoting whole catalog waves. Twelve expansion mappings are published because their individual relationships have condition-specific clinical support, conservative rationales, explicit evidence gaps, and source provenance. The remainder of each expansion wave stays draft unless its own relationships independently satisfy that bar.
+Clinical Evidence Promotion Batches 1 through 10 follow a relationship-level publication rule rather than promoting whole catalog waves. Twelve Wave 1-7 expansion mappings are published because their individual relationships have condition-specific clinical support, conservative rationales, explicit evidence gaps, and source provenance; Batch 10 additionally improves legacy mapping coverage.
 
 - **Batch 1:** promotes `cardiomyopathy` and `urethral-stricture`, withdraws unsupported `ankle-strain` relationships, and completes fibromyalgia's physical file relocation.
 - **Batch 2:** promotes `hypertensive-heart-disease` and `chronic-pyelonephritis`, withdraws unsupported `knee-injury` and `osteoarthritis` relationships, and physically relocates `diabetic-retinopathy`.
-- **Batch 3:** promotes `chronic-liver-disease` only through documented hepatic-fibrosis progression, repairs the amputation/depression relationship with clinical evidence, withdraws unsupported `ageusia` relationships, and physically relocates `insomnia`.
-- **Batch 4:** promotes `acl-injury` and `pcl-injury` to affected-knee osteoarthritis research with injury-specific systematic-review evidence; repairs `anosmia` and `alopecia-areata` depression relationships with condition-specific evidence; withdraws `agranulocytosis`; and physically normalizes `hip-strain` and `ankle-strain` into musculoskeletal maintenance.
-- **Batch 5:** promotes `barretts-esophagus` and `achalasia` to histology-aware esophageal-cancer research pathways; withdraws the legal-only generic `al-amyloidosis` relationships; and physically normalizes `substance-use-disorder` into mental-disorders maintenance.
-- **Batch 6:** promotes `hyperaldosteronism` to hypertension research only for a confirmed primary-aldosteronism phenotype using current Endocrine Society guideline evidence; withdraws the three rating-only generic `addisons-disease` relationships; and narrows `hyperpituitarism` to DC 7916's prolactin-secreting pituitary-dysfunction display scope.
-- **Batch 7:** promotes `acromegaly` to hypertension research using the 2026 international acromegaly complications consensus and condition-activity/chronology safeguards; withdraws the legal-only generic `anorexia-nervosa` depression relationship; and physically relocates `cushings-syndrome` into the endocrine catalog with the DC 7907 framework.
-- **Batch 8:** replaces all eight legal/rating-only references across the four published `hypertension` relationships with condition-specific clinical sources, promotes `cushings-syndrome` → `hypertension` after endocrine-specific review, and physically relocates `diabetes-mellitus-type-1` into the endocrine catalog with the DC 7913 framework.
-- **Batch 9:** promotes `diabetes-mellitus-type-1` → `chronic-kidney-disease` under a bounded diabetic-kidney-disease phenotype/chronology framework, withdraws the unsupported `erectile-dysfunction` → `gerd` treatment chain, clinically repairs `erectile-dysfunction` → `depressive-disorder` with a bidirectional meta-analysis, and physically relocates `hyperthyroidism` into the endocrine catalog with the DC 7900 framework.
+- **Batch 3:** promotes `chronic-liver-disease`, repairs the amputation/depression relationship, withdraws `ageusia`, and physically relocates `insomnia`.
+- **Batch 4:** promotes `acl-injury` and `pcl-injury` → osteoarthritis, repairs anosmia/alopecia depression relationships, withdraws `agranulocytosis`, and physically normalizes hip/ankle strain.
+- **Batch 5:** promotes `barretts-esophagus` and `achalasia` → esophageal-cancer pathways, withdraws `al-amyloidosis`, and physically normalizes `substance-use-disorder`.
+- **Batch 6:** promotes `hyperaldosteronism` → hypertension, withdraws `addisons-disease`, and narrows the `hyperpituitarism` display identity.
+- **Batch 7:** promotes `acromegaly` → hypertension, withdraws `anorexia-nervosa`, and physically relocates `cushings-syndrome`.
+- **Batch 8:** clinically repairs all four `hypertension` relationships, promotes `cushings-syndrome` → `hypertension`, and physically relocates `diabetes-mellitus-type-1`.
+- **Batch 9:** promotes `diabetes-mellitus-type-1` → `chronic-kidney-disease`, withdraws ED→GERD, repairs ED→depression, and physically relocates `hyperthyroidism`.
+- **Batch 10:** promotes `hyperparathyroidism` → `kidney-stones` only for confirmed primary hyperparathyroidism, publishes association-focused `hypoparathyroidism` → `kidney-stones`, withdraws legal-only `emphysema` and `chronic-bronchitis` mappings, and physically relocates `hyperparathyroidism` into Endocrine/DC 7904 maintenance.
 
-See `docs/clinical-evidence-promotion-batch-1.md` through `docs/clinical-evidence-promotion-batch-9.md` and their corresponding regression tests.
+See `docs/clinical-evidence-promotion-batch-1.md` through `docs/clinical-evidence-promotion-batch-10.md` and their corresponding regression tests.
 
 ## Remaining modeling debt
 
-Separate modeling work remains after Batch 9:
+Separate modeling work remains after Batch 10:
 
 - `contralateral-knee-condition` still requires a structural laterality migration before the legacy placeholder can be retired.
 - `cerebral-palsy` remains a catalog-governance question because congenital/developmental conditions can raise distinct service-connection rules. Catalog presence by itself does not mean the app asserts service connection is available.
-- The historical `neurological.json` file still contains endocrine identities such as parathyroid disorders and hypothyroidism. Those should be relocated only in bounded stable-ID changes with rating authority and regression coverage rather than mass-moved.
+- The historical `neurological.json` file still contains `hypoparathyroidism` and `hypothyroidism`. Those endocrine identities should be relocated only in later bounded stable-ID changes with rating authority and regression coverage rather than mass-moved.
 - Other historical catalog files may still contain cross-system physical placement or over-broad grouped identities; those should be corrected only in bounded changes that preserve stable IDs and one-to-one mappings.
 
 ## Citation status
 
 Catalog rating references are deliberately separate from medical evidence. Automated work must not mark them verified. A rating citation may support condition/rating identity but never a causal statement such as “condition A caused condition B.”
 
-Clinical Evidence Promotion Batches 1 through 9 add or repair source-checked clinical references only for individually reviewed relationships; those sources remain `verified: false` until qualified-human verification under `docs/citation-verification-sop.md`.
+Clinical Evidence Promotion Batches 1 through 10 add or repair source-checked clinical references only for individually reviewed relationships; those sources remain `verified: false` until qualified-human verification under `docs/citation-verification-sop.md`.
 
-After Batch 9, the automated non-regression ceilings tighten to **133 total references, 14 verified, 119 unverified, and 117 published-unverified review findings**, while the clinical-evidence-with-canonical-URL floor remains **44**.
+After Batch 10, the automated non-regression ceilings tighten to **131 total references, 14 verified, 117 unverified, and 115 published-unverified review findings**, while the clinical-evidence-with-canonical-URL floor rises to **46**.
 
 ## Adding or revising a condition
 

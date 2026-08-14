@@ -1,8 +1,46 @@
 {
   "id": "hyperparathyroidism",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "kidney-stones",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Kidney-stone disease is a recognized renal manifestation of primary hyperparathyroidism, but the broader catalog label hyperparathyroidism also includes secondary and tertiary forms that should not be treated as equivalent. The Fifth International Workshop guideline supports renal evaluation for nephrolithiasis/nephrocalcinosis in confirmed primary hyperparathyroidism. This relationship is therefore limited to a documented primary-hyperparathyroidism phenotype with compatible biochemical findings, stone chronology, and renal evaluation; other stone causes and other forms of hyperparathyroidism remain separate considerations.",
+      "pathwayIntelligence": {
+        "pathways": ["disease-progression"],
+        "causalChain": "Confirmed primary hyperparathyroidism with abnormal calcium/PTH physiology → increased filtered calcium and stone-risk physiology when present → nephrolithiasis/nephrocalcinosis, with other stone etiologies and non-primary hyperparathyroidism requiring separate review.",
+        "developmentQuestions": [
+          "Is the hyperparathyroidism specifically confirmed as primary rather than secondary or tertiary disease?",
+          "What do calcium, PTH, phosphate, creatinine/eGFR, vitamin D, and 24-hour urinary calcium results show?",
+          "When were kidney stones or nephrocalcinosis first documented relative to the biochemical diagnosis?",
+          "What do renal imaging and any stone-composition or metabolic-stone evaluations show?",
+          "Are there alternative stone risks such as low urine volume, dietary factors, gout, infection, medication exposure, enteric disease, or another metabolic disorder?"
+        ],
+        "issuesToResolve": [
+          "The catalog label hyperparathyroidism is broader than primary hyperparathyroidism; the published pathway applies only when the primary form is clinically established.",
+          "Coexistence of hyperparathyroidism and nephrolithiasis does not by itself exclude other metabolic or structural stone causes."
+        ]
+      },
+      "evidenceGaps": [
+        "Endocrinology documentation confirming primary hyperparathyroidism and its biochemical basis",
+        "Longitudinal serum calcium, PTH, phosphate, vitamin D, and renal-function results",
+        "24-hour urine calcium and other metabolic stone testing when available",
+        "Renal imaging documenting nephrolithiasis or nephrocalcinosis and chronology",
+        "Clinician assessment distinguishing primary-hyperparathyroidism-related stone disease from competing etiologies"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Bilezikian JP, Khan AA, Silverberg SJ, et al. Evaluation and Management of Primary Hyperparathyroidism: Summary Statement and Guidelines from the Fifth International Workshop. J Bone Miner Res. 2022;37(11):2293-2314. PMID 36245251",
+          "note": "International guideline for primary hyperparathyroidism; supports renal evaluation for stone disease and uses nephrolithiasis/nephrocalcinosis as clinically important renal involvement. The repository limits this pathway to confirmed primary hyperparathyroidism rather than generalizing it to secondary or tertiary hyperparathyroidism.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36245251/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 36245251; Fifth International Workshop summary guideline, renal evaluation and renal-involvement recommendations for primary hyperparathyroidism"
+        }
+      ]
+    }
+  ]
 }

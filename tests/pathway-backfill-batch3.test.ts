@@ -5,8 +5,8 @@ const expectedBackfill = {
   copd: { "sleep-apnea": ["direct-secondary", "aggravation"], "cardiac-arrhythmia": ["intermediate-chain"] },
   asthma: { "sleep-apnea": ["direct-secondary", "aggravation"], "cardiac-arrhythmia": ["direct-secondary"] },
 } as const;
-const intentionallyUnlabeledMappings = ["chronic-sinusitis","chronic-rhinitis","emphysema","chronic-bronchitis","pulmonary-fibrosis","interstitial-lung-disease","sleep-apnea"] as const;
-const safetyWithdrawnMappings = ["ageusia"] as const;
+const intentionallyUnlabeledMappings = ["chronic-sinusitis","chronic-rhinitis","pulmonary-fibrosis","interstitial-lung-disease","sleep-apnea"] as const;
+const safetyWithdrawnMappings = ["ageusia","emphysema","chronic-bronchitis"] as const;
 
 describe("controlled pathway backfill batch 3", () => {
   it("backfills only Respiratory edges whose attached source set includes clinical evidence", () => {

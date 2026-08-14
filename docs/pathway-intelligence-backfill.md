@@ -132,7 +132,7 @@ The following published Systemic / Medical mappings/edges were left unlabeled at
 
 This completed the four-category published-mapping review. Intentionally-unlabeled edges remained eligible for later enrichment only after their underlying published source sets were strengthened; the backfill program did not infer missing medical links.
 
-## Subsequent evidence-promotion supersession through Batch 9
+## Subsequent evidence-promotion supersession through Batch 10
 
 Later Clinical Evidence Promotion batches changed several historical Batch 2-4 statuses without weakening the original backfill threshold:
 
@@ -147,5 +147,7 @@ Later Clinical Evidence Promotion batches changed several historical Batch 2-4 s
 - All four published `hypertension` relationships were clinically repaired in Batch 8. The CKD, ischemic-heart-disease, and congestive-heart-failure edges now carry bounded `disease-progression` pathway intelligence. The erectile-dysfunction edge now has condition-specific association evidence but remains intentionally pathway-unlabeled because the evidence does not justify a stronger individual causal or medication-related pathway label.
 - `erectile-dysfunction` → `gerd` was withdrawn in Batch 9 because the NSAID/GERD evidence did not establish an erectile-dysfunction→NSAID treatment link.
 - `erectile-dysfunction` → `depressive-disorder` was clinically repaired in Batch 9 with a bidirectional systematic review/meta-analysis. It now carries bounded `somatopsychic` pathway intelligence while explicitly preserving the source's inability to determine causal direction and requiring individual chronology and competing-cause review.
+- `emphysema` was returned to draft in Batch 10. Its sleep-apnea and cardiac-arrhythmia propositions had remained legal/rating-only medical claims after the original Batch-3 review, so the later safety pass withdrew them rather than assigning pathway metadata without clinical evidence.
+- `chronic-bronchitis` was returned to draft in Batch 10 for the same reason: its sleep-apnea and cardiac-arrhythmia propositions relied only on legal/rating authority for medical relationships.
 
 The current publication counts and citation-debt ratchet are maintained in `docs/kb-coverage-tracker.md`; this ledger remains the historical record of why pathway metadata was or was not authored during the original backfill.
