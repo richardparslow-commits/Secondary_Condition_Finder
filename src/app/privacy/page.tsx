@@ -63,10 +63,10 @@ export default function PrivacyPage() {
 
         <h2 className="text-xl font-semibold mt-6">6. VA API and claim-submission boundary</h2>
         <p>
-          This phase of the application does not connect to a Veteran&apos;s VA account, does not submit a disability claim, and does not upload the user&apos;s workflow or local evidence to VA. VA sandbox integration is disabled by default and is a separate future integration gate. Public VA form/reference features fall back to local reference data when sandbox access is unavailable.
+          This application does not connect to a Veteran&apos;s VA account, does not submit a disability claim, and does not upload the user&apos;s workflow or local evidence to VA. The environment-aware VA public-reference adapter is disabled by default; credentialed sandbox connectivity and future production connectivity remain separate external gates. Public VA form/reference features fall back to clearly labeled local reference data when configured VA access is disabled or unavailable.
         </p>
         <p>
-          A future credentialed VA sandbox or production integration must be separately reviewed before this policy is changed to describe Veteran data being transmitted to a VA API. Local fallback behavior or mock data must not be described as proof of live VA connectivity.
+          A credentialed VA sandbox or production integration must be objectively verified before it is described as live connectivity. Any future scope that transmits Veteran-specific workflow or evidence data to a VA API requires a separately reviewed privacy and security change. Local fallback behavior or mock data must not be described as proof of live VA connectivity.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">7. Retention summary</h2>
