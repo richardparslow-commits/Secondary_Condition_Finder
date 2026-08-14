@@ -33,19 +33,21 @@ The catalog is the single source of condition identity. Mapping files carry only
 
 ## Current coverage
 
-After catalog expansion Wave 4:
+After catalog expansion Wave 5:
 
-- **261 catalog conditions** are represented across **24 catalog files**.
+- **276 catalog conditions** are represented across **26 catalog files**.
 - Every catalog condition has exactly one corresponding published-or-draft file in `data/knowledge-base/`.
 - Wave 1 added **20 conditions**: 12 musculoskeletal and 8 neurological.
 - Wave 2 added **18 conditions**: 10 musculoskeletal and 8 neurological/peripheral-neurological.
 - Wave 3 added **15 conditions**: 7 endocrine and 8 cardiovascular/product-grouped identities, including pulmonary hypertension with its actual respiratory rating authority.
 - Wave 4 added **15 conditions**: 8 respiratory/ENT, 1 neurological sleep-wake condition, and 6 ophthalmologic/special-sense identities.
-- All 68 Wave 1 through Wave 4 secondary mappings remain `draft: true` with no published suggestions. They must not enter recommendation output until condition-specific clinical research satisfies the normal publication rules.
+- Wave 5 added **15 conditions**: 10 digestive and 5 genitourinary identities.
+- All 83 Wave 1 through Wave 5 secondary mappings remain `draft: true` with no published suggestions. They must not enter recommendation output until condition-specific clinical research satisfies the normal publication rules.
 - Rating references added by automated work remain `verified: false`. A qualified human review is required before verification status can change.
-- Where the rating schedule does not provide a single diagnosis-specific diagnostic code, the catalog records the applicable rating framework and an explicit review note rather than inventing authority.
+- Where the rating schedule does not provide a single diagnosis-specific diagnostic code, the catalog records the applicable rating framework and an explicit review note rather than inventing authority. Wave 5 applies that safeguard to `gastroparesis` and `varicocele-hydrocele`.
 - Product expansion grouping does not override the actual rating schedule. For example, Wave 3 retains pulmonary hypertension in its approved batch while citing 38 CFR 4.97 / DC 6817, and Wave 4 keeps narcolepsy under neurological 38 CFR 4.124a / DC 8108 rather than the respiratory sleep-apnea schedule.
-- A broader regulatory umbrella may coexist with a narrower user-facing diagnosis only when names and aliases remain unambiguous and the overlap is documented. Wave 4 therefore keeps `pulmonary-vascular-disease` distinct from `pulmonary-hypertension`, and `retinal-dystrophy` distinct from the older `macular-degeneration` identity, without duplicating the narrower names as aliases.
+- A broader regulatory umbrella may coexist with a narrower user-facing diagnosis only when names and aliases remain unambiguous and the overlap is documented. Wave 5 therefore keeps `chronic-liver-disease` distinct from the existing hepatitis and cirrhosis identities and `epididymitis-orchitis` distinct from prostatitis despite any shared rating framework.
+- When one roadmap identity intentionally groups related diagnoses, as with `varicocele-hydrocele`, the catalog grouping is only a discovery/identity choice. Clinical relationship authoring must evaluate each diagnosis and causal pathway separately.
 
 The broader expansion target and ranked Waves 1-7 are maintained in `docs/condition-expansion-roadmap.md`. Target catalog v2 is 300 conditions. That is a versioned product-coverage target, not a statement that the VA schedule or medicine contains only 300 possible diagnoses.
 
@@ -73,8 +75,9 @@ One older item still deserving specific human review is **fibromyalgia**, which 
 4. If there is no single diagnosis-specific diagnostic code, cite the applicable rating framework and add a `reviewNotes` explanation. If no defensible rating authority is known at all, leave `ratingSchedule` empty and explain why. Never invent a code.
 5. If a product-wave grouping crosses rating-schedule body systems, preserve the approved product grouping but cite the actual Part 4 section and explain the exception in `reviewNotes`.
 6. If a broader regulatory identity overlaps an existing narrower catalog identity, do not duplicate the narrower condition's name or aliases. Document the overlap in `reviewNotes` and keep the user-facing identities distinguishable.
-7. Create exactly one matching `data/knowledge-base/<id>.json` in the same change.
-8. Default a new mapping to `draft: true` until its secondary suggestions have condition-specific clinical evidence, conservative rationale, evidence gaps, and compliant source references.
-9. Run catalog/KB integrity tests and the citation audit before review.
+7. If one catalog identity intentionally groups related diagnoses, keep aliases unambiguous and require later clinical authoring to evaluate diagnosis-specific pathways separately rather than treating the grouped identity as one causal entity.
+8. Create exactly one matching `data/knowledge-base/<id>.json` in the same change.
+9. Default a new mapping to `draft: true` until its secondary suggestions have condition-specific clinical evidence, conservative rationale, evidence gaps, and compliant source references.
+10. Run catalog/KB integrity tests and the citation audit before review.
 
 Aliases must be unambiguous. Tests reject an alias claimed by two conditions or one that collides with another condition's name or id.
