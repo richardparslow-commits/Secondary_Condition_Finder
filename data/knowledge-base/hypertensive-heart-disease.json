@@ -1,6 +1,46 @@
 {
   "id": "hypertensive-heart-disease",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, medication/treatment, intermediate-factor, cardiovascular, renal, and other organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Hypertensive heart disease can include left-ventricular hypertrophy, fibrosis, and diastolic or systolic dysfunction that progress to clinical heart failure in some patients. The relationship still requires case-specific evidence that the documented hypertensive cardiac remodeling preceded and materially contributed to the individual's heart-failure syndrome, with ischemic, valvular, cardiomyopathic, rhythm-related, renal, and pulmonary causes addressed rather than assumed away.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "disease-progression"
+        ],
+        "causalChain": "Documented hypertensive heart disease → persistent hypertensive cardiac remodeling or dysfunction → claimed progression to clinically diagnosed heart failure.",
+        "developmentQuestions": [
+          "What objective findings establish hypertensive heart disease rather than hypertension alone, such as left-ventricular hypertrophy, fibrosis, diastolic dysfunction, or other structural change?",
+          "When did the structural or functional cardiac abnormalities appear relative to the heart-failure diagnosis?",
+          "What do echocardiography, cardiac MRI, natriuretic peptides, and clinical examinations show about ventricular function, filling pressures, and congestion?",
+          "Which competing or contributing causes of heart failure, including ischemic, valvular, cardiomyopathic, rhythm-related, renal, or pulmonary disease, are documented?",
+          "Can a cardiology clinician explain whether the documented hypertensive heart disease caused or materially aggravated the individual's heart failure?"
+        ],
+        "issuesToResolve": [
+          "Hypertension alone is not interchangeable with hypertensive heart disease; objective cardiac remodeling or dysfunction should be documented.",
+          "Population-level disease progression does not establish an individual nexus without chronology, objective cardiac findings, and review of competing etiologies."
+        ]
+      },
+      "evidenceGaps": [
+        "Cardiology records documenting hypertensive cardiac remodeling or dysfunction rather than hypertension alone",
+        "Objective heart-failure evidence such as echocardiography, cardiac MRI, natriuretic peptides, or documented congestion",
+        "Medical opinion addressing chronology, competing etiologies, and individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Díez and Butler, Growing Heart Failure Burden of Hypertensive Heart Disease: A Call to Action, Hypertension. 2023;80:13-21. PMID 36082670",
+          "note": "Condition-specific review describing hypertensive heart disease as a major cause of heart failure and addressing the HHD-to-HF clinical burden; supports disease-progression plausibility, not an automatic individual nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36082670/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 36082670; abstract and hypertensive-heart-disease/heart-failure review scope"
+        }
+      ]
+    }
+  ]
 }
