@@ -5,6 +5,7 @@ import { DisclaimerFooter } from "@/components/Disclaimer";
 import { ServiceHistoryForm } from "@/components/ServiceHistoryForm";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { listLocations } from "@/lib/presumptive/match";
+import { loadServiceBranchReference } from "@/lib/va/service-branches";
 
 interface PresumptivePageProps {
   searchParams?: Promise<{ error?: string | string[] }>;
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
 
 export default async function PresumptivePage({ searchParams }: PresumptivePageProps = {}) {
   const locations = listLocations(loadExposureCatalog());
+  const serviceBranchReference = await loadServiceBranchReference();
   const errorValue = (await searchParams)?.error;
   const errorCode = Array.isArray(errorValue) ? errorValue[0] : errorValue;
   const validationMessage =
@@ -64,14 +66,19 @@ export default async function PresumptivePage({ searchParams }: PresumptivePageP
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><h2 className="text-2xl font-bold">Presumptive Service Connection</h2><p className="text-sm text-slate-600">Enter service history without putting it in the URL.</p></div></div>
           <p className="mb-5">For some conditions, VA presumes a relationship to service when specific legal criteria are met. This track is separate from secondary service connection, which concerns one disability causing or aggravating another.</p>
           <div role="group" aria-describedby={validationId}>
-            <ServiceHistoryForm locations={locations} />
+            <ServiceHistoryForm
+              locations={locations}
+              serviceBranches={serviceBranchReference.items}
+              serviceBranchSourceLabel={serviceBranchReference.sourceLabel}
+              serviceBranchNotice={serviceBranchReference.notice}
+            />
           </div>
         </section>
 
         <aside className="ui-stack">
           <section className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">?</span><h2 className="text-xl font-bold">How Matching Works</h2></div>
-            <ul className="space-y-4 text-sm"><li><strong>Location.</strong><p>Your selected service locations are compared with catalog exposure rules.</p></li><li><strong>Dates.</strong><p>When provided, service dates are compared with qualifying periods.</p></li><li><strong>Recognized conditions.</strong><p>Results show catalog conditions associated with matched presumptive rules.</p></li></ul>
+            <ul className="space-y-4 text-sm"><li><strong>Location.</strong><p>Your selected service locations are compared with catalog exposure rules.</p></li><li><strong>Dates.</strong><p>When provided, service dates are compared with qualifying periods.</p></li><li><strong>Service branch.</strong><p>Your branch selection is stored as administrative reference context only and does not change the presumptive match.</p></li><li><strong>Recognized conditions.</strong><p>Results show catalog conditions associated with matched presumptive rules.</p></li></ul>
           </section>
           <section className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">Important Disclaimer</h2></div>

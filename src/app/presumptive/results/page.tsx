@@ -5,6 +5,7 @@ import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { matchPresumptives } from "@/lib/presumptive/match";
 import type { PresumptiveCondition } from "@/lib/presumptive/schema";
 import { readPresumptiveSession } from "@/lib/presumptive/session";
+import { loadServiceBranchReference } from "@/lib/va/service-branches";
 
 export const dynamic = "force-dynamic";
 
@@ -70,6 +71,14 @@ export default async function PresumptiveResultsPage() {
     );
   }
 
+  const branchCodes = history.serviceBranchCodes ?? [];
+  const branchReference = branchCodes.length > 0
+    ? await loadServiceBranchReference()
+    : null;
+  const branchNames = branchCodes.map((code) => {
+    const match = branchReference?.items.find((item) => item.code === code);
+    return match ? `${match.description} (${match.code})` : code;
+  });
   const result = matchPresumptives(loadExposureCatalog(), history);
 
   return (
@@ -88,6 +97,16 @@ export default async function PresumptiveResultsPage() {
           : ""}
         .
       </p>
+
+      {branchNames.length > 0 && (
+        <div className="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-slate-700">
+          <p className="font-medium text-slate-900">Service branch reference</p>
+          <p className="mt-1">{branchNames.join(", ")}</p>
+          <p className="mt-1 text-xs text-slate-600">
+            Source: {branchReference?.sourceLabel}. This is stored as administrative reference context only and did not change the presumptive matching result.
+          </p>
+        </div>
+      )}
 
       <div
         role="note"

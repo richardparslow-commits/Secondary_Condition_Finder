@@ -9,6 +9,8 @@ import type {
 
 export const serviceHistorySchema = z
   .object({
+    /** Optional administrative context; deliberately ignored by matchPresumptives. */
+    serviceBranchCodes: z.array(z.string().trim().min(1).max(64)).max(8).optional(),
     /** Location labels the user selected, matched exactly against the data. */
     locations: z.array(z.string().min(1)).min(1, {
       message: "Select at least one location where you served.",
@@ -79,9 +81,11 @@ export function listLocations(catalog: ExposureCatalog): string[] {
 /**
  * Matches a service history against exposure categories.
  *
- * This reports which presumptions *may* apply. It is not an eligibility
- * determination: VA also considers discharge characterization, the diagnosis
- * itself, and evidence that can rebut a presumption under 38 CFR 3.307(d).
+ * Service-branch reference values are intentionally not consulted here. This
+ * reports which presumptions *may* apply from the authored location/date rules;
+ * it is not an eligibility determination. VA also considers discharge
+ * characterization, the diagnosis itself, and evidence that can rebut a
+ * presumption under 38 CFR 3.307(d).
  */
 export function matchPresumptives(
   catalog: ExposureCatalog,

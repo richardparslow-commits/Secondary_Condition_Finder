@@ -17,6 +17,11 @@ function validationPath(code: "select-location" | "date-order" | "invalid-date")
 
 export async function saveServiceHistory(formData: FormData): Promise<void> {
   const parsed = serviceHistorySchema.safeParse({
+    serviceBranchCodes: formData
+      .getAll("serviceBranchCode")
+      .filter((value): value is string => typeof value === "string")
+      .map((value) => value.trim())
+      .filter(Boolean),
     locations: formData
       .getAll("location")
       .filter((value): value is string => typeof value === "string")
