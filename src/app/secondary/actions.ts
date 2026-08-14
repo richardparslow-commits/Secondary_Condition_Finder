@@ -105,7 +105,17 @@ export async function saveServiceConnectedSelection(formData: FormData): Promise
     formData.get(`serviceConnected-${id}`),
   );
   if (answers.some((answer) => answer !== "yes" && answer !== "no")) {
-    await writeSecondaryWorkflowSession({ diagnosedConditionIds });
+    const serviceConnectedAnswerDraft: Record<string, "yes" | "no"> = {};
+    diagnosedConditionIds.forEach((id, index) => {
+      const answer = answers[index];
+      if (answer === "yes" || answer === "no") {
+        serviceConnectedAnswerDraft[id] = answer;
+      }
+    });
+    await writeSecondaryWorkflowSession({
+      diagnosedConditionIds,
+      serviceConnectedAnswerDraft,
+    });
     redirectValidation("/secondary/service-connected", "answer-service-connected");
   }
   if (!answers.some((answer) => answer === "yes")) {
