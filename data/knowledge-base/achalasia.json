@@ -31,13 +31,13 @@
       ],
       "sourceReferences": [
         {
-          "citation": "Risk of Esophageal Cancer Among Patients With Achalasia in the United States, JAMA Netw Open. 2023;6:e2341854. PMID 37975607",
-          "note": "Large matched Veterans Health Administration cohort reporting higher esophageal-cancer incidence in achalasia and predominantly squamous-cell histology among cancers in the achalasia group; supports focused risk research, not an automatic individual conclusion.",
+          "citation": "Low et al., Risk of Esophageal Cancer in Achalasia: A Matched Cohort Study Using the Nationwide Veterans Affairs Achalasia Cohort, Am J Gastroenterol. 2024;119(4):635-645. PMID 37975607",
+          "note": "Nationwide matched Veterans Affairs cohort reporting higher esophageal-cancer incidence in achalasia and predominantly squamous-cell histology among cancers in the achalasia group; supports focused risk research, not an automatic individual conclusion.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37975607/",
           "verified": false,
           "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 37975607; abstract/results; 9,315 achalasia patients matched to 46,575 controls with esophageal-cancer incidence and histology reported"
+          "sourceLocator": "PMID 37975607; abstract/results; 1,863 Veterans with achalasia matched 1:4 to 7,452 controls; 17 versus 15 incident esophageal cancers; adjusted hazard ratio 4.6 (95% CI 2.3-9.2)"
         }
       ]
     }
