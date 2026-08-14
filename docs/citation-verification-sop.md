@@ -4,7 +4,7 @@ This SOP governs citation review for the knowledge base and is the operational g
 
 ## Scope
 
-It applies to every citation in `data/knowledge-base/` and every pull request that adds or changes citation text, regulatory references, or source metadata.
+It applies to every citation in `data/knowledge-base/` and every pull request that adds or changes citation text, regulatory references, source metadata, or verified-citation retirement provenance.
 
 ## Required workflow
 
@@ -22,6 +22,19 @@ It applies to every citation in `data/knowledge-base/` and every pull request th
 - `verified`: a qualified reviewer has confirmed the source supports the stated claim and the verification date is recorded.
 - `not-applicable`: no citation is required for the particular tracker item; this must not be used to bypass a citation requirement for a published suggestion.
 
+## Retiring a previously verified citation
+
+A verified citation must not remain attached to a live relationship solely to protect a verification count when later review shows that the source is inapplicable to that relationship or the relationship itself should be withdrawn.
+
+When a previously verified live citation is removed for applicability or safety reasons:
+
+1. Remove the unsupported or unsafe live relationship/reference rather than weakening the claim language around an inapplicable source.
+2. Copy the exact prior citation, URL, source-check date, locator, verification scope, and former mapping/relationship location into `data/citation-retirements.json`.
+3. Record a concrete retirement reason explaining why the verified source no longer supports a live relationship, plus source-checked withdrawal evidence when applicable.
+4. Preserve the fact that the source was previously verified only as historical provenance. Retirement does **not** verify a new proposition, a replacement source, or the withdrawal evidence.
+5. Review the retirement diff under the same qualified-review expectations as any other citation change. A retirement entry must never be used to hide a downgrade from `verified: true` to `verified: false` on an otherwise unchanged live claim.
+6. CI must count live verified citations and retired verified provenance separately so an unexplained verification loss fails while a documented safety/applicability retirement remains auditable.
+
 ## Reviewer evidence
 
 A citation review should leave enough evidence for another reviewer to reproduce the decision:
@@ -34,10 +47,12 @@ A citation review should leave enough evidence for another reviewer to reproduce
 - verification decision
 - unresolved limitations, if any
 
+For a retirement, reviewer evidence must also identify the former mapping/relationship and the reason the verified source is no longer applicable there.
+
 ## Carry-forward rule
 
 When a citation cannot be verified during a PR, retain the citation and explicitly carry it forward as `verified: false`. Do not promote it to `verified` based on inference, search-result snippets, or automated checks.
 
 ## PR requirements
 
-Knowledge-base PRs must reference this SOP and must document whether citation content changed. The PR must also identify remaining unverified citations and must pass the automated KB/data checks before merge.
+Knowledge-base PRs must reference this SOP and must document whether citation content changed. The PR must also identify remaining unverified citations and any previously verified citations retired in the change, and must pass the automated KB/data checks before merge.

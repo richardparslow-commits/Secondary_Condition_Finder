@@ -3,24 +3,32 @@ const fs = require("fs");
 const path = require("path");
 
 const kbDir = path.join(process.cwd(), "data/knowledge-base");
+const retirementPath = path.join(process.cwd(), "data/citation-retirements.json");
 const files = fs.readdirSync(kbDir).filter((file) => file.endsWith(".json")).sort();
+const retirementLedger = fs.existsSync(retirementPath)
+  ? JSON.parse(fs.readFileSync(retirementPath, "utf8"))
+  : { version: 1, retirements: [] };
+const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedger.retirements : [];
 
-// Medium-audit verification-debt ratchet. Existing review debt is not falsely
-// promoted to verified, but it may never grow silently. Lower these ceilings as
-// source-by-source verification work is completed or unsafe legacy references
-// are retired, and raise the clinical-evidence floor as legal-only support is
-// replaced with condition-specific clinical sources.
+// Verification-debt ratchet. Live evidence may be retired when a relationship is
+// withdrawn for applicability or safety reasons, but a previously verified source
+// must retain auditable provenance in data/citation-retirements.json. This keeps
+// CI from forcing an unsafe relationship to remain live merely to protect a raw
+// verified-reference count.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 122,
-  verified: 14,
-  unverified: 108,
-  reviewFindings: 106,
-  clinicalEvidenceWithUrls: 58,
+  references: 119,
+  liveVerified: 13,
+  verifiedProvenance: 14,
+  unverified: 106,
+  reviewFindings: 104,
+  liveClinicalEvidenceWithUrls: 57,
+  clinicalEvidenceProvenanceWithUrls: 58,
 });
 
 const hardFindings = [];
 const reviewFindings = [];
 const unverifiedByCitation = new Map();
+const liveReferenceKeys = new Set();
 let references = 0;
 let verified = 0;
 let clinical = 0;
@@ -28,6 +36,9 @@ let clinicalWithUrls = 0;
 
 function addHard(message) { hardFindings.push(message); }
 function addReview(message) { reviewFindings.push(message); }
+function liveKey(mappingId, conditionId, citation, sourceUrl) {
+  return [mappingId || "", conditionId || "", citation || "", sourceUrl || ""].join("|");
+}
 
 const causalLanguage = /\b(caus(?:e|es|ed|ing)|causal|cause-and-effect|aggravat(?:e|es|ed|ing)|worsen(?:s|ed|ing)?|leads? to|result(?:s|ed|ing) in|due to|secondary (?:to|from)|proximately due)\b/i;
 const medicationLanguage = /\b(medication|medications|drug|drugs|NSAID|SSRI|antidepressant|treatment side effect|side effect|pharmacologic)\b/i;
@@ -47,6 +58,7 @@ for (const file of files) {
 
     for (const [referenceIndex, reference] of refs.entries()) {
       references += 1;
+      liveReferenceKeys.add(liveKey(mapping.id, suggestion.conditionId, reference.citation, reference.sourceUrl));
       if (reference.verified === true) verified += 1;
       else {
         const citation = String(reference.citation || "(missing citation)");
@@ -67,14 +79,59 @@ for (const file of files) {
   }
 }
 
+const retirementIds = new Set();
+let retiredVerified = 0;
+let retiredClinicalWithUrls = 0;
+for (const [index, retirement] of retirements.entries()) {
+  const prefix = `citation-retirements.json: retirements[${index}]`;
+  if (!retirement.id) addHard(`${prefix}: missing id`);
+  else if (retirementIds.has(retirement.id)) addHard(`${prefix}: duplicate id ${retirement.id}`);
+  else retirementIds.add(retirement.id);
+
+  for (const field of ["citation", "sourceUrl", "sourceCheckedOn", "sourceLocator", "verificationScope", "retiredOn", "retirementReason"]) {
+    if (!retirement[field]) addHard(`${prefix}: missing ${field}`);
+  }
+  if (!retirement.retiredFrom?.mappingId) addHard(`${prefix}: missing retiredFrom.mappingId`);
+  if (!retirement.retiredFrom?.conditionId) addHard(`${prefix}: missing retiredFrom.conditionId`);
+  if (retirement.previouslyVerified !== true) addHard(`${prefix}: retirement ledger is reserved for previously verified references`);
+  if (!Array.isArray(retirement.withdrawalEvidence) || retirement.withdrawalEvidence.length === 0) addHard(`${prefix}: missing withdrawalEvidence`);
+
+  const key = liveKey(retirement.retiredFrom?.mappingId, retirement.retiredFrom?.conditionId, retirement.citation, retirement.sourceUrl);
+  if (liveReferenceKeys.has(key)) addHard(`${prefix}: retired reference is still live on the same relationship`);
+
+  if (retirement.previouslyVerified === true) retiredVerified += 1;
+  if (retirement.verificationScope === "clinical-evidence" && retirement.sourceUrl) retiredClinicalWithUrls += 1;
+}
+
 const unverified = references - verified;
-if (references < CITATION_DEBT_BASELINE.references && verified < CITATION_DEBT_BASELINE.verified) addHard(`citation debt ratchet: verified references fell below baseline (${verified} < ${CITATION_DEBT_BASELINE.verified}) while references were removed`);
-if (verified < CITATION_DEBT_BASELINE.verified) addHard(`citation debt ratchet: verified reference count regressed (${verified} < ${CITATION_DEBT_BASELINE.verified})`);
+const verifiedProvenance = verified + retiredVerified;
+const clinicalEvidenceProvenanceWithUrls = clinicalWithUrls + retiredClinicalWithUrls;
+
+if (verified < CITATION_DEBT_BASELINE.liveVerified) addHard(`citation debt ratchet: live verified reference count regressed (${verified} < ${CITATION_DEBT_BASELINE.liveVerified})`);
+if (verifiedProvenance < CITATION_DEBT_BASELINE.verifiedProvenance) addHard(`citation debt ratchet: verified provenance regressed (${verifiedProvenance} < ${CITATION_DEBT_BASELINE.verifiedProvenance})`);
 if (unverified > CITATION_DEBT_BASELINE.unverified) addHard(`citation debt ratchet: unverified reference count increased (${unverified} > ${CITATION_DEBT_BASELINE.unverified})`);
 if (reviewFindings.length > CITATION_DEBT_BASELINE.reviewFindings) addHard(`citation debt ratchet: published unverified review findings increased (${reviewFindings.length} > ${CITATION_DEBT_BASELINE.reviewFindings})`);
-if (clinicalWithUrls < CITATION_DEBT_BASELINE.clinicalEvidenceWithUrls) addHard(`citation debt ratchet: clinical references with canonical URLs regressed (${clinicalWithUrls} < ${CITATION_DEBT_BASELINE.clinicalEvidenceWithUrls})`);
+if (clinicalWithUrls < CITATION_DEBT_BASELINE.liveClinicalEvidenceWithUrls) addHard(`citation debt ratchet: live clinical references with canonical URLs regressed (${clinicalWithUrls} < ${CITATION_DEBT_BASELINE.liveClinicalEvidenceWithUrls})`);
+if (clinicalEvidenceProvenanceWithUrls < CITATION_DEBT_BASELINE.clinicalEvidenceProvenanceWithUrls) addHard(`citation debt ratchet: clinical URL provenance regressed (${clinicalEvidenceProvenanceWithUrls} < ${CITATION_DEBT_BASELINE.clinicalEvidenceProvenanceWithUrls})`);
 
 const unverifiedCitationCounts = [...unverifiedByCitation.entries()].map(([citation, count]) => ({ citation, count })).sort((a, b) => b.count - a.count || a.citation.localeCompare(b.citation));
-const report = { knowledgeBaseFiles: files.length, references, verified, unverified, citationDebtBaseline: CITATION_DEBT_BASELINE, clinicalEvidenceReferences: clinical, clinicalEvidenceReferencesWithUrls: clinicalWithUrls, hardFindingCount: hardFindings.length, reviewFindingCount: reviewFindings.length, hardFindings, reviewFindings, unverifiedCitationCounts };
+const report = {
+  knowledgeBaseFiles: files.length,
+  references,
+  verified,
+  retiredVerified,
+  verifiedProvenance,
+  unverified,
+  citationDebtBaseline: CITATION_DEBT_BASELINE,
+  clinicalEvidenceReferences: clinical,
+  clinicalEvidenceReferencesWithUrls: clinicalWithUrls,
+  retiredClinicalEvidenceReferencesWithUrls: retiredClinicalWithUrls,
+  clinicalEvidenceProvenanceWithUrls,
+  hardFindingCount: hardFindings.length,
+  reviewFindingCount: reviewFindings.length,
+  hardFindings,
+  reviewFindings,
+  unverifiedCitationCounts,
+};
 console.log(JSON.stringify(report, null, 2));
 process.exitCode = hardFindings.length > 0 ? 1 : 0;
