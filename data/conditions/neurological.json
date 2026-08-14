@@ -152,16 +152,6 @@
       ]
     },
     {
-      "id": "hypoparathyroidism",
-      "name": "hypoparathyroidism",
-      "aliases": [],
-      "bodySystem": "Neurological",
-      "ratingSchedule": [],
-      "reviewNotes": [
-        "Pending manual review"
-      ]
-    },
-    {
       "id": "hypothyroidism",
       "name": "hypothyroidism",
       "aliases": [],
