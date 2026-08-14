@@ -16,13 +16,15 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // CI from forcing an unsafe relationship to remain live merely to protect a raw
 // verified-reference count.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 119,
-  liveVerified: 13,
+  references: 114,
+  liveVerified: 8,
+  retiredVerified: 6,
   verifiedProvenance: 14,
   unverified: 106,
   reviewFindings: 104,
   liveClinicalEvidenceWithUrls: 57,
-  clinicalEvidenceProvenanceWithUrls: 58,
+  retiredClinicalEvidenceWithUrls: 4,
+  clinicalEvidenceProvenanceWithUrls: 61,
 });
 
 const hardFindings = [];
@@ -108,10 +110,12 @@ const verifiedProvenance = verified + retiredVerified;
 const clinicalEvidenceProvenanceWithUrls = clinicalWithUrls + retiredClinicalWithUrls;
 
 if (verified < CITATION_DEBT_BASELINE.liveVerified) addHard(`citation debt ratchet: live verified reference count regressed (${verified} < ${CITATION_DEBT_BASELINE.liveVerified})`);
+if (retiredVerified < CITATION_DEBT_BASELINE.retiredVerified) addHard(`citation debt ratchet: retired verified provenance regressed (${retiredVerified} < ${CITATION_DEBT_BASELINE.retiredVerified})`);
 if (verifiedProvenance < CITATION_DEBT_BASELINE.verifiedProvenance) addHard(`citation debt ratchet: verified provenance regressed (${verifiedProvenance} < ${CITATION_DEBT_BASELINE.verifiedProvenance})`);
 if (unverified > CITATION_DEBT_BASELINE.unverified) addHard(`citation debt ratchet: unverified reference count increased (${unverified} > ${CITATION_DEBT_BASELINE.unverified})`);
 if (reviewFindings.length > CITATION_DEBT_BASELINE.reviewFindings) addHard(`citation debt ratchet: published unverified review findings increased (${reviewFindings.length} > ${CITATION_DEBT_BASELINE.reviewFindings})`);
 if (clinicalWithUrls < CITATION_DEBT_BASELINE.liveClinicalEvidenceWithUrls) addHard(`citation debt ratchet: live clinical references with canonical URLs regressed (${clinicalWithUrls} < ${CITATION_DEBT_BASELINE.liveClinicalEvidenceWithUrls})`);
+if (retiredClinicalWithUrls < CITATION_DEBT_BASELINE.retiredClinicalEvidenceWithUrls) addHard(`citation debt ratchet: retired clinical URL provenance regressed (${retiredClinicalWithUrls} < ${CITATION_DEBT_BASELINE.retiredClinicalEvidenceWithUrls})`);
 if (clinicalEvidenceProvenanceWithUrls < CITATION_DEBT_BASELINE.clinicalEvidenceProvenanceWithUrls) addHard(`citation debt ratchet: clinical URL provenance regressed (${clinicalEvidenceProvenanceWithUrls} < ${CITATION_DEBT_BASELINE.clinicalEvidenceProvenanceWithUrls})`);
 
 const unverifiedCitationCounts = [...unverifiedByCitation.entries()].map(([citation, count]) => ({ citation, count })).sort((a, b) => b.count - a.count || a.citation.localeCompare(b.citation));
