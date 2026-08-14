@@ -6,6 +6,7 @@ Use this immediately before completing the VA API Platform production-access for
 
 - [ ] Issue #189 is closed with sanitized credentialed sandbox success evidence for VA Forms and Benefits Reference Data.
 - [ ] Issue #195 is closed with recorded manual Section 508/accessibility evidence and any material findings remediated/retested.
+- [ ] `docs/section508-manual-review-workbook.md` contains build-specific human evidence rather than automated-test substitutes.
 - [ ] Truthful applicant/organization/business-model details are supplied.
 - [ ] Final public URLs are rechecked against the deployed application.
 - [ ] Final deployed-app rehearsal passes `docs/phase3-demo-script.md` with synthetic/non-sensitive data.
@@ -153,9 +154,12 @@ Automated/browser regression safeguards are positive evidence but are not a conf
 Before answering VA's accessibility question:
 
 - [ ] Complete issue #195 against the exact deployed Vercel build using synthetic/non-sensitive data.
-- [ ] Record keyboard-only operation, form/error behavior, screen-reader review, 200% zoom/reflow, contrast, and forced-colors/high-contrast evidence.
-- [ ] Include the evidence-upload/review workflow using synthetic documents only.
-- [ ] Remediate and retest material findings.
+- [ ] Record the session identity and every required result in `docs/section508-manual-review-workbook.md`.
+- [ ] Record keyboard-only operation, form/error behavior, NVDA, VoiceOver, 200% zoom/reflow, contrast, and forced-colors/high-contrast evidence.
+- [ ] Include the evidence-upload/review workflow using synthetic PDF, DOCX, and text documents only.
+- [ ] Cover `/va-forms/finder` and `/va-reference/service-branches` in addition to the core route/workflow matrix.
+- [ ] Remediate and retest material findings against an identified build.
+- [ ] Update `docs/accessibility-audit.md` from the completed human evidence.
 - [ ] Answer only from the completed evidence record.
 
 ## Demo package
@@ -177,6 +181,6 @@ Before answering VA's accessibility question:
 - [ ] API scope matches `docs/va-api-access-strategy.md` and current implemented routes.
 - [ ] Runtime/credential description matches `docs/va-api-runtime-configuration.md`.
 - [ ] #189 is closed only with objective sanitized credentialed evidence.
-- [ ] #195 is closed only with objective manual accessibility evidence.
+- [ ] #195 is closed only with objective manual accessibility evidence recorded in the workbook.
 - [ ] Issue #287 remains open until VA production access is granted and live production connectivity is verified.
 - [ ] No unsupported business, accessibility, security-certification, regulatory-compliance, or production-access claim is included.

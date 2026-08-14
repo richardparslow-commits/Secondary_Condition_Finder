@@ -117,8 +117,37 @@ describe("accessibility and UX content contracts", () => {
     expect(audit).toContain("PARTIAL EVIDENCE — MANUAL CONFORMANCE REVIEW PENDING");
     expect(audit).toContain("Keyboard-only traversal and focus order");
     expect(audit).toContain("Screen-reader announcements and reading order");
-    expect(audit).toContain("Complete Section 508 / WCAG 2.0 AA conformance determination");
+    expect(audit).toContain("Complete Section 508 / WCAG 2.0 A+AA conformance determination");
+    expect(audit).toContain("docs/section508-manual-review-workbook.md");
+    expect(audit).toContain("/va-forms/finder");
+    expect(audit).toContain("/va-reference/service-branches");
     expect(audit).not.toContain("Zero PII");
     expect(audit).not.toContain("| Verified |\n| **Screen Reader Announcement**");
+  });
+
+  it("keeps the manual review workbook human-only, build-specific, and incomplete by default", () => {
+    const workbook = readFileSync(
+      "docs/section508-manual-review-workbook.md",
+      "utf8",
+    );
+
+    expect(workbook).toContain("Tester");
+    expect(workbook).toContain("Deployed `main` commit SHA");
+    expect(workbook).toContain("Vercel production deployment ID");
+    expect(workbook).toContain("Operating system + version");
+    expect(workbook).toContain("Browser + version");
+    expect(workbook).toContain("Assistive technology + version");
+    expect(workbook).toContain("NVDA + current Chrome/Edge");
+    expect(workbook).toContain("VoiceOver + current Safari");
+    expect(workbook).toContain("Browser zoom at 200%");
+    expect(workbook).toContain("Windows forced-colors/high-contrast mode");
+    expect(workbook).toContain("/va-forms/finder");
+    expect(workbook).toContain("/va-reference/service-branches");
+    expect(workbook).toContain("synthetic PDF");
+    expect(workbook).toContain("synthetic DOCX");
+    expect(workbook).toContain("synthetic text");
+    expect(workbook).toContain("NOT TESTED");
+    expect(workbook).toContain("NO — pending human review");
+    expect(workbook).not.toContain("- [x]");
   });
 });
