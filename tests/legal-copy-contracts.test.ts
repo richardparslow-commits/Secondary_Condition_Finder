@@ -71,11 +71,11 @@ describe("legal copy contracts", () => {
     expect(html).not.toContain("No nexus opinion required");
   });
 
-  it("uses a current verification notice without obsolete phase labeling", () => {
+  it("uses a current unconditional verification notice without obsolete phase labeling", () => {
     const html = renderToStaticMarkup(HomePage());
 
     expect(html).toContain(UNVERIFIED_REFERENCE_NOTICE);
-    expect(html).toContain("Source references marked unverified are research starting points");
+    expect(html).toContain("Citations and source references shown in this app are unverified research starting points");
     expect(html).not.toContain("Phase 1");
   });
 
