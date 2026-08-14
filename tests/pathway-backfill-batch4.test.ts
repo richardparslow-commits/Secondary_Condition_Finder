@@ -11,7 +11,6 @@ const intentionallyUnlabeledEdges = [
   ["stomach-cancer", "gerd"],
   ["abdominal-hernia", "gerd"],
   ["erectile-dysfunction", "gerd"],
-  ["erectile-dysfunction", "depressive-disorder"],
   ["congestive-heart-failure", "depressive-disorder"],
   ["congestive-heart-failure", "gerd"],
 ] as const;
@@ -55,6 +54,19 @@ describe("controlled pathway backfill batch 4", () => {
       expect(mapping?.draft).toBe(false);
       expect(suggestion?.pathwayIntelligence).toBeUndefined();
     }
+  });
+
+  it("recognizes the Batch 9 ED supersession without resurrecting the unsupported GERD chain", () => {
+    const mapping = loadKnowledgeBase().find((entry) => entry.id === "erectile-dysfunction");
+    const depression = mapping?.suggestions.find((entry) => entry.conditionId === "depressive-disorder");
+    const gerd = mapping?.suggestions.find((entry) => entry.conditionId === "gerd");
+
+    expect(mapping?.draft).toBe(false);
+    expect(gerd).toBeUndefined();
+    expect(depression?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
+    expect(depression?.pathwayIntelligence?.pathways).toEqual(["somatopsychic"]);
+    expect(depression?.rationale).toMatch(/bidirectional/i);
+    expect(depression?.rationale).toMatch(/does not establish|causal direction/i);
   });
 
   it("keeps later safety withdrawals unpublished", () => {
