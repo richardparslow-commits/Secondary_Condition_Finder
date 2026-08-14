@@ -1,0 +1,69 @@
+{
+  "bodySystem": "Cardiovascular System",
+  "conditions": [
+    {
+      "id": "hypertensive-heart-disease",
+      "name": "Hypertensive Heart Disease",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7007 covers hypertensive heart disease under the diseases-of-the-heart rating framework.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "cardiomyopathy",
+      "name": "Cardiomyopathy",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7020 covers cardiomyopathy under the diseases-of-the-heart rating framework.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "heart-valve-replacement-residuals",
+      "name": "Heart Valve Replacement Residuals",
+      "aliases": ["prosthetic heart valve residuals", "heart valve prosthesis residuals"],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7016 covers heart valve replacement (prosthesis), including post-replacement evaluation under the General Rating Formula for Diseases of the Heart after the prescribed post-hospitalization period.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "coronary-bypass-residuals",
+      "name": "Coronary Bypass Surgery Residuals",
+      "aliases": ["CABG residuals", "coronary artery bypass graft residuals"],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7017 covers coronary bypass surgery and directs subsequent evaluation under the General Rating Formula for Diseases of the Heart.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "heart-transplant-residuals",
+      "name": "Heart Transplant Residuals",
+      "aliases": ["cardiac transplant residuals", "cardiac transplantation residuals"],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7019 covers cardiac transplantation and directs later evaluation under the General Rating Formula for Diseases of the Heart after the prescribed transplant period.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "implantable-cardiac-pacemaker",
+      "name": "Implantable Cardiac Pacemaker",
+      "aliases": ["cardiac pacemaker", "permanent pacemaker"],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7018 covers implantable cardiac pacemakers and directs later evaluation according to the underlying rhythm or conduction disorder, with a stated minimum evaluation.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "thromboangiitis-obliterans",
+      "name": "Thromboangiitis Obliterans (Buerger's Disease)",
+      "aliases": ["Buerger disease", "Buerger's disease", "thrombo-angiitis obliterans"],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7115 covers thrombo-angiitis obliterans (Buerger's Disease), with lower-extremity disease rated under diagnostic code 7114 and separate upper-extremity criteria.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "pulmonary-hypertension",
+      "name": "Pulmonary Hypertension",
+      "aliases": ["primary pulmonary hypertension"],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Although retained in the Wave 3 cardiovascular product grouping, pulmonary hypertension is evaluated in the respiratory schedule: diagnostic code 6817 covers pulmonary vascular disease, including primary pulmonary hypertension and specified secondary pulmonary-hypertension presentations.", "verified": false}],
+      "reviewNotes": ["Regulatory rating authority is the respiratory schedule under 38 CFR 4.97 / diagnostic code 6817, not the cardiovascular schedule under 38 CFR 4.104."]
+    }
+  ]
+}

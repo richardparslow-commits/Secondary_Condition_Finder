@@ -33,15 +33,17 @@ The catalog is the single source of condition identity. Mapping files carry only
 
 ## Current coverage
 
-After catalog expansion Wave 2:
+After catalog expansion Wave 3:
 
-- **231 catalog conditions** are represented.
+- **246 catalog conditions** are represented across **21 catalog files**.
 - Every catalog condition has exactly one corresponding published-or-draft file in `data/knowledge-base/`.
 - Wave 1 added **20 conditions**: 12 musculoskeletal and 8 neurological.
 - Wave 2 added **18 conditions**: 10 musculoskeletal and 8 neurological/peripheral-neurological.
-- All 38 Wave 1 and Wave 2 secondary mappings remain `draft: true` with no published suggestions. They must not enter recommendation output until condition-specific clinical research satisfies the normal publication rules.
+- Wave 3 added **15 conditions**: 7 endocrine and 8 cardiovascular/product-grouped identities, including pulmonary hypertension with its actual respiratory rating authority.
+- All 53 Wave 1 through Wave 3 secondary mappings remain `draft: true` with no published suggestions. They must not enter recommendation output until condition-specific clinical research satisfies the normal publication rules.
 - Rating references added by automated work remain `verified: false`. A qualified human review is required before verification status can change.
 - Where the rating schedule does not provide a single diagnosis-specific diagnostic code, the catalog records the applicable rating framework and an explicit review note rather than inventing authority.
+- Product expansion grouping does not override the actual rating schedule. For example, Wave 3 retains pulmonary hypertension in its approved batch while citing 38 CFR 4.97 / DC 6817 rather than incorrectly assigning cardiovascular authority.
 
 The broader expansion target and ranked Waves 1-7 are maintained in `docs/condition-expansion-roadmap.md`. Target catalog v2 is 300 conditions. That is a versioned product-coverage target, not a statement that the VA schedule or medicine contains only 300 possible diagnoses.
 
@@ -67,8 +69,9 @@ One older item still deserving specific human review is **fibromyalgia**, which 
 2. Use a unique kebab-case `id`, a stable display `name`, and only unambiguous aliases.
 3. Add a traceable rating-schedule citation when one is known; leave it `verified: false` under automated authoring policy.
 4. If there is no single diagnosis-specific diagnostic code, cite the applicable rating framework and add a `reviewNotes` explanation. If no defensible rating authority is known at all, leave `ratingSchedule` empty and explain why. Never invent a code.
-5. Create exactly one matching `data/knowledge-base/<id>.json` in the same change.
-6. Default a new mapping to `draft: true` until its secondary suggestions have condition-specific clinical evidence, conservative rationale, evidence gaps, and compliant source references.
-7. Run catalog/KB integrity tests and the citation audit before review.
+5. If a product-wave grouping crosses rating-schedule body systems, preserve the approved product grouping but cite the actual Part 4 section and explain the exception in `reviewNotes`.
+6. Create exactly one matching `data/knowledge-base/<id>.json` in the same change.
+7. Default a new mapping to `draft: true` until its secondary suggestions have condition-specific clinical evidence, conservative rationale, evidence gaps, and compliant source references.
+8. Run catalog/KB integrity tests and the citation audit before review.
 
 Aliases must be unambiguous. Tests reject an alias claimed by two conditions or one that collides with another condition's name or id.

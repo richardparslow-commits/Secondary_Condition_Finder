@@ -23,6 +23,7 @@ Clinical secondary-condition relationships must be researched separately and rem
 7. New source references remain `verified: false` until qualified human review under repository policy.
 8. Process roughly 10-20 conditions per batch and run structural validation, citation audit, lint, typecheck, tests, production build, and real-browser E2E before merge.
 9. When the rating schedule has no single diagnosis-specific diagnostic code, record the applicable rating framework and a review note rather than inventing a code.
+10. Product-wave grouping does not override the actual Part 4 rating authority; when a condition is rated in another body-system schedule, record that schedule explicitly.
 
 ## Coverage target
 
@@ -33,7 +34,9 @@ Clinical secondary-condition relationships must be researched separately and rem
 | Catalog after Wave 1 | 213 |
 | Wave 2 implemented | +18 |
 | Catalog after Wave 2 | 231 |
-| Waves 3-7 planned | +69 |
+| Wave 3 implemented | +15 |
+| Catalog after Wave 3 | 246 |
+| Waves 4-7 planned | +54 |
 | Target catalog v2 | 300 |
 
 The candidate list deliberately consolidates obvious synonyms and avoids creating separate user-facing entries for every residual, laterality variant, or diagnostic-code phrasing. Laterality should eventually be modeled as an attribute rather than by multiplying diagnoses.
@@ -106,11 +109,38 @@ Wave 2 deepens joint, ligament, foot, peripheral-nerve, pain-syndrome, cauda-equ
 | `cauda-equina-syndrome` | Cauda Equina Syndrome | 38 CFR 4.124a plus applicable spine/residual criteria; no single diagnosis-specific DC assigned |
 | `cranial-nerve-palsy` | Cranial Nerve Palsy | 38 CFR 4.124a / nerve-specific or special-sense criteria according to nerve involved |
 
-All 18 enter Wave 2 with draft KB files and no published suggestions. Rating identity remains separate from medical-causation evidence.
+All 18 entered Wave 2 with draft KB files and no published suggestions. Rating identity remains separate from medical-causation evidence.
 
-## Wave 3 — endocrine and cardiovascular depth (15)
+## Wave 3 — endocrine and cardiovascular depth (15) — implemented
 
-`thyroiditis`, `nontoxic-thyroid-enlargement`, `acromegaly`, `hyperaldosteronism`, `hyperpituitarism`, `diabetes-insipidus`, `pituitary-neoplasm`, `hypertensive-heart-disease`, `cardiomyopathy`, `heart-valve-replacement-residuals`, `coronary-bypass-residuals`, `heart-transplant-residuals`, `implantable-cardiac-pacemaker`, `thromboangiitis-obliterans`, `pulmonary-hypertension`.
+Wave 3 adds endocrine disease, endocrine-neoplasm, heart-disease/procedure, vascular, and pulmonary-vascular identities. The product batch grouping does not override the rating schedule: pulmonary hypertension is retained in the approved Wave 3 group but points to the respiratory schedule where VA actually evaluates pulmonary vascular disease.
+
+### Endocrine (7)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `thyroiditis` | Thyroiditis | 38 CFR 4.119 / DC 7906 |
+| `nontoxic-thyroid-enlargement` | Nontoxic Thyroid Enlargement | 38 CFR 4.119 / DC 7902 |
+| `acromegaly` | Acromegaly | 38 CFR 4.119 / DC 7908 |
+| `hyperaldosteronism` | Hyperaldosteronism | 38 CFR 4.119 / DC 7917; evaluate as benign or malignant neoplasm as appropriate |
+| `hyperpituitarism` | Hyperpituitarism | 38 CFR 4.119 / DC 7916; evaluate as benign or malignant neoplasm as appropriate |
+| `diabetes-insipidus` | Diabetes Insipidus | 38 CFR 4.119 / DC 7909 |
+| `pituitary-neoplasm` | Pituitary Neoplasm | 38 CFR 4.119 / DC 7914 if malignant or DC 7915 if benign; behavior must be documented |
+
+### Cardiovascular and pulmonary-vascular (8)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `hypertensive-heart-disease` | Hypertensive Heart Disease | 38 CFR 4.104 / DC 7007 |
+| `cardiomyopathy` | Cardiomyopathy | 38 CFR 4.104 / DC 7020 |
+| `heart-valve-replacement-residuals` | Heart Valve Replacement Residuals | 38 CFR 4.104 / DC 7016 |
+| `coronary-bypass-residuals` | Coronary Bypass Surgery Residuals | 38 CFR 4.104 / DC 7017 |
+| `heart-transplant-residuals` | Heart Transplant Residuals | 38 CFR 4.104 / DC 7019 |
+| `implantable-cardiac-pacemaker` | Implantable Cardiac Pacemaker | 38 CFR 4.104 / DC 7018 |
+| `thromboangiitis-obliterans` | Thromboangiitis Obliterans (Buerger's Disease) | 38 CFR 4.104 / DC 7115 |
+| `pulmonary-hypertension` | Pulmonary Hypertension | 38 CFR 4.97 / DC 6817 (pulmonary vascular disease); respiratory rating authority despite Wave 3 product grouping |
+
+All 15 enter Wave 3 with draft KB files and no published suggestions. Pituitary neoplasm retains behavior-dependent coding rather than an invented single code, and pulmonary hypertension retains its actual respiratory rating authority.
 
 ## Wave 4 — respiratory, sleep, eye, and cranial-sense depth (15)
 
@@ -141,6 +171,6 @@ A batch is complete only when:
 - lint, typecheck, unit tests, production build, and real-browser journeys pass on the exact branch head;
 - documentation counts match the implemented catalog.
 
-## After Wave 2
+## After Wave 3
 
-The catalog-expansion program now has 231 recognized conditions. The next catalog batch is Wave 3, while medical-authoring work for Waves 1 and 2 remains a separate evidence task: promote only individual relationships with adequate condition-specific clinical support and leave unsupported theories draft.
+The catalog-expansion program now has 246 recognized conditions. The next catalog batch is Wave 4, while medical-authoring work for Waves 1 through 3 remains a separate evidence task: promote only individual relationships with adequate condition-specific clinical support and leave unsupported theories draft.
