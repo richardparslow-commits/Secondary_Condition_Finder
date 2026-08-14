@@ -10,10 +10,11 @@ export const presumptiveSourceSchema = z.object({
   /** Public URL a reviewer can open to check the citation. */
   url: z.string().url(),
   /**
-   * True only after a qualified human has confirmed the citation. Never set by
-   * an automated agent, same rule as the secondary-condition knowledge base.
+   * Set true only after a qualified human has confirmed the citation. Automated
+   * agents must preserve the truthful status; the schema permits future human
+   * verification without requiring a data-contract migration.
    */
-  verified: z.literal(false),
+  verified: z.boolean(),
 });
 
 /**
