@@ -1,0 +1,6 @@
+{
+  "id": "myelodysplastic-syndrome",
+  "draft": true,
+  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review cytopenia, infection/bleeding, transfusion/treatment, hematologic transformation, and organ-specific residual pathways only where supported; do not infer progression to leukemia in an individual case from the rating schedule."],
+  "suggestions": []
+}
