@@ -20,16 +20,40 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).not.toContain("Azure Static Web Apps CI/CD");
   });
 
-  it("records a status-only host capability matrix", () => {
+  it("gates the complete public production route matrix on HTTP 200", () => {
     const workflow = read(workflowPath);
 
-    expect(workflow).toContain("Probe production route matrix");
+    expect(workflow).toContain("Gate production route matrix");
     expect(workflow).toContain("probe_status() {");
-    expect(workflow).toContain("probe_status '/'");
-    expect(workflow).toContain("probe_status '/about'");
-    expect(workflow).toContain("probe_status '/va-forms'");
-    expect(workflow).toContain("--output /dev/null");
-    expect(workflow).toContain("Route matrix:");
+    for (const route of [
+      "/",
+      "/about",
+      "/secondary",
+      "/secondary/condition-caused-by",
+      "/secondary/condition-aggravation",
+      "/secondary/legal",
+      "/secondary/diagnosed",
+      "/secondary/service-connected",
+      "/secondary/ratings",
+      "/secondary/upload",
+      "/secondary/suggestions",
+      "/secondary/evidence",
+      "/presumptive",
+      "/presumptive/results",
+      "/scenarios",
+      "/va-forms",
+      "/va-forms/finder",
+      "/va-reference",
+      "/va-reference/service-branches",
+      "/privacy",
+      "/terms",
+    ]) {
+      expect(workflow).toContain(`"${route}"`);
+    }
+    expect(workflow).toContain('--output /dev/null');
+    expect(workflow).toContain('if [ "$status" != "200" ]');
+    expect(workflow).toContain("Production route gate failed");
+    expect(workflow).toContain('echo "failure_count=${#failures[@]}"');
   });
 
   it("checks only the non-sensitive dynamic-page readiness marker", () => {
@@ -46,7 +70,7 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).not.toContain("cat \"$body_file\"");
   });
 
-  it("classifies failure without exposing the response body", () => {
+  it("classifies failure without exposing response bodies", () => {
     const workflow = read(workflowPath);
 
     expect(workflow).toContain('outcome="network_error"');
@@ -54,6 +78,7 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).toContain('outcome="payload_not_ready"');
     expect(workflow).toContain('outcome="unexpected_payload"');
     expect(workflow).toContain("Record failed runtime evidence");
+    expect(workflow).toContain("Route matrix failures:");
     expect(workflow).toContain("Readiness request outcome:");
     expect(workflow).toContain("Readiness HTTP status:");
     expect(workflow).toContain(
@@ -68,10 +93,11 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).not.toContain('gh issue comment "$RUNTIME_READINESS_ISSUE" --body-file');
   });
 
-  it("transitions issue 213 to completed only after a successful readiness result", () => {
+  it("transitions issue 213 to completed only after routes and readiness succeed", () => {
     const workflow = read(workflowPath);
 
     expect(workflow).toContain("if: steps.readiness.outputs.ready == 'true'");
+    expect(workflow).toContain('Route matrix: \`${{ steps.routes.outputs.route_count }} routes, ${{ steps.routes.outputs.failure_count }} failures\`');
     expect(workflow).toContain('gh issue comment "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY"');
     expect(workflow).toContain('gh issue close "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY" --reason completed');
     expect(workflow).toContain("No secret value, secret length, hash, derived key material");
