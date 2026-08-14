@@ -4,25 +4,16 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 
 const WAVE_FIVE_IDS = [
-  "esophageal-stricture",
-  "achalasia",
-  "barretts-esophagus",
-  "gastroparesis",
-  "peritoneal-adhesions",
-  "short-bowel-syndrome",
-  "fecal-incontinence",
-  "rectal-prolapse",
-  "anal-fistula",
-  "chronic-liver-disease",
-  "chronic-pyelonephritis",
-  "hydronephrosis",
-  "urethral-stricture",
-  "varicocele-hydrocele",
-  "epididymitis-orchitis",
+  "esophageal-stricture", "achalasia", "barretts-esophagus", "gastroparesis",
+  "peritoneal-adhesions", "short-bowel-syndrome", "fecal-incontinence",
+  "rectal-prolapse", "anal-fistula", "chronic-liver-disease",
+  "chronic-pyelonephritis", "hydronephrosis", "urethral-stricture",
+  "varicocele-hydrocele", "epididymitis-orchitis",
 ] as const;
 
 const FRAMEWORK_ONLY_IDS = ["gastroparesis", "varicocele-hydrocele"] as const;
 const POST_V2_PROMOTED_WAVE_FIVE_IDS = new Set([
+  "chronic-liver-disease",
   "chronic-pyelonephritis",
   "urethral-stricture",
 ]);
@@ -39,26 +30,22 @@ describe("condition catalog expansion wave 5", () => {
   });
 
   it("adds all 15 approved Wave 5 conditions", () => {
-    for (const id of WAVE_FIVE_IDS) {
-      expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
-    }
+    for (const id of WAVE_FIVE_IDS) expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
   });
 
   it("keeps non-promoted Wave 5 mappings draft while allowing reviewed post-v2 promotion", () => {
     for (const id of WAVE_FIVE_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
-
       if (POST_V2_PROMOTED_WAVE_FIVE_IDS.has(id)) {
         expect(mapping?.draft).toBe(false);
         expect(mapping?.todo).toEqual([]);
         expect(mapping?.suggestions.length).toBeGreaterThan(0);
-        continue;
+      } else {
+        expect(mapping?.draft).toBe(true);
+        expect(mapping?.suggestions).toEqual([]);
+        expect(mapping?.todo.length).toBeGreaterThan(0);
       }
-
-      expect(mapping?.draft).toBe(true);
-      expect(mapping?.suggestions).toEqual([]);
-      expect(mapping?.todo.length).toBeGreaterThan(0);
     }
   });
 
