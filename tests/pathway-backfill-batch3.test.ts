@@ -21,9 +21,10 @@ const intentionallyUnlabeledMappings = [
   "pulmonary-fibrosis",
   "interstitial-lung-disease",
   "anosmia",
-  "ageusia",
   "sleep-apnea",
 ] as const;
+
+const safetyWithdrawnMappings = ["ageusia"] as const;
 
 describe("controlled pathway backfill batch 3", () => {
   it("backfills only Respiratory edges whose attached source set includes clinical evidence", () => {
@@ -47,14 +48,22 @@ describe("controlled pathway backfill batch 3", () => {
     }
   });
 
-  it("keeps reviewed insufficient-source Respiratory and ENT mappings unlabeled", () => {
+  it("keeps insufficient-source Respiratory and ENT mappings unpublished or unlabeled", () => {
     const kb = loadKnowledgeBase();
+
     for (const primaryId of intentionallyUnlabeledMappings) {
       const mapping = kb.find((entry) => entry.id === primaryId);
       expect(mapping?.draft).toBe(false);
       for (const suggestion of mapping?.suggestions ?? []) {
         expect(suggestion.pathwayIntelligence).toBeUndefined();
       }
+    }
+
+    for (const primaryId of safetyWithdrawnMappings) {
+      const mapping = kb.find((entry) => entry.id === primaryId);
+      expect(mapping?.draft).toBe(true);
+      expect(mapping?.suggestions).toEqual([]);
+      expect(mapping?.todo.length).toBeGreaterThan(0);
     }
   });
 
