@@ -82,22 +82,6 @@
       "reviewNotes": []
     },
     {
-      "id": "fibromyalgia",
-      "name": "Fibromyalgia",
-      "aliases": [],
-      "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.71a",
-          "note": "DC 5025 expressly lists fibromyalgia (fibrositis, primary fibromyalgia syndrome) under the musculoskeletal rating schedule.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": [
-        "Wave 8 removes the historical 38 CFR 4.88b carryover from fibromyalgia and records the current musculoskeletal DC 5025 identity. Rating authority is not clinical nexus evidence."
-      ]
-    },
-    {
       "id": "systemic-lupus-erythematosus",
       "name": "Systemic Lupus Erythematosus (SLE)",
       "aliases": [
