@@ -132,7 +132,7 @@ The following published Systemic / Medical mappings/edges were left unlabeled at
 
 This completed the four-category published-mapping review. Intentionally-unlabeled edges remained eligible for later enrichment only after their underlying published source sets were strengthened; the backfill program did not infer missing medical links.
 
-## Subsequent evidence-promotion supersession through Batch 7
+## Subsequent evidence-promotion supersession through Batch 8
 
 Later Clinical Evidence Promotion batches changed several historical Batch 2-4 statuses without weakening the original backfill threshold:
 
@@ -144,6 +144,7 @@ Later Clinical Evidence Promotion batches changed several historical Batch 2-4 s
 - `al-amyloidosis` was returned to draft in Batch 5.
 - `addisons-disease` was returned to draft in Batch 6.
 - `anorexia-nervosa` was returned to draft in Batch 7.
-- `hypertension` and `erectile-dysfunction` → `depressive-disorder` remain published but intentionally unlabeled pending stronger condition-specific evidence.
+- All four published `hypertension` relationships were clinically repaired in Batch 8. The CKD, ischemic-heart-disease, and congestive-heart-failure edges now carry bounded `disease-progression` pathway intelligence. The erectile-dysfunction edge now has condition-specific association evidence but remains intentionally pathway-unlabeled because the evidence does not justify a stronger individual causal or medication-related pathway label.
+- `erectile-dysfunction` → `depressive-disorder` remains published but intentionally unlabeled pending stronger condition-specific evidence.
 
 The current publication counts and citation-debt ratchet are maintained in `docs/kb-coverage-tracker.md`; this ledger remains the historical record of why pathway metadata was or was not authored during the original backfill.
