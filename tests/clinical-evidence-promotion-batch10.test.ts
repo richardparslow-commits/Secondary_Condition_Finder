@@ -63,7 +63,7 @@ describe("clinical evidence promotion batch 10", () => {
     }
   });
 
-  it("physically relocates hyperparathyroidism into endocrine maintenance with DC 7904", () => {
+  it("preserves the Batch 10 hyperparathyroidism relocation after the later Batch 11 endocrine cleanup", () => {
     const endocrine = ids("data/conditions/endocrine.json");
     const neurological = ids("data/conditions/neurological.json");
     const condition = catalogById.get("hyperparathyroidism");
@@ -75,7 +75,11 @@ describe("clinical evidence promotion batch 10", () => {
     expect(condition?.ratingSchedule[0]?.citation).toBe("38 CFR 4.119");
     expect(condition?.ratingSchedule[0]?.note).toMatch(/7904/i);
     expect(condition?.ratingSchedule[0]?.verified).toBe(false);
-    expect(neurological).toContain("hypoparathyroidism");
+
+    // Batch 10 intentionally left these two identities in neurological
+    // maintenance. Batch 11 subsequently relocates hypoparathyroidism only.
+    expect(endocrine).toContain("hypoparathyroidism");
+    expect(neurological).not.toContain("hypoparathyroidism");
     expect(neurological).toContain("hypothyroidism");
   });
 });
