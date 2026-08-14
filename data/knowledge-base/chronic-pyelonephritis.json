@@ -1,6 +1,46 @@
 {
   "id": "chronic-pyelonephritis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review recurrent-infection, reflux/obstructive, renal-function, treatment, aggravation, and intermediate-factor pathways only where applicable; do not infer the origin of chronic renal infection from rating authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Radiologically proven chronic pyelonephritis is heterogeneous: many adults with preserved renal function remain stable, while patients with bilateral scarring, proteinuria, hypertension, or impaired renal function represent higher-risk phenotypes in whom chronic renal damage and progression should be evaluated. A chronic-kidney-disease relationship should therefore be considered only when longitudinal renal-function loss or structural renal damage is documented and competing renal causes are addressed.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "disease-progression"
+        ],
+        "causalChain": "Documented chronic pyelonephritis with renal scarring or persistent parenchymal damage → sustained loss of functioning renal tissue or renal impairment → claimed chronic kidney disease.",
+        "developmentQuestions": [
+          "What imaging or nephrology evidence establishes chronic pyelonephritis and renal scarring rather than isolated acute urinary infection?",
+          "Are one or both kidneys affected, and are proteinuria, hypertension, reduced eGFR, or elevated creatinine documented?",
+          "Does the longitudinal record show persistent or progressive renal-function loss after the chronic pyelonephritis/scarring was established?",
+          "Which alternative or contributing CKD causes, including diabetes, primary hypertension, glomerular disease, obstruction, medication toxicity, congenital disease, or other nephropathies, are present?",
+          "Can a nephrology clinician explain whether the documented chronic pyelonephritic damage caused or materially aggravated the individual's CKD?"
+        ],
+        "issuesToResolve": [
+          "Adults with chronic pyelonephritis and normal renal function may have a favorable long-term renal prognosis, so the diagnosis alone does not establish CKD progression.",
+          "Individual linkage requires objective scarring or persistent renal damage, longitudinal renal-function evidence, and review of competing renal etiologies."
+        ]
+      },
+      "evidenceGaps": [
+        "Imaging or nephrology records documenting chronic pyelonephritic scarring or persistent parenchymal damage",
+        "Serial creatinine/eGFR, urinalysis or proteinuria measurements, and blood-pressure history showing chronic renal impairment",
+        "Medical opinion addressing competing CKD etiologies and whether the documented pyelonephritic damage caused or aggravated renal-function loss"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Goodship et al., Long-term follow-up of patients presenting to adult nephrologists with chronic pyelonephritis and 'normal' renal function, QJM. 2000;93:799-803. PMID 11110586",
+          "note": "Condition-specific adult cohort of 255 patients with radiologically proven chronic pyelonephritis showing the importance of baseline renal function and associated bilateral disease, proteinuria, and hypertension in prognosis; supports cautious renal-progression review rather than an automatic CKD nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11110586/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 11110586; abstract; 255 radiologically proven cases with median follow-up about 95 months"
+        }
+      ]
+    }
+  ]
 }
