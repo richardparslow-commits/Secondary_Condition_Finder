@@ -1,6 +1,6 @@
 # Step 5 Pathway-Intelligence Backfill Ledger
 
-This ledger records the controlled enrichment of already-published primary-to-secondary mappings after the Step 5 pathway-intelligence framework was introduced.
+This ledger records the controlled enrichment of already-published primary-to-secondary mappings after the Step 5 pathway-intelligence framework was introduced. The Batch 1-4 sections are historical status snapshots from that backfill program; later Clinical Evidence Promotion batches may repair or withdraw mappings that were intentionally left unlabeled at the time. The current supersession record is maintained at the end of this document.
 
 ## Guardrail
 
@@ -25,7 +25,7 @@ PTSD → sleep-apnea, PTSD → migraine-headaches, and PTSD → erectile-dysfunc
 
 ### Reviewed and intentionally left unlabeled
 
-The following published mappings were reviewed, but their current attached sources are legal/rating-framework only or otherwise insufficient to author additional medical-pathway intelligence without first strengthening the underlying evidence:
+The following published mappings were reviewed, but their current attached sources were legal/rating-framework only or otherwise insufficient to author additional medical-pathway intelligence without first strengthening the underlying evidence:
 
 - agoraphobia
 - anxiety-disorder
@@ -44,9 +44,9 @@ The following published mappings were reviewed, but their current attached sourc
 - skull-fracture-non-basilar-and-basal
 - rem-sleep-disorder
 
-Within `adjustment-disorder`, the `migraine-headaches` edge is also intentionally left unlabeled because its attached source is a rating/legal framework rather than clinical evidence of the proposed relationship.
+Within `adjustment-disorder`, the `migraine-headaches` edge was also intentionally left unlabeled because its attached source was a rating/legal framework rather than clinical evidence of the proposed relationship.
 
-Draft mappings are outside this backfill program; for example, `migraine-headaches` and `ocd` remain draft and are not promoted or pathway-enriched by this work.
+Draft mappings were outside this backfill program; for example, `migraine-headaches` and `ocd` were draft and were not promoted or pathway-enriched by this work.
 
 ## Batch 2 — Musculoskeletal (#248)
 
@@ -57,11 +57,11 @@ Draft mappings are outside this backfill program; for example, `migraine-headach
 | rheumatoid-arthritis | depressive-disorder | somatopsychic | Published pain/depression systematic review plus § 3.310 framework; copy limits the pathway to documented pain/functional impairment and individual clinical assessment. |
 | rheumatoid-arthritis | gerd | medication-related | Published NSAID gastrointestinal-risk systematic review plus § 3.310 framework; medication indication, exposure, diagnosis, timing, and alternative causes remain individual-development questions. |
 
-Knee injury → hip strain and knee injury → lumbar strain were already enriched in #244 and are retained as the biomechanical control case.
+Knee injury → hip strain and knee injury → lumbar strain were already enriched in #244 and were retained as the biomechanical control case at the time.
 
 ### Reviewed and intentionally left unlabeled
 
-The following published Musculoskeletal edges remain unlabeled because their attached sources are legal/rating-framework only or otherwise insufficient for new medical-pathway metadata:
+The following published Musculoskeletal edges were left unlabeled at Batch 2 because their attached sources were legal/rating-framework only or otherwise insufficient for new medical-pathway metadata:
 
 - ankle-strain → contralateral-knee-condition
 - ankle-strain → flatfoot
@@ -70,7 +70,7 @@ The following published Musculoskeletal edges remain unlabeled because their att
 - knee-injury → ankle-strain
 - knee-injury → contralateral-knee-condition
 
-`lumbar-strain`, `cervical-strain`, `hip-strain`, `intervertebral-disc-syndrome`, and `radiculopathy` remain draft and are excluded from the published-mapping backfill.
+`lumbar-strain`, `cervical-strain`, `hip-strain`, `intervertebral-disc-syndrome`, and `radiculopathy` were draft and excluded from the published-mapping backfill.
 
 ## Batch 3 — Respiratory / ENT (#249)
 
@@ -85,7 +85,7 @@ The following published Musculoskeletal edges remain unlabeled because their att
 
 ### Reviewed and intentionally left unlabeled
 
-The following published Respiratory / ENT mappings remain unlabeled because their attached source sets are legal/rating-framework only or otherwise insufficient for new medical-pathway metadata:
+The following published Respiratory / ENT mappings were left unlabeled at Batch 3 because their attached source sets were legal/rating-framework only or otherwise insufficient for new medical-pathway metadata:
 
 - chronic-sinusitis
 - chronic-rhinitis
@@ -99,7 +99,7 @@ The following published Respiratory / ENT mappings remain unlabeled because thei
 
 For asthma → cardiac-arrhythmia, the existing rationale notes that medication effects may also contribute. That edge is **not** labeled medication-related because the attached clinical source supports the asthma/atrial-fibrillation association, not a medication-specific adverse-effect pathway.
 
-`bronchiolitis`, `sarcoidosis`, `deviated-nasal-septum`, `laryngeal-stenosis`, `pneumoconiosis`, `noise-induced-hearing-loss`, and `tinnitus` remain draft and are excluded from the published-mapping backfill.
+`bronchiolitis`, `sarcoidosis`, `deviated-nasal-septum`, `laryngeal-stenosis`, `pneumoconiosis`, `noise-induced-hearing-loss`, and `tinnitus` were draft and excluded from the published-mapping backfill.
 
 ## Batch 4 — Systemic / Medical (#250)
 
@@ -112,7 +112,7 @@ For asthma → cardiac-arrhythmia, the existing rationale notes that medication 
 
 ### Reviewed and intentionally left unlabeled
 
-The following Systemic / Medical edges remain unlabeled despite having some clinical evidence because the attached source set does not support enough of the specific primary→mechanism/treatment chain to author the stronger pathway metadata:
+The following Systemic / Medical edges were left unlabeled at Batch 4 despite having some clinical evidence because the attached source set did not support enough of the specific primary→mechanism/treatment chain to author the stronger pathway metadata:
 
 - stomach-cancer → gerd — NSAID gastrointestinal-risk evidence does not establish that stomach-cancer treatment produced the relevant NSAID exposure.
 - abdominal-hernia → gerd — NSAID gastrointestinal-risk evidence does not establish that hernia treatment produced the relevant NSAID exposure.
@@ -120,7 +120,7 @@ The following Systemic / Medical edges remain unlabeled despite having some clin
 - congestive-heart-failure → depressive-disorder — the attached review supports depression as a heart-failure comorbidity, but not enough mechanism for a physical→mental-health pathway label under this backfill threshold.
 - congestive-heart-failure → gerd — NSAID gastrointestinal-risk evidence does not establish a heart-failure→NSAID treatment link.
 
-The following published Systemic / Medical mappings/edges remain unlabeled because their attached source sets are legal/rating-framework only or otherwise insufficient:
+The following published Systemic / Medical mappings/edges were left unlabeled at Batch 4 because their attached source sets were legal/rating-framework only or otherwise insufficient:
 
 - hypertension
 - al-amyloidosis
@@ -130,4 +130,20 @@ The following published Systemic / Medical mappings/edges remain unlabeled becau
 - addisons-disease
 - erectile-dysfunction → depressive-disorder
 
-This completes the four-category published-mapping review. Intentionally-unlabeled edges remain eligible for future enrichment only after their underlying published source sets are strengthened; the backfill program does not infer missing medical links.
+This completed the four-category published-mapping review. Intentionally-unlabeled edges remained eligible for later enrichment only after their underlying published source sets were strengthened; the backfill program did not infer missing medical links.
+
+## Subsequent evidence-promotion supersession through Batch 7
+
+Later Clinical Evidence Promotion batches changed several historical Batch 2-4 statuses without weakening the original backfill threshold:
+
+- `knee-injury` and `osteoarthritis` were returned to draft in Clinical Evidence Promotion Batch 2 rather than preserving their weak biomechanical/legal-only publication state.
+- `amputation-or-loss-of-use` → `depressive-disorder` was repaired with condition-specific clinical evidence in Batch 3.
+- `ageusia` was returned to draft in Batch 3.
+- `anosmia` → `depressive-disorder` and `alopecia-areata` → `depressive-disorder` were repaired with condition-specific clinical evidence in Batch 4.
+- `agranulocytosis` was returned to draft in Batch 4.
+- `al-amyloidosis` was returned to draft in Batch 5.
+- `addisons-disease` was returned to draft in Batch 6.
+- `anorexia-nervosa` was returned to draft in Batch 7.
+- `hypertension` and `erectile-dysfunction` → `depressive-disorder` remain published but intentionally unlabeled pending stronger condition-specific evidence.
+
+The current publication counts and citation-debt ratchet are maintained in `docs/kb-coverage-tracker.md`; this ledger remains the historical record of why pathway metadata was or was not authored during the original backfill.
