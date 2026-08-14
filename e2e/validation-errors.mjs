@@ -10,6 +10,7 @@ const APP_BASE_URL = `http://127.0.0.1:${APP_PORT}`;
 const DRIVER_BASE_URL = `http://127.0.0.1:${DRIVER_PORT}`;
 const COMMAND_TIMEOUT_MS = 15_000;
 const SESSION_TIMEOUT_MS = 30_000;
+const USE_PROCESS_GROUPS = process.platform !== "win32";
 const children = [];
 let sessionId;
 
@@ -18,6 +19,31 @@ function logProcess(label, child) {
   child.stderr?.on("data", (chunk) => process.stderr.write(`[${label}] ${chunk}`));
   children.push(child);
   return child;
+}
+
+function sendProcessTreeSignal(child, signal) {
+  if (!child.pid) return;
+
+  try {
+    if (USE_PROCESS_GROUPS) {
+      process.kill(-child.pid, signal);
+      return;
+    }
+    if (!child.killed) child.kill(signal);
+  } catch (error) {
+    if (!(error && typeof error === "object" && "code" in error && error.code === "ESRCH")) {
+      throw error;
+    }
+  }
+}
+
+async function terminateProcessTree(child) {
+  sendProcessTreeSignal(child, "SIGTERM");
+  await delay(250);
+  // Session-start retries can leave browser grandchildren behind. A detached
+  // process group lets cleanup remove those descendants and close inherited
+  // stdio handles before the next browser journey starts.
+  sendProcessTreeSignal(child, "SIGKILL");
 }
 
 function resolveChromeDriver() {
@@ -310,7 +336,7 @@ async function cleanup() {
     }
   }
   for (const child of children.reverse()) {
-    if (!child.killed) child.kill("SIGTERM");
+    await terminateProcessTree(child);
   }
   await delay(250);
 }
@@ -327,6 +353,7 @@ async function main() {
         NEXT_TELEMETRY_DISABLED: "1",
       },
       stdio: ["ignore", "pipe", "pipe"],
+      detached: USE_PROCESS_GROUPS,
     }),
   );
   const chromeDriver = logProcess(
@@ -334,6 +361,7 @@ async function main() {
     spawn(resolveChromeDriver(), [`--port=${DRIVER_PORT}`], {
       env: process.env,
       stdio: ["ignore", "pipe", "pipe"],
+      detached: USE_PROCESS_GROUPS,
     }),
   );
 
