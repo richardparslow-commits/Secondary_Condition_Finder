@@ -70,7 +70,11 @@ describe("VA reference product surfaces", () => {
     expect(suggestions).toContain("buildConditionVaReferenceMap");
     expect(suggestions).toContain("loadDisabilityReference");
     expect(suggestions).toContain("vaReferenceMap.get(recommendation.conditionId)");
-    expect(suggestions).not.toMatch(/recommend\([^)]*vaReference/s);
+    const recommendCall = suggestions.slice(
+      suggestions.indexOf("const recommendationsResult = recommend("),
+      suggestions.indexOf("const linked ="),
+    );
+    expect(recommendCall).not.toContain("vaReference");
     expect(card).toContain("VA reference information");
     expect(card).toContain("VBA terminology");
     expect(card).toContain("it does not affect this recommendation");
