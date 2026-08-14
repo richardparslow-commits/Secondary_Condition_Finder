@@ -11,7 +11,6 @@ import SecondaryLandingPage from "@/app/secondary/page";
 import TermsPage from "@/app/terms/page";
 import { FORBIDDEN_PHRASES } from "@/lib/guardrails";
 import {
-  CURRENT_DISABILITY_SCOPE_NOTICE,
   SECONDARY_CONTINUE_CTA,
   SECONDARY_TRACK_OVERVIEW,
   UNVERIFIED_REFERENCE_NOTICE,
@@ -78,7 +77,8 @@ describe("legal copy contracts", () => {
     const html = renderToStaticMarkup(ConditionCausedByPage());
 
     expect(html).toContain("Core service-connection questions");
-    expect(html).toContain(CURRENT_DISABILITY_SCOPE_NOTICE);
+    expect(html).toContain("Evidence must establish a current disability");
+    expect(html).toContain("A named medical diagnosis is not an absolute legal prerequisite in every circumstance");
     expect(html).toContain("functional impairment of earning capacity");
     expect(html).toContain("intentionally limited to conditions you identify as diagnosed");
     expect(html).toContain("does not treat a particular document type as universally mandatory");
