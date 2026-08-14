@@ -135,20 +135,20 @@ describe("recommend", () => {
   });
 
   it("does not suggest a condition the user already listed as a primary", () => {
-    // Knee injury lists lumbar strain as a compensatory secondary. If the user
-    // is already service connected for lumbar strain, suggesting it is noise.
-    const kneeOnly = recommend(catalog, kb, intake({ primaryConditions: ["Knee injury"] }));
-    expect(kneeOnly.recommendations.map((r) => r.conditionId)).toContain(
-      "lumbar-strain",
+    // PTSD currently includes sleep apnea as an authored research suggestion.
+    // When sleep apnea is also selected as a primary, it must be filtered out.
+    const ptsdOnly = recommend(catalog, kb, intake({ primaryConditions: ["PTSD"] }));
+    expect(ptsdOnly.recommendations.map((r) => r.conditionId)).toContain(
+      "sleep-apnea",
     );
 
     const both = recommend(
       catalog,
       kb,
-      intake({ primaryConditions: ["Knee injury", "Lumbar strain"] }),
+      intake({ primaryConditions: ["PTSD", "sleep-apnea"] }),
     );
     expect(both.recommendations.map((r) => r.conditionId)).not.toContain(
-      "lumbar-strain",
+      "sleep-apnea",
     );
   });
 
@@ -169,7 +169,7 @@ describe("recommend", () => {
     const { recommendations } = recommend(
       catalog,
       kb,
-      intake({ primaryConditions: ["Knee injury", "Lumbar strain"] }),
+      intake({ primaryConditions: ["PTSD", "sleep-apnea"] }),
     );
     const scores = recommendations.map((r) => r.score);
     expect(scores).toEqual([...scores].sort((a, b) => b - a));
