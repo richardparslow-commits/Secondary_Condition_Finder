@@ -62,6 +62,15 @@
 - The new clinical source remains `verified: false` pending qualified-human verification.
 - See `docs/clinical-evidence-promotion-batch-7.md`.
 
+### Clinical Evidence Promotion Batch 8
+- `hypertension`: all four published secondary relationships are clinically repaired. CKD, ischemic-heart-disease, and congestive-heart-failure edges use current AHA/ACC high-blood-pressure guideline evidence with disease-progression/competing-cause safeguards; erectile dysfunction uses a 40-study meta-analysis and remains association-focused without inferring medication causation.
+- `cushings-syndrome` → `hypertension`: promoted using the European Society of Hypertension endocrine-hypertension consensus, with established hypercortisolism, BP chronology, treatment response, persistence, and competing-cause safeguards.
+- `diabetes-mellitus-type-1`: stable identity physically moved from historical neurological placement into `endocrine.json`, normalized to `Diabetes Mellitus Type 1`, and assigned the current 38 CFR 4.119 / DC 7913 framework while its KB mapping remains draft.
+- Citation debt tightens to **135 total / 14 verified / 121 unverified / 119 review findings**, while the clinical-URL floor rises to **44**.
+- The 300/300 contract remains fixed. Batch 8 repairs legacy relationships rather than promoting another Wave 1-7 expansion mapping, so **11 expansion mappings are promoted and 96 of 107 remain drafts**.
+- New clinical source checks remain `verified: false` pending qualified-human verification.
+- See `docs/clinical-evidence-promotion-batch-8.md`.
+
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.
 2. **Citation Insertion:** Clinical claims require condition-specific clinical-evidence references with canonical URLs and source provenance. Regulatory/legal references must remain role-labeled and must not substitute for clinical causation evidence.
