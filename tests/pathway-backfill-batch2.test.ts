@@ -11,6 +11,12 @@ const intentionallyUnlabeledEdges = [
   ["knee-injury", "contralateral-knee-condition"],
 ] as const;
 
+const SAFETY_WITHDRAWN_PRIMARY_IDS = new Set([
+  "ankle-strain",
+  "knee-injury",
+  "osteoarthritis",
+]);
+
 describe("controlled pathway backfill batch 2", () => {
   it("backfills only clinically-supported rheumatoid-arthritis edges", () => {
     const kb = loadKnowledgeBase();
@@ -42,7 +48,7 @@ describe("controlled pathway backfill batch 2", () => {
         (entry) => entry.conditionId === secondaryId,
       );
 
-      if (primaryId === "ankle-strain") {
+      if (SAFETY_WITHDRAWN_PRIMARY_IDS.has(primaryId)) {
         expect(mapping?.draft).toBe(true);
         expect(mapping?.suggestions).toEqual([]);
         expect(suggestion).toBeUndefined();
@@ -78,6 +84,8 @@ describe("controlled pathway backfill batch 2", () => {
       "ankle-strain",
       "intervertebral-disc-syndrome",
       "radiculopathy",
+      "knee-injury",
+      "osteoarthritis",
     ]) {
       expect(kb.find((entry) => entry.id === draftId)?.draft).toBe(true);
     }
