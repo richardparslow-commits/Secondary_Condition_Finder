@@ -6,9 +6,11 @@ This document records what the repository currently proves about accessibility a
 
 It is an evidence report, not a certification.
 
+The executable human evidence record is `docs/section508-manual-review-workbook.md`, tracked by issue #195.
+
 ## Applicable baseline
 
-The project uses the Revised Section 508 web-content baseline as the production-review reference point. Section508.gov states that the Revised Section 508 Standards incorporate WCAG 2.0 Level AA success criteria for web content.
+The project uses the Revised Section 508 web-content baseline as the production-review reference point. Current Section508.gov guidance states that the Revised Section 508 Standards incorporate WCAG 2.0 Level A and AA success criteria and conformance requirements for web content.
 
 The product may pursue newer WCAG guidance as an additional quality target, but the repository must not claim Section 508 conformance solely because individual automated checks pass.
 
@@ -16,23 +18,31 @@ The product may pursue newer WCAG guidance as an additional quality target, but 
 
 **Status: PARTIAL EVIDENCE — MANUAL CONFORMANCE REVIEW PENDING**
 
-The current automated suite proves structural, content, keyboard-entry, focus-style, reflow-safeguard, forced-colors, reduced-motion, and selected live-status announcement contracts. It still does **not** prove complete Section 508 or WCAG conformance. Until the manual checks below are completed and recorded, the production-access package must not represent the application as verified Section 508 compliant.
+The current automated suite proves structural, content, keyboard-entry, focus-style, reflow-safeguard, forced-colors, reduced-motion, validation, mobile-workflow, and selected live-status announcement contracts. It still does **not** prove complete Section 508 or WCAG conformance. Until the human checks in issue #195 and the manual-review workbook are completed and recorded, the production-access package must not represent the application as verified Section 508 compliant.
 
-### Current manual-review production target
+### Production target rule
 
-Manual review is now performed against the Vercel production application at `https://secondary-condition-finder.vercel.app`, not the historical Azure Static Web Apps hostname. At the start of each manual review session, record the exact deployed `main` commit and Vercel production deployment serving the canonical alias; do not assume a previously recorded commit is still current.
+Manual review is performed against the canonical Vercel production application at `https://secondary-condition-finder.vercel.app`.
 
-The Azure → Vercel production migration was objectively verified before this accessibility review refresh: repository CI #716, Vercel deployment status, and Production Runtime Readiness #78 all succeeded for commit `c49fe2414d7a29c50935af91f3f3a08db933c417`, including HTTP 200 + `ready` from `/runtime-readiness`. That is hosting/runtime evidence only, not accessibility evidence.
+At the start of every manual review session, record in `docs/section508-manual-review-workbook.md`:
 
-The deployed manual review tracked in issue #195 requires a reachable intended production build. If the current production host is unavailable or returns routing errors, that is a hosting blocker rather than accessibility evidence and the manual review remains pending.
+- exact deployed `main` commit;
+- Vercel production deployment identifier;
+- successful `main` CI run;
+- successful Production Runtime Readiness run;
+- tester, date/time, OS, browser/version, assistive technology/version, zoom/display configuration, and forced-colors/high-contrast configuration.
 
-## Automated evidence currently enforced
+Do not assume a historical checkpoint is still current. If `main` advances during the review, either finish against the already recorded exact deployment or begin a separate session record for the newer build.
+
+The current repository/hosting lineage has objective Vercel production and runtime-readiness automation. Those checks establish reachability and exact-commit deployment lineage only; they are **not** accessibility evidence.
+
+## Automated and browser evidence currently enforced
 
 `tests/accessibility-ux-reliability.test.ts` verifies selected primary routes and global application contracts for:
 
 - exactly one `<main>` landmark on tested primary routes;
 - a top-level `<h1>` and basic heading-order sanity on tested primary routes;
-- discoverability of the public privacy and terms routes;
+- discoverability of public privacy and terms routes;
 - explicit non-diagnostic and privacy-scope language;
 - the public `/about` route's main landmark, heading structure, audience/scope language, and legal-route navigation;
 - a keyboard-visible **Skip to main content** link targeting the application content container;
@@ -41,11 +51,31 @@ The deployed manual review tracked in issue #195 requires a reachable intended p
 - a dedicated `forced-colors: active` ruleset that preserves borders/focus/control affordances rather than relying on the normal palette alone;
 - a reduced-motion ruleset for users who request reduced motion;
 - a polite atomic live-status contract for the browser-local `/va-reference` filter count;
-- polite atomic live-status contracts for local evidence extraction notices and excerpt-summary changes.
+- polite atomic live-status contracts for local evidence extraction notices and excerpt-summary changes;
+- safeguards that keep the manual Section 508 result pending until human evidence exists.
 
-Other route-specific tests cover selected form-label, source-label, privacy, evidence-processing, and workflow behaviors where those components are exercised.
+The real-browser CI journey additionally exercises the six-step Secondary workflow at a phone-sized viewport, horizontal-overflow checks, app-owned validation transitions, and partial-answer preservation. Other route-specific tests cover selected form-label, source-label, privacy, evidence-processing, and workflow behaviors.
 
-These assertions are regression evidence only. They do not test every WCAG success criterion and do not replace browser/assistive-technology testing.
+These assertions are regression evidence only. They do not test every applicable accessibility requirement and do not replace human browser/assistive-technology testing.
+
+## Required manual route and workflow scope
+
+Issue #195 and the workbook require at minimum:
+
+- `/`;
+- `/about`;
+- `/secondary`;
+- Secondary Steps 1–6: diagnosed conditions, service-connected answers, ratings, supporting documents/evidence, suggestions, and evidence/results;
+- Priority 1/1B local evidence upload/review using synthetic PDF, DOCX, and text documents;
+- `/presumptive`;
+- `/va-forms`;
+- `/va-forms/finder`;
+- `/va-reference`;
+- `/va-reference/service-branches`;
+- `/privacy`;
+- `/terms`.
+
+A route returning HTTP 200 is only reachability evidence. It does not establish an accessibility pass.
 
 ## Evidence matrix
 
@@ -56,81 +86,108 @@ These assertions are regression evidence only. They do not test every WCAG succe
 | Privacy / terms discoverability | Automated Vitest assertion | Verified on home/about paths under test | Positive evidence, limited scope |
 | Keyboard bypass mechanism | Root-layout + CSS regression contract | Verified structurally | Must still be manually operated on deployed app |
 | Visible focus styling | Global CSS regression contract | Verified structurally | Must still be visually reviewed across rendered controls |
-| Reflow/overflow safeguards | Global CSS regression contract | Verified structurally | 200% zoom and narrow viewport still require deployed browser testing |
+| Reflow/overflow safeguards | Global CSS + phone-sized browser regression contracts | Verified structurally/browser-automated | 200% zoom and human visual review still pending |
 | Forced-colors support | Global CSS regression contract | Verified structurally | Windows forced-colors/high-contrast still requires deployed OS/browser testing |
 | Reduced-motion support | Global CSS regression contract | Verified structurally | Positive evidence, limited scope |
 | Selected dynamic status announcements | Source-level regression contracts for VA reference filtering and local evidence status surfaces | Verified structurally | Must still be confirmed with screen reader on deployed app |
+| Accessible validation transitions | Real-browser/source regression coverage | Partial positive evidence | Must still be confirmed with keyboard and assistive technology |
 | Accessible names / labels for interactive workflow controls | Route/component regression tests where implemented | Partial | Must be reviewed across deployed flows |
-| Keyboard-only traversal and focus order | Manual deployed-app test | **Pending** | Blocking manual evidence |
-| Keyboard traps / modal or disclosure behavior | Manual deployed-app test | **Pending** | Blocking manual evidence |
-| Screen-reader announcements and reading order | NVDA and/or VoiceOver manual test | **Pending** | Blocking manual evidence |
-| Error identification and instructions | Manual deployed workflow test | **Pending** | Blocking manual evidence |
-| Zoom/reflow at 200% and narrow viewport | Browser manual test | **Pending** | Blocking manual evidence |
+| Keyboard-only traversal and focus order | Human deployed-app test | **Pending** | Blocking manual evidence |
+| Keyboard traps / disclosure/file-input behavior | Human deployed-app test | **Pending** | Blocking manual evidence |
+| Screen-reader announcements and reading order | NVDA and VoiceOver human test | **Pending** | Blocking manual evidence |
+| Error identification and instructions | Human deployed workflow test | **Pending** | Blocking manual evidence |
+| Zoom/reflow at 200% | Human browser test | **Pending** | Blocking manual evidence |
 | Color contrast across rendered states | Contrast tooling/manual review | **Pending** | Blocking manual evidence |
-| Windows high-contrast / forced-colors behavior | Manual OS/browser test | **Pending** | Blocking manual evidence |
-| Complete Section 508 / WCAG 2.0 AA conformance determination | Evidence review | **Pending** | Do not answer “Yes” until supportable |
+| Windows high-contrast / forced-colors behavior | Human OS/browser test | **Pending** | Blocking manual evidence |
+| Complete Section 508 / WCAG 2.0 A+AA conformance determination | Evidence review | **Pending** | Do not answer “Yes” until supportable |
 
 ## Manual deployed-app protocol
 
-Run against the exact deployed `main` commit intended for the VA review on the canonical Vercel production URL. Record that commit and deployment identifier before testing begins.
+Run against the exact production build recorded in `docs/section508-manual-review-workbook.md`.
 
-### Keyboard
+### Keyboard-only
 
-1. Navigate the home page, `/about`, `/secondary`, `/presumptive`, `/va-forms`, `/va-reference`, `/privacy`, and `/terms` using only Tab, Shift+Tab, Enter, Space, and arrow keys where applicable.
+1. Use only Tab, Shift+Tab, Enter, Space, and arrow keys where applicable.
 2. Confirm the **Skip to main content** link appears on keyboard focus and moves focus past repeated/global content to the application content container.
-3. Confirm focus order follows the visual/logical reading order.
+3. Confirm focus order follows the visual/logical reading order across the required route/workflow matrix.
 4. Confirm every interactive control has a visible focus indicator.
 5. Confirm no keyboard trap occurs.
-6. Confirm validation errors can be reached and understood without a pointer device.
+6. Confirm buttons, links, form controls, file inputs, and disclosures work without a pointer.
+7. Confirm validation errors can be reached and understood without a pointer device.
+8. Confirm focus placement after navigation and validation transitions is reasonable.
+
+### Forms, validation, and status
+
+1. Confirm every input/control has an accurate accessible name.
+2. Confirm required state and instructions are understandable without relying only on color or visual placement.
+3. Confirm validation errors are programmatically associated with the affected control.
+4. Confirm error/status changes are announced appropriately by assistive technology.
+5. Confirm incomplete Secondary answers retain understandable context after validation.
+6. Confirm local evidence extraction success/warning/error states are understandable without relying only on color or placement.
+7. Confirm VA reference source/environment/cache/fallback information is understandable and clearly separate from medical/evidence scoring.
 
 ### Screen reader
 
-Use at least one representative desktop screen reader (NVDA on Windows or VoiceOver on macOS) and record the tool/version.
+Issue #195 requires recorded desktop evidence with NVDA + current Chrome or Edge on Windows and VoiceOver + current Safari on macOS; iOS Safari may be added where practical.
 
 1. Confirm page title/top-level heading context is understandable.
 2. Confirm landmarks and navigation regions are announced sensibly.
 3. Confirm form controls announce their labels, state, and required/error information.
-4. Confirm dynamic result/source labels are understandable in reading order.
-5. Confirm links have meaningful accessible names out of surrounding visual context.
-6. Confirm the `/va-reference` filtered-result count is announced when the filter changes without forcing an interruptive announcement.
-7. Confirm local evidence reading, extraction notices, analysis completion messages, clear-state messages, and excerpt-summary changes are announced appropriately.
-8. Confirm evidence-review status text and dynamically revealed content are understandable without relying on visual placement or color.
+4. Confirm dynamic validation/result/source status is understandable in reading order.
+5. Confirm evidence excerpts, source names, page/paragraph provenance, extraction warnings, and nexus/supporting labels have an understandable reading order.
+6. Confirm `/va-reference` filtering and source/fallback status are understandable.
+7. Confirm no essential meaning is conveyed only visually.
 
-### Zoom, reflow, and contrast
+### Zoom, reflow, contrast, and display modes
 
-1. Test browser zoom at 200% on the primary review routes.
-2. Test a narrow/mobile viewport for horizontal scrolling or clipped essential content.
-3. Review long condition names, source URLs/titles, evidence excerpts, and form labels for wrapping/clipping.
-4. Review text, controls, focus indicators, alerts, badges, and error states for required contrast.
-5. Test Windows forced-colors/high-contrast behavior if available and verify controls, focus, selected states, and essential boundaries remain distinguishable.
+1. Test browser zoom at 200% on the required routes/workflows.
+2. Confirm no essential content is clipped, overlaps, or requires unexpected two-dimensional scrolling where reflow is expected.
+3. Review long condition names, evidence excerpts, source labels, citations, and form controls for wrapping/clipping.
+4. Manually review text, controls, focus indicators, alerts, badges, and error states where automated contrast evidence is insufficient.
+5. Test Windows forced-colors/high-contrast mode and verify controls, focus, selected states, status, and essential boundaries remain distinguishable.
+6. Confirm information is not conveyed by color alone.
 
 ## Recording manual evidence
 
-For each run record only non-sensitive evidence:
+Use `docs/section508-manual-review-workbook.md` as the canonical human evidence record. For each finding record only non-sensitive evidence:
 
+- tester;
 - date/time;
 - deployed commit SHA;
 - Vercel production deployment identifier;
 - browser and version;
 - operating system;
 - assistive technology and version, if used;
-- routes tested;
-- pass/fail by checklist item;
-- issue links for any defects.
+- route/workflow step;
+- PASS / FAIL / N/A / BLOCKED / NOT TESTED;
+- remediation issue/PR for material findings;
+- exact retest build and retest result.
 
-Do not use real Veteran medical, claim, or identifying data during accessibility testing. Use synthetic/sample inputs only.
+Do not infer PASS from automated tests. Screenshots or recordings must contain synthetic/non-sensitive data only.
 
 ## Privacy statement for accessibility testing
 
-Accessibility testing does not change the application's data-handling model. Testers should use synthetic/sample data. The current privacy architecture keeps health/disability workflow selections and presumptive service-history state out of URLs, uses short-lived encrypted/authenticated workflow cookies, limits recommendation-event persistence to aggregate metrics, and excludes VA API credentials and raw response bodies from intentional operational logging.
+Accessibility testing does not change the application's data-handling model. Testers must use synthetic/sample data.
 
-Browser-local evidence ingestion introduced in Priority 1/1B must also be tested with synthetic files only. Do not use real medical records during accessibility review.
+Current implemented privacy boundaries include:
+
+- health/disability workflow selections and presumptive service-history state are kept out of page URLs;
+- workflow state uses short-lived encrypted/authenticated cookies;
+- optional evidence ingestion is browser-local and raw selected document bytes/text are not intentionally sent to application server state;
+- the current application does not persist workflow/recommendation event history through an application event logger;
+- VA adapter observations omit credentials, query values, response bodies, and workflow selections;
+- VA public-reference response bodies are not intentionally persisted;
+- public disability filtering is browser-local after the reference list is loaded.
+
+Do not use real medical records, PII, PHI, claim data, service history, or credentials during accessibility review.
 
 ## Gate rule
 
 The Phase 3 submission checklist remains blocked on accessibility until:
 
-1. the manual deployed-app protocol has been completed on the intended production-review commit;
-2. discovered accessibility defects that affect the VA review path are fixed or explicitly documented;
-3. the evidence is reviewed; and
-4. the yes/no Section 508 answer is supported by that evidence rather than project intent.
+1. every required issue #195 manual item has human evidence on an identified production build;
+2. material accessibility defects affecting the VA review path are remediated and retested or explicitly documented as unresolved;
+3. the completed workbook is reviewed;
+4. this evidence report is updated with the review date, tester/environment evidence, known limitations, and supportable final status;
+5. the Phase 3 submission checklist is updated from objective evidence; and
+6. the yes/no Section 508 answer is supported by the completed record rather than project intent or automated-test success.
