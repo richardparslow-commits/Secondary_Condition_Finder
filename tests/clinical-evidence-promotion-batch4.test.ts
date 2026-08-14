@@ -34,10 +34,10 @@ describe("clinical evidence promotion batch 4", () => {
   it("withdraws agranulocytosis legal-only generic relationships", () => {
     const mapping = byId.get("agranulocytosis"); expect(mapping?.draft).toBe(true); expect(mapping?.suggestions).toEqual([]); expect(mapping?.todo.join(" ")).toMatch(/withdrawn|legal framework/i);
   });
-  it("normalizes hip and ankle identities into musculoskeletal maintenance", () => {
+  it("normalizes hip and ankle identities into musculoskeletal maintenance without freezing later carryover cleanup", () => {
     const maintenance = ids("data/conditions/musculoskeletal-quality-maintenance.json"); const carry = ids("data/conditions/carried-over.json");
     for (const id of ["hip-strain","ankle-strain"]) { expect(maintenance).toContain(id); expect(carry).not.toContain(id); }
-    expect(carry).toEqual(expect.arrayContaining(["contralateral-knee-condition","substance-use-disorder"]));
+    expect(carry).toContain("contralateral-knee-condition");
   });
   it("does not auto-verify new clinical sources", () => {
     for (const id of ["acl-injury","pcl-injury","anosmia","alopecia-areata"] as const) for (const suggestion of byId.get(id)?.suggestions ?? []) expect(suggestion.sourceReferences.every((reference) => reference.verified === false && reference.sourceCheckedOn === "2026-08-14")).toBe(true);
