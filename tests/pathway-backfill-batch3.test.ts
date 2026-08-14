@@ -5,7 +5,7 @@ const expectedBackfill = {
   copd: { "sleep-apnea": ["direct-secondary", "aggravation"], "cardiac-arrhythmia": ["intermediate-chain"] },
   asthma: { "sleep-apnea": ["direct-secondary", "aggravation"], "cardiac-arrhythmia": ["direct-secondary"] },
 } as const;
-const intentionallyUnlabeledMappings = ["chronic-sinusitis","chronic-rhinitis","sleep-apnea"] as const;
+const intentionallyUnlabeledMappings = ["sleep-apnea"] as const;
 const safetyWithdrawnMappings = ["ageusia","emphysema","chronic-bronchitis","pulmonary-fibrosis"] as const;
 
 describe("controlled pathway backfill batch 3", () => {
@@ -37,7 +37,6 @@ describe("controlled pathway backfill batch 3", () => {
   it("recognizes the Batch 11 ILD repair without inferring causation or preserving arrhythmia", () => {
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "interstitial-lung-disease");
     const osa = mapping?.suggestions.find((entry) => entry.conditionId === "sleep-apnea");
-
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(1);
     expect(osa?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
@@ -45,6 +44,28 @@ describe("controlled pathway backfill batch 3", () => {
     expect(osa?.pathwayIntelligence).toBeUndefined();
     expect(osa?.rationale).toMatch(/association|prevalence/i);
     expect(mapping?.suggestions.some((entry) => entry.conditionId === "cardiac-arrhythmia")).toBe(false);
+  });
+
+  it("recognizes the Batch 12 rhinitis and sinusitis repairs without preserving arrhythmia", () => {
+    const kb = loadKnowledgeBase();
+    const rhinitis = kb.find((entry) => entry.id === "chronic-rhinitis");
+    const sinusitis = kb.find((entry) => entry.id === "chronic-sinusitis");
+
+    expect(rhinitis?.draft).toBe(false);
+    expect(rhinitis?.suggestions).toHaveLength(1);
+    expect(rhinitis?.suggestions[0]?.conditionId).toBe("sleep-apnea");
+    expect(rhinitis?.suggestions[0]?.sourceReferences[0]?.sourceUrl).toContain("40774162");
+    expect(rhinitis?.suggestions[0]?.pathwayIntelligence).toBeUndefined();
+    expect(rhinitis?.suggestions[0]?.rationale).toMatch(/allergic-rhinitis phenotype|allergic rhinitis/i);
+    expect(rhinitis?.suggestions.some((entry) => entry.conditionId === "cardiac-arrhythmia")).toBe(false);
+
+    expect(sinusitis?.draft).toBe(false);
+    expect(sinusitis?.suggestions).toHaveLength(1);
+    expect(sinusitis?.suggestions[0]?.conditionId).toBe("sleep-apnea");
+    expect(sinusitis?.suggestions[0]?.sourceReferences[0]?.sourceUrl).toContain("41969980");
+    expect(sinusitis?.suggestions[0]?.pathwayIntelligence).toBeUndefined();
+    expect(sinusitis?.suggestions[0]?.rationale).toMatch(/association-focused|association/i);
+    expect(sinusitis?.suggestions.some((entry) => entry.conditionId === "cardiac-arrhythmia")).toBe(false);
   });
 
   it("allows anosmia depression research only with olfactory-specific clinical evidence", () => {
