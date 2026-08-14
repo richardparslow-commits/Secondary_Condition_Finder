@@ -44,6 +44,15 @@
 - New source checks remain `verified: false` pending qualified-human verification.
 - See `docs/clinical-evidence-promotion-batch-5.md`.
 
+### Clinical Evidence Promotion Batch 6
+- `hyperaldosteronism` → `hypertension`: promoted only for a confirmed primary-aldosteronism phenotype using the 2025 Endocrine Society guideline's direct aldosterone → sodium-retention/volume-expansion → elevated-BP mechanism.
+- `addisons-disease`: returned to draft because its peripheral-neuropathy, diabetic-retinopathy, and chronic-kidney-disease suggestions relied only on rating-schedule sources plus generic endocrine/metabolic language.
+- `hyperpituitarism`: display identity narrowed to `Hyperpituitarism (Prolactin-Secreting Pituitary Dysfunction)` to match DC 7916 while preserving stable ID, aliases, and `verified: false` rating state.
+- Citation debt tightens to **138 total / 14 verified / 124 unverified / 122 review findings**, while the clinical-URL floor rises to **38**.
+- The 300/300 contract remains fixed. Hyperaldosteronism is the tenth promoted expansion mapping, so **97 of 107 Wave 1-7 expansion mappings remain drafts**.
+- The new clinical source remains `verified: false` pending qualified-human verification.
+- See `docs/clinical-evidence-promotion-batch-6.md`.
+
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.
 2. **Citation Insertion:** Clinical claims require condition-specific clinical-evidence references with canonical URLs and source provenance. Regulatory/legal references must remain role-labeled and must not substitute for clinical causation evidence.
