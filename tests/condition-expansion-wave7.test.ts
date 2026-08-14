@@ -100,16 +100,16 @@ describe("condition catalog expansion wave 7", () => {
 
     expect(ovarian?.ratingSchedule[0]?.citation).toBe("38 CFR 4.116");
     expect(ovarian?.ratingSchedule[0]?.note).toMatch(/7627/i);
-    expect(ovarian?.ratingSchedule[0]?.note).toMatch(/system-level.*not.*ovary-specific/i);
+    expect(ovarian?.ratingSchedule[0]?.note).toMatch(/system-level.*(?:rather than|not).*ovary-specific/i);
 
     expect(testicular?.ratingSchedule[0]?.citation).toBe("38 CFR 4.115b");
     expect(testicular?.ratingSchedule[0]?.note).toMatch(/7528/i);
-    expect(testicular?.ratingSchedule[0]?.note).toMatch(/system-level.*not.*testis-specific/i);
+    expect(testicular?.ratingSchedule[0]?.note).toMatch(/system-level.*(?:rather than|not).*testis-specific/i);
     expect(testicular?.reviewNotes.join(" ")).toMatch(/7523|7524/);
 
     expect(laryngeal?.ratingSchedule[0]?.citation).toBe("38 CFR 4.97");
     expect(laryngeal?.ratingSchedule[0]?.note).toMatch(/6819/i);
-    expect(laryngeal?.ratingSchedule[0]?.note).toMatch(/system-level.*not.*larynx-specific/i);
+    expect(laryngeal?.ratingSchedule[0]?.note).toMatch(/system-level.*(?:rather than|not).*larynx-specific/i);
     expect(laryngeal?.reviewNotes.join(" ")).toMatch(/respiratory-cancer/i);
   });
 
