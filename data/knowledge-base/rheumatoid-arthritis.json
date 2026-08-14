@@ -55,7 +55,7 @@
       "conditionId": "gerd",
       "rank": 2,
       "prevalence": "sometimes-explored",
-      "rationale": "GERD symptoms have been reported more frequently in rheumatoid-arthritis populations, and NSAIDs are used to manage RA pain in clinical trials and reviews. Observational evidence also associates NSAID use with GERD symptoms. These findings support a bounded medication/association research pathway when NSAID exposure for RA is actually documented, but they do not establish that rheumatoid arthritis or an NSAID caused or aggravated an individual veteran's GERD.",
+      "rationale": "NSAIDs are used to manage rheumatoid-arthritis pain in clinical trials and reviews, and observational evidence associates NSAID use with GERD symptoms. These findings support a bounded medication-related research pathway when NSAID exposure for RA is actually documented, but they do not establish that rheumatoid arthritis or an NSAID caused or aggravated an individual veteran's GERD.",
       "pathwayIntelligence": {
         "pathways": [
           "medication-related"
@@ -69,7 +69,7 @@
           "Which alternative GERD causes, medications, obesity, hiatal hernia, diet, tobacco/alcohol exposure, or other risk factors should be addressed?"
         ],
         "issuesToResolve": [
-          "RA/GERD and NSAID/GERD observational associations do not establish an individual medication nexus.",
+          "NSAID-treatment and NSAID/GERD observational evidence do not establish an individual medication nexus.",
           "The specific NSAID indication, exposure details, diagnosis, timing, and competing GERD contributors require case-specific review."
         ]
       },
@@ -88,15 +88,6 @@
           "verified": false,
           "sourceCheckedOn": "2026-08-14",
           "sourceLocator": "PMID 33674957"
-        },
-        {
-          "citation": "Miyata et al., Modern Rheumatology (2014), PMID 24252041",
-          "note": "Observational study found GERD symptoms more common in the studied RA population and associated with higher disease-activity and functional measures; supports RA/GERD association, not individual causation.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24252041/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 24252041"
         },
         {
           "citation": "Ruszniewski et al., Aliment Pharmacol Ther (2008), PMID 18671778",
