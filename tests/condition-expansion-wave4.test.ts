@@ -29,9 +29,10 @@ describe("condition catalog expansion wave 4", () => {
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
   const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
 
-  it("moves the implemented catalog from 246 to 261 conditions", () => {
-    expect(catalog).toHaveLength(261);
-    expect(knowledgeBase).toHaveLength(261);
+  it("retains the 261-condition Wave 4 checkpoint as later waves expand coverage", () => {
+    expect(catalog.length).toBeGreaterThanOrEqual(261);
+    expect(knowledgeBase.length).toBeGreaterThanOrEqual(261);
+    expect(catalog).toHaveLength(knowledgeBase.length);
   });
 
   it("adds all 15 approved Wave 4 conditions", () => {
