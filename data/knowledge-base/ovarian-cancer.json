@@ -1,0 +1,6 @@
+{
+  "id": "ovarian-cancer",
+  "draft": true,
+  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Separate active malignancy, treatment effects, surgical/endocrine consequences, lymphedema, scarring, and other documented residuals; DC 7627 is rating context and not evidence of etiology or secondary causation."],
+  "suggestions": []
+}
