@@ -10,16 +10,26 @@
 
 ## Post-v2 controlled promotion
 
-Clinical Evidence Promotion Batch 1 is the first relationship-level promotion pass after the 300-condition catalog target was completed.
+### Clinical Evidence Promotion Batch 1
 
 - `cardiomyopathy` → `congestive-heart-failure`: promoted with condition-specific ESC cardiomyopathy evidence, conservative disease-progression framing, source provenance, and individual-nexus evidence gaps.
 - `urethral-stricture` → `hydronephrosis`: promoted with condition-specific clinical evidence documenting upper-tract complications of urethral stenosis and explicit alternative-cause review.
 - `ankle-strain`: returned to draft because the previously published relationship claims were stronger than the available condition-specific clinical evidence.
 - `fibromyalgia`: catalog identity preserved but physically relocated to musculoskeletal catalog maintenance.
-- The 300/300 identity contract remains fixed. After these two promotions, **105 of the 107 Wave 1-7 expansion mappings remain drafts**.
-- Source records in this batch are source-checked and retain `verified: false` pending qualified-human verification under `docs/citation-verification-sop.md`.
+- Source records are source-checked and retain `verified: false` pending qualified-human verification under `docs/citation-verification-sop.md`.
+- See `docs/clinical-evidence-promotion-batch-1.md`.
 
-See `docs/clinical-evidence-promotion-batch-1.md` for the evidence and regression scope.
+### Clinical Evidence Promotion Batch 2
+
+- `hypertensive-heart-disease` → `congestive-heart-failure`: promoted with condition-specific hypertensive-heart-disease evidence and explicit requirements for objective cardiac remodeling, chronology, and competing-cause review.
+- `chronic-pyelonephritis` → `chronic-kidney-disease`: promoted cautiously with adult chronic-pyelonephritis follow-up evidence and safeguards that distinguish stable preserved renal function from documented scarring or progressive renal impairment.
+- `knee-injury`: returned to draft because four published biomechanical relationships relied only on rating/legal authority rather than condition-specific clinical evidence.
+- `osteoarthritis`: returned to draft because the published plantar-fasciitis relationship used a rating citation as if it supported a biomechanical medical proposition.
+- `diabetic-retinopathy`: stable catalog identity physically relocated from the historical carried-over file into the ophthalmologic catalog file without changing the identity or DC 6040 authority.
+- Nine unsafe unverified legacy references are retired while two clinical-evidence references are added; the citation-debt ratchet is tightened rather than expanded.
+- The 300/300 identity contract remains fixed. After four total post-v2 expansion promotions, **103 of the 107 Wave 1-7 expansion mappings remain drafts**.
+- New source records remain `verified: false` pending qualified-human verification under the Citation Verification SOP.
+- See `docs/clinical-evidence-promotion-batch-2.md`.
 
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.

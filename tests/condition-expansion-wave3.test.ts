@@ -21,7 +21,10 @@ const WAVE_THREE_IDS = [
   "pulmonary-hypertension",
 ] as const;
 
-const POST_V2_PROMOTED_WAVE_THREE_IDS = new Set(["cardiomyopathy"]);
+const POST_V2_PROMOTED_WAVE_THREE_IDS = new Set([
+  "cardiomyopathy",
+  "hypertensive-heart-disease",
+]);
 
 describe("condition catalog expansion wave 3", () => {
   const catalog = loadConditionCatalog();

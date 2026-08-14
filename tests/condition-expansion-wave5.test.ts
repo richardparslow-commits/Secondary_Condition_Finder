@@ -22,7 +22,10 @@ const WAVE_FIVE_IDS = [
 ] as const;
 
 const FRAMEWORK_ONLY_IDS = ["gastroparesis", "varicocele-hydrocele"] as const;
-const POST_V2_PROMOTED_WAVE_FIVE_IDS = new Set(["urethral-stricture"]);
+const POST_V2_PROMOTED_WAVE_FIVE_IDS = new Set([
+  "chronic-pyelonephritis",
+  "urethral-stricture",
+]);
 
 describe("condition catalog expansion wave 5", () => {
   const catalog = loadConditionCatalog();
