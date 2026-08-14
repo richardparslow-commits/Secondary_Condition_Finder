@@ -1,29 +1,29 @@
 import "server-only";
 
-import { z } from "zod";
-
-import { loadVaSandboxConfig } from "./sandbox";
+import {
+  clearVaReferenceCache,
+  readVaReferenceCache,
+  type VaReferenceSourceStatus,
+  writeVaReferenceCache,
+} from "./reference-cache";
+import {
+  fetchVaServiceBranches,
+  loadVaApiConfig,
+  type VaApiResult,
+} from "./sandbox";
 
 export interface ServiceBranchReferenceItem {
   code: string;
   description: string;
 }
 
-export interface ServiceBranchReferenceView {
+export interface ServiceBranchReferenceView extends VaReferenceSourceStatus {
   items: ServiceBranchReferenceItem[];
-  sourceLabel: string;
-  notice: string;
-  live: boolean;
 }
 
-const responseSchema = z.object({
-  items: z.array(
-    z.object({
-      code: z.string().min(1),
-      description: z.string().min(1),
-    }).passthrough(),
-  ),
-}).passthrough();
+type ServiceBranchFetcher = () => Promise<
+  VaApiResult<{ items: ServiceBranchReferenceItem[] }>
+>;
 
 const LOCAL_BRANCHES: ServiceBranchReferenceItem[] = [
   { code: "ARMY", description: "Army" },
@@ -34,45 +34,63 @@ const LOCAL_BRANCHES: ServiceBranchReferenceItem[] = [
   { code: "SPACE_FORCE", description: "Space Force" },
 ];
 
-export async function loadServiceBranchReference(): Promise<ServiceBranchReferenceView> {
-  const config = loadVaSandboxConfig();
-  if (!config.enabled || !config.benefitsReferenceDataApiKey) {
-    return {
-      items: LOCAL_BRANCHES,
-      sourceLabel: "Local branch fallback",
-      notice: "VA service-branch reference data is unavailable or disabled.",
-      live: false,
-    };
+function localFallback(notice: string): ServiceBranchReferenceView {
+  return {
+    items: LOCAL_BRANCHES,
+    source: "local-fallback",
+    sourceLabel: "Local branch fallback",
+    notice,
+    live: false,
+    environment: null,
+    retrievedAt: null,
+    cacheStatus: "miss",
+  };
+}
+
+export async function loadServiceBranchReference(
+  fetcher: ServiceBranchFetcher = fetchVaServiceBranches,
+): Promise<ServiceBranchReferenceView> {
+  const config = loadVaApiConfig();
+  const configuredEnvironment = config.environment ?? "sandbox";
+  const useSharedCache = fetcher === fetchVaServiceBranches;
+  const cacheKey = `service-branches:${configuredEnvironment}`;
+
+  if (useSharedCache) {
+    const cached = readVaReferenceCache<ServiceBranchReferenceView>(cacheKey);
+    if (cached) return { ...cached, cacheStatus: "hit" };
   }
 
-  try {
-    const endpoint = new URL(
-      "service-branches",
-      `${config.benefitsReferenceDataBaseUrl.replace(/\/$/, "")}/`,
-    );
-    const response = await fetch(endpoint, {
-      headers: {
-        Accept: "application/json",
-        apikey: config.benefitsReferenceDataApiKey,
-      },
-      signal: AbortSignal.timeout(config.timeoutMs),
-    });
-    if (!response.ok) throw new Error("reference request failed");
-    const parsed = responseSchema.safeParse(await response.json());
-    if (!parsed.success || parsed.data.items.length === 0) throw new Error("invalid reference response");
-
-    return {
-      items: parsed.data.items.sort((a, b) => a.description.localeCompare(b.description)),
-      sourceLabel: "VA service-branch sandbox reference",
-      notice: "These standardized branch names came from VA sandbox reference data and may not be current.",
-      live: true,
-    };
-  } catch {
-    return {
-      items: LOCAL_BRANCHES,
-      sourceLabel: "Local branch fallback",
-      notice: "VA service-branch reference data is temporarily unavailable.",
-      live: false,
-    };
+  const result = await fetcher();
+  if (!result.success || !result.data || result.data.items.length === 0) {
+    return localFallback("VA service-branch reference data is unavailable or disabled.");
   }
+
+  const environment =
+    result.environment ??
+    (result.source === "va-production-api" ? "production" : configuredEnvironment);
+  const view: ServiceBranchReferenceView = {
+    items: [...result.data.items].sort((a, b) =>
+      a.description.localeCompare(b.description),
+    ),
+    source: result.source,
+    sourceLabel:
+      environment === "production"
+        ? "VA service-branch production reference"
+        : "VA service-branch sandbox reference",
+    notice:
+      environment === "production"
+        ? "These standardized branch names came from VA Benefits Reference Data and are used only as administrative reference context."
+        : "These standardized branch names came from VA sandbox reference data and may not be current. They are used only as administrative reference context.",
+    live: true,
+    environment,
+    retrievedAt: new Date().toISOString(),
+    cacheStatus: "miss",
+  };
+
+  if (useSharedCache) writeVaReferenceCache(cacheKey, view);
+  return view;
+}
+
+export function clearServiceBranchReferenceCache(): void {
+  clearVaReferenceCache("service-branches:");
 }

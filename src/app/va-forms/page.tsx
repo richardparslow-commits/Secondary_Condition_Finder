@@ -28,9 +28,7 @@ export default async function VaFormsPage() {
         VA Form reference
       </h1>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-        Phase 2 sandbox demonstration for one public VA form used in disability
-        compensation claims. This page does not access a Veteran account or
-        send claim, health, diagnosis, or service-history data to VA.
+        Public VA form metadata demonstration. This page does not access a Veteran account or send claim, health, diagnosis, or service-history data to VA.
       </p>
 
       <article className="mt-8 rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
@@ -66,13 +64,9 @@ export default async function VaFormsPage() {
       </article>
 
       <section className="mt-8 rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-700">
-        <h2 className="font-semibold text-slate-900">What this proves</h2>
+        <h2 className="font-semibold text-slate-900">Integration boundary</h2>
         <p className="mt-2">
-          When the VA sandbox feature flag and API key are configured, the app
-          can retrieve and validate public VA Forms metadata through the adapter
-          layer. When sandbox access is disabled or unavailable, the page falls
-          back to a local reference instead of breaking the claim-research
-          workflow.
+          When the configured VA API environment and service credential are enabled, the app can retrieve and validate public VA Forms metadata through the adapter layer. If access is disabled or unavailable, the page falls back to a local reference instead of breaking the claim-research workflow.
         </p>
       </section>
 

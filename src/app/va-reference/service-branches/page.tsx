@@ -9,6 +9,10 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
+function formatRetrievedAt(value: string | null): string {
+  return value ? new Date(value).toLocaleString("en-US", { timeZone: "UTC" }) + " UTC" : "Not available";
+}
+
 export default async function ServiceBranchesPage() {
   const reference = await loadServiceBranchReference();
 
@@ -23,9 +27,14 @@ export default async function ServiceBranchesPage() {
         <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-900">{reference.sourceLabel}</span>
       </div>
       <p className="mt-3 text-sm text-slate-700">
-        Standardized service-branch labels for structured workflow inputs.
+        Standardized service-branch labels used as optional administrative context in the service-history workflow.
       </p>
       <div role="note" className="mt-5 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">{reference.notice}</div>
+      <dl className="mt-4 grid gap-3 rounded-md border border-slate-200 bg-white p-4 text-xs text-slate-600 sm:grid-cols-3">
+        <div><dt className="font-semibold text-slate-800">Environment</dt><dd>{reference.environment ?? "local fallback"}</dd></div>
+        <div><dt className="font-semibold text-slate-800">Last successful retrieval</dt><dd>{formatRetrievedAt(reference.retrievedAt)}</dd></div>
+        <div><dt className="font-semibold text-slate-800">Cache</dt><dd>{reference.live ? reference.cacheStatus : "not used"}</dd></div>
+      </dl>
       <ul className="mt-6 grid gap-3 sm:grid-cols-2">
         {reference.items.map((item) => (
           <li key={`${item.code}-${item.description}`} className="rounded-lg border border-slate-200 bg-white p-4">

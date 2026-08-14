@@ -13,6 +13,10 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
+function formatRetrievedAt(value: string | null): string {
+  return value ? new Date(value).toLocaleString("en-US", { timeZone: "UTC" }) + " UTC" : "Not available";
+}
+
 export default async function VaFormsFinderPage({ searchParams }: PageProps = {}) {
   const rawQuery = (await searchParams)?.q;
   const query = Array.isArray(rawQuery) ? rawQuery[0] : rawQuery;
@@ -39,6 +43,11 @@ export default async function VaFormsFinderPage({ searchParams }: PageProps = {}
       </form>
 
       <div role="note" className="mt-5 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">{reference.notice}</div>
+      <dl className="mt-4 grid gap-3 rounded-md border border-slate-200 bg-white p-4 text-xs text-slate-600 sm:grid-cols-3">
+        <div><dt className="font-semibold text-slate-800">Environment</dt><dd>{reference.environment ?? "local fallback"}</dd></div>
+        <div><dt className="font-semibold text-slate-800">Last successful retrieval</dt><dd>{formatRetrievedAt(reference.retrievedAt)}</dd></div>
+        <div><dt className="font-semibold text-slate-800">Cache</dt><dd>{reference.live ? reference.cacheStatus : "not used"}</dd></div>
+      </dl>
 
       <section className="mt-6" aria-labelledby="forms-results-heading">
         <h2 id="forms-results-heading" className="text-xl font-semibold">Search results</h2>

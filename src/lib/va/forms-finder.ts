@@ -1,6 +1,12 @@
 import "server-only";
 
-import { fetchVaForms } from "./sandbox";
+import {
+  clearVaReferenceCache,
+  readVaReferenceCache,
+  type VaReferenceSourceStatus,
+  writeVaReferenceCache,
+} from "./reference-cache";
+import { fetchVaForms, loadVaApiConfig } from "./sandbox";
 
 export interface VaFormSearchItem {
   formName: string;
@@ -11,19 +17,9 @@ export interface VaFormSearchItem {
   validPdf: boolean | null;
 }
 
-export interface VaFormsFinderView {
+export interface VaFormsFinderView extends VaReferenceSourceStatus {
   query: string;
   items: VaFormSearchItem[];
-  sourceLabel: string;
-  notice: string;
-  live: boolean;
-  retrievedAt: string | null;
-  cacheStatus: "hit" | "miss";
-}
-
-interface CachedFormsView {
-  view: VaFormsFinderView;
-  expiresAt: number;
 }
 
 const LOCAL_526EZ: VaFormSearchItem = {
@@ -34,9 +30,6 @@ const LOCAL_526EZ: VaFormSearchItem = {
   pages: null,
   validPdf: null,
 };
-
-const CACHE_TTL_MS = 5 * 60 * 1_000;
-const formsCache = new Map<string, CachedFormsView>();
 
 function localResults(query: string): VaFormSearchItem[] {
   const normalized = query.toLowerCase();
@@ -50,28 +43,30 @@ export async function loadVaFormsFinder(
   query = "21-526EZ",
 ): Promise<VaFormsFinderView> {
   const normalizedQuery = query.trim().slice(0, 120) || "21-526EZ";
-  const cacheKey = normalizedQuery.toLowerCase();
-  const now = Date.now();
-  const cached = formsCache.get(cacheKey);
-  if (cached && cached.expiresAt > now) {
-    return { ...cached.view, cacheStatus: "hit" };
-  }
+  const config = loadVaApiConfig();
+  const environment = config.environment ?? "sandbox";
+  const cacheKey = `forms:${environment}:${normalizedQuery.toLowerCase()}`;
+  const cached = readVaReferenceCache<VaFormsFinderView>(cacheKey);
+  if (cached) return { ...cached, cacheStatus: "hit" };
 
-  const result = await fetchVaForms(normalizedQuery);
+  const result = await fetchVaForms(normalizedQuery, { config });
 
   if (!result.success || !result.data) {
     return {
       query: normalizedQuery,
       items: localResults(normalizedQuery),
+      source: "local-fallback",
       sourceLabel: "Local reference fallback",
       notice:
         "VA Forms search is unavailable or disabled. Only matching local references can be shown; confirm current forms on VA.gov.",
       live: false,
+      environment: null,
       retrievedAt: null,
       cacheStatus: "miss",
     };
   }
 
+  const retrievedAt = new Date().toISOString();
   const view: VaFormsFinderView = {
     query: normalizedQuery,
     items: result.data.data
@@ -85,17 +80,22 @@ export async function loadVaFormsFinder(
         pages: item.attributes.pages ?? null,
         validPdf: item.attributes.valid_pdf ?? null,
       })),
-    sourceLabel: "VA Forms sandbox",
+    source: result.source,
+    sourceLabel:
+      environment === "production" ? "VA Forms production" : "VA Forms sandbox",
     notice:
-      "Results came from the VA Forms sandbox. Sandbox data is for testing and may not be current; confirm forms on VA.gov before filing.",
+      environment === "production"
+        ? "Results came from the VA Forms production API. Confirm the form on VA.gov before filing because forms and revisions can change."
+        : "Results came from the VA Forms sandbox. Sandbox data is for testing and may not be current; confirm forms on VA.gov before filing.",
     live: true,
-    retrievedAt: new Date(now).toISOString(),
+    environment,
+    retrievedAt,
     cacheStatus: "miss",
   };
-  formsCache.set(cacheKey, { view, expiresAt: now + CACHE_TTL_MS });
+  writeVaReferenceCache(cacheKey, view);
   return view;
 }
 
 export function clearVaFormsFinderCache(): void {
-  formsCache.clear();
+  clearVaReferenceCache("forms:");
 }

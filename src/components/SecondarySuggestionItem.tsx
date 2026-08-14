@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { Recommendation } from "@/lib/engine/types";
 import type {
   SecondaryPathwayType,
@@ -7,10 +9,20 @@ import {
   PREVALENCE_EXPLANATION,
   PREVALENCE_LABEL,
 } from "@/lib/recommendation-prevalence";
+import type { VaConditionReferenceMatch } from "@/lib/va/condition-reference";
+import type { VaApiEnvironment } from "@/lib/va/sandbox";
+
+interface VaReferenceSummary {
+  live: boolean;
+  sourceLabel: string;
+  environment: VaApiEnvironment | null;
+  match: VaConditionReferenceMatch | null;
+}
 
 interface Props {
   recommendation: Recommendation;
   primaryId: string;
+  vaReference: VaReferenceSummary;
 }
 
 const PATHWAY_LABEL: Record<SecondaryPathwayType, string> = {
@@ -33,7 +45,7 @@ const SOURCE_ROLE_LABEL: Record<SourceVerificationScope, string> = {
   "procedural-guidance": "Procedural guidance",
 };
 
-export function SecondarySuggestionItem({ recommendation, primaryId }: Props) {
+export function SecondarySuggestionItem({ recommendation, primaryId, vaReference }: Props) {
   const primaryContext = recommendation.contributingPrimaries.find(
     (primary) => primary.id === primaryId,
   );
@@ -72,6 +84,44 @@ export function SecondarySuggestionItem({ recommendation, primaryId }: Props) {
           {primaryContext.rationale}
         </p>
       )}
+
+      <section className="mt-3 rounded-md border border-blue-200 bg-blue-50 p-3">
+        <h4 className="text-xs font-semibold uppercase tracking-wide text-blue-900">
+          VA reference information
+        </h4>
+        {!vaReference.live ? (
+          <p className="mt-2 text-sm text-slate-700">
+            VA reference data is unavailable or disabled, so no official VA terminology match is shown for this result.
+          </p>
+        ) : vaReference.match?.term ? (
+          <div className="mt-2 text-sm text-slate-700">
+            <p>
+              <span className="font-medium text-slate-900">VBA terminology: </span>
+              {vaReference.match.term.name}
+              <span className="ml-2 font-mono text-xs text-slate-500">
+                ID {vaReference.match.term.id}
+              </span>
+            </p>
+            <p className="mt-1 text-xs text-slate-600">
+              {vaReference.match.matchKind === "alias" ? "Curated alias match" : "Exact normalized-name match"}
+            </p>
+          </div>
+        ) : (
+          <p className="mt-2 text-sm text-slate-700">
+            No exact or curated VA reference terminology match was found for this local condition label.
+          </p>
+        )}
+        <p className="mt-2 text-xs text-slate-600">
+          Reference source: {vaReference.sourceLabel}
+          {vaReference.live && vaReference.environment ? ` (${vaReference.environment})` : ""}.
+        </p>
+        <p className="mt-2 text-xs text-slate-700">
+          Administrative terminology only. This does not establish diagnosis, service connection, eligibility, rating, or medical nexus, and it does not affect this recommendation.
+        </p>
+        <Link href="/va-reference" className="mt-2 inline-block text-xs font-medium underline">
+          Explore the VA reference list
+        </Link>
+      </section>
 
       {pathwayIntelligence && (
         <section className="mt-3 rounded-md border border-slate-200 bg-slate-50 p-3">

@@ -2,17 +2,25 @@ import { randomUUID } from "node:crypto";
 
 import { z } from "zod";
 
-const DEFAULT_FORMS_SANDBOX_BASE_URL =
-  "https://sandbox-api.va.gov/services/va_forms/v0";
-const DEFAULT_REFERENCE_SANDBOX_BASE_URL =
-  "https://sandbox-api.va.gov/services/benefits-reference-data/v1";
+const DEFAULT_FORMS_BASE_URLS = {
+  sandbox: "https://sandbox-api.va.gov/services/va_forms/v0",
+  production: "https://api.va.gov/services/va_forms/v0",
+} as const;
+const DEFAULT_REFERENCE_BASE_URLS = {
+  sandbox: "https://sandbox-api.va.gov/services/benefits-reference-data/v1",
+  production: "https://api.va.gov/services/benefits-reference-data/v1",
+} as const;
 const DEFAULT_TIMEOUT_MS = 4_000;
 const RETRYABLE_STATUS = new Set([429, 503, 504]);
 
-type VaSandboxEnvironment = Record<string, string | undefined>;
+type VaApiEnvironmentVariables = Record<string, string | undefined>;
 
-export interface VaSandboxConfig {
+export type VaApiEnvironment = "sandbox" | "production";
+export type VaApiSource = "va-sandbox-api" | "va-production-api" | "local-fallback";
+
+export interface VaApiConfig {
   enabled: boolean;
+  environment?: VaApiEnvironment;
   formsApiKey?: string;
   benefitsReferenceDataApiKey?: string;
   formsBaseUrl: string;
@@ -20,7 +28,10 @@ export interface VaSandboxConfig {
   timeoutMs: number;
 }
 
-export interface VaSandboxObservation {
+/** Backward-compatible name retained for existing tests and callers. */
+export type VaSandboxConfig = VaApiConfig;
+
+export interface VaApiObservation {
   requestId: string;
   service: "va-forms" | "benefits-reference-data";
   path: string;
@@ -30,18 +41,28 @@ export interface VaSandboxObservation {
   durationMs: number;
 }
 
-export interface VaSandboxResult<T> {
+/** Backward-compatible name retained for the Phase 2 smoke-test contract. */
+export type VaSandboxObservation = VaApiObservation;
+
+export interface VaApiResult<T> {
   success: boolean;
   data: T | null;
-  source: "va-sandbox-api" | "local-fallback";
+  source: VaApiSource;
+  environment?: VaApiEnvironment;
   requestId?: string;
   error?: string;
 }
 
-export interface VaSandboxRequestOptions {
-  config?: VaSandboxConfig;
-  observe?: (observation: VaSandboxObservation) => void;
+/** Backward-compatible name retained for existing callers. */
+export type VaSandboxResult<T> = VaApiResult<T>;
+
+export interface VaApiRequestOptions {
+  config?: VaApiConfig;
+  observe?: (observation: VaApiObservation) => void;
 }
+
+/** Backward-compatible name retained for existing callers. */
+export type VaSandboxRequestOptions = VaApiRequestOptions;
 
 const formIndexItemSchema = z.object({
   id: z.string().min(1),
@@ -74,34 +95,95 @@ const disabilityReferenceSchema = z.object({
   totalPages: z.number().int().nonnegative().optional(),
 }).passthrough();
 
+const serviceBranchSchema = z.object({
+  code: z.string().min(1),
+  description: z.string().min(1),
+}).passthrough();
+
+const serviceBranchReferenceSchema = z.object({
+  items: z.array(serviceBranchSchema),
+}).passthrough();
+
 export type VaFormIndex = z.infer<typeof formsIndexSchema>;
 export type VaDisabilityReference = z.infer<typeof disabilityReferenceSchema>;
+export type VaServiceBranchReference = z.infer<typeof serviceBranchReferenceSchema>;
 
-export function loadVaSandboxConfig(
-  env: VaSandboxEnvironment = process.env,
-): VaSandboxConfig {
-  const timeout = Number(env.VA_SANDBOX_TIMEOUT_MS ?? DEFAULT_TIMEOUT_MS);
+function requestedEnvironment(env: VaApiEnvironmentVariables): VaApiEnvironment {
+  return env.VA_API_ENV?.trim().toLowerCase() === "production"
+    ? "production"
+    : "sandbox";
+}
+
+function apiEnabled(
+  env: VaApiEnvironmentVariables,
+  environment: VaApiEnvironment,
+): boolean {
+  if (env.VA_API_ENABLED !== undefined) {
+    return env.VA_API_ENABLED === "true";
+  }
+  return environment === "sandbox" && env.VA_SANDBOX_ENABLED === "true";
+}
+
+export function loadVaApiConfig(
+  env: VaApiEnvironmentVariables = process.env,
+): VaApiConfig {
+  const environment = requestedEnvironment(env);
+  const timeout = Number(env.VA_API_TIMEOUT_MS ?? env.VA_SANDBOX_TIMEOUT_MS ?? DEFAULT_TIMEOUT_MS);
+  const production = environment === "production";
 
   return {
-    enabled: env.VA_SANDBOX_ENABLED === "true",
-    formsApiKey: env.VA_FORMS_SANDBOX_API_KEY?.trim() || undefined,
-    benefitsReferenceDataApiKey:
-      env.VA_BENEFITS_REFERENCE_SANDBOX_API_KEY?.trim() || undefined,
+    enabled: apiEnabled(env, environment),
+    environment,
+    formsApiKey: (
+      production
+        ? env.VA_FORMS_PRODUCTION_API_KEY
+        : env.VA_FORMS_SANDBOX_API_KEY
+    )?.trim() || undefined,
+    benefitsReferenceDataApiKey: (
+      production
+        ? env.VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY
+        : env.VA_BENEFITS_REFERENCE_SANDBOX_API_KEY
+    )?.trim() || undefined,
     formsBaseUrl:
-      env.VA_FORMS_SANDBOX_BASE_URL?.trim() || DEFAULT_FORMS_SANDBOX_BASE_URL,
+      (production
+        ? env.VA_FORMS_PRODUCTION_BASE_URL
+        : env.VA_FORMS_SANDBOX_BASE_URL)?.trim() ||
+      DEFAULT_FORMS_BASE_URLS[environment],
     benefitsReferenceDataBaseUrl:
-      env.VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL?.trim() ||
-      DEFAULT_REFERENCE_SANDBOX_BASE_URL,
+      (production
+        ? env.VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL
+        : env.VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL)?.trim() ||
+      DEFAULT_REFERENCE_BASE_URLS[environment],
     timeoutMs:
       Number.isFinite(timeout) && timeout > 0 ? Math.floor(timeout) : DEFAULT_TIMEOUT_MS,
   };
 }
 
-function fallback<T>(error: string, requestId?: string): VaSandboxResult<T> {
+/** Backward-compatible entry point; now returns environment-aware configuration. */
+export function loadVaSandboxConfig(
+  env: VaApiEnvironmentVariables = process.env,
+): VaApiConfig {
+  return loadVaApiConfig(env);
+}
+
+function configEnvironment(config: VaApiConfig): VaApiEnvironment {
+  return config.environment ?? "sandbox";
+}
+
+function liveSource(environment: VaApiEnvironment): VaApiSource {
+  return environment === "production" ? "va-production-api" : "va-sandbox-api";
+}
+
+function fallback<T>(
+  error: string,
+  environment: VaApiEnvironment,
+  requestId?: string,
+): VaApiResult<T> {
   return {
     success: false,
     data: null,
     source: "local-fallback",
+    environment,
     requestId,
     error,
   };
@@ -117,31 +199,36 @@ function validatedBaseUrl(value: string): URL | null {
   }
 }
 
-async function requestSandboxJson<T>(args: {
-  service: VaSandboxObservation["service"];
+async function requestVaJson<T>(args: {
+  service: VaApiObservation["service"];
   apiKey?: string;
   baseUrl: string;
   path: string;
   schema: z.ZodType<T>;
-  config: VaSandboxConfig;
-  observe?: VaSandboxRequestOptions["observe"];
+  config: VaApiConfig;
+  observe?: VaApiRequestOptions["observe"];
   query?: URLSearchParams;
-}): Promise<VaSandboxResult<T>> {
+}): Promise<VaApiResult<T>> {
+  const environment = configEnvironment(args.config);
   if (!args.config.enabled) {
-    return fallback("VA sandbox integration is disabled by feature flag.");
+    return fallback(`VA ${environment} integration is disabled by feature flag.`, environment);
   }
   if (!args.apiKey) {
     return fallback(
-      `${args.service} sandbox API key is required when integration is enabled.`,
+      `${args.service} ${environment} API key is required when integration is enabled.`,
+      environment,
     );
   }
 
   const baseUrl = validatedBaseUrl(args.baseUrl);
   if (!baseUrl) {
-    return fallback("VA sandbox base URL must be a valid HTTPS URL.");
+    return fallback("VA API base URL must be a valid HTTPS URL.", environment);
   }
 
-  const endpoint = new URL(args.path.replace(/^\//, ""), `${baseUrl.toString().replace(/\/$/, "")}/`);
+  const endpoint = new URL(
+    args.path.replace(/^\//, ""),
+    `${baseUrl.toString().replace(/\/$/, "")}/`,
+  );
   if (args.query) endpoint.search = args.query.toString();
   const requestId = randomUUID();
 
@@ -174,7 +261,8 @@ async function requestSandboxJson<T>(args: {
 
         if (attempt === 1 && RETRYABLE_STATUS.has(response.status)) continue;
         return fallback(
-          `VA sandbox request failed with status ${response.status}.`,
+          `VA ${environment} request failed with status ${response.status}.`,
+          environment,
           requestId,
         );
       }
@@ -190,7 +278,7 @@ async function requestSandboxJson<T>(args: {
           status: response.status,
           durationMs: Date.now() - startedAt,
         });
-        return fallback("VA sandbox returned an invalid response payload.", requestId);
+        return fallback("VA API returned an invalid response payload.", environment, requestId);
       }
 
       args.observe?.({
@@ -205,7 +293,8 @@ async function requestSandboxJson<T>(args: {
       return {
         success: true,
         data: parsed.data,
-        source: "va-sandbox-api",
+        source: liveSource(environment),
+        environment,
         requestId,
       };
     } catch (error) {
@@ -222,8 +311,9 @@ async function requestSandboxJson<T>(args: {
       if (attempt === 1) continue;
       return fallback(
         timedOut
-          ? "VA sandbox request timed out."
-          : "VA sandbox request failed before a valid response was received.",
+          ? `VA ${environment} request timed out.`
+          : `VA ${environment} request failed before a valid response was received.`,
+        environment,
         requestId,
       );
     } finally {
@@ -231,19 +321,19 @@ async function requestSandboxJson<T>(args: {
     }
   }
 
-  return fallback("VA sandbox request failed.", requestId);
+  return fallback(`VA ${environment} request failed.`, environment, requestId);
 }
 
 export async function fetchVaForms(
   query?: string,
-  options: VaSandboxRequestOptions = {},
-): Promise<VaSandboxResult<VaFormIndex>> {
-  const config = options.config ?? loadVaSandboxConfig();
+  options: VaApiRequestOptions = {},
+): Promise<VaApiResult<VaFormIndex>> {
+  const config = options.config ?? loadVaApiConfig();
   const params = new URLSearchParams();
   const normalizedQuery = query?.trim();
   if (normalizedQuery) params.set("query", normalizedQuery);
 
-  return requestSandboxJson({
+  return requestVaJson({
     service: "va-forms",
     apiKey: config.formsApiKey,
     baseUrl: config.formsBaseUrl,
@@ -256,16 +346,32 @@ export async function fetchVaForms(
 }
 
 export async function fetchVaDisabilityReference(
-  options: VaSandboxRequestOptions = {},
-): Promise<VaSandboxResult<VaDisabilityReference>> {
-  const config = options.config ?? loadVaSandboxConfig();
+  options: VaApiRequestOptions = {},
+): Promise<VaApiResult<VaDisabilityReference>> {
+  const config = options.config ?? loadVaApiConfig();
 
-  return requestSandboxJson({
+  return requestVaJson({
     service: "benefits-reference-data",
     apiKey: config.benefitsReferenceDataApiKey,
     baseUrl: config.benefitsReferenceDataBaseUrl,
     path: "/disabilities",
     schema: disabilityReferenceSchema,
+    config,
+    observe: options.observe,
+  });
+}
+
+export async function fetchVaServiceBranches(
+  options: VaApiRequestOptions = {},
+): Promise<VaApiResult<VaServiceBranchReference>> {
+  const config = options.config ?? loadVaApiConfig();
+
+  return requestVaJson({
+    service: "benefits-reference-data",
+    apiKey: config.benefitsReferenceDataApiKey,
+    baseUrl: config.benefitsReferenceDataBaseUrl,
+    path: "/service-branches",
+    schema: serviceBranchReferenceSchema,
     config,
     observe: options.observe,
   });
