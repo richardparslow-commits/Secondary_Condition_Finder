@@ -22,6 +22,7 @@ const contextEntrySchema = z.string().min(1).max(MAX_CONTEXT_ITEM_LENGTH);
 const storedWorkflowStateSchema = z.object({
   diagnosedConditionIds: z.array(z.string().min(1)).optional(),
   serviceConnectedConditionIds: z.array(z.string().min(1)).optional(),
+  serviceConnectedAnswerDraft: z.record(z.string(), z.enum(["yes", "no"])).optional(),
   ratingsByConditionId: z
     .record(z.string(), z.number().int().min(0).max(100).nullable())
     .optional(),
