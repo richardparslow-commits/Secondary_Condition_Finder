@@ -33,13 +33,15 @@ The catalog is the single source of condition identity. Mapping files carry only
 
 ## Current coverage
 
-After catalog expansion Wave 1:
+After catalog expansion Wave 2:
 
-- **213 catalog conditions** are represented.
+- **231 catalog conditions** are represented.
 - Every catalog condition has exactly one corresponding published-or-draft file in `data/knowledge-base/`.
 - Wave 1 added **20 conditions**: 12 musculoskeletal and 8 neurological.
-- All 20 Wave 1 secondary mappings begin as `draft: true` with no published suggestions. They must not enter recommendation output until condition-specific clinical research satisfies the normal publication rules.
+- Wave 2 added **18 conditions**: 10 musculoskeletal and 8 neurological/peripheral-neurological.
+- All 38 Wave 1 and Wave 2 secondary mappings remain `draft: true` with no published suggestions. They must not enter recommendation output until condition-specific clinical research satisfies the normal publication rules.
 - Rating references added by automated work remain `verified: false`. A qualified human review is required before verification status can change.
+- Where the rating schedule does not provide a single diagnosis-specific diagnostic code, the catalog records the applicable rating framework and an explicit review note rather than inventing authority.
 
 The broader expansion target and ranked Waves 1-7 are maintained in `docs/condition-expansion-roadmap.md`. Target catalog v2 is 300 conditions. That is a versioned product-coverage target, not a statement that the VA schedule or medicine contains only 300 possible diagnoses.
 
@@ -64,7 +66,7 @@ One older item still deserving specific human review is **fibromyalgia**, which 
 1. Add the condition to the appropriate body-system catalog file or an explicitly named expansion-batch file.
 2. Use a unique kebab-case `id`, a stable display `name`, and only unambiguous aliases.
 3. Add a traceable rating-schedule citation when one is known; leave it `verified: false` under automated authoring policy.
-4. If no rating citation is supplied, leave `ratingSchedule` empty and add a `reviewNotes` explanation. Never invent one.
+4. If there is no single diagnosis-specific diagnostic code, cite the applicable rating framework and add a `reviewNotes` explanation. If no defensible rating authority is known at all, leave `ratingSchedule` empty and explain why. Never invent a code.
 5. Create exactly one matching `data/knowledge-base/<id>.json` in the same change.
 6. Default a new mapping to `draft: true` until its secondary suggestions have condition-specific clinical evidence, conservative rationale, evidence gaps, and compliant source references.
 7. Run catalog/KB integrity tests and the citation audit before review.
