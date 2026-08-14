@@ -11,6 +11,7 @@ import SecondaryLandingPage from "@/app/secondary/page";
 import TermsPage from "@/app/terms/page";
 import { FORBIDDEN_PHRASES } from "@/lib/guardrails";
 import {
+  PRESUMPTIVE_TRACK_OVERVIEW,
   SECONDARY_CONTINUE_CTA,
   SECONDARY_TRACK_OVERVIEW,
   UNVERIFIED_REFERENCE_NOTICE,
@@ -56,6 +57,26 @@ describe("legal copy contracts", () => {
     expect(html).toContain('href="/secondary/diagnosed"');
     expect(html).toContain("38 CFR § 3.310(a)");
     expect(html).toContain("38 CFR § 3.310(b)");
+  });
+
+  it("keeps the Home presumptive card limited to the two implemented matching tracks", () => {
+    const html = renderToStaticMarkup(HomePage());
+
+    expect(html).toContain(PRESUMPTIVE_TRACK_OVERVIEW);
+    expect(html).toContain("Current matching scope: Agent Orange/herbicide and burn-pit/fine-particulate presumptive tracks only");
+    expect(html).toContain("Other VA presumptive pathways are not currently screened here");
+    expect(html).toContain("this tool does not determine eligibility");
+    expect(html).not.toContain("radiation");
+    expect(html).not.toContain("cold exposure");
+    expect(html).not.toContain("No nexus opinion required");
+  });
+
+  it("uses a current verification notice without obsolete phase labeling", () => {
+    const html = renderToStaticMarkup(HomePage());
+
+    expect(html).toContain(UNVERIFIED_REFERENCE_NOTICE);
+    expect(html).toContain("Source references marked unverified are research starting points");
+    expect(html).not.toContain("Phase 1");
   });
 
   it("uses the increase-in-severity aggravation standard without a permanent-worsening requirement", () => {
