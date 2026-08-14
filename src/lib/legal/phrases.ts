@@ -14,7 +14,7 @@ export const PRESUMPTIVE_TRACK_OVERVIEW =
   "Current matching scope: Agent Orange/herbicide and burn-pit/fine-particulate presumptive tracks only. Other VA presumptive pathways are not currently screened here. If a claimed condition and service history meet a VA presumption, the presumption can affect the evidence needed to establish service connection, but this tool does not determine eligibility.";
 
 export const UNVERIFIED_REFERENCE_NOTICE =
-  "Source references marked unverified are research starting points and must be independently confirmed against current VA guidance before reliance.";
+  "Citations and source references shown in this app are unverified research starting points and must be independently confirmed against current VA guidance before reliance.";
 
 export const SECONDARY_CONTINUE_CTA = "Proceed to Wizard Step 1";
 export const PRESUMPTIVE_CONTINUE_CTA = "View Presumptive Conditions";
