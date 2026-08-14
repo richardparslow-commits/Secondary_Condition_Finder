@@ -7,6 +7,11 @@ import {
   MAX_LOCAL_EVIDENCE_TEXT_FILE_BYTES,
 } from "@/lib/evidence/document-extract";
 import {
+  clearPresumptiveSession,
+  readPresumptiveSession,
+  writePresumptiveSession,
+} from "@/lib/presumptive/session";
+import {
   clearVaReferenceCache,
   readVaReferenceCache,
   VA_REFERENCE_CACHE_MAX_ENTRIES,
@@ -65,6 +70,12 @@ afterEach(() => {
 });
 
 describe("medium-severity runtime hardening", () => {
+  it("keeps the presumptive encrypted-session wrapper in the executable test surface", () => {
+    expect(typeof readPresumptiveSession).toBe("function");
+    expect(typeof writePresumptiveSession).toBe("function");
+    expect(typeof clearPresumptiveSession).toBe("function");
+  });
+
   it("bounds the process-local VA reference cache and evicts the least-recently-used entry", () => {
     for (let index = 0; index < VA_REFERENCE_CACHE_MAX_ENTRIES; index += 1) {
       writeVaReferenceCache(`key-${index}`, { index }, 1_000);
