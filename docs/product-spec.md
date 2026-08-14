@@ -209,13 +209,15 @@ added to recommendation logs or telemetry.
 Three layers are deliberately separate. See `docs/condition-catalog.md`.
 
 - `data/conditions/` is the catalog: condition identity and rating schedule
-  citations, currently **290 conditions across 29 catalog files** after
-  condition catalog expansion Wave 6. The ranked path to target catalog v2
-  (300 conditions) is in `docs/condition-expansion-roadmap.md`.
+  citations, currently **300 conditions across 32 catalog files** after
+  condition catalog expansion Wave 7. The versioned target catalog v2 is
+  complete; its controlled Waves 1-7 record is in
+  `docs/condition-expansion-roadmap.md`.
 - `data/knowledge-base/` holds exactly one secondary-mapping file per catalog
-  condition, referencing catalog ids. New expansion conditions may begin as
-  safe drafts with no suggestions; individual published suggestions may
-  optionally contain bounded `pathwayIntelligence` authored for that exact
+  condition, referencing catalog ids. The 107 identities added by Waves 1-7
+  remain safe drafts with no suggestions until condition-specific evidence
+  satisfies publication rules; individual published suggestions may optionally
+  contain bounded `pathwayIntelligence` authored for that exact
   primary-to-secondary mapping.
 - `data/presumptives/` holds exposure categories.
 
@@ -226,17 +228,21 @@ load-time validation before recommendation logic runs.
 When the rating schedule does not provide a single diagnosis-specific diagnostic
 code, the catalog may record the applicable joint, nerve, spine, neoplasm,
 laryngeal, ocular, digestive, genitourinary, mental-disorder, hematologic, skin,
-or residual rating framework with an explicit review note. Product expansion-wave
-grouping does not override the actual Part 4 rating authority; a cross-system
-condition must cite the schedule where VA actually evaluates it. When a broader
-regulatory umbrella overlaps a narrower existing catalog diagnosis, the two
-identities must remain distinguishable and must not claim each other's names or
-aliases. When a roadmap identity intentionally groups related diagnoses, the
-user-facing grouping does not authorize clinical authors to treat the grouped
-diagnoses as one etiology or one secondary pathway. Shared diagnostic codes also
-do not collapse distinct disease identities or establish common medical
-causation. Rating context is condition identity/rating information only and must
-not be presented as clinical nexus evidence.
+infectious, oncological, dental/oral, or residual rating framework with an
+explicit review note. Product expansion-wave grouping does not override the
+actual Part 4 rating authority; a cross-system condition must cite the schedule
+where VA actually evaluates it. When a broader regulatory umbrella overlaps a
+narrower existing catalog diagnosis, the two identities must remain
+distinguishable and must not claim each other's names or aliases. When a roadmap
+identity intentionally groups related diagnoses, the user-facing grouping does
+not authorize clinical authors to treat the grouped diagnoses as one etiology or
+one secondary pathway. Shared diagnostic codes also do not collapse distinct
+disease identities or establish common medical causation. Current-code scope
+must be preserved: obsolete codes cannot be revived as present authority, and a
+code limited to a disease site, severity, treatment state, or residual cannot be
+generalized to every presentation of the broader diagnosis. Rating context is
+condition identity/rating information only and must not be presented as clinical
+nexus evidence.
 
 JSON in git rather than an opaque production database keeps mapping, pathway
 intelligence, and citation changes reviewable as pull request diffs.
@@ -251,6 +257,7 @@ intelligence, and citation changes reviewable as pull request diffs.
 | 4 | Disclaimers and non-adjudicative boundaries are visible in workflow/results views | Met, enforced by copy/contracts |
 | 5 | At least three synthetic demo scenarios launch through the current encrypted workflow rather than legacy query-state URLs | Met, enforced by `tests/demo-scenarios.test.ts` |
 | 6 | Step 5 can expose bounded, authored-only pathway intelligence and source roles without changing recommendation order, scores, prevalence, or intake matching | Met, enforced by `tests/step5-pathway-intelligence.test.ts` and CI |
+| 7 | Target catalog v2 contains exactly 300 one-to-one catalog/KB identities, with all Wave 7 mappings remaining drafts and current-code safeguards enforced | Met in repository contract; production closure requires exact-head CI and runtime readiness |
 
 ## External/manual truth gates
 
