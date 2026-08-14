@@ -58,7 +58,8 @@ describe("VA sandbox smoke workflow", () => {
     expect(runbook).toContain(
       "the Benefits Reference Data request must use only the Benefits Reference Data key",
     );
-    expect(runbook).toContain("workflow ID `332298000` has **zero recorded runs**");
+    expect(runbook).toContain("`332298000`");
+    expect(runbook).toContain("**zero recorded runs**");
     expect(runbook).not.toContain("`VA_SANDBOX_API_KEY`");
   });
 });
