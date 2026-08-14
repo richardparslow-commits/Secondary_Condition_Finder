@@ -183,30 +183,34 @@ health state.
 
 The catalog remains fixed at **300 recognized conditions / 300 one-to-one
 knowledge-base mappings** after target-v2 identity expansion. Post-v2 maintenance
-still uses 33 catalog files: fibromyalgia has been physically normalized into
-musculoskeletal maintenance, and diabetic retinopathy has been moved from the
-historical carried-over bucket into the ophthalmologic expansion file, without
-changing either stable identity.
+still uses 33 catalog files: fibromyalgia is physically normalized into
+musculoskeletal maintenance, diabetic retinopathy is in the ophthalmologic file,
+and insomnia is now in the mental-disorders catalog instead of the historical
+carried-over bucket. None of those moves changes a stable condition identity.
 
 Waves 1 through 7 added 107 conditions. Clinical Evidence Promotion Batches 1
-and 2 publish only four individually reviewed expansion mappings:
+through 3 publish only five individually reviewed expansion mappings:
 `cardiomyopathy` → `congestive-heart-failure`, `urethral-stricture` →
-`hydronephrosis`, `hypertensive-heart-disease` → `congestive-heart-failure`, and
-`chronic-pyelonephritis` → `chronic-kidney-disease`. **103 of the 107 expansion
+`hydronephrosis`, `hypertensive-heart-disease` → `congestive-heart-failure`,
+`chronic-pyelonephritis` → `chronic-kidney-disease`, and
+`chronic-liver-disease` → `cirrhosis-of-the-liver`. **102 of the 107 expansion
 mappings remain safe drafts** and stay excluded from recommendation output until
 their own condition-specific clinical evidence satisfies the repository's
 publication rules.
 
-Safety review also returns `ankle-strain`, `knee-injury`, and `osteoarthritis`
-to draft where previously published biomechanical claims were stronger than the
+Safety review has returned `ankle-strain`, `knee-injury`, `osteoarthritis`, and
+`ageusia` to draft where previously published claims were stronger than the
 reviewed evidence or relied on rating/legal authority rather than clinical
-evidence. These relationships may be reconsidered only as individual edges with
-condition-specific evidence and case-specific safeguards.
+evidence. Batch 3 also repairs the existing
+`amputation-or-loss-of-use` → `depressive-disorder` relationship by replacing
+legal-only support with amputation-specific clinical evidence. These changes do
+not alter the 300/300 identity contract.
 
 The completed identity-expansion record is maintained in
 `docs/condition-expansion-roadmap.md`; the post-v2 promotion records are in
-`docs/clinical-evidence-promotion-batch-1.md` and
-`docs/clinical-evidence-promotion-batch-2.md`. The 300-condition target is a
+`docs/clinical-evidence-promotion-batch-1.md`,
+`docs/clinical-evidence-promotion-batch-2.md`, and
+`docs/clinical-evidence-promotion-batch-3.md`. The 300-condition target is a
 versioned product target, not a claim that medicine or the VA rating schedule
 contains only 300 possible conditions.
 
