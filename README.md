@@ -179,14 +179,14 @@ health state.
 
 ## Knowledge-base coverage and authoring
 
-246 catalog conditions have version-controlled mapping files after condition
-catalog expansion Wave 3. Waves 1 through 3 added 53 conditions in controlled
-musculoskeletal, neurological, endocrine, and cardiovascular/pulmonary-vascular
-batches; all 53 expansion mappings remain safe drafts with no published
-suggestions until condition-specific clinical evidence satisfies the repository's
-publication rules. Draft mappings remain excluded from recommendation output.
-The target-v2 expansion plan is maintained in
-`docs/condition-expansion-roadmap.md`.
+261 catalog conditions have version-controlled mapping files after condition
+catalog expansion Wave 4. Waves 1 through 4 added 68 conditions in controlled
+musculoskeletal, neurological, endocrine, cardiovascular/pulmonary-vascular,
+respiratory/ENT, sleep-wake, and ophthalmologic/special-sense batches; all 68
+expansion mappings remain safe drafts with no published suggestions until
+condition-specific clinical evidence satisfies the repository's publication
+rules. Draft mappings remain excluded from recommendation output. The target-v2
+expansion plan is maintained in `docs/condition-expansion-roadmap.md`.
 
 To add or change a condition:
 
@@ -195,7 +195,9 @@ To add or change a condition:
    traceable rating authority when available. Where no single diagnosis-specific
    diagnostic code exists, record the applicable rating framework and review
    note instead of inventing a code. Product-wave grouping does not override the
-   actual Part 4 body-system authority.
+   actual Part 4 body-system authority. When a broader regulatory identity
+   overlaps a narrower existing catalog condition, keep names/aliases distinct
+   and document the relationship rather than collapsing the two identities.
 2. **Mapping:** update/create `data/knowledge-base/<id>.json`. Each published
    suggestion needs a condition ID, rank, prevalence label, conservative
    rationale, evidence gaps, and source references satisfying the repository's
