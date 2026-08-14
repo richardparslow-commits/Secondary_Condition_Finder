@@ -53,12 +53,15 @@ describe("workflow privacy", () => {
     for (const source of [secondary, presumptive]) {
       expect(source).toContain("httpOnly: true");
       expect(source).toContain('sameSite: "strict"');
-      expect(source).toContain("30 * 60");
+      expect(source).toContain("WORKFLOW_SESSION_MAX_AGE_SECONDS");
+      expect(source).toContain("maxAge: WORKFLOW_SESSION_MAX_AGE_SECONDS");
     }
     expect(secondary).toContain('path: "/secondary"');
     expect(presumptive).toContain('path: "/presumptive"');
+    expect(crypto).toContain("WORKFLOW_SESSION_MAX_AGE_SECONDS = 30 * 60");
     expect(crypto).toContain('createCipheriv("aes-256-gcm"');
     expect(crypto).toContain("WORKFLOW_SESSION_SECRET");
+    expect(crypto).toContain("expiresAt");
   });
 
   it("encrypts secondary workflow state without exposing condition IDs or ratings", () => {
