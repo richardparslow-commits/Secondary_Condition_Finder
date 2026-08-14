@@ -1,0 +1,85 @@
+{
+  "bodySystem": "Musculoskeletal System",
+  "conditions": [
+    {
+      "id": "psoriatic-arthritis",
+      "name": "Psoriatic Arthritis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5002 expressly includes psoriatic arthritis as an example, with chronic residuals rated under diagnostic code 5003.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "charcot-arthropathy",
+      "name": "Charcot Neuropathic Arthropathy",
+      "aliases": ["Charcot arthropathy", "Charcot joint"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5009 includes Charcot neuropathic arthropathy, with the acute phase rated under diagnostic code 5002 and chronic residuals under diagnostic code 5003.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "sacroiliac-joint-dysfunction",
+      "name": "Sacroiliac Joint Dysfunction",
+      "aliases": ["SI joint dysfunction", "sacroiliac joint injury or weakness"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5236 covers sacroiliac injury and weakness under the General Rating Formula for Diseases and Injuries of the Spine.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "femoroacetabular-impingement",
+      "name": "Femoroacetabular Impingement",
+      "aliases": ["femoroacetabular impingement syndrome"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "No single condition-specific diagnostic code is assigned here; documented hip or thigh residuals are evaluated under the applicable hip and thigh criteria, including diagnostic codes 5250 through 5255 as appropriate.", "verified": false}],
+      "reviewNotes": ["No single condition-specific diagnostic code is assigned in the current schedule; the applicable code depends on the documented hip or thigh residuals."]
+    },
+    {
+      "id": "hip-labral-tear",
+      "name": "Hip Labral Tear",
+      "aliases": ["acetabular labral tear"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "No single condition-specific diagnostic code is assigned here; documented hip or thigh residuals are evaluated under the applicable hip and thigh criteria, including diagnostic codes 5250 through 5255 as appropriate.", "verified": false}],
+      "reviewNotes": ["No single condition-specific diagnostic code is assigned in the current schedule; the applicable code depends on the documented hip or thigh residuals."]
+    },
+    {
+      "id": "greater-trochanteric-pain-syndrome",
+      "name": "Greater Trochanteric Pain Syndrome",
+      "aliases": ["GTPS"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "No single condition-specific diagnostic code is assigned here; documented hip or thigh residuals are evaluated under the applicable hip and thigh criteria, including diagnostic codes 5250 through 5255 as appropriate.", "verified": false}],
+      "reviewNotes": ["No single condition-specific diagnostic code is assigned in the current schedule. This syndrome can overlap clinically with bursitis or tendinopathy, so catalog identity must not be treated as proof of a separate rating or nexus."]
+    },
+    {
+      "id": "patellar-instability",
+      "name": "Patellar Instability",
+      "aliases": ["recurrent patellar instability"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5257 includes recurrent patellar instability within other impairment of the knee.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "acl-injury",
+      "name": "Anterior Cruciate Ligament (ACL) Injury",
+      "aliases": ["ACL tear", "ACL sprain"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5257 addresses sprain and incomplete or complete ligament tears causing persistent knee instability. Other documented residuals may require other knee criteria.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "pcl-injury",
+      "name": "Posterior Cruciate Ligament (PCL) Injury",
+      "aliases": ["PCL tear", "PCL sprain"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5257 addresses sprain and incomplete or complete ligament tears causing persistent knee instability. Other documented residuals may require other knee criteria.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "tarsal-metatarsal-malunion-nonunion",
+      "name": "Tarsal or Metatarsal Malunion / Nonunion",
+      "aliases": ["tarsal malunion", "tarsal nonunion", "metatarsal malunion", "metatarsal nonunion"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5283 covers malunion or nonunion of the tarsal or metatarsal bones.", "verified": false}],
+      "reviewNotes": []
+    }
+  ]
+}
