@@ -8,6 +8,7 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { draftMappings } from "@/lib/kb/lookup";
+import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import {
   parseStoredSecondaryWorkflowState,
@@ -41,16 +42,18 @@ describe("demo scenarios", () => {
         workflowSessionToQueryParams(workflow),
         catalog,
       );
-      const result = recommend(catalog, kb, {
-        primaryConditions: state.serviceConnectedConditionIds,
-        symptoms: [],
-        medications: state.medications ?? [],
-        treatments: state.treatments ?? [],
-        exposures: [],
-        notes: "",
-      });
+      const result = recommend(
+        catalog,
+        kb,
+        buildSecondaryRecommendationIntake(state),
+      );
 
       expect(result.recommendations.length).toBeGreaterThan(0);
+      expect(
+        result.recommendations.every((recommendation) =>
+          state.diagnosedConditionIds.includes(recommendation.conditionId),
+        ),
+      ).toBe(true);
       for (const recommendation of result.recommendations) {
         expect(recommendation.contributingPrimaries[0].rationale).toBeTruthy();
         expect(recommendation.sourceReferences.length).toBeGreaterThan(0);
