@@ -5,11 +5,13 @@ import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import HomePage from "@/app/page";
+import ConditionCausedByPage from "@/app/secondary/condition-caused-by/page";
 import SecondaryLegalPage from "@/app/secondary/legal/page";
 import SecondaryLandingPage from "@/app/secondary/page";
 import TermsPage from "@/app/terms/page";
 import { FORBIDDEN_PHRASES } from "@/lib/guardrails";
 import {
+  CURRENT_DISABILITY_SCOPE_NOTICE,
   SECONDARY_CONTINUE_CTA,
   SECONDARY_TRACK_OVERVIEW,
   UNVERIFIED_REFERENCE_NOTICE,
@@ -72,10 +74,23 @@ describe("legal copy contracts", () => {
     }
   });
 
+  it("does not present diagnosis or a particular nexus document as universally mandatory", () => {
+    const html = renderToStaticMarkup(ConditionCausedByPage());
+
+    expect(html).toContain("Core service-connection questions");
+    expect(html).toContain(CURRENT_DISABILITY_SCOPE_NOTICE);
+    expect(html).toContain("functional impairment of earning capacity");
+    expect(html).toContain("intentionally limited to conditions you identify as diagnosed");
+    expect(html).toContain("does not treat a particular document type as universally mandatory");
+    expect(html).not.toContain("Three Required Elements");
+    expect(html).not.toContain("A current diagnosed condition supported by appropriate evidence");
+  });
+
   it("renders secondary citations only from the canonical legal references module", async () => {
     const pages = [
       renderToStaticMarkup(HomePage()),
       renderToStaticMarkup(SecondaryLandingPage()),
+      renderToStaticMarkup(ConditionCausedByPage()),
       renderToStaticMarkup(await TermsPage()),
     ];
     const allowed = new Set(
