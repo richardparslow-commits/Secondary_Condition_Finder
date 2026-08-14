@@ -2,75 +2,68 @@
 
 ## Purpose
 
-This plan defines a narrow, defensible delivery path that proves product value without requiring sensitive live VA data up front. It is organized into three phases so the team can build a working product, validate usefulness, and then pursue only the minimum required production API access.
+This plan defines a narrow, defensible delivery path that proves product value without requiring sensitive live VA data up front. The core product remains usable without VA API availability, and external gates are not treated as complete until objective evidence exists.
 
-Phase-level evidence and completion status are tracked through dedicated gate artifacts, including `docs/phase2-completion-audit.md` for the VA sandbox phase.
-
-## Product Guardrails (applies to all phases)
+## Product guardrails
 
 - The tool supports claim-preparation research and organization only.
-- The tool does **not** diagnose conditions or provide legal advice.
-- Outputs are framed as possible conditions or references to explore, not determinations.
-- Recommendations must include rationale and evidence-gap prompts.
-- Data handling must follow least-privilege and minimum-necessary principles.
+- It does **not** diagnose conditions, determine eligibility, promise ratings, or provide legal representation.
+- Recommendations are possibilities to explore and must retain rationale, evidence-gap prompts, source provenance, and conservative language.
+- VA administrative reference data is not medical evidence and does not influence recommendation strength or presumptive matching.
 - Health/disability workflow state and service-history state must not be propagated through URLs.
+- Credentials remain server-only and are never exposed through `NEXT_PUBLIC_*` variables.
 
 ---
 
 ## Phase 1: MVP & Core Evaluation Engine
 
-### Core Deliverables
+### Core deliverables
 
-- [x] **Secondary Track (38 CFR 3.310):** Given service-connected conditions, returns ranked secondary-condition exploration recommendations with reasoning, evidence gaps, and citations.
-- [x] **Presumptive Track (38 CFR 3.307 / 3.309):** Sourced criteria for Agent Orange and PACT Act airborne hazards/burn pits.
-- [x] **Offline Data Model:** Version-controlled condition catalog and local JSON knowledge-base mappings.
-- [x] **Public Legal Routes:** Dedicated `/privacy` and `/terms` pages aligned to current application behavior and scope limitations.
-- [x] **Privacy-Hardened Workflows:** Secondary health/disability state and presumptive service history are kept out of URLs and stored only in short-lived encrypted/authenticated workflow cookies.
+- [x] Secondary track under 38 CFR §3.310 with ranked exploration recommendations, rationale, evidence gaps, and citations.
+- [x] Presumptive track under 38 CFR §§3.307/3.309 with sourced criteria for Agent Orange and PACT Act airborne-hazard/burn-pit paths.
+- [x] Version-controlled local condition catalog and knowledge-base mappings.
+- [x] Public `/privacy`, `/terms`, and `/about` routes.
+- [x] Privacy-hardened secondary and presumptive workflows using short-lived encrypted/authenticated cookies rather than URL-carried health/service-history state.
+- [x] Browser-local evidence ingestion/review for supported documents with explicit resource ceilings and no raw document upload endpoint.
 
-### Phase 1 Validation Gate Status
+### Phase 1 validation status
 
-- [x] **Clear user problem:** Claim-preparation research aid distinguishing 38 CFR 3.310 (secondary) from 38 CFR 3.307/3.309 (presumptive).
-- [x] **No live-data dependency:** Core secondary and presumptive workflows operate independently of VA API availability.
-- [x] **Demo readiness:** Repeatable walkthroughs/scenarios and route-level regression coverage are maintained by the automated test suite.
-- [x] **Public privacy/terms/scope publication:** Live dedicated routes at `/privacy` and `/terms`.
-- [x] **Transparent coverage state:** 193 catalog conditions and 193 version-controlled knowledge-base files are validated; draft mappings remain excluded from recommendation output until publication requirements are satisfied.
-- [x] **Citation governance:** Citation audits enforce hard publication safeguards while preserving explicit verified/unverified status rather than automatically promoting sources to verified.
+- [x] Core workflows are independent of VA API availability.
+- [x] Catalog/knowledge-base structure and citation publication safeguards are enforced in CI.
+- [x] Real-browser workflow coverage is part of the final CI gate.
 
 ---
 
-## Phase 2: Sandbox VA API Integration
+## Phase 2: VA Public-Reference Integration
 
 ### Scope
 
-- Add VA API integration in a dedicated adapter layer using sandbox access only.
-- Keep the core recommendation engine decoupled from external API dependencies.
-- Prove workflow value while limiting privacy and authorization complexity.
+Use only lower-sensitivity public/reference VA APIs behind a dedicated server adapter. Keep the core recommendation and presumptive algorithms independent from upstream VA availability.
 
-### Deliverables
+### Current implementation
 
-- [~] **VA developer account setup and sandbox API key management process.** Repository process and secret-handling rules are documented. Credentialed live sandbox verification remains externally pending in issue #189.
-- [x] **API connector layer with environment-based configuration.** Implemented in `src/lib/va/sandbox.ts`.
-- [x] **Initial high-value, lower-sensitivity integrations.** VA Forms and Benefits Reference Data public/reference demonstrations are implemented.
-- [x] **Request observability, error handling, and retry strategy.** Request IDs, status/outcome categories, bounded retries, timeout/network handling, payload validation, and local fallback are implemented without logging credentials or user payloads.
-- [x] **Internal sandbox scenarios and known limitations.** Documented in `docs/phase2-sandbox-integration.md` and `docs/deployment-readiness.md`, with regression coverage.
+- [~] VA developer sandbox account/credential process is documented; live credentialed proof remains externally pending in issue #189.
+- [x] Environment-aware adapter in `src/lib/va/sandbox.ts` supports disabled, sandbox, and production-target configuration while failing closed by default.
+- [x] Service-specific server credentials are separated for VA Forms and Benefits Reference Data.
+- [x] VA Forms Finder supports bounded public form search with validated metadata, five-minute successful-response caching, status/provenance reporting, and local fallback.
+- [x] Benefits Reference Data supports disability terminology and service-branch reference surfaces with shared bounded caching/status reporting and local fallback.
+- [x] Secondary results can display conservative per-result VA administrative terminology blocks without feeding those values into `recommend()`.
+- [x] Presumptive intake can store optional standardized service-branch context in the encrypted workflow session; `matchPresumptives()` does not read it.
+- [x] Request IDs, timeout/retry rules, payload validation, HTTPS enforcement, and privacy-safe observations are implemented.
 
-### User-Facing Phase 2 Demonstrations
+### Runtime configuration
 
-- [x] `/va-forms` — bounded VA Form 21-526EZ reference with validated sandbox metadata when enabled and explicit local fallback otherwise.
-- [x] `/va-reference` — Benefits Reference Data disability-term explorer. The server retrieves the public reference list without user search parameters; filtering is client-side and not written to URLs or sent back to VA.
+See `docs/va-api-runtime-configuration.md`.
 
-### Acceptance Criteria
+Safe default: no VA network traffic. `VA_API_ENV` selects `sandbox` or `production`; `VA_API_ENABLED=true` is the explicit environment-neutral enable flag. `VA_SANDBOX_ENABLED=true` remains a backward-compatible sandbox gate for issue #189. Forms and Benefits Reference Data use separate sandbox and production keys.
 
-- [~] **App can call selected sandbox APIs successfully from the integration layer.** Request construction/success behavior is covered by automated HTTP tests. Credentialed live VA sandbox proof is still required in issue #189.
-- [x] **API failures degrade gracefully without breaking core intake/exploration flow.** Sandbox-dependent views fall back locally; core secondary/presumptive flows are independent.
-- [x] **Logs provide enough detail to support troubleshooting and demo explanations.** Observations contain service/path/request ID/attempt/status-or-outcome/duration only.
-- [x] **Sandbox-dependent features can be toggled off without affecting baseline V1.** `VA_SANDBOX_ENABLED` defaults to disabled, and tests assert disabled mode performs no network call.
+### Phase 2 completion gate
 
-### Phase 2 Completion Gate
+Current status: **code-complete / externally pending**.
 
-See `docs/phase2-completion-audit.md`.
+Workflow **VA Sandbox Smoke Test** (workflow ID `332298000`) still has **zero recorded runs** as of the current checkpoint. Issue #189 must remain open until the dedicated manual workflow records sanitized successful live sandbox evidence for both VA Forms and Benefits Reference Data using issued server-only credentials.
 
-Current status: **code-complete / externally pending**. As of the latest objective check, VA Sandbox Smoke Test workflow ID `332298000` has zero recorded runs, so issue #189 remains open until a credentialed run records sanitized success evidence for both selected APIs.
+Local fallback pages, CI mocks, Vercel deployment success, or production-readiness success do **not** satisfy that credentialed gate.
 
 ---
 
@@ -78,61 +71,64 @@ Current status: **code-complete / externally pending**. As of the latest objecti
 
 ### Scope
 
-- Prepare a strong, narrow production-access request tied to the working app.
-- Request only the smallest API set required for the first real use case.
-- Demonstrate policy awareness and responsible data handling.
+Prepare a narrow VA production-access request for only the public/reference capabilities already implemented and demonstrate privacy, security, reliability, accessibility awareness, and responsible credential handling.
 
-### Deliverables
+### Repository deliverables
 
-- [x] Public-facing product description page at `/about`.
-- [x] Privacy policy and terms of service pages.
-- [x] End-user definition with explicit first-production-use-case boundaries.
-- [x] Minimal production API request package and per-API rationale in `docs/phase3-production-access-package.md`.
-- [x] 30–60 minute VA platform review script in `docs/phase3-demo-script.md`.
-- [x] Submission-field checklist in `docs/phase3-submission-checklist.md` covering applicant, business model, API scope, credentials, PII/PHI, security, incident response, vulnerability management, rate limits, accessibility, and demo preparation.
-- [x] Data-handling, authentication, credential, rate-limit, retry, and deployment documentation consolidated across the Phase 3 package and existing readiness docs.
+- [x] Public product description, privacy, and terms routes.
+- [x] End-user and first-production-use-case definition.
+- [x] Minimal production-access package in `docs/phase3-production-access-package.md`.
+- [x] 30–60 minute review script in `docs/phase3-demo-script.md`.
+- [x] Submission checklist in `docs/phase3-submission-checklist.md`.
+- [x] Current VA runtime configuration contract in `docs/va-api-runtime-configuration.md`.
+- [x] Current Vercel production deployment/runbook in `docs/deployment-readiness.md`.
 
-### Acceptance Criteria
+### Current verified production checkpoint
 
-- [~] **A 30–60 minute production-review demo can be run without blockers.** Script and route sequence are complete; final deployed-app rehearsal remains required before submission.
-- [~] **Production request package is complete and aligned to actual implemented workflows.** Repository package is assembled; applicant/business details, absolute deployed URLs, accessibility response, production runtime verification, and credentialed sandbox verification must be filled from verified real-world information before submission.
-- [x] **Requested API list is minimal, justified, and mapped to explicit user value.** Initial request is limited to VA Forms and Benefits Reference Data.
-- [x] **Privacy, terms, product scope, and end-user boundaries are published in plain language.**
+The latest internal production checkpoint recorded during this plan refresh is:
 
-### Phase 3 Submission Gate
+- `main`: `193f26030b9b90b81c832c6a645f179717abf307`
+- CI #797: success on that exact commit, including real-browser E2E
+- Vercel production deployment: `dpl_BwX77rhfw5Bank2oRe3zjgYaykR6` — READY for that exact commit and serving the canonical alias
+- Production Runtime Readiness #156: success on that exact CI/deployment lineage
+- Production `/va-reference`: HTTP 200 and explicitly labeled local fallback while VA access remains disabled
 
-See:
+This is objective current evidence, not a permanent submission-time guarantee. The final production-access submission must re-run the freshness checks against whatever commit is actually serving production at that time.
 
-- `docs/phase3-production-access-package.md`
-- `docs/phase3-demo-script.md`
-- `docs/phase3-submission-checklist.md`
+### Phase 3 external/final gates
 
-Sandbox verification remains pending in issue #189. Do not submit until the credentialed sandbox gate is objectively satisfied, production runtime settings are verified, the accessibility answer is supported by current deployed evidence, truthful applicant/business details are supplied, and the final demo rehearsal passes.
+- [ ] Credentialed live VA sandbox smoke test recorded and issue #189 closed from objective evidence.
+- [ ] Manual deployed-app Section 508/accessibility review completed and issue #195 closed after any required remediation/retest.
+- [ ] Truthful applicant/organization/business-model details supplied by the applicant.
+- [ ] Final absolute public URLs rechecked.
+- [ ] Final 30–60 minute demo rehearsal completed without blockers using synthetic/non-sensitive data.
+- [ ] Fresh exact-commit CI, Vercel deployment, alias convergence, and Production Runtime Readiness verified immediately before submission.
+
+Issue #287 tracks the eventual VA public-reference production transition. Production mode must remain disabled until VA production access is granted, production credentials are installed server-side, and live production connectivity is objectively verified.
 
 ---
 
-## Execution Order
+## Execution order
 
-1. Finalize V1 specification and schema. **Complete.**
-2. Build responsive intake and results experience. **Complete.**
-3. Expand condition knowledge base and explanation outputs. **Ongoing under citation/publication governance.**
-4. Add rationale/source governance and privacy-safe operational logging. **Complete for current scope.**
-5. Implement sandbox API adapters and targeted integrations. **Code complete; live credentialed sandbox smoke test externally pending in issue #189.**
-6. Prepare production-readiness documents and demo package. **Repository drafting complete; final external sandbox/accessibility/runtime/fields/rehearsal gates pending.**
-7. Submit production-access request for minimum necessary APIs. **Not started; gated by the Phase 3 submission checklist.**
+1. Finalize V1 specification/schema — **complete**.
+2. Build responsive intake/results experience — **complete**.
+3. Expand the condition knowledge base under citation/publication governance — **ongoing**.
+4. Maintain privacy-safe operational and evidence-handling boundaries — **complete for current scope**.
+5. Implement VA public-reference adapters and product surfaces — **repository implementation complete; #189 external sandbox proof pending**.
+6. Prepare and maintain the Phase 3 production-access package — **current architecture refresh complete in repository; final external/freshness fields remain pending**.
+7. Submit the minimum-necessary production-access request — **not started; gated by the Phase 3 submission checklist**.
 
-## Validation Gate Before Production Request
+## Validation gate before production request
 
-- [x] Core evaluation logic passes the repository CI gate.
-- [x] Public privacy and terms routes are deployed.
-- [x] Public product/end-user route is implemented for deployment.
-- [x] Catalog/knowledge-base structural validation and citation audits are part of CI.
-- [x] Privacy-sensitive workflow state is excluded from URL propagation.
-- [x] Phase 2 public/reference integrations are isolated behind a feature toggle and local fallback.
-- [x] Production deployment has repository-enforced runtime/security controls and a documented Azure settings boundary.
-- [x] Phase 3 production-access request package, demo script, and submission checklist are assembled in the repository.
-- [ ] Credentialed live VA sandbox smoke test recorded for VA Forms and Benefits Reference Data (issue #189).
-- [ ] Production Azure runtime settings manually verified.
-- [ ] Final deployed-app accessibility/Section 508 evidence reviewed (issue #195).
-- [ ] Truthful applicant/business model and absolute public URLs filled into the submission package.
-- [ ] Final 30–60 minute demo rehearsal completed without blockers.
+- [x] Core evaluation logic passes repository CI.
+- [x] Public privacy, terms, and product-scope routes are deployed.
+- [x] Catalog/knowledge-base validation and citation audits are part of CI.
+- [x] Privacy-sensitive workflow state is excluded from URLs.
+- [x] VA public-reference integrations are isolated from medical/evidence and presumptive decision logic.
+- [x] Production deployment has exact-commit Vercel lineage verification and a non-sensitive runtime crypto readiness gate.
+- [x] Phase 3 production-access package, demo script, and submission checklist are assembled.
+- [ ] Credentialed live VA sandbox smoke test recorded for both selected API services (#189).
+- [ ] Manual Section 508/accessibility evidence completed (#195).
+- [ ] Truthful applicant/business information supplied.
+- [ ] Final demo rehearsal completed.
+- [ ] Fresh production exact-commit readiness rechecked immediately before submission.
