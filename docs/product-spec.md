@@ -180,6 +180,10 @@ paths and is not reintroduced into the current catalog-only workflow.
   published lookup and never listed as published recommendations.
 - Schema rejects a published entry with no suggestions, and rejects a published
   entry with an unresolved todo.
+- Post-v2 publication is relationship-specific: completion of a catalog wave does
+  not authorize bulk publication. Each primary mapping must independently satisfy
+  condition-specific clinical-evidence, rationale, provenance, and evidence-gap
+  requirements before its `draft` flag is removed.
 
 ### FR-9 Event logging
 
@@ -209,16 +213,19 @@ added to recommendation logs or telemetry.
 Three layers are deliberately separate. See `docs/condition-catalog.md`.
 
 - `data/conditions/` is the catalog: condition identity and rating schedule
-  citations, currently **300 conditions across 32 catalog files** after
-  condition catalog expansion Wave 7. The versioned target catalog v2 is
+  citations, currently **300 conditions across 33 catalog files** after the first
+  post-v2 catalog-maintenance relocation. The versioned target catalog v2 is
   complete; its controlled Waves 1-7 record is in
   `docs/condition-expansion-roadmap.md`.
 - `data/knowledge-base/` holds exactly one secondary-mapping file per catalog
-  condition, referencing catalog ids. The 107 identities added by Waves 1-7
-  remain safe drafts with no suggestions until condition-specific evidence
-  satisfies publication rules; individual published suggestions may optionally
-  contain bounded `pathwayIntelligence` authored for that exact
-  primary-to-secondary mapping.
+  condition, referencing catalog ids. After Clinical Evidence Promotion Batch 1,
+  **105 of the 107 identities added by Waves 1-7 remain safe drafts**;
+  `cardiomyopathy` and `urethral-stricture` have one individually reviewed,
+  condition-specific published relationship each. `ankle-strain`, a legacy
+  carried-over mapping, is draft again after unsupported published relationship
+  content was withdrawn. Individual published suggestions may optionally contain
+  bounded `pathwayIntelligence` authored for that exact primary-to-secondary
+  mapping.
 - `data/presumptives/` holds exposure categories.
 
 The catalog is the single source of display names, so a label cannot drift
@@ -244,6 +251,12 @@ generalized to every presentation of the broader diagnosis. Rating context is
 condition identity/rating information only and must not be presented as clinical
 nexus evidence.
 
+Clinical source provenance is separate from citation verification status. An
+automated or agent-authored change may record a canonical source URL,
+`sourceCheckedOn`, `sourceLocator`, and `verificationScope`, but must keep
+`verified: false` until qualified-human verification is completed under
+`docs/citation-verification-sop.md`.
+
 JSON in git rather than an opaque production database keeps mapping, pathway
 intelligence, and citation changes reviewable as pull request diffs.
 
@@ -257,7 +270,7 @@ intelligence, and citation changes reviewable as pull request diffs.
 | 4 | Disclaimers and non-adjudicative boundaries are visible in workflow/results views | Met, enforced by copy/contracts |
 | 5 | At least three synthetic demo scenarios launch through the current encrypted workflow rather than legacy query-state URLs | Met, enforced by `tests/demo-scenarios.test.ts` |
 | 6 | Step 5 can expose bounded, authored-only pathway intelligence and source roles without changing recommendation order, scores, prevalence, or intake matching | Met, enforced by `tests/step5-pathway-intelligence.test.ts` and CI |
-| 7 | Target catalog v2 contains exactly 300 one-to-one catalog/KB identities, with all Wave 7 mappings remaining drafts and current-code safeguards enforced | Met in repository contract; production closure requires exact-head CI and runtime readiness |
+| 7 | Target catalog v2 contains exactly 300 one-to-one catalog/KB identities; post-v2 evidence promotion may change individual mapping publication state only after relationship-specific clinical review and must not alter the 300/300 contract | Met in repository contract; production closure requires exact-head CI and runtime readiness |
 
 ## External/manual truth gates
 
