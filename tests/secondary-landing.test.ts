@@ -18,6 +18,6 @@ describe("P0 Ticket 2: Secondary Landing Explainer & CTA Flow", () => {
     const html = renderToStaticMarkup(SecondaryLandingPage());
 
     expect(html).toContain('href="/secondary/diagnosed"');
-    expect(html).toContain("Click Here to Proceed to Wizard Step 1");
+    expect(html).toContain("Proceed to Wizard Step 1");
   });
 });

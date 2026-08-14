@@ -11,12 +11,12 @@ export const TRACK_DISTINCTION_NOTICE =
   "This is separate from presumptive service connection, which is based on qualifying service exposures rather than one condition causing or aggravating another.";
 
 export const PRESUMPTIVE_TRACK_OVERVIEW =
-  "Use this track for conditions tied to specific service exposures (e.g., herbicide, radiation, burn pit, cold exposure). VA presumes service connection if you served during a qualifying period and are diagnosed with a recognized condition. No nexus opinion required.";
+  "Current matching scope: Agent Orange/herbicide and burn-pit/fine-particulate presumptive tracks only. Other VA presumptive pathways are not currently screened here. If a claimed condition and service history meet a VA presumption, the presumption can affect the evidence needed to establish service connection, but this tool does not determine eligibility.";
 
 export const UNVERIFIED_REFERENCE_NOTICE =
-  "Citations shown in this app are unverified starting points in Phase 1 and should be confirmed against current VA guidance.";
+  "Citations and source references shown in this app are unverified research starting points and must be independently confirmed against current VA guidance before reliance.";
 
-export const SECONDARY_CONTINUE_CTA = "Click Here to Proceed to Wizard Step 1";
+export const SECONDARY_CONTINUE_CTA = "Proceed to Wizard Step 1";
 export const PRESUMPTIVE_CONTINUE_CTA = "View Presumptive Conditions";
 
 export const DISCLAIMER_NONDIAGNOSTIC =
