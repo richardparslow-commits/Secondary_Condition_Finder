@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import SecondaryLandingPage from "@/app/secondary/page";
-import { SECONDARY_CONTINUE_CTA } from "@/lib/legal/phrases";
 import { SECONDARY_AGGRAVATED_BY_TITLE, SECONDARY_CAUSED_BY_TITLE } from "@/lib/legal/secondary-title";
 
 describe("P0 Ticket 2: Secondary Landing Explainer & CTA Flow", () => {
@@ -19,6 +18,6 @@ describe("P0 Ticket 2: Secondary Landing Explainer & CTA Flow", () => {
     const html = renderToStaticMarkup(SecondaryLandingPage());
 
     expect(html).toContain('href="/secondary/diagnosed"');
-    expect(html).toContain(SECONDARY_CONTINUE_CTA);
+    expect(html).toContain("Proceed to Wizard Step 1");
   });
 });
