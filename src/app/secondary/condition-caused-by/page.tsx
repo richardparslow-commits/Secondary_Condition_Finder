@@ -1,7 +1,12 @@
 import Link from "next/link";
 
 import { DisclaimerBanner } from "@/components/Disclaimer";
-import { SECONDARY_TRACK_OVERVIEW, TRACK_DISTINCTION_NOTICE, UNVERIFIED_REFERENCE_NOTICE } from "@/lib/legal/phrases";
+import {
+  CURRENT_DISABILITY_SCOPE_NOTICE,
+  SECONDARY_TRACK_OVERVIEW,
+  TRACK_DISTINCTION_NOTICE,
+  UNVERIFIED_REFERENCE_NOTICE,
+} from "@/lib/legal/phrases";
 import { SECONDARY_CAUSED_BY_TITLE } from "@/lib/legal/secondary-title";
 
 export const metadata = {
@@ -16,7 +21,7 @@ export default function ConditionCausedByPage() {
       <header className="page-hero text-center">
         <p className="ui-kicker">Direct secondary pathway</p>
         <h1>{SECONDARY_CAUSED_BY_TITLE}</h1>
-        <p className="mx-auto mt-3 max-w-3xl text-lg">Organize research about a current condition that may be proximately due to or the result of an established service-connected disability.</p>
+        <p className="mx-auto mt-3 max-w-3xl text-lg">Organize research about a current disability that may be proximately due to or the result of an established service-connected disability.</p>
       </header>
 
       <div className="mb-5">
@@ -25,11 +30,11 @@ export default function ConditionCausedByPage() {
 
       <div className="ui-grid">
         <article className="ui-card">
-          <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Three Required Elements</h2></div>
+          <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Core service-connection questions</h2></div>
           <ol className="space-y-5">
-            <li><strong>1. Current disability.</strong><p className="mt-1 text-sm">A current diagnosed condition supported by appropriate evidence.</p></li>
+            <li><strong>1. Current disability.</strong><p className="mt-1 text-sm">{CURRENT_DISABILITY_SCOPE_NOTICE}</p></li>
             <li><strong>2. Service-connected primary disability.</strong><p className="mt-1 text-sm">An established service-connected disability being evaluated as the possible primary condition.</p></li>
-            <li><strong>3. Medical nexus.</strong><p className="mt-1 text-sm">Competent evidence addressing whether the current condition is proximately due to or the result of the service-connected disability.</p></li>
+            <li><strong>3. Proximate relationship.</strong><p className="mt-1 text-sm">Competent evidence must address whether the current disability is proximately due to or the result of the service-connected disease or injury under 38 CFR § 3.310(a). A medical opinion is often relevant when the relationship requires medical expertise, but this app does not treat a particular document type as universally mandatory.</p></li>
           </ol>
           <div className="ui-divider" />
           <h3 className="font-bold">Common research pathways</h3>
@@ -57,13 +62,13 @@ export default function ConditionCausedByPage() {
         <article className="ui-card">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">§</span><h2 className="text-xl font-bold">Adjudicative Framework</h2></div>
           <h3 className="font-bold">Proximate relationship</h3>
-          <p className="mt-2 text-sm">The research question is whether the established primary disability is medically linked to the current secondary condition under 38 CFR § 3.310(a).</p>
+          <p className="mt-2 text-sm">The research question is whether the established primary disability is linked to the current secondary disability under 38 CFR § 3.310(a).</p>
           <div className="ui-divider" />
           <h3 className="font-bold">Evidence expectations</h3>
           <ul className="mt-2 list-disc space-y-2 pl-5 text-sm">
-            <li>Current diagnostic and treatment records</li>
+            <li>Evidence establishing the current disability and its functional impact</li>
             <li>A medical opinion when the relationship requires medical expertise</li>
-            <li>A clear rationale that addresses the specific conditions and relevant history</li>
+            <li>A clear rationale that addresses the specific disabilities and relevant history</li>
           </ul>
           <div className="ui-divider" />
           <h3 className="font-bold">Nexus documentation</h3>

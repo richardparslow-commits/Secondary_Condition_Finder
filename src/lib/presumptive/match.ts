@@ -32,8 +32,9 @@ export interface MatchedPeriod {
   period: QualifyingService;
   matchedLocations: string[];
   /**
-   * False when the user supplied no dates. The location qualifies, but whether
-   * the date window is met is unconfirmed and must be said out loud.
+   * True only when both service dates were supplied and the interval was fully
+   * checked. A one-sided date can exclude impossible periods but cannot confirm
+   * that the full qualifying window requirement is satisfied.
    */
   datesConfirmed: boolean;
 }
@@ -49,8 +50,8 @@ export interface PresumptiveResult {
   /** Locations the user selected that matched no qualifying period. */
   unmatchedLocations: string[];
   /**
-   * True when at least one match rests on location alone because no service
-   * dates were supplied.
+   * True when at least one match has no complete service date range and
+   * therefore requires the user to verify the qualifying window.
    */
   hasUnconfirmedDates: boolean;
 }
@@ -64,6 +65,23 @@ function rangesOverlap(
 ): boolean {
   if (aEnd && aEnd < bStart) return false;
   if (bEnd && bEnd < aStart) return false;
+  return true;
+}
+
+/**
+ * Applies only the service-date bounds the user actually supplied. A known
+ * start can rule out a qualifying period that ended before service began; a
+ * known end can rule out a period that began after service ended. Missing one
+ * bound must never be collapsed into a synthetic one-day service interval.
+ */
+function partialRangeMayOverlap(
+  serviceStart: string | null,
+  serviceEnd: string | null,
+  periodStart: string,
+  periodEnd: string | null,
+): boolean {
+  if (serviceStart && periodEnd && serviceStart > periodEnd) return false;
+  if (serviceEnd && serviceEnd < periodStart) return false;
   return true;
 }
 
@@ -105,15 +123,30 @@ export function matchPresumptives(
       );
       if (matchedLocations.length === 0) continue;
 
-      const datesConfirmed = Boolean(history.serviceStart || history.serviceEnd);
+      const datesConfirmed = Boolean(history.serviceStart && history.serviceEnd);
 
       if (datesConfirmed) {
-        const start = history.serviceStart ?? history.serviceEnd!;
-        const end = history.serviceEnd ?? history.serviceStart!;
-        if (!rangesOverlap(start, end, period.startDate, period.endDate)) {
+        if (
+          !rangesOverlap(
+            history.serviceStart!,
+            history.serviceEnd,
+            period.startDate,
+            period.endDate,
+          )
+        ) {
           continue;
         }
       } else {
+        if (
+          !partialRangeMayOverlap(
+            history.serviceStart,
+            history.serviceEnd,
+            period.startDate,
+            period.endDate,
+          )
+        ) {
+          continue;
+        }
         hasUnconfirmedDates = true;
       }
 

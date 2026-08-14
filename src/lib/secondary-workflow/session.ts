@@ -4,6 +4,7 @@ import { z } from "zod";
 import {
   openSessionPayload,
   sealSessionPayload,
+  WORKFLOW_SESSION_MAX_AGE_SECONDS,
   workflowSessionSecret,
 } from "@/lib/workflow-session-crypto";
 import {
@@ -15,7 +16,6 @@ import {
 } from "./state";
 
 const WORKFLOW_COOKIE = "secondary-workflow-v2";
-const WORKFLOW_MAX_AGE_SECONDS = 30 * 60;
 export const MAX_WORKFLOW_COOKIE_VALUE_BYTES = 3800;
 const contextEntrySchema = z.string().min(1).max(MAX_CONTEXT_ITEM_LENGTH);
 
@@ -48,6 +48,7 @@ export function sealWorkflowState(
   const sealed = sealSessionPayload(
     parseStoredSecondaryWorkflowState(state),
     secret,
+    { maxAgeSeconds: WORKFLOW_SESSION_MAX_AGE_SECONDS },
   );
   const valueBytes = Buffer.byteLength(sealed, "utf8");
   if (valueBytes > MAX_WORKFLOW_COOKIE_VALUE_BYTES) {
@@ -86,7 +87,7 @@ export async function writeSecondaryWorkflowSession(
     sameSite: "strict",
     secure: process.env.NODE_ENV === "production",
     path: "/secondary",
-    maxAge: WORKFLOW_MAX_AGE_SECONDS,
+    maxAge: WORKFLOW_SESSION_MAX_AGE_SECONDS,
   });
 }
 
