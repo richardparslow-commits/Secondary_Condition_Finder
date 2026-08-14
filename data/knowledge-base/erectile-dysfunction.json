@@ -7,55 +7,38 @@
       "conditionId": "depressive-disorder",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Chronic physical illness and functional limitations can be associated with mood symptoms, but an individual secondary relationship requires clinical assessment and case-specific evidence.",
+      "rationale": "Erectile dysfunction and depression show a clinically important bidirectional association at the population level, but the available observational evidence does not establish the causal direction in an individual patient. A 49-publication systematic review and meta-analysis found increased odds of depression among men with erectile dysfunction and increased odds of erectile dysfunction among men with depression. This relationship should therefore be evaluated with symptom chronology, functional impact, treatment history, medication effects, vascular/endocrine contributors, and mental-health assessment rather than being presented as automatic secondary causation.",
+      "pathwayIntelligence": {
+        "pathways": ["somatopsychic"],
+        "causalChain": "Documented erectile dysfunction with distress, relationship/functional impact, or reduced quality of life when present → depressive symptoms or depressive disorder as one possible direction within a bidirectional association, requiring individual chronology and alternative-cause review.",
+        "developmentQuestions": [
+          "Which condition began first: erectile dysfunction or clinically significant depressive symptoms?",
+          "What distress, relationship impact, functional limitation, or quality-of-life change is documented from erectile dysfunction?",
+          "What mental-health evaluation establishes the depressive diagnosis and its chronology?",
+          "Could antidepressants or other medications, vascular disease, endocrine disease, neurologic disease, or other medical factors contribute to the erectile dysfunction?",
+          "What alternative psychosocial or psychiatric contributors to depression are documented?"
+        ],
+        "issuesToResolve": [
+          "The meta-analysis supports association in both directions and explicitly cannot determine causality, so the pathway must remain case-specific and chronology-dependent.",
+          "Medication-related sexual dysfunction and vascular/endocrine causes are separate mechanisms that should not be conflated with a somatopsychic ED-to-depression theory."
+        ]
+      },
       "evidenceGaps": [
-        "Mental health evaluation distinguishing secondary emotional impact",
-        "Treatment notes",
-        "Medical nexus opinion addressing causation or aggravation"
+        "Erectile-dysfunction diagnosis and symptom chronology",
+        "Mental-health evaluation confirming depressive disorder and onset",
+        "Records describing distress, relationship impact, function, and quality of life when present",
+        "Medication, vascular, endocrine, neurologic, and other competing-cause review",
+        "Clinician assessment of the likely direction and contributors in the individual case"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Legal framework for secondary service connection; does not establish an individual mental-health nexus.",
+          "citation": "Liu et al., The Association Between Erectile Dysfunction and Depression: A Systematic Review and Meta-analysis, J Sex Med. 2018;15(8):1073-1082. PMID 29960891",
+          "note": "Systematic review and meta-analysis of 49 publications found a bidirectional association between erectile dysfunction and depression; the authors note that observational evidence cannot determine causality. Supports conservative association/pathway research, not an automatic individual nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29960891/",
           "verified": false,
-          "verificationScope": "legal-framework"
-        }
-      ]
-    },
-    {
-      "conditionId": "gerd",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "NSAID exposure has been associated with GERD symptoms in observational studies; an individual medication-related theory requires documented exposure, timing, diagnosis, and medical evidence addressing causation or aggravation.",
-      "evidenceGaps": [
-        "Prescription history documenting NSAID or other relevant medication exposure",
-        "GERD diagnosis and clinical evaluation",
-        "Medical nexus opinion addressing medication-related causation or aggravation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Nonsteroidal anti-inflammatory drug use as a risk factor for gastro-oesophageal reflux disease: an observational study",
-          "note": "Observational evidence found GERD symptoms were more common among NSAID users; this supports an association, not automatic individual causation.",
-          "verified": false,
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18671778/",
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "PMID 18671778",
-          "verificationScope": "clinical-evidence"
-        },
-        {
-          "citation": "Global prevalence of, and risk factors for, gastro-oesophageal reflux symptoms: a meta-analysis",
-          "note": "Meta-analysis found modestly higher reflux-symptom prevalence among NSAID/aspirin users; this remains population-level evidence.",
-          "verified": false,
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28232473/",
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "PMID 28232473",
-          "verificationScope": "clinical-evidence"
-        },
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
-          "verified": false,
-          "verificationScope": "legal-framework"
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 29960891; 49 publications; ED-to-depression analysis included 192,455 participants and depression-to-ED analysis included 14,008; discussion notes observational data cannot determine causality"
         }
       ]
     }
