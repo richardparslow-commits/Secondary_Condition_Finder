@@ -1,6 +1,45 @@
 {
   "id": "barretts-esophagus",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, reflux-related, treatment/procedural, neoplastic-risk, and intermediate-factor pathways only where applicable; association or progression risk must not be presented as an individual nexus."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "esophageal-cancer",
+      "rank": 1,
+      "prevalence": "occasionally-explored",
+      "rationale": "Barrett's esophagus is an identifiable precursor condition for esophageal adenocarcinoma, but the broader catalog target also includes other esophageal-cancer histologies. This relationship is therefore limited to an adenocarcinoma progression pathway and should be evaluated with endoscopic, biopsy/pathology, dysplasia, and chronology evidence rather than generalized to squamous-cell carcinoma or treated as an inevitable progression.",
+      "pathwayIntelligence": {
+        "pathways": ["disease-progression"],
+        "causalChain": "Documented Barrett's esophagus → metaplastic/dysplastic progression when present → claimed esophageal adenocarcinoma.",
+        "developmentQuestions": [
+          "Is Barrett's esophagus confirmed endoscopically and histologically, and when was it first documented?",
+          "Was dysplasia documented before the cancer diagnosis, and what grade and pathology findings were reported?",
+          "Is the esophageal malignancy specifically adenocarcinoma rather than squamous-cell or another histology?",
+          "What surveillance endoscopy and biopsy chronology links the precursor condition to the later malignancy?",
+          "What other adenocarcinoma risk factors or competing explanations are documented?"
+        ],
+        "issuesToResolve": [
+          "The generic esophageal-cancer catalog identity is broader than the Barrett's-specific adenocarcinoma pathway.",
+          "Barrett's esophagus increases neoplastic risk but does not mean an individual patient will progress to cancer."
+        ]
+      },
+      "evidenceGaps": [
+        "Endoscopy and pathology confirming Barrett's esophagus and its chronology",
+        "Dysplasia history and surveillance biopsy results when present",
+        "Pathology confirming esophageal adenocarcinoma histology",
+        "Specialist assessment of the individual precursor-to-cancer chronology and competing risk factors"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "AGA Clinical Practice Guideline on Surveillance of Barrett's Esophagus, Gastroenterology. 2025;169:1356-1376. PMID 41125322",
+          "note": "Current AGA guideline identifies Barrett's esophagus as the known identifiable precursor to esophageal adenocarcinoma and addresses surveillance for neoplastic progression; this supports an adenocarcinoma-specific progression pathway, not every esophageal-cancer histology or an automatic individual conclusion.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41125322/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 41125322; abstract/guideline scope describing Barrett's esophagus as an identifiable precursor to esophageal adenocarcinoma"
+        }
+      ]
+    }
+  ]
 }
