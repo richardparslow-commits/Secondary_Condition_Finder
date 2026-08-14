@@ -1,0 +1,101 @@
+{
+  "bodySystem": "Musculoskeletal System",
+  "conditions": [
+    {
+      "id": "gout",
+      "name": "Gout",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5017.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "osteoporosis",
+      "name": "Osteoporosis, Residuals of",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5013.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "osteomalacia",
+      "name": "Osteomalacia, Residuals of",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5014.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "osteitis-deformans",
+      "name": "Osteitis Deformans (Paget Disease of Bone)",
+      "aliases": ["Paget disease of bone"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5016.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "bursitis",
+      "name": "Bursitis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5019.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "myositis",
+      "name": "Myositis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5021.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "heterotopic-ossification",
+      "name": "Heterotopic Ossification",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5023.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "tendinopathy",
+      "name": "Tendinitis / Tendinosis / Tendinopathy",
+      "aliases": ["tendinitis", "tendinosis", "tendinopathy"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5024.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "pes-cavus",
+      "name": "Acquired Pes Cavus (Claw Foot)",
+      "aliases": ["claw foot", "pes cavus"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5278.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "metatarsalgia",
+      "name": "Anterior Metatarsalgia (Morton's Disease)",
+      "aliases": ["metatarsalgia", "Morton's disease"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5279.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "hallux-rigidus",
+      "name": "Hallux Rigidus",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5281.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "hammertoe",
+      "name": "Hammer Toe",
+      "aliases": ["hammertoe"],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5282.", "verified": false}],
+      "reviewNotes": []
+    }
+  ]
+}
