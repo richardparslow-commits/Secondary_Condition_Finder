@@ -13,6 +13,7 @@ const WEBDRIVER_COMMAND_TIMEOUT_MS = 15_000;
 const WEBDRIVER_SESSION_TIMEOUT_MS = 30_000;
 const WEBDRIVER_SESSION_ATTEMPTS = 2;
 const WEBDRIVER_SESSION_RETRY_DELAY_MS = 1_000;
+const USE_PROCESS_GROUPS = process.platform !== "win32";
 const WORKFLOW_SESSION_SECRET =
   process.env.WORKFLOW_SESSION_SECRET ??
   "browser-e2e-workflow-secret-only-for-local-ci-2026";
@@ -34,6 +35,31 @@ function logProcess(label, child) {
   });
   children.push(child);
   return child;
+}
+
+function sendProcessTreeSignal(child, signal) {
+  if (!child.pid) return;
+
+  try {
+    if (USE_PROCESS_GROUPS) {
+      process.kill(-child.pid, signal);
+      return;
+    }
+    if (!child.killed) child.kill(signal);
+  } catch (error) {
+    if (!(error && typeof error === "object" && "code" in error && error.code === "ESRCH")) {
+      throw error;
+    }
+  }
+}
+
+async function terminateProcessTree(child) {
+  sendProcessTreeSignal(child, "SIGTERM");
+  await delay(250);
+  // A timed-out ChromeDriver session request can leave a Chrome grandchild alive.
+  // Kill the full detached process group so inherited stdio cannot keep this
+  // harness open after the browser journey itself has already completed.
+  sendProcessTreeSignal(child, "SIGKILL");
 }
 
 function resolveChromeDriver() {
@@ -287,7 +313,7 @@ async function cleanup() {
     }
   }
   for (const child of children.reverse()) {
-    if (!child.killed) child.kill("SIGTERM");
+    await terminateProcessTree(child);
   }
   await delay(250);
 }
@@ -303,6 +329,7 @@ async function main() {
         NEXT_TELEMETRY_DISABLED: "1",
       },
       stdio: ["ignore", "pipe", "pipe"],
+      detached: USE_PROCESS_GROUPS,
     }),
   );
 
@@ -311,6 +338,7 @@ async function main() {
     spawn(resolveChromeDriver(), [`--port=${DRIVER_PORT}`], {
       env: process.env,
       stdio: ["ignore", "pipe", "pipe"],
+      detached: USE_PROCESS_GROUPS,
     }),
   );
 
