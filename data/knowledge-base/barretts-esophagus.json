@@ -31,13 +31,13 @@
       ],
       "sourceReferences": [
         {
-          "citation": "AGA Clinical Practice Guideline on Surveillance of Barrett's Esophagus, Gastroenterology. 2025;169:1356-1376. PMID 41125322",
-          "note": "Current AGA guideline identifies Barrett's esophagus as the known identifiable precursor to esophageal adenocarcinoma and addresses surveillance for neoplastic progression; this supports an adenocarcinoma-specific progression pathway, not every esophageal-cancer histology or an automatic individual conclusion.",
+          "citation": "Wani et al., AGA Clinical Practice Guideline on Surveillance of Barrett's Esophagus, Gastroenterology. 2025;169(6):1184-1231. PMID 41125322",
+          "note": "Current AGA guideline identifies Barrett's esophagus as the identifiable precursor to esophageal adenocarcinoma and addresses surveillance for neoplastic progression; this supports an adenocarcinoma-specific progression pathway, not every esophageal-cancer histology or an automatic individual conclusion.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41125322/",
           "verified": false,
           "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 41125322; abstract/guideline scope describing Barrett's esophagus as an identifiable precursor to esophageal adenocarcinoma"
+          "sourceLocator": "PMID 41125322; abstract and guideline scope; Barrett's esophagus described as the identifiable precursor to esophageal adenocarcinoma"
         }
       ]
     }
