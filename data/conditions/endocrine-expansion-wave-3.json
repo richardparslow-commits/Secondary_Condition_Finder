@@ -1,0 +1,61 @@
+{
+  "bodySystem": "Endocrine",
+  "conditions": [
+    {
+      "id": "thyroiditis",
+      "name": "Thyroiditis",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7906 covers thyroiditis. Manifestations of hyperthyroidism or hypothyroidism are evaluated under the corresponding thyroid diagnostic code.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "nontoxic-thyroid-enlargement",
+      "name": "Nontoxic Thyroid Enlargement",
+      "aliases": ["nontoxic goiter", "nontoxic thyroid goiter"],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7902 covers thyroid enlargement, nontoxic, with pressure effects and neck disfigurement evaluated under the appropriate residual criteria.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "acromegaly",
+      "name": "Acromegaly",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7908 covers acromegaly.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "hyperaldosteronism",
+      "name": "Hyperaldosteronism",
+      "aliases": ["primary aldosteronism"],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7917 covers hyperaldosteronism and directs evaluation as a malignant or benign neoplasm, as appropriate.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "hyperpituitarism",
+      "name": "Hyperpituitarism",
+      "aliases": ["prolactin-secreting pituitary dysfunction", "prolactinoma-related hyperpituitarism"],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7916 covers hyperpituitarism (prolactin-secreting pituitary dysfunction) and directs evaluation as a malignant or benign neoplasm, as appropriate.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "diabetes-insipidus",
+      "name": "Diabetes Insipidus",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7909 covers diabetes insipidus, with residuals evaluated under the appropriate body system when the condition has subsided.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "pituitary-neoplasm",
+      "name": "Pituitary Neoplasm",
+      "aliases": ["pituitary tumor", "pituitary tumour"],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "No single behavior-neutral diagnostic code is assigned here; malignant endocrine neoplasms are evaluated under diagnostic code 7914 and benign endocrine neoplasms under diagnostic code 7915, with residual endocrine dysfunction evaluated as directed by the schedule.", "verified": false}],
+      "reviewNotes": ["Pituitary neoplasm spans benign and malignant disease. The applicable diagnostic code depends on documented tumor behavior; do not assign one code without that information."]
+    }
+  ]
+}
