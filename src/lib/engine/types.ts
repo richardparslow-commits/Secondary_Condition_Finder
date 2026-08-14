@@ -6,7 +6,7 @@ import type {
 } from "@/lib/kb/schema";
 
 export const intakeSchema = z.object({
-  diagnosedConditions: z.array(z.string()).optional(),
+  diagnosedConditionIds: z.array(z.string().min(1)).optional(),
   primaryConditions: z.array(z.string().min(1)).min(1),
   symptoms: z.array(z.string()).default([]),
   medications: z.array(z.string()).default([]),
