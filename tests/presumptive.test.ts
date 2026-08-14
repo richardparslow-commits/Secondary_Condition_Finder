@@ -65,6 +65,43 @@ describe("presumptive matching integration", () => {
       ),
     ).toBe(true);
   });
+
+  it("does not collapse a start-only service history into a single-day interval", () => {
+    const result = matchPresumptives(catalog, {
+      locations: ["Republic of Vietnam"],
+      serviceStart: "1970-01-01",
+      serviceEnd: null,
+    });
+
+    expect(result.matches.some((match) => match.category.id === "agent-orange")).toBe(true);
+    expect(result.hasUnconfirmedDates).toBe(true);
+    expect(
+      result.matches
+        .flatMap((match) => match.matchedPeriods)
+        .every((period) => period.datesConfirmed === false),
+    ).toBe(true);
+  });
+
+  it("does not collapse an end-only service history into a single-day interval", () => {
+    const result = matchPresumptives(catalog, {
+      locations: ["Republic of Vietnam"],
+      serviceStart: null,
+      serviceEnd: "1970-12-31",
+    });
+
+    expect(result.matches.some((match) => match.category.id === "agent-orange")).toBe(true);
+    expect(result.hasUnconfirmedDates).toBe(true);
+  });
+
+  it("uses a supplied one-sided bound to rule out an impossible period without claiming confirmation", () => {
+    const result = matchPresumptives(catalog, {
+      locations: ["Republic of Vietnam"],
+      serviceStart: "2000-01-01",
+      serviceEnd: null,
+    });
+
+    expect(result.matches.some((match) => match.category.id === "agent-orange")).toBe(false);
+  });
 });
 
 describe("presumptive category schema", () => {
