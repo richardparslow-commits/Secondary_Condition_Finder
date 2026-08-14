@@ -79,15 +79,6 @@
           "verified": false,
           "sourceCheckedOn": "2026-08-11",
           "sourceLocator": "PMID 38278854"
-        },
-        {
-          "citation": "38 CFR 3.310(a)-(b)",
-          "note": "Legal framework for secondary service connection and aggravation; it is not medical evidence establishing that asthma caused an arrhythmia.",
-          "verificationScope": "legal-framework",
-          "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "\u00a7 3.310(a)-(b)"
         }
       ]
     }

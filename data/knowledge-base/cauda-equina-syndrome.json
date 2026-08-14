@@ -1,6 +1,40 @@
 {
   "id": "cauda-equina-syndrome",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "erectile-dysfunction",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Sexual dysfunction is a recognized long-term outcome after cauda equina syndrome, and systematic-review evidence identifies erectile dysfunction as the most frequently reported male sexual disorder in studied CES populations. This supports a clinically relevant CES/erectile-dysfunction relationship for research when erectile dysfunction is documented after established CES with compatible sacral neurologic involvement, but population-level outcome data do not by themselves establish an individual causal nexus and do not exclude vascular, endocrine, medication-related, psychogenic, or other contributors.",
+      "evidenceGaps": [
+        "Clinical documentation confirming erectile dysfunction and its onset, persistence, and severity",
+        "Records establishing the cauda equina syndrome diagnosis, neurologic level and severity, and relevant sacral findings such as bladder, bowel, perianal sensory, or other sacral nerve-root dysfunction",
+        "Pre-CES sexual-function history and chronology comparing CES onset or decompression with erectile-dysfunction onset or worsening",
+        "Evaluation of competing erectile-dysfunction contributors, including vascular disease, diabetes, endocrine disorders, medications, psychiatric factors, and other neurologic disease",
+        "Urology, neurology, spine, or other qualified medical opinion addressing whether the individual erectile dysfunction is medically attributable to or aggravated by the documented CES rather than an alternative cause"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Moradi et al., BMC Musculoskeletal Disorders (2025), PMID 40380123",
+          "note": "Systematic review of sexual dysfunction after lumbar disc herniation and cauda equina syndrome reported persistent sexual problems after CES and identified erectile dysfunction as the most prevalent male sexual disorder; supports a condition-specific clinical relationship, not automatic individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40380123/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 40380123"
+        },
+        {
+          "citation": "Najjar et al., European Spine Journal (2026), PMID 42472710",
+          "note": "Systematic review of long-term CES outcomes found sexual dysfunction common and persistent, with a pooled estimate of 58.4% and limited evidence linking worse outcomes to markers of sacral nerve-root involvement; supports long-term clinical relevance while preserving uncertainty about individual causation and baseline function.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42472710/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 42472710"
+        }
+      ]
+    }
+  ]
 }

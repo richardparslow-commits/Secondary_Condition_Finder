@@ -111,6 +111,14 @@
 - New source checks remain `verified: false` pending qualified-human verification.
 - See `docs/clinical-evidence-promotion-batch-12.md`.
 
+### Clinical Evidence Promotion Batch 13
+- `cauda-equina-syndrome` → `erectile-dysfunction`: promoted as condition-specific complication/outcome research using 2025 and 2026 systematic reviews, with CES/ED chronology, sacral-neurologic, baseline-function, competing-cause, and individual-opinion safeguards; no automatic causal pathway metadata is authored.
+- The redundant local 38 CFR 3.310(a)-(b) references are retired from the already clinically supported `asthma` → `cardiac-arrhythmia` and `copd` → `cardiac-arrhythmia` suggestions without changing those relationships, ranks, clinical sources, or pathway metadata.
+- Citation debt ceilings remain **128 total / 14 verified / 114 unverified / 112 review findings**, while the clinical-URL floor rises to **53**.
+- The 300/300 contract remains fixed. Cauda equina syndrome is the thirteenth individually promoted Wave 1-7 expansion mapping, so **94 of 107 remain drafts**.
+- New clinical source checks remain `verified: false` pending qualified-human verification.
+- See `docs/clinical-evidence-promotion-batch-13.md`.
+
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.
 2. **Citation Insertion:** Clinical claims require condition-specific clinical-evidence references with canonical URLs and source provenance. Regulatory/legal references must remain role-labeled and must not substitute for clinical causation evidence.
