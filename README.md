@@ -48,7 +48,9 @@ Published knowledge-base source references may still be marked **unverified**
 until they are independently checked. Unverified references remain research
 starting points, not verified authority. `npm run citations:audit` enforces
 unsafe-provenance rules and a non-regression ratchet so verification debt cannot
-silently increase.
+silently increase. Automated authoring may record a canonical source URL,
+source-check date, and source locator, but `verified: true` remains a
+qualified-human decision under `docs/citation-verification-sop.md`.
 
 ## Stack
 
@@ -112,7 +114,7 @@ limiting.
 ## Layout
 
 ```text
-data/conditions/       Condition catalog, grouped by body system and reviewed expansion batches
+data/conditions/       Condition catalog, grouped by body system and reviewed expansion/maintenance batches
 data/knowledge-base/   Secondary mappings, one JSON file per primary
 data/presumptives/     Exposure categories, locations, and date windows
 data/demo-scenarios.json
@@ -179,40 +181,51 @@ health state.
 
 ## Knowledge-base coverage and authoring
 
-300 catalog conditions have version-controlled mapping files after condition
-catalog expansion Wave 7, completing the versioned target-v2 identity expansion.
-Waves 1 through 7 added 107 conditions in controlled musculoskeletal,
-neurological, endocrine, cardiovascular/pulmonary-vascular, respiratory/ENT,
-sleep-wake, ophthalmologic/special-sense, digestive, genitourinary,
-mental-disorder, hematologic, skin/cutaneous, infectious, oncological, and
-dental/oral batches; all 107 expansion mappings remain safe drafts with no
-published suggestions until condition-specific clinical evidence satisfies the
-repository's publication rules. Draft mappings remain excluded from
-recommendation output. The completed expansion record is maintained in
-`docs/condition-expansion-roadmap.md`; 300 is a versioned product target, not a
-claim that medicine or the VA rating schedule contains only 300 possible
-conditions.
+The catalog remains fixed at **300 recognized conditions / 300 one-to-one
+knowledge-base mappings** after target-v2 identity expansion. Post-v2 maintenance
+now uses 33 catalog files because fibromyalgia was physically relocated from its
+historical hemic/immune file into musculoskeletal maintenance without changing
+its stable identity.
 
-To add or change a condition:
+Waves 1 through 7 added 107 conditions. Clinical Evidence Promotion Batch 1
+publishes only two individually reviewed expansion mappings:
+`cardiomyopathy` → `congestive-heart-failure` and `urethral-stricture` →
+`hydronephrosis`. **105 of the 107 expansion mappings remain safe drafts** and
+stay excluded from recommendation output until their own condition-specific
+clinical evidence satisfies the repository's publication rules. The same batch
+returns `ankle-strain` to draft because its prior published downstream claims
+were stronger than the reviewed evidence supports.
+
+The completed identity-expansion record is maintained in
+`docs/condition-expansion-roadmap.md`; the first post-v2 promotion record is in
+`docs/clinical-evidence-promotion-batch-1.md`. The 300-condition target is a
+versioned product target, not a claim that medicine or the VA rating schedule
+contains only 300 possible conditions.
+
+To add or change a condition or relationship:
 
 1. **Catalog:** update `data/conditions/<body-system>.json` or a reviewed
-   expansion-batch file with a stable unique ID, display name, aliases, and
-   traceable rating authority when available. Where no single diagnosis-specific
-   diagnostic code exists, record the applicable rating framework and review
-   note instead of inventing a code. Product-wave grouping does not override the
-   actual Part 4 body-system authority. When a broader regulatory identity
-   overlaps a narrower existing catalog condition, keep names/aliases distinct
-   and document the relationship rather than collapsing the two identities.
-   When one roadmap identity intentionally groups related diagnoses, clinical
-   authoring must still evaluate each diagnosis/pathway separately rather than
-   assuming the grouped label has one etiology or nexus. Do not carry obsolete
-   diagnostic codes forward after the governing schedule changes; retain any
-   historical-code note only to prevent future regression.
+   expansion/maintenance file with a stable unique ID, display name, aliases,
+   and traceable rating authority when available. Where no single
+   diagnosis-specific diagnostic code exists, record the applicable rating
+   framework and review note instead of inventing a code. Product-wave grouping
+   does not override the actual Part 4 body-system authority. When a broader
+   regulatory identity overlaps a narrower existing catalog condition, keep
+   names/aliases distinct and document the relationship rather than collapsing
+   the two identities. When one roadmap identity intentionally groups related
+   diagnoses, clinical authoring must still evaluate each diagnosis/pathway
+   separately rather than assuming the grouped label has one etiology or nexus.
+   Do not carry obsolete diagnostic codes forward after the governing schedule
+   changes; retain any historical-code note only to prevent future regression.
 2. **Mapping:** update/create `data/knowledge-base/<id>.json`. Each published
    suggestion needs a condition ID, rank, prevalence label, conservative
-   rationale, evidence gaps, and source references satisfying the repository's
-   current provenance rules.
-3. Run `npm run kb:validate`, `npm run citations:audit`, `npm run
+   rationale, evidence gaps, and condition-specific source references satisfying
+   the repository's current provenance rules. Legal or rating authority cannot
+   substitute for clinical evidence of a medical relationship.
+3. **Verification:** record source URLs, `sourceCheckedOn`, and `sourceLocator`
+   when checked. Keep `verified: false` unless a qualified human completes the
+   Citation Verification SOP.
+4. Run `npm run kb:validate`, `npm run citations:audit`, `npm run
    test:composition`, and `npm test` before review.
 
 Strict Zod schemas reject unknown JSON keys, and referential-integrity tests keep
