@@ -4,10 +4,7 @@
     {
       "id": "hip-strain",
       "name": "Hip strain",
-      "aliases": [
-        "hip condition",
-        "hip pain"
-      ],
+      "aliases": ["hip condition", "hip pain"],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
         {
@@ -23,11 +20,7 @@
     {
       "id": "ankle-strain",
       "name": "Ankle strain",
-      "aliases": [
-        "ankle condition",
-        "ankle injury",
-        "ankle instability"
-      ],
+      "aliases": ["ankle condition", "ankle injury", "ankle instability"],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
         {
@@ -43,9 +36,7 @@
     {
       "id": "contralateral-knee-condition",
       "name": "Contralateral (opposite) knee condition",
-      "aliases": [
-        "opposite knee condition"
-      ],
+      "aliases": ["opposite knee condition"],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [],
       "reviewNotes": [
@@ -54,32 +45,9 @@
       ]
     },
     {
-      "id": "insomnia",
-      "name": "Chronic insomnia",
-      "aliases": [
-        "chronic sleep impairment",
-        "insomnia"
-      ],
-      "bodySystem": "Mental Disorders",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.130",
-          "note": "Mental-disorders rating framework. Chronic sleep impairment appears within the General Rating Formula for Mental Disorders, but this generic catalog entry is not assigned an invented insomnia-specific diagnostic code.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": [
-        "Wave 8 records the applicable mental-disorders framework while preserving the distinction between an insomnia diagnosis and a sleep-impairment symptom appearing in the general rating formula."
-      ]
-    },
-    {
       "id": "substance-use-disorder",
       "name": "Substance use disorder",
-      "aliases": [
-        "alcohol use disorder",
-        "alcoholism",
-        "substance abuse"
-      ],
+      "aliases": ["alcohol use disorder", "alcoholism", "substance abuse"],
       "bodySystem": "Mental Disorders",
       "ratingSchedule": [
         {
