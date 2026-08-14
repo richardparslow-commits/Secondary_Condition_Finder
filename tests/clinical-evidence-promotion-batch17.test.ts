@@ -39,7 +39,7 @@ describe("clinical evidence promotion batch 17", () => {
     }
   });
 
-  it("repairs rheumatoid-arthritis GERD with RA-treatment, RA-GERD, and NSAID-GERD evidence", () => {
+  it("repairs rheumatoid-arthritis GERD with a bounded two-link medication evidence chain", () => {
     const mapping = byId.get("rheumatoid-arthritis");
     const gerd = mapping?.suggestions.find((suggestion) => suggestion.conditionId === "gerd");
     const clinical = (gerd?.sourceReferences ?? []).filter(
@@ -51,14 +51,15 @@ describe("clinical evidence promotion batch 17", () => {
       "gerd",
     ]);
     expect(gerd?.pathwayIntelligence?.pathways).toEqual(["medication-related"]);
-    expect(clinical).toHaveLength(3);
+    expect(gerd?.sourceReferences).toHaveLength(3);
+    expect(clinical).toHaveLength(2);
     expect(clinical.every((source) => source.verified === false)).toBe(true);
     expect(clinical.map((source) => source.sourceUrl)).toEqual([
       "https://pubmed.ncbi.nlm.nih.gov/33674957/",
-      "https://pubmed.ncbi.nlm.nih.gov/24252041/",
       "https://pubmed.ncbi.nlm.nih.gov/18671778/",
     ]);
     expect(gerd?.sourceReferences.some((source) => source.sourceUrl === "https://pubmed.ncbi.nlm.nih.gov/16918879/")).toBe(false);
+    expect(gerd?.sourceReferences.some((source) => source.sourceUrl === "https://pubmed.ncbi.nlm.nih.gov/24252041/")).toBe(false);
     expect(gerd?.sourceReferences.some((source) => source.verificationScope === "legal-framework" && source.verified === true)).toBe(true);
   });
 
