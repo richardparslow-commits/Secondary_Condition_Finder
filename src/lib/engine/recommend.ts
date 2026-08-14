@@ -206,13 +206,12 @@ export function recommend(
     })
     .sort((a, b) => b.score - a.score || a.condition.localeCompare(b.condition));
 
-  // Focus Engine: Constrain recommendations strictly to user-selected diagnosed conditions
-  if (intake.diagnosedConditions && intake.diagnosedConditions.length > 0) {
-    const diagnosedSet = new Set(
-      intake.diagnosedConditions.map((c: string) => normalizeConditionName(c)),
-    );
-    recommendations = recommendations.filter((rec) =>
-      diagnosedSet.has(normalizeConditionName(rec.condition)),
+  // Focus Engine: when the current workflow supplies the diagnosed set, keep
+  // recommendation output strictly inside that exact catalog-id boundary.
+  if (intake.diagnosedConditionIds) {
+    const diagnosedSet = new Set(intake.diagnosedConditionIds);
+    recommendations = recommendations.filter((recommendation) =>
+      diagnosedSet.has(recommendation.conditionId),
     );
   }
 
