@@ -186,25 +186,27 @@ knowledge-base mappings** after target-v2 identity expansion. Post-v2 maintenanc
 still uses 33 catalog files. Fibromyalgia, hip strain, and ankle strain are
 physically normalized in musculoskeletal maintenance; diabetic retinopathy is
 in the ophthalmologic file; insomnia plus substance-use disorder are in the
-mental-disorders catalog; and Cushing's syndrome plus Type 1 diabetes are now
-physically maintained in the endocrine catalog with their current DC 7907 and
-DC 7913 frameworks. `carried-over.json` remains reduced to the intentionally
-quarantined `contralateral-knee-condition` laterality placeholder. Batch 6 also
-narrowed the existing `hyperpituitarism` display identity to the
-prolactin-secreting pituitary-dysfunction scope of DC 7916 without changing its
-stable ID. None of these maintenance changes alters the 300-condition universe.
+mental-disorders catalog; and Cushing's syndrome, Type 1 diabetes, and
+Hyperthyroidism are now physically maintained in the endocrine catalog with
+their current DC 7907, DC 7913, and DC 7900 frameworks. `carried-over.json`
+remains reduced to the intentionally quarantined `contralateral-knee-condition`
+laterality placeholder. Batch 6 also narrowed the existing `hyperpituitarism`
+display identity to the prolactin-secreting pituitary-dysfunction scope of DC
+7916 without changing its stable ID. None of these maintenance changes alters
+the 300-condition universe.
 
 Waves 1 through 7 added 107 conditions. Clinical Evidence Promotion Batches 1
-through 8 publish eleven individually reviewed expansion mappings:
+through 9 publish twelve individually reviewed expansion mappings:
 `cardiomyopathy` → `congestive-heart-failure`, `urethral-stricture` →
 `hydronephrosis`, `hypertensive-heart-disease` → `congestive-heart-failure`,
 `chronic-pyelonephritis` → `chronic-kidney-disease`, `chronic-liver-disease` →
 `cirrhosis-of-the-liver`, `acl-injury` → `osteoarthritis`, `pcl-injury` →
 `osteoarthritis`, `barretts-esophagus` → `esophageal-cancer`, `achalasia` →
-`esophageal-cancer`, `hyperaldosteronism` → `hypertension`, and `acromegaly` →
-`hypertension`. **96 of the 107 expansion mappings remain safe drafts** and stay
-excluded from recommendation output until their own condition-specific clinical
-evidence satisfies the repository's publication rules.
+`esophageal-cancer`, `hyperaldosteronism` → `hypertension`, `acromegaly` →
+`hypertension`, and `diabetes-mellitus-type-1` → `chronic-kidney-disease`.
+**95 of the 107 expansion mappings remain safe drafts** and stay excluded from
+recommendation output until their own condition-specific clinical evidence
+satisfies the repository's publication rules.
 
 Safety review has returned `ankle-strain`, `knee-injury`, `osteoarthritis`,
 `ageusia`, `agranulocytosis`, `al-amyloidosis`, `addisons-disease`, and
@@ -218,16 +220,19 @@ evidence and conservative association/chronology safeguards. Batch 8 also
 replaces all eight rating/legal-only references across the four published
 `hypertension` relationships with condition-specific clinical evidence and
 publishes `cushings-syndrome` → `hypertension` under a bounded endocrine pathway.
+Batch 9 removes the unsupported `erectile-dysfunction` → `gerd` treatment chain
+and clinically repairs `erectile-dysfunction` → `depressive-disorder` with
+bidirectional association evidence and explicit causality/chronology safeguards.
 
-After Batch 8, the citation-debt ceilings tighten to **135 total references / 14
-verified / 121 unverified / 119 published-unverified review findings**, while the
-clinical-evidence-with-URL floor rises to **44**. No automated change marks a new
+After Batch 9, the citation-debt ceilings tighten to **133 total references / 14
+verified / 119 unverified / 117 published-unverified review findings**, while the
+clinical-evidence-with-URL floor remains **44**. No automated change marks a new
 source verified.
 
 The completed identity-expansion record is maintained in
 `docs/condition-expansion-roadmap.md`; the post-v2 promotion records are in
 `docs/clinical-evidence-promotion-batch-1.md` through
-`docs/clinical-evidence-promotion-batch-8.md`. The 300-condition target is a
+`docs/clinical-evidence-promotion-batch-9.md`. The 300-condition target is a
 versioned product target, not a claim that medicine or the VA rating schedule
 contains only 300 possible conditions.
 
