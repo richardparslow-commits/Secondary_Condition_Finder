@@ -37,10 +37,10 @@ describe("P1 Ticket 5: Suggestion Constraints to Diagnosed Set", () => {
     }
   ];
 
-  it("restricts recommendations strictly to user-selected diagnosed conditions", () => {
+  it("restricts recommendations strictly to user-selected diagnosed condition ids", () => {
     const intake = {
       primaryConditions: ["Lumbar Strain"],
-      diagnosedConditions: ["Radiculopathy"], // Depression is mapped, but NOT diagnosed by user
+      diagnosedConditionIds: ["radiculopathy"], // Depression is mapped, but NOT diagnosed by user
       symptoms: [],
       medications: [],
       exposures: [],
@@ -48,9 +48,22 @@ describe("P1 Ticket 5: Suggestion Constraints to Diagnosed Set", () => {
     };
 
     const result = recommend(mockCatalog, mockKb, intake);
-    
-    // Should contain Radiculopathy, but filter out Depression
+
+    // Should contain Radiculopathy, but filter out Depression.
     expect(result.recommendations.map((r: Recommendation) => r.conditionId)).toContain("radiculopathy");
     expect(result.recommendations.map((r: Recommendation) => r.conditionId)).not.toContain("depression");
+  });
+
+  it("treats an explicitly empty diagnosed id set as an empty recommendation boundary", () => {
+    const result = recommend(mockCatalog, mockKb, {
+      primaryConditions: ["Lumbar Strain"],
+      diagnosedConditionIds: [],
+      symptoms: [],
+      medications: [],
+      exposures: [],
+      notes: "",
+    });
+
+    expect(result.recommendations).toEqual([]);
   });
 });

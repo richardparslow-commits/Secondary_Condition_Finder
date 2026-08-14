@@ -59,7 +59,7 @@ export default function HomePage() {
         <div className="ui-stack">
           <article className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><p className="ui-kicker">Secondary</p><h2 className="text-2xl font-bold">Conditions via Aggravation</h2></div></div>
-            <p>Explore a condition that already existed but may have been permanently worsened beyond its natural progression by a service-connected disability.</p>
+            <p>Explore a condition that already existed but may have increased in severity beyond its natural progression due to a service-connected disability.</p>
             <Link href="/secondary/condition-aggravation" className="ui-button mt-6 w-full">Learn More <span aria-hidden="true">→</span></Link>
           </article>
 

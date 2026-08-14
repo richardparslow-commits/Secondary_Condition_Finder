@@ -110,19 +110,23 @@ describe("Priority 2 medication and treatment intake", () => {
     expect(ed?.matchedIntakeContext).not.toContain("unrelated treatment term");
   });
 
-  it("wires Step 4 intake through Steps 5 and 6 with explicit non-causal copy", () => {
+  it("wires Step 4 intake through the shared Steps 5 and 6 recommendation intake with explicit non-causal copy", () => {
     const upload = readRepoFile("src/app/secondary/upload/page.tsx");
     const suggestions = readRepoFile("src/app/secondary/suggestions/page.tsx");
     const evidence = readRepoFile("src/app/secondary/evidence/page.tsx");
+    const recommendationIntake = readRepoFile(
+      "src/lib/secondary-workflow/recommendation-intake.ts",
+    );
     const item = readRepoFile("src/components/SecondarySuggestionItem.tsx");
 
     expect(upload).toContain('name="medications"');
     expect(upload).toContain('name="treatments"');
     expect(upload).toContain("not placed in URLs");
-    expect(suggestions).toContain("medications,");
-    expect(suggestions).toContain("treatments,");
-    expect(evidence).toContain("medications,");
-    expect(evidence).toContain("treatments,");
+    expect(suggestions).toContain("buildSecondaryRecommendationIntake(state)");
+    expect(evidence).toContain("buildSecondaryRecommendationIntake(state)");
+    expect(recommendationIntake).toContain("diagnosedConditionIds: state.diagnosedConditionIds");
+    expect(recommendationIntake).toContain("medications: state.medications ?? []");
+    expect(recommendationIntake).toContain("treatments: state.treatments ?? []");
     expect(item).toContain("literal text-overlap cue only");
     expect(item).toContain("does not change recommendation rank");
   });

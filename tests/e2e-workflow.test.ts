@@ -10,7 +10,7 @@ describe("Secondary recommendation pipeline", () => {
 
     const intake = {
       primaryConditions: ["Lumbar Strain"],
-      diagnosedConditions: ["Radiculopathy"],
+      diagnosedConditionIds: ["radiculopathy"],
       symptoms: ["Lower back pain", "Numbness in leg"],
       medications: ["Ibuprofen"],
       exposures: ["Burn pits"],
@@ -22,9 +22,7 @@ describe("Secondary recommendation pipeline", () => {
     expect(result.recognizedPrimaries).toContain("Lumbar Strain");
     expect(result.unrecognizedPrimaries).toEqual([]);
     expect(result.recommendations.every((recommendation) =>
-      intake.diagnosedConditions.some(
-        (condition) => condition.toLowerCase() === recommendation.condition.toLowerCase(),
-      ),
+      intake.diagnosedConditionIds.includes(recommendation.conditionId),
     )).toBe(true);
   });
 });

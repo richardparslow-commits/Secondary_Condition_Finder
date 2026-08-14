@@ -6,6 +6,7 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
+import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
 import { findLinkedNonServiceConnectedConditions, groupSuggestionsByPrimary } from "@/lib/secondary-workflow/suggestions";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
@@ -27,14 +28,11 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
 
   const medications = state.medications ?? [];
   const treatments = state.treatments ?? [];
-  const recommendationsResult = recommend(catalog, kb, {
-    primaryConditions: state.serviceConnectedConditionIds,
-    symptoms: [],
-    medications,
-    treatments,
-    exposures: [],
-    notes: "",
-  });
+  const recommendationsResult = recommend(
+    catalog,
+    kb,
+    buildSecondaryRecommendationIntake(state),
+  );
   const linked = findLinkedNonServiceConnectedConditions(state.diagnosedConditionIds, state.serviceConnectedConditionIds, recommendationsResult.recommendations);
   const grouped = groupSuggestionsByPrimary(catalog, state.serviceConnectedConditionIds, recommendationsResult.recommendations);
   const diagnosedNames = state.diagnosedConditionIds.map((id) => byId.get(id)?.name).filter(Boolean);
