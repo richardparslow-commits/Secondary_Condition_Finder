@@ -5,12 +5,28 @@ import {
   randomBytes,
 } from "node:crypto";
 
-const COOKIE_VERSION = "v1";
+const COOKIE_VERSION = "v2";
 const IV_BYTES = 12;
 const AUTH_TAG_BYTES = 16;
 export const MIN_WORKFLOW_SESSION_SECRET_LENGTH = 32;
+export const WORKFLOW_SESSION_MAX_AGE_SECONDS = 30 * 60;
 const DEVELOPMENT_ONLY_SECRET =
   "development-only-workflow-session-secret-not-for-production";
+
+interface SessionEnvelope {
+  issuedAt: number;
+  expiresAt: number;
+  payload: unknown;
+}
+
+interface SealSessionOptions {
+  nowMs?: number;
+  maxAgeSeconds?: number;
+}
+
+interface OpenSessionOptions {
+  nowMs?: number;
+}
 
 export function workflowSessionSecret(): string {
   const configured =
@@ -37,14 +53,48 @@ function encryptionKey(secret: string): Buffer {
   return createHash("sha256").update(secret, "utf8").digest();
 }
 
+function isSessionEnvelope(value: unknown): value is SessionEnvelope {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Partial<SessionEnvelope>;
+  return (
+    Number.isSafeInteger(candidate.issuedAt) &&
+    Number.isSafeInteger(candidate.expiresAt) &&
+    typeof candidate.issuedAt === "number" &&
+    typeof candidate.expiresAt === "number" &&
+    candidate.issuedAt >= 0 &&
+    candidate.expiresAt > candidate.issuedAt &&
+    Object.prototype.hasOwnProperty.call(candidate, "payload")
+  );
+}
+
 export function sealSessionPayload(
   payload: unknown,
   secret = workflowSessionSecret(),
+  options: SealSessionOptions = {},
 ): string {
   if (secret.length < MIN_WORKFLOW_SESSION_SECRET_LENGTH) {
     throw new Error(
       `Workflow session secret must contain at least ${MIN_WORKFLOW_SESSION_SECRET_LENGTH} characters.`,
     );
+  }
+
+  const nowMs = options.nowMs ?? Date.now();
+  const maxAgeSeconds = options.maxAgeSeconds ?? WORKFLOW_SESSION_MAX_AGE_SECONDS;
+  if (!Number.isSafeInteger(nowMs) || nowMs < 0) {
+    throw new Error("Workflow session issuance time must be a non-negative integer.");
+  }
+  if (!Number.isSafeInteger(maxAgeSeconds) || maxAgeSeconds <= 0) {
+    throw new Error("Workflow session max age must be a positive integer number of seconds.");
+  }
+
+  const envelope: SessionEnvelope = {
+    issuedAt: nowMs,
+    expiresAt: nowMs + maxAgeSeconds * 1000,
+    payload,
+  };
+
+  if (!Number.isSafeInteger(envelope.expiresAt)) {
+    throw new Error("Workflow session expiry exceeds the supported time range.");
   }
 
   const iv = randomBytes(IV_BYTES);
@@ -53,7 +103,7 @@ export function sealSessionPayload(
   });
   cipher.setAAD(Buffer.from(COOKIE_VERSION, "utf8"));
 
-  const plaintext = Buffer.from(JSON.stringify(payload), "utf8");
+  const plaintext = Buffer.from(JSON.stringify(envelope), "utf8");
   const ciphertext = Buffer.concat([cipher.update(plaintext), cipher.final()]);
   const tag = cipher.getAuthTag();
 
@@ -68,6 +118,7 @@ export function sealSessionPayload(
 export function openSessionPayload(
   sealed: string,
   secret = workflowSessionSecret(),
+  options: OpenSessionOptions = {},
 ): unknown | null {
   try {
     if (secret.length < MIN_WORKFLOW_SESSION_SECRET_LENGTH) return null;
@@ -102,8 +153,14 @@ export function openSessionPayload(
       decipher.update(ciphertext),
       decipher.final(),
     ]).toString("utf8");
+    const envelope = JSON.parse(plaintext) as unknown;
+    if (!isSessionEnvelope(envelope)) return null;
 
-    return JSON.parse(plaintext) as unknown;
+    const nowMs = options.nowMs ?? Date.now();
+    if (!Number.isSafeInteger(nowMs) || nowMs < 0) return null;
+    if (nowMs >= envelope.expiresAt) return null;
+
+    return envelope.payload;
   } catch {
     return null;
   }
@@ -123,7 +180,7 @@ export function workflowSessionRuntimeReady(): boolean {
   try {
     const probe = {
       kind: "workflow-session-runtime-readiness",
-      version: 1,
+      version: 2,
     };
     const sealed = sealSessionPayload(probe, configured);
     const opened = openSessionPayload(sealed, configured);
