@@ -2,26 +2,26 @@
   {
     "id": "single-primary-ptsd",
     "title": "Single primary condition",
-    "description": "Synthetic demo: PTSD as the diagnosed and service-connected primary, with optional medication context for research review.",
+    "description": "Synthetic demo: PTSD is service connected while erectile dysfunction is already diagnosed, with optional SSRI context for research review.",
     "workflow": {
-      "diagnosedConditionIds": ["ptsd"],
+      "diagnosedConditionIds": ["ptsd", "erectile-dysfunction"],
       "serviceConnectedConditionIds": ["ptsd"],
       "ratingsByConditionId": {"ptsd": 70},
       "documentsShared": false,
-      "medications": ["sertraline"],
+      "medications": ["SSRI"],
       "treatments": []
     }
   },
   {
     "id": "multiple-primaries-overlap",
     "title": "Multiple primaries with an overlapping suggestion",
-    "description": "Synthetic demo: knee injury and lumbar strain show how authored suggestions can overlap across multiple service-connected primaries.",
+    "description": "Synthetic demo: PTSD and COPD are service connected while sleep apnea is already diagnosed, showing how one diagnosed secondary can be supported by authored pathways from multiple primaries.",
     "workflow": {
-      "diagnosedConditionIds": ["knee-injury", "lumbar-strain"],
-      "serviceConnectedConditionIds": ["knee-injury", "lumbar-strain"],
-      "ratingsByConditionId": {"knee-injury": 20, "lumbar-strain": 20},
+      "diagnosedConditionIds": ["ptsd", "copd", "sleep-apnea"],
+      "serviceConnectedConditionIds": ["ptsd", "copd"],
+      "ratingsByConditionId": {"ptsd": 70, "copd": 30},
       "documentsShared": false,
-      "medications": ["meloxicam"],
+      "medications": [],
       "treatments": []
     }
   },
