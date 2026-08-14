@@ -5,8 +5,20 @@ const path = require("path");
 const kbDir = path.join(process.cwd(), "data/knowledge-base");
 const files = fs.readdirSync(kbDir).filter((file) => file.endsWith(".json")).sort();
 
+// Medium-audit verification-debt ratchet. Existing review debt is not falsely
+// promoted to verified, but it may never grow silently. Lower these ceilings as
+// source-by-source verification work is completed.
+const CITATION_DEBT_BASELINE = Object.freeze({
+  references: 148,
+  verified: 14,
+  unverified: 134,
+  reviewFindings: 132,
+  clinicalEvidenceWithUrls: 25,
+});
+
 const hardFindings = [];
 const reviewFindings = [];
+const unverifiedByCitation = new Map();
 let references = 0;
 let verified = 0;
 let clinical = 0;
@@ -52,7 +64,12 @@ for (const file of files) {
 
     for (const [referenceIndex, reference] of refs.entries()) {
       references += 1;
-      if (reference.verified === true) verified += 1;
+      if (reference.verified === true) {
+        verified += 1;
+      } else {
+        const citation = String(reference.citation || "(missing citation)");
+        unverifiedByCitation.set(citation, (unverifiedByCitation.get(citation) || 0) + 1);
+      }
       if (reference.verificationScope === "clinical-evidence") {
         clinical += 1;
         if (reference.sourceUrl) clinicalWithUrls += 1;
@@ -79,23 +96,48 @@ for (const file of files) {
   }
 }
 
+const unverified = references - verified;
+
+// Fail closed on citation-debt regression while preserving truthful statuses.
+if (references < CITATION_DEBT_BASELINE.references && verified < CITATION_DEBT_BASELINE.verified) {
+  addHard(`citation debt ratchet: verified references fell below baseline (${verified} < ${CITATION_DEBT_BASELINE.verified}) while references were removed`);
+}
+if (verified < CITATION_DEBT_BASELINE.verified) {
+  addHard(`citation debt ratchet: verified reference count regressed (${verified} < ${CITATION_DEBT_BASELINE.verified})`);
+}
+if (unverified > CITATION_DEBT_BASELINE.unverified) {
+  addHard(`citation debt ratchet: unverified reference count increased (${unverified} > ${CITATION_DEBT_BASELINE.unverified})`);
+}
+if (reviewFindings.length > CITATION_DEBT_BASELINE.reviewFindings) {
+  addHard(`citation debt ratchet: published unverified review findings increased (${reviewFindings.length} > ${CITATION_DEBT_BASELINE.reviewFindings})`);
+}
+if (clinicalWithUrls < CITATION_DEBT_BASELINE.clinicalEvidenceWithUrls) {
+  addHard(`citation debt ratchet: clinical references with canonical URLs regressed (${clinicalWithUrls} < ${CITATION_DEBT_BASELINE.clinicalEvidenceWithUrls})`);
+}
+
+const unverifiedCitationCounts = [...unverifiedByCitation.entries()]
+  .map(([citation, count]) => ({ citation, count }))
+  .sort((a, b) => b.count - a.count || a.citation.localeCompare(b.citation));
+
 const report = {
   knowledgeBaseFiles: files.length,
   references,
   verified,
-  unverified: references - verified,
+  unverified,
+  citationDebtBaseline: CITATION_DEBT_BASELINE,
   clinicalEvidenceReferences: clinical,
   clinicalEvidenceReferencesWithUrls: clinicalWithUrls,
   hardFindingCount: hardFindings.length,
   reviewFindingCount: reviewFindings.length,
   hardFindings,
   reviewFindings,
+  unverifiedCitationCounts,
 };
 
 console.log(JSON.stringify(report, null, 2));
 
 // P3-C policy: incomplete verification remains a review item until the claim
-// is actually checked. Unsafe provenance, legal/clinical category errors, and
-// unsupported medical causation/aggravation or medication propositions are hard
-// CI failures; they must be corrected before the P3-C branch can merge.
+// is actually checked. Unsafe provenance, legal/clinical category errors,
+// unsupported medical propositions, and any regression in the established
+// verification-debt baseline are hard CI failures.
 process.exitCode = hardFindings.length > 0 ? 1 : 0;
