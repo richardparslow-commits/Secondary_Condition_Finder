@@ -55,6 +55,26 @@ describe("accessibility and UX content contracts", () => {
     expect(privacy).toContain("are not placed in page URLs");
     expect(privacy).toContain("presumptive workflow does not encode selected service locations or service dates in query strings");
     expect(privacy).toContain("Automatic route, AJAX, and fetch tracking are disabled");
+    expect(privacy).toContain("does not persist workflow or recommendation event history through an application event logger");
+  });
+
+  it("keeps public VA-reference and privacy copy aligned to the current architecture", () => {
+    const home = renderPageHtml(HomePage());
+    const about = renderPageHtml(AboutPage());
+    const privacy = renderPageHtml(PrivacyPage());
+
+    expect(home).toContain('href="/va-forms/finder"');
+    expect(home).toContain("Search public VA form metadata by form number, keyword, or title");
+    expect(home).not.toContain("bounded public reference for VA Form 21-526EZ");
+
+    expect(about).toContain("searchable VA Forms metadata");
+    expect(about).toContain("disability terminology and service-branch reference information");
+    expect(about).toContain("does not persist workflow or recommendation event history through an application event logger");
+    expect(about).not.toContain("recommendation-event persistence is limited to aggregate operational counts");
+
+    expect(privacy).toContain("environment-aware VA public-reference adapter is disabled by default");
+    expect(privacy).toContain("credentialed sandbox connectivity and future production connectivity remain separate external gates");
+    expect(privacy).not.toContain("VA sandbox integration is disabled by default and is a separate future integration gate");
   });
 
   it("keeps public scope and legal routes discoverable", () => {
