@@ -28,9 +28,9 @@ describe("condition catalog expansion wave 6", () => {
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
   const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
 
-  it("moves the implemented catalog from 276 to 290 conditions", () => {
-    expect(catalog).toHaveLength(290);
-    expect(knowledgeBase).toHaveLength(290);
+  it("preserves the 290-condition Wave 6 baseline while allowing later waves", () => {
+    expect(catalog.length).toBeGreaterThanOrEqual(290);
+    expect(knowledgeBase.length).toBeGreaterThanOrEqual(290);
   });
 
   it("adds all 14 approved Wave 6 conditions", () => {
