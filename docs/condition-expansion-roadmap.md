@@ -25,6 +25,7 @@ Clinical secondary-condition relationships must be researched separately and rem
 9. When the rating schedule has no single diagnosis-specific diagnostic code, record the applicable rating framework and a review note rather than inventing a code.
 10. Product-wave grouping does not override the actual Part 4 rating authority; when a condition is rated in another body-system schedule, record that schedule explicitly.
 11. When a broader regulatory umbrella overlaps an existing narrower user-facing diagnosis, keep names and aliases non-overlapping and document the relationship rather than silently collapsing or duplicating condition identity.
+12. When one roadmap identity intentionally groups related diagnoses for discovery, keep the user-facing grouping explicit but require later clinical authoring to evaluate diagnosis-specific etiologies and pathways separately.
 
 ## Coverage target
 
@@ -39,7 +40,9 @@ Clinical secondary-condition relationships must be researched separately and rem
 | Catalog after Wave 3 | 246 |
 | Wave 4 implemented | +15 |
 | Catalog after Wave 4 | 261 |
-| Waves 5-7 planned | +39 |
+| Wave 5 implemented | +15 |
+| Catalog after Wave 5 | 276 |
+| Waves 6-7 planned | +24 |
 | Target catalog v2 | 300 |
 
 The candidate list deliberately consolidates obvious synonyms and avoids creating separate user-facing entries for every residual, laterality variant, or diagnostic-code phrasing. Laterality should eventually be modeled as an attribute rather than by multiplying diagnoses.
@@ -181,9 +184,36 @@ Wave 4 expands respiratory/ENT, sleep-wake, and ophthalmologic coverage while pr
 
 All 15 enter Wave 4 with draft KB files and no published suggestions. `vocal-cord-paralysis` and `dry-eye-syndrome` remain framework-only where the current schedule lacks one diagnosis-specific code. `pulmonary-vascular-disease` and `retinal-dystrophy` intentionally omit narrower existing condition names from their aliases to preserve unambiguous catalog identity.
 
-## Wave 5 — digestive and genitourinary depth (15)
+## Wave 5 — digestive and genitourinary depth (15) — implemented
 
-`esophageal-stricture`, `achalasia`, `barretts-esophagus`, `gastroparesis`, `peritoneal-adhesions`, `short-bowel-syndrome`, `fecal-incontinence`, `rectal-prolapse`, `anal-fistula`, `chronic-liver-disease`, `chronic-pyelonephritis`, `hydronephrosis`, `urethral-stricture`, `varicocele-hydrocele`, `epididymitis-orchitis`.
+Wave 5 expands upper-GI motility/structural, intestinal, anorectal, liver, renal, urinary, and male-reproductive identities. It preserves existing narrower diagnoses, and where automated authoring cannot safely assign one diagnosis-specific code it records the correct rating framework instead of inventing an analog.
+
+### Digestive (10)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `esophageal-stricture` | Esophageal Stricture | 38 CFR 4.114 / DC 7203 |
+| `achalasia` | Achalasia (Esophageal Motility Disorder) | 38 CFR 4.114 / esophageal motility or cardiospasm framework, DC 7204 |
+| `barretts-esophagus` | Barrett's Esophagus | 38 CFR 4.114 / DC 7207 |
+| `gastroparesis` | Gastroparesis | 38 CFR 4.114 digestive-system framework; no single diagnosis-specific DC assigned by automated expansion |
+| `peritoneal-adhesions` | Peritoneal Adhesions | 38 CFR 4.114 / DC 7301 |
+| `short-bowel-syndrome` | Short Bowel Syndrome | 38 CFR 4.114 / small-intestine resection and short-bowel residual framework, including DC 7328 when applicable |
+| `fecal-incontinence` | Fecal Incontinence / Impairment of Sphincter Control | 38 CFR 4.114 / DC 7332 |
+| `rectal-prolapse` | Rectal Prolapse | 38 CFR 4.114 / DC 7334 |
+| `anal-fistula` | Anal Fistula (Fistula in Ano) | 38 CFR 4.114 / DC 7335 and applicable sphincter-control criteria |
+| `chronic-liver-disease` | Chronic Liver Disease Without Cirrhosis | 38 CFR 4.114 / DC 7345; kept distinct from existing hepatitis and cirrhosis identities |
+
+### Genitourinary (5)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `chronic-pyelonephritis` | Chronic Pyelonephritis | 38 CFR 4.115b / DC 7504 |
+| `hydronephrosis` | Hydronephrosis | 38 CFR 4.115b / DC 7509 |
+| `urethral-stricture` | Urethral Stricture | 38 CFR 4.115b / DC 7518 |
+| `varicocele-hydrocele` | Varicocele / Hydrocele | 38 CFR 4.115b diagnostic framework; no single diagnosis-specific DC assigned by automated expansion |
+| `epididymitis-orchitis` | Chronic Epididymitis / Orchitis | 38 CFR 4.115b / DC 7525 infection framework; kept distinct from existing prostatitis |
+
+All 15 enter Wave 5 with draft KB files and no published suggestions. `gastroparesis` and `varicocele-hydrocele` deliberately remain framework-only rather than borrowing an analogous code. `chronic-liver-disease` omits hepatitis/cirrhosis aliases, and `epididymitis-orchitis` remains distinct from prostatitis even where the schedule may use a shared infection framework. The combined `varicocele-hydrocele` discovery identity does not authorize future clinical authors to assume those diagnoses share one etiology or secondary pathway.
 
 ## Wave 6 — mental, hematologic, autoimmune, and skin depth (14)
 
@@ -206,6 +236,6 @@ A batch is complete only when:
 - lint, typecheck, unit tests, production build, and real-browser journeys pass on the exact branch head;
 - documentation counts match the implemented catalog.
 
-## After Wave 4
+## After Wave 5
 
-The catalog-expansion program now has 261 recognized conditions. The next catalog batch is Wave 5, while medical-authoring work for Waves 1 through 4 remains a separate evidence task: promote only individual relationships with adequate condition-specific clinical support and leave unsupported theories draft.
+The catalog-expansion program now has 276 recognized conditions. The next catalog batch is Wave 6, while medical-authoring work for Waves 1 through 5 remains a separate evidence task: promote only individual relationships with adequate condition-specific clinical support and leave unsupported theories draft.
