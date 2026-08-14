@@ -1,6 +1,9 @@
 export const SECONDARY_TRACK_OVERVIEW =
   "Use this track when you already have at least one service-connected condition and want to organize other diagnosed conditions that may be relevant.";
 
+export const CURRENT_DISABILITY_SCOPE_NOTICE =
+  "Evidence must establish a current disability. A named medical diagnosis is not an absolute legal prerequisite in every circumstance: under Saunders v. Wilkie, pain can constitute a disability when it reaches the level of functional impairment of earning capacity. This product's six-step recommendation workflow remains intentionally limited to conditions you identify as diagnosed.";
+
 export const CAUSED_AGGRAVATED_DISTINCTION =
   "A secondary claim can involve a condition that may have been caused by a service-connected disability, or a condition that already existed but may have been aggravated (made worse beyond normal progression) by it.";
 
