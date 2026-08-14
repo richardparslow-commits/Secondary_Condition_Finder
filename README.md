@@ -183,22 +183,30 @@ health state.
 
 The catalog remains fixed at **300 recognized conditions / 300 one-to-one
 knowledge-base mappings** after target-v2 identity expansion. Post-v2 maintenance
-now uses 33 catalog files because fibromyalgia was physically relocated from its
-historical hemic/immune file into musculoskeletal maintenance without changing
-its stable identity.
+still uses 33 catalog files: fibromyalgia has been physically normalized into
+musculoskeletal maintenance, and diabetic retinopathy has been moved from the
+historical carried-over bucket into the ophthalmologic expansion file, without
+changing either stable identity.
 
-Waves 1 through 7 added 107 conditions. Clinical Evidence Promotion Batch 1
-publishes only two individually reviewed expansion mappings:
-`cardiomyopathy` → `congestive-heart-failure` and `urethral-stricture` →
-`hydronephrosis`. **105 of the 107 expansion mappings remain safe drafts** and
-stay excluded from recommendation output until their own condition-specific
-clinical evidence satisfies the repository's publication rules. The same batch
-returns `ankle-strain` to draft because its prior published downstream claims
-were stronger than the reviewed evidence supports.
+Waves 1 through 7 added 107 conditions. Clinical Evidence Promotion Batches 1
+and 2 publish only four individually reviewed expansion mappings:
+`cardiomyopathy` → `congestive-heart-failure`, `urethral-stricture` →
+`hydronephrosis`, `hypertensive-heart-disease` → `congestive-heart-failure`, and
+`chronic-pyelonephritis` → `chronic-kidney-disease`. **103 of the 107 expansion
+mappings remain safe drafts** and stay excluded from recommendation output until
+their own condition-specific clinical evidence satisfies the repository's
+publication rules.
+
+Safety review also returns `ankle-strain`, `knee-injury`, and `osteoarthritis`
+to draft where previously published biomechanical claims were stronger than the
+reviewed evidence or relied on rating/legal authority rather than clinical
+evidence. These relationships may be reconsidered only as individual edges with
+condition-specific evidence and case-specific safeguards.
 
 The completed identity-expansion record is maintained in
-`docs/condition-expansion-roadmap.md`; the first post-v2 promotion record is in
-`docs/clinical-evidence-promotion-batch-1.md`. The 300-condition target is a
+`docs/condition-expansion-roadmap.md`; the post-v2 promotion records are in
+`docs/clinical-evidence-promotion-batch-1.md` and
+`docs/clinical-evidence-promotion-batch-2.md`. The 300-condition target is a
 versioned product target, not a claim that medicine or the VA rating schedule
 contains only 300 possible conditions.
 
