@@ -16,12 +16,14 @@ const intentionallyUnlabeledEdges = [
   ["congestive-heart-failure", "gerd"],
 ] as const;
 
-const intentionallyUnlabeledMappings = [
-  "hypertension",
+const intentionallyUnlabeledMappings = ["hypertension"] as const;
+
+const safetyWithdrawnMappings = [
+  "agranulocytosis",
+  "al-amyloidosis",
+  "addisons-disease",
   "anorexia-nervosa",
 ] as const;
-
-const safetyWithdrawnMappings = ["agranulocytosis", "al-amyloidosis", "addisons-disease"] as const;
 
 describe("controlled pathway backfill batch 4", () => {
   it("adds a conditional somatopsychic pathway only to the two supported physical-to-mood edges", () => {
