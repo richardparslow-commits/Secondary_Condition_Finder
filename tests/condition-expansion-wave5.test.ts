@@ -1,0 +1,93 @@
+import { describe, expect, it } from "vitest";
+
+import { loadConditionCatalog } from "@/lib/catalog/load";
+import { loadKnowledgeBase } from "@/lib/kb/load";
+
+const WAVE_FIVE_IDS = [
+  "esophageal-stricture",
+  "achalasia",
+  "barretts-esophagus",
+  "gastroparesis",
+  "peritoneal-adhesions",
+  "short-bowel-syndrome",
+  "fecal-incontinence",
+  "rectal-prolapse",
+  "anal-fistula",
+  "chronic-liver-disease",
+  "chronic-pyelonephritis",
+  "hydronephrosis",
+  "urethral-stricture",
+  "varicocele-hydrocele",
+  "epididymitis-orchitis",
+] as const;
+
+const FRAMEWORK_ONLY_IDS = ["gastroparesis", "varicocele-hydrocele"] as const;
+
+describe("condition catalog expansion wave 5", () => {
+  const catalog = loadConditionCatalog();
+  const knowledgeBase = loadKnowledgeBase();
+  const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
+  const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
+
+  it("moves the implemented catalog from 261 to 276 conditions", () => {
+    expect(catalog).toHaveLength(276);
+    expect(knowledgeBase).toHaveLength(276);
+  });
+
+  it("adds all 15 approved Wave 5 conditions", () => {
+    for (const id of WAVE_FIVE_IDS) {
+      expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
+    }
+  });
+
+  it("gives every Wave 5 condition exactly one safe draft mapping", () => {
+    for (const id of WAVE_FIVE_IDS) {
+      const mapping = mappingById.get(id);
+      expect(mapping, `missing mapping for ${id}`).toBeDefined();
+      expect(mapping?.draft).toBe(true);
+      expect(mapping?.suggestions).toEqual([]);
+      expect(mapping?.todo.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("does not automate rating-citation verification", () => {
+    for (const id of WAVE_FIVE_IDS) {
+      const condition = catalogById.get(id);
+      expect(condition).toBeDefined();
+      expect(condition?.ratingSchedule.length).toBeGreaterThan(0);
+      expect(condition?.ratingSchedule.every((reference) => reference.verified === false)).toBe(true);
+    }
+  });
+
+  it("keeps framework-only identities from inventing an analogous diagnostic code", () => {
+    for (const id of FRAMEWORK_ONLY_IDS) {
+      const condition = catalogById.get(id);
+      expect(condition).toBeDefined();
+      expect(condition?.ratingSchedule[0]?.note).toMatch(/no single diagnosis-specific diagnostic code/i);
+      expect(condition?.reviewNotes.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("keeps chronic liver disease distinct from existing hepatitis and cirrhosis identities", () => {
+    const condition = catalogById.get("chronic-liver-disease");
+    expect(condition).toBeDefined();
+    expect(condition?.name).toMatch(/without cirrhosis/i);
+    expect(condition?.aliases).toEqual([]);
+    expect(condition?.reviewNotes.join(" ")).toMatch(/hepatitis.*cirrhosis|cirrhosis.*hepatitis/i);
+  });
+
+  it("keeps chronic epididymitis/orchitis distinct from prostatitis despite a shared infection framework", () => {
+    const condition = catalogById.get("epididymitis-orchitis");
+    expect(condition).toBeDefined();
+    expect(condition?.aliases.map((alias) => alias.toLowerCase())).not.toContain("prostatitis");
+    expect(condition?.reviewNotes.join(" ")).toMatch(/prostatitis/i);
+  });
+
+  it("keeps known renal and urinary identities on the genitourinary schedule", () => {
+    for (const id of ["chronic-pyelonephritis", "hydronephrosis", "urethral-stricture"] as const) {
+      const condition = catalogById.get(id);
+      expect(condition).toBeDefined();
+      expect(condition?.ratingSchedule[0]?.citation).toBe("38 CFR 4.115b");
+    }
+  });
+});
