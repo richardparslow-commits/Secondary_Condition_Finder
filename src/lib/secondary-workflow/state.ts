@@ -245,28 +245,3 @@ export function parseWorkflowState(
 ): SecondaryWorkflowState {
   return parseDocumentsSelection(params, catalog);
 }
-
-export function workflowStateToSearchParams(
-  state: SecondaryWorkflowState,
-): URLSearchParams {
-  const searchParams = new URLSearchParams();
-
-  for (const id of state.diagnosedConditionIds) {
-    searchParams.append("diagnosed", id);
-  }
-
-  for (const id of state.serviceConnectedConditionIds) {
-    searchParams.append("serviceConnected", id);
-  }
-
-  for (const id of state.serviceConnectedConditionIds) {
-    const value = state.ratingsByConditionId[id];
-    searchParams.set(ratingFieldName(id), value === null ? "decline" : String(value));
-  }
-
-  searchParams.set("documentsShared", state.documentsShared ? "yes" : "no");
-
-  // Medication and treatment context is intentionally excluded from URL
-  // serialization. It belongs only in the encrypted short-lived workflow session.
-  return searchParams;
-}
