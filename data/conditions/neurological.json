@@ -162,16 +162,6 @@
       ]
     },
     {
-      "id": "hyperthyroidism",
-      "name": "hyperthyroidism",
-      "aliases": [],
-      "bodySystem": "Neurological",
-      "ratingSchedule": [],
-      "reviewNotes": [
-        "Pending manual review"
-      ]
-    },
-    {
       "id": "hypoparathyroidism",
       "name": "hypoparathyroidism",
       "aliases": [],

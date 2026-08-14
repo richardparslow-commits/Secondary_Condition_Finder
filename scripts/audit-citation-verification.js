@@ -11,10 +11,10 @@ const files = fs.readdirSync(kbDir).filter((file) => file.endsWith(".json")).sor
 // are retired, and raise the clinical-evidence floor as legal-only support is
 // replaced with condition-specific clinical sources.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 135,
+  references: 133,
   verified: 14,
-  unverified: 121,
-  reviewFindings: 119,
+  unverified: 119,
+  reviewFindings: 117,
   clinicalEvidenceWithUrls: 44,
 });
 

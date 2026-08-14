@@ -87,6 +87,8 @@ describe("clinical evidence promotion batch 8", () => {
     expect(condition?.ratingSchedule[0]?.citation).toBe("38 CFR 4.119");
     expect(condition?.ratingSchedule[0]?.note).toMatch(/7913/i);
     expect(condition?.ratingSchedule[0]?.verified).toBe(false);
-    expect(byId.get("diabetes-mellitus-type-1")?.draft).toBe(true);
+    // Batch 8 established the identity relocation. Batch 9 subsequently
+    // promoted this mapping after condition-specific CKD evidence review.
+    expect(byId.get("diabetes-mellitus-type-1")?.draft).toBe(false);
   });
 });
