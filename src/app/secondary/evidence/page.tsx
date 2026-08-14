@@ -12,6 +12,7 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
+import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
 import { groupSuggestionsByPrimary } from "@/lib/secondary-workflow/suggestions";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams } from "@/lib/secondary-workflow/session";
@@ -40,14 +41,11 @@ export default async function EvidenceReviewStepPage() {
 
   const medications = state.medications ?? [];
   const treatments = state.treatments ?? [];
-  const recommendationsResult = recommend(catalog, kb, {
-    primaryConditions: state.serviceConnectedConditionIds,
-    symptoms: [],
-    medications,
-    treatments,
-    exposures: [],
-    notes: "",
-  });
+  const recommendationsResult = recommend(
+    catalog,
+    kb,
+    buildSecondaryRecommendationIntake(state),
+  );
   const grouped = groupSuggestionsByPrimary(catalog, state.serviceConnectedConditionIds, recommendationsResult.recommendations);
   const consultationRecommendations = recommendationsResult.recommendations.map((recommendation) => ({
     ...recommendation,
