@@ -1,0 +1,6 @@
+{
+  "id": "laryngeal-cancer",
+  "draft": true,
+  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Evaluate active malignancy separately from laryngectomy, aphonia, stenosis, swallowing impairment, respiratory effects, treatment toxicity, and other documented residuals; do not infer any residual or nexus from DC 6819 alone."],
+  "suggestions": []
+}

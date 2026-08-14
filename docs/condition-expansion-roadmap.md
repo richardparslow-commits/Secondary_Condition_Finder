@@ -1,14 +1,14 @@
 # Condition Catalog Expansion Roadmap
 
-Status: active catalog-expansion plan
+Status: target catalog v2 implemented
 Baseline: 193 catalog conditions at `c24b45800b2fd936d0b1721cad5bfb54c4bf15e0`
-Target v2: 300 catalog conditions
+Target v2: 300 catalog conditions — implemented through Wave 7
 
 ## Purpose
 
-This roadmap expands the user-facing condition catalog in controlled, reviewable batches without weakening the repository's medical-evidence or citation safeguards. The target is a versioned product-coverage goal, not a claim that 300 conditions exhaust medicine or the VA rating schedule.
+This roadmap records the controlled expansion of the user-facing condition catalog without weakening the repository's medical-evidence or citation safeguards. The 300-condition target is a versioned product-coverage milestone, not a claim that 300 conditions exhaust medicine or the VA rating schedule.
 
-The comparison backbone is the current 38 CFR Part 4 rating schedule, including Appendix C's alphabetical index, together with VA's public Disability Benefits Questionnaires (DBQ) inventory. Those sources establish condition/rating identity and exam groupings. They do **not** establish secondary medical causation or aggravation.
+The comparison backbone is the current 38 CFR Part 4 rating schedule, including Appendix C's alphabetical index where current, together with VA's public Disability Benefits Questionnaires (DBQ) inventory. Those sources establish condition/rating identity and exam groupings. They do **not** establish secondary medical causation or aggravation.
 
 Clinical secondary-condition relationships must be researched separately and remain draft until condition-specific evidence satisfies the knowledge-base publication rules.
 
@@ -27,6 +27,7 @@ Clinical secondary-condition relationships must be researched separately and rem
 11. When a broader regulatory umbrella overlaps an existing narrower user-facing diagnosis, keep names and aliases non-overlapping and document the relationship rather than silently collapsing or duplicating condition identity.
 12. When one roadmap identity intentionally groups related diagnoses for discovery, keep the user-facing grouping explicit but require later clinical authoring to evaluate diagnosis-specific etiologies and pathways separately.
 13. When distinct diagnoses share one rating code, preserve separate catalog identities where useful and never infer shared etiology, causation, aggravation, or secondary pathways from the common code.
+14. Recheck regulatory currency before authoring. A historical diagnostic code removed or replaced by a later rule must not be carried forward as current authority, and a code limited by disease site, severity, treatment state, or residual must not be generalized to every presentation.
 
 ## Coverage target
 
@@ -45,14 +46,14 @@ Clinical secondary-condition relationships must be researched separately and rem
 | Catalog after Wave 5 | 276 |
 | Wave 6 implemented | +14 |
 | Catalog after Wave 6 | 290 |
-| Wave 7 planned | +10 |
-| Target catalog v2 | 300 |
+| Wave 7 implemented | +10 |
+| **Target catalog v2 achieved** | **300** |
 
 The candidate list deliberately consolidates obvious synonyms and avoids creating separate user-facing entries for every residual, laterality variant, or diagnostic-code phrasing. Laterality should eventually be modeled as an attribute rather than by multiplying diagnoses.
 
 ## Wave 1 — musculoskeletal and neurological (20) — implemented
 
-These are the highest-density expansion areas because the VA DBQ inventory and Part 4 rating schedule contain many distinct joint, bone, peripheral-nerve, and central-neurological diagnoses that were not represented by stable catalog identities at the 193-condition baseline.
+Wave 1 established the controlled expansion pattern and added 12 musculoskeletal plus 8 neurological identities.
 
 ### Musculoskeletal (12)
 
@@ -88,7 +89,7 @@ All 20 entered Wave 1 with draft KB files. Publication of any secondary relation
 
 ## Wave 2 — musculoskeletal and peripheral-neurological depth (18) — implemented
 
-Wave 2 deepens joint, ligament, foot, peripheral-nerve, pain-syndrome, cauda-equina, and cranial-nerve coverage. Specific diagnostic codes are recorded only where the current rating schedule provides a defensible condition- or nerve-specific identity. Framework-only diagnoses retain an explicit review note rather than an invented code.
+Wave 2 deepened joint, ligament, foot, peripheral-nerve, pain-syndrome, cauda-equina, and cranial-nerve coverage. Specific diagnostic codes were recorded only where the rating schedule supplied a defensible condition- or nerve-specific identity.
 
 ### Musculoskeletal (10)
 
@@ -118,11 +119,9 @@ Wave 2 deepens joint, ligament, foot, peripheral-nerve, pain-syndrome, cauda-equ
 | `cauda-equina-syndrome` | Cauda Equina Syndrome | 38 CFR 4.124a plus applicable spine/residual criteria; no single diagnosis-specific DC assigned |
 | `cranial-nerve-palsy` | Cranial Nerve Palsy | 38 CFR 4.124a / nerve-specific or special-sense criteria according to nerve involved |
 
-All 18 entered Wave 2 with draft KB files and no published suggestions. Rating identity remains separate from medical-causation evidence.
+All 18 entered Wave 2 with draft KB files and no published suggestions.
 
 ## Wave 3 — endocrine and cardiovascular depth (15) — implemented
-
-Wave 3 adds endocrine disease, endocrine-neoplasm, heart-disease/procedure, vascular, and pulmonary-vascular identities. The product batch grouping does not override the rating schedule: pulmonary hypertension is retained in the approved Wave 3 group but points to the respiratory schedule where VA actually evaluates pulmonary vascular disease.
 
 ### Endocrine (7)
 
@@ -147,13 +146,11 @@ Wave 3 adds endocrine disease, endocrine-neoplasm, heart-disease/procedure, vasc
 | `heart-transplant-residuals` | Heart Transplant Residuals | 38 CFR 4.104 / DC 7019 |
 | `implantable-cardiac-pacemaker` | Implantable Cardiac Pacemaker | 38 CFR 4.104 / DC 7018 |
 | `thromboangiitis-obliterans` | Thromboangiitis Obliterans (Buerger's Disease) | 38 CFR 4.104 / DC 7115 |
-| `pulmonary-hypertension` | Pulmonary Hypertension | 38 CFR 4.97 / DC 6817 (pulmonary vascular disease); respiratory rating authority despite Wave 3 product grouping |
+| `pulmonary-hypertension` | Pulmonary Hypertension | 38 CFR 4.97 / DC 6817; respiratory authority despite Wave 3 product grouping |
 
-All 15 entered Wave 3 with draft KB files and no published suggestions. Pituitary neoplasm retains behavior-dependent coding rather than an invented single code, and pulmonary hypertension retains its actual respiratory rating authority.
+All 15 entered Wave 3 with draft KB files and no published suggestions. Pituitary neoplasm retains behavior-dependent coding, and pulmonary hypertension retains its actual respiratory authority.
 
 ## Wave 4 — respiratory, sleep, eye, and cranial-sense depth (15) — implemented
-
-Wave 4 expands respiratory/ENT, sleep-wake, and ophthalmologic coverage while preserving the actual body-system rating authority. It also introduces an explicit overlap rule for broad regulatory umbrella identities that share a diagnostic-code framework with narrower existing catalog entries.
 
 ### Respiratory and ENT (8)
 
@@ -161,50 +158,48 @@ Wave 4 expands respiratory/ENT, sleep-wake, and ophthalmologic coverage while pr
 |---|---|---|
 | `bronchiectasis` | Bronchiectasis | 38 CFR 4.97 / DC 6601 |
 | `chronic-laryngitis` | Chronic Laryngitis | 38 CFR 4.97 / DC 6516 |
-| `vocal-cord-paralysis` | Vocal Cord Paralysis | 38 CFR 4.97 / laryngeal residual framework including DCs 6516, 6519, and 6520 as documented; no single diagnosis-specific DC assigned |
+| `vocal-cord-paralysis` | Vocal Cord Paralysis | 38 CFR 4.97 / laryngeal residual framework; no single diagnosis-specific DC assigned |
 | `aphonia` | Aphonia | 38 CFR 4.97 / DC 6519 for complete organic aphonia; incomplete aphonia under DC 6516 |
 | `granulomatous-rhinitis` | Granulomatous Rhinitis | 38 CFR 4.97 / DC 6524 |
 | `bacterial-rhinitis` | Bacterial Rhinitis | 38 CFR 4.97 / DC 6523 |
-| `pulmonary-vascular-disease` | Pulmonary Vascular Disease | 38 CFR 4.97 / DC 6817; broader identity kept distinct from existing `pulmonary-hypertension` |
+| `pulmonary-vascular-disease` | Pulmonary Vascular Disease | 38 CFR 4.97 / DC 6817; kept distinct from narrower pulmonary hypertension |
 | `diaphragm-paralysis` | Diaphragm Paralysis / Paresis | 38 CFR 4.97 / DC 6840 |
 
 ### Neurological sleep-wake (1)
 
 | ID | Display name | Part 4 identity |
 |---|---|---|
-| `narcolepsy` | Narcolepsy | 38 CFR 4.124a / DC 8108; rated as petit mal epilepsy |
+| `narcolepsy` | Narcolepsy | 38 CFR 4.124a / DC 8108 |
 
 ### Ophthalmologic and special sense (6)
 
 | ID | Display name | Part 4 identity |
 |---|---|---|
-| `uveitis` | Uveitis | 38 CFR 4.79 / DC 6000 choroidopathy including uveitis |
-| `keratitis` | Keratitis | 38 CFR 4.79 / DC 6001 current keratopathy framework; current schedule uses broader nomenclature |
-| `dry-eye-syndrome` | Dry Eye Syndrome | 38 CFR 4.79 / lacrimal-apparatus or other applicable eye criteria; DC 6025 may apply depending documented pathology; no single diagnosis-specific dry-eye DC assigned |
-| `retinal-dystrophy` | Retinal Dystrophy | 38 CFR 4.79 / DC 6042; broader identity kept distinct from existing `macular-degeneration` |
-| `nystagmus` | Nystagmus | 38 CFR 4.79 / DC 6016 expressly covers central nystagmus; other types require code review |
+| `uveitis` | Uveitis | 38 CFR 4.79 / DC 6000 |
+| `keratitis` | Keratitis | 38 CFR 4.79 / DC 6001 current keratopathy framework |
+| `dry-eye-syndrome` | Dry Eye Syndrome | 38 CFR 4.79 / lacrimal-apparatus or other applicable eye criteria; no single dry-eye DC assigned |
+| `retinal-dystrophy` | Retinal Dystrophy | 38 CFR 4.79 / DC 6042; kept distinct from macular degeneration |
+| `nystagmus` | Nystagmus | 38 CFR 4.79 / DC 6016 expressly covers central nystagmus; other types require review |
 | `ptosis` | Ptosis | 38 CFR 4.79 / DC 6019 |
 
-All 15 enter Wave 4 with draft KB files and no published suggestions. `vocal-cord-paralysis` and `dry-eye-syndrome` remain framework-only where the current schedule lacks one diagnosis-specific code. `pulmonary-vascular-disease` and `retinal-dystrophy` intentionally omit narrower existing condition names from their aliases to preserve unambiguous catalog identity.
+All 15 entered Wave 4 with draft KB files and no published suggestions.
 
 ## Wave 5 — digestive and genitourinary depth (15) — implemented
-
-Wave 5 expands upper-GI motility/structural, intestinal, anorectal, liver, renal, urinary, and male-reproductive identities. It preserves existing narrower diagnoses, and where automated authoring cannot safely assign one diagnosis-specific code it records the correct rating framework instead of inventing an analog.
 
 ### Digestive (10)
 
 | ID | Display name | Part 4 identity |
 |---|---|---|
 | `esophageal-stricture` | Esophageal Stricture | 38 CFR 4.114 / DC 7203 |
-| `achalasia` | Achalasia (Esophageal Motility Disorder) | 38 CFR 4.114 / esophageal motility or cardiospasm framework, DC 7204 |
+| `achalasia` | Achalasia (Esophageal Motility Disorder) | 38 CFR 4.114 / DC 7204 framework |
 | `barretts-esophagus` | Barrett's Esophagus | 38 CFR 4.114 / DC 7207 |
-| `gastroparesis` | Gastroparesis | 38 CFR 4.114 digestive-system framework; no single diagnosis-specific DC assigned by automated expansion |
+| `gastroparesis` | Gastroparesis | 38 CFR 4.114 framework; no single diagnosis-specific DC assigned |
 | `peritoneal-adhesions` | Peritoneal Adhesions | 38 CFR 4.114 / DC 7301 |
-| `short-bowel-syndrome` | Short Bowel Syndrome | 38 CFR 4.114 / small-intestine resection and short-bowel residual framework, including DC 7328 when applicable |
+| `short-bowel-syndrome` | Short Bowel Syndrome | 38 CFR 4.114 / small-intestine resection and short-bowel residual framework |
 | `fecal-incontinence` | Fecal Incontinence / Impairment of Sphincter Control | 38 CFR 4.114 / DC 7332 |
 | `rectal-prolapse` | Rectal Prolapse | 38 CFR 4.114 / DC 7334 |
 | `anal-fistula` | Anal Fistula (Fistula in Ano) | 38 CFR 4.114 / DC 7335 and applicable sphincter-control criteria |
-| `chronic-liver-disease` | Chronic Liver Disease Without Cirrhosis | 38 CFR 4.114 / DC 7345; kept distinct from existing hepatitis and cirrhosis identities |
+| `chronic-liver-disease` | Chronic Liver Disease Without Cirrhosis | 38 CFR 4.114 / DC 7345; distinct from hepatitis/cirrhosis identities |
 
 ### Genitourinary (5)
 
@@ -213,49 +208,74 @@ Wave 5 expands upper-GI motility/structural, intestinal, anorectal, liver, renal
 | `chronic-pyelonephritis` | Chronic Pyelonephritis | 38 CFR 4.115b / DC 7504 |
 | `hydronephrosis` | Hydronephrosis | 38 CFR 4.115b / DC 7509 |
 | `urethral-stricture` | Urethral Stricture | 38 CFR 4.115b / DC 7518 |
-| `varicocele-hydrocele` | Varicocele / Hydrocele | 38 CFR 4.115b diagnostic framework; no single diagnosis-specific DC assigned by automated expansion |
-| `epididymitis-orchitis` | Chronic Epididymitis / Orchitis | 38 CFR 4.115b / DC 7525 infection framework; kept distinct from existing prostatitis |
+| `varicocele-hydrocele` | Varicocele / Hydrocele | 38 CFR 4.115b framework; no single diagnosis-specific DC assigned |
+| `epididymitis-orchitis` | Chronic Epididymitis / Orchitis | 38 CFR 4.115b / DC 7525 infection framework |
 
-All 15 enter Wave 5 with draft KB files and no published suggestions. `gastroparesis` and `varicocele-hydrocele` deliberately remain framework-only rather than borrowing an analogous code. `chronic-liver-disease` omits hepatitis/cirrhosis aliases, and `epididymitis-orchitis` remains distinct from prostatitis even where the schedule may use a shared infection framework. The combined `varicocele-hydrocele` discovery identity does not authorize future clinical authors to assume those diagnoses share one etiology or secondary pathway.
+All 15 entered Wave 5 with draft KB files and no published suggestions.
 
 ## Wave 6 — mental, hematologic, autoimmune, and skin depth (14) — implemented
-
-Wave 6 expands named mental-disorder identities, myeloproliferative/myelodysplastic disorders, and cutaneous conditions. It preserves explicit § 4.130 codes when VA names the diagnosis and uses the general mental-disorders framework rather than borrowing an adjacent diagnosis's code when VA does not separately name the condition.
 
 ### Mental disorders (8)
 
 | ID | Display name | Part 4 identity |
 |---|---|---|
-| `specific-phobia` | Specific Phobia | 38 CFR 4.130 / DC 9403; kept distinct from existing `social-anxiety-disorder`, which shares DC 9403 |
-| `dissociative-disorder` | Dissociative Amnesia / Dissociative Identity Disorder | 38 CFR 4.130 / DC 9416; stable roadmap id scoped to diagnoses expressly named by the schedule |
+| `specific-phobia` | Specific Phobia | 38 CFR 4.130 / DC 9403; distinct from social anxiety despite shared code |
+| `dissociative-disorder` | Dissociative Amnesia / Dissociative Identity Disorder | 38 CFR 4.130 / DC 9416 |
 | `depersonalization-derealization-disorder` | Depersonalization / Derealization Disorder | 38 CFR 4.130 / DC 9417 |
 | `functional-neurological-symptom-disorder` | Functional Neurological Symptom Disorder (Conversion Disorder) | 38 CFR 4.130 / DC 9424 |
 | `illness-anxiety-disorder` | Illness Anxiety Disorder | 38 CFR 4.130 / DC 9425 |
-| `body-dysmorphic-disorder` | Body Dysmorphic Disorder | 38 CFR 4.130 / General Rating Formula for Mental Disorders; no single diagnosis-specific DC assigned by automated expansion |
-| `hoarding-disorder` | Hoarding Disorder | 38 CFR 4.130 / General Rating Formula for Mental Disorders; no single diagnosis-specific DC assigned by automated expansion |
+| `body-dysmorphic-disorder` | Body Dysmorphic Disorder | 38 CFR 4.130 framework; no single diagnosis-specific DC assigned |
+| `hoarding-disorder` | Hoarding Disorder | 38 CFR 4.130 framework; no single diagnosis-specific DC assigned |
 | `delusional-disorder` | Delusional Disorder | 38 CFR 4.130 / DC 9208 |
 
 ### Hematologic (3)
 
 | ID | Display name | Part 4 identity |
 |---|---|---|
-| `essential-thrombocythemia` | Essential Thrombocythemia | 38 CFR 4.117 / DC 7718; shared rating code with primary myelofibrosis but separate disease identity |
-| `primary-myelofibrosis` | Primary Myelofibrosis | 38 CFR 4.117 / DC 7718; shared rating code with essential thrombocythemia but separate disease identity |
+| `essential-thrombocythemia` | Essential Thrombocythemia | 38 CFR 4.117 / DC 7718 |
+| `primary-myelofibrosis` | Primary Myelofibrosis | 38 CFR 4.117 / DC 7718 |
 | `myelodysplastic-syndrome` | Myelodysplastic Syndromes | 38 CFR 4.117 / DC 7725 |
 
 ### Skin and cutaneous autoimmune (3)
 
 | ID | Display name | Part 4 identity |
 |---|---|---|
-| `discoid-lupus` | Discoid Lupus Erythematosus | 38 CFR 4.118 / DC 7809; distinct from existing systemic lupus identity |
-| `scarring-alopecia` | Scarring Alopecia | 38 CFR 4.118 / DC 7830; distinct from existing alopecia areata identity |
+| `discoid-lupus` | Discoid Lupus Erythematosus | 38 CFR 4.118 / DC 7809 |
+| `scarring-alopecia` | Scarring Alopecia | 38 CFR 4.118 / DC 7830 |
 | `hyperhidrosis` | Hyperhidrosis | 38 CFR 4.118 / DC 7832 |
 
-All 14 enter Wave 6 with draft KB files and no published suggestions. `body-dysmorphic-disorder` and `hoarding-disorder` deliberately remain framework-only rather than borrowing OCD's DC 9404. Shared rating codes do not collapse diagnosis identity or establish shared medical causation: `specific-phobia` remains separate from social anxiety despite DC 9403, and `essential-thrombocythemia` remains separate from `primary-myelofibrosis` despite DC 7718. `discoid-lupus` is kept separate from systemic lupus, and `scarring-alopecia` remains separate from alopecia areata.
+All 14 entered Wave 6 with draft KB files and no published suggestions. Framework-only and shared-code safeguards remain regression-tested.
 
-## Wave 7 — infectious, oncological, and oral/maxillofacial depth (10)
+## Wave 7 — infectious, oncological, and oral/maxillofacial depth (10) — implemented
 
-`amebiasis`, `actinomycosis`, `nocardiosis`, `histoplasmosis`, `strongyloidiasis`, `rickettsial-ehrlichial-anaplasma-infection`, `ovarian-cancer`, `testicular-cancer`, `laryngeal-cancer`, `mandibular-nonunion`.
+Wave 7 completes target catalog v2. It adds six infectious/tropical identities, three malignancy identities, and one dental/oral residual identity. The batch includes explicit regulatory-currency and scope safeguards because several candidate labels do not map cleanly to a timeless diagnosis-specific code.
+
+### Infectious and tropical (6)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `amebiasis` | Amebiasis | 38 CFR 4.88b / current parasitic-disease framework including DC 6320; former digestive DC 7321 was removed effective May 19, 2024 and is not used as current authority |
+| `actinomycosis` | Actinomycosis | 38 CFR 4.97 / DC 6822 under Bacterial Infections of the Lung; extra-pulmonary disease requires body-system review |
+| `nocardiosis` | Nocardiosis | 38 CFR 4.97 / DC 6823 under Bacterial Infections of the Lung; extra-pulmonary disease requires body-system review |
+| `histoplasmosis` | Histoplasmosis of Lung | 38 CFR 4.97 / DC 6834; stable discovery id retained but the code is specifically pulmonary |
+| `strongyloidiasis` | Strongyloidiasis | 38 CFR 4.88b / DC 6325 only for hyperinfection syndrome or disseminated strongyloidiasis; other presentations require broader parasitic/residual review |
+| `rickettsial-ehrlichial-anaplasma-infection` | Rickettsial, Ehrlichia, and Anaplasma Infections | 38 CFR 4.88b / DC 6317; regulatory grouping does not imply one etiology or secondary pathway |
+
+### Oncological (3)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `ovarian-cancer` | Ovarian Cancer | 38 CFR 4.116 / DC 7627 malignant neoplasms of the gynecological system; broader system code, not an ovary-specific code |
+| `testicular-cancer` | Testicular Cancer | 38 CFR 4.115b / DC 7528 malignant neoplasms of the genitourinary system; broader system code, not a testis-specific cancer code |
+| `laryngeal-cancer` | Laryngeal Cancer | 38 CFR 4.97 / DC 6819 malignant neoplasms of the respiratory system; distinct from existing lung/tracheal/bronchial `respiratory-cancer` identity |
+
+### Dental and oral (1)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `mandibular-nonunion` | Mandibular Nonunion (Nonunion of Mandible) | 38 CFR 4.150 / DC 9903; nonunion must be documented and is distinct from a generic mandibular fracture history |
+
+All 10 enter Wave 7 with draft KB files and no published suggestions. Rating authorities remain `verified: false` under automated authoring policy. The amebiasis historical-code correction, site/severity limits for infectious codes, broad-system cancer-code disclosures, and mandibular-fracture/nonunion distinction are enforced in the Wave 7 regression contract.
 
 ## Batch exit criteria
 
@@ -266,10 +286,13 @@ A batch is complete only when:
 - every new condition has exactly one matching published-or-draft KB file;
 - draft entries remain excluded from recommendations;
 - no rating authority is presented as clinical nexus evidence;
+- obsolete or scope-limited diagnostic codes are not generalized into false current authority;
 - the citation audit does not regress;
 - lint, typecheck, unit tests, production build, and real-browser journeys pass on the exact branch head;
 - documentation counts match the implemented catalog.
 
-## After Wave 6
+## After Wave 7
 
-The catalog-expansion program now has 290 recognized conditions. The final target-v2 catalog batch is Wave 7, while medical-authoring work for Waves 1 through 6 remains a separate evidence task: promote only individual relationships with adequate condition-specific clinical support and leave unsupported theories draft.
+Target catalog v2 is complete at **300 recognized conditions**, with **107 expansion identities** added across Waves 1-7. Catalog completion does not publish the 107 draft secondary mappings and does not imply that all possible medical or VA diagnostic identities have been enumerated.
+
+The next controlled workstream is no longer another numbered catalog wave. It is evidence and quality work: promote only individual secondary relationships with adequate condition-specific clinical support, verify eligible citations through the repository's approved verification workflow, and separately address documented catalog-modeling debt without weakening the 300/300 referential-integrity contract.

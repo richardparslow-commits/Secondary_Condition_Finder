@@ -179,15 +179,19 @@ health state.
 
 ## Knowledge-base coverage and authoring
 
-290 catalog conditions have version-controlled mapping files after condition
-catalog expansion Wave 6. Waves 1 through 6 added 97 conditions in controlled
-musculoskeletal, neurological, endocrine, cardiovascular/pulmonary-vascular,
-respiratory/ENT, sleep-wake, ophthalmologic/special-sense, digestive,
-genitourinary, mental-disorder, hematologic, and skin/cutaneous batches; all 97
-expansion mappings remain safe drafts with no published suggestions until
-condition-specific clinical evidence satisfies the repository's publication
-rules. Draft mappings remain excluded from recommendation output. The target-v2
-expansion plan is maintained in `docs/condition-expansion-roadmap.md`.
+300 catalog conditions have version-controlled mapping files after condition
+catalog expansion Wave 7, completing the versioned target-v2 identity expansion.
+Waves 1 through 7 added 107 conditions in controlled musculoskeletal,
+neurological, endocrine, cardiovascular/pulmonary-vascular, respiratory/ENT,
+sleep-wake, ophthalmologic/special-sense, digestive, genitourinary,
+mental-disorder, hematologic, skin/cutaneous, infectious, oncological, and
+dental/oral batches; all 107 expansion mappings remain safe drafts with no
+published suggestions until condition-specific clinical evidence satisfies the
+repository's publication rules. Draft mappings remain excluded from
+recommendation output. The completed expansion record is maintained in
+`docs/condition-expansion-roadmap.md`; 300 is a versioned product target, not a
+claim that medicine or the VA rating schedule contains only 300 possible
+conditions.
 
 To add or change a condition:
 
@@ -201,7 +205,9 @@ To add or change a condition:
    and document the relationship rather than collapsing the two identities.
    When one roadmap identity intentionally groups related diagnoses, clinical
    authoring must still evaluate each diagnosis/pathway separately rather than
-   assuming the grouped label has one etiology or nexus.
+   assuming the grouped label has one etiology or nexus. Do not carry obsolete
+   diagnostic codes forward after the governing schedule changes; retain any
+   historical-code note only to prevent future regression.
 2. **Mapping:** update/create `data/knowledge-base/<id>.json`. Each published
    suggestion needs a condition ID, rank, prevalence label, conservative
    rationale, evidence gaps, and source references satisfying the repository's
