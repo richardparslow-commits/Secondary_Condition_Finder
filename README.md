@@ -183,41 +183,42 @@ health state.
 
 The catalog remains fixed at **300 recognized conditions / 300 one-to-one
 knowledge-base mappings** after target-v2 identity expansion. Post-v2 maintenance
-still uses 33 catalog files. Fibromyalgia, hip strain, and ankle strain are now
+still uses 33 catalog files. Fibromyalgia, hip strain, and ankle strain are
 physically normalized in musculoskeletal maintenance; diabetic retinopathy is
-in the ophthalmologic file; and insomnia is in the mental-disorders catalog.
-`carried-over.json` is therefore reduced to the harder structural identities
-`contralateral-knee-condition` and `substance-use-disorder`. None of these file
-moves changes a stable condition identity.
+in the ophthalmologic file; and insomnia plus substance-use disorder are in the
+mental-disorders catalog. `carried-over.json` is therefore reduced to the
+intentionally quarantined `contralateral-knee-condition` laterality placeholder.
+None of these file moves changes a stable condition identity.
 
 Waves 1 through 7 added 107 conditions. Clinical Evidence Promotion Batches 1
-through 4 publish seven individually reviewed expansion mappings:
+through 5 publish nine individually reviewed expansion mappings:
 `cardiomyopathy` → `congestive-heart-failure`, `urethral-stricture` →
 `hydronephrosis`, `hypertensive-heart-disease` → `congestive-heart-failure`,
 `chronic-pyelonephritis` → `chronic-kidney-disease`, `chronic-liver-disease` →
-`cirrhosis-of-the-liver`, `acl-injury` → `osteoarthritis`, and `pcl-injury` →
-`osteoarthritis`. **100 of the 107 expansion mappings remain safe drafts** and
+`cirrhosis-of-the-liver`, `acl-injury` → `osteoarthritis`, `pcl-injury` →
+`osteoarthritis`, `barretts-esophagus` → `esophageal-cancer`, and `achalasia` →
+`esophageal-cancer`. **98 of the 107 expansion mappings remain safe drafts** and
 stay excluded from recommendation output until their own condition-specific
 clinical evidence satisfies the repository's publication rules.
 
 Safety review has returned `ankle-strain`, `knee-injury`, `osteoarthritis`,
-`ageusia`, and `agranulocytosis` to draft where previously published claims were
-stronger than the reviewed evidence or relied on rating/legal authority rather
-than clinical evidence. Existing relationships for
+`ageusia`, `agranulocytosis`, and `al-amyloidosis` to draft where previously
+published claims were stronger than the reviewed evidence or relied on
+rating/legal authority rather than clinical evidence. Existing relationships for
 `amputation-or-loss-of-use` → `depressive-disorder`, `anosmia` →
 `depressive-disorder`, and `alopecia-areata` → `depressive-disorder` have been
 repaired by replacing legal-only support with condition-specific clinical
 evidence and conservative association/chronology safeguards.
 
-After Batch 4, the citation-debt ceiling remains **140 total references / 14
+After Batch 5, the citation-debt ceiling remains **140 total references / 14
 verified / 126 unverified / 124 published-unverified review findings**, while the
-clinical-evidence-with-URL floor rises to **35**. No automated change marks a new
+clinical-evidence-with-URL floor rises to **37**. No automated change marks a new
 source verified.
 
 The completed identity-expansion record is maintained in
 `docs/condition-expansion-roadmap.md`; the post-v2 promotion records are in
 `docs/clinical-evidence-promotion-batch-1.md` through
-`docs/clinical-evidence-promotion-batch-4.md`. The 300-condition target is a
+`docs/clinical-evidence-promotion-batch-5.md`. The 300-condition target is a
 versioned product target, not a claim that medicine or the VA rating schedule
 contains only 300 possible conditions.
 

@@ -11,23 +11,6 @@
         "Wave 8 explicitly quarantines this legacy relationship/laterality placeholder: it is not a distinct diagnosis and must not be assigned a diagnosis-specific rating code merely to fill catalog debt.",
         "Future modeling should represent laterality as an attribute or relationship and then retire this placeholder without weakening the one-to-one catalog/knowledge-base integrity contract."
       ]
-    },
-    {
-      "id": "substance-use-disorder",
-      "name": "Substance use disorder",
-      "aliases": ["alcohol use disorder", "alcoholism", "substance abuse"],
-      "bodySystem": "Mental Disorders",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.130",
-          "note": "Mental-disorders rating framework. This broad discovery identity spans substance-specific diagnoses and is not assigned a single generic substance-use-disorder diagnostic code.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": [
-        "Catalog presence and a rating framework do not establish service connection or compensability. Alcohol- and drug-related legal eligibility rules are separate from rating identity and must be evaluated independently.",
-        "Clinical relationship authoring must evaluate the specific substance-use diagnosis and pathway rather than treating this discovery grouping as one etiology."
-      ]
     }
   ]
 }

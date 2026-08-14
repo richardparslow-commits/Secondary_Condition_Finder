@@ -33,14 +33,14 @@ The catalog is the single source of condition identity. Mapping files carry only
 
 ## Current coverage
 
-After Clinical Evidence Promotion Batch 4:
+After Clinical Evidence Promotion Batch 5:
 
 - **300 catalog conditions** remain represented across **33 catalog files**.
 - Every catalog condition still has exactly one corresponding published-or-draft file in `data/knowledge-base/`.
 - Waves 1 through 7 added **107 identities**; Wave 8 added no identities and was a catalog-quality pass.
-- Clinical Evidence Promotion Batches 1 through 4 publish seven individually reviewed Wave 1-7 mappings: `cardiomyopathy`, `urethral-stricture`, `hypertensive-heart-disease`, `chronic-pyelonephritis`, `chronic-liver-disease`, `acl-injury`, and `pcl-injury`.
-- **100 of the 107 Wave 1-7 secondary mappings remain `draft: true`**.
-- `ankle-strain`, `knee-injury`, `osteoarthritis`, `ageusia`, and `agranulocytosis` are draft because previously published claims did not satisfy the condition-specific clinical-evidence publication bar.
+- Clinical Evidence Promotion Batches 1 through 5 publish nine individually reviewed Wave 1-7 mappings: `cardiomyopathy`, `urethral-stricture`, `hypertensive-heart-disease`, `chronic-pyelonephritis`, `chronic-liver-disease`, `acl-injury`, `pcl-injury`, `barretts-esophagus`, and `achalasia`.
+- **98 of the 107 Wave 1-7 secondary mappings remain `draft: true`**.
+- `ankle-strain`, `knee-injury`, `osteoarthritis`, `ageusia`, `agranulocytosis`, and `al-amyloidosis` are draft because previously published claims did not satisfy the condition-specific clinical-evidence publication bar.
 - Published legacy relationships for `amputation-or-loss-of-use`, `anosmia`, and `alopecia-areata` have had legal-only support replaced with condition-specific clinical evidence and conservative individual-review safeguards.
 - Rating references added or corrected by automated work remain `verified: false`. Clinical source records may be source-checked with URLs, dates, and locators, but remain `verified: false` until qualified-human verification under the Citation Verification SOP.
 - Where the rating schedule does not provide a single diagnosis-specific diagnostic code, the catalog records the applicable rating framework and an explicit review note rather than inventing authority.
@@ -49,7 +49,8 @@ After Clinical Evidence Promotion Batch 4:
 - Batch 2 physically relocates `diabetic-retinopathy` into `ophthalmologic-expansion-wave-4.json`.
 - Batch 3 physically relocates `insomnia` into `mental-disorders.json`.
 - Batch 4 physically relocates `hip-strain` and `ankle-strain` into `musculoskeletal-quality-maintenance.json` while preserving stable IDs, aliases, 38 CFR 4.71a residual frameworks, and rating-reference verification state.
-- `carried-over.json` is now reduced to `contralateral-knee-condition` and `substance-use-disorder`, the two harder modeling cases that should not be normalized by a simple file move alone.
+- Batch 5 physically relocates `substance-use-disorder` into `mental-disorders.json` while preserving its stable identity, broad 38 CFR 4.130 framework, legal-eligibility cautions, and verification state.
+- `carried-over.json` is now reduced to the intentionally quarantined `contralateral-knee-condition` laterality placeholder.
 - `contralateral-knee-condition` remains a quarantined legacy relationship/laterality placeholder with no rating code because it is not a distinct diagnosis. Laterality should be modeled structurally before that placeholder is retired.
 - Product expansion grouping does not override the actual rating schedule, and shared diagnostic codes do not collapse distinct disease identities or establish common medical causation.
 
@@ -71,21 +72,21 @@ The Wave 8 regression contract is `tests/catalog-quality-wave8.test.ts`.
 
 ## Post-v2 evidence promotion and catalog maintenance
 
-Clinical Evidence Promotion Batches 1 through 4 follow a relationship-level publication rule rather than promoting whole catalog waves. Seven expansion mappings are published because their individual relationships have condition-specific clinical support, conservative rationales, explicit evidence gaps, and source provenance. The remainder of each expansion wave stays draft unless its own relationships independently satisfy that bar.
+Clinical Evidence Promotion Batches 1 through 5 follow a relationship-level publication rule rather than promoting whole catalog waves. Nine expansion mappings are published because their individual relationships have condition-specific clinical support, conservative rationales, explicit evidence gaps, and source provenance. The remainder of each expansion wave stays draft unless its own relationships independently satisfy that bar.
 
 - **Batch 1:** promotes `cardiomyopathy` and `urethral-stricture`, withdraws unsupported `ankle-strain` relationships, and completes fibromyalgia's physical file relocation.
 - **Batch 2:** promotes `hypertensive-heart-disease` and `chronic-pyelonephritis`, withdraws unsupported `knee-injury` and `osteoarthritis` relationships, and physically relocates `diabetic-retinopathy`.
 - **Batch 3:** promotes `chronic-liver-disease` only through documented hepatic-fibrosis progression, repairs the amputation/depression relationship with clinical evidence, withdraws unsupported `ageusia` relationships, and physically relocates `insomnia`.
 - **Batch 4:** promotes `acl-injury` and `pcl-injury` to affected-knee osteoarthritis research with injury-specific systematic-review evidence; repairs `anosmia` and `alopecia-areata` depression relationships with condition-specific evidence; withdraws `agranulocytosis`; and physically normalizes `hip-strain` and `ankle-strain` into musculoskeletal maintenance.
+- **Batch 5:** promotes `barretts-esophagus` and `achalasia` to histology-aware esophageal-cancer research pathways; withdraws the legal-only generic `al-amyloidosis` relationships; and physically normalizes `substance-use-disorder` into mental-disorders maintenance.
 
-See `docs/clinical-evidence-promotion-batch-1.md` through `docs/clinical-evidence-promotion-batch-4.md` and their corresponding regression tests.
+See `docs/clinical-evidence-promotion-batch-1.md` through `docs/clinical-evidence-promotion-batch-5.md` and their corresponding regression tests.
 
 ## Remaining modeling debt
 
-Separate modeling work remains after Batch 4:
+Separate modeling work remains after Batch 5:
 
 - `contralateral-knee-condition` still requires a structural laterality migration before the legacy placeholder can be retired.
-- `substance-use-disorder` is a broad discovery identity spanning substance-specific diagnoses; its physical catalog placement can be normalized, but its clinical/legal semantics must remain explicit.
 - `cerebral-palsy` remains a catalog-governance question because congenital/developmental conditions can raise distinct service-connection rules. Catalog presence by itself does not mean the app asserts service connection is available.
 - Older neurological/endocrine carryovers and historical grouped identities may contain naming/body-system cleanup debt. Future catalog work should not copy those inconsistencies.
 - Other historical catalog files may still contain cross-system physical placement or over-broad grouped identities; those should be corrected only in bounded changes that preserve stable IDs and one-to-one mappings.
@@ -94,9 +95,9 @@ Separate modeling work remains after Batch 4:
 
 Catalog rating references are deliberately separate from medical evidence. Automated work must not mark them verified. A rating citation may support condition/rating identity but never a causal statement such as “condition A caused condition B.”
 
-Clinical Evidence Promotion Batches 1 through 4 add or repair source-checked clinical references only for individually reviewed relationships; those sources remain `verified: false` until qualified-human verification under `docs/citation-verification-sop.md`.
+Clinical Evidence Promotion Batches 1 through 5 add or repair source-checked clinical references only for individually reviewed relationships; those sources remain `verified: false` until qualified-human verification under `docs/citation-verification-sop.md`.
 
-After Batch 4, the automated non-regression ceilings remain **140 total references, 14 verified, 126 unverified, and 124 published-unverified review findings**, while the clinical-evidence-with-canonical-URL floor rises to **35**.
+After Batch 5, the automated non-regression ceilings remain **140 total references, 14 verified, 126 unverified, and 124 published-unverified review findings**, while the clinical-evidence-with-canonical-URL floor rises to **37**.
 
 ## Adding or revising a condition
 

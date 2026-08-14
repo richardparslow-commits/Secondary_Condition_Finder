@@ -34,6 +34,16 @@
 - New source checks remain `verified: false` pending qualified-human verification.
 - See `docs/clinical-evidence-promotion-batch-4.md`.
 
+### Clinical Evidence Promotion Batch 5
+- `barretts-esophagus` → `esophageal-cancer`: promoted only as an adenocarcinoma-specific progression pathway with guideline evidence and histology/chronology safeguards.
+- `achalasia` → `esophageal-cancer`: promoted as a histology-aware cancer-risk pathway using the nationwide Veterans Affairs matched cohort, with explicit limits on generalizing the observed squamous-cell predominance.
+- `al-amyloidosis`: returned to draft because its depression and GERD suggestions were supported only by 38 CFR 3.310 plus generic medical propositions.
+- `substance-use-disorder`: stable identity physically moved from `carried-over.json` into `mental-disorders.json`; `carried-over.json` now contains only the quarantined `contralateral-knee-condition` placeholder.
+- Citation debt ceilings remain 140 total / 126 unverified / 124 review findings while the clinical-URL floor rises to **37**.
+- The 300/300 contract remains fixed. Barrett's esophagus and achalasia are the eighth and ninth promoted expansion mappings, so **98 of 107 Wave 1-7 expansion mappings remain drafts**.
+- New source checks remain `verified: false` pending qualified-human verification.
+- See `docs/clinical-evidence-promotion-batch-5.md`.
+
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.
 2. **Citation Insertion:** Clinical claims require condition-specific clinical-evidence references with canonical URLs and source provenance. Regulatory/legal references must remain role-labeled and must not substitute for clinical causation evidence.
