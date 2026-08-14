@@ -14,22 +14,7 @@ import {
   parseRatingsSelection,
   parseServiceConnectedSelection,
   parseWorkflowState,
-  workflowStateToSearchParams,
 } from "@/lib/secondary-workflow/state";
-
-function toQueryParams(searchParams: URLSearchParams): Record<string, string | string[]> {
-  const keys = new Set<string>();
-  for (const [key] of searchParams.entries()) {
-    keys.add(key);
-  }
-
-  const params: Record<string, string | string[]> = {};
-  for (const key of keys) {
-    const values = searchParams.getAll(key);
-    params[key] = values.length === 1 ? values[0] : values;
-  }
-  return params;
-}
 
 const catalog = conditionCatalogSchema.parse([
   {
@@ -138,18 +123,19 @@ describe("secondary workflow state parsing", () => {
     });
   });
 
-  it("round-trips a 100 percent rating as a numeric value", () => {
-    const initial = {
-      diagnosedConditionIds: ["ptsd"],
-      serviceConnectedConditionIds: ["ptsd"],
-      ratingsByConditionId: { ptsd: 100 },
-      documentsShared: false,
-    };
+  it("parses a 100 percent rating as a numeric value without URL serialization", () => {
+    const parsed = parseWorkflowState(
+      {
+        diagnosed: ["ptsd"],
+        serviceConnected: ["ptsd"],
+        "rating-ptsd": "100",
+        documentsShared: "no",
+      },
+      catalog,
+    );
 
-    const searchParams = workflowStateToSearchParams(initial);
-
-    expect(searchParams.get("rating-ptsd")).toBe("100");
-    expect(parseWorkflowState(toQueryParams(searchParams), catalog)).toEqual(initial);
+    expect(parsed.ratingsByConditionId.ptsd).toBe(100);
+    expect(parsed.documentsShared).toBe(false);
   });
 
   it("rejects rating values outside 0 through 100", () => {
@@ -165,20 +151,23 @@ describe("secondary workflow state parsing", () => {
     ).toThrow();
   });
 
-  it("round-trips full workflow state through query params", () => {
-    const initial = {
+  it("parses complete submitted state without exposing a state-to-URL helper", () => {
+    const parsed = parseWorkflowState(
+      {
+        diagnosed: ["ptsd", "tinnitus"],
+        serviceConnected: ["ptsd"],
+        "rating-ptsd": "70",
+        documentsShared: "yes",
+      },
+      catalog,
+    );
+
+    expect(parsed).toEqual({
       diagnosedConditionIds: ["ptsd", "tinnitus"],
       serviceConnectedConditionIds: ["ptsd"],
       ratingsByConditionId: { ptsd: 70 },
       documentsShared: true,
-    };
-
-    const parsed = parseWorkflowState(
-      toQueryParams(workflowStateToSearchParams(initial)),
-      catalog,
-    );
-
-    expect(parsed).toEqual(initial);
+    });
   });
 
   it("requires upload-step selection before suggestions/evidence", () => {
