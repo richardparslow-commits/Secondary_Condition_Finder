@@ -4,194 +4,222 @@
 
 **Draft for VA production-access review. Do not submit yet.**
 
-Credentialed live sandbox validation for VA Forms and Benefits Reference Data remains externally pending in issue #189. The repository implementation and manual smoke-test workflow are in place, but objective workflow history currently contains no completed credentialed run.
+Repository implementation is current for the selected public/reference API scope, but submission remains blocked by external/final gates:
 
-The production workflow-session crypto path and exact-commit Vercel readiness lineage are operational. Issue #213 is a completed historical checkpoint; current production readiness is established continuously by successful `main` CI followed by Production Runtime Readiness on the same exact commit.
+1. Credentialed live sandbox proof in issue #189.
+2. Manual deployed-app Section 508/accessibility evidence in issue #195.
+3. Truthful applicant/organization/business information.
+4. Final absolute public URL verification.
+5. Final 30–60 minute deployed-app rehearsal.
+6. Fresh exact-commit CI, Vercel production deployment, alias convergence, and Production Runtime Readiness immediately before submission.
 
-Submission remains gated on:
+### Current verified production checkpoint
 
-1. Recording successful non-sensitive credentialed sandbox smoke-test evidence in issue #189.
-2. Confirming the latest `main` commit has green repository CI, Vercel production deployment, and Production Runtime Readiness evidence on the same exact SHA.
-3. Completing the deployed-app manual accessibility/Section 508 review tracked in issue #195 and remediating/retesting material findings.
-4. Supplying truthful applicant/business information and absolute deployed URLs.
-5. Completing a final demo rehearsal against the deployed application.
+At this package refresh:
+
+- `main`: `193f26030b9b90b81c832c6a645f179717abf307`
+- CI #797: success on that exact commit, including real-browser E2E
+- Vercel production deployment: `dpl_BwX77rhfw5Bank2oRe3zjgYaykR6` — READY for that exact commit
+- canonical production alias: serving that deployment
+- Production Runtime Readiness #156: success on the same exact lineage
+- production `/va-reference`: HTTP 200 with clearly labeled local fallback because VA access is disabled
+
+This is objective current evidence, not a permanent submission-time guarantee.
 
 ## Product description
 
-Secondary Condition Finder is a claim-preparation research and organization tool for Veterans. It helps a user distinguish secondary-service-connection and presumptive-service-connection research paths, organize diagnosed and service-connected conditions, review possible secondary conditions to explore, identify evidence gaps, and locate relevant public VA reference information.
+Secondary Condition Finder is a claim-preparation research and organization tool for Veterans. It helps users distinguish secondary-service-connection and presumptive-service-connection research paths, organize diagnosed/service-connected conditions, review possible secondary conditions to explore, identify evidence gaps, analyze supported documents locally in the browser, and consult bounded public VA administrative reference information.
 
-The application does not diagnose medical conditions, determine benefit eligibility, calculate or promise ratings, submit claims, or provide legal representation. Recommendations are framed as possibilities to research with a qualified medical professional, Veterans Service Officer, accredited representative, or attorney as appropriate.
+The application does **not** diagnose medical conditions, determine benefit eligibility, calculate or promise ratings, submit claims, or provide legal representation.
 
 ## Primary end users
 
-The first production use case is intentionally narrow:
+The initial production use case is intentionally narrow:
 
 - Veterans researching and organizing information for their own VA disability-benefit claim preparation.
-- A Veteran may use the output when speaking with an accredited VSO, accredited agent/attorney, or health-care professional.
+- A Veteran may use the output when speaking with a VSO, accredited representative/attorney, or health-care professional.
 
-The initial production request does **not** depend on a representative acting on a Veteran's behalf and does not request access to authenticated Veteran-specific claims or health records.
+The initial request does not require authenticated access to an individual Veteran's VA account, claims file, or health records.
 
 ## First production use case
 
-A Veteran uses the application to:
+A Veteran can:
 
 1. Explore secondary or presumptive claim-preparation concepts using the local knowledge base.
-2. Review evidence gaps and supporting-source references without the application making an eligibility or medical determination.
-3. Optionally analyze supported medical-evidence documents locally in the browser and review exact extracted excerpts without sending raw document content to the application server.
-4. Confirm current public metadata for a relevant VA form through VA Forms.
-5. Review standardized public VBA disability terminology through Benefits Reference Data.
-6. Continue to VA or an accredited representative for filing, representation, or official adjudication.
+2. Review rationale, evidence gaps, and source references without the app making an eligibility or medical determination.
+3. Optionally analyze supported medical-evidence documents locally in the browser without raw document upload to the application server.
+4. Search public VA form metadata through the VA Forms Finder.
+5. Review standardized public VBA disability terminology and service-branch reference data through Benefits Reference Data.
+6. See a separate administrative VA-reference block on Secondary results when a conservative exact/curated terminology mapping exists.
+7. Continue to VA or an accredited representative for filing, representation, or official adjudication.
 
-The VA API features are supporting reference capabilities. The core recommendation, evidence-review, and presumptive workflows remain functional without VA API availability.
+VA reference capabilities are supporting administrative enrichments. The core recommendation, evidence-review, and presumptive workflows remain functional without VA API availability.
 
 ## Production APIs requested
 
 ### 1. VA Forms API — Open Data
 
-**Requested access:** production API key for the existing public-reference workflow.
+**Requested access:** production API key for the existing public Forms reference/Finder workflow.
 
-**Current implemented value:** `/va-forms` retrieves and validates public metadata for VA Form 21-526EZ and falls back to a local VA.gov reference when the API is unavailable.
+**Implemented value:**
 
-**Why necessary:** The API provides an authoritative machine-readable source for form metadata, revision information, PDF links, and validity status. This helps reduce the risk of directing a user to an outdated form reference.
+- `/va-forms` provides the direct Form 21-526EZ reference surface.
+- `/va-forms/finder` accepts bounded public form number/title/keyword search text and displays validated current-record metadata such as title, revision date, page count, PDF validity, and official form link.
+- Successful live responses use the shared five-minute reference cache and non-sensitive source/retrieval/cache status.
+- Failure or disabled mode degrades to clearly labeled local/reference behavior rather than breaking the product.
 
-**Data sent:** only the bounded public form lookup needed by the feature. No Veteran account data, diagnosis, rating, claim payload, service history, PII, or PHI is required.
+**Why necessary:** authoritative machine-readable public form metadata helps reduce the risk of directing users to outdated or invalid form references.
+
+**Data sent:** only public form lookup text needed by the Finder. No Veteran-specific claim payload, diagnosis, rating, service history, PII, or PHI is required.
 
 ### 2. Benefits Reference Data API — Open Data
 
-**Requested access:** production API key for the existing disability-reference workflow.
+**Requested access:** production API key for the existing public disability/service-branch reference workflows.
 
-**Current implemented value:** `/va-reference` loads the public `/disabilities` reference list. User search/filter text is applied client-side after the public list is loaded and is not sent to VA.
+**Implemented value:**
 
-**Why necessary:** The API supplies standardized VBA terminology that can improve consistency when a user reviews disability terms during claim-preparation research.
+- `/va-reference` loads the public `/disabilities` list without user disability-search text; browser filtering occurs after the list is loaded.
+- `/va-reference/service-branches` loads standardized service-branch reference values.
+- Secondary result cards can display VA/VBA administrative terminology and reference ID after local conservative matching against the already loaded reference list.
+- Presumptive intake can store optional standardized service-branch context in the encrypted workflow session.
 
-**Data sent:** the current `/disabilities` request requires no user input parameters. No Veteran-specific data, PII, or PHI is sent.
+**Why necessary:** Benefits Reference Data provides standardized VBA administrative terminology that can improve consistency and reduce ambiguity in claim-preparation research.
+
+**Data sent:** the current disability and service-branch list requests require no Veteran-specific input parameters. Secondary condition selections and presumptive branch selections are not sent to VA for matching.
+
+## Administrative-reference guardrail
+
+VA reference data is deliberately separated from medical/evidence decision logic:
+
+- secondary recommendations are computed independently before VA terminology annotation;
+- VA terminology does not change evidence strength, recommendation rank, or nexus reasoning;
+- terminology matching uses normalized exact names or explicitly curated aliases only, not fuzzy matching;
+- `matchPresumptives()` does not consume service-branch reference context;
+- a VA reference match is not presented as diagnosis, service connection, eligibility, or rating evidence.
 
 ## APIs deliberately not requested
 
-The initial request excludes Benefits Intake, Benefits Claims, Benefits Documents, Veteran health APIs, and other authenticated Veteran-specific APIs. Those APIs add privacy, authorization, and workflow obligations that are not necessary to prove the first production use case.
+The initial request excludes Benefits Intake, Benefits Claims, Benefits Documents, Veteran health APIs, and other authenticated Veteran-specific APIs. They are not required to demonstrate the first production use case and would add unnecessary authorization/privacy obligations.
 
-Any later expansion must satisfy the decision rule in `docs/va-api-access-strategy.md`: demonstrated incremental user value, documented privacy/auth implications, and a bounded compliant workflow.
+## Runtime configuration and credential handling
+
+The server-side contract is documented in `docs/va-api-runtime-configuration.md`.
+
+Safe default: VA network access is disabled.
+
+Environment controls:
+
+- `VA_API_ENV=sandbox|production`
+- `VA_API_ENABLED=true` for environment-neutral activation
+- `VA_SANDBOX_ENABLED=true` retained only as the backward-compatible Phase 2 sandbox-enable path
+
+Service-specific sandbox credentials:
+
+- `VA_FORMS_SANDBOX_API_KEY`
+- `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`
+
+Service-specific production credentials:
+
+- `VA_FORMS_PRODUCTION_API_KEY`
+- `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY`
+
+Production mode must remain disabled until VA grants production access. Merely setting `VA_API_ENV=production` does not activate traffic; the explicit enable flag and relevant production service key are also required.
+
+Credentials are stored only in the hosting platform's protected server environment, never in source control, browser-exposed variables, logs, URLs, screenshots, or artifacts. The current production host is Vercel and runtime values are configured in its **Production** environment.
 
 ## Data handling summary
 
 ### Workflow state
 
-Secondary and presumptive workflow state is stored only in short-lived first-party cookies that are encrypted and authenticated with AES-256-GCM. The cookies are HttpOnly, SameSite=Strict, scoped to their workflow paths, and expire after 30 minutes. Sensitive workflow values are not placed in query strings.
+Secondary and presumptive state is stored in short-lived first-party cookies encrypted/authenticated with AES-256-GCM. Cookies are HttpOnly, SameSite=Strict, path-scoped, and expire after 30 minutes. Sensitive workflow values are not propagated through query strings.
 
-### Browser-local medical-evidence analysis
+### Browser-local evidence analysis
 
-Optional evidence ingestion is processed locally in the browser. Supported PDF, DOCX, and text sources are parsed client-side; raw document bytes and raw document text are not submitted to application server state, URLs, cookies, telemetry, logs, or user accounts. Extracted excerpt objects are retained only temporarily in tab-scoped `sessionStorage` for the evidence-review step. PDF excerpts retain page provenance; DOCX excerpts retain deterministic paragraph provenance. Image-only PDF pages are reported as requiring OCR rather than silently treated as readable text.
+Supported PDF, DOCX, and text evidence processing occurs locally in the browser. Raw selected document bytes/text are not intentionally sent to application server state, URLs, cookies, telemetry, logs, or user accounts. Temporary excerpt objects are tab-scoped.
 
-Local analysis is bounded to 20 MB per file, 10 selected files and 50 MB per batch, 300 pages per PDF source, 500,000 extracted or pasted characters per source, and 10 retained source analyses per browser tab.
+Current resource ceilings include 20 MB/file, 10 files/batch, 50 MB accepted bytes/batch, 300 PDF pages/source, 500,000 extracted/pasted characters/source, and 10 retained source analyses/browser tab.
 
-### Application logging
+### Application logging and VA observations
 
-The current application does not persist workflow or recommendation event history through an application event logger. Any future persistent telemetry or event-history storage requires a separately reviewed privacy/security change before it is enabled.
+The current application does not persist workflow/recommendation event history through an application event logger.
 
-VA adapter observations are limited to operational metadata such as request ID, service, endpoint path, attempt, outcome/status, and duration. API keys, request query values, response bodies, and workflow selections are excluded from adapter observations.
+VA adapter observations are limited to request ID, service, endpoint path, attempt, outcome/status, and duration. They exclude credentials, query values, response bodies, and workflow selections.
 
-### Browser telemetry
+### Reference caching/status
 
-The application contains an optional Application Insights initializer that disables automatic route/AJAX/fetch tracking and strips query strings/fragments from telemetry URLs. The current production Content Security Policy uses `connect-src 'self'`, so the deployed browser policy does not authorize third-party Application Insights network transmission. Do not describe Application Insights as active production telemetry unless that CSP and deployment posture are deliberately changed in a separately reviewed privacy/security change.
+Forms search, disability terminology, and service branches share a bounded five-minute successful-response cache. User-facing status may expose only source label, environment, last successful retrieval time, and cache hit/miss state. Local fallback is not retained as a successful VA cache entry.
 
-### Retention and deletion
+## Reliability, rate limiting, and failures
 
-- Workflow cookies expire after 30 minutes and are rejected if modified or invalid.
-- Browser-local evidence excerpts are temporary and tab-scoped; raw selected document bytes/text are not intentionally persisted by the application.
-- The current public-reference API integrations do not create a server-side Veteran profile or persistent Veteran-specific API record.
-- The current application does not persist workflow or recommendation event history through an application event logger.
-- No VA API response body is intentionally persisted by the public-reference adapter.
+The adapter uses bounded behavior:
 
-## Credential handling
-
-- VA API keys are server-only environment settings.
-- VA API keys are never stored in source control or exposed through `NEXT_PUBLIC_*` variables.
-- Production credentials are stored in the hosting platform's protected environment facility and must not be logged.
-- The current production host is Vercel; production-only runtime values are configured in the Vercel **Production** environment and activated through a new production deployment.
-- Credentials should be rotated if exposed, during security incident response, and on any schedule required by VA or the hosting environment.
-- Sandbox and production credentials must remain environment-separated.
-
-The repository's private vulnerability-reporting expectations are documented in `SECURITY.md`, and the operational incident/vulnerability process is documented in `docs/security-operations.md`.
-
-## Authentication and authorization
-
-The two APIs in this initial request are open-data APIs accessed with an API key. The application does not request OAuth scopes or authorization to access an individual Veteran's VA account in the initial production use case.
-
-## Rate limiting, retries, and failures
-
-The adapter uses bounded retries rather than unbounded traffic amplification:
-
+- default per-attempt timeout: 4 seconds;
 - maximum two attempts per request;
-- retry only for HTTP 429, 503, or 504 and transient timeout/network failure;
-- configurable per-attempt timeout, default 4 seconds;
-- invalid response payloads fail closed;
-- API failure returns local-reference behavior instead of breaking the core claim-preparation workflow.
-
-The operating plan assumes VA's published standard rate limit and will not intentionally exceed it. A 429 is treated as a transient failure and receives at most one retry before fallback.
+- one retry only for HTTP 429, 503, 504 or transient timeout/network failure;
+- invalid payloads fail closed;
+- HTTPS-only configurable endpoints;
+- upstream failure falls back locally and does not break core intake/recommendation/presumptive flows;
+- no background polling or bulk synchronization is implemented.
 
 ## Security controls
 
-Current repository controls include:
+Current controls include:
 
-- HTTPS-only configurable VA API base URLs;
-- server-only API credentials;
+- server-only API credentials with service separation;
 - encrypted/authenticated workflow cookies;
-- query-string minimization for health/disability and service-history state;
-- browser-local medical-evidence parsing with no raw document upload endpoint and explicit resource ceilings;
-- source-restrictive production CSP with self-only browser connectivity, HSTS, frame denial, referrer, content-type, and permissions headers;
-- read-only active CI permissions and immutable pins for active CI marketplace actions;
-- dependency audit, citation audit, knowledge-base validation, lint, typecheck, tests, and production build in CI;
-- real Chrome/ChromeDriver end-to-end validation as part of the final CI gate;
-- explicit Node 22 runtime contract and Vercel-native standard Next.js build;
-- exact-commit Vercel deployment-status verification, production-alias convergence, and a non-sensitive runtime crypto self-test before production readiness is accepted;
-- private vulnerability-reporting guidance in `SECURITY.md` and operational security handling in `docs/security-operations.md`.
+- privacy-sensitive workflow state excluded from URLs;
+- browser-local evidence parsing/resource ceilings;
+- source-restrictive production CSP and route-wide security headers;
+- read-only active CI permissions and immutable action pins where applicable;
+- dependency audit, citation audit, KB validation, lint, typecheck, tests, build, and real-browser E2E in CI;
+- exact-commit Vercel status/deployment/alias verification;
+- non-sensitive `/runtime-readiness` crypto self-test from trusted CI lineage;
+- private vulnerability reporting in `SECURITY.md` and operational response guidance in `docs/security-operations.md`.
 
-The former Azure Static Web Apps workflow is retained only as a manual legacy fallback and is no longer an automatic production deployment path.
+The former Azure Static Web Apps path is retained only as manual legacy fallback infrastructure and is not the normal production deployment/readiness signal.
 
-## Privacy, terms, and product URLs
+## Public URLs
 
-Public routes in the application:
-
-- `/about` — product description and end-user/use-case boundaries.
-- `/privacy` — privacy policy.
-- `/terms` — terms of use and legal/medical disclaimers.
-- `/va-forms` — VA Forms reference demonstration.
-- `/va-reference` — Benefits Reference Data demonstration.
-
-Canonical deployed application root:
+Canonical deployed root:
 
 - `https://secondary-condition-finder.vercel.app`
 
-The exact absolute route URLs should be rechecked during final submission preparation.
+Relevant routes:
+
+- `/about`
+- `/privacy`
+- `/terms`
+- `/va-forms`
+- `/va-forms/finder`
+- `/va-reference`
+- `/va-reference/service-branches`
+
+Absolute URLs must be rechecked immediately before submission.
 
 ## Business model response
 
-The repository does not currently define a commercial monetization model. Before submission, the applicant should provide the truthful current operating/funding model in the VA form and explicitly confirm that Veteran data is not sold or monetized.
+The repository does not define the applicant's current commercial/funding model. The applicant must provide truthful current organization/business information and explicitly confirm whether Veteran data is sold or monetized.
 
-Do not invent a revenue model for the production-access request.
+**Do not invent a revenue model** or organization facts for the production-access request.
 
 ## Section 508 / accessibility response
 
-The repository contains automated accessibility preflight evidence for landmarks/headings on tested routes, keyboard bypass, visible-focus styling, reflow safeguards, forced-colors handling, and reduced-motion behavior. This is not a conformance certification.
+Automated/browser regression evidence supports structural accessibility safeguards but is **not a conformance certification**.
 
-Before the production form is submitted, complete issue #195 against the exact deployed build using synthetic data, including keyboard-only operation, form/error behavior, NVDA and/or VoiceOver, 200% zoom/reflow, contrast, and Windows forced-colors/high-contrast testing. Answer VA's Section 508 question only from the completed evidence record.
+Before submission, complete issue #195 against the exact deployed build using synthetic/non-sensitive data, including keyboard-only operation, form/error behavior, NVDA and/or VoiceOver, 200% zoom/reflow, contrast, and forced-colors/high-contrast review. Any material finding must be remediated and retested before making a conformance claim.
 
-## Security and incident-response response
+## Security, incident response, and vulnerability management
 
-The operational process is defined in `SECURITY.md` and `docs/security-operations.md`. The production-access response should truthfully summarize that process: private vulnerability reporting, minimum/sanitized incident records, containment of the affected feature/integration/provider credential, reviewed remediation through the full CI gate, exact-commit Vercel/runtime-readiness recovery verification, and a post-incident control review.
-
-Do not place credentials, cookies, medical-record text, Veteran-specific data, or other sensitive payloads in public issues, PRs, CI logs, screenshots, or incident evidence merely for debugging.
-
-Any notification, contractual, or legal obligations must be determined from the facts of the incident and the applicable provider/VA agreement or instructions; do not invent a universal notification timeline.
-
-## Vulnerability management response
-
-The repository performs high-severity dependency auditing in CI on every gated change. Active CI actions are immutable-pinned. Security-relevant fixes use reviewed PRs, exact-head validation, the full lint/typecheck/test/build/browser gate, and exact-commit Vercel plus Production Runtime Readiness verification after merge.
-
-A focused security/data-flow review is required before VA production-access submission, before enabling a new credentialed/external integration or persistent sensitive-data store, after a material architecture change, and after a security incident. The operating checklist is maintained in `docs/security-operations.md`.
+Use `SECURITY.md` and `docs/security-operations.md` as the operating sources. Responses should describe private reporting, minimum/sanitized incident records, containment, credential rotation where needed, reviewed remediation through full CI, exact-commit production recovery verification, and post-incident review. Do not invent a universal notification deadline; obligations depend on applicable facts and agreements.
 
 ## Current readiness status
 
-The Vercel production workflow-session crypto path and trusted CI-to-runtime-readiness lineage have been verified on production. Issue #213 is a completed historical checkpoint, not a current blocker. Before submission, the latest `main` commit must still be rechecked for green CI, exact-commit Vercel production deployment, canonical-alias convergence, and Production Runtime Readiness.
+Repository implementation and production runtime lineage are healthy on the current checkpoint. Submission is **not ready** until:
 
-Credentialed live sandbox validation remains pending in issue #189. Production-access submission also remains blocked on manual accessibility/Section 508 evidence in issue #195, truthful applicant/business details and final absolute URLs, and the final demo rehearsal.
+- issue #189 has objective credentialed sandbox success evidence;
+- issue #195 has objective manual accessibility evidence;
+- applicant/business facts and final public URLs are supplied;
+- final deployed-app rehearsal passes; and
+- fresh exact-commit production readiness is verified immediately before submission.
+
+Issue #287 remains the external VA production-reference transition gate. Configuration readiness is not the same as granted/verified production API access.
