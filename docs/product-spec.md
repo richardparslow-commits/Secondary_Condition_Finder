@@ -209,8 +209,8 @@ added to recommendation logs or telemetry.
 Three layers are deliberately separate. See `docs/condition-catalog.md`.
 
 - `data/conditions/` is the catalog: condition identity and rating schedule
-  citations, currently **213 conditions across 17 catalog files** after
-  condition catalog expansion Wave 1. The ranked path to target catalog v2
+  citations, currently **231 conditions across 19 catalog files** after
+  condition catalog expansion Wave 2. The ranked path to target catalog v2
   (300 conditions) is in `docs/condition-expansion-roadmap.md`.
 - `data/knowledge-base/` holds exactly one secondary-mapping file per catalog
   condition, referencing catalog ids. New expansion conditions may begin as
@@ -222,6 +222,12 @@ Three layers are deliberately separate. See `docs/condition-catalog.md`.
 The catalog is the single source of display names, so a label cannot drift
 between mapping files. Referential integrity is enforced by tests and by
 load-time validation before recommendation logic runs.
+
+When the rating schedule does not provide a single diagnosis-specific diagnostic
+code, the catalog may record the applicable joint, nerve, spine, or residual
+rating framework with an explicit review note. That framework is condition
+identity/rating context only and must not be presented as clinical nexus
+evidence.
 
 JSON in git rather than an opaque production database keeps mapping, pathway
 intelligence, and citation changes reviewable as pull request diffs.
