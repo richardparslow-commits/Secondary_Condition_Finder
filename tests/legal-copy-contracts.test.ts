@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
+
 import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 
@@ -26,6 +29,22 @@ function extractCitations(html: string): string[] {
   );
 }
 
+function sourceFilesUnder(relativeDirectory: string): string[] {
+  const root = path.join(process.cwd(), relativeDirectory);
+  const files: string[] = [];
+
+  for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
+    const absolute = path.join(root, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...sourceFilesUnder(path.relative(process.cwd(), absolute)));
+    } else if (/\.(?:ts|tsx)$/.test(entry.name)) {
+      files.push(absolute);
+    }
+  }
+
+  return files;
+}
+
 describe("legal copy contracts", () => {
   it("renders the required secondary track distinction and proceed CTA", () => {
     const html = renderToStaticMarkup(SecondaryLandingPage());
@@ -36,6 +55,21 @@ describe("legal copy contracts", () => {
     expect(html).toContain('href="/secondary/diagnosed"');
     expect(html).toContain("38 CFR § 3.310(a)");
     expect(html).toContain("38 CFR § 3.310(b)");
+  });
+
+  it("uses the increase-in-severity aggravation standard without a permanent-worsening requirement", () => {
+    const html = renderToStaticMarkup(HomePage());
+    expect(html).toContain("increased in severity beyond its natural progression");
+
+    const sourceFiles = [
+      ...sourceFilesUnder("src/app"),
+      ...sourceFilesUnder("src/components"),
+    ];
+    for (const file of sourceFiles) {
+      const source = fs.readFileSync(file, "utf8").toLowerCase();
+      expect(source, file).not.toContain("permanently worsened");
+      expect(source, file).not.toContain("permanent worsening");
+    }
   });
 
   it("renders secondary citations only from the canonical legal references module", async () => {
