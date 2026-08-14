@@ -35,11 +35,13 @@
     },
     {
       "id": "hyperpituitarism",
-      "name": "Hyperpituitarism",
+      "name": "Hyperpituitarism (Prolactin-Secreting Pituitary Dysfunction)",
       "aliases": ["prolactin-secreting pituitary dysfunction", "prolactinoma-related hyperpituitarism"],
       "bodySystem": "Endocrine",
       "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7916 covers hyperpituitarism (prolactin-secreting pituitary dysfunction) and directs evaluation as a malignant or benign neoplasm, as appropriate.", "verified": false}],
-      "reviewNotes": []
+      "reviewNotes": [
+        "Clinical Evidence Promotion Batch 6 narrows the display label to diagnostic code 7916's express prolactin-secreting pituitary-dysfunction scope. The stable ID is retained for catalog continuity and should not be interpreted as a generic identity for every form of pituitary hormone excess."
+      ]
     },
     {
       "id": "diabetes-insipidus",
