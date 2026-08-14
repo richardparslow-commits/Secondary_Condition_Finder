@@ -1,0 +1,75 @@
+{
+  "bodySystem": "Genitourinary & Gynecological Systems",
+  "conditions": [
+    {
+      "id": "chronic-pyelonephritis",
+      "name": "Chronic Pyelonephritis",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "DC 7504, chronic pyelonephritis.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hydronephrosis",
+      "name": "Hydronephrosis",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "DC 7509, hydronephrosis.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "urethral-stricture",
+      "name": "Urethral Stricture",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "DC 7518, stricture of urethra.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "varicocele-hydrocele",
+      "name": "Varicocele / Hydrocele",
+      "aliases": ["hydrocele", "varicocele"],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Genitourinary diagnostic framework; no single diagnosis-specific diagnostic code is assigned by this automated expansion without qualified review.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["The roadmap intentionally groups varicocele and hydrocele as one user-facing identity. Qualified review should confirm the applicable current diagnostic criteria without borrowing a code from another male reproductive diagnosis."]
+    },
+    {
+      "id": "epididymitis-orchitis",
+      "name": "Chronic Epididymitis / Orchitis",
+      "aliases": ["epididymitis", "orchitis"],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "DC 7525 framework for chronic epididymitis/orchitis and related male reproductive infections.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["Keep this identity distinct from the existing prostatitis entry even where the rating schedule uses a shared infection framework."]
+    }
+  ]
+}
