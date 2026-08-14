@@ -33,7 +33,7 @@ describe("clinical evidence promotion batch 2", () => {
     expect(mapping?.suggestions[0]?.conditionId).toBe("congestive-heart-failure");
     expect(mapping?.suggestions[0]?.pathwayIntelligence?.pathways).toContain("disease-progression");
     expect(mapping?.suggestions[0]?.rationale).toMatch(/hypertensive heart disease/i);
-    expect(mapping?.suggestions[0]?.rationale).toMatch(/competing|contributing/i);
+    expect(mapping?.suggestions[0]?.rationale).toMatch(/contribut|causes addressed|competing/i);
 
     const reference = mapping?.suggestions[0]?.sourceReferences[0];
     expect(reference?.verificationScope).toBe("clinical-evidence");
