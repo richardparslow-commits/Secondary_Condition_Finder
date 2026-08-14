@@ -24,6 +24,7 @@ const WAVE_THREE_IDS = [
 const POST_V2_PROMOTED_WAVE_THREE_IDS = new Set([
   "cardiomyopathy",
   "hypertensive-heart-disease",
+  "hyperaldosteronism",
 ]);
 
 describe("condition catalog expansion wave 3", () => {
@@ -75,6 +76,14 @@ describe("condition catalog expansion wave 3", () => {
     expect(condition).toBeDefined();
     expect(condition?.ratingSchedule[0]?.note).toMatch(/7914.*7915|7915.*7914/i);
     expect(condition?.reviewNotes.join(" ")).toMatch(/benign.*malignant|malignant.*benign/i);
+  });
+
+  it("keeps DC 7916 hyperpituitarism scoped to prolactin-secreting pituitary dysfunction", () => {
+    const condition = catalogById.get("hyperpituitarism");
+    expect(condition).toBeDefined();
+    expect(condition?.name).toMatch(/prolactin-secreting pituitary dysfunction/i);
+    expect(condition?.ratingSchedule[0]?.note).toMatch(/7916/i);
+    expect(condition?.reviewNotes.join(" ")).toMatch(/not.*generic|every form/i);
   });
 
   it("uses the respiratory pulmonary-vascular authority for pulmonary hypertension", () => {

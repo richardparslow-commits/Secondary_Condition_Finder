@@ -1,6 +1,47 @@
 {
   "id": "hyperaldosteronism",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, medication/treatment, intermediate-factor, endocrine, cardiovascular, and other organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "hypertension",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "For confirmed primary aldosteronism, the 2025 Endocrine Society guideline describes excess autonomous aldosterone production as a common cause of hypertension and explains the renal sodium-retention, volume-expansion, and elevated-blood-pressure mechanism. This supports a direct-secondary pathway when the primary-aldosteronism phenotype is actually documented; the broader catalog label 'hyperaldosteronism' must not be used to assume that mechanism in an unspecified endocrine or neoplastic presentation without the corresponding aldosterone/renin and clinical evidence.",
+      "pathwayIntelligence": {
+        "pathways": ["direct-secondary"],
+        "causalChain": "Confirmed primary aldosteronism with autonomous aldosterone excess and suppressed renin → renal sodium retention and volume expansion → elevated blood pressure / hypertension.",
+        "developmentQuestions": [
+          "Was primary aldosteronism objectively established with aldosterone and renin testing, and what diagnostic criteria were met?",
+          "When did hypertension begin relative to the documented aldosterone abnormality?",
+          "Was hypokalemia present, recognizing that primary aldosteronism can occur without hypokalemia?",
+          "What antihypertensive and primary-aldosteronism-specific treatment was used, and how did blood pressure respond?",
+          "Is there a unilateral or bilateral adrenal source, or another explanation for the hyperaldosteronism label?",
+          "What competing causes of hypertension are documented?"
+        ],
+        "issuesToResolve": [
+          "The catalog identity is broader than confirmed primary aldosteronism; autonomous aldosterone excess and suppressed-renin physiology must be established before using this pathway.",
+          "Hypertension is multifactorial in many patients, so chronology and competing causes still require individual clinical review."
+        ]
+      },
+      "evidenceGaps": [
+        "Aldosterone and renin results establishing the primary-aldosteronism phenotype",
+        "Blood-pressure diagnosis and longitudinal readings showing chronology",
+        "Potassium and relevant adrenal imaging/lateralization records when obtained",
+        "Treatment records showing response to mineralocorticoid-receptor antagonism or adrenal-directed therapy when applicable",
+        "Clinician assessment addressing alternative causes of hypertension"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Adler et al., Primary Aldosteronism: An Endocrine Society Clinical Practice Guideline, J Clin Endocrinol Metab. 2025;110(9):2453-2495. doi:10.1210/clinem/dgaf284",
+          "note": "Updated Endocrine Society guideline describes primary aldosteronism as a common cause of hypertension and the excess-aldosterone mechanism of renal sodium retention, volume expansion, and elevated blood pressure; this supports the relationship only when primary aldosteronism is clinically established.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "Abstract and introductory mechanism statement; PA is a common cause of hypertension and excess aldosterone leads to renal sodium retention, volume expansion, elevated blood pressure, and sometimes hypokalemia. Article corrected online after a later typographical-unit correction that did not alter this relationship."
+        }
+      ]
+    }
+  ]
 }
