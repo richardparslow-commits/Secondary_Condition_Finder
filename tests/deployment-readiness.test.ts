@@ -119,17 +119,22 @@ describe("production deployment readiness", () => {
     expect(packageJson.engines?.node).toBe("22.x");
   });
 
-  it("enforces baseline security headers on all Next.js routes", () => {
-    const source = read("next.config.ts");
+  it("enforces baseline security headers and nonce CSP across Next.js routes", () => {
+    const config = read("next.config.ts");
+    const proxy = read("src/proxy.ts");
 
-    expect(source).toContain('source: "/:path*"');
-    expect(source).toContain('key: "Content-Security-Policy"');
-    expect(source).toContain("frame-ancestors 'none'");
-    expect(source).toContain('key: "Referrer-Policy", value: "no-referrer"');
-    expect(source).toContain('key: "X-Content-Type-Options", value: "nosniff"');
-    expect(source).toContain('key: "X-Frame-Options", value: "DENY"');
-    expect(source).toContain('key: "Permissions-Policy"');
-    expect(source).toContain('key: "Strict-Transport-Security"');
+    expect(config).toContain('source: "/:path*"');
+    expect(config).toContain('key: "Referrer-Policy", value: "no-referrer"');
+    expect(config).toContain('key: "X-Content-Type-Options", value: "nosniff"');
+    expect(config).toContain('key: "X-Frame-Options", value: "DENY"');
+    expect(config).toContain('key: "Permissions-Policy"');
+    expect(config).toContain('key: "Strict-Transport-Security"');
+
+    expect(proxy).toContain('response.headers.set("Content-Security-Policy"');
+    expect(proxy).toContain("frame-ancestors 'none'");
+    expect(proxy).toContain("script-src-attr 'none'");
+    expect(proxy).toContain("'strict-dynamic'");
+    expect(proxy).not.toMatch(/script-src[^;\n]*'unsafe-inline'/);
   });
 
   it("keeps Azure deployment manual-only as legacy fallback", () => {
