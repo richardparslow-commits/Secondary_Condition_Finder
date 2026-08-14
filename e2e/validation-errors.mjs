@@ -197,9 +197,27 @@ async function expectStaticErrorUrl(pathname, code) {
   }
 }
 
+async function assertNoHorizontalOverflow(label) {
+  const metrics = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: `
+      const root = document.documentElement;
+      const body = document.body;
+      return {
+        clientWidth: root.clientWidth,
+        scrollWidth: Math.max(root.scrollWidth, body ? body.scrollWidth : 0),
+      };
+    `,
+    args: [],
+  });
+  if (metrics.scrollWidth > metrics.clientWidth + 1) {
+    throw new Error(`${label} has horizontal overflow at mobile viewport: ${metrics.scrollWidth}px > ${metrics.clientWidth}px`);
+  }
+}
+
 async function runJourney() {
   await webdriver("POST", `/session/${sessionId}/url`, { url: `${APP_BASE_URL}/secondary/diagnosed` });
   await waitForPath("/secondary/diagnosed");
+  await assertNoHorizontalOverflow("Step 1 diagnosed");
 
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 2')]");
   await waitForAlertContaining("Select at least one diagnosed condition to continue.");
@@ -211,6 +229,7 @@ async function runJourney() {
   await clickElement(diagnosed[1]);
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 2')]");
   await waitForPath("/secondary/service-connected");
+  await assertNoHorizontalOverflow("Step 2 service-connected");
 
   const radios = await findAllByXpath("//input[starts-with(@name, 'serviceConnected-') and @type='radio']");
   if (radios.length < 4) throw new Error("Expected Yes/No radio groups for selected conditions.");
@@ -225,33 +244,48 @@ async function runJourney() {
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 3')]");
   await waitForAlertContaining("needs at least one condition already recognized as service connected");
   await expectStaticErrorUrl("/secondary/service-connected", "no-service-connected");
+  await assertNoHorizontalOverflow("Step 2 validation state");
 
   const yesAnswersAfterError = await findAllByXpath("//input[starts-with(@name, 'serviceConnected-') and @value='yes']");
   if (yesAnswersAfterError.length < 1) throw new Error("Expected a service-connected Yes choice after validation.");
   await clickElement(yesAnswersAfterError[0]);
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 3')]");
   await waitForPath("/secondary/ratings");
+  await assertNoHorizontalOverflow("Step 3 ratings");
 
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 4')]");
   await waitForAlertContaining("Choose a current rating or I prefer not to answer for every service-connected condition.");
   await expectStaticErrorUrl("/secondary/ratings", "select-rating");
+  await assertNoHorizontalOverflow("Step 3 validation state");
 
   const ratingSelects = await findAllByXpath("//select[starts-with(@name, 'rating-')]");
   if (ratingSelects.length < 1) throw new Error("Expected at least one rating choice on Step 3.");
   for (const select of ratingSelects) await setSelectValue(select, "decline");
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 4')]");
   await waitForPath("/secondary/upload");
+  await assertNoHorizontalOverflow("Step 4 documents");
+
+  await clickXpath("//button[contains(normalize-space(.), 'View Suggestions')]");
+  await waitForPath("/secondary/suggestions");
+  await assertNoHorizontalOverflow("Step 5 suggestions");
+
+  await clickXpath("//a[contains(normalize-space(.), 'Open Evidence Checklist')]");
+  await waitForPath("/secondary/evidence");
+  await assertNoHorizontalOverflow("Step 6 evidence");
+  await findByXpath("//h1[contains(normalize-space(.), 'Evidence & Research Checklist')]");
 
   await webdriver("POST", `/session/${sessionId}/url`, { url: `${APP_BASE_URL}/presumptive` });
   await waitForPath("/presumptive");
+  await assertNoHorizontalOverflow("Presumptive form");
   await clickXpath("(//input[@name='location' and @type='checkbox'])[1]");
   await setInputValue("//input[@name='serviceStart']", "2020-01-02");
   await setInputValue("//input[@name='serviceEnd']", "2020-01-01");
   await clickXpath("//button[contains(normalize-space(.), 'Show presumptive conditions')]");
   await waitForAlertContaining("Service start date must be on or before the end date.");
   await expectStaticErrorUrl("/presumptive", "date-order");
+  await assertNoHorizontalOverflow("Presumptive validation state");
 
-  console.log("Validation E2E passed at mobile viewport: accessible alerts, Step 3 progression, neutral explicit answers, and static-error privacy URLs.");
+  console.log("Validation E2E passed at mobile viewport: accessible alerts, six-step Secondary progression, no horizontal overflow, neutral explicit answers, and static-error privacy URLs.");
 }
 
 async function cleanup() {
