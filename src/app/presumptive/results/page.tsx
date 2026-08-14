@@ -80,6 +80,15 @@ export default async function PresumptiveResultsPage() {
     return match ? `${match.description} (${match.code})` : code;
   });
   const result = matchPresumptives(loadExposureCatalog(), history);
+  const hasCompleteDateRange = Boolean(history.serviceStart && history.serviceEnd);
+  const hasPartialDateRange = Boolean(history.serviceStart) !== Boolean(history.serviceEnd);
+  const serviceDateSummary = history.serviceStart && history.serviceEnd
+    ? `, ${formatDate(history.serviceStart)} to ${formatDate(history.serviceEnd)}`
+    : history.serviceStart
+      ? `, start date ${formatDate(history.serviceStart)}; end date not provided`
+      : history.serviceEnd
+        ? `, end date ${formatDate(history.serviceEnd)}; start date not provided`
+        : "";
 
   return (
     <main>
@@ -91,11 +100,7 @@ export default async function PresumptiveResultsPage() {
         Presumptions that may apply
       </h1>
       <p className="mt-2 text-sm text-slate-600">
-        Based on {history.locations.join(", ")}
-        {history.serviceStart && history.serviceEnd
-          ? `, ${formatDate(history.serviceStart)} to ${formatDate(history.serviceEnd)}`
-          : ""}
-        .
+        Based on {history.locations.join(", ")}{serviceDateSummary}.
       </p>
 
       {branchNames.length > 0 && (
@@ -115,17 +120,30 @@ export default async function PresumptiveResultsPage() {
         <p className="font-semibold">This is not an eligibility decision.</p>
         <p className="mt-1">
           A presumption removes the need to prove your service caused the
-          condition. It does not remove the need for a current diagnosis, and
-          VA can rebut a presumption with affirmative evidence.
+          condition. It does not remove the need to establish the qualifying
+          condition, and VA can rebut a presumption with affirmative evidence.
         </p>
       </div>
 
-      {result.hasUnconfirmedDates && (
+      {!hasCompleteDateRange && (
         <div className="mt-4 rounded-lg border border-slate-300 bg-white p-4 text-sm text-slate-700">
-          <p className="font-medium text-slate-900">Service dates not provided</p>
+          <p className="font-medium text-slate-900">
+            {hasPartialDateRange ? "Service date range incomplete" : "Service dates not provided"}
+          </p>
           <p className="mt-1">
-            These matches rest on location alone. Each qualifying window below
-            shows its dates. Check yours against your DD-214.
+            {hasPartialDateRange
+              ? "One service-date boundary is missing. The supplied date is used only to rule out periods that are impossible; any remaining match is not date-confirmed until both boundaries are provided."
+              : "These matches rest on location alone because no service dates were provided."}{" "}
+            Each qualifying window below shows its dates. Check your complete service interval against your records.
+          </p>
+        </div>
+      )}
+
+      {result.hasUnconfirmedDates && hasCompleteDateRange && (
+        <div className="mt-4 rounded-lg border border-slate-300 bg-white p-4 text-sm text-slate-700">
+          <p className="font-medium text-slate-900">Service dates require verification</p>
+          <p className="mt-1">
+            At least one match could not be date-confirmed. Check the qualifying window below against your service records.
           </p>
         </div>
       )}
@@ -135,9 +153,9 @@ export default async function PresumptiveResultsPage() {
           <p className="font-medium text-slate-900">No presumption matched</p>
           <p className="mt-1">
             {result.unmatchedLocations.join(", ")}. Either the location has no
-            presumption in this app, or your dates fall outside its window. You
-            can still file a claim with evidence linking the condition to
-            service.
+            presumption in this app, or the service-date information you supplied
+            rules out its authored qualifying window. You can still research other
+            service-connection pathways and supporting evidence.
           </p>
         </div>
       )}
@@ -168,13 +186,18 @@ export default async function PresumptiveResultsPage() {
                   Why this may apply to you
                 </h3>
                 <ul className="mt-2 space-y-2 text-sm text-slate-700">
-                  {matchedPeriods.map(({ period, matchedLocations }) => (
+                  {matchedPeriods.map(({ period, matchedLocations, datesConfirmed }) => (
                     <li key={period.id}>
                       <span className="font-medium text-slate-900">
                         {matchedLocations.join(", ")}
                       </span>{" "}
                       &mdash; {formatDate(period.startDate)} to{" "}
                       {period.endDate ? formatDate(period.endDate) : "present"}
+                      {!datesConfirmed && (
+                        <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-900">
+                          date range unconfirmed
+                        </span>
+                      )}
                       {period.note && (
                         <span className="mt-0.5 block text-xs text-slate-500">
                           {period.note}
