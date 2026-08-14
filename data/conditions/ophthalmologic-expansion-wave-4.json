@@ -48,6 +48,25 @@
       "bodySystem": "Auditory & Special Senses",
       "ratingSchedule": [{"citation": "38 CFR 4.79", "note": "Schedule of ratings, eye; diagnostic code 6019 covers unilateral or bilateral ptosis and directs evaluation based on visual impairment or, when absent, disfigurement.", "verified": false}],
       "reviewNotes": []
+    },
+    {
+      "id": "diabetic-retinopathy",
+      "name": "Diabetic retinopathy",
+      "aliases": [
+        "retinopathy"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "DC 6040 expressly lists diabetic retinopathy under the eye rating schedule; evaluation follows the applicable eye criteria for visual impairment or incapacitating episodes.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Wave 8 replaced the unresolved carryover note with the condition-specific eye rating identity. Clinical Evidence Promotion Batch 2 physically relocates the stable identity into the ophthalmologic catalog file without changing its ID, aliases, or rating authority.",
+        "The rating citation does not establish that diabetes or any other condition caused an individual's retinopathy."
+      ]
     }
   ]
 }
