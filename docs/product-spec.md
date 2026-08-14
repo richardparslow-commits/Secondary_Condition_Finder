@@ -52,213 +52,113 @@ exposure presumptions that may apply and the conditions each covers. See
   6) evidence review.
 - Diagnosed selections come only from catalog condition ids.
 - Service-connected step only shows diagnosed selections.
-- Ratings step only shows service-connected selections and accepts 0–100 or
-  decline.
-- Step 4 supports browser-local analysis of PDF, DOCX, supported text files, and
-  pasted text. Raw document bytes/text are not submitted to the application
-  server. Extracted excerpts and provenance may be retained only in the current
-  tab's `sessionStorage` for Step 6 review.
-- Optional medication/treatment entries are bounded and are stored only in the
-  encrypted, authenticated, short-lived secondary-workflow cookie. They are not
-  serialized into workflow URLs and do not change recommendation ranking.
+- Ratings step only shows service-connected selections and accepts 0–100 or decline.
+- Step 4 supports browser-local analysis of PDF, DOCX, supported text files, and pasted text. Raw document bytes/text are not submitted to the application server. Extracted excerpts and provenance may be retained only in the current tab's `sessionStorage` for Step 6 review.
+- Optional medication/treatment entries are bounded and are stored only in the encrypted, authenticated, short-lived secondary-workflow cookie. They are not serialized into workflow URLs and do not change recommendation ranking.
 - Steps 2 through 6 are guarded against invalid or incomplete prior-step state.
-- Server workflow selections are carried in an HttpOnly, SameSite=Strict,
-  AES-256-GCM-protected cookie with a 30-minute maximum age. Back navigation
-  reads that workflow state so users can revise earlier choices without putting
-  sensitive workflow context into the URL.
-- Finish Review and Start a new review explicitly clear the encrypted workflow
-  cookie plus the secondary workflow's browser-local evidence/checklist stores.
+- Server workflow selections are carried in an HttpOnly, SameSite=Strict, AES-256-GCM-protected cookie with a 30-minute maximum age. Back navigation reads that workflow state so users can revise earlier choices without putting sensitive workflow context into the URL.
+- Finish Review and Start a new review explicitly clear the encrypted workflow cookie plus the secondary workflow's browser-local evidence/checklist stores.
 
 ### FR-2 Recommendations
 
 Each suggestion shows:
 
 - Condition name
-- A qualitative prevalence band: commonly, sometimes, or occasionally explored.
-  Never a number, never a percentage.
+- A qualitative prevalence band: commonly, sometimes, or occasionally explored. Never a number, never a percentage.
 - Rationale, attributed to each contributing primary condition
 - Evidence gaps: what a claim on this theory typically still needs
-- Source references, each flagged verified or unverified and labeled by source
-  role: Legal framework, Clinical evidence, or Procedural guidance
-- Suggestions grouped by selected service-connected primary condition in the
-  workflow UI
-- For recognized conditions with no authored mappings, the UI must say they are
-  recognized-but-unmapped and that absence implies nothing about claim viability.
+- Source references, each flagged verified or unverified and labeled by source role: Legal framework, Clinical evidence, or Procedural guidance
+- Suggestions grouped by selected service-connected primary condition in the workflow UI
+- For recognized conditions with no authored mappings, the UI must say they are recognized-but-unmapped and that absence implies nothing about claim viability.
 
-Where a subject-matter author has explicitly supplied it for a specific
-primary-to-secondary mapping, Step 5 may additionally show:
+Where a subject-matter author has explicitly supplied it for a specific primary-to-secondary mapping, Step 5 may additionally show:
 
 - one or more bounded **Pathway to evaluate** labels;
 - an authored causal-chain summary;
 - bounded questions to develop with a clinician or representative; and
 - bounded issues to resolve before relying on the theory.
 
-Pathway intelligence is optional and primary-specific. The application does not
-infer these fields from medication/treatment entries, uploaded evidence excerpts,
-or other Veteran-entered context. An un-authored mapping must remain un-labeled.
-The displayed pathway metadata is explanatory research content only and does not
-establish causation, aggravation, nexus, eligibility, or likelihood of approval.
+Pathway intelligence is optional and primary-specific. The application does not infer these fields from medication/treatment entries, uploaded evidence excerpts, or other Veteran-entered context. An un-authored mapping must remain un-labeled. The displayed pathway metadata is explanatory research content only and does not establish causation, aggravation, nexus, eligibility, or likelihood of approval.
 
-Ordering: rank 1 contributes 1.0, rank 2 contributes 0.5, rank n contributes
-1/n. Contributions from multiple primaries add, so a suggestion supported by
-two conditions outranks a single-source suggestion at the same rank. Ties break
-alphabetically. The score is an ordering heuristic and is never displayed.
-Optional medication/treatment literal matches and authored pathway intelligence
-are research/display cues only and do not alter this ordering, filtering, or
-prevalence.
+Ordering: rank 1 contributes 1.0, rank 2 contributes 0.5, rank n contributes 1/n. Contributions from multiple primaries add, so a suggestion supported by two conditions outranks a single-source suggestion at the same rank. Ties break alphabetically. The score is an ordering heuristic and is never displayed. Optional medication/treatment literal matches and authored pathway intelligence are research/display cues only and do not alter this ordering, filtering, or prevalence.
 
 ### FR-3 Multiple primaries
 
-- Suggestions shared across primaries merge on `conditionId`, combining
-  evidence gaps and citations while retaining each contributing primary's own
-  rationale and optional authored pathway intelligence.
-- A condition the user already listed as primary is never suggested as a
-  secondary of another primary.
+- Suggestions shared across primaries merge on `conditionId`, combining evidence gaps and citations while retaining each contributing primary's own rationale and optional authored pathway intelligence.
+- A condition the user already listed as primary is never suggested as a secondary of another primary.
 - Duplicate or differently-cased entries for the same condition collapse.
 
 ### FR-4 Catalog and mapping outcomes
 
-The current six-step secondary workflow accepts diagnosed conditions from the
-catalog only. Recommendation processing distinguishes:
+The current six-step secondary workflow accepts diagnosed conditions from the catalog only. Recommendation processing distinguishes:
 
 - **Mapped**: the selected service-connected condition has authored research.
-- **Unmapped**: the condition is in the catalog but no published secondary
-  mapping is available; the UI states that absence implies nothing about claim
-  viability.
+- **Unmapped**: the condition is in the catalog but no published secondary mapping is available; the UI states that absence implies nothing about claim viability.
 
-Legacy free-text/unrecognized-primary behavior remains isolated to legacy code
-paths and is not reintroduced into the current catalog-only workflow.
+Legacy free-text/unrecognized-primary behavior remains isolated to legacy code paths and is not reintroduced into the current catalog-only workflow.
 
 ### FR-5 Disclaimers and legal copy
 
 - Scope/disclaimer copy appears throughout intake and results/review surfaces.
-- The UI states that suggestions are not approval probabilities and citations
-  are research starting points to verify.
+- The UI states that suggestions are not approval probabilities and citations are research starting points to verify.
 - Unverified citations carry an inline badge where applicable.
-- Source-role labels distinguish legal framework, clinical evidence, and
-  procedural guidance so a legal authority is not presented as medical nexus
-  evidence.
-- Secondary legal citation text rendered in routes must come from the canonical
-  legal reference modules rather than route-level hardcoded copies.
+- Source-role labels distinguish legal framework, clinical evidence, and procedural guidance so a legal authority is not presented as medical nexus evidence.
+- Secondary legal citation text rendered in routes must come from the canonical legal reference modules rather than route-level hardcoded copies.
 
 ### FR-6 Demo scenarios
 
-- At least three repeatable, explicitly synthetic scenarios live in
-  `data/demo-scenarios.json`, including a single-primary case and a
-  multiple-primary overlap case.
-- Scenario data is represented in current secondary-workflow terms: diagnosed
-  ids, service-connected ids, ratings/decline, document-sharing choice, and
-  optional bounded medication/treatment context.
-- `/scenarios` does not construct a legacy `/results?...` URL. Launching a demo
-  submits only a bounded scenario id to a server action.
-- The server resolves the version-controlled scenario, validates it through the
-  current workflow parser/catalog, writes the same encrypted short-lived
-  secondary-workflow session used by normal intake, and redirects to current
-  Step 5 Suggestions.
-- Launching a demo clears prior secondary-workflow browser-local evidence and
-  checklist state so a synthetic demonstration cannot inherit excerpts or
-  selections from an earlier review in the same tab.
-- A test asserts that every scenario runs through the current workflow contract
-  and returns deterministic evidence-backed recommendations.
+- At least three repeatable, explicitly synthetic scenarios live in `data/demo-scenarios.json`, including a single-primary case and a multiple-primary overlap case.
+- Scenario data is represented in current secondary-workflow terms: diagnosed ids, service-connected ids, ratings/decline, document-sharing choice, and optional bounded medication/treatment context.
+- `/scenarios` does not construct a legacy `/results?...` URL. Launching a demo submits only a bounded scenario id to a server action.
+- The server resolves the version-controlled scenario, validates it through the current workflow parser/catalog, writes the same encrypted short-lived secondary-workflow session used by normal intake, and redirects to current Step 5 Suggestions.
+- Launching a demo clears prior secondary-workflow browser-local evidence and checklist state so a synthetic demonstration cannot inherit excerpts or selections from an earlier review in the same tab.
+- A test asserts that every scenario runs through the current workflow contract and returns deterministic evidence-backed recommendations.
 
 ### FR-7 Presumptive matching
 
 - Users select service locations and optionally a service date range.
 - Matching is exact on location and inclusive on date boundaries.
 - Omitted dates produce a match on location alone, flagged explicitly in the UI.
-- Unmatched locations are reported back with a note that a claim is still
-  possible with supporting evidence.
-- Categories out of scope are named on the results screen so the list does not
-  read as exhaustive.
+- Unmatched locations are reported back with a note that a claim is still possible with supporting evidence.
+- Categories out of scope are named on the results screen so the list does not read as exhaustive.
 - Every category carries source URLs and a `sourceCheckedOn` date.
 
 ### FR-8 Draft conditions
 
-- A condition may exist as `draft: true` with an empty `suggestions` array and a
-  non-empty `todo` checklist.
-- Drafts are validated and version controlled but never resolvable through
-  published lookup and never listed as published recommendations.
-- Schema rejects a published entry with no suggestions, and rejects a published
-  entry with an unresolved todo.
-- Post-v2 publication is relationship-specific: completion of a catalog wave does
-  not authorize bulk publication. Each primary mapping must independently satisfy
-  condition-specific clinical-evidence, rationale, provenance, and evidence-gap
-  requirements before its `draft` flag is removed.
+- A condition may exist as `draft: true` with an empty `suggestions` array and a non-empty `todo` checklist.
+- Drafts are validated and version controlled but never resolvable through published lookup and never listed as published recommendations.
+- Schema rejects a published entry with no suggestions, and rejects a published entry with an unresolved todo.
+- Post-v2 publication is relationship-specific: completion of a catalog wave does not authorize bulk publication. Each primary mapping must independently satisfy condition-specific clinical-evidence, rationale, provenance, and evidence-gap requirements before its `draft` flag is removed.
 
 ### FR-9 Event logging
 
-Recommendation-event logging is constrained to approved non-free-text fields.
-Raw local evidence, optional medication/treatment entries, workflow checklist
-selections, claim identifiers, and other user medical free text must not be
-added to recommendation logs or telemetry.
+Recommendation-event logging is constrained to approved non-free-text fields. Raw local evidence, optional medication/treatment entries, workflow checklist selections, claim identifiers, and other user medical free text must not be added to recommendation logs or telemetry.
 
 ### FR-10 Evidence review and consultation summary
 
-- Step 6 shows authored evidence gaps as a user-controlled browser-local review
-  checklist.
-- A checkmark means only that the user found material they want to review; the
-  app does not automatically mark a gap satisfied from extracted text.
-- Browser-local evidence review may show extracted excerpts with provenance from
-  Step 4. This is organizational/research support, not an adjudicative or medical
-  sufficiency determination.
-- Step 5 pathway intelligence frames authored theories and development questions;
-  it does not replace or duplicate the Step 6 evidence-gap review.
-- Step 6 provides a browser-generated consultation summary text export using
-  authored recommendation content, contributing primaries, evidence gaps, and
-  citations. Raw local-evidence excerpts and optional medication/treatment match
-  context are excluded from that export by default.
+- Step 6 shows authored evidence gaps as a user-controlled browser-local review checklist.
+- A checkmark means only that the user found material they want to review; the app does not automatically mark a gap satisfied from extracted text.
+- Browser-local evidence review may show extracted excerpts with provenance from Step 4. This is organizational/research support, not an adjudicative or medical sufficiency determination.
+- Step 5 pathway intelligence frames authored theories and development questions; it does not replace or duplicate the Step 6 evidence-gap review.
+- Step 6 provides a browser-generated consultation summary text export using authored recommendation content, contributing primaries, evidence gaps, and citations. Raw local-evidence excerpts and optional medication/treatment match context are excluded from that export by default.
 
 ## Data model
 
 Three layers are deliberately separate. See `docs/condition-catalog.md`.
 
-- `data/conditions/` is the catalog: condition identity and rating schedule
-  citations, currently **300 conditions across 33 catalog files** after the first
-  post-v2 catalog-maintenance relocation. The versioned target catalog v2 is
-  complete; its controlled Waves 1-7 record is in
-  `docs/condition-expansion-roadmap.md`.
-- `data/knowledge-base/` holds exactly one secondary-mapping file per catalog
-  condition, referencing catalog ids. After Clinical Evidence Promotion Batch 1,
-  **105 of the 107 identities added by Waves 1-7 remain safe drafts**;
-  `cardiomyopathy` and `urethral-stricture` have one individually reviewed,
-  condition-specific published relationship each. `ankle-strain`, a legacy
-  carried-over mapping, is draft again after unsupported published relationship
-  content was withdrawn. Individual published suggestions may optionally contain
-  bounded `pathwayIntelligence` authored for that exact primary-to-secondary
-  mapping.
+- `data/conditions/` is the catalog: condition identity and rating schedule citations, currently **300 conditions across 33 catalog files**. The versioned target catalog v2 is complete; its controlled Waves 1-7 record is in `docs/condition-expansion-roadmap.md`. Post-v2 maintenance may physically normalize stable identities into the appropriate body-system file without changing the 300-condition universe.
+- `data/knowledge-base/` holds exactly one secondary-mapping file per catalog condition, referencing catalog ids. After Clinical Evidence Promotion Batches 1 and 2, **103 of the 107 identities added by Waves 1-7 remain safe drafts**. Four expansion mappings have individually reviewed, condition-specific published relationships: `cardiomyopathy`, `urethral-stricture`, `hypertensive-heart-disease`, and `chronic-pyelonephritis`. Safety review has returned `ankle-strain`, `knee-injury`, and `osteoarthritis` to draft after unsupported published relationship content was withdrawn. Individual published suggestions may optionally contain bounded `pathwayIntelligence` authored for that exact primary-to-secondary mapping.
 - `data/presumptives/` holds exposure categories.
 
-The catalog is the single source of display names, so a label cannot drift
-between mapping files. Referential integrity is enforced by tests and by
-load-time validation before recommendation logic runs.
+The catalog is the single source of display names, so a label cannot drift between mapping files. Referential integrity is enforced by tests and by load-time validation before recommendation logic runs.
 
-When the rating schedule does not provide a single diagnosis-specific diagnostic
-code, the catalog may record the applicable joint, nerve, spine, neoplasm,
-laryngeal, ocular, digestive, genitourinary, mental-disorder, hematologic, skin,
-infectious, oncological, dental/oral, or residual rating framework with an
-explicit review note. Product expansion-wave grouping does not override the
-actual Part 4 rating authority; a cross-system condition must cite the schedule
-where VA actually evaluates it. When a broader regulatory umbrella overlaps a
-narrower existing catalog diagnosis, the two identities must remain
-distinguishable and must not claim each other's names or aliases. When a roadmap
-identity intentionally groups related diagnoses, the user-facing grouping does
-not authorize clinical authors to treat the grouped diagnoses as one etiology or
-one secondary pathway. Shared diagnostic codes also do not collapse distinct
-disease identities or establish common medical causation. Current-code scope
-must be preserved: obsolete codes cannot be revived as present authority, and a
-code limited to a disease site, severity, treatment state, or residual cannot be
-generalized to every presentation of the broader diagnosis. Rating context is
-condition identity/rating information only and must not be presented as clinical
-nexus evidence.
+When the rating schedule does not provide a single diagnosis-specific diagnostic code, the catalog may record the applicable joint, nerve, spine, neoplasm, laryngeal, ocular, digestive, genitourinary, mental-disorder, hematologic, skin, infectious, oncological, dental/oral, or residual rating framework with an explicit review note. Product expansion-wave grouping does not override the actual Part 4 rating authority; a cross-system condition must cite the schedule where VA actually evaluates it. When a broader regulatory umbrella overlaps a narrower existing catalog diagnosis, the two identities must remain distinguishable and must not claim each other's names or aliases. When a roadmap identity intentionally groups related diagnoses, the user-facing grouping does not authorize clinical authors to treat the grouped diagnoses as one etiology or one secondary pathway. Shared diagnostic codes also do not collapse distinct disease identities or establish common medical causation. Current-code scope must be preserved: obsolete codes cannot be revived as present authority, and a code limited to a disease site, severity, treatment state, or residual cannot be generalized to every presentation of the broader diagnosis. Rating context is condition identity/rating information only and must not be presented as clinical nexus evidence.
 
-Clinical source provenance is separate from citation verification status. An
-automated or agent-authored change may record a canonical source URL,
-`sourceCheckedOn`, `sourceLocator`, and `verificationScope`, but must keep
-`verified: false` until qualified-human verification is completed under
-`docs/citation-verification-sop.md`.
+Clinical source provenance is separate from citation verification status. An automated or agent-authored change may record a canonical source URL, `sourceCheckedOn`, `sourceLocator`, and `verificationScope`, but must keep `verified: false` until qualified-human verification is completed under `docs/citation-verification-sop.md`.
 
-JSON in git rather than an opaque production database keeps mapping, pathway
-intelligence, and citation changes reviewable as pull request diffs.
+Clinical Evidence Promotion Batch 2 also tightens the automated citation-debt ratchet after retiring unsafe legacy references; tightening the ceiling does not constitute qualified-human source verification.
+
+JSON in git rather than an opaque production database keeps mapping, pathway intelligence, and citation changes reviewable as pull request diffs.
 
 ## Acceptance criteria
 
@@ -274,9 +174,4 @@ intelligence, and citation changes reviewable as pull request diffs.
 
 ## External/manual truth gates
 
-This specification does not mark external or human-only gates complete. Their
-governing issues remain authoritative, including credentialed VA sandbox smoke
-evidence (#189), manual Section 508 review (#195), and production runtime
-`WORKFLOW_SESSION_SECRET` verification (#213). Automated repository tests or a
-successful deployment alone are not substitutes for those gate-specific exit
-criteria.
+This specification does not mark external or human-only gates complete. Their governing issues remain authoritative, including credentialed VA sandbox smoke evidence (#189), manual Section 508 review (#195), and production runtime `WORKFLOW_SESSION_SECRET` verification (#213). Automated repository tests or a successful deployment alone are not substitutes for those gate-specific exit criteria.
