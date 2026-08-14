@@ -97,7 +97,7 @@ describe("production runtime readiness workflow", () => {
     const workflow = read(workflowPath);
 
     expect(workflow).toContain("if: steps.readiness.outputs.ready == 'true'");
-    expect(workflow).toContain('Route matrix: \`${{ steps.routes.outputs.route_count }} routes, ${{ steps.routes.outputs.failure_count }} failures\`');
+    expect(workflow).toContain('Route matrix: \\`${{ steps.routes.outputs.route_count }} routes, ${{ steps.routes.outputs.failure_count }} failures\\`');
     expect(workflow).toContain('gh issue comment "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY"');
     expect(workflow).toContain('gh issue close "$RUNTIME_READINESS_ISSUE" --repo "$GITHUB_REPOSITORY" --reason completed');
     expect(workflow).toContain("No secret value, secret length, hash, derived key material");
