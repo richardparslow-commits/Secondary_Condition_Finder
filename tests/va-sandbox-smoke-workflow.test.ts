@@ -7,6 +7,10 @@ const workflow = readFileSync(
   resolve(process.cwd(), ".github/workflows/va-sandbox-smoke.yml"),
   "utf8",
 );
+const runbook = readFileSync(
+  resolve(process.cwd(), "docs/va-sandbox-smoke-test.md"),
+  "utf8",
+);
 
 describe("VA sandbox smoke workflow", () => {
   it("is manual-only and declares separate API key variables", () => {
@@ -45,5 +49,17 @@ describe("VA sandbox smoke workflow", () => {
     expect(workflow).toContain("gh issue close 189 --reason completed");
     expect(workflow).toContain("API keys were not retained");
     expect(workflow).not.toContain("actions/upload-artifact");
+  });
+
+  it("keeps the operator runbook aligned to service-specific credentials", () => {
+    expect(runbook).toContain("VA_FORMS_SANDBOX_API_KEY");
+    expect(runbook).toContain("VA_BENEFITS_REFERENCE_SANDBOX_API_KEY");
+    expect(runbook).toContain("the VA Forms request must use only the Forms key");
+    expect(runbook).toContain(
+      "the Benefits Reference Data request must use only the Benefits Reference Data key",
+    );
+    expect(runbook).toContain("`332298000`");
+    expect(runbook).toContain("**zero recorded runs**");
+    expect(runbook).not.toContain("`VA_SANDBOX_API_KEY`");
   });
 });

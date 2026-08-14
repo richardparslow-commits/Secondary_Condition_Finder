@@ -27,13 +27,30 @@ describe("Phase 3 production-access package contracts", () => {
     expect(home).toContain('href="/about"');
   });
 
-  it("limits the initial production request to the two implemented open-data APIs", () => {
+  it("limits the production request to the two implemented open-data services", () => {
     const request = readRepoFile("docs/phase3-production-access-package.md");
 
     expect(request).toContain("VA Forms API — Open Data");
     expect(request).toContain("Benefits Reference Data API — Open Data");
     expect(request).toContain("APIs deliberately not requested");
-    expect(request).toContain("excludes Benefits Intake, Benefits Claims, Benefits Documents");
+    expect(request).toContain("Benefits Intake, Benefits Claims, Benefits Documents");
+  });
+
+  it("describes the current VA product surfaces and preserves algorithm isolation", () => {
+    const request = readRepoFile("docs/phase3-production-access-package.md");
+    const checklist = readRepoFile("docs/phase3-submission-checklist.md");
+    const demo = readRepoFile("docs/phase3-demo-script.md");
+
+    for (const text of [request, checklist, demo]) {
+      expect(text).toContain("/va-forms/finder");
+      expect(text).toContain("/va-reference/service-branches");
+    }
+
+    expect(request).toContain("VA reference data is deliberately separated from medical/evidence decision logic");
+    expect(request).toContain("secondary recommendations are computed independently");
+    expect(request).toContain("`matchPresumptives()` does not consume service-branch reference context");
+    expect(checklist).toContain("VA reference terminology does not change recommendation rank");
+    expect(demo).toContain("the reference block does not affect rank, evidence strength, nexus reasoning");
   });
 
   it("keeps credentialed sandbox validation pending until objective evidence exists", () => {
@@ -42,39 +59,54 @@ describe("Phase 3 production-access package contracts", () => {
     const phasePlan = readRepoFile("docs/phase-plan.md");
     const audit = readRepoFile("docs/phase2-completion-audit.md");
 
-    expect(request).toContain("Credentialed live sandbox validation for VA Forms and Benefits Reference Data remains externally pending in issue #189");
-    expect(request).not.toContain("Credentialed sandbox validation is complete and issue #189 is closed");
-    expect(checklist).toContain("- [ ] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence");
-    expect(checklist).not.toContain("- [x] Issue #189 is closed with non-sensitive credentialed sandbox smoke-test evidence");
+    expect(request).toContain("Credentialed live sandbox proof in issue #189");
+    expect(checklist).toContain("- [ ] Issue #189 is closed with sanitized credentialed sandbox success evidence");
     expect(phasePlan).toContain("Current status: **code-complete / externally pending**");
-    expect(phasePlan).toContain("workflow ID `332298000` has zero recorded runs");
+    expect(phasePlan).toContain("workflow ID `332298000`) still has **zero recorded runs**");
     expect(audit).toContain("Phase 2 external completion status: PENDING ONE EXTERNAL GATE");
-    expect(audit).toContain("credentialed sandbox smoke test");
+    expect(audit).toContain("workflow ID `332298000`) is manual-only and currently has **zero recorded runs**");
   });
 
-  it("records the completed runtime gate without closing the remaining external gates", () => {
+  it("records the current Vercel checkpoint while requiring fresh submission-time verification", () => {
+    const request = readRepoFile("docs/phase3-production-access-package.md");
+    const checklist = readRepoFile("docs/phase3-submission-checklist.md");
+    const phasePlan = readRepoFile("docs/phase-plan.md");
+
+    for (const text of [request, checklist, phasePlan]) {
+      expect(text).toContain("193f26030b9b90b81c832c6a645f179717abf307");
+      expect(text).toContain("CI #797");
+      expect(text).toContain("dpl_BwX77rhfw5Bank2oRe3zjgYaykR6");
+      expect(text).toContain("Production Runtime Readiness #156");
+    }
+
+    expect(checklist).toContain("these checks must be repeated for the final submission commit");
+    expect(request).toContain("not a permanent submission-time guarantee");
+  });
+
+  it("documents service-specific sandbox and production credentials", () => {
+    const request = readRepoFile("docs/phase3-production-access-package.md");
     const checklist = readRepoFile("docs/phase3-submission-checklist.md");
 
-    expect(checklist).toContain("- [x] Issue #213 is closed with non-sensitive production `/runtime-readiness` evidence");
-    expect(checklist).toContain("c49fe2414d7a29c50935af91f3f3a08db933c417");
-    expect(checklist).toContain("Repository CI #716");
-    expect(checklist).toContain("Production Runtime Readiness #78");
-    expect(checklist).toContain("dpl_2bMJZhr2cCCJnrGtVQeQ2NAcGebM");
-    expect(checklist).toContain("- [ ] Issue #195 is closed with recorded manual Section 508 accessibility evidence");
+    for (const text of [request, checklist]) {
+      expect(text).toContain("VA_API_ENV=sandbox|production");
+      expect(text).toContain("VA_API_ENABLED=true");
+      expect(text).toContain("VA_FORMS_SANDBOX_API_KEY");
+      expect(text).toContain("VA_BENEFITS_REFERENCE_SANDBOX_API_KEY");
+      expect(text).toContain("VA_FORMS_PRODUCTION_API_KEY");
+      expect(text).toContain("VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY");
+    }
   });
 
-  it("does not overstate accessibility readiness and targets Vercel production", () => {
+  it("does not overstate accessibility readiness", () => {
     const request = readRepoFile("docs/phase3-production-access-package.md");
     const checklist = readRepoFile("docs/phase3-submission-checklist.md");
     const accessibility = readRepoFile("docs/accessibility-audit.md");
 
-    expect(request).toContain("This is not a conformance certification");
+    expect(request).toContain("not a conformance certification");
     expect(request).toContain("complete issue #195");
-    expect(checklist).toContain("No claim is made that Section 508 conformance is complete unless issue #195 is closed with objective evidence");
+    expect(checklist).toContain("- [ ] Issue #195 is closed with recorded manual Section 508/accessibility evidence");
     expect(accessibility).toContain("PARTIAL EVIDENCE — MANUAL CONFORMANCE REVIEW PENDING");
     expect(accessibility).toContain("https://secondary-condition-finder.vercel.app");
-    expect(accessibility).toContain("record the exact deployed `main` commit and Vercel production deployment");
-    expect(accessibility).toContain("not the historical Azure Static Web Apps hostname");
   });
 
   it("covers VA review fields without inventing unresolved applicant facts", () => {
@@ -82,18 +114,16 @@ describe("Phase 3 production-access package contracts", () => {
     const checklist = readRepoFile("docs/phase3-submission-checklist.md");
 
     expect(request).toContain("Do not invent a revenue model");
-    expect(request).toContain("Section 508 / accessibility response");
-    expect(request).toContain("Security and incident-response response");
-    expect(request).toContain("Vulnerability management response");
-    expect(checklist).toContain("Do not infer or invent an organization, revenue model, or compliance status");
+    expect(checklist).toContain("Do not infer or invent organization, revenue, compliance, or certification facts");
   });
 
-  it("provides a bounded 30–60 minute demo with no real Veteran data", () => {
+  it("provides a bounded demo with no real Veteran data and no stale event-logger claim", () => {
     const demo = readRepoFile("docs/phase3-demo-script.md");
 
     expect(demo).toContain("30–60 minute walkthrough");
-    expect(demo).toContain("Do not use a real Veteran's PII, PHI");
-    expect(demo).toContain("Why only two APIs");
-    expect(demo).toContain("no real Veteran PII/PHI or secret credential appears on screen");
+    expect(demo).toContain("Do not use real Veteran PII, PHI");
+    expect(demo).toContain("no persistent workflow/recommendation event-history logger");
+    expect(demo).toContain("no real Veteran PII/PHI or credential appears on screen");
+    expect(demo).not.toContain("aggregate-only recommendation-event metrics");
   });
 });
