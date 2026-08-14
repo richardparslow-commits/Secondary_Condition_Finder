@@ -1,0 +1,53 @@
+{
+  "bodySystem": "Auditory & Special Senses",
+  "conditions": [
+    {
+      "id": "uveitis",
+      "name": "Uveitis",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [{"citation": "38 CFR 4.79", "note": "Schedule of ratings, eye; diagnostic code 6000 covers choroidopathy including uveitis, iritis, cyclitis, or choroiditis under the General Rating Formula for Diseases of the Eye.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "keratitis",
+      "name": "Keratitis",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [{"citation": "38 CFR 4.79", "note": "Schedule of ratings, eye; current diagnostic code 6001 is titled keratopathy and provides the applicable corneal-disease framework for this catalog identity.", "verified": false}],
+      "reviewNotes": ["The current schedule uses the broader term 'keratopathy' at DC 6001; this catalog identity does not imply that every keratopathy is keratitis."]
+    },
+    {
+      "id": "dry-eye-syndrome",
+      "name": "Dry Eye Syndrome",
+      "aliases": ["keratoconjunctivitis sicca"],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [{"citation": "38 CFR 4.79", "note": "No single diagnosis-specific dry-eye diagnostic code is assigned here. Depending on documented pathology and residuals, evaluation may use the lacrimal-apparatus framework at diagnostic code 6025 or other applicable eye criteria.", "verified": false}],
+      "reviewNotes": ["No single condition-specific diagnostic code is assigned in the current schedule; code selection depends on the documented lacrimal, corneal, visual, and treatment findings."]
+    },
+    {
+      "id": "retinal-dystrophy",
+      "name": "Retinal Dystrophy",
+      "aliases": ["retinitis pigmentosa", "rod-cone dystrophy", "cone-rod dystrophy"],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [{"citation": "38 CFR 4.79", "note": "Schedule of ratings, eye; diagnostic code 6042 covers retinal dystrophy, including retinitis pigmentosa, wet or dry macular degeneration, early-onset macular degeneration, and rod and/or cone dystrophy.", "verified": false}],
+      "reviewNotes": ["The existing macular-degeneration catalog entry remains a narrower user-facing identity under the same DC 6042 framework. Macular-degeneration names and aliases are intentionally not duplicated here."]
+    },
+    {
+      "id": "nystagmus",
+      "name": "Nystagmus",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [{"citation": "38 CFR 4.79", "note": "Schedule of ratings, eye; diagnostic code 6016 expressly covers central nystagmus.", "verified": false}],
+      "reviewNotes": ["DC 6016 expressly names central nystagmus; other nystagmus types may require a different rating framework and should not be assumed to use DC 6016 without human review."]
+    },
+    {
+      "id": "ptosis",
+      "name": "Ptosis",
+      "aliases": ["eyelid ptosis"],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [{"citation": "38 CFR 4.79", "note": "Schedule of ratings, eye; diagnostic code 6019 covers unilateral or bilateral ptosis and directs evaluation based on visual impairment or, when absent, disfigurement.", "verified": false}],
+      "reviewNotes": []
+    }
+  ]
+}
