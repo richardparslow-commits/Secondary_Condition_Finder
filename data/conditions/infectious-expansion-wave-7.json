@@ -1,0 +1,106 @@
+{
+  "bodySystem": "Infectious & Tropical Diseases",
+  "conditions": [
+    {
+      "id": "amebiasis",
+      "name": "Amebiasis",
+      "aliases": ["amoebiasis", "amebic dysentery"],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Current infectious/parasitic rating framework. DC 6320 covers parasitic diseases otherwise not specified; former digestive DC 7321 was removed effective May 19, 2024.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Do not assign historical DC 7321. VA removed that digestive diagnostic code effective May 19, 2024; use the current infectious/parasitic framework and rate documented residual disability within the appropriate body system.",
+        "Rating identity does not establish service connection or medical nexus."
+      ]
+    },
+    {
+      "id": "actinomycosis",
+      "name": "Actinomycosis",
+      "aliases": ["pulmonary actinomycosis"],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "DC 6822 under Bacterial Infections of the Lung; active pulmonary infection is evaluated under that formula and respiratory residuals are rated according to documented findings.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "DC 6822 is a respiratory/pulmonary rating identity. Extra-pulmonary actinomycosis may require evaluation under the body-system criteria for the documented residuals.",
+        "Do not use the rating schedule as evidence of causation or secondary nexus."
+      ]
+    },
+    {
+      "id": "nocardiosis",
+      "name": "Nocardiosis",
+      "aliases": ["pulmonary nocardiosis"],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "DC 6823 under Bacterial Infections of the Lung; active pulmonary infection is evaluated under that formula and respiratory residuals are rated according to documented findings.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "DC 6823 is a respiratory/pulmonary rating identity. Extra-pulmonary nocardiosis may require evaluation under the body-system criteria for the documented residuals.",
+        "Do not use the rating schedule as evidence of causation or secondary nexus."
+      ]
+    },
+    {
+      "id": "histoplasmosis",
+      "name": "Histoplasmosis of Lung",
+      "aliases": ["pulmonary histoplasmosis"],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "DC 6834, Histoplasmosis of lung, under the General Rating Formula for Mycotic Lung Disease.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "The approved stable id is histoplasmosis, but the Part 4 diagnostic-code identity is specifically pulmonary histoplasmosis/histoplasmosis of lung. Do not imply DC 6834 governs every extra-pulmonary manifestation.",
+        "Clinical relationship authoring must separately evaluate documented disease site and residuals."
+      ]
+    },
+    {
+      "id": "strongyloidiasis",
+      "name": "Strongyloidiasis",
+      "aliases": ["strongyloides infection"],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "DC 6325 expressly covers hyperinfection syndrome or disseminated strongyloidiasis. Other parasitic presentations may require DC 6320 or rating of residual disability in the appropriate body system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Do not treat DC 6325 as a diagnosis-specific code for every uncomplicated or localized Strongyloides infection; its express scope is hyperinfection syndrome or disseminated strongyloidiasis.",
+        "The broader stable catalog identity is retained for discovery while coding scope remains explicit."
+      ]
+    },
+    {
+      "id": "rickettsial-ehrlichial-anaplasma-infection",
+      "name": "Rickettsial, Ehrlichia, and Anaplasma Infections",
+      "aliases": ["rickettsial infection", "ehrlichiosis", "anaplasmosis", "rocky mountain spotted fever", "scrub typhus"],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "DC 6317 expressly covers rickettsial, ehrlichia, and anaplasma infections, including examples such as scrub typhus, Rocky Mountain spotted fever, ehrlichiosis, and anaplasmosis.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "This grouped identity follows the current DC 6317 regulatory grouping. Shared rating identity does not imply that all included infections share one etiology, course, residual pattern, or secondary pathway."
+      ]
+    }
+  ]
+}
