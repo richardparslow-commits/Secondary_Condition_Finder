@@ -1,0 +1,6 @@
+{
+  "id": "nocardiosis",
+  "draft": true,
+  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Separate pulmonary from disseminated or other extra-pulmonary disease and treatment/residual pathways; do not infer systemic causation from DC 6823 or the respiratory rating framework."],
+  "suggestions": []
+}
