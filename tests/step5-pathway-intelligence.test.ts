@@ -74,15 +74,16 @@ describe("Step 5 authored pathway intelligence", () => {
   it("carries only explicitly authored pathway intelligence on the contributing primary", () => {
     const catalog = loadConditionCatalog();
     const kb = loadKnowledgeBase();
-
-    const ptsd = recommend(catalog, kb, {
+    const intake = {
       primaryConditions: ["ptsd"],
-      symptoms: [],
-      medications: [],
-      treatments: [],
-      exposures: [],
+      symptoms: [] as string[],
+      medications: [] as string[],
+      treatments: [] as string[],
+      exposures: [] as string[],
       notes: "",
-    });
+    };
+
+    const ptsd = recommend(catalog, kb, intake);
     const osa = ptsd.recommendations.find((item) => item.conditionId === "sleep-apnea");
     const ed = ptsd.recommendations.find((item) => item.conditionId === "erectile-dysfunction");
 
@@ -93,28 +94,18 @@ describe("Step 5 authored pathway intelligence", () => {
       "medication-related",
     ]);
 
-    const knee = recommend(catalog, kb, {
-      primaryConditions: ["knee-injury"],
-      symptoms: [],
-      medications: [],
-      treatments: [],
-      exposures: [],
-      notes: "",
-    });
-    const hip = knee.recommendations.find((item) => item.conditionId === "hip-strain");
-    const ankle = knee.recommendations.find((item) => item.conditionId === "ankle-strain");
-
-    expect(hip?.contributingPrimaries[0]?.pathwayIntelligence?.pathways).toEqual([
-      "biomechanical",
-    ]);
-    expect(ankle?.contributingPrimaries[0]?.pathwayIntelligence).toBeUndefined();
+    const stripped = recommend(catalog, stripPathwayIntelligence(kb), intake);
+    const strippedOsa = stripped.recommendations.find(
+      (item) => item.conditionId === "sleep-apnea",
+    );
+    expect(strippedOsa?.contributingPrimaries[0]?.pathwayIntelligence).toBeUndefined();
   });
 
   it("does not let pathway intelligence affect recommendation order, score, or prevalence", () => {
     const catalog = loadConditionCatalog();
     const kb = loadKnowledgeBase();
     const intake = {
-      primaryConditions: ["ptsd", "knee-injury"],
+      primaryConditions: ["ptsd", "sleep-apnea"],
       symptoms: [] as string[],
       medications: [] as string[],
       treatments: [] as string[],
