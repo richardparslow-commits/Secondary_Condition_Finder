@@ -1,100 +1,123 @@
-# Phase 2 VA Sandbox Integration
+# Phase 2 VA Public-Reference Integration
 
-## Current low-sensitivity integrations
+## Scope
 
-Phase 2 currently uses two public/reference VA APIs behind one dedicated adapter layer:
+The app uses two low-sensitivity public/reference VA API services behind one server-only adapter layer:
 
-- VA Forms API: form search and current form metadata.
-- Benefits Reference Data API: disability reference values.
+- **VA Forms API** — public form search and metadata.
+- **Benefits Reference Data API** — public disability terminology and service-branch reference values.
 
-These integrations remain separate from authenticated Veteran-specific APIs. VA documents Benefits Reference Data as sending and receiving no PII or PHI, while VA Forms exposes public form information.
+These integrations remain separate from authenticated Veteran-specific claims and health APIs. They are administrative reference features only and do not participate in recommendation scoring, medical-evidence evaluation, or presumptive matching.
 
 ## Runtime configuration
 
-Sandbox integration is off by default.
+VA API access is disabled by default. The full environment contract is documented in `docs/va-api-runtime-configuration.md`.
+
+### Sandbox compatibility mode
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `VA_SANDBOX_ENABLED` | `false` | Enables the public-reference sandbox adapter only when set to `true`. |
-| `VA_SANDBOX_API_KEY` | unset | Server-side VA sandbox API key sent in the documented `apikey` header. Never expose through `NEXT_PUBLIC_*`. |
-| `VA_SANDBOX_TIMEOUT_MS` | `4000` | Per-attempt request timeout. |
-| `VA_FORMS_SANDBOX_BASE_URL` | `https://sandbox-api.va.gov/services/va_forms/v0` | Override for VA Forms sandbox endpoint root. HTTPS is required. |
-| `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL` | `https://sandbox-api.va.gov/services/benefits-reference-data/v1` | Override for Benefits Reference Data sandbox endpoint root. HTTPS is required. |
+| `VA_SANDBOX_ENABLED` | `false` | Backward-compatible sandbox-only enable flag used by the Phase 2 gate. |
+| `VA_FORMS_SANDBOX_API_KEY` | unset | Server-only key used only for VA Forms sandbox requests. |
+| `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY` | unset | Server-only key used only for Benefits Reference Data sandbox requests. |
+| `VA_SANDBOX_TIMEOUT_MS` | `4000` | Backward-compatible timeout override. |
+| `VA_FORMS_SANDBOX_BASE_URL` | VA sandbox default | Optional HTTPS-only VA Forms sandbox root override. |
+| `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL` | VA sandbox default | Optional HTTPS-only Benefits Reference Data sandbox root override. |
 
-No API key or live credential is committed to the repository.
+### Environment-neutral mode
+
+- `VA_API_ENV=sandbox|production`
+- `VA_API_ENABLED=true`
+- `VA_API_TIMEOUT_MS=<milliseconds>` (optional)
+
+Production activation additionally requires the service-specific production keys and must not occur until VA grants production access:
+
+- `VA_FORMS_PRODUCTION_API_KEY`
+- `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY`
+
+Never expose any VA key through `NEXT_PUBLIC_*` variables.
 
 ## Adapter behavior
 
-`src/lib/va/sandbox.ts` provides:
+`src/lib/va/sandbox.ts` provides the shared request adapter used by Forms and Benefits Reference Data. It:
 
-- `fetchVaForms(query?)`
-- `fetchVaDisabilityReference()`
-- `loadVaSandboxConfig()`
-
-The adapter:
-
-1. Fails closed to the local baseline when disabled or missing credentials.
+1. Fails closed to local/reference behavior when disabled or missing the relevant service credential.
 2. Requires HTTPS endpoint configuration.
-3. Uses the VA-documented `apikey` request header.
-4. Validates successful responses with Zod before returning them to callers.
-5. Retries one time for transient HTTP 429, 503, or 504 responses and once after a timeout/network failure.
-6. Returns `local-fallback` rather than throwing upstream failures into the core workflow.
-7. Generates a request ID and optionally emits structured observations containing service, path, attempt, status/outcome, and duration only.
+3. Sends only the credential for the service being called.
+4. Validates successful payloads before returning them to callers.
+5. Retries at most once for HTTP 429, 503, or 504 and transient timeout/network failures.
+6. Returns local fallback rather than breaking the core workflow.
+7. Emits optional structured observations containing only request ID, service, path, attempt, status/outcome, and duration.
 
-## User-facing Phase 2 demonstrations
+## Shared cache and status
+
+Forms search, disability terminology, and service-branch reference loaders use a shared bounded five-minute successful-response cache.
+
+User-facing status may expose only:
+
+- source label;
+- sandbox/production/local-fallback environment label;
+- last successful retrieval timestamp;
+- cache hit/miss/not-used state.
+
+Credentials, raw payloads, query values, and workflow selections are not part of that status surface. Local fallback is not retained as a successful VA cache entry.
+
+## User-facing demonstrations
 
 ### `/va-forms`
 
-- Bounded reference for VA Form 21-526EZ.
-- Uses validated VA Forms sandbox metadata when enabled.
-- Clearly labeled local VA.gov reference fallback when sandbox access is disabled or unavailable.
-- Does not access a Veteran account or transmit claim, diagnosis, health, or service-history state.
+Provides the direct Form 21-526EZ reference surface and links to the searchable Finder.
+
+### `/va-forms/finder`
+
+- Accepts public form number/title/keyword search text.
+- Uses validated VA Forms metadata when the configured environment is available.
+- Filters deleted records from the current display.
+- Shows revision/page/PDF-status metadata and official form links.
+- Shows explicit source/retrieval/cache status.
+- Falls back safely when VA access is disabled or unavailable.
+
+The search text is a public-form lookup and contains no required Veteran-specific claim, diagnosis, rating, PII, PHI, or service-history value.
 
 ### `/va-reference`
 
-- Loads the public Benefits Reference Data disability list through `/disabilities` when sandbox access is enabled.
-- The server sends no user condition/search input to VA; the endpoint is called without user parameters.
-- User filtering happens only in a client component after the public list has loaded.
-- Filter text is not written into the URL and is not sent back to the sandbox adapter.
-- When sandbox access is unavailable, the page clearly switches to the app's local condition catalog and explicitly states that the fallback is not an official VA list.
-- Matching a term is never presented as a diagnosis, eligibility decision, service-connection determination, or rating.
+- Loads Benefits Reference Data `/disabilities` without user condition/search parameters.
+- User filtering happens only after the list is loaded and is not written into the URL or sent to VA.
+- Retired/end-dated values are excluded from live API-backed display.
+- Local fallback is explicitly labeled as the app's catalog and not an official VA list.
+
+### Secondary result VA reference blocks
+
+- The public disability list is loaded independently of recommendation inputs.
+- Local condition names are matched conservatively by normalized exact name or explicitly curated alias only.
+- A result may show VA/VBA administrative terminology and reference ID when an exact/curated mapping exists.
+- The reference block explicitly states that it does not establish diagnosis, service connection, eligibility, rating, or recommendation strength.
+- `recommend()` does not receive the VA reference object.
+
+### `/va-reference/service-branches` and presumptive intake
+
+- The public service-branch list is loaded as reference data with local fallback.
+- Presumptive intake can store selected branch codes as optional encrypted workflow context.
+- `matchPresumptives()` does not read branch codes, so they cannot change the presumptive result.
 
 ## Observability privacy contract
 
 Observers must not receive:
 
-- API keys or authorization credentials
-- request query values
-- response bodies
-- condition selections from the secondary workflow
-- service-history selections from the presumptive workflow
-- intake free text, PII, or PHI
+- API keys or authorization credentials;
+- request query values;
+- response bodies;
+- secondary-workflow condition selections;
+- presumptive service-history selections;
+- free text, PII, or PHI.
 
-The adapter emits only operational request metadata needed to explain sandbox behavior and troubleshoot failures.
+## Automated coverage
 
-## Sandbox test scenarios
+Current regression coverage verifies disabled-mode no-network behavior, environment parsing, service-specific credentials, request headers, payload validation, bounded retries, timeout/network fallback, HTTPS enforcement, observation privacy, shared caching/status, client-side disability filtering, per-result VA-reference isolation from recommendation scoring, and service-branch isolation from presumptive matching.
 
-Automated coverage verifies:
-
-- disabled feature flag causes no network request
-- environment configuration is parsed correctly
-- VA Forms requests use `apikey` and response validation
-- Benefits Reference Data disability responses are validated
-- one retry occurs for a transient 503 response
-- observations omit query values and credentials
-- invalid response shapes fail closed
-- non-HTTPS endpoint overrides fail closed
-- disability-reference UI filters retired/end-dated values from sandbox results
-- disability-reference UI falls back cleanly when sandbox data is absent
-- user filtering is not implemented through URL search parameters or client network requests
-
-## Known limitations
+## Known limitations and external gate
 
 - Sandbox data is test data and may not be current.
-- The current Benefits Reference Data UI demonstrates only disability terminology; other public reference endpoints remain unused.
-- The app does not integrate Benefits Intake, Benefits Claims, health, or other authenticated Veteran-specific APIs.
-- Production API access remains out of scope until the sandbox demonstrations and production-access package are deliberately reviewed.
-
-## Next Phase 2 decision point
-
-After both public-reference demonstrations remain green in CI and deployment, the next expansion should be chosen by explicit user value rather than API breadth. Preferred candidates are another bounded Benefits Reference Data view (for example service branches or treatment centers) or a more complete VA Forms experience. Authenticated Veteran-specific APIs should remain out of scope until the privacy, authentication, and production-access boundaries are reviewed separately.
+- No authenticated Veteran-specific API is part of the current scope.
+- Production mode is configuration-ready but must remain disabled until VA grants production access and live production connectivity is objectively verified.
+- Issue #189 remains open because the dedicated credentialed sandbox workflow has not yet recorded a successful run.
