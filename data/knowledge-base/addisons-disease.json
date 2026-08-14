@@ -1,55 +1,9 @@
 {
   "id": "addisons-disease",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "peripheral-neuropathy",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Endocrine and metabolic dysfunction may be associated with peripheral nerve abnormalities in some clinical contexts. Individual examination and electrodiagnostic findings are needed to determine whether that relationship applies.",
-      "evidenceGaps": [
-        "Monofilament examination or nerve conduction studies"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.124a",
-          "note": "Peripheral nerve rating schedule; does not establish a medical relationship between the underlying conditions.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "diabetic-retinopathy",
-      "rank": 2,
-      "prevalence": "commonly-explored",
-      "rationale": "Metabolic dysfunction may be associated with microvascular changes affecting the eye in relevant clinical populations. Individual ophthalmologic findings and diagnosis are required to determine whether this relationship applies.",
-      "evidenceGaps": [
-        "Ophthalmology fundoscopic exam documentation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.79",
-          "note": "Eye rating schedule; does not establish a medical relationship between the underlying conditions.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "chronic-kidney-disease",
-      "rank": 3,
-      "prevalence": "sometimes-explored",
-      "rationale": "Metabolic and hypertensive factors may be associated with impaired renal filtration over time. Individual laboratory trends and clinical assessment are required to determine whether this relationship applies.",
-      "evidenceGaps": [
-        "eGFR and eCr lab trends over 3+ months"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.115a",
-          "note": "Renal rating schedule; does not establish a medical relationship between the underlying conditions.",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild any secondary-condition suggestions using Addison's-disease-specific clinical evidence before publication.",
+    "The prior peripheral-neuropathy, diabetic-retinopathy, and chronic-kidney-disease suggestions were withdrawn because their only sources were rating-schedule authorities and the rationales relied on generic endocrine/metabolic language rather than Addison's-disease-specific relationship evidence."
+  ],
+  "suggestions": []
 }
