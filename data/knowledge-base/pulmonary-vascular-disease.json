@@ -1,0 +1,6 @@
+{
+  "id": "pulmonary-vascular-disease",
+  "draft": true,
+  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, cardiopulmonary, thromboembolic, treatment, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
+  "suggestions": []
+}
