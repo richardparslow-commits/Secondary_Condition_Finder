@@ -7,33 +7,23 @@
       "conditionId": "sleep-apnea",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Chronic airway inflammation and altered pulmonary mechanics increase the likelihood of upper airway collapse during sleep.",
+      "rationale": "Obstructive sleep apnea is frequently identified in cohorts with interstitial lung disease, but the available meta-analysis is prevalence evidence and does not establish that ILD causes or aggravates OSA in an individual. A systematic review and meta-analysis of 10 studies involving 569 patients with ILD found OSA in 61% and described the result as preliminary evidence of high OSA prevalence in ILD. This mapping therefore remains association-focused and requires sleep-study confirmation, ILD phenotype/severity, chronology, body-habitus and upper-airway risk factors, medication context, and specialist assessment before any individual secondary theory is advanced.",
       "evidenceGaps": [
-        "Sleep study (polysomnography) with AHI index",
-        "Pulmonary or sleep specialist nexus"
+        "Polysomnography or validated sleep-study documentation confirming OSA and severity",
+        "Pulmonology documentation establishing the ILD subtype, severity, physiology, and chronology",
+        "OSA chronology relative to ILD onset/progression",
+        "BMI/weight trajectory, craniofacial/upper-airway factors, age, smoking, sedating medication, and other OSA risk factors",
+        "Pulmonary/sleep specialist assessment distinguishing coexistence from individual causation or aggravation"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "cardiac-arrhythmia",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Chronic nocturnal hypoxia and respiratory strain place stress on the cardiovascular system.",
-      "evidenceGaps": [
-        "ECG or Holter monitor records",
-        "Cardiology evaluation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.104",
-          "note": "Cardiovascular diagnostic codes",
-          "verified": false
+          "citation": "Cheng Y, Wang Y, Dai L. The prevalence of obstructive sleep apnea in interstitial lung disease: a systematic review and meta-analysis. Sleep Breath. 2021;25(3):1219-1228. PMID 33403599",
+          "note": "Systematic review/meta-analysis of 10 studies and 569 ILD patients found OSA in 61% and characterized the evidence as preliminary evidence of high OSA prevalence in ILD. Supports association-focused research, not individual causal attribution.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33403599/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 33403599; abstract Methods/Results/Conclusion: 10 studies, 569 ILD patients, 332/61% with OSA; published correction PMID 33755913 noted during source check"
         }
       ]
     }
