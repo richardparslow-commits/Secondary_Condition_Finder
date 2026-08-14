@@ -1,0 +1,6 @@
+{
+  "id": "chronic-liver-disease",
+  "draft": true,
+  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review etiology-specific metabolic, toxic/medication, infectious, autoimmune, treatment, aggravation, and organ-system pathways only where applicable; keep this umbrella identity distinct from existing hepatitis and cirrhosis mappings and do not infer etiology from the catalog label."],
+  "suggestions": []
+}

@@ -179,14 +179,15 @@ health state.
 
 ## Knowledge-base coverage and authoring
 
-261 catalog conditions have version-controlled mapping files after condition
-catalog expansion Wave 4. Waves 1 through 4 added 68 conditions in controlled
+276 catalog conditions have version-controlled mapping files after condition
+catalog expansion Wave 5. Waves 1 through 5 added 83 conditions in controlled
 musculoskeletal, neurological, endocrine, cardiovascular/pulmonary-vascular,
-respiratory/ENT, sleep-wake, and ophthalmologic/special-sense batches; all 68
-expansion mappings remain safe drafts with no published suggestions until
-condition-specific clinical evidence satisfies the repository's publication
-rules. Draft mappings remain excluded from recommendation output. The target-v2
-expansion plan is maintained in `docs/condition-expansion-roadmap.md`.
+respiratory/ENT, sleep-wake, ophthalmologic/special-sense, digestive, and
+genitourinary batches; all 83 expansion mappings remain safe drafts with no
+published suggestions until condition-specific clinical evidence satisfies the
+repository's publication rules. Draft mappings remain excluded from
+recommendation output. The target-v2 expansion plan is maintained in
+`docs/condition-expansion-roadmap.md`.
 
 To add or change a condition:
 
@@ -198,6 +199,9 @@ To add or change a condition:
    actual Part 4 body-system authority. When a broader regulatory identity
    overlaps a narrower existing catalog condition, keep names/aliases distinct
    and document the relationship rather than collapsing the two identities.
+   When one roadmap identity intentionally groups related diagnoses, clinical
+   authoring must still evaluate each diagnosis/pathway separately rather than
+   assuming the grouped label has one etiology or nexus.
 2. **Mapping:** update/create `data/knowledge-base/<id>.json`. Each published
    suggestion needs a condition ID, rank, prevalence label, conservative
    rationale, evidence gaps, and source references satisfying the repository's

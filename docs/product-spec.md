@@ -209,8 +209,8 @@ added to recommendation logs or telemetry.
 Three layers are deliberately separate. See `docs/condition-catalog.md`.
 
 - `data/conditions/` is the catalog: condition identity and rating schedule
-  citations, currently **261 conditions across 24 catalog files** after
-  condition catalog expansion Wave 4. The ranked path to target catalog v2
+  citations, currently **276 conditions across 26 catalog files** after
+  condition catalog expansion Wave 5. The ranked path to target catalog v2
   (300 conditions) is in `docs/condition-expansion-roadmap.md`.
 - `data/knowledge-base/` holds exactly one secondary-mapping file per catalog
   condition, referencing catalog ids. New expansion conditions may begin as
@@ -225,13 +225,16 @@ load-time validation before recommendation logic runs.
 
 When the rating schedule does not provide a single diagnosis-specific diagnostic
 code, the catalog may record the applicable joint, nerve, spine, neoplasm,
-laryngeal, ocular, or residual rating framework with an explicit review note.
-Product expansion-wave grouping does not override the actual Part 4 rating
-authority; a cross-system condition must cite the schedule where VA actually
-evaluates it. When a broader regulatory umbrella overlaps a narrower existing
-catalog diagnosis, the two identities must remain distinguishable and must not
-claim each other's names or aliases. Rating context is condition identity/rating
-information only and must not be presented as clinical nexus evidence.
+laryngeal, ocular, digestive, genitourinary, or residual rating framework with
+an explicit review note. Product expansion-wave grouping does not override the
+actual Part 4 rating authority; a cross-system condition must cite the schedule
+where VA actually evaluates it. When a broader regulatory umbrella overlaps a
+narrower existing catalog diagnosis, the two identities must remain
+distinguishable and must not claim each other's names or aliases. When a roadmap
+identity intentionally groups related diagnoses, the user-facing grouping does
+not authorize clinical authors to treat the grouped diagnoses as one etiology or
+one secondary pathway. Rating context is condition identity/rating information
+only and must not be presented as clinical nexus evidence.
 
 JSON in git rather than an opaque production database keeps mapping, pathway
 intelligence, and citation changes reviewable as pull request diffs.

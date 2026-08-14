@@ -1,0 +1,145 @@
+{
+  "bodySystem": "Digestive System",
+  "conditions": [
+    {
+      "id": "esophageal-stricture",
+      "name": "Esophageal Stricture",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "DC 7203, esophageal stricture.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "achalasia",
+      "name": "Achalasia (Esophageal Motility Disorder)",
+      "aliases": ["cardiospasm"],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Esophageal motility/spasm framework, including cardiospasm; DC 7204.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["Use the documented esophageal motility diagnosis and manifestations; catalog identity does not establish etiology or secondary nexus."]
+    },
+    {
+      "id": "barretts-esophagus",
+      "name": "Barrett's Esophagus",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "DC 7207, Barrett's esophagus.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "gastroparesis",
+      "name": "Gastroparesis",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Digestive-system rating framework; no single diagnosis-specific diagnostic code is assigned by this automated expansion.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["Qualified review should select the applicable current digestive criteria from the documented manifestations rather than inferring an analogous diagnostic code."]
+    },
+    {
+      "id": "peritoneal-adhesions",
+      "name": "Peritoneal Adhesions",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "DC 7301, adhesions of peritoneum.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "short-bowel-syndrome",
+      "name": "Short Bowel Syndrome",
+      "aliases": ["short gut syndrome"],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Small-intestine resection/short-bowel residual framework, including DC 7328 when applicable.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["Use the documented bowel resection and residual manifestations; the catalog identity does not assume a particular surgical history."]
+    },
+    {
+      "id": "fecal-incontinence",
+      "name": "Fecal Incontinence / Impairment of Sphincter Control",
+      "aliases": ["bowel incontinence"],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "DC 7332, impairment of sphincter control of the rectum and anus.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "rectal-prolapse",
+      "name": "Rectal Prolapse",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "DC 7334, rectal prolapse.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "anal-fistula",
+      "name": "Anal Fistula (Fistula in Ano)",
+      "aliases": ["fistula in ano"],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "DC 7335, fistula in ano; evaluated under the applicable sphincter-control criteria.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "chronic-liver-disease",
+      "name": "Chronic Liver Disease Without Cirrhosis",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "DC 7345, chronic liver disease without cirrhosis.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": ["This umbrella identity does not replace the existing hepatitis or cirrhosis catalog identities. Select the documented diagnosis and do not merge their aliases."]
+    }
+  ]
+}
