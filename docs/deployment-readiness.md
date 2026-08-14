@@ -1,8 +1,8 @@
 # Production deployment readiness
 
-This runbook describes the production controls that are active for the Secondary Condition Finder and the external gates that remain deliberately separate.
+This runbook describes the production controls active for the Secondary Condition Finder and the external gates that remain deliberately separate.
 
-## Current production host and deployment lineage
+## Current production host and trusted lineage
 
 Production is hosted on the Vercel Pro project `secondary-condition-finder` and deploys from GitHub `main` through the Vercel Git integration.
 
@@ -10,172 +10,168 @@ Canonical production URL:
 
 - `https://secondary-condition-finder.vercel.app`
 
-The normal production build is `npm run build` / `next build`. The legacy Azure Static Web Apps workflow remains manual fallback infrastructure only and is not a production readiness signal.
+The normal production build is `npm run build` / `next build`. Repository CI is read-only and is the code-quality gate. After a successful `CI` run on `main`, `.github/workflows/production-runtime-readiness.yml` verifies the exact successful CI commit rather than accepting an arbitrary operator-supplied SHA.
 
-Repository CI is read-only and is the code-quality gate. After a successful `CI` run on `main`, `.github/workflows/production-runtime-readiness.yml` automatically verifies the exact successful CI commit. The readiness workflow does not accept an arbitrary operator-supplied deployed SHA.
+### Current verified checkpoint
 
-Current verified baseline at the time of this update:
+At this runbook refresh:
 
-- production commit `24d4c4f7534e12866d306920c2959213c81b970c`;
-- main CI #740 succeeded on that exact commit, including the real-browser E2E gate;
-- Vercel reported a successful production deployment for that exact commit;
-- Production Runtime Readiness #102 succeeded from the successful CI lineage on that exact commit.
+- production commit: `193f26030b9b90b81c832c6a645f179717abf307`;
+- main CI #797: success on that exact commit, including real-browser E2E;
+- Vercel production deployment: `dpl_BwX77rhfw5Bank2oRe3zjgYaykR6` — READY on that exact commit;
+- canonical production alias: converged to that deployment;
+- Production Runtime Readiness #156: success on the same exact CI/deployment lineage;
+- production `/va-reference`: HTTP 200 and explicitly labeled local fallback because VA access remains disabled.
 
-This baseline is historical evidence, not a permanent production identifier. Every later successful `main` deployment must establish a new exact-commit readiness result.
+This checkpoint is objective historical/current evidence, not a permanent production identifier. Every later production commit must establish its own successful lineage.
 
-## Historical Verified Vercel production runtime checkpoint
+## Historical first Vercel runtime checkpoint
 
-Issue #213 is the historical evidence record for the first verified Vercel production runtime checkpoint. It was closed as completed after the following exact-commit evidence was established:
+Issue #213 is the completed historical evidence record for the first verified Vercel workflow-session runtime checkpoint. It remains useful history but does not replace the fresh exact-commit check after later deployments.
 
-- production commit `c49fe2414d7a29c50935af91f3f3a08db933c417`;
-- Repository CI #716 succeeded on that exact commit;
-- Vercel deployment `dpl_2bMJZhr2cCCJnrGtVQeQ2NAcGebM` reported success for that commit and served `https://secondary-condition-finder.vercel.app`;
-- Production Runtime Readiness #78 succeeded on that exact commit;
-- the historical route matrix included `/runtime-readiness=200`;
-- `/runtime-readiness` rendered `data-runtime-readiness="ready"` after the production workflow-session crypto round trip.
+## Required Vercel production settings
 
-That checkpoint remains useful historical evidence, but it does not override the current trusted-lineage design and is not a substitute for a fresh exact-commit readiness result after later `main` deployments.
+Configure server-only values in the Vercel project's **Production** environment. Never expose secrets through `NEXT_PUBLIC_*` variables.
 
-## Required production runtime setting
+### Workflow-session security
 
-Configure production runtime settings in the Vercel project's **Production** environment. Do not place secret values in source control or expose them through `NEXT_PUBLIC_*` variables.
-
-| Setting | Required | Value / behavior |
+| Setting | Required | Behavior |
 |---|---:|---|
-| `WORKFLOW_SESSION_SECRET` | Yes | Server-only cryptographically random value of at least 32 characters. It encrypts and authenticates secondary and presumptive workflow cookies. Production fails closed when it is absent or too short. |
-| `VA_SANDBOX_ENABLED` | No | Leave unset or `false` until VA sandbox integration is intentionally being exercised. |
-| `VA_SANDBOX_API_KEY` | Only when sandbox is enabled | Server-only VA sandbox API key. Never expose through `NEXT_PUBLIC_*`. |
-| `VA_SANDBOX_TIMEOUT_MS` | No | Optional per-attempt timeout. Defaults to 4000 ms. |
-| `VA_FORMS_SANDBOX_BASE_URL` | No | Optional HTTPS override for the VA Forms sandbox endpoint root. |
-| `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL` | No | Optional HTTPS override for the Benefits Reference Data sandbox endpoint root. |
+| `WORKFLOW_SESSION_SECRET` | Yes | Cryptographically random server-only value of at least 32 characters. Production fails closed when absent/too short. |
+| `SECONDARY_WORKFLOW_SESSION_SECRET` | Legacy only | Backward-compatible fallback; new deployments must use `WORKFLOW_SESSION_SECRET`. |
 
-`SECONDARY_WORKFLOW_SESSION_SECRET` remains a backward-compatible fallback only. New deployments must configure `WORKFLOW_SESSION_SECRET`.
+Vercel environment-variable changes apply to newly created deployments. After adding or rotating the workflow-session secret, create a new production deployment and require a fresh successful Production Runtime Readiness result.
 
-Vercel environment-variable changes apply to newly created deployments. After adding or rotating the workflow-session secret, create a new production deployment and require a fresh successful runtime-readiness result.
+### VA public-reference environment selection
 
-## Objective runtime-secret verification
+The full contract is in `docs/va-api-runtime-configuration.md`.
 
-The application exposes a deliberately non-sensitive, force-dynamic server-rendered route at `/runtime-readiness`. It does **not** return the secret, its length, a hash, key material, cookie content, or environment-variable values.
+| Setting | Default | Behavior |
+|---|---|---|
+| `VA_API_ENV` | `sandbox` | Selects intended upstream environment: `sandbox` or `production`. |
+| `VA_API_ENABLED` | `false` | Explicit environment-neutral enable flag. Production mode requires `true`. |
+| `VA_API_TIMEOUT_MS` | `4000` | Optional per-attempt timeout override. |
+| `VA_SANDBOX_ENABLED` | `false` | Backward-compatible sandbox-only enable flag used by the Phase 2 smoke-test contract. |
+| `VA_SANDBOX_TIMEOUT_MS` | unset | Backward-compatible sandbox-era timeout fallback. |
 
-At request time the route calls the real workflow-session crypto self-test and renders one high-level marker: `data-runtime-readiness="ready"` or `data-runtime-readiness="not_ready"`. It reports `ready` only when the server is in production, the primary `WORKFLOW_SESSION_SECRET` satisfies the production requirement, and the real AES-256-GCM workflow-session implementation can seal and reopen an in-memory probe.
+### Sandbox service credentials
+
+Use only for intentional sandbox operation:
+
+- `VA_FORMS_SANDBOX_API_KEY`
+- `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`
+- optional HTTPS overrides `VA_FORMS_SANDBOX_BASE_URL` and `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL`
+
+### Production service credentials
+
+Do **not** configure/enable these as an active production path until VA grants production access and the transition is deliberately reviewed:
+
+- `VA_FORMS_PRODUCTION_API_KEY`
+- `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY`
+- optional HTTPS overrides `VA_FORMS_PRODUCTION_BASE_URL` and `VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL`
+
+Merely setting `VA_API_ENV=production` must not activate production traffic. `VA_API_ENABLED=true` and the relevant service credential are also required. Forms requests use only the Forms credential; Benefits Reference Data requests use only the Benefits Reference Data credential.
+
+## Objective workflow-session runtime verification
+
+`/runtime-readiness` is force-dynamic and deliberately non-sensitive. It does not return the secret, its length, a hash, derived key material, cookie content, or environment-variable values.
+
+The route reports `data-runtime-readiness="ready"` only when the deployed runtime is production, the primary `WORKFLOW_SESSION_SECRET` satisfies the production requirement, and the real AES-256-GCM workflow-session implementation can seal and reopen an in-memory probe.
 
 ### Automated evidence contract
 
-`.github/workflows/production-runtime-readiness.yml` runs only after a successful repository `CI` workflow on `main`. It:
+Production Runtime Readiness:
 
-1. resolves the exact successful CI commit from the `workflow_run` event;
-2. waits for the Vercel commit status to report success for that same SHA;
-3. derives the matching deployment from that exact-commit status;
+1. resolves the exact successful `main` CI commit from the `workflow_run` event;
+2. waits for a Vercel success status for that same SHA;
+3. derives the matching Vercel deployment;
 4. waits for the canonical production alias to converge to that deployment;
-5. probes the production route matrix using status-only checks where appropriate;
-6. requests `/runtime-readiness` into a temporary private file and requires HTTP 200 plus `data-runtime-readiness="ready"`;
-7. deletes temporary response bodies and does not print or attach them;
-8. records only non-sensitive runtime evidence.
+5. probes the production route matrix;
+6. requires `/runtime-readiness` HTTP 200 plus `data-runtime-readiness="ready"`;
+7. deletes temporary response bodies;
+8. records only non-sensitive commit/deployment/status evidence.
 
-There is no manual arbitrary-SHA readiness path. If a commit needs a fresh production readiness result, it must reach production through the reviewed `main`/CI lineage.
+There is no trusted arbitrary-SHA manual readiness path.
 
-### Evidence that may be recorded
+## VA public-reference runtime behavior
 
-- UTC timestamp;
-- exact deployed commit;
-- canonical production URL;
-- Vercel deployment identifier and high-level status;
-- route HTTP status codes;
-- high-level runtime readiness result.
+VA access is disabled by default. With no enabling configuration, the app serves clearly labeled local fallback reference data and makes no VA public-reference request.
 
-Never paste, print, log, attach, or otherwise record the workflow-session secret, secret length, hashes, derived key material, cookie payloads, VA API credentials, or environment-variable values.
+When enabled in an approved environment:
+
+- the adapter requires HTTPS endpoints;
+- sends only the credential for the service being called;
+- validates successful payloads;
+- uses at most two attempts with one bounded retry for supported transient failures;
+- falls back locally on upstream failure;
+- emits only privacy-safe operational observations;
+- shares a bounded five-minute successful-response cache across Forms search, disability terminology, and service branches.
+
+User-facing reference pages expose only source/environment/retrieval/cache state. Credentials, raw payloads, and workflow selections are never part of that status surface.
+
+### Algorithm isolation
+
+VA administrative reference data remains outside the decision logic:
+
+- secondary recommendations are computed independently of VA terminology lookup;
+- per-result VA reference blocks are annotations only;
+- optional service-branch context is stored in the encrypted presumptive session but is not read by `matchPresumptives()`.
 
 ## Browser security baseline
 
-`next.config.ts` applies the security header set to all routes.
+`next.config.ts` applies route-wide security headers, including:
 
-Production Content Security Policy is source-restrictive rather than the earlier partial policy:
-
-- `default-src 'self'`;
-- production scripts restricted to self plus the inline allowance required by the current static Next.js header strategy; production does not include `unsafe-eval`;
-- `script-src-attr 'none'`;
-- styles restricted to self plus the inline style allowance required by the current app;
-- images restricted to self, `data:`, and `blob:`;
-- fonts restricted to self and `data:`;
-- `connect-src 'self'` in production;
-- workers restricted to self and `blob:`;
-- frames and objects denied;
-- base URLs and form submissions restricted to self;
-- frame ancestors denied;
-- insecure requests upgraded.
-
-Development alone adds the WebSocket and eval allowances needed by Next.js development/HMR tooling.
-
-The remaining route-wide headers are:
-
+- source-restrictive production CSP;
 - `Referrer-Policy: no-referrer`;
 - `X-Content-Type-Options: nosniff`;
 - `X-Frame-Options: DENY`;
-- `Permissions-Policy` disabling camera, microphone, geolocation, payment, and USB APIs;
-- `Strict-Transport-Security: max-age=31536000; includeSubDomains`.
+- restrictive `Permissions-Policy`;
+- HSTS with subdomains.
 
-Any future CSP relaxation must be narrowly justified and validated through the real-browser CI gate before merge.
-
-## Browser telemetry posture
-
-`NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING` remains an optional build-time variable in application code. The client initializer, when present, disables automatic route/AJAX/fetch tracking and strips query strings and fragments from telemetry URLs.
-
-However, the current **production CSP permits browser connections only to the same origin** (`connect-src 'self'`). Therefore the current production browser policy does not authorize third-party Application Insights network egress. Do not describe Application Insights as active production telemetry unless the CSP and deployment configuration are deliberately changed in a separately reviewed privacy/security change.
-
-Never put health, disability, service-history, workflow-session secrets, or VA API credentials in any `NEXT_PUBLIC_*` variable.
+The current production CSP uses `connect-src 'self'`. Do not describe third-party browser telemetry as active production network egress unless CSP and deployment configuration are deliberately changed in a separately reviewed privacy/security change.
 
 ## Browser-local evidence handling
 
-Optional evidence review stays in the browser. The application enforces these local resource ceilings:
+Optional evidence review remains browser-local. Current ceilings include:
 
 - 20 MB per file;
-- 10 selected files per analysis batch;
-- 50 MB accepted file bytes per batch;
-- 300 pages per PDF source;
-- 500,000 extracted or pasted characters per source;
+- 10 selected files per batch;
+- 50 MB accepted bytes per batch;
+- 300 pages per PDF;
+- 500,000 extracted/pasted characters per source;
 - 10 retained source analyses per browser tab.
 
-Raw selected document bytes and raw document text are not sent to the application server by this feature. Extracted evidence excerpts and evidence-gap review selections are tab-scoped browser session state and can be cleared by the user.
-
-## VA sandbox behavior and credential gate
-
-VA sandbox integration remains disabled by default. When disabled, public-reference pages use local fallback data and do not require VA credentials.
-
-Credentialed VA sandbox verification is intentionally deferred until the application is demo-ready. Do not manufacture credentials, replace the real credentialed check with mocks, or treat local fallback behavior as proof of VA connectivity.
-
-When sandbox access is eventually enabled, keep VA API keys server-only and run the separately governed credentialed smoke test before claiming sandbox connectivity.
+Raw selected document bytes/text are not sent to the application server by this feature.
 
 ## Runtime and pipeline reproducibility
 
 - `package.json` declares Node `22.x`;
-- normal `npm run build` is Vercel-native and does not force standalone output;
-- legacy `npm run build:azure` retains standalone packaging only for the manual Azure fallback;
-- CI marketplace actions in the active CI workflow are pinned to immutable commit SHAs;
-- CI has `contents: read` only and does not create or mutate GitHub issues;
-- the real Chrome/ChromeDriver secondary-workflow journey runs after the production build and is part of the final CI gate.
+- normal production build is Vercel-native `next build`;
+- active CI is read-only and includes dependency audit, citation audit, KB validation, lint, typecheck, tests, production build, and real-browser E2E;
+- exact-commit production readiness is verified after successful `main` CI.
 
 ## Legacy Azure manual fallback
 
-The legacy Azure deployment workflow remains historical/manual fallback infrastructure only. It has no `push` or `pull_request` trigger. An operator must explicitly use the manual workflow and opt into the legacy deployment path; Azure success or failure is not used as the production readiness signal.
+The former Azure Static Web Apps path remains **manual legacy fallback only**. It has no `push` or `pull_request` trigger and is not a production readiness signal. The normal production host is Vercel.
 
 ## Production verification checklist
 
 After every production deployment:
 
-1. Confirm repository CI succeeded on the exact `main` commit.
-2. Confirm the Vercel success status corresponds to that same commit.
-3. Confirm the canonical production alias converged to that exact deployment.
-4. Require Production Runtime Readiness to succeed from that CI lineage.
-5. Confirm the real-browser E2E step succeeded in the corresponding CI run.
-6. Confirm the production security headers remain present and the CSP remains source-restrictive.
-7. Verify `/`, `/about`, and `/va-forms` are available and `/runtime-readiness` reports ready.
-8. Keep VA sandbox mode disabled unless intentionally running the credentialed integration gate.
+1. Confirm CI succeeded on the exact `main` commit.
+2. Confirm the Vercel success status corresponds to that SHA.
+3. Confirm the canonical alias converged to that exact deployment.
+4. Require Production Runtime Readiness success from that CI lineage.
+5. Confirm real-browser E2E passed in the associated CI run.
+6. Confirm production security headers/CSP remain intact.
+7. Smoke `/`, `/about`, `/va-forms`, `/va-reference`, and `/runtime-readiness`.
+8. Keep VA public-reference access disabled unless intentionally running an approved sandbox or production transition.
+9. Never infer #189 sandbox proof or #195 Section 508 conformance from a green production deployment.
 
 ## Known external verification boundaries
 
-Repository CI, Vercel deployment status, browser E2E, and Production Runtime Readiness verify application implementation and deployment behavior. They do **not** prove either of these external gates:
+Repository CI, Vercel deployment status, browser E2E, and Production Runtime Readiness do **not** prove:
 
-- credentialed VA sandbox access (tracked separately by issue #189 and intentionally deferred until demo-ready);
-- Section 508 conformance evidence (tracked separately by issue #195 and requiring manual evidence).
-
-Do not infer either external gate from a green production deployment.
+- credentialed VA sandbox access — tracked by issue #189;
+- Section 508 conformance — tracked by issue #195;
+- VA production API access — tracked by issue #287 until granted and objectively verified.
