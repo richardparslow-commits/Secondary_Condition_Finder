@@ -14,6 +14,7 @@
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:composition": "node scripts/audit-test-composition.js",
     "typecheck": "tsc --noEmit",
     "citations:weak": "node scripts/report-weak-citations.js",
     "citations:audit": "node scripts/audit-citation-verification.js",

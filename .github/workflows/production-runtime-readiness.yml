@@ -154,11 +154,35 @@ jobs:
             echo "- served Vercel deployment: $served_deployment"
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Probe production route matrix
+      - name: Gate production route matrix
         id: routes
         shell: bash
         run: |
           set -euo pipefail
+
+          routes=(
+            "/"
+            "/about"
+            "/secondary"
+            "/secondary/condition-caused-by"
+            "/secondary/condition-aggravation"
+            "/secondary/legal"
+            "/secondary/diagnosed"
+            "/secondary/service-connected"
+            "/secondary/ratings"
+            "/secondary/upload"
+            "/secondary/suggestions"
+            "/secondary/evidence"
+            "/presumptive"
+            "/presumptive/results"
+            "/scenarios"
+            "/va-forms"
+            "/va-forms/finder"
+            "/va-reference"
+            "/va-reference/service-branches"
+            "/privacy"
+            "/terms"
+          )
 
           probe_status() {
             local path="$1"
@@ -167,6 +191,7 @@ jobs:
             status="$(curl --silent --show-error --location \
               --connect-timeout 10 \
               --max-time 20 \
+              --header 'Accept: text/html' \
               --output /dev/null \
               --write-out '%{http_code}' \
               "$PRODUCTION_BASE_URL$path")"
@@ -178,20 +203,28 @@ jobs:
             printf '%s' "$status"
           }
 
-          root_status="$(probe_status '/')"
-          about_status="$(probe_status '/about')"
-          va_forms_status="$(probe_status '/va-forms')"
-
-          echo "root_status=$root_status" >> "$GITHUB_OUTPUT"
-          echo "about_status=$about_status" >> "$GITHUB_OUTPUT"
-          echo "va_forms_status=$va_forms_status" >> "$GITHUB_OUTPUT"
-
+          matrix=""
+          failures=()
           {
             echo "## Production route matrix"
-            echo "- /: $root_status"
-            echo "- /about: $about_status"
-            echo "- /va-forms: $va_forms_status"
+            for route in "${routes[@]}"; do
+              status="$(probe_status "$route")"
+              echo "- $route: $status"
+              matrix="${matrix}${route}=${status};"
+              if [ "$status" != "200" ]; then
+                failures+=("$route=$status")
+              fi
+            done
           } >> "$GITHUB_STEP_SUMMARY"
+
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          echo "route_count=${#routes[@]}" >> "$GITHUB_OUTPUT"
+          echo "failure_count=${#failures[@]}" >> "$GITHUB_OUTPUT"
+
+          if [ "${#failures[@]}" -ne 0 ]; then
+            echo "Production route gate failed: ${failures[*]}" >&2
+            exit 1
+          fi
 
       - name: Verify production runtime readiness
         id: readiness
@@ -254,9 +287,8 @@ jobs:
           DEPLOYED_COMMIT: ${{ steps.commit.outputs.sha }}
           VERCEL_DEPLOYMENT: ${{ steps.vercel.outputs.deployment_id }}
           VERCEL_STATE: ${{ steps.vercel.outputs.state }}
-          ROOT_STATUS: ${{ steps.routes.outputs.root_status }}
-          ABOUT_STATUS: ${{ steps.routes.outputs.about_status }}
-          VA_FORMS_STATUS: ${{ steps.routes.outputs.va_forms_status }}
+          ROUTE_MATRIX: ${{ steps.routes.outputs.matrix }}
+          ROUTE_FAILURES: ${{ steps.routes.outputs.failure_count }}
           READINESS_OUTCOME: ${{ steps.readiness.outputs.outcome }}
           READINESS_HTTP_STATUS: ${{ steps.readiness.outputs.http_status }}
         shell: bash
@@ -271,7 +303,8 @@ jobs:
           - Production URL: \`$PRODUCTION_BASE_URL\`
           - Vercel deployment: \`${VERCEL_DEPLOYMENT:-unresolved}\`
           - Vercel commit status: \`${VERCEL_STATE:-unresolved}\`
-          - Route matrix: \`/=${ROOT_STATUS:-unresolved}\`, \`/about=${ABOUT_STATUS:-unresolved}\`, \`/va-forms=${VA_FORMS_STATUS:-unresolved}\`
+          - Route matrix failures: \`${ROUTE_FAILURES:-unresolved}\`
+          - Route matrix: \`${ROUTE_MATRIX:-unresolved}\`
           - Readiness request outcome: \`${READINESS_OUTCOME:-unresolved}\`
           - Readiness HTTP status: \`${READINESS_HTTP_STATUS:-unresolved}\`
 
@@ -296,7 +329,8 @@ jobs:
           - Production URL: \`$PRODUCTION_BASE_URL\`
           - Vercel deployment: \`${{ steps.vercel.outputs.deployment_id }}\`
           - Vercel commit status: \`${{ steps.vercel.outputs.state }}\`
-          - Route matrix: \`/=${{ steps.routes.outputs.root_status }}\`, \`/about=${{ steps.routes.outputs.about_status }}\`, \`/va-forms=${{ steps.routes.outputs.va_forms_status }}\`
+          - Route matrix: \`${{ steps.routes.outputs.route_count }} routes, ${{ steps.routes.outputs.failure_count }} failures\`
+          - Route statuses: \`${{ steps.routes.outputs.matrix }}\`
           - Runtime readiness HTTP status: ${{ steps.readiness.outputs.http_status }}
           - Readiness status: \`ready\`
           - Workflow-session crypto round trip: \`true\`

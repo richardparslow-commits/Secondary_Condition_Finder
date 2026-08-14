@@ -11,7 +11,10 @@ const DEFAULT_REFERENCE_BASE_URLS = {
   production: "https://api.va.gov/services/benefits-reference-data/v1",
 } as const;
 const DEFAULT_TIMEOUT_MS = 4_000;
-const RETRYABLE_STATUS = new Set([429, 503, 504]);
+const RETRYABLE_STATUS = new Set([503, 504]);
+export const VA_API_OUTBOUND_WINDOW_MS = 60_000;
+export const VA_API_OUTBOUND_MAX_REQUESTS_PER_SERVICE = 60;
+export const VA_API_RETRY_DELAY_MS = 100;
 
 type VaApiEnvironmentVariables = Record<string, string | undefined>;
 
@@ -36,7 +39,7 @@ export interface VaApiObservation {
   service: "va-forms" | "benefits-reference-data";
   path: string;
   attempt: number;
-  outcome: "success" | "http-error" | "timeout" | "network-error" | "invalid-payload";
+  outcome: "success" | "http-error" | "timeout" | "network-error" | "invalid-payload" | "rate-limited";
   status?: number;
   durationMs: number;
 }
@@ -63,6 +66,32 @@ export interface VaApiRequestOptions {
 
 /** Backward-compatible name retained for existing callers. */
 export type VaSandboxRequestOptions = VaApiRequestOptions;
+
+const outboundRequestTimes = new Map<VaApiObservation["service"], number[]>();
+
+function claimOutboundRequestSlot(
+  service: VaApiObservation["service"],
+  now = Date.now(),
+): boolean {
+  const cutoff = now - VA_API_OUTBOUND_WINDOW_MS;
+  const recent = (outboundRequestTimes.get(service) ?? []).filter((timestamp) => timestamp > cutoff);
+  if (recent.length >= VA_API_OUTBOUND_MAX_REQUESTS_PER_SERVICE) {
+    outboundRequestTimes.set(service, recent);
+    return false;
+  }
+  recent.push(now);
+  outboundRequestTimes.set(service, recent);
+  return true;
+}
+
+/** Test/reset hook; production callers should not need to clear process-local request history. */
+export function clearVaApiOutboundRateLimitState(): void {
+  outboundRequestTimes.clear();
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 const formIndexItemSchema = z.object({
   id: z.string().min(1),
@@ -233,6 +262,22 @@ async function requestVaJson<T>(args: {
   const requestId = randomUUID();
 
   for (let attempt = 1; attempt <= 2; attempt += 1) {
+    if (!claimOutboundRequestSlot(args.service)) {
+      args.observe?.({
+        requestId,
+        service: args.service,
+        path: endpoint.pathname,
+        attempt,
+        outcome: "rate-limited",
+        durationMs: 0,
+      });
+      return fallback(
+        `VA ${environment} ${args.service} request was blocked by the process-local outbound request budget.`,
+        environment,
+        requestId,
+      );
+    }
+
     const controller = new AbortController();
     const startedAt = Date.now();
     const timeoutId = setTimeout(() => controller.abort(), args.config.timeoutMs);
@@ -259,7 +304,12 @@ async function requestVaJson<T>(args: {
           durationMs: Date.now() - startedAt,
         });
 
-        if (attempt === 1 && RETRYABLE_STATUS.has(response.status)) continue;
+        // Do not immediately retry a 429; falling back reduces pressure on the
+        // upstream rate limit. Only transient 503/504 responses get one delayed retry.
+        if (attempt === 1 && RETRYABLE_STATUS.has(response.status)) {
+          await sleep(VA_API_RETRY_DELAY_MS);
+          continue;
+        }
         return fallback(
           `VA ${environment} request failed with status ${response.status}.`,
           environment,
@@ -308,7 +358,10 @@ async function requestVaJson<T>(args: {
         durationMs: Date.now() - startedAt,
       });
 
-      if (attempt === 1) continue;
+      if (attempt === 1) {
+        await sleep(VA_API_RETRY_DELAY_MS);
+        continue;
+      }
       return fallback(
         timedOut
           ? `VA ${environment} request timed out.`

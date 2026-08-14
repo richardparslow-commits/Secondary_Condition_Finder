@@ -58,6 +58,13 @@ const catalog = conditionCatalogSchema.parse([
   },
 ]);
 
+const unverifiedLegalReference = {
+  citation: "38 CFR 3.310",
+  note: "test",
+  verificationScope: "legal-framework" as const,
+  verified: false,
+};
+
 describe("secondary workflow state parsing", () => {
   it("requires at least one diagnosed condition", () => {
     expect(() => parseDiagnosedSelection({}, catalog)).toThrow();
@@ -202,7 +209,7 @@ describe("groupSuggestionsByPrimary", () => {
           { id: "tinnitus", name: "Tinnitus", rank: 2, rationale: "r2" },
         ],
         evidenceGaps: ["gap"],
-        sourceReferences: [{ citation: "38 CFR 3.310", note: "test", verified: false }],
+        sourceReferences: [unverifiedLegalReference],
         matchedIntakeContext: [],
       },
     ];
@@ -230,7 +237,12 @@ describe("findLinkedNonServiceConnectedConditions", () => {
       { id: "ptsd", name: "Post-Traumatic Stress Disorder (PTSD)", rank: 1, rationale: "PTSD disrupts sleep architecture." },
     ],
     evidenceGaps: ["nexus letter"],
-    sourceReferences: [{ citation: "38 CFR 3.310", note: "direct service connection", verified: false }],
+    sourceReferences: [
+      {
+        ...unverifiedLegalReference,
+        note: "direct service connection",
+      },
+    ],
     matchedIntakeContext: [],
   };
 
@@ -291,7 +303,7 @@ describe("findLinkedNonServiceConnectedConditions", () => {
         { id: "ptsd", name: "Post-Traumatic Stress Disorder (PTSD)", rank: 2, rationale: "Hypervigilance worsens tinnitus." },
       ],
       evidenceGaps: ["audiology records"],
-      sourceReferences: [{ citation: "38 CFR 3.310", note: "test", verified: false }],
+      sourceReferences: [unverifiedLegalReference],
       matchedIntakeContext: [],
     };
 

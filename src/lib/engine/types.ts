@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import type {
   PathwayIntelligence,
-  SourceVerificationScope,
+  SourceReference,
 } from "@/lib/kb/schema";
 
 export const intakeSchema = z.object({
@@ -33,12 +33,8 @@ export interface Recommendation {
   score: number;
   contributingPrimaries: ContributingPrimary[];
   evidenceGaps: string[];
-  sourceReferences: Array<{
-    citation: string;
-    note: string;
-    verified: boolean;
-    verificationScope?: SourceVerificationScope;
-  }>;
+  /** Keep the complete source record so downstream exports cannot lose provenance. */
+  sourceReferences: SourceReference[];
   matchedIntakeContext: string[];
 }
 
