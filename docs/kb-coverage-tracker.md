@@ -90,6 +90,17 @@
 - New source checks remain `verified: false` pending qualified-human verification.
 - See `docs/clinical-evidence-promotion-batch-10.md`.
 
+### Clinical Evidence Promotion Batch 11
+- `hypothyroidism` → `depressive-disorder`: published as association-focused research using a 25-study meta-analysis; no causal pathway metadata is authored because the overall effect is modest and varies by thyroid phenotype/subgroup.
+- `hypogonadism` → `osteoporosis`: published as a bounded disease-progression pathway only for confirmed clinical hypogonadism/testosterone deficiency, with DXA/fracture-risk and competing-cause safeguards plus an explicit warning that testosterone-fracture prevention is unproven.
+- `interstitial-lung-disease` → `sleep-apnea`: clinically repaired with a 10-study meta-analysis and kept association/prevalence-focused; the prior legal-only ILD→cardiac-arrhythmia edge is removed.
+- `pulmonary-fibrosis`: returned to draft rather than generalizing IPF-specific OSA evidence to the broader pulmonary-fibrosis identity; its prior OSA and arrhythmia claims were legal/rating-only.
+- `hypoparathyroidism`: stable identity physically moved from historical neurological placement into `endocrine.json`, normalized to `Hypoparathyroidism`, and assigned the 38 CFR 4.119 / DC 7905 framework while preserving the Batch-10 KB publication state.
+- Citation debt tightens to **130 total / 14 verified / 116 unverified / 114 review findings**, while the clinical-URL floor rises to **49**.
+- The 300/300 contract remains fixed. These are legacy mappings, so the Wave 1-7 expansion ledger remains **12 promoted / 95 drafts**.
+- New source checks remain `verified: false` pending qualified-human verification.
+- See `docs/clinical-evidence-promotion-batch-11.md`.
+
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.
 2. **Citation Insertion:** Clinical claims require condition-specific clinical-evidence references with canonical URLs and source provenance. Regulatory/legal references must remain role-labeled and must not substitute for clinical causation evidence.

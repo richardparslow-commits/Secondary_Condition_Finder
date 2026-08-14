@@ -5,8 +5,8 @@ const expectedBackfill = {
   copd: { "sleep-apnea": ["direct-secondary", "aggravation"], "cardiac-arrhythmia": ["intermediate-chain"] },
   asthma: { "sleep-apnea": ["direct-secondary", "aggravation"], "cardiac-arrhythmia": ["direct-secondary"] },
 } as const;
-const intentionallyUnlabeledMappings = ["chronic-sinusitis","chronic-rhinitis","pulmonary-fibrosis","interstitial-lung-disease","sleep-apnea"] as const;
-const safetyWithdrawnMappings = ["ageusia","emphysema","chronic-bronchitis"] as const;
+const intentionallyUnlabeledMappings = ["chronic-sinusitis","chronic-rhinitis","sleep-apnea"] as const;
+const safetyWithdrawnMappings = ["ageusia","emphysema","chronic-bronchitis","pulmonary-fibrosis"] as const;
 
 describe("controlled pathway backfill batch 3", () => {
   it("backfills only Respiratory edges whose attached source set includes clinical evidence", () => {
@@ -23,7 +23,7 @@ describe("controlled pathway backfill batch 3", () => {
     }
   });
 
-  it("keeps insufficient-source Respiratory and ENT mappings unpublished or unlabeled", () => {
+  it("keeps untouched insufficient-source Respiratory and ENT mappings unpublished or unlabeled", () => {
     const kb = loadKnowledgeBase();
     for (const primaryId of intentionallyUnlabeledMappings) {
       const mapping = kb.find((entry) => entry.id === primaryId); expect(mapping?.draft).toBe(false);
@@ -32,6 +32,19 @@ describe("controlled pathway backfill batch 3", () => {
     for (const primaryId of safetyWithdrawnMappings) {
       const mapping = kb.find((entry) => entry.id === primaryId); expect(mapping?.draft).toBe(true); expect(mapping?.suggestions).toEqual([]); expect(mapping?.todo.length).toBeGreaterThan(0);
     }
+  });
+
+  it("recognizes the Batch 11 ILD repair without inferring causation or preserving arrhythmia", () => {
+    const mapping = loadKnowledgeBase().find((entry) => entry.id === "interstitial-lung-disease");
+    const osa = mapping?.suggestions.find((entry) => entry.conditionId === "sleep-apnea");
+
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.suggestions).toHaveLength(1);
+    expect(osa?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
+    expect(osa?.sourceReferences[0]?.sourceUrl).toContain("33403599");
+    expect(osa?.pathwayIntelligence).toBeUndefined();
+    expect(osa?.rationale).toMatch(/association|prevalence/i);
+    expect(mapping?.suggestions.some((entry) => entry.conditionId === "cardiac-arrhythmia")).toBe(false);
   });
 
   it("allows anosmia depression research only with olfactory-specific clinical evidence", () => {

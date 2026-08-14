@@ -187,16 +187,17 @@ still uses 33 catalog files. Fibromyalgia, hip strain, and ankle strain are
 physically normalized in musculoskeletal maintenance; diabetic retinopathy is
 in the ophthalmologic file; insomnia plus substance-use disorder are in the
 mental-disorders catalog; and Cushing's syndrome, Type 1 diabetes,
-Hyperthyroidism, and Hyperparathyroidism are now physically maintained in the
-endocrine catalog with their current DC 7907, DC 7913, DC 7900, and DC 7904
-frameworks. `carried-over.json` remains reduced to the intentionally quarantined
-`contralateral-knee-condition` laterality placeholder. Batch 6 also narrowed the
-existing `hyperpituitarism` display identity to the prolactin-secreting
-pituitary-dysfunction scope of DC 7916 without changing its stable ID. None of
-these maintenance changes alters the 300-condition universe.
+Hyperthyroidism, Hyperparathyroidism, and Hypoparathyroidism are now physically
+maintained in the endocrine catalog with their current DC 7907, DC 7913, DC
+7900, DC 7904, and DC 7905 frameworks. `carried-over.json` remains reduced to
+the intentionally quarantined `contralateral-knee-condition` laterality
+placeholder. Batch 6 also narrowed the existing `hyperpituitarism` display
+identity to the prolactin-secreting pituitary-dysfunction scope of DC 7916
+without changing its stable ID. None of these maintenance changes alters the
+300-condition universe.
 
 Waves 1 through 7 added 107 conditions. Clinical Evidence Promotion Batches 1
-through 10 still account for twelve individually reviewed **expansion** mappings:
+through 11 still account for twelve individually reviewed **expansion** mappings:
 `cardiomyopathy` → `congestive-heart-failure`, `urethral-stricture` →
 `hydronephrosis`, `hypertensive-heart-disease` → `congestive-heart-failure`,
 `chronic-pyelonephritis` → `chronic-kidney-disease`, `chronic-liver-disease` →
@@ -204,37 +205,37 @@ through 10 still account for twelve individually reviewed **expansion** mappings
 `osteoarthritis`, `barretts-esophagus` → `esophageal-cancer`, `achalasia` →
 `esophageal-cancer`, `hyperaldosteronism` → `hypertension`, `acromegaly` →
 `hypertension`, and `diabetes-mellitus-type-1` → `chronic-kidney-disease`.
-**95 of the 107 expansion mappings remain safe drafts**. Batch 10 instead
-improves legacy coverage by publishing `hyperparathyroidism` → `kidney-stones`
-for confirmed primary hyperparathyroidism and association-focused
-`hypoparathyroidism` → `kidney-stones` research.
+**95 of the 107 expansion mappings remain safe drafts**. Batches 10 and 11
+instead improve legacy coverage: primary-hyperparathyroidism/hypoparathyroidism
+kidney-stone research, association-focused hypothyroidism/depression research,
+bounded hypogonadism/osteoporosis research, and a clinically repaired ILD/OSA
+association.
 
 Safety review has returned `ankle-strain`, `knee-injury`, `osteoarthritis`,
 `ageusia`, `agranulocytosis`, `al-amyloidosis`, `addisons-disease`,
-`anorexia-nervosa`, `emphysema`, and `chronic-bronchitis` to draft where
-previously published claims were stronger than the reviewed evidence or relied
-on rating/legal authority rather than condition-specific clinical evidence.
-Existing relationships for `amputation-or-loss-of-use` → `depressive-disorder`,
-`anosmia` → `depressive-disorder`, and `alopecia-areata` →
-`depressive-disorder` have been repaired by replacing legal-only support with
-condition-specific clinical evidence and conservative association/chronology
-safeguards. Batch 8 also replaces all eight rating/legal-only references across
-the four published `hypertension` relationships with condition-specific clinical
-evidence and publishes `cushings-syndrome` → `hypertension` under a bounded
-endocrine pathway. Batch 9 removes the unsupported `erectile-dysfunction` →
-`gerd` treatment chain and clinically repairs `erectile-dysfunction` →
-`depressive-disorder` with bidirectional association evidence and explicit
-causality/chronology safeguards.
+`anorexia-nervosa`, `emphysema`, `chronic-bronchitis`, and `pulmonary-fibrosis`
+to draft where previously published claims were stronger than the reviewed
+evidence or relied on rating/legal authority rather than condition-specific
+clinical evidence. Existing relationships for `amputation-or-loss-of-use` →
+`depressive-disorder`, `anosmia` → `depressive-disorder`, `alopecia-areata` →
+`depressive-disorder`, `hypertension`, and now `interstitial-lung-disease` →
+`sleep-apnea` have been repaired with condition-specific clinical evidence and
+conservative safeguards. Batch 8 also publishes `cushings-syndrome` →
+`hypertension` under a bounded endocrine pathway. Batch 9 removes the
+unsupported `erectile-dysfunction` → `gerd` treatment chain and clinically
+repairs `erectile-dysfunction` → `depressive-disorder`; Batch 11 removes the
+unsupported ILD→cardiac-arrhythmia edge while preserving only clinically sourced
+ILD→OSA association research.
 
-After Batch 10, the citation-debt ceilings tighten to **131 total references / 14
-verified / 117 unverified / 115 published-unverified review findings**, while the
-clinical-evidence-with-URL floor rises to **46**. No automated change marks a new
+After Batch 11, the citation-debt ceilings tighten to **130 total references / 14
+verified / 116 unverified / 114 published-unverified review findings**, while the
+clinical-evidence-with-URL floor rises to **49**. No automated change marks a new
 source verified.
 
 The completed identity-expansion record is maintained in
 `docs/condition-expansion-roadmap.md`; the post-v2 promotion records are in
 `docs/clinical-evidence-promotion-batch-1.md` through
-`docs/clinical-evidence-promotion-batch-10.md`. The 300-condition target is a
+`docs/clinical-evidence-promotion-batch-11.md`. The 300-condition target is a
 versioned product target, not a claim that medicine or the VA rating schedule
 contains only 300 possible conditions.
 

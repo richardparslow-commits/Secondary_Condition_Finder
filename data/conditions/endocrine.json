@@ -88,6 +88,22 @@
       "reviewNotes": [
         "Clinical Evidence Promotion Batch 10 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the current DC 7904 framework without changing its ID or knowledge-base publication identity."
       ]
+    },
+    {
+      "id": "hypoparathyroidism",
+      "name": "Hypoparathyroidism",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7905 covers hypoparathyroidism, with evaluation based on treatment timing and chronic residuals under the appropriate diagnostic code.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Clinical Evidence Promotion Batch 11 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the current DC 7905 framework without changing its ID or Batch-10 knowledge-base publication state."
+      ]
     }
   ]
 }
