@@ -18,21 +18,21 @@ Batch 17 preserves the exact **300 catalog / 300 knowledge-base** integrity cont
 
 - Retained and clinically repaired rather than withdrawn.
 - NSAID exposure for RA pain is supported by systematic-review/meta-analysis evidence of NSAID treatment in RA.
-- RA-specific observational evidence reports a higher frequency of GERD symptoms in the studied RA population.
 - Separate observational evidence associates NSAID use with GERD symptoms.
 - The old verified PMID 16918879 lower-GI source is retired from this relationship because its verified proposition is not GERD-specific.
 - The existing verified §3.310 legal-framework citation remains live and clearly role-labeled.
 - The medication pathway requires actual documented NSAID exposure for RA, a clinically characterized GERD diagnosis, chronology, competing-risk review, and a qualified individual medical opinion. The population-level data do not establish individual causation or aggravation.
+- The source set is intentionally bounded to the two clinical links needed for the medication chain plus the legal-framework citation, preserving the repository's maximum-three-source contract.
 
 ## Review-debt exchange
 
-Three new RA clinical sources are added as `verified: false` pending qualified-human verification. To avoid increasing unverified/review debt, three redundant unverified legal-framework references are removed from already clinically supported published suggestions:
+Two new RA clinical sources are added as `verified: false` pending qualified-human verification. Three redundant unverified legal-framework references are removed from already clinically supported published suggestions:
 
 - adjustment disorder → sleep apnea;
 - adjustment disorder → GERD;
 - depressive disorder → sleep apnea.
 
-No medical relationship is removed or weakened in those three mappings.
+This reduces unverified and published-review debt by one rather than increasing it. No medical relationship is removed or weakened in those three mappings.
 
 ## Verified retirement provenance
 
@@ -48,19 +48,19 @@ Together with Batch 16, the retirement ledger now contains six previously verifi
 
 ## Citation position
 
-The projected Batch-17 ratchet is:
+The corrected Batch-17 ratchet is:
 
-- live references: **114**;
+- live references: **113**;
 - live verified: **8**;
 - retired verified: **6**;
 - verified provenance: **14**;
-- live unverified: **106**;
-- published-unverified review findings: **104**;
-- live clinical-evidence references with canonical URLs: **57**;
+- live unverified: **105**;
+- published-unverified review findings: **103**;
+- live clinical-evidence references with canonical URLs: **56**;
 - retired clinical-evidence references with canonical URLs: **4**;
-- clinical URL provenance: **61**.
+- clinical URL provenance: **60**.
 
-The audit now ratchets the retired-verified and retired-clinical counts directly in addition to the aggregate provenance totals.
+The audit ratchets the retired-verified and retired-clinical counts directly in addition to the aggregate provenance totals.
 
 ## Expansion state
 
