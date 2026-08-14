@@ -240,7 +240,20 @@ async function runJourney() {
   }
 
   const noAnswers = await findAllByXpath("//input[starts-with(@name, 'serviceConnected-') and @value='no']");
-  for (const radio of noAnswers) await clickElement(radio);
+  if (noAnswers.length < 2) throw new Error("Expected at least two No choices on Step 2.");
+  await clickElement(noAnswers[0]);
+  await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 3')]");
+  await waitForAlertContaining("Choose Yes or No for every diagnosed condition before continuing.");
+  await expectStaticErrorUrl("/secondary/service-connected", "answer-service-connected");
+  await assertNoHorizontalOverflow("Step 2 incomplete validation state");
+
+  const noAnswersAfterIncomplete = await findAllByXpath("//input[starts-with(@name, 'serviceConnected-') and @value='no']");
+  if (!(await isSelected(noAnswersAfterIncomplete[0]))) {
+    throw new Error("Step 2 did not preserve the completed No answer after validation.");
+  }
+  for (let index = 1; index < noAnswersAfterIncomplete.length; index += 1) {
+    await clickElement(noAnswersAfterIncomplete[index]);
+  }
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 3')]");
   await waitForAlertContaining("needs at least one condition already recognized as service connected");
   await expectStaticErrorUrl("/secondary/service-connected", "no-service-connected");
@@ -285,7 +298,7 @@ async function runJourney() {
   await expectStaticErrorUrl("/presumptive", "date-order");
   await assertNoHorizontalOverflow("Presumptive validation state");
 
-  console.log("Validation E2E passed at mobile viewport: accessible alerts, six-step Secondary progression, no horizontal overflow, neutral explicit answers, and static-error privacy URLs.");
+  console.log("Validation E2E passed at mobile viewport: accessible alerts, preserved partial Step 2 answers, six-step Secondary progression, no horizontal overflow, neutral explicit answers, and static-error privacy URLs.");
 }
 
 async function cleanup() {

@@ -34,6 +34,7 @@ export default async function ServiceConnectedStepPage({ searchParams }: Service
   }
 
   const selectedServiceConnectedIds = new Set(session.serviceConnectedConditionIds ?? []);
+  const answerDraft = session.serviceConnectedAnswerDraft;
   const hasPriorSelection = session.serviceConnectedConditionIds !== undefined;
   const diagnosed = diagnosedConditionIds.map((id) => byId.get(id)).filter((condition): condition is NonNullable<typeof condition> => condition !== undefined);
   const selected = diagnosed.filter((condition) => selectedServiceConnectedIds.has(condition.id));
@@ -75,8 +76,8 @@ export default async function ServiceConnectedStepPage({ searchParams }: Service
                   <legend className="font-semibold text-slate-900">{condition.name}</legend>
                   <p className="text-xs text-slate-500">{condition.bodySystem}</p>
                   <div className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
-                    <label className="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2"><input type="radio" name={`serviceConnected-${condition.id}`} value="yes" required defaultChecked={hasPriorSelection && selectedServiceConnectedIds.has(condition.id)} className="h-5 w-5" />Yes, already service connected</label>
-                    <label className="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2"><input type="radio" name={`serviceConnected-${condition.id}`} value="no" required defaultChecked={hasPriorSelection && !selectedServiceConnectedIds.has(condition.id)} className="h-5 w-5" />No, not service connected</label>
+                    <label className="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2"><input type="radio" name={`serviceConnected-${condition.id}`} value="yes" defaultChecked={answerDraft ? answerDraft[condition.id] === "yes" : hasPriorSelection && selectedServiceConnectedIds.has(condition.id)} className="h-5 w-5" />Yes, already service connected</label>
+                    <label className="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2"><input type="radio" name={`serviceConnected-${condition.id}`} value="no" defaultChecked={answerDraft ? answerDraft[condition.id] === "no" : hasPriorSelection && !selectedServiceConnectedIds.has(condition.id)} className="h-5 w-5" />No, not service connected</label>
                   </div>
                 </fieldset>
               ))}

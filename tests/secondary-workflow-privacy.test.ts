@@ -65,6 +65,7 @@ describe("workflow privacy", () => {
     const state = {
       diagnosedConditionIds: ["ptsd", "sleep-apnea"],
       serviceConnectedConditionIds: ["ptsd"],
+      serviceConnectedAnswerDraft: { ptsd: "yes" as const, "sleep-apnea": "no" as const },
       ratingsByConditionId: { ptsd: 100 },
       documentsShared: true,
     };
