@@ -15,9 +15,17 @@ const mockRecs: Recommendation[] = [
     score: 1.0,
     contributingPrimaries: [{ id: "lumbar-strain", name: "Lumbar Strain", rank: 1, rationale: "Direct nerve impact" }],
     evidenceGaps: ["Current diagnosis records"],
-    sourceReferences: [{ citation: "38 CFR § 3.310", note: "Authority note", verificationScope: "legal-framework", verified: false }],
-    matchedIntakeContext: ["SSRI"]
-  }
+    sourceReferences: [{
+      citation: "38 CFR § 3.310",
+      note: "Authority note",
+      verificationScope: "legal-framework",
+      sourceUrl: "https://www.ecfr.gov/current/title-38/section-3.310",
+      verified: true,
+      sourceCheckedOn: "2026-08-14",
+      sourceLocator: "§ 3.310(a)-(b)",
+    }],
+    matchedIntakeContext: ["SSRI"],
+  },
 ];
 
 function readRepoFile(relativePath: string): string {
@@ -30,8 +38,8 @@ describe("P2 Ticket 10: Text Export for Representative Meetings", () => {
       {
         conditionId: "radiculopathy",
         satisfiedGaps: ["Current diagnosis records"],
-        remainingGaps: []
-      }
+        remainingGaps: [],
+      },
     ];
 
     const summary = formatClaimSummary(mockRecs, mockEvals);
@@ -41,6 +49,33 @@ describe("P2 Ticket 10: Text Export for Representative Meetings", () => {
     expect(summary).toContain("Remaining Gaps: None yet");
     expect(summary).toContain("educational and research preparation purposes only");
     expect(summary).not.toContain("SSRI");
+  });
+
+  it("preserves source verification and provenance metadata in the exported artifact", () => {
+    const summary = formatClaimSummary(mockRecs, []);
+
+    expect(summary).toContain("Verification: VERIFIED");
+    expect(summary).toContain("Scope: legal-framework");
+    expect(summary).toContain("Source URL: https://www.ecfr.gov/current/title-38/section-3.310");
+    expect(summary).toContain("Source locator: § 3.310(a)-(b)");
+    expect(summary).toContain("Source checked on: 2026-08-14");
+  });
+
+  it("makes unverified provenance explicit rather than silently flattening it", () => {
+    const unverified: Recommendation[] = [{
+      ...mockRecs[0],
+      sourceReferences: [{
+        citation: "Research starting point",
+        note: "Needs independent confirmation",
+        verificationScope: "clinical-evidence",
+        sourceUrl: "https://pubmed.ncbi.nlm.nih.gov/12345678/",
+        verified: false,
+      }],
+    }];
+
+    const summary = formatClaimSummary(unverified, []);
+    expect(summary).toContain("UNVERIFIED — confirm before relying on this source");
+    expect(summary).toContain("Any source marked UNVERIFIED is a research starting point");
   });
 
   it("includes authored evidence gaps without pretending they were evaluated", () => {
