@@ -54,24 +54,6 @@
       ]
     },
     {
-      "id": "diabetic-retinopathy",
-      "name": "Diabetic retinopathy",
-      "aliases": [
-        "retinopathy"
-      ],
-      "bodySystem": "Auditory & Special Senses",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.79",
-          "note": "DC 6040 expressly lists diabetic retinopathy under the eye rating schedule; evaluation follows the applicable eye criteria for visual impairment or incapacitating episodes.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": [
-        "Wave 8 replaces the unresolved carryover note with the condition-specific eye rating identity. The rating citation does not establish that diabetes or any other condition caused an individual's retinopathy."
-      ]
-    },
-    {
       "id": "insomnia",
       "name": "Chronic insomnia",
       "aliases": [
