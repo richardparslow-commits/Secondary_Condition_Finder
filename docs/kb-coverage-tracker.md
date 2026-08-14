@@ -71,6 +71,15 @@
 - New clinical source checks remain `verified: false` pending qualified-human verification.
 - See `docs/clinical-evidence-promotion-batch-8.md`.
 
+### Clinical Evidence Promotion Batch 9
+- `diabetes-mellitus-type-1` → `chronic-kidney-disease`: promoted as a bounded disease-progression pathway using the 2026 ADA CKD Standards of Care, with Type 1 diabetes duration, UACR/eGFR/urinalysis chronology, renal phenotype, and atypical-feature/alternative-kidney-disease safeguards.
+- `erectile-dysfunction` → `depressive-disorder`: clinically repaired with a 49-publication systematic review/meta-analysis and explicit bidirectionality/causality limits; the unsupported `erectile-dysfunction` → `gerd` NSAID treatment chain is withdrawn.
+- `hyperthyroidism`: stable identity physically moved from historical neurological placement into `endocrine.json`, normalized to `Hyperthyroidism`, and assigned the current 38 CFR 4.119 / DC 7900 framework while its KB publication state remains unchanged.
+- Citation debt tightens to **133 total / 14 verified / 119 unverified / 117 review findings**; the clinical-URL floor remains **44**.
+- The 300/300 contract remains fixed. Type 1 diabetes is the twelfth individually promoted Wave 1-7 expansion mapping, so **95 of 107 remain drafts**.
+- New clinical source checks remain `verified: false` pending qualified-human verification.
+- See `docs/clinical-evidence-promotion-batch-9.md`.
+
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.
 2. **Citation Insertion:** Clinical claims require condition-specific clinical-evidence references with canonical URLs and source provenance. Regulatory/legal references must remain role-labeled and must not substitute for clinical causation evidence.
