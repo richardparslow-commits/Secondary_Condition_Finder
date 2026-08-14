@@ -32,18 +32,18 @@ describe("condition catalog expansion wave 1", () => {
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
   const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
 
-  it("moves the catalog baseline from 193 to 213 conditions", () => {
-    expect(catalog).toHaveLength(213);
-    expect(knowledgeBase).toHaveLength(213);
+  it("keeps catalog and knowledge-base coverage one-to-one as later waves expand", () => {
+    expect(catalog.length).toBeGreaterThanOrEqual(213);
+    expect(knowledgeBase).toHaveLength(catalog.length);
   });
 
-  it("adds all 20 approved Wave 1 conditions", () => {
+  it("preserves all 20 approved Wave 1 conditions", () => {
     for (const id of WAVE_ONE_IDS) {
       expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
     }
   });
 
-  it("gives every new catalog condition exactly one safe draft mapping", () => {
+  it("keeps every Wave 1 catalog condition on a safe draft mapping until separately authored", () => {
     for (const id of WAVE_ONE_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
