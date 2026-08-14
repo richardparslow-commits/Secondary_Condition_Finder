@@ -1,8 +1,46 @@
 {
   "id": "cushings-syndrome",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "hypertension",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Hypertension is a common cardiovascular manifestation of clinically established Cushing's syndrome/hypercortisolism. A European Society of Hypertension endocrine-hypertension consensus describes glucocorticoid excess as the biological basis for the cardiovascular damage of endogenous or exogenous Cushing's syndrome and notes that hypertension may persist even after hormone excess is normalized or steroid therapy is discontinued. This supports a direct-secondary research pathway when the Cushing/hypercortisolism diagnosis and blood-pressure chronology are documented, but other primary and secondary causes of hypertension must still be reviewed.",
+      "pathwayIntelligence": {
+        "pathways": ["direct-secondary"],
+        "causalChain": "Established endogenous or exogenous Cushing's syndrome with clinically significant glucocorticoid excess → cortisol-mediated cardiovascular and renal blood-pressure effects → hypertension, which may persist after hypercortisolism is corrected.",
+        "developmentQuestions": [
+          "How was Cushing's syndrome or clinically significant hypercortisolism established, and what was the source of glucocorticoid excess?",
+          "When did hypertension begin relative to the documented period of cortisol excess or steroid exposure?",
+          "How severe was the hypertension during active hypercortisolism?",
+          "Did blood pressure improve, persist, or require continued treatment after biochemical remission or discontinuation of causative glucocorticoid therapy?",
+          "What other primary or secondary hypertension causes and cardiovascular risk factors are documented?"
+        ],
+        "issuesToResolve": [
+          "The pathway requires an established Cushing/hypercortisolism phenotype rather than relying on a historical label alone.",
+          "Hypertension can persist after hormonal normalization and can have additional causes, so post-treatment persistence does not negate or prove an individual relationship by itself."
+        ]
+      },
+      "evidenceGaps": [
+        "Endocrine records confirming endogenous or exogenous Cushing's syndrome and the period of glucocorticoid excess",
+        "Longitudinal blood-pressure records before, during, and after treatment of hypercortisolism",
+        "Cortisol/ACTH or other disease-specific treatment-response data appropriate to the Cushing phenotype",
+        "Medication records for exogenous glucocorticoid exposure when relevant",
+        "Clinician assessment addressing other causes of hypertension and the individual endocrine-to-BP chronology"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Fallo et al., Diagnosis and management of hypertension in patients with Cushing's syndrome: a position statement and consensus of the Working Group on Endocrine Hypertension of the European Society of Hypertension, J Hypertens. 2022;40(11):2085-2101. PMID 35950979",
+          "note": "Endocrine-hypertension consensus states that hypertension is common in Cushing's syndrome and may persist after normalization of hormone excess or steroid withdrawal; supports a disease-specific endocrine hypertension pathway with individual diagnosis and chronology safeguards.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35950979/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 35950979; abstract: endogenous/exogenous Cushing's syndrome reflects glucocorticoid excess, hypertension is a common feature, and hypertension may persist after normalization of hormone excess or discontinuation of steroid therapy"
+        }
+      ]
+    }
+  ]
 }
