@@ -24,7 +24,6 @@ describe("clinical evidence promotion batch 11", () => {
     const mapping = byId.get("hypothyroidism");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
-
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(1);
     expect(suggestion?.conditionId).toBe("depressive-disorder");
@@ -40,7 +39,6 @@ describe("clinical evidence promotion batch 11", () => {
     const mapping = byId.get("hypogonadism");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
-
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(1);
     expect(suggestion?.conditionId).toBe("osteoporosis");
@@ -57,7 +55,6 @@ describe("clinical evidence promotion batch 11", () => {
     const mapping = byId.get("interstitial-lung-disease");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
-
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(1);
     expect(suggestion?.conditionId).toBe("sleep-apnea");
@@ -77,11 +74,10 @@ describe("clinical evidence promotion batch 11", () => {
     expect(mapping?.todo.join(" ")).toMatch(/idiopathic pulmonary fibrosis|IPF/i);
   });
 
-  it("physically relocates hypoparathyroidism into endocrine maintenance with DC 7905", () => {
+  it("preserves the Batch 11 hypoparathyroidism relocation after Batch 12 moves hypothyroidism", () => {
     const endocrine = ids("data/conditions/endocrine.json");
     const neurological = ids("data/conditions/neurological.json");
     const condition = catalogById.get("hypoparathyroidism");
-
     expect(endocrine).toContain("hypoparathyroidism");
     expect(neurological).not.toContain("hypoparathyroidism");
     expect(condition?.name).toBe("Hypoparathyroidism");
@@ -89,6 +85,7 @@ describe("clinical evidence promotion batch 11", () => {
     expect(condition?.ratingSchedule[0]?.citation).toBe("38 CFR 4.119");
     expect(condition?.ratingSchedule[0]?.note).toMatch(/7905/i);
     expect(condition?.ratingSchedule[0]?.verified).toBe(false);
-    expect(neurological).toContain("hypothyroidism");
+    expect(endocrine).toContain("hypothyroidism");
+    expect(neurological).not.toContain("hypothyroidism");
   });
 });

@@ -101,6 +101,16 @@
 - New source checks remain `verified: false` pending qualified-human verification.
 - See `docs/clinical-evidence-promotion-batch-11.md`.
 
+### Clinical Evidence Promotion Batch 12
+- `chronic-rhinitis` → `sleep-apnea`: clinically repaired with a 2025 adult systematic review/meta-analysis, but only for a documented allergic-rhinitis phenotype because the catalog identity is broader than the source population; no causal pathway metadata is authored.
+- `chronic-sinusitis` → `sleep-apnea`: clinically repaired with a 2026 CRS systematic review/meta-analysis/Mendelian-randomization study and kept association-focused rather than converted into an individual causal nexus.
+- The legal/rating-only `cardiac-arrhythmia` edges are removed from both chronic rhinitis and chronic sinusitis.
+- `hypothyroidism`: stable identity physically moved from the historical neurological placement into `endocrine.json`, normalized to `Hypothyroidism`, and assigned the 38 CFR 4.119 / DC 7903 framework while preserving the Batch-11 depression mapping.
+- Citation debt tightens to **128 total / 14 verified / 114 unverified / 112 review findings**, while the clinical-URL floor rises to **51**.
+- The 300/300 contract remains fixed. These are legacy mappings, so the Wave 1-7 expansion ledger remains **12 promoted / 95 drafts**.
+- New source checks remain `verified: false` pending qualified-human verification.
+- See `docs/clinical-evidence-promotion-batch-12.md`.
+
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.
 2. **Citation Insertion:** Clinical claims require condition-specific clinical-evidence references with canonical URLs and source provenance. Regulatory/legal references must remain role-labeled and must not substitute for clinical causation evidence.

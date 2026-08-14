@@ -7,33 +7,23 @@
       "conditionId": "sleep-apnea",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Chronic airway inflammation and altered pulmonary mechanics increase the likelihood of upper airway collapse during sleep.",
+      "rationale": "Adult meta-analytic evidence supports a higher frequency of obstructive sleep apnea among patients with allergic rhinitis, but the catalog identity chronic rhinitis is broader than allergic rhinitis and the evidence does not establish individual causation or aggravation. This relationship therefore applies only when an allergic-rhinitis phenotype is clinically documented and remains association-focused; sleep-study confirmation, rhinitis phenotype/severity, chronology, body-habitus and upper-airway risk factors, medication context, and competing OSA causes still require individual review.",
       "evidenceGaps": [
-        "Sleep study (polysomnography) with AHI index",
-        "Pulmonary or sleep specialist nexus"
+        "Documentation establishing an allergic-rhinitis phenotype rather than assuming all chronic rhinitis is allergic",
+        "Polysomnography or validated sleep-study documentation confirming OSA and severity",
+        "Rhinitis onset, severity, nasal-obstruction history, and treatment chronology relative to OSA",
+        "BMI/weight trajectory, craniofacial or upper-airway factors, age, sedating medications, and other OSA risk factors",
+        "Allergy/ENT/sleep specialist assessment distinguishing population-level association from individual causation or aggravation"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "cardiac-arrhythmia",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Chronic nocturnal hypoxia and respiratory strain place stress on the cardiovascular system.",
-      "evidenceGaps": [
-        "ECG or Holter monitor records",
-        "Cardiology evaluation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.104",
-          "note": "Cardiovascular diagnostic codes",
-          "verified": false
+          "citation": "Ferreira NB, Ponte A, Grande AC, et al. Frequency of obstructive sleep apnea in patients with asthma or allergic rhinitis: a systematic review and meta-analysis. Sleep Med. 2025;134:106705. PMID 40774162",
+          "note": "Systematic review/meta-analysis of 12 adult studies (19,203 participants) found a higher frequency of polysomnography-diagnosed OSA in allergic-rhinitis patients than controls (OR 2.4, 95% CI 1.1-5.3). Supports an allergic-rhinitis/OSA association, not individual causal attribution or generalization to every chronic-rhinitis phenotype.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40774162/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 40774162; abstract Methods/Results/Conclusions: 12 studies, N=19,203; allergic rhinitis OSA frequency OR 2.4 (95% CI 1.1-5.3)"
         }
       ]
     }
