@@ -6,18 +6,23 @@
     {
       "conditionId": "depressive-disorder",
       "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Chronic physical pain, functional limitations, or long-term health conditions can be associated with mood impairment. This population-level relationship does not by itself establish an individual medical nexus.",
+      "prevalence": "sometimes-explored",
+      "rationale": "Systematic-review and meta-analytic evidence shows higher prevalence and odds of depressive disorders and symptoms among people with alopecia areata. This supports focused mental-health review when a depressive disorder is diagnosed alongside alopecia areata, but the association alone does not establish an individual direction of effect or nexus without chronology, psychosocial-impact evidence, and assessment of other contributors.",
       "evidenceGaps": [
-        "Mental health evaluation distinguishing secondary emotional impact",
-        "Treatment notes"
+        "Dermatology records establishing alopecia areata severity and chronology",
+        "Mental-health records establishing depressive-disorder diagnosis and chronology",
+        "Documentation of psychosocial, functional, body-image, or quality-of-life impact",
+        "Clinical assessment addressing other psychiatric, medical, medication, and psychosocial contributors"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Legal framework for evaluating a secondary relationship; does not establish the underlying medical relationship.",
+          "citation": "Lauron et al., Prevalence and Odds of Depressive and Anxiety Disorders and Symptoms in Children and Adults With Alopecia Areata: A Systematic Review and Meta-analysis, JAMA Dermatol. 2023. PMID 36696123",
+          "note": "Systematic review/meta-analysis reporting elevated prevalence and odds of depressive and anxiety disorders and symptoms in alopecia areata; supports mental-health assessment rather than an automatic individual conclusion.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36696123/",
           "verified": false,
-          "verificationScope": "legal-framework"
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 36696123; abstract; separate analyses of depressive/anxiety disorders and symptoms in alopecia areata"
         }
       ]
     }

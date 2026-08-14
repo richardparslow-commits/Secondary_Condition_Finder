@@ -1,6 +1,30 @@
 {
   "id": "acl-injury",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "osteoarthritis",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Systematic-review evidence reports a substantially increased long-term frequency of knee osteoarthritis after ACL injury. Individual review should confirm that osteoarthritis is documented in the injured knee and should consider associated meniscal or cartilage injury, recurrent instability, treatment history, alignment, age, activity, and other osteoarthritis risk factors rather than inferring an individual relationship from population data alone.",
+      "evidenceGaps": [
+        "Records establishing the ACL injury and affected knee",
+        "Longitudinal knee imaging and orthopedic records documenting osteoarthritis after the injury",
+        "Meniscal or cartilage injury, instability, treatment, reinjury, alignment, and other osteoarthritis risk-factor history",
+        "Orthopedic assessment addressing the individual's chronology and competing explanations"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Webster and Hewett, Anterior Cruciate Ligament Injury and Knee Osteoarthritis: An Umbrella Systematic Review and Meta-analysis, Clin J Sport Med. 2022;32:145-152. PMID 33852440",
+          "note": "Umbrella systematic review/meta-analysis reporting markedly increased odds of knee osteoarthritis after ACL injury; supports focused post-traumatic research, not an automatic individual conclusion.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33852440/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 33852440; abstract; 13 reviews and summary meta-analysis of knee osteoarthritis after ACL injury"
+        }
+      ]
+    }
+  ]
 }

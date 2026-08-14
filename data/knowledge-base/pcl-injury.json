@@ -1,6 +1,30 @@
 {
   "id": "pcl-injury",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "osteoarthritis",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "A systematic review of isolated PCL injuries reports subsequent articular degeneration and osteoarthritis in both operative and nonoperative cohorts, with lower observed osteoarthritis frequency after reconstruction in the included evidence. Individual review should confirm osteoarthritis in the injured knee and examine instability, associated joint damage, treatment history, alignment, age, activity, and other osteoarthritis risk factors rather than inferring an individual relationship from group-level outcomes.",
+      "evidenceGaps": [
+        "Records establishing the PCL injury and affected knee",
+        "Longitudinal imaging and orthopedic records documenting osteoarthritis after the injury",
+        "Instability, associated meniscal/cartilage injury, treatment, reinjury, alignment, and other osteoarthritis risk-factor history",
+        "Orthopedic assessment addressing chronology and competing explanations"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Schroven et al., Operative management of isolated posterior cruciate ligament injuries improves stability and reduces the incidence of secondary osteoarthritis: a systematic review, Knee Surg Sports Traumatol Arthrosc. 2022;30:1733-1743. PMID 34505176",
+          "note": "Systematic review of isolated PCL injuries evaluating subsequent articular degeneration and osteoarthritis; supports focused post-traumatic research while noting the underlying evidence was largely lower-level observational data.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34505176/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 34505176; abstract; 27 studies, 5197 patients, osteoarthritis reported in operative and nonoperative cohorts"
+        }
+      ]
+    }
+  ]
 }

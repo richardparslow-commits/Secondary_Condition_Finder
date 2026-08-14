@@ -6,18 +6,23 @@
     {
       "conditionId": "depressive-disorder",
       "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Chronic physical pain, functional limitations, or long-term health conditions can be associated with mood impairment. This population-level relationship does not by itself establish an individual medical nexus.",
+      "prevalence": "sometimes-explored",
+      "rationale": "Systematic-review and meta-analytic evidence reports an association between olfactory impairment and depression, with objective impairment appearing particularly relevant in some subgroups including people with anosmia. This supports focused mental-health review when depression is diagnosed alongside anosmia, but it does not establish direction of effect or an individual medical relationship without chronology, functional-impact evidence, and assessment of other psychiatric and medical contributors.",
       "evidenceGaps": [
-        "Mental health evaluation distinguishing secondary emotional impact",
-        "Treatment notes"
+        "Objective documentation of anosmia or olfactory impairment and its onset",
+        "Mental-health records establishing depressive-disorder diagnosis and chronology",
+        "Functional and quality-of-life evidence concerning smell loss",
+        "Clinical assessment addressing other psychiatric, neurologic, medical, medication, and psychosocial contributors"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Legal framework for evaluating a secondary relationship; does not establish the underlying medical relationship.",
+          "citation": "Bode et al., Olfactory Impairment and Depression: A Systematic Review and Meta-Analysis, JAMA Otolaryngol Head Neck Surg. 2026. PMID 42424043",
+          "note": "Systematic review/meta-analysis of population-based studies reporting associations between subjective/objective olfactory impairment and depression; objective impairment was especially relevant in some subgroups including anosmia. Association does not establish individual direction or causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42424043/",
           "verified": false,
-          "verificationScope": "legal-framework"
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 42424043; abstract; 23 studies representing 17 independent cohorts"
         }
       ]
     }

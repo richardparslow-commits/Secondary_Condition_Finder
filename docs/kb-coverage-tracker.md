@@ -11,31 +11,28 @@
 ## Post-v2 controlled promotion
 
 ### Clinical Evidence Promotion Batch 1
-
-- `cardiomyopathy` → `congestive-heart-failure` and `urethral-stricture` → `hydronephrosis` were individually promoted with condition-specific clinical evidence.
-- `ankle-strain` returned to draft after unsupported biomechanical publication was withdrawn.
-- `fibromyalgia` was physically normalized into musculoskeletal catalog maintenance.
-- See `docs/clinical-evidence-promotion-batch-1.md`.
+- `cardiomyopathy` → `congestive-heart-failure`; `urethral-stricture` → `hydronephrosis`.
+- `ankle-strain` returned to draft; `fibromyalgia` physically normalized.
 
 ### Clinical Evidence Promotion Batch 2
-
-- `hypertensive-heart-disease` → `congestive-heart-failure` and `chronic-pyelonephritis` → `chronic-kidney-disease` were individually promoted.
-- `knee-injury` and `osteoarthritis` returned to draft after legal/rating-only medical claims were withdrawn.
-- `diabetic-retinopathy` was physically normalized into the ophthalmologic catalog file.
-- The citation-debt ratchet tightened to 141 total / 127 unverified / 125 review findings / at least 29 clinical URLs.
-- After four post-v2 expansion promotions, 103 of 107 expansion mappings remained drafts.
-- See `docs/clinical-evidence-promotion-batch-2.md`.
+- `hypertensive-heart-disease` → `congestive-heart-failure`; `chronic-pyelonephritis` → `chronic-kidney-disease`.
+- `knee-injury` and `osteoarthritis` returned to draft; `diabetic-retinopathy` physically normalized.
+- Citation ratchet: 141 total / 127 unverified / 125 review / ≥29 clinical URLs; 103/107 expansion mappings remained draft.
 
 ### Clinical Evidence Promotion Batch 3
+- `chronic-liver-disease` → `cirrhosis-of-the-liver`; amputation/depression repaired with clinical evidence.
+- `ageusia` returned to draft; `insomnia` physically normalized.
+- Citation ratchet: 140 total / 126 unverified / 124 review / ≥31 clinical URLs; **102/107** expansion mappings remained draft.
 
-- `chronic-liver-disease` → `cirrhosis-of-the-liver`: promoted only as documented hepatic-fibrosis progression with etiology and competing-cause safeguards.
-- `amputation-or-loss-of-use` → `depressive-disorder`: retained only after replacing legal-only support with amputation-specific systematic-review evidence and a bounded somatopsychic pathway.
-- `ageusia`: returned to draft because its depression and GERD suggestions were supported only by legal framework.
-- `insomnia`: stable identity physically relocated from the carried-over file into the mental-disorders catalog.
-- The citation-debt ratchet tightens again to 140 total / 126 unverified / 124 review findings / at least 31 clinical URLs.
-- The 300/300 identity contract remains fixed. After five post-v2 expansion promotions, **102 of the 107 Wave 1-7 expansion mappings remain drafts**.
-- All newly source-checked clinical references remain `verified: false` pending qualified-human verification.
-- See `docs/clinical-evidence-promotion-batch-3.md`.
+### Clinical Evidence Promotion Batch 4
+- `acl-injury` and `pcl-injury` → `osteoarthritis`: promoted using injury-specific systematic-review evidence with affected-knee/chronology safeguards.
+- `anosmia` and `alopecia-areata` → `depressive-disorder`: legal-only support replaced with condition-specific systematic review/meta-analysis evidence; both remain association-focused rather than automatic nexus claims.
+- `agranulocytosis`: returned to draft because its depression and GERD suggestions used only legal framework and generic chronic-condition/treatment language.
+- `hip-strain` and `ankle-strain`: stable identities physically moved from `carried-over.json` into musculoskeletal maintenance.
+- Citation debt ceilings remain 140 total / 126 unverified / 124 review findings while the clinical-URL floor rises to **35**.
+- The 300/300 contract remains fixed. ACL and PCL are the sixth and seventh promoted expansion mappings, so **100 of 107 Wave 1-7 expansion mappings remain drafts**.
+- New source checks remain `verified: false` pending qualified-human verification.
+- See `docs/clinical-evidence-promotion-batch-4.md`.
 
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.

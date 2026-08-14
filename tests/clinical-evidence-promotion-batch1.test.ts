@@ -70,14 +70,16 @@ describe("clinical evidence promotion batch 1", () => {
     expect(mapping?.todo.join(" ")).toMatch(/contralateral-knee.*placeholder/i);
   });
 
-  it("physically relocates fibromyalgia into musculoskeletal catalog maintenance", () => {
+  it("preserves fibromyalgia in musculoskeletal catalog maintenance as later maintenance expands", () => {
     const hemic = readJson("data/conditions/hemic-lymphatic-immune.json");
     const maintenance = readJson("data/conditions/musculoskeletal-quality-maintenance.json");
     const fibromyalgia = catalogById.get("fibromyalgia");
+    const maintenanceIds = maintenance.conditions?.map((condition) => condition.id) ?? [];
 
     expect(hemic.conditions?.some((condition) => condition.id === "fibromyalgia")).toBe(false);
     expect(maintenance.bodySystem).toBe("Musculoskeletal System");
-    expect(maintenance.conditions?.map((condition) => condition.id)).toEqual(["fibromyalgia"]);
+    expect(maintenanceIds).toContain("fibromyalgia");
+    expect(new Set(maintenanceIds).size).toBe(maintenanceIds.length);
     expect(fibromyalgia?.bodySystem).toBe("Musculoskeletal System");
     expect(fibromyalgia?.ratingSchedule[0]?.citation).toBe("38 CFR 4.71a");
     expect(fibromyalgia?.ratingSchedule[0]?.note).toMatch(/5025/i);

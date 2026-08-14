@@ -2,38 +2,6 @@
   "bodySystem": "Carried over from the knowledge base",
   "conditions": [
     {
-      "id": "hip-strain",
-      "name": "Hip strain",
-      "aliases": ["hip condition", "hip pain"],
-      "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.71a",
-          "note": "Hip/thigh residual framework. Evaluate documented residuals under the applicable hip and thigh criteria, including DCs 5250-5255 as appropriate; no single hip-strain-specific diagnostic code is assigned.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": [
-        "Wave 8 resolves the prior empty rating citation with the current hip/thigh framework rather than inventing a strain-specific diagnostic code. Rating authority describes evaluation only and is not clinical nexus evidence."
-      ]
-    },
-    {
-      "id": "ankle-strain",
-      "name": "Ankle strain",
-      "aliases": ["ankle condition", "ankle injury", "ankle instability"],
-      "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.71a",
-          "note": "Ankle residual framework. Evaluate documented residuals under the applicable ankle criteria, including DC 5271 for limited motion when supported by the record; no single ankle-strain-specific diagnostic code is assigned.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": [
-        "Wave 8 resolves the prior empty rating citation with the current ankle framework rather than inventing a strain-specific diagnostic code. Rating authority describes evaluation only and is not clinical nexus evidence."
-      ]
-    },
-    {
       "id": "contralateral-knee-condition",
       "name": "Contralateral (opposite) knee condition",
       "aliases": ["opposite knee condition"],

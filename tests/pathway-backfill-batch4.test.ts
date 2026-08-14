@@ -19,11 +19,11 @@ const intentionallyUnlabeledEdges = [
 const intentionallyUnlabeledMappings = [
   "hypertension",
   "al-amyloidosis",
-  "agranulocytosis",
-  "alopecia-areata",
   "anorexia-nervosa",
   "addisons-disease",
 ] as const;
+
+const safetyWithdrawnMappings = ["agranulocytosis"] as const;
 
 describe("controlled pathway backfill batch 4", () => {
   it("adds a conditional somatopsychic pathway only to the two supported physical-to-mood edges", () => {
@@ -59,7 +59,7 @@ describe("controlled pathway backfill batch 4", () => {
     }
   });
 
-  it("keeps reviewed legal-or-rating-only Systemic mappings unlabeled", () => {
+  it("keeps reviewed legal-or-rating-only Systemic mappings unpublished or unlabeled", () => {
     const kb = loadKnowledgeBase();
 
     for (const primaryId of intentionallyUnlabeledMappings) {
@@ -69,6 +69,21 @@ describe("controlled pathway backfill batch 4", () => {
         expect(suggestion.pathwayIntelligence).toBeUndefined();
       }
     }
+
+    for (const primaryId of safetyWithdrawnMappings) {
+      const mapping = kb.find((entry) => entry.id === primaryId);
+      expect(mapping?.draft).toBe(true);
+      expect(mapping?.suggestions).toEqual([]);
+      expect(mapping?.todo.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("recognizes the alopecia-areata depression relationship only after clinical repair", () => {
+    const mapping = loadKnowledgeBase().find((entry) => entry.id === "alopecia-areata");
+    const depression = mapping?.suggestions.find((entry) => entry.conditionId === "depressive-disorder");
+    expect(mapping?.draft).toBe(false);
+    expect(depression?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
+    expect(depression?.sourceReferences.some((source) => source.citation === "38 CFR 3.310")).toBe(false);
   });
 
   it("preserves pre-backfill rank and prevalence for the newly enriched mappings", () => {

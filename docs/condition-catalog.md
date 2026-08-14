@@ -33,37 +33,25 @@ The catalog is the single source of condition identity. Mapping files carry only
 
 ## Current coverage
 
-After Clinical Evidence Promotion Batch 3:
+After Clinical Evidence Promotion Batch 4:
 
 - **300 catalog conditions** remain represented across **33 catalog files**.
 - Every catalog condition still has exactly one corresponding published-or-draft file in `data/knowledge-base/`.
-- Wave 1 added **20 conditions**: 12 musculoskeletal and 8 neurological.
-- Wave 2 added **18 conditions**: 10 musculoskeletal and 8 neurological/peripheral-neurological.
-- Wave 3 added **15 conditions**: 7 endocrine and 8 cardiovascular/product-grouped identities, including pulmonary hypertension with its actual respiratory rating authority.
-- Wave 4 added **15 conditions**: 8 respiratory/ENT, 1 neurological sleep-wake condition, and 6 ophthalmologic/special-sense identities.
-- Wave 5 added **15 conditions**: 10 digestive and 5 genitourinary identities.
-- Wave 6 added **14 conditions**: 8 mental-disorder, 3 hematologic, and 3 skin/cutaneous identities.
-- Wave 7 added **10 conditions**: 6 infectious/tropical, 3 oncological, and 1 dental/oral identity.
-- Wave 8 added **no new condition identities**. It was a catalog-quality pass that preserved the target-v2 300/300 contract.
-- Clinical Evidence Promotion Batch 1 promoted `cardiomyopathy` → `congestive-heart-failure` and `urethral-stricture` → `hydronephrosis`.
-- Clinical Evidence Promotion Batch 2 promoted `hypertensive-heart-disease` → `congestive-heart-failure` and `chronic-pyelonephritis` → `chronic-kidney-disease`.
-- Clinical Evidence Promotion Batch 3 promotes `chronic-liver-disease` → `cirrhosis-of-the-liver` only as documented fibrosis progression and repairs `amputation-or-loss-of-use` → `depressive-disorder` with amputation-specific clinical evidence.
-- **102 of the 107 Wave 1 through Wave 7 secondary mappings remain `draft: true`**. The five promoted expansion mappings are `cardiomyopathy`, `urethral-stricture`, `hypertensive-heart-disease`, `chronic-pyelonephritis`, and `chronic-liver-disease`.
-- `ankle-strain`, `knee-injury`, `osteoarthritis`, and `ageusia` are draft because previously published downstream claims did not satisfy the condition-specific clinical-evidence publication bar.
+- Waves 1 through 7 added **107 identities**; Wave 8 added no identities and was a catalog-quality pass.
+- Clinical Evidence Promotion Batches 1 through 4 publish seven individually reviewed Wave 1-7 mappings: `cardiomyopathy`, `urethral-stricture`, `hypertensive-heart-disease`, `chronic-pyelonephritis`, `chronic-liver-disease`, `acl-injury`, and `pcl-injury`.
+- **100 of the 107 Wave 1-7 secondary mappings remain `draft: true`**.
+- `ankle-strain`, `knee-injury`, `osteoarthritis`, `ageusia`, and `agranulocytosis` are draft because previously published claims did not satisfy the condition-specific clinical-evidence publication bar.
+- Published legacy relationships for `amputation-or-loss-of-use`, `anosmia`, and `alopecia-areata` have had legal-only support replaced with condition-specific clinical evidence and conservative individual-review safeguards.
 - Rating references added or corrected by automated work remain `verified: false`. Clinical source records may be source-checked with URLs, dates, and locators, but remain `verified: false` until qualified-human verification under the Citation Verification SOP.
 - Where the rating schedule does not provide a single diagnosis-specific diagnostic code, the catalog records the applicable rating framework and an explicit review note rather than inventing authority.
-- Wave 8 applies that rule to `hip-strain`, `ankle-strain`, `insomnia`, and `substance-use-disorder` rather than inventing diagnosis-specific codes.
 - Wave 8 records `diabetic-retinopathy` under 38 CFR 4.79 / DC 6040 and corrects `fibromyalgia` to 38 CFR 4.71a / DC 5025, removing the historical 4.88b carryover from fibromyalgia.
-- Batch 1 physically relocates the unchanged `fibromyalgia` identity from the historical hemic/immune catalog file to `musculoskeletal-quality-maintenance.json`.
-- Batch 2 physically relocates the unchanged `diabetic-retinopathy` identity from `carried-over.json` into `ophthalmologic-expansion-wave-4.json`.
-- Batch 3 physically relocates the unchanged `insomnia` identity from `carried-over.json` into `mental-disorders.json` while preserving its ID, aliases, body system, 38 CFR 4.130 framework, and unverified rating-reference state.
+- Batch 1 physically relocates `fibromyalgia` into `musculoskeletal-quality-maintenance.json`.
+- Batch 2 physically relocates `diabetic-retinopathy` into `ophthalmologic-expansion-wave-4.json`.
+- Batch 3 physically relocates `insomnia` into `mental-disorders.json`.
+- Batch 4 physically relocates `hip-strain` and `ankle-strain` into `musculoskeletal-quality-maintenance.json` while preserving stable IDs, aliases, 38 CFR 4.71a residual frameworks, and rating-reference verification state.
+- `carried-over.json` is now reduced to `contralateral-knee-condition` and `substance-use-disorder`, the two harder modeling cases that should not be normalized by a simple file move alone.
 - `contralateral-knee-condition` remains a quarantined legacy relationship/laterality placeholder with no rating code because it is not a distinct diagnosis. Laterality should be modeled structurally before that placeholder is retired.
-- Product expansion grouping does not override the actual rating schedule. Wave 7 therefore scopes `histoplasmosis` to the pulmonary DC 6834 identity even though the stable discovery id is broader, and treats DCs 6822 and 6823 as pulmonary rating identities for actinomycosis and nocardiosis rather than universal codes for every extra-pulmonary manifestation.
-- Obsolete diagnostic codes must not be carried forward as current authority. Wave 7 records that former amebiasis DC 7321 was removed effective May 19, 2024 and uses the current infectious/parasitic framework instead.
-- Severity-limited diagnostic codes must not be generalized. Wave 7 records DC 6325 only for hyperinfection syndrome or disseminated strongyloidiasis and preserves broader parasitic/residual review for other presentations.
-- Broader system malignancy codes do not become invented diagnosis-specific codes. Wave 7 uses DC 7627 for ovarian cancer, DC 7528 for testicular cancer, and DC 6819 for laryngeal cancer while explicitly documenting that those are broader gynecological, genitourinary, and respiratory malignancy frameworks.
-- A broader regulatory umbrella may coexist with a narrower user-facing diagnosis only when names and aliases remain unambiguous and the overlap is documented.
-- Related diagnoses may share a rating code without becoming one medical entity. A shared rating framework never establishes shared etiology, causation, aggravation, or a secondary pathway.
+- Product expansion grouping does not override the actual rating schedule, and shared diagnostic codes do not collapse distinct disease identities or establish common medical causation.
 
 The completed Waves 1-7 expansion record is maintained in `docs/condition-expansion-roadmap.md`. Target catalog v2 remains **300 conditions**. Post-v2 evidence promotion and quality maintenance do not convert that target into a claim that 300 conditions exhaust medicine or the VA rating schedule.
 
@@ -77,39 +65,38 @@ Wave 8 resolved the first bounded batch of documented catalog debt without chang
 - `diabetic-retinopathy`: added the express **38 CFR 4.79 / DC 6040** identity.
 - `insomnia`: records the 38 CFR 4.130 mental-disorders framework and distinguishes an insomnia diagnosis from the `chronic sleep impairment` symptom appearing in the General Rating Formula.
 - `substance-use-disorder`: records the 38 CFR 4.130 framework without inventing a generic SUD diagnostic code; catalog presence does not resolve separate service-connection or compensability rules.
-- `contralateral-knee-condition`: intentionally remains uncoded because it is a laterality/relationship placeholder, not a distinct diagnosis. A future structural migration should model laterality and retire the placeholder without breaking the one-to-one catalog/KB contract.
+- `contralateral-knee-condition`: intentionally remains uncoded because it is a laterality/relationship placeholder, not a distinct diagnosis.
 
 The Wave 8 regression contract is `tests/catalog-quality-wave8.test.ts`.
 
 ## Post-v2 evidence promotion and catalog maintenance
 
-Clinical Evidence Promotion Batches 1 through 3 follow a relationship-level publication rule rather than promoting whole catalog waves. Five expansion mappings are published because their individual relationships have condition-specific clinical support, conservative rationales, explicit evidence gaps, and source provenance. The remainder of each expansion wave stays draft unless its own relationships independently satisfy that bar.
+Clinical Evidence Promotion Batches 1 through 4 follow a relationship-level publication rule rather than promoting whole catalog waves. Seven expansion mappings are published because their individual relationships have condition-specific clinical support, conservative rationales, explicit evidence gaps, and source provenance. The remainder of each expansion wave stays draft unless its own relationships independently satisfy that bar.
 
-Batch 1 promotes `cardiomyopathy` and `urethral-stricture`, withdraws unsupported `ankle-strain` relationships, and completes fibromyalgia's physical file relocation.
+- **Batch 1:** promotes `cardiomyopathy` and `urethral-stricture`, withdraws unsupported `ankle-strain` relationships, and completes fibromyalgia's physical file relocation.
+- **Batch 2:** promotes `hypertensive-heart-disease` and `chronic-pyelonephritis`, withdraws unsupported `knee-injury` and `osteoarthritis` relationships, and physically relocates `diabetic-retinopathy`.
+- **Batch 3:** promotes `chronic-liver-disease` only through documented hepatic-fibrosis progression, repairs the amputation/depression relationship with clinical evidence, withdraws unsupported `ageusia` relationships, and physically relocates `insomnia`.
+- **Batch 4:** promotes `acl-injury` and `pcl-injury` to affected-knee osteoarthritis research with injury-specific systematic-review evidence; repairs `anosmia` and `alopecia-areata` depression relationships with condition-specific evidence; withdraws `agranulocytosis`; and physically normalizes `hip-strain` and `ankle-strain` into musculoskeletal maintenance.
 
-Batch 2 promotes `hypertensive-heart-disease` and `chronic-pyelonephritis`, withdraws unsupported `knee-injury` and `osteoarthritis` relationships, and physically relocates `diabetic-retinopathy` into the ophthalmologic catalog file.
-
-Batch 3 promotes `chronic-liver-disease` only through documented hepatic-fibrosis progression, repairs the amputation/depression relationship with clinical evidence, withdraws unsupported `ageusia` relationships, and physically relocates `insomnia` into the mental-disorders catalog.
-
-See `docs/clinical-evidence-promotion-batch-1.md`, `docs/clinical-evidence-promotion-batch-2.md`, `docs/clinical-evidence-promotion-batch-3.md`, and their corresponding regression tests.
+See `docs/clinical-evidence-promotion-batch-1.md` through `docs/clinical-evidence-promotion-batch-4.md` and their corresponding regression tests.
 
 ## Remaining modeling debt
 
-Separate modeling work remains after Batch 3:
+Separate modeling work remains after Batch 4:
 
 - `contralateral-knee-condition` still requires a structural laterality migration before the legacy placeholder can be retired.
+- `substance-use-disorder` is a broad discovery identity spanning substance-specific diagnoses; its physical catalog placement can be normalized, but its clinical/legal semantics must remain explicit.
 - `cerebral-palsy` remains a catalog-governance question because congenital/developmental conditions can raise distinct service-connection rules. Catalog presence by itself does not mean the app asserts service connection is available.
-- The historical `carried-over.json` file still contains stable musculoskeletal and mental-health identities whose physical placement can be normalized in later bounded maintenance passes without changing IDs.
-- Older neurological/endocrine carryovers contain naming/body-system cleanup debt. Future catalog work should not copy those inconsistencies.
+- Older neurological/endocrine carryovers and historical grouped identities may contain naming/body-system cleanup debt. Future catalog work should not copy those inconsistencies.
 - Other historical catalog files may still contain cross-system physical placement or over-broad grouped identities; those should be corrected only in bounded changes that preserve stable IDs and one-to-one mappings.
 
 ## Citation status
 
 Catalog rating references are deliberately separate from medical evidence. Automated work must not mark them verified. A rating citation may support condition/rating identity but never a causal statement such as “condition A caused condition B.”
 
-Clinical Evidence Promotion Batches 1 through 3 add source-checked clinical references only for individually reviewed relationships; those sources remain `verified: false` until qualified-human verification under `docs/citation-verification-sop.md`.
+Clinical Evidence Promotion Batches 1 through 4 add or repair source-checked clinical references only for individually reviewed relationships; those sources remain `verified: false` until qualified-human verification under `docs/citation-verification-sop.md`.
 
-Batch 3 tightens the automated non-regression baseline to **140 total references, 14 verified, 126 unverified, 124 published-unverified review findings, and at least 31 clinical-evidence references with canonical URLs**.
+After Batch 4, the automated non-regression ceilings remain **140 total references, 14 verified, 126 unverified, and 124 published-unverified review findings**, while the clinical-evidence-with-canonical-URL floor rises to **35**.
 
 ## Adding or revising a condition
 
