@@ -54,7 +54,7 @@ describe("accessibility and UX content contracts", () => {
     expect(privacy).toContain("Privacy by design");
     expect(privacy).toContain("are not placed in page URLs");
     expect(privacy).toContain("presumptive workflow does not encode selected service locations or service dates in query strings");
-    expect(privacy).toContain("Automatic route, AJAX, and fetch tracking are disabled");
+    expect(privacy).toContain("does not initialize Application Insights or another client analytics/telemetry SDK");
     expect(privacy).toContain("does not persist workflow or recommendation event history through an application event logger");
   });
 
