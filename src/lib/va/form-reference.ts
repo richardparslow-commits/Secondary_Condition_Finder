@@ -1,11 +1,11 @@
-import { fetchVaForms, type VaSandboxResult } from "./sandbox";
+import { fetchVaForms, type VaApiResult, type VaApiSource } from "./sandbox";
 
 export interface ClaimFormReference {
   formName: string;
   title: string;
   url: string;
   lastRevisionOn: string | null;
-  source: "va-sandbox-api" | "local-fallback";
+  source: VaApiSource;
   sourceLabel: string;
   notice: string;
 }
@@ -18,12 +18,12 @@ const LOCAL_FORM_REFERENCE: ClaimFormReference = {
   source: "local-fallback",
   sourceLabel: "Local reference",
   notice:
-    "VA sandbox data is unavailable or disabled. Confirm the current form and revision on VA.gov before filing.",
+    "VA Forms API data is unavailable or disabled. Confirm the current form and revision on VA.gov before filing.",
 };
 
 type FormsFetcher = (
   query?: string,
-) => Promise<VaSandboxResult<{
+) => Promise<VaApiResult<{
   data: Array<{
     attributes: {
       form_name: string;
@@ -49,14 +49,16 @@ export async function loadClaimFormReference(
 
   if (!current) return LOCAL_FORM_REFERENCE;
 
+  const production = result.source === "va-production-api";
   return {
     formName: current.attributes.form_name,
     title: current.attributes.title,
     url: current.attributes.url,
     lastRevisionOn: current.attributes.last_revision_on ?? null,
-    source: "va-sandbox-api",
-    sourceLabel: "VA sandbox reference",
-    notice:
-      "This metadata came from the VA sandbox environment. Sandbox data is for testing and may not be current; confirm the form on VA.gov before filing.",
+    source: result.source,
+    sourceLabel: production ? "VA production reference" : "VA sandbox reference",
+    notice: production
+      ? "This metadata came from the VA Forms production API. Confirm the form on VA.gov before filing because forms and revisions can change."
+      : "This metadata came from the VA sandbox environment. Sandbox data is for testing and may not be current; confirm the form on VA.gov before filing.",
   };
 }
