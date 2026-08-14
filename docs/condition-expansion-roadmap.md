@@ -22,22 +22,25 @@ Clinical secondary-condition relationships must be researched separately and rem
 6. Medication/treatment and intermediate-factor theories require link-by-link evidence; they are not inferred from a medication name or a regulatory citation.
 7. New source references remain `verified: false` until qualified human review under repository policy.
 8. Process roughly 10-20 conditions per batch and run structural validation, citation audit, lint, typecheck, tests, production build, and real-browser E2E before merge.
+9. When the rating schedule has no single diagnosis-specific diagnostic code, record the applicable rating framework and a review note rather than inventing a code.
 
 ## Coverage target
 
 | State | Conditions |
 |---|---:|
 | Baseline before expansion | 193 |
-| Wave 1 implemented in this batch | +20 |
+| Wave 1 implemented | +20 |
 | Catalog after Wave 1 | 213 |
-| Waves 2-7 planned | +87 |
+| Wave 2 implemented | +18 |
+| Catalog after Wave 2 | 231 |
+| Waves 3-7 planned | +69 |
 | Target catalog v2 | 300 |
 
 The candidate list deliberately consolidates obvious synonyms and avoids creating separate user-facing entries for every residual, laterality variant, or diagnostic-code phrasing. Laterality should eventually be modeled as an attribute rather than by multiplying diagnoses.
 
-## Wave 1 — musculoskeletal and neurological (20)
+## Wave 1 — musculoskeletal and neurological (20) — implemented
 
-These are the highest-density expansion areas because the VA DBQ inventory and Part 4 rating schedule contain many distinct joint, bone, peripheral-nerve, and central-neurological diagnoses that are not yet represented by stable catalog identities.
+These are the highest-density expansion areas because the VA DBQ inventory and Part 4 rating schedule contain many distinct joint, bone, peripheral-nerve, and central-neurological diagnoses that were not represented by stable catalog identities at the 193-condition baseline.
 
 ### Musculoskeletal (12)
 
@@ -69,11 +72,41 @@ These are the highest-density expansion areas because the VA DBQ inventory and P
 | `ulnar-neuropathy` | Ulnar Neuropathy | 38 CFR 4.124a / DCs 8516, 8616, 8716 |
 | `common-peroneal-neuropathy` | Common Peroneal (Fibular) Neuropathy | 38 CFR 4.124a / DCs 8521, 8621, 8721 |
 
-All 20 enter Wave 1 with draft KB files. Publication of any secondary relationship is a separate evidence-authoring step.
+All 20 entered Wave 1 with draft KB files. Publication of any secondary relationship is a separate evidence-authoring step.
 
-## Wave 2 — musculoskeletal and peripheral-neurological depth (18)
+## Wave 2 — musculoskeletal and peripheral-neurological depth (18) — implemented
 
-`psoriatic-arthritis`, `charcot-arthropathy`, `sacroiliac-joint-dysfunction`, `femoroacetabular-impingement`, `hip-labral-tear`, `greater-trochanteric-pain-syndrome`, `patellar-instability`, `acl-injury`, `pcl-injury`, `tarsal-metatarsal-malunion-nonunion`, `radial-neuropathy`, `median-neuropathy`, `tibial-neuropathy`, `femoral-neuropathy`, `meralgia-paresthetica`, `complex-regional-pain-syndrome`, `cauda-equina-syndrome`, `cranial-nerve-palsy`.
+Wave 2 deepens joint, ligament, foot, peripheral-nerve, pain-syndrome, cauda-equina, and cranial-nerve coverage. Specific diagnostic codes are recorded only where the current rating schedule provides a defensible condition- or nerve-specific identity. Framework-only diagnoses retain an explicit review note rather than an invented code.
+
+### Musculoskeletal (10)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `psoriatic-arthritis` | Psoriatic Arthritis | 38 CFR 4.71a / DC 5002; chronic residuals under DC 5003 |
+| `charcot-arthropathy` | Charcot Neuropathic Arthropathy | 38 CFR 4.71a / DC 5009; acute phase under DC 5002, chronic residuals under DC 5003 |
+| `sacroiliac-joint-dysfunction` | Sacroiliac Joint Dysfunction | 38 CFR 4.71a / DC 5236 |
+| `femoroacetabular-impingement` | Femoroacetabular Impingement | 38 CFR 4.71a / applicable hip-thigh criteria; no single diagnosis-specific DC assigned |
+| `hip-labral-tear` | Hip Labral Tear | 38 CFR 4.71a / applicable hip-thigh criteria; no single diagnosis-specific DC assigned |
+| `greater-trochanteric-pain-syndrome` | Greater Trochanteric Pain Syndrome | 38 CFR 4.71a / applicable hip-thigh criteria; no single diagnosis-specific DC assigned |
+| `patellar-instability` | Patellar Instability | 38 CFR 4.71a / DC 5257 |
+| `acl-injury` | Anterior Cruciate Ligament (ACL) Injury | 38 CFR 4.71a / DC 5257 for qualifying persistent instability; other knee residuals as documented |
+| `pcl-injury` | Posterior Cruciate Ligament (PCL) Injury | 38 CFR 4.71a / DC 5257 for qualifying persistent instability; other knee residuals as documented |
+| `tarsal-metatarsal-malunion-nonunion` | Tarsal or Metatarsal Malunion / Nonunion | 38 CFR 4.71a / DC 5283 |
+
+### Neurological (8)
+
+| ID | Display name | Part 4 identity |
+|---|---|---|
+| `radial-neuropathy` | Radial Neuropathy | 38 CFR 4.124a / DCs 8514, 8614, 8714 |
+| `median-neuropathy` | Median Neuropathy | 38 CFR 4.124a / DCs 8515, 8615, 8715 |
+| `tibial-neuropathy` | Tibial Neuropathy | 38 CFR 4.124a / DCs 8524-8724 or 8525-8725 according to lesion location |
+| `femoral-neuropathy` | Femoral Neuropathy | 38 CFR 4.124a / DCs 8526, 8626, 8726 |
+| `meralgia-paresthetica` | Meralgia Paresthetica | 38 CFR 4.124a / external cutaneous nerve of thigh DCs 8529, 8629, 8729 |
+| `complex-regional-pain-syndrome` | Complex Regional Pain Syndrome | 38 CFR 4.124a and 4.124 / affected-nerve framework; no single CRPS DC assigned |
+| `cauda-equina-syndrome` | Cauda Equina Syndrome | 38 CFR 4.124a plus applicable spine/residual criteria; no single diagnosis-specific DC assigned |
+| `cranial-nerve-palsy` | Cranial Nerve Palsy | 38 CFR 4.124a / nerve-specific or special-sense criteria according to nerve involved |
+
+All 18 enter Wave 2 with draft KB files and no published suggestions. Rating identity remains separate from medical-causation evidence.
 
 ## Wave 3 — endocrine and cardiovascular depth (15)
 
@@ -108,6 +141,6 @@ A batch is complete only when:
 - lint, typecheck, unit tests, production build, and real-browser journeys pass on the exact branch head;
 - documentation counts match the implemented catalog.
 
-## After Wave 1
+## After Wave 2
 
-The next medical-authoring step is not to publish all 20 automatically. It is to research the highest-value primary-to-secondary pathways inside Wave 1, promote only the relationships with adequate condition-specific clinical support, and leave unsupported theories draft. Wave 2 catalog identity expansion can proceed independently in the next controlled batch.
+The catalog-expansion program now has 231 recognized conditions. The next catalog batch is Wave 3, while medical-authoring work for Waves 1 and 2 remains a separate evidence task: promote only individual relationships with adequate condition-specific clinical support and leave unsupported theories draft.

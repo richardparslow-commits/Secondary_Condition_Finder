@@ -179,18 +179,21 @@ health state.
 
 ## Knowledge-base coverage and authoring
 
-213 catalog conditions have version-controlled mapping files after condition
-catalog expansion Wave 1. The 20 Wave 1 conditions enter with draft mappings and
-no published suggestions until condition-specific clinical evidence satisfies
-the repository's publication rules. Draft mappings remain excluded from
-recommendation output. The target-v2 expansion plan is maintained in
-`docs/condition-expansion-roadmap.md`.
+231 catalog conditions have version-controlled mapping files after condition
+catalog expansion Wave 2. Waves 1 and 2 added 38 conditions in controlled
+musculoskeletal and neurological batches; all 38 expansion mappings remain
+safe drafts with no published suggestions until condition-specific clinical
+evidence satisfies the repository's publication rules. Draft mappings remain
+excluded from recommendation output. The target-v2 expansion plan is maintained
+in `docs/condition-expansion-roadmap.md`.
 
 To add or change a condition:
 
 1. **Catalog:** update `data/conditions/<body-system>.json` or a reviewed
    expansion-batch file with a stable unique ID, display name, aliases, and
-   traceable rating authority when available.
+   traceable rating authority when available. Where no single diagnosis-specific
+   diagnostic code exists, record the applicable rating framework and review
+   note instead of inventing a code.
 2. **Mapping:** update/create `data/knowledge-base/<id>.json`. Each published
    suggestion needs a condition ID, rank, prevalence label, conservative
    rationale, evidence gaps, and source references satisfying the repository's
