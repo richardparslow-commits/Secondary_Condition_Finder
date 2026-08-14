@@ -7,10 +7,7 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
 import { intakeSchema } from "@/lib/engine/types";
 import { loadKnowledgeBase } from "@/lib/kb/load";
-import {
-  parseDocumentsSelection,
-  workflowStateToSearchParams,
-} from "@/lib/secondary-workflow/state";
+import { parseDocumentsSelection } from "@/lib/secondary-workflow/state";
 import {
   openWorkflowState,
   sealWorkflowState,
@@ -42,20 +39,12 @@ describe("Priority 2 medication and treatment intake", () => {
     expect(state.treatments).toEqual(["Medication management", "Physical therapy"]);
   });
 
-  it("keeps medication/treatment context out of URL serialization", () => {
-    const params = workflowStateToSearchParams({
-      diagnosedConditionIds: ["ptsd", "erectile-dysfunction"],
-      serviceConnectedConditionIds: ["ptsd"],
-      ratingsByConditionId: { ptsd: 70 },
-      documentsShared: true,
-      medications: ["SSRI"],
-      treatments: ["Medication management"],
-    });
+  it("has no production workflow-state URL serializer", async () => {
+    const stateModule = await import("@/lib/secondary-workflow/state");
+    const source = readRepoFile("src/lib/secondary-workflow/state.ts");
 
-    expect(params.has("medications")).toBe(false);
-    expect(params.has("treatments")).toBe(false);
-    expect(params.toString()).not.toContain("SSRI");
-    expect(params.toString()).not.toContain("Medication");
+    expect("workflowStateToSearchParams" in stateModule).toBe(false);
+    expect(source).not.toContain("new URLSearchParams");
   });
 
   it("round-trips bounded context through encrypted workflow state without plaintext leakage", () => {

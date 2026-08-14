@@ -101,10 +101,16 @@ describe("workflow privacy", () => {
     ).toBeNull();
   });
 
-  it("disables automatic telemetry route and network tracking", () => {
-    const source = read("src/lib/appInsights.ts");
-    expect(source).toContain("enableAutoRouteTracking: false");
-    expect(source).toContain("disableAjaxTracking: true");
-    expect(source).toContain("disableFetchTracking: true");
+  it("ships no client telemetry initializer and keeps browser egress first-party only", () => {
+    const layout = read("src/app/layout.tsx");
+    const proxy = read("src/proxy.ts");
+    const privacy = read("src/app/privacy/page.tsx");
+
+    expect(fs.existsSync(path.join(process.cwd(), "src/lib/appInsights.ts"))).toBe(false);
+    expect(fs.existsSync(path.join(process.cwd(), "src/components/AppInsightsInit.tsx"))).toBe(false);
+    expect(layout).not.toContain("AppInsightsInit");
+    expect(proxy).toContain('connect-src \'self\'');
+    expect(proxy).not.toMatch(/applicationinsights|azure\.com|dc\.services\.visualstudio\.com/i);
+    expect(privacy).toContain("does not initialize Application Insights or another client analytics/telemetry SDK");
   });
 });
