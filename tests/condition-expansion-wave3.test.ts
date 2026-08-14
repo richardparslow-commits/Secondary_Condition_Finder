@@ -22,6 +22,7 @@ const WAVE_THREE_IDS = [
 ] as const;
 
 const POST_V2_PROMOTED_WAVE_THREE_IDS = new Set([
+  "acromegaly",
   "cardiomyopathy",
   "hypertensive-heart-disease",
   "hyperaldosteronism",
