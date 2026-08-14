@@ -1,41 +1,9 @@
 {
   "id": "pulmonary-fibrosis",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "sleep-apnea",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Chronic airway inflammation and altered pulmonary mechanics increase the likelihood of upper airway collapse during sleep.",
-      "evidenceGaps": [
-        "Sleep study (polysomnography) with AHI index",
-        "Pulmonary or sleep specialist nexus"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "cardiac-arrhythmia",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Chronic nocturnal hypoxia and respiratory strain place stress on the cardiovascular system.",
-      "evidenceGaps": [
-        "ECG or Holter monitor records",
-        "Cardiology evaluation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.104",
-          "note": "Cardiovascular diagnostic codes",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild any secondary-condition suggestions using pulmonary-fibrosis-specific clinical evidence before publication.",
+    "The prior sleep-apnea and cardiac-arrhythmia suggestions were withdrawn because their only sources were legal/rating authorities. Strong OSA evidence identified during Batch 11 was specific to idiopathic pulmonary fibrosis and was not generalized to this broader catalog identity without subtype confirmation."
+  ],
+  "suggestions": []
 }
