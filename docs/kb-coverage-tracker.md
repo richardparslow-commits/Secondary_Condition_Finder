@@ -12,24 +12,30 @@
 
 ### Clinical Evidence Promotion Batch 1
 
-- `cardiomyopathy` → `congestive-heart-failure`: promoted with condition-specific ESC cardiomyopathy evidence, conservative disease-progression framing, source provenance, and individual-nexus evidence gaps.
-- `urethral-stricture` → `hydronephrosis`: promoted with condition-specific clinical evidence documenting upper-tract complications of urethral stenosis and explicit alternative-cause review.
-- `ankle-strain`: returned to draft because the previously published relationship claims were stronger than the available condition-specific clinical evidence.
-- `fibromyalgia`: catalog identity preserved but physically relocated to musculoskeletal catalog maintenance.
-- Source records are source-checked and retain `verified: false` pending qualified-human verification under `docs/citation-verification-sop.md`.
+- `cardiomyopathy` → `congestive-heart-failure` and `urethral-stricture` → `hydronephrosis` were individually promoted with condition-specific clinical evidence.
+- `ankle-strain` returned to draft after unsupported biomechanical publication was withdrawn.
+- `fibromyalgia` was physically normalized into musculoskeletal catalog maintenance.
 - See `docs/clinical-evidence-promotion-batch-1.md`.
 
 ### Clinical Evidence Promotion Batch 2
 
-- `hypertensive-heart-disease` → `congestive-heart-failure`: promoted with condition-specific hypertensive-heart-disease evidence and explicit requirements for objective cardiac remodeling, chronology, and competing-cause review.
-- `chronic-pyelonephritis` → `chronic-kidney-disease`: promoted cautiously with adult chronic-pyelonephritis follow-up evidence and safeguards that distinguish stable preserved renal function from documented scarring or progressive renal impairment.
-- `knee-injury`: returned to draft because four published biomechanical relationships relied only on rating/legal authority rather than condition-specific clinical evidence.
-- `osteoarthritis`: returned to draft because the published plantar-fasciitis relationship used a rating citation as if it supported a biomechanical medical proposition.
-- `diabetic-retinopathy`: stable catalog identity physically relocated from the historical carried-over file into the ophthalmologic catalog file without changing the identity or DC 6040 authority.
-- Nine unsafe unverified legacy references are retired while two clinical-evidence references are added; the citation-debt ratchet is tightened rather than expanded.
-- The 300/300 identity contract remains fixed. After four total post-v2 expansion promotions, **103 of the 107 Wave 1-7 expansion mappings remain drafts**.
-- New source records remain `verified: false` pending qualified-human verification under the Citation Verification SOP.
+- `hypertensive-heart-disease` → `congestive-heart-failure` and `chronic-pyelonephritis` → `chronic-kidney-disease` were individually promoted.
+- `knee-injury` and `osteoarthritis` returned to draft after legal/rating-only medical claims were withdrawn.
+- `diabetic-retinopathy` was physically normalized into the ophthalmologic catalog file.
+- The citation-debt ratchet tightened to 141 total / 127 unverified / 125 review findings / at least 29 clinical URLs.
+- After four post-v2 expansion promotions, 103 of 107 expansion mappings remained drafts.
 - See `docs/clinical-evidence-promotion-batch-2.md`.
+
+### Clinical Evidence Promotion Batch 3
+
+- `chronic-liver-disease` → `cirrhosis-of-the-liver`: promoted only as documented hepatic-fibrosis progression with etiology and competing-cause safeguards.
+- `amputation-or-loss-of-use` → `depressive-disorder`: retained only after replacing legal-only support with amputation-specific systematic-review evidence and a bounded somatopsychic pathway.
+- `ageusia`: returned to draft because its depression and GERD suggestions were supported only by legal framework.
+- `insomnia`: stable identity physically relocated from the carried-over file into the mental-disorders catalog.
+- The citation-debt ratchet tightens again to 140 total / 126 unverified / 124 review findings / at least 31 clinical URLs.
+- The 300/300 identity contract remains fixed. After five post-v2 expansion promotions, **102 of the 107 Wave 1-7 expansion mappings remain drafts**.
+- All newly source-checked clinical references remain `verified: false` pending qualified-human verification.
+- See `docs/clinical-evidence-promotion-batch-3.md`.
 
 ## Repeatable Authoring & Publishing Workflow
 1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.
