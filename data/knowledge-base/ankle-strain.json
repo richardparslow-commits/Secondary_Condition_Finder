@@ -1,42 +1,9 @@
 {
   "id": "ankle-strain",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "contralateral-knee-condition",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Chronic ankle instability or pain is associated with altered gait and weight-bearing patterns that may affect the knees. The population-level relationship does not by itself establish an individual medical nexus.",
-      "evidenceGaps": [
-        "Medical nexus linking altered gait to secondary knee degradation",
-        "Clinical diagnosis of knee osteoarthritis"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Legal framework for evaluating a secondary relationship; does not establish the underlying medical relationship.",
-          "verified": false,
-          "verificationScope": "legal-framework"
-        }
-      ]
-    },
-    {
-      "conditionId": "flatfoot",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Severe, chronic ankle sprains may be associated with acquired flatfoot deformity in some clinical contexts; individual examination and imaging are needed to determine whether that relationship applies.",
-      "evidenceGaps": [
-        "Podiatry evaluation",
-        "Weight-bearing X-rays of the foot"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.71a",
-          "note": "Diagnostic Code 5276",
-          "verified": false
-        }
-      ]
-    }
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication. Current chronic-ankle-instability literature supports altered lower-extremity biomechanics but does not by itself establish the previously published claims of secondary knee degradation or acquired flatfoot causation.",
+    "Do not republish a contralateral-knee relationship until the legacy laterality placeholder is structurally resolved or a distinct diagnosed target condition is used."
   ],
-  "todo": []
+  "suggestions": []
 }

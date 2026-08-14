@@ -34,13 +34,21 @@ describe("controlled pathway backfill batch 2", () => {
     expect(gerd?.pathwayIntelligence?.pathways).toEqual(["medication-related"]);
   });
 
-  it("keeps reviewed insufficient-source Musculoskeletal edges unlabeled", () => {
+  it("keeps insufficient-source Musculoskeletal edges unpublished or unlabeled", () => {
     const kb = loadKnowledgeBase();
     for (const [primaryId, secondaryId] of intentionallyUnlabeledEdges) {
       const mapping = kb.find((entry) => entry.id === primaryId);
       const suggestion = mapping?.suggestions.find(
         (entry) => entry.conditionId === secondaryId,
       );
+
+      if (primaryId === "ankle-strain") {
+        expect(mapping?.draft).toBe(true);
+        expect(mapping?.suggestions).toEqual([]);
+        expect(suggestion).toBeUndefined();
+        continue;
+      }
+
       expect(mapping?.draft).toBe(false);
       expect(suggestion?.pathwayIntelligence).toBeUndefined();
     }
@@ -67,6 +75,7 @@ describe("controlled pathway backfill batch 2", () => {
       "lumbar-strain",
       "cervical-strain",
       "hip-strain",
+      "ankle-strain",
       "intervertebral-disc-syndrome",
       "radiculopathy",
     ]) {

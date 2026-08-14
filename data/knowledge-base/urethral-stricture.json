@@ -1,6 +1,47 @@
 {
   "id": "urethral-stricture",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review traumatic, inflammatory/infectious, iatrogenic/procedural, urinary-obstruction, treatment, aggravation, and intermediate-factor pathways only where applicable; require link-specific evidence before publication."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "hydronephrosis",
+      "rank": 1,
+      "prevalence": "occasionally-explored",
+      "rationale": "A sufficiently severe or prolonged urethral stricture can create urinary outflow obstruction and, in some patients, upper-tract dilation including hydronephrosis. The relationship requires objective evidence that the stricture produced clinically significant obstruction and that other causes of hydronephrosis are less likely.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "disease-progression",
+          "intermediate-chain"
+        ],
+        "causalChain": "Documented urethral stricture → clinically significant urinary outflow obstruction/back-pressure → claimed hydronephrosis.",
+        "developmentQuestions": [
+          "Is the urethral stricture objectively documented, including location, length, severity, and treatment history?",
+          "Is hydronephrosis confirmed by renal ultrasound, CT, or other appropriate imaging?",
+          "Were urinary retention, elevated post-void residuals, reduced urinary flow, or other objective signs of obstruction present when hydronephrosis developed?",
+          "Are alternative causes such as ureteral obstruction, stones, bladder dysfunction, prostatic obstruction, tumor, or congenital abnormalities documented or excluded?",
+          "Did hydronephrosis improve after relief of the urethral obstruction, if follow-up imaging is available?"
+        ],
+        "issuesToResolve": [
+          "Most urethral strictures do not necessarily produce hydronephrosis; severity, duration, and obstruction must be established in the individual case.",
+          "Hydronephrosis has multiple possible causes, so upper-tract dilation alone does not prove a urethral-stricture nexus."
+        ]
+      },
+      "evidenceGaps": [
+        "Urology documentation confirming urethral stricture severity and objective obstruction",
+        "Imaging confirming hydronephrosis and its timing relative to the stricture",
+        "Clinical evaluation addressing alternative upper- or lower-urinary-tract causes and response after obstruction relief"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Renal and ureteral complications of urethral stenosis, PMID 8571802",
+          "note": "Clinical series of 180 patients with urethral stenosis reporting renal-ureteral complications including ureterohydronephrosis; supports an obstruction-to-upper-tract-dilation pathway but not automatic individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8571802/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 8571802 abstract; ureterohydronephrosis among reported renal-ureteral complications"
+        }
+      ]
+    }
+  ]
 }

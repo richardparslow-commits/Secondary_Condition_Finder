@@ -1,0 +1,21 @@
+{
+  "bodySystem": "Musculoskeletal System",
+  "conditions": [
+    {
+      "id": "fibromyalgia",
+      "name": "Fibromyalgia",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "DC 5025 expressly lists fibromyalgia (fibrositis, primary fibromyalgia syndrome) under the musculoskeletal rating schedule.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Catalog-quality maintenance relocates fibromyalgia from the historical hemic/immune file into a musculoskeletal maintenance file after Wave 8 corrected its current 38 CFR 4.71a / DC 5025 identity. The historical 38 CFR 4.88b reference was a carryover and is not current fibromyalgia rating authority. Rating authority is not clinical nexus evidence."
+      ]
+    }
+  ]
+}

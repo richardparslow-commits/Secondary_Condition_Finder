@@ -1,6 +1,46 @@
 {
   "id": "cardiomyopathy",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, medication/treatment, intermediate-factor, cardiovascular, pulmonary, and other organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Cardiomyopathy can produce structural and functional myocardial abnormalities that progress to symptomatic heart failure in some patients. The relationship depends on the cardiomyopathy phenotype, ventricular function, timing, and competing causes of heart failure; the population-level clinical relationship does not by itself establish an individual nexus.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "disease-progression"
+        ],
+        "causalChain": "Documented cardiomyopathy → persistent myocardial structural/functional dysfunction → claimed progression to clinically diagnosed heart failure.",
+        "developmentQuestions": [
+          "What cardiomyopathy phenotype and etiology are documented?",
+          "When did ventricular dysfunction and heart-failure symptoms first appear relative to the cardiomyopathy diagnosis?",
+          "What do echocardiography, cardiac MRI, natriuretic peptides, and clinical examinations show about ventricular function and congestion?",
+          "Which alternative or contributing causes of heart failure, including ischemic, valvular, hypertensive, pulmonary, or rhythm-related disease, are present?",
+          "Can a cardiology clinician address whether the documented cardiomyopathy caused or materially aggravated the individual's heart failure?"
+        ],
+        "issuesToResolve": [
+          "Cardiomyopathy is heterogeneous; not every phenotype progresses to heart failure.",
+          "An individual nexus requires case-specific evidence linking the documented cardiomyopathy to the diagnosed heart-failure syndrome and addressing competing etiologies."
+        ]
+      },
+      "evidenceGaps": [
+        "Cardiology records identifying the cardiomyopathy phenotype and etiology",
+        "Objective ventricular-function and heart-failure evidence such as echocardiography, cardiac MRI, natriuretic peptides, or documented congestion",
+        "Medical opinion addressing temporal relationship, competing etiologies, and individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Arbelo et al., 2023 ESC Guidelines for the management of cardiomyopathies, Eur Heart J. 2023;44:3503-3626. PMID 37622657",
+          "note": "Condition-specific cardiomyopathy guideline describing heart failure management across cardiomyopathies and noting that patients with dilated cardiomyopathy often develop heart-failure symptoms; supports disease-progression plausibility, not an automatic individual nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37622657/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 37622657; Sections 6.10.2 and 7.2.3"
+        }
+      ]
+    }
+  ]
 }

@@ -21,6 +21,8 @@ const WAVE_THREE_IDS = [
   "pulmonary-hypertension",
 ] as const;
 
+const POST_V2_PROMOTED_WAVE_THREE_IDS = new Set(["cardiomyopathy"]);
+
 describe("condition catalog expansion wave 3", () => {
   const catalog = loadConditionCatalog();
   const knowledgeBase = loadKnowledgeBase();
@@ -38,10 +40,18 @@ describe("condition catalog expansion wave 3", () => {
     }
   });
 
-  it("keeps every Wave 3 condition exactly one safe draft mapping", () => {
+  it("keeps non-promoted Wave 3 mappings draft while allowing reviewed post-v2 promotion", () => {
     for (const id of WAVE_THREE_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
+
+      if (POST_V2_PROMOTED_WAVE_THREE_IDS.has(id)) {
+        expect(mapping?.draft).toBe(false);
+        expect(mapping?.todo).toEqual([]);
+        expect(mapping?.suggestions.length).toBeGreaterThan(0);
+        continue;
+      }
+
       expect(mapping?.draft).toBe(true);
       expect(mapping?.suggestions).toEqual([]);
       expect(mapping?.todo.length).toBeGreaterThan(0);
