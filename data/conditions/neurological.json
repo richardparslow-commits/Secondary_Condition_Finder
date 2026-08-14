@@ -152,16 +152,6 @@
       ]
     },
     {
-      "id": "diabetes-mellitus-type-1",
-      "name": "diabetes mellitus type 1",
-      "aliases": [],
-      "bodySystem": "Neurological",
-      "ratingSchedule": [],
-      "reviewNotes": [
-        "Pending manual review"
-      ]
-    },
-    {
       "id": "hyperparathyroidism",
       "name": "hyperparathyroidism",
       "aliases": [],
