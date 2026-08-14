@@ -1,0 +1,69 @@
+{
+  "bodySystem": "Respiratory System",
+  "conditions": [
+    {
+      "id": "bronchiectasis",
+      "name": "Bronchiectasis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6601 covers bronchiectasis.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "chronic-laryngitis",
+      "name": "Chronic Laryngitis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6516 covers chronic laryngitis.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "vocal-cord-paralysis",
+      "name": "Vocal Cord Paralysis",
+      "aliases": ["vocal fold paralysis"],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "No single diagnosis-specific diagnostic code is assigned here. Depending on documented residuals, the laryngeal framework may include chronic laryngitis (DC 6516), aphonia (DC 6519), or laryngeal stenosis/airway-obstruction criteria (DC 6520).", "verified": false}],
+      "reviewNotes": ["No single condition-specific diagnostic code is assigned in the current schedule; code selection depends on documented voice and airway residuals."]
+    },
+    {
+      "id": "aphonia",
+      "name": "Aphonia",
+      "aliases": ["loss of voice"],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6519 covers complete organic aphonia, while incomplete aphonia is evaluated as chronic laryngitis under diagnostic code 6516.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "granulomatous-rhinitis",
+      "name": "Granulomatous Rhinitis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6524 covers granulomatous rhinitis.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "bacterial-rhinitis",
+      "name": "Bacterial Rhinitis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6523 covers bacterial rhinitis.", "verified": false}],
+      "reviewNotes": []
+    },
+    {
+      "id": "pulmonary-vascular-disease",
+      "name": "Pulmonary Vascular Disease",
+      "aliases": ["chronic pulmonary thromboembolism"],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6817 covers pulmonary vascular disease, including primary pulmonary hypertension and specified chronic pulmonary thromboembolic disease.", "verified": false}],
+      "reviewNotes": ["The existing pulmonary-hypertension catalog entry is a narrower user-facing identity under the same DC 6817 framework. Its name and aliases are intentionally not duplicated here."]
+    },
+    {
+      "id": "diaphragm-paralysis",
+      "name": "Diaphragm Paralysis / Paresis",
+      "aliases": ["diaphragmatic paralysis", "diaphragm paresis"],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6840 covers diaphragm paralysis or paresis under the restrictive-lung-disease framework.", "verified": false}],
+      "reviewNotes": []
+    }
+  ]
+}
