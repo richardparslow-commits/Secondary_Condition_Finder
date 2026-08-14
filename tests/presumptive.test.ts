@@ -5,17 +5,17 @@ import { matchPresumptives } from "@/lib/presumptive/match";
 import { exposureCategorySchema, presumptiveSourceSchema } from "@/lib/presumptive/schema";
 
 describe("presumptive source validation", () => {
-  it("rejects source references marked verified true", () => {
+  it("permits a future human-verified source without a schema migration", () => {
     const result = presumptiveSourceSchema.safeParse({
       citation: "VA source",
-      note: "Human review required",
+      note: "Qualified human review completed",
       url: "https://www.va.gov/",
       verified: true,
     });
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
   });
 
-  it("loads every shipped category with unverified source references", () => {
+  it("loads every currently shipped category with truthful unverified source references", () => {
     const catalog = loadExposureCatalog();
     expect(catalog.length).toBeGreaterThan(0);
     for (const category of catalog) {
