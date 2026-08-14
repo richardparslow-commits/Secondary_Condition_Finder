@@ -6,6 +6,11 @@ import {
   MAX_WORKFLOW_COOKIE_VALUE_BYTES,
   sealWorkflowState,
 } from "@/lib/secondary-workflow/session";
+import {
+  openSessionPayload,
+  sealSessionPayload,
+  WORKFLOW_SESSION_MAX_AGE_SECONDS,
+} from "@/lib/workflow-session-crypto";
 
 const TEST_SECRET = "test-remediation-workflow-secret-at-least-32-characters";
 
@@ -75,5 +80,36 @@ describe("security remediation contracts", () => {
         TEST_SECRET,
       ),
     ).toThrow(/safe cookie value budget/i);
+  });
+
+  it("authenticates workflow-token lifetime and rejects replay after expiry", () => {
+    const issuedAt = Date.UTC(2026, 7, 14, 3, 0, 0);
+    const payload = { workflow: "secondary", step: 5 };
+    const sealed = sealSessionPayload(payload, TEST_SECRET, {
+      nowMs: issuedAt,
+      maxAgeSeconds: WORKFLOW_SESSION_MAX_AGE_SECONDS,
+    });
+
+    expect(
+      openSessionPayload(sealed, TEST_SECRET, {
+        nowMs: issuedAt + WORKFLOW_SESSION_MAX_AGE_SECONDS * 1000 - 1,
+      }),
+    ).toEqual(payload);
+    expect(
+      openSessionPayload(sealed, TEST_SECRET, {
+        nowMs: issuedAt + WORKFLOW_SESSION_MAX_AGE_SECONDS * 1000,
+      }),
+    ).toBeNull();
+  });
+
+  it("invalidates pre-expiry-format v1 workflow ciphertexts", () => {
+    const fakeLegacyToken = [
+      "v1",
+      Buffer.alloc(12).toString("base64url"),
+      Buffer.from("legacy").toString("base64url"),
+      Buffer.alloc(16).toString("base64url"),
+    ].join(".");
+
+    expect(openSessionPayload(fakeLegacyToken, TEST_SECRET)).toBeNull();
   });
 });
