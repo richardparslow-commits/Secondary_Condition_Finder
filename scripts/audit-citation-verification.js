@@ -10,11 +10,11 @@ const files = fs.readdirSync(kbDir).filter((file) => file.endsWith(".json")).sor
 // source-by-source verification work is completed or unsafe legacy references
 // are retired.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 141,
+  references: 140,
   verified: 14,
-  unverified: 127,
-  reviewFindings: 125,
-  clinicalEvidenceWithUrls: 29,
+  unverified: 126,
+  reviewFindings: 124,
+  clinicalEvidenceWithUrls: 31,
 });
 
 const hardFindings = [];
@@ -46,15 +46,10 @@ for (const file of files) {
     const hasOnlyLegalReferences = refs.length > 0 && refs.every((reference) => legalCitation.test(reference.citation || ""));
     const rationale = suggestion.rationale || "";
 
-    // A medical causation/aggravation proposition must have a clinical source;
-    // a VA regulation can establish the legal pathway but cannot establish the
-    // underlying medical relationship.
     if (causalLanguage.test(rationale) && !hasClinicalEvidence) {
       addHard(`${file}: suggestions[${suggestionIndex}]: causal/aggravation language has no clinical-evidence reference`);
     }
 
-    // Medication causation claims require clinical/pharmacologic evidence rather
-    // than a legal secondary-service-connection citation alone.
     if (medicationLanguage.test(rationale) && !hasClinicalEvidence) {
       addHard(`${file}: suggestions[${suggestionIndex}]: medication/treatment claim has no clinical-evidence reference`);
     }
@@ -99,7 +94,6 @@ for (const file of files) {
 
 const unverified = references - verified;
 
-// Fail closed on citation-debt regression while preserving truthful statuses.
 if (references < CITATION_DEBT_BASELINE.references && verified < CITATION_DEBT_BASELINE.verified) {
   addHard(`citation debt ratchet: verified references fell below baseline (${verified} < ${CITATION_DEBT_BASELINE.verified}) while references were removed`);
 }
@@ -136,9 +130,4 @@ const report = {
 };
 
 console.log(JSON.stringify(report, null, 2));
-
-// P3-C policy: incomplete verification remains a review item until the claim
-// is actually checked. Unsafe provenance, legal/clinical category errors,
-// unsupported medical propositions, and any regression in the established
-// verification-debt baseline are hard CI failures.
 process.exitCode = hardFindings.length > 0 ? 1 : 0;
