@@ -11,7 +11,7 @@ export default function PrivacyPage() {
         <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
           <h2 className="font-semibold text-blue-900">Privacy by design</h2>
           <p className="text-blue-800 text-xs mt-1">
-            Secondary-workflow health/disability selections and presumptive-workflow service history are not placed in page URLs. Short-lived first-party workflow cookies are encrypted and authenticated before being sent to the browser and are not attached to analytics events.
+            Secondary-workflow health/disability selections and presumptive-workflow service history are not placed in page URLs. Short-lived first-party workflow cookies are encrypted and authenticated before being sent to the browser, and the current application does not initialize a client analytics or telemetry SDK.
           </p>
         </div>
 
@@ -28,15 +28,15 @@ export default function PrivacyPage() {
 
         <h2 className="text-xl font-semibold mt-6">2. URLs and browser history</h2>
         <p>
-          The secondary workflow does not encode diagnosis, service-connected status, disability ratings, document-sharing choices, or medication/treatment context in query strings. The presumptive workflow does not encode selected service locations or service dates in query strings. The legacy query-based secondary-results route no longer processes health-related URL state. This reduces exposure through copied links, browser history, referrer headers, and URL-based logs.
+          The secondary workflow does not encode diagnosis, service-connected status, disability ratings, document-sharing choices, or medication/treatment context in query strings. The presumptive workflow does not encode selected service locations or service dates in query strings. The legacy query-based secondary-results route no longer processes health-related URL state, and the application exposes no helper that serializes complete secondary-workflow state back into a URL. This reduces exposure through copied links, browser history, referrer headers, and URL-based logs.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">3. Browser telemetry and operational logging</h2>
         <p>
-          The application contains an optional Application Insights client initializer. Automatic route, AJAX, and fetch tracking are disabled in that initializer, and query strings and fragments are stripped from telemetry URLs. The current production Content Security Policy restricts browser network connections to the application&apos;s own origin, so the current production browser policy does not authorize third-party Application Insights network transmission.
+          The current application does not initialize Application Insights or another client analytics/telemetry SDK and does not authorize third-party browser telemetry egress. The production Content Security Policy restricts browser network connections to the application&apos;s own origin.
         </p>
         <p>
-          The current application does not persist workflow or recommendation event history through an application event logger. Any future persistent telemetry or logging integration requires a separately reviewed privacy and security change before it is enabled.
+          The current application does not persist workflow or recommendation event history through an application event logger. There is no dormant event-sanitizer API intended to make such logging implicitly safe. Any future persistent telemetry or logging integration requires a separately reviewed, explicit event-schema allowlist plus privacy and security review before it is enabled.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">4. Optional browser-local evidence review</h2>
