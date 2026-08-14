@@ -75,9 +75,9 @@ export default function HomePage() {
 
       <section className="mt-5 grid gap-4 p-5 md:grid-cols-2">
         <div>
-          <h2 className="text-lg font-bold">VA Form Reference</h2>
-          <p className="mt-2 text-sm">View the bounded public reference for VA Form 21-526EZ through the sandbox adapter or labeled local fallback.</p>
-          <Link href="/va-forms" className="mt-3 inline-block">Open VA Form Reference →</Link>
+          <h2 className="text-lg font-bold">VA Forms Reference</h2>
+          <p className="mt-2 text-sm">Search public VA form metadata by form number, keyword, or title through the configured VA reference adapter or a clearly labeled local fallback.</p>
+          <Link href="/va-forms/finder" className="mt-3 inline-block">Open VA Form Finder →</Link>
         </div>
         <div>
           <h2 className="text-lg font-bold">VA Disability Reference Terms</h2>

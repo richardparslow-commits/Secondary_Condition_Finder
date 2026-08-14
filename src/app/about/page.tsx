@@ -31,15 +31,15 @@ export default function AboutPage() {
 
         <h2 className="text-xl font-semibold">VA reference integrations</h2>
         <p>
-          The application currently demonstrates two bounded public-reference integrations: VA Forms metadata for Form 21-526EZ and Benefits Reference Data disability terminology. These features are separate from the core research engine and fall back safely when VA API access is unavailable.
+          The application supports two public-reference service families: searchable VA Forms metadata and Benefits Reference Data for disability terminology and service-branch reference information. These features are separate from the core research engine and fall back safely to clearly labeled local reference data when configured VA API access is unavailable.
         </p>
         <p>
-          The initial integration scope does not access an individual Veteran&apos;s VA account, claims file, health record, or other authenticated Veteran-specific VA data.
+          The current integration scope does not access an individual Veteran&apos;s VA account, claims file, health record, or other authenticated Veteran-specific VA data.
         </p>
 
         <h2 className="text-xl font-semibold">Privacy boundary</h2>
         <p>
-          Health/disability workflow selections and presumptive service-history state are kept out of page query strings. Short-lived workflow cookies are encrypted and authenticated, and recommendation-event persistence is limited to aggregate operational counts rather than condition identifiers or intake notes.
+          Health/disability workflow selections and presumptive service-history state are kept out of page query strings. Short-lived workflow cookies are encrypted and authenticated. The current application does not persist workflow or recommendation event history through an application event logger.
         </p>
 
         <h2 className="text-xl font-semibold">How to use the research</h2>
