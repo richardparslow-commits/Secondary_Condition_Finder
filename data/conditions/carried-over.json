@@ -9,9 +9,15 @@
         "hip pain"
       ],
       "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Hip/thigh residual framework. Evaluate documented residuals under the applicable hip and thigh criteria, including DCs 5250-5255 as appropriate; no single hip-strain-specific diagnostic code is assigned.",
+          "verified": false
+        }
+      ],
       "reviewNotes": [
-        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one."
+        "Wave 8 resolves the prior empty rating citation with the current hip/thigh framework rather than inventing a strain-specific diagnostic code. Rating authority describes evaluation only and is not clinical nexus evidence."
       ]
     },
     {
@@ -23,9 +29,15 @@
         "ankle instability"
       ],
       "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Ankle residual framework. Evaluate documented residuals under the applicable ankle criteria, including DC 5271 for limited motion when supported by the record; no single ankle-strain-specific diagnostic code is assigned.",
+          "verified": false
+        }
+      ],
       "reviewNotes": [
-        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one."
+        "Wave 8 resolves the prior empty rating citation with the current ankle framework rather than inventing a strain-specific diagnostic code. Rating authority describes evaluation only and is not clinical nexus evidence."
       ]
     },
     {
@@ -37,8 +49,8 @@
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [],
       "reviewNotes": [
-        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one.",
-        "Modeling gap: this is not a distinct diagnosis, it is the same condition on the opposite side. Laterality should eventually be an attribute rather than a separate condition."
+        "Wave 8 explicitly quarantines this legacy relationship/laterality placeholder: it is not a distinct diagnosis and must not be assigned a diagnosis-specific rating code merely to fill catalog debt.",
+        "Future modeling should represent laterality as an attribute or relationship and then retire this placeholder without weakening the one-to-one catalog/knowledge-base integrity contract."
       ]
     },
     {
@@ -48,9 +60,15 @@
         "retinopathy"
       ],
       "bodySystem": "Auditory & Special Senses",
-      "ratingSchedule": [],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "DC 6040 expressly lists diabetic retinopathy under the eye rating schedule; evaluation follows the applicable eye criteria for visual impairment or incapacitating episodes.",
+          "verified": false
+        }
+      ],
       "reviewNotes": [
-        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one."
+        "Wave 8 replaces the unresolved carryover note with the condition-specific eye rating identity. The rating citation does not establish that diabetes or any other condition caused an individual's retinopathy."
       ]
     },
     {
@@ -61,9 +79,15 @@
         "insomnia"
       ],
       "bodySystem": "Mental Disorders",
-      "ratingSchedule": [],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Mental-disorders rating framework. Chronic sleep impairment appears within the General Rating Formula for Mental Disorders, but this generic catalog entry is not assigned an invented insomnia-specific diagnostic code.",
+          "verified": false
+        }
+      ],
       "reviewNotes": [
-        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one."
+        "Wave 8 records the applicable mental-disorders framework while preserving the distinction between an insomnia diagnosis and a sleep-impairment symptom appearing in the general rating formula."
       ]
     },
     {
@@ -75,9 +99,16 @@
         "substance abuse"
       ],
       "bodySystem": "Mental Disorders",
-      "ratingSchedule": [],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Mental-disorders rating framework. This broad discovery identity spans substance-specific diagnoses and is not assigned a single generic substance-use-disorder diagnostic code.",
+          "verified": false
+        }
+      ],
       "reviewNotes": [
-        "Referenced by the knowledge base but absent from the supplied condition list. No rating citation was supplied, and none was inferred. A reviewer must add one."
+        "Catalog presence and a rating framework do not establish service connection or compensability. Alcohol- and drug-related legal eligibility rules are separate from rating identity and must be evaluated independently.",
+        "Clinical relationship authoring must evaluate the specific substance-use diagnosis and pathway rather than treating this discovery grouping as one etiology."
       ]
     }
   ]

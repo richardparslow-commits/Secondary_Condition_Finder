@@ -33,10 +33,10 @@ The catalog is the single source of condition identity. Mapping files carry only
 
 ## Current coverage
 
-After catalog expansion Wave 7:
+After catalog-quality Wave 8:
 
-- **300 catalog conditions** are represented across **32 catalog files**.
-- Every catalog condition has exactly one corresponding published-or-draft file in `data/knowledge-base/`.
+- **300 catalog conditions** remain represented across **32 catalog files**.
+- Every catalog condition still has exactly one corresponding published-or-draft file in `data/knowledge-base/`.
 - Wave 1 added **20 conditions**: 12 musculoskeletal and 8 neurological.
 - Wave 2 added **18 conditions**: 10 musculoskeletal and 8 neurological/peripheral-neurological.
 - Wave 3 added **15 conditions**: 7 endocrine and 8 cardiovascular/product-grouped identities, including pulmonary hypertension with its actual respiratory rating authority.
@@ -44,34 +44,50 @@ After catalog expansion Wave 7:
 - Wave 5 added **15 conditions**: 10 digestive and 5 genitourinary identities.
 - Wave 6 added **14 conditions**: 8 mental-disorder, 3 hematologic, and 3 skin/cutaneous identities.
 - Wave 7 added **10 conditions**: 6 infectious/tropical, 3 oncological, and 1 dental/oral identity.
-- All **107 Wave 1 through Wave 7 secondary mappings** remain `draft: true` with no published suggestions. They must not enter recommendation output until condition-specific clinical research satisfies the normal publication rules.
-- Rating references added by automated work remain `verified: false`. A qualified human review is required before verification status can change.
-- Where the rating schedule does not provide a single diagnosis-specific diagnostic code, the catalog records the applicable rating framework and an explicit review note rather than inventing authority. Wave 6 applies that safeguard to `body-dysmorphic-disorder` and `hoarding-disorder` rather than borrowing OCD's DC 9404.
+- Wave 8 adds **no new condition identities**. It is a catalog-quality pass that preserves the target-v2 300/300 contract.
+- All **107 Wave 1 through Wave 7 secondary mappings** remain `draft: true` with no published suggestions. Wave 8 does not publish any of them.
+- Rating references added or corrected by automated work remain `verified: false`. A qualified human review is required before verification status can change.
+- Where the rating schedule does not provide a single diagnosis-specific diagnostic code, the catalog records the applicable rating framework and an explicit review note rather than inventing authority.
+- Wave 8 applies that rule to `hip-strain`, `ankle-strain`, `insomnia`, and `substance-use-disorder` rather than inventing diagnosis-specific codes.
+- Wave 8 records `diabetic-retinopathy` under 38 CFR 4.79 / DC 6040 and corrects `fibromyalgia` to 38 CFR 4.71a / DC 5025, removing the historical 4.88b carryover from fibromyalgia.
+- `contralateral-knee-condition` remains a quarantined legacy relationship/laterality placeholder with no rating code because it is not a distinct diagnosis. Laterality should be modeled structurally before that placeholder is retired.
 - Product expansion grouping does not override the actual rating schedule. Wave 7 therefore scopes `histoplasmosis` to the pulmonary DC 6834 identity even though the stable discovery id is broader, and treats DCs 6822 and 6823 as pulmonary rating identities for actinomycosis and nocardiosis rather than universal codes for every extra-pulmonary manifestation.
 - Obsolete diagnostic codes must not be carried forward as current authority. Wave 7 records that former amebiasis DC 7321 was removed effective May 19, 2024 and uses the current infectious/parasitic framework instead.
 - Severity-limited diagnostic codes must not be generalized. Wave 7 records DC 6325 only for hyperinfection syndrome or disseminated strongyloidiasis and preserves broader parasitic/residual review for other presentations.
 - Broader system malignancy codes do not become invented diagnosis-specific codes. Wave 7 uses DC 7627 for ovarian cancer, DC 7528 for testicular cancer, and DC 6819 for laryngeal cancer while explicitly documenting that those are broader gynecological, genitourinary, and respiratory malignancy frameworks.
-- A broader regulatory umbrella may coexist with a narrower user-facing diagnosis only when names and aliases remain unambiguous and the overlap is documented. Wave 7 keeps `laryngeal-cancer` distinct from the existing lung/tracheal/bronchial `respiratory-cancer` identity and `mandibular-nonunion` distinct from the broader `maxillofacial-fracture` identity.
-- Related diagnoses may share a rating code without becoming one medical entity. Wave 6 therefore keeps `essential-thrombocythemia` and `primary-myelofibrosis` separate despite shared DC 7718, while Wave 7's DC 6317 grouping does not imply that rickettsial, ehrlichial, and anaplasma infections share one etiology or secondary pathway.
-- When one roadmap identity intentionally groups related diagnoses, the catalog grouping is only a discovery/identity choice. Clinical relationship authoring must evaluate each diagnosis and causal pathway separately.
+- A broader regulatory umbrella may coexist with a narrower user-facing diagnosis only when names and aliases remain unambiguous and the overlap is documented.
+- Related diagnoses may share a rating code without becoming one medical entity. A shared rating framework never establishes shared etiology, causation, aggravation, or a secondary pathway.
 
-The completed Waves 1-7 expansion record is maintained in `docs/condition-expansion-roadmap.md`. Target catalog v2 is now **300 conditions**. That remains a versioned product-coverage target, not a statement that the VA schedule or medicine contains only 300 possible diagnoses.
+The completed Waves 1-7 expansion record is maintained in `docs/condition-expansion-roadmap.md`. Target catalog v2 remains **300 conditions**. Wave 8 is a quality-maintenance wave, not a claim that 300 conditions exhaust medicine or the VA rating schedule.
 
-## Existing modeling debt
+## Wave 8 quality cleanup
 
-Some older entries need cleanup independently of the completed v2 expansion program:
+Wave 8 resolves the first bounded batch of documented catalog debt without changing condition count or publishing secondary relationships:
 
-- `hip-strain` and `ankle-strain` were carried into the catalog because older KB relationships referenced them; their rating citations were not supplied and remain explicitly unverified/unresolved.
-- `contralateral-knee-condition` is not a distinct diagnosis. It is the same condition on the opposite side. Laterality should become an attribute rather than a separate catalog identity.
-- `diabetic-retinopathy`, `insomnia`, and `substance-use-disorder` were also carried over from older KB references without supplied rating citations and retain review notes rather than invented authority.
-- `cerebral-palsy` remains a catalog-governance question because congenital/developmental defects can raise distinct service-connection rules. Catalog presence by itself does not mean the app asserts service connection is available.
+- `fibromyalgia`: corrected to **38 CFR 4.71a / DC 5025** and condition-level body system `Musculoskeletal System`; removed the historical 4.88b carryover.
+- `hip-strain`: added the current hip/thigh residual framework under 38 CFR 4.71a and explicitly states that no single hip-strain-specific DC is assigned.
+- `ankle-strain`: added the current ankle residual framework under 38 CFR 4.71a and explicitly states that no single ankle-strain-specific DC is assigned.
+- `diabetic-retinopathy`: added the express **38 CFR 4.79 / DC 6040** identity.
+- `insomnia`: records the 38 CFR 4.130 mental-disorders framework and distinguishes an insomnia diagnosis from the `chronic sleep impairment` symptom appearing in the General Rating Formula.
+- `substance-use-disorder`: records the 38 CFR 4.130 framework without inventing a generic SUD diagnostic code; catalog presence does not resolve separate service-connection or compensability rules.
+- `contralateral-knee-condition`: intentionally remains uncoded because it is a laterality/relationship placeholder, not a distinct diagnosis. A future structural migration should model laterality and retire the placeholder without breaking the one-to-one catalog/KB contract.
+
+The Wave 8 regression contract is `tests/catalog-quality-wave8.test.ts`.
+
+## Remaining modeling debt
+
+The first rating-identity carryover batch is resolved by Wave 8, but separate modeling work remains:
+
+- `contralateral-knee-condition` still requires a structural laterality migration before the legacy placeholder can be retired.
+- `cerebral-palsy` remains a catalog-governance question because congenital/developmental conditions can raise distinct service-connection rules. Catalog presence by itself does not mean the app asserts service connection is available.
 - Older neurological/endocrine carryovers contain naming/body-system cleanup debt. Future catalog work should not copy those inconsistencies.
+- Physical file placement can still reflect historical grouping even when a condition-level `bodySystem` has been corrected; future file-reorganization work must preserve IDs and aliases exactly.
 
 ## Citation status
 
 Catalog rating references are deliberately separate from medical evidence. Automated work must not mark them verified. A rating citation may support condition/rating identity but never a causal statement such as “condition A caused condition B.”
 
-One older item still deserving specific human review is **fibromyalgia**, which carries both `38 CFR 4.71a` and `38 CFR 4.88b` in the historical data. The 4.88b reference may be a carryover from chronic fatigue syndrome and should not be silently normalized without review.
+Wave 8 specifically removes fibromyalgia's historical 38 CFR 4.88b carryover and locks the corrected 38 CFR 4.71a / DC 5025 identity with regression coverage. No Wave 8 rating reference is automatically marked verified.
 
 ## Adding or revising a condition
 
