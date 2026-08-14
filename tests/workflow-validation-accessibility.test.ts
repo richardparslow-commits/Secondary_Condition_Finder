@@ -36,21 +36,26 @@ describe("accessible workflow validation", () => {
     expect(secondaryValidationMessage("unexpected-user-supplied-text")).toBeNull();
   });
 
-  it("requires explicit neutral service-connected answers and discards stale saved answers", () => {
+  it("requires explicit neutral service-connected answers and preserves partial answers in the encrypted session", () => {
     const page = read("src/app/secondary/service-connected/page.tsx");
     const actions = read("src/app/secondary/actions.ts");
+    const session = read("src/lib/secondary-workflow/session.ts");
 
     expect(page).not.toMatch(/value="yes"\s+required/);
     expect(page).not.toMatch(/value="no"\s+required/);
     expect(page).not.toContain("hasPriorSelection ? selectedServiceConnectedIds.has(condition.id) : true");
+    expect(page).toContain('answerDraft ? answerDraft[condition.id] === "yes"');
+    expect(page).toContain('answerDraft ? answerDraft[condition.id] === "no"');
     expect(page).toContain('role="alert"');
     expect(actions).toContain("knownConditionIds.has(id)");
     expect(actions).toContain("delete currentParams.serviceConnected");
     expect(actions).toContain('answer !== "yes" && answer !== "no"');
+    expect(actions).toContain('const serviceConnectedAnswerDraft: Record<string, "yes" | "no"> = {}');
+    expect(actions).toContain("serviceConnectedAnswerDraft[id] = answer");
     expect(actions).toContain('redirectValidation("/secondary/service-connected", "answer-service-connected")');
-    expect(actions).toContain("await writeSecondaryWorkflowSession({ diagnosedConditionIds });");
     expect(actions).toContain("serviceConnectedConditionIds: [],");
     expect(actions).toContain('redirectValidation("/secondary/service-connected", "no-service-connected")');
+    expect(session).toContain('serviceConnectedAnswerDraft: z.record(z.string(), z.enum(["yes", "no"])).optional()');
   });
 
   it("surfaces expected secondary form errors without generic server failures", () => {
