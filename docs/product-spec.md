@@ -209,10 +209,14 @@ added to recommendation logs or telemetry.
 Three layers are deliberately separate. See `docs/condition-catalog.md`.
 
 - `data/conditions/` is the catalog: condition identity and rating schedule
-  citations, currently 193 conditions across 15 catalog files.
-- `data/knowledge-base/` holds one secondary-mapping file per catalog condition,
-  referencing catalog ids. Individual suggestions may optionally contain bounded
-  `pathwayIntelligence` authored for that exact primary-to-secondary mapping.
+  citations, currently **213 conditions across 17 catalog files** after
+  condition catalog expansion Wave 1. The ranked path to target catalog v2
+  (300 conditions) is in `docs/condition-expansion-roadmap.md`.
+- `data/knowledge-base/` holds exactly one secondary-mapping file per catalog
+  condition, referencing catalog ids. New expansion conditions may begin as
+  safe drafts with no suggestions; individual published suggestions may
+  optionally contain bounded `pathwayIntelligence` authored for that exact
+  primary-to-secondary mapping.
 - `data/presumptives/` holds exposure categories.
 
 The catalog is the single source of display names, so a label cannot drift
