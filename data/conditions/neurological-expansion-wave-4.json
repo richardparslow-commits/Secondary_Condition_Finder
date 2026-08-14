@@ -1,0 +1,13 @@
+{
+  "bodySystem": "Neurological",
+  "conditions": [
+    {
+      "id": "narcolepsy",
+      "name": "Narcolepsy",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; diagnostic code 8108 covers narcolepsy and directs evaluation as petit mal epilepsy.", "verified": false}],
+      "reviewNotes": ["Narcolepsy is kept in the neurological catalog despite the Wave 4 sleep grouping because the current rating authority is 38 CFR 4.124a, not the respiratory sleep-apnea schedule."]
+    }
+  ]
+}
