@@ -1,31 +1,8 @@
 {
   "id": "hypothyroidism",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "sometimes-explored",
-      "rationale": "Population-level evidence supports a modest association between hypothyroidism and clinical depression, but the effect is smaller than historically assumed and varies by thyroid phenotype and subgroup. A systematic review and meta-analysis of 25 studies involving 348,014 participants found an overall association, stronger for overt than subclinical hypothyroidism, with important sex-subgroup uncertainty. This mapping therefore supports association-focused research only; an individual's depressive disorder still requires chronology, thyroid-status, treatment-response, psychiatric-history, medication, sleep, pain, and psychosocial evaluation rather than automatic attribution to hypothyroidism.",
-      "evidenceGaps": [
-        "Laboratory and endocrine documentation establishing overt or subclinical hypothyroidism and its chronology",
-        "Depressive-disorder diagnosis, symptom chronology, severity, and functional impact",
-        "Thyroid-treatment history and whether mood symptoms changed with biochemical correction",
-        "Medication, sleep, pain, substance-use, psychosocial, and other psychiatric contributors",
-        "Clinician assessment distinguishing population-level association from the individual's causal or aggravation theory"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Bode H, Ivens B, Bschor T, Schwarzer G, Henssler J, Baethge C. Association of Hypothyroidism and Clinical Depression: A Systematic Review and Meta-analysis. JAMA Psychiatry. 2021;78(12):1375-1383. PMID 34524390",
-          "note": "Systematic review/meta-analysis of 25 studies and 348,014 participants found a modest overall association between hypothyroidism and clinical depression, stronger for overt than subclinical disease, with sensitivity and sex-subgroup uncertainty. Supports association-focused research rather than individual causal attribution.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34524390/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 34524390; abstract Results and Conclusions: 25 studies/348,014 participants; overall OR 1.30, overt OR 1.77, subclinical OR 1.13; effect smaller than previously assumed"
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "The prior depressive-disorder suggestion was withdrawn because the cited population meta-analysis found only a modest overall association, with a stronger signal in overt disease and a post hoc association in women but not men; the source does not establish a general directional secondary-condition pathway. Reconsider only with evidence that supports individual causation or aggravation beyond population comorbidity and preserves thyroid-phenotype and subgroup limits."
+  ],
+  "suggestions": []
 }
