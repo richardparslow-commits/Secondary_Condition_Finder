@@ -51,27 +51,28 @@ describe("clinical evidence promotion batch 16", () => {
     expect(mapping?.suggestions.some((item) => item.conditionId === "gerd")).toBe(false);
   });
 
-  it("preserves verified provenance for the retired NSAID source without leaving it live", () => {
+  it("preserves verified provenance for the Batch 16 retired NSAID source without leaving it live", () => {
     expect(retirements.version).toBe(1);
-    expect(retirements.retirements).toHaveLength(1);
 
-    const retirement = retirements.retirements[0];
-    expect(retirement.id).toBe("batch-16-congestive-heart-failure-gerd-pmid-16918879");
-    expect(retirement.retiredFrom).toMatchObject({
+    const retirement = retirements.retirements.find(
+      (item) => item.id === "batch-16-congestive-heart-failure-gerd-pmid-16918879",
+    );
+    expect(retirement).toBeDefined();
+    expect(retirement?.retiredFrom).toMatchObject({
       mappingId: "congestive-heart-failure",
       conditionId: "gerd",
     });
-    expect(retirement.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/16918879/");
-    expect(retirement.previouslyVerified).toBe(true);
-    expect(retirement.verificationScope).toBe("clinical-evidence");
-    expect(retirement.retirementReason).toMatch(/did not establish.*CHF-to-GERD|did not establish.*congestive heart failure/i);
-    expect(retirement.withdrawalEvidence[0]?.sourceUrl).toBe(
+    expect(retirement?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/16918879/");
+    expect(retirement?.previouslyVerified).toBe(true);
+    expect(retirement?.verificationScope).toBe("clinical-evidence");
+    expect(retirement?.retirementReason).toMatch(/did not establish.*CHF-to-GERD|did not establish.*congestive heart failure/i);
+    expect(retirement?.withdrawalEvidence[0]?.sourceUrl).toBe(
       "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001063",
     );
-    expect(retirement.withdrawalEvidence[0]?.verificationStatus).toBe("source-checked-not-promoted");
+    expect(retirement?.withdrawalEvidence[0]?.verificationStatus).toBe("source-checked-not-promoted");
 
     const chf = byId.get("congestive-heart-failure");
     const liveSources = (chf?.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences);
-    expect(liveSources.some((source) => source.sourceUrl === retirement.sourceUrl)).toBe(false);
+    expect(liveSources.some((source) => source.sourceUrl === retirement?.sourceUrl)).toBe(false);
   });
 });
