@@ -179,9 +179,10 @@
       "id": "sleep-apnea",
       "name": "Sleep Apnea (Obstructive, Central, Mixed)",
       "aliases": [
-        "central",
-        "mixed",
-        "obstructive",
+        "central sleep apnea",
+        "mixed sleep apnea",
+        "obstructive sleep apnea",
+        "osa",
         "sleep apnea"
       ],
       "bodySystem": "Respiratory System",
