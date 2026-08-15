@@ -3,9 +3,6 @@ import { describe, expect, it } from "vitest";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 
 const expectedBackfill = {
-  "adjustment-disorder": {
-    gerd: ["direct-secondary", "aggravation"],
-  },
   "depressive-disorder": {
     "sleep-apnea": ["medication-related", "intermediate-chain"],
     "erectile-dysfunction": ["medication-related"],
@@ -77,25 +74,19 @@ describe("controlled pathway backfill batch 1", () => {
 
   it("preserves the ranking and prevalence of the surviving enriched edges", () => {
     const kb = loadKnowledgeBase();
-    const adjustment = kb.find((entry) => entry.id === "adjustment-disorder");
     const depression = kb.find((entry) => entry.id === "depressive-disorder");
-    expect(adjustment?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
-      { conditionId: "gerd", rank: 1, prevalence: "commonly-explored" },
-    ]);
     expect(depression?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
       { conditionId: "sleep-apnea", rank: 1, prevalence: "sometimes-explored" },
       { conditionId: "erectile-dysfunction", rank: 2, prevalence: "commonly-explored" },
     ]);
   });
 
-  it("recognizes later adjustment-disorder withdrawals", () => {
+  it("recognizes the later adjustment-disorder phenotype withdrawal", () => {
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "adjustment-disorder");
-    expect(mapping?.draft).toBe(false);
-    expect(mapping?.suggestions.some((entry) => entry.conditionId === "migraine-headaches")).toBe(false);
-    expect(mapping?.suggestions.some((entry) => entry.conditionId === "sleep-apnea")).toBe(false);
-    expect(mapping?.suggestions.every((entry) =>
-      entry.sourceReferences.some((source) => source.verificationScope === "clinical-evidence"),
-    )).toBe(true);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/adjustment disorder.*condition-specific|condition-specific.*adjustment disorder/i);
+    expect(mapping?.todo.join(" ")).toMatch(/anxiety|depression|psychosocial/i);
   });
 
   it("does not treat safety-withdrawn mappings as backfill candidates", () => {
