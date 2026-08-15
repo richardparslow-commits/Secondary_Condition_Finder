@@ -109,4 +109,30 @@ describe("local evidence browser storage", () => {
     expect(loadStoredEvidence({ getItem: () => "{not-json" })).toEqual([]);
     expect(loadStoredEvidence({ getItem: () => JSON.stringify({ version: 1 }) })).toEqual([]);
   });
+
+  it("rejects structurally incomplete v1 analyses and excerpts before they reach the UI", () => {
+    const incompleteAnalysis = [{ version: 1, sourceName: "corrupt" }];
+    const incompleteExcerpt = [
+      {
+        ...makeAnalysis(1),
+        excerpts: [{ sourceName: "source-1", quote: "missing UI fields" }],
+      },
+    ];
+    const invalidCounts = [
+      {
+        ...makeAnalysis(2),
+        nexusRelevantCount: -1,
+      },
+    ];
+
+    expect(
+      loadStoredEvidence({ getItem: () => JSON.stringify(incompleteAnalysis) }),
+    ).toEqual([]);
+    expect(
+      loadStoredEvidence({ getItem: () => JSON.stringify(incompleteExcerpt) }),
+    ).toEqual([]);
+    expect(
+      loadStoredEvidence({ getItem: () => JSON.stringify(invalidCounts) }),
+    ).toEqual([]);
+  });
 });
