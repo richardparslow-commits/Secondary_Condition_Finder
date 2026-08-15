@@ -6,6 +6,8 @@ This document defines the runtime configuration contract for the app's low-sensi
 
 VA API access is disabled by default. With no VA runtime variables configured, the app serves local fallback references and makes no VA public-reference request.
 
+The current request budget and successful-response cache are process-local controls. They are permitted only in single-process, non-production execution. Production and known distributed/serverless runtimes fail closed before a credentialed VA request and do not use the process-local reference cache. A shared rate-limit/cache coordinator must be implemented and objectively validated before live VA traffic is enabled from the horizontally scaled production runtime.
+
 ## Environment selection
 
 `VA_API_ENV` selects the intended upstream environment:
@@ -13,9 +15,9 @@ VA API access is disabled by default. With no VA runtime variables configured, t
 - `sandbox` (default)
 - `production`
 
-`VA_API_ENABLED=true` is the explicit environment-neutral enable flag. Production mode requires this flag. This prevents merely setting `VA_API_ENV=production` from activating production traffic.
+`VA_API_ENABLED=true` is the explicit environment-neutral enable flag. Production configuration still requires this flag, but the current production/distributed runtime boundary will refuse live adapter traffic until shared state coordination exists. This prevents merely setting `VA_API_ENV=production` from activating production traffic and prevents process-local safeguards from being misrepresented as deployment-wide controls.
 
-For backward compatibility with the Phase 2 sandbox gate, `VA_SANDBOX_ENABLED=true` still enables sandbox mode when `VA_API_ENABLED` is not set. The dedicated #189 sandbox smoke-test workflow and its evidence contract remain separate from production configuration.
+For backward compatibility with the Phase 2 sandbox gate, `VA_SANDBOX_ENABLED=true` still enables sandbox mode when `VA_API_ENABLED` is not set. The dedicated #189 sandbox smoke-test workflow calls the sandbox endpoints directly from one GitHub Actions job and remains separate from the application runtime boundary.
 
 ## Service-specific credentials
 
@@ -35,7 +37,7 @@ The Forms adapter sends only the Forms key. Benefits Reference Data requests sen
 
 ## Optional endpoint overrides
 
-The adapter has VA defaults for each environment and accepts HTTPS-only overrides:
+The adapter has VA defaults for each environment and accepts overrides only on the exact matching VA API origin:
 
 Sandbox:
 
@@ -51,7 +53,7 @@ Production:
 
 ## Activation examples
 
-Sandbox compatibility mode:
+Single-process sandbox compatibility mode:
 
 ```text
 VA_SANDBOX_ENABLED=true
@@ -59,7 +61,7 @@ VA_FORMS_SANDBOX_API_KEY=<server-only value>
 VA_BENEFITS_REFERENCE_SANDBOX_API_KEY=<server-only value>
 ```
 
-Environment-neutral sandbox mode:
+Single-process environment-neutral sandbox mode:
 
 ```text
 VA_API_ENV=sandbox
@@ -68,7 +70,7 @@ VA_FORMS_SANDBOX_API_KEY=<server-only value>
 VA_BENEFITS_REFERENCE_SANDBOX_API_KEY=<server-only value>
 ```
 
-Production mode, only after VA production access is granted and the production credentials are installed in the server runtime:
+Production credentials may be staged only after VA production access is granted, but the current application runtime intentionally remains local-fallback-only in production/distributed execution until a shared state coordinator is implemented and verified:
 
 ```text
 VA_API_ENV=production
@@ -77,11 +79,15 @@ VA_FORMS_PRODUCTION_API_KEY=<server-only value>
 VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY=<server-only value>
 ```
 
+Those variables alone do **not** authorize a production request under the current architecture. Issue #287 remains the production-transition gate.
+
 ## Reference caching and status
 
-Forms search, disability terminology, and service-branch reference loaders share a bounded five-minute in-process cache. User-facing reference pages expose only non-sensitive status: source label, environment, last successful retrieval time, and cache hit/miss state. Credentials, response payloads, and user workflow selections are never included in this status surface.
+Forms search, disability terminology, and service-branch reference loaders share a bounded five-minute **process-local** cache only during single-process non-production execution. The cache is an optimization, not an authoritative freshness or safety control. It is disabled in production and known distributed/serverless runtimes so a warm instance cannot be mistaken for a deployment-wide cache.
 
-Local fallback responses are not retained as successful VA cache entries. This allows a later request to recover immediately when upstream access becomes available.
+User-facing reference pages expose only non-sensitive status: source label, environment, last successful retrieval time, and cache hit/miss state. Credentials, response payloads, and user workflow selections are never included in this status surface.
+
+Local fallback responses are not retained as successful VA cache entries. This allows a later single-process request to recover immediately when upstream access becomes available.
 
 ## Product boundaries
 
@@ -90,3 +96,4 @@ Local fallback responses are not retained as successful VA cache entries. This a
 - The service-branch field is optional encrypted workflow context; `matchPresumptives()` does not read it.
 - No fuzzy VA terminology matching is used. Matches are normalized exact names or explicitly curated aliases.
 - Issue #189 remains the separate credentialed sandbox connectivity gate and must not be closed without its required live evidence.
+- Issue #287 remains the production-access gate and must not be closed until production access plus shared-state coordination are objectively verified.
