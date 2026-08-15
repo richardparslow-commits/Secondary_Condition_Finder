@@ -91,6 +91,15 @@ describe("controlled pathway backfill batch 1", () => {
 
   it("does not treat safety-withdrawn mappings as backfill candidates", () => {
     const kb = loadKnowledgeBase();
-    for (const draftId of ["migraine-headaches", "ocd", ...safetyWithdrawnMappings]) expect(kb.find((entry) => entry.id === draftId)?.draft).toBe(true);
+    for (const draftId of ["ocd", ...safetyWithdrawnMappings]) expect(kb.find((entry) => entry.id === draftId)?.draft).toBe(true);
+  });
+
+  it("allows a later evidence-led migraine publication without reviving the withdrawn backfill edge", () => {
+    const migraine = loadKnowledgeBase().find((entry) => entry.id === "migraine-headaches");
+    expect(migraine?.draft).toBe(false);
+    expect(migraine?.suggestions).toHaveLength(1);
+    expect(migraine?.suggestions[0]?.conditionId).toBe("depressive-disorder");
+    expect(migraine?.suggestions[0]?.sourceReferences[0]?.sourceUrl).toContain("23588795");
+    expect(migraine?.suggestions[0]?.pathwayIntelligence?.pathways).toEqual(["somatopsychic"]);
   });
 });
