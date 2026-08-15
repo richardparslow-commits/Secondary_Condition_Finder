@@ -1,43 +1,42 @@
 # Clinical Evidence Program Status
 
-Status: **Batch 29 Wave-6 rescreen implementation is repository-controlled on its branch; exact-head/production closure now requires Vercel Agent immutable-head review, and external/human gates remain separate**.
+Status: **Batch 30 Wave-7 rescreen is implemented on its bounded branch and awaits exact-head validation, Vercel Agent immutable-head review, protected merge, and production closure. External/human gates remain separate.**
 
 ## Production-validated base
 
-Batch 29 branches from production-validated `main` SHA `c8ad197e8df420034579ba644e60f9cec0168a8d` (`Promote evidence-led Wave 5 mappings (#352)`):
+Batch 30 branches from production-validated `main` SHA `b7624571d31de6ce3fa2c7efae5e5e1c18ba194f` (`Promote evidence-led Wave 6 mapping (#353)`). That SHA passed independent `main` CI #1031 and Production Runtime Readiness #390 before Wave 7 began.
 
-- independent `main` CI #1021 passed;
-- Production Runtime Readiness #380 passed on the exact SHA; and
-- no Batch 29 change is considered production-closed until its own exact-head PR CI, Vercel Agent immutable-head review, expected-head protected merge, merge-SHA `main` CI, and Production Runtime Readiness pass.
-
-A Vercel preview/deployment status does not satisfy the review gate. The exact head must receive an actual Vercel Agent code-review result, and any head change after review requires fresh exact-head CI and a fresh Vercel Agent review.
+The current workflow is: exact-head PR CI → genuine Vercel Agent immutable-head code review → expected-head protected squash merge → independent merge-SHA `main` CI → Production Runtime Readiness. A Vercel preview/deployment `Ready` status is not the review gate, and any head change requires fresh exact-head CI and Vercel Agent review.
 
 ## Frozen universe
 
 - Catalog identities: **300**.
 - Knowledge-base mappings: **300**.
 - Target-v2 Wave 1–7 expansion identities: **107**.
-- Batch 29 does not add, delete, rename, or merge condition identities.
+- Batch 30 does not add, delete, rename, or merge condition identities.
 
-## Expansion program — Batch 29 candidate state
+## Expansion program — Batch 30 candidate state
 
 `data/expansion-dispositions.json` records:
 
-- **31 published-evidence-led** Wave identities;
+- **32 published-evidence-led** Wave identities;
 - **0 promotion-candidate** Wave identities;
-- **76 safe-draft** Wave identities.
+- **75 safe-draft** Wave identities.
 
-Batch 29 adds one bounded Wave-6 mapping:
+Batch 30 publishes four bounded Wave-7 relationships:
 
-- `discoid-lupus` → `scarring-alopecia`, limited to documented scalp DLE with clinically or dermatopathologically confirmed cicatricial/scarring alopecia and explicit exclusion of nonscarring alopecia, alopecia areata, and systemic-lupus phenotype substitution.
+- `histoplasmosis` → `addisons-disease`, limited to documented adrenal/disseminated histoplasmosis with adrenal involvement and confirmed primary adrenal insufficiency;
+- `ovarian-cancer` → `peripheral-neuropathy`, limited to a compatible neuropathy after documented paclitaxel-containing treatment;
+- `testicular-cancer` → `hypogonadism`, limited to clinically and biochemically confirmed hypogonadism after a supported treatment exposure;
+- `laryngeal-cancer` → `aphonia`, limited to documented total laryngectomy and loss of natural laryngeal phonation.
 
-The remaining 13 Wave-6 identities stay safe-draft after screening. In particular, ET thrombotic evidence is broader than the catalog's DVT/phlebitis target, and MDS/myelofibrosis leukemic transformation evidence is AML-specific while the catalog target combines acute and chronic leukemia. Those phenotype mismatches are not widened for publication.
+The other six Wave-7 identities remain safe-draft because target fit, direction, grouping heterogeneity, or distinct downstream-diagnosis evidence is insufficient.
 
 ## Evidence-quality cleanup and citation ratchet
 
-Batch 29 withdraws the unverified `adjustment-disorder` → `gerd` edge because PMID 35362447 evaluates psychosocial disorders primarily through anxiety/depression evidence rather than adjustment disorder as a condition-specific exposure. The relationship returns to draft rather than transferring evidence across diagnoses.
+Batch 30 withdraws three association-only published depression edges—Parkinson disease, seizure disorder, and psoriatic arthritis—and removes the weaker trigeminal-neuralgia→anxiety suggestion. Those four source rows are replaced one-for-one by the four stronger Wave-7 clinical sources. All removed and added source rows are `verified: false`, so no verified-source retirement record is created.
 
-The removed source was `verified: false`, so no verified-source retirement entry is created. One new DLE clinical source replaces that one withdrawn row, keeping the expected citation position debt-neutral:
+Expected citation position remains debt-neutral:
 
 - live references: **69**;
 - live verified: **8**;
@@ -51,7 +50,7 @@ The removed source was `verified: false`, so no verified-source retirement entry
 
 ## Human citation verification
 
-Automation preserves canonical URLs, check dates, locators, and source roles and generates the published review queue. Only a qualified human reviewer may set a source to `verified: true`; automated retrieval or evidence screening is not that decision. The newly authored DLE source remains `verified: false`.
+Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not set a source to `verified: true`. The four new Batch-30 sources—PMIDs 30656706, 24582486, 27009402, and 29086803—remain `verified: false` until qualified-human review.
 
 ## Modeling debt
 
@@ -61,7 +60,7 @@ The named v2 modeling items remain explicitly dispositioned in `docs/modeling-de
 - `micro-tbi`: historical/non-standard compatibility identity retained as an unpublished draft relative to standardized `mild-tbi`;
 - `cerebral-palsy`: recognition identity retained without implying service-connection/legal applicability; mapping remains draft.
 
-These are controlled v2 states and do not justify an unversioned ID deletion or a 300/300 change.
+These controlled states do not justify an unversioned ID deletion or a 300/300 change.
 
 ## External/manual gates
 
@@ -76,4 +75,4 @@ See `docs/external-manual-gates-status.md`.
 
 Repository automation is complete for a work item when the repository contains a safe explicit state, tests/audits enforce it, exact-head CI passes, the Vercel Agent immutable-head review is clean, and production closure proves the merge SHA. It does not fabricate human verification, credentials, accessibility observations, or external-provider success.
 
-After Batch 29 there are no `promotion-candidate` Wave identities. The remaining 76 Wave drafts are explicit safe dispositions unless later evidence justifies another bounded review.
+After Batch 30 there are no `promotion-candidate` Wave identities. The remaining 75 Wave drafts are explicit safe dispositions unless later evidence justifies another bounded review.
