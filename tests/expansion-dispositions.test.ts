@@ -43,19 +43,22 @@ describe("target-v2 expansion disposition ledger", () => {
     }
   });
 
-  it("records the completed roadmap-backed program totals", () => {
+  it("records the current roadmap-backed program totals", () => {
     const published = entries.filter((entry) => entry.disposition === "published-evidence-led");
     const candidates = entries.filter((entry) => entry.disposition === "promotion-candidate");
     const safeDrafts = entries.filter((entry) => entry.disposition === "safe-draft");
 
-    expect(published).toHaveLength(20);
+    expect(published).toHaveLength(23);
     expect(published.map((entry) => entry.id)).toEqual(expect.arrayContaining([
       "gout",
       "myasthenia-gravis",
+      "osteitis-deformans",
+      "syringomyelia",
+      "trigeminal-neuralgia",
     ]));
     expect(candidates).toEqual([]);
-    expect(safeDrafts).toHaveLength(87);
-    expect(entries.find((entry) => entry.id === "trigeminal-neuralgia")?.disposition).toBe("safe-draft");
+    expect(safeDrafts).toHaveLength(84);
+    expect(entries.find((entry) => entry.id === "trigeminal-neuralgia")?.disposition).toBe("published-evidence-led");
     expect(published.length + candidates.length + safeDrafts.length).toBe(107);
   });
 });
