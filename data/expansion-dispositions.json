@@ -110,7 +110,7 @@
         {"id":"anal-fistula","disposition":"published-evidence-led"},
         {"id":"chronic-liver-disease","disposition":"published-evidence-led"},
         {"id":"chronic-pyelonephritis","disposition":"published-evidence-led"},
-        {"id":"hydronephrosis","disposition":"published-evidence-led"},
+        {"id":"hydronephrosis","disposition":"safe-draft"},
         {"id":"urethral-stricture","disposition":"published-evidence-led"},
         {"id":"varicocele-hydrocele","disposition":"safe-draft"},
         {"id":"epididymitis-orchitis","disposition":"safe-draft"}
