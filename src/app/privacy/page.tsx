@@ -31,12 +31,15 @@ export default function PrivacyPage() {
           The secondary workflow does not encode diagnosis, service-connected status, disability ratings, document-sharing choices, or medication/treatment context in query strings. The presumptive workflow does not encode selected service locations or service dates in query strings. The legacy query-based secondary-results route no longer processes health-related URL state, and the application exposes no helper that serializes complete secondary-workflow state back into a URL. This reduces exposure through copied links, browser history, referrer headers, and URL-based logs.
         </p>
 
-        <h2 className="text-xl font-semibold mt-6">3. Browser telemetry and operational logging</h2>
+        <h2 className="text-xl font-semibold mt-6">3. Browser telemetry and server-side operational tracing</h2>
         <p>
           The current application does not initialize Application Insights or another client analytics/telemetry SDK and does not authorize third-party browser telemetry egress. The production Content Security Policy restricts browser network connections to the application&apos;s own origin.
         </p>
         <p>
-          The current application does not persist workflow or recommendation event history through an application event logger. There is no dormant event-sanitizer API intended to make such logging implicitly safe. Any future persistent telemetry or logging integration requires a separately reviewed, explicit event-schema allowlist plus privacy and security review before it is enabled.
+          The server runtime registers OpenTelemetry through Vercel&apos;s OpenTelemetry integration for operational tracing. The application does not add condition selections, disability ratings, medication/treatment context, local evidence excerpts, or decrypted workflow-cookie contents as custom telemetry attributes. Export of server-side traces follows the deployment&apos;s configured observability integration rather than a browser-side analytics connection.
+        </p>
+        <p>
+          The current application does not persist workflow or recommendation event history through an application event logger. There is no dormant event-sanitizer API intended to make such logging implicitly safe. Any future application-authored telemetry fields or persistent event logging require a separately reviewed, explicit event-schema allowlist plus privacy and security review before they are enabled.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">4. Optional browser-local evidence review</h2>
