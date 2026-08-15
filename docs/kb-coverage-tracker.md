@@ -9,7 +9,7 @@ This is the authoritative current-state tracker for post-v2 clinical evidence wo
 - Wave 1–7 expansion identities: **107**.
 - Roadmap-wave identities currently published with evidence-led mappings: **18**.
 - Roadmap-wave identities currently draft: **89**.
-- Of those 89 drafts, `data/expansion-dispositions.json` currently identifies **3 screened promotion candidates** and **86 intentional safe drafts**.
+- Of those 89 drafts, `data/expansion-dispositions.json` currently identifies **2 screened promotion candidates** and **87 intentional safe drafts**.
 - `diabetes-mellitus-type-1` is **not** one of the 107 Wave 1–7 expansion identities. Earlier batch documentation that counted its Batch-9 CKD promotion in the Wave 1–7 promotion total was bookkeeping drift; the roadmap-backed current count is 18 published / 89 draft.
 
 ## Current citation position after Batch 22
@@ -41,15 +41,16 @@ The machine-readable source of truth is `data/expansion-dispositions.json` and i
 - Wave 5: `achalasia`, `barretts-esophagus`, `chronic-liver-disease`, `chronic-pyelonephritis`, `urethral-stricture`.
 - Waves 6–7: none yet.
 
-### Screened promotion candidates (3)
+### Screened promotion candidates (2)
 
 These remain draft until they receive their own bounded evidence batch and exact-head validation:
 
 - `gout`;
-- `myasthenia-gravis`;
-- `trigeminal-neuralgia`.
+- `myasthenia-gravis`.
 
-### Intentional safe drafts (86)
+`trigeminal-neuralgia` remains an intentional safe draft because the initially noted screening PMID did not match the condition/evidence proposition and no replacement source has yet passed the repository's promotion threshold.
+
+### Intentional safe drafts (87)
 
 All other Wave 1–7 identities remain `draft: true`. That is an acceptable reviewed product state. The objective is **not** to publish all 107 identities regardless of evidence; publication requires a defensible condition-specific relationship.
 
