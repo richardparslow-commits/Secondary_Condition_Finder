@@ -10,6 +10,10 @@ const DEFAULT_REFERENCE_BASE_URLS = {
   sandbox: "https://sandbox-api.va.gov/services/benefits-reference-data/v1",
   production: "https://api.va.gov/services/benefits-reference-data/v1",
 } as const;
+const TRUSTED_API_ORIGINS = {
+  sandbox: "https://sandbox-api.va.gov",
+  production: "https://api.va.gov",
+} as const;
 const DEFAULT_TIMEOUT_MS = 4_000;
 const RETRYABLE_STATUS = new Set([503, 504]);
 export const VA_API_OUTBOUND_WINDOW_MS = 60_000;
@@ -218,10 +222,15 @@ function fallback<T>(
   };
 }
 
-function validatedBaseUrl(value: string): URL | null {
+function validatedBaseUrl(
+  value: string,
+  environment: VaApiEnvironment,
+): URL | null {
   try {
     const url = new URL(value);
     if (url.protocol !== "https:") return null;
+    if (url.username || url.password) return null;
+    if (url.origin !== TRUSTED_API_ORIGINS[environment]) return null;
     return url;
   } catch {
     return null;
@@ -249,9 +258,12 @@ async function requestVaJson<T>(args: {
     );
   }
 
-  const baseUrl = validatedBaseUrl(args.baseUrl);
+  const baseUrl = validatedBaseUrl(args.baseUrl, environment);
   if (!baseUrl) {
-    return fallback("VA API base URL must be a valid HTTPS URL.", environment);
+    return fallback(
+      "VA API base URL must be a valid HTTPS URL on the expected VA API origin.",
+      environment,
+    );
   }
 
   const endpoint = new URL(
