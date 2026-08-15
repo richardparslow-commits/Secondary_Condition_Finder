@@ -4,7 +4,7 @@ Status: implementation candidate pending exact-head validation and production cl
 
 ## Scope
 
-Batch 24 re-screens the 15 Wave 1 identities that remained `safe-draft` after Batch 23. Existing published Wave 1 identities are not re-authored except where needed for ledger counts. Rating-schedule authority is not used as medical nexus evidence, and all newly authored clinical references remain `verified: false` pending qualified-human citation review.
+Batch 24 re-screens the 15 Wave 1 identities that remained `safe-draft` after Batch 23. Existing published Wave 1 identities are not re-authored except where needed to preserve the citation-debt ceiling or keep current contracts accurate. Rating-schedule authority is not used as medical nexus evidence, and all newly authored clinical references remain `verified: false` pending qualified-human citation review.
 
 ## Evidence-led promotions
 
@@ -24,10 +24,10 @@ Clinical source: Parida et al., Clin Rheumatol. 2023; PMID 35994178. The systema
 
 Two systematic reviews support substantial depressive/anxiety burden in trigeminal-neuralgia populations. These are authored as somatopsychic association pathways, not automatic individual causation. Chronology, pain/trigger burden, treatment response, pre-existing psychiatric disease, medication effects, sleep, other pain disorders, and psychosocial contributors remain required individual-development questions.
 
-Clinical sources:
+Each target uses one focused source rather than duplicating both reviews across both records:
 
-- Martinelli et al., Neurosurg Rev. 2025; PMID 40355578 — systematic review of 11 relevant studies reporting higher risks of depressive, anxiety, and sleep disorders in trigeminal neuralgia.
-- *The psychosocial impact of orofacial pain in trigeminal neuralgia patients: a systematic review*, Int J Oral Maxillofac Surg. 2018; PMID 29526561 — 13 included studies with mild-to-moderate depression and moderate-to-severe anxiety on psychometric measures.
+- `depressive-disorder`: Martinelli et al., Neurosurg Rev. 2025; PMID 40355578 — systematic review of 11 relevant studies reporting higher risks of depressive, anxiety, and sleep disorders in trigeminal neuralgia.
+- `anxiety-disorder`: *The psychosocial impact of orofacial pain in trigeminal neuralgia patients: a systematic review*, Int J Oral Maxillofac Surg. 2018; PMID 29526561 — 13 included studies with moderate-to-severe anxiety on psychometric measures.
 
 ## Safe-draft dispositions retained
 
@@ -45,6 +45,28 @@ The remaining 12 Wave 1 identities stay intentionally unpublished because the re
 - `hammertoe`: local pressure/callus/metatarsalgia consequences do not provide a sufficiently specific disease-level target for publication.
 - `ulnar-neuropathy`: motor/sensory deficits are manifestations of the neuropathy; no distinct downstream catalog disease met the threshold.
 - `common-peroneal-neuropathy`: foot-drop and sensory deficits are manifestations rather than a distinct supported secondary catalog disease in the current model.
+
+## Citation-debt exchange
+
+The repository's citation audit is a hard ratchet, not a target to reset. Batch 24 therefore does not increase the existing ceilings of **62 live unverified references** and **60 published-unverified review findings**.
+
+Four focused new published source records are added:
+
+1. Paget disease → osteoarthritis: PMID 18504638;
+2. syringomyelia → Charcot arthropathy: PMID 35994178;
+3. trigeminal neuralgia → depressive disorder: PMID 40355578; and
+4. trigeminal neuralgia → anxiety disorder: PMID 29526561.
+
+Four redundant or lower-value unverified published source records are removed or consolidated while preserving the underlying clinical propositions:
+
+1. adjustment-disorder → GERD drops the tangential NSAID/GERD observational source PMID 18671778 and removes the unsupported medication implication, retaining the psychosocial-disorders/GERD systematic review and meta-analysis PMID 35362447;
+2. psoriatic-arthritis → depressive-disorder drops the broader psoriatic-disease review PMID 33263264 and retains the PsA-specific overview of systematic reviews PMID 38797775;
+3. cauda-equina-syndrome → erectile-dysfunction drops the redundant second long-term CES review PMID 42472710 and retains the condition-specific 2025 systematic review PMID 40380123; and
+4. depressive-disorder → erectile-dysfunction drops the less direct general SSRI sexual-dysfunction review PMID 41721013 and retains the psychotropic-drug systematic review PMID 34247952 that directly reports erectile-dysfunction outcomes with drug-class differences.
+
+In addition, the two trigeminal-neuralgia targets do not duplicate both reviews across both suggestion records. Removed references in this exchange were `verified: false`, so they are not entered into the verified-source retirement ledger.
+
+The resulting citation position remains **70 live references / 62 live unverified / 60 published-unverified review findings** rather than increasing review debt.
 
 ## Disposition impact
 
