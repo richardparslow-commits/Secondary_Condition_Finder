@@ -10,30 +10,27 @@ Run:
 npm run citations:queue
 ```
 
-The report is generated directly from current published knowledge-base mappings and includes:
+The report is generated directly from current published knowledge-base mappings and includes the primary mapping, secondary target, citation, source role, canonical URL, prior check date, source locator, and blank reviewer-decision fields. The machine-readable form is available with `node scripts/report-citation-verification-queue.js`.
 
-- primary mapping ID;
-- secondary condition ID;
-- citation;
-- source role (`clinical-evidence`, `legal-framework`, or procedural guidance where present);
-- canonical source URL;
-- prior source-check date;
-- source locator; and
-- blank reviewer-decision fields.
+## Current Batch-30 baseline
 
-The machine-readable form is available with:
+The expected citation-audit position remains **61 live unverified references** and **59 live unverified published references** pending exact-head CI confirmation. The difference remains intentional: the audit includes unverified references retained in draft mappings, while the human queue includes only references currently used by published mappings.
 
-```bash
-node scripts/report-citation-verification-queue.js
-```
+Batch 30 performs a four-for-four evidence-quality exchange. The following unverified published source rows are removed because they do not meet the current directional publication threshold:
 
-## Current Batch-29 baseline
+- Parkinson disease→depressive disorder, PMID 27358339;
+- seizure disorder→depressive disorder, PMID 41967683;
+- psoriatic arthritis→depressive disorder, PMID 38797775; and
+- trigeminal neuralgia→anxiety disorder, PMID 29526561.
 
-The expected citation-audit position remains **61 live unverified references** and **59 live unverified published references** pending exact-head CI confirmation. The two-count difference remains intentional: the audit counts unverified references that remain in draft mappings, while the human queue skips drafts and includes only references currently used by published mappings.
+The following four bounded clinical sources are added, all remaining `verified: false`:
 
-Batch 29 performs a one-for-one evidence-quality replacement. The prior adjustment-disorder→GERD source is removed because the underlying meta-analysis is anxiety/depression-oriented rather than adjustment-disorder-specific. The newly added source supports the bounded scalp discoid-lupus→scarring-alopecia relationship. Both the removed source and the new DLE source are `verified: false`, so no verified-source retirement entry is created and automated verification debt does not change.
+- histoplasmosis→Addison disease, PMID 30656706;
+- ovarian cancer→peripheral neuropathy, PMID 24582486;
+- testicular cancer→hypogonadism, PMID 27009402; and
+- laryngeal cancer→aphonia, PMID 29086803.
 
-The DLE source (PMID 35817588) must remain `verified: false` until a qualified human independently confirms that the citation, scalp-DLE phenotype, scarring-alopecia proposition, and source locator are accurate.
+Because all eight affected source records are unverified, no verified-source retirement entry is created and automated verification debt does not increase.
 
 `npm run citations:queue` is the authoritative source for the exact current human-review row set and role breakdown because later evidence batches can add, replace, retire, withdraw, consolidate, or verify individual sources.
 
@@ -59,4 +56,4 @@ For each row, a qualified reviewer must independently open the canonical source 
 
 ## Non-negotiable boundary
 
-Source checking performed by an automated agent, including opening PubMed or a guideline and recording metadata, is not the qualified-human verification decision required by repository policy. The verification queue is considered **prepared and complete as an automation deliverable**, but individual `verified: true` decisions remain pending until a qualified human performs and records the review.
+Source checking performed by an automated agent, including opening PubMed or a guideline and recording metadata, is not the qualified-human verification decision required by repository policy. The verification queue is considered prepared as an automation deliverable, but individual `verified: true` decisions remain pending until a qualified human performs and records the review.
