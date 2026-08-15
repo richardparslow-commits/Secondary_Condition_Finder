@@ -27,15 +27,13 @@ The machine-readable form is available with:
 node scripts/report-citation-verification-queue.js
 ```
 
-## Current Batch-28 baseline
+## Current Batch-29 baseline
 
-The corrected expected citation-audit position is **61 live unverified references** and **59 live unverified published references** pending exact-head CI confirmation. The two-count difference remains intentional: the audit counts unverified references that remain in draft mappings, while the human queue skips drafts and includes only references currently used by published mappings.
+The expected citation-audit position remains **61 live unverified references** and **59 live unverified published references** pending exact-head CI confirmation. The two-count difference remains intentional: the audit counts unverified references that remain in draft mappings, while the human queue skips drafts and includes only references currently used by published mappings.
 
-Batch 28 adds two focused published clinical sources and removes three nondirectional depression-association rows. This improves citation review debt by one row; it is not automated verification. The newly added sources for rectal-prolapse→fecal-incontinence and sphincter-involving anal-fistula treatment→fecal-incontinence remain `verified: false` until qualified-human review.
+Batch 29 performs a one-for-one evidence-quality replacement. The prior adjustment-disorder→GERD source is removed because the underlying meta-analysis is anxiety/depression-oriented rather than adjustment-disorder-specific. The newly added source supports the bounded scalp discoid-lupus→scarring-alopecia relationship. Both the removed source and the new DLE source are `verified: false`, so no verified-source retirement entry is created and automated verification debt does not change.
 
-The proposed hydronephrosis→chronic-kidney-disease source was removed with the proposed relationship because it supported urinary obstruction/obstructive uropathy as the renal-injury cause rather than the required hydronephrosis-primary direction.
-
-The three withdrawn depression rows were also `verified: false`: gout→depressive-disorder, myasthenia-gravis→depressive-disorder, and multiple-sclerosis→depressive-disorder. Because they were never human-verified, they do not enter the verified-source retirement ledger.
+The DLE source (PMID 35817588) must remain `verified: false` until a qualified human independently confirms that the citation, scalp-DLE phenotype, scarring-alopecia proposition, and source locator are accurate.
 
 `npm run citations:queue` is the authoritative source for the exact current human-review row set and role breakdown because later evidence batches can add, replace, retire, withdraw, consolidate, or verify individual sources.
 

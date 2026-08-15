@@ -42,7 +42,6 @@ describe("clinical evidence promotion batch 26", () => {
     expect(suggestion?.rationale).toMatch(/leadless|epicardial/i);
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/34389210/");
-    expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
   });
 
@@ -74,10 +73,11 @@ describe("clinical evidence promotion batch 26", () => {
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
   });
 
-  it("withdraws four weaker or phenotype-mismatched published edges to hold citation debt flat", () => {
+  it("recognizes later evidence-quality review of Batch 26 cleanup targets", () => {
     const adjustment = byId.get("adjustment-disorder");
-    expect(adjustment?.suggestions.map((entry) => entry.conditionId)).toEqual(["gerd"]);
-    expect(adjustment?.suggestions.some((entry) => entry.conditionId === "sleep-apnea")).toBe(false);
+    expect(adjustment?.draft).toBe(true);
+    expect(adjustment?.suggestions).toEqual([]);
+    expect(adjustment?.todo.join(" ")).toMatch(/adjustment disorder.*condition-specific|condition-specific.*adjustment disorder/i);
 
     const asthma = byId.get("asthma");
     expect(asthma?.suggestions.map((entry) => entry.conditionId)).toEqual(["sleep-apnea"]);

@@ -63,14 +63,12 @@ describe("clinical evidence promotion batch 28", () => {
     }
   });
 
-  it("records the corrected Wave totals after evidence review", () => {
+  it("preserves the Batch 28 dispositions without freezing later program totals", () => {
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
     ) as { waves: Array<{ identities: Array<{ id: string; disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(30);
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(77);
     for (const id of ["gout", "myasthenia-gravis", "multiple-sclerosis", "hydronephrosis"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("safe-draft");
     }

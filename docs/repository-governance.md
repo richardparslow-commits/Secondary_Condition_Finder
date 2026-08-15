@@ -25,9 +25,13 @@ The CI drift check **does not replace the GitHub ruleset**. CI runs after GitHub
 
 ## Change workflow
 
-Production changes continue to use:
+Production changes use:
 
-bounded branch from production-validated `main` → exact-head pull-request CI → immutable-head review → protected merge → independent `main` CI → exact Vercel deployment/canonical-alias verification → Production Runtime Readiness.
+bounded branch from production-validated `main` → exact-head pull-request CI → **Vercel Agent immutable-head review** → protected merge → independent `main` CI → exact Vercel deployment/canonical-alias verification → Production Runtime Readiness.
+
+The Vercel Agent review is a distinct governance gate from deployment. A Vercel preview/deployment reporting `Ready` or a generic Vercel commit status does **not** satisfy the review gate. The pull request must contain an actual Vercel Agent code-review result for the exact head being merged, whether generated automatically or requested with `@vercel run a review`.
+
+All actionable Vercel Agent findings must be resolved before merge. If resolving a finding changes the pull-request head, the prior exact-head CI and Vercel Agent review are stale; the new head must pass CI and receive a new Vercel Agent review before protected merge. Expected-head protection remains mandatory so the reviewed SHA is the SHA that is merged.
 
 The post-push provenance check remains useful even after branch protection is enabled because it independently records that the production commit came through the reviewed-PR path.
 
@@ -40,4 +44,6 @@ After any repository-governance change, verify all of the following before consi
 - `verify` is the required status-check context.
 - No direct-push bypass defeats the pull-request requirement.
 - A normal pull request still runs CI successfully.
+- The exact PR head receives a real Vercel Agent code-review result; deployment readiness alone is insufficient.
+- Any head change after review triggers fresh exact-head CI and a fresh Vercel Agent review.
 - Independent `main` CI passes after merge, including both governance checks.

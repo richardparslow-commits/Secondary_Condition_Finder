@@ -80,12 +80,12 @@ describe("clinical evidence promotion batch 17", () => {
     ).toHaveLength(4);
   });
 
-  it("preserves the Batch-17 clinical-only debt rule after later adjustment-disorder consolidation", () => {
+  it("recognizes the later adjustment-disorder GERD withdrawal after phenotype review", () => {
     const adjustment = byId.get("adjustment-disorder");
-    const gerd = adjustment?.suggestions.find((item) => item.conditionId === "gerd");
-    expect(adjustment?.suggestions.some((item) => item.conditionId === "sleep-apnea")).toBe(false);
-    expect(gerd?.sourceReferences.some((source) => source.verificationScope === "legal-framework")).toBe(false);
-    expect(gerd?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
+    expect(adjustment?.draft).toBe(true);
+    expect(adjustment?.suggestions).toEqual([]);
+    expect(adjustment?.todo.join(" ")).toMatch(/adjustment disorder.*condition-specific|condition-specific.*adjustment disorder/i);
+    expect(adjustment?.todo.join(" ")).toMatch(/anxiety|depression|psychosocial/i);
 
     const depressive = byId.get("depressive-disorder");
     const osa = depressive?.suggestions.find((item) => item.conditionId === "sleep-apnea");
