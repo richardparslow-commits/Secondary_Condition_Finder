@@ -23,6 +23,7 @@ describe("clinical evidence promotion batch 24", () => {
     expect(suggestion?.conditionId).toBe("osteoarthritis");
     expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["biomechanical", "disease-progression"]);
     expect(suggestion?.rationale).toMatch(/adjacent|anatomically/i);
+    expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("18504638");
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
@@ -36,11 +37,12 @@ describe("clinical evidence promotion batch 24", () => {
     expect(suggestion?.conditionId).toBe("charcot-arthropathy");
     expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["direct-secondary", "disease-progression"]);
     expect(suggestion?.rationale).toMatch(/sensory|neuropathic|Charcot/i);
+    expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("35994178");
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
   });
 
-  it("promotes trigeminal neuralgia depression and anxiety as somatopsychic research", () => {
+  it("promotes trigeminal neuralgia depression and anxiety with one focused source per target", () => {
     const mapping = byId.get("trigeminal-neuralgia");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.todo).toEqual([]);
@@ -48,16 +50,34 @@ describe("clinical evidence promotion batch 24", () => {
       "depressive-disorder",
       "anxiety-disorder",
     ]);
+    const depression = mapping?.suggestions[0];
+    const anxiety = mapping?.suggestions[1];
     for (const suggestion of mapping?.suggestions ?? []) {
       expect(suggestion.pathwayIntelligence?.pathways).toEqual(["somatopsychic"]);
       expect(suggestion.rationale).toMatch(/systematic-review|Systematic-review|population-level/i);
-      expect(suggestion.sourceReferences).toHaveLength(2);
-      expect(suggestion.sourceReferences.map((source) => source.sourceUrl)).toEqual([
-        "https://pubmed.ncbi.nlm.nih.gov/40355578/",
-        "https://pubmed.ncbi.nlm.nih.gov/29526561/",
-      ]);
-      expect(suggestion.sourceReferences.every((source) => source.verified === false)).toBe(true);
+      expect(suggestion.sourceReferences).toHaveLength(1);
+      expect(suggestion.sourceReferences[0]?.verified).toBe(false);
     }
+    expect(depression?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40355578/");
+    expect(anxiety?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/29526561/");
+  });
+
+  it("exchanges redundant published review debt instead of raising the citation ceiling", () => {
+    const adjustmentGerd = byId.get("adjustment-disorder")?.suggestions.find((entry) => entry.conditionId === "gerd");
+    expect(adjustmentGerd?.sourceReferences).toHaveLength(1);
+    expect(adjustmentGerd?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/35362447/");
+
+    const psaDepression = byId.get("psoriatic-arthritis")?.suggestions[0];
+    expect(psaDepression?.sourceReferences).toHaveLength(1);
+    expect(psaDepression?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/38797775/");
+
+    const cesEd = byId.get("cauda-equina-syndrome")?.suggestions[0];
+    expect(cesEd?.sourceReferences).toHaveLength(1);
+    expect(cesEd?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40380123/");
+
+    const depressionEd = byId.get("depressive-disorder")?.suggestions.find((entry) => entry.conditionId === "erectile-dysfunction");
+    expect(depressionEd?.sourceReferences).toHaveLength(1);
+    expect(depressionEd?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/34247952/");
   });
 
   it("retains broad myositis as draft rather than overgeneralizing IIM-ILD evidence", () => {
