@@ -1,37 +1,29 @@
 {
   "id": "post-concussion-syndrome",
   "draft": false,
+  "todo": [],
   "suggestions": [
     {
       "conditionId": "migraine-headaches",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Post-concussion syndrome frequently includes chronic headache patterns that become independently diagnosable.",
+      "rationale": "Persistent post-traumatic headache is a recognized post-concussive condition, but it is a distinct diagnosis from primary migraine even when the clinical phenotype is migraine-like. Current reviews support phenotype-guided management after concussion and mild traumatic brain injury. Because this catalog target is `migraine-headaches`, the relationship is limited to cases in which a clinician has diagnosed migraine or persistent post-traumatic headache with a migraine/probable-migraine phenotype and documented the temporal relationship to the concussion. The evidence does not justify relabeling every persistent post-concussion headache as migraine or inferring an individual nexus from symptom overlap alone.",
       "evidenceGaps": [
-        "Diagnosis of chronic post-concussive headaches/migraines",
-        "Symptom timeline showing persistence beyond acute concussion period"
+        "Headache-specialist or neurology diagnosis distinguishing persistent post-traumatic headache from primary migraine and documenting any migraine phenotype",
+        "Concussion and headache chronology, including onset and persistence after the qualifying injury",
+        "Pre-injury migraine/headache history and other competing headache causes",
+        "Headache phenotype, frequency, associated features, disability, and treatment response",
+        "Qualified clinician assessment addressing the individual's diagnostic relationship to the documented concussion"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "anxiety-disorder",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Persistent cognitive and somatic symptoms after concussion can contribute to anxiety disorders.",
-      "evidenceGaps": [
-        "Mental health documentation linking anxiety to ongoing post-concussion symptoms"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
+          "citation": "Gallivan LMA, Kacperski J. Current Research on the Diagnosis and Management of Persistent Post-Traumatic Headache. Curr Pain Headache Rep. 2026;30(1):67. PMID 42133249",
+          "note": "Clinical review describes persistent post-traumatic headache after concussion/mild TBI and supports phenotype-guided management while noting limited evidence. Supports bounded post-concussion headache research, not automatic reclassification as migraine.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42133249/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 42133249; abstract Purpose/Recent Findings: persistent post-traumatic headache after concussion/mTBI and phenotype-guided treatment"
         }
       ]
     }

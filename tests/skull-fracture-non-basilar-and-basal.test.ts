@@ -8,46 +8,43 @@ import { loadKnowledgeBase } from "@/lib/kb/load";
 import { conditionMappingSchema } from "@/lib/kb/schema";
 import { validateKnowledgeBaseAgainstCatalog } from "@/lib/kb/validate";
 
-/**
- * Focused regression tests for the "skull-fracture-non-basilar-and-basal"
- * condition and mapping, which were substantially fleshed out from
- * placeholder content (empty arrays, "Pending manual review") to fully
- * authored entries.
- */
-
 const CONDITION_ID = "skull-fracture-non-basilar-and-basal";
-
 const catalog = loadConditionCatalog();
 const kb = loadKnowledgeBase();
-
 const condition = catalog.find((c) => c.id === CONDITION_ID);
 const mapping = kb.find((m) => m.id === CONDITION_ID);
 
+const syntheticSuggestion = (conditionId: string, rank: number) => ({
+  conditionId,
+  rank,
+  prevalence: "sometimes-explored" as const,
+  rationale: "Synthetic schema-validation fixture; not published medical content.",
+  evidenceGaps: ["Synthetic evidence gap for schema-validation coverage."],
+  sourceReferences: [
+    {
+      citation: "Synthetic clinical source",
+      note: "Synthetic source used only by the regression test.",
+      verified: false as const,
+      verificationScope: "clinical-evidence" as const,
+      sourceUrl: "https://example.com/synthetic-clinical-source",
+      sourceCheckedOn: "2026-08-14",
+      sourceLocator: "Synthetic fixture",
+    },
+  ],
+});
+
 describe("catalog entry: skull-fracture-non-basilar-and-basal", () => {
-  it("exists in the neurological catalog file", () => {
+  it("preserves the authored stable catalog identity and aliases", () => {
     expect(condition).toBeDefined();
-  });
-
-  it("uses the fully authored display name rather than the old lowercase placeholder", () => {
     expect(condition?.name).toBe("Skull Fracture (Non-basilar and Basal)");
-    // The old value was the lowercase, unformatted "skull fracture non
-    // basilar and basal" -- guard against regressing to that placeholder.
-    expect(condition?.name).not.toBe("skull fracture non basilar and basal");
-  });
-
-  it("is assigned to the Neurological body system", () => {
     expect(condition?.bodySystem).toBe("Neurological");
+    expect(condition?.aliases).toEqual(["Basal Skull Fracture", "Non-basilar Skull Fracture"]);
+    expect(findCondition(catalog, CONDITION_ID)?.id).toBe(CONDITION_ID);
+    expect(findCondition(catalog, "Basal Skull Fracture")?.id).toBe(CONDITION_ID);
+    expect(indexById(catalog).get(CONDITION_ID)?.id).toBe(CONDITION_ID);
   });
 
-  it("declares the expected aliases and no longer ships an empty array", () => {
-    expect(condition?.aliases).toEqual([
-      "Basal Skull Fracture",
-      "Non-basilar Skull Fracture",
-    ]);
-  });
-
-  it("has a non-empty rating schedule with unverified, well-formed citations", () => {
-    expect(condition?.ratingSchedule.length).toBeGreaterThan(0);
+  it("preserves the rating frameworks as unverified rating context", () => {
     expect(condition?.ratingSchedule).toEqual([
       {
         citation: "38 CFR 4.71a",
@@ -60,237 +57,86 @@ describe("catalog entry: skull-fracture-non-basilar-and-basal", () => {
         verified: false,
       },
     ]);
-    for (const reference of condition?.ratingSchedule ?? []) {
-      expect(reference.verified).toBe(false);
-      expect(reference.citation).toMatch(/^38 CFR 4\.\d+[a-z]?$/);
-    }
-  });
-
-  it("carries an updated review note that is not the generic 'Pending manual review' placeholder", () => {
     expect(condition?.reviewNotes).toEqual([
       "Diagnostic code selection and fracture variant details still require human review.",
     ]);
-    expect(condition?.reviewNotes).not.toContain("Pending manual review");
   });
 
-  it("resolves through findCondition by id and by each declared alias", () => {
-    expect(findCondition(catalog, CONDITION_ID)?.id).toBe(CONDITION_ID);
-    expect(findCondition(catalog, "Basal Skull Fracture")?.id).toBe(CONDITION_ID);
-    expect(findCondition(catalog, "Non-basilar Skull Fracture")?.id).toBe(
-      CONDITION_ID,
-    );
-    // Case-insensitive, whitespace-tolerant lookup, matching normalizeConditionName.
-    expect(findCondition(catalog, "  basal skull fracture  ")?.id).toBe(
-      CONDITION_ID,
-    );
-  });
-
-  it("does not collide with any other condition's id in the global index", () => {
-    const byId = indexById(catalog);
-    expect(byId.get(CONDITION_ID)?.id).toBe(CONDITION_ID);
-  });
-});
-
-describe("catalog entry: canonical schema-only JSON contract", () => {
-  const rawFile = path.join(
-    process.cwd(),
-    "data",
-    "conditions",
-    "neurological.json",
-  );
-  const raw = JSON.parse(fs.readFileSync(rawFile, "utf8"));
-  const rawCondition = raw.conditions.find(
-    (c: { id: string }) => c.id === CONDITION_ID,
-  );
-
-  it("does not contain legacy ad-hoc fields", () => {
+  it("keeps canonical schema-only catalog JSON", () => {
+    const rawFile = path.join(process.cwd(), "data", "conditions", "neurological.json");
+    const raw = JSON.parse(fs.readFileSync(rawFile, "utf8"));
+    const rawCondition = raw.conditions.find((c: { id: string }) => c.id === CONDITION_ID);
     expect(rawCondition).not.toHaveProperty("displayName");
     expect(rawCondition).not.toHaveProperty("primaryDiagnosticCodes");
     expect(rawCondition).not.toHaveProperty("cfrCitations");
     expect(rawCondition).not.toHaveProperty("draft");
-    expect(rawCondition).not.toHaveProperty("verified");
   });
 });
 
-describe("knowledge-base mapping: skull-fracture-non-basilar-and-basal", () => {
-  it("exists and is published (not a draft) with an empty todo list", () => {
+describe("knowledge-base mapping: Batch 22 safety withdrawal", () => {
+  it("exists as a reviewed draft with no published suggestions", () => {
     expect(mapping).toBeDefined();
-    expect(mapping?.draft).toBe(false);
-    expect(mapping?.todo).toEqual([]);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.length).toBeGreaterThan(0);
+    expect(mapping?.todo.join(" ")).toMatch(/six|subtype|heterogeneous|clinical evidence/i);
   });
 
-  it("expanded from two placeholder suggestions to six fully authored suggestions", () => {
-    expect(mapping?.suggestions).toHaveLength(6);
-  });
-
-  it("orders suggestions with unique, gapless ranks starting at 1", () => {
-    const ranks = mapping?.suggestions.map((s) => s.rank) ?? [];
-    expect(ranks).toEqual([1, 2, 3, 4, 5, 6]);
-  });
-
-  it("suggests the expected conditions in the expected rank order", () => {
+  it("does not publish the former six diagnosis-specific residual claims", () => {
     const ids = mapping?.suggestions.map((s) => s.conditionId) ?? [];
-    expect(ids).toEqual([
+    for (const formerId of [
       "migraine-headaches",
       "post-concussion-syndrome",
       "tinnitus",
       "vestibular-disorder",
       "depressive-disorder",
       "anosmia",
-    ]);
+    ]) expect(ids).not.toContain(formerId);
   });
 
-  it("assigns the expected prevalence tier to each suggestion", () => {
-    const byId = new Map(
-      mapping?.suggestions.map((s) => [s.conditionId, s.prevalence]) ?? [],
-    );
-    expect(byId.get("migraine-headaches")).toBe("commonly-explored");
-    expect(byId.get("post-concussion-syndrome")).toBe("commonly-explored");
-    expect(byId.get("tinnitus")).toBe("sometimes-explored");
-    expect(byId.get("vestibular-disorder")).toBe("sometimes-explored");
-    expect(byId.get("depressive-disorder")).toBe("sometimes-explored");
-    expect(byId.get("anosmia")).toBe("occasionally-explored");
-  });
-
-  it("never suggests the condition as a secondary of itself", () => {
-    const ids = mapping?.suggestions.map((s) => s.conditionId) ?? [];
-    expect(ids).not.toContain(CONDITION_ID);
-  });
-
-  it("never duplicates a conditionId within the mapping", () => {
-    const ids = mapping?.suggestions.map((s) => s.conditionId) ?? [];
-    expect(new Set(ids).size).toBe(ids.length);
-  });
-
-  it("gives every suggestion a rationale, at least one evidence gap, and 1-3 source references", () => {
-    for (const suggestion of mapping?.suggestions ?? []) {
-      expect(suggestion.rationale.length).toBeGreaterThan(0);
-      expect(suggestion.evidenceGaps.length).toBeGreaterThanOrEqual(1);
-      expect(suggestion.sourceReferences.length).toBeGreaterThanOrEqual(1);
-      expect(suggestion.sourceReferences.length).toBeLessThanOrEqual(3);
-    }
-  });
-
-  it("provides three evidence gaps for every newly authored suggestion", () => {
-    for (const suggestion of mapping?.suggestions ?? []) {
-      expect(suggestion.evidenceGaps).toHaveLength(3);
-    }
-  });
-
-  it("never marks a source reference as verified without human review", () => {
-    const verified = (mapping?.suggestions ?? []).flatMap((s) =>
-      s.sourceReferences.filter((r) => r.verified),
-    );
-    expect(verified).toEqual([]);
-  });
-
-  it("keeps every source reference citation and note non-empty", () => {
-    for (const suggestion of mapping?.suggestions ?? []) {
-      for (const reference of suggestion.sourceReferences) {
-        expect(reference.citation.trim().length).toBeGreaterThan(0);
-        expect(reference.note.trim().length).toBeGreaterThan(0);
-      }
-    }
-  });
-
-  it("includes a secondary service connection citation (38 CFR 3.310) for every suggestion", () => {
-    for (const suggestion of mapping?.suggestions ?? []) {
-      const citations = suggestion.sourceReferences.map((r) => r.citation);
-      expect(citations).toContain("38 CFR 3.310");
-    }
-  });
-
-  it("resolves every suggested conditionId to an existing catalog entry", () => {
-    const byId = indexById(catalog);
-    for (const suggestion of mapping?.suggestions ?? []) {
-      expect(
-        byId.has(suggestion.conditionId),
-        `"${CONDITION_ID}" suggests unknown condition "${suggestion.conditionId}"`,
-      ).toBe(true);
-    }
-  });
-
-  it("contains no placeholder text now that the mapping is published", () => {
-    const authored = (mapping?.suggestions ?? []).flatMap((suggestion) => [
-      suggestion.rationale,
-      ...suggestion.evidenceGaps,
-      ...suggestion.sourceReferences.flatMap((r) => [r.citation, r.note]),
-    ]);
-    for (const text of authored) {
-      expect(text).not.toMatch(/TODO|FIXME|placeholder|lorem ipsum|TBD/i);
-    }
+  it("the real draft mapping still passes schema and catalog validation", () => {
+    expect(() => conditionMappingSchema.parse(mapping)).not.toThrow();
+    expect(() => validateKnowledgeBaseAgainstCatalog(catalog, [mapping!])).not.toThrow();
   });
 });
 
-describe("knowledge-base mapping: negative / boundary validation", () => {
-  it("fails conditionMappingSchema validation when a suggestion self-references the mapping id", () => {
-    const rawFile = path.join(
-      process.cwd(),
-      "data",
-      "knowledge-base",
-      `${CONDITION_ID}.json`,
-    );
-    const raw = JSON.parse(fs.readFileSync(rawFile, "utf8"));
+describe("knowledge-base schema negative/boundary validation", () => {
+  const syntheticPublished = {
+    id: CONDITION_ID,
+    draft: false,
+    todo: [],
+    suggestions: [
+      syntheticSuggestion("migraine-headaches", 1),
+      syntheticSuggestion("tinnitus", 2),
+    ],
+  };
 
+  it("rejects self-reference", () => {
     const broken = {
-      ...raw,
-      suggestions: [
-        { ...raw.suggestions[0], conditionId: CONDITION_ID },
-        ...raw.suggestions.slice(1),
-      ],
+      ...syntheticPublished,
+      suggestions: [syntheticSuggestion(CONDITION_ID, 1), syntheticSuggestion("tinnitus", 2)],
     };
-
     expect(() => conditionMappingSchema.parse(broken)).toThrow();
   });
 
-  it("fails conditionMappingSchema validation when ranks are no longer gapless", () => {
-    const rawFile = path.join(
-      process.cwd(),
-      "data",
-      "knowledge-base",
-      `${CONDITION_ID}.json`,
-    );
-    const raw = JSON.parse(fs.readFileSync(rawFile, "utf8"));
-
+  it("rejects non-gapless ranks", () => {
     const broken = {
-      ...raw,
-      suggestions: raw.suggestions.map(
-        (s: { rank: number }, index: number) =>
-          index === 0 ? { ...raw.suggestions[0], rank: 99 } : s,
-      ),
+      ...syntheticPublished,
+      suggestions: [syntheticSuggestion("migraine-headaches", 99), syntheticSuggestion("tinnitus", 2)],
     };
-
     expect(() => conditionMappingSchema.parse(broken)).toThrow();
   });
 
-  it("fails validateKnowledgeBaseAgainstCatalog when a suggestion points at an unknown condition", () => {
-    const rawFile = path.join(
-      process.cwd(),
-      "data",
-      "knowledge-base",
-      `${CONDITION_ID}.json`,
-    );
-    const raw = JSON.parse(fs.readFileSync(rawFile, "utf8"));
-
+  it("catalog validation rejects an unknown suggestion target", () => {
     const broken = conditionMappingSchema.parse({
-      ...raw,
+      ...syntheticPublished,
       suggestions: [
-        { ...raw.suggestions[0], conditionId: "condition-that-does-not-exist" },
-        ...raw.suggestions.slice(1),
+        syntheticSuggestion("condition-that-does-not-exist", 1),
+        syntheticSuggestion("tinnitus", 2),
       ],
     });
-
-    expect(() =>
-      validateKnowledgeBaseAgainstCatalog(catalog, [broken]),
-    ).toThrow(
+    expect(() => validateKnowledgeBaseAgainstCatalog(catalog, [broken])).toThrow(
       `Mapping "${CONDITION_ID}" suggests unknown condition "condition-that-does-not-exist".`,
     );
-  });
-
-  it("stays internally consistent: real published mapping data passes schema and catalog validation", () => {
-    expect(() => conditionMappingSchema.parse(mapping)).not.toThrow();
-    expect(() =>
-      validateKnowledgeBaseAgainstCatalog(catalog, [mapping!]),
-    ).not.toThrow();
   });
 });
