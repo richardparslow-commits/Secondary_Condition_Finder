@@ -27,6 +27,9 @@ const POST_V2_PROMOTED_WAVE_THREE_IDS = new Set([
   "cardiomyopathy",
   "hypertensive-heart-disease",
   "hyperaldosteronism",
+  "pituitary-neoplasm",
+  "heart-valve-replacement-residuals",
+  "implantable-cardiac-pacemaker",
   "pulmonary-hypertension",
 ]);
 
