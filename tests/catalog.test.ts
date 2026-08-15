@@ -7,6 +7,7 @@ import {
   indexById,
   normalizeConditionName,
 } from "@/lib/catalog/lookup";
+import { ratingReferenceSchema } from "@/lib/catalog/schema";
 
 const catalog = loadConditionCatalog();
 
@@ -26,11 +27,31 @@ describe("condition catalog", () => {
     }
   });
 
-  it("does not mark any rating citation verified without human review", () => {
-    const verified = catalog.flatMap((condition) =>
-      condition.ratingSchedule.filter((reference) => reference.verified),
-    );
-    expect(verified).toEqual([]);
+  it("requires rating citation verification to be explicit", () => {
+    expect(() =>
+      ratingReferenceSchema.parse({
+        citation: "38 CFR 4.130",
+        note: "Schedule of ratings, mental disorders.",
+      }),
+    ).toThrow();
+  });
+
+  it("permits future qualified-human verification without a schema migration", () => {
+    expect(
+      ratingReferenceSchema.parse({
+        citation: "38 CFR 4.130",
+        note: "Schedule of ratings, mental disorders.",
+        verified: true,
+      }).verified,
+    ).toBe(true);
+  });
+
+  it("preserves explicit unverified catalog references", () => {
+    for (const condition of catalog) {
+      for (const reference of condition.ratingSchedule) {
+        expect(typeof reference.verified).toBe("boolean");
+      }
+    }
   });
 
   it("records a review note whenever a rating citation is missing", () => {

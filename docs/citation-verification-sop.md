@@ -1,10 +1,10 @@
 # Citation Verification SOP
 
-This SOP governs citation review for the knowledge base and is the operational gate for Phase 3.
+This SOP governs citation review for the knowledge base and condition catalog and is the operational gate for Phase 3.
 
 ## Scope
 
-It applies to every citation in `data/knowledge-base/` and every pull request that adds or changes citation text, regulatory references, source metadata, or verified-citation retirement provenance.
+It applies to every citation in `data/knowledge-base/`, every rating-schedule reference in `data/conditions/`, and every pull request that adds or changes citation text, regulatory references, source metadata, verification state, or verified-citation retirement provenance.
 
 ## Required workflow
 
@@ -12,14 +12,14 @@ It applies to every citation in `data/knowledge-base/` and every pull request th
 2. **Use a primary source first.** Prefer the current eCFR/regulation, VA publication, Federal Register material, or other authoritative government source appropriate to the claim. Secondary sources may provide context but do not replace the primary source when one exists.
 3. **Check applicability.** Confirm the cited authority actually supports the condition, relationship, or rating proposition being made; do not infer a nexus merely because two conditions are discussed in the same source.
 4. **Record provenance.** Preserve the source URL, citation text, and `sourceCheckedOn` date in the repository data when those fields are available in the schema.
-5. **Keep verification explicit.** Phase 1 citations must remain `verified: false` until a qualified reviewer has confirmed them. A source being present or plausibly relevant is not equivalent to verification.
+5. **Keep verification explicit.** New or automated citation edits must remain `verified: false` until a qualified human has confirmed them. A schema accepting `verified: true` exists so a qualified human can truthfully record that decision without a data-contract migration; schema permissiveness is not authorization for an automated agent or script to promote verification. A source being present or plausibly relevant is not equivalent to verification.
 6. **Review changes, not just files.** The PR reviewer must inspect the diff and confirm that changed claims remain supported and that no citation was silently removed or weakened.
 7. **Publish only through the gate.** A mapping may be published only after schema validation, citation review, SME/content review, and the applicable phase gate are complete.
 
 ## Verification states
 
 - `unverified`: source is recorded but has not received qualified human verification.
-- `verified`: a qualified reviewer has confirmed the source supports the stated claim and the verification date is recorded.
+- `verified`: a qualified reviewer has confirmed the source supports the stated claim and the verification date is recorded when the schema provides a provenance field.
 - `not-applicable`: no citation is required for the particular tracker item; this must not be used to bypass a citation requirement for a published suggestion.
 
 ## Retiring a previously verified citation
@@ -55,4 +55,4 @@ When a citation cannot be verified during a PR, retain the citation and explicit
 
 ## PR requirements
 
-Knowledge-base PRs must reference this SOP and must document whether citation content changed. The PR must also identify remaining unverified citations and any previously verified citations retired in the change, and must pass the automated KB/data checks before merge.
+Knowledge-base and catalog PRs must reference this SOP and must document whether citation content or verification state changed. The PR must also identify remaining unverified citations and any previously verified citations retired in the change, and must pass the automated KB/data checks before merge.
