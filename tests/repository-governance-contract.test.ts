@@ -34,4 +34,15 @@ describe("repository governance contract", () => {
     expect(governance).toContain("Block deletion");
     expect(governance).toContain("does not replace the GitHub ruleset");
   });
+
+  it("requires Vercel Agent review of the immutable exact head before protected merge", () => {
+    const governance = read("docs/repository-governance.md");
+
+    expect(governance).toContain("Vercel Agent immutable-head review");
+    expect(governance).toContain("@vercel run a review");
+    expect(governance).toContain("deployment readiness alone is insufficient");
+    expect(governance).toContain("Expected-head protection remains mandatory");
+    expect(governance).toMatch(/head change[\s\S]*fresh exact-head CI[\s\S]*fresh Vercel Agent review/i);
+    expect(governance).not.toContain("CodeRabbit");
+  });
 });
