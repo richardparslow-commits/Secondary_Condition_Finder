@@ -27,8 +27,10 @@ const WAVE_ONE_IDS = [
 ] as const;
 
 const POST_V2_PROMOTED_WAVE_ONE_IDS = new Set([
+  "gout",
   "parkinsons-disease",
   "multiple-sclerosis",
+  "myasthenia-gravis",
   "seizure-disorder",
 ]);
 
