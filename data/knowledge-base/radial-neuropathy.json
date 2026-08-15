@@ -1,6 +1,9 @@
 {
   "id": "radial-neuropathy",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
+  "todo": [
+    "Targeted 2026-08-15 rescreen found clinical literature characterizing radial mononeuropathy causes, localization, deficits, and outcomes (including PMID 41392533), but did not identify a distinct downstream catalog diagnosis with sufficiently directional radial-neuropathy-primary evidence for publication.",
+    "Keep safe-draft until condition-specific evidence supports a separate secondary diagnosis rather than manifestations of the same radial-nerve lesion such as weakness, sensory loss, wrist drop, pain, or functional limitation."
+  ],
   "suggestions": []
 }
