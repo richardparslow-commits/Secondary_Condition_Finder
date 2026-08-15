@@ -130,7 +130,7 @@
         {"id":"essential-thrombocythemia","disposition":"safe-draft"},
         {"id":"primary-myelofibrosis","disposition":"safe-draft"},
         {"id":"myelodysplastic-syndrome","disposition":"safe-draft"},
-        {"id":"discoid-lupus","disposition":"safe-draft"},
+        {"id":"discoid-lupus","disposition":"published-evidence-led"},
         {"id":"scarring-alopecia","disposition":"safe-draft"},
         {"id":"hyperhidrosis","disposition":"safe-draft"}
       ]
