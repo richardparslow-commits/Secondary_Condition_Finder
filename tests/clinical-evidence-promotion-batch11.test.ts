@@ -20,19 +20,11 @@ describe("clinical evidence promotion batch 11", () => {
     expect(kb).toHaveLength(300);
   });
 
-  it("publishes hypothyroidism-to-depression only as a modest association", () => {
+  it("recognizes the later withdrawal of the modest hypothyroidism-depression association", () => {
     const mapping = byId.get("hypothyroidism");
-    const suggestion = mapping?.suggestions[0];
-    const source = suggestion?.sourceReferences[0];
-    expect(mapping?.draft).toBe(false);
-    expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe("depressive-disorder");
-    expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.rationale).toMatch(/modest association/i);
-    expect(suggestion?.rationale).toMatch(/smaller than historically assumed|smaller than/i);
-    expect(source?.verificationScope).toBe("clinical-evidence");
-    expect(source?.sourceUrl).toContain("34524390");
-    expect(source?.verified).toBe(false);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/modest|subgroup|directional/i);
   });
 
   it("publishes confirmed hypogonadism-to-osteoporosis research with bone-health safeguards", () => {
