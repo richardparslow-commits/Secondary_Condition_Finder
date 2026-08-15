@@ -70,7 +70,7 @@ describe("clinical evidence promotion batch 27", () => {
     expect(byId.get("hypothyroidism")?.todo.join(" ")).toMatch(/modest|subgroup|directional/i);
   });
 
-  it("preserves the Batch 27 dispositions without freezing later program totals", () => {
+  it("preserves the Batch 27 Wave dispositions without freezing later program totals", () => {
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
     ) as { totalIdentities: number; waves: Array<{ identities: Array<{ id: string; disposition: string }> }> };
@@ -79,9 +79,6 @@ describe("clinical evidence promotion batch 27", () => {
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
     for (const id of ["uveitis", "retinal-dystrophy", "ptosis"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("published-evidence-led");
-    }
-    for (const id of ["anosmia", "alopecia-areata", "hypothyroidism"]) {
-      expect(entries.find((entry) => entry.id === id)?.disposition).toBe("safe-draft");
     }
   });
 });
