@@ -16,7 +16,7 @@ This application heavily relies on strict JSON file parsing and cross-file refer
 1.  **ID Formatting:** All `id` and `conditionId` fields must strictly match the regex pattern `/^[a-z0-9-]+$/` (lowercase, alphanumeric, hyphens only). Never use underscores or spaces.
 2.  **Cross-File Integrity:** Any `conditionId` referenced inside the `suggestions` array of a `data/knowledge-base/*.json` file MUST exist as a primary `id` in one of the catalog files. 
 3.  **Prevalence Enums:** The `prevalence` field must only use exact allowed strings: `"commonly-explored"`, `"sometimes-explored"`, or `"occasionally-explored"`.
-4.  **Verification Status:** All new `sourceReferences` must be shipped with `"verified": false`. Only authorized medical reviews can flip this to `true`.
+4.  **Verification Status:** All new or automated edits to `sourceReferences` and catalog `ratingSchedule` references must be shipped with `"verified": false`. Only a qualified human citation review may deliberately set a reference to `true`; a schema that accepts `true` is not authorization for an automated agent to promote verification.
 5.  **Draft Status:** New condition mappings should be created with `"draft": true` until fully populated and tested. Change to `"draft": false` to publish.
 
 ## Workflow & Code Generation Guidelines
