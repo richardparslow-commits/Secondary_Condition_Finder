@@ -2,6 +2,11 @@ import { randomUUID } from "node:crypto";
 
 import { z } from "zod";
 
+import {
+  VA_SHARED_STATE_REQUIRED_ERROR,
+  vaProcessLocalStateAllowed,
+} from "./runtime-state";
+
 const DEFAULT_FORMS_BASE_URLS = {
   sandbox: "https://sandbox-api.va.gov/services/va_forms/v0",
   production: "https://api.va.gov/services/va_forms/v0",
@@ -88,7 +93,7 @@ function claimOutboundRequestSlot(
   return true;
 }
 
-/** Test/reset hook; production callers should not need to clear process-local request history. */
+/** Test/reset hook for the single-process request budget. */
 export function clearVaApiOutboundRateLimitState(): void {
   outboundRequestTimes.clear();
 }
@@ -251,6 +256,9 @@ async function requestVaJson<T>(args: {
   if (!args.config.enabled) {
     return fallback(`VA ${environment} integration is disabled by feature flag.`, environment);
   }
+  if (!vaProcessLocalStateAllowed()) {
+    return fallback(VA_SHARED_STATE_REQUIRED_ERROR, environment);
+  }
   if (!args.apiKey) {
     return fallback(
       `${args.service} ${environment} API key is required when integration is enabled.`,
@@ -284,7 +292,7 @@ async function requestVaJson<T>(args: {
         durationMs: 0,
       });
       return fallback(
-        `VA ${environment} ${args.service} request was blocked by the process-local outbound request budget.`,
+        `VA ${environment} ${args.service} request was blocked by the single-process outbound request budget.`,
         environment,
         requestId,
       );
