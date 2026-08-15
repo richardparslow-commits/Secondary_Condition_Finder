@@ -81,19 +81,27 @@ describe("controlled pathway backfill batch 1", () => {
     expect(mapping?.suggestions.some((entry) => entry.conditionId === "anxiety-disorder")).toBe(false);
   });
 
-  it("preserves the pre-backfill ranking and prevalence of enriched edges", () => {
+  it("preserves the ranking and prevalence of the surviving enriched edges", () => {
     const kb = loadKnowledgeBase();
     const adjustment = kb.find((entry) => entry.id === "adjustment-disorder");
     const depression = kb.find((entry) => entry.id === "depressive-disorder");
     expect(adjustment?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
       { conditionId: "sleep-apnea", rank: 1, prevalence: "commonly-explored" },
       { conditionId: "gerd", rank: 2, prevalence: "commonly-explored" },
-      { conditionId: "migraine-headaches", rank: 3, prevalence: "sometimes-explored" },
     ]);
     expect(depression?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
       { conditionId: "sleep-apnea", rank: 1, prevalence: "sometimes-explored" },
       { conditionId: "erectile-dysfunction", rank: 2, prevalence: "commonly-explored" },
     ]);
+  });
+
+  it("recognizes the Batch 23 adjustment-disorder migraine withdrawal", () => {
+    const mapping = loadKnowledgeBase().find((entry) => entry.id === "adjustment-disorder");
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.suggestions.some((entry) => entry.conditionId === "migraine-headaches")).toBe(false);
+    expect(mapping?.suggestions.every((entry) =>
+      entry.sourceReferences.some((source) => source.verificationScope === "clinical-evidence"),
+    )).toBe(true);
   });
 
   it("does not treat safety-withdrawn mappings as backfill candidates", () => {
