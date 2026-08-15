@@ -1,6 +1,46 @@
 {
   "id": "ptosis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, neurologic/neuromuscular, surgical/treatment, visual-field, and disfigurement pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "visual-impairment",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Upper-eyelid ptosis can mechanically obstruct the superior visual field and produce functionally significant visual impairment. Evidence-based eyelid-surgery guidance specifically addresses upper visual-field impairment related to ptosis and emphasizes documentation of the underlying cause and functional deficit. This supports a ptosis-to-visual-impairment pathway only when formal or clinically appropriate testing demonstrates a field deficit attributable to the drooping eyelid; ptosis without objective functional obstruction should not be treated as visual impairment by default.",
+      "pathwayIntelligence": {
+        "pathways": ["direct-secondary"],
+        "causalChain": "Documented upper-eyelid ptosis → mechanical obstruction of the superior visual axis/field when sufficiently severe → objectively demonstrated visual-field impairment attributable to the eyelid position.",
+        "developmentQuestions": [
+          "Is ptosis objectively documented, including laterality, severity, margin-reflex distance, levator function, and suspected cause where available?",
+          "Does formal visual-field testing or another accepted functional assessment show a superior-field deficit that corresponds to the ptotic eyelid?",
+          "Does manual eyelid elevation or taping improve the visual field when such testing is clinically appropriate?",
+          "Are visual acuity and other ocular findings consistent with a mechanical field obstruction rather than a separate retinal, optic-nerve, corneal, lenticular, or neurologic cause?",
+          "Did ptosis repair improve the documented functional deficit if surgery occurred?"
+        ],
+        "issuesToResolve": [
+          "Ptosis can be cosmetically apparent without producing a qualifying functional visual deficit; objective field impairment and attribution to eyelid position are required.",
+          "The cause of ptosis and other ocular or neurologic causes of visual impairment should be evaluated separately rather than conflated with mechanical superior-field obstruction."
+        ]
+      },
+      "evidenceGaps": [
+        "Ophthalmology or oculoplastic examination documenting ptosis severity and laterality",
+        "Objective visual-field or other accepted functional testing showing impairment attributable to eyelid position",
+        "Taped/elevated-lid comparison or postoperative functional response when available",
+        "Assessment of competing ocular and neurologic causes of the visual deficit",
+        "Clinician opinion linking the documented functional impairment to the individual ptosis"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Kim KK et al. American Society of Plastic Surgeons Evidence-Based Clinical Practice Guideline: Eyelid Surgery for Upper Visual Field Improvement. Plast Reconstr Surg. 2022;150(2):419e-434e. PMID 35895522",
+          "note": "Evidence-based guideline addresses upper visual-field impairment related to eyelid ptosis and dermatochalasis and emphasizes documentation of the cause of visual-field impairment. Supports an objective function-limited ptosis pathway, while the guideline notes limitations in the methodological quality of much of the surgical literature.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35895522/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 35895522; abstract: guideline for upper visual-field impairments related to eyelid ptosis/dermatochalasis; systematic review addressed documentation of underlying cause"
+        }
+      ]
+    }
+  ]
 }
