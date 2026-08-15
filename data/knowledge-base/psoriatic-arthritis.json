@@ -7,7 +7,7 @@
       "conditionId": "depressive-disorder",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Depression is a recognized psychological comorbidity in psoriatic arthritis, and systematic-review evidence reports both appreciable depression prevalence and an elevated risk of incident depression in psoriatic disease populations that include PsA. These population-level findings support condition-specific research of the PsA/depression relationship, but they do not establish that PsA caused or aggravated an individual depressive disorder; the literature also describes probable bidirectionality and substantial heterogeneity.",
+      "rationale": "Depression is a recognized psychological comorbidity in psoriatic arthritis. A PsA-specific overview of systematic reviews reported pooled depression prevalence across included reviews of approximately 11.9% to 20% and also identified incident depression data. These population-level findings support condition-specific research of the PsA/depression relationship, but they do not establish that PsA caused or aggravated an individual depressive disorder; chronology, disease burden, treatment, and competing psychiatric or medical contributors remain essential.",
       "evidenceGaps": [
         "Qualified diagnosis of a depressive disorder rather than symptom-screening results alone",
         "Chronology comparing depressive-disorder onset or worsening with PsA diagnosis, inflammatory activity, pain, functional limitation, and treatment",
@@ -17,22 +17,13 @@
       ],
       "sourceReferences": [
         {
-          "citation": "Lukmanji et al., Journal of Cutaneous Medicine and Surgery (2021), PMID 33263264",
-          "note": "Systematic review and meta-analysis found greater incident depression risk in psoriatic disease and reported that PsA status did not explain the high heterogeneity; the authors also note probable bidirectional effects. Supports a population-level relationship, not an automatic individual nexus.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33263264/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 33263264"
-        },
-        {
           "citation": "Hernández-Rodríguez et al., Rheumatology International (2024), PMID 38797775",
-          "note": "Overview of systematic reviews found depression among the commonly reported psychological comorbidities of PsA, with pooled depression prevalence across included reviews of approximately 11.9% to 20%. Supports comorbidity/association and screening relevance, not individual causation.",
+          "note": "PsA-specific overview of systematic reviews found depression among commonly reported psychological comorbidities, with pooled depression prevalence of approximately 11.9% to 20% across included reviews and an incidence estimate where available. Supports comorbidity/association and screening relevance, not individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38797775/",
           "verified": false,
-          "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 38797775"
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 38797775; abstract: overview of systematic reviews; pooled depression prevalence 11.9%-20% and depression incidence 21.3 per 1000 person-years"
         }
       ]
     }

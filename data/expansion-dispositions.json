@@ -14,7 +14,7 @@
         {"id":"gout","disposition":"published-evidence-led"},
         {"id":"osteoporosis","disposition":"safe-draft"},
         {"id":"osteomalacia","disposition":"safe-draft"},
-        {"id":"osteitis-deformans","disposition":"safe-draft"},
+        {"id":"osteitis-deformans","disposition":"published-evidence-led"},
         {"id":"bursitis","disposition":"safe-draft"},
         {"id":"myositis","disposition":"safe-draft"},
         {"id":"heterotopic-ossification","disposition":"safe-draft"},
@@ -26,9 +26,9 @@
         {"id":"parkinsons-disease","disposition":"published-evidence-led"},
         {"id":"multiple-sclerosis","disposition":"published-evidence-led"},
         {"id":"myasthenia-gravis","disposition":"published-evidence-led"},
-        {"id":"syringomyelia","disposition":"safe-draft"},
+        {"id":"syringomyelia","disposition":"published-evidence-led"},
         {"id":"seizure-disorder","disposition":"published-evidence-led"},
-        {"id":"trigeminal-neuralgia","disposition":"safe-draft"},
+        {"id":"trigeminal-neuralgia","disposition":"published-evidence-led"},
         {"id":"ulnar-neuropathy","disposition":"safe-draft"},
         {"id":"common-peroneal-neuropathy","disposition":"safe-draft"}
       ]

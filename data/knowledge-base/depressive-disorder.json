@@ -53,46 +53,37 @@
       "conditionId": "erectile-dysfunction",
       "rank": 2,
       "prevalence": "commonly-explored",
-      "rationale": "SSRIs are associated with sexual dysfunction, including clinically important impairment of orgasm and sexual satisfaction. A medication-related secondary theory requires evidence that the veteran used the relevant antidepressant, experienced the relevant adverse effect, and has a diagnosed sexual disorder medically linked to that exposure.",
+      "rationale": "Antidepressant and other psychotropic drug therapies can be associated with male sexual dysfunction, including erectile dysfunction, with clinically important differences among drug classes and individual agents. A medication-related secondary theory therefore requires evidence that the relevant medication was used to treat the depressive disorder, that erectile dysfunction began or worsened after the exposure, and that competing vascular, endocrine, neurologic, psychiatric, medication, and lifestyle causes were considered.",
       "pathwayIntelligence": {
         "pathways": ["medication-related"],
-        "causalChain": "Depressive disorder → SSRI or other relevant antidepressant treatment, if applicable → claimed erectile or other diagnosed sexual dysfunction.",
+        "causalChain": "Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required.",
         "developmentQuestions": [
-          "Was the relevant antidepressant prescribed for the service-connected depressive disorder?",
-          "Is erectile dysfunction or another sexual disorder currently diagnosed, and what was the baseline sexual function before medication exposure?",
-          "How does onset or worsening relate temporally to the specific medication, dose, and duration?",
-          "Can a qualified clinician address whether the medication caused or aggravated the diagnosed sexual dysfunction in this individual case?",
-          "Which alternative medical, psychiatric, medication, or lifestyle causes should be addressed?"
+          "Was the relevant antidepressant or psychotropic medication prescribed for the service-connected depressive disorder?",
+          "Is erectile dysfunction currently diagnosed, and what was baseline erectile function before the medication exposure?",
+          "How does onset or worsening relate temporally to the specific medication, dose, duration, and any dose or medication changes?",
+          "Can a qualified clinician address whether the specific medication caused or aggravated erectile dysfunction in this individual case?",
+          "Which vascular, endocrine, neurologic, psychiatric, medication, substance-use, or lifestyle causes should be addressed?"
         ],
         "issuesToResolve": [
-          "Population-level medication adverse-effect evidence does not establish an individual medication nexus.",
+          "Drug-class population evidence does not establish an individual medication nexus and effects differ among agents.",
           "The medication indication, exposure timing, baseline function, current diagnosis, and alternative causes require individual review."
         ]
       },
       "evidenceGaps": [
-        "Diagnosis of erectile dysfunction or other documented sexual dysfunction",
-        "Prescription records showing the specific SSRI/SNRI exposure, dose, duration, and timing",
-        "Medical assessment addressing baseline sexual function and alternative causes",
-        "Medical nexus addressing the individual relationship between medication exposure and the diagnosed condition"
+        "Diagnosis and clinical characterization of erectile dysfunction",
+        "Prescription records showing the specific psychotropic exposure, dose, duration, and timing",
+        "Medical assessment addressing baseline erectile function and vascular, endocrine, neurologic, psychiatric, medication, substance-use, and lifestyle alternatives",
+        "Medical nexus addressing the individual relationship between the specific medication exposure and erectile dysfunction"
       ],
       "sourceReferences": [
         {
-          "citation": "Ferraz et al., Sexual dysfunction associated with selective serotonin reuptake inhibitors in adults with depression: a systematic review and meta-analysis, PMID 41721013",
-          "note": "Systematic review and meta-analysis of randomized trials found SSRI use was associated with increased orgasmic dysfunction and reduced sexual satisfaction; supports medication-associated sexual dysfunction, not an individual nexus by itself.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41721013/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "PMID 41721013; systematic review and meta-analysis"
-        },
-        {
           "citation": "Erectile and Ejaculatory Dysfunction Associated with Use of Psychotropic Drugs: A Systematic Review, PMID 34247952",
-          "note": "Systematic review of randomized trials found significant associations between antidepressant therapy and sexual dysfunction, including erectile dysfunction in the analyzed male populations; does not establish an individual medication nexus.",
+          "note": "Systematic review of randomized trials found antidepressant therapy associated with erectile dysfunction overall (OR 2.28, 95% CI 1.31-3.97), while effects differed by drug class; supports agent-specific medication research, not an automatic individual nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34247952/",
           "verified": false,
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "PMID 34247952; systematic review"
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 34247952; abstract: 41 studies; antidepressant therapy associated with erectile dysfunction overall, with class-specific differences"
         }
       ]
     }

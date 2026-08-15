@@ -13,7 +13,7 @@ describe("clinical evidence promotion batch 13", () => {
     expect(kb).toHaveLength(300);
   });
 
-  it("promotes bounded cauda-equina erectile-dysfunction research without converting outcome data into automatic causation", () => {
+  it("keeps bounded cauda-equina erectile-dysfunction research after source consolidation", () => {
     const mapping = byId.get("cauda-equina-syndrome");
     const suggestion = mapping?.suggestions[0];
     const sources = suggestion?.sourceReferences ?? [];
@@ -28,13 +28,10 @@ describe("clinical evidence promotion batch 13", () => {
     expect(suggestion?.rationale).toMatch(/erectile dysfunction/i);
     expect(suggestion?.rationale).toMatch(/do not by themselves establish an individual causal nexus/i);
     expect(suggestion?.rationale).toMatch(/vascular|endocrine|medication-related|psychogenic/i);
-    expect(sources).toHaveLength(2);
-    expect(sources.every((source) => source.verificationScope === "clinical-evidence")).toBe(true);
-    expect(sources.every((source) => source.verified === false)).toBe(true);
-    expect(sources.map((source) => source.sourceUrl)).toEqual([
-      "https://pubmed.ncbi.nlm.nih.gov/40380123/",
-      "https://pubmed.ncbi.nlm.nih.gov/42472710/",
-    ]);
+    expect(sources).toHaveLength(1);
+    expect(sources[0]?.verificationScope).toBe("clinical-evidence");
+    expect(sources[0]?.verified).toBe(false);
+    expect(sources[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40380123/");
   });
 
   it("retires only the redundant local legal-framework references from asthma and COPD arrhythmia research", () => {

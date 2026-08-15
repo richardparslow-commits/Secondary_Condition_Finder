@@ -28,10 +28,13 @@ const WAVE_ONE_IDS = [
 
 const POST_V2_PROMOTED_WAVE_ONE_IDS = new Set([
   "gout",
+  "osteitis-deformans",
   "parkinsons-disease",
   "multiple-sclerosis",
   "myasthenia-gravis",
+  "syringomyelia",
   "seizure-disorder",
+  "trigeminal-neuralgia",
 ]);
 
 describe("condition catalog expansion wave 1", () => {
