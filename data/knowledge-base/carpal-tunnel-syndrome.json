@@ -2,7 +2,8 @@
   "id": "carpal-tunnel-syndrome",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before republishing."
+    "Targeted 2026-08-15 rescreen found a large matched cohort reporting higher subsequent depression and anxiety incidence after carpal tunnel syndrome (PMID 37639884), but the study reports association and explicitly leaves mediating mechanisms unresolved. Keep safe-draft unless stronger evidence supports an individual directional somatopsychic or aggravation pathway rather than population comorbidity.",
+    "Do not map carpal tunnel syndrome to median neuropathy, or median neuropathy to carpal tunnel syndrome, merely from terminology: carpal tunnel syndrome is an anatomic median-nerve entrapment phenotype and that relationship is taxonomy/diagnostic overlap rather than a distinct secondary condition."
   ],
   "suggestions": []
 }

@@ -2,8 +2,9 @@
   "id": "rem-sleep-disorder",
   "draft": true,
   "todo": [
-    "Rebuild any secondary-condition suggestions only from REM-sleep-behavior-disorder-specific evidence matched to the exact downstream diagnosis.",
-    "Batch 21 removes the prior insomnia and anxiety suggestions because their only attached source was 38 CFR 3.310; sleep fragmentation and distress do not by themselves establish those separate diagnoses or a directional secondary relationship."
+    "Targeted 2026-08-15 rescreen found strong prospective evidence that isolated REM sleep behavior disorder is a prodromal marker for later synucleinopathy, including conversion to Parkinson disease or dementia with Lewy bodies (for example PMIDs 39177811 and 28429825). Do not convert this predictive/prodromal relationship into a claim that REM sleep behavior disorder causes Parkinson disease or another synucleinopathy.",
+    "The prior insomnia and anxiety suggestions remain withdrawn because sleep fragmentation and distress do not by themselves establish those separate diagnoses or a directional secondary relationship.",
+    "Keep safe-draft unless future evidence supports an exact downstream diagnosis through a true causal, aggravation, or treatment-complication pathway rather than shared neurodegenerative pathophysiology or prodromal prediction."
   ],
   "suggestions": []
 }

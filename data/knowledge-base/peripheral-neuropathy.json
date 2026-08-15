@@ -2,7 +2,8 @@
   "id": "peripheral-neuropathy",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+    "Targeted 2026-08-15 rescreen found longitudinal evidence that peripheral neuropathy is associated with later falls and fractures in older adults (PMID 36945108), but those outcomes do not currently provide a clean exact downstream catalog diagnosis suitable for this secondary-condition mapping surface.",
+    "Keep safe-draft until a distinct catalog condition is supported by neuropathy-primary clinical evidence with compatible phenotype, chronology, and competing-cause assessment; do not convert fall risk, gait impairment, numbness, pain, or weakness themselves into a separate diagnosis."
   ],
   "suggestions": []
 }
