@@ -16,15 +16,15 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // CI from forcing an unsafe relationship to remain live merely to protect a raw
 // verified-reference count.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 113,
+  references: 108,
   liveVerified: 8,
   retiredVerified: 6,
   verifiedProvenance: 14,
-  unverified: 105,
-  reviewFindings: 103,
-  liveClinicalEvidenceWithUrls: 56,
+  unverified: 100,
+  reviewFindings: 98,
+  liveClinicalEvidenceWithUrls: 57,
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 60,
+  clinicalEvidenceProvenanceWithUrls: 61,
 });
 
 const hardFindings = [];

@@ -55,7 +55,15 @@
       "aliases": ["chronic pulmonary thromboembolism"],
       "bodySystem": "Respiratory System",
       "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6817 covers pulmonary vascular disease, including primary pulmonary hypertension and specified chronic pulmonary thromboembolic disease.", "verified": false}],
-      "reviewNotes": ["The existing pulmonary-hypertension catalog entry is a narrower user-facing identity under the same DC 6817 framework. Its name and aliases are intentionally not duplicated here."]
+      "reviewNotes": ["The pulmonary-hypertension catalog entry is a narrower user-facing identity under the same DC 6817 framework. Its name and aliases are intentionally not duplicated here."]
+    },
+    {
+      "id": "pulmonary-hypertension",
+      "name": "Pulmonary Hypertension",
+      "aliases": ["primary pulmonary hypertension"],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6817 covers pulmonary vascular disease, including primary pulmonary hypertension and specified secondary pulmonary-hypertension presentations.", "verified": false}],
+      "reviewNotes": ["Clinical Evidence Promotion Batch 18 physically relocates this stable narrower pulmonary-hypertension identity from the Wave 3 cardiovascular product grouping into respiratory maintenance, matching its 38 CFR 4.97 / DC 6817 rating authority without changing its ID."]
     },
     {
       "id": "diaphragm-paralysis",

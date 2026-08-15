@@ -1,127 +1,142 @@
 # Knowledge Base Coverage & Body System Planning Tracker
 
-| Batch # | Body System / Category | Priority | Target Conditions | Status | Reviewer Sign-off |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Batch 1** | Musculoskeletal & Spine | High | lumbar-strain, cervical-strain, hip-strain, ankle-strain, intervertebral-disc-syndrome, radiculopathy | In Review | Pending |
-| **Batch 2** | Mental Health & Neurological | High | ptsd, anxiety-disorder, depressive-disorder, migraine-headaches, insomnia, traumatic-brain-injury | In Review | Pending |
-| **Batch 3** | Respiratory & ENT | Medium | sleep-apnea, asthma, chronic-sinusitis, chronic-rhinitis, copd, noise-induced-hearing-loss | Drafted | Pending |
-| **Batch 4** | Gastrointestinal & Metabolic | Medium | gerd, irritable-bowel-syndrome, diabetes-mellitus-type-2, gastritis, inflammatory-bowel-disease | Drafted | Pending |
-| **Batch 5** | Cardiovascular & Systemic | Low | hypertension, ischemic-heart-disease, tinnitus, fibromyalgia, peripheral-neuropathy | Drafted | Pending |
+The catalog and knowledge base remain frozen at **300 recognized conditions / 300 one-to-one mapping files**. This document is the authoritative post-v2 clinical-evidence promotion ledger and citation-debt checkpoint.
+
+## Original planning batches
+
+| Batch # | Body System / Category | Priority | Target Conditions | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| Batch 1 | Musculoskeletal & Spine | High | lumbar-strain, cervical-strain, hip-strain, ankle-strain, intervertebral-disc-syndrome, radiculopathy | Historical planning complete |
+| Batch 2 | Mental Health & Neurological | High | ptsd, anxiety-disorder, depressive-disorder, migraine-headaches, insomnia, traumatic-brain-injury | Historical planning complete |
+| Batch 3 | Respiratory & ENT | Medium | sleep-apnea, asthma, chronic-sinusitis, chronic-rhinitis, copd, noise-induced-hearing-loss | Historical planning complete |
+| Batch 4 | Gastrointestinal & Metabolic | Medium | gerd, irritable-bowel-syndrome, diabetes-mellitus-type-2, gastritis, inflammatory-bowel-disease | Historical planning complete |
+| Batch 5 | Cardiovascular & Systemic | Low | hypertension, ischemic-heart-disease, tinnitus, fibromyalgia, peripheral-neuropathy | Historical planning complete |
 
 ## Post-v2 controlled promotion
 
 ### Clinical Evidence Promotion Batch 1
-- `cardiomyopathy` → `congestive-heart-failure`; `urethral-stricture` → `hydronephrosis`.
-- `ankle-strain` returned to draft; `fibromyalgia` physically normalized.
+- Promoted `cardiomyopathy` → `congestive-heart-failure` and `urethral-stricture` → `hydronephrosis`.
+- Returned `ankle-strain` to draft and physically normalized `fibromyalgia`.
 
-### Clinical Evidence Promotion Batch 2
-- `hypertensive-heart-disease` → `congestive-heart-failure`; `chronic-pyelonephritis` → `chronic-kidney-disease`.
-- `knee-injury` and `osteoarthritis` returned to draft; `diabetic-retinopathy` physically normalized.
-- Citation ratchet: 141 total / 127 unverified / 125 review / ≥29 clinical URLs; 103/107 expansion mappings remained draft.
+### Batch 2
+- Promoted `hypertensive-heart-disease` → `congestive-heart-failure` and `chronic-pyelonephritis` → `chronic-kidney-disease`.
+- Returned `knee-injury` and `osteoarthritis` to draft; physically normalized `diabetic-retinopathy`.
+- Ratchet: 141 total / 127 unverified / 125 review findings / ≥29 clinical URLs.
 
-### Clinical Evidence Promotion Batch 3
-- `chronic-liver-disease` → `cirrhosis-of-the-liver`; amputation/depression repaired with clinical evidence.
-- `ageusia` returned to draft; `insomnia` physically normalized.
-- Citation ratchet: 140 total / 126 unverified / 124 review / ≥31 clinical URLs; **102/107** expansion mappings remained draft.
+### Batch 3
+- Promoted `chronic-liver-disease` → `cirrhosis-of-the-liver` and clinically repaired amputation/depression.
+- Returned `ageusia` to draft; physically normalized `insomnia`.
+- Ratchet: 140 total / 126 unverified / 124 review / ≥31 clinical URLs.
 
-### Clinical Evidence Promotion Batch 4
-- `acl-injury` and `pcl-injury` → `osteoarthritis`: promoted using injury-specific systematic-review evidence with affected-knee/chronology safeguards.
-- `anosmia` and `alopecia-areata` → `depressive-disorder`: legal-only support replaced with condition-specific systematic review/meta-analysis evidence; both remain association-focused rather than automatic nexus claims.
-- `agranulocytosis`: returned to draft because its depression and GERD suggestions used only legal framework and generic chronic-condition/treatment language.
-- `hip-strain` and `ankle-strain`: stable identities physically moved from `carried-over.json` into musculoskeletal maintenance.
-- Citation debt ceilings remain 140 total / 126 unverified / 124 review findings while the clinical-URL floor rises to **35**.
-- The 300/300 contract remains fixed. ACL and PCL are the sixth and seventh promoted expansion mappings, so **100 of 107 Wave 1-7 expansion mappings remain drafts**.
-- New source checks remain `verified: false` pending qualified-human verification.
-- See `docs/clinical-evidence-promotion-batch-4.md`.
+### Batch 4
+- Promoted `acl-injury` and `pcl-injury` → `osteoarthritis` with injury-specific evidence.
+- Clinically repaired `anosmia` and `alopecia-areata` → `depressive-disorder`.
+- Returned `agranulocytosis` to draft; physically normalized `hip-strain` and `ankle-strain`.
+- Ratchet: 140 total / 126 unverified / 124 review / ≥35 clinical URLs.
 
-### Clinical Evidence Promotion Batch 5
-- `barretts-esophagus` → `esophageal-cancer`: promoted only as an adenocarcinoma-specific progression pathway with guideline evidence and histology/chronology safeguards.
-- `achalasia` → `esophageal-cancer`: promoted as a histology-aware cancer-risk pathway using the nationwide Veterans Affairs matched cohort, with explicit limits on generalizing the observed squamous-cell predominance.
-- `al-amyloidosis`: returned to draft because its depression and GERD suggestions were supported only by 38 CFR 3.310 plus generic medical propositions.
-- `substance-use-disorder`: stable identity physically moved from `carried-over.json` into `mental-disorders.json`; `carried-over.json` now contains only the quarantined `contralateral-knee-condition` placeholder.
-- Citation debt ceilings remain 140 total / 126 unverified / 124 review findings while the clinical-URL floor rises to **37**.
-- The 300/300 contract remains fixed. Barrett's esophagus and achalasia are the eighth and ninth promoted expansion mappings, so **98 of 107 Wave 1-7 expansion mappings remain drafts**.
-- New source checks remain `verified: false` pending qualified-human verification.
-- See `docs/clinical-evidence-promotion-batch-5.md`.
+### Batch 5
+- Promoted `barretts-esophagus` and `achalasia` → `esophageal-cancer` with histology-aware safeguards.
+- Returned `al-amyloidosis` to draft; physically normalized `substance-use-disorder`.
+- Ratchet: 140 total / 126 unverified / 124 review / ≥37 clinical URLs.
 
-### Clinical Evidence Promotion Batch 6
-- `hyperaldosteronism` → `hypertension`: promoted only for a confirmed primary-aldosteronism phenotype using the 2025 Endocrine Society guideline's direct aldosterone → sodium-retention/volume-expansion → elevated-BP mechanism.
-- `addisons-disease`: returned to draft because its peripheral-neuropathy, diabetic-retinopathy, and chronic-kidney-disease suggestions relied only on rating-schedule sources plus generic endocrine/metabolic language.
-- `hyperpituitarism`: display identity narrowed to `Hyperpituitarism (Prolactin-Secreting Pituitary Dysfunction)` to match DC 7916 while preserving stable ID, aliases, and `verified: false` rating state.
-- Citation debt tightens to **138 total / 14 verified / 124 unverified / 122 review findings**, while the clinical-URL floor rises to **38**.
-- The 300/300 contract remains fixed. Hyperaldosteronism is the tenth promoted expansion mapping, so **97 of 107 Wave 1-7 expansion mappings remain drafts**.
-- The new clinical source remains `verified: false` pending qualified-human verification.
-- See `docs/clinical-evidence-promotion-batch-6.md`.
+### Batch 6
+- Promoted confirmed-primary-aldosteronism `hyperaldosteronism` → `hypertension`.
+- Returned `addisons-disease` to draft; narrowed `hyperpituitarism` display scope to the prolactin-secreting DC 7916 phenotype.
+- Ratchet: 138 total / 14 verified / 124 unverified / 122 review / ≥38 clinical URLs.
 
-### Clinical Evidence Promotion Batch 7
-- `acromegaly` → `hypertension`: promoted as a direct-secondary research pathway using the 2026 international acromegaly complications consensus, with GH/IGF-I activity, sodium/water-retention mechanism, blood-pressure chronology, treatment response, and competing-cause safeguards.
-- `anorexia-nervosa`: returned to draft because its depression suggestion relied only on 38 CFR 3.310 plus generic chronic-condition language without condition-specific direction or mechanism evidence.
-- `cushings-syndrome`: stable identity physically moved from the historical neurological file into the endocrine catalog, normalized to `Cushing's Syndrome`, and assigned the express 38 CFR 4.119 / DC 7907 framework with `verified: false` preserved.
-- Citation debt ceilings remain **138 total / 14 verified / 124 unverified / 122 review findings**, while the clinical-URL floor rises to **39**.
-- The 300/300 contract remains fixed. Acromegaly is the eleventh promoted expansion mapping, so **96 of 107 Wave 1-7 expansion mappings remain drafts**.
-- The new clinical source remains `verified: false` pending qualified-human verification.
-- See `docs/clinical-evidence-promotion-batch-7.md`.
+### Batch 7
+- Promoted `acromegaly` → `hypertension` with GH/IGF-I and competing-cause safeguards.
+- Returned `anorexia-nervosa` to draft; physically relocated `cushings-syndrome` into Endocrine/DC 7907 maintenance.
+- Ratchet: 138 / 14 / 124 / 122 / ≥39 clinical URLs.
 
-### Clinical Evidence Promotion Batch 8
-- `hypertension`: all four published secondary relationships are clinically repaired. CKD, ischemic-heart-disease, and congestive-heart-failure edges use current AHA/ACC high-blood-pressure guideline evidence with disease-progression/competing-cause safeguards; erectile dysfunction uses a 40-study meta-analysis and remains association-focused without inferring medication causation.
-- `cushings-syndrome` → `hypertension`: promoted using the European Society of Hypertension endocrine-hypertension consensus, with established hypercortisolism, BP chronology, treatment response, persistence, and competing-cause safeguards.
-- `diabetes-mellitus-type-1`: stable identity physically moved from historical neurological placement into `endocrine.json`, normalized to `Diabetes Mellitus Type 1`, and assigned the current 38 CFR 4.119 / DC 7913 framework while its KB mapping remains draft.
-- Citation debt tightens to **135 total / 14 verified / 121 unverified / 119 review findings**, while the clinical-URL floor rises to **44**.
-- The 300/300 contract remains fixed. Batch 8 repairs legacy relationships rather than promoting another Wave 1-7 expansion mapping, so **11 expansion mappings are promoted and 96 of 107 remain drafts**.
-- New clinical source checks remain `verified: false` pending qualified-human verification.
-- See `docs/clinical-evidence-promotion-batch-8.md`.
+### Batch 8
+- Clinically repaired all four published `hypertension` relationships and promoted `cushings-syndrome` → `hypertension`.
+- Physically relocated `diabetes-mellitus-type-1` into Endocrine/DC 7913 maintenance.
+- Ratchet: 135 / 14 / 121 / 119 / ≥44 clinical URLs.
 
-### Clinical Evidence Promotion Batch 9
-- `diabetes-mellitus-type-1` → `chronic-kidney-disease`: promoted as a bounded disease-progression pathway using the 2026 ADA CKD Standards of Care, with Type 1 diabetes duration, UACR/eGFR/urinalysis chronology, renal phenotype, and atypical-feature/alternative-kidney-disease safeguards.
-- `erectile-dysfunction` → `depressive-disorder`: clinically repaired with a 49-publication systematic review/meta-analysis and explicit bidirectionality/causality limits; the unsupported `erectile-dysfunction` → `gerd` NSAID treatment chain is withdrawn.
-- `hyperthyroidism`: stable identity physically moved from historical neurological placement into `endocrine.json`, normalized to `Hyperthyroidism`, and assigned the current 38 CFR 4.119 / DC 7900 framework while its KB publication state remains unchanged.
-- Citation debt tightens to **133 total / 14 verified / 119 unverified / 117 review findings**; the clinical-URL floor remains **44**.
-- The 300/300 contract remains fixed. Type 1 diabetes is the twelfth individually promoted Wave 1-7 expansion mapping, so **95 of 107 remain drafts**.
-- New clinical source checks remain `verified: false` pending qualified-human verification.
-- See `docs/clinical-evidence-promotion-batch-9.md`.
+### Batch 9
+- Promoted `diabetes-mellitus-type-1` → `chronic-kidney-disease` using the 2026 ADA CKD framework.
+- Clinically repaired ED→depression and withdrew ED→GERD.
+- Physically relocated `hyperthyroidism` into Endocrine/DC 7900 maintenance.
+- Ratchet: 133 / 14 / 119 / 117 / ≥44 clinical URLs.
 
-### Clinical Evidence Promotion Batch 10
-- `hyperparathyroidism` → `kidney-stones`: published only for confirmed primary hyperparathyroidism, using Fifth International Workshop guideline evidence plus biochemical/stone-chronology/competing-cause safeguards.
-- `hypoparathyroidism` → `kidney-stones`: published as association-focused research using a 93-study systematic review; no causal pathway metadata is authored because disease physiology and conventional treatment can both contribute to renal risk.
-- `emphysema` and `chronic-bronchitis`: returned to draft because both published sleep-apnea and cardiac-arrhythmia claims used only legal/rating authority for medical propositions.
-- `hyperparathyroidism`: stable identity physically moved from historical neurological placement into `endocrine.json`, normalized to `Hyperparathyroidism`, and assigned the 38 CFR 4.119 / DC 7904 framework while preserving stable identity.
-- Citation debt tightens to **131 total / 14 verified / 117 unverified / 115 review findings**, while the clinical-URL floor rises to **46**.
-- The 300/300 contract remains fixed. These are legacy mappings, so the Wave 1-7 expansion ledger remains **12 promoted / 95 drafts**.
-- New source checks remain `verified: false` pending qualified-human verification.
-- See `docs/clinical-evidence-promotion-batch-10.md`.
+### Batch 10
+- Published primary-hyperparathyroidism → kidney-stones as a bounded progression pathway and hypoparathyroidism → kidney-stones as association-focused research.
+- Returned `emphysema` and `chronic-bronchitis` to draft.
+- Physically relocated `hyperparathyroidism` into Endocrine/DC 7904.
+- Ratchet: 131 / 14 / 117 / 115 / ≥46 clinical URLs.
 
-### Clinical Evidence Promotion Batch 11
-- `hypothyroidism` → `depressive-disorder`: published as association-focused research using a 25-study meta-analysis; no causal pathway metadata is authored because the overall effect is modest and varies by thyroid phenotype/subgroup.
-- `hypogonadism` → `osteoporosis`: published as a bounded disease-progression pathway only for confirmed clinical hypogonadism/testosterone deficiency, with DXA/fracture-risk and competing-cause safeguards plus an explicit warning that testosterone-fracture prevention is unproven.
-- `interstitial-lung-disease` → `sleep-apnea`: clinically repaired with a 10-study meta-analysis and kept association/prevalence-focused; the prior legal-only ILD→cardiac-arrhythmia edge is removed.
-- `pulmonary-fibrosis`: returned to draft rather than generalizing IPF-specific OSA evidence to the broader pulmonary-fibrosis identity; its prior OSA and arrhythmia claims were legal/rating-only.
-- `hypoparathyroidism`: stable identity physically moved from historical neurological placement into `endocrine.json`, normalized to `Hypoparathyroidism`, and assigned the 38 CFR 4.119 / DC 7905 framework while preserving the Batch-10 KB publication state.
-- Citation debt tightens to **130 total / 14 verified / 116 unverified / 114 review findings**, while the clinical-URL floor rises to **49**.
-- The 300/300 contract remains fixed. These are legacy mappings, so the Wave 1-7 expansion ledger remains **12 promoted / 95 drafts**.
-- New source checks remain `verified: false` pending qualified-human verification.
-- See `docs/clinical-evidence-promotion-batch-11.md`.
+### Batch 11
+- Published association-focused hypothyroidism→depression, bounded hypogonadism→osteoporosis, and clinically repaired ILD→OSA while removing ILD→arrhythmia.
+- Returned broad `pulmonary-fibrosis` to draft.
+- Physically relocated `hypoparathyroidism` into Endocrine/DC 7905.
+- Ratchet: 130 / 14 / 116 / 114 / ≥49 clinical URLs.
 
-### Clinical Evidence Promotion Batch 12
-- `chronic-rhinitis` → `sleep-apnea`: clinically repaired with a 2025 adult systematic review/meta-analysis, but only for a documented allergic-rhinitis phenotype because the catalog identity is broader than the source population; no causal pathway metadata is authored.
-- `chronic-sinusitis` → `sleep-apnea`: clinically repaired with a 2026 CRS systematic review/meta-analysis/Mendelian-randomization study and kept association-focused rather than converted into an individual causal nexus.
-- The legal/rating-only `cardiac-arrhythmia` edges are removed from both chronic rhinitis and chronic sinusitis.
-- `hypothyroidism`: stable identity physically moved from the historical neurological placement into `endocrine.json`, normalized to `Hypothyroidism`, and assigned the 38 CFR 4.119 / DC 7903 framework while preserving the Batch-11 depression mapping.
-- Citation debt tightens to **128 total / 14 verified / 114 unverified / 112 review findings**, while the clinical-URL floor rises to **51**.
-- The 300/300 contract remains fixed. These are legacy mappings, so the Wave 1-7 expansion ledger remains **12 promoted / 95 drafts**.
-- New source checks remain `verified: false` pending qualified-human verification.
-- See `docs/clinical-evidence-promotion-batch-12.md`.
+### Batch 12
+- Clinically repaired chronic-rhinitis→OSA only for a documented allergic-rhinitis phenotype and chronic-sinusitis→OSA as CRS association research.
+- Removed both legal/rating-only rhinitis/sinusitis→arrhythmia edges.
+- Physically relocated `hypothyroidism` into Endocrine/DC 7903.
+- Ratchet: 128 / 14 / 114 / 112 / ≥51 clinical URLs.
 
-### Clinical Evidence Promotion Batch 13
-- `cauda-equina-syndrome` → `erectile-dysfunction`: promoted as condition-specific complication/outcome research using 2025 and 2026 systematic reviews, with CES/ED chronology, sacral-neurologic, baseline-function, competing-cause, and individual-opinion safeguards; no automatic causal pathway metadata is authored.
-- The redundant local 38 CFR 3.310(a)-(b) references are retired from the already clinically supported `asthma` → `cardiac-arrhythmia` and `copd` → `cardiac-arrhythmia` suggestions without changing those relationships, ranks, clinical sources, or pathway metadata.
-- Citation debt ceilings remain **128 total / 14 verified / 114 unverified / 112 review findings**, while the clinical-URL floor rises to **53**.
-- The 300/300 contract remains fixed. Cauda equina syndrome is the thirteenth individually promoted Wave 1-7 expansion mapping, so **94 of 107 remain drafts**.
-- New clinical source checks remain `verified: false` pending qualified-human verification.
-- See `docs/clinical-evidence-promotion-batch-13.md`.
+### Batch 13
+- Promoted `cauda-equina-syndrome` → `erectile-dysfunction` as condition-specific complication/outcome research.
+- Removed redundant local §3.310 references from already clinically supported asthma/COPD arrhythmia relationships.
+- Ratchet: 128 / 14 / 114 / 112 / ≥53 clinical URLs.
+- Expansion ledger: **13 promoted / 94 drafts**.
 
-## Repeatable Authoring & Publishing Workflow
-1. **Draft Completion:** Ensure schema contains unique gapless ranks (`1, 2, 3...`), no self-references, and valid structure.
-2. **Citation Insertion:** Clinical claims require condition-specific clinical-evidence references with canonical URLs and source provenance. Regulatory/legal references must remain role-labeled and must not substitute for clinical causation evidence.
-3. **Source Check:** Record `sourceCheckedOn` and `sourceLocator` after checking applicability. Keep `verified: false` unless a qualified human reviewer completes the Citation Verification SOP.
-4. **Quality Review:** Audit rationale strings for clinical accuracy, distinguish association from individual causation/aggravation, and ensure evidence gaps identify the case-specific proof still needed.
-5. **Publish & Test:** Run `npm run kb:validate`, `npm run citations:audit`, `npm run test:composition`, `npm test`, and `npm run build`, then require exact-head real-browser CI before merge.
+### Batch 14
+- Clinically repaired `sleep-apnea` → `hypertension`, `depressive-disorder`, and `anxiety-disorder` with condition-specific evidence; all remain association-focused.
+- Withdrew `sleep-apnea` → `gerd` because contemporary observational syntheses did not support a safe directional relationship.
+- Removed eight legal/rating-only references and added three clinical-evidence references.
+- Ratchet: **123 total / 14 verified / 109 unverified / 107 review / ≥56 clinical URLs**.
+- Expansion ledger unchanged: **13 / 94**.
+
+### Batch 15
+- Promoted `psoriatic-arthritis` → `depressive-disorder` as bounded association/comorbidity research using PsA-specific evidence syntheses.
+- Removed three redundant local §3.310 references from already clinically supported PTSD→OSA, PTSD→migraine, and PTSD→ED relationships.
+- Ratchet: **122 total / 14 verified / 108 unverified / 106 review / ≥58 clinical URLs**.
+- Expansion ledger: **14 promoted / 93 drafts**.
+
+### Batch 16
+- Withdrew unsafe `congestive-heart-failure` → `gerd` NSAID treatment inference.
+- Retained/tightened CHF→depression with its existing human-verified clinical source and removed redundant local legal support.
+- Introduced `data/citation-retirements.json` so a previously verified source may be retired for applicability/safety without erasing historical verification provenance.
+- Ratchet became provenance-aware: **119 live refs / 13 live verified / 106 unverified / 104 review / 57 live clinical URLs**, while verified provenance remained 14 and clinical-URL provenance 58.
+- Expansion ledger unchanged: **14 / 93**.
+
+### Batch 17
+- Withdrew stomach-cancer→GERD and abdominal-hernia→GERD medication pathways because generic pain treatment did not establish condition-attributable NSAID exposure and the prior lower-GI NSAID source was not GERD-specific.
+- Clinically repaired rheumatoid-arthritis→GERD with a two-link RA-NSAID-treatment plus NSAID/GERD association evidence chain.
+- Expanded the verified-retirement ledger to six entries and removed three redundant unverified legal references from already clinically supported mappings.
+- Ratchet: **113 live refs / 8 live verified / 6 retired verified / 14 verified provenance / 105 unverified / 103 review / 56 live clinical URLs / 4 retired clinical URLs / 60 clinical-URL provenance**.
+- Expansion ledger unchanged: **14 / 93**.
+
+### Batch 18
+- Returned `agoraphobia` and `panic-disorder` to draft rather than preserving three legal/rating-only medical propositions in each mapping.
+- Promoted `pulmonary-hypertension` → `congestive-heart-failure` only as a phenotype-bounded pre-capillary/PAH → right-ventricular-failure progression pathway. Group 2 pulmonary hypertension caused by left-heart disease is expressly excluded from that direction of inference.
+- Physically relocated the stable `pulmonary-hypertension` identity from cardiovascular Wave-3 placement into Respiratory/DC 6817 maintenance without changing ID or aliases.
+- Projected ratchet: **108 live refs / 8 live verified / 6 retired verified / 14 verified provenance / 100 unverified / 98 review / 57 live clinical URLs / 4 retired clinical URLs / 61 clinical-URL provenance**.
+- Expansion ledger: **15 promoted / 92 drafts**.
+- See `docs/clinical-evidence-promotion-batch-18.md`.
+
+## Current controlled state after Batch 18 authoring
+
+- Catalog / KB universe: **300 / 300**.
+- Wave 1–7 expansion identities: **107**.
+- Individually promoted expansion mappings: **15**.
+- Expansion mappings remaining draft: **92**.
+- Published-unverified review findings projected after Batch 18: **98**.
+- Automated authoring does **not** convert source checking into `verified: true`; qualified-human verification remains governed by `docs/citation-verification-sop.md`.
+- Draft status is an acceptable reviewed outcome when evidence does not support safe publication; the objective is not to force all 107 expansion identities into published secondary relationships.
+
+## Repeatable authoring and publishing workflow
+
+1. **Select from the live debt/draft queue:** prioritize unsafe legal/rating-only published propositions, then strong draft promotion candidates.
+2. **Research:** use condition-specific clinical evidence; do not infer medical relationships from rating or legal authority.
+3. **Author conservatively:** distinguish association, progression, treatment chains, directionality, phenotype limits, competing causes, and individual nexus requirements.
+4. **Verification metadata:** record source URL, source-check date, locator, and role. Keep `verified: false` unless a qualified human completes the Citation Verification SOP.
+5. **Regression contract:** encode both the new state and any intentional supersession of historical tests.
+6. **Ratchet:** citation debt may stay flat or fall; unsafe verified sources may be retired only through the provenance-preserving retirement ledger.
+7. **Exact-head validation:** citation audit, KB validation, lint, typecheck, composition, one-shot tests, production build, both browser journeys, diagnostics, aggregate fail-safe.
+8. **Immutable merge:** review exact head, squash merge with expected-head protection.
+9. **Production closure:** independent main CI, exact-SHA Vercel READY/canonical/clean deployment, and Production Runtime Readiness must all pass before the next batch branches.
