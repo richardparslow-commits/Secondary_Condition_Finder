@@ -1,6 +1,10 @@
 {
   "id": "median-neuropathy",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
+  "todo": [
+    "Targeted 2026-08-15 rescreen did not identify a distinct downstream catalog diagnosis with sufficiently directional median-neuropathy-primary evidence for publication.",
+    "Do not publish median neuropathy to carpal tunnel syndrome merely because carpal tunnel syndrome is a median-nerve entrapment neuropathy at the wrist; that is diagnostic/anatomic overlap rather than evidence that one separate condition caused the other.",
+    "Reconsider only with a distinct secondary diagnosis supported by condition-specific clinical evidence, individual chronology, and localization that separates the downstream disorder from the same median-nerve lesion."
+  ],
   "suggestions": []
 }
