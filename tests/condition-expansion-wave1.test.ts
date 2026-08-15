@@ -26,6 +26,8 @@ const WAVE_ONE_IDS = [
   "common-peroneal-neuropathy",
 ] as const;
 
+const POST_V2_PROMOTED_WAVE_ONE_IDS = new Set(["parkinsons-disease"]);
+
 describe("condition catalog expansion wave 1", () => {
   const catalog = loadConditionCatalog();
   const knowledgeBase = loadKnowledgeBase();
@@ -38,15 +40,19 @@ describe("condition catalog expansion wave 1", () => {
   });
 
   it("preserves all 20 approved Wave 1 conditions", () => {
-    for (const id of WAVE_ONE_IDS) {
-      expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
-    }
+    for (const id of WAVE_ONE_IDS) expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
   });
 
-  it("keeps every Wave 1 catalog condition on a safe draft mapping until separately authored", () => {
+  it("keeps non-promoted Wave 1 mappings draft while allowing reviewed post-v2 promotion", () => {
     for (const id of WAVE_ONE_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
+      if (POST_V2_PROMOTED_WAVE_ONE_IDS.has(id)) {
+        expect(mapping?.draft).toBe(false);
+        expect(mapping?.todo).toEqual([]);
+        expect(mapping?.suggestions.length).toBeGreaterThan(0);
+        continue;
+      }
       expect(mapping?.draft).toBe(true);
       expect(mapping?.suggestions).toEqual([]);
       expect(mapping?.todo.length).toBeGreaterThan(0);

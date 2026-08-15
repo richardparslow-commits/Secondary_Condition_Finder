@@ -1,6 +1,31 @@
 {
   "id": "parkinsons-disease",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Depression is a substantial and clinically recognized comorbidity in Parkinson disease, but prevalence evidence does not establish that Parkinson disease caused an individual's depressive disorder. A systematic review/meta-analysis of depression-detection studies in adult outpatients with Parkinson disease found a pooled major-depression prevalence of 22.9%. This mapping therefore supports association/comorbidity research only; individual chronology, prodromal mood symptoms, disability burden, medications, sleep, pain, cognition, psychosocial factors, and other psychiatric causes must be reviewed before any secondary theory is advanced.",
+      "evidenceGaps": [
+        "Clinical diagnosis and chronology of Parkinson disease and depressive disorder",
+        "Whether depressive symptoms predated motor Parkinson disease or emerged later in the disease course",
+        "Medication, sleep, pain, cognitive, functional, and psychosocial contributors to depression",
+        "Assessment for other psychiatric or neurological explanations",
+        "Qualified clinician assessment distinguishing common comorbidity from individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Goodarzi Z, Mrklas KJ, Roberts DJ, et al. Detecting depression in Parkinson disease: A systematic review and meta-analysis. Neurology. 2016;87(4):426-437. PMID 27358339",
+          "note": "Systematic review/meta-analysis of 21 studies found pooled major-depression prevalence of 22.9% in adult outpatients with Parkinson disease and evaluated validated depression-detection tools. Supports association/comorbidity research, not an individual causal direction.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27358339/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 27358339; abstract Methods/Results/Conclusions: 21 studies; pooled major-depression prevalence 22.9% (95% CI 18.1-27.7)"
+        }
+      ]
+    }
+  ]
 }

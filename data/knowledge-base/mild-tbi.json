@@ -1,37 +1,29 @@
 {
   "id": "mild-tbi",
   "draft": false,
+  "todo": [],
   "suggestions": [
     {
       "conditionId": "migraine-headaches",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Concussion can produce chronic post-traumatic migraine or migraine-like headache disorders.",
+      "rationale": "Post-traumatic headache is a recognized complication after mild traumatic brain injury, and its clinical phenotype commonly overlaps with migraine or tension-type headache. Because the catalog target here is `migraine-headaches` rather than the broader diagnosis of post-traumatic headache, this relationship is limited to cases in which a clinician has diagnosed migraine or persistent post-traumatic headache with a migraine phenotype and the required temporal relationship to the mTBI is documented. The evidence does not justify relabeling every headache after mTBI as migraine or assuming an individual nexus from population-level prevalence alone.",
       "evidenceGaps": [
-        "Neurology evaluation diagnosing migraine/post-traumatic headache",
-        "Timeline linking symptom onset to mTBI"
+        "Neurology or headache-specialist diagnosis distinguishing migraine from other post-traumatic headache phenotypes",
+        "Headache onset chronology relative to the mild TBI, including the temporal criteria used for post-traumatic headache",
+        "Headache frequency, duration, associated migraine features, and longitudinal treatment records",
+        "Pre-injury headache or migraine history and other competing headache causes",
+        "Clinician assessment addressing whether the individual's diagnosed migraine/post-traumatic headache phenotype is attributable to the documented mTBI"
       ],
       "sourceReferences": [
         {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Cognitive and functional limitations after mTBI can contribute to secondary depressive disorders.",
-      "evidenceGaps": [
-        "Mental health assessment connecting depressive symptoms to post-concussive limitations"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
+          "citation": "Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491",
+          "note": "Clinical review describes post-traumatic headache attributed to mild TBI, including ICHD-3 temporal criteria and substantial overlap with migraine and tension-type headache phenotypes. Supports bounded headache research after mTBI, not automatic classification of every post-traumatic headache as migraine.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38568491/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 38568491; abstract Objective/Latest developments: posttraumatic headache attributed to mTBI, onset timing, and migraine/tension-type phenotype overlap"
         }
       ]
     }

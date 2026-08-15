@@ -14,10 +14,6 @@ const expectedBackfill = {
 } as const;
 
 const intentionallyUnlabeledMappings = [
-  "anxiety-disorder",
-  "schizophrenia",
-  "substance-use-disorder",
-  "mild-tbi",
   "micro-tbi",
   "post-concussion-syndrome",
   "subdural-hematoma",
@@ -33,6 +29,9 @@ const safetyWithdrawnMappings = [
   "persistent-depressive-disorder",
   "social-anxiety-disorder",
   "somatic-symptom-disorder",
+  "anxiety-disorder",
+  "schizophrenia",
+  "substance-use-disorder",
 ] as const;
 
 describe("controlled pathway backfill batch 1", () => {
@@ -53,25 +52,35 @@ describe("controlled pathway backfill batch 1", () => {
     }
   });
 
-  it("keeps untouched reviewed legal-framework-only mental and neurological mappings unlabeled", () => {
+  it("keeps untouched reviewed legal-framework-only neurological mappings unlabeled", () => {
     const kb = loadKnowledgeBase();
-
     for (const primaryId of intentionallyUnlabeledMappings) {
       const mapping = kb.find((entry) => entry.id === primaryId);
       expect(mapping?.draft).toBe(false);
       for (const suggestion of mapping?.suggestions ?? []) expect(suggestion.pathwayIntelligence).toBeUndefined();
     }
+  });
 
+  it("recognizes later safety withdrawals", () => {
+    const kb = loadKnowledgeBase();
     for (const primaryId of safetyWithdrawnMappings) {
       const mapping = kb.find((entry) => entry.id === primaryId);
       expect(mapping?.draft).toBe(true);
       expect(mapping?.suggestions).toEqual([]);
       expect(mapping?.todo.length).toBeGreaterThan(0);
     }
+  });
 
-    const adjustment = kb.find((entry) => entry.id === "adjustment-disorder");
-    const migraine = adjustment?.suggestions.find((entry) => entry.conditionId === "migraine-headaches");
-    expect(migraine?.pathwayIntelligence).toBeUndefined();
+  it("recognizes the Batch 20 mTBI headache repair without inventing broader pathway metadata", () => {
+    const mapping = loadKnowledgeBase().find((entry) => entry.id === "mild-tbi");
+    const headache = mapping?.suggestions.find((entry) => entry.conditionId === "migraine-headaches");
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.suggestions).toHaveLength(1);
+    expect(headache?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
+    expect(headache?.sourceReferences[0]?.sourceUrl).toContain("38568491");
+    expect(headache?.pathwayIntelligence).toBeUndefined();
+    expect(headache?.rationale).toMatch(/post-traumatic headache/i);
+    expect(mapping?.suggestions.some((entry) => entry.conditionId === "depressive-disorder")).toBe(false);
   });
 
   it("preserves the pre-backfill ranking and prevalence of enriched edges", () => {
@@ -93,9 +102,6 @@ describe("controlled pathway backfill batch 1", () => {
 
   it("does not treat safety-withdrawn mappings as backfill candidates", () => {
     const kb = loadKnowledgeBase();
-    for (const draftId of ["migraine-headaches", "ocd", ...safetyWithdrawnMappings]) {
-      const mapping = kb.find((entry) => entry.id === draftId);
-      expect(mapping?.draft).toBe(true);
-    }
+    for (const draftId of ["migraine-headaches", "ocd", ...safetyWithdrawnMappings]) expect(kb.find((entry) => entry.id === draftId)?.draft).toBe(true);
   });
 });

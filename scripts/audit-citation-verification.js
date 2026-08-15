@@ -11,15 +11,15 @@ const retirementLedger = fs.existsSync(retirementPath)
 const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedger.retirements : [];
 
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 97,
+  references: 89,
   liveVerified: 8,
   retiredVerified: 6,
   verifiedProvenance: 14,
-  unverified: 89,
-  reviewFindings: 87,
-  liveClinicalEvidenceWithUrls: 58,
+  unverified: 81,
+  reviewFindings: 79,
+  liveClinicalEvidenceWithUrls: 60,
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 62,
+  clinicalEvidenceProvenanceWithUrls: 64,
 });
 
 const hardFindings = [];
