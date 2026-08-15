@@ -18,10 +18,12 @@ describe("clinical evidence promotion batch 23", () => {
   it("keeps Batch-23 review-debt cleanup clinically supported after later consolidation", () => {
     const adjustment = byId.get("adjustment-disorder");
     expect(adjustment?.draft).toBe(false);
-    expect(adjustment?.suggestions.map((entry) => entry.conditionId)).toEqual(["sleep-apnea", "gerd"]);
+    expect(adjustment?.suggestions.map((entry) => entry.conditionId)).toEqual(["gerd"]);
+    expect(adjustment?.suggestions[0]?.rank).toBe(1);
     expect(adjustment?.suggestions.every((entry) =>
       entry.sourceReferences.some((source) => source.verificationScope === "clinical-evidence"),
     )).toBe(true);
+    expect(adjustment?.suggestions.some((entry) => entry.conditionId === "sleep-apnea")).toBe(false);
 
     const depression = byId.get("depressive-disorder");
     const ed = depression?.suggestions.find((entry) => entry.conditionId === "erectile-dysfunction");
