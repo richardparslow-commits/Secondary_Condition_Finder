@@ -10,21 +10,16 @@ const retirementLedger = fs.existsSync(retirementPath)
   : { version: 1, retirements: [] };
 const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedger.retirements : [];
 
-// Verification-debt ratchet. Live evidence may be retired when a relationship is
-// withdrawn for applicability or safety reasons, but a previously verified source
-// must retain auditable provenance in data/citation-retirements.json. This keeps
-// CI from forcing an unsafe relationship to remain live merely to protect a raw
-// verified-reference count.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 108,
+  references: 97,
   liveVerified: 8,
   retiredVerified: 6,
   verifiedProvenance: 14,
-  unverified: 100,
-  reviewFindings: 98,
-  liveClinicalEvidenceWithUrls: 57,
+  unverified: 89,
+  reviewFindings: 87,
+  liveClinicalEvidenceWithUrls: 58,
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 61,
+  clinicalEvidenceProvenanceWithUrls: 62,
 });
 
 const hardFindings = [];
@@ -119,23 +114,6 @@ if (retiredClinicalWithUrls < CITATION_DEBT_BASELINE.retiredClinicalEvidenceWith
 if (clinicalEvidenceProvenanceWithUrls < CITATION_DEBT_BASELINE.clinicalEvidenceProvenanceWithUrls) addHard(`citation debt ratchet: clinical URL provenance regressed (${clinicalEvidenceProvenanceWithUrls} < ${CITATION_DEBT_BASELINE.clinicalEvidenceProvenanceWithUrls})`);
 
 const unverifiedCitationCounts = [...unverifiedByCitation.entries()].map(([citation, count]) => ({ citation, count })).sort((a, b) => b.count - a.count || a.citation.localeCompare(b.citation));
-const report = {
-  knowledgeBaseFiles: files.length,
-  references,
-  verified,
-  retiredVerified,
-  verifiedProvenance,
-  unverified,
-  citationDebtBaseline: CITATION_DEBT_BASELINE,
-  clinicalEvidenceReferences: clinical,
-  clinicalEvidenceReferencesWithUrls: clinicalWithUrls,
-  retiredClinicalEvidenceReferencesWithUrls: retiredClinicalWithUrls,
-  clinicalEvidenceProvenanceWithUrls,
-  hardFindingCount: hardFindings.length,
-  reviewFindingCount: reviewFindings.length,
-  hardFindings,
-  reviewFindings,
-  unverifiedCitationCounts,
-};
+const report = { knowledgeBaseFiles: files.length, references, verified, retiredVerified, verifiedProvenance, unverified, citationDebtBaseline: CITATION_DEBT_BASELINE, clinicalEvidenceReferences: clinical, clinicalEvidenceReferencesWithUrls: clinicalWithUrls, retiredClinicalEvidenceReferencesWithUrls: retiredClinicalWithUrls, clinicalEvidenceProvenanceWithUrls, hardFindingCount: hardFindings.length, reviewFindingCount: reviewFindings.length, hardFindings, reviewFindings, unverifiedCitationCounts };
 console.log(JSON.stringify(report, null, 2));
 process.exitCode = hardFindings.length > 0 ? 1 : 0;
