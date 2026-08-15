@@ -12,21 +12,56 @@ describe("clinical program completion controls", () => {
   const catalog = loadConditionCatalog();
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
+  const ledger = JSON.parse(read("data/expansion-dispositions.json")) as {
+    totalIdentities: number;
+    waves: Array<{ identities: Array<{ id: string; disposition: string }> }>;
+  };
+  const ledgerEntries = ledger.waves.flatMap((wave) => wave.identities);
+  const liveReferences = kb.flatMap((mapping) =>
+    mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
+  );
+  const liveUnverified = liveReferences.filter((reference) => reference.verified !== true).length;
+  const publishedUnverified = kb.reduce(
+    (count, mapping) => count + (mapping.draft
+      ? 0
+      : mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? [])
+          .filter((reference) => reference.verified !== true).length),
+    0,
+  );
+  const liveClinicalWithUrls = liveReferences.filter(
+    (reference) => reference.verificationScope === "clinical-evidence" && Boolean(reference.sourceUrl),
+  ).length;
 
   it("preserves the frozen 300/300 universe", () => {
     expect(catalog).toHaveLength(300);
     expect(kb).toHaveLength(300);
   });
 
-  it("records the Batch-23 citation baseline and completed expansion accounting", () => {
+  it("keeps the current tracker synchronized to the machine-readable disposition and citation state", () => {
     const tracker = read("docs/kb-coverage-tracker.md");
-    expect(tracker).toMatch(/20 published-evidence-led|published.*\*\*20\*\*/i);
-    expect(tracker).toMatch(/intentionally draft after Batch 23:\s*\*\*87\*\*/i);
-    expect(tracker).toMatch(/promotion candidates remaining:\s*\*\*0\*\*/i);
-    expect(tracker).toMatch(/live references:\s*\*\*70\*\*/i);
-    expect(tracker).toMatch(/published-unverified review findings:\s*\*\*60\*\*/i);
-    expect(tracker).toMatch(/live clinical-evidence references with canonical URLs:\s*\*\*65\*\*/i);
-    expect(tracker).toMatch(/Type 1 diabetes|diabetes-mellitus-type-1/i);
+    const published = ledgerEntries.filter((entry) => entry.disposition === "published-evidence-led").length;
+    const safeDrafts = ledgerEntries.filter((entry) => entry.disposition === "safe-draft").length;
+    const candidates = ledgerEntries.filter((entry) => entry.disposition === "promotion-candidate").length;
+
+    expect(ledger.totalIdentities).toBe(107);
+    expect(tracker).toContain(`**${published} published-evidence-led**`);
+    expect(tracker).toContain(`**${safeDrafts} safe-draft**`);
+    expect(tracker).toContain(`**${candidates} promotion-candidate**`);
+    expect(tracker).toContain(`live references: **${liveReferences.length}**`);
+    expect(tracker).toContain(`live unverified: **${liveUnverified}**`);
+    expect(tracker).toContain(`published-unverified review findings: **${publishedUnverified}**`);
+    expect(tracker).toContain(`live clinical-evidence references with canonical URLs: **${liveClinicalWithUrls}**`);
+    expect(ledgerEntries.some((entry) => entry.id === "diabetes-mellitus-type-1")).toBe(false);
+  });
+
+  it("allows unsupported unverified-source withdrawal without weakening provenance controls", () => {
+    const audit = read("scripts/audit-citation-verification.js");
+    expect(audit).toMatch(/clinicalEvidenceUrlCoverageComplete\s*=\s*clinicalWithUrls\s*===\s*clinical/);
+    expect(audit).toMatch(/verifiedProvenance\s*<\s*CITATION_DEBT_BASELINE\.verifiedProvenance/);
+    expect(audit).toMatch(/retiredClinicalWithUrls\s*<\s*CITATION_DEBT_BASELINE\.retiredClinicalEvidenceWithUrls/);
+    expect(audit).not.toContain("verified < CITATION_DEBT_BASELINE.liveVerified");
+    expect(audit).not.toContain("clinicalWithUrls < CITATION_DEBT_BASELINE.liveClinicalEvidenceWithUrls");
+    expect(audit).not.toContain("clinicalEvidenceProvenanceWithUrls < CITATION_DEBT_BASELINE.clinicalEvidenceProvenanceWithUrls");
   });
 
   it("keeps the three v2 modeling dispositions safe without deleting stable identities", () => {
@@ -48,8 +83,8 @@ describe("clinical program completion controls", () => {
     expect(script).toMatch(/reviewerDecision:\s*"PENDING"/);
     expect(script).toMatch(/qualified human/i);
     const instructions = read("docs/qualified-human-citation-verification-queue.md");
-    expect(instructions).toMatch(/60 live unverified published references/i);
-    expect(instructions).toMatch(/62 live unverified references/i);
+    expect(instructions).toContain(`${publishedUnverified} live unverified published references`);
+    expect(instructions).toContain(`${liveUnverified} live unverified references`);
     expect(instructions).toMatch(/cannot.*qualified-human|not.*qualified-human|only a qualified human/i);
   });
 
