@@ -141,12 +141,12 @@
         {"id":"amebiasis","disposition":"safe-draft"},
         {"id":"actinomycosis","disposition":"safe-draft"},
         {"id":"nocardiosis","disposition":"safe-draft"},
-        {"id":"histoplasmosis","disposition":"published-evidence-led"},
+        {"id":"histoplasmosis","disposition":"safe-draft"},
         {"id":"strongyloidiasis","disposition":"safe-draft"},
         {"id":"rickettsial-ehrlichial-anaplasma-infection","disposition":"safe-draft"},
         {"id":"ovarian-cancer","disposition":"published-evidence-led"},
         {"id":"testicular-cancer","disposition":"published-evidence-led"},
-        {"id":"laryngeal-cancer","disposition":"published-evidence-led"},
+        {"id":"laryngeal-cancer","disposition":"safe-draft"},
         {"id":"mandibular-nonunion","disposition":"safe-draft"}
       ]
     }
