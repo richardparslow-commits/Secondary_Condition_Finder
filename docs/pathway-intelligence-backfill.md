@@ -58,7 +58,7 @@ Backfilled:
 
 Treatment-risk/comorbidity evidence was not upgraded into stronger pathway metadata where the primary→treatment or condition-specific mechanism was unsupported.
 
-## Subsequent Clinical Evidence Promotion supersession through Batch 22
+## Subsequent Clinical Evidence Promotion supersession through Batch 23
 
 The later evidence-promotion program deliberately changed historical states when stronger evidence or safety review justified doing so:
 
@@ -83,6 +83,7 @@ The later evidence-promotion program deliberately changed historical states when
 - **Batch 20:** `anxiety-disorder`, `schizophrenia`, and `substance-use-disorder` returned to draft; mild-TBI→headache clinically repaired with explicit post-traumatic-headache/migraine-phenotype limits; Parkinson disease→depression promoted as association/comorbidity research.
 - **Batch 21:** `micro-tbi`, `subdural-hematoma`, `epidural-hematoma`, and `rem-sleep-disorder` returned to draft rather than translating broad sequelae into exact downstream diagnoses; multiple-sclerosis→depression promoted as association/comorbidity research.
 - **Batch 22:** the broad six-edge `skull-fracture-non-basilar-and-basal` mapping returned to draft; post-concussion-syndrome retained only clinically sourced persistent-post-traumatic-headache/migraine-phenotype research with no automatic migraine reclassification; seizure-disorder→depression promoted as association/comorbidity research.
+- **Batch 23:** adjustment-disorder→migraine is withdrawn because the edge had only rating/legal authority and no clinical evidence; the redundant unverified §3.310 source is removed from the already clinically supported depressive-disorder→ED medication pathway; gout→depression and myasthenia-gravis→depression are promoted as association/comorbidity research without automatic causal pathway metadata.
 
 ## Current interpretation rule
 
