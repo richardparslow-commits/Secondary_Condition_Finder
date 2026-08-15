@@ -26,6 +26,7 @@ const POST_V2_PROMOTED_WAVE_THREE_IDS = new Set([
   "cardiomyopathy",
   "hypertensive-heart-disease",
   "hyperaldosteronism",
+  "pulmonary-hypertension",
 ]);
 
 describe("condition catalog expansion wave 3", () => {
@@ -87,9 +88,10 @@ describe("condition catalog expansion wave 3", () => {
     expect(condition?.reviewNotes.join(" ")).toMatch(/not.*generic|every form/i);
   });
 
-  it("uses the respiratory pulmonary-vascular authority for pulmonary hypertension", () => {
+  it("uses the respiratory pulmonary-vascular authority and placement for pulmonary hypertension", () => {
     const condition = catalogById.get("pulmonary-hypertension");
     expect(condition).toBeDefined();
+    expect(condition?.bodySystem).toBe("Respiratory System");
     expect(condition?.ratingSchedule).toHaveLength(1);
     expect(condition?.ratingSchedule[0]?.citation).toBe("38 CFR 4.97");
     expect(condition?.ratingSchedule[0]?.note).toMatch(/6817/i);
