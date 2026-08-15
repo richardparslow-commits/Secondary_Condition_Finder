@@ -2,14 +2,14 @@ import { describe, expect, it } from "vitest";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 
 const expectedBackfill = {
-  copd: { "sleep-apnea": ["direct-secondary", "aggravation"], "cardiac-arrhythmia": ["intermediate-chain"] },
-  asthma: { "sleep-apnea": ["direct-secondary", "aggravation"], "cardiac-arrhythmia": ["direct-secondary"] },
+  copd: { "sleep-apnea": ["direct-secondary", "aggravation"] },
+  asthma: { "sleep-apnea": ["direct-secondary", "aggravation"] },
 } as const;
 const intentionallyUnlabeledMappings = ["sleep-apnea"] as const;
 const safetyWithdrawnMappings = ["ageusia","emphysema","chronic-bronchitis","pulmonary-fibrosis"] as const;
 
 describe("controlled pathway backfill batch 3", () => {
-  it("backfills only Respiratory edges whose attached source set includes clinical evidence", () => {
+  it("backfills only surviving Respiratory edges whose attached source set includes clinical evidence", () => {
     const kb = loadKnowledgeBase();
     for (const [primaryId, secondaries] of Object.entries(expectedBackfill)) {
       const mapping = kb.find((entry) => entry.id === primaryId); expect(mapping?.draft).toBe(false);
@@ -77,20 +77,21 @@ describe("controlled pathway backfill batch 3", () => {
     expect(depression?.rationale).toMatch(/association|does not establish/i);
   });
 
-  it("does not infer a medication pathway onto the asthma-arrhythmia edge", () => {
-    const asthma = loadKnowledgeBase().find((entry) => entry.id === "asthma");
-    const arrhythmia = asthma?.suggestions.find((entry) => entry.conditionId === "cardiac-arrhythmia");
-    expect(arrhythmia?.pathwayIntelligence?.pathways).toEqual(["direct-secondary"]);
-    expect(arrhythmia?.pathwayIntelligence?.pathways).not.toContain("medication-related");
+  it("recognizes the later asthma and COPD arrhythmia withdrawals", () => {
+    const kb = loadKnowledgeBase();
+    for (const primaryId of ["asthma", "copd"]) {
+      const mapping = kb.find((entry) => entry.id === primaryId);
+      expect(mapping?.draft).toBe(false);
+      expect(mapping?.suggestions.some((entry) => entry.conditionId === "cardiac-arrhythmia")).toBe(false);
+    }
   });
 
-  it("preserves pre-backfill rank and prevalence for COPD and asthma", () => {
+  it("preserves pre-backfill rank and prevalence for surviving COPD and asthma edges", () => {
     const kb = loadKnowledgeBase();
     for (const primaryId of ["copd", "asthma"]) {
       const mapping = kb.find((entry) => entry.id === primaryId);
       expect(mapping?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
         { conditionId: "sleep-apnea", rank: 1, prevalence: "commonly-explored" },
-        { conditionId: "cardiac-arrhythmia", rank: 2, prevalence: "sometimes-explored" },
       ]);
     }
   });
