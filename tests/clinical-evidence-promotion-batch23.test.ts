@@ -32,43 +32,29 @@ describe("clinical evidence promotion batch 23", () => {
     expect(ed?.sourceReferences.some((source) => source.verificationScope === "legal-framework")).toBe(false);
   });
 
-  it("promotes gout depression only as association/comorbidity research", () => {
+  it("recognizes the later gout depression withdrawal", () => {
     const mapping = byId.get("gout");
-    const suggestion = mapping?.suggestions[0];
-    expect(mapping?.draft).toBe(false);
-    expect(mapping?.todo).toEqual([]);
-    expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe("depressive-disorder");
-    expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.rationale).toMatch(/association|population/i);
-    expect(suggestion?.rationale).toMatch(/1\.29/);
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("32115430");
-    expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/modest|association|incident/i);
+    expect(mapping?.todo.join(" ")).toMatch(/caus|aggravat|direction/i);
   });
 
-  it("promotes myasthenia-gravis depression only as association/comorbidity research", () => {
+  it("recognizes the later myasthenia-gravis depression withdrawal", () => {
     const mapping = byId.get("myasthenia-gravis");
-    const suggestion = mapping?.suggestions[0];
-    expect(mapping?.draft).toBe(false);
-    expect(mapping?.todo).toEqual([]);
-    expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe("depressive-disorder");
-    expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.rationale).toMatch(/comorbidity|prevalence/i);
-    expect(suggestion?.rationale).toMatch(/36%/);
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("36495116");
-    expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/prevalence/i);
+    expect(mapping?.todo.join(" ")).toMatch(/causal|aggravation|directional/i);
   });
 
-  it("preserves the Batch-23 final promotions while allowing later evidence-led promotions", () => {
+  it("preserves the Batch-23 cleanup without freezing later evidence-led dispositions", () => {
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
     ) as { waves: Array<{ identities: Array<{ id: string; disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
-    expect(entries.find((entry) => entry.id === "gout")?.disposition).toBe("published-evidence-led");
-    expect(entries.find((entry) => entry.id === "myasthenia-gravis")?.disposition).toBe("published-evidence-led");
+    expect(entries.find((entry) => entry.id === "gout")?.disposition).toBe("safe-draft");
+    expect(entries.find((entry) => entry.id === "myasthenia-gravis")?.disposition).toBe("safe-draft");
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
   });
 });
