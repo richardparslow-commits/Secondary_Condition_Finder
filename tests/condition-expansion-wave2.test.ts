@@ -3,7 +3,7 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 
 const WAVE_TWO_IDS = ["psoriatic-arthritis","charcot-arthropathy","sacroiliac-joint-dysfunction","femoroacetabular-impingement","hip-labral-tear","greater-trochanteric-pain-syndrome","patellar-instability","acl-injury","pcl-injury","tarsal-metatarsal-malunion-nonunion","radial-neuropathy","median-neuropathy","tibial-neuropathy","femoral-neuropathy","meralgia-paresthetica","complex-regional-pain-syndrome","cauda-equina-syndrome","cranial-nerve-palsy"] as const;
-const POST_V2_PROMOTED = new Set(["psoriatic-arthritis","acl-injury","pcl-injury","cauda-equina-syndrome"]);
+const POST_V2_PROMOTED = new Set(["psoriatic-arthritis","femoroacetabular-impingement","acl-injury","pcl-injury","cauda-equina-syndrome"]);
 const FRAMEWORK_ONLY_IDS = ["femoroacetabular-impingement","hip-labral-tear","greater-trochanteric-pain-syndrome","complex-regional-pain-syndrome","cauda-equina-syndrome","cranial-nerve-palsy"] as const;
 
 describe("condition catalog expansion wave 2", () => {

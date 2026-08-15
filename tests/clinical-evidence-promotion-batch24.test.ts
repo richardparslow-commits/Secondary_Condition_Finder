@@ -87,13 +87,14 @@ describe("clinical evidence promotion batch 24", () => {
     expect(mapping?.todo.length).toBeGreaterThan(0);
   });
 
-  it("records 23 published identities and 84 intentional safe drafts", () => {
+  it("preserves the three Batch 24 promotions without freezing later program totals", () => {
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
-    ) as { waves: Array<{ identities: Array<{ disposition: string }> }> };
+    ) as { waves: Array<{ identities: Array<{ id: string; disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(23);
+    for (const id of ["osteitis-deformans", "syringomyelia", "trigeminal-neuralgia"]) {
+      expect(entries.find((entry) => entry.id === id)?.disposition).toBe("published-evidence-led");
+    }
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(84);
   });
 });
