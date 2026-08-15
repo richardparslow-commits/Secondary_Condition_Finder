@@ -74,7 +74,10 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    setAnalyses(loadStored());
+    const restoreTimer = window.setTimeout(() => {
+      setAnalyses(loadStored());
+    }, 0);
+    return () => window.clearTimeout(restoreTimer);
   }, []);
 
   const totals = useMemo(
