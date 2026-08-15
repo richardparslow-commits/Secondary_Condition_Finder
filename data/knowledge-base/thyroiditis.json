@@ -1,6 +1,47 @@
 {
   "id": "thyroiditis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, medication/treatment, intermediate-factor, endocrine, cardiovascular, and other organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "hypothyroidism",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "This relationship is limited to chronic autoimmune/Hashimoto-type thyroiditis or a clinically comparable thyroid-autoimmunity phenotype, not every transient or destructive thyroiditis syndrome. In a 2026 multicenter cohort of 669 initially euthyroid patients with positive thyroid autoantibodies, 155 progressed to overt or subclinical hypothyroidism during a median 3-year follow-up; baseline TSH, FT4, and TPOAb were independent progression factors. The evidence supports a bounded autoimmune-thyroiditis-to-thyroid-failure progression pathway when the individual's autoimmune phenotype and laboratory chronology are documented, but it does not justify assuming permanent hypothyroidism after subacute, painless, postpartum, infectious, or other transient thyroiditis.",
+      "pathwayIntelligence": {
+        "pathways": ["disease-progression"],
+        "causalChain": "Documented chronic autoimmune/Hashimoto-type thyroiditis or persistent thyroid autoimmunity → progressive loss of thyroid function when present → sustained biochemical and clinically diagnosed hypothyroidism; transient thyroiditis phases and treatment-related thyroid dysfunction require separate characterization.",
+        "developmentQuestions": [
+          "Is the thyroiditis phenotype documented as chronic autoimmune/Hashimoto-type disease, including TPOAb/TgAb and compatible clinical or imaging findings when applicable?",
+          "What were TSH and FT4 values before, during, and after the thyroiditis diagnosis, and do they show persistent progression rather than a transient phase?",
+          "When was hypothyroidism first diagnosed relative to the autoimmune-thyroiditis findings?",
+          "Was levothyroxine started, and was the hypothyroid state persistent when treatment history and laboratory trends are considered?",
+          "Could another cause of hypothyroidism—thyroid surgery, radioiodine, medication, pituitary disease, iodine exposure, or another destructive thyroiditis—better explain the individual's condition?"
+        ],
+        "issuesToResolve": [
+          "The evidence applies to persistent thyroid autoimmunity/Hashimoto-type disease and must not be generalized to every thyroiditis subtype.",
+          "Autoantibody positivity is a risk/progression marker; individual diagnosis still requires compatible thyroid function and clinical chronology.",
+          "Subclinical and overt hypothyroidism should be distinguished from temporary hypothyroid phases during resolving thyroiditis."
+        ]
+      },
+      "evidenceGaps": [
+        "Endocrine documentation establishing the thyroiditis subtype and autoimmune phenotype",
+        "Longitudinal TSH and FT4 results with TPOAb/TgAb findings when available",
+        "Chronology distinguishing persistent hypothyroidism from a transient thyroiditis phase",
+        "Thyroid treatment, surgery, radioiodine, medication, and iodine-exposure history",
+        "Clinician assessment of competing causes of hypothyroidism"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Feng X, Lyu X, Gao Y, Gao X, Gao R. Analysis of risk factors for hypothyroidism in initially euthyroid patients with positive thyroid autoantibodies: a multicenter retrospective cohort study. Front Endocrinol (Lausanne). 2026;17:1827517. PMID 42232752",
+          "note": "Multicenter cohort of 669 initially euthyroid thyroid-autoantibody-positive patients; 155 progressed to overt or subclinical hypothyroidism over median 3 years, with baseline TSH, FT4, and TPOAb independently associated with progression. Supports phenotype-bounded autoimmune-thyroid progression research, not generalization to all thyroiditis subtypes.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42232752/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 42232752; abstract Background/Methods/Results/Conclusion: 669 initially euthyroid autoantibody-positive patients; 155 progressed; TSH, FT4 and TPOAb independent progression factors"
+        }
+      ]
+    }
+  ]
 }
