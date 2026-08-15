@@ -28,7 +28,7 @@
         {"id":"myasthenia-gravis","disposition":"promotion-candidate"},
         {"id":"syringomyelia","disposition":"safe-draft"},
         {"id":"seizure-disorder","disposition":"published-evidence-led"},
-        {"id":"trigeminal-neuralgia","disposition":"promotion-candidate"},
+        {"id":"trigeminal-neuralgia","disposition":"safe-draft"},
         {"id":"ulnar-neuropathy","disposition":"safe-draft"},
         {"id":"common-peroneal-neuropathy","disposition":"safe-draft"}
       ]
