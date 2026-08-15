@@ -2,7 +2,8 @@
   "id": "chronic-fatigue-syndrome",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before republishing."
+    "Targeted 2026-08-15 rescreen found psychiatric comorbidity and temporal-association literature involving ME/CFS or unexplained fatigue (including PMIDs 40785390, 15184691, and 19566769), but the available evidence does not cleanly establish a general ME/CFS-primary pathway causing a separate depressive or anxiety disorder rather than bidirectional association, shared vulnerability, or symptom overlap.",
+    "Keep safe-draft until a condition-specific longitudinal or mechanistic source supports the exact downstream diagnosis and direction, with individual chronology separating post-exertional malaise/fatigue symptoms from psychiatric symptoms and other medical causes."
   ],
   "suggestions": []
 }
