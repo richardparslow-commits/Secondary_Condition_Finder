@@ -1,30 +1,8 @@
 {
   "id": "alopecia-areata",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "sometimes-explored",
-      "rationale": "Systematic-review and meta-analytic evidence shows higher prevalence and odds of depressive disorders and symptoms among people with alopecia areata. This supports focused mental-health review when a depressive disorder is diagnosed alongside alopecia areata, but the association alone does not establish an individual direction of effect or nexus without chronology, psychosocial-impact evidence, and assessment of other contributors.",
-      "evidenceGaps": [
-        "Dermatology records establishing alopecia areata severity and chronology",
-        "Mental-health records establishing depressive-disorder diagnosis and chronology",
-        "Documentation of psychosocial, functional, body-image, or quality-of-life impact",
-        "Clinical assessment addressing other psychiatric, medical, medication, and psychosocial contributors"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Lauron et al., Prevalence and Odds of Depressive and Anxiety Disorders and Symptoms in Children and Adults With Alopecia Areata: A Systematic Review and Meta-analysis, JAMA Dermatol. 2023. PMID 36696123",
-          "note": "Systematic review/meta-analysis reporting elevated prevalence and odds of depressive and anxiety disorders and symptoms in alopecia areata; supports mental-health assessment rather than an automatic individual conclusion.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36696123/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 36696123; abstract; separate analyses of depressive/anxiety disorders and symptoms in alopecia areata"
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "The prior depressive-disorder suggestion was withdrawn because the cited meta-analysis establishes increased prevalence/odds of depressive and anxiety disorders and symptoms among people with alopecia areata, but it is a comorbidity-screening signal rather than directional evidence that alopecia areata causes or aggravates a depressive disorder. Reconsider only if future evidence supports a condition-specific directional pathway with clinically meaningful chronology and mechanism."
+  ],
+  "suggestions": []
 }

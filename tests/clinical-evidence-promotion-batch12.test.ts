@@ -54,10 +54,11 @@ describe("clinical evidence promotion batch 12", () => {
     expect(mapping?.suggestions.some((entry) => entry.conditionId === "cardiac-arrhythmia")).toBe(false);
   });
 
-  it("physically relocates hypothyroidism into endocrine maintenance with DC 7903", () => {
+  it("physically relocates hypothyroidism into endocrine maintenance with DC 7903 while allowing later clinical withdrawal", () => {
     const endocrine = ids("data/conditions/endocrine.json");
     const neurological = ids("data/conditions/neurological.json");
     const condition = catalogById.get("hypothyroidism");
+    const mapping = byId.get("hypothyroidism");
 
     expect(endocrine).toContain("hypothyroidism");
     expect(neurological).not.toContain("hypothyroidism");
@@ -66,6 +67,8 @@ describe("clinical evidence promotion batch 12", () => {
     expect(condition?.ratingSchedule[0]?.citation).toBe("38 CFR 4.119");
     expect(condition?.ratingSchedule[0]?.note).toMatch(/7903/i);
     expect(condition?.ratingSchedule[0]?.verified).toBe(false);
-    expect(byId.get("hypothyroidism")?.draft).toBe(false);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/modest|subgroup|directional/i);
   });
 });

@@ -92,12 +92,11 @@ describe("controlled pathway backfill batch 4", () => {
     }
   });
 
-  it("recognizes the alopecia-areata depression relationship only after clinical repair", () => {
+  it("recognizes the later alopecia-areata depression withdrawal", () => {
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "alopecia-areata");
-    const depression = mapping?.suggestions.find((entry) => entry.conditionId === "depressive-disorder");
-    expect(mapping?.draft).toBe(false);
-    expect(depression?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
-    expect(depression?.sourceReferences.some((source) => source.citation === "38 CFR 3.310")).toBe(false);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/comorbidity|directional/i);
   });
 
   it("recognizes hypertension only after its four published edges are clinically repaired", () => {

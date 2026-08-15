@@ -68,13 +68,11 @@ describe("controlled pathway backfill batch 3", () => {
     expect(sinusitis?.suggestions.some((entry) => entry.conditionId === "cardiac-arrhythmia")).toBe(false);
   });
 
-  it("allows anosmia depression research only with olfactory-specific clinical evidence", () => {
+  it("recognizes the later anosmia depression withdrawal", () => {
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "anosmia");
-    const depression = mapping?.suggestions.find((entry) => entry.conditionId === "depressive-disorder");
-    expect(mapping?.draft).toBe(false);
-    expect(depression?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
-    expect(depression?.sourceReferences.some((source) => source.citation === "38 CFR 3.310")).toBe(false);
-    expect(depression?.rationale).toMatch(/association|does not establish/i);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/causal pathways|directional/i);
   });
 
   it("recognizes the later asthma and COPD arrhythmia withdrawals", () => {

@@ -1,6 +1,46 @@
 {
   "id": "uveitis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, inflammatory/autoimmune, infectious, medication/treatment, and visual-function pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "glaucoma",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Glaucoma is a recognized sight-threatening complication of uveitis. Intraocular inflammation can impair aqueous outflow through inflammatory cells, mediators, and structural angle changes, while corticosteroid treatment can independently raise intraocular pressure in susceptible patients. This supports a uveitis-related secondary-glaucoma pathway only when glaucoma is objectively diagnosed and the individual record supports inflammatory and/or treatment-related mechanisms; ocular hypertension alone is not interchangeable with glaucoma, and not every patient with uveitis develops glaucomatous damage.",
+      "pathwayIntelligence": {
+        "pathways": ["disease-progression", "treatment-complication"],
+        "causalChain": "Documented uveitis and/or its corticosteroid treatment → sustained intraocular-pressure elevation or impaired aqueous outflow when present → objectively diagnosed secondary glaucoma with compatible optic-nerve and/or visual-field damage.",
+        "developmentQuestions": [
+          "Is glaucoma objectively diagnosed rather than based on an isolated intraocular-pressure elevation alone?",
+          "What type, laterality, duration, and activity of uveitis are documented before glaucoma or ocular-hypertension onset?",
+          "Do gonioscopy, optic-nerve imaging, retinal-nerve-fiber-layer testing, and visual fields support glaucomatous damage and identify an open-angle, angle-closure, or mixed mechanism?",
+          "What corticosteroid exposure occurred, by which route and duration, and how did intraocular pressure respond to dose changes or withdrawal?",
+          "Which competing glaucoma risks or causes, including primary open-angle disease, narrow-angle anatomy, trauma, surgery, vascular factors, or other ocular disease, should be addressed?"
+        ],
+        "issuesToResolve": [
+          "Uveitis can cause ocular hypertension without established glaucoma; the individual record must document glaucomatous disease rather than pressure elevation alone.",
+          "Inflammation-related and corticosteroid-related mechanisms may coexist, so chronology, treatment exposure, anatomy, and competing glaucoma causes require ophthalmologic review."
+        ]
+      },
+      "evidenceGaps": [
+        "Ophthalmology records confirming uveitis phenotype, laterality, activity, and chronology",
+        "Serial intraocular-pressure measurements and gonioscopy",
+        "Objective glaucoma evidence such as optic-nerve/RNFL imaging and reproducible visual-field loss",
+        "Corticosteroid treatment history and pressure response where a treatment pathway is considered",
+        "Ophthalmology opinion addressing inflammatory, treatment-related, and competing glaucoma mechanisms in the individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Kesav N, Palestine AG, Kahook MY, Pantcheva MB. Current management of uveitis-associated ocular hypertension and glaucoma. Surv Ophthalmol. 2020;65(4):397-407. PMID 31816329",
+          "note": "Review describes glaucoma secondary to ocular inflammation as potentially blinding and identifies inflammatory outflow compromise and corticosteroid-induced intraocular-pressure elevation as mechanisms. Supports a uveitis-associated secondary-glaucoma pathway, not automatic glaucoma attribution or equivalence between ocular hypertension and glaucoma.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31816329/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 31816329; abstract: glaucoma secondary to ocular inflammation; compromised aqueous outflow from inflammatory cells/mediators and corticosteroid-induced pressure elevation"
+        }
+      ]
+    }
+  ]
 }
