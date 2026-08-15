@@ -1,10 +1,9 @@
 {
   "id": "somatic-symptom-disorder",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {"conditionId":"sleep-apnea","rank":1,"prevalence":"commonly-explored","rationale":"Chronic psychiatric conditions are associated with sleep-disordered breathing and frequently co-occur with it.","evidenceGaps":["Polysomnography (sleep study) confirming diagnosis","Medical nexus opinion addressing causation or aggravation"],"sourceReferences":[{"citation":"38 CFR 3.310","note":"Legal framework for secondary service connection; not clinical evidence","verified":false}]},
-    {"conditionId":"gerd","rank":2,"prevalence":"commonly-explored","rationale":"Chronic stress and anxiety are associated with gastroesophageal reflux.","evidenceGaps":["Endoscopy or clinical diagnosis of GERD/gastritis","Medication log or nexus opinion"],"sourceReferences":[{"citation":"38 CFR 3.310","note":"Legal framework for secondary service connection; not clinical evidence","verified":false}]},
-    {"conditionId":"migraine-headaches","rank":3,"prevalence":"sometimes-explored","rationale":"Muscle tension, sleep deprivation, and heightened autonomic arousal are associated with chronic headache episodes.","evidenceGaps":["Headache log documenting frequency/prostrating nature","Neurology/Primary care diagnosis"],"sourceReferences":[{"citation":"38 CFR 4.124a","note":"Diagnostic code 8100","verified":false}]}
-  ]
+  "draft": true,
+  "todo": [
+    "Review future secondary suggestions only after adding somatic-symptom-disorder-specific clinical evidence.",
+    "Batch 19 removes the prior sleep-apnea, GERD, and migraine suggestions because their attached references were legal or rating sources rather than clinical evidence for those relationships."
+  ],
+  "suggestions": []
 }
