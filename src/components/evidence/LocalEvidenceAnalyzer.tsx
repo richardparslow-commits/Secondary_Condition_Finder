@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
   extractLocalEvidenceDocument,
@@ -68,10 +68,17 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   const [locatorPrefix, setLocatorPrefix] = useState("");
   const [pastedSourceName, setPastedSourceName] = useState("Pasted medical record text");
   const [pastedText, setPastedText] = useState("");
-  const [analyses, setAnalyses] = useState<EvidenceAnalysis[]>(() => loadStored());
+  const [analyses, setAnalyses] = useState<EvidenceAnalysis[]>([]);
   const [message, setMessage] = useState<string | null>(null);
   const [warnings, setWarnings] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    const restoreTimer = window.setTimeout(() => {
+      setAnalyses(loadStored());
+    }, 0);
+    return () => window.clearTimeout(restoreTimer);
+  }, []);
 
   const totals = useMemo(
     () => ({
