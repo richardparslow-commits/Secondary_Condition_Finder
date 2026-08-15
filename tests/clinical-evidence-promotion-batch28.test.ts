@@ -23,8 +23,9 @@ describe("clinical evidence promotion batch 28", () => {
     expect(suggestion?.conditionId).toBe("fecal-incontinence");
     expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["direct-secondary", "disease-progression"]);
     expect(suggestion?.rationale).toMatch(/multifactorial|sphincter|pelvic-floor/i);
+    expect(suggestion?.rationale).toMatch(/ventral rectopexy|prolapse correction/i);
     expect(suggestion?.sourceReferences).toHaveLength(1);
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/37150800/");
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/25869649/");
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
   });
