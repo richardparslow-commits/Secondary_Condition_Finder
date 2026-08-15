@@ -53,13 +53,12 @@ describe("clinical evidence promotion batch 25", () => {
     expect(gerd?.sourceReferences.some((source) => source.sourceUrl === "https://pubmed.ncbi.nlm.nih.gov/18671778/")).toBe(true);
   });
 
-  it("records 24 published identities and 83 safe drafts", () => {
+  it("preserves the Batch 25 FAI promotion without freezing later program totals", () => {
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
-    ) as { waves: Array<{ identities: Array<{ disposition: string }> }> };
+    ) as { waves: Array<{ identities: Array<{ id: string; disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(24);
+    expect(entries.find((entry) => entry.id === "femoroacetabular-impingement")?.disposition).toBe("published-evidence-led");
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(83);
   });
 });
