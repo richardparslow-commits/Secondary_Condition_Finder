@@ -50,10 +50,9 @@ describe("target-v2 expansion disposition ledger", () => {
 
     expect(published).toHaveLength(31);
     expect(published.map((entry) => entry.id)).toEqual(expect.arrayContaining([
-      "gout",
-      "myasthenia-gravis",
       "osteitis-deformans",
       "syringomyelia",
+      "seizure-disorder",
       "trigeminal-neuralgia",
       "femoroacetabular-impingement",
       "hyperpituitarism",
@@ -63,10 +62,16 @@ describe("target-v2 expansion disposition ledger", () => {
       "uveitis",
       "retinal-dystrophy",
       "ptosis",
+      "rectal-prolapse",
+      "anal-fistula",
+      "hydronephrosis",
     ]));
     expect(candidates).toEqual([]);
     expect(safeDrafts).toHaveLength(76);
-    for (const id of ["uveitis", "retinal-dystrophy", "ptosis"]) {
+    for (const id of ["gout", "multiple-sclerosis", "myasthenia-gravis"]) {
+      expect(entries.find((entry) => entry.id === id)?.disposition).toBe("safe-draft");
+    }
+    for (const id of ["rectal-prolapse", "anal-fistula", "hydronephrosis"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("published-evidence-led");
     }
     expect(published.length + candidates.length + safeDrafts.length).toBe(107);
