@@ -1,39 +1,9 @@
 {
   "id": "subdural-hematoma",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "migraine-headaches",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Residual effects after subdural hematoma frequently include chronic headache disorders.",
-      "evidenceGaps": [
-        "Neurology or primary care records diagnosing persistent headaches after hematoma",
-        "Imaging/history confirming subdural hematoma"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Long-term cognitive and functional effects of subdural hematoma can drive secondary depression.",
-      "evidenceGaps": [
-        "Mental health diagnosis supported by link to residual neurologic impairment"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild any residual secondary-condition suggestions only from subdural-hematoma-specific outcome evidence matched to the exact catalog diagnosis.",
+    "Batch 21 removes the prior migraine and depressive-disorder suggestions because their only attached source was 38 CFR 3.310; headache and neuropsychiatric sequelae literature cannot be converted automatically into those exact downstream diagnoses."
+  ],
+  "suggestions": []
 }
