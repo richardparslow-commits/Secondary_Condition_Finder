@@ -34,16 +34,11 @@ describe("clinical evidence promotion batch 20", () => {
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
   });
 
-  it("promotes Parkinson disease depression only as association/comorbidity research", () => {
+  it("recognizes the later evidence-quality withdrawal of Parkinson depression", () => {
     const mapping = byId.get("parkinsons-disease");
-    const suggestion = mapping?.suggestions[0];
-    expect(mapping?.draft).toBe(false);
-    expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe("depressive-disorder");
-    expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.rationale).toMatch(/comorbidity|association/i);
-    expect(suggestion?.rationale).toMatch(/22\.9/);
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("27358339");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/27358339/);
+    expect(mapping?.todo.join(" ")).toMatch(/prevalence|screening|direction|caused|aggravat/i);
   });
 });

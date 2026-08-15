@@ -27,16 +27,11 @@ describe("clinical evidence promotion batch 22", () => {
     expect(mapping?.todo.join(" ")).toMatch(/primary migraine|reclassification|target/i);
   });
 
-  it("promotes seizure-disorder depression only as association/comorbidity research", () => {
+  it("recognizes the later evidence-quality withdrawal of seizure-disorder depression", () => {
     const mapping = byId.get("seizure-disorder");
-    const suggestion = mapping?.suggestions[0];
-    expect(mapping?.draft).toBe(false);
-    expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe("depressive-disorder");
-    expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.rationale).toMatch(/comorbidity|association/i);
-    expect(suggestion?.rationale).toMatch(/40%/);
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("41967683");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/41967683/);
+    expect(mapping?.todo.join(" ")).toMatch(/cross-sectional|prevalence|comorbidity|direction|causal|aggravat/i);
   });
 });

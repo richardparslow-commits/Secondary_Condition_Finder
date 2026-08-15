@@ -1,6 +1,9 @@
 {
   "id": "laryngeal-cancer",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Evaluate active malignancy separately from laryngectomy, aphonia, stenosis, swallowing impairment, respiratory effects, treatment toxicity, and other documented residuals; do not infer any residual or nexus from DC 6819 alone."],
+  "todo": [
+    "Keep laryngeal cancer draft for an aphonia secondary-condition recommendation unless the source and individual record establish the actual aphonia diagnosis rather than loss of the natural laryngeal voice source or rehabilitated alaryngeal speech alone.",
+    "PMID 29086803 supports post-total-laryngectomy voice handicap and alaryngeal speech rehabilitation, but it does not establish that all total-laryngectomy patients meet the distinct catalog diagnosis of aphonia. A future publication needs aphonia-specific outcome evidence and a development rule requiring documented aphonia."
+  ],
   "suggestions": []
 }

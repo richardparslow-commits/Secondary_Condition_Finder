@@ -1,6 +1,46 @@
 {
   "id": "ovarian-cancer",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Separate active malignancy, treatment effects, surgical/endocrine consequences, lymphedema, scarring, and other documented residuals; DC 7627 is rating context and not evidence of etiology or secondary causation."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "peripheral-neuropathy",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Paclitaxel-containing chemotherapy used to treat ovarian cancer can produce clinically significant peripheral sensory neuropathy. In the randomized MITO-7 phase 3 ovarian-cancer trial, grade 2 or worse neuropathy occurred in both carboplatin-plus-paclitaxel schedules, with a lower frequency in the weekly schedule than the every-three-weeks schedule. This supports a treatment-complication pathway only when the individual received a documented neurotoxic ovarian-cancer regimen and a compatible peripheral neuropathy began or materially worsened afterward; ovarian cancer itself, surgery alone, or a non-neurotoxic treatment history should not be treated as sufficient evidence of causation.",
+      "pathwayIntelligence": {
+        "pathways": ["treatment-complication"],
+        "causalChain": "Ovarian cancer → documented paclitaxel-containing chemotherapy, if administered → neurotoxic treatment exposure → clinically confirmed peripheral neuropathy with compatible timing and phenotype.",
+        "developmentQuestions": [
+          "Which ovarian-cancer chemotherapy agents, doses, schedules, and cumulative exposures were actually administered?",
+          "Did numbness, tingling, neuropathic pain, sensory loss, weakness, or gait symptoms begin or materially worsen after the neurotoxic treatment exposure?",
+          "What neurologic examination, electrodiagnostic testing, or other clinical assessment supports peripheral neuropathy and its phenotype?",
+          "Did symptoms improve, persist, or progress with dose modification, treatment completion, or discontinuation?",
+          "Which competing causes, including diabetes, alcohol exposure, nutritional deficiency, thyroid disease, renal disease, other neurotoxic drugs, entrapment neuropathy, or pre-existing neuropathy, should be addressed?"
+        ],
+        "issuesToResolve": [
+          "The evidence is treatment-specific and should not be generalized from ovarian cancer to peripheral neuropathy without documented paclitaxel or another clinically supported neurotoxic exposure.",
+          "Neuropathy is multifactorial; chronology, phenotype, cumulative treatment exposure, and alternative causes require individual review."
+        ]
+      },
+      "evidenceGaps": [
+        "Oncology records identifying the exact chemotherapy regimen, dose, schedule, and cumulative exposure",
+        "Baseline neurologic status before chemotherapy",
+        "Documentation of neuropathy onset, course, severity, and treatment-response chronology",
+        "Neurologic examination and electrodiagnostic testing when clinically indicated",
+        "Assessment of competing causes of peripheral neuropathy"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Pignata S, Scambia G, Katsaros D, et al. Carboplatin plus paclitaxel once a week versus every 3 weeks in patients with advanced ovarian cancer (MITO-7): a randomised, multicentre, open-label, phase 3 trial. Lancet Oncol. 2014;15(4):396-405. PMID 24582486",
+          "note": "Randomized phase 3 trial of 810 eligible women with ovarian cancer receiving carboplatin plus paclitaxel reported grade 2 or worse neuropathy in 6% of the weekly-treatment group and 17% of the every-three-weeks group. Supports a paclitaxel-containing-treatment complication pathway, not neuropathy attribution from ovarian cancer itself.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24582486/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 24582486; abstract Findings: grade 2 or worse neuropathy 24/399 (6%) weekly versus 68/400 (17%) every three weeks"
+        }
+      ]
+    }
+  ]
 }

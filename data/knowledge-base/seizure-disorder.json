@@ -1,31 +1,9 @@
 {
   "id": "seizure-disorder",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Depressive symptoms and depressive disorders are common psychiatric comorbidities in adults with epilepsy/seizure disorders, but prevalence evidence does not establish that the seizure disorder caused an individual's depression. A 2026 systematic review and meta-analysis found a pooled depressive-symptom proportion of 40% across the cross-sectional studies included in its depression meta-analysis, with substantial heterogeneity. This mapping therefore supports association/comorbidity research only; seizure phenotype and control, antiseizure medications, chronology, sleep, cognition, psychosocial factors, and independent psychiatric causes require individual review.",
-      "evidenceGaps": [
-        "Neurology documentation confirming the seizure/epilepsy diagnosis, phenotype, frequency, and control",
-        "Depressive-disorder diagnosis, severity, and chronology relative to seizure onset and treatment",
-        "Antiseizure medication history and possible mood effects",
-        "Sleep, cognitive, functional, psychosocial, and other psychiatric contributors",
-        "Qualified clinician assessment distinguishing common epilepsy/depression comorbidity from individual causation or aggravation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Rojas-López JC, Navas-Peñaranda S, Avilés-Gómez M, et al. Depression and anxiety in adults with epilepsy. Systematic literature review and meta-analysis. J Affect Disord. 2026;407:121741. PMID 41967683",
-          "note": "Systematic review/meta-analysis of adult epilepsy studies found a pooled depressive-symptom proportion of 40% in the cross-sectional depression meta-analysis, with high heterogeneity. Supports association/comorbidity research and screening relevance, not individual causal attribution.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41967683/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 41967683; abstract Methods/Results/Conclusion: 54 studies extracted; depression meta-analysis 12 cross-sectional studies, n=3866; pooled depressive symptoms 40% (95% CI 30-50%)"
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild any secondary-condition suggestion using seizure-disorder-specific evidence that supports the direction of the claimed downstream diagnosis rather than cross-sectional psychiatric-comorbidity prevalence alone.",
+    "The prior depressive-disorder edge was withdrawn because PMID 41967683 pools cross-sectional screening-based depressive-symptom prevalence and associated variables in adults with epilepsy; it supports comorbidity and screening relevance, not a seizure-disorder-primary causal or aggravation pathway."
+  ],
+  "suggestions": []
 }

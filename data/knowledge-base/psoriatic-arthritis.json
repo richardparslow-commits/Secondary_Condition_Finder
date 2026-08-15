@@ -1,31 +1,9 @@
 {
   "id": "psoriatic-arthritis",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Depression is a recognized psychological comorbidity in psoriatic arthritis. A PsA-specific overview of systematic reviews reported pooled depression prevalence across included reviews of approximately 11.9% to 20% and also identified incident depression data. These population-level findings support condition-specific research of the PsA/depression relationship, but they do not establish that PsA caused or aggravated an individual depressive disorder; chronology, disease burden, treatment, and competing psychiatric or medical contributors remain essential.",
-      "evidenceGaps": [
-        "Qualified diagnosis of a depressive disorder rather than symptom-screening results alone",
-        "Chronology comparing depressive-disorder onset or worsening with PsA diagnosis, inflammatory activity, pain, functional limitation, and treatment",
-        "Documentation of PsA disease burden, including pain, function, skin disease where relevant, and treatment response",
-        "Evaluation of alternative psychiatric, medical, medication-related, psychosocial, substance-use, and sleep-related contributors",
-        "Qualified rheumatology or mental-health opinion addressing the individual relationship if causation or aggravation is asserted"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Hernández-Rodríguez et al., Rheumatology International (2024), PMID 38797775",
-          "note": "PsA-specific overview of systematic reviews found depression among commonly reported psychological comorbidities, with pooled depression prevalence of approximately 11.9% to 20% across included reviews and an incidence estimate where available. Supports comorbidity/association and screening relevance, not individual causation.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38797775/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
-          "sourceLocator": "PMID 38797775; abstract: overview of systematic reviews; pooled depression prevalence 11.9%-20% and depression incidence 21.3 per 1000 person-years"
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild any secondary-condition suggestion using PsA-specific evidence that supports a directional disease, treatment, or aggravation pathway rather than psychological-comorbidity prevalence alone.",
+    "The prior depressive-disorder edge was withdrawn because the retained source PMID 38797775 is an overview of prevalence/incidence and psychological comorbidity reviews; it does not establish that psoriatic arthritis caused or aggravated an individual depressive disorder."
+  ],
+  "suggestions": []
 }

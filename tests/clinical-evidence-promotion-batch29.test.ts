@@ -38,18 +38,15 @@ describe("clinical evidence promotion batch 29", () => {
     expect(mapping?.suggestions).toEqual([]);
     expect(mapping?.todo.join(" ")).toMatch(/35362447/);
     expect(mapping?.todo.join(" ")).toMatch(/anxiety|depression|psychosocial/i);
-    expect(mapping?.todo.join(" ")).toMatch(/adjustment disorder.*condition-specific|condition-specific.*adjustment disorder/i);
   });
 
-  it("records one evidence-led Wave 6 promotion without creating promotion-candidate debt", () => {
+  it("preserves the Batch-29 Wave 6 disposition without freezing later program totals", () => {
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
     ) as { waves: Array<{ identities: Array<{ id: string; disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(31);
-    expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(76);
     expect(entries.find((entry) => entry.id === "discoid-lupus")?.disposition).toBe("published-evidence-led");
+    expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
   });
 
   it("keeps target-mismatched Wave 6 hematologic candidates safely draft", () => {

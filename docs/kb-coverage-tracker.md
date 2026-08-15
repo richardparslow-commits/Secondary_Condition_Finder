@@ -4,9 +4,9 @@ This is the authoritative current-state tracker for post-v2 clinical evidence wo
 
 ## Current production-validated base
 
-Batch 29 branches from exact `main` SHA `c8ad197e8df420034579ba644e60f9cec0168a8d` (`Promote evidence-led Wave 5 mappings (#352)`). That base passed independent `main` CI #1021 and Production Runtime Readiness #380 before Batch 29 started.
+Batch 30 branches from exact `main` SHA `b7624571d31de6ce3fa2c7efae5e5e1c18ba194f` (`Promote evidence-led Wave 6 mapping (#353)`). That base passed independent `main` CI #1031 and Production Runtime Readiness #390 before Batch 30 started.
 
-Batch 29 itself is not production-closed until its exact head passes PR CI and a Vercel Agent immutable-head review, is merged with expected-head protection, and the resulting merge SHA passes independent `main` CI and Production Runtime Readiness. Vercel preview/deployment readiness is not a substitute for the Agent code-review result.
+Batch 30 is not production-closed until its corrected exact head passes fresh PR CI and a fresh genuine Vercel Agent immutable-head review, is merged with expected-head protection, and the resulting merge SHA passes independent `main` CI and Production Runtime Readiness. Vercel preview/deployment readiness is not a substitute for the Agent code-review result.
 
 ## Frozen universe
 
@@ -15,57 +15,44 @@ Batch 29 itself is not production-closed until its exact head passes PR CI and a
 - Wave 1–7 expansion identities: **107**.
 - Promotion candidates: **0**.
 
-## Current Batch-29 candidate dispositions
+## Current corrected Batch-30 candidate dispositions
 
-The disposition ledger currently records:
+The disposition ledger records:
 
-- **31 published-evidence-led** identities;
-- **76 safe-draft** identities; and
+- **30 published-evidence-led** identities;
+- **77 safe-draft** identities; and
 - **0 promotion-candidate** identities.
 
-Batch 29 publishes one Wave-6 relationship:
+Batch 30 publishes two Wave-7 relationships: `ovarian-cancer`→`peripheral-neuropathy` and `testicular-cancer`→`hypogonadism`, each bounded to the treatment exposure actually studied.
 
-- `discoid-lupus` → `scarring-alopecia`, limited to scalp DLE with a distinct cicatricial/scarring-alopecia diagnosis and explicit anatomic/phenotype safeguards.
+Review returned `histoplasmosis` and `laryngeal-cancer` to safe draft. The pulmonary histoplasmosis identity cannot enforce adrenal/disseminated disease, and post-laryngectomy voice handicap/alaryngeal speech is not equivalent to the distinct diagnosis of aphonia.
 
-Batch 29 also returns `adjustment-disorder` → `gerd` to draft because the attached psychosocial/GERD meta-analysis is anxiety/depression-oriented and does not establish adjustment disorder as the condition-specific exposure.
+Batch 30 also returns Parkinson disease, seizure disorder, and psoriatic arthritis to safe draft where their depression evidence was prevalence/comorbidity-oriented rather than directional, and removes the weaker trigeminal-neuralgia→anxiety suggestion while retaining the stronger trigeminal-neuralgia→depression pathway.
 
-The remaining Wave-6 identities stay safe-draft where direction, distinct downstream diagnosis, or catalog target fit is insufficient. ET thrombosis evidence is not widened into a DVT-specific edge, and AML-specific transformation evidence is not widened into the generic acute/chronic `leukemia` catalog target.
-
-For the complete per-identity current state, use `data/expansion-dispositions.json`. This tracker intentionally does not duplicate a hand-maintained list of all published identities because that list can become stale independently of the machine-readable ledger.
+For the complete per-identity current state, use `data/expansion-dispositions.json`.
 
 ## Current citation position
 
-Batch 29 performs a one-for-one replacement of unverified published clinical evidence, so the expected position remains:
+Four unverified published source rows are removed and two new unverified Wave-7 sources remain live. Expected position improves to:
 
-- live references: **69**;
+- live references: **67**;
 - live verified: **8**;
 - retired verified: **6**;
 - verified provenance: **14**;
-- live unverified: **61**;
-- published-unverified review findings: **59**;
-- live clinical-evidence references with canonical URLs: **64**;
+- live unverified: **59**;
+- published-unverified review findings: **57**;
+- live clinical-evidence references with canonical URLs: **62**;
 - retired clinical-evidence references with canonical URLs: **4**;
-- clinical-URL provenance: **68**.
+- combined clinical-URL provenance observation: **66**.
 
-The `61` live-unverified total and `59` published-review count intentionally differ because draft mappings can retain unverified research references while the qualified-human queue includes only references used by published mappings. Automated source checking never converts `verified: false` to `verified: true`.
+The `59` live-unverified total and `57` published-review count intentionally differ because draft mappings can retain unverified research references while the qualified-human queue includes only references used by published mappings. Automated source checking never converts `verified: false` to `verified: true`.
 
 ## Safety rule for safe drafts
 
-A safe draft is an acceptable reviewed product state. The objective is not to publish every Wave identity regardless of evidence. A relationship remains draft when direction, phenotype, mechanism, target identity, treatment exposure, or source quality does not support a bounded condition-specific proposition.
+A safe draft is an acceptable reviewed product state. The objective is not to publish every Wave identity regardless of evidence. A relationship remains draft when direction, phenotype, mechanism, target identity, treatment exposure, source quality, or the application's available intake fields cannot safely enforce the proposition.
 
 ## Completion definition
 
-A clinical evidence batch is repository-controlled only when:
-
-- the ledger and knowledge base agree;
-- every live published relationship satisfies the clinical-evidence/provenance rules;
-- unsupported relationships are withdrawn rather than retained for count preservation;
-- citation debt is measured and qualified-human verification remains separate;
-- exact-head CI and Vercel Agent immutable-head review are clean; and
-- the exact merge SHA is independently proven by `main` CI and production runtime readiness.
+A clinical evidence batch is repository-controlled only when the ledger and KB agree, citation governance is clean, exact-head CI and Vercel Agent immutable-head review are clean on the same SHA, and the exact merge SHA is independently proven by `main` CI and Production Runtime Readiness.
 
 Any head change invalidates the prior exact-head CI and Vercel Agent review and requires both gates again on the new head.
-
-## Exact-head workflow
-
-Every future evidence promotion or repair uses: bounded branch from production-validated `main` → exact-head PR CI → Vercel Agent immutable-head review → squash merge with expected-head protection → independent `main` CI → exact production deployment/runtime proof → Production Runtime Readiness.

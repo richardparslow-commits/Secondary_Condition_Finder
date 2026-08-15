@@ -1,6 +1,9 @@
 {
   "id": "histoplasmosis",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Scope clinical authoring to documented pulmonary versus disseminated or extra-pulmonary disease and residuals; DC 6834 is the pulmonary histoplasmosis rating identity and must not be generalized into nexus evidence."],
+  "todo": [
+    "Keep the current pulmonary histoplasmosis catalog identity draft for secondary-condition publication because the intake does not encode adrenal/disseminated disease site and therefore cannot safely enforce an adrenal-complication restriction.",
+    "PMID 30656706 supports primary adrenal insufficiency in adrenal histoplasmosis, not a pulmonary-histoplasmosis-primary pathway. A future publication would require a distinct adrenal/disseminated histoplasmosis identity or another structured disease-site signal that prevents the recommendation from appearing for pulmonary-only cases."
+  ],
   "suggestions": []
 }

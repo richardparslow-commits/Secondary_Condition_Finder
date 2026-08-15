@@ -1,6 +1,46 @@
 {
   "id": "testicular-cancer",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Separate active malignancy from post-treatment anatomy, endocrine/reproductive effects, scarring, neuropathy, and other documented residuals; do not substitute DC 7528 or testis-removal criteria for medical evidence of causation."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "hypogonadism",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Testosterone deficiency is a recognized late effect in testicular germ-cell cancer survivors, with treatment-specific risk. A systematic review and meta-analysis found increased odds of testosterone deficiency after standard chemotherapy, non-conventional treatment, and infradiaphragmatic radiotherapy compared with orchiectomy alone. This supports a treatment-complication pathway only when the individual's cancer treatment and post-treatment endocrine findings are documented; the testicular-cancer diagnosis by itself and unilateral orchiectomy alone should not be treated as sufficient evidence that later hypogonadism was caused by cancer treatment.",
+      "pathwayIntelligence": {
+        "pathways": ["treatment-complication"],
+        "causalChain": "Testicular cancer → documented chemotherapy and/or infradiaphragmatic radiotherapy, if administered → treatment-related gonadal/endocrine injury risk → clinically and biochemically confirmed hypogonadism.",
+        "developmentQuestions": [
+          "What testicular-cancer treatment was actually received, including orchiectomy laterality, chemotherapy agents/cycles, and radiotherapy field and dose?",
+          "Were testosterone, LH, FSH, and related endocrine measurements available before treatment and after treatment?",
+          "When did symptoms and biochemical evidence of hypogonadism appear relative to treatment?",
+          "Was the remaining testis structurally and functionally normal, and is there evidence of pre-treatment gonadal dysfunction?",
+          "Which competing causes of hypogonadism, including obesity, pituitary disease, medications, systemic illness, aging, sleep disorders, or other gonadal injury, should be addressed?"
+        ],
+        "issuesToResolve": [
+          "The meta-analysis demonstrates treatment-group risk relative to orchiectomy alone; it does not establish that every testicular-cancer survivor or every person after unilateral orchiectomy develops treatment-caused hypogonadism.",
+          "Individual attribution requires treatment exposure, endocrine phenotype, chronology, and competing-cause assessment."
+        ]
+      },
+      "evidenceGaps": [
+        "Oncology and operative records documenting orchiectomy laterality and adjuvant treatment",
+        "Longitudinal morning testosterone and gonadotropin testing",
+        "Symptoms and chronology compatible with hypogonadism",
+        "Assessment of pre-treatment gonadal function and competing endocrine causes",
+        "Endocrinology or oncology assessment addressing the individual treatment relationship"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Bandak M, Jørgensen N, Juul A, et al. Testosterone deficiency in testicular cancer survivors - a systematic review and meta-analysis. Andrology. 2016;4(3):382-388. PMID 27009402",
+          "note": "Systematic review/meta-analysis of 12 publications found increased testosterone-deficiency risk after standard chemotherapy (OR 1.8), non-conventional therapy (OR 3.1), and infradiaphragmatic radiotherapy (OR 1.6) compared with testicular germ-cell cancer survivors treated with orchiectomy alone. Supports a treatment-specific hypogonadism pathway, not automatic attribution from the cancer diagnosis itself.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27009402/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 27009402; abstract Results: standard chemotherapy OR 1.8, non-conventional therapy OR 3.1, infradiaphragmatic radiotherapy OR 1.6, each compared with orchiectomy alone"
+        }
+      ]
+    }
+  ]
 }
