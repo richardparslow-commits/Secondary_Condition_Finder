@@ -7,7 +7,7 @@
       "conditionId": "depressive-disorder",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Systematic-review evidence describes a substantial psychological burden in trigeminal neuralgia, including depressive symptoms and depressive disorders. A 2025 systematic review found higher risks of depressive, anxiety, and sleep disorders, while an earlier systematic review reported mild-to-moderate depression among affected patients. These findings support focused somatopsychic research where disabling trigeminal-neuralgia pain precedes or materially worsens depression, but they do not establish individual causation and do not exclude pre-existing or independent psychiatric illness.",
+      "rationale": "Systematic-review evidence describes a substantial psychological burden in trigeminal neuralgia, including higher risk of depressive disorders. This supports focused somatopsychic research where disabling trigeminal-neuralgia pain precedes or materially worsens depression, but population-level findings do not establish individual causation and do not exclude pre-existing or independent psychiatric illness.",
       "pathwayIntelligence": {
         "pathways": ["somatopsychic"],
         "causalChain": "Severe recurrent neuropathic facial pain and associated functional restriction may contribute to psychological distress and depressive symptoms in some patients with trigeminal neuralgia.",
@@ -37,15 +37,6 @@
           "verified": false,
           "sourceCheckedOn": "2026-08-15",
           "sourceLocator": "PMID 40355578; abstract: 11 included studies; conclusion reports higher risks of sleep, depressive, and anxiety disorders in trigeminal neuralgia"
-        },
-        {
-          "citation": "The psychosocial impact of orofacial pain in trigeminal neuralgia patients: a systematic review. Int J Oral Maxillofac Surg. 2018. PMID 29526561",
-          "note": "Systematic review selected 13 studies and reported psychometric findings consistent with mild-to-moderate depression and moderate-to-severe anxiety in trigeminal-neuralgia populations. Supports psychosocial comorbidity research, not an individual nexus by itself.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29526561/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
-          "sourceLocator": "PMID 29526561; abstract: 13 studies; psychometric scores indicated mild-to-moderate depression and moderate-to-severe anxiety"
         }
       ]
     },
@@ -53,7 +44,7 @@
       "conditionId": "anxiety-disorder",
       "rank": 2,
       "prevalence": "commonly-explored",
-      "rationale": "Systematic-review evidence describes clinically important anxiety in trigeminal neuralgia populations, including moderate-to-severe anxiety scores and higher risk of anxiety disorders. This supports focused somatopsychic research where recurrent severe facial pain, anticipatory fear of attacks, and trigger avoidance precede or materially worsen an anxiety disorder. Population-level findings do not establish that trigeminal neuralgia caused or aggravated anxiety in a particular individual, so chronology and competing explanations remain essential.",
+      "rationale": "Systematic-review evidence describes clinically important anxiety in trigeminal neuralgia populations, including moderate-to-severe anxiety scores. This supports focused somatopsychic research where recurrent severe facial pain, anticipatory fear of attacks, and trigger avoidance precede or materially worsen an anxiety disorder. Population-level findings do not establish that trigeminal neuralgia caused or aggravated anxiety in a particular individual, so chronology and competing explanations remain essential.",
       "pathwayIntelligence": {
         "pathways": ["somatopsychic"],
         "causalChain": "Unpredictable severe facial-pain attacks and fear of common triggers may contribute to persistent anticipatory anxiety, avoidance, and functional restriction in some patients with trigeminal neuralgia.",
@@ -75,15 +66,6 @@
         "Qualified mental-health or neurologic assessment distinguishing population-level association from individual causation or aggravation"
       ],
       "sourceReferences": [
-        {
-          "citation": "Martinelli R, Vannuccini S, Burattini B, et al. Psychological assessment in patients affected by trigeminal neuralgia. A systematic review. Neurosurg Rev. 2025;48(1):414. PMID 40355578",
-          "note": "Systematic review of 11 relevant studies highlights significant psychological burden in trigeminal neuralgia, including higher risks of depressive, anxiety, and sleep disorders. Supports condition-specific association and chronology research, not automatic individual causation.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40355578/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
-          "sourceLocator": "PMID 40355578; abstract: 11 included studies; conclusion reports higher risks of sleep, depressive, and anxiety disorders in trigeminal neuralgia"
-        },
         {
           "citation": "The psychosocial impact of orofacial pain in trigeminal neuralgia patients: a systematic review. Int J Oral Maxillofac Surg. 2018. PMID 29526561",
           "note": "Systematic review selected 13 studies and reported psychometric findings consistent with moderate-to-severe anxiety in trigeminal-neuralgia populations. Supports psychosocial comorbidity research, not an individual nexus by itself.",
