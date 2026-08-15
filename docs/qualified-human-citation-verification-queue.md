@@ -27,9 +27,11 @@ The machine-readable form is available with:
 node scripts/report-citation-verification-queue.js
 ```
 
-## Current Batch-22 baseline
+## Current Batch-23 baseline
 
-The citation audit records **62 live unverified published references** after Clinical Evidence Promotion Batch 22. `npm run citations:queue` is the authoritative source for the exact current row set and role breakdown because later evidence batches can add, replace, retire, or verify individual sources.
+The citation audit records **62 live unverified references** after Batch 23, while `npm run citations:queue` contains **60 live unverified published references**. The two-count difference is intentional: the audit counts unverified references that remain in draft mappings, while the human queue skips drafts and includes only references currently used by published mappings.
+
+`npm run citations:queue` is the authoritative source for the exact current human-review row set and role breakdown because later evidence batches can add, replace, retire, withdraw, or verify individual sources.
 
 ## Human review procedure
 
