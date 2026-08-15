@@ -23,6 +23,29 @@ describe("browser-local evidence extraction", () => {
     expect(nexus?.matchedTerms).toEqual(["PTSD", "Erectile Dysfunction"]);
   });
 
+  it("matches selected-condition acronyms as whole tokens", () => {
+    const analysis = analyzeEvidenceText(
+      "The Veteran's OSA is aggravated by PTSD-related chronic sleep disruption.",
+      { sourceName: "sleep-opinion.txt", credential: "physician" },
+      ["OSA", "PTSD"],
+    );
+
+    expect(analysis.nexusRelevantCount).toBe(1);
+    expect(analysis.excerpts[0]?.matchedTerms).toEqual(["OSA", "PTSD"]);
+  });
+
+  it("does not match a short acronym inside an unrelated word", () => {
+    const analysis = analyzeEvidenceText(
+      "The rosacea is caused by medication exposure.",
+      { sourceName: "dermatology-note.txt", credential: "physician" },
+      ["OSA"],
+    );
+
+    expect(analysis.nexusRelevantCount).toBe(0);
+    expect(analysis.excerpts[0]?.matchedTerms).toEqual([]);
+    expect(analysis.excerpts[0]?.strength).toBe("supporting");
+  });
+
   it("retains page/paragraph provenance when analysis receives extracted document segments", () => {
     const analysis = analyzeEvidenceSegments(
       [
