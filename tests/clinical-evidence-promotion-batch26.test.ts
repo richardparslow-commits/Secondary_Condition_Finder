@@ -15,6 +15,21 @@ describe("clinical evidence promotion batch 26", () => {
     expect(kb).toHaveLength(300);
   });
 
+  it("promotes prolactin-secreting pituitary dysfunction to hypogonadism with phenotype limits", () => {
+    const mapping = byId.get("hyperpituitarism");
+    const suggestion = mapping?.suggestions[0];
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.todo).toEqual([]);
+    expect(suggestion?.conditionId).toBe("hypogonadism");
+    expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["direct-secondary", "intermediate-chain"]);
+    expect(suggestion?.rationale).toMatch(/prolactin/i);
+    expect(suggestion?.rationale).toMatch(/not.*general|unrelated forms/i);
+    expect(suggestion?.sourceReferences).toHaveLength(1);
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40812946/");
+    expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+  });
+
   it("promotes transvenous pacemaker lead-associated valve disease with device limits", () => {
     const mapping = byId.get("implantable-cardiac-pacemaker");
     const suggestion = mapping?.suggestions[0];
@@ -59,7 +74,7 @@ describe("clinical evidence promotion batch 26", () => {
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
   });
 
-  it("withdraws three lower-quality published edges to hold citation debt flat", () => {
+  it("withdraws four weaker or phenotype-mismatched published edges to hold citation debt flat", () => {
     const adjustment = byId.get("adjustment-disorder");
     expect(adjustment?.suggestions.map((entry) => entry.conditionId)).toEqual(["gerd"]);
     expect(adjustment?.suggestions.some((entry) => entry.conditionId === "sleep-apnea")).toBe(false);
@@ -71,17 +86,22 @@ describe("clinical evidence promotion batch 26", () => {
     const copd = byId.get("copd");
     expect(copd?.suggestions.map((entry) => entry.conditionId)).toEqual(["sleep-apnea"]);
     expect(copd?.suggestions.some((entry) => entry.conditionId === "cardiac-arrhythmia")).toBe(false);
+
+    const postConcussion = byId.get("post-concussion-syndrome");
+    expect(postConcussion?.draft).toBe(true);
+    expect(postConcussion?.suggestions).toEqual([]);
+    expect(postConcussion?.todo.join(" ")).toMatch(/post-traumatic headache.*primary migraine|primary migraine.*post-traumatic headache/i);
   });
 
-  it("records 27 published identities and 80 safe drafts", () => {
+  it("records 28 published identities and 79 safe drafts", () => {
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
     ) as { waves: Array<{ identities: Array<{ id: string; disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(27);
+    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(28);
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(80);
-    for (const id of ["pituitary-neoplasm", "heart-valve-replacement-residuals", "implantable-cardiac-pacemaker"]) {
+    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(79);
+    for (const id of ["hyperpituitarism", "pituitary-neoplasm", "heart-valve-replacement-residuals", "implantable-cardiac-pacemaker"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("published-evidence-led");
     }
   });
