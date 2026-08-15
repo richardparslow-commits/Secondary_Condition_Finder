@@ -52,10 +52,10 @@ describe("target-v2 expansion disposition ledger", () => {
     expect(candidates.map((entry) => entry.id).sort()).toEqual([
       "gout",
       "myasthenia-gravis",
-      "trigeminal-neuralgia",
     ]);
-    expect(candidates).toHaveLength(3);
-    expect(safeDrafts).toHaveLength(86);
+    expect(candidates).toHaveLength(2);
+    expect(safeDrafts).toHaveLength(87);
+    expect(entries.find((entry) => entry.id === "trigeminal-neuralgia")?.disposition).toBe("safe-draft");
     expect(published.length + candidates.length + safeDrafts.length).toBe(107);
   });
 });
