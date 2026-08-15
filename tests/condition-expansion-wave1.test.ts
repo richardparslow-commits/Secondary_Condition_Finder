@@ -26,7 +26,11 @@ const WAVE_ONE_IDS = [
   "common-peroneal-neuropathy",
 ] as const;
 
-const POST_V2_PROMOTED_WAVE_ONE_IDS = new Set(["parkinsons-disease", "multiple-sclerosis"]);
+const POST_V2_PROMOTED_WAVE_ONE_IDS = new Set([
+  "parkinsons-disease",
+  "multiple-sclerosis",
+  "seizure-disorder",
+]);
 
 describe("condition catalog expansion wave 1", () => {
   const catalog = loadConditionCatalog();
