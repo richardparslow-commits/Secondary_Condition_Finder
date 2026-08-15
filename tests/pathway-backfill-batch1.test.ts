@@ -15,11 +15,7 @@ const expectedBackfill = {
 
 const intentionallyUnlabeledMappings = [
   "anxiety-disorder",
-  "bipolar-disorder",
-  "persistent-depressive-disorder",
   "schizophrenia",
-  "social-anxiety-disorder",
-  "somatic-symptom-disorder",
   "substance-use-disorder",
   "mild-tbi",
   "micro-tbi",
@@ -30,7 +26,14 @@ const intentionallyUnlabeledMappings = [
   "rem-sleep-disorder",
 ] as const;
 
-const safetyWithdrawnMappings = ["agoraphobia", "panic-disorder"] as const;
+const safetyWithdrawnMappings = [
+  "agoraphobia",
+  "panic-disorder",
+  "bipolar-disorder",
+  "persistent-depressive-disorder",
+  "social-anxiety-disorder",
+  "somatic-symptom-disorder",
+] as const;
 
 describe("controlled pathway backfill batch 1", () => {
   it("backfills only edges whose attached source set includes clinical evidence", () => {
@@ -88,9 +91,9 @@ describe("controlled pathway backfill batch 1", () => {
     ]);
   });
 
-  it("does not treat draft mappings as backfill candidates", () => {
+  it("does not treat safety-withdrawn mappings as backfill candidates", () => {
     const kb = loadKnowledgeBase();
-    for (const draftId of ["migraine-headaches", "ocd", "agoraphobia", "panic-disorder"]) {
+    for (const draftId of ["migraine-headaches", "ocd", ...safetyWithdrawnMappings]) {
       const mapping = kb.find((entry) => entry.id === draftId);
       expect(mapping?.draft).toBe(true);
     }
