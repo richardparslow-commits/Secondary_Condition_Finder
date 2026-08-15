@@ -11,7 +11,7 @@
     {
       "wave": 1,
       "identities": [
-        {"id":"gout","disposition":"promotion-candidate"},
+        {"id":"gout","disposition":"published-evidence-led"},
         {"id":"osteoporosis","disposition":"safe-draft"},
         {"id":"osteomalacia","disposition":"safe-draft"},
         {"id":"osteitis-deformans","disposition":"safe-draft"},
@@ -25,7 +25,7 @@
         {"id":"hammertoe","disposition":"safe-draft"},
         {"id":"parkinsons-disease","disposition":"published-evidence-led"},
         {"id":"multiple-sclerosis","disposition":"published-evidence-led"},
-        {"id":"myasthenia-gravis","disposition":"promotion-candidate"},
+        {"id":"myasthenia-gravis","disposition":"published-evidence-led"},
         {"id":"syringomyelia","disposition":"safe-draft"},
         {"id":"seizure-disorder","disposition":"published-evidence-led"},
         {"id":"trigeminal-neuralgia","disposition":"safe-draft"},

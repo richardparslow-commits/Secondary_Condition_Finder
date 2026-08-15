@@ -1,6 +1,31 @@
 {
   "id": "gout",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Depression is associated with gout at the population level, but the available evidence does not establish that gout caused or aggravated an individual's depressive disorder. A systematic review and meta-analysis of 20 studies reported a pooled odds ratio of 1.29 for depression among people with gout and, across four incidence studies, a pooled hazard ratio of 1.17 for incident depression. Flare frequency, tophi, pain, disability, comorbidity, medication exposure, sleep, and psychiatric history still require case-specific review before any individual secondary theory is considered.",
+      "evidenceGaps": [
+        "Rheumatology or primary-care documentation confirming gout phenotype, flare burden, tophi, pain, and functional impact",
+        "Depressive-disorder diagnosis, severity, and chronology relative to gout onset and flares",
+        "Cardiometabolic, renal, sleep, medication, pain, disability, and psychosocial contributors",
+        "History of depressive symptoms predating gout or another independent psychiatric disorder",
+        "Qualified clinician assessment distinguishing population-level gout/depression association from individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Howren A, Bowie D, Choi HK, Rai SK, De Vera MA. Epidemiology of Depression and Anxiety in Gout: A Systematic Review and Metaanalysis. J Rheumatol. 2021;48(1):129-137. PMID 32115430",
+          "note": "Systematic review/meta-analysis of 20 studies found a positive association between gout and depression, including pooled OR 1.29 and pooled incident-depression HR 1.17; supports association/comorbidity research, not individual causal attribution.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32115430/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 32115430; abstract Results/Conclusion: 20 included studies; depression pooled OR 1.29 (95% CI 1.07-1.56); four incidence studies pooled HR 1.17 (95% CI 1.01-1.36)"
+        }
+      ]
+    }
+  ]
 }

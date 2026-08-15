@@ -43,17 +43,17 @@ describe("target-v2 expansion disposition ledger", () => {
     }
   });
 
-  it("records the current roadmap-backed program totals", () => {
+  it("records the completed roadmap-backed program totals", () => {
     const published = entries.filter((entry) => entry.disposition === "published-evidence-led");
     const candidates = entries.filter((entry) => entry.disposition === "promotion-candidate");
     const safeDrafts = entries.filter((entry) => entry.disposition === "safe-draft");
 
-    expect(published).toHaveLength(18);
-    expect(candidates.map((entry) => entry.id).sort()).toEqual([
+    expect(published).toHaveLength(20);
+    expect(published.map((entry) => entry.id)).toEqual(expect.arrayContaining([
       "gout",
       "myasthenia-gravis",
-    ]);
-    expect(candidates).toHaveLength(2);
+    ]));
+    expect(candidates).toEqual([]);
     expect(safeDrafts).toHaveLength(87);
     expect(entries.find((entry) => entry.id === "trigeminal-neuralgia")?.disposition).toBe("safe-draft");
     expect(published.length + candidates.length + safeDrafts.length).toBe(107);
