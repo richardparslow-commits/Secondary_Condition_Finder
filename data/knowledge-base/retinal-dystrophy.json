@@ -1,6 +1,46 @@
 {
   "id": "retinal-dystrophy",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, genetic/degenerative, medication/treatment, visual-field, and visual-acuity pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "visual-impairment",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Inherited retinal dystrophies are heterogeneous retinal degenerative disorders in which pathogenic retinal dysfunction and photoreceptor loss produce visual-impairment phenotypes such as reduced acuity, progressive visual-field loss, night blindness, color-vision abnormalities, and in advanced disease severe vision loss or blindness. This supports a disease-progression pathway when the individual's retinal-dystrophy diagnosis and objective visual deficit are anatomically and functionally concordant; the broad retinal-dystrophy identity should not be used to attribute unrelated ocular or neurologic visual loss without phenotype-specific evaluation.",
+      "pathwayIntelligence": {
+        "pathways": ["disease-progression"],
+        "causalChain": "Documented inherited retinal dystrophy → retinal/photoreceptor dysfunction or degeneration → objectively measured visual-field and/or visual-acuity impairment compatible with the specific retinal phenotype.",
+        "developmentQuestions": [
+          "What specific retinal-dystrophy phenotype or molecular diagnosis is documented?",
+          "What do visual-acuity, visual-field, electroretinography, OCT, fundus autofluorescence, and other applicable retinal studies show about functional and structural loss?",
+          "Is the pattern and chronology of visual impairment anatomically compatible with the documented retinal dystrophy?",
+          "Has the visual deficit progressed in a pattern expected for the individual's retinal phenotype?",
+          "Which competing ocular or neurologic causes of visual impairment, including cataract, glaucoma, optic neuropathy, corneal disease, macular disease, or central visual-pathway disease, should be addressed?"
+        ],
+        "issuesToResolve": [
+          "Inherited retinal dystrophies are heterogeneous; the specific phenotype and objective functional deficit must be established rather than inferred from the broad catalog identity alone.",
+          "Visual impairment can have multiple concurrent causes, so retinal structure/function testing and competing ocular or neurologic diagnoses require individual review."
+        ]
+      },
+      "evidenceGaps": [
+        "Retina-specialist documentation of the specific inherited retinal-dystrophy phenotype and, when available, molecular diagnosis",
+        "Objective visual-acuity and visual-field testing",
+        "Retinal imaging and functional testing such as OCT, fundus autofluorescence, and electroretinography as clinically applicable",
+        "Longitudinal records demonstrating the visual course",
+        "Ophthalmology assessment addressing competing causes of visual impairment"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Sharon D et al. Inherited retinal diseases: Linking genes, disease-causing variants, and relevant therapeutic modalities. Prog Retin Eye Res. 2022. PMID 34839010",
+          "note": "Review characterizes inherited retinal diseases as heterogeneous visual-impairment phenotypes caused by pathogenic variants affecting retinal regions and depleting vision. Supports retinal-dystrophy-to-visual-impairment disease progression while requiring phenotype-specific individual assessment.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34839010/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 34839010; abstract: inherited retinal diseases are visual-impairment phenotypes caused by pathogenic variants affecting different retinal regions and depleting vision"
+        }
+      ]
+    }
+  ]
 }
