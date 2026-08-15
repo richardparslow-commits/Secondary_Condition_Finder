@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "scope": "target-v2-wave-1-through-wave-7",
+  "totalIdentities": 107,
+  "dispositionDefinitions": {
+    "published-evidence-led": "Published only after relationship-specific clinical evidence review.",
+    "promotion-candidate": "Still draft; current screening identified a strong condition-specific evidence candidate, but publication requires its own bounded exact-head batch.",
+    "safe-draft": "Intentionally remains draft. No evidence-led relationship has been approved for publication; draft status is a safe reviewed product state, not a defect."
+  },
+  "waves": [
+    {
+      "wave": 1,
+      "identities": [
+        {"id":"gout","disposition":"promotion-candidate"},
+        {"id":"osteoporosis","disposition":"safe-draft"},
+        {"id":"osteomalacia","disposition":"safe-draft"},
+        {"id":"osteitis-deformans","disposition":"safe-draft"},
+        {"id":"bursitis","disposition":"safe-draft"},
+        {"id":"myositis","disposition":"safe-draft"},
+        {"id":"heterotopic-ossification","disposition":"safe-draft"},
+        {"id":"tendinopathy","disposition":"safe-draft"},
+        {"id":"pes-cavus","disposition":"safe-draft"},
+        {"id":"metatarsalgia","disposition":"safe-draft"},
+        {"id":"hallux-rigidus","disposition":"safe-draft"},
+        {"id":"hammertoe","disposition":"safe-draft"},
+        {"id":"parkinsons-disease","disposition":"published-evidence-led"},
+        {"id":"multiple-sclerosis","disposition":"published-evidence-led"},
+        {"id":"myasthenia-gravis","disposition":"promotion-candidate"},
+        {"id":"syringomyelia","disposition":"safe-draft"},
+        {"id":"seizure-disorder","disposition":"published-evidence-led"},
+        {"id":"trigeminal-neuralgia","disposition":"safe-draft"},
+        {"id":"ulnar-neuropathy","disposition":"safe-draft"},
+        {"id":"common-peroneal-neuropathy","disposition":"safe-draft"}
+      ]
+    },
+    {
+      "wave": 2,
+      "identities": [
+        {"id":"psoriatic-arthritis","disposition":"published-evidence-led"},
+        {"id":"charcot-arthropathy","disposition":"safe-draft"},
+        {"id":"sacroiliac-joint-dysfunction","disposition":"safe-draft"},
+        {"id":"femoroacetabular-impingement","disposition":"safe-draft"},
+        {"id":"hip-labral-tear","disposition":"safe-draft"},
+        {"id":"greater-trochanteric-pain-syndrome","disposition":"safe-draft"},
+        {"id":"patellar-instability","disposition":"safe-draft"},
+        {"id":"acl-injury","disposition":"published-evidence-led"},
+        {"id":"pcl-injury","disposition":"published-evidence-led"},
+        {"id":"tarsal-metatarsal-malunion-nonunion","disposition":"safe-draft"},
+        {"id":"radial-neuropathy","disposition":"safe-draft"},
+        {"id":"median-neuropathy","disposition":"safe-draft"},
+        {"id":"tibial-neuropathy","disposition":"safe-draft"},
+        {"id":"femoral-neuropathy","disposition":"safe-draft"},
+        {"id":"meralgia-paresthetica","disposition":"safe-draft"},
+        {"id":"complex-regional-pain-syndrome","disposition":"safe-draft"},
+        {"id":"cauda-equina-syndrome","disposition":"published-evidence-led"},
+        {"id":"cranial-nerve-palsy","disposition":"safe-draft"}
+      ]
+    },
+    {
+      "wave": 3,
+      "identities": [
+        {"id":"thyroiditis","disposition":"published-evidence-led"},
+        {"id":"nontoxic-thyroid-enlargement","disposition":"safe-draft"},
+        {"id":"acromegaly","disposition":"published-evidence-led"},
+        {"id":"hyperaldosteronism","disposition":"published-evidence-led"},
+        {"id":"hyperpituitarism","disposition":"safe-draft"},
+        {"id":"diabetes-insipidus","disposition":"safe-draft"},
+        {"id":"pituitary-neoplasm","disposition":"safe-draft"},
+        {"id":"hypertensive-heart-disease","disposition":"published-evidence-led"},
+        {"id":"cardiomyopathy","disposition":"published-evidence-led"},
+        {"id":"heart-valve-replacement-residuals","disposition":"safe-draft"},
+        {"id":"coronary-bypass-residuals","disposition":"safe-draft"},
+        {"id":"heart-transplant-residuals","disposition":"safe-draft"},
+        {"id":"implantable-cardiac-pacemaker","disposition":"safe-draft"},
+        {"id":"thromboangiitis-obliterans","disposition":"safe-draft"},
+        {"id":"pulmonary-hypertension","disposition":"published-evidence-led"}
+      ]
+    },
+    {
+      "wave": 4,
+      "identities": [
+        {"id":"bronchiectasis","disposition":"safe-draft"},
+        {"id":"chronic-laryngitis","disposition":"safe-draft"},
+        {"id":"vocal-cord-paralysis","disposition":"safe-draft"},
+        {"id":"aphonia","disposition":"safe-draft"},
+        {"id":"granulomatous-rhinitis","disposition":"safe-draft"},
+        {"id":"bacterial-rhinitis","disposition":"safe-draft"},
+        {"id":"pulmonary-vascular-disease","disposition":"safe-draft"},
+        {"id":"diaphragm-paralysis","disposition":"safe-draft"},
+        {"id":"narcolepsy","disposition":"safe-draft"},
+        {"id":"uveitis","disposition":"safe-draft"},
+        {"id":"keratitis","disposition":"safe-draft"},
+        {"id":"dry-eye-syndrome","disposition":"safe-draft"},
+        {"id":"retinal-dystrophy","disposition":"safe-draft"},
+        {"id":"nystagmus","disposition":"safe-draft"},
+        {"id":"ptosis","disposition":"safe-draft"}
+      ]
+    },
+    {
+      "wave": 5,
+      "identities": [
+        {"id":"esophageal-stricture","disposition":"safe-draft"},
+        {"id":"achalasia","disposition":"published-evidence-led"},
+        {"id":"barretts-esophagus","disposition":"published-evidence-led"},
+        {"id":"gastroparesis","disposition":"safe-draft"},
+        {"id":"peritoneal-adhesions","disposition":"safe-draft"},
+        {"id":"short-bowel-syndrome","disposition":"safe-draft"},
+        {"id":"fecal-incontinence","disposition":"safe-draft"},
+        {"id":"rectal-prolapse","disposition":"safe-draft"},
+        {"id":"anal-fistula","disposition":"safe-draft"},
+        {"id":"chronic-liver-disease","disposition":"published-evidence-led"},
+        {"id":"chronic-pyelonephritis","disposition":"published-evidence-led"},
+        {"id":"hydronephrosis","disposition":"safe-draft"},
+        {"id":"urethral-stricture","disposition":"published-evidence-led"},
+        {"id":"varicocele-hydrocele","disposition":"safe-draft"},
+        {"id":"epididymitis-orchitis","disposition":"safe-draft"}
+      ]
+    },
+    {
+      "wave": 6,
+      "identities": [
+        {"id":"specific-phobia","disposition":"safe-draft"},
+        {"id":"dissociative-disorder","disposition":"safe-draft"},
+        {"id":"depersonalization-derealization-disorder","disposition":"safe-draft"},
+        {"id":"functional-neurological-symptom-disorder","disposition":"safe-draft"},
+        {"id":"illness-anxiety-disorder","disposition":"safe-draft"},
+        {"id":"body-dysmorphic-disorder","disposition":"safe-draft"},
+        {"id":"hoarding-disorder","disposition":"safe-draft"},
+        {"id":"delusional-disorder","disposition":"safe-draft"},
+        {"id":"essential-thrombocythemia","disposition":"safe-draft"},
+        {"id":"primary-myelofibrosis","disposition":"safe-draft"},
+        {"id":"myelodysplastic-syndrome","disposition":"safe-draft"},
+        {"id":"discoid-lupus","disposition":"safe-draft"},
+        {"id":"scarring-alopecia","disposition":"safe-draft"},
+        {"id":"hyperhidrosis","disposition":"safe-draft"}
+      ]
+    },
+    {
+      "wave": 7,
+      "identities": [
+        {"id":"amebiasis","disposition":"safe-draft"},
+        {"id":"actinomycosis","disposition":"safe-draft"},
+        {"id":"nocardiosis","disposition":"safe-draft"},
+        {"id":"histoplasmosis","disposition":"safe-draft"},
+        {"id":"strongyloidiasis","disposition":"safe-draft"},
+        {"id":"rickettsial-ehrlichial-anaplasma-infection","disposition":"safe-draft"},
+        {"id":"ovarian-cancer","disposition":"safe-draft"},
+        {"id":"testicular-cancer","disposition":"safe-draft"},
+        {"id":"laryngeal-cancer","disposition":"safe-draft"},
+        {"id":"mandibular-nonunion","disposition":"safe-draft"}
+      ]
+    }
+  ]
+}

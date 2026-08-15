@@ -21,9 +21,7 @@ Backfilled:
 | depressive-disorder | sleep-apnea | medication-related; intermediate-chain |
 | depressive-disorder | erectile-dysfunction | medication-related |
 
-PTSD→sleep-apnea, PTSD→migraine-headaches, and PTSD→erectile-dysfunction had already been enriched and served as control cases.
-
-At that time, the following published mappings were reviewed but left pathway-unlabeled because their attached sources were legal/rating-only or otherwise insufficient: agoraphobia, anxiety-disorder, bipolar-disorder, persistent-depressive-disorder, panic-disorder, schizophrenia, social-anxiety-disorder, somatic-symptom-disorder, substance-use-disorder, mild-tbi, micro-tbi, post-concussion-syndrome, subdural-hematoma, epidural-hematoma, skull-fracture-non-basilar-and-basal, and rem-sleep-disorder. Adjustment-disorder→migraine-headaches was also left unlabeled.
+PTSD→sleep-apnea, PTSD→migraine-headaches, and PTSD→erectile-dysfunction had already been enriched and served as control cases. Other published mental/neurological mappings with only legal/rating support were intentionally left pathway-unlabeled at that time.
 
 ### Batch 2 — Musculoskeletal
 
@@ -34,7 +32,7 @@ Backfilled:
 | rheumatoid-arthritis | depressive-disorder | somatopsychic |
 | rheumatoid-arthritis | gerd | medication-related |
 
-At that time ankle-strain, osteoarthritis, amputation-or-loss-of-use, and knee-injury edges with legal/rating-only support were intentionally left unlabeled rather than having stronger medical pathways inferred.
+Other weak biomechanical/legal-only mappings were left unlabeled rather than having stronger medical pathways inferred.
 
 ### Batch 3 — Respiratory / ENT
 
@@ -47,7 +45,7 @@ Backfilled:
 | asthma | sleep-apnea | direct-secondary; aggravation |
 | asthma | cardiac-arrhythmia | direct-secondary |
 
-Chronic-sinusitis, chronic-rhinitis, emphysema, chronic-bronchitis, pulmonary-fibrosis, interstitial-lung-disease, anosmia, ageusia, and sleep-apnea were originally left pathway-unlabeled where the attached sources did not support stronger metadata.
+Other respiratory/ENT mappings with insufficient attached evidence were intentionally left unlabeled.
 
 ### Batch 4 — Systemic / Medical
 
@@ -58,32 +56,43 @@ Backfilled:
 | stomach-cancer | depressive-disorder | somatopsychic |
 | abdominal-hernia | depressive-disorder | somatopsychic |
 
-Treatment-risk/comorbidity evidence was not upgraded into stronger pathway metadata for stomach-cancer→GERD, abdominal-hernia→GERD, ED→GERD, CHF→depression, or CHF→GERD. Hypertension, AL amyloidosis, agranulocytosis, alopecia areata, anorexia nervosa, Addison's disease, and ED→depression were also left unlabeled where the attached sources were insufficient.
+Treatment-risk/comorbidity evidence was not upgraded into stronger pathway metadata where the primary→treatment or condition-specific mechanism was unsupported.
 
-## Subsequent Clinical Evidence Promotion supersession through Batch 18
+## Subsequent Clinical Evidence Promotion supersession through Batch 22
 
 The later evidence-promotion program deliberately changed historical states when stronger evidence or safety review justified doing so:
 
-- **Batch 2:** `knee-injury` and `osteoarthritis` were returned to draft rather than preserving weak biomechanical/legal-only publication.
-- **Batch 3:** amputation→depression was clinically repaired; `ageusia` was returned to draft.
-- **Batch 4:** anosmia→depression and alopecia-areata→depression were clinically repaired; `agranulocytosis` was returned to draft.
-- **Batch 5:** `al-amyloidosis` was returned to draft.
-- **Batch 6:** `addisons-disease` was returned to draft.
-- **Batch 7:** `anorexia-nervosa` was returned to draft.
-- **Batch 8:** all four hypertension relationships were clinically repaired. CKD, ischemic-heart-disease, and CHF edges carry bounded disease-progression metadata; hypertension→ED remains association-focused and pathway-unlabeled.
-- **Batch 9:** ED→GERD was withdrawn; ED→depression was clinically repaired with a bidirectional evidence synthesis and bounded somatopsychic metadata that preserves causal-direction uncertainty.
-- **Batch 10:** `emphysema` and `chronic-bronchitis` were returned to draft because their OSA/arrhythmia propositions were legal/rating-only.
-- **Batch 11:** ILD→OSA was clinically repaired but remains association-focused/pathway-unlabeled; ILD→arrhythmia was removed. `pulmonary-fibrosis` was returned to draft rather than generalizing IPF-specific evidence.
-- **Batch 12:** chronic-rhinitis→OSA was repaired only for a documented allergic-rhinitis phenotype; chronic-sinusitis→OSA was repaired as association-focused CRS research. Their arrhythmia edges were removed.
-- **Batch 13:** cauda-equina-syndrome→ED was promoted as complication/outcome research without automatic causal pathway metadata.
-- **Batch 14:** sleep-apnea→hypertension, depression, and anxiety were clinically repaired and remain association-focused. Sleep-apnea→GERD was withdrawn because the reviewed evidence did not support a safe directional relationship.
-- **Batch 15:** psoriatic-arthritis→depression was promoted as association/comorbidity research without automatic causal metadata.
-- **Batch 16:** CHF→GERD was withdrawn. CHF→depression retained its verified clinical source and remains a bounded comorbidity relationship rather than being upgraded to stronger causal pathway metadata.
-- **Batch 17:** stomach-cancer→GERD and abdominal-hernia→GERD were withdrawn. Rheumatoid-arthritis→GERD was clinically repaired with a two-link medication pathway: documented NSAID treatment for RA plus NSAID/GERD association evidence; individual exposure, diagnosis, chronology, and competing causes remain required.
-- **Batch 18:** `agoraphobia` and `panic-disorder`, originally listed as published-but-unlabeled legal-only mappings in Batch 1, are returned to draft rather than preserving unsupported OSA/GERD/migraine propositions. `pulmonary-hypertension`→`congestive-heart-failure` is promoted with bounded `disease-progression` metadata only for a documented pre-capillary/pulmonary-arterial-hypertension phenotype progressing to right-ventricular/right-sided heart failure; group 2 PH caused by left-heart disease is expressly excluded from that direction of inference.
+- **Batch 2:** `knee-injury` and `osteoarthritis` returned to draft rather than preserving weak biomechanical/legal-only publication.
+- **Batch 3:** amputation→depression clinically repaired; `ageusia` returned to draft.
+- **Batch 4:** anosmia→depression and alopecia-areata→depression clinically repaired; `agranulocytosis` returned to draft.
+- **Batch 5:** `al-amyloidosis` returned to draft.
+- **Batch 6:** `addisons-disease` returned to draft.
+- **Batch 7:** `anorexia-nervosa` returned to draft.
+- **Batch 8:** all four hypertension relationships clinically repaired; CKD/IHD/CHF carry bounded disease-progression metadata while hypertension→ED remains association-focused.
+- **Batch 9:** ED→GERD withdrawn; ED→depression clinically repaired with bidirectional evidence and bounded somatopsychic metadata.
+- **Batch 10:** `emphysema` and `chronic-bronchitis` returned to draft.
+- **Batch 11:** ILD→OSA clinically repaired but left pathway-unlabeled; ILD→arrhythmia removed; `pulmonary-fibrosis` returned to draft.
+- **Batch 12:** chronic-rhinitis→OSA repaired only for documented allergic-rhinitis phenotype; chronic-sinusitis→OSA repaired as CRS association research; both arrhythmia edges removed.
+- **Batch 13:** cauda-equina-syndrome→ED promoted as complication/outcome research without automatic causal pathway metadata.
+- **Batch 14:** sleep-apnea→hypertension/depression/anxiety clinically repaired and kept association-focused; sleep-apnea→GERD withdrawn.
+- **Batch 15:** psoriatic-arthritis→depression promoted as association/comorbidity research.
+- **Batch 16:** CHF→GERD withdrawn; CHF→depression retained its verified clinical source and remained bounded comorbidity research.
+- **Batch 17:** stomach-cancer→GERD and abdominal-hernia→GERD withdrawn; rheumatoid-arthritis→GERD repaired with a two-link medication evidence chain.
+- **Batch 18:** `agoraphobia` and `panic-disorder` returned to draft; pulmonary-hypertension→CHF promoted only as a pre-capillary/PAH→right-heart-failure progression pathway, expressly excluding group 2 PH caused by left-heart disease.
+- **Batch 19:** `bipolar-disorder`, `persistent-depressive-disorder`, `social-anxiety-disorder`, and `somatic-symptom-disorder` returned to draft; autoimmune/Hashimoto-type thyroiditis→hypothyroidism promoted with bounded disease-progression metadata and transient-thyroiditis exclusions.
+- **Batch 20:** `anxiety-disorder`, `schizophrenia`, and `substance-use-disorder` returned to draft; mild-TBI→headache clinically repaired with explicit post-traumatic-headache/migraine-phenotype limits; Parkinson disease→depression promoted as association/comorbidity research.
+- **Batch 21:** `micro-tbi`, `subdural-hematoma`, `epidural-hematoma`, and `rem-sleep-disorder` returned to draft rather than translating broad sequelae into exact downstream diagnoses; multiple-sclerosis→depression promoted as association/comorbidity research.
+- **Batch 22:** the broad six-edge `skull-fracture-non-basilar-and-basal` mapping returned to draft; post-concussion-syndrome retained only clinically sourced persistent-post-traumatic-headache/migraine-phenotype research with no automatic migraine reclassification; seizure-disorder→depression promoted as association/comorbidity research.
 
 ## Current interpretation rule
 
-Historical entries above explain why pathway metadata was or was not authored at the time. They are **not** the current publication-state source of truth. Current mapping state is defined by `data/knowledge-base/`, current citation/debt counts by `docs/kb-coverage-tracker.md` and `npm run citations:audit`, and current catalog placement by `data/conditions/`.
+Historical entries explain why pathway metadata was or was not authored at the time. They are **not** the current publication-state source of truth.
 
-Later evidence-promotion batches may continue to repair, withdraw, or leave historical mappings unlabeled. No later batch should resurrect an unsafe relationship merely to preserve a historical backfill expectation.
+Current truth is defined by:
+
+- `data/knowledge-base/` for live mapping state;
+- `data/expansion-dispositions.json` for the current 107 Wave 1–7 expansion program disposition;
+- `docs/kb-coverage-tracker.md` and `npm run citations:audit` for current citation/debt counts; and
+- `data/conditions/` for catalog identity and physical placement.
+
+No later batch should resurrect an unsafe relationship merely to preserve a historical backfill expectation.
