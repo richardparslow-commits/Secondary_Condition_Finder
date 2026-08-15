@@ -17,10 +17,8 @@ const WAVE_SEVEN_IDS = [
 ] as const;
 
 const PUBLISHED_WAVE_SEVEN_IDS = new Set([
-  "histoplasmosis",
   "ovarian-cancer",
   "testicular-cancer",
-  "laryngeal-cancer",
 ]);
 
 describe("condition catalog expansion wave 7", () => {
@@ -38,7 +36,7 @@ describe("condition catalog expansion wave 7", () => {
     for (const id of WAVE_SEVEN_IDS) expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
   });
 
-  it("publishes only the four evidence-led Wave 7 relationships and keeps the other six safe-draft", () => {
+  it("publishes only two evidence-led Wave 7 relationships and keeps the other eight safe-draft", () => {
     for (const id of WAVE_SEVEN_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
@@ -52,6 +50,20 @@ describe("condition catalog expansion wave 7", () => {
         expect(mapping?.todo.length).toBeGreaterThan(0);
       }
     }
+  });
+
+  it("keeps adrenal histoplasmosis out of the pulmonary-only mapping", () => {
+    const mapping = mappingById.get("histoplasmosis");
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/pulmonary|adrenal|disseminated|disease-site/i);
+  });
+
+  it("does not equate post-laryngectomy voice handicap with the aphonia diagnosis", () => {
+    const mapping = mappingById.get("laryngeal-cancer");
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/aphonia|alaryngeal|voice handicap|natural laryngeal/i);
   });
 
   it("does not automate rating-citation verification", () => {
