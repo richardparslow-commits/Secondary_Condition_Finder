@@ -13,7 +13,7 @@ describe("clinical evidence promotion batch 15", () => {
     expect(kb).toHaveLength(300);
   });
 
-  it("promotes psoriatic-arthritis depression research as association-focused evidence", () => {
+  it("keeps psoriatic-arthritis depression research association-focused after source consolidation", () => {
     const mapping = byId.get("psoriatic-arthritis");
     const suggestion = mapping?.suggestions[0];
     const sources = suggestion?.sourceReferences ?? [];
@@ -26,15 +26,12 @@ describe("clinical evidence promotion batch 15", () => {
     expect(suggestion?.prevalence).toBe("commonly-explored");
     expect(suggestion?.pathwayIntelligence).toBeUndefined();
     expect(suggestion?.rationale).toMatch(/psoriatic arthritis/i);
-    expect(suggestion?.rationale).toMatch(/bidirectionality|bidirectional/i);
-    expect(suggestion?.rationale).toMatch(/do not establish.*individual/i);
-    expect(sources).toHaveLength(2);
-    expect(sources.every((source) => source.verificationScope === "clinical-evidence")).toBe(true);
-    expect(sources.every((source) => source.verified === false)).toBe(true);
-    expect(sources.map((source) => source.sourceUrl)).toEqual([
-      "https://pubmed.ncbi.nlm.nih.gov/33263264/",
-      "https://pubmed.ncbi.nlm.nih.gov/38797775/",
-    ]);
+    expect(suggestion?.rationale).toMatch(/population-level/i);
+    expect(suggestion?.rationale).toMatch(/do not establish/i);
+    expect(sources).toHaveLength(1);
+    expect(sources[0]?.verificationScope).toBe("clinical-evidence");
+    expect(sources[0]?.verified).toBe(false);
+    expect(sources[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/38797775/");
   });
 
   it("retires only redundant PTSD legal references while preserving all three clinical relationships", () => {
