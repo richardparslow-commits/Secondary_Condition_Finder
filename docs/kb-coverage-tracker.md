@@ -6,7 +6,7 @@ This is the authoritative current-state tracker for post-v2 clinical evidence wo
 
 Batch 29 branches from exact `main` SHA `c8ad197e8df420034579ba644e60f9cec0168a8d` (`Promote evidence-led Wave 5 mappings (#352)`). That base passed independent `main` CI #1021 and Production Runtime Readiness #380 before Batch 29 started.
 
-Batch 29 itself is not production-closed until its exact head passes PR CI and immutable-head review, is merged with expected-head protection, and the resulting merge SHA passes independent `main` CI and Production Runtime Readiness.
+Batch 29 itself is not production-closed until its exact head passes PR CI and a Vercel Agent immutable-head review, is merged with expected-head protection, and the resulting merge SHA passes independent `main` CI and Production Runtime Readiness. Vercel preview/deployment readiness is not a substitute for the Agent code-review result.
 
 ## Frozen universe
 
@@ -61,9 +61,11 @@ A clinical evidence batch is repository-controlled only when:
 - every live published relationship satisfies the clinical-evidence/provenance rules;
 - unsupported relationships are withdrawn rather than retained for count preservation;
 - citation debt is measured and qualified-human verification remains separate;
-- exact-head CI and immutable-head review are clean; and
+- exact-head CI and Vercel Agent immutable-head review are clean; and
 - the exact merge SHA is independently proven by `main` CI and production runtime readiness.
+
+Any head change invalidates the prior exact-head CI and Vercel Agent review and requires both gates again on the new head.
 
 ## Exact-head workflow
 
-Every future evidence promotion or repair continues to use: bounded branch from production-validated `main` → exact-head PR CI → immutable-head review → squash merge with expected-head protection → independent `main` CI → exact production deployment/runtime proof → Production Runtime Readiness.
+Every future evidence promotion or repair uses: bounded branch from production-validated `main` → exact-head PR CI → Vercel Agent immutable-head review → squash merge with expected-head protection → independent `main` CI → exact production deployment/runtime proof → Production Runtime Readiness.
