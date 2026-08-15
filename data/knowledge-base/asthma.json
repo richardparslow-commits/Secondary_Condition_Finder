@@ -42,45 +42,6 @@
           "sourceLocator": "PMID 40774162"
         }
       ]
-    },
-    {
-      "conditionId": "cardiac-arrhythmia",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Asthma has been associated with a modestly increased risk of atrial fibrillation in observational studies, but the available evidence has substantial heterogeneity and risk of bias. Medication effects and other cardiovascular risk factors may also contribute, so an individual nexus requires case-specific evidence.",
-      "pathwayIntelligence": {
-        "pathways": [
-          "direct-secondary"
-        ],
-        "causalChain": "Asthma → claimed contribution to a diagnosed cardiac arrhythmia; the published association signal is low-confidence and requires individual cardiovascular assessment.",
-        "developmentQuestions": [
-          "Is a cardiac arrhythmia objectively documented by ECG, Holter/event monitor, or other appropriate testing?",
-          "What is the temporal relationship between asthma severity or exacerbations and the arrhythmia?",
-          "Can a qualified clinician address whether asthma itself contributed to the arrhythmia in this individual case?",
-          "Which cardiovascular risk factors, medications, and alternative arrhythmia causes should be addressed?",
-          "If a medication theory is considered separately, is there medication-specific evidence supporting the relevant exposure rather than relying on the asthma/AF association study?"
-        ],
-        "issuesToResolve": [
-          "The systematic review reports high heterogeneity and serious risk of bias, so the association signal is not strong individual causal evidence.",
-          "Medication effects are a possible alternative contributor in the existing rationale but are not labeled medication-related here without a medication-specific supporting source."
-        ]
-      },
-      "evidenceGaps": [
-        "ECG, Holter/event monitor, or other documented arrhythmia diagnosis",
-        "Medication history, especially beta-agonist exposure and timing",
-        "Cardiology evaluation addressing alternative causes and the individual relationship to asthma or its treatment"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Association between asthma and atrial fibrillation: systematic review and meta-analysis (2024), PMID 38278854",
-          "note": "Systematic review found a modest association between asthma and atrial fibrillation, but high heterogeneity and serious risk of bias resulted in very low confidence; supports an association signal, not individual causation.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38278854/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "PMID 38278854"
-        }
-      ]
     }
   ]
 }

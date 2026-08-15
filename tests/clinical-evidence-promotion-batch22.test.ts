@@ -19,18 +19,12 @@ describe("clinical evidence promotion batch 22", () => {
     expect(mapping?.todo.join(" ")).toMatch(/six|subtype|heterogeneous/i);
   });
 
-  it("clinically repairs only post-concussion headache research and removes anxiety", () => {
+  it("preserves the Batch-22 anxiety withdrawal after later post-concussion headache target cleanup", () => {
     const mapping = byId.get("post-concussion-syndrome");
-    const suggestion = mapping?.suggestions[0];
-    expect(mapping?.draft).toBe(false);
-    expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe("migraine-headaches");
-    expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.rationale).toMatch(/post-traumatic headache/i);
-    expect(suggestion?.rationale).toMatch(/distinct diagnosis|does not justify|not.*every/i);
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("42133249");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
-    expect(mapping?.suggestions.some((entry) => entry.conditionId === "anxiety-disorder")).toBe(false);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/post-traumatic headache/i);
+    expect(mapping?.todo.join(" ")).toMatch(/primary migraine|reclassification|target/i);
   });
 
   it("promotes seizure-disorder depression only as association/comorbidity research", () => {

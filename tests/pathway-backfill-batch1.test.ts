@@ -4,7 +4,6 @@ import { loadKnowledgeBase } from "@/lib/kb/load";
 
 const expectedBackfill = {
   "adjustment-disorder": {
-    "sleep-apnea": ["direct-secondary", "aggravation"],
     gerd: ["direct-secondary", "aggravation"],
   },
   "depressive-disorder": {
@@ -31,7 +30,7 @@ const safetyWithdrawnMappings = [
 ] as const;
 
 describe("controlled pathway backfill batch 1", () => {
-  it("backfills only edges whose attached source set includes clinical evidence", () => {
+  it("backfills only surviving edges whose attached source set includes clinical evidence", () => {
     const kb = loadKnowledgeBase();
     for (const [primaryId, secondaries] of Object.entries(expectedBackfill)) {
       const mapping = kb.find((entry) => entry.id === primaryId);
@@ -68,17 +67,12 @@ describe("controlled pathway backfill batch 1", () => {
     expect(mapping?.suggestions.some((entry) => entry.conditionId === "depressive-disorder")).toBe(false);
   });
 
-  it("recognizes the Batch 22 post-concussion headache repair without resurrecting anxiety", () => {
+  it("recognizes the later post-concussion migraine-target withdrawal", () => {
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "post-concussion-syndrome");
-    const headache = mapping?.suggestions.find((entry) => entry.conditionId === "migraine-headaches");
-    expect(mapping?.draft).toBe(false);
-    expect(mapping?.suggestions).toHaveLength(1);
-    expect(headache?.sourceReferences[0]?.sourceUrl).toContain("42133249");
-    expect(headache?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(headache?.pathwayIntelligence).toBeUndefined();
-    expect(headache?.rationale).toMatch(/post-traumatic headache/i);
-    expect(headache?.rationale).toMatch(/distinct diagnosis|not.*every|does not justify/i);
-    expect(mapping?.suggestions.some((entry) => entry.conditionId === "anxiety-disorder")).toBe(false);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/post-traumatic headache/i);
+    expect(mapping?.todo.join(" ")).toMatch(/primary migraine|reclassification|target/i);
   });
 
   it("preserves the ranking and prevalence of the surviving enriched edges", () => {
@@ -86,8 +80,7 @@ describe("controlled pathway backfill batch 1", () => {
     const adjustment = kb.find((entry) => entry.id === "adjustment-disorder");
     const depression = kb.find((entry) => entry.id === "depressive-disorder");
     expect(adjustment?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
-      { conditionId: "sleep-apnea", rank: 1, prevalence: "commonly-explored" },
-      { conditionId: "gerd", rank: 2, prevalence: "commonly-explored" },
+      { conditionId: "gerd", rank: 1, prevalence: "commonly-explored" },
     ]);
     expect(depression?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
       { conditionId: "sleep-apnea", rank: 1, prevalence: "sometimes-explored" },
@@ -95,10 +88,11 @@ describe("controlled pathway backfill batch 1", () => {
     ]);
   });
 
-  it("recognizes the Batch 23 adjustment-disorder migraine withdrawal", () => {
+  it("recognizes later adjustment-disorder withdrawals", () => {
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "adjustment-disorder");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions.some((entry) => entry.conditionId === "migraine-headaches")).toBe(false);
+    expect(mapping?.suggestions.some((entry) => entry.conditionId === "sleep-apnea")).toBe(false);
     expect(mapping?.suggestions.every((entry) =>
       entry.sourceReferences.some((source) => source.verificationScope === "clinical-evidence"),
     )).toBe(true);
