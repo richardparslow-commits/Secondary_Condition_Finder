@@ -130,12 +130,20 @@ function splitIntoQuotedUnits(text: string): Array<{ line: number; text: string 
   return units;
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function conditionTermPattern(term: string): RegExp | null {
+  const normalized = normalizeWhitespace(term);
+  if (normalized.length < 3) return null;
+
+  const phrase = escapeRegExp(normalized).replace(/\s+/g, "\\s+");
+  return new RegExp(`(?:^|[^\\p{L}\\p{N}])${phrase}(?=$|[^\\p{L}\\p{N}])`, "iu");
+}
+
 function matchingTerms(text: string, terms: string[]): string[] {
-  const lowered = text.toLocaleLowerCase();
-  return terms.filter((term) => {
-    const normalized = normalizeWhitespace(term).toLocaleLowerCase();
-    return normalized.length >= 3 && lowered.includes(normalized);
-  });
+  return terms.filter((term) => conditionTermPattern(term)?.test(text) === true);
 }
 
 function hasPattern(text: string, patterns: RegExp[]): boolean {
