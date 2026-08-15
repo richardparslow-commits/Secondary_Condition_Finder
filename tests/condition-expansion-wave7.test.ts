@@ -16,6 +16,13 @@ const WAVE_SEVEN_IDS = [
   "mandibular-nonunion",
 ] as const;
 
+const PUBLISHED_WAVE_SEVEN_IDS = new Set([
+  "histoplasmosis",
+  "ovarian-cancer",
+  "testicular-cancer",
+  "laryngeal-cancer",
+]);
+
 describe("condition catalog expansion wave 7", () => {
   const catalog = loadConditionCatalog();
   const knowledgeBase = loadKnowledgeBase();
@@ -27,19 +34,23 @@ describe("condition catalog expansion wave 7", () => {
     expect(knowledgeBase).toHaveLength(300);
   });
 
-  it("adds all 10 approved Wave 7 identities", () => {
-    for (const id of WAVE_SEVEN_IDS) {
-      expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
-    }
+  it("preserves all 10 approved Wave 7 identities", () => {
+    for (const id of WAVE_SEVEN_IDS) expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
   });
 
-  it("gives every Wave 7 condition exactly one safe draft mapping", () => {
+  it("publishes only the four evidence-led Wave 7 relationships and keeps the other six safe-draft", () => {
     for (const id of WAVE_SEVEN_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
-      expect(mapping?.draft).toBe(true);
-      expect(mapping?.suggestions).toEqual([]);
-      expect(mapping?.todo.length).toBeGreaterThan(0);
+      if (PUBLISHED_WAVE_SEVEN_IDS.has(id)) {
+        expect(mapping?.draft).toBe(false);
+        expect(mapping?.todo).toEqual([]);
+        expect(mapping?.suggestions).toHaveLength(1);
+      } else {
+        expect(mapping?.draft).toBe(true);
+        expect(mapping?.suggestions).toEqual([]);
+        expect(mapping?.todo.length).toBeGreaterThan(0);
+      }
     }
   });
 
@@ -65,15 +76,12 @@ describe("condition catalog expansion wave 7", () => {
     const actinomycosis = catalogById.get("actinomycosis");
     const nocardiosis = catalogById.get("nocardiosis");
     const histoplasmosis = catalogById.get("histoplasmosis");
-
     expect(actinomycosis?.ratingSchedule[0]?.citation).toBe("38 CFR 4.97");
     expect(actinomycosis?.ratingSchedule[0]?.note).toMatch(/6822/i);
     expect(actinomycosis?.reviewNotes.join(" ")).toMatch(/extra-pulmonary/i);
-
     expect(nocardiosis?.ratingSchedule[0]?.citation).toBe("38 CFR 4.97");
     expect(nocardiosis?.ratingSchedule[0]?.note).toMatch(/6823/i);
     expect(nocardiosis?.reviewNotes.join(" ")).toMatch(/extra-pulmonary/i);
-
     expect(histoplasmosis?.name).toMatch(/lung/i);
     expect(histoplasmosis?.ratingSchedule[0]?.note).toMatch(/6834/i);
     expect(histoplasmosis?.reviewNotes.join(" ")).toMatch(/extra-pulmonary/i);
@@ -82,12 +90,10 @@ describe("condition catalog expansion wave 7", () => {
   it("keeps strongyloidiasis severity scope and the DC 6317 infection grouping explicit", () => {
     const strongyloidiasis = catalogById.get("strongyloidiasis");
     const grouped = catalogById.get("rickettsial-ehrlichial-anaplasma-infection");
-
     expect(strongyloidiasis?.ratingSchedule[0]?.citation).toBe("38 CFR 4.88b");
     expect(strongyloidiasis?.ratingSchedule[0]?.note).toMatch(/6325/i);
     expect(strongyloidiasis?.ratingSchedule[0]?.note).toMatch(/hyperinfection|disseminated/i);
     expect(strongyloidiasis?.reviewNotes.join(" ")).toMatch(/do not treat dc 6325/i);
-
     expect(grouped?.ratingSchedule[0]?.note).toMatch(/6317/i);
     expect(grouped?.ratingSchedule[0]?.note).toMatch(/rickettsial.*ehrlichia.*anaplasma/i);
     expect(grouped?.reviewNotes.join(" ")).toMatch(/does not imply.*etiology|shared rating identity/i);
@@ -97,16 +103,13 @@ describe("condition catalog expansion wave 7", () => {
     const ovarian = catalogById.get("ovarian-cancer");
     const testicular = catalogById.get("testicular-cancer");
     const laryngeal = catalogById.get("laryngeal-cancer");
-
     expect(ovarian?.ratingSchedule[0]?.citation).toBe("38 CFR 4.116");
     expect(ovarian?.ratingSchedule[0]?.note).toMatch(/7627/i);
     expect(ovarian?.ratingSchedule[0]?.note).toMatch(/system-level.*(?:rather than|not).*ovary-specific/i);
-
     expect(testicular?.ratingSchedule[0]?.citation).toBe("38 CFR 4.115b");
     expect(testicular?.ratingSchedule[0]?.note).toMatch(/7528/i);
     expect(testicular?.ratingSchedule[0]?.note).toMatch(/system-level.*(?:rather than|not).*testis-specific/i);
     expect(testicular?.reviewNotes.join(" ")).toMatch(/7523|7524/);
-
     expect(laryngeal?.ratingSchedule[0]?.citation).toBe("38 CFR 4.97");
     expect(laryngeal?.ratingSchedule[0]?.note).toMatch(/6819/i);
     expect(laryngeal?.ratingSchedule[0]?.note).toMatch(/system-level.*(?:rather than|not).*larynx-specific/i);
