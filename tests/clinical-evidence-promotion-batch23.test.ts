@@ -15,16 +15,15 @@ describe("clinical evidence promotion batch 23", () => {
     expect(kb).toHaveLength(300);
   });
 
-  it("keeps Batch-23 review-debt cleanup clinically supported after later consolidation", () => {
+  it("recognizes the later adjustment-disorder GERD withdrawal after phenotype review", () => {
     const adjustment = byId.get("adjustment-disorder");
-    expect(adjustment?.draft).toBe(false);
-    expect(adjustment?.suggestions.map((entry) => entry.conditionId)).toEqual(["gerd"]);
-    expect(adjustment?.suggestions[0]?.rank).toBe(1);
-    expect(adjustment?.suggestions.every((entry) =>
-      entry.sourceReferences.some((source) => source.verificationScope === "clinical-evidence"),
-    )).toBe(true);
-    expect(adjustment?.suggestions.some((entry) => entry.conditionId === "sleep-apnea")).toBe(false);
+    expect(adjustment?.draft).toBe(true);
+    expect(adjustment?.suggestions).toEqual([]);
+    expect(adjustment?.todo.join(" ")).toMatch(/adjustment disorder.*condition-specific|condition-specific.*adjustment disorder/i);
+    expect(adjustment?.todo.join(" ")).toMatch(/anxiety|depression|psychosocial/i);
+  });
 
+  it("keeps the later consolidated depression erectile-dysfunction source", () => {
     const depression = byId.get("depressive-disorder");
     const ed = depression?.suggestions.find((entry) => entry.conditionId === "erectile-dysfunction");
     expect(ed?.sourceReferences.filter((source) => source.verificationScope === "clinical-evidence")).toHaveLength(1);
