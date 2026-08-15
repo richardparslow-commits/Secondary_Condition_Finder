@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { loadExposureCatalog } from "@/lib/presumptive/load";
-import { matchPresumptives } from "@/lib/presumptive/match";
+import { matchPresumptives, serviceHistorySchema } from "@/lib/presumptive/match";
 import { exposureCategorySchema, presumptiveSourceSchema } from "@/lib/presumptive/schema";
 
 describe("presumptive source validation", () => {
@@ -23,6 +23,88 @@ describe("presumptive source validation", () => {
         expect(source.verified).toBe(false);
       }
     }
+  });
+});
+
+describe("presumptive service-history validation", () => {
+  const base = {
+    locations: ["Iraq"],
+    serviceStart: "2026-01-01",
+    serviceEnd: "2026-12-31",
+  };
+
+  it.each([
+    "2026-02-31",
+    "2026-04-31",
+    "2026-13-01",
+    "2026-00-10",
+    "2026-01-00",
+    "2026-2-01",
+  ])("rejects impossible or malformed service date %s", (invalidDate) => {
+    expect(
+      serviceHistorySchema.safeParse({ ...base, serviceStart: invalidDate }).success,
+    ).toBe(false);
+  });
+
+  it("enforces Gregorian leap-year rules", () => {
+    expect(
+      serviceHistorySchema.safeParse({
+        ...base,
+        serviceStart: "2024-02-29",
+        serviceEnd: "2024-02-29",
+      }).success,
+    ).toBe(true);
+    expect(
+      serviceHistorySchema.safeParse({
+        ...base,
+        serviceStart: "2000-02-29",
+        serviceEnd: "2000-02-29",
+      }).success,
+    ).toBe(true);
+    expect(
+      serviceHistorySchema.safeParse({ ...base, serviceStart: "2023-02-29" }).success,
+    ).toBe(false);
+    expect(
+      serviceHistorySchema.safeParse({ ...base, serviceStart: "1900-02-29" }).success,
+    ).toBe(false);
+  });
+
+  it("does not misclassify an impossible end date as a date-order error", () => {
+    const result = serviceHistorySchema.safeParse({
+      ...base,
+      serviceStart: "2026-03-01",
+      serviceEnd: "2026-02-31",
+    });
+
+    expect(result.success).toBe(false);
+    if (result.success) return;
+
+    expect(
+      result.error.issues.some(
+        (issue) => issue.path[0] === "serviceEnd" && issue.code === "invalid_format",
+      ),
+    ).toBe(true);
+    expect(
+      result.error.issues.some((issue) =>
+        issue.message.includes("Service start date must be on or before the end date."),
+      ),
+    ).toBe(false);
+  });
+
+  it("still rejects a reversed pair of valid calendar dates", () => {
+    const result = serviceHistorySchema.safeParse({
+      ...base,
+      serviceStart: "2026-03-01",
+      serviceEnd: "2026-02-28",
+    });
+
+    expect(result.success).toBe(false);
+    if (result.success) return;
+    expect(
+      result.error.issues.some((issue) =>
+        issue.message.includes("Service start date must be on or before the end date."),
+      ),
+    ).toBe(true);
   });
 });
 

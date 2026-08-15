@@ -14,7 +14,7 @@ interface PresumptivePageProps {
 const VALIDATION_MESSAGES = {
   "select-location": "Select at least one location where you served.",
   "date-order": "Service start date must be on or before the end date.",
-  "invalid-date": "Enter service dates in a valid date format or leave them blank.",
+  "invalid-date": "Enter real calendar dates in YYYY-MM-DD format or leave them blank.",
 } as const;
 
 type ValidationCode = keyof typeof VALIDATION_MESSAGES;
