@@ -21,7 +21,7 @@ describe("clinical program completion controls", () => {
   it("records the Batch-23 citation baseline and completed expansion accounting", () => {
     const tracker = read("docs/kb-coverage-tracker.md");
     expect(tracker).toMatch(/20 published-evidence-led|published.*\*\*20\*\*/i);
-    expect(tracker).toMatch(/87.*draft/i);
+    expect(tracker).toMatch(/intentionally draft after Batch 23:\s*\*\*87\*\*/i);
     expect(tracker).toMatch(/promotion candidates remaining:\s*\*\*0\*\*/i);
     expect(tracker).toMatch(/live references:\s*\*\*70\*\*/i);
     expect(tracker).toMatch(/published-unverified review findings:\s*\*\*60\*\*/i);
