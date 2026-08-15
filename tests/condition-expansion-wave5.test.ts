@@ -15,8 +15,11 @@ const FRAMEWORK_ONLY_IDS = ["gastroparesis", "varicocele-hydrocele"] as const;
 const POST_V2_PROMOTED_WAVE_FIVE_IDS = new Set([
   "achalasia",
   "barretts-esophagus",
+  "rectal-prolapse",
+  "anal-fistula",
   "chronic-liver-disease",
   "chronic-pyelonephritis",
+  "hydronephrosis",
   "urethral-stricture",
 ]);
 
