@@ -18,21 +18,12 @@
       "sourceReferences": [
         {
           "citation": "Moradi et al., BMC Musculoskeletal Disorders (2025), PMID 40380123",
-          "note": "Systematic review of sexual dysfunction after lumbar disc herniation and cauda equina syndrome reported persistent sexual problems after CES and identified erectile dysfunction as the most prevalent male sexual disorder; supports a condition-specific clinical relationship, not automatic individual causation.",
+          "note": "Systematic review of 20 eligible studies found persistent sexual dysfunction after cauda equina syndrome and identified erectile dysfunction as the most prevalent male sexual disorder; supports a condition-specific clinical relationship, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40380123/",
           "verified": false,
-          "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 40380123"
-        },
-        {
-          "citation": "Najjar et al., European Spine Journal (2026), PMID 42472710",
-          "note": "Systematic review of long-term CES outcomes found sexual dysfunction common and persistent, with a pooled estimate of 58.4% and limited evidence linking worse outcomes to markers of sacral nerve-root involvement; supports long-term clinical relevance while preserving uncertainty about individual causation and baseline function.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42472710/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 42472710"
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 40380123; abstract: 20 eligible studies; erectile dysfunction most prevalent male sexual disorder and persistent sexual issues after CES"
         }
       ]
     }
