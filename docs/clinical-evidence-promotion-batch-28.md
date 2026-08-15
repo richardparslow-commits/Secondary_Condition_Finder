@@ -67,6 +67,8 @@ Two new published clinical references replace three withdrawn unverified publish
 - retired clinical-evidence URLs: **4**;
 - clinical-URL provenance: **68**.
 
+The raw live clinical-URL and combined clinical-URL counts are observations rather than monotonic floors. They may decrease when an unsupported **unverified** live source is correctly withdrawn. The audit instead requires complete canonical-URL coverage for every live clinical-evidence reference, preserves retired verified clinical-URL provenance, preserves total verified provenance, and ratchets the unverified/published-review debt ceilings downward. This prevents the citation control from incentivizing retention of clinically unsupported evidence merely to preserve a count.
+
 The Wave disposition totals become **30 published-evidence-led / 0 promotion-candidate / 77 safe-draft**: two Wave-5 publications are added, three lower-value Wave-1 publications are withdrawn, and hydronephrosis remains draft after direction review.
 
 ## Verification boundary
