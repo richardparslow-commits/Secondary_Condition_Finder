@@ -1,39 +1,9 @@
 {
   "id": "rem-sleep-disorder",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "insomnia",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "REM sleep behavior episodes can fragment sleep and drive chronic insomnia symptoms.",
-      "evidenceGaps": [
-        "Sleep medicine diagnosis documenting persistent insomnia symptoms",
-        "Partner or caregiver observations of nocturnal behaviors and sleep disruption"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "anxiety-disorder",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Recurrent violent dream enactment and sleep disruption can exacerbate or precipitate chronic anxiety symptoms.",
-      "evidenceGaps": [
-        "Mental health evaluation linking anxiety onset/worsening to chronic sleep disturbance"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild any secondary-condition suggestions only from REM-sleep-behavior-disorder-specific evidence matched to the exact downstream diagnosis.",
+    "Batch 21 removes the prior insomnia and anxiety suggestions because their only attached source was 38 CFR 3.310; sleep fragmentation and distress do not by themselves establish those separate diagnoses or a directional secondary relationship."
+  ],
+  "suggestions": []
 }

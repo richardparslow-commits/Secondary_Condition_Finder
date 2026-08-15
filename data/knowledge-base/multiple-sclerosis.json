@@ -1,6 +1,31 @@
 {
   "id": "multiple-sclerosis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Depression is a common psychiatric comorbidity in multiple sclerosis, but prevalence evidence does not establish that MS caused an individual's depressive disorder. A systematic review and meta-analysis of 58 articles including 87,756 patients with MS estimated pooled depression prevalence at 30.5%, while a later meta-analysis reported 27.01% across MS populations and substantial variation by clinical subgroup and measurement method. This mapping therefore supports association/comorbidity research only; individual chronology, disability burden, fatigue, pain, sleep, cognition, medication exposure, psychosocial factors, and other psychiatric causes require case-specific review.",
+      "evidenceGaps": [
+        "Neurology documentation confirming multiple sclerosis phenotype, course, and disability context",
+        "Depressive-disorder diagnosis, severity, and chronology relative to MS symptoms and diagnosis",
+        "Fatigue, pain, sleep, cognitive, functional, medication, and psychosocial contributors",
+        "History of depressive symptoms predating MS or another independent psychiatric disorder",
+        "Qualified clinician assessment distinguishing common MS/depression comorbidity from individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Boeschoten RE, Braamse AMJ, Beekman ATF, et al. Prevalence of depression and anxiety in Multiple Sclerosis: A systematic review and meta-analysis. J Neurol Sci. 2017;372:331-341. PMID 28017241",
+          "note": "Systematic review/meta-analysis of 58 articles and 87,756 patients with MS estimated pooled depression prevalence at 30.5% and emphasized heterogeneity across methods and populations. Supports association/comorbidity research, not individual causal attribution.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28017241/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 28017241; abstract Methods/Results/Conclusions: 58 articles, 87,756 patients; pooled depression prevalence 30.5% (95% CI 26.3%-35.1%)"
+        }
+      ]
+    }
+  ]
 }
