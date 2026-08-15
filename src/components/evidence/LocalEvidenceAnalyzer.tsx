@@ -10,11 +10,15 @@ import {
 } from "@/lib/evidence/document-extract";
 import {
   analyzeEvidenceSegments,
-  evidenceAnalysisStorageKey,
   type ClinicianCredential,
   type EvidenceAnalysis,
   type EvidenceTextSegment,
 } from "@/lib/evidence/extract";
+import {
+  clearStoredEvidence,
+  loadStoredEvidence,
+  saveStoredEvidence,
+} from "@/lib/evidence/storage";
 
 interface Props {
   conditionTerms: string[];
@@ -37,21 +41,21 @@ function isSupportedFile(file: File): boolean {
   );
 }
 
-function loadStored(): EvidenceAnalysis[] {
-  if (typeof window === "undefined") return [];
+function getSessionStorage(): Storage | null {
+  if (typeof window === "undefined") return null;
   try {
-    const raw = window.sessionStorage.getItem(evidenceAnalysisStorageKey);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw) as unknown;
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter((item): item is EvidenceAnalysis => Boolean(item && typeof item === "object" && (item as EvidenceAnalysis).version === 1));
+    return window.sessionStorage;
   } catch {
-    return [];
+    return null;
   }
 }
 
-function saveStored(analyses: EvidenceAnalysis[]): void {
-  window.sessionStorage.setItem(evidenceAnalysisStorageKey, JSON.stringify(analyses.slice(-MAX_SOURCES)));
+function loadStored(): EvidenceAnalysis[] {
+  return loadStoredEvidence(getSessionStorage());
+}
+
+function saveStored(analyses: EvidenceAnalysis[]): boolean {
+  return saveStoredEvidence(getSessionStorage(), analyses);
 }
 
 function withUserLocatorPrefix(segments: EvidenceTextSegment[], prefix: string): EvidenceTextSegment[] {
@@ -178,10 +182,14 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   }
 
   function clearEvidence() {
-    window.sessionStorage.removeItem(evidenceAnalysisStorageKey);
+    const storageCleared = clearStoredEvidence(getSessionStorage());
     setAnalyses([]);
     setWarnings([]);
-    setMessage("Local evidence excerpts were cleared from this browser tab.");
+    setMessage(
+      storageCleared
+        ? "Local evidence excerpts were cleared from this browser tab."
+        : "Local evidence excerpts were cleared from this view. Browser session storage was unavailable, so stored excerpts could not be confirmed removed.",
+    );
   }
 
   return (
@@ -189,7 +197,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       <div>
         <h2 id="local-evidence-heading" className="text-xl font-bold">Local Evidence Review</h2>
         <p className="mt-1 text-sm text-slate-600">
-          PDF, DOCX, and supported text records are read in this browser tab. Raw document bytes and raw document text are not submitted to the application server, stored in workflow cookies, or written to application logs.
+          PDF, DOCX, and supported text records are read in this browser tab. Raw document bytes and raw document text are not submitted to the application server, stored in workflow cookies, or written to application logs. If browser session storage is unavailable or full, the current analysis continues in memory but may not restore after navigation or reload.
         </p>
       </div>
 
