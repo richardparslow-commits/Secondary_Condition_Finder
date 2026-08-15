@@ -70,16 +70,18 @@ describe("clinical evidence promotion batch 27", () => {
     expect(byId.get("hypothyroidism")?.todo.join(" ")).toMatch(/modest|subgroup|directional/i);
   });
 
-  it("records 31 published identities and 76 safe drafts", () => {
+  it("preserves the Batch 27 dispositions without freezing later program totals", () => {
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
-    ) as { waves: Array<{ identities: Array<{ id: string; disposition: string }> }> };
+    ) as { totalIdentities: number; waves: Array<{ identities: Array<{ id: string; disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(31);
+    expect(ledger.totalIdentities).toBe(107);
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(76);
     for (const id of ["uveitis", "retinal-dystrophy", "ptosis"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("published-evidence-led");
+    }
+    for (const id of ["anosmia", "alopecia-areata", "hypothyroidism"]) {
+      expect(entries.find((entry) => entry.id === id)?.disposition).toBe("safe-draft");
     }
   });
 });
