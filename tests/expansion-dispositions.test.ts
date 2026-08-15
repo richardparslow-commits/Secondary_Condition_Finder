@@ -48,11 +48,10 @@ describe("target-v2 expansion disposition ledger", () => {
     const candidates = entries.filter((entry) => entry.disposition === "promotion-candidate");
     const safeDrafts = entries.filter((entry) => entry.disposition === "safe-draft");
 
-    expect(published).toHaveLength(31);
+    expect(published).toHaveLength(32);
     expect(published.map((entry) => entry.id)).toEqual(expect.arrayContaining([
       "osteitis-deformans",
       "syringomyelia",
-      "seizure-disorder",
       "trigeminal-neuralgia",
       "femoroacetabular-impingement",
       "hyperpituitarism",
@@ -65,13 +64,17 @@ describe("target-v2 expansion disposition ledger", () => {
       "rectal-prolapse",
       "anal-fistula",
       "discoid-lupus",
+      "histoplasmosis",
+      "ovarian-cancer",
+      "testicular-cancer",
+      "laryngeal-cancer",
     ]));
     expect(candidates).toEqual([]);
-    expect(safeDrafts).toHaveLength(76);
-    for (const id of ["gout", "multiple-sclerosis", "myasthenia-gravis", "hydronephrosis"]) {
+    expect(safeDrafts).toHaveLength(75);
+    for (const id of ["gout", "multiple-sclerosis", "myasthenia-gravis", "parkinsons-disease", "seizure-disorder", "psoriatic-arthritis", "hydronephrosis"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("safe-draft");
     }
-    for (const id of ["rectal-prolapse", "anal-fistula", "discoid-lupus"]) {
+    for (const id of ["rectal-prolapse", "anal-fistula", "discoid-lupus", "histoplasmosis", "ovarian-cancer", "testicular-cancer", "laryngeal-cancer"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("published-evidence-led");
     }
     expect(published.length + candidates.length + safeDrafts.length).toBe(107);
