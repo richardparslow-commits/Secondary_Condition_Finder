@@ -1,6 +1,46 @@
 {
   "id": "pituitary-neoplasm",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, medication/treatment, intermediate-factor, endocrine, neurological, visual, and other organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "visual-impairment",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Pituitary macroadenomas and other pituitary neoplasms that extend to and compress the optic chiasm can produce clinically important visual-field and visual-acuity impairment. Systematic-review evidence in nonfunctioning pituitary macroadenomas with chiasmal compression supports this mass-effect relationship and improvement after decompression. The pathway is therefore limited to neoplasms with documented optic-chiasm or optic-pathway involvement; it does not imply that every pituitary neoplasm, particularly a small lesion without suprasellar extension, causes visual impairment.",
+      "pathwayIntelligence": {
+        "pathways": ["direct-secondary"],
+        "causalChain": "Pituitary neoplasm with suprasellar extension or other documented optic-pathway mass effect → optic-chiasm/optic-nerve compression → visual-field and/or visual-acuity impairment.",
+        "developmentQuestions": [
+          "Do MRI or other imaging records document suprasellar extension, optic-chiasm contact/compression, or other optic-pathway involvement by the pituitary neoplasm?",
+          "Are formal visual-field testing, visual-acuity testing, or neuro-ophthalmic examinations abnormal in a pattern anatomically compatible with the documented compression?",
+          "Did visual impairment begin or worsen after the compressive pituitary lesion was established, and did it change after decompression or other tumor treatment?",
+          "Which competing ophthalmologic, neurologic, vascular, medication-related, or age-related causes of visual impairment should be addressed?",
+          "Can endocrinology, neurosurgery, ophthalmology, or neuro-ophthalmology relate the documented visual deficit to the individual lesion rather than to an alternative cause?"
+        ],
+        "issuesToResolve": [
+          "The evidence is strongest for pituitary macroadenomas with documented chiasmal compression and should not be generalized to all pituitary neoplasms.",
+          "Imaging anatomy, objective visual testing, chronology, treatment response, and competing visual diagnoses require individual review."
+        ]
+      },
+      "evidenceGaps": [
+        "Pituitary MRI or other imaging documenting lesion size, suprasellar extension, and optic-chiasm/optic-pathway relationship",
+        "Formal visual-field and visual-acuity testing",
+        "Neuro-ophthalmology, ophthalmology, neurosurgery, or endocrinology assessment of the anatomic relationship",
+        "Clinical chronology of tumor detection, visual symptoms, and treatment response",
+        "Assessment of competing causes of visual-field or visual-acuity impairment"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Pelsma ICMP et al. Quality of care evaluation in non-functioning pituitary adenoma with chiasm compression: visual outcomes and timing of intervention clinical recommendations based on a systematic literature review and cohort study. Pituitary. 2020;23(4):417-429. PMID 32419072",
+          "note": "Systematic review of 44 studies involving 4,789 patients with nonfunctioning pituitary macroadenoma/chiasmal compression evaluated visual dysfunction and outcomes after decompression. Supports an anatomy-specific compressive visual pathway, not visual impairment from every pituitary neoplasm.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32419072/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 32419072; abstract: 44 studies, 4,789 patients; optic-chiasm compression and visual dysfunction; visual-field defects improved after decompression"
+        }
+      ]
+    }
+  ]
 }
