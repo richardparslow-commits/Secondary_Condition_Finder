@@ -21,16 +21,11 @@ describe("clinical evidence promotion batch 21", () => {
     }
   });
 
-  it("promotes multiple-sclerosis depression only as association/comorbidity research", () => {
+  it("recognizes the later multiple-sclerosis depression prevalence withdrawal", () => {
     const mapping = byId.get("multiple-sclerosis");
-    const suggestion = mapping?.suggestions[0];
-    expect(mapping?.draft).toBe(false);
-    expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe("depressive-disorder");
-    expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.rationale).toMatch(/comorbidity|association/i);
-    expect(suggestion?.rationale).toMatch(/30\.5/);
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("28017241");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/prevalence|heterogeneity/i);
+    expect(mapping?.todo.join(" ")).toMatch(/causal|aggravation|directional/i);
   });
 });
