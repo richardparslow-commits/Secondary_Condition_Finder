@@ -7,7 +7,7 @@
       "conditionId": "fecal-incontinence",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Complete rectal prolapse is frequently accompanied by impaired continence, and randomized-trial meta-analysis of prolapse repair includes improvement in fecal incontinence as a recognized functional outcome. This supports a prolapse-related continence pathway when fecal incontinence is objectively and clinically documented in temporal and anatomic association with the prolapse; it does not establish that rectal prolapse is the sole cause of every continence disorder, because sphincter injury, pelvic-floor dysfunction, neuropathy, stool consistency, prior surgery, and other anorectal disease may independently contribute.",
+      "rationale": "Fecal incontinence is frequently associated with full-thickness rectal prolapse, and prospective cohort evidence shows that continence can improve after prolapse correction, particularly after ventral rectopexy. This supports a prolapse-related continence pathway when fecal incontinence is objectively and clinically documented in temporal and anatomic association with the prolapse; it does not establish that rectal prolapse is the sole cause of every continence disorder, because sphincter injury, pelvic-floor dysfunction, neuropathy, stool consistency, prior surgery, and other anorectal disease may independently contribute.",
       "pathwayIntelligence": {
         "pathways": ["direct-secondary", "disease-progression"],
         "causalChain": "Documented full-thickness rectal prolapse with pelvic-floor/anorectal dysfunction → impaired continence mechanism when present → clinically confirmed fecal incontinence compatible with the prolapse and individual anorectal findings.",
@@ -32,13 +32,13 @@
       ],
       "sourceReferences": [
         {
-          "citation": "Emile SH et al. Tech Coloproctol. 2023;27(10):787-797. PMID 37150800",
-          "note": "Network meta-analysis of nine randomized trials in complete rectal prolapse evaluated improvement in fecal incontinence as a functional outcome after prolapse surgery. Supports a prolapse-associated continence pathway and treatment-response development, not automatic sole-cause attribution in an individual patient.",
+          "citation": "Long-term impact of full-thickness rectal prolapse treatment on fecal incontinence. PMID 25869649",
+          "note": "Prospective single-center cohort of 145 patients with full-thickness rectal prolapse found fecal incontinence was frequent before treatment and that continence improvement was associated with ventral rectopexy compared with other operative or medical management. Supports an individual prolapse-associated continence pathway and treatment-response development, not automatic sole-cause attribution.",
           "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37150800/",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25869649/",
           "verified": false,
           "sourceCheckedOn": "2026-08-15",
-          "sourceLocator": "PMID 37150800; abstract: 9 randomized trials, 728 patients; improvement in fecal incontinence was a prespecified outcome of complete rectal-prolapse repair"
+          "sourceLocator": "PMID 25869649; abstract: prospective database of 145 full-thickness rectal-prolapse patients; 96% had fecal incontinence before treatment; continence improvement associated with ventral rectopexy"
         }
       ]
     }
