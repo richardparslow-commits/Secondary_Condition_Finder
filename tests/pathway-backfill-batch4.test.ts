@@ -8,8 +8,6 @@ const supportedSomatopsychicEdges = [
 ] as const;
 
 const intentionallyUnlabeledEdges = [
-  ["stomach-cancer", "gerd"],
-  ["abdominal-hernia", "gerd"],
   ["erectile-dysfunction", "gerd"],
   ["congestive-heart-failure", "depressive-disorder"],
   ["congestive-heart-failure", "gerd"],
@@ -69,6 +67,20 @@ describe("controlled pathway backfill batch 4", () => {
     expect(depression?.rationale).toMatch(/does not establish|causal direction/i);
   });
 
+  it("recognizes the Batch 17 stomach-cancer and abdominal-hernia GERD withdrawals", () => {
+    const kb = loadKnowledgeBase();
+
+    for (const primaryId of ["stomach-cancer", "abdominal-hernia"]) {
+      const mapping = kb.find((entry) => entry.id === primaryId);
+      expect(mapping?.draft).toBe(false);
+      expect(mapping?.suggestions).toHaveLength(1);
+      expect(mapping?.suggestions[0]?.conditionId).toBe("depressive-disorder");
+      expect(mapping?.suggestions[0]?.rank).toBe(1);
+      expect(mapping?.suggestions[0]?.prevalence).toBe("commonly-explored");
+      expect(mapping?.suggestions.some((entry) => entry.conditionId === "gerd")).toBe(false);
+    }
+  });
+
   it("keeps later safety withdrawals unpublished", () => {
     const kb = loadKnowledgeBase();
 
@@ -95,24 +107,6 @@ describe("controlled pathway backfill batch 4", () => {
     for (const suggestion of mapping?.suggestions ?? []) {
       expect(suggestion.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
       expect(suggestion.sourceReferences.some((source) => source.citation.startsWith("38 CFR"))).toBe(false);
-    }
-  });
-
-  it("preserves pre-backfill rank and prevalence for the newly enriched mappings", () => {
-    const kb = loadKnowledgeBase();
-
-    for (const primaryId of ["stomach-cancer", "abdominal-hernia"]) {
-      const mapping = kb.find((entry) => entry.id === primaryId);
-      expect(
-        mapping?.suggestions.map(({ conditionId, rank, prevalence }) => ({
-          conditionId,
-          rank,
-          prevalence,
-        })),
-      ).toEqual([
-        { conditionId: "depressive-disorder", rank: 1, prevalence: "commonly-explored" },
-        { conditionId: "gerd", rank: 2, prevalence: "sometimes-explored" },
-      ]);
     }
   });
 });
