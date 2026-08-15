@@ -10,50 +10,43 @@ Run:
 npm run citations:queue
 ```
 
-The report is generated directly from current published knowledge-base mappings and includes the primary mapping, secondary target, citation, source role, canonical URL, prior check date, source locator, and blank reviewer-decision fields. The machine-readable form is available with `node scripts/report-citation-verification-queue.js`.
+The generated report is authoritative for the exact current human-review row set.
 
 ## Current Batch-30 baseline
 
-The expected citation-audit position remains **61 live unverified references** and **59 live unverified published references** pending exact-head CI confirmation. The difference remains intentional: the audit includes unverified references retained in draft mappings, while the human queue includes only references currently used by published mappings.
+The corrected candidate is expected to contain **59 live unverified references** and **57 live unverified published references**, pending fresh exact-head CI confirmation.
 
-Batch 30 performs a four-for-four evidence-quality exchange. The following unverified published source rows are removed because they do not meet the current directional publication threshold:
+Batch 30 removes these four unverified published source rows because they do not meet the current directional publication threshold:
 
 - Parkinson disease→depressive disorder, PMID 27358339;
 - seizure disorder→depressive disorder, PMID 41967683;
 - psoriatic arthritis→depressive disorder, PMID 38797775; and
 - trigeminal neuralgia→anxiety disorder, PMID 29526561.
 
-The following four bounded clinical sources are added, all remaining `verified: false`:
+Only two new bounded clinical sources remain live, both `verified: false`:
 
-- histoplasmosis→Addison disease, PMID 30656706;
-- ovarian cancer→peripheral neuropathy, PMID 24582486;
-- testicular cancer→hypogonadism, PMID 27009402; and
-- laryngeal cancer→aphonia, PMID 29086803.
+- ovarian cancer→peripheral neuropathy, PMID 24582486; and
+- testicular cancer→hypogonadism, PMID 27009402.
 
-Because all eight affected source records are unverified, no verified-source retirement entry is created and automated verification debt does not increase.
+Two initially screened sources are **not** placed in the live published queue after review:
 
-`npm run citations:queue` is the authoritative source for the exact current human-review row set and role breakdown because later evidence batches can add, replace, retire, withdraw, consolidate, or verify individual sources.
+- PMID 30656706 supports adrenal histoplasmosis, but the current Histoplasmosis of Lung identity cannot enforce adrenal/disseminated disease site;
+- PMID 29086803 supports post-total-laryngectomy voice handicap and alaryngeal speech rehabilitation, not the distinct diagnosis of aphonia.
+
+All affected source records are unverified, so no verified-source retirement entry is created.
 
 ## Human review procedure
 
-For each row, a qualified reviewer must independently open the canonical source and determine whether the live citation accurately supports the exact proposition for which it is being used. The reviewer should verify:
-
-1. bibliographic identity and canonical source;
-2. study/guideline population and condition phenotype;
-3. relationship direction and whether the source supports association, progression, treatment link, causation, aggravation, complication, or functional impairment as authored;
-4. whether subgroup, phenotype, procedure, treatment, severity, anatomy, or diagnostic limitations are preserved in repository wording;
-5. whether the cited source locator actually supports the note/rationale;
-6. whether the source is current enough and whether newer evidence materially conflicts with the proposition; and
-7. whether the source should be verified, replaced, retired, or the relationship should be narrowed/withdrawn.
+For each live queue row, a qualified reviewer must independently open the canonical source and determine whether the citation accurately supports the exact proposition for which it is being used, including phenotype, direction, treatment/procedure exposure, chronology, limitations, and competing explanations.
 
 ## Permitted outcomes
 
 - **VERIFY:** source and proposition are accurate. Update the live source record to `verified: true` and preserve URL/check date/locator/role.
-- **REPLACE:** live proposition is defensible but the cited source is weak, outdated, or mismatched. Replace it with a better source; the new source remains `verified: false` until reviewed.
-- **RETIRE:** a previously verified live source no longer belongs on the relationship. Use `data/citation-retirements.json` so verified provenance is not silently erased.
-- **WITHDRAW/NARROW:** the evidence does not support the live proposition as authored. Fix the relationship rather than marking an inapplicable citation verified.
-- **HOLD:** review is incomplete. Leave `verified: false`.
+- **REPLACE:** proposition is defensible but the source is weak, outdated, or mismatched. A replacement remains `verified: false` until reviewed.
+- **RETIRE:** a previously verified live source no longer belongs on the relationship; preserve provenance in `data/citation-retirements.json`.
+- **WITHDRAW/NARROW:** the evidence does not support the live proposition as authored; fix the relationship rather than verifying an inapplicable citation.
+- **HOLD:** review is incomplete; leave `verified: false`.
 
 ## Non-negotiable boundary
 
-Source checking performed by an automated agent, including opening PubMed or a guideline and recording metadata, is not the qualified-human verification decision required by repository policy. The verification queue is considered prepared as an automation deliverable, but individual `verified: true` decisions remain pending until a qualified human performs and records the review.
+Automated source retrieval or screening is not the qualified-human verification decision required by repository policy.
