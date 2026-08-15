@@ -4,9 +4,9 @@ This is the authoritative current-state tracker for post-v2 clinical evidence wo
 
 ## Current production-validated base
 
-Batch 28 branches from exact `main` SHA `f07b11e1df647269e6922701610dec7d18c47f77` (`Promote evidence-led Wave 4 mappings (#351)`). That base passed independent `main` CI #1001 and Production Runtime Readiness #360 before Batch 28 started.
+Batch 29 branches from exact `main` SHA `c8ad197e8df420034579ba644e60f9cec0168a8d` (`Promote evidence-led Wave 5 mappings (#352)`). That base passed independent `main` CI #1021 and Production Runtime Readiness #380 before Batch 29 started.
 
-Batch 28 itself is not production-closed until its corrected exact head passes PR CI and immutable-head review, is merged with expected-head protection, and the resulting merge SHA passes independent `main` CI and Production Runtime Readiness.
+Batch 29 itself is not production-closed until its exact head passes PR CI and immutable-head review, is merged with expected-head protection, and the resulting merge SHA passes independent `main` CI and Production Runtime Readiness.
 
 ## Frozen universe
 
@@ -15,28 +15,27 @@ Batch 28 itself is not production-closed until its corrected exact head passes P
 - Wave 1–7 expansion identities: **107**.
 - Promotion candidates: **0**.
 
-## Current Batch-28 candidate dispositions
+## Current Batch-29 candidate dispositions
 
 The disposition ledger currently records:
 
-- **30 published-evidence-led** identities;
-- **77 safe-draft** identities; and
+- **31 published-evidence-led** identities;
+- **76 safe-draft** identities; and
 - **0 promotion-candidate** identities.
 
-Batch 28 publishes two Wave-5 relationships:
+Batch 29 publishes one Wave-6 relationship:
 
-- `rectal-prolapse` → `fecal-incontinence` as an association/treatment-response development question without unsupported direct-causal pathway labels; and
-- `anal-fistula` → `fecal-incontinence` only as a documented sphincter-cutting or sphincter-involving treatment complication.
+- `discoid-lupus` → `scarring-alopecia`, limited to scalp DLE with a distinct cicatricial/scarring-alopecia diagnosis and explicit anatomic/phenotype safeguards.
 
-Batch 28 returns three lower-value Wave-1 depression associations to safe-draft: `gout`, `multiple-sclerosis`, and `myasthenia-gravis`.
+Batch 29 also returns `adjustment-disorder` → `gerd` to draft because the attached psychosocial/GERD meta-analysis is anxiety/depression-oriented and does not establish adjustment disorder as the condition-specific exposure.
 
-`hydronephrosis` remains safe-draft after review determined that the screened renal source supports urinary obstruction/obstructive uropathy as the cause of kidney injury, not hydronephrosis itself as the selected primary condition. The relationship was withdrawn rather than substituting the upstream obstruction.
+The remaining Wave-6 identities stay safe-draft where direction, distinct downstream diagnosis, or catalog target fit is insufficient. ET thrombosis evidence is not widened into a DVT-specific edge, and AML-specific transformation evidence is not widened into the generic acute/chronic `leukemia` catalog target.
 
 For the complete per-identity current state, use `data/expansion-dispositions.json`. This tracker intentionally does not duplicate a hand-maintained list of all published identities because that list can become stale independently of the machine-readable ledger.
 
 ## Current citation position
 
-The corrected Batch-28 expected position, subject to exact-head audit, is:
+Batch 29 performs a one-for-one replacement of unverified published clinical evidence, so the expected position remains:
 
 - live references: **69**;
 - live verified: **8**;
