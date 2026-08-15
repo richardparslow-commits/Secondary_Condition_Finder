@@ -1,6 +1,6 @@
 # Clinical Evidence Program Status
 
-Status: **Batch 29 Wave-6 rescreen implementation is repository-controlled on its branch; exact-head/production closure remains governed by the immutable-head workflow, and external/human gates remain separate**.
+Status: **Batch 29 Wave-6 rescreen implementation is repository-controlled on its branch; exact-head/production closure now requires Vercel Agent immutable-head review, and external/human gates remain separate**.
 
 ## Production-validated base
 
@@ -8,7 +8,9 @@ Batch 29 branches from production-validated `main` SHA `c8ad197e8df420034579ba64
 
 - independent `main` CI #1021 passed;
 - Production Runtime Readiness #380 passed on the exact SHA; and
-- no Batch 29 change is considered production-closed until its own exact-head PR CI, immutable-head review, protected merge, merge-SHA `main` CI, and Production Runtime Readiness pass.
+- no Batch 29 change is considered production-closed until its own exact-head PR CI, Vercel Agent immutable-head review, expected-head protected merge, merge-SHA `main` CI, and Production Runtime Readiness pass.
+
+A Vercel preview/deployment status does not satisfy the review gate. The exact head must receive an actual Vercel Agent code-review result, and any head change after review requires fresh exact-head CI and a fresh Vercel Agent review.
 
 ## Frozen universe
 
@@ -72,6 +74,6 @@ See `docs/external-manual-gates-status.md`.
 
 ## What “complete” means
 
-Repository automation is complete for a work item when the repository contains a safe explicit state, tests/audits enforce it, exact-head CI passes, immutable-head review is clean, and production closure proves the merge SHA. It does not fabricate human verification, credentials, accessibility observations, or external-provider success.
+Repository automation is complete for a work item when the repository contains a safe explicit state, tests/audits enforce it, exact-head CI passes, the Vercel Agent immutable-head review is clean, and production closure proves the merge SHA. It does not fabricate human verification, credentials, accessibility observations, or external-provider success.
 
 After Batch 29 there are no `promotion-candidate` Wave identities. The remaining 76 Wave drafts are explicit safe dispositions unless later evidence justifies another bounded review.
