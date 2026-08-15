@@ -18,14 +18,15 @@ describe("clinical program completion controls", () => {
     expect(kb).toHaveLength(300);
   });
 
-  it("records the Batch-22 citation baseline and corrected expansion accounting", () => {
+  it("records the Batch-23 citation baseline and completed expansion accounting", () => {
     const tracker = read("docs/kb-coverage-tracker.md");
-    expect(tracker).toMatch(/18 published-evidence-led|18 published/i);
-    expect(tracker).toMatch(/89.*draft/i);
+    expect(tracker).toMatch(/20 published-evidence-led|published.*\*\*20\*\*/i);
+    expect(tracker).toMatch(/87.*draft/i);
+    expect(tracker).toMatch(/promotion candidates remaining:\s*\*\*0\*\*/i);
     expect(tracker).toMatch(/live references:\s*\*\*70\*\*/i);
     expect(tracker).toMatch(/published-unverified review findings:\s*\*\*60\*\*/i);
+    expect(tracker).toMatch(/live clinical-evidence references with canonical URLs:\s*\*\*65\*\*/i);
     expect(tracker).toMatch(/Type 1 diabetes|diabetes-mellitus-type-1/i);
-    expect(tracker).toMatch(/not.*107|not.*Wave 1.?7/i);
   });
 
   it("keeps the three v2 modeling dispositions safe without deleting stable identities", () => {
@@ -39,7 +40,7 @@ describe("clinical program completion controls", () => {
     expect(byId.get("cerebral-palsy")?.draft).toBe(true);
   });
 
-  it("exposes a qualified-human citation verification queue without auto-verifying sources", () => {
+  it("exposes the exact qualified-human published citation queue without auto-verifying sources", () => {
     const pkg = JSON.parse(read("package.json")) as { scripts: Record<string, string> };
     expect(pkg.scripts["citations:queue"]).toContain("report-citation-verification-queue.js");
     const script = read("scripts/report-citation-verification-queue.js");
@@ -47,7 +48,8 @@ describe("clinical program completion controls", () => {
     expect(script).toMatch(/reviewerDecision:\s*"PENDING"/);
     expect(script).toMatch(/qualified human/i);
     const instructions = read("docs/qualified-human-citation-verification-queue.md");
-    expect(instructions).toMatch(/62 live unverified published references/i);
+    expect(instructions).toMatch(/60 live unverified published references/i);
+    expect(instructions).toMatch(/62 live unverified references/i);
     expect(instructions).toMatch(/cannot.*qualified-human|not.*qualified-human|only a qualified human/i);
   });
 
