@@ -1,39 +1,9 @@
 {
   "id": "epidural-hematoma",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "migraine-headaches",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Post-epidural hematoma recovery can include lasting post-traumatic headache symptoms.",
-      "evidenceGaps": [
-        "Clinical diagnosis of persistent post-traumatic headaches",
-        "Medical records of prior epidural hematoma event"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "anxiety-disorder",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Severe head trauma recovery can precipitate chronic anxiety related to persistent neurologic symptoms.",
-      "evidenceGaps": [
-        "Mental health evaluation linking anxiety to aftermath of head trauma"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Rebuild any residual secondary-condition suggestions only from epidural-hematoma-specific outcome evidence matched to the exact catalog diagnosis.",
+    "Batch 21 removes the prior migraine and anxiety suggestions because their only attached source was 38 CFR 3.310; broad post-traumatic headache or psychological sequelae evidence does not establish those exact downstream diagnoses."
+  ],
+  "suggestions": []
 }
