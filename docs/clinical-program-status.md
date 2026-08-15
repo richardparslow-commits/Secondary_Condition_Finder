@@ -1,51 +1,47 @@
 # Clinical Evidence Program Status
 
-Status: **Batch 26 Wave-3 rescreen implementation is repository-controlled; exact-head/production closure remains governed by the immutable-head workflow, and external/human gates remain separate**.
+Status: **Batch 27 Wave-4 rescreen implementation is repository-controlled; exact-head/production closure remains governed by the immutable-head workflow, and external/human gates remain separate**.
 
 ## Production-validated base
 
-Batch 26 branches from production-validated `main` SHA `daef29ca44e498a9b375fe868c813866f82ffd37` (`Promote evidence-led Wave 2 FAI mapping (#349)`):
+Batch 27 branches from production-validated `main` SHA `b260bbcb8a7a8de70178d23ab023ccdea253ad8e` (`Promote evidence-led Wave 3 mappings (#350)`):
 
-- independent `main` CI #984 passed;
-- Production Runtime Readiness #343 passed on the exact SHA; and
-- no Batch 26 change is considered production-closed until its own exact-head PR CI, immutable-head review, protected merge, merge-SHA `main` CI, and Production Runtime Readiness pass.
+- independent `main` CI #992 passed;
+- Production Runtime Readiness #351 passed on the exact SHA; and
+- no Batch 27 change is considered production-closed until its own exact-head PR CI, immutable-head review, protected merge, merge-SHA `main` CI, and Production Runtime Readiness pass.
 
 ## Frozen universe
 
 - Catalog identities: **300**.
 - Knowledge-base mappings: **300**.
 - Target-v2 Wave 1–7 expansion identities: **107**.
-- Batch 26 does not add, delete, rename, or merge condition identities.
+- Batch 27 does not add, delete, rename, or merge condition identities.
 
-## Expansion program — Batch 26 candidate state
+## Expansion program — Batch 27 candidate state
 
 `data/expansion-dispositions.json` now records:
 
-- **28 published-evidence-led** Wave identities;
+- **31 published-evidence-led** Wave identities;
 - **0 promotion-candidate** Wave identities;
-- **79 safe-draft** Wave identities.
+- **76 safe-draft** Wave identities.
 
-Batch 26 adds four bounded Wave-3 mappings:
+Batch 27 adds three bounded Wave-4 mappings:
 
-- `hyperpituitarism` → `hypogonadism`, limited to the repository's explicitly prolactin-secreting pituitary phenotype and requiring compatible clinical/biochemical gonadal-axis evidence;
-- `pituitary-neoplasm` → `visual-impairment`, limited to documented optic-chiasm/optic-pathway compression;
-- `heart-valve-replacement-residuals` → `anemia`, limited to a documented paravalvular-leak → hemolysis → hemolytic-anemia chain; and
-- `implantable-cardiac-pacemaker` → `heart-valve-disorders`, limited to transvenous lead-associated tricuspid regurgitation rather than all pacemaker systems or valve disease.
+- `uveitis` → `glaucoma`, requiring objectively diagnosed glaucoma and individual review of inflammatory and corticosteroid-treatment mechanisms rather than treating ocular hypertension alone as glaucoma;
+- `retinal-dystrophy` → `visual-impairment`, requiring phenotype-specific retinal disease and objective concordant visual loss; and
+- `ptosis` → `visual-impairment`, limited to objectively documented mechanical superior-field obstruction attributable to eyelid position.
 
-The remaining five unpublished Wave-3 identities stay safe-draft: `nontoxic-thyroid-enlargement`, `diabetes-insipidus`, `coronary-bypass-residuals`, `heart-transplant-residuals`, and `thromboangiitis-obliterans`.
-
-A safe draft is a completed reviewed disposition, not a clinical defect.
+The other 12 Wave-4 identities remain safe-draft after bounded screening. A safe draft is a completed reviewed disposition, not a clinical defect.
 
 ## Evidence-quality cleanup and citation ratchet
 
-Batch 26 removes four weaker or phenotype-mismatched unverified published edges while adding four focused clinical sources:
+Batch 27 removes three unverified association/comorbidity edges while adding three stronger direct-complication/functional-loss sources:
 
-- withdraw `adjustment-disorder` → `sleep-apnea` because the attached psychiatric/OSA review did not support an adjustment-disorder-specific relationship;
-- withdraw `asthma` → `cardiac-arrhythmia` because the attached meta-analysis characterized the signal as very-low confidence with high heterogeneity and serious risk of bias;
-- withdraw `copd` → `cardiac-arrhythmia` because the attached small 1990 cohort supported only a possible nocturnal hypoxemia mechanism rather than a sufficiently robust routine secondary relationship; and
-- withdraw `post-concussion-syndrome` → `migraine-headaches` because the source supported persistent post-traumatic headache and phenotype-guided treatment, not reclassification of migraine-like post-traumatic headache as primary migraine.
+- withdraw `anosmia` → `depressive-disorder` because the cited meta-analysis does not establish direction and calls for longitudinal/mechanistic clarification;
+- withdraw `alopecia-areata` → `depressive-disorder` because the cited evidence supports increased prevalence/odds and screening, not a directional secondary-condition pathway; and
+- withdraw `hypothyroidism` → `depressive-disorder` because the cited meta-analysis found only a modest, phenotype/subgroup-dependent association rather than a general directional relationship.
 
-All four removed source rows were `verified: false`, so no verified-source retirement entry is created.
+All three removed source rows were `verified: false`, so no verified-source retirement entry is created.
 
 The expected citation position remains at the established ceiling pending exact-head audit:
 
@@ -61,7 +57,7 @@ The expected citation position remains at the established ceiling pending exact-
 
 ## Human citation verification
 
-Automation preserves canonical URLs, check dates, locators, and source roles and generates the published review queue. Only a qualified human reviewer may set a source to `verified: true`; automated retrieval or evidence screening is not that decision. Every newly authored Batch 26 clinical source remains `verified: false`.
+Automation preserves canonical URLs, check dates, locators, and source roles and generates the published review queue. Only a qualified human reviewer may set a source to `verified: true`; automated retrieval or evidence screening is not that decision. Every newly authored Batch 27 clinical source remains `verified: false`.
 
 ## Modeling debt
 
@@ -86,4 +82,4 @@ See `docs/external-manual-gates-status.md`.
 
 Repository automation is complete for a work item when the repository contains a safe explicit state, tests/audits enforce it, exact-head CI passes, immutable-head review is clean, and production closure proves the merge SHA. It does not fabricate human verification, credentials, accessibility observations, or external-provider success.
 
-After Batch 26 there are no `promotion-candidate` Wave identities. The remaining 79 Wave drafts are explicit safe dispositions unless later evidence justifies another bounded review.
+After Batch 27 there are no `promotion-candidate` Wave identities. The remaining 76 Wave drafts are explicit safe dispositions unless later evidence justifies another bounded review.
