@@ -62,10 +62,12 @@ describe("clinical evidence promotion batch 24", () => {
     expect(anxiety?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/29526561/");
   });
 
-  it("exchanges redundant published review debt instead of raising the citation ceiling", () => {
-    const adjustmentGerd = byId.get("adjustment-disorder")?.suggestions.find((entry) => entry.conditionId === "gerd");
-    expect(adjustmentGerd?.sourceReferences).toHaveLength(1);
-    expect(adjustmentGerd?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/35362447/");
+  it("recognizes later evidence-quality review without losing the surviving Batch 24 edges", () => {
+    const adjustment = byId.get("adjustment-disorder");
+    expect(adjustment?.draft).toBe(true);
+    expect(adjustment?.suggestions).toEqual([]);
+    expect(adjustment?.todo.join(" ")).toMatch(/35362447/);
+    expect(adjustment?.todo.join(" ")).toMatch(/adjustment disorder.*condition-specific|condition-specific.*adjustment disorder/i);
 
     const psaDepression = byId.get("psoriatic-arthritis")?.suggestions[0];
     expect(psaDepression?.sourceReferences).toHaveLength(1);
