@@ -16,9 +16,9 @@ Publication remains evidence-led: rating authority is not medical nexus evidence
 
 ### `rectal-prolapse` → `fecal-incontinence`
 
-Complete rectal prolapse is commonly accompanied by continence dysfunction, and randomized-trial meta-analysis of prolapse surgery includes improvement in fecal incontinence as a functional outcome. The mapping requires clinically documented fecal incontinence with compatible prolapse anatomy/chronology and explicitly addresses competing sphincter, pelvic-floor, neurologic, stool-consistency, and surgical causes.
+Fecal incontinence is frequently associated with full-thickness rectal prolapse. Prospective cohort evidence directly measuring continence before and after prolapse treatment found that continence improvement was associated with ventral rectopexy compared with other operative or medical management. The mapping requires clinically documented fecal incontinence with compatible prolapse anatomy/chronology and explicitly addresses competing sphincter, pelvic-floor, neurologic, stool-consistency, and surgical causes; the treatment-response evidence does not justify sole-cause attribution.
 
-Clinical source: Emile et al., *Techniques in Coloproctology* 2023; PMID 37150800. The source remains `verified: false`.
+Clinical source: *Long-term impact of full-thickness rectal prolapse treatment on fecal incontinence*, PMID 25869649. The source remains `verified: false`.
 
 ### `anal-fistula` → `fecal-incontinence`
 
