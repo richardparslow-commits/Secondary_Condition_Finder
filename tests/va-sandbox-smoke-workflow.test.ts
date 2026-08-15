@@ -46,9 +46,27 @@ describe("VA sandbox smoke workflow", () => {
   it("records sanitized evidence without persisting raw response files", () => {
     expect(workflow).toContain("GITHUB_STEP_SUMMARY");
     expect(workflow).toContain("gh issue comment 189");
-    expect(workflow).toContain("gh issue close 189 --reason completed");
+    expect(workflow).toContain("gh issue close 189");
     expect(workflow).toContain("API keys were not retained");
     expect(workflow).not.toContain("actions/upload-artifact");
+  });
+
+  it("scopes every Phase 2 issue mutation to the current repository", () => {
+    expect(workflow).toContain(
+      'gh issue comment 189 --repo "$GITHUB_REPOSITORY" --body-file "$body_file"',
+    );
+    expect(workflow).toContain(
+      'gh issue close 189 --repo "$GITHUB_REPOSITORY" --reason completed',
+    );
+
+    const issueCommands =
+      workflow.match(/^\s*gh issue (?:comment|close) 189 .*$/gm) ?? [];
+    expect(issueCommands).toHaveLength(2);
+    expect(
+      issueCommands.every((command) =>
+        command.includes('--repo "$GITHUB_REPOSITORY"'),
+      ),
+    ).toBe(true);
   });
 
   it("keeps the operator runbook aligned to service-specific credentials", () => {
