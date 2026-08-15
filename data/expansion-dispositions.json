@@ -88,12 +88,12 @@
         {"id":"pulmonary-vascular-disease","disposition":"safe-draft"},
         {"id":"diaphragm-paralysis","disposition":"safe-draft"},
         {"id":"narcolepsy","disposition":"safe-draft"},
-        {"id":"uveitis","disposition":"safe-draft"},
+        {"id":"uveitis","disposition":"published-evidence-led"},
         {"id":"keratitis","disposition":"safe-draft"},
         {"id":"dry-eye-syndrome","disposition":"safe-draft"},
-        {"id":"retinal-dystrophy","disposition":"safe-draft"},
+        {"id":"retinal-dystrophy","disposition":"published-evidence-led"},
         {"id":"nystagmus","disposition":"safe-draft"},
-        {"id":"ptosis","disposition":"safe-draft"}
+        {"id":"ptosis","disposition":"published-evidence-led"}
       ]
     },
     {
