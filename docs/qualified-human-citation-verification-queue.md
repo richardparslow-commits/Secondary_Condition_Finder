@@ -27,13 +27,13 @@ The machine-readable form is available with:
 node scripts/report-citation-verification-queue.js
 ```
 
-## Current Batch-26 baseline
+## Current Batch-27 baseline
 
 The expected citation-audit position remains **62 live unverified references** and **60 live unverified published references** pending exact-head CI confirmation. The two-count difference remains intentional: the audit counts unverified references that remain in draft mappings, while the human queue skips drafts and includes only references currently used by published mappings.
 
-Batch 26 adds four focused published clinical sources and removes four weaker or phenotype-mismatched unverified published rows. This is a citation-debt exchange, not automated verification. The newly added sources for prolactin-secreting pituitary dysfunction→hypogonadism, compressive pituitary neoplasm→visual impairment, valve-replacement paravalvular leak→hemolytic anemia, and transvenous pacemaker lead→tricuspid valve disorder all remain `verified: false` until qualified-human review.
+Batch 27 adds three focused published clinical sources and removes three nondirectional association/comorbidity rows. This is a citation-debt exchange, not automated verification. The newly added sources for uveitis→glaucoma, retinal-dystrophy→visual-impairment, and function-limiting ptosis→visual-impairment all remain `verified: false` until qualified-human review.
 
-The four withdrawn rows were also `verified: false`: adjustment-disorder→OSA, asthma→cardiac-arrhythmia, COPD→cardiac-arrhythmia, and post-concussion-syndrome→migraine-headaches. Because they were never human-verified, they do not enter the verified-source retirement ledger.
+The three withdrawn rows were also `verified: false`: anosmia→depressive-disorder, alopecia-areata→depressive-disorder, and hypothyroidism→depressive-disorder. Because they were never human-verified, they do not enter the verified-source retirement ledger.
 
 `npm run citations:queue` is the authoritative source for the exact current human-review row set and role breakdown because later evidence batches can add, replace, retire, withdraw, consolidate, or verify individual sources.
 
@@ -43,8 +43,8 @@ For each row, a qualified reviewer must independently open the canonical source 
 
 1. bibliographic identity and canonical source;
 2. study/guideline population and condition phenotype;
-3. relationship direction and whether the source supports association, progression, treatment link, causation, or aggravation as authored;
-4. whether subgroup, histology, treatment, severity, or diagnostic limitations are preserved in repository wording;
+3. relationship direction and whether the source supports association, progression, treatment link, causation, aggravation, or functional impairment as authored;
+4. whether subgroup, phenotype, treatment, severity, anatomy, or diagnostic limitations are preserved in repository wording;
 5. whether the cited source locator actually supports the note/rationale;
 6. whether the source is current enough and whether newer evidence materially conflicts with the proposition; and
 7. whether the source should be verified, replaced, retired, or the relationship should be narrowed/withdrawn.
