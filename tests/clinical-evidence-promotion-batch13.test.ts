@@ -34,17 +34,17 @@ describe("clinical evidence promotion batch 13", () => {
     expect(sources[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40380123/");
   });
 
-  it("retires only the redundant local legal-framework references from asthma and COPD arrhythmia research", () => {
+  it("preserves the Batch-13 legal cleanup after later asthma and COPD arrhythmia withdrawals", () => {
     for (const primaryId of ["asthma", "copd"]) {
       const mapping = byId.get(primaryId);
-      const arrhythmia = mapping?.suggestions.find((suggestion) => suggestion.conditionId === "cardiac-arrhythmia");
+      const osa = mapping?.suggestions.find((suggestion) => suggestion.conditionId === "sleep-apnea");
 
       expect(mapping?.draft).toBe(false);
-      expect(arrhythmia).toBeDefined();
-      expect(arrhythmia?.sourceReferences).toHaveLength(1);
-      expect(arrhythmia?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-      expect(arrhythmia?.sourceReferences.some((source) => source.verificationScope === "legal-framework")).toBe(false);
-      expect(arrhythmia?.sourceReferences.some((source) => /^38 CFR/i.test(source.citation))).toBe(false);
+      expect(mapping?.suggestions.some((suggestion) => suggestion.conditionId === "cardiac-arrhythmia")).toBe(false);
+      expect(osa).toBeDefined();
+      expect(osa?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
+      expect(osa?.sourceReferences.some((source) => source.verificationScope === "legal-framework")).toBe(false);
+      expect(osa?.sourceReferences.some((source) => /^38 CFR/i.test(source.citation))).toBe(false);
     }
   });
 });
