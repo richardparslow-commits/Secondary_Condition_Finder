@@ -20,6 +20,7 @@ const WAVE_SIX_IDS = [
   "hyperhidrosis",
 ] as const;
 
+const PUBLISHED_WAVE_SIX_IDS = new Set(["discoid-lupus"]);
 const FRAMEWORK_ONLY_IDS = ["body-dysmorphic-disorder", "hoarding-disorder"] as const;
 
 describe("condition catalog expansion wave 6", () => {
@@ -39,13 +40,19 @@ describe("condition catalog expansion wave 6", () => {
     }
   });
 
-  it("gives every Wave 6 condition exactly one safe draft mapping", () => {
+  it("keeps non-promoted Wave 6 mappings safely draft while allowing reviewed publication", () => {
     for (const id of WAVE_SIX_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
-      expect(mapping?.draft).toBe(true);
-      expect(mapping?.suggestions).toEqual([]);
-      expect(mapping?.todo.length).toBeGreaterThan(0);
+      if (PUBLISHED_WAVE_SIX_IDS.has(id)) {
+        expect(mapping?.draft).toBe(false);
+        expect(mapping?.todo).toEqual([]);
+        expect(mapping?.suggestions.length).toBeGreaterThan(0);
+      } else {
+        expect(mapping?.draft).toBe(true);
+        expect(mapping?.suggestions).toEqual([]);
+        expect(mapping?.todo.length).toBeGreaterThan(0);
+      }
     }
   });
 
