@@ -42,44 +42,35 @@
       "conditionId": "gerd",
       "rank": 2,
       "prevalence": "commonly-explored",
-      "rationale": "Psychosocial disorders are associated with GERD, and NSAID use has also been associated with GERD symptoms; an individual medication-related nexus requires documentation of the medication, timing, diagnosis, and case-specific medical evidence.",
+      "rationale": "Systematic-review and meta-analysis evidence supports an association between psychosocial disorders and GERD, including analyses in which psychosocial disorders were associated with increased GERD risk. This supports focused research of a psychiatric/GERD relationship, but an individual causation or aggravation theory still requires diagnosis, chronology, mechanism, and case-specific medical evidence.",
       "pathwayIntelligence": {
         "pathways": ["direct-secondary", "aggravation"],
-        "causalChain": "Adjustment disorder or associated psychosocial symptoms → claimed causation or worsening of GERD; any separate medication theory requires evidence tying the medication exposure to treatment of a service-connected condition.",
+        "causalChain": "Adjustment disorder or associated psychosocial symptoms → claimed causation or worsening of GERD; population-level association does not establish the individual link.",
         "developmentQuestions": [
           "Is GERD currently diagnosed and clinically characterized?",
           "Does the individual history support causation, aggravation, or neither between the adjustment disorder and GERD?",
           "What is the temporal relationship between psychiatric symptoms and GERD onset or worsening?",
-          "If medication exposure is relied on, was that medication actually prescribed because of treatment for a service-connected condition?",
-          "Which alternative gastrointestinal causes or contributors should the medical opinion address?"
+          "Which alternative gastrointestinal, medication-related, behavioral, and medical contributors should the opinion address?"
         ],
         "issuesToResolve": [
           "Psychosocial/GERD association evidence does not establish an individual medical nexus.",
-          "The NSAID association source does not by itself connect an NSAID exposure to the adjustment disorder; medication indication and timing would need separate support."
+          "A qualified clinician should address chronology, mechanism, and alternative GERD contributors in the individual case."
         ]
       },
       "evidenceGaps": [
-        "Endoscopy or clinical diagnosis of GERD/gastritis",
-        "Medication log identifying NSAID exposure, dose, duration, and timing",
-        "Medical nexus opinion addressing whether medication exposure caused or aggravated the condition"
+        "Clinical documentation confirming GERD and its onset or worsening",
+        "Longitudinal records comparing psychiatric symptoms with GERD course",
+        "Assessment of alternative gastrointestinal, medication-related, behavioral, and medical contributors",
+        "Medical nexus opinion addressing causation or aggravation in the individual case"
       ],
       "sourceReferences": [
         {
-          "citation": "Nonsteroidal anti-inflammatory drug use as a risk factor for gastro-oesophageal reflux disease: an observational study",
-          "note": "Observational evidence found GERD symptoms were more common among NSAID users; this supports an association, not automatic individual causation.",
-          "verified": false,
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18671778/",
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "PMID 18671778",
-          "verificationScope": "clinical-evidence"
-        },
-        {
           "citation": "Association Between Psychosocial Disorders and Gastroesophageal Reflux Disease: A Systematic Review and Meta-analysis",
-          "note": "Systematic-review evidence supports an association between psychosocial disorders and GERD; it does not establish an individual nexus.",
+          "note": "Systematic review and meta-analysis of nine observational studies found psychosocial disorders associated with increased GERD risk and GERD associated with increased psychosocial-disorder incidence; supports association and potential bidirectional interaction, not an automatic individual nexus.",
           "verified": false,
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35362447/",
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "PMID 35362447",
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 35362447; abstract: 9 studies, 1,485,268 participants; psychosocial disorders as exposure associated with increased GERD risk",
           "verificationScope": "clinical-evidence"
         }
       ]
