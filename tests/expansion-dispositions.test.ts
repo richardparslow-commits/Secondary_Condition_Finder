@@ -48,7 +48,7 @@ describe("target-v2 expansion disposition ledger", () => {
     const candidates = entries.filter((entry) => entry.disposition === "promotion-candidate");
     const safeDrafts = entries.filter((entry) => entry.disposition === "safe-draft");
 
-    expect(published).toHaveLength(27);
+    expect(published).toHaveLength(28);
     expect(published.map((entry) => entry.id)).toEqual(expect.arrayContaining([
       "gout",
       "myasthenia-gravis",
@@ -56,12 +56,14 @@ describe("target-v2 expansion disposition ledger", () => {
       "syringomyelia",
       "trigeminal-neuralgia",
       "femoroacetabular-impingement",
+      "hyperpituitarism",
       "pituitary-neoplasm",
       "heart-valve-replacement-residuals",
       "implantable-cardiac-pacemaker",
     ]));
     expect(candidates).toEqual([]);
-    expect(safeDrafts).toHaveLength(80);
+    expect(safeDrafts).toHaveLength(79);
+    expect(entries.find((entry) => entry.id === "hyperpituitarism")?.disposition).toBe("published-evidence-led");
     expect(entries.find((entry) => entry.id === "pituitary-neoplasm")?.disposition).toBe("published-evidence-led");
     expect(entries.find((entry) => entry.id === "heart-valve-replacement-residuals")?.disposition).toBe("published-evidence-led");
     expect(entries.find((entry) => entry.id === "implantable-cardiac-pacemaker")?.disposition).toBe("published-evidence-led");
