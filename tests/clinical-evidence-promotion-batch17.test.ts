@@ -80,13 +80,12 @@ describe("clinical evidence promotion batch 17", () => {
     ).toHaveLength(4);
   });
 
-  it("keeps the unverified review-debt exchange clinical-only on the targeted published relationships", () => {
+  it("preserves the Batch-17 clinical-only debt rule after later adjustment-disorder consolidation", () => {
     const adjustment = byId.get("adjustment-disorder");
-    for (const conditionId of ["sleep-apnea", "gerd"]) {
-      const suggestion = adjustment?.suggestions.find((item) => item.conditionId === conditionId);
-      expect(suggestion?.sourceReferences.some((source) => source.verificationScope === "legal-framework")).toBe(false);
-      expect(suggestion?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
-    }
+    const gerd = adjustment?.suggestions.find((item) => item.conditionId === "gerd");
+    expect(adjustment?.suggestions.some((item) => item.conditionId === "sleep-apnea")).toBe(false);
+    expect(gerd?.sourceReferences.some((source) => source.verificationScope === "legal-framework")).toBe(false);
+    expect(gerd?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
 
     const depressive = byId.get("depressive-disorder");
     const osa = depressive?.suggestions.find((item) => item.conditionId === "sleep-apnea");
