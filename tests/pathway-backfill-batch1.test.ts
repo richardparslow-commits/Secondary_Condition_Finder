@@ -14,11 +14,9 @@ const expectedBackfill = {
 } as const;
 
 const intentionallyUnlabeledMappings = [
-  "agoraphobia",
   "anxiety-disorder",
   "bipolar-disorder",
   "persistent-depressive-disorder",
-  "panic-disorder",
   "schizophrenia",
   "social-anxiety-disorder",
   "somatic-symptom-disorder",
@@ -32,6 +30,8 @@ const intentionallyUnlabeledMappings = [
   "rem-sleep-disorder",
 ] as const;
 
+const safetyWithdrawnMappings = ["agoraphobia", "panic-disorder"] as const;
+
 describe("controlled pathway backfill batch 1", () => {
   it("backfills only edges whose attached source set includes clinical evidence", () => {
     const kb = loadKnowledgeBase();
@@ -41,13 +41,8 @@ describe("controlled pathway backfill batch 1", () => {
       expect(mapping?.draft).toBe(false);
 
       for (const [secondaryId, pathways] of Object.entries(secondaries)) {
-        const suggestion = mapping?.suggestions.find(
-          (entry) => entry.conditionId === secondaryId,
-        );
-
-        expect(suggestion?.sourceReferences.some(
-          (source) => source.verificationScope === "clinical-evidence",
-        )).toBe(true);
+        const suggestion = mapping?.suggestions.find((entry) => entry.conditionId === secondaryId);
+        expect(suggestion?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
         expect(suggestion?.pathwayIntelligence?.pathways).toEqual(pathways);
         expect(suggestion?.pathwayIntelligence?.developmentQuestions.length).toBeGreaterThan(0);
         expect(suggestion?.pathwayIntelligence?.issuesToResolve.length).toBeGreaterThan(0);
@@ -55,21 +50,24 @@ describe("controlled pathway backfill batch 1", () => {
     }
   });
 
-  it("keeps reviewed legal-framework-only mental and neurological mappings unlabeled", () => {
+  it("keeps untouched reviewed legal-framework-only mental and neurological mappings unlabeled", () => {
     const kb = loadKnowledgeBase();
 
     for (const primaryId of intentionallyUnlabeledMappings) {
       const mapping = kb.find((entry) => entry.id === primaryId);
       expect(mapping?.draft).toBe(false);
-      for (const suggestion of mapping?.suggestions ?? []) {
-        expect(suggestion.pathwayIntelligence).toBeUndefined();
-      }
+      for (const suggestion of mapping?.suggestions ?? []) expect(suggestion.pathwayIntelligence).toBeUndefined();
+    }
+
+    for (const primaryId of safetyWithdrawnMappings) {
+      const mapping = kb.find((entry) => entry.id === primaryId);
+      expect(mapping?.draft).toBe(true);
+      expect(mapping?.suggestions).toEqual([]);
+      expect(mapping?.todo.length).toBeGreaterThan(0);
     }
 
     const adjustment = kb.find((entry) => entry.id === "adjustment-disorder");
-    const migraine = adjustment?.suggestions.find(
-      (entry) => entry.conditionId === "migraine-headaches",
-    );
+    const migraine = adjustment?.suggestions.find((entry) => entry.conditionId === "migraine-headaches");
     expect(migraine?.pathwayIntelligence).toBeUndefined();
   });
 
@@ -78,25 +76,13 @@ describe("controlled pathway backfill batch 1", () => {
     const adjustment = kb.find((entry) => entry.id === "adjustment-disorder");
     const depression = kb.find((entry) => entry.id === "depressive-disorder");
 
-    expect(
-      adjustment?.suggestions.map(({ conditionId, rank, prevalence }) => ({
-        conditionId,
-        rank,
-        prevalence,
-      })),
-    ).toEqual([
+    expect(adjustment?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
       { conditionId: "sleep-apnea", rank: 1, prevalence: "commonly-explored" },
       { conditionId: "gerd", rank: 2, prevalence: "commonly-explored" },
       { conditionId: "migraine-headaches", rank: 3, prevalence: "sometimes-explored" },
     ]);
 
-    expect(
-      depression?.suggestions.map(({ conditionId, rank, prevalence }) => ({
-        conditionId,
-        rank,
-        prevalence,
-      })),
-    ).toEqual([
+    expect(depression?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
       { conditionId: "sleep-apnea", rank: 1, prevalence: "sometimes-explored" },
       { conditionId: "erectile-dysfunction", rank: 2, prevalence: "commonly-explored" },
     ]);
@@ -104,7 +90,7 @@ describe("controlled pathway backfill batch 1", () => {
 
   it("does not treat draft mappings as backfill candidates", () => {
     const kb = loadKnowledgeBase();
-    for (const draftId of ["migraine-headaches", "ocd"]) {
+    for (const draftId of ["migraine-headaches", "ocd", "agoraphobia", "panic-disorder"]) {
       const mapping = kb.find((entry) => entry.id === draftId);
       expect(mapping?.draft).toBe(true);
     }
