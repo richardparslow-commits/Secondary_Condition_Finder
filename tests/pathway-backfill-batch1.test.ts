@@ -13,11 +13,6 @@ const expectedBackfill = {
   },
 } as const;
 
-const intentionallyUnlabeledMappings = [
-  "post-concussion-syndrome",
-  "skull-fracture-non-basilar-and-basal",
-] as const;
-
 const safetyWithdrawnMappings = [
   "agoraphobia",
   "panic-disorder",
@@ -32,6 +27,7 @@ const safetyWithdrawnMappings = [
   "subdural-hematoma",
   "epidural-hematoma",
   "rem-sleep-disorder",
+  "skull-fracture-non-basilar-and-basal",
 ] as const;
 
 describe("controlled pathway backfill batch 1", () => {
@@ -47,15 +43,6 @@ describe("controlled pathway backfill batch 1", () => {
         expect(suggestion?.pathwayIntelligence?.developmentQuestions.length).toBeGreaterThan(0);
         expect(suggestion?.pathwayIntelligence?.issuesToResolve.length).toBeGreaterThan(0);
       }
-    }
-  });
-
-  it("keeps untouched reviewed legal-framework-only neurological mappings unlabeled", () => {
-    const kb = loadKnowledgeBase();
-    for (const primaryId of intentionallyUnlabeledMappings) {
-      const mapping = kb.find((entry) => entry.id === primaryId);
-      expect(mapping?.draft).toBe(false);
-      for (const suggestion of mapping?.suggestions ?? []) expect(suggestion.pathwayIntelligence).toBeUndefined();
     }
   });
 
@@ -79,6 +66,19 @@ describe("controlled pathway backfill batch 1", () => {
     expect(headache?.pathwayIntelligence).toBeUndefined();
     expect(headache?.rationale).toMatch(/post-traumatic headache/i);
     expect(mapping?.suggestions.some((entry) => entry.conditionId === "depressive-disorder")).toBe(false);
+  });
+
+  it("recognizes the Batch 22 post-concussion headache repair without resurrecting anxiety", () => {
+    const mapping = loadKnowledgeBase().find((entry) => entry.id === "post-concussion-syndrome");
+    const headache = mapping?.suggestions.find((entry) => entry.conditionId === "migraine-headaches");
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.suggestions).toHaveLength(1);
+    expect(headache?.sourceReferences[0]?.sourceUrl).toContain("42133249");
+    expect(headache?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
+    expect(headache?.pathwayIntelligence).toBeUndefined();
+    expect(headache?.rationale).toMatch(/post-traumatic headache/i);
+    expect(headache?.rationale).toMatch(/distinct diagnosis|not.*every|does not justify/i);
+    expect(mapping?.suggestions.some((entry) => entry.conditionId === "anxiety-disorder")).toBe(false);
   });
 
   it("preserves the pre-backfill ranking and prevalence of enriched edges", () => {
