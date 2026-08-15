@@ -101,16 +101,31 @@ describe("workflow privacy", () => {
     ).toBeNull();
   });
 
-  it("ships no client telemetry initializer and keeps browser egress first-party only", () => {
+  it("keeps browser telemetry disabled while registering server-side OpenTelemetry", () => {
     const layout = read("src/app/layout.tsx");
     const proxy = read("src/proxy.ts");
     const privacy = read("src/app/privacy/page.tsx");
+    const instrumentation = read("src/instrumentation.ts");
+    const packageJson = read("package.json");
+    const packageLock = read("package-lock.json");
 
     expect(fs.existsSync(path.join(process.cwd(), "src/lib/appInsights.ts"))).toBe(false);
     expect(fs.existsSync(path.join(process.cwd(), "src/components/AppInsightsInit.tsx"))).toBe(false);
     expect(layout).not.toContain("AppInsightsInit");
     expect(proxy).toContain('connect-src \'self\'');
     expect(proxy).not.toMatch(/applicationinsights|azure\.com|dc\.services\.visualstudio\.com/i);
+
+    expect(instrumentation).toContain('from "@vercel/otel"');
+    expect(instrumentation).toContain("registerOTel");
+    expect(instrumentation).toContain('serviceName: "secondary-condition-finder"');
+    expect(instrumentation).not.toContain('"use client"');
+
+    expect(packageJson).toContain('"@vercel/otel": "2.1.3"');
+    expect(packageJson).toContain('"@opentelemetry/api": "1.9.0"');
+    expect(packageJson).not.toContain("@microsoft/applicationinsights-web");
+    expect(packageLock).not.toContain("@microsoft/applicationinsights-web");
+
     expect(privacy).toContain("does not initialize Application Insights or another client analytics/telemetry SDK");
+    expect(privacy).toContain("server runtime registers OpenTelemetry through Vercel");
   });
 });
