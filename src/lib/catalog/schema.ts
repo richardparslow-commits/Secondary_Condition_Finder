@@ -5,10 +5,11 @@ export const ratingReferenceSchema = z.object({
   citation: z.string().min(1),
   note: z.string().min(1),
   /**
-   * True only after a qualified human has confirmed the citation. Never set by
-   * an automated agent.
+   * Set true only after a qualified human has confirmed the citation. Automated
+   * agents must preserve the truthful status; the schema permits future human
+   * verification without requiring a data-contract migration.
    */
-  verified: z.literal(false),
+  verified: z.boolean(),
 }).strict();
 
 /**
