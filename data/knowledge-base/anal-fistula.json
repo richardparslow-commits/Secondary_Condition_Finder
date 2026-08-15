@@ -1,6 +1,46 @@
 {
   "id": "anal-fistula",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review inflammatory-bowel, infectious, postoperative, local anorectal, treatment, aggravation, and intermediate-factor pathways only where applicable; require condition-specific evidence for each proposed relationship."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "fecal-incontinence",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Sphincter-cutting treatment for anal fistula, particularly fistulotomy and related procedures that divide continence muscle, can cause postoperative continence impairment. A systematic review of simple fistula-in-ano reported postoperative continence impairment after sphincter-cutting procedures and emphasized that the underlying study quality was generally low. This supports a treatment-complication pathway only when the individual underwent a documented sphincter-involving fistula procedure and fecal incontinence began or materially worsened afterward; anal fistula by itself, and sphincter-sparing treatment without a compatible complication, should not be treated as sufficient evidence of causation.",
+      "pathwayIntelligence": {
+        "pathways": ["treatment-complication"],
+        "causalChain": "Anal fistula → documented sphincter-cutting or sphincter-involving treatment, if performed → postoperative sphincter/continence impairment → clinically confirmed fecal incontinence.",
+        "developmentQuestions": [
+          "What fistula anatomy was documented, including tract height, sphincter involvement, complexity, recurrence, and prior procedures?",
+          "Which procedure was performed, and did operative records document division or injury of internal or external anal sphincter muscle?",
+          "What was baseline continence before treatment, and did fecal incontinence begin or materially worsen after the procedure?",
+          "What do anorectal examination, manometry, endoanal ultrasound, or other applicable tests show about postoperative sphincter integrity and function?",
+          "Which competing causes of incontinence, including preexisting sphincter injury, inflammatory bowel disease, neuropathy, diarrhea, pelvic-floor dysfunction, or other anorectal surgery, should be addressed?"
+        ],
+        "issuesToResolve": [
+          "The evidence is treatment-specific and should not be generalized from sphincter-cutting procedures to every anal fistula or every sphincter-sparing intervention.",
+          "The systematic-review evidence is generally low quality, so operative anatomy, baseline continence, postoperative chronology, objective sphincter findings, and alternative causes are especially important."
+        ]
+      },
+      "evidenceGaps": [
+        "Operative reports identifying fistula anatomy and the exact treatment performed",
+        "Baseline and postoperative continence history",
+        "Anorectal examination and sphincter imaging/function testing when clinically indicated",
+        "Documentation of postoperative onset or worsening and subsequent treatment course",
+        "Colorectal opinion addressing procedure-related sphincter injury and competing causes of fecal incontinence"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Litta F et al. Tech Coloproctol. 2021;25(4):385-399. PMID 33387100",
+          "note": "Systematic review of 66 studies reported postoperative continence impairment in 12.7% of patients undergoing sphincter-cutting treatment for simple anal fistula; study quality was generally low. Supports a procedure-specific continence-complication pathway, not automatic attribution from the fistula diagnosis itself.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33387100/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 33387100; abstract: 66 eligible studies; 4,883 sphincter-cutting procedures, mainly fistulotomy; postoperative continence impairment 12.7%; study quality generally low"
+        }
+      ]
+    }
+  ]
 }
