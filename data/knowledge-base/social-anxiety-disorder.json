@@ -2,8 +2,9 @@
   "id": "social-anxiety-disorder",
   "draft": true,
   "todo": [
-    "Review future secondary suggestions only after adding social-anxiety-disorder-specific clinical evidence.",
-    "Batch 19 removes the prior sleep-apnea, GERD, and migraine suggestions because their attached references were legal or rating sources rather than clinical evidence for those relationships."
+    "Targeted 2026-08-15 rescreen found prospective community evidence that social anxiety disorder in participants without depression at baseline predicted later depressive-disorder onset (PMID 11231832; reported OR 3.5, 95% CI 2.0-6.0). This is a strong temporal candidate, but it remains population-level risk evidence rather than proof that social anxiety disorder caused a separate depressive disorder in an individual.",
+    "Keep safe-draft pending a dedicated psychiatric-overlap review that distinguishes a separately diagnosed depressive disorder from shared internalizing symptoms, establishes chronology, and addresses pre-existing depression, PTSD, generalized anxiety, substance use, treatment effects, and psychosocial contributors before any direct-secondary publication.",
+    "The prior sleep-apnea, GERD, and migraine suggestions remain withdrawn because their attached references were legal or rating sources rather than clinical evidence for those relationships."
   ],
   "suggestions": []
 }
