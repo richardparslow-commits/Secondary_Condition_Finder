@@ -1,6 +1,7 @@
 import "server-only";
 
 import type { VaApiEnvironment, VaApiSource } from "./sandbox";
+import { vaProcessLocalStateAllowed } from "./runtime-state";
 
 export type VaReferenceCacheStatus = "hit" | "miss";
 
@@ -40,6 +41,8 @@ export function readVaReferenceCache<T>(
   key: string,
   now = Date.now(),
 ): T | null {
+  if (!vaProcessLocalStateAllowed()) return null;
+
   const cached = referenceCache.get(key) as CacheEntry<T> | undefined;
   if (!cached) return null;
   if (cached.expiresAt <= now) {
@@ -47,7 +50,7 @@ export function readVaReferenceCache<T>(
     return null;
   }
 
-  // Refresh insertion order on a hit so the bounded process-local cache behaves
+  // Refresh insertion order on a hit so the bounded single-process cache behaves
   // as a small LRU rather than evicting a frequently used Forms query.
   referenceCache.delete(key);
   referenceCache.set(key, cached as CacheEntry<unknown>);
@@ -66,6 +69,7 @@ export function writeVaReferenceCache<T>(
   if (!Number.isFinite(ttlMs) || ttlMs <= 0) {
     throw new Error("VA reference cache TTL must be a positive finite number.");
   }
+  if (!vaProcessLocalStateAllowed()) return;
 
   pruneExpiredEntries(now);
   referenceCache.delete(key);
