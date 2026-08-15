@@ -1,6 +1,6 @@
 # Clinical Evidence Promotion Batch 29 — Wave 6 Rescreen
 
-Status: implementation candidate pending exact-head validation, immutable-head review, protected merge, independent `main` CI, and production runtime closure.
+Status: implementation candidate pending exact-head validation, Vercel Agent immutable-head review, protected merge, independent `main` CI, and production runtime closure.
 
 ## Production-validated base
 
@@ -11,6 +11,8 @@ Batch 29 branches from exact `main` SHA `c8ad197e8df420034579ba644e60f9cec0168a8
 Batch 29 re-screens all 14 Wave-6 identities while preserving the frozen **300 / 300** catalog/knowledge-base universe and the **107-identity** Wave 1–7 disposition universe.
 
 Publication remains evidence-led: rating authority is not medical nexus evidence; symptom overlap and diagnostic comorbidity do not become directional secondary relationships by default; manifestations are not converted into separate downstream diagnoses without a distinct supported phenotype; catalog targets must fit the source phenotype; and every newly authored clinical source remains `verified: false` pending qualified-human review.
+
+The repository change workflow now requires **exact-head PR CI → Vercel Agent immutable-head review → expected-head protected merge**. A Vercel preview or generic Vercel deployment status does not satisfy the review gate. Any change to the reviewed head invalidates both the prior review and the prior exact-head CI proof and requires both gates again on the new head.
 
 ## Evidence-led Wave 6 promotion
 
@@ -70,4 +72,4 @@ Automated retrieval and source screening are preparation activities only. The ne
 
 ## Closure requirement
 
-The exact final branch head must pass citation audit, knowledge-base validation, lint, typecheck, critical-module composition, the one-shot test suite, production build, real-browser journeys, diagnostics, and aggregate fail-safe. The exact validated head must then complete immutable-head review and protected merge, followed by independent `main` CI and Production Runtime Readiness on the resulting merge SHA before Wave 7 advances.
+The exact final branch head must pass citation audit, knowledge-base validation, lint, typecheck, critical-module composition, the one-shot test suite, production build, real-browser journeys, diagnostics, and aggregate fail-safe. That exact validated head must then receive a real Vercel Agent code review with all actionable findings resolved. Deployment readiness alone is not review evidence. The reviewed exact head may then be merged with expected-head protection, followed by independent `main` CI and Production Runtime Readiness on the resulting merge SHA before Wave 7 advances.
