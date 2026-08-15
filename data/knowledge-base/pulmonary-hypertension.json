@@ -1,6 +1,47 @@
 {
   "id": "pulmonary-hypertension",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, medication/treatment, intermediate-factor, pulmonary-vascular, cardiopulmonary, and other organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Pulmonary hypertension is heterogeneous, so this relationship is limited to a documented pulmonary-vascular or pre-capillary phenotype—especially pulmonary arterial hypertension—in which elevated pulmonary vascular load precedes right-ventricular dysfunction and clinically diagnosed right-sided heart failure. The ESC/ERS pulmonary-hypertension guideline describes symptoms as linked to right-ventricular dysfunction and provides a dedicated advanced right-ventricular-failure pathway for patients with pulmonary hypertension. This mapping does not apply when pulmonary hypertension is secondary to pre-existing left-heart failure (group 2 PH), where the direction of the relationship may be reversed, and it does not establish that every diagnosis coded as congestive heart failure was caused by pulmonary hypertension.",
+      "pathwayIntelligence": {
+        "pathways": ["disease-progression"],
+        "causalChain": "Confirmed pre-capillary pulmonary hypertension or pulmonary arterial hypertension → sustained pulmonary vascular load, when documented → right-ventricular dysfunction/failure → clinically characterized right-sided heart failure or congestive-heart-failure syndrome; group 2 pulmonary hypertension caused by left-heart disease must be excluded from this directional pathway.",
+        "developmentQuestions": [
+          "What pulmonary-hypertension group and haemodynamic phenotype were established, including right-heart-catheterization findings when available?",
+          "Did pulmonary hypertension precede objective right-ventricular dysfunction and the heart-failure diagnosis?",
+          "Do echocardiography, cardiac MRI, haemodynamics, BNP/NT-proBNP, examination, or hospitalization records document right-sided heart failure?",
+          "Is left-heart disease the cause of the pulmonary hypertension rather than a downstream consequence?",
+          "What other causes of right-ventricular or heart failure, including ischemic, valvular, congenital, pulmonary, thromboembolic, or arrhythmic disease, require review?"
+        ],
+        "issuesToResolve": [
+          "Pulmonary hypertension is a syndrome with multiple groups; directionality cannot be inferred from the diagnosis label alone.",
+          "Group 2 pulmonary hypertension due to left-heart disease is specifically outside this pulmonary-hypertension-to-heart-failure pathway.",
+          "The catalog target `congestive-heart-failure` is broader than isolated right-ventricular failure, so the individual's heart-failure phenotype must be clinically characterized."
+        ]
+      },
+      "evidenceGaps": [
+        "Pulmonary-hypertension classification and haemodynamic documentation",
+        "Objective right-ventricular structure/function and heart-failure findings",
+        "Chronology establishing pulmonary hypertension before the claimed downstream right-sided heart failure",
+        "Evaluation for left-heart disease and other competing causes of heart failure",
+        "Specialist assessment addressing the individual's direction of disease progression"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Humbert M, Kovacs G, Hoeper MM, et al. 2022 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension. Eur Heart J. 2022;43(38):3618-3731. PMID 36017548",
+          "note": "Multisociety guideline classifies pulmonary hypertension by mechanism, notes that symptoms are linked to right-ventricular dysfunction, and includes dedicated management of advanced right-ventricular failure in pulmonary arterial hypertension. Supports a phenotype-bounded progression pathway, not generic all-PH-to-CHF causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36017548/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 36017548; guideline sections 3 (classification), 5.1.1 (clinical presentation/right-ventricular dysfunction), 6.3.7 (advanced right-ventricular failure), and 8 (PH associated with left-heart disease)"
+        }
+      ]
+    }
+  ]
 }
