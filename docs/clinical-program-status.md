@@ -25,8 +25,8 @@ The original expansion roadmap defines the 107 Wave 1–7 identities. `diabetes-
 Current roadmap-backed dispositions are recorded in `data/expansion-dispositions.json`:
 
 - **18 published-evidence-led** Wave identities;
-- **3 promotion-candidate** Wave identities (`gout`, `myasthenia-gravis`, `trigeminal-neuralgia`), still draft pending their own exact-head evidence batches;
-- **86 safe-draft** Wave identities;
+- **2 promotion-candidate** Wave identities (`gout`, `myasthenia-gravis`), still draft pending their own exact-head evidence batch;
+- **87 safe-draft** Wave identities, including `trigeminal-neuralgia` after its initially noted screening PMID was found not to support that condition/proposition;
 - therefore **89 of 107 Wave identities are currently draft**.
 
 A safe draft is a completed reviewed disposition, not a clinical defect. The program does not force publication when no strong condition-specific secondary relationship has been approved.
@@ -80,4 +80,4 @@ See `docs/external-manual-gates-status.md`.
 
 Repository automation is complete for a work item when the repository contains a safe explicit state, tests/audits enforce it, exact-head CI passes, and production closure proves the merge SHA. It does not fabricate human verification, credentials, accessibility observations, or external-provider success.
 
-Future evidence batches may promote the three screened candidates or other safe drafts when stronger evidence is researched. Until then, their explicit draft disposition is the correct safe state.
+The two screened promotion candidates may be promoted only in a separate bounded evidence batch. Every other Wave identity already has an explicit safe disposition.
