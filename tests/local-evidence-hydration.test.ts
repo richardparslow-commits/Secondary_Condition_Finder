@@ -7,6 +7,10 @@ describe("local evidence hydration contract", () => {
     process.cwd(),
     "src/components/evidence/LocalEvidenceAnalyzer.tsx",
   );
+  const storagePath = path.join(
+    process.cwd(),
+    "src/lib/evidence/storage.ts",
+  );
 
   it("uses the same empty evidence snapshot for SSR and the first client render", () => {
     const analyzer = fs.readFileSync(analyzerPath, "utf8");
@@ -40,11 +44,14 @@ describe("local evidence hydration contract", () => {
     expect(restoreEffect).toBeGreaterThan(initialState);
   });
 
-  it("keeps malformed or unavailable session storage fail-closed", () => {
+  it("delegates malformed or unavailable session storage to the fail-closed storage helper", () => {
     const analyzer = fs.readFileSync(analyzerPath, "utf8");
+    const storage = fs.readFileSync(storagePath, "utf8");
 
-    expect(analyzer).toContain('if (typeof window === "undefined") return [];');
-    expect(analyzer).toContain("window.sessionStorage.getItem(evidenceAnalysisStorageKey)");
-    expect(analyzer).toContain("} catch {\n    return [];\n  }");
+    expect(analyzer).toContain('if (typeof window === "undefined") return null;');
+    expect(analyzer).toContain("return loadStoredEvidence(getSessionStorage());");
+    expect(analyzer).toContain("} catch {\n    return null;\n  }");
+    expect(storage).toContain("const raw = storage.getItem(evidenceAnalysisStorageKey);");
+    expect(storage).toContain("} catch {\n    return [];\n  }");
   });
 });
