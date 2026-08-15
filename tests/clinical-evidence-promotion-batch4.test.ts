@@ -21,15 +21,16 @@ describe("clinical evidence promotion batch 4", () => {
       expect(suggestion?.rationale).toMatch(/injured knee|individual review/i);
     }
   });
-  it("repairs anosmia and alopecia depression mappings with condition-specific evidence", () => {
-    for (const [id, pmid] of [["anosmia","42424043"],["alopecia-areata","36696123"]] as const) {
-      const mapping = byId.get(id); const suggestion = mapping?.suggestions[0];
-      expect(mapping?.draft).toBe(false); expect(suggestion?.conditionId).toBe("depressive-disorder");
-      expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain(pmid);
-      expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-      expect(suggestion?.sourceReferences.some((reference) => reference.citation === "38 CFR 3.310")).toBe(false);
-      expect(suggestion?.rationale).toMatch(/association|does not establish/i);
-    }
+  it("recognizes later withdrawal of nondirectional anosmia and alopecia depression edges", () => {
+    const anosmia = byId.get("anosmia");
+    expect(anosmia?.draft).toBe(true);
+    expect(anosmia?.suggestions).toEqual([]);
+    expect(anosmia?.todo.join(" ")).toMatch(/causal pathways|directional/i);
+
+    const alopecia = byId.get("alopecia-areata");
+    expect(alopecia?.draft).toBe(true);
+    expect(alopecia?.suggestions).toEqual([]);
+    expect(alopecia?.todo.join(" ")).toMatch(/comorbidity|directional/i);
   });
   it("withdraws agranulocytosis legal-only generic relationships", () => {
     const mapping = byId.get("agranulocytosis"); expect(mapping?.draft).toBe(true); expect(mapping?.suggestions).toEqual([]); expect(mapping?.todo.join(" ")).toMatch(/withdrawn|legal framework/i);
@@ -39,7 +40,7 @@ describe("clinical evidence promotion batch 4", () => {
     for (const id of ["hip-strain","ankle-strain"]) { expect(maintenance).toContain(id); expect(carry).not.toContain(id); }
     expect(carry).toContain("contralateral-knee-condition");
   });
-  it("does not auto-verify new clinical sources", () => {
-    for (const id of ["acl-injury","pcl-injury","anosmia","alopecia-areata"] as const) for (const suggestion of byId.get(id)?.suggestions ?? []) expect(suggestion.sourceReferences.every((reference) => reference.verified === false && reference.sourceCheckedOn === "2026-08-14")).toBe(true);
+  it("does not auto-verify surviving Batch 4 clinical sources", () => {
+    for (const id of ["acl-injury","pcl-injury"] as const) for (const suggestion of byId.get(id)?.suggestions ?? []) expect(suggestion.sourceReferences.every((reference) => reference.verified === false && reference.sourceCheckedOn === "2026-08-14")).toBe(true);
   });
 });
