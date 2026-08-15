@@ -1,6 +1,46 @@
 {
   "id": "histoplasmosis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Scope clinical authoring to documented pulmonary versus disseminated or extra-pulmonary disease and residuals; DC 6834 is the pulmonary histoplasmosis rating identity and must not be generalized into nexus evidence."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "addisons-disease",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Adrenal histoplasmosis can produce primary adrenal insufficiency (Addison disease) when Histoplasma infection directly involves and damages the adrenal glands. A retrospective cohort of 40 adults with biopsy- or culture-supported adrenal histoplasmosis found primary adrenal insufficiency in 73% at presentation, with additional patients developing adrenal insufficiency during follow-up. This supports a disease-progression pathway only when adrenal or disseminated histoplasmosis is documented and endocrine testing confirms primary adrenal insufficiency; the broader catalog identity must not be used to infer Addison disease from pulmonary-only histoplasmosis or from nonspecific fatigue, weight loss, hypotension, or electrolyte abnormalities without adrenal disease and biochemical confirmation.",
+      "pathwayIntelligence": {
+        "pathways": ["disease-progression"],
+        "causalChain": "Documented adrenal/disseminated histoplasmosis with adrenal involvement → adrenal cortical injury or loss of reserve → biochemically confirmed primary adrenal insufficiency / Addison disease.",
+        "developmentQuestions": [
+          "Is adrenal involvement by histoplasmosis documented by imaging plus histology, culture, antigen testing, or other clinically accepted evidence rather than inferred from pulmonary histoplasmosis alone?",
+          "Do ACTH, morning cortisol, ACTH-stimulation testing, renin/aldosterone, sodium, and potassium findings support primary adrenal insufficiency?",
+          "Did adrenal insufficiency begin during or after the documented adrenal/disseminated histoplasmosis course?",
+          "Are bilateral adrenal enlargement, destructive adrenal changes, or other compatible adrenal findings documented?",
+          "Which competing causes of primary adrenal insufficiency, including autoimmune adrenalitis, hemorrhage, metastatic disease, tuberculosis, medication effects, or other infections, should be addressed?"
+        ],
+        "issuesToResolve": [
+          "The catalog identity includes pulmonary histoplasmosis, but pulmonary disease alone does not establish an adrenal pathway; adrenal or disseminated involvement must be documented.",
+          "Symptoms such as fatigue, weight loss, hypotension, and electrolyte abnormalities are not substitutes for biochemical confirmation of primary adrenal insufficiency."
+        ]
+      },
+      "evidenceGaps": [
+        "Records establishing adrenal or disseminated histoplasmosis and the diagnostic method",
+        "Adrenal imaging and pathology/microbiology where available",
+        "Endocrine testing confirming primary adrenal insufficiency",
+        "Chronology of histoplasmosis, adrenal involvement, and adrenal-insufficiency onset",
+        "Endocrinology or infectious-disease assessment addressing competing adrenal etiologies"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Singh M, Chandy DD, Bharani T, et al. Clinical outcomes and cortical reserve in adrenal histoplasmosis-A retrospective follow-up study of 40 patients. Clin Endocrinol (Oxf). 2019;90(4):534-541. PMID 30656706",
+          "note": "Retrospective cohort of 40 consecutive adults with adrenal histoplasmosis diagnosed by bilateral adrenal enlargement plus histology and/or culture found primary adrenal insufficiency in 73% at presentation; two initially eucortisolemic patients developed adrenal insufficiency during follow-up. Supports an adrenal-histoplasmosis-to-primary-adrenal-insufficiency pathway, not attribution from pulmonary-only histoplasmosis.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30656706/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 30656706; abstract Methods/Results: 40 adults with adrenal histoplasmosis; 73% primary adrenal insufficiency; two with normal cortisol at diagnosis later developed adrenal insufficiency"
+        }
+      ]
+    }
+  ]
 }
