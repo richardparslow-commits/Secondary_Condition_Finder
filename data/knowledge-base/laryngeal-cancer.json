@@ -1,6 +1,46 @@
 {
   "id": "laryngeal-cancer",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Evaluate active malignancy separately from laryngectomy, aphonia, stenosis, swallowing impairment, respiratory effects, treatment toxicity, and other documented residuals; do not infer any residual or nexus from DC 6819 alone."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "aphonia",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Total laryngectomy for laryngeal cancer removes the natural laryngeal voice source and requires alaryngeal speech rehabilitation. Systematic-review evidence of voice outcomes after total laryngectomy supports a treatment-complication pathway to aphonia/loss of natural voice when a total laryngectomy is documented. This pathway must not be generalized to every laryngeal cancer diagnosis, radiation-only treatment, partial laryngectomy, or other organ-preservation treatment without documented aphonia or equivalent loss of natural phonation.",
+      "pathwayIntelligence": {
+        "pathways": ["treatment-complication"],
+        "causalChain": "Laryngeal cancer → documented total laryngectomy, if performed → removal of the natural laryngeal voice source → aphonia/loss of natural phonation with need for alaryngeal speech rehabilitation.",
+        "developmentQuestions": [
+          "Was a total laryngectomy actually performed, and what was the operative date and extent of resection?",
+          "Is aphonia or loss of natural laryngeal phonation documented after surgery?",
+          "What speech-rehabilitation method is used, such as tracheoesophageal speech, esophageal speech, or electrolarynx?",
+          "Was there any preoperative voice disorder or neurologic condition that independently affected phonation?",
+          "If the surgery was partial or organ-preserving rather than total, what objective evidence establishes aphonia and its mechanism?"
+        ],
+        "issuesToResolve": [
+          "The pathway is specific to total laryngectomy and should not be inferred from the cancer diagnosis or from other laryngeal-cancer treatments alone.",
+          "Substitute alaryngeal speech may restore communication but does not recreate the removed natural laryngeal voice source; the individual diagnosis and functional state should be documented."
+        ]
+      },
+      "evidenceGaps": [
+        "Operative records confirming total laryngectomy",
+        "Postoperative otolaryngology and speech-language pathology documentation of voice status",
+        "Speech-rehabilitation records identifying the alaryngeal communication method",
+        "Chronology of natural-voice loss relative to surgery",
+        "Assessment of alternative causes if aphonia is claimed without total laryngectomy"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "van Sluis KE, van der Molen L, van Son RJJH, et al. Objective and subjective voice outcomes after total laryngectomy: a systematic review. Eur Arch Otorhinolaryngol. 2018;275(1):11-26. PMID 29086803",
+          "note": "Systematic review of 26 studies evaluated esophageal, tracheoesophageal, and electrolarynx speech rehabilitation after total laryngectomy; all post-laryngectomy speaker groups reported voice handicap. Supports the loss-of-natural-voice/alaryngeal-rehabilitation consequence of total laryngectomy, not aphonia attribution from laryngeal cancer without that treatment.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29086803/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 29086803; abstract Background/Methods/Results: speech rehabilitation methods after total laryngectomy; 26 included studies; all speaker groups report a degree of voice handicap"
+        }
+      ]
+    }
+  ]
 }
