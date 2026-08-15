@@ -27,11 +27,13 @@ The machine-readable form is available with:
 node scripts/report-citation-verification-queue.js
 ```
 
-## Current Batch-25 baseline
+## Current Batch-26 baseline
 
-The citation audit records **62 live unverified references** after Batch 25, while `npm run citations:queue` contains **60 live unverified published references**. The two-count difference is intentional: the audit counts unverified references that remain in draft mappings, while the human queue skips drafts and includes only references currently used by published mappings.
+The expected citation-audit position remains **62 live unverified references** and **60 live unverified published references** pending exact-head CI confirmation. The two-count difference remains intentional: the audit counts unverified references that remain in draft mappings, while the human queue skips drafts and includes only references currently used by published mappings.
 
-Batch 25 adds the FAI→hip-osteoarthritis systematic-review source without increasing this queue. The new published source is offset by consolidating an existing unverified rheumatoid-arthritis→GERD source record. This is a citation-debt exchange, not automated verification: the new and retained unverified sources remain `verified: false` until qualified-human review.
+Batch 26 adds four focused published clinical sources and removes four weaker or phenotype-mismatched unverified published rows. This is a citation-debt exchange, not automated verification. The newly added sources for prolactin-secreting pituitary dysfunction→hypogonadism, compressive pituitary neoplasm→visual impairment, valve-replacement paravalvular leak→hemolytic anemia, and transvenous pacemaker lead→tricuspid valve disorder all remain `verified: false` until qualified-human review.
+
+The four withdrawn rows were also `verified: false`: adjustment-disorder→OSA, asthma→cardiac-arrhythmia, COPD→cardiac-arrhythmia, and post-concussion-syndrome→migraine-headaches. Because they were never human-verified, they do not enter the verified-source retirement ledger.
 
 `npm run citations:queue` is the authoritative source for the exact current human-review row set and role breakdown because later evidence batches can add, replace, retire, withdraw, consolidate, or verify individual sources.
 
