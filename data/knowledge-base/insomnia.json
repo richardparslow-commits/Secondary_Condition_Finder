@@ -1,8 +1,47 @@
 {
   "id": "insomnia",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Prospective population evidence supports a temporal association between insomnia and later major depressive disorder. In a population-based cohort restricted to participants without prior major depressive disorder, insomnia symptoms were associated with incident major depressive disorder over eight years of follow-up. This supports focused direct-secondary research when a clinically established insomnia disorder clearly precedes a separately diagnosed depressive disorder, but the cohort evidence does not establish individual causation, does not show that every person with insomnia will develop depression, and does not replace a Veteran-specific medical assessment of competing psychiatric, sleep, pain, medication, substance-use, and medical contributors.",
+      "pathwayIntelligence": {
+        "pathways": ["direct-secondary"],
+        "causalChain": "Clinically established persistent insomnia preceding depression → sustained sleep disturbance and associated vulnerability in an individual case → later clinically diagnosed depressive disorder, if the chronology and medical assessment support that relationship.",
+        "developmentQuestions": [
+          "Was insomnia independently diagnosed, persistent, and clinically significant before the onset of the depressive disorder?",
+          "What is the documented chronology of insomnia severity, sleep duration or fragmentation, and depressive symptom onset or worsening?",
+          "Did effective treatment of insomnia correspond with meaningful change in depressive symptoms?",
+          "Were PTSD, anxiety disorders, sleep apnea, chronic pain, substance use, medications, shift work, or another medical condition present before or during the relevant period?",
+          "Does a qualified clinician consider insomnia a cause or material contributor in this individual case rather than merely a comorbid symptom of depression?"
+        ],
+        "issuesToResolve": [
+          "Prospective population risk does not establish an individual medical nexus.",
+          "Insomnia can be a symptom of depression or another disorder; the primary-versus-secondary chronology must be established rather than assumed.",
+          "Shared psychiatric, medical, behavioral, and sleep-related causes can produce both insomnia and depression."
+        ]
+      },
+      "evidenceGaps": [
+        "Sleep or mental-health documentation establishing an independent insomnia diagnosis and its onset",
+        "Qualified depressive-disorder diagnosis and chronology relative to insomnia",
+        "Longitudinal records describing insomnia severity, persistence, treatment, and depressive course",
+        "Assessment of pre-existing psychiatric disorders, sleep apnea, chronic pain, medications, substance use, and other competing causes",
+        "Qualified medical or mental-health opinion addressing causation or aggravation in the individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Solelhac G, Imler T, Strippoli MPF, et al. Sleep disturbances and incident risk of major depressive disorder in a population-based cohort. Psychiatry Res. 2024;338:115934. PMID 38833937",
+          "note": "Population-based prospective cohort restricted to participants without prior major depressive disorder found insomnia symptoms associated with incident major depressive disorder over eight years (HR 1.437, 95% CI 1.064-1.940). Supports temporal relationship research, not automatic individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38833937/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 38833937; abstract Methods/Results: participants without prior MDD, 8-year psychiatric follow-up; insomnia symptoms HR 1.437 (95% CI 1.064-1.940) for incident MDD"
+        }
+      ]
+    }
+  ]
 }
