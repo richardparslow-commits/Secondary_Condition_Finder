@@ -83,25 +83,6 @@
           "verificationScope": "clinical-evidence"
         }
       ]
-    },
-    {
-      "conditionId": "migraine-headaches",
-      "rank": 3,
-      "prevalence": "sometimes-explored",
-      "rationale": "Muscle tension, sleep disruption, and autonomic arousal may be relevant headache factors, but an individual relationship requires clinical assessment and evidence.",
-      "evidenceGaps": [
-        "Headache log documenting frequency/prostrating nature",
-        "Neurology/Primary care diagnosis",
-        "Medical nexus opinion addressing causation or aggravation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 4.124a",
-          "note": "Diagnostic framework including migraine code 8100; not clinical evidence of causation.",
-          "verified": false,
-          "verificationScope": "legal-framework"
-        }
-      ]
     }
   ]
 }
