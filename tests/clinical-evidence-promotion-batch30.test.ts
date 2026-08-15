@@ -16,10 +16,8 @@ describe("clinical evidence promotion batch 30", () => {
   });
 
   it.each([
-    ["histoplasmosis", "addisons-disease", "disease-progression", "30656706"],
     ["ovarian-cancer", "peripheral-neuropathy", "treatment-complication", "24582486"],
     ["testicular-cancer", "hypogonadism", "treatment-complication", "27009402"],
-    ["laryngeal-cancer", "aphonia", "treatment-complication", "29086803"],
   ])("publishes %s to %s with one bounded unverified clinical source", (primaryId, secondaryId, pathway, pmid) => {
     const mapping = byId.get(primaryId);
     const suggestion = mapping?.suggestions[0];
@@ -34,17 +32,25 @@ describe("clinical evidence promotion batch 30", () => {
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
   });
 
-  it("keeps adrenal histoplasmosis anatomically bounded rather than generalizing pulmonary disease", () => {
-    const suggestion = byId.get("histoplasmosis")?.suggestions[0];
-    expect(suggestion?.rationale).toMatch(/adrenal|disseminated/i);
-    expect(suggestion?.rationale).toMatch(/pulmonary-only/i);
-    expect(suggestion?.evidenceGaps.join(" ")).toMatch(/adrenal/i);
+  it("keeps pulmonary histoplasmosis draft because adrenal evidence cannot be enforced by the current identity", () => {
+    const mapping = byId.get("histoplasmosis");
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/pulmonary|adrenal|disseminated|disease-site/i);
+    expect(mapping?.todo.join(" ")).toMatch(/30656706/);
   });
 
-  it("keeps the three cancer pathways treatment-specific", () => {
+  it("keeps laryngeal cancer draft because alaryngeal voice handicap is not the same diagnosis as aphonia", () => {
+    const mapping = byId.get("laryngeal-cancer");
+    expect(mapping?.draft).toBe(true);
+    expect(mapping?.suggestions).toEqual([]);
+    expect(mapping?.todo.join(" ")).toMatch(/aphonia|alaryngeal|voice handicap|natural laryngeal/i);
+    expect(mapping?.todo.join(" ")).toMatch(/29086803/);
+  });
+
+  it("keeps the two surviving cancer pathways treatment-specific", () => {
     expect(byId.get("ovarian-cancer")?.suggestions[0]?.rationale).toMatch(/paclitaxel|treatment/i);
     expect(byId.get("testicular-cancer")?.suggestions[0]?.rationale).toMatch(/chemotherapy|radiotherapy|treatment/i);
-    expect(byId.get("laryngeal-cancer")?.suggestions[0]?.rationale).toMatch(/total laryngectomy/i);
   });
 
   it("withdraws three nondirectional published depression edges", () => {
@@ -65,13 +71,15 @@ describe("clinical evidence promotion batch 30", () => {
     expect(mapping?.suggestions.some((suggestion) => suggestion.conditionId === "anxiety-disorder")).toBe(false);
   });
 
-  it("keeps the other six Wave 7 identities safe-draft", () => {
+  it("keeps the other eight Wave 7 identities safe-draft", () => {
     for (const id of [
       "amebiasis",
       "actinomycosis",
       "nocardiosis",
+      "histoplasmosis",
       "strongyloidiasis",
       "rickettsial-ehrlichial-anaplasma-infection",
+      "laryngeal-cancer",
       "mandibular-nonunion",
     ] as const) {
       const mapping = byId.get(id);
@@ -81,13 +89,13 @@ describe("clinical evidence promotion batch 30", () => {
     }
   });
 
-  it("records 32 published, 75 safe-draft, and zero candidates", () => {
+  it("records 30 published, 77 safe-draft, and zero candidates", () => {
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
     ) as { waves: Array<{ identities: Array<{ disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(32);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(75);
+    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(30);
+    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(77);
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
   });
 });
