@@ -138,5 +138,5 @@ jobs:
 
           This satisfies the external proof defined in issue #189.
           EOF
-          gh issue comment 189 --body-file "$body_file"
-          gh issue close 189 --reason completed
+          gh issue comment 189 --repo "$GITHUB_REPOSITORY" --body-file "$body_file"
+          gh issue close 189 --repo "$GITHUB_REPOSITORY" --reason completed
