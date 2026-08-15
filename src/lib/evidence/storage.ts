@@ -1,6 +1,7 @@
 import {
   evidenceAnalysisStorageKey,
   type EvidenceAnalysis,
+  type EvidenceExcerpt,
 } from "@/lib/evidence/extract";
 
 export const MAX_STORED_EVIDENCE_SOURCES = 10;
@@ -19,11 +20,48 @@ interface StorageRemover {
   removeItem(key: string): void;
 }
 
+const EVIDENCE_CATEGORIES = new Set([
+  "diagnosis",
+  "causation",
+  "aggravation",
+  "treatment",
+  "medication",
+  "timeline",
+  "alternative-cause",
+]);
+const EVIDENCE_STRENGTHS = new Set(["nexus-relevant", "supporting"]);
+
+function isNonNegativeInteger(value: unknown): value is number {
+  return Number.isInteger(value) && Number(value) >= 0;
+}
+
+function isEvidenceExcerpt(item: unknown): item is EvidenceExcerpt {
+  if (!item || typeof item !== "object") return false;
+  const excerpt = item as Record<string, unknown>;
+  return (
+    typeof excerpt.sourceName === "string" &&
+    typeof excerpt.locator === "string" &&
+    typeof excerpt.quote === "string" &&
+    typeof excerpt.category === "string" &&
+    EVIDENCE_CATEGORIES.has(excerpt.category) &&
+    typeof excerpt.strength === "string" &&
+    EVIDENCE_STRENGTHS.has(excerpt.strength) &&
+    typeof excerpt.clinicianAuthored === "boolean" &&
+    Array.isArray(excerpt.matchedTerms) &&
+    excerpt.matchedTerms.every((term) => typeof term === "string")
+  );
+}
+
 function isEvidenceAnalysis(item: unknown): item is EvidenceAnalysis {
-  return Boolean(
-    item &&
-      typeof item === "object" &&
-      (item as EvidenceAnalysis).version === 1,
+  if (!item || typeof item !== "object") return false;
+  const analysis = item as Record<string, unknown>;
+  return (
+    analysis.version === 1 &&
+    typeof analysis.sourceName === "string" &&
+    Array.isArray(analysis.excerpts) &&
+    analysis.excerpts.every(isEvidenceExcerpt) &&
+    isNonNegativeInteger(analysis.nexusRelevantCount) &&
+    isNonNegativeInteger(analysis.supportingCount)
   );
 }
 
