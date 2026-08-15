@@ -4,9 +4,9 @@ This is the authoritative current-state tracker for post-v2 clinical evidence wo
 
 ## Current production-validated base
 
-Batch 29 branches from exact `main` SHA `c8ad197e8df420034579ba644e60f9cec0168a8d` (`Promote evidence-led Wave 5 mappings (#352)`). That base passed independent `main` CI #1021 and Production Runtime Readiness #380 before Batch 29 started.
+Batch 30 branches from exact `main` SHA `b7624571d31de6ce3fa2c7efae5e5e1c18ba194f` (`Promote evidence-led Wave 6 mapping (#353)`). That base passed independent `main` CI #1031 and Production Runtime Readiness #390 before Batch 30 started.
 
-Batch 29 itself is not production-closed until its exact head passes PR CI and a Vercel Agent immutable-head review, is merged with expected-head protection, and the resulting merge SHA passes independent `main` CI and Production Runtime Readiness. Vercel preview/deployment readiness is not a substitute for the Agent code-review result.
+Batch 30 is not production-closed until its exact head passes PR CI and a genuine Vercel Agent immutable-head review, is merged with expected-head protection, and the resulting merge SHA passes independent `main` CI and Production Runtime Readiness. Vercel preview/deployment readiness is not a substitute for the Agent code-review result.
 
 ## Frozen universe
 
@@ -15,27 +15,25 @@ Batch 29 itself is not production-closed until its exact head passes PR CI and a
 - Wave 1–7 expansion identities: **107**.
 - Promotion candidates: **0**.
 
-## Current Batch-29 candidate dispositions
+## Current Batch-30 candidate dispositions
 
-The disposition ledger currently records:
+The disposition ledger records:
 
-- **31 published-evidence-led** identities;
-- **76 safe-draft** identities; and
+- **32 published-evidence-led** identities;
+- **75 safe-draft** identities; and
 - **0 promotion-candidate** identities.
 
-Batch 29 publishes one Wave-6 relationship:
+Batch 30 publishes four Wave-7 relationships: `histoplasmosis`→`addisons-disease`, `ovarian-cancer`→`peripheral-neuropathy`, `testicular-cancer`→`hypogonadism`, and `laryngeal-cancer`→`aphonia`. Each is bounded by the adrenal phenotype or treatment exposure actually studied rather than generalized from the primary diagnosis.
 
-- `discoid-lupus` → `scarring-alopecia`, limited to scalp DLE with a distinct cicatricial/scarring-alopecia diagnosis and explicit anatomic/phenotype safeguards.
+Batch 30 also returns Parkinson disease, seizure disorder, and psoriatic arthritis to safe draft where the published depression evidence was prevalence/comorbidity-oriented rather than directional, and removes the weaker trigeminal-neuralgia→anxiety suggestion while retaining the stronger trigeminal-neuralgia→depression pathway.
 
-Batch 29 also returns `adjustment-disorder` → `gerd` to draft because the attached psychosocial/GERD meta-analysis is anxiety/depression-oriented and does not establish adjustment disorder as the condition-specific exposure.
+The remaining Wave-7 identities stay safe-draft where the clinically real complication does not match an exact catalog target or the grouped identity would overgeneralize pathogen-specific evidence.
 
-The remaining Wave-6 identities stay safe-draft where direction, distinct downstream diagnosis, or catalog target fit is insufficient. ET thrombosis evidence is not widened into a DVT-specific edge, and AML-specific transformation evidence is not widened into the generic acute/chronic `leukemia` catalog target.
-
-For the complete per-identity current state, use `data/expansion-dispositions.json`. This tracker intentionally does not duplicate a hand-maintained list of all published identities because that list can become stale independently of the machine-readable ledger.
+For the complete per-identity current state, use `data/expansion-dispositions.json`.
 
 ## Current citation position
 
-Batch 29 performs a one-for-one replacement of unverified published clinical evidence, so the expected position remains:
+Batch 30 performs a four-for-four replacement of unverified published clinical evidence. Expected position remains:
 
 - live references: **69**;
 - live verified: **8**;
