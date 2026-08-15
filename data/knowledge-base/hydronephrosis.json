@@ -1,6 +1,46 @@
 {
   "id": "hydronephrosis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review obstruction, stone, reflux, neurogenic/urologic, renal-function, treatment, aggravation, and intermediate-factor pathways only where applicable; establish the documented obstructive mechanism rather than inferring cause from hydronephrosis alone."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Persistent urinary-tract obstruction can cause both acute and chronic kidney disease through pressure-related renal injury and, when prolonged, tubulointerstitial damage and fibrosis. Hydronephrosis is an imaging consequence that may occur with obstruction but is not synonymous with obstructive nephropathy. This supports a secondary renal-damage pathway only when the individual's hydronephrosis is linked to a documented structural or functional obstruction and there is sustained renal dysfunction compatible with the duration, severity, laterality, and timing of that obstruction; hydronephrosis alone should not be used to infer chronic kidney disease.",
+      "pathwayIntelligence": {
+        "pathways": ["disease-progression", "intermediate-chain"],
+        "causalChain": "Documented urinary-tract obstruction producing hydronephrosis → persistent pressure-related obstructive nephropathy when sufficiently severe or prolonged → sustained renal functional loss meeting chronic-kidney-disease criteria.",
+        "developmentQuestions": [
+          "Is the hydronephrosis caused by a documented structural or functional urinary obstruction rather than a nonobstructive dilation pattern?",
+          "What are the obstruction's site, severity, laterality, duration, and cause, and was one kidney, both kidneys, or a solitary functioning kidney affected?",
+          "What do serial creatinine, eGFR, urinalysis, renal imaging, nuclear-renogram, or other applicable studies show before, during, and after the obstructive episode?",
+          "Did renal function recover after decompression, or is there persistent dysfunction meeting chronic-kidney-disease criteria after adequate follow-up?",
+          "Which competing causes of chronic kidney disease, including hypertension, diabetes, intrinsic renal disease, medication effects, vascular disease, recurrent infection, or other urologic conditions, should be addressed?"
+        ],
+        "issuesToResolve": [
+          "Hydronephrosis is not proof of obstruction or chronic renal damage; the obstructive mechanism and persistent renal impairment must be separately established.",
+          "Renal recovery depends on obstruction severity, duration, laterality, infection, baseline renal reserve, and timing of decompression, so chronology and competing kidney disease require nephrology/urology review."
+        ]
+      },
+      "evidenceGaps": [
+        "Imaging and urologic records establishing the obstructive cause of hydronephrosis",
+        "Serial renal-function testing establishing persistence and chronicity of renal impairment",
+        "Documentation of obstruction duration/severity, decompression, and renal response",
+        "Assessment of bilateral disease or solitary-kidney involvement where applicable",
+        "Nephrology/urology opinion addressing obstruction-related renal damage and competing CKD etiologies"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Yaxley J, Yaxley W. World J Nephrol. 2023;12(1):1-9. PMID 36704657",
+          "note": "Narrative review identifies obstructive uropathy as an important cause of both acute and chronic kidney disease and emphasizes urinary-tract decompression and long-term management. Supports an obstruction-dependent renal pathway, not CKD attribution from hydronephrosis imaging alone.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36704657/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 36704657; abstract: obstructive uropathy is an important cause of acute and chronic kidney disease; decompression is an essential treatment component"
+        }
+      ]
+    }
+  ]
 }
