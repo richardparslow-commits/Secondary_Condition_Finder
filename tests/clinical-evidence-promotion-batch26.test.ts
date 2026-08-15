@@ -93,16 +93,14 @@ describe("clinical evidence promotion batch 26", () => {
     expect(postConcussion?.todo.join(" ")).toMatch(/post-traumatic headache.*primary migraine|primary migraine.*post-traumatic headache/i);
   });
 
-  it("records 28 published identities and 79 safe drafts", () => {
+  it("preserves the four Batch 26 promotions without freezing later program totals", () => {
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
     ) as { waves: Array<{ identities: Array<{ id: string; disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(28);
-    expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(79);
     for (const id of ["hyperpituitarism", "pituitary-neoplasm", "heart-valve-replacement-residuals", "implantable-cardiac-pacemaker"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("published-evidence-led");
     }
+    expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
   });
 });
