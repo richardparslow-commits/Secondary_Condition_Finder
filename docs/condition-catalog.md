@@ -14,7 +14,7 @@ A rating schedule citation says **how VA evaluates severity**. It is not evidenc
 
 ## Structure
 
-Catalog files are grouped by body system. Expansion work may use reviewed batch files within the same body system so a large catalog expansion remains easy to inspect as a pull-request diff. Post-expansion quality maintenance may physically relocate or more precisely scope an existing stable identity without changing the 300-condition universe.
+Catalog files are grouped by body system. Expansion work may use reviewed batch files within the same body system so a large catalog expansion remains easy to inspect as a pull-request diff. Post-expansion quality maintenance may physically relocate or more precisely scope an existing stable identity without changing the condition universe.
 
 ```json
 {
@@ -31,40 +31,38 @@ Catalog files are grouped by body system. Expansion work may use reviewed batch 
 
 The catalog is the single source of condition identity. Mapping files carry only `conditionId` references, so a display name cannot drift between two files. Referential integrity is enforced by test and again at load time before recommendations are computed.
 
-## Current coverage
+## Current-state sources of truth
 
-After Clinical Evidence Promotion Batch 11:
+This guide intentionally contains stable catalog rules rather than a copy of fast-moving clinical-promotion totals. Do **not** duplicate the latest evidence-promotion batch number, citation-debt counts, or promotion-candidate counts here. Those values change independently of catalog identity and previously caused this document to drift behind the repository.
 
-- **300 catalog conditions** remain represented across **33 catalog files**.
-- Every catalog condition still has exactly one corresponding published-or-draft file in `data/knowledge-base/`.
-- Waves 1 through 7 added **107 identities**; Wave 8 added no identities and was a catalog-quality pass.
-- Clinical Evidence Promotion Batches 1 through 11 still account for twelve individually reviewed Wave 1-7 mappings: `cardiomyopathy`, `urethral-stricture`, `hypertensive-heart-disease`, `chronic-pyelonephritis`, `chronic-liver-disease`, `acl-injury`, `pcl-injury`, `barretts-esophagus`, `achalasia`, `hyperaldosteronism`, `acromegaly`, and `diabetes-mellitus-type-1`.
-- **95 of the 107 Wave 1-7 secondary mappings remain `draft: true`**. Batches 10 and 11 instead improve legacy mappings: primary-hyperparathyroidism and hypoparathyroidism kidney-stone research, hypothyroidism/depression association research, hypogonadism/osteoporosis research, and a clinically repaired ILD/OSA association.
-- `ankle-strain`, `knee-injury`, `osteoarthritis`, `ageusia`, `agranulocytosis`, `al-amyloidosis`, `addisons-disease`, `anorexia-nervosa`, `emphysema`, `chronic-bronchitis`, and `pulmonary-fibrosis` are draft because previously published claims did not satisfy the condition-specific clinical-evidence publication bar.
-- Published legacy relationships for `amputation-or-loss-of-use`, `anosmia`, `alopecia-areata`, `hypertension`, and `interstitial-lung-disease` → `sleep-apnea` have had legal/rating-only support replaced with condition-specific clinical evidence and conservative individual-review safeguards. The unsupported ILD→cardiac-arrhythmia edge was removed in Batch 11. Batch 8 also publishes `cushings-syndrome` → `hypertension`. Batch 9 removes the unsupported `erectile-dysfunction` → `gerd` chain and clinically repairs `erectile-dysfunction` → `depressive-disorder`.
-- Rating references added or corrected by automated work remain `verified: false`. Clinical source records may be source-checked with URLs, dates, and locators, but remain `verified: false` until qualified-human verification under the Citation Verification SOP.
-- Where the rating schedule does not provide a single diagnosis-specific diagnostic code, the catalog records the applicable rating framework and an explicit review note rather than inventing authority.
-- Wave 8 records `diabetic-retinopathy` under 38 CFR 4.79 / DC 6040 and corrects `fibromyalgia` to 38 CFR 4.71a / DC 5025, removing the historical 4.88b carryover from fibromyalgia.
-- Batch 1 physically relocates `fibromyalgia` into `musculoskeletal-quality-maintenance.json`.
-- Batch 2 physically relocates `diabetic-retinopathy` into `ophthalmologic-expansion-wave-4.json`.
-- Batch 3 physically relocates `insomnia` into `mental-disorders.json`.
-- Batch 4 physically relocates `hip-strain` and `ankle-strain` into `musculoskeletal-quality-maintenance.json` while preserving stable IDs, aliases, 38 CFR 4.71a residual frameworks, and rating-reference verification state.
-- Batch 5 physically relocates `substance-use-disorder` into `mental-disorders.json` while preserving its stable identity, broad 38 CFR 4.130 framework, legal-eligibility cautions, and verification state.
-- Batch 6 narrows `hyperpituitarism` to `Hyperpituitarism (Prolactin-Secreting Pituitary Dysfunction)`, matching DC 7916's express scope while preserving stable identity.
-- Batch 7 physically relocates `cushings-syndrome` into `endocrine.json` and records the 38 CFR 4.119 / DC 7907 framework.
-- Batch 8 physically relocates `diabetes-mellitus-type-1` into `endocrine.json` and records the 38 CFR 4.119 / DC 7913 framework.
-- Batch 9 physically relocates `hyperthyroidism` into `endocrine.json` and records the 38 CFR 4.119 / DC 7900 framework.
-- Batch 10 physically relocates `hyperparathyroidism` into `endocrine.json`, normalizes the display name to `Hyperparathyroidism`, and records the 38 CFR 4.119 / DC 7904 framework while preserving the stable ID.
-- Batch 11 physically relocates `hypoparathyroidism` into `endocrine.json`, normalizes the display name to `Hypoparathyroidism`, and records the 38 CFR 4.119 / DC 7905 framework while preserving the stable ID and Batch-10 published KB relationship.
-- `carried-over.json` is reduced to the intentionally quarantined `contralateral-knee-condition` laterality placeholder.
-- `contralateral-knee-condition` remains a quarantined legacy relationship/laterality placeholder with no rating code because it is not a distinct diagnosis. Laterality should be modeled structurally before that placeholder is retired.
-- Product expansion grouping does not override the actual rating schedule, and shared diagnostic codes do not collapse distinct disease identities or establish common medical causation.
+Use these repository-controlled sources instead:
 
-The completed Waves 1-7 expansion record is maintained in `docs/condition-expansion-roadmap.md`. Target catalog v2 remains **300 conditions**. Post-v2 evidence promotion and quality maintenance do not convert that target into a claim that 300 conditions exhaust medicine or the VA rating schedule.
+- `data/conditions/` — current catalog identities, aliases, body systems, rating references, and review notes.
+- `data/knowledge-base/` — the one-to-one secondary mapping set for catalog identities.
+- `docs/clinical-program-status.md` — current clinical-evidence program state, frozen-universe accounting, promotion dispositions, and current citation position.
+- `docs/clinical-evidence-promotion-batch-*.md` — bounded historical detail for each evidence-promotion batch.
+- `data/expansion-dispositions.json` — current Wave 1–7 disposition ledger.
+- `docs/modeling-debt-dispositions.md` — current catalog-v2 modeling-debt decisions and quarantine states.
+- `docs/condition-expansion-roadmap.md` — completed Waves 1–7 expansion record and the target catalog-v2 universe.
+- `docs/qualified-human-citation-verification-queue.md` and `docs/citation-verification-sop.md` — current human-review queue and verification policy.
+
+The v2 universe is frozen at **300 catalog identities with 300 corresponding knowledge-base mappings**. Clinical evidence work may change whether a mapping is a published evidence-led relationship or an intentional safe draft without changing that identity contract. The current split must be read from `docs/clinical-program-status.md` and `data/expansion-dispositions.json`, not copied into this file.
+
+## Catalog quality and maintenance rules
+
+The catalog remains independent from the strength or publication status of any secondary relationship:
+
+- Rating references added or corrected by automated work remain `verified: false` unless a qualified human completes citation verification under the Citation Verification SOP.
+- Clinical source records may be source-checked with URLs, dates, and locators, but source checking does not authorize `verified: true`.
+- Where the rating schedule does not provide a single diagnosis-specific diagnostic code, record the applicable rating framework and an explicit review note rather than inventing authority.
+- A shared diagnostic code does not collapse distinct disease identities or establish common medical causation.
+- A product grouping does not override the rating schedule body system in which VA actually evaluates the disability.
+- Physical file relocation is maintenance only when the stable condition ID, one-to-one KB mapping, and truthful rating-reference state are preserved.
+- `carried-over.json` is reserved for intentionally quarantined compatibility identities; current dispositions are governed by `docs/modeling-debt-dispositions.md`.
 
 ## Wave 8 quality cleanup
 
-Wave 8 resolved the first bounded batch of documented catalog debt without changing condition count or publishing secondary relationships:
+Wave 8 resolved a bounded catalog-quality batch without changing condition count or publishing secondary relationships:
 
 - `fibromyalgia`: corrected to **38 CFR 4.71a / DC 5025** and condition-level body system `Musculoskeletal System`; removed the historical 4.88b carryover.
 - `hip-strain`: added the current hip/thigh residual framework under 38 CFR 4.71a and explicitly states that no single hip-strain-specific DC is assigned.
@@ -76,40 +74,25 @@ Wave 8 resolved the first bounded batch of documented catalog debt without chang
 
 The Wave 8 regression contract is `tests/catalog-quality-wave8.test.ts`.
 
-## Post-v2 evidence promotion and catalog maintenance
+## Post-v2 evidence promotion
 
-Clinical Evidence Promotion Batches 1 through 11 follow a relationship-level publication rule rather than promoting whole catalog waves. Twelve Wave 1-7 expansion mappings are published because their individual relationships have condition-specific clinical support, conservative rationales, explicit evidence gaps, and source provenance; Batches 10 and 11 additionally improve legacy mapping coverage.
+Evidence promotion is relationship-level work, not catalog expansion. A published mapping requires condition-specific clinical support, conservative rationale, explicit evidence gaps, and compliant source provenance. A safe draft is an intentional disposition when those requirements are not met; it is not a request to manufacture a relationship.
 
-- **Batch 1:** promotes `cardiomyopathy` and `urethral-stricture`, withdraws unsupported `ankle-strain` relationships, and completes fibromyalgia's physical file relocation.
-- **Batch 2:** promotes `hypertensive-heart-disease` and `chronic-pyelonephritis`, withdraws unsupported `knee-injury` and `osteoarthritis` relationships, and physically relocates `diabetic-retinopathy`.
-- **Batch 3:** promotes `chronic-liver-disease`, repairs the amputation/depression relationship, withdraws `ageusia`, and physically relocates `insomnia`.
-- **Batch 4:** promotes `acl-injury` and `pcl-injury` → osteoarthritis, repairs anosmia/alopecia depression relationships, withdraws `agranulocytosis`, and physically normalizes hip/ankle strain.
-- **Batch 5:** promotes `barretts-esophagus` and `achalasia` → esophageal-cancer pathways, withdraws `al-amyloidosis`, and physically normalizes `substance-use-disorder`.
-- **Batch 6:** promotes `hyperaldosteronism` → hypertension, withdraws `addisons-disease`, and narrows the `hyperpituitarism` display identity.
-- **Batch 7:** promotes `acromegaly` → hypertension, withdraws `anorexia-nervosa`, and physically relocates `cushings-syndrome`.
-- **Batch 8:** clinically repairs all four `hypertension` relationships, promotes `cushings-syndrome` → `hypertension`, and physically relocates `diabetes-mellitus-type-1`.
-- **Batch 9:** promotes `diabetes-mellitus-type-1` → `chronic-kidney-disease`, withdraws ED→GERD, repairs ED→depression, and physically relocates `hyperthyroidism`.
-- **Batch 10:** promotes `hyperparathyroidism` → `kidney-stones` only for confirmed primary hyperparathyroidism, publishes association-focused `hypoparathyroidism` → `kidney-stones`, withdraws legal-only `emphysema` and `chronic-bronchitis` mappings, and physically relocates `hyperparathyroidism` into Endocrine/DC 7904 maintenance.
-- **Batch 11:** publishes association-focused `hypothyroidism` → `depressive-disorder`, publishes bounded `hypogonadism` → `osteoporosis`, clinically repairs only `interstitial-lung-disease` → `sleep-apnea` while removing ILD→arrhythmia, withdraws broad `pulmonary-fibrosis`, and physically relocates `hypoparathyroidism` into Endocrine/DC 7905 maintenance.
+Detailed promotion history belongs in the numbered `docs/clinical-evidence-promotion-batch-*.md` records. The current program summary belongs in `docs/clinical-program-status.md`. This separation keeps catalog identity documentation stable while clinical evidence is repaired, promoted, withdrawn, or reclassified through bounded reviews.
 
-See `docs/clinical-evidence-promotion-batch-1.md` through `docs/clinical-evidence-promotion-batch-11.md` and their corresponding regression tests.
+Legal or rating authority may describe eligibility or severity frameworks, but it must not be used as the clinical evidence for a medical proposition. Population-level association or prevalence evidence must not be rewritten as proof of individual causation or aggravation.
 
-## Remaining modeling debt
+## Modeling debt
 
-Separate modeling work remains after Batch 11:
+Catalog-v2 modeling debt is dispositioned in `docs/modeling-debt-dispositions.md`. That document is authoritative for current quarantine and compatibility states. Do not maintain a second debt list here: doing so risks preserving resolved physical-placement issues or missing later bounded dispositions.
 
-- `contralateral-knee-condition` still requires a structural laterality migration before the legacy placeholder can be retired.
-- `cerebral-palsy` remains a catalog-governance question because congenital/developmental conditions can raise distinct service-connection rules. Catalog presence by itself does not mean the app asserts service connection is available.
-- The historical `neurological.json` file still contains `hypothyroidism`. That endocrine identity should be relocated only in a later bounded stable-ID change with rating authority and regression coverage rather than folded into Batch 11.
-- Other historical catalog files may still contain cross-system physical placement or over-broad grouped identities; those should be corrected only in bounded changes that preserve stable IDs and one-to-one mappings.
+Any future identity retirement, merge, or replacement that would change the frozen 300/300 contract requires a versioned migration design rather than an unreviewed cleanup. Stable IDs can affect saved workflow state, aliases, historical records, and one-to-one KB integrity.
 
 ## Citation status
 
 Catalog rating references are deliberately separate from medical evidence. Automated work must not mark them verified. A rating citation may support condition/rating identity but never a causal statement such as “condition A caused condition B.”
 
-Clinical Evidence Promotion Batches 1 through 11 add or repair source-checked clinical references only for individually reviewed relationships; those sources remain `verified: false` until qualified-human verification under `docs/citation-verification-sop.md`.
-
-After Batch 11, the automated non-regression ceilings tighten to **130 total references, 14 verified, 116 unverified, and 114 published-unverified review findings**, while the clinical-evidence-with-canonical-URL floor rises to **49**.
+Clinical evidence citation counts and the qualified-human review queue are intentionally not duplicated here. Use `docs/clinical-program-status.md`, `docs/qualified-human-citation-verification-queue.md`, and the citation audit for the current position. Only qualified-human review may change a citation to `verified: true`.
 
 ## Adding or revising a condition
 
