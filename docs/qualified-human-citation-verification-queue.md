@@ -12,28 +12,20 @@ npm run citations:queue
 
 The generated report is authoritative for the exact current human-review row set.
 
-## Current Batch-30 baseline
+## Current Batch-31 candidate baseline
 
-The corrected candidate is expected to contain **59 live unverified references** and **57 live unverified published references**, pending fresh exact-head CI confirmation.
+The targeted candidate is expected to contain **61 live unverified references** and **59 live unverified published references**, pending exact-head CI confirmation.
 
-Batch 30 removes these four unverified published source rows because they do not meet the current directional publication threshold:
+Batch 31 adds exactly two new bounded clinical source rows, both `verified: false`:
 
-- Parkinson disease→depressive disorder, PMID 27358339;
-- seizure disorder→depressive disorder, PMID 41967683;
-- psoriatic arthritis→depressive disorder, PMID 38797775; and
-- trigeminal neuralgia→anxiety disorder, PMID 29526561.
+- insomnia→depressive disorder, PMID 38833937; and
+- migraine headaches→depressive disorder, PMID 23588795.
 
-Only two new bounded clinical sources remain live, both `verified: false`:
+Both are prospective incident-depression sources. Their published rationales explicitly distinguish population-level temporal risk from an individual medical nexus and require diagnosis-specific chronology and competing-cause review.
 
-- ovarian cancer→peripheral neuropathy, PMID 24582486; and
-- testicular cancer→hypogonadism, PMID 27009402.
+No source is automatically verified, and no citation-debt baseline is raised. The two additions consume the existing post-Batch-30 headroom, moving the candidate to the current ceilings of 61 live unverified references and 59 published-unverified review findings.
 
-Two initially screened sources are **not** placed in the live published queue after review:
-
-- PMID 30656706 supports adrenal histoplasmosis, but the current Histoplasmosis of Lung identity cannot enforce adrenal/disseminated disease site;
-- PMID 29086803 supports post-total-laryngectomy voice handicap and alaryngeal speech rehabilitation, not the distinct diagnosis of aphonia.
-
-All affected source records are unverified, so no verified-source retirement entry is created.
+The targeted screen also records several nonpublished evidence dispositions without adding live source rows: carpal tunnel syndrome psychiatric association (PMID 37639884); ME/CFS psychiatric temporal/comorbidity literature (including PMIDs 40785390, 15184691, 19566769); hypothyroidism/CTS evidence (PMID 41002938); narcolepsy/depression meta-analysis (PMID 32671534); peripheral-neuropathy/falls-fractures evidence (PMID 36945108); radial mononeuropathy characterization (PMID 41392533); REM sleep behavior disorder prodromal synucleinopathy evidence (PMIDs 39177811 and 28429825); and social-anxiety/depression prospective evidence (PMID 11231832). These are screening notes, not live published citation rows.
 
 ## Human review procedure
 
