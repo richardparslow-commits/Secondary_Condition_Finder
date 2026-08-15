@@ -5,6 +5,7 @@ import { DisclaimerFooter } from "@/components/Disclaimer";
 import { LocalEvidenceAnalyzer } from "@/components/evidence/LocalEvidenceAnalyzer";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
+import { buildEvidenceConditionTerms } from "@/lib/evidence/condition-terms";
 import { readSecondaryWorkflowSession, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
 import { saveDocumentsSelection } from "../actions";
 
@@ -31,9 +32,11 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
     return <main><header className="page-hero"><h1>Enter ratings first</h1><p>Complete the ratings step before continuing to document availability.</p></header><div className="ui-callout mb-5 text-sm"><strong>🔒 Evidence Upload Privacy Contract:</strong> Document review is <strong>strictly optional</strong>. Supported evidence text is analyzed locally in the browser. Raw document text is not sent to the application server, stored in workflow cookies, or written to <strong>raw text logs</strong>.</div><Link href="/secondary/ratings" className="ui-button">Back to current ratings</Link></main>;
   }
 
-  const conditionTerms = diagnosedConditionIds
-    .map((id) => byId.get(id)?.name)
-    .filter((name): name is string => Boolean(name));
+  const selectedConditions = diagnosedConditionIds.flatMap((id) => {
+    const condition = byId.get(id);
+    return condition ? [condition] : [];
+  });
+  const conditionTerms = buildEvidenceConditionTerms(selectedConditions);
 
   return (
     <main>
