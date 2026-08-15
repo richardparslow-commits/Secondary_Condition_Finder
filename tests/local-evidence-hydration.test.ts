@@ -19,14 +19,17 @@ describe("local evidence hydration contract", () => {
     );
   });
 
-  it("restores browser-tab evidence only after the component mounts", () => {
+  it("restores browser-tab evidence asynchronously after the component mounts", () => {
     const analyzer = fs.readFileSync(analyzerPath, "utf8");
 
     expect(analyzer).toContain(
       'import { useEffect, useMemo, useState } from "react";',
     );
     expect(analyzer).toContain(
-      "useEffect(() => {\n    setAnalyses(loadStored());\n  }, []);",
+      "const restoreTimer = window.setTimeout(() => {\n      setAnalyses(loadStored());\n    }, 0);",
+    );
+    expect(analyzer).toContain(
+      "return () => window.clearTimeout(restoreTimer);",
     );
 
     const initialState = analyzer.indexOf(
