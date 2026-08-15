@@ -1,39 +1,9 @@
 {
   "id": "micro-tbi",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "migraine-headaches",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Even low-level traumatic brain injuries can leave chronic post-traumatic headache syndromes.",
-      "evidenceGaps": [
-        "Neurology diagnosis of chronic post-traumatic headaches",
-        "Treatment history showing persistent headache burden after injury"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    },
-    {
-      "conditionId": "insomnia",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "Sleep-wake dysregulation commonly follows brain trauma and may meet criteria for chronic insomnia.",
-      "evidenceGaps": [
-        "Sleep history documenting persistent difficulty initiating or maintaining sleep"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": false
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "Review this historical identity separately from mild TBI before any future publication; do not assume the label represents a distinct standardized clinical diagnosis.",
+    "Batch 21 removes the prior migraine and insomnia suggestions because their only attached source was 38 CFR 3.310 and the reviewed literature did not justify mapping broad post-traumatic headache or sleep symptoms directly to those catalog diagnoses under this identity."
+  ],
+  "suggestions": []
 }
