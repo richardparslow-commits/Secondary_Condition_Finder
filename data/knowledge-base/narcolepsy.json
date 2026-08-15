@@ -1,6 +1,9 @@
 {
   "id": "narcolepsy",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, sleep-wake, neurologic, psychiatric, medication/treatment, and functional-impairment pathways only where applicable; do not infer medical causation from rating-schedule authority."],
+  "todo": [
+    "Targeted 2026-08-15 rescreen found a systematic review/meta-analysis reporting substantial depression/depressive-symptom burden in narcolepsy (PMID 32671534), but the reviewed evidence is heterogeneous and primarily establishes comorbidity rather than a narcolepsy-primary causal or aggravation pathway to a separately diagnosed depressive disorder.",
+    "Keep safe-draft until longitudinal or treatment-response evidence supports the exact downstream diagnosis and direction while addressing overlap from excessive daytime sleepiness, disrupted nocturnal sleep, medications, psychosocial burden, and pre-existing psychiatric illness."
+  ],
   "suggestions": []
 }
