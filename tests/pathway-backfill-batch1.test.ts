@@ -14,12 +14,8 @@ const expectedBackfill = {
 } as const;
 
 const intentionallyUnlabeledMappings = [
-  "micro-tbi",
   "post-concussion-syndrome",
-  "subdural-hematoma",
-  "epidural-hematoma",
   "skull-fracture-non-basilar-and-basal",
-  "rem-sleep-disorder",
 ] as const;
 
 const safetyWithdrawnMappings = [
@@ -32,16 +28,18 @@ const safetyWithdrawnMappings = [
   "anxiety-disorder",
   "schizophrenia",
   "substance-use-disorder",
+  "micro-tbi",
+  "subdural-hematoma",
+  "epidural-hematoma",
+  "rem-sleep-disorder",
 ] as const;
 
 describe("controlled pathway backfill batch 1", () => {
   it("backfills only edges whose attached source set includes clinical evidence", () => {
     const kb = loadKnowledgeBase();
-
     for (const [primaryId, secondaries] of Object.entries(expectedBackfill)) {
       const mapping = kb.find((entry) => entry.id === primaryId);
       expect(mapping?.draft).toBe(false);
-
       for (const [secondaryId, pathways] of Object.entries(secondaries)) {
         const suggestion = mapping?.suggestions.find((entry) => entry.conditionId === secondaryId);
         expect(suggestion?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
@@ -87,13 +85,11 @@ describe("controlled pathway backfill batch 1", () => {
     const kb = loadKnowledgeBase();
     const adjustment = kb.find((entry) => entry.id === "adjustment-disorder");
     const depression = kb.find((entry) => entry.id === "depressive-disorder");
-
     expect(adjustment?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
       { conditionId: "sleep-apnea", rank: 1, prevalence: "commonly-explored" },
       { conditionId: "gerd", rank: 2, prevalence: "commonly-explored" },
       { conditionId: "migraine-headaches", rank: 3, prevalence: "sometimes-explored" },
     ]);
-
     expect(depression?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
       { conditionId: "sleep-apnea", rank: 1, prevalence: "sometimes-explored" },
       { conditionId: "erectile-dysfunction", rank: 2, prevalence: "commonly-explored" },
