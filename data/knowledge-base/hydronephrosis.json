@@ -1,6 +1,8 @@
 {
   "id": "hydronephrosis",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review obstruction, stone, reflux, neurogenic/urologic, renal-function, treatment, aggravation, and intermediate-factor pathways only where applicable; establish the documented obstructive mechanism rather than inferring cause from hydronephrosis alone."],
+  "todo": [
+    "The proposed chronic-kidney-disease suggestion was withdrawn because the cited evidence supports urinary-tract obstruction or obstructive uropathy as the renal-injury cause while hydronephrosis is an imaging consequence that is not synonymous with obstruction or obstructive nephropathy. Reconsider only if direction-specific evidence supports hydronephrosis itself as the selected primary condition, or if the catalog later models the actual obstructive condition without substituting a different primary condition."
+  ],
   "suggestions": []
 }

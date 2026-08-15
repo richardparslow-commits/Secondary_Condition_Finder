@@ -27,11 +27,8 @@ const WAVE_ONE_IDS = [
 ] as const;
 
 const POST_V2_PROMOTED_WAVE_ONE_IDS = new Set([
-  "gout",
   "osteitis-deformans",
   "parkinsons-disease",
-  "multiple-sclerosis",
-  "myasthenia-gravis",
   "syringomyelia",
   "seizure-disorder",
   "trigeminal-neuralgia",
@@ -52,7 +49,7 @@ describe("condition catalog expansion wave 1", () => {
     for (const id of WAVE_ONE_IDS) expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
   });
 
-  it("keeps non-promoted Wave 1 mappings draft while allowing reviewed post-v2 promotion", () => {
+  it("keeps non-promoted or later-withdrawn Wave 1 mappings draft while allowing reviewed publication", () => {
     for (const id of WAVE_ONE_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
@@ -65,6 +62,15 @@ describe("condition catalog expansion wave 1", () => {
       expect(mapping?.draft).toBe(true);
       expect(mapping?.suggestions).toEqual([]);
       expect(mapping?.todo.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("records later evidence-quality withdrawals for three association-only depression edges", () => {
+    for (const id of ["gout", "multiple-sclerosis", "myasthenia-gravis"] as const) {
+      const mapping = mappingById.get(id);
+      expect(mapping?.draft).toBe(true);
+      expect(mapping?.suggestions).toEqual([]);
+      expect(mapping?.todo.join(" ")).toMatch(/direction|causal|aggravat|prevalence|association/i);
     }
   });
 

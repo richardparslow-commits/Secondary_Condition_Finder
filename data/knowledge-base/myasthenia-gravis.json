@@ -1,31 +1,8 @@
 {
   "id": "myasthenia-gravis",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Depression is a common psychiatric comorbidity reported in myasthenia gravis, but prevalence evidence does not establish that MG caused or aggravated an individual's depressive disorder. A systematic review and meta-analysis of 38 studies estimated pooled depression prevalence at 36% among people with MG. Disease severity, fatigue, activities-of-daily-living burden, bulbar or respiratory symptoms, treatment exposure, sleep, disability, psychosocial factors, and prior psychiatric history require case-specific review.",
-      "evidenceGaps": [
-        "Neurology documentation confirming myasthenia-gravis phenotype, severity, treatment, and functional burden",
-        "Depressive-disorder diagnosis, severity, and chronology relative to MG onset and changes in disease activity",
-        "Fatigue, sleep, bulbar or respiratory symptoms, activities-of-daily-living limitations, medication, and psychosocial contributors",
-        "History of depressive symptoms predating MG or another independent psychiatric disorder",
-        "Qualified clinician assessment distinguishing common MG/depression comorbidity from individual causation or aggravation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Nadali J, Ghavampour N, Beiranvand F, et al. Prevalence of depression and anxiety among myasthenia gravis (MG) patients: A systematic review and meta-analysis. Brain Behav. 2023;13(1):e2840. PMID 36495116",
-          "note": "Systematic review/meta-analysis of 38 studies estimated pooled depression prevalence at 36% among people with MG; supports association/comorbidity research, not individual causal attribution.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36495116/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 36495116; abstract Results/Conclusions: 38 included studies; pooled depression prevalence 36% (95% CI 28%-45%)"
-        }
-      ]
-    }
-  ]
+  "draft": true,
+  "todo": [
+    "The prior depressive-disorder suggestion was withdrawn because the cited systematic review/meta-analysis estimates depression prevalence among people with myasthenia gravis but does not establish a directional MG-to-depression causal or aggravation pathway. Reconsider only with stronger longitudinal/mechanistic evidence and individual development that distinguishes disease burden from treatment, sleep, disability, respiratory/bulbar symptoms, psychosocial factors, and independent psychiatric causes."
+  ],
+  "suggestions": []
 }

@@ -1,6 +1,31 @@
 {
   "id": "rectal-prolapse",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review pelvic-floor, constipation/straining, neurologic, surgical, aggravation, and treatment pathways only where applicable; association or risk factors must not be presented as an individual nexus."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "fecal-incontinence",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Fecal incontinence is frequently associated with full-thickness rectal prolapse, and prospective cohort evidence shows that continence can improve after prolapse correction, particularly after ventral rectopexy. This supports a clinically relevant prolapse/incontinence association and treatment-response development question when fecal incontinence is objectively documented in temporal and anatomic association with the prolapse; it does not establish that rectal prolapse directly causes or progresses into every continence disorder, because sphincter injury, pelvic-floor dysfunction, neuropathy, stool consistency, prior surgery, and other anorectal disease may independently contribute.",
+      "evidenceGaps": [
+        "Colorectal examination or imaging confirming full-thickness rectal prolapse",
+        "Clinical characterization of fecal incontinence severity and chronology",
+        "Anorectal functional/anatomic testing when clinically indicated",
+        "Pre- and post-repair continence findings when prolapse surgery occurred",
+        "Colorectal opinion addressing competing sphincter, pelvic-floor, neurologic, stool-consistency, and surgical causes"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Long-term impact of full-thickness rectal prolapse treatment on fecal incontinence. PMID 25869649",
+          "note": "Prospective single-center cohort of 145 patients with full-thickness rectal prolapse found fecal incontinence was frequent before treatment and that continence improvement was associated with ventral rectopexy compared with other operative or medical management. Supports an association and treatment-response development question, not direct-causal or disease-progression labeling and not automatic sole-cause attribution.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25869649/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-15",
+          "sourceLocator": "PMID 25869649; abstract: prospective database of 145 full-thickness rectal-prolapse patients; 96% had fecal incontinence before treatment; continence improvement associated with ventral rectopexy"
+        }
+      ]
+    }
+  ]
 }
