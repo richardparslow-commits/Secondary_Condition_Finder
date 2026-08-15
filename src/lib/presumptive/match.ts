@@ -7,6 +7,12 @@ import type {
   QualifyingService,
 } from "./schema";
 
+const serviceDateSchema = z.iso.date();
+
+function isValidServiceDate(value: string): boolean {
+  return serviceDateSchema.safeParse(value).success;
+}
+
 export const serviceHistorySchema = z
   .object({
     /** Optional administrative context; deliberately ignored by matchPresumptives. */
@@ -15,13 +21,15 @@ export const serviceHistorySchema = z
     locations: z.array(z.string().min(1)).min(1, {
       message: "Select at least one location where you served.",
     }),
-    serviceStart: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().default(null),
-    serviceEnd: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().default(null),
+    serviceStart: serviceDateSchema.nullable().default(null),
+    serviceEnd: serviceDateSchema.nullable().default(null),
   })
   .refine(
     (value) =>
       !value.serviceStart ||
       !value.serviceEnd ||
+      !isValidServiceDate(value.serviceStart) ||
+      !isValidServiceDate(value.serviceEnd) ||
       value.serviceStart <= value.serviceEnd,
     { message: "Service start date must be on or before the end date.", path: ["serviceEnd"] },
   );
