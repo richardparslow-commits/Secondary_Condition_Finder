@@ -39,10 +39,19 @@ function dedupe(values: string[]): string[] {
   return [...new Set(values)];
 }
 
+function referenceIdentity(reference: SourceReference): string {
+  return JSON.stringify(
+    Object.entries(reference).sort(([left], [right]) =>
+      left.localeCompare(right),
+    ),
+  );
+}
+
 function dedupeReferences(references: SourceReference[]): SourceReference[] {
   const seen = new Map<string, SourceReference>();
   for (const reference of references) {
-    if (!seen.has(reference.citation)) seen.set(reference.citation, reference);
+    const identity = referenceIdentity(reference);
+    if (!seen.has(identity)) seen.set(identity, reference);
   }
   return [...seen.values()];
 }
