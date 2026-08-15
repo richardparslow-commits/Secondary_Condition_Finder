@@ -25,6 +25,138 @@
           "verificationStatus": "source-checked-not-promoted"
         }
       ]
+    },
+    {
+      "id": "batch-17-stomach-cancer-gerd-pmid-16918879",
+      "retiredFrom": {
+        "mappingId": "stomach-cancer",
+        "conditionId": "gerd",
+        "citation": "Laine et al., Systematic review: the lower gastrointestinal adverse effects of non-steroidal anti-inflammatory drugs, PMID 16918879"
+      },
+      "citation": "Laine et al., Systematic review: the lower gastrointestinal adverse effects of non-steroidal anti-inflammatory drugs, PMID 16918879",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16918879/",
+      "sourceCheckedOn": "2026-08-11",
+      "sourceLocator": "PMID 16918879; systematic review",
+      "verificationScope": "clinical-evidence",
+      "previouslyVerified": true,
+      "retiredOn": "2026-08-14",
+      "retirementReason": "The source was correctly verified for lower-gastrointestinal NSAID injury, but it does not establish GERD and does not establish that chronic NSAID treatment is attributable to stomach cancer. The stomach-cancer-to-GERD suggestion was therefore withdrawn rather than inferring a medication pathway from generic pain treatment.",
+      "withdrawalEvidence": [
+        {
+          "citation": "Laine et al., lower gastrointestinal NSAID adverse-effects systematic review",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16918879/",
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 16918879; lower-gastrointestinal scope",
+          "verificationStatus": "source-checked-not-promoted"
+        }
+      ]
+    },
+    {
+      "id": "batch-17-stomach-cancer-gerd-38-cfr-3-310",
+      "retiredFrom": {
+        "mappingId": "stomach-cancer",
+        "conditionId": "gerd",
+        "citation": "38 CFR 3.310"
+      },
+      "citation": "38 CFR 3.310",
+      "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+      "sourceCheckedOn": "2026-08-11",
+      "sourceLocator": "§ 3.310(a)-(b)",
+      "verificationScope": "legal-framework",
+      "previouslyVerified": true,
+      "retiredOn": "2026-08-14",
+      "retirementReason": "The legal authority remains valid as a general secondary-service-connection framework, but it did not supply medical evidence for the stomach-cancer-to-GERD proposition. Because the unsupported live relationship was withdrawn, this relationship-local legal citation was retired with its historical verification provenance preserved.",
+      "withdrawalEvidence": [
+        {
+          "citation": "Laine et al., lower gastrointestinal NSAID adverse-effects systematic review",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16918879/",
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 16918879; source scope does not establish GERD or a stomach-cancer treatment link",
+          "verificationStatus": "source-checked-not-promoted"
+        }
+      ]
+    },
+    {
+      "id": "batch-17-abdominal-hernia-gerd-pmid-16918879",
+      "retiredFrom": {
+        "mappingId": "abdominal-hernia",
+        "conditionId": "gerd",
+        "citation": "Laine et al., Systematic review: the lower gastrointestinal adverse effects of non-steroidal anti-inflammatory drugs, PMID 16918879"
+      },
+      "citation": "Laine et al., Systematic review: the lower gastrointestinal adverse effects of non-steroidal anti-inflammatory drugs, PMID 16918879",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16918879/",
+      "sourceCheckedOn": "2026-08-11",
+      "sourceLocator": "PMID 16918879; systematic review",
+      "verificationScope": "clinical-evidence",
+      "previouslyVerified": true,
+      "retiredOn": "2026-08-14",
+      "retirementReason": "The source was correctly verified for lower-gastrointestinal NSAID injury, but it does not establish GERD and does not establish chronic NSAID treatment as an abdominal-hernia pathway. The abdominal-hernia-to-GERD suggestion was withdrawn rather than inferring medication exposure from generic pain treatment.",
+      "withdrawalEvidence": [
+        {
+          "citation": "Laine et al., lower gastrointestinal NSAID adverse-effects systematic review",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16918879/",
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 16918879; lower-gastrointestinal scope",
+          "verificationStatus": "source-checked-not-promoted"
+        }
+      ]
+    },
+    {
+      "id": "batch-17-abdominal-hernia-gerd-38-cfr-3-310",
+      "retiredFrom": {
+        "mappingId": "abdominal-hernia",
+        "conditionId": "gerd",
+        "citation": "38 CFR 3.310"
+      },
+      "citation": "38 CFR 3.310",
+      "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+      "sourceCheckedOn": "2026-08-11",
+      "sourceLocator": "§ 3.310(a)-(b)",
+      "verificationScope": "legal-framework",
+      "previouslyVerified": true,
+      "retiredOn": "2026-08-14",
+      "retirementReason": "The legal authority remains valid as a general secondary-service-connection framework, but it did not supply medical evidence for the abdominal-hernia-to-GERD proposition. Because the unsupported live relationship was withdrawn, this relationship-local legal citation was retired with its historical verification provenance preserved.",
+      "withdrawalEvidence": [
+        {
+          "citation": "Laine et al., lower gastrointestinal NSAID adverse-effects systematic review",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16918879/",
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 16918879; source scope does not establish GERD or an abdominal-hernia treatment link",
+          "verificationStatus": "source-checked-not-promoted"
+        }
+      ]
+    },
+    {
+      "id": "batch-17-rheumatoid-arthritis-gerd-pmid-16918879",
+      "retiredFrom": {
+        "mappingId": "rheumatoid-arthritis",
+        "conditionId": "gerd",
+        "citation": "Laine et al., Systematic review: the lower gastrointestinal adverse effects of non-steroidal anti-inflammatory drugs, PMID 16918879"
+      },
+      "citation": "Laine et al., Systematic review: the lower gastrointestinal adverse effects of non-steroidal anti-inflammatory drugs, PMID 16918879",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16918879/",
+      "sourceCheckedOn": "2026-08-11",
+      "sourceLocator": "PMID 16918879; systematic review",
+      "verificationScope": "clinical-evidence",
+      "previouslyVerified": true,
+      "retiredOn": "2026-08-14",
+      "retirementReason": "The source remains valid for lower-gastrointestinal NSAID injury but is not diagnosis-specific evidence for GERD. The rheumatoid-arthritis-to-GERD suggestion remains live only after replacement with a bounded two-link evidence chain for NSAID use in RA pain and the NSAID/GERD-symptom association, while the existing legal-framework citation remains separately role-labeled.",
+      "withdrawalEvidence": [
+        {
+          "citation": "Atzeni et al., Pain and Therapy (2021), PMID 33674957",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33674957/",
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 33674957; RA NSAID pain-treatment evidence",
+          "verificationStatus": "source-checked-not-promoted"
+        },
+        {
+          "citation": "Ruszniewski et al., Aliment Pharmacol Ther (2008), PMID 18671778",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18671778/",
+          "sourceCheckedOn": "2026-08-14",
+          "sourceLocator": "PMID 18671778; NSAID/GERD-symptom association evidence",
+          "verificationStatus": "source-checked-not-promoted"
+        }
+      ]
     }
   ]
 }

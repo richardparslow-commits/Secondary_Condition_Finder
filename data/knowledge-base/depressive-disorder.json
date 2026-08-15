@@ -8,10 +8,7 @@
       "prevalence": "sometimes-explored",
       "rationale": "Some antidepressant therapies are associated with weight gain, and weight gain/obesity are established risk factors for obstructive sleep apnea. This supports a clinically plausible intermediate-step theory, but it does not establish that a particular veteran's antidepressant exposure caused obesity or that obesity caused or aggravated OSA; the individual medication, timing, weight trajectory, and alternative OSA risk factors require case-specific medical review.",
       "pathwayIntelligence": {
-        "pathways": [
-          "medication-related",
-          "intermediate-chain"
-        ],
+        "pathways": ["medication-related", "intermediate-chain"],
         "causalChain": "Depressive disorder → antidepressant treatment, if applicable → medication-associated weight gain or obesity → claimed OSA causation or worsening; each link requires individual medical support.",
         "developmentQuestions": [
           "Which antidepressant was prescribed for the service-connected depressive disorder, at what dose, and for what duration?",
@@ -49,15 +46,6 @@
           "verified": false,
           "sourceCheckedOn": "2026-08-11",
           "sourceLocator": "PMID 40330547; IPD meta-analysis"
-        },
-        {
-          "citation": "38 CFR 3.310(a)-(b)",
-          "note": "Legal framework for secondary service connection and aggravation; does not establish the medical medication-to-weight-to-OSA relationship.",
-          "verificationScope": "legal-framework",
-          "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "§ 3.310(a)-(b)"
         }
       ]
     },
@@ -67,9 +55,7 @@
       "prevalence": "commonly-explored",
       "rationale": "SSRIs are associated with sexual dysfunction, including clinically important impairment of orgasm and sexual satisfaction. A medication-related secondary theory requires evidence that the veteran used the relevant antidepressant, experienced the relevant adverse effect, and has a diagnosed sexual disorder medically linked to that exposure.",
       "pathwayIntelligence": {
-        "pathways": [
-          "medication-related"
-        ],
+        "pathways": ["medication-related"],
         "causalChain": "Depressive disorder → SSRI or other relevant antidepressant treatment, if applicable → claimed erectile or other diagnosed sexual dysfunction.",
         "developmentQuestions": [
           "Was the relevant antidepressant prescribed for the service-connected depressive disorder?",
