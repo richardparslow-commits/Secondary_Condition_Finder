@@ -26,11 +26,9 @@ const WAVE_ONE_IDS = [
   "common-peroneal-neuropathy",
 ] as const;
 
-const POST_V2_PROMOTED_WAVE_ONE_IDS = new Set([
+const CURRENTLY_PUBLISHED_WAVE_ONE_IDS = new Set([
   "osteitis-deformans",
-  "parkinsons-disease",
   "syringomyelia",
-  "seizure-disorder",
   "trigeminal-neuralgia",
 ]);
 
@@ -49,11 +47,11 @@ describe("condition catalog expansion wave 1", () => {
     for (const id of WAVE_ONE_IDS) expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
   });
 
-  it("keeps non-promoted or later-withdrawn Wave 1 mappings draft while allowing reviewed publication", () => {
+  it("keeps non-published or later-withdrawn Wave 1 mappings draft while allowing reviewed publication", () => {
     for (const id of WAVE_ONE_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
-      if (POST_V2_PROMOTED_WAVE_ONE_IDS.has(id)) {
+      if (CURRENTLY_PUBLISHED_WAVE_ONE_IDS.has(id)) {
         expect(mapping?.draft).toBe(false);
         expect(mapping?.todo).toEqual([]);
         expect(mapping?.suggestions.length).toBeGreaterThan(0);
@@ -65,12 +63,12 @@ describe("condition catalog expansion wave 1", () => {
     }
   });
 
-  it("records later evidence-quality withdrawals for three association-only depression edges", () => {
-    for (const id of ["gout", "multiple-sclerosis", "myasthenia-gravis"] as const) {
+  it("records later evidence-quality withdrawals for association-only depression edges", () => {
+    for (const id of ["gout", "multiple-sclerosis", "myasthenia-gravis", "parkinsons-disease", "seizure-disorder"] as const) {
       const mapping = mappingById.get(id);
       expect(mapping?.draft).toBe(true);
       expect(mapping?.suggestions).toEqual([]);
-      expect(mapping?.todo.join(" ")).toMatch(/direction|causal|aggravat|prevalence|association/i);
+      expect(mapping?.todo.join(" ")).toMatch(/direction|causal|aggravat|prevalence|association|comorbidity|screen/i);
     }
   });
 
