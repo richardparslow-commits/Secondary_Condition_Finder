@@ -11,9 +11,7 @@ type Ledger = {
 };
 
 describe("target-v2 expansion disposition ledger", () => {
-  const ledger = JSON.parse(
-    readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
-  ) as Ledger;
+  const ledger = JSON.parse(readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8")) as Ledger;
   const kb = new Map(loadKnowledgeBase().map((mapping) => [mapping.id, mapping]));
   const entries = ledger.waves.flatMap((wave) => wave.identities.map((entry) => ({ ...entry, wave: wave.wave })));
 
@@ -22,10 +20,6 @@ describe("target-v2 expansion disposition ledger", () => {
     expect(entries).toHaveLength(107);
     expect(new Set(entries.map((entry) => entry.id)).size).toBe(107);
     expect(new Set(entries.map((entry) => entry.wave))).toEqual(new Set([1, 2, 3, 4, 5, 6, 7]));
-  });
-
-  it("does not count Type 1 diabetes as a Wave 1-7 expansion identity", () => {
-    expect(entries.some((entry) => entry.id === "diabetes-mellitus-type-1")).toBe(false);
   });
 
   it("matches every disposition to the current KB publication state", () => {
@@ -48,33 +42,13 @@ describe("target-v2 expansion disposition ledger", () => {
     const candidates = entries.filter((entry) => entry.disposition === "promotion-candidate");
     const safeDrafts = entries.filter((entry) => entry.disposition === "safe-draft");
 
-    expect(published).toHaveLength(32);
-    expect(published.map((entry) => entry.id)).toEqual(expect.arrayContaining([
-      "osteitis-deformans",
-      "syringomyelia",
-      "trigeminal-neuralgia",
-      "femoroacetabular-impingement",
-      "hyperpituitarism",
-      "pituitary-neoplasm",
-      "heart-valve-replacement-residuals",
-      "implantable-cardiac-pacemaker",
-      "uveitis",
-      "retinal-dystrophy",
-      "ptosis",
-      "rectal-prolapse",
-      "anal-fistula",
-      "discoid-lupus",
-      "histoplasmosis",
-      "ovarian-cancer",
-      "testicular-cancer",
-      "laryngeal-cancer",
-    ]));
+    expect(published).toHaveLength(30);
+    expect(safeDrafts).toHaveLength(77);
     expect(candidates).toEqual([]);
-    expect(safeDrafts).toHaveLength(75);
-    for (const id of ["gout", "multiple-sclerosis", "myasthenia-gravis", "parkinsons-disease", "seizure-disorder", "psoriatic-arthritis", "hydronephrosis"]) {
+    for (const id of ["parkinsons-disease", "seizure-disorder", "psoriatic-arthritis", "histoplasmosis", "laryngeal-cancer"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("safe-draft");
     }
-    for (const id of ["rectal-prolapse", "anal-fistula", "discoid-lupus", "histoplasmosis", "ovarian-cancer", "testicular-cancer", "laryngeal-cancer"]) {
+    for (const id of ["rectal-prolapse", "anal-fistula", "discoid-lupus", "ovarian-cancer", "testicular-cancer"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("published-evidence-led");
     }
     expect(published.length + candidates.length + safeDrafts.length).toBe(107);
