@@ -74,6 +74,70 @@ jobs:
           console.error("Direct pushes to main do not satisfy the repository's reviewed-PR production lineage policy.");
           process.exit(1);
           NODE
+      - name: Verify active main governance rules
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        id: branch_rules
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          node --input-type=module - <<'NODE' 2>&1 | tee ci-branch-rules.log
+          const apiUrl = process.env.GITHUB_API_URL;
+          const repository = process.env.GITHUB_REPOSITORY;
+          const token = process.env.GH_TOKEN;
+          const headers = {
+            Accept: "application/vnd.github+json",
+            Authorization: `Bearer ${token}`,
+            "X-GitHub-Api-Version": "2022-11-28",
+          };
+
+          const branchResponse = await fetch(`${apiUrl}/repos/${repository}/branches/main`, { headers });
+          if (!branchResponse.ok) {
+            console.error(`main governance rules failed: branch lookup returned HTTP ${branchResponse.status}.`);
+            process.exit(1);
+          }
+          const branch = await branchResponse.json();
+          if (branch?.protected !== true) {
+            console.error("main governance rules failed: GitHub reports main as unprotected.");
+            process.exit(1);
+          }
+
+          const rulesResponse = await fetch(`${apiUrl}/repos/${repository}/rules/branches/main`, { headers });
+          if (!rulesResponse.ok) {
+            console.error(`main governance rules failed: active-rules lookup returned HTTP ${rulesResponse.status}.`);
+            process.exit(1);
+          }
+          const rules = await rulesResponse.json();
+          if (!Array.isArray(rules)) {
+            console.error("main governance rules failed: active-rules payload was not an array.");
+            process.exit(1);
+          }
+
+          const requiredRuleTypes = [
+            "pull_request",
+            "required_status_checks",
+            "non_fast_forward",
+            "deletion",
+          ];
+          const ruleTypes = new Set(rules.map((rule) => rule?.type).filter(Boolean));
+          const missingRuleTypes = requiredRuleTypes.filter((type) => !ruleTypes.has(type));
+          if (missingRuleTypes.length > 0) {
+            console.error(`main governance rules failed: missing active rule type(s): ${missingRuleTypes.join(", ")}.`);
+            process.exit(1);
+          }
+
+          const requiredChecks = rules
+            .filter((rule) => rule?.type === "required_status_checks")
+            .flatMap((rule) => rule?.parameters?.required_status_checks ?? []);
+          const verifyRequired = requiredChecks.some((check) => check?.context === "verify");
+          if (!verifyRequired) {
+            console.error('main governance rules failed: required status check "verify" is not active for main.');
+            process.exit(1);
+          }
+
+          console.log('main governance rules passed: PR-only changes, required "verify", force-push blocking, and deletion blocking are active.');
+          NODE
       - name: Install dependencies
         run: |
           set -o pipefail
@@ -148,6 +212,7 @@ jobs:
             echo
             echo "## Step outcomes"
             echo "- main-governance: ${{ steps.governance.outcome }}"
+            echo "- main-governance-rules: ${{ steps.branch_rules.outcome }}"
             echo "- install: ${{ steps.install.outcome }}"
             echo "- audit: ${{ steps.audit.outcome }}"
             echo "- citations: ${{ steps.citations.outcome }}"
@@ -160,7 +225,7 @@ jobs:
             echo "- browser-e2e: ${{ steps.e2e.outcome }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-governance.log ci-install.log ci-audit.log ci-citations.log ci-kb-validate.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-build.log ci-e2e.log; do
+            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-citations.log ci-kb-validate.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-build.log ci-e2e.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
@@ -181,7 +246,7 @@ jobs:
       - name: Fail the job if any gate failed
         if: always()
         run: |
-          if [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ]; then
+          if [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ]; then
             echo "One or more CI gates failed. See the diagnostic summary and artifact."
             exit 1
           fi
