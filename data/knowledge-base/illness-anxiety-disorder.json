@@ -1,6 +1,10 @@
 {
   "id": "illness-anxiety-disorder",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review psychiatric comorbidity, sleep, treatment/medication, healthcare-use, and aggravation pathways only where applicable; avoid converting symptom concern or healthcare use into proof of another diagnosis."],
+  "todo": [
+    "Targeted 2026-08-15 rescreen did not identify sufficiently condition-specific longitudinal evidence establishing illness anxiety disorder as the primary cause or aggravator of a distinct downstream catalog diagnosis.",
+    "Psychiatric comorbidity, sleep disturbance, medication effects, healthcare utilization, and functional impairment may be clinically relevant, but symptom concern, reassurance seeking, healthcare use, or shared anxiety symptoms must not be converted into proof of another diagnosis or a directional secondary relationship.",
+    "Reconsider only with illness-anxiety-disorder-specific evidence matched to an exact downstream diagnosis plus individual chronology separating that diagnosis from pre-existing anxiety, depressive, obsessive-compulsive, somatic-symptom, trauma-related, or medical conditions."
+  ],
   "suggestions": []
 }
