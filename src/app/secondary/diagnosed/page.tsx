@@ -40,7 +40,7 @@ export default async function DiagnosedConditionsPage({ searchParams }: Diagnose
       </header>
 
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress">
-        <strong className="text-blue-700">1 Diagnosed</strong><span>2 Service-connected</span><span>3 Ratings</span><span>4 Documents</span><span>5 Suggestions</span><span>6 Evidence</span>
+        <strong className="text-blue-700">1 Diagnosed</strong><span>2 Service-connected</span><span>3 Ratings</span><span>4 Documents</span><span>5 Connections</span><span>6 Evidence</span>
       </div>
 
       {validationMessage && (
@@ -92,7 +92,7 @@ export default async function DiagnosedConditionsPage({ searchParams }: Diagnose
             </section>
             <section className="ui-card">
               <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">?</span><h2 className="text-xl font-bold">Why This Matters</h2></div>
-              <p className="text-sm">Later suggestions compare your diagnosed conditions with the disabilities you identify as already service connected.</p>
+              <p className="text-sm">Later steps separate these diagnoses into already service-connected conditions and diagnosed conditions that are not service connected, then evaluate possible relationships between those two sets.</p>
               <div className="ui-callout mt-5 text-sm">Your selections are stored in the short-lived encrypted workflow session, not placed in the URL.</div>
             </section>
           </aside>
