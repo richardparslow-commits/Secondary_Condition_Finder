@@ -99,7 +99,7 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
         </aside>
       </div>
 
-      <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href="/secondary/evidence" className="ui-button">Review Evidence for These Connections <span aria-hidden="true">→</span></Link></div>
+      <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href="/secondary/evidence" className="ui-button">Review Evidence for These Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">Open Evidence Checklist</span></Link></div>
       <DisclaimerFooter />
     </main>
   );
