@@ -42,7 +42,7 @@ export default async function RatingsPage({ workflowState, searchParams }: Ratin
   return (
     <main>
       <header className="page-hero text-center"><p className="ui-kicker">Step 3 of 6</p><h1>Disability Ratings</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Select the current VA evaluation for each service-connected condition in this research session, or choose not to provide it.</p></header>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><strong className="text-blue-700">3 Ratings</strong><span>4 Documents</span><span>5 Suggestions</span><span>6 Evidence</span></div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><strong className="text-blue-700">3 Ratings</strong><span>4 Documents</span><span>5 Connections</span><span>6 Evidence</span></div>
 
       {validationMessage && (
         <div id={validationId} role="alert" className="ui-callout mb-5 text-sm">
