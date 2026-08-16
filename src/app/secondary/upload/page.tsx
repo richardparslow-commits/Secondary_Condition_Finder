@@ -85,7 +85,7 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
 
             <div className="ui-callout text-sm"><strong>Evidence Upload Privacy Contract:</strong> Raw medical document content is not sent to this application server, persisted in user accounts, included in telemetry, or written to <strong>raw text logs</strong>. Only locally extracted excerpts remain temporarily in this browser tab via session storage until cleared or the tab is closed. Optional medication/treatment entries are separate bounded workflow context stored only in the encrypted short-lived cookie described above.</div>
 
-            <div className="ui-actions"><Link href="/secondary/ratings" className="ui-button-secondary">← Back to Step 3</Link><button type="submit" className="ui-button">Review Possible Connections <span aria-hidden="true">→</span></button></div>
+            <div className="ui-actions"><Link href="/secondary/ratings" className="ui-button-secondary">← Back to Step 3</Link><button type="submit" className="ui-button">Review Possible Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">View Suggestions</span></button></div>
           </form>
         </section>
 
