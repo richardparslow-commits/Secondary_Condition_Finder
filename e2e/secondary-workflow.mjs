@@ -283,25 +283,29 @@ async function runJourney() {
   checkpoint("reached document choice");
 
   await setSelected("//input[@name='documentsShared' and @value='no']", true);
-  await clickXpath("//button[contains(normalize-space(.), 'View Suggestions')]");
+  await clickXpath("//button[contains(normalize-space(.), 'Review Possible Connections')]");
   await waitForPath("/secondary/suggestions");
-  checkpoint("reached suggestions");
+  checkpoint("reached diagnosis-centered connection review");
 
   const text = await bodyText();
   const expected = [
-    "Secondary Suggestions",
-    "Already diagnosed, not yet service connected",
+    "Review Your Non-Service-Connected Diagnoses",
+    "Possible Connections to Review",
+    "Diagnosed, not service connected",
+    "Already service connected",
     PRIMARY_CONDITION,
     DIAGNOSED_SECONDARY,
-    "Published Secondary Pathways",
   ];
   for (const phrase of expected) {
     if (!text.includes(phrase)) {
-      throw new Error(`Suggestions page is missing expected browser-visible text: ${phrase}`);
+      throw new Error(`Connection review page is missing expected browser-visible text: ${phrase}`);
     }
   }
+  if (text.includes("Published Secondary Pathways")) {
+    throw new Error("Connection review regressed to service-connected-primary suggestion grouping.");
+  }
 
-  console.log("Real-browser E2E passed: home → diagnosed → service-connected → ratings → documents → suggestions.");
+  console.log("Real-browser E2E passed: home → diagnosed → service-connected → ratings → documents → diagnosis-centered connections.");
 }
 
 async function cleanup() {
