@@ -46,10 +46,10 @@ export default async function ServiceConnectedStepPage({ searchParams }: Service
       <header className="page-hero text-center">
         <p className="ui-kicker">Step 2 of 6</p>
         <h1>Service-Connected Conditions</h1>
-        <p className="mx-auto mt-3 max-w-3xl text-lg">Mark which selected diagnoses VA has already recognized as service connected.</p>
+        <p className="mx-auto mt-3 max-w-3xl text-lg">Mark which selected diagnoses VA has already recognized as service connected. The diagnoses you mark “No” become the conditions Step 5 evaluates for possible relationships to the conditions you mark “Yes.”</p>
       </header>
 
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><strong className="text-blue-700">2 Service-connected</strong><span>3 Ratings</span><span>4 Documents</span><span>5 Suggestions</span><span>6 Evidence</span></div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><strong className="text-blue-700">2 Service-connected</strong><span>3 Ratings</span><span>4 Documents</span><span>5 Connections</span><span>6 Evidence</span></div>
 
       {validationMessage && (
         <div id={validationId} role="alert" className="ui-callout mb-5 text-sm">
@@ -64,7 +64,7 @@ export default async function ServiceConnectedStepPage({ searchParams }: Service
             <h3 className="text-lg font-bold">Choose only established service-connected conditions</h3>
             <p className="mt-2 text-sm">Use your VA rating decision or benefit summary to confirm which diagnoses have already been granted service connection.</p>
             <div className="ui-divider" />
-            <p className="text-sm"><strong>Why this matters:</strong> The secondary engine compares these established primary conditions against authored secondary mappings.</p>
+            <p className="text-sm"><strong>Why this matters:</strong> Step 5 starts with the diagnoses marked “No” and checks whether any diagnosis marked “Yes” has an authored published relationship that may help explain or connect to it.</p>
             <div className="ui-callout mt-5 text-sm"><strong>Do not mark a new condition as service connected</strong> unless VA has already granted that status.</div>
           </aside>
 
@@ -82,7 +82,7 @@ export default async function ServiceConnectedStepPage({ searchParams }: Service
                 </fieldset>
               ))}
             </div>
-            <div className="ui-callout mt-5 text-sm"><strong>How this helps:</strong> We compare these primary conditions with your diagnosed conditions to identify authored secondary research pathways.</div>
+            <div className="ui-callout mt-5 text-sm"><strong>How this helps:</strong> The workflow compares the “No” diagnoses against the “Yes” diagnoses. It does not use the “Yes” diagnoses to generate a separate list of conditions you did not report.</div>
           </section>
 
           <aside className="ui-stack">

@@ -23,7 +23,7 @@ const EXPECTED_LAYOUT_TITLES = [
   ["src/app/privacy/layout.tsx", "Privacy | Secondary Condition Finder"],
   ["src/app/secondary/layout.tsx", "Secondary Workflow | Secondary Condition Finder"],
   ["src/app/secondary/ratings/layout.tsx", "Disability Ratings | Secondary Condition Finder"],
-  ["src/app/secondary/suggestions/layout.tsx", "Workflow Suggestions | Secondary Condition Finder"],
+  ["src/app/secondary/suggestions/layout.tsx", "Connection Review | Secondary Condition Finder"],
   ["src/app/secondary/evidence/layout.tsx", "Evidence & Research Checklist | Secondary Condition Finder"],
   ["src/app/presumptive/layout.tsx", "Presumptive Research | Secondary Condition Finder"],
 ] as const;

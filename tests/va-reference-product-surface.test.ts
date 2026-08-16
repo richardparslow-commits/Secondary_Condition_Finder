@@ -63,21 +63,21 @@ describe("VA reference product surfaces", () => {
     expect(page).toContain("reference.cacheStatus");
   });
 
-  it("adds VA reference information inside each secondary result without changing recommend input", () => {
+  it("adds VA reference information inside each non-service-connected diagnosis result without changing recommend input", () => {
     const suggestions = source("src/app/secondary/suggestions/page.tsx");
-    const card = source("src/components/SecondarySuggestionItem.tsx");
+    const card = source("src/components/NonServiceConnectedConditionResult.tsx");
 
     expect(suggestions).toContain("buildConditionVaReferenceMap");
     expect(suggestions).toContain("loadDisabilityReference");
-    expect(suggestions).toContain("vaReferenceMap.get(recommendation.conditionId)");
+    expect(suggestions).toContain("vaReferenceMap.get(result.conditionId)");
     const recommendCall = suggestions.slice(
       suggestions.indexOf("const recommendationsResult = recommend("),
-      suggestions.indexOf("const linked ="),
+      suggestions.indexOf("const nonServiceConnectedResults ="),
     );
     expect(recommendCall).not.toContain("vaReference");
-    expect(card).toContain("VA reference information");
+    expect(card).toContain("VA reference terminology for this diagnosis");
     expect(card).toContain("VBA terminology");
-    expect(card).toContain("it does not affect this recommendation");
+    expect(card).toContain("Administrative terminology does not establish diagnosis, service connection, rating, or medical nexus");
     expect(card).toContain('href="/va-reference"');
   });
 

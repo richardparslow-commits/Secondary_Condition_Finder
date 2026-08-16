@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Workflow Suggestions | Secondary Condition Finder",
+  title: "Connection Review | Secondary Condition Finder",
 };
 
 export default function SuggestionsLayout({ children }: { children: ReactNode }) {
@@ -11,7 +11,7 @@ export default function SuggestionsLayout({ children }: { children: ReactNode })
     <>
       <div className="mx-auto max-w-5xl px-6 pt-5">
         <Link href="/va-reference" className="text-sm underline">
-          Compare a suggestion name with VA reference terminology
+          Compare a diagnosis name with VA reference terminology
         </Link>
       </div>
       {children}

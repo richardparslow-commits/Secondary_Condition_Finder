@@ -22,10 +22,54 @@ export interface LinkedNonServiceConnectedCondition {
 }
 
 /**
+ * Step 5 is diagnosis-centered: every diagnosed condition that is not already
+ * service connected is a top-level result, whether or not the current published
+ * knowledge base contains a relationship from one of the selected service-
+ * connected conditions. This prevents the workflow from turning back into a
+ * forward-looking list of possible secondary diagnoses.
+ */
+export interface NonServiceConnectedConditionResult {
+  conditionId: string;
+  conditionName: string;
+  bodySystem: string;
+  recommendation: Recommendation | null;
+}
+
+export function buildNonServiceConnectedConditionResults(
+  catalog: ConditionCatalog,
+  diagnosedConditionIds: string[],
+  serviceConnectedConditionIds: string[],
+  recommendations: Recommendation[],
+): NonServiceConnectedConditionResult[] {
+  const byId = indexById(catalog);
+  const serviceConnectedSet = new Set(serviceConnectedConditionIds);
+  const recommendationByConditionId = new Map(
+    recommendations.map((recommendation) => [recommendation.conditionId, recommendation] as const),
+  );
+
+  return diagnosedConditionIds
+    .filter((conditionId) => !serviceConnectedSet.has(conditionId))
+    .flatMap((conditionId) => {
+      const condition = byId.get(conditionId);
+      if (!condition) return [];
+
+      return [{
+        conditionId,
+        conditionName: condition.name,
+        bodySystem: condition.bodySystem,
+        recommendation: recommendationByConditionId.get(conditionId) ?? null,
+      }];
+    })
+    .sort((left, right) => left.conditionName.localeCompare(right.conditionName));
+}
+
+/**
  * Filters the full recommendation list down to conditions that the user has
- * already been diagnosed with but has not yet had service connected. These are
- * the highest-priority results to surface: the user already has the condition;
- * they just need to establish the service connection.
+ * already been diagnosed with but has not yet had service connected.
+ *
+ * @deprecated Step 5 now uses buildNonServiceConnectedConditionResults so
+ * unlinked non-service-connected diagnoses remain visible rather than dropping
+ * out of the page entirely.
  */
 export function findLinkedNonServiceConnectedConditions(
   diagnosedConditionIds: string[],
@@ -48,6 +92,10 @@ export function findLinkedNonServiceConnectedConditions(
     }));
 }
 
+/**
+ * Legacy primary-centered grouping retained for non-workflow callers. Current
+ * Steps 5 and 6 intentionally use diagnosis-centered grouping instead.
+ */
 export function groupSuggestionsByPrimary(
   catalog: ConditionCatalog,
   serviceConnectedConditionIds: string[],

@@ -5,10 +5,7 @@ Scope: current user-facing product behavior. Phase milestones and external accep
 
 ## Problem
 
-A veteran service connected for one condition often has no practical way to
-learn which related conditions are commonly considered alongside it, or what
-evidence a secondary claim would need. That knowledge sits with experienced
-representatives and is unevenly distributed.
+A veteran may already have one or more service-connected conditions plus other diagnosed conditions that are not service connected, but may have no practical way to research whether an established service-connected condition could have caused, contributed to, aggravated, or otherwise medically related to one of those existing non-service-connected diagnoses. That knowledge sits with experienced representatives and clinicians and is unevenly distributed.
 
 ## Users
 
@@ -20,20 +17,15 @@ representatives and is unevenly distributed.
 
 Two research paths are chosen at `/` because they need different evidence.
 
-**Secondary track.** Given one or more diagnosed and service-connected primary
-conditions, returns ranked **possible secondary conditions to explore**, each
-with reasoning, evidence gaps, and citations to verify. The workflow can also
-accept optional bounded medication/treatment context and browser-local evidence
-for research review without using those inputs as proof of causation or nexus.
+**Secondary track.** The current six-step workflow starts from diagnoses the user reports, separates them into already service-connected and not-service-connected sets, and then evaluates the diagnosed non-service-connected conditions against the already service-connected conditions. Step 5 is organized by each non-service-connected diagnosis. Under that diagnosis it lists only already service-connected conditions with an authored published relationship worth evaluating, together with rationale, evidence gaps, source references, and optional authored pathway intelligence. The workflow does not use a service-connected condition to generate a separate forward-looking list of diagnoses the user did not report. It can also accept optional bounded medication/treatment context and browser-local evidence for research review without using those inputs as proof of causation or nexus.
 
-**Presumptive track.** Given where and when someone served, returns the
-exposure presumptions that may apply and the conditions each covers. See
-`docs/presumptive-track.md`.
+**Presumptive track.** Given where and when someone served, returns the exposure presumptions that may apply and the conditions each covers. See `docs/presumptive-track.md`.
 
 ## What the product explicitly does not do
 
-- Diagnose, or suggest that any condition is present
+- Diagnose, infer, or generate a medical condition the user did not report
 - Estimate approval likelihood, ratings, or compensation
+- Treat the absence of a published Step 5 relationship as a medical opinion that no relationship is possible
 - Treat medication/treatment matches or local evidence excerpts as proof of causation, aggravation, nexus, competency, credibility, or VA acceptance
 - Treat authored Step 5 pathway labels, causal chains, development questions, or issues to resolve as proof of an individual medical or legal conclusion
 - File claims or generate completed VA claim forms
@@ -48,10 +40,10 @@ exposure presumptions that may apply and the conditions each covers. See
   2) service-connected status,
   3) current ratings,
   4) optional supporting-document and medication/treatment context,
-  5) grouped suggestions,
-  6) evidence review.
+  5) diagnosis-centered connection review,
+  6) evidence review for those same diagnosed non-service-connected conditions.
 - Diagnosed selections come only from catalog condition ids.
-- Service-connected step only shows diagnosed selections.
+- Service-connected step only shows diagnosed selections and requires an explicit Yes/No answer for each diagnosis. Diagnoses marked Yes form the already-service-connected comparison set; diagnoses marked No form the non-service-connected target set for Step 5.
 - Ratings step only shows service-connected selections and accepts 0–100 or decline.
 - Step 4 supports browser-local analysis of PDF, DOCX, supported text files, and pasted text. Raw document bytes/text are not submitted to the application server. Extracted excerpts and provenance may be retained only in the current tab's `sessionStorage` for Step 6 review.
 - Optional medication/treatment entries are bounded and are stored only in the encrypted, authenticated, short-lived secondary-workflow cookie. They are not serialized into workflow URLs and do not change recommendation ranking.
@@ -59,19 +51,23 @@ exposure presumptions that may apply and the conditions each covers. See
 - Server workflow selections are carried in an HttpOnly, SameSite=Strict, AES-256-GCM-protected cookie with a 30-minute maximum age. Back navigation reads that workflow state so users can revise earlier choices without putting sensitive workflow context into the URL.
 - Finish Review and Start a new review explicitly clear the encrypted workflow cookie plus the secondary workflow's browser-local evidence/checklist stores.
 
-### FR-2 Recommendations
+### FR-2 Diagnosis-centered Step 5 connection review
 
-Each suggestion shows:
+Every diagnosed condition that the user marked not service connected is a top-level Step 5 result, including a diagnosis for which the current published knowledge base has no supported relationship from any selected service-connected condition.
 
-- Condition name
-- A qualitative prevalence band: commonly, sometimes, or occasionally explored. Never a number, never a percentage.
-- Rationale, attributed to each contributing primary condition
-- Evidence gaps: what a claim on this theory typically still needs
+For a non-service-connected diagnosis with one or more supported relationships, the result may show:
+
+- Condition name and body system for the diagnosed non-service-connected target
+- Each already service-connected contributing condition that has an authored published relationship to that target
+- Rationale attributed to each contributing service-connected condition
+- Evidence gaps: what research on that relationship typically still needs
 - Source references, each flagged verified or unverified and labeled by source role: Legal framework, Clinical evidence, or Procedural guidance
-- Suggestions grouped by selected service-connected primary condition in the workflow UI
-- For recognized conditions with no authored mappings, the UI must say they are recognized-but-unmapped and that absence implies nothing about claim viability.
+- Optional literal medication/treatment context matches, clearly labeled as research cues rather than proof
+- Conservative VA reference terminology for the non-service-connected diagnosis when available
 
-Where a subject-matter author has explicitly supplied it for a specific primary-to-secondary mapping, Step 5 may additionally show:
+For a diagnosed non-service-connected condition with no current published relationship, Step 5 keeps the diagnosis visible and states that no supported mapping was found for the selected combination. That message must also state that the absence of a mapping is not a medical conclusion that no relationship is possible.
+
+Where a subject-matter author has explicitly supplied it for a specific service-connected-to-non-service-connected mapping, Step 5 may additionally show:
 
 - one or more bounded **Pathway to evaluate** labels;
 - an authored causal-chain summary;
@@ -80,27 +76,30 @@ Where a subject-matter author has explicitly supplied it for a specific primary-
 
 Pathway intelligence is optional and primary-specific. The application does not infer these fields from medication/treatment entries, uploaded evidence excerpts, or other Veteran-entered context. An un-authored mapping must remain un-labeled. The displayed pathway metadata is explanatory research content only and does not establish causation, aggravation, nexus, eligibility, or likelihood of approval.
 
-Ordering: rank 1 contributes 1.0, rank 2 contributes 0.5, rank n contributes 1/n. Contributions from multiple primaries add, so a suggestion supported by two conditions outranks a single-source suggestion at the same rank. Ties break alphabetically. The score is an ordering heuristic and is never displayed. Optional medication/treatment literal matches and authored pathway intelligence are research/display cues only and do not alter this ordering, filtering, or prevalence.
+Step 5 must not render a second service-connected-primary-centered section that lists all authored downstream diagnoses. It must not surface a recommendation for a diagnosis the user did not select in Step 1.
 
-### FR-3 Multiple primaries
+The recommendation engine may retain internal rank/score behavior for merging authored mappings, but Step 5's user-facing organization is by diagnosed non-service-connected condition, not by service-connected primary. Optional medication/treatment literal matches and authored pathway intelligence are research/display cues only and do not alter recommendation ordering, filtering, or prevalence.
 
-- Suggestions shared across primaries merge on `conditionId`, combining evidence gaps and citations while retaining each contributing primary's own rationale and optional authored pathway intelligence.
-- A condition the user already listed as primary is never suggested as a secondary of another primary.
-- Duplicate or differently-cased entries for the same condition collapse.
+### FR-3 Multiple service-connected contributors
+
+- If multiple selected service-connected conditions have authored relationships to the same diagnosed non-service-connected condition, the target appears once and retains each contributing service-connected condition's own rationale and optional authored pathway intelligence.
+- A condition already marked service connected is never a Step 5 target.
+- A diagnosis not selected by the user is never added to Step 5 merely because it is an authored downstream condition in the knowledge base.
+- Duplicate or differently-cased entries for the same condition collapse through catalog identity.
 
 ### FR-4 Catalog and mapping outcomes
 
-The current six-step secondary workflow accepts diagnosed conditions from the catalog only. Recommendation processing distinguishes:
+The current six-step secondary workflow accepts diagnosed conditions from the catalog only. Step 5 distinguishes:
 
-- **Mapped**: the selected service-connected condition has authored research.
-- **Unmapped**: the condition is in the catalog but no published secondary mapping is available; the UI states that absence implies nothing about claim viability.
+- **Supported connection found**: at least one selected service-connected condition has an authored published mapping to the diagnosed non-service-connected condition.
+- **No published connection found**: the diagnosed non-service-connected condition remains visible, but no selected service-connected condition has a current published mapping to it. The UI states that this is a knowledge-base result, not a negative medical opinion or conclusion about claim viability.
 
 Legacy free-text/unrecognized-primary behavior remains isolated to legacy code paths and is not reintroduced into the current catalog-only workflow.
 
 ### FR-5 Disclaimers and legal copy
 
 - Scope/disclaimer copy appears throughout intake and results/review surfaces.
-- The UI states that suggestions are not approval probabilities and citations are research starting points to verify.
+- The UI states that relationship results are research leads, not approval probabilities, and citations are research starting points to verify.
 - Unverified citations carry an inline badge where applicable.
 - Source-role labels distinguish legal framework, clinical evidence, and procedural guidance so a legal authority is not presented as medical nexus evidence.
 - Secondary legal citation text rendered in routes must come from the canonical legal reference modules rather than route-level hardcoded copies.
@@ -110,9 +109,9 @@ Legacy free-text/unrecognized-primary behavior remains isolated to legacy code p
 - At least three repeatable, explicitly synthetic scenarios live in `data/demo-scenarios.json`, including a single-primary case and a multiple-primary overlap case.
 - Scenario data is represented in current secondary-workflow terms: diagnosed ids, service-connected ids, ratings/decline, document-sharing choice, and optional bounded medication/treatment context.
 - `/scenarios` does not construct a legacy `/results?...` URL. Launching a demo submits only a bounded scenario id to a server action.
-- The server resolves the version-controlled scenario, validates it through the current workflow parser/catalog, writes the same encrypted short-lived secondary-workflow session used by normal intake, and redirects to current Step 5 Suggestions.
+- The server resolves the version-controlled scenario, validates it through the current workflow parser/catalog, writes the same encrypted short-lived secondary-workflow session used by normal intake, and redirects to current Step 5 connection review.
 - Launching a demo clears prior secondary-workflow browser-local evidence and checklist state so a synthetic demonstration cannot inherit excerpts or selections from an earlier review in the same tab.
-- A test asserts that every scenario runs through the current workflow contract and returns deterministic evidence-backed recommendations.
+- A test asserts that every scenario runs through the current workflow contract and returns deterministic evidence-backed relationship results.
 
 ### FR-7 Presumptive matching
 
@@ -136,11 +135,13 @@ Recommendation-event logging is constrained to approved non-free-text fields. Ra
 
 ### FR-10 Evidence review and consultation summary
 
-- Step 6 shows authored evidence gaps as a user-controlled browser-local review checklist.
+- Step 6 is limited to the same diagnosed non-service-connected conditions evaluated in Step 5 and must not reintroduce unrelated forward-looking secondary suggestions.
+- Step 6 keeps diagnosed non-service-connected conditions with no current published connection visible and explains that no mapped relationship evidence checklist is available for that diagnosis.
+- For a supported Step 5 connection, Step 6 shows authored evidence gaps as a user-controlled browser-local review checklist and identifies the contributing already-service-connected conditions.
 - A checkmark means only that the user found material they want to review; the app does not automatically mark a gap satisfied from extracted text.
 - Browser-local evidence review may show extracted excerpts with provenance from Step 4. This is organizational/research support, not an adjudicative or medical sufficiency determination.
 - Step 5 pathway intelligence frames authored theories and development questions; it does not replace or duplicate the Step 6 evidence-gap review.
-- Step 6 provides a browser-generated consultation summary text export using authored recommendation content, contributing primaries, evidence gaps, and citations. Raw local-evidence excerpts and optional medication/treatment match context are excluded from that export by default.
+- Step 6 provides a browser-generated consultation summary text export using only the supported relationship recommendations reviewed in Step 5, including contributing primaries, evidence gaps, and citations. Raw local-evidence excerpts and optional medication/treatment match context are excluded from that export by default.
 
 ## Data model
 
@@ -164,13 +165,16 @@ JSON in git rather than an opaque production database keeps mapping, pathway int
 
 | # | Criterion | Status |
 |---|-----------|--------|
-| 1 | A user can complete current secondary intake and receive ranked exploration suggestions | Met |
-| 2 | Every published suggestion includes explanation text and source references under repository policy | Met, enforced by tests/audits |
-| 3 | Raw local evidence remains browser-local and is not required for server recommendation execution | Met, enforced by privacy tests |
-| 4 | Disclaimers and non-adjudicative boundaries are visible in workflow/results views | Met, enforced by copy/contracts |
-| 5 | At least three synthetic demo scenarios launch through the current encrypted workflow rather than legacy query-state URLs | Met, enforced by `tests/demo-scenarios.test.ts` |
-| 6 | Step 5 can expose bounded, authored-only pathway intelligence and source roles without changing recommendation order, scores, prevalence, or intake matching | Met, enforced by `tests/step5-pathway-intelligence.test.ts` and CI |
-| 7 | Target catalog v2 contains exactly 300 one-to-one catalog/KB identities; post-v2 evidence promotion may change individual mapping publication state only after relationship-specific clinical review and must not alter the 300/300 contract | Met in repository contract; production closure requires exact-head CI and runtime readiness |
+| 1 | A user can complete current secondary intake and see every diagnosed non-service-connected condition, with any supported already-service-connected contributors listed underneath | Met |
+| 2 | A diagnosis the user did not report is never introduced in Step 5 merely because it is a possible authored downstream condition of a selected service-connected primary | Met, enforced by `tests/non-service-connected-focus.test.ts` and browser CI |
+| 3 | A diagnosed non-service-connected condition with no supported mapping remains visible and is not presented as a negative medical conclusion | Met, enforced by diagnosis-centered workflow tests |
+| 4 | Every published relationship result includes explanation text and source references under repository policy | Met, enforced by tests/audits |
+| 5 | Raw local evidence remains browser-local and is not required for server recommendation execution | Met, enforced by privacy tests |
+| 6 | Disclaimers and non-adjudicative boundaries are visible in workflow/results views | Met, enforced by copy/contracts |
+| 7 | At least three synthetic demo scenarios launch through the current encrypted workflow rather than legacy query-state URLs | Met, enforced by `tests/demo-scenarios.test.ts` |
+| 8 | Step 5 can expose bounded, authored-only pathway intelligence and source roles without changing recommendation order, scores, prevalence, or intake matching | Met, enforced by `tests/step5-pathway-intelligence.test.ts` and CI |
+| 9 | Step 6 remains constrained to the same non-service-connected diagnosis set and does not reintroduce unrelated forward-looking suggestions | Met, enforced by `tests/non-service-connected-focus.test.ts` and browser CI |
+| 10 | Target catalog v2 contains exactly 300 one-to-one catalog/KB identities; post-v2 evidence promotion may change individual mapping publication state only after relationship-specific clinical review and must not alter the 300/300 contract | Met in repository contract; production closure requires exact-head CI and runtime readiness |
 
 ## External/manual truth gates
 
