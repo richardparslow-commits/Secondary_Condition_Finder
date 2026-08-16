@@ -44,7 +44,7 @@ export function buildNonServiceConnectedConditionResults(
   const byId = indexById(catalog);
   const serviceConnectedSet = new Set(serviceConnectedConditionIds);
   const recommendationByConditionId = new Map(
-    recommendations.map((recommendation) => [recommendation.conditionId, recommendation]),
+    recommendations.map((recommendation) => [recommendation.conditionId, recommendation] as const),
   );
 
   return diagnosedConditionIds
