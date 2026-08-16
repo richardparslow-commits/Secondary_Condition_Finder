@@ -41,7 +41,7 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
   return (
     <main>
       <header className="page-hero text-center"><p className="ui-kicker">Step 4 of 6</p><h1>Supporting Documents</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Optionally review evidence and add limited medication or treatment context that may help identify authored pathways worth discussing with a qualified professional.</p></header>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><strong className="text-blue-700">4 Documents</strong><span>5 Suggestions</span><span>6 Evidence</span></div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><strong className="text-blue-700">4 Documents</strong><span>5 Connections</span><span>6 Evidence</span></div>
 
       <div className="ui-grid">
         <aside className="ui-card">
@@ -85,7 +85,7 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
 
             <div className="ui-callout text-sm"><strong>Evidence Upload Privacy Contract:</strong> Raw medical document content is not sent to this application server, persisted in user accounts, included in telemetry, or written to <strong>raw text logs</strong>. Only locally extracted excerpts remain temporarily in this browser tab via session storage until cleared or the tab is closed. Optional medication/treatment entries are separate bounded workflow context stored only in the encrypted short-lived cookie described above.</div>
 
-            <div className="ui-actions"><Link href="/secondary/ratings" className="ui-button-secondary">← Back to Step 3</Link><button type="submit" className="ui-button">View Suggestions <span aria-hidden="true">→</span></button></div>
+            <div className="ui-actions"><Link href="/secondary/ratings" className="ui-button-secondary">← Back to Step 3</Link><button type="submit" className="ui-button">Review Possible Connections <span aria-hidden="true">→</span></button></div>
           </form>
         </section>
 
