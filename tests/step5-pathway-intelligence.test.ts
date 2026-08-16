@@ -131,24 +131,24 @@ describe("Step 5 authored pathway intelligence", () => {
     expect(enriched).toEqual(stripped);
   });
 
-  it("keeps pathway intelligence out of intake matching and wires conservative Step 5 presentation", () => {
+  it("keeps pathway intelligence out of intake matching and wires conservative diagnosis-centered Step 5 presentation", () => {
     const engine = read("src/lib/engine/recommend.ts");
-    const component = read("src/components/SecondarySuggestionItem.tsx");
+    const component = read("src/components/NonServiceConnectedConditionResult.tsx");
     const page = read("src/app/secondary/suggestions/page.tsx");
 
     expect(engine).toContain("pathwayIntelligence: suggestion.pathwayIntelligence");
     expect(engine).toContain("Authored pathway-intelligence fields are deliberately excluded");
 
-    expect(component).toContain("Pathway to evaluate");
-    expect(component).toContain("Authored causal chain to review");
+    expect(component).toContain("Authored pathway to evaluate");
     expect(component).toContain("Questions to develop with a clinician or representative");
-    expect(component).toContain("Issues to resolve");
-    expect(component).toContain("They do not establish causation, aggravation, medical nexus, eligibility, or likelihood of approval");
+    expect(component).toContain("Issues to resolve before relying on this theory");
+    expect(component).toContain("A mapping is a research lead, not an individual nexus finding");
     expect(component).toContain("Legal framework");
     expect(component).toContain("Clinical evidence");
     expect(component).toContain("Procedural guidance");
 
-    expect(page).toContain("They are not inferred from your intake and do not affect recommendation rank");
-    expect(page).toContain("Step 6 remains the place to review evidence gaps");
+    expect(page).toContain("Direction matters:");
+    expect(page).toContain("The page does not search for additional diagnoses that might develop in the future");
+    expect(page).toContain("Step 6 is limited to the same diagnosed non-service-connected conditions");
   });
 });
