@@ -13,7 +13,7 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
-import { groupSuggestionsByPrimary } from "@/lib/secondary-workflow/suggestions";
+import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workflow/suggestions";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams } from "@/lib/secondary-workflow/session";
 
@@ -46,12 +46,20 @@ export default async function EvidenceReviewStepPage() {
     kb,
     buildSecondaryRecommendationIntake(state),
   );
-  const grouped = groupSuggestionsByPrimary(catalog, state.serviceConnectedConditionIds, recommendationsResult.recommendations);
-  const consultationRecommendations = recommendationsResult.recommendations.map((recommendation) => ({
+  const nonServiceConnectedResults = buildNonServiceConnectedConditionResults(
+    catalog,
+    state.diagnosedConditionIds,
+    state.serviceConnectedConditionIds,
+    recommendationsResult.recommendations,
+  );
+  const linkedRecommendations = nonServiceConnectedResults.flatMap((result) =>
+    result.recommendation ? [result.recommendation] : [],
+  );
+  const consultationRecommendations = linkedRecommendations.map((recommendation) => ({
     ...recommendation,
     matchedIntakeContext: [],
   }));
-  const evidenceGapRecommendations = recommendationsResult.recommendations.map((recommendation) => ({
+  const evidenceGapRecommendations = linkedRecommendations.map((recommendation) => ({
     conditionId: recommendation.conditionId,
     condition: recommendation.condition,
     evidenceGaps: recommendation.evidenceGaps,
@@ -59,14 +67,17 @@ export default async function EvidenceReviewStepPage() {
 
   return (
     <main>
-      <header className="page-hero text-center"><p className="ui-kicker">Step 6 of 6</p><h1>Evidence &amp; Research Checklist</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Review published evidence gaps together with exact excerpts identified during optional browser-local evidence analysis. This page does not determine eligibility or whether VA will accept an excerpt as sufficient nexus evidence.</p></header>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><span>✓ Suggestions</span><strong className="text-blue-700">6 Evidence</strong></div>
+      <header className="page-hero text-center"><p className="ui-kicker">Step 6 of 6</p><h1>Evidence &amp; Research Checklist</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Review evidence questions for the same diagnosed non-service-connected conditions evaluated in Step 5. This page does not add new diagnoses, determine eligibility, or decide whether a relationship has been medically established.</p></header>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><span>✓ Connections</span><strong className="text-blue-700">6 Evidence</strong></div>
 
       <div className="ui-grid">
         <aside className="ui-card">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Condition Summary</h2></div>
-          <p className="ui-kicker">Service-connected context</p>
+          <p className="ui-kicker">Already service connected</p>
           <ul className="mt-3 space-y-3">{state.serviceConnectedConditionIds.map((id) => { const condition = byId.get(id); if (!condition) return null; const rating = state.ratingsByConditionId[id]; return <li key={id} className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm"><strong className="block text-blue-900">{condition.name}</strong><span>{rating === null ? "Rating not provided" : `${rating}% current rating entered`}</span></li>; })}</ul>
+          <div className="ui-divider" />
+          <p className="ui-kicker">Diagnosed, not service connected</p>
+          {nonServiceConnectedResults.length > 0 ? <ul className="mt-3 space-y-2">{nonServiceConnectedResults.map((result) => <li key={result.conditionId} className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm"><strong className="text-amber-950">{result.conditionName}</strong></li>)}</ul> : <p className="mt-2 text-sm text-slate-600">No non-service-connected diagnoses remain in this review.</p>}
           <div className="ui-divider" />
           <p className="text-sm"><strong>Documents flagged:</strong> {state.documentsShared ? "Yes — evidence available or reviewed" : "No"}</p>
           {(medications.length > 0 || treatments.length > 0) && <div className="mt-4"><p className="text-sm font-semibold">Optional context retained for this run</p>{medications.length > 0 && <p className="mt-1 text-sm"><strong>Medications:</strong> {medications.join(", ")}</p>}{treatments.length > 0 && <p className="mt-1 text-sm"><strong>Treatments:</strong> {treatments.join(", ")}</p>}</div>}
@@ -74,15 +85,15 @@ export default async function EvidenceReviewStepPage() {
         </aside>
 
         <section className="ui-card">
-          <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">☑</span><div><h2 className="text-xl font-bold">Recommended Evidence</h2><p className="text-sm text-slate-600">Evidence gaps surfaced by published knowledge-base mappings.</p></div></div>
-          {grouped.length === 0 ? <p className="rounded-xl border border-slate-200 p-4 text-sm">No published recommendation evidence gaps are available for the selected primary conditions.</p> : <div className="space-y-6">{grouped.map((group) => <article key={group.primaryId} className="rounded-xl border border-slate-200 p-4 shadow-none"><h3 className="text-lg font-bold">{group.primaryName}</h3>{group.recommendations.length === 0 ? <p className="mt-2 text-sm">This primary condition is recognized, but no authored secondary mappings are published for it yet.</p> : <div className="mt-4 space-y-5">{group.recommendations.map((recommendation) => <section key={`${group.primaryId}-${recommendation.conditionId}`} className="border-t border-slate-200 pt-4 first:border-t-0 first:pt-0"><h4 className="font-bold text-blue-900">{recommendation.condition}</h4>{recommendation.matchedIntakeContext.length > 0 && <div className="mt-2 rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm"><strong>Reported context appearing in authored pathway text:</strong> {recommendation.matchedIntakeContext.join(", ")}<p className="mt-1 text-xs">Text overlap is a research cue only; it does not establish individual causation, aggravation, or a medical nexus.</p></div>}<ul className="mt-2 space-y-2">{recommendation.evidenceGaps.map((gap) => <li key={gap} className="flex gap-3 text-sm"><span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded bg-blue-700 text-xs text-white" aria-hidden="true">✓</span><span>{gap}</span></li>)}</ul></section>)}</div>}</article>)}</div>}
+          <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">☑</span><div><h2 className="text-xl font-bold">Evidence by Non-Service-Connected Diagnosis</h2><p className="text-sm text-slate-600">Only the diagnoses and possible service-connected relationships reviewed in Step 5 appear here.</p></div></div>
+          {nonServiceConnectedResults.length === 0 ? <p className="rounded-xl border border-slate-200 p-4 text-sm">There are no non-service-connected diagnoses to review.</p> : <div className="space-y-6">{nonServiceConnectedResults.map((result) => <article key={result.conditionId} className="rounded-xl border border-slate-200 p-4 shadow-none"><h3 className="text-lg font-bold">{result.conditionName}</h3>{!result.recommendation ? <div className="mt-3 rounded-lg bg-slate-50 p-3 text-sm text-slate-700"><strong>No mapped relationship evidence checklist is available for this diagnosis.</strong><p className="mt-1">The current knowledge base did not identify a published relationship from any service-connected condition selected in this review. This is not a medical finding that no relationship exists.</p></div> : <div className="mt-4"><p className="text-sm"><strong>Service-connected conditions associated with the Step 5 relationship review:</strong> {result.recommendation.contributingPrimaries.map((primary) => primary.name).join(", ")}</p>{result.recommendation.matchedIntakeContext.length > 0 && <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm"><strong>Reported context appearing in authored mapping text:</strong> {result.recommendation.matchedIntakeContext.join(", ")}<p className="mt-1 text-xs">Text overlap is a research cue only; it does not establish individual causation, aggravation, or a medical nexus.</p></div>}<h4 className="mt-4 font-semibold text-slate-900">Evidence questions to review</h4><ul className="mt-2 space-y-2">{result.recommendation.evidenceGaps.map((gap) => <li key={gap} className="flex gap-3 text-sm"><span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded bg-blue-700 text-xs text-white" aria-hidden="true">✓</span><span>{gap}</span></li>)}</ul></div>}</article>)}</div>}
           <div className="ui-callout mt-5 text-sm"><strong>Citations, context matches, and evidence gaps are starting points, not proof.</strong> Confirm current VA guidance and review condition-specific evidence with a qualified provider or accredited representative.</div>
         </section>
 
         <aside className="ui-stack">
-          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">⇩</span><h2 className="text-xl font-bold">Consultation Summary</h2></div><p className="mb-4 text-sm">Download the authored research checklist for discussion with an accredited representative or qualified provider.</p>{consultationRecommendations.length > 0 ? <ConsultationSummaryDownload recommendations={consultationRecommendations} /> : <p className="text-sm text-slate-600">No published recommendations are available to export for this run.</p>}</section>
+          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">⇩</span><h2 className="text-xl font-bold">Consultation Summary</h2></div><p className="mb-4 text-sm">Download the authored research checklist for the diagnosed non-service-connected conditions that had a published relationship in Step 5.</p>{consultationRecommendations.length > 0 ? <ConsultationSummaryDownload recommendations={consultationRecommendations} /> : <p className="text-sm text-slate-600">No published relationship recommendations are available to export for this run.</p>}</section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✎</span><h2 className="text-xl font-bold">Research Notes</h2></div><p className="text-sm">Use your own secure notes or records to track questions such as potential nexus literature, providers to ask, symptom history, and missing treatment records. This app does not store free-text research notes on the server.</p></section>
-          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Next Steps</h2></div><ol className="space-y-3 text-sm"><li><strong>1.</strong> Review citations and current VA guidance.</li><li><strong>2.</strong> Compare mapped evidence gaps with exact local excerpts and any reported context match.</li><li><strong>3.</strong> Discuss causation/aggravation questions with a qualified provider.</li><li><strong>4.</strong> Consider an accredited representative, attorney, or VSO.</li></ol></section>
+          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Next Steps</h2></div><ol className="space-y-3 text-sm"><li><strong>1.</strong> Review the relationship rationale and citations for each non-service-connected diagnosis.</li><li><strong>2.</strong> Compare mapped evidence gaps with exact local excerpts and any reported context match.</li><li><strong>3.</strong> Discuss causation, contribution, or aggravation questions with a qualified provider.</li><li><strong>4.</strong> Consider an accredited representative, attorney, or VSO.</li></ol></section>
         </aside>
       </div>
 
@@ -90,10 +101,10 @@ export default async function EvidenceReviewStepPage() {
       <LocalEvidenceReview />
 
       <div className="ui-actions">
-        <Link href="/secondary/suggestions" className="ui-button-secondary">← Back to Suggestions</Link>
+        <Link href="/secondary/suggestions" className="ui-button-secondary">← Back to Connections</Link>
         <SecondaryWorkflowCompletionActions />
       </div>
-      <div className="ui-footer-note"><strong>Privacy on completion:</strong> Finish Review and Start a new review clear the encrypted workflow cookie, browser-local evidence excerpts, and browser-local checklist selections before leaving this review. Suggestions come from a curated knowledge base and are not ranked by likelihood of approval.</div>
+      <div className="ui-footer-note"><strong>Privacy on completion:</strong> Finish Review and Start a new review clear the encrypted workflow cookie, browser-local evidence excerpts, and browser-local checklist selections before leaving this review. Relationship results come from a curated knowledge base and are not approval probabilities.</div>
       <DisclaimerFooter />
     </main>
   );
