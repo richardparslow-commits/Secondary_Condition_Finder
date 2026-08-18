@@ -2,10 +2,17 @@ import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { NonServiceConnectedConditionResult } from "@/components/NonServiceConnectedConditionResult";
+import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatus";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
+import {
+  loadLockedRegulatorySnapshot,
+  missingLockedRegulatorySnapshot,
+  prepareRegulatoryReview,
+  relevantChangesForSnapshot,
+} from "@/lib/regulatory/preflight";
 import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
 import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workflow/suggestions";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
@@ -13,10 +20,16 @@ import { readSecondaryWorkflowSession, workflowSessionToQueryParams, type Stored
 import { buildConditionVaReferenceMap } from "@/lib/va/condition-reference";
 import { loadDisabilityReference } from "@/lib/va/disability-reference";
 
-interface SuggestionsPageProps { workflowState?: StoredSecondaryWorkflowState; }
+interface SuggestionsPageProps {
+  workflowState?: StoredSecondaryWorkflowState;
+  searchParams?: Promise<{ regSnapshot?: string | string[] }>;
+}
 export const dynamic = "force-dynamic";
 
-export default async function SuggestionsStepPage({ workflowState }: SuggestionsPageProps = {}) {
+const firstParam = (value: string | string[] | undefined): string | undefined =>
+  Array.isArray(value) ? value[0] : value;
+
+export default async function SuggestionsStepPage({ workflowState, searchParams }: SuggestionsPageProps = {}) {
   const catalog = loadConditionCatalog();
   const byId = indexById(catalog);
   const kb = loadKnowledgeBase();
@@ -25,6 +38,30 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
   let state;
   try { state = parseWorkflowState(workflowSessionToQueryParams(session), catalog); }
   catch { return <main><header className="page-hero"><h1>Complete prior steps first</h1><p>We need the prior workflow selections before reviewing possible connections to your non-service-connected diagnoses.</p></header><Link href="/secondary/upload" className="ui-button">Back to optional document upload</Link></main>; }
+
+  // Regulatory preflight is intentionally completed before recommendation output.
+  // If this is a back-navigation inside the same review, reuse the locked snapshot
+  // rather than silently changing the legal/regulatory basis mid-review.
+  const lockedSnapshotId = firstParam((await searchParams)?.regSnapshot);
+  const lockedSnapshot = loadLockedRegulatorySnapshot(lockedSnapshotId);
+  const regulatoryReview = lockedSnapshot
+    ? {
+        snapshot: lockedSnapshot,
+        relevantChanges: relevantChangesForSnapshot(lockedSnapshot),
+      }
+    : lockedSnapshotId
+      ? {
+          snapshot: missingLockedRegulatorySnapshot(lockedSnapshotId),
+          relevantChanges: [],
+        }
+      : await prepareRegulatoryReview({
+          reviewScope: {
+            conditionIds: [...new Set([
+              ...state.diagnosedConditionIds,
+              ...state.serviceConnectedConditionIds,
+            ])],
+          },
+        });
 
   const medications = state.medications ?? [];
   const treatments = state.treatments ?? [];
@@ -46,6 +83,7 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
     catalog,
     vaReference.live ? vaReference.items : [],
   );
+  const evidenceHref = `/secondary/evidence?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
 
   return (
     <main>
@@ -57,6 +95,7 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
         </p>
       </header>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><strong className="text-blue-700">5 Connections</strong><span>6 Evidence</span></div>
+      <RegulatoryPreflightStatus snapshot={regulatoryReview.snapshot} changes={regulatoryReview.relevantChanges} />
 
       <div className="ui-grid">
         <aside className="ui-card">
@@ -99,7 +138,7 @@ export default async function SuggestionsStepPage({ workflowState }: Suggestions
         </aside>
       </div>
 
-      <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href="/secondary/evidence" className="ui-button">Review Evidence for These Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">Open Evidence Checklist</span></Link></div>
+      <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href={evidenceHref} className="ui-button">Review Evidence for These Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">Open Evidence Checklist</span></Link></div>
       <DisclaimerFooter />
     </main>
   );

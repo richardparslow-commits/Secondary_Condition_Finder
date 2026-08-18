@@ -1,0 +1,7 @@
+{
+  "provider": "vercel",
+  "mode": "block",
+  "createdOn": "2026-08-18",
+  "freezeUntil": "2026-09-11T15:11:00-05:00",
+  "reason": "Vercel account capacity freeze requested by the repository owner. Do not deploy, promote, update Vercel configuration, or perform a GitHub write that could trigger a Vercel integration before the freeze expires."
+}

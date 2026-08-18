@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require("fs");
 const path = require("path");
+const { auditSource, validateExplicitMetadata, validateSuggestionMetadata } = require("./lib/evidence-architecture");
 
 const repoRoot = process.cwd();
 const kbDir = path.join(repoRoot, "data/knowledge-base");
@@ -8,6 +9,7 @@ const catalogDir = path.join(repoRoot, "data/conditions");
 
 const errors = [];
 const warnings = [];
+const unmappedCatalogConditions = [];
 
 const readJsonFiles = directory =>
   fs.readdirSync(directory)
@@ -133,6 +135,10 @@ for (const { file, data } of kbFiles) {
       errors.push(`${prefix}: rationale must be a non-empty string`);
     }
 
+    for (const metadataError of validateSuggestionMetadata(suggestion)) {
+      errors.push(`${prefix}: ${metadataError}`);
+    }
+
     if (!Array.isArray(suggestion.evidenceGaps)) {
       errors.push(`${prefix}: evidenceGaps must be an array`);
     } else if (suggestion.evidenceGaps.some(gap => typeof gap !== "string" || !gap.trim())) {
@@ -163,6 +169,32 @@ for (const { file, data } of kbFiles) {
         if (source.verified === true && typeof source.sourceCheckedOn !== "string") {
           errors.push(`${sourcePrefix}: verified sources require sourceCheckedOn`);
         }
+
+        for (const metadataError of validateExplicitMetadata(source)) {
+          errors.push(`${sourcePrefix}: ${metadataError}`);
+        }
+
+        const hasV2SourceMetadata = [
+          "authorityCategory",
+          "propositionRole",
+          "federalRegisterType",
+          "bindingStatus",
+          "effectiveDate",
+          "applicability",
+          "ruleVersion",
+        ].some(key => Object.prototype.hasOwnProperty.call(source, key));
+        const hasV2SuggestionMetadata =
+          Object.prototype.hasOwnProperty.call(suggestion, "claimTheories") ||
+          Object.prototype.hasOwnProperty.call(suggestion, "nexusRequirement");
+
+        for (const issue of auditSource(source, {
+          claimTheories: suggestion.claimTheories,
+          nexusRequirement: suggestion.nexusRequirement,
+        })) {
+          const formatted = `${sourcePrefix}: [${issue.code}] ${issue.message}`;
+          if (issue.severity === "error") errors.push(formatted);
+          else if (issue.severity === "warning" && (hasV2SourceMetadata || hasV2SuggestionMetadata)) warnings.push(formatted);
+        }
       }
     }
   }
@@ -180,7 +212,9 @@ for (const { file, data } of kbFiles) {
 
 for (const [id, { file }] of catalogById) {
   if (!kbIds.has(id)) {
-    warnings.push(`catalog condition '${id}' from ${file} has no knowledge-base mapping`);
+    const warning = `catalog condition '${id}' from ${file} has no knowledge-base mapping`;
+    unmappedCatalogConditions.push(warning);
+    warnings.push(warning);
   }
 }
 
@@ -189,7 +223,7 @@ const report = {
   catalogFiles: catalogFiles.length,
   catalogConditions: catalogById.size,
   mappedConditions: kbIds.size,
-  unmappedCatalogConditions: warnings.length,
+  unmappedCatalogConditions: unmappedCatalogConditions.length,
   errors,
   warnings,
 };
