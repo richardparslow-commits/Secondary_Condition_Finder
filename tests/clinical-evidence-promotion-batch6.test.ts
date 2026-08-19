@@ -29,8 +29,8 @@ describe("clinical evidence promotion batch 6", () => {
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("academic.oup.com/jcem/article/110/9/2453");
     expect(source?.citation).toMatch(/110\(9\):2453-2495/);
-    expect(source?.verified).toBe(false);
-    expect(source?.sourceCheckedOn).toBe("2026-08-14");
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("withdraws Addison disease's rating-only generic relationships", () => {
@@ -51,10 +51,10 @@ describe("clinical evidence promotion batch 6", () => {
     expect(condition?.reviewNotes.join(" ")).toMatch(/DC 7916|diagnostic code 7916/i);
   });
 
-  it("does not auto-verify the Batch 6 clinical source", () => {
+  it("reflects later qualified-human verification of the bounded primary-aldosteronism source", () => {
     const source = byId.get("hyperaldosteronism")?.suggestions[0]?.sourceReferences[0];
-    expect(source?.verified).toBe(false);
-    expect(source?.sourceCheckedOn).toBe("2026-08-14");
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
     expect(source?.sourceLocator).toMatch(/common cause of hypertension/i);
   });
 });

@@ -54,15 +54,18 @@ describe("controlled pathway backfill batch 4", () => {
     }
   });
 
-  it("recognizes the Batch 9 ED supersession without resurrecting the unsupported GERD chain", () => {
+  it("recognizes the Batch 5 ED association narrowing without resurrecting the unsupported GERD chain", () => {
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "erectile-dysfunction");
     const depression = mapping?.suggestions.find((entry) => entry.conditionId === "depressive-disorder");
     const gerd = mapping?.suggestions.find((entry) => entry.conditionId === "gerd");
+    const source = depression?.sourceReferences.find((entry) => entry.sourceUrl?.includes("29960891"));
 
     expect(mapping?.draft).toBe(false);
     expect(gerd).toBeUndefined();
-    expect(depression?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
-    expect(depression?.pathwayIntelligence?.pathways).toEqual(["somatopsychic"]);
+    expect(source?.verificationScope).toBe("clinical-evidence");
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
+    expect(depression?.pathwayIntelligence).toBeUndefined();
     expect(depression?.rationale).toMatch(/bidirectional/i);
     expect(depression?.rationale).toMatch(/does not establish|causal direction/i);
   });

@@ -40,19 +40,19 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-After qualified-human Citation Verification Batches 01 through 04, the current local position is:
+After qualified-human Citation Verification Batches 01 through 05, the current local position is:
 
 - live references: **69**;
-- live verified: **28**;
+- live verified: **33**;
 - retired verified: **6**;
-- verified provenance: **34**;
-- live unverified: **41**;
-- published-unverified review findings: **39**;
+- verified provenance: **39**;
+- live unverified: **36**;
+- published-unverified review findings: **34**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 04 reduces live-unverified debt from `46` to `41` and published-review debt from `44` to `39` without changing the 69-reference denominator. All five reviewed references were verified as written: three separate depressive-disorder references, the type-1-diabetes→CKD source, and the scalp-DLE→scarring-alopecia source. Automated source checking still cannot authorize verification; the human decisions are documented in the four citation-verification batch records.
+Batch 05 reduces live-unverified debt from `41` to `36` and published-review debt from `39` to `34` without changing the 69-reference denominator. Three sources were verified as written (FAI→hip osteoarthritis, confirmed primary aldosteronism→hypertension, and confirmed primary hyperparathyroidism→kidney stones); ED→depression was narrowed by removing unsupported directional pathway intelligence before verification; and the valve-residuals→anemia source was replaced one-for-one with Alkhouli et al., PMID 31039274 before verification. Automated source checking still cannot authorize verification; the human decisions are documented in the five citation-verification batch records.
 
 ## Safety rule for safe drafts
 

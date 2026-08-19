@@ -9,7 +9,10 @@
       "prevalence": "commonly-explored",
       "rationale": "Femoroacetabular impingement, particularly cam-type morphology with an elevated alpha angle, is associated with development and radiographic progression of hip osteoarthritis in systematic-review evidence. The evidence for pincer-type morphology is less consistent. This supports a hip-specific biomechanical/disease-progression research pathway when the individual's documented FAI morphology, symptoms, and osteoarthritis involve the same hip; it does not establish that every person with FAI develops osteoarthritis or that FAI caused an individual case without chronology and competing-risk review.",
       "pathwayIntelligence": {
-        "pathways": ["biomechanical", "disease-progression"],
+        "pathways": [
+          "biomechanical",
+          "disease-progression"
+        ],
         "causalChain": "Documented femoroacetabular impingement morphology, especially cam-type morphology, may produce repetitive abnormal femoroacetabular contact and cartilage/labral damage that contributes to hip osteoarthritis progression in susceptible patients.",
         "developmentQuestions": [
           "Is femoroacetabular impingement documented in the same hip as the claimed osteoarthritis, and is the morphology characterized as cam, pincer, or mixed?",
@@ -35,8 +38,8 @@
           "note": "Systematic review of 35 studies found certain cam-type FAI morphologic features, particularly elevated alpha angle, predispose selected patients to radiographic hip-OA progression; the pincer-type association was less well established. Supports a morphology-specific hip-OA pathway, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26524551/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 26524551; abstract: 35 included studies; cam morphology/elevated alpha angle associated with radiographic hip-OA progression; pincer evidence less well understood"
         }
       ]

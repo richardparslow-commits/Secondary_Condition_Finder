@@ -9,7 +9,10 @@
       "prevalence": "occasionally-explored",
       "rationale": "Paravalvular leak is an uncommon but clinically important residual or complication after prosthetic heart-valve replacement and can produce hemolysis and hemolytic anemia. Meta-analytic evidence on paravalvular-leak treatment identifies hemolysis as a serious clinical consequence. This supports a treatment-complication pathway only when a post-replacement paravalvular leak and objective hemolysis are documented; valve replacement by itself is not sufficient to attribute an individual anemia to the procedure.",
       "pathwayIntelligence": {
-        "pathways": ["treatment-complication", "intermediate-chain"],
+        "pathways": [
+          "treatment-complication",
+          "intermediate-chain"
+        ],
         "causalChain": "Heart-valve replacement → documented paravalvular leak around the prosthesis → mechanical red-cell hemolysis → diagnosed hemolytic anemia.",
         "developmentQuestions": [
           "Is a paravalvular leak documented after the valve replacement by echocardiography or other appropriate cardiac imaging?",
@@ -32,13 +35,13 @@
       ],
       "sourceReferences": [
         {
-          "citation": "Improta R et al. Transcatheter or surgical treatment of paravalvular leaks: A meta-analysis of 13 studies and 2003 patients. Int J Cardiol Heart Vasc. 2024. PMID 40103841",
-          "note": "Meta-analysis describes significant paravalvular leak as a rare but serious complication of heart-valve replacement associated with heart failure and hemolysis. Supports a documented leak-to-hemolysis pathway, not anemia attribution from valve replacement alone.",
+          "citation": "Alkhouli M, Farooq A, Go RS, Balla S, Berzingi C. Cardiac prostheses-related hemolytic anemia. Clin Cardiol. 2019;42(7):692-700. PMID 31039274",
+          "note": "Contemporary review of cardiac prosthesis-related hemolytic anemia covering incidence, mechanisms, diagnosis, and management, including paravalvular-leak-associated hemolysis after valve replacement. Supports the bounded documented prosthetic dysfunction/leak → hemolysis → hemolytic-anemia pathway, not anemia attribution from valve-replacement status alone.",
           "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40103841/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
-          "sourceLocator": "PMID 40103841; abstract: significant paravalvular leak after heart-valve replacement can cause symptomatic heart failure and hemolysis"
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31039274/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
+          "sourceLocator": "PMID 31039274; PMCID PMC6605004; review of cardiac prosthesis-related hemolytic anemia; includes severe hemolysis due to paravalvular leak after transcatheter aortic/mitral valve replacement and an algorithmic diagnostic approach to suspected prosthesis-related hemolysis"
         }
       ]
     }

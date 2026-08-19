@@ -34,7 +34,8 @@ describe("clinical evidence promotion batch 10", () => {
     expect(suggestion?.rationale).toMatch(/secondary and tertiary|secondary or tertiary/i);
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("36245251");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("keeps chronic hypoparathyroidism kidney-stone research association-focused", () => {

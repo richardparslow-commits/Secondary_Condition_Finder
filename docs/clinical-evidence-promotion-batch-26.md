@@ -36,7 +36,7 @@ Clinical source: Pelsma et al., *Pituitary* 2020; PMID 32419072. The systematic 
 
 The relationship is limited to a documented prosthetic-valve **paravalvular leak → mechanical hemolysis → hemolytic anemia** chain. Prosthetic-valve status alone is insufficient. The mapping requires imaging evidence of the leak, laboratory characterization of hemolysis/anemia, compatible chronology, and evaluation of competing anemia causes.
 
-Clinical source: Improta et al., *Int J Cardiol Heart Vasc.* 2024; PMID 40103841. The meta-analysis describes significant paravalvular leak as a rare but serious complication after heart-valve replacement associated with heart failure and hemolysis. The source remains `verified: false`.
+Current clinical source: Alkhouli et al., *Clin Cardiol.* 2019; PMID 31039274 (PMCID PMC6605004). The review addresses cardiac-prosthesis-related hemolytic anemia and includes paravalvular-leak-associated hemolysis after valve replacement. Citation Verification Batch 05 replaced the prior source one-for-one and records qualified-human verification on 2026-08-18; the live mapping remains limited to documented prosthetic dysfunction/leak → objective hemolysis → hemolytic anemia rather than valve-replacement status alone.
 
 ### `implantable-cardiac-pacemaker` → `heart-valve-disorders`
 

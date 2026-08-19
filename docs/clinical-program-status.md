@@ -40,23 +40,23 @@ Key negative-modeling protections include rejecting CTS/median-neuropathy taxono
 
 ## Citation position
 
-After qualified-human Citation Verification Batches 01 through 04, the current local position is:
+After qualified-human Citation Verification Batches 01 through 05, the current local position is:
 
 - live references: **69**;
-- live verified: **28**;
+- live verified: **33**;
 - retired verified: **6**;
-- verified provenance: **34**;
-- live unverified: **41**;
-- published-unverified review findings: **39**;
+- verified provenance: **39**;
+- live unverified: **36**;
+- published-unverified review findings: **34**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 04 lowers the debt ratchet from 46/44 to 41/39 while preserving 69 total live references and zero hard findings. The five approved references required no proposition narrowing or source replacement.
+Batch 05 lowers the debt ratchet from 41/39 to 36/34 while preserving 69 total live references and zero hard findings. ED→depression was narrowed to association-only by removing unsupported directional pathway intelligence; the valve-residuals→anemia source was replaced one-for-one with PMID 31039274; the other three approved sources were verified as written.
 
 ## Human citation verification
 
-Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 04 record explicit qualified-human approval for twenty sources; the remaining 41 live unverified references remain `verified: false` until separately reviewed.
+Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 05 record explicit qualified-human approval for twenty-five sources; the remaining 36 live unverified references remain `verified: false` until separately reviewed.
 
 ## External/manual gates
 

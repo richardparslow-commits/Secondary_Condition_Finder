@@ -69,8 +69,10 @@ describe("clinical evidence promotion batch 26", () => {
     expect(suggestion?.rationale).toMatch(/paravalvular/i);
     expect(suggestion?.rationale).toMatch(/hemol/i);
     expect(suggestion?.sourceReferences).toHaveLength(1);
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40103841/");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/31039274/");
+    expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("recognizes later evidence-quality review of Batch 26 cleanup targets", () => {

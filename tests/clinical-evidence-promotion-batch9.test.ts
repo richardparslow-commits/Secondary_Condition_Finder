@@ -44,13 +44,14 @@ describe("clinical evidence promotion batch 9", () => {
     const suggestion = mapping?.suggestions[0];
     expect(suggestion?.conditionId).toBe("depressive-disorder");
     expect(suggestion?.rank).toBe(1);
-    expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["somatopsychic"]);
+    expect(suggestion?.pathwayIntelligence).toBeUndefined();
     expect(suggestion?.rationale).toMatch(/bidirectional/i);
     expect(suggestion?.rationale).toMatch(/does not establish|causal direction/i);
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("29960891");
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("physically relocates hyperthyroidism into endocrine maintenance with DC 7900", () => {
@@ -67,13 +68,13 @@ describe("clinical evidence promotion batch 9", () => {
     expect(condition?.ratingSchedule[0]?.verified).toBe(false);
   });
 
-  it("distinguishes later qualified-human type-1-diabetes verification from still-unverified erectile-dysfunction evidence", () => {
+  it("reflects later qualified-human verification for both Batch 9 clinical sources", () => {
     const diabetes = byId.get("diabetes-mellitus-type-1")?.suggestions[0]?.sourceReferences[0];
     expect(diabetes?.verified).toBe(true);
     expect(diabetes?.sourceCheckedOn).toBe("2026-08-18");
 
     const erectileDysfunction = byId.get("erectile-dysfunction")?.suggestions[0]?.sourceReferences[0];
-    expect(erectileDysfunction?.verified).toBe(false);
-    expect(erectileDysfunction?.sourceCheckedOn).toBe("2026-08-14");
+    expect(erectileDysfunction?.verified).toBe(true);
+    expect(erectileDysfunction?.sourceCheckedOn).toBe("2026-08-18");
   });
 });
