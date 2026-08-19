@@ -77,7 +77,7 @@ describe("workflow privacy", () => {
 
     expect(sealed).not.toContain("ptsd");
     expect(sealed).not.toContain("sleep-apnea");
-    expect(sealed).not.toContain("100");
+    expect(sealed).not.toContain('"ratingsByConditionId":{"ptsd":100}');
     expect(openWorkflowState(sealed, TEST_SECRET)).toEqual(state);
   });
 

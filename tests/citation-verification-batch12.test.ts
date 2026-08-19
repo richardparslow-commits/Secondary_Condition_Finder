@@ -19,4 +19,4 @@ describe("citation verification batch 12",()=>{
     expect(mapping("ocd").draft).toBe(true);
   });
 });
-describe("batch 12 ratchet",()=>{it("pins the approved baseline",()=>{const a=fs.readFileSync(path.join(root,"scripts/audit-citation-verification.js"),"utf8");expect(a).toContain("liveVerified: 67,");expect(a).toContain("verifiedProvenance: 73,");expect(a).toContain("unverified: 2,");expect(a).toContain("reviewFindings: 1,");});});
+describe("batch 12 ratchet",()=>{it("pins the approved baseline",()=>{const a=fs.readFileSync(path.join(root,"scripts/audit-citation-verification.js"),"utf8");expect(a).toContain("liveVerified: 68,");expect(a).toContain("verifiedProvenance: 74,");expect(a).toContain("unverified: 1,");expect(a).toContain("reviewFindings: 1,");});});

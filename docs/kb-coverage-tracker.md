@@ -40,13 +40,13 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-After qualified-human Citation Verification Batches 01 through 12, the current local position is:
+After qualified-human Citation Verification Batches 01 through 13, the current local position is:
 
 - live references: **69**;
-- live verified: **67**;
+- live verified: **68**;
 - retired verified: **6**;
-- verified provenance: **73**;
-- live unverified: **2**;
+- verified provenance: **74**;
+- live unverified: **1**;
 - published-unverified review findings: **1**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
@@ -67,11 +67,11 @@ Any head change invalidates the prior exact-head CI and Vercel Agent review and 
 <!-- citation-verification-master-current:start -->
 ## Current citation-verification position
 
-Master-approved implementation is complete through **Batch 12**.
-- Live verified references: **67**
+Master-approved implementation is complete through **Batch 13**.
+- Live verified references: **68**
 - Retired verified references: **6**
-- Verified provenance: **73**
-- Live unverified references: **2**
+- Verified provenance: **74**
+- Live unverified references: **1**
 - Published unverified review findings: **1**
 - Hard findings: **0**
 - Live clinical source URL coverage: **64/64**

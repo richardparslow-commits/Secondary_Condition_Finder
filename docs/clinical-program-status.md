@@ -40,7 +40,7 @@ Key negative-modeling protections include rejecting CTS/median-neuropathy taxono
 
 ## Citation position
 
-After qualified-human Citation Verification Batches 01 through 12, the current local position is:
+After qualified-human Citation Verification Batches 01 through 13, the current local position is:
 
 - live references: **69**;
 - live verified: **47**;
@@ -56,7 +56,7 @@ Batch 08 lowers the debt ratchet from 26/24 to 22/20 while preserving 69 total l
 
 ## Human citation verification
 
-Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 12 record explicit qualified-human approval resulting in thirty-nine newly verified live sources across the verification series; the remaining 22 live unverified references remain `verified: false` until separately reviewed. Batch 08 demonstrates that human review may intentionally retain `verified: false` when source-to-target taxonomy is insufficient.
+Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 13 record explicit qualified-human approval resulting in thirty-nine newly verified live sources across the verification series; the remaining 22 live unverified references remain `verified: false` until separately reviewed. Batch 08 demonstrates that human review may intentionally retain `verified: false` when source-to-target taxonomy is insufficient.
 
 ## External/manual gates
 
@@ -69,11 +69,11 @@ Repository automation is complete for Batch 31 only when the repository contains
 <!-- citation-verification-master-current:start -->
 ## Current citation-verification position
 
-Master-approved implementation is complete through **Batch 12**.
-- Live verified references: **67**
+Master-approved implementation is complete through **Batch 13**.
+- Live verified references: **68**
 - Retired verified references: **6**
-- Verified provenance: **73**
-- Live unverified references: **2**
+- Verified provenance: **74**
+- Live unverified references: **1**
 - Published unverified review findings: **1**
 - Hard findings: **0**
 - Live clinical source URL coverage: **64/64**
