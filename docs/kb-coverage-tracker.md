@@ -40,19 +40,19 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-After qualified-human Citation Verification Batches 01 through 06, the current local position is:
+After qualified-human Citation Verification Batches 01 through 07, the current local position is:
 
 - live references: **69**;
-- live verified: **38**;
+- live verified: **43**;
 - retired verified: **6**;
-- verified provenance: **44**;
-- live unverified: **31**;
-- published-unverified review findings: **29**;
+- verified provenance: **49**;
+- live unverified: **26**;
+- published-unverified review findings: **24**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 06 reduces live-unverified debt from `36` to `31` and published-review debt from `34` to `29` without changing the 69-reference denominator. Hyperpituitarism→hypogonadism plus hypertension→CKD, ischemic heart disease, and congestive heart failure were verified as written. Hypertension→erectile dysfunction was kept association-focused while its older meta-analysis source was replaced one-for-one with the current corrected 2025 AHA/ACC multisociety hypertension guideline (PMID 40811497) before verification. Automated source checking still cannot authorize verification; the human decisions are documented in the six citation-verification batch records.
+Batch 07 reduces live-unverified debt from `31` to `26` and published-review debt from `29` to `24` without changing the 69-reference denominator. Hypertensive-heart-disease→heart failure, confirmed hypogonadism→osteoporosis, chronic hypoparathyroidism→kidney stones, and transvenous pacemaker lead→tricuspid valve disorder were verified as written. Insomnia→depressive disorder was narrowed from directional `direct-secondary` metadata to a temporal-association-only research relationship before verification. Automated source checking still cannot authorize verification; the human decisions are documented in the seven citation-verification batch records.
 
 ## Safety rule for safe drafts
 

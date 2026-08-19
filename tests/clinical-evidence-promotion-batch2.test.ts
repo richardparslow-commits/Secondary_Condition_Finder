@@ -38,9 +38,9 @@ describe("clinical evidence promotion batch 2", () => {
     const reference = mapping?.suggestions[0]?.sourceReferences[0];
     expect(reference?.verificationScope).toBe("clinical-evidence");
     expect(reference?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/36082670/");
-    expect(reference?.sourceCheckedOn).toBe("2026-08-14");
+    expect(reference?.sourceCheckedOn).toBe("2026-08-18");
     expect(reference?.sourceLocator).toMatch(/36082670/i);
-    expect(reference?.verified).toBe(false);
+    expect(reference?.verified).toBe(true);
   });
 
   it("publishes the reviewed chronic-pyelonephritis CKD relationship cautiously", () => {
@@ -85,13 +85,11 @@ describe("clinical evidence promotion batch 2", () => {
     expect(diabeticRetinopathy?.ratingSchedule[0]?.note).toMatch(/6040/i);
   });
 
-  it("distinguishes later qualified-human chronic-pyelonephritis verification from still-unverified hypertensive-heart-disease evidence", () => {
-    const hypertensiveHeart = mappingById.get("hypertensive-heart-disease")?.suggestions[0]?.sourceReferences[0];
-    expect(hypertensiveHeart?.verified).toBe(false);
-    expect(hypertensiveHeart?.sourceCheckedOn).toBe("2026-08-14");
-
-    const pyelonephritis = mappingById.get("chronic-pyelonephritis")?.suggestions[0]?.sourceReferences[0];
-    expect(pyelonephritis?.verified).toBe(true);
-    expect(pyelonephritis?.sourceCheckedOn).toBe("2026-08-18");
+  it("recognizes later qualified-human verification of both Batch-2 clinical sources", () => {
+    for (const id of ["hypertensive-heart-disease", "chronic-pyelonephritis"] as const) {
+      const source = mappingById.get(id)?.suggestions[0]?.sourceReferences[0];
+      expect(source?.verified).toBe(true);
+      expect(source?.sourceCheckedOn).toBe("2026-08-18");
+    }
   });
 });

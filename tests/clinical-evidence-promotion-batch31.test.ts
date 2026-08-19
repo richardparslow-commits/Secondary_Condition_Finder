@@ -15,21 +15,37 @@ describe("targeted clinical mapping batch 31", () => {
     expect(kb).toHaveLength(300);
   });
 
-  it.each([
-    ["insomnia", "depressive-disorder", "direct-secondary", "38833937"],
-    ["migraine-headaches", "depressive-disorder", "somatopsychic", "23588795"],
-  ])("publishes %s to %s with one bounded unverified prospective source", (primaryId, secondaryId, pathway, pmid) => {
-    const mapping = byId.get(primaryId);
+  it("recognizes Batch-7 insomnia-to-depression temporal-association narrowing", () => {
+    const mapping = byId.get("insomnia");
     const suggestion = mapping?.suggestions[0];
 
     expect(mapping?.draft).toBe(false);
     expect(mapping?.todo).toEqual([]);
     expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe(secondaryId);
-    expect(suggestion?.pathwayIntelligence?.pathways).toContain(pathway);
+    expect(suggestion?.conditionId).toBe("depressive-disorder");
+    expect(suggestion?.pathwayIntelligence).toBeUndefined();
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain(pmid);
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("38833937");
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
+    expect(suggestion?.rationale).toMatch(/temporal-association|prospective/i);
+    expect(suggestion?.rationale).toMatch(/does not establish individual causation/i);
+    expect(suggestion?.rationale).not.toMatch(/direct-secondary research/i);
+  });
+
+  it("keeps migraine-to-depression as the still-unverified bounded prospective mapping", () => {
+    const mapping = byId.get("migraine-headaches");
+    const suggestion = mapping?.suggestions[0];
+
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.todo).toEqual([]);
+    expect(mapping?.suggestions).toHaveLength(1);
+    expect(suggestion?.conditionId).toBe("depressive-disorder");
+    expect(suggestion?.pathwayIntelligence?.pathways).toContain("somatopsychic");
+    expect(suggestion?.sourceReferences).toHaveLength(1);
+    expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("23588795");
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
     expect(suggestion?.rationale).toMatch(/population|prospective|individual/i);
   });
@@ -78,7 +94,7 @@ describe("targeted clinical mapping batch 31", () => {
     expect(byId.get("social-anxiety-disorder")?.todo.join(" ")).toMatch(/11231832|prospective|population-level/i);
   });
 
-  it("reflects the current citation debt after qualified-human Batches 1 through 6", () => {
+  it("reflects the current citation debt after qualified-human Batches 1 through 7", () => {
     const liveReferences = kb.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
@@ -95,8 +111,8 @@ describe("targeted clinical mapping batch 31", () => {
     );
 
     expect(liveReferences).toHaveLength(69);
-    expect(liveUnverified).toHaveLength(31);
-    expect(publishedUnverified).toHaveLength(29);
+    expect(liveUnverified).toHaveLength(26);
+    expect(publishedUnverified).toHaveLength(24);
     expect(clinicalWithUrls).toHaveLength(64);
   });
 

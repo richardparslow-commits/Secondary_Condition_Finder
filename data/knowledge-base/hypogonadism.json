@@ -9,7 +9,9 @@
       "prevalence": "commonly-explored",
       "rationale": "Confirmed male hypogonadism/testosterone deficiency is clinically associated with bone loss and can warrant formal osteoporosis and fracture-risk evaluation. The European Academy of Andrology bone-health guideline states that testosterone deficiency may be clearly associated with bone loss and frailty, recommends complete bone-health assessment and DXA in men with confirmed clinical hypogonadism, and notes that evidence that testosterone replacement prevents fractures is lacking. This mapping therefore supports a bounded hypogonadism-to-bone-loss/osteoporosis research pathway, not an assumption that every case of osteoporosis is caused by androgen deficiency or that testosterone therapy will prevent fractures.",
       "pathwayIntelligence": {
-        "pathways": ["disease-progression"],
+        "pathways": [
+          "disease-progression"
+        ],
         "causalChain": "Confirmed clinical hypogonadism with sustained androgen deficiency → impaired skeletal maintenance and bone loss when present → low bone mineral density/osteoporosis, with age, glucocorticoids, nutrition, smoking, alcohol, immobility, other endocrine disease, and other secondary osteoporosis causes requiring separate review.",
         "developmentQuestions": [
           "Is clinical hypogonadism confirmed with appropriate symptoms and repeated biochemical testing rather than a single low testosterone value?",
@@ -36,8 +38,8 @@
           "note": "European Academy of Andrology practice guideline recognizes testosterone-deficiency-associated bone loss/frailty, recommends complete bone-health assessment and DXA in men with confirmed clinical hypogonadism, and notes that fracture-prevention efficacy of testosterone replacement is not established.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29499097/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 29499097; abstract lines on testosterone deficiency, silent osteoporosis, complete bone-health assessment/DXA, and lack of fracture-prevention data"
         }
       ]

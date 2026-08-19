@@ -14,7 +14,7 @@ The generated report is authoritative for the exact current human-review row set
 
 ## Current citation-verification baseline
 
-After qualified-human Citation Verification Batches 01 through 06, the repository contains **31 live unverified references** and **29 live unverified published references**.
+After qualified-human Citation Verification Batches 01 through 07, the repository contains **26 live unverified references** and **24 live unverified published references**.
 
 Batch 31 adds exactly two new bounded clinical source rows, both `verified: false`:
 
@@ -23,7 +23,7 @@ Batch 31 adds exactly two new bounded clinical source rows, both `verified: fals
 
 Both are prospective incident-depression sources. Their published rationales explicitly distinguish population-level temporal risk from an individual medical nexus and require diagnosis-specific chronology and competing-cause review.
 
-No source is automatically verified. Citation Verification Batches 01 through 06 each record five explicit qualified-human decisions, reducing the current ceilings to 31 live unverified references and 29 published-unverified review findings without changing the live-reference denominator.
+No source is automatically verified. Citation Verification Batches 01 through 07 each record five explicit qualified-human decisions, reducing the current ceilings to 26 live unverified references and 24 published-unverified review findings without changing the live-reference denominator.
 
 The targeted screen also records several nonpublished evidence dispositions without adding live source rows: carpal tunnel syndrome psychiatric association (PMID 37639884); ME/CFS psychiatric temporal/comorbidity literature (including PMIDs 40785390, 15184691, 19566769); hypothyroidism/CTS evidence (PMID 41002938); narcolepsy/depression meta-analysis (PMID 32671534); peripheral-neuropathy/falls-fractures evidence (PMID 36945108); radial mononeuropathy characterization (PMID 41392533); REM sleep behavior disorder prodromal synucleinopathy evidence (PMIDs 39177811 and 28429825); and social-anxiety/depression prospective evidence (PMID 11231832). These are screening notes, not live published citation rows.
 
@@ -42,6 +42,10 @@ Five additional sources were explicitly approved by the repository owner acting 
 ## Completed Citation Verification Batch 04
 
 Five additional live clinical-evidence references were explicitly approved by the repository owner acting as the qualified human reviewer: depressive-disorder treatment→weight gain (PMID 31524318), obesity/weight gain→OSA as the second link in the depressive-disorder intermediate chain (PMID 40330547), depressive-disorder psychotropic treatment→erectile dysfunction with agent-specific safeguards (PMID 34247952), type 1 diabetes→CKD (PMID 41358881), and scalp discoid lupus→scarring alopecia (PMID 35817588). All five were verified as written. The reproducible decision record is `docs/citation-verification-batch-04.md`.
+
+## Completed Citation Verification Batch 07
+
+Five additional live clinical-evidence references were explicitly approved by the repository owner: hypertensive heart disease→congestive heart failure (PMID 36082670), confirmed hypogonadism→osteoporosis (PMID 29499097), chronic hypoparathyroidism→kidney stones (PMID 36375810), and transvenous pacemaker lead→heart-valve disorder (PMID 34389210) as written; insomnia→depressive disorder (PMID 38833937) after removal of directional `direct-secondary` pathway intelligence and conversion to temporal-association framing. The reproducible decision record is `docs/citation-verification-batch-07.md`.
 
 ## Completed Citation Verification Batch 06
 

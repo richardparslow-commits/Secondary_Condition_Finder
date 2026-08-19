@@ -9,7 +9,9 @@
       "prevalence": "sometimes-explored",
       "rationale": "Permanent pacemaker implantation with a transvenous lead crossing the tricuspid valve is associated with new or worsening tricuspid regurgitation in systematic-review and meta-analytic evidence. Lead interference is an identified risk factor. This supports a device-related treatment-complication pathway only when the individual has a trans-tricuspid lead and objective post-implant valvular worsening; it does not establish that every pacemaker causes a valve disorder and should not be generalized to leadless or epicardial systems without applicable evidence.",
       "pathwayIntelligence": {
-        "pathways": ["treatment-complication"],
+        "pathways": [
+          "treatment-complication"
+        ],
         "causalChain": "Transvenous permanent pacemaker lead crossing the tricuspid valve → documented lead-valve interaction or post-implant worsening of tricuspid regurgitation → claimed heart-valve disorder.",
         "developmentQuestions": [
           "Does the implanted pacemaker use a transvenous lead that crosses the tricuspid valve, rather than a leadless or epicardial system?",
@@ -36,8 +38,8 @@
           "note": "Systematic review/meta-analysis found tricuspid-regurgitation deterioration after cardiac implantable electronic-device implantation and identified lead interference as a strong risk factor. Supports a transvenous lead-associated pathway, not automatic individual causation or application to leadless/epicardial systems.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34389210/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 34389210; abstract: TR deterioration after CIED implantation; lead interference OR 8.704; pacemaker implantation time associated with worsening TR"
         }
       ]

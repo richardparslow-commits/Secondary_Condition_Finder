@@ -40,23 +40,23 @@ Key negative-modeling protections include rejecting CTS/median-neuropathy taxono
 
 ## Citation position
 
-After qualified-human Citation Verification Batches 01 through 06, the current local position is:
+After qualified-human Citation Verification Batches 01 through 07, the current local position is:
 
 - live references: **69**;
-- live verified: **38**;
+- live verified: **43**;
 - retired verified: **6**;
-- verified provenance: **44**;
-- live unverified: **31**;
-- published-unverified review findings: **29**;
+- verified provenance: **49**;
+- live unverified: **26**;
+- published-unverified review findings: **24**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 06 lowers the debt ratchet from 36/34 to 31/29 while preserving 69 total live references and zero hard findings. Hyperpituitarism→hypogonadism and the hypertension→CKD/IHD/CHF sources were verified as written; hypertension→ED retained its association-only framing while replacing PMID 27491642 one-for-one with the current corrected 2025 multisociety hypertension guideline (PMID 40811497).
+Batch 07 lowers the debt ratchet from 31/29 to 26/24 while preserving 69 total live references and zero hard findings. Four sources were verified as written; insomnia→depressive disorder was narrowed to temporal-association-only evidence by removing directional `direct-secondary` pathway intelligence before verification.
 
 ## Human citation verification
 
-Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 06 record explicit qualified-human approval for thirty sources; the remaining 31 live unverified references remain `verified: false` until separately reviewed.
+Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 07 record explicit qualified-human approval for thirty-five sources; the remaining 26 live unverified references remain `verified: false` until separately reviewed.
 
 ## External/manual gates
 

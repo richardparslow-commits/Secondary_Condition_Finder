@@ -40,7 +40,8 @@ describe("clinical evidence promotion batch 11", () => {
     expect(suggestion?.pathwayIntelligence?.issuesToResolve.join(" ")).toMatch(/fracture/i);
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("29499097");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("clinically repairs only the ILD-to-OSA edge and removes the legal-only arrhythmia edge", () => {

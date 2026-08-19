@@ -51,7 +51,8 @@ describe("clinical evidence promotion batch 10", () => {
     expect(suggestion?.rationale).toMatch(/not an automatic causal attribution/i);
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("36375810");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("withdraws emphysema and chronic bronchitis rather than preserving legal-only medical claims", () => {
