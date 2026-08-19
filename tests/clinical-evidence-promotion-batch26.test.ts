@@ -58,7 +58,7 @@ describe("clinical evidence promotion batch 26", () => {
     expect(suggestion?.rationale).toMatch(/macroadenoma|suprasellar/i);
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/32419072/");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
   });
 
   it("promotes valve-replacement anemia only through documented paravalvular leak and hemolysis", () => {

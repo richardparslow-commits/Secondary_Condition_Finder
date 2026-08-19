@@ -14,7 +14,7 @@ The generated report is authoritative for the exact current human-review row set
 
 ## Current citation-verification baseline
 
-After qualified-human Citation Verification Batches 01 through 08, the repository contains **22 live unverified references** and **20 live unverified published references**.
+After qualified-human Citation Verification Batches 01 through 09, the repository contains **17 live unverified references** and **15 live unverified published references**.
 
 Batch 31 adds exactly two new bounded clinical source rows, both `verified: false`:
 
@@ -23,7 +23,7 @@ Batch 31 adds exactly two new bounded clinical source rows, both `verified: fals
 
 Both are prospective incident-depression sources. Their published rationales explicitly distinguish population-level temporal risk from an individual medical nexus and require diagnosis-specific chronology and competing-cause review.
 
-No source is automatically verified. Citation Verification Batches 01 through 08 record explicit qualified-human decisions, reducing the current ceilings to 22 live unverified references and 20 published-unverified review findings without changing the live-reference denominator. Batch 08 intentionally holds one reviewed source unverified because the current knowledge-base target is broader/different than the cited post-traumatic-headache evidence.
+No source is automatically verified. Citation Verification Batches 01 through 09 record explicit qualified-human decisions, reducing the current ceilings to 17 live unverified references and 15 published-unverified review findings without changing the live-reference denominator. Batch 08 intentionally holds one reviewed source unverified because the current knowledge-base target is broader/different than the cited post-traumatic-headache evidence.
 
 The targeted screen also records several nonpublished evidence dispositions without adding live source rows: carpal tunnel syndrome psychiatric association (PMID 37639884); ME/CFS psychiatric temporal/comorbidity literature (including PMIDs 40785390, 15184691, 19566769); hypothyroidism/CTS evidence (PMID 41002938); narcolepsy/depression meta-analysis (PMID 32671534); peripheral-neuropathy/falls-fractures evidence (PMID 36945108); radial mononeuropathy characterization (PMID 41392533); REM sleep behavior disorder prodromal synucleinopathy evidence (PMIDs 39177811 and 28429825); and social-anxiety/depression prospective evidence (PMID 11231832). These are screening notes, not live published citation rows.
 
@@ -74,3 +74,33 @@ For each live queue row, a qualified reviewer must independently open the canoni
 ## Non-negotiable boundary
 
 Automated source retrieval or screening is not the qualified-human verification decision required by repository policy.
+
+<!-- citation-verification-master-current:start -->
+## Current citation-verification position
+
+Master-approved implementation is complete through **Batch 9**.
+- Live verified references: **52**
+- Retired verified references: **6**
+- Verified provenance: **58**
+- Live unverified references: **17**
+- Published unverified review findings: **15**
+- Hard findings: **0**
+- Live clinical source URL coverage: **64/64**
+
+Current unresolved published queue:
+- `mild-tbi.json` → `migraine-headaches`: Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491
+- `ptsd.json` → `erectile-dysfunction`: Brugi et al., Journal of Sexual Medicine (2026), PMID 42466890
+- `pulmonary-hypertension.json` → `congestive-heart-failure`: Humbert M, Kovacs G, Hoeper MM, et al. 2022 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension. Eur Heart J. 2022;43(38):3618-3731. PMID 36017548
+- `rectal-prolapse.json` → `fecal-incontinence`: Long-term impact of full-thickness rectal prolapse treatment on fecal incontinence. PMID 25869649
+- `retinal-dystrophy.json` → `visual-impairment`: Sharon D et al. Prog Retin Eye Res. 2022. PMID 34839010
+- `rheumatoid-arthritis.json` → `gerd`: Ruszniewski et al., Aliment Pharmacol Ther (2008), PMID 18671778
+- `sleep-apnea.json` → `hypertension`: Battisha et al., Journal of Clinical Medicine (2025), PMID 40364148
+- `sleep-apnea.json` → `depressive-disorder`: Zhao et al., Sleep and Breathing (2024), PMID 38888794
+- `sleep-apnea.json` → `anxiety-disorder`: Garbarino et al., Behavioral Sleep Medicine (2020), PMID 30453780
+- `syringomyelia.json` → `charcot-arthropathy`: Parida MK, Pattanaik SS, Panda AK, Das BK, Tripathy SR. Charcot arthropathy of elbow due to syringomyelia: a case series and systematic review of literature. Clin Rheumatol. 2023;42(1):261-268. PMID 35994178
+- `testicular-cancer.json` → `hypogonadism`: Bandak M, Jørgensen N, Juul A, et al. Testosterone deficiency in testicular cancer survivors - a systematic review and meta-analysis. Andrology. 2016;4(3):382-388. PMID 27009402
+- `thyroiditis.json` → `hypothyroidism`: Feng X, Lyu X, Gao Y, Gao X, Gao R. Analysis of risk factors for hypothyroidism in initially euthyroid patients with positive thyroid autoantibodies: a multicenter retrospective cohort study. Front Endocrinol (Lausanne). 2026;17:1827517. PMID 42232752
+- `trigeminal-neuralgia.json` → `depressive-disorder`: Martinelli R, Vannuccini S, Burattini B, et al. Psychological assessment in patients affected by trigeminal neuralgia. A systematic review. Neurosurg Rev. 2025;48(1):414. PMID 40355578
+- `urethral-stricture.json` → `hydronephrosis`: Renal and ureteral complications of urethral stenosis, PMID 8571802
+- `uveitis.json` → `glaucoma`: Kesav N, Palestine AG, Kahook MY, Pantcheva MB. Current management of uveitis-associated ocular hypertension and glaucoma. Surv Ophthalmol. 2020;65(4):397-407. PMID 31816329
+<!-- citation-verification-master-current:end -->

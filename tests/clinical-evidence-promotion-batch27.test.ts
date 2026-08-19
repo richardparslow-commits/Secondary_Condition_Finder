@@ -55,7 +55,7 @@ describe("clinical evidence promotion batch 27", () => {
     expect(suggestion?.rationale).toMatch(/objective|testing/i);
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/35895522/");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
   });
 
   it("withdraws three nondirectional comorbidity edges to keep citation debt flat", () => {

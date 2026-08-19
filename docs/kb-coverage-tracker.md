@@ -40,19 +40,19 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-After qualified-human Citation Verification Batches 01 through 08, the current local position is:
+After qualified-human Citation Verification Batches 01 through 09, the current local position is:
 
 - live references: **69**;
-- live verified: **47**;
+- live verified: **52**;
 - retired verified: **6**;
-- verified provenance: **53**;
-- live unverified: **22**;
-- published-unverified review findings: **20**;
+- verified provenance: **58**;
+- live unverified: **17**;
+- published-unverified review findings: **15**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 08 reduces live-unverified debt from `26` to `22` and published-review debt from `24` to `20` without changing the 69-reference denominator. ILD→OSA, Paget disease→osteoarthritis, and ovarian-cancer treatment→peripheral neuropathy were verified as written; migraine→depression was narrowed to temporal-association-only evidence before verification. The mTBI→migraine-target row was narrowed to phenotype-oriented post-traumatic-headache research and intentionally remains unverified because PMID 38568491 does not itself establish the current migraine diagnostic target. Automated source checking still cannot authorize verification; the human decisions are documented in the eight citation-verification batch records.
+Batch 09 leaves the current local citation position at 52 live verified, 17 live unverified, and 15 published-unverified review findings across the unchanged 69-reference denominator. Qualified-human approval is recorded in the citation-verification batch records through Batch 09; automated source checking still cannot authorize verification.
 
 ## Safety rule for safe drafts
 
@@ -63,3 +63,33 @@ A safe draft is an acceptable reviewed product state. The objective is not to pu
 A clinical evidence batch is repository-controlled only when the KB and documentation agree, citation governance is clean, exact-head CI and Vercel Agent immutable-head review are clean on the same SHA, and the exact merge SHA is independently proven by `main` CI and Production Runtime Readiness.
 
 Any head change invalidates the prior exact-head CI and Vercel Agent review and requires both gates again on the new head.
+
+<!-- citation-verification-master-current:start -->
+## Current citation-verification position
+
+Master-approved implementation is complete through **Batch 9**.
+- Live verified references: **52**
+- Retired verified references: **6**
+- Verified provenance: **58**
+- Live unverified references: **17**
+- Published unverified review findings: **15**
+- Hard findings: **0**
+- Live clinical source URL coverage: **64/64**
+
+Current unresolved published queue:
+- `mild-tbi.json` → `migraine-headaches`: Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491
+- `ptsd.json` → `erectile-dysfunction`: Brugi et al., Journal of Sexual Medicine (2026), PMID 42466890
+- `pulmonary-hypertension.json` → `congestive-heart-failure`: Humbert M, Kovacs G, Hoeper MM, et al. 2022 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension. Eur Heart J. 2022;43(38):3618-3731. PMID 36017548
+- `rectal-prolapse.json` → `fecal-incontinence`: Long-term impact of full-thickness rectal prolapse treatment on fecal incontinence. PMID 25869649
+- `retinal-dystrophy.json` → `visual-impairment`: Sharon D et al. Prog Retin Eye Res. 2022. PMID 34839010
+- `rheumatoid-arthritis.json` → `gerd`: Ruszniewski et al., Aliment Pharmacol Ther (2008), PMID 18671778
+- `sleep-apnea.json` → `hypertension`: Battisha et al., Journal of Clinical Medicine (2025), PMID 40364148
+- `sleep-apnea.json` → `depressive-disorder`: Zhao et al., Sleep and Breathing (2024), PMID 38888794
+- `sleep-apnea.json` → `anxiety-disorder`: Garbarino et al., Behavioral Sleep Medicine (2020), PMID 30453780
+- `syringomyelia.json` → `charcot-arthropathy`: Parida MK, Pattanaik SS, Panda AK, Das BK, Tripathy SR. Charcot arthropathy of elbow due to syringomyelia: a case series and systematic review of literature. Clin Rheumatol. 2023;42(1):261-268. PMID 35994178
+- `testicular-cancer.json` → `hypogonadism`: Bandak M, Jørgensen N, Juul A, et al. Testosterone deficiency in testicular cancer survivors - a systematic review and meta-analysis. Andrology. 2016;4(3):382-388. PMID 27009402
+- `thyroiditis.json` → `hypothyroidism`: Feng X, Lyu X, Gao Y, Gao X, Gao R. Analysis of risk factors for hypothyroidism in initially euthyroid patients with positive thyroid autoantibodies: a multicenter retrospective cohort study. Front Endocrinol (Lausanne). 2026;17:1827517. PMID 42232752
+- `trigeminal-neuralgia.json` → `depressive-disorder`: Martinelli R, Vannuccini S, Burattini B, et al. Psychological assessment in patients affected by trigeminal neuralgia. A systematic review. Neurosurg Rev. 2025;48(1):414. PMID 40355578
+- `urethral-stricture.json` → `hydronephrosis`: Renal and ureteral complications of urethral stenosis, PMID 8571802
+- `uveitis.json` → `glaucoma`: Kesav N, Palestine AG, Kahook MY, Pantcheva MB. Current management of uveitis-associated ocular hypertension and glaucoma. Surv Ophthalmol. 2020;65(4):397-407. PMID 31816329
+<!-- citation-verification-master-current:end -->

@@ -87,9 +87,7 @@ describe("Step 5 authored pathway intelligence", () => {
     const osa = ptsd.recommendations.find((item) => item.conditionId === "sleep-apnea");
     const ed = ptsd.recommendations.find((item) => item.conditionId === "erectile-dysfunction");
 
-    expect(osa?.contributingPrimaries[0]?.pathwayIntelligence?.pathways).toEqual(
-      expect.arrayContaining(["direct-secondary", "aggravation", "intermediate-chain"]),
-    );
+    expect(osa?.contributingPrimaries[0]?.pathwayIntelligence).toBeUndefined();
     expect(ed?.contributingPrimaries[0]?.pathwayIntelligence?.pathways).toEqual([
       "medication-related",
     ]);

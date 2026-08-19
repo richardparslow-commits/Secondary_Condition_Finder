@@ -20,8 +20,8 @@
           "note": "Systematic review of isolated PCL injuries evaluating subsequent articular degeneration and osteoarthritis; supports focused post-traumatic research while noting the underlying evidence was largely lower-level observational data.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34505176/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 34505176; abstract; 27 studies, 5197 patients, osteoarthritis reported in operative and nonoperative cohorts"
         }
       ]
