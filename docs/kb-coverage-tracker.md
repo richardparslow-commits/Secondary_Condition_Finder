@@ -40,14 +40,14 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-After qualified-human Citation Verification Batches 01 through 10, the current local position is:
+After qualified-human Citation Verification Batches 01 through 11, the current local position is:
 
 - live references: **69**;
-- live verified: **57**;
+- live verified: **62**;
 - retired verified: **6**;
-- verified provenance: **63**;
-- live unverified: **12**;
-- published-unverified review findings: **10**;
+- verified provenance: **68**;
+- live unverified: **7**;
+- published-unverified review findings: **5**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
@@ -67,22 +67,17 @@ Any head change invalidates the prior exact-head CI and Vercel Agent review and 
 <!-- citation-verification-master-current:start -->
 ## Current citation-verification position
 
-Master-approved implementation is complete through **Batch 10**.
-- Live verified references: **57**
+Master-approved implementation is complete through **Batch 11**.
+- Live verified references: **62**
 - Retired verified references: **6**
-- Verified provenance: **63**
-- Live unverified references: **12**
-- Published unverified review findings: **10**
+- Verified provenance: **68**
+- Live unverified references: **7**
+- Published unverified review findings: **5**
 - Hard findings: **0**
 - Live clinical source URL coverage: **64/64**
 
 Current unresolved published queue:
 - `mild-tbi.json` → `migraine-headaches`: Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491
-- `sleep-apnea.json` → `hypertension`: Battisha et al., Journal of Clinical Medicine (2025), PMID 40364148
-- `sleep-apnea.json` → `depressive-disorder`: Zhao et al., Sleep and Breathing (2024), PMID 38888794
-- `sleep-apnea.json` → `anxiety-disorder`: Garbarino et al., Behavioral Sleep Medicine (2020), PMID 30453780
-- `syringomyelia.json` → `charcot-arthropathy`: Parida MK, Pattanaik SS, Panda AK, Das BK, Tripathy SR. Charcot arthropathy of elbow due to syringomyelia: a case series and systematic review of literature. Clin Rheumatol. 2023;42(1):261-268. PMID 35994178
-- `testicular-cancer.json` → `hypogonadism`: Bandak M, Jørgensen N, Juul A, et al. Testosterone deficiency in testicular cancer survivors - a systematic review and meta-analysis. Andrology. 2016;4(3):382-388. PMID 27009402
 - `thyroiditis.json` → `hypothyroidism`: Feng X, Lyu X, Gao Y, Gao X, Gao R. Analysis of risk factors for hypothyroidism in initially euthyroid patients with positive thyroid autoantibodies: a multicenter retrospective cohort study. Front Endocrinol (Lausanne). 2026;17:1827517. PMID 42232752
 - `trigeminal-neuralgia.json` → `depressive-disorder`: Martinelli R, Vannuccini S, Burattini B, et al. Psychological assessment in patients affected by trigeminal neuralgia. A systematic review. Neurosurg Rev. 2025;48(1):414. PMID 40355578
 - `urethral-stricture.json` → `hydronephrosis`: Renal and ureteral complications of urethral stenosis, PMID 8571802

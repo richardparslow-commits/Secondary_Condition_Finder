@@ -34,7 +34,7 @@ describe("clinical evidence promotion batch 14", () => {
       expect(suggestion.pathwayIntelligence).toBeUndefined();
       expect(suggestion.sourceReferences).toHaveLength(1);
       expect(suggestion.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-      expect(suggestion.sourceReferences[0]?.verified).toBe(false);
+      expect(suggestion.sourceReferences[0]?.verified).toBe(true);
       expect(suggestion.sourceReferences.some((source) => /^38 CFR/i.test(source.citation))).toBe(false);
     }
   });

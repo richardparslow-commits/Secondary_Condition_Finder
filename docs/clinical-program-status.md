@@ -40,7 +40,7 @@ Key negative-modeling protections include rejecting CTS/median-neuropathy taxono
 
 ## Citation position
 
-After qualified-human Citation Verification Batches 01 through 10, the current local position is:
+After qualified-human Citation Verification Batches 01 through 11, the current local position is:
 
 - live references: **69**;
 - live verified: **47**;
@@ -56,7 +56,7 @@ Batch 08 lowers the debt ratchet from 26/24 to 22/20 while preserving 69 total l
 
 ## Human citation verification
 
-Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 10 record explicit qualified-human approval resulting in thirty-nine newly verified live sources across the verification series; the remaining 22 live unverified references remain `verified: false` until separately reviewed. Batch 08 demonstrates that human review may intentionally retain `verified: false` when source-to-target taxonomy is insufficient.
+Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 11 record explicit qualified-human approval resulting in thirty-nine newly verified live sources across the verification series; the remaining 22 live unverified references remain `verified: false` until separately reviewed. Batch 08 demonstrates that human review may intentionally retain `verified: false` when source-to-target taxonomy is insufficient.
 
 ## External/manual gates
 
@@ -69,22 +69,17 @@ Repository automation is complete for Batch 31 only when the repository contains
 <!-- citation-verification-master-current:start -->
 ## Current citation-verification position
 
-Master-approved implementation is complete through **Batch 10**.
-- Live verified references: **57**
+Master-approved implementation is complete through **Batch 11**.
+- Live verified references: **62**
 - Retired verified references: **6**
-- Verified provenance: **63**
-- Live unverified references: **12**
-- Published unverified review findings: **10**
+- Verified provenance: **68**
+- Live unverified references: **7**
+- Published unverified review findings: **5**
 - Hard findings: **0**
 - Live clinical source URL coverage: **64/64**
 
 Current unresolved published queue:
 - `mild-tbi.json` → `migraine-headaches`: Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491
-- `sleep-apnea.json` → `hypertension`: Battisha et al., Journal of Clinical Medicine (2025), PMID 40364148
-- `sleep-apnea.json` → `depressive-disorder`: Zhao et al., Sleep and Breathing (2024), PMID 38888794
-- `sleep-apnea.json` → `anxiety-disorder`: Garbarino et al., Behavioral Sleep Medicine (2020), PMID 30453780
-- `syringomyelia.json` → `charcot-arthropathy`: Parida MK, Pattanaik SS, Panda AK, Das BK, Tripathy SR. Charcot arthropathy of elbow due to syringomyelia: a case series and systematic review of literature. Clin Rheumatol. 2023;42(1):261-268. PMID 35994178
-- `testicular-cancer.json` → `hypogonadism`: Bandak M, Jørgensen N, Juul A, et al. Testosterone deficiency in testicular cancer survivors - a systematic review and meta-analysis. Andrology. 2016;4(3):382-388. PMID 27009402
 - `thyroiditis.json` → `hypothyroidism`: Feng X, Lyu X, Gao Y, Gao X, Gao R. Analysis of risk factors for hypothyroidism in initially euthyroid patients with positive thyroid autoantibodies: a multicenter retrospective cohort study. Front Endocrinol (Lausanne). 2026;17:1827517. PMID 42232752
 - `trigeminal-neuralgia.json` → `depressive-disorder`: Martinelli R, Vannuccini S, Burattini B, et al. Psychological assessment in patients affected by trigeminal neuralgia. A systematic review. Neurosurg Rev. 2025;48(1):414. PMID 40355578
 - `urethral-stricture.json` → `hydronephrosis`: Renal and ureteral complications of urethral stenosis, PMID 8571802

@@ -20,8 +20,8 @@
           "note": "Systematic review describes OSA as an independent hypertension risk factor and reviews intermittent-hypoxia, sympathetic, oxidative-stress, inflammatory, and related mechanisms; supports a clinically important OSA-hypertension relationship without establishing an individual nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40364148/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40364148"
         }
       ]
@@ -43,8 +43,8 @@
           "note": "Systematic review and dose-response meta-analysis of cross-sectional studies found greater depression risk with increasing OSA severity, while substantial heterogeneity and study design limit individual causal inference.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38888794/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 38888794"
         }
       ]
@@ -66,8 +66,8 @@
           "note": "Systematic review and meta-analysis found anxiety symptoms common in adults with OSA and described the relationship among OSA, anxiety, and depression as probably bidirectional; supports association, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30453780/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 30453780"
         }
       ]

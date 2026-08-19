@@ -41,7 +41,7 @@ describe("clinical evidence promotion batch 30", () => {
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("27009402");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
   });
 
   it("keeps pulmonary histoplasmosis draft because adrenal evidence cannot be enforced by the current identity", () => {

@@ -7,10 +7,13 @@
       "conditionId": "charcot-arthropathy",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Syringomyelia is a recognized cause of neuropathic (Charcot) arthropathy, especially in upper-extremity joints where dissociated sensory loss can permit progressive joint destruction. A systematic review of syringomyelia-associated elbow Charcot arthropathy summarized 50 patients and specifically identified syringomyelia as an important etiology. This supports a direct-secondary research pathway when the neuropathic joint is anatomically and neurologically consistent with the syrinx; it does not establish that every arthropathy in a person with syringomyelia is neuropathic or caused by the syrinx.",
+      "rationale": "Syringomyelia is a recognized cause of neuropathic (Charcot) arthropathy, but the cited systematic review and case series specifically concern syringomyelia-associated Charcot arthropathy of the elbow. This source supports an anatomically correlated elbow/upper-extremity pathway when the syrinx level and sensory or proprioceptive deficits are compatible with the affected joint. It should not be generalized from this source to every joint or to ordinary osteoarthritis, inflammatory arthritis, trauma, infection, or another destructive-joint process.",
       "pathwayIntelligence": {
-        "pathways": ["direct-secondary", "disease-progression"],
-        "causalChain": "Spinal-cord sensory pathway injury from syringomyelia can produce impaired protective sensation and proprioception, permitting repetitive unrecognized joint trauma and progressive neuropathic joint destruction.",
+        "pathways": [
+          "direct-secondary",
+          "disease-progression"
+        ],
+        "causalChain": "Anatomically compatible syringomyelia → impaired protective sensation/proprioception in the affected upper-extremity distribution → repetitive unrecognized joint trauma when present → neuropathic/Charcot arthropathy, with the cited evidence specifically supporting elbow disease.",
         "developmentQuestions": [
           "Does the documented syrinx involve spinal levels compatible with the affected joint's sensory findings?",
           "Is there dissociated sensory loss, proprioceptive impairment, weakness, or other neurologic deficit in the affected limb?",
@@ -34,8 +37,8 @@
           "note": "Systematic review plus five-patient case series summarized 50 patients with syringomyelia-associated elbow Charcot arthropathy and identifies syringomyelia as an important etiology. Supports an anatomically correlated neuropathic-joint pathway, not automatic attribution of any arthritis.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35994178/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 35994178; abstract: literature review 31 reports plus case series, 50 total patients; conclusion identifies syringomyelia as an important etiology of Charcot arthropathy of the elbow"
         }
       ]

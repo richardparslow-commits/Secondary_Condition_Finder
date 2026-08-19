@@ -9,7 +9,9 @@
       "prevalence": "sometimes-explored",
       "rationale": "Testosterone deficiency is a recognized late effect in testicular germ-cell cancer survivors, with treatment-specific risk. A systematic review and meta-analysis found increased odds of testosterone deficiency after standard chemotherapy, non-conventional treatment, and infradiaphragmatic radiotherapy compared with orchiectomy alone. This supports a treatment-complication pathway only when the individual's cancer treatment and post-treatment endocrine findings are documented; the testicular-cancer diagnosis by itself and unilateral orchiectomy alone should not be treated as sufficient evidence that later hypogonadism was caused by cancer treatment.",
       "pathwayIntelligence": {
-        "pathways": ["treatment-complication"],
+        "pathways": [
+          "treatment-complication"
+        ],
         "causalChain": "Testicular cancer → documented chemotherapy and/or infradiaphragmatic radiotherapy, if administered → treatment-related gonadal/endocrine injury risk → clinically and biochemically confirmed hypogonadism.",
         "developmentQuestions": [
           "What testicular-cancer treatment was actually received, including orchiectomy laterality, chemotherapy agents/cycles, and radiotherapy field and dose?",
@@ -36,8 +38,8 @@
           "note": "Systematic review/meta-analysis of 12 publications found increased testosterone-deficiency risk after standard chemotherapy (OR 1.8), non-conventional therapy (OR 3.1), and infradiaphragmatic radiotherapy (OR 1.6) compared with testicular germ-cell cancer survivors treated with orchiectomy alone. Supports a treatment-specific hypogonadism pathway, not automatic attribution from the cancer diagnosis itself.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27009402/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 27009402; abstract Results: standard chemotherapy OR 1.8, non-conventional therapy OR 3.1, infradiaphragmatic radiotherapy OR 1.6, each compared with orchiectomy alone"
         }
       ]

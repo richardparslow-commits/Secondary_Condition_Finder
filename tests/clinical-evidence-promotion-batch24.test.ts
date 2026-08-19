@@ -31,7 +31,7 @@ describe("clinical evidence promotion batch 24", () => {
     expect(suggestion?.conditionId).toBe("charcot-arthropathy");
     expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["direct-secondary", "disease-progression"]);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("35994178");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
   });
 
   it("preserves the stronger trigeminal depression pathway after later anxiety narrowing", () => {
