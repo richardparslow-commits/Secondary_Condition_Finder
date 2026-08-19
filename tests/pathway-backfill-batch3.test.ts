@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 
 const expectedBackfill = {
-  copd: { "sleep-apnea": ["direct-secondary", "aggravation"] },
   asthma: { "sleep-apnea": ["direct-secondary", "aggravation"] },
 } as const;
 const intentionallyUnlabeledMappings = ["sleep-apnea"] as const;
@@ -32,6 +31,18 @@ describe("controlled pathway backfill batch 3", () => {
     for (const primaryId of safetyWithdrawnMappings) {
       const mapping = kb.find((entry) => entry.id === primaryId); expect(mapping?.draft).toBe(true); expect(mapping?.suggestions).toEqual([]); expect(mapping?.todo.length).toBeGreaterThan(0);
     }
+  });
+
+  it("recognizes later qualified-human COPD citation review without preserving unsupported directional pathway labels", () => {
+    const mapping = loadKnowledgeBase().find((entry) => entry.id === "copd");
+    const osa = mapping?.suggestions.find((entry) => entry.conditionId === "sleep-apnea");
+    expect(mapping?.draft).toBe(false);
+    expect(osa?.sourceReferences[0]?.sourceUrl).toContain("36672523");
+    expect(osa?.sourceReferences[0]?.verified).toBe(true);
+    expect(osa?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
+    expect(osa?.pathwayIntelligence).toBeUndefined();
+    expect(osa?.rationale).toMatch(/coexist|overlap/i);
+    expect(osa?.rationale).toMatch(/does not by itself establish.*caused or aggravated/i);
   });
 
   it("recognizes the Batch 11 ILD repair without inferring causation or preserving arrhythmia", () => {

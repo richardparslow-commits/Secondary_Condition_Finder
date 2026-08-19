@@ -9,7 +9,9 @@
       "prevalence": "commonly-explored",
       "rationale": "Hypertension is a common cardiovascular manifestation of clinically established Cushing's syndrome/hypercortisolism. A European Society of Hypertension endocrine-hypertension consensus describes glucocorticoid excess as the biological basis for the cardiovascular damage of endogenous or exogenous Cushing's syndrome and notes that hypertension may persist even after hormone excess is normalized or steroid therapy is discontinued. This supports a direct-secondary research pathway when the Cushing/hypercortisolism diagnosis and blood-pressure chronology are documented, but other primary and secondary causes of hypertension must still be reviewed.",
       "pathwayIntelligence": {
-        "pathways": ["direct-secondary"],
+        "pathways": [
+          "direct-secondary"
+        ],
         "causalChain": "Established endogenous or exogenous Cushing's syndrome with clinically significant glucocorticoid excess → cortisol-mediated cardiovascular and renal blood-pressure effects → hypertension, which may persist after hypercortisolism is corrected.",
         "developmentQuestions": [
           "How was Cushing's syndrome or clinically significant hypercortisolism established, and what was the source of glucocorticoid excess?",
@@ -36,8 +38,8 @@
           "note": "Endocrine-hypertension consensus states that hypertension is common in Cushing's syndrome and may persist after normalization of hormone excess or steroid withdrawal; supports a disease-specific endocrine hypertension pathway with individual diagnosis and chronology safeguards.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35950979/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 35950979; abstract: endogenous/exogenous Cushing's syndrome reflects glucocorticoid excess, hypertension is a common feature, and hypertension may persist after normalization of hormone excess or discontinuation of steroid therapy"
         }
       ]

@@ -71,7 +71,8 @@ describe("clinical evidence promotion batch 8", () => {
     expect(suggestion?.rationale).toMatch(/persist/i);
     expect(source?.sourceUrl).toContain("35950979");
     expect(source?.verificationScope).toBe("clinical-evidence");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("physically relocates type 1 diabetes into endocrine maintenance with DC 7913", () => {

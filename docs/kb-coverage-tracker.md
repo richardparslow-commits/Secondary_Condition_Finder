@@ -40,19 +40,19 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-After qualified-human Citation Verification Batches 01 and 02, the current local position is:
+After qualified-human Citation Verification Batches 01 through 03, the current local position is:
 
 - live references: **69**;
-- live verified: **18**;
+- live verified: **23**;
 - retired verified: **6**;
-- verified provenance: **24**;
-- live unverified: **51**;
-- published-unverified review findings: **49**;
+- verified provenance: **29**;
+- live unverified: **46**;
+- published-unverified review findings: **44**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 01 reduced live-unverified debt from `61` to `56` and published-review debt from `59` to `54`. Batch 02 reduces those values again to `51` and `49`, respectively, without changing the 69-reference denominator. Batch 02 also narrows the asthma→OSA and cauda-equina-syndrome→erectile-dysfunction propositions to match the reviewed source populations and uncertainty before recording qualified-human verification. Automated source checking still cannot authorize verification; the human decisions are documented in `docs/citation-verification-batch-01.md` and `docs/citation-verification-batch-02.md`.
+Batch 03 reduces live-unverified debt from `51` to `46` and published-review debt from `49` to `44` without changing the 69-reference denominator. Four sources were verified as written. The COPD→OSA mapping was narrowed before verification by removing unsupported `direct-secondary` and `aggravation` pathway labels while retaining its cautious overlap/coexistence rationale. Automated source checking still cannot authorize verification; the human decisions are documented in the three citation-verification batch records.
 
 ## Safety rule for safe drafts
 

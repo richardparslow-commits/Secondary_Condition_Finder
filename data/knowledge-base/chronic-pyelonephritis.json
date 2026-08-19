@@ -36,8 +36,8 @@
           "note": "Condition-specific adult cohort of 255 patients with radiologically proven chronic pyelonephritis showing the importance of baseline renal function and associated bilateral disease, proteinuria, and hypertension in prognosis; supports cautious renal-progression review rather than an automatic CKD nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11110586/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 11110586; abstract; 255 radiologically proven cases with median follow-up about 95 months"
         }
       ]

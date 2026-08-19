@@ -40,23 +40,23 @@ Key negative-modeling protections include rejecting CTS/median-neuropathy taxono
 
 ## Citation position
 
-After qualified-human Citation Verification Batches 01 and 02, the current local position is:
+After qualified-human Citation Verification Batches 01 through 03, the current local position is:
 
 - live references: **69**;
-- live verified: **18**;
+- live verified: **23**;
 - retired verified: **6**;
-- verified provenance: **24**;
-- live unverified: **51**;
-- published-unverified review findings: **49**;
+- verified provenance: **29**;
+- live unverified: **46**;
+- published-unverified review findings: **44**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 01 lowered the debt ratchet from 61/59 to 56/54. Batch 02 lowers it again to 51/49 while preserving 69 total live references and zero hard findings.
+Batch 03 lowers the debt ratchet from 51/49 to 46/44 while preserving 69 total live references and zero hard findings. COPD→OSA remains published as an overlap/coexistence research relationship, but its unsupported direct-secondary/aggravation pathway labels have been removed.
 
 ## Human citation verification
 
-Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 and 02 record explicit qualified-human approval for ten sources; the remaining 51 live unverified references, including the two Batch-31 source rows unless separately reviewed later, remain `verified: false`.
+Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 03 record explicit qualified-human approval for fifteen sources; the remaining 46 live unverified references remain `verified: false` until separately reviewed.
 
 ## External/manual gates
 

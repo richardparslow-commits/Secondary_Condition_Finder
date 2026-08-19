@@ -21,8 +21,8 @@
           "note": "Systematic review/meta-analysis of 14 observational studies (30,509 participants) found 20% OSA prevalence among CRS patients and modestly elevated OSA risk (OR 1.14, 95% CI 1.08-1.20); MR supported a CRS-to-OSA directional signal. Repository wording remains association-focused for individual claim research.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41969980/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 41969980; abstract Methods/Results/Conclusion: 14 studies, 30,509 participants; OSA prevalence 20% in CRS, observational OR 1.14 and MR IVW OR 1.11"
         }
       ]

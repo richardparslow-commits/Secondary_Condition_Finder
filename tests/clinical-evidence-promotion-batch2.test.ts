@@ -58,9 +58,9 @@ describe("clinical evidence promotion batch 2", () => {
     const reference = mapping?.suggestions[0]?.sourceReferences[0];
     expect(reference?.verificationScope).toBe("clinical-evidence");
     expect(reference?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/11110586/");
-    expect(reference?.sourceCheckedOn).toBe("2026-08-14");
+    expect(reference?.sourceCheckedOn).toBe("2026-08-18");
     expect(reference?.sourceLocator).toMatch(/11110586|255 radiologically proven/i);
-    expect(reference?.verified).toBe(false);
+    expect(reference?.verified).toBe(true);
   });
 
   it("withdraws unsafe knee and osteoarthritis legacy suggestions", () => {
@@ -85,13 +85,13 @@ describe("clinical evidence promotion batch 2", () => {
     expect(diabeticRetinopathy?.ratingSchedule[0]?.note).toMatch(/6040/i);
   });
 
-  it("does not automate qualified-human citation verification", () => {
-    for (const id of ["hypertensive-heart-disease", "chronic-pyelonephritis"] as const) {
-      const mapping = mappingById.get(id);
-      for (const suggestion of mapping?.suggestions ?? []) {
-        expect(suggestion.sourceReferences.every((reference) => reference.verified === false)).toBe(true);
-        expect(suggestion.sourceReferences.every((reference) => reference.sourceCheckedOn === "2026-08-14")).toBe(true);
-      }
-    }
+  it("distinguishes later qualified-human chronic-pyelonephritis verification from still-unverified hypertensive-heart-disease evidence", () => {
+    const hypertensiveHeart = mappingById.get("hypertensive-heart-disease")?.suggestions[0]?.sourceReferences[0];
+    expect(hypertensiveHeart?.verified).toBe(false);
+    expect(hypertensiveHeart?.sourceCheckedOn).toBe("2026-08-14");
+
+    const pyelonephritis = mappingById.get("chronic-pyelonephritis")?.suggestions[0]?.sourceReferences[0];
+    expect(pyelonephritis?.verified).toBe(true);
+    expect(pyelonephritis?.sourceCheckedOn).toBe("2026-08-18");
   });
 });
