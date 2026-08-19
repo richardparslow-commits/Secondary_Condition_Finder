@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Longitudinal register evidence supports temporal risk only; no direct-secondary/aggravation pathwayIntelligence.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31203833/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 31203833; PubMed title/abstract retrieved in the master research harvest; guard: Require narcolepsy diagnosis preceding first-onset depressive disorder; separately establish depression and consider sleep disruption, medication effects, psychosocial burden, and other psychiatric disease."
         }

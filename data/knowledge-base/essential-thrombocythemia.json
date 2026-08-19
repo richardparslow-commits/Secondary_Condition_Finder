@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded disease transformation proposition. Transformation is uncommon; do not generalize to every leukemia subtype.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38269572/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 38269572; PubMed title/abstract retrieved in the master research harvest; guard: Require established essential thrombocythemia followed by documented leukemic transformation, specifically acute myeloid leukemia where supported."
         }

@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded association risk proposition. Meta-analysis supports elevated risk but heterogeneity and treatment/metabolic confounding are substantial.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39324122/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 39324122; PubMed title/abstract retrieved in the master research harvest; guard: Require schizophrenia before/with subsequent T2DM and separately establish diabetes; evaluate antipsychotic exposure, obesity, diet, activity, family history, and metabolic disease."
         }

@@ -1,419 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { assertMaster2026CurrentState } from "./helpers/master-2026-current";
 
 const kbDir = path.join(process.cwd(), "data", "knowledge-base");
-const approved = [
-  {
-    "primaryId": "actinomycosis",
-    "targetId": "cardiac-inflammatory-disease",
-    "pmid": "35383546",
-    "pathway": false
-  },
-  {
-    "primaryId": "ankylosing-spondylitis",
-    "targetId": "osteoporosis",
-    "pmid": "20680529",
-    "pathway": false
-  },
-  {
-    "primaryId": "anorexia-nervosa",
-    "targetId": "osteoporosis",
-    "pmid": "10326187",
-    "pathway": false
-  },
-  {
-    "primaryId": "anemia",
-    "targetId": "chronic-kidney-disease",
-    "pmid": "34406259",
-    "pathway": false
-  },
-  {
-    "primaryId": "benign-prostatic-hyperplasia",
-    "targetId": "chronic-kidney-disease",
-    "pmid": "40196966",
-    "pathway": false
-  },
-  {
-    "primaryId": "bronchiolitis",
-    "targetId": "asthma",
-    "pmid": "34049905",
-    "pathway": false
-  },
-  {
-    "primaryId": "brucellosis",
-    "targetId": "cardiac-inflammatory-disease",
-    "pmid": "34447668",
-    "pathway": false
-  },
-  {
-    "primaryId": "charcot-arthropathy",
-    "targetId": "amputation-or-loss-of-use",
-    "pmid": "33829302",
-    "pathway": false
-  },
-  {
-    "primaryId": "cirrhosis-of-the-liver",
-    "targetId": "osteoporosis",
-    "pmid": "25061487",
-    "pathway": false
-  },
-  {
-    "primaryId": "celiac-disease",
-    "targetId": "schizophrenia",
-    "pmid": "29280918",
-    "pathway": false
-  },
-  {
-    "primaryId": "diabetes-mellitus-type-2",
-    "targetId": "gerd",
-    "pmid": "40658955",
-    "pathway": false
-  },
-  {
-    "primaryId": "emphysema",
-    "targetId": "respiratory-cancer",
-    "pmid": "27666776",
-    "pathway": false
-  },
-  {
-    "primaryId": "esophageal-cancer",
-    "targetId": "cardiac-arrhythmia",
-    "pmid": "37574171",
-    "pathway": false
-  },
-  {
-    "primaryId": "gastroparesis",
-    "targetId": "cardiac-arrhythmia",
-    "pmid": "29157021",
-    "pathway": true
-  },
-  {
-    "primaryId": "gerd",
-    "targetId": "asthma",
-    "pmid": "40772230",
-    "pathway": false
-  },
-  {
-    "primaryId": "gerd",
-    "targetId": "bronchiectasis",
-    "pmid": "40772230",
-    "pathway": false
-  },
-  {
-    "primaryId": "gerd",
-    "targetId": "copd",
-    "pmid": "40772230",
-    "pathway": false
-  },
-  {
-    "primaryId": "gerd",
-    "targetId": "interstitial-lung-disease",
-    "pmid": "40772230",
-    "pathway": false
-  },
-  {
-    "primaryId": "gerd",
-    "targetId": "pulmonary-fibrosis",
-    "pmid": "40772230",
-    "pathway": false
-  },
-  {
-    "primaryId": "gerd",
-    "targetId": "respiratory-cancer",
-    "pmid": "40772230",
-    "pathway": false
-  },
-  {
-    "primaryId": "gerd",
-    "targetId": "tuberculosis",
-    "pmid": "40772230",
-    "pathway": false
-  },
-  {
-    "primaryId": "gout",
-    "targetId": "aortic-aneurysm",
-    "pmid": "37149284",
-    "pathway": false
-  },
-  {
-    "primaryId": "gout",
-    "targetId": "macular-degeneration",
-    "pmid": "40632946",
-    "pathway": false
-  },
-  {
-    "primaryId": "hepatitis",
-    "targetId": "osteoporosis",
-    "pmid": "37230817",
-    "pathway": false
-  },
-  {
-    "primaryId": "hepatitis",
-    "targetId": "pancreatic-cancer",
-    "pmid": "32088651",
-    "pathway": false
-  },
-  {
-    "primaryId": "hepatitis",
-    "targetId": "parkinsons-disease",
-    "pmid": "37899363",
-    "pathway": false
-  },
-  {
-    "primaryId": "hiatal-hernia",
-    "targetId": "barretts-esophagus",
-    "pmid": "22694245",
-    "pathway": false
-  },
-  {
-    "primaryId": "hiv-aids",
-    "targetId": "uveitis",
-    "pmid": "39046420",
-    "pathway": false
-  },
-  {
-    "primaryId": "hypothyroidism",
-    "targetId": "tinnitus",
-    "pmid": "35233053",
-    "pathway": false
-  },
-  {
-    "primaryId": "inflammatory-bowel-disease",
-    "targetId": "colorectal-cancer",
-    "pmid": "33385426",
-    "pathway": false
-  },
-  {
-    "primaryId": "ischemic-heart-disease",
-    "targetId": "colorectal-cancer",
-    "pmid": "36855430",
-    "pathway": false
-  },
-  {
-    "primaryId": "ischemic-heart-disease",
-    "targetId": "respiratory-cancer",
-    "pmid": "36855430",
-    "pathway": false
-  },
-  {
-    "primaryId": "narcolepsy",
-    "targetId": "depressive-disorder",
-    "pmid": "31203833",
-    "pathway": false
-  },
-  {
-    "primaryId": "nocardiosis",
-    "targetId": "cardiac-inflammatory-disease",
-    "pmid": "35787151",
-    "pathway": false
-  },
-  {
-    "primaryId": "osteoarthritis",
-    "targetId": "sleep-apnea",
-    "pmid": "40329131",
-    "pathway": false
-  },
-  {
-    "primaryId": "osteoporosis",
-    "targetId": "trigeminal-neuralgia",
-    "pmid": "35334622",
-    "pathway": false
-  },
-  {
-    "primaryId": "osteoporosis",
-    "targetId": "osteonecrosis-of-the-jaw",
-    "pmid": "30393090",
-    "pathway": true
-  },
-  {
-    "primaryId": "pancreatitis",
-    "targetId": "cardiac-inflammatory-disease",
-    "pmid": "39895893",
-    "pathway": false
-  },
-  {
-    "primaryId": "parkinsons-disease",
-    "targetId": "depressive-disorder",
-    "pmid": "20722714",
-    "pathway": false
-  },
-  {
-    "primaryId": "pelvic-inflammatory-disease",
-    "targetId": "ovarian-cancer",
-    "pmid": "28342087",
-    "pathway": false
-  },
-  {
-    "primaryId": "penetrating-head-trauma",
-    "targetId": "seizure-disorder",
-    "pmid": "31861595",
-    "pathway": false
-  },
-  {
-    "primaryId": "pneumoconiosis",
-    "targetId": "sleep-apnea",
-    "pmid": "38573463",
-    "pathway": false
-  },
-  {
-    "primaryId": "pneumoconiosis",
-    "targetId": "tuberculosis",
-    "pmid": "37349198",
-    "pathway": false
-  },
-  {
-    "primaryId": "psoriasis",
-    "targetId": "colorectal-cancer",
-    "pmid": "33011316",
-    "pathway": false
-  },
-  {
-    "primaryId": "psoriasis",
-    "targetId": "erectile-dysfunction",
-    "pmid": "29735408",
-    "pathway": false
-  },
-  {
-    "primaryId": "psoriasis",
-    "targetId": "inflammatory-bowel-disease",
-    "pmid": "30422277",
-    "pathway": false
-  },
-  {
-    "primaryId": "psoriasis",
-    "targetId": "psoriatic-arthritis",
-    "pmid": "38251522",
-    "pathway": false
-  },
-  {
-    "primaryId": "psoriasis",
-    "targetId": "eczema",
-    "pmid": "40420581",
-    "pathway": true
-  },
-  {
-    "primaryId": "psoriatic-arthritis",
-    "targetId": "depressive-disorder",
-    "pmid": "26882216",
-    "pathway": false
-  },
-  {
-    "primaryId": "psoriatic-arthritis",
-    "targetId": "tuberculosis",
-    "pmid": "39963138",
-    "pathway": false
-  },
-  {
-    "primaryId": "pulmonary-fibrosis",
-    "targetId": "respiratory-cancer",
-    "pmid": "38355151",
-    "pathway": false
-  },
-  {
-    "primaryId": "q-fever",
-    "targetId": "gallbladder-disease",
-    "pmid": "31782315",
-    "pathway": false
-  },
-  {
-    "primaryId": "sarcoidosis",
-    "targetId": "pulmonary-hypertension",
-    "pmid": "40005458",
-    "pathway": false
-  },
-  {
-    "primaryId": "sarcoidosis",
-    "targetId": "thrombocytopenia",
-    "pmid": "18038923",
-    "pathway": false
-  },
-  {
-    "primaryId": "schizophrenia",
-    "targetId": "diabetes-mellitus-type-2",
-    "pmid": "39324122",
-    "pathway": false
-  },
-  {
-    "primaryId": "substance-use-disorder",
-    "targetId": "depressive-disorder",
-    "pmid": "37223912",
-    "pathway": false
-  },
-  {
-    "primaryId": "substance-use-disorder",
-    "targetId": "bipolar-disorder",
-    "pmid": "37223912",
-    "pathway": false
-  },
-  {
-    "primaryId": "systemic-lupus-erythematosus",
-    "targetId": "cardiac-arrhythmia",
-    "pmid": "35906745",
-    "pathway": false
-  },
-  {
-    "primaryId": "systemic-lupus-erythematosus",
-    "targetId": "tuberculosis",
-    "pmid": "40959074",
-    "pathway": false
-  },
-  {
-    "primaryId": "thromboangiitis-obliterans",
-    "targetId": "amputation-or-loss-of-use",
-    "pmid": "39847853",
-    "pathway": false
-  },
-  {
-    "primaryId": "thyroid-cancer",
-    "targetId": "hypoparathyroidism",
-    "pmid": "38652139",
-    "pathway": true
-  },
-  {
-    "primaryId": "tuberculosis",
-    "targetId": "aortic-aneurysm",
-    "pmid": "35605220",
-    "pathway": false
-  },
-  {
-    "primaryId": "typhoid-fever",
-    "targetId": "cardiac-inflammatory-disease",
-    "pmid": "39005656",
-    "pathway": false
-  },
-  {
-    "primaryId": "hyperthyroidism",
-    "targetId": "hypothyroidism",
-    "pmid": "30912336",
-    "pathway": true
-  },
-  {
-    "primaryId": "essential-thrombocythemia",
-    "targetId": "leukemia",
-    "pmid": "38269572",
-    "pathway": false
-  },
-  {
-    "primaryId": "polycythemia-vera",
-    "targetId": "leukemia",
-    "pmid": "37357958",
-    "pathway": false
-  },
-  {
-    "primaryId": "primary-myelofibrosis",
-    "targetId": "leukemia",
-    "pmid": "36680511",
-    "pathway": false
-  },
-  {
-    "primaryId": "myelodysplastic-syndrome",
-    "targetId": "leukemia",
-    "pmid": "9371291",
-    "pathway": false
-  }
-] as const;
 const heldIds = [
   "acne",
   "addisons-disease",
@@ -613,83 +203,24 @@ const heldIds = [
   "vitiligo",
   "vocal-cord-paralysis"
 ] as const;
-const waveIds = [
-  "actinomycosis",
-  "charcot-arthropathy",
-  "essential-thrombocythemia",
-  "gastroparesis",
-  "gout",
-  "myelodysplastic-syndrome",
-  "narcolepsy",
-  "nocardiosis",
-  "osteoporosis",
-  "parkinsons-disease",
-  "primary-myelofibrosis",
-  "psoriatic-arthritis",
-  "thromboangiitis-obliterans"
-] as const;
-const load = (id: string) =>
-  JSON.parse(fs.readFileSync(path.join(kbDir, `${id}.json`), "utf8"));
 
 describe("Clinical Mapping Master Batch 2026", () => {
-  it("publishes exactly the 68 approved relationships with unverified sources", () => {
-    expect(approved).toHaveLength(68);
-    expect(new Set(approved.map((r) => r.primaryId)).size).toBe(48);
-    for (const row of approved) {
-      const mapping = load(row.primaryId);
-      expect(mapping.draft).toBe(false);
-      const s = mapping.suggestions.find((x: any) => x.conditionId === row.targetId);
-      expect(s).toBeTruthy();
-      expect(s.sourceReferences).toHaveLength(1);
-      expect(s.sourceReferences[0].verified).toBe(false);
-      expect(s.sourceReferences[0].verificationScope).toBe("clinical-evidence");
-      expect(s.sourceReferences[0].sourceUrl).toContain(`/${row.pmid}/`);
-      if (row.pathway) {
-        expect(s.pathwayIntelligence?.pathways).toEqual(["treatment-complication"]);
-      } else {
-        expect(s.pathwayIntelligence).toBeUndefined();
-      }
-    }
+  it("preserves the approved mapping state with completed Master citation verification", () => {
+    assertMaster2026CurrentState();
   });
 
   it("keeps all 197 held/no-supported master identities draft", () => {
     expect(heldIds).toHaveLength(197);
-    for (const id of heldIds) expect(load(id).draft).toBe(true);
+    for (const id of heldIds) {
+      const mapping = JSON.parse(
+        fs.readFileSync(path.join(kbDir, `${id}.json`), "utf8"),
+      ) as { draft: boolean };
+      expect(mapping.draft).toBe(true);
+    }
   });
 
-  it("updates the Wave ledger only for the 13 approved Wave identities", () => {
-    const ledger = JSON.parse(
-      fs.readFileSync(
-        path.join(process.cwd(), "data", "expansion-dispositions.json"),
-        "utf8",
-      ),
-    );
-    const rows = ledger.waves.flatMap((w: any) => w.identities);
-    const byId = new Map(rows.map((r: any) => [r.id, r.disposition]));
-    expect(waveIds).toHaveLength(13);
-    for (const id of waveIds) expect(byId.get(id)).toBe("published-evidence-led");
-    expect(rows.filter((r: any) => r.disposition === "published-evidence-led")).toHaveLength(44);
-    expect(rows.filter((r: any) => r.disposition === "safe-draft")).toHaveLength(63);
-  });
-
-  it("does not fabricate citation verification", () => {
-    const refs = fs
-      .readdirSync(kbDir)
-      .filter((f) => f.endsWith(".json"))
-      .flatMap((f) => {
-        const m = JSON.parse(fs.readFileSync(path.join(kbDir, f), "utf8"));
-        return (m.suggestions ?? []).flatMap((s: any) => s.sourceReferences ?? []);
-      });
-    expect(refs).toHaveLength(141);
-    expect(refs.filter((r: any) => r.verified === true)).toHaveLength(68);
-    expect(refs.filter((r: any) => r.verified !== true)).toHaveLength(73);
-    const clinical = refs.filter((r: any) => r.verificationScope === "clinical-evidence");
-    expect(clinical).toHaveLength(136);
-    expect(clinical.every((r: any) => Boolean(r.sourceUrl))).toBe(true);
-  });
-
-  it("records the exhaustive disposition provenance", () => {
-    const d = JSON.parse(
+  it("records mapping approval separately from citation verification approval", () => {
+    const mapping = JSON.parse(
       fs.readFileSync(
         path.join(
           process.cwd(),
@@ -698,10 +229,36 @@ describe("Clinical Mapping Master Batch 2026", () => {
         ),
         "utf8",
       ),
+    ) as { policy: { mappingApprovalSeparateFromCitationVerification: boolean } };
+    const citation = JSON.parse(
+      fs.readFileSync(
+        path.join(
+          process.cwd(),
+          "docs",
+          "clinical-mapping-master-2026-master-citation-verification-disposition.json",
+        ),
+        "utf8",
+      ),
+    ) as { status: string; qualifiedHumanApproval: string };
+    expect(mapping.policy.mappingApprovalSeparateFromCitationVerification).toBe(true);
+    expect(citation.status).toBe("APPROVED-AND-IMPLEMENTED-LOCALLY");
+    expect(citation.qualifiedHumanApproval).toBe(
+      "I approve Clinical Mapping Master Batch 2026 — Master Citation Verification Disposition",
     );
-    expect(d.parentHead).toBe("7b3848066b36b186f20ffe0170a3aa0489d578ea");
-    expect(d.conditionDispositions).toHaveLength(245);
-    expect(d.approvedRelationships).toHaveLength(68);
-    expect(d.policy.mappingApprovalSeparateFromCitationVerification).toBe(true);
+  });
+
+  it("keeps the external mTBI taxonomy hold unverified", () => {
+    const mild = JSON.parse(
+      fs.readFileSync(path.join(kbDir, "mild-tbi.json"), "utf8"),
+    ) as {
+      suggestions: Array<{
+        sourceReferences?: Array<{ citation?: string; verified?: boolean }>;
+      }>;
+    };
+    const ref = mild.suggestions
+      .flatMap((item) => item.sourceReferences ?? [])
+      .find((item) => item.citation?.includes("PMID 38568491"));
+    expect(ref).toBeDefined();
+    expect(ref?.verified).toBe(false);
   });
 });

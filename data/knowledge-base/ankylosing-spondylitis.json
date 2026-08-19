@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded disease complication proposition. Osteoporosis is a recognized complication, but individual bone loss is multifactorial; do not assume every AS patient develops osteoporosis.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20680529/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 20680529; PubMed title/abstract retrieved in the master research harvest; guard: Require established ankylosing spondylitis and independently documented osteoporosis/low bone density consistent with the source phenotype."
         }

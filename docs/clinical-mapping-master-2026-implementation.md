@@ -91,3 +91,17 @@
 - live clinical references with URLs: **136**
 
 The higher unverified/review ceiling records the approved mapping queue; it does not confer source verification.
+
+<!-- CLINICAL-MAPPING-MASTER-2026-CITATION-VERIFICATION:START -->
+## Master Citation Verification — approved implementation
+
+- Approval: **I approve Clinical Mapping Master Batch 2026 — Master Citation Verification Disposition**
+- **68/68** Master relationship source rows verified.
+- **55** verified as written.
+- **8** verified only after approved proposition narrowing.
+- **5** source rows replaced one-for-one with stronger proposition-matched PubMed sources, then verified.
+- Final Master source set: **60 unique PMIDs**.
+- Global post-state: **136 live verified / 5 unverified / 5 review / 0 hard**.
+- Existing retired-verified provenance remains **6** because the five superseded Master sources were never verified.
+- No individual medical nexus is inferred from citation verification.
+<!-- CLINICAL-MAPPING-MASTER-2026-CITATION-VERIFICATION:END -->

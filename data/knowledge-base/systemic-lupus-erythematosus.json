@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Meta-analysis supports incident AF association with substantial heterogeneity; no individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35906745/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 35906745; PubMed title/abstract retrieved in the master research harvest; guard: Require SLE and separately established incident atrial fibrillation; do not generalize the source to every arrhythmia phenotype."
         }
@@ -43,7 +43,7 @@
           "note": "Master-disposition clinical evidence for the bounded treatment associated risk proposition. Treatment/immunosuppression-associated pathway; SLE alone should not be represented as a sufficient cause.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40959074/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40959074; PubMed title/abstract retrieved in the master research harvest; guard: Require SLE plus corticosteroid/immunosuppressive treatment and documented TB infection/reactivation/disease; evaluate epidemiologic exposure and baseline latent TB status."
         }

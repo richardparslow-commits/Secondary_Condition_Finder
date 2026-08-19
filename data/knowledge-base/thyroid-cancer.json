@@ -38,7 +38,7 @@
           "note": "Master-disposition clinical evidence for the bounded treatment complication proposition. Post-thyroidectomy treatment complication; thyroid cancer itself is not the direct exposure.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38652139/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 38652139; PubMed title/abstract retrieved in the master research harvest; guard: Require thyroid cancer treated with thyroidectomy (and relevant neck dissection where applicable) followed by transient or permanent hypoparathyroidism."
         }

@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Population-based cohort association; no causal or aggravation inference.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37149284/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 37149284; PubMed title/abstract retrieved in the master research harvest; guard: Require gout before incident abdominal aortic aneurysm and separately established AAA; assess smoking, age, hypertension, atherosclerosis, and other aneurysm risks."
         }
@@ -43,7 +43,7 @@
           "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Retrospective cohort association only; no individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40632946/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40632946; PubMed title/abstract retrieved in the master research harvest; guard: Require gout before incident age-related macular degeneration and separately established AMD; account for age, smoking, cardiovascular/metabolic factors, and treatment."
         }

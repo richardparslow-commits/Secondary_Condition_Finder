@@ -5,8 +5,11 @@
 - Published mappings: **103**.
 - Remaining explicit drafts/holds: **197**.
 - Approved master edges: **68 across 48 primaries**.
+- Master relationship source verification: **68/68 complete**.
+- Master verification disposition: **55 as-written / 8 narrowed / 5 replacement**.
 - Wave-ledger promotions: **13**.
-- Exhaustive disposition artifact: `docs/clinical-mapping-master-2026-approved-disposition.json`.
+- Mapping disposition artifact: `docs/clinical-mapping-master-2026-approved-disposition.json`.
+- Citation verification artifact: `docs/clinical-mapping-master-2026-master-citation-verification-disposition.json`.
 <!-- CLINICAL-MAPPING-MASTER-2026:END -->
 
 # Knowledge Base Coverage & Clinical Evidence Tracker

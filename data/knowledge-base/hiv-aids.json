@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded treatment associated risk proposition. Treatment/immune-reconstitution phenotype; do not generalize to all uveitis in HIV.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39046420/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 39046420; PubMed title/abstract retrieved in the master research harvest; guard: Require HIV/AIDS, antiretroviral immune recovery, and separately diagnosed immune-recovery uveitis; document relevant ocular history such as CMV retinitis when present."
         }

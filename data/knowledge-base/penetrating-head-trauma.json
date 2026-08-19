@@ -7,7 +7,7 @@
       "conditionId": "seizure-disorder",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply only to recurrent post-traumatic epilepsy/seizure disorder after documented penetrating/severe traumatic brain injury; do not map a single provoked seizure. Source supports post-traumatic epilepsy as a recurrent seizure disorder and risk increases with injury severity; individual attribution still requires clinical assessment. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply only to recurrent post-traumatic epilepsy/seizure disorder after documented penetrating traumatic brain injury; do not map a single provoked seizure. Human longitudinal combat-head-injury evidence supports persistent post-traumatic epilepsy risk decades after mostly penetrating injuries; individual attribution still requires clinical assessment. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation that Penetrating Head Trauma matches the source-specific phenotype or population",
         "Independent diagnosis of Seizure Disorder / Epilepsy with compatible chronology",
@@ -16,13 +16,13 @@
       ],
       "sourceReferences": [
         {
-          "citation": "Animal Models of Post-Traumatic Epilepsy. Diagnostics (Basel, Switzerland). 2019. doi:10.3390/diagnostics10010004. PMID 31861595",
-          "note": "Master-disposition clinical evidence for the bounded phenotype specific temporal risk proposition. Source supports post-traumatic epilepsy as a recurrent seizure disorder and risk increases with injury severity; individual attribution still requires clinical assessment.",
+          "citation": "Correlates of posttraumatic epilepsy 35 years following combat brain injury. Neurology. 2010;75(3):224-229. doi:10.1212/WNL.0b013e3181e8e6d0. PMID 20644150",
+          "note": "Qualified-human-approved one-for-one replacement clinical evidence for the bounded phenotype specific temporal risk proposition. Human longitudinal combat-head-injury evidence supports persistent post-traumatic epilepsy risk decades after mostly penetrating injuries; individual attribution still requires clinical assessment.",
           "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31861595/",
-          "verified": false,
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20644150/",
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 31861595; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to recurrent post-traumatic epilepsy/seizure disorder after documented penetrating/severe traumatic brain injury; do not map a single provoked seizure."
+          "sourceLocator": "PMID 20644150; replacement source independently confirmed in PubMed before repository edits; guard: Apply only to recurrent post-traumatic epilepsy/seizure disorder after documented penetrating traumatic brain injury; do not map a single provoked seizure.; supersedes unverified PMID 31861595."
         }
       ]
     }

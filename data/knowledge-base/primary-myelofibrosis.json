@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded disease transformation proposition. Source supports leukemic progression risk; do not generalize to unrelated leukemia types.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36680511/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 36680511; PubMed title/abstract retrieved in the master research harvest; guard: Require established primary myelofibrosis followed by documented blast/leukemic transformation, specifically AML-compatible disease."
         }

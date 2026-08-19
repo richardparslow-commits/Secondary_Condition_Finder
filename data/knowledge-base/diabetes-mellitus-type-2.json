@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded treatment associated risk proposition. Active-comparator cohort evidence concerns GLP-1 RA treatment; do not generalize to untreated T2DM.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40658955/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40658955; PubMed title/abstract retrieved in the master research harvest; guard: Require type 2 diabetes plus documented GLP-1 receptor agonist exposure preceding GERD/GERD complications; model as a treatment-associated pathway, not diabetes itself."
         }

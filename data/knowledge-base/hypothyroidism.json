@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Retrospective longitudinal association only; no causal pathway metadata.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35233053/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 35233053; PubMed title/abstract retrieved in the master research harvest; guard: Require hypothyroidism before incident tinnitus and separately documented tinnitus; consider hearing loss, noise exposure, vestibular disease, medication, and vascular causes."
         }

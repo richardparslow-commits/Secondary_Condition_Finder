@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded rare infection complication proposition. Systematic review is case reports/case series; this is a rare complication, not routine typhoid sequela.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39005656/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 39005656; PubMed title/abstract retrieved in the master research harvest; guard: Require documented Salmonella Typhi infection and separately diagnosed S. Typhi infective endocarditis."
         }

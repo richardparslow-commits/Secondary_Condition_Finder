@@ -113,7 +113,7 @@ describe("targeted clinical mapping batch 31", () => {
     expect(byId.get("rem-sleep-disorder")?.todo.join(" ")).toMatch(/prodromal|does not.*cause|Parkinson/i);
   });
 
-  it("reflects the current citation debt after qualified-human Batches 1 through 13", () => {
+  it("reflects the current citation debt after Master 2026 citation verification", () => {
     const liveReferences = kb.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
@@ -130,8 +130,8 @@ describe("targeted clinical mapping batch 31", () => {
     );
 
     expect(liveReferences).toHaveLength(141);
-    expect(liveUnverified).toHaveLength(73);
-    expect(publishedUnverified).toHaveLength(73);
+    expect(liveUnverified).toHaveLength(5);
+    expect(publishedUnverified).toHaveLength(5);
     expect(clinicalWithUrls).toHaveLength(136);
   });
 

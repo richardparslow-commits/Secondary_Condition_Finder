@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded rare infection complication proposition. Evidence is a systematic review of rare reported Actinomyces endocarditis cases; frequency and individual attribution are uncertain.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35383546/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 35383546; PubMed title/abstract retrieved in the master research harvest; guard: Require documented Actinomyces infection and separately diagnosed infective endocarditis attributable to Actinomyces; do not infer cardiac disease from actinomycosis alone."
         }

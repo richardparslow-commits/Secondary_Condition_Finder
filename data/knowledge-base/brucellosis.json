@@ -7,7 +7,7 @@
       "conditionId": "cardiac-inflammatory-disease",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as rare infection complication. Require documented Brucella infection and separately confirmed Brucella infective endocarditis; strongest source phenotype is prosthetic-valve endocarditis. Rare case-report/case-series evidence; do not infer endocarditis from uncomplicated brucellosis. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as rare infection complication. Require documented Brucella infection, a prosthetic cardiac valve, and separately confirmed Brucella prosthetic-valve infective endocarditis. Systematic review is specific to prosthetic-valve Brucella endocarditis and rare reported cases; do not generalize to native-valve disease or uncomplicated brucellosis. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Brucellosis and Pericarditis / Endocarditis / Myocarditis",
         "Chronology compatible with the bounded source proposition",
@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Brucella Prosthetic Valve Endocarditis: A Systematic Review. Journal of the Saudi Heart Association. 2021. doi:10.37616/2212-5043.1257. PMID 34447668",
-          "note": "Master-disposition clinical evidence for the bounded rare infection complication proposition. Rare case-report/case-series evidence; do not infer endocarditis from uncomplicated brucellosis.",
+          "note": "Qualified-human-approved Master Citation Verification evidence for the narrowed rare infection complication proposition. Systematic review is specific to prosthetic-valve Brucella endocarditis and rare reported cases; do not generalize to native-valve disease or uncomplicated brucellosis.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34447668/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 34447668; PubMed title/abstract retrieved in the master research harvest; guard: Require documented Brucella infection and separately confirmed Brucella infective endocarditis; strongest source phenotype is prosthetic-valve endocarditis."
+          "sourceLocator": "PMID 34447668; PubMed identity/abstract confirmed; qualified-human-approved narrowed guard: Require documented Brucella infection, a prosthetic cardiac valve, and separately confirmed Brucella prosthetic-valve infective endocarditis."
         }
       ]
     }

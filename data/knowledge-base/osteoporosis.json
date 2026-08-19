@@ -7,7 +7,7 @@
       "conditionId": "trigeminal-neuralgia",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require osteoporosis before incident trigeminal neuralgia and separately established TN; evaluate neurologic, dental, vascular, and other causes. Observational temporal association only; no individual causal claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require osteoporosis in a source-relevant older-adult population (>50 years in the cited cohort) before incident, separately established trigeminal neuralgia. Observational Taiwanese cohort in adults >50 years; temporal association only, with uncertain generalizability outside the studied population and no individual causal claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Osteoporosis, Residuals of and Trigeminal Neuralgia (Tic Douloureux)",
         "Chronology compatible with the bounded source proposition",
@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "The Risk of Trigeminal Neuralgia Following Osteoporosis. Medicina (Kaunas, Lithuania). 2022. doi:10.3390/medicina58030447. PMID 35334622",
-          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Observational temporal association only; no individual causal claim.",
+          "note": "Qualified-human-approved Master Citation Verification evidence for the narrowed temporal association risk proposition. Observational Taiwanese cohort in adults >50 years; temporal association only, with uncertain generalizability outside the studied population and no individual causal claim.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35334622/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 35334622; PubMed title/abstract retrieved in the master research harvest; guard: Require osteoporosis before incident trigeminal neuralgia and separately established TN; evaluate neurologic, dental, vascular, and other causes."
+          "sourceLocator": "PMID 35334622; PubMed identity/abstract confirmed; qualified-human-approved narrowed guard: Require osteoporosis in a source-relevant older-adult population (>50 years in the cited cohort) before incident, separately established trigeminal neuralgia."
         }
       ]
     },
@@ -61,7 +61,7 @@
           "note": "Master-disposition clinical evidence for the bounded treatment complication proposition. Treatment complication, not an effect of osteoporosis itself.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30393090/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 30393090; PubMed title/abstract retrieved in the master research harvest; guard: Require antiresorptive exposure such as bisphosphonate or denosumab for osteoporosis before medication-related osteonecrosis of the jaw; confirm MRONJ diagnostic criteria."
         }

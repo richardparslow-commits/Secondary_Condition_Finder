@@ -38,7 +38,7 @@
           "note": "Master-disposition clinical evidence for the bounded treatment complication proposition. The source is pharmacotherapy/cardiac-safety focused; gastroparesis itself is not established as causing arrhythmia.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29157021/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 29157021; PubMed title/abstract retrieved in the master research harvest; guard: Require gastroparesis treatment with a QT-/conduction-relevant prokinetic or antiemetic and a documented cardiac arrhythmia temporally related to that treatment."
         }

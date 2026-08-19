@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded population specific temporal risk proposition. Pediatric early-life evidence; do not generalize to adult-onset bronchiolitis or claim causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34049905/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 34049905; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to bronchiolitis occurring before age 2 followed by later childhood wheeze/asthma; require separately diagnosed asthma."
         }

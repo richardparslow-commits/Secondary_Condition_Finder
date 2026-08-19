@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded association risk proposition. Observational meta-analysis supports association only.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33011316/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 33011316; PubMed title/abstract retrieved in the master research harvest; guard: Require psoriasis and separately diagnosed colorectal cancer; establish chronology independently and account for smoking, obesity, IBD, treatment, and surveillance."
         }
@@ -43,7 +43,7 @@
           "note": "Master-disposition clinical evidence for the bounded association risk proposition. Association meta-analysis only; no individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29735408/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 29735408; PubMed title/abstract retrieved in the master research harvest; guard: Require psoriasis and separately diagnosed erectile dysfunction; evaluate vascular/metabolic, psychiatric, medication, endocrine, and relationship factors."
         }
@@ -66,7 +66,7 @@
           "note": "Master-disposition clinical evidence for the bounded association risk proposition. Meta-analysis supports association; direction and individual causation are not established by the pooled evidence alone.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30422277/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 30422277; PubMed title/abstract retrieved in the master research harvest; guard: Require psoriasis and separately established Crohn's disease or ulcerative colitis; preserve bidirectional/shared-immune susceptibility and treatment considerations."
         }
@@ -76,7 +76,7 @@
       "conditionId": "psoriatic-arthritis",
       "rank": 4,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established psoriasis followed by clinically confirmed psoriatic arthritis; do not treat generic inflammatory arthritis as automatically equivalent to PsA. Incident inflammatory-arthritis source is not exclusively PsA and evaluates biologic-treatment timing; confirm target phenotype clinically. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established psoriasis followed by clinically confirmed psoriatic arthritis. Systematic review/meta-analysis directly addresses psoriatic-arthritis development and incidence in psoriasis populations; individual prediction remains heterogeneous. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Psoriasis and Psoriatic Arthritis",
         "Chronology compatible with the bounded source proposition",
@@ -85,13 +85,13 @@
       ],
       "sourceReferences": [
         {
-          "citation": "Association between biological immunotherapy for psoriasis and time to incident inflammatory arthritis: a retrospective cohort study. The Lancet. Rheumatology. 2023. doi:10.1016/S2665-9913(23)00034-6. PMID 38251522",
-          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Incident inflammatory-arthritis source is not exclusively PsA and evaluates biologic-treatment timing; confirm target phenotype clinically.",
+          "citation": "Predictors, Risk Factors, and Incidence Rates of Psoriatic Arthritis Development in Psoriasis Patients: A Systematic Literature Review and Meta-Analysis. Rheumatol Ther. 2021;8(4):1519-1534. doi:10.1007/s40744-021-00378-w. PMID 34596875",
+          "note": "Qualified-human-approved one-for-one replacement clinical evidence for the bounded temporal association risk proposition. Systematic review/meta-analysis directly addresses psoriatic-arthritis development and incidence in psoriasis populations; individual prediction remains heterogeneous.",
           "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38251522/",
-          "verified": false,
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34596875/",
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 38251522; PubMed title/abstract retrieved in the master research harvest; guard: Require established psoriasis followed by clinically confirmed psoriatic arthritis; do not treat generic inflammatory arthritis as automatically equivalent to PsA."
+          "sourceLocator": "PMID 34596875; replacement source independently confirmed in PubMed before repository edits; guard: Require established psoriasis followed by clinically confirmed psoriatic arthritis.; supersedes unverified PMID 38251522."
         }
       ]
     },
@@ -99,7 +99,7 @@
       "conditionId": "eczema",
       "rank": 5,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment complication. Require biologic therapy for psoriasis preceding documented paradoxical eczema; model only as treatment complication. Do not infer eczema from psoriasis itself; exposure to the implicated biologic is required. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment complication. Require biologic therapy for psoriasis preceding documented paradoxical eczema; model only as treatment complication. Prospective biologic-registry evidence supports paradoxical eczema during psoriasis biologic treatment; qualifying biologic exposure is required and overall incidence is low. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "pathwayIntelligence": {
         "pathways": [
           "treatment-complication"
@@ -126,13 +126,13 @@
       ],
       "sourceReferences": [
         {
-          "citation": "Paradoxical Eczema Associated With Biologic Therapy in Psoriasis: A Systematic Review and Meta-Analysis. Journal of cutaneous medicine and surgery. 2026. doi:10.1177/12034754251339122. PMID 40420581",
-          "note": "Master-disposition clinical evidence for the bounded treatment complication proposition. Do not infer eczema from psoriasis itself; exposure to the implicated biologic is required.",
+          "citation": "Risk of Paradoxical Eczema in Patients Receiving Biologics for Psoriasis. JAMA Dermatol. 2024;160(1):71-79. doi:10.1001/jamadermatol.2023.4846. PMID 38055239",
+          "note": "Qualified-human-approved one-for-one replacement clinical evidence for the bounded treatment complication proposition. Prospective biologic-registry evidence supports paradoxical eczema during psoriasis biologic treatment; qualifying biologic exposure is required and overall incidence is low.",
           "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40420581/",
-          "verified": false,
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38055239/",
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 40420581; PubMed title/abstract retrieved in the master research harvest; guard: Require biologic therapy for psoriasis preceding documented paradoxical eczema; model only as treatment complication."
+          "sourceLocator": "PMID 38055239; replacement source independently confirmed in PubMed before repository edits; guard: Require biologic therapy for psoriasis preceding documented paradoxical eczema; model only as treatment complication.; supersedes unverified PMID 40420581."
         }
       ]
     }

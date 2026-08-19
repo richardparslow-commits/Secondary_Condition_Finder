@@ -38,7 +38,7 @@
           "note": "Master-disposition clinical evidence for the bounded treatment complication proposition. Definitive-treatment consequence; do not infer hypothyroidism from untreated hyperthyroidism.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30912336/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 30912336; PubMed title/abstract retrieved in the master research harvest; guard: Apply to Graves hyperthyroidism treated with total thyroidectomy or ablative/high-dose radioiodine followed by hypothyroidism requiring replacement."
         }

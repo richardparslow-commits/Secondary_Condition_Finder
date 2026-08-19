@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded rare infection complication proposition. Exceedingly rare manifestation; evidence is review/case literature and individual microbiologic/anatomic attribution is essential.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35605220/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 35605220; PubMed title/abstract retrieved in the master research harvest; guard: Require active/prior tuberculosis and a separately diagnosed tuberculous aortic aneurysm attributable to TB."
         }

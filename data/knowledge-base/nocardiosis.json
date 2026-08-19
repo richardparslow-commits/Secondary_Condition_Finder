@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded rare infection complication proposition. Rare systematic review of reported cases; do not infer endocarditis from nocardiosis alone.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35787151/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 35787151; PubMed title/abstract retrieved in the master research harvest; guard: Require documented Nocardia infection and separately diagnosed Nocardia infective endocarditis."
         }

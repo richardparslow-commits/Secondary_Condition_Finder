@@ -1,15 +1,15 @@
 <!-- CLINICAL-MAPPING-MASTER-2026:START -->
-## Clinical Mapping Master Batch 2026 — local implementation candidate
+## Clinical Mapping Master Batch 2026 — local canonical state
 
-- Parent HEAD: `7b3848066b36b186f20ffe0170a3aa0489d578ea`.
+- Parent mapping commit: `42d95d16d742d6a9e057579c54eac085efbc4a4a`.
 - Exhaustive master review: **245/245** former drafts.
 - Approved publication: **48 primaries / 68 relationship edges**.
 - Overall KB: **103 published / 197 draft** across 300 identities.
 - Wave ledger: **44 published-evidence-led / 0 promotion-candidate / 63 safe-draft**.
-- Citation queue growth: **68 source rows / 60 unique PMIDs**, all `verified:false`.
-- Exactly five approved treatment-complication edges may carry `pathwayIntelligence`; all other new edges omit it.
-- All 197 held/no-supported master files and the external mTBI hold are preserved unchanged.
-- Mapping approval is separate from qualified-human citation verification.
+- Master citation verification: **68/68 relationship source rows verified** after **55 as-written / 8 narrowed / 5 one-for-one replacements**.
+- Final Master citation set: **60 unique PMIDs**.
+- Global citation state: **141 references / 136 live verified / 6 retired verified / 142 verified provenance / 5 unverified / 5 review / 0 hard**.
+- Live clinical URL coverage: **136/136**; combined clinical URL provenance: **140**.
 - Local-only: no push, GitHub write, Vercel deploy/promotion, or Vercel configuration change.
 <!-- CLINICAL-MAPPING-MASTER-2026:END -->
 

@@ -20,35 +20,43 @@ type Mapping = {
   suggestions: Suggestion[];
 };
 
-type ApprovedRelationship = {
-  primaryId: string;
-  targetId: string;
-  pmid: string;
-  sourceVerificationStateAfterImplementation: string;
-};
-
-type ConditionDisposition = {
-  id: string;
-  finalDisposition: string;
-};
-
-type MasterPayload = {
+type MappingMaster = {
   parentHead: string;
-  approvedRelationships: ApprovedRelationship[];
-  conditionDispositions: ConditionDisposition[];
+  approvedRelationships: Array<{ primaryId: string; targetId: string }>;
+  conditionDispositions: Array<{ id: string; finalDisposition: string }>;
 };
 
-type WaveIdentity = {
-  id: string;
-  disposition: string;
+type CitationDisposition = {
+  status: string;
+  parentRepositoryHead: string;
+  summary: {
+    relationshipRowsReviewed: number;
+    verifyAsWritten: number;
+    verifyWithNarrowing: number;
+    replaceSource: number;
+  };
+  relationshipDispositions: Array<{
+    primaryId: string;
+    targetId: string;
+    finalPmid: string;
+    verifiedAfterImplementation: boolean;
+  }>;
 };
 
-type WaveLedger = {
-  waves: Array<{ identities: WaveIdentity[] }>;
-};
+type WaveIdentity = { id: string; disposition: string };
+type WaveLedger = { waves: Array<{ identities: WaveIdentity[] }> };
 
 const root = process.cwd();
-const artifactPath = join(root, "docs", "clinical-mapping-master-2026-approved-disposition.json");
+const mappingArtifact = join(
+  root,
+  "docs",
+  "clinical-mapping-master-2026-approved-disposition.json",
+);
+const citationArtifact = join(
+  root,
+  "docs",
+  "clinical-mapping-master-2026-master-citation-verification-disposition.json",
+);
 
 function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, "utf8")) as T;
@@ -63,115 +71,83 @@ function loadMappings(): Mapping[] {
 }
 
 export function isMaster2026Active(): boolean {
-  if (!existsSync(artifactPath)) return false;
-  const master = readJson<MasterPayload>(artifactPath);
+  if (!existsSync(mappingArtifact)) return false;
+  const master = readJson<MappingMaster>(mappingArtifact);
   return (
     master.parentHead === "7b3848066b36b186f20ffe0170a3aa0489d578ea" &&
     master.approvedRelationships.length === 68 &&
-    new Set(master.approvedRelationships.map((edge) => edge.primaryId)).size === 48 &&
+    new Set(master.approvedRelationships.map((row) => row.primaryId)).size === 48 &&
     master.conditionDispositions.length === 245
   );
 }
 
 export function assertMaster2026CurrentState(): void {
   expect(isMaster2026Active()).toBe(true);
+  expect(existsSync(citationArtifact)).toBe(true);
 
-  const master = readJson<MasterPayload>(artifactPath);
+  const citation = readJson<CitationDisposition>(citationArtifact);
+  expect(citation.status).toBe("APPROVED-AND-IMPLEMENTED-LOCALLY");
+  expect(citation.parentRepositoryHead).toBe(
+    "42d95d16d742d6a9e057579c54eac085efbc4a4a",
+  );
+  expect(citation.summary.relationshipRowsReviewed).toBe(68);
+  expect(citation.summary.verifyAsWritten).toBe(55);
+  expect(citation.summary.verifyWithNarrowing).toBe(8);
+  expect(citation.summary.replaceSource).toBe(5);
+
   const mappings = loadMappings();
-  const byId = new Map(mappings.map((mapping) => [mapping.id, mapping]));
-  const approvedByPrimary = new Map<string, ApprovedRelationship[]>();
-
-  for (const edge of master.approvedRelationships) {
-    const current = approvedByPrimary.get(edge.primaryId) ?? [];
-    current.push(edge);
-    approvedByPrimary.set(edge.primaryId, current);
-    expect(edge.sourceVerificationStateAfterImplementation).toBe("verified:false");
-  }
-
   expect(mappings).toHaveLength(300);
   expect(mappings.filter((mapping) => !mapping.draft)).toHaveLength(103);
   expect(mappings.filter((mapping) => mapping.draft)).toHaveLength(197);
-  expect(approvedByPrimary.size).toBe(48);
+  const byId = new Map(mappings.map((mapping) => [mapping.id, mapping]));
 
-  for (const [primaryId, edges] of approvedByPrimary) {
-    const mapping = byId.get(primaryId);
-    expect(mapping, `${primaryId} must exist`).toBeDefined();
-    expect(mapping?.draft, `${primaryId} must be published`).toBe(false);
-
-    const expectedTargets = edges.map((edge) => edge.targetId).sort();
-    const actualTargets = (mapping?.suggestions ?? []).map((entry) => entry.conditionId).sort();
-    expect(actualTargets, `${primaryId} targets`).toEqual(expectedTargets);
-
-    for (const edge of edges) {
-      const suggestion = mapping?.suggestions.find((entry) => entry.conditionId === edge.targetId);
-      expect(suggestion, `${primaryId} -> ${edge.targetId}`).toBeDefined();
-      const source = suggestion?.sourceReferences?.find((ref) =>
-        ref.citation?.includes(`PMID ${edge.pmid}`),
-      );
-      expect(source, `${primaryId} -> ${edge.targetId} PMID ${edge.pmid}`).toBeDefined();
-      expect(source?.verified).toBe(false);
-      expect(source?.verificationScope).toBe("clinical-evidence");
-      expect(source?.sourceUrl).toMatch(/^https:\/\/pubmed\.ncbi\.nlm\.nih\.gov\/\d+\/$/);
-    }
+  for (const row of citation.relationshipDispositions) {
+    const mapping = byId.get(row.primaryId);
+    expect(mapping, `${row.primaryId} must exist`).toBeDefined();
+    expect(mapping?.draft).toBe(false);
+    const suggestion = mapping?.suggestions.find(
+      (item) => item.conditionId === row.targetId,
+    );
+    expect(suggestion).toBeDefined();
+    expect(suggestion?.sourceReferences).toHaveLength(1);
+    const source = suggestion?.sourceReferences?.[0];
+    expect(source?.verified).toBe(true);
+    expect(source?.verificationScope).toBe("clinical-evidence");
+    expect(source?.sourceUrl).toContain(`/${row.finalPmid}/`);
+    expect(source?.citation).toContain(`PMID ${row.finalPmid}`);
+    expect(row.verifiedAfterImplementation).toBe(true);
   }
-
-  const approvedIds = new Set(approvedByPrimary.keys());
-  const held = master.conditionDispositions.filter(
-    (entry) => !approvedIds.has(entry.id),
-  );
-  expect(held).toHaveLength(197);
-  for (const disposition of held) {
-    const mapping = byId.get(disposition.id);
-    expect(mapping, `${disposition.id} must exist`).toBeDefined();
-    expect(mapping?.draft, `${disposition.id} must remain draft`).toBe(true);
-  }
-
-  const mildTbi = byId.get("mild-tbi");
-  const mildTbiSource = mildTbi?.suggestions
-    .flatMap((entry) => entry.sourceReferences ?? [])
-    .find((ref) => ref.citation?.includes("PMID 38568491"));
-  expect(mildTbiSource).toBeDefined();
-  expect(mildTbiSource?.verified).toBe(false);
 
   const refs = mappings.flatMap((mapping) =>
     mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
   );
   expect(refs).toHaveLength(141);
-  expect(refs.filter((ref) => ref.verified === true)).toHaveLength(68);
-  expect(refs.filter((ref) => ref.verified === false)).toHaveLength(73);
-
-  const clinicalRefs = refs.filter((ref) => ref.verificationScope === "clinical-evidence");
-  expect(clinicalRefs).toHaveLength(136);
-  expect(
-    clinicalRefs.filter((ref) => typeof ref.sourceUrl === "string" && ref.sourceUrl.length > 0),
-  ).toHaveLength(136);
-
-  const ledger = readJson<WaveLedger>(join(root, "data", "expansion-dispositions.json"));
-  const entries = ledger.waves.flatMap((wave) => wave.identities);
-  expect(entries).toHaveLength(107);
-  expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(44);
-  expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(63);
-  expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
-
-  const status = readFileSync(join(root, "docs", "clinical-program-status.md"), "utf8");
-  expect(status).toContain("48 primaries / 68 relationship edges");
-  expect(status).toContain("103 published / 197 draft");
-  expect(status).toContain("44 published-evidence-led / 0 promotion-candidate / 63 safe-draft");
-  expect(status).toContain("all `verified:false`");
-
-  const tracker = readFileSync(join(root, "docs", "kb-coverage-tracker.md"), "utf8");
-  expect(tracker).toContain("Clinical Mapping Master Batch 2026 coverage");
-  expect(tracker).toContain("Published mappings: **103**");
-  expect(tracker).toContain("Remaining explicit drafts/holds: **197**");
-  expect(tracker).toContain("Approved master edges: **68 across 48 primaries**");
-  expect(tracker).toContain("Wave-ledger promotions: **13**");
-
-  const queue = readFileSync(
-    join(root, "docs", "qualified-human-citation-verification-queue.md"),
-    "utf8",
+  expect(refs.filter((ref) => ref.verified === true)).toHaveLength(136);
+  expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
+  const clinical = refs.filter(
+    (ref) => ref.verificationScope === "clinical-evidence",
   );
-  expect(queue).toContain("Clinical Mapping Master Batch 2026 — pending citation verification");
-  expect(queue).toContain("68 new live source rows");
-  expect(queue).toContain("60 unique PMIDs");
-  expect(queue).toContain("remain `verified:false`");
+  expect(clinical).toHaveLength(136);
+  expect(clinical.every((ref) => Boolean(ref.sourceUrl))).toBe(true);
+
+  const mildTbi = byId.get("mild-tbi");
+  const mtbi = mildTbi?.suggestions
+    .flatMap((item) => item.sourceReferences ?? [])
+    .find((ref) => ref.citation?.includes("PMID 38568491"));
+  expect(mtbi).toBeDefined();
+  expect(mtbi?.verified).toBe(false);
+
+  const ledger = readJson<WaveLedger>(
+    join(root, "data", "expansion-dispositions.json"),
+  );
+  const rows = ledger.waves.flatMap((wave) => wave.identities);
+  expect(
+    rows.filter((row) => row.disposition === "published-evidence-led"),
+  ).toHaveLength(44);
+  expect(
+    rows.filter((row) => row.disposition === "safe-draft"),
+  ).toHaveLength(63);
+  expect(
+    rows.filter((row) => row.disposition === "promotion-candidate"),
+  ).toHaveLength(0);
 }

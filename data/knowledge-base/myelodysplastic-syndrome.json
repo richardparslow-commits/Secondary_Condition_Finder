@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded phenotype specific disease transformation proposition. Older source is therapy-related MDS specific; do not generalize this record to all de novo MDS without stronger matching evidence.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/9371291/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 9371291; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to therapy-related/secondary MDS phenotype consistent with the source and subsequent acute nonlymphocytic/myeloid leukemia transformation."
         }

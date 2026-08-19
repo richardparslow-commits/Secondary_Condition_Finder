@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Population-level prospective association only; BPH medication may contribute and end-stage kidney disease estimates were less precise.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40196966/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40196966; PubMed title/abstract retrieved in the master research harvest; guard: Require established BPH before incident CKD; separately assess urinary obstruction, BPH treatment exposure, baseline renal disease, hypertension, diabetes, age, and other renal causes."
         }

@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded disease transformation proposition. PV can progress to AML but transformation is not inevitable and the generic leukemia target must remain AML-bounded.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37357958/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 37357958; PubMed title/abstract retrieved in the master research harvest; guard: Require established polycythemia vera followed by documented leukemic transformation, specifically AML where supported."
         }

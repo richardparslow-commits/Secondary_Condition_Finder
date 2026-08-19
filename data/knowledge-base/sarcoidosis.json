@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded disease complication proposition. PH is a recognized complication, but mechanisms are heterogeneous and individual attribution requires specialist assessment.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40005458/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40005458; PubMed title/abstract retrieved in the master research harvest; guard: Require sarcoidosis and separately established sarcoidosis-associated pulmonary hypertension after appropriate etiologic evaluation."
         }
@@ -43,7 +43,7 @@
           "note": "Master-disposition clinical evidence for the bounded rare complication proposition. Rare evidence based largely on collected cases; no blanket attribution.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18038923/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 18038923; PubMed title/abstract retrieved in the master research harvest; guard: Require sarcoidosis and separately documented thrombocytopenia with plausible sarcoid mechanism (hypersplenism, marrow granulomas, or immune thrombocytopenia) after excluding alternatives."
         }

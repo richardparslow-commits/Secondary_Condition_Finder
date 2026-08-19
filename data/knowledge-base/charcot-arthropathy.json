@@ -7,7 +7,7 @@
       "conditionId": "amputation-or-loss-of-use",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as complication outcome risk. Require established Charcot neuropathic arthropathy and documented limb loss/amputation outcome; preserve laterality and underlying neuropathy/vascular/infectious contributors. Amputation is a possible adverse outcome, not an inevitable complication. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as complication outcome risk. Require established Charcot foot/lower-extremity neuropathic arthropathy and a documented subsequent lower-extremity amputation outcome. Long-term Charcot-foot cohort supports amputation risk/limb preservation only; do not generalize this source to generic loss of use or non-foot Charcot arthropathy. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Charcot Neuropathic Arthropathy and Amputation / Loss of Use of Limbs or Digits",
         "Chronology compatible with the bounded source proposition",
@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Long-term follow-up of conservative treatment of Charcot feet. Archives of orthopaedic and trauma surgery. 2022. doi:10.1007/s00402-021-03881-5. PMID 33829302",
-          "note": "Master-disposition clinical evidence for the bounded complication outcome risk proposition. Amputation is a possible adverse outcome, not an inevitable complication.",
+          "note": "Qualified-human-approved Master Citation Verification evidence for the narrowed complication outcome risk proposition. Long-term Charcot-foot cohort supports amputation risk/limb preservation only; do not generalize this source to generic loss of use or non-foot Charcot arthropathy.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33829302/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 33829302; PubMed title/abstract retrieved in the master research harvest; guard: Require established Charcot neuropathic arthropathy and documented limb loss/amputation outcome; preserve laterality and underlying neuropathy/vascular/infectious contributors."
+          "sourceLocator": "PMID 33829302; PubMed identity/abstract confirmed; qualified-human-approved narrowed guard: Require established Charcot foot/lower-extremity neuropathic arthropathy and a documented subsequent lower-extremity amputation outcome."
         }
       ]
     }

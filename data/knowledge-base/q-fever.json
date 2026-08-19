@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded rare infection complication proposition. Rare complication described in review; do not generalize to ordinary calculous gallbladder disease.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31782315/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 31782315; PubMed title/abstract retrieved in the master research harvest; guard: Require acute Coxiella burnetii/Q fever and separately documented acalculous (alithiasic) cholecystitis attributable to the infection."
         }

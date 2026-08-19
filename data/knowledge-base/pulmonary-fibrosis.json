@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded phenotype specific temporal risk proposition. Systematic review focuses occupational pulmonary fibrosis; carcinogenic exposure and smoking are major confounders.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38355151/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 38355151; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to occupational/exposure-related pulmonary fibrosis phenotype consistent with the source and subsequent lung cancer; document exposure history."
         }

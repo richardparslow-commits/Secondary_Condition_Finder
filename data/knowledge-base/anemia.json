@@ -20,7 +20,7 @@
           "note": "Master-disposition clinical evidence for the bounded phenotype specific temporal risk proposition. Do not generalize this source to iron-deficiency or aplastic anemia; source is sickle-cell-specific.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34406259/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 34406259; PubMed title/abstract retrieved in the master research harvest; guard: Apply only when the catalog anemia diagnosis is specifically sickle cell anemia and CKD is separately established after/within the sickle nephropathy phenotype."
         }

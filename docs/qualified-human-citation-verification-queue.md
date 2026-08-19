@@ -121,70 +121,74 @@ The 5 live unverified published references are PMID 38568491, PMID 11231832, PMI
 <!-- clinical-mapping-m1-current:end -->
 
 <!-- CLINICAL-MAPPING-MASTER-2026:START -->
-## Clinical Mapping Master Batch 2026 — pending citation verification
+## Clinical Mapping Master Batch 2026 — citation verification complete
 
-The 68 new live source rows below represent **60 unique PMIDs**. Mapping publication is approved; these source rows remain `verified:false` until separate qualified-human citation verification.
+Qualified-human approval was provided on 2026-08-19:
 
-| PMID | Source | Relationship rows |
-|---|---|---|
-| 9371291 | Secondary myelodysplastic syndromes and leukemias. | 1: myelodysplastic-syndrome → leukemia |
-| 10326187 | Osteoporosis and eating disorders. | 1: anorexia-nervosa → osteoporosis |
-| 18038923 | Thrombocytopenia in sarcoidosis. | 1: sarcoidosis → thrombocytopenia |
-| 20680529 | Osteoporosis in ankylosing spondylitis. | 1: ankylosing-spondylitis → osteoporosis |
-| 20722714 | Risk of incident depression in patients with Parkinson disease in the UK. | 1: parkinsons-disease → depressive-disorder |
-| 22694245 | Hiatal hernia and the risk of Barrett's esophagus. | 1: hiatal-hernia → barretts-esophagus |
-| 25061487 | Osteoporosis in primary biliary cirrhosis of the liver. | 1: cirrhosis-of-the-liver → osteoporosis |
-| 26882216 | Incidence rates of suicidal behaviors and treated depression in patients with and without psoriatic arthritis using the Clinical Practice Research Datalink. | 1: psoriatic-arthritis → depressive-disorder |
-| 27666776 | COPD, emphysema and the onset of lung cancer. A systematic review. | 1: emphysema → respiratory-cancer |
-| 28342087 | Pelvic inflammatory disease and the risk of ovarian cancer: a meta-analysis. | 1: pelvic-inflammatory-disease → ovarian-cancer |
-| 29157021 | Gastroparesis: pharmacotherapy and cardiac risk. | 1: gastroparesis → cardiac-arrhythmia |
-| 29280918 | Association between celiac disease and schizophrenia: a meta-analysis. | 1: celiac-disease → schizophrenia |
-| 29735408 | Association Between Psoriasis and Erectile Dysfunction: A Meta-Analysis. | 1: psoriasis → erectile-dysfunction |
-| 30393090 | Medication-related osteonecrosis of the jaw: definition and best practice for prevention, diagnosis, and treatment. | 1: osteoporosis → osteonecrosis-of-the-jaw |
-| 30422277 | Association of Psoriasis With Inflammatory Bowel Disease: A Systematic Review and Meta-analysis. | 1: psoriasis → inflammatory-bowel-disease |
-| 30912336 | Graves' Disease: Can It Be Cured? | 1: hyperthyroidism → hypothyroidism |
-| 31203833 | Sleep Disorders and Risk of Incident Depression: A Population Case-Control Study. | 1: narcolepsy → depressive-disorder |
-| 31782315 | New insights in Coxiella burnetii infection: diagnosis and therapeutic update. | 1: q-fever → gallbladder-disease |
-| 31861595 | Animal Models of Post-Traumatic Epilepsy. | 1: penetrating-head-trauma → seizure-disorder |
-| 32088651 | Hepatitis C virus infection and risk of pancreatic cancer: A meta-analysis. | 1: hepatitis → pancreatic-cancer |
-| 33011316 | Association of psoriasis with colorectal cancer. | 1: psoriasis → colorectal-cancer |
-| 33385426 | Prognostic Factors for Advanced Colorectal Neoplasia in Inflammatory Bowel Disease: Systematic Review and Meta-analysis. | 1: inflammatory-bowel-disease → colorectal-cancer |
-| 33829302 | Long-term follow-up of conservative treatment of Charcot feet. | 1: charcot-arthropathy → amputation-or-loss-of-use |
-| 34049905 | Association between early bronchiolitis and the development of childhood asthma: a meta-analysis. | 1: bronchiolitis → asthma |
-| 34406259 | Predictors associated with sickle cell nephropathy: a systematic review. | 1: anemia → chronic-kidney-disease |
-| 34447668 | Brucella Prosthetic Valve Endocarditis: A Systematic Review. | 1: brucellosis → cardiac-inflammatory-disease |
-| 35233053 | Hypothyroidism and related comorbidities on the risks of developing tinnitus. | 1: hypothyroidism → tinnitus |
-| 35334622 | The Risk of Trigeminal Neuralgia Following Osteoporosis. | 1: osteoporosis → trigeminal-neuralgia |
-| 35383546 | Infective endocarditis by Actinomyces species: a systematic review. | 1: actinomycosis → cardiac-inflammatory-disease |
-| 35605220 | Tuberculous Aortic Aneurysm - A Review. | 1: tuberculosis → aortic-aneurysm |
-| 35787151 | Infective endocarditis by Nocardia species: a systematic review. | 1: nocardiosis → cardiac-inflammatory-disease |
-| 35906745 | Systemic lupus erythematosus increases risk of incident atrial fibrillation: A systematic review and meta-analysis. | 1: systemic-lupus-erythematosus → cardiac-arrhythmia |
-| 36680511 | Primary myelofibrosis: 2023 update on diagnosis, risk-stratification, and management. | 1: primary-myelofibrosis → leukemia |
-| 36855430 | Association between coronary artery disease and incident cancer risk: a systematic review and meta-analysis of cohort studies. | 2: ischemic-heart-disease → colorectal-cancer; ischemic-heart-disease → respiratory-cancer |
-| 37149284 | Association between gout and abdominal aortic aneurysm. | 1: gout → aortic-aneurysm |
-| 37223912 | Cannabis Use Disorder and Subsequent Risk of Psychotic and Nonpsychotic Unipolar Depression and Bipolar Disorder. | 2: substance-use-disorder → depressive-disorder; substance-use-disorder → bipolar-disorder |
-| 37230817 | Association between hepatitis B virus infection and risk of osteoporosis: A systematic review and meta-analysis. | 1: hepatitis → osteoporosis |
-| 37349198 | Silicosis and tuberculosis: A systematic review and meta-analysis. | 1: pneumoconiosis → tuberculosis |
-| 37357958 | Polycythemia vera: 2024 update on diagnosis, risk-stratification, and management. | 1: polycythemia-vera → leukemia |
-| 37574171 | Incident Atrial Fibrillation and Survival Outcomes in Esophageal Cancer following Radiotherapy. | 1: esophageal-cancer → cardiac-arrhythmia |
-| 37899363 | Risk of Parkinson's disease in hepatitis B and C populations: a systematic review and meta-analysis. | 1: hepatitis → parkinsons-disease |
-| 38251522 | Association between biological immunotherapy for psoriasis and time to incident inflammatory arthritis: a retrospective cohort study. | 1: psoriasis → psoriatic-arthritis |
-| 38269572 | Essential thrombocythemia: 2024 update on diagnosis, risk stratification, and management. | 1: essential-thrombocythemia → leukemia |
-| 38355151 | Lung cancer risk and occupational pulmonary fibrosis: systematic review and meta-analysis. | 1: pulmonary-fibrosis → respiratory-cancer |
-| 38573463 | Risk of sleep disorders in patients with pneumoconiosis: a retrospective cohort study. | 1: pneumoconiosis → sleep-apnea |
-| 38652139 | Risk factors of transient and permanent hypoparathyroidism after thyroidectomy: a systematic review and meta-analysis. | 1: thyroid-cancer → hypoparathyroidism |
-| 39005656 | Salmonella typhi and endocarditis: a systematic review of case reports. | 1: typhoid-fever → cardiac-inflammatory-disease |
-| 39046420 | Immune recovery uveitis: an ocular manifestation in HIV/AIDS receiving treatment. | 1: hiv-aids → uveitis |
-| 39324122 | Schizophrenia and type 2 diabetes risk: a systematic review and meta-analysis. | 1: schizophrenia → diabetes-mellitus-type-2 |
-| 39847853 | Treatment Options for Buerger Disease: A Systematic Review and Meta-Analysis of Outcomes. | 1: thromboangiitis-obliterans → amputation-or-loss-of-use |
-| 39895893 | Pancreatitis-associated Myocarditis: Systematic Review and Meta-analysis of a Deadly Duo. | 1: pancreatitis → cardiac-inflammatory-disease |
-| 39963138 | Management of tuberculosis risk, screening and preventive therapy in patients with chronic autoimmune arthritis undergoing biotechnological and targeted immunosuppressive agents. | 1: psoriatic-arthritis → tuberculosis |
-| 40005458 | Sarcoidosis-Associated Pulmonary Hypertension. | 1: sarcoidosis → pulmonary-hypertension |
-| 40196966 | Benign Prostatic Hyperplasia Increases Long-term Chronic Kidney Disease Risk. | 1: benign-prostatic-hyperplasia → chronic-kidney-disease |
-| 40329131 | Osteoarthritis and the risk of sleep apnea: a general population-based cohort study. | 1: osteoarthritis → sleep-apnea |
-| 40420581 | Paradoxical Eczema Associated With Biologic Therapy in Psoriasis: A Systematic Review and Meta-Analysis. | 1: psoriasis → eczema |
-| 40632946 | GOUT AND RISK OF AGE-RELATED MACULAR DEGENERATION. | 1: gout → macular-degeneration |
-| 40658955 | Glucagon-Like Peptide-1 Receptor Agonists and Risk for Gastroesophageal Reflux Disease in Patients With Type 2 Diabetes : A Population-Based Cohort Study. | 1: diabetes-mellitus-type-2 → gerd |
-| 40772230 | Association of gastroesophageal reflux disease with the incidence of pulmonary disease. | 7: gerd → asthma; gerd → bronchiectasis; gerd → copd; gerd → interstitial-lung-disease; gerd → pulmonary-fibrosis; gerd → respiratory-cancer; gerd → tuberculosis |
-| 40959074 | Tuberculosis in patients with systemic lupus erythematosus. | 1: systemic-lupus-erythematosus → tuberculosis |
+> I approve Clinical Mapping Master Batch 2026 — Master Citation Verification Disposition
+
+All **68 Master relationship source rows** are verified. The final set contains **60 unique PMIDs** after 8 approved narrowings and 5 one-for-one replacements.
+
+| Final PMID | Relationship rows | Decision(s) | Status |
+|---:|---|---|---|
+| 9371291 | 1: myelodysplastic-syndrome → leukemia | VERIFY-AS-WRITTEN | verified |
+| 10326187 | 1: anorexia-nervosa → osteoporosis | VERIFY-AS-WRITTEN | verified |
+| 18038923 | 1: sarcoidosis → thrombocytopenia | VERIFY-AS-WRITTEN | verified |
+| 20644150 | 1: penetrating-head-trauma → seizure-disorder | REPLACE-SOURCE | verified |
+| 20680529 | 1: ankylosing-spondylitis → osteoporosis | VERIFY-AS-WRITTEN | verified |
+| 20722714 | 1: parkinsons-disease → depressive-disorder | VERIFY-AS-WRITTEN | verified |
+| 22694245 | 1: hiatal-hernia → barretts-esophagus | VERIFY-AS-WRITTEN | verified |
+| 25061487 | 1: cirrhosis-of-the-liver → osteoporosis | VERIFY-AS-WRITTEN | verified |
+| 26683953 | 1: hepatitis → osteoporosis | REPLACE-SOURCE | verified |
+| 26882216 | 1: psoriatic-arthritis → depressive-disorder | VERIFY-AS-WRITTEN | verified |
+| 27666776 | 1: emphysema → respiratory-cancer | VERIFY-WITH-NARROWING | verified |
+| 28342087 | 1: pelvic-inflammatory-disease → ovarian-cancer | VERIFY-AS-WRITTEN | verified |
+| 29157021 | 1: gastroparesis → cardiac-arrhythmia | VERIFY-AS-WRITTEN | verified |
+| 29280918 | 1: celiac-disease → schizophrenia | VERIFY-AS-WRITTEN | verified |
+| 29735408 | 1: psoriasis → erectile-dysfunction | VERIFY-AS-WRITTEN | verified |
+| 30393090 | 1: osteoporosis → osteonecrosis-of-the-jaw | VERIFY-AS-WRITTEN | verified |
+| 30422277 | 1: psoriasis → inflammatory-bowel-disease | VERIFY-AS-WRITTEN | verified |
+| 30912336 | 1: hyperthyroidism → hypothyroidism | VERIFY-AS-WRITTEN | verified |
+| 31203833 | 1: narcolepsy → depressive-disorder | VERIFY-AS-WRITTEN | verified |
+| 31782315 | 1: q-fever → gallbladder-disease | VERIFY-AS-WRITTEN | verified |
+| 32088651 | 1: hepatitis → pancreatic-cancer | VERIFY-AS-WRITTEN | verified |
+| 33011316 | 1: psoriasis → colorectal-cancer | VERIFY-AS-WRITTEN | verified |
+| 33433655 | 1: inflammatory-bowel-disease → colorectal-cancer | REPLACE-SOURCE | verified |
+| 33829302 | 1: charcot-arthropathy → amputation-or-loss-of-use | VERIFY-WITH-NARROWING | verified |
+| 34049905 | 1: bronchiolitis → asthma | VERIFY-AS-WRITTEN | verified |
+| 34406259 | 1: anemia → chronic-kidney-disease | VERIFY-AS-WRITTEN | verified |
+| 34447668 | 1: brucellosis → cardiac-inflammatory-disease | VERIFY-WITH-NARROWING | verified |
+| 34596875 | 1: psoriasis → psoriatic-arthritis | REPLACE-SOURCE | verified |
+| 35233053 | 1: hypothyroidism → tinnitus | VERIFY-AS-WRITTEN | verified |
+| 35334622 | 1: osteoporosis → trigeminal-neuralgia | VERIFY-WITH-NARROWING | verified |
+| 35383546 | 1: actinomycosis → cardiac-inflammatory-disease | VERIFY-AS-WRITTEN | verified |
+| 35605220 | 1: tuberculosis → aortic-aneurysm | VERIFY-AS-WRITTEN | verified |
+| 35787151 | 1: nocardiosis → cardiac-inflammatory-disease | VERIFY-AS-WRITTEN | verified |
+| 35906745 | 1: systemic-lupus-erythematosus → cardiac-arrhythmia | VERIFY-AS-WRITTEN | verified |
+| 36680511 | 1: primary-myelofibrosis → leukemia | VERIFY-AS-WRITTEN | verified |
+| 36855430 | 2: ischemic-heart-disease → colorectal-cancer; ischemic-heart-disease → respiratory-cancer | VERIFY-AS-WRITTEN, VERIFY-WITH-NARROWING | verified |
+| 37149284 | 1: gout → aortic-aneurysm | VERIFY-AS-WRITTEN | verified |
+| 37223912 | 2: substance-use-disorder → depressive-disorder; substance-use-disorder → bipolar-disorder | VERIFY-AS-WRITTEN | verified |
+| 37349198 | 1: pneumoconiosis → tuberculosis | VERIFY-AS-WRITTEN | verified |
+| 37357958 | 1: polycythemia-vera → leukemia | VERIFY-AS-WRITTEN | verified |
+| 37574171 | 1: esophageal-cancer → cardiac-arrhythmia | VERIFY-WITH-NARROWING | verified |
+| 37899363 | 1: hepatitis → parkinsons-disease | VERIFY-WITH-NARROWING | verified |
+| 38055239 | 1: psoriasis → eczema | REPLACE-SOURCE | verified |
+| 38269572 | 1: essential-thrombocythemia → leukemia | VERIFY-AS-WRITTEN | verified |
+| 38355151 | 1: pulmonary-fibrosis → respiratory-cancer | VERIFY-AS-WRITTEN | verified |
+| 38573463 | 1: pneumoconiosis → sleep-apnea | VERIFY-AS-WRITTEN | verified |
+| 38652139 | 1: thyroid-cancer → hypoparathyroidism | VERIFY-AS-WRITTEN | verified |
+| 39005656 | 1: typhoid-fever → cardiac-inflammatory-disease | VERIFY-AS-WRITTEN | verified |
+| 39046420 | 1: hiv-aids → uveitis | VERIFY-AS-WRITTEN | verified |
+| 39324122 | 1: schizophrenia → diabetes-mellitus-type-2 | VERIFY-AS-WRITTEN | verified |
+| 39847853 | 1: thromboangiitis-obliterans → amputation-or-loss-of-use | VERIFY-WITH-NARROWING | verified |
+| 39895893 | 1: pancreatitis → cardiac-inflammatory-disease | VERIFY-AS-WRITTEN | verified |
+| 39963138 | 1: psoriatic-arthritis → tuberculosis | VERIFY-AS-WRITTEN | verified |
+| 40005458 | 1: sarcoidosis → pulmonary-hypertension | VERIFY-AS-WRITTEN | verified |
+| 40196966 | 1: benign-prostatic-hyperplasia → chronic-kidney-disease | VERIFY-AS-WRITTEN | verified |
+| 40329131 | 1: osteoarthritis → sleep-apnea | VERIFY-AS-WRITTEN | verified |
+| 40632946 | 1: gout → macular-degeneration | VERIFY-AS-WRITTEN | verified |
+| 40658955 | 1: diabetes-mellitus-type-2 → gerd | VERIFY-AS-WRITTEN | verified |
+| 40772230 | 7: gerd → asthma; gerd → bronchiectasis; gerd → copd; gerd → interstitial-lung-disease; gerd → pulmonary-fibrosis; gerd → respiratory-cancer; gerd → tuberculosis | VERIFY-AS-WRITTEN | verified |
+| 40959074 | 1: systemic-lupus-erythematosus → tuberculosis | VERIFY-AS-WRITTEN | verified |
 <!-- CLINICAL-MAPPING-MASTER-2026:END -->
