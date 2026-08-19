@@ -40,19 +40,19 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-After qualified-human Citation Verification Batches 01 through 03, the current local position is:
+After qualified-human Citation Verification Batches 01 through 04, the current local position is:
 
 - live references: **69**;
-- live verified: **23**;
+- live verified: **28**;
 - retired verified: **6**;
-- verified provenance: **29**;
-- live unverified: **46**;
-- published-unverified review findings: **44**;
+- verified provenance: **34**;
+- live unverified: **41**;
+- published-unverified review findings: **39**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 03 reduces live-unverified debt from `51` to `46` and published-review debt from `49` to `44` without changing the 69-reference denominator. Four sources were verified as written. The COPD→OSA mapping was narrowed before verification by removing unsupported `direct-secondary` and `aggravation` pathway labels while retaining its cautious overlap/coexistence rationale. Automated source checking still cannot authorize verification; the human decisions are documented in the three citation-verification batch records.
+Batch 04 reduces live-unverified debt from `46` to `41` and published-review debt from `44` to `39` without changing the 69-reference denominator. All five reviewed references were verified as written: three separate depressive-disorder references, the type-1-diabetes→CKD source, and the scalp-DLE→scarring-alopecia source. Automated source checking still cannot authorize verification; the human decisions are documented in the four citation-verification batch records.
 
 ## Safety rule for safe drafts
 

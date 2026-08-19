@@ -9,7 +9,9 @@
       "prevalence": "commonly-explored",
       "rationale": "Scalp discoid lupus erythematosus can produce cicatricial (scarring) alopecia through inflammatory injury centered on hair follicles and permanent follicular/scarring damage. This relationship is limited to documented scalp DLE with a distinct clinical or dermatopathologic diagnosis of scarring alopecia; it does not treat nonscarring hair loss, alopecia areata, or systemic lupus erythematosus as interchangeable phenotypes.",
       "pathwayIntelligence": {
-        "pathways": ["disease-progression"],
+        "pathways": [
+          "disease-progression"
+        ],
         "causalChain": "Documented inflammatory scalp DLE → perifollicular/appendage injury and scarring damage → cicatricial alopecia when permanent follicular loss is clinically or histopathologically established.",
         "developmentQuestions": [
           "Are active or prior discoid lupus lesions documented on the scalp in the same anatomic distribution as the hair loss?",
@@ -36,8 +38,8 @@
           "note": "Study of 84 cutaneous-lupus samples found scarring/atrophy distinguished DLE from acute cutaneous lupus and reported perifollicular inflammatory infiltration in all examined DLE scarring-alopecia cases. Supports a scalp-DLE-to-scarring-alopecia progression pathway with phenotype and anatomic limits.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35817588/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 35817588; abstract Methods/Results: 84 CLE samples; scarring/atrophy differentiated DLE from ACLE; perifollicular inflammatory infiltration present in all DLE scarring-alopecia cases"
         }
       ]

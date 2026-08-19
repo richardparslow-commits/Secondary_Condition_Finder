@@ -15,11 +15,11 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // unsupported unverified source is an evidence-quality improvement and may lower them.
 const CITATION_DEBT_BASELINE = Object.freeze({
   references: 69,
-  liveVerified: 23,
+  liveVerified: 28,
   retiredVerified: 6,
-  verifiedProvenance: 29,
-  unverified: 46,
-  reviewFindings: 44,
+  verifiedProvenance: 34,
+  unverified: 41,
+  reviewFindings: 39,
   liveClinicalEvidenceWithUrls: 64,
   retiredClinicalEvidenceWithUrls: 4,
   clinicalEvidenceProvenanceWithUrls: 68,

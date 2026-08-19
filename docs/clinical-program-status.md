@@ -40,23 +40,23 @@ Key negative-modeling protections include rejecting CTS/median-neuropathy taxono
 
 ## Citation position
 
-After qualified-human Citation Verification Batches 01 through 03, the current local position is:
+After qualified-human Citation Verification Batches 01 through 04, the current local position is:
 
 - live references: **69**;
-- live verified: **23**;
+- live verified: **28**;
 - retired verified: **6**;
-- verified provenance: **29**;
-- live unverified: **46**;
-- published-unverified review findings: **44**;
+- verified provenance: **34**;
+- live unverified: **41**;
+- published-unverified review findings: **39**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 03 lowers the debt ratchet from 51/49 to 46/44 while preserving 69 total live references and zero hard findings. COPD→OSA remains published as an overlap/coexistence research relationship, but its unsupported direct-secondary/aggravation pathway labels have been removed.
+Batch 04 lowers the debt ratchet from 46/44 to 41/39 while preserving 69 total live references and zero hard findings. The five approved references required no proposition narrowing or source replacement.
 
 ## Human citation verification
 
-Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 03 record explicit qualified-human approval for fifteen sources; the remaining 46 live unverified references remain `verified: false` until separately reviewed.
+Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 04 record explicit qualified-human approval for twenty sources; the remaining 41 live unverified references remain `verified: false` until separately reviewed.
 
 ## External/manual gates
 

@@ -33,7 +33,8 @@ describe("clinical evidence promotion batch 9", () => {
     expect(suggestion?.rationale).toMatch(/alternative kidney disease|atypical/i);
     expect(source?.sourceUrl).toContain("41358881");
     expect(source?.verificationScope).toBe("clinical-evidence");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("repairs ED-to-depression while removing the unsupported ED-to-GERD treatment chain", () => {
@@ -66,11 +67,13 @@ describe("clinical evidence promotion batch 9", () => {
     expect(condition?.ratingSchedule[0]?.verified).toBe(false);
   });
 
-  it("does not auto-verify Batch 9 clinical sources", () => {
-    for (const id of ["diabetes-mellitus-type-1", "erectile-dysfunction"] as const) {
-      for (const suggestion of byId.get(id)?.suggestions ?? []) {
-        expect(suggestion.sourceReferences.every((source) => source.verified === false && source.sourceCheckedOn === "2026-08-14")).toBe(true);
-      }
-    }
+  it("distinguishes later qualified-human type-1-diabetes verification from still-unverified erectile-dysfunction evidence", () => {
+    const diabetes = byId.get("diabetes-mellitus-type-1")?.suggestions[0]?.sourceReferences[0];
+    expect(diabetes?.verified).toBe(true);
+    expect(diabetes?.sourceCheckedOn).toBe("2026-08-18");
+
+    const erectileDysfunction = byId.get("erectile-dysfunction")?.suggestions[0]?.sourceReferences[0];
+    expect(erectileDysfunction?.verified).toBe(false);
+    expect(erectileDysfunction?.sourceCheckedOn).toBe("2026-08-14");
   });
 });
