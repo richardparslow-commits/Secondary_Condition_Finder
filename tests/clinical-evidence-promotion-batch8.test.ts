@@ -33,9 +33,9 @@ describe("clinical evidence promotion batch 8", () => {
     for (const suggestion of mapping?.suggestions ?? []) {
       expect(suggestion.sourceReferences).toHaveLength(1);
       expect(suggestion.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-      expect(suggestion.sourceReferences[0]?.sourceUrl).toMatch(/^https:\/\/pubmed\.ncbi\.nlm\.nih\.gov\//);
-      expect(suggestion.sourceReferences[0]?.verified).toBe(false);
-      expect(suggestion.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-14");
+      expect(suggestion.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40811497/");
+      expect(suggestion.sourceReferences[0]?.verified).toBe(true);
+      expect(suggestion.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
       expect(suggestion.sourceReferences.some((source) => source.citation.startsWith("38 CFR"))).toBe(false);
     }
   });
@@ -50,12 +50,16 @@ describe("clinical evidence promotion batch 8", () => {
     }
   });
 
-  it("keeps hypertension-to-ED association-focused and does not infer medication causation", () => {
+  it("keeps hypertension-to-ED association-focused after the current-guideline source replacement", () => {
     const suggestion = byId.get("hypertension")?.suggestions.find((entry) => entry.conditionId === "erectile-dysfunction");
     expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("27491642");
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40811497/");
+    expect(suggestion?.sourceReferences[0]?.sourceLocator).toMatch(/section 6\.3|Sexual Dysfunction/i);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
     expect(suggestion?.rationale).toMatch(/association/i);
-    expect(suggestion?.rationale).toMatch(/medication-specific.*separate|not inferred/i);
+    expect(suggestion?.rationale).toMatch(/shared vascular|vascular\/endothelial|atheroscl/i);
+    expect(suggestion?.rationale).toMatch(/medication-specific.*separate|drug-class.*chronology/i);
+    expect(suggestion?.rationale).not.toMatch(/121,641|40-study/i);
   });
 
   it("promotes Cushing syndrome to a direct hypertension pathway with endocrine-specific evidence", () => {

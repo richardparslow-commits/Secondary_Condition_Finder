@@ -9,7 +9,10 @@
       "prevalence": "commonly-explored",
       "rationale": "This catalog identity is specifically scoped to prolactin-secreting pituitary dysfunction. In men with prolactinoma, elevated prolactin can suppress the hypothalamic-pituitary-gonadal axis and larger tumors can additionally impair gonadotroph function by mass effect, producing hypogonadotropic hypogonadism. This supports an endocrine secondary pathway when hyperprolactinemia/prolactinoma and biochemical-clinical hypogonadism are documented with compatible chronology; it does not justify generalizing the relationship to unrelated forms of hyperpituitarism or attributing every low testosterone result to prolactin excess.",
       "pathwayIntelligence": {
-        "pathways": ["direct-secondary", "intermediate-chain"],
+        "pathways": [
+          "direct-secondary",
+          "intermediate-chain"
+        ],
         "causalChain": "Prolactin-secreting pituitary dysfunction with sustained hyperprolactinemia and/or tumor mass effect → suppression or impairment of the hypothalamic-pituitary-gonadal axis → clinically confirmed hypogonadism.",
         "developmentQuestions": [
           "Is the primary pituitary disorder documented as prolactin-secreting dysfunction or prolactinoma with sustained hyperprolactinemia?",
@@ -37,8 +40,8 @@
           "note": "Clinical review describes hypogonadism as a common prolactinoma complication and identifies both prolactin-mediated suppression of the hypothalamic-pituitary-gonadal axis and tumor mass effect as mechanisms. Supports a prolactinoma-specific endocrine pathway in men, not generic hyperpituitarism or automatic individual attribution.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40812946/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 40812946; abstract: most men with prolactinoma present with hypogonadism; mechanisms include prolactin-mediated HPG-axis suppression and tumor mass effect; >20% may remain hypogonadal after prolactin normalization"
         }
       ]

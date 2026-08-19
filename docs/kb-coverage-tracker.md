@@ -40,19 +40,19 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-After qualified-human Citation Verification Batches 01 through 05, the current local position is:
+After qualified-human Citation Verification Batches 01 through 06, the current local position is:
 
 - live references: **69**;
-- live verified: **33**;
+- live verified: **38**;
 - retired verified: **6**;
-- verified provenance: **39**;
-- live unverified: **36**;
-- published-unverified review findings: **34**;
+- verified provenance: **44**;
+- live unverified: **31**;
+- published-unverified review findings: **29**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 05 reduces live-unverified debt from `41` to `36` and published-review debt from `39` to `34` without changing the 69-reference denominator. Three sources were verified as written (FAI→hip osteoarthritis, confirmed primary aldosteronism→hypertension, and confirmed primary hyperparathyroidism→kidney stones); ED→depression was narrowed by removing unsupported directional pathway intelligence before verification; and the valve-residuals→anemia source was replaced one-for-one with Alkhouli et al., PMID 31039274 before verification. Automated source checking still cannot authorize verification; the human decisions are documented in the five citation-verification batch records.
+Batch 06 reduces live-unverified debt from `36` to `31` and published-review debt from `34` to `29` without changing the 69-reference denominator. Hyperpituitarism→hypogonadism plus hypertension→CKD, ischemic heart disease, and congestive heart failure were verified as written. Hypertension→erectile dysfunction was kept association-focused while its older meta-analysis source was replaced one-for-one with the current corrected 2025 AHA/ACC multisociety hypertension guideline (PMID 40811497) before verification. Automated source checking still cannot authorize verification; the human decisions are documented in the six citation-verification batch records.
 
 ## Safety rule for safe drafts
 
