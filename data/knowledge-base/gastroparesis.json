@@ -1,6 +1,48 @@
 {
   "id": "gastroparesis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, metabolic/neurologic, medication/treatment, nutritional, procedural, and intermediate-factor pathways only where applicable; do not infer causation from a rating analogy or medication name."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "cardiac-arrhythmia",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment complication. Require gastroparesis treatment with a QT-/conduction-relevant prokinetic or antiemetic and a documented cardiac arrhythmia temporally related to that treatment. The source is pharmacotherapy/cardiac-safety focused; gastroparesis itself is not established as causing arrhythmia. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "treatment-complication"
+        ],
+        "causalChain": "Gastroparesis → documented qualifying treatment/procedure exposure → separately diagnosed Cardiac Arrhythmias (Atrial Fibrillation, Tachycardia) with compatible timing.",
+        "developmentQuestions": [
+          "What exact medication or procedure, dose, duration, and timing are documented?",
+          "Was Cardiac Arrhythmias (Atrial Fibrillation, Tachycardia) independently diagnosed after the qualifying exposure?",
+          "Does the source treatment/adverse-outcome phenotype match the individual record?",
+          "What competing causes or co-exposures must be addressed?",
+          "Can a qualified clinician explain the individual relationship without generalizing beyond the cited source?"
+        ],
+        "issuesToResolve": [
+          "Require gastroparesis treatment with a QT-/conduction-relevant prokinetic or antiemetic and a documented cardiac arrhythmia temporally related to that treatment.",
+          "The source is pharmacotherapy/cardiac-safety focused; gastroparesis itself is not established as causing arrhythmia.",
+          "Do not infer this treatment-specific pathway from the primary diagnosis alone."
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment or procedure used for Gastroparesis",
+        "Independent diagnosis of Cardiac Arrhythmias (Atrial Fibrillation, Tachycardia) and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Gastroparesis: pharmacotherapy and cardiac risk. Scandinavian journal of gastroenterology. 2018. doi:10.1080/00365521.2017.1401117. PMID 29157021",
+          "note": "Master-disposition clinical evidence for the bounded treatment complication proposition. The source is pharmacotherapy/cardiac-safety focused; gastroparesis itself is not established as causing arrhythmia.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29157021/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 29157021; PubMed title/abstract retrieved in the master research harvest; guard: Require gastroparesis treatment with a QT-/conduction-relevant prokinetic or antiemetic and a documented cardiac arrhythmia temporally related to that treatment."
+        }
+      ]
+    }
+  ]
 }

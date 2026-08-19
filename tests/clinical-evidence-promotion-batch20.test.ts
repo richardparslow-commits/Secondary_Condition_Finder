@@ -1,3 +1,4 @@
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
@@ -13,6 +14,13 @@ describe("clinical evidence promotion batch 20", () => {
   });
 
   it("withdraws anxiety, schizophrenia, and substance-use mappings that were legal/rating-only", () => {
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of ["anxiety-disorder", "schizophrenia", "substance-use-disorder"]) {
       const mapping = byId.get(id);
       expect(mapping?.draft).toBe(true);
@@ -38,6 +46,13 @@ describe("clinical evidence promotion batch 20", () => {
   });
 
   it("recognizes the later evidence-quality withdrawal of Parkinson depression", () => {
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("parkinsons-disease");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);

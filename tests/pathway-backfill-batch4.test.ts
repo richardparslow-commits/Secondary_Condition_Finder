@@ -1,3 +1,4 @@
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 
 import { loadKnowledgeBase } from "@/lib/kb/load";
@@ -85,6 +86,13 @@ describe("controlled pathway backfill batch 4", () => {
   });
 
   it("keeps later safety withdrawals unpublished", () => {
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
 
     for (const primaryId of safetyWithdrawnMappings) {

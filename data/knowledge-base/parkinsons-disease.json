@@ -1,9 +1,30 @@
 {
   "id": "parkinsons-disease",
-  "draft": true,
-  "todo": [
-    "Rebuild any secondary-condition suggestion using evidence that supports a directional Parkinson-disease-primary pathway rather than prevalence or screening-tool performance alone.",
-    "The prior depressive-disorder edge was withdrawn because PMID 27358339 is a systematic review/meta-analysis of depression detection and prevalence in Parkinson disease; it does not establish that Parkinson disease caused or aggravated a depressive disorder in the direction required for publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require Parkinson disease diagnosis before the depressive-disorder onset for this proposition; exclude/segregate depression predating PD and consider prodromal/bidirectional timing. Population follow-up supports post-diagnosis temporal risk only; no causal/aggravation pathwayIntelligence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Parkinson's Disease and Major Depressive Disorder",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Risk of incident depression in patients with Parkinson disease in the UK. European journal of neurology. 2011. doi:10.1111/j.1468-1331.2010.03176.x. PMID 20722714",
+          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Population follow-up supports post-diagnosis temporal risk only; no causal/aggravation pathwayIntelligence.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20722714/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 20722714; PubMed title/abstract retrieved in the master research harvest; guard: Require Parkinson disease diagnosis before the depressive-disorder onset for this proposition; exclude/segregate depression predating PD and consider prodromal/bidirectional timing."
+        }
+      ]
+    }
+  ]
 }

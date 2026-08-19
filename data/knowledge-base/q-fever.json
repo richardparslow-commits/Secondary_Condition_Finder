@@ -1,8 +1,30 @@
 {
   "id": "q-fever",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "gallbladder-disease",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as rare infection complication. Require acute Coxiella burnetii/Q fever and separately documented acalculous (alithiasic) cholecystitis attributable to the infection. Rare complication described in review; do not generalize to ordinary calculous gallbladder disease. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Coxiella Burnetii (Q Fever) and Cholecystitis / Gallbladder Disease",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "New insights in Coxiella burnetii infection: diagnosis and therapeutic update. Expert review of anti-infective therapy. 2020. doi:10.1080/14787210.2020.1699055. PMID 31782315",
+          "note": "Master-disposition clinical evidence for the bounded rare infection complication proposition. Rare complication described in review; do not generalize to ordinary calculous gallbladder disease.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31782315/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 31782315; PubMed title/abstract retrieved in the master research harvest; guard: Require acute Coxiella burnetii/Q fever and separately documented acalculous (alithiasic) cholecystitis attributable to the infection."
+        }
+      ]
+    }
+  ]
 }

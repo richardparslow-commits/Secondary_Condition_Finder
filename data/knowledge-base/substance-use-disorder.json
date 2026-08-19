@@ -1,9 +1,53 @@
 {
   "id": "substance-use-disorder",
-  "draft": true,
-  "todo": [
-    "Review future secondary suggestions only after adding substance-use-disorder-specific clinical evidence and resolving substance-specific directionality and treatment context.",
-    "Batch 20 removes the prior sleep-apnea, GERD, and migraine suggestions because their attached sources were legal or rating authorities rather than clinical evidence for those medical propositions."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific association. Apply only when the substance-use diagnosis is specifically cannabis use disorder preceding incident unipolar depressive disorder. Cannabis-use-disorder-specific cohort; do not generalize to all substance use disorders or claim individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Substance use disorder matches the source-specific phenotype or population",
+        "Independent diagnosis of Major Depressive Disorder with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Qualified clinical opinion before applying the population-level relationship to an individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Cannabis Use Disorder and Subsequent Risk of Psychotic and Nonpsychotic Unipolar Depression and Bipolar Disorder. JAMA psychiatry. 2023. doi:10.1001/jamapsychiatry.2023.1256. PMID 37223912",
+          "note": "Master-disposition clinical evidence for the bounded phenotype specific association proposition. Cannabis-use-disorder-specific cohort; do not generalize to all substance use disorders or claim individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37223912/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 37223912; PubMed title/abstract retrieved in the master research harvest; guard: Apply only when the substance-use diagnosis is specifically cannabis use disorder preceding incident unipolar depressive disorder."
+        }
+      ]
+    },
+    {
+      "conditionId": "bipolar-disorder",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific association. Apply only when the substance-use diagnosis is specifically cannabis use disorder preceding incident bipolar disorder. Cannabis-use-disorder-specific cohort; no generalization to other substances and no individual causation claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Substance use disorder matches the source-specific phenotype or population",
+        "Independent diagnosis of Bipolar Disorder with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Qualified clinical opinion before applying the population-level relationship to an individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Cannabis Use Disorder and Subsequent Risk of Psychotic and Nonpsychotic Unipolar Depression and Bipolar Disorder. JAMA psychiatry. 2023. doi:10.1001/jamapsychiatry.2023.1256. PMID 37223912",
+          "note": "Master-disposition clinical evidence for the bounded phenotype specific association proposition. Cannabis-use-disorder-specific cohort; no generalization to other substances and no individual causation claim.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37223912/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 37223912; PubMed title/abstract retrieved in the master research harvest; guard: Apply only when the substance-use diagnosis is specifically cannabis use disorder preceding incident bipolar disorder."
+        }
+      ]
+    }
+  ]
 }

@@ -1,8 +1,30 @@
 {
   "id": "pelvic-inflammatory-disease",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "ovarian-cancer",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require established PID and separately diagnosed ovarian cancer; establish chronology and evaluate reproductive, genetic, endometriosis, hormonal, and other cancer risks. Meta-analysis is association evidence with inconsistent underlying studies; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Pelvic Inflammatory Disease and Ovarian Cancer",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Pelvic inflammatory disease and the risk of ovarian cancer: a meta-analysis. Cancer causes & control : CCC. 2017. doi:10.1007/s10552-017-0873-3. PMID 28342087",
+          "note": "Master-disposition clinical evidence for the bounded association risk proposition. Meta-analysis is association evidence with inconsistent underlying studies; no individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28342087/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 28342087; PubMed title/abstract retrieved in the master research harvest; guard: Require established PID and separately diagnosed ovarian cancer; establish chronology and evaluate reproductive, genetic, endometriosis, hormonal, and other cancer risks."
+        }
+      ]
+    }
+  ]
 }

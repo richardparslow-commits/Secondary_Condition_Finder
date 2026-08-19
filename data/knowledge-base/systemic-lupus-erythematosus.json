@@ -1,8 +1,53 @@
 {
   "id": "systemic-lupus-erythematosus",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "cardiac-arrhythmia",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require SLE and separately established incident atrial fibrillation; do not generalize the source to every arrhythmia phenotype. Meta-analysis supports incident AF association with substantial heterogeneity; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Systemic Lupus Erythematosus (SLE) and Cardiac Arrhythmias (Atrial Fibrillation, Tachycardia)",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Systemic lupus erythematosus increases risk of incident atrial fibrillation: A systematic review and meta-analysis. International journal of rheumatic diseases. 2022. doi:10.1111/1756-185X.14403. PMID 35906745",
+          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Meta-analysis supports incident AF association with substantial heterogeneity; no individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35906745/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 35906745; PubMed title/abstract retrieved in the master research harvest; guard: Require SLE and separately established incident atrial fibrillation; do not generalize the source to every arrhythmia phenotype."
+        }
+      ]
+    },
+    {
+      "conditionId": "tuberculosis",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require SLE plus corticosteroid/immunosuppressive treatment and documented TB infection/reactivation/disease; evaluate epidemiologic exposure and baseline latent TB status. Treatment/immunosuppression-associated pathway; SLE alone should not be represented as a sufficient cause. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment or procedure used for Systemic Lupus Erythematosus (SLE)",
+        "Independent diagnosis of Mycobacterium Tuberculosis and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Tuberculosis in patients with systemic lupus erythematosus. Frontiers in immunology. 2025. doi:10.3389/fimmu.2025.1625748. PMID 40959074",
+          "note": "Master-disposition clinical evidence for the bounded treatment associated risk proposition. Treatment/immunosuppression-associated pathway; SLE alone should not be represented as a sufficient cause.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40959074/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 40959074; PubMed title/abstract retrieved in the master research harvest; guard: Require SLE plus corticosteroid/immunosuppressive treatment and documented TB infection/reactivation/disease; evaluate epidemiologic exposure and baseline latent TB status."
+        }
+      ]
+    }
+  ]
 }

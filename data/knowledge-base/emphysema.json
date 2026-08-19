@@ -1,9 +1,30 @@
 {
   "id": "emphysema",
-  "draft": true,
-  "todo": [
-    "Rebuild any secondary-condition suggestions using emphysema-specific clinical evidence before publication.",
-    "The prior sleep-apnea and cardiac-arrhythmia suggestions were withdrawn because their only sources were legal/rating authorities and the rationales asserted medical mechanisms without emphysema-specific clinical evidence."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "respiratory-cancer",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require emphysema and subsequent lung/respiratory cancer; explicitly account for smoking and other carcinogenic exposures. Association is population-level and heavily confounded by shared tobacco/exposure risks; no individual causation claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Emphysema and Lung Cancer / Tracheal Cancer / Bronchial Cancer",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "COPD, emphysema and the onset of lung cancer. A systematic review. Cancer letters. 2016. doi:10.1016/j.canlet.2016.09.002. PMID 27666776",
+          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Association is population-level and heavily confounded by shared tobacco/exposure risks; no individual causation claim.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27666776/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 27666776; PubMed title/abstract retrieved in the master research harvest; guard: Require emphysema and subsequent lung/respiratory cancer; explicitly account for smoking and other carcinogenic exposures."
+        }
+      ]
+    }
+  ]
 }

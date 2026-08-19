@@ -1,9 +1,30 @@
 {
   "id": "anorexia-nervosa",
-  "draft": true,
-  "todo": [
-    "Rebuild any secondary-condition suggestions using anorexia-nervosa-specific clinical evidence before publication.",
-    "The prior depression suggestion was withdrawn because 38 CFR 3.310 supplied legal framework only and the rationale used generic chronic-condition language without establishing the direction or mechanism of an anorexia-nervosa-specific relationship."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "osteoporosis",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as disease complication. Require established anorexia nervosa and independently documented osteoporosis; consider low weight, amenorrhea/hypoestrogenism, nutrition, vitamin D/calcium, and other bone-loss causes. The source supports osteoporosis as a common complication of anorexia nervosa; it does not establish a deterministic individual nexus. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Anorexia Nervosa and Osteoporosis, Residuals of",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Osteoporosis and eating disorders. Journal of pediatric and adolescent gynecology. 1999. doi:10.1016/s1083-3188(00)86626-7. PMID 10326187",
+          "note": "Master-disposition clinical evidence for the bounded disease complication proposition. The source supports osteoporosis as a common complication of anorexia nervosa; it does not establish a deterministic individual nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10326187/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 10326187; PubMed title/abstract retrieved in the master research harvest; guard: Require established anorexia nervosa and independently documented osteoporosis; consider low weight, amenorrhea/hypoestrogenism, nutrition, vitamin D/calcium, and other bone-loss causes."
+        }
+      ]
+    }
+  ]
 }

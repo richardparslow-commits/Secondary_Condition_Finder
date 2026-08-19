@@ -1,3 +1,4 @@
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -51,6 +52,13 @@ describe("clinical evidence promotion batch 29", () => {
   });
 
   it("keeps target-mismatched Wave 6 hematologic candidates safely draft", () => {
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of ["essential-thrombocythemia", "primary-myelofibrosis", "myelodysplastic-syndrome"] as const) {
       const mapping = byId.get(id);
       expect(mapping?.draft).toBe(true);

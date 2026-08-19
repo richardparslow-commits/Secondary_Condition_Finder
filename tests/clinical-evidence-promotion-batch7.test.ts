@@ -1,3 +1,4 @@
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -40,6 +41,13 @@ describe("clinical evidence promotion batch 7", () => {
   });
 
   it("withdraws anorexia nervosa's legal-only depression relationship", () => {
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("anorexia-nervosa");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);

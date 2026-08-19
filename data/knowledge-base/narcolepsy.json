@@ -1,9 +1,30 @@
 {
   "id": "narcolepsy",
-  "draft": true,
-  "todo": [
-    "Targeted 2026-08-15 rescreen found a systematic review/meta-analysis reporting substantial depression/depressive-symptom burden in narcolepsy (PMID 32671534), but the reviewed evidence is heterogeneous and primarily establishes comorbidity rather than a narcolepsy-primary causal or aggravation pathway to a separately diagnosed depressive disorder.",
-    "Keep safe-draft until longitudinal or treatment-response evidence supports the exact downstream diagnosis and direction while addressing overlap from excessive daytime sleepiness, disrupted nocturnal sleep, medications, psychosocial burden, and pre-existing psychiatric illness."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require narcolepsy diagnosis preceding first-onset depressive disorder; separately establish depression and consider sleep disruption, medication effects, psychosocial burden, and other psychiatric disease. Longitudinal register evidence supports temporal risk only; no direct-secondary/aggravation pathwayIntelligence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Narcolepsy and Major Depressive Disorder",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Sleep Disorders and Risk of Incident Depression: A Population Case-Control Study. Twin research and human genetics : the official journal of the International Society for Twin Studies. 2019. doi:10.1017/thg.2019.22. PMID 31203833",
+          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Longitudinal register evidence supports temporal risk only; no direct-secondary/aggravation pathwayIntelligence.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31203833/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 31203833; PubMed title/abstract retrieved in the master research harvest; guard: Require narcolepsy diagnosis preceding first-onset depressive disorder; separately establish depression and consider sleep disruption, medication effects, psychosocial burden, and other psychiatric disease."
+        }
+      ]
+    }
+  ]
 }

@@ -1,3 +1,4 @@
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -56,6 +57,13 @@ describe("clinical evidence promotion batch 28", () => {
   });
 
   it("withdraws three nondirectional depression associations", () => {
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of ["gout", "myasthenia-gravis", "multiple-sclerosis"]) {
       const mapping = byId.get(id);
       expect(mapping?.draft).toBe(true);
@@ -65,6 +73,13 @@ describe("clinical evidence promotion batch 28", () => {
   });
 
   it("preserves the Batch 28 dispositions without freezing later program totals", () => {
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
     ) as { waves: Array<{ identities: Array<{ id: string; disposition: string }> }> };

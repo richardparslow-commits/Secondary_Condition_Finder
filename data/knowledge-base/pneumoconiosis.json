@@ -1,8 +1,53 @@
 {
   "id": "pneumoconiosis",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require pneumoconiosis before incident sleep apnea and separately diagnosed sleep apnea; account for obesity, COPD, age, and other sleep-disordered breathing risks. Retrospective cohort association only. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Pneumoconiosis (Asbestosis, Silicosis) and Sleep Apnea (Obstructive, Central, Mixed)",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Risk of sleep disorders in patients with pneumoconiosis: a retrospective cohort study. Journal of epidemiology and global health. 2024. doi:10.1007/s44197-024-00225-5. PMID 38573463",
+          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Retrospective cohort association only.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38573463/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 38573463; PubMed title/abstract retrieved in the master research harvest; guard: Require pneumoconiosis before incident sleep apnea and separately diagnosed sleep apnea; account for obesity, COPD, age, and other sleep-disordered breathing risks."
+        }
+      ]
+    },
+    {
+      "conditionId": "tuberculosis",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply only to silicosis/silica-exposure pneumoconiosis consistent with the source and separately established tuberculosis. Silicosis-specific meta-analysis; do not generalize to every pneumoconiosis subtype. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Pneumoconiosis (Asbestosis, Silicosis) matches the source-specific phenotype or population",
+        "Independent diagnosis of Mycobacterium Tuberculosis with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Qualified clinical opinion before applying the population-level relationship to an individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Silicosis and tuberculosis: A systematic review and meta-analysis. Pulmonology. 2025. doi:10.1016/j.pulmoe.2023.05.001. PMID 37349198",
+          "note": "Master-disposition clinical evidence for the bounded phenotype specific temporal risk proposition. Silicosis-specific meta-analysis; do not generalize to every pneumoconiosis subtype.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37349198/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 37349198; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to silicosis/silica-exposure pneumoconiosis consistent with the source and separately established tuberculosis."
+        }
+      ]
+    }
+  ]
 }

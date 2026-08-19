@@ -1,3 +1,4 @@
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
@@ -14,6 +15,13 @@ describe("clinical evidence promotion batch 15", () => {
   });
 
   it("recognizes the later evidence-quality withdrawal of PsA depression research", () => {
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("psoriatic-arthritis");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);

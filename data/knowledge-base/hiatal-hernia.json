@@ -1,8 +1,30 @@
 {
   "id": "hiatal-hernia",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "barretts-esophagus",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require a documented hiatal hernia and separately confirmed Barrett's esophagus; use as association/risk evidence only. Meta-analysis does not by itself establish chronology or individual causation; GERD and other factors remain important. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Hiatal Hernia and Barrett's Esophagus",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Hiatal hernia and the risk of Barrett's esophagus. Journal of gastroenterology and hepatology. 2013. doi:10.1111/j.1440-1746.2012.07199.x. PMID 22694245",
+          "note": "Master-disposition clinical evidence for the bounded association risk proposition. Meta-analysis does not by itself establish chronology or individual causation; GERD and other factors remain important.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22694245/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 22694245; PubMed title/abstract retrieved in the master research harvest; guard: Require a documented hiatal hernia and separately confirmed Barrett's esophagus; use as association/risk evidence only."
+        }
+      ]
+    }
+  ]
 }

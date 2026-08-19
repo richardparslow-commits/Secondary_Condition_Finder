@@ -14,16 +14,19 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // Raw live clinical-URL counts are observations, not monotonic floors: withdrawing an
 // unsupported unverified source is an evidence-quality improvement and may lower them.
 // M1 bounded source-intake ceiling authorized by qualified-human approval; all four new sources remain verified:false.
+// Clinical Mapping Master Batch 2026 adds 68 approved-but-unverified clinical source rows.
+// This raises only the temporary unverified/review queue ceiling; it is not source verification.
+// Verified provenance floors remain unchanged and can only advance through separate human review.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 73,
+  references: 141,
   liveVerified: 68,
   retiredVerified: 6,
   verifiedProvenance: 74,
-  unverified: 5,
-  reviewFindings: 5,
-  liveClinicalEvidenceWithUrls: 68,
+  unverified: 73,
+  reviewFindings: 73,
+  liveClinicalEvidenceWithUrls: 136,
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 72,
+  clinicalEvidenceProvenanceWithUrls: 140,
 });
 
 const hardFindings = [];

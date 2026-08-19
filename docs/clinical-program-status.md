@@ -1,3 +1,18 @@
+<!-- CLINICAL-MAPPING-MASTER-2026:START -->
+## Clinical Mapping Master Batch 2026 — local implementation candidate
+
+- Parent HEAD: `7b3848066b36b186f20ffe0170a3aa0489d578ea`.
+- Exhaustive master review: **245/245** former drafts.
+- Approved publication: **48 primaries / 68 relationship edges**.
+- Overall KB: **103 published / 197 draft** across 300 identities.
+- Wave ledger: **44 published-evidence-led / 0 promotion-candidate / 63 safe-draft**.
+- Citation queue growth: **68 source rows / 60 unique PMIDs**, all `verified:false`.
+- Exactly five approved treatment-complication edges may carry `pathwayIntelligence`; all other new edges omit it.
+- All 197 held/no-supported master files and the external mTBI hold are preserved unchanged.
+- Mapping approval is separate from qualified-human citation verification.
+- Local-only: no push, GitHub write, Vercel deploy/promotion, or Vercel configuration change.
+<!-- CLINICAL-MAPPING-MASTER-2026:END -->
+
 # Clinical Evidence Program Status
 
 Status: **Targeted Clinical Mapping Batch 31 is implemented on a production-validated base and awaits exact-head CI, Vercel Agent immutable-head review, protected merge, and production closure. External/human gates remain separate.**

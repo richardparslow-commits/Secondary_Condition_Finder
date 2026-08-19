@@ -1,8 +1,30 @@
 {
   "id": "pancreatitis",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "cardiac-inflammatory-disease",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as rare complication. Require acute pancreatitis and separately documented myocarditis/myocardial inflammatory injury temporally linked after exclusion of alternative causes. Rare case-based evidence; myocarditis is an uncommon reported complication, not a routine consequence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Pancreatitis and Pericarditis / Endocarditis / Myocarditis",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Pancreatitis-associated Myocarditis: Systematic Review and Meta-analysis of a Deadly Duo. Journal of cardiovascular echography. 2024. doi:10.4103/jcecho.jcecho_59_24. PMID 39895893",
+          "note": "Master-disposition clinical evidence for the bounded rare complication proposition. Rare case-based evidence; myocarditis is an uncommon reported complication, not a routine consequence.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39895893/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 39895893; PubMed title/abstract retrieved in the master research harvest; guard: Require acute pancreatitis and separately documented myocarditis/myocardial inflammatory injury temporally linked after exclusion of alternative causes."
+        }
+      ]
+    }
+  ]
 }

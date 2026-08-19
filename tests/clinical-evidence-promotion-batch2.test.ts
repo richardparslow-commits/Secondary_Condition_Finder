@@ -1,3 +1,4 @@
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -64,6 +65,13 @@ describe("clinical evidence promotion batch 2", () => {
   });
 
   it("withdraws unsafe knee and osteoarthritis legacy suggestions", () => {
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of ["knee-injury", "osteoarthritis"] as const) {
       const mapping = mappingById.get(id);
       expect(mapping?.draft).toBe(true);

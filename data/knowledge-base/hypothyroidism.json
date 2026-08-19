@@ -1,10 +1,30 @@
 {
   "id": "hypothyroidism",
-  "draft": true,
-  "todo": [
-    "The prior depressive-disorder suggestion remains withdrawn because the cited population meta-analysis found only a modest overall association, with a stronger signal in overt disease and a post hoc association in women but not men; the source does not establish a general directional secondary-condition pathway.",
-    "Targeted 2026-08-15 rescreen of hypothyroidism to carpal tunnel syndrome found a crude CTS prevalence difference but no statistically significant overall association after age/sex adjustment in the reviewed electrodiagnostic cohort (PMID 41002938; adjusted OR 1.71, 95% CI 0.89-3.28). A younger subgroup signal is insufficient to publish a general hypothyroidism-primary CTS pathway.",
-    "Reconsider only with evidence that supports the exact downstream diagnosis and individual causation or aggravation beyond population comorbidity while preserving thyroid phenotype, treatment, demographic, and competing-risk limits."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "tinnitus",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require hypothyroidism before incident tinnitus and separately documented tinnitus; consider hearing loss, noise exposure, vestibular disease, medication, and vascular causes. Retrospective longitudinal association only; no causal pathway metadata. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Hypothyroidism and Tinnitus",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Hypothyroidism and related comorbidities on the risks of developing tinnitus. Scientific reports. 2022. doi:10.1038/s41598-022-07457-0. PMID 35233053",
+          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Retrospective longitudinal association only; no causal pathway metadata.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35233053/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 35233053; PubMed title/abstract retrieved in the master research harvest; guard: Require hypothyroidism before incident tinnitus and separately documented tinnitus; consider hearing loss, noise exposure, vestibular disease, medication, and vascular causes."
+        }
+      ]
+    }
+  ]
 }

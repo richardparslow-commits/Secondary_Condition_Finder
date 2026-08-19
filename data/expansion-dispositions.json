@@ -13,11 +13,11 @@
       "identities": [
         {
           "id": "gout",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "osteoporosis",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "osteomalacia",
@@ -61,7 +61,7 @@
         },
         {
           "id": "parkinsons-disease",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "multiple-sclerosis",
@@ -98,11 +98,11 @@
       "identities": [
         {
           "id": "psoriatic-arthritis",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "charcot-arthropathy",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "sacroiliac-joint-dysfunction",
@@ -227,7 +227,7 @@
         },
         {
           "id": "thromboangiitis-obliterans",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "pulmonary-hypertension",
@@ -272,7 +272,7 @@
         },
         {
           "id": "narcolepsy",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "uveitis",
@@ -317,7 +317,7 @@
         },
         {
           "id": "gastroparesis",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "peritoneal-adhesions",
@@ -402,15 +402,15 @@
         },
         {
           "id": "essential-thrombocythemia",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "primary-myelofibrosis",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "myelodysplastic-syndrome",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "discoid-lupus",
@@ -435,11 +435,11 @@
         },
         {
           "id": "actinomycosis",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "nocardiosis",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "histoplasmosis",

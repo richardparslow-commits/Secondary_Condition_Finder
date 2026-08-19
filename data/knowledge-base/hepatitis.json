@@ -1,8 +1,76 @@
 {
   "id": "hepatitis",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "osteoporosis",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply only to documented hepatitis B virus infection and independently diagnosed osteoporosis. HBV-specific meta-analysis; do not generalize to hepatitis A or C. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Hepatitis A, B, or C matches the source-specific phenotype or population",
+        "Independent diagnosis of Osteoporosis, Residuals of with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Qualified clinical opinion before applying the population-level relationship to an individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Association between hepatitis B virus infection and risk of osteoporosis: A systematic review and meta-analysis. Asian journal of surgery. 2023. doi:10.1016/j.asjsur.2023.05.035. PMID 37230817",
+          "note": "Master-disposition clinical evidence for the bounded phenotype specific temporal risk proposition. HBV-specific meta-analysis; do not generalize to hepatitis A or C.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37230817/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 37230817; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to documented hepatitis B virus infection and independently diagnosed osteoporosis."
+        }
+      ]
+    },
+    {
+      "conditionId": "pancreatic-cancer",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply only to documented hepatitis C virus infection and pancreatic cancer; establish chronology independently. HCV-specific meta-analysis of association; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Hepatitis A, B, or C matches the source-specific phenotype or population",
+        "Independent diagnosis of Pancreatic Cancer with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Qualified clinical opinion before applying the population-level relationship to an individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Hepatitis C virus infection and risk of pancreatic cancer: A meta-analysis. Cancer epidemiology. 2020. doi:10.1016/j.canep.2020.101691. PMID 32088651",
+          "note": "Master-disposition clinical evidence for the bounded phenotype specific temporal risk proposition. HCV-specific meta-analysis of association; no individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32088651/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 32088651; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to documented hepatitis C virus infection and pancreatic cancer; establish chronology independently."
+        }
+      ]
+    },
+    {
+      "conditionId": "parkinsons-disease",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Use only for documented HBV/HCV phenotype consistent with the source, with Parkinson disease separately established; HCV signal should be kept distinct where stronger. Meta-analysis addresses viral hepatitis populations; association is debated and does not establish individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Hepatitis A, B, or C matches the source-specific phenotype or population",
+        "Independent diagnosis of Parkinson's Disease with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Qualified clinical opinion before applying the population-level relationship to an individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Risk of Parkinson's disease in hepatitis B and C populations: a systematic review and meta-analysis. Journal of neural transmission (Vienna, Austria : 1996). 2024. doi:10.1007/s00702-023-02705-7. PMID 37899363",
+          "note": "Master-disposition clinical evidence for the bounded phenotype specific temporal risk proposition. Meta-analysis addresses viral hepatitis populations; association is debated and does not establish individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37899363/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 37899363; PubMed title/abstract retrieved in the master research harvest; guard: Use only for documented HBV/HCV phenotype consistent with the source, with Parkinson disease separately established; HCV signal should be kept distinct where stronger."
+        }
+      ]
+    }
+  ]
 }

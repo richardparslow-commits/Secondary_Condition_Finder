@@ -1,8 +1,30 @@
 {
   "id": "penetrating-head-trauma",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "seizure-disorder",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply only to recurrent post-traumatic epilepsy/seizure disorder after documented penetrating/severe traumatic brain injury; do not map a single provoked seizure. Source supports post-traumatic epilepsy as a recurrent seizure disorder and risk increases with injury severity; individual attribution still requires clinical assessment. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Penetrating Head Trauma matches the source-specific phenotype or population",
+        "Independent diagnosis of Seizure Disorder / Epilepsy with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Qualified clinical opinion before applying the population-level relationship to an individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Animal Models of Post-Traumatic Epilepsy. Diagnostics (Basel, Switzerland). 2019. doi:10.3390/diagnostics10010004. PMID 31861595",
+          "note": "Master-disposition clinical evidence for the bounded phenotype specific temporal risk proposition. Source supports post-traumatic epilepsy as a recurrent seizure disorder and risk increases with injury severity; individual attribution still requires clinical assessment.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31861595/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 31861595; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to recurrent post-traumatic epilepsy/seizure disorder after documented penetrating/severe traumatic brain injury; do not map a single provoked seizure."
+        }
+      ]
+    }
+  ]
 }

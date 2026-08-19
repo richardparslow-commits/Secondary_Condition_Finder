@@ -1,8 +1,30 @@
 {
   "id": "esophageal-cancer",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "cardiac-arrhythmia",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require esophageal cancer treated with thoracic radiotherapy and incident atrial fibrillation/qualifying arrhythmia after radiation exposure. Treatment-associated cardiotoxicity evidence; do not infer AF from esophageal cancer without thoracic RT. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment or procedure used for Esophageal Cancer",
+        "Independent diagnosis of Cardiac Arrhythmias (Atrial Fibrillation, Tachycardia) and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Incident Atrial Fibrillation and Survival Outcomes in Esophageal Cancer following Radiotherapy. International journal of radiation oncology, biology, physics. 2024. doi:10.1016/j.ijrobp.2023.08.011. PMID 37574171",
+          "note": "Master-disposition clinical evidence for the bounded treatment associated risk proposition. Treatment-associated cardiotoxicity evidence; do not infer AF from esophageal cancer without thoracic RT.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37574171/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 37574171; PubMed title/abstract retrieved in the master research harvest; guard: Require esophageal cancer treated with thoracic radiotherapy and incident atrial fibrillation/qualifying arrhythmia after radiation exposure."
+        }
+      ]
+    }
+  ]
 }

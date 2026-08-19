@@ -1,9 +1,30 @@
 {
   "id": "osteoarthritis",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "The prior plantar-fasciitis biomechanical relationship was withdrawn because a musculoskeletal rating citation does not establish that osteoarthritis caused or aggravated plantar fasciitis."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established knee/hip/hand OA in the source-relevant older-adult phenotype before incident sleep apnea; separately diagnose sleep apnea. Population cohort in adults age 50+; association does not establish causation and obesity/pain/activity limits may confound. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Osteoarthritis / Degenerative Arthritis and Sleep Apnea (Obstructive, Central, Mixed)",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Osteoarthritis and the risk of sleep apnea: a general population-based cohort study. Clinical rheumatology. 2025. doi:10.1007/s10067-025-07457-1. PMID 40329131",
+          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Population cohort in adults age 50+; association does not establish causation and obesity/pain/activity limits may confound.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40329131/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 40329131; PubMed title/abstract retrieved in the master research harvest; guard: Require established knee/hip/hand OA in the source-relevant older-adult phenotype before incident sleep apnea; separately diagnose sleep apnea."
+        }
+      ]
+    }
+  ]
 }
