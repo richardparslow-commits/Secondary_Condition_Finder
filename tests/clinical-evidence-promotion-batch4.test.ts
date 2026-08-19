@@ -17,7 +17,9 @@ describe("clinical evidence promotion batch 4", () => {
       const mapping = byId.get(id); const suggestion = mapping?.suggestions[0];
       expect(mapping?.draft).toBe(false); expect(mapping?.todo).toEqual([]); expect(suggestion?.conditionId).toBe("osteoarthritis");
       expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-      expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain(pmid); expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+      expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain(pmid);
+      expect(suggestion?.sourceReferences[0]?.verified).toBe(id === "acl-injury");
+      expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe(id === "acl-injury" ? "2026-08-18" : "2026-08-14");
       expect(suggestion?.rationale).toMatch(/injured knee|individual review/i);
     }
   });
@@ -40,7 +42,12 @@ describe("clinical evidence promotion batch 4", () => {
     for (const id of ["hip-strain","ankle-strain"]) { expect(maintenance).toContain(id); expect(carry).not.toContain(id); }
     expect(carry).toContain("contralateral-knee-condition");
   });
-  it("does not auto-verify surviving Batch 4 clinical sources", () => {
-    for (const id of ["acl-injury","pcl-injury"] as const) for (const suggestion of byId.get(id)?.suggestions ?? []) expect(suggestion.sourceReferences.every((reference) => reference.verified === false && reference.sourceCheckedOn === "2026-08-14")).toBe(true);
+  it("distinguishes later qualified-human ACL verification from the still-unverified PCL source", () => {
+    const acl = byId.get("acl-injury")?.suggestions[0]?.sourceReferences[0];
+    expect(acl?.verified).toBe(true);
+    expect(acl?.sourceCheckedOn).toBe("2026-08-18");
+    const pcl = byId.get("pcl-injury")?.suggestions[0]?.sourceReferences[0];
+    expect(pcl?.verified).toBe(false);
+    expect(pcl?.sourceCheckedOn).toBe("2026-08-14");
   });
 });

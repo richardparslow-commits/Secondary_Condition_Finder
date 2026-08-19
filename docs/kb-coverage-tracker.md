@@ -40,19 +40,19 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-Batch 31 adds exactly two new unverified clinical source rows and removes none. The expected exact-head position is:
+Batch 31 originally added two unverified clinical source rows. Citation Verification Batch 01 subsequently received explicit qualified-human approval for five existing live sources. The current local position is:
 
 - live references: **69**;
-- live verified: **8**;
+- live verified: **13**;
 - retired verified: **6**;
-- verified provenance: **14**;
-- live unverified: **61**;
-- published-unverified review findings: **59**;
+- verified provenance: **19**;
+- live unverified: **56**;
+- published-unverified review findings: **54**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-The `61` live-unverified total and `59` published-review count remain within the existing citation-debt ceilings. Automated source checking never converts `verified: false` to `verified: true`, and Batch 31 does not raise a citation baseline merely to permit publication.
+Citation Verification Batch 01 reduced live-unverified debt from `61` to `56` and published-review debt from `59` to `54` without changing the live-reference denominator. The ratchet was lowered to those new values. Automated source checking still cannot authorize verification; the five promotions to `verified: true` record the repository owner's explicit qualified-human review decision documented in `docs/citation-verification-batch-01.md`.
 
 ## Safety rule for safe drafts
 

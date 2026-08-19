@@ -42,7 +42,8 @@ describe("clinical evidence promotion batch 28", () => {
     expect(suggestion?.rationale).toMatch(/low quality|generally low/i);
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/33387100/");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("keeps hydronephrosis draft rather than substituting obstruction as the primary condition", () => {

@@ -66,14 +66,15 @@ describe("clinical evidence promotion batch 3", () => {
     expect(insomnia?.ratingSchedule[0]?.verified).toBe(false);
   });
 
-  it("keeps new clinical source checks truthful rather than auto-verifying", () => {
-    for (const id of ["chronic-liver-disease", "amputation-or-loss-of-use"] as const) {
-      const mapping = mappingById.get(id);
-      for (const suggestion of mapping?.suggestions ?? []) {
-        expect(suggestion.sourceReferences.every((reference) => reference.verified === false)).toBe(true);
-        expect(suggestion.sourceReferences.every((reference) => reference.sourceCheckedOn === "2026-08-14")).toBe(true);
-        expect(suggestion.sourceReferences.every((reference) => reference.verificationScope === "clinical-evidence")).toBe(true);
-      }
-    }
+  it("preserves source-check provenance after later qualified-human verification", () => {
+    const chronicLiver = mappingById.get("chronic-liver-disease")?.suggestions[0]?.sourceReferences[0];
+    expect(chronicLiver?.verified).toBe(false);
+    expect(chronicLiver?.sourceCheckedOn).toBe("2026-08-14");
+    expect(chronicLiver?.verificationScope).toBe("clinical-evidence");
+
+    const amputation = mappingById.get("amputation-or-loss-of-use")?.suggestions[0]?.sourceReferences[0];
+    expect(amputation?.verified).toBe(true);
+    expect(amputation?.sourceCheckedOn).toBe("2026-08-18");
+    expect(amputation?.verificationScope).toBe("clinical-evidence");
   });
 });

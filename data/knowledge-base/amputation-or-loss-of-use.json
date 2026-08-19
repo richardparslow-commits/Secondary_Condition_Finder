@@ -36,8 +36,8 @@
           "note": "Systematic review finding high prevalence of anxiety and depression after traumatic limb amputation, with substantial study heterogeneity and limited long-term prospective data; supports clinical evaluation rather than automatic nexus inference.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25294119/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 25294119; abstract; systematic review of anxiety and depression following traumatic limb amputation"
         }
       ]

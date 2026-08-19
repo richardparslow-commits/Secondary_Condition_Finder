@@ -12,9 +12,9 @@ npm run citations:queue
 
 The generated report is authoritative for the exact current human-review row set.
 
-## Current Batch-31 candidate baseline
+## Current citation-verification baseline
 
-The targeted candidate is expected to contain **61 live unverified references** and **59 live unverified published references**, pending exact-head CI confirmation.
+After qualified-human Citation Verification Batch 01, the repository contains **56 live unverified references** and **54 live unverified published references**.
 
 Batch 31 adds exactly two new bounded clinical source rows, both `verified: false`:
 
@@ -23,9 +23,13 @@ Batch 31 adds exactly two new bounded clinical source rows, both `verified: fals
 
 Both are prospective incident-depression sources. Their published rationales explicitly distinguish population-level temporal risk from an individual medical nexus and require diagnosis-specific chronology and competing-cause review.
 
-No source is automatically verified, and no citation-debt baseline is raised. The two additions consume the existing post-Batch-30 headroom, moving the candidate to the current ceilings of 61 live unverified references and 59 published-unverified review findings.
+No source is automatically verified. Citation Verification Batch 01 separately records five explicit qualified-human verification decisions, reducing the current ceilings to 56 live unverified references and 54 published-unverified review findings without changing the live-reference denominator.
 
 The targeted screen also records several nonpublished evidence dispositions without adding live source rows: carpal tunnel syndrome psychiatric association (PMID 37639884); ME/CFS psychiatric temporal/comorbidity literature (including PMIDs 40785390, 15184691, 19566769); hypothyroidism/CTS evidence (PMID 41002938); narcolepsy/depression meta-analysis (PMID 32671534); peripheral-neuropathy/falls-fractures evidence (PMID 36945108); radial mononeuropathy characterization (PMID 41392533); REM sleep behavior disorder prodromal synucleinopathy evidence (PMIDs 39177811 and 28429825); and social-anxiety/depression prospective evidence (PMID 11231832). These are screening notes, not live published citation rows.
+
+## Completed Citation Verification Batch 01
+
+Five sources were reviewed and explicitly approved by the repository owner acting as the qualified human reviewer: achalasia→esophageal cancer (PMID 37975607), ACL injury→osteoarthritis (PMID 33852440), acromegaly→hypertension (PMID 42050227), traumatic limb amputation→depressive disorder (PMID 25294119), and sphincter-cutting anal-fistula treatment→fecal incontinence (PMID 33387100). The reproducible decision record is `docs/citation-verification-batch-01.md`.
 
 ## Human review procedure
 

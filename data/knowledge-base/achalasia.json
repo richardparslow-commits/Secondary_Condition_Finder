@@ -9,7 +9,9 @@
       "prevalence": "occasionally-explored",
       "rationale": "A large matched U.S. Veterans cohort found substantially higher esophageal-cancer incidence among patients with achalasia than matched controls; cancers arising in the achalasia group were predominantly squamous-cell carcinoma. This supports focused cancer-risk review but not an automatic individual relationship. The generic esophageal-cancer catalog target is broader than the observed histology pattern, so pathology, chronology, treatment history, and other cancer risk factors must be reviewed explicitly.",
       "pathwayIntelligence": {
-        "pathways": ["disease-progression"],
+        "pathways": [
+          "disease-progression"
+        ],
         "causalChain": "Documented achalasia with chronic esophageal stasis/inflammation risk context → later esophageal malignancy, with histology and chronology requiring individual confirmation.",
         "developmentQuestions": [
           "When was achalasia objectively diagnosed, and what testing established it?",
@@ -35,8 +37,8 @@
           "note": "Nationwide matched Veterans Affairs cohort reporting higher esophageal-cancer incidence in achalasia and predominantly squamous-cell histology among cancers in the achalasia group; supports focused risk research, not an automatic individual conclusion.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37975607/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 37975607; abstract/results; 1,863 Veterans with achalasia matched 1:4 to 7,452 controls; 17 versus 15 incident esophageal cancers; adjusted hazard ratio 4.6 (95% CI 2.3-9.2)"
         }
       ]

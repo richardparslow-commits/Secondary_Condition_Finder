@@ -35,8 +35,8 @@ describe("clinical evidence promotion batch 7", () => {
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("42050227");
     expect(source?.citation).toMatch(/Pituitary\. 2026;29\(3\):76/);
-    expect(source?.verified).toBe(false);
-    expect(source?.sourceCheckedOn).toBe("2026-08-14");
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("withdraws anorexia nervosa's legal-only depression relationship", () => {
@@ -62,10 +62,10 @@ describe("clinical evidence promotion batch 7", () => {
     expect(condition?.ratingSchedule[0]?.verified).toBe(false);
   });
 
-  it("does not auto-verify the Batch 7 clinical source", () => {
+  it("records the later qualified-human verification of the Batch 7 clinical source", () => {
     const source = byId.get("acromegaly")?.suggestions[0]?.sourceReferences[0];
-    expect(source?.verified).toBe(false);
-    expect(source?.sourceCheckedOn).toBe("2026-08-14");
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
     expect(source?.sourceLocator).toMatch(/distal-nephron|sodium/i);
   });
 });
