@@ -40,23 +40,23 @@ Key negative-modeling protections include rejecting CTS/median-neuropathy taxono
 
 ## Citation position
 
-After qualified-human Citation Verification Batches 01 through 07, the current local position is:
+After qualified-human Citation Verification Batches 01 through 08, the current local position is:
 
 - live references: **69**;
-- live verified: **43**;
+- live verified: **47**;
 - retired verified: **6**;
-- verified provenance: **49**;
-- live unverified: **26**;
-- published-unverified review findings: **24**;
+- verified provenance: **53**;
+- live unverified: **22**;
+- published-unverified review findings: **20**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 07 lowers the debt ratchet from 31/29 to 26/24 while preserving 69 total live references and zero hard findings. Four sources were verified as written; insomnia→depressive disorder was narrowed to temporal-association-only evidence by removing directional `direct-secondary` pathway intelligence before verification.
+Batch 08 lowers the debt ratchet from 26/24 to 22/20 while preserving 69 total live references and zero hard findings. Three relationships were verified as written; migraine→depressive disorder was narrowed to temporal-association-only evidence before verification; and mild-TBI→`migraine-headaches` was narrowed but deliberately held unverified because the cited review establishes post-traumatic headache with migraine-like phenotype rather than the current migraine target itself.
 
 ## Human citation verification
 
-Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 07 record explicit qualified-human approval for thirty-five sources; the remaining 26 live unverified references remain `verified: false` until separately reviewed.
+Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 08 record explicit qualified-human approval resulting in thirty-nine newly verified live sources across the verification series; the remaining 22 live unverified references remain `verified: false` until separately reviewed. Batch 08 demonstrates that human review may intentionally retain `verified: false` when source-to-target taxonomy is insufficient.
 
 ## External/manual gates
 

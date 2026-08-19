@@ -40,19 +40,19 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-After qualified-human Citation Verification Batches 01 through 07, the current local position is:
+After qualified-human Citation Verification Batches 01 through 08, the current local position is:
 
 - live references: **69**;
-- live verified: **43**;
+- live verified: **47**;
 - retired verified: **6**;
-- verified provenance: **49**;
-- live unverified: **26**;
-- published-unverified review findings: **24**;
+- verified provenance: **53**;
+- live unverified: **22**;
+- published-unverified review findings: **20**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Batch 07 reduces live-unverified debt from `31` to `26` and published-review debt from `29` to `24` without changing the 69-reference denominator. Hypertensive-heart-disease→heart failure, confirmed hypogonadism→osteoporosis, chronic hypoparathyroidism→kidney stones, and transvenous pacemaker lead→tricuspid valve disorder were verified as written. Insomnia→depressive disorder was narrowed from directional `direct-secondary` metadata to a temporal-association-only research relationship before verification. Automated source checking still cannot authorize verification; the human decisions are documented in the seven citation-verification batch records.
+Batch 08 reduces live-unverified debt from `26` to `22` and published-review debt from `24` to `20` without changing the 69-reference denominator. ILD→OSA, Paget disease→osteoarthritis, and ovarian-cancer treatment→peripheral neuropathy were verified as written; migraine→depression was narrowed to temporal-association-only evidence before verification. The mTBI→migraine-target row was narrowed to phenotype-oriented post-traumatic-headache research and intentionally remains unverified because PMID 38568491 does not itself establish the current migraine diagnostic target. Automated source checking still cannot authorize verification; the human decisions are documented in the eight citation-verification batch records.
 
 ## Safety rule for safe drafts
 

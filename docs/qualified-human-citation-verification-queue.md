@@ -14,7 +14,7 @@ The generated report is authoritative for the exact current human-review row set
 
 ## Current citation-verification baseline
 
-After qualified-human Citation Verification Batches 01 through 07, the repository contains **26 live unverified references** and **24 live unverified published references**.
+After qualified-human Citation Verification Batches 01 through 08, the repository contains **22 live unverified references** and **20 live unverified published references**.
 
 Batch 31 adds exactly two new bounded clinical source rows, both `verified: false`:
 
@@ -23,7 +23,7 @@ Batch 31 adds exactly two new bounded clinical source rows, both `verified: fals
 
 Both are prospective incident-depression sources. Their published rationales explicitly distinguish population-level temporal risk from an individual medical nexus and require diagnosis-specific chronology and competing-cause review.
 
-No source is automatically verified. Citation Verification Batches 01 through 07 each record five explicit qualified-human decisions, reducing the current ceilings to 26 live unverified references and 24 published-unverified review findings without changing the live-reference denominator.
+No source is automatically verified. Citation Verification Batches 01 through 08 record explicit qualified-human decisions, reducing the current ceilings to 22 live unverified references and 20 published-unverified review findings without changing the live-reference denominator. Batch 08 intentionally holds one reviewed source unverified because the current knowledge-base target is broader/different than the cited post-traumatic-headache evidence.
 
 The targeted screen also records several nonpublished evidence dispositions without adding live source rows: carpal tunnel syndrome psychiatric association (PMID 37639884); ME/CFS psychiatric temporal/comorbidity literature (including PMIDs 40785390, 15184691, 19566769); hypothyroidism/CTS evidence (PMID 41002938); narcolepsy/depression meta-analysis (PMID 32671534); peripheral-neuropathy/falls-fractures evidence (PMID 36945108); radial mononeuropathy characterization (PMID 41392533); REM sleep behavior disorder prodromal synucleinopathy evidence (PMIDs 39177811 and 28429825); and social-anxiety/depression prospective evidence (PMID 11231832). These are screening notes, not live published citation rows.
 
@@ -42,6 +42,10 @@ Five additional sources were explicitly approved by the repository owner acting 
 ## Completed Citation Verification Batch 04
 
 Five additional live clinical-evidence references were explicitly approved by the repository owner acting as the qualified human reviewer: depressive-disorder treatment→weight gain (PMID 31524318), obesity/weight gain→OSA as the second link in the depressive-disorder intermediate chain (PMID 40330547), depressive-disorder psychotropic treatment→erectile dysfunction with agent-specific safeguards (PMID 34247952), type 1 diabetes→CKD (PMID 41358881), and scalp discoid lupus→scarring alopecia (PMID 35817588). All five were verified as written. The reproducible decision record is `docs/citation-verification-batch-04.md`.
+
+## Completed Citation Verification Batch 08
+
+Five additional published clinical-evidence rows were explicitly reviewed by the repository owner. ILD→OSA (PMID 33403599), Paget disease→osteoarthritis (PMID 18504638), and ovarian-cancer paclitaxel treatment→peripheral neuropathy (PMID 24582486) were verified as written. Migraine→depressive disorder (PMID 23588795) was narrowed from `somatopsychic` mechanism metadata to temporal-association-only framing and then verified. Mild TBI→`migraine-headaches` (PMID 38568491) was narrowed to a phenotype-oriented post-traumatic-headache research flag and intentionally remains `verified: false` because the cited review does not independently establish the repository's migraine diagnostic target. The reproducible decision record is `docs/citation-verification-batch-08.md`.
 
 ## Completed Citation Verification Batch 07
 

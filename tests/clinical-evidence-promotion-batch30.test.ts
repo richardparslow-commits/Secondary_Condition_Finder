@@ -15,20 +15,32 @@ describe("clinical evidence promotion batch 30", () => {
     expect(kb).toHaveLength(300);
   });
 
-  it.each([
-    ["ovarian-cancer", "peripheral-neuropathy", "treatment-complication", "24582486"],
-    ["testicular-cancer", "hypogonadism", "treatment-complication", "27009402"],
-  ])("publishes %s to %s with one bounded unverified clinical source", (primaryId, secondaryId, pathway, pmid) => {
-    const mapping = byId.get(primaryId);
+  it("recognizes Batch-8 qualified-human verification of ovarian-cancer treatment neuropathy", () => {
+    const mapping = byId.get("ovarian-cancer");
     const suggestion = mapping?.suggestions[0];
     expect(mapping?.draft).toBe(false);
     expect(mapping?.todo).toEqual([]);
     expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe(secondaryId);
-    expect(suggestion?.pathwayIntelligence?.pathways).toEqual([pathway]);
+    expect(suggestion?.conditionId).toBe("peripheral-neuropathy");
+    expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["treatment-complication"]);
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain(pmid);
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("24582486");
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
+  });
+
+  it("keeps testicular-cancer treatment hypogonadism unverified", () => {
+    const mapping = byId.get("testicular-cancer");
+    const suggestion = mapping?.suggestions[0];
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.todo).toEqual([]);
+    expect(mapping?.suggestions).toHaveLength(1);
+    expect(suggestion?.conditionId).toBe("hypogonadism");
+    expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["treatment-complication"]);
+    expect(suggestion?.sourceReferences).toHaveLength(1);
+    expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("27009402");
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
   });
 

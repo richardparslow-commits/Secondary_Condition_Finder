@@ -34,7 +34,7 @@ describe("targeted clinical mapping batch 31", () => {
     expect(suggestion?.rationale).not.toMatch(/direct-secondary research/i);
   });
 
-  it("keeps migraine-to-depression as the still-unverified bounded prospective mapping", () => {
+  it("recognizes Batch-8 migraine-to-depression temporal-association narrowing and verification", () => {
     const mapping = byId.get("migraine-headaches");
     const suggestion = mapping?.suggestions[0];
 
@@ -42,12 +42,15 @@ describe("targeted clinical mapping batch 31", () => {
     expect(mapping?.todo).toEqual([]);
     expect(mapping?.suggestions).toHaveLength(1);
     expect(suggestion?.conditionId).toBe("depressive-disorder");
-    expect(suggestion?.pathwayIntelligence?.pathways).toContain("somatopsychic");
+    expect(suggestion?.pathwayIntelligence).toBeUndefined();
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("23588795");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
-    expect(suggestion?.rationale).toMatch(/population|prospective|individual/i);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
+    expect(suggestion?.rationale).toMatch(/temporal-association research/i);
+    expect(suggestion?.rationale).toMatch(/does not establish individual causation/i);
+    expect(suggestion?.rationale).not.toMatch(/somatopsychic research/i);
   });
 
   it("preserves the existing bounded mild-TBI to migraine mapping", () => {
@@ -56,7 +59,10 @@ describe("targeted clinical mapping batch 31", () => {
     expect(mapping?.suggestions).toHaveLength(1);
     expect(mapping?.suggestions[0]?.conditionId).toBe("migraine-headaches");
     expect(mapping?.suggestions[0]?.sourceReferences[0]?.sourceUrl).toContain("38568491");
+    expect(mapping?.suggestions[0]?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
     expect(mapping?.suggestions[0]?.sourceReferences[0]?.verified).toBe(false);
+    expect(mapping?.suggestions[0]?.rationale).toMatch(/phenotype-oriented research flag/i);
+    expect(mapping?.suggestions[0]?.rationale).toMatch(/verification.*remains on hold/i);
   });
 
   it("keeps micro-TBI a separate nonstandardized safe draft", () => {
@@ -94,7 +100,7 @@ describe("targeted clinical mapping batch 31", () => {
     expect(byId.get("social-anxiety-disorder")?.todo.join(" ")).toMatch(/11231832|prospective|population-level/i);
   });
 
-  it("reflects the current citation debt after qualified-human Batches 1 through 7", () => {
+  it("reflects the current citation debt after qualified-human Batches 1 through 8", () => {
     const liveReferences = kb.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
@@ -111,8 +117,8 @@ describe("targeted clinical mapping batch 31", () => {
     );
 
     expect(liveReferences).toHaveLength(69);
-    expect(liveUnverified).toHaveLength(26);
-    expect(publishedUnverified).toHaveLength(24);
+    expect(liveUnverified).toHaveLength(22);
+    expect(publishedUnverified).toHaveLength(20);
     expect(clinicalWithUrls).toHaveLength(64);
   });
 

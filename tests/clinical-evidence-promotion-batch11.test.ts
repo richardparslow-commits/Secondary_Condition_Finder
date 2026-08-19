@@ -55,7 +55,8 @@ describe("clinical evidence promotion batch 11", () => {
     expect(suggestion?.rationale).toMatch(/association|prevalence/i);
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("33403599");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
     expect(mapping?.suggestions.some((entry) => entry.conditionId === "cardiac-arrhythmia")).toBe(false);
   });
 

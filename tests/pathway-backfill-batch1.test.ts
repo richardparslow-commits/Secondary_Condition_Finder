@@ -100,6 +100,9 @@ describe("controlled pathway backfill batch 1", () => {
     expect(migraine?.suggestions).toHaveLength(1);
     expect(migraine?.suggestions[0]?.conditionId).toBe("depressive-disorder");
     expect(migraine?.suggestions[0]?.sourceReferences[0]?.sourceUrl).toContain("23588795");
-    expect(migraine?.suggestions[0]?.pathwayIntelligence?.pathways).toEqual(["somatopsychic"]);
+    expect(migraine?.suggestions[0]?.pathwayIntelligence).toBeUndefined();
+    expect(migraine?.suggestions[0]?.rationale).toMatch(/temporal-association research/i);
+    expect(migraine?.suggestions[0]?.sourceReferences[0]?.verified).toBe(true);
+    expect(migraine?.suggestions[0]?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
   });
 });

@@ -21,7 +21,8 @@ describe("clinical evidence promotion batch 24", () => {
     expect(suggestion?.conditionId).toBe("osteoarthritis");
     expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["biomechanical", "disease-progression"]);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("18504638");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("promotes syringomyelia Charcot arthropathy only with neurologic/anatomic correlation", () => {

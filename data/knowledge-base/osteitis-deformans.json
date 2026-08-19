@@ -9,7 +9,10 @@
       "prevalence": "commonly-explored",
       "rationale": "Secondary osteoarthritis is a recognized articular complication of Paget disease of bone, particularly where Paget-related bone enlargement or deformity alters mechanics at an adjacent joint. Consensus and review literature identify secondary osteoarthritis among important Paget complications. This supports focused research when osteoarthritis developed in a joint anatomically related to documented Paget involvement; it does not establish that Paget disease caused osteoarthritis at an unrelated joint or in an individual case without site-specific chronology and competing-risk review.",
       "pathwayIntelligence": {
-        "pathways": ["biomechanical", "disease-progression"],
+        "pathways": [
+          "biomechanical",
+          "disease-progression"
+        ],
         "causalChain": "Paget-related abnormal bone remodeling and deformity near a joint may alter joint mechanics and contribute to secondary degenerative osteoarthritis in that anatomically related joint.",
         "developmentQuestions": [
           "Which bones and joints are involved by Paget disease on imaging?",
@@ -34,8 +37,8 @@
           "note": "Consensus review identifies secondary osteoarthritis among clinically important complications of Paget disease of bone. Supports a site-specific complication pathway, not automatic attribution of osteoarthritis at any joint.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18504638/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 18504638; abstract lists secondary osteoarthritis among Paget disease complications"
         }
       ]

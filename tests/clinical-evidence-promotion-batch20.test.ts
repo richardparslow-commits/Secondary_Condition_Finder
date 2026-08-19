@@ -29,8 +29,11 @@ describe("clinical evidence promotion batch 20", () => {
     expect(suggestion?.conditionId).toBe("migraine-headaches");
     expect(suggestion?.pathwayIntelligence).toBeUndefined();
     expect(suggestion?.rationale).toMatch(/post-traumatic headache/i);
-    expect(suggestion?.rationale).toMatch(/not.*every|does not justify/i);
+    expect(suggestion?.rationale).toMatch(/phenotype-oriented research flag/i);
+    expect(suggestion?.rationale).toMatch(/does not by itself establish.*migraine diagnosis/i);
+    expect(suggestion?.rationale).toMatch(/verification.*remains on hold/i);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("38568491");
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
   });
 
