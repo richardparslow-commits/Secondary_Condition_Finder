@@ -33,7 +33,8 @@ describe("clinical evidence promotion batch 5", () => {
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("41125322");
     expect(source?.citation).toMatch(/169\(6\):1184-1231/);
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("promotes achalasia as a histology-aware esophageal-cancer risk pathway", () => {
@@ -72,10 +73,10 @@ describe("clinical evidence promotion batch 5", () => {
     expect(carry).toEqual(["contralateral-knee-condition"]);
   });
 
-  it("distinguishes later qualified-human achalasia verification from the still-unverified Barrett source", () => {
+  it("records later qualified-human verification for both Barrett and achalasia evidence", () => {
     const barrett = byId.get("barretts-esophagus")?.suggestions[0]?.sourceReferences[0];
-    expect(barrett?.verified).toBe(false);
-    expect(barrett?.sourceCheckedOn).toBe("2026-08-14");
+    expect(barrett?.verified).toBe(true);
+    expect(barrett?.sourceCheckedOn).toBe("2026-08-18");
     const achalasia = byId.get("achalasia")?.suggestions[0]?.sourceReferences[0];
     expect(achalasia?.verified).toBe(true);
     expect(achalasia?.sourceCheckedOn).toBe("2026-08-18");

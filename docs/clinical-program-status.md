@@ -40,23 +40,23 @@ Key negative-modeling protections include rejecting CTS/median-neuropathy taxono
 
 ## Citation position
 
-Batch 31 originally added exactly two unverified clinical source rows. After qualified-human Citation Verification Batch 01, the current local position is:
+After qualified-human Citation Verification Batches 01 and 02, the current local position is:
 
 - live references: **69**;
-- live verified: **13**;
+- live verified: **18**;
 - retired verified: **6**;
-- verified provenance: **19**;
-- live unverified: **56**;
-- published-unverified review findings: **54**;
+- verified provenance: **24**;
+- live unverified: **51**;
+- published-unverified review findings: **49**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Citation Verification Batch 01 lowered the debt ratchet from 61/59 to 56/54 while preserving 69 total live references and zero hard findings.
+Batch 01 lowered the debt ratchet from 61/59 to 56/54. Batch 02 lowers it again to 51/49 while preserving 69 total live references and zero hard findings.
 
 ## Human citation verification
 
-Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batch 01 records explicit qualified-human approval for five sources; the remaining 56 live unverified references, including the two Batch-31 source rows, remain `verified: false` until separately reviewed.
+Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 and 02 record explicit qualified-human approval for ten sources; the remaining 51 live unverified references, including the two Batch-31 source rows unless separately reviewed later, remain `verified: false`.
 
 ## External/manual gates
 

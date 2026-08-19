@@ -36,8 +36,8 @@
           "note": "Condition-specific cardiomyopathy guideline describing heart failure management across cardiomyopathies and noting that patients with dilated cardiomyopathy often develop heart-failure symptoms; supports disease-progression plausibility, not an automatic individual nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37622657/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 37622657; Sections 6.10.2 and 7.2.3"
         }
       ]

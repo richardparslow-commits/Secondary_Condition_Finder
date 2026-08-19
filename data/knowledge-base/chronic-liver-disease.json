@@ -36,8 +36,8 @@
           "note": "Evidence-based consensus describing hepatic fibrosis as a key developmental step across chronic liver diseases leading to cirrhosis; supports a fibrosis-progression pathway, not an automatic individual nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32108989/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 32108989; abstract statement that hepatic fibrosis is a key step in chronic liver diseases leading to cirrhosis"
         }
       ]

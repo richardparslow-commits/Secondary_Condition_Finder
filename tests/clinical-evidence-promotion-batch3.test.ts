@@ -36,7 +36,8 @@ describe("clinical evidence promotion batch 3", () => {
     expect(suggestion?.rationale).toMatch(/umbrella|etiology/i);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/32108989/");
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("repairs the amputation depression relationship with clinical evidence", () => {
@@ -66,10 +67,10 @@ describe("clinical evidence promotion batch 3", () => {
     expect(insomnia?.ratingSchedule[0]?.verified).toBe(false);
   });
 
-  it("preserves source-check provenance after later qualified-human verification", () => {
+  it("preserves source-check provenance after later qualified-human verification batches", () => {
     const chronicLiver = mappingById.get("chronic-liver-disease")?.suggestions[0]?.sourceReferences[0];
-    expect(chronicLiver?.verified).toBe(false);
-    expect(chronicLiver?.sourceCheckedOn).toBe("2026-08-14");
+    expect(chronicLiver?.verified).toBe(true);
+    expect(chronicLiver?.sourceCheckedOn).toBe("2026-08-18");
     expect(chronicLiver?.verificationScope).toBe("clinical-evidence");
 
     const amputation = mappingById.get("amputation-or-loss-of-use")?.suggestions[0]?.sourceReferences[0];

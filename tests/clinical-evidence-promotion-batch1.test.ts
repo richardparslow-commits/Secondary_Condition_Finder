@@ -37,9 +37,9 @@ describe("clinical evidence promotion batch 1", () => {
     const reference = mapping?.suggestions[0]?.sourceReferences[0];
     expect(reference?.verificationScope).toBe("clinical-evidence");
     expect(reference?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/37622657/");
-    expect(reference?.sourceCheckedOn).toBe("2026-08-14");
+    expect(reference?.sourceCheckedOn).toBe("2026-08-18");
     expect(reference?.sourceLocator).toMatch(/37622657|6\.10\.2|7\.2\.3/i);
-    expect(reference?.verified).toBe(false);
+    expect(reference?.verified).toBe(true);
   });
 
   it("publishes only the reviewed urethral-stricture hydronephrosis relationship", () => {
@@ -85,13 +85,13 @@ describe("clinical evidence promotion batch 1", () => {
     expect(fibromyalgia?.ratingSchedule[0]?.note).toMatch(/5025/i);
   });
 
-  it("does not automate qualified-human citation verification", () => {
-    for (const id of ["cardiomyopathy", "urethral-stricture"] as const) {
-      const mapping = mappingById.get(id);
-      for (const suggestion of mapping?.suggestions ?? []) {
-        expect(suggestion.sourceReferences.every((reference) => reference.verified === false)).toBe(true);
-        expect(suggestion.sourceReferences.every((reference) => reference.sourceCheckedOn === "2026-08-14")).toBe(true);
-      }
-    }
+  it("distinguishes later qualified-human cardiomyopathy verification from still-unverified urethral-stricture evidence", () => {
+    const cardiomyopathy = mappingById.get("cardiomyopathy")?.suggestions[0]?.sourceReferences[0];
+    expect(cardiomyopathy?.verified).toBe(true);
+    expect(cardiomyopathy?.sourceCheckedOn).toBe("2026-08-18");
+
+    const urethral = mappingById.get("urethral-stricture")?.suggestions[0]?.sourceReferences[0];
+    expect(urethral?.verified).toBe(false);
+    expect(urethral?.sourceCheckedOn).toBe("2026-08-14");
   });
 });

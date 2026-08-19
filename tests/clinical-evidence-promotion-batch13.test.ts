@@ -26,11 +26,14 @@ describe("clinical evidence promotion batch 13", () => {
     expect(suggestion?.pathwayIntelligence).toBeUndefined();
     expect(suggestion?.rationale).toMatch(/sexual dysfunction/i);
     expect(suggestion?.rationale).toMatch(/erectile dysfunction/i);
+    expect(suggestion?.rationale).toMatch(/lumbar disc herniation/i);
     expect(suggestion?.rationale).toMatch(/do not by themselves establish an individual causal nexus/i);
+    expect(suggestion?.rationale).toMatch(/not be generalized automatically to every CES etiology/i);
     expect(suggestion?.rationale).toMatch(/vascular|endocrine|medication-related|psychogenic/i);
     expect(sources).toHaveLength(1);
     expect(sources[0]?.verificationScope).toBe("clinical-evidence");
-    expect(sources[0]?.verified).toBe(false);
+    expect(sources[0]?.verified).toBe(true);
+    expect(sources[0]?.sourceCheckedOn).toBe("2026-08-18");
     expect(sources[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40380123/");
   });
 

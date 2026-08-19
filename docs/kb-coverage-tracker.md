@@ -40,19 +40,19 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-Batch 31 originally added two unverified clinical source rows. Citation Verification Batch 01 subsequently received explicit qualified-human approval for five existing live sources. The current local position is:
+After qualified-human Citation Verification Batches 01 and 02, the current local position is:
 
 - live references: **69**;
-- live verified: **13**;
+- live verified: **18**;
 - retired verified: **6**;
-- verified provenance: **19**;
-- live unverified: **56**;
-- published-unverified review findings: **54**;
+- verified provenance: **24**;
+- live unverified: **51**;
+- published-unverified review findings: **49**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
 
-Citation Verification Batch 01 reduced live-unverified debt from `61` to `56` and published-review debt from `59` to `54` without changing the live-reference denominator. The ratchet was lowered to those new values. Automated source checking still cannot authorize verification; the five promotions to `verified: true` record the repository owner's explicit qualified-human review decision documented in `docs/citation-verification-batch-01.md`.
+Batch 01 reduced live-unverified debt from `61` to `56` and published-review debt from `59` to `54`. Batch 02 reduces those values again to `51` and `49`, respectively, without changing the 69-reference denominator. Batch 02 also narrows the asthma→OSA and cauda-equina-syndrome→erectile-dysfunction propositions to match the reviewed source populations and uncertainty before recording qualified-human verification. Automated source checking still cannot authorize verification; the human decisions are documented in `docs/citation-verification-batch-01.md` and `docs/citation-verification-batch-02.md`.
 
 ## Safety rule for safe drafts
 
