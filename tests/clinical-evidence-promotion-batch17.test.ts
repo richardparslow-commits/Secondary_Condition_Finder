@@ -53,7 +53,7 @@ describe("clinical evidence promotion batch 17", () => {
     expect(gerd?.pathwayIntelligence?.pathways).toEqual(["medication-related"]);
     expect(gerd?.sourceReferences).toHaveLength(2);
     expect(clinical).toHaveLength(1);
-    expect(clinical[0]?.verified).toBe(false);
+    expect(clinical[0]?.verified).toBe(true);
     expect(clinical[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/18671778/");
     expect(gerd?.rationale).toMatch(/documented in the individual record/i);
     expect(gerd?.sourceReferences.some((source) => source.sourceUrl === "https://pubmed.ncbi.nlm.nih.gov/33674957/")).toBe(false);

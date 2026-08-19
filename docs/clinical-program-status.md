@@ -40,7 +40,7 @@ Key negative-modeling protections include rejecting CTS/median-neuropathy taxono
 
 ## Citation position
 
-After qualified-human Citation Verification Batches 01 through 09, the current local position is:
+After qualified-human Citation Verification Batches 01 through 10, the current local position is:
 
 - live references: **69**;
 - live verified: **47**;
@@ -56,7 +56,7 @@ Batch 08 lowers the debt ratchet from 26/24 to 22/20 while preserving 69 total l
 
 ## Human citation verification
 
-Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 09 record explicit qualified-human approval resulting in thirty-nine newly verified live sources across the verification series; the remaining 22 live unverified references remain `verified: false` until separately reviewed. Batch 08 demonstrates that human review may intentionally retain `verified: false` when source-to-target taxonomy is insufficient.
+Automation may retrieve sources, record canonical URLs/check dates/locators, and prepare the review queue. It may not independently authorize `verified: true`. Citation Verification Batches 01 through 10 record explicit qualified-human approval resulting in thirty-nine newly verified live sources across the verification series; the remaining 22 live unverified references remain `verified: false` until separately reviewed. Batch 08 demonstrates that human review may intentionally retain `verified: false` when source-to-target taxonomy is insufficient.
 
 ## External/manual gates
 
@@ -69,22 +69,17 @@ Repository automation is complete for Batch 31 only when the repository contains
 <!-- citation-verification-master-current:start -->
 ## Current citation-verification position
 
-Master-approved implementation is complete through **Batch 9**.
-- Live verified references: **52**
+Master-approved implementation is complete through **Batch 10**.
+- Live verified references: **57**
 - Retired verified references: **6**
-- Verified provenance: **58**
-- Live unverified references: **17**
-- Published unverified review findings: **15**
+- Verified provenance: **63**
+- Live unverified references: **12**
+- Published unverified review findings: **10**
 - Hard findings: **0**
 - Live clinical source URL coverage: **64/64**
 
 Current unresolved published queue:
 - `mild-tbi.json` → `migraine-headaches`: Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491
-- `ptsd.json` → `erectile-dysfunction`: Brugi et al., Journal of Sexual Medicine (2026), PMID 42466890
-- `pulmonary-hypertension.json` → `congestive-heart-failure`: Humbert M, Kovacs G, Hoeper MM, et al. 2022 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension. Eur Heart J. 2022;43(38):3618-3731. PMID 36017548
-- `rectal-prolapse.json` → `fecal-incontinence`: Long-term impact of full-thickness rectal prolapse treatment on fecal incontinence. PMID 25869649
-- `retinal-dystrophy.json` → `visual-impairment`: Sharon D et al. Prog Retin Eye Res. 2022. PMID 34839010
-- `rheumatoid-arthritis.json` → `gerd`: Ruszniewski et al., Aliment Pharmacol Ther (2008), PMID 18671778
 - `sleep-apnea.json` → `hypertension`: Battisha et al., Journal of Clinical Medicine (2025), PMID 40364148
 - `sleep-apnea.json` → `depressive-disorder`: Zhao et al., Sleep and Breathing (2024), PMID 38888794
 - `sleep-apnea.json` → `anxiety-disorder`: Garbarino et al., Behavioral Sleep Medicine (2020), PMID 30453780

@@ -41,7 +41,7 @@ describe("clinical evidence promotion batch 27", () => {
     expect(suggestion?.rationale).toMatch(/visual-field|visual-acuity|acuity/i);
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/34839010/");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
   });
 
   it("promotes ptosis visual impairment only with objective mechanical field obstruction", () => {

@@ -49,7 +49,7 @@
       "conditionId": "erectile-dysfunction",
       "rank": 3,
       "prevalence": "sometimes-explored",
-      "rationale": "SSRIs are associated with sexual dysfunction, which can include erectile difficulties, but a medication-related secondary theory requires evidence that the veteran used the medication, experienced the relevant adverse effect, and has a condition medically linked to that exposure.",
+      "rationale": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. A medication-related secondary theory remains case-specific: the record must establish that the relevant SSRI was actually prescribed for PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed.",
       "pathwayIntelligence": {
         "pathways": [
           "medication-related"
@@ -73,13 +73,13 @@
       ],
       "sourceReferences": [
         {
-          "citation": "Brugi et al., Journal of Sexual Medicine (2026), PMID 42466890",
-          "note": "Systematic review found SSRI-associated sexual dysfunction across studies; it does not establish that any particular veteran's erectile dysfunction was caused by an SSRI.",
+          "citation": "Corona G, Ricca V, Bandini E, et al. Selective serotonin reuptake inhibitor-induced sexual dysfunction. J Sex Med. 2009;6(5):1259-1269. PMID 19473282",
+          "note": "Cross-sectional study of 2,040 men with sexual dysfunction found SSRI use associated with greater impairment of reported erectile function and broader male sexual-response effects; penile blood flow did not differ. Supports an SSRI-exposure association signal, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42466890/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-10",
-          "sourceLocator": "PMID 42466890"
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19473282/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 19473282; abstract; 2,040 men; SSRI use associated with higher impairment of reported erectile function, without a difference in penile blood flow"
         }
       ]
     }

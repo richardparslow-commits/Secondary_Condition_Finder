@@ -28,7 +28,7 @@ describe("clinical evidence promotion batch 28", () => {
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/25869649/");
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
   });
 
   it("promotes anal-fistula continence impairment only as a sphincter-cutting treatment complication", () => {
