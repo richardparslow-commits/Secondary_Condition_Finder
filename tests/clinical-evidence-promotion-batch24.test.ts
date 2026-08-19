@@ -40,9 +40,9 @@ describe("clinical evidence promotion batch 24", () => {
     expect(mapping?.todo).toEqual([]);
     expect(mapping?.suggestions).toHaveLength(1);
     expect(mapping?.suggestions[0]?.conditionId).toBe("depressive-disorder");
-    expect(mapping?.suggestions[0]?.pathwayIntelligence?.pathways).toEqual(["somatopsychic"]);
+    expect(mapping?.suggestions[0]?.pathwayIntelligence).toBeUndefined();
     expect(mapping?.suggestions[0]?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40355578/");
-    expect(mapping?.suggestions[0]?.sourceReferences[0]?.verified).toBe(false);
+    expect(mapping?.suggestions[0]?.sourceReferences[0]?.verified).toBe(true);
     expect(mapping?.suggestions.some((entry) => entry.conditionId === "anxiety-disorder")).toBe(false);
   });
 

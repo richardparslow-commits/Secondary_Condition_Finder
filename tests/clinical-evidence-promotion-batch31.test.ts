@@ -100,7 +100,7 @@ describe("targeted clinical mapping batch 31", () => {
     expect(byId.get("social-anxiety-disorder")?.todo.join(" ")).toMatch(/11231832|prospective|population-level/i);
   });
 
-  it("reflects the current citation debt after qualified-human Batches 1 through 11", () => {
+  it("reflects the current citation debt after qualified-human Batches 1 through 12", () => {
     const liveReferences = kb.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
@@ -117,8 +117,8 @@ describe("targeted clinical mapping batch 31", () => {
     );
 
     expect(liveReferences).toHaveLength(69);
-    expect(liveUnverified).toHaveLength(7);
-    expect(publishedUnverified).toHaveLength(5);
+    expect(liveUnverified).toHaveLength(2);
+    expect(publishedUnverified).toHaveLength(1);
     expect(clinicalWithUrls).toHaveLength(64);
   });
 

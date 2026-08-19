@@ -56,9 +56,9 @@ describe("clinical evidence promotion batch 1", () => {
     const reference = mapping?.suggestions[0]?.sourceReferences[0];
     expect(reference?.verificationScope).toBe("clinical-evidence");
     expect(reference?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/8571802/");
-    expect(reference?.sourceCheckedOn).toBe("2026-08-14");
+    expect(reference?.sourceCheckedOn).toBe("2026-08-19");
     expect(reference?.sourceLocator).toMatch(/8571802|ureterohydronephrosis/i);
-    expect(reference?.verified).toBe(false);
+    expect(reference?.verified).toBe(true);
   });
 
   it("withdraws unsupported ankle-strain suggestions back to draft", () => {
@@ -85,13 +85,13 @@ describe("clinical evidence promotion batch 1", () => {
     expect(fibromyalgia?.ratingSchedule[0]?.note).toMatch(/5025/i);
   });
 
-  it("distinguishes later qualified-human cardiomyopathy verification from still-unverified urethral-stricture evidence", () => {
+  it("recognizes later qualified-human verification of cardiomyopathy and urethral-stricture evidence", () => {
     const cardiomyopathy = mappingById.get("cardiomyopathy")?.suggestions[0]?.sourceReferences[0];
     expect(cardiomyopathy?.verified).toBe(true);
     expect(cardiomyopathy?.sourceCheckedOn).toBe("2026-08-18");
 
     const urethral = mappingById.get("urethral-stricture")?.suggestions[0]?.sourceReferences[0];
-    expect(urethral?.verified).toBe(false);
-    expect(urethral?.sourceCheckedOn).toBe("2026-08-14");
+    expect(urethral?.verified).toBe(true);
+    expect(urethral?.sourceCheckedOn).toBe("2026-08-19");
   });
 });

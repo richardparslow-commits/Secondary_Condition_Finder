@@ -17,4 +17,4 @@ describe("citation verification batch 10",()=>{
     expect(sug("ptsd","migraine-headaches").pathwayIntelligence).toBeUndefined();
   });
 });
-describe("batch 10 ratchet",()=>{it("pins the approved baseline",()=>{const a=fs.readFileSync(path.join(root,"scripts/audit-citation-verification.js"),"utf8");expect(a).toContain("liveVerified: 62,");expect(a).toContain("verifiedProvenance: 68,");expect(a).toContain("unverified: 7,");expect(a).toContain("reviewFindings: 5,");});});
+describe("batch 10 ratchet",()=>{it("pins the approved baseline",()=>{const a=fs.readFileSync(path.join(root,"scripts/audit-citation-verification.js"),"utf8");expect(a).toContain("liveVerified: 67,");expect(a).toContain("verifiedProvenance: 73,");expect(a).toContain("unverified: 2,");expect(a).toContain("reviewFindings: 1,");});});

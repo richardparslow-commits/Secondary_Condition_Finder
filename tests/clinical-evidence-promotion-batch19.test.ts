@@ -36,6 +36,6 @@ describe("clinical evidence promotion batch 19", () => {
     expect(suggestion?.pathwayIntelligence?.issuesToResolve.join(" ")).toMatch(/not be generalized|subtype/i);
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("42232752");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
   });
 });

@@ -27,7 +27,7 @@ describe("clinical evidence promotion batch 27", () => {
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/31816329/");
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
   });
 
   it("promotes retinal-dystrophy visual impairment with phenotype-specific limits", () => {

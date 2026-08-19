@@ -40,14 +40,14 @@ The other requested identities remain safe draft after targeted review. Importan
 
 ## Current citation position
 
-After qualified-human Citation Verification Batches 01 through 11, the current local position is:
+After qualified-human Citation Verification Batches 01 through 12, the current local position is:
 
 - live references: **69**;
-- live verified: **62**;
+- live verified: **67**;
 - retired verified: **6**;
-- verified provenance: **68**;
-- live unverified: **7**;
-- published-unverified review findings: **5**;
+- verified provenance: **73**;
+- live unverified: **2**;
+- published-unverified review findings: **1**;
 - live clinical-evidence references with canonical URLs: **64**;
 - retired clinical-evidence references with canonical URLs: **4**;
 - combined clinical-URL provenance observation: **68**.
@@ -67,19 +67,15 @@ Any head change invalidates the prior exact-head CI and Vercel Agent review and 
 <!-- citation-verification-master-current:start -->
 ## Current citation-verification position
 
-Master-approved implementation is complete through **Batch 11**.
-- Live verified references: **62**
+Master-approved implementation is complete through **Batch 12**.
+- Live verified references: **67**
 - Retired verified references: **6**
-- Verified provenance: **68**
-- Live unverified references: **7**
-- Published unverified review findings: **5**
+- Verified provenance: **73**
+- Live unverified references: **2**
+- Published unverified review findings: **1**
 - Hard findings: **0**
 - Live clinical source URL coverage: **64/64**
 
 Current unresolved published queue:
 - `mild-tbi.json` → `migraine-headaches`: Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491
-- `thyroiditis.json` → `hypothyroidism`: Feng X, Lyu X, Gao Y, Gao X, Gao R. Analysis of risk factors for hypothyroidism in initially euthyroid patients with positive thyroid autoantibodies: a multicenter retrospective cohort study. Front Endocrinol (Lausanne). 2026;17:1827517. PMID 42232752
-- `trigeminal-neuralgia.json` → `depressive-disorder`: Martinelli R, Vannuccini S, Burattini B, et al. Psychological assessment in patients affected by trigeminal neuralgia. A systematic review. Neurosurg Rev. 2025;48(1):414. PMID 40355578
-- `urethral-stricture.json` → `hydronephrosis`: Renal and ureteral complications of urethral stenosis, PMID 8571802
-- `uveitis.json` → `glaucoma`: Kesav N, Palestine AG, Kahook MY, Pantcheva MB. Current management of uveitis-associated ocular hypertension and glaucoma. Surv Ophthalmol. 2020;65(4):397-407. PMID 31816329
 <!-- citation-verification-master-current:end -->
