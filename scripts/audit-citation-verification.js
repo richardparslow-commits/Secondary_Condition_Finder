@@ -17,13 +17,15 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // Clinical Mapping Master Batch 2026 citation verification was qualified-human approved on 2026-08-19.
 // All 68 Master relationship source rows are verified after 8 approved narrowings and 5 one-for-one replacements.
 // The remaining 5 unverified/review rows are outside this Master citation-verification set.
+// Residual M1 citation closure qualified-human approved 2026-08-19.
+// Four M1 sources verified; PMID 38568491 remains the sole taxonomy hold.
 const CITATION_DEBT_BASELINE = Object.freeze({
   references: 141,
-  liveVerified: 136,
+  liveVerified: 140,
   retiredVerified: 6,
-  verifiedProvenance: 142,
-  unverified: 5,
-  reviewFindings: 5,
+  verifiedProvenance: 146,
+  unverified: 1,
+  reviewFindings: 1,
   liveClinicalEvidenceWithUrls: 136,
   retiredClinicalEvidenceWithUrls: 4,
   clinicalEvidenceProvenanceWithUrls: 140,

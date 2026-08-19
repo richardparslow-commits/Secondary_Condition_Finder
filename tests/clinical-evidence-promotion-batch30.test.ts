@@ -62,7 +62,7 @@ describe("clinical evidence promotion batch 30", () => {
     expect(suggestion?.conditionId).toBe("aphonia");
     expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["treatment-complication"]);
     expect(suggestion?.sourceReferences).toHaveLength(2);
-    expect(suggestion?.sourceReferences.every((reference) => reference.verified === false)).toBe(true);
+    expect(suggestion?.sourceReferences.every((reference) => reference.verified === true)).toBe(true);
   });
 
   it("keeps the two surviving cancer pathways treatment-specific", () => {

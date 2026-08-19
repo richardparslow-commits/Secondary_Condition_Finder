@@ -1,3 +1,11 @@
+<!-- RESIDUAL-M1-CLOSURE-2026:START -->
+## Residual M1 citation closure
+
+- Four M1 source rows verified.
+- Citation state: **141 / 140 / 6 / 146 / 1 / 1 / 0**.
+- Sole residual: mTBI → migraine-headaches, PMID 38568491, taxonomy hold.
+<!-- RESIDUAL-M1-CLOSURE-2026:END -->
+
 <!-- CLINICAL-MAPPING-MASTER-2026:START -->
 ## Clinical Mapping Master Batch 2026 — local canonical state
 

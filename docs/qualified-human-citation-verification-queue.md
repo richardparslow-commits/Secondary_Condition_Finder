@@ -192,3 +192,15 @@ All **68 Master relationship source rows** are verified. The final set contains 
 | 40772230 | 7: gerd → asthma; gerd → bronchiectasis; gerd → copd; gerd → interstitial-lung-disease; gerd → pulmonary-fibrosis; gerd → respiratory-cancer; gerd → tuberculosis | VERIFY-AS-WRITTEN | verified |
 | 40959074 | 1: systemic-lupus-erythematosus → tuberculosis | VERIFY-AS-WRITTEN | verified |
 <!-- CLINICAL-MAPPING-MASTER-2026:END -->
+
+<!-- RESIDUAL-M1-CLOSURE-2026:START -->
+## Residual M1 Citation Closure
+
+Approval: **I approve Residual Citation Verification — M1 Closure 2026**
+
+- PMID 11231832 — verified
+- PMID 17679635 — verified
+- PMID 25630206 — verified
+- PMID 20189345 — verified
+- PMID 38568491 — taxonomy hold / verified:false
+<!-- RESIDUAL-M1-CLOSURE-2026:END -->

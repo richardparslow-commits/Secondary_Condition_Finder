@@ -1,3 +1,10 @@
+<!-- RESIDUAL-M1-CLOSURE-2026:START -->
+## Residual M1 citation closure
+
+- KB remains **103 published / 197 draft**.
+- Citation verification: **140 verified / 1 unverified**.
+<!-- RESIDUAL-M1-CLOSURE-2026:END -->
+
 <!-- CLINICAL-MAPPING-MASTER-2026:START -->
 ## Clinical Mapping Master Batch 2026 coverage
 

@@ -21,7 +21,7 @@
           "note": "Prospective longitudinal community study. Among participants without depression at baseline, social anxiety disorder was associated with later depressive-disorder onset (OR 3.5, 95% CI 2.0-6.0). Supports temporal-risk research, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11231832/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 11231832; abstract Methods/Results: prospective longitudinal adolescent/young-adult community study; baseline SAD in nondepressed participants associated with depressive-disorder onset at follow-up, OR 3.5 (95% CI 2.0-6.0)"
         },
@@ -30,7 +30,7 @@
           "note": "Ten-year prospective longitudinal community/family study of 3,021 people. Social anxiety disorder was consistently associated with subsequent depression, reported RR range 1.49-1.85 after age/sex control. Supports temporal association, not an individual causal nexus by itself.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17679635/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 17679635; abstract Design/Participants/Results: 10-year prospective longitudinal study; 3,021 participants; SAD consistently associated with subsequent depression, RR 1.49-1.85 controlling for age and sex"
         }

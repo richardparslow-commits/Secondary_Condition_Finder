@@ -39,7 +39,7 @@
           "note": "Among 50 patients who underwent total laryngectomy and tracheoesophageal puncture, 6 suffered aphonia after surgery with speech delay persisting more than 6 months. Supports bounded postoperative aphonia treatment-complication research, not attribution from laryngeal cancer alone.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25630206/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 25630206; abstract Methods: 50 total-laryngectomy plus TEP patients; 6 suffered aphonia after surgery; speech delay persisted >6 months"
         },
@@ -48,7 +48,7 @@
           "note": "Thirty-two laryngeal squamous-cell-carcinoma patients underwent total laryngectomy with primary TEP/voice prosthesis. Speech rating 1 was aphonia; 5 of 32 were aphonic. Supports actual postoperative aphonia occurrence in a subset, not universal aphonia after laryngectomy.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20189345/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 20189345; abstract Materials/Methods and Results: 32 laryngeal-SCC patients underwent total laryngectomy with primary TEP/voice prosthesis; rating 1 = aphonia; 5/32 (16%) were aphonic"
         }

@@ -18,7 +18,7 @@ describe("qualified-human approved clinical mapping batch M1", () => {
     expect(suggestion?.conditionId).toBe("depressive-disorder");
     expect(suggestion?.pathwayIntelligence).toBeUndefined();
     expect(suggestion?.sourceReferences).toHaveLength(2);
-    expect(suggestion?.sourceReferences.every((reference) => reference.verified === false)).toBe(true);
+    expect(suggestion?.sourceReferences.every((reference) => reference.verified === true)).toBe(true);
     expect(suggestion?.sourceReferences.every((reference) => reference.verificationScope === "clinical-evidence")).toBe(true);
     const urls = suggestion?.sourceReferences.map((reference) => reference.sourceUrl).join(" ");
     expect(urls).toMatch(/11231832/);
@@ -34,7 +34,7 @@ describe("qualified-human approved clinical mapping batch M1", () => {
     expect(suggestion?.conditionId).toBe("aphonia");
     expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["treatment-complication"]);
     expect(suggestion?.sourceReferences).toHaveLength(2);
-    expect(suggestion?.sourceReferences.every((reference) => reference.verified === false)).toBe(true);
+    expect(suggestion?.sourceReferences.every((reference) => reference.verified === true)).toBe(true);
     expect(suggestion?.rationale).toMatch(/documented total laryngectomy/i);
     expect(suggestion?.rationale).toMatch(/documented aphonia/i);
     expect(suggestion?.rationale).toMatch(/not sufficient/i);
