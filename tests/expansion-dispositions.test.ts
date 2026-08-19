@@ -42,13 +42,13 @@ describe("target-v2 expansion disposition ledger", () => {
     const candidates = entries.filter((entry) => entry.disposition === "promotion-candidate");
     const safeDrafts = entries.filter((entry) => entry.disposition === "safe-draft");
 
-    expect(published).toHaveLength(30);
-    expect(safeDrafts).toHaveLength(77);
+    expect(published).toHaveLength(31);
+    expect(safeDrafts).toHaveLength(76);
     expect(candidates).toEqual([]);
-    for (const id of ["parkinsons-disease", "seizure-disorder", "psoriatic-arthritis", "histoplasmosis", "laryngeal-cancer"]) {
+    for (const id of ["parkinsons-disease", "seizure-disorder", "psoriatic-arthritis", "histoplasmosis"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("safe-draft");
     }
-    for (const id of ["rectal-prolapse", "anal-fistula", "discoid-lupus", "ovarian-cancer", "testicular-cancer"]) {
+    for (const id of ["rectal-prolapse", "anal-fistula", "discoid-lupus", "ovarian-cancer", "testicular-cancer", "laryngeal-cancer"]) {
       expect(entries.find((entry) => entry.id === id)?.disposition).toBe("published-evidence-led");
     }
     expect(published.length + candidates.length + safeDrafts.length).toBe(107);

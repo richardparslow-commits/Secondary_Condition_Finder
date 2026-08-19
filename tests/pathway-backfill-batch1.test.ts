@@ -14,7 +14,6 @@ const safetyWithdrawnMappings = [
   "panic-disorder",
   "bipolar-disorder",
   "persistent-depressive-disorder",
-  "social-anxiety-disorder",
   "somatic-symptom-disorder",
   "anxiety-disorder",
   "schizophrenia",

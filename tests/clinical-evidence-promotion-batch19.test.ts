@@ -12,8 +12,8 @@ describe("clinical evidence promotion batch 19", () => {
     expect(kb).toHaveLength(300);
   });
 
-  it("withdraws four legal/rating-only mental mappings", () => {
-    for (const id of ["bipolar-disorder", "persistent-depressive-disorder", "social-anxiety-disorder", "somatic-symptom-disorder"]) {
+  it("keeps the three still-withdrawn legal/rating-only mental mappings draft after M1", () => {
+    for (const id of ["bipolar-disorder", "persistent-depressive-disorder", "somatic-symptom-disorder"]) {
       const mapping = byId.get(id);
       expect(mapping?.draft).toBe(true);
       expect(mapping?.suggestions).toEqual([]);

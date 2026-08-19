@@ -52,12 +52,16 @@ describe("clinical evidence promotion batch 30", () => {
     expect(mapping?.todo.join(" ")).toMatch(/30656706/);
   });
 
-  it("keeps laryngeal cancer draft because alaryngeal voice handicap is not the same diagnosis as aphonia", () => {
+  it("recognizes later M1 publication of laryngeal-cancer to aphonia as treatment-specific", () => {
     const mapping = byId.get("laryngeal-cancer");
-    expect(mapping?.draft).toBe(true);
-    expect(mapping?.suggestions).toEqual([]);
-    expect(mapping?.todo.join(" ")).toMatch(/aphonia|alaryngeal|voice handicap|natural laryngeal/i);
-    expect(mapping?.todo.join(" ")).toMatch(/29086803/);
+    const suggestion = mapping?.suggestions[0];
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.todo).toEqual([]);
+    expect(mapping?.suggestions).toHaveLength(1);
+    expect(suggestion?.conditionId).toBe("aphonia");
+    expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["treatment-complication"]);
+    expect(suggestion?.sourceReferences).toHaveLength(2);
+    expect(suggestion?.sourceReferences.every((reference) => reference.verified === false)).toBe(true);
   });
 
   it("keeps the two surviving cancer pathways treatment-specific", () => {
@@ -83,7 +87,7 @@ describe("clinical evidence promotion batch 30", () => {
     expect(mapping?.suggestions.some((suggestion) => suggestion.conditionId === "anxiety-disorder")).toBe(false);
   });
 
-  it("keeps the other eight Wave 7 identities safe-draft", () => {
+  it("keeps the other seven Wave 7 identities safe-draft", () => {
     for (const id of [
       "amebiasis",
       "actinomycosis",
@@ -91,7 +95,6 @@ describe("clinical evidence promotion batch 30", () => {
       "histoplasmosis",
       "strongyloidiasis",
       "rickettsial-ehrlichial-anaplasma-infection",
-      "laryngeal-cancer",
       "mandibular-nonunion",
     ] as const) {
       const mapping = byId.get(id);
@@ -101,13 +104,13 @@ describe("clinical evidence promotion batch 30", () => {
     }
   });
 
-  it("records 30 published, 77 safe-draft, and zero candidates", () => {
+  it("records 31 published, 76 safe-draft, and zero candidates", () => {
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
     ) as { waves: Array<{ identities: Array<{ disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(30);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(77);
+    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(31);
+    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(76);
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
   });
 });

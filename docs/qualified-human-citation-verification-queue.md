@@ -14,7 +14,7 @@ The generated report is authoritative for the exact current human-review row set
 
 ## Current citation-verification baseline
 
-After qualified-human Citation Verification Batches 01 through 13, the repository contains **1 live unverified references** and **1 live unverified published references**.
+After qualified-human Citation Verification Batches 01 through 13, the repository contains **5 live unverified references** and **5 live unverified published references**.
 
 Batch 31 adds exactly two new bounded clinical source rows, both `verified: false`:
 
@@ -90,3 +90,32 @@ Master-approved implementation is complete through **Batch 13**.
 Current unresolved published queue:
 - `mild-tbi.json` → `migraine-headaches`: Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491
 <!-- citation-verification-master-current:end -->
+
+<!-- clinical-mapping-m1-current:start -->
+## Current clinical-mapping position — M1
+
+Qualified-human Clinical Mapping Batch M1 is approved and implemented locally.
+
+- Catalog identities: **300**
+- Knowledge-base mappings: **300**
+- Overall published mappings: **55**
+- Overall draft mappings: **245**
+- Wave 1–7 identities: **107**
+- Wave dispositions: **31 published-evidence-led**, **76 safe-draft**, **0 promotion-candidate**
+- live references: **73**
+- live verified: **68**
+- retired verified: **6**
+- verified provenance: **74**
+- live unverified: **5**
+- published-unverified review findings: **5**
+- live clinical-evidence references with canonical URLs: **68**
+- retired clinical-evidence references with canonical URLs: **4**
+- combined clinical-URL provenance observation: **72**
+- hard citation findings: **0**
+
+M1 publishes:
+- `social-anxiety-disorder` → `depressive-disorder`: prospective temporal-risk/association only; no causal pathway metadata.
+- `laryngeal-cancer` → `aphonia`: treatment-complication only; documented total laryngectomy and documented aphonia required.
+
+The 5 live unverified published references are PMID 38568491, PMID 11231832, PMID 17679635, PMID 25630206, and PMID 20189345. No M1 source is auto-verified.
+<!-- clinical-mapping-m1-current:end -->

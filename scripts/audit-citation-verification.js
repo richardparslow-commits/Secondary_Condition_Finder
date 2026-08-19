@@ -13,16 +13,17 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // Debt ceilings and provenance floors advance only when a reviewed batch improves them.
 // Raw live clinical-URL counts are observations, not monotonic floors: withdrawing an
 // unsupported unverified source is an evidence-quality improvement and may lower them.
+// M1 bounded source-intake ceiling authorized by qualified-human approval; all four new sources remain verified:false.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 69,
+  references: 73,
   liveVerified: 68,
   retiredVerified: 6,
   verifiedProvenance: 74,
-  unverified: 1,
-  reviewFindings: 1,
-  liveClinicalEvidenceWithUrls: 64,
+  unverified: 5,
+  reviewFindings: 5,
+  liveClinicalEvidenceWithUrls: 68,
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 68,
+  clinicalEvidenceProvenanceWithUrls: 72,
 });
 
 const hardFindings = [];

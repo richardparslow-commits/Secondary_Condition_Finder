@@ -19,6 +19,7 @@ const WAVE_SEVEN_IDS = [
 const PUBLISHED_WAVE_SEVEN_IDS = new Set([
   "ovarian-cancer",
   "testicular-cancer",
+  "laryngeal-cancer",
 ]);
 
 describe("condition catalog expansion wave 7", () => {
@@ -36,7 +37,7 @@ describe("condition catalog expansion wave 7", () => {
     for (const id of WAVE_SEVEN_IDS) expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
   });
 
-  it("publishes only two evidence-led Wave 7 relationships and keeps the other eight safe-draft", () => {
+  it("publishes three evidence-led Wave 7 relationships and keeps the other seven safe-draft", () => {
     for (const id of WAVE_SEVEN_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
@@ -59,11 +60,15 @@ describe("condition catalog expansion wave 7", () => {
     expect(mapping?.todo.join(" ")).toMatch(/pulmonary|adrenal|disseminated|disease-site/i);
   });
 
-  it("does not equate post-laryngectomy voice handicap with the aphonia diagnosis", () => {
+  it("keeps post-laryngectomy aphonia diagnosis-specific rather than equating it with generic voice handicap", () => {
     const mapping = mappingById.get("laryngeal-cancer");
-    expect(mapping?.draft).toBe(true);
-    expect(mapping?.suggestions).toEqual([]);
-    expect(mapping?.todo.join(" ")).toMatch(/aphonia|alaryngeal|voice handicap|natural laryngeal/i);
+    const suggestion = mapping?.suggestions[0];
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.todo).toEqual([]);
+    expect(mapping?.suggestions).toHaveLength(1);
+    expect(suggestion?.conditionId).toBe("aphonia");
+    expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["treatment-complication"]);
+    expect(suggestion?.rationale).toMatch(/documented total laryngectomy|documented aphonia|voice handicap/i);
   });
 
   it("does not automate rating-citation verification", () => {

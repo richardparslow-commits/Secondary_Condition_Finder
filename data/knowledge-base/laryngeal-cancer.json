@@ -1,9 +1,58 @@
 {
   "id": "laryngeal-cancer",
-  "draft": true,
-  "todo": [
-    "Keep laryngeal cancer draft for an aphonia secondary-condition recommendation unless the source and individual record establish the actual aphonia diagnosis rather than loss of the natural laryngeal voice source or rehabilitated alaryngeal speech alone.",
-    "PMID 29086803 supports post-total-laryngectomy voice handicap and alaryngeal speech rehabilitation, but it does not establish that all total-laryngectomy patients meet the distinct catalog diagnosis of aphonia. A future publication needs aphonia-specific outcome evidence and a development rule requiring documented aphonia."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "aphonia",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Aphonia can occur as a treatment complication after total laryngectomy and tracheoesophageal voice-restoration procedures used in laryngeal-cancer care. Aphonia-specific postoperative series document a subset of treated patients who remained aphonic after surgery. This mapping applies only when the individual underwent documented total laryngectomy for laryngeal cancer and has separately documented aphonia. Laryngeal cancer itself, loss of the natural laryngeal voice source, dysphonia, alaryngeal speech, generic voice handicap, or total laryngectomy without documented aphonia is not sufficient.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "treatment-complication"
+        ],
+        "causalChain": "Laryngeal cancer → documented total laryngectomy, with tracheoesophageal voice-restoration care when applicable → postoperative speech failure/aphonia phenotype → separately documented aphonia.",
+        "developmentQuestions": [
+          "Was total laryngectomy actually performed as treatment for the documented laryngeal cancer?",
+          "Was tracheoesophageal puncture and/or voice-prosthesis restoration performed?",
+          "Is aphonia separately documented by ENT, speech-language pathology, or another qualified clinician rather than inferred from loss of the natural laryngeal voice alone?",
+          "How long did failure to develop or sustain speech persist after surgery and rehabilitation?",
+          "Do records distinguish aphonia from dysphonia, alaryngeal speech, prosthesis malfunction, transient postoperative limitation, or generic voice handicap?"
+        ],
+        "issuesToResolve": [
+          "The evidence is treatment-specific and must not be generalized from laryngeal cancer itself to aphonia.",
+          "Not every patient after total laryngectomy is aphonic; many achieve alaryngeal or tracheoesophageal speech.",
+          "The downstream diagnosis must be documented as aphonia rather than inferred from generic voice handicap."
+        ]
+      },
+      "evidenceGaps": [
+        "Oncology and operative records confirming total laryngectomy for laryngeal cancer",
+        "ENT and speech-language pathology documentation defining the postoperative phenotype",
+        "Separate documentation of aphonia and its duration",
+        "Voice-prosthesis/TEP history and rehabilitation response when applicable",
+        "Assessment of structural, prosthetic, neuromuscular, radiation-related, and other competing explanations"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Benyamini L, Gil Z, Cohen JT. Management of aphonic patients following total laryngectomy and trachea esophageal puncture. Isr Med Assoc J. 2014;16(12):768-770. PMID 25630206",
+          "note": "Among 50 patients who underwent total laryngectomy and tracheoesophageal puncture, 6 suffered aphonia after surgery with speech delay persisting more than 6 months. Supports bounded postoperative aphonia treatment-complication research, not attribution from laryngeal cancer alone.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25630206/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 25630206; abstract Methods: 50 total-laryngectomy plus TEP patients; 6 suffered aphonia after surgery; speech delay persisted >6 months"
+        },
+        {
+          "citation": "Gultekin E, Yelken K, Garca MF, Develioglu ON, Kulekci M. Effects of neck dissection and radiotherapy on short-term speech success in voice prosthesis restoration patients. J Voice. 2011;25(2):245-248. doi:10.1016/j.jvoice.2009.10.011. PMID 20189345",
+          "note": "Thirty-two laryngeal squamous-cell-carcinoma patients underwent total laryngectomy with primary TEP/voice prosthesis. Speech rating 1 was aphonia; 5 of 32 were aphonic. Supports actual postoperative aphonia occurrence in a subset, not universal aphonia after laryngectomy.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20189345/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 20189345; abstract Materials/Methods and Results: 32 laryngeal-SCC patients underwent total laryngectomy with primary TEP/voice prosthesis; rating 1 = aphonia; 5/32 (16%) were aphonic"
+        }
+      ]
+    }
+  ]
 }

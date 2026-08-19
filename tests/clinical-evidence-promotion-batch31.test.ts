@@ -72,7 +72,7 @@ describe("targeted clinical mapping batch 31", () => {
     expect(mapping?.todo.join(" ")).toMatch(/separately|distinct standardized clinical diagnosis|mild TBI/i);
   });
 
-  it("keeps the remaining targeted identities safe-draft after exact-target review", () => {
+  it("keeps the remaining unpromoted targeted identities safe-draft after exact-target review", () => {
     for (const id of [
       "carpal-tunnel-syndrome",
       "chronic-fatigue-syndrome",
@@ -83,7 +83,6 @@ describe("targeted clinical mapping batch 31", () => {
       "peripheral-neuropathy",
       "radial-neuropathy",
       "rem-sleep-disorder",
-      "social-anxiety-disorder",
     ] as const) {
       const mapping = byId.get(id);
       expect(mapping?.draft, `${id} should remain draft`).toBe(true);
@@ -97,7 +96,6 @@ describe("targeted clinical mapping batch 31", () => {
     expect(byId.get("median-neuropathy")?.todo.join(" ")).toMatch(/carpal tunnel|overlap/i);
     expect(byId.get("hypothyroidism")?.todo.join(" ")).toMatch(/41002938|not statistically significant|adjust/i);
     expect(byId.get("rem-sleep-disorder")?.todo.join(" ")).toMatch(/prodromal|does not.*cause|Parkinson/i);
-    expect(byId.get("social-anxiety-disorder")?.todo.join(" ")).toMatch(/11231832|prospective|population-level/i);
   });
 
   it("reflects the current citation debt after qualified-human Batches 1 through 13", () => {
@@ -116,10 +114,10 @@ describe("targeted clinical mapping batch 31", () => {
       (reference) => reference.verificationScope === "clinical-evidence" && Boolean(reference.sourceUrl),
     );
 
-    expect(liveReferences).toHaveLength(69);
-    expect(liveUnverified).toHaveLength(1);
-    expect(publishedUnverified).toHaveLength(1);
-    expect(clinicalWithUrls).toHaveLength(64);
+    expect(liveReferences).toHaveLength(73);
+    expect(liveUnverified).toHaveLength(5);
+    expect(publishedUnverified).toHaveLength(5);
+    expect(clinicalWithUrls).toHaveLength(68);
   });
 
   it("leaves the Wave 1-7 disposition ledger unchanged", () => {
@@ -128,8 +126,8 @@ describe("targeted clinical mapping batch 31", () => {
     ) as { waves: Array<{ identities: Array<{ disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
 
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(30);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(77);
+    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(31);
+    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(76);
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
   });
 });
