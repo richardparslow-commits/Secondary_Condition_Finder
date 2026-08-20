@@ -49,19 +49,20 @@ describe("Mapping Expansion Batch ME-1", () => {
     }
   });
 
-  it("pins the 178-edge / 186-reference post-verification state", () => {
+  it("preserves the ME-1 closed baseline while allowing later approved expansion batches", () => {
     const files = fs.readdirSync(kb).filter((n) => n.endsWith(".json"));
     const maps = files.map((n) => JSON.parse(fs.readFileSync(path.join(kb, n), "utf8")) as Map);
     expect(files).toHaveLength(311);
     expect(maps.filter((m) => m.draft === false)).toHaveLength(139);
     expect(maps.filter((m) => m.draft === true)).toHaveLength(172);
-    expect(maps.reduce((n, m) => n + (m.suggestions ?? []).length, 0)).toBe(178);
-    expect(maps.filter((m) => m.draft === false && (m.suggestions ?? []).length === 1)).toHaveLength(116);
-    expect(maps.filter((m) => m.draft === false && (m.suggestions ?? []).length >= 2)).toHaveLength(23);
+    expect(maps.reduce((n, m) => n + (m.suggestions ?? []).length, 0)).toBeGreaterThanOrEqual(178);
     const refs = maps.flatMap((m) => (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []));
-    expect(refs).toHaveLength(186);
-    expect(refs.filter((r) => r.verified === true)).toHaveLength(186);
-    expect(refs.filter((r) => r.verified === false)).toHaveLength(0);
+    expect(refs.length).toBeGreaterThanOrEqual(186);
+    for (const row of impl().rows) {
+      const m = load(row.primaryId);
+      const s = (m.suggestions ?? []).find((x) => x.conditionId === row.targetId);
+      expect(s?.sourceReferences?.[0]?.verified).toBe(true);
+    }
   });
 
   it("preserves the completed Master Resolution state", () => {

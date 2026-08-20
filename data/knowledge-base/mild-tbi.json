@@ -26,6 +26,29 @@
           "sourceLocator": "PMID 38568491; moved one-for-one from the prior mTBI→migraine-headaches taxonomy mismatch to mTBI→post-traumatic-headache; qualified-human citation verification approved 2026-08-19."
         }
       ]
+    },
+    {
+      "conditionId": "post-concussion-syndrome",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented mild traumatic brain injury/concussion followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury. Do not infer post-concussion syndrome from transient acute headache, dizziness, cognitive complaints, or other symptoms occurring only immediately after injury. Consider pre-existing psychiatric, sleep, neurologic, and symptom conditions that may contribute to or mimic persistent post-concussive symptoms. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of mild-tbi and post-concussion-syndrome",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented mild traumatic brain injury/concussion followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury. Do not infer post-concussion syndrome from transient acute headache, dizziness, cognitive complaints, or other symptoms occurring only immediately after injury. Consider pre-existing psychiatric, sleep, neurologic, and symptom conditions that may contribute to or mimic persistent post-concussive symptoms."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "McIntosh SJ, Vergeer MH, Galarneau JM, Eliason PH, Debert CT. Factors Associated With Persisting Symptoms After Concussion in Adults With Mild TBI: A Systematic Review and Meta-Analysis. JAMA Netw Open. 2025;8(6):e2516619. PMID 40531530. doi:10.1001/jamanetworkopen.2025.16619.",
+          "note": "Mapping Expansion Batch ME-2 evidence for the bounded mild-tbi to post-concussion-syndrome proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40531530/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 40531530; approved ME-2 proposition; guard: Require documented mild traumatic brain injury/concussion followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury. Do not infer post-concussion syndrome from transient acute headache, dizziness, cognitive complaints, or other symptoms occurring only immediately after injury. Consider pre-existing psychiatric, sleep, neurologic, and symptom conditions that may contribute to or mimic persistent post-concussive symptoms."
+        }
+      ]
     }
   ]
 }

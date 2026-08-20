@@ -25,18 +25,18 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // PMID 30656706 enters the new site-specific published edge as verified:false; one review row is intentionally reopened pending separate citation approval.
 // Adrenal Histoplasmosis Citation Verification 2026 qualified-human approved 2026-08-19.
 // PMID 30656706 is proposition-matched to adrenal-histoplasmosis -> addisons-disease; live citation debt is now zero.
-// Mapping Expansion Batch ME-1 Citation Verification promotes all 5 ME-1 source rows after qualified-human review.
-// Final ME-1 citation state: 186 live verified / 0 unverified / 0 review; 192 verified provenance including 6 retired verified.
+// Mapping Expansion Batch ME-2 adds 5 approved-but-unverified clinical source rows across 5 PMIDs.
+// Mapping approval remains separate from citation verification; the 186 pre-existing live verified sources are preserved.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 186,
+  references: 191,
   liveVerified: 186,
   retiredVerified: 6,
   verifiedProvenance: 192,
-  unverified: 0,
-  reviewFindings: 0,
-  liveClinicalEvidenceWithUrls: 181,
+  unverified: 5,
+  reviewFindings: 5,
+  liveClinicalEvidenceWithUrls: 186,
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 185,
+  clinicalEvidenceProvenanceWithUrls: 190,
 });
 
 const hardFindings = [];

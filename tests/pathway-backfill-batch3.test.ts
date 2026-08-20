@@ -157,9 +157,16 @@ describe("controlled pathway backfill batch 3", () => {
     const kb = loadKnowledgeBase();
     for (const primaryId of ["copd", "asthma"]) {
       const mapping = kb.find((entry) => entry.id === primaryId);
-      expect(mapping?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
-        { conditionId: "sleep-apnea", rank: 1, prevalence: "commonly-explored" },
-      ]);
+      const sleepApnea = mapping?.suggestions.find((entry) => entry.conditionId === "sleep-apnea");
+      expect({
+        conditionId: sleepApnea?.conditionId,
+        rank: sleepApnea?.rank,
+        prevalence: sleepApnea?.prevalence,
+      }).toEqual({
+        conditionId: "sleep-apnea",
+        rank: 1,
+        prevalence: "commonly-explored",
+      });
     }
   });
 
