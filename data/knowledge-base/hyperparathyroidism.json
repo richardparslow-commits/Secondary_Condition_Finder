@@ -43,6 +43,29 @@
           "sourceLocator": "PMID 36245251; Fifth International Workshop summary guideline, renal evaluation and renal-involvement recommendations for primary hyperparathyroidism"
         }
       ]
+    },
+    {
+      "conditionId": "osteoporosis",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require biochemically documented primary hyperparathyroidism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. The broader hyperparathyroidism identity must not extend this edge to secondary or tertiary hyperparathyroidism. Do not infer osteoporosis from elevated PTH, hypercalcemia, osteopenia, bone pain, or fracture risk alone; consider age, menopause or hypogonadism, renal disease, glucocorticoid exposure, vitamin D status, and other skeletal causes in an individual nexus. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of hyperparathyroidism and osteoporosis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require biochemically documented primary hyperparathyroidism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. The broader hyperparathyroidism identity must not extend this edge to secondary or tertiary hyperparathyroidism. Do not infer osteoporosis from elevated PTH, hypercalcemia, osteopenia, bone pain, or fracture risk alone; consider age, menopause or hypogonadism, renal disease, glucocorticoid exposure, vitamin D status, and other skeletal causes in an individual nexus."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Kerschan-Schindl K, Gelles K, Butylina M, et al. Bone metabolism in primary hyperparathyroidism. Wien Klin Wochenschr. 2026;138(7-8):217-224. PMID 41329412. doi:10.1007/s00508-025-02670-z.",
+          "note": "Mapping Expansion Batch ME-3 evidence for the bounded hyperparathyroidism to osteoporosis proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41329412/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 41329412; approved ME-3 proposition; guard: Require biochemically documented primary hyperparathyroidism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. The broader hyperparathyroidism identity must not extend this edge to secondary or tertiary hyperparathyroidism. Do not infer osteoporosis from elevated PTH, hypercalcemia, osteopenia, bone pain, or fracture risk alone; consider age, menopause or hypogonadism, renal disease, glucocorticoid exposure, vitamin D status, and other skeletal causes in an individual nexus."
+        }
+      ]
     }
   ]
 }

@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "ffadbe9460bd0dbda327781e20ec6f51e4cd854f",
+  "baselineCommit": "61f9bc5e28b5907a854eb1f38ba7a787dee4375a",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 183,
-    "explicitPublicationGuards": 109,
+    "relationships": 188,
+    "explicitPublicationGuards": 114,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -180,6 +180,39 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": true,
       "suggestionObjectHash": "8c28d6254f65c7dfadfdb2c3e391c5673b25a1c375db8354f61a2ec82eb44f5a"
+    },
+    {
+      "relationshipId": "rel-acromegaly-to-sleep-apnea",
+      "primaryId": "acromegaly",
+      "targetId": "sleep-apnea",
+      "direction": "acromegaly -> sleep-apnea",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me3-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented acromegaly and separately established obstructive sleep apnea by appropriate sleep-study/clinical diagnostic criteria. The broad sleep-apnea target is used only for the obstructive phenotype supported by PMID 31722411; do not extend this edge to central sleep apnea. Do not infer OSA from acromegaly, obesity, snoring, macroglossia, daytime sleepiness, or upper-airway anatomy alone, and consider other OSA contributors when evaluating an individual nexus. Population-level prevalence and treatment response do not by themselves establish individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented acromegaly and separately established obstructive sleep apnea by appropriate sleep-study/clinical diagnostic criteria. The broad sleep-apnea target is used only for the obstructive phenotype supported by PMID 31722411; do not extend this edge to central sleep apnea. Do not infer OSA from acromegaly, obesity, snoring, macroglossia, daytime sleepiness, or upper-airway anatomy alone, and consider other OSA contributors when evaluating an individual nexus. Population-level prevalence and treatment response do not by themselves establish individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented acromegaly and separately established obstructive sleep apnea by appropriate sleep-study/clinical diagnostic criteria. The broad sleep-apnea target is used only for the obstructive phenotype supported by PMID 31722411; do not extend this edge to central sleep apnea. Do not infer OSA from acromegaly, obesity, snoring, macroglossia, daytime sleepiness, or upper-airway anatomy alone, and consider other OSA contributors when evaluating an individual nexus. Population-level prevalence and treatment response do not by themselves establish individual causation.",
+        "boundarySource": "approved-me3-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of acromegaly and sleep-apnea",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented acromegaly and separately established obstructive sleep apnea by appropriate sleep-study/clinical diagnostic criteria. The broad sleep-apnea target is used only for the obstructive phenotype supported by PMID 31722411; do not extend this edge to central sleep apnea. Do not infer OSA from acromegaly, obesity, snoring, macroglossia, daytime sleepiness, or upper-airway anatomy alone, and consider other OSA contributors when evaluating an individual nexus. Population-level prevalence and treatment response do not by themselves establish individual causation."
+      ],
+      "sourceIds": [
+        "pmid-31722411"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "0afb9a716497769d7cb623de78a9f669b039facb85678ff77fcbc90111fbfef2"
     },
     {
       "relationshipId": "rel-actinomycosis-to-cardiac-inflammatory-disease",
@@ -414,6 +447,39 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "0a11025472fa723424f8742c104e2b3dc839917c29b70a43135e432d9bf0b138"
+    },
+    {
+      "relationshipId": "rel-ankylosing-spondylitis-to-uveitis",
+      "primaryId": "ankylosing-spondylitis",
+      "targetId": "uveitis",
+      "direction": "ankylosing-spondylitis -> uveitis",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me3-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require established ankylosing spondylitis and separately diagnosed uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from HLA-B27 positivity, red eye, ocular pain, or photophobia alone. Preserve alternative infectious, inflammatory, traumatic, and medication-related causes. PMID 23999006 supports uveitis as a common extra-articular manifestation/association in AS populations; it does not by itself establish individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require established ankylosing spondylitis and separately diagnosed uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from HLA-B27 positivity, red eye, ocular pain, or photophobia alone. Preserve alternative infectious, inflammatory, traumatic, and medication-related causes. PMID 23999006 supports uveitis as a common extra-articular manifestation/association in AS populations; it does not by itself establish individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established ankylosing spondylitis and separately diagnosed uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from HLA-B27 positivity, red eye, ocular pain, or photophobia alone. Preserve alternative infectious, inflammatory, traumatic, and medication-related causes. PMID 23999006 supports uveitis as a common extra-articular manifestation/association in AS populations; it does not by itself establish individual causation.",
+        "boundarySource": "approved-me3-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of ankylosing-spondylitis and uveitis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established ankylosing spondylitis and separately diagnosed uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from HLA-B27 positivity, red eye, ocular pain, or photophobia alone. Preserve alternative infectious, inflammatory, traumatic, and medication-related causes. PMID 23999006 supports uveitis as a common extra-articular manifestation/association in AS populations; it does not by itself establish individual causation."
+      ],
+      "sourceIds": [
+        "pmid-23999006"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "f00aeb872320c2e317d9bc7b7bbddeffa5dbe93a031d5deb9e7988624e0266d6"
     },
     {
       "relationshipId": "rel-anorexia-nervosa-to-osteoporosis",
@@ -1549,6 +1615,39 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": true,
       "suggestionObjectHash": "70270cf16cdd00fef3f0a152a328259de4bfc2f798e8c844207a9a12ee355d17"
+    },
+    {
+      "relationshipId": "rel-cushings-syndrome-to-osteoporosis",
+      "primaryId": "cushings-syndrome",
+      "targetId": "osteoporosis",
+      "direction": "cushings-syndrome -> osteoporosis",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me3-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented endogenous Cushing syndrome/hypercortisolism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. PMID 39689783 is limited to endogenous Cushing syndrome; do not use this edge to represent osteoporosis from exogenous glucocorticoid therapy in the absence of endogenous Cushing syndrome. Do not infer osteoporosis from cortisol excess alone, and preserve competing skeletal risk factors when evaluating an individual nexus. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented endogenous Cushing syndrome/hypercortisolism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. PMID 39689783 is limited to endogenous Cushing syndrome; do not use this edge to represent osteoporosis from exogenous glucocorticoid therapy in the absence of endogenous Cushing syndrome. Do not infer osteoporosis from cortisol excess alone, and preserve competing skeletal risk factors when evaluating an individual nexus. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented endogenous Cushing syndrome/hypercortisolism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. PMID 39689783 is limited to endogenous Cushing syndrome; do not use this edge to represent osteoporosis from exogenous glucocorticoid therapy in the absence of endogenous Cushing syndrome. Do not infer osteoporosis from cortisol excess alone, and preserve competing skeletal risk factors when evaluating an individual nexus.",
+        "boundarySource": "approved-me3-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of cushings-syndrome and osteoporosis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented endogenous Cushing syndrome/hypercortisolism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. PMID 39689783 is limited to endogenous Cushing syndrome; do not use this edge to represent osteoporosis from exogenous glucocorticoid therapy in the absence of endogenous Cushing syndrome. Do not infer osteoporosis from cortisol excess alone, and preserve competing skeletal risk factors when evaluating an individual nexus."
+      ],
+      "sourceIds": [
+        "pmid-39689783"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "2a7d3ec593b8c8bd9ff2baf40bd1824e99274052e3b77feb5eb915e9eb99058c"
     },
     {
       "relationshipId": "rel-deep-vein-thrombosis-to-pulmonary-embolism",
@@ -2759,6 +2858,39 @@
       "suggestionObjectHash": "269d6e1c10c1c34d393e7728ddcf08ac5d2373c88458e482efc98764846f9acc"
     },
     {
+      "relationshipId": "rel-hyperparathyroidism-to-osteoporosis",
+      "primaryId": "hyperparathyroidism",
+      "targetId": "osteoporosis",
+      "direction": "hyperparathyroidism -> osteoporosis",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me3-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require biochemically documented primary hyperparathyroidism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. The broader hyperparathyroidism identity must not extend this edge to secondary or tertiary hyperparathyroidism. Do not infer osteoporosis from elevated PTH, hypercalcemia, osteopenia, bone pain, or fracture risk alone; consider age, menopause or hypogonadism, renal disease, glucocorticoid exposure, vitamin D status, and other skeletal causes in an individual nexus. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require biochemically documented primary hyperparathyroidism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. The broader hyperparathyroidism identity must not extend this edge to secondary or tertiary hyperparathyroidism. Do not infer osteoporosis from elevated PTH, hypercalcemia, osteopenia, bone pain, or fracture risk alone; consider age, menopause or hypogonadism, renal disease, glucocorticoid exposure, vitamin D status, and other skeletal causes in an individual nexus. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require biochemically documented primary hyperparathyroidism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. The broader hyperparathyroidism identity must not extend this edge to secondary or tertiary hyperparathyroidism. Do not infer osteoporosis from elevated PTH, hypercalcemia, osteopenia, bone pain, or fracture risk alone; consider age, menopause or hypogonadism, renal disease, glucocorticoid exposure, vitamin D status, and other skeletal causes in an individual nexus.",
+        "boundarySource": "approved-me3-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of hyperparathyroidism and osteoporosis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require biochemically documented primary hyperparathyroidism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. The broader hyperparathyroidism identity must not extend this edge to secondary or tertiary hyperparathyroidism. Do not infer osteoporosis from elevated PTH, hypercalcemia, osteopenia, bone pain, or fracture risk alone; consider age, menopause or hypogonadism, renal disease, glucocorticoid exposure, vitamin D status, and other skeletal causes in an individual nexus."
+      ],
+      "sourceIds": [
+        "pmid-41329412"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "f05df656cdac789eb7f9fb5b09676caaa57c5008b88a5339152ade2e854a69aa"
+    },
+    {
       "relationshipId": "rel-hyperpituitarism-to-hypogonadism",
       "primaryId": "hyperpituitarism",
       "targetId": "hypogonadism",
@@ -2998,6 +3130,39 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": true,
       "suggestionObjectHash": "c3b02a4cb2b86f9d8c62c9245199dad483e81618ad83c2e1d135136f0f5c5cce"
+    },
+    {
+      "relationshipId": "rel-hyperthyroidism-to-cardiac-arrhythmia",
+      "primaryId": "hyperthyroidism",
+      "targetId": "cardiac-arrhythmia",
+      "direction": "hyperthyroidism -> cardiac-arrhythmia",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me3-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation. Preserve temporal thyroid status, restoration of euthyroidism, structural heart disease, age, and other AF risk factors when evaluating individual attribution. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation. Preserve temporal thyroid status, restoration of euthyroidism, structural heart disease, age, and other AF risk factors when evaluating individual attribution. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation. Preserve temporal thyroid status, restoration of euthyroidism, structural heart disease, age, and other AF risk factors when evaluating individual attribution.",
+        "boundarySource": "approved-me3-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of hyperthyroidism and cardiac-arrhythmia",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation. Preserve temporal thyroid status, restoration of euthyroidism, structural heart disease, age, and other AF risk factors when evaluating individual attribution."
+      ],
+      "sourceIds": [
+        "pmid-38377675"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "a48408925909f6441d01ce378c2a37ea966d69cec525377ed8b4f363e2839161"
     },
     {
       "relationshipId": "rel-hypogonadism-to-osteoporosis",
@@ -6156,5 +6321,7 @@
       "pathwayIntelligencePresent": true,
       "suggestionObjectHash": "8901418bcd10361d4367f6a2aad9e5812c42f7d030391cf032c28ca0d5d6ddae"
     }
-  ]
+  ],
+  "lastUpdatedBy": "Mapping Expansion Batch ME-3",
+  "currentState": "ME3-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

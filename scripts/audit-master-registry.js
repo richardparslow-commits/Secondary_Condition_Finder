@@ -1,13 +1,14 @@
 #!/usr/bin/env node
-const fs = require("node:fs");
-const path = require("node:path");
-const crypto = require("node:crypto");
+import fs from "node:fs";
+import path from "node:path";
+import crypto from "node:crypto";
 
 const root = process.cwd();
 const kbDir = path.join(root, "data", "knowledge-base");
 const relPath = path.join(root, "data", "evidence", "master-relationships.json");
 const srcPath = path.join(root, "data", "evidence", "master-sources.json");
 const retirementPath = path.join(root, "data", "citation-retirements.json");
+const expectedBaseline = "61f9bc5e28b5907a854eb1f38ba7a787dee4375a";
 
 const fail = (message) => {
   console.error(JSON.stringify({ status: "FAIL", message }, null, 2));
@@ -15,7 +16,6 @@ const fail = (message) => {
 };
 const readJson = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
 const shaBytes = (b) => crypto.createHash("sha256").update(b).digest("hex");
-
 const canonicalJson = (value) => {
   if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
   if (value && typeof value === "object") {
@@ -44,18 +44,19 @@ const relRegistry = readJson(relPath);
 const srcRegistry = readJson(srcPath);
 if (relRegistry.status !== "AUTHORITATIVE-CURRENT-STATE") fail("Relationship registry is not authoritative.");
 if (srcRegistry.status !== "AUTHORITATIVE-CURRENT-STATE") fail("Source registry is not authoritative.");
-if (relRegistry.baselineCommit !== "ffadbe9460bd0dbda327781e20ec6f51e4cd854f" || srcRegistry.baselineCommit !== "ffadbe9460bd0dbda327781e20ec6f51e4cd854f") fail("Registry baseline mismatch.");
+if (relRegistry.baselineCommit !== expectedBaseline || srcRegistry.baselineCommit !== expectedBaseline) fail("Registry baseline mismatch.");
 
 const relById = new Map(relRegistry.relationships.map((r) => [r.relationshipId, r]));
-if (relById.size !== 183) fail(`Expected 183 master relationships, found ${relById.size}.`);
+if (relById.size !== 188) fail(`Expected 188 master relationships, found ${relById.size}.`);
 const srcById = new Map(srcRegistry.sources.map((s) => [s.sourceId, s]));
-if (srcById.size !== 177) fail(`Expected 177 source entities including lineage, found ${srcById.size}.`);
+if (srcById.size !== 182) fail(`Expected 182 source entities including lineage, found ${srcById.size}.`);
 
 let published = 0;
 let draft = 0;
 let relationshipCount = 0;
 let referenceUses = 0;
 let verifiedTrue = 0;
+let verifiedFalse = 0;
 let clinicalUses = 0;
 let legalUses = 0;
 const observedUses = new Map();
@@ -79,7 +80,7 @@ for (const file of files) {
     if (master.prevalence !== suggestion.prevalence) fail(`${rid}: prevalence mismatch`);
     if (master.rationale !== suggestion.rationale) fail(`${rid}: rationale mismatch`);
     if (JSON.stringify(master.evidenceGaps) !== JSON.stringify(suggestion.evidenceGaps || [])) fail(`${rid}: evidenceGaps mismatch`);
-    if (master.suggestionObjectHash !== shaObject(suggestion)) fail(`${rid}: suggestion object drifted from authoritative baseline`);
+    if (master.suggestionObjectHash !== shaObject(suggestion)) fail(`${rid}: suggestion object drifted from authoritative registry`);
     if (master.clinicalProposition?.text !== suggestion.rationale) fail(`${rid}: clinical proposition text mismatch`);
 
     const pg = master.publicationGuard;
@@ -100,14 +101,26 @@ for (const file of files) {
 
     refs.forEach((ref, index) => {
       referenceUses += 1;
-      if (ref.verified !== true) fail(`${rid}[${index}]: live source is not verified:true`);
-      verifiedTrue += 1;
       if (ref.verificationScope === "clinical-evidence") clinicalUses += 1;
-      if (ref.verificationScope === "legal-framework") legalUses += 1;
+      else if (ref.verificationScope === "legal-framework") legalUses += 1;
+      else fail(`${rid}[${index}]: unsupported verificationScope`);
+
+      if (ref.verified === true) verifiedTrue += 1;
+      else if (ref.verified === false) verifiedFalse += 1;
+      else fail(`${rid}[${index}]: verified must be boolean`);
+
       const sid = canonicalSourceId(ref);
-      if (sid !== master.sourceIds[index]) fail(`${rid}[${index}]: source identity mismatch`);
+      if (sid !== master.sourceIds[index]) fail(`${rid}[${index}]: source identity mismatch (${sid} != ${master.sourceIds[index]})`);
       const source = srcById.get(sid);
-      if (!source || source.status !== "active") fail(`${rid}[${index}]: active source entity missing: ${sid}`);
+      if (!source) fail(`${rid}[${index}]: source entity missing: ${sid}`);
+
+      if (ref.verified === true) {
+        if (source.status !== "active" || source.verified !== true) fail(`${rid}[${index}]: verified:true source must map to active/verified master source`);
+      } else {
+        if (source.status !== "pending-verification" || source.verified !== false) fail(`${rid}[${index}]: verified:false source must map to pending-verification master source`);
+        if (source.kind !== "clinical-evidence") fail(`${rid}[${index}]: pending-verification is allowed only for clinical evidence`);
+      }
+
       const refHash = shaObject(ref);
       if (!(source.rawReferenceHashes || []).includes(refHash)) fail(`${rid}[${index}]: live reference hash not represented by source entity`);
       if (!observedUses.has(sid)) observedUses.set(sid, []);
@@ -122,20 +135,31 @@ for (const file of files) {
 }
 
 if (published !== 139 || draft !== 172) fail(`Publication-state drift: published=${published}, draft=${draft}`);
-if (relationshipCount !== 183) fail(`Relationship count drift: ${relationshipCount}`);
-if (referenceUses !== 191 || verifiedTrue !== 191) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}`);
-if (clinicalUses !== 186 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);
+if (relationshipCount !== 188) fail(`Relationship count drift: ${relationshipCount}`);
+if (referenceUses !== 196 || verifiedTrue !== 191 || verifiedFalse !== 5) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
+if (clinicalUses !== 191 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);
 
 const statusCounts = {};
 let activeClinical = 0;
 let activeLegal = 0;
+let pendingClinical = 0;
 let retiredVerifiedUses = 0;
+
 for (const source of srcRegistry.sources) {
   statusCounts[source.status] = (statusCounts[source.status] || 0) + 1;
   retiredVerifiedUses += (source.retiredUses || []).length;
+
   if (source.status === "active") {
+    if (source.verified !== true) fail(`${source.sourceId}: active source must be verified:true`);
     if (source.kind === "clinical-evidence") activeClinical += 1;
     if (source.kind === "legal-framework") activeLegal += 1;
+  } else if (source.status === "pending-verification") {
+    if (source.verified !== false) fail(`${source.sourceId}: pending-verification source must be verified:false`);
+    if (source.kind !== "clinical-evidence") fail(`${source.sourceId}: pending-verification source must be clinical-evidence`);
+    pendingClinical += 1;
+  }
+
+  if (source.status === "active" || source.status === "pending-verification") {
     const expected = [...(source.liveUses || [])].sort((a,b) =>
       `${a.primaryId}|${a.targetId}|${a.sourceIndex}`.localeCompare(`${b.primaryId}|${b.targetId}|${b.sourceIndex}`)
     );
@@ -144,22 +168,48 @@ for (const source of srcRegistry.sources) {
     );
     if (JSON.stringify(expected) !== JSON.stringify(observed)) fail(`${source.sourceId}: live-use set mismatch`);
     if (source.liveUsageCount !== observed.length) fail(`${source.sourceId}: liveUsageCount mismatch`);
+  } else if ((source.liveUsageCount || 0) !== 0 || (source.liveUses || []).length !== 0) {
+    fail(`${source.sourceId}: lineage/history-only source must have zero live use`);
   }
 }
 
 const expectedStatuses = {
   active: 168,
+  "pending-verification": 5,
   "superseded-unverified": 7,
   "bibliographic-correction-only": 1,
   "retired-only": 1,
 };
-if (Object.keys(statusCounts).sort().join("|") !== Object.keys(expectedStatuses).sort().join("|") || Object.entries(expectedStatuses).some(([key, value]) => statusCounts[key] !== value)) fail(`Source status counts mismatch: ${JSON.stringify(statusCounts)}`);
-if (activeClinical !== 167 || activeLegal !== 1) fail(`Active source kind counts mismatch: clinical=${activeClinical}, legal=${activeLegal}`);
+if (Object.keys(statusCounts).sort().join("|") !== Object.keys(expectedStatuses).sort().join("|") ||
+    Object.entries(expectedStatuses).some(([key, value]) => statusCounts[key] !== value)) {
+  fail(`Source status counts mismatch: ${JSON.stringify(statusCounts)}`);
+}
+if (activeClinical !== 167 || pendingClinical !== 5 || activeLegal !== 1) {
+  fail(`Source kind counts mismatch: activeClinical=${activeClinical}, pendingClinical=${pendingClinical}, activeLegal=${activeLegal}`);
+}
 if (retiredVerifiedUses !== 6) fail(`Retired verified relationship-source uses mismatch: ${retiredVerifiedUses}`);
 
 const legacyCount = relRegistry.relationships.filter((r) => r.publicationGuard.status === "legacy-rationale-boundary").length;
 const explicitCount = relRegistry.relationships.filter((r) => r.publicationGuard.status === "explicit").length;
-if (legacyCount !== 74 || explicitCount !== 109) fail(`Publication guard counts mismatch: legacy=${legacyCount}, explicit=${explicitCount}`);
+if (legacyCount !== 74 || explicitCount !== 114) fail(`Publication guard counts mismatch: legacy=${legacyCount}, explicit=${explicitCount}`);
+
+const expectedRelCounts = { relationships: 188, explicitPublicationGuards: 114, legacyRationaleBoundaries: 74 };
+if (JSON.stringify(relRegistry.counts) !== JSON.stringify(expectedRelCounts)) fail(`Relationship registry count metadata mismatch: ${JSON.stringify(relRegistry.counts)}`);
+
+const expectedSourceCounts = {
+  liveSourceReferenceUses: 196,
+  activeSourceEntities: 168,
+  pendingVerificationSourceEntities: 5,
+  activeClinicalSourceEntities: 167,
+  pendingClinicalSourceEntities: 5,
+  activeLegalAuthorityEntities: 1,
+  retiredOnlySourceEntities: 1,
+  supersededUnverifiedSourceEntities: 7,
+  bibliographicCorrectionOnlyEntities: 1,
+  totalSourceEntitiesIncludingLineage: 182,
+  retiredVerifiedRelationshipSourceUses: 6,
+};
+if (JSON.stringify(srcRegistry.counts) !== JSON.stringify(expectedSourceCounts)) fail(`Source registry count metadata mismatch: ${JSON.stringify(srcRegistry.counts)}`);
 
 const retirementSha = shaBytes(fs.readFileSync(retirementPath));
 if (retirementSha !== srcRegistry.retirementLedger.sha256) fail("Retirement ledger drifted from authoritative source registry snapshot.");
@@ -172,10 +222,13 @@ console.log(JSON.stringify({
   relationships: relationshipCount,
   liveSourceReferenceUses: referenceUses,
   verifiedLiveSourceUses: verifiedTrue,
+  pendingVerificationLiveSourceUses: verifiedFalse,
   liveClinicalUses: clinicalUses,
   liveLegalUses: legalUses,
   activeSourceEntities: statusCounts.active,
+  pendingVerificationSourceEntities: statusCounts["pending-verification"],
   activeClinicalSourceEntities: activeClinical,
+  pendingClinicalSourceEntities: pendingClinical,
   activeLegalSourceEntities: activeLegal,
   totalSourceEntities: srcRegistry.sources.length,
   explicitPublicationGuards: explicitCount,

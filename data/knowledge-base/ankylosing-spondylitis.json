@@ -25,6 +25,29 @@
           "sourceLocator": "PMID 20680529; PubMed title/abstract retrieved in the master research harvest; guard: Require established ankylosing spondylitis and independently documented osteoporosis/low bone density consistent with the source phenotype."
         }
       ]
+    },
+    {
+      "conditionId": "uveitis",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require established ankylosing spondylitis and separately diagnosed uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from HLA-B27 positivity, red eye, ocular pain, or photophobia alone. Preserve alternative infectious, inflammatory, traumatic, and medication-related causes. PMID 23999006 supports uveitis as a common extra-articular manifestation/association in AS populations; it does not by itself establish individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of ankylosing-spondylitis and uveitis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established ankylosing spondylitis and separately diagnosed uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from HLA-B27 positivity, red eye, ocular pain, or photophobia alone. Preserve alternative infectious, inflammatory, traumatic, and medication-related causes. PMID 23999006 supports uveitis as a common extra-articular manifestation/association in AS populations; it does not by itself establish individual causation."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Stolwijk C, van Tubergen A, Castillo-Ortiz JD, Boonen A. Prevalence of extra-articular manifestations in patients with ankylosing spondylitis: a systematic review and meta-analysis. Ann Rheum Dis. 2015;74(1):65-73. PMID 23999006. doi:10.1136/annrheumdis-2013-203582.",
+          "note": "Mapping Expansion Batch ME-3 evidence for the bounded ankylosing-spondylitis to uveitis proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23999006/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 23999006; approved ME-3 proposition; guard: Require established ankylosing spondylitis and separately diagnosed uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from HLA-B27 positivity, red eye, ocular pain, or photophobia alone. Preserve alternative infectious, inflammatory, traumatic, and medication-related causes. PMID 23999006 supports uveitis as a common extra-articular manifestation/association in AS populations; it does not by itself establish individual causation."
+        }
+      ]
     }
   ]
 }

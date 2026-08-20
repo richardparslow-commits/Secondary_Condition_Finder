@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "ffadbe9460bd0dbda327781e20ec6f51e4cd854f",
+  "baselineCommit": "61f9bc5e28b5907a854eb1f38ba7a787dee4375a",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -11,17 +11,21 @@
     "doiOnlyClinicalSourceIdentityAllowed": true,
     "supersededUnverifiedPmidsAreLineageOnly": true,
     "bibliographicCorrectionsAreLineageOnly": true,
-    "retiredVerifiedRelationshipUsesArePreserved": true
+    "retiredVerifiedRelationshipUsesArePreserved": true,
+    "pendingVerificationIsLiveButNotQualifiedHumanVerified": true,
+    "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 191,
+    "liveSourceReferenceUses": 196,
     "activeSourceEntities": 168,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 167,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 177,
+    "totalSourceEntitiesIncludingLineage": 182,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -6125,6 +6129,206 @@
       ]
     },
     {
+      "sourceId": "pmid-23999006",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "23999006",
+      "doi": "10.1136/annrheumdis-2013-203582",
+      "canonicalCitation": "Stolwijk C, van Tubergen A, Castillo-Ortiz JD, Boonen A. Prevalence of extra-articular manifestations in patients with ankylosing spondylitis: a systematic review and meta-analysis. Ann Rheum Dis. 2015;74(1):65-73. PMID 23999006. doi:10.1136/annrheumdis-2013-203582.",
+      "citationVariants": [
+        "Stolwijk C, van Tubergen A, Castillo-Ortiz JD, Boonen A. Prevalence of extra-articular manifestations in patients with ankylosing spondylitis: a systematic review and meta-analysis. Ann Rheum Dis. 2015;74(1):65-73. PMID 23999006. doi:10.1136/annrheumdis-2013-203582."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23999006/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/23999006/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ankylosing-spondylitis-to-uveitis",
+          "primaryId": "ankylosing-spondylitis",
+          "targetId": "uveitis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "d5cc06b7ff3d41a18a2f36a7bf62185ec6d6b9b17bfc24d6a8a84265bfcb41fb"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-31722411",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31722411",
+      "doi": "10.1210/clinem/dgz116",
+      "canonicalCitation": "Parolin M, Dassie F, Alessio L, et al. Obstructive Sleep Apnea in Acromegaly and the Effect of Treatment: A Systematic Review and Meta-Analysis. J Clin Endocrinol Metab. 2020;105(3):dgz116. PMID 31722411. doi:10.1210/clinem/dgz116.",
+      "citationVariants": [
+        "Parolin M, Dassie F, Alessio L, et al. Obstructive Sleep Apnea in Acromegaly and the Effect of Treatment: A Systematic Review and Meta-Analysis. J Clin Endocrinol Metab. 2020;105(3):dgz116. PMID 31722411. doi:10.1210/clinem/dgz116."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31722411/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31722411/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-acromegaly-to-sleep-apnea",
+          "primaryId": "acromegaly",
+          "targetId": "sleep-apnea",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "dbbcdabc462d0dc3195688be76b627ced50ba08509db82bebda07260073783ec"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-38377675",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "38377675",
+      "doi": "10.1530/ETJ-23-0254",
+      "canonicalCitation": "Kostopoulos G, Effraimidis G. Epidemiology, prognosis, and challenges in the management of hyperthyroidism-related atrial fibrillation. Eur Thyroid J. 2024;13(2):e230254. PMID 38377675. doi:10.1530/ETJ-23-0254.",
+      "citationVariants": [
+        "Kostopoulos G, Effraimidis G. Epidemiology, prognosis, and challenges in the management of hyperthyroidism-related atrial fibrillation. Eur Thyroid J. 2024;13(2):e230254. PMID 38377675. doi:10.1530/ETJ-23-0254."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38377675/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38377675/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hyperthyroidism-to-cardiac-arrhythmia",
+          "primaryId": "hyperthyroidism",
+          "targetId": "cardiac-arrhythmia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "aff12f46fb6930ea748f523299d09fa077bc84aee61d9e527f3d54e616667d37"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-39689783",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "39689783",
+      "doi": "10.1016/j.eprac.2024.12.009",
+      "canonicalCitation": "Charoenngam N, Rittiphairoj T, Plessias C, et al. Bone Mineral Density Improvement After Resolution of Endogenous Cushing Syndrome: A Systematic Review and Meta-Analysis. Endocr Pract. 2025;31(3):345-351. PMID 39689783. doi:10.1016/j.eprac.2024.12.009.",
+      "citationVariants": [
+        "Charoenngam N, Rittiphairoj T, Plessias C, et al. Bone Mineral Density Improvement After Resolution of Endogenous Cushing Syndrome: A Systematic Review and Meta-Analysis. Endocr Pract. 2025;31(3):345-351. PMID 39689783. doi:10.1016/j.eprac.2024.12.009."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39689783/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/39689783/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-cushings-syndrome-to-osteoporosis",
+          "primaryId": "cushings-syndrome",
+          "targetId": "osteoporosis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c1a664e7c9048b3e2e366d85547709affb7df2f2afa928e3e5fd55d8f41785d1"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-41329412",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41329412",
+      "doi": "10.1007/s00508-025-02670-z",
+      "canonicalCitation": "Kerschan-Schindl K, Gelles K, Butylina M, et al. Bone metabolism in primary hyperparathyroidism. Wien Klin Wochenschr. 2026;138(7-8):217-224. PMID 41329412. doi:10.1007/s00508-025-02670-z.",
+      "citationVariants": [
+        "Kerschan-Schindl K, Gelles K, Butylina M, et al. Bone metabolism in primary hyperparathyroidism. Wien Klin Wochenschr. 2026;138(7-8):217-224. PMID 41329412. doi:10.1007/s00508-025-02670-z."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41329412/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41329412/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hyperparathyroidism-to-osteoporosis",
+          "primaryId": "hyperparathyroidism",
+          "targetId": "osteoporosis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "56a0b8450b9a7541e7ba9cb5eb28c0bdae3917a45fafee036c2ed751675cf88a"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-16918879",
       "status": "retired-only",
       "kind": "clinical-evidence",
@@ -6388,5 +6592,7 @@
         "relationshipId": "rel-psoriasis-to-eczema"
       }
     }
-  ]
+  ],
+  "lastUpdatedBy": "Mapping Expansion Batch ME-3",
+  "currentState": "ME3-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }
