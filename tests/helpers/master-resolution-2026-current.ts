@@ -141,8 +141,8 @@ export const assertMasterResolution2026CurrentState = () => {
     (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []),
   );
   expect(refs).toHaveLength(191);
-  expect(refs.filter((r) => r.verified === true)).toHaveLength(186);
-  expect(refs.filter((r) => r.verified === false)).toHaveLength(5);
+  expect(refs.filter((r) => r.verified === true)).toHaveLength(191);
+  expect(refs.filter((r) => r.verified === false)).toHaveLength(0);
   const clinical = refs.filter((r) => r.verificationScope === "clinical-evidence");
   expect(clinical).toHaveLength(186);
   expect(clinical.filter((r) => Boolean(r.sourceUrl))).toHaveLength(186);

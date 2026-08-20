@@ -41,12 +41,12 @@
       "sourceReferences": [
         {
           "citation": "Raghu G, Sahay S, Price LC, et al. Pulmonary hypertension associated with interstitial lung disease: a state-of-the-art review. Eur Respir J. 2026;68(1):2502651. PMID 41819536. doi:10.1183/13993003.02651-2025.",
-          "note": "Mapping Expansion Batch ME-2 evidence for the bounded interstitial-lung-disease to pulmonary-hypertension proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved Mapping Expansion Batch ME-2 clinical evidence for the bounded interstitial-lung-disease to pulmonary-hypertension proposition. Verification applies only to the final approved bounded proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41819536/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
-          "sourceLocator": "PMID 41819536; approved ME-2 proposition; guard: Require documented interstitial lung disease and separately established ILD-associated pulmonary hypertension, with appropriate diagnostic evaluation and hemodynamic confirmation such as right-heart catheterization when clinically indicated or available. Evaluate major competing causes of pulmonary hypertension. Do not infer PH from ILD, fibrosis severity, hypoxemia, reduced diffusion capacity, or echocardiographic suspicion alone."
+          "sourceLocator": "PMID 41819536; qualified-human-approved Mapping Expansion Batch ME-2 Citation Verification; guard: Require documented interstitial lung disease and separately established ILD-associated pulmonary hypertension, with appropriate diagnostic evaluation and hemodynamic confirmation such as right-heart catheterization when clinically indicated or available. Evaluate major competing causes of pulmonary hypertension. Do not infer PH from ILD, fibrosis severity, hypoxemia, reduced diffusion capacity, or echocardiographic suspicion alone."
         }
       ]
     }

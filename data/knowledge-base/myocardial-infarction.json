@@ -40,12 +40,12 @@
       "sourceReferences": [
         {
           "citation": "Saito Y, Kobayashi Y, Tsujita K, et al. Pharmacological and Device-Based Intervention for Preventing Heart Failure After Acute Myocardial Infarction - A Clinical Review. Circ J. 2024;88(11):1727-1736. PMID 39284720. doi:10.1253/circj.CJ-24-0633.",
-          "note": "Mapping Expansion Batch ME-2 evidence for the bounded myocardial-infarction to congestive-heart-failure proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved Mapping Expansion Batch ME-2 clinical evidence for the bounded myocardial-infarction to congestive-heart-failure proposition. Verification applies only to the final approved bounded proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39284720/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
-          "sourceLocator": "PMID 39284720; approved ME-2 proposition; guard: Require documented acute myocardial infarction and separately documented new or materially worsened heart failure developing in the clinically relevant post-infarction period, with appropriate evidence of ventricular dysfunction and/or a clinically established heart-failure syndrome. Do not infer heart failure from myocardial infarction alone, and do not attribute pre-existing heart failure to a later infarction without evidence of material post-infarction worsening."
+          "sourceLocator": "PMID 39284720; qualified-human-approved Mapping Expansion Batch ME-2 Citation Verification; guard: Require documented acute myocardial infarction and separately documented new or materially worsened heart failure developing in the clinically relevant post-infarction period, with appropriate evidence of ventricular dysfunction and/or a clinically established heart-failure syndrome. Do not infer heart failure from myocardial infarction alone, and do not attribute pre-existing heart failure to a later infarction without evidence of material post-infarction worsening."
         }
       ]
     }

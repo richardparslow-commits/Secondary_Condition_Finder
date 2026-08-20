@@ -39,12 +39,12 @@
       "sourceReferences": [
         {
           "citation": "Kay D, Bernardo R, Elwing J. Pulmonary Vascular Disease in Chronic Obstructive Pulmonary Disease. Semin Respir Crit Care Med. 2024;45(5):574-581. PMID 39532092. doi:10.1055/s-0044-1791824.",
-          "note": "Mapping Expansion Batch ME-2 evidence for the bounded copd to pulmonary-hypertension proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved Mapping Expansion Batch ME-2 clinical evidence for the bounded copd to pulmonary-hypertension proposition. Verification applies only to the final approved bounded proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39532092/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
-          "sourceLocator": "PMID 39532092; approved ME-2 proposition; guard: Require documented COPD and separately established pulmonary hypertension clinically attributable to chronic lung disease/COPD, preferably with appropriate hemodynamic confirmation when clinically available. Evaluate alternative causes of pulmonary hypertension, including left-heart disease, chronic thromboembolic disease, and other pulmonary vascular disorders. Do not infer pulmonary hypertension from COPD severity, hypoxemia, dyspnea, or an elevated echocardiographic estimate alone."
+          "sourceLocator": "PMID 39532092; qualified-human-approved Mapping Expansion Batch ME-2 Citation Verification; guard: Require documented COPD and separately established pulmonary hypertension clinically attributable to chronic lung disease/COPD, preferably with appropriate hemodynamic confirmation when clinically available. Evaluate alternative causes of pulmonary hypertension, including left-heart disease, chronic thromboembolic disease, and other pulmonary vascular disorders. Do not infer pulmonary hypertension from COPD severity, hypoxemia, dyspnea, or an elevated echocardiographic estimate alone."
         }
       ]
     }
