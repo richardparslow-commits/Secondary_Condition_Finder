@@ -40,12 +40,12 @@
       "sourceReferences": [
         {
           "citation": "Martinez-Garcia MA, Guan WJ, de-la-Rosa D, et al. Post-TB bronchiectasis: from pathogenesis to rehabilitation. Int J Tuberc Lung Dis. 2023;27(3):175-181. PMID 36855043. doi:10.5588/ijtld.22.0566.",
-          "note": "Mapping Expansion Batch ME-1 evidence for the bounded tuberculosis to bronchiectasis proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved Mapping Expansion Batch ME-1 clinical evidence for the bounded tuberculosis to bronchiectasis proposition. Verification applies only to the approved bounded proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36855043/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
-          "sourceLocator": "PMID 36855043; approved ME-1 proposition; guard: Require documented pulmonary tuberculosis preceding separately documented bronchiectasis, with imaging and clinical context consistent with post-tuberculosis structural lung disease. Do not infer bronchiectasis from tuberculosis history alone, and do not generalize this pulmonary-sequela pathway to isolated extrapulmonary tuberculosis."
+          "sourceLocator": "PMID 36855043; qualified-human-approved Mapping Expansion Batch ME-1 Citation Verification; guard: Require documented pulmonary tuberculosis preceding separately documented bronchiectasis, with imaging and clinical context consistent with post-tuberculosis structural lung disease. Do not infer bronchiectasis from tuberculosis history alone, and do not generalize this pulmonary-sequela pathway to isolated extrapulmonary tuberculosis."
         }
       ]
     }
