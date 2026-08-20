@@ -1,0 +1,147 @@
+{
+  "program": "ME-3 Qualified-Human Citation Verification",
+  "status": "APPROVED-FOR-LOCAL-CITATION-VERIFICATION",
+  "baselineCommit": "4d7a60ac4cc7de8d2d91f46210f64fa15f54abd4",
+  "reviewDate": "2026-08-20",
+  "summary": {
+    "rowsReviewed": 5,
+    "approveAsImplemented": 5,
+    "approveWithNarrowing": 0,
+    "replaceSource": 0,
+    "rejectOrWithdraw": 0,
+    "unresolved": 0,
+    "verificationStateChangesPerformed": 0
+  },
+  "stateBoundary": {
+    "kbVerifiedFalsePreserved": true,
+    "masterPendingVerificationPreserved": true,
+    "promotionAuthorizedBeforeUserApproval": false,
+    "automaticPubMedPromotionProhibited": true
+  },
+  "rows": [
+    {
+      "relationship": "acromegaly -> sleep-apnea",
+      "pmid": "31722411",
+      "doi": "10.1210/clinem/dgz116",
+      "title": "Obstructive Sleep Apnea in Acromegaly and the Effect of Treatment: A Systematic Review and Meta-Analysis",
+      "sourceType": "systematic review and meta-analysis",
+      "disposition": "approve-as-implemented",
+      "evidenceMatch": "Directly evaluates obstructive sleep apnea in acromegaly, including OSA prevalence/AHI and longitudinal pre/post-treatment AHI. The implemented guard already limits the broad sleep-apnea taxonomy target to OSA, requires separately established OSA, and prohibits automatic individual causation.",
+      "limitations": "Active versus inactive acromegaly did not show a significant cross-sectional difference in OSA prevalence or AHI; the strongest longitudinal finding is improvement in AHI after acromegaly treatment. Therefore the source supports a bounded comorbidity/association and treatment-response proposition, not automatic individual causation.",
+      "additionalNarrowingRequired": false,
+      "replacementRequired": false
+    },
+    {
+      "relationship": "ankylosing-spondylitis -> uveitis",
+      "pmid": "23999006",
+      "doi": "10.1136/annrheumdis-2013-203582",
+      "title": "Prevalence of extra-articular manifestations in patients with ankylosing spondylitis: a systematic review and meta-analysis",
+      "sourceType": "systematic review and meta-analysis",
+      "disposition": "approve-as-implemented",
+      "evidenceMatch": "Directly supports uveitis as a common extra-articular manifestation in ankylosing spondylitis and reports a pooled uveitis prevalence of 25.8%. The implemented guard requires ophthalmic diagnosis and preserves alternative causes.",
+      "limitations": "This is prevalence/association evidence with substantial heterogeneity across studies; it does not establish individual causation.",
+      "additionalNarrowingRequired": false,
+      "replacementRequired": false
+    },
+    {
+      "relationship": "hyperparathyroidism -> osteoporosis",
+      "pmid": "41329412",
+      "doi": "10.1007/s00508-025-02670-z",
+      "title": "Bone metabolism in primary hyperparathyroidism",
+      "sourceType": "clinical review",
+      "disposition": "approve-as-implemented",
+      "evidenceMatch": "Directly addresses primary hyperparathyroidism skeletal disease: increased bone remodeling/resorption, declining BMD, compromised bone quality, increased fracture risk, and reported osteoporosis in PHPT cohorts. The implemented guard restricts the relationship to primary hyperparathyroidism and requires separately established osteoporosis.",
+      "limitations": "The article is a review rather than a dedicated systematic review of osteoporosis incidence. Existing phenotype and diagnostic guards are therefore important and sufficient; no further narrowing is required.",
+      "additionalNarrowingRequired": false,
+      "replacementRequired": false
+    },
+    {
+      "relationship": "cushings-syndrome -> osteoporosis",
+      "pmid": "39689783",
+      "doi": "10.1016/j.eprac.2024.12.009",
+      "title": "Bone Mineral Density Improvement After Resolution of Endogenous Cushing Syndrome: A Systematic Review and Meta-Analysis",
+      "sourceType": "systematic review and meta-analysis",
+      "disposition": "approve-as-implemented",
+      "evidenceMatch": "Directly restricted to endogenous Cushing syndrome and demonstrates significant lumbar-spine and femoral-neck BMD improvement after resolution. The paper frames the findings as relevant to endogenous-Cushing-associated osteoporosis. This precisely matches the implemented endogenous-Cushing restriction.",
+      "limitations": "The meta-analysis evaluates BMD change after disease resolution; sample size was 302 across 12 studies and lumbar-spine estimates showed substantial heterogeneity. The implemented guard already requires separately established osteoporosis and excludes exogenous glucocorticoid-only disease.",
+      "additionalNarrowingRequired": false,
+      "replacementRequired": false
+    },
+    {
+      "relationship": "hyperthyroidism -> cardiac-arrhythmia",
+      "pmid": "38377675",
+      "doi": "10.1530/ETJ-23-0254",
+      "title": "Epidemiology, prognosis, and challenges in the management of hyperthyroidism-related atrial fibrillation",
+      "sourceType": "clinical review",
+      "disposition": "approve-as-implemented",
+      "evidenceMatch": "Directly states that atrial fibrillation is the most common cardiac complication of hyperthyroidism, occurring in 5-15% of overtly hyperthyroid patients, and describes frequent spontaneous reversion after restoration of euthyroidism. The implemented guard limits the broad cardiac-arrhythmia target to documented atrial fibrillation.",
+      "limitations": "The source is AF-specific and does not support generalization to all arrhythmias. The existing AF-only guard fully addresses that limitation.",
+      "additionalNarrowingRequired": false,
+      "replacementRequired": false
+    }
+  ],
+  "recommendedApprovalScope": "Approve all five ME-3 citations as implemented. After explicit approval, a separate local-only verification runner may atomically promote the five KB references from verified:false to verified:true and the five master sources from pending-verification to active, with no relationship, direction, guard, PMID, DOI, taxonomy, publication-status, or pathwayIntelligence changes.",
+  "ledgerStatus": "APPROVED-AND-APPLIED-LOCALLY",
+  "approvedOn": "2026-08-20",
+  "qualifiedHumanApproval": "I approve",
+  "implementationAuthorization": {
+    "requiredHead": "4d7a60ac4cc7de8d2d91f46210f64fa15f54abd4",
+    "localCommitAuthorizedOnlyAfterAllValidationPasses": true,
+    "remoteWritesAuthorized": false,
+    "relationshipChangesAuthorized": false,
+    "guardChangesAuthorized": false,
+    "sourceIdentityChangesAuthorized": false,
+    "citationPromotionAuthorized": true,
+    "promotionScope": "exactly-five-approved-ME3-sources"
+  },
+  "expectedPostVerificationState": {
+    "knowledgeBaseFiles": 311,
+    "published": 139,
+    "draft": 172,
+    "relationships": 188,
+    "P1": 106,
+    "P2Plus": 33,
+    "references": 196,
+    "verified": 196,
+    "retiredVerified": 6,
+    "verifiedProvenance": 202,
+    "unverified": 0,
+    "reviewFindings": 0,
+    "hardFindings": 0,
+    "clinicalEvidenceReferences": 191,
+    "clinicalEvidenceReferencesWithUrls": 191,
+    "retiredClinicalEvidenceReferencesWithUrls": 4,
+    "clinicalEvidenceProvenanceWithUrls": 195,
+    "masterRelationships": 188,
+    "masterActiveSources": 173,
+    "masterPendingVerificationSources": 0,
+    "masterActiveClinicalSources": 172,
+    "masterPendingClinicalSources": 0,
+    "masterActiveLegalSources": 1,
+    "masterTotalSourcesIncludingLineage": 182,
+    "masterExplicitGuards": 114,
+    "masterLegacyRationaleBoundaries": 74
+  },
+  "promotionContract": {
+    "kb": "verified:false -> verified:true",
+    "master": "pending-verification -> active",
+    "atomic": true,
+    "pubmedLookupAloneDoesNotAuthorizePromotion": true,
+    "approvedDispositions": {
+      "approveAsImplemented": 5,
+      "approveWithNarrowing": 0,
+      "replaceSource": 0,
+      "rejectOrWithdraw": 0
+    }
+  },
+  "implementationDate": "2026-08-20",
+  "implementationResult": {
+    "rowsPromoted": 5,
+    "kbVerifiedTruePromotions": 5,
+    "masterActivePromotions": 5,
+    "relationshipChanges": 0,
+    "guardChanges": 0,
+    "sourceIdentityChanges": 0,
+    "remoteWritesPerformed": false
+  }
+}

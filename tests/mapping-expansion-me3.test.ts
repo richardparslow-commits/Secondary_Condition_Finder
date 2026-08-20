@@ -72,7 +72,7 @@ describe("Mapping Expansion Batch ME-3", () => {
     });
   });
 
-  it("adds each approved edge at rank 2 with one unverified clinical source and exact guard", () => {
+  it("preserves each approved edge at rank 2 with its approved clinical source and exact guard after citation verification", () => {
     for (const row of loadLedger().rows) {
       const mapping = loadMapping(row.primaryId);
       expect(mapping.draft).toBe(false);
@@ -84,7 +84,7 @@ describe("Mapping Expansion Batch ME-3", () => {
       expect(suggestion.pathwayIntelligence).toBeUndefined();
       expect(suggestion.sourceReferences).toHaveLength(1);
       const source = suggestion.sourceReferences?.[0];
-      expect(source?.verified).toBe(false);
+      expect(source?.verified).toBe(true);
       expect(source?.verificationScope).toBe("clinical-evidence");
       expect(source?.citation).toBe(row.citation);
       expect(source?.sourceUrl).toBe(row.sourceUrl);
@@ -92,7 +92,7 @@ describe("Mapping Expansion Batch ME-3", () => {
     }
   });
 
-  it("keeps KB and authoritative registry additions atomic", () => {
+  it("keeps KB and authoritative registry identity linkage intact after citation promotion", () => {
     const ledger = loadLedger();
     const relationships = JSON.parse(fs.readFileSync(relPath, "utf8")) as {
       relationships: Array<{
@@ -124,8 +124,8 @@ describe("Mapping Expansion Batch ME-3", () => {
 
       const source = sources.sources.find((s) => s.sourceId === `pmid-${row.pmid}`);
       expect(source).toMatchObject({
-        status: "pending-verification",
-        verified: false,
+        status: "active",
+        verified: true,
         liveUsageCount: 1,
       });
     }
@@ -144,17 +144,17 @@ describe("Mapping Expansion Batch ME-3", () => {
     expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length >= 2)).toHaveLength(33);
     const refs = mappings.flatMap((m) => (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []));
     expect(refs).toHaveLength(196);
-    expect(refs.filter((r) => r.verified === true)).toHaveLength(191);
-    expect(refs.filter((r) => r.verified === false)).toHaveLength(5);
+    expect(refs.filter((r) => r.verified === true)).toHaveLength(196);
+    expect(refs.filter((r) => r.verified === false)).toHaveLength(0);
   });
 
-  it("passes the fail-closed master-registry parity audit in pending-verification state", () => {
+  it("passes the fail-closed master-registry parity audit after approved citation promotion", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], {
       cwd: root,
       encoding: "utf8",
     });
     const result = JSON.parse(output) as { status: string; pendingVerificationSourceEntities: number };
     expect(result.status).toBe("PASS");
-    expect(result.pendingVerificationSourceEntities).toBe(5);
+    expect(result.pendingVerificationSourceEntities).toBe(0);
   });
 });

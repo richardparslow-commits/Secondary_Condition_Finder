@@ -2,60 +2,23 @@
 
 ## Status
 
-This repository contains an authoritative current-state registry for the clinical relationship graph and its evidence-source identities.
+The authoritative registry is citation-verified for Mapping Expansion Batch ME-3 from parent implementation baseline `4d7a60ac4cc7de8d2d91f46210f64fa15f54abd4`.
 
-The registry was originally installed from the fully closed ME-2 baseline and is now updated atomically with Mapping Expansion Batch ME-3 from parent baseline `61f9bc5e28b5907a854eb1f38ba7a787dee4375a`.
-
-## Authoritative files
-
-- `data/evidence/master-relationships.json`
-- `data/evidence/master-sources.json`
-
-The condition knowledge-base JSON remains the application-facing representation. The master registry is the parity contract: a relationship/source change must be represented in both layers or `scripts/audit-master-registry.js` fails.
-
-## Relationship state after ME-3 implementation / before citation verification
+## Current state
 
 - 188 relationships.
-- 114 explicit structured publication guards.
-- 74 legacy rationale boundaries.
-- No legacy guard is fabricated: legacy rows preserve the exact current rationale with `structuredGuardText: null`.
-
-## Source states
-
-The master source registry deliberately separates evidence identity from citation-verification state:
-
-- `active`: live source whose KB reference is `verified:true`.
-- `pending-verification`: live clinical source whose KB reference is `verified:false` and requires separate qualified-human citation verification.
-- `superseded-unverified`: historical source identity replaced before verification.
-- `bibliographic-correction-only`: correction/erratum lineage, not simultaneous live evidence.
-- `retired-only`: previously verified source retained only in the retirement ledger.
-
-After ME-3 implementation and before citation verification:
-
-- 196 live relationship-source uses.
-- 168 active source entities.
-- 5 pending-verification source entities.
-- 167 active clinical sources.
-- 5 pending clinical sources.
-- 1 active legal-authority entity (`38 CFR 3.310`).
-- 7 superseded-unverified source entities.
-- 1 correction-only entity.
-- 1 retired-only source entity.
+- 114 explicit publication guards / 74 legacy rationale boundaries.
+- 196 live relationship-source uses; 196/196 verified.
+- 173 active source entities: 172 clinical + 1 legal authority.
+- 0 pending-verification source entities.
+- 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
 - 182 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
 
-## Fail-closed verification parity
+## Verification-state contract
 
-`verified:true` in the KB must map to master status `active`.
+Live `verified:true` KB sources must map to master status `active`. Future live `verified:false` clinical sources must map to `pending-verification`. Mapping approval and PubMed identity matching never authorize citation promotion by themselves.
 
-`verified:false` in the KB must map to master status `pending-verification`.
+## ME-3 verification
 
-A separate qualified-human citation-verification batch must promote both layers atomically:
-
-`verified:false -> true` and `pending-verification -> active`.
-
-PubMed identity matching alone never authorizes verification promotion.
-
-## Integrity boundary
-
-ME-3 does not add taxonomy identities, change publication status, add `pathwayIntelligence`, or claim an individual VA medical nexus. Population-level associations remain bounded by their explicit publication guards.
+The five ME-3 sources were reviewed proposition-by-proposition and approved as implemented: PMIDs 31722411, 23999006, 41329412, 39689783, and 38377675. No relationship entity, rationale, guard, PMID, DOI, taxonomy, publication status, or `pathwayIntelligence` changed during citation verification. `verified:true` remains a source/proposition review state and does not establish an individual VA medical nexus.

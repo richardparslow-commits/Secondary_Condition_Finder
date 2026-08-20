@@ -61,7 +61,7 @@
           "note": "Mapping Expansion Batch ME-3 evidence for the bounded hyperparathyroidism to osteoporosis proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41329412/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 41329412; approved ME-3 proposition; guard: Require biochemically documented primary hyperparathyroidism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. The broader hyperparathyroidism identity must not extend this edge to secondary or tertiary hyperparathyroidism. Do not infer osteoporosis from elevated PTH, hypercalcemia, osteopenia, bone pain, or fracture risk alone; consider age, menopause or hypogonadism, renal disease, glucocorticoid exposure, vitamin D status, and other skeletal causes in an individual nexus."
         }

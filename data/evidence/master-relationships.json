@@ -2,7 +2,7 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "61f9bc5e28b5907a854eb1f38ba7a787dee4375a",
+  "baselineCommit": "4d7a60ac4cc7de8d2d91f46210f64fa15f54abd4",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
@@ -6322,6 +6322,6 @@
       "suggestionObjectHash": "8901418bcd10361d4367f6a2aad9e5812c42f7d030391cf032c28ca0d5d6ddae"
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-3",
-  "currentState": "ME3-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "ME-3 Qualified-Human Citation Verification",
+  "currentState": "ME3-CITATION-VERIFIED"
 }

@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "61f9bc5e28b5907a854eb1f38ba7a787dee4375a",
+  "baselineCommit": "4d7a60ac4cc7de8d2d91f46210f64fa15f54abd4",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -17,10 +17,10 @@
   },
   "counts": {
     "liveSourceReferenceUses": 196,
-    "activeSourceEntities": 168,
-    "pendingVerificationSourceEntities": 5,
-    "activeClinicalSourceEntities": 167,
-    "pendingClinicalSourceEntities": 5,
+    "activeSourceEntities": 173,
+    "pendingVerificationSourceEntities": 0,
+    "activeClinicalSourceEntities": 172,
+    "pendingClinicalSourceEntities": 0,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
@@ -6130,7 +6130,7 @@
     },
     {
       "sourceId": "pmid-23999006",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "23999006",
       "doi": "10.1136/annrheumdis-2013-203582",
@@ -6145,7 +6145,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-08-20"
       ],
@@ -6163,14 +6163,16 @@
         "d5cc06b7ff3d41a18a2f36a7bf62185ec6d6b9b17bfc24d6a8a84265bfcb41fb"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-31722411",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "31722411",
       "doi": "10.1210/clinem/dgz116",
@@ -6185,7 +6187,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-08-20"
       ],
@@ -6203,14 +6205,16 @@
         "dbbcdabc462d0dc3195688be76b627ced50ba08509db82bebda07260073783ec"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-38377675",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "38377675",
       "doi": "10.1530/ETJ-23-0254",
@@ -6225,7 +6229,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-08-20"
       ],
@@ -6243,14 +6247,16 @@
         "aff12f46fb6930ea748f523299d09fa077bc84aee61d9e527f3d54e616667d37"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-39689783",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "39689783",
       "doi": "10.1016/j.eprac.2024.12.009",
@@ -6265,7 +6271,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-08-20"
       ],
@@ -6283,14 +6289,16 @@
         "c1a664e7c9048b3e2e366d85547709affb7df2f2afa928e3e5fd55d8f41785d1"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-41329412",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "41329412",
       "doi": "10.1007/s00508-025-02670-z",
@@ -6305,7 +6313,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-08-20"
       ],
@@ -6323,7 +6331,9 @@
         "56a0b8450b9a7541e7ba9cb5eb28c0bdae3917a45fafee036c2ed751675cf88a"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -6593,6 +6603,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-3",
-  "currentState": "ME3-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "ME-3 Qualified-Human Citation Verification",
+  "currentState": "ME3-CITATION-VERIFIED"
 }

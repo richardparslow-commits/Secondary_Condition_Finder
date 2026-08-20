@@ -61,7 +61,7 @@
           "note": "Mapping Expansion Batch ME-3 evidence for the bounded acromegaly to sleep-apnea proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31722411/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 31722411; approved ME-3 proposition; guard: Require documented acromegaly and separately established obstructive sleep apnea by appropriate sleep-study/clinical diagnostic criteria. The broad sleep-apnea target is used only for the obstructive phenotype supported by PMID 31722411; do not extend this edge to central sleep apnea. Do not infer OSA from acromegaly, obesity, snoring, macroglossia, daytime sleepiness, or upper-airway anatomy alone, and consider other OSA contributors when evaluating an individual nexus. Population-level prevalence and treatment response do not by themselves establish individual causation."
         }
