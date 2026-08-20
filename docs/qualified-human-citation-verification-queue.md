@@ -206,8 +206,10 @@ Approval: **I approve Residual Citation Verification — M1 Closure 2026**
 <!-- RESIDUAL-M1-CLOSURE-2026:END -->
 
 <!-- PTH-TAXONOMY-2026:START -->
-## Post-Traumatic Headache taxonomy correction
+## Post-Traumatic Headache taxonomy/citation item — closed
 
-- `mild-tbi → post-traumatic-headache` — PMID **38568491** — **taxonomy-correct / verified:false / citation approval pending**.
-- Prior `mild-tbi → migraine-headaches` active mismatch removed.
+- `mild-tbi → post-traumatic-headache` — PMID **38568491** — **verified**.
+- Qualified-human approval: **I approve Post-Traumatic Headache Citation Verification 2026**
+- Prior `mild-tbi → migraine-headaches` active mismatch remains removed.
+- Live citation verification queue: **0**.
 <!-- PTH-TAXONOMY-2026:END -->

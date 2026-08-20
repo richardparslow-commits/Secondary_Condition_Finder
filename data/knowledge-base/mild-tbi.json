@@ -21,9 +21,9 @@
           "note": "Clinical review source for post-traumatic headache attributed to mild traumatic brain injury. Supports the corrected post-traumatic-headache target; migraine-like phenotype does not make PTH equivalent to the catalog migraine-headaches diagnosis.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38568491/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 38568491; moved one-for-one from the prior mTBI→migraine-headaches taxonomy mismatch to mTBI→post-traumatic-headache; remains unverified pending separate citation approval."
+          "sourceLocator": "PMID 38568491; moved one-for-one from the prior mTBI→migraine-headaches taxonomy mismatch to mTBI→post-traumatic-headache; qualified-human citation verification approved 2026-08-19."
         }
       ]
     }

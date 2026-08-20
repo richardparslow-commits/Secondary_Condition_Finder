@@ -35,7 +35,7 @@ describe("citation verification batch 08", () => {
     expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
   });
 
-  it("holds the corrected mTBI post-traumatic-headache source unverified", () => {
+  it("verifies the corrected mTBI post-traumatic-headache source after separate approval", () => {
     const suggestion = byId.get("mild-tbi")?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
     expect(suggestion?.conditionId).toBe("post-traumatic-headache");
@@ -45,7 +45,7 @@ describe("citation verification batch 08", () => {
     expect(suggestion?.rationale).toMatch(/greater than 3 months/i);
     expect(source?.sourceUrl).toContain("38568491");
     expect(source?.sourceCheckedOn).toBe("2026-08-19");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
   });
 
   it("preserves the approved bounded pathways for Paget and ovarian-cancer treatment", () => {

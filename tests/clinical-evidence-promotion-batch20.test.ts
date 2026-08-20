@@ -41,7 +41,7 @@ describe("clinical evidence promotion batch 20", () => {
     expect(suggestion?.rationale).toMatch(/greater than 3 months/i);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("38568491");
     expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-19");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
   });
 
   it("recognizes the later evidence-quality withdrawal of Parkinson depression", () => {

@@ -122,8 +122,8 @@ export function assertMaster2026CurrentState(): void {
     mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
   );
   expect(refs).toHaveLength(141);
-  expect(refs.filter((ref) => ref.verified === true)).toHaveLength(140);
-  expect(refs.filter((ref) => ref.verified === false)).toHaveLength(1);
+  expect(refs.filter((ref) => ref.verified === true)).toHaveLength(141);
+  expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   const clinical = refs.filter(
     (ref) => ref.verificationScope === "clinical-evidence",
   );
@@ -135,7 +135,7 @@ export function assertMaster2026CurrentState(): void {
     .flatMap((item) => item.sourceReferences ?? [])
     .find((ref) => ref.citation?.includes("PMID 38568491"));
   expect(mtbi).toBeDefined();
-  expect(mtbi?.verified).toBe(false);
+  expect(mtbi?.verified).toBe(true);
 
   const ledger = readJson<WaveLedger>(
     join(root, "data", "expansion-dispositions.json"),

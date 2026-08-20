@@ -7,3 +7,11 @@
 - Replaced: `mild-tbi → migraine-headaches` with `mild-tbi → post-traumatic-headache`
 - PMID 38568491: **verified:false** pending separate citation-verification approval
 - The prior migraine target is preserved only as historical resolution provenance.
+
+<!-- PTH-SUBSEQUENT-CITATION-VERIFICATION-2026:START -->
+## Subsequent citation verification
+
+- Separate approval: **I approve Post-Traumatic Headache Citation Verification 2026**
+- PMID **38568491** is now **verified:true** for `mild-tbi → post-traumatic-headache`.
+- The taxonomy implementation's original `verified:false` state remains a historical fact.
+<!-- PTH-SUBSEQUENT-CITATION-VERIFICATION-2026:END -->

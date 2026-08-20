@@ -56,7 +56,7 @@ describe("qualified-human approved clinical mapping batch M1", () => {
     const source = mtbi?.suggestions[0]?.sourceReferences.find((reference) =>
       [reference.citation, reference.sourceUrl, reference.note, reference.sourceLocator].join(" ").includes("38568491"),
     );
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
   });
 
   it("records the M1 Wave disposition state", () => {

@@ -1,10 +1,12 @@
 <!-- PTH-TAXONOMY-2026:START -->
-## Post-Traumatic Headache taxonomy addition
+## Post-Traumatic Headache taxonomy and citation closure
 
 - Catalog identities: **301**.
 - Knowledge-base identity files: **301**.
-- Citation verification remains **140 verified / 1 unverified**.
-- Sole unverified source: PMID **38568491** on `mild-tbi → post-traumatic-headache`.
+- KB state: **103 published / 198 draft**.
+- Citation verification: **141 verified / 0 unverified**.
+- Published-review findings: **0**; hard findings: **0**.
+- PMID **38568491** on `mild-tbi → post-traumatic-headache`: **verified**.
 <!-- PTH-TAXONOMY-2026:END -->
 
 <!-- RESIDUAL-M1-CLOSURE-2026:START -->

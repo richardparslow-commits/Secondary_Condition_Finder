@@ -68,7 +68,7 @@ describe("Post-Traumatic Headache Taxonomy Addition 2026", () => {
       "https://pubmed.ncbi.nlm.nih.gov/38568491/",
     );
     expect(refs[0]?.verificationScope).toBe("clinical-evidence");
-    expect(refs[0]?.verified).toBe(false);
+    expect(refs[0]?.verified).toBe(true);
     expect(pth[0]?.rationale).toMatch(/within 7 days/i);
   });
 
@@ -103,7 +103,7 @@ describe("Post-Traumatic Headache Taxonomy Addition 2026", () => {
       ?.sourceReferences?.find((ref) =>
         (ref.citation ?? "").includes("PMID 38568491"),
       );
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
 
     const artifact = JSON.parse(
       fs.readFileSync(

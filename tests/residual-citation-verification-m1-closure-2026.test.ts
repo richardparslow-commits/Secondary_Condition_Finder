@@ -1,7 +1,77 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-const kb=path.join(process.cwd(),"data","knowledge-base");
-const approved=[["social-anxiety-disorder","depressive-disorder","11231832"],["social-anxiety-disorder","depressive-disorder","17679635"],["laryngeal-cancer","aphonia","25630206"],["laryngeal-cancer","aphonia","20189345"]] as const;
-function src(p:string,t:string,pm:string){const m=JSON.parse(fs.readFileSync(path.join(kb,`${p}.json`),"utf8")) as {suggestions:Array<{conditionId:string;sourceReferences?:Array<{citation?:string;sourceUrl?:string;verified?:boolean;verificationScope?:string;sourceCheckedOn?:string}>}>}; const s=m.suggestions.find(x=>x.conditionId===t); const r=(s?.sourceReferences??[]).filter(x=>(x.citation??"").includes(`PMID ${pm}`)||(x.sourceUrl??"").includes(`/${pm}/`)); expect(r).toHaveLength(1); return r[0]!;}
-describe("Residual M1 citation closure 2026",()=>{it("verifies exactly four M1 rows",()=>{for(const [p,t,pm] of approved){const r=src(p,t,pm); expect(r.verified).toBe(true); expect(r.verificationScope).toBe("clinical-evidence"); expect(r.sourceCheckedOn).toBe("2026-08-19");}}); it("keeps mTBI taxonomy hold false",()=>{expect(src("mild-tbi","post-traumatic-headache","38568491").verified).toBe(false);}); it("reaches 140/1 live state",()=>{const refs=fs.readdirSync(kb).filter(x=>x.endsWith(".json")).flatMap(f=>{const m=JSON.parse(fs.readFileSync(path.join(kb,f),"utf8")) as {suggestions:Array<{sourceReferences?:Array<{citation?:string;verified?:boolean}>}>}; return m.suggestions.flatMap(s=>s.sourceReferences??[])}); expect(refs).toHaveLength(141); expect(refs.filter(r=>r.verified===true)).toHaveLength(140); const u=refs.filter(r=>r.verified===false); expect(u).toHaveLength(1); expect(u[0]?.citation).toContain("PMID 38568491");});});
+
+const kb = path.join(process.cwd(), "data", "knowledge-base");
+
+const m1 = [
+  ["social-anxiety-disorder", "depressive-disorder", "11231832"],
+  ["social-anxiety-disorder", "depressive-disorder", "17679635"],
+  ["laryngeal-cancer", "aphonia", "25630206"],
+  ["laryngeal-cancer", "aphonia", "20189345"],
+] as const;
+
+function src(primary: string, target: string, pmid: string) {
+  const mapping = JSON.parse(
+    fs.readFileSync(path.join(kb, `${primary}.json`), "utf8"),
+  ) as {
+    suggestions: Array<{
+      conditionId: string;
+      sourceReferences?: Array<{
+        citation?: string;
+        sourceUrl?: string;
+        verified?: boolean;
+        verificationScope?: string;
+        sourceCheckedOn?: string;
+      }>;
+    }>;
+  };
+  const suggestion = mapping.suggestions.find((row) => row.conditionId === target);
+  const refs = (suggestion?.sourceReferences ?? []).filter(
+    (ref) =>
+      (ref.citation ?? "").includes(`PMID ${pmid}`) ||
+      (ref.sourceUrl ?? "").includes(`/${pmid}/`),
+  );
+  expect(refs).toHaveLength(1);
+  return refs[0]!;
+}
+
+describe("Residual M1 citation closure 2026 — current state", () => {
+  it("preserves the four qualified-human-approved M1 verifications", () => {
+    for (const [primary, target, pmid] of m1) {
+      const ref = src(primary, target, pmid);
+      expect(ref.verified).toBe(true);
+      expect(ref.verificationScope).toBe("clinical-evidence");
+      expect(ref.sourceCheckedOn).toBe("2026-08-19");
+    }
+  });
+
+  it("recognizes the later proposition-matched PTH citation verification", () => {
+    const ref = src("mild-tbi", "post-traumatic-headache", "38568491");
+    expect(ref.verified).toBe(true);
+    expect(ref.verificationScope).toBe("clinical-evidence");
+    expect(ref.sourceCheckedOn).toBe("2026-08-19");
+  });
+
+  it("reaches zero live citation debt", () => {
+    const refs = fs
+      .readdirSync(kb)
+      .filter((name) => name.endsWith(".json"))
+      .flatMap((name) => {
+        const mapping = JSON.parse(
+          fs.readFileSync(path.join(kb, name), "utf8"),
+        ) as {
+          suggestions: Array<{
+            sourceReferences?: Array<{ verified?: boolean }>;
+          }>;
+        };
+        return mapping.suggestions.flatMap(
+          (suggestion) => suggestion.sourceReferences ?? [],
+        );
+      });
+
+    expect(refs).toHaveLength(141);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(141);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
+  });
+});

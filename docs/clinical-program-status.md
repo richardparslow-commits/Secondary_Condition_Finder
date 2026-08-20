@@ -1,9 +1,11 @@
 <!-- PTH-TAXONOMY-2026:START -->
-## Post-Traumatic Headache taxonomy correction
+## Post-Traumatic Headache taxonomy and citation status
 
-- Added distinct secondary-headache identity `post-traumatic-headache`.
-- Replaced `mild-tbi → migraine-headaches` with `mild-tbi → post-traumatic-headache`.
-- PMID **38568491** moved one-for-one and remains `verified:false` pending separate approval.
+- Distinct identity `post-traumatic-headache` is active as a draft identity.
+- Published mapping is `mild-tbi → post-traumatic-headache`.
+- PMID **38568491** is **verified:true** after separate qualified-human citation approval.
+- The prior `mild-tbi → migraine-headaches` mismatch remains removed.
+- No mechanistic pathwayIntelligence was added.
 <!-- PTH-TAXONOMY-2026:END -->
 
 <!-- RESIDUAL-M1-CLOSURE-2026:START -->

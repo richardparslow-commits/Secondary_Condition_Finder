@@ -19,13 +19,15 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // The remaining 5 unverified/review rows are outside this Master citation-verification set.
 // Residual M1 citation closure qualified-human approved 2026-08-19.
 // Four M1 sources verified; PMID 38568491 remains the sole taxonomy hold.
+// Post-Traumatic Headache Citation Verification 2026 qualified-human approved 2026-08-19.
+// PMID 38568491 is proposition-matched to mTBI -> post-traumatic-headache; live citation debt is now zero.
 const CITATION_DEBT_BASELINE = Object.freeze({
   references: 141,
-  liveVerified: 140,
+  liveVerified: 141,
   retiredVerified: 6,
-  verifiedProvenance: 146,
-  unverified: 1,
-  reviewFindings: 1,
+  verifiedProvenance: 147,
+  unverified: 0,
+  reviewFindings: 0,
   liveClinicalEvidenceWithUrls: 136,
   retiredClinicalEvidenceWithUrls: 4,
   clinicalEvidenceProvenanceWithUrls: 140,

@@ -247,7 +247,7 @@ describe("Clinical Mapping Master Batch 2026", () => {
     );
   });
 
-  it("keeps the external mTBI taxonomy hold unverified", () => {
+  it("recognizes later PTH citation verification outside the Master batch", () => {
     const mild = JSON.parse(
       fs.readFileSync(path.join(kbDir, "mild-tbi.json"), "utf8"),
     ) as {
@@ -259,6 +259,6 @@ describe("Clinical Mapping Master Batch 2026", () => {
       .flatMap((item) => item.sourceReferences ?? [])
       .find((item) => item.citation?.includes("PMID 38568491"));
     expect(ref).toBeDefined();
-    expect(ref?.verified).toBe(false);
+    expect(ref?.verified).toBe(true);
   });
 });

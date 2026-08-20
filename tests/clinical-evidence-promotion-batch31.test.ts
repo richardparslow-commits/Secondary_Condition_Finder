@@ -61,7 +61,7 @@ describe("targeted clinical mapping batch 31", () => {
     expect(mapping?.suggestions[0]?.conditionId).toBe("post-traumatic-headache");
     expect(mapping?.suggestions[0]?.sourceReferences[0]?.sourceUrl).toContain("38568491");
     expect(mapping?.suggestions[0]?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-19");
-    expect(mapping?.suggestions[0]?.sourceReferences[0]?.verified).toBe(false);
+    expect(mapping?.suggestions[0]?.sourceReferences[0]?.verified).toBe(true);
     expect(mapping?.suggestions[0]?.rationale).toMatch(/mild traumatic brain injury/i);
     expect(mapping?.suggestions[0]?.rationale).toMatch(/within 7 days/i);
     expect(mapping?.suggestions[0]?.rationale).toMatch(/greater than 3 months/i);
@@ -131,8 +131,8 @@ describe("targeted clinical mapping batch 31", () => {
     );
 
     expect(liveReferences).toHaveLength(141);
-    expect(liveUnverified).toHaveLength(1);
-    expect(publishedUnverified).toHaveLength(1);
+    expect(liveUnverified).toHaveLength(0);
+    expect(publishedUnverified).toHaveLength(0);
     expect(clinicalWithUrls).toHaveLength(136);
   });
 
