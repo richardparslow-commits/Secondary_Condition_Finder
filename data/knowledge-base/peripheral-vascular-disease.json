@@ -7,22 +7,22 @@
       "conditionId": "amputation-or-loss-of-use",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific complication outcome risk. Apply only to documented atherosclerotic lower-extremity peripheral artery disease, especially critical limb-threatening ischemia, with separately documented major amputation/loss of use. Do not generalize to venous disease or nonspecific vascular diagnoses. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific complication outcome risk. Require documented atherosclerotic lower-extremity peripheral artery disease, particularly advanced disease/critical limb-threatening ischemia where applicable, and separately documented major lower-extremity amputation occurring in the PAD clinical course. PMID 31606132 supports major amputation as a complication/outcome of atherosclerotic PAD; it does not independently verify non-amputation functional \"loss of use.\" Do not generalize this evidence to venous disease, nonspecific vascular diagnoses, or assume that PAD establishes the cause of every individual amputation without appropriate clinical attribution. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation that Peripheral Vascular Disease matches the source-specific phenotype",
         "Independent diagnosis of Amputation / Loss of Use of Limbs or Digits with compatible chronology",
         "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
-        "Resolution of the publication guard: Apply only to documented atherosclerotic lower-extremity peripheral artery disease, especially critical limb-threatening ischemia, with separately documented major amputation/loss of use. Do not generalize to venous disease or nonspecific vascular diagnoses."
+        "Resolution of the publication guard: Require documented atherosclerotic lower-extremity peripheral artery disease, particularly advanced disease/critical limb-threatening ischemia where applicable, and separately documented major lower-extremity amputation occurring in the PAD clinical course. PMID 31606132 supports major amputation as a complication/outcome of atherosclerotic PAD; it does not independently verify non-amputation functional \"loss of use.\" Do not generalize this evidence to venous disease, nonspecific vascular diagnoses, or assume that PAD establishes the cause of every individual amputation without appropriate clinical attribution."
       ],
       "sourceReferences": [
         {
           "citation": "Morbidity and mortality associated with atherosclerotic peripheral artery disease: A systematic review. Atherosclerosis. 2020. doi:10.1016/j.atherosclerosis.2019.09.012. PMID 31606132",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded phenotype specific complication outcome risk proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved source-specific narrowing clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31606132/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 31606132; approved Master Resolution proposition; guard: Apply only to documented atherosclerotic lower-extremity peripheral artery disease, especially critical limb-threatening ischemia, with separately documented major amputation/loss of use. Do not generalize to venous disease or nonspecific vascular diagnoses."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 31606132; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented atherosclerotic lower-extremity peripheral artery disease, particularly advanced disease/critical limb-threatening ischemia where applicable, and separately documented major lower-extremity amputation occurring in the PAD clinical course. PMID 31606132 supports major amputation as a complication/outcome of atherosclerotic PAD; it does not independently verify non-amputation functional \"loss of use.\" Do not generalize this evidence to venous disease, nonspecific vascular diagnoses, or assume that PAD establishes the cause of every individual amputation without appropriate clinical attribution."
         }
       ]
     }

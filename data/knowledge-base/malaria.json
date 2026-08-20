@@ -7,22 +7,22 @@
       "conditionId": "epilepsy",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific temporal risk. Apply only to documented cerebral malaria, predominantly pediatric populations consistent with the evidence, followed by separately diagnosed epilepsy. Do not generalize to uncomplicated malaria or isolated acute febrile/provoked seizures. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific temporal risk. Require documented cerebral malaria, rather than uncomplicated malaria, with subsequent separately diagnosed epilepsy after the acute cerebral-malaria episode. PMID 25631856 principally represents survivors of cerebral malaria, most of whom were children in malaria-endemic settings, and supports a population-level association with long-term neurologic sequelae. Do not infer epilepsy from uncomplicated malaria, malaria exposure alone, an acute febrile seizure, or an isolated seizure occurring only during the acute cerebral-malaria illness. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation that Malaria matches the source-specific phenotype",
         "Independent diagnosis of Epilepsy with compatible chronology",
         "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
-        "Resolution of the publication guard: Apply only to documented cerebral malaria, predominantly pediatric populations consistent with the evidence, followed by separately diagnosed epilepsy. Do not generalize to uncomplicated malaria or isolated acute febrile/provoked seizures."
+        "Resolution of the publication guard: Require documented cerebral malaria, rather than uncomplicated malaria, with subsequent separately diagnosed epilepsy after the acute cerebral-malaria episode. PMID 25631856 principally represents survivors of cerebral malaria, most of whom were children in malaria-endemic settings, and supports a population-level association with long-term neurologic sequelae. Do not infer epilepsy from uncomplicated malaria, malaria exposure alone, an acute febrile seizure, or an isolated seizure occurring only during the acute cerebral-malaria illness."
       ],
       "sourceReferences": [
         {
           "citation": "Cerebral malaria as a risk factor for the development of epilepsy and other long-term neurological conditions: a meta-analysis. Transactions of the Royal Society of Tropical Medicine and Hygiene. 2015. doi:10.1093/trstmh/trv005. PMID 25631856",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded phenotype specific temporal risk proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved source-specific narrowing clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25631856/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 25631856; approved Master Resolution proposition; guard: Apply only to documented cerebral malaria, predominantly pediatric populations consistent with the evidence, followed by separately diagnosed epilepsy. Do not generalize to uncomplicated malaria or isolated acute febrile/provoked seizures."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 25631856; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented cerebral malaria, rather than uncomplicated malaria, with subsequent separately diagnosed epilepsy after the acute cerebral-malaria episode. PMID 25631856 principally represents survivors of cerebral malaria, most of whom were children in malaria-endemic settings, and supports a population-level association with long-term neurologic sequelae. Do not infer epilepsy from uncomplicated malaria, malaria exposure alone, an acute febrile seizure, or an isolated seizure occurring only during the acute cerebral-malaria illness."
         }
       ]
     }

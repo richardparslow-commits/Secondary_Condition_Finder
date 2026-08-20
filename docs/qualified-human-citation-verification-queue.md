@@ -223,47 +223,14 @@ Approval: **I approve Residual Citation Verification — M1 Closure 2026**
 <!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:END -->
 
 <!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:START -->
-## Clinical Mapping Master Resolution 2026 — pending citation verification
+## Clinical Mapping Master Resolution 2026 — citation verification complete
 
-The 39 new source rows below represent **37 unique PMIDs**. Mapping publication is approved; each row remains `verified:false` until separate qualified-human citation verification.
+All **39 source rows** have qualified-human dispositions and have been promoted only after fail-closed implementation checks.
 
-| PMID | Source | Relationship rows |
-|---|---|---|
-| 18514938 | Trastuzumab-induced cardiomyopathy | 1: breast-cancer → cardiomyopathy |
-| 19233461 | Long-term risk of epilepsy after traumatic brain injury in children and young adults: a population-based cohort study | 1: skull-fracture-non-basilar-and-basal → epilepsy |
-| 21261199 | Quantifying the association between Campylobacter infection and Guillain-Barré syndrome: a systematic review | 1: campylobacter-jejuni-infection → guillain-barre-syndrome |
-| 24518590 | Risk and prognosis of ovarian cancer in women with endometriosis: a meta-analysis | 1: endometriosis → ovarian-cancer |
-| 25631856 | Cerebral malaria as a risk factor for the development of epilepsy and other long-term neurological conditions: a meta-analysis | 1: malaria → epilepsy |
-| 27614693 | Partial Nephrectomy Versus Radical Nephrectomy for Clinical T1b and T2 Renal Tumors: A Systematic Review and Meta-analysis of Comparative Studies | 1: kidney-cancer → chronic-kidney-disease |
-| 27837248 | Nephrolithiasis as a risk factor of chronic kidney disease: a meta-analysis of cohort studies with 4,770,691 participants | 1: kidney-stones → chronic-kidney-disease |
-| 28733997 | Natural history of periodontitis: Disease progression and tooth loss over 40 years | 1: periodontal-disease → loss-of-teeth |
-| 28954296 | Chemotherapy-Associated Peripheral Neuropathy in Patients With Early-Stage Breast Cancer: A Systematic Review | 1: breast-cancer → peripheral-neuropathy |
-| 28969380 | Chronic non-freezing cold injury results in neuropathic pain due to a sensory neuropathy | 1: cold-injury-residuals → peripheral-neuropathy |
-| 29661050 | Healthcare resource use and costs associated with chronic kidney disease in US private insurance patients with multiple myeloma | 1: multiple-myeloma → chronic-kidney-disease |
-| 29705176 | Natural history of scoliosis in cerebral palsy and risk factors for progression of scoliosis | 1: cerebral-palsy → scoliosis |
-| 30249509 | A systematic review and meta-analysis of the aetiology of acute pancreatitis | 1: gallbladder-disease → pancreatitis |
-| 30476544 | Arrhythmias in myocarditis: State of the art | 1: cardiac-inflammatory-disease → cardiac-arrhythmia |
-| 31072840 | Knee osteoarthritis risk is increased 4-6 fold after knee injury - a systematic review and meta-analysis | 1: knee-injury → post-traumatic-osteoarthritis |
-| 31606132 | Morbidity and mortality associated with atherosclerotic peripheral artery disease: A systematic review | 1: peripheral-vascular-disease → amputation-or-loss-of-use |
-| 32680820 | Urinary incontinence and erectile dysfunction in patients with localized or locally advanced prostate cancer: A nationwide observational study | 2: prostate-cancer → urinary-incontinence; prostate-cancer → erectile-dysfunction |
-| 33687971 | Post-traumatic epilepsy in adults: a nationwide register-based study | 1: cerebral-contusion-diffuse-axonal-injury → epilepsy |
-| 34410459 | Systematic review of long-term chemotherapy-induced peripheral neuropathy (CIPN) following adjuvant oxaliplatin for colorectal cancer | 1: colorectal-cancer → peripheral-neuropathy |
-| 34477996 | Management of Complications and Vision Loss from Proliferative Diabetic Retinopathy | 1: diabetic-retinopathy → retinal-detachment |
-| 34953752 | Early and late ventricular arrhythmias complicating ST-segment elevation myocardial infarction | 1: myocardial-infarction → cardiac-arrhythmia |
-| 35064770 | Characteristics and outcome of facial nerve palsy from Lyme neuroborreliosis in the United States | 1: lyme-disease → cranial-nerve-palsy |
-| 35413534 | Association between epilepsy and risk of depression: A meta-analysis | 1: epilepsy → depressive-disorder |
-| 35458207 | Dietary Management of Chronic Kidney Disease and Secondary Hyperoxaluria in Patients with Short Bowel Syndrome and Type 3 Intestinal Failure | 1: short-bowel-syndrome → kidney-stones |
-| 36401862 | Comparative analysis of the results of decompressive interventions in elderly patients with cauda equine syndrome caused by lumbar spinal stenosis | 1: lumbar-spinal-stenosis → cauda-equina-syndrome |
-| 36513801 | Risk factors of unilateral breast cancer-related lymphedema: an updated systematic review and meta-analysis of 84 cohort studies | 1: breast-cancer → lymphedema |
-| 36960190 | Risk of endometrial cancer in patients with polycystic ovarian syndrome: A meta-analysis | 1: polycystic-ovary-syndrome → endometrial-cancer |
-| 37357642 | Prevalence and risk factors of acne scars in patients with acne vulgaris | 1: acne → acne-scarring |
-| 38577528 | Amebic liver abscess: An update | 1: amebiasis → amebic-liver-abscess |
-| 38723935 | The modern management of uterine fibroids-related abnormal uterine bleeding | 1: uterine-fibroids → anemia |
-| 38811098 | Arrhythmia-Induced Cardiomyopathy: JACC State-of-the-Art Review | 1: cardiac-arrhythmia → cardiomyopathy |
-| 38860405 | Pulmonary vascular resistance predicts the mortality in patients with bronchiectasis-associated pulmonary hypertension | 1: bronchiectasis → pulmonary-hypertension |
-| 38929962 | Enteric Infection-Associated Reactive Arthritis: A Systematic Review and Meta-Analysis | 2: campylobacter-jejuni-infection → reactive-arthritis; shigella-or-salmonella → reactive-arthritis |
-| 39541379 | Surgical managements for rhegmatogenous retinal detachment: A network meta-analysis of randomized controlled trial | 1: retinal-detachment → cataracts |
-| 41322122 | The burden of skin cancer in heart transplant recipients: Impact of immunosuppressive regimens | 1: heart-transplant-residuals → skin-cancer |
-| 41485812 | KDIGO 2026 Clinical Practice Guideline for the Management of Anemia in Chronic Kidney Disease (CKD) | 1: chronic-kidney-disease → anemia |
-| 42134598 | Outcomes and predictors of complications after distal deep vein thrombosis: a prospective analysis of 8488 patients | 1: deep-vein-thrombosis → pulmonary-embolism |
+- 23 verified as written
+- 14 verified with approved source-specific narrowing
+- 2 verified with one-for-one source replacement
+- 36 unique final live PMIDs
+- 0 remaining Master Resolution unverified/review rows
+- Replacement provenance is preserved in each replacement sourceLocator
 <!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:END -->

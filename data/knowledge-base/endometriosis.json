@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Risk and prognosis of ovarian cancer in women with endometriosis: a meta-analysis. British journal of cancer. 2014. doi:10.1038/bjc.2014.29. PMID 24518590",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded temporal association risk proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24518590/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 24518590; approved Master Resolution proposition; guard: Require documented endometriosis preceding separately diagnosed ovarian cancer. Treat as population-level association/risk evidence, with strongest histologic signal for endometrioid/clear-cell disease; do not claim individual causation."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 24518590; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented endometriosis preceding separately diagnosed ovarian cancer. Treat as population-level association/risk evidence, with strongest histologic signal for endometrioid/clear-cell disease; do not claim individual causation."
         }
       ]
     }

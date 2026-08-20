@@ -7,7 +7,7 @@
       "conditionId": "skin-cancer",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment exposure associated malignancy. Require documented heart transplantation, chronic post-transplant immunosuppression, and separately diagnosed skin malignancy after transplant. Do not infer skin cancer from transplant status alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment exposure associated malignancy. Require documented heart transplantation, chronic post-transplant immunosuppressive exposure, and a separately histologically diagnosed skin malignancy arising after transplantation. PMID 41322122 provides particularly strong evidence for CNI + azathioprine exposure and SCC risk; do not treat all immunosuppressive regimens as equivalent or infer that transplant status alone establishes individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation of the qualifying treatment/procedure exposure for Heart Transplant Residuals",
         "Independent diagnosis of Melanoma / Non-Melanoma Skin Cancers and timing relative to that exposure",
@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "The burden of skin cancer in heart transplant recipients: Impact of immunosuppressive regimens. JHLT open. 2025. doi:10.1016/j.jhlto.2025.100380. PMID 41322122",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded treatment exposure associated malignancy proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved source-specific narrowing clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41322122/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 41322122; approved Master Resolution proposition; guard: Require documented heart transplantation, chronic post-transplant immunosuppression, and separately diagnosed skin malignancy after transplant. Do not infer skin cancer from transplant status alone."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 41322122; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented heart transplantation, chronic post-transplant immunosuppressive exposure, and a separately histologically diagnosed skin malignancy arising after transplantation. PMID 41322122 provides particularly strong evidence for CNI + azathioprine exposure and SCC risk; do not treat all immunosuppressive regimens as equivalent or infer that transplant status alone establishes individual causation."
         }
       ]
     }

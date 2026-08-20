@@ -4,9 +4,12 @@ import { expect } from "vitest";
 
 type SourceReference = {
   citation?: string;
+  note?: string;
   sourceUrl?: string;
   verified?: boolean;
   verificationScope?: string;
+  sourceCheckedOn?: string;
+  sourceLocator?: string;
 };
 
 type Suggestion = {
@@ -20,105 +23,110 @@ type Mapping = {
   suggestions?: Suggestion[];
 };
 
-type LedgerIdentity = {
-  id: string;
-  disposition: string;
+type LedgerIdentity = { id: string; disposition: string };
+type LedgerWave = { identities?: LedgerIdentity[] };
+type ExpansionLedger = { waves?: LedgerWave[] };
+
+type VerificationRow = {
+  primaryId: string;
+  targetId: string;
+  decision: "as-written" | "narrowed" | "replacement";
+  current: { pmid: string };
+  finalApproved: {
+    pmid: string;
+    sourceUrl: string;
+    publicationGuard: string;
+  };
 };
 
-type LedgerWave = {
-  identities?: LedgerIdentity[];
-};
-
-type Ledger = {
-  waves?: LedgerWave[];
+type VerificationLedger = {
+  ledgerStatus: string;
+  approvalState: {
+    rowsReviewed: number;
+    asWritten: number;
+    narrowed: number;
+    replacements: number;
+    finalUniquePmids: number;
+  };
+  rows: VerificationRow[];
 };
 
 const root = process.cwd();
 const kbDir = path.join(root, "data", "knowledge-base");
-const approvedPath = path.join(
-  root,
-  "docs",
-  "clinical-mapping-master-resolution-2026-approved-disposition.json",
-);
+const approvedPath = path.join(root, "docs", "clinical-mapping-master-resolution-2026-approved-disposition.json");
+const verificationPath = path.join(root, "docs", "clinical-mapping-master-resolution-citation-verification-2026-approved-ledger.json");
 
 const load = (id: string): Mapping =>
-  JSON.parse(
-    fs.readFileSync(path.join(kbDir, `${id}.json`), "utf8"),
-  ) as Mapping;
+  JSON.parse(fs.readFileSync(path.join(kbDir, `${id}.json`), "utf8")) as Mapping;
+
+const stringTreeContains = (value: unknown, needle: string): boolean => {
+  if (typeof value === "string") return value.includes(needle);
+  if (Array.isArray(value)) return value.some((item) => stringTreeContains(item, needle));
+  if (value && typeof value === "object") {
+    return Object.values(value as Record<string, unknown>).some((item) => stringTreeContains(item, needle));
+  }
+  return false;
+};
 
 export const isMasterResolution2026Active = () => {
   if (!fs.existsSync(approvedPath)) return false;
-  const d = JSON.parse(fs.readFileSync(approvedPath, "utf8")) as {
-    status?: string;
-  };
+  const d = JSON.parse(fs.readFileSync(approvedPath, "utf8")) as { status?: string };
   return d.status === "APPROVED-AND-IMPLEMENTED-LOCALLY";
 };
 
 export const assertMasterResolution2026CurrentState = () => {
   const d = JSON.parse(fs.readFileSync(approvedPath, "utf8")) as {
-    approvedRelationships: Array<{
-      primaryId: string;
-      targetId: string;
-      pmid: string;
-    }>;
-    newIdentities: Array<{
-      id: string;
-      role: string;
-    }>;
-    conditionResolutions: Array<{
-      id: string;
-      masterResolution: string;
-    }>;
-    implementationResult: {
-      promotedWaveIds: string[];
-      waveCountsAfter: Record<string, number>;
-    };
+    approvedRelationships: Array<{ primaryId: string; targetId: string; pmid: string }>;
+    newIdentities: Array<{ id: string; role: string }>;
+    conditionResolutions: Array<{ id: string; masterResolution: string }>;
+    implementationResult: { promotedWaveIds: string[]; waveCountsAfter: Record<string, number> };
   };
+  const v = JSON.parse(fs.readFileSync(verificationPath, "utf8")) as VerificationLedger;
 
   expect(d.approvedRelationships).toHaveLength(39);
   expect(new Set(d.approvedRelationships.map((r) => r.primaryId)).size).toBe(35);
   expect(d.newIdentities).toHaveLength(9);
   expect(d.conditionResolutions).toHaveLength(197);
+  expect(v.ledgerStatus).toBe("APPROVED-AND-IMPLEMENTED-LOCALLY");
+  expect(v.approvalState.rowsReviewed).toBe(39);
+  expect(v.approvalState.asWritten).toBe(23);
+  expect(v.approvalState.narrowed).toBe(14);
+  expect(v.approvalState.replacements).toBe(2);
+  expect(v.approvalState.finalUniquePmids).toBe(36);
 
   const files = fs.readdirSync(kbDir).filter((name) => name.endsWith(".json"));
   expect(files).toHaveLength(311);
-
-  const mappings: Mapping[] = files.map(
-    (name) =>
-      JSON.parse(
-        fs.readFileSync(path.join(kbDir, name), "utf8"),
-      ) as Mapping,
-  );
+  const mappings: Mapping[] = files.map((name) => JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping);
   expect(mappings.filter((m) => m.draft === false)).toHaveLength(139);
   expect(mappings.filter((m) => m.draft === true)).toHaveLength(172);
 
-  for (const row of d.approvedRelationships) {
+  for (const row of v.rows) {
     const mapping = load(row.primaryId);
     expect(mapping.draft).toBe(false);
-    const suggestion = (mapping.suggestions ?? []).find(
-      (s) => s.conditionId === row.targetId,
-    );
+    const suggestion = (mapping.suggestions ?? []).find((s) => s.conditionId === row.targetId);
     expect(suggestion).toBeTruthy();
-    if (!suggestion) {
-      throw new Error(`missing approved suggestion ${row.primaryId}->${row.targetId}`);
-    }
+    if (!suggestion) throw new Error(`missing verified suggestion ${row.primaryId}->${row.targetId}`);
     expect(suggestion.pathwayIntelligence).toBeUndefined();
     expect(suggestion.sourceReferences).toHaveLength(1);
     const source = suggestion.sourceReferences?.[0];
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
     expect(source?.verificationScope).toBe("clinical-evidence");
-    expect(source?.sourceUrl).toContain(`/${row.pmid}/`);
+    expect(source?.sourceUrl).toBe(row.finalApproved.sourceUrl);
+    expect(source?.citation ?? "").toContain(`PMID ${row.finalApproved.pmid}`);
+    expect(stringTreeContains(suggestion, row.finalApproved.publicationGuard)).toBe(true);
+    if (row.decision === "replacement") {
+      expect(source?.citation ?? "").not.toContain(`PMID ${row.current.pmid}`);
+      expect(source?.sourceUrl ?? "").not.toContain(`/${row.current.pmid}/`);
+      expect(source?.sourceLocator ?? "").toContain(`supersedes unverified PMID ${row.current.pmid}`);
+    }
   }
 
-  const finalClosed = d.conditionResolutions.filter(
-    (row) =>
-      row.masterResolution.startsWith("FINAL-CLOSE") ||
-      row.masterResolution.startsWith("RESOLVE-BY") ||
-      row.masterResolution.startsWith("RESOLVED-PRIOR"),
+  const finalClosed = d.conditionResolutions.filter((row) =>
+    row.masterResolution.startsWith("FINAL-CLOSE") ||
+    row.masterResolution.startsWith("RESOLVE-BY") ||
+    row.masterResolution.startsWith("RESOLVED-PRIOR"),
   );
-  for (const row of finalClosed) {
-    expect(load(row.id).draft).toBe(true);
-  }
+  for (const row of finalClosed) expect(load(row.id).draft).toBe(true);
 
   for (const row of d.newIdentities) {
     if (row.role === "target-only-draft") {
@@ -133,12 +141,9 @@ export const assertMasterResolution2026CurrentState = () => {
     (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []),
   );
   expect(refs).toHaveLength(181);
-  expect(refs.filter((r) => r.verified === true)).toHaveLength(142);
-  expect(refs.filter((r) => r.verified === false)).toHaveLength(39);
-
-  const clinical = refs.filter(
-    (r) => r.verificationScope === "clinical-evidence",
-  );
+  expect(refs.filter((r) => r.verified === true)).toHaveLength(181);
+  expect(refs.filter((r) => r.verified === false)).toHaveLength(0);
+  const clinical = refs.filter((r) => r.verificationScope === "clinical-evidence");
   expect(clinical).toHaveLength(176);
   expect(clinical.filter((r) => Boolean(r.sourceUrl))).toHaveLength(176);
 
@@ -152,39 +157,23 @@ export const assertMasterResolution2026CurrentState = () => {
   expect(verifiedBaseline).toHaveLength(142);
   for (const row of verifiedBaseline) {
     const mapping = load(row.primaryId);
-    const suggestion = (mapping.suggestions ?? []).find(
-      (s) => s.conditionId === row.targetId,
-    );
+    const suggestion = (mapping.suggestions ?? []).find((s) => s.conditionId === row.targetId);
     expect(suggestion).toBeTruthy();
-    if (!suggestion) {
-      throw new Error(`missing baseline suggestion ${row.primaryId}->${row.targetId}`);
-    }
-    const source = (suggestion.sourceReferences ?? []).find((r) => {
-      const citationMatches = (r.citation ?? "") === row.citation;
-      const urlMatches = (r.sourceUrl ?? "") === row.sourceUrl;
-      return citationMatches && urlMatches;
-    });
+    if (!suggestion) throw new Error(`missing baseline suggestion ${row.primaryId}->${row.targetId}`);
+    const source = (suggestion.sourceReferences ?? []).find((r) =>
+      (r.citation ?? "") === row.citation && (r.sourceUrl ?? "") === row.sourceUrl,
+    );
     expect(source).toBeTruthy();
-    if (!source) {
-      throw new Error(`missing baseline source ${row.primaryId}->${row.targetId}`);
-    }
+    if (!source) throw new Error(`missing baseline source ${row.primaryId}->${row.targetId}`);
     expect(source.verified).toBe(true);
     expect(source.verificationScope ?? "").toBe(row.verificationScope);
   }
 
-  const ledger = JSON.parse(
-    fs.readFileSync(path.join(root, "data", "expansion-dispositions.json"), "utf8"),
-  ) as Ledger;
-  const rows: LedgerIdentity[] = (ledger.waves ?? []).flatMap(
-    (w) => w.identities ?? [],
-  );
+  const ledger = JSON.parse(fs.readFileSync(path.join(root, "data", "expansion-dispositions.json"), "utf8")) as ExpansionLedger;
+  const rows: LedgerIdentity[] = (ledger.waves ?? []).flatMap((w) => w.identities ?? []);
   const byId = new Map(rows.map((r) => [r.id, r.disposition]));
-  for (const id of d.implementationResult.promotedWaveIds) {
-    expect(byId.get(id)).toBe("published-evidence-led");
-  }
-  for (const [key, value] of Object.entries(
-    d.implementationResult.waveCountsAfter,
-  )) {
+  for (const id of d.implementationResult.promotedWaveIds) expect(byId.get(id)).toBe("published-evidence-led");
+  for (const [key, value] of Object.entries(d.implementationResult.waveCountsAfter)) {
     expect(rows.filter((r) => r.disposition === key)).toHaveLength(value);
   }
 };

@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "KDIGO 2026 Clinical Practice Guideline for the Management of Anemia in Chronic Kidney Disease (CKD). Kidney international. 2026. doi:10.1016/j.kint.2025.06.006. PMID 41485812",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded disease complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41485812/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 41485812; approved Master Resolution proposition; guard: Require documented CKD and independently documented anemia. Do not infer anemia from CKD stage alone, and do not exclude evaluation for other clinically relevant causes of anemia."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 41485812; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented CKD and independently documented anemia. Do not infer anemia from CKD stage alone, and do not exclude evaluation for other clinically relevant causes of anemia."
         }
       ]
     }

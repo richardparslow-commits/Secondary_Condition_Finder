@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Arrhythmia-Induced Cardiomyopathy: JACC State-of-the-Art Review. Journal of the American College of Cardiology. 2024. doi:10.1016/j.jacc.2024.03.416. PMID 38811098",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded phenotype specific arrhythmia induced cardiomyopathy proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38811098/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 38811098; approved Master Resolution proposition; guard: Require a sustained or sufficiently burdensome culprit arrhythmia/tachyarrhythmia plus separately documented ventricular dysfunction consistent with arrhythmia-induced cardiomyopathy. Do not generalize to all transient or incidental arrhythmias. Reversibility after rhythm/rate control, when documented, strengthens attribution."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 38811098; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require a sustained or sufficiently burdensome culprit arrhythmia/tachyarrhythmia plus separately documented ventricular dysfunction consistent with arrhythmia-induced cardiomyopathy. Do not generalize to all transient or incidental arrhythmias. Reversibility after rhythm/rate control, when documented, strengthens attribution."
         }
       ]
     }

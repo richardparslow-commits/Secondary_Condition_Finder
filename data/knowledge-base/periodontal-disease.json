@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Natural history of periodontitis: Disease progression and tooth loss over 40 years. Journal of clinical periodontology. 2017. doi:10.1111/jcpe.12782. PMID 28733997",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded disease progression complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28733997/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 28733997; approved Master Resolution proposition; guard: Require documented periodontitis/periodontal disease and separately documented tooth loss attributable to periodontal attachment/bone loss. Do not infer cause of tooth loss when caries, trauma, extraction for other reasons, or other etiologies predominate."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 28733997; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented periodontitis/periodontal disease and separately documented tooth loss attributable to periodontal attachment/bone loss. Do not infer cause of tooth loss when caries, trauma, extraction for other reasons, or other etiologies predominate."
         }
       ]
     }

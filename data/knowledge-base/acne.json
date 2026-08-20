@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Prevalence and risk factors of acne scars in patients with acne vulgaris. Skin research and technology : official journal of International Society for Bioengineering and the Skin (ISBS) [and] International Society for Digital Imaging of Skin (ISDIS) [and] International Society for Skin Imaging (ISSI). 2023. doi:10.1111/srt.13386. PMID 37357642",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded disease complication sequela proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37357642/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 37357642; approved Master Resolution proposition; guard: Require documented acne vulgaris/acne conglobata and separately documented acne scarring. Do not infer scarring from active acne alone. Do not substitute the existing painful/unstable-scars identity unless those scar characteristics are independently documented."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 37357642; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented acne vulgaris/acne conglobata and separately documented acne scarring. Do not infer scarring from active acne alone. Do not substitute the existing painful/unstable-scars identity unless those scar characteristics are independently documented."
         }
       ]
     }

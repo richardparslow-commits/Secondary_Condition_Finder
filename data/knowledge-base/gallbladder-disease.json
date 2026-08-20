@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "A systematic review and meta-analysis of the aetiology of acute pancreatitis. HPB : the official journal of the International Hepato Pancreato Biliary Association. 2019. doi:10.1016/j.hpb.2018.08.003. PMID 30249509",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded phenotype specific biliary complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30249509/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 30249509; approved Master Resolution proposition; guard: Apply only to documented gallstone/cholelithiasis or biliary gallbladder disease with separately diagnosed acute pancreatitis attributable to a biliary etiology. Do not generalize to every gallbladder disorder."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 30249509; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Apply only to documented gallstone/cholelithiasis or biliary gallbladder disease with separately diagnosed acute pancreatitis attributable to a biliary etiology. Do not generalize to every gallbladder disorder."
         }
       ]
     }

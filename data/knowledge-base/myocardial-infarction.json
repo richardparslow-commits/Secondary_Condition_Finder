@@ -7,22 +7,22 @@
       "conditionId": "cardiac-arrhythmia",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as acute cardiac complication. Apply to documented acute myocardial infarction, particularly STEMI consistent with the source, with separately documented ventricular arrhythmia occurring in the relevant post-infarction period. Do not generalize to every remote MI history. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as acute cardiac complication. Require documented acute ST-segment elevation myocardial infarction (STEMI) and separately documented ventricular arrhythmia, such as clinically established ventricular tachycardia or ventricular fibrillation, arising in the relevant acute/post-infarction period. PMID 34953752 specifically evaluates early and late ventricular arrhythmias complicating STEMI; do not use it to verify atrial fibrillation, nonspecific ectopy, bradyarrhythmias, every myocardial-infarction subtype, or an arrhythmia arising only remotely from the infarction. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Myocardial Infarction (Heart Attack) and Cardiac Arrhythmias (Atrial Fibrillation, Tachycardia)",
         "Chronology compatible with the bounded source proposition",
         "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
-        "Resolution of the publication guard: Apply to documented acute myocardial infarction, particularly STEMI consistent with the source, with separately documented ventricular arrhythmia occurring in the relevant post-infarction period. Do not generalize to every remote MI history."
+        "Resolution of the publication guard: Require documented acute ST-segment elevation myocardial infarction (STEMI) and separately documented ventricular arrhythmia, such as clinically established ventricular tachycardia or ventricular fibrillation, arising in the relevant acute/post-infarction period. PMID 34953752 specifically evaluates early and late ventricular arrhythmias complicating STEMI; do not use it to verify atrial fibrillation, nonspecific ectopy, bradyarrhythmias, every myocardial-infarction subtype, or an arrhythmia arising only remotely from the infarction."
       ],
       "sourceReferences": [
         {
           "citation": "Early and late ventricular arrhythmias complicating ST-segment elevation myocardial infarction. Archives of cardiovascular diseases. 2022. doi:10.1016/j.acvd.2021.10.012. PMID 34953752",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded acute cardiac complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved source-specific narrowing clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34953752/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 34953752; approved Master Resolution proposition; guard: Apply to documented acute myocardial infarction, particularly STEMI consistent with the source, with separately documented ventricular arrhythmia occurring in the relevant post-infarction period. Do not generalize to every remote MI history."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 34953752; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented acute ST-segment elevation myocardial infarction (STEMI) and separately documented ventricular arrhythmia, such as clinically established ventricular tachycardia or ventricular fibrillation, arising in the relevant acute/post-infarction period. PMID 34953752 specifically evaluates early and late ventricular arrhythmias complicating STEMI; do not use it to verify atrial fibrillation, nonspecific ectopy, bradyarrhythmias, every myocardial-infarction subtype, or an arrhythmia arising only remotely from the infarction."
         }
       ]
     }

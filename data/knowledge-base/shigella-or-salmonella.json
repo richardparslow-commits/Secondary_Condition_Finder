@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Enteric Infection-Associated Reactive Arthritis: A Systematic Review and Meta-Analysis. Journal of clinical medicine. 2024. doi:10.3390/jcm13123433. PMID 38929962",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded postinfectious rheumatologic complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38929962/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 38929962; approved Master Resolution proposition; guard: Require documented Salmonella or Shigella infection preceding separately diagnosed reactive arthritis. Preserve the postinfectious temporal relationship and do not infer arthritis from infection alone."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 38929962; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented Salmonella or Shigella infection preceding separately diagnosed reactive arthritis. Preserve the postinfectious temporal relationship and do not infer arthritis from infection alone."
         }
       ]
     }

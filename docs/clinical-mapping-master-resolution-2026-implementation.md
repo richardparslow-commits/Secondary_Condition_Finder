@@ -63,3 +63,15 @@
 | `epilepsy` | `depressive-disorder` | 35413534 | `temporal-association-risk` |
 | `cerebral-contusion-diffuse-axonal-injury` | `epilepsy` | 33687971 | `post-traumatic-epilepsy-risk` |
 | `skull-fracture-non-basilar-and-basal` | `epilepsy` | 19233461 | `post-traumatic-epilepsy-risk` |
+
+<!-- CLINICAL-MAPPING-MASTER-RESOLUTION-CITATION-VERIFICATION-2026:START -->
+## Clinical Mapping Master Resolution Citation Verification 2026
+
+- Qualified-human review complete: **39/39 source rows**.
+- Disposition: **23 as-written / 14 narrowed / 2 source replacements**.
+- Final live PMID set: **36 unique PMIDs**.
+- Replacement provenance: PMID `29661050` → `24288486`; PMID `19233461` → `33687971`.
+- Citation state after promotion: **181 verified / 0 unverified / 0 review / 0 hard**.
+- Population-level association evidence remains bounded; citation verification does not establish an individual nexus.
+- Implementation is local-only under the active Vercel freeze.
+<!-- CLINICAL-MAPPING-MASTER-RESOLUTION-CITATION-VERIFICATION-2026:END -->

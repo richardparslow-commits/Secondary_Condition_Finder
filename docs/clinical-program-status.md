@@ -1,15 +1,15 @@
 <!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:START -->
 ## Clinical Mapping Master Resolution 2026
 
-- Parent HEAD: `fa5a1c4f883ffbb617bc6edfd06e495e653e0dce`.
-- T1 was superseded before implementation.
-- Master Resolution publication: **35 primaries / 39 edges**.
-- Taxonomy additions: **9 identities**.
-- Overall KB: **139 published / 172 draft** across **311 identities**.
-- Citation queue: **39 source rows / 37 unique PMIDs**, all `verified:false`.
-- Live citation state: **142 verified / 39 unverified / 39 review / 0 hard**.
-- No new pathwayIntelligence was added.
-- Separate qualified-human citation verification remains required.
+- Mapping commit parent for verification: `81784b4deb88483f803e0bbd0ec422cb0e176809`.
+- Master Resolution publication remains **35 primaries / 39 edges** with **9 taxonomy additions**.
+- Overall KB remains **139 published / 172 draft** across **311 identities**.
+- Master Resolution citation verification: **39/39 complete**.
+- Disposition: **23 as-written / 14 narrowed / 2 replacements**.
+- Final source set: **36 unique PMIDs**.
+- Live citation state: **181 verified / 0 unverified / 0 review / 0 hard**.
+- Clinical URLs: **176/176 live; 180 combined provenance**.
+- No new pathwayIntelligence was added and no individual nexus is inferred.
 - Local-only: no push, GitHub write, Vercel deploy/promotion, or Vercel configuration change.
 <!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:END -->
 

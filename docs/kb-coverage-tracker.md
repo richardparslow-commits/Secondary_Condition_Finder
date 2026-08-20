@@ -5,10 +5,10 @@
 - Knowledge-base files: **311**.
 - Published mappings: **139**.
 - Draft mappings: **172**.
-- New resolution edges: **39 across 35 primaries**.
-- New target-only draft identities: **7**.
-- New published primary identities: **2**.
-- Exhaustive approved artifact: `docs/clinical-mapping-master-resolution-2026-approved-disposition.json`.
+- Master Resolution edges: **39 across 35 primaries**.
+- Master Resolution citation verification: **39/39 verified; 0 review debt**.
+- Final source set: **36 unique PMIDs**.
+- Approved verification ledger: `docs/clinical-mapping-master-resolution-citation-verification-2026-approved-ledger.json`.
 <!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:END -->
 
 <!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:START -->

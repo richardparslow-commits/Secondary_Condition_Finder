@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Management of Complications and Vision Loss from Proliferative Diabetic Retinopathy. Current diabetes reports. 2021. doi:10.1007/s11892-021-01396-2. PMID 34477996",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded phenotype specific ocular complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34477996/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 34477996; approved Master Resolution proposition; guard: Apply only to proliferative diabetic retinopathy with separately documented tractional retinal detachment. Do not generalize this source to nonproliferative diabetic retinopathy or unrelated rhegmatogenous detachment."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 34477996; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Apply only to proliferative diabetic retinopathy with separately documented tractional retinal detachment. Do not generalize this source to nonproliferative diabetic retinopathy or unrelated rhegmatogenous detachment."
         }
       ]
     }

@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Risk of endometrial cancer in patients with polycystic ovarian syndrome: A meta‑analysis. Oncology letters. 2023. doi:10.3892/ol.2023.13754. PMID 36960190",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded temporal association risk proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36960190/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 36960190; approved Master Resolution proposition; guard: Require documented PCOS preceding separately diagnosed endometrial cancer. Treat as population-level association/risk evidence; do not claim individual causation and preserve confounding limitations including BMI."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 36960190; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented PCOS preceding separately diagnosed endometrial cancer. Treat as population-level association/risk evidence; do not claim individual causation and preserve confounding limitations including BMI."
         }
       ]
     }

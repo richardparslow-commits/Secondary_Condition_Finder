@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Risk factors of unilateral breast cancer-related lymphedema: an updated systematic review and meta-analysis of 84 cohort studies. Supportive care in cancer : official journal of the Multinational Association of Supportive Care in Cancer. 2022. doi:10.1007/s00520-022-07508-2. PMID 36513801",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded treatment complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36513801/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 36513801; approved Master Resolution proposition; guard: Require documented breast-cancer treatment with relevant lymphatic disruption/exposure (for example axillary node surgery and/or regional radiotherapy) and separately documented lymphedema. Do not infer lymphedema from breast cancer alone."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 36513801; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented breast-cancer treatment with relevant lymphatic disruption/exposure (for example axillary node surgery and/or regional radiotherapy) and separately documented lymphedema. Do not infer lymphedema from breast cancer alone."
         }
       ]
     },
@@ -40,12 +40,12 @@
       "sourceReferences": [
         {
           "citation": "Chemotherapy-Associated Peripheral Neuropathy in Patients With Early-Stage Breast Cancer: A Systematic Review. Journal of the National Cancer Institute. 2018. doi:10.1093/jnci/djx140. PMID 28954296",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded treatment complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28954296/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 28954296; approved Master Resolution proposition; guard: Require documented neurotoxic breast-cancer chemotherapy exposure (such as taxane/platinum-containing therapy when applicable) and separately documented chemotherapy-associated peripheral neuropathy."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 28954296; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented neurotoxic breast-cancer chemotherapy exposure (such as taxane/platinum-containing therapy when applicable) and separately documented chemotherapy-associated peripheral neuropathy."
         }
       ]
     },
@@ -53,7 +53,7 @@
       "conditionId": "cardiomyopathy",
       "rank": 3,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment complication. Require documented cardiotoxic breast-cancer treatment exposure, particularly trastuzumab and/or relevant anthracycline exposure, plus separately diagnosed treatment-associated cardiomyopathy or ventricular dysfunction. Do not infer cardiomyopathy from breast cancer alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment complication. Require documented trastuzumab exposure for breast cancer and separately documented treatment-associated left-ventricular systolic dysfunction, cardiomyopathy, or heart failure arising after exposure. Prior or concurrent anthracycline exposure may be considered an important cardiotoxicity risk modifier/co-exposure, but PMID 18514938 should not by itself verify an anthracycline-only cardiomyopathy pathway. Do not infer cardiomyopathy from breast cancer or trastuzumab exposure alone without separately documented cardiac dysfunction. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation of the qualifying treatment/procedure exposure for Breast Cancer",
         "Independent diagnosis of Cardiomyopathy and timing relative to that exposure",
@@ -63,12 +63,12 @@
       "sourceReferences": [
         {
           "citation": "Trastuzumab-induced cardiomyopathy. Journal of cardiac failure. 2008. doi:10.1016/j.cardfail.2008.02.002. PMID 18514938",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded treatment complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved source-specific narrowing clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18514938/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 18514938; approved Master Resolution proposition; guard: Require documented cardiotoxic breast-cancer treatment exposure, particularly trastuzumab and/or relevant anthracycline exposure, plus separately diagnosed treatment-associated cardiomyopathy or ventricular dysfunction. Do not infer cardiomyopathy from breast cancer alone."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 18514938; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented trastuzumab exposure for breast cancer and separately documented treatment-associated left-ventricular systolic dysfunction, cardiomyopathy, or heart failure arising after exposure. Prior or concurrent anthracycline exposure may be considered an important cardiotoxicity risk modifier/co-exposure, but PMID 18514938 should not by itself verify an anthracycline-only cardiomyopathy pathway. Do not infer cardiomyopathy from breast cancer or trastuzumab exposure alone without separately documented cardiac dysfunction."
         }
       ]
     }

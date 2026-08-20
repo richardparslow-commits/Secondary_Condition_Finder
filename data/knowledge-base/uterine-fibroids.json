@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "The modern management of uterine fibroids-related abnormal uterine bleeding. Fertility and sterility. 2024. doi:10.1016/j.fertnstert.2024.04.041. PMID 38723935",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded bleeding mediated disease complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38723935/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 38723935; approved Master Resolution proposition; guard: Require documented uterine fibroids with clinically relevant abnormal/heavy uterine bleeding and separately documented iron deficiency and/or anemia. Do not infer anemia from asymptomatic fibroids."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 38723935; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented uterine fibroids with clinically relevant abnormal/heavy uterine bleeding and separately documented iron deficiency and/or anemia. Do not infer anemia from asymptomatic fibroids."
         }
       ]
     }

@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Association between epilepsy and risk of depression: A meta-analysis. Psychiatry research. 2022. doi:10.1016/j.psychres.2022.114531. PMID 35413534",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded temporal association risk proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35413534/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 35413534; approved Master Resolution proposition; guard: Require separately diagnosed epilepsy and depressive disorder. Treat as association/risk evidence with acknowledged bidirectionality and shared-confounding potential; do not claim epilepsy necessarily causes depression."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 35413534; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require separately diagnosed epilepsy and depressive disorder. Treat as association/risk evidence with acknowledged bidirectionality and shared-confounding potential; do not claim epilepsy necessarily causes depression."
         }
       ]
     }

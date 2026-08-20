@@ -17,12 +17,12 @@
       "sourceReferences": [
         {
           "citation": "Knee osteoarthritis risk is increased 4-6 fold after knee injury - a systematic review and meta-analysis. British journal of sports medicine. 2019. doi:10.1136/bjsports-2018-100022. PMID 31072840",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded post traumatic disease sequela proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31072840/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 31072840; approved Master Resolution proposition; guard: Require a documented structural traumatic knee injury (for example ACL and/or meniscal injury) preceding separately documented post-traumatic knee osteoarthritis. Do not infer OA from nonspecific knee pain or strain alone."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 31072840; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require a documented structural traumatic knee injury (for example ACL and/or meniscal injury) preceding separately documented post-traumatic knee osteoarthritis. Do not infer OA from nonspecific knee pain or strain alone."
         }
       ]
     }

@@ -7,22 +7,22 @@
       "conditionId": "pulmonary-hypertension",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as pulmonary disease complication. Require documented bronchiectasis and separately documented pulmonary hypertension using appropriate hemodynamic/clinical evidence. Do not infer pulmonary hypertension from bronchiectasis severity alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as pulmonary disease complication. Require documented bronchiectasis and separately established bronchiectasis-associated pulmonary hypertension, preferably with appropriate hemodynamic evidence such as right-heart catheterization when clinically available, and evaluation sufficient to distinguish major alternative causes of pulmonary hypertension. PMID 38860405 supports the established bronchiectasis-associated PH phenotype and its prognostic hemodynamics; it should not be used to estimate PH incidence in unselected bronchiectasis or to infer PH from bronchiectasis severity alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Bronchiectasis and Pulmonary Hypertension",
         "Chronology compatible with the bounded source proposition",
         "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
-        "Resolution of the publication guard: Require documented bronchiectasis and separately documented pulmonary hypertension using appropriate hemodynamic/clinical evidence. Do not infer pulmonary hypertension from bronchiectasis severity alone."
+        "Resolution of the publication guard: Require documented bronchiectasis and separately established bronchiectasis-associated pulmonary hypertension, preferably with appropriate hemodynamic evidence such as right-heart catheterization when clinically available, and evaluation sufficient to distinguish major alternative causes of pulmonary hypertension. PMID 38860405 supports the established bronchiectasis-associated PH phenotype and its prognostic hemodynamics; it should not be used to estimate PH incidence in unselected bronchiectasis or to infer PH from bronchiectasis severity alone."
       ],
       "sourceReferences": [
         {
           "citation": "Pulmonary vascular resistance predicts the mortality in patients with bronchiectasis-associated pulmonary hypertension. Journal of hypertension. 2024. doi:10.1097/HJH.0000000000003782. PMID 38860405",
-          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded pulmonary disease complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "note": "Qualified-human-approved source-specific narrowing clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38860405/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 38860405; approved Master Resolution proposition; guard: Require documented bronchiectasis and separately documented pulmonary hypertension using appropriate hemodynamic/clinical evidence. Do not infer pulmonary hypertension from bronchiectasis severity alone."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 38860405; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented bronchiectasis and separately established bronchiectasis-associated pulmonary hypertension, preferably with appropriate hemodynamic evidence such as right-heart catheterization when clinically available, and evaluation sufficient to distinguish major alternative causes of pulmonary hypertension. PMID 38860405 supports the established bronchiectasis-associated PH phenotype and its prognostic hemodynamics; it should not be used to estimate PH incidence in unselected bronchiectasis or to infer PH from bronchiectasis severity alone."
         }
       ]
     }
