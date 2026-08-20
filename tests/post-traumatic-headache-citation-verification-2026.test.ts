@@ -78,7 +78,7 @@ describe("Post-Traumatic Headache Citation Verification 2026", () => {
     expect(artifact.implementationResult.pathwayIntelligenceChanged).toBe(false);
   });
 
-  it("preserves PTH verification while later adrenal taxonomy reopens one review row", () => {
+  it("preserves PTH verification while adrenal citation verification closes the later reopened review row", () => {
     const refs = fs
       .readdirSync(kb)
       .filter((name) => name.endsWith(".json"))
@@ -96,7 +96,7 @@ describe("Post-Traumatic Headache Citation Verification 2026", () => {
       });
 
     expect(refs).toHaveLength(142);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(141);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(1);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(142);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   });
 });

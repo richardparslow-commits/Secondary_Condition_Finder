@@ -662,8 +662,8 @@ describe("Clinical Mapping Master 2026 citation verification", () => {
         );
       });
     expect(refs).toHaveLength(142);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(141);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(1);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(142);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
     const clinical = refs.filter(
       (ref) => ref.verificationScope === "clinical-evidence",
     );

@@ -131,8 +131,8 @@ describe("targeted clinical mapping batch 31", () => {
     );
 
     expect(liveReferences).toHaveLength(142);
-    expect(liveUnverified).toHaveLength(1);
-    expect(publishedUnverified).toHaveLength(1);
+    expect(liveUnverified).toHaveLength(0);
+    expect(publishedUnverified).toHaveLength(0);
     expect(clinicalWithUrls).toHaveLength(137);
   });
 

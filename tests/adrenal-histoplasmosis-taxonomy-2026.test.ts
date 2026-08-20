@@ -60,7 +60,7 @@ describe("Adrenal Histoplasmosis Taxonomy Amendment 2026", () => {
     expect(refs[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/30656706/");
     expect(refs[0]?.verificationScope).toBe("clinical-evidence");
     expect(refs[0]?.sourceCheckedOn).toBe("2026-08-19");
-    expect(refs[0]?.verified).toBe(false);
+    expect(refs[0]?.verified).toBe(true);
   });
 
   it("does not duplicate Addison disease as primary-adrenal-insufficiency", () => {

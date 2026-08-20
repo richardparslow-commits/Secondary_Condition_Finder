@@ -122,8 +122,8 @@ export function assertMaster2026CurrentState(): void {
     mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
   );
   expect(refs).toHaveLength(142);
-  expect(refs.filter((ref) => ref.verified === true)).toHaveLength(141);
-  expect(refs.filter((ref) => ref.verified === false)).toHaveLength(1);
+  expect(refs.filter((ref) => ref.verified === true)).toHaveLength(142);
+  expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   const clinical = refs.filter(
     (ref) => ref.verificationScope === "clinical-evidence",
   );

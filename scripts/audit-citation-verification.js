@@ -23,13 +23,15 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // PMID 38568491 is proposition-matched to mTBI -> post-traumatic-headache; live citation debt is now zero.
 // Adrenal Histoplasmosis Taxonomy Amendment 2026 qualified-human approved 2026-08-19.
 // PMID 30656706 enters the new site-specific published edge as verified:false; one review row is intentionally reopened pending separate citation approval.
+// Adrenal Histoplasmosis Citation Verification 2026 qualified-human approved 2026-08-19.
+// PMID 30656706 is proposition-matched to adrenal-histoplasmosis -> addisons-disease; live citation debt is now zero.
 const CITATION_DEBT_BASELINE = Object.freeze({
   references: 142,
-  liveVerified: 141,
+  liveVerified: 142,
   retiredVerified: 6,
-  verifiedProvenance: 147,
-  unverified: 1,
-  reviewFindings: 1,
+  verifiedProvenance: 148,
+  unverified: 0,
+  reviewFindings: 0,
   liveClinicalEvidenceWithUrls: 137,
   retiredClinicalEvidenceWithUrls: 4,
   clinicalEvidenceProvenanceWithUrls: 141,

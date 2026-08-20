@@ -1,16 +1,16 @@
 <!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:START -->
-## Adrenal Histoplasmosis taxonomy checkpoint
+## Adrenal Histoplasmosis taxonomy and citation closure
 
 - Catalog identities: **302**.
 - Knowledge-base mappings: **302**.
 - Overall published mappings: **104**.
 - Overall draft mappings: **198**.
 - Live references: **142**.
-- Live verified: **141**.
-- Live unverified: **1**.
-- Published-unverified review findings: **1**.
+- Live verified: **142**.
+- Live unverified: **0**.
+- Published-review findings: **0**.
 - Hard citation findings: **0**.
-- Sole live review row: `adrenal-histoplasmosis → addisons-disease`, PMID **30656706**.
+- PMID **30656706** on `adrenal-histoplasmosis → addisons-disease`: **verified**.
 <!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:END -->
 
 <!-- PTH-TAXONOMY-2026:START -->

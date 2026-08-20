@@ -20,9 +20,9 @@
           "note": "Clinical source is site-specific to adrenal histoplasmosis and must not be generalized to pulmonary histoplasmosis or central adrenal insufficiency.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30656706/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 30656706; adrenal-histoplasmosis cohort with primary adrenal insufficiency outcome; taxonomy publication approved, citation verification remains pending separate qualified-human approval."
+          "sourceLocator": "PMID 30656706; adrenal-histoplasmosis cohort with primary adrenal insufficiency outcome; taxonomy publication approved, qualified-human citation verification approved 2026-08-19."
         }
       ]
     }

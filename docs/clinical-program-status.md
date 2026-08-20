@@ -1,11 +1,12 @@
 <!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:START -->
-## Adrenal Histoplasmosis taxonomy status
+## Adrenal Histoplasmosis taxonomy and citation status
 
-- Added distinct site-specific identity `adrenal-histoplasmosis`.
-- Reused existing `addisons-disease` target; no duplicate `primary-adrenal-insufficiency` identity was created.
-- Published bounded mapping: `adrenal-histoplasmosis → addisons-disease`.
-- PMID **30656706** is **verified:false** pending separate citation verification.
-- Pulmonary `histoplasmosis` remains distinct and unchanged.
+- Distinct site-specific identity `adrenal-histoplasmosis` is published.
+- Published mapping: `adrenal-histoplasmosis → addisons-disease`.
+- PMID **30656706** is **verified:true** after separate qualified-human citation approval.
+- Existing `addisons-disease` target is reused; no `primary-adrenal-insufficiency` duplicate identity exists.
+- Pulmonary `histoplasmosis` remains distinct.
+- No mechanistic pathwayIntelligence was added.
 - Current KB state: **302 identities / 104 published / 198 draft**.
 <!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:END -->
 

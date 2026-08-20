@@ -11,3 +11,11 @@
 - PMID **30656706** remains **verified:false** pending separate citation approval.
 - Pulmonary histoplasmosis alone does not satisfy the publication guard.
 - Central/pituitary/hypothalamic and glucocorticoid-induced adrenal insufficiency remain excluded.
+
+<!-- ADRENAL-HISTOPLASMOSIS-SUBSEQUENT-CITATION-VERIFICATION-2026:START -->
+## Subsequent citation verification
+
+- Separate approval: **I approve Adrenal Histoplasmosis Citation Verification 2026**
+- PMID **30656706** is now **verified:true** for `adrenal-histoplasmosis → addisons-disease`.
+- The taxonomy implementation's original `verified:false` state remains a historical fact.
+<!-- ADRENAL-HISTOPLASMOSIS-SUBSEQUENT-CITATION-VERIFICATION-2026:END -->

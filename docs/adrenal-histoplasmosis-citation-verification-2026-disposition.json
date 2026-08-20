@@ -1,0 +1,77 @@
+{
+  "program": "Adrenal Histoplasmosis Citation Verification 2026",
+  "status": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "parentLocalHead": "ad2a5c4c282990550eef9ab38c95467ab265c96b",
+  "scope": "citation-verification-only",
+  "taxonomyChangeAuthorized": false,
+  "mappingChangeAuthorized": false,
+  "pathwayIntelligenceAuthorized": false,
+  "verificationDisposition": "VERIFY-AS-CORRECTED-SITE-SPECIFIC-PROPOSITION",
+  "mapping": {
+    "primaryConditionId": "adrenal-histoplasmosis",
+    "conditionId": "addisons-disease",
+    "classification": "rare-infectious-complication"
+  },
+  "source": {
+    "pmid": "30656706",
+    "citation": "Singh M, Chandy DD, Bharani T, et al. Clinical outcomes and cortical reserve in adrenal histoplasmosis-A retrospective follow-up study of 40 patients. Clin Endocrinol (Oxf). 2019;90(4):534-541. PMID 30656706.",
+    "doi": "10.1111/cen.13935",
+    "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30656706/",
+    "currentVerified": false,
+    "proposedVerified": true,
+    "verificationScope": "clinical-evidence"
+  },
+  "sourceFindings": {
+    "population": "40 consecutive adults with adrenal histoplasmosis",
+    "adrenalHistoplasmosisDefinition": "bilateral adrenal enlargement on CT plus Histoplasma by histology and/or culture of biopsied adrenal tissue",
+    "primaryAdrenalInsufficiencyPercent": 73,
+    "adrenalCrisisAtPresentation": "approximately one-third",
+    "persistenceAfterTherapy": "no patient with primary adrenal insufficiency became eucortisolemic on one-year retesting after antifungal therapy",
+    "incidentDuringFollowUp": "2 of 8 patients with normal cortisol at diagnosis developed adrenal insufficiency during follow-up"
+  },
+  "verificationBounds": [
+    "documented adrenal Histoplasma involvement required",
+    "pulmonary histoplasmosis alone is insufficient",
+    "Addison disease/primary adrenal insufficiency independently documented",
+    "do not infer Addison disease from adrenal enlargement alone",
+    "exclude central/pituitary/hypothalamic adrenal insufficiency",
+    "exclude glucocorticoid-induced adrenal insufficiency",
+    "rare infectious complication, not inevitable outcome",
+    "no mechanistic pathwayIntelligence",
+    "verification applies only to the existing bounded proposition"
+  ],
+  "expectedPostVerificationState": {
+    "catalogConditions": 302,
+    "knowledgeBaseFiles": 302,
+    "publishedMappings": 104,
+    "draftMappings": 198,
+    "references": 142,
+    "verified": 142,
+    "retiredVerified": 6,
+    "verifiedProvenance": 148,
+    "unverified": 0,
+    "reviewFindingCount": 0,
+    "hardFindingCount": 0,
+    "clinicalEvidenceReferences": 137,
+    "clinicalEvidenceReferencesWithUrls": 137,
+    "clinicalEvidenceUrlCoverageComplete": true,
+    "clinicalEvidenceProvenanceWithUrls": 141
+  },
+  "approvalPhrase": "I approve Adrenal Histoplasmosis Citation Verification 2026",
+  "approvalDate": "2026-08-19",
+  "qualifiedHumanApproval": "I approve Adrenal Histoplasmosis Citation Verification 2026",
+  "approvedProposalSha256": "74ae1c75c5196efe99ac54638e363056b132d8b1902222b6d27ad473ba8d6843",
+  "implementationResult": {
+    "parentLocalHead": "ad2a5c4c282990550eef9ab38c95467ab265c96b",
+    "primaryConditionId": "adrenal-histoplasmosis",
+    "conditionId": "addisons-disease",
+    "pmid": "30656706",
+    "verifiedAfterImplementation": true,
+    "taxonomyChanged": false,
+    "mappingChanged": false,
+    "rationaleChanged": false,
+    "pathwayIntelligenceChanged": false,
+    "liveCitationDebtAfterImplementation": 0
+  },
+  "nonNegotiableBoundary": "PMID 30656706 is verified only for the existing bounded adrenal-histoplasmosis -> addisons-disease proposition. Pulmonary histoplasmosis alone is insufficient; Addison disease/primary adrenal insufficiency must be independently documented; central and glucocorticoid-induced adrenal insufficiency remain outside scope; no pathwayIntelligence is added."
+}

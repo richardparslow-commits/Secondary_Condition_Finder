@@ -19,4 +19,4 @@ describe("citation verification batch 13",()=>{
     expect(src(sug("mild-tbi","post-traumatic-headache"),"38568491").verified).toBe(true);
   });
 });
-describe("batch 13 ratchet",()=>{it("pins the approved baseline",()=>{const a=fs.readFileSync(path.join(root,"scripts/audit-citation-verification.js"),"utf8");expect(a).toContain("liveVerified: 141,");expect(a).toContain("verifiedProvenance: 147,");expect(a).toContain("unverified: 1,");expect(a).toContain("reviewFindings: 1,");});});
+describe("batch 13 ratchet",()=>{it("pins the approved baseline",()=>{const a=fs.readFileSync(path.join(root,"scripts/audit-citation-verification.js"),"utf8");expect(a).toContain("liveVerified: 142,");expect(a).toContain("verifiedProvenance: 148,");expect(a).toContain("unverified: 0,");expect(a).toContain("reviewFindings: 0,");});});

@@ -215,8 +215,9 @@ Approval: **I approve Residual Citation Verification — M1 Closure 2026**
 <!-- PTH-TAXONOMY-2026:END -->
 
 <!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:START -->
-## Adrenal Histoplasmosis citation item — pending
+## Adrenal Histoplasmosis citation item — closed
 
-- `adrenal-histoplasmosis → addisons-disease` — PMID **30656706** — **verified:false**.
-- Taxonomy/mapping approval is complete; citation verification is a separate qualified-human gate.
+- `adrenal-histoplasmosis → addisons-disease` — PMID **30656706** — **verified**.
+- Qualified-human approval: **I approve Adrenal Histoplasmosis Citation Verification 2026**
+- Live citation verification queue: **0**.
 <!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:END -->
