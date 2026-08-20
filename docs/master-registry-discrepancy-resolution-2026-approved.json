@@ -1,0 +1,2058 @@
+{
+  "program": "Master Registry Discrepancy Resolution 2026",
+  "status": "APPROVED-FOR-LOCAL-AUTHORITATIVE-REGISTRY-INSTALLATION",
+  "baselineCommit": "ffadbe9460bd0dbda327781e20ec6f51e4cd854f",
+  "sourceDiscoverySummary": {
+    "hardFindingCount": 16,
+    "reviewFindingCount": 77,
+    "infoFindingCount": 1,
+    "publicationGuardStatusCounts": {
+      "explicit": 109,
+      "legacy-unstructured": 74
+    },
+    "normalizedUniqueSourceCount": 170,
+    "liveReferenceUseCount": 191
+  },
+  "resolutionSummary": {
+    "discoveryHardFindings": 16,
+    "underlyingHardCases": 8,
+    "hardCasesResolvedAsBibliographicOrProvenanceStructure": 8,
+    "genuineMedicalEvidenceConflicts": 0,
+    "discoveryReviewFindings": 77,
+    "legacyGuardStructureRows": 74,
+    "citationVariantCases": 3,
+    "informationalFindings": 1,
+    "qualifiedHumanMedicalReReviewRequiredForInstall": 0
+  },
+  "hardFindingResolution": {
+    "replacementProvenanceCases": [
+      {
+        "relationship": "hepatitis -> osteoporosis",
+        "primaryId": "hepatitis",
+        "targetId": "osteoporosis",
+        "canonicalLivePmid": "26683953",
+        "relatedPmid": "37230817",
+        "relation": "supersedes-unverified",
+        "resolutionClass": "mechanical-provenance-normalization"
+      },
+      {
+        "relationship": "inflammatory-bowel-disease -> colorectal-cancer",
+        "primaryId": "inflammatory-bowel-disease",
+        "targetId": "colorectal-cancer",
+        "canonicalLivePmid": "33433655",
+        "relatedPmid": "33385426",
+        "relation": "supersedes-unverified",
+        "resolutionClass": "mechanical-provenance-normalization"
+      },
+      {
+        "relationship": "multiple-myeloma -> chronic-kidney-disease",
+        "primaryId": "multiple-myeloma",
+        "targetId": "chronic-kidney-disease",
+        "canonicalLivePmid": "24288486",
+        "relatedPmid": "29661050",
+        "relation": "supersedes-unverified",
+        "resolutionClass": "mechanical-provenance-normalization"
+      },
+      {
+        "relationship": "penetrating-head-trauma -> seizure-disorder",
+        "primaryId": "penetrating-head-trauma",
+        "targetId": "seizure-disorder",
+        "canonicalLivePmid": "20644150",
+        "relatedPmid": "31861595",
+        "relation": "supersedes-unverified",
+        "resolutionClass": "mechanical-provenance-normalization"
+      },
+      {
+        "relationship": "psoriasis -> psoriatic-arthritis",
+        "primaryId": "psoriasis",
+        "targetId": "psoriatic-arthritis",
+        "canonicalLivePmid": "34596875",
+        "relatedPmid": "38251522",
+        "relation": "supersedes-unverified",
+        "resolutionClass": "mechanical-provenance-normalization"
+      },
+      {
+        "relationship": "psoriasis -> eczema",
+        "primaryId": "psoriasis",
+        "targetId": "eczema",
+        "canonicalLivePmid": "38055239",
+        "relatedPmid": "40420581",
+        "relation": "supersedes-unverified",
+        "resolutionClass": "mechanical-provenance-normalization"
+      },
+      {
+        "relationship": "skull-fracture-non-basilar-and-basal -> epilepsy",
+        "primaryId": "skull-fracture-non-basilar-and-basal",
+        "targetId": "epilepsy",
+        "canonicalLivePmid": "33687971",
+        "relatedPmid": "19233461",
+        "relation": "supersedes-unverified",
+        "resolutionClass": "mechanical-provenance-normalization"
+      }
+    ],
+    "erratumCase": {
+      "relationship": "interstitial-lung-disease -> sleep-apnea",
+      "primaryId": "interstitial-lung-disease",
+      "targetId": "sleep-apnea",
+      "canonicalLivePmid": "33403599",
+      "relatedPmid": "33755913",
+      "relation": "erratum-correction-record",
+      "resolutionClass": "mechanical-bibliographic-lineage",
+      "note": "PMID 33755913 is the PubMed correction/erratum for PMID 33403599 and is not a competing clinical evidence source."
+    },
+    "policy": "Canonical evidence identity must be derived from the live citation/source URL fields. Superseded unverified PMIDs and erratum/correction PMIDs must be represented as source-lineage metadata, not as simultaneous live evidence identities."
+  },
+  "legacyGuardResolution": {
+    "count": 74,
+    "policy": "Do not invent or silently rewrite a publication guard. For legacy rows without a discrete guard field, the authoritative registry records status=legacy-rationale-boundary and preserves the complete current rationale verbatim as the boundary source. structuredGuardText remains null until a later qualified-human guard-hardening review.",
+    "rows": [
+      {
+        "relationshipId": "rel-abdominal-hernia-to-depressive-disorder",
+        "primaryId": "abdominal-hernia",
+        "targetId": "depressive-disorder",
+        "direction": "abdominal-hernia -> depressive-disorder",
+        "rationale": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish an individual medical nexus.",
+        "rationaleHash": "820821a13ebf4df5b2c9d96aa4f6b35578baaf1bec2cec8375bed8fe86b09a68",
+        "evidenceGaps": [
+          "Mental health evaluation and diagnosis",
+          "Documentation of chronic pain, functional limitations, and their timing",
+          "Clinical opinion addressing the individual relationship when a secondary theory is asserted"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish an individual medical nexus.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-achalasia-to-esophageal-cancer",
+        "primaryId": "achalasia",
+        "targetId": "esophageal-cancer",
+        "direction": "achalasia -> esophageal-cancer",
+        "rationale": "A large matched U.S. Veterans cohort found substantially higher esophageal-cancer incidence among patients with achalasia than matched controls; cancers arising in the achalasia group were predominantly squamous-cell carcinoma. This supports focused cancer-risk review but not an automatic individual relationship. The generic esophageal-cancer catalog target is broader than the observed histology pattern, so pathology, chronology, treatment history, and other cancer risk factors must be reviewed explicitly.",
+        "rationaleHash": "cc077ca183d49bd2f4d4e75daf5cc7e259ebe871861d1b25e90834e9f4e77509",
+        "evidenceGaps": [
+          "Objective achalasia diagnostic records and treatment chronology",
+          "Endoscopy, imaging, and pathology documenting the later esophageal malignancy and histology",
+          "Records describing persistent or recurrent esophageal stasis/inflammation after treatment when present",
+          "Specialist assessment addressing chronology and other esophageal-cancer risk factors"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "A large matched U.S. Veterans cohort found substantially higher esophageal-cancer incidence among patients with achalasia than matched controls; cancers arising in the achalasia group were predominantly squamous-cell carcinoma. This supports focused cancer-risk review but not an automatic individual relationship. The generic esophageal-cancer catalog target is broader than the observed histology pattern, so pathology, chronology, treatment history, and other cancer risk factors must be reviewed explicitly.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-acl-injury-to-osteoarthritis",
+        "primaryId": "acl-injury",
+        "targetId": "osteoarthritis",
+        "direction": "acl-injury -> osteoarthritis",
+        "rationale": "Systematic-review evidence reports a substantially increased long-term frequency of knee osteoarthritis after ACL injury. Individual review should confirm that osteoarthritis is documented in the injured knee and should consider associated meniscal or cartilage injury, recurrent instability, treatment history, alignment, age, activity, and other osteoarthritis risk factors rather than inferring an individual relationship from population data alone.",
+        "rationaleHash": "347d07135fa1a5628567ae468fd846192ea166a8d0b07a9bd4133a5cb17a7487",
+        "evidenceGaps": [
+          "Records establishing the ACL injury and affected knee",
+          "Longitudinal knee imaging and orthopedic records documenting osteoarthritis after the injury",
+          "Meniscal or cartilage injury, instability, treatment, reinjury, alignment, and other osteoarthritis risk-factor history",
+          "Orthopedic assessment addressing the individual's chronology and competing explanations"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Systematic-review evidence reports a substantially increased long-term frequency of knee osteoarthritis after ACL injury. Individual review should confirm that osteoarthritis is documented in the injured knee and should consider associated meniscal or cartilage injury, recurrent instability, treatment history, alignment, age, activity, and other osteoarthritis risk factors rather than inferring an individual relationship from population data alone.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-acromegaly-to-hypertension",
+        "primaryId": "acromegaly",
+        "targetId": "hypertension",
+        "direction": "acromegaly -> hypertension",
+        "rationale": "Active acromegaly with chronic GH/IGF-I excess is associated with hypertension through several disease-specific mechanisms, including direct renal sodium and water retention with extracellular-volume expansion and vascular effects. The 2026 acromegaly complications consensus reports that GH acts on distal-nephron epithelial sodium channels, that GH promotes nephron sodium retention and expanded extracellular water, and that biochemical control can lower blood pressure in hypertensive patients. This supports a direct-secondary research pathway when acromegaly activity and blood-pressure chronology are documented; it does not establish that every case of hypertension in a person with acromegaly is attributable to acromegaly.",
+        "rationaleHash": "3846bd13c145a37054cf5cf90323c31b483642d5bf76aef5d338579fd1339973",
+        "evidenceGaps": [
+          "Diagnostic and biochemical records confirming acromegaly and periods of active GH/IGF-I excess",
+          "Longitudinal blood-pressure records establishing hypertension onset and course",
+          "Acromegaly treatment and biochemical-response records, including blood-pressure response when documented",
+          "Evaluation of other primary or secondary contributors to hypertension",
+          "Clinician assessment of the individual endocrine-to-blood-pressure chronology"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Active acromegaly with chronic GH/IGF-I excess is associated with hypertension through several disease-specific mechanisms, including direct renal sodium and water retention with extracellular-volume expansion and vascular effects. The 2026 acromegaly complications consensus reports that GH acts on distal-nephron epithelial sodium channels, that GH promotes nephron sodium retention and expanded extracellular water, and that biochemical control can lower blood pressure in hypertensive patients. This supports a direct-secondary research pathway when acromegaly activity and blood-pressure chronology are documented; it does not establish that every case of hypertension in a person with acromegaly is attributable to acromegaly.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-adrenal-histoplasmosis-to-addisons-disease",
+        "primaryId": "adrenal-histoplasmosis",
+        "targetId": "addisons-disease",
+        "direction": "adrenal-histoplasmosis -> addisons-disease",
+        "rationale": "Rare infectious complication only. Publish only with documented adrenal histoplasmosis and independently documented Addison disease/primary adrenal insufficiency. Pulmonary histoplasmosis alone does not satisfy this guard; exclude central/pituitary/hypothalamic and glucocorticoid-induced adrenal insufficiency; do not generalize to all histoplasmosis.",
+        "rationaleHash": "153f483656e79b2d9dd23262fc1766bbae2ab5b455d1ea8a3f865eb4e9a0a8cb",
+        "evidenceGaps": [
+          "Independent diagnoses of Actinomycosis and Pericarditis / Endocarditis / Myocarditis",
+          "Chronology compatible with the bounded source proposition",
+          "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+          "Qualified clinical opinion before using population-level evidence as an individual nexus"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Rare infectious complication only. Publish only with documented adrenal histoplasmosis and independently documented Addison disease/primary adrenal insufficiency. Pulmonary histoplasmosis alone does not satisfy this guard; exclude central/pituitary/hypothalamic and glucocorticoid-induced adrenal insufficiency; do not generalize to all histoplasmosis.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-amputation-or-loss-of-use-to-depressive-disorder",
+        "primaryId": "amputation-or-loss-of-use",
+        "targetId": "depressive-disorder",
+        "direction": "amputation-or-loss-of-use -> depressive-disorder",
+        "rationale": "Systematic-review evidence shows a substantial burden of depression and anxiety after traumatic limb amputation, but prevalence and adjustment vary with injury, rehabilitation, pain, social, and individual factors. This supports focused evaluation of a depressive disorder after amputation; it does not establish that an individual's depression was caused or aggravated by the amputation without chronology and a case-specific mental-health assessment.",
+        "rationaleHash": "c1bb7481e414c0e690b7a80fad9ae4f9bb5d848cd6922a460c88bceb43eeff4b",
+        "evidenceGaps": [
+          "Mental-health evaluation documenting diagnosis and symptom chronology relative to amputation or loss of use",
+          "Rehabilitation, pain, functional, and psychosocial records describing post-amputation burden",
+          "Clinical opinion addressing alternative contributors and individual causation or aggravation"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Systematic-review evidence shows a substantial burden of depression and anxiety after traumatic limb amputation, but prevalence and adjustment vary with injury, rehabilitation, pain, social, and individual factors. This supports focused evaluation of a depressive disorder after amputation; it does not establish that an individual's depression was caused or aggravated by the amputation without chronology and a case-specific mental-health assessment.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-anal-fistula-to-fecal-incontinence",
+        "primaryId": "anal-fistula",
+        "targetId": "fecal-incontinence",
+        "direction": "anal-fistula -> fecal-incontinence",
+        "rationale": "Sphincter-cutting treatment for anal fistula, particularly fistulotomy and related procedures that divide continence muscle, can cause postoperative continence impairment. A systematic review of simple fistula-in-ano reported postoperative continence impairment after sphincter-cutting procedures and emphasized that the underlying study quality was generally low. This supports a treatment-complication pathway only when the individual underwent a documented sphincter-involving fistula procedure and fecal incontinence began or materially worsened afterward; anal fistula by itself, and sphincter-sparing treatment without a compatible complication, should not be treated as sufficient evidence of causation.",
+        "rationaleHash": "8705c846905f9151999f2882e6e61955484e2f72e1a17d63f421f2350d718d23",
+        "evidenceGaps": [
+          "Operative reports identifying fistula anatomy and the exact treatment performed",
+          "Baseline and postoperative continence history",
+          "Anorectal examination and sphincter imaging/function testing when clinically indicated",
+          "Documentation of postoperative onset or worsening and subsequent treatment course",
+          "Colorectal opinion addressing procedure-related sphincter injury and competing causes of fecal incontinence"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Sphincter-cutting treatment for anal fistula, particularly fistulotomy and related procedures that divide continence muscle, can cause postoperative continence impairment. A systematic review of simple fistula-in-ano reported postoperative continence impairment after sphincter-cutting procedures and emphasized that the underlying study quality was generally low. This supports a treatment-complication pathway only when the individual underwent a documented sphincter-involving fistula procedure and fecal incontinence began or materially worsened afterward; anal fistula by itself, and sphincter-sparing treatment without a compatible complication, should not be treated as sufficient evidence of causation.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-asthma-to-sleep-apnea",
+        "primaryId": "asthma",
+        "targetId": "sleep-apnea",
+        "direction": "asthma -> sleep-apnea",
+        "rationale": "Asthma and obstructive sleep apnea have been studied together in observational cohorts and meta-analysis, but the pooled association for asthma overall was imprecise and did not clearly exclude no association. A stronger signal was reported for moderate-to-severe asthma, although that subgroup evidence was limited and imprecise. These population-level findings support focused clinical review but do not establish that asthma caused or aggravated an individual veteran's OSA.",
+        "rationaleHash": "ecc7c97f6e81cfe98c245cca6b9343fc69ceff47d6c092b6ffa188283c630996",
+        "evidenceGaps": [
+          "Sleep study (polysomnography or qualifying home sleep test) confirming OSA",
+          "Clinical assessment of asthma severity, obesity and other OSA risk factors",
+          "Pulmonary or sleep-medicine opinion addressing the individual relationship between asthma and OSA when a secondary theory is asserted"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Asthma and obstructive sleep apnea have been studied together in observational cohorts and meta-analysis, but the pooled association for asthma overall was imprecise and did not clearly exclude no association. A stronger signal was reported for moderate-to-severe asthma, although that subgroup evidence was limited and imprecise. These population-level findings support focused clinical review but do not establish that asthma caused or aggravated an individual veteran's OSA.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-barretts-esophagus-to-esophageal-cancer",
+        "primaryId": "barretts-esophagus",
+        "targetId": "esophageal-cancer",
+        "direction": "barretts-esophagus -> esophageal-cancer",
+        "rationale": "Barrett's esophagus is an identifiable precursor condition for esophageal adenocarcinoma, but the broader catalog target also includes other esophageal-cancer histologies. This relationship is therefore limited to an adenocarcinoma progression pathway and should be evaluated with endoscopic, biopsy/pathology, dysplasia, and chronology evidence rather than generalized to squamous-cell carcinoma or treated as an inevitable progression.",
+        "rationaleHash": "6475596459f6657a3ac94a1773dcaaecf7eaea260b0817fb8a2944f501085ff7",
+        "evidenceGaps": [
+          "Endoscopy and pathology confirming Barrett's esophagus and its chronology",
+          "Dysplasia history and surveillance biopsy results when present",
+          "Pathology confirming esophageal adenocarcinoma histology",
+          "Specialist assessment of the individual precursor-to-cancer chronology and competing risk factors"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Barrett's esophagus is an identifiable precursor condition for esophageal adenocarcinoma, but the broader catalog target also includes other esophageal-cancer histologies. This relationship is therefore limited to an adenocarcinoma progression pathway and should be evaluated with endoscopic, biopsy/pathology, dysplasia, and chronology evidence rather than generalized to squamous-cell carcinoma or treated as an inevitable progression.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-brucellosis-to-cardiac-inflammatory-disease",
+        "primaryId": "brucellosis",
+        "targetId": "cardiac-inflammatory-disease",
+        "direction": "brucellosis -> cardiac-inflammatory-disease",
+        "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as rare infection complication. Require documented Brucella infection, a prosthetic cardiac valve, and separately confirmed Brucella prosthetic-valve infective endocarditis. Systematic review is specific to prosthetic-valve Brucella endocarditis and rare reported cases; do not generalize to native-valve disease or uncomplicated brucellosis. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "rationaleHash": "a354e0fac57127ee327bdb6894b2b00836494ee69dea35891444e2bba6baa570",
+        "evidenceGaps": [
+          "Independent diagnoses of Brucellosis and Pericarditis / Endocarditis / Myocarditis",
+          "Chronology compatible with the bounded source proposition",
+          "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+          "Qualified clinical opinion before using population-level evidence as an individual nexus"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Clinical Mapping Master Batch 2026 publishes this relationship only as rare infection complication. Require documented Brucella infection, a prosthetic cardiac valve, and separately confirmed Brucella prosthetic-valve infective endocarditis. Systematic review is specific to prosthetic-valve Brucella endocarditis and rare reported cases; do not generalize to native-valve disease or uncomplicated brucellosis. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-cardiomyopathy-to-congestive-heart-failure",
+        "primaryId": "cardiomyopathy",
+        "targetId": "congestive-heart-failure",
+        "direction": "cardiomyopathy -> congestive-heart-failure",
+        "rationale": "Cardiomyopathy can produce structural and functional myocardial abnormalities that progress to symptomatic heart failure in some patients. The relationship depends on the cardiomyopathy phenotype, ventricular function, timing, and competing causes of heart failure; the population-level clinical relationship does not by itself establish an individual nexus.",
+        "rationaleHash": "7b9a1631d0d1e4181bfeb874b186d89742b15e03294f41c05e1b5db48ee3fb3b",
+        "evidenceGaps": [
+          "Cardiology records identifying the cardiomyopathy phenotype and etiology",
+          "Objective ventricular-function and heart-failure evidence such as echocardiography, cardiac MRI, natriuretic peptides, or documented congestion",
+          "Medical opinion addressing temporal relationship, competing etiologies, and individual causation or aggravation"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Cardiomyopathy can produce structural and functional myocardial abnormalities that progress to symptomatic heart failure in some patients. The relationship depends on the cardiomyopathy phenotype, ventricular function, timing, and competing causes of heart failure; the population-level clinical relationship does not by itself establish an individual nexus.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-cauda-equina-syndrome-to-erectile-dysfunction",
+        "primaryId": "cauda-equina-syndrome",
+        "targetId": "erectile-dysfunction",
+        "direction": "cauda-equina-syndrome -> erectile-dysfunction",
+        "rationale": "Persistent sexual dysfunction, including erectile dysfunction in men, has been reported after surgically treated cauda equina syndrome in cohorts largely involving lumbar disc herniation. This supports a clinically relevant CES/erectile-dysfunction research pathway when the individual has a compatible CES etiology, documented sacral neurologic involvement, and compatible chronology. These population-level postoperative data do not by themselves establish an individual causal nexus, should not be generalized automatically to every CES etiology, and do not exclude vascular, endocrine, medication-related, psychogenic, or other contributors.",
+        "rationaleHash": "5ac9b4c62675158b93d690f3d0fd7622aa03302a8c16c5aa6846859a0d970b4a",
+        "evidenceGaps": [
+          "Clinical documentation confirming erectile dysfunction and its onset, persistence, and severity",
+          "Records establishing the cauda equina syndrome diagnosis, underlying etiology (including whether due to lumbar disc herniation), neurologic level and severity, and relevant sacral findings such as bladder, bowel, perianal sensory, or other sacral nerve-root dysfunction",
+          "Pre-CES sexual-function history and chronology comparing CES onset or decompression with erectile-dysfunction onset or worsening",
+          "Evaluation of competing erectile-dysfunction contributors, including vascular disease, diabetes, endocrine disorders, medications, psychiatric factors, and other neurologic disease",
+          "Urology, neurology, spine, or other qualified medical opinion addressing whether the individual erectile dysfunction is medically attributable to or aggravated by the documented CES rather than an alternative cause"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Persistent sexual dysfunction, including erectile dysfunction in men, has been reported after surgically treated cauda equina syndrome in cohorts largely involving lumbar disc herniation. This supports a clinically relevant CES/erectile-dysfunction research pathway when the individual has a compatible CES etiology, documented sacral neurologic involvement, and compatible chronology. These population-level postoperative data do not by themselves establish an individual causal nexus, should not be generalized automatically to every CES etiology, and do not exclude vascular, endocrine, medication-related, psychogenic, or other contributors.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-charcot-arthropathy-to-amputation-or-loss-of-use",
+        "primaryId": "charcot-arthropathy",
+        "targetId": "amputation-or-loss-of-use",
+        "direction": "charcot-arthropathy -> amputation-or-loss-of-use",
+        "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as complication outcome risk. Require established Charcot foot/lower-extremity neuropathic arthropathy and a documented subsequent lower-extremity amputation outcome. Long-term Charcot-foot cohort supports amputation risk/limb preservation only; do not generalize this source to generic loss of use or non-foot Charcot arthropathy. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "rationaleHash": "f1ec170f247b77580fe4827d4ce931dc2731ff158fb54d6e0c13a178ea027451",
+        "evidenceGaps": [
+          "Independent diagnoses of Charcot Neuropathic Arthropathy and Amputation / Loss of Use of Limbs or Digits",
+          "Chronology compatible with the bounded source proposition",
+          "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+          "Qualified clinical opinion before using population-level evidence as an individual nexus"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Clinical Mapping Master Batch 2026 publishes this relationship only as complication outcome risk. Require established Charcot foot/lower-extremity neuropathic arthropathy and a documented subsequent lower-extremity amputation outcome. Long-term Charcot-foot cohort supports amputation risk/limb preservation only; do not generalize this source to generic loss of use or non-foot Charcot arthropathy. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-chronic-liver-disease-to-cirrhosis-of-the-liver",
+        "primaryId": "chronic-liver-disease",
+        "targetId": "cirrhosis-of-the-liver",
+        "direction": "chronic-liver-disease -> cirrhosis-of-the-liver",
+        "rationale": "Across chronic liver diseases, progressive hepatic fibrosis is a central pathway by which persistent liver injury can advance to cirrhosis. This umbrella relationship should be considered only when the individual record documents a specific chronic liver disease with progressive or advanced fibrosis preceding the cirrhosis diagnosis; the catalog label alone does not identify the underlying etiology or establish that progression occurred in a particular patient.",
+        "rationaleHash": "7a3247a514d1d984cd479d4cdb911a49cfcb52d839f45f5b34e763934a7e9639",
+        "evidenceGaps": [
+          "Etiology-specific hepatology diagnosis and longitudinal liver-disease records",
+          "Objective fibrosis assessment such as biopsy, elastography, imaging, or validated noninvasive fibrosis testing",
+          "Chronology showing advanced/progressive fibrosis before cirrhosis and medical review of competing liver etiologies"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Across chronic liver diseases, progressive hepatic fibrosis is a central pathway by which persistent liver injury can advance to cirrhosis. This umbrella relationship should be considered only when the individual record documents a specific chronic liver disease with progressive or advanced fibrosis preceding the cirrhosis diagnosis; the catalog label alone does not identify the underlying etiology or establish that progression occurred in a particular patient.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-chronic-pyelonephritis-to-chronic-kidney-disease",
+        "primaryId": "chronic-pyelonephritis",
+        "targetId": "chronic-kidney-disease",
+        "direction": "chronic-pyelonephritis -> chronic-kidney-disease",
+        "rationale": "Radiologically proven chronic pyelonephritis is heterogeneous: many adults with preserved renal function remain stable, while patients with bilateral scarring, proteinuria, hypertension, or impaired renal function represent higher-risk phenotypes in whom chronic renal damage and progression should be evaluated. A chronic-kidney-disease relationship should therefore be considered only when longitudinal renal-function loss or structural renal damage is documented and competing renal causes are addressed.",
+        "rationaleHash": "f1dac47f7e30a13548990c09ac53ed40562bdd2e2e10c81af24050165425a359",
+        "evidenceGaps": [
+          "Imaging or nephrology records documenting chronic pyelonephritic scarring or persistent parenchymal damage",
+          "Serial creatinine/eGFR, urinalysis or proteinuria measurements, and blood-pressure history showing chronic renal impairment",
+          "Medical opinion addressing competing CKD etiologies and whether the documented pyelonephritic damage caused or aggravated renal-function loss"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Radiologically proven chronic pyelonephritis is heterogeneous: many adults with preserved renal function remain stable, while patients with bilateral scarring, proteinuria, hypertension, or impaired renal function represent higher-risk phenotypes in whom chronic renal damage and progression should be evaluated. A chronic-kidney-disease relationship should therefore be considered only when longitudinal renal-function loss or structural renal damage is documented and competing renal causes are addressed.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-chronic-rhinitis-to-sleep-apnea",
+        "primaryId": "chronic-rhinitis",
+        "targetId": "sleep-apnea",
+        "direction": "chronic-rhinitis -> sleep-apnea",
+        "rationale": "Adult meta-analytic evidence supports a higher frequency of obstructive sleep apnea among patients with allergic rhinitis, but the catalog identity chronic rhinitis is broader than allergic rhinitis and the evidence does not establish individual causation or aggravation. This relationship therefore applies only when an allergic-rhinitis phenotype is clinically documented and remains association-focused; sleep-study confirmation, rhinitis phenotype/severity, chronology, body-habitus and upper-airway risk factors, medication context, and competing OSA causes still require individual review.",
+        "rationaleHash": "efa88fb28447b63d79979dbae7294d93484671fc9082a43f814cb8d2fe3d03d9",
+        "evidenceGaps": [
+          "Documentation establishing an allergic-rhinitis phenotype rather than assuming all chronic rhinitis is allergic",
+          "Polysomnography or validated sleep-study documentation confirming OSA and severity",
+          "Rhinitis onset, severity, nasal-obstruction history, and treatment chronology relative to OSA",
+          "BMI/weight trajectory, craniofacial or upper-airway factors, age, sedating medications, and other OSA risk factors",
+          "Allergy/ENT/sleep specialist assessment distinguishing population-level association from individual causation or aggravation"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Adult meta-analytic evidence supports a higher frequency of obstructive sleep apnea among patients with allergic rhinitis, but the catalog identity chronic rhinitis is broader than allergic rhinitis and the evidence does not establish individual causation or aggravation. This relationship therefore applies only when an allergic-rhinitis phenotype is clinically documented and remains association-focused; sleep-study confirmation, rhinitis phenotype/severity, chronology, body-habitus and upper-airway risk factors, medication context, and competing OSA causes still require individual review.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-chronic-sinusitis-to-sleep-apnea",
+        "primaryId": "chronic-sinusitis",
+        "targetId": "sleep-apnea",
+        "direction": "chronic-sinusitis -> sleep-apnea",
+        "rationale": "Recent systematic-review and meta-analytic evidence supports an association between chronic rhinosinusitis and obstructive sleep apnea, including a modest higher OSA risk among CRS patients. Although Mendelian-randomization results in the same study support a directional CRS-to-OSA signal, this repository does not translate population-level or genetic evidence into an automatic individual causal nexus. The relationship remains association-focused and requires confirmed CRS and OSA diagnoses, chronology, sinonasal phenotype/severity, body-habitus and upper-airway factors, medication context, and competing OSA causes.",
+        "rationaleHash": "197ea88e7846762a5ed0f20465929ab0839c7675ce4d9b6e74b5dee69011b494",
+        "evidenceGaps": [
+          "ENT documentation confirming chronic rhinosinusitis phenotype, duration, objective findings, and severity",
+          "Polysomnography or validated sleep-study documentation confirming OSA and severity",
+          "CRS and OSA chronology, including whether OSA findings changed with effective sinonasal treatment",
+          "BMI/weight trajectory, craniofacial or upper-airway factors, age, sedating medications, and other OSA risk factors",
+          "ENT/sleep specialist assessment distinguishing population-level association from the individual's causal or aggravation theory"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Recent systematic-review and meta-analytic evidence supports an association between chronic rhinosinusitis and obstructive sleep apnea, including a modest higher OSA risk among CRS patients. Although Mendelian-randomization results in the same study support a directional CRS-to-OSA signal, this repository does not translate population-level or genetic evidence into an automatic individual causal nexus. The relationship remains association-focused and requires confirmed CRS and OSA diagnoses, chronology, sinonasal phenotype/severity, body-habitus and upper-airway factors, medication context, and competing OSA causes.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-congestive-heart-failure-to-depressive-disorder",
+        "primaryId": "congestive-heart-failure",
+        "targetId": "depressive-disorder",
+        "direction": "congestive-heart-failure -> depressive-disorder",
+        "rationale": "Depressive symptoms and depressive disorders are common in people with heart failure and warrant clinical assessment. This comorbidity evidence supports research of the relationship but does not by itself establish that heart failure caused or aggravated an individual depressive disorder; diagnosis, chronology, functional burden, treatment, and competing contributors require case-specific review.",
+        "rationaleHash": "4e8a6b6cda5069d7ab9cb5f8c8aeceec26f1743b3f90c4f072ef9ff31592d5cd",
+        "evidenceGaps": [
+          "Qualified diagnosis of a depressive disorder rather than symptom-screening results alone",
+          "Chronology comparing depressive-disorder onset or worsening with heart-failure onset, severity, decompensations, functional limitation, and treatment",
+          "Documentation of heart-failure functional burden and relevant treatment history",
+          "Evaluation of alternative psychiatric, medical, medication-related, psychosocial, substance-use, and sleep-related contributors",
+          "Qualified cardiovascular or mental-health opinion addressing the individual relationship if causation or aggravation is asserted"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Depressive symptoms and depressive disorders are common in people with heart failure and warrant clinical assessment. This comorbidity evidence supports research of the relationship but does not by itself establish that heart failure caused or aggravated an individual depressive disorder; diagnosis, chronology, functional burden, treatment, and competing contributors require case-specific review.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-copd-to-sleep-apnea",
+        "primaryId": "copd",
+        "targetId": "sleep-apnea",
+        "direction": "copd -> sleep-apnea",
+        "rationale": "COPD and obstructive sleep apnea commonly coexist as overlap syndrome. Published systematic reviews describe substantial co-occurrence and more pronounced nocturnal oxygen desaturation in people with both conditions, but the literature does not by itself establish that COPD caused or aggravated an individual veteran's OSA.",
+        "rationaleHash": "1bc74e20fc6594be4e9058b0d4d1c1b03bbf161e4eec54adc38dcb2bbc4bd3e2",
+        "evidenceGaps": [
+          "Sleep study (polysomnography or qualifying home sleep test) confirming OSA",
+          "Pulmonary or sleep-medicine opinion addressing the individual relationship between COPD and OSA",
+          "Clinical records addressing severity, nocturnal oxygenation, obesity and other relevant risk factors"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "COPD and obstructive sleep apnea commonly coexist as overlap syndrome. Published systematic reviews describe substantial co-occurrence and more pronounced nocturnal oxygen desaturation in people with both conditions, but the literature does not by itself establish that COPD caused or aggravated an individual veteran's OSA.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-cushings-syndrome-to-hypertension",
+        "primaryId": "cushings-syndrome",
+        "targetId": "hypertension",
+        "direction": "cushings-syndrome -> hypertension",
+        "rationale": "Hypertension is a common cardiovascular manifestation of clinically established Cushing's syndrome/hypercortisolism. A European Society of Hypertension endocrine-hypertension consensus describes glucocorticoid excess as the biological basis for the cardiovascular damage of endogenous or exogenous Cushing's syndrome and notes that hypertension may persist even after hormone excess is normalized or steroid therapy is discontinued. This supports a direct-secondary research pathway when the Cushing/hypercortisolism diagnosis and blood-pressure chronology are documented, but other primary and secondary causes of hypertension must still be reviewed.",
+        "rationaleHash": "0f14e0d178616b280d4081cb15e817e6e43dcb21124e7001e5b8a37bec1053dc",
+        "evidenceGaps": [
+          "Endocrine records confirming endogenous or exogenous Cushing's syndrome and the period of glucocorticoid excess",
+          "Longitudinal blood-pressure records before, during, and after treatment of hypercortisolism",
+          "Cortisol/ACTH or other disease-specific treatment-response data appropriate to the Cushing phenotype",
+          "Medication records for exogenous glucocorticoid exposure when relevant",
+          "Clinician assessment addressing other causes of hypertension and the individual endocrine-to-BP chronology"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Hypertension is a common cardiovascular manifestation of clinically established Cushing's syndrome/hypercortisolism. A European Society of Hypertension endocrine-hypertension consensus describes glucocorticoid excess as the biological basis for the cardiovascular damage of endogenous or exogenous Cushing's syndrome and notes that hypertension may persist even after hormone excess is normalized or steroid therapy is discontinued. This supports a direct-secondary research pathway when the Cushing/hypercortisolism diagnosis and blood-pressure chronology are documented, but other primary and secondary causes of hypertension must still be reviewed.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-depressive-disorder-to-sleep-apnea",
+        "primaryId": "depressive-disorder",
+        "targetId": "sleep-apnea",
+        "direction": "depressive-disorder -> sleep-apnea",
+        "rationale": "Some antidepressant therapies are associated with weight gain, and weight gain/obesity are established risk factors for obstructive sleep apnea. This supports a clinically plausible intermediate-step theory, but it does not establish that a particular veteran's antidepressant exposure caused obesity or that obesity caused or aggravated OSA; the individual medication, timing, weight trajectory, and alternative OSA risk factors require case-specific medical review.",
+        "rationaleHash": "f65354e19854764dd176455f0700472923cedac20500553f803089365fbabdb4",
+        "evidenceGaps": [
+          "Sleep study diagnosis of OSA",
+          "Prescription history identifying the specific antidepressant, dose, duration, and timing",
+          "Documented weight trajectory and clinical assessment of other OSA risk factors",
+          "Medical nexus addressing the medication-to-weight-to-OSA intermediate step in the individual case"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Some antidepressant therapies are associated with weight gain, and weight gain/obesity are established risk factors for obstructive sleep apnea. This supports a clinically plausible intermediate-step theory, but it does not establish that a particular veteran's antidepressant exposure caused obesity or that obesity caused or aggravated OSA; the individual medication, timing, weight trajectory, and alternative OSA risk factors require case-specific medical review.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-depressive-disorder-to-erectile-dysfunction",
+        "primaryId": "depressive-disorder",
+        "targetId": "erectile-dysfunction",
+        "direction": "depressive-disorder -> erectile-dysfunction",
+        "rationale": "Antidepressant and other psychotropic drug therapies can be associated with male sexual dysfunction, including erectile dysfunction, with clinically important differences among drug classes and individual agents. A medication-related secondary theory therefore requires evidence that the relevant medication was used to treat the depressive disorder, that erectile dysfunction began or worsened after the exposure, and that competing vascular, endocrine, neurologic, psychiatric, medication, and lifestyle causes were considered.",
+        "rationaleHash": "5df2b379947031fba57b912efa7ca3a58572f194bb2f19f478ad5a3db07cfa8d",
+        "evidenceGaps": [
+          "Diagnosis and clinical characterization of erectile dysfunction",
+          "Prescription records showing the specific psychotropic exposure, dose, duration, and timing",
+          "Medical assessment addressing baseline erectile function and vascular, endocrine, neurologic, psychiatric, medication, substance-use, and lifestyle alternatives",
+          "Medical nexus addressing the individual relationship between the specific medication exposure and erectile dysfunction"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Antidepressant and other psychotropic drug therapies can be associated with male sexual dysfunction, including erectile dysfunction, with clinically important differences among drug classes and individual agents. A medication-related secondary theory therefore requires evidence that the relevant medication was used to treat the depressive disorder, that erectile dysfunction began or worsened after the exposure, and that competing vascular, endocrine, neurologic, psychiatric, medication, and lifestyle causes were considered.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-diabetes-mellitus-type-1-to-chronic-kidney-disease",
+        "primaryId": "diabetes-mellitus-type-1",
+        "targetId": "chronic-kidney-disease",
+        "direction": "diabetes-mellitus-type-1 -> chronic-kidney-disease",
+        "rationale": "Chronic kidney disease is a recognized microvascular complication of longstanding type 1 diabetes, but kidney disease in a person with diabetes is not automatically diabetic kidney disease. The 2026 ADA Standards of Care recommend annual urinary albumin-to-creatinine ratio and eGFR assessment after at least 5 years of type 1 diabetes and describe the typical diabetic CKD pattern as longstanding diabetes with albuminuria and/or gradual eGFR loss. This supports a disease-progression research pathway when the diabetes duration, renal phenotype, and chronology fit, while active urine sediment, rapid renal decline, nephrotic syndrome, or other atypical features require investigation for alternative kidney disease.",
+        "rationaleHash": "5ade81e6188b7fc5959dde85a75037c95477f1947e8bd3ee46e7edb88eda7d4d",
+        "evidenceGaps": [
+          "Type 1 diabetes diagnosis and duration with longitudinal glycemic-control records",
+          "Serial UACR or other albumin/protein measurements and creatinine/eGFR results",
+          "Urinalysis and nephrology records addressing atypical renal features or alternative etiologies",
+          "Diabetic retinopathy or other microvascular-complication history when available",
+          "Clinician assessment of whether the individual CKD phenotype and chronology are consistent with diabetic kidney disease"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Chronic kidney disease is a recognized microvascular complication of longstanding type 1 diabetes, but kidney disease in a person with diabetes is not automatically diabetic kidney disease. The 2026 ADA Standards of Care recommend annual urinary albumin-to-creatinine ratio and eGFR assessment after at least 5 years of type 1 diabetes and describe the typical diabetic CKD pattern as longstanding diabetes with albuminuria and/or gradual eGFR loss. This supports a disease-progression research pathway when the diabetes duration, renal phenotype, and chronology fit, while active urine sediment, rapid renal decline, nephrotic syndrome, or other atypical features require investigation for alternative kidney disease.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-discoid-lupus-to-scarring-alopecia",
+        "primaryId": "discoid-lupus",
+        "targetId": "scarring-alopecia",
+        "direction": "discoid-lupus -> scarring-alopecia",
+        "rationale": "Scalp discoid lupus erythematosus can produce cicatricial (scarring) alopecia through inflammatory injury centered on hair follicles and permanent follicular/scarring damage. This relationship is limited to documented scalp DLE with a distinct clinical or dermatopathologic diagnosis of scarring alopecia; it does not treat nonscarring hair loss, alopecia areata, or systemic lupus erythematosus as interchangeable phenotypes.",
+        "rationaleHash": "9b583f7a0015b41b99b98b67c071cb4e8b3eb8d0196236281407b650934751c4",
+        "evidenceGaps": [
+          "Dermatology documentation confirming discoid lupus involvement of the scalp",
+          "Clinical, trichoscopic, or histopathologic confirmation of cicatricial/scarring alopecia",
+          "Anatomic and temporal correlation between DLE scalp lesions and permanent hair loss",
+          "Assessment of competing cicatricial and nonscarring alopecia diagnoses",
+          "Dermatology opinion when the individual attribution remains uncertain"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Scalp discoid lupus erythematosus can produce cicatricial (scarring) alopecia through inflammatory injury centered on hair follicles and permanent follicular/scarring damage. This relationship is limited to documented scalp DLE with a distinct clinical or dermatopathologic diagnosis of scarring alopecia; it does not treat nonscarring hair loss, alopecia areata, or systemic lupus erythematosus as interchangeable phenotypes.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-emphysema-to-respiratory-cancer",
+        "primaryId": "emphysema",
+        "targetId": "respiratory-cancer",
+        "direction": "emphysema -> respiratory-cancer",
+        "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require emphysema followed by separately diagnosed lung cancer; explicitly account for smoking and other carcinogenic exposures. Systematic review supports a population-level emphysema–lung-cancer association, not all respiratory malignancies and not individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "rationaleHash": "9cddf4a99c587d7900356e272def1cf144be533ff45fe6a049bbbe66e24499a5",
+        "evidenceGaps": [
+          "Independent diagnoses of Emphysema and Lung Cancer / Tracheal Cancer / Bronchial Cancer",
+          "Chronology compatible with the bounded source proposition",
+          "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+          "Qualified clinical opinion before using population-level evidence as an individual nexus"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require emphysema followed by separately diagnosed lung cancer; explicitly account for smoking and other carcinogenic exposures. Systematic review supports a population-level emphysema–lung-cancer association, not all respiratory malignancies and not individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-erectile-dysfunction-to-depressive-disorder",
+        "primaryId": "erectile-dysfunction",
+        "targetId": "depressive-disorder",
+        "direction": "erectile-dysfunction -> depressive-disorder",
+        "rationale": "Erectile dysfunction and depression show a clinically important bidirectional association at the population level, but the available observational evidence does not establish the causal direction in an individual patient. A 49-publication systematic review and meta-analysis found increased odds of depression among men with erectile dysfunction and increased odds of erectile dysfunction among men with depression. This relationship should therefore be evaluated with symptom chronology, functional impact, treatment history, medication effects, vascular/endocrine contributors, and mental-health assessment rather than being presented as automatic secondary causation.",
+        "rationaleHash": "ad93b6c698f836c27a3136aae16e01938ea2e9dc70551633d728858584ff4920",
+        "evidenceGaps": [
+          "Erectile-dysfunction diagnosis and symptom chronology",
+          "Mental-health evaluation confirming depressive disorder and onset",
+          "Records describing distress, relationship impact, function, and quality of life when present",
+          "Medication, vascular, endocrine, neurologic, and other competing-cause review",
+          "Clinician assessment of the likely direction and contributors in the individual case"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Erectile dysfunction and depression show a clinically important bidirectional association at the population level, but the available observational evidence does not establish the causal direction in an individual patient. A 49-publication systematic review and meta-analysis found increased odds of depression among men with erectile dysfunction and increased odds of erectile dysfunction among men with depression. This relationship should therefore be evaluated with symptom chronology, functional impact, treatment history, medication effects, vascular/endocrine contributors, and mental-health assessment rather than being presented as automatic secondary causation.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-esophageal-cancer-to-cardiac-arrhythmia",
+        "primaryId": "esophageal-cancer",
+        "targetId": "cardiac-arrhythmia",
+        "direction": "esophageal-cancer -> cardiac-arrhythmia",
+        "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require esophageal cancer treated with thoracic radiotherapy followed by incident atrial fibrillation. This source verifies radiotherapy-associated incident atrial fibrillation; do not generalize it to other arrhythmia phenotypes or esophageal cancer without thoracic RT. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "rationaleHash": "a109eb44bc20b3f6aa2c407a1c97d1356dcd906bc09c33cea93d43cde1987335",
+        "evidenceGaps": [
+          "Documentation of the qualifying treatment or procedure used for Esophageal Cancer",
+          "Independent diagnosis of Cardiac Arrhythmias (Atrial Fibrillation, Tachycardia) and timing relative to that exposure",
+          "Dose, duration, procedure details, and relevant co-exposures where applicable",
+          "Qualified clinical assessment of competing causes and source-phenotype fit"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require esophageal cancer treated with thoracic radiotherapy followed by incident atrial fibrillation. This source verifies radiotherapy-associated incident atrial fibrillation; do not generalize it to other arrhythmia phenotypes or esophageal cancer without thoracic RT. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-femoroacetabular-impingement-to-osteoarthritis",
+        "primaryId": "femoroacetabular-impingement",
+        "targetId": "osteoarthritis",
+        "direction": "femoroacetabular-impingement -> osteoarthritis",
+        "rationale": "Femoroacetabular impingement, particularly cam-type morphology with an elevated alpha angle, is associated with development and radiographic progression of hip osteoarthritis in systematic-review evidence. The evidence for pincer-type morphology is less consistent. This supports a hip-specific biomechanical/disease-progression research pathway when the individual's documented FAI morphology, symptoms, and osteoarthritis involve the same hip; it does not establish that every person with FAI develops osteoarthritis or that FAI caused an individual case without chronology and competing-risk review.",
+        "rationaleHash": "2c5897afce7c9ff72b67aefa2fe581188131926503b3426eb6183a6a278a9842",
+        "evidenceGaps": [
+          "Hip imaging documenting the FAI morphology and side, including cam/pincer/mixed characterization where available",
+          "Longitudinal imaging documenting osteoarthritis onset or progression in the same hip",
+          "Clinical chronology of hip symptoms, FAI diagnosis, treatment, and osteoarthritis progression",
+          "Assessment of hip dysplasia, trauma, inflammatory disease, avascular necrosis, age, weight, occupational/athletic loading, and other osteoarthritis contributors",
+          "Qualified orthopedic opinion addressing the individual biomechanical and chronological relationship"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Femoroacetabular impingement, particularly cam-type morphology with an elevated alpha angle, is associated with development and radiographic progression of hip osteoarthritis in systematic-review evidence. The evidence for pincer-type morphology is less consistent. This supports a hip-specific biomechanical/disease-progression research pathway when the individual's documented FAI morphology, symptoms, and osteoarthritis involve the same hip; it does not establish that every person with FAI develops osteoarthritis or that FAI caused an individual case without chronology and competing-risk review.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-heart-valve-replacement-residuals-to-anemia",
+        "primaryId": "heart-valve-replacement-residuals",
+        "targetId": "anemia",
+        "direction": "heart-valve-replacement-residuals -> anemia",
+        "rationale": "Paravalvular leak is an uncommon but clinically important residual or complication after prosthetic heart-valve replacement and can produce hemolysis and hemolytic anemia. Meta-analytic evidence on paravalvular-leak treatment identifies hemolysis as a serious clinical consequence. This supports a treatment-complication pathway only when a post-replacement paravalvular leak and objective hemolysis are documented; valve replacement by itself is not sufficient to attribute an individual anemia to the procedure.",
+        "rationaleHash": "01de5b08227e01e142e33dceb9a6be1d68b4a988f2c44dafe9706af21c372b6a",
+        "evidenceGaps": [
+          "Operative records identifying the prosthetic valve and replacement procedure",
+          "Echocardiography or other imaging documenting a post-replacement paravalvular leak",
+          "Laboratory evidence characterizing anemia and hemolysis",
+          "Clinical chronology and any response after leak closure or valve re-intervention",
+          "Qualified cardiology/hematology assessment excluding other important causes of anemia or hemolysis"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Paravalvular leak is an uncommon but clinically important residual or complication after prosthetic heart-valve replacement and can produce hemolysis and hemolytic anemia. Meta-analytic evidence on paravalvular-leak treatment identifies hemolysis as a serious clinical consequence. This supports a treatment-complication pathway only when a post-replacement paravalvular leak and objective hemolysis are documented; valve replacement by itself is not sufficient to attribute an individual anemia to the procedure.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-hepatitis-to-parkinsons-disease",
+        "primaryId": "hepatitis",
+        "targetId": "parkinsons-disease",
+        "direction": "hepatitis -> parkinsons-disease",
+        "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply this source only to documented hepatitis C virus infection followed by separately established Parkinson disease. Meta-analysis supports an association for HCV; HBV findings are inconsistent. No individual causal inference. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "rationaleHash": "9d6726b9845a8ed4c6711076056504161ca4111accf2a4370ab23b22841758fd",
+        "evidenceGaps": [
+          "Documentation that Hepatitis A, B, or C matches the source-specific phenotype or population",
+          "Independent diagnosis of Parkinson's Disease with compatible chronology",
+          "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+          "Qualified clinical opinion before applying the population-level relationship to an individual case"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply this source only to documented hepatitis C virus infection followed by separately established Parkinson disease. Meta-analysis supports an association for HCV; HBV findings are inconsistent. No individual causal inference. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-hyperaldosteronism-to-hypertension",
+        "primaryId": "hyperaldosteronism",
+        "targetId": "hypertension",
+        "direction": "hyperaldosteronism -> hypertension",
+        "rationale": "For confirmed primary aldosteronism, the 2025 Endocrine Society guideline describes excess autonomous aldosterone production as a common cause of hypertension and explains the renal sodium-retention, volume-expansion, and elevated-blood-pressure mechanism. This supports a direct-secondary pathway when the primary-aldosteronism phenotype is actually documented; the broader catalog label 'hyperaldosteronism' must not be used to assume that mechanism in an unspecified endocrine or neoplastic presentation without the corresponding aldosterone/renin and clinical evidence.",
+        "rationaleHash": "e1fe5c6da1d6d8be6ed4d22cfe1e4fc1f0e51c1f1404c4e5b2afff40a6d4f47a",
+        "evidenceGaps": [
+          "Aldosterone and renin results establishing the primary-aldosteronism phenotype",
+          "Blood-pressure diagnosis and longitudinal readings showing chronology",
+          "Potassium and relevant adrenal imaging/lateralization records when obtained",
+          "Treatment records showing response to mineralocorticoid-receptor antagonism or adrenal-directed therapy when applicable",
+          "Clinician assessment addressing alternative causes of hypertension"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "For confirmed primary aldosteronism, the 2025 Endocrine Society guideline describes excess autonomous aldosterone production as a common cause of hypertension and explains the renal sodium-retention, volume-expansion, and elevated-blood-pressure mechanism. This supports a direct-secondary pathway when the primary-aldosteronism phenotype is actually documented; the broader catalog label 'hyperaldosteronism' must not be used to assume that mechanism in an unspecified endocrine or neoplastic presentation without the corresponding aldosterone/renin and clinical evidence.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-hyperparathyroidism-to-kidney-stones",
+        "primaryId": "hyperparathyroidism",
+        "targetId": "kidney-stones",
+        "direction": "hyperparathyroidism -> kidney-stones",
+        "rationale": "Kidney-stone disease is a recognized renal manifestation of primary hyperparathyroidism, but the broader catalog label hyperparathyroidism also includes secondary and tertiary forms that should not be treated as equivalent. The Fifth International Workshop guideline supports renal evaluation for nephrolithiasis/nephrocalcinosis in confirmed primary hyperparathyroidism. This relationship is therefore limited to a documented primary-hyperparathyroidism phenotype with compatible biochemical findings, stone chronology, and renal evaluation; other stone causes and other forms of hyperparathyroidism remain separate considerations.",
+        "rationaleHash": "8eedc3b18d6a2760132601ab8571fc9d3f8c009373ff51a41f8d6d297daa0c08",
+        "evidenceGaps": [
+          "Endocrinology documentation confirming primary hyperparathyroidism and its biochemical basis",
+          "Longitudinal serum calcium, PTH, phosphate, vitamin D, and renal-function results",
+          "24-hour urine calcium and other metabolic stone testing when available",
+          "Renal imaging documenting nephrolithiasis or nephrocalcinosis and chronology",
+          "Clinician assessment distinguishing primary-hyperparathyroidism-related stone disease from competing etiologies"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Kidney-stone disease is a recognized renal manifestation of primary hyperparathyroidism, but the broader catalog label hyperparathyroidism also includes secondary and tertiary forms that should not be treated as equivalent. The Fifth International Workshop guideline supports renal evaluation for nephrolithiasis/nephrocalcinosis in confirmed primary hyperparathyroidism. This relationship is therefore limited to a documented primary-hyperparathyroidism phenotype with compatible biochemical findings, stone chronology, and renal evaluation; other stone causes and other forms of hyperparathyroidism remain separate considerations.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-hyperpituitarism-to-hypogonadism",
+        "primaryId": "hyperpituitarism",
+        "targetId": "hypogonadism",
+        "direction": "hyperpituitarism -> hypogonadism",
+        "rationale": "This catalog identity is specifically scoped to prolactin-secreting pituitary dysfunction. In men with prolactinoma, elevated prolactin can suppress the hypothalamic-pituitary-gonadal axis and larger tumors can additionally impair gonadotroph function by mass effect, producing hypogonadotropic hypogonadism. This supports an endocrine secondary pathway when hyperprolactinemia/prolactinoma and biochemical-clinical hypogonadism are documented with compatible chronology; it does not justify generalizing the relationship to unrelated forms of hyperpituitarism or attributing every low testosterone result to prolactin excess.",
+        "rationaleHash": "5910b1137da16caf413e26cbc49ff23f3d310bb7d640c811a9ef64fb79fb4dc9",
+        "evidenceGaps": [
+          "Serial prolactin results and pituitary imaging or other records establishing prolactin-secreting pituitary dysfunction",
+          "Symptoms/signs plus repeated biochemical testing confirming hypogonadism",
+          "LH, FSH, testosterone and other clinically relevant pituitary-hormone testing",
+          "Treatment history and gonadal-axis response after prolactin control or tumor therapy",
+          "Endocrinology assessment of alternative causes and the individual endocrine relationship"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "This catalog identity is specifically scoped to prolactin-secreting pituitary dysfunction. In men with prolactinoma, elevated prolactin can suppress the hypothalamic-pituitary-gonadal axis and larger tumors can additionally impair gonadotroph function by mass effect, producing hypogonadotropic hypogonadism. This supports an endocrine secondary pathway when hyperprolactinemia/prolactinoma and biochemical-clinical hypogonadism are documented with compatible chronology; it does not justify generalizing the relationship to unrelated forms of hyperpituitarism or attributing every low testosterone result to prolactin excess.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-hypertension-to-chronic-kidney-disease",
+        "primaryId": "hypertension",
+        "targetId": "chronic-kidney-disease",
+        "direction": "hypertension -> chronic-kidney-disease",
+        "rationale": "Sustained high blood pressure is an established risk factor for kidney disease and can participate in a hypertensive target-organ-damage pathway, but chronic kidney disease is etiologically heterogeneous and can also worsen blood pressure. The 2025 AHA/ACC high-blood-pressure guideline identifies chronic kidney disease among conditions whose development is associated with high blood pressure and addresses hypertension treatment in CKD. Individual review therefore requires renal chronology, albuminuria/eGFR patterns, duration and severity of hypertension, and competing renal causes rather than assuming every CKD diagnosis is caused by hypertension.",
+        "rationaleHash": "e925526151f448abcfa552d7e1418c6868de3891b48c729cb29faa991fbec9f1",
+        "evidenceGaps": [
+          "Longitudinal blood-pressure history and antihypertensive treatment records",
+          "Serial creatinine/eGFR and urine albumin or protein measurements",
+          "Formal CKD diagnosis, stage, and nephrology assessment of etiology when available",
+          "Evaluation for diabetes, glomerular, obstructive, hereditary, medication/toxin, and other competing renal causes",
+          "Clinician assessment of the individual hypertension-to-kidney chronology"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Sustained high blood pressure is an established risk factor for kidney disease and can participate in a hypertensive target-organ-damage pathway, but chronic kidney disease is etiologically heterogeneous and can also worsen blood pressure. The 2025 AHA/ACC high-blood-pressure guideline identifies chronic kidney disease among conditions whose development is associated with high blood pressure and addresses hypertension treatment in CKD. Individual review therefore requires renal chronology, albuminuria/eGFR patterns, duration and severity of hypertension, and competing renal causes rather than assuming every CKD diagnosis is caused by hypertension.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-hypertension-to-ischemic-heart-disease",
+        "primaryId": "hypertension",
+        "targetId": "ischemic-heart-disease",
+        "direction": "hypertension -> ischemic-heart-disease",
+        "rationale": "High blood pressure is an established modifiable risk factor for development of coronary artery disease, but ischemic heart disease is multifactorial. The 2025 AHA/ACC high-blood-pressure guideline places coronary artery disease among cardiovascular diseases whose development is associated with high blood pressure and separately addresses chronic coronary disease with hypertension. This supports focused disease-progression research when longstanding blood-pressure burden precedes coronary disease, while requiring explicit review of lipids, tobacco exposure, diabetes, age/family history, and other atherosclerotic risk factors.",
+        "rationaleHash": "8feb85a4e268ae1e4ea5dabe3c667335c73ccf70ec89ef7d7acc4b4b9e470e3d",
+        "evidenceGaps": [
+          "Longitudinal blood-pressure history and treatment response",
+          "Cardiology diagnosis and objective coronary/ischemia testing",
+          "Lipid, diabetes, tobacco, family-history, and other atherosclerotic risk-factor documentation",
+          "Chronology showing hypertension burden before coronary disease when present",
+          "Clinician assessment of the individual contribution of hypertension relative to competing coronary risk factors"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "High blood pressure is an established modifiable risk factor for development of coronary artery disease, but ischemic heart disease is multifactorial. The 2025 AHA/ACC high-blood-pressure guideline places coronary artery disease among cardiovascular diseases whose development is associated with high blood pressure and separately addresses chronic coronary disease with hypertension. This supports focused disease-progression research when longstanding blood-pressure burden precedes coronary disease, while requiring explicit review of lipids, tobacco exposure, diabetes, age/family history, and other atherosclerotic risk factors.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-hypertension-to-congestive-heart-failure",
+        "primaryId": "hypertension",
+        "targetId": "congestive-heart-failure",
+        "direction": "hypertension -> congestive-heart-failure",
+        "rationale": "Longstanding hypertension is a major antecedent and modifiable risk factor for incident heart failure. The 2025 AHA/ACC high-blood-pressure guideline reports a dose-dependent association between blood-pressure level and heart-failure risk and notes that long-term hypertension treatment reduces that risk. This supports a disease-progression research pathway when cumulative blood-pressure burden predates cardiac remodeling or heart failure, but ischemic disease, valvular disease, cardiomyopathy, arrhythmia, kidney disease, and other causes still require individual review.",
+        "rationaleHash": "18effede01f23135ad2a266bbd121fee5b13cbaca45f25687da202f305e8ea76",
+        "evidenceGaps": [
+          "Longitudinal blood-pressure and antihypertensive treatment history",
+          "Echocardiography and other objective cardiac findings documenting the heart-failure phenotype",
+          "Cardiology assessment of etiology and competing ischemic, valvular, myocardial, rhythm, renal, or toxic causes",
+          "Chronology of ventricular remodeling/heart-failure onset relative to hypertension burden",
+          "Clinician assessment of whether hypertension materially contributed to the individual heart-failure course"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Longstanding hypertension is a major antecedent and modifiable risk factor for incident heart failure. The 2025 AHA/ACC high-blood-pressure guideline reports a dose-dependent association between blood-pressure level and heart-failure risk and notes that long-term hypertension treatment reduces that risk. This supports a disease-progression research pathway when cumulative blood-pressure burden predates cardiac remodeling or heart failure, but ischemic disease, valvular disease, cardiomyopathy, arrhythmia, kidney disease, and other causes still require individual review.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-hypertension-to-erectile-dysfunction",
+        "primaryId": "hypertension",
+        "targetId": "erectile-dysfunction",
+        "direction": "hypertension -> erectile-dysfunction",
+        "rationale": "Population evidence supports an association between hypertension and erectile dysfunction, plausibly within shared vascular/endothelial risk pathways, but that association does not establish an individual causal relationship. The 2025 AHA/ACC multisociety high-blood-pressure guideline's sexual-dysfunction section describes sexual dysfunction as frequent in people with hypertension and notes shared pathways involving impaired vascular function and atherosclerosis alongside common risk factors. Medication-specific erectile effects remain a separate question requiring drug-class and chronology review; individual review should distinguish vascular risk, comorbid diabetes/dyslipidemia/tobacco exposure, endocrine or neurologic causes, psychogenic contributors, and medication chronology.",
+        "rationaleHash": "5d7fa245af6010dee0e4b0adabc2d7d072bd334ae43cd8dd110e412aa341d4cb",
+        "evidenceGaps": [
+          "Current erectile-dysfunction diagnosis and symptom chronology",
+          "Longitudinal hypertension severity and vascular-risk history",
+          "Diabetes, lipid, tobacco, endocrine, neurologic, pelvic/urologic, and mental-health contributors",
+          "Medication history if a treatment-related theory is separately being considered",
+          "Clinician assessment distinguishing population association from the likely contributors in the individual case"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Population evidence supports an association between hypertension and erectile dysfunction, plausibly within shared vascular/endothelial risk pathways, but that association does not establish an individual causal relationship. The 2025 AHA/ACC multisociety high-blood-pressure guideline's sexual-dysfunction section describes sexual dysfunction as frequent in people with hypertension and notes shared pathways involving impaired vascular function and atherosclerosis alongside common risk factors. Medication-specific erectile effects remain a separate question requiring drug-class and chronology review; individual review should distinguish vascular risk, comorbid diabetes/dyslipidemia/tobacco exposure, endocrine or neurologic causes, psychogenic contributors, and medication chronology.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-hypertensive-heart-disease-to-congestive-heart-failure",
+        "primaryId": "hypertensive-heart-disease",
+        "targetId": "congestive-heart-failure",
+        "direction": "hypertensive-heart-disease -> congestive-heart-failure",
+        "rationale": "Hypertensive heart disease can include left-ventricular hypertrophy, fibrosis, and diastolic or systolic dysfunction that progress to clinical heart failure in some patients. The relationship still requires case-specific evidence that the documented hypertensive cardiac remodeling preceded and materially contributed to the individual's heart-failure syndrome, with ischemic, valvular, cardiomyopathic, rhythm-related, renal, and pulmonary causes addressed rather than assumed away.",
+        "rationaleHash": "1951e96d72ff9ac8c0180f9935007b6342def0445b706f2617f32b53d2dc4ee0",
+        "evidenceGaps": [
+          "Cardiology records documenting hypertensive cardiac remodeling or dysfunction rather than hypertension alone",
+          "Objective heart-failure evidence such as echocardiography, cardiac MRI, natriuretic peptides, or documented congestion",
+          "Medical opinion addressing chronology, competing etiologies, and individual causation or aggravation"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Hypertensive heart disease can include left-ventricular hypertrophy, fibrosis, and diastolic or systolic dysfunction that progress to clinical heart failure in some patients. The relationship still requires case-specific evidence that the documented hypertensive cardiac remodeling preceded and materially contributed to the individual's heart-failure syndrome, with ischemic, valvular, cardiomyopathic, rhythm-related, renal, and pulmonary causes addressed rather than assumed away.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-hypogonadism-to-osteoporosis",
+        "primaryId": "hypogonadism",
+        "targetId": "osteoporosis",
+        "direction": "hypogonadism -> osteoporosis",
+        "rationale": "Confirmed male hypogonadism/testosterone deficiency is clinically associated with bone loss and can warrant formal osteoporosis and fracture-risk evaluation. The European Academy of Andrology bone-health guideline states that testosterone deficiency may be clearly associated with bone loss and frailty, recommends complete bone-health assessment and DXA in men with confirmed clinical hypogonadism, and notes that evidence that testosterone replacement prevents fractures is lacking. This mapping therefore supports a bounded hypogonadism-to-bone-loss/osteoporosis research pathway, not an assumption that every case of osteoporosis is caused by androgen deficiency or that testosterone therapy will prevent fractures.",
+        "rationaleHash": "6d7ffedc7a40c6299f7133aa3b6737f6ffd6bf80b4b990d553149b8dbbdb3239",
+        "evidenceGaps": [
+          "Clinical and biochemical documentation confirming hypogonadism and duration",
+          "DXA results and fracture-risk/vertebral-fracture assessment when clinically indicated",
+          "Bone-health laboratory evaluation and longitudinal bone-density records",
+          "Medication and treatment history, including glucocorticoids and androgen-replacement therapy",
+          "Clinician assessment of competing causes of osteoporosis and the individual's chronology"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Confirmed male hypogonadism/testosterone deficiency is clinically associated with bone loss and can warrant formal osteoporosis and fracture-risk evaluation. The European Academy of Andrology bone-health guideline states that testosterone deficiency may be clearly associated with bone loss and frailty, recommends complete bone-health assessment and DXA in men with confirmed clinical hypogonadism, and notes that evidence that testosterone replacement prevents fractures is lacking. This mapping therefore supports a bounded hypogonadism-to-bone-loss/osteoporosis research pathway, not an assumption that every case of osteoporosis is caused by androgen deficiency or that testosterone therapy will prevent fractures.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-hypoparathyroidism-to-kidney-stones",
+        "primaryId": "hypoparathyroidism",
+        "targetId": "kidney-stones",
+        "direction": "hypoparathyroidism -> kidney-stones",
+        "rationale": "Chronic hypoparathyroidism is associated with renal complications including nephrolithiasis and nephrocalcinosis, but the relationship can reflect both the underlying calcium-phosphate disorder and its long-term conventional calcium/active-vitamin-D treatment context. A 2022 systematic review supporting the international guideline program identified nephrocalcinosis/nephrolithiasis among the complications probably associated with chronic hypoparathyroidism. This is an association-focused research relationship, not an automatic causal attribution of an individual's kidney stones to hypoparathyroidism.",
+        "rationaleHash": "066e8d2e4d95cd9ff2974b47d48dfe2e30f8ecbeb03ec6e84713059bc9bda4d7",
+        "evidenceGaps": [
+          "Documentation confirming chronic hypoparathyroidism and its etiology/duration",
+          "Longitudinal calcium, phosphate, PTH, magnesium, creatinine/eGFR, and vitamin D results",
+          "Calcium and active-vitamin-D treatment history, doses, and duration",
+          "24-hour urine calcium and other metabolic stone testing when available",
+          "Renal imaging, stone chronology/composition, and clinician review of alternative stone causes"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Chronic hypoparathyroidism is associated with renal complications including nephrolithiasis and nephrocalcinosis, but the relationship can reflect both the underlying calcium-phosphate disorder and its long-term conventional calcium/active-vitamin-D treatment context. A 2022 systematic review supporting the international guideline program identified nephrocalcinosis/nephrolithiasis among the complications probably associated with chronic hypoparathyroidism. This is an association-focused research relationship, not an automatic causal attribution of an individual's kidney stones to hypoparathyroidism.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-implantable-cardiac-pacemaker-to-heart-valve-disorders",
+        "primaryId": "implantable-cardiac-pacemaker",
+        "targetId": "heart-valve-disorders",
+        "direction": "implantable-cardiac-pacemaker -> heart-valve-disorders",
+        "rationale": "Permanent pacemaker implantation with a transvenous lead crossing the tricuspid valve is associated with new or worsening tricuspid regurgitation in systematic-review and meta-analytic evidence. Lead interference is an identified risk factor. This supports a device-related treatment-complication pathway only when the individual has a trans-tricuspid lead and objective post-implant valvular worsening; it does not establish that every pacemaker causes a valve disorder and should not be generalized to leadless or epicardial systems without applicable evidence.",
+        "rationaleHash": "02e818a6b3277fedc61fbadfc68a17bb2c94070701906d2af0ddbd725b59fab7",
+        "evidenceGaps": [
+          "Pacemaker operative/device records identifying lead type and route",
+          "Pre-implant and post-implant echocardiography documenting tricuspid-regurgitation severity",
+          "Imaging or electrophysiology/cardiology evidence addressing lead-valve interaction where suspected",
+          "Clinical chronology and assessment of competing causes of tricuspid regurgitation",
+          "Qualified cardiology opinion addressing the individual device-related relationship"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Permanent pacemaker implantation with a transvenous lead crossing the tricuspid valve is associated with new or worsening tricuspid regurgitation in systematic-review and meta-analytic evidence. Lead interference is an identified risk factor. This supports a device-related treatment-complication pathway only when the individual has a trans-tricuspid lead and objective post-implant valvular worsening; it does not establish that every pacemaker causes a valve disorder and should not be generalized to leadless or epicardial systems without applicable evidence.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-insomnia-to-depressive-disorder",
+        "primaryId": "insomnia",
+        "targetId": "depressive-disorder",
+        "direction": "insomnia -> depressive-disorder",
+        "rationale": "Prospective population evidence supports a temporal association between insomnia and later major depressive disorder. In a population-based cohort restricted to participants without prior major depressive disorder, insomnia symptoms were associated with incident major depressive disorder over eight years of follow-up. This supports focused temporal-association research when a clinically established insomnia disorder clearly precedes a separately diagnosed depressive disorder, but the cohort evidence does not establish individual causation, does not show that every person with insomnia will develop depression, and does not replace a Veteran-specific medical assessment of competing psychiatric, sleep, pain, medication, substance-use, and medical contributors.",
+        "rationaleHash": "df11faaefb701ff495ab014cad170cd7d31438e2bbd04013c39695565d139441",
+        "evidenceGaps": [
+          "Sleep or mental-health documentation establishing an independent insomnia diagnosis and its onset",
+          "Qualified depressive-disorder diagnosis and chronology relative to insomnia",
+          "Longitudinal records describing insomnia severity, persistence, treatment, and depressive course",
+          "Assessment of pre-existing psychiatric disorders, sleep apnea, chronic pain, medications, substance use, and other competing causes",
+          "Qualified medical or mental-health opinion addressing causation or aggravation in the individual case"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Prospective population evidence supports a temporal association between insomnia and later major depressive disorder. In a population-based cohort restricted to participants without prior major depressive disorder, insomnia symptoms were associated with incident major depressive disorder over eight years of follow-up. This supports focused temporal-association research when a clinically established insomnia disorder clearly precedes a separately diagnosed depressive disorder, but the cohort evidence does not establish individual causation, does not show that every person with insomnia will develop depression, and does not replace a Veteran-specific medical assessment of competing psychiatric, sleep, pain, medication, substance-use, and medical contributors.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-interstitial-lung-disease-to-sleep-apnea",
+        "primaryId": "interstitial-lung-disease",
+        "targetId": "sleep-apnea",
+        "direction": "interstitial-lung-disease -> sleep-apnea",
+        "rationale": "Obstructive sleep apnea is frequently identified in cohorts with interstitial lung disease, but the available meta-analysis is prevalence evidence and does not establish that ILD causes or aggravates OSA in an individual. A systematic review and meta-analysis of 10 studies involving 569 patients with ILD found OSA in 61% and described the result as preliminary evidence of high OSA prevalence in ILD. This mapping therefore remains association-focused and requires sleep-study confirmation, ILD phenotype/severity, chronology, body-habitus and upper-airway risk factors, medication context, and specialist assessment before any individual secondary theory is advanced.",
+        "rationaleHash": "f2de9695fff880d5863b2ae54826a407e86915d87a4f87696b60015ce5029feb",
+        "evidenceGaps": [
+          "Polysomnography or validated sleep-study documentation confirming OSA and severity",
+          "Pulmonology documentation establishing the ILD subtype, severity, physiology, and chronology",
+          "OSA chronology relative to ILD onset/progression",
+          "BMI/weight trajectory, craniofacial/upper-airway factors, age, smoking, sedating medication, and other OSA risk factors",
+          "Pulmonary/sleep specialist assessment distinguishing coexistence from individual causation or aggravation"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Obstructive sleep apnea is frequently identified in cohorts with interstitial lung disease, but the available meta-analysis is prevalence evidence and does not establish that ILD causes or aggravates OSA in an individual. A systematic review and meta-analysis of 10 studies involving 569 patients with ILD found OSA in 61% and described the result as preliminary evidence of high OSA prevalence in ILD. This mapping therefore remains association-focused and requires sleep-study confirmation, ILD phenotype/severity, chronology, body-habitus and upper-airway risk factors, medication context, and specialist assessment before any individual secondary theory is advanced.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-ischemic-heart-disease-to-respiratory-cancer",
+        "primaryId": "ischemic-heart-disease",
+        "targetId": "respiratory-cancer",
+        "direction": "ischemic-heart-disease -> respiratory-cancer",
+        "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Apply to incident lung cancer after established coronary artery disease/ischemic heart disease; account especially for smoking and occupational/environmental exposures. Cohort meta-analysis supports association with lung cancer, not all respiratory malignancies; shared risk factors remain major competing explanations. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "rationaleHash": "0e7e884b0dcf05a3784ea96121b6a80756b87b5c6dd191b8f9b4001fd2f6d7b5",
+        "evidenceGaps": [
+          "Independent diagnoses of Coronary Artery Disease / Ischemic Heart Disease and Lung Cancer / Tracheal Cancer / Bronchial Cancer",
+          "Chronology compatible with the bounded source proposition",
+          "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+          "Qualified clinical opinion before using population-level evidence as an individual nexus"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Apply to incident lung cancer after established coronary artery disease/ischemic heart disease; account especially for smoking and occupational/environmental exposures. Cohort meta-analysis supports association with lung cancer, not all respiratory malignancies; shared risk factors remain major competing explanations. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-laryngeal-cancer-to-aphonia",
+        "primaryId": "laryngeal-cancer",
+        "targetId": "aphonia",
+        "direction": "laryngeal-cancer -> aphonia",
+        "rationale": "Aphonia can occur as a treatment complication after total laryngectomy and tracheoesophageal voice-restoration procedures used in laryngeal-cancer care. Aphonia-specific postoperative series document a subset of treated patients who remained aphonic after surgery. This mapping applies only when the individual underwent documented total laryngectomy for laryngeal cancer and has separately documented aphonia. Laryngeal cancer itself, loss of the natural laryngeal voice source, dysphonia, alaryngeal speech, generic voice handicap, or total laryngectomy without documented aphonia is not sufficient.",
+        "rationaleHash": "d1384adec47cf53cc42e331537ec184a0f8797b39240390ba881fd300dd968b1",
+        "evidenceGaps": [
+          "Oncology and operative records confirming total laryngectomy for laryngeal cancer",
+          "ENT and speech-language pathology documentation defining the postoperative phenotype",
+          "Separate documentation of aphonia and its duration",
+          "Voice-prosthesis/TEP history and rehabilitation response when applicable",
+          "Assessment of structural, prosthetic, neuromuscular, radiation-related, and other competing explanations"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Aphonia can occur as a treatment complication after total laryngectomy and tracheoesophageal voice-restoration procedures used in laryngeal-cancer care. Aphonia-specific postoperative series document a subset of treated patients who remained aphonic after surgery. This mapping applies only when the individual underwent documented total laryngectomy for laryngeal cancer and has separately documented aphonia. Laryngeal cancer itself, loss of the natural laryngeal voice source, dysphonia, alaryngeal speech, generic voice handicap, or total laryngectomy without documented aphonia is not sufficient.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-migraine-headaches-to-depressive-disorder",
+        "primaryId": "migraine-headaches",
+        "targetId": "depressive-disorder",
+        "direction": "migraine-headaches -> depressive-disorder",
+        "rationale": "Prospective cohort evidence supports a temporal association between migraine and later depression. In a large cohort of women without depression at baseline, active migraine with aura, active migraine without aura, and past migraine were each associated with increased incident depression during long-term follow-up, with higher attack frequency associated with greater risk. This supports focused temporal-association research when a documented migraine disorder predates a separately diagnosed depressive disorder and migraine burden plausibly contributes to functional or psychological deterioration. The evidence does not establish individual causation, is not proof that depression is secondary to migraine in every patient, and should be interpreted with the individual's psychiatric history, headache burden, treatment, sleep, pain, and other competing contributors.",
+        "rationaleHash": "274cfb5e3127e39ed83df30bf789522aaa2e8240cd088b926f92b02e9766e55e",
+        "evidenceGaps": [
+          "Neurology or headache documentation confirming migraine phenotype, onset, frequency, severity, and longitudinal treatment",
+          "Qualified depressive-disorder diagnosis and chronology relative to migraine onset and burden",
+          "Documentation of migraine-related occupational, social, sleep, and functional effects",
+          "Assessment of pre-existing psychiatric illness, other chronic pain, sleep disorders, medications, substance use, and psychosocial contributors",
+          "Qualified medical or mental-health opinion distinguishing population-level association from individual causation or aggravation"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Prospective cohort evidence supports a temporal association between migraine and later depression. In a large cohort of women without depression at baseline, active migraine with aura, active migraine without aura, and past migraine were each associated with increased incident depression during long-term follow-up, with higher attack frequency associated with greater risk. This supports focused temporal-association research when a documented migraine disorder predates a separately diagnosed depressive disorder and migraine burden plausibly contributes to functional or psychological deterioration. The evidence does not establish individual causation, is not proof that depression is secondary to migraine in every patient, and should be interpreted with the individual's psychiatric history, headache burden, treatment, sleep, pain, and other competing contributors.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-mild-tbi-to-post-traumatic-headache",
+        "primaryId": "mild-tbi",
+        "targetId": "post-traumatic-headache",
+        "direction": "mild-tbi -> post-traumatic-headache",
+        "rationale": "Require documented mild traumatic brain injury plus a new headache developing within the ICHD-3 temporal attribution window. For core ICHD-3 publication, headache onset should be within 7 days after injury, regaining consciousness, or discontinuation of medication that impaired the ability to sense/report headache. Persistent subtype requires duration greater than 3 months.",
+        "rationaleHash": "9bba5b9e166b64cfcff5c8017df52f9291cbfe3a07f8883ef0adff015986da1d",
+        "evidenceGaps": [
+          "Neurology or headache-specialist diagnosis distinguishing migraine from other post-traumatic headache phenotypes",
+          "Headache onset chronology relative to the mild TBI, including the temporal criteria used for post-traumatic headache",
+          "Headache frequency, duration, associated migraine features, and longitudinal treatment records",
+          "Pre-injury headache or migraine history and other competing headache causes",
+          "Clinician assessment addressing whether the individual's diagnosed migraine/post-traumatic headache phenotype is attributable to the documented mTBI"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Require documented mild traumatic brain injury plus a new headache developing within the ICHD-3 temporal attribution window. For core ICHD-3 publication, headache onset should be within 7 days after injury, regaining consciousness, or discontinuation of medication that impaired the ability to sense/report headache. Persistent subtype requires duration greater than 3 months.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-ocd-to-migraine-headaches",
+        "primaryId": "ocd",
+        "targetId": "migraine-headaches",
+        "direction": "ocd -> migraine-headaches",
+        "rationale": "Cross-sectional population research has reported a significant association between migraine and obsessive-compulsive disorder, but it does not establish directionality and does not show that OCD caused or aggravated an individual veteran's migraine disorder. The application should therefore keep this draft mapping association-focused and require case-specific diagnosis, chronology, competing-cause assessment, and medical opinion before any individual secondary theory is advanced.",
+        "rationaleHash": "ea368bc5fbf4712c090ed35623942ca4d45dc9d14cf7dd5c6016ffbce0a40d9d",
+        "evidenceGaps": [
+          "Clinician-documented migraine diagnosis and headache history",
+          "Documentation establishing the OCD diagnosis, severity and timing relative to migraine onset",
+          "Neurology or other qualified medical opinion addressing causation or aggravation in the individual case"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Cross-sectional population research has reported a significant association between migraine and obsessive-compulsive disorder, but it does not establish directionality and does not show that OCD caused or aggravated an individual veteran's migraine disorder. The application should therefore keep this draft mapping association-focused and require case-specific diagnosis, chronology, competing-cause assessment, and medical opinion before any individual secondary theory is advanced.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-osteitis-deformans-to-osteoarthritis",
+        "primaryId": "osteitis-deformans",
+        "targetId": "osteoarthritis",
+        "direction": "osteitis-deformans -> osteoarthritis",
+        "rationale": "Secondary osteoarthritis is a recognized articular complication of Paget disease of bone, particularly where Paget-related bone enlargement or deformity alters mechanics at an adjacent joint. Consensus and review literature identify secondary osteoarthritis among important Paget complications. This supports focused research when osteoarthritis developed in a joint anatomically related to documented Paget involvement; it does not establish that Paget disease caused osteoarthritis at an unrelated joint or in an individual case without site-specific chronology and competing-risk review.",
+        "rationaleHash": "8e0252d2a9e42ffd3b69491da83e3db5ed51070ec0d6f348d293fa8a8549a32d",
+        "evidenceGaps": [
+          "Imaging and specialist records establishing Paget disease and the specific bones involved",
+          "Imaging confirming osteoarthritis in the anatomically related joint",
+          "Chronology of Paget-related deformity and osteoarthritis onset or progression",
+          "Documentation of trauma, alignment, age, weight, occupation, inflammatory disease, and other osteoarthritis risk factors",
+          "Qualified orthopedic or metabolic-bone assessment addressing the site-specific relationship in the individual case"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Secondary osteoarthritis is a recognized articular complication of Paget disease of bone, particularly where Paget-related bone enlargement or deformity alters mechanics at an adjacent joint. Consensus and review literature identify secondary osteoarthritis among important Paget complications. This supports focused research when osteoarthritis developed in a joint anatomically related to documented Paget involvement; it does not establish that Paget disease caused osteoarthritis at an unrelated joint or in an individual case without site-specific chronology and competing-risk review.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-osteoporosis-to-trigeminal-neuralgia",
+        "primaryId": "osteoporosis",
+        "targetId": "trigeminal-neuralgia",
+        "direction": "osteoporosis -> trigeminal-neuralgia",
+        "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require osteoporosis in a source-relevant older-adult population (>50 years in the cited cohort) before incident, separately established trigeminal neuralgia. Observational Taiwanese cohort in adults >50 years; temporal association only, with uncertain generalizability outside the studied population and no individual causal claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "rationaleHash": "441384c1c09d476ad57d743c314d59768b044dd937aeeb93e2aca0244e6e8733",
+        "evidenceGaps": [
+          "Independent diagnoses of Osteoporosis, Residuals of and Trigeminal Neuralgia (Tic Douloureux)",
+          "Chronology compatible with the bounded source proposition",
+          "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+          "Qualified clinical opinion before using population-level evidence as an individual nexus"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require osteoporosis in a source-relevant older-adult population (>50 years in the cited cohort) before incident, separately established trigeminal neuralgia. Observational Taiwanese cohort in adults >50 years; temporal association only, with uncertain generalizability outside the studied population and no individual causal claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-ovarian-cancer-to-peripheral-neuropathy",
+        "primaryId": "ovarian-cancer",
+        "targetId": "peripheral-neuropathy",
+        "direction": "ovarian-cancer -> peripheral-neuropathy",
+        "rationale": "Paclitaxel-containing chemotherapy used to treat ovarian cancer can produce clinically significant peripheral sensory neuropathy. In the randomized MITO-7 phase 3 ovarian-cancer trial, grade 2 or worse neuropathy occurred in both carboplatin-plus-paclitaxel schedules, with a lower frequency in the weekly schedule than the every-three-weeks schedule. This supports a treatment-complication pathway only when the individual received a documented neurotoxic ovarian-cancer regimen and a compatible peripheral neuropathy began or materially worsened afterward; ovarian cancer itself, surgery alone, or a non-neurotoxic treatment history should not be treated as sufficient evidence of causation.",
+        "rationaleHash": "c21c0c90476d05a86036dc0723760644e37d98dfeed9aaa70dcffb1465e59a69",
+        "evidenceGaps": [
+          "Oncology records identifying the exact chemotherapy regimen, dose, schedule, and cumulative exposure",
+          "Baseline neurologic status before chemotherapy",
+          "Documentation of neuropathy onset, course, severity, and treatment-response chronology",
+          "Neurologic examination and electrodiagnostic testing when clinically indicated",
+          "Assessment of competing causes of peripheral neuropathy"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Paclitaxel-containing chemotherapy used to treat ovarian cancer can produce clinically significant peripheral sensory neuropathy. In the randomized MITO-7 phase 3 ovarian-cancer trial, grade 2 or worse neuropathy occurred in both carboplatin-plus-paclitaxel schedules, with a lower frequency in the weekly schedule than the every-three-weeks schedule. This supports a treatment-complication pathway only when the individual received a documented neurotoxic ovarian-cancer regimen and a compatible peripheral neuropathy began or materially worsened afterward; ovarian cancer itself, surgery alone, or a non-neurotoxic treatment history should not be treated as sufficient evidence of causation.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-pcl-injury-to-osteoarthritis",
+        "primaryId": "pcl-injury",
+        "targetId": "osteoarthritis",
+        "direction": "pcl-injury -> osteoarthritis",
+        "rationale": "A systematic review of isolated PCL injuries reports subsequent articular degeneration and osteoarthritis in both operative and nonoperative cohorts, with lower observed osteoarthritis frequency after reconstruction in the included evidence. Individual review should confirm osteoarthritis in the injured knee and examine instability, associated joint damage, treatment history, alignment, age, activity, and other osteoarthritis risk factors rather than inferring an individual relationship from group-level outcomes.",
+        "rationaleHash": "8a439571e34c2510e58906579fe04c918e946d63364bd50a00f93977db58155a",
+        "evidenceGaps": [
+          "Records establishing the PCL injury and affected knee",
+          "Longitudinal imaging and orthopedic records documenting osteoarthritis after the injury",
+          "Instability, associated meniscal/cartilage injury, treatment, reinjury, alignment, and other osteoarthritis risk-factor history",
+          "Orthopedic assessment addressing chronology and competing explanations"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "A systematic review of isolated PCL injuries reports subsequent articular degeneration and osteoarthritis in both operative and nonoperative cohorts, with lower observed osteoarthritis frequency after reconstruction in the included evidence. Individual review should confirm osteoarthritis in the injured knee and examine instability, associated joint damage, treatment history, alignment, age, activity, and other osteoarthritis risk factors rather than inferring an individual relationship from group-level outcomes.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-pituitary-neoplasm-to-visual-impairment",
+        "primaryId": "pituitary-neoplasm",
+        "targetId": "visual-impairment",
+        "direction": "pituitary-neoplasm -> visual-impairment",
+        "rationale": "The cited systematic-review evidence specifically concerns nonfunctioning pituitary macroadenomas with documented optic-chiasm compression. A pituitary macroadenoma—or another pituitary neoplasm only when the individual record objectively documents comparable optic-chiasm or optic-pathway compression—can produce clinically important visual-field and visual-acuity impairment through mass effect. This mapping therefore requires documented optic-chiasm/optic-pathway involvement and does not imply that a small pituitary lesion without such compression causes visual impairment.",
+        "rationaleHash": "14d7e18a57e4a6a8ac91faa0e84a7f90a0ca5f9efd6e302569fdd9f9d8ff4af9",
+        "evidenceGaps": [
+          "Pituitary MRI or other imaging documenting lesion size, suprasellar extension, and optic-chiasm/optic-pathway relationship",
+          "Formal visual-field and visual-acuity testing",
+          "Neuro-ophthalmology, ophthalmology, neurosurgery, or endocrinology assessment of the anatomic relationship",
+          "Clinical chronology of tumor detection, visual symptoms, and treatment response",
+          "Assessment of competing causes of visual-field or visual-acuity impairment"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "The cited systematic-review evidence specifically concerns nonfunctioning pituitary macroadenomas with documented optic-chiasm compression. A pituitary macroadenoma—or another pituitary neoplasm only when the individual record objectively documents comparable optic-chiasm or optic-pathway compression—can produce clinically important visual-field and visual-acuity impairment through mass effect. This mapping therefore requires documented optic-chiasm/optic-pathway involvement and does not imply that a small pituitary lesion without such compression causes visual impairment.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-ptosis-to-visual-impairment",
+        "primaryId": "ptosis",
+        "targetId": "visual-impairment",
+        "direction": "ptosis -> visual-impairment",
+        "rationale": "Upper-eyelid ptosis can mechanically obstruct the superior visual field and produce functionally significant visual impairment. Evidence-based eyelid-surgery guidance specifically addresses upper visual-field impairment related to ptosis and emphasizes documentation of the underlying cause and functional deficit. This supports a ptosis-to-visual-impairment pathway only when formal or clinically appropriate testing demonstrates a field deficit attributable to the drooping eyelid; ptosis without objective functional obstruction should not be treated as visual impairment by default.",
+        "rationaleHash": "198a19b1d8323c31d21842041b8bd829c8540e1c861329c00fa4788974f61cef",
+        "evidenceGaps": [
+          "Ophthalmology or oculoplastic examination documenting ptosis severity and laterality",
+          "Objective visual-field or other accepted functional testing showing impairment attributable to eyelid position",
+          "Taped/elevated-lid comparison or postoperative functional response when available",
+          "Assessment of competing ocular and neurologic causes of the visual deficit",
+          "Clinician opinion linking the documented functional impairment to the individual ptosis"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Upper-eyelid ptosis can mechanically obstruct the superior visual field and produce functionally significant visual impairment. Evidence-based eyelid-surgery guidance specifically addresses upper visual-field impairment related to ptosis and emphasizes documentation of the underlying cause and functional deficit. This supports a ptosis-to-visual-impairment pathway only when formal or clinically appropriate testing demonstrates a field deficit attributable to the drooping eyelid; ptosis without objective functional obstruction should not be treated as visual impairment by default.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-ptsd-to-sleep-apnea",
+        "primaryId": "ptsd",
+        "targetId": "sleep-apnea",
+        "direction": "ptsd -> sleep-apnea",
+        "rationale": "PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
+        "rationaleHash": "f984f130f14046dce1e9f1e4077fbffd4d7afdf338d624432ce546406db0ffbd",
+        "evidenceGaps": [
+          "Sleep study (polysomnography or qualifying home sleep test) confirming OSA diagnosis",
+          "Medical nexus opinion addressing PTSD, treatment/medications, obesity if applicable, and causation or aggravation",
+          "If relying on obesity as an intermediate step, evidence addressing baseline weight, change in weight, and the medical relationship to OSA"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-ptsd-to-migraine-headaches",
+        "primaryId": "ptsd",
+        "targetId": "migraine-headaches",
+        "direction": "ptsd -> migraine-headaches",
+        "rationale": "PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
+        "rationaleHash": "522b98c50e9e88b23b5d829183a8860cd2fc6ab0054ed969b2b34dc439882540",
+        "evidenceGaps": [
+          "Headache log (frequency, duration, severity)",
+          "Neurological or medical nexus opinion addressing causation or aggravation in the individual case"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-ptsd-to-erectile-dysfunction",
+        "primaryId": "ptsd",
+        "targetId": "erectile-dysfunction",
+        "direction": "ptsd -> erectile-dysfunction",
+        "rationale": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. A medication-related secondary theory remains case-specific: the record must establish that the relevant SSRI was actually prescribed for PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed.",
+        "rationaleHash": "3a53bdf7a35fc07b84f72502acc90097394902402456b2fbedb75bc3a4908a71",
+        "evidenceGaps": [
+          "Prescription records showing the relevant SSRI exposure and timing",
+          "Urology or primary care diagnosis of erectile dysfunction",
+          "Medical opinion addressing medication exposure, alternative causes, and causation or aggravation"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. A medication-related secondary theory remains case-specific: the record must establish that the relevant SSRI was actually prescribed for PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-pulmonary-hypertension-to-congestive-heart-failure",
+        "primaryId": "pulmonary-hypertension",
+        "targetId": "congestive-heart-failure",
+        "direction": "pulmonary-hypertension -> congestive-heart-failure",
+        "rationale": "Pulmonary hypertension is heterogeneous, so this relationship is limited to a documented pulmonary-vascular or pre-capillary phenotype—especially pulmonary arterial hypertension—in which elevated pulmonary vascular load precedes right-ventricular dysfunction and clinically diagnosed right-sided heart failure. The ESC/ERS pulmonary-hypertension guideline describes symptoms as linked to right-ventricular dysfunction and provides a dedicated advanced right-ventricular-failure pathway for patients with pulmonary hypertension. This mapping does not apply when pulmonary hypertension is secondary to pre-existing left-heart failure (group 2 PH), where the direction of the relationship may be reversed, and it does not establish that every diagnosis coded as congestive heart failure was caused by pulmonary hypertension.",
+        "rationaleHash": "5c0f1eb9dfa63f67c89b8b424dea86d806890bac3993d772c06db97d68c7af91",
+        "evidenceGaps": [
+          "Pulmonary-hypertension classification and haemodynamic documentation",
+          "Objective right-ventricular structure/function and heart-failure findings",
+          "Chronology establishing pulmonary hypertension before the claimed downstream right-sided heart failure",
+          "Evaluation for left-heart disease and other competing causes of heart failure",
+          "Specialist assessment addressing the individual's direction of disease progression"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Pulmonary hypertension is heterogeneous, so this relationship is limited to a documented pulmonary-vascular or pre-capillary phenotype—especially pulmonary arterial hypertension—in which elevated pulmonary vascular load precedes right-ventricular dysfunction and clinically diagnosed right-sided heart failure. The ESC/ERS pulmonary-hypertension guideline describes symptoms as linked to right-ventricular dysfunction and provides a dedicated advanced right-ventricular-failure pathway for patients with pulmonary hypertension. This mapping does not apply when pulmonary hypertension is secondary to pre-existing left-heart failure (group 2 PH), where the direction of the relationship may be reversed, and it does not establish that every diagnosis coded as congestive heart failure was caused by pulmonary hypertension.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-rectal-prolapse-to-fecal-incontinence",
+        "primaryId": "rectal-prolapse",
+        "targetId": "fecal-incontinence",
+        "direction": "rectal-prolapse -> fecal-incontinence",
+        "rationale": "Fecal incontinence is frequently associated with full-thickness rectal prolapse, and prospective cohort evidence shows that continence can improve after prolapse correction, particularly after ventral rectopexy. This supports a clinically relevant prolapse/incontinence association and treatment-response development question when fecal incontinence is objectively documented in temporal and anatomic association with the prolapse; it does not establish that rectal prolapse directly causes or progresses into every continence disorder, because sphincter injury, pelvic-floor dysfunction, neuropathy, stool consistency, prior surgery, and other anorectal disease may independently contribute.",
+        "rationaleHash": "f50ad411936c8454454d5c64a8b0d9638ef0d4e5a4ce5711f37b5467ed151d71",
+        "evidenceGaps": [
+          "Colorectal examination or imaging confirming full-thickness rectal prolapse",
+          "Clinical characterization of fecal incontinence severity and chronology",
+          "Anorectal functional/anatomic testing when clinically indicated",
+          "Pre- and post-repair continence findings when prolapse surgery occurred",
+          "Colorectal opinion addressing competing sphincter, pelvic-floor, neurologic, stool-consistency, and surgical causes"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Fecal incontinence is frequently associated with full-thickness rectal prolapse, and prospective cohort evidence shows that continence can improve after prolapse correction, particularly after ventral rectopexy. This supports a clinically relevant prolapse/incontinence association and treatment-response development question when fecal incontinence is objectively documented in temporal and anatomic association with the prolapse; it does not establish that rectal prolapse directly causes or progresses into every continence disorder, because sphincter injury, pelvic-floor dysfunction, neuropathy, stool consistency, prior surgery, and other anorectal disease may independently contribute.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-retinal-dystrophy-to-visual-impairment",
+        "primaryId": "retinal-dystrophy",
+        "targetId": "visual-impairment",
+        "direction": "retinal-dystrophy -> visual-impairment",
+        "rationale": "Inherited retinal dystrophies are heterogeneous retinal degenerative disorders in which pathogenic retinal dysfunction and photoreceptor loss produce visual-impairment phenotypes such as reduced acuity, progressive visual-field loss, night blindness, color-vision abnormalities, and in advanced disease severe vision loss or blindness. This supports a disease-progression pathway when the individual's retinal-dystrophy diagnosis and objective visual deficit are anatomically and functionally concordant; the broad retinal-dystrophy identity should not be used to attribute unrelated ocular or neurologic visual loss without phenotype-specific evaluation.",
+        "rationaleHash": "83d92eb37c7113721b883bcd5ba54c6fc93e84c1dd2bb18582db88b7f78ad365",
+        "evidenceGaps": [
+          "Retina-specialist documentation of the specific inherited retinal-dystrophy phenotype and, when available, molecular diagnosis",
+          "Objective visual-acuity and visual-field testing",
+          "Retinal imaging and functional testing such as OCT, fundus autofluorescence, and electroretinography as clinically applicable",
+          "Longitudinal records demonstrating the visual course",
+          "Ophthalmology assessment addressing competing causes of visual impairment"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Inherited retinal dystrophies are heterogeneous retinal degenerative disorders in which pathogenic retinal dysfunction and photoreceptor loss produce visual-impairment phenotypes such as reduced acuity, progressive visual-field loss, night blindness, color-vision abnormalities, and in advanced disease severe vision loss or blindness. This supports a disease-progression pathway when the individual's retinal-dystrophy diagnosis and objective visual deficit are anatomically and functionally concordant; the broad retinal-dystrophy identity should not be used to attribute unrelated ocular or neurologic visual loss without phenotype-specific evaluation.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-rheumatoid-arthritis-to-depressive-disorder",
+        "primaryId": "rheumatoid-arthritis",
+        "targetId": "depressive-disorder",
+        "direction": "rheumatoid-arthritis -> depressive-disorder",
+        "rationale": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish that rheumatoid arthritis caused or aggravated an individual's depressive disorder.",
+        "rationaleHash": "0a2f9500bd0fdee539f0edb3d47d2f0f3ef7136f70df6a35e8a57dc65f0b499a",
+        "evidenceGaps": [
+          "Mental health evaluation and diagnosis",
+          "Documentation of chronic pain, functional limitations, and their timing",
+          "Clinical opinion addressing the individual relationship when a secondary theory is asserted"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish that rheumatoid arthritis caused or aggravated an individual's depressive disorder.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-rheumatoid-arthritis-to-gerd",
+        "primaryId": "rheumatoid-arthritis",
+        "targetId": "gerd",
+        "direction": "rheumatoid-arthritis -> gerd",
+        "rationale": "When NSAID treatment for rheumatoid-arthritis pain is documented in the individual record, observational evidence associating NSAID use with GERD symptoms supports a bounded medication-related research pathway. The clinical source does not establish that rheumatoid arthritis itself causes GERD or that an NSAID caused or aggravated an individual veteran's GERD; the actual prescription indication, exposure, chronology, diagnosis, and competing gastrointestinal contributors remain essential.",
+        "rationaleHash": "b1802e30ebd40f4c386dd40592a4c37b0eef87b342a0666aa6cb0b04862769ba",
+        "evidenceGaps": [
+          "Prescription history identifying the specific NSAID exposure, RA indication, dose, duration, and timing",
+          "Documented GERD diagnosis and clinical characterization",
+          "Evaluation of alternative GERD causes and risk factors",
+          "Qualified medical opinion addressing the individual medication-related relationship when asserted"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "When NSAID treatment for rheumatoid-arthritis pain is documented in the individual record, observational evidence associating NSAID use with GERD symptoms supports a bounded medication-related research pathway. The clinical source does not establish that rheumatoid arthritis itself causes GERD or that an NSAID caused or aggravated an individual veteran's GERD; the actual prescription indication, exposure, chronology, diagnosis, and competing gastrointestinal contributors remain essential.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-sleep-apnea-to-hypertension",
+        "primaryId": "sleep-apnea",
+        "targetId": "hypertension",
+        "direction": "sleep-apnea -> hypertension",
+        "rationale": "Obstructive sleep apnea is strongly associated with hypertension, including resistant hypertension, and current systematic-review evidence describes intermittent hypoxia, sympathetic activation, oxidative stress, inflammation, and related mechanisms as contributors to the OSA-hypertension relationship. This supports condition-specific clinical research of the relationship, but it does not by itself establish that OSA caused or aggravated hypertension in an individual veteran; chronology, OSA severity, blood-pressure phenotype, treatment response, and competing hypertension causes still require case-specific review.",
+        "rationaleHash": "9122aed8a0686cf42cbd7e1d73a18f896b6002503c6b81118aaed2cb34bb0c55",
+        "evidenceGaps": [
+          "Sleep study confirming obstructive sleep apnea and documenting severity, oxygen desaturation burden, and treatment history",
+          "Longitudinal blood-pressure records establishing the hypertension phenotype and chronology relative to OSA onset, severity, and treatment",
+          "Assessment of competing hypertension contributors such as obesity, kidney disease, endocrine disease, medications, alcohol use, and family history",
+          "Sleep-medicine, primary-care, or cardiovascular opinion addressing whether the documented OSA materially caused or aggravated hypertension in the individual case"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Obstructive sleep apnea is strongly associated with hypertension, including resistant hypertension, and current systematic-review evidence describes intermittent hypoxia, sympathetic activation, oxidative stress, inflammation, and related mechanisms as contributors to the OSA-hypertension relationship. This supports condition-specific clinical research of the relationship, but it does not by itself establish that OSA caused or aggravated hypertension in an individual veteran; chronology, OSA severity, blood-pressure phenotype, treatment response, and competing hypertension causes still require case-specific review.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-sleep-apnea-to-depressive-disorder",
+        "primaryId": "sleep-apnea",
+        "targetId": "depressive-disorder",
+        "direction": "sleep-apnea -> depressive-disorder",
+        "rationale": "Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so this association should not be converted into an automatic individual causal or aggravation nexus; psychiatric history, sleep-apnea chronology, symptom overlap, treatment response, and alternative contributors remain important.",
+        "rationaleHash": "804fe2c273a49eeb81a1aca5d72251764ebe7a78d63d51c1ec1dbe7c6e316a00",
+        "evidenceGaps": [
+          "Qualified diagnosis of a depressive disorder and documentation distinguishing persistent psychiatric symptoms from sleepiness, fatigue, and concentration symptoms attributable to OSA",
+          "Chronology comparing depressive-symptom onset or worsening with OSA onset, severity, and treatment",
+          "Evaluation of competing psychiatric, medical, medication, substance-use, psychosocial, and sleep-related contributors",
+          "Qualified mental-health or sleep-medicine opinion addressing the individual relationship when secondary causation or aggravation is asserted"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so this association should not be converted into an automatic individual causal or aggravation nexus; psychiatric history, sleep-apnea chronology, symptom overlap, treatment response, and alternative contributors remain important.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-sleep-apnea-to-anxiety-disorder",
+        "primaryId": "sleep-apnea",
+        "targetId": "anxiety-disorder",
+        "direction": "sleep-apnea -> anxiety-disorder",
+        "rationale": "Anxiety symptoms are commonly reported in adults with obstructive sleep apnea, but systematic-review evidence characterizes the OSA-anxiety relationship as probably bidirectional rather than proving that OSA causes an anxiety disorder. The relationship should therefore remain association-focused and require individual diagnostic, chronological, and competing-cause evidence before any secondary-service-connection theory is advanced.",
+        "rationaleHash": "b026004a8de50b37f70d7e125224420c02f7adaa4afacfe0b9410d6ef121cbee",
+        "evidenceGaps": [
+          "Qualified anxiety-disorder diagnosis rather than symptom screening alone",
+          "Chronology comparing anxiety onset or worsening with OSA onset, severity, sleep fragmentation, and treatment",
+          "Evaluation of psychiatric history, medications, substance use, psychosocial stressors, other sleep disorders, and other competing contributors",
+          "Qualified mental-health or sleep-medicine opinion addressing directionality and any claimed individual causation or aggravation"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Anxiety symptoms are commonly reported in adults with obstructive sleep apnea, but systematic-review evidence characterizes the OSA-anxiety relationship as probably bidirectional rather than proving that OSA causes an anxiety disorder. The relationship should therefore remain association-focused and require individual diagnostic, chronological, and competing-cause evidence before any secondary-service-connection theory is advanced.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-social-anxiety-disorder-to-depressive-disorder",
+        "primaryId": "social-anxiety-disorder",
+        "targetId": "depressive-disorder",
+        "direction": "social-anxiety-disorder -> depressive-disorder",
+        "rationale": "Prospective community studies support a temporal association in which social anxiety disorder can precede and is associated with increased subsequent risk of depressive disorders. This supports focused research only when a separately diagnosed social anxiety disorder predates a separately diagnosed depressive disorder. The studies establish population-level temporal risk, not proof of individual causation or aggravation, and require review of psychiatric chronology, diagnostic overlap, treatment, substance use, psychosocial stressors, and other competing contributors.",
+        "rationaleHash": "b078571b0ff7b3ed3d66e0b6bd848245a7415fa8c2ad7580b0d07f8e2d41f8c7",
+        "evidenceGaps": [
+          "Independent documentation of social anxiety disorder diagnosis and onset",
+          "Independent documentation of depressive disorder diagnosis and onset",
+          "Chronology showing social anxiety disorder predating depressive disorder when a secondary theory is explored",
+          "Assessment of pre-existing depression, PTSD, generalized anxiety, other psychiatric illness, substance use, medication effects, and major psychosocial contributors",
+          "Qualified assessment distinguishing population-level temporal association from individual causation or aggravation"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Prospective community studies support a temporal association in which social anxiety disorder can precede and is associated with increased subsequent risk of depressive disorders. This supports focused research only when a separately diagnosed social anxiety disorder predates a separately diagnosed depressive disorder. The studies establish population-level temporal risk, not proof of individual causation or aggravation, and require review of psychiatric chronology, diagnostic overlap, treatment, substance use, psychosocial stressors, and other competing contributors.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-stomach-cancer-to-depressive-disorder",
+        "primaryId": "stomach-cancer",
+        "targetId": "depressive-disorder",
+        "direction": "stomach-cancer -> depressive-disorder",
+        "rationale": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish that stomach cancer caused or aggravated an individual's depressive disorder.",
+        "rationaleHash": "3e2ae1bfecea97e7bd89f979cc2af15fdd9b845db531dfc19886a70698949743",
+        "evidenceGaps": [
+          "Mental health evaluation and diagnosis",
+          "Documentation of chronic pain, functional limitations, and their timing",
+          "Clinical opinion addressing the individual relationship when a secondary theory is asserted"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish that stomach cancer caused or aggravated an individual's depressive disorder.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-syringomyelia-to-charcot-arthropathy",
+        "primaryId": "syringomyelia",
+        "targetId": "charcot-arthropathy",
+        "direction": "syringomyelia -> charcot-arthropathy",
+        "rationale": "Syringomyelia is a recognized cause of neuropathic (Charcot) arthropathy, but the cited systematic review and case series specifically concern syringomyelia-associated Charcot arthropathy of the elbow. This source supports an anatomically correlated elbow/upper-extremity pathway when the syrinx level and sensory or proprioceptive deficits are compatible with the affected joint. It should not be generalized from this source to every joint or to ordinary osteoarthritis, inflammatory arthritis, trauma, infection, or another destructive-joint process.",
+        "rationaleHash": "64a2f93739103de189b9f79be615582bb0614525522e11f678c26d401376bb5c",
+        "evidenceGaps": [
+          "MRI and neurologic records establishing syringomyelia level, extent, and associated sensory or motor findings",
+          "Joint imaging and orthopedic/rheumatology documentation confirming neuropathic or Charcot arthropathy",
+          "Anatomic correlation between syrinx-related neurologic deficits and the affected joint",
+          "Assessment for diabetes, peripheral neuropathy, trauma, infection, inflammatory disease, and other destructive-joint causes",
+          "Qualified neurologic and orthopedic opinion addressing the individual causal relationship"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Syringomyelia is a recognized cause of neuropathic (Charcot) arthropathy, but the cited systematic review and case series specifically concern syringomyelia-associated Charcot arthropathy of the elbow. This source supports an anatomically correlated elbow/upper-extremity pathway when the syrinx level and sensory or proprioceptive deficits are compatible with the affected joint. It should not be generalized from this source to every joint or to ordinary osteoarthritis, inflammatory arthritis, trauma, infection, or another destructive-joint process.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-testicular-cancer-to-hypogonadism",
+        "primaryId": "testicular-cancer",
+        "targetId": "hypogonadism",
+        "direction": "testicular-cancer -> hypogonadism",
+        "rationale": "Testosterone deficiency is a recognized late effect in testicular germ-cell cancer survivors, with treatment-specific risk. A systematic review and meta-analysis found increased odds of testosterone deficiency after standard chemotherapy, non-conventional treatment, and infradiaphragmatic radiotherapy compared with orchiectomy alone. This supports a treatment-complication pathway only when the individual's cancer treatment and post-treatment endocrine findings are documented; the testicular-cancer diagnosis by itself and unilateral orchiectomy alone should not be treated as sufficient evidence that later hypogonadism was caused by cancer treatment.",
+        "rationaleHash": "2d3786db41de38a7b01d9b45a0739f166a5b82b79d83f106fc4b1a0b2dc3e824",
+        "evidenceGaps": [
+          "Oncology and operative records documenting orchiectomy laterality and adjuvant treatment",
+          "Longitudinal morning testosterone and gonadotropin testing",
+          "Symptoms and chronology compatible with hypogonadism",
+          "Assessment of pre-treatment gonadal function and competing endocrine causes",
+          "Endocrinology or oncology assessment addressing the individual treatment relationship"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Testosterone deficiency is a recognized late effect in testicular germ-cell cancer survivors, with treatment-specific risk. A systematic review and meta-analysis found increased odds of testosterone deficiency after standard chemotherapy, non-conventional treatment, and infradiaphragmatic radiotherapy compared with orchiectomy alone. This supports a treatment-complication pathway only when the individual's cancer treatment and post-treatment endocrine findings are documented; the testicular-cancer diagnosis by itself and unilateral orchiectomy alone should not be treated as sufficient evidence that later hypogonadism was caused by cancer treatment.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-thromboangiitis-obliterans-to-amputation-or-loss-of-use",
+        "primaryId": "thromboangiitis-obliterans",
+        "targetId": "amputation-or-loss-of-use",
+        "direction": "thromboangiitis-obliterans -> amputation-or-loss-of-use",
+        "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as complication outcome risk. Require Buerger disease/thromboangiitis obliterans and a documented amputation outcome, preserving tobacco exposure, ischemic severity, and treatment history. Treatment/outcome systematic review supports amputation risk only; do not generalize this source to generic loss of use. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "rationaleHash": "51411ae2524b75216e2fb7293abb410c2adb04797f07a7033bd0f38d384874bb",
+        "evidenceGaps": [
+          "Independent diagnoses of Thromboangiitis Obliterans (Buerger's Disease) and Amputation / Loss of Use of Limbs or Digits",
+          "Chronology compatible with the bounded source proposition",
+          "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+          "Qualified clinical opinion before using population-level evidence as an individual nexus"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Clinical Mapping Master Batch 2026 publishes this relationship only as complication outcome risk. Require Buerger disease/thromboangiitis obliterans and a documented amputation outcome, preserving tobacco exposure, ischemic severity, and treatment history. Treatment/outcome systematic review supports amputation risk only; do not generalize this source to generic loss of use. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-thyroiditis-to-hypothyroidism",
+        "primaryId": "thyroiditis",
+        "targetId": "hypothyroidism",
+        "direction": "thyroiditis -> hypothyroidism",
+        "rationale": "This relationship is limited to chronic autoimmune/Hashimoto-type thyroiditis or a clinically comparable thyroid-autoimmunity phenotype, not every transient or destructive thyroiditis syndrome. In a 2026 multicenter cohort of 669 initially euthyroid patients with positive thyroid autoantibodies, 155 progressed to overt or subclinical hypothyroidism during a median 3-year follow-up; baseline TSH, FT4, and TPOAb were independent progression factors. The evidence supports a bounded autoimmune-thyroiditis-to-thyroid-failure progression pathway when the individual's autoimmune phenotype and laboratory chronology are documented, but it does not justify assuming permanent hypothyroidism after subacute, painless, postpartum, infectious, or other transient thyroiditis.",
+        "rationaleHash": "8c4724add1c99a1c60d6a914487a12df4b71e3e82221c2383b29dc49b1d94ada",
+        "evidenceGaps": [
+          "Endocrine documentation establishing the thyroiditis subtype and autoimmune phenotype",
+          "Longitudinal TSH and FT4 results with TPOAb/TgAb findings when available",
+          "Chronology distinguishing persistent hypothyroidism from a transient thyroiditis phase",
+          "Thyroid treatment, surgery, radioiodine, medication, and iodine-exposure history",
+          "Clinician assessment of competing causes of hypothyroidism"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "This relationship is limited to chronic autoimmune/Hashimoto-type thyroiditis or a clinically comparable thyroid-autoimmunity phenotype, not every transient or destructive thyroiditis syndrome. In a 2026 multicenter cohort of 669 initially euthyroid patients with positive thyroid autoantibodies, 155 progressed to overt or subclinical hypothyroidism during a median 3-year follow-up; baseline TSH, FT4, and TPOAb were independent progression factors. The evidence supports a bounded autoimmune-thyroiditis-to-thyroid-failure progression pathway when the individual's autoimmune phenotype and laboratory chronology are documented, but it does not justify assuming permanent hypothyroidism after subacute, painless, postpartum, infectious, or other transient thyroiditis.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-trigeminal-neuralgia-to-depressive-disorder",
+        "primaryId": "trigeminal-neuralgia",
+        "targetId": "depressive-disorder",
+        "direction": "trigeminal-neuralgia -> depressive-disorder",
+        "rationale": "Systematic-review evidence describes substantial psychological burden in trigeminal neuralgia, including higher risks or prevalence of depressive symptoms/disorders, and some included evidence reports psychological improvement after successful trigeminal-neuralgia treatment. This supports focused association, chronology, pain-burden, functional-impact, and treatment-response research, but it does not establish a directional trigeminal-neuralgia-to-depressive-disorder causal pathway in an individual. Pre-existing psychiatric illness, other pain and sleep disorders, medication effects, substance use, and psychosocial contributors remain important.",
+        "rationaleHash": "5229dd7f6072643a4a5f9bc220fee8b7b73ca0f0e85c56a3a2419f20d0ec571b",
+        "evidenceGaps": [
+          "Neurology or pain records confirming trigeminal neuralgia phenotype, duration, attack burden, and treatment response",
+          "Qualified depressive-disorder diagnosis and chronology relative to trigeminal-neuralgia onset and worsening",
+          "Documentation of pain-related functional, sleep, eating, social, and occupational effects",
+          "Assessment of pre-existing psychiatric illness, other pain disorders, medications, substance use, sleep disorders, and psychosocial contributors",
+          "Qualified mental-health or neurologic assessment distinguishing population-level association from individual causation or aggravation"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Systematic-review evidence describes substantial psychological burden in trigeminal neuralgia, including higher risks or prevalence of depressive symptoms/disorders, and some included evidence reports psychological improvement after successful trigeminal-neuralgia treatment. This supports focused association, chronology, pain-burden, functional-impact, and treatment-response research, but it does not establish a directional trigeminal-neuralgia-to-depressive-disorder causal pathway in an individual. Pre-existing psychiatric illness, other pain and sleep disorders, medication effects, substance use, and psychosocial contributors remain important.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-urethral-stricture-to-hydronephrosis",
+        "primaryId": "urethral-stricture",
+        "targetId": "hydronephrosis",
+        "direction": "urethral-stricture -> hydronephrosis",
+        "rationale": "A sufficiently severe or prolonged urethral stricture can create urinary outflow obstruction and, in some patients, upper-tract dilation including hydronephrosis. The relationship requires objective evidence that the stricture produced clinically significant obstruction and that other causes of hydronephrosis are less likely.",
+        "rationaleHash": "faa0d02c1f8228e68e06f8c0d0089a1e286efa7cfb30e632c65cdb5bd4608bbc",
+        "evidenceGaps": [
+          "Urology documentation confirming urethral stricture severity and objective obstruction",
+          "Imaging confirming hydronephrosis and its timing relative to the stricture",
+          "Clinical evaluation addressing alternative upper- or lower-urinary-tract causes and response after obstruction relief"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "A sufficiently severe or prolonged urethral stricture can create urinary outflow obstruction and, in some patients, upper-tract dilation including hydronephrosis. The relationship requires objective evidence that the stricture produced clinically significant obstruction and that other causes of hydronephrosis are less likely.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      },
+      {
+        "relationshipId": "rel-uveitis-to-glaucoma",
+        "primaryId": "uveitis",
+        "targetId": "glaucoma",
+        "direction": "uveitis -> glaucoma",
+        "rationale": "Glaucoma is a recognized sight-threatening complication of uveitis. Intraocular inflammation can impair aqueous outflow through inflammatory cells, mediators, and structural angle changes, while corticosteroid treatment can independently raise intraocular pressure in susceptible patients. This supports a uveitis-related secondary-glaucoma pathway only when glaucoma is objectively diagnosed and the individual record supports inflammatory and/or treatment-related mechanisms; ocular hypertension alone is not interchangeable with glaucoma, and not every patient with uveitis develops glaucomatous damage.",
+        "rationaleHash": "fdb769f2f639f80b9aa3361f8ebf9c88fb1caea880a175a4004e8ef62fc7082c",
+        "evidenceGaps": [
+          "Ophthalmology records confirming uveitis phenotype, laterality, activity, and chronology",
+          "Serial intraocular-pressure measurements and gonioscopy",
+          "Objective glaucoma evidence such as optic-nerve/RNFL imaging and reproducible visual-field loss",
+          "Corticosteroid treatment history and pressure response where a treatment pathway is considered",
+          "Ophthalmology opinion addressing inflammatory, treatment-related, and competing glaucoma mechanisms in the individual case"
+        ],
+        "proposedRegistryGuardRepresentation": {
+          "status": "legacy-rationale-boundary",
+          "structuredGuardText": null,
+          "boundarySource": "current-rationale",
+          "boundaryText": "Glaucoma is a recognized sight-threatening complication of uveitis. Intraocular inflammation can impair aqueous outflow through inflammatory cells, mediators, and structural angle changes, while corticosteroid treatment can independently raise intraocular pressure in susceptible patients. This supports a uveitis-related secondary-glaucoma pathway only when glaucoma is objectively diagnosed and the individual record supports inflammatory and/or treatment-related mechanisms; ocular hypertension alone is not interchangeable with glaucoma, and not every patient with uveitis develops glaucomatous damage.",
+          "semanticRewriteAuthorized": false,
+          "structuredGuardReviewPending": true
+        },
+        "resolutionClass": "historical-structure-normalization"
+      }
+    ]
+  },
+  "citationVariantResolution": {
+    "count": 3,
+    "policy": "Merge source identity by canonical bibliographic identity while preserving every existing citation variant and use. Choose a fuller citation only for registry display; do not rewrite live KB citation strings during registry installation.",
+    "cases": [
+      {
+        "sourceId": "pmid-37622657",
+        "pmid": "37622657",
+        "canonicalCitationForRegistry": "Arbelo E, Protonotarios A, Gimeno JR, et al. 2023 ESC Guidelines for the management of cardiomyopathies. Eur Heart J. 2023;44(37):3503-3626. PMID 37622657. doi:10.1093/eurheartj/ehad194.",
+        "citationVariantsPreserved": [
+          "Arbelo E, Protonotarios A, Gimeno JR, et al. 2023 ESC Guidelines for the management of cardiomyopathies. Eur Heart J. 2023;44(37):3503-3626. PMID 37622657. doi:10.1093/eurheartj/ehad194.",
+          "Arbelo et al., 2023 ESC Guidelines for the management of cardiomyopathies, Eur Heart J. 2023;44:3503-3626. PMID 37622657"
+        ],
+        "sourceUrls": [
+          "https://pubmed.ncbi.nlm.nih.gov/37622657/"
+        ],
+        "uses": [
+          {
+            "relationshipId": "rel-cardiomyopathy-to-cardiac-arrhythmia",
+            "primaryId": "cardiomyopathy",
+            "targetId": "cardiac-arrhythmia",
+            "sourceIndex": 0
+          },
+          {
+            "relationshipId": "rel-cardiomyopathy-to-congestive-heart-failure",
+            "primaryId": "cardiomyopathy",
+            "targetId": "congestive-heart-failure",
+            "sourceIndex": 0
+          }
+        ],
+        "resolutionClass": "mechanical-source-normalization",
+        "kbRewriteProposed": false
+      },
+      {
+        "sourceId": "pmid-40774162",
+        "pmid": "40774162",
+        "canonicalCitationForRegistry": "Ferreira NB, Ponte A, Grande AC, et al. Frequency of obstructive sleep apnea in patients with asthma or allergic rhinitis: a systematic review and meta-analysis. Sleep Med. 2025;134:106705. PMID 40774162",
+        "citationVariantsPreserved": [
+          "Ferreira NB, Ponte A, Grande AC, et al. Frequency of obstructive sleep apnea in patients with asthma or allergic rhinitis: a systematic review and meta-analysis. Sleep Med. 2025;134:106705. PMID 40774162",
+          "Ferreira et al., Sleep Medicine (2025), PMID 40774162"
+        ],
+        "sourceUrls": [
+          "https://pubmed.ncbi.nlm.nih.gov/40774162/"
+        ],
+        "uses": [
+          {
+            "relationshipId": "rel-asthma-to-sleep-apnea",
+            "primaryId": "asthma",
+            "targetId": "sleep-apnea",
+            "sourceIndex": 0
+          },
+          {
+            "relationshipId": "rel-chronic-rhinitis-to-sleep-apnea",
+            "primaryId": "chronic-rhinitis",
+            "targetId": "sleep-apnea",
+            "sourceIndex": 0
+          }
+        ],
+        "resolutionClass": "mechanical-source-normalization",
+        "kbRewriteProposed": false
+      },
+      {
+        "sourceId": "pmid-41358881",
+        "pmid": "41358881",
+        "canonicalCitationForRegistry": "American Diabetes Association Professional Practice Committee for Diabetes. 11. Chronic Kidney Disease and Risk Management: Standards of Care in Diabetes-2026. Diabetes Care. 2026;49(Suppl 1):S246-S260. PMID 41358881. doi:10.2337/dc26-S011.",
+        "citationVariantsPreserved": [
+          "American Diabetes Association Professional Practice Committee for Diabetes, 11. Chronic Kidney Disease and Risk Management: Standards of Care in Diabetes—2026, Diabetes Care. 2026;49(Suppl 1):S246-S260. PMID 41358881",
+          "American Diabetes Association Professional Practice Committee for Diabetes. 11. Chronic Kidney Disease and Risk Management: Standards of Care in Diabetes-2026. Diabetes Care. 2026;49(Suppl 1):S246-S260. PMID 41358881. doi:10.2337/dc26-S011."
+        ],
+        "sourceUrls": [
+          "https://pubmed.ncbi.nlm.nih.gov/41358881/"
+        ],
+        "uses": [
+          {
+            "relationshipId": "rel-diabetes-mellitus-type-1-to-chronic-kidney-disease",
+            "primaryId": "diabetes-mellitus-type-1",
+            "targetId": "chronic-kidney-disease",
+            "sourceIndex": 0
+          },
+          {
+            "relationshipId": "rel-diabetes-mellitus-type-2-to-chronic-kidney-disease",
+            "primaryId": "diabetes-mellitus-type-2",
+            "targetId": "chronic-kidney-disease",
+            "sourceIndex": 0
+          }
+        ],
+        "resolutionClass": "mechanical-source-normalization",
+        "kbRewriteProposed": false
+      }
+    ]
+  },
+  "doiOnlyResolution": {
+    "count": 1,
+    "policy": "PMID is optional when a source has a stable DOI and canonical source URL.",
+    "case": {
+      "sourceId": "doi-faf61c0e9ff47199",
+      "doi": "10.1210/clinem/dgaf284",
+      "citation": "Adler et al., Primary Aldosteronism: An Endocrine Society Clinical Practice Guideline, J Clin Endocrinol Metab. 2025;110(9):2453-2495. doi:10.1210/clinem/dgaf284",
+      "sourceUrl": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+      "uses": [
+        {
+          "relationshipId": "rel-hyperaldosteronism-to-hypertension",
+          "primaryId": "hyperaldosteronism",
+          "targetId": "hypertension",
+          "sourceIndex": 0
+        }
+      ],
+      "resolutionClass": "valid-doi-only-source-identity",
+      "pmidRequired": false
+    }
+  },
+  "parserBoundaryCorrection": {
+    "count": 7,
+    "policy": "Strip '; supersedes unverified PMID ...' from parsed guard text and store it as source-lineage provenance.",
+    "cases": [
+      {
+        "relationshipId": "rel-hepatitis-to-osteoporosis",
+        "direction": "hepatitis -> osteoporosis",
+        "discoveryGuardText": "Apply only to documented hepatitis B virus infection and independently diagnosed osteoporosis.; supersedes unverified PMID 37230817.",
+        "proposedGuardText": "Apply only to documented hepatitis B virus infection and independently diagnosed osteoporosis.",
+        "resolutionClass": "mechanical-parser-boundary-fix",
+        "note": "Supersession provenance belongs in source lineage, not publicationGuard."
+      },
+      {
+        "relationshipId": "rel-inflammatory-bowel-disease-to-colorectal-cancer",
+        "direction": "inflammatory-bowel-disease -> colorectal-cancer",
+        "discoveryGuardText": "Require established Crohn's disease/ulcerative colitis with subsequent colorectal cancer; account for disease duration, extent, inflammation, dysplasia, PSC, family history, and surveillance.; supersedes unverified PMID 33385426.",
+        "proposedGuardText": "Require established Crohn's disease/ulcerative colitis with subsequent colorectal cancer; account for disease duration, extent, inflammation, dysplasia, PSC, family history, and surveillance.",
+        "resolutionClass": "mechanical-parser-boundary-fix",
+        "note": "Supersession provenance belongs in source lineage, not publicationGuard."
+      },
+      {
+        "relationshipId": "rel-multiple-myeloma-to-chronic-kidney-disease",
+        "direction": "multiple-myeloma -> chronic-kidney-disease",
+        "discoveryGuardText": "Require documented multiple myeloma and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as myeloma-related CKD, require clinical evidence linking the renal disease to myeloma-associated pathology, such as light-chain/cast nephropathy, monoclonal-protein-associated renal disease, or other appropriately established myeloma-related renal injury. Do not relabel transient AKI, an isolated creatinine elevation, or nonspecific renal impairment as CKD, and do not assume all CKD in a patient with multiple myeloma is caused by the myeloma.; supersedes unverified PMID 29661050.",
+        "proposedGuardText": "Require documented multiple myeloma and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as myeloma-related CKD, require clinical evidence linking the renal disease to myeloma-associated pathology, such as light-chain/cast nephropathy, monoclonal-protein-associated renal disease, or other appropriately established myeloma-related renal injury. Do not relabel transient AKI, an isolated creatinine elevation, or nonspecific renal impairment as CKD, and do not assume all CKD in a patient with multiple myeloma is caused by the myeloma.",
+        "resolutionClass": "mechanical-parser-boundary-fix",
+        "note": "Supersession provenance belongs in source lineage, not publicationGuard."
+      },
+      {
+        "relationshipId": "rel-penetrating-head-trauma-to-seizure-disorder",
+        "direction": "penetrating-head-trauma -> seizure-disorder",
+        "discoveryGuardText": "Apply only to recurrent post-traumatic epilepsy/seizure disorder after documented penetrating traumatic brain injury; do not map a single provoked seizure.; supersedes unverified PMID 31861595.",
+        "proposedGuardText": "Apply only to recurrent post-traumatic epilepsy/seizure disorder after documented penetrating traumatic brain injury; do not map a single provoked seizure.",
+        "resolutionClass": "mechanical-parser-boundary-fix",
+        "note": "Supersession provenance belongs in source lineage, not publicationGuard."
+      },
+      {
+        "relationshipId": "rel-psoriasis-to-psoriatic-arthritis",
+        "direction": "psoriasis -> psoriatic-arthritis",
+        "discoveryGuardText": "Require established psoriasis followed by clinically confirmed psoriatic arthritis.; supersedes unverified PMID 38251522.",
+        "proposedGuardText": "Require established psoriasis followed by clinically confirmed psoriatic arthritis.",
+        "resolutionClass": "mechanical-parser-boundary-fix",
+        "note": "Supersession provenance belongs in source lineage, not publicationGuard."
+      },
+      {
+        "relationshipId": "rel-psoriasis-to-eczema",
+        "direction": "psoriasis -> eczema",
+        "discoveryGuardText": "Require biologic therapy for psoriasis preceding documented paradoxical eczema; model only as treatment complication.; supersedes unverified PMID 40420581.",
+        "proposedGuardText": "Require biologic therapy for psoriasis preceding documented paradoxical eczema; model only as treatment complication.",
+        "resolutionClass": "mechanical-parser-boundary-fix",
+        "note": "Supersession provenance belongs in source lineage, not publicationGuard."
+      },
+      {
+        "relationshipId": "rel-skull-fracture-non-basilar-and-basal-to-epilepsy",
+        "direction": "skull-fracture-non-basilar-and-basal -> epilepsy",
+        "discoveryGuardText": "Require a documented traumatic skull fracture, including appropriately documented skull-vault or skull-base fracture, followed by separately diagnosed post-traumatic epilepsy. PMID 33687971 supports increased epilepsy risk after the coded skull-fracture phenotype in an adult hospitalized TBI cohort. Do not equate an acute provoked seizure during the index trauma admission with later epilepsy, and do not infer epilepsy from nonspecific head trauma without a qualifying skull fracture.; supersedes unverified PMID 19233461.",
+        "proposedGuardText": "Require a documented traumatic skull fracture, including appropriately documented skull-vault or skull-base fracture, followed by separately diagnosed post-traumatic epilepsy. PMID 33687971 supports increased epilepsy risk after the coded skull-fracture phenotype in an adult hospitalized TBI cohort. Do not equate an acute provoked seizure during the index trauma admission with later epilepsy, and do not infer epilepsy from nonspecific head trauma without a qualifying skull fracture.",
+        "resolutionClass": "mechanical-parser-boundary-fix",
+        "note": "Supersession provenance belongs in source lineage, not publicationGuard."
+      }
+    ]
+  },
+  "proposedAuthoritativeRegistryCounts": {
+    "relationships": 183,
+    "liveSourceReferenceUses": 191,
+    "activeUniqueSourceEntities": 168,
+    "activeUniqueClinicalSourceEntities": 167,
+    "activeUniqueLegalAuthorityEntities": 1,
+    "retiredOnlySourceEntities": 1,
+    "supersededUnverifiedSourceEntities": 7,
+    "bibliographicCorrectionOnlyEntities": 1,
+    "totalSourceEntitiesIncludingLineage": 177,
+    "retiredVerifiedUsesPreserved": 6
+  },
+  "canonicalIdentityMerges": {
+    "pmid:33687971": [
+      "doi-0f55bcab4c41a0d7",
+      "pmid-33687971"
+    ],
+    "regulation:38-cfr-3.310": [
+      "src-1385c57067108768",
+      "src-9561720c9a0a1169"
+    ]
+  },
+  "proposedInstallationBoundary": {
+    "masterRelationshipFile": "data/evidence/master-relationships.json",
+    "masterSourceFile": "data/evidence/master-sources.json",
+    "noKnowledgeBaseMedicalRewrite": true,
+    "noTaxonomyChange": true,
+    "noPublicationStatusChange": true,
+    "noCitationVerificationStatusChange": true,
+    "noPathwayIntelligenceChange": true,
+    "noRemoteWrites": true,
+    "me3StillPausedUntilRegistryInstallCloses": true
+  },
+  "approvedOn": "2026-08-20",
+  "qualifiedHumanApproval": "I approve Recommended approval: approve the Master Registry Discrepancy Resolution scope above, after which the next bounded step is to construct the fail-closed authoritative master-registry installation runner pinned to ffadbe9460bd0dbda327781e20ec6f51e4cd854f, with no medical-mapping changes.",
+  "implementationAuthorization": {
+    "localCommitAuthorizedOnlyAfterAllValidationPasses": true,
+    "remoteWritesAuthorized": false,
+    "medicalMappingChangesAuthorized": false,
+    "requiredHead": "ffadbe9460bd0dbda327781e20ec6f51e4cd854f"
+  },
+  "frozenDiscoveryArtifactSha256": {
+    "manifest.json": "a5feded8ac0b3246333fcf93943627d6e88b78e50fcd825a772119af1e164e2a",
+    "master-relationships.discovery.json": "1ff263b1c860415a0f1aa242ddf977aeb4155d0e083c57224c05986d6b91012c",
+    "master-sources.discovery.json": "6820eb62cea01584ff46e33bc84132acf95af3c545045e45f5d23d858d74267c",
+    "master-registry-discrepancies.json": "bb7bd0f278c0835305ed603fbc1233ea0ae6a661acfe66becb815b131df33936",
+    "master-registry-discovery-summary.md": "c2c32165169fa87b760af6db96d0fd62b2c92ab9d7df45b0a9a11aa60cae724f"
+  },
+  "approvedProposalSha256": "700e2be8e038dbe9482796b7adc7057c9631f290a01037c31b486f891ec2a833"
+}
