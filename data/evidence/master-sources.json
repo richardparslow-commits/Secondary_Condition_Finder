@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "4d7a60ac4cc7de8d2d91f46210f64fa15f54abd4",
+  "baselineCommit": "20485862319f6a79ecdfce73778c84a3300e5bc0",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 196,
+    "liveSourceReferenceUses": 201,
     "activeSourceEntities": 173,
-    "pendingVerificationSourceEntities": 0,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 172,
-    "pendingClinicalSourceEntities": 0,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 182,
+    "totalSourceEntitiesIncludingLineage": 187,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -741,6 +741,48 @@
       "rawReferenceHashes": [
         "0719fd541ed32cc81f8e026dcb06c20107ea407c53f1e4c54b539789e23bcb27"
       ]
+    },
+    {
+      "sourceId": "pmid-23999006",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "23999006",
+      "doi": "10.1136/annrheumdis-2013-203582",
+      "canonicalCitation": "Stolwijk C, van Tubergen A, Castillo-Ortiz JD, Boonen A. Prevalence of extra-articular manifestations in patients with ankylosing spondylitis: a systematic review and meta-analysis. Ann Rheum Dis. 2015;74(1):65-73. PMID 23999006. doi:10.1136/annrheumdis-2013-203582.",
+      "citationVariants": [
+        "Stolwijk C, van Tubergen A, Castillo-Ortiz JD, Boonen A. Prevalence of extra-articular manifestations in patients with ankylosing spondylitis: a systematic review and meta-analysis. Ann Rheum Dis. 2015;74(1):65-73. PMID 23999006. doi:10.1136/annrheumdis-2013-203582."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23999006/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/23999006/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ankylosing-spondylitis-to-uveitis",
+          "primaryId": "ankylosing-spondylitis",
+          "targetId": "uveitis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "d5cc06b7ff3d41a18a2f36a7bf62185ec6d6b9b17bfc24d6a8a84265bfcb41fb"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-24288486",
@@ -2153,6 +2195,48 @@
       "rawReferenceHashes": [
         "5b04710586817015d8557650c1c09a6191aaf3b7cfec89198a468ce17e105628"
       ]
+    },
+    {
+      "sourceId": "pmid-31722411",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "31722411",
+      "doi": "10.1210/clinem/dgz116",
+      "canonicalCitation": "Parolin M, Dassie F, Alessio L, et al. Obstructive Sleep Apnea in Acromegaly and the Effect of Treatment: A Systematic Review and Meta-Analysis. J Clin Endocrinol Metab. 2020;105(3):dgz116. PMID 31722411. doi:10.1210/clinem/dgz116.",
+      "citationVariants": [
+        "Parolin M, Dassie F, Alessio L, et al. Obstructive Sleep Apnea in Acromegaly and the Effect of Treatment: A Systematic Review and Meta-Analysis. J Clin Endocrinol Metab. 2020;105(3):dgz116. PMID 31722411. doi:10.1210/clinem/dgz116."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31722411/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31722411/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-acromegaly-to-sleep-apnea",
+          "primaryId": "acromegaly",
+          "targetId": "sleep-apnea",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "dbbcdabc462d0dc3195688be76b627ced50ba08509db82bebda07260073783ec"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-31782315",
@@ -4327,6 +4411,48 @@
       ]
     },
     {
+      "sourceId": "pmid-38377675",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "38377675",
+      "doi": "10.1530/ETJ-23-0254",
+      "canonicalCitation": "Kostopoulos G, Effraimidis G. Epidemiology, prognosis, and challenges in the management of hyperthyroidism-related atrial fibrillation. Eur Thyroid J. 2024;13(2):e230254. PMID 38377675. doi:10.1530/ETJ-23-0254.",
+      "citationVariants": [
+        "Kostopoulos G, Effraimidis G. Epidemiology, prognosis, and challenges in the management of hyperthyroidism-related atrial fibrillation. Eur Thyroid J. 2024;13(2):e230254. PMID 38377675. doi:10.1530/ETJ-23-0254."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38377675/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38377675/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hyperthyroidism-to-cardiac-arrhythmia",
+          "primaryId": "hyperthyroidism",
+          "targetId": "cardiac-arrhythmia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "aff12f46fb6930ea748f523299d09fa077bc84aee61d9e527f3d54e616667d37"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-38568491",
       "status": "active",
       "kind": "clinical-evidence",
@@ -4892,6 +5018,48 @@
       "rawReferenceHashes": [
         "1f7c0e1110a432db39270a3ad1769566230b9bfda5ecbbbd8252592f2bfa933d"
       ]
+    },
+    {
+      "sourceId": "pmid-39689783",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "39689783",
+      "doi": "10.1016/j.eprac.2024.12.009",
+      "canonicalCitation": "Charoenngam N, Rittiphairoj T, Plessias C, et al. Bone Mineral Density Improvement After Resolution of Endogenous Cushing Syndrome: A Systematic Review and Meta-Analysis. Endocr Pract. 2025;31(3):345-351. PMID 39689783. doi:10.1016/j.eprac.2024.12.009.",
+      "citationVariants": [
+        "Charoenngam N, Rittiphairoj T, Plessias C, et al. Bone Mineral Density Improvement After Resolution of Endogenous Cushing Syndrome: A Systematic Review and Meta-Analysis. Endocr Pract. 2025;31(3):345-351. PMID 39689783. doi:10.1016/j.eprac.2024.12.009."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39689783/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/39689783/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-cushings-syndrome-to-osteoporosis",
+          "primaryId": "cushings-syndrome",
+          "targetId": "osteoporosis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c1a664e7c9048b3e2e366d85547709affb7df2f2afa928e3e5fd55d8f41785d1"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-39847853",
@@ -5700,6 +5868,48 @@
       ]
     },
     {
+      "sourceId": "pmid-41329412",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "41329412",
+      "doi": "10.1007/s00508-025-02670-z",
+      "canonicalCitation": "Kerschan-Schindl K, Gelles K, Butylina M, et al. Bone metabolism in primary hyperparathyroidism. Wien Klin Wochenschr. 2026;138(7-8):217-224. PMID 41329412. doi:10.1007/s00508-025-02670-z.",
+      "citationVariants": [
+        "Kerschan-Schindl K, Gelles K, Butylina M, et al. Bone metabolism in primary hyperparathyroidism. Wien Klin Wochenschr. 2026;138(7-8):217-224. PMID 41329412. doi:10.1007/s00508-025-02670-z."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41329412/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41329412/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hyperparathyroidism-to-osteoporosis",
+          "primaryId": "hyperparathyroidism",
+          "targetId": "osteoporosis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "56a0b8450b9a7541e7ba9cb5eb28c0bdae3917a45fafee036c2ed751675cf88a"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-41358881",
       "status": "active",
       "kind": "clinical-evidence",
@@ -6129,211 +6339,201 @@
       ]
     },
     {
-      "sourceId": "pmid-23999006",
-      "status": "active",
+      "sourceId": "pmid-28515118",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "23999006",
-      "doi": "10.1136/annrheumdis-2013-203582",
-      "canonicalCitation": "Stolwijk C, van Tubergen A, Castillo-Ortiz JD, Boonen A. Prevalence of extra-articular manifestations in patients with ankylosing spondylitis: a systematic review and meta-analysis. Ann Rheum Dis. 2015;74(1):65-73. PMID 23999006. doi:10.1136/annrheumdis-2013-203582.",
+      "pmid": "28515118",
+      "doi": "10.1161/JAHA.116.005336",
+      "canonicalCitation": "He J, Shlipak M, Anderson A, et al. Risk Factors for Heart Failure in Patients With Chronic Kidney Disease: The CRIC (Chronic Renal Insufficiency Cohort) Study. J Am Heart Assoc. 2017;6(5):e005336. PMID 28515118. doi:10.1161/JAHA.116.005336.",
       "citationVariants": [
-        "Stolwijk C, van Tubergen A, Castillo-Ortiz JD, Boonen A. Prevalence of extra-articular manifestations in patients with ankylosing spondylitis: a systematic review and meta-analysis. Ann Rheum Dis. 2015;74(1):65-73. PMID 23999006. doi:10.1136/annrheumdis-2013-203582."
+        "He J, Shlipak M, Anderson A, et al. Risk Factors for Heart Failure in Patients With Chronic Kidney Disease: The CRIC (Chronic Renal Insufficiency Cohort) Study. J Am Heart Assoc. 2017;6(5):e005336. PMID 28515118. doi:10.1161/JAHA.116.005336."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23999006/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28515118/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/23999006/"
+        "https://pubmed.ncbi.nlm.nih.gov/28515118/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-20"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-ankylosing-spondylitis-to-uveitis",
-          "primaryId": "ankylosing-spondylitis",
-          "targetId": "uveitis",
+          "relationshipId": "rel-chronic-kidney-disease-to-congestive-heart-failure",
+          "primaryId": "chronic-kidney-disease",
+          "targetId": "congestive-heart-failure",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "d5cc06b7ff3d41a18a2f36a7bf62185ec6d6b9b17bfc24d6a8a84265bfcb41fb"
+        "0c351a9a4988569fe3922c9b3f2b84fd986931c77b69049ac44eb491ed3a02ed"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-31722411",
-      "status": "active",
+      "sourceId": "pmid-32059945",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "31722411",
-      "doi": "10.1210/clinem/dgz116",
-      "canonicalCitation": "Parolin M, Dassie F, Alessio L, et al. Obstructive Sleep Apnea in Acromegaly and the Effect of Treatment: A Systematic Review and Meta-Analysis. J Clin Endocrinol Metab. 2020;105(3):dgz116. PMID 31722411. doi:10.1210/clinem/dgz116.",
+      "pmid": "32059945",
+      "doi": "10.1016/j.apmr.2020.01.009",
+      "canonicalCitation": "van Gorp M, Hilberink SR, Noten S, et al. Epidemiology of Cerebral Palsy in Adulthood: A Systematic Review and Meta-analysis of the Most Frequently Studied Outcomes. Arch Phys Med Rehabil. 2020;101(6):1041-1052. PMID 32059945. doi:10.1016/j.apmr.2020.01.009.",
       "citationVariants": [
-        "Parolin M, Dassie F, Alessio L, et al. Obstructive Sleep Apnea in Acromegaly and the Effect of Treatment: A Systematic Review and Meta-Analysis. J Clin Endocrinol Metab. 2020;105(3):dgz116. PMID 31722411. doi:10.1210/clinem/dgz116."
+        "van Gorp M, Hilberink SR, Noten S, et al. Epidemiology of Cerebral Palsy in Adulthood: A Systematic Review and Meta-analysis of the Most Frequently Studied Outcomes. Arch Phys Med Rehabil. 2020;101(6):1041-1052. PMID 32059945. doi:10.1016/j.apmr.2020.01.009."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31722411/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32059945/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/31722411/"
+        "https://pubmed.ncbi.nlm.nih.gov/32059945/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-20"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-acromegaly-to-sleep-apnea",
-          "primaryId": "acromegaly",
-          "targetId": "sleep-apnea",
+          "relationshipId": "rel-cerebral-palsy-to-epilepsy",
+          "primaryId": "cerebral-palsy",
+          "targetId": "epilepsy",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "dbbcdabc462d0dc3195688be76b627ced50ba08509db82bebda07260073783ec"
+        "ea305092b9ad2121eeffc6ee75575acf1f5fdce0997f90c976a80564cd166fc9"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-38377675",
-      "status": "active",
+      "sourceId": "pmid-37414328",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "38377675",
-      "doi": "10.1530/ETJ-23-0254",
-      "canonicalCitation": "Kostopoulos G, Effraimidis G. Epidemiology, prognosis, and challenges in the management of hyperthyroidism-related atrial fibrillation. Eur Thyroid J. 2024;13(2):e230254. PMID 38377675. doi:10.1530/ETJ-23-0254.",
+      "pmid": "37414328",
+      "doi": "10.1016/j.ajo.2023.06.021",
+      "canonicalCitation": "Papaliodis GN, Rosner BA, Dreger KA, et al. Incidence of and Risk Factors for Cataract in Anterior Uveitis. Am J Ophthalmol. 2023;254:221-232. PMID 37414328. doi:10.1016/j.ajo.2023.06.021.",
       "citationVariants": [
-        "Kostopoulos G, Effraimidis G. Epidemiology, prognosis, and challenges in the management of hyperthyroidism-related atrial fibrillation. Eur Thyroid J. 2024;13(2):e230254. PMID 38377675. doi:10.1530/ETJ-23-0254."
+        "Papaliodis GN, Rosner BA, Dreger KA, et al. Incidence of and Risk Factors for Cataract in Anterior Uveitis. Am J Ophthalmol. 2023;254:221-232. PMID 37414328. doi:10.1016/j.ajo.2023.06.021."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38377675/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37414328/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/38377675/"
+        "https://pubmed.ncbi.nlm.nih.gov/37414328/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-20"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-hyperthyroidism-to-cardiac-arrhythmia",
-          "primaryId": "hyperthyroidism",
+          "relationshipId": "rel-uveitis-to-cataracts",
+          "primaryId": "uveitis",
+          "targetId": "cataracts",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "913e36c62ac2a8c529c20a887f69dc3be129851648e0abb4f7a98251332ef14d"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-38453002",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "38453002",
+      "doi": "10.1016/j.chest.2024.03.002",
+      "canonicalCitation": "O'Meara K, Stone G, Buch E, et al. Atrial Arrhythmias in Patients With Pulmonary Hypertension. Chest. 2024;166(1):201-211. PMID 38453002. doi:10.1016/j.chest.2024.03.002.",
+      "citationVariants": [
+        "O'Meara K, Stone G, Buch E, et al. Atrial Arrhythmias in Patients With Pulmonary Hypertension. Chest. 2024;166(1):201-211. PMID 38453002. doi:10.1016/j.chest.2024.03.002."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38453002/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38453002/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-pulmonary-hypertension-to-cardiac-arrhythmia",
+          "primaryId": "pulmonary-hypertension",
           "targetId": "cardiac-arrhythmia",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "aff12f46fb6930ea748f523299d09fa077bc84aee61d9e527f3d54e616667d37"
+        "b1cee036c794fbd1ddb6f1725ca1ff00fbd897bd85e932b3426fe34ead423cf1"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-39689783",
-      "status": "active",
+      "sourceId": "pmid-41308609",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "39689783",
-      "doi": "10.1016/j.eprac.2024.12.009",
-      "canonicalCitation": "Charoenngam N, Rittiphairoj T, Plessias C, et al. Bone Mineral Density Improvement After Resolution of Endogenous Cushing Syndrome: A Systematic Review and Meta-Analysis. Endocr Pract. 2025;31(3):345-351. PMID 39689783. doi:10.1016/j.eprac.2024.12.009.",
+      "pmid": "41308609",
+      "doi": "10.1016/j.comppsych.2025.152649",
+      "canonicalCitation": "Shih YH, Wang SJ, Fan CT, et al. Long-term risk of psychiatric disorders in women with endometriosis: A retrospective cohort study. Compr Psychiatry. 2026;144:152649. PMID 41308609. doi:10.1016/j.comppsych.2025.152649.",
       "citationVariants": [
-        "Charoenngam N, Rittiphairoj T, Plessias C, et al. Bone Mineral Density Improvement After Resolution of Endogenous Cushing Syndrome: A Systematic Review and Meta-Analysis. Endocr Pract. 2025;31(3):345-351. PMID 39689783. doi:10.1016/j.eprac.2024.12.009."
+        "Shih YH, Wang SJ, Fan CT, et al. Long-term risk of psychiatric disorders in women with endometriosis: A retrospective cohort study. Compr Psychiatry. 2026;144:152649. PMID 41308609. doi:10.1016/j.comppsych.2025.152649."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39689783/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41308609/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/39689783/"
+        "https://pubmed.ncbi.nlm.nih.gov/41308609/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-20"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-cushings-syndrome-to-osteoporosis",
-          "primaryId": "cushings-syndrome",
-          "targetId": "osteoporosis",
+          "relationshipId": "rel-endometriosis-to-depressive-disorder",
+          "primaryId": "endometriosis",
+          "targetId": "depressive-disorder",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "c1a664e7c9048b3e2e366d85547709affb7df2f2afa928e3e5fd55d8f41785d1"
+        "0886c5fecdbdf2c5c5139027e582342674d77dd99cf98e61bf9784a6d7ebad9e"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
-        "automaticPromotionAuthorized": false,
-        "mappingApprovalDoesNotEqualCitationVerification": true
-      }
-    },
-    {
-      "sourceId": "pmid-41329412",
-      "status": "active",
-      "kind": "clinical-evidence",
-      "pmid": "41329412",
-      "doi": "10.1007/s00508-025-02670-z",
-      "canonicalCitation": "Kerschan-Schindl K, Gelles K, Butylina M, et al. Bone metabolism in primary hyperparathyroidism. Wien Klin Wochenschr. 2026;138(7-8):217-224. PMID 41329412. doi:10.1007/s00508-025-02670-z.",
-      "citationVariants": [
-        "Kerschan-Schindl K, Gelles K, Butylina M, et al. Bone metabolism in primary hyperparathyroidism. Wien Klin Wochenschr. 2026;138(7-8):217-224. PMID 41329412. doi:10.1007/s00508-025-02670-z."
-      ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41329412/",
-      "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/41329412/"
-      ],
-      "verificationScopes": [
-        "clinical-evidence"
-      ],
-      "verified": true,
-      "sourceCheckedOnValues": [
-        "2026-08-20"
-      ],
-      "liveUsageCount": 1,
-      "liveUses": [
-        {
-          "relationshipId": "rel-hyperparathyroidism-to-osteoporosis",
-          "primaryId": "hyperparathyroidism",
-          "targetId": "osteoporosis",
-          "sourceIndex": 0
-        }
-      ],
-      "retiredUses": [],
-      "rawReferenceHashes": [
-        "56a0b8450b9a7541e7ba9cb5eb28c0bdae3917a45fafee036c2ed751675cf88a"
-      ],
-      "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -6603,6 +6803,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "ME-3 Qualified-Human Citation Verification",
-  "currentState": "ME3-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-4",
+  "currentState": "ME4-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

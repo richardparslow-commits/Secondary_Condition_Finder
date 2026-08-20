@@ -131,7 +131,7 @@ describe("Mapping Expansion Batch ME-3", () => {
     }
   });
 
-  it("pins the 188-edge / 196-reference ME-3 pre-verification state", () => {
+  it("preserves ME-3 rows while the current graph advances to the ME-4 pending-verification state", () => {
     const files = fs.readdirSync(kbDir).filter((name) => name.endsWith(".json"));
     const mappings = files.map((name) =>
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
@@ -139,13 +139,13 @@ describe("Mapping Expansion Batch ME-3", () => {
     expect(files).toHaveLength(311);
     expect(mappings.filter((m) => m.draft === false)).toHaveLength(139);
     expect(mappings.filter((m) => m.draft === true)).toHaveLength(172);
-    expect(mappings.reduce((sum, m) => sum + (m.suggestions ?? []).length, 0)).toBe(188);
-    expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length === 1)).toHaveLength(106);
-    expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length >= 2)).toHaveLength(33);
+    expect(mappings.reduce((sum, m) => sum + (m.suggestions ?? []).length, 0)).toBe(193);
+    expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length === 1)).toHaveLength(101);
+    expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length >= 2)).toHaveLength(38);
     const refs = mappings.flatMap((m) => (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []));
-    expect(refs).toHaveLength(196);
+    expect(refs).toHaveLength(201);
     expect(refs.filter((r) => r.verified === true)).toHaveLength(196);
-    expect(refs.filter((r) => r.verified === false)).toHaveLength(0);
+    expect(refs.filter((r) => r.verified === false)).toHaveLength(5);
   });
 
   it("passes the fail-closed master-registry parity audit after approved citation promotion", () => {
@@ -155,6 +155,6 @@ describe("Mapping Expansion Batch ME-3", () => {
     });
     const result = JSON.parse(output) as { status: string; pendingVerificationSourceEntities: number };
     expect(result.status).toBe("PASS");
-    expect(result.pendingVerificationSourceEntities).toBe(0);
+    expect(result.pendingVerificationSourceEntities).toBe(5);
   });
 });

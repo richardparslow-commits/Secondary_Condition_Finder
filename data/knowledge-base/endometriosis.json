@@ -25,6 +25,29 @@
           "sourceLocator": "PMID 24518590; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented endometriosis preceding separately diagnosed ovarian cancer. Treat as population-level association/risk evidence, with strongest histologic signal for endometrioid/clear-cell disease; do not claim individual causation."
         }
       ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. Preserve chronic pain, sleep disturbance, infertility, psychosocial burden, other medical conditions, and independent psychiatric risk factors as potential contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of endometriosis and depressive-disorder",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. Preserve chronic pain, sleep disturbance, infertility, psychosocial burden, other medical conditions, and independent psychiatric risk factors as potential contributors."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Shih YH, Wang SJ, Fan CT, et al. Long-term risk of psychiatric disorders in women with endometriosis: A retrospective cohort study. Compr Psychiatry. 2026;144:152649. PMID 41308609. doi:10.1016/j.comppsych.2025.152649.",
+          "note": "Mapping Expansion Batch ME-4 evidence for the bounded endometriosis to depressive-disorder proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41308609/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 41308609; approved ME-4 proposition; guard: Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. Preserve chronic pain, sleep disturbance, infertility, psychosocial burden, other medical conditions, and independent psychiatric risk factors as potential contributors."
+        }
+      ]
     }
   ]
 }

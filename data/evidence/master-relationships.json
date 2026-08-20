@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "4d7a60ac4cc7de8d2d91f46210f64fa15f54abd4",
+  "baselineCommit": "20485862319f6a79ecdfce73778c84a3300e5bc0",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 188,
-    "explicitPublicationGuards": 114,
+    "relationships": 193,
+    "explicitPublicationGuards": 119,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -1179,6 +1179,39 @@
       "suggestionObjectHash": "53b63b68f84caf69e8761d44b1718f1ec7a52c309ec99e0c6d081bea48e4815f"
     },
     {
+      "relationshipId": "rel-cerebral-palsy-to-epilepsy",
+      "primaryId": "cerebral-palsy",
+      "targetId": "epilepsy",
+      "direction": "cerebral-palsy -> epilepsy",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me4-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented cerebral palsy and separately established epilepsy under accepted diagnostic criteria. The source supports epilepsy as a prevalent adult cerebral-palsy comorbidity, not automatic individual causation and not inference from a remote seizure history, abnormal EEG, or cerebral palsy severity alone. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented cerebral palsy and separately established epilepsy under accepted diagnostic criteria. The source supports epilepsy as a prevalent adult cerebral-palsy comorbidity, not automatic individual causation and not inference from a remote seizure history, abnormal EEG, or cerebral palsy severity alone. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented cerebral palsy and separately established epilepsy under accepted diagnostic criteria. The source supports epilepsy as a prevalent adult cerebral-palsy comorbidity, not automatic individual causation and not inference from a remote seizure history, abnormal EEG, or cerebral palsy severity alone.",
+        "boundarySource": "approved-me4-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of cerebral-palsy and epilepsy",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented cerebral palsy and separately established epilepsy under accepted diagnostic criteria. The source supports epilepsy as a prevalent adult cerebral-palsy comorbidity, not automatic individual causation and not inference from a remote seizure history, abnormal EEG, or cerebral palsy severity alone."
+      ],
+      "sourceIds": [
+        "pmid-32059945"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "1e2c73c7b5a6ce21e2c4bab26f721bd043252044bbc132d9ab106acc3a8cabed"
+    },
+    {
       "relationshipId": "rel-charcot-arthropathy-to-amputation-or-loss-of-use",
       "primaryId": "charcot-arthropathy",
       "targetId": "amputation-or-loss-of-use",
@@ -1244,6 +1277,39 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "5a5faee1fc7bda98756b1446a3cb6d809a2c0b8e528a9483161ef72deefe3092"
+    },
+    {
+      "relationshipId": "rel-chronic-kidney-disease-to-congestive-heart-failure",
+      "primaryId": "chronic-kidney-disease",
+      "targetId": "congestive-heart-failure",
+      "direction": "chronic-kidney-disease -> congestive-heart-failure",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me4-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented chronic kidney disease and a separately established diagnosis of heart failure/congestive heart failure. Treat the source as population-level incident-risk evidence, not proof that chronic kidney disease caused heart failure in an individual. Preserve competing cardiac causes and contributors, including ischemic heart disease, hypertension, valvular disease, cardiomyopathy, arrhythmia, and volume-status factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented chronic kidney disease and a separately established diagnosis of heart failure/congestive heart failure. Treat the source as population-level incident-risk evidence, not proof that chronic kidney disease caused heart failure in an individual. Preserve competing cardiac causes and contributors, including ischemic heart disease, hypertension, valvular disease, cardiomyopathy, arrhythmia, and volume-status factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented chronic kidney disease and a separately established diagnosis of heart failure/congestive heart failure. Treat the source as population-level incident-risk evidence, not proof that chronic kidney disease caused heart failure in an individual. Preserve competing cardiac causes and contributors, including ischemic heart disease, hypertension, valvular disease, cardiomyopathy, arrhythmia, and volume-status factors.",
+        "boundarySource": "approved-me4-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of chronic-kidney-disease and congestive-heart-failure",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented chronic kidney disease and a separately established diagnosis of heart failure/congestive heart failure. Treat the source as population-level incident-risk evidence, not proof that chronic kidney disease caused heart failure in an individual. Preserve competing cardiac causes and contributors, including ischemic heart disease, hypertension, valvular disease, cardiomyopathy, arrhythmia, and volume-status factors."
+      ],
+      "sourceIds": [
+        "pmid-28515118"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "e385d5500c8277697480d7f3275ab46087b9e976c12dadf9be4707f48d6daaa2"
     },
     {
       "relationshipId": "rel-chronic-liver-disease-to-cirrhosis-of-the-liver",
@@ -2019,6 +2085,39 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "cfc5114360b32dfff330150d45813b51548a5ce1930ef8ed7a118f640b4991e7"
+    },
+    {
+      "relationshipId": "rel-endometriosis-to-depressive-disorder",
+      "primaryId": "endometriosis",
+      "targetId": "depressive-disorder",
+      "direction": "endometriosis -> depressive-disorder",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me4-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. Preserve chronic pain, sleep disturbance, infertility, psychosocial burden, other medical conditions, and independent psychiatric risk factors as potential contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. Preserve chronic pain, sleep disturbance, infertility, psychosocial burden, other medical conditions, and independent psychiatric risk factors as potential contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. Preserve chronic pain, sleep disturbance, infertility, psychosocial burden, other medical conditions, and independent psychiatric risk factors as potential contributors.",
+        "boundarySource": "approved-me4-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of endometriosis and depressive-disorder",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. Preserve chronic pain, sleep disturbance, infertility, psychosocial burden, other medical conditions, and independent psychiatric risk factors as potential contributors."
+      ],
+      "sourceIds": [
+        "pmid-41308609"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "7e99c47a1e135c7a22643cbde697205e4263e3343f03a637041321994355fe70"
     },
     {
       "relationshipId": "rel-epilepsy-to-depressive-disorder",
@@ -5208,6 +5307,39 @@
       "suggestionObjectHash": "19c2b4a7acf36326c3a6a1b047ad14067b2e871ef4436dbe24162bdd06a741cc"
     },
     {
+      "relationshipId": "rel-pulmonary-hypertension-to-cardiac-arrhythmia",
+      "primaryId": "pulmonary-hypertension",
+      "targetId": "cardiac-arrhythmia",
+      "direction": "pulmonary-hypertension -> cardiac-arrhythmia",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me4-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. Preserve structural heart disease and other arrhythmia risk factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. Preserve structural heart disease and other arrhythmia risk factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. Preserve structural heart disease and other arrhythmia risk factors.",
+        "boundarySource": "approved-me4-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of pulmonary-hypertension and cardiac-arrhythmia",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. Preserve structural heart disease and other arrhythmia risk factors."
+      ],
+      "sourceIds": [
+        "pmid-38453002"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "999b94558e7ff6cd8fceda7b1a283c10a8883560da140adad83a79707a68fa05"
+    },
+    {
       "relationshipId": "rel-q-fever-to-gallbladder-disease",
       "primaryId": "q-fever",
       "targetId": "gallbladder-disease",
@@ -6320,8 +6452,41 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": true,
       "suggestionObjectHash": "8901418bcd10361d4367f6a2aad9e5812c42f7d030391cf032c28ca0d5d6ddae"
+    },
+    {
+      "relationshipId": "rel-uveitis-to-cataracts",
+      "primaryId": "uveitis",
+      "targetId": "cataracts",
+      "direction": "uveitis -> cataracts",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me4-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Restrict this evidence proposition to noninfectious anterior uveitis or a clinically comparable anterior-inflammatory phenotype and require separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Restrict this evidence proposition to noninfectious anterior uveitis or a clinically comparable anterior-inflammatory phenotype and require separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Restrict this evidence proposition to noninfectious anterior uveitis or a clinically comparable anterior-inflammatory phenotype and require separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors.",
+        "boundarySource": "approved-me4-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of uveitis and cataracts",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Restrict this evidence proposition to noninfectious anterior uveitis or a clinically comparable anterior-inflammatory phenotype and require separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors."
+      ],
+      "sourceIds": [
+        "pmid-37414328"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "312e229a3c4345a87071718237913787cdd156e73398817385e8e3ed125edfb0"
     }
   ],
-  "lastUpdatedBy": "ME-3 Qualified-Human Citation Verification",
-  "currentState": "ME3-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-4",
+  "currentState": "ME4-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

@@ -44,6 +44,29 @@
           "sourceLocator": "PMID 36017548; guideline sections 3 (classification), 5.1.1 (clinical presentation/right-ventricular dysfunction), 6.3.7 (advanced right-ventricular failure), and 8 (PH associated with left-heart disease)"
         }
       ]
+    },
+    {
+      "conditionId": "cardiac-arrhythmia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. Preserve structural heart disease and other arrhythmia risk factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of pulmonary-hypertension and cardiac-arrhythmia",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. Preserve structural heart disease and other arrhythmia risk factors."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "O'Meara K, Stone G, Buch E, et al. Atrial Arrhythmias in Patients With Pulmonary Hypertension. Chest. 2024;166(1):201-211. PMID 38453002. doi:10.1016/j.chest.2024.03.002.",
+          "note": "Mapping Expansion Batch ME-4 evidence for the bounded pulmonary-hypertension to cardiac-arrhythmia proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38453002/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 38453002; approved ME-4 proposition; guard: Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. Preserve structural heart disease and other arrhythmia risk factors."
+        }
+      ]
     }
   ]
 }
