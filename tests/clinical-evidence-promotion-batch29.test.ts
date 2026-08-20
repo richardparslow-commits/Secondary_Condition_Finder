@@ -11,9 +11,9 @@ describe("clinical evidence promotion batch 29", () => {
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves the frozen 301/301 universe", () => {
-    expect(catalog).toHaveLength(301);
-    expect(kb).toHaveLength(301);
+  it("preserves the frozen 302/302 universe", () => {
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
   it("promotes scalp discoid lupus to scarring alopecia with phenotype and anatomy limits", () => {

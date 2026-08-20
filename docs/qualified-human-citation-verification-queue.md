@@ -213,3 +213,10 @@ Approval: **I approve Residual Citation Verification — M1 Closure 2026**
 - Prior `mild-tbi → migraine-headaches` active mismatch remains removed.
 - Live citation verification queue: **0**.
 <!-- PTH-TAXONOMY-2026:END -->
+
+<!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:START -->
+## Adrenal Histoplasmosis citation item — pending
+
+- `adrenal-histoplasmosis → addisons-disease` — PMID **30656706** — **verified:false**.
+- Taxonomy/mapping approval is complete; citation verification is a separate qualified-human gate.
+<!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:END -->

@@ -11,9 +11,9 @@ describe("targeted clinical mapping batch 31", () => {
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves the frozen 301/301 universe", () => {
-    expect(catalog).toHaveLength(301);
-    expect(kb).toHaveLength(301);
+  it("preserves the frozen 302/302 universe", () => {
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
   it("recognizes Batch-7 insomnia-to-depression temporal-association narrowing", () => {
@@ -130,10 +130,10 @@ describe("targeted clinical mapping batch 31", () => {
       (reference) => reference.verificationScope === "clinical-evidence" && Boolean(reference.sourceUrl),
     );
 
-    expect(liveReferences).toHaveLength(141);
-    expect(liveUnverified).toHaveLength(0);
-    expect(publishedUnverified).toHaveLength(0);
-    expect(clinicalWithUrls).toHaveLength(136);
+    expect(liveReferences).toHaveLength(142);
+    expect(liveUnverified).toHaveLength(1);
+    expect(publishedUnverified).toHaveLength(1);
+    expect(clinicalWithUrls).toHaveLength(137);
   });
 
   it("leaves the Wave 1-7 disposition ledger unchanged", () => {

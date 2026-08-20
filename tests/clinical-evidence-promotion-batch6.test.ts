@@ -9,9 +9,9 @@ describe("clinical evidence promotion batch 6", () => {
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
-  it("preserves the frozen 301/301 universe", () => {
-    expect(catalog).toHaveLength(301);
-    expect(kb).toHaveLength(301);
+  it("preserves the frozen 302/302 universe", () => {
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
   it("promotes confirmed primary aldosteronism to a direct hypertension pathway", () => {

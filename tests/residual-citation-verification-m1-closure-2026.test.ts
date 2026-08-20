@@ -53,7 +53,7 @@ describe("Residual M1 citation closure 2026 — current state", () => {
     expect(ref.sourceCheckedOn).toBe("2026-08-19");
   });
 
-  it("reaches zero live citation debt", () => {
+  it("preserves prior verification while adrenal taxonomy reopens one review row", () => {
     const refs = fs
       .readdirSync(kb)
       .filter((name) => name.endsWith(".json"))
@@ -70,8 +70,8 @@ describe("Residual M1 citation closure 2026 — current state", () => {
         );
       });
 
-    expect(refs).toHaveLength(141);
+    expect(refs).toHaveLength(142);
     expect(refs.filter((ref) => ref.verified === true)).toHaveLength(141);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(1);
   });
 });

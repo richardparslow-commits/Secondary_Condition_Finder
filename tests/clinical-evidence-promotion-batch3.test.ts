@@ -19,9 +19,9 @@ describe("clinical evidence promotion batch 3", () => {
   const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
-  it("preserves the target-v2 301/301 identity contract", () => {
-    expect(catalog).toHaveLength(301);
-    expect(knowledgeBase).toHaveLength(301);
+  it("preserves the target-v2 302/302 identity contract", () => {
+    expect(catalog).toHaveLength(302);
+    expect(knowledgeBase).toHaveLength(302);
   });
 
   it("publishes chronic liver disease to cirrhosis only as documented fibrosis progression", () => {

@@ -1,3 +1,14 @@
+<!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:START -->
+## Adrenal Histoplasmosis taxonomy status
+
+- Added distinct site-specific identity `adrenal-histoplasmosis`.
+- Reused existing `addisons-disease` target; no duplicate `primary-adrenal-insufficiency` identity was created.
+- Published bounded mapping: `adrenal-histoplasmosis → addisons-disease`.
+- PMID **30656706** is **verified:false** pending separate citation verification.
+- Pulmonary `histoplasmosis` remains distinct and unchanged.
+- Current KB state: **302 identities / 104 published / 198 draft**.
+<!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:END -->
+
 <!-- PTH-TAXONOMY-2026:START -->
 ## Post-Traumatic Headache taxonomy and citation status
 

@@ -1,0 +1,87 @@
+{
+  "program": "Adrenal Histoplasmosis Taxonomy Amendment 2026",
+  "status": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "parentLocalHead": "b21cc7948292a022a1b3ba53ac758e87e799ce75",
+  "amendsProgram": "Adrenal Histoplasmosis and Primary Adrenal Insufficiency Taxonomy Addition 2026",
+  "priorApprovalPhrase": "I approve Adrenal Histoplasmosis and Primary Adrenal Insufficiency Taxonomy Addition 2026",
+  "reasonForAmendment": "Repository preflight found existing addisons-disease identity; adding primary-adrenal-insufficiency would duplicate the endocrine diagnosis.",
+  "scope": "one-new-identity-plus-one-bounded-mapping-and-existing-target-alias-enrichment",
+  "citationVerificationAuthorized": false,
+  "taxonomy": {
+    "add": {
+      "id": "adrenal-histoplasmosis",
+      "display": "Adrenal Histoplasmosis",
+      "aliases": [
+        "histoplasmosis of adrenal gland",
+        "histoplasmosis of adrenal glands",
+        "bilateral adrenal histoplasmosis",
+        "adrenal involvement by histoplasmosis"
+      ],
+      "boundary": "Documented adrenal Histoplasma involvement required; pulmonary histoplasmosis alone is insufficient."
+    },
+    "reuseExisting": {
+      "id": "addisons-disease",
+      "doNotAddDuplicateId": "primary-adrenal-insufficiency",
+      "aliasEnrichmentIfSchemaPermits": [
+        "primary adrenal insufficiency",
+        "primary adrenal cortical insufficiency",
+        "primary hypoadrenalism"
+      ],
+      "otherChangesAuthorized": false
+    }
+  },
+  "mapping": {
+    "primaryConditionId": "adrenal-histoplasmosis",
+    "conditionId": "addisons-disease",
+    "disposition": "ADD-BOUNDED-RARE-INFECTION-COMPLICATION",
+    "pathways": [
+      "rare-infection-complication"
+    ],
+    "pathwayIntelligence": null,
+    "publicationGuard": [
+      "documented adrenal histoplasmosis required",
+      "pulmonary histoplasmosis alone does not satisfy guard",
+      "Addison disease/primary adrenal insufficiency independently documented",
+      "exclude central/pituitary/hypothalamic and glucocorticoid-induced adrenal insufficiency",
+      "do not generalize to all histoplasmosis",
+      "no mechanistic pathway metadata"
+    ]
+  },
+  "source": {
+    "pmid": "30656706",
+    "citation": "Singh M, Chandy DD, Bharani T, et al. Clinical outcomes and cortical reserve in adrenal histoplasmosis-A retrospective follow-up study of 40 patients. Clin Endocrinol (Oxf). 2019;90(4):534-541. PMID 30656706",
+    "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30656706/",
+    "proposedVerified": false,
+    "verificationScope": "clinical-evidence"
+  },
+  "expectedStateAfterImplementation": {
+    "catalogIdentities": 302,
+    "knowledgeBaseFiles": 302,
+    "publishedMappings": 104,
+    "draftMappings": 198,
+    "references": 142,
+    "verified": 141,
+    "unverified": 1,
+    "reviewFindingCount": 1,
+    "hardFindingCount": 0
+  },
+  "approvalPhrase": "I approve Adrenal Histoplasmosis Taxonomy Amendment 2026",
+  "approvalDate": "2026-08-19",
+  "qualifiedHumanApproval": "I approve Adrenal Histoplasmosis Taxonomy Amendment 2026",
+  "approvedProposalSha256": "cf056c132c3d8eb3b677009c0b8b0f9656389f53c7558fd7585241afc6afdd06",
+  "implementationResult": {
+    "parentLocalHead": "b21cc7948292a022a1b3ba53ac758e87e799ce75",
+    "taxonomyIdentityAdded": "adrenal-histoplasmosis",
+    "existingTargetReused": "addisons-disease",
+    "duplicatePrimaryAdrenalInsufficiencyAdded": false,
+    "mappingAdded": "adrenal-histoplasmosis->addisons-disease",
+    "citationVerifiedAfterTaxonomyImplementation": false,
+    "pmid": "30656706",
+    "catalogIdentitiesAfterImplementation": 302,
+    "knowledgeBaseFilesAfterImplementation": 302,
+    "publishedMappingsAfterImplementation": 104,
+    "draftMappingsAfterImplementation": 198,
+    "liveCitationDebtAfterImplementation": 1
+  },
+  "nonNegotiableBoundary": "The new mapping is site-specific to documented adrenal histoplasmosis. Pulmonary histoplasmosis is not sufficient; Addison disease/primary adrenal insufficiency must be independently documented; central or glucocorticoid-induced adrenal insufficiency is outside scope. PMID 30656706 remains verified:false."
+}

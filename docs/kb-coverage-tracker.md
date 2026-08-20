@@ -1,3 +1,18 @@
+<!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:START -->
+## Adrenal Histoplasmosis taxonomy checkpoint
+
+- Catalog identities: **302**.
+- Knowledge-base mappings: **302**.
+- Overall published mappings: **104**.
+- Overall draft mappings: **198**.
+- Live references: **142**.
+- Live verified: **141**.
+- Live unverified: **1**.
+- Published-unverified review findings: **1**.
+- Hard citation findings: **0**.
+- Sole live review row: `adrenal-histoplasmosis → addisons-disease`, PMID **30656706**.
+<!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:END -->
+
 <!-- PTH-TAXONOMY-2026:START -->
 ## Post-Traumatic Headache taxonomy and citation closure
 

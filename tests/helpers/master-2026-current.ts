@@ -96,8 +96,8 @@ export function assertMaster2026CurrentState(): void {
   expect(citation.summary.replaceSource).toBe(5);
 
   const mappings = loadMappings();
-  expect(mappings).toHaveLength(301);
-  expect(mappings.filter((mapping) => !mapping.draft)).toHaveLength(103);
+  expect(mappings).toHaveLength(302);
+  expect(mappings.filter((mapping) => !mapping.draft)).toHaveLength(104);
   expect(mappings.filter((mapping) => mapping.draft)).toHaveLength(198);
   const byId = new Map(mappings.map((mapping) => [mapping.id, mapping]));
 
@@ -121,13 +121,13 @@ export function assertMaster2026CurrentState(): void {
   const refs = mappings.flatMap((mapping) =>
     mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
   );
-  expect(refs).toHaveLength(141);
+  expect(refs).toHaveLength(142);
   expect(refs.filter((ref) => ref.verified === true)).toHaveLength(141);
-  expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
+  expect(refs.filter((ref) => ref.verified === false)).toHaveLength(1);
   const clinical = refs.filter(
     (ref) => ref.verificationScope === "clinical-evidence",
   );
-  expect(clinical).toHaveLength(136);
+  expect(clinical).toHaveLength(137);
   expect(clinical.every((ref) => Boolean(ref.sourceUrl))).toBe(true);
 
   const mildTbi = byId.get("mild-tbi");
