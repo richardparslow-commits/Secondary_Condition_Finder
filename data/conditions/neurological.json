@@ -1,24 +1,244 @@
 {
   "bodySystem": "Neurological",
   "conditions": [
-    {"id":"peripheral-neuropathy","name":"Peripheral Neuropathy","aliases":["PN"],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Verified neurological mapping."]},
-    {"id":"rem-sleep-disorder","name":"REM Sleep Disorder","aliases":["REM Sleep Behavior Disorder"],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review of 38 CFR rating codes."]},
-    {"id":"micro-tbi","name":"Micro TBI","aliases":["Micro Traumatic Brain Injury"],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review of 38 CFR rating codes."]},
-    {"id":"post-concussion-syndrome","name":"Post-Concussion Syndrome / Late Effects of TBI","aliases":["PCS"],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review of 38 CFR rating codes."]},
-    {"id":"intracranial-injury-without-skull-fracture","name":"Intracranial Injury Without Skull Fracture","aliases":["Intracranial Injury"],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review of 38 CFR rating codes."]},
-    {"id":"subdural-hematoma","name":"Subdural Hematoma","aliases":["SDH"],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review of 38 CFR rating codes."]},
-    {"id":"epidural-hematoma","name":"Epidural Hematoma","aliases":["EDH"],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review of 38 CFR rating codes."]},
-    {"id":"traumatic-subarachnoid-hemorrhage","name":"Traumatic Subarachnoid Hemorrhage","aliases":["TSAH"],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review of 38 CFR rating codes."]},
-    {"id":"penetrating-head-trauma","name":"Penetrating Head Trauma","aliases":["Penetrating Brain Injury"],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review of 38 CFR rating codes."]},
-    {"id":"migraine-headaches","name":"Migraine Headaches","aliases":["Migraines"],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review"]},
-    {"id":"als","name":"als","aliases":[],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review"]},
-    {"id":"cerebral-contusion-diffuse-axonal-injury","name":"cerebral contusion diffuse axonal injury","aliases":[],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review"]},
-    {"id":"cerebral-palsy","name":"cerebral palsy","aliases":[],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review"]},
-    {"id":"radiculopathy-femoral","name":"radiculopathy femoral","aliases":[],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review"]},
-    {"id":"radiculopathy-sciatic","name":"radiculopathy sciatic","aliases":[],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review"]},
-    {"id":"radiculopathy-upper-extremity","name":"radiculopathy upper extremity","aliases":[],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review"]},
-    {"id":"radiculopathy","name":"radiculopathy","aliases":[],"bodySystem":"Neurological","ratingSchedule":[],"reviewNotes":["Pending manual review"]},
-    {"id":"skull-fracture-non-basilar-and-basal","name":"Skull Fracture (Non-basilar and Basal)","aliases":["Basal Skull Fracture","Non-basilar Skull Fracture"],"bodySystem":"Neurological","ratingSchedule":[{"citation":"38 CFR 4.71a","note":"Schedule of ratings, musculoskeletal system, including skull loss.","verified":false},{"citation":"38 CFR 4.124a","note":"Schedule of ratings, neurological conditions and residuals of brain trauma.","verified":false}],"reviewNotes":["Diagnostic code selection and fracture variant details still require human review."]},
-    {"id":"mild-tbi","name":"Mild Tbi","aliases":[],"bodySystem":"neurological","ratingSchedule":[],"reviewNotes":["Pending human review"]}
+    {
+      "id": "peripheral-neuropathy",
+      "name": "Peripheral Neuropathy",
+      "aliases": [
+        "PN"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Verified neurological mapping."
+      ]
+    },
+    {
+      "id": "rem-sleep-disorder",
+      "name": "REM Sleep Disorder",
+      "aliases": [
+        "REM Sleep Behavior Disorder"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ]
+    },
+    {
+      "id": "micro-tbi",
+      "name": "Micro TBI",
+      "aliases": [
+        "Micro Traumatic Brain Injury"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ]
+    },
+    {
+      "id": "post-concussion-syndrome",
+      "name": "Post-Concussion Syndrome / Late Effects of TBI",
+      "aliases": [
+        "PCS"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ]
+    },
+    {
+      "id": "intracranial-injury-without-skull-fracture",
+      "name": "Intracranial Injury Without Skull Fracture",
+      "aliases": [
+        "Intracranial Injury"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ]
+    },
+    {
+      "id": "subdural-hematoma",
+      "name": "Subdural Hematoma",
+      "aliases": [
+        "SDH"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ]
+    },
+    {
+      "id": "epidural-hematoma",
+      "name": "Epidural Hematoma",
+      "aliases": [
+        "EDH"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ]
+    },
+    {
+      "id": "traumatic-subarachnoid-hemorrhage",
+      "name": "Traumatic Subarachnoid Hemorrhage",
+      "aliases": [
+        "TSAH"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ]
+    },
+    {
+      "id": "penetrating-head-trauma",
+      "name": "Penetrating Head Trauma",
+      "aliases": [
+        "Penetrating Brain Injury"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ]
+    },
+    {
+      "id": "migraine-headaches",
+      "name": "Migraine Headaches",
+      "aliases": [
+        "Migraines"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ]
+    },
+    {
+      "id": "post-traumatic-headache",
+      "name": "Post-Traumatic Headache",
+      "aliases": [
+        "posttraumatic headache",
+        "post-traumatic headache",
+        "PTH",
+        "headache attributed to traumatic injury to the head"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ]
+    },
+    {
+      "id": "als",
+      "name": "als",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ]
+    },
+    {
+      "id": "cerebral-contusion-diffuse-axonal-injury",
+      "name": "cerebral contusion diffuse axonal injury",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ]
+    },
+    {
+      "id": "cerebral-palsy",
+      "name": "cerebral palsy",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ]
+    },
+    {
+      "id": "radiculopathy-femoral",
+      "name": "radiculopathy femoral",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ]
+    },
+    {
+      "id": "radiculopathy-sciatic",
+      "name": "radiculopathy sciatic",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ]
+    },
+    {
+      "id": "radiculopathy-upper-extremity",
+      "name": "radiculopathy upper extremity",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ]
+    },
+    {
+      "id": "radiculopathy",
+      "name": "radiculopathy",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review"
+      ]
+    },
+    {
+      "id": "skull-fracture-non-basilar-and-basal",
+      "name": "Skull Fracture (Non-basilar and Basal)",
+      "aliases": [
+        "Basal Skull Fracture",
+        "Non-basilar Skull Fracture"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system, including skull loss.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and residuals of brain trauma.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Diagnostic code selection and fracture variant details still require human review."
+      ]
+    },
+    {
+      "id": "mild-tbi",
+      "name": "Mild Tbi",
+      "aliases": [],
+      "bodySystem": "neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending human review"
+      ]
+    }
   ]
 }

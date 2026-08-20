@@ -18,9 +18,9 @@ describe("catalog quality wave 8", () => {
   const knowledgeBase = loadKnowledgeBase();
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
-  it("preserves the target-v2 300/300 integrity contract", () => {
-    expect(catalog).toHaveLength(300);
-    expect(knowledgeBase).toHaveLength(300);
+  it("preserves the target-v2 301/301 integrity contract", () => {
+    expect(catalog).toHaveLength(301);
+    expect(knowledgeBase).toHaveLength(301);
   });
 
   it("keeps all Wave 8 quality targets present without creating new identities", () => {

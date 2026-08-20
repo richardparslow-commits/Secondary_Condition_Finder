@@ -33,9 +33,9 @@ describe("clinical program completion controls", () => {
     (reference) => reference.verificationScope === "clinical-evidence" && Boolean(reference.sourceUrl),
   ).length;
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 301/301 universe", () => {
+    expect(catalog).toHaveLength(301);
+    expect(kb).toHaveLength(301);
   });
 
   it("keeps the current tracker synchronized to the machine-readable disposition and citation state", () => {

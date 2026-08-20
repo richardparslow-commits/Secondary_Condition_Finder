@@ -8,9 +8,9 @@ describe("clinical evidence promotion batch 20", () => {
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 301/301 universe", () => {
+    expect(catalog).toHaveLength(301);
+    expect(kb).toHaveLength(301);
   });
 
   it("withdraws anxiety, schizophrenia, and substance-use mappings that were legal/rating-only", () => {
@@ -29,19 +29,18 @@ describe("clinical evidence promotion batch 20", () => {
     }
   });
 
-  it("keeps only clinically sourced mTBI headache research with the migraine-target limitation", () => {
+  it("keeps only clinically sourced mTBI post-traumatic-headache research", () => {
     const mapping = byId.get("mild-tbi");
     const suggestion = mapping?.suggestions[0];
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe("migraine-headaches");
+    expect(suggestion?.conditionId).toBe("post-traumatic-headache");
     expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.rationale).toMatch(/post-traumatic headache/i);
-    expect(suggestion?.rationale).toMatch(/phenotype-oriented research flag/i);
-    expect(suggestion?.rationale).toMatch(/does not by itself establish.*migraine diagnosis/i);
-    expect(suggestion?.rationale).toMatch(/verification.*remains on hold/i);
+    expect(suggestion?.rationale).toMatch(/mild traumatic brain injury/i);
+    expect(suggestion?.rationale).toMatch(/within 7 days/i);
+    expect(suggestion?.rationale).toMatch(/greater than 3 months/i);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("38568491");
-    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-19");
     expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
   });
 

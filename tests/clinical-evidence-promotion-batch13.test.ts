@@ -8,9 +8,9 @@ describe("clinical evidence promotion batch 13", () => {
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 301/301 universe", () => {
+    expect(catalog).toHaveLength(301);
+    expect(kb).toHaveLength(301);
   });
 
   it("keeps bounded cauda-equina erectile-dysfunction research after source consolidation", () => {

@@ -16,7 +16,7 @@ describe("citation verification batch 13",()=>{
     expect(sug("ptsd","migraine-headaches").pathwayIntelligence).toBeUndefined();
     expect(sug("trigeminal-neuralgia","depressive-disorder").pathwayIntelligence).toBeUndefined();
     expect(mapping("ocd").draft).toBe(true);
-    expect(src(sug("mild-tbi","migraine-headaches"),"38568491").verified).toBe(false);
+    expect(src(sug("mild-tbi","post-traumatic-headache"),"38568491").verified).toBe(false);
   });
 });
 describe("batch 13 ratchet",()=>{it("pins the approved baseline",()=>{const a=fs.readFileSync(path.join(root,"scripts/audit-citation-verification.js"),"utf8");expect(a).toContain("liveVerified: 140,");expect(a).toContain("verifiedProvenance: 146,");expect(a).toContain("unverified: 1,");expect(a).toContain("reviewFindings: 1,");});});

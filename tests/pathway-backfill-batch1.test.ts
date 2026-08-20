@@ -59,15 +59,16 @@ describe("controlled pathway backfill batch 1", () => {
     }
   });
 
-  it("recognizes the Batch 20 mTBI headache repair without inventing broader pathway metadata", () => {
+  it("recognizes the PTH taxonomy correction without inventing broader pathway metadata", () => {
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "mild-tbi");
-    const headache = mapping?.suggestions.find((entry) => entry.conditionId === "migraine-headaches");
+    const headache = mapping?.suggestions.find((entry) => entry.conditionId === "post-traumatic-headache");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(1);
     expect(headache?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
     expect(headache?.sourceReferences[0]?.sourceUrl).toContain("38568491");
     expect(headache?.pathwayIntelligence).toBeUndefined();
-    expect(headache?.rationale).toMatch(/post-traumatic headache/i);
+    expect(headache?.rationale).toMatch(/within 7 days/i);
+    expect(headache?.rationale).toMatch(/greater than 3 months/i);
     expect(mapping?.suggestions.some((entry) => entry.conditionId === "depressive-disorder")).toBe(false);
   });
 

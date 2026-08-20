@@ -29,9 +29,9 @@ describe("condition catalog expansion wave 7", () => {
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
   const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
 
-  it("reaches the target-v2 catalog at exactly 300 conditions", () => {
-    expect(catalog).toHaveLength(300);
-    expect(knowledgeBase).toHaveLength(300);
+  it("reaches the target-v2 catalog at exactly 301 conditions", () => {
+    expect(catalog).toHaveLength(301);
+    expect(knowledgeBase).toHaveLength(301);
   });
 
   it("preserves all 10 approved Wave 7 identities", () => {

@@ -11,9 +11,9 @@ describe("targeted clinical mapping batch 31", () => {
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 301/301 universe", () => {
+    expect(catalog).toHaveLength(301);
+    expect(kb).toHaveLength(301);
   });
 
   it("recognizes Batch-7 insomnia-to-depression temporal-association narrowing", () => {
@@ -54,16 +54,17 @@ describe("targeted clinical mapping batch 31", () => {
     expect(suggestion?.rationale).not.toMatch(/somatopsychic research/i);
   });
 
-  it("preserves the existing bounded mild-TBI to migraine mapping", () => {
+  it("preserves the corrected bounded mild-TBI to post-traumatic-headache mapping", () => {
     const mapping = byId.get("mild-tbi");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(1);
-    expect(mapping?.suggestions[0]?.conditionId).toBe("migraine-headaches");
+    expect(mapping?.suggestions[0]?.conditionId).toBe("post-traumatic-headache");
     expect(mapping?.suggestions[0]?.sourceReferences[0]?.sourceUrl).toContain("38568491");
-    expect(mapping?.suggestions[0]?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
+    expect(mapping?.suggestions[0]?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-19");
     expect(mapping?.suggestions[0]?.sourceReferences[0]?.verified).toBe(false);
-    expect(mapping?.suggestions[0]?.rationale).toMatch(/phenotype-oriented research flag/i);
-    expect(mapping?.suggestions[0]?.rationale).toMatch(/verification.*remains on hold/i);
+    expect(mapping?.suggestions[0]?.rationale).toMatch(/mild traumatic brain injury/i);
+    expect(mapping?.suggestions[0]?.rationale).toMatch(/within 7 days/i);
+    expect(mapping?.suggestions[0]?.rationale).toMatch(/greater than 3 months/i);
   });
 
   it("keeps micro-TBI a separate nonstandardized safe draft", () => {

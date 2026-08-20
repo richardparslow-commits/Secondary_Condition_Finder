@@ -19,9 +19,9 @@ describe("clinical evidence promotion batch 1", () => {
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
   const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves the target-v2 300/300 identity contract", () => {
-    expect(catalog).toHaveLength(300);
-    expect(knowledgeBase).toHaveLength(300);
+  it("preserves the target-v2 301/301 identity contract", () => {
+    expect(catalog).toHaveLength(301);
+    expect(knowledgeBase).toHaveLength(301);
   });
 
   it("publishes only the reviewed cardiomyopathy heart-failure relationship", () => {

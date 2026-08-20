@@ -11,7 +11,7 @@ function ids(path: string) {
 describe("clinical evidence promotion batch 4", () => {
   const catalog = loadConditionCatalog(); const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
-  it("preserves 300/300", () => { expect(catalog).toHaveLength(300); expect(kb).toHaveLength(300); });
+  it("preserves 301/301", () => { expect(catalog).toHaveLength(301); expect(kb).toHaveLength(301); });
   it("promotes ACL and PCL osteoarthritis research with injury-specific clinical sources", () => {
     for (const [id, pmid] of [["acl-injury","33852440"],["pcl-injury","34505176"]] as const) {
       const mapping = byId.get(id); const suggestion = mapping?.suggestions[0];

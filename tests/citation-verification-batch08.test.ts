@@ -29,23 +29,22 @@ describe("citation verification batch 08", () => {
     const suggestion = byId.get("migraine-headaches")?.suggestions[0];
     expect(suggestion?.conditionId).toBe("depressive-disorder");
     expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.rationale).toMatch(/temporal-association research/i);
+    expect(suggestion?.rationale).toMatch(/temporal association/i);
     expect(suggestion?.rationale).toMatch(/does not establish individual causation/i);
     expect(suggestion?.rationale).not.toMatch(/somatopsychic research/i);
     expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
   });
 
-  it("holds the mTBI migraine-target source unverified after taxonomy narrowing", () => {
+  it("holds the corrected mTBI post-traumatic-headache source unverified", () => {
     const suggestion = byId.get("mild-tbi")?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
-    expect(suggestion?.conditionId).toBe("migraine-headaches");
+    expect(suggestion?.conditionId).toBe("post-traumatic-headache");
     expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.rationale).toMatch(/phenotype-oriented research flag/i);
-    expect(suggestion?.rationale).toMatch(/post-traumatic headache/i);
-    expect(suggestion?.rationale).toMatch(/does not by itself establish.*migraine diagnosis/i);
-    expect(suggestion?.rationale).toMatch(/verification.*remains on hold/i);
+    expect(suggestion?.rationale).toMatch(/mild traumatic brain injury/i);
+    expect(suggestion?.rationale).toMatch(/within 7 days/i);
+    expect(suggestion?.rationale).toMatch(/greater than 3 months/i);
     expect(source?.sourceUrl).toContain("38568491");
-    expect(source?.sourceCheckedOn).toBe("2026-08-18");
+    expect(source?.sourceCheckedOn).toBe("2026-08-19");
     expect(source?.verified).toBe(false);
   });
 

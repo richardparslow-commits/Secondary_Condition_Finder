@@ -14,9 +14,9 @@ describe("clinical evidence promotion batch 5", () => {
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves 300/300", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves 301/301", () => {
+    expect(catalog).toHaveLength(301);
+    expect(kb).toHaveLength(301);
   });
 
   it("promotes Barrett's esophagus only as an adenocarcinoma-specific cancer progression pathway", () => {

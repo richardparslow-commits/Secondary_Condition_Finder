@@ -96,9 +96,9 @@ export function assertMaster2026CurrentState(): void {
   expect(citation.summary.replaceSource).toBe(5);
 
   const mappings = loadMappings();
-  expect(mappings).toHaveLength(300);
+  expect(mappings).toHaveLength(301);
   expect(mappings.filter((mapping) => !mapping.draft)).toHaveLength(103);
-  expect(mappings.filter((mapping) => mapping.draft)).toHaveLength(197);
+  expect(mappings.filter((mapping) => mapping.draft)).toHaveLength(198);
   const byId = new Map(mappings.map((mapping) => [mapping.id, mapping]));
 
   for (const row of citation.relationshipDispositions) {
