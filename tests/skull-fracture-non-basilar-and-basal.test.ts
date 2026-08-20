@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
@@ -75,6 +76,13 @@ describe("catalog entry: skull-fracture-non-basilar-and-basal", () => {
 
 describe("knowledge-base mapping: Batch 22 safety withdrawal", () => {
   it("exists as a reviewed draft with no published suggestions", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(mapping).toBeDefined();
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);

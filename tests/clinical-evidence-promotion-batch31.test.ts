@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -12,11 +13,25 @@ describe("targeted clinical mapping batch 31", () => {
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
   it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(kb).toHaveLength(302);
   });
 
   it("recognizes Batch-7 insomnia-to-depression temporal-association narrowing", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("insomnia");
     const suggestion = mapping?.suggestions[0];
 
@@ -36,6 +51,13 @@ describe("targeted clinical mapping batch 31", () => {
   });
 
   it("recognizes Batch-8 migraine-to-depression temporal-association narrowing and verification", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("migraine-headaches");
     const suggestion = mapping?.suggestions[0];
 
@@ -55,6 +77,13 @@ describe("targeted clinical mapping batch 31", () => {
   });
 
   it("preserves the corrected bounded mild-TBI to post-traumatic-headache mapping", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("mild-tbi");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(1);
@@ -68,6 +97,13 @@ describe("targeted clinical mapping batch 31", () => {
   });
 
   it("keeps micro-TBI a separate nonstandardized safe draft", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("micro-tbi");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -75,6 +111,13 @@ describe("targeted clinical mapping batch 31", () => {
   });
 
   it("keeps the remaining unpromoted targeted identities safe-draft after exact-target review", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {
@@ -101,6 +144,13 @@ describe("targeted clinical mapping batch 31", () => {
   });
 
   it("guards the key negative modeling dispositions", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {
@@ -115,6 +165,13 @@ describe("targeted clinical mapping batch 31", () => {
   });
 
   it("reflects the current citation debt after Master 2026 citation verification", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const liveReferences = kb.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
@@ -137,6 +194,13 @@ describe("targeted clinical mapping batch 31", () => {
   });
 
   it("leaves the Wave 1-7 disposition ledger unchanged", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {

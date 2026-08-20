@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { describe, expect, it } from "vitest";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
@@ -9,11 +10,25 @@ describe("clinical evidence promotion batch 13", () => {
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
   it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(kb).toHaveLength(302);
   });
 
   it("keeps bounded cauda-equina erectile-dysfunction research after source consolidation", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("cauda-equina-syndrome");
     const suggestion = mapping?.suggestions[0];
     const sources = suggestion?.sourceReferences ?? [];
@@ -38,6 +53,13 @@ describe("clinical evidence promotion batch 13", () => {
   });
 
   it("preserves the Batch-13 legal cleanup after later asthma and COPD arrhythmia withdrawals", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     for (const primaryId of ["asthma", "copd"]) {
       const mapping = byId.get(primaryId);
       const osa = mapping?.suggestions.find((suggestion) => suggestion.conditionId === "sleep-apnea");

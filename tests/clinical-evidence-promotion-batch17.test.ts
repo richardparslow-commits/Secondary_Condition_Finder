@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -24,6 +25,13 @@ describe("clinical evidence promotion batch 17", () => {
   ) as RetirementLedger;
 
   it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(kb).toHaveLength(302);
   });
@@ -81,6 +89,13 @@ describe("clinical evidence promotion batch 17", () => {
   });
 
   it("recognizes the later adjustment-disorder GERD withdrawal after phenotype review", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const adjustment = byId.get("adjustment-disorder");
     expect(adjustment?.draft).toBe(true);
     expect(adjustment?.suggestions).toEqual([]);

@@ -1,8 +1,30 @@
 {
   "id": "cerebral-palsy",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence; retain legal authorities only as legal framework."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "scoliosis",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as neuromuscular musculoskeletal complication. Require documented cerebral palsy and separately documented scoliosis. Preserve the higher-risk severe/spastic phenotypes described in the source and do not infer scoliosis from CP alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of cerebral palsy and Scoliosis",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of the publication guard: Require documented cerebral palsy and separately documented scoliosis. Preserve the higher-risk severe/spastic phenotypes described in the source and do not infer scoliosis from CP alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Natural history of scoliosis in cerebral palsy and risk factors for progression of scoliosis. Journal of orthopaedic science : official journal of the Japanese Orthopaedic Association. 2018. doi:10.1016/j.jos.2018.03.009. PMID 29705176",
+          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded neuromuscular musculoskeletal complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29705176/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 29705176; approved Master Resolution proposition; guard: Require documented cerebral palsy and separately documented scoliosis. Preserve the higher-risk severe/spastic phenotypes described in the source and do not infer scoliosis from CP alone."
+        }
+      ]
+    }
+  ]
 }

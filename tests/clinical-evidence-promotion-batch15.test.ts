@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 
@@ -10,11 +11,25 @@ describe("clinical evidence promotion batch 15", () => {
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
   it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(kb).toHaveLength(302);
   });
 
   it("recognizes the later evidence-quality withdrawal of PsA depression research", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {

@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -10,6 +11,13 @@ const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
 describe("qualified-human approved clinical mapping batch M1", () => {
   it("publishes social anxiety to depressive disorder as temporal association only", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("social-anxiety-disorder");
     const suggestion = mapping?.suggestions[0];
     expect(mapping?.draft).toBe(false);
@@ -26,6 +34,13 @@ describe("qualified-human approved clinical mapping batch M1", () => {
   });
 
   it("publishes laryngeal cancer to aphonia only through documented treatment", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("laryngeal-cancer");
     const suggestion = mapping?.suggestions[0];
     expect(mapping?.draft).toBe(false);
@@ -41,6 +56,13 @@ describe("qualified-human approved clinical mapping batch M1", () => {
   });
 
   it("preserves the non-M1 evidence holds", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {
@@ -60,6 +82,13 @@ describe("qualified-human approved clinical mapping batch M1", () => {
   });
 
   it("records the M1 Wave disposition state", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {
@@ -80,6 +109,13 @@ describe("qualified-human approved clinical mapping batch M1", () => {
   });
 
   it("opens exactly four new bounded unverified clinical review rows", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {

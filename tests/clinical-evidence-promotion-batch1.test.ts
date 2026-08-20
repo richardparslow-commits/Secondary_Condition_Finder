@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -20,11 +21,25 @@ describe("clinical evidence promotion batch 1", () => {
   const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
 
   it("preserves the target-v2 302/302 identity contract", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(knowledgeBase).toHaveLength(302);
   });
 
   it("publishes only the reviewed cardiomyopathy heart-failure relationship", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("cardiomyopathy");
 
     expect(mapping?.draft).toBe(false);
@@ -43,6 +58,13 @@ describe("clinical evidence promotion batch 1", () => {
   });
 
   it("publishes only the reviewed urethral-stricture hydronephrosis relationship", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("urethral-stricture");
 
     expect(mapping?.draft).toBe(false);
@@ -62,6 +84,13 @@ describe("clinical evidence promotion batch 1", () => {
   });
 
   it("withdraws unsupported ankle-strain suggestions back to draft", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("ankle-strain");
 
     expect(mapping?.draft).toBe(true);

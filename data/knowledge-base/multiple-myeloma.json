@@ -1,8 +1,30 @@
 {
   "id": "multiple-myeloma",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as disease complication with chronicity guard. Require documented multiple myeloma and separately documented CKD after or attributable to myeloma-related renal disease. CKD chronicity criteria must be satisfied; do not relabel transient AKI or nonspecific renal impairment as CKD. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Multiple Myeloma and Chronic Kidney Disease / Renal Failure",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of the publication guard: Require documented multiple myeloma and separately documented CKD after or attributable to myeloma-related renal disease. CKD chronicity criteria must be satisfied; do not relabel transient AKI or nonspecific renal impairment as CKD."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Healthcare resource use and costs associated with chronic kidney disease in US private insurance patients with multiple myeloma. Journal of oncology pharmacy practice : official publication of the International Society of Oncology Pharmacy Practitioners. 2019. doi:10.1177/1078155218766408. PMID 29661050",
+          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded disease complication with chronicity guard proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29661050/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 29661050; approved Master Resolution proposition; guard: Require documented multiple myeloma and separately documented CKD after or attributable to myeloma-related renal disease. CKD chronicity criteria must be satisfied; do not relabel transient AKI or nonspecific renal impairment as CKD."
+        }
+      ]
+    }
+  ]
 }

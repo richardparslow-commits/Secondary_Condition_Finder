@@ -219,7 +219,7 @@
         },
         {
           "id": "heart-transplant-residuals",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "implantable-cardiac-pacemaker",
@@ -240,7 +240,7 @@
       "identities": [
         {
           "id": "bronchiectasis",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "chronic-laryngitis",
@@ -325,7 +325,7 @@
         },
         {
           "id": "short-bowel-syndrome",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "fecal-incontinence",
@@ -431,7 +431,7 @@
       "identities": [
         {
           "id": "amebiasis",
-          "disposition": "safe-draft"
+          "disposition": "published-evidence-led"
         },
         {
           "id": "actinomycosis",

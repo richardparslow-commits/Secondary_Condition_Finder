@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -17,11 +18,25 @@ describe("clinical evidence promotion batch 12", () => {
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
   it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(kb).toHaveLength(302);
   });
 
   it("repairs chronic-rhinitis to OSA only for a documented allergic-rhinitis phenotype", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("chronic-rhinitis");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
@@ -40,6 +55,13 @@ describe("clinical evidence promotion batch 12", () => {
   });
 
   it("repairs chronic-sinusitis to OSA as association-focused CRS research", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("chronic-sinusitis");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
@@ -58,6 +80,13 @@ describe("clinical evidence promotion batch 12", () => {
   });
 
   it("physically relocates hypothyroidism into endocrine maintenance with DC 7903 while allowing later clinical withdrawal", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {

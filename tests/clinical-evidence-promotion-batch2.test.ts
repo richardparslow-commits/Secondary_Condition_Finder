@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -21,11 +22,25 @@ describe("clinical evidence promotion batch 2", () => {
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
   it("preserves the target-v2 302/302 identity contract", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(knowledgeBase).toHaveLength(302);
   });
 
   it("publishes the reviewed hypertensive-heart-disease heart-failure relationship", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("hypertensive-heart-disease");
 
     expect(mapping?.draft).toBe(false);
@@ -45,6 +60,13 @@ describe("clinical evidence promotion batch 2", () => {
   });
 
   it("publishes the reviewed chronic-pyelonephritis CKD relationship cautiously", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("chronic-pyelonephritis");
 
     expect(mapping?.draft).toBe(false);
@@ -65,6 +87,13 @@ describe("clinical evidence promotion batch 2", () => {
   });
 
   it("withdraws unsafe knee and osteoarthritis legacy suggestions", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {

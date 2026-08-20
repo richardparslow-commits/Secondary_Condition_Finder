@@ -1,0 +1,2784 @@
+{
+  "program": "Clinical Mapping Master Resolution 2026",
+  "status": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "reviewDate": "2026-08-19",
+  "parentLocalHead": "fa5a1c4f883ffbb617bc6edfd06e495e653e0dce",
+  "supersedes": {
+    "program": "Clinical Mapping Taxonomy Resolution Batch T1 2026",
+    "implemented": false,
+    "reason": "The repository owner approved replacing piecemeal T1 work with a full open-world Master Clinical Mapping Resolution."
+  },
+  "researchAuthorizationRecorded": "I approve superseding T1 and doing the full Clinical Mapping Master Resolution next",
+  "baseline": {
+    "catalogConditions": 302,
+    "knowledgeBaseFiles": 302,
+    "publishedMappings": 104,
+    "draftMappings": 198,
+    "references": 142,
+    "liveVerified": 142,
+    "retiredVerified": 6,
+    "verifiedProvenance": 148,
+    "unverified": 0,
+    "reviewFindingCount": 0,
+    "hardFindingCount": 0,
+    "clinicalEvidenceReferences": 137,
+    "clinicalEvidenceReferencesWithUrls": 137,
+    "clinicalEvidenceProvenanceWithUrls": 141
+  },
+  "frozenCompletedWork": {
+    "originalMasterApprovedEdges": 68,
+    "postTraumaticHeadacheCorrection": "completed and citation-verified",
+    "adrenalHistoplasmosisCorrection": "completed and citation-verified",
+    "rule": "No completed mapping may be weakened, retargeted, or have verification state changed by this resolution."
+  },
+  "policy": {
+    "repositoryWrites": false,
+    "automaticPublication": false,
+    "automaticCitationVerification": false,
+    "mappingApprovalSeparateFromCitationVerification": true,
+    "newClinicalSourcesRemainVerifiedFalse": true,
+    "noCausationInflation": true,
+    "directionMatters": true,
+    "phenotypeAndTaxonomyMustMatch": true,
+    "treatmentExposureRequiredForTreatmentPathways": true,
+    "diagnosisNotSymptomOrOutcome": true,
+    "noInventedVaDiagnosticCodes": true,
+    "noMechanisticPathwayIntelligence": true,
+    "localOnly": true,
+    "noGitHubOrVercelWrites": true
+  },
+  "masterResolutionStats": {
+    "originalUnresolvedConditionsReviewed": 197,
+    "originalConditionsWithNewPublishableProposition": 33,
+    "originalConditionsResolvedByNewTaxonomyWithoutPublishingBroadIdentity": 2,
+    "originalConditionPreviouslyResolved": 1,
+    "originalConditionsFinalClosed": 161,
+    "newIdentities": 9,
+    "newPublishedPrimaryIdentities": 2,
+    "newTargetOnlyDraftIdentities": 7,
+    "newPublishedPrimaryConditionsTotal": 35,
+    "newRelationshipEdges": 39,
+    "newClinicalSourceRows": 39,
+    "uniquePmids": 37,
+    "conditionResolutionCounts": {
+      "APPROVE-PUBLISH-MASTER-RESOLUTION": 33,
+      "FINAL-CLOSE-ANATOMIC-HIERARCHY": 1,
+      "FINAL-CLOSE-COMBINED-IDENTITY-MANIFESTATION": 1,
+      "FINAL-CLOSE-COMPONENT-PHENOTYPE": 1,
+      "FINAL-CLOSE-DIRECTION": 16,
+      "FINAL-CLOSE-EVIDENCE-PHENOTYPE": 1,
+      "FINAL-CLOSE-HIERARCHY-OVERLAP": 2,
+      "FINAL-CLOSE-HIERARCHY-SITE-SUBTYPES": 1,
+      "FINAL-CLOSE-HIERARCHY-SPLIT": 1,
+      "FINAL-CLOSE-NO-SUPPORTED-SECONDARY": 9,
+      "FINAL-CLOSE-OUTCOME-NOT-DIAGNOSIS": 1,
+      "FINAL-CLOSE-PHENOTYPE-MISMATCH": 1,
+      "FINAL-CLOSE-PROPOSITION-MISMATCH": 114,
+      "FINAL-CLOSE-SAME-DISEASE-ETIOLOGIC-SUBTYPE": 1,
+      "FINAL-CLOSE-SAME-DISEASE-ORGAN-INVOLVEMENT": 1,
+      "FINAL-CLOSE-SAME-DISEASE-SITE-SUBTYPE": 1,
+      "FINAL-CLOSE-SAME-FAMILY": 1,
+      "FINAL-CLOSE-SAME-LESION": 2,
+      "FINAL-CLOSE-SAME-LESION-LOCALIZATION": 1,
+      "FINAL-CLOSE-SAME-LESION-MANIFESTATION": 1,
+      "FINAL-CLOSE-SPECTRUM-COMORBIDITY": 1,
+      "FINAL-CLOSE-TREATMENT-EVIDENCE": 3,
+      "RESOLVE-BY-DISTINCT-EPILEPSY-TAXONOMY": 1,
+      "RESOLVE-BY-SITE-SPECIFIC-TAXONOMY": 1,
+      "RESOLVED-PRIOR-SITE-SPECIFIC-TAXONOMY": 1
+    }
+  },
+  "newIdentities": [
+    {
+      "id": "acne-scarring",
+      "name": "Acne Scarring",
+      "aliases": [
+        "acne scars",
+        "post-acne scarring",
+        "atrophic acne scarring",
+        "hypertrophic acne scarring"
+      ],
+      "role": "target-only-draft",
+      "boundary": "Distinct from the existing painful/unstable `scars` identity; this identity covers clinically documented acne scarring without presuming pain or instability."
+    },
+    {
+      "id": "lumbar-spinal-stenosis",
+      "name": "Lumbar Spinal Stenosis",
+      "aliases": [
+        "lumbar spinal canal stenosis",
+        "lumbar canal stenosis",
+        "degenerative lumbar spinal stenosis"
+      ],
+      "role": "published-primary",
+      "boundary": "Site-specific lumbar phenotype derived from the broader spinal-stenosis concept; does not include cervical or thoracic stenosis."
+    },
+    {
+      "id": "epilepsy",
+      "name": "Epilepsy",
+      "aliases": [
+        "epileptic disorder",
+        "recurrent epilepsy"
+      ],
+      "role": "published-primary-and-target",
+      "boundary": "Distinct from the broader existing `seizure-disorder` identity. Requires an epilepsy diagnosis; acute symptomatic/provoked seizures alone do not qualify."
+    },
+    {
+      "id": "guillain-barre-syndrome",
+      "name": "Guillain-Barré Syndrome",
+      "aliases": [
+        "Guillain-Barre syndrome",
+        "GBS"
+      ],
+      "role": "target-only-draft",
+      "boundary": "Acute immune-mediated polyradiculoneuropathy diagnosis; do not merge with generic peripheral neuropathy."
+    },
+    {
+      "id": "reactive-arthritis",
+      "name": "Reactive Arthritis",
+      "aliases": [
+        "postinfectious reactive arthritis",
+        "ReA"
+      ],
+      "role": "target-only-draft",
+      "boundary": "Postinfectious inflammatory arthritis diagnosis; do not merge with nonspecific arthralgia."
+    },
+    {
+      "id": "lymphedema",
+      "name": "Lymphedema",
+      "aliases": [
+        "lymphoedema",
+        "secondary lymphedema"
+      ],
+      "role": "target-only-draft",
+      "boundary": "Separate lymphatic swelling disorder; breast-cancer-related lymphedema is a treatment-associated subtype."
+    },
+    {
+      "id": "endometrial-cancer",
+      "name": "Endometrial Cancer",
+      "aliases": [
+        "endometrial carcinoma",
+        "uterine endometrial cancer"
+      ],
+      "role": "target-only-draft",
+      "boundary": "Malignancy of the endometrium; distinct from ovarian and cervical cancer identities."
+    },
+    {
+      "id": "amebic-liver-abscess",
+      "name": "Amebic Liver Abscess",
+      "aliases": [
+        "amoebic liver abscess",
+        "ALA",
+        "hepatic amebiasis"
+      ],
+      "role": "target-only-draft",
+      "boundary": "Extraintestinal hepatic manifestation of Entamoeba histolytica infection; requires a separately documented liver abscess phenotype."
+    },
+    {
+      "id": "pulmonary-embolism",
+      "name": "Pulmonary Embolism",
+      "aliases": [
+        "PE",
+        "pulmonary thromboembolism"
+      ],
+      "role": "target-only-draft",
+      "boundary": "Pulmonary arterial thromboembolism diagnosis; distinct from DVT and nonspecific pulmonary vascular disease."
+    }
+  ],
+  "approvedRelationships": [
+    {
+      "primaryId": "acne",
+      "targetId": "acne-scarring",
+      "pmid": "37357642",
+      "title": "Prevalence and risk factors of acne scars in patients with acne vulgaris",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37357642/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "disease-complication-sequela",
+      "publicationGuard": "Require documented acne vulgaris/acne conglobata and separately documented acne scarring. Do not infer scarring from active acne alone. Do not substitute the existing painful/unstable-scars identity unless those scar characteristics are independently documented.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": true,
+      "note": null
+    },
+    {
+      "primaryId": "lumbar-spinal-stenosis",
+      "targetId": "cauda-equina-syndrome",
+      "pmid": "36401862",
+      "title": "Comparative analysis of the results of decompressive interventions in elderly patients with cauda equine syndrome caused by lumbar spinal stenosis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36401862/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "anatomic-compression-complication",
+      "publicationGuard": "Require documented lumbar spinal stenosis and separately diagnosed cauda equina syndrome with correlating compressive/anatomic evidence. Do not generalize to cervical or thoracic stenosis. Radiculopathy, neurogenic claudication, bowel/bladder symptoms, or stenosis on imaging alone do not establish CES.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": true,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "chronic-kidney-disease",
+      "targetId": "anemia",
+      "pmid": "41485812",
+      "title": "KDIGO 2026 Clinical Practice Guideline for the Management of Anemia in Chronic Kidney Disease (CKD)",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41485812/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "disease-complication",
+      "publicationGuard": "Require documented CKD and independently documented anemia. Do not infer anemia from CKD stage alone, and do not exclude evaluation for other clinically relevant causes of anemia.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "kidney-stones",
+      "targetId": "chronic-kidney-disease",
+      "pmid": "27837248",
+      "title": "Nephrolithiasis as a risk factor of chronic kidney disease: a meta-analysis of cohort studies with 4,770,691 participants",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27837248/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "temporal-association-risk",
+      "publicationGuard": "Require documented nephrolithiasis preceding separately documented CKD. This is population-level risk evidence and does not establish individual causation.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "cardiac-arrhythmia",
+      "targetId": "cardiomyopathy",
+      "pmid": "38811098",
+      "title": "Arrhythmia-Induced Cardiomyopathy: JACC State-of-the-Art Review",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38811098/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "phenotype-specific-arrhythmia-induced-cardiomyopathy",
+      "publicationGuard": "Require a sustained or sufficiently burdensome culprit arrhythmia/tachyarrhythmia plus separately documented ventricular dysfunction consistent with arrhythmia-induced cardiomyopathy. Do not generalize to all transient or incidental arrhythmias. Reversibility after rhythm/rate control, when documented, strengthens attribution.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "prostate-cancer",
+      "targetId": "urinary-incontinence",
+      "pmid": "32680820",
+      "title": "Urinary incontinence and erectile dysfunction in patients with localized or locally advanced prostate cancer: A nationwide observational study",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32680820/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "treatment-complication",
+      "publicationGuard": "Require documented prostate-cancer treatment, particularly radical prostatectomy, and separately documented post-treatment urinary incontinence. Do not infer incontinence from prostate cancer alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "prostate-cancer",
+      "targetId": "erectile-dysfunction",
+      "pmid": "32680820",
+      "title": "Urinary incontinence and erectile dysfunction in patients with localized or locally advanced prostate cancer: A nationwide observational study",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32680820/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "treatment-complication",
+      "publicationGuard": "Require documented prostate-cancer treatment (for example radical prostatectomy or radiotherapy) and separately documented post-treatment erectile dysfunction. Do not infer ED from prostate cancer alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "heart-transplant-residuals",
+      "targetId": "skin-cancer",
+      "pmid": "41322122",
+      "title": "The burden of skin cancer in heart transplant recipients: Impact of immunosuppressive regimens",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41322122/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "treatment-exposure-associated-malignancy",
+      "publicationGuard": "Require documented heart transplantation, chronic post-transplant immunosuppression, and separately diagnosed skin malignancy after transplant. Do not infer skin cancer from transplant status alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "lyme-disease",
+      "targetId": "cranial-nerve-palsy",
+      "pmid": "35064770",
+      "title": "Characteristics and outcome of facial nerve palsy from Lyme neuroborreliosis in the United States",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35064770/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "infection-neurologic-complication",
+      "publicationGuard": "Require documented Lyme neuroborreliosis or otherwise clinically attributable neurologic Lyme disease and separately documented cranial nerve palsy, most commonly facial nerve palsy. Do not generalize to uncomplicated Lyme disease.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "campylobacter-jejuni-infection",
+      "targetId": "guillain-barre-syndrome",
+      "pmid": "21261199",
+      "title": "Quantifying the association between Campylobacter infection and Guillain-Barré syndrome: a systematic review",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21261199/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "postinfectious-neurologic-complication",
+      "publicationGuard": "Require documented Campylobacter infection preceding a separately diagnosed Guillain-Barré syndrome. Do not infer GBS from enteritis alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": true,
+      "note": null
+    },
+    {
+      "primaryId": "campylobacter-jejuni-infection",
+      "targetId": "reactive-arthritis",
+      "pmid": "38929962",
+      "title": "Enteric Infection-Associated Reactive Arthritis: A Systematic Review and Meta-Analysis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38929962/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "postinfectious-rheumatologic-complication",
+      "publicationGuard": "Require documented Campylobacter infection preceding separately diagnosed reactive arthritis. Preserve the postinfectious temporal relationship and do not infer arthritis from infection alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": true,
+      "note": null
+    },
+    {
+      "primaryId": "shigella-or-salmonella",
+      "targetId": "reactive-arthritis",
+      "pmid": "38929962",
+      "title": "Enteric Infection-Associated Reactive Arthritis: A Systematic Review and Meta-Analysis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38929962/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "postinfectious-rheumatologic-complication",
+      "publicationGuard": "Require documented Salmonella or Shigella infection preceding separately diagnosed reactive arthritis. Preserve the postinfectious temporal relationship and do not infer arthritis from infection alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": true,
+      "note": null
+    },
+    {
+      "primaryId": "gallbladder-disease",
+      "targetId": "pancreatitis",
+      "pmid": "30249509",
+      "title": "A systematic review and meta-analysis of the aetiology of acute pancreatitis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30249509/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "phenotype-specific-biliary-complication",
+      "publicationGuard": "Apply only to documented gallstone/cholelithiasis or biliary gallbladder disease with separately diagnosed acute pancreatitis attributable to a biliary etiology. Do not generalize to every gallbladder disorder.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "knee-injury",
+      "targetId": "post-traumatic-osteoarthritis",
+      "pmid": "31072840",
+      "title": "Knee osteoarthritis risk is increased 4-6 fold after knee injury - a systematic review and meta-analysis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31072840/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "post-traumatic-disease-sequela",
+      "publicationGuard": "Require a documented structural traumatic knee injury (for example ACL and/or meniscal injury) preceding separately documented post-traumatic knee osteoarthritis. Do not infer OA from nonspecific knee pain or strain alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "short-bowel-syndrome",
+      "targetId": "kidney-stones",
+      "pmid": "35458207",
+      "title": "Dietary Management of Chronic Kidney Disease and Secondary Hyperoxaluria in Patients with Short Bowel Syndrome and Type 3 Intestinal Failure",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35458207/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "phenotype-specific-metabolic-complication",
+      "publicationGuard": "Require documented short-bowel/short-gut syndrome with the relevant malabsorptive phenotype, especially colon-in-continuity/enteric hyperoxaluria when applicable, and separately documented stone disease. Do not generalize to all short-bowel phenotypes.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "cold-injury-residuals",
+      "targetId": "peripheral-neuropathy",
+      "pmid": "28969380",
+      "title": "Chronic non-freezing cold injury results in neuropathic pain due to a sensory neuropathy",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28969380/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "phenotype-specific-injury-complication",
+      "publicationGuard": "Apply to documented non-freezing cold injury with persistent objectively supported sensory neuropathy. Do not generalize this source to all freezing injuries or every cold-injury residual phenotype.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "breast-cancer",
+      "targetId": "lymphedema",
+      "pmid": "36513801",
+      "title": "Risk factors of unilateral breast cancer-related lymphedema: an updated systematic review and meta-analysis of 84 cohort studies",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36513801/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "treatment-complication",
+      "publicationGuard": "Require documented breast-cancer treatment with relevant lymphatic disruption/exposure (for example axillary node surgery and/or regional radiotherapy) and separately documented lymphedema. Do not infer lymphedema from breast cancer alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": true,
+      "note": null
+    },
+    {
+      "primaryId": "breast-cancer",
+      "targetId": "peripheral-neuropathy",
+      "pmid": "28954296",
+      "title": "Chemotherapy-Associated Peripheral Neuropathy in Patients With Early-Stage Breast Cancer: A Systematic Review",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28954296/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "treatment-complication",
+      "publicationGuard": "Require documented neurotoxic breast-cancer chemotherapy exposure (such as taxane/platinum-containing therapy when applicable) and separately documented chemotherapy-associated peripheral neuropathy.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "breast-cancer",
+      "targetId": "cardiomyopathy",
+      "pmid": "18514938",
+      "title": "Trastuzumab-induced cardiomyopathy",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18514938/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "treatment-complication",
+      "publicationGuard": "Require documented cardiotoxic breast-cancer treatment exposure, particularly trastuzumab and/or relevant anthracycline exposure, plus separately diagnosed treatment-associated cardiomyopathy or ventricular dysfunction. Do not infer cardiomyopathy from breast cancer alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "colorectal-cancer",
+      "targetId": "peripheral-neuropathy",
+      "pmid": "34410459",
+      "title": "Systematic review of long-term chemotherapy-induced peripheral neuropathy (CIPN) following adjuvant oxaliplatin for colorectal cancer",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34410459/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "treatment-complication",
+      "publicationGuard": "Require documented oxaliplatin-containing colorectal-cancer chemotherapy and separately documented chemotherapy-induced peripheral neuropathy. Do not generalize to colorectal cancer without neurotoxic treatment.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "multiple-myeloma",
+      "targetId": "chronic-kidney-disease",
+      "pmid": "29661050",
+      "title": "Healthcare resource use and costs associated with chronic kidney disease in US private insurance patients with multiple myeloma",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29661050/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "disease-complication-with-chronicity-guard",
+      "publicationGuard": "Require documented multiple myeloma and separately documented CKD after or attributable to myeloma-related renal disease. CKD chronicity criteria must be satisfied; do not relabel transient AKI or nonspecific renal impairment as CKD.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "cerebral-palsy",
+      "targetId": "scoliosis",
+      "pmid": "29705176",
+      "title": "Natural history of scoliosis in cerebral palsy and risk factors for progression of scoliosis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29705176/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "neuromuscular-musculoskeletal-complication",
+      "publicationGuard": "Require documented cerebral palsy and separately documented scoliosis. Preserve the higher-risk severe/spastic phenotypes described in the source and do not infer scoliosis from CP alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "polycystic-ovary-syndrome",
+      "targetId": "endometrial-cancer",
+      "pmid": "36960190",
+      "title": "Risk of endometrial cancer in patients with polycystic ovarian syndrome: A meta-analysis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36960190/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "temporal-association-risk",
+      "publicationGuard": "Require documented PCOS preceding separately diagnosed endometrial cancer. Treat as population-level association/risk evidence; do not claim individual causation and preserve confounding limitations including BMI.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": true,
+      "note": null
+    },
+    {
+      "primaryId": "uterine-fibroids",
+      "targetId": "anemia",
+      "pmid": "38723935",
+      "title": "The modern management of uterine fibroids-related abnormal uterine bleeding",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38723935/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "bleeding-mediated-disease-complication",
+      "publicationGuard": "Require documented uterine fibroids with clinically relevant abnormal/heavy uterine bleeding and separately documented iron deficiency and/or anemia. Do not infer anemia from asymptomatic fibroids.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "kidney-cancer",
+      "targetId": "chronic-kidney-disease",
+      "pmid": "27614693",
+      "title": "Partial Nephrectomy Versus Radical Nephrectomy for Clinical T1b and T2 Renal Tumors: A Systematic Review and Meta-analysis of Comparative Studies",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27614693/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "treatment-complication",
+      "publicationGuard": "Require documented nephrectomy for renal malignancy and separately documented new or worsened postoperative CKD satisfying chronicity criteria. Do not infer CKD from kidney cancer alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "amebiasis",
+      "targetId": "amebic-liver-abscess",
+      "pmid": "38577528",
+      "title": "Amebic liver abscess: An update",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38577528/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "extraintestinal-infection-complication",
+      "publicationGuard": "Require documented Entamoeba histolytica infection/amebiasis and separately documented amebic liver abscess using appropriate clinical/imaging/laboratory evidence. Do not infer hepatic abscess from intestinal colonization alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": true,
+      "note": null
+    },
+    {
+      "primaryId": "diabetic-retinopathy",
+      "targetId": "retinal-detachment",
+      "pmid": "34477996",
+      "title": "Management of Complications and Vision Loss from Proliferative Diabetic Retinopathy",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34477996/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "phenotype-specific-ocular-complication",
+      "publicationGuard": "Apply only to proliferative diabetic retinopathy with separately documented tractional retinal detachment. Do not generalize this source to nonproliferative diabetic retinopathy or unrelated rhegmatogenous detachment.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "cardiac-inflammatory-disease",
+      "targetId": "cardiac-arrhythmia",
+      "pmid": "30476544",
+      "title": "Arrhythmias in myocarditis: State of the art",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30476544/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "phenotype-specific-inflammatory-cardiac-complication",
+      "publicationGuard": "Apply only to the documented myocarditis phenotype within the broader cardiac-inflammatory identity and separately documented arrhythmia. Do not generalize to every inflammatory cardiac diagnosis.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "peripheral-vascular-disease",
+      "targetId": "amputation-or-loss-of-use",
+      "pmid": "31606132",
+      "title": "Morbidity and mortality associated with atherosclerotic peripheral artery disease: A systematic review",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31606132/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "phenotype-specific-complication-outcome-risk",
+      "publicationGuard": "Apply only to documented atherosclerotic lower-extremity peripheral artery disease, especially critical limb-threatening ischemia, with separately documented major amputation/loss of use. Do not generalize to venous disease or nonspecific vascular diagnoses.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "retinal-detachment",
+      "targetId": "cataracts",
+      "pmid": "39541379",
+      "title": "Surgical managements for rhegmatogenous retinal detachment: A network meta-analysis of randomized controlled trial",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39541379/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "treatment-complication",
+      "publicationGuard": "Require documented retinal-detachment surgery involving pars plana vitrectomy (with or without scleral buckle as applicable) and separately documented postoperative cataract progression. Do not infer cataract from untreated retinal detachment.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "deep-vein-thrombosis",
+      "targetId": "pulmonary-embolism",
+      "pmid": "42134598",
+      "title": "Outcomes and predictors of complications after distal deep vein thrombosis: a prospective analysis of 8488 patients",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42134598/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "thromboembolic-complication",
+      "publicationGuard": "Require documented DVT preceding separately documented pulmonary embolism. Do not infer PE from DVT alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": true,
+      "note": null
+    },
+    {
+      "primaryId": "bronchiectasis",
+      "targetId": "pulmonary-hypertension",
+      "pmid": "38860405",
+      "title": "Pulmonary vascular resistance predicts the mortality in patients with bronchiectasis-associated pulmonary hypertension",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38860405/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "pulmonary-disease-complication",
+      "publicationGuard": "Require documented bronchiectasis and separately documented pulmonary hypertension using appropriate hemodynamic/clinical evidence. Do not infer pulmonary hypertension from bronchiectasis severity alone.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "myocardial-infarction",
+      "targetId": "cardiac-arrhythmia",
+      "pmid": "34953752",
+      "title": "Early and late ventricular arrhythmias complicating ST-segment elevation myocardial infarction",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34953752/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "acute-cardiac-complication",
+      "publicationGuard": "Apply to documented acute myocardial infarction, particularly STEMI consistent with the source, with separately documented ventricular arrhythmia occurring in the relevant post-infarction period. Do not generalize to every remote MI history.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "periodontal-disease",
+      "targetId": "loss-of-teeth",
+      "pmid": "28733997",
+      "title": "Natural history of periodontitis: Disease progression and tooth loss over 40 years",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28733997/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "disease-progression-complication",
+      "publicationGuard": "Require documented periodontitis/periodontal disease and separately documented tooth loss attributable to periodontal attachment/bone loss. Do not infer cause of tooth loss when caries, trauma, extraction for other reasons, or other etiologies predominate.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "endometriosis",
+      "targetId": "ovarian-cancer",
+      "pmid": "24518590",
+      "title": "Risk and prognosis of ovarian cancer in women with endometriosis: a meta-analysis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24518590/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "temporal-association-risk",
+      "publicationGuard": "Require documented endometriosis preceding separately diagnosed ovarian cancer. Treat as population-level association/risk evidence, with strongest histologic signal for endometrioid/clear-cell disease; do not claim individual causation.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "malaria",
+      "targetId": "epilepsy",
+      "pmid": "25631856",
+      "title": "Cerebral malaria as a risk factor for the development of epilepsy and other long-term neurological conditions: a meta-analysis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25631856/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "phenotype-specific-temporal-risk",
+      "publicationGuard": "Apply only to documented cerebral malaria, predominantly pediatric populations consistent with the evidence, followed by separately diagnosed epilepsy. Do not generalize to uncomplicated malaria or isolated acute febrile/provoked seizures.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": true,
+      "note": null
+    },
+    {
+      "primaryId": "epilepsy",
+      "targetId": "depressive-disorder",
+      "pmid": "35413534",
+      "title": "Association between epilepsy and risk of depression: A meta-analysis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35413534/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "temporal-association-risk",
+      "publicationGuard": "Require separately diagnosed epilepsy and depressive disorder. Treat as association/risk evidence with acknowledged bidirectionality and shared-confounding potential; do not claim epilepsy necessarily causes depression.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": true,
+      "newTargetIdentity": false,
+      "note": null
+    },
+    {
+      "primaryId": "cerebral-contusion-diffuse-axonal-injury",
+      "targetId": "epilepsy",
+      "pmid": "33687971",
+      "title": "Post-traumatic epilepsy in adults: a nationwide register-based study",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33687971/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "post-traumatic-epilepsy-risk",
+      "publicationGuard": "Require documented focal cerebral injury/contusion or diffuse cerebral injury consistent with the source and separately diagnosed post-traumatic epilepsy. Do not equate early provoked post-traumatic seizures with epilepsy.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": true,
+      "note": null
+    },
+    {
+      "primaryId": "skull-fracture-non-basilar-and-basal",
+      "targetId": "epilepsy",
+      "pmid": "19233461",
+      "title": "Long-term risk of epilepsy after traumatic brain injury in children and young adults: a population-based cohort study",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19233461/",
+      "verificationScope": "clinical-evidence",
+      "verified": false,
+      "claimType": "post-traumatic-epilepsy-risk",
+      "publicationGuard": "Require documented traumatic skull fracture and separately diagnosed subsequent epilepsy. Do not equate acute provoked seizures with epilepsy, and preserve the source population/age limitations when applying the evidence.",
+      "pathwayIntelligence": null,
+      "newPrimaryIdentity": false,
+      "newTargetIdentity": true,
+      "note": null
+    }
+  ],
+  "conditionResolutions": [
+    {
+      "id": "acne",
+      "name": "Acne Vulgaris / Acne Conglobata",
+      "originalDisposition": "HOLD-PHENOTYPE",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "acne-scarring"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Acne-scar evidence concerns generic acne scarring, while the catalog scar target is painful/unstable scars; other high-score targets were incidental treatment mentions."
+    },
+    {
+      "id": "addisons-disease",
+      "name": "Addison's Disease",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `diabetes-mellitus-type-1` (PMID 36041475) but title/abstract proposition review did not establish a sufficiently specific addisons-disease→diabetes-mellitus-type-1 secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `diabetes-mellitus-type-1` (PMID 36041475) but title/abstract proposition review did not establish a sufficiently specific addisons-disease→diabetes-mellitus-type-1 secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "adjustment-disorder",
+      "name": "Adjustment Disorder",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Current GERD source is broad anxiety/depression psychosocial evidence, not adjustment-disorder-specific; direction remains unsupported.",
+      "originalReason": "Current GERD source is broad anxiety/depression psychosocial evidence, not adjustment-disorder-specific; direction remains unsupported."
+    },
+    {
+      "id": "ageusia",
+      "name": "Loss of Taste (Ageusia)",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Harvested ageusia/anosmia literature primarily reflects co-occurring chemosensory loss rather than a clean ageusia-first downstream diagnosis.",
+      "originalReason": "Harvested ageusia/anosmia literature primarily reflects co-occurring chemosensory loss rather than a clean ageusia-first downstream diagnosis."
+    },
+    {
+      "id": "agoraphobia",
+      "name": "Agoraphobia",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-SAME-FAMILY",
+      "approvedTargets": [],
+      "reason": "Candidate anxiety diagnoses overlap psychiatric nosology/comorbidity rather than form a downstream disease.",
+      "originalReason": "Candidate anxiety targets overlap the same psychiatric construct rather than representing a distinct downstream catalog diagnosis."
+    },
+    {
+      "id": "agranulocytosis",
+      "name": "Agranulocytosis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `cardiac-inflammatory-disease` (PMID 29548760) but title/abstract proposition review did not establish a sufficiently specific agranulocytosis→cardiac-inflammatory-disease secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `cardiac-inflammatory-disease` (PMID 29548760) but title/abstract proposition review did not establish a sufficiently specific agranulocytosis→cardiac-inflammatory-disease secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "al-amyloidosis",
+      "name": "AL Amyloidosis",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-SAME-DISEASE-ORGAN-INVOLVEMENT",
+      "approvedTargets": [],
+      "reason": "Cardiac amyloid involvement is organ involvement within systemic AL amyloidosis; a directional secondary edge would double-count the same disease.",
+      "originalReason": "Cardiac amyloid/cardiomyopathy is often organ involvement within systemic AL amyloidosis; current identities risk same-disease/phenotype overlap."
+    },
+    {
+      "id": "alopecia-areata",
+      "name": "Alopecia Areata",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `dermatitis` (PMID 37870096) but title/abstract proposition review did not establish a sufficiently specific alopecia-areata→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `dermatitis` (PMID 37870096) but title/abstract proposition review did not establish a sufficiently specific alopecia-areata→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "als",
+      "name": "als",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `colorectal-cancer` (PMID 36975449) but title/abstract proposition review did not establish a sufficiently specific als→colorectal-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `colorectal-cancer` (PMID 36975449) but title/abstract proposition review did not establish a sufficiently specific als→colorectal-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "amebiasis",
+      "name": "Amebiasis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "amebic-liver-abscess"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `colorectal-cancer` (PMID 23665815) but title/abstract proposition review did not establish a sufficiently specific amebiasis→colorectal-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "ankle-strain",
+      "name": "Ankle strain",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `epicondylitis` (PMID 30747379) but title/abstract proposition review did not establish a sufficiently specific ankle-strain→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `epicondylitis` (PMID 30747379) but title/abstract proposition review did not establish a sufficiently specific ankle-strain→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "anosmia",
+      "name": "Loss of Smell (Anosmia)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `ageusia` (PMID 38411125) but title/abstract proposition review did not establish a sufficiently specific anosmia→ageusia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `ageusia` (PMID 38411125) but title/abstract proposition review did not establish a sufficiently specific anosmia→ageusia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "anxiety-disorder",
+      "name": "Generalized Anxiety Disorder",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Candidate Parkinson disease literature is association/prodromal-risk evidence and does not establish generalized anxiety disorder as a secondary cause of Parkinson disease.",
+      "originalReason": "Candidate Parkinson disease literature is association/prodromal-risk evidence and does not establish generalized anxiety disorder as a secondary cause of Parkinson disease."
+    },
+    {
+      "id": "aortic-aneurysm",
+      "name": "Aortic Aneurysm",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `cardiac-arrhythmia` (PMID 36117950) but title/abstract proposition review did not establish a sufficiently specific aortic-aneurysm→cardiac-arrhythmia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `cardiac-arrhythmia` (PMID 36117950) but title/abstract proposition review did not establish a sufficiently specific aortic-aneurysm→cardiac-arrhythmia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "aphonia",
+      "name": "Aphonia",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `thrombocytopenia` (PMID 40987862) but title/abstract proposition review did not establish a sufficiently specific aphonia→thrombocytopenia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `thrombocytopenia` (PMID 40987862) but title/abstract proposition review did not establish a sufficiently specific aphonia→thrombocytopenia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "bacterial-rhinitis",
+      "name": "Bacterial Rhinitis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `dermatitis` (PMID 17153013) but title/abstract proposition review did not establish a sufficiently specific bacterial-rhinitis→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `dermatitis` (PMID 17153013) but title/abstract proposition review did not establish a sufficiently specific bacterial-rhinitis→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "binge-eating-disorder",
+      "name": "Binge Eating Disorder",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `anorexia-nervosa` (PMID 31113504) but title/abstract proposition review did not establish a sufficiently specific binge-eating-disorder→anorexia-nervosa secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `anorexia-nervosa` (PMID 31113504) but title/abstract proposition review did not establish a sufficiently specific binge-eating-disorder→anorexia-nervosa secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "bipolar-disorder",
+      "name": "Bipolar Disorder",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `anxiety-disorder` (PMID 41719031) but title/abstract proposition review did not establish a sufficiently specific bipolar-disorder→anxiety-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `anxiety-disorder` (PMID 41719031) but title/abstract proposition review did not establish a sufficiently specific bipolar-disorder→anxiety-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "bladder-cancer",
+      "name": "Bladder Cancer",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `colorectal-cancer` (PMID 42297908) but title/abstract proposition review did not establish a sufficiently specific bladder-cancer→colorectal-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `colorectal-cancer` (PMID 42297908) but title/abstract proposition review did not establish a sufficiently specific bladder-cancer→colorectal-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "body-dysmorphic-disorder",
+      "name": "Body Dysmorphic Disorder",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-SPECTRUM-COMORBIDITY",
+      "approvedTargets": [],
+      "reason": "OCD-spectrum overlap/comorbidity is not a directional secondary-condition relationship.",
+      "originalReason": "OCD-spectrum literature reflects diagnostic overlap/comorbidity rather than a distinct secondary-condition relationship."
+    },
+    {
+      "id": "brain-cancer",
+      "name": "Brain Cancer / Glioblastoma",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `colorectal-cancer` (PMID 38807177) but title/abstract proposition review did not establish a sufficiently specific brain-cancer→colorectal-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `colorectal-cancer` (PMID 38807177) but title/abstract proposition review did not establish a sufficiently specific brain-cancer→colorectal-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "breast-cancer",
+      "name": "Breast Cancer",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "lymphedema",
+        "peripheral-neuropathy",
+        "cardiomyopathy"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `cardiac-arrhythmia` (PMID 34718834) but title/abstract proposition review did not establish a sufficiently specific breast-cancer→cardiac-arrhythmia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "bronchiectasis",
+      "name": "Bronchiectasis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "pulmonary-hypertension"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 33961805) but title/abstract proposition review did not establish a sufficiently specific bronchiectasis→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "bulimia-nervosa",
+      "name": "Bulimia Nervosa",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `rheumatoid-arthritis` (PMID 41172584) but title/abstract proposition review did not establish a sufficiently specific bulimia-nervosa→rheumatoid-arthritis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `rheumatoid-arthritis` (PMID 41172584) but title/abstract proposition review did not establish a sufficiently specific bulimia-nervosa→rheumatoid-arthritis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "bursitis",
+      "name": "Bursitis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `cushings-syndrome` (PMID 41730814) but title/abstract proposition review did not establish a sufficiently specific bursitis→cushings-syndrome secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `cushings-syndrome` (PMID 41730814) but title/abstract proposition review did not establish a sufficiently specific bursitis→cushings-syndrome secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "campylobacter-jejuni-infection",
+      "name": "Campylobacter Jejuni Infection",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "guillain-barre-syndrome",
+        "reactive-arthritis"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `typhoid-fever` (PMID 29149266) but title/abstract proposition review did not establish a sufficiently specific campylobacter-jejuni-infection→typhoid-fever secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "cardiac-arrhythmia",
+      "name": "Cardiac Arrhythmias (Atrial Fibrillation, Tachycardia)",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "cardiomyopathy"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Candidate cardiomyopathy evidence is bidirectional/etiologically heterogeneous; arrhythmia may be cause, manifestation, or consequence depending phenotype."
+    },
+    {
+      "id": "cardiac-inflammatory-disease",
+      "name": "Pericarditis / Endocarditis / Myocarditis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "cardiac-arrhythmia"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `osteomyelitis` (PMID 34715060) but title/abstract proposition review did not establish a sufficiently specific cardiac-inflammatory-disease→osteomyelitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "carpal-tunnel-syndrome",
+      "name": "Carpal Tunnel Syndrome",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-SAME-LESION",
+      "approvedTargets": [],
+      "reason": "Median neuropathy at the carpal tunnel is the defining lesion of CTS.",
+      "originalReason": "Median neuropathy is the defining anatomic lesion of carpal tunnel syndrome; mapping CTS→median neuropathy would duplicate the same condition."
+    },
+    {
+      "id": "cataracts",
+      "name": "Cataracts",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `glaucoma` (PMID 38383075) but title/abstract proposition review did not establish a sufficiently specific cataracts→glaucoma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `glaucoma` (PMID 38383075) but title/abstract proposition review did not establish a sufficiently specific cataracts→glaucoma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "cerebral-contusion-diffuse-axonal-injury",
+      "name": "cerebral contusion diffuse axonal injury",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "epilepsy"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "cerebral-palsy",
+      "name": "cerebral palsy",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "scoliosis"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `epicondylitis` (PMID 38815079) but title/abstract proposition review did not establish a sufficiently specific cerebral-palsy→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "cervical-strain",
+      "name": "Cervical Strain",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `epicondylitis` (PMID 39054066) but title/abstract proposition review did not establish a sufficiently specific cervical-strain→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `epicondylitis` (PMID 39054066) but title/abstract proposition review did not establish a sufficiently specific cervical-strain→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "chronic-bronchitis",
+      "name": "Chronic Bronchitis",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-HIERARCHY-OVERLAP",
+      "approvedTargets": [],
+      "reason": "Chronic bronchitis and COPD substantially overlap; the reviewed evidence does not justify a directional edge between overlapping identities.",
+      "originalReason": "COPD/chronic bronchitis identities substantially overlap; harvested evidence does not support treating one as a separate downstream diagnosis without a stricter phenotype model."
+    },
+    {
+      "id": "chronic-fatigue-syndrome",
+      "name": "Chronic Fatigue Syndrome",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `fibromyalgia` (PMID 38447497) but title/abstract proposition review did not establish a sufficiently specific chronic-fatigue-syndrome→fibromyalgia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `fibromyalgia` (PMID 38447497) but title/abstract proposition review did not establish a sufficiently specific chronic-fatigue-syndrome→fibromyalgia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "chronic-kidney-disease",
+      "name": "Chronic Kidney Disease / Renal Failure",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "anemia"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `amputation-or-loss-of-use` (PMID 37321302) but title/abstract proposition review did not establish a sufficiently specific chronic-kidney-disease→amputation-or-loss-of-use secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "chronic-laryngitis",
+      "name": "Chronic Laryngitis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `leishmaniasis` (PMID 38658203) but title/abstract proposition review did not establish a sufficiently specific chronic-laryngitis→leishmaniasis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `leishmaniasis` (PMID 38658203) but title/abstract proposition review did not establish a sufficiently specific chronic-laryngitis→leishmaniasis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "cold-injury-residuals",
+      "name": "Cold Injuries (Frostbite / Immersion Foot Residuals)",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "peripheral-neuropathy"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "colorectal-cancer",
+      "name": "Colon / Rectal Cancer",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "peripheral-neuropathy"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `bladder-cancer` (PMID 42297908) but title/abstract proposition review did not establish a sufficiently specific colorectal-cancer→bladder-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "common-peroneal-neuropathy",
+      "name": "Common Peroneal (Fibular) Neuropathy",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `epicondylitis` (PMID 29355794) but title/abstract proposition review did not establish a sufficiently specific common-peroneal-neuropathy→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `epicondylitis` (PMID 29355794) but title/abstract proposition review did not establish a sufficiently specific common-peroneal-neuropathy→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "complex-regional-pain-syndrome",
+      "name": "Complex Regional Pain Syndrome",
+      "originalDisposition": "HOLD-TREATMENT",
+      "masterResolution": "FINAL-CLOSE-TREATMENT-EVIDENCE",
+      "approvedTargets": [],
+      "reason": "Amputation evidence is dominated by post-amputation CRPS or exceptional treatment decisions; no general CRPS→amputation pathway should be published.",
+      "originalReason": "Amputation evidence is dominated by post-amputation CRPS or exceptional treatment decisions; no general CRPS→amputation pathway should be published."
+    },
+    {
+      "id": "contralateral-knee-condition",
+      "name": "Contralateral (opposite) knee condition",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "FINAL-CLOSE-NO-SUPPORTED-SECONDARY",
+      "approvedTargets": [],
+      "reason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "coronary-bypass-residuals",
+      "name": "Coronary Bypass Surgery Residuals",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "FINAL-CLOSE-NO-SUPPORTED-SECONDARY",
+      "approvedTargets": [],
+      "reason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "cranial-nerve-palsy",
+      "name": "Cranial Nerve Palsy",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `multiple-myeloma` (PMID 37272512) but title/abstract proposition review did not establish a sufficiently specific cranial-nerve-palsy→multiple-myeloma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `multiple-myeloma` (PMID 37272512) but title/abstract proposition review did not establish a sufficiently specific cranial-nerve-palsy→multiple-myeloma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "cyclothymic-disorder",
+      "name": "Cyclothymic Disorder",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `bipolar-disorder` (PMID 21320254) but title/abstract proposition review did not establish a sufficiently specific cyclothymic-disorder→bipolar-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `bipolar-disorder` (PMID 21320254) but title/abstract proposition review did not establish a sufficiently specific cyclothymic-disorder→bipolar-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "cystitis-or-neurogenic-bladder",
+      "name": "Chronic Cystitis / Neurogenic Bladder",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-COMBINED-IDENTITY-MANIFESTATION",
+      "approvedTargets": [],
+      "reason": "The identity mixes cystitis and neurogenic bladder; urinary frequency/incontinence is a manifestation rather than a clean new downstream diagnosis.",
+      "originalReason": "Urinary incontinence/frequency can be a manifestation of neurogenic bladder; current combined catalog identity cannot cleanly separate disease from symptom."
+    },
+    {
+      "id": "deep-vein-thrombosis",
+      "name": "Deep Vein Thrombosis (DVT) / Phlebitis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "pulmonary-embolism"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `epidural-hematoma` (PMID 28820759) but title/abstract proposition review did not establish a sufficiently specific deep-vein-thrombosis→epidural-hematoma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "degenerative-disc-disease",
+      "name": "Degenerative Disc Disease",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-ANATOMIC-HIERARCHY",
+      "approvedTargets": [],
+      "reason": "Radiculopathy and stenosis consequences are anatomy/level-specific; no safe generic DDD downstream edge clears the evidence floor.",
+      "originalReason": "Radiculopathy/stenosis candidates are anatomy/manifestation dependent and need level-specific taxonomy rather than a generic edge."
+    },
+    {
+      "id": "delusional-disorder",
+      "name": "Delusional Disorder",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `schizoaffective-disorder` (PMID 26599405) but title/abstract proposition review did not establish a sufficiently specific delusional-disorder→schizoaffective-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `schizoaffective-disorder` (PMID 26599405) but title/abstract proposition review did not establish a sufficiently specific delusional-disorder→schizoaffective-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "depersonalization-derealization-disorder",
+      "name": "Depersonalization / Derealization Disorder",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `dissociative-disorder` (PMID 32480060) but title/abstract proposition review did not establish a sufficiently specific depersonalization-derealization-disorder→dissociative-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `dissociative-disorder` (PMID 32480060) but title/abstract proposition review did not establish a sufficiently specific depersonalization-derealization-disorder→dissociative-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "dermatitis",
+      "name": "Dermatitis (Atopic / Contact)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `eczema` (PMID 32822798) but title/abstract proposition review did not establish a sufficiently specific dermatitis→eczema secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `eczema` (PMID 32822798) but title/abstract proposition review did not establish a sufficiently specific dermatitis→eczema secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "deviated-nasal-septum",
+      "name": "Deviated Nasal Septum",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `asthma` (PMID 37706147) but title/abstract proposition review did not establish a sufficiently specific deviated-nasal-septum→asthma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `asthma` (PMID 37706147) but title/abstract proposition review did not establish a sufficiently specific deviated-nasal-septum→asthma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "diabetes-insipidus",
+      "name": "Diabetes Insipidus",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `pulmonary-hypertension` (PMID 1543829) but title/abstract proposition review did not establish a sufficiently specific diabetes-insipidus→pulmonary-hypertension secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `pulmonary-hypertension` (PMID 1543829) but title/abstract proposition review did not establish a sufficiently specific diabetes-insipidus→pulmonary-hypertension secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "diabetic-retinopathy",
+      "name": "Diabetic retinopathy",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "retinal-detachment"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `brain-cancer` (PMID 38807177) but title/abstract proposition review did not establish a sufficiently specific diabetic-retinopathy→brain-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "diaphragm-paralysis",
+      "name": "Diaphragm Paralysis / Paresis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `epicondylitis` (PMID 39639468) but title/abstract proposition review did not establish a sufficiently specific diaphragm-paralysis→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `epicondylitis` (PMID 39639468) but title/abstract proposition review did not establish a sufficiently specific diaphragm-paralysis→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "diplopia",
+      "name": "Diplopia (Double Vision)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `visual-impairment` (PMID 31884513) but title/abstract proposition review did not establish a sufficiently specific diplopia→visual-impairment secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `visual-impairment` (PMID 31884513) but title/abstract proposition review did not establish a sufficiently specific diplopia→visual-impairment secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "dissociative-disorder",
+      "name": "Dissociative Amnesia / Dissociative Identity Disorder",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `functional-neurological-symptom-disorder` (PMID 20679259) but title/abstract proposition review did not establish a sufficiently specific dissociative-disorder→functional-neurological-symptom-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `functional-neurological-symptom-disorder` (PMID 20679259) but title/abstract proposition review did not establish a sufficiently specific dissociative-disorder→functional-neurological-symptom-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "diverticulitis",
+      "name": "Diverticulitis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `colorectal-cancer` (PMID 22572700) but title/abstract proposition review did not establish a sufficiently specific diverticulitis→colorectal-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `colorectal-cancer` (PMID 22572700) but title/abstract proposition review did not establish a sufficiently specific diverticulitis→colorectal-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "dry-eye-syndrome",
+      "name": "Dry Eye Syndrome",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 31517988) but title/abstract proposition review did not establish a sufficiently specific dry-eye-syndrome→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 31517988) but title/abstract proposition review did not establish a sufficiently specific dry-eye-syndrome→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "eczema",
+      "name": "Eczema",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `asthma` (PMID 27583891) but title/abstract proposition review did not establish a sufficiently specific eczema→asthma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `asthma` (PMID 27583891) but title/abstract proposition review did not establish a sufficiently specific eczema→asthma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "endometriosis",
+      "name": "Endometriosis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "ovarian-cancer"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `asthma` (PMID 39690523) but title/abstract proposition review did not establish a sufficiently specific endometriosis→asthma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "epicondylitis",
+      "name": "Lateral / Medial Epicondylitis (Tennis / Golfer's Elbow)",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-SAME-DISEASE-SITE-SUBTYPE",
+      "approvedTargets": [],
+      "reason": "Epicondylitis is a site-specific tendinopathy phenotype, not a downstream disease of tendinopathy.",
+      "originalReason": "Tendinopathy is the underlying lesion/classification of epicondylitis; current identities overlap."
+    },
+    {
+      "id": "epididymitis-orchitis",
+      "name": "Chronic Epididymitis / Orchitis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `hypogonadism` (PMID 39525446) but title/abstract proposition review did not establish a sufficiently specific epididymitis-orchitis→hypogonadism secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `hypogonadism` (PMID 39525446) but title/abstract proposition review did not establish a sufficiently specific epididymitis-orchitis→hypogonadism secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "epidural-hematoma",
+      "name": "Epidural Hematoma",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 38852561) but title/abstract proposition review did not establish a sufficiently specific epidural-hematoma→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 38852561) but title/abstract proposition review did not establish a sufficiently specific epidural-hematoma→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "esophageal-stricture",
+      "name": "Esophageal Stricture",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `barretts-esophagus` (PMID 29992379) but title/abstract proposition review did not establish a sufficiently specific esophageal-stricture→barretts-esophagus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `barretts-esophagus` (PMID 29992379) but title/abstract proposition review did not establish a sufficiently specific esophageal-stricture→barretts-esophagus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "fecal-incontinence",
+      "name": "Fecal Incontinence / Impairment of Sphincter Control",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `anal-fistula` (PMID 22114639) but title/abstract proposition review did not establish a sufficiently specific fecal-incontinence→anal-fistula secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `anal-fistula` (PMID 22114639) but title/abstract proposition review did not establish a sufficiently specific fecal-incontinence→anal-fistula secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "female-sexual-arousal-disorder",
+      "name": "Female Sexual Arousal Disorder",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `endometriosis` (PMID 36541405) but title/abstract proposition review did not establish a sufficiently specific female-sexual-arousal-disorder→endometriosis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `endometriosis` (PMID 36541405) but title/abstract proposition review did not establish a sufficiently specific female-sexual-arousal-disorder→endometriosis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "femoral-neuropathy",
+      "name": "Femoral Neuropathy",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 11939888) but title/abstract proposition review did not establish a sufficiently specific femoral-neuropathy→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 11939888) but title/abstract proposition review did not establish a sufficiently specific femoral-neuropathy→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "fibromyalgia",
+      "name": "Fibromyalgia",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `dermatitis` (PMID 27428009) but title/abstract proposition review did not establish a sufficiently specific fibromyalgia→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `dermatitis` (PMID 27428009) but title/abstract proposition review did not establish a sufficiently specific fibromyalgia→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "flatfoot",
+      "name": "Flatfoot (Pes Planus)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `hip-strain` (PMID 34844639) but title/abstract proposition review did not establish a sufficiently specific flatfoot→hip-strain secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `hip-strain` (PMID 34844639) but title/abstract proposition review did not establish a sufficiently specific flatfoot→hip-strain secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "functional-neurological-symptom-disorder",
+      "name": "Functional Neurological Symptom Disorder (Conversion Disorder)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `bipolar-disorder` (PMID 30319082) but title/abstract proposition review did not establish a sufficiently specific functional-neurological-symptom-disorder→bipolar-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `bipolar-disorder` (PMID 30319082) but title/abstract proposition review did not establish a sufficiently specific functional-neurological-symptom-disorder→bipolar-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "fungal-skin-infection",
+      "name": "Tinea Pedis / Fungal Infections",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Top cirrhosis/infection literature reflects host susceptibility/reverse direction rather than fungal skin infection causing liver disease.",
+      "originalReason": "Top cirrhosis/infection literature reflects host susceptibility/reverse direction rather than fungal skin infection causing liver disease."
+    },
+    {
+      "id": "gallbladder-disease",
+      "name": "Cholecystitis / Gallbladder Disease",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "pancreatitis"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `diabetes-mellitus-type-2` (PMID 35764326) but title/abstract proposition review did not establish a sufficiently specific gallbladder-disease→diabetes-mellitus-type-2 secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "gastritis",
+      "name": "Gastritis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `barretts-esophagus` (PMID 37777843) but title/abstract proposition review did not establish a sufficiently specific gastritis→barretts-esophagus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `barretts-esophagus` (PMID 37777843) but title/abstract proposition review did not establish a sufficiently specific gastritis→barretts-esophagus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "glaucoma",
+      "name": "Glaucoma",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 38754800) but title/abstract proposition review did not establish a sufficiently specific glaucoma→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 38754800) but title/abstract proposition review did not establish a sufficiently specific glaucoma→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "granulomatous-rhinitis",
+      "name": "Granulomatous Rhinitis",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "FINAL-CLOSE-NO-SUPPORTED-SECONDARY",
+      "approvedTargets": [],
+      "reason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "greater-trochanteric-pain-syndrome",
+      "name": "Greater Trochanteric Pain Syndrome",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-COMPONENT-PHENOTYPE",
+      "approvedTargets": [],
+      "reason": "Bursitis and gluteal tendinopathy are component phenotypes within GTPS, not separate caused-by-GTPS conditions.",
+      "originalReason": "Bursitis/tendinopathy are component phenotypes within GTPS; mapping them as downstream diagnoses risks double-counting the same syndrome."
+    },
+    {
+      "id": "hallux-rigidus",
+      "name": "Hallux Rigidus",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `rheumatoid-arthritis` (PMID 35468802) but title/abstract proposition review did not establish a sufficiently specific hallux-rigidus→rheumatoid-arthritis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `rheumatoid-arthritis` (PMID 35468802) but title/abstract proposition review did not establish a sufficiently specific hallux-rigidus→rheumatoid-arthritis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "hallux-valgus",
+      "name": "Hallux Valgus (Bunions)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 33856424) but title/abstract proposition review did not establish a sufficiently specific hallux-valgus→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 33856424) but title/abstract proposition review did not establish a sufficiently specific hallux-valgus→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "hammertoe",
+      "name": "Hammer Toe",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `deep-vein-thrombosis` (PMID 28413884) but title/abstract proposition review did not establish a sufficiently specific hammertoe→deep-vein-thrombosis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `deep-vein-thrombosis` (PMID 28413884) but title/abstract proposition review did not establish a sufficiently specific hammertoe→deep-vein-thrombosis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "heart-transplant-residuals",
+      "name": "Heart Transplant Residuals",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "skin-cancer"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "heart-valve-disorders",
+      "name": "Heart Valve Disorders",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `osteoarthritis` (PMID 26971132) but title/abstract proposition review did not establish a sufficiently specific heart-valve-disorders→osteoarthritis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `osteoarthritis` (PMID 26971132) but title/abstract proposition review did not establish a sufficiently specific heart-valve-disorders→osteoarthritis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "hemorrhoids",
+      "name": "Hemorrhoids",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `epicondylitis` (PMID 35334594) but title/abstract proposition review did not establish a sufficiently specific hemorrhoids→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `epicondylitis` (PMID 35334594) but title/abstract proposition review did not establish a sufficiently specific hemorrhoids→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "heterotopic-ossification",
+      "name": "Heterotopic Ossification",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `osteoarthritis` (PMID 39661773) but title/abstract proposition review did not establish a sufficiently specific heterotopic-ossification→osteoarthritis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `osteoarthritis` (PMID 39661773) but title/abstract proposition review did not establish a sufficiently specific heterotopic-ossification→osteoarthritis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "hidradenitis-suppurativa",
+      "name": "Hidradenitis Suppurativa",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 34406349) but title/abstract proposition review did not establish a sufficiently specific hidradenitis-suppurativa→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 34406349) but title/abstract proposition review did not establish a sufficiently specific hidradenitis-suppurativa→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "hip-labral-tear",
+      "name": "Hip Labral Tear",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 41549479) but title/abstract proposition review did not establish a sufficiently specific hip-labral-tear→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 41549479) but title/abstract proposition review did not establish a sufficiently specific hip-labral-tear→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "hip-strain",
+      "name": "Hip strain",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `diabetes-mellitus-type-2` (PMID 41363156) but title/abstract proposition review did not establish a sufficiently specific hip-strain→diabetes-mellitus-type-2 secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `diabetes-mellitus-type-2` (PMID 41363156) but title/abstract proposition review did not establish a sufficiently specific hip-strain→diabetes-mellitus-type-2 secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "histoplasmosis",
+      "name": "Histoplasmosis of Lung",
+      "originalDisposition": "HOLD-PHENOTYPE",
+      "masterResolution": "RESOLVED-PRIOR-SITE-SPECIFIC-TAXONOMY",
+      "approvedTargets": [],
+      "reason": "The prior hold was already resolved by the separately approved and verified `adrenal-histoplasmosis → addisons-disease` program. Pulmonary `histoplasmosis` remains distinct and draft.",
+      "originalReason": "Adrenal-insufficiency evidence is for adrenal/disseminated histoplasmosis, while the current catalog identity is not sufficiently site/subtype specific."
+    },
+    {
+      "id": "hoarding-disorder",
+      "name": "Hoarding Disorder",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `ocd` (PMID 24912494) but title/abstract proposition review did not establish a sufficiently specific hoarding-disorder→ocd secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `ocd` (PMID 24912494) but title/abstract proposition review did not establish a sufficiently specific hoarding-disorder→ocd secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "hodgkins-lymphoma",
+      "name": "Hodgkin's Lymphoma",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `multiple-myeloma` (PMID 33101982) but title/abstract proposition review did not establish a sufficiently specific hodgkins-lymphoma→multiple-myeloma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `multiple-myeloma` (PMID 33101982) but title/abstract proposition review did not establish a sufficiently specific hodgkins-lymphoma→multiple-myeloma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "hydronephrosis",
+      "name": "Hydronephrosis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `bladder-cancer` (PMID 39297968) but title/abstract proposition review did not establish a sufficiently specific hydronephrosis→bladder-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `bladder-cancer` (PMID 39297968) but title/abstract proposition review did not establish a sufficiently specific hydronephrosis→bladder-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "hyperhidrosis",
+      "name": "Hyperhidrosis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `depressive-disorder` (PMID 28881483) but title/abstract proposition review did not establish a sufficiently specific hyperhidrosis→depressive-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `depressive-disorder` (PMID 28881483) but title/abstract proposition review did not establish a sufficiently specific hyperhidrosis→depressive-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "illness-anxiety-disorder",
+      "name": "Illness Anxiety Disorder",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `anxiety-disorder` (PMID 27491531) but title/abstract proposition review did not establish a sufficiently specific illness-anxiety-disorder→anxiety-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `anxiety-disorder` (PMID 27491531) but title/abstract proposition review did not establish a sufficiently specific illness-anxiety-disorder→anxiety-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "intervertebral-disc-syndrome",
+      "name": "Intervertebral Disc Syndrome",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "FINAL-CLOSE-NO-SUPPORTED-SECONDARY",
+      "approvedTargets": [],
+      "reason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "intracranial-injury-without-skull-fracture",
+      "name": "Intracranial Injury Without Skull Fracture",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `cardiac-arrhythmia` (PMID 37318429) but title/abstract proposition review did not establish a sufficiently specific intracranial-injury-without-skull-fracture→cardiac-arrhythmia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `cardiac-arrhythmia` (PMID 37318429) but title/abstract proposition review did not establish a sufficiently specific intracranial-injury-without-skull-fracture→cardiac-arrhythmia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "irritable-bowel-syndrome",
+      "name": "Irritable Bowel Syndrome (IBS)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `barretts-esophagus` (PMID 37777843) but title/abstract proposition review did not establish a sufficiently specific irritable-bowel-syndrome→barretts-esophagus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `barretts-esophagus` (PMID 37777843) but title/abstract proposition review did not establish a sufficiently specific irritable-bowel-syndrome→barretts-esophagus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "keratitis",
+      "name": "Keratitis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `visual-impairment` (PMID 37802392) but title/abstract proposition review did not establish a sufficiently specific keratitis→visual-impairment secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `visual-impairment` (PMID 37802392) but title/abstract proposition review did not establish a sufficiently specific keratitis→visual-impairment secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "kidney-cancer",
+      "name": "Kidney / Renal Cancer",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "chronic-kidney-disease"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Cancer-to-cancer candidate literature does not establish renal cancer as the primary driver of a distinct downstream catalog cancer."
+    },
+    {
+      "id": "kidney-stones",
+      "name": "Kidney Stones (Nephrolithiasis)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "chronic-kidney-disease"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `kidney-cancer` (PMID 24857648) but title/abstract proposition review did not establish a sufficiently specific kidney-stones→kidney-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "knee-injury",
+      "name": "Knee Instability / Meniscus Tear",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "post-traumatic-osteoarthritis"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 36692346) but title/abstract proposition review did not establish a sufficiently specific knee-injury→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "labyrinthitis",
+      "name": "Labyrinthitis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `vestibular-disorder` (PMID 22388730) but title/abstract proposition review did not establish a sufficiently specific labyrinthitis→vestibular-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `vestibular-disorder` (PMID 22388730) but title/abstract proposition review did not establish a sufficiently specific labyrinthitis→vestibular-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "laryngeal-stenosis",
+      "name": "Laryngeal Stenosis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `systemic-lupus-erythematosus` (PMID 32533778) but title/abstract proposition review did not establish a sufficiently specific laryngeal-stenosis→systemic-lupus-erythematosus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `systemic-lupus-erythematosus` (PMID 32533778) but title/abstract proposition review did not establish a sufficiently specific laryngeal-stenosis→systemic-lupus-erythematosus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "leishmaniasis",
+      "name": "Leishmaniasis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `keratitis` (PMID 33913831) but title/abstract proposition review did not establish a sufficiently specific leishmaniasis→keratitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `keratitis` (PMID 33913831) but title/abstract proposition review did not establish a sufficiently specific leishmaniasis→keratitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "leukemia",
+      "name": "Leukemia (Acute & Chronic)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `breast-cancer` (PMID 40445187) but title/abstract proposition review did not establish a sufficiently specific leukemia→breast-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `breast-cancer` (PMID 40445187) but title/abstract proposition review did not establish a sufficiently specific leukemia→breast-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "liver-cancer",
+      "name": "Liver Cancer",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `breast-cancer` (PMID 34718834) but title/abstract proposition review did not establish a sufficiently specific liver-cancer→breast-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `breast-cancer` (PMID 34718834) but title/abstract proposition review did not establish a sufficiently specific liver-cancer→breast-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "loss-of-teeth",
+      "name": "Loss of Occlusal Surface / Loss of Teeth",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `periodontal-disease` (PMID 24712659) but title/abstract proposition review did not establish a sufficiently specific loss-of-teeth→periodontal-disease secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `periodontal-disease` (PMID 24712659) but title/abstract proposition review did not establish a sufficiently specific loss-of-teeth→periodontal-disease secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "lumbar-strain",
+      "name": "Lumbar Strain",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `scoliosis` (PMID 26368854) but title/abstract proposition review did not establish a sufficiently specific lumbar-strain→scoliosis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `scoliosis` (PMID 26368854) but title/abstract proposition review did not establish a sufficiently specific lumbar-strain→scoliosis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "lyme-disease",
+      "name": "Lyme Disease",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "cranial-nerve-palsy"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested neurologic/psychiatric associations do not provide a sufficiently bounded Lyme-first secondary diagnosis proposition for publication."
+    },
+    {
+      "id": "macular-degeneration",
+      "name": "Macular Degeneration",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `diabetic-retinopathy` (PMID 39043575) but title/abstract proposition review did not establish a sufficiently specific macular-degeneration→diabetic-retinopathy secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `diabetic-retinopathy` (PMID 39043575) but title/abstract proposition review did not establish a sufficiently specific macular-degeneration→diabetic-retinopathy secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "malaria",
+      "name": "Malaria",
+      "originalDisposition": "HOLD-PHENOTYPE",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "epilepsy"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Seizure/epilepsy evidence is phenotype-specific and does not safely generalize to the broad seizure-disorder target without recurrent-epilepsy criteria."
+    },
+    {
+      "id": "mandibular-nonunion",
+      "name": "Mandibular Nonunion (Nonunion of Mandible)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `maxillofacial-fracture` (PMID 11951227) but title/abstract proposition review did not establish a sufficiently specific mandibular-nonunion→maxillofacial-fracture secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `maxillofacial-fracture` (PMID 11951227) but title/abstract proposition review did not establish a sufficiently specific mandibular-nonunion→maxillofacial-fracture secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "maxillofacial-fracture",
+      "name": "Structural Maxillofacial / Mandibular Fractures",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 42040031) but title/abstract proposition review did not establish a sufficiently specific maxillofacial-fracture→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 42040031) but title/abstract proposition review did not establish a sufficiently specific maxillofacial-fracture→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "median-neuropathy",
+      "name": "Median Neuropathy",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-SAME-LESION-LOCALIZATION",
+      "approvedTargets": [],
+      "reason": "Carpal tunnel syndrome is a localization of median neuropathy; generic median neuropathy cannot directionally cause its own localization.",
+      "originalReason": "Carpal tunnel syndrome is a common median-neuropathy localization; current taxonomy cannot safely infer CTS from generic median neuropathy."
+    },
+    {
+      "id": "menieres-disease",
+      "name": "Meniere's Disease",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Tinnitus/vestibular findings are core manifestations or co-occurring symptoms rather than clean downstream diagnoses.",
+      "originalReason": "Tinnitus/vestibular findings are core manifestations or co-occurring symptoms rather than clean downstream diagnoses."
+    },
+    {
+      "id": "meralgia-paresthetica",
+      "name": "Meralgia Paresthetica",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-SAME-LESION",
+      "approvedTargets": [],
+      "reason": "Meralgia paresthetica is itself a focal neuropathy phenotype.",
+      "originalReason": "This is itself a focal neuropathy phenotype; candidate neuropathy targets overlap the same lesion rather than a separate downstream diagnosis."
+    },
+    {
+      "id": "metatarsalgia",
+      "name": "Anterior Metatarsalgia (Morton's Disease)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `hallux-rigidus` (PMID 34724832) but title/abstract proposition review did not establish a sufficiently specific metatarsalgia→hallux-rigidus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `hallux-rigidus` (PMID 34724832) but title/abstract proposition review did not establish a sufficiently specific metatarsalgia→hallux-rigidus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "micro-tbi",
+      "name": "Micro TBI",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "FINAL-CLOSE-NO-SUPPORTED-SECONDARY",
+      "approvedTargets": [],
+      "reason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "multiple-myeloma",
+      "name": "Multiple Myeloma",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "chronic-kidney-disease"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `colorectal-cancer` (PMID 41748939) but title/abstract proposition review did not establish a sufficiently specific multiple-myeloma→colorectal-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "multiple-sclerosis",
+      "name": "Multiple Sclerosis",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Candidate diabetes evidence does not show a reliable increase in overall diabetes risk; direction/proposition is not supported.",
+      "originalReason": "Candidate diabetes evidence does not show a reliable increase in overall diabetes risk; direction/proposition is not supported."
+    },
+    {
+      "id": "muscle-injury",
+      "name": "Muscle Injuries / Atrophy",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `cataracts` (PMID 30580575) but title/abstract proposition review did not establish a sufficiently specific muscle-injury→cataracts secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `cataracts` (PMID 30580575) but title/abstract proposition review did not establish a sufficiently specific muscle-injury→cataracts secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "myasthenia-gravis",
+      "name": "Myasthenia Gravis",
+      "originalDisposition": "HOLD-TREATMENT",
+      "masterResolution": "FINAL-CLOSE-TREATMENT-EVIDENCE",
+      "approvedTargets": [],
+      "reason": "Candidate downstream conditions are treatment/adverse-event dependent, but harvested evidence did not isolate a sufficiently specific exposure-to-target proposition.",
+      "originalReason": "Candidate downstream conditions are treatment/adverse-event dependent, but harvested evidence did not isolate a sufficiently specific exposure-to-target proposition."
+    },
+    {
+      "id": "myocardial-infarction",
+      "name": "Myocardial Infarction (Heart Attack)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "cardiac-arrhythmia"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `cardiac-arrhythmia` (PMID 41779388) but title/abstract proposition review did not establish a sufficiently specific myocardial-infarction→cardiac-arrhythmia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "myositis",
+      "name": "Myositis",
+      "originalDisposition": "HOLD-TREATMENT",
+      "masterResolution": "FINAL-CLOSE-TREATMENT-EVIDENCE",
+      "approvedTargets": [],
+      "reason": "Candidate downstream relationships are therapy/subtype dependent and insufficiently bounded for a generic myositis-first mapping.",
+      "originalReason": "Candidate downstream relationships are therapy/subtype dependent and insufficiently bounded for a generic myositis-first mapping."
+    },
+    {
+      "id": "noise-induced-hearing-loss",
+      "name": "Noise-Induced Hearing Loss",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 33428745) but title/abstract proposition review did not establish a sufficiently specific noise-induced-hearing-loss→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 33428745) but title/abstract proposition review did not establish a sufficiently specific noise-induced-hearing-loss→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "non-hodgkins-lymphoma",
+      "name": "Non-Hodgkin's Lymphoma",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `hodgkins-lymphoma` (PMID 17666365) but title/abstract proposition review did not establish a sufficiently specific non-hodgkins-lymphoma→hodgkins-lymphoma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `hodgkins-lymphoma` (PMID 17666365) but title/abstract proposition review did not establish a sufficiently specific non-hodgkins-lymphoma→hodgkins-lymphoma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "nontoxic-thyroid-enlargement",
+      "name": "Nontoxic Thyroid Enlargement",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Thyroid-cancer/detection literature does not establish nontoxic enlargement as a directional cause; surveillance/detection effects dominate.",
+      "originalReason": "Thyroid-cancer/detection literature does not establish nontoxic enlargement as a directional cause; surveillance/detection effects dominate."
+    },
+    {
+      "id": "nontuberculous-mycobacterial-infections",
+      "name": "Nontuberculous Mycobacterial Infections",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `rheumatoid-arthritis` (PMID 31774329) but title/abstract proposition review did not establish a sufficiently specific nontuberculous-mycobacterial-infections→rheumatoid-arthritis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `rheumatoid-arthritis` (PMID 31774329) but title/abstract proposition review did not establish a sufficiently specific nontuberculous-mycobacterial-infections→rheumatoid-arthritis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "nystagmus",
+      "name": "Nystagmus",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `cataracts` (PMID 15899463) but title/abstract proposition review did not establish a sufficiently specific nystagmus→cataracts secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `cataracts` (PMID 15899463) but title/abstract proposition review did not establish a sufficiently specific nystagmus→cataracts secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "ocd",
+      "name": "Obsessive-Compulsive Disorder (OCD)",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "OCD→migraine candidate PMID 24898830 is cross-sectional association evidence; no OCD-first incident-migraine chronology is established.",
+      "originalReason": "OCD→migraine candidate PMID 24898830 is cross-sectional association evidence; no OCD-first incident-migraine chronology is established."
+    },
+    {
+      "id": "optic-neuritis",
+      "name": "Optic Neuritis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `muscle-injury` (PMID 41318886) but title/abstract proposition review did not establish a sufficiently specific optic-neuritis→muscle-injury secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `muscle-injury` (PMID 41318886) but title/abstract proposition review did not establish a sufficiently specific optic-neuritis→muscle-injury secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "osteomalacia",
+      "name": "Osteomalacia, Residuals of",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 37070619) but title/abstract proposition review did not establish a sufficiently specific osteomalacia→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 37070619) but title/abstract proposition review did not establish a sufficiently specific osteomalacia→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "osteomyelitis",
+      "name": "Osteomyelitis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `anemia` (PMID 37079601) but title/abstract proposition review did not establish a sufficiently specific osteomyelitis→anemia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `anemia` (PMID 37079601) but title/abstract proposition review did not establish a sufficiently specific osteomyelitis→anemia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "osteonecrosis-of-the-jaw",
+      "name": "Osteonecrosis of the Jaw",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Candidate osteoporosis/antiresorptive evidence runs treatment→MRONJ, not MRONJ→osteoporosis; reverse direction.",
+      "originalReason": "Candidate osteoporosis/antiresorptive evidence runs treatment→MRONJ, not MRONJ→osteoporosis; reverse direction."
+    },
+    {
+      "id": "otitis-media",
+      "name": "Otitis Media",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `asthma` (PMID 29186364) but title/abstract proposition review did not establish a sufficiently specific otitis-media→asthma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `asthma` (PMID 29186364) but title/abstract proposition review did not establish a sufficiently specific otitis-media→asthma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "pancreatic-cancer",
+      "name": "Pancreatic Cancer",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Candidate comorbidity/treatment literature does not establish a clean pancreatic-cancer-first downstream catalog diagnosis outside treatment-specific pathways.",
+      "originalReason": "Candidate comorbidity/treatment literature does not establish a clean pancreatic-cancer-first downstream catalog diagnosis outside treatment-specific pathways."
+    },
+    {
+      "id": "panic-disorder",
+      "name": "Panic Disorder",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Harvested psychiatric comorbidity evidence is bidirectional/association-only and does not establish a clean panic-disorder-first secondary diagnosis.",
+      "originalReason": "Harvested psychiatric comorbidity evidence is bidirectional/association-only and does not establish a clean panic-disorder-first secondary diagnosis."
+    },
+    {
+      "id": "patellar-instability",
+      "name": "Patellar Instability",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `shoulder-condition` (PMID 33523411) but title/abstract proposition review did not establish a sufficiently specific patellar-instability→shoulder-condition secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `shoulder-condition` (PMID 33523411) but title/abstract proposition review did not establish a sufficiently specific patellar-instability→shoulder-condition secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "patellofemoral-pain-syndrome",
+      "name": "Patellofemoral Pain Syndrome",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `epicondylitis` (PMID 35988215) but title/abstract proposition review did not establish a sufficiently specific patellofemoral-pain-syndrome→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `epicondylitis` (PMID 35988215) but title/abstract proposition review did not establish a sufficiently specific patellofemoral-pain-syndrome→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "peptic-ulcer-disease",
+      "name": "Peptic Ulcer Disease (Gastric / Duodenal)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `diverticulitis` (PMID 36881513) but title/abstract proposition review did not establish a sufficiently specific peptic-ulcer-disease→diverticulitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `diverticulitis` (PMID 36881513) but title/abstract proposition review did not establish a sufficiently specific peptic-ulcer-disease→diverticulitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "periodontal-disease",
+      "name": "Periodontal Disease",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "loss-of-teeth"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `diabetes-mellitus-type-1` (PMID 29208508) but title/abstract proposition review did not establish a sufficiently specific periodontal-disease→diabetes-mellitus-type-1 secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "peripheral-neuropathy",
+      "name": "Peripheral Neuropathy",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-OUTCOME-NOT-DIAGNOSIS",
+      "approvedTargets": [],
+      "reason": "Falls/fractures are outcomes/injuries and generic neuropathy spans heterogeneous etiologies; no clean downstream diagnosis is justified.",
+      "originalReason": "Falls/fractures risk evidence lacks a clean downstream catalog diagnosis matching the outcome; generic neuropathy also spans heterogeneous etiologies."
+    },
+    {
+      "id": "peripheral-vascular-disease",
+      "name": "Peripheral Vascular Disease",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "amputation-or-loss-of-use"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `amputation-or-loss-of-use` (PMID 37934767) but title/abstract proposition review did not establish a sufficiently specific peripheral-vascular-disease→amputation-or-loss-of-use secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "peritoneal-adhesions",
+      "name": "Peritoneal Adhesions",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `dermatitis` (PMID 22261580) but title/abstract proposition review did not establish a sufficiently specific peritoneal-adhesions→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `dermatitis` (PMID 22261580) but title/abstract proposition review did not establish a sufficiently specific peritoneal-adhesions→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "persistent-depressive-disorder",
+      "name": "Persistent Depressive Disorder (Dysthymia)",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-HIERARCHY-OVERLAP",
+      "approvedTargets": [],
+      "reason": "Persistent depressive disorder and broader depressive-disorder identities are mood-disorder hierarchy issues, not a directional secondary relationship.",
+      "originalReason": "Depressive-disorder targets overlap the same mood-disorder family and require a hierarchy/identity decision before mapping."
+    },
+    {
+      "id": "pes-cavus",
+      "name": "Acquired Pes Cavus (Claw Foot)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `cardiomyopathy` (PMID 42117563) but title/abstract proposition review did not establish a sufficiently specific pes-cavus→cardiomyopathy secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `cardiomyopathy` (PMID 42117563) but title/abstract proposition review did not establish a sufficiently specific pes-cavus→cardiomyopathy secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "plantar-fasciitis",
+      "name": "Plantar Fasciitis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `carpal-tunnel-syndrome` (PMID 36346880) but title/abstract proposition review did not establish a sufficiently specific plantar-fasciitis→carpal-tunnel-syndrome secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `carpal-tunnel-syndrome` (PMID 36346880) but title/abstract proposition review did not establish a sufficiently specific plantar-fasciitis→carpal-tunnel-syndrome secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "polycystic-ovary-syndrome",
+      "name": "Polycystic Ovary Syndrome (PCOS)",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "endometrial-cancer"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Ovarian-cancer literature is inconsistent and does not support a stable PCOS-first secondary-cancer proposition."
+    },
+    {
+      "id": "post-concussion-syndrome",
+      "name": "Post-Concussion Syndrome / Late Effects of TBI",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `ptsd` (PMID 30186458) but title/abstract proposition review did not establish a sufficiently specific post-concussion-syndrome→ptsd secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `ptsd` (PMID 30186458) but title/abstract proposition review did not establish a sufficiently specific post-concussion-syndrome→ptsd secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "post-traumatic-osteoarthritis",
+      "name": "Post-Traumatic Arthritis",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-SAME-DISEASE-ETIOLOGIC-SUBTYPE",
+      "approvedTargets": [],
+      "reason": "Post-traumatic osteoarthritis is osteoarthritis defined by traumatic etiology; an OA edge would duplicate the same disease.",
+      "originalReason": "Osteoarthritis is the same disease class with a traumatic etiology; a downstream OA edge would duplicate the catalog identity."
+    },
+    {
+      "id": "prostate-cancer",
+      "name": "Prostate Cancer",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "urinary-incontinence",
+        "erectile-dysfunction"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `colorectal-cancer` (PMID 41748939) but title/abstract proposition review did not establish a sufficiently specific prostate-cancer→colorectal-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "prostatitis",
+      "name": "Prostatitis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 38393801) but title/abstract proposition review did not establish a sufficiently specific prostatitis→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 38393801) but title/abstract proposition review did not establish a sufficiently specific prostatitis→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "pulmonary-vascular-disease",
+      "name": "Pulmonary Vascular Disease",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `asthma` (PMID 38389713) but title/abstract proposition review did not establish a sufficiently specific pulmonary-vascular-disease→asthma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `asthma` (PMID 38389713) but title/abstract proposition review did not establish a sufficiently specific pulmonary-vascular-disease→asthma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "radial-neuropathy",
+      "name": "Radial Neuropathy",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-SAME-LESION-MANIFESTATION",
+      "approvedTargets": [],
+      "reason": "Wrist drop, weakness and sensory loss are manifestations of the radial nerve lesion.",
+      "originalReason": "Harvested findings are mainly manifestations of the same radial nerve lesion, not distinct downstream diagnoses."
+    },
+    {
+      "id": "radiculopathy-femoral",
+      "name": "radiculopathy femoral",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "FINAL-CLOSE-NO-SUPPORTED-SECONDARY",
+      "approvedTargets": [],
+      "reason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "radiculopathy-sciatic",
+      "name": "radiculopathy sciatic",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "FINAL-CLOSE-NO-SUPPORTED-SECONDARY",
+      "approvedTargets": [],
+      "reason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "radiculopathy-upper-extremity",
+      "name": "radiculopathy upper extremity",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "FINAL-CLOSE-NO-SUPPORTED-SECONDARY",
+      "approvedTargets": [],
+      "reason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "radiculopathy",
+      "name": "radiculopathy",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-HIERARCHY-SPLIT",
+      "approvedTargets": [],
+      "reason": "Generic radiculopathy overlaps level/root-specific identities; use taxonomy hierarchy rather than directional edges.",
+      "originalReason": "Current generic radiculopathy overlaps level-specific cervical/lumbar and nerve-root manifestations; a taxonomy split is required before directional mapping."
+    },
+    {
+      "id": "raynauds-syndrome",
+      "name": "Raynaud's Syndrome",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `glaucoma` (PMID 41370133) but title/abstract proposition review did not establish a sufficiently specific raynauds-syndrome→glaucoma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `glaucoma` (PMID 41370133) but title/abstract proposition review did not establish a sufficiently specific raynauds-syndrome→glaucoma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "rem-sleep-disorder",
+      "name": "REM Sleep Disorder",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "REM sleep behavior disorder predicts later synucleinopathy/Parkinson disease as a prodromal marker; that is prediction/prodrome, not RBD-caused secondary disease.",
+      "originalReason": "REM sleep behavior disorder predicts later synucleinopathy/Parkinson disease as a prodromal marker; that is prediction/prodrome, not RBD-caused secondary disease."
+    },
+    {
+      "id": "respiratory-cancer",
+      "name": "Lung Cancer / Tracheal Cancer / Bronchial Cancer",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `diabetes-mellitus-type-2` (PMID 38606433) but title/abstract proposition review did not establish a sufficiently specific respiratory-cancer→diabetes-mellitus-type-2 secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `diabetes-mellitus-type-2` (PMID 38606433) but title/abstract proposition review did not establish a sufficiently specific respiratory-cancer→diabetes-mellitus-type-2 secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "retinal-detachment",
+      "name": "Retinal Detachment",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "cataracts"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Candidate ophthalmic relationships are procedure/complication dependent or reverse-direction; no clean retinal-detachment-first edge was supported."
+    },
+    {
+      "id": "rickettsial-ehrlichial-anaplasma-infection",
+      "name": "Rickettsial, Ehrlichia, and Anaplasma Infections",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `kidney-cancer` (PMID 25126856) but title/abstract proposition review did not establish a sufficiently specific rickettsial-ehrlichial-anaplasma-infection→kidney-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `kidney-cancer` (PMID 25126856) but title/abstract proposition review did not establish a sufficiently specific rickettsial-ehrlichial-anaplasma-infection→kidney-cancer secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "rotator-cuff-injury",
+      "name": "Rotator Cuff Tendonitis / Tear",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `diabetes-mellitus-type-2` (PMID 42298552) but title/abstract proposition review did not establish a sufficiently specific rotator-cuff-injury→diabetes-mellitus-type-2 secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `diabetes-mellitus-type-2` (PMID 42298552) but title/abstract proposition review did not establish a sufficiently specific rotator-cuff-injury→diabetes-mellitus-type-2 secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "sacroiliac-joint-dysfunction",
+      "name": "Sacroiliac Joint Dysfunction",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 41072054) but title/abstract proposition review did not establish a sufficiently specific sacroiliac-joint-dysfunction→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 41072054) but title/abstract proposition review did not establish a sufficiently specific sacroiliac-joint-dysfunction→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "scarring-alopecia",
+      "name": "Scarring Alopecia",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Harvested dermatologic evidence does not establish a distinct scarring-alopecia-first downstream catalog diagnosis; many findings are manifestations/associations.",
+      "originalReason": "Harvested dermatologic evidence does not establish a distinct scarring-alopecia-first downstream catalog diagnosis; many findings are manifestations/associations."
+    },
+    {
+      "id": "scars",
+      "name": "Scars (Painful or Unstable)",
+      "originalDisposition": "HOLD-PHENOTYPE",
+      "masterResolution": "FINAL-CLOSE-PHENOTYPE-MISMATCH",
+      "approvedTargets": [],
+      "reason": "The catalog scar identity is painful/unstable scar pathology; acne scars and radial breast scars are different phenotypes and must not be forced into it.",
+      "originalReason": "Candidate breast-cancer literature uses 'radial scar' of the breast, a different pathology from the catalog painful/unstable scar identity."
+    },
+    {
+      "id": "schizoaffective-disorder",
+      "name": "Schizoaffective Disorder",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `bipolar-disorder` (PMID 36042153) but title/abstract proposition review did not establish a sufficiently specific schizoaffective-disorder→bipolar-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `bipolar-disorder` (PMID 36042153) but title/abstract proposition review did not establish a sufficiently specific schizoaffective-disorder→bipolar-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "scoliosis",
+      "name": "Scoliosis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `cerebral-palsy` (PMID 31595313) but title/abstract proposition review did not establish a sufficiently specific scoliosis→cerebral-palsy secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `cerebral-palsy` (PMID 31595313) but title/abstract proposition review did not establish a sufficiently specific scoliosis→cerebral-palsy secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "seizure-disorder",
+      "name": "Seizure Disorder / Epilepsy",
+      "originalDisposition": "HOLD-PHENOTYPE",
+      "masterResolution": "RESOLVE-BY-DISTINCT-EPILEPSY-TAXONOMY",
+      "approvedTargets": [],
+      "reason": "Keep broad `seizure-disorder` draft. Add a distinct `epilepsy` identity so recurrent epilepsy can be mapped without conflating acute/provoked seizures.",
+      "originalReason": "Strong temporal depression evidence is epilepsy-specific; the catalog identity also covers broader seizure phenotypes, including potentially provoked events."
+    },
+    {
+      "id": "shigella-or-salmonella",
+      "name": "Shigella / Salmonella Infections",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "reactive-arthritis"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `anemia` (PMID 37079601) but title/abstract proposition review did not establish a sufficiently specific shigella-or-salmonella→anemia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "shin-splints",
+      "name": "Shin Splints",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `greater-trochanteric-pain-syndrome` (PMID 28954794) but title/abstract proposition review did not establish a sufficiently specific shin-splints→greater-trochanteric-pain-syndrome secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `greater-trochanteric-pain-syndrome` (PMID 28954794) but title/abstract proposition review did not establish a sufficiently specific shin-splints→greater-trochanteric-pain-syndrome secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "short-bowel-syndrome",
+      "name": "Short Bowel Syndrome",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "kidney-stones"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Candidate nutritional/metabolic outcomes are clinically plausible but harvested evidence did not establish a sufficiently bounded catalog target with direction."
+    },
+    {
+      "id": "shoulder-condition",
+      "name": "Shoulder Impingement / Instability",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `tendinopathy` (PMID 25808530) but title/abstract proposition review did not establish a sufficiently specific shoulder-condition→tendinopathy secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `tendinopathy` (PMID 25808530) but title/abstract proposition review did not establish a sufficiently specific shoulder-condition→tendinopathy secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "skin-cancer",
+      "name": "Melanoma / Non-Melanoma Skin Cancers",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Candidate cancer associations largely reflect shared risk, treatment, or reverse detection rather than a clean skin-cancer-first secondary diagnosis.",
+      "originalReason": "Candidate cancer associations largely reflect shared risk, treatment, or reverse detection rather than a clean skin-cancer-first secondary diagnosis."
+    },
+    {
+      "id": "skull-fracture-non-basilar-and-basal",
+      "name": "Skull Fracture (Non-basilar and Basal)",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "epilepsy"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "somatic-symptom-disorder",
+      "name": "Somatic Symptom Disorder",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `dermatitis` (PMID 31864217) but title/abstract proposition review did not establish a sufficiently specific somatic-symptom-disorder→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `dermatitis` (PMID 31864217) but title/abstract proposition review did not establish a sufficiently specific somatic-symptom-disorder→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "specific-phobia",
+      "name": "Specific Phobia",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `panic-disorder` (PMID 25268297) but title/abstract proposition review did not establish a sufficiently specific specific-phobia→panic-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `panic-disorder` (PMID 25268297) but title/abstract proposition review did not establish a sufficiently specific specific-phobia→panic-disorder secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "spinal-stenosis",
+      "name": "Spinal Stenosis",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "RESOLVE-BY-SITE-SPECIFIC-TAXONOMY",
+      "approvedTargets": [],
+      "reason": "Do not publish from generic spinal stenosis. Add `lumbar-spinal-stenosis` and publish only the lumbar-stenosis → cauda-equina-syndrome proposition.",
+      "originalReason": "Radiculopathy/cauda equina findings may be manifestations of stenosis and are anatomy/severity dependent; current generic target model is insufficient."
+    },
+    {
+      "id": "strongyloidiasis",
+      "name": "Strongyloidiasis",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 37235296) but title/abstract proposition review did not establish a sufficiently specific strongyloidiasis→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 37235296) but title/abstract proposition review did not establish a sufficiently specific strongyloidiasis→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "subdural-hematoma",
+      "name": "Subdural Hematoma",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `cardiac-arrhythmia` (PMID 34130102) but title/abstract proposition review did not establish a sufficiently specific subdural-hematoma→cardiac-arrhythmia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `cardiac-arrhythmia` (PMID 34130102) but title/abstract proposition review did not establish a sufficiently specific subdural-hematoma→cardiac-arrhythmia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "tarsal-metatarsal-malunion-nonunion",
+      "name": "Tarsal or Metatarsal Malunion / Nonunion",
+      "originalDisposition": "NO-SUPPORTED-SECONDARY",
+      "masterResolution": "FINAL-CLOSE-NO-SUPPORTED-SECONDARY",
+      "approvedTargets": [],
+      "reason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft.",
+      "originalReason": "The master PubMed strategy surfaced no catalog-matched candidate evidence for a distinct downstream secondary diagnosis; retain as researched safe draft."
+    },
+    {
+      "id": "tendinopathy",
+      "name": "Tendinitis / Tendinosis / Tendinopathy",
+      "originalDisposition": "HOLD-TAXONOMY",
+      "masterResolution": "FINAL-CLOSE-HIERARCHY-SITE-SUBTYPES",
+      "approvedTargets": [],
+      "reason": "Epicondylitis and other named tendinopathies are site-specific subtypes; use hierarchy rather than directional edges.",
+      "originalReason": "Epicondylitis and related entities are site-specific tendinopathy phenotypes; current identities need hierarchy rather than directional edges."
+    },
+    {
+      "id": "thrombocytopenia",
+      "name": "Thrombocytopenia",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `diabetic-retinopathy` (PMID 38571701) but title/abstract proposition review did not establish a sufficiently specific thrombocytopenia→diabetic-retinopathy secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `diabetic-retinopathy` (PMID 38571701) but title/abstract proposition review did not establish a sufficiently specific thrombocytopenia→diabetic-retinopathy secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "tibial-neuropathy",
+      "name": "Tibial Neuropathy",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 19797041) but title/abstract proposition review did not establish a sufficiently specific tibial-neuropathy→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `abdominal-hernia` (PMID 19797041) but title/abstract proposition review did not establish a sufficiently specific tibial-neuropathy→abdominal-hernia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "tinnitus",
+      "name": "Tinnitus",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Candidate hearing/vestibular disorders are commonly causes or co-manifestations of tinnitus, not downstream conditions caused by tinnitus.",
+      "originalReason": "Candidate hearing/vestibular disorders are commonly causes or co-manifestations of tinnitus, not downstream conditions caused by tinnitus."
+    },
+    {
+      "id": "tmj-disorder",
+      "name": "Temporomandibular Joint (TMJ) Disorders",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `tinnitus` (PMID 40917038) but title/abstract proposition review did not establish a sufficiently specific tmj-disorder→tinnitus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `tinnitus` (PMID 40917038) but title/abstract proposition review did not establish a sufficiently specific tmj-disorder→tinnitus secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "traumatic-subarachnoid-hemorrhage",
+      "name": "Traumatic Subarachnoid Hemorrhage",
+      "originalDisposition": "HOLD-PHENOTYPE",
+      "masterResolution": "FINAL-CLOSE-EVIDENCE-PHENOTYPE",
+      "approvedTargets": [],
+      "reason": "Current Takotsubo/neurocardiac literature is not sufficiently traumatic-SAH-specific for the program's publication floor. No edge is published.",
+      "originalReason": "Strong cardiomyopathy/neurocardiac evidence located in the harvest is predominantly for non-traumatic SAH, not the catalog traumatic-SAH identity."
+    },
+    {
+      "id": "ulnar-neuropathy",
+      "name": "Ulnar Neuropathy",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `epicondylitis` (PMID 20357592) but title/abstract proposition review did not establish a sufficiently specific ulnar-neuropathy→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `epicondylitis` (PMID 20357592) but title/abstract proposition review did not establish a sufficiently specific ulnar-neuropathy→epicondylitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "urinary-incontinence",
+      "name": "Urinary Incontinence / Frequency",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `cardiac-arrhythmia` (PMID 40611491) but title/abstract proposition review did not establish a sufficiently specific urinary-incontinence→cardiac-arrhythmia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `cardiac-arrhythmia` (PMID 40611491) but title/abstract proposition review did not establish a sufficiently specific urinary-incontinence→cardiac-arrhythmia secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "urticaria",
+      "name": "Urticaria (Hives)",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 40663028) but title/abstract proposition review did not establish a sufficiently specific urticaria→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 40663028) but title/abstract proposition review did not establish a sufficiently specific urticaria→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "uterine-fibroids",
+      "name": "Uterine Fibroids",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "APPROVE-PUBLISH-MASTER-RESOLUTION",
+      "approvedTargets": [
+        "anemia"
+      ],
+      "reason": "Fresh open-world proposition review identified one or more replacement/downstream relationships that meet the conservative evidence floor with explicit phenotype, direction, treatment, chronology, and diagnosis guards.",
+      "originalReason": "Harvested evidence co-mentioned `endometriosis` (PMID 39567014) but title/abstract proposition review did not establish a sufficiently specific uterine-fibroids→endometriosis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "varicocele-hydrocele",
+      "name": "Varicocele / Hydrocele",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `muscle-injury` (PMID 36443199) but title/abstract proposition review did not establish a sufficiently specific varicocele-hydrocele→muscle-injury secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `muscle-injury` (PMID 36443199) but title/abstract proposition review did not establish a sufficiently specific varicocele-hydrocele→muscle-injury secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "varicose-veins",
+      "name": "Varicose Veins",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `asthma` (PMID 34323916) but title/abstract proposition review did not establish a sufficiently specific varicose-veins→asthma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `asthma` (PMID 34323916) but title/abstract proposition review did not establish a sufficiently specific varicose-veins→asthma secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "vestibular-disorder",
+      "name": "Vertigo / Vestibular Disorders",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 25581507) but title/abstract proposition review did not establish a sufficiently specific vestibular-disorder→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `urinary-incontinence` (PMID 25581507) but title/abstract proposition review did not establish a sufficiently specific vestibular-disorder→urinary-incontinence secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "visual-impairment",
+      "name": "Visual Acuity / Field Impairment",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `cataracts` (PMID 41399395) but title/abstract proposition review did not establish a sufficiently specific visual-impairment→cataracts secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `cataracts` (PMID 41399395) but title/abstract proposition review did not establish a sufficiently specific visual-impairment→cataracts secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "vitiligo",
+      "name": "Vitiligo",
+      "originalDisposition": "HOLD-PROPOSITION-MISMATCH",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "approvedTargets": [],
+      "reason": "Harvested evidence co-mentioned `dermatitis` (PMID 39742272) but title/abstract proposition review did not establish a sufficiently specific vitiligo→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage.",
+      "originalReason": "Harvested evidence co-mentioned `dermatitis` (PMID 39742272) but title/abstract proposition review did not establish a sufficiently specific vitiligo→dermatitis secondary relationship; retain draft rather than infer direction, causation, or treatment linkage."
+    },
+    {
+      "id": "vocal-cord-paralysis",
+      "name": "Vocal Cord Paralysis",
+      "originalDisposition": "HOLD-DIRECTION",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "approvedTargets": [],
+      "reason": "Harvested airway/voice candidates are manifestations, etiologies, or treatment consequences rather than a distinct paralysis-first downstream diagnosis.",
+      "originalReason": "Harvested airway/voice candidates are manifestations, etiologies, or treatment consequences rather than a distinct paralysis-first downstream diagnosis."
+    }
+  ],
+  "relationshipLevelResolutions": [
+    {
+      "relationship": "q-fever → hepatitis",
+      "masterResolution": "FINAL-CLOSE-TAXONOMY-MISMATCH",
+      "reason": "Q-fever hepatitis is a real nonviral infectious hepatitis phenotype, but the existing hepatitis identity is viral A/B/C. Do not broaden or mislabel the target."
+    },
+    {
+      "relationship": "typhoid-fever → hepatitis",
+      "masterResolution": "FINAL-CLOSE-TAXONOMY-MISMATCH",
+      "reason": "Salmonella/typhoid hepatitis is a real nonviral infectious hepatitis phenotype, but it does not match the existing viral hepatitis A/B/C identity."
+    },
+    {
+      "relationship": "adjustment-disorder → gerd",
+      "masterResolution": "FINAL-CLOSE-PROPOSITION-MISMATCH",
+      "reason": "Broad psychosocial/anxiety/depression evidence remains insufficient for an adjustment-disorder-specific GERD proposition."
+    },
+    {
+      "relationship": "ocd → migraine-headaches",
+      "masterResolution": "FINAL-CLOSE-DIRECTION",
+      "reason": "Cross-sectional association does not establish OCD-first incident migraine."
+    },
+    {
+      "relationship": "seizure-disorder → depressive-disorder",
+      "masterResolution": "RESOLVED-BY-DISTINCT-EPILEPSY-IDENTITY",
+      "reason": "The broad seizure identity remains draft. The narrower `epilepsy → depressive-disorder` association-risk edge is proposed instead."
+    },
+    {
+      "relationship": "rem-sleep-disorder → parkinsons-disease",
+      "masterResolution": "FINAL-CLOSE-PRODROMAL-PREDICTIVE-NOT-SECONDARY",
+      "reason": "REM sleep behavior disorder is a prodromal/predictive marker for synucleinopathy/Parkinson disease; prediction is not an RBD-caused secondary pathway."
+    },
+    {
+      "relationship": "mild-tbi → migraine-headaches",
+      "masterResolution": "RESOLVED-PRIOR-POST-TRAUMATIC-HEADACHE",
+      "reason": "Already corrected to `mild-tbi → post-traumatic-headache` and separately citation-verified; primary migraine remains distinct."
+    }
+  ],
+  "expectedPostImplementationState": {
+    "catalogConditions": 311,
+    "knowledgeBaseFiles": 311,
+    "publishedMappings": 139,
+    "draftMappings": 172,
+    "references": 181,
+    "liveVerified": 142,
+    "retiredVerified": 6,
+    "verifiedProvenance": 148,
+    "unverified": 39,
+    "reviewFindingCount": 39,
+    "hardFindingCount": 0,
+    "clinicalEvidenceReferences": 176,
+    "clinicalEvidenceReferencesWithUrls": 176,
+    "clinicalEvidenceUrlCoverageComplete": true,
+    "clinicalEvidenceProvenanceWithUrls": 180
+  },
+  "implementationBoundary": [
+    "Add only the nine new identities listed in this artifact.",
+    "Publish only the 39 relationship edges listed in this artifact.",
+    "Move only the 33 existing draft primary KBs with approved edges to published, plus publish the two new primary identities `lumbar-spinal-stenosis` and `epilepsy`.",
+    "Keep the seven new target-only identities draft unless and until they independently gain downstream suggestions.",
+    "Keep all 39 new clinical source rows at verified:false.",
+    "Do not change any previously verified citation to false or alter completed mapping targets/rationales.",
+    "Do not add pathwayIntelligence to any Master Resolution edge.",
+    "Do not invent or borrow VA diagnostic/rating codes for new identities; use explicit review notes where the catalog requires coding review.",
+    "Do not publish any condition marked FINAL-CLOSE.",
+    "Run the complete local validation sequence and create one local commit only if all gates pass and the Vercel freeze guard exits 2.",
+    "No git push, GitHub write, Vercel deploy/promotion, or Vercel configuration change is authorized."
+  ],
+  "citationVerificationAfterImplementation": {
+    "separateApprovalRequired": true,
+    "expectedQueueRows": 39,
+    "expectedUniquePmids": 37,
+    "proposedProgramName": "Clinical Mapping Master Resolution Citation Verification 2026"
+  },
+  "approvalPhrase": "I approve Clinical Mapping Master Resolution 2026",
+  "approvalDate": "2026-08-20",
+  "qualifiedHumanApproval": "I approve Clinical Mapping Master Resolution 2026",
+  "approvedProposalSha256": "b07aeac776851ddbce76af632ead62ed3491a9cf23203f07e884e64c31254299",
+  "approvedManifestSha256": "48f9246d06e3cc2884fca6df6652755c7637f8d3e28161383c1bc93faa573a8c",
+  "implementationResult": {
+    "parentLocalHead": "fa5a1c4f883ffbb617bc6edfd06e495e653e0dce",
+    "newIdentitiesAdded": [
+      "acne-scarring",
+      "lumbar-spinal-stenosis",
+      "epilepsy",
+      "guillain-barre-syndrome",
+      "reactive-arthritis",
+      "lymphedema",
+      "endometrial-cancer",
+      "amebic-liver-abscess",
+      "pulmonary-embolism"
+    ],
+    "publishedPrimaryConditions": [
+      "acne",
+      "amebiasis",
+      "breast-cancer",
+      "bronchiectasis",
+      "campylobacter-jejuni-infection",
+      "cardiac-arrhythmia",
+      "cardiac-inflammatory-disease",
+      "cerebral-contusion-diffuse-axonal-injury",
+      "cerebral-palsy",
+      "chronic-kidney-disease",
+      "cold-injury-residuals",
+      "colorectal-cancer",
+      "deep-vein-thrombosis",
+      "diabetic-retinopathy",
+      "endometriosis",
+      "epilepsy",
+      "gallbladder-disease",
+      "heart-transplant-residuals",
+      "kidney-cancer",
+      "kidney-stones",
+      "knee-injury",
+      "lumbar-spinal-stenosis",
+      "lyme-disease",
+      "malaria",
+      "multiple-myeloma",
+      "myocardial-infarction",
+      "periodontal-disease",
+      "peripheral-vascular-disease",
+      "polycystic-ovary-syndrome",
+      "prostate-cancer",
+      "retinal-detachment",
+      "shigella-or-salmonella",
+      "short-bowel-syndrome",
+      "skull-fracture-non-basilar-and-basal",
+      "uterine-fibroids"
+    ],
+    "newRelationshipEdges": 39,
+    "newClinicalSourceRows": 39,
+    "uniquePmids": 37,
+    "citationsVerifiedByThisImplementation": 0,
+    "allNewSourcesVerifiedFalse": true,
+    "promotedWaveIds": [
+      "amebiasis",
+      "bronchiectasis",
+      "heart-transplant-residuals",
+      "short-bowel-syndrome"
+    ],
+    "waveCountsBefore": {
+      "published-evidence-led": 44,
+      "safe-draft": 63
+    },
+    "waveCountsAfter": {
+      "published-evidence-led": 48,
+      "safe-draft": 59
+    },
+    "expectedPostImplementationState": {
+      "catalogConditions": 311,
+      "knowledgeBaseFiles": 311,
+      "publishedMappings": 139,
+      "draftMappings": 172,
+      "references": 181,
+      "liveVerified": 142,
+      "retiredVerified": 6,
+      "verifiedProvenance": 148,
+      "unverified": 39,
+      "reviewFindingCount": 39,
+      "hardFindingCount": 0,
+      "clinicalEvidenceReferences": 176,
+      "clinicalEvidenceReferencesWithUrls": 176,
+      "clinicalEvidenceProvenanceWithUrls": 180
+    },
+    "remoteWritesPerformed": false
+  }
+}

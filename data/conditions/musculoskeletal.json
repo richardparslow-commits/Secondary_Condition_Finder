@@ -72,6 +72,20 @@
       "reviewNotes": []
     },
     {
+      "id": "lumbar-spinal-stenosis",
+      "name": "Lumbar Spinal Stenosis",
+      "aliases": [
+        "lumbar spinal canal stenosis",
+        "lumbar canal stenosis",
+        "degenerative lumbar spinal stenosis"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Clinical Mapping Master Resolution 2026 taxonomy identity. No condition-specific VA diagnostic/rating code was assigned or borrowed; retain for qualified catalog/rating review. Site-specific lumbar phenotype derived from the broader spinal-stenosis concept; does not include cervical or thoracic stenosis."
+      ]
+    },
+    {
       "id": "scoliosis",
       "name": "Scoliosis",
       "aliases": [],

@@ -1,6 +1,30 @@
 {
   "id": "short-bowel-syndrome",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review resection-related, malabsorption/nutritional, hepatobiliary/renal, treatment, aggravation, and intermediate-factor pathways only where applicable; distinguish syndrome consequences from the underlying reason for bowel resection."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "kidney-stones",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific metabolic complication. Require documented short-bowel/short-gut syndrome with the relevant malabsorptive phenotype, especially colon-in-continuity/enteric hyperoxaluria when applicable, and separately documented stone disease. Do not generalize to all short-bowel phenotypes. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Short Bowel Syndrome matches the source-specific phenotype",
+        "Independent diagnosis of Kidney Stones (Nephrolithiasis) with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Resolution of the publication guard: Require documented short-bowel/short-gut syndrome with the relevant malabsorptive phenotype, especially colon-in-continuity/enteric hyperoxaluria when applicable, and separately documented stone disease. Do not generalize to all short-bowel phenotypes."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Dietary Management of Chronic Kidney Disease and Secondary Hyperoxaluria in Patients with Short Bowel Syndrome and Type 3 Intestinal Failure. Nutrients. 2022. doi:10.3390/nu14081646. PMID 35458207",
+          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded phenotype specific metabolic complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35458207/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 35458207; approved Master Resolution proposition; guard: Require documented short-bowel/short-gut syndrome with the relevant malabsorptive phenotype, especially colon-in-continuity/enteric hyperoxaluria when applicable, and separately documented stone disease. Do not generalize to all short-bowel phenotypes."
+        }
+      ]
+    }
+  ]
 }

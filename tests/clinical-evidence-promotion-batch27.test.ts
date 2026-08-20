@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -12,11 +13,25 @@ describe("clinical evidence promotion batch 27", () => {
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
   it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(kb).toHaveLength(302);
   });
 
   it("promotes uveitic glaucoma only with objective glaucoma and mechanism review", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("uveitis");
     const suggestion = mapping?.suggestions[0];
     expect(mapping?.draft).toBe(false);
@@ -32,6 +47,13 @@ describe("clinical evidence promotion batch 27", () => {
   });
 
   it("promotes retinal-dystrophy visual impairment with phenotype-specific limits", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("retinal-dystrophy");
     const suggestion = mapping?.suggestions[0];
     expect(mapping?.draft).toBe(false);
@@ -46,6 +68,13 @@ describe("clinical evidence promotion batch 27", () => {
   });
 
   it("promotes ptosis visual impairment only with objective mechanical field obstruction", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("ptosis");
     const suggestion = mapping?.suggestions[0];
     expect(mapping?.draft).toBe(false);
@@ -60,6 +89,13 @@ describe("clinical evidence promotion batch 27", () => {
   });
 
   it("withdraws three nondirectional comorbidity edges to keep citation debt flat", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {

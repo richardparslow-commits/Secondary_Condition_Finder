@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from "node:fs";
 import path from "node:path";
@@ -17,4 +18,11 @@ describe("citation verification batch 11",()=>{
     expect(sug("ptsd","migraine-headaches").pathwayIntelligence).toBeUndefined();
   });
 });
-describe("batch 11 ratchet",()=>{it("pins the approved baseline",()=>{const a=fs.readFileSync(path.join(root,"scripts/audit-citation-verification.js"),"utf8");expect(a).toContain("liveVerified: 142,");expect(a).toContain("verifiedProvenance: 148,");expect(a).toContain("unverified: 0,");expect(a).toContain("reviewFindings: 0,");});});
+describe("batch 11 ratchet",()=>{it("pins the approved baseline",()=>{
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+const a=fs.readFileSync(path.join(root,"scripts/audit-citation-verification.js"),"utf8");expect(a).toContain("liveVerified: 142,");expect(a).toContain("verifiedProvenance: 148,");expect(a).toContain("unverified: 0,");expect(a).toContain("reviewFindings: 0,");});});

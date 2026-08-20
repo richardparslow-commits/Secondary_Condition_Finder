@@ -1,8 +1,30 @@
 {
   "id": "colorectal-cancer",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence; retain legal authorities only as legal framework."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "peripheral-neuropathy",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment complication. Require documented oxaliplatin-containing colorectal-cancer chemotherapy and separately documented chemotherapy-induced peripheral neuropathy. Do not generalize to colorectal cancer without neurotoxic treatment. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment/procedure exposure for Colon / Rectal Cancer",
+        "Independent diagnosis of Peripheral Neuropathy and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and exact source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Systematic review of long-term chemotherapy-induced peripheral neuropathy (CIPN) following adjuvant oxaliplatin for colorectal cancer. Supportive care in cancer : official journal of the Multinational Association of Supportive Care in Cancer. 2022. doi:10.1007/s00520-021-06502-4. PMID 34410459",
+          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded treatment complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34410459/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 34410459; approved Master Resolution proposition; guard: Require documented oxaliplatin-containing colorectal-cancer chemotherapy and separately documented chemotherapy-induced peripheral neuropathy. Do not generalize to colorectal cancer without neurotoxic treatment."
+        }
+      ]
+    }
+  ]
 }

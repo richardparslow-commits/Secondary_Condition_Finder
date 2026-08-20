@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 import { loadKnowledgeBase } from "@/lib/kb/load";
@@ -10,6 +11,13 @@ const safetyWithdrawnMappings = ["ageusia","emphysema","chronic-bronchitis","pul
 
 describe("controlled pathway backfill batch 3", () => {
   it("backfills only surviving Respiratory edges whose attached source set includes clinical evidence", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
     for (const [primaryId, secondaries] of Object.entries(expectedBackfill)) {
       const mapping = kb.find((entry) => entry.id === primaryId); expect(mapping?.draft).toBe(false);
@@ -24,6 +32,13 @@ describe("controlled pathway backfill batch 3", () => {
   });
 
   it("keeps untouched insufficient-source Respiratory and ENT mappings unpublished or unlabeled", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {
@@ -42,6 +57,13 @@ describe("controlled pathway backfill batch 3", () => {
   });
 
   it("recognizes later qualified-human COPD citation review without preserving unsupported directional pathway labels", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "copd");
     const osa = mapping?.suggestions.find((entry) => entry.conditionId === "sleep-apnea");
     expect(mapping?.draft).toBe(false);
@@ -54,6 +76,13 @@ describe("controlled pathway backfill batch 3", () => {
   });
 
   it("recognizes the Batch 11 ILD repair without inferring causation or preserving arrhythmia", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "interstitial-lung-disease");
     const osa = mapping?.suggestions.find((entry) => entry.conditionId === "sleep-apnea");
     expect(mapping?.draft).toBe(false);
@@ -66,6 +95,13 @@ describe("controlled pathway backfill batch 3", () => {
   });
 
   it("recognizes the Batch 12 rhinitis and sinusitis repairs without preserving arrhythmia", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
     const rhinitis = kb.find((entry) => entry.id === "chronic-rhinitis");
     const sinusitis = kb.find((entry) => entry.id === "chronic-sinusitis");
@@ -88,6 +124,13 @@ describe("controlled pathway backfill batch 3", () => {
   });
 
   it("recognizes the later anosmia depression withdrawal", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "anosmia");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -95,6 +138,13 @@ describe("controlled pathway backfill batch 3", () => {
   });
 
   it("recognizes the later asthma and COPD arrhythmia withdrawals", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
     for (const primaryId of ["asthma", "copd"]) {
       const mapping = kb.find((entry) => entry.id === primaryId);
@@ -114,6 +164,13 @@ describe("controlled pathway backfill batch 3", () => {
   });
 
   it("keeps draft Respiratory and ENT mappings outside the backfill", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {

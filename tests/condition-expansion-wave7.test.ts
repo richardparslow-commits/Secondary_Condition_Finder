@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 
@@ -30,6 +31,13 @@ describe("condition catalog expansion wave 7", () => {
   const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
 
   it("reaches the target-v2 catalog at exactly 302 conditions", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(knowledgeBase).toHaveLength(302);
   });
@@ -39,6 +47,13 @@ describe("condition catalog expansion wave 7", () => {
   });
 
   it("publishes three evidence-led Wave 7 relationships and keeps the other seven safe-draft", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {
@@ -62,6 +77,13 @@ describe("condition catalog expansion wave 7", () => {
   });
 
   it("keeps adrenal histoplasmosis out of the pulmonary-only mapping", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("histoplasmosis");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);

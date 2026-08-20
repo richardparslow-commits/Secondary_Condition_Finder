@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -206,10 +207,24 @@ const heldIds = [
 
 describe("Clinical Mapping Master Batch 2026", () => {
   it("preserves the approved mapping state with completed Master citation verification", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     assertMaster2026CurrentState();
   });
 
   it("keeps all 197 held/no-supported master identities draft", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(heldIds).toHaveLength(197);
     for (const id of heldIds) {
       const mapping = JSON.parse(

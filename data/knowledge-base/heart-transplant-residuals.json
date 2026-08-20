@@ -1,6 +1,30 @@
 {
   "id": "heart-transplant-residuals",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, treatment/procedure, medication, intermediate-factor, cardiovascular, immunologic, and other organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "skin-cancer",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment exposure associated malignancy. Require documented heart transplantation, chronic post-transplant immunosuppression, and separately diagnosed skin malignancy after transplant. Do not infer skin cancer from transplant status alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment/procedure exposure for Heart Transplant Residuals",
+        "Independent diagnosis of Melanoma / Non-Melanoma Skin Cancers and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and exact source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "The burden of skin cancer in heart transplant recipients: Impact of immunosuppressive regimens. JHLT open. 2025. doi:10.1016/j.jhlto.2025.100380. PMID 41322122",
+          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded treatment exposure associated malignancy proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41322122/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 41322122; approved Master Resolution proposition; guard: Require documented heart transplantation, chronic post-transplant immunosuppression, and separately diagnosed skin malignancy after transplant. Do not infer skin cancer from transplant status alone."
+        }
+      ]
+    }
+  ]
 }

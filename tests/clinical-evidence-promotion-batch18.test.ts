@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -16,11 +17,25 @@ describe("clinical evidence promotion batch 18", () => {
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
   it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(kb).toHaveLength(302);
   });
 
   it("withdraws agoraphobia and panic disorder rather than preserving legal-only medical propositions", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     for (const id of ["agoraphobia", "panic-disorder"]) {
       const mapping = byId.get(id);
       expect(mapping?.draft).toBe(true);
@@ -31,6 +46,13 @@ describe("clinical evidence promotion batch 18", () => {
   });
 
   it("publishes only a phenotype-bounded pulmonary-hypertension to right-heart-failure pathway", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("pulmonary-hypertension");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];

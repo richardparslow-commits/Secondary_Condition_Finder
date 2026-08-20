@@ -1,8 +1,30 @@
 {
   "id": "cold-injury-residuals",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence; retain legal authorities only as legal framework."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "peripheral-neuropathy",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific injury complication. Apply to documented non-freezing cold injury with persistent objectively supported sensory neuropathy. Do not generalize this source to all freezing injuries or every cold-injury residual phenotype. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Cold Injuries (Frostbite / Immersion Foot Residuals) matches the source-specific phenotype",
+        "Independent diagnosis of Peripheral Neuropathy with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Resolution of the publication guard: Apply to documented non-freezing cold injury with persistent objectively supported sensory neuropathy. Do not generalize this source to all freezing injuries or every cold-injury residual phenotype."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Chronic non-freezing cold injury results in neuropathic pain due to a sensory neuropathy. Brain : a journal of neurology. 2017. doi:10.1093/brain/awx215. PMID 28969380",
+          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded phenotype specific injury complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28969380/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 28969380; approved Master Resolution proposition; guard: Apply to documented non-freezing cold injury with persistent objectively supported sensory neuropathy. Do not generalize this source to all freezing injuries or every cold-injury residual phenotype."
+        }
+      ]
+    }
+  ]
 }

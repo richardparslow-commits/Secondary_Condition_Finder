@@ -1,8 +1,53 @@
 {
   "id": "campylobacter-jejuni-infection",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with Campylobacter-specific clinical evidence; prior generic depression and medication-to-GERD pathways lacked direct supporting citations."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "guillain-barre-syndrome",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as postinfectious neurologic complication. Require documented Campylobacter infection preceding a separately diagnosed Guillain-Barré syndrome. Do not infer GBS from enteritis alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Campylobacter Jejuni Infection matches the source-specific phenotype",
+        "Independent diagnosis of Guillain-Barré Syndrome with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Resolution of the publication guard: Require documented Campylobacter infection preceding a separately diagnosed Guillain-Barré syndrome. Do not infer GBS from enteritis alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Quantifying the association between Campylobacter infection and Guillain-Barré syndrome: a systematic review. Journal of health, population, and nutrition. 2010. doi:10.3329/jhpn.v28i6.6602. PMID 21261199",
+          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded postinfectious neurologic complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21261199/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 21261199; approved Master Resolution proposition; guard: Require documented Campylobacter infection preceding a separately diagnosed Guillain-Barré syndrome. Do not infer GBS from enteritis alone."
+        }
+      ]
+    },
+    {
+      "conditionId": "reactive-arthritis",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as postinfectious rheumatologic complication. Require documented Campylobacter infection preceding separately diagnosed reactive arthritis. Preserve the postinfectious temporal relationship and do not infer arthritis from infection alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Campylobacter Jejuni Infection matches the source-specific phenotype",
+        "Independent diagnosis of Reactive Arthritis with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Resolution of the publication guard: Require documented Campylobacter infection preceding separately diagnosed reactive arthritis. Preserve the postinfectious temporal relationship and do not infer arthritis from infection alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Enteric Infection-Associated Reactive Arthritis: A Systematic Review and Meta-Analysis. Journal of clinical medicine. 2024. doi:10.3390/jcm13123433. PMID 38929962",
+          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded postinfectious rheumatologic complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38929962/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 38929962; approved Master Resolution proposition; guard: Require documented Campylobacter infection preceding separately diagnosed reactive arthritis. Preserve the postinfectious temporal relationship and do not infer arthritis from infection alone."
+        }
+      ]
+    }
+  ]
 }

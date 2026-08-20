@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -12,11 +13,25 @@ describe("clinical evidence promotion batch 30", () => {
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
   it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(kb).toHaveLength(302);
   });
 
   it("recognizes Batch-8 qualified-human verification of ovarian-cancer treatment neuropathy", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("ovarian-cancer");
     const suggestion = mapping?.suggestions[0];
     expect(mapping?.draft).toBe(false);
@@ -32,6 +47,13 @@ describe("clinical evidence promotion batch 30", () => {
   });
 
   it("keeps testicular-cancer treatment hypogonadism unverified", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("testicular-cancer");
     const suggestion = mapping?.suggestions[0];
     expect(mapping?.draft).toBe(false);
@@ -46,6 +68,13 @@ describe("clinical evidence promotion batch 30", () => {
   });
 
   it("keeps pulmonary histoplasmosis draft because adrenal evidence cannot be enforced by the current identity", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("histoplasmosis");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -54,6 +83,13 @@ describe("clinical evidence promotion batch 30", () => {
   });
 
   it("recognizes later M1 publication of laryngeal-cancer to aphonia as treatment-specific", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("laryngeal-cancer");
     const suggestion = mapping?.suggestions[0];
     expect(mapping?.draft).toBe(false);
@@ -71,6 +107,13 @@ describe("clinical evidence promotion batch 30", () => {
   });
 
   it("withdraws three nondirectional published depression edges", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {
@@ -96,6 +139,13 @@ describe("clinical evidence promotion batch 30", () => {
   });
 
   it("keeps the other seven Wave 7 identities safe-draft", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {
@@ -120,6 +170,13 @@ describe("clinical evidence promotion batch 30", () => {
   });
 
   it("records 31 published, 63 safe-draft, and zero candidates", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {

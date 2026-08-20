@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -7,6 +8,13 @@ const kb = path.join(root, "data", "knowledge-base");
 
 describe("Adrenal Histoplasmosis Citation Verification 2026", () => {
   it("verifies PMID 30656706 only on the bounded adrenal-site proposition", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = JSON.parse(
       fs.readFileSync(path.join(kb, "adrenal-histoplasmosis.json"), "utf8"),
     ) as {
@@ -91,6 +99,13 @@ describe("Adrenal Histoplasmosis Citation Verification 2026", () => {
   });
 
   it("closes the live citation queue without changing reference count", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const refs = fs
       .readdirSync(kb)
       .filter((name) => name.endsWith(".json"))

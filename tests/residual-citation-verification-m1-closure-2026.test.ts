@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -54,6 +55,13 @@ describe("Residual M1 citation closure 2026 — current state", () => {
   });
 
   it("preserves prior verification while adrenal taxonomy reopens one review row", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const refs = fs
       .readdirSync(kb)
       .filter((name) => name.endsWith(".json"))

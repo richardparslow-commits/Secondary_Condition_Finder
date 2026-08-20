@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 
@@ -23,6 +24,13 @@ const safetyWithdrawnMappings = [
 
 describe("controlled pathway backfill batch 4", () => {
   it("adds a conditional somatopsychic pathway only to the two supported physical-to-mood edges", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
 
     for (const [primaryId, secondaryId] of supportedSomatopsychicEdges) {
@@ -56,6 +64,13 @@ describe("controlled pathway backfill batch 4", () => {
   });
 
   it("recognizes the Batch 5 ED association narrowing without resurrecting the unsupported GERD chain", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "erectile-dysfunction");
     const depression = mapping?.suggestions.find((entry) => entry.conditionId === "depressive-disorder");
     const gerd = mapping?.suggestions.find((entry) => entry.conditionId === "gerd");
@@ -86,6 +101,13 @@ describe("controlled pathway backfill batch 4", () => {
   });
 
   it("keeps later safety withdrawals unpublished", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {
@@ -104,6 +126,13 @@ describe("controlled pathway backfill batch 4", () => {
   });
 
   it("recognizes the later alopecia-areata depression withdrawal", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "alopecia-areata");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -111,6 +140,13 @@ describe("controlled pathway backfill batch 4", () => {
   });
 
   it("recognizes hypertension only after its four published edges are clinically repaired", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "hypertension");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(4);

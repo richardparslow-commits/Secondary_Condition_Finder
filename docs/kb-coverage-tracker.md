@@ -1,3 +1,16 @@
+<!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:START -->
+## Clinical Mapping Master Resolution 2026 coverage
+
+- Catalog identities: **311**.
+- Knowledge-base files: **311**.
+- Published mappings: **139**.
+- Draft mappings: **172**.
+- New resolution edges: **39 across 35 primaries**.
+- New target-only draft identities: **7**.
+- New published primary identities: **2**.
+- Exhaustive approved artifact: `docs/clinical-mapping-master-resolution-2026-approved-disposition.json`.
+<!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:END -->
+
 <!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:START -->
 ## Adrenal Histoplasmosis taxonomy and citation closure
 

@@ -1,3 +1,18 @@
+<!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:START -->
+## Clinical Mapping Master Resolution 2026
+
+- Parent HEAD: `fa5a1c4f883ffbb617bc6edfd06e495e653e0dce`.
+- T1 was superseded before implementation.
+- Master Resolution publication: **35 primaries / 39 edges**.
+- Taxonomy additions: **9 identities**.
+- Overall KB: **139 published / 172 draft** across **311 identities**.
+- Citation queue: **39 source rows / 37 unique PMIDs**, all `verified:false`.
+- Live citation state: **142 verified / 39 unverified / 39 review / 0 hard**.
+- No new pathwayIntelligence was added.
+- Separate qualified-human citation verification remains required.
+- Local-only: no push, GitHub write, Vercel deploy/promotion, or Vercel configuration change.
+<!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:END -->
+
 <!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:START -->
 ## Adrenal Histoplasmosis taxonomy and citation status
 

@@ -14,6 +14,19 @@
       ]
     },
     {
+      "id": "guillain-barre-syndrome",
+      "name": "Guillain-Barré Syndrome",
+      "aliases": [
+        "Guillain-Barre syndrome",
+        "GBS"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Clinical Mapping Master Resolution 2026 taxonomy identity. No condition-specific VA diagnostic/rating code was assigned or borrowed; retain for qualified catalog/rating review. Acute immune-mediated polyradiculoneuropathy diagnosis; do not merge with generic peripheral neuropathy."
+      ]
+    },
+    {
       "id": "rem-sleep-disorder",
       "name": "REM Sleep Disorder",
       "aliases": [

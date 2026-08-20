@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -650,6 +651,13 @@ describe("Clinical Mapping Master 2026 citation verification", () => {
   });
 
   it("reaches the exact global post-verification live citation state", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const refs = fs
       .readdirSync(kbDir)
       .filter((file) => file.endsWith(".json"))

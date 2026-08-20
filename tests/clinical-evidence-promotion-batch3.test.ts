@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -20,11 +21,25 @@ describe("clinical evidence promotion batch 3", () => {
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
   it("preserves the target-v2 302/302 identity contract", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     expect(catalog).toHaveLength(302);
     expect(knowledgeBase).toHaveLength(302);
   });
 
   it("publishes chronic liver disease to cirrhosis only as documented fibrosis progression", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("chronic-liver-disease");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.todo).toEqual([]);
@@ -52,6 +67,13 @@ describe("clinical evidence promotion batch 3", () => {
   });
 
   it("withdraws ageusia relationships that had only legal-framework support", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("ageusia");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);

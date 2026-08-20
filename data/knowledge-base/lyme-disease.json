@@ -1,8 +1,30 @@
 {
   "id": "lyme-disease",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "cranial-nerve-palsy",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as infection neurologic complication. Require documented Lyme neuroborreliosis or otherwise clinically attributable neurologic Lyme disease and separately documented cranial nerve palsy, most commonly facial nerve palsy. Do not generalize to uncomplicated Lyme disease. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Lyme Disease and Cranial Nerve Palsy",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of the publication guard: Require documented Lyme neuroborreliosis or otherwise clinically attributable neurologic Lyme disease and separately documented cranial nerve palsy, most commonly facial nerve palsy. Do not generalize to uncomplicated Lyme disease."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Characteristics and outcome of facial nerve palsy from Lyme neuroborreliosis in the United States. Annals of clinical and translational neurology. 2022. doi:10.1002/acn3.51488. PMID 35064770",
+          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded infection neurologic complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35064770/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 35064770; approved Master Resolution proposition; guard: Require documented Lyme neuroborreliosis or otherwise clinically attributable neurologic Lyme disease and separately documented cranial nerve palsy, most commonly facial nerve palsy. Do not generalize to uncomplicated Lyme disease."
+        }
+      ]
+    }
+  ]
 }

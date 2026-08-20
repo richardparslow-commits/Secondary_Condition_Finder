@@ -1,8 +1,30 @@
 {
   "id": "kidney-cancer",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment complication. Require documented nephrectomy for renal malignancy and separately documented new or worsened postoperative CKD satisfying chronicity criteria. Do not infer CKD from kidney cancer alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment/procedure exposure for Kidney / Renal Cancer",
+        "Independent diagnosis of Chronic Kidney Disease / Renal Failure and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and exact source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Partial Nephrectomy Versus Radical Nephrectomy for Clinical T1b and T2 Renal Tumors: A Systematic Review and Meta-analysis of Comparative Studies. European urology. 2017. doi:10.1016/j.eururo.2016.08.060. PMID 27614693",
+          "note": "Clinical Mapping Master Resolution 2026 evidence for the bounded treatment complication proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27614693/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 27614693; approved Master Resolution proposition; guard: Require documented nephrectomy for renal malignancy and separately documented new or worsened postoperative CKD satisfying chronicity criteria. Do not infer CKD from kidney cancer alone."
+        }
+      ]
+    }
+  ]
 }

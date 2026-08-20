@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 
@@ -28,6 +29,13 @@ const safetyWithdrawnMappings = [
 
 describe("controlled pathway backfill batch 1", () => {
   it("backfills only surviving edges whose attached source set includes clinical evidence", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
     for (const [primaryId, secondaries] of Object.entries(expectedBackfill)) {
       const mapping = kb.find((entry) => entry.id === primaryId);
@@ -43,6 +51,13 @@ describe("controlled pathway backfill batch 1", () => {
   });
 
   it("recognizes later safety withdrawals", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {
@@ -60,6 +75,13 @@ describe("controlled pathway backfill batch 1", () => {
   });
 
   it("recognizes the PTH taxonomy correction without inventing broader pathway metadata", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "mild-tbi");
     const headache = mapping?.suggestions.find((entry) => entry.conditionId === "post-traumatic-headache");
     expect(mapping?.draft).toBe(false);
@@ -73,6 +95,13 @@ describe("controlled pathway backfill batch 1", () => {
   });
 
   it("recognizes the later post-concussion migraine-target withdrawal", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "post-concussion-syndrome");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -90,6 +119,13 @@ describe("controlled pathway backfill batch 1", () => {
   });
 
   it("recognizes the later adjustment-disorder phenotype withdrawal", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "adjustment-disorder");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -98,6 +134,13 @@ describe("controlled pathway backfill batch 1", () => {
   });
 
   it("does not treat safety-withdrawn mappings as backfill candidates", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {
@@ -110,6 +153,13 @@ describe("controlled pathway backfill batch 1", () => {
   });
 
   it("allows a later evidence-led migraine publication without reviving the withdrawn backfill edge", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const migraine = loadKnowledgeBase().find((entry) => entry.id === "migraine-headaches");
     expect(migraine?.draft).toBe(false);
     expect(migraine?.suggestions).toHaveLength(1);

@@ -22,6 +22,20 @@
       ]
     },
     {
+      "id": "amebic-liver-abscess",
+      "name": "Amebic Liver Abscess",
+      "aliases": [
+        "amoebic liver abscess",
+        "ALA",
+        "hepatic amebiasis"
+      ],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Clinical Mapping Master Resolution 2026 taxonomy identity. No condition-specific VA diagnostic/rating code was assigned or borrowed; retain for qualified catalog/rating review. Extraintestinal hepatic manifestation of Entamoeba histolytica infection; requires a separately documented liver abscess phenotype."
+      ]
+    },
+    {
       "id": "actinomycosis",
       "name": "Actinomycosis",
       "aliases": [

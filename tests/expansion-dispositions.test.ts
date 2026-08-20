@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -24,6 +25,13 @@ describe("target-v2 expansion disposition ledger", () => {
   });
 
   it("matches every disposition to the current KB publication state", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     for (const entry of entries) {
       const mapping = kb.get(entry.id);
       expect(mapping, `missing KB mapping for ${entry.id}`).toBeDefined();
@@ -39,6 +47,13 @@ describe("target-v2 expansion disposition ledger", () => {
   });
 
   it("records the current roadmap-backed program totals", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     // Master 2026 supersedes this historical current-state assertion while
     // preserving the original pre-master contract below for historical states.
     if (isMaster2026Active()) {

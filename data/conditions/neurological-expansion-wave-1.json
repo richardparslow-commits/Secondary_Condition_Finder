@@ -4,17 +4,34 @@
     {
       "id": "parkinsons-disease",
       "name": "Parkinson's Disease",
-      "aliases": ["Parkinson disease", "paralysis agitans"],
+      "aliases": [
+        "Parkinson disease",
+        "paralysis agitans"
+      ],
       "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; diagnostic code 8004.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; diagnostic code 8004.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
       "id": "multiple-sclerosis",
       "name": "Multiple Sclerosis",
-      "aliases": ["MS"],
+      "aliases": [
+        "MS"
+      ],
       "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; diagnostic code 8018.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; diagnostic code 8018.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
@@ -22,7 +39,13 @@
       "name": "Myasthenia Gravis",
       "aliases": [],
       "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; diagnostic code 8025.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; diagnostic code 8025.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
@@ -30,42 +53,98 @@
       "name": "Syringomyelia",
       "aliases": [],
       "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; diagnostic code 8024.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; diagnostic code 8024.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
       "id": "seizure-disorder",
       "name": "Seizure Disorder / Epilepsy",
-      "aliases": ["epilepsy", "seizure disorder"],
+      "aliases": [
+        "seizure disorder"
+      ],
       "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; epilepsy diagnostic codes 8910-8914.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; epilepsy diagnostic codes 8910-8914.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
+    },
+    {
+      "id": "epilepsy",
+      "name": "Epilepsy",
+      "aliases": [
+        "epileptic disorder",
+        "recurrent epilepsy"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Clinical Mapping Master Resolution 2026 taxonomy identity. No condition-specific VA diagnostic/rating code was assigned or borrowed; retain for qualified catalog/rating review. Distinct from the broader existing `seizure-disorder` identity. Requires an epilepsy diagnosis; acute symptomatic/provoked seizures alone do not qualify."
+      ]
     },
     {
       "id": "trigeminal-neuralgia",
       "name": "Trigeminal Neuralgia (Tic Douloureux)",
-      "aliases": ["tic douloureux", "trigeminal neuralgia"],
+      "aliases": [
+        "tic douloureux",
+        "trigeminal neuralgia"
+      ],
       "bodySystem": "Neurological",
       "ratingSchedule": [
-        {"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; fifth cranial nerve neuralgia diagnostic code 8405.", "verified": false},
-        {"citation": "38 CFR 4.124", "note": "Neuralgia, cranial or peripheral.", "verified": false}
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; fifth cranial nerve neuralgia diagnostic code 8405.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.124",
+          "note": "Neuralgia, cranial or peripheral.",
+          "verified": false
+        }
       ],
       "reviewNotes": []
     },
     {
       "id": "ulnar-neuropathy",
       "name": "Ulnar Neuropathy",
-      "aliases": ["ulnar nerve neuropathy"],
+      "aliases": [
+        "ulnar nerve neuropathy"
+      ],
       "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; ulnar nerve diagnostic codes 8516, 8616, and 8716.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; ulnar nerve diagnostic codes 8516, 8616, and 8716.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
       "id": "common-peroneal-neuropathy",
       "name": "Common Peroneal (Fibular) Neuropathy",
-      "aliases": ["common fibular neuropathy", "common peroneal neuropathy", "external popliteal neuropathy"],
+      "aliases": [
+        "common fibular neuropathy",
+        "common peroneal neuropathy",
+        "external popliteal neuropathy"
+      ],
       "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; common peroneal/external popliteal nerve diagnostic codes 8521, 8621, and 8721.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; common peroneal/external popliteal nerve diagnostic codes 8521, 8621, and 8721.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     }
   ]

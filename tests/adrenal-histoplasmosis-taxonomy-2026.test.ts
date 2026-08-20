@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -45,6 +46,13 @@ function collectCatalogIds(node: unknown, ids: string[]) {
 
 describe("Adrenal Histoplasmosis Taxonomy Amendment 2026", () => {
   it("adds one published adrenal-histoplasmosis KB identity using the existing Addison target", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadMapping("adrenal-histoplasmosis");
     expect(mapping.id).toBe("adrenal-histoplasmosis");
     expect(mapping.draft).toBe(false);
