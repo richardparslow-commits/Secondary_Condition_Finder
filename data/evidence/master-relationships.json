@@ -2,7 +2,7 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "20485862319f6a79ecdfce73778c84a3300e5bc0",
+  "baselineCommit": "196b37b92d76827e4030da1afb25fd4165066cdb",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
@@ -6463,13 +6463,13 @@
       "prevalence": "sometimes-explored",
       "clinicalProposition": {
         "status": "approved-me4-bounded-proposition",
-        "text": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Restrict this evidence proposition to noninfectious anterior uveitis or a clinically comparable anterior-inflammatory phenotype and require separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+        "text": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented noninfectious anterior uveitis and separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
       },
-      "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Restrict this evidence proposition to noninfectious anterior uveitis or a clinically comparable anterior-inflammatory phenotype and require separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented noninfectious anterior uveitis and separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "publicationGuard": {
         "status": "explicit",
-        "structuredGuardText": "Restrict this evidence proposition to noninfectious anterior uveitis or a clinically comparable anterior-inflammatory phenotype and require separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors.",
-        "boundarySource": "approved-me4-implementation-scope",
+        "structuredGuardText": "Require documented noninfectious anterior uveitis and separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors.",
+        "boundarySource": "me4-qualified-human-citation-verification",
         "structuredGuardReviewPending": false,
         "semanticRewriteAuthorized": false
       },
@@ -6477,16 +6477,16 @@
         "Independent documentation of uveitis and cataracts",
         "Chronology and phenotype compatible with the bounded source proposition",
         "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
-        "Resolution of the approved publication guard: Restrict this evidence proposition to noninfectious anterior uveitis or a clinically comparable anterior-inflammatory phenotype and require separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors."
+        "Resolution of the approved publication guard: Require documented noninfectious anterior uveitis and separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors."
       ],
       "sourceIds": [
         "pmid-37414328"
       ],
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "312e229a3c4345a87071718237913787cdd156e73398817385e8e3ed125edfb0"
+      "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-4",
-  "currentState": "ME4-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "ME-4 Qualified-Human Citation Verification",
+  "currentState": "ME4-CITATION-VERIFIED"
 }

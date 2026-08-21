@@ -31,6 +31,7 @@ type SourceRow = {
   liveUsageCount?: number;
   verificationState?: {
     qualifiedHumanCitationReviewRequired?: boolean;
+    qualifiedHumanCitationReviewDecision?: string;
     automaticPromotionAuthorized?: boolean;
     mappingApprovalDoesNotEqualCitationVerification?: boolean;
   };
@@ -74,20 +75,20 @@ const sources = JSON.parse(
 describe("Master Relationship & Evidence Registry 2026", () => {
   it("pins the authoritative ME-4 pre-verification registry counts", () => {
     expect(relationships.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(relationships.baselineCommit).toBe("20485862319f6a79ecdfce73778c84a3300e5bc0");
+    expect(relationships.baselineCommit).toBe("196b37b92d76827e4030da1afb25fd4165066cdb");
     expect(relationships.counts).toEqual({
       relationships: 193,
       explicitPublicationGuards: 119,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(sources.baselineCommit).toBe("20485862319f6a79ecdfce73778c84a3300e5bc0");
+    expect(sources.baselineCommit).toBe("196b37b92d76827e4030da1afb25fd4165066cdb");
     expect(sources.counts).toEqual({
       liveSourceReferenceUses: 201,
-      activeSourceEntities: 173,
-      pendingVerificationSourceEntities: 5,
-      activeClinicalSourceEntities: 172,
-      pendingClinicalSourceEntities: 5,
+      activeSourceEntities: 178,
+      pendingVerificationSourceEntities: 0,
+      activeClinicalSourceEntities: 177,
+      pendingClinicalSourceEntities: 0,
       activeLegalAuthorityEntities: 1,
       retiredOnlySourceEntities: 1,
       supersededUnverifiedSourceEntities: 7,
@@ -109,28 +110,50 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
   });
 
-  it("contains exactly five pending ME-4 clinical sources", () => {
+  it("contains exactly five qualified-human-verified ME-4 clinical sources", () => {
     const ids = new Set(["pmid-28515118", "pmid-32059945", "pmid-37414328", "pmid-38453002", "pmid-41308609"]);
     const selected = sources.sources.filter((source) => ids.has(source.sourceId));
     expect(selected).toHaveLength(5);
     for (const source of selected) {
-      expect(source.status).toBe("pending-verification");
+      expect(source.status).toBe("active");
       expect(source.kind).toBe("clinical-evidence");
-      expect(source.verified).toBe(false);
+      expect(source.verified).toBe(true);
       expect(source.liveUsageCount).toBe(1);
       expect(source.verificationState).toMatchObject({
-        qualifiedHumanCitationReviewRequired: true,
+        qualifiedHumanCitationReviewRequired: false,
         automaticPromotionAuthorized: false,
         mappingApprovalDoesNotEqualCitationVerification: true,
       });
     }
     expect(
       sources.sources.filter((source) => source.status === "pending-verification"),
-    ).toHaveLength(5);
+    ).toHaveLength(0);
+  });
+
+  it("records the approved 4-as-implemented / 1-narrowed ME-4 verification decisions", () => {
+    const decisions = new Map(
+      sources.sources
+        .filter((source) =>
+          new Set(["pmid-28515118", "pmid-32059945", "pmid-37414328", "pmid-38453002", "pmid-41308609"]).has(source.sourceId),
+        )
+        .map((source) => [source.sourceId, source.verificationState?.qualifiedHumanCitationReviewDecision]),
+    );
+    expect(decisions.get("pmid-28515118")).toBe("approve-as-implemented");
+    expect(decisions.get("pmid-32059945")).toBe("approve-as-implemented");
+    expect(decisions.get("pmid-37414328")).toBe("approve-with-narrowing");
+    expect(decisions.get("pmid-38453002")).toBe("approve-as-implemented");
+    expect(decisions.get("pmid-41308609")).toBe("approve-as-implemented");
+
+    const uveitis = relationships.relationships.find(
+      (row) => row.relationshipId === "rel-uveitis-to-cataracts",
+    );
+    expect(uveitis?.publicationGuard.structuredGuardText).toBe(
+      "Require documented noninfectious anterior uveitis and separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors.",
+    );
   });
 
   it("keeps source lineage states distinct while retaining all active ME-3 sources", () => {
-    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(173);
+    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(178);
     expect(sources.sources.filter((source) => source.status === "superseded-unverified")).toHaveLength(7);
     expect(sources.sources.filter((source) => source.status === "bibliographic-correction-only")).toHaveLength(1);
     expect(sources.sources.filter((source) => source.status === "retired-only")).toHaveLength(1);
@@ -147,7 +170,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
   });
 
-  it("passes the pending-verification-aware master-registry parity audit", () => {
+  it("passes the final qualified-human-verified master-registry parity audit", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], {
       cwd: root,
       encoding: "utf8",
@@ -157,10 +180,10 @@ describe("Master Relationship & Evidence Registry 2026", () => {
       status: "PASS",
       relationships: 193,
       liveSourceReferenceUses: 201,
-      verifiedLiveSourceUses: 196,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 173,
-      pendingVerificationSourceEntities: 5,
+      verifiedLiveSourceUses: 201,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 178,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });

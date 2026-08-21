@@ -131,7 +131,7 @@ describe("Mapping Expansion Batch ME-3", () => {
     }
   });
 
-  it("preserves ME-3 rows while the current graph advances to the ME-4 pending-verification state", () => {
+  it("preserves ME-3 rows while the current graph advances to the fully verified ME-4 state", () => {
     const files = fs.readdirSync(kbDir).filter((name) => name.endsWith(".json"));
     const mappings = files.map((name) =>
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
@@ -144,8 +144,8 @@ describe("Mapping Expansion Batch ME-3", () => {
     expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length >= 2)).toHaveLength(38);
     const refs = mappings.flatMap((m) => (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []));
     expect(refs).toHaveLength(201);
-    expect(refs.filter((r) => r.verified === true)).toHaveLength(196);
-    expect(refs.filter((r) => r.verified === false)).toHaveLength(5);
+    expect(refs.filter((r) => r.verified === true)).toHaveLength(201);
+    expect(refs.filter((r) => r.verified === false)).toHaveLength(0);
   });
 
   it("passes the fail-closed master-registry parity audit after approved citation promotion", () => {
@@ -155,6 +155,6 @@ describe("Mapping Expansion Batch ME-3", () => {
     });
     const result = JSON.parse(output) as { status: string; pendingVerificationSourceEntities: number };
     expect(result.status).toBe("PASS");
-    expect(result.pendingVerificationSourceEntities).toBe(5);
+    expect(result.pendingVerificationSourceEntities).toBe(0);
   });
 });

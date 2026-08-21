@@ -43,7 +43,7 @@
           "note": "Mapping Expansion Batch ME-4 evidence for the bounded cerebral-palsy to epilepsy proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32059945/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 32059945; approved ME-4 proposition; guard: Require documented cerebral palsy and separately established epilepsy under accepted diagnostic criteria. The source supports epilepsy as a prevalent adult cerebral-palsy comorbidity, not automatic individual causation and not inference from a remote seizure history, abnormal EEG, or cerebral palsy severity alone."
         }

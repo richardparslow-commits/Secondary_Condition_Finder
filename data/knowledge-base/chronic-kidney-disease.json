@@ -43,7 +43,7 @@
           "note": "Mapping Expansion Batch ME-4 evidence for the bounded chronic-kidney-disease to congestive-heart-failure proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28515118/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 28515118; approved ME-4 proposition; guard: Require documented chronic kidney disease and a separately established diagnosis of heart failure/congestive heart failure. Treat the source as population-level incident-risk evidence, not proof that chronic kidney disease caused heart failure in an individual. Preserve competing cardiac causes and contributors, including ischemic heart disease, hypertension, valvular disease, cardiomyopathy, arrhythmia, and volume-status factors."
         }

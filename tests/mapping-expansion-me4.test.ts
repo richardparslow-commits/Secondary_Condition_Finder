@@ -42,6 +42,8 @@ type Suggestion = {
 };
 type Mapping = { draft: boolean; suggestions?: Suggestion[] };
 
+const VERIFIED_UVEITIS_GUARD = "Require documented noninfectious anterior uveitis and separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors.";
+
 const root = process.cwd();
 const kbDir = path.join(root, "data", "knowledge-base");
 const ledger = JSON.parse(
@@ -83,7 +85,7 @@ describe("Mapping Expansion Batch ME-4", () => {
     });
   });
 
-  it("adds each approved row at rank 2 with one pending clinical source and exact guard", () => {
+  it("preserves each implemented ME-4 row at rank 2 while current citation verification is applied", () => {
     for (const row of ledger.rows) {
       const mapping = load(row.primaryId);
       expect(mapping.draft).toBe(false);
@@ -97,18 +99,18 @@ describe("Mapping Expansion Batch ME-4", () => {
       expect(suggestion.pathwayIntelligence).toBeUndefined();
       expect(suggestion.sourceReferences).toHaveLength(1);
       const source = suggestion.sourceReferences?.[0];
-      expect(source?.verified).toBe(false);
+      expect(source?.verified).toBe(true);
       expect(source?.verificationScope).toBe("clinical-evidence");
       expect(source?.citation).toBe(row.citation);
       expect(source?.sourceUrl).toBe(row.sourceUrl);
-      expect(suggestion.rationale).toContain(row.publicationGuard);
+      expect(suggestion.rationale).toContain(row.primaryId === "uveitis" ? VERIFIED_UVEITIS_GUARD : row.publicationGuard);
       expect(
-        suggestion.evidenceGaps?.some((gap) => gap.includes(row.publicationGuard)),
+        suggestion.evidenceGaps?.some((gap) => gap.includes(row.primaryId === "uveitis" ? VERIFIED_UVEITIS_GUARD : row.publicationGuard)),
       ).toBe(true);
     }
   });
 
-  it("installs the same five relationships and sources atomically in the authoritative registries", () => {
+  it("preserves the same five relationship/source identities after citation verification", () => {
     for (const row of ledger.rows) {
       const rid = `rel-${row.primaryId}-to-${row.targetId}`;
       const relationship = relRegistry.relationships.find(
@@ -122,20 +124,20 @@ describe("Mapping Expansion Batch ME-4", () => {
         sourceIds: [`pmid-${row.pmid}`],
       });
       expect(relationship?.publicationGuard.status).toBe("explicit");
-      expect(relationship?.publicationGuard.structuredGuardText).toBe(row.publicationGuard);
+      expect(relationship?.publicationGuard.structuredGuardText).toBe(row.primaryId === "uveitis" ? VERIFIED_UVEITIS_GUARD : row.publicationGuard);
 
       const source = srcRegistry.sources.find(
         (candidate) => candidate.sourceId === `pmid-${row.pmid}`,
       );
       expect(source).toMatchObject({
-        status: "pending-verification",
-        verified: false,
+        status: "active",
+        verified: true,
         liveUsageCount: 1,
       });
     }
   });
 
-  it("pins the 193-edge / 201-reference ME-4 pre-verification state", () => {
+  it("pins the 193-edge / 201-reference fully verified ME-4 state", () => {
     const files = fs.readdirSync(kbDir).filter((name) => name.endsWith(".json"));
     const mappings = files.map((name) =>
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
@@ -154,11 +156,11 @@ describe("Mapping Expansion Batch ME-4", () => {
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
     expect(refs).toHaveLength(201);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(196);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(201);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   });
 
-  it("passes citation and master-registry gates in the exact pending-verification state", () => {
+  it("passes citation and master-registry gates in the final verified state", () => {
     const citationOutput = execFileSync("npm", ["run", "citations:audit"], {
       cwd: root,
       encoding: "utf8",
@@ -173,10 +175,10 @@ describe("Mapping Expansion Batch ME-4", () => {
     };
     expect(citation).toMatchObject({
       references: 201,
-      verified: 196,
-      verifiedProvenance: 202,
-      unverified: 5,
-      reviewFindingCount: 5,
+      verified: 201,
+      verifiedProvenance: 207,
+      unverified: 0,
+      reviewFindingCount: 0,
       hardFindingCount: 0,
     });
 
@@ -192,7 +194,7 @@ describe("Mapping Expansion Batch ME-4", () => {
     expect(master).toMatchObject({
       status: "PASS",
       relationships: 193,
-      pendingVerificationSourceEntities: 5,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });
