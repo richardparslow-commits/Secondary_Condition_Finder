@@ -25,6 +25,30 @@
           "sourceLocator": "PMID 34410459; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented oxaliplatin-containing colorectal-cancer chemotherapy and separately documented chemotherapy-induced peripheral neuropathy. Do not generalize to colorectal cancer without neurotoxic treatment."
         }
       ]
+    },
+    {
+      "conditionId": "fecal-incontinence",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Fecal incontinence is a recognized long-term bowel-function complication after surgical treatment for colon cancer. Require established colon cancer within the colorectal-cancer identity, actual colectomy or other bowel resection, and separately documented fecal incontinence with compatible postoperative chronology. Do not infer fecal incontinence from colorectal-cancer diagnosis alone, and do not generalize this colon-cancer surgical source to nonsurgical disease or rectal-cancer treatment without separate evidence. Preserve pre-existing continence disorders, neurologic disease, pelvic-floor dysfunction, inflammatory bowel disease, obstetric injury, medications, and other anorectal causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of colorectal-cancer and fecal-incontinence",
+        "Documentation satisfying the approved phenotype restriction: colon cancer within the colorectal-cancer identity, actual bowel resection/colectomy, and separately documented fecal incontinence with compatible postoperative chronology",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established colon cancer within the colorectal-cancer identity, actual colectomy or other bowel resection, and separately documented fecal incontinence with compatible postoperative chronology. Do not infer fecal incontinence from colorectal-cancer diagnosis alone, and do not generalize this colon-cancer surgical source to nonsurgical disease or rectal-cancer treatment without separate evidence. Preserve pre-existing continence disorders, neurologic disease, pelvic-floor dysfunction, inflammatory bowel disease, obstetric injury, medications, and other anorectal causes."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Verkuijl SJ, Jonker JE, Trzpis M, Burgerhof JGM, Broens PMA, Furnée EJB. Functional outcomes of surgery for colon cancer: A systematic review and meta-analysis. Eur J Surg Oncol. 2021;47(5):960-969. PMID 33277056. doi:10.1016/j.ejso.2020.11.136.",
+          "note": "Mapping Expansion Batch ME-9 evidence for the bounded colorectal-cancer to fecal-incontinence proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33277056/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 33277056; approved ME-9 proposition; guard: Require established colon cancer within the colorectal-cancer identity, actual colectomy or other bowel resection, and separately documented fecal incontinence with compatible postoperative chronology. Do not infer fecal incontinence from colorectal-cancer diagnosis alone, and do not generalize this colon-cancer surgical source to nonsurgical disease or rectal-cancer treatment without separate evidence. Preserve pre-existing continence disorders, neurologic disease, pelvic-floor dysfunction, inflammatory bowel disease, obstetric injury, medications, and other anorectal causes."
+        }
+      ]
     }
   ]
 }

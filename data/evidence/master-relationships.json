@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "92ca42e1484ecbec939cacf21301b7afc1ffd577",
+  "baselineCommit": "ba0fe8490a81c20e94f4bc1f8ea5efbeb6fae083",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 213,
-    "explicitPublicationGuards": 139,
+    "relationships": 218,
+    "explicitPublicationGuards": 144,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -1682,6 +1682,40 @@
       "suggestionObjectHash": "f5e8c26ea77e2dcf4f709c741aeac8f74b0a452ad7482f4f3ca72c36bb6889b3"
     },
     {
+      "relationshipId": "rel-colorectal-cancer-to-fecal-incontinence",
+      "primaryId": "colorectal-cancer",
+      "targetId": "fecal-incontinence",
+      "direction": "colorectal-cancer -> fecal-incontinence",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me9-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Fecal incontinence is a recognized long-term bowel-function complication after surgical treatment for colon cancer. Require established colon cancer within the colorectal-cancer identity, actual colectomy or other bowel resection, and separately documented fecal incontinence with compatible postoperative chronology. Do not infer fecal incontinence from colorectal-cancer diagnosis alone, and do not generalize this colon-cancer surgical source to nonsurgical disease or rectal-cancer treatment without separate evidence. Preserve pre-existing continence disorders, neurologic disease, pelvic-floor dysfunction, inflammatory bowel disease, obstetric injury, medications, and other anorectal causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Fecal incontinence is a recognized long-term bowel-function complication after surgical treatment for colon cancer. Require established colon cancer within the colorectal-cancer identity, actual colectomy or other bowel resection, and separately documented fecal incontinence with compatible postoperative chronology. Do not infer fecal incontinence from colorectal-cancer diagnosis alone, and do not generalize this colon-cancer surgical source to nonsurgical disease or rectal-cancer treatment without separate evidence. Preserve pre-existing continence disorders, neurologic disease, pelvic-floor dysfunction, inflammatory bowel disease, obstetric injury, medications, and other anorectal causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established colon cancer within the colorectal-cancer identity, actual colectomy or other bowel resection, and separately documented fecal incontinence with compatible postoperative chronology. Do not infer fecal incontinence from colorectal-cancer diagnosis alone, and do not generalize this colon-cancer surgical source to nonsurgical disease or rectal-cancer treatment without separate evidence. Preserve pre-existing continence disorders, neurologic disease, pelvic-floor dysfunction, inflammatory bowel disease, obstetric injury, medications, and other anorectal causes.",
+        "boundarySource": "approved-me9-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of colorectal-cancer and fecal-incontinence",
+        "Documentation satisfying the approved phenotype restriction: colon cancer within the colorectal-cancer identity, actual bowel resection/colectomy, and separately documented fecal incontinence with compatible postoperative chronology",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established colon cancer within the colorectal-cancer identity, actual colectomy or other bowel resection, and separately documented fecal incontinence with compatible postoperative chronology. Do not infer fecal incontinence from colorectal-cancer diagnosis alone, and do not generalize this colon-cancer surgical source to nonsurgical disease or rectal-cancer treatment without separate evidence. Preserve pre-existing continence disorders, neurologic disease, pelvic-floor dysfunction, inflammatory bowel disease, obstetric injury, medications, and other anorectal causes."
+      ],
+      "sourceIds": [
+        "pmid-33277056"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "a62197728dd02dcf5ff127412ffa5a39d3c78078479aee44d1b8161eb81569db"
+    },
+    {
       "relationshipId": "rel-congestive-heart-failure-to-depressive-disorder",
       "primaryId": "congestive-heart-failure",
       "targetId": "depressive-disorder",
@@ -2186,6 +2220,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": true,
       "suggestionObjectHash": "9711b8f133e2a9b52e163f038786bf07f6ae7d96a73aa9f0311ae8c2ebe6095a"
+    },
+    {
+      "relationshipId": "rel-discoid-lupus-to-systemic-lupus-erythematosus",
+      "primaryId": "discoid-lupus",
+      "targetId": "systemic-lupus-erythematosus",
+      "direction": "discoid-lupus -> systemic-lupus-erythematosus",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me9-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Discoid lupus erythematosus can progress to systemic lupus erythematosus in a clinically meaningful subset of patients. Require established discoid lupus erythematosus and separately established systemic lupus erythematosus meeting appropriate classification or diagnostic criteria. Do not infer SLE from DLE alone. Preserve ANA and other autoantibody findings, hematologic abnormalities, systemic manifestations, family history, and other classification criteria as independent diagnostic evidence. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Discoid lupus erythematosus can progress to systemic lupus erythematosus in a clinically meaningful subset of patients. Require established discoid lupus erythematosus and separately established systemic lupus erythematosus meeting appropriate classification or diagnostic criteria. Do not infer SLE from DLE alone. Preserve ANA and other autoantibody findings, hematologic abnormalities, systemic manifestations, family history, and other classification criteria as independent diagnostic evidence. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established discoid lupus erythematosus and separately established systemic lupus erythematosus meeting appropriate classification or diagnostic criteria. Do not infer SLE from DLE alone. Preserve ANA and other autoantibody findings, hematologic abnormalities, systemic manifestations, family history, and other classification criteria as independent diagnostic evidence.",
+        "boundarySource": "approved-me9-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of discoid-lupus and systemic-lupus-erythematosus",
+        "Documentation satisfying the approved phenotype restriction: established discoid lupus erythematosus with separately established systemic lupus erythematosus meeting appropriate classification/diagnostic criteria",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established discoid lupus erythematosus and separately established systemic lupus erythematosus meeting appropriate classification or diagnostic criteria. Do not infer SLE from DLE alone. Preserve ANA and other autoantibody findings, hematologic abnormalities, systemic manifestations, family history, and other classification criteria as independent diagnostic evidence."
+      ],
+      "sourceIds": [
+        "pmid-41178896"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "805e8ea4c049420830dbc876ab50cffa3843ceb46277cdacd3d71a13cdf697d6"
     },
     {
       "relationshipId": "rel-emphysema-to-respiratory-cancer",
@@ -3637,6 +3705,40 @@
       "suggestionObjectHash": "03f0a5beaa6ce7bfafd262639255e68a55ebb53ebdf806e8a68358faff99c5ad"
     },
     {
+      "relationshipId": "rel-hypogonadism-to-erectile-dysfunction",
+      "primaryId": "hypogonadism",
+      "targetId": "erectile-dysfunction",
+      "direction": "hypogonadism -> erectile-dysfunction",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me9-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Androgen-deficiency hypogonadism is clinically linked to impaired erectile function, and testosterone treatment in late-onset hypogonadism improves erectile-function scores at the population level. Require established androgen-deficiency hypogonadism consistent with the source population, including late-onset hypogonadism when relying on this citation, and separately documented erectile dysfunction. Do not attribute every erectile-dysfunction case to hypogonadism. Preserve vascular and metabolic disease, diabetes, medication effects, neurologic disease, pelvic surgery, psychogenic factors, other endocrine disorders, and structural or urologic causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Androgen-deficiency hypogonadism is clinically linked to impaired erectile function, and testosterone treatment in late-onset hypogonadism improves erectile-function scores at the population level. Require established androgen-deficiency hypogonadism consistent with the source population, including late-onset hypogonadism when relying on this citation, and separately documented erectile dysfunction. Do not attribute every erectile-dysfunction case to hypogonadism. Preserve vascular and metabolic disease, diabetes, medication effects, neurologic disease, pelvic surgery, psychogenic factors, other endocrine disorders, and structural or urologic causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established androgen-deficiency hypogonadism consistent with the source population, including late-onset hypogonadism when relying on this citation, and separately documented erectile dysfunction. Do not attribute every erectile-dysfunction case to hypogonadism. Preserve vascular and metabolic disease, diabetes, medication effects, neurologic disease, pelvic surgery, psychogenic factors, other endocrine disorders, and structural or urologic causes.",
+        "boundarySource": "approved-me9-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of hypogonadism and erectile-dysfunction",
+        "Documentation satisfying the approved phenotype restriction: adult male androgen-deficiency hypogonadism consistent with the late-onset hypogonadism evidence and separately documented erectile dysfunction",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established androgen-deficiency hypogonadism consistent with the source population, including late-onset hypogonadism when relying on this citation, and separately documented erectile dysfunction. Do not attribute every erectile-dysfunction case to hypogonadism. Preserve vascular and metabolic disease, diabetes, medication effects, neurologic disease, pelvic surgery, psychogenic factors, other endocrine disorders, and structural or urologic causes."
+      ],
+      "sourceIds": [
+        "pmid-34856556"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "5a9baadb83f46f28294997c944e54bb33eda615d34bea5bc05079f436e449dde"
+    },
+    {
       "relationshipId": "rel-hypoparathyroidism-to-kidney-stones",
       "primaryId": "hypoparathyroidism",
       "targetId": "kidney-stones",
@@ -3670,6 +3772,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "a419a803c84b58ccf0086376639b99f8a65e7c840a121e0e1df4a99108f76c3f"
+    },
+    {
+      "relationshipId": "rel-hypoparathyroidism-to-chronic-kidney-disease",
+      "primaryId": "hypoparathyroidism",
+      "targetId": "chronic-kidney-disease",
+      "direction": "hypoparathyroidism -> chronic-kidney-disease",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me9-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Chronic hypoparathyroidism, particularly under long-term conventional calcium and active-vitamin-D therapy, is associated with increased renal complications including chronic kidney disease or renal insufficiency. Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology. Preserve pre-existing CKD, diabetes, hypertension, recurrent acute kidney injury, nephrotoxic drugs, obstruction, nephrolithiasis or nephrocalcinosis, and other renal-disease causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Chronic hypoparathyroidism, particularly under long-term conventional calcium and active-vitamin-D therapy, is associated with increased renal complications including chronic kidney disease or renal insufficiency. Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology. Preserve pre-existing CKD, diabetes, hypertension, recurrent acute kidney injury, nephrotoxic drugs, obstruction, nephrolithiasis or nephrocalcinosis, and other renal-disease causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology. Preserve pre-existing CKD, diabetes, hypertension, recurrent acute kidney injury, nephrotoxic drugs, obstruction, nephrolithiasis or nephrocalcinosis, and other renal-disease causes.",
+        "boundarySource": "approved-me9-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of hypoparathyroidism and chronic-kidney-disease",
+        "Documentation satisfying the approved phenotype restriction: chronic hypoparathyroidism with separately established chronic kidney disease; when conventional calcium/active-vitamin-D therapy is relied upon, documented treatment exposure and compatible chronology are required",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology. Preserve pre-existing CKD, diabetes, hypertension, recurrent acute kidney injury, nephrotoxic drugs, obstruction, nephrolithiasis or nephrocalcinosis, and other renal-disease causes."
+      ],
+      "sourceIds": [
+        "pmid-33599907"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "9ed99b43b8fa5e5456dcaeece38feb212f7d18bf149053ac50f93fafdc86a093"
     },
     {
       "relationshipId": "rel-hypothyroidism-to-tinnitus",
@@ -4881,6 +5017,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "7cbd4f712452d0fe04a561fb855b6b6b6224d0ed49bfc6f83ebaacd285db6235"
+    },
+    {
+      "relationshipId": "rel-pancreatitis-to-pancreatic-cancer",
+      "primaryId": "pancreatitis",
+      "targetId": "pancreatic-cancer",
+      "direction": "pancreatitis -> pancreatic-cancer",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me9-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Chronic pancreatitis is associated with a substantially increased subsequent risk of pancreatic ductal adenocarcinoma, with risk increasing with disease duration. Primary phenotype must be chronic pancreatitis, not an isolated acute-pancreatitis episode. Require separately established pancreatic cancer and chronology compatible with cancer developing after chronic pancreatitis. Do not infer cancer from pancreatitis alone. Preserve hereditary syndromes, smoking, age, diabetes, obesity, alcohol exposure, other pancreatic-cancer risk factors, and the possibility that occult pancreatic cancer initially presented as pancreatitis. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Chronic pancreatitis is associated with a substantially increased subsequent risk of pancreatic ductal adenocarcinoma, with risk increasing with disease duration. Primary phenotype must be chronic pancreatitis, not an isolated acute-pancreatitis episode. Require separately established pancreatic cancer and chronology compatible with cancer developing after chronic pancreatitis. Do not infer cancer from pancreatitis alone. Preserve hereditary syndromes, smoking, age, diabetes, obesity, alcohol exposure, other pancreatic-cancer risk factors, and the possibility that occult pancreatic cancer initially presented as pancreatitis. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Primary phenotype must be chronic pancreatitis, not an isolated acute-pancreatitis episode. Require separately established pancreatic cancer and chronology compatible with cancer developing after chronic pancreatitis. Do not infer cancer from pancreatitis alone. Preserve hereditary syndromes, smoking, age, diabetes, obesity, alcohol exposure, other pancreatic-cancer risk factors, and the possibility that occult pancreatic cancer initially presented as pancreatitis.",
+        "boundarySource": "approved-me9-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of pancreatitis and pancreatic-cancer",
+        "Documentation satisfying the approved phenotype restriction: chronic pancreatitis with separately established pancreatic cancer developing after the chronic-pancreatitis diagnosis with chronology that reduces reverse-causation risk",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Primary phenotype must be chronic pancreatitis, not an isolated acute-pancreatitis episode. Require separately established pancreatic cancer and chronology compatible with cancer developing after chronic pancreatitis. Do not infer cancer from pancreatitis alone. Preserve hereditary syndromes, smoking, age, diabetes, obesity, alcohol exposure, other pancreatic-cancer risk factors, and the possibility that occult pancreatic cancer initially presented as pancreatitis."
+      ],
+      "sourceIds": [
+        "pmid-35142721"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "5aac456011258575a005ec655553642e61a499f6e08edd9cc8d66779f7455374"
     },
     {
       "relationshipId": "rel-parkinsons-disease-to-depressive-disorder",
@@ -7162,6 +7332,6 @@
       "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
     }
   ],
-  "lastUpdatedBy": "ME-8 Qualified-Human Citation Verification",
-  "currentState": "ME8-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-9",
+  "currentState": "ME9-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

@@ -29,6 +29,10 @@ type SourceRow = {
   kind?: string;
   verified?: boolean;
   liveUsageCount?: number;
+  pmid?: string;
+  doi?: string;
+  canonicalCitation?: string;
+  canonicalSourceUrl?: string;
   verificationState?: {
     qualifiedHumanCitationReviewRequired?: boolean;
     qualifiedHumanCitationReviewDecision?: string;
@@ -73,27 +77,27 @@ const sources = JSON.parse(
 ) as SourceRegistry;
 
 describe("Master Relationship & Evidence Registry 2026", () => {
-  it("pins the authoritative fully verified ME-8 registry counts", () => {
+  it("pins the authoritative ME-9 pending-verification registry counts", () => {
     expect(relationships.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(relationships.baselineCommit).toBe("92ca42e1484ecbec939cacf21301b7afc1ffd577");
+    expect(relationships.baselineCommit).toBe("ba0fe8490a81c20e94f4bc1f8ea5efbeb6fae083");
     expect(relationships.counts).toEqual({
-      relationships: 213,
-      explicitPublicationGuards: 139,
+      relationships: 218,
+      explicitPublicationGuards: 144,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(sources.baselineCommit).toBe("92ca42e1484ecbec939cacf21301b7afc1ffd577");
+    expect(sources.baselineCommit).toBe("ba0fe8490a81c20e94f4bc1f8ea5efbeb6fae083");
     expect(sources.counts).toEqual({
-      liveSourceReferenceUses: 221,
+      liveSourceReferenceUses: 226,
       activeSourceEntities: 198,
-      pendingVerificationSourceEntities: 0,
+      pendingVerificationSourceEntities: 5,
       activeClinicalSourceEntities: 197,
-      pendingClinicalSourceEntities: 0,
+      pendingClinicalSourceEntities: 5,
       activeLegalAuthorityEntities: 1,
       retiredOnlySourceEntities: 1,
       supersededUnverifiedSourceEntities: 7,
       bibliographicCorrectionOnlyEntities: 1,
-      totalSourceEntitiesIncludingLineage: 207,
+      totalSourceEntitiesIncludingLineage: 212,
       retiredVerifiedRelationshipSourceUses: 6,
     });
   });
@@ -254,7 +258,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     expect(sources.sources.filter((source) => source.status === "superseded-unverified")).toHaveLength(7);
     expect(sources.sources.filter((source) => source.status === "bibliographic-correction-only")).toHaveLength(1);
     expect(sources.sources.filter((source) => source.status === "retired-only")).toHaveLength(1);
-    expect(new Set(sources.sources.map((source) => source.sourceId)).size).toBe(207);
+    expect(new Set(sources.sources.map((source) => source.sourceId)).size).toBe(212);
   });
 
 
@@ -276,11 +280,11 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
   });
 
-  it("keeps supersession provenance out of all 139 explicit publication guards", () => {
+  it("keeps supersession provenance out of all 144 explicit publication guards", () => {
     const explicit = relationships.relationships.filter(
       (row) => row.publicationGuard.status === "explicit",
     );
-    expect(explicit).toHaveLength(139);
+    expect(explicit).toHaveLength(144);
     for (const row of explicit) {
       expect(row.publicationGuard.structuredGuardText).not.toMatch(/supersedes unverified PMID/i);
     }
@@ -294,12 +298,33 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     const result = JSON.parse(output) as AuditResult;
     expect(result).toMatchObject({
       status: "PASS",
-      relationships: 213,
-      liveSourceReferenceUses: 221,
+      relationships: 218,
+      liveSourceReferenceUses: 226,
       verifiedLiveSourceUses: 221,
-      pendingVerificationLiveSourceUses: 0,
+      pendingVerificationLiveSourceUses: 5,
       activeSourceEntities: 198,
-      pendingVerificationSourceEntities: 0,
+      pendingVerificationSourceEntities: 5,
     });
   });
+
+  it("contains exactly five pending ME-9 clinical sources", () => {
+    const expected = {"pmid-41178896": {"pmid": "41178896", "doi": "10.25122/jml-2025-0141", "citation": "Alharbi A, Alamri O, Afandi A, Arbaeen A, Mirza A, Alahmari A, Alshomrani S, Qashqari M, Alahmadi M, Alharthy S, Kokandi A. Discoid lupus erythematosus and its progression to systemic lupus erythematosus across age groups: a systematic review. J Med Life. 2025;18(9):830-836. PMID 41178896. doi:10.25122/jml-2025-0141."}, "pmid-33277056": {"pmid": "33277056", "doi": "10.1016/j.ejso.2020.11.136", "citation": "Verkuijl SJ, Jonker JE, Trzpis M, Burgerhof JGM, Broens PMA, Furnée EJB. Functional outcomes of surgery for colon cancer: A systematic review and meta-analysis. Eur J Surg Oncol. 2021;47(5):960-969. PMID 33277056. doi:10.1016/j.ejso.2020.11.136."}, "pmid-34856556": {"pmid": "34856556", "doi": "10.1159/000520135", "citation": "Taniguchi H, Shimada S, Kinoshita H. Testosterone Therapy for Late-Onset Hypogonadism Improves Erectile Function: A Systematic Review and Meta-Analysis. Urol Int. 2022;106(6):539-552. PMID 34856556. doi:10.1159/000520135."}, "pmid-35142721": {"pmid": "35142721", "doi": "10.14309/ctg.0000000000000463", "citation": "Gandhi S, de la Fuente J, Murad MH, Majumder S. Chronic Pancreatitis Is a Risk Factor for Pancreatic Cancer, and Incidence Increases With Duration of Disease: A Systematic Review and Meta-analysis. Clin Transl Gastroenterol. 2022;13(3):e00463. PMID 35142721. doi:10.14309/ctg.0000000000000463."}, "pmid-33599907": {"pmid": "33599907", "doi": "10.1007/s11154-020-09613-1", "citation": "Gosmanova EO, Houillier P, Rejnmark L, Marelli C, Bilezikian JP. Renal complications in patients with chronic hypoparathyroidism on conventional therapy: a systematic literature review: renal disease in chronic hypoparathyroidism. Rev Endocr Metab Disord. 2021;22(2):297-316. PMID 33599907. doi:10.1007/s11154-020-09613-1."}} as const;
+    const selected = sources.sources.filter((source) => Object.prototype.hasOwnProperty.call(expected, source.sourceId));
+    expect(selected).toHaveLength(5);
+    for (const source of selected) {
+      const identity = expected[source.sourceId as keyof typeof expected];
+      expect(source.status).toBe("pending-verification");
+      expect(source.kind).toBe("clinical-evidence");
+      expect(source.verified).toBe(false);
+      expect(source.pmid).toBe(identity.pmid);
+      expect(source.doi?.toLowerCase()).toBe(identity.doi.toLowerCase());
+      expect(source.canonicalCitation).toBe(identity.citation);
+      expect(source.verificationState).toMatchObject({
+        qualifiedHumanCitationReviewRequired: true,
+        automaticPromotionAuthorized: false,
+        mappingApprovalDoesNotEqualCitationVerification: true,
+      });
+    }
+  });
+
 });

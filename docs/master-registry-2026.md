@@ -2,17 +2,17 @@
 
 ## Status
 
-The authoritative registry is at the fully qualified-human-verified Mapping Expansion Batch ME-8 state, derived from implementation commit `92ca42e1484ecbec939cacf21301b7afc1ffd577`.
+The authoritative registry is at the Mapping Expansion Batch ME-9 pre-qualified-human-citation-verification state, derived from the closed ME-8 citation-verification commit `ba0fe8490a81c20e94f4bc1f8ea5efbeb6fae083`.
 
 ## Current state
 
-- 213 relationships.
-- 139 explicit publication guards / 74 legacy rationale boundaries.
-- 221 live relationship-source uses: 221 verified / 0 pending verification.
+- 218 relationships.
+- 144 explicit publication guards / 74 legacy rationale boundaries.
+- 226 live relationship-source uses: 221 verified / 5 pending verification.
 - 198 active source entities: 197 clinical + 1 legal authority.
-- 0 pending-verification source entities.
+- 5 pending-verification clinical source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
-- 207 total source entities including lineage/history.
+- 212 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
 
 ## ME-6 qualified-human citation verification
@@ -76,3 +76,17 @@ The heart-transplant row remains explicitly post-transplant and multifactorial: 
 All five ME-8 KB references are `verified:true`, and their normalized master sources are `active`. Mapping approval and bibliographic identity matching remain insufficient to authorize citation promotion without this separate qualified-human review.
 
 No relationship count, relationship semantics, rank, prevalence, taxonomy identity, publication state, publication guard, citation text, source identity, or pathwayIntelligence state changes in this verification gate. Verified evidence still does not, by itself, establish an individual VA medical nexus.
+
+## ME-9 implementation pending citation verification
+
+The approved ME-9 implementation adds exactly five rank-2 relationships while preserving all existing rank-1 mappings, identities, and publication states:
+
+- `discoid-lupus -> systemic-lupus-erythematosus` / PMID 41178896.
+- `colorectal-cancer -> fecal-incontinence` / PMID 33277056, restricted to colon-cancer surgery/colectomy with postoperative chronology.
+- `hypogonadism -> erectile-dysfunction` / PMID 34856556, restricted to an androgen-deficiency phenotype consistent with the late-onset-hypogonadism evidence.
+- `pancreatitis -> pancreatic-cancer` / PMID 35142721, restricted to chronic pancreatitis with chronology guarding against reverse causation.
+- `hypoparathyroidism -> chronic-kidney-disease` / PMID 33599907, with chronic phenotype and conventional-treatment exposure/chronology required when that pathway is invoked.
+
+All five new KB references remain `verified:false`; their normalized master sources remain `pending-verification`. Mapping approval and PubMed identity matching do not authorize citation promotion.
+
+No new identity, publication-state change, rank-1 change, semantic broadening beyond the approved guards, or pathwayIntelligence change is part of ME-9 implementation. A later separate qualified-human ME-9 citation-verification gate is required before any of these five references may become `verified:true`.

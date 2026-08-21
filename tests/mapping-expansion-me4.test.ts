@@ -145,19 +145,19 @@ describe("Mapping Expansion Batch ME-4", () => {
     expect(files).toHaveLength(311);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(172);
-    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(213);
+    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(218);
     expect(
       mappings.filter((mapping) => mapping.draft === false && (mapping.suggestions ?? []).length === 1),
-    ).toHaveLength(81);
+    ).toHaveLength(76);
     expect(
       mappings.filter((mapping) => mapping.draft === false && (mapping.suggestions ?? []).length >= 2),
-    ).toHaveLength(58);
+    ).toHaveLength(63);
     const refs = mappings.flatMap((mapping) =>
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-    expect(refs).toHaveLength(221);
+    expect(refs).toHaveLength(226);
     expect(refs.filter((ref) => ref.verified === true)).toHaveLength(221);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
   });
 
   it("passes citation and master-registry gates after ME-7 verification", () => {
@@ -174,11 +174,11 @@ describe("Mapping Expansion Batch ME-4", () => {
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 221,
+      references: 226,
       verified: 221,
       verifiedProvenance: 227,
-      unverified: 0,
-      reviewFindingCount: 0,
+      unverified: 5,
+      reviewFindingCount: 5,
       hardFindingCount: 0,
     });
 
@@ -193,8 +193,8 @@ describe("Mapping Expansion Batch ME-4", () => {
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 213,
-      pendingVerificationSourceEntities: 0,
+      relationships: 218,
+      pendingVerificationSourceEntities: 5,
     });
   });
 });

@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "92ca42e1484ecbec939cacf21301b7afc1ffd577",
+  "baselineCommit": "ba0fe8490a81c20e94f4bc1f8ea5efbeb6fae083",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 221,
+    "liveSourceReferenceUses": 226,
     "activeSourceEntities": 198,
-    "pendingVerificationSourceEntities": 0,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 197,
-    "pendingClinicalSourceEntities": 0,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 207,
+    "totalSourceEntitiesIncludingLineage": 212,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -545,6 +545,48 @@
       "rawReferenceHashes": [
         "fb62e02e8ba9bd1cef2de13fe18fbdf9d5db05497f7e27a0d9290398580f712b"
       ]
+    },
+    {
+      "sourceId": "pmid-18947294",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "18947294",
+      "doi": "10.1146/annurev.med.60.041707.160528",
+      "canonicalCitation": "Abdel-Wahab OI, Levine RL. Primary myelofibrosis: update on definition, pathogenesis, and treatment. Annu Rev Med. 2009;60:233-245. PMID 18947294. doi:10.1146/annurev.med.60.041707.160528.",
+      "citationVariants": [
+        "Abdel-Wahab OI, Levine RL. Primary myelofibrosis: update on definition, pathogenesis, and treatment. Annu Rev Med. 2009;60:233-245. PMID 18947294. doi:10.1146/annurev.med.60.041707.160528."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18947294/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/18947294/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-primary-myelofibrosis-to-anemia",
+          "primaryId": "primary-myelofibrosis",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4fbd9fa0f71239e09f3c06043720f3507de77d71d3c5e2da1f79a35509e817fb"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-19473282",
@@ -1086,6 +1128,48 @@
       ]
     },
     {
+      "sourceId": "pmid-25134671",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "25134671",
+      "doi": "10.1007/s40265-014-0274-9",
+      "canonicalCitation": "González-Vílchez F, Vázquez de Prada JA. Chronic renal insufficiency in heart transplant recipients: risk factors and management options. Drugs. 2014;74(13):1481-1494. PMID 25134671. doi:10.1007/s40265-014-0274-9.",
+      "citationVariants": [
+        "González-Vílchez F, Vázquez de Prada JA. Chronic renal insufficiency in heart transplant recipients: risk factors and management options. Drugs. 2014;74(13):1481-1494. PMID 25134671. doi:10.1007/s40265-014-0274-9."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25134671/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/25134671/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-heart-transplant-residuals-to-chronic-kidney-disease",
+          "primaryId": "heart-transplant-residuals",
+          "targetId": "chronic-kidney-disease",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "09f9f15f3132c41fe2ea8c7f638bd02ee2a443fae5985a7cac9ab303c213e4dd"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-25294119",
       "status": "active",
       "kind": "clinical-evidence",
@@ -1224,6 +1308,48 @@
       "rawReferenceHashes": [
         "4a662bbfbb0cc661c2f421163652b5b1570c48d460973641694897a44c57a908"
       ]
+    },
+    {
+      "sourceId": "pmid-26404446",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "26404446",
+      "doi": "10.1053/j.seminhematol.2015.06.002",
+      "canonicalCitation": "Santini V. Anemia as the Main Manifestation of Myelodysplastic Syndromes. Semin Hematol. 2015;52(4):348-356. PMID 26404446. doi:10.1053/j.seminhematol.2015.06.002.",
+      "citationVariants": [
+        "Santini V. Anemia as the Main Manifestation of Myelodysplastic Syndromes. Semin Hematol. 2015;52(4):348-356. PMID 26404446. doi:10.1053/j.seminhematol.2015.06.002."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26404446/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/26404446/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-myelodysplastic-syndrome-to-anemia",
+          "primaryId": "myelodysplastic-syndrome",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a119b44ff4ae3348d92858ececd4b50e30400dbec8f498d8335629508b75b8f0"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-26524551",
@@ -2099,6 +2225,48 @@
       "rawReferenceHashes": [
         "dfda744013a1b3da3f2535f703564d0d243365bc286931a0db45d13fa7f2cf57"
       ]
+    },
+    {
+      "sourceId": "pmid-30340592",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "30340592",
+      "doi": "10.1186/s12936-018-2509-9",
+      "canonicalCitation": "White NJ. Anaemia and malaria. Malar J. 2018;17(1):371. PMID 30340592. doi:10.1186/s12936-018-2509-9.",
+      "citationVariants": [
+        "White NJ. Anaemia and malaria. Malar J. 2018;17(1):371. PMID 30340592. doi:10.1186/s12936-018-2509-9."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30340592/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30340592/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-malaria-to-anemia",
+          "primaryId": "malaria",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "46bf0cd5112c2226099c5210f598a60be3c56a4aa685d156f98e1a74c7fd0c69"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-30393090",
@@ -3025,6 +3193,48 @@
         "qualifiedHumanCitationReviewRequired": false,
         "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
         "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-33226721",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "33226721",
+      "doi": "10.1111/ene.14656",
+      "canonicalCitation": "Julian T, Rekatsina M, Shafique F, Zis P. Human immunodeficiency virus-related peripheral neuropathy: A systematic review and meta-analysis. Eur J Neurol. 2021;28(4):1420-1431. PMID 33226721. doi:10.1111/ene.14656.",
+      "citationVariants": [
+        "Julian T, Rekatsina M, Shafique F, Zis P. Human immunodeficiency virus-related peripheral neuropathy: A systematic review and meta-analysis. Eur J Neurol. 2021;28(4):1420-1431. PMID 33226721. doi:10.1111/ene.14656."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33226721/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/33226721/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hiv-aids-to-peripheral-neuropathy",
+          "primaryId": "hiv-aids",
+          "targetId": "peripheral-neuropathy",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c357237d070a7e9a6e4ab4ddb1bcd76a1f7e83cc8b699f0a9c251c77a38f8147"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -7180,211 +7390,201 @@
       ]
     },
     {
-      "sourceId": "pmid-18947294",
-      "status": "active",
+      "sourceId": "pmid-33277056",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "18947294",
-      "doi": "10.1146/annurev.med.60.041707.160528",
-      "canonicalCitation": "Abdel-Wahab OI, Levine RL. Primary myelofibrosis: update on definition, pathogenesis, and treatment. Annu Rev Med. 2009;60:233-245. PMID 18947294. doi:10.1146/annurev.med.60.041707.160528.",
+      "pmid": "33277056",
+      "doi": "10.1016/j.ejso.2020.11.136",
+      "canonicalCitation": "Verkuijl SJ, Jonker JE, Trzpis M, Burgerhof JGM, Broens PMA, Furnée EJB. Functional outcomes of surgery for colon cancer: A systematic review and meta-analysis. Eur J Surg Oncol. 2021;47(5):960-969. PMID 33277056. doi:10.1016/j.ejso.2020.11.136.",
       "citationVariants": [
-        "Abdel-Wahab OI, Levine RL. Primary myelofibrosis: update on definition, pathogenesis, and treatment. Annu Rev Med. 2009;60:233-245. PMID 18947294. doi:10.1146/annurev.med.60.041707.160528."
+        "Verkuijl SJ, Jonker JE, Trzpis M, Burgerhof JGM, Broens PMA, Furnée EJB. Functional outcomes of surgery for colon cancer: A systematic review and meta-analysis. Eur J Surg Oncol. 2021;47(5):960-969. PMID 33277056. doi:10.1016/j.ejso.2020.11.136."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18947294/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33277056/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/18947294/"
+        "https://pubmed.ncbi.nlm.nih.gov/33277056/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-primary-myelofibrosis-to-anemia",
-          "primaryId": "primary-myelofibrosis",
-          "targetId": "anemia",
+          "relationshipId": "rel-colorectal-cancer-to-fecal-incontinence",
+          "primaryId": "colorectal-cancer",
+          "targetId": "fecal-incontinence",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "4fbd9fa0f71239e09f3c06043720f3507de77d71d3c5e2da1f79a35509e817fb"
+        "6a6fbaa3a740f2cfa39e44d8e44271b1be70e973637db2615a9a47e54be99053"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-25134671",
-      "status": "active",
+      "sourceId": "pmid-33599907",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "25134671",
-      "doi": "10.1007/s40265-014-0274-9",
-      "canonicalCitation": "González-Vílchez F, Vázquez de Prada JA. Chronic renal insufficiency in heart transplant recipients: risk factors and management options. Drugs. 2014;74(13):1481-1494. PMID 25134671. doi:10.1007/s40265-014-0274-9.",
+      "pmid": "33599907",
+      "doi": "10.1007/s11154-020-09613-1",
+      "canonicalCitation": "Gosmanova EO, Houillier P, Rejnmark L, Marelli C, Bilezikian JP. Renal complications in patients with chronic hypoparathyroidism on conventional therapy: a systematic literature review: renal disease in chronic hypoparathyroidism. Rev Endocr Metab Disord. 2021;22(2):297-316. PMID 33599907. doi:10.1007/s11154-020-09613-1.",
       "citationVariants": [
-        "González-Vílchez F, Vázquez de Prada JA. Chronic renal insufficiency in heart transplant recipients: risk factors and management options. Drugs. 2014;74(13):1481-1494. PMID 25134671. doi:10.1007/s40265-014-0274-9."
+        "Gosmanova EO, Houillier P, Rejnmark L, Marelli C, Bilezikian JP. Renal complications in patients with chronic hypoparathyroidism on conventional therapy: a systematic literature review: renal disease in chronic hypoparathyroidism. Rev Endocr Metab Disord. 2021;22(2):297-316. PMID 33599907. doi:10.1007/s11154-020-09613-1."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25134671/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33599907/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/25134671/"
+        "https://pubmed.ncbi.nlm.nih.gov/33599907/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-heart-transplant-residuals-to-chronic-kidney-disease",
-          "primaryId": "heart-transplant-residuals",
+          "relationshipId": "rel-hypoparathyroidism-to-chronic-kidney-disease",
+          "primaryId": "hypoparathyroidism",
           "targetId": "chronic-kidney-disease",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "09f9f15f3132c41fe2ea8c7f638bd02ee2a443fae5985a7cac9ab303c213e4dd"
+        "3505217dd4d24a50961962b223f3394679e03155b5e735377e21cd030980bf49"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-26404446",
-      "status": "active",
+      "sourceId": "pmid-34856556",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "26404446",
-      "doi": "10.1053/j.seminhematol.2015.06.002",
-      "canonicalCitation": "Santini V. Anemia as the Main Manifestation of Myelodysplastic Syndromes. Semin Hematol. 2015;52(4):348-356. PMID 26404446. doi:10.1053/j.seminhematol.2015.06.002.",
+      "pmid": "34856556",
+      "doi": "10.1159/000520135",
+      "canonicalCitation": "Taniguchi H, Shimada S, Kinoshita H. Testosterone Therapy for Late-Onset Hypogonadism Improves Erectile Function: A Systematic Review and Meta-Analysis. Urol Int. 2022;106(6):539-552. PMID 34856556. doi:10.1159/000520135.",
       "citationVariants": [
-        "Santini V. Anemia as the Main Manifestation of Myelodysplastic Syndromes. Semin Hematol. 2015;52(4):348-356. PMID 26404446. doi:10.1053/j.seminhematol.2015.06.002."
+        "Taniguchi H, Shimada S, Kinoshita H. Testosterone Therapy for Late-Onset Hypogonadism Improves Erectile Function: A Systematic Review and Meta-Analysis. Urol Int. 2022;106(6):539-552. PMID 34856556. doi:10.1159/000520135."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26404446/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34856556/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/26404446/"
+        "https://pubmed.ncbi.nlm.nih.gov/34856556/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-myelodysplastic-syndrome-to-anemia",
-          "primaryId": "myelodysplastic-syndrome",
-          "targetId": "anemia",
+          "relationshipId": "rel-hypogonadism-to-erectile-dysfunction",
+          "primaryId": "hypogonadism",
+          "targetId": "erectile-dysfunction",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "a119b44ff4ae3348d92858ececd4b50e30400dbec8f498d8335629508b75b8f0"
+        "c792410cbce2566af1d0607543cf3c486a76e541bb36cd7a7048865ec8599f94"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-30340592",
-      "status": "active",
+      "sourceId": "pmid-35142721",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "30340592",
-      "doi": "10.1186/s12936-018-2509-9",
-      "canonicalCitation": "White NJ. Anaemia and malaria. Malar J. 2018;17(1):371. PMID 30340592. doi:10.1186/s12936-018-2509-9.",
+      "pmid": "35142721",
+      "doi": "10.14309/ctg.0000000000000463",
+      "canonicalCitation": "Gandhi S, de la Fuente J, Murad MH, Majumder S. Chronic Pancreatitis Is a Risk Factor for Pancreatic Cancer, and Incidence Increases With Duration of Disease: A Systematic Review and Meta-analysis. Clin Transl Gastroenterol. 2022;13(3):e00463. PMID 35142721. doi:10.14309/ctg.0000000000000463.",
       "citationVariants": [
-        "White NJ. Anaemia and malaria. Malar J. 2018;17(1):371. PMID 30340592. doi:10.1186/s12936-018-2509-9."
+        "Gandhi S, de la Fuente J, Murad MH, Majumder S. Chronic Pancreatitis Is a Risk Factor for Pancreatic Cancer, and Incidence Increases With Duration of Disease: A Systematic Review and Meta-analysis. Clin Transl Gastroenterol. 2022;13(3):e00463. PMID 35142721. doi:10.14309/ctg.0000000000000463."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30340592/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35142721/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/30340592/"
+        "https://pubmed.ncbi.nlm.nih.gov/35142721/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-malaria-to-anemia",
-          "primaryId": "malaria",
-          "targetId": "anemia",
+          "relationshipId": "rel-pancreatitis-to-pancreatic-cancer",
+          "primaryId": "pancreatitis",
+          "targetId": "pancreatic-cancer",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "46bf0cd5112c2226099c5210f598a60be3c56a4aa685d156f98e1a74c7fd0c69"
+        "547d324225d07f9bed732e65a9d40a4e774397ad51a50b2d8043ce67403528ed"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-33226721",
-      "status": "active",
+      "sourceId": "pmid-41178896",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "33226721",
-      "doi": "10.1111/ene.14656",
-      "canonicalCitation": "Julian T, Rekatsina M, Shafique F, Zis P. Human immunodeficiency virus-related peripheral neuropathy: A systematic review and meta-analysis. Eur J Neurol. 2021;28(4):1420-1431. PMID 33226721. doi:10.1111/ene.14656.",
+      "pmid": "41178896",
+      "doi": "10.25122/jml-2025-0141",
+      "canonicalCitation": "Alharbi A, Alamri O, Afandi A, Arbaeen A, Mirza A, Alahmari A, Alshomrani S, Qashqari M, Alahmadi M, Alharthy S, Kokandi A. Discoid lupus erythematosus and its progression to systemic lupus erythematosus across age groups: a systematic review. J Med Life. 2025;18(9):830-836. PMID 41178896. doi:10.25122/jml-2025-0141.",
       "citationVariants": [
-        "Julian T, Rekatsina M, Shafique F, Zis P. Human immunodeficiency virus-related peripheral neuropathy: A systematic review and meta-analysis. Eur J Neurol. 2021;28(4):1420-1431. PMID 33226721. doi:10.1111/ene.14656."
+        "Alharbi A, Alamri O, Afandi A, Arbaeen A, Mirza A, Alahmari A, Alshomrani S, Qashqari M, Alahmadi M, Alharthy S, Kokandi A. Discoid lupus erythematosus and its progression to systemic lupus erythematosus across age groups: a systematic review. J Med Life. 2025;18(9):830-836. PMID 41178896. doi:10.25122/jml-2025-0141."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33226721/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41178896/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/33226721/"
+        "https://pubmed.ncbi.nlm.nih.gov/41178896/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-hiv-aids-to-peripheral-neuropathy",
-          "primaryId": "hiv-aids",
-          "targetId": "peripheral-neuropathy",
+          "relationshipId": "rel-discoid-lupus-to-systemic-lupus-erythematosus",
+          "primaryId": "discoid-lupus",
+          "targetId": "systemic-lupus-erythematosus",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "c357237d070a7e9a6e4ab4ddb1bcd76a1f7e83cc8b699f0a9c251c77a38f8147"
+        "d29ced7908a3415a59efa8f85367bd55018c0074af99eda3eaea2063cd9fb1b1"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -7654,6 +7854,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "ME-8 Qualified-Human Citation Verification",
-  "currentState": "ME8-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-9",
+  "currentState": "ME9-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }
