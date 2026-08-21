@@ -62,7 +62,7 @@
           "note": "Mapping Expansion Batch ME-6 evidence for the bounded testicular-cancer to erectile-dysfunction proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29730199/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 29730199; approved ME-6 proposition; guard: Require documented testicular cancer, actual exposure to a treatment regimen supported by the source (including BEP chemotherapy, abdominal radiotherapy, post-chemotherapy retroperitoneal surgery, or multiple treatment lines as applicable), and separately established erectile dysfunction with compatible post-treatment chronology. Do not infer erectile dysfunction from the cancer diagnosis or unilateral orchiectomy alone. Preserve pre-treatment erectile symptoms, hypogonadism, vascular and metabolic disease, medications, neurologic disease, psychological or relationship factors, and other erectile-dysfunction causes."
         }

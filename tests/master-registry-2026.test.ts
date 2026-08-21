@@ -73,22 +73,22 @@ const sources = JSON.parse(
 ) as SourceRegistry;
 
 describe("Master Relationship & Evidence Registry 2026", () => {
-  it("pins the authoritative ME-6 pre-verification registry counts", () => {
+  it("pins the authoritative fully verified ME-6 registry counts", () => {
     expect(relationships.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(relationships.baselineCommit).toBe("3e47fae71adf4ab80e7804076c36e2c839790e17");
+    expect(relationships.baselineCommit).toBe("690163dfe606bdb515dbb6344bad99cc876044f8");
     expect(relationships.counts).toEqual({
       relationships: 203,
       explicitPublicationGuards: 129,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(sources.baselineCommit).toBe("3e47fae71adf4ab80e7804076c36e2c839790e17");
+    expect(sources.baselineCommit).toBe("690163dfe606bdb515dbb6344bad99cc876044f8");
     expect(sources.counts).toEqual({
       liveSourceReferenceUses: 211,
-      activeSourceEntities: 183,
-      pendingVerificationSourceEntities: 5,
-      activeClinicalSourceEntities: 182,
-      pendingClinicalSourceEntities: 5,
+      activeSourceEntities: 188,
+      pendingVerificationSourceEntities: 0,
+      activeClinicalSourceEntities: 187,
+      pendingClinicalSourceEntities: 0,
       activeLegalAuthorityEntities: 1,
       retiredOnlySourceEntities: 1,
       supersededUnverifiedSourceEntities: 7,
@@ -127,7 +127,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
     expect(
       sources.sources.filter((source) => source.status === "pending-verification"),
-    ).toHaveLength(5);
+    ).toHaveLength(0);
   });
 
   it("contains exactly five qualified-human-verified ME-5 clinical sources", () => {
@@ -148,21 +148,36 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
   });
 
-  it("contains exactly five pending ME-6 clinical sources", () => {
+  it("contains exactly five qualified-human-verified ME-6 clinical sources", () => {
     const ids = new Set(["pmid-29129575", "pmid-29730199", "pmid-27400319", "pmid-31444993", "pmid-12411757"]);
     const selected = sources.sources.filter((source) => ids.has(source.sourceId));
     expect(selected).toHaveLength(5);
     for (const source of selected) {
-      expect(source.status).toBe("pending-verification");
+      expect(source.status).toBe("active");
       expect(source.kind).toBe("clinical-evidence");
-      expect(source.verified).toBe(false);
+      expect(source.verified).toBe(true);
       expect(source.liveUsageCount).toBe(1);
       expect(source.verificationState).toMatchObject({
-        qualifiedHumanCitationReviewRequired: true,
+        qualifiedHumanCitationReviewRequired: false,
         automaticPromotionAuthorized: false,
         mappingApprovalDoesNotEqualCitationVerification: true,
       });
     }
+    const decisions = new Map(
+      selected.map((source) => [source.sourceId, source.verificationState?.qualifiedHumanCitationReviewDecision]),
+    );
+    expect(decisions.get("pmid-29129575")).toBe("approve-as-implemented");
+    expect(decisions.get("pmid-29730199")).toBe("approve-as-implemented");
+    expect(decisions.get("pmid-27400319")).toBe("approve-as-implemented");
+    expect(decisions.get("pmid-31444993")).toBe("approve-as-implemented");
+    expect(decisions.get("pmid-12411757")).toBe("approve-with-narrowing");
+
+    const narrowed = relationships.relationships.find(
+      (row) => row.relationshipId === "rel-chronic-pyelonephritis-to-hypertension",
+    );
+    expect(narrowed?.publicationGuard.structuredGuardText).toBe(
+      'Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-specific risk evidence rather than proof that reflux nephropathy caused hypertension in an individual. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors.',
+    );
   });
 
   it("records the approved 4-as-implemented / 1-narrowed ME-4 verification decisions", () => {
@@ -188,7 +203,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
   });
 
   it("keeps source lineage states distinct while retaining all active ME-3 sources", () => {
-    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(183);
+    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(188);
     expect(sources.sources.filter((source) => source.status === "superseded-unverified")).toHaveLength(7);
     expect(sources.sources.filter((source) => source.status === "bibliographic-correction-only")).toHaveLength(1);
     expect(sources.sources.filter((source) => source.status === "retired-only")).toHaveLength(1);
@@ -205,7 +220,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
   });
 
-  it("passes the ME-6 pending-verification master-registry parity audit", () => {
+  it("passes the final qualified-human-verified ME-6 master-registry parity audit", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], {
       cwd: root,
       encoding: "utf8",
@@ -215,10 +230,10 @@ describe("Master Relationship & Evidence Registry 2026", () => {
       status: "PASS",
       relationships: 203,
       liveSourceReferenceUses: 211,
-      verifiedLiveSourceUses: 206,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 183,
-      pendingVerificationSourceEntities: 5,
+      verifiedLiveSourceUses: 211,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 188,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });

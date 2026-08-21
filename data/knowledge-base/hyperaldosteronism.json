@@ -63,7 +63,7 @@
           "note": "Mapping Expansion Batch ME-6 evidence for the bounded hyperaldosteronism to cardiac-arrhythmia proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29129575/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 29129575; approved ME-6 proposition; guard: Use the broad cardiac-arrhythmia target only for separately documented atrial fibrillation. Require a confirmed primary-aldosteronism phenotype with autonomous aldosterone excess and suppressed renin; do not generalize this source to unspecified hyperaldosteronism. Treat the meta-analysis as population-level excess-risk evidence, not proof that primary aldosteronism caused atrial fibrillation in an individual. Preserve age, hypertension duration and severity, structural or valvular heart disease, thyroid disease, sleep-disordered breathing, alcohol exposure, and other established atrial-fibrillation contributors."
         }

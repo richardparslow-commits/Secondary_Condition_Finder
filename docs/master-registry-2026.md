@@ -2,31 +2,35 @@
 
 ## Status
 
-The authoritative registry is at the Mapping Expansion Batch ME-6 **pre-qualified-human-citation-verification** state derived from the fully verified ME-5 baseline `3e47fae71adf4ab80e7804076c36e2c839790e17`.
+The authoritative registry is at the fully qualified-human-verified Mapping Expansion Batch ME-6 state, derived from implementation commit `690163dfe606bdb515dbb6344bad99cc876044f8`.
 
 ## Current state
 
 - 203 relationships.
 - 129 explicit publication guards / 74 legacy rationale boundaries.
-- 211 live relationship-source uses: 206 verified / 5 pending verification.
-- 183 active source entities plus 5 pending-verification clinical source entities.
-- 182 active clinical sources + 5 pending clinical sources + 1 active legal authority.
+- 211 live relationship-source uses: 211 verified / 0 pending verification.
+- 188 active source entities: 187 clinical + 1 legal authority.
+- 0 pending-verification source entities.
+- 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
 - 197 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
 
-## ME-6 implementation boundary
+## ME-6 qualified-human citation verification
 
-ME-6 adds exactly five rank-2, `sometimes-explored` relationships:
-- `hyperaldosteronism -> cardiac-arrhythmia` restricted to separately documented atrial fibrillation and confirmed primary aldosteronism.
-- `testicular-cancer -> erectile-dysfunction` restricted to actual supported treatment exposure and compatible post-treatment chronology.
-- `ovarian-cancer -> lymphedema` restricted to lower-extremity lymphedema after documented lymph-node dissection/lymphadenectomy.
-- `chronic-liver-disease -> anemia` restricted to advanced chronic liver disease with portal-hypertension or comparable advanced-disease features.
-- `chronic-pyelonephritis -> hypertension` restricted to reflux-nephropathy / pyelonephritic renal-scarring phenotype.
+Disposition:
+- 4 approve-as-implemented.
+- 1 approve-with-narrowing.
+- 0 source replacements.
+- 0 rejects/withdrawals.
 
-All five new sources remain `verified:false` in the KB and `pending-verification` in the normalized master-source registry. PubMed PMID/DOI identity confirmation does not authorize citation promotion.
+The only relationship-semantic change is `chronic-pyelonephritis -> hypertension` (PMID 12411757). Its publication boundary is narrowed to require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, plus separately established hypertension. The source is not generalized to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy.
 
-No new taxonomy identity, publication-status change, diagnostic/rating code, or `pathwayIntelligence` field is introduced. The approved publication guards remain the live semantic boundaries. Treatment-complication rows require actual treatment exposure and compatible chronology; population-level association/prevalence/risk evidence is not converted into individual causation.
+The other four ME-6 relationships and publication guards remain as implemented. All five PMID/DOI identities, citation text, source URLs, ranks, prevalence values, taxonomy identities, publication states, and pathwayIntelligence state remain unchanged.
 
 ## Verification-state contract
 
-A later qualified-human citation review must explicitly disposition each of the five ME-6 sources before any `verified:false -> true` / `pending-verification -> active` transition occurs. Promotion must atomically update KB and master-source state and remain subject to authoritative parity audit.
+All five ME-6 KB references are `verified:true`, and their normalized master sources are `active`. Qualified-human review decisions are recorded on the master source entities. Mapping approval and PubMed identity matching remain insufficient to authorize citation promotion without this separate review.
+
+The narrowed PMID 12411757 relationship snapshot is updated atomically so the master relationship, KB proposition, evidence gaps, source locator, suggestion-object hash, and normalized raw-reference hash share the same approved boundary. No other relationship entity is semantically rewritten.
+
+Verified population-level or phenotype-specific evidence still does not, by itself, establish an individual VA medical nexus.

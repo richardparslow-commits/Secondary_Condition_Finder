@@ -2,7 +2,7 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "3e47fae71adf4ab80e7804076c36e2c839790e17",
+  "baselineCommit": "690163dfe606bdb515dbb6344bad99cc876044f8",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
@@ -1454,13 +1454,13 @@
       "prevalence": "sometimes-explored",
       "clinicalProposition": {
         "status": "approved-me6-bounded-proposition",
-        "text": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Restrict this proposition to chronic pyelonephritis with objectively documented reflux-nephropathy or pyelonephritic renal scarring and require separately established hypertension. Do not generalize reflux-nephropathy evidence to a remote history of acute pyelonephritis or recurrent urinary infection without chronic renal damage. Treat the cohort as phenotype-specific risk evidence, not automatic individual causation. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+        "text": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-specific risk evidence rather than proof that reflux nephropathy caused hypertension in an individual. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
       },
-      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Restrict this proposition to chronic pyelonephritis with objectively documented reflux-nephropathy or pyelonephritic renal scarring and require separately established hypertension. Do not generalize reflux-nephropathy evidence to a remote history of acute pyelonephritis or recurrent urinary infection without chronic renal damage. Treat the cohort as phenotype-specific risk evidence, not automatic individual causation. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-specific risk evidence rather than proof that reflux nephropathy caused hypertension in an individual. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "publicationGuard": {
         "status": "explicit",
-        "structuredGuardText": "Restrict this proposition to chronic pyelonephritis with objectively documented reflux-nephropathy or pyelonephritic renal scarring and require separately established hypertension. Do not generalize reflux-nephropathy evidence to a remote history of acute pyelonephritis or recurrent urinary infection without chronic renal damage. Treat the cohort as phenotype-specific risk evidence, not automatic individual causation. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors.",
-        "boundarySource": "approved-me6-implementation-scope",
+        "structuredGuardText": "Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-specific risk evidence rather than proof that reflux nephropathy caused hypertension in an individual. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors.",
+        "boundarySource": "me6-qualified-human-citation-verification",
         "structuredGuardReviewPending": false,
         "semanticRewriteAuthorized": false
       },
@@ -1469,14 +1469,14 @@
         "Documentation satisfying the approved phenotype restriction: reflux-nephropathy / pyelonephritic renal-scarring phenotype",
         "Chronology and phenotype compatible with the bounded source proposition",
         "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
-        "Resolution of the approved publication guard: Restrict this proposition to chronic pyelonephritis with objectively documented reflux-nephropathy or pyelonephritic renal scarring and require separately established hypertension. Do not generalize reflux-nephropathy evidence to a remote history of acute pyelonephritis or recurrent urinary infection without chronic renal damage. Treat the cohort as phenotype-specific risk evidence, not automatic individual causation. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors."
+        "Resolution of the approved publication guard: Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-specific risk evidence rather than proof that reflux nephropathy caused hypertension in an individual. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors."
       ],
       "sourceIds": [
         "pmid-12411757"
       ],
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "e9d937fbb4bc2d95952a06a87c8ade440ce859dea150eba585ee4455e6a66eb7"
+      "suggestionObjectHash": "52ea818e34a6c661126cf1564ff1138dd5adb2ef2661f97ee0abb294ed19db54"
     },
     {
       "relationshipId": "rel-chronic-rhinitis-to-sleep-apnea",
@@ -6822,6 +6822,6 @@
       "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-6",
-  "currentState": "ME6-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "ME-6 Qualified-Human Citation Verification",
+  "currentState": "ME6-CITATION-VERIFIED"
 }

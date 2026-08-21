@@ -139,7 +139,7 @@ describe("Mapping Expansion Batch ME-5", () => {
     }
   });
 
-  it("preserves verified ME-5 rows while the current state advances to ME-6 pending verification", () => {
+  it("preserves verified ME-5 rows while the current state advances to fully verified ME-6", () => {
     const files = fs.readdirSync(kbDir).filter((name) => name.endsWith(".json"));
     const mappings = files.map((name) =>
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
@@ -155,11 +155,11 @@ describe("Mapping Expansion Batch ME-5", () => {
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
     expect(refs).toHaveLength(211);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(206);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(211);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   });
 
-  it("passes citation and master-registry gates with ME-6 pending", () => {
+  it("passes citation and master-registry gates after ME-6 verification", () => {
     const citationOutput = execFileSync("npm", ["run", "citations:audit"], {
       cwd: root,
       encoding: "utf8",
@@ -175,11 +175,11 @@ describe("Mapping Expansion Batch ME-5", () => {
     };
     expect(citation).toMatchObject({
       references: 211,
-      verified: 206,
+      verified: 211,
       retiredVerified: 6,
-      verifiedProvenance: 212,
-      unverified: 5,
-      reviewFindingCount: 5,
+      verifiedProvenance: 217,
+      unverified: 0,
+      reviewFindingCount: 0,
       hardFindingCount: 0,
     });
 
@@ -198,10 +198,10 @@ describe("Mapping Expansion Batch ME-5", () => {
     expect(master).toMatchObject({
       status: "PASS",
       relationships: 203,
-      verifiedLiveSourceUses: 206,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 183,
-      pendingVerificationSourceEntities: 5,
+      verifiedLiveSourceUses: 211,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 188,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });

@@ -3,34 +3,205 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { describe, expect, it } from "vitest";
 
-type Row = { primaryId: string; currentTargetId: string; targetId: string; pmid: string; doi: string; citation: string; sourceUrl: string; publicationGuard: string };
-type Ledger = { ledgerStatus: string; implementationResult: { relationshipEdgesAdded: number; sourceRowsAdded: number; sourceRowsVerified: number; pendingMasterSourcesAdded: number; remoteWritesPerformed: boolean; semanticBroadeningPerformed: boolean; individualCausationClaimed: boolean }; rows: Row[] };
-type SourceReference = { citation: string; sourceUrl: string; verified: boolean; verificationScope: string };
-type Suggestion = { conditionId: string; rank: number; prevalence: string; rationale: string; evidenceGaps: string[]; pathwayIntelligence?: unknown; sourceReferences: SourceReference[] };
+type Row = {
+  primaryId: string;
+  currentTargetId: string;
+  targetId: string;
+  pmid: string;
+  doi: string;
+  citation: string;
+  sourceUrl: string;
+  publicationGuard: string;
+};
+type Ledger = {
+  ledgerStatus: string;
+  implementationResult: {
+    relationshipEdgesAdded: number;
+    sourceRowsAdded: number;
+    sourceRowsVerified: number;
+    pendingMasterSourcesAdded: number;
+    remoteWritesPerformed: boolean;
+    semanticBroadeningPerformed: boolean;
+    individualCausationClaimed: boolean;
+  };
+  rows: Row[];
+};
+type SourceReference = {
+  citation: string;
+  sourceUrl: string;
+  verified: boolean;
+  verificationScope: string;
+};
+type Suggestion = {
+  conditionId: string;
+  rank: number;
+  prevalence: string;
+  rationale: string;
+  evidenceGaps: string[];
+  pathwayIntelligence?: unknown;
+  sourceReferences: SourceReference[];
+};
 type Mapping = { draft: boolean; suggestions: Suggestion[] };
 
-const root=process.cwd(); const kbDir=path.join(root,"data","knowledge-base");
-const ledger=JSON.parse(fs.readFileSync(path.join(root,"docs","mapping-expansion-me6-approved-implementation-ledger.json"),"utf8")) as Ledger;
-const relRegistry=JSON.parse(fs.readFileSync(path.join(root,"data","evidence","master-relationships.json"),"utf8")) as { relationships: Array<{relationshipId:string; primaryId:string; targetId:string; rank:number; prevalence:string; sourceIds:string[]; publicationGuard:{status:string;structuredGuardText:string|null}}> };
-const srcRegistry=JSON.parse(fs.readFileSync(path.join(root,"data","evidence","master-sources.json"),"utf8")) as { sources:Array<{sourceId:string;status:string;verified:boolean;liveUsageCount:number;pmid?:string;doi?:string}> };
-const load=(id:string):Mapping=>JSON.parse(fs.readFileSync(path.join(kbDir,`${id}.json`),"utf8")) as Mapping;
+const NARROWED_REFLUX_GUARD = 'Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-specific risk evidence rather than proof that reflux nephropathy caused hypertension in an individual. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors.';
 
-describe("Mapping Expansion Batch ME-6",()=>{
-  it("records exactly five locally implemented relationships without citation promotion or semantic broadening",()=>{
-    expect(ledger.ledgerStatus).toBe("APPROVED-AND-IMPLEMENTED-LOCALLY"); expect(ledger.rows).toHaveLength(5);
-    expect(ledger.implementationResult).toEqual({relationshipEdgesAdded:5,sourceRowsAdded:5,sourceRowsVerified:0,pendingMasterSourcesAdded:5,remoteWritesPerformed:false,semanticBroadeningPerformed:false,individualCausationClaimed:false});
+const root = process.cwd();
+const kbDir = path.join(root, "data", "knowledge-base");
+const ledger = JSON.parse(
+  fs.readFileSync(path.join(root, "docs", "mapping-expansion-me6-approved-implementation-ledger.json"), "utf8"),
+) as Ledger;
+const relRegistry = JSON.parse(
+  fs.readFileSync(path.join(root, "data", "evidence", "master-relationships.json"), "utf8"),
+) as {
+  relationships: Array<{
+    relationshipId: string;
+    primaryId: string;
+    targetId: string;
+    rank: number;
+    prevalence: string;
+    sourceIds: string[];
+    publicationGuard: { status: string; structuredGuardText: string | null };
+  }>;
+};
+const srcRegistry = JSON.parse(
+  fs.readFileSync(path.join(root, "data", "evidence", "master-sources.json"), "utf8"),
+) as {
+  sources: Array<{
+    sourceId: string;
+    status: string;
+    verified: boolean;
+    liveUsageCount: number;
+    pmid?: string;
+    doi?: string;
+  }>;
+};
+
+const load = (id: string): Mapping =>
+  JSON.parse(fs.readFileSync(path.join(kbDir, `${id}.json`), "utf8")) as Mapping;
+
+describe("Mapping Expansion Batch ME-6", () => {
+  it("preserves the historical five-row implementation ledger", () => {
+    expect(ledger.ledgerStatus).toBe("APPROVED-AND-IMPLEMENTED-LOCALLY");
+    expect(ledger.rows).toHaveLength(5);
+    expect(ledger.implementationResult).toEqual({
+      relationshipEdgesAdded: 5,
+      sourceRowsAdded: 5,
+      sourceRowsVerified: 0,
+      pendingMasterSourcesAdded: 5,
+      remoteWritesPerformed: false,
+      semanticBroadeningPerformed: false,
+      individualCausationClaimed: false,
+    });
   });
-  it("adds each approved row at rank 2 with one pending clinical source and exact publication guard",()=>{
-    for(const row of ledger.rows){ const mapping=load(row.primaryId); expect(mapping.draft).toBe(false); const suggestion=mapping.suggestions.find(c=>c.conditionId===row.targetId); expect(suggestion).toBeTruthy(); if(!suggestion) throw new Error(`missing ME-6 row ${row.primaryId}->${row.targetId}`); expect(suggestion.rank).toBe(2); expect(suggestion.prevalence).toBe("sometimes-explored"); expect(suggestion.pathwayIntelligence).toBeUndefined(); expect(suggestion.rationale).toContain(row.publicationGuard); expect(suggestion.evidenceGaps.some(g=>g.includes(row.publicationGuard))).toBe(true); expect(suggestion.sourceReferences).toHaveLength(1); expect(suggestion.sourceReferences[0]).toMatchObject({verified:false,verificationScope:"clinical-evidence",citation:row.citation,sourceUrl:row.sourceUrl}); }
+
+  it("preserves all five ME-6 rows at rank 2 after citation verification", () => {
+    for (const row of ledger.rows) {
+      const mapping = load(row.primaryId);
+      expect(mapping.draft).toBe(false);
+      const suggestion = mapping.suggestions.find((candidate) => candidate.conditionId === row.targetId);
+      expect(suggestion).toBeTruthy();
+      if (!suggestion) throw new Error(`missing ME-6 row ${row.primaryId}->${row.targetId}`);
+      const expectedGuard = row.pmid === "12411757" ? NARROWED_REFLUX_GUARD : row.publicationGuard;
+      expect(suggestion.rank).toBe(2);
+      expect(suggestion.prevalence).toBe("sometimes-explored");
+      expect(suggestion.pathwayIntelligence).toBeUndefined();
+      expect(suggestion.rationale).toContain(expectedGuard);
+      expect(suggestion.evidenceGaps.some((gap) => gap.includes(expectedGuard))).toBe(true);
+      expect(suggestion.sourceReferences).toHaveLength(1);
+      expect(suggestion.sourceReferences[0]).toMatchObject({
+        verified: true,
+        verificationScope: "clinical-evidence",
+        citation: row.citation,
+        sourceUrl: row.sourceUrl,
+      });
+    }
   });
-  it("installs the same five relationships and pending source identities in the authoritative registries",()=>{
-    for(const row of ledger.rows){ const rid=`rel-${row.primaryId}-to-${row.targetId}`; const relationship=relRegistry.relationships.find(c=>c.relationshipId===rid); expect(relationship).toMatchObject({primaryId:row.primaryId,targetId:row.targetId,rank:2,prevalence:"sometimes-explored",sourceIds:[`pmid-${row.pmid}`]}); expect(relationship?.publicationGuard).toMatchObject({status:"explicit",structuredGuardText:row.publicationGuard}); const source=srcRegistry.sources.find(c=>c.sourceId===`pmid-${row.pmid}`); expect(source).toMatchObject({status:"pending-verification",verified:false,liveUsageCount:1,pmid:row.pmid,doi:row.doi}); }
+
+  it("preserves source identities and applies only the approved PMID 12411757 guard narrowing", () => {
+    for (const row of ledger.rows) {
+      const relationship = relRegistry.relationships.find(
+        (candidate) => candidate.relationshipId === `rel-${row.primaryId}-to-${row.targetId}`,
+      );
+      expect(relationship).toMatchObject({
+        primaryId: row.primaryId,
+        targetId: row.targetId,
+        rank: 2,
+        prevalence: "sometimes-explored",
+        sourceIds: [`pmid-${row.pmid}`],
+      });
+      const expectedGuard = row.pmid === "12411757" ? NARROWED_REFLUX_GUARD : row.publicationGuard;
+      expect(relationship?.publicationGuard).toMatchObject({
+        status: "explicit",
+        structuredGuardText: expectedGuard,
+      });
+
+      const source = srcRegistry.sources.find((candidate) => candidate.sourceId === `pmid-${row.pmid}`);
+      expect(source).toMatchObject({
+        status: "active",
+        verified: true,
+        liveUsageCount: 1,
+        pmid: row.pmid,
+        doi: row.doi,
+      });
+    }
   });
-  it("pins the 203-edge / 211-reference ME-6 pre-verification state",()=>{
-    const files=fs.readdirSync(kbDir).filter(n=>n.endsWith(".json")); const mappings=files.map(n=>JSON.parse(fs.readFileSync(path.join(kbDir,n),"utf8")) as Mapping); expect(files).toHaveLength(311); expect(mappings.filter(m=>m.draft===false)).toHaveLength(139); expect(mappings.filter(m=>m.draft===true)).toHaveLength(172); expect(mappings.reduce((s,m)=>s+m.suggestions.length,0)).toBe(203); expect(mappings.filter(m=>m.draft===false&&m.suggestions.length===1)).toHaveLength(91); expect(mappings.filter(m=>m.draft===false&&m.suggestions.length>=2)).toHaveLength(48); const refs=mappings.flatMap(m=>m.suggestions.flatMap(s=>s.sourceReferences??[])); expect(refs).toHaveLength(211); expect(refs.filter(r=>r.verified===true)).toHaveLength(206); expect(refs.filter(r=>r.verified===false)).toHaveLength(5);
+
+  it("pins the fully verified 203-edge / 211-reference ME-6 state", () => {
+    const files = fs.readdirSync(kbDir).filter((name) => name.endsWith(".json"));
+    const mappings = files.map((name) =>
+      JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
+    );
+    expect(files).toHaveLength(311);
+    expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
+    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(172);
+    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(203);
+    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(91);
+    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(48);
+    const refs = mappings.flatMap((mapping) =>
+      mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
+    );
+    expect(refs).toHaveLength(211);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(211);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   });
-  it("passes citation and master-registry gates in the exact ME-6 pending-verification state",()=>{
-    const citationOutput=execFileSync("npm",["run","citations:audit"],{cwd:root,encoding:"utf8"}); const citation=JSON.parse(citationOutput.slice(citationOutput.indexOf("{"))) as {references:number;verified:number;retiredVerified:number;verifiedProvenance:number;unverified:number;reviewFindingCount:number;hardFindingCount:number}; expect(citation).toMatchObject({references:211,verified:206,retiredVerified:6,verifiedProvenance:212,unverified:5,reviewFindingCount:5,hardFindingCount:0});
-    const masterOutput=execFileSync(process.execPath,["scripts/audit-master-registry.js"],{cwd:root,encoding:"utf8"}); const master=JSON.parse(masterOutput) as {status:string;relationships:number;verifiedLiveSourceUses:number;pendingVerificationLiveSourceUses:number;activeSourceEntities:number;pendingVerificationSourceEntities:number}; expect(master).toMatchObject({status:"PASS",relationships:203,verifiedLiveSourceUses:206,pendingVerificationLiveSourceUses:5,activeSourceEntities:183,pendingVerificationSourceEntities:5});
+
+  it("passes citation and master-registry gates in the final verified state", () => {
+    const citationOutput = execFileSync("npm", ["run", "citations:audit"], { cwd: root, encoding: "utf8" });
+    const citation = JSON.parse(citationOutput.slice(citationOutput.indexOf("{"))) as {
+      references: number;
+      verified: number;
+      retiredVerified: number;
+      verifiedProvenance: number;
+      unverified: number;
+      reviewFindingCount: number;
+      hardFindingCount: number;
+    };
+    expect(citation).toMatchObject({
+      references: 211,
+      verified: 211,
+      retiredVerified: 6,
+      verifiedProvenance: 217,
+      unverified: 0,
+      reviewFindingCount: 0,
+      hardFindingCount: 0,
+    });
+
+    const masterOutput = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], { cwd: root, encoding: "utf8" });
+    const master = JSON.parse(masterOutput) as {
+      status: string;
+      relationships: number;
+      verifiedLiveSourceUses: number;
+      pendingVerificationLiveSourceUses: number;
+      activeSourceEntities: number;
+      pendingVerificationSourceEntities: number;
+    };
+    expect(master).toMatchObject({
+      status: "PASS",
+      relationships: 203,
+      verifiedLiveSourceUses: 211,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 188,
+      pendingVerificationSourceEntities: 0,
+    });
   });
 });
