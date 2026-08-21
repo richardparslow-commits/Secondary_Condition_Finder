@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "690163dfe606bdb515dbb6344bad99cc876044f8",
+  "baselineCommit": "59c41777a4f55628d08ca080ad49f450adb06bca",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 211,
+    "liveSourceReferenceUses": 216,
     "activeSourceEntities": 188,
-    "pendingVerificationSourceEntities": 0,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 187,
-    "pendingClinicalSourceEntities": 0,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 197,
+    "totalSourceEntitiesIncludingLineage": 202,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -286,6 +286,48 @@
       "rawReferenceHashes": [
         "3100d7b68473068b15c8c3455084802985f0f053805cc1d4f2931bcb044496a1"
       ]
+    },
+    {
+      "sourceId": "pmid-12411757",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "12411757",
+      "doi": "10.1159/000066639",
+      "canonicalCitation": "Köhler JR, Tencer J, Thysell H, et al. Long-term effects of reflux nephropathy on blood pressure and renal function in adults. Nephron Clin Pract. 2003;93(1):C35-C46. PMID 12411757. doi:10.1159/000066639.",
+      "citationVariants": [
+        "Köhler JR, Tencer J, Thysell H, et al. Long-term effects of reflux nephropathy on blood pressure and renal function in adults. Nephron Clin Pract. 2003;93(1):C35-C46. PMID 12411757. doi:10.1159/000066639."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12411757/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/12411757/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-chronic-pyelonephritis-to-hypertension",
+          "primaryId": "chronic-pyelonephritis",
+          "targetId": "hypertension",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a87e19ed3a14b08aadb7d4df7e2a22ad8d6ec706215f239c0f1156653d76b640"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-17679635",
@@ -1282,6 +1324,48 @@
       ]
     },
     {
+      "sourceId": "pmid-27400319",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "27400319",
+      "doi": "10.1097/IGC.0000000000000757",
+      "canonicalCitation": "Ki EY, Park JS, Lee KH, Hur SY. Incidence and Risk Factors of Lower Extremity Lymphedema After Gynecologic Surgery in Ovarian Cancer. Int J Gynecol Cancer. 2016;26(7):1327-1332. PMID 27400319. doi:10.1097/IGC.0000000000000757.",
+      "citationVariants": [
+        "Ki EY, Park JS, Lee KH, Hur SY. Incidence and Risk Factors of Lower Extremity Lymphedema After Gynecologic Surgery in Ovarian Cancer. Int J Gynecol Cancer. 2016;26(7):1327-1332. PMID 27400319. doi:10.1097/IGC.0000000000000757."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27400319/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27400319/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ovarian-cancer-to-lymphedema",
+          "primaryId": "ovarian-cancer",
+          "targetId": "lymphedema",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "1571c075550a35e4a7e890cdc54eb8cf030c9db555b388b48d5df97ed57f6254"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-27614693",
       "status": "active",
       "kind": "clinical-evidence",
@@ -1604,6 +1688,48 @@
       ]
     },
     {
+      "sourceId": "pmid-29129575",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "29129575",
+      "doi": "10.1016/S2213-8587(17)30319-4",
+      "canonicalCitation": "Monticone S, D'Ascenzo F, Moretti C, et al. Cardiovascular events and target organ damage in primary aldosteronism compared with essential hypertension: a systematic review and meta-analysis. Lancet Diabetes Endocrinol. 2018;6(1):41-50. PMID 29129575. doi:10.1016/S2213-8587(17)30319-4.",
+      "citationVariants": [
+        "Monticone S, D'Ascenzo F, Moretti C, et al. Cardiovascular events and target organ damage in primary aldosteronism compared with essential hypertension: a systematic review and meta-analysis. Lancet Diabetes Endocrinol. 2018;6(1):41-50. PMID 29129575. doi:10.1016/S2213-8587(17)30319-4."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29129575/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/29129575/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hyperaldosteronism-to-cardiac-arrhythmia",
+          "primaryId": "hyperaldosteronism",
+          "targetId": "cardiac-arrhythmia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "3bd4c8ef0758eb3d877628656289b2b3dcf2563b42390486b2865195720bbc92"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-29157021",
       "status": "active",
       "kind": "clinical-evidence",
@@ -1742,6 +1868,48 @@
       "rawReferenceHashes": [
         "535788035c01bfac853c94769c47a62af7ffd5026e79ddcd509fd248834e0181"
       ]
+    },
+    {
+      "sourceId": "pmid-29730199",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "29730199",
+      "doi": "10.1016/j.juro.2018.04.077",
+      "canonicalCitation": "Bandak M, Lauritsen J, Johansen C, et al. Sexual Function in a Nationwide Cohort of 2,260 Survivors of Testicular Cancer after 17 Years of Followup. J Urol. 2018;200(4):794-800. PMID 29730199. doi:10.1016/j.juro.2018.04.077.",
+      "citationVariants": [
+        "Bandak M, Lauritsen J, Johansen C, et al. Sexual Function in a Nationwide Cohort of 2,260 Survivors of Testicular Cancer after 17 Years of Followup. J Urol. 2018;200(4):794-800. PMID 29730199. doi:10.1016/j.juro.2018.04.077."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29730199/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/29730199/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-testicular-cancer-to-erectile-dysfunction",
+          "primaryId": "testicular-cancer",
+          "targetId": "erectile-dysfunction",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "96bf755560b5dd5e3de06544eb124f6cc0b23d34de0c997904b6e6b0abbf8643"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-29735408",
@@ -2209,6 +2377,48 @@
       "rawReferenceHashes": [
         "eceedde7ee895a3052e6de072976446a917670beef8690618dc04807441ec087"
       ]
+    },
+    {
+      "sourceId": "pmid-31444993",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "31444993",
+      "doi": "10.1111/liv.14229",
+      "canonicalCitation": "Scheiner B, Semmler G, Maurer F, et al. Prevalence of and risk factors for anaemia in patients with advanced chronic liver disease. Liver Int. 2020;40(1):194-204. PMID 31444993. doi:10.1111/liv.14229.",
+      "citationVariants": [
+        "Scheiner B, Semmler G, Maurer F, et al. Prevalence of and risk factors for anaemia in patients with advanced chronic liver disease. Liver Int. 2020;40(1):194-204. PMID 31444993. doi:10.1111/liv.14229."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31444993/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31444993/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-chronic-liver-disease-to-anemia",
+          "primaryId": "chronic-liver-disease",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "d1a13618986bf08241119bb1fc1a69710118762995bf8ebf517257962bfafb75"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-31515657",
@@ -6759,211 +6969,201 @@
       ]
     },
     {
-      "sourceId": "pmid-12411757",
-      "status": "active",
+      "sourceId": "pmid-10482693",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "12411757",
-      "doi": "10.1159/000066639",
-      "canonicalCitation": "Köhler JR, Tencer J, Thysell H, et al. Long-term effects of reflux nephropathy on blood pressure and renal function in adults. Nephron Clin Pract. 2003;93(1):C35-C46. PMID 12411757. doi:10.1159/000066639.",
+      "pmid": "10482693",
+      "doi": "10.1016/S1091-255X(99)80057-2",
+      "canonicalCitation": "Fein M, Ritter MP, DeMeester TR, et al. Role of the lower esophageal sphincter and hiatal hernia in the pathogenesis of gastroesophageal reflux disease. J Gastrointest Surg. 1999;3(4):405-410. PMID 10482693. doi:10.1016/S1091-255X(99)80057-2.",
       "citationVariants": [
-        "Köhler JR, Tencer J, Thysell H, et al. Long-term effects of reflux nephropathy on blood pressure and renal function in adults. Nephron Clin Pract. 2003;93(1):C35-C46. PMID 12411757. doi:10.1159/000066639."
+        "Fein M, Ritter MP, DeMeester TR, et al. Role of the lower esophageal sphincter and hiatal hernia in the pathogenesis of gastroesophageal reflux disease. J Gastrointest Surg. 1999;3(4):405-410. PMID 10482693. doi:10.1016/S1091-255X(99)80057-2."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12411757/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10482693/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/12411757/"
+        "https://pubmed.ncbi.nlm.nih.gov/10482693/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
-        "2026-08-20"
+        "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-chronic-pyelonephritis-to-hypertension",
-          "primaryId": "chronic-pyelonephritis",
-          "targetId": "hypertension",
+          "relationshipId": "rel-hiatal-hernia-to-gerd",
+          "primaryId": "hiatal-hernia",
+          "targetId": "gerd",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "a87e19ed3a14b08aadb7d4df7e2a22ad8d6ec706215f239c0f1156653d76b640"
+        "b97ca901536339e4371ed850729c4aba814320791803bca0b9888be31d5fdee0"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-27400319",
-      "status": "active",
+      "sourceId": "pmid-29543806",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "27400319",
-      "doi": "10.1097/IGC.0000000000000757",
-      "canonicalCitation": "Ki EY, Park JS, Lee KH, Hur SY. Incidence and Risk Factors of Lower Extremity Lymphedema After Gynecologic Surgery in Ovarian Cancer. Int J Gynecol Cancer. 2016;26(7):1327-1332. PMID 27400319. doi:10.1097/IGC.0000000000000757.",
+      "pmid": "29543806",
+      "doi": "10.1371/journal.pntd.0006338",
+      "canonicalCitation": "Alende-Castro V, Macía-Rodríguez C, Novo-Veleiro I, et al. Q fever in Spain: Description of a new series, and systematic review. PLoS Negl Trop Dis. 2018;12(3):e0006338. PMID 29543806. doi:10.1371/journal.pntd.0006338.",
       "citationVariants": [
-        "Ki EY, Park JS, Lee KH, Hur SY. Incidence and Risk Factors of Lower Extremity Lymphedema After Gynecologic Surgery in Ovarian Cancer. Int J Gynecol Cancer. 2016;26(7):1327-1332. PMID 27400319. doi:10.1097/IGC.0000000000000757."
+        "Alende-Castro V, Macía-Rodríguez C, Novo-Veleiro I, et al. Q fever in Spain: Description of a new series, and systematic review. PLoS Negl Trop Dis. 2018;12(3):e0006338. PMID 29543806. doi:10.1371/journal.pntd.0006338."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27400319/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29543806/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/27400319/"
+        "https://pubmed.ncbi.nlm.nih.gov/29543806/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
-        "2026-08-20"
+        "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-ovarian-cancer-to-lymphedema",
-          "primaryId": "ovarian-cancer",
-          "targetId": "lymphedema",
+          "relationshipId": "rel-q-fever-to-hepatitis",
+          "primaryId": "q-fever",
+          "targetId": "hepatitis",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "1571c075550a35e4a7e890cdc54eb8cf030c9db555b388b48d5df97ed57f6254"
+        "44b1310f06b36d51e938764c88762994f3eaa87a6098602d13d2fdfef338e2f5"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-29129575",
-      "status": "active",
+      "sourceId": "pmid-35289694",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "29129575",
-      "doi": "10.1016/S2213-8587(17)30319-4",
-      "canonicalCitation": "Monticone S, D'Ascenzo F, Moretti C, et al. Cardiovascular events and target organ damage in primary aldosteronism compared with essential hypertension: a systematic review and meta-analysis. Lancet Diabetes Endocrinol. 2018;6(1):41-50. PMID 29129575. doi:10.1016/S2213-8587(17)30319-4.",
+      "pmid": "35289694",
+      "doi": "10.1080/0284186X.2022.2048068",
+      "canonicalCitation": "Søndergaard MMA, Nordsmark M, Møller DS, Nielsen KM, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068.",
       "citationVariants": [
-        "Monticone S, D'Ascenzo F, Moretti C, et al. Cardiovascular events and target organ damage in primary aldosteronism compared with essential hypertension: a systematic review and meta-analysis. Lancet Diabetes Endocrinol. 2018;6(1):41-50. PMID 29129575. doi:10.1016/S2213-8587(17)30319-4."
+        "Søndergaard MMA, Nordsmark M, Møller DS, Nielsen KM, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29129575/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35289694/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/29129575/"
+        "https://pubmed.ncbi.nlm.nih.gov/35289694/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
-        "2026-08-20"
+        "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-hyperaldosteronism-to-cardiac-arrhythmia",
-          "primaryId": "hyperaldosteronism",
-          "targetId": "cardiac-arrhythmia",
+          "relationshipId": "rel-esophageal-cancer-to-cardiomyopathy",
+          "primaryId": "esophageal-cancer",
+          "targetId": "cardiomyopathy",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "3bd4c8ef0758eb3d877628656289b2b3dcf2563b42390486b2865195720bbc92"
+        "1493a99e5f4447d5aff174dfdf88238381936473203f3cafeec810d618986915"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-29730199",
-      "status": "active",
+      "sourceId": "pmid-37311222",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "29730199",
-      "doi": "10.1016/j.juro.2018.04.077",
-      "canonicalCitation": "Bandak M, Lauritsen J, Johansen C, et al. Sexual Function in a Nationwide Cohort of 2,260 Survivors of Testicular Cancer after 17 Years of Followup. J Urol. 2018;200(4):794-800. PMID 29730199. doi:10.1016/j.juro.2018.04.077.",
+      "pmid": "37311222",
+      "doi": "10.1164/rccm.202210-1941OC",
+      "canonicalCitation": "Montani D, Thoré P, Mignard X, et al. Clinical Phenotype and Outcomes of Pulmonary Hypertension Associated with Myeloproliferative Neoplasms: A Population-based Study. Am J Respir Crit Care Med. 2023;208(5):600-612. PMID 37311222. doi:10.1164/rccm.202210-1941OC.",
       "citationVariants": [
-        "Bandak M, Lauritsen J, Johansen C, et al. Sexual Function in a Nationwide Cohort of 2,260 Survivors of Testicular Cancer after 17 Years of Followup. J Urol. 2018;200(4):794-800. PMID 29730199. doi:10.1016/j.juro.2018.04.077."
+        "Montani D, Thoré P, Mignard X, et al. Clinical Phenotype and Outcomes of Pulmonary Hypertension Associated with Myeloproliferative Neoplasms: A Population-based Study. Am J Respir Crit Care Med. 2023;208(5):600-612. PMID 37311222. doi:10.1164/rccm.202210-1941OC."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29730199/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37311222/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/29730199/"
+        "https://pubmed.ncbi.nlm.nih.gov/37311222/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
-        "2026-08-20"
+        "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-testicular-cancer-to-erectile-dysfunction",
-          "primaryId": "testicular-cancer",
-          "targetId": "erectile-dysfunction",
+          "relationshipId": "rel-polycythemia-vera-to-pulmonary-hypertension",
+          "primaryId": "polycythemia-vera",
+          "targetId": "pulmonary-hypertension",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "96bf755560b5dd5e3de06544eb124f6cc0b23d34de0c997904b6e6b0abbf8643"
+        "857df3ae59e9178331f88466f7507bf527063e4aabba0f2b091fc61233181c67"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-31444993",
-      "status": "active",
+      "sourceId": "pmid-37561537",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "31444993",
-      "doi": "10.1111/liv.14229",
-      "canonicalCitation": "Scheiner B, Semmler G, Maurer F, et al. Prevalence of and risk factors for anaemia in patients with advanced chronic liver disease. Liver Int. 2020;40(1):194-204. PMID 31444993. doi:10.1111/liv.14229.",
+      "pmid": "37561537",
+      "doi": "10.1177/03000605231190763",
+      "canonicalCitation": "Chen F, Chen Y, Zou Y, Wang Y, Wu X, Chen M. Comparison of holmium laser enucleation and transurethral resection of prostate in benign prostatic hyperplasia: a systematic review and meta-analysis. J Int Med Res. 2023;51(8):3000605231190763. PMID 37561537. doi:10.1177/03000605231190763.",
       "citationVariants": [
-        "Scheiner B, Semmler G, Maurer F, et al. Prevalence of and risk factors for anaemia in patients with advanced chronic liver disease. Liver Int. 2020;40(1):194-204. PMID 31444993. doi:10.1111/liv.14229."
+        "Chen F, Chen Y, Zou Y, Wang Y, Wu X, Chen M. Comparison of holmium laser enucleation and transurethral resection of prostate in benign prostatic hyperplasia: a systematic review and meta-analysis. J Int Med Res. 2023;51(8):3000605231190763. PMID 37561537. doi:10.1177/03000605231190763."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31444993/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37561537/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/31444993/"
+        "https://pubmed.ncbi.nlm.nih.gov/37561537/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
-        "2026-08-20"
+        "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-chronic-liver-disease-to-anemia",
-          "primaryId": "chronic-liver-disease",
-          "targetId": "anemia",
+          "relationshipId": "rel-benign-prostatic-hyperplasia-to-urethral-stricture",
+          "primaryId": "benign-prostatic-hyperplasia",
+          "targetId": "urethral-stricture",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "d1a13618986bf08241119bb1fc1a69710118762995bf8ebf517257962bfafb75"
+        "52309d3ac2c5713f90a0b8db65538c3a00155d27babb4bfa6c8455f9ba2af407"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -7233,6 +7433,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "ME-6 Qualified-Human Citation Verification",
-  "currentState": "ME6-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-7",
+  "currentState": "ME7-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

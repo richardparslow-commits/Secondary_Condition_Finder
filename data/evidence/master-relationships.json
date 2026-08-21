@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "690163dfe606bdb515dbb6344bad99cc876044f8",
+  "baselineCommit": "59c41777a4f55628d08ca080ad49f450adb06bca",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 203,
-    "explicitPublicationGuards": 129,
+    "relationships": 208,
+    "explicitPublicationGuards": 134,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -613,6 +613,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "750b16b9b596cca8f22d246130453be44c059c8404ca0802a8e5a0e7a47f3e7f"
+    },
+    {
+      "relationshipId": "rel-benign-prostatic-hyperplasia-to-urethral-stricture",
+      "primaryId": "benign-prostatic-hyperplasia",
+      "targetId": "urethral-stricture",
+      "direction": "benign-prostatic-hyperplasia -> urethral-stricture",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me7-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Treatment-mediated urethral-stricture risk after TURP or HoLEP performed for documented benign prostatic hyperplasia. Require documented benign prostatic hyperplasia, documented transurethral resection of the prostate (TURP) or holmium laser enucleation of the prostate (HoLEP), and a separately established urethral stricture arising after that procedure with compatible chronology. Do not infer urethral stricture from untreated BPH, lower urinary tract symptoms, or bladder-outlet obstruction alone. Preserve prior urethral instrumentation or trauma, infection, lichen sclerosus, prior pelvic surgery or radiation, and other recognized causes of urethral stricture. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Treatment-mediated urethral-stricture risk after TURP or HoLEP performed for documented benign prostatic hyperplasia. Require documented benign prostatic hyperplasia, documented transurethral resection of the prostate (TURP) or holmium laser enucleation of the prostate (HoLEP), and a separately established urethral stricture arising after that procedure with compatible chronology. Do not infer urethral stricture from untreated BPH, lower urinary tract symptoms, or bladder-outlet obstruction alone. Preserve prior urethral instrumentation or trauma, infection, lichen sclerosus, prior pelvic surgery or radiation, and other recognized causes of urethral stricture. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented benign prostatic hyperplasia, documented transurethral resection of the prostate (TURP) or holmium laser enucleation of the prostate (HoLEP), and a separately established urethral stricture arising after that procedure with compatible chronology. Do not infer urethral stricture from untreated BPH, lower urinary tract symptoms, or bladder-outlet obstruction alone. Preserve prior urethral instrumentation or trauma, infection, lichen sclerosus, prior pelvic surgery or radiation, and other recognized causes of urethral stricture.",
+        "boundarySource": "approved-me7-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of benign-prostatic-hyperplasia and urethral-stricture",
+        "Documentation satisfying the approved phenotype restriction: treatment-related urethral stricture after TURP or HoLEP for BPH",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented benign prostatic hyperplasia, documented transurethral resection of the prostate (TURP) or holmium laser enucleation of the prostate (HoLEP), and a separately established urethral stricture arising after that procedure with compatible chronology. Do not infer urethral stricture from untreated BPH, lower urinary tract symptoms, or bladder-outlet obstruction alone. Preserve prior urethral instrumentation or trauma, infection, lichen sclerosus, prior pelvic surgery or radiation, and other recognized causes of urethral stricture."
+      ],
+      "sourceIds": [
+        "pmid-37561537"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "7a534066d82ad1031cdce3ee34c72a93610b715543e0be8571df3803d749ff16"
     },
     {
       "relationshipId": "rel-breast-cancer-to-lymphedema",
@@ -2356,6 +2390,40 @@
       "suggestionObjectHash": "aeffb0afb3ffe39259a436cf0295756901862de9bea76cd8a5ddd4051cfd9d16"
     },
     {
+      "relationshipId": "rel-esophageal-cancer-to-cardiomyopathy",
+      "primaryId": "esophageal-cancer",
+      "targetId": "cardiomyopathy",
+      "direction": "esophageal-cancer -> cardiomyopathy",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me7-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Treatment-mediated myocardial dysfunction/cardiomyopathy following actual thoracic chemoradiotherapy for esophageal cancer. Require documented esophageal cancer, actual exposure to thoracic chemoradiotherapy, and a separately established myocardial-dysfunction or cardiomyopathy phenotype with compatible post-treatment chronology. Do not infer cardiomyopathy from the cancer diagnosis, radiation exposure, a small isolated strain change, fatigue, or dyspnea alone. Preserve pre-existing cardiomyopathy or heart failure, ischemic disease, hypertension, valvular disease, arrhythmia, other cardiotoxic therapies, alcohol or toxin exposure, genetic cardiomyopathy, and other recognized myocardial causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Treatment-mediated myocardial dysfunction/cardiomyopathy following actual thoracic chemoradiotherapy for esophageal cancer. Require documented esophageal cancer, actual exposure to thoracic chemoradiotherapy, and a separately established myocardial-dysfunction or cardiomyopathy phenotype with compatible post-treatment chronology. Do not infer cardiomyopathy from the cancer diagnosis, radiation exposure, a small isolated strain change, fatigue, or dyspnea alone. Preserve pre-existing cardiomyopathy or heart failure, ischemic disease, hypertension, valvular disease, arrhythmia, other cardiotoxic therapies, alcohol or toxin exposure, genetic cardiomyopathy, and other recognized myocardial causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented esophageal cancer, actual exposure to thoracic chemoradiotherapy, and a separately established myocardial-dysfunction or cardiomyopathy phenotype with compatible post-treatment chronology. Do not infer cardiomyopathy from the cancer diagnosis, radiation exposure, a small isolated strain change, fatigue, or dyspnea alone. Preserve pre-existing cardiomyopathy or heart failure, ischemic disease, hypertension, valvular disease, arrhythmia, other cardiotoxic therapies, alcohol or toxin exposure, genetic cardiomyopathy, and other recognized myocardial causes.",
+        "boundarySource": "approved-me7-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of esophageal-cancer and cardiomyopathy",
+        "Documentation satisfying the approved phenotype restriction: treatment-related myocardial dysfunction/cardiomyopathy after esophageal-cancer chemoradiotherapy",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented esophageal cancer, actual exposure to thoracic chemoradiotherapy, and a separately established myocardial-dysfunction or cardiomyopathy phenotype with compatible post-treatment chronology. Do not infer cardiomyopathy from the cancer diagnosis, radiation exposure, a small isolated strain change, fatigue, or dyspnea alone. Preserve pre-existing cardiomyopathy or heart failure, ischemic disease, hypertension, valvular disease, arrhythmia, other cardiotoxic therapies, alcohol or toxin exposure, genetic cardiomyopathy, and other recognized myocardial causes."
+      ],
+      "sourceIds": [
+        "pmid-35289694"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "4ae0411904c5ff59680f66f54f4dd43cdcd4afc2b7cc066ce92f4651ad02de61"
+    },
+    {
       "relationshipId": "rel-essential-thrombocythemia-to-leukemia",
       "primaryId": "essential-thrombocythemia",
       "targetId": "leukemia",
@@ -2986,6 +3054,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "b720757317623763669c7d10720105cf5883960ac8db189ceec2566a42a6c5af"
+    },
+    {
+      "relationshipId": "rel-hiatal-hernia-to-gerd",
+      "primaryId": "hiatal-hernia",
+      "targetId": "gerd",
+      "direction": "hiatal-hernia -> gerd",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me7-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Physiologically relevant hiatal hernia as an anatomic contributor to objectively established gastroesophageal reflux disease. Require a documented hiatal hernia, with the source proposition most directly applicable to a sliding or otherwise physiologically relevant gastroesophageal-junction hernia, and a separately established diagnosis of GERD using appropriate clinical, endoscopic, or reflux-monitoring evidence. Do not infer GERD solely from the presence of a hiatal hernia. Preserve lower-esophageal-sphincter dysfunction, obesity, medications, delayed gastric emptying, dietary or behavioral contributors, prior foregut surgery, and other reflux causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Physiologically relevant hiatal hernia as an anatomic contributor to objectively established gastroesophageal reflux disease. Require a documented hiatal hernia, with the source proposition most directly applicable to a sliding or otherwise physiologically relevant gastroesophageal-junction hernia, and a separately established diagnosis of GERD using appropriate clinical, endoscopic, or reflux-monitoring evidence. Do not infer GERD solely from the presence of a hiatal hernia. Preserve lower-esophageal-sphincter dysfunction, obesity, medications, delayed gastric emptying, dietary or behavioral contributors, prior foregut surgery, and other reflux causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require a documented hiatal hernia, with the source proposition most directly applicable to a sliding or otherwise physiologically relevant gastroesophageal-junction hernia, and a separately established diagnosis of GERD using appropriate clinical, endoscopic, or reflux-monitoring evidence. Do not infer GERD solely from the presence of a hiatal hernia. Preserve lower-esophageal-sphincter dysfunction, obesity, medications, delayed gastric emptying, dietary or behavioral contributors, prior foregut surgery, and other reflux causes.",
+        "boundarySource": "approved-me7-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of hiatal-hernia and gerd",
+        "Documentation satisfying the approved phenotype restriction: physiologically relevant/sliding hiatal hernia with separately established GERD",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require a documented hiatal hernia, with the source proposition most directly applicable to a sliding or otherwise physiologically relevant gastroesophageal-junction hernia, and a separately established diagnosis of GERD using appropriate clinical, endoscopic, or reflux-monitoring evidence. Do not infer GERD solely from the presence of a hiatal hernia. Preserve lower-esophageal-sphincter dysfunction, obesity, medications, delayed gastric emptying, dietary or behavioral contributors, prior foregut surgery, and other reflux causes."
+      ],
+      "sourceIds": [
+        "pmid-10482693"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "4b34f76ad89a7064f12eb4f2806168f88a1034672522e381e9e584ad2ad44349"
     },
     {
       "relationshipId": "rel-hiv-aids-to-uveitis",
@@ -5044,6 +5146,40 @@
       "suggestionObjectHash": "23d8ecdb0bae12907a9b9b35d58ae40e6bb1dc633f3e1933cd76b2a4e292807c"
     },
     {
+      "relationshipId": "rel-polycythemia-vera-to-pulmonary-hypertension",
+      "primaryId": "polycythemia-vera",
+      "targetId": "pulmonary-hypertension",
+      "direction": "polycythemia-vera -> pulmonary-hypertension",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me7-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Hemodynamically established pulmonary hypertension associated with myeloproliferative neoplasms, including PV-associated CTEPH/group-5 phenotypes. Require confirmed polycythemia vera and a separately established pulmonary-hypertension diagnosis using appropriate hemodynamic evaluation, with classification of chronic thromboembolic pulmonary hypertension versus group-5 or other PH mechanisms. Do not infer pulmonary hypertension from polycythemia vera, dyspnea, hypoxemia, or an isolated echocardiographic estimate alone. Treat the registry as population-level complication evidence rather than automatic individual causation. Preserve left-heart disease, chronic lung disease or hypoxia, sleep-disordered breathing, unrelated thromboembolic disease, medications, and other recognized pulmonary-hypertension causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Hemodynamically established pulmonary hypertension associated with myeloproliferative neoplasms, including PV-associated CTEPH/group-5 phenotypes. Require confirmed polycythemia vera and a separately established pulmonary-hypertension diagnosis using appropriate hemodynamic evaluation, with classification of chronic thromboembolic pulmonary hypertension versus group-5 or other PH mechanisms. Do not infer pulmonary hypertension from polycythemia vera, dyspnea, hypoxemia, or an isolated echocardiographic estimate alone. Treat the registry as population-level complication evidence rather than automatic individual causation. Preserve left-heart disease, chronic lung disease or hypoxia, sleep-disordered breathing, unrelated thromboembolic disease, medications, and other recognized pulmonary-hypertension causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require confirmed polycythemia vera and a separately established pulmonary-hypertension diagnosis using appropriate hemodynamic evaluation, with classification of chronic thromboembolic pulmonary hypertension versus group-5 or other PH mechanisms. Do not infer pulmonary hypertension from polycythemia vera, dyspnea, hypoxemia, or an isolated echocardiographic estimate alone. Treat the registry as population-level complication evidence rather than automatic individual causation. Preserve left-heart disease, chronic lung disease or hypoxia, sleep-disordered breathing, unrelated thromboembolic disease, medications, and other recognized pulmonary-hypertension causes.",
+        "boundarySource": "approved-me7-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of polycythemia-vera and pulmonary-hypertension",
+        "Documentation satisfying the approved phenotype restriction: hemodynamically confirmed MPN-associated precapillary PH, including CTEPH or group-5 PH",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require confirmed polycythemia vera and a separately established pulmonary-hypertension diagnosis using appropriate hemodynamic evaluation, with classification of chronic thromboembolic pulmonary hypertension versus group-5 or other PH mechanisms. Do not infer pulmonary hypertension from polycythemia vera, dyspnea, hypoxemia, or an isolated echocardiographic estimate alone. Treat the registry as population-level complication evidence rather than automatic individual causation. Preserve left-heart disease, chronic lung disease or hypoxia, sleep-disordered breathing, unrelated thromboembolic disease, medications, and other recognized pulmonary-hypertension causes."
+      ],
+      "sourceIds": [
+        "pmid-37311222"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "0ed38d55e231138b197b4cc4e3bf1ea26c278bf1b30f4a69cf88c5c07f53d3b8"
+    },
+    {
       "relationshipId": "rel-primary-myelofibrosis-to-leukemia",
       "primaryId": "primary-myelofibrosis",
       "targetId": "leukemia",
@@ -5672,6 +5808,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "8a2222d6c35bad719241b944fef29db4de898adbef400731cf587dc69e6cd11c"
+    },
+    {
+      "relationshipId": "rel-q-fever-to-hepatitis",
+      "primaryId": "q-fever",
+      "targetId": "hepatitis",
+      "direction": "q-fever -> hepatitis",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me7-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Acute Q-fever-associated hepatitis or hepatic injury as a recognized acute manifestation/complication. Require clinically established acute Q fever using appropriate Coxiella burnetii diagnostic evidence and separately established acute hepatitis or hepatic injury with compatible timing. Do not generalize this edge to chronic hepatitis, cirrhosis, or an isolated nonspecific liver-enzyme elevation without a compatible acute Q-fever syndrome. Preserve viral hepatitis, alcohol-associated liver disease, metabolic liver disease, autoimmune hepatitis, drug- or toxin-induced injury, ischemic injury, biliary disease, and other hepatic causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Acute Q-fever-associated hepatitis or hepatic injury as a recognized acute manifestation/complication. Require clinically established acute Q fever using appropriate Coxiella burnetii diagnostic evidence and separately established acute hepatitis or hepatic injury with compatible timing. Do not generalize this edge to chronic hepatitis, cirrhosis, or an isolated nonspecific liver-enzyme elevation without a compatible acute Q-fever syndrome. Preserve viral hepatitis, alcohol-associated liver disease, metabolic liver disease, autoimmune hepatitis, drug- or toxin-induced injury, ischemic injury, biliary disease, and other hepatic causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require clinically established acute Q fever using appropriate Coxiella burnetii diagnostic evidence and separately established acute hepatitis or hepatic injury with compatible timing. Do not generalize this edge to chronic hepatitis, cirrhosis, or an isolated nonspecific liver-enzyme elevation without a compatible acute Q-fever syndrome. Preserve viral hepatitis, alcohol-associated liver disease, metabolic liver disease, autoimmune hepatitis, drug- or toxin-induced injury, ischemic injury, biliary disease, and other hepatic causes.",
+        "boundarySource": "approved-me7-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of q-fever and hepatitis",
+        "Documentation satisfying the approved phenotype restriction: acute Q-fever-associated hepatitis/hepatic injury",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require clinically established acute Q fever using appropriate Coxiella burnetii diagnostic evidence and separately established acute hepatitis or hepatic injury with compatible timing. Do not generalize this edge to chronic hepatitis, cirrhosis, or an isolated nonspecific liver-enzyme elevation without a compatible acute Q-fever syndrome. Preserve viral hepatitis, alcohol-associated liver disease, metabolic liver disease, autoimmune hepatitis, drug- or toxin-induced injury, ischemic injury, biliary disease, and other hepatic causes."
+      ],
+      "sourceIds": [
+        "pmid-29543806"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "ac47d44017552352dd6295af9eece7269cdc159ccab40509098510253a29b053"
     },
     {
       "relationshipId": "rel-rectal-prolapse-to-fecal-incontinence",
@@ -6822,6 +6992,6 @@
       "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
     }
   ],
-  "lastUpdatedBy": "ME-6 Qualified-Human Citation Verification",
-  "currentState": "ME6-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-7",
+  "currentState": "ME7-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }
