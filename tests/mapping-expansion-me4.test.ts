@@ -137,7 +137,7 @@ describe("Mapping Expansion Batch ME-4", () => {
     }
   });
 
-  it("preserves ME-4 rows while current state advances to fully verified ME-5", () => {
+  it("preserves ME-4 rows while current state advances to ME-6 pending verification", () => {
     const files = fs.readdirSync(kbDir).filter((name) => name.endsWith(".json"));
     const mappings = files.map((name) =>
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
@@ -145,22 +145,22 @@ describe("Mapping Expansion Batch ME-4", () => {
     expect(files).toHaveLength(311);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(172);
-    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(198);
+    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(203);
     expect(
       mappings.filter((mapping) => mapping.draft === false && (mapping.suggestions ?? []).length === 1),
-    ).toHaveLength(96);
+    ).toHaveLength(91);
     expect(
       mappings.filter((mapping) => mapping.draft === false && (mapping.suggestions ?? []).length >= 2),
-    ).toHaveLength(43);
+    ).toHaveLength(48);
     const refs = mappings.flatMap((mapping) =>
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-    expect(refs).toHaveLength(206);
+    expect(refs).toHaveLength(211);
     expect(refs.filter((ref) => ref.verified === true)).toHaveLength(206);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
   });
 
-  it("passes citation and master-registry gates after ME-5 verification", () => {
+  it("passes citation and master-registry gates with ME-6 pending", () => {
     const citationOutput = execFileSync("npm", ["run", "citations:audit"], {
       cwd: root,
       encoding: "utf8",
@@ -174,11 +174,11 @@ describe("Mapping Expansion Batch ME-4", () => {
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 206,
+      references: 211,
       verified: 206,
       verifiedProvenance: 212,
-      unverified: 0,
-      reviewFindingCount: 0,
+      unverified: 5,
+      reviewFindingCount: 5,
       hardFindingCount: 0,
     });
 
@@ -193,8 +193,8 @@ describe("Mapping Expansion Batch ME-4", () => {
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 198,
-      pendingVerificationSourceEntities: 0,
+      relationships: 203,
+      pendingVerificationSourceEntities: 5,
     });
   });
 });

@@ -139,7 +139,7 @@ describe("Mapping Expansion Batch ME-5 Qualified-Human Citation Verification", (
     }
   });
 
-  it("pins the final 206/206 citation state with zero review or hard debt", () => {
+  it("preserves the five verified ME-5 sources while ME-6 citations remain pending", () => {
     const output = execFileSync("npm", ["run", "citations:audit"], {
       cwd: root,
       encoding: "utf8",
@@ -154,17 +154,17 @@ describe("Mapping Expansion Batch ME-5 Qualified-Human Citation Verification", (
       hardFindingCount: number;
     };
     expect(result).toMatchObject({
-      references: 206,
+      references: 211,
       verified: 206,
       retiredVerified: 6,
       verifiedProvenance: 212,
-      unverified: 0,
-      reviewFindingCount: 0,
+      unverified: 5,
+      reviewFindingCount: 5,
       hardFindingCount: 0,
     });
   });
 
-  it("passes final master-registry parity with no pending source entities", () => {
+  it("passes master-registry parity with only the five ME-6 sources pending", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], {
       cwd: root,
       encoding: "utf8",
@@ -181,13 +181,13 @@ describe("Mapping Expansion Batch ME-5 Qualified-Human Citation Verification", (
     };
     expect(result).toMatchObject({
       status: "PASS",
-      relationships: 198,
+      relationships: 203,
       verifiedLiveSourceUses: 206,
-      pendingVerificationLiveSourceUses: 0,
+      pendingVerificationLiveSourceUses: 5,
       activeSourceEntities: 183,
-      pendingVerificationSourceEntities: 0,
+      pendingVerificationSourceEntities: 5,
       activeClinicalSourceEntities: 182,
-      pendingClinicalSourceEntities: 0,
+      pendingClinicalSourceEntities: 5,
     });
   });
 });

@@ -43,6 +43,30 @@
           "sourceLocator": "PMID 27009402; abstract Results: standard chemotherapy OR 1.8, non-conventional therapy OR 3.1, infradiaphragmatic radiotherapy OR 1.6, each compared with orchiectomy alone"
         }
       ]
+    },
+    {
+      "conditionId": "erectile-dysfunction",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented testicular cancer, actual exposure to a treatment regimen supported by the source (including BEP chemotherapy, abdominal radiotherapy, post-chemotherapy retroperitoneal surgery, or multiple treatment lines as applicable), and separately established erectile dysfunction with compatible post-treatment chronology. Do not infer erectile dysfunction from the cancer diagnosis or unilateral orchiectomy alone. Preserve pre-treatment erectile symptoms, hypogonadism, vascular and metabolic disease, medications, neurologic disease, psychological or relationship factors, and other erectile-dysfunction causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of testicular-cancer and erectile-dysfunction",
+        "Documentation satisfying the approved phenotype restriction: treatment-related erectile dysfunction",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented testicular cancer, actual exposure to a treatment regimen supported by the source (including BEP chemotherapy, abdominal radiotherapy, post-chemotherapy retroperitoneal surgery, or multiple treatment lines as applicable), and separately established erectile dysfunction with compatible post-treatment chronology. Do not infer erectile dysfunction from the cancer diagnosis or unilateral orchiectomy alone. Preserve pre-treatment erectile symptoms, hypogonadism, vascular and metabolic disease, medications, neurologic disease, psychological or relationship factors, and other erectile-dysfunction causes."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Bandak M, Lauritsen J, Johansen C, et al. Sexual Function in a Nationwide Cohort of 2,260 Survivors of Testicular Cancer after 17 Years of Followup. J Urol. 2018;200(4):794-800. PMID 29730199. doi:10.1016/j.juro.2018.04.077.",
+          "note": "Mapping Expansion Batch ME-6 evidence for the bounded testicular-cancer to erectile-dysfunction proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29730199/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 29730199; approved ME-6 proposition; guard: Require documented testicular cancer, actual exposure to a treatment regimen supported by the source (including BEP chemotherapy, abdominal radiotherapy, post-chemotherapy retroperitoneal surgery, or multiple treatment lines as applicable), and separately established erectile dysfunction with compatible post-treatment chronology. Do not infer erectile dysfunction from the cancer diagnosis or unilateral orchiectomy alone. Preserve pre-treatment erectile symptoms, hypogonadism, vascular and metabolic disease, medications, neurologic disease, psychological or relationship factors, and other erectile-dysfunction causes."
+        }
+      ]
     }
   ]
 }

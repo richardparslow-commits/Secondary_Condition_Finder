@@ -41,6 +41,30 @@
           "sourceLocator": "PMID 32108989; abstract statement that hepatic fibrosis is a key step in chronic liver diseases leading to cirrhosis"
         }
       ]
+    },
+    {
+      "conditionId": "anemia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Restrict this source proposition to documented advanced chronic liver disease with clinically established portal-hypertension or comparable advanced-disease features and require separately established anemia. Treat the source as population-level prevalence and risk-factor evidence, not proof that chronic liver disease caused anemia in an individual. Preserve gastrointestinal bleeding, iron or other nutritional deficiency, hemolysis, hypersplenism, chronic kidney disease, marrow disease, malignancy, medications or treatment effects, and other anemia etiologies. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of chronic-liver-disease and anemia",
+        "Documentation satisfying the approved phenotype restriction: advanced chronic liver disease with portal hypertension",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Restrict this source proposition to documented advanced chronic liver disease with clinically established portal-hypertension or comparable advanced-disease features and require separately established anemia. Treat the source as population-level prevalence and risk-factor evidence, not proof that chronic liver disease caused anemia in an individual. Preserve gastrointestinal bleeding, iron or other nutritional deficiency, hemolysis, hypersplenism, chronic kidney disease, marrow disease, malignancy, medications or treatment effects, and other anemia etiologies."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Scheiner B, Semmler G, Maurer F, et al. Prevalence of and risk factors for anaemia in patients with advanced chronic liver disease. Liver Int. 2020;40(1):194-204. PMID 31444993. doi:10.1111/liv.14229.",
+          "note": "Mapping Expansion Batch ME-6 evidence for the bounded chronic-liver-disease to anemia proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31444993/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 31444993; approved ME-6 proposition; guard: Restrict this source proposition to documented advanced chronic liver disease with clinically established portal-hypertension or comparable advanced-disease features and require separately established anemia. Treat the source as population-level prevalence and risk-factor evidence, not proof that chronic liver disease caused anemia in an individual. Preserve gastrointestinal bleeding, iron or other nutritional deficiency, hemolysis, hypersplenism, chronic kidney disease, marrow disease, malignancy, medications or treatment effects, and other anemia etiologies."
+        }
+      ]
     }
   ]
 }

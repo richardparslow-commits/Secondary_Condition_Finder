@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "cae78395cb18b2fe7b581950d6024bba9a2b0e29",
+  "baselineCommit": "3e47fae71adf4ab80e7804076c36e2c839790e17",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 198,
-    "explicitPublicationGuards": 124,
+    "relationships": 203,
+    "explicitPublicationGuards": 129,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -1378,6 +1378,40 @@
       "suggestionObjectHash": "317a4e3bea070ad55d9415f6da218f1d6021cc28a64384073807db1a6b05988f"
     },
     {
+      "relationshipId": "rel-chronic-liver-disease-to-anemia",
+      "primaryId": "chronic-liver-disease",
+      "targetId": "anemia",
+      "direction": "chronic-liver-disease -> anemia",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me6-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Restrict this source proposition to documented advanced chronic liver disease with clinically established portal-hypertension or comparable advanced-disease features and require separately established anemia. Treat the source as population-level prevalence and risk-factor evidence, not proof that chronic liver disease caused anemia in an individual. Preserve gastrointestinal bleeding, iron or other nutritional deficiency, hemolysis, hypersplenism, chronic kidney disease, marrow disease, malignancy, medications or treatment effects, and other anemia etiologies. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Restrict this source proposition to documented advanced chronic liver disease with clinically established portal-hypertension or comparable advanced-disease features and require separately established anemia. Treat the source as population-level prevalence and risk-factor evidence, not proof that chronic liver disease caused anemia in an individual. Preserve gastrointestinal bleeding, iron or other nutritional deficiency, hemolysis, hypersplenism, chronic kidney disease, marrow disease, malignancy, medications or treatment effects, and other anemia etiologies. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Restrict this source proposition to documented advanced chronic liver disease with clinically established portal-hypertension or comparable advanced-disease features and require separately established anemia. Treat the source as population-level prevalence and risk-factor evidence, not proof that chronic liver disease caused anemia in an individual. Preserve gastrointestinal bleeding, iron or other nutritional deficiency, hemolysis, hypersplenism, chronic kidney disease, marrow disease, malignancy, medications or treatment effects, and other anemia etiologies.",
+        "boundarySource": "approved-me6-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of chronic-liver-disease and anemia",
+        "Documentation satisfying the approved phenotype restriction: advanced chronic liver disease with portal hypertension",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Restrict this source proposition to documented advanced chronic liver disease with clinically established portal-hypertension or comparable advanced-disease features and require separately established anemia. Treat the source as population-level prevalence and risk-factor evidence, not proof that chronic liver disease caused anemia in an individual. Preserve gastrointestinal bleeding, iron or other nutritional deficiency, hemolysis, hypersplenism, chronic kidney disease, marrow disease, malignancy, medications or treatment effects, and other anemia etiologies."
+      ],
+      "sourceIds": [
+        "pmid-31444993"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "fb16ed11ce137f7731515919e77c1f340785728993786b7d7e6e91018d14f8c6"
+    },
+    {
       "relationshipId": "rel-chronic-pyelonephritis-to-chronic-kidney-disease",
       "primaryId": "chronic-pyelonephritis",
       "targetId": "chronic-kidney-disease",
@@ -1409,6 +1443,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": true,
       "suggestionObjectHash": "ec1539e246cb1007ef5810c725f7f59eb31e47e7047d63469e63bb584ca84bad"
+    },
+    {
+      "relationshipId": "rel-chronic-pyelonephritis-to-hypertension",
+      "primaryId": "chronic-pyelonephritis",
+      "targetId": "hypertension",
+      "direction": "chronic-pyelonephritis -> hypertension",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me6-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Restrict this proposition to chronic pyelonephritis with objectively documented reflux-nephropathy or pyelonephritic renal scarring and require separately established hypertension. Do not generalize reflux-nephropathy evidence to a remote history of acute pyelonephritis or recurrent urinary infection without chronic renal damage. Treat the cohort as phenotype-specific risk evidence, not automatic individual causation. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Restrict this proposition to chronic pyelonephritis with objectively documented reflux-nephropathy or pyelonephritic renal scarring and require separately established hypertension. Do not generalize reflux-nephropathy evidence to a remote history of acute pyelonephritis or recurrent urinary infection without chronic renal damage. Treat the cohort as phenotype-specific risk evidence, not automatic individual causation. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Restrict this proposition to chronic pyelonephritis with objectively documented reflux-nephropathy or pyelonephritic renal scarring and require separately established hypertension. Do not generalize reflux-nephropathy evidence to a remote history of acute pyelonephritis or recurrent urinary infection without chronic renal damage. Treat the cohort as phenotype-specific risk evidence, not automatic individual causation. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors.",
+        "boundarySource": "approved-me6-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of chronic-pyelonephritis and hypertension",
+        "Documentation satisfying the approved phenotype restriction: reflux-nephropathy / pyelonephritic renal-scarring phenotype",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Restrict this proposition to chronic pyelonephritis with objectively documented reflux-nephropathy or pyelonephritic renal scarring and require separately established hypertension. Do not generalize reflux-nephropathy evidence to a remote history of acute pyelonephritis or recurrent urinary infection without chronic renal damage. Treat the cohort as phenotype-specific risk evidence, not automatic individual causation. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors."
+      ],
+      "sourceIds": [
+        "pmid-12411757"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "e9d937fbb4bc2d95952a06a87c8ade440ce859dea150eba585ee4455e6a66eb7"
     },
     {
       "relationshipId": "rel-chronic-rhinitis-to-sleep-apnea",
@@ -2988,6 +3056,40 @@
       "suggestionObjectHash": "68f3b1f1ed7c9928ef9d9b79d5a5215980ae6376154418233447013f264cf65c"
     },
     {
+      "relationshipId": "rel-hyperaldosteronism-to-cardiac-arrhythmia",
+      "primaryId": "hyperaldosteronism",
+      "targetId": "cardiac-arrhythmia",
+      "direction": "hyperaldosteronism -> cardiac-arrhythmia",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me6-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial fibrillation. Require a confirmed primary-aldosteronism phenotype with autonomous aldosterone excess and suppressed renin; do not generalize this source to unspecified hyperaldosteronism. Treat the meta-analysis as population-level excess-risk evidence, not proof that primary aldosteronism caused atrial fibrillation in an individual. Preserve age, hypertension duration and severity, structural or valvular heart disease, thyroid disease, sleep-disordered breathing, alcohol exposure, and other established atrial-fibrillation contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial fibrillation. Require a confirmed primary-aldosteronism phenotype with autonomous aldosterone excess and suppressed renin; do not generalize this source to unspecified hyperaldosteronism. Treat the meta-analysis as population-level excess-risk evidence, not proof that primary aldosteronism caused atrial fibrillation in an individual. Preserve age, hypertension duration and severity, structural or valvular heart disease, thyroid disease, sleep-disordered breathing, alcohol exposure, and other established atrial-fibrillation contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Use the broad cardiac-arrhythmia target only for separately documented atrial fibrillation. Require a confirmed primary-aldosteronism phenotype with autonomous aldosterone excess and suppressed renin; do not generalize this source to unspecified hyperaldosteronism. Treat the meta-analysis as population-level excess-risk evidence, not proof that primary aldosteronism caused atrial fibrillation in an individual. Preserve age, hypertension duration and severity, structural or valvular heart disease, thyroid disease, sleep-disordered breathing, alcohol exposure, and other established atrial-fibrillation contributors.",
+        "boundarySource": "approved-me6-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of hyperaldosteronism and cardiac-arrhythmia",
+        "Documentation satisfying the approved phenotype restriction: atrial fibrillation only",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Use the broad cardiac-arrhythmia target only for separately documented atrial fibrillation. Require a confirmed primary-aldosteronism phenotype with autonomous aldosterone excess and suppressed renin; do not generalize this source to unspecified hyperaldosteronism. Treat the meta-analysis as population-level excess-risk evidence, not proof that primary aldosteronism caused atrial fibrillation in an individual. Preserve age, hypertension duration and severity, structural or valvular heart disease, thyroid disease, sleep-disordered breathing, alcohol exposure, and other established atrial-fibrillation contributors."
+      ],
+      "sourceIds": [
+        "pmid-29129575"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "6fc47ef064742aeb2398a09df273337c65ad5354e7eeba3552c447756bc02913"
+    },
+    {
       "relationshipId": "rel-hyperparathyroidism-to-kidney-stones",
       "primaryId": "hyperparathyroidism",
       "targetId": "kidney-stones",
@@ -4474,6 +4576,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": true,
       "suggestionObjectHash": "990f482c71e583ec9d3c90be0946593a301cee66f4e20b98e3d95fa4309f3127"
+    },
+    {
+      "relationshipId": "rel-ovarian-cancer-to-lymphedema",
+      "primaryId": "ovarian-cancer",
+      "targetId": "lymphedema",
+      "direction": "ovarian-cancer -> lymphedema",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me6-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling.",
+        "boundarySource": "approved-me6-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of ovarian-cancer and lymphedema",
+        "Documentation satisfying the approved phenotype restriction: lower-extremity lymphedema after lymph-node dissection",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling."
+      ],
+      "sourceIds": [
+        "pmid-27400319"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "5490d5361cd7353df7120c2c5733c76f476fc6013ebea6b77645f7a65d02b4c4"
     },
     {
       "relationshipId": "rel-pancreatitis-to-cardiac-inflammatory-disease",
@@ -6282,6 +6418,40 @@
       "suggestionObjectHash": "0e901b1a1d6f78bf5c58f8c462289fc0ecd2f3ca3a486a73b9ef87c4d3d958b7"
     },
     {
+      "relationshipId": "rel-testicular-cancer-to-erectile-dysfunction",
+      "primaryId": "testicular-cancer",
+      "targetId": "erectile-dysfunction",
+      "direction": "testicular-cancer -> erectile-dysfunction",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me6-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented testicular cancer, actual exposure to a treatment regimen supported by the source (including BEP chemotherapy, abdominal radiotherapy, post-chemotherapy retroperitoneal surgery, or multiple treatment lines as applicable), and separately established erectile dysfunction with compatible post-treatment chronology. Do not infer erectile dysfunction from the cancer diagnosis or unilateral orchiectomy alone. Preserve pre-treatment erectile symptoms, hypogonadism, vascular and metabolic disease, medications, neurologic disease, psychological or relationship factors, and other erectile-dysfunction causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented testicular cancer, actual exposure to a treatment regimen supported by the source (including BEP chemotherapy, abdominal radiotherapy, post-chemotherapy retroperitoneal surgery, or multiple treatment lines as applicable), and separately established erectile dysfunction with compatible post-treatment chronology. Do not infer erectile dysfunction from the cancer diagnosis or unilateral orchiectomy alone. Preserve pre-treatment erectile symptoms, hypogonadism, vascular and metabolic disease, medications, neurologic disease, psychological or relationship factors, and other erectile-dysfunction causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented testicular cancer, actual exposure to a treatment regimen supported by the source (including BEP chemotherapy, abdominal radiotherapy, post-chemotherapy retroperitoneal surgery, or multiple treatment lines as applicable), and separately established erectile dysfunction with compatible post-treatment chronology. Do not infer erectile dysfunction from the cancer diagnosis or unilateral orchiectomy alone. Preserve pre-treatment erectile symptoms, hypogonadism, vascular and metabolic disease, medications, neurologic disease, psychological or relationship factors, and other erectile-dysfunction causes.",
+        "boundarySource": "approved-me6-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of testicular-cancer and erectile-dysfunction",
+        "Documentation satisfying the approved phenotype restriction: treatment-related erectile dysfunction",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented testicular cancer, actual exposure to a treatment regimen supported by the source (including BEP chemotherapy, abdominal radiotherapy, post-chemotherapy retroperitoneal surgery, or multiple treatment lines as applicable), and separately established erectile dysfunction with compatible post-treatment chronology. Do not infer erectile dysfunction from the cancer diagnosis or unilateral orchiectomy alone. Preserve pre-treatment erectile symptoms, hypogonadism, vascular and metabolic disease, medications, neurologic disease, psychological or relationship factors, and other erectile-dysfunction causes."
+      ],
+      "sourceIds": [
+        "pmid-29730199"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "6cb46d91aa57ef2a264200842a87fa84822a895c7a84b8422dd72358cd6362fd"
+    },
+    {
       "relationshipId": "rel-thromboangiitis-obliterans-to-amputation-or-loss-of-use",
       "primaryId": "thromboangiitis-obliterans",
       "targetId": "amputation-or-loss-of-use",
@@ -6652,6 +6822,6 @@
       "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
     }
   ],
-  "lastUpdatedBy": "ME-5 Qualified-Human Citation Verification",
-  "currentState": "ME5-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-6",
+  "currentState": "ME6-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

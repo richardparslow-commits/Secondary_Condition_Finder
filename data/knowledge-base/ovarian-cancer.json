@@ -43,6 +43,30 @@
           "sourceLocator": "PMID 24582486; abstract Findings: grade 2 or worse neuropathy 24/399 (6%) weekly versus 68/400 (17%) every three weeks"
         }
       ]
+    },
+    {
+      "conditionId": "lymphedema",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of ovarian-cancer and lymphedema",
+        "Documentation satisfying the approved phenotype restriction: lower-extremity lymphedema after lymph-node dissection",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Ki EY, Park JS, Lee KH, Hur SY. Incidence and Risk Factors of Lower Extremity Lymphedema After Gynecologic Surgery in Ovarian Cancer. Int J Gynecol Cancer. 2016;26(7):1327-1332. PMID 27400319. doi:10.1097/IGC.0000000000000757.",
+          "note": "Mapping Expansion Batch ME-6 evidence for the bounded ovarian-cancer to lymphedema proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27400319/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 27400319; approved ME-6 proposition; guard: Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling."
+        }
+      ]
     }
   ]
 }

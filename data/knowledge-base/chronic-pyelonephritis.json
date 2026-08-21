@@ -41,6 +41,30 @@
           "sourceLocator": "PMID 11110586; abstract; 255 radiologically proven cases with median follow-up about 95 months"
         }
       ]
+    },
+    {
+      "conditionId": "hypertension",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Restrict this proposition to chronic pyelonephritis with objectively documented reflux-nephropathy or pyelonephritic renal scarring and require separately established hypertension. Do not generalize reflux-nephropathy evidence to a remote history of acute pyelonephritis or recurrent urinary infection without chronic renal damage. Treat the cohort as phenotype-specific risk evidence, not automatic individual causation. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of chronic-pyelonephritis and hypertension",
+        "Documentation satisfying the approved phenotype restriction: reflux-nephropathy / pyelonephritic renal-scarring phenotype",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Restrict this proposition to chronic pyelonephritis with objectively documented reflux-nephropathy or pyelonephritic renal scarring and require separately established hypertension. Do not generalize reflux-nephropathy evidence to a remote history of acute pyelonephritis or recurrent urinary infection without chronic renal damage. Treat the cohort as phenotype-specific risk evidence, not automatic individual causation. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Köhler JR, Tencer J, Thysell H, et al. Long-term effects of reflux nephropathy on blood pressure and renal function in adults. Nephron Clin Pract. 2003;93(1):C35-C46. PMID 12411757. doi:10.1159/000066639.",
+          "note": "Mapping Expansion Batch ME-6 evidence for the bounded chronic-pyelonephritis to hypertension proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12411757/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 12411757; approved ME-6 proposition; guard: Restrict this proposition to chronic pyelonephritis with objectively documented reflux-nephropathy or pyelonephritic renal scarring and require separately established hypertension. Do not generalize reflux-nephropathy evidence to a remote history of acute pyelonephritis or recurrent urinary infection without chronic renal damage. Treat the cohort as phenotype-specific risk evidence, not automatic individual causation. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors."
+        }
+      ]
     }
   ]
 }
