@@ -73,22 +73,22 @@ const sources = JSON.parse(
 ) as SourceRegistry;
 
 describe("Master Relationship & Evidence Registry 2026", () => {
-  it("pins the authoritative ME-8 pending-verification registry counts", () => {
+  it("pins the authoritative fully verified ME-8 registry counts", () => {
     expect(relationships.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(relationships.baselineCommit).toBe("b6f3cb405ed0ba8aae54349f9c85ee5ed0ee0f2e");
+    expect(relationships.baselineCommit).toBe("92ca42e1484ecbec939cacf21301b7afc1ffd577");
     expect(relationships.counts).toEqual({
       relationships: 213,
       explicitPublicationGuards: 139,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(sources.baselineCommit).toBe("b6f3cb405ed0ba8aae54349f9c85ee5ed0ee0f2e");
+    expect(sources.baselineCommit).toBe("92ca42e1484ecbec939cacf21301b7afc1ffd577");
     expect(sources.counts).toEqual({
       liveSourceReferenceUses: 221,
-      activeSourceEntities: 193,
-      pendingVerificationSourceEntities: 5,
-      activeClinicalSourceEntities: 192,
-      pendingClinicalSourceEntities: 5,
+      activeSourceEntities: 198,
+      pendingVerificationSourceEntities: 0,
+      activeClinicalSourceEntities: 197,
+      pendingClinicalSourceEntities: 0,
       activeLegalAuthorityEntities: 1,
       retiredOnlySourceEntities: 1,
       supersededUnverifiedSourceEntities: 7,
@@ -250,7 +250,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
   });
 
   it("keeps source lineage states distinct while retaining all active ME-3 sources", () => {
-    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(193);
+    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(198);
     expect(sources.sources.filter((source) => source.status === "superseded-unverified")).toHaveLength(7);
     expect(sources.sources.filter((source) => source.status === "bibliographic-correction-only")).toHaveLength(1);
     expect(sources.sources.filter((source) => source.status === "retired-only")).toHaveLength(1);
@@ -258,17 +258,18 @@ describe("Master Relationship & Evidence Registry 2026", () => {
   });
 
 
-  it("contains exactly five pending ME-8 clinical sources", () => {
+  it("contains exactly five qualified-human-verified ME-8 clinical sources", () => {
     const ids = new Set(["pmid-30340592", "pmid-33226721", "pmid-26404446", "pmid-18947294", "pmid-25134671"]);
     const selected = sources.sources.filter((source) => ids.has(source.sourceId));
     expect(selected).toHaveLength(5);
     for (const source of selected) {
-      expect(source.status).toBe("pending-verification");
+      expect(source.status).toBe("active");
       expect(source.kind).toBe("clinical-evidence");
-      expect(source.verified).toBe(false);
+      expect(source.verified).toBe(true);
       expect(source.liveUsageCount).toBe(1);
       expect(source.verificationState).toMatchObject({
-        qualifiedHumanCitationReviewRequired: true,
+        qualifiedHumanCitationReviewRequired: false,
+        qualifiedHumanCitationReviewDecision: "approve-as-implemented",
         automaticPromotionAuthorized: false,
         mappingApprovalDoesNotEqualCitationVerification: true,
       });
@@ -285,7 +286,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
   });
 
-  it("passes the ME-8 pending-verification master-registry parity audit", () => {
+  it("passes the final qualified-human-verified ME-8 master-registry parity audit", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], {
       cwd: root,
       encoding: "utf8",
@@ -295,10 +296,10 @@ describe("Master Relationship & Evidence Registry 2026", () => {
       status: "PASS",
       relationships: 213,
       liveSourceReferenceUses: 221,
-      verifiedLiveSourceUses: 216,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 193,
-      pendingVerificationSourceEntities: 5,
+      verifiedLiveSourceUses: 221,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 198,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });

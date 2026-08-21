@@ -44,7 +44,7 @@
           "note": "Mapping Expansion Batch ME-8 evidence for the bounded malaria to anemia proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30340592/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 30340592; approved ME-8 proposition; guard: Require established malaria and a separately documented anemia phenotype with compatible timing. Do not infer chronic anemia from remote resolved malaria. Preserve nutritional deficiency, blood loss, hemoglobinopathy, chronic kidney disease, marrow disease, hemolysis from other causes, and other competing etiologies."
         }

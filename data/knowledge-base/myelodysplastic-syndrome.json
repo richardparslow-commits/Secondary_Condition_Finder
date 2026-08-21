@@ -44,7 +44,7 @@
           "note": "Mapping Expansion Batch ME-8 evidence for the bounded myelodysplastic-syndrome to anemia proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26404446/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 26404446; approved ME-8 proposition; guard: Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders."
         }

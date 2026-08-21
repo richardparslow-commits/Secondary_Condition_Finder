@@ -2,15 +2,15 @@
 
 ## Status
 
-The authoritative registry is at the Mapping Expansion Batch ME-8 pre-qualified-human-citation-verification state, derived from the closed ME-7 citation-verification commit `b6f3cb405ed0ba8aae54349f9c85ee5ed0ee0f2e`.
+The authoritative registry is at the fully qualified-human-verified Mapping Expansion Batch ME-8 state, derived from implementation commit `92ca42e1484ecbec939cacf21301b7afc1ffd577`.
 
 ## Current state
 
 - 213 relationships.
 - 139 explicit publication guards / 74 legacy rationale boundaries.
-- 221 live relationship-source uses: 216 verified / 5 pending verification.
-- 193 active source entities: 192 clinical + 1 legal authority.
-- 5 pending-verification clinical source entities.
+- 221 live relationship-source uses: 221 verified / 0 pending verification.
+- 198 active source entities: 197 clinical + 1 legal authority.
+- 0 pending-verification source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
 - 207 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
@@ -53,18 +53,26 @@ PMID 35289694 retains the same source identity and DOI while its citation is cor
 
 The other two ME-7 relationships remain as implemented. All five ME-7 KB references are `verified:true`, and their normalized master sources are `active`. Mapping approval and PubMed identity matching remain insufficient to authorize citation promotion without this separate qualified-human review.
 
-No relationship count, rank, prevalence, taxonomy identity, publication state, or pathwayIntelligence state changes in this verification gate. Verified population-level or phenotype-specific evidence still does not, by itself, establish an individual VA medical nexus.## ME-8 implementation pending citation verification
+No relationship count, rank, prevalence, taxonomy identity, publication state, or pathwayIntelligence state changes in this verification gate. Verified population-level or phenotype-specific evidence still does not, by itself, establish an individual VA medical nexus.## ME-8 qualified-human citation verification
 
-The approved ME-8 implementation adds exactly five rank-2 relationships while preserving the existing rank-1 mappings and all publication states:
+Disposition:
+- 5 approve-as-implemented.
+- 0 narrowing rows.
+- 0 bibliographic corrections.
+- 0 source replacements.
+- 0 rejects/withdrawals.
 
+The five independently reviewed sources are:
 - `malaria -> anemia` / PMID 30340592.
 - `hiv-aids -> peripheral-neuropathy` / PMID 33226721.
 - `myelodysplastic-syndrome -> anemia` / PMID 26404446.
 - `primary-myelofibrosis -> anemia` / PMID 18947294.
 - `heart-transplant-residuals -> chronic-kidney-disease` / PMID 25134671.
 
-Each row is bounded by a separately established downstream diagnosis, compatible chronology, and explicit competing-cause review. The heart-transplant row is treatment/post-transplant mediated and does not infer CKD from transplant status alone.
+All five PMID/DOI identities and citation strings are retained unchanged. The implemented propositions, phenotype restrictions, evidence gaps, and publication guards also remain unchanged because the independent review found them already sufficiently bounded to the cited evidence.
 
-All five new KB references remain `verified:false`; their normalized master sources remain `pending-verification`. Mapping approval and PubMed/DOI identity rechecking do not authorize citation promotion. No new identity, publication-state change, rank-1 change, or pathwayIntelligence change is part of ME-8 implementation.
+The heart-transplant row remains explicitly post-transplant and multifactorial: actual heart transplantation, separately established post-transplant CKD, compatible chronology, and competing-cause review remain required; transplant status alone does not establish CKD.
 
-A later separate qualified-human ME-8 citation-verification gate is required before any of these five references may become `verified:true`.
+All five ME-8 KB references are `verified:true`, and their normalized master sources are `active`. Mapping approval and bibliographic identity matching remain insufficient to authorize citation promotion without this separate qualified-human review.
+
+No relationship count, relationship semantics, rank, prevalence, taxonomy identity, publication state, publication guard, citation text, source identity, or pathwayIntelligence state changes in this verification gate. Verified evidence still does not, by itself, establish an individual VA medical nexus.

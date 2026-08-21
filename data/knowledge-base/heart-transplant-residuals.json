@@ -44,7 +44,7 @@
           "note": "Mapping Expansion Batch ME-8 evidence for the bounded heart-transplant-residuals to chronic-kidney-disease proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25134671/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 25134671; approved ME-8 proposition; guard: Require an actual heart transplant and separately established post-transplant chronic kidney disease with compatible chronology. Do not infer CKD from transplant status alone. Preserve preexisting CKD, diabetes, hypertension, perioperative acute kidney injury, cardiorenal/hemodynamic factors, rejection-related injury, and other nephrotoxic exposures."
         }

@@ -161,8 +161,8 @@ describe("Mapping Expansion Batch ME-6", () => {
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
     expect(refs).toHaveLength(221);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(216);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(221);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   });
 
   it("passes citation and master-registry gates in the final ME-7 verified state", () => {
@@ -178,11 +178,11 @@ describe("Mapping Expansion Batch ME-6", () => {
     };
     expect(citation).toMatchObject({
       references: 221,
-      verified: 216,
+      verified: 221,
       retiredVerified: 6,
-      verifiedProvenance: 222,
-      unverified: 5,
-      reviewFindingCount: 5,
+      verifiedProvenance: 227,
+      unverified: 0,
+      reviewFindingCount: 0,
       hardFindingCount: 0,
     });
 
@@ -198,10 +198,10 @@ describe("Mapping Expansion Batch ME-6", () => {
     expect(master).toMatchObject({
       status: "PASS",
       relationships: 213,
-      verifiedLiveSourceUses: 216,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 193,
-      pendingVerificationSourceEntities: 5,
+      verifiedLiveSourceUses: 221,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 198,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });
