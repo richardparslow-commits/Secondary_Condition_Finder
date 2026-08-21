@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "68eb1eb082d43d7dcd6053746b78482e93e208a9",
+  "baselineCommit": "b6f3cb405ed0ba8aae54349f9c85ee5ed0ee0f2e",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 208,
-    "explicitPublicationGuards": 134,
+    "relationships": 213,
+    "explicitPublicationGuards": 139,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -2888,6 +2888,40 @@
       "suggestionObjectHash": "94d66c5c2660c39b44d0053db842bb5c520b19d9d1709e0f9c7701bfb52bf08c"
     },
     {
+      "relationshipId": "rel-heart-transplant-residuals-to-chronic-kidney-disease",
+      "primaryId": "heart-transplant-residuals",
+      "targetId": "chronic-kidney-disease",
+      "direction": "heart-transplant-residuals -> chronic-kidney-disease",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me8-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Chronic kidney disease is a recognized post-heart-transplant complication, with calcineurin-inhibitor nephrotoxicity acting within a multifactorial post-transplant risk model. Require an actual heart transplant and separately established post-transplant chronic kidney disease with compatible chronology. Do not infer CKD from transplant status alone. Preserve preexisting CKD, diabetes, hypertension, perioperative acute kidney injury, cardiorenal/hemodynamic factors, rejection-related injury, and other nephrotoxic exposures. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Chronic kidney disease is a recognized post-heart-transplant complication, with calcineurin-inhibitor nephrotoxicity acting within a multifactorial post-transplant risk model. Require an actual heart transplant and separately established post-transplant chronic kidney disease with compatible chronology. Do not infer CKD from transplant status alone. Preserve preexisting CKD, diabetes, hypertension, perioperative acute kidney injury, cardiorenal/hemodynamic factors, rejection-related injury, and other nephrotoxic exposures. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require an actual heart transplant and separately established post-transplant chronic kidney disease with compatible chronology. Do not infer CKD from transplant status alone. Preserve preexisting CKD, diabetes, hypertension, perioperative acute kidney injury, cardiorenal/hemodynamic factors, rejection-related injury, and other nephrotoxic exposures.",
+        "boundarySource": "approved-me8-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of heart-transplant-residuals and chronic-kidney-disease",
+        "Documentation satisfying the approved phenotype restriction: separately established chronic kidney disease arising after actual heart transplantation with compatible chronology",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require an actual heart transplant and separately established post-transplant chronic kidney disease with compatible chronology. Do not infer CKD from transplant status alone. Preserve preexisting CKD, diabetes, hypertension, perioperative acute kidney injury, cardiorenal/hemodynamic factors, rejection-related injury, and other nephrotoxic exposures."
+      ],
+      "sourceIds": [
+        "pmid-25134671"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "7c6552c28a9ff2e8e9a422d3b903e276248751cac9a10cd26c14df08e74aeb60"
+    },
+    {
       "relationshipId": "rel-heart-valve-replacement-residuals-to-anemia",
       "primaryId": "heart-valve-replacement-residuals",
       "targetId": "anemia",
@@ -3121,6 +3155,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "5577cf556532f5a686e3cace429fa82d63c8cbfd61758f36bb54a00754bcd5ce"
+    },
+    {
+      "relationshipId": "rel-hiv-aids-to-peripheral-neuropathy",
+      "primaryId": "hiv-aids",
+      "targetId": "peripheral-neuropathy",
+      "direction": "hiv-aids -> peripheral-neuropathy",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me8-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. HIV/AIDS is associated with a distinct spectrum of peripheral neuropathies, especially distal predominantly sensory polyneuropathy, through HIV disease mechanisms and, in some patients, treatment-related neurotoxicity. Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and preserve diabetes, alcohol, nutritional deficiency, chemotherapy, compressive neuropathy, opportunistic infection, and other neurologic causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. HIV/AIDS is associated with a distinct spectrum of peripheral neuropathies, especially distal predominantly sensory polyneuropathy, through HIV disease mechanisms and, in some patients, treatment-related neurotoxicity. Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and preserve diabetes, alcohol, nutritional deficiency, chemotherapy, compressive neuropathy, opportunistic infection, and other neurologic causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and preserve diabetes, alcohol, nutritional deficiency, chemotherapy, compressive neuropathy, opportunistic infection, and other neurologic causes.",
+        "boundarySource": "approved-me8-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of hiv-aids and peripheral-neuropathy",
+        "Documentation satisfying the approved phenotype restriction: separately diagnosed HIV-related peripheral neuropathy, including distal predominantly sensory polyneuropathy",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and preserve diabetes, alcohol, nutritional deficiency, chemotherapy, compressive neuropathy, opportunistic infection, and other neurologic causes."
+      ],
+      "sourceIds": [
+        "pmid-33226721"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "cbcca7512e324a6616910551d831efac2d25d26ee9286fcbf35d8de5131afde9"
     },
     {
       "relationshipId": "rel-hyperaldosteronism-to-hypertension",
@@ -4142,6 +4210,40 @@
       "suggestionObjectHash": "f225269e544ad35777d4cac83ff7ca4a7386b25ff5a37cdc209faebb252c8ecc"
     },
     {
+      "relationshipId": "rel-malaria-to-anemia",
+      "primaryId": "malaria",
+      "targetId": "anemia",
+      "direction": "malaria -> anemia",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me8-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Malaria can produce clinically significant anemia through hemolysis of infected and uninfected erythrocytes and impaired erythropoiesis; the relationship is strongest when anemia is temporally linked to active or recent malaria. Require established malaria and a separately documented anemia phenotype with compatible timing. Do not infer chronic anemia from remote resolved malaria. Preserve nutritional deficiency, blood loss, hemoglobinopathy, chronic kidney disease, marrow disease, hemolysis from other causes, and other competing etiologies. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Malaria can produce clinically significant anemia through hemolysis of infected and uninfected erythrocytes and impaired erythropoiesis; the relationship is strongest when anemia is temporally linked to active or recent malaria. Require established malaria and a separately documented anemia phenotype with compatible timing. Do not infer chronic anemia from remote resolved malaria. Preserve nutritional deficiency, blood loss, hemoglobinopathy, chronic kidney disease, marrow disease, hemolysis from other causes, and other competing etiologies. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established malaria and a separately documented anemia phenotype with compatible timing. Do not infer chronic anemia from remote resolved malaria. Preserve nutritional deficiency, blood loss, hemoglobinopathy, chronic kidney disease, marrow disease, hemolysis from other causes, and other competing etiologies.",
+        "boundarySource": "approved-me8-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of malaria and anemia",
+        "Documentation satisfying the approved phenotype restriction: separately documented anemia temporally compatible with active or recent malaria",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established malaria and a separately documented anemia phenotype with compatible timing. Do not infer chronic anemia from remote resolved malaria. Preserve nutritional deficiency, blood loss, hemoglobinopathy, chronic kidney disease, marrow disease, hemolysis from other causes, and other competing etiologies."
+      ],
+      "sourceIds": [
+        "pmid-30340592"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "e5ba13d5e5251de3ea94d7b481ca1f735c8ff18a3023e5f9ab1c88cab9ec0216"
+    },
+    {
       "relationshipId": "rel-migraine-headaches-to-depressive-disorder",
       "primaryId": "migraine-headaches",
       "targetId": "depressive-disorder",
@@ -4342,6 +4444,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "b26d9564691fe72977469608e322b8d60d9632e06fa7630e60a3b4442667bb8b"
+    },
+    {
+      "relationshipId": "rel-myelodysplastic-syndrome-to-anemia",
+      "primaryId": "myelodysplastic-syndrome",
+      "targetId": "anemia",
+      "direction": "myelodysplastic-syndrome -> anemia",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me8-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Anemia is a major clinical manifestation of myelodysplastic syndromes and may arise from ineffective/dysplastic erythropoiesis. Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Anemia is a major clinical manifestation of myelodysplastic syndromes and may arise from ineffective/dysplastic erythropoiesis. Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders.",
+        "boundarySource": "approved-me8-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of myelodysplastic-syndrome and anemia",
+        "Documentation satisfying the approved phenotype restriction: separately documented anemia in established myelodysplastic syndrome",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders."
+      ],
+      "sourceIds": [
+        "pmid-26404446"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "985d1a18802a4dc925e5e0bd22644d96aed9451d18c1c82e389ec9fee8685d92"
     },
     {
       "relationshipId": "rel-myocardial-infarction-to-cardiac-arrhythmia",
@@ -5211,6 +5347,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "f756448868655a539ec960f47eca09b2dd0309bc2cc2a7b930b559d3889e5b5e"
+    },
+    {
+      "relationshipId": "rel-primary-myelofibrosis-to-anemia",
+      "primaryId": "primary-myelofibrosis",
+      "targetId": "anemia",
+      "direction": "primary-myelofibrosis -> anemia",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me8-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Anemia is a recognized clinical hallmark of primary myelofibrosis in the setting of marrow fibrosis and disordered hematopoiesis. Require established primary myelofibrosis and separately documented anemia. Preserve bleeding, nutritional deficiency, renal disease, hemolysis, treatment effects, coexisting marrow disease, and leukemic transformation as competing or contributing explanations. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Anemia is a recognized clinical hallmark of primary myelofibrosis in the setting of marrow fibrosis and disordered hematopoiesis. Require established primary myelofibrosis and separately documented anemia. Preserve bleeding, nutritional deficiency, renal disease, hemolysis, treatment effects, coexisting marrow disease, and leukemic transformation as competing or contributing explanations. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established primary myelofibrosis and separately documented anemia. Preserve bleeding, nutritional deficiency, renal disease, hemolysis, treatment effects, coexisting marrow disease, and leukemic transformation as competing or contributing explanations.",
+        "boundarySource": "approved-me8-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of primary-myelofibrosis and anemia",
+        "Documentation satisfying the approved phenotype restriction: separately documented anemia in established primary myelofibrosis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established primary myelofibrosis and separately documented anemia. Preserve bleeding, nutritional deficiency, renal disease, hemolysis, treatment effects, coexisting marrow disease, and leukemic transformation as competing or contributing explanations."
+      ],
+      "sourceIds": [
+        "pmid-18947294"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "06601a811dcc223a5c824c654485f498b4bcfa08d301aec9eb668589982a2a12"
     },
     {
       "relationshipId": "rel-prostate-cancer-to-urinary-incontinence",
@@ -6992,6 +7162,6 @@
       "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
     }
   ],
-  "lastUpdatedBy": "ME-7 Qualified-Human Citation Verification",
-  "currentState": "ME7-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-8",
+  "currentState": "ME8-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

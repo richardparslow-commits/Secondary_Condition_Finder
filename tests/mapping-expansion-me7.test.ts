@@ -86,14 +86,14 @@ describe("mapping expansion ME-7", () => {
   it("keeps the published matrix at P1 86 / P2+ 53", () => {
     const published = kb.filter((mapping) => mapping.draft === false);
     expect(published).toHaveLength(139);
-    expect(published.filter((mapping) => mapping.suggestions.length === 1)).toHaveLength(86);
-    expect(published.filter((mapping) => mapping.suggestions.length >= 2)).toHaveLength(53);
+    expect(published.filter((mapping) => mapping.suggestions.length === 1)).toHaveLength(81);
+    expect(published.filter((mapping) => mapping.suggestions.length >= 2)).toHaveLength(58);
   });
 
   it("pins the exact ME-7 final citation totals", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
-    expect(refs).toHaveLength(216);
+    expect(refs).toHaveLength(221);
     expect(refs.filter((source) => source.verified === true)).toHaveLength(216);
-    expect(refs.filter((source) => source.verified === false)).toHaveLength(0);
+    expect(refs.filter((source) => source.verified === false)).toHaveLength(5);
   });
 });

@@ -25,6 +25,30 @@
           "sourceLocator": "PMID 9371291; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to therapy-related/secondary MDS phenotype consistent with the source and subsequent acute nonlymphocytic/myeloid leukemia transformation."
         }
       ]
+    },
+    {
+      "conditionId": "anemia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Anemia is a major clinical manifestation of myelodysplastic syndromes and may arise from ineffective/dysplastic erythropoiesis. Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of myelodysplastic-syndrome and anemia",
+        "Documentation satisfying the approved phenotype restriction: separately documented anemia in established myelodysplastic syndrome",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Santini V. Anemia as the Main Manifestation of Myelodysplastic Syndromes. Semin Hematol. 2015;52(4):348-356. PMID 26404446. doi:10.1053/j.seminhematol.2015.06.002.",
+          "note": "Mapping Expansion Batch ME-8 evidence for the bounded myelodysplastic-syndrome to anemia proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26404446/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 26404446; approved ME-8 proposition; guard: Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders."
+        }
+      ]
     }
   ]
 }

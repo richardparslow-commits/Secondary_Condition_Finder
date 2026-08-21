@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "68eb1eb082d43d7dcd6053746b78482e93e208a9",
+  "baselineCommit": "b6f3cb405ed0ba8aae54349f9c85ee5ed0ee0f2e",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 216,
+    "liveSourceReferenceUses": 221,
     "activeSourceEntities": 193,
-    "pendingVerificationSourceEntities": 0,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 192,
-    "pendingClinicalSourceEntities": 0,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 202,
+    "totalSourceEntitiesIncludingLineage": 207,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -216,6 +216,48 @@
       "rawReferenceHashes": [
         "00cef47d6534572812c0e713c73d8f9e76448673b613c58d6bbae58a3092fc72"
       ]
+    },
+    {
+      "sourceId": "pmid-10482693",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "10482693",
+      "doi": "10.1016/S1091-255X(99)80057-2",
+      "canonicalCitation": "Fein M, Ritter MP, DeMeester TR, et al. Role of the lower esophageal sphincter and hiatal hernia in the pathogenesis of gastroesophageal reflux disease. J Gastrointest Surg. 1999;3(4):405-410. PMID 10482693. doi:10.1016/S1091-255X(99)80057-2.",
+      "citationVariants": [
+        "Fein M, Ritter MP, DeMeester TR, et al. Role of the lower esophageal sphincter and hiatal hernia in the pathogenesis of gastroesophageal reflux disease. J Gastrointest Surg. 1999;3(4):405-410. PMID 10482693. doi:10.1016/S1091-255X(99)80057-2."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10482693/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/10482693/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hiatal-hernia-to-gerd",
+          "primaryId": "hiatal-hernia",
+          "targetId": "gerd",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "b97ca901536339e4371ed850729c4aba814320791803bca0b9888be31d5fdee0"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-11110586",
@@ -1833,6 +1875,48 @@
       "rawReferenceHashes": [
         "0315941eecc1157a326fdc3f0cdb355365a5d578fbac806adeb68e82c10a0e25"
       ]
+    },
+    {
+      "sourceId": "pmid-29543806",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "29543806",
+      "doi": "10.1371/journal.pntd.0006338",
+      "canonicalCitation": "Alende-Castro V, Macía-Rodríguez C, Novo-Veleiro I, et al. Q fever in Spain: Description of a new series, and systematic review. PLoS Negl Trop Dis. 2018;12(3):e0006338. PMID 29543806. doi:10.1371/journal.pntd.0006338.",
+      "citationVariants": [
+        "Alende-Castro V, Macía-Rodríguez C, Novo-Veleiro I, et al. Q fever in Spain: Description of a new series, and systematic review. PLoS Negl Trop Dis. 2018;12(3):e0006338. PMID 29543806. doi:10.1371/journal.pntd.0006338."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29543806/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/29543806/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-q-fever-to-hepatitis",
+          "primaryId": "q-fever",
+          "targetId": "hepatitis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "dc63f960bf9f3723f7abb917d065efb4291eef2314393e04b6a22a3dcbec9727"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-29705176",
@@ -3660,6 +3744,49 @@
       ]
     },
     {
+      "sourceId": "pmid-35289694",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "35289694",
+      "doi": "10.1080/0284186X.2022.2048068",
+      "canonicalCitation": "Astrup Søndergaard MM, Nordsmark M, Sloth Møller D, Melgaard Nielsen K, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068.",
+      "citationVariants": [
+        "Astrup Søndergaard MM, Nordsmark M, Sloth Møller D, Melgaard Nielsen K, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068.",
+        "Søndergaard MMA, Nordsmark M, Møller DS, Nielsen KM, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35289694/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35289694/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-esophageal-cancer-to-cardiomyopathy",
+          "primaryId": "esophageal-cancer",
+          "targetId": "cardiomyopathy",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f5aa963bc315f12e59ebedb4dd108dd7f277d5e5f51b2e97322c59802f115361"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing-and-bibliographic-correction",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-35334622",
       "status": "active",
       "kind": "clinical-evidence",
@@ -4514,6 +4641,48 @@
       ]
     },
     {
+      "sourceId": "pmid-37311222",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "37311222",
+      "doi": "10.1164/rccm.202210-1941OC",
+      "canonicalCitation": "Montani D, Thoré P, Mignard X, et al. Clinical Phenotype and Outcomes of Pulmonary Hypertension Associated with Myeloproliferative Neoplasms: A Population-based Study. Am J Respir Crit Care Med. 2023;208(5):600-612. PMID 37311222. doi:10.1164/rccm.202210-1941OC.",
+      "citationVariants": [
+        "Montani D, Thoré P, Mignard X, et al. Clinical Phenotype and Outcomes of Pulmonary Hypertension Associated with Myeloproliferative Neoplasms: A Population-based Study. Am J Respir Crit Care Med. 2023;208(5):600-612. PMID 37311222. doi:10.1164/rccm.202210-1941OC."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37311222/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37311222/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-polycythemia-vera-to-pulmonary-hypertension",
+          "primaryId": "polycythemia-vera",
+          "targetId": "pulmonary-hypertension",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "b2950c168ba59d7a25263bc56364b2968f440c017db8b9e838e1081d3a898640"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-37349198",
       "status": "active",
       "kind": "clinical-evidence",
@@ -4656,6 +4825,48 @@
         "qualifiedHumanCitationReviewRequired": false,
         "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
         "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-37561537",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "37561537",
+      "doi": "10.1177/03000605231190763",
+      "canonicalCitation": "Chen F, Chen Y, Zou Y, Wang Y, Wu X, Chen M. Comparison of holmium laser enucleation and transurethral resection of prostate in benign prostatic hyperplasia: a systematic review and meta-analysis. J Int Med Res. 2023;51(8):3000605231190763. PMID 37561537. doi:10.1177/03000605231190763.",
+      "citationVariants": [
+        "Chen F, Chen Y, Zou Y, Wang Y, Wu X, Chen M. Comparison of holmium laser enucleation and transurethral resection of prostate in benign prostatic hyperplasia: a systematic review and meta-analysis. J Int Med Res. 2023;51(8):3000605231190763. PMID 37561537. doi:10.1177/03000605231190763."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37561537/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37561537/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-benign-prostatic-hyperplasia-to-urethral-stricture",
+          "primaryId": "benign-prostatic-hyperplasia",
+          "targetId": "urethral-stricture",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "52309d3ac2c5713f90a0b8db65538c3a00155d27babb4bfa6c8455f9ba2af407"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -6969,212 +7180,201 @@
       ]
     },
     {
-      "sourceId": "pmid-10482693",
-      "status": "active",
+      "sourceId": "pmid-18947294",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "10482693",
-      "doi": "10.1016/S1091-255X(99)80057-2",
-      "canonicalCitation": "Fein M, Ritter MP, DeMeester TR, et al. Role of the lower esophageal sphincter and hiatal hernia in the pathogenesis of gastroesophageal reflux disease. J Gastrointest Surg. 1999;3(4):405-410. PMID 10482693. doi:10.1016/S1091-255X(99)80057-2.",
+      "pmid": "18947294",
+      "doi": "10.1146/annurev.med.60.041707.160528",
+      "canonicalCitation": "Abdel-Wahab OI, Levine RL. Primary myelofibrosis: update on definition, pathogenesis, and treatment. Annu Rev Med. 2009;60:233-245. PMID 18947294. doi:10.1146/annurev.med.60.041707.160528.",
       "citationVariants": [
-        "Fein M, Ritter MP, DeMeester TR, et al. Role of the lower esophageal sphincter and hiatal hernia in the pathogenesis of gastroesophageal reflux disease. J Gastrointest Surg. 1999;3(4):405-410. PMID 10482693. doi:10.1016/S1091-255X(99)80057-2."
+        "Abdel-Wahab OI, Levine RL. Primary myelofibrosis: update on definition, pathogenesis, and treatment. Annu Rev Med. 2009;60:233-245. PMID 18947294. doi:10.1146/annurev.med.60.041707.160528."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10482693/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18947294/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/10482693/"
+        "https://pubmed.ncbi.nlm.nih.gov/18947294/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-hiatal-hernia-to-gerd",
-          "primaryId": "hiatal-hernia",
-          "targetId": "gerd",
+          "relationshipId": "rel-primary-myelofibrosis-to-anemia",
+          "primaryId": "primary-myelofibrosis",
+          "targetId": "anemia",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "b97ca901536339e4371ed850729c4aba814320791803bca0b9888be31d5fdee0"
+        "4fbd9fa0f71239e09f3c06043720f3507de77d71d3c5e2da1f79a35509e817fb"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-29543806",
-      "status": "active",
+      "sourceId": "pmid-25134671",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "29543806",
-      "doi": "10.1371/journal.pntd.0006338",
-      "canonicalCitation": "Alende-Castro V, Macía-Rodríguez C, Novo-Veleiro I, et al. Q fever in Spain: Description of a new series, and systematic review. PLoS Negl Trop Dis. 2018;12(3):e0006338. PMID 29543806. doi:10.1371/journal.pntd.0006338.",
+      "pmid": "25134671",
+      "doi": "10.1007/s40265-014-0274-9",
+      "canonicalCitation": "González-Vílchez F, Vázquez de Prada JA. Chronic renal insufficiency in heart transplant recipients: risk factors and management options. Drugs. 2014;74(13):1481-1494. PMID 25134671. doi:10.1007/s40265-014-0274-9.",
       "citationVariants": [
-        "Alende-Castro V, Macía-Rodríguez C, Novo-Veleiro I, et al. Q fever in Spain: Description of a new series, and systematic review. PLoS Negl Trop Dis. 2018;12(3):e0006338. PMID 29543806. doi:10.1371/journal.pntd.0006338."
+        "González-Vílchez F, Vázquez de Prada JA. Chronic renal insufficiency in heart transplant recipients: risk factors and management options. Drugs. 2014;74(13):1481-1494. PMID 25134671. doi:10.1007/s40265-014-0274-9."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29543806/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25134671/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/29543806/"
+        "https://pubmed.ncbi.nlm.nih.gov/25134671/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-q-fever-to-hepatitis",
-          "primaryId": "q-fever",
-          "targetId": "hepatitis",
+          "relationshipId": "rel-heart-transplant-residuals-to-chronic-kidney-disease",
+          "primaryId": "heart-transplant-residuals",
+          "targetId": "chronic-kidney-disease",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "dc63f960bf9f3723f7abb917d065efb4291eef2314393e04b6a22a3dcbec9727"
+        "09f9f15f3132c41fe2ea8c7f638bd02ee2a443fae5985a7cac9ab303c213e4dd"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-35289694",
-      "status": "active",
+      "sourceId": "pmid-26404446",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "35289694",
-      "doi": "10.1080/0284186X.2022.2048068",
-      "canonicalCitation": "Astrup Søndergaard MM, Nordsmark M, Sloth Møller D, Melgaard Nielsen K, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068.",
+      "pmid": "26404446",
+      "doi": "10.1053/j.seminhematol.2015.06.002",
+      "canonicalCitation": "Santini V. Anemia as the Main Manifestation of Myelodysplastic Syndromes. Semin Hematol. 2015;52(4):348-356. PMID 26404446. doi:10.1053/j.seminhematol.2015.06.002.",
       "citationVariants": [
-        "Astrup Søndergaard MM, Nordsmark M, Sloth Møller D, Melgaard Nielsen K, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068.",
-        "Søndergaard MMA, Nordsmark M, Møller DS, Nielsen KM, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068."
+        "Santini V. Anemia as the Main Manifestation of Myelodysplastic Syndromes. Semin Hematol. 2015;52(4):348-356. PMID 26404446. doi:10.1053/j.seminhematol.2015.06.002."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35289694/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26404446/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/35289694/"
+        "https://pubmed.ncbi.nlm.nih.gov/26404446/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-esophageal-cancer-to-cardiomyopathy",
-          "primaryId": "esophageal-cancer",
-          "targetId": "cardiomyopathy",
+          "relationshipId": "rel-myelodysplastic-syndrome-to-anemia",
+          "primaryId": "myelodysplastic-syndrome",
+          "targetId": "anemia",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "f5aa963bc315f12e59ebedb4dd108dd7f277d5e5f51b2e97322c59802f115361"
+        "a119b44ff4ae3348d92858ececd4b50e30400dbec8f498d8335629508b75b8f0"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing-and-bibliographic-correction",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-37311222",
-      "status": "active",
+      "sourceId": "pmid-30340592",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "37311222",
-      "doi": "10.1164/rccm.202210-1941OC",
-      "canonicalCitation": "Montani D, Thoré P, Mignard X, et al. Clinical Phenotype and Outcomes of Pulmonary Hypertension Associated with Myeloproliferative Neoplasms: A Population-based Study. Am J Respir Crit Care Med. 2023;208(5):600-612. PMID 37311222. doi:10.1164/rccm.202210-1941OC.",
+      "pmid": "30340592",
+      "doi": "10.1186/s12936-018-2509-9",
+      "canonicalCitation": "White NJ. Anaemia and malaria. Malar J. 2018;17(1):371. PMID 30340592. doi:10.1186/s12936-018-2509-9.",
       "citationVariants": [
-        "Montani D, Thoré P, Mignard X, et al. Clinical Phenotype and Outcomes of Pulmonary Hypertension Associated with Myeloproliferative Neoplasms: A Population-based Study. Am J Respir Crit Care Med. 2023;208(5):600-612. PMID 37311222. doi:10.1164/rccm.202210-1941OC."
+        "White NJ. Anaemia and malaria. Malar J. 2018;17(1):371. PMID 30340592. doi:10.1186/s12936-018-2509-9."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37311222/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30340592/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/37311222/"
+        "https://pubmed.ncbi.nlm.nih.gov/30340592/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-polycythemia-vera-to-pulmonary-hypertension",
-          "primaryId": "polycythemia-vera",
-          "targetId": "pulmonary-hypertension",
+          "relationshipId": "rel-malaria-to-anemia",
+          "primaryId": "malaria",
+          "targetId": "anemia",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "b2950c168ba59d7a25263bc56364b2968f440c017db8b9e838e1081d3a898640"
+        "46bf0cd5112c2226099c5210f598a60be3c56a4aa685d156f98e1a74c7fd0c69"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-37561537",
-      "status": "active",
+      "sourceId": "pmid-33226721",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "37561537",
-      "doi": "10.1177/03000605231190763",
-      "canonicalCitation": "Chen F, Chen Y, Zou Y, Wang Y, Wu X, Chen M. Comparison of holmium laser enucleation and transurethral resection of prostate in benign prostatic hyperplasia: a systematic review and meta-analysis. J Int Med Res. 2023;51(8):3000605231190763. PMID 37561537. doi:10.1177/03000605231190763.",
+      "pmid": "33226721",
+      "doi": "10.1111/ene.14656",
+      "canonicalCitation": "Julian T, Rekatsina M, Shafique F, Zis P. Human immunodeficiency virus-related peripheral neuropathy: A systematic review and meta-analysis. Eur J Neurol. 2021;28(4):1420-1431. PMID 33226721. doi:10.1111/ene.14656.",
       "citationVariants": [
-        "Chen F, Chen Y, Zou Y, Wang Y, Wu X, Chen M. Comparison of holmium laser enucleation and transurethral resection of prostate in benign prostatic hyperplasia: a systematic review and meta-analysis. J Int Med Res. 2023;51(8):3000605231190763. PMID 37561537. doi:10.1177/03000605231190763."
+        "Julian T, Rekatsina M, Shafique F, Zis P. Human immunodeficiency virus-related peripheral neuropathy: A systematic review and meta-analysis. Eur J Neurol. 2021;28(4):1420-1431. PMID 33226721. doi:10.1111/ene.14656."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37561537/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33226721/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/37561537/"
+        "https://pubmed.ncbi.nlm.nih.gov/33226721/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-benign-prostatic-hyperplasia-to-urethral-stricture",
-          "primaryId": "benign-prostatic-hyperplasia",
-          "targetId": "urethral-stricture",
+          "relationshipId": "rel-hiv-aids-to-peripheral-neuropathy",
+          "primaryId": "hiv-aids",
+          "targetId": "peripheral-neuropathy",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "52309d3ac2c5713f90a0b8db65538c3a00155d27babb4bfa6c8455f9ba2af407"
+        "c357237d070a7e9a6e4ab4ddb1bcd76a1f7e83cc8b699f0a9c251c77a38f8147"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -7444,6 +7644,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "ME-7 Qualified-Human Citation Verification",
-  "currentState": "ME7-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-8",
+  "currentState": "ME8-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }
