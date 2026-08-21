@@ -44,7 +44,7 @@
           "note": "Mapping Expansion Batch ME-9 evidence for the bounded pancreatitis to pancreatic-cancer proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35142721/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 35142721; approved ME-9 proposition; guard: Primary phenotype must be chronic pancreatitis, not an isolated acute-pancreatitis episode. Require separately established pancreatic cancer and chronology compatible with cancer developing after chronic pancreatitis. Do not infer cancer from pancreatitis alone. Preserve hereditary syndromes, smoking, age, diabetes, obesity, alcohol exposure, other pancreatic-cancer risk factors, and the possibility that occult pancreatic cancer initially presented as pancreatitis."
         }

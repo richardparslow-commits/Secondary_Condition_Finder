@@ -2,15 +2,15 @@
 
 ## Status
 
-The authoritative registry is at the Mapping Expansion Batch ME-9 pre-qualified-human-citation-verification state, derived from the closed ME-8 citation-verification commit `ba0fe8490a81c20e94f4bc1f8ea5efbeb6fae083`.
+The authoritative registry is at the fully qualified-human-verified Mapping Expansion Batch ME-9 state, derived from implementation commit `f013a939cce8398527b2619587fb985eb57100d0`.
 
 ## Current state
 
 - 218 relationships.
 - 144 explicit publication guards / 74 legacy rationale boundaries.
-- 226 live relationship-source uses: 221 verified / 5 pending verification.
-- 198 active source entities: 197 clinical + 1 legal authority.
-- 5 pending-verification clinical source entities.
+- 226 live relationship-source uses: 226 verified / 0 pending verification.
+- 203 active source entities: 202 clinical + 1 legal authority.
+- 0 pending-verification source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
 - 212 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
@@ -77,16 +77,24 @@ All five ME-8 KB references are `verified:true`, and their normalized master sou
 
 No relationship count, relationship semantics, rank, prevalence, taxonomy identity, publication state, publication guard, citation text, source identity, or pathwayIntelligence state changes in this verification gate. Verified evidence still does not, by itself, establish an individual VA medical nexus.
 
-## ME-9 implementation pending citation verification
+## ME-9 qualified-human citation verification
 
-The approved ME-9 implementation adds exactly five rank-2 relationships while preserving all existing rank-1 mappings, identities, and publication states:
+Disposition:
+- 5 approve-as-implemented.
+- 0 narrowing beyond the existing implemented guards.
+- 0 bibliographic corrections.
+- 0 source replacements.
+- 0 rejects/withdrawals.
 
+The five independently reviewed sources are:
 - `discoid-lupus -> systemic-lupus-erythematosus` / PMID 41178896.
-- `colorectal-cancer -> fecal-incontinence` / PMID 33277056, restricted to colon-cancer surgery/colectomy with postoperative chronology.
-- `hypogonadism -> erectile-dysfunction` / PMID 34856556, restricted to an androgen-deficiency phenotype consistent with the late-onset-hypogonadism evidence.
-- `pancreatitis -> pancreatic-cancer` / PMID 35142721, restricted to chronic pancreatitis with chronology guarding against reverse causation.
-- `hypoparathyroidism -> chronic-kidney-disease` / PMID 33599907, with chronic phenotype and conventional-treatment exposure/chronology required when that pathway is invoked.
+- `colorectal-cancer -> fecal-incontinence` / PMID 33277056, retaining the implemented colon-cancer surgery/colectomy and postoperative-chronology restriction.
+- `hypogonadism -> erectile-dysfunction` / PMID 34856556, retaining the implemented androgen-deficiency/late-onset-hypogonadism evidence boundary.
+- `pancreatitis -> pancreatic-cancer` / PMID 35142721, retaining the implemented chronic-pancreatitis and reverse-causation chronology guard.
+- `hypoparathyroidism -> chronic-kidney-disease` / PMID 33599907, retaining the implemented chronic phenotype and conventional-treatment exposure/chronology guard when relied upon.
 
-All five new KB references remain `verified:false`; their normalized master sources remain `pending-verification`. Mapping approval and PubMed identity matching do not authorize citation promotion.
+All five PMID/DOI identities and citation strings are retained unchanged. The implemented propositions, phenotype restrictions, evidence gaps, and publication guards also remain unchanged.
 
-No new identity, publication-state change, rank-1 change, semantic broadening beyond the approved guards, or pathwayIntelligence change is part of ME-9 implementation. A later separate qualified-human ME-9 citation-verification gate is required before any of these five references may become `verified:true`.
+All five ME-9 KB references are `verified:true`, and their normalized master sources are `active`. Mapping approval and bibliographic identity matching remain insufficient to authorize citation promotion without this separate qualified-human source-level review.
+
+No relationship count, relationship semantics, rank, prevalence, taxonomy identity, publication state, publication guard, citation text, source identity, or pathwayIntelligence state changes in this verification gate. Verified population-level or phenotype-specific evidence still does not, by itself, establish an individual medical nexus.

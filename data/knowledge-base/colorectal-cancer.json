@@ -44,7 +44,7 @@
           "note": "Mapping Expansion Batch ME-9 evidence for the bounded colorectal-cancer to fecal-incontinence proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33277056/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 33277056; approved ME-9 proposition; guard: Require established colon cancer within the colorectal-cancer identity, actual colectomy or other bowel resection, and separately documented fecal incontinence with compatible postoperative chronology. Do not infer fecal incontinence from colorectal-cancer diagnosis alone, and do not generalize this colon-cancer surgical source to nonsurgical disease or rectal-cancer treatment without separate evidence. Preserve pre-existing continence disorders, neurologic disease, pelvic-floor dysfunction, inflammatory bowel disease, obstetric injury, medications, and other anorectal causes."
         }

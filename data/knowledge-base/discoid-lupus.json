@@ -62,7 +62,7 @@
           "note": "Mapping Expansion Batch ME-9 evidence for the bounded discoid-lupus to systemic-lupus-erythematosus proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41178896/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 41178896; approved ME-9 proposition; guard: Require established discoid lupus erythematosus and separately established systemic lupus erythematosus meeting appropriate classification or diagnostic criteria. Do not infer SLE from DLE alone. Preserve ANA and other autoantibody findings, hematologic abnormalities, systemic manifestations, family history, and other classification criteria as independent diagnostic evidence."
         }

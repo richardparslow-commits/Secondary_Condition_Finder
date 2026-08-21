@@ -8,7 +8,7 @@ const kbDir = path.join(root, "data", "knowledge-base");
 const relPath = path.join(root, "data", "evidence", "master-relationships.json");
 const srcPath = path.join(root, "data", "evidence", "master-sources.json");
 const retirementPath = path.join(root, "data", "citation-retirements.json");
-const expectedBaseline = "ba0fe8490a81c20e94f4bc1f8ea5efbeb6fae083";
+const expectedBaseline = "f013a939cce8398527b2619587fb985eb57100d0";
 
 const fail = (message) => {
   console.error(JSON.stringify({ status: "FAIL", message }, null, 2));
@@ -179,7 +179,7 @@ for (const file of files) {
 
 if (published !== 139 || draft !== 172) fail(`Publication-state drift: published=${published}, draft=${draft}`);
 if (relationshipCount !== 218) fail(`Relationship count drift: ${relationshipCount}`);
-if (referenceUses !== 226 || verifiedTrue !== 221 || verifiedFalse !== 5) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
+if (referenceUses !== 226 || verifiedTrue !== 226 || verifiedFalse !== 0) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
 if (clinicalUses !== 221 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);
 
 const statusCounts = {};
@@ -217,8 +217,8 @@ for (const source of srcRegistry.sources) {
 }
 
 const expectedStatuses = {
-  active: 198,
-  "pending-verification": 5,
+  active: 203,
+  "pending-verification": 0,
   "superseded-unverified": 7,
   "bibliographic-correction-only": 1,
   "retired-only": 1,
@@ -227,7 +227,7 @@ if (Object.entries(expectedStatuses).some(([key, value]) => (statusCounts[key] |
     Object.keys(statusCounts).some((key) => !(key in expectedStatuses))) {
   fail(`Source status counts mismatch: ${JSON.stringify(statusCounts)}`);
 }
-if (activeClinical !== 197 || pendingClinical !== 5 || activeLegal !== 1) {
+if (activeClinical !== 202 || pendingClinical !== 0 || activeLegal !== 1) {
   fail(`Source kind counts mismatch: activeClinical=${activeClinical}, pendingClinical=${pendingClinical}, activeLegal=${activeLegal}`);
 }
 if (retiredVerifiedUses !== 6) fail(`Retired verified relationship-source uses mismatch: ${retiredVerifiedUses}`);
@@ -241,10 +241,10 @@ if (JSON.stringify(relRegistry.counts) !== JSON.stringify(expectedRelCounts)) fa
 
 const expectedSourceCounts = {
   liveSourceReferenceUses: 226,
-  activeSourceEntities: 198,
-  pendingVerificationSourceEntities: 5,
-  activeClinicalSourceEntities: 197,
-  pendingClinicalSourceEntities: 5,
+  activeSourceEntities: 203,
+  pendingVerificationSourceEntities: 0,
+  activeClinicalSourceEntities: 202,
+  pendingClinicalSourceEntities: 0,
   activeLegalAuthorityEntities: 1,
   retiredOnlySourceEntities: 1,
   supersededUnverifiedSourceEntities: 7,

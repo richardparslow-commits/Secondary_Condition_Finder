@@ -77,22 +77,22 @@ const sources = JSON.parse(
 ) as SourceRegistry;
 
 describe("Master Relationship & Evidence Registry 2026", () => {
-  it("pins the authoritative ME-9 pending-verification registry counts", () => {
+  it("pins the authoritative qualified-human-verified ME-9 registry counts", () => {
     expect(relationships.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(relationships.baselineCommit).toBe("ba0fe8490a81c20e94f4bc1f8ea5efbeb6fae083");
+    expect(relationships.baselineCommit).toBe("f013a939cce8398527b2619587fb985eb57100d0");
     expect(relationships.counts).toEqual({
       relationships: 218,
       explicitPublicationGuards: 144,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(sources.baselineCommit).toBe("ba0fe8490a81c20e94f4bc1f8ea5efbeb6fae083");
+    expect(sources.baselineCommit).toBe("f013a939cce8398527b2619587fb985eb57100d0");
     expect(sources.counts).toEqual({
       liveSourceReferenceUses: 226,
-      activeSourceEntities: 198,
-      pendingVerificationSourceEntities: 5,
-      activeClinicalSourceEntities: 197,
-      pendingClinicalSourceEntities: 5,
+      activeSourceEntities: 203,
+      pendingVerificationSourceEntities: 0,
+      activeClinicalSourceEntities: 202,
+      pendingClinicalSourceEntities: 0,
       activeLegalAuthorityEntities: 1,
       retiredOnlySourceEntities: 1,
       supersededUnverifiedSourceEntities: 7,
@@ -254,7 +254,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
   });
 
   it("keeps source lineage states distinct while retaining all active ME-3 sources", () => {
-    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(198);
+    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(203);
     expect(sources.sources.filter((source) => source.status === "superseded-unverified")).toHaveLength(7);
     expect(sources.sources.filter((source) => source.status === "bibliographic-correction-only")).toHaveLength(1);
     expect(sources.sources.filter((source) => source.status === "retired-only")).toHaveLength(1);
@@ -300,27 +300,29 @@ describe("Master Relationship & Evidence Registry 2026", () => {
       status: "PASS",
       relationships: 218,
       liveSourceReferenceUses: 226,
-      verifiedLiveSourceUses: 221,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 198,
-      pendingVerificationSourceEntities: 5,
+      verifiedLiveSourceUses: 226,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 203,
+      pendingVerificationSourceEntities: 0,
     });
   });
 
-  it("contains exactly five pending ME-9 clinical sources", () => {
+  it("contains exactly five qualified-human-verified ME-9 clinical sources", () => {
     const expected = {"pmid-41178896": {"pmid": "41178896", "doi": "10.25122/jml-2025-0141", "citation": "Alharbi A, Alamri O, Afandi A, Arbaeen A, Mirza A, Alahmari A, Alshomrani S, Qashqari M, Alahmadi M, Alharthy S, Kokandi A. Discoid lupus erythematosus and its progression to systemic lupus erythematosus across age groups: a systematic review. J Med Life. 2025;18(9):830-836. PMID 41178896. doi:10.25122/jml-2025-0141."}, "pmid-33277056": {"pmid": "33277056", "doi": "10.1016/j.ejso.2020.11.136", "citation": "Verkuijl SJ, Jonker JE, Trzpis M, Burgerhof JGM, Broens PMA, Furnée EJB. Functional outcomes of surgery for colon cancer: A systematic review and meta-analysis. Eur J Surg Oncol. 2021;47(5):960-969. PMID 33277056. doi:10.1016/j.ejso.2020.11.136."}, "pmid-34856556": {"pmid": "34856556", "doi": "10.1159/000520135", "citation": "Taniguchi H, Shimada S, Kinoshita H. Testosterone Therapy for Late-Onset Hypogonadism Improves Erectile Function: A Systematic Review and Meta-Analysis. Urol Int. 2022;106(6):539-552. PMID 34856556. doi:10.1159/000520135."}, "pmid-35142721": {"pmid": "35142721", "doi": "10.14309/ctg.0000000000000463", "citation": "Gandhi S, de la Fuente J, Murad MH, Majumder S. Chronic Pancreatitis Is a Risk Factor for Pancreatic Cancer, and Incidence Increases With Duration of Disease: A Systematic Review and Meta-analysis. Clin Transl Gastroenterol. 2022;13(3):e00463. PMID 35142721. doi:10.14309/ctg.0000000000000463."}, "pmid-33599907": {"pmid": "33599907", "doi": "10.1007/s11154-020-09613-1", "citation": "Gosmanova EO, Houillier P, Rejnmark L, Marelli C, Bilezikian JP. Renal complications in patients with chronic hypoparathyroidism on conventional therapy: a systematic literature review: renal disease in chronic hypoparathyroidism. Rev Endocr Metab Disord. 2021;22(2):297-316. PMID 33599907. doi:10.1007/s11154-020-09613-1."}} as const;
     const selected = sources.sources.filter((source) => Object.prototype.hasOwnProperty.call(expected, source.sourceId));
     expect(selected).toHaveLength(5);
     for (const source of selected) {
       const identity = expected[source.sourceId as keyof typeof expected];
-      expect(source.status).toBe("pending-verification");
+      expect(source.status).toBe("active");
       expect(source.kind).toBe("clinical-evidence");
-      expect(source.verified).toBe(false);
+      expect(source.verified).toBe(true);
       expect(source.pmid).toBe(identity.pmid);
       expect(source.doi?.toLowerCase()).toBe(identity.doi.toLowerCase());
       expect(source.canonicalCitation).toBe(identity.citation);
       expect(source.verificationState).toMatchObject({
-        qualifiedHumanCitationReviewRequired: true,
+        qualifiedHumanCitationReviewRequired: false,
+        qualifiedHumanCitationReviewDecision: "approve-as-implemented",
+        qualifiedHumanCitationReviewDate: "2026-08-21",
         automaticPromotionAuthorized: false,
         mappingApprovalDoesNotEqualCitationVerification: true,
       });

@@ -25,12 +25,12 @@ describe("mapping expansion ME-9", () => {
     }
   });
 
-  it("keeps all five new ME-9 clinical references pending qualified-human verification", () => {
+  it("keeps all five ME-9 clinical references qualified-human verified", () => {
     for (const row of rows) {
       const added = byId.get(row.primaryId)?.suggestions.find((entry) => entry.conditionId === row.targetId);
       expect(added?.sourceReferences).toHaveLength(1);
       const source = added?.sourceReferences[0];
-      expect(source?.verified).toBe(false);
+      expect(source?.verified).toBe(true);
       expect(source?.verificationScope).toBe("clinical-evidence");
       expect(source?.sourceUrl).toContain(`/` + row.pmid + `/`);
       expect(source?.citation).toContain(`PMID ${row.pmid}`);
@@ -44,10 +44,10 @@ describe("mapping expansion ME-9", () => {
     expect(published.filter((mapping) => mapping.suggestions.length >= 2)).toHaveLength(63);
   });
 
-  it("pins the exact ME-9 pending citation totals", () => {
+  it("pins the exact final ME-9 citation totals", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
     expect(refs).toHaveLength(226);
-    expect(refs.filter((source) => source.verified === true)).toHaveLength(221);
-    expect(refs.filter((source) => source.verified === false)).toHaveLength(5);
+    expect(refs.filter((source) => source.verified === true)).toHaveLength(226);
+    expect(refs.filter((source) => source.verified === false)).toHaveLength(0);
   });
 });
