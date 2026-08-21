@@ -147,7 +147,7 @@ describe("Mapping Expansion Batch ME-6 Qualified-Human Citation Verification", (
     }
   });
 
-  it("pins the final 211/211 citation state with zero review or hard debt", () => {
+  it("preserves the verified ME-6 sources in the final 216/216 ME-7 citation state", () => {
     const output = execFileSync("npm", ["run", "citations:audit"], { cwd: root, encoding: "utf8" });
     const result = JSON.parse(output.slice(output.indexOf("{"))) as {
       references: number;
@@ -160,11 +160,11 @@ describe("Mapping Expansion Batch ME-6 Qualified-Human Citation Verification", (
     };
     expect(result).toMatchObject({
       references: 216,
-      verified: 211,
+      verified: 216,
       retiredVerified: 6,
-      verifiedProvenance: 217,
-      unverified: 5,
-      reviewFindingCount: 5,
+      verifiedProvenance: 222,
+      unverified: 0,
+      reviewFindingCount: 0,
       hardFindingCount: 0,
     });
   });
@@ -184,12 +184,12 @@ describe("Mapping Expansion Batch ME-6 Qualified-Human Citation Verification", (
     expect(result).toMatchObject({
       status: "PASS",
       relationships: 208,
-      verifiedLiveSourceUses: 211,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 188,
-      pendingVerificationSourceEntities: 5,
-      activeClinicalSourceEntities: 187,
-      pendingClinicalSourceEntities: 5,
+      verifiedLiveSourceUses: 216,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 193,
+      pendingVerificationSourceEntities: 0,
+      activeClinicalSourceEntities: 192,
+      pendingClinicalSourceEntities: 0,
     });
   });
 });

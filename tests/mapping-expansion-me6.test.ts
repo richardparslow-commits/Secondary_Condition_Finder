@@ -161,11 +161,11 @@ describe("Mapping Expansion Batch ME-6", () => {
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
     expect(refs).toHaveLength(216);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(211);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(216);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   });
 
-  it("passes citation and master-registry gates in the final verified state", () => {
+  it("passes citation and master-registry gates in the final ME-7 verified state", () => {
     const citationOutput = execFileSync("npm", ["run", "citations:audit"], { cwd: root, encoding: "utf8" });
     const citation = JSON.parse(citationOutput.slice(citationOutput.indexOf("{"))) as {
       references: number;
@@ -178,11 +178,11 @@ describe("Mapping Expansion Batch ME-6", () => {
     };
     expect(citation).toMatchObject({
       references: 216,
-      verified: 211,
+      verified: 216,
       retiredVerified: 6,
-      verifiedProvenance: 217,
-      unverified: 5,
-      reviewFindingCount: 5,
+      verifiedProvenance: 222,
+      unverified: 0,
+      reviewFindingCount: 0,
       hardFindingCount: 0,
     });
 
@@ -198,10 +198,10 @@ describe("Mapping Expansion Batch ME-6", () => {
     expect(master).toMatchObject({
       status: "PASS",
       relationships: 208,
-      verifiedLiveSourceUses: 211,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 188,
-      pendingVerificationSourceEntities: 5,
+      verifiedLiveSourceUses: 216,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 193,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });

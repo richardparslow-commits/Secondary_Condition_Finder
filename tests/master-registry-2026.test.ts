@@ -73,22 +73,22 @@ const sources = JSON.parse(
 ) as SourceRegistry;
 
 describe("Master Relationship & Evidence Registry 2026", () => {
-  it("pins the authoritative fully verified ME-6 registry counts", () => {
+  it("pins the authoritative fully verified ME-7 registry counts", () => {
     expect(relationships.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(relationships.baselineCommit).toBe("59c41777a4f55628d08ca080ad49f450adb06bca");
+    expect(relationships.baselineCommit).toBe("68eb1eb082d43d7dcd6053746b78482e93e208a9");
     expect(relationships.counts).toEqual({
       relationships: 208,
       explicitPublicationGuards: 134,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(sources.baselineCommit).toBe("59c41777a4f55628d08ca080ad49f450adb06bca");
+    expect(sources.baselineCommit).toBe("68eb1eb082d43d7dcd6053746b78482e93e208a9");
     expect(sources.counts).toEqual({
       liveSourceReferenceUses: 216,
-      activeSourceEntities: 188,
-      pendingVerificationSourceEntities: 5,
-      activeClinicalSourceEntities: 187,
-      pendingClinicalSourceEntities: 5,
+      activeSourceEntities: 193,
+      pendingVerificationSourceEntities: 0,
+      activeClinicalSourceEntities: 192,
+      pendingClinicalSourceEntities: 0,
       activeLegalAuthorityEntities: 1,
       retiredOnlySourceEntities: 1,
       supersededUnverifiedSourceEntities: 7,
@@ -127,7 +127,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
     expect(
       sources.sources.filter((source) => source.status === "pending-verification"),
-    ).toHaveLength(5);
+    ).toHaveLength(0);
   });
 
   it("contains exactly five qualified-human-verified ME-5 clinical sources", () => {
@@ -180,6 +180,53 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     );
   });
 
+
+  it("contains exactly five qualified-human-verified ME-7 clinical sources", () => {
+    const ids = new Set(["pmid-37561537", "pmid-29543806", "pmid-37311222", "pmid-10482693", "pmid-35289694"]);
+    const selected = sources.sources.filter((source) => ids.has(source.sourceId));
+    expect(selected).toHaveLength(5);
+    for (const source of selected) {
+      expect(source.status).toBe("active");
+      expect(source.kind).toBe("clinical-evidence");
+      expect(source.verified).toBe(true);
+      expect(source.liveUsageCount).toBe(1);
+      expect(source.verificationState).toMatchObject({
+        qualifiedHumanCitationReviewRequired: false,
+        automaticPromotionAuthorized: false,
+        mappingApprovalDoesNotEqualCitationVerification: true,
+      });
+    }
+    const decisions = new Map(
+      selected.map((source) => [source.sourceId, source.verificationState?.qualifiedHumanCitationReviewDecision]),
+    );
+    expect(decisions.get("pmid-37561537")).toBe("approve-as-implemented");
+    expect(decisions.get("pmid-29543806")).toBe("approve-with-narrowing");
+    expect(decisions.get("pmid-37311222")).toBe("approve-with-narrowing");
+    expect(decisions.get("pmid-10482693")).toBe("approve-as-implemented");
+    expect(decisions.get("pmid-35289694")).toBe("approve-with-narrowing-and-bibliographic-correction");
+
+    const qFever = relationships.relationships.find(
+      (row) => row.relationshipId === "rel-q-fever-to-hepatitis",
+    );
+    expect(qFever?.publicationGuard.structuredGuardText).toContain(
+      "separately established acute hepatitis with compatible timing",
+    );
+
+    const pv = relationships.relationships.find(
+      (row) => row.relationshipId === "rel-polycythemia-vera-to-pulmonary-hypertension",
+    );
+    expect(pv?.publicationGuard.structuredGuardText).toContain(
+      "separately established precapillary pulmonary hypertension",
+    );
+
+    const esophageal = relationships.relationships.find(
+      (row) => row.relationshipId === "rel-esophageal-cancer-to-cardiomyopathy",
+    );
+    expect(esophageal?.publicationGuard.structuredGuardText).toContain(
+      "a separately established cardiomyopathy diagnosis",
+    );
+  });
+
   it("records the approved 4-as-implemented / 1-narrowed ME-4 verification decisions", () => {
     const decisions = new Map(
       sources.sources
@@ -203,7 +250,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
   });
 
   it("keeps source lineage states distinct while retaining all active ME-3 sources", () => {
-    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(188);
+    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(193);
     expect(sources.sources.filter((source) => source.status === "superseded-unverified")).toHaveLength(7);
     expect(sources.sources.filter((source) => source.status === "bibliographic-correction-only")).toHaveLength(1);
     expect(sources.sources.filter((source) => source.status === "retired-only")).toHaveLength(1);
@@ -220,7 +267,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
   });
 
-  it("passes the final qualified-human-verified ME-6 master-registry parity audit", () => {
+  it("passes the final qualified-human-verified ME-7 master-registry parity audit", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], {
       cwd: root,
       encoding: "utf8",
@@ -230,10 +277,10 @@ describe("Master Relationship & Evidence Registry 2026", () => {
       status: "PASS",
       relationships: 208,
       liveSourceReferenceUses: 216,
-      verifiedLiveSourceUses: 211,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 188,
-      pendingVerificationSourceEntities: 5,
+      verifiedLiveSourceUses: 216,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 193,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });

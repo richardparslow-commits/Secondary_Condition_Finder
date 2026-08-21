@@ -2,17 +2,17 @@
 
 ## Status
 
-The authoritative registry is at the fully qualified-human-verified Mapping Expansion Batch ME-6 state, derived from implementation commit `690163dfe606bdb515dbb6344bad99cc876044f8`.
+The authoritative registry is at the fully qualified-human-verified Mapping Expansion Batch ME-7 state, derived from implementation commit `68eb1eb082d43d7dcd6053746b78482e93e208a9`.
 
 ## Current state
 
-- 203 relationships.
-- 129 explicit publication guards / 74 legacy rationale boundaries.
-- 211 live relationship-source uses: 211 verified / 0 pending verification.
-- 188 active source entities: 187 clinical + 1 legal authority.
+- 208 relationships.
+- 134 explicit publication guards / 74 legacy rationale boundaries.
+- 216 live relationship-source uses: 216 verified / 0 pending verification.
+- 193 active source entities: 192 clinical + 1 legal authority.
 - 0 pending-verification source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
-- 197 total source entities including lineage/history.
+- 202 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
 
 ## ME-6 qualified-human citation verification
@@ -35,16 +35,22 @@ The narrowed PMID 12411757 relationship snapshot is updated atomically so the ma
 
 Verified population-level or phenotype-specific evidence still does not, by itself, establish an individual VA medical nexus.
 
-## Mapping Expansion ME-7 current state
+## ME-7 qualified-human citation verification
 
-Mapping Expansion Batch ME-7 adds five approved rank-2 relationships while preserving all existing taxonomy identities and all pre-existing relationship objects.
+Disposition:
+- 2 approve-as-implemented.
+- 2 approve-with-narrowing.
+- 1 approve-with-narrowing-and-bibliographic-correction.
+- 0 source replacements.
+- 0 rejects/withdrawals.
 
-- Registry baseline parent: `59c41777a4f55628d08ca080ad49f450adb06bca`
-- Registry state: `ME7-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION`
-- Relationship state: **208 total / P1 86 / P2+ 53 / D1 1**
-- Citation state: **216 live / 211 verified / 5 pending-unverified / 5 review / 0 hard**
-- Master sources: **188 active / 5 pending-verification / 202 total including lineage**
-- Publication guards: **134 explicit / 74 legacy-rationale-boundary**
-- All five ME-7 sources remain `verified:false` and require a separate qualified-human citation-verification gate.
-- Mapping approval and PubMed identity matching do not constitute citation verification.
-- No GitHub or Vercel write is authorized during the active remote-write freeze.
+The three approved semantic narrowings are:
+- `q-fever -> hepatitis` / PMID 29543806: restricted to separately established acute hepatitis as a manifestation of acute Q fever; generic hepatic injury and isolated nonspecific enzyme elevation are not generalized from this source.
+- `polycythemia-vera -> pulmonary-hypertension` / PMID 37311222: restricted to separately established precapillary pulmonary hypertension with CTEPH versus group-5 classification when applicable; the source does not support postcapillary PH from left-heart disease.
+- `esophageal-cancer -> cardiomyopathy` / PMID 35289694: the source supports early treatment-related LV dysfunction/cardiotoxicity after thoracic chemoradiotherapy, while the relationship requires a separately established cardiomyopathy diagnosis with compatible chronology.
+
+PMID 35289694 retains the same source identity and DOI while its citation is corrected to the compound surnames `Astrup Søndergaard`, `Sloth Møller`, and `Melgaard Nielsen`.
+
+The other two ME-7 relationships remain as implemented. All five ME-7 KB references are `verified:true`, and their normalized master sources are `active`. Mapping approval and PubMed identity matching remain insufficient to authorize citation promotion without this separate qualified-human review.
+
+No relationship count, rank, prevalence, taxonomy identity, publication state, or pathwayIntelligence state changes in this verification gate. Verified population-level or phenotype-specific evidence still does not, by itself, establish an individual VA medical nexus.

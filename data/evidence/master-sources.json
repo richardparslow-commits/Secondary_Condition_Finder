@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "59c41777a4f55628d08ca080ad49f450adb06bca",
+  "baselineCommit": "68eb1eb082d43d7dcd6053746b78482e93e208a9",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -17,10 +17,10 @@
   },
   "counts": {
     "liveSourceReferenceUses": 216,
-    "activeSourceEntities": 188,
-    "pendingVerificationSourceEntities": 5,
-    "activeClinicalSourceEntities": 187,
-    "pendingClinicalSourceEntities": 5,
+    "activeSourceEntities": 193,
+    "pendingVerificationSourceEntities": 0,
+    "activeClinicalSourceEntities": 192,
+    "pendingClinicalSourceEntities": 0,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
@@ -6970,7 +6970,7 @@
     },
     {
       "sourceId": "pmid-10482693",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "10482693",
       "doi": "10.1016/S1091-255X(99)80057-2",
@@ -6985,7 +6985,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
@@ -7003,14 +7003,16 @@
         "b97ca901536339e4371ed850729c4aba814320791803bca0b9888be31d5fdee0"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-29543806",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "29543806",
       "doi": "10.1371/journal.pntd.0006338",
@@ -7025,7 +7027,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
@@ -7040,22 +7042,25 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "44b1310f06b36d51e938764c88762994f3eaa87a6098602d13d2fdfef338e2f5"
+        "dc63f960bf9f3723f7abb917d065efb4291eef2314393e04b6a22a3dcbec9727"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-35289694",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "35289694",
       "doi": "10.1080/0284186X.2022.2048068",
-      "canonicalCitation": "Søndergaard MMA, Nordsmark M, Møller DS, Nielsen KM, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068.",
+      "canonicalCitation": "Astrup Søndergaard MM, Nordsmark M, Sloth Møller D, Melgaard Nielsen K, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068.",
       "citationVariants": [
+        "Astrup Søndergaard MM, Nordsmark M, Sloth Møller D, Melgaard Nielsen K, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068.",
         "Søndergaard MMA, Nordsmark M, Møller DS, Nielsen KM, Poulsen SH. Reduction in myocardial function and oxygen consumption after chemoradiotherapy in patients with esophageal cancer. Acta Oncol. 2022;61(5):566-574. PMID 35289694. doi:10.1080/0284186X.2022.2048068."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35289694/",
@@ -7065,7 +7070,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
@@ -7080,17 +7085,19 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "1493a99e5f4447d5aff174dfdf88238381936473203f3cafeec810d618986915"
+        "f5aa963bc315f12e59ebedb4dd108dd7f277d5e5f51b2e97322c59802f115361"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing-and-bibliographic-correction",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-37311222",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "37311222",
       "doi": "10.1164/rccm.202210-1941OC",
@@ -7105,7 +7112,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
@@ -7120,17 +7127,19 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "857df3ae59e9178331f88466f7507bf527063e4aabba0f2b091fc61233181c67"
+        "b2950c168ba59d7a25263bc56364b2968f440c017db8b9e838e1081d3a898640"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-37561537",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "37561537",
       "doi": "10.1177/03000605231190763",
@@ -7145,7 +7154,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
@@ -7163,7 +7172,9 @@
         "52309d3ac2c5713f90a0b8db65538c3a00155d27babb4bfa6c8455f9ba2af407"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -7433,6 +7444,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-7",
-  "currentState": "ME7-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "ME-7 Qualified-Human Citation Verification",
+  "currentState": "ME7-CITATION-VERIFIED"
 }
