@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "196b37b92d76827e4030da1afb25fd4165066cdb",
+  "baselineCommit": "16dbdc93bd4f2650829d46f64d567845f50c81d5",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 193,
-    "explicitPublicationGuards": 119,
+    "relationships": 198,
+    "explicitPublicationGuards": 124,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -1113,6 +1113,39 @@
       "suggestionObjectHash": "17f78e10bf443a198a60d48895626bad4bbac5690da1f00e58d234128647b544"
     },
     {
+      "relationshipId": "rel-celiac-disease-to-osteoporosis",
+      "primaryId": "celiac-disease",
+      "targetId": "osteoporosis",
+      "direction": "celiac-disease -> osteoporosis",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me5-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented celiac disease and separately established osteoporosis. Treat the source as population-level association/risk evidence rather than proof that celiac disease caused osteoporosis in an individual. Preserve age, sex/menopausal status, body mass, vitamin D/calcium status, glucocorticoid exposure, smoking, endocrine or renal disease, and other established osteoporosis causes or contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented celiac disease and separately established osteoporosis. Treat the source as population-level association/risk evidence rather than proof that celiac disease caused osteoporosis in an individual. Preserve age, sex/menopausal status, body mass, vitamin D/calcium status, glucocorticoid exposure, smoking, endocrine or renal disease, and other established osteoporosis causes or contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented celiac disease and separately established osteoporosis. Treat the source as population-level association/risk evidence rather than proof that celiac disease caused osteoporosis in an individual. Preserve age, sex/menopausal status, body mass, vitamin D/calcium status, glucocorticoid exposure, smoking, endocrine or renal disease, and other established osteoporosis causes or contributors.",
+        "boundarySource": "approved-me5-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of celiac-disease and osteoporosis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented celiac disease and separately established osteoporosis. Treat the source as population-level association/risk evidence rather than proof that celiac disease caused osteoporosis in an individual. Preserve age, sex/menopausal status, body mass, vitamin D/calcium status, glucocorticoid exposure, smoking, endocrine or renal disease, and other established osteoporosis causes or contributors."
+      ],
+      "sourceIds": [
+        "pmid-37730081"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "4862e0c7ea0cb17f18f731ccffb9a12c5143ca674d808ac738ee374fad4544ff"
+    },
+    {
       "relationshipId": "rel-cerebral-contusion-diffuse-axonal-injury-to-epilepsy",
       "primaryId": "cerebral-contusion-diffuse-axonal-injury",
       "targetId": "epilepsy",
@@ -1851,6 +1884,39 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": true,
       "suggestionObjectHash": "2dc4fa5564c6efce916d0de20b4b5925bc19f329344e91423a2575fa4e4c9e27"
+    },
+    {
+      "relationshipId": "rel-diabetes-mellitus-type-1-to-diabetic-retinopathy",
+      "primaryId": "diabetes-mellitus-type-1",
+      "targetId": "diabetic-retinopathy",
+      "direction": "diabetes-mellitus-type-1 -> diabetic-retinopathy",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me5-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require established type 1 diabetes mellitus and separately established diabetic retinopathy by appropriate ophthalmic evaluation. Treat the source as population-level prevalence/complication evidence, not automatic individual causation or permission to infer retinopathy from diabetes alone. Preserve diabetes duration, glycemic control, hypertension, nephropathy, smoking, and other retinal or vascular contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require established type 1 diabetes mellitus and separately established diabetic retinopathy by appropriate ophthalmic evaluation. Treat the source as population-level prevalence/complication evidence, not automatic individual causation or permission to infer retinopathy from diabetes alone. Preserve diabetes duration, glycemic control, hypertension, nephropathy, smoking, and other retinal or vascular contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established type 1 diabetes mellitus and separately established diabetic retinopathy by appropriate ophthalmic evaluation. Treat the source as population-level prevalence/complication evidence, not automatic individual causation or permission to infer retinopathy from diabetes alone. Preserve diabetes duration, glycemic control, hypertension, nephropathy, smoking, and other retinal or vascular contributors.",
+        "boundarySource": "approved-me5-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of diabetes-mellitus-type-1 and diabetic-retinopathy",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established type 1 diabetes mellitus and separately established diabetic retinopathy by appropriate ophthalmic evaluation. Treat the source as population-level prevalence/complication evidence, not automatic individual causation or permission to infer retinopathy from diabetes alone. Preserve diabetes duration, glycemic control, hypertension, nephropathy, smoking, and other retinal or vascular contributors."
+      ],
+      "sourceIds": [
+        "pmid-31515657"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "9e23d16985a62e604d7ac2e124ebdb092b29cf05e13ad62ee48b681304a66c5d"
     },
     {
       "relationshipId": "rel-diabetes-mellitus-type-2-to-gerd",
@@ -4008,6 +4074,39 @@
       "suggestionObjectHash": "1027c69a6a2416147f4d815850cf40cf90e63175f1bf5dbca1bc130bfb7f9d3e"
     },
     {
+      "relationshipId": "rel-multiple-myeloma-to-anemia",
+      "primaryId": "multiple-myeloma",
+      "targetId": "anemia",
+      "direction": "multiple-myeloma -> anemia",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me5-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented multiple myeloma and separately established anemia. The source supports anemia as a common myeloma manifestation but does not establish that every anemia in a patient with myeloma is attributable to the malignancy. Preserve chronic kidney disease, blood loss, nutritional deficiency, hemolysis, treatment-related marrow suppression, other marrow disorders, and other anemia etiologies as competing or contributing explanations. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented multiple myeloma and separately established anemia. The source supports anemia as a common myeloma manifestation but does not establish that every anemia in a patient with myeloma is attributable to the malignancy. Preserve chronic kidney disease, blood loss, nutritional deficiency, hemolysis, treatment-related marrow suppression, other marrow disorders, and other anemia etiologies as competing or contributing explanations. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented multiple myeloma and separately established anemia. The source supports anemia as a common myeloma manifestation but does not establish that every anemia in a patient with myeloma is attributable to the malignancy. Preserve chronic kidney disease, blood loss, nutritional deficiency, hemolysis, treatment-related marrow suppression, other marrow disorders, and other anemia etiologies as competing or contributing explanations.",
+        "boundarySource": "approved-me5-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of multiple-myeloma and anemia",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented multiple myeloma and separately established anemia. The source supports anemia as a common myeloma manifestation but does not establish that every anemia in a patient with myeloma is attributable to the malignancy. Preserve chronic kidney disease, blood loss, nutritional deficiency, hemolysis, treatment-related marrow suppression, other marrow disorders, and other anemia etiologies as competing or contributing explanations."
+      ],
+      "sourceIds": [
+        "pmid-35103762"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "e7ac2cb1bdbbc56d4595dc4c51f5f5621e737b80d22543805771d9083ee11bd2"
+    },
+    {
       "relationshipId": "rel-myelodysplastic-syndrome-to-leukemia",
       "primaryId": "myelodysplastic-syndrome",
       "targetId": "leukemia",
@@ -4743,6 +4842,39 @@
       "suggestionObjectHash": "1af04c694039ac99257f5b569fc81c4174b143139af64b4f28808c084401cbef"
     },
     {
+      "relationshipId": "rel-polycystic-ovary-syndrome-to-depressive-disorder",
+      "primaryId": "polycystic-ovary-syndrome",
+      "targetId": "depressive-disorder",
+      "direction": "polycystic-ovary-syndrome -> depressive-disorder",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me5-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented polycystic ovary syndrome and a separately established depressive disorder. Treat the study as population-level temporal association/risk evidence, not proof of direct individual causation. Preserve obesity and insulin resistance, infertility, hyperandrogenic symptoms, sleep disturbance, psychosocial factors, medication or treatment effects, and independent psychiatric risk factors as potential contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented polycystic ovary syndrome and a separately established depressive disorder. Treat the study as population-level temporal association/risk evidence, not proof of direct individual causation. Preserve obesity and insulin resistance, infertility, hyperandrogenic symptoms, sleep disturbance, psychosocial factors, medication or treatment effects, and independent psychiatric risk factors as potential contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented polycystic ovary syndrome and a separately established depressive disorder. Treat the study as population-level temporal association/risk evidence, not proof of direct individual causation. Preserve obesity and insulin resistance, infertility, hyperandrogenic symptoms, sleep disturbance, psychosocial factors, medication or treatment effects, and independent psychiatric risk factors as potential contributors.",
+        "boundarySource": "approved-me5-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of polycystic-ovary-syndrome and depressive-disorder",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented polycystic ovary syndrome and a separately established depressive disorder. Treat the study as population-level temporal association/risk evidence, not proof of direct individual causation. Preserve obesity and insulin resistance, infertility, hyperandrogenic symptoms, sleep disturbance, psychosocial factors, medication or treatment effects, and independent psychiatric risk factors as potential contributors."
+      ],
+      "sourceIds": [
+        "pmid-24816764"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "3367e494467a88b5ab10a696b575e1dc652c06bd449b64a7d511874db4ac08e0"
+    },
+    {
       "relationshipId": "rel-polycythemia-vera-to-leukemia",
       "primaryId": "polycythemia-vera",
       "targetId": "leukemia",
@@ -5270,6 +5402,39 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "1dc074d855891014a7fdc7b6f33350216247e6d4830886ebacc6f21eea60afd2"
+    },
+    {
+      "relationshipId": "rel-pulmonary-fibrosis-to-pulmonary-hypertension",
+      "primaryId": "pulmonary-fibrosis",
+      "targetId": "pulmonary-hypertension",
+      "direction": "pulmonary-fibrosis -> pulmonary-hypertension",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me5-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented pulmonary fibrosis and a separately established diagnosis of pulmonary hypertension under accepted clinical/hemodynamic criteria. Do not infer pulmonary hypertension from dyspnea, hypoxemia, reduced DLCO, or a nonspecific echocardiographic estimate alone. Preserve other pulmonary-hypertension causes and groups, including left-heart disease, chronic thromboembolic disease, sleep-disordered breathing, drugs/toxins, and other lung diseases. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented pulmonary fibrosis and a separately established diagnosis of pulmonary hypertension under accepted clinical/hemodynamic criteria. Do not infer pulmonary hypertension from dyspnea, hypoxemia, reduced DLCO, or a nonspecific echocardiographic estimate alone. Preserve other pulmonary-hypertension causes and groups, including left-heart disease, chronic thromboembolic disease, sleep-disordered breathing, drugs/toxins, and other lung diseases. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented pulmonary fibrosis and a separately established diagnosis of pulmonary hypertension under accepted clinical/hemodynamic criteria. Do not infer pulmonary hypertension from dyspnea, hypoxemia, reduced DLCO, or a nonspecific echocardiographic estimate alone. Preserve other pulmonary-hypertension causes and groups, including left-heart disease, chronic thromboembolic disease, sleep-disordered breathing, drugs/toxins, and other lung diseases.",
+        "boundarySource": "approved-me5-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of pulmonary-fibrosis and pulmonary-hypertension",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented pulmonary fibrosis and a separately established diagnosis of pulmonary hypertension under accepted clinical/hemodynamic criteria. Do not infer pulmonary hypertension from dyspnea, hypoxemia, reduced DLCO, or a nonspecific echocardiographic estimate alone. Preserve other pulmonary-hypertension causes and groups, including left-heart disease, chronic thromboembolic disease, sleep-disordered breathing, drugs/toxins, and other lung diseases."
+      ],
+      "sourceIds": [
+        "pmid-33208169"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "9da09a6c8e516f9548c66c63aac4480491f2e238730dca1595ca9222fdde0265"
     },
     {
       "relationshipId": "rel-pulmonary-hypertension-to-congestive-heart-failure",
@@ -6487,6 +6652,6 @@
       "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
     }
   ],
-  "lastUpdatedBy": "ME-4 Qualified-Human Citation Verification",
-  "currentState": "ME4-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-5",
+  "currentState": "ME5-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

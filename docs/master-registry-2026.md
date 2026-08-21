@@ -2,33 +2,31 @@
 
 ## Status
 
-The authoritative registry is at the fully qualified-human-verified Mapping Expansion Batch ME-4 state, derived from implementation commit `196b37b92d76827e4030da1afb25fd4165066cdb`.
+The authoritative registry is at the Mapping Expansion Batch ME-5 **pre-qualified-human-citation-verification** state derived from the formally closed ME-4 baseline `16dbdc93bd4f2650829d46f64d567845f50c81d5`.
 
 ## Current state
 
-- 193 relationships.
-- 119 explicit publication guards / 74 legacy rationale boundaries.
-- 201 live relationship-source uses: 201 verified / 0 pending verification.
-- 178 active source entities: 177 clinical + 1 legal authority.
-- 0 pending-verification source entities.
-- 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
-- 187 total source entities including lineage/history.
+- 198 relationships.
+- 124 explicit publication guards / 74 legacy rationale boundaries.
+- 206 live relationship-source uses: 201 verified / 5 pending verification.
+- 178 active source entities plus 5 pending-verification clinical source entities.
+- 177 active clinical sources + 5 pending clinical sources + 1 active legal authority.
+- 192 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
 
-## ME-4 qualified-human citation verification
+## ME-5 implementation boundary
 
-The five ME-4 sources have been reviewed and promoted:
-- 4 approve-as-implemented.
-- 1 approve-with-narrowing.
-- 0 source replacements.
-- 0 rejects/withdrawals.
+ME-5 adds exactly five rank-2, `sometimes-explored` relationships:
+- `celiac-disease -> osteoporosis`
+- `diabetes-mellitus-type-1 -> diabetic-retinopathy`
+- `pulmonary-fibrosis -> pulmonary-hypertension`
+- `polycystic-ovary-syndrome -> depressive-disorder`
+- `multiple-myeloma -> anemia`
 
-The narrowed relationship is `uveitis -> cataracts` using PMID 37414328. Its publication guard is restricted to documented noninfectious anterior uveitis plus separately established cataract in the affected eye. The broader phrase “or a clinically comparable anterior-inflammatory phenotype” is no longer part of the live verified proposition.
+All five new sources remain `verified:false` in the KB and `pending-verification` in the normalized master-source registry. PubMed PMID/DOI identity confirmation does not authorize citation promotion.
 
-The source identity for PMID 37414328 is unchanged. The narrowed relationship snapshot and raw-reference snapshot are updated to the qualified-human-approved proposition; all other ME-4 source identities and relationship semantics are unchanged.
+No new taxonomy identity, publication-status change, diagnostic/rating code, or `pathwayIntelligence` field was introduced. The approved publication guards remain the live semantic boundaries and population-level association/prevalence evidence is not converted into an individual causation claim.
 
 ## Verification-state contract
 
-Live `verified:true` KB sources map to master status `active`. Mapping approval and PubMed identity matching do not authorize citation promotion. Qualified-human approval is recorded in each promoted master source's `verificationState`, and the audit permits only the documented verification transition (plus the single approved uveitis narrowing).
-
-No new taxonomy identity, publication-status change, rating code, or `pathwayIntelligence` was introduced. A verified source still does not, by itself, establish an individual VA medical nexus.
+A later qualified-human citation review must explicitly disposition each of the five ME-5 sources before any `verified:false -> true` / `pending-verification -> active` transition occurs. Such promotion must atomically update the KB and master-source state and remain subject to the authoritative parity audit.

@@ -1,0 +1,207 @@
+import fs from "node:fs";
+import path from "node:path";
+import { execFileSync } from "node:child_process";
+import { describe, expect, it } from "vitest";
+
+type Row = {
+  primaryId: string;
+  currentTargetId: string;
+  targetId: string;
+  pmid: string;
+  doi: string;
+  citation: string;
+  sourceUrl: string;
+  publicationGuard: string;
+};
+type Ledger = {
+  ledgerStatus: string;
+  implementationResult: {
+    relationshipEdgesAdded: number;
+    sourceRowsAdded: number;
+    sourceRowsVerified: number;
+    pendingMasterSourcesAdded: number;
+    remoteWritesPerformed: boolean;
+    individualCausationClaimed: boolean;
+  };
+  rows: Row[];
+};
+type SourceReference = {
+  citation: string;
+  sourceUrl: string;
+  verified: boolean;
+  verificationScope: string;
+};
+type Suggestion = {
+  conditionId: string;
+  rank: number;
+  prevalence: string;
+  rationale: string;
+  evidenceGaps: string[];
+  pathwayIntelligence?: unknown;
+  sourceReferences: SourceReference[];
+};
+type Mapping = { draft: boolean; suggestions: Suggestion[] };
+
+const root = process.cwd();
+const kbDir = path.join(root, "data", "knowledge-base");
+const ledger = JSON.parse(
+  fs.readFileSync(path.join(root, "docs", "mapping-expansion-me5-approved-implementation-ledger.json"), "utf8"),
+) as Ledger;
+const relRegistry = JSON.parse(
+  fs.readFileSync(path.join(root, "data", "evidence", "master-relationships.json"), "utf8"),
+) as {
+  relationships: Array<{
+    relationshipId: string;
+    primaryId: string;
+    targetId: string;
+    rank: number;
+    prevalence: string;
+    sourceIds: string[];
+    publicationGuard: { status: string; structuredGuardText: string | null };
+  }>;
+};
+const srcRegistry = JSON.parse(
+  fs.readFileSync(path.join(root, "data", "evidence", "master-sources.json"), "utf8"),
+) as {
+  sources: Array<{
+    sourceId: string;
+    status: string;
+    verified: boolean;
+    liveUsageCount: number;
+    pmid?: string;
+    doi?: string;
+  }>;
+};
+
+const load = (id: string): Mapping =>
+  JSON.parse(fs.readFileSync(path.join(kbDir, `${id}.json`), "utf8")) as Mapping;
+
+describe("Mapping Expansion Batch ME-5", () => {
+  it("records exactly five locally implemented relationships without citation promotion", () => {
+    expect(ledger.ledgerStatus).toBe("APPROVED-AND-IMPLEMENTED-LOCALLY");
+    expect(ledger.rows).toHaveLength(5);
+    expect(ledger.implementationResult).toEqual({
+      relationshipEdgesAdded: 5,
+      sourceRowsAdded: 5,
+      sourceRowsVerified: 0,
+      pendingMasterSourcesAdded: 5,
+      remoteWritesPerformed: false,
+      individualCausationClaimed: false,
+    });
+  });
+
+  it("adds each approved row at rank 2 with one pending clinical source and exact guard", () => {
+    for (const row of ledger.rows) {
+      const mapping = load(row.primaryId);
+      expect(mapping.draft).toBe(false);
+      const suggestion = mapping.suggestions.find((candidate) => candidate.conditionId === row.targetId);
+      expect(suggestion).toBeTruthy();
+      if (!suggestion) throw new Error(`missing ME-5 row ${row.primaryId}->${row.targetId}`);
+      expect(suggestion.rank).toBe(2);
+      expect(suggestion.prevalence).toBe("sometimes-explored");
+      expect(suggestion.pathwayIntelligence).toBeUndefined();
+      expect(suggestion.rationale).toContain(row.publicationGuard);
+      expect(suggestion.evidenceGaps.some((gap) => gap.includes(row.publicationGuard))).toBe(true);
+      expect(suggestion.sourceReferences).toHaveLength(1);
+      expect(suggestion.sourceReferences[0]).toMatchObject({
+        verified: false,
+        verificationScope: "clinical-evidence",
+        citation: row.citation,
+        sourceUrl: row.sourceUrl,
+      });
+    }
+  });
+
+  it("installs the same five relationships and pending sources in the authoritative registries", () => {
+    for (const row of ledger.rows) {
+      const rid = `rel-${row.primaryId}-to-${row.targetId}`;
+      const relationship = relRegistry.relationships.find((candidate) => candidate.relationshipId === rid);
+      expect(relationship).toMatchObject({
+        primaryId: row.primaryId,
+        targetId: row.targetId,
+        rank: 2,
+        prevalence: "sometimes-explored",
+        sourceIds: [`pmid-${row.pmid}`],
+      });
+      expect(relationship?.publicationGuard).toMatchObject({
+        status: "explicit",
+        structuredGuardText: row.publicationGuard,
+      });
+
+      const source = srcRegistry.sources.find((candidate) => candidate.sourceId === `pmid-${row.pmid}`);
+      expect(source).toMatchObject({
+        status: "pending-verification",
+        verified: false,
+        liveUsageCount: 1,
+        pmid: row.pmid,
+        doi: row.doi,
+      });
+    }
+  });
+
+  it("pins the 198-edge / 206-reference ME-5 pre-verification state", () => {
+    const files = fs.readdirSync(kbDir).filter((name) => name.endsWith(".json"));
+    const mappings = files.map((name) =>
+      JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
+    );
+    expect(files).toHaveLength(311);
+    expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
+    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(172);
+    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(198);
+    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(96);
+    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(43);
+
+    const refs = mappings.flatMap((mapping) =>
+      mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
+    );
+    expect(refs).toHaveLength(206);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(201);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
+  });
+
+  it("passes citation and master-registry gates in the exact pending-verification state", () => {
+    const citationOutput = execFileSync("npm", ["run", "citations:audit"], {
+      cwd: root,
+      encoding: "utf8",
+    });
+    const citation = JSON.parse(citationOutput.slice(citationOutput.indexOf("{"))) as {
+      references: number;
+      verified: number;
+      retiredVerified: number;
+      verifiedProvenance: number;
+      unverified: number;
+      reviewFindingCount: number;
+      hardFindingCount: number;
+    };
+    expect(citation).toMatchObject({
+      references: 206,
+      verified: 201,
+      retiredVerified: 6,
+      verifiedProvenance: 207,
+      unverified: 5,
+      reviewFindingCount: 5,
+      hardFindingCount: 0,
+    });
+
+    const masterOutput = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], {
+      cwd: root,
+      encoding: "utf8",
+    });
+    const master = JSON.parse(masterOutput) as {
+      status: string;
+      relationships: number;
+      verifiedLiveSourceUses: number;
+      pendingVerificationLiveSourceUses: number;
+      activeSourceEntities: number;
+      pendingVerificationSourceEntities: number;
+    };
+    expect(master).toMatchObject({
+      status: "PASS",
+      relationships: 198,
+      verifiedLiveSourceUses: 201,
+      pendingVerificationLiveSourceUses: 5,
+      activeSourceEntities: 178,
+      pendingVerificationSourceEntities: 5,
+    });
+  });
+});

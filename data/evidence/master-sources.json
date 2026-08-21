@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "196b37b92d76827e4030da1afb25fd4165066cdb",
+  "baselineCommit": "16dbdc93bd4f2650829d46f64d567845f50c81d5",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 201,
+    "liveSourceReferenceUses": 206,
     "activeSourceEntities": 178,
-    "pendingVerificationSourceEntities": 0,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 177,
-    "pendingClinicalSourceEntities": 0,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 187,
+    "totalSourceEntitiesIncludingLineage": 192,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -1380,6 +1380,48 @@
       ]
     },
     {
+      "sourceId": "pmid-28515118",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "28515118",
+      "doi": "10.1161/JAHA.116.005336",
+      "canonicalCitation": "He J, Shlipak M, Anderson A, et al. Risk Factors for Heart Failure in Patients With Chronic Kidney Disease: The CRIC (Chronic Renal Insufficiency Cohort) Study. J Am Heart Assoc. 2017;6(5):e005336. PMID 28515118. doi:10.1161/JAHA.116.005336.",
+      "citationVariants": [
+        "He J, Shlipak M, Anderson A, et al. Risk Factors for Heart Failure in Patients With Chronic Kidney Disease: The CRIC (Chronic Renal Insufficiency Cohort) Study. J Am Heart Assoc. 2017;6(5):e005336. PMID 28515118. doi:10.1161/JAHA.116.005336."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28515118/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/28515118/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-chronic-kidney-disease-to-congestive-heart-failure",
+          "primaryId": "chronic-kidney-disease",
+          "targetId": "congestive-heart-failure",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0c351a9a4988569fe3922c9b3f2b84fd986931c77b69049ac44eb491ed3a02ed"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-28733997",
       "status": "active",
       "kind": "clinical-evidence",
@@ -2307,6 +2349,48 @@
       "rawReferenceHashes": [
         "05c8469bcf4126ae6611563b452b66e1bcffdae3c08653c2b429eed152fa1097"
       ]
+    },
+    {
+      "sourceId": "pmid-32059945",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "32059945",
+      "doi": "10.1016/j.apmr.2020.01.009",
+      "canonicalCitation": "van Gorp M, Hilberink SR, Noten S, et al. Epidemiology of Cerebral Palsy in Adulthood: A Systematic Review and Meta-analysis of the Most Frequently Studied Outcomes. Arch Phys Med Rehabil. 2020;101(6):1041-1052. PMID 32059945. doi:10.1016/j.apmr.2020.01.009.",
+      "citationVariants": [
+        "van Gorp M, Hilberink SR, Noten S, et al. Epidemiology of Cerebral Palsy in Adulthood: A Systematic Review and Meta-analysis of the Most Frequently Studied Outcomes. Arch Phys Med Rehabil. 2020;101(6):1041-1052. PMID 32059945. doi:10.1016/j.apmr.2020.01.009."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32059945/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/32059945/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-cerebral-palsy-to-epilepsy",
+          "primaryId": "cerebral-palsy",
+          "targetId": "epilepsy",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "ea305092b9ad2121eeffc6ee75575acf1f5fdce0997f90c976a80564cd166fc9"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-32088651",
@@ -4157,6 +4241,48 @@
       ]
     },
     {
+      "sourceId": "pmid-37414328",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "37414328",
+      "doi": "10.1016/j.ajo.2023.06.021",
+      "canonicalCitation": "Papaliodis GN, Rosner BA, Dreger KA, et al. Incidence of and Risk Factors for Cataract in Anterior Uveitis. Am J Ophthalmol. 2023;254:221-232. PMID 37414328. doi:10.1016/j.ajo.2023.06.021.",
+      "citationVariants": [
+        "Papaliodis GN, Rosner BA, Dreger KA, et al. Incidence of and Risk Factors for Cataract in Anterior Uveitis. Am J Ophthalmol. 2023;254:221-232. PMID 37414328. doi:10.1016/j.ajo.2023.06.021."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37414328/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37414328/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-uveitis-to-cataracts",
+          "primaryId": "uveitis",
+          "targetId": "cataracts",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "70847603c98004acf89e568b04c70bf5044e1db76239779efdd253d63ff0bb59"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-37574171",
       "status": "active",
       "kind": "clinical-evidence",
@@ -4443,6 +4569,48 @@
       "retiredUses": [],
       "rawReferenceHashes": [
         "aff12f46fb6930ea748f523299d09fa077bc84aee61d9e527f3d54e616667d37"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-38453002",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "38453002",
+      "doi": "10.1016/j.chest.2024.03.002",
+      "canonicalCitation": "O'Meara K, Stone G, Buch E, et al. Atrial Arrhythmias in Patients With Pulmonary Hypertension. Chest. 2024;166(1):201-211. PMID 38453002. doi:10.1016/j.chest.2024.03.002.",
+      "citationVariants": [
+        "O'Meara K, Stone G, Buch E, et al. Atrial Arrhythmias in Patients With Pulmonary Hypertension. Chest. 2024;166(1):201-211. PMID 38453002. doi:10.1016/j.chest.2024.03.002."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38453002/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38453002/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-pulmonary-hypertension-to-cardiac-arrhythmia",
+          "primaryId": "pulmonary-hypertension",
+          "targetId": "cardiac-arrhythmia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "b1cee036c794fbd1ddb6f1725ca1ff00fbd897bd85e932b3426fe34ead423cf1"
       ],
       "verificationState": {
         "qualifiedHumanCitationReviewRequired": false,
@@ -5833,6 +6001,48 @@
       ]
     },
     {
+      "sourceId": "pmid-41308609",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "41308609",
+      "doi": "10.1016/j.comppsych.2025.152649",
+      "canonicalCitation": "Shih YH, Wang SJ, Fan CT, et al. Long-term risk of psychiatric disorders in women with endometriosis: A retrospective cohort study. Compr Psychiatry. 2026;144:152649. PMID 41308609. doi:10.1016/j.comppsych.2025.152649.",
+      "citationVariants": [
+        "Shih YH, Wang SJ, Fan CT, et al. Long-term risk of psychiatric disorders in women with endometriosis: A retrospective cohort study. Compr Psychiatry. 2026;144:152649. PMID 41308609. doi:10.1016/j.comppsych.2025.152649."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41308609/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41308609/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-endometriosis-to-depressive-disorder",
+          "primaryId": "endometriosis",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0886c5fecdbdf2c5c5139027e582342674d77dd99cf98e61bf9784a6d7ebad9e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-41322122",
       "status": "active",
       "kind": "clinical-evidence",
@@ -6339,211 +6549,201 @@
       ]
     },
     {
-      "sourceId": "pmid-28515118",
-      "status": "active",
+      "sourceId": "pmid-24816764",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "28515118",
-      "doi": "10.1161/JAHA.116.005336",
-      "canonicalCitation": "He J, Shlipak M, Anderson A, et al. Risk Factors for Heart Failure in Patients With Chronic Kidney Disease: The CRIC (Chronic Renal Insufficiency Cohort) Study. J Am Heart Assoc. 2017;6(5):e005336. PMID 28515118. doi:10.1161/JAHA.116.005336.",
+      "pmid": "24816764",
+      "doi": "10.1371/journal.pone.0097041",
+      "canonicalCitation": "Hung JH, Hu LY, Tsai SJ, et al. Risk of psychiatric disorders following polycystic ovary syndrome: a nationwide population-based cohort study. PLoS One. 2014;9(5):e97041. PMID 24816764. doi:10.1371/journal.pone.0097041.",
       "citationVariants": [
-        "He J, Shlipak M, Anderson A, et al. Risk Factors for Heart Failure in Patients With Chronic Kidney Disease: The CRIC (Chronic Renal Insufficiency Cohort) Study. J Am Heart Assoc. 2017;6(5):e005336. PMID 28515118. doi:10.1161/JAHA.116.005336."
+        "Hung JH, Hu LY, Tsai SJ, et al. Risk of psychiatric disorders following polycystic ovary syndrome: a nationwide population-based cohort study. PLoS One. 2014;9(5):e97041. PMID 24816764. doi:10.1371/journal.pone.0097041."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28515118/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24816764/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/28515118/"
+        "https://pubmed.ncbi.nlm.nih.gov/24816764/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-20"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-chronic-kidney-disease-to-congestive-heart-failure",
-          "primaryId": "chronic-kidney-disease",
-          "targetId": "congestive-heart-failure",
-          "sourceIndex": 0
-        }
-      ],
-      "retiredUses": [],
-      "rawReferenceHashes": [
-        "0c351a9a4988569fe3922c9b3f2b84fd986931c77b69049ac44eb491ed3a02ed"
-      ],
-      "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
-        "automaticPromotionAuthorized": false,
-        "mappingApprovalDoesNotEqualCitationVerification": true
-      }
-    },
-    {
-      "sourceId": "pmid-32059945",
-      "status": "active",
-      "kind": "clinical-evidence",
-      "pmid": "32059945",
-      "doi": "10.1016/j.apmr.2020.01.009",
-      "canonicalCitation": "van Gorp M, Hilberink SR, Noten S, et al. Epidemiology of Cerebral Palsy in Adulthood: A Systematic Review and Meta-analysis of the Most Frequently Studied Outcomes. Arch Phys Med Rehabil. 2020;101(6):1041-1052. PMID 32059945. doi:10.1016/j.apmr.2020.01.009.",
-      "citationVariants": [
-        "van Gorp M, Hilberink SR, Noten S, et al. Epidemiology of Cerebral Palsy in Adulthood: A Systematic Review and Meta-analysis of the Most Frequently Studied Outcomes. Arch Phys Med Rehabil. 2020;101(6):1041-1052. PMID 32059945. doi:10.1016/j.apmr.2020.01.009."
-      ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32059945/",
-      "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/32059945/"
-      ],
-      "verificationScopes": [
-        "clinical-evidence"
-      ],
-      "verified": true,
-      "sourceCheckedOnValues": [
-        "2026-08-20"
-      ],
-      "liveUsageCount": 1,
-      "liveUses": [
-        {
-          "relationshipId": "rel-cerebral-palsy-to-epilepsy",
-          "primaryId": "cerebral-palsy",
-          "targetId": "epilepsy",
-          "sourceIndex": 0
-        }
-      ],
-      "retiredUses": [],
-      "rawReferenceHashes": [
-        "ea305092b9ad2121eeffc6ee75575acf1f5fdce0997f90c976a80564cd166fc9"
-      ],
-      "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
-        "automaticPromotionAuthorized": false,
-        "mappingApprovalDoesNotEqualCitationVerification": true
-      }
-    },
-    {
-      "sourceId": "pmid-37414328",
-      "status": "active",
-      "kind": "clinical-evidence",
-      "pmid": "37414328",
-      "doi": "10.1016/j.ajo.2023.06.021",
-      "canonicalCitation": "Papaliodis GN, Rosner BA, Dreger KA, et al. Incidence of and Risk Factors for Cataract in Anterior Uveitis. Am J Ophthalmol. 2023;254:221-232. PMID 37414328. doi:10.1016/j.ajo.2023.06.021.",
-      "citationVariants": [
-        "Papaliodis GN, Rosner BA, Dreger KA, et al. Incidence of and Risk Factors for Cataract in Anterior Uveitis. Am J Ophthalmol. 2023;254:221-232. PMID 37414328. doi:10.1016/j.ajo.2023.06.021."
-      ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37414328/",
-      "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/37414328/"
-      ],
-      "verificationScopes": [
-        "clinical-evidence"
-      ],
-      "verified": true,
-      "sourceCheckedOnValues": [
-        "2026-08-20"
-      ],
-      "liveUsageCount": 1,
-      "liveUses": [
-        {
-          "relationshipId": "rel-uveitis-to-cataracts",
-          "primaryId": "uveitis",
-          "targetId": "cataracts",
-          "sourceIndex": 0
-        }
-      ],
-      "retiredUses": [],
-      "rawReferenceHashes": [
-        "70847603c98004acf89e568b04c70bf5044e1db76239779efdd253d63ff0bb59"
-      ],
-      "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
-        "automaticPromotionAuthorized": false,
-        "mappingApprovalDoesNotEqualCitationVerification": true
-      }
-    },
-    {
-      "sourceId": "pmid-38453002",
-      "status": "active",
-      "kind": "clinical-evidence",
-      "pmid": "38453002",
-      "doi": "10.1016/j.chest.2024.03.002",
-      "canonicalCitation": "O'Meara K, Stone G, Buch E, et al. Atrial Arrhythmias in Patients With Pulmonary Hypertension. Chest. 2024;166(1):201-211. PMID 38453002. doi:10.1016/j.chest.2024.03.002.",
-      "citationVariants": [
-        "O'Meara K, Stone G, Buch E, et al. Atrial Arrhythmias in Patients With Pulmonary Hypertension. Chest. 2024;166(1):201-211. PMID 38453002. doi:10.1016/j.chest.2024.03.002."
-      ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38453002/",
-      "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/38453002/"
-      ],
-      "verificationScopes": [
-        "clinical-evidence"
-      ],
-      "verified": true,
-      "sourceCheckedOnValues": [
-        "2026-08-20"
-      ],
-      "liveUsageCount": 1,
-      "liveUses": [
-        {
-          "relationshipId": "rel-pulmonary-hypertension-to-cardiac-arrhythmia",
-          "primaryId": "pulmonary-hypertension",
-          "targetId": "cardiac-arrhythmia",
-          "sourceIndex": 0
-        }
-      ],
-      "retiredUses": [],
-      "rawReferenceHashes": [
-        "b1cee036c794fbd1ddb6f1725ca1ff00fbd897bd85e932b3426fe34ead423cf1"
-      ],
-      "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
-        "automaticPromotionAuthorized": false,
-        "mappingApprovalDoesNotEqualCitationVerification": true
-      }
-    },
-    {
-      "sourceId": "pmid-41308609",
-      "status": "active",
-      "kind": "clinical-evidence",
-      "pmid": "41308609",
-      "doi": "10.1016/j.comppsych.2025.152649",
-      "canonicalCitation": "Shih YH, Wang SJ, Fan CT, et al. Long-term risk of psychiatric disorders in women with endometriosis: A retrospective cohort study. Compr Psychiatry. 2026;144:152649. PMID 41308609. doi:10.1016/j.comppsych.2025.152649.",
-      "citationVariants": [
-        "Shih YH, Wang SJ, Fan CT, et al. Long-term risk of psychiatric disorders in women with endometriosis: A retrospective cohort study. Compr Psychiatry. 2026;144:152649. PMID 41308609. doi:10.1016/j.comppsych.2025.152649."
-      ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41308609/",
-      "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/41308609/"
-      ],
-      "verificationScopes": [
-        "clinical-evidence"
-      ],
-      "verified": true,
-      "sourceCheckedOnValues": [
-        "2026-08-20"
-      ],
-      "liveUsageCount": 1,
-      "liveUses": [
-        {
-          "relationshipId": "rel-endometriosis-to-depressive-disorder",
-          "primaryId": "endometriosis",
+          "relationshipId": "rel-polycystic-ovary-syndrome-to-depressive-disorder",
+          "primaryId": "polycystic-ovary-syndrome",
           "targetId": "depressive-disorder",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "0886c5fecdbdf2c5c5139027e582342674d77dd99cf98e61bf9784a6d7ebad9e"
+        "d6bbb17866649926ae86db41ebebc20d96fd6a09acf3f1cd3251a503ef77eeb4"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-31515657",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31515657",
+      "doi": "10.1007/s10654-019-00560-z",
+      "canonicalCitation": "Li JQ, Welchowski T, Schmid M, et al. Prevalence, incidence and future projection of diabetic eye disease in Europe: a systematic review and meta-analysis. Eur J Epidemiol. 2020;35(1):11-23. PMID 31515657. doi:10.1007/s10654-019-00560-z.",
+      "citationVariants": [
+        "Li JQ, Welchowski T, Schmid M, et al. Prevalence, incidence and future projection of diabetic eye disease in Europe: a systematic review and meta-analysis. Eur J Epidemiol. 2020;35(1):11-23. PMID 31515657. doi:10.1007/s10654-019-00560-z."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31515657/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31515657/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-diabetes-mellitus-type-1-to-diabetic-retinopathy",
+          "primaryId": "diabetes-mellitus-type-1",
+          "targetId": "diabetic-retinopathy",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "735f7351e18ae5d2084d6c89cb2a1913aa4e98c4f168ebcb0f80a4d5f3b55f7b"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-33208169",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "33208169",
+      "doi": "10.1186/s12931-020-01570-2",
+      "canonicalCitation": "Ruffenach G, Hong J, Vaillancourt M, Medzikovic L, Eghbali M. Pulmonary hypertension secondary to pulmonary fibrosis: clinical data, histopathology and molecular insights. Respir Res. 2020;21(1):303. PMID 33208169. doi:10.1186/s12931-020-01570-2.",
+      "citationVariants": [
+        "Ruffenach G, Hong J, Vaillancourt M, Medzikovic L, Eghbali M. Pulmonary hypertension secondary to pulmonary fibrosis: clinical data, histopathology and molecular insights. Respir Res. 2020;21(1):303. PMID 33208169. doi:10.1186/s12931-020-01570-2."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33208169/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/33208169/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-pulmonary-fibrosis-to-pulmonary-hypertension",
+          "primaryId": "pulmonary-fibrosis",
+          "targetId": "pulmonary-hypertension",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f9009a761427fa6dcc300c9b43b562454a77d6852f043dbe25a0c4c3ca6a9854"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-35103762",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35103762",
+      "doi": "10.1001/jama.2022.0003",
+      "canonicalCitation": "Cowan AJ, Green DJ, Kwok M, et al. Diagnosis and Management of Multiple Myeloma: A Review. JAMA. 2022;327(5):464-477. PMID 35103762. doi:10.1001/jama.2022.0003.",
+      "citationVariants": [
+        "Cowan AJ, Green DJ, Kwok M, et al. Diagnosis and Management of Multiple Myeloma: A Review. JAMA. 2022;327(5):464-477. PMID 35103762. doi:10.1001/jama.2022.0003."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35103762/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35103762/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-multiple-myeloma-to-anemia",
+          "primaryId": "multiple-myeloma",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "01d8ffe3c8b2c391b9b664ff4c1ee526f40aabea4537aa517eb5d370959a61ec"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-37730081",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37730081",
+      "doi": "10.1016/j.bone.2023.116913",
+      "canonicalCitation": "Hansen S, Schwarz P, Rumessen J, Linneberg A, Kårhus LL. Osteoporosis and bone fractures in patients with celiac disease: A nationwide cohort study. Bone. 2023;177:116913. PMID 37730081. doi:10.1016/j.bone.2023.116913.",
+      "citationVariants": [
+        "Hansen S, Schwarz P, Rumessen J, Linneberg A, Kårhus LL. Osteoporosis and bone fractures in patients with celiac disease: A nationwide cohort study. Bone. 2023;177:116913. PMID 37730081. doi:10.1016/j.bone.2023.116913."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37730081/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37730081/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-08-20"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-celiac-disease-to-osteoporosis",
+          "primaryId": "celiac-disease",
+          "targetId": "osteoporosis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "067bee4e6490663a003d95526474c8ca97287e414a2c566e2b46d2c16ea1d6c5"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -6813,6 +7013,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "ME-4 Qualified-Human Citation Verification",
-  "currentState": "ME4-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-5",
+  "currentState": "ME5-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

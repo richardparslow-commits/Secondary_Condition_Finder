@@ -25,6 +25,29 @@
           "sourceLocator": "PMID 29280918; PubMed title/abstract retrieved in the master research harvest; guard: Require separately established celiac disease and schizophrenia; use only as association evidence and establish chronology independently."
         }
       ]
+    },
+    {
+      "conditionId": "osteoporosis",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented celiac disease and separately established osteoporosis. Treat the source as population-level association/risk evidence rather than proof that celiac disease caused osteoporosis in an individual. Preserve age, sex/menopausal status, body mass, vitamin D/calcium status, glucocorticoid exposure, smoking, endocrine or renal disease, and other established osteoporosis causes or contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of celiac-disease and osteoporosis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented celiac disease and separately established osteoporosis. Treat the source as population-level association/risk evidence rather than proof that celiac disease caused osteoporosis in an individual. Preserve age, sex/menopausal status, body mass, vitamin D/calcium status, glucocorticoid exposure, smoking, endocrine or renal disease, and other established osteoporosis causes or contributors."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Hansen S, Schwarz P, Rumessen J, Linneberg A, Kårhus LL. Osteoporosis and bone fractures in patients with celiac disease: A nationwide cohort study. Bone. 2023;177:116913. PMID 37730081. doi:10.1016/j.bone.2023.116913.",
+          "note": "Mapping Expansion Batch ME-5 evidence for the bounded celiac-disease to osteoporosis proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37730081/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 37730081; approved ME-5 proposition; guard: Require documented celiac disease and separately established osteoporosis. Treat the source as population-level association/risk evidence rather than proof that celiac disease caused osteoporosis in an individual. Preserve age, sex/menopausal status, body mass, vitamin D/calcium status, glucocorticoid exposure, smoking, endocrine or renal disease, and other established osteoporosis causes or contributors."
+        }
+      ]
     }
   ]
 }
