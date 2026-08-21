@@ -137,7 +137,7 @@ describe("Mapping Expansion Batch ME-4", () => {
     }
   });
 
-  it("preserves ME-4 rows while current state advances to ME-5 pending verification", () => {
+  it("preserves ME-4 rows while current state advances to fully verified ME-5", () => {
     const files = fs.readdirSync(kbDir).filter((name) => name.endsWith(".json"));
     const mappings = files.map((name) =>
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
@@ -156,11 +156,11 @@ describe("Mapping Expansion Batch ME-4", () => {
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
     expect(refs).toHaveLength(206);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(201);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(206);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   });
 
-  it("passes citation and master-registry gates with ME-5 pending", () => {
+  it("passes citation and master-registry gates after ME-5 verification", () => {
     const citationOutput = execFileSync("npm", ["run", "citations:audit"], {
       cwd: root,
       encoding: "utf8",
@@ -175,10 +175,10 @@ describe("Mapping Expansion Batch ME-4", () => {
     };
     expect(citation).toMatchObject({
       references: 206,
-      verified: 201,
-      verifiedProvenance: 207,
-      unverified: 5,
-      reviewFindingCount: 5,
+      verified: 206,
+      verifiedProvenance: 212,
+      unverified: 0,
+      reviewFindingCount: 0,
       hardFindingCount: 0,
     });
 
@@ -194,7 +194,7 @@ describe("Mapping Expansion Batch ME-4", () => {
     expect(master).toMatchObject({
       status: "PASS",
       relationships: 198,
-      pendingVerificationSourceEntities: 5,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });

@@ -161,7 +161,7 @@ describe("Mapping Expansion Batch ME-4 Qualified-Human Citation Verification", (
     expect(source?.pmid).toBe("37414328");
   });
 
-  it("preserves the verified ME-4 citations while ME-5 citations remain pending", () => {
+  it("preserves the verified ME-4 citations after ME-5 qualified-human citation verification", () => {
     const output = execFileSync("npm", ["run", "citations:audit"], {
       cwd: root,
       encoding: "utf8",
@@ -177,16 +177,16 @@ describe("Mapping Expansion Batch ME-4 Qualified-Human Citation Verification", (
     };
     expect(result).toMatchObject({
       references: 206,
-      verified: 201,
+      verified: 206,
       retiredVerified: 6,
-      verifiedProvenance: 207,
-      unverified: 5,
-      reviewFindingCount: 5,
+      verifiedProvenance: 212,
+      unverified: 0,
+      reviewFindingCount: 0,
       hardFindingCount: 0,
     });
   });
 
-  it("passes the authoritative registry audit with ME-5 pending", () => {
+  it("passes the authoritative registry audit after ME-5 verification", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], {
       cwd: root,
       encoding: "utf8",
@@ -202,10 +202,10 @@ describe("Mapping Expansion Batch ME-4 Qualified-Human Citation Verification", (
     expect(result).toMatchObject({
       status: "PASS",
       relationships: 198,
-      verifiedLiveSourceUses: 201,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 178,
-      pendingVerificationSourceEntities: 5,
+      verifiedLiveSourceUses: 206,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 183,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });

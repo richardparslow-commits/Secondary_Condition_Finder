@@ -61,7 +61,7 @@
           "note": "Mapping Expansion Batch ME-5 evidence for the bounded diabetes-mellitus-type-1 to diabetic-retinopathy proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31515657/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 31515657; approved ME-5 proposition; guard: Require established type 1 diabetes mellitus and separately established diabetic retinopathy by appropriate ophthalmic evaluation. Treat the source as population-level prevalence/complication evidence, not automatic individual causation or permission to infer retinopathy from diabetes alone. Preserve diabetes duration, glycemic control, hypertension, nephropathy, smoking, and other retinal or vascular contributors."
         }

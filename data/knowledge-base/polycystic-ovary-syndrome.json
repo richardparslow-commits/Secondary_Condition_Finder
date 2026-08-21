@@ -43,7 +43,7 @@
           "note": "Mapping Expansion Batch ME-5 evidence for the bounded polycystic-ovary-syndrome to depressive-disorder proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24816764/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 24816764; approved ME-5 proposition; guard: Require documented polycystic ovary syndrome and a separately established depressive disorder. Treat the study as population-level temporal association/risk evidence, not proof of direct individual causation. Preserve obesity and insulin resistance, infertility, hyperandrogenic symptoms, sleep disturbance, psychosocial factors, medication or treatment effects, and independent psychiatric risk factors as potential contributors."
         }

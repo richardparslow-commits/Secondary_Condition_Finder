@@ -43,7 +43,7 @@
           "note": "Mapping Expansion Batch ME-5 evidence for the bounded pulmonary-fibrosis to pulmonary-hypertension proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33208169/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 33208169; approved ME-5 proposition; guard: Require documented pulmonary fibrosis and a separately established diagnosis of pulmonary hypertension under accepted clinical/hemodynamic criteria. Do not infer pulmonary hypertension from dyspnea, hypoxemia, reduced DLCO, or a nonspecific echocardiographic estimate alone. Preserve other pulmonary-hypertension causes and groups, including left-heart disease, chronic thromboembolic disease, sleep-disordered breathing, drugs/toxins, and other lung diseases."
         }

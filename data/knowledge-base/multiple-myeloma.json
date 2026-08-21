@@ -43,7 +43,7 @@
           "note": "Mapping Expansion Batch ME-5 evidence for the bounded multiple-myeloma to anemia proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35103762/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 35103762; approved ME-5 proposition; guard: Require documented multiple myeloma and separately established anemia. The source supports anemia as a common myeloma manifestation but does not establish that every anemia in a patient with myeloma is attributable to the malignancy. Preserve chronic kidney disease, blood loss, nutritional deficiency, hemolysis, treatment-related marrow suppression, other marrow disorders, and other anemia etiologies as competing or contributing explanations."
         }

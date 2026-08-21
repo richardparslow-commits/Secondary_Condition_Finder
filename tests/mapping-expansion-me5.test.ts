@@ -90,7 +90,7 @@ describe("Mapping Expansion Batch ME-5", () => {
     });
   });
 
-  it("adds each approved row at rank 2 with one pending clinical source and exact guard", () => {
+  it("preserves each approved row at rank 2 with the exact guard after citation verification", () => {
     for (const row of ledger.rows) {
       const mapping = load(row.primaryId);
       expect(mapping.draft).toBe(false);
@@ -104,7 +104,7 @@ describe("Mapping Expansion Batch ME-5", () => {
       expect(suggestion.evidenceGaps.some((gap) => gap.includes(row.publicationGuard))).toBe(true);
       expect(suggestion.sourceReferences).toHaveLength(1);
       expect(suggestion.sourceReferences[0]).toMatchObject({
-        verified: false,
+        verified: true,
         verificationScope: "clinical-evidence",
         citation: row.citation,
         sourceUrl: row.sourceUrl,
@@ -112,7 +112,7 @@ describe("Mapping Expansion Batch ME-5", () => {
     }
   });
 
-  it("installs the same five relationships and pending sources in the authoritative registries", () => {
+  it("preserves the same five relationships and source identities after citation verification", () => {
     for (const row of ledger.rows) {
       const rid = `rel-${row.primaryId}-to-${row.targetId}`;
       const relationship = relRegistry.relationships.find((candidate) => candidate.relationshipId === rid);
@@ -130,8 +130,8 @@ describe("Mapping Expansion Batch ME-5", () => {
 
       const source = srcRegistry.sources.find((candidate) => candidate.sourceId === `pmid-${row.pmid}`);
       expect(source).toMatchObject({
-        status: "pending-verification",
-        verified: false,
+        status: "active",
+        verified: true,
         liveUsageCount: 1,
         pmid: row.pmid,
         doi: row.doi,
@@ -139,7 +139,7 @@ describe("Mapping Expansion Batch ME-5", () => {
     }
   });
 
-  it("pins the 198-edge / 206-reference ME-5 pre-verification state", () => {
+  it("pins the 198-edge / 206-reference fully verified ME-5 state", () => {
     const files = fs.readdirSync(kbDir).filter((name) => name.endsWith(".json"));
     const mappings = files.map((name) =>
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
@@ -155,11 +155,11 @@ describe("Mapping Expansion Batch ME-5", () => {
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
     expect(refs).toHaveLength(206);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(201);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(206);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   });
 
-  it("passes citation and master-registry gates in the exact pending-verification state", () => {
+  it("passes citation and master-registry gates in the final verified state", () => {
     const citationOutput = execFileSync("npm", ["run", "citations:audit"], {
       cwd: root,
       encoding: "utf8",
@@ -175,11 +175,11 @@ describe("Mapping Expansion Batch ME-5", () => {
     };
     expect(citation).toMatchObject({
       references: 206,
-      verified: 201,
+      verified: 206,
       retiredVerified: 6,
-      verifiedProvenance: 207,
-      unverified: 5,
-      reviewFindingCount: 5,
+      verifiedProvenance: 212,
+      unverified: 0,
+      reviewFindingCount: 0,
       hardFindingCount: 0,
     });
 
@@ -198,10 +198,10 @@ describe("Mapping Expansion Batch ME-5", () => {
     expect(master).toMatchObject({
       status: "PASS",
       relationships: 198,
-      verifiedLiveSourceUses: 201,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 178,
-      pendingVerificationSourceEntities: 5,
+      verifiedLiveSourceUses: 206,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 183,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });
