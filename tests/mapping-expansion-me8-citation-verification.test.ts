@@ -72,10 +72,10 @@ describe("mapping expansion ME-8 qualified-human citation verification", () => {
     const result = JSON.parse(output);
     expect(result).toMatchObject({
       references: 241,
-      verified: 236,
+      verified: 241,
       retiredVerified: 6,
-      verifiedProvenance: 242,
-      unverified: 5,
+      verifiedProvenance: 247,
+      unverified: 0,
       reviewFindingCount: 0,
       hardFindingCount: 0,
       clinicalEvidenceReferences: 236,
@@ -91,12 +91,12 @@ describe("mapping expansion ME-8 qualified-human citation verification", () => {
       status: "PASS",
       relationships: 233,
       liveSourceReferenceUses: 241,
-      verifiedLiveSourceUses: 236,
-      pendingVerificationLiveSourceUses: 5,
-      activeSourceEntities: 213,
-      pendingVerificationSourceEntities: 5,
-      activeClinicalSourceEntities: 212,
-      pendingClinicalSourceEntities: 5,
+      verifiedLiveSourceUses: 241,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 218,
+      pendingVerificationSourceEntities: 0,
+      activeClinicalSourceEntities: 217,
+      pendingClinicalSourceEntities: 0,
       totalSourceEntities: 227,
     });
   });

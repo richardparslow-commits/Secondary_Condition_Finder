@@ -150,7 +150,7 @@ export const assertMasterResolution2026CurrentState = () => {
         expect(me12Suggestion.pathwayIntelligence).toBeUndefined();
         expect(me12Suggestion.sourceReferences).toHaveLength(1);
         const me12SourceReference = me12Suggestion.sourceReferences![0]!;
-        expect(me12SourceReference.verified).toBe(false);
+        expect(me12SourceReference.verified).toBe(true);
         expect(me12SourceReference.verificationScope).toBe(
           "clinical-evidence",
         );
@@ -169,8 +169,8 @@ export const assertMasterResolution2026CurrentState = () => {
     (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []),
   );
   expect(refs).toHaveLength(241);
-  expect(refs.filter((r) => r.verified === true)).toHaveLength(236);
-  expect(refs.filter((r) => r.verified === false)).toHaveLength(5);
+  expect(refs.filter((r) => r.verified === true)).toHaveLength(241);
+  expect(refs.filter((r) => r.verified === false)).toHaveLength(0);
   const clinical = refs.filter((r) => r.verificationScope === "clinical-evidence");
   expect(clinical).toHaveLength(236);
   expect(clinical.filter((r) => Boolean(r.sourceUrl))).toHaveLength(236);

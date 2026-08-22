@@ -24,7 +24,7 @@
           "note": "Mapping Expansion Batch ME-12 evidence for the bounded subdural-hematoma to seizure-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27914224/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 27914224; approved ME-12 source; guard: Require objectively documented subdural hematoma and separately established epileptic seizures or a seizure disorder with compatible chronology. Do not infer a chronic seizure disorder from prophylactic antiseizure medication, transient altered mental status, or an unconfirmed spell. Distinguish an isolated acute symptomatic seizure from recurrent unprovoked seizures or epilepsy when the target diagnosis requires that distinction. Preserve pre-existing epilepsy, additional traumatic brain injury, stroke, infection, metabolic or toxic disturbance, medication or substance effects, and other seizure etiologies."
         }

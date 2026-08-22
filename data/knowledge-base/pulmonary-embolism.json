@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-12 evidence for the bounded pulmonary-embolism to pulmonary-hypertension proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35081846/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 35081846; approved ME-12 source; guard: Restrict the broad pulmonary-hypertension target to separately established chronic thromboembolic pulmonary hypertension after a documented pulmonary embolism. Require persistent mismatched perfusion or chronic thromboembolic/fibrotic obstruction after an appropriate post-PE anticoagulation interval and hemodynamically confirmed pulmonary hypertension under accepted criteria. Do not infer CTEPH from acute PE, persistent dyspnea, hypoxemia, or an echocardiographic estimate alone. Preserve left-heart disease, other lung disease or hypoxia, chronic thromboembolic disease without pulmonary hypertension, drugs/toxins, and other pulmonary-hypertension etiologies as competing explanations."
         }
