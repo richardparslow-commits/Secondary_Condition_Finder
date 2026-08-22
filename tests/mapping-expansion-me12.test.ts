@@ -66,6 +66,6 @@ describe("Mapping Expansion ME-12 local implementation",()=>{
     const refs=maps.flatMap((m)=>m.suggestions.flatMap((s)=>s.sourceReferences||[])); const clinical=refs.filter((r)=>r.verificationScope==="clinical-evidence");
     expect(maps.reduce((n,m)=>n+m.suggestions.length,0)).toBe(243);
     expect(maps.filter((m)=>m.draft===false&&m.suggestions.length===1)).toHaveLength(66); expect(maps.filter((m)=>m.draft===false&&m.suggestions.length>=2)).toHaveLength(73); expect(maps.filter((m)=>m.draft===true&&m.suggestions.length===1)).toHaveLength(16);
-    expect(refs).toHaveLength(251); expect(refs.filter((r)=>r.verified===true)).toHaveLength(246); expect(refs.filter((r)=>r.verified===false)).toHaveLength(5); expect(clinical).toHaveLength(246);
+    expect(refs).toHaveLength(251); expect(refs.filter((r)=>r.verified===true)).toHaveLength(251); expect(refs.filter((r)=>r.verified===false)).toHaveLength(0); expect(clinical).toHaveLength(246);
   });
 });

@@ -66,18 +66,18 @@ describe("Mapping Expansion ME-14 local implementation", () => {
       expect(hits[0]!.pathwayIntelligence).toBeUndefined();
       const refs = hits[0]!.sourceReferences.filter((r: SourceReference) => r.citation?.includes(`PMID ${row.pmid}`));
       expect(refs).toHaveLength(1);
-      expect(refs[0]!.verified).toBe(false);
+      expect(refs[0]!.verified).toBe(true);
       expect(refs[0]!.verificationScope).toBe("clinical-evidence");
     }
   });
 
-  it("registers five publication-state-preserved relationships and five pending sources with exact guards", () => {
+  it("preserves five publication-state-preserved relationships and records five verified active sources with exact guards", () => {
     const rel = load<RelationshipRegistry>(path.join(ROOT, "data", "evidence", "master-relationships.json"));
     const src = load<SourceRegistry>(path.join(ROOT, "data", "evidence", "master-sources.json"));
-    expect(rel.baselineCommit).toBe("e613997b01d91bca8a366d032dcbd914051cde81");
-    expect(rel.currentState).toBe("ME14-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
-    expect(src.baselineCommit).toBe("e613997b01d91bca8a366d032dcbd914051cde81");
-    expect(src.currentState).toBe("ME14-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(rel.baselineCommit).toBe("518524024a8cafeaaca9ebc452138123f816872c");
+    expect(rel.currentState).toBe("ME14-CITATION-VERIFIED");
+    expect(src.baselineCommit).toBe("518524024a8cafeaaca9ebc452138123f816872c");
+    expect(src.currentState).toBe("ME14-CITATION-VERIFIED");
     for (const row of rows) {
       const rr = rel.relationships.filter((r: RelationshipRecord) => r.relationshipId === `rel-${row.primaryId}-to-${row.targetId}`);
       expect(rr).toHaveLength(1);
@@ -86,12 +86,12 @@ describe("Mapping Expansion ME-14 local implementation", () => {
       expect(rr[0]!.publicationGuard.structuredGuardText).toBe(row.guard);
       const ss = src.sources.filter((s: SourceRecord) => s.sourceId === `pmid-${row.pmid}`);
       expect(ss).toHaveLength(1);
-      expect(ss[0]!.status).toBe("pending-verification");
-      expect(ss[0]!.verified).toBe(false);
+      expect(ss[0]!.status).toBe("active");
+      expect(ss[0]!.verified).toBe(true);
     }
   });
 
-  it("pins the ME-14 pending aggregate state", () => {
+  it("pins the ME-14 citation-verified aggregate state", () => {
     const maps = fs.readdirSync(path.join(ROOT, "data", "knowledge-base")).filter((f) => f.endsWith(".json")).map((f) => load<Mapping>(path.join(ROOT, "data", "knowledge-base", f)));
     const refs = maps.flatMap((m: Mapping) => m.suggestions.flatMap((s: Suggestion) => s.sourceReferences || []));
     const clinical = refs.filter((r: SourceReference) => r.verificationScope === "clinical-evidence");
@@ -100,8 +100,8 @@ describe("Mapping Expansion ME-14 local implementation", () => {
     expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length >= 2)).toHaveLength(73);
     expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(16);
     expect(refs).toHaveLength(251);
-    expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(246);
-    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(5);
+    expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(251);
+    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(0);
     expect(clinical).toHaveLength(246);
   });
 });
