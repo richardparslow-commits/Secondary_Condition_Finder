@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "319709691ed51db959073ad0a0dbdc375e2af37a",
+  "baselineCommit": "e1bf62a6e5fde1da4f1938ce3322257662060bff",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 241,
+    "liveSourceReferenceUses": 246,
     "activeSourceEntities": 218,
-    "pendingVerificationSourceEntities": 0,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 217,
-    "pendingClinicalSourceEntities": 0,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 227,
+    "totalSourceEntitiesIncludingLineage": 232,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -1639,6 +1639,48 @@
       ]
     },
     {
+      "sourceId": "pmid-27914224",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "27914224",
+      "doi": "10.1016/j.seizure.2016.11.017",
+      "canonicalCitation": "Won SY, Konczalla J, Dubinski D, et al. A systematic review of epileptic seizures in adults with subdural haematomas. Seizure. 2017;45:28-35. PMID 27914224. doi:10.1016/j.seizure.2016.11.017.",
+      "citationVariants": [
+        "Won SY, Konczalla J, Dubinski D, et al. A systematic review of epileptic seizures in adults with subdural haematomas. Seizure. 2017;45:28-35. PMID 27914224. doi:10.1016/j.seizure.2016.11.017."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27914224/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27914224/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-22"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-subdural-hematoma-to-seizure-disorder",
+          "primaryId": "subdural-hematoma",
+          "targetId": "seizure-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "1c4c147cef6988b51c02953d21118fcdcbc7737036da02f499763773ce53843e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-22",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-28342087",
       "status": "active",
       "kind": "clinical-evidence",
@@ -2040,6 +2082,48 @@
         "qualifiedHumanCitationReviewRequired": false,
         "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
         "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-29681481",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "29681481",
+      "doi": "10.1016/j.ijrobp.2018.03.003",
+      "canonicalCitation": "Pinnix CC, Cella L, Andraos TY, et al. Predictors of Hypothyroidism in Hodgkin Lymphoma Survivors After Intensity Modulated Versus 3-Dimensional Radiation Therapy. Int J Radiat Oncol Biol Phys. 2018;101(3):530-540. PMID 29681481. doi:10.1016/j.ijrobp.2018.03.003.",
+      "citationVariants": [
+        "Pinnix CC, Cella L, Andraos TY, et al. Predictors of Hypothyroidism in Hodgkin Lymphoma Survivors After Intensity Modulated Versus 3-Dimensional Radiation Therapy. Int J Radiat Oncol Biol Phys. 2018;101(3):530-540. PMID 29681481. doi:10.1016/j.ijrobp.2018.03.003."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29681481/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/29681481/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-22"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hodgkins-lymphoma-to-hypothyroidism",
+          "primaryId": "hodgkins-lymphoma",
+          "targetId": "hypothyroidism",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a21ba44df363f90ebc49c0034c6329a47174633f2d51bde104bbf67c24b2e101"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-22",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -3905,6 +3989,48 @@
       ]
     },
     {
+      "sourceId": "pmid-34528623",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "34528623",
+      "doi": "10.4997/JRCPE.2021.319",
+      "canonicalCitation": "Jubber A, Moorthy A. Reactive arthritis: a clinical review. J R Coll Physicians Edinb. 2021;51(3):288-297. PMID 34528623. doi:10.4997/JRCPE.2021.319.",
+      "citationVariants": [
+        "Jubber A, Moorthy A. Reactive arthritis: a clinical review. J R Coll Physicians Edinb. 2021;51(3):288-297. PMID 34528623. doi:10.4997/JRCPE.2021.319."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34528623/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34528623/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-22"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-reactive-arthritis-to-uveitis",
+          "primaryId": "reactive-arthritis",
+          "targetId": "uveitis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "fc0874274dcf47af58e882f9b6d1d64d86f79135034d704b351897633559251b"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-22",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-34596875",
       "status": "active",
       "kind": "clinical-evidence",
@@ -4085,6 +4211,48 @@
       "rawReferenceHashes": [
         "7f931b8c7ba9107466ed7ae38b3188ca6402c74ba2df8af167be1265c7dfc754"
       ]
+    },
+    {
+      "sourceId": "pmid-35081846",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "35081846",
+      "doi": "10.1080/14779072.2022.2034499",
+      "canonicalCitation": "Cannon JE, Jenkins DP, Hoole SP. Chronic thromboembolic pulmonary hypertension: a review of risk factors, management and current challenges. Expert Rev Cardiovasc Ther. 2022;20(1):35-43. PMID 35081846. doi:10.1080/14779072.2022.2034499.",
+      "citationVariants": [
+        "Cannon JE, Jenkins DP, Hoole SP. Chronic thromboembolic pulmonary hypertension: a review of risk factors, management and current challenges. Expert Rev Cardiovasc Ther. 2022;20(1):35-43. PMID 35081846. doi:10.1080/14779072.2022.2034499."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35081846/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35081846/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-22"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-pulmonary-embolism-to-pulmonary-hypertension",
+          "primaryId": "pulmonary-embolism",
+          "targetId": "pulmonary-hypertension",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "fbf96fa7fd8aa1fbfdd651eca697115cf707a759f61dede4ac17f84ccfc84f6d"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-22",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-35103762",
@@ -4702,6 +4870,48 @@
       "rawReferenceHashes": [
         "91415dd2502ccf98b6c07a8e9f972c6d476e37514761a4b067c529cce1d9030d"
       ]
+    },
+    {
+      "sourceId": "pmid-36135184",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "36135184",
+      "doi": "10.3390/cimb44090272",
+      "canonicalCitation": "Ciapa MA, Salaru DL, Statescu C, Sascau RA, Bogdanici CM. Optic Neuritis in Multiple Sclerosis-A Review of Molecular Mechanisms Involved in the Degenerative Process. Curr Issues Mol Biol. 2022;44(9):3959-3979. PMID 36135184. doi:10.3390/cimb44090272.",
+      "citationVariants": [
+        "Ciapa MA, Salaru DL, Statescu C, Sascau RA, Bogdanici CM. Optic Neuritis in Multiple Sclerosis-A Review of Molecular Mechanisms Involved in the Degenerative Process. Curr Issues Mol Biol. 2022;44(9):3959-3979. PMID 36135184. doi:10.3390/cimb44090272."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36135184/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36135184/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-22"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-multiple-sclerosis-to-optic-neuritis",
+          "primaryId": "multiple-sclerosis",
+          "targetId": "optic-neuritis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "386d9200fff1075b3b7198e68f64d99c3c9792c40a6d01c636e53e86abbb9570"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-22",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-36245251",
@@ -8020,211 +8230,201 @@
       ]
     },
     {
-      "sourceId": "pmid-27914224",
-      "status": "active",
+      "sourceId": "pmid-31214762",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "27914224",
-      "doi": "10.1016/j.seizure.2016.11.017",
-      "canonicalCitation": "Won SY, Konczalla J, Dubinski D, et al. A systematic review of epileptic seizures in adults with subdural haematomas. Seizure. 2017;45:28-35. PMID 27914224. doi:10.1016/j.seizure.2016.11.017.",
+      "pmid": "31214762",
+      "doi": "10.1007/s00280-019-03884-5",
+      "canonicalCitation": "Madsen ML, Due H, Ejskjaer N, et al. Aspects of vincristine-induced neuropathy in hematologic malignancies: a systematic review. Cancer Chemother Pharmacol. 2019;84(3):471-485. PMID 31214762. doi:10.1007/s00280-019-03884-5.",
       "citationVariants": [
-        "Won SY, Konczalla J, Dubinski D, et al. A systematic review of epileptic seizures in adults with subdural haematomas. Seizure. 2017;45:28-35. PMID 27914224. doi:10.1016/j.seizure.2016.11.017."
+        "Madsen ML, Due H, Ejskjaer N, et al. Aspects of vincristine-induced neuropathy in hematologic malignancies: a systematic review. Cancer Chemother Pharmacol. 2019;84(3):471-485. PMID 31214762. doi:10.1007/s00280-019-03884-5."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27914224/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31214762/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/27914224/"
+        "https://pubmed.ncbi.nlm.nih.gov/31214762/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-22"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-subdural-hematoma-to-seizure-disorder",
-          "primaryId": "subdural-hematoma",
-          "targetId": "seizure-disorder",
+          "relationshipId": "rel-non-hodgkins-lymphoma-to-peripheral-neuropathy",
+          "primaryId": "non-hodgkins-lymphoma",
+          "targetId": "peripheral-neuropathy",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "1c4c147cef6988b51c02953d21118fcdcbc7737036da02f499763773ce53843e"
+        "5c5793d627458afcbfdb3a12f0a38f4cc1ed156bbf35f79fde1c09390d0803e0"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-22",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-29681481",
-      "status": "active",
+      "sourceId": "pmid-33396373",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "29681481",
-      "doi": "10.1016/j.ijrobp.2018.03.003",
-      "canonicalCitation": "Pinnix CC, Cella L, Andraos TY, et al. Predictors of Hypothyroidism in Hodgkin Lymphoma Survivors After Intensity Modulated Versus 3-Dimensional Radiation Therapy. Int J Radiat Oncol Biol Phys. 2018;101(3):530-540. PMID 29681481. doi:10.1016/j.ijrobp.2018.03.003.",
+      "pmid": "33396373",
+      "doi": "10.3390/jcm10010120",
+      "canonicalCitation": "Helgers RJA, Winkens B, Slangen BFM, Werner HMJ. Lymphedema and Post-Operative Complications after Sentinel Lymph Node Biopsy versus Lymphadenectomy in Endometrial Carcinomas-A Systematic Review and Meta-Analysis. J Clin Med. 2020;10(1):120. PMID 33396373. doi:10.3390/jcm10010120.",
       "citationVariants": [
-        "Pinnix CC, Cella L, Andraos TY, et al. Predictors of Hypothyroidism in Hodgkin Lymphoma Survivors After Intensity Modulated Versus 3-Dimensional Radiation Therapy. Int J Radiat Oncol Biol Phys. 2018;101(3):530-540. PMID 29681481. doi:10.1016/j.ijrobp.2018.03.003."
+        "Helgers RJA, Winkens B, Slangen BFM, Werner HMJ. Lymphedema and Post-Operative Complications after Sentinel Lymph Node Biopsy versus Lymphadenectomy in Endometrial Carcinomas-A Systematic Review and Meta-Analysis. J Clin Med. 2020;10(1):120. PMID 33396373. doi:10.3390/jcm10010120."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29681481/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33396373/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/29681481/"
+        "https://pubmed.ncbi.nlm.nih.gov/33396373/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-22"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-hodgkins-lymphoma-to-hypothyroidism",
-          "primaryId": "hodgkins-lymphoma",
-          "targetId": "hypothyroidism",
+          "relationshipId": "rel-endometrial-cancer-to-lymphedema",
+          "primaryId": "endometrial-cancer",
+          "targetId": "lymphedema",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "a21ba44df363f90ebc49c0034c6329a47174633f2d51bde104bbf67c24b2e101"
+        "8b5d8832c55bb0d58bc5a6f938ceb4de7ead136f834ce8b5383e57c284ff6e5d"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-22",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-34528623",
-      "status": "active",
+      "sourceId": "pmid-34402323",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "34528623",
-      "doi": "10.4997/JRCPE.2021.319",
-      "canonicalCitation": "Jubber A, Moorthy A. Reactive arthritis: a clinical review. J R Coll Physicians Edinb. 2021;51(3):288-297. PMID 34528623. doi:10.4997/JRCPE.2021.319.",
+      "pmid": "34402323",
+      "doi": "10.1177/21925682211037270",
+      "canonicalCitation": "Alomar SA, Maghrabi Y, Baeesa SS, Alves OL. Outcome of Anterior and Posterior Endoscopic Procedures for Cervical Radiculopathy Due to Degenerative Disk Disease: A Systematic Review and Meta-Analysis. Global Spine J. 2022;12(7):1546-1560. PMID 34402323. doi:10.1177/21925682211037270.",
       "citationVariants": [
-        "Jubber A, Moorthy A. Reactive arthritis: a clinical review. J R Coll Physicians Edinb. 2021;51(3):288-297. PMID 34528623. doi:10.4997/JRCPE.2021.319."
+        "Alomar SA, Maghrabi Y, Baeesa SS, Alves OL. Outcome of Anterior and Posterior Endoscopic Procedures for Cervical Radiculopathy Due to Degenerative Disk Disease: A Systematic Review and Meta-Analysis. Global Spine J. 2022;12(7):1546-1560. PMID 34402323. doi:10.1177/21925682211037270."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34528623/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34402323/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/34528623/"
+        "https://pubmed.ncbi.nlm.nih.gov/34402323/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-22"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-reactive-arthritis-to-uveitis",
-          "primaryId": "reactive-arthritis",
-          "targetId": "uveitis",
+          "relationshipId": "rel-degenerative-disc-disease-to-radiculopathy",
+          "primaryId": "degenerative-disc-disease",
+          "targetId": "radiculopathy",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "fc0874274dcf47af58e882f9b6d1d64d86f79135034d704b351897633559251b"
+        "382f411057d4f9689ba92100cfe359dd0e3cf81d760b9f3b59df060ae33063d6"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-22",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-35081846",
-      "status": "active",
+      "sourceId": "pmid-39836004",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "35081846",
-      "doi": "10.1080/14779072.2022.2034499",
-      "canonicalCitation": "Cannon JE, Jenkins DP, Hoole SP. Chronic thromboembolic pulmonary hypertension: a review of risk factors, management and current challenges. Expert Rev Cardiovasc Ther. 2022;20(1):35-43. PMID 35081846. doi:10.1080/14779072.2022.2034499.",
+      "pmid": "39836004",
+      "doi": "10.1097/WON.0000000000001146",
+      "canonicalCitation": "Jiang T, Zhang X, Wu J, Gao L, Tung TH. Risk Factors for Incontinence-Associated Dermatitis in Adults: A Systematic Review and Meta-Analysis. J Wound Ostomy Continence Nurs. 2025;52(1):66-75. PMID 39836004. doi:10.1097/WON.0000000000001146.",
       "citationVariants": [
-        "Cannon JE, Jenkins DP, Hoole SP. Chronic thromboembolic pulmonary hypertension: a review of risk factors, management and current challenges. Expert Rev Cardiovasc Ther. 2022;20(1):35-43. PMID 35081846. doi:10.1080/14779072.2022.2034499."
+        "Jiang T, Zhang X, Wu J, Gao L, Tung TH. Risk Factors for Incontinence-Associated Dermatitis in Adults: A Systematic Review and Meta-Analysis. J Wound Ostomy Continence Nurs. 2025;52(1):66-75. PMID 39836004. doi:10.1097/WON.0000000000001146."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35081846/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39836004/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/35081846/"
+        "https://pubmed.ncbi.nlm.nih.gov/39836004/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-22"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-pulmonary-embolism-to-pulmonary-hypertension",
-          "primaryId": "pulmonary-embolism",
-          "targetId": "pulmonary-hypertension",
+          "relationshipId": "rel-fecal-incontinence-to-dermatitis",
+          "primaryId": "fecal-incontinence",
+          "targetId": "dermatitis",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "fbf96fa7fd8aa1fbfdd651eca697115cf707a759f61dede4ac17f84ccfc84f6d"
+        "c55b2aaad51eeb11410cbb1f0f20a144e9419ece7d8a3d4932735d210d0f052b"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-22",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-36135184",
-      "status": "active",
+      "sourceId": "pmid-39896758",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "36135184",
-      "doi": "10.3390/cimb44090272",
-      "canonicalCitation": "Ciapa MA, Salaru DL, Statescu C, Sascau RA, Bogdanici CM. Optic Neuritis in Multiple Sclerosis-A Review of Molecular Mechanisms Involved in the Degenerative Process. Curr Issues Mol Biol. 2022;44(9):3959-3979. PMID 36135184. doi:10.3390/cimb44090272.",
+      "pmid": "39896758",
+      "doi": "10.1016/j.apjon.2024.100647",
+      "canonicalCitation": "Xu M, Chen S, Liu X, et al. Best evidence for rehabilitation management of urinary incontinence in patients with bladder cancer following orthotopic neobladder reconstruction. Asia Pac J Oncol Nurs. 2024;12:100647. PMID 39896758. doi:10.1016/j.apjon.2024.100647.",
       "citationVariants": [
-        "Ciapa MA, Salaru DL, Statescu C, Sascau RA, Bogdanici CM. Optic Neuritis in Multiple Sclerosis-A Review of Molecular Mechanisms Involved in the Degenerative Process. Curr Issues Mol Biol. 2022;44(9):3959-3979. PMID 36135184. doi:10.3390/cimb44090272."
+        "Xu M, Chen S, Liu X, et al. Best evidence for rehabilitation management of urinary incontinence in patients with bladder cancer following orthotopic neobladder reconstruction. Asia Pac J Oncol Nurs. 2024;12:100647. PMID 39896758. doi:10.1016/j.apjon.2024.100647."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36135184/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39896758/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/36135184/"
+        "https://pubmed.ncbi.nlm.nih.gov/39896758/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-22"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-multiple-sclerosis-to-optic-neuritis",
-          "primaryId": "multiple-sclerosis",
-          "targetId": "optic-neuritis",
+          "relationshipId": "rel-bladder-cancer-to-urinary-incontinence",
+          "primaryId": "bladder-cancer",
+          "targetId": "urinary-incontinence",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "386d9200fff1075b3b7198e68f64d99c3c9792c40a6d01c636e53e86abbb9570"
+        "11b9b7dcd5b24d3d6a0695750d740bdd81c5794a8a222e9c5ad82bbc10933bda"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-22",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -8494,6 +8694,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "ME-12 Qualified-Human Citation Verification",
-  "currentState": "ME12-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-13",
+  "currentState": "ME13-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

@@ -138,3 +138,7 @@ All five ME-11 KB references remain `verified:false`, and their normalized maste
 ## Mapping Expansion ME-12 — local citation-verified state
 
 Five approved relationships were added to draft D0 primaries without changing publication status; the user-approved ME-12 rank-resolution amendment sets each single-suggestion draft D1 relationship to rank 1 to satisfy the standing gapless-rank invariant. Current state: 233 relationships; published P1 66 / P2+ 73; draft D1 6; 241 live references with 241 verified and 0 unverified; 218 active and 0 pending source entities (227 total); 159 explicit publication guards and 74 legacy rationale boundaries. All five ME-12 citations are qualified-human verified exactly as implemented.
+
+## Mapping Expansion ME-13 — local pending-verification state
+
+Five approved rank-1 relationships were added to draft D0 primaries without changing publication status. Current state: 238 relationships; published P1 66 / P2+ 73; draft D1 11; 246 live references with 241 verified and 5 unverified; 218 active and 5 pending source entities (232 total); 164 explicit publication guards and 74 legacy rationale boundaries. Registered-primary coverage is 150/311, leaving 161 primaries; among the remaining primaries, 38 are already used as targets and 123 have never been used in the master registry. The five ME-13 citations remain pending separate qualified-human citation verification.

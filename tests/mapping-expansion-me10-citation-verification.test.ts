@@ -65,10 +65,10 @@ describe("ME-10 qualified-human citation verification", () => {
     const refs = kb.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-    expect(refs).toHaveLength(241);
+    expect(refs).toHaveLength(246);
     expect(refs.filter((reference) => reference.verified === true)).toHaveLength(241);
-    expect(refs.filter((reference) => reference.verified === false)).toHaveLength(0);
+    expect(refs.filter((reference) => reference.verified === false)).toHaveLength(5);
     expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(218);
-    expect(sources.sources.filter((source) => source.status === "pending-verification")).toHaveLength(0);
+    expect(sources.sources.filter((source) => source.status === "pending-verification")).toHaveLength(5);
   });
 });

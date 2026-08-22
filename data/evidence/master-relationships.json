@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "319709691ed51db959073ad0a0dbdc375e2af37a",
+  "baselineCommit": "e1bf62a6e5fde1da4f1938ce3322257662060bff",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 233,
-    "explicitPublicationGuards": 159,
+    "relationships": 238,
+    "explicitPublicationGuards": 164,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -681,6 +681,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "7a534066d82ad1031cdce3ee34c72a93610b715543e0be8571df3803d749ff16"
+    },
+    {
+      "relationshipId": "rel-bladder-cancer-to-urinary-incontinence",
+      "primaryId": "bladder-cancer",
+      "targetId": "urinary-incontinence",
+      "direction": "bladder-cancer -> urinary-incontinence",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me13-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The evidence synthesis addresses urinary incontinence after radical cystectomy with orthotopic neobladder reconstruction for bladder cancer; the approved mapping is restricted to that postoperative treatment pathway. Require documented bladder cancer, radical cystectomy with orthotopic neobladder reconstruction, and persistent separately established postoperative urinary incontinence. Do not infer urinary incontinence from bladder cancer alone, from an ileal conduit without the phenotype, or from transient early postoperative leakage. Preserve urinary tract infection, retention or overflow, neurologic or pelvic-floor disease, preexisting urinary incontinence, and other etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The evidence synthesis addresses urinary incontinence after radical cystectomy with orthotopic neobladder reconstruction for bladder cancer; the approved mapping is restricted to that postoperative treatment pathway. Require documented bladder cancer, radical cystectomy with orthotopic neobladder reconstruction, and persistent separately established postoperative urinary incontinence. Do not infer urinary incontinence from bladder cancer alone, from an ileal conduit without the phenotype, or from transient early postoperative leakage. Preserve urinary tract infection, retention or overflow, neurologic or pelvic-floor disease, preexisting urinary incontinence, and other etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented bladder cancer, radical cystectomy with orthotopic neobladder reconstruction, and persistent separately established postoperative urinary incontinence. Do not infer urinary incontinence from bladder cancer alone, from an ileal conduit without the phenotype, or from transient early postoperative leakage. Preserve urinary tract infection, retention or overflow, neurologic or pelvic-floor disease, preexisting urinary incontinence, and other etiologies as competing explanations.",
+        "boundarySource": "approved-me13-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of bladder-cancer and urinary-incontinence",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: treatment-mediated urinary incontinence after radical cystectomy with orthotopic neobladder reconstruction",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require documented bladder cancer, radical cystectomy with orthotopic neobladder reconstruction, and persistent separately established postoperative urinary incontinence. Do not infer urinary incontinence from bladder cancer alone, from an ileal conduit without the phenotype, or from transient early postoperative leakage. Preserve urinary tract infection, retention or overflow, neurologic or pelvic-floor disease, preexisting urinary incontinence, and other etiologies as competing explanations."
+      ],
+      "sourceIds": [
+        "pmid-39896758"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "b00616cb6511749fd33bf4b3969e0fbc4cd294d3827b09ca145ed9d1fb57ede1"
     },
     {
       "relationshipId": "rel-breast-cancer-to-lymphedema",
@@ -2054,6 +2088,40 @@
       "suggestionObjectHash": "807d7136ae4b14757201da8acfd304638ff88666372c6d6a64bc45e62c94d149"
     },
     {
+      "relationshipId": "rel-degenerative-disc-disease-to-radiculopathy",
+      "primaryId": "degenerative-disc-disease",
+      "targetId": "radiculopathy",
+      "direction": "degenerative-disc-disease -> radiculopathy",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me13-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review and meta-analysis explicitly addresses cervical radiculopathy due to degenerative disc disease; the approved mapping is restricted to anatomically concordant cervical nerve-root disease. Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review and meta-analysis explicitly addresses cervical radiculopathy due to degenerative disc disease; the approved mapping is restricted to anatomically concordant cervical nerve-root disease. Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations.",
+        "boundarySource": "approved-me13-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of degenerative-disc-disease and radiculopathy",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: anatomically concordant cervical radiculopathy due to cervical degenerative disc disease with nerve-root compromise",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations."
+      ],
+      "sourceIds": [
+        "pmid-34402323"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "8982bb0f06734e570605386a39dd5a55cf8afcf148d634059c56cbf77180fa6b"
+    },
+    {
       "relationshipId": "rel-depressive-disorder-to-sleep-apnea",
       "primaryId": "depressive-disorder",
       "targetId": "sleep-apnea",
@@ -2426,6 +2494,40 @@
       "suggestionObjectHash": "e8b484322f3d03bccda5691da046e62a13a49deb01f3fde3caa011f368c0bbfc"
     },
     {
+      "relationshipId": "rel-endometrial-cancer-to-lymphedema",
+      "primaryId": "endometrial-cancer",
+      "targetId": "lymphedema",
+      "direction": "endometrial-cancer -> lymphedema",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me13-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. In endometrial carcinoma, pelvic or para-aortic lymph-node dissection is associated with lower-extremity lymphedema; the approved mapping is restricted to treatment-mediated lymphedema after lymphatic-disrupting nodal treatment. Require documented endometrial cancer, pelvic or para-aortic lymphatic-disrupting nodal treatment, and separately established lower-extremity lymphedema afterward. Do not infer lymphedema from endometrial cancer alone or from isolated edema. Preserve deep-vein thrombosis or other venous disease, cardiac or renal edema, primary lymphedema, infection, and other unrelated causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. In endometrial carcinoma, pelvic or para-aortic lymph-node dissection is associated with lower-extremity lymphedema; the approved mapping is restricted to treatment-mediated lymphedema after lymphatic-disrupting nodal treatment. Require documented endometrial cancer, pelvic or para-aortic lymphatic-disrupting nodal treatment, and separately established lower-extremity lymphedema afterward. Do not infer lymphedema from endometrial cancer alone or from isolated edema. Preserve deep-vein thrombosis or other venous disease, cardiac or renal edema, primary lymphedema, infection, and other unrelated causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented endometrial cancer, pelvic or para-aortic lymphatic-disrupting nodal treatment, and separately established lower-extremity lymphedema afterward. Do not infer lymphedema from endometrial cancer alone or from isolated edema. Preserve deep-vein thrombosis or other venous disease, cardiac or renal edema, primary lymphedema, infection, and other unrelated causes as competing explanations.",
+        "boundarySource": "approved-me13-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of endometrial-cancer and lymphedema",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: treatment-mediated lower-extremity lymphedema after lymphatic-disrupting nodal treatment for endometrial cancer",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require documented endometrial cancer, pelvic or para-aortic lymphatic-disrupting nodal treatment, and separately established lower-extremity lymphedema afterward. Do not infer lymphedema from endometrial cancer alone or from isolated edema. Preserve deep-vein thrombosis or other venous disease, cardiac or renal edema, primary lymphedema, infection, and other unrelated causes as competing explanations."
+      ],
+      "sourceIds": [
+        "pmid-33396373"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "21accd3fc25621fcd0ee97b73c2cab899c69be73591d1ee6a9a7c990d7a20523"
+    },
+    {
       "relationshipId": "rel-endometriosis-to-ovarian-cancer",
       "primaryId": "endometriosis",
       "targetId": "ovarian-cancer",
@@ -2659,6 +2761,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "a8f1b23bbe790d7c2e79d50b2a3b87020d6c8039a81cd82ce23cd98742caff13"
+    },
+    {
+      "relationshipId": "rel-fecal-incontinence-to-dermatitis",
+      "primaryId": "fecal-incontinence",
+      "targetId": "dermatitis",
+      "direction": "fecal-incontinence -> dermatitis",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me13-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. A systematic review and meta-analysis identifies fecal incontinence as an etiologic risk factor for incontinence-associated dermatitis; the approved mapping is restricted to moisture-associated skin damage in the exposed distribution. Require fecal incontinence with repeated or prolonged perineal skin exposure and separately diagnosed moisture-associated or incontinence-associated dermatitis in the exposed distribution. Do not generalize this relationship to eczema, fungal disease, allergic or irritant dermatitis from unrelated agents, pressure injury, cellulitis, or a nonspecific rash. Preserve those alternative skin diagnoses and other causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. A systematic review and meta-analysis identifies fecal incontinence as an etiologic risk factor for incontinence-associated dermatitis; the approved mapping is restricted to moisture-associated skin damage in the exposed distribution. Require fecal incontinence with repeated or prolonged perineal skin exposure and separately diagnosed moisture-associated or incontinence-associated dermatitis in the exposed distribution. Do not generalize this relationship to eczema, fungal disease, allergic or irritant dermatitis from unrelated agents, pressure injury, cellulitis, or a nonspecific rash. Preserve those alternative skin diagnoses and other causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require fecal incontinence with repeated or prolonged perineal skin exposure and separately diagnosed moisture-associated or incontinence-associated dermatitis in the exposed distribution. Do not generalize this relationship to eczema, fungal disease, allergic or irritant dermatitis from unrelated agents, pressure injury, cellulitis, or a nonspecific rash. Preserve those alternative skin diagnoses and other causes as competing explanations.",
+        "boundarySource": "approved-me13-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of fecal-incontinence and dermatitis",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: phenotype-restricted incontinence-associated dermatitis from repeated or prolonged fecal exposure",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require fecal incontinence with repeated or prolonged perineal skin exposure and separately diagnosed moisture-associated or incontinence-associated dermatitis in the exposed distribution. Do not generalize this relationship to eczema, fungal disease, allergic or irritant dermatitis from unrelated agents, pressure injury, cellulitis, or a nonspecific rash. Preserve those alternative skin diagnoses and other causes as competing explanations."
+      ],
+      "sourceIds": [
+        "pmid-39836004"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "d2ed14080f830d13b4246398f6bce6f8383b5d02151c54197c0518f5f5961d1a"
     },
     {
       "relationshipId": "rel-femoroacetabular-impingement-to-osteoarthritis",
@@ -5052,6 +5188,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "fb7c11fba92ced593bf58a55972353dd55222f42d8a10fe9b6921d352044ef1e"
+    },
+    {
+      "relationshipId": "rel-non-hodgkins-lymphoma-to-peripheral-neuropathy",
+      "primaryId": "non-hodgkins-lymphoma",
+      "targetId": "peripheral-neuropathy",
+      "direction": "non-hodgkins-lymphoma -> peripheral-neuropathy",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me13-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. Vincristine used for hematologic malignancies, including non-Hodgkin lymphoma, can cause progressive peripheral sensory and motor neuropathy; the approved mapping is restricted to a documented neurotoxic treatment exposure with compatible chronology. Require documented non-Hodgkin lymphoma, a documented vincristine-containing or otherwise specifically neurotoxic lymphoma regimen, compatible chronology, and separately established peripheral neuropathy. Do not infer peripheral neuropathy from non-Hodgkin lymphoma itself. Preserve diabetic, nutritional, alcohol-related, compressive, paraproteinemic, infectious, hereditary, and other neuropathy etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. Vincristine used for hematologic malignancies, including non-Hodgkin lymphoma, can cause progressive peripheral sensory and motor neuropathy; the approved mapping is restricted to a documented neurotoxic treatment exposure with compatible chronology. Require documented non-Hodgkin lymphoma, a documented vincristine-containing or otherwise specifically neurotoxic lymphoma regimen, compatible chronology, and separately established peripheral neuropathy. Do not infer peripheral neuropathy from non-Hodgkin lymphoma itself. Preserve diabetic, nutritional, alcohol-related, compressive, paraproteinemic, infectious, hereditary, and other neuropathy etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented non-Hodgkin lymphoma, a documented vincristine-containing or otherwise specifically neurotoxic lymphoma regimen, compatible chronology, and separately established peripheral neuropathy. Do not infer peripheral neuropathy from non-Hodgkin lymphoma itself. Preserve diabetic, nutritional, alcohol-related, compressive, paraproteinemic, infectious, hereditary, and other neuropathy etiologies as competing explanations.",
+        "boundarySource": "approved-me13-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of non-hodgkins-lymphoma and peripheral-neuropathy",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: treatment-mediated peripheral neuropathy after vincristine-containing or otherwise specifically neurotoxic lymphoma treatment",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require documented non-Hodgkin lymphoma, a documented vincristine-containing or otherwise specifically neurotoxic lymphoma regimen, compatible chronology, and separately established peripheral neuropathy. Do not infer peripheral neuropathy from non-Hodgkin lymphoma itself. Preserve diabetic, nutritional, alcohol-related, compressive, paraproteinemic, infectious, hereditary, and other neuropathy etiologies as competing explanations."
+      ],
+      "sourceIds": [
+        "pmid-31214762"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "5360e1ef3c1757590414daa94604e2623ba40594bf099628d94f534dd2e2a46a"
     },
     {
       "relationshipId": "rel-ocd-to-migraine-headaches",
@@ -7842,6 +8012,6 @@
       "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
     }
   ],
-  "lastUpdatedBy": "ME-12 Qualified-Human Citation Verification",
-  "currentState": "ME12-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-13",
+  "currentState": "ME13-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }
