@@ -147,16 +147,16 @@ describe("Mapping Expansion Batch ME-5", () => {
     expect(files).toHaveLength(311);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(172);
-    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(228);
+    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(233);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(66);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(73);
 
     const refs = mappings.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-    expect(refs).toHaveLength(236);
+    expect(refs).toHaveLength(241);
     expect(refs.filter((ref) => ref.verified === true)).toHaveLength(236);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
   });
 
   it("passes citation and master-registry gates after ME-7 verification", () => {
@@ -174,11 +174,11 @@ describe("Mapping Expansion Batch ME-5", () => {
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 236,
+      references: 241,
       verified: 236,
       retiredVerified: 6,
       verifiedProvenance: 242,
-      unverified: 0,
+      unverified: 5,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -197,11 +197,11 @@ describe("Mapping Expansion Batch ME-5", () => {
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 228,
+      relationships: 233,
       verifiedLiveSourceUses: 236,
-      pendingVerificationLiveSourceUses: 0,
+      pendingVerificationLiveSourceUses: 5,
       activeSourceEntities: 213,
-      pendingVerificationSourceEntities: 0,
+      pendingVerificationSourceEntities: 5,
     });
   });
 });

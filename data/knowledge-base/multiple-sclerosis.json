@@ -4,5 +4,30 @@
   "todo": [
     "The prior depressive-disorder suggestion was withdrawn because the cited systematic review/meta-analysis estimates depression prevalence in multiple sclerosis and reports substantial unexplained heterogeneity but does not establish an MS-to-depression causal or aggravation pathway. Reconsider only with stronger directional evidence and individual development addressing MS phenotype, disability, fatigue, pain, sleep, cognition, treatment, psychosocial factors, and independent psychiatric causes."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "optic-neuritis",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The review describes optic neuritis as a frequent ocular manifestation of multiple sclerosis and summarizes inflammatory, demyelinating, axonal-degeneration, and remyelination mechanisms linking the two conditions. Require established multiple sclerosis and a separately diagnosed optic-neuritis phenotype compatible with inflammatory demyelinating optic neuropathy. Do not infer optic neuritis from nonspecific visual loss, eye pain, abnormal imaging, or multiple-sclerosis diagnosis alone. Preserve neuromyelitis optica spectrum disorder, MOG-antibody disease, ischemic, infectious, compressive, toxic/nutritional, hereditary, and other optic-neuropathy causes. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of multiple-sclerosis and optic-neuritis",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/claim boundary: demyelinating ocular manifestation of multiple sclerosis",
+        "Assessment of competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require established multiple sclerosis and a separately diagnosed optic-neuritis phenotype compatible with inflammatory demyelinating optic neuropathy. Do not infer optic neuritis from nonspecific visual loss, eye pain, abnormal imaging, or multiple-sclerosis diagnosis alone. Preserve neuromyelitis optica spectrum disorder, MOG-antibody disease, ischemic, infectious, compressive, toxic/nutritional, hereditary, and other optic-neuropathy causes."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Ciapa MA, Salaru DL, Statescu C, Sascau RA, Bogdanici CM. Optic Neuritis in Multiple Sclerosis-A Review of Molecular Mechanisms Involved in the Degenerative Process. Curr Issues Mol Biol. 2022;44(9):3959-3979. PMID 36135184. doi:10.3390/cimb44090272.",
+          "note": "Mapping Expansion Batch ME-12 evidence for the bounded multiple-sclerosis to optic-neuritis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36135184/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-22",
+          "sourceLocator": "PMID 36135184; approved ME-12 source; guard: Require established multiple sclerosis and a separately diagnosed optic-neuritis phenotype compatible with inflammatory demyelinating optic neuropathy. Do not infer optic neuritis from nonspecific visual loss, eye pain, abnormal imaging, or multiple-sclerosis diagnosis alone. Preserve neuromyelitis optica spectrum disorder, MOG-antibody disease, ischemic, infectious, compressive, toxic/nutritional, hereditary, and other optic-neuropathy causes."
+        }
+      ]
+    }
+  ]
 }

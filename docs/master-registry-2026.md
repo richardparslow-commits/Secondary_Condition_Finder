@@ -6,8 +6,8 @@ The authoritative registry is at the Mapping Expansion Batch ME-11 pre-qualified
 
 ## Current state
 
-- 228 relationships.
-- 154 explicit publication guards / 74 legacy rationale boundaries.
+- 233 relationships.
+- 159 explicit publication guards / 74 legacy rationale boundaries.
 - 236 live relationship-source uses: 236 verified / 0 pending verification.
 - 213 active source entities: 207 clinical + 1 legal authority.
 - 0 pending-verification clinical source entities.
@@ -134,3 +134,7 @@ No relationship semantic, phenotype restriction, publication guard, citation tex
 - `bronchiolitis -> pulmonary-hypertension` / PMID 42444963: Use only for bronchiolitis obliterans syndrome/chronic lung allograft dysfunction after lung transplantation, with separately diagnosed pulmonary hypertension. Do not generalize to ordinary acute bronchiolitis. Preserve vascular/anastomotic complications, recurrent idiopathic pulmonary arterial hypertension, recurrent thromboembolic disease, left-heart/diastolic dysfunction, underlying transplant indication and other pulmonary-hypertension causes. The review calls for prospective longitudinal studies; do not state individual causation.
 
 All five ME-11 KB references remain `verified:false`, and their normalized master sources remain `pending-verification`. The three approved retrieval-source replacements are already resolved to the final PMIDs above; no additional source substitution is authorized. Mapping approval and PubMed identity matching do not authorize citation promotion. No identity, rank-1, taxonomy, publication-state, or pathwayIntelligence change is part of ME-11 implementation.
+
+## Mapping Expansion ME-12 — local pending-verification state
+
+Five approved relationships were added to draft D0 primaries without changing publication status; the user-approved ME-12 rank-resolution amendment sets each single-suggestion draft D1 relationship to rank 1 to satisfy the standing gapless-rank invariant. Current state: 233 relationships; published P1 66 / P2+ 73; draft D1 6; 241 live references with 236 verified and 5 unverified; 213 active and 5 pending source entities (227 total); 159 explicit publication guards and 74 legacy rationale boundaries. The five ME-12 citations remain pending separate qualified-human citation verification.

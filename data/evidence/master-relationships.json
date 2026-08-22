@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "67dbb881b88a46b058ed6ed5ba0a5f965ae6b9c6",
+  "baselineCommit": "dc9502a81c93740b7c9cbd5f0ef9c1f44fc88898",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 228,
-    "explicitPublicationGuards": 154,
+    "relationships": 233,
+    "explicitPublicationGuards": 159,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -3395,6 +3395,40 @@
       "suggestionObjectHash": "cbcca7512e324a6616910551d831efac2d25d26ee9286fcbf35d8de5131afde9"
     },
     {
+      "relationshipId": "rel-hodgkins-lymphoma-to-hypothyroidism",
+      "primaryId": "hodgkins-lymphoma",
+      "targetId": "hypothyroidism",
+      "direction": "hodgkins-lymphoma -> hypothyroidism",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me12-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The study evaluates treatment-induced hypothyroidism after involved-site radiation therapy for Hodgkin lymphoma and shows that thyroid radiation dose-volume measures predict subsequent hypothyroidism risk. Require documented Hodgkin lymphoma, documented thyroid-exposing neck or supradiaphragmatic radiation treatment consistent with the source phenotype, and separately established hypothyroidism after treatment with compatible chronology. Do not infer hypothyroidism from Hodgkin lymphoma or chemotherapy alone. Preserve autoimmune thyroid disease, thyroid surgery or radioiodine, medications, pituitary or hypothalamic disease, congenital thyroid disease, and other causes of hypothyroidism. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The study evaluates treatment-induced hypothyroidism after involved-site radiation therapy for Hodgkin lymphoma and shows that thyroid radiation dose-volume measures predict subsequent hypothyroidism risk. Require documented Hodgkin lymphoma, documented thyroid-exposing neck or supradiaphragmatic radiation treatment consistent with the source phenotype, and separately established hypothyroidism after treatment with compatible chronology. Do not infer hypothyroidism from Hodgkin lymphoma or chemotherapy alone. Preserve autoimmune thyroid disease, thyroid surgery or radioiodine, medications, pituitary or hypothalamic disease, congenital thyroid disease, and other causes of hypothyroidism. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require documented Hodgkin lymphoma, documented thyroid-exposing neck or supradiaphragmatic radiation treatment consistent with the source phenotype, and separately established hypothyroidism after treatment with compatible chronology. Do not infer hypothyroidism from Hodgkin lymphoma or chemotherapy alone. Preserve autoimmune thyroid disease, thyroid surgery or radioiodine, medications, pituitary or hypothalamic disease, congenital thyroid disease, and other causes of hypothyroidism.",
+        "boundarySource": "approved-me12-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of hodgkins-lymphoma and hypothyroidism",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/claim boundary: treatment-mediated hypothyroidism after thyroid-exposing Hodgkin lymphoma radiotherapy",
+        "Assessment of competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require documented Hodgkin lymphoma, documented thyroid-exposing neck or supradiaphragmatic radiation treatment consistent with the source phenotype, and separately established hypothyroidism after treatment with compatible chronology. Do not infer hypothyroidism from Hodgkin lymphoma or chemotherapy alone. Preserve autoimmune thyroid disease, thyroid surgery or radioiodine, medications, pituitary or hypothalamic disease, congenital thyroid disease, and other causes of hypothyroidism."
+      ],
+      "sourceIds": [
+        "pmid-29681481"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "7a85a6a811402c771d475375e183aebebc47d9d64be14437e5763abde5e54612"
+    },
+    {
       "relationshipId": "rel-hyperaldosteronism-to-hypertension",
       "primaryId": "hyperaldosteronism",
       "targetId": "hypertension",
@@ -4751,6 +4785,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "e7ac2cb1bdbbc56d4595dc4c51f5f5621e737b80d22543805771d9083ee11bd2"
+    },
+    {
+      "relationshipId": "rel-multiple-sclerosis-to-optic-neuritis",
+      "primaryId": "multiple-sclerosis",
+      "targetId": "optic-neuritis",
+      "direction": "multiple-sclerosis -> optic-neuritis",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me12-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The review describes optic neuritis as a frequent ocular manifestation of multiple sclerosis and summarizes inflammatory, demyelinating, axonal-degeneration, and remyelination mechanisms linking the two conditions. Require established multiple sclerosis and a separately diagnosed optic-neuritis phenotype compatible with inflammatory demyelinating optic neuropathy. Do not infer optic neuritis from nonspecific visual loss, eye pain, abnormal imaging, or multiple-sclerosis diagnosis alone. Preserve neuromyelitis optica spectrum disorder, MOG-antibody disease, ischemic, infectious, compressive, toxic/nutritional, hereditary, and other optic-neuropathy causes. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The review describes optic neuritis as a frequent ocular manifestation of multiple sclerosis and summarizes inflammatory, demyelinating, axonal-degeneration, and remyelination mechanisms linking the two conditions. Require established multiple sclerosis and a separately diagnosed optic-neuritis phenotype compatible with inflammatory demyelinating optic neuropathy. Do not infer optic neuritis from nonspecific visual loss, eye pain, abnormal imaging, or multiple-sclerosis diagnosis alone. Preserve neuromyelitis optica spectrum disorder, MOG-antibody disease, ischemic, infectious, compressive, toxic/nutritional, hereditary, and other optic-neuropathy causes. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established multiple sclerosis and a separately diagnosed optic-neuritis phenotype compatible with inflammatory demyelinating optic neuropathy. Do not infer optic neuritis from nonspecific visual loss, eye pain, abnormal imaging, or multiple-sclerosis diagnosis alone. Preserve neuromyelitis optica spectrum disorder, MOG-antibody disease, ischemic, infectious, compressive, toxic/nutritional, hereditary, and other optic-neuropathy causes.",
+        "boundarySource": "approved-me12-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of multiple-sclerosis and optic-neuritis",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/claim boundary: demyelinating ocular manifestation of multiple sclerosis",
+        "Assessment of competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require established multiple sclerosis and a separately diagnosed optic-neuritis phenotype compatible with inflammatory demyelinating optic neuropathy. Do not infer optic neuritis from nonspecific visual loss, eye pain, abnormal imaging, or multiple-sclerosis diagnosis alone. Preserve neuromyelitis optica spectrum disorder, MOG-antibody disease, ischemic, infectious, compressive, toxic/nutritional, hereditary, and other optic-neuropathy causes."
+      ],
+      "sourceIds": [
+        "pmid-36135184"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "1076ecd2100c6d6fd33b20c43938217581e904a8c3bc4042497792d55470406a"
     },
     {
       "relationshipId": "rel-myelodysplastic-syndrome-to-leukemia",
@@ -6255,6 +6323,40 @@
       "suggestionObjectHash": "809d40c09f40e44308718d009ad53d903c2d7d94ae385a685b7c2c57b129136c"
     },
     {
+      "relationshipId": "rel-pulmonary-embolism-to-pulmonary-hypertension",
+      "primaryId": "pulmonary-embolism",
+      "targetId": "pulmonary-hypertension",
+      "direction": "pulmonary-embolism -> pulmonary-hypertension",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me12-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The review describes chronic thromboembolic pulmonary hypertension (CTEPH) as an under-diagnosed complication of acute pulmonary embolism caused by incomplete embolus resolution and specifies perfusion, imaging, anticoagulation-interval, and right-heart-catheterization diagnostic elements. Restrict the broad pulmonary-hypertension target to separately established chronic thromboembolic pulmonary hypertension after a documented pulmonary embolism. Require persistent mismatched perfusion or chronic thromboembolic/fibrotic obstruction after an appropriate post-PE anticoagulation interval and hemodynamically confirmed pulmonary hypertension under accepted criteria. Do not infer CTEPH from acute PE, persistent dyspnea, hypoxemia, or an echocardiographic estimate alone. Preserve left-heart disease, other lung disease or hypoxia, chronic thromboembolic disease without pulmonary hypertension, drugs/toxins, and other pulmonary-hypertension etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The review describes chronic thromboembolic pulmonary hypertension (CTEPH) as an under-diagnosed complication of acute pulmonary embolism caused by incomplete embolus resolution and specifies perfusion, imaging, anticoagulation-interval, and right-heart-catheterization diagnostic elements. Restrict the broad pulmonary-hypertension target to separately established chronic thromboembolic pulmonary hypertension after a documented pulmonary embolism. Require persistent mismatched perfusion or chronic thromboembolic/fibrotic obstruction after an appropriate post-PE anticoagulation interval and hemodynamically confirmed pulmonary hypertension under accepted criteria. Do not infer CTEPH from acute PE, persistent dyspnea, hypoxemia, or an echocardiographic estimate alone. Preserve left-heart disease, other lung disease or hypoxia, chronic thromboembolic disease without pulmonary hypertension, drugs/toxins, and other pulmonary-hypertension etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Restrict the broad pulmonary-hypertension target to separately established chronic thromboembolic pulmonary hypertension after a documented pulmonary embolism. Require persistent mismatched perfusion or chronic thromboembolic/fibrotic obstruction after an appropriate post-PE anticoagulation interval and hemodynamically confirmed pulmonary hypertension under accepted criteria. Do not infer CTEPH from acute PE, persistent dyspnea, hypoxemia, or an echocardiographic estimate alone. Preserve left-heart disease, other lung disease or hypoxia, chronic thromboembolic disease without pulmonary hypertension, drugs/toxins, and other pulmonary-hypertension etiologies as competing explanations.",
+        "boundarySource": "approved-me12-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of pulmonary-embolism and pulmonary-hypertension",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/claim boundary: phenotype-restricted chronic thromboembolic complication after pulmonary embolism",
+        "Assessment of competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Restrict the broad pulmonary-hypertension target to separately established chronic thromboembolic pulmonary hypertension after a documented pulmonary embolism. Require persistent mismatched perfusion or chronic thromboembolic/fibrotic obstruction after an appropriate post-PE anticoagulation interval and hemodynamically confirmed pulmonary hypertension under accepted criteria. Do not infer CTEPH from acute PE, persistent dyspnea, hypoxemia, or an echocardiographic estimate alone. Preserve left-heart disease, other lung disease or hypoxia, chronic thromboembolic disease without pulmonary hypertension, drugs/toxins, and other pulmonary-hypertension etiologies as competing explanations."
+      ],
+      "sourceIds": [
+        "pmid-35081846"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "bd572b2d890609a87f0ff93ef8d2ac19bc6aa215635634dd1e755c08cdb4e2b4"
+    },
+    {
       "relationshipId": "rel-pulmonary-fibrosis-to-respiratory-cancer",
       "primaryId": "pulmonary-fibrosis",
       "targetId": "respiratory-cancer",
@@ -6454,6 +6556,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "a2fd7036e9cd7acb83c59c3dbac66e4eb167bc76882faff774d83c11d8437e24"
+    },
+    {
+      "relationshipId": "rel-reactive-arthritis-to-uveitis",
+      "primaryId": "reactive-arthritis",
+      "targetId": "uveitis",
+      "direction": "reactive-arthritis -> uveitis",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me12-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The clinical review identifies anterior uveitis among the extra-articular features often seen with reactive arthritis. Require established reactive arthritis and separately documented anterior uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from reactive arthritis, conjunctivitis, red eye, ocular irritation, or photophobia alone. Preserve infectious uveitis, HLA-B27-associated uveitis from another spondyloarthritis, sarcoidosis, inflammatory bowel disease, medication-related disease, trauma, and other ocular inflammatory causes. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The clinical review identifies anterior uveitis among the extra-articular features often seen with reactive arthritis. Require established reactive arthritis and separately documented anterior uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from reactive arthritis, conjunctivitis, red eye, ocular irritation, or photophobia alone. Preserve infectious uveitis, HLA-B27-associated uveitis from another spondyloarthritis, sarcoidosis, inflammatory bowel disease, medication-related disease, trauma, and other ocular inflammatory causes. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established reactive arthritis and separately documented anterior uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from reactive arthritis, conjunctivitis, red eye, ocular irritation, or photophobia alone. Preserve infectious uveitis, HLA-B27-associated uveitis from another spondyloarthritis, sarcoidosis, inflammatory bowel disease, medication-related disease, trauma, and other ocular inflammatory causes.",
+        "boundarySource": "approved-me12-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of reactive-arthritis and uveitis",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/claim boundary: anterior-uveitis extra-articular manifestation of reactive arthritis",
+        "Assessment of competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require established reactive arthritis and separately documented anterior uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from reactive arthritis, conjunctivitis, red eye, ocular irritation, or photophobia alone. Preserve infectious uveitis, HLA-B27-associated uveitis from another spondyloarthritis, sarcoidosis, inflammatory bowel disease, medication-related disease, trauma, and other ocular inflammatory causes."
+      ],
+      "sourceIds": [
+        "pmid-34528623"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "dc17080f742ccdf7d8e0a8f380506ec6c99c8e9fd146779d0e9834c2d403c421"
     },
     {
       "relationshipId": "rel-rectal-prolapse-to-fecal-incontinence",
@@ -6996,6 +7132,40 @@
       "sourceReferenceCount": 2,
       "pathwayIntelligencePresent": true,
       "suggestionObjectHash": "e9cae5b22dce2dc92e434d3d7ca8b693f89af382d7f5f4af5e2c121df8b9258d"
+    },
+    {
+      "relationshipId": "rel-subdural-hematoma-to-seizure-disorder",
+      "primaryId": "subdural-hematoma",
+      "targetId": "seizure-disorder",
+      "direction": "subdural-hematoma -> seizure-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me12-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review evaluates early and late epileptic seizures in adults with acute and chronic subdural hematomas and identifies post-traumatic epileptic seizures as a clinically important complication, with the greatest incidence in acute subdural hematoma. Require objectively documented subdural hematoma and separately established epileptic seizures or a seizure disorder with compatible chronology. Do not infer a chronic seizure disorder from prophylactic antiseizure medication, transient altered mental status, or an unconfirmed spell. Distinguish an isolated acute symptomatic seizure from recurrent unprovoked seizures or epilepsy when the target diagnosis requires that distinction. Preserve pre-existing epilepsy, additional traumatic brain injury, stroke, infection, metabolic or toxic disturbance, medication or substance effects, and other seizure etiologies. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review evaluates early and late epileptic seizures in adults with acute and chronic subdural hematomas and identifies post-traumatic epileptic seizures as a clinically important complication, with the greatest incidence in acute subdural hematoma. Require objectively documented subdural hematoma and separately established epileptic seizures or a seizure disorder with compatible chronology. Do not infer a chronic seizure disorder from prophylactic antiseizure medication, transient altered mental status, or an unconfirmed spell. Distinguish an isolated acute symptomatic seizure from recurrent unprovoked seizures or epilepsy when the target diagnosis requires that distinction. Preserve pre-existing epilepsy, additional traumatic brain injury, stroke, infection, metabolic or toxic disturbance, medication or substance effects, and other seizure etiologies. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require objectively documented subdural hematoma and separately established epileptic seizures or a seizure disorder with compatible chronology. Do not infer a chronic seizure disorder from prophylactic antiseizure medication, transient altered mental status, or an unconfirmed spell. Distinguish an isolated acute symptomatic seizure from recurrent unprovoked seizures or epilepsy when the target diagnosis requires that distinction. Preserve pre-existing epilepsy, additional traumatic brain injury, stroke, infection, metabolic or toxic disturbance, medication or substance effects, and other seizure etiologies.",
+        "boundarySource": "approved-me12-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of subdural-hematoma and seizure-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/claim boundary: post-subdural epileptic-seizure complication with chronic-disorder boundary",
+        "Assessment of competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require objectively documented subdural hematoma and separately established epileptic seizures or a seizure disorder with compatible chronology. Do not infer a chronic seizure disorder from prophylactic antiseizure medication, transient altered mental status, or an unconfirmed spell. Distinguish an isolated acute symptomatic seizure from recurrent unprovoked seizures or epilepsy when the target diagnosis requires that distinction. Preserve pre-existing epilepsy, additional traumatic brain injury, stroke, infection, metabolic or toxic disturbance, medication or substance effects, and other seizure etiologies."
+      ],
+      "sourceIds": [
+        "pmid-27914224"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "8e187b63c3e8e134c1e63a9b33db7ca632bff6d381285cb64e1df89f9fa33ada"
     },
     {
       "relationshipId": "rel-substance-use-disorder-to-depressive-disorder",
@@ -7672,6 +7842,6 @@
       "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
     }
   ],
-  "lastUpdatedBy": "ME-11 Qualified-Human Citation Verification",
-  "currentState": "ME11-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-12",
+  "currentState": "ME12-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

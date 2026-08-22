@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "67dbb881b88a46b058ed6ed5ba0a5f965ae6b9c6",
+  "baselineCommit": "dc9502a81c93740b7c9cbd5f0ef9c1f44fc88898",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 236,
+    "liveSourceReferenceUses": 241,
     "activeSourceEntities": 213,
-    "pendingVerificationSourceEntities": 0,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 212,
-    "pendingClinicalSourceEntities": 0,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 222,
+    "totalSourceEntitiesIncludingLineage": 227,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -2526,6 +2526,48 @@
       ]
     },
     {
+      "sourceId": "pmid-31006843",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "31006843",
+      "doi": "10.1007/s00404-019-05153-5",
+      "canonicalCitation": "Nicolaus K, Bräuer D, Sczesny R, Lehmann T, Diebolder H, Runnebaum IB. Unexpected coexistent endometriosis in women with symptomatic uterine leiomyomas is independently associated with infertility, nulliparity and minor myoma size. Arch Gynecol Obstet. 2019;300(1):103-108. PMID 31006843. doi:10.1007/s00404-019-05153-5.",
+      "citationVariants": [
+        "Nicolaus K, Bräuer D, Sczesny R, Lehmann T, Diebolder H, Runnebaum IB. Unexpected coexistent endometriosis in women with symptomatic uterine leiomyomas is independently associated with infertility, nulliparity and minor myoma size. Arch Gynecol Obstet. 2019;300(1):103-108. PMID 31006843. doi:10.1007/s00404-019-05153-5."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31006843/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31006843/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-uterine-fibroids-to-endometriosis",
+          "primaryId": "uterine-fibroids",
+          "targetId": "endometriosis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "e242c23f6a8e3bb4bbc9b5e942eedf4a42030a72c3b4f46c98ecf693357ee864"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-31039274",
       "status": "active",
       "kind": "clinical-evidence",
@@ -3272,6 +3314,48 @@
       "retiredUses": [],
       "rawReferenceHashes": [
         "6a6fbaa3a740f2cfa39e44d8e44271b1be70e973637db2615a9a47e54be99053"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-33360604",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "33360604",
+      "doi": "10.1016/j.smrv.2020.101403",
+      "canonicalCitation": "Li L, Gan Y, Zhou X, et al. Insomnia and the risk of hypertension: A meta-analysis of prospective cohort studies. Sleep Med Rev. 2021;56:101403. PMID 33360604. doi:10.1016/j.smrv.2020.101403.",
+      "citationVariants": [
+        "Li L, Gan Y, Zhou X, et al. Insomnia and the risk of hypertension: A meta-analysis of prospective cohort studies. Sleep Med Rev. 2021;56:101403. PMID 33360604. doi:10.1016/j.smrv.2020.101403."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33360604/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/33360604/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-insomnia-to-hypertension",
+          "primaryId": "insomnia",
+          "targetId": "hypertension",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8e7cda88659893d22b2ecb72832c5e119152d3bd5727a100e1a637ae9d4b0e3f"
       ],
       "verificationState": {
         "qualifiedHumanCitationReviewRequired": false,
@@ -4688,6 +4772,48 @@
       "rawReferenceHashes": [
         "6e35eddf264ad4fa582af6d66e870041a707e8a9094d89220cc632da6e01fcc2"
       ]
+    },
+    {
+      "sourceId": "pmid-36377800",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "36377800",
+      "doi": "10.1111/cdoe.12812",
+      "canonicalCitation": "Larvin H, Kang J, Aggarwal VR, Pavitt S, Wu J. Periodontitis and risk of immune-mediated systemic conditions: A systematic review and meta-analysis. Community Dent Oral Epidemiol. 2023;51(5):705-717. PMID 36377800. doi:10.1111/cdoe.12812.",
+      "citationVariants": [
+        "Larvin H, Kang J, Aggarwal VR, Pavitt S, Wu J. Periodontitis and risk of immune-mediated systemic conditions: A systematic review and meta-analysis. Community Dent Oral Epidemiol. 2023;51(5):705-717. PMID 36377800. doi:10.1111/cdoe.12812."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36377800/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36377800/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-periodontal-disease-to-osteoporosis",
+          "primaryId": "periodontal-disease",
+          "targetId": "osteoporosis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a80103833c02dc980336faca65f6af0af65694431c1490d339da76aae58ace9c"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-36401862",
@@ -7439,6 +7565,48 @@
       ]
     },
     {
+      "sourceId": "pmid-41871568",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "41871568",
+      "doi": "10.24953/turkjpediatr.2026.6451",
+      "canonicalCitation": "Yildirim Arslan S, Tigrak S, Yucel E, Demirci M, Ekici O. Pediatric cervicofacial actinomycosis presenting with mandibular osteomyelitis: a diagnostic and therapeutic challenge and literature review. Turk J Pediatr. 2026. PMID 41871568. doi:10.24953/turkjpediatr.2026.6451.",
+      "citationVariants": [
+        "Yildirim Arslan S, Tigrak S, Yucel E, Demirci M, Ekici O. Pediatric cervicofacial actinomycosis presenting with mandibular osteomyelitis: a diagnostic and therapeutic challenge and literature review. Turk J Pediatr. 2026. PMID 41871568. doi:10.24953/turkjpediatr.2026.6451."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41871568/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41871568/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-actinomycosis-to-osteomyelitis",
+          "primaryId": "actinomycosis",
+          "targetId": "osteomyelitis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "52ec26ba5a7ae68be9fc98505cc2172059bee238bd3aba7a34ca661084c16a66"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-41905893",
       "status": "active",
       "kind": "clinical-evidence",
@@ -7663,6 +7831,48 @@
       ]
     },
     {
+      "sourceId": "pmid-42444963",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "42444963",
+      "doi": "10.21037/jtd-2026-0713",
+      "canonicalCitation": "Bachar R, Tager D, Berro J, Nero N, Sehgal S, Mehta AC. Pulmonary hypertension following lung transplant: a systematic review. J Thorac Dis. 2026;18(6):685. PMID 42444963. doi:10.21037/jtd-2026-0713.",
+      "citationVariants": [
+        "Bachar R, Tager D, Berro J, Nero N, Sehgal S, Mehta AC. Pulmonary hypertension following lung transplant: a systematic review. J Thorac Dis. 2026;18(6):685. PMID 42444963. doi:10.21037/jtd-2026-0713."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42444963/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42444963/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bronchiolitis-to-pulmonary-hypertension",
+          "primaryId": "bronchiolitis",
+          "targetId": "pulmonary-hypertension",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c9877c0bee6ebfd1890d90bd9fc95aa907d81dfcbc27967e11cf2a5a5924de18"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-42480656",
       "status": "active",
       "kind": "clinical-evidence",
@@ -7810,211 +8020,201 @@
       ]
     },
     {
-      "sourceId": "pmid-31006843",
-      "status": "active",
+      "sourceId": "pmid-27914224",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "31006843",
-      "doi": "10.1007/s00404-019-05153-5",
-      "canonicalCitation": "Nicolaus K, Bräuer D, Sczesny R, Lehmann T, Diebolder H, Runnebaum IB. Unexpected coexistent endometriosis in women with symptomatic uterine leiomyomas is independently associated with infertility, nulliparity and minor myoma size. Arch Gynecol Obstet. 2019;300(1):103-108. PMID 31006843. doi:10.1007/s00404-019-05153-5.",
+      "pmid": "27914224",
+      "doi": "10.1016/j.seizure.2016.11.017",
+      "canonicalCitation": "Won SY, Konczalla J, Dubinski D, et al. A systematic review of epileptic seizures in adults with subdural haematomas. Seizure. 2017;45:28-35. PMID 27914224. doi:10.1016/j.seizure.2016.11.017.",
       "citationVariants": [
-        "Nicolaus K, Bräuer D, Sczesny R, Lehmann T, Diebolder H, Runnebaum IB. Unexpected coexistent endometriosis in women with symptomatic uterine leiomyomas is independently associated with infertility, nulliparity and minor myoma size. Arch Gynecol Obstet. 2019;300(1):103-108. PMID 31006843. doi:10.1007/s00404-019-05153-5."
+        "Won SY, Konczalla J, Dubinski D, et al. A systematic review of epileptic seizures in adults with subdural haematomas. Seizure. 2017;45:28-35. PMID 27914224. doi:10.1016/j.seizure.2016.11.017."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31006843/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27914224/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/31006843/"
+        "https://pubmed.ncbi.nlm.nih.gov/27914224/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
-        "2026-08-21"
+        "2026-08-22"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-uterine-fibroids-to-endometriosis",
-          "primaryId": "uterine-fibroids",
-          "targetId": "endometriosis",
+          "relationshipId": "rel-subdural-hematoma-to-seizure-disorder",
+          "primaryId": "subdural-hematoma",
+          "targetId": "seizure-disorder",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "e242c23f6a8e3bb4bbc9b5e942eedf4a42030a72c3b4f46c98ecf693357ee864"
+        "1c4c147cef6988b51c02953d21118fcdcbc7737036da02f499763773ce53843e"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-33360604",
-      "status": "active",
+      "sourceId": "pmid-29681481",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "33360604",
-      "doi": "10.1016/j.smrv.2020.101403",
-      "canonicalCitation": "Li L, Gan Y, Zhou X, et al. Insomnia and the risk of hypertension: A meta-analysis of prospective cohort studies. Sleep Med Rev. 2021;56:101403. PMID 33360604. doi:10.1016/j.smrv.2020.101403.",
+      "pmid": "29681481",
+      "doi": "10.1016/j.ijrobp.2018.03.003",
+      "canonicalCitation": "Pinnix CC, Cella L, Andraos TY, et al. Predictors of Hypothyroidism in Hodgkin Lymphoma Survivors After Intensity Modulated Versus 3-Dimensional Radiation Therapy. Int J Radiat Oncol Biol Phys. 2018;101(3):530-540. PMID 29681481. doi:10.1016/j.ijrobp.2018.03.003.",
       "citationVariants": [
-        "Li L, Gan Y, Zhou X, et al. Insomnia and the risk of hypertension: A meta-analysis of prospective cohort studies. Sleep Med Rev. 2021;56:101403. PMID 33360604. doi:10.1016/j.smrv.2020.101403."
+        "Pinnix CC, Cella L, Andraos TY, et al. Predictors of Hypothyroidism in Hodgkin Lymphoma Survivors After Intensity Modulated Versus 3-Dimensional Radiation Therapy. Int J Radiat Oncol Biol Phys. 2018;101(3):530-540. PMID 29681481. doi:10.1016/j.ijrobp.2018.03.003."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33360604/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29681481/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/33360604/"
+        "https://pubmed.ncbi.nlm.nih.gov/29681481/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
-        "2026-08-21"
+        "2026-08-22"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-insomnia-to-hypertension",
-          "primaryId": "insomnia",
-          "targetId": "hypertension",
+          "relationshipId": "rel-hodgkins-lymphoma-to-hypothyroidism",
+          "primaryId": "hodgkins-lymphoma",
+          "targetId": "hypothyroidism",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "8e7cda88659893d22b2ecb72832c5e119152d3bd5727a100e1a637ae9d4b0e3f"
+        "a21ba44df363f90ebc49c0034c6329a47174633f2d51bde104bbf67c24b2e101"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-36377800",
-      "status": "active",
+      "sourceId": "pmid-34528623",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "36377800",
-      "doi": "10.1111/cdoe.12812",
-      "canonicalCitation": "Larvin H, Kang J, Aggarwal VR, Pavitt S, Wu J. Periodontitis and risk of immune-mediated systemic conditions: A systematic review and meta-analysis. Community Dent Oral Epidemiol. 2023;51(5):705-717. PMID 36377800. doi:10.1111/cdoe.12812.",
+      "pmid": "34528623",
+      "doi": "10.4997/JRCPE.2021.319",
+      "canonicalCitation": "Jubber A, Moorthy A. Reactive arthritis: a clinical review. J R Coll Physicians Edinb. 2021;51(3):288-297. PMID 34528623. doi:10.4997/JRCPE.2021.319.",
       "citationVariants": [
-        "Larvin H, Kang J, Aggarwal VR, Pavitt S, Wu J. Periodontitis and risk of immune-mediated systemic conditions: A systematic review and meta-analysis. Community Dent Oral Epidemiol. 2023;51(5):705-717. PMID 36377800. doi:10.1111/cdoe.12812."
+        "Jubber A, Moorthy A. Reactive arthritis: a clinical review. J R Coll Physicians Edinb. 2021;51(3):288-297. PMID 34528623. doi:10.4997/JRCPE.2021.319."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36377800/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34528623/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/36377800/"
+        "https://pubmed.ncbi.nlm.nih.gov/34528623/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
-        "2026-08-21"
+        "2026-08-22"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-periodontal-disease-to-osteoporosis",
-          "primaryId": "periodontal-disease",
-          "targetId": "osteoporosis",
+          "relationshipId": "rel-reactive-arthritis-to-uveitis",
+          "primaryId": "reactive-arthritis",
+          "targetId": "uveitis",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "a80103833c02dc980336faca65f6af0af65694431c1490d339da76aae58ace9c"
+        "fc0874274dcf47af58e882f9b6d1d64d86f79135034d704b351897633559251b"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-41871568",
-      "status": "active",
+      "sourceId": "pmid-35081846",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "41871568",
-      "doi": "10.24953/turkjpediatr.2026.6451",
-      "canonicalCitation": "Yildirim Arslan S, Tigrak S, Yucel E, Demirci M, Ekici O. Pediatric cervicofacial actinomycosis presenting with mandibular osteomyelitis: a diagnostic and therapeutic challenge and literature review. Turk J Pediatr. 2026. PMID 41871568. doi:10.24953/turkjpediatr.2026.6451.",
+      "pmid": "35081846",
+      "doi": "10.1080/14779072.2022.2034499",
+      "canonicalCitation": "Cannon JE, Jenkins DP, Hoole SP. Chronic thromboembolic pulmonary hypertension: a review of risk factors, management and current challenges. Expert Rev Cardiovasc Ther. 2022;20(1):35-43. PMID 35081846. doi:10.1080/14779072.2022.2034499.",
       "citationVariants": [
-        "Yildirim Arslan S, Tigrak S, Yucel E, Demirci M, Ekici O. Pediatric cervicofacial actinomycosis presenting with mandibular osteomyelitis: a diagnostic and therapeutic challenge and literature review. Turk J Pediatr. 2026. PMID 41871568. doi:10.24953/turkjpediatr.2026.6451."
+        "Cannon JE, Jenkins DP, Hoole SP. Chronic thromboembolic pulmonary hypertension: a review of risk factors, management and current challenges. Expert Rev Cardiovasc Ther. 2022;20(1):35-43. PMID 35081846. doi:10.1080/14779072.2022.2034499."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41871568/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35081846/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/41871568/"
+        "https://pubmed.ncbi.nlm.nih.gov/35081846/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
-        "2026-08-21"
+        "2026-08-22"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-actinomycosis-to-osteomyelitis",
-          "primaryId": "actinomycosis",
-          "targetId": "osteomyelitis",
-          "sourceIndex": 0
-        }
-      ],
-      "retiredUses": [],
-      "rawReferenceHashes": [
-        "52ec26ba5a7ae68be9fc98505cc2172059bee238bd3aba7a34ca661084c16a66"
-      ],
-      "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
-        "automaticPromotionAuthorized": false,
-        "mappingApprovalDoesNotEqualCitationVerification": true
-      }
-    },
-    {
-      "sourceId": "pmid-42444963",
-      "status": "active",
-      "kind": "clinical-evidence",
-      "pmid": "42444963",
-      "doi": "10.21037/jtd-2026-0713",
-      "canonicalCitation": "Bachar R, Tager D, Berro J, Nero N, Sehgal S, Mehta AC. Pulmonary hypertension following lung transplant: a systematic review. J Thorac Dis. 2026;18(6):685. PMID 42444963. doi:10.21037/jtd-2026-0713.",
-      "citationVariants": [
-        "Bachar R, Tager D, Berro J, Nero N, Sehgal S, Mehta AC. Pulmonary hypertension following lung transplant: a systematic review. J Thorac Dis. 2026;18(6):685. PMID 42444963. doi:10.21037/jtd-2026-0713."
-      ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42444963/",
-      "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/42444963/"
-      ],
-      "verificationScopes": [
-        "clinical-evidence"
-      ],
-      "verified": true,
-      "sourceCheckedOnValues": [
-        "2026-08-21"
-      ],
-      "liveUsageCount": 1,
-      "liveUses": [
-        {
-          "relationshipId": "rel-bronchiolitis-to-pulmonary-hypertension",
-          "primaryId": "bronchiolitis",
+          "relationshipId": "rel-pulmonary-embolism-to-pulmonary-hypertension",
+          "primaryId": "pulmonary-embolism",
           "targetId": "pulmonary-hypertension",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "c9877c0bee6ebfd1890d90bd9fc95aa907d81dfcbc27967e11cf2a5a5924de18"
+        "fbf96fa7fd8aa1fbfdd651eca697115cf707a759f61dede4ac17f84ccfc84f6d"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-36135184",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "36135184",
+      "doi": "10.3390/cimb44090272",
+      "canonicalCitation": "Ciapa MA, Salaru DL, Statescu C, Sascau RA, Bogdanici CM. Optic Neuritis in Multiple Sclerosis-A Review of Molecular Mechanisms Involved in the Degenerative Process. Curr Issues Mol Biol. 2022;44(9):3959-3979. PMID 36135184. doi:10.3390/cimb44090272.",
+      "citationVariants": [
+        "Ciapa MA, Salaru DL, Statescu C, Sascau RA, Bogdanici CM. Optic Neuritis in Multiple Sclerosis-A Review of Molecular Mechanisms Involved in the Degenerative Process. Curr Issues Mol Biol. 2022;44(9):3959-3979. PMID 36135184. doi:10.3390/cimb44090272."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36135184/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36135184/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-08-22"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-multiple-sclerosis-to-optic-neuritis",
+          "primaryId": "multiple-sclerosis",
+          "targetId": "optic-neuritis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "386d9200fff1075b3b7198e68f64d99c3c9792c40a6d01c636e53e86abbb9570"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -8284,6 +8484,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "ME-11 Qualified-Human Citation Verification",
-  "currentState": "ME11-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-12",
+  "currentState": "ME12-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }
