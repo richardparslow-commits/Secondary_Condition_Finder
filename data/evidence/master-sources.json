@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "f013a939cce8398527b2619587fb985eb57100d0",
+  "baselineCommit": "70aa43bb88bfb2334ce32442b3d51e87c58419ab",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 226,
+    "liveSourceReferenceUses": 231,
     "activeSourceEntities": 203,
-    "pendingVerificationSourceEntities": 0,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 202,
-    "pendingClinicalSourceEntities": 0,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 212,
+    "totalSourceEntitiesIncludingLineage": 217,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -3240,6 +3240,48 @@
       }
     },
     {
+      "sourceId": "pmid-33277056",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "33277056",
+      "doi": "10.1016/j.ejso.2020.11.136",
+      "canonicalCitation": "Verkuijl SJ, Jonker JE, Trzpis M, Burgerhof JGM, Broens PMA, Furnée EJB. Functional outcomes of surgery for colon cancer: A systematic review and meta-analysis. Eur J Surg Oncol. 2021;47(5):960-969. PMID 33277056. doi:10.1016/j.ejso.2020.11.136.",
+      "citationVariants": [
+        "Verkuijl SJ, Jonker JE, Trzpis M, Burgerhof JGM, Broens PMA, Furnée EJB. Functional outcomes of surgery for colon cancer: A systematic review and meta-analysis. Eur J Surg Oncol. 2021;47(5):960-969. PMID 33277056. doi:10.1016/j.ejso.2020.11.136."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33277056/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/33277056/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-colorectal-cancer-to-fecal-incontinence",
+          "primaryId": "colorectal-cancer",
+          "targetId": "fecal-incontinence",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "6a6fbaa3a740f2cfa39e44d8e44271b1be70e973637db2615a9a47e54be99053"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-33387100",
       "status": "active",
       "kind": "clinical-evidence",
@@ -3343,6 +3385,48 @@
       "rawReferenceHashes": [
         "d50a65bce44d01ca93dac6e90558a52cee22369bef155bae30af2e9d63ed246a"
       ]
+    },
+    {
+      "sourceId": "pmid-33599907",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "33599907",
+      "doi": "10.1007/s11154-020-09613-1",
+      "canonicalCitation": "Gosmanova EO, Houillier P, Rejnmark L, Marelli C, Bilezikian JP. Renal complications in patients with chronic hypoparathyroidism on conventional therapy: a systematic literature review: renal disease in chronic hypoparathyroidism. Rev Endocr Metab Disord. 2021;22(2):297-316. PMID 33599907. doi:10.1007/s11154-020-09613-1.",
+      "citationVariants": [
+        "Gosmanova EO, Houillier P, Rejnmark L, Marelli C, Bilezikian JP. Renal complications in patients with chronic hypoparathyroidism on conventional therapy: a systematic literature review: renal disease in chronic hypoparathyroidism. Rev Endocr Metab Disord. 2021;22(2):297-316. PMID 33599907. doi:10.1007/s11154-020-09613-1."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33599907/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/33599907/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hypoparathyroidism-to-chronic-kidney-disease",
+          "primaryId": "hypoparathyroidism",
+          "targetId": "chronic-kidney-disease",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "3505217dd4d24a50961962b223f3394679e03155b5e735377e21cd030980bf49"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-33687971",
@@ -3807,6 +3891,48 @@
       ]
     },
     {
+      "sourceId": "pmid-34856556",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "34856556",
+      "doi": "10.1159/000520135",
+      "canonicalCitation": "Taniguchi H, Shimada S, Kinoshita H. Testosterone Therapy for Late-Onset Hypogonadism Improves Erectile Function: A Systematic Review and Meta-Analysis. Urol Int. 2022;106(6):539-552. PMID 34856556. doi:10.1159/000520135.",
+      "citationVariants": [
+        "Taniguchi H, Shimada S, Kinoshita H. Testosterone Therapy for Late-Onset Hypogonadism Improves Erectile Function: A Systematic Review and Meta-Analysis. Urol Int. 2022;106(6):539-552. PMID 34856556. doi:10.1159/000520135."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34856556/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34856556/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hypogonadism-to-erectile-dysfunction",
+          "primaryId": "hypogonadism",
+          "targetId": "erectile-dysfunction",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c792410cbce2566af1d0607543cf3c486a76e541bb36cd7a7048865ec8599f94"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-34953752",
       "status": "active",
       "kind": "clinical-evidence",
@@ -3914,6 +4040,48 @@
         "qualifiedHumanCitationReviewRequired": false,
         "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
         "qualifiedHumanCitationReviewDate": "2026-08-20",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-35142721",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "35142721",
+      "doi": "10.14309/ctg.0000000000000463",
+      "canonicalCitation": "Gandhi S, de la Fuente J, Murad MH, Majumder S. Chronic Pancreatitis Is a Risk Factor for Pancreatic Cancer, and Incidence Increases With Duration of Disease: A Systematic Review and Meta-analysis. Clin Transl Gastroenterol. 2022;13(3):e00463. PMID 35142721. doi:10.14309/ctg.0000000000000463.",
+      "citationVariants": [
+        "Gandhi S, de la Fuente J, Murad MH, Majumder S. Chronic Pancreatitis Is a Risk Factor for Pancreatic Cancer, and Incidence Increases With Duration of Disease: A Systematic Review and Meta-analysis. Clin Transl Gastroenterol. 2022;13(3):e00463. PMID 35142721. doi:10.14309/ctg.0000000000000463."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35142721/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35142721/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-pancreatitis-to-pancreatic-cancer",
+          "primaryId": "pancreatitis",
+          "targetId": "pancreatic-cancer",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "547d324225d07f9bed732e65a9d40a4e774397ad51a50b2d8043ce67403528ed"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -6842,6 +7010,48 @@
       ]
     },
     {
+      "sourceId": "pmid-41178896",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "41178896",
+      "doi": "10.25122/jml-2025-0141",
+      "canonicalCitation": "Alharbi A, Alamri O, Afandi A, Arbaeen A, Mirza A, Alahmari A, Alshomrani S, Qashqari M, Alahmadi M, Alharthy S, Kokandi A. Discoid lupus erythematosus and its progression to systemic lupus erythematosus across age groups: a systematic review. J Med Life. 2025;18(9):830-836. PMID 41178896. doi:10.25122/jml-2025-0141.",
+      "citationVariants": [
+        "Alharbi A, Alamri O, Afandi A, Arbaeen A, Mirza A, Alahmari A, Alshomrani S, Qashqari M, Alahmadi M, Alharthy S, Kokandi A. Discoid lupus erythematosus and its progression to systemic lupus erythematosus across age groups: a systematic review. J Med Life. 2025;18(9):830-836. PMID 41178896. doi:10.25122/jml-2025-0141."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41178896/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41178896/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-discoid-lupus-to-systemic-lupus-erythematosus",
+          "primaryId": "discoid-lupus",
+          "targetId": "systemic-lupus-erythematosus",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "d29ced7908a3415a59efa8f85367bd55018c0074af99eda3eaea2063cd9fb1b1"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-41308609",
       "status": "active",
       "kind": "clinical-evidence",
@@ -7390,211 +7600,201 @@
       ]
     },
     {
-      "sourceId": "pmid-33277056",
-      "status": "active",
+      "sourceId": "pmid-41546697",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "33277056",
-      "doi": "10.1016/j.ejso.2020.11.136",
-      "canonicalCitation": "Verkuijl SJ, Jonker JE, Trzpis M, Burgerhof JGM, Broens PMA, Furnée EJB. Functional outcomes of surgery for colon cancer: A systematic review and meta-analysis. Eur J Surg Oncol. 2021;47(5):960-969. PMID 33277056. doi:10.1016/j.ejso.2020.11.136.",
+      "pmid": "41546697",
+      "doi": "10.1007/s00417-025-07110-2",
+      "canonicalCitation": "Barbosa LIT, Lima RV, Moreira JLML, Hira S, Arruda MP, Zinher MT, Thomaz S, Del Valle GS. Ocular findings in patients with lyme disease: a systematic review and meta-analysis. Graefes Arch Clin Exp Ophthalmol. 2026;264(4):1101-1110. PMID 41546697. doi:10.1007/s00417-025-07110-2.",
       "citationVariants": [
-        "Verkuijl SJ, Jonker JE, Trzpis M, Burgerhof JGM, Broens PMA, Furnée EJB. Functional outcomes of surgery for colon cancer: A systematic review and meta-analysis. Eur J Surg Oncol. 2021;47(5):960-969. PMID 33277056. doi:10.1016/j.ejso.2020.11.136."
+        "Barbosa LIT, Lima RV, Moreira JLML, Hira S, Arruda MP, Zinher MT, Thomaz S, Del Valle GS. Ocular findings in patients with lyme disease: a systematic review and meta-analysis. Graefes Arch Clin Exp Ophthalmol. 2026;264(4):1101-1110. PMID 41546697. doi:10.1007/s00417-025-07110-2."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33277056/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41546697/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/33277056/"
+        "https://pubmed.ncbi.nlm.nih.gov/41546697/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-colorectal-cancer-to-fecal-incontinence",
-          "primaryId": "colorectal-cancer",
-          "targetId": "fecal-incontinence",
+          "relationshipId": "rel-lyme-disease-to-uveitis",
+          "primaryId": "lyme-disease",
+          "targetId": "uveitis",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "6a6fbaa3a740f2cfa39e44d8e44271b1be70e973637db2615a9a47e54be99053"
+        "a40c2d4b395a188dbee6b804c3fa679101bd3d40c06b3043926dae7aa527c781"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-33599907",
-      "status": "active",
+      "sourceId": "pmid-41747645",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "33599907",
-      "doi": "10.1007/s11154-020-09613-1",
-      "canonicalCitation": "Gosmanova EO, Houillier P, Rejnmark L, Marelli C, Bilezikian JP. Renal complications in patients with chronic hypoparathyroidism on conventional therapy: a systematic literature review: renal disease in chronic hypoparathyroidism. Rev Endocr Metab Disord. 2021;22(2):297-316. PMID 33599907. doi:10.1007/s11154-020-09613-1.",
+      "pmid": "41747645",
+      "doi": "10.1016/j.smrv.2026.102264",
+      "canonicalCitation": "Zhang X, Yin W, Ren J, Zhou X, Zha M, Zong Q, Shen Y, Spruyt K, Zhou J. Narcolepsy and metabolic disease: A meta-analytic synthesis. Sleep Med Rev. 2026;87:102264. PMID 41747645. doi:10.1016/j.smrv.2026.102264.",
       "citationVariants": [
-        "Gosmanova EO, Houillier P, Rejnmark L, Marelli C, Bilezikian JP. Renal complications in patients with chronic hypoparathyroidism on conventional therapy: a systematic literature review: renal disease in chronic hypoparathyroidism. Rev Endocr Metab Disord. 2021;22(2):297-316. PMID 33599907. doi:10.1007/s11154-020-09613-1."
+        "Zhang X, Yin W, Ren J, Zhou X, Zha M, Zong Q, Shen Y, Spruyt K, Zhou J. Narcolepsy and metabolic disease: A meta-analytic synthesis. Sleep Med Rev. 2026;87:102264. PMID 41747645. doi:10.1016/j.smrv.2026.102264."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33599907/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41747645/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/33599907/"
+        "https://pubmed.ncbi.nlm.nih.gov/41747645/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-hypoparathyroidism-to-chronic-kidney-disease",
-          "primaryId": "hypoparathyroidism",
-          "targetId": "chronic-kidney-disease",
+          "relationshipId": "rel-narcolepsy-to-hypertension",
+          "primaryId": "narcolepsy",
+          "targetId": "hypertension",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "3505217dd4d24a50961962b223f3394679e03155b5e735377e21cd030980bf49"
+        "400cca86ffbf9ed0e0e1d266bdc23db7716e4969d6d898432b15e2ef50833a62"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-34856556",
-      "status": "active",
+      "sourceId": "pmid-41905893",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "34856556",
-      "doi": "10.1159/000520135",
-      "canonicalCitation": "Taniguchi H, Shimada S, Kinoshita H. Testosterone Therapy for Late-Onset Hypogonadism Improves Erectile Function: A Systematic Review and Meta-Analysis. Urol Int. 2022;106(6):539-552. PMID 34856556. doi:10.1159/000520135.",
+      "pmid": "41905893",
+      "doi": "10.1111/jsr.70333",
+      "canonicalCitation": "Srivali N, De Giacomi F. Obstructive Sleep Apnea in Bronchiectasis: Prevalence, Risk Factors and Clinical Implications-A Systematic Review and Meta-Analysis. J Sleep Res. 2026;35(4):e70333. PMID 41905893. doi:10.1111/jsr.70333.",
       "citationVariants": [
-        "Taniguchi H, Shimada S, Kinoshita H. Testosterone Therapy for Late-Onset Hypogonadism Improves Erectile Function: A Systematic Review and Meta-Analysis. Urol Int. 2022;106(6):539-552. PMID 34856556. doi:10.1159/000520135."
+        "Srivali N, De Giacomi F. Obstructive Sleep Apnea in Bronchiectasis: Prevalence, Risk Factors and Clinical Implications-A Systematic Review and Meta-Analysis. J Sleep Res. 2026;35(4):e70333. PMID 41905893. doi:10.1111/jsr.70333."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34856556/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41905893/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/34856556/"
+        "https://pubmed.ncbi.nlm.nih.gov/41905893/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-hypogonadism-to-erectile-dysfunction",
-          "primaryId": "hypogonadism",
-          "targetId": "erectile-dysfunction",
+          "relationshipId": "rel-bronchiectasis-to-sleep-apnea",
+          "primaryId": "bronchiectasis",
+          "targetId": "sleep-apnea",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "c792410cbce2566af1d0607543cf3c486a76e541bb36cd7a7048865ec8599f94"
+        "cedc0ee8530fb926b6acc64589e8dbbb5a80dd05d93c2aa0deec11b6519dbcc9"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-35142721",
-      "status": "active",
+      "sourceId": "pmid-42141385",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "35142721",
-      "doi": "10.14309/ctg.0000000000000463",
-      "canonicalCitation": "Gandhi S, de la Fuente J, Murad MH, Majumder S. Chronic Pancreatitis Is a Risk Factor for Pancreatic Cancer, and Incidence Increases With Duration of Disease: A Systematic Review and Meta-analysis. Clin Transl Gastroenterol. 2022;13(3):e00463. PMID 35142721. doi:10.14309/ctg.0000000000000463.",
+      "pmid": "42141385",
+      "doi": "10.1186/s12891-026-09965-w",
+      "canonicalCitation": "Liu L, Lu J, Wang J, Wang Q, Zhao H, Zhang Y. Pharmacological treatment for Charcot neuroarthropathy: a systematic review. BMC Musculoskelet Disord. 2026;27(1):592. PMID 42141385. doi:10.1186/s12891-026-09965-w.",
       "citationVariants": [
-        "Gandhi S, de la Fuente J, Murad MH, Majumder S. Chronic Pancreatitis Is a Risk Factor for Pancreatic Cancer, and Incidence Increases With Duration of Disease: A Systematic Review and Meta-analysis. Clin Transl Gastroenterol. 2022;13(3):e00463. PMID 35142721. doi:10.14309/ctg.0000000000000463."
+        "Liu L, Lu J, Wang J, Wang Q, Zhao H, Zhang Y. Pharmacological treatment for Charcot neuroarthropathy: a systematic review. BMC Musculoskelet Disord. 2026;27(1):592. PMID 42141385. doi:10.1186/s12891-026-09965-w."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35142721/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42141385/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/35142721/"
+        "https://pubmed.ncbi.nlm.nih.gov/42141385/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-pancreatitis-to-pancreatic-cancer",
-          "primaryId": "pancreatitis",
-          "targetId": "pancreatic-cancer",
+          "relationshipId": "rel-charcot-arthropathy-to-osteomyelitis",
+          "primaryId": "charcot-arthropathy",
+          "targetId": "osteomyelitis",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "547d324225d07f9bed732e65a9d40a4e774397ad51a50b2d8043ce67403528ed"
+        "fad773112917aa5ea111d22cae5c690a0549365350e0d48112a5586eabe84add"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-41178896",
-      "status": "active",
+      "sourceId": "pmid-42511690",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "41178896",
-      "doi": "10.25122/jml-2025-0141",
-      "canonicalCitation": "Alharbi A, Alamri O, Afandi A, Arbaeen A, Mirza A, Alahmari A, Alshomrani S, Qashqari M, Alahmadi M, Alharthy S, Kokandi A. Discoid lupus erythematosus and its progression to systemic lupus erythematosus across age groups: a systematic review. J Med Life. 2025;18(9):830-836. PMID 41178896. doi:10.25122/jml-2025-0141.",
+      "pmid": "42511690",
+      "doi": "10.3390/ijms27146348",
+      "canonicalCitation": "Bordoni M, Ciarloni A, Aboud N, Sidori E, Silvetti F, Taccaliti A, Vassallo A, Romeo M, Salvio G, Balercia G. Effects of Treatment with L-Thyroxine on Chronic Urticaria in Subjects with Autoimmune Thyroiditis: A Systematic Review and Meta-Analysis. Int J Mol Sci. 2026;27(14):6348. PMID 42511690. doi:10.3390/ijms27146348.",
       "citationVariants": [
-        "Alharbi A, Alamri O, Afandi A, Arbaeen A, Mirza A, Alahmari A, Alshomrani S, Qashqari M, Alahmadi M, Alharthy S, Kokandi A. Discoid lupus erythematosus and its progression to systemic lupus erythematosus across age groups: a systematic review. J Med Life. 2025;18(9):830-836. PMID 41178896. doi:10.25122/jml-2025-0141."
+        "Bordoni M, Ciarloni A, Aboud N, Sidori E, Silvetti F, Taccaliti A, Vassallo A, Romeo M, Salvio G, Balercia G. Effects of Treatment with L-Thyroxine on Chronic Urticaria in Subjects with Autoimmune Thyroiditis: A Systematic Review and Meta-Analysis. Int J Mol Sci. 2026;27(14):6348. PMID 42511690. doi:10.3390/ijms27146348."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41178896/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42511690/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/41178896/"
+        "https://pubmed.ncbi.nlm.nih.gov/42511690/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-discoid-lupus-to-systemic-lupus-erythematosus",
-          "primaryId": "discoid-lupus",
-          "targetId": "systemic-lupus-erythematosus",
+          "relationshipId": "rel-thyroiditis-to-urticaria",
+          "primaryId": "thyroiditis",
+          "targetId": "urticaria",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "d29ced7908a3415a59efa8f85367bd55018c0074af99eda3eaea2063cd9fb1b1"
+        "6c2dd63d887c294f75479abd1b6ad2d2c4f77ab40bb150ccf1ede891481fbe00"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -7864,6 +8064,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "ME-9 Qualified-Human Citation Verification",
-  "currentState": "ME9-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-10",
+  "currentState": "ME10-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

@@ -25,6 +25,30 @@
           "sourceLocator": "PMID 38860405; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented bronchiectasis and separately established bronchiectasis-associated pulmonary hypertension, preferably with appropriate hemodynamic evidence such as right-heart catheterization when clinically available, and evaluation sufficient to distinguish major alternative causes of pulmonary hypertension. PMID 38860405 supports the established bronchiectasis-associated PH phenotype and its prognostic hemodynamics; it should not be used to estimate PH incidence in unselected bronchiectasis or to infer PH from bronchiectasis severity alone."
         }
       ]
+    },
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. In adults with established bronchiectasis, polysomnography-confirmed obstructive sleep apnea is substantially more prevalent than in the general population; this supports screening and a population-level association only. Do not infer obstructive sleep apnea from bronchiectasis alone. Require a separate obstructive sleep apnea diagnosis. Preserve obesity, craniofacial or anatomic upper-airway factors, age, sex, medication exposure, other sleep-disordered-breathing causes, and conventional obstructive sleep apnea risk factors. Association evidence must not be presented as individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of bronchiectasis and sleep-apnea",
+        "Documentation satisfying the approved phenotype restriction: established bronchiectasis with separately diagnosed obstructive sleep apnea",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Do not infer obstructive sleep apnea from bronchiectasis alone. Require a separate obstructive sleep apnea diagnosis. Preserve obesity, craniofacial or anatomic upper-airway factors, age, sex, medication exposure, other sleep-disordered-breathing causes, and conventional obstructive sleep apnea risk factors. Association evidence must not be presented as individual causation."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Srivali N, De Giacomi F. Obstructive Sleep Apnea in Bronchiectasis: Prevalence, Risk Factors and Clinical Implications-A Systematic Review and Meta-Analysis. J Sleep Res. 2026;35(4):e70333. PMID 41905893. doi:10.1111/jsr.70333.",
+          "note": "Mapping Expansion Batch ME-10 evidence for the bounded bronchiectasis to sleep-apnea proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41905893/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 41905893; approved ME-10 proposition; guard: Do not infer obstructive sleep apnea from bronchiectasis alone. Require a separate obstructive sleep apnea diagnosis. Preserve obesity, craniofacial or anatomic upper-airway factors, age, sex, medication exposure, other sleep-disordered-breathing causes, and conventional obstructive sleep apnea risk factors. Association evidence must not be presented as individual causation."
+        }
+      ]
     }
   ]
 }

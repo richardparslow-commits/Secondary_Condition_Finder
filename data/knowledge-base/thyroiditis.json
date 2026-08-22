@@ -44,6 +44,30 @@
           "sourceLocator": "PMID 42232752; abstract Background/Methods/Results/Conclusion: 669 initially euthyroid autoantibody-positive patients; 155 progressed; TSH, FT4 and TPOAb independent progression factors"
         }
       ]
+    },
+    {
+      "conditionId": "urticaria",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Chronic urticaria is frequently associated with autoimmune thyroiditis, while pathogenesis and the benefit of thyroid-directed treatment remain uncertain; this evidence supports association only. Require autoimmune thyroiditis and chronic urticaria to be independently established. Do not generalize from nonspecific thyroiditis, do not infer that autoimmune thyroiditis individually causes urticaria, and do not use levothyroxine response as proof of causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of thyroiditis and urticaria",
+        "Documentation satisfying the approved phenotype restriction: autoimmune thyroiditis only, with separately established chronic urticaria",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require autoimmune thyroiditis and chronic urticaria to be independently established. Do not generalize from nonspecific thyroiditis, do not infer that autoimmune thyroiditis individually causes urticaria, and do not use levothyroxine response as proof of causation."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Bordoni M, Ciarloni A, Aboud N, Sidori E, Silvetti F, Taccaliti A, Vassallo A, Romeo M, Salvio G, Balercia G. Effects of Treatment with L-Thyroxine on Chronic Urticaria in Subjects with Autoimmune Thyroiditis: A Systematic Review and Meta-Analysis. Int J Mol Sci. 2026;27(14):6348. PMID 42511690. doi:10.3390/ijms27146348.",
+          "note": "Mapping Expansion Batch ME-10 evidence for the bounded thyroiditis to urticaria proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42511690/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 42511690; approved ME-10 proposition; guard: Require autoimmune thyroiditis and chronic urticaria to be independently established. Do not generalize from nonspecific thyroiditis, do not infer that autoimmune thyroiditis individually causes urticaria, and do not use levothyroxine response as proof of causation."
+        }
+      ]
     }
   ]
 }

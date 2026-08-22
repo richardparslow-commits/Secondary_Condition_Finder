@@ -2,17 +2,17 @@
 
 ## Status
 
-The authoritative registry is at the fully qualified-human-verified Mapping Expansion Batch ME-9 state, derived from implementation commit `f013a939cce8398527b2619587fb985eb57100d0`.
+The authoritative registry is at the Mapping Expansion Batch ME-10 pre-qualified-human-citation-verification state, derived from closed ME-9 citation-verification commit `70aa43bb88bfb2334ce32442b3d51e87c58419ab`.
 
 ## Current state
 
-- 218 relationships.
-- 144 explicit publication guards / 74 legacy rationale boundaries.
-- 226 live relationship-source uses: 226 verified / 0 pending verification.
+- 223 relationships.
+- 149 explicit publication guards / 74 legacy rationale boundaries.
+- 231 live relationship-source uses: 226 verified / 5 pending verification.
 - 203 active source entities: 202 clinical + 1 legal authority.
-- 0 pending-verification source entities.
+- 5 pending-verification clinical source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
-- 212 total source entities including lineage/history.
+- 217 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
 
 ## ME-6 qualified-human citation verification
@@ -98,3 +98,17 @@ All five PMID/DOI identities and citation strings are retained unchanged. The im
 All five ME-9 KB references are `verified:true`, and their normalized master sources are `active`. Mapping approval and bibliographic identity matching remain insufficient to authorize citation promotion without this separate qualified-human source-level review.
 
 No relationship count, relationship semantics, rank, prevalence, taxonomy identity, publication state, publication guard, citation text, source identity, or pathwayIntelligence state changes in this verification gate. Verified population-level or phenotype-specific evidence still does not, by itself, establish an individual medical nexus.
+
+## ME-10 implementation pending citation verification
+
+The approved ME-10 implementation adds exactly five rank-2 relationships while preserving all existing rank-1 mappings, identities, publication states, and pathwayIntelligence state:
+
+- `bronchiectasis -> sleep-apnea` / PMID 41905893, association-only with separate OSA diagnosis and conventional OSA confounders preserved.
+- `thyroiditis -> urticaria` / PMID 42511690, restricted to autoimmune thyroiditis plus chronic urticaria and explicitly association-only.
+- `charcot-arthropathy -> osteomyelitis` / replacement PMID 42141385, restricted to Charcot foot with documented ulceration/soft-tissue breakdown/wound infection or compatible deep-infection chronology.
+- `lyme-disease -> uveitis` / PMID 41546697, a bounded ocular-manifestation relationship requiring both diagnoses and competing ophthalmic etiologies to be preserved.
+- `narcolepsy -> hypertension` / PMID 41747645, association-only with separate hypertension diagnosis and cardiometabolic/medication confounders preserved.
+
+All five new KB references remain `verified:false`; their normalized master sources remain `pending-verification`. Mapping approval and PubMed identity matching do not authorize citation promotion.
+
+No new identity, publication-state change, rank-1 change, semantic broadening beyond the approved guards, or pathwayIntelligence change is part of ME-10 implementation. A later separate qualified-human ME-10 citation-verification gate is required before any of these five references may become `verified:true`.

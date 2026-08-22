@@ -52,8 +52,8 @@ describe("mapping expansion ME-9 qualified-human citation verification", () => {
 
   it("pins final citation totals with no live verification debt", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
-    expect(refs).toHaveLength(226);
+    expect(refs).toHaveLength(231);
     expect(refs.filter((ref) => ref.verified === true)).toHaveLength(226);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
   });
 });

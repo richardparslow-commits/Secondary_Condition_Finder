@@ -77,27 +77,27 @@ const sources = JSON.parse(
 ) as SourceRegistry;
 
 describe("Master Relationship & Evidence Registry 2026", () => {
-  it("pins the authoritative qualified-human-verified ME-9 registry counts", () => {
+  it("pins the authoritative ME-10 pending-verification registry counts", () => {
     expect(relationships.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(relationships.baselineCommit).toBe("f013a939cce8398527b2619587fb985eb57100d0");
+    expect(relationships.baselineCommit).toBe("70aa43bb88bfb2334ce32442b3d51e87c58419ab");
     expect(relationships.counts).toEqual({
-      relationships: 218,
-      explicitPublicationGuards: 144,
+      relationships: 223,
+      explicitPublicationGuards: 149,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(sources.baselineCommit).toBe("f013a939cce8398527b2619587fb985eb57100d0");
+    expect(sources.baselineCommit).toBe("70aa43bb88bfb2334ce32442b3d51e87c58419ab");
     expect(sources.counts).toEqual({
-      liveSourceReferenceUses: 226,
+      liveSourceReferenceUses: 231,
       activeSourceEntities: 203,
-      pendingVerificationSourceEntities: 0,
+      pendingVerificationSourceEntities: 5,
       activeClinicalSourceEntities: 202,
-      pendingClinicalSourceEntities: 0,
+      pendingClinicalSourceEntities: 5,
       activeLegalAuthorityEntities: 1,
       retiredOnlySourceEntities: 1,
       supersededUnverifiedSourceEntities: 7,
       bibliographicCorrectionOnlyEntities: 1,
-      totalSourceEntitiesIncludingLineage: 212,
+      totalSourceEntitiesIncludingLineage: 217,
       retiredVerifiedRelationshipSourceUses: 6,
     });
   });
@@ -258,7 +258,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     expect(sources.sources.filter((source) => source.status === "superseded-unverified")).toHaveLength(7);
     expect(sources.sources.filter((source) => source.status === "bibliographic-correction-only")).toHaveLength(1);
     expect(sources.sources.filter((source) => source.status === "retired-only")).toHaveLength(1);
-    expect(new Set(sources.sources.map((source) => source.sourceId)).size).toBe(212);
+    expect(new Set(sources.sources.map((source) => source.sourceId)).size).toBe(217);
   });
 
 
@@ -280,17 +280,17 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
   });
 
-  it("keeps supersession provenance out of all 144 explicit publication guards", () => {
+  it("keeps supersession provenance out of all 149 explicit publication guards", () => {
     const explicit = relationships.relationships.filter(
       (row) => row.publicationGuard.status === "explicit",
     );
-    expect(explicit).toHaveLength(144);
+    expect(explicit).toHaveLength(149);
     for (const row of explicit) {
       expect(row.publicationGuard.structuredGuardText).not.toMatch(/supersedes unverified PMID/i);
     }
   });
 
-  it("passes the final qualified-human-verified ME-8 master-registry parity audit", () => {
+  it("passes the authoritative ME-10 pending-verification master-registry parity audit", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], {
       cwd: root,
       encoding: "utf8",
@@ -298,12 +298,12 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     const result = JSON.parse(output) as AuditResult;
     expect(result).toMatchObject({
       status: "PASS",
-      relationships: 218,
-      liveSourceReferenceUses: 226,
+      relationships: 223,
+      liveSourceReferenceUses: 231,
       verifiedLiveSourceUses: 226,
-      pendingVerificationLiveSourceUses: 0,
+      pendingVerificationLiveSourceUses: 5,
       activeSourceEntities: 203,
-      pendingVerificationSourceEntities: 0,
+      pendingVerificationSourceEntities: 5,
     });
   });
 
@@ -328,5 +328,27 @@ describe("Master Relationship & Evidence Registry 2026", () => {
       });
     }
   });
+
+  it("contains exactly five pending ME-10 clinical sources", () => {
+    const expected = {"pmid-41905893": {"pmid": "41905893", "doi": "10.1111/jsr.70333", "citation": "Srivali N, De Giacomi F. Obstructive Sleep Apnea in Bronchiectasis: Prevalence, Risk Factors and Clinical Implications-A Systematic Review and Meta-Analysis. J Sleep Res. 2026;35(4):e70333. PMID 41905893. doi:10.1111/jsr.70333."}, "pmid-42511690": {"pmid": "42511690", "doi": "10.3390/ijms27146348", "citation": "Bordoni M, Ciarloni A, Aboud N, Sidori E, Silvetti F, Taccaliti A, Vassallo A, Romeo M, Salvio G, Balercia G. Effects of Treatment with L-Thyroxine on Chronic Urticaria in Subjects with Autoimmune Thyroiditis: A Systematic Review and Meta-Analysis. Int J Mol Sci. 2026;27(14):6348. PMID 42511690. doi:10.3390/ijms27146348."}, "pmid-42141385": {"pmid": "42141385", "doi": "10.1186/s12891-026-09965-w", "citation": "Liu L, Lu J, Wang J, Wang Q, Zhao H, Zhang Y. Pharmacological treatment for Charcot neuroarthropathy: a systematic review. BMC Musculoskelet Disord. 2026;27(1):592. PMID 42141385. doi:10.1186/s12891-026-09965-w."}, "pmid-41546697": {"pmid": "41546697", "doi": "10.1007/s00417-025-07110-2", "citation": "Barbosa LIT, Lima RV, Moreira JLML, Hira S, Arruda MP, Zinher MT, Thomaz S, Del Valle GS. Ocular findings in patients with lyme disease: a systematic review and meta-analysis. Graefes Arch Clin Exp Ophthalmol. 2026;264(4):1101-1110. PMID 41546697. doi:10.1007/s00417-025-07110-2."}, "pmid-41747645": {"pmid": "41747645", "doi": "10.1016/j.smrv.2026.102264", "citation": "Zhang X, Yin W, Ren J, Zhou X, Zha M, Zong Q, Shen Y, Spruyt K, Zhou J. Narcolepsy and metabolic disease: A meta-analytic synthesis. Sleep Med Rev. 2026;87:102264. PMID 41747645. doi:10.1016/j.smrv.2026.102264."}} as const;
+    const selected = sources.sources.filter((source) => Object.prototype.hasOwnProperty.call(expected, source.sourceId));
+    expect(selected).toHaveLength(5);
+    for (const source of selected) {
+      const identity = expected[source.sourceId as keyof typeof expected];
+      expect(source.status).toBe("pending-verification");
+      expect(source.kind).toBe("clinical-evidence");
+      expect(source.verified).toBe(false);
+      expect(source.liveUsageCount).toBe(1);
+      expect(source.pmid).toBe(identity.pmid);
+      expect(source.doi?.toLowerCase()).toBe(identity.doi.toLowerCase());
+      expect(source.canonicalCitation).toBe(identity.citation);
+      expect(source.verificationState).toMatchObject({
+        qualifiedHumanCitationReviewRequired: true,
+        automaticPromotionAuthorized: false,
+        mappingApprovalDoesNotEqualCitationVerification: true,
+      });
+    }
+  });
+
 
 });

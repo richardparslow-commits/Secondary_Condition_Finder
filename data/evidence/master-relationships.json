@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "f013a939cce8398527b2619587fb985eb57100d0",
+  "baselineCommit": "70aa43bb88bfb2334ce32442b3d51e87c58419ab",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 218,
-    "explicitPublicationGuards": 144,
+    "relationships": 223,
+    "explicitPublicationGuards": 149,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -781,6 +781,40 @@
       "suggestionObjectHash": "53d86abb6bb2fdfa5cf67d4aa3fab1305977e0efb2bbc999ee5057f2c8842c09"
     },
     {
+      "relationshipId": "rel-bronchiectasis-to-sleep-apnea",
+      "primaryId": "bronchiectasis",
+      "targetId": "sleep-apnea",
+      "direction": "bronchiectasis -> sleep-apnea",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me10-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. In adults with established bronchiectasis, polysomnography-confirmed obstructive sleep apnea is substantially more prevalent than in the general population; this supports screening and a population-level association only. Do not infer obstructive sleep apnea from bronchiectasis alone. Require a separate obstructive sleep apnea diagnosis. Preserve obesity, craniofacial or anatomic upper-airway factors, age, sex, medication exposure, other sleep-disordered-breathing causes, and conventional obstructive sleep apnea risk factors. Association evidence must not be presented as individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. In adults with established bronchiectasis, polysomnography-confirmed obstructive sleep apnea is substantially more prevalent than in the general population; this supports screening and a population-level association only. Do not infer obstructive sleep apnea from bronchiectasis alone. Require a separate obstructive sleep apnea diagnosis. Preserve obesity, craniofacial or anatomic upper-airway factors, age, sex, medication exposure, other sleep-disordered-breathing causes, and conventional obstructive sleep apnea risk factors. Association evidence must not be presented as individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Do not infer obstructive sleep apnea from bronchiectasis alone. Require a separate obstructive sleep apnea diagnosis. Preserve obesity, craniofacial or anatomic upper-airway factors, age, sex, medication exposure, other sleep-disordered-breathing causes, and conventional obstructive sleep apnea risk factors. Association evidence must not be presented as individual causation.",
+        "boundarySource": "approved-me10-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of bronchiectasis and sleep-apnea",
+        "Documentation satisfying the approved phenotype restriction: established bronchiectasis with separately diagnosed obstructive sleep apnea",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Do not infer obstructive sleep apnea from bronchiectasis alone. Require a separate obstructive sleep apnea diagnosis. Preserve obesity, craniofacial or anatomic upper-airway factors, age, sex, medication exposure, other sleep-disordered-breathing causes, and conventional obstructive sleep apnea risk factors. Association evidence must not be presented as individual causation."
+      ],
+      "sourceIds": [
+        "pmid-41905893"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "cfcba55d7a795d292d3122d3d789131e8935a0b385ec5268be9e7ac0fac3f1a6"
+    },
+    {
       "relationshipId": "rel-bronchiolitis-to-asthma",
       "primaryId": "bronchiolitis",
       "targetId": "asthma",
@@ -1311,6 +1345,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "3d5b18da597058a49d6287455a9ec18056b9dbc017971efb9fcd1b2a15344f04"
+    },
+    {
+      "relationshipId": "rel-charcot-arthropathy-to-osteomyelitis",
+      "primaryId": "charcot-arthropathy",
+      "targetId": "osteomyelitis",
+      "direction": "charcot-arthropathy -> osteomyelitis",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me10-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Charcot neuroarthropathy can progress to foot deformity and ulceration, creating a clinically recognized pathway to deep infection and osteomyelitis; use of this relationship requires documented wound or infection chronology. Require established Charcot neuroarthropathy of the foot plus documented deformity with ulceration, soft-tissue breakdown, wound infection, or compatible deep-infection chronology before using the osteomyelitis pathway. Osteomyelitis must be separately diagnosed. Preserve diabetes, neuropathy, peripheral vascular disease, trauma or surgery, wound-care history, and other infection risk factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Charcot neuroarthropathy can progress to foot deformity and ulceration, creating a clinically recognized pathway to deep infection and osteomyelitis; use of this relationship requires documented wound or infection chronology. Require established Charcot neuroarthropathy of the foot plus documented deformity with ulceration, soft-tissue breakdown, wound infection, or compatible deep-infection chronology before using the osteomyelitis pathway. Osteomyelitis must be separately diagnosed. Preserve diabetes, neuropathy, peripheral vascular disease, trauma or surgery, wound-care history, and other infection risk factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require established Charcot neuroarthropathy of the foot plus documented deformity with ulceration, soft-tissue breakdown, wound infection, or compatible deep-infection chronology before using the osteomyelitis pathway. Osteomyelitis must be separately diagnosed. Preserve diabetes, neuropathy, peripheral vascular disease, trauma or surgery, wound-care history, and other infection risk factors.",
+        "boundarySource": "approved-me10-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of charcot-arthropathy and osteomyelitis",
+        "Documentation satisfying the approved phenotype restriction: Charcot neuroarthropathy of the foot, especially neuropathic or diabetic Charcot foot, with a separately established osteomyelitis diagnosis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established Charcot neuroarthropathy of the foot plus documented deformity with ulceration, soft-tissue breakdown, wound infection, or compatible deep-infection chronology before using the osteomyelitis pathway. Osteomyelitis must be separately diagnosed. Preserve diabetes, neuropathy, peripheral vascular disease, trauma or surgery, wound-care history, and other infection risk factors."
+      ],
+      "sourceIds": [
+        "pmid-42141385"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "8a0443f5357d7bda2eb0fa7000610241a8d3196d42cd898bf20cf8cc67d6087d"
     },
     {
       "relationshipId": "rel-chronic-kidney-disease-to-anemia",
@@ -4313,6 +4381,40 @@
       "suggestionObjectHash": "be6e013e235009d4b65bc753b31dd3a24ef167987c0bdd1645875e94d070a04e"
     },
     {
+      "relationshipId": "rel-lyme-disease-to-uveitis",
+      "primaryId": "lyme-disease",
+      "targetId": "uveitis",
+      "direction": "lyme-disease -> uveitis",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me10-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Uveitis, including anterior, intermediate and posterior forms, is among documented ocular manifestations reported in patients with Lyme disease. Require Lyme disease or Lyme borreliosis and uveitis to be independently established. Preserve other infectious, autoimmune, medication-related, traumatic, and ophthalmic etiologies. Population-level manifestation evidence does not by itself establish an individual nexus. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Uveitis, including anterior, intermediate and posterior forms, is among documented ocular manifestations reported in patients with Lyme disease. Require Lyme disease or Lyme borreliosis and uveitis to be independently established. Preserve other infectious, autoimmune, medication-related, traumatic, and ophthalmic etiologies. Population-level manifestation evidence does not by itself establish an individual nexus. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require Lyme disease or Lyme borreliosis and uveitis to be independently established. Preserve other infectious, autoimmune, medication-related, traumatic, and ophthalmic etiologies. Population-level manifestation evidence does not by itself establish an individual nexus.",
+        "boundarySource": "approved-me10-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of lyme-disease and uveitis",
+        "Documentation satisfying the approved phenotype restriction: established Lyme disease or Lyme borreliosis context with separately diagnosed uveitis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require Lyme disease or Lyme borreliosis and uveitis to be independently established. Preserve other infectious, autoimmune, medication-related, traumatic, and ophthalmic etiologies. Population-level manifestation evidence does not by itself establish an individual nexus."
+      ],
+      "sourceIds": [
+        "pmid-41546697"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "33f53dd29ffdfe89ea7502dacfb78a97076f7900d8eb97e207631453968d0a86"
+    },
+    {
       "relationshipId": "rel-malaria-to-epilepsy",
       "primaryId": "malaria",
       "targetId": "epilepsy",
@@ -4713,6 +4815,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "5c83dfdb2413eb1ce3d4d6d126bc4d4873f37286addf6b1d9f028ca84e5b0915"
+    },
+    {
+      "relationshipId": "rel-narcolepsy-to-hypertension",
+      "primaryId": "narcolepsy",
+      "targetId": "hypertension",
+      "direction": "narcolepsy -> hypertension",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me10-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Hypertension is among the cardiometabolic comorbidities reported in narcolepsy, with greater cardiometabolic burden particularly in narcolepsy type 1; this supports association and screening relevance only. Require separately diagnosed hypertension. Preserve obesity, obstructive sleep apnea, metabolic syndrome, stimulant or other medication exposure, age, sex, renal or endocrine causes, and other conventional hypertension risk factors. Do not state or imply individual causation from the meta-analysis alone. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Hypertension is among the cardiometabolic comorbidities reported in narcolepsy, with greater cardiometabolic burden particularly in narcolepsy type 1; this supports association and screening relevance only. Require separately diagnosed hypertension. Preserve obesity, obstructive sleep apnea, metabolic syndrome, stimulant or other medication exposure, age, sex, renal or endocrine causes, and other conventional hypertension risk factors. Do not state or imply individual causation from the meta-analysis alone. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require separately diagnosed hypertension. Preserve obesity, obstructive sleep apnea, metabolic syndrome, stimulant or other medication exposure, age, sex, renal or endocrine causes, and other conventional hypertension risk factors. Do not state or imply individual causation from the meta-analysis alone.",
+        "boundarySource": "approved-me10-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of narcolepsy and hypertension",
+        "Documentation satisfying the approved phenotype restriction: established narcolepsy with separately diagnosed hypertension; association appears strongest in narcolepsy type 1",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require separately diagnosed hypertension. Preserve obesity, obstructive sleep apnea, metabolic syndrome, stimulant or other medication exposure, age, sex, renal or endocrine causes, and other conventional hypertension risk factors. Do not state or imply individual causation from the meta-analysis alone."
+      ],
+      "sourceIds": [
+        "pmid-41747645"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "a1a5d73757dff1a83163630c49763fa861c047e5e152c845555af27e3b1a24d5"
     },
     {
       "relationshipId": "rel-nocardiosis-to-cardiac-inflammatory-disease",
@@ -7064,6 +7200,40 @@
       "suggestionObjectHash": "37d74e09428d7a1002179eaf4fab59456b37ad92e2d7f8c9c1e5280289dc5169"
     },
     {
+      "relationshipId": "rel-thyroiditis-to-urticaria",
+      "primaryId": "thyroiditis",
+      "targetId": "urticaria",
+      "direction": "thyroiditis -> urticaria",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me10-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Chronic urticaria is frequently associated with autoimmune thyroiditis, while pathogenesis and the benefit of thyroid-directed treatment remain uncertain; this evidence supports association only. Require autoimmune thyroiditis and chronic urticaria to be independently established. Do not generalize from nonspecific thyroiditis, do not infer that autoimmune thyroiditis individually causes urticaria, and do not use levothyroxine response as proof of causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Chronic urticaria is frequently associated with autoimmune thyroiditis, while pathogenesis and the benefit of thyroid-directed treatment remain uncertain; this evidence supports association only. Require autoimmune thyroiditis and chronic urticaria to be independently established. Do not generalize from nonspecific thyroiditis, do not infer that autoimmune thyroiditis individually causes urticaria, and do not use levothyroxine response as proof of causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require autoimmune thyroiditis and chronic urticaria to be independently established. Do not generalize from nonspecific thyroiditis, do not infer that autoimmune thyroiditis individually causes urticaria, and do not use levothyroxine response as proof of causation.",
+        "boundarySource": "approved-me10-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of thyroiditis and urticaria",
+        "Documentation satisfying the approved phenotype restriction: autoimmune thyroiditis only, with separately established chronic urticaria",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require autoimmune thyroiditis and chronic urticaria to be independently established. Do not generalize from nonspecific thyroiditis, do not infer that autoimmune thyroiditis individually causes urticaria, and do not use levothyroxine response as proof of causation."
+      ],
+      "sourceIds": [
+        "pmid-42511690"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "6c18a753f920b39a903245ee074e9c0f29c3f965c4e6fc23f7b70252b2a70191"
+    },
+    {
       "relationshipId": "rel-trigeminal-neuralgia-to-depressive-disorder",
       "primaryId": "trigeminal-neuralgia",
       "targetId": "depressive-disorder",
@@ -7332,6 +7502,6 @@
       "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
     }
   ],
-  "lastUpdatedBy": "ME-9 Qualified-Human Citation Verification",
-  "currentState": "ME9-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-10",
+  "currentState": "ME10-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }
