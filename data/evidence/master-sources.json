@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "d1886af67a891d4bd34387538fe5d6f6ffdabf82",
+  "baselineCommit": "adf648abbff619d7546373e0084a1fdc9d09d7e7",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 231,
+    "liveSourceReferenceUses": 236,
     "activeSourceEntities": 208,
-    "pendingVerificationSourceEntities": 0,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 207,
-    "pendingClinicalSourceEntities": 0,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 217,
+    "totalSourceEntitiesIncludingLineage": 222,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -7285,6 +7285,48 @@
       ]
     },
     {
+      "sourceId": "pmid-41546697",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "41546697",
+      "doi": "10.1007/s00417-025-07110-2",
+      "canonicalCitation": "Barbosa LIT, Lima RV, Moreira JLML, Hira S, Arruda MP, Zinher MT, Thomaz S, Del Valle GS. Ocular findings in patients with lyme disease: a systematic review and meta-analysis. Graefes Arch Clin Exp Ophthalmol. 2026;264(4):1101-1110. PMID 41546697. doi:10.1007/s00417-025-07110-2.",
+      "citationVariants": [
+        "Barbosa LIT, Lima RV, Moreira JLML, Hira S, Arruda MP, Zinher MT, Thomaz S, Del Valle GS. Ocular findings in patients with lyme disease: a systematic review and meta-analysis. Graefes Arch Clin Exp Ophthalmol. 2026;264(4):1101-1110. PMID 41546697. doi:10.1007/s00417-025-07110-2."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41546697/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41546697/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-lyme-disease-to-uveitis",
+          "primaryId": "lyme-disease",
+          "targetId": "uveitis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a40c2d4b395a188dbee6b804c3fa679101bd3d40c06b3043926dae7aa527c781"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-41705319",
       "status": "active",
       "kind": "clinical-evidence",
@@ -7320,6 +7362,48 @@
       ]
     },
     {
+      "sourceId": "pmid-41747645",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "41747645",
+      "doi": "10.1016/j.smrv.2026.102264",
+      "canonicalCitation": "Zhang X, Yin W, Ren J, Zhou X, Zha M, Zong Q, Shen Y, Spruyt K, Zhou J. Narcolepsy and metabolic disease: A meta-analytic synthesis. Sleep Med Rev. 2026;87:102264. PMID 41747645. doi:10.1016/j.smrv.2026.102264.",
+      "citationVariants": [
+        "Zhang X, Yin W, Ren J, Zhou X, Zha M, Zong Q, Shen Y, Spruyt K, Zhou J. Narcolepsy and metabolic disease: A meta-analytic synthesis. Sleep Med Rev. 2026;87:102264. PMID 41747645. doi:10.1016/j.smrv.2026.102264."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41747645/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41747645/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-narcolepsy-to-hypertension",
+          "primaryId": "narcolepsy",
+          "targetId": "hypertension",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "400cca86ffbf9ed0e0e1d266bdc23db7716e4969d6d898432b15e2ef50833a62"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-41819536",
       "status": "active",
       "kind": "clinical-evidence",
@@ -7353,6 +7437,48 @@
       "rawReferenceHashes": [
         "cb70445f4ac020aa8dc1c49887eabaa6d47182169e10a559b3f5f07073be4fc8"
       ]
+    },
+    {
+      "sourceId": "pmid-41905893",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "41905893",
+      "doi": "10.1111/jsr.70333",
+      "canonicalCitation": "Srivali N, De Giacomi F. Obstructive Sleep Apnea in Bronchiectasis: Prevalence, Risk Factors and Clinical Implications-A Systematic Review and Meta-Analysis. J Sleep Res. 2026;35(4):e70333. PMID 41905893. doi:10.1111/jsr.70333.",
+      "citationVariants": [
+        "Srivali N, De Giacomi F. Obstructive Sleep Apnea in Bronchiectasis: Prevalence, Risk Factors and Clinical Implications-A Systematic Review and Meta-Analysis. J Sleep Res. 2026;35(4):e70333. PMID 41905893. doi:10.1111/jsr.70333."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41905893/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41905893/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bronchiectasis-to-sleep-apnea",
+          "primaryId": "bronchiectasis",
+          "targetId": "sleep-apnea",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "cedc0ee8530fb926b6acc64589e8dbbb5a80dd05d93c2aa0deec11b6519dbcc9"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-41969980",
@@ -7460,6 +7586,48 @@
       ]
     },
     {
+      "sourceId": "pmid-42141385",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "42141385",
+      "doi": "10.1186/s12891-026-09965-w",
+      "canonicalCitation": "Liu L, Lu J, Wang J, Wang Q, Zhao H, Zhang Y. Pharmacological treatment for Charcot neuroarthropathy: a systematic review. BMC Musculoskelet Disord. 2026;27(1):592. PMID 42141385. doi:10.1186/s12891-026-09965-w.",
+      "citationVariants": [
+        "Liu L, Lu J, Wang J, Wang Q, Zhao H, Zhang Y. Pharmacological treatment for Charcot neuroarthropathy: a systematic review. BMC Musculoskelet Disord. 2026;27(1):592. PMID 42141385. doi:10.1186/s12891-026-09965-w."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42141385/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42141385/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-charcot-arthropathy-to-osteomyelitis",
+          "primaryId": "charcot-arthropathy",
+          "targetId": "osteomyelitis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "fad773112917aa5ea111d22cae5c690a0549365350e0d48112a5586eabe84add"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
       "sourceId": "pmid-42232752",
       "status": "active",
       "kind": "clinical-evidence",
@@ -7528,6 +7696,48 @@
       "rawReferenceHashes": [
         "1cd15f2e4abe538ba2ec4d9f92bb8e3402ff56eb3ca55d65ad9775c42e89503c"
       ]
+    },
+    {
+      "sourceId": "pmid-42511690",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "42511690",
+      "doi": "10.3390/ijms27146348",
+      "canonicalCitation": "Bordoni M, Ciarloni A, Aboud N, Sidori E, Silvetti F, Taccaliti A, Vassallo A, Romeo M, Salvio G, Balercia G. Effects of Treatment with L-Thyroxine on Chronic Urticaria in Subjects with Autoimmune Thyroiditis: A Systematic Review and Meta-Analysis. Int J Mol Sci. 2026;27(14):6348. PMID 42511690. doi:10.3390/ijms27146348.",
+      "citationVariants": [
+        "Bordoni M, Ciarloni A, Aboud N, Sidori E, Silvetti F, Taccaliti A, Vassallo A, Romeo M, Salvio G, Balercia G. Effects of Treatment with L-Thyroxine on Chronic Urticaria in Subjects with Autoimmune Thyroiditis: A Systematic Review and Meta-Analysis. Int J Mol Sci. 2026;27(14):6348. PMID 42511690. doi:10.3390/ijms27146348."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42511690/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42511690/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-08-21"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-thyroiditis-to-urticaria",
+          "primaryId": "thyroiditis",
+          "targetId": "urticaria",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "6c2dd63d887c294f75479abd1b6ad2d2c4f77ab40bb150ccf1ede891481fbe00"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-8571802",
@@ -7600,211 +7810,201 @@
       ]
     },
     {
-      "sourceId": "pmid-41546697",
-      "status": "active",
+      "sourceId": "pmid-31006843",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "41546697",
-      "doi": "10.1007/s00417-025-07110-2",
-      "canonicalCitation": "Barbosa LIT, Lima RV, Moreira JLML, Hira S, Arruda MP, Zinher MT, Thomaz S, Del Valle GS. Ocular findings in patients with lyme disease: a systematic review and meta-analysis. Graefes Arch Clin Exp Ophthalmol. 2026;264(4):1101-1110. PMID 41546697. doi:10.1007/s00417-025-07110-2.",
+      "pmid": "31006843",
+      "doi": "10.1007/s00404-019-05153-5",
+      "canonicalCitation": "Nicolaus K, Bräuer D, Sczesny R, Lehmann T, Diebolder H, Runnebaum IB. Unexpected coexistent endometriosis in women with symptomatic uterine leiomyomas is independently associated with infertility, nulliparity and minor myoma size. Arch Gynecol Obstet. 2019;300(1):103-108. PMID 31006843. doi:10.1007/s00404-019-05153-5.",
       "citationVariants": [
-        "Barbosa LIT, Lima RV, Moreira JLML, Hira S, Arruda MP, Zinher MT, Thomaz S, Del Valle GS. Ocular findings in patients with lyme disease: a systematic review and meta-analysis. Graefes Arch Clin Exp Ophthalmol. 2026;264(4):1101-1110. PMID 41546697. doi:10.1007/s00417-025-07110-2."
+        "Nicolaus K, Bräuer D, Sczesny R, Lehmann T, Diebolder H, Runnebaum IB. Unexpected coexistent endometriosis in women with symptomatic uterine leiomyomas is independently associated with infertility, nulliparity and minor myoma size. Arch Gynecol Obstet. 2019;300(1):103-108. PMID 31006843. doi:10.1007/s00404-019-05153-5."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41546697/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31006843/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/41546697/"
+        "https://pubmed.ncbi.nlm.nih.gov/31006843/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-lyme-disease-to-uveitis",
-          "primaryId": "lyme-disease",
-          "targetId": "uveitis",
+          "relationshipId": "rel-uterine-fibroids-to-endometriosis",
+          "primaryId": "uterine-fibroids",
+          "targetId": "endometriosis",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "a40c2d4b395a188dbee6b804c3fa679101bd3d40c06b3043926dae7aa527c781"
+        "e242c23f6a8e3bb4bbc9b5e942eedf4a42030a72c3b4f46c98ecf693357ee864"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-41747645",
-      "status": "active",
+      "sourceId": "pmid-33360604",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "41747645",
-      "doi": "10.1016/j.smrv.2026.102264",
-      "canonicalCitation": "Zhang X, Yin W, Ren J, Zhou X, Zha M, Zong Q, Shen Y, Spruyt K, Zhou J. Narcolepsy and metabolic disease: A meta-analytic synthesis. Sleep Med Rev. 2026;87:102264. PMID 41747645. doi:10.1016/j.smrv.2026.102264.",
+      "pmid": "33360604",
+      "doi": "10.1016/j.smrv.2020.101403",
+      "canonicalCitation": "Li L, Gan Y, Zhou X, et al. Insomnia and the risk of hypertension: A meta-analysis of prospective cohort studies. Sleep Med Rev. 2021;56:101403. PMID 33360604. doi:10.1016/j.smrv.2020.101403.",
       "citationVariants": [
-        "Zhang X, Yin W, Ren J, Zhou X, Zha M, Zong Q, Shen Y, Spruyt K, Zhou J. Narcolepsy and metabolic disease: A meta-analytic synthesis. Sleep Med Rev. 2026;87:102264. PMID 41747645. doi:10.1016/j.smrv.2026.102264."
+        "Li L, Gan Y, Zhou X, et al. Insomnia and the risk of hypertension: A meta-analysis of prospective cohort studies. Sleep Med Rev. 2021;56:101403. PMID 33360604. doi:10.1016/j.smrv.2020.101403."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41747645/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33360604/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/41747645/"
+        "https://pubmed.ncbi.nlm.nih.gov/33360604/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-narcolepsy-to-hypertension",
-          "primaryId": "narcolepsy",
+          "relationshipId": "rel-insomnia-to-hypertension",
+          "primaryId": "insomnia",
           "targetId": "hypertension",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "400cca86ffbf9ed0e0e1d266bdc23db7716e4969d6d898432b15e2ef50833a62"
+        "8e7cda88659893d22b2ecb72832c5e119152d3bd5727a100e1a637ae9d4b0e3f"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-41905893",
-      "status": "active",
+      "sourceId": "pmid-36377800",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "41905893",
-      "doi": "10.1111/jsr.70333",
-      "canonicalCitation": "Srivali N, De Giacomi F. Obstructive Sleep Apnea in Bronchiectasis: Prevalence, Risk Factors and Clinical Implications-A Systematic Review and Meta-Analysis. J Sleep Res. 2026;35(4):e70333. PMID 41905893. doi:10.1111/jsr.70333.",
+      "pmid": "36377800",
+      "doi": "10.1111/cdoe.12812",
+      "canonicalCitation": "Larvin H, Kang J, Aggarwal VR, Pavitt S, Wu J. Periodontitis and risk of immune-mediated systemic conditions: A systematic review and meta-analysis. Community Dent Oral Epidemiol. 2023;51(5):705-717. PMID 36377800. doi:10.1111/cdoe.12812.",
       "citationVariants": [
-        "Srivali N, De Giacomi F. Obstructive Sleep Apnea in Bronchiectasis: Prevalence, Risk Factors and Clinical Implications-A Systematic Review and Meta-Analysis. J Sleep Res. 2026;35(4):e70333. PMID 41905893. doi:10.1111/jsr.70333."
+        "Larvin H, Kang J, Aggarwal VR, Pavitt S, Wu J. Periodontitis and risk of immune-mediated systemic conditions: A systematic review and meta-analysis. Community Dent Oral Epidemiol. 2023;51(5):705-717. PMID 36377800. doi:10.1111/cdoe.12812."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41905893/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36377800/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/41905893/"
+        "https://pubmed.ncbi.nlm.nih.gov/36377800/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-bronchiectasis-to-sleep-apnea",
-          "primaryId": "bronchiectasis",
-          "targetId": "sleep-apnea",
+          "relationshipId": "rel-periodontal-disease-to-osteoporosis",
+          "primaryId": "periodontal-disease",
+          "targetId": "osteoporosis",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "cedc0ee8530fb926b6acc64589e8dbbb5a80dd05d93c2aa0deec11b6519dbcc9"
+        "a80103833c02dc980336faca65f6af0af65694431c1490d339da76aae58ace9c"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-42141385",
-      "status": "active",
+      "sourceId": "pmid-41871568",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "42141385",
-      "doi": "10.1186/s12891-026-09965-w",
-      "canonicalCitation": "Liu L, Lu J, Wang J, Wang Q, Zhao H, Zhang Y. Pharmacological treatment for Charcot neuroarthropathy: a systematic review. BMC Musculoskelet Disord. 2026;27(1):592. PMID 42141385. doi:10.1186/s12891-026-09965-w.",
+      "pmid": "41871568",
+      "doi": "10.24953/turkjpediatr.2026.6451",
+      "canonicalCitation": "Yildirim Arslan S, Tigrak S, Yucel E, Demirci M, Ekici O. Pediatric cervicofacial actinomycosis presenting with mandibular osteomyelitis: a diagnostic and therapeutic challenge and literature review. Turk J Pediatr. 2026. PMID 41871568. doi:10.24953/turkjpediatr.2026.6451.",
       "citationVariants": [
-        "Liu L, Lu J, Wang J, Wang Q, Zhao H, Zhang Y. Pharmacological treatment for Charcot neuroarthropathy: a systematic review. BMC Musculoskelet Disord. 2026;27(1):592. PMID 42141385. doi:10.1186/s12891-026-09965-w."
+        "Yildirim Arslan S, Tigrak S, Yucel E, Demirci M, Ekici O. Pediatric cervicofacial actinomycosis presenting with mandibular osteomyelitis: a diagnostic and therapeutic challenge and literature review. Turk J Pediatr. 2026. PMID 41871568. doi:10.24953/turkjpediatr.2026.6451."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42141385/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41871568/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/42141385/"
+        "https://pubmed.ncbi.nlm.nih.gov/41871568/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-charcot-arthropathy-to-osteomyelitis",
-          "primaryId": "charcot-arthropathy",
+          "relationshipId": "rel-actinomycosis-to-osteomyelitis",
+          "primaryId": "actinomycosis",
           "targetId": "osteomyelitis",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "fad773112917aa5ea111d22cae5c690a0549365350e0d48112a5586eabe84add"
+        "52ec26ba5a7ae68be9fc98505cc2172059bee238bd3aba7a34ca661084c16a66"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
-      "sourceId": "pmid-42511690",
-      "status": "active",
+      "sourceId": "pmid-42444963",
+      "status": "pending-verification",
       "kind": "clinical-evidence",
-      "pmid": "42511690",
-      "doi": "10.3390/ijms27146348",
-      "canonicalCitation": "Bordoni M, Ciarloni A, Aboud N, Sidori E, Silvetti F, Taccaliti A, Vassallo A, Romeo M, Salvio G, Balercia G. Effects of Treatment with L-Thyroxine on Chronic Urticaria in Subjects with Autoimmune Thyroiditis: A Systematic Review and Meta-Analysis. Int J Mol Sci. 2026;27(14):6348. PMID 42511690. doi:10.3390/ijms27146348.",
+      "pmid": "42444963",
+      "doi": "10.21037/jtd-2026-0713",
+      "canonicalCitation": "Bachar R, Tager D, Berro J, Nero N, Sehgal S, Mehta AC. Pulmonary hypertension following lung transplant: a systematic review. J Thorac Dis. 2026;18(6):685. PMID 42444963. doi:10.21037/jtd-2026-0713.",
       "citationVariants": [
-        "Bordoni M, Ciarloni A, Aboud N, Sidori E, Silvetti F, Taccaliti A, Vassallo A, Romeo M, Salvio G, Balercia G. Effects of Treatment with L-Thyroxine on Chronic Urticaria in Subjects with Autoimmune Thyroiditis: A Systematic Review and Meta-Analysis. Int J Mol Sci. 2026;27(14):6348. PMID 42511690. doi:10.3390/ijms27146348."
+        "Bachar R, Tager D, Berro J, Nero N, Sehgal S, Mehta AC. Pulmonary hypertension following lung transplant: a systematic review. J Thorac Dis. 2026;18(6):685. PMID 42444963. doi:10.21037/jtd-2026-0713."
       ],
-      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42511690/",
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42444963/",
       "sourceUrlVariants": [
-        "https://pubmed.ncbi.nlm.nih.gov/42511690/"
+        "https://pubmed.ncbi.nlm.nih.gov/42444963/"
       ],
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": true,
+      "verified": false,
       "sourceCheckedOnValues": [
         "2026-08-21"
       ],
       "liveUsageCount": 1,
       "liveUses": [
         {
-          "relationshipId": "rel-thyroiditis-to-urticaria",
-          "primaryId": "thyroiditis",
-          "targetId": "urticaria",
+          "relationshipId": "rel-bronchiolitis-to-pulmonary-hypertension",
+          "primaryId": "bronchiolitis",
+          "targetId": "pulmonary-hypertension",
           "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "6c2dd63d887c294f75479abd1b6ad2d2c4f77ab40bb150ccf1ede891481fbe00"
+        "c9877c0bee6ebfd1890d90bd9fc95aa907d81dfcbc27967e11cf2a5a5924de18"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": false,
-        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
-        "qualifiedHumanCitationReviewDate": "2026-08-21",
+        "qualifiedHumanCitationReviewRequired": true,
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
@@ -8074,6 +8274,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "ME-10 Qualified-Human Citation Verification",
-  "currentState": "ME10-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-11",
+  "currentState": "ME11-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

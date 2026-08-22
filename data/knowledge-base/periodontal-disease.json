@@ -25,6 +25,30 @@
           "sourceLocator": "PMID 28733997; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented periodontitis/periodontal disease and separately documented tooth loss attributable to periodontal attachment/bone loss. Do not infer cause of tooth loss when caries, trauma, extraction for other reasons, or other etiologies predominate."
         }
       ]
+    },
+    {
+      "conditionId": "osteoporosis",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Longitudinal evidence found increased incident osteoporosis risk among people with periodontitis versus controls (RR 1.40, 95% CI 1.12-1.75). Require periodontitis as the primary phenotype and separately diagnosed osteoporosis. Treat as longitudinal population-level risk/association only. Preserve age, sex/menopause, smoking, glucocorticoid exposure, nutritional status, endocrine disease, immobility, medications and other osteoporosis risks. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of periodontal-disease and osteoporosis",
+        "Documentation satisfying the approved phenotype restriction: clinically established periodontitis rather than nonspecific periodontal disease; osteoporosis separately diagnosed",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, treatment/transplant context, and selection bias where applicable",
+        "Resolution of the approved publication guard: Require periodontitis as the primary phenotype and separately diagnosed osteoporosis. Treat as longitudinal population-level risk/association only. Preserve age, sex/menopause, smoking, glucocorticoid exposure, nutritional status, endocrine disease, immobility, medications and other osteoporosis risks."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Larvin H, Kang J, Aggarwal VR, Pavitt S, Wu J. Periodontitis and risk of immune-mediated systemic conditions: A systematic review and meta-analysis. Community Dent Oral Epidemiol. 2023;51(5):705-717. PMID 36377800. doi:10.1111/cdoe.12812.",
+          "note": "Mapping Expansion Batch ME-11 evidence for the bounded periodontal-disease to osteoporosis proposition. This final approved source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36377800/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 36377800; approved ME-11 final source; guard: Require periodontitis as the primary phenotype and separately diagnosed osteoporosis. Treat as longitudinal population-level risk/association only. Preserve age, sex/menopause, smoking, glucocorticoid exposure, nutritional status, endocrine disease, immobility, medications and other osteoporosis risks."
+        }
+      ]
     }
   ]
 }

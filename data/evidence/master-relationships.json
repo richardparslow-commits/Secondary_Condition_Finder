@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "d1886af67a891d4bd34387538fe5d6f6ffdabf82",
+  "baselineCommit": "adf648abbff619d7546373e0084a1fdc9d09d7e7",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 223,
-    "explicitPublicationGuards": 149,
+    "relationships": 228,
+    "explicitPublicationGuards": 154,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -246,6 +246,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "a42a037b1605417925c6b0985443e86e7338f2663888ece63de0a63db8893d17"
+    },
+    {
+      "relationshipId": "rel-actinomycosis-to-osteomyelitis",
+      "primaryId": "actinomycosis",
+      "targetId": "osteomyelitis",
+      "direction": "actinomycosis -> osteomyelitis",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me11-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Actinomycotic osteomyelitis is a rare chronic infection caused by Actinomyces species; mandibular involvement can occur in cervicofacial/oral actinomycosis. Require clinically established cervicofacial/oral actinomycosis plus a separately diagnosed mandibular osteomyelitis phenotype. Do not generalize to all actinomycosis or all osteomyelitis. Preserve odontogenic infection, trauma, surgery, malignancy and other infectious causes. The source is rare-disease/case-plus-review evidence and must not be presented as population-level causal proof. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Actinomycotic osteomyelitis is a rare chronic infection caused by Actinomyces species; mandibular involvement can occur in cervicofacial/oral actinomycosis. Require clinically established cervicofacial/oral actinomycosis plus a separately diagnosed mandibular osteomyelitis phenotype. Do not generalize to all actinomycosis or all osteomyelitis. Preserve odontogenic infection, trauma, surgery, malignancy and other infectious causes. The source is rare-disease/case-plus-review evidence and must not be presented as population-level causal proof. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require clinically established cervicofacial/oral actinomycosis plus a separately diagnosed mandibular osteomyelitis phenotype. Do not generalize to all actinomycosis or all osteomyelitis. Preserve odontogenic infection, trauma, surgery, malignancy and other infectious causes. The source is rare-disease/case-plus-review evidence and must not be presented as population-level causal proof.",
+        "boundarySource": "approved-me11-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of actinomycosis and osteomyelitis",
+        "Documentation satisfying the approved phenotype restriction: cervicofacial/oral actinomycosis with compatible mandibular involvement; target is mandibular osteomyelitis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, treatment/transplant context, and selection bias where applicable",
+        "Resolution of the approved publication guard: Require clinically established cervicofacial/oral actinomycosis plus a separately diagnosed mandibular osteomyelitis phenotype. Do not generalize to all actinomycosis or all osteomyelitis. Preserve odontogenic infection, trauma, surgery, malignancy and other infectious causes. The source is rare-disease/case-plus-review evidence and must not be presented as population-level causal proof."
+      ],
+      "sourceIds": [
+        "pmid-41871568"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "f7eef485eb2c30c1c04c34f2c5415c7ac21d9c0b8dd288a366964c8df8dad5a0"
     },
     {
       "relationshipId": "rel-adrenal-histoplasmosis-to-addisons-disease",
@@ -846,6 +880,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "037fb5093337afbf2bf68c6166b67f98a317c1e18e2cee4f66182a5e84d9fbce"
+    },
+    {
+      "relationshipId": "rel-bronchiolitis-to-pulmonary-hypertension",
+      "primaryId": "bronchiolitis",
+      "targetId": "pulmonary-hypertension",
+      "direction": "bronchiolitis -> pulmonary-hypertension",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me11-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. In lung-transplant recipients with post-transplant pulmonary hypertension, chronic lung allograft dysfunction—particularly bronchiolitis obliterans syndrome—was the most frequently reported etiology/association, accounting for 63% of included cases. Use only for bronchiolitis obliterans syndrome/chronic lung allograft dysfunction after lung transplantation, with separately diagnosed pulmonary hypertension. Do not generalize to ordinary acute bronchiolitis. Preserve vascular/anastomotic complications, recurrent idiopathic pulmonary arterial hypertension, recurrent thromboembolic disease, left-heart/diastolic dysfunction, underlying transplant indication and other pulmonary-hypertension causes. The review calls for prospective longitudinal studies; do not state individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. In lung-transplant recipients with post-transplant pulmonary hypertension, chronic lung allograft dysfunction—particularly bronchiolitis obliterans syndrome—was the most frequently reported etiology/association, accounting for 63% of included cases. Use only for bronchiolitis obliterans syndrome/chronic lung allograft dysfunction after lung transplantation, with separately diagnosed pulmonary hypertension. Do not generalize to ordinary acute bronchiolitis. Preserve vascular/anastomotic complications, recurrent idiopathic pulmonary arterial hypertension, recurrent thromboembolic disease, left-heart/diastolic dysfunction, underlying transplant indication and other pulmonary-hypertension causes. The review calls for prospective longitudinal studies; do not state individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Use only for bronchiolitis obliterans syndrome/chronic lung allograft dysfunction after lung transplantation, with separately diagnosed pulmonary hypertension. Do not generalize to ordinary acute bronchiolitis. Preserve vascular/anastomotic complications, recurrent idiopathic pulmonary arterial hypertension, recurrent thromboembolic disease, left-heart/diastolic dysfunction, underlying transplant indication and other pulmonary-hypertension causes. The review calls for prospective longitudinal studies; do not state individual causation.",
+        "boundarySource": "approved-me11-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of bronchiolitis and pulmonary-hypertension",
+        "Documentation satisfying the approved phenotype restriction: post-lung-transplant bronchiolitis obliterans syndrome/chronic lung allograft dysfunction; pulmonary hypertension separately diagnosed",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, treatment/transplant context, and selection bias where applicable",
+        "Resolution of the approved publication guard: Use only for bronchiolitis obliterans syndrome/chronic lung allograft dysfunction after lung transplantation, with separately diagnosed pulmonary hypertension. Do not generalize to ordinary acute bronchiolitis. Preserve vascular/anastomotic complications, recurrent idiopathic pulmonary arterial hypertension, recurrent thromboembolic disease, left-heart/diastolic dysfunction, underlying transplant indication and other pulmonary-hypertension causes. The review calls for prospective longitudinal studies; do not state individual causation."
+      ],
+      "sourceIds": [
+        "pmid-42444963"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "2fd14993ce8875d70d97c2606c8b06d10180b69a3f18bd75b306fe8d26ef6ca7"
     },
     {
       "relationshipId": "rel-brucellosis-to-cardiac-inflammatory-disease",
@@ -4045,6 +4113,40 @@
       "suggestionObjectHash": "a22cf9fd6cd8d72563a96c9a5accc39021886735043a46d3a7f23c1da4a47bc1"
     },
     {
+      "relationshipId": "rel-insomnia-to-hypertension",
+      "primaryId": "insomnia",
+      "targetId": "hypertension",
+      "direction": "insomnia -> hypertension",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me11-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Across 14 prospective cohorts involving 395,641 participants, insomnia was associated with increased incident hypertension risk (pooled RR 1.21, 95% CI 1.10-1.33). Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. Preserve obstructive sleep apnea, obesity, age, sex, renal/endocrine disease, medications/substances, sleep duration and other conventional hypertension risks. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Across 14 prospective cohorts involving 395,641 participants, insomnia was associated with increased incident hypertension risk (pooled RR 1.21, 95% CI 1.10-1.33). Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. Preserve obstructive sleep apnea, obesity, age, sex, renal/endocrine disease, medications/substances, sleep duration and other conventional hypertension risks. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. Preserve obstructive sleep apnea, obesity, age, sex, renal/endocrine disease, medications/substances, sleep duration and other conventional hypertension risks.",
+        "boundarySource": "approved-me11-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of insomnia and hypertension",
+        "Documentation satisfying the approved phenotype restriction: independently established insomnia and separately diagnosed hypertension",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, treatment/transplant context, and selection bias where applicable",
+        "Resolution of the approved publication guard: Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. Preserve obstructive sleep apnea, obesity, age, sex, renal/endocrine disease, medications/substances, sleep duration and other conventional hypertension risks."
+      ],
+      "sourceIds": [
+        "pmid-33360604"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "77ab0f56a8e63c6b05a87a4405fc69abd629200545be8271e362f92610683f5f"
+    },
+    {
       "relationshipId": "rel-interstitial-lung-disease-to-sleep-apnea",
       "primaryId": "interstitial-lung-disease",
       "targetId": "sleep-apnea",
@@ -5353,6 +5455,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "fc4b7420c5db46e7a89663e431b3c065bf35baa6acf511c1755fb927ae9c75f8"
+    },
+    {
+      "relationshipId": "rel-periodontal-disease-to-osteoporosis",
+      "primaryId": "periodontal-disease",
+      "targetId": "osteoporosis",
+      "direction": "periodontal-disease -> osteoporosis",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me11-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Longitudinal evidence found increased incident osteoporosis risk among people with periodontitis versus controls (RR 1.40, 95% CI 1.12-1.75). Require periodontitis as the primary phenotype and separately diagnosed osteoporosis. Treat as longitudinal population-level risk/association only. Preserve age, sex/menopause, smoking, glucocorticoid exposure, nutritional status, endocrine disease, immobility, medications and other osteoporosis risks. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Longitudinal evidence found increased incident osteoporosis risk among people with periodontitis versus controls (RR 1.40, 95% CI 1.12-1.75). Require periodontitis as the primary phenotype and separately diagnosed osteoporosis. Treat as longitudinal population-level risk/association only. Preserve age, sex/menopause, smoking, glucocorticoid exposure, nutritional status, endocrine disease, immobility, medications and other osteoporosis risks. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require periodontitis as the primary phenotype and separately diagnosed osteoporosis. Treat as longitudinal population-level risk/association only. Preserve age, sex/menopause, smoking, glucocorticoid exposure, nutritional status, endocrine disease, immobility, medications and other osteoporosis risks.",
+        "boundarySource": "approved-me11-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of periodontal-disease and osteoporosis",
+        "Documentation satisfying the approved phenotype restriction: clinically established periodontitis rather than nonspecific periodontal disease; osteoporosis separately diagnosed",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, treatment/transplant context, and selection bias where applicable",
+        "Resolution of the approved publication guard: Require periodontitis as the primary phenotype and separately diagnosed osteoporosis. Treat as longitudinal population-level risk/association only. Preserve age, sex/menopause, smoking, glucocorticoid exposure, nutritional status, endocrine disease, immobility, medications and other osteoporosis risks."
+      ],
+      "sourceIds": [
+        "pmid-36377800"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "0d9c2c25c2d0d43d994c9db523765956fc7415e0681a4025d967341dbbf2ea7a"
     },
     {
       "relationshipId": "rel-peripheral-vascular-disease-to-amputation-or-loss-of-use",
@@ -7434,6 +7570,40 @@
       "suggestionObjectHash": "c6e4581eb3f616e6f6089f260ad9938d5bdba89308e6e1d9308d8bfcb0be4289"
     },
     {
+      "relationshipId": "rel-uterine-fibroids-to-endometriosis",
+      "primaryId": "uterine-fibroids",
+      "targetId": "endometriosis",
+      "direction": "uterine-fibroids -> endometriosis",
+      "primaryPublicationState": "published",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me11-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Among women undergoing laparoscopic myomectomy for symptomatic leiomyomas, 25.6% had unexpected histologically confirmed endometriosis, supporting clinically relevant co-occurrence. Treat strictly as co-occurrence/association and screening relevance, not fibroids causing endometriosis. Preserve shared estrogen-related biology, age, infertility/nulliparity, referral and surgical-selection bias, and other endometriosis risk factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Among women undergoing laparoscopic myomectomy for symptomatic leiomyomas, 25.6% had unexpected histologically confirmed endometriosis, supporting clinically relevant co-occurrence. Treat strictly as co-occurrence/association and screening relevance, not fibroids causing endometriosis. Preserve shared estrogen-related biology, age, infertility/nulliparity, referral and surgical-selection bias, and other endometriosis risk factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Treat strictly as co-occurrence/association and screening relevance, not fibroids causing endometriosis. Preserve shared estrogen-related biology, age, infertility/nulliparity, referral and surgical-selection bias, and other endometriosis risk factors.",
+        "boundarySource": "approved-me11-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of uterine-fibroids and endometriosis",
+        "Documentation satisfying the approved phenotype restriction: symptomatic uterine leiomyomas/fibroids with separately diagnosed endometriosis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, treatment/transplant context, and selection bias where applicable",
+        "Resolution of the approved publication guard: Treat strictly as co-occurrence/association and screening relevance, not fibroids causing endometriosis. Preserve shared estrogen-related biology, age, infertility/nulliparity, referral and surgical-selection bias, and other endometriosis risk factors."
+      ],
+      "sourceIds": [
+        "pmid-31006843"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "1e6173d38b6f05913b3a8f852bbfeec3c0f0dd80b32c91bb3619531eb0cccd7a"
+    },
+    {
       "relationshipId": "rel-uveitis-to-glaucoma",
       "primaryId": "uveitis",
       "targetId": "glaucoma",
@@ -7502,6 +7672,6 @@
       "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
     }
   ],
-  "lastUpdatedBy": "ME-10 Qualified-Human Citation Verification",
-  "currentState": "ME10-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-11",
+  "currentState": "ME11-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

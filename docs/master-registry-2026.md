@@ -2,17 +2,17 @@
 
 ## Status
 
-The authoritative registry is at the fully qualified-human-verified Mapping Expansion Batch ME-10 state, derived from implementation commit `d1886af67a891d4bd34387538fe5d6f6ffdabf82`.
+The authoritative registry is at the Mapping Expansion Batch ME-11 pre-qualified-human-citation-verification state, derived from closed ME-10 citation-verification commit `adf648abbff619d7546373e0084a1fdc9d09d7e7`.
 
 ## Current state
 
-- 223 relationships.
-- 149 explicit publication guards / 74 legacy rationale boundaries.
-- 231 live relationship-source uses: 231 verified / 0 pending verification.
-- 203 active source entities: 202 clinical + 1 legal authority.
-- 0 pending-verification source entities.
+- 228 relationships.
+- 154 explicit publication guards / 74 legacy rationale boundaries.
+- 236 live relationship-source uses: 231 verified / 5 pending verification.
+- 208 active source entities: 207 clinical + 1 legal authority.
+- 5 pending-verification clinical source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
-- 217 total source entities including lineage/history.
+- 222 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
 
 ## ME-6 qualified-human citation verification
@@ -124,3 +124,13 @@ The five ME-10 clinical references have been promoted exactly as implemented fol
 - `narcolepsy -> hypertension` / PMID 41747645 — approve-as-implemented.
 
 No relationship semantic, phenotype restriction, publication guard, citation text, PMID/DOI, source identity, rank, taxonomy, publication state, or pathwayIntelligence value changed during citation verification.
+
+## ME-11 implementation pending citation verification
+
+- `actinomycosis -> osteomyelitis` / PMID 41871568: Require clinically established cervicofacial/oral actinomycosis plus a separately diagnosed mandibular osteomyelitis phenotype. Do not generalize to all actinomycosis or all osteomyelitis. Preserve odontogenic infection, trauma, surgery, malignancy and other infectious causes. The source is rare-disease/case-plus-review evidence and must not be presented as population-level causal proof.
+- `insomnia -> hypertension` / PMID 33360604: Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. Preserve obstructive sleep apnea, obesity, age, sex, renal/endocrine disease, medications/substances, sleep duration and other conventional hypertension risks.
+- `periodontal-disease -> osteoporosis` / PMID 36377800: Require periodontitis as the primary phenotype and separately diagnosed osteoporosis. Treat as longitudinal population-level risk/association only. Preserve age, sex/menopause, smoking, glucocorticoid exposure, nutritional status, endocrine disease, immobility, medications and other osteoporosis risks.
+- `uterine-fibroids -> endometriosis` / PMID 31006843: Treat strictly as co-occurrence/association and screening relevance, not fibroids causing endometriosis. Preserve shared estrogen-related biology, age, infertility/nulliparity, referral and surgical-selection bias, and other endometriosis risk factors.
+- `bronchiolitis -> pulmonary-hypertension` / PMID 42444963: Use only for bronchiolitis obliterans syndrome/chronic lung allograft dysfunction after lung transplantation, with separately diagnosed pulmonary hypertension. Do not generalize to ordinary acute bronchiolitis. Preserve vascular/anastomotic complications, recurrent idiopathic pulmonary arterial hypertension, recurrent thromboembolic disease, left-heart/diastolic dysfunction, underlying transplant indication and other pulmonary-hypertension causes. The review calls for prospective longitudinal studies; do not state individual causation.
+
+All five ME-11 KB references remain `verified:false`, and their normalized master sources remain `pending-verification`. The three approved retrieval-source replacements are already resolved to the final PMIDs above; no additional source substitution is authorized. Mapping approval and PubMed identity matching do not authorize citation promotion. No identity, rank-1, taxonomy, publication-state, or pathwayIntelligence change is part of ME-11 implementation.

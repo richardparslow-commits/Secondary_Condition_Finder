@@ -26,6 +26,30 @@
           "sourceLocator": "PMID 38833937; abstract Methods/Results: participants without prior MDD, 8-year psychiatric follow-up; insomnia symptoms HR 1.437 (95% CI 1.064-1.940) for incident MDD"
         }
       ]
+    },
+    {
+      "conditionId": "hypertension",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Across 14 prospective cohorts involving 395,641 participants, insomnia was associated with increased incident hypertension risk (pooled RR 1.21, 95% CI 1.10-1.33). Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. Preserve obstructive sleep apnea, obesity, age, sex, renal/endocrine disease, medications/substances, sleep duration and other conventional hypertension risks. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of insomnia and hypertension",
+        "Documentation satisfying the approved phenotype restriction: independently established insomnia and separately diagnosed hypertension",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, treatment/transplant context, and selection bias where applicable",
+        "Resolution of the approved publication guard: Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. Preserve obstructive sleep apnea, obesity, age, sex, renal/endocrine disease, medications/substances, sleep duration and other conventional hypertension risks."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Li L, Gan Y, Zhou X, et al. Insomnia and the risk of hypertension: A meta-analysis of prospective cohort studies. Sleep Med Rev. 2021;56:101403. PMID 33360604. doi:10.1016/j.smrv.2020.101403.",
+          "note": "Mapping Expansion Batch ME-11 evidence for the bounded insomnia to hypertension proposition. This final approved source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33360604/",
+          "verified": false,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 33360604; approved ME-11 final source; guard: Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. Preserve obstructive sleep apnea, obesity, age, sex, renal/endocrine disease, medications/substances, sleep duration and other conventional hypertension risks."
+        }
+      ]
     }
   ]
 }

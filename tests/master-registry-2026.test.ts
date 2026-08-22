@@ -77,27 +77,27 @@ const sources = JSON.parse(
 ) as SourceRegistry;
 
 describe("Master Relationship & Evidence Registry 2026", () => {
-  it("pins the authoritative qualified-human-verified ME-10 registry counts", () => {
+  it("pins the authoritative ME-11 pending-verification registry counts", () => {
     expect(relationships.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(relationships.baselineCommit).toBe("d1886af67a891d4bd34387538fe5d6f6ffdabf82");
+    expect(relationships.baselineCommit).toBe("adf648abbff619d7546373e0084a1fdc9d09d7e7");
     expect(relationships.counts).toEqual({
-      relationships: 223,
-      explicitPublicationGuards: 149,
+      relationships: 228,
+      explicitPublicationGuards: 154,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.status).toBe("AUTHORITATIVE-CURRENT-STATE");
-    expect(sources.baselineCommit).toBe("d1886af67a891d4bd34387538fe5d6f6ffdabf82");
+    expect(sources.baselineCommit).toBe("adf648abbff619d7546373e0084a1fdc9d09d7e7");
     expect(sources.counts).toEqual({
-      liveSourceReferenceUses: 231,
+      liveSourceReferenceUses: 236,
       activeSourceEntities: 208,
-      pendingVerificationSourceEntities: 0,
+      pendingVerificationSourceEntities: 5,
       activeClinicalSourceEntities: 207,
-      pendingClinicalSourceEntities: 0,
+      pendingClinicalSourceEntities: 5,
       activeLegalAuthorityEntities: 1,
       retiredOnlySourceEntities: 1,
       supersededUnverifiedSourceEntities: 7,
       bibliographicCorrectionOnlyEntities: 1,
-      totalSourceEntitiesIncludingLineage: 217,
+      totalSourceEntitiesIncludingLineage: 222,
       retiredVerifiedRelationshipSourceUses: 6,
     });
   });
@@ -255,10 +255,11 @@ describe("Master Relationship & Evidence Registry 2026", () => {
 
   it("keeps source lineage states distinct while retaining all active ME-3 sources", () => {
     expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(208);
+    expect(sources.sources.filter((source) => source.status === "pending-verification")).toHaveLength(5);
     expect(sources.sources.filter((source) => source.status === "superseded-unverified")).toHaveLength(7);
     expect(sources.sources.filter((source) => source.status === "bibliographic-correction-only")).toHaveLength(1);
     expect(sources.sources.filter((source) => source.status === "retired-only")).toHaveLength(1);
-    expect(new Set(sources.sources.map((source) => source.sourceId)).size).toBe(217);
+    expect(new Set(sources.sources.map((source) => source.sourceId)).size).toBe(222);
   });
 
 
@@ -280,17 +281,17 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
   });
 
-  it("keeps supersession provenance out of all 149 explicit publication guards", () => {
+  it("keeps supersession provenance out of all 154 explicit publication guards", () => {
     const explicit = relationships.relationships.filter(
       (row) => row.publicationGuard.status === "explicit",
     );
-    expect(explicit).toHaveLength(149);
+    expect(explicit).toHaveLength(154);
     for (const row of explicit) {
       expect(row.publicationGuard.structuredGuardText).not.toMatch(/supersedes unverified PMID/i);
     }
   });
 
-  it("passes the authoritative qualified-human-verified ME-10 master-registry parity audit", () => {
+  it("passes the authoritative ME-11 pending-verification master-registry parity audit", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], {
       cwd: root,
       encoding: "utf8",
@@ -298,12 +299,12 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     const result = JSON.parse(output) as AuditResult;
     expect(result).toMatchObject({
       status: "PASS",
-      relationships: 223,
-      liveSourceReferenceUses: 231,
+      relationships: 228,
+      liveSourceReferenceUses: 236,
       verifiedLiveSourceUses: 231,
-      pendingVerificationLiveSourceUses: 0,
+      pendingVerificationLiveSourceUses: 5,
       activeSourceEntities: 208,
-      pendingVerificationSourceEntities: 0,
+      pendingVerificationSourceEntities: 5,
     });
   });
 
@@ -352,5 +353,26 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     }
   });
 
+
+  it("contains exactly five pending ME-11 clinical sources", () => {
+    const expected = {"pmid-41871568": {"pmid": "41871568", "doi": "10.24953/turkjpediatr.2026.6451", "citation": "Yildirim Arslan S, Tigrak S, Yucel E, Demirci M, Ekici O. Pediatric cervicofacial actinomycosis presenting with mandibular osteomyelitis: a diagnostic and therapeutic challenge and literature review. Turk J Pediatr. 2026. PMID 41871568. doi:10.24953/turkjpediatr.2026.6451."}, "pmid-33360604": {"pmid": "33360604", "doi": "10.1016/j.smrv.2020.101403", "citation": "Li L, Gan Y, Zhou X, et al. Insomnia and the risk of hypertension: A meta-analysis of prospective cohort studies. Sleep Med Rev. 2021;56:101403. PMID 33360604. doi:10.1016/j.smrv.2020.101403."}, "pmid-36377800": {"pmid": "36377800", "doi": "10.1111/cdoe.12812", "citation": "Larvin H, Kang J, Aggarwal VR, Pavitt S, Wu J. Periodontitis and risk of immune-mediated systemic conditions: A systematic review and meta-analysis. Community Dent Oral Epidemiol. 2023;51(5):705-717. PMID 36377800. doi:10.1111/cdoe.12812."}, "pmid-31006843": {"pmid": "31006843", "doi": "10.1007/s00404-019-05153-5", "citation": "Nicolaus K, Bräuer D, Sczesny R, Lehmann T, Diebolder H, Runnebaum IB. Unexpected coexistent endometriosis in women with symptomatic uterine leiomyomas is independently associated with infertility, nulliparity and minor myoma size. Arch Gynecol Obstet. 2019;300(1):103-108. PMID 31006843. doi:10.1007/s00404-019-05153-5."}, "pmid-42444963": {"pmid": "42444963", "doi": "10.21037/jtd-2026-0713", "citation": "Bachar R, Tager D, Berro J, Nero N, Sehgal S, Mehta AC. Pulmonary hypertension following lung transplant: a systematic review. J Thorac Dis. 2026;18(6):685. PMID 42444963. doi:10.21037/jtd-2026-0713."}} as const;
+    const selected = sources.sources.filter((source) => Object.prototype.hasOwnProperty.call(expected, source.sourceId));
+    expect(selected).toHaveLength(5);
+    for (const source of selected) {
+      const identity = expected[source.sourceId as keyof typeof expected];
+      expect(source.status).toBe("pending-verification");
+      expect(source.kind).toBe("clinical-evidence");
+      expect(source.verified).toBe(false);
+      expect(source.liveUsageCount).toBe(1);
+      expect(source.pmid).toBe(identity.pmid);
+      expect(source.doi?.toLowerCase()).toBe(identity.doi.toLowerCase());
+      expect(source.canonicalCitation).toBe(identity.citation);
+      expect(source.verificationState).toMatchObject({
+        qualifiedHumanCitationReviewRequired: true,
+        automaticPromotionAuthorized: false,
+        mappingApprovalDoesNotEqualCitationVerification: true,
+      });
+    }
+  });
 
 });

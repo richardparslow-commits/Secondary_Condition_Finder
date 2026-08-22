@@ -40,14 +40,14 @@ describe("mapping expansion ME-9", () => {
   it("moves the published matrix to P1 76 / P2+ 63", () => {
     const published = kb.filter((mapping) => mapping.draft === false);
     expect(published).toHaveLength(139);
-    expect(published.filter((mapping) => mapping.suggestions.length === 1)).toHaveLength(71);
-    expect(published.filter((mapping) => mapping.suggestions.length >= 2)).toHaveLength(68);
+    expect(published.filter((mapping) => mapping.suggestions.length === 1)).toHaveLength(66);
+    expect(published.filter((mapping) => mapping.suggestions.length >= 2)).toHaveLength(73);
   });
 
   it("pins the exact final ME-9 citation totals", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
-    expect(refs).toHaveLength(231);
+    expect(refs).toHaveLength(236);
     expect(refs.filter((source) => source.verified === true)).toHaveLength(231);
-    expect(refs.filter((source) => source.verified === false)).toHaveLength(0);
+    expect(refs.filter((source) => source.verified === false)).toHaveLength(5);
   });
 });
