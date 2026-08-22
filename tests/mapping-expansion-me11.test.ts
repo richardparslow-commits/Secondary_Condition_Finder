@@ -30,7 +30,7 @@ describe("mapping expansion ME-11", () => {
       const added = byId.get(row.primaryId)?.suggestions.find((entry) => entry.conditionId === row.targetId);
       expect(added?.sourceReferences).toHaveLength(1);
       const source = added?.sourceReferences[0];
-      expect(source?.verified).toBe(false);
+      expect(source?.verified).toBe(true);
       expect(source?.verificationScope).toBe("clinical-evidence");
       expect(source?.sourceUrl).toContain(`/` + row.pmid + `/`);
       expect(source?.citation).toContain(`PMID ${row.pmid}`);
@@ -47,7 +47,7 @@ describe("mapping expansion ME-11", () => {
   it("pins the exact ME-11 pending citation totals", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
     expect(refs).toHaveLength(236);
-    expect(refs.filter((source) => source.verified === true)).toHaveLength(231);
-    expect(refs.filter((source) => source.verified === false)).toHaveLength(5);
+    expect(refs.filter((source) => source.verified === true)).toHaveLength(236);
+    expect(refs.filter((source) => source.verified === false)).toHaveLength(0);
   });
 });

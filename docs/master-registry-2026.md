@@ -8,9 +8,9 @@ The authoritative registry is at the Mapping Expansion Batch ME-11 pre-qualified
 
 - 228 relationships.
 - 154 explicit publication guards / 74 legacy rationale boundaries.
-- 236 live relationship-source uses: 231 verified / 5 pending verification.
-- 208 active source entities: 207 clinical + 1 legal authority.
-- 5 pending-verification clinical source entities.
+- 236 live relationship-source uses: 236 verified / 0 pending verification.
+- 213 active source entities: 207 clinical + 1 legal authority.
+- 0 pending-verification clinical source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
 - 222 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.

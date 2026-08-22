@@ -29,11 +29,11 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // Final closed ME-10 citations remain verified; mapping approval and PubMed identity matching do not promote the 5 ME-11 sources.
 const CITATION_DEBT_BASELINE = Object.freeze({
   references: 236,
-  liveVerified: 231,
+  liveVerified: 236,
   retiredVerified: 6,
-  verifiedProvenance: 237,
-  unverified: 5,
-  reviewFindings: 5,
+  verifiedProvenance: 242,
+  unverified: 0,
+  reviewFindings: 0,
   liveClinicalEvidenceWithUrls: 231,
   retiredClinicalEvidenceWithUrls: 4,
   clinicalEvidenceProvenanceWithUrls: 235,
