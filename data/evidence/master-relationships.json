@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "fbae4f44d8570fecb1d7e8e489bcf97ad9d8346a",
+  "baselineCommit": "e613997b01d91bca8a366d032dcbd914051cde81",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 238,
-    "explicitPublicationGuards": 164,
+    "relationships": 243,
+    "explicitPublicationGuards": 169,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -3464,6 +3464,40 @@
       "suggestionObjectHash": "4b34f76ad89a7064f12eb4f2806168f88a1034672522e381e9e584ad2ad44349"
     },
     {
+      "relationshipId": "rel-hidradenitis-suppurativa-to-depressive-disorder",
+      "primaryId": "hidradenitis-suppurativa",
+      "targetId": "depressive-disorder",
+      "direction": "hidradenitis-suppurativa -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me14-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A population-based cohort found an elevated risk of new-onset depression after hospital-diagnosed hidradenitis suppurativa; the approved relationship is limited to temporal association/risk and does not assert individual causation. Require independently established hidradenitis suppurativa before first-onset depressive disorder; do not use this proposition for depression predating hidradenitis suppurativa. Preserve obesity, smoking, substance use, socioeconomic factors, other psychiatric illness, chronic-pain burden, treatment effects, and other competing explanations. Treat this only as population-level temporal risk, not proof that hidradenitis suppurativa caused an individual depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A population-based cohort found an elevated risk of new-onset depression after hospital-diagnosed hidradenitis suppurativa; the approved relationship is limited to temporal association/risk and does not assert individual causation. Require independently established hidradenitis suppurativa before first-onset depressive disorder; do not use this proposition for depression predating hidradenitis suppurativa. Preserve obesity, smoking, substance use, socioeconomic factors, other psychiatric illness, chronic-pain burden, treatment effects, and other competing explanations. Treat this only as population-level temporal risk, not proof that hidradenitis suppurativa caused an individual depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established hidradenitis suppurativa before first-onset depressive disorder; do not use this proposition for depression predating hidradenitis suppurativa. Preserve obesity, smoking, substance use, socioeconomic factors, other psychiatric illness, chronic-pain burden, treatment effects, and other competing explanations. Treat this only as population-level temporal risk, not proof that hidradenitis suppurativa caused an individual depressive disorder.",
+        "boundarySource": "approved-me14-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of hidradenitis-suppurativa and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: temporal-association-risk",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require independently established hidradenitis suppurativa before first-onset depressive disorder; do not use this proposition for depression predating hidradenitis suppurativa. Preserve obesity, smoking, substance use, socioeconomic factors, other psychiatric illness, chronic-pain burden, treatment effects, and other competing explanations. Treat this only as population-level temporal risk, not proof that hidradenitis suppurativa caused an individual depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-40737006"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "2b4ac7d4cf6890ee4071748ad92ab06b75a2631df31f896bdb37a1d973db71b6"
+    },
+    {
       "relationshipId": "rel-hiv-aids-to-uveitis",
       "primaryId": "hiv-aids",
       "targetId": "uveitis",
@@ -4754,6 +4788,40 @@
       "suggestionObjectHash": "e5ba13d5e5251de3ea94d7b481ca1f735c8ff18a3023e5f9ab1c88cab9ec0216"
     },
     {
+      "relationshipId": "rel-maxillofacial-fracture-to-mandibular-nonunion",
+      "primaryId": "maxillofacial-fracture",
+      "targetId": "mandibular-nonunion",
+      "direction": "maxillofacial-fracture -> mandibular-nonunion",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me14-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A large cohort of adults with isolated mandible fracture documented subsequent mandibular malunion/nonunion; because the catalog primary is broader than the evidence, the approved relationship applies only when the maxillofacial fracture specifically involves the mandible. Apply the broader maxillofacial-fracture identity only when the documented fracture specifically involves the mandible. Require separately established mandibular nonunion after that fracture. Do not infer mandibular nonunion from another facial fracture or from uncomplicated fracture healing. Preserve open-fracture status, infection, diabetes, alcohol use, treatment delay or fixation problems, osteonecrosis, metabolic bone disease, and other causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A large cohort of adults with isolated mandible fracture documented subsequent mandibular malunion/nonunion; because the catalog primary is broader than the evidence, the approved relationship applies only when the maxillofacial fracture specifically involves the mandible. Apply the broader maxillofacial-fracture identity only when the documented fracture specifically involves the mandible. Require separately established mandibular nonunion after that fracture. Do not infer mandibular nonunion from another facial fracture or from uncomplicated fracture healing. Preserve open-fracture status, infection, diabetes, alcohol use, treatment delay or fixation problems, osteonecrosis, metabolic bone disease, and other causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Apply the broader maxillofacial-fracture identity only when the documented fracture specifically involves the mandible. Require separately established mandibular nonunion after that fracture. Do not infer mandibular nonunion from another facial fracture or from uncomplicated fracture healing. Preserve open-fracture status, infection, diabetes, alcohol use, treatment delay or fixation problems, osteonecrosis, metabolic bone disease, and other causes as competing explanations.",
+        "boundarySource": "approved-me14-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of maxillofacial-fracture and mandibular-nonunion",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: mandibular-fracture-healing-complication",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Apply the broader maxillofacial-fracture identity only when the documented fracture specifically involves the mandible. Require separately established mandibular nonunion after that fracture. Do not infer mandibular nonunion from another facial fracture or from uncomplicated fracture healing. Preserve open-fracture status, infection, diabetes, alcohol use, treatment delay or fixation problems, osteonecrosis, metabolic bone disease, and other causes as competing explanations."
+      ],
+      "sourceIds": [
+        "pmid-34314633"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "48f19ca5229467c3c48c71f4b06fddb17dbe34123f4893f19b6f589245fff980"
+    },
+    {
       "relationshipId": "rel-migraine-headaches-to-depressive-disorder",
       "primaryId": "migraine-headaches",
       "targetId": "depressive-disorder",
@@ -5222,6 +5290,40 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "5360e1ef3c1757590414daa94604e2623ba40594bf099628d94f534dd2e2a46a"
+    },
+    {
+      "relationshipId": "rel-nontoxic-thyroid-enlargement-to-hypoparathyroidism",
+      "primaryId": "nontoxic-thyroid-enlargement",
+      "targetId": "hypoparathyroidism",
+      "direction": "nontoxic-thyroid-enlargement -> hypoparathyroidism",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me14-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A meta-analysis of surgery for bilateral multinodular nontoxic goiter found increased transient postoperative hypoparathyroidism after total thyroidectomy; the approved relationship is treatment-mediated and does not extend to permanent hypoparathyroidism or to thyroid enlargement without surgery. Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism; do not infer permanent hypoparathyroidism, and do not infer hypoparathyroidism from the thyroid enlargement itself. Preserve other neck surgery, autoimmune or genetic parathyroid disease, magnesium disorders, and other etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A meta-analysis of surgery for bilateral multinodular nontoxic goiter found increased transient postoperative hypoparathyroidism after total thyroidectomy; the approved relationship is treatment-mediated and does not extend to permanent hypoparathyroidism or to thyroid enlargement without surgery. Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism; do not infer permanent hypoparathyroidism, and do not infer hypoparathyroidism from the thyroid enlargement itself. Preserve other neck surgery, autoimmune or genetic parathyroid disease, magnesium disorders, and other etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism; do not infer permanent hypoparathyroidism, and do not infer hypoparathyroidism from the thyroid enlargement itself. Preserve other neck surgery, autoimmune or genetic parathyroid disease, magnesium disorders, and other etiologies as competing explanations.",
+        "boundarySource": "approved-me14-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of nontoxic-thyroid-enlargement and hypoparathyroidism",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: treatment-mediated transient postoperative hypoparathyroidism",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism; do not infer permanent hypoparathyroidism, and do not infer hypoparathyroidism from the thyroid enlargement itself. Preserve other neck surgery, autoimmune or genetic parathyroid disease, magnesium disorders, and other etiologies as competing explanations."
+      ],
+      "sourceIds": [
+        "pmid-27256349"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "ed056c3d8a91a2112a63012acfb6ee1ded11aabdde8686cd176f987624db9a7d"
     },
     {
       "relationshipId": "rel-ocd-to-migraine-headaches",
@@ -6797,6 +6899,40 @@
       "suggestionObjectHash": "babc6bcab83995f254e92f1b200f3457d4772b55cd14936611e81474e22809a0"
     },
     {
+      "relationshipId": "rel-rem-sleep-disorder-to-parkinsons-disease",
+      "primaryId": "rem-sleep-disorder",
+      "targetId": "parkinsons-disease",
+      "direction": "rem-sleep-disorder -> parkinsons-disease",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me14-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. Longitudinal follow-up of idiopathic REM sleep behavior disorder initially free of neurodegenerative disease showed later Parkinson disease in a subset; the approved relationship is a prodromal temporal-risk marker only and does not assert that REM sleep behavior disorder causes Parkinson disease. Require polysomnography-confirmed isolated or idiopathic REM sleep behavior disorder before Parkinson disease, with no Parkinsonism or dementia at the REM sleep behavior disorder baseline and a later independently established Parkinson disease diagnosis. State explicitly that REM sleep behavior disorder is a prodromal marker or risk state, not a cause of Parkinson disease, that many patients do not convert during observed follow-up, and that dementia with Lewy bodies and multiple system atrophy are alternative phenoconversion outcomes. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. Longitudinal follow-up of idiopathic REM sleep behavior disorder initially free of neurodegenerative disease showed later Parkinson disease in a subset; the approved relationship is a prodromal temporal-risk marker only and does not assert that REM sleep behavior disorder causes Parkinson disease. Require polysomnography-confirmed isolated or idiopathic REM sleep behavior disorder before Parkinson disease, with no Parkinsonism or dementia at the REM sleep behavior disorder baseline and a later independently established Parkinson disease diagnosis. State explicitly that REM sleep behavior disorder is a prodromal marker or risk state, not a cause of Parkinson disease, that many patients do not convert during observed follow-up, and that dementia with Lewy bodies and multiple system atrophy are alternative phenoconversion outcomes. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require polysomnography-confirmed isolated or idiopathic REM sleep behavior disorder before Parkinson disease, with no Parkinsonism or dementia at the REM sleep behavior disorder baseline and a later independently established Parkinson disease diagnosis. State explicitly that REM sleep behavior disorder is a prodromal marker or risk state, not a cause of Parkinson disease, that many patients do not convert during observed follow-up, and that dementia with Lewy bodies and multiple system atrophy are alternative phenoconversion outcomes.",
+        "boundarySource": "approved-me14-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of rem-sleep-disorder and parkinsons-disease",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: prodromal-temporal-risk",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require polysomnography-confirmed isolated or idiopathic REM sleep behavior disorder before Parkinson disease, with no Parkinsonism or dementia at the REM sleep behavior disorder baseline and a later independently established Parkinson disease diagnosis. State explicitly that REM sleep behavior disorder is a prodromal marker or risk state, not a cause of Parkinson disease, that many patients do not convert during observed follow-up, and that dementia with Lewy bodies and multiple system atrophy are alternative phenoconversion outcomes."
+      ],
+      "sourceIds": [
+        "pmid-20083800"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "8d19f2fb968e3b1739896601be0b354ac946e8578af8d63e9c85fcba43ad01c5"
+    },
+    {
       "relationshipId": "rel-retinal-detachment-to-cataracts",
       "primaryId": "retinal-detachment",
       "targetId": "cataracts",
@@ -8010,8 +8146,42 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "191fb3ca11f1a7a1e56faa8924732a4888d456d43f744c7775edbf9ecf3bc36f"
+    },
+    {
+      "relationshipId": "rel-varicose-veins-to-deep-vein-thrombosis",
+      "primaryId": "varicose-veins",
+      "targetId": "deep-vein-thrombosis",
+      "direction": "varicose-veins -> deep-vein-thrombosis",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me14-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A large propensity-matched cohort found substantially increased incident deep-vein thrombosis after varicose-vein diagnosis; the approved relationship is limited to temporal association/risk because causality versus shared risk factors remains unresolved. Require varicose veins preceding a newly established deep-vein thrombosis and exclude preexisting deep-vein thrombosis. Explicitly assess recent venous surgery or endovenous procedures, prior venous thromboembolism, thrombophilia, malignancy, immobilization, pregnancy or estrogen exposure, trauma or surgery, age, obesity, and other thrombotic risks. Do not publish or present this relationship as proof that varicose veins caused the deep-vein thrombosis. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A large propensity-matched cohort found substantially increased incident deep-vein thrombosis after varicose-vein diagnosis; the approved relationship is limited to temporal association/risk because causality versus shared risk factors remains unresolved. Require varicose veins preceding a newly established deep-vein thrombosis and exclude preexisting deep-vein thrombosis. Explicitly assess recent venous surgery or endovenous procedures, prior venous thromboembolism, thrombophilia, malignancy, immobilization, pregnancy or estrogen exposure, trauma or surgery, age, obesity, and other thrombotic risks. Do not publish or present this relationship as proof that varicose veins caused the deep-vein thrombosis. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require varicose veins preceding a newly established deep-vein thrombosis and exclude preexisting deep-vein thrombosis. Explicitly assess recent venous surgery or endovenous procedures, prior venous thromboembolism, thrombophilia, malignancy, immobilization, pregnancy or estrogen exposure, trauma or surgery, age, obesity, and other thrombotic risks. Do not publish or present this relationship as proof that varicose veins caused the deep-vein thrombosis.",
+        "boundarySource": "approved-me14-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of varicose-veins and deep-vein-thrombosis",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: temporal-association-risk",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require varicose veins preceding a newly established deep-vein thrombosis and exclude preexisting deep-vein thrombosis. Explicitly assess recent venous surgery or endovenous procedures, prior venous thromboembolism, thrombophilia, malignancy, immobilization, pregnancy or estrogen exposure, trauma or surgery, age, obesity, and other thrombotic risks. Do not publish or present this relationship as proof that varicose veins caused the deep-vein thrombosis."
+      ],
+      "sourceIds": [
+        "pmid-29486040"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "8e9f352558db5b9506d130f2524d66e0206fe610f02133bd2bc5fde44c525d0c"
     }
   ],
-  "lastUpdatedBy": "ME-13 Qualified-Human Citation Verification",
-  "currentState": "ME13-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-14",
+  "currentState": "ME14-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

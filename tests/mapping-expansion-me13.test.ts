@@ -56,8 +56,8 @@ describe("Mapping Expansion ME-13 local implementation",()=>{
   });
   it("preserves five draft-primary relationships and records five verified active master sources with exact guards",()=>{
     const rel=load<RelationshipRegistry>(path.join(ROOT,"data","evidence","master-relationships.json")); const src=load<SourceRegistry>(path.join(ROOT,"data","evidence","master-sources.json"));
-    expect(rel.baselineCommit).toBe("fbae4f44d8570fecb1d7e8e489bcf97ad9d8346a"); expect(rel.currentState).toBe("ME13-CITATION-VERIFIED");
-    expect(src.baselineCommit).toBe("fbae4f44d8570fecb1d7e8e489bcf97ad9d8346a"); expect(src.currentState).toBe("ME13-CITATION-VERIFIED");
+    expect(rel.baselineCommit).toBe("e613997b01d91bca8a366d032dcbd914051cde81"); expect(rel.currentState).toBe("ME14-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(src.baselineCommit).toBe("e613997b01d91bca8a366d032dcbd914051cde81"); expect(src.currentState).toBe("ME14-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
     for (const row of rows) {
       const rr=rel.relationships.filter((r:RelationshipRecord)=>r.relationshipId===`rel-${row.primaryId}-to-${row.targetId}`);
       expect(rr).toHaveLength(1); expect(rr[0]!.primaryPublicationState).toBe("draft"); expect(rr[0]!.rank).toBe(1); expect(rr[0]!.publicationGuard.structuredGuardText).toBe(row.guard);
@@ -68,8 +68,8 @@ describe("Mapping Expansion ME-13 local implementation",()=>{
   it("pins the ME-13 citation-verified aggregate state",()=>{
     const maps=fs.readdirSync(path.join(ROOT,"data","knowledge-base")).filter((f)=>f.endsWith(".json")).map((f)=>load<Mapping>(path.join(ROOT,"data","knowledge-base",f)));
     const refs=maps.flatMap((m:Mapping)=>m.suggestions.flatMap((s:Suggestion)=>s.sourceReferences||[])); const clinical=refs.filter((r:SourceReference)=>r.verificationScope==="clinical-evidence");
-    expect(maps.reduce((n:number,m:Mapping)=>n+m.suggestions.length,0)).toBe(238);
-    expect(maps.filter((m:Mapping)=>m.draft===false&&m.suggestions.length===1)).toHaveLength(66); expect(maps.filter((m:Mapping)=>m.draft===false&&m.suggestions.length>=2)).toHaveLength(73); expect(maps.filter((m:Mapping)=>m.draft===true&&m.suggestions.length===1)).toHaveLength(11);
-    expect(refs).toHaveLength(246); expect(refs.filter((r:SourceReference)=>r.verified===true)).toHaveLength(246); expect(refs.filter((r:SourceReference)=>r.verified===false)).toHaveLength(0); expect(clinical).toHaveLength(241);
+    expect(maps.reduce((n:number,m:Mapping)=>n+m.suggestions.length,0)).toBe(243);
+    expect(maps.filter((m:Mapping)=>m.draft===false&&m.suggestions.length===1)).toHaveLength(66); expect(maps.filter((m:Mapping)=>m.draft===false&&m.suggestions.length>=2)).toHaveLength(73); expect(maps.filter((m:Mapping)=>m.draft===true&&m.suggestions.length===1)).toHaveLength(16);
+    expect(refs).toHaveLength(251); expect(refs.filter((r:SourceReference)=>r.verified===true)).toHaveLength(246); expect(refs.filter((r:SourceReference)=>r.verified===false)).toHaveLength(5); expect(clinical).toHaveLength(246);
   });
 });
