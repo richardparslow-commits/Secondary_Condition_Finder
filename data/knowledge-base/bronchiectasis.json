@@ -44,7 +44,7 @@
           "note": "Mapping Expansion Batch ME-10 evidence for the bounded bronchiectasis to sleep-apnea proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41905893/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 41905893; approved ME-10 proposition; guard: Do not infer obstructive sleep apnea from bronchiectasis alone. Require a separate obstructive sleep apnea diagnosis. Preserve obesity, craniofacial or anatomic upper-airway factors, age, sex, medication exposure, other sleep-disordered-breathing causes, and conventional obstructive sleep apnea risk factors. Association evidence must not be presented as individual causation."
         }

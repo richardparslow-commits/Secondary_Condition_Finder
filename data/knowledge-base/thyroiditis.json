@@ -63,7 +63,7 @@
           "note": "Mapping Expansion Batch ME-10 evidence for the bounded thyroiditis to urticaria proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42511690/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 42511690; approved ME-10 proposition; guard: Require autoimmune thyroiditis and chronic urticaria to be independently established. Do not generalize from nonspecific thyroiditis, do not infer that autoimmune thyroiditis individually causes urticaria, and do not use levothyroxine response as proof of causation."
         }

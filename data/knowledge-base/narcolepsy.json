@@ -44,7 +44,7 @@
           "note": "Mapping Expansion Batch ME-10 evidence for the bounded narcolepsy to hypertension proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41747645/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 41747645; approved ME-10 proposition; guard: Require separately diagnosed hypertension. Preserve obesity, obstructive sleep apnea, metabolic syndrome, stimulant or other medication exposure, age, sex, renal or endocrine causes, and other conventional hypertension risk factors. Do not state or imply individual causation from the meta-analysis alone."
         }

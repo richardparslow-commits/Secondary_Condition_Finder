@@ -2,15 +2,15 @@
 
 ## Status
 
-The authoritative registry is at the Mapping Expansion Batch ME-10 pre-qualified-human-citation-verification state, derived from closed ME-9 citation-verification commit `70aa43bb88bfb2334ce32442b3d51e87c58419ab`.
+The authoritative registry is at the fully qualified-human-verified Mapping Expansion Batch ME-10 state, derived from implementation commit `d1886af67a891d4bd34387538fe5d6f6ffdabf82`.
 
 ## Current state
 
 - 223 relationships.
 - 149 explicit publication guards / 74 legacy rationale boundaries.
-- 231 live relationship-source uses: 226 verified / 5 pending verification.
+- 231 live relationship-source uses: 231 verified / 0 pending verification.
 - 203 active source entities: 202 clinical + 1 legal authority.
-- 5 pending-verification clinical source entities.
+- 0 pending-verification source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
 - 217 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
@@ -112,3 +112,15 @@ The approved ME-10 implementation adds exactly five rank-2 relationships while p
 All five new KB references remain `verified:false`; their normalized master sources remain `pending-verification`. Mapping approval and PubMed identity matching do not authorize citation promotion.
 
 No new identity, publication-state change, rank-1 change, semantic broadening beyond the approved guards, or pathwayIntelligence change is part of ME-10 implementation. A later separate qualified-human ME-10 citation-verification gate is required before any of these five references may become `verified:true`.
+
+## ME-10 qualified-human citation verification
+
+The five ME-10 clinical references have been promoted exactly as implemented following explicit human source-level approval.
+
+- `bronchiectasis -> sleep-apnea` / PMID 41905893 — approve-as-implemented.
+- `thyroiditis -> urticaria` / PMID 42511690 — approve-as-implemented.
+- `charcot-arthropathy -> osteomyelitis` / PMID 42141385 — approve-as-implemented.
+- `lyme-disease -> uveitis` / PMID 41546697 — approve-as-implemented.
+- `narcolepsy -> hypertension` / PMID 41747645 — approve-as-implemented.
+
+No relationship semantic, phenotype restriction, publication guard, citation text, PMID/DOI, source identity, rank, taxonomy, publication state, or pathwayIntelligence value changed during citation verification.

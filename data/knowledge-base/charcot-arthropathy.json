@@ -44,7 +44,7 @@
           "note": "Mapping Expansion Batch ME-10 evidence for the bounded charcot-arthropathy to osteomyelitis proposition. This source enters as unverified pending separate qualified-human citation verification.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42141385/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 42141385; approved ME-10 proposition; guard: Require established Charcot neuroarthropathy of the foot plus documented deformity with ulceration, soft-tissue breakdown, wound infection, or compatible deep-infection chronology before using the osteomyelitis pathway. Osteomyelitis must be separately diagnosed. Preserve diabetes, neuropathy, peripheral vascular disease, trauma or surgery, wound-care history, and other infection risk factors."
         }
