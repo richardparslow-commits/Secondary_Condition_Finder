@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-13 evidence for the bounded non-hodgkins-lymphoma to peripheral-neuropathy proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31214762/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 31214762; approved ME-13 source; guard: Require documented non-Hodgkin lymphoma, a documented vincristine-containing or otherwise specifically neurotoxic lymphoma regimen, compatible chronology, and separately established peripheral neuropathy. Do not infer peripheral neuropathy from non-Hodgkin lymphoma itself. Preserve diabetic, nutritional, alcohol-related, compressive, paraproteinemic, infectious, hereditary, and other neuropathy etiologies as competing explanations."
         }

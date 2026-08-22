@@ -156,8 +156,8 @@ describe("Mapping Expansion Batch ME-4", () => {
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
     expect(refs).toHaveLength(246);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(241);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(5);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(246);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   });
 
   it("passes citation and master-registry gates after ME-7 verification", () => {
@@ -175,9 +175,9 @@ describe("Mapping Expansion Batch ME-4", () => {
     };
     expect(citation).toMatchObject({
       references: 246,
-      verified: 241,
-      verifiedProvenance: 247,
-      unverified: 5,
+      verified: 246,
+      verifiedProvenance: 252,
+      unverified: 0,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -194,7 +194,7 @@ describe("Mapping Expansion Batch ME-4", () => {
     expect(master).toMatchObject({
       status: "PASS",
       relationships: 238,
-      pendingVerificationSourceEntities: 5,
+      pendingVerificationSourceEntities: 0,
     });
   });
 });

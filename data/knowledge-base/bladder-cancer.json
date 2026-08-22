@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-13 evidence for the bounded bladder-cancer to urinary-incontinence proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39896758/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 39896758; approved ME-13 source; guard: Require documented bladder cancer, radical cystectomy with orthotopic neobladder reconstruction, and persistent separately established postoperative urinary incontinence. Do not infer urinary incontinence from bladder cancer alone, from an ileal conduit without the phenotype, or from transient early postoperative leakage. Preserve urinary tract infection, retention or overflow, neurologic or pelvic-floor disease, preexisting urinary incontinence, and other etiologies as competing explanations."
         }

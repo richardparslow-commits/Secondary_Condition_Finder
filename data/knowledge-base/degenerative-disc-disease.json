@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-13 evidence for the bounded degenerative-disc-disease to radiculopathy proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34402323/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 34402323; approved ME-13 source; guard: Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations."
         }
