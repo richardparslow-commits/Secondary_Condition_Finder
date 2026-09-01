@@ -9,7 +9,9 @@
       "prevalence": "sometimes-explored",
       "rationale": "Paclitaxel-containing chemotherapy used to treat ovarian cancer can produce clinically significant peripheral sensory neuropathy. In the randomized MITO-7 phase 3 ovarian-cancer trial, grade 2 or worse neuropathy occurred in both carboplatin-plus-paclitaxel schedules, with a lower frequency in the weekly schedule than the every-three-weeks schedule. This supports a treatment-complication pathway only when the individual received a documented neurotoxic ovarian-cancer regimen and a compatible peripheral neuropathy began or materially worsened afterward; ovarian cancer itself, surgery alone, or a non-neurotoxic treatment history should not be treated as sufficient evidence of causation.",
       "pathwayIntelligence": {
-        "pathways": ["treatment-complication"],
+        "pathways": [
+          "treatment-complication"
+        ],
         "causalChain": "Ovarian cancer → documented paclitaxel-containing chemotherapy, if administered → neurotoxic treatment exposure → clinically confirmed peripheral neuropathy with compatible timing and phenotype.",
         "developmentQuestions": [
           "Which ovarian-cancer chemotherapy agents, doses, schedules, and cumulative exposures were actually administered?",
@@ -36,9 +38,33 @@
           "note": "Randomized phase 3 trial of 810 eligible women with ovarian cancer receiving carboplatin plus paclitaxel reported grade 2 or worse neuropathy in 6% of the weekly-treatment group and 17% of the every-three-weeks group. Supports a paclitaxel-containing-treatment complication pathway, not neuropathy attribution from ovarian cancer itself.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24582486/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 24582486; abstract Findings: grade 2 or worse neuropathy 24/399 (6%) weekly versus 68/400 (17%) every three weeks"
+        }
+      ]
+    },
+    {
+      "conditionId": "lymphedema",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of ovarian-cancer and lymphedema",
+        "Documentation satisfying the approved phenotype restriction: lower-extremity lymphedema after lymph-node dissection",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Ki EY, Park JS, Lee KH, Hur SY. Incidence and Risk Factors of Lower Extremity Lymphedema After Gynecologic Surgery in Ovarian Cancer. Int J Gynecol Cancer. 2016;26(7):1327-1332. PMID 27400319. doi:10.1097/IGC.0000000000000757.",
+          "note": "Mapping Expansion Batch ME-6 evidence for the bounded ovarian-cancer to lymphedema proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27400319/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 27400319; approved ME-6 proposition; guard: Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling."
         }
       ]
     }

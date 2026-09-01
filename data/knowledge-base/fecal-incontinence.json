@@ -1,6 +1,34 @@
 {
   "id": "fecal-incontinence",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review neurologic, pelvic-floor, surgical, gastrointestinal, medication/treatment, aggravation, and intermediate-factor pathways only where applicable; do not infer the cause of sphincter-control impairment from the symptom label alone."],
-  "suggestions": []
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review neurologic, pelvic-floor, surgical, gastrointestinal, medication/treatment, aggravation, and intermediate-factor pathways only where applicable; do not infer the cause of sphincter-control impairment from the symptom label alone."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "dermatitis",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. A systematic review and meta-analysis identifies fecal incontinence as an etiologic risk factor for incontinence-associated dermatitis; the approved mapping is restricted to moisture-associated skin damage in the exposed distribution. Require fecal incontinence with repeated or prolonged perineal skin exposure and separately diagnosed moisture-associated or incontinence-associated dermatitis in the exposed distribution. Do not generalize this relationship to eczema, fungal disease, allergic or irritant dermatitis from unrelated agents, pressure injury, cellulitis, or a nonspecific rash. Preserve those alternative skin diagnoses and other causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of fecal-incontinence and dermatitis",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: phenotype-restricted incontinence-associated dermatitis from repeated or prolonged fecal exposure",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require fecal incontinence with repeated or prolonged perineal skin exposure and separately diagnosed moisture-associated or incontinence-associated dermatitis in the exposed distribution. Do not generalize this relationship to eczema, fungal disease, allergic or irritant dermatitis from unrelated agents, pressure injury, cellulitis, or a nonspecific rash. Preserve those alternative skin diagnoses and other causes as competing explanations."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Jiang T, Zhang X, Wu J, Gao L, Tung TH. Risk Factors for Incontinence-Associated Dermatitis in Adults: A Systematic Review and Meta-Analysis. J Wound Ostomy Continence Nurs. 2025;52(1):66-75. PMID 39836004. doi:10.1097/WON.0000000000001146.",
+          "note": "Mapping Expansion Batch ME-13 evidence for the bounded fecal-incontinence to dermatitis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39836004/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-22",
+          "sourceLocator": "PMID 39836004; approved ME-13 source; guard: Require fecal incontinence with repeated or prolonged perineal skin exposure and separately diagnosed moisture-associated or incontinence-associated dermatitis in the exposed distribution. Do not generalize this relationship to eczema, fungal disease, allergic or irritant dermatitis from unrelated agents, pressure injury, cellulitis, or a nonspecific rash. Preserve those alternative skin diagnoses and other causes as competing explanations."
+        }
+      ]
+    }
+  ]
 }

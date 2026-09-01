@@ -21,9 +21,33 @@
           "note": "Systematic review of 93 studies and 18,973 patients identified nephrocalcinosis/nephrolithiasis among complications probably associated with chronic hypoparathyroidism; supports a conservative association-focused kidney-stone research relationship rather than individual causal attribution.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36375810/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 36375810; abstract Part I: 93 studies/18,973 patients; nephrocalcinosis/nephrolithiasis among nine complications or symptoms probably associated with chronic hypoparathyroidism"
+        }
+      ]
+    },
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Chronic hypoparathyroidism, particularly under long-term conventional calcium and active-vitamin-D therapy, is associated with increased renal complications including chronic kidney disease or renal insufficiency. Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology. Preserve pre-existing CKD, diabetes, hypertension, recurrent acute kidney injury, nephrotoxic drugs, obstruction, nephrolithiasis or nephrocalcinosis, and other renal-disease causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of hypoparathyroidism and chronic-kidney-disease",
+        "Documentation satisfying the approved phenotype restriction: chronic hypoparathyroidism with separately established chronic kidney disease; when conventional calcium/active-vitamin-D therapy is relied upon, documented treatment exposure and compatible chronology are required",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology. Preserve pre-existing CKD, diabetes, hypertension, recurrent acute kidney injury, nephrotoxic drugs, obstruction, nephrolithiasis or nephrocalcinosis, and other renal-disease causes."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Gosmanova EO, Houillier P, Rejnmark L, Marelli C, Bilezikian JP. Renal complications in patients with chronic hypoparathyroidism on conventional therapy: a systematic literature review: renal disease in chronic hypoparathyroidism. Rev Endocr Metab Disord. 2021;22(2):297-316. PMID 33599907. doi:10.1007/s11154-020-09613-1.",
+          "note": "Mapping Expansion Batch ME-9 evidence for the bounded hypoparathyroidism to chronic-kidney-disease proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33599907/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 33599907; approved ME-9 proposition; guard: Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology. Preserve pre-existing CKD, diabetes, hypertension, recurrent acute kidney injury, nephrotoxic drugs, obstruction, nephrolithiasis or nephrocalcinosis, and other renal-disease causes."
         }
       ]
     }

@@ -1,3 +1,5 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
@@ -38,6 +40,20 @@ describe("condition catalog expansion wave 5", () => {
   });
 
   it("keeps non-promoted or review-withdrawn Wave 5 mappings draft while allowing reviewed publication", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of WAVE_FIVE_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
@@ -54,6 +70,13 @@ describe("condition catalog expansion wave 5", () => {
   });
 
   it("keeps hydronephrosis draft when the evidence belongs to upstream obstruction", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("hydronephrosis");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);

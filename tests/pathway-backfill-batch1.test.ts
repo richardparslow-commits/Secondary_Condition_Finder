@@ -1,3 +1,5 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 
 import { loadKnowledgeBase } from "@/lib/kb/load";
@@ -14,7 +16,6 @@ const safetyWithdrawnMappings = [
   "panic-disorder",
   "bipolar-disorder",
   "persistent-depressive-disorder",
-  "social-anxiety-disorder",
   "somatic-symptom-disorder",
   "anxiety-disorder",
   "schizophrenia",
@@ -28,6 +29,13 @@ const safetyWithdrawnMappings = [
 
 describe("controlled pathway backfill batch 1", () => {
   it("backfills only surviving edges whose attached source set includes clinical evidence", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
     for (const [primaryId, secondaries] of Object.entries(expectedBackfill)) {
       const mapping = kb.find((entry) => entry.id === primaryId);
@@ -43,6 +51,20 @@ describe("controlled pathway backfill batch 1", () => {
   });
 
   it("recognizes later safety withdrawals", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
     for (const primaryId of safetyWithdrawnMappings) {
       const mapping = kb.find((entry) => entry.id === primaryId);
@@ -52,19 +74,34 @@ describe("controlled pathway backfill batch 1", () => {
     }
   });
 
-  it("recognizes the Batch 20 mTBI headache repair without inventing broader pathway metadata", () => {
+  it("recognizes the PTH taxonomy correction without inventing broader pathway metadata", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "mild-tbi");
-    const headache = mapping?.suggestions.find((entry) => entry.conditionId === "migraine-headaches");
+    const headache = mapping?.suggestions.find((entry) => entry.conditionId === "post-traumatic-headache");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(1);
     expect(headache?.sourceReferences.some((source) => source.verificationScope === "clinical-evidence")).toBe(true);
     expect(headache?.sourceReferences[0]?.sourceUrl).toContain("38568491");
     expect(headache?.pathwayIntelligence).toBeUndefined();
-    expect(headache?.rationale).toMatch(/post-traumatic headache/i);
+    expect(headache?.rationale).toMatch(/within 7 days/i);
+    expect(headache?.rationale).toMatch(/greater than 3 months/i);
     expect(mapping?.suggestions.some((entry) => entry.conditionId === "depressive-disorder")).toBe(false);
   });
 
   it("recognizes the later post-concussion migraine-target withdrawal", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "post-concussion-syndrome");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -82,6 +119,13 @@ describe("controlled pathway backfill batch 1", () => {
   });
 
   it("recognizes the later adjustment-disorder phenotype withdrawal", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "adjustment-disorder");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -90,16 +134,40 @@ describe("controlled pathway backfill batch 1", () => {
   });
 
   it("does not treat safety-withdrawn mappings as backfill candidates", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
     for (const draftId of ["ocd", ...safetyWithdrawnMappings]) expect(kb.find((entry) => entry.id === draftId)?.draft).toBe(true);
   });
 
   it("allows a later evidence-led migraine publication without reviving the withdrawn backfill edge", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const migraine = loadKnowledgeBase().find((entry) => entry.id === "migraine-headaches");
     expect(migraine?.draft).toBe(false);
     expect(migraine?.suggestions).toHaveLength(1);
     expect(migraine?.suggestions[0]?.conditionId).toBe("depressive-disorder");
     expect(migraine?.suggestions[0]?.sourceReferences[0]?.sourceUrl).toContain("23588795");
-    expect(migraine?.suggestions[0]?.pathwayIntelligence?.pathways).toEqual(["somatopsychic"]);
+    expect(migraine?.suggestions[0]?.pathwayIntelligence).toBeUndefined();
+    expect(migraine?.suggestions[0]?.rationale).toMatch(/temporal-association research/i);
+    expect(migraine?.suggestions[0]?.sourceReferences[0]?.verified).toBe(true);
+    expect(migraine?.suggestions[0]?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
   });
 });

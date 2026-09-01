@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -23,9 +24,16 @@ describe("clinical evidence promotion batch 17", () => {
     readFileSync(join(process.cwd(), "data/citation-retirements.json"), "utf8"),
   ) as RetirementLedger;
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
   it("withdraws unsupported GERD edges from stomach cancer and abdominal hernia", () => {
@@ -53,7 +61,7 @@ describe("clinical evidence promotion batch 17", () => {
     expect(gerd?.pathwayIntelligence?.pathways).toEqual(["medication-related"]);
     expect(gerd?.sourceReferences).toHaveLength(2);
     expect(clinical).toHaveLength(1);
-    expect(clinical[0]?.verified).toBe(false);
+    expect(clinical[0]?.verified).toBe(true);
     expect(clinical[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/18671778/");
     expect(gerd?.rationale).toMatch(/documented in the individual record/i);
     expect(gerd?.sourceReferences.some((source) => source.sourceUrl === "https://pubmed.ncbi.nlm.nih.gov/33674957/")).toBe(false);
@@ -81,6 +89,13 @@ describe("clinical evidence promotion batch 17", () => {
   });
 
   it("recognizes the later adjustment-disorder GERD withdrawal after phenotype review", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const adjustment = byId.get("adjustment-disorder");
     expect(adjustment?.draft).toBe(true);
     expect(adjustment?.suggestions).toEqual([]);

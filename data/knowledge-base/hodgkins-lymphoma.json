@@ -4,5 +4,30 @@
   "todo": [
     "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "hypothyroidism",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The study evaluates treatment-induced hypothyroidism after involved-site radiation therapy for Hodgkin lymphoma and shows that thyroid radiation dose-volume measures predict subsequent hypothyroidism risk. Require documented Hodgkin lymphoma, documented thyroid-exposing neck or supradiaphragmatic radiation treatment consistent with the source phenotype, and separately established hypothyroidism after treatment with compatible chronology. Do not infer hypothyroidism from Hodgkin lymphoma or chemotherapy alone. Preserve autoimmune thyroid disease, thyroid surgery or radioiodine, medications, pituitary or hypothalamic disease, congenital thyroid disease, and other causes of hypothyroidism. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of hodgkins-lymphoma and hypothyroidism",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/claim boundary: treatment-mediated hypothyroidism after thyroid-exposing Hodgkin lymphoma radiotherapy",
+        "Assessment of competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require documented Hodgkin lymphoma, documented thyroid-exposing neck or supradiaphragmatic radiation treatment consistent with the source phenotype, and separately established hypothyroidism after treatment with compatible chronology. Do not infer hypothyroidism from Hodgkin lymphoma or chemotherapy alone. Preserve autoimmune thyroid disease, thyroid surgery or radioiodine, medications, pituitary or hypothalamic disease, congenital thyroid disease, and other causes of hypothyroidism."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Pinnix CC, Cella L, Andraos TY, et al. Predictors of Hypothyroidism in Hodgkin Lymphoma Survivors After Intensity Modulated Versus 3-Dimensional Radiation Therapy. Int J Radiat Oncol Biol Phys. 2018;101(3):530-540. PMID 29681481. doi:10.1016/j.ijrobp.2018.03.003.",
+          "note": "Mapping Expansion Batch ME-12 evidence for the bounded hodgkins-lymphoma to hypothyroidism proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29681481/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-22",
+          "sourceLocator": "PMID 29681481; approved ME-12 source; guard: Require documented Hodgkin lymphoma, documented thyroid-exposing neck or supradiaphragmatic radiation treatment consistent with the source phenotype, and separately established hypothyroidism after treatment with compatible chronology. Do not infer hypothyroidism from Hodgkin lymphoma or chemotherapy alone. Preserve autoimmune thyroid disease, thyroid surgery or radioiodine, medications, pituitary or hypothalamic disease, congenital thyroid disease, and other causes of hypothyroidism."
+        }
+      ]
+    }
+  ]
 }

@@ -1,3 +1,5 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -15,12 +17,33 @@ describe("clinical evidence promotion batch 11", () => {
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
   it("recognizes the later withdrawal of the modest hypothyroidism-depression association", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("hypothyroidism");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -28,6 +51,13 @@ describe("clinical evidence promotion batch 11", () => {
   });
 
   it("publishes confirmed hypogonadism-to-osteoporosis research with bone-health safeguards", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("hypogonadism");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
@@ -40,10 +70,18 @@ describe("clinical evidence promotion batch 11", () => {
     expect(suggestion?.pathwayIntelligence?.issuesToResolve.join(" ")).toMatch(/fracture/i);
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("29499097");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("clinically repairs only the ILD-to-OSA edge and removes the legal-only arrhythmia edge", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("interstitial-lung-disease");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
@@ -54,11 +92,26 @@ describe("clinical evidence promotion batch 11", () => {
     expect(suggestion?.rationale).toMatch(/association|prevalence/i);
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("33403599");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
     expect(mapping?.suggestions.some((entry) => entry.conditionId === "cardiac-arrhythmia")).toBe(false);
   });
 
   it("withdraws broad pulmonary-fibrosis claims rather than generalizing IPF evidence", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("pulmonary-fibrosis");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);

@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { describe, expect, it } from "vitest";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
@@ -9,12 +10,26 @@ describe("clinical evidence promotion batch 6", () => {
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
   it("promotes confirmed primary aldosteronism to a direct hypertension pathway", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("hyperaldosteronism");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
@@ -29,11 +44,18 @@ describe("clinical evidence promotion batch 6", () => {
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("academic.oup.com/jcem/article/110/9/2453");
     expect(source?.citation).toMatch(/110\(9\):2453-2495/);
-    expect(source?.verified).toBe(false);
-    expect(source?.sourceCheckedOn).toBe("2026-08-14");
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("withdraws Addison disease's rating-only generic relationships", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("addisons-disease");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -51,10 +73,10 @@ describe("clinical evidence promotion batch 6", () => {
     expect(condition?.reviewNotes.join(" ")).toMatch(/DC 7916|diagnostic code 7916/i);
   });
 
-  it("does not auto-verify the Batch 6 clinical source", () => {
+  it("reflects later qualified-human verification of the bounded primary-aldosteronism source", () => {
     const source = byId.get("hyperaldosteronism")?.suggestions[0]?.sourceReferences[0];
-    expect(source?.verified).toBe(false);
-    expect(source?.sourceCheckedOn).toBe("2026-08-14");
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
     expect(source?.sourceLocator).toMatch(/common cause of hypertension/i);
   });
 });

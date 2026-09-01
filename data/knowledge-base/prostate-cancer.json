@@ -1,8 +1,53 @@
 {
   "id": "prostate-cancer",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "urinary-incontinence",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment complication. Require documented radical prostatectomy for prostate cancer and separately documented urinary incontinence developing or materially worsening after surgery. Establish pre-treatment urinary status when available. Do not infer urinary incontinence from prostate cancer itself, and do not use PMID 32680820 alone to generalize this treatment-complication proposition to all prostate-cancer therapies. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment/procedure exposure for Prostate Cancer",
+        "Independent diagnosis of Urinary Incontinence / Frequency and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and exact source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Urinary incontinence and erectile dysfunction in patients with localized or locally advanced prostate cancer: A nationwide observational study. Urologic oncology. 2020. doi:10.1016/j.urolonc.2020.05.022. PMID 32680820",
+          "note": "Qualified-human-approved source-specific narrowing clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32680820/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 32680820; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented radical prostatectomy for prostate cancer and separately documented urinary incontinence developing or materially worsening after surgery. Establish pre-treatment urinary status when available. Do not infer urinary incontinence from prostate cancer itself, and do not use PMID 32680820 alone to generalize this treatment-complication proposition to all prostate-cancer therapies."
+        }
+      ]
+    },
+    {
+      "conditionId": "erectile-dysfunction",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment complication. Require documented radical prostatectomy for prostate cancer, separately documented erectile dysfunction developing or materially worsening after treatment, and consideration of pre-treatment erectile function. Do not infer ED from prostate cancer alone. PMID 32680820 does not by itself establish radiotherapy as the cause of an individual patient's ED. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment/procedure exposure for Prostate Cancer",
+        "Independent diagnosis of Erectile Dysfunction and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and exact source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Urinary incontinence and erectile dysfunction in patients with localized or locally advanced prostate cancer: A nationwide observational study. Urologic oncology. 2020. doi:10.1016/j.urolonc.2020.05.022. PMID 32680820",
+          "note": "Qualified-human-approved source-specific narrowing clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32680820/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 32680820; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented radical prostatectomy for prostate cancer, separately documented erectile dysfunction developing or materially worsening after treatment, and consideration of pre-treatment erectile function. Do not infer ED from prostate cancer alone. PMID 32680820 does not by itself establish radiotherapy as the cause of an individual patient's ED."
+        }
+      ]
+    }
+  ]
 }

@@ -1,6 +1,54 @@
 {
   "id": "primary-myelofibrosis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review anemia/cytopenia, splenic, thrombotic, treatment/medication, hematologic transformation, and organ-specific residual pathways only where supported; keep evidence distinct from essential thrombocythemia despite shared DC 7718."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "leukemia",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as disease transformation. Require established primary myelofibrosis followed by documented blast/leukemic transformation, specifically AML-compatible disease. Source supports leukemic progression risk; do not generalize to unrelated leukemia types. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Primary Myelofibrosis and Leukemia (Acute & Chronic)",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Primary myelofibrosis: 2023 update on diagnosis, risk-stratification, and management. American journal of hematology. 2023. doi:10.1002/ajh.26857. PMID 36680511",
+          "note": "Master-disposition clinical evidence for the bounded disease transformation proposition. Source supports leukemic progression risk; do not generalize to unrelated leukemia types.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36680511/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 36680511; PubMed title/abstract retrieved in the master research harvest; guard: Require established primary myelofibrosis followed by documented blast/leukemic transformation, specifically AML-compatible disease."
+        }
+      ]
+    },
+    {
+      "conditionId": "anemia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Anemia is a recognized clinical hallmark of primary myelofibrosis in the setting of marrow fibrosis and disordered hematopoiesis. Require established primary myelofibrosis and separately documented anemia. Preserve bleeding, nutritional deficiency, renal disease, hemolysis, treatment effects, coexisting marrow disease, and leukemic transformation as competing or contributing explanations. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of primary-myelofibrosis and anemia",
+        "Documentation satisfying the approved phenotype restriction: separately documented anemia in established primary myelofibrosis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established primary myelofibrosis and separately documented anemia. Preserve bleeding, nutritional deficiency, renal disease, hemolysis, treatment effects, coexisting marrow disease, and leukemic transformation as competing or contributing explanations."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Abdel-Wahab OI, Levine RL. Primary myelofibrosis: update on definition, pathogenesis, and treatment. Annu Rev Med. 2009;60:233-245. PMID 18947294. doi:10.1146/annurev.med.60.041707.160528.",
+          "note": "Mapping Expansion Batch ME-8 evidence for the bounded primary-myelofibrosis to anemia proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18947294/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 18947294; approved ME-8 proposition; guard: Require established primary myelofibrosis and separately documented anemia. Preserve bleeding, nutritional deficiency, renal disease, hemolysis, treatment effects, coexisting marrow disease, and leukemic transformation as competing or contributing explanations."
+        }
+      ]
+    }
+  ]
 }

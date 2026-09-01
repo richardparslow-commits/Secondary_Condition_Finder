@@ -4,7 +4,10 @@
     {
       "id": "amebiasis",
       "name": "Amebiasis",
-      "aliases": ["amoebiasis", "amebic dysentery"],
+      "aliases": [
+        "amoebiasis",
+        "amebic dysentery"
+      ],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {
@@ -19,9 +22,25 @@
       ]
     },
     {
+      "id": "amebic-liver-abscess",
+      "name": "Amebic Liver Abscess",
+      "aliases": [
+        "amoebic liver abscess",
+        "ALA",
+        "hepatic amebiasis"
+      ],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Clinical Mapping Master Resolution 2026 taxonomy identity. No condition-specific VA diagnostic/rating code was assigned or borrowed; retain for qualified catalog/rating review. Extraintestinal hepatic manifestation of Entamoeba histolytica infection; requires a separately documented liver abscess phenotype."
+      ]
+    },
+    {
       "id": "actinomycosis",
       "name": "Actinomycosis",
-      "aliases": ["pulmonary actinomycosis"],
+      "aliases": [
+        "pulmonary actinomycosis"
+      ],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {
@@ -38,7 +57,9 @@
     {
       "id": "nocardiosis",
       "name": "Nocardiosis",
-      "aliases": ["pulmonary nocardiosis"],
+      "aliases": [
+        "pulmonary nocardiosis"
+      ],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {
@@ -55,7 +76,9 @@
     {
       "id": "histoplasmosis",
       "name": "Histoplasmosis of Lung",
-      "aliases": ["pulmonary histoplasmosis"],
+      "aliases": [
+        "pulmonary histoplasmosis"
+      ],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {
@@ -70,9 +93,26 @@
       ]
     },
     {
+      "id": "adrenal-histoplasmosis",
+      "name": "Adrenal Histoplasmosis",
+      "aliases": [
+        "histoplasmosis of adrenal gland",
+        "histoplasmosis of adrenal glands",
+        "bilateral adrenal histoplasmosis",
+        "adrenal involvement by histoplasmosis"
+      ],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Taxonomy-only identity added for documented adrenal Histoplasma involvement. No condition-specific VA rating schedule or diagnostic code was assigned by this mapping program; retain for qualified catalog/rating review rather than borrowing the pulmonary histoplasmosis rating metadata."
+      ]
+    },
+    {
       "id": "strongyloidiasis",
       "name": "Strongyloidiasis",
-      "aliases": ["strongyloides infection"],
+      "aliases": [
+        "strongyloides infection"
+      ],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {
@@ -89,7 +129,13 @@
     {
       "id": "rickettsial-ehrlichial-anaplasma-infection",
       "name": "Rickettsial, Ehrlichia, and Anaplasma Infections",
-      "aliases": ["rickettsial infection", "ehrlichiosis", "anaplasmosis", "rocky mountain spotted fever", "scrub typhus"],
+      "aliases": [
+        "rickettsial infection",
+        "ehrlichiosis",
+        "anaplasmosis",
+        "rocky mountain spotted fever",
+        "scrub typhus"
+      ],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {

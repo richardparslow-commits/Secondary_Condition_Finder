@@ -20,8 +20,8 @@
           "note": "Umbrella systematic review/meta-analysis reporting markedly increased odds of knee osteoarthritis after ACL injury; supports focused post-traumatic research, not an automatic individual conclusion.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33852440/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 33852440; abstract; 13 reviews and summary meta-analysis of knee osteoarthritis after ACL injury"
         }
       ]

@@ -4,10 +4,10 @@
   "todo": [],
   "suggestions": [
     {
-      "conditionId": "migraine-headaches",
+      "conditionId": "post-traumatic-headache",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Post-traumatic headache is a recognized complication after mild traumatic brain injury, and its clinical phenotype commonly overlaps with migraine or tension-type headache. Because the catalog target here is `migraine-headaches` rather than the broader diagnosis of post-traumatic headache, this relationship is limited to cases in which a clinician has diagnosed migraine or persistent post-traumatic headache with a migraine phenotype and the required temporal relationship to the mTBI is documented. The evidence does not justify relabeling every headache after mTBI as migraine or assuming an individual nexus from population-level prevalence alone.",
+      "rationale": "Require documented mild traumatic brain injury plus a new headache developing within the ICHD-3 temporal attribution window. For core ICHD-3 publication, headache onset should be within 7 days after injury, regaining consciousness, or discontinuation of medication that impaired the ability to sense/report headache. Persistent subtype requires duration greater than 3 months.",
       "evidenceGaps": [
         "Neurology or headache-specialist diagnosis distinguishing migraine from other post-traumatic headache phenotypes",
         "Headache onset chronology relative to the mild TBI, including the temporal criteria used for post-traumatic headache",
@@ -18,12 +18,35 @@
       "sourceReferences": [
         {
           "citation": "Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491",
-          "note": "Clinical review describes post-traumatic headache attributed to mild TBI, including ICHD-3 temporal criteria and substantial overlap with migraine and tension-type headache phenotypes. Supports bounded headache research after mTBI, not automatic classification of every post-traumatic headache as migraine.",
+          "note": "Clinical review source for post-traumatic headache attributed to mild traumatic brain injury. Supports the corrected post-traumatic-headache target; migraine-like phenotype does not make PTH equivalent to the catalog migraine-headaches diagnosis.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38568491/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
-          "sourceLocator": "PMID 38568491; abstract Objective/Latest developments: posttraumatic headache attributed to mTBI, onset timing, and migraine/tension-type phenotype overlap"
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 38568491; moved one-for-one from the prior mTBI→migraine-headaches taxonomy mismatch to mTBI→post-traumatic-headache; qualified-human citation verification approved 2026-08-19."
+        }
+      ]
+    },
+    {
+      "conditionId": "post-concussion-syndrome",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented mild traumatic brain injury/concussion in an adult followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury. Do not infer post-concussion syndrome from transient acute headache, dizziness, cognitive complaints, or other symptoms occurring only immediately after injury. Consider pre-existing psychiatric, sleep, neurologic, and symptom conditions that may contribute to or mimic persistent post-concussive symptoms. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of mild-tbi and post-concussion-syndrome",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented mild traumatic brain injury/concussion in an adult followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury. Do not infer post-concussion syndrome from transient acute headache, dizziness, cognitive complaints, or other symptoms occurring only immediately after injury. Consider pre-existing psychiatric, sleep, neurologic, and symptom conditions that may contribute to or mimic persistent post-concussive symptoms."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "McIntosh SJ, Vergeer MH, Galarneau JM, Eliason PH, Debert CT. Factors Associated With Persisting Symptoms After Concussion in Adults With Mild TBI: A Systematic Review and Meta-Analysis. JAMA Netw Open. 2025;8(6):e2516619. PMID 40531530. doi:10.1001/jamanetworkopen.2025.16619.",
+          "note": "Qualified-human-approved Mapping Expansion Batch ME-2 clinical evidence for the bounded mild-tbi to post-concussion-syndrome proposition. Verification applies only to the final approved bounded proposition and does not, by itself, establish an individual medical nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40531530/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 40531530; qualified-human-approved Mapping Expansion Batch ME-2 Citation Verification; guard: Require documented mild traumatic brain injury/concussion in an adult followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury. Do not infer post-concussion syndrome from transient acute headache, dizziness, cognitive complaints, or other symptoms occurring only immediately after injury. Consider pre-existing psychiatric, sleep, neurologic, and symptom conditions that may contribute to or mimic persistent post-concussive symptoms."
         }
       ]
     }

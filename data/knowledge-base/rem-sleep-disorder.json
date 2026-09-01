@@ -6,5 +6,30 @@
     "The prior insomnia and anxiety suggestions remain withdrawn because sleep fragmentation and distress do not by themselves establish those separate diagnoses or a directional secondary relationship.",
     "Keep safe-draft unless future evidence supports an exact downstream diagnosis through a true causal, aggravation, or treatment-complication pathway rather than shared neurodegenerative pathophysiology or prodromal prediction."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "parkinsons-disease",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. Longitudinal follow-up of idiopathic REM sleep behavior disorder initially free of neurodegenerative disease showed later Parkinson disease in a subset; the approved relationship is a prodromal temporal-risk marker only and does not assert that REM sleep behavior disorder causes Parkinson disease. Require polysomnography-confirmed isolated or idiopathic REM sleep behavior disorder before Parkinson disease, with no Parkinsonism or dementia at the REM sleep behavior disorder baseline and a later independently established Parkinson disease diagnosis. State explicitly that REM sleep behavior disorder is a prodromal marker or risk state, not a cause of Parkinson disease, that many patients do not convert during observed follow-up, and that dementia with Lewy bodies and multiple system atrophy are alternative phenoconversion outcomes. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of rem-sleep-disorder and parkinsons-disease",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: prodromal-temporal-risk",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require polysomnography-confirmed isolated or idiopathic REM sleep behavior disorder before Parkinson disease, with no Parkinsonism or dementia at the REM sleep behavior disorder baseline and a later independently established Parkinson disease diagnosis. State explicitly that REM sleep behavior disorder is a prodromal marker or risk state, not a cause of Parkinson disease, that many patients do not convert during observed follow-up, and that dementia with Lewy bodies and multiple system atrophy are alternative phenoconversion outcomes."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Postuma RB, Gagnon JF, Rompré S, Montplaisir JY. Severity of REM atonia loss in idiopathic REM sleep behavior disorder predicts Parkinson disease. Neurology. 2010;74(3):239-244. PMID 20083800. doi:10.1212/WNL.0b013e3181ca0166.",
+          "note": "Mapping Expansion Batch ME-14 evidence for the bounded rem-sleep-disorder to parkinsons-disease proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20083800/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-22",
+          "sourceLocator": "PMID 20083800; approved ME-14 source; guard: Require polysomnography-confirmed isolated or idiopathic REM sleep behavior disorder before Parkinson disease, with no Parkinsonism or dementia at the REM sleep behavior disorder baseline and a later independently established Parkinson disease diagnosis. State explicitly that REM sleep behavior disorder is a prodromal marker or risk state, not a cause of Parkinson disease, that many patients do not convert during observed follow-up, and that dementia with Lewy bodies and multiple system atrophy are alternative phenoconversion outcomes."
+        }
+      ]
+    }
+  ]
 }

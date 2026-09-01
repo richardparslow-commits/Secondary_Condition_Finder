@@ -1,9 +1,53 @@
 {
   "id": "psoriatic-arthritis",
-  "draft": true,
-  "todo": [
-    "Rebuild any secondary-condition suggestion using PsA-specific evidence that supports a directional disease, treatment, or aggravation pathway rather than psychological-comorbidity prevalence alone.",
-    "The prior depressive-disorder edge was withdrawn because the retained source PMID 38797775 is an overview of prevalence/incidence and psychological comorbidity reviews; it does not establish that psoriatic arthritis caused or aggravated an individual depressive disorder."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require PsA before a separately established depressive disorder; preserve that the cohort endpoint was treated depression. Population-level temporal association only; pain, disability, inflammation, treatment, sleep and psychosocial factors may mediate/confound. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Psoriatic Arthritis and Major Depressive Disorder",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Incidence rates of suicidal behaviors and treated depression in patients with and without psoriatic arthritis using the Clinical Practice Research Datalink. Modern rheumatology. 2016. doi:10.3109/14397595.2015.1136726. PMID 26882216",
+          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Population-level temporal association only; pain, disability, inflammation, treatment, sleep and psychosocial factors may mediate/confound.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26882216/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 26882216; PubMed title/abstract retrieved in the master research harvest; guard: Require PsA before a separately established depressive disorder; preserve that the cohort endpoint was treated depression."
+        }
+      ]
+    },
+    {
+      "conditionId": "tuberculosis",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require PsA plus documented biologic/targeted immunosuppressive exposure (especially TNF-pathway agents where applicable) before TB infection/reactivation/disease. Treatment-associated TB risk; do not infer TB from PsA without immunosuppressive exposure and epidemiologic risk assessment. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment or procedure used for Psoriatic Arthritis",
+        "Independent diagnosis of Mycobacterium Tuberculosis and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Management of tuberculosis risk, screening and preventive therapy in patients with chronic autoimmune arthritis undergoing biotechnological and targeted immunosuppressive agents. Frontiers in immunology. 2025. doi:10.3389/fimmu.2025.1494283. PMID 39963138",
+          "note": "Master-disposition clinical evidence for the bounded treatment associated risk proposition. Treatment-associated TB risk; do not infer TB from PsA without immunosuppressive exposure and epidemiologic risk assessment.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39963138/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 39963138; PubMed title/abstract retrieved in the master research harvest; guard: Require PsA plus documented biologic/targeted immunosuppressive exposure (especially TNF-pathway agents where applicable) before TB infection/reactivation/disease."
+        }
+      ]
+    }
+  ]
 }

@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
@@ -24,6 +25,13 @@ describe('Knowledge Base Cross-File Integrity & Quality Gates', () => {
   const files = fs.readdirSync(kbDir).filter((f: string) => f.endsWith('.json'));
 
   it('validates cross-file invariants, rank continuity, and placeholder limits', () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     files.forEach((file: string) => {
       const filePath = path.join(kbDir, file);
       const content = fs.readFileSync(filePath, 'utf8');

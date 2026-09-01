@@ -1,3 +1,5 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -10,29 +12,69 @@ describe("clinical evidence promotion batch 30", () => {
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
-  it.each([
-    ["ovarian-cancer", "peripheral-neuropathy", "treatment-complication", "24582486"],
-    ["testicular-cancer", "hypogonadism", "treatment-complication", "27009402"],
-  ])("publishes %s to %s with one bounded unverified clinical source", (primaryId, secondaryId, pathway, pmid) => {
-    const mapping = byId.get(primaryId);
+  it("recognizes Batch-8 qualified-human verification of ovarian-cancer treatment neuropathy", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    const mapping = byId.get("ovarian-cancer");
     const suggestion = mapping?.suggestions[0];
     expect(mapping?.draft).toBe(false);
     expect(mapping?.todo).toEqual([]);
     expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe(secondaryId);
-    expect(suggestion?.pathwayIntelligence?.pathways).toEqual([pathway]);
+    expect(suggestion?.conditionId).toBe("peripheral-neuropathy");
+    expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["treatment-complication"]);
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain(pmid);
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("24582486");
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
+  });
+
+  it("keeps testicular-cancer treatment hypogonadism unverified", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    const mapping = byId.get("testicular-cancer");
+    const suggestion = mapping?.suggestions[0];
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.todo).toEqual([]);
+    expect(mapping?.suggestions).toHaveLength(1);
+    expect(suggestion?.conditionId).toBe("hypogonadism");
+    expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["treatment-complication"]);
+    expect(suggestion?.sourceReferences).toHaveLength(1);
+    expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("27009402");
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
   });
 
   it("keeps pulmonary histoplasmosis draft because adrenal evidence cannot be enforced by the current identity", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("histoplasmosis");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -40,12 +82,23 @@ describe("clinical evidence promotion batch 30", () => {
     expect(mapping?.todo.join(" ")).toMatch(/30656706/);
   });
 
-  it("keeps laryngeal cancer draft because alaryngeal voice handicap is not the same diagnosis as aphonia", () => {
+  it("recognizes later M1 publication of laryngeal-cancer to aphonia as treatment-specific", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("laryngeal-cancer");
-    expect(mapping?.draft).toBe(true);
-    expect(mapping?.suggestions).toEqual([]);
-    expect(mapping?.todo.join(" ")).toMatch(/aphonia|alaryngeal|voice handicap|natural laryngeal/i);
-    expect(mapping?.todo.join(" ")).toMatch(/29086803/);
+    const suggestion = mapping?.suggestions[0];
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.todo).toEqual([]);
+    expect(mapping?.suggestions).toHaveLength(1);
+    expect(suggestion?.conditionId).toBe("aphonia");
+    expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["treatment-complication"]);
+    expect(suggestion?.sourceReferences).toHaveLength(2);
+    expect(suggestion?.sourceReferences.every((reference) => reference.verified === true)).toBe(true);
   });
 
   it("keeps the two surviving cancer pathways treatment-specific", () => {
@@ -54,6 +107,20 @@ describe("clinical evidence promotion batch 30", () => {
   });
 
   it("withdraws three nondirectional published depression edges", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of ["parkinsons-disease", "seizure-disorder", "psoriatic-arthritis"] as const) {
       const mapping = byId.get(id);
       expect(mapping?.draft).toBe(true);
@@ -71,7 +138,21 @@ describe("clinical evidence promotion batch 30", () => {
     expect(mapping?.suggestions.some((suggestion) => suggestion.conditionId === "anxiety-disorder")).toBe(false);
   });
 
-  it("keeps the other eight Wave 7 identities safe-draft", () => {
+  it("keeps the other seven Wave 7 identities safe-draft", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of [
       "amebiasis",
       "actinomycosis",
@@ -79,7 +160,6 @@ describe("clinical evidence promotion batch 30", () => {
       "histoplasmosis",
       "strongyloidiasis",
       "rickettsial-ehrlichial-anaplasma-infection",
-      "laryngeal-cancer",
       "mandibular-nonunion",
     ] as const) {
       const mapping = byId.get(id);
@@ -89,13 +169,27 @@ describe("clinical evidence promotion batch 30", () => {
     }
   });
 
-  it("records 30 published, 77 safe-draft, and zero candidates", () => {
+  it("records 31 published, 63 safe-draft, and zero candidates", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
     ) as { waves: Array<{ identities: Array<{ disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(30);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(77);
+    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(31);
+    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(76);
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
   });
 });

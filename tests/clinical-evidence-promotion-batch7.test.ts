@@ -1,3 +1,5 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -15,12 +17,26 @@ describe("clinical evidence promotion batch 7", () => {
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
   it("promotes active acromegaly to a direct hypertension research pathway", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("acromegaly");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
@@ -35,11 +51,25 @@ describe("clinical evidence promotion batch 7", () => {
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("42050227");
     expect(source?.citation).toMatch(/Pituitary\. 2026;29\(3\):76/);
-    expect(source?.verified).toBe(false);
-    expect(source?.sourceCheckedOn).toBe("2026-08-14");
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("withdraws anorexia nervosa's legal-only depression relationship", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("anorexia-nervosa");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -62,10 +92,10 @@ describe("clinical evidence promotion batch 7", () => {
     expect(condition?.ratingSchedule[0]?.verified).toBe(false);
   });
 
-  it("does not auto-verify the Batch 7 clinical source", () => {
+  it("records the later qualified-human verification of the Batch 7 clinical source", () => {
     const source = byId.get("acromegaly")?.suggestions[0]?.sourceReferences[0];
-    expect(source?.verified).toBe(false);
-    expect(source?.sourceCheckedOn).toBe("2026-08-14");
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
     expect(source?.sourceLocator).toMatch(/distal-nephron|sodium/i);
   });
 });

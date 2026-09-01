@@ -1,0 +1,33 @@
+{
+  "id": "pulmonary-embolism",
+  "draft": true,
+  "todo": [
+    "Target-only taxonomy identity added by Clinical Mapping Master Resolution 2026. Research downstream secondary-condition pathways before any independent publication of this identity."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pulmonary-hypertension",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The review describes chronic thromboembolic pulmonary hypertension (CTEPH) as an under-diagnosed complication of acute pulmonary embolism caused by incomplete embolus resolution and specifies perfusion, imaging, anticoagulation-interval, and right-heart-catheterization diagnostic elements. Restrict the broad pulmonary-hypertension target to separately established chronic thromboembolic pulmonary hypertension after a documented pulmonary embolism. Require persistent mismatched perfusion or chronic thromboembolic/fibrotic obstruction after an appropriate post-PE anticoagulation interval and hemodynamically confirmed pulmonary hypertension under accepted criteria. Do not infer CTEPH from acute PE, persistent dyspnea, hypoxemia, or an echocardiographic estimate alone. Preserve left-heart disease, other lung disease or hypoxia, chronic thromboembolic disease without pulmonary hypertension, drugs/toxins, and other pulmonary-hypertension etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of pulmonary-embolism and pulmonary-hypertension",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/claim boundary: phenotype-restricted chronic thromboembolic complication after pulmonary embolism",
+        "Assessment of competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Restrict the broad pulmonary-hypertension target to separately established chronic thromboembolic pulmonary hypertension after a documented pulmonary embolism. Require persistent mismatched perfusion or chronic thromboembolic/fibrotic obstruction after an appropriate post-PE anticoagulation interval and hemodynamically confirmed pulmonary hypertension under accepted criteria. Do not infer CTEPH from acute PE, persistent dyspnea, hypoxemia, or an echocardiographic estimate alone. Preserve left-heart disease, other lung disease or hypoxia, chronic thromboembolic disease without pulmonary hypertension, drugs/toxins, and other pulmonary-hypertension etiologies as competing explanations."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Cannon JE, Jenkins DP, Hoole SP. Chronic thromboembolic pulmonary hypertension: a review of risk factors, management and current challenges. Expert Rev Cardiovasc Ther. 2022;20(1):35-43. PMID 35081846. doi:10.1080/14779072.2022.2034499.",
+          "note": "Mapping Expansion Batch ME-12 evidence for the bounded pulmonary-embolism to pulmonary-hypertension proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35081846/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-22",
+          "sourceLocator": "PMID 35081846; approved ME-12 source; guard: Restrict the broad pulmonary-hypertension target to separately established chronic thromboembolic pulmonary hypertension after a documented pulmonary embolism. Require persistent mismatched perfusion or chronic thromboembolic/fibrotic obstruction after an appropriate post-PE anticoagulation interval and hemodynamically confirmed pulmonary hypertension under accepted criteria. Do not infer CTEPH from acute PE, persistent dyspnea, hypoxemia, or an echocardiographic estimate alone. Preserve left-heart disease, other lung disease or hypoxia, chronic thromboembolic disease without pulmonary hypertension, drugs/toxins, and other pulmonary-hypertension etiologies as competing explanations."
+        }
+      ]
+    }
+  ]
+}

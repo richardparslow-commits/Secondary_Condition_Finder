@@ -4,5 +4,30 @@
   "todo": [
     "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "deep-vein-thrombosis",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A large propensity-matched cohort found substantially increased incident deep-vein thrombosis after varicose-vein diagnosis; the approved relationship is limited to temporal association/risk because causality versus shared risk factors remains unresolved. Require varicose veins preceding a newly established deep-vein thrombosis and exclude preexisting deep-vein thrombosis. Explicitly assess recent venous surgery or endovenous procedures, prior venous thromboembolism, thrombophilia, malignancy, immobilization, pregnancy or estrogen exposure, trauma or surgery, age, obesity, and other thrombotic risks. Do not publish or present this relationship as proof that varicose veins caused the deep-vein thrombosis. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of varicose-veins and deep-vein-thrombosis",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: temporal-association-risk",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require varicose veins preceding a newly established deep-vein thrombosis and exclude preexisting deep-vein thrombosis. Explicitly assess recent venous surgery or endovenous procedures, prior venous thromboembolism, thrombophilia, malignancy, immobilization, pregnancy or estrogen exposure, trauma or surgery, age, obesity, and other thrombotic risks. Do not publish or present this relationship as proof that varicose veins caused the deep-vein thrombosis."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Chang SL, Huang YL, Lee MC, et al. Association of Varicose Veins With Incident Venous Thromboembolism and Peripheral Artery Disease. JAMA. 2018;319(8):807-817. PMID 29486040. doi:10.1001/jama.2018.0246.",
+          "note": "Mapping Expansion Batch ME-14 evidence for the bounded varicose-veins to deep-vein-thrombosis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29486040/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-22",
+          "sourceLocator": "PMID 29486040; approved ME-14 source; guard: Require varicose veins preceding a newly established deep-vein thrombosis and exclude preexisting deep-vein thrombosis. Explicitly assess recent venous surgery or endovenous procedures, prior venous thromboembolism, thrombophilia, malignancy, immobilization, pregnancy or estrogen exposure, trauma or surgery, age, obesity, and other thrombotic risks. Do not publish or present this relationship as proof that varicose veins caused the deep-vein thrombosis."
+        }
+      ]
+    }
+  ]
 }

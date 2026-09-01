@@ -1,9 +1,30 @@
 {
   "id": "knee-injury",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "The prior hip, ankle, lumbar, and contralateral-knee biomechanical relationships were withdrawn because rating/legal citations did not establish the medical relationships. Re-publish only individual edges supported by condition-specific clinical evidence plus case-specific nexus safeguards."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "post-traumatic-osteoarthritis",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as post traumatic disease sequela. Require a documented structural traumatic knee injury (for example ACL and/or meniscal injury) preceding separately documented post-traumatic knee osteoarthritis. Do not infer OA from nonspecific knee pain or strain alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Knee Instability / Meniscus Tear matches the source-specific phenotype",
+        "Independent diagnosis of Post-Traumatic Arthritis with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Resolution of the publication guard: Require a documented structural traumatic knee injury (for example ACL and/or meniscal injury) preceding separately documented post-traumatic knee osteoarthritis. Do not infer OA from nonspecific knee pain or strain alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Knee osteoarthritis risk is increased 4-6 fold after knee injury - a systematic review and meta-analysis. British journal of sports medicine. 2019. doi:10.1136/bjsports-2018-100022. PMID 31072840",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31072840/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 31072840; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require a documented structural traumatic knee injury (for example ACL and/or meniscal injury) preceding separately documented post-traumatic knee osteoarthritis. Do not infer OA from nonspecific knee pain or strain alone."
+        }
+      ]
+    }
+  ]
 }

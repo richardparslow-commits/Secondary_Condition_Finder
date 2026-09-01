@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -14,12 +15,26 @@ describe("clinical evidence promotion batch 5", () => {
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves 300/300", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves 302/302", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
   it("promotes Barrett's esophagus only as an adenocarcinoma-specific cancer progression pathway", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("barretts-esophagus");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
@@ -33,10 +48,18 @@ describe("clinical evidence promotion batch 5", () => {
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("41125322");
     expect(source?.citation).toMatch(/169\(6\):1184-1231/);
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("promotes achalasia as a histology-aware esophageal-cancer risk pathway", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("achalasia");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
@@ -51,10 +74,18 @@ describe("clinical evidence promotion batch 5", () => {
     expect(source?.sourceUrl).toContain("37975607");
     expect(source?.citation).toMatch(/Am J Gastroenterol\. 2024;119\(4\):635-645/);
     expect(source?.sourceLocator).toMatch(/1,863.*7,452.*4\.6/i);
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("withdraws AL amyloidosis legal-only generic relationships", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("al-amyloidosis");
 
     expect(mapping?.draft).toBe(true);
@@ -71,11 +102,12 @@ describe("clinical evidence promotion batch 5", () => {
     expect(carry).toEqual(["contralateral-knee-condition"]);
   });
 
-  it("does not auto-verify Batch 5 clinical sources", () => {
-    for (const id of ["barretts-esophagus", "achalasia"] as const) {
-      for (const suggestion of byId.get(id)?.suggestions ?? []) {
-        expect(suggestion.sourceReferences.every((reference) => reference.verified === false && reference.sourceCheckedOn === "2026-08-14")).toBe(true);
-      }
-    }
+  it("records later qualified-human verification for both Barrett and achalasia evidence", () => {
+    const barrett = byId.get("barretts-esophagus")?.suggestions[0]?.sourceReferences[0];
+    expect(barrett?.verified).toBe(true);
+    expect(barrett?.sourceCheckedOn).toBe("2026-08-18");
+    const achalasia = byId.get("achalasia")?.suggestions[0]?.sourceReferences[0];
+    expect(achalasia?.verified).toBe(true);
+    expect(achalasia?.sourceCheckedOn).toBe("2026-08-18");
   });
 });

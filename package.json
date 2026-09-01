@@ -21,7 +21,14 @@
     "citations:queue": "node scripts/report-citation-verification-queue.js --markdown",
     "kb:validate": "node scripts/validate-knowledge-base.js",
     "authoring:tracker": "node scripts/generate-authoring-tracker.js",
-    "audit:high": "npm audit --audit-level=high"
+    "audit:high": "npm audit --audit-level=high",
+    "evidence:architecture": "node scripts/audit-evidence-architecture.js",
+    "evidence:architecture:markdown": "node scripts/audit-evidence-architecture.js --markdown",
+    "deploy:guard:vercel": "node scripts/check-deploy-freeze.js --provider=vercel",
+    "regulatory:validate": "node scripts/validate-regulatory-actions.js",
+    "regulatory:audit": "node scripts/audit-regulatory-intelligence.js",
+    "regulatory:audit:markdown": "node scripts/audit-regulatory-intelligence.js --markdown",
+    "regulatory:preflight:test": "vitest run tests/regulatory-preflight.test.ts"
   },
   "dependencies": {
     "@opentelemetry/api": "1.9.0",

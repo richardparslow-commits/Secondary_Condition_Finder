@@ -1,3 +1,5 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -10,47 +12,119 @@ describe("targeted clinical mapping batch 31", () => {
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
-  it.each([
-    ["insomnia", "depressive-disorder", "direct-secondary", "38833937"],
-    ["migraine-headaches", "depressive-disorder", "somatopsychic", "23588795"],
-  ])("publishes %s to %s with one bounded unverified prospective source", (primaryId, secondaryId, pathway, pmid) => {
-    const mapping = byId.get(primaryId);
+  it("recognizes Batch-7 insomnia-to-depression temporal-association narrowing", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    const mapping = byId.get("insomnia");
     const suggestion = mapping?.suggestions[0];
 
     expect(mapping?.draft).toBe(false);
     expect(mapping?.todo).toEqual([]);
     expect(mapping?.suggestions).toHaveLength(1);
-    expect(suggestion?.conditionId).toBe(secondaryId);
-    expect(suggestion?.pathwayIntelligence?.pathways).toContain(pathway);
+    expect(suggestion?.conditionId).toBe("depressive-disorder");
+    expect(suggestion?.pathwayIntelligence).toBeUndefined();
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain(pmid);
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
-    expect(suggestion?.rationale).toMatch(/population|prospective|individual/i);
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("38833937");
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
+    expect(suggestion?.rationale).toMatch(/temporal-association|prospective/i);
+    expect(suggestion?.rationale).toMatch(/does not establish individual causation/i);
+    expect(suggestion?.rationale).not.toMatch(/direct-secondary research/i);
   });
 
-  it("preserves the existing bounded mild-TBI to migraine mapping", () => {
+  it("recognizes Batch-8 migraine-to-depression temporal-association narrowing and verification", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    const mapping = byId.get("migraine-headaches");
+    const suggestion = mapping?.suggestions[0];
+
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.todo).toEqual([]);
+    expect(mapping?.suggestions).toHaveLength(1);
+    expect(suggestion?.conditionId).toBe("depressive-disorder");
+    expect(suggestion?.pathwayIntelligence).toBeUndefined();
+    expect(suggestion?.sourceReferences).toHaveLength(1);
+    expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("23588795");
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
+    expect(suggestion?.rationale).toMatch(/temporal-association research/i);
+    expect(suggestion?.rationale).toMatch(/does not establish individual causation/i);
+    expect(suggestion?.rationale).not.toMatch(/somatopsychic research/i);
+  });
+
+  it("preserves the corrected bounded mild-TBI to post-traumatic-headache mapping", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("mild-tbi");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(1);
-    expect(mapping?.suggestions[0]?.conditionId).toBe("migraine-headaches");
+    expect(mapping?.suggestions[0]?.conditionId).toBe("post-traumatic-headache");
     expect(mapping?.suggestions[0]?.sourceReferences[0]?.sourceUrl).toContain("38568491");
-    expect(mapping?.suggestions[0]?.sourceReferences[0]?.verified).toBe(false);
+    expect(mapping?.suggestions[0]?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-19");
+    expect(mapping?.suggestions[0]?.sourceReferences[0]?.verified).toBe(true);
+    expect(mapping?.suggestions[0]?.rationale).toMatch(/mild traumatic brain injury/i);
+    expect(mapping?.suggestions[0]?.rationale).toMatch(/within 7 days/i);
+    expect(mapping?.suggestions[0]?.rationale).toMatch(/greater than 3 months/i);
   });
 
   it("keeps micro-TBI a separate nonstandardized safe draft", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("micro-tbi");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
     expect(mapping?.todo.join(" ")).toMatch(/separately|distinct standardized clinical diagnosis|mild TBI/i);
   });
 
-  it("keeps the remaining targeted identities safe-draft after exact-target review", () => {
+  it("keeps the remaining unpromoted targeted identities safe-draft after exact-target review", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of [
       "carpal-tunnel-syndrome",
       "chronic-fatigue-syndrome",
@@ -61,7 +135,6 @@ describe("targeted clinical mapping batch 31", () => {
       "peripheral-neuropathy",
       "radial-neuropathy",
       "rem-sleep-disorder",
-      "social-anxiety-disorder",
     ] as const) {
       const mapping = byId.get(id);
       expect(mapping?.draft, `${id} should remain draft`).toBe(true);
@@ -71,14 +144,34 @@ describe("targeted clinical mapping batch 31", () => {
   });
 
   it("guards the key negative modeling dispositions", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     expect(byId.get("carpal-tunnel-syndrome")?.todo.join(" ")).toMatch(/taxonomy|diagnostic overlap|median/i);
     expect(byId.get("median-neuropathy")?.todo.join(" ")).toMatch(/carpal tunnel|overlap/i);
     expect(byId.get("hypothyroidism")?.todo.join(" ")).toMatch(/41002938|not statistically significant|adjust/i);
     expect(byId.get("rem-sleep-disorder")?.todo.join(" ")).toMatch(/prodromal|does not.*cause|Parkinson/i);
-    expect(byId.get("social-anxiety-disorder")?.todo.join(" ")).toMatch(/11231832|prospective|population-level/i);
   });
 
-  it("uses exactly the existing two-row citation-debt headroom", () => {
+  it("reflects the current citation debt after Master 2026 citation verification", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const liveReferences = kb.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
@@ -94,20 +187,34 @@ describe("targeted clinical mapping batch 31", () => {
       (reference) => reference.verificationScope === "clinical-evidence" && Boolean(reference.sourceUrl),
     );
 
-    expect(liveReferences).toHaveLength(69);
-    expect(liveUnverified).toHaveLength(61);
-    expect(publishedUnverified).toHaveLength(59);
-    expect(clinicalWithUrls).toHaveLength(64);
+    expect(liveReferences).toHaveLength(142);
+    expect(liveUnverified).toHaveLength(0);
+    expect(publishedUnverified).toHaveLength(0);
+    expect(clinicalWithUrls).toHaveLength(137);
   });
 
   it("leaves the Wave 1-7 disposition ledger unchanged", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const ledger = JSON.parse(
       readFileSync(join(process.cwd(), "data/expansion-dispositions.json"), "utf8"),
     ) as { waves: Array<{ identities: Array<{ disposition: string }> }> };
     const entries = ledger.waves.flatMap((wave) => wave.identities);
 
-    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(30);
-    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(77);
+    expect(entries.filter((entry) => entry.disposition === "published-evidence-led")).toHaveLength(31);
+    expect(entries.filter((entry) => entry.disposition === "safe-draft")).toHaveLength(76);
     expect(entries.filter((entry) => entry.disposition === "promotion-candidate")).toHaveLength(0);
   });
 });

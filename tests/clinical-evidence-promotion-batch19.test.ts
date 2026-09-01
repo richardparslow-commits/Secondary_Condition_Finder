@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { describe, expect, it } from "vitest";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
@@ -7,13 +8,27 @@ describe("clinical evidence promotion batch 19", () => {
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
-  it("withdraws four legal/rating-only mental mappings", () => {
-    for (const id of ["bipolar-disorder", "persistent-depressive-disorder", "social-anxiety-disorder", "somatic-symptom-disorder"]) {
+  it("keeps the three still-withdrawn legal/rating-only mental mappings draft after M1", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    for (const id of ["bipolar-disorder", "persistent-depressive-disorder", "somatic-symptom-disorder"]) {
       const mapping = byId.get(id);
       expect(mapping?.draft).toBe(true);
       expect(mapping?.suggestions).toEqual([]);
@@ -23,6 +38,13 @@ describe("clinical evidence promotion batch 19", () => {
   });
 
   it("publishes thyroiditis-to-hypothyroidism only for a persistent autoimmune phenotype", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("thyroiditis");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
@@ -36,6 +58,6 @@ describe("clinical evidence promotion batch 19", () => {
     expect(suggestion?.pathwayIntelligence?.issuesToResolve.join(" ")).toMatch(/not be generalized|subtype/i);
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("42232752");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
   });
 });

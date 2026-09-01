@@ -4,7 +4,10 @@
     {
       "id": "ovarian-cancer",
       "name": "Ovarian Cancer",
-      "aliases": ["ovary cancer", "cancer of the ovary"],
+      "aliases": [
+        "ovary cancer",
+        "cancer of the ovary"
+      ],
       "bodySystem": "Oncological Conditions",
       "ratingSchedule": [
         {
@@ -19,9 +22,25 @@
       ]
     },
     {
+      "id": "endometrial-cancer",
+      "name": "Endometrial Cancer",
+      "aliases": [
+        "endometrial carcinoma",
+        "uterine endometrial cancer"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Clinical Mapping Master Resolution 2026 taxonomy identity. No condition-specific VA diagnostic/rating code was assigned or borrowed; retain for qualified catalog/rating review. Malignancy of the endometrium; distinct from ovarian and cervical cancer identities."
+      ]
+    },
+    {
       "id": "testicular-cancer",
       "name": "Testicular Cancer",
-      "aliases": ["testis cancer", "cancer of the testis"],
+      "aliases": [
+        "testis cancer",
+        "cancer of the testis"
+      ],
       "bodySystem": "Oncological Conditions",
       "ratingSchedule": [
         {
@@ -38,7 +57,10 @@
     {
       "id": "laryngeal-cancer",
       "name": "Laryngeal Cancer",
-      "aliases": ["cancer of the larynx", "larynx cancer"],
+      "aliases": [
+        "cancer of the larynx",
+        "larynx cancer"
+      ],
       "bodySystem": "Oncological Conditions",
       "ratingSchedule": [
         {

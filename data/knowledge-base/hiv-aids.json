@@ -1,8 +1,54 @@
 {
   "id": "hiv-aids",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "uveitis",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require HIV/AIDS, antiretroviral immune recovery, and separately diagnosed immune-recovery uveitis; document relevant ocular history such as CMV retinitis when present. Treatment/immune-reconstitution phenotype; do not generalize to all uveitis in HIV. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment or procedure used for HIV / AIDS",
+        "Independent diagnosis of Uveitis and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Immune recovery uveitis: an ocular manifestation in HIV/AIDS receiving treatment. Current opinion in ophthalmology. 2024. doi:10.1097/ICU.0000000000001078. PMID 39046420",
+          "note": "Master-disposition clinical evidence for the bounded treatment associated risk proposition. Treatment/immune-reconstitution phenotype; do not generalize to all uveitis in HIV.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39046420/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 39046420; PubMed title/abstract retrieved in the master research harvest; guard: Require HIV/AIDS, antiretroviral immune recovery, and separately diagnosed immune-recovery uveitis; document relevant ocular history such as CMV retinitis when present."
+        }
+      ]
+    },
+    {
+      "conditionId": "peripheral-neuropathy",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. HIV/AIDS is associated with a distinct spectrum of peripheral neuropathies, especially distal predominantly sensory polyneuropathy, through HIV disease mechanisms and, in some patients, treatment-related neurotoxicity. Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and preserve diabetes, alcohol, nutritional deficiency, chemotherapy, compressive neuropathy, opportunistic infection, and other neurologic causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of hiv-aids and peripheral-neuropathy",
+        "Documentation satisfying the approved phenotype restriction: separately diagnosed HIV-related peripheral neuropathy, including distal predominantly sensory polyneuropathy",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and preserve diabetes, alcohol, nutritional deficiency, chemotherapy, compressive neuropathy, opportunistic infection, and other neurologic causes."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Julian T, Rekatsina M, Shafique F, Zis P. Human immunodeficiency virus-related peripheral neuropathy: A systematic review and meta-analysis. Eur J Neurol. 2021;28(4):1420-1431. PMID 33226721. doi:10.1111/ene.14656.",
+          "note": "Mapping Expansion Batch ME-8 evidence for the bounded hiv-aids to peripheral-neuropathy proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33226721/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 33226721; approved ME-8 proposition; guard: Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and preserve diabetes, alcohol, nutritional deficiency, chemotherapy, compressive neuropathy, opportunistic infection, and other neurologic causes."
+        }
+      ]
+    }
+  ]
 }

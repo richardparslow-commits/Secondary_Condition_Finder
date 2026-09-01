@@ -36,9 +36,32 @@
           "note": "Condition-specific cardiomyopathy guideline describing heart failure management across cardiomyopathies and noting that patients with dilated cardiomyopathy often develop heart-failure symptoms; supports disease-progression plausibility, not an automatic individual nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37622657/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 37622657; Sections 6.10.2 and 7.2.3"
+        }
+      ]
+    },
+    {
+      "conditionId": "cardiac-arrhythmia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented cardiomyopathy and separately documented clinically significant ventricular arrhythmia, such as ventricular tachycardia or ventricular fibrillation, arising in a clinically compatible structural-cardiomyopathy context. PMID 37622657 supports ventricular-arrhythmia risk and management across cardiomyopathy phenotypes; do not infer arrhythmia from cardiomyopathy alone and do not generalize the source to every nonspecific rhythm abnormality. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of cardiomyopathy and cardiac-arrhythmia",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented cardiomyopathy and separately documented clinically significant ventricular arrhythmia, such as ventricular tachycardia or ventricular fibrillation, arising in a clinically compatible structural-cardiomyopathy context. PMID 37622657 supports ventricular-arrhythmia risk and management across cardiomyopathy phenotypes; do not infer arrhythmia from cardiomyopathy alone and do not generalize the source to every nonspecific rhythm abnormality."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Arbelo E, Protonotarios A, Gimeno JR, et al. 2023 ESC Guidelines for the management of cardiomyopathies. Eur Heart J. 2023;44(37):3503-3626. PMID 37622657. doi:10.1093/eurheartj/ehad194.",
+          "note": "Qualified-human-approved Mapping Expansion Batch ME-1 clinical evidence for the bounded cardiomyopathy to cardiac-arrhythmia proposition. Verification applies only to the approved bounded proposition and does not, by itself, establish an individual medical nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37622657/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 37622657; qualified-human-approved Mapping Expansion Batch ME-1 Citation Verification; guard: Require documented cardiomyopathy and separately documented clinically significant ventricular arrhythmia, such as ventricular tachycardia or ventricular fibrillation, arising in a clinically compatible structural-cardiomyopathy context. PMID 37622657 supports ventricular-arrhythmia risk and management across cardiomyopathy phenotypes; do not infer arrhythmia from cardiomyopathy alone and do not generalize the source to every nonspecific rhythm abnormality."
         }
       ]
     }

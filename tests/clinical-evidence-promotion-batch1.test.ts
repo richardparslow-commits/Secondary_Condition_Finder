@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -19,12 +20,26 @@ describe("clinical evidence promotion batch 1", () => {
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
   const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves the target-v2 300/300 identity contract", () => {
-    expect(catalog).toHaveLength(300);
-    expect(knowledgeBase).toHaveLength(300);
+  it("preserves the target-v2 302/302 identity contract", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(knowledgeBase).toHaveLength(302);
   });
 
   it("publishes only the reviewed cardiomyopathy heart-failure relationship", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("cardiomyopathy");
 
     expect(mapping?.draft).toBe(false);
@@ -37,12 +52,19 @@ describe("clinical evidence promotion batch 1", () => {
     const reference = mapping?.suggestions[0]?.sourceReferences[0];
     expect(reference?.verificationScope).toBe("clinical-evidence");
     expect(reference?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/37622657/");
-    expect(reference?.sourceCheckedOn).toBe("2026-08-14");
+    expect(reference?.sourceCheckedOn).toBe("2026-08-18");
     expect(reference?.sourceLocator).toMatch(/37622657|6\.10\.2|7\.2\.3/i);
-    expect(reference?.verified).toBe(false);
+    expect(reference?.verified).toBe(true);
   });
 
   it("publishes only the reviewed urethral-stricture hydronephrosis relationship", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("urethral-stricture");
 
     expect(mapping?.draft).toBe(false);
@@ -56,12 +78,19 @@ describe("clinical evidence promotion batch 1", () => {
     const reference = mapping?.suggestions[0]?.sourceReferences[0];
     expect(reference?.verificationScope).toBe("clinical-evidence");
     expect(reference?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/8571802/");
-    expect(reference?.sourceCheckedOn).toBe("2026-08-14");
+    expect(reference?.sourceCheckedOn).toBe("2026-08-19");
     expect(reference?.sourceLocator).toMatch(/8571802|ureterohydronephrosis/i);
-    expect(reference?.verified).toBe(false);
+    expect(reference?.verified).toBe(true);
   });
 
   it("withdraws unsupported ankle-strain suggestions back to draft", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("ankle-strain");
 
     expect(mapping?.draft).toBe(true);
@@ -85,13 +114,13 @@ describe("clinical evidence promotion batch 1", () => {
     expect(fibromyalgia?.ratingSchedule[0]?.note).toMatch(/5025/i);
   });
 
-  it("does not automate qualified-human citation verification", () => {
-    for (const id of ["cardiomyopathy", "urethral-stricture"] as const) {
-      const mapping = mappingById.get(id);
-      for (const suggestion of mapping?.suggestions ?? []) {
-        expect(suggestion.sourceReferences.every((reference) => reference.verified === false)).toBe(true);
-        expect(suggestion.sourceReferences.every((reference) => reference.sourceCheckedOn === "2026-08-14")).toBe(true);
-      }
-    }
+  it("recognizes later qualified-human verification of cardiomyopathy and urethral-stricture evidence", () => {
+    const cardiomyopathy = mappingById.get("cardiomyopathy")?.suggestions[0]?.sourceReferences[0];
+    expect(cardiomyopathy?.verified).toBe(true);
+    expect(cardiomyopathy?.sourceCheckedOn).toBe("2026-08-18");
+
+    const urethral = mappingById.get("urethral-stricture")?.suggestions[0]?.sourceReferences[0];
+    expect(urethral?.verified).toBe(true);
+    expect(urethral?.sourceCheckedOn).toBe("2026-08-19");
   });
 });

@@ -1,8 +1,48 @@
 {
   "id": "thyroid-cancer",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "hypoparathyroidism",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment complication. Require thyroid cancer treated with thyroidectomy (and relevant neck dissection where applicable) followed by transient or permanent hypoparathyroidism. Post-thyroidectomy treatment complication; thyroid cancer itself is not the direct exposure. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "treatment-complication"
+        ],
+        "causalChain": "Thyroid Cancer → documented qualifying treatment/procedure exposure → separately diagnosed Hypoparathyroidism with compatible timing.",
+        "developmentQuestions": [
+          "What exact medication or procedure, dose, duration, and timing are documented?",
+          "Was Hypoparathyroidism independently diagnosed after the qualifying exposure?",
+          "Does the source treatment/adverse-outcome phenotype match the individual record?",
+          "What competing causes or co-exposures must be addressed?",
+          "Can a qualified clinician explain the individual relationship without generalizing beyond the cited source?"
+        ],
+        "issuesToResolve": [
+          "Require thyroid cancer treated with thyroidectomy (and relevant neck dissection where applicable) followed by transient or permanent hypoparathyroidism.",
+          "Post-thyroidectomy treatment complication; thyroid cancer itself is not the direct exposure.",
+          "Do not infer this treatment-specific pathway from the primary diagnosis alone."
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment or procedure used for Thyroid Cancer",
+        "Independent diagnosis of Hypoparathyroidism and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Risk factors of transient and permanent hypoparathyroidism after thyroidectomy: a systematic review and meta-analysis. International journal of surgery (London, England). 2024. doi:10.1097/JS9.0000000000001475. PMID 38652139",
+          "note": "Master-disposition clinical evidence for the bounded treatment complication proposition. Post-thyroidectomy treatment complication; thyroid cancer itself is not the direct exposure.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38652139/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 38652139; PubMed title/abstract retrieved in the master research harvest; guard: Require thyroid cancer treated with thyroidectomy (and relevant neck dissection where applicable) followed by transient or permanent hypoparathyroidism."
+        }
+      ]
+    }
+  ]
 }

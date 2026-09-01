@@ -9,7 +9,9 @@
       "prevalence": "commonly-explored",
       "rationale": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish that rheumatoid arthritis caused or aggravated an individual's depressive disorder.",
       "pathwayIntelligence": {
-        "pathways": ["somatopsychic"],
+        "pathways": [
+          "somatopsychic"
+        ],
         "causalChain": "Rheumatoid arthritis → chronic pain and functional limitation, if documented → claimed causation or worsening of depressive disorder.",
         "developmentQuestions": [
           "Is depressive disorder currently diagnosed and clinically distinguished from transient distress?",
@@ -55,7 +57,9 @@
       "prevalence": "sometimes-explored",
       "rationale": "When NSAID treatment for rheumatoid-arthritis pain is documented in the individual record, observational evidence associating NSAID use with GERD symptoms supports a bounded medication-related research pathway. The clinical source does not establish that rheumatoid arthritis itself causes GERD or that an NSAID caused or aggravated an individual veteran's GERD; the actual prescription indication, exposure, chronology, diagnosis, and competing gastrointestinal contributors remain essential.",
       "pathwayIntelligence": {
-        "pathways": ["medication-related"],
+        "pathways": [
+          "medication-related"
+        ],
         "causalChain": "Rheumatoid arthritis → individually documented NSAID treatment for RA pain, if present → claimed contribution to or worsening of clinically characterized GERD; the treatment-exposure link must come from the individual medical record and the medication-to-GERD link still requires case-specific medical assessment.",
         "developmentQuestions": [
           "Was the relevant NSAID actually prescribed or used to treat rheumatoid-arthritis pain, and at what dose and duration?",
@@ -81,8 +85,8 @@
           "note": "Observational study found GERD symptoms significantly more common among NSAID users than non-users and identified NSAID use as an independent predictor of GERD symptoms; supports an association signal, not automatic individual causation. The individual record must separately establish that the NSAID was actually used for rheumatoid arthritis.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18671778/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 18671778"
         },
         {

@@ -4,74 +4,140 @@
     {
       "id": "hypogonadism",
       "name": "Hypogonadism",
-      "aliases": ["Testicular Hypofunction"],
+      "aliases": [
+        "Testicular Hypofunction"
+      ],
       "bodySystem": "Endocrine",
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review of 38 CFR rating codes."]
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ]
     },
     {
       "id": "addisons-disease",
       "name": "Addison's Disease",
-      "aliases": ["Primary Adrenal Insufficiency"],
+      "aliases": [
+        "Primary Adrenal Insufficiency",
+        "primary adrenal cortical insufficiency",
+        "primary hypoadrenalism"
+      ],
       "bodySystem": "Endocrine",
       "ratingSchedule": [],
-      "reviewNotes": ["Verified endocrine mapping."]
+      "reviewNotes": [
+        "Verified endocrine mapping."
+      ]
     },
     {
       "id": "diabetes-mellitus-type-2",
       "name": "Diabetes Mellitus Type 2",
-      "aliases": ["Type 2 Diabetes", "DM2"],
+      "aliases": [
+        "Type 2 Diabetes",
+        "DM2"
+      ],
       "bodySystem": "Endocrine",
       "ratingSchedule": [],
-      "reviewNotes": ["Pending manual review"]
+      "reviewNotes": [
+        "Pending manual review"
+      ]
     },
     {
       "id": "cushings-syndrome",
       "name": "Cushing's Syndrome",
       "aliases": [],
       "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation":"38 CFR 4.119","note":"Schedule of ratings, endocrine system; diagnostic code 7907 covers Cushing's syndrome, with active-disease criteria and later residual evaluation under the appropriate body system.","verified":false}],
-      "reviewNotes": ["Clinical Evidence Promotion Batch 7 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the express DC 7907 framework without changing its ID or publishing secondary relationships."]
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7907 covers Cushing's syndrome, with active-disease criteria and later residual evaluation under the appropriate body system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Clinical Evidence Promotion Batch 7 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the express DC 7907 framework without changing its ID or publishing secondary relationships."
+      ]
     },
     {
       "id": "diabetes-mellitus-type-1",
       "name": "Diabetes Mellitus Type 1",
-      "aliases": ["Type 1 Diabetes", "DM1"],
+      "aliases": [
+        "Type 1 Diabetes",
+        "DM1"
+      ],
       "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation":"38 CFR 4.119","note":"Schedule of ratings, endocrine system; diagnostic code 7913 covers diabetes mellitus and directs separate evaluation of compensable diabetic complications when applicable.","verified":false}],
-      "reviewNotes": ["Clinical Evidence Promotion Batch 8 physically relocates this stable Type 1 diabetes identity from the historical neurological catalog into the endocrine catalog and records the current DC 7913 framework without changing its knowledge-base publication state."]
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7913 covers diabetes mellitus and directs separate evaluation of compensable diabetic complications when applicable.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Clinical Evidence Promotion Batch 8 physically relocates this stable Type 1 diabetes identity from the historical neurological catalog into the endocrine catalog and records the current DC 7913 framework without changing its knowledge-base publication state."
+      ]
     },
     {
       "id": "hyperthyroidism",
       "name": "Hyperthyroidism",
       "aliases": [],
       "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation":"38 CFR 4.119","note":"Schedule of ratings, endocrine system; diagnostic code 7900 covers hyperthyroidism, including Graves' disease, with later residual or treatment-complication evaluation under the appropriate diagnostic code or body system.","verified":false}],
-      "reviewNotes": ["Clinical Evidence Promotion Batch 9 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the current DC 7900 framework without changing its ID or knowledge-base publication state."]
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7900 covers hyperthyroidism, including Graves' disease, with later residual or treatment-complication evaluation under the appropriate diagnostic code or body system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Clinical Evidence Promotion Batch 9 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the current DC 7900 framework without changing its ID or knowledge-base publication state."
+      ]
     },
     {
       "id": "hyperparathyroidism",
       "name": "Hyperparathyroidism",
       "aliases": [],
       "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation":"38 CFR 4.119","note":"Schedule of ratings, endocrine system; diagnostic code 7904 covers hyperparathyroidism, with later evaluation of chronic residuals under the appropriate diagnostic code after treatment.","verified":false}],
-      "reviewNotes": ["Clinical Evidence Promotion Batch 10 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the current DC 7904 framework without changing its ID or knowledge-base publication identity."]
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7904 covers hyperparathyroidism, with later evaluation of chronic residuals under the appropriate diagnostic code after treatment.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Clinical Evidence Promotion Batch 10 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the current DC 7904 framework without changing its ID or knowledge-base publication identity."
+      ]
     },
     {
       "id": "hypoparathyroidism",
       "name": "Hypoparathyroidism",
       "aliases": [],
       "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation":"38 CFR 4.119","note":"Schedule of ratings, endocrine system; diagnostic code 7905 covers hypoparathyroidism, with evaluation based on treatment timing and chronic residuals under the appropriate diagnostic code.","verified":false}],
-      "reviewNotes": ["Clinical Evidence Promotion Batch 11 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the current DC 7905 framework without changing its ID or Batch-10 knowledge-base publication state."]
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7905 covers hypoparathyroidism, with evaluation based on treatment timing and chronic residuals under the appropriate diagnostic code.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Clinical Evidence Promotion Batch 11 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the current DC 7905 framework without changing its ID or Batch-10 knowledge-base publication state."
+      ]
     },
     {
       "id": "hypothyroidism",
       "name": "Hypothyroidism",
       "aliases": [],
       "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation":"38 CFR 4.119","note":"Schedule of ratings, endocrine system; diagnostic code 7903 covers hypothyroidism and directs subsequent evaluation of residuals under the appropriate body system when applicable.","verified":false}],
-      "reviewNotes": ["Clinical Evidence Promotion Batch 12 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the current DC 7903 framework without changing its ID or Batch-11 knowledge-base publication state."]
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7903 covers hypothyroidism and directs subsequent evaluation of residuals under the appropriate body system when applicable.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Clinical Evidence Promotion Batch 12 physically relocates this stable identity from the historical neurological catalog into the endocrine catalog and records the current DC 7903 framework without changing its ID or Batch-11 knowledge-base publication state."
+      ]
     }
   ]
 }

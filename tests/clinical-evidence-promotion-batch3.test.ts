@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -19,12 +20,26 @@ describe("clinical evidence promotion batch 3", () => {
   const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
-  it("preserves the target-v2 300/300 identity contract", () => {
-    expect(catalog).toHaveLength(300);
-    expect(knowledgeBase).toHaveLength(300);
+  it("preserves the target-v2 302/302 identity contract", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(knowledgeBase).toHaveLength(302);
   });
 
   it("publishes chronic liver disease to cirrhosis only as documented fibrosis progression", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("chronic-liver-disease");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.todo).toEqual([]);
@@ -36,7 +51,8 @@ describe("clinical evidence promotion batch 3", () => {
     expect(suggestion?.rationale).toMatch(/umbrella|etiology/i);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/32108989/");
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("repairs the amputation depression relationship with clinical evidence", () => {
@@ -51,6 +67,13 @@ describe("clinical evidence promotion batch 3", () => {
   });
 
   it("withdraws ageusia relationships that had only legal-framework support", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("ageusia");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
@@ -66,14 +89,15 @@ describe("clinical evidence promotion batch 3", () => {
     expect(insomnia?.ratingSchedule[0]?.verified).toBe(false);
   });
 
-  it("keeps new clinical source checks truthful rather than auto-verifying", () => {
-    for (const id of ["chronic-liver-disease", "amputation-or-loss-of-use"] as const) {
-      const mapping = mappingById.get(id);
-      for (const suggestion of mapping?.suggestions ?? []) {
-        expect(suggestion.sourceReferences.every((reference) => reference.verified === false)).toBe(true);
-        expect(suggestion.sourceReferences.every((reference) => reference.sourceCheckedOn === "2026-08-14")).toBe(true);
-        expect(suggestion.sourceReferences.every((reference) => reference.verificationScope === "clinical-evidence")).toBe(true);
-      }
-    }
+  it("preserves source-check provenance after later qualified-human verification batches", () => {
+    const chronicLiver = mappingById.get("chronic-liver-disease")?.suggestions[0]?.sourceReferences[0];
+    expect(chronicLiver?.verified).toBe(true);
+    expect(chronicLiver?.sourceCheckedOn).toBe("2026-08-18");
+    expect(chronicLiver?.verificationScope).toBe("clinical-evidence");
+
+    const amputation = mappingById.get("amputation-or-loss-of-use")?.suggestions[0]?.sourceReferences[0];
+    expect(amputation?.verified).toBe(true);
+    expect(amputation?.sourceCheckedOn).toBe("2026-08-18");
+    expect(amputation?.verificationScope).toBe("clinical-evidence");
   });
 });

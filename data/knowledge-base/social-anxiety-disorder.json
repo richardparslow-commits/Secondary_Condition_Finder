@@ -1,10 +1,40 @@
 {
   "id": "social-anxiety-disorder",
-  "draft": true,
-  "todo": [
-    "Targeted 2026-08-15 rescreen found prospective community evidence that social anxiety disorder in participants without depression at baseline predicted later depressive-disorder onset (PMID 11231832; reported OR 3.5, 95% CI 2.0-6.0). This is a strong temporal candidate, but it remains population-level risk evidence rather than proof that social anxiety disorder caused a separate depressive disorder in an individual.",
-    "Keep safe-draft pending a dedicated psychiatric-overlap review that distinguishes a separately diagnosed depressive disorder from shared internalizing symptoms, establishes chronology, and addresses pre-existing depression, PTSD, generalized anxiety, substance use, treatment effects, and psychosocial contributors before any direct-secondary publication.",
-    "The prior sleep-apnea, GERD, and migraine suggestions remain withdrawn because their attached references were legal or rating sources rather than clinical evidence for those relationships."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "commonly-explored",
+      "rationale": "Prospective community studies support a temporal association in which social anxiety disorder can precede and is associated with increased subsequent risk of depressive disorders. This supports focused research only when a separately diagnosed social anxiety disorder predates a separately diagnosed depressive disorder. The studies establish population-level temporal risk, not proof of individual causation or aggravation, and require review of psychiatric chronology, diagnostic overlap, treatment, substance use, psychosocial stressors, and other competing contributors.",
+      "evidenceGaps": [
+        "Independent documentation of social anxiety disorder diagnosis and onset",
+        "Independent documentation of depressive disorder diagnosis and onset",
+        "Chronology showing social anxiety disorder predating depressive disorder when a secondary theory is explored",
+        "Assessment of pre-existing depression, PTSD, generalized anxiety, other psychiatric illness, substance use, medication effects, and major psychosocial contributors",
+        "Qualified assessment distinguishing population-level temporal association from individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Stein MB, Fuetsch M, Müller N, Höfler M, Lieb R, Wittchen HU. Social anxiety disorder and the risk of depression: a prospective community study of adolescents and young adults. Arch Gen Psychiatry. 2001;58(3):251-256. doi:10.1001/archpsyc.58.3.251. PMID 11231832",
+          "note": "Prospective longitudinal community study. Among participants without depression at baseline, social anxiety disorder was associated with later depressive-disorder onset (OR 3.5, 95% CI 2.0-6.0). Supports temporal-risk research, not automatic individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11231832/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 11231832; abstract Methods/Results: prospective longitudinal adolescent/young-adult community study; baseline SAD in nondepressed participants associated with depressive-disorder onset at follow-up, OR 3.5 (95% CI 2.0-6.0)"
+        },
+        {
+          "citation": "Beesdo K, Bittner A, Pine DS, et al. Incidence of social anxiety disorder and the consistent risk for secondary depression in the first three decades of life. Arch Gen Psychiatry. 2007;64(8):903-912. doi:10.1001/archpsyc.64.8.903. PMID 17679635",
+          "note": "Ten-year prospective longitudinal community/family study of 3,021 people. Social anxiety disorder was consistently associated with subsequent depression, reported RR range 1.49-1.85 after age/sex control. Supports temporal association, not an individual causal nexus by itself.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17679635/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 17679635; abstract Design/Participants/Results: 10-year prospective longitudinal study; 3,021 participants; SAD consistently associated with subsequent depression, RR 1.49-1.85 controlling for age and sex"
+        }
+      ]
+    }
+  ]
 }

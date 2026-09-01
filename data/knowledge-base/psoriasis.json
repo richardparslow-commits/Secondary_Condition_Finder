@@ -1,8 +1,140 @@
 {
   "id": "psoriasis",
-  "draft": true,
-  "todo": [
-    "Rebuild psoriasis-related secondary-condition suggestions with condition-specific clinical evidence; prior generic mood and medication-to-GERD pathways lacked direct supporting citations."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "colorectal-cancer",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately diagnosed colorectal cancer; establish chronology independently and account for smoking, obesity, IBD, treatment, and surveillance. Observational meta-analysis supports association only. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Psoriasis and Colon / Rectal Cancer",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Association of psoriasis with colorectal cancer. Journal of the American Academy of Dermatology. 2021. doi:10.1016/j.jaad.2020.09.050. PMID 33011316",
+          "note": "Master-disposition clinical evidence for the bounded association risk proposition. Observational meta-analysis supports association only.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33011316/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 33011316; PubMed title/abstract retrieved in the master research harvest; guard: Require psoriasis and separately diagnosed colorectal cancer; establish chronology independently and account for smoking, obesity, IBD, treatment, and surveillance."
+        }
+      ]
+    },
+    {
+      "conditionId": "erectile-dysfunction",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately diagnosed erectile dysfunction; evaluate vascular/metabolic, psychiatric, medication, endocrine, and relationship factors. Association meta-analysis only; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Psoriasis and Erectile Dysfunction",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Association Between Psoriasis and Erectile Dysfunction: A Meta-Analysis. The journal of sexual medicine. 2018. doi:10.1016/j.jsxm.2018.04.630. PMID 29735408",
+          "note": "Master-disposition clinical evidence for the bounded association risk proposition. Association meta-analysis only; no individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29735408/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 29735408; PubMed title/abstract retrieved in the master research harvest; guard: Require psoriasis and separately diagnosed erectile dysfunction; evaluate vascular/metabolic, psychiatric, medication, endocrine, and relationship factors."
+        }
+      ]
+    },
+    {
+      "conditionId": "inflammatory-bowel-disease",
+      "rank": 3,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately established Crohn's disease or ulcerative colitis; preserve bidirectional/shared-immune susceptibility and treatment considerations. Meta-analysis supports association; direction and individual causation are not established by the pooled evidence alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Psoriasis and Inflammatory Bowel Disease (Crohn's Disease, Ulcerative Colitis)",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Association of Psoriasis With Inflammatory Bowel Disease: A Systematic Review and Meta-analysis. JAMA dermatology. 2018. doi:10.1001/jamadermatol.2018.3631. PMID 30422277",
+          "note": "Master-disposition clinical evidence for the bounded association risk proposition. Meta-analysis supports association; direction and individual causation are not established by the pooled evidence alone.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30422277/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 30422277; PubMed title/abstract retrieved in the master research harvest; guard: Require psoriasis and separately established Crohn's disease or ulcerative colitis; preserve bidirectional/shared-immune susceptibility and treatment considerations."
+        }
+      ]
+    },
+    {
+      "conditionId": "psoriatic-arthritis",
+      "rank": 4,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established psoriasis followed by clinically confirmed psoriatic arthritis. Systematic review/meta-analysis directly addresses psoriatic-arthritis development and incidence in psoriasis populations; individual prediction remains heterogeneous. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Psoriasis and Psoriatic Arthritis",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Predictors, Risk Factors, and Incidence Rates of Psoriatic Arthritis Development in Psoriasis Patients: A Systematic Literature Review and Meta-Analysis. Rheumatol Ther. 2021;8(4):1519-1534. doi:10.1007/s40744-021-00378-w. PMID 34596875",
+          "note": "Qualified-human-approved one-for-one replacement clinical evidence for the bounded temporal association risk proposition. Systematic review/meta-analysis directly addresses psoriatic-arthritis development and incidence in psoriasis populations; individual prediction remains heterogeneous.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34596875/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 34596875; replacement source independently confirmed in PubMed before repository edits; guard: Require established psoriasis followed by clinically confirmed psoriatic arthritis.; supersedes unverified PMID 38251522."
+        }
+      ]
+    },
+    {
+      "conditionId": "eczema",
+      "rank": 5,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment complication. Require biologic therapy for psoriasis preceding documented paradoxical eczema; model only as treatment complication. Prospective biologic-registry evidence supports paradoxical eczema during psoriasis biologic treatment; qualifying biologic exposure is required and overall incidence is low. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "treatment-complication"
+        ],
+        "causalChain": "Psoriasis → documented qualifying treatment/procedure exposure → separately diagnosed Eczema with compatible timing.",
+        "developmentQuestions": [
+          "What exact medication or procedure, dose, duration, and timing are documented?",
+          "Was Eczema independently diagnosed after the qualifying exposure?",
+          "Does the source treatment/adverse-outcome phenotype match the individual record?",
+          "What competing causes or co-exposures must be addressed?",
+          "Can a qualified clinician explain the individual relationship without generalizing beyond the cited source?"
+        ],
+        "issuesToResolve": [
+          "Require biologic therapy for psoriasis preceding documented paradoxical eczema; model only as treatment complication.",
+          "Do not infer eczema from psoriasis itself; exposure to the implicated biologic is required.",
+          "Do not infer this treatment-specific pathway from the primary diagnosis alone."
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment or procedure used for Psoriasis",
+        "Independent diagnosis of Eczema and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Risk of Paradoxical Eczema in Patients Receiving Biologics for Psoriasis. JAMA Dermatol. 2024;160(1):71-79. doi:10.1001/jamadermatol.2023.4846. PMID 38055239",
+          "note": "Qualified-human-approved one-for-one replacement clinical evidence for the bounded treatment complication proposition. Prospective biologic-registry evidence supports paradoxical eczema during psoriasis biologic treatment; qualifying biologic exposure is required and overall incidence is low.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38055239/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 38055239; replacement source independently confirmed in PubMed before repository edits; guard: Require biologic therapy for psoriasis preceding documented paradoxical eczema; model only as treatment complication.; supersedes unverified PMID 40420581."
+        }
+      ]
+    }
+  ]
 }

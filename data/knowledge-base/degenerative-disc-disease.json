@@ -4,5 +4,30 @@
   "todo": [
     "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "radiculopathy",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review and meta-analysis explicitly addresses cervical radiculopathy due to degenerative disc disease; the approved mapping is restricted to anatomically concordant cervical nerve-root disease. Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of degenerative-disc-disease and radiculopathy",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: anatomically concordant cervical radiculopathy due to cervical degenerative disc disease with nerve-root compromise",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Alomar SA, Maghrabi Y, Baeesa SS, Alves OL. Outcome of Anterior and Posterior Endoscopic Procedures for Cervical Radiculopathy Due to Degenerative Disk Disease: A Systematic Review and Meta-Analysis. Global Spine J. 2022;12(7):1546-1560. PMID 34402323. doi:10.1177/21925682211037270.",
+          "note": "Mapping Expansion Batch ME-13 evidence for the bounded degenerative-disc-disease to radiculopathy proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34402323/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-22",
+          "sourceLocator": "PMID 34402323; approved ME-13 source; guard: Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations."
+        }
+      ]
+    }
+  ]
 }

@@ -1,8 +1,71 @@
 {
   "id": "hyperthyroidism",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "hypothyroidism",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment complication. Apply to Graves hyperthyroidism treated with total thyroidectomy or ablative/high-dose radioiodine followed by hypothyroidism requiring replacement. Definitive-treatment consequence; do not infer hypothyroidism from untreated hyperthyroidism. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "treatment-complication"
+        ],
+        "causalChain": "Hyperthyroidism → documented qualifying treatment/procedure exposure → separately diagnosed Hypothyroidism with compatible timing.",
+        "developmentQuestions": [
+          "What exact medication or procedure, dose, duration, and timing are documented?",
+          "Was Hypothyroidism independently diagnosed after the qualifying exposure?",
+          "Does the source treatment/adverse-outcome phenotype match the individual record?",
+          "What competing causes or co-exposures must be addressed?",
+          "Can a qualified clinician explain the individual relationship without generalizing beyond the cited source?"
+        ],
+        "issuesToResolve": [
+          "Apply to Graves hyperthyroidism treated with total thyroidectomy or ablative/high-dose radioiodine followed by hypothyroidism requiring replacement.",
+          "Definitive-treatment consequence; do not infer hypothyroidism from untreated hyperthyroidism.",
+          "Do not infer this treatment-specific pathway from the primary diagnosis alone."
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment or procedure used for Hyperthyroidism",
+        "Independent diagnosis of Hypothyroidism and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Graves' Disease: Can It Be Cured?. Endocrinology and metabolism (Seoul, Korea). 2019. doi:10.3803/EnM.2019.34.1.29. PMID 30912336",
+          "note": "Master-disposition clinical evidence for the bounded treatment complication proposition. Definitive-treatment consequence; do not infer hypothyroidism from untreated hyperthyroidism.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30912336/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 30912336; PubMed title/abstract retrieved in the master research harvest; guard: Apply to Graves hyperthyroidism treated with total thyroidectomy or ablative/high-dose radioiodine followed by hypothyroidism requiring replacement."
+        }
+      ]
+    },
+    {
+      "conditionId": "cardiac-arrhythmia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation. Preserve temporal thyroid status, restoration of euthyroidism, structural heart disease, age, and other AF risk factors when evaluating individual attribution. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of hyperthyroidism and cardiac-arrhythmia",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation. Preserve temporal thyroid status, restoration of euthyroidism, structural heart disease, age, and other AF risk factors when evaluating individual attribution."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Kostopoulos G, Effraimidis G. Epidemiology, prognosis, and challenges in the management of hyperthyroidism-related atrial fibrillation. Eur Thyroid J. 2024;13(2):e230254. PMID 38377675. doi:10.1530/ETJ-23-0254.",
+          "note": "Mapping Expansion Batch ME-3 evidence for the bounded hyperthyroidism to cardiac-arrhythmia proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38377675/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 38377675; approved ME-3 proposition; guard: Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation. Preserve temporal thyroid status, restoration of euthyroidism, structural heart disease, age, and other AF risk factors when evaluating individual attribution."
+        }
+      ]
+    }
+  ]
 }

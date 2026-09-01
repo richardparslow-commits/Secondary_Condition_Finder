@@ -1,8 +1,54 @@
 {
   "id": "uterine-fibroids",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as bleeding mediated disease complication. Require documented uterine fibroids with clinically relevant abnormal/heavy uterine bleeding and separately documented iron deficiency and/or anemia. Do not infer anemia from asymptomatic fibroids. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Uterine Fibroids and Anemia (Iron Deficiency, Sickle Cell, Aplastic)",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of the publication guard: Require documented uterine fibroids with clinically relevant abnormal/heavy uterine bleeding and separately documented iron deficiency and/or anemia. Do not infer anemia from asymptomatic fibroids."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "The modern management of uterine fibroids-related abnormal uterine bleeding. Fertility and sterility. 2024. doi:10.1016/j.fertnstert.2024.04.041. PMID 38723935",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38723935/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 38723935; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented uterine fibroids with clinically relevant abnormal/heavy uterine bleeding and separately documented iron deficiency and/or anemia. Do not infer anemia from asymptomatic fibroids."
+        }
+      ]
+    },
+    {
+      "conditionId": "endometriosis",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Among women undergoing laparoscopic myomectomy for symptomatic leiomyomas, 25.6% had unexpected histologically confirmed endometriosis, supporting clinically relevant co-occurrence. Treat strictly as co-occurrence/association and screening relevance, not fibroids causing endometriosis. Preserve shared estrogen-related biology, age, infertility/nulliparity, referral and surgical-selection bias, and other endometriosis risk factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of uterine-fibroids and endometriosis",
+        "Documentation satisfying the approved phenotype restriction: symptomatic uterine leiomyomas/fibroids with separately diagnosed endometriosis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, treatment/transplant context, and selection bias where applicable",
+        "Resolution of the approved publication guard: Treat strictly as co-occurrence/association and screening relevance, not fibroids causing endometriosis. Preserve shared estrogen-related biology, age, infertility/nulliparity, referral and surgical-selection bias, and other endometriosis risk factors."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Nicolaus K, Bräuer D, Sczesny R, Lehmann T, Diebolder H, Runnebaum IB. Unexpected coexistent endometriosis in women with symptomatic uterine leiomyomas is independently associated with infertility, nulliparity and minor myoma size. Arch Gynecol Obstet. 2019;300(1):103-108. PMID 31006843. doi:10.1007/s00404-019-05153-5.",
+          "note": "Mapping Expansion Batch ME-11 evidence for the bounded uterine-fibroids to endometriosis proposition. This final approved source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31006843/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 31006843; approved ME-11 final source; guard: Treat strictly as co-occurrence/association and screening relevance, not fibroids causing endometriosis. Preserve shared estrogen-related biology, age, infertility/nulliparity, referral and surgical-selection bias, and other endometriosis risk factors."
+        }
+      ]
+    }
+  ]
 }

@@ -1,8 +1,53 @@
 {
   "id": "inflammatory-bowel-disease",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "colorectal-cancer",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established Crohn's disease/ulcerative colitis with subsequent colorectal cancer; account for disease duration, extent, inflammation, dysplasia, PSC, family history, and surveillance. Direct observational-study meta-analysis supports increased colorectal-cancer risk in IBD populations; it does not prove an individual tumor was caused by IBD. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Inflammatory Bowel Disease (Crohn's Disease, Ulcerative Colitis) and Colon / Rectal Cancer",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Inflammatory bowel disease and risk of gastric, small bowel and colorectal cancer: a meta-analysis of 26 observational studies. J Cancer Res Clin Oncol. 2021;147(4):1077-1087. doi:10.1007/s00432-020-03496-0. PMID 33433655",
+          "note": "Qualified-human-approved one-for-one replacement clinical evidence for the bounded temporal association risk proposition. Direct observational-study meta-analysis supports increased colorectal-cancer risk in IBD populations; it does not prove an individual tumor was caused by IBD.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33433655/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 33433655; replacement source independently confirmed in PubMed before repository edits; guard: Require established Crohn's disease/ulcerative colitis with subsequent colorectal cancer; account for disease duration, extent, inflammation, dysplasia, PSC, family history, and surveillance.; supersedes unverified PMID 33385426."
+        }
+      ]
+    },
+    {
+      "conditionId": "anemia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented Crohn disease, ulcerative colitis, or otherwise clinically established inflammatory bowel disease and separately documented anemia. Where anemia is attributed to IBD, require clinical evidence supporting an IBD-related mechanism such as chronic gastrointestinal blood loss/iron deficiency, inflammatory anemia, malabsorption, or another established IBD-related pathway. Do not assume every anemia in a person with IBD is caused by IBD. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of inflammatory-bowel-disease and anemia",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented Crohn disease, ulcerative colitis, or otherwise clinically established inflammatory bowel disease and separately documented anemia. Where anemia is attributed to IBD, require clinical evidence supporting an IBD-related mechanism such as chronic gastrointestinal blood loss/iron deficiency, inflammatory anemia, malabsorption, or another established IBD-related pathway. Do not assume every anemia in a person with IBD is caused by IBD."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Dutta AK, Chinthala H, George JT, Thomas DM, Joseph AJ. Anemia in inflammatory bowel disease-A comprehensive review. Indian J Gastroenterol. 2025;44(4):430-442. PMID 39954228. doi:10.1007/s12664-024-01735-7.",
+          "note": "Qualified-human-approved Mapping Expansion Batch ME-1 clinical evidence for the bounded inflammatory-bowel-disease to anemia proposition. Verification applies only to the approved bounded proposition and does not, by itself, establish an individual medical nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39954228/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 39954228; qualified-human-approved Mapping Expansion Batch ME-1 Citation Verification; guard: Require documented Crohn disease, ulcerative colitis, or otherwise clinically established inflammatory bowel disease and separately documented anemia. Where anemia is attributed to IBD, require clinical evidence supporting an IBD-related mechanism such as chronic gastrointestinal blood loss/iron deficiency, inflammatory anemia, malabsorption, or another established IBD-related pathway. Do not assume every anemia in a person with IBD is caused by IBD."
+        }
+      ]
+    }
+  ]
 }

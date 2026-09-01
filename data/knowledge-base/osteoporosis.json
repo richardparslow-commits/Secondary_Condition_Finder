@@ -1,6 +1,71 @@
 {
   "id": "osteoporosis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "trigeminal-neuralgia",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require osteoporosis in a source-relevant older-adult population (>50 years in the cited cohort) before incident, separately established trigeminal neuralgia. Observational Taiwanese cohort in adults >50 years; temporal association only, with uncertain generalizability outside the studied population and no individual causal claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Osteoporosis, Residuals of and Trigeminal Neuralgia (Tic Douloureux)",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "The Risk of Trigeminal Neuralgia Following Osteoporosis. Medicina (Kaunas, Lithuania). 2022. doi:10.3390/medicina58030447. PMID 35334622",
+          "note": "Qualified-human-approved Master Citation Verification evidence for the narrowed temporal association risk proposition. Observational Taiwanese cohort in adults >50 years; temporal association only, with uncertain generalizability outside the studied population and no individual causal claim.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35334622/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 35334622; PubMed identity/abstract confirmed; qualified-human-approved narrowed guard: Require osteoporosis in a source-relevant older-adult population (>50 years in the cited cohort) before incident, separately established trigeminal neuralgia."
+        }
+      ]
+    },
+    {
+      "conditionId": "osteonecrosis-of-the-jaw",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment complication. Require antiresorptive exposure such as bisphosphonate or denosumab for osteoporosis before medication-related osteonecrosis of the jaw; confirm MRONJ diagnostic criteria. Treatment complication, not an effect of osteoporosis itself. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "treatment-complication"
+        ],
+        "causalChain": "Osteoporosis, Residuals of → documented qualifying treatment/procedure exposure → separately diagnosed Osteonecrosis of the Jaw with compatible timing.",
+        "developmentQuestions": [
+          "What exact medication or procedure, dose, duration, and timing are documented?",
+          "Was Osteonecrosis of the Jaw independently diagnosed after the qualifying exposure?",
+          "Does the source treatment/adverse-outcome phenotype match the individual record?",
+          "What competing causes or co-exposures must be addressed?",
+          "Can a qualified clinician explain the individual relationship without generalizing beyond the cited source?"
+        ],
+        "issuesToResolve": [
+          "Require antiresorptive exposure such as bisphosphonate or denosumab for osteoporosis before medication-related osteonecrosis of the jaw; confirm MRONJ diagnostic criteria.",
+          "Treatment complication, not an effect of osteoporosis itself.",
+          "Do not infer this treatment-specific pathway from the primary diagnosis alone."
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the qualifying treatment or procedure used for Osteoporosis, Residuals of",
+        "Independent diagnosis of Osteonecrosis of the Jaw and timing relative to that exposure",
+        "Dose, duration, procedure details, and relevant co-exposures where applicable",
+        "Qualified clinical assessment of competing causes and source-phenotype fit"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Medication-related osteonecrosis of the jaw: definition and best practice for prevention, diagnosis, and treatment. Oral surgery, oral medicine, oral pathology and oral radiology. 2019. doi:10.1016/j.oooo.2018.09.008. PMID 30393090",
+          "note": "Master-disposition clinical evidence for the bounded treatment complication proposition. Treatment complication, not an effect of osteoporosis itself.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30393090/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 30393090; PubMed title/abstract retrieved in the master research harvest; guard: Require antiresorptive exposure such as bisphosphonate or denosumab for osteoporosis before medication-related osteonecrosis of the jaw; confirm MRONJ diagnostic criteria."
+        }
+      ]
+    }
+  ]
 }

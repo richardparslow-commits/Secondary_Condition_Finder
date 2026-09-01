@@ -7,10 +7,12 @@
       "conditionId": "visual-impairment",
       "rank": 1,
       "prevalence": "sometimes-explored",
-      "rationale": "Pituitary macroadenomas and other pituitary neoplasms that extend to and compress the optic chiasm can produce clinically important visual-field and visual-acuity impairment. Systematic-review evidence in nonfunctioning pituitary macroadenomas with chiasmal compression supports this mass-effect relationship and improvement after decompression. The pathway is therefore limited to neoplasms with documented optic-chiasm or optic-pathway involvement; it does not imply that every pituitary neoplasm, particularly a small lesion without suprasellar extension, causes visual impairment.",
+      "rationale": "The cited systematic-review evidence specifically concerns nonfunctioning pituitary macroadenomas with documented optic-chiasm compression. A pituitary macroadenoma—or another pituitary neoplasm only when the individual record objectively documents comparable optic-chiasm or optic-pathway compression—can produce clinically important visual-field and visual-acuity impairment through mass effect. This mapping therefore requires documented optic-chiasm/optic-pathway involvement and does not imply that a small pituitary lesion without such compression causes visual impairment.",
       "pathwayIntelligence": {
-        "pathways": ["direct-secondary"],
-        "causalChain": "Pituitary neoplasm with suprasellar extension or other documented optic-pathway mass effect → optic-chiasm/optic-nerve compression → visual-field and/or visual-acuity impairment.",
+        "pathways": [
+          "direct-secondary"
+        ],
+        "causalChain": "Pituitary macroadenoma or other objectively documented pituitary neoplasm with optic-chiasm/optic-pathway compression → anatomic mass effect → compatible visual-field and/or visual-acuity impairment.",
         "developmentQuestions": [
           "Do MRI or other imaging records document suprasellar extension, optic-chiasm contact/compression, or other optic-pathway involvement by the pituitary neoplasm?",
           "Are formal visual-field testing, visual-acuity testing, or neuro-ophthalmic examinations abnormal in a pattern anatomically compatible with the documented compression?",
@@ -36,8 +38,8 @@
           "note": "Systematic review of 44 studies involving 4,789 patients with nonfunctioning pituitary macroadenoma/chiasmal compression evaluated visual dysfunction and outcomes after decompression. Supports an anatomy-specific compressive visual pathway, not visual impairment from every pituitary neoplasm.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32419072/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 32419072; abstract: 44 studies, 4,789 patients; optic-chiasm compression and visual dysfunction; visual-field defects improved after decompression"
         }
       ]

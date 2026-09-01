@@ -7,23 +7,7 @@
       "conditionId": "depressive-disorder",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Prospective cohort evidence supports a temporal association between migraine and later depression. In a large cohort of women without depression at baseline, active migraine with aura, active migraine without aura, and past migraine were each associated with increased incident depression during long-term follow-up, with higher attack frequency associated with greater risk. This supports focused somatopsychic research when a documented migraine disorder predates a separately diagnosed depressive disorder and migraine burden plausibly contributes to functional or psychological deterioration. The evidence does not establish individual causation, is not proof that depression is secondary to migraine in every patient, and should be interpreted with the individual's psychiatric history, headache burden, treatment, sleep, pain, and other competing contributors.",
-      "pathwayIntelligence": {
-        "pathways": ["somatopsychic"],
-        "causalChain": "Established migraine disorder with recurrent pain and functional burden → possible sustained psychological and functional stress in an individual case → later clinically diagnosed depressive disorder, if chronology and medical assessment support that relationship.",
-        "developmentQuestions": [
-          "Was migraine clinically established before the onset or material worsening of the depressive disorder?",
-          "What were migraine attack frequency, severity, associated symptoms, disability, and treatment burden during the period preceding depression?",
-          "Did changes in migraine frequency or control track with depressive symptoms or functional decline?",
-          "Was there pre-existing depression, PTSD, another anxiety disorder, chronic pain, sleep disorder, medication effect, substance use, or major psychosocial stressor that better explains the depressive course?",
-          "Does a qualified clinician consider migraine burden a cause or material aggravating contributor in this individual case rather than merely a comorbid condition?"
-        ],
-        "issuesToResolve": [
-          "The prospective study demonstrates increased risk at the population level, not an individual medical nexus.",
-          "The primary cohort consisted of women, so demographic generalization requires caution.",
-          "Migraine and depression can be bidirectionally associated and may share biological or psychosocial risk factors."
-        ]
-      },
+      "rationale": "Prospective cohort evidence supports a temporal association between migraine and later depression. In a large cohort of women without depression at baseline, active migraine with aura, active migraine without aura, and past migraine were each associated with increased incident depression during long-term follow-up, with higher attack frequency associated with greater risk. This supports focused temporal-association research when a documented migraine disorder predates a separately diagnosed depressive disorder and migraine burden plausibly contributes to functional or psychological deterioration. The evidence does not establish individual causation, is not proof that depression is secondary to migraine in every patient, and should be interpreted with the individual's psychiatric history, headache burden, treatment, sleep, pain, and other competing contributors.",
       "evidenceGaps": [
         "Neurology or headache documentation confirming migraine phenotype, onset, frequency, severity, and longitudinal treatment",
         "Qualified depressive-disorder diagnosis and chronology relative to migraine onset and burden",
@@ -37,8 +21,8 @@
           "note": "Prospective cohort of 36,016 women without depression at baseline followed for a mean 13.8 years found increased incident-depression risk with active migraine with aura (RR 1.53), active migraine without aura (RR 1.40), and past migraine (RR 1.56); greater migraine attack frequency was associated with higher risk. Supports temporal somatopsychic research, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23588795/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 23588795; abstract Methods/Results/Conclusions: 36,016 depression-free women, mean 13.8-year follow-up; adjusted RR 1.53 with aura, 1.40 without aura, 1.56 past migraine; higher attack frequency associated with greater incident-depression risk"
         }
       ]

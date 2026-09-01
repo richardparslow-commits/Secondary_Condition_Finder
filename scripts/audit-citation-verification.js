@@ -13,16 +13,30 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // Debt ceilings and provenance floors advance only when a reviewed batch improves them.
 // Raw live clinical-URL counts are observations, not monotonic floors: withdrawing an
 // unsupported unverified source is an evidence-quality improvement and may lower them.
+// M1 bounded source-intake ceiling authorized by qualified-human approval; all four new sources remain verified:false.
+// Clinical Mapping Master Batch 2026 citation verification was qualified-human approved on 2026-08-19.
+// All 68 Master relationship source rows are verified after 8 approved narrowings and 5 one-for-one replacements.
+// The remaining 5 unverified/review rows are outside this Master citation-verification set.
+// Residual M1 citation closure qualified-human approved 2026-08-19.
+// Four M1 sources verified; PMID 38568491 remains the sole taxonomy hold.
+// Post-Traumatic Headache Citation Verification 2026 qualified-human approved 2026-08-19.
+// PMID 38568491 is proposition-matched to mTBI -> post-traumatic-headache; live citation debt is now zero.
+// Adrenal Histoplasmosis Taxonomy Amendment 2026 qualified-human approved 2026-08-19.
+// PMID 30656706 enters the new site-specific published edge as verified:false; one review row is intentionally reopened pending separate citation approval.
+// Adrenal Histoplasmosis Citation Verification 2026 qualified-human approved 2026-08-19.
+// PMID 30656706 is proposition-matched to adrenal-histoplasmosis -> addisons-disease; live citation debt is now zero.
+// ME-14 Qualified-Human Citation Verification promotes all 5 ME-14 sources exactly as implemented.
+// Final ME-14 citation state: 251 live verified / 0 unverified / 0 review; 257 verified provenance including 6 retired verified.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 69,
-  liveVerified: 8,
+  references: 251,
+  liveVerified: 251,
   retiredVerified: 6,
-  verifiedProvenance: 14,
-  unverified: 61,
-  reviewFindings: 59,
-  liveClinicalEvidenceWithUrls: 64,
+  verifiedProvenance: 257,
+  unverified: 0,
+  reviewFindings: 0,
+  liveClinicalEvidenceWithUrls: 246,
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 68,
+  clinicalEvidenceProvenanceWithUrls: 250,
 });
 
 const hardFindings = [];

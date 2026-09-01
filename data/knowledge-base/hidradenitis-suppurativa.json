@@ -4,5 +4,30 @@
   "todo": [
     "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A population-based cohort found an elevated risk of new-onset depression after hospital-diagnosed hidradenitis suppurativa; the approved relationship is limited to temporal association/risk and does not assert individual causation. Require independently established hidradenitis suppurativa before first-onset depressive disorder; do not use this proposition for depression predating hidradenitis suppurativa. Preserve obesity, smoking, substance use, socioeconomic factors, other psychiatric illness, chronic-pain burden, treatment effects, and other competing explanations. Treat this only as population-level temporal risk, not proof that hidradenitis suppurativa caused an individual depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of hidradenitis-suppurativa and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: temporal-association-risk",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require independently established hidradenitis suppurativa before first-onset depressive disorder; do not use this proposition for depression predating hidradenitis suppurativa. Preserve obesity, smoking, substance use, socioeconomic factors, other psychiatric illness, chronic-pain burden, treatment effects, and other competing explanations. Treat this only as population-level temporal risk, not proof that hidradenitis suppurativa caused an individual depressive disorder."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Holgersen N, Rosenø NAL, Nielsen VW, et al. Risk of New-Onset and Recurrent Depression and Anxiety Among Patients With Hidradenitis Suppurativa. JAMA Dermatol. 2025;161(10):1014-1021. PMID 40737006. doi:10.1001/jamadermatol.2025.2298.",
+          "note": "Mapping Expansion Batch ME-14 evidence for the bounded hidradenitis-suppurativa to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40737006/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-22",
+          "sourceLocator": "PMID 40737006; approved ME-14 source; guard: Require independently established hidradenitis suppurativa before first-onset depressive disorder; do not use this proposition for depression predating hidradenitis suppurativa. Preserve obesity, smoking, substance use, socioeconomic factors, other psychiatric illness, chronic-pain burden, treatment effects, and other competing explanations. Treat this only as population-level temporal risk, not proof that hidradenitis suppurativa caused an individual depressive disorder."
+        }
+      ]
+    }
+  ]
 }

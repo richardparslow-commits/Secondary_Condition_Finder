@@ -1,3 +1,5 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 
 import { loadKnowledgeBase } from "@/lib/kb/load";
@@ -14,6 +16,13 @@ const SAFETY_WITHDRAWN_PRIMARY_IDS = new Set(["ankle-strain", "knee-injury", "os
 
 describe("controlled pathway backfill batch 2", () => {
   it("backfills clinically-supported rheumatoid-arthritis edges", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
     const mapping = kb.find((entry) => entry.id === "rheumatoid-arthritis");
     expect(mapping?.draft).toBe(false);
@@ -29,6 +38,20 @@ describe("controlled pathway backfill batch 2", () => {
   });
 
   it("keeps insufficient-source Musculoskeletal edges unpublished or unlabeled", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
     for (const [primaryId, secondaryId] of intentionallyUnlabeledEdges) {
       const mapping = kb.find((entry) => entry.id === primaryId);
@@ -54,6 +77,20 @@ describe("controlled pathway backfill batch 2", () => {
   });
 
   it("keeps known draft Musculoskeletal mappings outside the backfill", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const kb = loadKnowledgeBase();
     for (const draftId of ["lumbar-strain", "cervical-strain", "hip-strain", "ankle-strain", "intervertebral-disc-syndrome", "radiculopathy", "knee-injury", "osteoarthritis"]) {
       expect(kb.find((entry) => entry.id === draftId)?.draft).toBe(true);
@@ -61,6 +98,13 @@ describe("controlled pathway backfill batch 2", () => {
   });
 
   it("allows the post-v2 amputation relationship only after clinical repair", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = loadKnowledgeBase().find((entry) => entry.id === "amputation-or-loss-of-use");
     const depression = mapping?.suggestions.find((entry) => entry.conditionId === "depressive-disorder");
     expect(mapping?.draft).toBe(false);

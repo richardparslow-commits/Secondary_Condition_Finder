@@ -36,8 +36,8 @@
           "note": "Condition-specific review describing hypertensive heart disease as a major cause of heart failure and addressing the HHD-to-HF clinical burden; supports disease-progression plausibility, not an automatic individual nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36082670/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 36082670; abstract and hypertensive-heart-disease/heart-failure review scope"
         }
       ]

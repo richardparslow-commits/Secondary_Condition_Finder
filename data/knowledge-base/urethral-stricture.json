@@ -37,8 +37,8 @@
           "note": "Clinical series of 180 patients with urethral stenosis reporting renal-ureteral complications including ureterohydronephrosis; supports an obstruction-to-upper-tract-dilation pathway but not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8571802/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 8571802 abstract; ureterohydronephrosis among reported renal-ureteral complications"
         }
       ]

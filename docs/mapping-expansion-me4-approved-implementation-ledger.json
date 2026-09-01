@@ -1,0 +1,123 @@
+{
+  "program": "Mapping Expansion Batch ME-4",
+  "status": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "baselineCommit": "20485862319f6a79ecdfce73778c84a3300e5bc0",
+  "approvalDate": "2026-08-20",
+  "approvalText": "I approve all five ME-4 relationships, including the source refinement",
+  "scope": {
+    "relationshipEdges": 5,
+    "newClinicalSourceRows": 5,
+    "initialKbVerification": false,
+    "initialMasterSourceStatus": "pending-verification",
+    "rank": 2,
+    "prevalence": "sometimes-explored",
+    "newTaxonomyIdentities": 0,
+    "publicationStatusChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "remoteWritesAuthorized": false,
+    "citationPromotionAuthorized": false
+  },
+  "sourceRefinement": {
+    "relationship": "endometriosis -> depressive-disorder",
+    "discoveryPmid": "34077695",
+    "approvedImplementationPmid": "41308609",
+    "reason": "Closer match to depressive-disorder because the cohort directly measures depressive episodes and recurrent major depressive disorder."
+  },
+  "rows": [
+    {
+      "primaryId": "chronic-kidney-disease",
+      "currentTargetId": "anemia",
+      "targetId": "congestive-heart-failure",
+      "pmid": "28515118",
+      "doi": "10.1161/JAHA.116.005336",
+      "citation": "He J, Shlipak M, Anderson A, et al. Risk Factors for Heart Failure in Patients With Chronic Kidney Disease: The CRIC (Chronic Renal Insufficiency Cohort) Study. J Am Heart Assoc. 2017;6(5):e005336. PMID 28515118. doi:10.1161/JAHA.116.005336.",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28515118/",
+      "publicationGuard": "Require documented chronic kidney disease and a separately established diagnosis of heart failure/congestive heart failure. Treat the source as population-level incident-risk evidence, not proof that chronic kidney disease caused heart failure in an individual. Preserve competing cardiac causes and contributors, including ischemic heart disease, hypertension, valvular disease, cardiomyopathy, arrhythmia, and volume-status factors.",
+      "evidenceType": "prospective cohort / incident-heart-failure analysis"
+    },
+    {
+      "primaryId": "cerebral-palsy",
+      "currentTargetId": "scoliosis",
+      "targetId": "epilepsy",
+      "pmid": "32059945",
+      "doi": "10.1016/j.apmr.2020.01.009",
+      "citation": "van Gorp M, Hilberink SR, Noten S, et al. Epidemiology of Cerebral Palsy in Adulthood: A Systematic Review and Meta-analysis of the Most Frequently Studied Outcomes. Arch Phys Med Rehabil. 2020;101(6):1041-1052. PMID 32059945. doi:10.1016/j.apmr.2020.01.009.",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32059945/",
+      "publicationGuard": "Require documented cerebral palsy and separately established epilepsy under accepted diagnostic criteria. The source supports epilepsy as a prevalent adult cerebral-palsy comorbidity, not automatic individual causation and not inference from a remote seizure history, abnormal EEG, or cerebral palsy severity alone.",
+      "evidenceType": "systematic review and meta-analysis in adults"
+    },
+    {
+      "primaryId": "uveitis",
+      "currentTargetId": "glaucoma",
+      "targetId": "cataracts",
+      "pmid": "37414328",
+      "doi": "10.1016/j.ajo.2023.06.021",
+      "citation": "Papaliodis GN, Rosner BA, Dreger KA, et al. Incidence of and Risk Factors for Cataract in Anterior Uveitis. Am J Ophthalmol. 2023;254:221-232. PMID 37414328. doi:10.1016/j.ajo.2023.06.021.",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37414328/",
+      "publicationGuard": "Restrict this evidence proposition to noninfectious anterior uveitis or a clinically comparable anterior-inflammatory phenotype and require separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors.",
+      "evidenceType": "multicenter cohort"
+    },
+    {
+      "primaryId": "pulmonary-hypertension",
+      "currentTargetId": "congestive-heart-failure",
+      "targetId": "cardiac-arrhythmia",
+      "pmid": "38453002",
+      "doi": "10.1016/j.chest.2024.03.002",
+      "citation": "O'Meara K, Stone G, Buch E, et al. Atrial Arrhythmias in Patients With Pulmonary Hypertension. Chest. 2024;166(1):201-211. PMID 38453002. doi:10.1016/j.chest.2024.03.002.",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38453002/",
+      "publicationGuard": "Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. Preserve structural heart disease and other arrhythmia risk factors.",
+      "evidenceType": "clinical review"
+    },
+    {
+      "primaryId": "endometriosis",
+      "currentTargetId": "ovarian-cancer",
+      "targetId": "depressive-disorder",
+      "pmid": "41308609",
+      "discoveryOriginalPmid": "34077695",
+      "doi": "10.1016/j.comppsych.2025.152649",
+      "citation": "Shih YH, Wang SJ, Fan CT, et al. Long-term risk of psychiatric disorders in women with endometriosis: A retrospective cohort study. Compr Psychiatry. 2026;144:152649. PMID 41308609. doi:10.1016/j.comppsych.2025.152649.",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41308609/",
+      "publicationGuard": "Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. Preserve chronic pain, sleep disturbance, infertility, psychosocial burden, other medical conditions, and independent psychiatric risk factors as potential contributors.",
+      "evidenceType": "matched retrospective cohort",
+      "sourceRefinement": "Approved refinement from discovery PMID 34077695 to PMID 41308609 for closer diagnostic match to depressive-disorder."
+    }
+  ],
+  "expectedPostImplementation": {
+    "knowledgeBaseFiles": 311,
+    "published": 139,
+    "draft": 172,
+    "relationships": 193,
+    "publishedP1": 101,
+    "publishedP2Plus": 38,
+    "references": 201,
+    "verified": 196,
+    "retiredVerified": 6,
+    "verifiedProvenance": 202,
+    "unverified": 5,
+    "reviewFindings": 5,
+    "hardFindings": 0,
+    "clinicalEvidenceReferences": 196,
+    "clinicalEvidenceReferencesWithUrls": 196,
+    "retiredClinicalEvidenceReferencesWithUrls": 4,
+    "clinicalEvidenceProvenanceWithUrls": 200,
+    "masterRelationships": 193,
+    "explicitPublicationGuards": 119,
+    "legacyRationaleBoundaries": 74,
+    "activeMasterSources": 173,
+    "pendingMasterSources": 5,
+    "activeClinicalMasterSources": 172,
+    "pendingClinicalMasterSources": 5,
+    "activeLegalMasterSources": 1,
+    "totalMasterSourcesIncludingLineage": 187
+  },
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "implementationDate": "2026-08-20",
+  "implementationResult": {
+    "relationshipEdgesAdded": 5,
+    "sourceRowsAdded": 5,
+    "sourceRowsVerified": 0,
+    "pendingMasterSourcesAdded": 5,
+    "remoteWritesPerformed": false,
+    "individualCausationClaimed": false
+  }
+}

@@ -1,6 +1,54 @@
 {
   "id": "actinomycosis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Separate pulmonary from extra-pulmonary disease sites and treatment/residual pathways; do not infer systemic causation from DC 6822 or from the respiratory rating framework."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "cardiac-inflammatory-disease",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as rare infection complication. Require documented Actinomyces infection and separately diagnosed infective endocarditis attributable to Actinomyces; do not infer cardiac disease from actinomycosis alone. Evidence is a systematic review of rare reported Actinomyces endocarditis cases; frequency and individual attribution are uncertain. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Actinomycosis and Pericarditis / Endocarditis / Myocarditis",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Infective endocarditis by Actinomyces species: a systematic review. Journal of chemotherapy (Florence, Italy). 2023. doi:10.1080/1120009X.2022.2061182. PMID 35383546",
+          "note": "Master-disposition clinical evidence for the bounded rare infection complication proposition. Evidence is a systematic review of rare reported Actinomyces endocarditis cases; frequency and individual attribution are uncertain.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35383546/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 35383546; PubMed title/abstract retrieved in the master research harvest; guard: Require documented Actinomyces infection and separately diagnosed infective endocarditis attributable to Actinomyces; do not infer cardiac disease from actinomycosis alone."
+        }
+      ]
+    },
+    {
+      "conditionId": "osteomyelitis",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Actinomycotic osteomyelitis is a rare chronic infection caused by Actinomyces species; mandibular involvement can occur in cervicofacial/oral actinomycosis. Require clinically established cervicofacial/oral actinomycosis plus a separately diagnosed mandibular osteomyelitis phenotype. Do not generalize to all actinomycosis or all osteomyelitis. Preserve odontogenic infection, trauma, surgery, malignancy and other infectious causes. The source is rare-disease/case-plus-review evidence and must not be presented as population-level causal proof. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of actinomycosis and osteomyelitis",
+        "Documentation satisfying the approved phenotype restriction: cervicofacial/oral actinomycosis with compatible mandibular involvement; target is mandibular osteomyelitis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, treatment/transplant context, and selection bias where applicable",
+        "Resolution of the approved publication guard: Require clinically established cervicofacial/oral actinomycosis plus a separately diagnosed mandibular osteomyelitis phenotype. Do not generalize to all actinomycosis or all osteomyelitis. Preserve odontogenic infection, trauma, surgery, malignancy and other infectious causes. The source is rare-disease/case-plus-review evidence and must not be presented as population-level causal proof."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Yildirim Arslan S, Tigrak S, Yucel E, Demirci M, Ekici O. Pediatric cervicofacial actinomycosis presenting with mandibular osteomyelitis: a diagnostic and therapeutic challenge and literature review. Turk J Pediatr. 2026. PMID 41871568. doi:10.24953/turkjpediatr.2026.6451.",
+          "note": "Mapping Expansion Batch ME-11 evidence for the bounded actinomycosis to osteomyelitis proposition. This final approved source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41871568/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 41871568; approved ME-11 final source; guard: Require clinically established cervicofacial/oral actinomycosis plus a separately diagnosed mandibular osteomyelitis phenotype. Do not generalize to all actinomycosis or all osteomyelitis. Preserve odontogenic infection, trauma, surgery, malignancy and other infectious causes. The source is rare-disease/case-plus-review evidence and must not be presented as population-level causal proof."
+        }
+      ]
+    }
+  ]
 }

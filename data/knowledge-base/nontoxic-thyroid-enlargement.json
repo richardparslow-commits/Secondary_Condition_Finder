@@ -1,6 +1,34 @@
 {
   "id": "nontoxic-thyroid-enlargement",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, medication/treatment, intermediate-factor, endocrine, cardiovascular, and other organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review direct-secondary, aggravation, medication/treatment, intermediate-factor, endocrine, cardiovascular, and other organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "hypoparathyroidism",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A meta-analysis of surgery for bilateral multinodular nontoxic goiter found increased transient postoperative hypoparathyroidism after total thyroidectomy; the approved relationship is treatment-mediated and does not extend to permanent hypoparathyroidism or to thyroid enlargement without surgery. Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism; do not infer permanent hypoparathyroidism, and do not infer hypoparathyroidism from the thyroid enlargement itself. Preserve other neck surgery, autoimmune or genetic parathyroid disease, magnesium disorders, and other etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of nontoxic-thyroid-enlargement and hypoparathyroidism",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: treatment-mediated transient postoperative hypoparathyroidism",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism; do not infer permanent hypoparathyroidism, and do not infer hypoparathyroidism from the thyroid enlargement itself. Preserve other neck surgery, autoimmune or genetic parathyroid disease, magnesium disorders, and other etiologies as competing explanations."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Li Y, Li Y, Zhou X. Total Thyroidectomy versus Bilateral Subtotal Thyroidectomy for Bilateral Multinodular Nontoxic Goiter: A Meta-Analysis. ORL J Otorhinolaryngol Relat Spec. 2016;78(3):167-175. PMID 27256349. doi:10.1159/000444644.",
+          "note": "Mapping Expansion Batch ME-14 evidence for the bounded nontoxic-thyroid-enlargement to hypoparathyroidism proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27256349/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-22",
+          "sourceLocator": "PMID 27256349; approved ME-14 source; guard: Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism; do not infer permanent hypoparathyroidism, and do not infer hypoparathyroidism from the thyroid enlargement itself. Preserve other neck surgery, autoimmune or genetic parathyroid disease, magnesium disorders, and other etiologies as competing explanations."
+        }
+      ]
+    }
+  ]
 }

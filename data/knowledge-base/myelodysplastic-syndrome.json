@@ -1,6 +1,54 @@
 {
   "id": "myelodysplastic-syndrome",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review cytopenia, infection/bleeding, transfusion/treatment, hematologic transformation, and organ-specific residual pathways only where supported; do not infer progression to leukemia in an individual case from the rating schedule."],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "leukemia",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific disease transformation. Apply only to therapy-related/secondary MDS phenotype consistent with the source and subsequent acute nonlymphocytic/myeloid leukemia transformation. Older source is therapy-related MDS specific; do not generalize this record to all de novo MDS without stronger matching evidence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Myelodysplastic Syndromes matches the source-specific phenotype or population",
+        "Independent diagnosis of Leukemia (Acute & Chronic) with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Qualified clinical opinion before applying the population-level relationship to an individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Secondary myelodysplastic syndromes and leukemias. Current opinion in hematology. 1994. PMID 9371291",
+          "note": "Master-disposition clinical evidence for the bounded phenotype specific disease transformation proposition. Older source is therapy-related MDS specific; do not generalize this record to all de novo MDS without stronger matching evidence.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/9371291/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 9371291; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to therapy-related/secondary MDS phenotype consistent with the source and subsequent acute nonlymphocytic/myeloid leukemia transformation."
+        }
+      ]
+    },
+    {
+      "conditionId": "anemia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Anemia is a major clinical manifestation of myelodysplastic syndromes and may arise from ineffective/dysplastic erythropoiesis. Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of myelodysplastic-syndrome and anemia",
+        "Documentation satisfying the approved phenotype restriction: separately documented anemia in established myelodysplastic syndrome",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Santini V. Anemia as the Main Manifestation of Myelodysplastic Syndromes. Semin Hematol. 2015;52(4):348-356. PMID 26404446. doi:10.1053/j.seminhematol.2015.06.002.",
+          "note": "Mapping Expansion Batch ME-8 evidence for the bounded myelodysplastic-syndrome to anemia proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26404446/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 26404446; approved ME-8 proposition; guard: Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders."
+        }
+      ]
+    }
+  ]
 }

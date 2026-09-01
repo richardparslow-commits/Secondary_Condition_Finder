@@ -1,8 +1,30 @@
 {
   "id": "cerebral-contusion-diffuse-axonal-injury",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "epilepsy",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as post traumatic epilepsy risk. Require documented focal cerebral injury/contusion or diffuse cerebral injury consistent with the source and separately diagnosed post-traumatic epilepsy. Do not equate early provoked post-traumatic seizures with epilepsy. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that cerebral contusion diffuse axonal injury matches the source-specific phenotype",
+        "Independent diagnosis of Epilepsy with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Resolution of the publication guard: Require documented focal cerebral injury/contusion or diffuse cerebral injury consistent with the source and separately diagnosed post-traumatic epilepsy. Do not equate early provoked post-traumatic seizures with epilepsy."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Post-traumatic epilepsy in adults: a nationwide register-based study. Journal of neurology, neurosurgery, and psychiatry. 2021. doi:10.1136/jnnp-2020-325382. PMID 33687971",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33687971/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 33687971; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented focal cerebral injury/contusion or diffuse cerebral injury consistent with the source and separately diagnosed post-traumatic epilepsy. Do not equate early provoked post-traumatic seizures with epilepsy."
+        }
+      ]
+    }
+  ]
 }

@@ -1,8 +1,54 @@
 {
   "id": "malaria",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "epilepsy",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific temporal risk. Require documented cerebral malaria, rather than uncomplicated malaria, with subsequent separately diagnosed epilepsy after the acute cerebral-malaria episode. PMID 25631856 principally represents survivors of cerebral malaria, most of whom were children in malaria-endemic settings, and supports a population-level association with long-term neurologic sequelae. Do not infer epilepsy from uncomplicated malaria, malaria exposure alone, an acute febrile seizure, or an isolated seizure occurring only during the acute cerebral-malaria illness. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Malaria matches the source-specific phenotype",
+        "Independent diagnosis of Epilepsy with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Resolution of the publication guard: Require documented cerebral malaria, rather than uncomplicated malaria, with subsequent separately diagnosed epilepsy after the acute cerebral-malaria episode. PMID 25631856 principally represents survivors of cerebral malaria, most of whom were children in malaria-endemic settings, and supports a population-level association with long-term neurologic sequelae. Do not infer epilepsy from uncomplicated malaria, malaria exposure alone, an acute febrile seizure, or an isolated seizure occurring only during the acute cerebral-malaria illness."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Cerebral malaria as a risk factor for the development of epilepsy and other long-term neurological conditions: a meta-analysis. Transactions of the Royal Society of Tropical Medicine and Hygiene. 2015. doi:10.1093/trstmh/trv005. PMID 25631856",
+          "note": "Qualified-human-approved source-specific narrowing clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25631856/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 25631856; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented cerebral malaria, rather than uncomplicated malaria, with subsequent separately diagnosed epilepsy after the acute cerebral-malaria episode. PMID 25631856 principally represents survivors of cerebral malaria, most of whom were children in malaria-endemic settings, and supports a population-level association with long-term neurologic sequelae. Do not infer epilepsy from uncomplicated malaria, malaria exposure alone, an acute febrile seizure, or an isolated seizure occurring only during the acute cerebral-malaria illness."
+        }
+      ]
+    },
+    {
+      "conditionId": "anemia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Malaria can produce clinically significant anemia through hemolysis of infected and uninfected erythrocytes and impaired erythropoiesis; the relationship is strongest when anemia is temporally linked to active or recent malaria. Require established malaria and a separately documented anemia phenotype with compatible timing. Do not infer chronic anemia from remote resolved malaria. Preserve nutritional deficiency, blood loss, hemoglobinopathy, chronic kidney disease, marrow disease, hemolysis from other causes, and other competing etiologies. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of malaria and anemia",
+        "Documentation satisfying the approved phenotype restriction: separately documented anemia temporally compatible with active or recent malaria",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require established malaria and a separately documented anemia phenotype with compatible timing. Do not infer chronic anemia from remote resolved malaria. Preserve nutritional deficiency, blood loss, hemoglobinopathy, chronic kidney disease, marrow disease, hemolysis from other causes, and other competing etiologies."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "White NJ. Anaemia and malaria. Malar J. 2018;17(1):371. PMID 30340592. doi:10.1186/s12936-018-2509-9.",
+          "note": "Mapping Expansion Batch ME-8 evidence for the bounded malaria to anemia proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30340592/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 30340592; approved ME-8 proposition; guard: Require established malaria and a separately documented anemia phenotype with compatible timing. Do not infer chronic anemia from remote resolved malaria. Preserve nutritional deficiency, blood loss, hemoglobinopathy, chronic kidney disease, marrow disease, hemolysis from other causes, and other competing etiologies."
+        }
+      ]
+    }
+  ]
 }

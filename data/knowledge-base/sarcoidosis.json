@@ -1,8 +1,53 @@
 {
   "id": "sarcoidosis",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "pulmonary-hypertension",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as disease complication. Require sarcoidosis and separately established sarcoidosis-associated pulmonary hypertension after appropriate etiologic evaluation. PH is a recognized complication, but mechanisms are heterogeneous and individual attribution requires specialist assessment. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Sarcoidosis and Pulmonary Hypertension",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Sarcoidosis-Associated Pulmonary Hypertension. Medicina (Kaunas, Lithuania). 2025. doi:10.3390/medicina61020342. PMID 40005458",
+          "note": "Master-disposition clinical evidence for the bounded disease complication proposition. PH is a recognized complication, but mechanisms are heterogeneous and individual attribution requires specialist assessment.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40005458/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 40005458; PubMed title/abstract retrieved in the master research harvest; guard: Require sarcoidosis and separately established sarcoidosis-associated pulmonary hypertension after appropriate etiologic evaluation."
+        }
+      ]
+    },
+    {
+      "conditionId": "thrombocytopenia",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as rare complication. Require sarcoidosis and separately documented thrombocytopenia with plausible sarcoid mechanism (hypersplenism, marrow granulomas, or immune thrombocytopenia) after excluding alternatives. Rare evidence based largely on collected cases; no blanket attribution. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Sarcoidosis and Thrombocytopenia",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Thrombocytopenia in sarcoidosis. Sarcoidosis, vasculitis, and diffuse lung diseases : official journal of WASOG. 2006. PMID 18038923",
+          "note": "Master-disposition clinical evidence for the bounded rare complication proposition. Rare evidence based largely on collected cases; no blanket attribution.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18038923/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 18038923; PubMed title/abstract retrieved in the master research harvest; guard: Require sarcoidosis and separately documented thrombocytopenia with plausible sarcoid mechanism (hypersplenism, marrow granulomas, or immune thrombocytopenia) after excluding alternatives."
+        }
+      ]
+    }
+  ]
 }

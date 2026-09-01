@@ -4,6 +4,7 @@ import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDow
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { EvidenceGapReview } from "@/components/evidence/EvidenceGapReview";
 import { LocalEvidenceReview } from "@/components/evidence/LocalEvidenceReview";
+import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatus";
 import {
   SecondaryWorkflowCompletionActions,
   SecondaryWorkflowRestartButton,
@@ -12,6 +13,12 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
+import {
+  loadLockedRegulatorySnapshot,
+  missingLockedRegulatorySnapshot,
+  prepareRegulatoryReview,
+  relevantChangesForSnapshot,
+} from "@/lib/regulatory/preflight";
 import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
 import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workflow/suggestions";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
@@ -19,7 +26,14 @@ import { readSecondaryWorkflowSession, workflowSessionToQueryParams } from "@/li
 
 export const dynamic = "force-dynamic";
 
-export default async function EvidenceReviewStepPage() {
+interface EvidenceReviewStepPageProps {
+  searchParams?: Promise<{ regSnapshot?: string | string[] }>;
+}
+
+const firstParam = (value: string | string[] | undefined): string | undefined =>
+  Array.isArray(value) ? value[0] : value;
+
+export default async function EvidenceReviewStepPage({ searchParams }: EvidenceReviewStepPageProps = {}) {
   const catalog = loadConditionCatalog();
   const kb = loadKnowledgeBase();
   const byId = indexById(catalog);
@@ -38,6 +52,31 @@ export default async function EvidenceReviewStepPage() {
       </main>
     );
   }
+
+  // Step 6 must use the same regulatory snapshot that Step 5 locked. If a user
+  // opens Step 6 directly, establish a snapshot before recommendation/evidence
+  // output. If a prior lock disappeared, fail closed to medical-only instead of
+  // substituting a newer legal snapshot mid-review.
+  const lockedSnapshotId = firstParam((await searchParams)?.regSnapshot);
+  const lockedSnapshot = loadLockedRegulatorySnapshot(lockedSnapshotId);
+  const regulatoryReview = lockedSnapshot
+    ? {
+        snapshot: lockedSnapshot,
+        relevantChanges: relevantChangesForSnapshot(lockedSnapshot),
+      }
+    : lockedSnapshotId
+      ? {
+          snapshot: missingLockedRegulatorySnapshot(lockedSnapshotId),
+          relevantChanges: [],
+        }
+      : await prepareRegulatoryReview({
+          reviewScope: {
+            conditionIds: [...new Set([
+              ...state.diagnosedConditionIds,
+              ...state.serviceConnectedConditionIds,
+            ])],
+          },
+        });
 
   const medications = state.medications ?? [];
   const treatments = state.treatments ?? [];
@@ -64,11 +103,13 @@ export default async function EvidenceReviewStepPage() {
     condition: recommendation.condition,
     evidenceGaps: recommendation.evidenceGaps,
   }));
+  const suggestionsHref = `/secondary/suggestions?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
 
   return (
     <main>
       <header className="page-hero text-center"><p className="ui-kicker">Step 6 of 6</p><h1>Evidence &amp; Research Checklist</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Review evidence questions for the same diagnosed non-service-connected conditions evaluated in Step 5. This page does not add new diagnoses, determine eligibility, or decide whether a relationship has been medically established.</p></header>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><span>✓ Connections</span><strong className="text-blue-700">6 Evidence</strong></div>
+      <RegulatoryPreflightStatus snapshot={regulatoryReview.snapshot} changes={regulatoryReview.relevantChanges} />
 
       <div className="ui-grid">
         <aside className="ui-card">
@@ -101,7 +142,7 @@ export default async function EvidenceReviewStepPage() {
       <LocalEvidenceReview />
 
       <div className="ui-actions">
-        <Link href="/secondary/suggestions" className="ui-button-secondary">← Back to Connections</Link>
+        <Link href={suggestionsHref} className="ui-button-secondary">← Back to Connections</Link>
         <SecondaryWorkflowCompletionActions />
       </div>
       <div className="ui-footer-note"><strong>Privacy on completion:</strong> Finish Review and Start a new review clear the encrypted workflow cookie, browser-local evidence excerpts, and browser-local checklist selections before leaving this review. Relationship results come from a curated knowledge base and are not approval probabilities.</div>

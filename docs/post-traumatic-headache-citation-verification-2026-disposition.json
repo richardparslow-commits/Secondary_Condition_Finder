@@ -1,0 +1,49 @@
+{
+  "program": "Post-Traumatic Headache Citation Verification 2026",
+  "status": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "parentLocalHead": "5de7103b30ab053386def33bc3ecc247abf126a0",
+  "scope": "citation-verification-only",
+  "mapping": {
+    "primaryConditionId": "mild-tbi",
+    "conditionId": "post-traumatic-headache",
+    "publicationState": "published",
+    "taxonomyChangeAuthorized": false,
+    "mappingChangeAuthorized": false,
+    "pathwayIntelligenceAuthorized": false
+  },
+  "citation": {
+    "pmid": "38568491",
+    "doi": "10.1212/CON.0000000000001410",
+    "citation": "Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491",
+    "currentVerified": false,
+    "proposedVerified": true,
+    "verificationScope": "clinical-evidence"
+  },
+  "disposition": "VERIFY-AS-CORRECTED-PROPOSITION",
+  "bounds": [
+    "documented mild traumatic brain injury required",
+    "core attribution onset within 7 days",
+    "persistent only when headache persists >3 months",
+    "migraine-like phenotype is not catalog migraine-headaches",
+    "delayed-onset 7 days to 3 months remains Appendix-only",
+    "no pathwayIntelligence added",
+    "verification does not broaden causation beyond bounded diagnostic attribution"
+  ],
+  "approvalPhrase": "I approve Post-Traumatic Headache Citation Verification 2026",
+  "approvalDate": "2026-08-19",
+  "qualifiedHumanApproval": "I approve Post-Traumatic Headache Citation Verification 2026",
+  "approvedProposalSha256": "a0a24d436dee9d9566cd29670372a978116278df7e3d6b516755011afca8f2ed",
+  "implementationResult": {
+    "parentLocalHead": "5de7103b30ab053386def33bc3ecc247abf126a0",
+    "primaryConditionId": "mild-tbi",
+    "conditionId": "post-traumatic-headache",
+    "pmid": "38568491",
+    "verifiedAfterImplementation": true,
+    "taxonomyChanged": false,
+    "mappingTargetChanged": false,
+    "rationaleChanged": false,
+    "pathwayIntelligenceChanged": false,
+    "liveCitationDebtAfterImplementation": 0
+  },
+  "nonNegotiableBoundary": "PMID 38568491 is verified only for the corrected bounded mild-tbi -> post-traumatic-headache proposition. This does not establish a separate primary migraine diagnosis, does not enable delayed-onset Appendix criteria, and does not add pathwayIntelligence."
+}

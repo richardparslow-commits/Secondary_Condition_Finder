@@ -1,8 +1,53 @@
 {
   "id": "gout",
-  "draft": true,
-  "todo": [
-    "The prior depressive-disorder suggestion was withdrawn because the cited systematic review supports a modest population-level association and a small incident-depression signal but does not establish that gout causes or aggravates an individual depressive disorder; its conclusion specifically calls for further research on mental-disorder onset after gout diagnosis. Reconsider only with stronger directional evidence and a case-specific mechanism that distinguishes gout-related burden from independent psychiatric, pain, sleep, renal, cardiometabolic, medication, and psychosocial causes."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "aortic-aneurysm",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require gout before incident abdominal aortic aneurysm and separately established AAA; assess smoking, age, hypertension, atherosclerosis, and other aneurysm risks. Population-based cohort association; no causal or aggravation inference. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Gout and Aortic Aneurysm",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Association between gout and abdominal aortic aneurysm. Journal of cardiology. 2023. doi:10.1016/j.jjcc.2023.04.022. PMID 37149284",
+          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Population-based cohort association; no causal or aggravation inference.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37149284/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 37149284; PubMed title/abstract retrieved in the master research harvest; guard: Require gout before incident abdominal aortic aneurysm and separately established AAA; assess smoking, age, hypertension, atherosclerosis, and other aneurysm risks."
+        }
+      ]
+    },
+    {
+      "conditionId": "macular-degeneration",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require gout before incident age-related macular degeneration and separately established AMD; account for age, smoking, cardiovascular/metabolic factors, and treatment. Retrospective cohort association only; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Gout and Macular Degeneration",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "GOUT AND RISK OF AGE-RELATED MACULAR DEGENERATION. Retina (Philadelphia, Pa.). 2025. doi:10.1097/IAE.0000000000004604. PMID 40632946",
+          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Retrospective cohort association only; no individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40632946/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 40632946; PubMed title/abstract retrieved in the master research harvest; guard: Require gout before incident age-related macular degeneration and separately established AMD; account for age, smoking, cardiovascular/metabolic factors, and treatment."
+        }
+      ]
+    }
+  ]
 }

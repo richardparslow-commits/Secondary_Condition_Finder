@@ -159,6 +159,19 @@
       "reviewNotes": []
     },
     {
+      "id": "lymphedema",
+      "name": "Lymphedema",
+      "aliases": [
+        "lymphoedema",
+        "secondary lymphedema"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Clinical Mapping Master Resolution 2026 taxonomy identity. No condition-specific VA diagnostic/rating code was assigned or borrowed; retain for qualified catalog/rating review. Separate lymphatic swelling disorder; breast-cancer-related lymphedema is a treatment-associated subtype."
+      ]
+    },
+    {
       "id": "aortic-aneurysm",
       "name": "Aortic Aneurysm",
       "aliases": [],
@@ -189,6 +202,19 @@
         }
       ],
       "reviewNotes": []
+    },
+    {
+      "id": "pulmonary-embolism",
+      "name": "Pulmonary Embolism",
+      "aliases": [
+        "PE",
+        "pulmonary thromboembolism"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Clinical Mapping Master Resolution 2026 taxonomy identity. No condition-specific VA diagnostic/rating code was assigned or borrowed; retain for qualified catalog/rating review. Pulmonary arterial thromboembolism diagnosis; distinct from DVT and nonspecific pulmonary vascular disease."
+      ]
     }
   ]
 }

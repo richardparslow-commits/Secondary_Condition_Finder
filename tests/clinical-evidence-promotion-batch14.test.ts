@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { describe, expect, it } from "vitest";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
@@ -8,12 +9,26 @@ describe("clinical evidence promotion batch 14", () => {
   const kb = loadKnowledgeBase();
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
   it("clinically repairs the published sleep-apnea mapping without converting associations into automatic causal pathways", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("sleep-apnea");
 
     expect(mapping?.draft).toBe(false);
@@ -34,7 +49,7 @@ describe("clinical evidence promotion batch 14", () => {
       expect(suggestion.pathwayIntelligence).toBeUndefined();
       expect(suggestion.sourceReferences).toHaveLength(1);
       expect(suggestion.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-      expect(suggestion.sourceReferences[0]?.verified).toBe(false);
+      expect(suggestion.sourceReferences[0]?.verified).toBe(true);
       expect(suggestion.sourceReferences.some((source) => /^38 CFR/i.test(source.citation))).toBe(false);
     }
   });

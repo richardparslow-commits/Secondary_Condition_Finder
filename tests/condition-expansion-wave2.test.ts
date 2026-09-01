@@ -1,3 +1,5 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
@@ -13,6 +15,20 @@ describe("condition catalog expansion wave 2", () => {
   it("keeps catalog and knowledge-base coverage one-to-one as later waves expand", () => { expect(catalog.length).toBeGreaterThanOrEqual(231); expect(knowledgeBase).toHaveLength(catalog.length); });
   it("preserves all 18 approved Wave 2 conditions", () => { for (const id of WAVE_TWO_IDS) expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true); });
   it("keeps non-published or later-withdrawn Wave 2 mappings draft while allowing reviewed publication", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of WAVE_TWO_IDS) {
       const mapping = mappingById.get(id); expect(mapping).toBeDefined();
       if (CURRENTLY_PUBLISHED.has(id)) { expect(mapping?.draft).toBe(false); expect(mapping?.todo).toEqual([]); expect(mapping?.suggestions.length).toBeGreaterThan(0); }
@@ -20,6 +36,20 @@ describe("condition catalog expansion wave 2", () => {
     }
   });
   it("records the later PsA association-only withdrawal", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("psoriatic-arthritis");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);

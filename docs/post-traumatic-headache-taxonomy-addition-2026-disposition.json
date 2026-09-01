@@ -1,0 +1,136 @@
+{
+  "program": "Post-Traumatic Headache Taxonomy Addition 2026",
+  "status": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "generatedAt": "2026-08-19T21:52:02.982493+00:00",
+  "parentRepositoryHead": "bd00f4709d8e73490bd61fb14c42f87b4859ae03",
+  "scope": {
+    "taxonomyAdditions": 1,
+    "mappingReplacements": 1,
+    "activeSourceMoves": 1,
+    "newClinicalSourceIdentities": 0,
+    "citationVerificationChangesAuthorizedBeforeApproval": 0
+  },
+  "taxonomyDisposition": {
+    "decision": "ADD-DISTINCT-IDENTITY",
+    "id": "post-traumatic-headache",
+    "displayName": "Post-Traumatic Headache",
+    "aliases": [
+      "posttraumatic headache",
+      "post-traumatic headache",
+      "PTH",
+      "headache attributed to traumatic injury to the head"
+    ],
+    "category": "secondary-headache",
+    "defaultOutgoingMappingState": "draft",
+    "rationale": "ICHD-3 classifies headache attributed to trauma or injury to the head as a secondary headache disorder. A new headache temporally related to head trauma remains classified as trauma-attributed headache even when its phenotype resembles migraine or tension-type headache. Therefore this identity must remain distinct from migraine-headaches.",
+    "subtypeModel": {
+      "acute": "Headache attributed to traumatic injury to the head that resolves within 3 months or has not yet persisted for 3 months.",
+      "persistent": "Headache attributed to traumatic injury to the head that persists for more than 3 months.",
+      "mildTraumaticInjurySubtype": "Use the ICHD-3 mild traumatic injury criteria when the source condition is mild-tbi.",
+      "delayedOnset": "Do not make delayed-onset (>7 days to 3 months) part of the default core publication guard. ICHD-3 treats delayed-onset criteria as Appendix criteria; any use should be separately modeled and labeled."
+    }
+  },
+  "mappingDisposition": {
+    "decision": "REPLACE-TARGET-NOT-ADD-PARALLEL-EDGE",
+    "primaryId": "mild-tbi",
+    "removeTargetId": "migraine-headaches",
+    "addTargetId": "post-traumatic-headache",
+    "sourcePmid": "38568491",
+    "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38568491/",
+    "sourceTitle": "Posttraumatic Headache",
+    "claimModel": "direct-secondary-diagnostic-attribution",
+    "publicationGuard": "Require documented mild traumatic brain injury plus a new headache developing within the ICHD-3 temporal attribution window. For core ICHD-3 publication, headache onset should be within 7 days after injury, regaining consciousness, or discontinuation of medication that impaired the ability to sense/report headache. Persistent subtype requires duration greater than 3 months.",
+    "phenotypeBoundary": "Migraine-like phenotype does not convert post-traumatic headache into the catalog migraine-headaches diagnosis. Preserve a separate migraine diagnosis only when independently documented or when a pre-existing primary migraine disorder is separately diagnosed.",
+    "pathwayIntelligence": "Do not introduce additional mechanistic pathwayIntelligence solely from PMID 38568491. The relationship is supported through etiologic diagnostic attribution, not a proven single biological mechanism.",
+    "sourceHandling": "Move the existing PMID 38568491 source row from mild-tbi -> migraine-headaches to mild-tbi -> post-traumatic-headache. Do not duplicate it. Keep verified:false during taxonomy/mapping implementation because citation verification remains a separate qualified-human approval step."
+  },
+  "currentMismatchDisposition": {
+    "primaryId": "mild-tbi",
+    "targetId": "migraine-headaches",
+    "pmid": "38568491",
+    "decision": "REMOVE-ACTIVE-MISMATCH",
+    "reason": "The source supports post-traumatic headache attributed to mild traumatic brain injury. It notes frequent migraine-like phenotype overlap, but does not establish that the post-traumatic headache diagnosis is equivalent to the catalog migraine-headaches diagnosis.",
+    "provenance": "Preserve the prior mismatch and its resolution in implementation/status documentation, but do not retain the old PMID as an active source on the migraine-headaches relationship."
+  },
+  "diagnosticAuthority": [
+    {
+      "authority": "ICHD-3",
+      "section": "5. Headache attributed to trauma or injury to the head and/or neck",
+      "role": "taxonomy and attribution framework"
+    },
+    {
+      "authority": "ICHD-3",
+      "section": "5.1.2 Acute headache attributed to mild traumatic injury to the head",
+      "role": "mild-TBI acute subtype criteria"
+    },
+    {
+      "authority": "ICHD-3",
+      "section": "5.2.2 Persistent headache attributed to mild traumatic injury to the head",
+      "role": "mild-TBI persistent subtype criteria"
+    },
+    {
+      "authority": "VA/DoD CPG",
+      "section": "Management and Rehabilitation of Post-Acute Mild Traumatic Brain Injury (2021)",
+      "role": "VA/DoD clinical context for post-acute mTBI symptoms"
+    },
+    {
+      "authority": "VA/DoD CPG",
+      "section": "Management of Headache (2023)",
+      "role": "VA/DoD headache-management context"
+    }
+  ],
+  "implementationBoundary": {
+    "mappingApprovalSeparateFromCitationVerification": true,
+    "taxonomyImplementationMay": [
+      "add post-traumatic-headache catalog identity",
+      "add its knowledge-base identity file using the repository's existing schema",
+      "replace mild-tbi -> migraine-headaches with mild-tbi -> post-traumatic-headache",
+      "move PMID 38568491 one-for-one to the new relationship",
+      "keep PMID 38568491 verified:false",
+      "record the old mismatch as provenance in documentation",
+      "update catalog/taxonomy/mapping tests and counts"
+    ],
+    "taxonomyImplementationMustNot": [
+      "set PMID 38568491 verified:true",
+      "keep the old mild-tbi -> migraine-headaches source active in parallel",
+      "treat migraine-like phenotype as proof of migraine-headaches diagnosis",
+      "add delayed-onset Appendix criteria to the default core guard without separate approval",
+      "push to GitHub or deploy/promote/change Vercel configuration"
+    ]
+  },
+  "projectedStateAfterTaxonomyImplementation": {
+    "catalogConditions": 301,
+    "knowledgeBaseFiles": 301,
+    "activeClinicalReferenceCount": 141,
+    "liveVerified": 140,
+    "unverified": 1,
+    "reviewFindings": 1,
+    "hardFindings": 0,
+    "remainingUnverifiedIdentity": "PMID 38568491 on mild-tbi -> post-traumatic-headache",
+    "note": "Published/draft file counts should be determined from the repository's actual identity-file semantics during implementation. The new post-traumatic-headache identity should default to draft for outgoing mappings unless a separate downstream mapping is approved."
+  },
+  "nextCitationStepAfterImplementation": {
+    "decisionExpected": "VERIFY-AS-WRITTEN if the implemented guard matches this disposition",
+    "pmid": "38568491",
+    "expectedFinalStateIfSeparatelyApproved": {
+      "references": 141,
+      "liveVerified": 141,
+      "unverified": 0,
+      "reviewFindings": 0,
+      "hardFindings": 0
+    }
+  },
+  "approvalPhrase": "I approve Post-Traumatic Headache Taxonomy Addition 2026",
+  "nonNegotiableBoundary": "Taxonomy/mapping approval was implemented locally. PMID 38568491 remains verified:false. Separate qualified-human citation-verification approval is still required.",
+  "approvalDate": "2026-08-19",
+  "qualifiedHumanApproval": "I approve Post-Traumatic Headache Taxonomy Addition 2026",
+  "approvedProposalSha256": "413b80e2440940c390c8fbc1c894df04bc504970e1d966565e211fd7056c603d",
+  "implementationResult": {
+    "taxonomyIdentityAdded": "post-traumatic-headache",
+    "mappingReplacement": "mild-tbi->post-traumatic-headache",
+    "oldActiveMismatchRemoved": "mild-tbi->migraine-headaches",
+    "pmid": "38568491",
+    "verifiedAfterTaxonomyImplementation": false,
+    "citationVerificationStillRequired": true
+  }
+}

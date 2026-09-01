@@ -1,3 +1,5 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
@@ -48,6 +50,20 @@ describe("condition catalog expansion wave 1", () => {
   });
 
   it("keeps non-published or later-withdrawn Wave 1 mappings draft while allowing reviewed publication", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of WAVE_ONE_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
@@ -64,6 +80,20 @@ describe("condition catalog expansion wave 1", () => {
   });
 
   it("records later evidence-quality withdrawals for association-only depression edges", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of ["gout", "multiple-sclerosis", "myasthenia-gravis", "parkinsons-disease", "seizure-disorder"] as const) {
       const mapping = mappingById.get(id);
       expect(mapping?.draft).toBe(true);

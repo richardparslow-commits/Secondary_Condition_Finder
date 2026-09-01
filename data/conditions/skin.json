@@ -65,6 +65,21 @@
       "reviewNotes": []
     },
     {
+      "id": "acne-scarring",
+      "name": "Acne Scarring",
+      "aliases": [
+        "acne scars",
+        "post-acne scarring",
+        "atrophic acne scarring",
+        "hypertrophic acne scarring"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Clinical Mapping Master Resolution 2026 taxonomy identity. No condition-specific VA diagnostic/rating code was assigned or borrowed; retain for qualified catalog/rating review. Distinct from the existing painful/unstable `scars` identity; this identity covers clinically documented acne scarring without presuming pain or instability."
+      ]
+    },
+    {
       "id": "hidradenitis-suppurativa",
       "name": "Hidradenitis Suppurativa",
       "aliases": [],

@@ -1,8 +1,54 @@
 {
   "id": "benign-prostatic-hyperplasia",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with BPH-specific clinical evidence; prior generic depression and medication-to-GERD pathways lacked direct supporting citations."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established BPH before incident CKD; separately assess urinary obstruction, BPH treatment exposure, baseline renal disease, hypertension, diabetes, age, and other renal causes. Population-level prospective association only; BPH medication may contribute and end-stage kidney disease estimates were less precise. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent diagnoses of Benign Prostatic Hyperplasia (BPH) and Chronic Kidney Disease / Renal Failure",
+        "Chronology compatible with the bounded source proposition",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Qualified clinical opinion before using population-level evidence as an individual nexus"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Benign Prostatic Hyperplasia Increases Long-term Chronic Kidney Disease Risk. Mayo Clinic proceedings. 2025. doi:10.1016/j.mayocp.2024.11.024. PMID 40196966",
+          "note": "Master-disposition clinical evidence for the bounded temporal association risk proposition. Population-level prospective association only; BPH medication may contribute and end-stage kidney disease estimates were less precise.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40196966/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 40196966; PubMed title/abstract retrieved in the master research harvest; guard: Require established BPH before incident CKD; separately assess urinary obstruction, BPH treatment exposure, baseline renal disease, hypertension, diabetes, age, and other renal causes."
+        }
+      ]
+    },
+    {
+      "conditionId": "urethral-stricture",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Treatment-mediated urethral-stricture risk after TURP or HoLEP performed for documented benign prostatic hyperplasia. Require documented benign prostatic hyperplasia, documented transurethral resection of the prostate (TURP) or holmium laser enucleation of the prostate (HoLEP), and a separately established urethral stricture arising after that procedure with compatible chronology. Do not infer urethral stricture from untreated BPH, lower urinary tract symptoms, or bladder-outlet obstruction alone. Preserve prior urethral instrumentation or trauma, infection, lichen sclerosus, prior pelvic surgery or radiation, and other recognized causes of urethral stricture. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of benign-prostatic-hyperplasia and urethral-stricture",
+        "Documentation satisfying the approved phenotype restriction: treatment-related urethral stricture after TURP or HoLEP for BPH",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented benign prostatic hyperplasia, documented transurethral resection of the prostate (TURP) or holmium laser enucleation of the prostate (HoLEP), and a separately established urethral stricture arising after that procedure with compatible chronology. Do not infer urethral stricture from untreated BPH, lower urinary tract symptoms, or bladder-outlet obstruction alone. Preserve prior urethral instrumentation or trauma, infection, lichen sclerosus, prior pelvic surgery or radiation, and other recognized causes of urethral stricture."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Chen F, Chen Y, Zou Y, Wang Y, Wu X, Chen M. Comparison of holmium laser enucleation and transurethral resection of prostate in benign prostatic hyperplasia: a systematic review and meta-analysis. J Int Med Res. 2023;51(8):3000605231190763. PMID 37561537. doi:10.1177/03000605231190763.",
+          "note": "Mapping Expansion Batch ME-7 evidence for the bounded benign-prostatic-hyperplasia to urethral-stricture proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37561537/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 37561537; approved ME-7 proposition; guard: Require documented benign prostatic hyperplasia, documented transurethral resection of the prostate (TURP) or holmium laser enucleation of the prostate (HoLEP), and a separately established urethral stricture arising after that procedure with compatible chronology. Do not infer urethral stricture from untreated BPH, lower urinary tract symptoms, or bladder-outlet obstruction alone. Preserve prior urethral instrumentation or trauma, infection, lichen sclerosus, prior pelvic surgery or radiation, and other recognized causes of urethral stricture."
+        }
+      ]
+    }
+  ]
 }

@@ -9,7 +9,9 @@
       "prevalence": "commonly-explored",
       "rationale": "Hypertension is a common cardiovascular manifestation of clinically established Cushing's syndrome/hypercortisolism. A European Society of Hypertension endocrine-hypertension consensus describes glucocorticoid excess as the biological basis for the cardiovascular damage of endogenous or exogenous Cushing's syndrome and notes that hypertension may persist even after hormone excess is normalized or steroid therapy is discontinued. This supports a direct-secondary research pathway when the Cushing/hypercortisolism diagnosis and blood-pressure chronology are documented, but other primary and secondary causes of hypertension must still be reviewed.",
       "pathwayIntelligence": {
-        "pathways": ["direct-secondary"],
+        "pathways": [
+          "direct-secondary"
+        ],
         "causalChain": "Established endogenous or exogenous Cushing's syndrome with clinically significant glucocorticoid excess → cortisol-mediated cardiovascular and renal blood-pressure effects → hypertension, which may persist after hypercortisolism is corrected.",
         "developmentQuestions": [
           "How was Cushing's syndrome or clinically significant hypercortisolism established, and what was the source of glucocorticoid excess?",
@@ -36,9 +38,32 @@
           "note": "Endocrine-hypertension consensus states that hypertension is common in Cushing's syndrome and may persist after normalization of hormone excess or steroid withdrawal; supports a disease-specific endocrine hypertension pathway with individual diagnosis and chronology safeguards.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35950979/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-14",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 35950979; abstract: endogenous/exogenous Cushing's syndrome reflects glucocorticoid excess, hypertension is a common feature, and hypertension may persist after normalization of hormone excess or discontinuation of steroid therapy"
+        }
+      ]
+    },
+    {
+      "conditionId": "osteoporosis",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented endogenous Cushing syndrome/hypercortisolism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. PMID 39689783 is limited to endogenous Cushing syndrome; do not use this edge to represent osteoporosis from exogenous glucocorticoid therapy in the absence of endogenous Cushing syndrome. Do not infer osteoporosis from cortisol excess alone, and preserve competing skeletal risk factors when evaluating an individual nexus. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of cushings-syndrome and osteoporosis",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, and treatment effects where applicable",
+        "Resolution of the approved publication guard: Require documented endogenous Cushing syndrome/hypercortisolism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. PMID 39689783 is limited to endogenous Cushing syndrome; do not use this edge to represent osteoporosis from exogenous glucocorticoid therapy in the absence of endogenous Cushing syndrome. Do not infer osteoporosis from cortisol excess alone, and preserve competing skeletal risk factors when evaluating an individual nexus."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Charoenngam N, Rittiphairoj T, Plessias C, et al. Bone Mineral Density Improvement After Resolution of Endogenous Cushing Syndrome: A Systematic Review and Meta-Analysis. Endocr Pract. 2025;31(3):345-351. PMID 39689783. doi:10.1016/j.eprac.2024.12.009.",
+          "note": "Mapping Expansion Batch ME-3 evidence for the bounded cushings-syndrome to osteoporosis proposition. This source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39689783/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 39689783; approved ME-3 proposition; guard: Require documented endogenous Cushing syndrome/hypercortisolism and separately established osteoporosis under accepted bone-density and/or fragility-fracture criteria. PMID 39689783 is limited to endogenous Cushing syndrome; do not use this edge to represent osteoporosis from exogenous glucocorticoid therapy in the absence of endogenous Cushing syndrome. Do not infer osteoporosis from cortisol excess alone, and preserve competing skeletal risk factors when evaluating an individual nexus."
         }
       ]
     }

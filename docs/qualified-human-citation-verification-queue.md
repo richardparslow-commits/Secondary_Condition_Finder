@@ -12,9 +12,9 @@ npm run citations:queue
 
 The generated report is authoritative for the exact current human-review row set.
 
-## Current Batch-31 candidate baseline
+## Current citation-verification baseline
 
-The targeted candidate is expected to contain **61 live unverified references** and **59 live unverified published references**, pending exact-head CI confirmation.
+After qualified-human Citation Verification Batches 01 through 13, the repository contains **5 live unverified references** and **5 live unverified published references**.
 
 Batch 31 adds exactly two new bounded clinical source rows, both `verified: false`:
 
@@ -23,9 +23,41 @@ Batch 31 adds exactly two new bounded clinical source rows, both `verified: fals
 
 Both are prospective incident-depression sources. Their published rationales explicitly distinguish population-level temporal risk from an individual medical nexus and require diagnosis-specific chronology and competing-cause review.
 
-No source is automatically verified, and no citation-debt baseline is raised. The two additions consume the existing post-Batch-30 headroom, moving the candidate to the current ceilings of 61 live unverified references and 59 published-unverified review findings.
+No source is automatically verified. Citation Verification Batches 01 through 13 record explicit qualified-human decisions, reducing the current ceilings to 1 live unverified references and 1 published-unverified review findings without changing the live-reference denominator. Batch 08 intentionally holds one reviewed source unverified because the current knowledge-base target is broader/different than the cited post-traumatic-headache evidence.
 
 The targeted screen also records several nonpublished evidence dispositions without adding live source rows: carpal tunnel syndrome psychiatric association (PMID 37639884); ME/CFS psychiatric temporal/comorbidity literature (including PMIDs 40785390, 15184691, 19566769); hypothyroidism/CTS evidence (PMID 41002938); narcolepsy/depression meta-analysis (PMID 32671534); peripheral-neuropathy/falls-fractures evidence (PMID 36945108); radial mononeuropathy characterization (PMID 41392533); REM sleep behavior disorder prodromal synucleinopathy evidence (PMIDs 39177811 and 28429825); and social-anxiety/depression prospective evidence (PMID 11231832). These are screening notes, not live published citation rows.
+
+## Completed Citation Verification Batch 01
+
+Five sources were reviewed and explicitly approved by the repository owner acting as the qualified human reviewer: achalasia→esophageal cancer (PMID 37975607), ACL injury→osteoarthritis (PMID 33852440), acromegaly→hypertension (PMID 42050227), traumatic limb amputation→depressive disorder (PMID 25294119), and sphincter-cutting anal-fistula treatment→fecal incontinence (PMID 33387100). The reproducible decision record is `docs/citation-verification-batch-01.md`.
+
+## Completed Citation Verification Batch 02
+
+Five additional sources were explicitly approved by the repository owner acting as the qualified human reviewer: asthma→OSA (PMID 40774162; proposition narrowed before verification), Barrett's esophagus→esophageal adenocarcinoma (PMID 41125322), cardiomyopathy→heart failure (PMID 37622657), cauda equina syndrome→erectile dysfunction (PMID 40380123; population/etiology scope narrowed before verification), and chronic liver disease with documented fibrosis progression→cirrhosis (PMID 32108989). The reproducible decision record is `docs/citation-verification-batch-02.md`.
+
+## Completed Citation Verification Batch 03
+
+Five additional sources were explicitly approved by the repository owner acting as the qualified human reviewer: chronic pyelonephritis→CKD (PMID 11110586), documented allergic-rhinitis phenotype→OSA (PMID 40774162), chronic rhinosinusitis→OSA (PMID 41969980), COPD→OSA overlap/coexistence (PMID 36672523; unsupported direct-secondary/aggravation pathway labels removed before verification), and Cushing's syndrome→hypertension (PMID 35950979). The reproducible decision record is `docs/citation-verification-batch-03.md`.
+
+## Completed Citation Verification Batch 04
+
+Five additional live clinical-evidence references were explicitly approved by the repository owner acting as the qualified human reviewer: depressive-disorder treatment→weight gain (PMID 31524318), obesity/weight gain→OSA as the second link in the depressive-disorder intermediate chain (PMID 40330547), depressive-disorder psychotropic treatment→erectile dysfunction with agent-specific safeguards (PMID 34247952), type 1 diabetes→CKD (PMID 41358881), and scalp discoid lupus→scarring alopecia (PMID 35817588). All five were verified as written. The reproducible decision record is `docs/citation-verification-batch-04.md`.
+
+## Completed Citation Verification Batch 08
+
+Five additional published clinical-evidence rows were explicitly reviewed by the repository owner. ILD→OSA (PMID 33403599), Paget disease→osteoarthritis (PMID 18504638), and ovarian-cancer paclitaxel treatment→peripheral neuropathy (PMID 24582486) were verified as written. Migraine→depressive disorder (PMID 23588795) was narrowed from `somatopsychic` mechanism metadata to temporal-association-only framing and then verified. Mild TBI→`migraine-headaches` (PMID 38568491) was narrowed to a phenotype-oriented post-traumatic-headache research flag and intentionally remains `verified: false` because the cited review does not independently establish the repository's migraine diagnostic target. The reproducible decision record is `docs/citation-verification-batch-08.md`.
+
+## Completed Citation Verification Batch 07
+
+Five additional live clinical-evidence references were explicitly approved by the repository owner: hypertensive heart disease→congestive heart failure (PMID 36082670), confirmed hypogonadism→osteoporosis (PMID 29499097), chronic hypoparathyroidism→kidney stones (PMID 36375810), and transvenous pacemaker lead→heart-valve disorder (PMID 34389210) as written; insomnia→depressive disorder (PMID 38833937) after removal of directional `direct-secondary` pathway intelligence and conversion to temporal-association framing. The reproducible decision record is `docs/citation-verification-batch-07.md`.
+
+## Completed Citation Verification Batch 06
+
+Five additional live clinical-evidence references were explicitly approved by the repository owner acting as the qualified human reviewer: prolactin-secreting pituitary dysfunction→hypogonadism (PMID 40812946) as written; hypertension→CKD, ischemic heart disease, and congestive heart failure using the 2025 multisociety hypertension guideline (PMID 40811497) as written; and hypertension→erectile dysfunction after one-for-one replacement of PMID 27491642 with the current corrected 2025 multisociety guideline (PMID 40811497), retaining association-only and individual-causation safeguards. The reproducible decision record is `docs/citation-verification-batch-06.md`.
+
+## Completed Citation Verification Batch 05
+
+Five additional live clinical-evidence references were explicitly approved by the repository owner acting as the qualified human reviewer: erectile dysfunction↔depressive disorder association evidence (PMID 29960891) after removing unsupported directional `somatopsychic` pathway intelligence; femoroacetabular impingement→hip osteoarthritis (PMID 26524551) as written; heart-valve-replacement residuals→hemolytic anemia after one-for-one source replacement with Alkhouli et al. (PMID 31039274); confirmed primary aldosteronism→hypertension as written; and confirmed primary hyperparathyroidism→kidney stones (PMID 36245251) as written. The reproducible decision record is `docs/citation-verification-batch-05.md`.
 
 ## Human review procedure
 
@@ -42,3 +74,163 @@ For each live queue row, a qualified reviewer must independently open the canoni
 ## Non-negotiable boundary
 
 Automated source retrieval or screening is not the qualified-human verification decision required by repository policy.
+
+<!-- citation-verification-master-current:start -->
+## Current citation-verification position
+
+Master-approved implementation is complete through **Batch 13**.
+- Live verified references: **68**
+- Retired verified references: **6**
+- Verified provenance: **74**
+- Live unverified references: **1**
+- Published unverified review findings: **1**
+- Hard findings: **0**
+- Live clinical source URL coverage: **64/64**
+
+Current unresolved published queue:
+- `mild-tbi.json` → `migraine-headaches`: Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491
+<!-- citation-verification-master-current:end -->
+
+<!-- clinical-mapping-m1-current:start -->
+## Current clinical-mapping position — M1
+
+Qualified-human Clinical Mapping Batch M1 is approved and implemented locally.
+
+- Catalog identities: **300**
+- Knowledge-base mappings: **300**
+- Overall published mappings: **55**
+- Overall draft mappings: **245**
+- Wave 1–7 identities: **107**
+- Wave dispositions: **31 published-evidence-led**, **76 safe-draft**, **0 promotion-candidate**
+- live references: **73**
+- live verified: **68**
+- retired verified: **6**
+- verified provenance: **74**
+- live unverified: **5**
+- published-unverified review findings: **5**
+- live clinical-evidence references with canonical URLs: **68**
+- retired clinical-evidence references with canonical URLs: **4**
+- combined clinical-URL provenance observation: **72**
+- hard citation findings: **0**
+
+M1 publishes:
+- `social-anxiety-disorder` → `depressive-disorder`: prospective temporal-risk/association only; no causal pathway metadata.
+- `laryngeal-cancer` → `aphonia`: treatment-complication only; documented total laryngectomy and documented aphonia required.
+
+The 5 live unverified published references are PMID 38568491, PMID 11231832, PMID 17679635, PMID 25630206, and PMID 20189345. No M1 source is auto-verified.
+<!-- clinical-mapping-m1-current:end -->
+
+<!-- CLINICAL-MAPPING-MASTER-2026:START -->
+## Clinical Mapping Master Batch 2026 — citation verification complete
+
+Qualified-human approval was provided on 2026-08-19:
+
+> I approve Clinical Mapping Master Batch 2026 — Master Citation Verification Disposition
+
+All **68 Master relationship source rows** are verified. The final set contains **60 unique PMIDs** after 8 approved narrowings and 5 one-for-one replacements.
+
+| Final PMID | Relationship rows | Decision(s) | Status |
+|---:|---|---|---|
+| 9371291 | 1: myelodysplastic-syndrome → leukemia | VERIFY-AS-WRITTEN | verified |
+| 10326187 | 1: anorexia-nervosa → osteoporosis | VERIFY-AS-WRITTEN | verified |
+| 18038923 | 1: sarcoidosis → thrombocytopenia | VERIFY-AS-WRITTEN | verified |
+| 20644150 | 1: penetrating-head-trauma → seizure-disorder | REPLACE-SOURCE | verified |
+| 20680529 | 1: ankylosing-spondylitis → osteoporosis | VERIFY-AS-WRITTEN | verified |
+| 20722714 | 1: parkinsons-disease → depressive-disorder | VERIFY-AS-WRITTEN | verified |
+| 22694245 | 1: hiatal-hernia → barretts-esophagus | VERIFY-AS-WRITTEN | verified |
+| 25061487 | 1: cirrhosis-of-the-liver → osteoporosis | VERIFY-AS-WRITTEN | verified |
+| 26683953 | 1: hepatitis → osteoporosis | REPLACE-SOURCE | verified |
+| 26882216 | 1: psoriatic-arthritis → depressive-disorder | VERIFY-AS-WRITTEN | verified |
+| 27666776 | 1: emphysema → respiratory-cancer | VERIFY-WITH-NARROWING | verified |
+| 28342087 | 1: pelvic-inflammatory-disease → ovarian-cancer | VERIFY-AS-WRITTEN | verified |
+| 29157021 | 1: gastroparesis → cardiac-arrhythmia | VERIFY-AS-WRITTEN | verified |
+| 29280918 | 1: celiac-disease → schizophrenia | VERIFY-AS-WRITTEN | verified |
+| 29735408 | 1: psoriasis → erectile-dysfunction | VERIFY-AS-WRITTEN | verified |
+| 30393090 | 1: osteoporosis → osteonecrosis-of-the-jaw | VERIFY-AS-WRITTEN | verified |
+| 30422277 | 1: psoriasis → inflammatory-bowel-disease | VERIFY-AS-WRITTEN | verified |
+| 30912336 | 1: hyperthyroidism → hypothyroidism | VERIFY-AS-WRITTEN | verified |
+| 31203833 | 1: narcolepsy → depressive-disorder | VERIFY-AS-WRITTEN | verified |
+| 31782315 | 1: q-fever → gallbladder-disease | VERIFY-AS-WRITTEN | verified |
+| 32088651 | 1: hepatitis → pancreatic-cancer | VERIFY-AS-WRITTEN | verified |
+| 33011316 | 1: psoriasis → colorectal-cancer | VERIFY-AS-WRITTEN | verified |
+| 33433655 | 1: inflammatory-bowel-disease → colorectal-cancer | REPLACE-SOURCE | verified |
+| 33829302 | 1: charcot-arthropathy → amputation-or-loss-of-use | VERIFY-WITH-NARROWING | verified |
+| 34049905 | 1: bronchiolitis → asthma | VERIFY-AS-WRITTEN | verified |
+| 34406259 | 1: anemia → chronic-kidney-disease | VERIFY-AS-WRITTEN | verified |
+| 34447668 | 1: brucellosis → cardiac-inflammatory-disease | VERIFY-WITH-NARROWING | verified |
+| 34596875 | 1: psoriasis → psoriatic-arthritis | REPLACE-SOURCE | verified |
+| 35233053 | 1: hypothyroidism → tinnitus | VERIFY-AS-WRITTEN | verified |
+| 35334622 | 1: osteoporosis → trigeminal-neuralgia | VERIFY-WITH-NARROWING | verified |
+| 35383546 | 1: actinomycosis → cardiac-inflammatory-disease | VERIFY-AS-WRITTEN | verified |
+| 35605220 | 1: tuberculosis → aortic-aneurysm | VERIFY-AS-WRITTEN | verified |
+| 35787151 | 1: nocardiosis → cardiac-inflammatory-disease | VERIFY-AS-WRITTEN | verified |
+| 35906745 | 1: systemic-lupus-erythematosus → cardiac-arrhythmia | VERIFY-AS-WRITTEN | verified |
+| 36680511 | 1: primary-myelofibrosis → leukemia | VERIFY-AS-WRITTEN | verified |
+| 36855430 | 2: ischemic-heart-disease → colorectal-cancer; ischemic-heart-disease → respiratory-cancer | VERIFY-AS-WRITTEN, VERIFY-WITH-NARROWING | verified |
+| 37149284 | 1: gout → aortic-aneurysm | VERIFY-AS-WRITTEN | verified |
+| 37223912 | 2: substance-use-disorder → depressive-disorder; substance-use-disorder → bipolar-disorder | VERIFY-AS-WRITTEN | verified |
+| 37349198 | 1: pneumoconiosis → tuberculosis | VERIFY-AS-WRITTEN | verified |
+| 37357958 | 1: polycythemia-vera → leukemia | VERIFY-AS-WRITTEN | verified |
+| 37574171 | 1: esophageal-cancer → cardiac-arrhythmia | VERIFY-WITH-NARROWING | verified |
+| 37899363 | 1: hepatitis → parkinsons-disease | VERIFY-WITH-NARROWING | verified |
+| 38055239 | 1: psoriasis → eczema | REPLACE-SOURCE | verified |
+| 38269572 | 1: essential-thrombocythemia → leukemia | VERIFY-AS-WRITTEN | verified |
+| 38355151 | 1: pulmonary-fibrosis → respiratory-cancer | VERIFY-AS-WRITTEN | verified |
+| 38573463 | 1: pneumoconiosis → sleep-apnea | VERIFY-AS-WRITTEN | verified |
+| 38652139 | 1: thyroid-cancer → hypoparathyroidism | VERIFY-AS-WRITTEN | verified |
+| 39005656 | 1: typhoid-fever → cardiac-inflammatory-disease | VERIFY-AS-WRITTEN | verified |
+| 39046420 | 1: hiv-aids → uveitis | VERIFY-AS-WRITTEN | verified |
+| 39324122 | 1: schizophrenia → diabetes-mellitus-type-2 | VERIFY-AS-WRITTEN | verified |
+| 39847853 | 1: thromboangiitis-obliterans → amputation-or-loss-of-use | VERIFY-WITH-NARROWING | verified |
+| 39895893 | 1: pancreatitis → cardiac-inflammatory-disease | VERIFY-AS-WRITTEN | verified |
+| 39963138 | 1: psoriatic-arthritis → tuberculosis | VERIFY-AS-WRITTEN | verified |
+| 40005458 | 1: sarcoidosis → pulmonary-hypertension | VERIFY-AS-WRITTEN | verified |
+| 40196966 | 1: benign-prostatic-hyperplasia → chronic-kidney-disease | VERIFY-AS-WRITTEN | verified |
+| 40329131 | 1: osteoarthritis → sleep-apnea | VERIFY-AS-WRITTEN | verified |
+| 40632946 | 1: gout → macular-degeneration | VERIFY-AS-WRITTEN | verified |
+| 40658955 | 1: diabetes-mellitus-type-2 → gerd | VERIFY-AS-WRITTEN | verified |
+| 40772230 | 7: gerd → asthma; gerd → bronchiectasis; gerd → copd; gerd → interstitial-lung-disease; gerd → pulmonary-fibrosis; gerd → respiratory-cancer; gerd → tuberculosis | VERIFY-AS-WRITTEN | verified |
+| 40959074 | 1: systemic-lupus-erythematosus → tuberculosis | VERIFY-AS-WRITTEN | verified |
+<!-- CLINICAL-MAPPING-MASTER-2026:END -->
+
+<!-- RESIDUAL-M1-CLOSURE-2026:START -->
+## Residual M1 Citation Closure
+
+Approval: **I approve Residual Citation Verification — M1 Closure 2026**
+
+- PMID 11231832 — verified
+- PMID 17679635 — verified
+- PMID 25630206 — verified
+- PMID 20189345 — verified
+- PMID 38568491 — taxonomy hold / verified:false
+<!-- RESIDUAL-M1-CLOSURE-2026:END -->
+
+<!-- PTH-TAXONOMY-2026:START -->
+## Post-Traumatic Headache taxonomy/citation item — closed
+
+- `mild-tbi → post-traumatic-headache` — PMID **38568491** — **verified**.
+- Qualified-human approval: **I approve Post-Traumatic Headache Citation Verification 2026**
+- Prior `mild-tbi → migraine-headaches` active mismatch remains removed.
+- Live citation verification queue: **0**.
+<!-- PTH-TAXONOMY-2026:END -->
+
+<!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:START -->
+## Adrenal Histoplasmosis citation item — closed
+
+- `adrenal-histoplasmosis → addisons-disease` — PMID **30656706** — **verified**.
+- Qualified-human approval: **I approve Adrenal Histoplasmosis Citation Verification 2026**
+- Live citation verification queue: **0**.
+<!-- ADRENAL-HISTOPLASMOSIS-TAXONOMY-2026:END -->
+
+<!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:START -->
+## Clinical Mapping Master Resolution 2026 — citation verification complete
+
+All **39 source rows** have qualified-human dispositions and have been promoted only after fail-closed implementation checks.
+
+- 23 verified as written
+- 14 verified with approved source-specific narrowing
+- 2 verified with one-for-one source replacement
+- 36 unique final live PMIDs
+- 0 remaining Master Resolution unverified/review rows
+- Replacement provenance is preserved in each replacement sourceLocator
+<!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:END -->

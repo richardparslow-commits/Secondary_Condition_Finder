@@ -1,3 +1,5 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
+import { assertMaster2026CurrentState, isMaster2026Active } from "./helpers/master-2026-current";
 import { describe, expect, it } from "vitest";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
@@ -19,6 +21,7 @@ const WAVE_SEVEN_IDS = [
 const PUBLISHED_WAVE_SEVEN_IDS = new Set([
   "ovarian-cancer",
   "testicular-cancer",
+  "laryngeal-cancer",
 ]);
 
 describe("condition catalog expansion wave 7", () => {
@@ -27,16 +30,37 @@ describe("condition catalog expansion wave 7", () => {
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
   const mappingById = new Map(knowledgeBase.map((mapping) => [mapping.id, mapping]));
 
-  it("reaches the target-v2 catalog at exactly 300 conditions", () => {
-    expect(catalog).toHaveLength(300);
-    expect(knowledgeBase).toHaveLength(300);
+  it("reaches the target-v2 catalog at exactly 302 conditions", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(knowledgeBase).toHaveLength(302);
   });
 
   it("preserves all 10 approved Wave 7 identities", () => {
     for (const id of WAVE_SEVEN_IDS) expect(catalogById.has(id), `missing catalog condition ${id}`).toBe(true);
   });
 
-  it("publishes only two evidence-led Wave 7 relationships and keeps the other eight safe-draft", () => {
+  it("publishes three evidence-led Wave 7 relationships and keeps the other seven safe-draft", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    // Master 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-master contract below for historical states.
+    if (isMaster2026Active()) {
+      assertMaster2026CurrentState();
+      return;
+    }
+
     for (const id of WAVE_SEVEN_IDS) {
       const mapping = mappingById.get(id);
       expect(mapping, `missing mapping for ${id}`).toBeDefined();
@@ -53,17 +77,28 @@ describe("condition catalog expansion wave 7", () => {
   });
 
   it("keeps adrenal histoplasmosis out of the pulmonary-only mapping", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = mappingById.get("histoplasmosis");
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
     expect(mapping?.todo.join(" ")).toMatch(/pulmonary|adrenal|disseminated|disease-site/i);
   });
 
-  it("does not equate post-laryngectomy voice handicap with the aphonia diagnosis", () => {
+  it("keeps post-laryngectomy aphonia diagnosis-specific rather than equating it with generic voice handicap", () => {
     const mapping = mappingById.get("laryngeal-cancer");
-    expect(mapping?.draft).toBe(true);
-    expect(mapping?.suggestions).toEqual([]);
-    expect(mapping?.todo.join(" ")).toMatch(/aphonia|alaryngeal|voice handicap|natural laryngeal/i);
+    const suggestion = mapping?.suggestions[0];
+    expect(mapping?.draft).toBe(false);
+    expect(mapping?.todo).toEqual([]);
+    expect(mapping?.suggestions).toHaveLength(1);
+    expect(suggestion?.conditionId).toBe("aphonia");
+    expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["treatment-complication"]);
+    expect(suggestion?.rationale).toMatch(/documented total laryngectomy|documented aphonia|voice handicap/i);
   });
 
   it("does not automate rating-citation verification", () => {

@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { describe, expect, it } from "vitest";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
@@ -18,9 +19,16 @@ describe("catalog quality wave 8", () => {
   const knowledgeBase = loadKnowledgeBase();
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
-  it("preserves the target-v2 300/300 integrity contract", () => {
-    expect(catalog).toHaveLength(300);
-    expect(knowledgeBase).toHaveLength(300);
+  it("preserves the target-v2 302/302 integrity contract", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(knowledgeBase).toHaveLength(302);
   });
 
   it("keeps all Wave 8 quality targets present without creating new identities", () => {

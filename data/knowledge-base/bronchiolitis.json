@@ -1,8 +1,54 @@
 {
   "id": "bronchiolitis",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with bronchiolitis-specific clinical evidence; prior generic depression and medication-to-GERD pathways lacked direct supporting citations."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "asthma",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as population specific temporal risk. Apply only to bronchiolitis occurring before age 2 followed by later childhood wheeze/asthma; require separately diagnosed asthma. Pediatric early-life evidence; do not generalize to adult-onset bronchiolitis or claim causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Constrictive / Obliterative Bronchiolitis matches the source-specific phenotype or population",
+        "Independent diagnosis of Asthma with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Qualified clinical opinion before applying the population-level relationship to an individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Association between early bronchiolitis and the development of childhood asthma: a meta-analysis. BMJ open. 2021. doi:10.1136/bmjopen-2020-043956. PMID 34049905",
+          "note": "Master-disposition clinical evidence for the bounded population specific temporal risk proposition. Pediatric early-life evidence; do not generalize to adult-onset bronchiolitis or claim causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34049905/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 34049905; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to bronchiolitis occurring before age 2 followed by later childhood wheeze/asthma; require separately diagnosed asthma."
+        }
+      ]
+    },
+    {
+      "conditionId": "pulmonary-hypertension",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. In lung-transplant recipients with post-transplant pulmonary hypertension, chronic lung allograft dysfunction—particularly bronchiolitis obliterans syndrome—was the most frequently reported etiology/association, accounting for 63% of included cases. Use only for bronchiolitis obliterans syndrome/chronic lung allograft dysfunction after lung transplantation, with separately diagnosed pulmonary hypertension. Do not generalize to ordinary acute bronchiolitis. Preserve vascular/anastomotic complications, recurrent idiopathic pulmonary arterial hypertension, recurrent thromboembolic disease, left-heart/diastolic dysfunction, underlying transplant indication and other pulmonary-hypertension causes. The review calls for prospective longitudinal studies; do not state individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of bronchiolitis and pulmonary-hypertension",
+        "Documentation satisfying the approved phenotype restriction: post-lung-transplant bronchiolitis obliterans syndrome/chronic lung allograft dysfunction; pulmonary hypertension separately diagnosed",
+        "Chronology and phenotype compatible with the bounded source proposition",
+        "Assessment of competing etiologies, shared risk factors, treatment/transplant context, and selection bias where applicable",
+        "Resolution of the approved publication guard: Use only for bronchiolitis obliterans syndrome/chronic lung allograft dysfunction after lung transplantation, with separately diagnosed pulmonary hypertension. Do not generalize to ordinary acute bronchiolitis. Preserve vascular/anastomotic complications, recurrent idiopathic pulmonary arterial hypertension, recurrent thromboembolic disease, left-heart/diastolic dysfunction, underlying transplant indication and other pulmonary-hypertension causes. The review calls for prospective longitudinal studies; do not state individual causation."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Bachar R, Tager D, Berro J, Nero N, Sehgal S, Mehta AC. Pulmonary hypertension following lung transplant: a systematic review. J Thorac Dis. 2026;18(6):685. PMID 42444963. doi:10.21037/jtd-2026-0713.",
+          "note": "Mapping Expansion Batch ME-11 evidence for the bounded bronchiolitis to pulmonary-hypertension proposition. This final approved source enters as unverified pending separate qualified-human citation verification.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42444963/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-21",
+          "sourceLocator": "PMID 42444963; approved ME-11 final source; guard: Use only for bronchiolitis obliterans syndrome/chronic lung allograft dysfunction after lung transplantation, with separately diagnosed pulmonary hypertension. Do not generalize to ordinary acute bronchiolitis. Preserve vascular/anastomotic complications, recurrent idiopathic pulmonary arterial hypertension, recurrent thromboembolic disease, left-heart/diastolic dysfunction, underlying transplant indication and other pulmonary-hypertension causes. The review calls for prospective longitudinal studies; do not state individual causation."
+        }
+      ]
+    }
+  ]
 }

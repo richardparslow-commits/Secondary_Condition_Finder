@@ -1,8 +1,30 @@
 {
   "id": "cold-injury-residuals",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence; retain legal authorities only as legal framework."
-  ],
-  "suggestions": []
+  "draft": false,
+  "todo": [],
+  "suggestions": [
+    {
+      "conditionId": "peripheral-neuropathy",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific injury complication. Apply to documented non-freezing cold injury with persistent objectively supported sensory neuropathy. Do not generalize this source to all freezing injuries or every cold-injury residual phenotype. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Documentation that Cold Injuries (Frostbite / Immersion Foot Residuals) matches the source-specific phenotype",
+        "Independent diagnosis of Peripheral Neuropathy with compatible chronology",
+        "Assessment of competing medical, treatment-related, behavioral, and demographic contributors",
+        "Resolution of the publication guard: Apply to documented non-freezing cold injury with persistent objectively supported sensory neuropathy. Do not generalize this source to all freezing injuries or every cold-injury residual phenotype."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Chronic non-freezing cold injury results in neuropathic pain due to a sensory neuropathy. Brain : a journal of neurology. 2017. doi:10.1093/brain/awx215. PMID 28969380",
+          "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28969380/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-20",
+          "sourceLocator": "PMID 28969380; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Apply to documented non-freezing cold injury with persistent objectively supported sensory neuropathy. Do not generalize this source to all freezing injuries or every cold-injury residual phenotype."
+        }
+      ]
+    }
+  ]
 }

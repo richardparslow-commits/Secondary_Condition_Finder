@@ -8,7 +8,10 @@
       "prevalence": "sometimes-explored",
       "rationale": "Some antidepressant therapies are associated with weight gain, and weight gain/obesity are established risk factors for obstructive sleep apnea. This supports a clinically plausible intermediate-step theory, but it does not establish that a particular veteran's antidepressant exposure caused obesity or that obesity caused or aggravated OSA; the individual medication, timing, weight trajectory, and alternative OSA risk factors require case-specific medical review.",
       "pathwayIntelligence": {
-        "pathways": ["medication-related", "intermediate-chain"],
+        "pathways": [
+          "medication-related",
+          "intermediate-chain"
+        ],
         "causalChain": "Depressive disorder → antidepressant treatment, if applicable → medication-associated weight gain or obesity → claimed OSA causation or worsening; each link requires individual medical support.",
         "developmentQuestions": [
           "Which antidepressant was prescribed for the service-connected depressive disorder, at what dose, and for what duration?",
@@ -34,8 +37,8 @@
           "note": "Systematic review of antidepressant and antipsychotic use and weight gain; supports medication-associated weight change, not an individual medication-to-OSA nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31524318/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-11",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 31524318; systematic review"
         },
         {
@@ -43,8 +46,8 @@
           "note": "Individual participant data meta-analysis found substantially higher odds of OSA with overweight and obesity; supports the obesity-OSA relationship, not an individual antidepressant causation theory.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40330547/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-11",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 40330547; IPD meta-analysis"
         }
       ]
@@ -55,7 +58,9 @@
       "prevalence": "commonly-explored",
       "rationale": "Antidepressant and other psychotropic drug therapies can be associated with male sexual dysfunction, including erectile dysfunction, with clinically important differences among drug classes and individual agents. A medication-related secondary theory therefore requires evidence that the relevant medication was used to treat the depressive disorder, that erectile dysfunction began or worsened after the exposure, and that competing vascular, endocrine, neurologic, psychiatric, medication, and lifestyle causes were considered.",
       "pathwayIntelligence": {
-        "pathways": ["medication-related"],
+        "pathways": [
+          "medication-related"
+        ],
         "causalChain": "Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required.",
         "developmentQuestions": [
           "Was the relevant antidepressant or psychotropic medication prescribed for the service-connected depressive disorder?",
@@ -81,8 +86,8 @@
           "note": "Systematic review of randomized trials found antidepressant therapy associated with erectile dysfunction overall (OR 2.28, 95% CI 1.31-3.97), while effects differed by drug class; supports agent-specific medication research, not an automatic individual nexus.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34247952/",
-          "verified": false,
-          "sourceCheckedOn": "2026-08-15",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 34247952; abstract: 41 studies; antidepressant therapy associated with erectile dysfunction overall, with class-specific differences"
         }
       ]

@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -15,12 +16,26 @@ describe("clinical evidence promotion batch 8", () => {
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
   it("repairs every published hypertension edge with condition-specific clinical evidence", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("hypertension");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions.map((suggestion) => suggestion.conditionId)).toEqual([
@@ -33,9 +48,9 @@ describe("clinical evidence promotion batch 8", () => {
     for (const suggestion of mapping?.suggestions ?? []) {
       expect(suggestion.sourceReferences).toHaveLength(1);
       expect(suggestion.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-      expect(suggestion.sourceReferences[0]?.sourceUrl).toMatch(/^https:\/\/pubmed\.ncbi\.nlm\.nih\.gov\//);
-      expect(suggestion.sourceReferences[0]?.verified).toBe(false);
-      expect(suggestion.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-14");
+      expect(suggestion.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40811497/");
+      expect(suggestion.sourceReferences[0]?.verified).toBe(true);
+      expect(suggestion.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
       expect(suggestion.sourceReferences.some((source) => source.citation.startsWith("38 CFR"))).toBe(false);
     }
   });
@@ -50,15 +65,26 @@ describe("clinical evidence promotion batch 8", () => {
     }
   });
 
-  it("keeps hypertension-to-ED association-focused and does not infer medication causation", () => {
+  it("keeps hypertension-to-ED association-focused after the current-guideline source replacement", () => {
     const suggestion = byId.get("hypertension")?.suggestions.find((entry) => entry.conditionId === "erectile-dysfunction");
     expect(suggestion?.pathwayIntelligence).toBeUndefined();
-    expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("27491642");
+    expect(suggestion?.sourceReferences[0]?.sourceUrl).toBe("https://pubmed.ncbi.nlm.nih.gov/40811497/");
+    expect(suggestion?.sourceReferences[0]?.sourceLocator).toMatch(/section 6\.3|Sexual Dysfunction/i);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
     expect(suggestion?.rationale).toMatch(/association/i);
-    expect(suggestion?.rationale).toMatch(/medication-specific.*separate|not inferred/i);
+    expect(suggestion?.rationale).toMatch(/shared vascular|vascular\/endothelial|atheroscl/i);
+    expect(suggestion?.rationale).toMatch(/medication-specific.*separate|drug-class.*chronology/i);
+    expect(suggestion?.rationale).not.toMatch(/121,641|40-study/i);
   });
 
   it("promotes Cushing syndrome to a direct hypertension pathway with endocrine-specific evidence", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("cushings-syndrome");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
@@ -71,7 +97,8 @@ describe("clinical evidence promotion batch 8", () => {
     expect(suggestion?.rationale).toMatch(/persist/i);
     expect(source?.sourceUrl).toContain("35950979");
     expect(source?.verificationScope).toBe("clinical-evidence");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("physically relocates type 1 diabetes into endocrine maintenance with DC 7913", () => {

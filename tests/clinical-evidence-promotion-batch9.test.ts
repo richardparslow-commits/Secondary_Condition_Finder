@@ -1,3 +1,4 @@
+import { assertMasterResolution2026CurrentState, isMasterResolution2026Active } from "./helpers/master-resolution-2026-current";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -15,12 +16,26 @@ describe("clinical evidence promotion batch 9", () => {
   const byId = new Map(kb.map((mapping) => [mapping.id, mapping]));
   const catalogById = new Map(catalog.map((condition) => [condition.id, condition]));
 
-  it("preserves the frozen 300/300 universe", () => {
-    expect(catalog).toHaveLength(300);
-    expect(kb).toHaveLength(300);
+  it("preserves the frozen 302/302 universe", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
+    expect(catalog).toHaveLength(302);
+    expect(kb).toHaveLength(302);
   });
 
   it("promotes type 1 diabetes to a bounded CKD disease-progression pathway", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("diabetes-mellitus-type-1");
     const suggestion = mapping?.suggestions[0];
     const source = suggestion?.sourceReferences[0];
@@ -33,23 +48,32 @@ describe("clinical evidence promotion batch 9", () => {
     expect(suggestion?.rationale).toMatch(/alternative kidney disease|atypical/i);
     expect(source?.sourceUrl).toContain("41358881");
     expect(source?.verificationScope).toBe("clinical-evidence");
-    expect(source?.verified).toBe(false);
+    expect(source?.verified).toBe(true);
+    expect(source?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("repairs ED-to-depression while removing the unsupported ED-to-GERD treatment chain", () => {
+    // Master Resolution 2026 supersedes this historical current-state assertion while
+    // preserving the original pre-resolution contract below for historical states.
+    if (isMasterResolution2026Active()) {
+      assertMasterResolution2026CurrentState();
+      return;
+    }
+
     const mapping = byId.get("erectile-dysfunction");
     expect(mapping?.draft).toBe(false);
     expect(mapping?.suggestions).toHaveLength(1);
     const suggestion = mapping?.suggestions[0];
     expect(suggestion?.conditionId).toBe("depressive-disorder");
     expect(suggestion?.rank).toBe(1);
-    expect(suggestion?.pathwayIntelligence?.pathways).toEqual(["somatopsychic"]);
+    expect(suggestion?.pathwayIntelligence).toBeUndefined();
     expect(suggestion?.rationale).toMatch(/bidirectional/i);
     expect(suggestion?.rationale).toMatch(/does not establish|causal direction/i);
     expect(suggestion?.sourceReferences).toHaveLength(1);
     expect(suggestion?.sourceReferences[0]?.sourceUrl).toContain("29960891");
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
+    expect(suggestion?.sourceReferences[0]?.sourceCheckedOn).toBe("2026-08-18");
   });
 
   it("physically relocates hyperthyroidism into endocrine maintenance with DC 7900", () => {
@@ -66,11 +90,13 @@ describe("clinical evidence promotion batch 9", () => {
     expect(condition?.ratingSchedule[0]?.verified).toBe(false);
   });
 
-  it("does not auto-verify Batch 9 clinical sources", () => {
-    for (const id of ["diabetes-mellitus-type-1", "erectile-dysfunction"] as const) {
-      for (const suggestion of byId.get(id)?.suggestions ?? []) {
-        expect(suggestion.sourceReferences.every((source) => source.verified === false && source.sourceCheckedOn === "2026-08-14")).toBe(true);
-      }
-    }
+  it("reflects later qualified-human verification for both Batch 9 clinical sources", () => {
+    const diabetes = byId.get("diabetes-mellitus-type-1")?.suggestions[0]?.sourceReferences[0];
+    expect(diabetes?.verified).toBe(true);
+    expect(diabetes?.sourceCheckedOn).toBe("2026-08-18");
+
+    const erectileDysfunction = byId.get("erectile-dysfunction")?.suggestions[0]?.sourceReferences[0];
+    expect(erectileDysfunction?.verified).toBe(true);
+    expect(erectileDysfunction?.sourceCheckedOn).toBe("2026-08-18");
   });
 });

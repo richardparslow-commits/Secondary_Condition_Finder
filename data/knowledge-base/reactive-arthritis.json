@@ -1,0 +1,33 @@
+{
+  "id": "reactive-arthritis",
+  "draft": true,
+  "todo": [
+    "Target-only taxonomy identity added by Clinical Mapping Master Resolution 2026. Research downstream secondary-condition pathways before any independent publication of this identity."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "uveitis",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The clinical review identifies anterior uveitis among the extra-articular features often seen with reactive arthritis. Require established reactive arthritis and separately documented anterior uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from reactive arthritis, conjunctivitis, red eye, ocular irritation, or photophobia alone. Preserve infectious uveitis, HLA-B27-associated uveitis from another spondyloarthritis, sarcoidosis, inflammatory bowel disease, medication-related disease, trauma, and other ocular inflammatory causes. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of reactive-arthritis and uveitis",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/claim boundary: anterior-uveitis extra-articular manifestation of reactive arthritis",
+        "Assessment of competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require established reactive arthritis and separately documented anterior uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from reactive arthritis, conjunctivitis, red eye, ocular irritation, or photophobia alone. Preserve infectious uveitis, HLA-B27-associated uveitis from another spondyloarthritis, sarcoidosis, inflammatory bowel disease, medication-related disease, trauma, and other ocular inflammatory causes."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Jubber A, Moorthy A. Reactive arthritis: a clinical review. J R Coll Physicians Edinb. 2021;51(3):288-297. PMID 34528623. doi:10.4997/JRCPE.2021.319.",
+          "note": "Mapping Expansion Batch ME-12 evidence for the bounded reactive-arthritis to uveitis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34528623/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-22",
+          "sourceLocator": "PMID 34528623; approved ME-12 source; guard: Require established reactive arthritis and separately documented anterior uveitis by appropriate ophthalmic evaluation. Do not infer uveitis from reactive arthritis, conjunctivitis, red eye, ocular irritation, or photophobia alone. Preserve infectious uveitis, HLA-B27-associated uveitis from another spondyloarthritis, sarcoidosis, inflammatory bowel disease, medication-related disease, trauma, and other ocular inflammatory causes."
+        }
+      ]
+    }
+  ]
+}
