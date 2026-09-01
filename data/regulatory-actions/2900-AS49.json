@@ -1,0 +1,131 @@
+{
+  "rin": "2900-AS49",
+  "title": "Evaluative Rating: Impact of Medication",
+  "agency": { "department": "Department of Veterans Affairs" },
+  "relatedRins": [],
+  "cfrReferences": [
+    { "title": 38, "part": 4, "section": "4.10" }
+  ],
+  "legalAuthorities": ["38 U.S.C. 1155"],
+  "agenda": [
+    {
+      "publicationId": "202510",
+      "edition": "2026 Data",
+      "stage": "completed",
+      "rinStatus": "First Time Published in The Unified Agenda",
+      "priority": "Economically Significant",
+      "major": true,
+      "economicallySignificant": true,
+      "includedInRegulatoryPlan": false,
+      "plannedActions": [
+        { "action": "Interim Final Rule", "date": { "value": "2026-02-17", "precision": "day", "status": "anticipated", "note": "Published as 91 FR 7118 (document 2026-03068)." } },
+        { "action": "Interim Final Rule Effective", "date": { "value": "2026-02-17", "precision": "day", "status": "anticipated" } },
+        { "action": "Interim Final Rule Comment Period End", "date": { "value": "2026-02-27", "precision": "day", "status": "anticipated", "note": "The published Federal Register document instead set a comment deadline of April 20, 2026; the published document controls the docket timeline." } },
+        { "action": "Final Action", "date": { "value": "2026-02-27", "precision": "day", "status": "anticipated", "note": "Published as 91 FR 9712 (document 2026-03940), a rescission of the interim final rule." } },
+        { "action": "Final Action Effective", "date": { "value": "2026-02-27", "precision": "day", "status": "anticipated" } }
+      ],
+      "sourceUrl": "https://www.reginfo.gov/public/do/eAgendaViewRule?RIN=2900-AS49&pubId=202510",
+      "authenticity": {
+        "publisher": "reginfo-oira",
+        "legalEditionStatus": "planning-review-metadata",
+        "officialEditionVerified": false,
+        "note": "Unified Agenda dates describe planned or anticipated agency activity and are not themselves effective dates."
+      }
+    }
+  ],
+  "oiraReviews": [],
+  "oiraMeetingAvailability": "unknown",
+  "oiraMeetings": [],
+  "federalRegisterDocuments": [
+    {
+      "documentNumber": "2026-03068",
+      "citation": "91 FR 7118",
+      "title": "Evaluative Rating: Impact of Medication",
+      "type": "interim-final-rule",
+      "publicationDate": "2026-02-17",
+      "effectiveDate": "2026-02-17",
+      "applicability": [],
+      "legalStatus": "rescinded",
+      "rin": "2900-AS49",
+      "docketIds": [],
+      "cfrReferences": [
+        { "title": 38, "part": 4, "section": "4.10" }
+      ],
+      "federalRegisterUrl": "https://www.federalregister.gov/documents/2026-02-17/2026-03068/evaluative-rating-impact-of-medication",
+      "govinfoPdfUrl": "https://www.govinfo.gov/content/pkg/FR-2026-02-17/pdf/2026-03068.pdf",
+      "publicParticipation": {
+        "docketIds": [],
+        "commentOpenOn": "2026-02-17",
+        "commentCloseOn": "2026-04-20",
+        "commentStatus": "closed",
+        "commentInstructions": "Post-promulgation comment period for the interim final rule; rendered moot by rescission of the rule on 2026-02-27."
+      },
+      "authenticity": {
+        "publisher": "federalregister-gov",
+        "legalEditionStatus": "informational-unofficial",
+        "officialEditionVerified": true,
+        "officialEditionSource": "govinfo",
+        "officialEditionUrl": "https://www.govinfo.gov/content/pkg/FR-2026-02-17/pdf/2026-03068.pdf",
+        "verifiedOn": "2026-09-01",
+        "note": "FederalRegister.gov is used for structured metadata; legally dispositive rescission status verified against the official Federal Register edition on GovInfo. Rescinded effective 2026-02-27 by document 2026-03940 (91 FR 9712), which restored the prior text of 38 CFR 4.10."
+      },
+      "correctsDocumentNumbers": [],
+      "supersedesDocumentNumbers": [],
+      "notes": [
+        "Interim final rule amending 38 CFR 4.10 to state that ameliorative effects of medication should not be estimated or discounted when evaluating functional impairment at examination, responding to Ingram v. Collins, 38 Vet. App. 130 (2025). Rescinded ten days after its effective date."
+      ]
+    },
+    {
+      "documentNumber": "2026-03940",
+      "citation": "91 FR 9712",
+      "title": "Rescission of Interim Final Rule, Evaluative Rating: Impact of Medication",
+      "type": "rule",
+      "publicationDate": "2026-02-27",
+      "effectiveDate": "2026-02-27",
+      "applicability": [],
+      "legalStatus": "effective",
+      "rin": "2900-AS49",
+      "docketIds": ["VA-2026-VBA-0067"],
+      "cfrReferences": [
+        { "title": 38, "part": 4, "section": "4.10" }
+      ],
+      "federalRegisterUrl": "https://www.federalregister.gov/documents/2026-02-27/2026-03940/rescission-of-interim-final-rule-evaluative-rating-impact-of-medication",
+      "govinfoPdfUrl": "https://www.govinfo.gov/content/pkg/FR-2026-02-27/pdf/2026-03940.pdf",
+      "authenticity": {
+        "publisher": "federalregister-gov",
+        "legalEditionStatus": "informational-unofficial",
+        "officialEditionVerified": true,
+        "officialEditionSource": "govinfo",
+        "officialEditionUrl": "https://www.govinfo.gov/content/pkg/FR-2026-02-27/pdf/2026-03940.pdf",
+        "verifiedOn": "2026-09-01",
+        "note": "FederalRegister.gov is used for structured metadata; binding rescission effect verified against the official Federal Register edition on GovInfo."
+      },
+      "correctsDocumentNumbers": [],
+      "supersedesDocumentNumbers": ["2026-03068"],
+      "notes": [
+        "Final rule rescinding the interim final rule published 2026-02-17 (91 FR 7118) and restoring the prior regulatory text of 38 CFR 4.10, effective immediately upon publication."
+      ]
+    }
+  ],
+  "manualLifecycleOverride": {
+    "state": "rescinded",
+    "reason": "VA rescinded the interim final rule ten days after it took effect, restoring the prior text of 38 CFR 4.10. The rescission document 2026-03940 (91 FR 9712) itself remains operative law, so a documents-only lifecycle derivation would show 'effective'; the RIN's rulemaking outcome is recorded as rescinded so the application does not treat the brief 2026-02-17 through 2026-02-27 medication-interpretation rule as current authority.",
+    "sourceUrl": "https://www.federalregister.gov/documents/2026-02-27/2026-03940/rescission-of-interim-final-rule-evaluative-rating-impact-of-medication",
+    "reviewedOn": "2026-09-01"
+  },
+  "impact": {
+    "currentLawChanged": false,
+    "pendingChange": false,
+    "affectedConditionIds": [],
+    "affectedClaimTheories": [],
+    "affectedDiagnosticCodes": [],
+    "affectedPresumptions": [],
+    "affectedEffectiveDateRules": [],
+    "affectedCfrReferences": [
+      { "title": 38, "part": 4, "section": "4.10" }
+    ],
+    "summary": "Interim final rule that would have directed examiners and adjudicators not to estimate or discount the ameliorative effects of medication when evaluating functional impairment under 38 CFR 4.10, with potential reach across the rating schedule; VA rescinded it on 2026-02-27 and restored the prior regulatory text, so the pre-rescission section 4.10 interpretation (including the Ingram v. Collins, 38 Vet. App. 130 (2025) line of cases) governs as of 2026-09-01. Retained in the registry because rating-examination handling of medication effects is relevant to how condition severity is evaluated across secondary-condition mappings.",
+    "reviewedOn": "2026-09-01"
+  },
+  "sourceCheckedOn": "2026-09-01"
+}

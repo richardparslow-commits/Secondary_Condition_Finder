@@ -1,0 +1,110 @@
+{
+  "rin": "2900-AR75",
+  "title": "Updating VA Adjudication Regulations for Disability or Death Benefit Claims Based on Toxic Exposure",
+  "agency": { "department": "Department of Veterans Affairs" },
+  "relatedRins": [],
+  "cfrReferences": [
+    { "title": 38, "part": 3, "section": "3.159" },
+    { "title": 38, "part": 3, "section": "3.317" },
+    { "title": 38, "part": 3, "section": "3.320" }
+  ],
+  "legalAuthorities": ["38 U.S.C. 1117", "38 U.S.C. 1119", "38 U.S.C. 1120", "38 U.S.C. 501"],
+  "agenda": [
+    {
+      "publicationId": "202510",
+      "edition": "2026 Data",
+      "stage": "final-rule",
+      "rinStatus": "Previously Published in The Unified Agenda",
+      "priority": "Economically Significant",
+      "major": true,
+      "economicallySignificant": true,
+      "includedInRegulatoryPlan": false,
+      "plannedActions": [
+        { "action": "NPRM", "date": { "value": "2024-10-01", "precision": "day", "status": "anticipated", "note": "Published as 89 FR 79815 (document 2024-21852)." } },
+        { "action": "NPRM Comment Period End", "date": { "value": "2024-12-02", "precision": "day", "status": "anticipated" } },
+        { "action": "Final Action", "date": { "value": "2026-08", "precision": "month", "status": "anticipated", "note": "Source supplied imprecise date '08/00/2026'. No final rule published as of 2026-09-01; the action remains in OIRA final-stage review." } }
+      ],
+      "sourceUrl": "https://www.reginfo.gov/public/do/eAgendaViewRule?RIN=2900-AR75&pubId=202510",
+      "authenticity": {
+        "publisher": "reginfo-oira",
+        "legalEditionStatus": "planning-review-metadata",
+        "officialEditionVerified": false,
+        "note": "Unified Agenda dates describe planned or anticipated agency activity and are not themselves effective dates."
+      }
+    }
+  ],
+  "oiraReviews": [
+    {
+      "reviewId": "2900-AR75-2026-04-03-final-rule",
+      "rin": "2900-AR75",
+      "status": "pending",
+      "stage": "final-rule",
+      "receivedOn": "2026-04-03",
+      "legalDeadline": "none",
+      "economicallySignificant": false,
+      "regulatoryFlexibilityAnalysisRequired": "unknown",
+      "sourceUrl": "https://www.reginfo.gov/public/do/XMLViewFileAction?f=EO_RULES_UNDER_REVIEW.xml",
+      "authorityUse": "review-metadata-only",
+      "authenticity": {
+        "publisher": "reginfo-oira",
+        "legalEditionStatus": "planning-review-metadata",
+        "officialEditionVerified": false,
+        "note": "OIRA review status and conclusions describe centralized review history; they do not establish that a rule is effective or binding. The pending-review feed reported ECONOMICALLY_SIGNIFICANT=No on 2026-09-01 even though the Fall 2025 Unified Agenda lists this action as Economically Significant; each value is preserved as published by its source."
+      }
+    }
+  ],
+  "oiraMeetingAvailability": "unknown",
+  "oiraMeetings": [],
+  "federalRegisterDocuments": [
+    {
+      "documentNumber": "2024-21852",
+      "citation": "89 FR 79815",
+      "title": "VA Adjudication Regulations for Disability or Death Benefit Claims Based on Toxic Exposure",
+      "type": "proposed-rule",
+      "publicationDate": "2024-10-01",
+      "applicability": [],
+      "legalStatus": "nonbinding-proposal",
+      "rin": "2900-AR75",
+      "docketIds": [],
+      "cfrReferences": [
+        { "title": 38, "part": 3, "section": "3.159" },
+        { "title": 38, "part": 3, "section": "3.317" },
+        { "title": 38, "part": 3, "section": "3.320" }
+      ],
+      "federalRegisterUrl": "https://www.federalregister.gov/documents/2024-10-01/2024-21852/va-adjudication-regulations-for-disability-or-death-benefit-claims-based-on-toxic-exposure",
+      "govinfoPdfUrl": "https://www.govinfo.gov/content/pkg/FR-2024-10-01/pdf/2024-21852.pdf",
+      "publicParticipation": {
+        "docketIds": [],
+        "commentOpenOn": "2024-10-01",
+        "commentCloseOn": "2024-12-02",
+        "commentStatus": "closed"
+      },
+      "authenticity": {
+        "publisher": "federalregister-gov",
+        "legalEditionStatus": "informational-unofficial",
+        "officialEditionVerified": false,
+        "note": "FederalRegister.gov is used for structured metadata; binding legal reliance must be verified against the official Federal Register edition."
+      },
+      "correctsDocumentNumbers": [],
+      "supersedesDocumentNumbers": [],
+      "notes": []
+    }
+  ],
+  "impact": {
+    "currentLawChanged": false,
+    "pendingChange": true,
+    "affectedConditionIds": [],
+    "affectedClaimTheories": ["presumptive", "direct"],
+    "affectedDiagnosticCodes": [],
+    "affectedPresumptions": [],
+    "affectedEffectiveDateRules": [],
+    "affectedCfrReferences": [
+      { "title": 38, "part": 3, "section": "3.159" },
+      { "title": 38, "part": 3, "section": "3.317" },
+      { "title": 38, "part": 3, "section": "3.320" }
+    ],
+    "summary": "PACT Act implementation rulemaking proposing amendments to VA adjudication regulations (38 CFR 3.159, 3.317, 3.320) for disability and death benefit claims based on toxic exposure, including Gulf War undiagnosed-illness provisions. NPRM comments closed 2024-12-02; as of 2026-09-01 the final rule is pending OIRA review and nothing has been published, so this record is a pending regulatory development and not current law. Affected condition mappings will be added once the final rule text is published and reviewed.",
+    "reviewedOn": "2026-09-01"
+  },
+  "sourceCheckedOn": "2026-09-01"
+}
