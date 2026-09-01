@@ -1,0 +1,119 @@
+{
+  "rin": "2900-AR32",
+  "title": "Clarification of VA's Processing of Survivors Benefits Claims",
+  "agency": { "department": "Department of Veterans Affairs" },
+  "relatedRins": [],
+  "cfrReferences": [
+    { "title": 38, "part": 3, "section": "3.152" },
+    { "title": 38, "part": 3, "section": "3.702" }
+  ],
+  "legalAuthorities": ["38 U.S.C. 5101", "38 U.S.C. 1317"],
+  "agenda": [
+    {
+      "publicationId": "202510",
+      "edition": "2026 Data",
+      "stage": "completed",
+      "rinStatus": "Previously Published in The Unified Agenda",
+      "priority": "Substantive, Nonsignificant",
+      "major": false,
+      "economicallySignificant": false,
+      "includedInRegulatoryPlan": false,
+      "plannedActions": [
+        { "action": "NPRM", "date": { "value": "2024-03-11", "precision": "day", "status": "anticipated", "note": "Published as 89 FR 17354 (document 2024-04895)." } },
+        { "action": "NPRM Comment Period End", "date": { "value": "2024-05-10", "precision": "day", "status": "anticipated" } },
+        { "action": "Final Action", "date": { "value": "2026-01-22", "precision": "day", "status": "anticipated", "note": "Published as 91 FR 2709 (document 2026-01188)." } },
+        { "action": "Final Action Effective", "date": { "value": "2026-02-23", "precision": "day", "status": "anticipated" } }
+      ],
+      "sourceUrl": "https://www.reginfo.gov/public/do/eAgendaViewRule?RIN=2900-AR32&pubId=202510",
+      "authenticity": {
+        "publisher": "reginfo-oira",
+        "legalEditionStatus": "planning-review-metadata",
+        "officialEditionVerified": false,
+        "note": "Unified Agenda dates describe planned or anticipated agency activity and are not themselves effective dates."
+      }
+    }
+  ],
+  "oiraReviews": [],
+  "oiraMeetingAvailability": "unknown",
+  "oiraMeetings": [],
+  "federalRegisterDocuments": [
+    {
+      "documentNumber": "2024-04895",
+      "citation": "89 FR 17354",
+      "title": "Clarification of VA's Processing of Survivors Benefits Claims",
+      "type": "proposed-rule",
+      "publicationDate": "2024-03-11",
+      "applicability": [],
+      "legalStatus": "nonbinding-proposal",
+      "rin": "2900-AR32",
+      "docketIds": [],
+      "cfrReferences": [
+        { "title": 38, "part": 3, "section": "3.152" },
+        { "title": 38, "part": 3, "section": "3.702" }
+      ],
+      "federalRegisterUrl": "https://www.federalregister.gov/documents/2024-03-11/2024-04895/clarification-of-vas-processing-of-survivors-benefits-claims",
+      "govinfoPdfUrl": "https://www.govinfo.gov/content/pkg/FR-2024-03-11/pdf/2024-04895.pdf",
+      "publicParticipation": {
+        "docketIds": [],
+        "commentOpenOn": "2024-03-11",
+        "commentCloseOn": "2024-05-10",
+        "commentStatus": "closed"
+      },
+      "authenticity": {
+        "publisher": "federalregister-gov",
+        "legalEditionStatus": "informational-unofficial",
+        "officialEditionVerified": false,
+        "note": "FederalRegister.gov is used for structured metadata; binding legal reliance must be verified against the official Federal Register edition."
+      },
+      "correctsDocumentNumbers": [],
+      "supersedesDocumentNumbers": [],
+      "notes": []
+    },
+    {
+      "documentNumber": "2026-01188",
+      "citation": "91 FR 2709",
+      "title": "Clarification of VA's Processing of Survivors Benefits Claims",
+      "type": "rule",
+      "publicationDate": "2026-01-22",
+      "effectiveDate": "2026-02-23",
+      "applicability": [],
+      "legalStatus": "effective",
+      "rin": "2900-AR32",
+      "docketIds": ["VA-2024-VBA-0008"],
+      "cfrReferences": [
+        { "title": 38, "part": 3, "section": "3.152" },
+        { "title": 38, "part": 3, "section": "3.702" }
+      ],
+      "federalRegisterUrl": "https://www.federalregister.gov/documents/2026-01-22/2026-01188/clarification-of-vas-processing-of-survivors-benefits-claims",
+      "govinfoPdfUrl": "https://www.govinfo.gov/content/pkg/FR-2026-01-22/pdf/2026-01188.pdf",
+      "authenticity": {
+        "publisher": "federalregister-gov",
+        "legalEditionStatus": "informational-unofficial",
+        "officialEditionVerified": true,
+        "officialEditionSource": "govinfo",
+        "officialEditionUrl": "https://www.govinfo.gov/content/pkg/FR-2026-01-22/pdf/2026-01188.pdf",
+        "verifiedOn": "2026-09-01",
+        "note": "FederalRegister.gov is used for structured metadata; binding status verified against the official Federal Register edition on GovInfo."
+      },
+      "correctsDocumentNumbers": [],
+      "supersedesDocumentNumbers": [],
+      "notes": []
+    }
+  ],
+  "impact": {
+    "currentLawChanged": true,
+    "pendingChange": false,
+    "affectedConditionIds": [],
+    "affectedClaimTheories": [],
+    "affectedDiagnosticCodes": [],
+    "affectedPresumptions": [],
+    "affectedEffectiveDateRules": [],
+    "affectedCfrReferences": [
+      { "title": 38, "part": 3, "section": "3.152" },
+      { "title": 38, "part": 3, "section": "3.702" }
+    ],
+    "summary": "Effective 2026-02-23, VA processes Survivors Pension and dependency and indemnity compensation (DIC) claims so the surviving spouse or child receives the greater benefit. VA concurrently denies Survivors Pension and awards DIC unless Survivors Pension is more beneficial, which the rule limits to a surviving spouse with no dependents who is in a nursing home and has applied for or receives Medicaid. Claims-processing rule; it does not change service connection, rating, or presumption criteria relevant to the secondary-condition knowledge base.",
+    "reviewedOn": "2026-09-01"
+  },
+  "sourceCheckedOn": "2026-09-01"
+}
