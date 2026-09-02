@@ -63,7 +63,7 @@ describe("Mapping Expansion ME-15 qualified-human citation verification", () => 
   });
   it("promotes exactly the five matching master sources to active qualified-human-verified state", () => {
     const registry = load<MasterSourceRegistry>(path.join(ROOT, "data", "evidence", "master-sources.json"));
-    expect(registry.baselineCommit).toBe("13812063f0408ea1cf3235370836a0ac867767ce"); expect(registry.currentState).toBe("ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(registry.baselineCommit).toBe("f4537b5014297c8e1c783a1b38291367636c418a"); expect(registry.currentState).toBe("ME19-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
     for (const row of rows) {
       const sources = registry.sources.filter((s) => s.sourceId === `pmid-${row.pmid}`);
       expect(sources).toHaveLength(1); expect(sources[0]!.status).toBe("active"); expect(sources[0]!.verified).toBe(true);
@@ -72,7 +72,7 @@ describe("Mapping Expansion ME-15 qualified-human citation verification", () => 
   });
   it("preserves relationship identities, exact ranks, draft publication state, exact guards, and source linkage", () => {
     const registry = load<MasterRelationshipRegistry>(path.join(ROOT, "data", "evidence", "master-relationships.json"));
-    expect(registry.baselineCommit).toBe("13812063f0408ea1cf3235370836a0ac867767ce"); expect(registry.currentState).toBe("ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(registry.baselineCommit).toBe("f4537b5014297c8e1c783a1b38291367636c418a"); expect(registry.currentState).toBe("ME19-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
     for (const row of rows) {
       const rels = registry.relationships.filter((r) => r.relationshipId === `rel-${row.primaryId}-to-${row.targetId}`);
       expect(rels).toHaveLength(1); expect(rels[0]!.primaryPublicationState).toBe("draft"); expect(rels[0]!.rank).toBe(row.rank); expect(rels[0]!.publicationGuard.structuredGuardText).toBe(row.guard); expect(rels[0]!.sourceIds).toContain(`pmid-${row.pmid}`);

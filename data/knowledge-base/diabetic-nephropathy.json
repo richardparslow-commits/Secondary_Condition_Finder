@@ -5,5 +5,54 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease. Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of diabetic-nephropathy and chronic-kidney-disease",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: guideline-recognized-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Kidney Disease: Improving Global Outcomes (KDIGO) Diabetes Work Group. KDIGO 2022 Clinical Practice Guideline for Diabetes Management in Chronic Kidney Disease. Kidney Int. 2022;102(5S):S1-S127. PMID 36272764. doi:10.1016/j.kint.2022.06.008.",
+          "note": "Mapping Expansion Batch ME-19 evidence for the bounded diabetic-nephropathy to chronic-kidney-disease proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36272764/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 36272764; approved ME-19 source; guard: Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease. Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease. Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease. Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease. It is not asserted that the primary caused or aggravated the secondary in any individual case, and this mapping does not, by itself, establish a VA medical nexus.",
+        "evidenceGaps": "Independent documentation of diabetic-nephropathy and chronic-kidney-disease; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: guideline-recognized-association; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease.",
+        "alternativeEtiologiesToRuleOut": [
+          "hypertensive nephrosclerosis",
+          "renovascular or ischemic disease",
+          "obstructive uropathy",
+          "primary glomerular disease",
+          "interstitial nephritis",
+          "other systemic causes of chronic kidney disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

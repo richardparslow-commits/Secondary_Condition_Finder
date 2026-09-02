@@ -2,12 +2,12 @@
    "registry": "Master Relationship Registry 2026",
    "schemaVersion": 1,
    "status": "AUTHORITATIVE-CURRENT-STATE",
-   "baselineCommit": "13812063f0408ea1cf3235370836a0ac867767ce",
+   "baselineCommit": "f4537b5014297c8e1c783a1b38291367636c418a",
    "installedFrom": "Master Registry Discrepancy Resolution 2026",
    "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
    "counts": {
-      "relationships": 263,
-      "explicitPublicationGuards": 189,
+      "relationships": 268,
+      "explicitPublicationGuards": 194,
       "legacyRationaleBoundaries": 74
    },
    "relationships": [
@@ -8597,8 +8597,173 @@
          "sourceReferenceCount": 1,
          "pathwayIntelligencePresent": false,
          "suggestionObjectHash": "ccd0ff89f59b790469529d11370f5ae1e3ed86f9162819ee66f25f5e28750493"
+      },
+      {
+         "relationshipId": "rel-traumatic-brain-injury-residuals-to-depressive-disorder",
+         "primaryId": "traumatic-brain-injury-residuals",
+         "targetId": "depressive-disorder",
+         "direction": "traumatic-brain-injury-residuals -> depressive-disorder",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-19-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited meta-analysis reported that 27% of adults were diagnosed with major depressive disorder or dysthymia following non-penetrating traumatic brain injury and that 38% reported clinically significant depressive symptoms. Require documented residuals of adult non-penetrating traumatic brain injury and a separately established depressive disorder; the cited meta-analysis reported that 27% of adults were diagnosed with major depressive disorder or dysthymia following non-penetrating TBI and 38% reported clinically significant depressive symptoms, without establishing onset order, direction, or individual causation. Preserve pre-existing mood disorder, substance use, concurrent post-traumatic stress or other anxiety disorder, medications, sleep disorders, chronic pain, and endocrine disturbance as competing explanations. Do not infer a depressive disorder from transient mood symptoms, post-concussive complaints, or cognitive symptoms alone, and do not treat this population-level association as proof that traumatic brain injury caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+         },
+         "rationale": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited meta-analysis reported that 27% of adults were diagnosed with major depressive disorder or dysthymia following non-penetrating traumatic brain injury and that 38% reported clinically significant depressive symptoms. Require documented residuals of adult non-penetrating traumatic brain injury and a separately established depressive disorder; the cited meta-analysis reported that 27% of adults were diagnosed with major depressive disorder or dysthymia following non-penetrating TBI and 38% reported clinically significant depressive symptoms, without establishing onset order, direction, or individual causation. Preserve pre-existing mood disorder, substance use, concurrent post-traumatic stress or other anxiety disorder, medications, sleep disorders, chronic pain, and endocrine disturbance as competing explanations. Do not infer a depressive disorder from transient mood symptoms, post-concussive complaints, or cognitive symptoms alone, and do not treat this population-level association as proof that traumatic brain injury caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require documented residuals of adult non-penetrating traumatic brain injury and a separately established depressive disorder; the cited meta-analysis reported that 27% of adults were diagnosed with major depressive disorder or dysthymia following non-penetrating TBI and 38% reported clinically significant depressive symptoms, without establishing onset order, direction, or individual causation. Preserve pre-existing mood disorder, substance use, concurrent post-traumatic stress or other anxiety disorder, medications, sleep disorders, chronic pain, and endocrine disturbance as competing explanations. Do not infer a depressive disorder from transient mood symptoms, post-concussive complaints, or cognitive symptoms alone, and do not treat this population-level association as proof that traumatic brain injury caused an individual's depressive disorder.",
+            "boundarySource": "approved-me-19-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of traumatic-brain-injury-residuals and depressive-disorder",
+            "Chronology compatible with the approved bounded proposition",
+            "Phenotype/treatment boundary: population-level-comorbidity-association",
+            "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+            "Resolution of publication guard: Require documented residuals of adult non-penetrating traumatic brain injury and a separately established depressive disorder; the cited meta-analysis reported that 27% of adults were diagnosed with major depressive disorder or dysthymia following non-penetrating TBI and 38% reported clinically significant depressive symptoms, without establishing onset order, direction, or individual causation. Preserve pre-existing mood disorder, substance use, concurrent post-traumatic stress or other anxiety disorder, medications, sleep disorders, chronic pain, and endocrine disturbance as competing explanations. Do not infer a depressive disorder from transient mood symptoms, post-concussive complaints, or cognitive symptoms alone, and do not treat this population-level association as proof that traumatic brain injury caused an individual's depressive disorder."
+         ],
+         "sourceIds": [
+            "pmid-25038422"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "42b2e34f0d137bdc5f8a77809432c3a4b223c665cd9ad280d0a660de50c2ad29"
+      },
+      {
+         "relationshipId": "rel-allergic-rhinitis-to-asthma",
+         "primaryId": "allergic-rhinitis",
+         "targetId": "asthma",
+         "direction": "allergic-rhinitis -> asthma",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-19-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma. Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+         },
+         "rationale": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma. Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone.",
+            "boundarySource": "approved-me-19-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of allergic-rhinitis and asthma",
+            "Chronology compatible with the approved bounded proposition",
+            "Phenotype/treatment boundary: population-level-association",
+            "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+            "Resolution of publication guard: Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone."
+         ],
+         "sourceIds": [
+            "pmid-31660100"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "790f440094e7901b7be4a74d570bcc77825845878f019c372c013b912be94c12"
+      },
+      {
+         "relationshipId": "rel-diabetic-nephropathy-to-chronic-kidney-disease",
+         "primaryId": "diabetic-nephropathy",
+         "targetId": "chronic-kidney-disease",
+         "direction": "diabetic-nephropathy -> chronic-kidney-disease",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-19-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease. Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+         },
+         "rationale": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease. Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease.",
+            "boundarySource": "approved-me-19-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of diabetic-nephropathy and chronic-kidney-disease",
+            "Chronology compatible with the approved bounded proposition",
+            "Phenotype/treatment boundary: guideline-recognized-association",
+            "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+            "Resolution of publication guard: Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease."
+         ],
+         "sourceIds": [
+            "pmid-36272764"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "a11794b81c4ea26ae18c63a0662e590eb697ec8562870697c68c026f33cb857d"
+      },
+      {
+         "relationshipId": "rel-menstrual-disorders-to-anemia",
+         "primaryId": "menstrual-disorders",
+         "targetId": "anemia",
+         "direction": "menstrual-disorders -> anemia",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-19-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women. Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+         },
+         "rationale": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women. Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia.",
+            "boundarySource": "approved-me-19-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of menstrual-disorders and anemia",
+            "Chronology compatible with the approved bounded proposition",
+            "Phenotype/treatment boundary: population-level-clinical-framing-association",
+            "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+            "Resolution of publication guard: Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia."
+         ],
+         "sourceIds": [
+            "pmid-37538011"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "073dc17239fbc419d019713e6dac85c9c783d349e3d6a2a1ee9474e04d7e2715"
+      },
+      {
+         "relationshipId": "rel-oral-lichen-planus-lichenoid-lesions-to-oral-cancer",
+         "primaryId": "oral-lichen-planus-lichenoid-lesions",
+         "targetId": "oral-cancer",
+         "direction": "oral-lichen-planus-lichenoid-lesions -> oral-cancer",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-19-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions. Require biopsy-documented oral lichen planus or oral lichenoid lesion and separately established oral squamous cell carcinoma with compatible chronology; the cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions without establishing that any individual's cancer arose from the lichenoid lesion. Preserve tobacco use, alcohol use, other premalignant lesions (leukoplakia, erythroplakia), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral lichen planus caused an individual's oral cancer. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+         },
+         "rationale": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions. Require biopsy-documented oral lichen planus or oral lichenoid lesion and separately established oral squamous cell carcinoma with compatible chronology; the cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions without establishing that any individual's cancer arose from the lichenoid lesion. Preserve tobacco use, alcohol use, other premalignant lesions (leukoplakia, erythroplakia), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral lichen planus caused an individual's oral cancer. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require biopsy-documented oral lichen planus or oral lichenoid lesion and separately established oral squamous cell carcinoma with compatible chronology; the cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions without establishing that any individual's cancer arose from the lichenoid lesion. Preserve tobacco use, alcohol use, other premalignant lesions (leukoplakia, erythroplakia), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral lichen planus caused an individual's oral cancer.",
+            "boundarySource": "approved-me-19-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of oral-lichen-planus-lichenoid-lesions and oral-cancer",
+            "Chronology compatible with the approved bounded proposition",
+            "Phenotype/treatment boundary: population-level-malignant-transformation-association",
+            "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+            "Resolution of publication guard: Require biopsy-documented oral lichen planus or oral lichenoid lesion and separately established oral squamous cell carcinoma with compatible chronology; the cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions without establishing that any individual's cancer arose from the lichenoid lesion. Preserve tobacco use, alcohol use, other premalignant lesions (leukoplakia, erythroplakia), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral lichen planus caused an individual's oral cancer."
+         ],
+         "sourceIds": [
+            "pmid-28438300"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "855171c7489bb543338d84e11f6d61f1a644a1ce5548085d421b69a00a2b6dcf"
       }
    ],
-   "lastUpdatedBy": "Mapping Expansion Batch ME-18",
-   "currentState": "ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+   "lastUpdatedBy": "Mapping Expansion Batch ME-19",
+   "currentState": "ME19-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

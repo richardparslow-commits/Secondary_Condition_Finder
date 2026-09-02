@@ -80,7 +80,7 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run lint` | ESLint |
 | `npm run kb:validate` | Knowledge-base structural/integrity validation |
 | `npm run citations:audit` | Citation safety, provenance, and verification-debt audit |
-| `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-18 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
+| `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-19 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
 | `npm run citations:decay` | Live link-rot/staleness probe for citations (deliberate maintainer gate, not per-PR CI) |
 
 CI also builds the production app and runs real Chrome/ChromeDriver journeys for
@@ -245,19 +245,23 @@ repairs `erectile-dysfunction` → `depressive-disorder`; Batch 11 removes the
 unsupported ILD→cardiac-arrhythmia edge while preserving only clinically sourced
 ILD→OSA association research.
 
-The knowledge base now holds **263 relationships across 813 mapping files**,
-with **271 source references, 256 verified, 15 unverified** — all 15 remaining
-unverified references belong to the ME-16/ME-17/ME-18 mapping-expansion batches
-and await the separate qualified-human citation-verification gate. The 502
-master-list identities are framework-only draft mappings (empty suggestions)
-awaiting ME-style research; no automated change marks a new source verified.
+The knowledge base now holds **268 relationships across 813 mapping files**,
+with **276 source references, 256 verified, 20 unverified** — all 20 remaining
+unverified references belong to the ME-16/ME-17/ME-18/ME-19 mapping-expansion
+batches and await the separate qualified-human citation-verification gate. ME-19
+(batch 5) is the first mapping-expansion batch over the 502 master-list
+framework-only identities, adding one rank-1 bounded suggestion each for
+`traumatic-brain-injury-residuals`, `allergic-rhinitis`, `diabetic-nephropathy`,
+`menstrual-disorders`, and `oral-lichen-planus-lichenoid-lesions`; the remaining
+framework-only draft mappings (empty suggestions) continue to await ME-style
+research, and no automated change marks a new source verified.
 
 The knowledge base is a Causal Relational Graph (CRG), not a flat association
 list: every suggestion is enforced by the Zod schema to carry the CRG trio
 (`nexusClaim` as a `DIRECT_CAUSATION`/`AGGRAVATION`/`ASSOCIATION_ONLY`
 discriminated union, `causalMechanism`, and `evidentiaryProfile` with
 `etiologicalConsensus` replacing the deprecated `prevalence` field). `npm run
-audit:me-compliance` audits every mapping — including each of the 90 ME-1..ME-18
+audit:me-compliance` audits every mapping — including each of the 95 ME-1..ME-19
 relationships — for nexus-arm validity, consensus/alignment consistency,
 guard-disclaimer honesty, citation discipline, and quarantine compliance as a CI
 gate. `npm run citations:decay` is the maintainer-run link-rot/staleness probe.

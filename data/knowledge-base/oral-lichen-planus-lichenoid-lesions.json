@@ -5,5 +5,54 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "oral-cancer",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions. Require biopsy-documented oral lichen planus or oral lichenoid lesion and separately established oral squamous cell carcinoma with compatible chronology; the cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions without establishing that any individual's cancer arose from the lichenoid lesion. Preserve tobacco use, alcohol use, other premalignant lesions (leukoplakia, erythroplakia), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral lichen planus caused an individual's oral cancer. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of oral-lichen-planus-lichenoid-lesions and oral-cancer",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-malignant-transformation-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require biopsy-documented oral lichen planus or oral lichenoid lesion and separately established oral squamous cell carcinoma with compatible chronology; the cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions without establishing that any individual's cancer arose from the lichenoid lesion. Preserve tobacco use, alcohol use, other premalignant lesions (leukoplakia, erythroplakia), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral lichen planus caused an individual's oral cancer."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Aghbari SMH, Abushouk AI, Attia A, Elmaraezy A, Menshawy A, Ahmed MS, Elsaadany BA, Ahmed EM. Malignant transformation of oral lichen planus and oral lichenoid lesions: A meta-analysis of 20095 patient data. Oral Oncol. 2017;68:92-102. PMID 28438300. doi:10.1016/j.oraloncology.2017.03.012.",
+          "note": "Mapping Expansion Batch ME-19 evidence for the bounded oral-lichen-planus-lichenoid-lesions to oral-cancer proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28438300/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 28438300; approved ME-19 source; guard: Require biopsy-documented oral lichen planus or oral lichenoid lesion and separately established oral squamous cell carcinoma with compatible chronology; the cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions without establishing that any individual's cancer arose from the lichenoid lesion. Preserve tobacco use, alcohol use, other premalignant lesions (leukoplakia, erythroplakia), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral lichen planus caused an individual's oral cancer."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions. Require biopsy-documented oral lichen planus or oral lichenoid lesion and separately established oral squamous cell carcinoma with compatible chronology; the cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions without establishing that any individual's cancer arose from the lichenoid lesion. Preserve tobacco use, alcohol use, other premalignant lesions (leukoplakia, erythroplakia), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral lichen planus caused an individual's oral cancer.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions. Require biopsy-documented oral lichen planus or oral lichenoid lesion and separately established oral squamous cell carcinoma with compatible chronology; the cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions without establishing that any individual's cancer arose from the lichenoid lesion. Preserve tobacco use, alcohol use, other premalignant lesions (leukoplakia, erythroplakia), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral lichen planus caused an individual's oral cancer.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions. Require biopsy-documented oral lichen planus or oral lichenoid lesion and separately established oral squamous cell carcinoma with compatible chronology; the cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions without establishing that any individual's cancer arose from the lichenoid lesion. Preserve tobacco use, alcohol use, other premalignant lesions (leukoplakia, erythroplakia), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral lichen planus caused an individual's oral cancer. It is not asserted that the primary caused or aggravated the secondary in any individual case, and this mapping does not, by itself, establish a VA medical nexus.",
+        "evidenceGaps": "Independent documentation of oral-lichen-planus-lichenoid-lesions and oral-cancer; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: population-level-malignant-transformation-association; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require biopsy-documented oral lichen planus or oral lichenoid lesion and separately established oral squamous cell carcinoma with compatible chronology; the cited meta-analysis of 20,095 patients reported a low but nonzero rate of malignant transformation of oral lichen planus and oral lichenoid lesions without establishing that any individual's cancer arose from the lichenoid lesion. Preserve tobacco use, alcohol use, other premalignant lesions (leukoplakia, erythroplakia), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral lichen planus caused an individual's oral cancer.",
+        "alternativeEtiologiesToRuleOut": [
+          "tobacco use",
+          "alcohol use",
+          "other premalignant lesions (leukoplakia, erythroplakia)",
+          "HPV infection",
+          "immunocompromise",
+          "other oral-cancer risk factors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

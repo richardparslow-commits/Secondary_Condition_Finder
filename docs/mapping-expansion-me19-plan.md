@@ -1,8 +1,8 @@
 # Mapping Expansion ME-19 — Batch Plan (first batch over the 502 new framework-only identities)
 
-**Status: planned — not implemented.**
+**Status: implemented as ME-19 batch 5 on 2026-09-02 (see `docs/mapping-expansion-me19-approved-implementation-ledger.{json,md}`) — citations pending qualified-human verification.**
 
-- Next free batch number after ME-18 (batch 4). ME-19 is batch 5 of the ME series and the **first mapping-expansion batch over the 502 framework-only draft identities** introduced by the 2026-09 master-list catalog expansion (Wave 8: 311 → 813 conditions).
+- Original plan text below. ME-19 is batch 5 of the ME series and the **first mapping-expansion batch over the 502 framework-only draft identities** introduced by the 2026-09 master-list catalog expansion (Wave 8: 311 → 813 conditions).
 - Batch shape follows the established ME convention: **5 primaries, one rank-1 suggestion each**, all primaries remain `draft: true`, every new clinical reference enters `verified: false` and awaits the separate qualified-human citation-verification gate, and GitHub/Vercel writes remain forbidden.
 - Authoring posture for every row: `ASSOCIATION_ONLY` / `NOT_ESTABLISHED` / `NOT_ASSERTED`, `hypothesizedOnly: true`, with a strict publication guard — identical to the ME-12/ME-16/ME-17/ME-18 rows. No causation or aggravation claim is asserted by any automated change.
 

@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "13812063f0408ea1cf3235370836a0ac867767ce",
+  "baselineCommit": "f4537b5014297c8e1c783a1b38291367636c418a",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 271,
+    "liveSourceReferenceUses": 276,
     "activeSourceEntities": 233,
-    "pendingVerificationSourceEntities": 15,
+    "pendingVerificationSourceEntities": 20,
     "activeClinicalSourceEntities": 232,
-    "pendingClinicalSourceEntities": 15,
+    "pendingClinicalSourceEntities": 20,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 257,
+    "totalSourceEntitiesIncludingLineage": 262,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -9722,8 +9722,208 @@
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
+    },
+    {
+      "sourceId": "pmid-25038422",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "25038422",
+      "doi": "10.1016/j.neubiorev.2014.07.007",
+      "canonicalCitation": "Osborn AJ, Mathias JL, Fairweather-Schmidt AK. Depression following adult, non-penetrating traumatic brain injury: a meta-analysis examining methodological variables and sample characteristics. Neurosci Biobehav Rev. 2014;47:1-15. PMID 25038422. doi:10.1016/j.neubiorev.2014.07.007.",
+      "citationVariants": [
+        "Osborn AJ, Mathias JL, Fairweather-Schmidt AK. Depression following adult, non-penetrating traumatic brain injury: a meta-analysis examining methodological variables and sample characteristics. Neurosci Biobehav Rev. 2014;47:1-15. PMID 25038422. doi:10.1016/j.neubiorev.2014.07.007."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25038422/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/25038422/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-traumatic-brain-injury-residuals-to-depressive-disorder",
+          "primaryId": "traumatic-brain-injury-residuals",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c80363c9d8a3dfb3f6f89bc8ccf88160b34025cb87ca4c85851851ea5a2a39bc"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-31660100",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31660100",
+      "doi": "10.1016/j.waojou.2019.100069",
+      "canonicalCitation": "Tohidinik HR, Mallah N, Takkouche B. History of allergic rhinitis and risk of asthma; a systematic review and meta-analysis. World Allergy Organ J. 2019;12(10):100069. PMID 31660100. doi:10.1016/j.waojou.2019.100069.",
+      "citationVariants": [
+        "Tohidinik HR, Mallah N, Takkouche B. History of allergic rhinitis and risk of asthma; a systematic review and meta-analysis. World Allergy Organ J. 2019;12(10):100069. PMID 31660100. doi:10.1016/j.waojou.2019.100069."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31660100/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31660100/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-allergic-rhinitis-to-asthma",
+          "primaryId": "allergic-rhinitis",
+          "targetId": "asthma",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "634aebedda00c116a50be7ddd582e0dbb1f678c7bb3d80ba0d5de38c7d559e49"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-36272764",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "36272764",
+      "doi": "10.1016/j.kint.2022.06.008",
+      "canonicalCitation": "Kidney Disease: Improving Global Outcomes (KDIGO) Diabetes Work Group. KDIGO 2022 Clinical Practice Guideline for Diabetes Management in Chronic Kidney Disease. Kidney Int. 2022;102(5S):S1-S127. PMID 36272764. doi:10.1016/j.kint.2022.06.008.",
+      "citationVariants": [
+        "Kidney Disease: Improving Global Outcomes (KDIGO) Diabetes Work Group. KDIGO 2022 Clinical Practice Guideline for Diabetes Management in Chronic Kidney Disease. Kidney Int. 2022;102(5S):S1-S127. PMID 36272764. doi:10.1016/j.kint.2022.06.008."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36272764/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36272764/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-diabetic-nephropathy-to-chronic-kidney-disease",
+          "primaryId": "diabetic-nephropathy",
+          "targetId": "chronic-kidney-disease",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "7545dcc17e96cefca0bba73ab84e893537867ecbbf7e7bb9523482ceeadfb495"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-37538011",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37538011",
+      "doi": "10.1002/ijgo.14943",
+      "canonicalCitation": "Munro MG. Heavy menstrual bleeding, iron deficiency, and iron deficiency anemia: Framing the issue. Int J Gynaecol Obstet. 2023;162(Suppl 2):7-13. PMID 37538011. doi:10.1002/ijgo.14943.",
+      "citationVariants": [
+        "Munro MG. Heavy menstrual bleeding, iron deficiency, and iron deficiency anemia: Framing the issue. Int J Gynaecol Obstet. 2023;162(Suppl 2):7-13. PMID 37538011. doi:10.1002/ijgo.14943."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37538011/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37538011/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-menstrual-disorders-to-anemia",
+          "primaryId": "menstrual-disorders",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c07e47c46bb2520eb46d175669a92a334ca4fb67b570e98439b42e0b99889e61"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-28438300",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "28438300",
+      "doi": "10.1016/j.oraloncology.2017.03.012",
+      "canonicalCitation": "Aghbari SMH, Abushouk AI, Attia A, Elmaraezy A, Menshawy A, Ahmed MS, Elsaadany BA, Ahmed EM. Malignant transformation of oral lichen planus and oral lichenoid lesions: A meta-analysis of 20095 patient data. Oral Oncol. 2017;68:92-102. PMID 28438300. doi:10.1016/j.oraloncology.2017.03.012.",
+      "citationVariants": [
+        "Aghbari SMH, Abushouk AI, Attia A, Elmaraezy A, Menshawy A, Ahmed MS, Elsaadany BA, Ahmed EM. Malignant transformation of oral lichen planus and oral lichenoid lesions: A meta-analysis of 20095 patient data. Oral Oncol. 2017;68:92-102. PMID 28438300. doi:10.1016/j.oraloncology.2017.03.012."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28438300/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/28438300/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-oral-lichen-planus-lichenoid-lesions-to-oral-cancer",
+          "primaryId": "oral-lichen-planus-lichenoid-lesions",
+          "targetId": "oral-cancer",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "7c9b9bd5f0e8076d3023fd222305b650cc54e14f34615622da43712eb7a935c7"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-18",
-  "currentState": "ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-19",
+  "currentState": "ME19-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }
