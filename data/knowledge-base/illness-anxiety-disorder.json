@@ -6,5 +6,30 @@
     "Psychiatric comorbidity, sleep disturbance, medication effects, healthcare utilization, and functional impairment may be clinically relevant, but symptom concern, reassurance seeking, healthcare use, or shared anxiety symptoms must not be converted into proof of another diagnosis or a directional secondary relationship.",
     "Reconsider only with illness-anxiety-disorder-specific evidence matched to an exact downstream diagnosis plus individual chronology separating that diagnosis from pre-existing anxiety, depressive, obsessive-compulsive, somatic-symptom, trauma-related, or medical conditions."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited psychiatric-consultation study reported major depression as the most frequent comorbid disturbance among patients with hypochondriasis, usually current and most often with onset after that of hypochondriasis. Require independently established DSM-5 illness anxiety disorder (or its hypochondriasis diagnostic predecessor) and a separately established depressive disorder; the cited psychiatric-consultation study reported major depression as the most frequent comorbid disturbance among patients with hypochondriasis without establishing individual causation or direction. Preserve other anxiety disorders, somatic symptom disorder, substance use, medical illness, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from health anxiety, illness-related distress, or impairment alone, and do not treat this clinical-sample association as proof that illness anxiety disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of illness-anxiety-disorder and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: clinical-sample-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established DSM-5 illness anxiety disorder (or its hypochondriasis diagnostic predecessor) and a separately established depressive disorder; the cited psychiatric-consultation study reported major depression as the most frequent comorbid disturbance among patients with hypochondriasis without establishing individual causation or direction. Preserve other anxiety disorders, somatic symptom disorder, substance use, medical illness, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from health anxiety, illness-related distress, or impairment alone, and do not treat this clinical-sample association as proof that illness anxiety disorder caused an individual's depressive disorder."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Noyes R Jr, Kathol RG, Fisher MM, Phillips BM, Suelzer MT, Holt CS. Psychiatric comorbidity among patients with hypochondriasis. Gen Hosp Psychiatry. 1994;16(2):78-87. PMID 8039697. doi:10.1016/0163-8343(94)90049-3.",
+          "note": "Mapping Expansion Batch ME-18 evidence for the bounded illness-anxiety-disorder to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8039697/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-01",
+          "sourceLocator": "PMID 8039697; approved ME-18 source; guard: Require independently established DSM-5 illness anxiety disorder (or its hypochondriasis diagnostic predecessor) and a separately established depressive disorder; the cited psychiatric-consultation study reported major depression as the most frequent comorbid disturbance among patients with hypochondriasis without establishing individual causation or direction. Preserve other anxiety disorders, somatic symptom disorder, substance use, medical illness, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from health anxiety, illness-related distress, or impairment alone, and do not treat this clinical-sample association as proof that illness anxiety disorder caused an individual's depressive disorder."
+        }
+      ]
+    }
+  ]
 }

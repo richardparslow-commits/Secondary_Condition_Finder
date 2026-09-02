@@ -46,8 +46,8 @@ describe("mapping expansion ME-10", () => {
 
   it("pins the exact final ME-10 citation totals", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
-    expect(refs).toHaveLength(266);
+    expect(refs).toHaveLength(271);
     expect(refs.filter((source) => source.verified === true)).toHaveLength(256);
-    expect(refs.filter((source) => source.verified === false)).toHaveLength(10);
+    expect(refs.filter((source) => source.verified === false)).toHaveLength(15);
   });
 });

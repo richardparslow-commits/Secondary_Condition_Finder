@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "b3c9745fed30c66e994a92302baf2d78118802df",
+  "baselineCommit": "13812063f0408ea1cf3235370836a0ac867767ce",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 266,
+    "liveSourceReferenceUses": 271,
     "activeSourceEntities": 233,
-    "pendingVerificationSourceEntities": 10,
+    "pendingVerificationSourceEntities": 15,
     "activeClinicalSourceEntities": 232,
-    "pendingClinicalSourceEntities": 10,
+    "pendingClinicalSourceEntities": 15,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 252,
+    "totalSourceEntitiesIncludingLineage": 257,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -9522,8 +9522,208 @@
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
+    },
+    {
+      "sourceId": "pmid-12562565",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "12562565",
+      "doi": "10.1176/appi.ajp.160.2.221",
+      "canonicalCitation": "Afari N, Buchwald D. Chronic fatigue syndrome: a review. Am J Psychiatry. 2003;160(2):221-236. PMID 12562565. doi:10.1176/appi.ajp.160.2.221.",
+      "citationVariants": [
+        "Afari N, Buchwald D. Chronic fatigue syndrome: a review. Am J Psychiatry. 2003;160(2):221-236. PMID 12562565. doi:10.1176/appi.ajp.160.2.221."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12562565/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/12562565/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-chronic-fatigue-syndrome-to-depressive-disorder",
+          "primaryId": "chronic-fatigue-syndrome",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5bdbe0553882eebdfd38f31be0fddc70d97af98c3fc32949f971122182a2a0c5"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-8039697",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "8039697",
+      "doi": "10.1016/0163-8343(94)90049-3",
+      "canonicalCitation": "Noyes R Jr, Kathol RG, Fisher MM, Phillips BM, Suelzer MT, Holt CS. Psychiatric comorbidity among patients with hypochondriasis. Gen Hosp Psychiatry. 1994;16(2):78-87. PMID 8039697. doi:10.1016/0163-8343(94)90049-3.",
+      "citationVariants": [
+        "Noyes R Jr, Kathol RG, Fisher MM, Phillips BM, Suelzer MT, Holt CS. Psychiatric comorbidity among patients with hypochondriasis. Gen Hosp Psychiatry. 1994;16(2):78-87. PMID 8039697. doi:10.1016/0163-8343(94)90049-3."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8039697/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/8039697/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-illness-anxiety-disorder-to-depressive-disorder",
+          "primaryId": "illness-anxiety-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "be730724ecb16936c03c09fa100ba2c22b7508392114a2c471438e739c76edc4"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-22459786",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "22459786",
+      "doi": "10.1016/j.cpr.2012.02.001",
+      "canonicalCitation": "Van Meter AR, Youngstrom EA, Findling RL. Cyclothymic disorder: a critical review. Clin Psychol Rev. 2012;32(4):229-243. PMID 22459786. doi:10.1016/j.cpr.2012.02.001.",
+      "citationVariants": [
+        "Van Meter AR, Youngstrom EA, Findling RL. Cyclothymic disorder: a critical review. Clin Psychol Rev. 2012;32(4):229-243. PMID 22459786. doi:10.1016/j.cpr.2012.02.001."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22459786/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/22459786/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-cyclothymic-disorder-to-bipolar-disorder",
+          "primaryId": "cyclothymic-disorder",
+          "targetId": "bipolar-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "bef53a778bbb4fa9bf22a50b0a3d018c5706f003151332c352ae3777fd33727d"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-31163237",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31163237",
+      "doi": "10.1016/j.jaad.2019.05.086",
+      "canonicalCitation": "Okhovat JP, Marks DH, Manatis-Lornell A, Hagigeorges D, Locascio JJ, Senna MM. Association between alopecia areata, anxiety, and depression: a systematic review and meta-analysis. J Am Acad Dermatol. 2023;88(5):1040-1050. PMID 31163237. doi:10.1016/j.jaad.2019.05.086.",
+      "citationVariants": [
+        "Okhovat JP, Marks DH, Manatis-Lornell A, Hagigeorges D, Locascio JJ, Senna MM. Association between alopecia areata, anxiety, and depression: a systematic review and meta-analysis. J Am Acad Dermatol. 2023;88(5):1040-1050. PMID 31163237. doi:10.1016/j.jaad.2019.05.086."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31163237/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31163237/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-alopecia-areata-to-depressive-disorder",
+          "primaryId": "alopecia-areata",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "b89304837100fc8dbdfb9dd427d14d208ebfae0ce53689be6964b579a8196437"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-27878819",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "27878819",
+      "doi": "10.1111/bjd.15199",
+      "canonicalCitation": "Lai YC, Yew YW, Kennedy C, Schwartz RA. Vitiligo and depression: a systematic review and meta-analysis of observational studies. Br J Dermatol. 2017;177(3):708-718. PMID 27878819. doi:10.1111/bjd.15199.",
+      "citationVariants": [
+        "Lai YC, Yew YW, Kennedy C, Schwartz RA. Vitiligo and depression: a systematic review and meta-analysis of observational studies. Br J Dermatol. 2017;177(3):708-718. PMID 27878819. doi:10.1111/bjd.15199."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27878819/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27878819/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-vitiligo-to-depressive-disorder",
+          "primaryId": "vitiligo",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "afea730b3d6f55aa1a3f76aa4a5208ba097190019670a24bdced211d9aabe666"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-17",
-  "currentState": "ME17-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-18",
+  "currentState": "ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

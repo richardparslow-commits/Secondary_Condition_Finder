@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "b3c9745fed30c66e994a92302baf2d78118802df",
+  "baselineCommit": "13812063f0408ea1cf3235370836a0ac867767ce",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 258,
-    "explicitPublicationGuards": 184,
+    "relationships": 263,
+    "explicitPublicationGuards": 189,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -8690,8 +8690,178 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "624032d7b261a483b34c3c1aa6424f6267ad2402a22a9d9585f004ceade4590c"
+    },
+    {
+      "relationshipId": "rel-chronic-fatigue-syndrome-to-depressive-disorder",
+      "primaryId": "chronic-fatigue-syndrome",
+      "targetId": "depressive-disorder",
+      "direction": "chronic-fatigue-syndrome -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me-18-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited review reported significant psychiatric comorbidity and symptom overlap between chronic fatigue syndrome and depressive and other psychiatric disorders without establishing individual causation or direction. Require independently established chronic fatigue syndrome (CFS/ME) and a separately established depressive disorder; the cited review reported substantial comorbidity and symptom overlap between chronic fatigue syndrome and depressive and other psychiatric disorders without establishing onset order, direction, or individual causation. Preserve other medical illness, sleep disorders, substance use, medications, endocrine disease, anemia, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from fatigue, post-exertional malaise, or impairment alone, and do not treat this population-level association as proof that chronic fatigue syndrome caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited review reported significant psychiatric comorbidity and symptom overlap between chronic fatigue syndrome and depressive and other psychiatric disorders without establishing individual causation or direction. Require independently established chronic fatigue syndrome (CFS/ME) and a separately established depressive disorder; the cited review reported substantial comorbidity and symptom overlap between chronic fatigue syndrome and depressive and other psychiatric disorders without establishing onset order, direction, or individual causation. Preserve other medical illness, sleep disorders, substance use, medications, endocrine disease, anemia, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from fatigue, post-exertional malaise, or impairment alone, and do not treat this population-level association as proof that chronic fatigue syndrome caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established chronic fatigue syndrome (CFS/ME) and a separately established depressive disorder; the cited review reported substantial comorbidity and symptom overlap between chronic fatigue syndrome and depressive and other psychiatric disorders without establishing onset order, direction, or individual causation. Preserve other medical illness, sleep disorders, substance use, medications, endocrine disease, anemia, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from fatigue, post-exertional malaise, or impairment alone, and do not treat this population-level association as proof that chronic fatigue syndrome caused an individual's depressive disorder.",
+        "boundarySource": "approved-me-18-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of chronic-fatigue-syndrome and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established chronic fatigue syndrome (CFS/ME) and a separately established depressive disorder; the cited review reported substantial comorbidity and symptom overlap between chronic fatigue syndrome and depressive and other psychiatric disorders without establishing onset order, direction, or individual causation. Preserve other medical illness, sleep disorders, substance use, medications, endocrine disease, anemia, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from fatigue, post-exertional malaise, or impairment alone, and do not treat this population-level association as proof that chronic fatigue syndrome caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-12562565"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "210c391c547c9eed44705f722c396af2cee64f52f6f8eac9c751d5b33f6ff062"
+    },
+    {
+      "relationshipId": "rel-illness-anxiety-disorder-to-depressive-disorder",
+      "primaryId": "illness-anxiety-disorder",
+      "targetId": "depressive-disorder",
+      "direction": "illness-anxiety-disorder -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me-18-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited psychiatric-consultation study reported major depression as the most frequent comorbid disturbance among patients with hypochondriasis, usually current and most often with onset after that of hypochondriasis. Require independently established DSM-5 illness anxiety disorder (or its hypochondriasis diagnostic predecessor) and a separately established depressive disorder; the cited psychiatric-consultation study reported major depression as the most frequent comorbid disturbance among patients with hypochondriasis without establishing individual causation or direction. Preserve other anxiety disorders, somatic symptom disorder, substance use, medical illness, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from health anxiety, illness-related distress, or impairment alone, and do not treat this clinical-sample association as proof that illness anxiety disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited psychiatric-consultation study reported major depression as the most frequent comorbid disturbance among patients with hypochondriasis, usually current and most often with onset after that of hypochondriasis. Require independently established DSM-5 illness anxiety disorder (or its hypochondriasis diagnostic predecessor) and a separately established depressive disorder; the cited psychiatric-consultation study reported major depression as the most frequent comorbid disturbance among patients with hypochondriasis without establishing individual causation or direction. Preserve other anxiety disorders, somatic symptom disorder, substance use, medical illness, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from health anxiety, illness-related distress, or impairment alone, and do not treat this clinical-sample association as proof that illness anxiety disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established DSM-5 illness anxiety disorder (or its hypochondriasis diagnostic predecessor) and a separately established depressive disorder; the cited psychiatric-consultation study reported major depression as the most frequent comorbid disturbance among patients with hypochondriasis without establishing individual causation or direction. Preserve other anxiety disorders, somatic symptom disorder, substance use, medical illness, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from health anxiety, illness-related distress, or impairment alone, and do not treat this clinical-sample association as proof that illness anxiety disorder caused an individual's depressive disorder.",
+        "boundarySource": "approved-me-18-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of illness-anxiety-disorder and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: clinical-sample-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established DSM-5 illness anxiety disorder (or its hypochondriasis diagnostic predecessor) and a separately established depressive disorder; the cited psychiatric-consultation study reported major depression as the most frequent comorbid disturbance among patients with hypochondriasis without establishing individual causation or direction. Preserve other anxiety disorders, somatic symptom disorder, substance use, medical illness, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from health anxiety, illness-related distress, or impairment alone, and do not treat this clinical-sample association as proof that illness anxiety disorder caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-8039697"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "234291a43d4beb7544507ab7f3a97d72935a27c5df923312a25855a85a073471"
+    },
+    {
+      "relationshipId": "rel-cyclothymic-disorder-to-bipolar-disorder",
+      "primaryId": "cyclothymic-disorder",
+      "targetId": "bipolar-disorder",
+      "direction": "cyclothymic-disorder -> bipolar-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me-18-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum, without establishing that any individual with cyclothymic disorder will progress to full bipolar disorder. Require independently established cyclothymic disorder and a separately established full bipolar disorder (type I or II) before presenting the relationship; the cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum and does not establish that any individual will progress to full bipolar disorder. Preserve major depressive disorder, other bipolar-spectrum presentations, substance use, medications, personality factors, and other psychiatric illness as competing explanations. Do not infer bipolar disorder from hypomanic or depressive symptoms alone, and do not treat this spectrum-level association as proof that cyclothymic disorder caused an individual's bipolar disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum, without establishing that any individual with cyclothymic disorder will progress to full bipolar disorder. Require independently established cyclothymic disorder and a separately established full bipolar disorder (type I or II) before presenting the relationship; the cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum and does not establish that any individual will progress to full bipolar disorder. Preserve major depressive disorder, other bipolar-spectrum presentations, substance use, medications, personality factors, and other psychiatric illness as competing explanations. Do not infer bipolar disorder from hypomanic or depressive symptoms alone, and do not treat this spectrum-level association as proof that cyclothymic disorder caused an individual's bipolar disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established cyclothymic disorder and a separately established full bipolar disorder (type I or II) before presenting the relationship; the cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum and does not establish that any individual will progress to full bipolar disorder. Preserve major depressive disorder, other bipolar-spectrum presentations, substance use, medications, personality factors, and other psychiatric illness as competing explanations. Do not infer bipolar disorder from hypomanic or depressive symptoms alone, and do not treat this spectrum-level association as proof that cyclothymic disorder caused an individual's bipolar disorder.",
+        "boundarySource": "approved-me-18-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of cyclothymic-disorder and bipolar-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-spectrum-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established cyclothymic disorder and a separately established full bipolar disorder (type I or II) before presenting the relationship; the cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum and does not establish that any individual will progress to full bipolar disorder. Preserve major depressive disorder, other bipolar-spectrum presentations, substance use, medications, personality factors, and other psychiatric illness as competing explanations. Do not infer bipolar disorder from hypomanic or depressive symptoms alone, and do not treat this spectrum-level association as proof that cyclothymic disorder caused an individual's bipolar disorder."
+      ],
+      "sourceIds": [
+        "pmid-22459786"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "6710d0f730e249ed906f398fe0c74ef67ddbb9b7cb9a8406e28f8de6fd367e94"
+    },
+    {
+      "relationshipId": "rel-alopecia-areata-to-depressive-disorder",
+      "primaryId": "alopecia-areata",
+      "targetId": "depressive-disorder",
+      "direction": "alopecia-areata -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me-18-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from hair-loss-related distress, appearance concern, or impairment alone, and do not treat this population-level association as proof that alopecia areata caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from hair-loss-related distress, appearance concern, or impairment alone, and do not treat this population-level association as proof that alopecia areata caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from hair-loss-related distress, appearance concern, or impairment alone, and do not treat this population-level association as proof that alopecia areata caused an individual's depressive disorder.",
+        "boundarySource": "approved-me-18-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of alopecia-areata and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from hair-loss-related distress, appearance concern, or impairment alone, and do not treat this population-level association as proof that alopecia areata caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-31163237"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "de932c2e82de5626d6dfdc4568ccc5dce01d3c5b954de054e4a875a4461e59cf"
+    },
+    {
+      "relationshipId": "rel-vitiligo-to-depressive-disorder",
+      "primaryId": "vitiligo",
+      "targetId": "depressive-disorder",
+      "direction": "vitiligo -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me-18-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported significantly increased odds of depression among patients with vitiligo without establishing onset order or direction. Require independently established vitiligo and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with vitiligo without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from skin-pigmentation-related distress, stigmatization, or impairment alone, and do not treat this population-level association as proof that vitiligo caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported significantly increased odds of depression among patients with vitiligo without establishing onset order or direction. Require independently established vitiligo and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with vitiligo without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from skin-pigmentation-related distress, stigmatization, or impairment alone, and do not treat this population-level association as proof that vitiligo caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established vitiligo and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with vitiligo without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from skin-pigmentation-related distress, stigmatization, or impairment alone, and do not treat this population-level association as proof that vitiligo caused an individual's depressive disorder.",
+        "boundarySource": "approved-me-18-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of vitiligo and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established vitiligo and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with vitiligo without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from skin-pigmentation-related distress, stigmatization, or impairment alone, and do not treat this population-level association as proof that vitiligo caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-27878819"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "c676c43b9b40a5a0d2992a2855fb410c61c7a4b39211cf2906402d838d3dd8bb"
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-17",
-  "currentState": "ME17-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-18",
+  "currentState": "ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

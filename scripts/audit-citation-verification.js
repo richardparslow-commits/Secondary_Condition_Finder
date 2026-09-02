@@ -31,16 +31,17 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // Final ME-15 citation state: 256 live verified / 0 unverified / 0 review; 262 verified provenance including 6 retired verified.
 // ME-16 mapping adds 5 bounded mental-disorder sources as verified:false; qualified-human citation verification is separately gated.
 // ME-17 mapping adds 5 more bounded sources as verified:false; qualified-human citation verification is separately gated.
+// ME-18 mapping adds 5 more bounded sources as verified:false; qualified-human citation verification is separately gated.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 266,
+  references: 271,
   liveVerified: 256,
   retiredVerified: 6,
   verifiedProvenance: 262,
-  unverified: 10,
+  unverified: 15,
   reviewFindings: 0,
-  liveClinicalEvidenceWithUrls: 261,
+  liveClinicalEvidenceWithUrls: 266,
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 265,
+  clinicalEvidenceProvenanceWithUrls: 270,
 });
 
 const hardFindings = [];
