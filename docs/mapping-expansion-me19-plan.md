@@ -33,6 +33,8 @@ Publication of the 5 rows requires the qualified-human citation-verification ste
 
 ## Ranked backlog for ME-20 onward (one edge per primary, same process)
 
+> Backlog rows 1-5 (`pheochromocytoma -> hypertension`, `sjogren-s-syndrome -> dry-eye-syndrome`, `leukoplakia -> oral-cancer`, `erythroplakia -> oral-cancer`, `meningitis -> hearing-loss`) were implemented as **ME-20** on 2026-09-02; see `docs/mapping-expansion-me20-approved-implementation-ledger.{json,md}`. Remaining backlog below.
+
 1. `pheochromocytoma` → `hypertension`
 2. `sjogren-s-syndrome` → `dry-eye-syndrome`
 3. `leukoplakia` → `oral-cancer`

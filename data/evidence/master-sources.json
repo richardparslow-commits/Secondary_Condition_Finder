@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "f4537b5014297c8e1c783a1b38291367636c418a",
+  "baselineCommit": "ea005e50ccbc30800dd46f3872f764f98e977c1f",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 276,
+    "liveSourceReferenceUses": 281,
     "activeSourceEntities": 233,
-    "pendingVerificationSourceEntities": 20,
+    "pendingVerificationSourceEntities": 25,
     "activeClinicalSourceEntities": 232,
-    "pendingClinicalSourceEntities": 20,
+    "pendingClinicalSourceEntities": 25,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 262,
+    "totalSourceEntitiesIncludingLineage": 267,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -9922,8 +9922,208 @@
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
+    },
+    {
+      "sourceId": "pmid-24893135",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "24893135",
+      "doi": "10.1210/jc.2014-1498",
+      "canonicalCitation": "Lenders JW, Duh QY, Eisenhofer G, Gimenez-Roqueplo AP, Grebe SK, Murad MH, Naruse M, Pacak K, Young WF Jr; Endocrine Society. Pheochromocytoma and paraganglioma: an endocrine society clinical practice guideline. J Clin Endocrinol Metab. 2014;99(6):1915-1942. PMID 24893135. doi:10.1210/jc.2014-1498.",
+      "citationVariants": [
+        "Lenders JW, Duh QY, Eisenhofer G, Gimenez-Roqueplo AP, Grebe SK, Murad MH, Naruse M, Pacak K, Young WF Jr; Endocrine Society. Pheochromocytoma and paraganglioma: an endocrine society clinical practice guideline. J Clin Endocrinol Metab. 2014;99(6):1915-1942. PMID 24893135. doi:10.1210/jc.2014-1498."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24893135/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24893135/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-pheochromocytoma-to-hypertension",
+          "primaryId": "pheochromocytoma",
+          "targetId": "hypertension",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8c24d981f55ef6df60dfd0574e18aeef3e74f669c673255cc8943ae23dbed57c"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-41009391",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41009391",
+      "doi": "10.3390/ijms26188824",
+      "canonicalCitation": "Soyfoo M, Motulsky E, Sarrand J. Keratoconjunctivitis Sicca in Sjögren Disease: Diagnostic Challenges and Therapeutic Advances. Int J Mol Sci. 2025;26(18):8824. PMID 41009391. doi:10.3390/ijms26188824.",
+      "citationVariants": [
+        "Soyfoo M, Motulsky E, Sarrand J. Keratoconjunctivitis Sicca in Sjögren Disease: Diagnostic Challenges and Therapeutic Advances. Int J Mol Sci. 2025;26(18):8824. PMID 41009391. doi:10.3390/ijms26188824."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41009391/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41009391/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sjogren-s-syndrome-to-dry-eye-syndrome",
+          "primaryId": "sjogren-s-syndrome",
+          "targetId": "dry-eye-syndrome",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "348dfe0854d496f82f1a55bd75b3fe657cba7e36978bee01d5b366189c57b86a"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-26189354",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "26189354",
+      "doi": "10.1111/jop.12339",
+      "canonicalCitation": "Warnakulasuriya S, Ariyawardana A. Malignant transformation of oral leukoplakia: a systematic review of observational studies. J Oral Pathol Med. 2016;45(3):155-166. PMID 26189354. doi:10.1111/jop.12339.",
+      "citationVariants": [
+        "Warnakulasuriya S, Ariyawardana A. Malignant transformation of oral leukoplakia: a systematic review of observational studies. J Oral Pathol Med. 2016;45(3):155-166. PMID 26189354. doi:10.1111/jop.12339."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26189354/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/26189354/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-leukoplakia-to-oral-cancer",
+          "primaryId": "leukoplakia",
+          "targetId": "oral-cancer",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "73383d1bfa01925107f536b02ba0441710080853f9349347411acfc94edecb74"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-35488780",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35488780",
+      "doi": "10.1111/jop.13304",
+      "canonicalCitation": "Lorenzo-Pouso AI, Lafuente-Ibáñez de Mendoza I, Pérez-Sayáns M, Pérez-Jardón A, Chamorro-Petronacci CM, Blanco-Carrión A, Aguirre-Urízar JM. Critical update, systematic review, and meta-analysis of oral erythroplakia as an oral potentially malignant disorder. J Oral Pathol Med. 2022;51(7):585-593. PMID 35488780. doi:10.1111/jop.13304.",
+      "citationVariants": [
+        "Lorenzo-Pouso AI, Lafuente-Ibáñez de Mendoza I, Pérez-Sayáns M, Pérez-Jardón A, Chamorro-Petronacci CM, Blanco-Carrión A, Aguirre-Urízar JM. Critical update, systematic review, and meta-analysis of oral erythroplakia as an oral potentially malignant disorder. J Oral Pathol Med. 2022;51(7):585-593. PMID 35488780. doi:10.1111/jop.13304."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35488780/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35488780/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-erythroplakia-to-oral-cancer",
+          "primaryId": "erythroplakia",
+          "targetId": "oral-cancer",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "48ad10d6800ef669b122e9a7c5b500d9c8be925f607e138bef0e7d96c6ac58f6"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-24618106",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "24618106",
+      "doi": "10.1186/1756-0500-7-138",
+      "canonicalCitation": "Karanja BW, Oburra HO, Masinde P, Wamalwa D. Prevalence of hearing loss in children following bacterial meningitis in a tertiary referral hospital. BMC Res Notes. 2014;7:138. PMID 24618106. doi:10.1186/1756-0500-7-138.",
+      "citationVariants": [
+        "Karanja BW, Oburra HO, Masinde P, Wamalwa D. Prevalence of hearing loss in children following bacterial meningitis in a tertiary referral hospital. BMC Res Notes. 2014;7:138. PMID 24618106. doi:10.1186/1756-0500-7-138."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24618106/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24618106/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-meningitis-to-hearing-loss",
+          "primaryId": "meningitis",
+          "targetId": "hearing-loss",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0ad1eb6e2aa6131f9756dd65382c51b86c4cdad2ba86c6077049c9fd965f25a6"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-19",
-  "currentState": "ME19-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-20",
+  "currentState": "ME20-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

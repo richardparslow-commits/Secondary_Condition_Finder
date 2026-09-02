@@ -5,5 +5,53 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "hearing-loss",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-20 adds this relationship only as the user-approved bounded clinical proposition. The cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection. Require an established bacterial meningitis episode with compatible chronology and separately documented hearing loss; the cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection, without establishing that an individual's hearing loss was meningitic in origin. Preserve ototoxic medications (including aminoglycosides used to treat the meningitis), suppurative otitis media or labyrinthitis, congenital or pre-existing hearing loss, ototoxic systemic illness, and noise exposure as competing explanations. Do not infer hearing loss from meningitis history alone, and do not treat this clinical-sample association as proof that meningitis caused an individual's hearing loss. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of meningitis and hearing-loss",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: clinical-sample-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require an established bacterial meningitis episode with compatible chronology and separately documented hearing loss; the cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection, without establishing that an individual's hearing loss was meningitic in origin. Preserve ototoxic medications (including aminoglycosides used to treat the meningitis), suppurative otitis media or labyrinthitis, congenital or pre-existing hearing loss, ototoxic systemic illness, and noise exposure as competing explanations. Do not infer hearing loss from meningitis history alone, and do not treat this clinical-sample association as proof that meningitis caused an individual's hearing loss."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Karanja BW, Oburra HO, Masinde P, Wamalwa D. Prevalence of hearing loss in children following bacterial meningitis in a tertiary referral hospital. BMC Res Notes. 2014;7:138. PMID 24618106. doi:10.1186/1756-0500-7-138.",
+          "note": "Mapping Expansion Batch ME-20 evidence for the bounded meningitis to hearing-loss proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24618106/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 24618106; approved ME-20 source; guard: Require an established bacterial meningitis episode with compatible chronology and separately documented hearing loss; the cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection, without establishing that an individual's hearing loss was meningitic in origin. Preserve ototoxic medications (including aminoglycosides used to treat the meningitis), suppurative otitis media or labyrinthitis, congenital or pre-existing hearing loss, ototoxic systemic illness, and noise exposure as competing explanations. Do not infer hearing loss from meningitis history alone, and do not treat this clinical-sample association as proof that meningitis caused an individual's hearing loss."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-20 adds this relationship only as the user-approved bounded clinical proposition. The cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection. Require an established bacterial meningitis episode with compatible chronology and separately documented hearing loss; the cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection, without establishing that an individual's hearing loss was meningitic in origin. Preserve ototoxic medications (including aminoglycosides used to treat the meningitis), suppurative otitis media or labyrinthitis, congenital or pre-existing hearing loss, ototoxic systemic illness, and noise exposure as competing explanations. Do not infer hearing loss from meningitis history alone, and do not treat this clinical-sample association as proof that meningitis caused an individual's hearing loss.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Mapping Expansion Batch ME-20 adds this relationship only as the user-approved bounded clinical proposition. The cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection. Require an established bacterial meningitis episode with compatible chronology and separately documented hearing loss; the cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection, without establishing that an individual's hearing loss was meningitic in origin. Preserve ototoxic medications (including aminoglycosides used to treat the meningitis), suppurative otitis media or labyrinthitis, congenital or pre-existing hearing loss, ototoxic systemic illness, and noise exposure as competing explanations. Do not infer hearing loss from meningitis history alone, and do not treat this clinical-sample association as proof that meningitis caused an individual's hearing loss.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-20 adds this relationship only as the user-approved bounded clinical proposition. The cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection. Require an established bacterial meningitis episode with compatible chronology and separately documented hearing loss; the cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection, without establishing that an individual's hearing loss was meningitic in origin. Preserve ototoxic medications (including aminoglycosides used to treat the meningitis), suppurative otitis media or labyrinthitis, congenital or pre-existing hearing loss, ototoxic systemic illness, and noise exposure as competing explanations. Do not infer hearing loss from meningitis history alone, and do not treat this clinical-sample association as proof that meningitis caused an individual's hearing loss. It is not asserted that the primary caused or aggravated the secondary in any individual case, and this mapping does not, by itself, establish a VA medical nexus.",
+        "evidenceGaps": "Independent documentation of meningitis and hearing-loss; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: clinical-sample-comorbidity-association; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require an established bacterial meningitis episode with compatible chronology and separately documented hearing loss; the cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection, without establishing that an individual's hearing loss was meningitic in origin. Preserve ototoxic medications (including aminoglycosides used to treat the meningitis), suppurative otitis media or labyrinthitis, congenital or pre-existing hearing loss, ototoxic systemic illness, and noise exposure as competing explanations. Do not infer hearing loss from meningitis history alone, and do not treat this clinical-sample association as proof that meningitis caused an individual's hearing loss.",
+        "alternativeEtiologiesToRuleOut": [
+          "ototoxic medications (including aminoglycosides used to treat the meningitis)",
+          "suppurative otitis media or labyrinthitis",
+          "congenital or pre-existing hearing loss",
+          "ototoxic systemic illness",
+          "noise exposure"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }
