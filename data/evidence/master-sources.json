@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "518524024a8cafeaaca9ebc452138123f816872c",
+  "baselineCommit": "db5b0ef600ce4caefb1fe3b75b9c419c704209e3",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 251,
+    "liveSourceReferenceUses": 256,
     "activeSourceEntities": 228,
-    "pendingVerificationSourceEntities": 0,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 227,
-    "pendingClinicalSourceEntities": 0,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 237,
+    "totalSourceEntitiesIncludingLineage": 242,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -8912,8 +8912,208 @@
         "supersededBySourceId": "pmid-38055239",
         "relationshipId": "rel-psoriasis-to-eczema"
       }
+    },
+    {
+      "sourceId": "pmid-17548747",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "17548747",
+      "doi": "10.1001/archpsyc.64.6.651",
+      "canonicalCitation": "Moffitt TE, Harrington H, Caspi A, Kim-Cohen J, Goldberg D, Gregory AM, Poulton R. Depression and generalized anxiety disorder: cumulative and sequential comorbidity in a birth cohort followed prospectively to age 32 years. Arch Gen Psychiatry. 2007;64(6):651-660. PMID 17548747. doi:10.1001/archpsyc.64.6.651.",
+      "citationVariants": [
+        "Moffitt TE, Harrington H, Caspi A, Kim-Cohen J, Goldberg D, Gregory AM, Poulton R. Depression and generalized anxiety disorder: cumulative and sequential comorbidity in a birth cohort followed prospectively to age 32 years. Arch Gen Psychiatry. 2007;64(6):651-660. PMID 17548747. doi:10.1001/archpsyc.64.6.651."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17548747/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/17548747/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anxiety-disorder-to-depressive-disorder",
+          "primaryId": "anxiety-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "dd3671443fa32496898275f42679401d67252cf2f9d1197a673cf23221c05cdf"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-16585471",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "16585471",
+      "doi": "10.1001/archpsyc.63.4.415",
+      "canonicalCitation": "Kessler RC, Chiu WT, Jin R, Ruscio AM, Shear K, Walters EE. The epidemiology of panic attacks, panic disorder, and agoraphobia in the National Comorbidity Survey Replication. Arch Gen Psychiatry. 2006;63(4):415-424. PMID 16585471. doi:10.1001/archpsyc.63.4.415.",
+      "citationVariants": [
+        "Kessler RC, Chiu WT, Jin R, Ruscio AM, Shear K, Walters EE. The epidemiology of panic attacks, panic disorder, and agoraphobia in the National Comorbidity Survey Replication. Arch Gen Psychiatry. 2006;63(4):415-424. PMID 16585471. doi:10.1001/archpsyc.63.4.415."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16585471/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16585471/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-panic-disorder-to-agoraphobia",
+          "primaryId": "panic-disorder",
+          "targetId": "agoraphobia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "57a2da123d009c8fcd28e734e5ac95d3a0b0c071df0739a0b1b32d3fc47a3174"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-18725912",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "18725912",
+      "doi": "10.1038/mp.2008.94",
+      "canonicalCitation": "Ruscio AM, Stein DJ, Chiu WT, Kessler RC. The epidemiology of obsessive-compulsive disorder in the National Comorbidity Survey Replication. Mol Psychiatry. 2010;15(1):53-63. PMID 18725912. doi:10.1038/mp.2008.94.",
+      "citationVariants": [
+        "Ruscio AM, Stein DJ, Chiu WT, Kessler RC. The epidemiology of obsessive-compulsive disorder in the National Comorbidity Survey Replication. Mol Psychiatry. 2010;15(1):53-63. PMID 18725912. doi:10.1038/mp.2008.94."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18725912/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/18725912/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ocd-to-depressive-disorder",
+          "primaryId": "ocd",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "cad8e9e1c7dddff87e00a798d6bb52d3cc9ace74cfd382877f7c07a7becf2ab2"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-16815322",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "16815322",
+      "doi": "10.1016/j.biopsych.2006.03.040",
+      "canonicalCitation": "Hudson JI, Hiripi E, Pope HG Jr, Kessler RC. The prevalence and correlates of eating disorders in the National Comorbidity Survey Replication. Biol Psychiatry. 2007;61(3):348-358. PMID 16815322. doi:10.1016/j.biopsych.2006.03.040.",
+      "citationVariants": [
+        "Hudson JI, Hiripi E, Pope HG Jr, Kessler RC. The prevalence and correlates of eating disorders in the National Comorbidity Survey Replication. Biol Psychiatry. 2007;61(3):348-358. PMID 16815322. doi:10.1016/j.biopsych.2006.03.040."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16815322/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16815322/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-binge-eating-disorder-to-depressive-disorder",
+          "primaryId": "binge-eating-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0630fa557dfb86631b2c9d3908f56aabda463dfb628ae55590c6b4bee9d17437"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-17485606",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "17485606",
+      "doi": "10.1001/archpsyc.64.5.543",
+      "canonicalCitation": "Merikangas KR, Akiskal HS, Angst J, Greenberg PE, Hirschfeld RM, Petukhova M, Kessler RC. Lifetime and 12-month prevalence of bipolar spectrum disorder in the National Comorbidity Survey replication. Arch Gen Psychiatry. 2007;64(5):543-552. PMID 17485606. doi:10.1001/archpsyc.64.5.543.",
+      "citationVariants": [
+        "Merikangas KR, Akiskal HS, Angst J, Greenberg PE, Hirschfeld RM, Petukhova M, Kessler RC. Lifetime and 12-month prevalence of bipolar spectrum disorder in the National Comorbidity Survey replication. Arch Gen Psychiatry. 2007;64(5):543-552. PMID 17485606. doi:10.1001/archpsyc.64.5.543."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17485606/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/17485606/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bipolar-disorder-to-anxiety-disorder",
+          "primaryId": "bipolar-disorder",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5622e37282ce87e2c7ced0079ff6787d8c29c99c00163bdc2fd45f899bd1d750"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
-  "lastUpdatedBy": "ME-14 Qualified-Human Citation Verification",
-  "currentState": "ME14-CITATION-VERIFIED"
+  "lastUpdatedBy": "ME-15 Mapping Implementation",
+  "currentState": "ME15-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

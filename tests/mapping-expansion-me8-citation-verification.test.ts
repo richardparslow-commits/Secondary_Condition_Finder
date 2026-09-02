@@ -71,11 +71,11 @@ describe("mapping expansion ME-8 qualified-human citation verification", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-citation-verification.js"], { cwd: root, encoding: "utf8" });
     const result = JSON.parse(output);
     expect(result).toMatchObject({
-      references: 251,
+      references: 256,
       verified: 251,
       retiredVerified: 6,
       verifiedProvenance: 257,
-      unverified: 0,
+      unverified: 5,
       reviewFindingCount: 0,
       hardFindingCount: 0,
       clinicalEvidenceReferences: 246,
@@ -89,14 +89,14 @@ describe("mapping expansion ME-8 qualified-human citation verification", () => {
     const result = JSON.parse(output);
     expect(result).toMatchObject({
       status: "PASS",
-      relationships: 243,
-      liveSourceReferenceUses: 251,
+      relationships: 248,
+      liveSourceReferenceUses: 256,
       verifiedLiveSourceUses: 251,
-      pendingVerificationLiveSourceUses: 0,
+      pendingVerificationLiveSourceUses: 5,
       activeSourceEntities: 228,
-      pendingVerificationSourceEntities: 0,
+      pendingVerificationSourceEntities: 5,
       activeClinicalSourceEntities: 227,
-      pendingClinicalSourceEntities: 0,
+      pendingClinicalSourceEntities: 5,
       totalSourceEntities: 237,
     });
   });

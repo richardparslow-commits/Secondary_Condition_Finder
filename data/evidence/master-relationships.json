@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "518524024a8cafeaaca9ebc452138123f816872c",
+  "baselineCommit": "db5b0ef600ce4caefb1fe3b75b9c419c704209e3",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 243,
-    "explicitPublicationGuards": 169,
+    "relationships": 248,
+    "explicitPublicationGuards": 174,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -8180,8 +8180,178 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "8e9f352558db5b9506d130f2524d66e0206fe610f02133bd2bc5fde44c525d0c"
+    },
+    {
+      "relationshipId": "rel-anxiety-disorder-to-depressive-disorder",
+      "primaryId": "anxiety-disorder",
+      "targetId": "depressive-disorder",
+      "direction": "anxiety-disorder -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me15-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A prospective birth cohort followed to age 32 found generalized anxiety disorder and major depressive disorder strongly comorbid with roughly symmetric onset ordering, so the approved relationship is limited to cumulative/sequential comorbidity and does not assert that generalized anxiety disorder precedes or causes depression. Require independently established generalized anxiety disorder and separately established major depressive disorder. The cited prospective birth cohort found cumulative and roughly symmetric sequential comorbidity, with depression onset first, anxiety onset first, and concurrent onset each occurring in about one third of comorbid cases; do not treat either disorder as reliably primary in onset order. Preserve other psychiatric illness, substance use, medical illness, medications, psychosocial stressors, and shared vulnerability as competing explanations. Treat this only as population-level comorbidity association, not proof that generalized anxiety disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A prospective birth cohort followed to age 32 found generalized anxiety disorder and major depressive disorder strongly comorbid with roughly symmetric onset ordering, so the approved relationship is limited to cumulative/sequential comorbidity and does not assert that generalized anxiety disorder precedes or causes depression. Require independently established generalized anxiety disorder and separately established major depressive disorder. The cited prospective birth cohort found cumulative and roughly symmetric sequential comorbidity, with depression onset first, anxiety onset first, and concurrent onset each occurring in about one third of comorbid cases; do not treat either disorder as reliably primary in onset order. Preserve other psychiatric illness, substance use, medical illness, medications, psychosocial stressors, and shared vulnerability as competing explanations. Treat this only as population-level comorbidity association, not proof that generalized anxiety disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established generalized anxiety disorder and separately established major depressive disorder. The cited prospective birth cohort found cumulative and roughly symmetric sequential comorbidity, with depression onset first, anxiety onset first, and concurrent onset each occurring in about one third of comorbid cases; do not treat either disorder as reliably primary in onset order. Preserve other psychiatric illness, substance use, medical illness, medications, psychosocial stressors, and shared vulnerability as competing explanations. Treat this only as population-level comorbidity association, not proof that generalized anxiety disorder caused an individual's depressive disorder.",
+        "boundarySource": "approved-me15-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of anxiety-disorder and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: symmetric-cumulative-comorbidity",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established generalized anxiety disorder and separately established major depressive disorder. The cited prospective birth cohort found cumulative and roughly symmetric sequential comorbidity, with depression onset first, anxiety onset first, and concurrent onset each occurring in about one third of comorbid cases; do not treat either disorder as reliably primary in onset order. Preserve other psychiatric illness, substance use, medical illness, medications, psychosocial stressors, and shared vulnerability as competing explanations. Treat this only as population-level comorbidity association, not proof that generalized anxiety disorder caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-17548747"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "96195936b8fa91b0a1c72679a58b1c0e346347a6aa3c2aad0d40b749f9b59cf5"
+    },
+    {
+      "relationshipId": "rel-panic-disorder-to-agoraphobia",
+      "primaryId": "panic-disorder",
+      "targetId": "agoraphobia",
+      "direction": "panic-disorder -> agoraphobia",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me15-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found panic disorder commonly co-occurs with agoraphobia in a minority of lifetime panic disorder cases, with the combination marking the most severe presentations; the approved relationship is limited to population-level co-occurrence risk and does not assert that panic disorder inevitably progresses to agoraphobia. Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime panic disorder cases did not carry agoraphobia; do not present co-occurrence as inevitable progression. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Treat this only as population-level co-occurrence risk, not proof that panic disorder caused an individual's agoraphobia. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found panic disorder commonly co-occurs with agoraphobia in a minority of lifetime panic disorder cases, with the combination marking the most severe presentations; the approved relationship is limited to population-level co-occurrence risk and does not assert that panic disorder inevitably progresses to agoraphobia. Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime panic disorder cases did not carry agoraphobia; do not present co-occurrence as inevitable progression. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Treat this only as population-level co-occurrence risk, not proof that panic disorder caused an individual's agoraphobia. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime panic disorder cases did not carry agoraphobia; do not present co-occurrence as inevitable progression. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Treat this only as population-level co-occurrence risk, not proof that panic disorder caused an individual's agoraphobia.",
+        "boundarySource": "approved-me15-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of panic-disorder and agoraphobia",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-co-occurrence-risk",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime panic disorder cases did not carry agoraphobia; do not present co-occurrence as inevitable progression. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Treat this only as population-level co-occurrence risk, not proof that panic disorder caused an individual's agoraphobia."
+      ],
+      "sourceIds": [
+        "pmid-16585471"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "774de8a1d17fdb5085c91445fd90add4599579776f8d4e988dbad1e5a65e006e"
+    },
+    {
+      "relationshipId": "rel-ocd-to-depressive-disorder",
+      "primaryId": "ocd",
+      "targetId": "depressive-disorder",
+      "direction": "ocd -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 2,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me15-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found obsessive-compulsive disorder associated with substantial comorbidity with mood disorders; the approved relationship is limited to population-level comorbidity association and does not establish onset order, direction, or individual causation. Require independently established obsessive-compulsive disorder and separately established depressive disorder; the cited nationally representative survey reported substantial comorbidity of OCD with mood disorders as a class and does not establish onset order or direction. Preserve other anxiety disorders, substance use, medical illness, medications, and shared vulnerability as competing explanations. Do not infer a depressive disorder from OCD symptoms or distress alone, and do not treat this population-level association as proof that OCD caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found obsessive-compulsive disorder associated with substantial comorbidity with mood disorders; the approved relationship is limited to population-level comorbidity association and does not establish onset order, direction, or individual causation. Require independently established obsessive-compulsive disorder and separately established depressive disorder; the cited nationally representative survey reported substantial comorbidity of OCD with mood disorders as a class and does not establish onset order or direction. Preserve other anxiety disorders, substance use, medical illness, medications, and shared vulnerability as competing explanations. Do not infer a depressive disorder from OCD symptoms or distress alone, and do not treat this population-level association as proof that OCD caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established obsessive-compulsive disorder and separately established depressive disorder; the cited nationally representative survey reported substantial comorbidity of OCD with mood disorders as a class and does not establish onset order or direction. Preserve other anxiety disorders, substance use, medical illness, medications, and shared vulnerability as competing explanations. Do not infer a depressive disorder from OCD symptoms or distress alone, and do not treat this population-level association as proof that OCD caused an individual's depressive disorder.",
+        "boundarySource": "approved-me15-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of ocd and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established obsessive-compulsive disorder and separately established depressive disorder; the cited nationally representative survey reported substantial comorbidity of OCD with mood disorders as a class and does not establish onset order or direction. Preserve other anxiety disorders, substance use, medical illness, medications, and shared vulnerability as competing explanations. Do not infer a depressive disorder from OCD symptoms or distress alone, and do not treat this population-level association as proof that OCD caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-18725912"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "9d589c4d9d611a137cd93f99da3daad5f600e25141b402bd56e85ad54dba6005"
+    },
+    {
+      "relationshipId": "rel-binge-eating-disorder-to-depressive-disorder",
+      "primaryId": "binge-eating-disorder",
+      "targetId": "depressive-disorder",
+      "direction": "binge-eating-disorder -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me15-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found eating disorders, including binge eating disorder, significantly comorbid with many other DSM-IV disorders; the approved relationship is limited to population-level comorbidity association and does not establish direction of onset or individual causation. Require independently established binge eating disorder and separately established depressive disorder; the cited nationally representative survey found eating disorders significantly comorbid with many other DSM-IV disorders without establishing direction of onset. Preserve obesity and metabolic disease, other eating pathology, substance use, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from binge eating symptoms, weight change, or role impairment alone, and do not treat this population-level association as proof that binge eating disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found eating disorders, including binge eating disorder, significantly comorbid with many other DSM-IV disorders; the approved relationship is limited to population-level comorbidity association and does not establish direction of onset or individual causation. Require independently established binge eating disorder and separately established depressive disorder; the cited nationally representative survey found eating disorders significantly comorbid with many other DSM-IV disorders without establishing direction of onset. Preserve obesity and metabolic disease, other eating pathology, substance use, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from binge eating symptoms, weight change, or role impairment alone, and do not treat this population-level association as proof that binge eating disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established binge eating disorder and separately established depressive disorder; the cited nationally representative survey found eating disorders significantly comorbid with many other DSM-IV disorders without establishing direction of onset. Preserve obesity and metabolic disease, other eating pathology, substance use, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from binge eating symptoms, weight change, or role impairment alone, and do not treat this population-level association as proof that binge eating disorder caused an individual's depressive disorder.",
+        "boundarySource": "approved-me15-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of binge-eating-disorder and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established binge eating disorder and separately established depressive disorder; the cited nationally representative survey found eating disorders significantly comorbid with many other DSM-IV disorders without establishing direction of onset. Preserve obesity and metabolic disease, other eating pathology, substance use, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from binge eating symptoms, weight change, or role impairment alone, and do not treat this population-level association as proof that binge eating disorder caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-16815322"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "dd8e0208d4d76eb90b14ab213bcc537247ed2311020690f2bac926dfe70b3bfa"
+    },
+    {
+      "relationshipId": "rel-bipolar-disorder-to-anxiety-disorder",
+      "primaryId": "bipolar-disorder",
+      "targetId": "anxiety-disorder",
+      "direction": "bipolar-disorder -> anxiety-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me15-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found most respondents with threshold and subthreshold bipolar spectrum disorder had lifetime comorbidity with other Axis I disorders, particularly anxiety disorders as a class; the approved relationship is limited to class-level population comorbidity association and does not establish onset order, direction, or individual causation. Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety disorders as a class, and does not specify onset order or direction. Distinguish an independent anxiety disorder from anxiety symptoms occurring within manic, hypomanic, or depressive episodes. Preserve substance use, medical illness, medications, and other psychiatric illness as competing explanations. Treat this only as population-level comorbidity association, not proof that bipolar disorder caused an individual's anxiety disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found most respondents with threshold and subthreshold bipolar spectrum disorder had lifetime comorbidity with other Axis I disorders, particularly anxiety disorders as a class; the approved relationship is limited to class-level population comorbidity association and does not establish onset order, direction, or individual causation. Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety disorders as a class, and does not specify onset order or direction. Distinguish an independent anxiety disorder from anxiety symptoms occurring within manic, hypomanic, or depressive episodes. Preserve substance use, medical illness, medications, and other psychiatric illness as competing explanations. Treat this only as population-level comorbidity association, not proof that bipolar disorder caused an individual's anxiety disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety disorders as a class, and does not specify onset order or direction. Distinguish an independent anxiety disorder from anxiety symptoms occurring within manic, hypomanic, or depressive episodes. Preserve substance use, medical illness, medications, and other psychiatric illness as competing explanations. Treat this only as population-level comorbidity association, not proof that bipolar disorder caused an individual's anxiety disorder.",
+        "boundarySource": "approved-me15-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of bipolar-disorder and anxiety-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: class-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety disorders as a class, and does not specify onset order or direction. Distinguish an independent anxiety disorder from anxiety symptoms occurring within manic, hypomanic, or depressive episodes. Preserve substance use, medical illness, medications, and other psychiatric illness as competing explanations. Treat this only as population-level comorbidity association, not proof that bipolar disorder caused an individual's anxiety disorder."
+      ],
+      "sourceIds": [
+        "pmid-17485606"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "233ee334173b150cfe2b0dba690fd5f13ba3010fcad2f95dd650593047e2028f"
     }
   ],
-  "lastUpdatedBy": "ME-14 Qualified-Human Citation Verification",
-  "currentState": "ME14-CITATION-VERIFIED"
+  "lastUpdatedBy": "ME-15 Mapping Implementation",
+  "currentState": "ME15-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }
