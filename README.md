@@ -165,6 +165,11 @@ health state.
 
 ## Workflow privacy and browser security
 
+The public security posture and vulnerability-reporting process (including Safe
+Harbor) live in [`SECURITY.md`](SECURITY.md); the operations runbook lives in
+[`docs/security-operations.md`](docs/security-operations.md). All Server Actions
+reside in `src/lib/actions/`.
+
 - Secondary health/disability state is submitted with server actions rather than
   encoded into query strings; the codebase does not expose a helper that
   serializes complete secondary-workflow state back into a URL.
@@ -234,10 +239,21 @@ repairs `erectile-dysfunction` → `depressive-disorder`; Batch 11 removes the
 unsupported ILD→cardiac-arrhythmia edge while preserving only clinically sourced
 ILD→OSA association research.
 
-After Batch 11, the citation-debt ceilings tighten to **130 total references / 14
-verified / 116 unverified / 114 published-unverified review findings**, while the
-clinical-evidence-with-URL floor rises to **49**. No automated change marks a new
-source verified.
+The knowledge base now holds **263 relationships across 311 mapping files**,
+with **271 source references, 256 verified, 15 unverified** — all 15 remaining
+unverified references belong to the ME-16/ME-17/ME-18 mapping-expansion batches
+and await the separate qualified-human citation-verification gate. No automated
+change marks a new source verified.
+
+The knowledge base is a Causal Relational Graph (CRG), not a flat association
+list: every suggestion is enforced by the Zod schema to carry the CRG trio
+(`nexusClaim` as a `DIRECT_CAUSATION`/`AGGRAVATION`/`ASSOCIATION_ONLY`
+discriminated union, `causalMechanism`, and `evidentiaryProfile` with
+`etiologicalConsensus` replacing the deprecated `prevalence` field). `npm run
+audit:me-compliance` audits every mapping — including each of the 90 ME-1..ME-18
+relationships — for nexus-arm validity, consensus/alignment consistency,
+guard-disclaimer honesty, citation discipline, and quarantine compliance as a CI
+gate. `npm run citations:decay` is the maintainer-run link-rot/staleness probe.
 
 The completed identity-expansion record is maintained in
 `docs/condition-expansion-roadmap.md`; the post-v2 promotion records are in
@@ -261,16 +277,22 @@ To add or change a condition or relationship:
    separately rather than assuming the grouped label has one etiology or nexus.
    Do not carry obsolete diagnostic codes forward after the governing schedule
    changes; retain any historical-code note only to prevent future regression.
-2. **Mapping:** update/create `data/knowledge-base/<id>.json`. Each published
-   suggestion needs a condition ID, rank, prevalence label, conservative
-   rationale, evidence gaps, and condition-specific source references satisfying
-   the repository's current provenance rules. Legal or rating authority cannot
-   substitute for clinical evidence of a medical relationship.
+2. **Mapping:** update/create `data/knowledge-base/<id>.json`. Each suggestion
+   needs a condition ID, rank, the CRG trio (`nexusClaim` classified as
+   `DIRECT_CAUSATION`, `AGGRAVATION`, or `ASSOCIATION_ONLY`; `causalMechanism`;
+   `evidentiaryProfile.etiologicalConsensus`), conservative rationale, evidence
+   gaps, and condition-specific source references satisfying the repository's
+   current provenance rules. The research-guard posture decides the
+   classification: never force a causation or aggravation claim when the guard
+   or literature only supports association (`ASSOCIATION_ONLY` +
+   `NOT_ESTABLISHED` + `hypothesizedOnly: true`). Legal or rating authority
+   cannot substitute for clinical evidence of a medical relationship.
 3. **Verification:** record source URLs, `sourceCheckedOn`, and `sourceLocator`
    when checked. Keep `verified: false` unless a qualified human completes the
    Citation Verification SOP.
 4. Run `npm run kb:validate`, `npm run citations:audit`, `npm run
-   test:composition`, and `npm test` before review.
+   audit:me-compliance`, `npm run test:composition`, and `npm test` before
+   review.
 
 Strict Zod schemas reject unknown JSON keys, and referential-integrity tests keep
 mapping IDs aligned with the catalog. Drafts may retain explicit TODO items but
