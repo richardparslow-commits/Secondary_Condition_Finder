@@ -17,7 +17,7 @@ describe("P2 Ticket 7: Evidence Review Product Contract", () => {
 
   it("keeps local evidence excerpts out of server workflow state", () => {
     const statePath = path.join(process.cwd(), "src/lib/secondary-workflow/state.ts");
-    const actionsPath = path.join(process.cwd(), "src/app/secondary/actions.ts");
+    const actionsPath = path.join(process.cwd(), "src/lib/actions/secondary.ts");
     const state = fs.readFileSync(statePath, "utf8");
     const actions = fs.readFileSync(actionsPath, "utf8");
 

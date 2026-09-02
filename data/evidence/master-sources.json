@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "518524024a8cafeaaca9ebc452138123f816872c",
+  "baselineCommit": "13812063f0408ea1cf3235370836a0ac867767ce",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 251,
-    "activeSourceEntities": 228,
-    "pendingVerificationSourceEntities": 0,
-    "activeClinicalSourceEntities": 227,
-    "pendingClinicalSourceEntities": 0,
+    "liveSourceReferenceUses": 271,
+    "activeSourceEntities": 233,
+    "pendingVerificationSourceEntities": 15,
+    "activeClinicalSourceEntities": 232,
+    "pendingClinicalSourceEntities": 15,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 237,
+    "totalSourceEntitiesIncludingLineage": 257,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -8912,8 +8912,818 @@
         "supersededBySourceId": "pmid-38055239",
         "relationshipId": "rel-psoriasis-to-eczema"
       }
+    },
+    {
+      "sourceId": "pmid-17548747",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "17548747",
+      "doi": "10.1001/archpsyc.64.6.651",
+      "canonicalCitation": "Moffitt TE, Harrington H, Caspi A, Kim-Cohen J, Goldberg D, Gregory AM, Poulton R. Depression and generalized anxiety disorder: cumulative and sequential comorbidity in a birth cohort followed prospectively to age 32 years. Arch Gen Psychiatry. 2007;64(6):651-660. PMID 17548747. doi:10.1001/archpsyc.64.6.651.",
+      "citationVariants": [
+        "Moffitt TE, Harrington H, Caspi A, Kim-Cohen J, Goldberg D, Gregory AM, Poulton R. Depression and generalized anxiety disorder: cumulative and sequential comorbidity in a birth cohort followed prospectively to age 32 years. Arch Gen Psychiatry. 2007;64(6):651-660. PMID 17548747. doi:10.1001/archpsyc.64.6.651."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17548747/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/17548747/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anxiety-disorder-to-depressive-disorder",
+          "primaryId": "anxiety-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "dd3671443fa32496898275f42679401d67252cf2f9d1197a673cf23221c05cdf"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-01",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-16585471",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "16585471",
+      "doi": "10.1001/archpsyc.63.4.415",
+      "canonicalCitation": "Kessler RC, Chiu WT, Jin R, Ruscio AM, Shear K, Walters EE. The epidemiology of panic attacks, panic disorder, and agoraphobia in the National Comorbidity Survey Replication. Arch Gen Psychiatry. 2006;63(4):415-424. PMID 16585471. doi:10.1001/archpsyc.63.4.415.",
+      "citationVariants": [
+        "Kessler RC, Chiu WT, Jin R, Ruscio AM, Shear K, Walters EE. The epidemiology of panic attacks, panic disorder, and agoraphobia in the National Comorbidity Survey Replication. Arch Gen Psychiatry. 2006;63(4):415-424. PMID 16585471. doi:10.1001/archpsyc.63.4.415."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16585471/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16585471/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-panic-disorder-to-agoraphobia",
+          "primaryId": "panic-disorder",
+          "targetId": "agoraphobia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "57a2da123d009c8fcd28e734e5ac95d3a0b0c071df0739a0b1b32d3fc47a3174"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-01",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-18725912",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "18725912",
+      "doi": "10.1038/mp.2008.94",
+      "canonicalCitation": "Ruscio AM, Stein DJ, Chiu WT, Kessler RC. The epidemiology of obsessive-compulsive disorder in the National Comorbidity Survey Replication. Mol Psychiatry. 2010;15(1):53-63. PMID 18725912. doi:10.1038/mp.2008.94.",
+      "citationVariants": [
+        "Ruscio AM, Stein DJ, Chiu WT, Kessler RC. The epidemiology of obsessive-compulsive disorder in the National Comorbidity Survey Replication. Mol Psychiatry. 2010;15(1):53-63. PMID 18725912. doi:10.1038/mp.2008.94."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18725912/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/18725912/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ocd-to-depressive-disorder",
+          "primaryId": "ocd",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "cad8e9e1c7dddff87e00a798d6bb52d3cc9ace74cfd382877f7c07a7becf2ab2"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-01",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-16815322",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "16815322",
+      "doi": "10.1016/j.biopsych.2006.03.040",
+      "canonicalCitation": "Hudson JI, Hiripi E, Pope HG Jr, Kessler RC. The prevalence and correlates of eating disorders in the National Comorbidity Survey Replication. Biol Psychiatry. 2007;61(3):348-358. PMID 16815322. doi:10.1016/j.biopsych.2006.03.040.",
+      "citationVariants": [
+        "Hudson JI, Hiripi E, Pope HG Jr, Kessler RC. The prevalence and correlates of eating disorders in the National Comorbidity Survey Replication. Biol Psychiatry. 2007;61(3):348-358. PMID 16815322. doi:10.1016/j.biopsych.2006.03.040."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16815322/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16815322/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-binge-eating-disorder-to-depressive-disorder",
+          "primaryId": "binge-eating-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0630fa557dfb86631b2c9d3908f56aabda463dfb628ae55590c6b4bee9d17437"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-01",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-17485606",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "17485606",
+      "doi": "10.1001/archpsyc.64.5.543",
+      "canonicalCitation": "Merikangas KR, Akiskal HS, Angst J, Greenberg PE, Hirschfeld RM, Petukhova M, Kessler RC. Lifetime and 12-month prevalence of bipolar spectrum disorder in the National Comorbidity Survey replication. Arch Gen Psychiatry. 2007;64(5):543-552. PMID 17485606. doi:10.1001/archpsyc.64.5.543.",
+      "citationVariants": [
+        "Merikangas KR, Akiskal HS, Angst J, Greenberg PE, Hirschfeld RM, Petukhova M, Kessler RC. Lifetime and 12-month prevalence of bipolar spectrum disorder in the National Comorbidity Survey replication. Arch Gen Psychiatry. 2007;64(5):543-552. PMID 17485606. doi:10.1001/archpsyc.64.5.543."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17485606/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/17485606/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bipolar-disorder-to-anxiety-disorder",
+          "primaryId": "bipolar-disorder",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5622e37282ce87e2c7ced0079ff6787d8c29c99c00163bdc2fd45f899bd1d750"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-01",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-21383252",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "21383252",
+      "doi": "10.1001/archgenpsychiatry.2011.22",
+      "canonicalCitation": "Swanson SA, Crow SJ, Le Grange D, Swendsen J, Merikangas KR. Prevalence and Correlates of Eating Disorders in Adolescents: Results From the National Comorbidity Survey Replication Adolescent Supplement. Arch Gen Psychiatry. 2011;68(7):714-723. PMID 21383252. doi:10.1001/archgenpsychiatry.2011.22.",
+      "citationVariants": [
+        "Swanson SA, Crow SJ, Le Grange D, Swendsen J, Merikangas KR. Prevalence and Correlates of Eating Disorders in Adolescents: Results From the National Comorbidity Survey Replication Adolescent Supplement. Arch Gen Psychiatry. 2011;68(7):714-723. PMID 21383252. doi:10.1001/archgenpsychiatry.2011.22."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21383252/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/21383252/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bulimia-nervosa-to-depressive-disorder",
+          "primaryId": "bulimia-nervosa",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "26f8f0492f8f5d6102274f91ac302139401a9aeaf5ddbd59d4766306222a43b1"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-28222820",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "28222820",
+      "doi": "10.1017/S0033291717000174",
+      "canonicalCitation": "Wardenaar KJ, Lim CCW, Al-Hamzawi AO, et al. The cross-national epidemiology of specific phobia in the World Mental Health Surveys. Psychol Med. 2017;47(10):1744-1760. PMID 28222820. doi:10.1017/S0033291717000174.",
+      "citationVariants": [
+        "Wardenaar KJ, Lim CCW, Al-Hamzawi AO, et al. The cross-national epidemiology of specific phobia in the World Mental Health Surveys. Psychol Med. 2017;47(10):1744-1760. PMID 28222820. doi:10.1017/S0033291717000174."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28222820/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/28222820/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-specific-phobia-to-depressive-disorder",
+          "primaryId": "specific-phobia",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "49d2d31c39efa301f2597c8fff756aee3a30ecbe8cae8bdd1e9d4c9df029852b"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-24158881",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "24158881",
+      "doi": "10.1192/bjp.bp.113.130195",
+      "canonicalCitation": "Nordsletten AE, de la Cruz LF, Billotti D, Mataix-Cols D. Epidemiology of hoarding disorder. Br J Psychiatry. 2013;203(6):445-452. PMID 24158881. doi:10.1192/bjp.bp.113.130195.",
+      "citationVariants": [
+        "Nordsletten AE, de la Cruz LF, Billotti D, Mataix-Cols D. Epidemiology of hoarding disorder. Br J Psychiatry. 2013;203(6):445-452. PMID 24158881. doi:10.1192/bjp.bp.113.130195."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24158881/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24158881/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hoarding-disorder-to-depressive-disorder",
+          "primaryId": "hoarding-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "3e26213dc038c1de9a8ad28a09c22cb1717e6e569eeefd214555df3a7e24f03e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-16893571",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "16893571",
+      "doi": "10.1016/j.jad.2006.06.006",
+      "canonicalCitation": "Phillips KA, Didie ER, Menard W, Pagano ME, Fay C, Weisberg RB. Clinical features and correlates of major depressive disorder in individuals with body dysmorphic disorder. J Affect Disord. 2007;97(1-3):129-135. PMID 16893571. doi:10.1016/j.jad.2006.06.006.",
+      "citationVariants": [
+        "Phillips KA, Didie ER, Menard W, Pagano ME, Fay C, Weisberg RB. Clinical features and correlates of major depressive disorder in individuals with body dysmorphic disorder. J Affect Disord. 2007;97(1-3):129-135. PMID 16893571. doi:10.1016/j.jad.2006.06.006."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16893571/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16893571/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-body-dysmorphic-disorder-to-depressive-disorder",
+          "primaryId": "body-dysmorphic-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8800956558904cdf5fba8ef4b35501673c881dfea89dda309b7e4c5f5743eef5"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-27775828",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "27775828",
+      "doi": "10.1002/da.22572",
+      "canonicalCitation": "de Jonge P, Roest AM, Lim CCW, et al. Cross-national epidemiology of panic disorder and panic attacks in the World Mental Health Surveys. Depress Anxiety. 2016;33(12):1155-1177. PMID 27775828. doi:10.1002/da.22572.",
+      "citationVariants": [
+        "de Jonge P, Roest AM, Lim CCW, et al. Cross-national epidemiology of panic disorder and panic attacks in the World Mental Health Surveys. Depress Anxiety. 2016;33(12):1155-1177. PMID 27775828. doi:10.1002/da.22572."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27775828/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27775828/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-agoraphobia-to-depressive-disorder",
+          "primaryId": "agoraphobia",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "28b33d146add0b5c78b1e0dfebd563e5701f483ddbdcff710317dc175920fdf6"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-16648329",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "16648329",
+      "doi": "10.1176/ajp.2006.163.5.872",
+      "canonicalCitation": "Klein DN, Shankman SA, Rose S. Ten-year prospective follow-up study of the naturalistic course of dysthymic disorder and double depression. Am J Psychiatry. 2006;163(5):872-880. PMID 16648329. doi:10.1176/ajp.2006.163.5.872.",
+      "citationVariants": [
+        "Klein DN, Shankman SA, Rose S. Ten-year prospective follow-up study of the naturalistic course of dysthymic disorder and double depression. Am J Psychiatry. 2006;163(5):872-880. PMID 16648329. doi:10.1176/ajp.2006.163.5.872."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16648329/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16648329/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-persistent-depressive-disorder-to-depressive-disorder",
+          "primaryId": "persistent-depressive-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "58d5ebbdd6f404f0190acd957a41cba00abe722116e5ae98feaea99798012f5d"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-18433651",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "18433651",
+      "doi": "10.1016/j.genhosppsych.2007.10.008",
+      "canonicalCitation": "Löwe B, Spitzer RL, Williams JB, Mussell M, Schellberg D, Kroenke K. Depression, anxiety and somatization in primary care: syndrome overlap and functional impairment. Gen Hosp Psychiatry. 2008;30(3):191-199. PMID 18433651. doi:10.1016/j.genhosppsych.2007.10.008.",
+      "citationVariants": [
+        "Löwe B, Spitzer RL, Williams JB, Mussell M, Schellberg D, Kroenke K. Depression, anxiety and somatization in primary care: syndrome overlap and functional impairment. Gen Hosp Psychiatry. 2008;30(3):191-199. PMID 18433651. doi:10.1016/j.genhosppsych.2007.10.008."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18433651/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/18433651/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-somatic-symptom-disorder-to-depressive-disorder",
+          "primaryId": "somatic-symptom-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "df5df269781cd39726faaa33c05d2274fe6671c4c9a97540a53bee83df57e49a"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-16908799",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "16908799",
+      "doi": "10.1001/archinte.166.15.1649",
+      "canonicalCitation": "Kato K, Sullivan PF, Evengård B, Pedersen NL. Chronic widespread pain and its comorbidities: a population-based study. Arch Intern Med. 2006;166(15):1649-1654. PMID 16908799. doi:10.1001/archinte.166.15.1649.",
+      "citationVariants": [
+        "Kato K, Sullivan PF, Evengård B, Pedersen NL. Chronic widespread pain and its comorbidities: a population-based study. Arch Intern Med. 2006;166(15):1649-1654. PMID 16908799. doi:10.1001/archinte.166.15.1649."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16908799/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16908799/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-fibromyalgia-to-depressive-disorder",
+          "primaryId": "fibromyalgia",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "1517bfc4b2bfc326193748b77a0a5d30a2c694075d593686f548fa9939a04a08"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-11910364",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "11910364",
+      "doi": "10.1053/gast.2002.32392",
+      "canonicalCitation": "Whitehead WE, Palsson O, Jones KR. Systematic review of the comorbidity of irritable bowel syndrome with other disorders: what are the causes and implications? Gastroenterology. 2002;122(4):1140-1156. PMID 11910364. doi:10.1053/gast.2002.32392.",
+      "citationVariants": [
+        "Whitehead WE, Palsson O, Jones KR. Systematic review of the comorbidity of irritable bowel syndrome with other disorders: what are the causes and implications? Gastroenterology. 2002;122(4):1140-1156. PMID 11910364. doi:10.1053/gast.2002.32392."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11910364/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/11910364/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-irritable-bowel-syndrome-to-depressive-disorder",
+          "primaryId": "irritable-bowel-syndrome",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "6ca122ddb34abeba489724f0939e269416ff4f045988e0963880a4e49c74731c"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-30909841",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "30909841",
+      "doi": "10.1177/0194599819835178",
+      "canonicalCitation": "Salazar JW, Meisel K, Smith ER, Quiggle A, McCoy DB, Amans MR. Depression in Patients with Tinnitus: A Systematic Review. Otolaryngol Head Neck Surg. 2019;161(1):28-35. PMID 30909841. doi:10.1177/0194599819835178.",
+      "citationVariants": [
+        "Salazar JW, Meisel K, Smith ER, Quiggle A, McCoy DB, Amans MR. Depression in Patients with Tinnitus: A Systematic Review. Otolaryngol Head Neck Surg. 2019;161(1):28-35. PMID 30909841. doi:10.1177/0194599819835178."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30909841/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30909841/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-tinnitus-to-depressive-disorder",
+          "primaryId": "tinnitus",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0dff1eca3d036993b580a48ba7578c85bb983a7b4f98dfaeb0a98499b0a00ec1"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-12562565",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "12562565",
+      "doi": "10.1176/appi.ajp.160.2.221",
+      "canonicalCitation": "Afari N, Buchwald D. Chronic fatigue syndrome: a review. Am J Psychiatry. 2003;160(2):221-236. PMID 12562565. doi:10.1176/appi.ajp.160.2.221.",
+      "citationVariants": [
+        "Afari N, Buchwald D. Chronic fatigue syndrome: a review. Am J Psychiatry. 2003;160(2):221-236. PMID 12562565. doi:10.1176/appi.ajp.160.2.221."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12562565/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/12562565/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-chronic-fatigue-syndrome-to-depressive-disorder",
+          "primaryId": "chronic-fatigue-syndrome",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5bdbe0553882eebdfd38f31be0fddc70d97af98c3fc32949f971122182a2a0c5"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-8039697",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "8039697",
+      "doi": "10.1016/0163-8343(94)90049-3",
+      "canonicalCitation": "Noyes R Jr, Kathol RG, Fisher MM, Phillips BM, Suelzer MT, Holt CS. Psychiatric comorbidity among patients with hypochondriasis. Gen Hosp Psychiatry. 1994;16(2):78-87. PMID 8039697. doi:10.1016/0163-8343(94)90049-3.",
+      "citationVariants": [
+        "Noyes R Jr, Kathol RG, Fisher MM, Phillips BM, Suelzer MT, Holt CS. Psychiatric comorbidity among patients with hypochondriasis. Gen Hosp Psychiatry. 1994;16(2):78-87. PMID 8039697. doi:10.1016/0163-8343(94)90049-3."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8039697/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/8039697/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-illness-anxiety-disorder-to-depressive-disorder",
+          "primaryId": "illness-anxiety-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "be730724ecb16936c03c09fa100ba2c22b7508392114a2c471438e739c76edc4"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-22459786",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "22459786",
+      "doi": "10.1016/j.cpr.2012.02.001",
+      "canonicalCitation": "Van Meter AR, Youngstrom EA, Findling RL. Cyclothymic disorder: a critical review. Clin Psychol Rev. 2012;32(4):229-243. PMID 22459786. doi:10.1016/j.cpr.2012.02.001.",
+      "citationVariants": [
+        "Van Meter AR, Youngstrom EA, Findling RL. Cyclothymic disorder: a critical review. Clin Psychol Rev. 2012;32(4):229-243. PMID 22459786. doi:10.1016/j.cpr.2012.02.001."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22459786/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/22459786/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-cyclothymic-disorder-to-bipolar-disorder",
+          "primaryId": "cyclothymic-disorder",
+          "targetId": "bipolar-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "bef53a778bbb4fa9bf22a50b0a3d018c5706f003151332c352ae3777fd33727d"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-31163237",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31163237",
+      "doi": "10.1016/j.jaad.2019.05.086",
+      "canonicalCitation": "Okhovat JP, Marks DH, Manatis-Lornell A, Hagigeorges D, Locascio JJ, Senna MM. Association between alopecia areata, anxiety, and depression: a systematic review and meta-analysis. J Am Acad Dermatol. 2023;88(5):1040-1050. PMID 31163237. doi:10.1016/j.jaad.2019.05.086.",
+      "citationVariants": [
+        "Okhovat JP, Marks DH, Manatis-Lornell A, Hagigeorges D, Locascio JJ, Senna MM. Association between alopecia areata, anxiety, and depression: a systematic review and meta-analysis. J Am Acad Dermatol. 2023;88(5):1040-1050. PMID 31163237. doi:10.1016/j.jaad.2019.05.086."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31163237/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31163237/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-alopecia-areata-to-depressive-disorder",
+          "primaryId": "alopecia-areata",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "b89304837100fc8dbdfb9dd427d14d208ebfae0ce53689be6964b579a8196437"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-27878819",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "27878819",
+      "doi": "10.1111/bjd.15199",
+      "canonicalCitation": "Lai YC, Yew YW, Kennedy C, Schwartz RA. Vitiligo and depression: a systematic review and meta-analysis of observational studies. Br J Dermatol. 2017;177(3):708-718. PMID 27878819. doi:10.1111/bjd.15199.",
+      "citationVariants": [
+        "Lai YC, Yew YW, Kennedy C, Schwartz RA. Vitiligo and depression: a systematic review and meta-analysis of observational studies. Br J Dermatol. 2017;177(3):708-718. PMID 27878819. doi:10.1111/bjd.15199."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27878819/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27878819/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-vitiligo-to-depressive-disorder",
+          "primaryId": "vitiligo",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "afea730b3d6f55aa1a3f76aa4a5208ba097190019670a24bdced211d9aabe666"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
-  "lastUpdatedBy": "ME-14 Qualified-Human Citation Verification",
-  "currentState": "ME14-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-18",
+  "currentState": "ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

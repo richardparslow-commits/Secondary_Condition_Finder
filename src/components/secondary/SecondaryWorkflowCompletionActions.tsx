@@ -3,7 +3,7 @@
 import {
   finishSecondaryWorkflow,
   restartSecondaryWorkflow,
-} from "@/app/secondary/actions";
+} from "@/lib/actions/secondary";
 import { clearSecondaryWorkflowLocalState } from "@/lib/secondary-workflow/local-state";
 
 function clearBrowserLocalWorkflowState(): void {

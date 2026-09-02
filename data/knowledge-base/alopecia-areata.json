@@ -4,5 +4,54 @@
   "todo": [
     "The prior depressive-disorder suggestion was withdrawn because the cited meta-analysis establishes increased prevalence/odds of depressive and anxiety disorders and symptoms among people with alopecia areata, but it is a comorbidity-screening signal rather than directional evidence that alopecia areata causes or aggravates a depressive disorder. Reconsider only if future evidence supports a condition-specific directional pathway with clinically meaningful chronology and mechanism."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from hair-loss-related distress, appearance concern, or impairment alone, and do not treat this population-level association as proof that alopecia areata caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of alopecia-areata and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from hair-loss-related distress, appearance concern, or impairment alone, and do not treat this population-level association as proof that alopecia areata caused an individual's depressive disorder."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Okhovat JP, Marks DH, Manatis-Lornell A, Hagigeorges D, Locascio JJ, Senna MM. Association between alopecia areata, anxiety, and depression: a systematic review and meta-analysis. J Am Acad Dermatol. 2023;88(5):1040-1050. PMID 31163237. doi:10.1016/j.jaad.2019.05.086.",
+          "note": "Mapping Expansion Batch ME-18 evidence for the bounded alopecia-areata to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31163237/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-01",
+          "sourceLocator": "PMID 31163237; approved ME-18 source; guard: Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from hair-loss-related distress, appearance concern, or impairment alone, and do not treat this population-level association as proof that alopecia areata caused an individual's depressive disorder."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of alopecia-areata and depressive-disorder; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: population-level-comorbidity-association; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations.",
+        "alternativeEtiologiesToRuleOut": [
+          "other dermatologic disease",
+          "autoimmune disease",
+          "thyroid disease",
+          "medications",
+          "substance use",
+          "psychosocial stressors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

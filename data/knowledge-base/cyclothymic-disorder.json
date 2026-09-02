@@ -4,5 +4,54 @@
   "todo": [
     "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "bipolar-disorder",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum, without establishing that any individual with cyclothymic disorder will progress to full bipolar disorder. Require independently established cyclothymic disorder and a separately established full bipolar disorder (type I or II) before presenting the relationship; the cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum and does not establish that any individual will progress to full bipolar disorder. Preserve major depressive disorder, other bipolar-spectrum presentations, substance use, medications, personality factors, and other psychiatric illness as competing explanations. Do not infer bipolar disorder from hypomanic or depressive symptoms alone, and do not treat this spectrum-level association as proof that cyclothymic disorder caused an individual's bipolar disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of cyclothymic-disorder and bipolar-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-spectrum-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established cyclothymic disorder and a separately established full bipolar disorder (type I or II) before presenting the relationship; the cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum and does not establish that any individual will progress to full bipolar disorder. Preserve major depressive disorder, other bipolar-spectrum presentations, substance use, medications, personality factors, and other psychiatric illness as competing explanations. Do not infer bipolar disorder from hypomanic or depressive symptoms alone, and do not treat this spectrum-level association as proof that cyclothymic disorder caused an individual's bipolar disorder."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Van Meter AR, Youngstrom EA, Findling RL. Cyclothymic disorder: a critical review. Clin Psychol Rev. 2012;32(4):229-243. PMID 22459786. doi:10.1016/j.cpr.2012.02.001.",
+          "note": "Mapping Expansion Batch ME-18 evidence for the bounded cyclothymic-disorder to bipolar-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22459786/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-01",
+          "sourceLocator": "PMID 22459786; approved ME-18 source; guard: Require independently established cyclothymic disorder and a separately established full bipolar disorder (type I or II) before presenting the relationship; the cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum and does not establish that any individual will progress to full bipolar disorder. Preserve major depressive disorder, other bipolar-spectrum presentations, substance use, medications, personality factors, and other psychiatric illness as competing explanations. Do not infer bipolar disorder from hypomanic or depressive symptoms alone, and do not treat this spectrum-level association as proof that cyclothymic disorder caused an individual's bipolar disorder."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum, without establishing that any individual with cyclothymic disorder will progress to full bipolar disorder. Require independently established cyclothymic disorder and a separately established full bipolar disorder (type I or II) before presenting the relationship; the cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum and does not establish that any individual will progress to full bipolar disorder.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum, without establishing that any individual with cyclothymic disorder will progress to full bipolar disorder. Require independently established cyclothymic disorder and a separately established full bipolar disorder (type I or II) before presenting the relationship; the cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum and does not establish that any individual will progress to full bipolar disorder.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-18 adds this relationship only as the user-approved bounded clinical proposition. The cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum, without establishing that any individual with cyclothymic disorder will progress to full bipolar disorder. Require independently established cyclothymic disorder and a separately established full bipolar disorder (type I or II) before presenting the relationship; the cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum and does not establish that any individual will progress to full bipolar disorder. It is not asserted that the primary caused or ",
+        "evidenceGaps": "Independent documentation of cyclothymic-disorder and bipolar-disorder; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: population-level-spectrum-association; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require independently established cyclothymic disorder and a separately established full bipolar disorder (type I or II) before presenting the relationship; the cited critical review characterizes cyclothymic disorder as a chronic and impairing disorder on the bipolar spectrum and does not establish that any individual will progress to full bipolar disorder. Preserve major depressive disorder, other bipolar-spectrum presentations, substance use, medications, p",
+        "alternativeEtiologiesToRuleOut": [
+          "major depressive disorder",
+          "other bipolar-spectrum presentations",
+          "substance use",
+          "medications",
+          "personality factors",
+          "other psychiatric illness as competing explanations"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

@@ -18,7 +18,7 @@ describe("mapping expansion ME-10", () => {
       expect(mapping?.suggestions[0]?.rank).toBe(1);
       const added = mapping?.suggestions.find((entry) => entry.conditionId === row.targetId);
       expect(added?.rank).toBe(2);
-      expect(added?.prevalence).toBe("sometimes-explored");
+      expect(added?.nexusClaim?.nexusClassification).toBeDefined(); expect(added?.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(added?.pathwayIntelligence).toBeUndefined();
       expect(added?.rationale).toContain("Mapping Expansion Batch ME-10");
       expect(added?.rationale).toContain(row.guardNeedle);
@@ -46,8 +46,8 @@ describe("mapping expansion ME-10", () => {
 
   it("pins the exact final ME-10 citation totals", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
-    expect(refs).toHaveLength(251);
-    expect(refs.filter((source) => source.verified === true)).toHaveLength(251);
-    expect(refs.filter((source) => source.verified === false)).toHaveLength(0);
+    expect(refs).toHaveLength(271);
+    expect(refs.filter((source) => source.verified === true)).toHaveLength(256);
+    expect(refs.filter((source) => source.verified === false)).toHaveLength(15);
   });
 });

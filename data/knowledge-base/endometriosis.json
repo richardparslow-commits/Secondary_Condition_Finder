@@ -6,7 +6,6 @@
     {
       "conditionId": "ovarian-cancer",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as temporal association risk. Require documented endometriosis preceding separately diagnosed ovarian cancer. Treat as population-level association/risk evidence, with strongest histologic signal for endometrioid/clear-cell disease; do not claim individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Endometriosis and Ovarian Cancer",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 24518590; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented endometriosis preceding separately diagnosed ovarian cancer. Treat as population-level association/risk evidence, with strongest histologic signal for endometrioid/clear-cell disease; do not claim individual causation."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Resolution 2026 publishes this relationship only as temporal association risk. Require documented endometriosis preceding separately diagnosed ovarian cancer. Treat as population-level association/risk evidence, with strongest histologic signal for endometrioid/clear-cell disease; do not claim individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "Clinical Mapping Master Resolution 2026 publishes this relationship only as temporal association risk. Require documented endometriosis preceding separately diagnosed ovarian cancer. Treat as population-level association/risk evidence, with strongest histologic signal for endometrioid/clear-cell disease; do not claim individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Resolution 2026 publishes this relationship only as temporal association risk. Require documented endometriosis preceding separately diagnosed ovarian cancer. Treat as population-level association/risk evidence, with strongest histologic signal for endometrioid/clear-cell disease; do not claim individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Endometriosis and Ovarian Cancer; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of the publication guard: Require documented endometriosis preceding separately diagnosed ovarian cancer. Treat as population-level association/risk evidence, with strongest histologic signal for endometrioid/clear-cell disease; do not claim individual causation.",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "depressive-disorder",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. Preserve chronic pain, sleep disturbance, infertility, psychosocial burden, other medical conditions, and independent psychiatric risk factors as potential contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of endometriosis and depressive-disorder",
@@ -47,7 +65,32 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 41308609; approved ME-4 proposition; guard: Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. Preserve chronic pain, sleep disturbance, infertility, psychosocial burden, other medical conditions, and independent psychiatric risk factors as potential contributors."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of endometriosis and depressive-disorder; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented endometriosis and a separately established depressive disorder. Treat this source as population-level association/risk evidence, not proof of direct individual causation. Preserve chronic pain, sleep disturbance, infertility, psychosocial burden, other medical conditions, and independent psychiatric risk factors as potential contributors.",
+        "alternativeEtiologiesToRuleOut": [
+          "chronic pain",
+          "sleep disturbance",
+          "infertility",
+          "psychosocial burden",
+          "other medical conditions",
+          "independent psychiatric risk factors as potential contributors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

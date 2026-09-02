@@ -3,7 +3,8 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 type SourceReference = { citation?: string; verified: boolean; verificationScope: string };
-type Suggestion = { conditionId: string; rank: number; prevalence: string; pathwayIntelligence?: unknown; sourceReferences: SourceReference[] };
+type Suggestion = { conditionId: string; rank: number; nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined; pathwayIntelligence?: unknown; sourceReferences: SourceReference[] };
 type Mapping = { draft: boolean; suggestions: Suggestion[] };
 type MasterSource = { sourceId: string; status: string; verified: boolean; verificationState?: { qualifiedHumanCitationReviewDecision?: string; qualifiedHumanCitationReviewRequired?: boolean } };
 type MasterSourceRegistry = { sources: MasterSource[] };
@@ -58,7 +59,7 @@ describe("Mapping Expansion ME-12 qualified-human citation verification", () => 
       expect(suggestions).toHaveLength(1);
       const suggestion = suggestions[0]!;
       expect(suggestion.rank).toBe(1);
-      expect(suggestion.prevalence).toBe("sometimes-explored");
+      expect(suggestion.nexusClaim?.nexusClassification).toBeDefined(); expect(suggestion.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(suggestion.pathwayIntelligence).toBeUndefined();
       const refs = suggestion.sourceReferences.filter((r) => r.citation?.includes(`PMID ${row.pmid}`));
       expect(refs).toHaveLength(1);

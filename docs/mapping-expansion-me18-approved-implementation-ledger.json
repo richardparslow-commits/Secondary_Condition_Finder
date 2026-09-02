@@ -1,0 +1,113 @@
+{
+  "phase": "Mapping Expansion ME-18",
+  "ledgerStatus": "APPROVED AND APPLIED LOCALLY — CITATIONS PENDING VERIFICATION",
+  "approvalDate": "2026-09-01",
+  "requiredBaselineCommit": "13812063f0408ea1cf3235370836a0ac867767ce",
+  "previousRegistryBaselineCommit": "13812063f0408ea1cf3235370836a0ac867767ce",
+  "previousRegistryCurrentState": "ME17-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+  "commitSubject": "map: mapping expansion ME-18 (5 relationships)",
+  "issueReference": "issue #360 Mapping Expansion Wave: Mental Disorders (ME-15+)",
+  "approvalRecord": "Qualified-human approval captured on 2026-09-01: all five bounded ME-18 mappings approved, plus approve-as-implemented citation verification pre-captured at planning for all five sources.",
+  "rows": [
+    {
+      "primaryId": "chronic-fatigue-syndrome",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "12562565",
+      "doi": "10.1176/appi.ajp.160.2.221",
+      "sourceTitle": "Chronic fatigue syndrome: a review",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12562565/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me18-source"
+    },
+    {
+      "primaryId": "illness-anxiety-disorder",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "8039697",
+      "doi": "10.1016/0163-8343(94)90049-3",
+      "sourceTitle": "Psychiatric comorbidity among patients with hypochondriasis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8039697/",
+      "claimType": "clinical-sample-comorbidity-association",
+      "sourceAction": "approved-fresh-me18-source"
+    },
+    {
+      "primaryId": "cyclothymic-disorder",
+      "targetId": "bipolar-disorder",
+      "rank": 1,
+      "pmid": "22459786",
+      "doi": "10.1016/j.cpr.2012.02.001",
+      "sourceTitle": "Cyclothymic disorder: a critical review",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22459786/",
+      "claimType": "population-level-spectrum-association",
+      "sourceAction": "approved-fresh-me18-source"
+    },
+    {
+      "primaryId": "alopecia-areata",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "31163237",
+      "doi": "10.1016/j.jaad.2019.05.086",
+      "sourceTitle": "Association between alopecia areata, anxiety, and depression: a systematic review and meta-analysis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31163237/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me18-source"
+    },
+    {
+      "primaryId": "vitiligo",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "27878819",
+      "doi": "10.1111/bjd.15199",
+      "sourceTitle": "Vitiligo and depression: a systematic review and meta-analysis of observational studies",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27878819/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me18-source"
+    }
+  ],
+  "citationStateAfterImplementation": {
+    "kbSourceReferences": "verified:false",
+    "masterSources": "pending-verification",
+    "registryCurrentState": "ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+    "qualifiedHumanCitationReviewRequired": true,
+    "automaticPromotionAuthorized": false
+  },
+  "failurePolicy": "Fail closed. If any exact baseline, publication-state proof, edge, source identity, projection, PubMed identity, validation, or freeze-guard requirement fails, stop. If any repository write has already occurred, preserve the exact dirty state; do not reset, restore, stash, or clean.",
+  "projectionNote": "ME-18 registers five draft primaries (chronic-fatigue-syndrome, illness-anxiety-disorder, cyclothymic-disorder, alopecia-areata, vitiligo) all at rank 1. All five primaries move out of the never-used pool; cyclothymic-disorder targets bipolar-disorder (spectrum association), the other four target depressive-disorder. Registered-primary coverage advances 169 -> 174 of 311; remaining primaries partition from 37 target-only / 105 never-used to 37 target-only / 100 never-used. Publication P1/D1 counts are resolved from read-before-write publication-state proof: P1 66 / P2+ 73 unchanged; draft D1 29 -> 34.",
+  "implementationDateLocal": "2026-09-01",
+  "implementationResult": {
+    "rowsImplemented": 5,
+    "rank1Rows": 5,
+    "rank2Rows": 0,
+    "publicationStatesPreserved": {
+      "chronic-fatigue-syndrome": "draft",
+      "illness-anxiety-disorder": "draft",
+      "cyclothymic-disorder": "draft",
+      "alopecia-areata": "draft",
+      "vitiligo": "draft"
+    },
+    "selectedDraftPrimaries": 5,
+    "selectedPublishedPrimaries": 0,
+    "postMatrix": [
+      311,
+      139,
+      172,
+      263,
+      66,
+      73,
+      34
+    ],
+    "kbVerifiedFalseRows": 5,
+    "masterPendingSources": 5,
+    "registeredPrimaries": 174,
+    "remainingPrimaries": 137,
+    "remainingTargetOnlyPrimaries": 37,
+    "remainingNeverUsedPrimaries": 100,
+    "citationPromotions": 0,
+    "publicationStatusChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "semanticBroadening": 0,
+    "remoteWritesPerformed": false
+  }
+}

@@ -35,7 +35,7 @@ const rows=[
   }
 ];
 type SourceReference={ citation?:string; verified:boolean; verificationScope:string; sourceUrl?:string };
-type Suggestion={ conditionId:string; rank:number; prevalence:string; pathwayIntelligence?:unknown; sourceReferences:SourceReference[] };
+type Suggestion={ conditionId:string; rank:number; nexusClaim:{nexusClassification:string}|undefined; evidentiaryProfile:{etiologicalConsensus:string}|undefined; pathwayIntelligence?:unknown; sourceReferences:SourceReference[] };
 type Mapping={ draft:boolean; suggestions:Suggestion[] };
 type MasterRelationship={ relationshipId:string; primaryPublicationState:string; rank:number; publicationGuard:{ structuredGuardText:string } };
 type MasterRelationshipRegistry={ relationships:MasterRelationship[] };
@@ -48,7 +48,7 @@ describe("Mapping Expansion ME-12 local implementation",()=>{
       const m=load<Mapping>(path.join(ROOT,"data","knowledge-base",`${row.primaryId}.json`));
       expect(m.draft).toBe(true);
       const hits=m.suggestions.filter((s)=>s.conditionId===row.targetId);
-      expect(hits).toHaveLength(1); expect(hits[0].rank).toBe(1); expect(hits[0].prevalence).toBe("sometimes-explored");
+      expect(hits).toHaveLength(1); expect(hits[0].rank).toBe(1); expect(hits[0].nexusClaim?.nexusClassification).toBeDefined(); expect(hits[0].evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(hits[0].pathwayIntelligence).toBeUndefined();
       const refs=hits[0].sourceReferences.filter((r)=>r.citation?.includes(`PMID ${row.pmid}`));
       expect(refs).toHaveLength(1); expect(refs[0].verified).toBe(true); expect(refs[0].verificationScope).toBe("clinical-evidence");
@@ -64,8 +64,8 @@ describe("Mapping Expansion ME-12 local implementation",()=>{
   it("pins the ME-12 citation-verified aggregate state",()=>{
     const maps=fs.readdirSync(path.join(ROOT,"data","knowledge-base")).filter((f)=>f.endsWith(".json")).map((f)=>load<Mapping>(path.join(ROOT,"data","knowledge-base",f)));
     const refs=maps.flatMap((m)=>m.suggestions.flatMap((s)=>s.sourceReferences||[])); const clinical=refs.filter((r)=>r.verificationScope==="clinical-evidence");
-    expect(maps.reduce((n,m)=>n+m.suggestions.length,0)).toBe(243);
-    expect(maps.filter((m)=>m.draft===false&&m.suggestions.length===1)).toHaveLength(66); expect(maps.filter((m)=>m.draft===false&&m.suggestions.length>=2)).toHaveLength(73); expect(maps.filter((m)=>m.draft===true&&m.suggestions.length===1)).toHaveLength(16);
-    expect(refs).toHaveLength(251); expect(refs.filter((r)=>r.verified===true)).toHaveLength(251); expect(refs.filter((r)=>r.verified===false)).toHaveLength(0); expect(clinical).toHaveLength(246);
+    expect(maps.reduce((n,m)=>n+m.suggestions.length,0)).toBe(263);
+    expect(maps.filter((m)=>m.draft===false&&m.suggestions.length===1)).toHaveLength(66); expect(maps.filter((m)=>m.draft===false&&m.suggestions.length>=2)).toHaveLength(73); expect(maps.filter((m)=>m.draft===true&&m.suggestions.length===1)).toHaveLength(34);
+    expect(refs).toHaveLength(271); expect(refs.filter((r)=>r.verified===true)).toHaveLength(256); expect(refs.filter((r)=>r.verified===false)).toHaveLength(15); expect(clinical).toHaveLength(266);
   });
 });

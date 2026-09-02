@@ -6,7 +6,6 @@
     {
       "conditionId": "hypothyroidism",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment complication. Apply to Graves hyperthyroidism treated with total thyroidectomy or ablative/high-dose radioiodine followed by hypothyroidism requiring replacement. Definitive-treatment consequence; do not infer hypothyroidism from untreated hyperthyroidism. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "pathwayIntelligence": {
         "pathways": [
@@ -42,12 +41,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 30912336; PubMed title/abstract retrieved in the master research harvest; guard: Apply to Graves hyperthyroidism treated with total thyroidectomy or ablative/high-dose radioiodine followed by hypothyroidism requiring replacement."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Hyperthyroidism → documented qualifying treatment/procedure exposure → separately diagnosed Hypothyroidism with compatible timing.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Hyperthyroidism → documented qualifying treatment/procedure exposure → separately diagnosed Hypothyroidism with compatible timing.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Hyperthyroidism → documented qualifying treatment/procedure exposure → separately diagnosed Hypothyroidism with compatible timing. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation of the qualifying treatment or procedure used for Hyperthyroidism; Independent diagnosis of Hypothyroidism and timing relative to that exposure; Dose, duration, procedure details, and relevant co-exposures where applicable; Qualified clinical assessment of competing causes and source-phenotype fit",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "cardiac-arrhythmia",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation. Preserve temporal thyroid status, restoration of euthyroidism, structural heart disease, age, and other AF risk factors when evaluating individual attribution. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of hyperthyroidism and cardiac-arrhythmia",
@@ -65,7 +83,31 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 38377675; approved ME-3 proposition; guard: Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation. Preserve temporal thyroid status, restoration of euthyroidism, structural heart disease, age, and other AF risk factors when evaluating individual attribution."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of hyperthyroidism and cardiac-arrhythmia; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented hyperthyroidism/thyrotoxicosis and separately documented atrial fibrillation. The broad cardiac-arrhythmia target is used only for the atrial-fibrillation phenotype supported by PMID 38377675; do not extend this edge to sinus tachycardia, ventricular arrhythmias, other supraventricular rhythms, palpitations, or an abnormal pulse without AF documentation. Preserve temporal thyroid status, restoration of euthyroidism, structural heart disease, age, and other AF risk factors when evaluating ind",
+        "alternativeEtiologiesToRuleOut": [
+          "temporal thyroid status",
+          "restoration of euthyroidism",
+          "structural heart disease",
+          "age",
+          "other AF risk factors when evaluating individual attribution"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

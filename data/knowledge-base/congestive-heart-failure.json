@@ -6,7 +6,6 @@
     {
       "conditionId": "depressive-disorder",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Depressive symptoms and depressive disorders are common in people with heart failure and warrant clinical assessment. This comorbidity evidence supports research of the relationship but does not by itself establish that heart failure caused or aggravated an individual depressive disorder; diagnosis, chronology, functional burden, treatment, and competing contributors require case-specific review.",
       "evidenceGaps": [
         "Qualified diagnosis of a depressive disorder rather than symptom-screening results alone",
@@ -25,7 +24,27 @@
           "sourceLocator": "PMID 32802590; systematic review",
           "verificationScope": "clinical-evidence"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Depressive symptoms and depressive disorders are common in people with heart failure and warrant clinical assessment. This comorbidity evidence supports research of the relationship but does not by itself establish that heart failure caused or aggravated an individual depressive disorder; diagnosis, chronology, functional burden, treatment, and competing contributors require case-specific review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Depressive symptoms and depressive disorders are common in people with heart failure and warrant clinical assessment. This comorbidity evidence supports research of the relationship but does not by itself establish that heart failure caused or aggravated an individual depressive disorder; diagnosis, chronology, functional burden, treatment, and competing contributors require case-specific review.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Depressive symptoms and depressive disorders are common in people with heart failure and warrant clinical assessment. This comorbidity evidence supports research of the relationship but does not by itself establish that heart failure caused or aggravated an individual depressive disorder; diagnosis, chronology, functional burden, treatment, and competing contributors require case-specific review. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Qualified diagnosis of a depressive disorder rather than symptom-screening results alone; Chronology comparing depressive-disorder onset or worsening with heart-failure onset, severity, decompensations, functional limitation, and treatment; Documentation of heart-failure functional burden and relevant treatment history; Evaluation of alternative psychiatric, medical, medication-related, psychosocial, substance-use, and sleep-related contributors; Qualified cardiovascular or mental-health opinion addressing the individual relationship if causation or aggravation is asserted",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

@@ -6,7 +6,6 @@
     {
       "conditionId": "charcot-arthropathy",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Syringomyelia is a recognized cause of neuropathic (Charcot) arthropathy, but the cited systematic review and case series specifically concern syringomyelia-associated Charcot arthropathy of the elbow. This source supports an anatomically correlated elbow/upper-extremity pathway when the syrinx level and sensory or proprioceptive deficits are compatible with the affected joint. It should not be generalized from this source to every joint or to ordinary osteoarthritis, inflammatory arthritis, trauma, infection, or another destructive-joint process.",
       "pathwayIntelligence": {
         "pathways": [
@@ -41,7 +40,27 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 35994178; abstract: literature review 31 reports plus case series, 50 total patients; conclusion identifies syringomyelia as an important etiology of Charcot arthropathy of the elbow"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Anatomically compatible syringomyelia → impaired protective sensation/proprioception in the affected upper-extremity distribution → repetitive unrecognized joint trauma when present → neuropathic/Charcot arthropathy, with the cited evidence specifically supporting elbow disease.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Anatomically compatible syringomyelia → impaired protective sensation/proprioception in the affected upper-extremity distribution → repetitive unrecognized joint trauma when present → neuropathic/Charcot arthropathy, with the cited evidence specifically supporting elbow disease.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Anatomically compatible syringomyelia → impaired protective sensation/proprioception in the affected upper-extremity distribution → repetitive unrecognized joint trauma when present → neuropathic/Charcot arthropathy, with the cited evidence specifically supporting elbow disease. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "MRI and neurologic records establishing syringomyelia level, extent, and associated sensory or motor findings; Joint imaging and orthopedic/rheumatology documentation confirming neuropathic or Charcot arthropathy; Anatomic correlation between syrinx-related neurologic deficits and the affected joint; Assessment for diabetes, peripheral neuropathy, trauma, infection, inflammatory disease, and other destructive-joint causes; Qualified neurologic and orthopedic opinion addressing the individual causal relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

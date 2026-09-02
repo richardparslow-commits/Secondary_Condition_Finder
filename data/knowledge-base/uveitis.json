@@ -6,7 +6,6 @@
     {
       "conditionId": "glaucoma",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Glaucoma is a recognized sight-threatening complication of uveitis. Intraocular inflammation can impair aqueous outflow through inflammatory cells, mediators, and structural angle changes, while corticosteroid treatment can independently raise intraocular pressure in susceptible patients. This supports a uveitis-related secondary-glaucoma pathway only when glaucoma is objectively diagnosed and the individual record supports inflammatory and/or treatment-related mechanisms; ocular hypertension alone is not interchangeable with glaucoma, and not every patient with uveitis develops glaucomatous damage.",
       "pathwayIntelligence": {
         "pathways": [
@@ -43,12 +42,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 31816329; abstract: glaucoma secondary to ocular inflammation; compromised aqueous outflow from inflammatory cells/mediators and corticosteroid-induced pressure elevation"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Documented uveitis and/or its corticosteroid treatment → sustained intraocular-pressure elevation or impaired aqueous outflow when present → objectively diagnosed secondary glaucoma with compatible optic-nerve and/or visual-field damage.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Documented uveitis and/or its corticosteroid treatment → sustained intraocular-pressure elevation or impaired aqueous outflow when present → objectively diagnosed secondary glaucoma with compatible optic-nerve and/or visual-field damage.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Documented uveitis and/or its corticosteroid treatment → sustained intraocular-pressure elevation or impaired aqueous outflow when present → objectively diagnosed secondary glaucoma with compatible optic-nerve and/or visual-field damage. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Ophthalmology records confirming uveitis phenotype, laterality, activity, and chronology; Serial intraocular-pressure measurements and gonioscopy; Objective glaucoma evidence such as optic-nerve/RNFL imaging and reproducible visual-field loss; Corticosteroid treatment history and pressure response where a treatment pathway is considered; Ophthalmology opinion addressing inflammatory, treatment-related, and competing glaucoma mechanisms in the individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "cataracts",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented noninfectious anterior uveitis and separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of uveitis and cataracts",
@@ -66,7 +84,32 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 37414328; approved ME-4 proposition; guard: Require documented noninfectious anterior uveitis and separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented noninfectious anterior uveitis and separately established cataract in the affected eye.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented noninfectious anterior uveitis and separately established cataract in the affected eye.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Require documented noninfectious anterior uveitis and separately established cataract in the affected eye. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of uveitis and cataracts; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented noninfectious anterior uveitis and separately established cataract in the affected eye. Do not infer cataract from uveitis alone. Preserve age, inflammation severity, corticosteroid exposure, prior ocular surgery, glaucoma treatment, and other cataract contributors.",
+        "alternativeEtiologiesToRuleOut": [
+          "age",
+          "inflammation severity",
+          "corticosteroid exposure",
+          "prior ocular surgery",
+          "glaucoma treatment",
+          "other cataract contributors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

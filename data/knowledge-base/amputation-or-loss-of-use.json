@@ -1,46 +1,65 @@
 {
-  "id": "amputation-or-loss-of-use",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Systematic-review evidence shows a substantial burden of depression and anxiety after traumatic limb amputation, but prevalence and adjustment vary with injury, rehabilitation, pain, social, and individual factors. This supports focused evaluation of a depressive disorder after amputation; it does not establish that an individual's depression was caused or aggravated by the amputation without chronology and a case-specific mental-health assessment.",
-      "pathwayIntelligence": {
-        "pathways": [
-          "somatopsychic"
-        ],
-        "causalChain": "Documented amputation or loss of use → functional/pain/adjustment burden → claimed development or aggravation of depressive disorder.",
-        "developmentQuestions": [
-          "When did depressive symptoms begin relative to the amputation or loss of use?",
-          "What pain, mobility, rehabilitation, vocational, social, or body-image effects are documented after the amputation?",
-          "What psychiatric history or other major psychosocial/medical contributors predated or coincided with the depressive disorder?",
-          "Do mental-health records identify the amputation-related functional burden as a material contributor or aggravating factor?",
-          "Can a qualified mental-health clinician distinguish temporal association from individual causation or aggravation?"
-        ],
-        "issuesToResolve": [
-          "Population-level post-amputation depression prevalence does not establish individual causation.",
-          "The timing and contribution of pre-existing psychiatric illness, pain, rehabilitation course, social stressors, and other medical conditions must be addressed."
-        ]
-      },
-      "evidenceGaps": [
-        "Mental-health evaluation documenting diagnosis and symptom chronology relative to amputation or loss of use",
-        "Rehabilitation, pain, functional, and psychosocial records describing post-amputation burden",
-        "Clinical opinion addressing alternative contributors and individual causation or aggravation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Mckechnie and John, Anxiety and depression following traumatic limb amputation: a systematic review, Injury. 2014;45:1859-1866. PMID 25294119",
-          "note": "Systematic review finding high prevalence of anxiety and depression after traumatic limb amputation, with substantial study heterogeneity and limited long-term prospective data; supports clinical evaluation rather than automatic nexus inference.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25294119/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-18",
-          "sourceLocator": "PMID 25294119; abstract; systematic review of anxiety and depression following traumatic limb amputation"
-        }
-      ]
-    }
-  ]
+   "id": "amputation-or-loss-of-use",
+   "draft": false,
+   "todo": [],
+   "suggestions": [
+      {
+         "conditionId": "depressive-disorder",
+         "rank": 1,
+         "rationale": "Systematic-review evidence shows a substantial burden of depression and anxiety after traumatic limb amputation, but prevalence and adjustment vary with injury, rehabilitation, pain, social, and individual factors. This supports focused evaluation of a depressive disorder after amputation; it does not establish that an individual's depression was caused or aggravated by the amputation without chronology and a case-specific mental-health assessment.",
+         "pathwayIntelligence": {
+            "pathways": [
+               "somatopsychic"
+            ],
+            "causalChain": "Documented amputation or loss of use → functional/pain/adjustment burden → claimed development or aggravation of depressive disorder.",
+            "developmentQuestions": [
+               "When did depressive symptoms begin relative to the amputation or loss of use?",
+               "What pain, mobility, rehabilitation, vocational, social, or body-image effects are documented after the amputation?",
+               "What psychiatric history or other major psychosocial/medical contributors predated or coincided with the depressive disorder?",
+               "Do mental-health records identify the amputation-related functional burden as a material contributor or aggravating factor?",
+               "Can a qualified mental-health clinician distinguish temporal association from individual causation or aggravation?"
+            ],
+            "issuesToResolve": [
+               "Population-level post-amputation depression prevalence does not establish individual causation.",
+               "The timing and contribution of pre-existing psychiatric illness, pain, rehabilitation course, social stressors, and other medical conditions must be addressed."
+            ]
+         },
+         "evidenceGaps": [
+            "Mental-health evaluation documenting diagnosis and symptom chronology relative to amputation or loss of use",
+            "Rehabilitation, pain, functional, and psychosocial records describing post-amputation burden",
+            "Clinical opinion addressing alternative contributors and individual causation or aggravation"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Mckechnie and John, Anxiety and depression following traumatic limb amputation: a systematic review, Injury. 2014;45:1859-1866. PMID 25294119",
+               "note": "Systematic review finding high prevalence of anxiety and depression after traumatic limb amputation, with substantial study heterogeneity and limited long-term prospective data; supports clinical evaluation rather than automatic nexus inference.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25294119/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-18",
+               "sourceLocator": "PMID 25294119; abstract; systematic review of anxiety and depression following traumatic limb amputation"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "ASSOCIATION_ONLY",
+            "associationBasis": "The published knowledge base includes this relationship as an association: Systematic-review evidence shows a substantial burden of depression and anxiety after traumatic limb amputation, but prevalence and adjustment vary with injury, rehabilitation, pain, social, and individual factors. This supports focused evaluation of a depressive disorder after amputation; it does not establish that an individual's depression was caused or aggravated by the amputation without chronology and a case-specific mental-health assessment.",
+            "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+            "primaryVector": "Systematic-review evidence shows a substantial burden of depression and anxiety after traumatic limb amputation, but prevalence and adjustment vary with injury, rehabilitation, pain, social, and individual factors. This supports focused evaluation of a depressive disorder after amputation; it does not establish that an individual's depression was caused or aggravated by the amputation without chronology and a case-specific mental-health assessment.",
+            "hypothesizedOnly": true
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "NOT_ESTABLISHED",
+            "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+            "conservativeRationale": "This relationship is supported as an association only. Systematic-review evidence shows a substantial burden of depression and anxiety after traumatic limb amputation, but prevalence and adjustment vary with injury, rehabilitation, pain, social, and individual factors. This supports focused evaluation of a depressive disorder after amputation; it does not establish that an individual's depression was caused or aggravated by the amputation without chronology and a case-specific mental-health assessment. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+            "evidenceGaps": "Mental-health evaluation documenting diagnosis and symptom chronology relative to amputation or loss of use; Rehabilitation, pain, functional, and psychosocial records describing post-amputation burden; Clinical opinion addressing alternative contributors and individual causation or aggravation",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
+      }
+   ]
 }

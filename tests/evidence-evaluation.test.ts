@@ -15,12 +15,12 @@ describe("P2 Ticket 9: Evidence Evaluation Output Model", () => {
       conditionId: "radiculopathy",
       condition: "Radiculopathy",
       bodySystem: "Neurological",
-      prevalence: "commonly-explored",
       score: 1.0,
       contributingPrimaries: [],
       evidenceGaps: ["Current diagnosis records", "Nexus letter from treating clinician"],
       sourceReferences: [],
-      matchedIntakeContext: []
+      matchedIntakeContext: [],
+      etiologicalConsensus: "PROBABLE"
     }
   ];
 
@@ -62,12 +62,12 @@ describe("P2 Ticket 9: Evidence Evaluation Output Model", () => {
         conditionId: "radiculopathy",
         condition: "Radiculopathy",
         bodySystem: "Neurological",
-        prevalence: "commonly-explored",
         score: 1.0,
         contributingPrimaries: [],
         evidenceGaps: ["Current diagnosis", "Treatment records"],
         sourceReferences: [],
-        matchedIntakeContext: []
+        matchedIntakeContext: [],
+        etiologicalConsensus: "PROBABLE"
       }
     ];
 

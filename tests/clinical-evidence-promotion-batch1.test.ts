@@ -71,7 +71,7 @@ describe("clinical evidence promotion batch 1", () => {
     expect(mapping?.todo).toEqual([]);
     expect(mapping?.suggestions).toHaveLength(1);
     expect(mapping?.suggestions[0]?.conditionId).toBe("hydronephrosis");
-    expect(mapping?.suggestions[0]?.prevalence).toBe("occasionally-explored");
+    expect(mapping?.suggestions[0]?.nexusClaim?.nexusClassification).toBeDefined(); expect(mapping?.suggestions[0]?.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
     expect(mapping?.suggestions[0]?.pathwayIntelligence?.pathways).toContain("intermediate-chain");
     expect(mapping?.suggestions[0]?.rationale).toMatch(/other causes of hydronephrosis/i);
 

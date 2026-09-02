@@ -6,7 +6,6 @@
     {
       "conditionId": "congestive-heart-failure",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Cardiomyopathy can produce structural and functional myocardial abnormalities that progress to symptomatic heart failure in some patients. The relationship depends on the cardiomyopathy phenotype, ventricular function, timing, and competing causes of heart failure; the population-level clinical relationship does not by itself establish an individual nexus.",
       "pathwayIntelligence": {
         "pathways": [
@@ -40,12 +39,31 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 37622657; Sections 6.10.2 and 7.2.3"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Documented cardiomyopathy → persistent myocardial structural/functional dysfunction → claimed progression to clinically diagnosed heart failure.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Documented cardiomyopathy → persistent myocardial structural/functional dysfunction → claimed progression to clinically diagnosed heart failure.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Documented cardiomyopathy → persistent myocardial structural/functional dysfunction → claimed progression to clinically diagnosed heart failure. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Cardiology records identifying the cardiomyopathy phenotype and etiology; Objective ventricular-function and heart-failure evidence such as echocardiography, cardiac MRI, natriuretic peptides, or documented congestion; Medical opinion addressing temporal relationship, competing etiologies, and individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "cardiac-arrhythmia",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented cardiomyopathy and separately documented clinically significant ventricular arrhythmia, such as ventricular tachycardia or ventricular fibrillation, arising in a clinically compatible structural-cardiomyopathy context. PMID 37622657 supports ventricular-arrhythmia risk and management across cardiomyopathy phenotypes; do not infer arrhythmia from cardiomyopathy alone and do not generalize the source to every nonspecific rhythm abnormality. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of cardiomyopathy and cardiac-arrhythmia",
@@ -63,7 +81,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 37622657; qualified-human-approved Mapping Expansion Batch ME-1 Citation Verification; guard: Require documented cardiomyopathy and separately documented clinically significant ventricular arrhythmia, such as ventricular tachycardia or ventricular fibrillation, arising in a clinically compatible structural-cardiomyopathy context. PMID 37622657 supports ventricular-arrhythmia risk and management across cardiomyopathy phenotypes; do not infer arrhythmia from cardiomyopathy alone and do not generalize the source to every nonspecific rhythm abnormality."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented cardiomyopathy and separately documented clinically significant ventricular arrhythmia, such as ventricular tachycardia or ventricular fibrillation, arising in a clinically compatible structural-cardiomyopathy context. PMID 37622657 supports ventricular-arrhythmia risk and management across cardiomyopathy phenotypes;",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented cardiomyopathy and separately documented clinically significant ventricular arrhythmia, such as ventricular tachycardia or ventricular fibrillation, arising in a clinically compatible structural-cardiomyopathy context. PMID 37622657 supports ventricular-arrhythmia risk and management across cardiomyopathy phenotypes;",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented cardiomyopathy and separately documented clinically significant ventricular arrhythmia, such as ventricular tachycardia or ventricular fibrillation, arising in a clinically compatible structural-cardiomyopathy context. PMID 37622657 supports ventricular-arrhythmia risk and management across cardiomyopathy phenotypes; It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of cardiomyopathy and cardiac-arrhythmia; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented cardiomyopathy and separately documented clinically significant ventricular arrhythmia, such as ventricular tachycardia or ventricular fibrillation, arising in a clinically compatible structural-cardiomyopathy context. PMID 37622657 supports ventricular-arrhythmia risk and management across cardiomyopathy phenotypes; do not infer arrhythmia from cardiomyopathy alone and do not generalize the source to every nonspecific rhythm abnormality.",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

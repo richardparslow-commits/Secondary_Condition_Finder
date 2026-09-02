@@ -6,7 +6,6 @@
     {
       "conditionId": "post-traumatic-headache",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Require documented mild traumatic brain injury plus a new headache developing within the ICHD-3 temporal attribution window. For core ICHD-3 publication, headache onset should be within 7 days after injury, regaining consciousness, or discontinuation of medication that impaired the ability to sense/report headache. Persistent subtype requires duration greater than 3 months.",
       "evidenceGaps": [
         "Neurology or headache-specialist diagnosis distinguishing migraine from other post-traumatic headache phenotypes",
@@ -25,12 +24,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 38568491; moved one-for-one from the prior mTBI→migraine-headaches taxonomy mismatch to mTBI→post-traumatic-headache; qualified-human citation verification approved 2026-08-19."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Require documented mild traumatic brain injury plus a new headache developing within the ICHD-3 temporal attribution window. For core ICHD-3 publication, headache onset should be within 7 days after injury, regaining consciousness, or discontinuation of medication that impaired the ability to sense/report headache. Persistent subtype requires duration greater than 3 months.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Require documented mild traumatic brain injury plus a new headache developing within the ICHD-3 temporal attribution window. For core ICHD-3 publication, headache onset should be within 7 days after injury, regaining consciousness, or discontinuation of medication that impaired the ability to sense/report headache. Persistent subtype requires duration greater than 3 months.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Require documented mild traumatic brain injury plus a new headache developing within the ICHD-3 temporal attribution window. For core ICHD-3 publication, headache onset should be within 7 days after injury, regaining consciousness, or discontinuation of medication that impaired the ability to sense/report headache. Persistent subtype requires duration greater than 3 months. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Neurology or headache-specialist diagnosis distinguishing migraine from other post-traumatic headache phenotypes; Headache onset chronology relative to the mild TBI, including the temporal criteria used for post-traumatic headache; Headache frequency, duration, associated migraine features, and longitudinal treatment records; Pre-injury headache or migraine history and other competing headache causes; Clinician assessment addressing whether the individual's diagnosed migraine/post-traumatic headache phenotype is attributable to the documented mTBI",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "post-concussion-syndrome",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented mild traumatic brain injury/concussion in an adult followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury. Do not infer post-concussion syndrome from transient acute headache, dizziness, cognitive complaints, or other symptoms occurring only immediately after injury. Consider pre-existing psychiatric, sleep, neurologic, and symptom conditions that may contribute to or mimic persistent post-concussive symptoms. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of mild-tbi and post-concussion-syndrome",
@@ -48,7 +66,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 40531530; qualified-human-approved Mapping Expansion Batch ME-2 Citation Verification; guard: Require documented mild traumatic brain injury/concussion in an adult followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury. Do not infer post-concussion syndrome from transient acute headache, dizziness, cognitive complaints, or other symptoms occurring only immediately after injury. Consider pre-existing psychiatric, sleep, neurologic, and symptom conditions that may contribute to or mimic persistent post-concussive symptoms."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented mild traumatic brain injury/concussion in an adult followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented mild traumatic brain injury/concussion in an adult followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented mild traumatic brain injury/concussion in an adult followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of mild-tbi and post-concussion-syndrome; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented mild traumatic brain injury/concussion in an adult followed by separately documented persistent post-concussive symptoms extending beyond the acute recovery period, with clinical attribution to the qualifying injury. Do not infer post-concussion syndrome from transient acute headache, dizziness, cognitive complaints, or other symptoms occurring only immediately after injury. Consider pre-existing psychiatric, sleep, neurologic, and symptom conditions that may contribute to or mimic persistent",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

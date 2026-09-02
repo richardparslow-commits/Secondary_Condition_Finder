@@ -46,7 +46,7 @@ const mappedSleepApnea: Recommendation = {
   conditionId: "sleep-apnea",
   condition: "Sleep Apnea",
   bodySystem: "Respiratory",
-  prevalence: "commonly-explored",
+  etiologicalConsensus: "WELL_ESTABLISHED",
   score: 1.5,
   contributingPrimaries: [
     {

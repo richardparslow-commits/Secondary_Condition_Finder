@@ -1,154 +1,228 @@
 {
-  "id": "hypertension",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "chronic-kidney-disease",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Sustained high blood pressure is an established risk factor for kidney disease and can participate in a hypertensive target-organ-damage pathway, but chronic kidney disease is etiologically heterogeneous and can also worsen blood pressure. The 2025 AHA/ACC high-blood-pressure guideline identifies chronic kidney disease among conditions whose development is associated with high blood pressure and addresses hypertension treatment in CKD. Individual review therefore requires renal chronology, albuminuria/eGFR patterns, duration and severity of hypertension, and competing renal causes rather than assuming every CKD diagnosis is caused by hypertension.",
-      "pathwayIntelligence": {
-        "pathways": [
-          "disease-progression"
-        ],
-        "causalChain": "Documented sustained hypertension / cumulative blood-pressure burden → hypertensive renal target-organ injury when present → chronic kidney disease, with bidirectional kidney-BP effects and alternative renal etiologies requiring review.",
-        "developmentQuestions": [
-          "How long was hypertension present and how well controlled was it before kidney dysfunction or albuminuria appeared?",
-          "What do serial creatinine, eGFR, urine albumin/protein, and urinalysis records show about onset and progression?",
-          "Is the kidney disease phenotype compatible with hypertensive target-organ injury, and what nephrology assessment is documented?",
-          "Are diabetes, glomerular disease, medication/toxin exposure, obstructive disease, hereditary disease, or another kidney etiology present?",
-          "Did blood-pressure control and renin-angiotensin-system treatment alter the renal trajectory?"
-        ],
-        "issuesToResolve": [
-          "Hypertension and CKD have bidirectional relationships; chronology and renal etiology are essential before attributing an individual case to hypertension.",
-          "A treatment guideline and population risk relationship do not by themselves establish an individual medical nexus."
-        ]
+   "id": "hypertension",
+   "draft": false,
+   "todo": [],
+   "suggestions": [
+      {
+         "conditionId": "chronic-kidney-disease",
+         "rank": 1,
+         "rationale": "Sustained high blood pressure is an established risk factor for kidney disease and can participate in a hypertensive target-organ-damage pathway, but chronic kidney disease is etiologically heterogeneous and can also worsen blood pressure. The 2025 AHA/ACC high-blood-pressure guideline identifies chronic kidney disease among conditions whose development is associated with high blood pressure and addresses hypertension treatment in CKD. Individual review therefore requires renal chronology, albuminuria/eGFR patterns, duration and severity of hypertension, and competing renal causes rather than assuming every CKD diagnosis is caused by hypertension.",
+         "pathwayIntelligence": {
+            "pathways": [
+               "disease-progression"
+            ],
+            "causalChain": "Documented sustained hypertension / cumulative blood-pressure burden → hypertensive renal target-organ injury when present → chronic kidney disease, with bidirectional kidney-BP effects and alternative renal etiologies requiring review.",
+            "developmentQuestions": [
+               "How long was hypertension present and how well controlled was it before kidney dysfunction or albuminuria appeared?",
+               "What do serial creatinine, eGFR, urine albumin/protein, and urinalysis records show about onset and progression?",
+               "Is the kidney disease phenotype compatible with hypertensive target-organ injury, and what nephrology assessment is documented?",
+               "Are diabetes, glomerular disease, medication/toxin exposure, obstructive disease, hereditary disease, or another kidney etiology present?",
+               "Did blood-pressure control and renin-angiotensin-system treatment alter the renal trajectory?"
+            ],
+            "issuesToResolve": [
+               "Hypertension and CKD have bidirectional relationships; chronology and renal etiology are essential before attributing an individual case to hypertension.",
+               "A treatment guideline and population risk relationship do not by themselves establish an individual medical nexus."
+            ]
+         },
+         "evidenceGaps": [
+            "Longitudinal blood-pressure history and antihypertensive treatment records",
+            "Serial creatinine/eGFR and urine albumin or protein measurements",
+            "Formal CKD diagnosis, stage, and nephrology assessment of etiology when available",
+            "Evaluation for diabetes, glomerular, obstructive, hereditary, medication/toxin, and other competing renal causes",
+            "Clinician assessment of the individual hypertension-to-kidney chronology"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Jones et al., 2025 AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults, Circulation. 2025;152(11):e114-e218. PMID 40811497",
+               "note": "Current multidisciplinary guideline identifies high blood pressure as a modifiable risk factor for development of chronic kidney disease and provides CKD-specific hypertension management recommendations; supports a target-organ-damage research pathway while requiring individual renal etiology and chronology review.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40811497/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-18",
+               "sourceLocator": "PMID 40811497; Top Take-Home Message 1 and section 5.3.8 (Hypertension Treatment in Patients With CKD)"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "DIRECT_CAUSATION",
+            "etiologicalTrigger": "Documented sustained hypertension / cumulative blood-pressure burden → hypertensive renal target-organ injury when present → chronic kidney disease, with bidirectional kidney-BP effects and alternative renal etiologies requiring review."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+            "primaryVector": "Documented sustained hypertension / cumulative blood-pressure burden → hypertensive renal target-organ injury when present → chronic kidney disease, with bidirectional kidney-BP effects and alternative renal etiologies requiring review.",
+            "hypothesizedOnly": false
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "PROBABLE",
+            "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+            "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Documented sustained hypertension / cumulative blood-pressure burden → hypertensive renal target-organ injury when present → chronic kidney disease, with bidirectional kidney-BP effects and alternative renal etiologies requiring review.",
+            "evidenceGaps": "Longitudinal blood-pressure history and antihypertensive treatment records; Serial creatinine/eGFR and urine albumin or protein measurements; Formal CKD diagnosis, stage, and nephrology assessment of etiology when available; Evaluation for diabetes, glomerular, obstructive, hereditary, medication/toxin, and other competing renal causes; Clinician assessment of the individual hypertension-to-kidney chronology",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
       },
-      "evidenceGaps": [
-        "Longitudinal blood-pressure history and antihypertensive treatment records",
-        "Serial creatinine/eGFR and urine albumin or protein measurements",
-        "Formal CKD diagnosis, stage, and nephrology assessment of etiology when available",
-        "Evaluation for diabetes, glomerular, obstructive, hereditary, medication/toxin, and other competing renal causes",
-        "Clinician assessment of the individual hypertension-to-kidney chronology"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Jones et al., 2025 AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults, Circulation. 2025;152(11):e114-e218. PMID 40811497",
-          "note": "Current multidisciplinary guideline identifies high blood pressure as a modifiable risk factor for development of chronic kidney disease and provides CKD-specific hypertension management recommendations; supports a target-organ-damage research pathway while requiring individual renal etiology and chronology review.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40811497/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-18",
-          "sourceLocator": "PMID 40811497; Top Take-Home Message 1 and section 5.3.8 (Hypertension Treatment in Patients With CKD)"
-        }
-      ]
-    },
-    {
-      "conditionId": "ischemic-heart-disease",
-      "rank": 2,
-      "prevalence": "sometimes-explored",
-      "rationale": "High blood pressure is an established modifiable risk factor for development of coronary artery disease, but ischemic heart disease is multifactorial. The 2025 AHA/ACC high-blood-pressure guideline places coronary artery disease among cardiovascular diseases whose development is associated with high blood pressure and separately addresses chronic coronary disease with hypertension. This supports focused disease-progression research when longstanding blood-pressure burden precedes coronary disease, while requiring explicit review of lipids, tobacco exposure, diabetes, age/family history, and other atherosclerotic risk factors.",
-      "pathwayIntelligence": {
-        "pathways": [
-          "disease-progression"
-        ],
-        "causalChain": "Documented sustained hypertension / cumulative blood-pressure burden → increased atherosclerotic cardiovascular risk and vascular target-organ injury → ischemic coronary disease when individually supported, with other atherosclerotic risk factors requiring review.",
-        "developmentQuestions": [
-          "When was hypertension diagnosed relative to objective coronary or ischemic disease?",
-          "What was the duration and severity of uncontrolled or difficult-to-control blood pressure?",
-          "What testing confirms ischemic heart disease or chronic coronary disease?",
-          "What other atherosclerotic risk factors are present, including dyslipidemia, tobacco exposure, diabetes, age, obesity, and family history?",
-          "What does the treating cardiologist identify as the important contributors in the individual case?"
-        ],
-        "issuesToResolve": [
-          "Hypertension is a major coronary risk factor but does not establish that an individual ischemic-heart-disease diagnosis was caused by hypertension.",
-          "Competing and interacting atherosclerotic risk factors must be addressed rather than omitted from a case-specific opinion."
-        ]
+      {
+         "conditionId": "ischemic-heart-disease",
+         "rank": 2,
+         "rationale": "High blood pressure is an established modifiable risk factor for development of coronary artery disease, but ischemic heart disease is multifactorial. The 2025 AHA/ACC high-blood-pressure guideline places coronary artery disease among cardiovascular diseases whose development is associated with high blood pressure and separately addresses chronic coronary disease with hypertension. This supports focused disease-progression research when longstanding blood-pressure burden precedes coronary disease, while requiring explicit review of lipids, tobacco exposure, diabetes, age/family history, and other atherosclerotic risk factors.",
+         "pathwayIntelligence": {
+            "pathways": [
+               "disease-progression"
+            ],
+            "causalChain": "Documented sustained hypertension / cumulative blood-pressure burden → increased atherosclerotic cardiovascular risk and vascular target-organ injury → ischemic coronary disease when individually supported, with other atherosclerotic risk factors requiring review.",
+            "developmentQuestions": [
+               "When was hypertension diagnosed relative to objective coronary or ischemic disease?",
+               "What was the duration and severity of uncontrolled or difficult-to-control blood pressure?",
+               "What testing confirms ischemic heart disease or chronic coronary disease?",
+               "What other atherosclerotic risk factors are present, including dyslipidemia, tobacco exposure, diabetes, age, obesity, and family history?",
+               "What does the treating cardiologist identify as the important contributors in the individual case?"
+            ],
+            "issuesToResolve": [
+               "Hypertension is a major coronary risk factor but does not establish that an individual ischemic-heart-disease diagnosis was caused by hypertension.",
+               "Competing and interacting atherosclerotic risk factors must be addressed rather than omitted from a case-specific opinion."
+            ]
+         },
+         "evidenceGaps": [
+            "Longitudinal blood-pressure history and treatment response",
+            "Cardiology diagnosis and objective coronary/ischemia testing",
+            "Lipid, diabetes, tobacco, family-history, and other atherosclerotic risk-factor documentation",
+            "Chronology showing hypertension burden before coronary disease when present",
+            "Clinician assessment of the individual contribution of hypertension relative to competing coronary risk factors"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Jones et al., 2025 AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults, Circulation. 2025;152(11):e114-e218. PMID 40811497",
+               "note": "Current guideline identifies high blood pressure as a modifiable risk factor for coronary artery disease and includes chronic-coronary-disease-specific hypertension guidance; supports risk/progression research, not automatic individual coronary causation.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40811497/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-18",
+               "sourceLocator": "PMID 40811497; Top Take-Home Message 1 and section 5.3.3 (Chronic Coronary Disease)"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "ASSOCIATION_ONLY",
+            "associationBasis": "The published knowledge base includes this relationship as an association: Documented sustained hypertension / cumulative blood-pressure burden → increased atherosclerotic cardiovascular risk and vascular target-organ injury → ischemic coronary disease when individually supported, with other atherosclerotic risk factors requiring review.",
+            "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+            "primaryVector": "Documented sustained hypertension / cumulative blood-pressure burden → increased atherosclerotic cardiovascular risk and vascular target-organ injury → ischemic coronary disease when individually supported, with other atherosclerotic risk factors requiring review.",
+            "hypothesizedOnly": true
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "NOT_ESTABLISHED",
+            "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+            "conservativeRationale": "This relationship is supported as an association only. Documented sustained hypertension / cumulative blood-pressure burden → increased atherosclerotic cardiovascular risk and vascular target-organ injury → ischemic coronary disease when individually supported, with other atherosclerotic risk factors requiring review. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+            "evidenceGaps": "Longitudinal blood-pressure history and treatment response; Cardiology diagnosis and objective coronary/ischemia testing; Lipid, diabetes, tobacco, family-history, and other atherosclerotic risk-factor documentation; Chronology showing hypertension burden before coronary disease when present; Clinician assessment of the individual contribution of hypertension relative to competing coronary risk factors",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
       },
-      "evidenceGaps": [
-        "Longitudinal blood-pressure history and treatment response",
-        "Cardiology diagnosis and objective coronary/ischemia testing",
-        "Lipid, diabetes, tobacco, family-history, and other atherosclerotic risk-factor documentation",
-        "Chronology showing hypertension burden before coronary disease when present",
-        "Clinician assessment of the individual contribution of hypertension relative to competing coronary risk factors"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Jones et al., 2025 AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults, Circulation. 2025;152(11):e114-e218. PMID 40811497",
-          "note": "Current guideline identifies high blood pressure as a modifiable risk factor for coronary artery disease and includes chronic-coronary-disease-specific hypertension guidance; supports risk/progression research, not automatic individual coronary causation.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40811497/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-18",
-          "sourceLocator": "PMID 40811497; Top Take-Home Message 1 and section 5.3.3 (Chronic Coronary Disease)"
-        }
-      ]
-    },
-    {
-      "conditionId": "congestive-heart-failure",
-      "rank": 3,
-      "prevalence": "sometimes-explored",
-      "rationale": "Longstanding hypertension is a major antecedent and modifiable risk factor for incident heart failure. The 2025 AHA/ACC high-blood-pressure guideline reports a dose-dependent association between blood-pressure level and heart-failure risk and notes that long-term hypertension treatment reduces that risk. This supports a disease-progression research pathway when cumulative blood-pressure burden predates cardiac remodeling or heart failure, but ischemic disease, valvular disease, cardiomyopathy, arrhythmia, kidney disease, and other causes still require individual review.",
-      "pathwayIntelligence": {
-        "pathways": [
-          "disease-progression"
-        ],
-        "causalChain": "Sustained hypertension / cumulative pressure load → cardiac structural remodeling and heart-failure risk → congestive heart failure when the individual cardiac phenotype and chronology support that pathway.",
-        "developmentQuestions": [
-          "How long and how severely was hypertension present before heart-failure symptoms or structural heart disease appeared?",
-          "What echocardiographic or other cardiac data document ventricular hypertrophy, remodeling, systolic/diastolic dysfunction, and ejection fraction?",
-          "Is the heart-failure phenotype preserved or reduced ejection fraction, and what etiology is recorded by cardiology?",
-          "Are ischemic heart disease, valvular disease, cardiomyopathy, arrhythmia, kidney disease, alcohol/toxin exposure, or other causes present?",
-          "Did sustained blood-pressure control change the cardiac course?"
-        ],
-        "issuesToResolve": [
-          "Hypertension is a major heart-failure risk factor and antecedent, but heart failure has multiple etiologies that must be assessed in an individual case.",
-          "Population-level prevention evidence is supportive context and does not substitute for a case-specific cardiac etiology opinion."
-        ]
+      {
+         "conditionId": "congestive-heart-failure",
+         "rank": 3,
+         "rationale": "Longstanding hypertension is a major antecedent and modifiable risk factor for incident heart failure. The 2025 AHA/ACC high-blood-pressure guideline reports a dose-dependent association between blood-pressure level and heart-failure risk and notes that long-term hypertension treatment reduces that risk. This supports a disease-progression research pathway when cumulative blood-pressure burden predates cardiac remodeling or heart failure, but ischemic disease, valvular disease, cardiomyopathy, arrhythmia, kidney disease, and other causes still require individual review.",
+         "pathwayIntelligence": {
+            "pathways": [
+               "disease-progression"
+            ],
+            "causalChain": "Sustained hypertension / cumulative pressure load → cardiac structural remodeling and heart-failure risk → congestive heart failure when the individual cardiac phenotype and chronology support that pathway.",
+            "developmentQuestions": [
+               "How long and how severely was hypertension present before heart-failure symptoms or structural heart disease appeared?",
+               "What echocardiographic or other cardiac data document ventricular hypertrophy, remodeling, systolic/diastolic dysfunction, and ejection fraction?",
+               "Is the heart-failure phenotype preserved or reduced ejection fraction, and what etiology is recorded by cardiology?",
+               "Are ischemic heart disease, valvular disease, cardiomyopathy, arrhythmia, kidney disease, alcohol/toxin exposure, or other causes present?",
+               "Did sustained blood-pressure control change the cardiac course?"
+            ],
+            "issuesToResolve": [
+               "Hypertension is a major heart-failure risk factor and antecedent, but heart failure has multiple etiologies that must be assessed in an individual case.",
+               "Population-level prevention evidence is supportive context and does not substitute for a case-specific cardiac etiology opinion."
+            ]
+         },
+         "evidenceGaps": [
+            "Longitudinal blood-pressure and antihypertensive treatment history",
+            "Echocardiography and other objective cardiac findings documenting the heart-failure phenotype",
+            "Cardiology assessment of etiology and competing ischemic, valvular, myocardial, rhythm, renal, or toxic causes",
+            "Chronology of ventricular remodeling/heart-failure onset relative to hypertension burden",
+            "Clinician assessment of whether hypertension materially contributed to the individual heart-failure course"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Jones et al., 2025 AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults, Circulation. 2025;152(11):e114-e218. PMID 40811497",
+               "note": "Current guideline's heart-failure-prevention section describes antecedent hypertension, a dose-dependent BP-heart-failure association, and reduced heart-failure risk with long-term blood-pressure treatment; supports a hypertension-to-heart-failure progression pathway with individual etiology safeguards.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40811497/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-18",
+               "sourceLocator": "PMID 40811497; section 5.3.4 (Prevention of HF in Adults With Hypertension), including antecedent hypertension, dose-dependent BP-HF risk, and risk reduction with long-term hypertension treatment"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "DIRECT_CAUSATION",
+            "etiologicalTrigger": "Sustained hypertension / cumulative pressure load → cardiac structural remodeling and heart-failure risk → congestive heart failure when the individual cardiac phenotype and chronology support that pathway."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+            "primaryVector": "Sustained hypertension / cumulative pressure load → cardiac structural remodeling and heart-failure risk → congestive heart failure when the individual cardiac phenotype and chronology support that pathway.",
+            "hypothesizedOnly": false
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "PROBABLE",
+            "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+            "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Sustained hypertension / cumulative pressure load → cardiac structural remodeling and heart-failure risk → congestive heart failure when the individual cardiac phenotype and chronology support that pathway.",
+            "evidenceGaps": "Longitudinal blood-pressure and antihypertensive treatment history; Echocardiography and other objective cardiac findings documenting the heart-failure phenotype; Cardiology assessment of etiology and competing ischemic, valvular, myocardial, rhythm, renal, or toxic causes; Chronology of ventricular remodeling/heart-failure onset relative to hypertension burden; Clinician assessment of whether hypertension materially contributed to the individual heart-failure course",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
       },
-      "evidenceGaps": [
-        "Longitudinal blood-pressure and antihypertensive treatment history",
-        "Echocardiography and other objective cardiac findings documenting the heart-failure phenotype",
-        "Cardiology assessment of etiology and competing ischemic, valvular, myocardial, rhythm, renal, or toxic causes",
-        "Chronology of ventricular remodeling/heart-failure onset relative to hypertension burden",
-        "Clinician assessment of whether hypertension materially contributed to the individual heart-failure course"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Jones et al., 2025 AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults, Circulation. 2025;152(11):e114-e218. PMID 40811497",
-          "note": "Current guideline's heart-failure-prevention section describes antecedent hypertension, a dose-dependent BP-heart-failure association, and reduced heart-failure risk with long-term blood-pressure treatment; supports a hypertension-to-heart-failure progression pathway with individual etiology safeguards.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40811497/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-18",
-          "sourceLocator": "PMID 40811497; section 5.3.4 (Prevention of HF in Adults With Hypertension), including antecedent hypertension, dose-dependent BP-HF risk, and risk reduction with long-term hypertension treatment"
-        }
-      ]
-    },
-    {
-      "conditionId": "erectile-dysfunction",
-      "rank": 4,
-      "prevalence": "occasionally-explored",
-      "rationale": "Population evidence supports an association between hypertension and erectile dysfunction, plausibly within shared vascular/endothelial risk pathways, but that association does not establish an individual causal relationship. The 2025 AHA/ACC multisociety high-blood-pressure guideline's sexual-dysfunction section describes sexual dysfunction as frequent in people with hypertension and notes shared pathways involving impaired vascular function and atherosclerosis alongside common risk factors. Medication-specific erectile effects remain a separate question requiring drug-class and chronology review; individual review should distinguish vascular risk, comorbid diabetes/dyslipidemia/tobacco exposure, endocrine or neurologic causes, psychogenic contributors, and medication chronology.",
-      "evidenceGaps": [
-        "Current erectile-dysfunction diagnosis and symptom chronology",
-        "Longitudinal hypertension severity and vascular-risk history",
-        "Diabetes, lipid, tobacco, endocrine, neurologic, pelvic/urologic, and mental-health contributors",
-        "Medication history if a treatment-related theory is separately being considered",
-        "Clinician assessment distinguishing population association from the likely contributors in the individual case"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Jones et al., 2025 AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults, Circulation. 2025;152(11):e114-e218. PMID 40811497",
-          "note": "Current multisociety hypertension guideline states that sexual dysfunction frequently occurs in people with hypertension and describes shared vascular/atherosclerotic pathways and common risk factors; it also discusses antihypertensive class effects separately. Supports an association-focused vascular-risk context, not automatic individual causation or a medication-specific nexus.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40811497/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-18",
-          "sourceLocator": "PMID 40811497; current corrected Circulation rendering, section 6.3 (Sexual Dysfunction): sexual dysfunction frequently occurs in hypertension; association may reflect impaired vascular function/atherosclerosis and shared risk factors; antihypertensive medication effects addressed separately; article lists corrections dated 2025-11-10, 2026-04-13, and 2026-05-26"
-        }
-      ]
-    }
-  ]
+      {
+         "conditionId": "erectile-dysfunction",
+         "rank": 4,
+         "rationale": "Population evidence supports an association between hypertension and erectile dysfunction, plausibly within shared vascular/endothelial risk pathways, but that association does not establish an individual causal relationship. The 2025 AHA/ACC multisociety high-blood-pressure guideline's sexual-dysfunction section describes sexual dysfunction as frequent in people with hypertension and notes shared pathways involving impaired vascular function and atherosclerosis alongside common risk factors. Medication-specific erectile effects remain a separate question requiring drug-class and chronology review; individual review should distinguish vascular risk, comorbid diabetes/dyslipidemia/tobacco exposure, endocrine or neurologic causes, psychogenic contributors, and medication chronology.",
+         "evidenceGaps": [
+            "Current erectile-dysfunction diagnosis and symptom chronology",
+            "Longitudinal hypertension severity and vascular-risk history",
+            "Diabetes, lipid, tobacco, endocrine, neurologic, pelvic/urologic, and mental-health contributors",
+            "Medication history if a treatment-related theory is separately being considered",
+            "Clinician assessment distinguishing population association from the likely contributors in the individual case"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Jones et al., 2025 AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults, Circulation. 2025;152(11):e114-e218. PMID 40811497",
+               "note": "Current multisociety hypertension guideline states that sexual dysfunction frequently occurs in people with hypertension and describes shared vascular/atherosclerotic pathways and common risk factors; it also discusses antihypertensive class effects separately. Supports an association-focused vascular-risk context, not automatic individual causation or a medication-specific nexus.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40811497/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-18",
+               "sourceLocator": "PMID 40811497; current corrected Circulation rendering, section 6.3 (Sexual Dysfunction): sexual dysfunction frequently occurs in hypertension; association may reflect impaired vascular function/atherosclerosis and shared risk factors; antihypertensive medication effects addressed separately; article lists corrections dated 2025-11-10, 2026-04-13, and 2026-05-26"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "ASSOCIATION_ONLY",
+            "associationBasis": "The published knowledge base includes this relationship as an association: Population evidence supports an association between hypertension and erectile dysfunction, plausibly within shared vascular/endothelial risk pathways, but that association does not establish an individual causal relationship. The 2025 AHA/ACC multisociety high-blood-pressure guideline's sexual-dysfunction section describes sexual dysfunction as frequent in people with hypertension and notes shared pathways involving impaired vascular function and atherosclerosis alongside common risk factors. Medication-specific erectile effects remain a separate question requiring drug-class and chronology review; individual review should distinguish vascular risk, comorbid diabetes/dyslipidemia/tobacco exposure, endocrine or neurologic causes, psychogenic contributors, and medication chronology.",
+            "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "MICROVASCULAR_METABOLIC",
+            "primaryVector": "Population evidence supports an association between hypertension and erectile dysfunction, plausibly within shared vascular/endothelial risk pathways, but that association does not establish an individual causal relationship. The 2025 AHA/ACC multisociety high-blood-pressure guideline's sexual-dysfunction section describes sexual dysfunction as frequent in people with hypertension and notes shared pathways involving impaired vascular function and atherosclerosis alongside common risk factors. Medication-specific erectile effects remain a separate question requiring drug-class and chronology review; individual review should distinguish vascular risk, comorbid diabetes/dyslipidemia/tobacco exposure, endocrine or neurologic causes, psychogenic contributors, and medication chronology.",
+            "hypothesizedOnly": true
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "NOT_ESTABLISHED",
+            "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+            "conservativeRationale": "This relationship is supported as an association only. Population evidence supports an association between hypertension and erectile dysfunction, plausibly within shared vascular/endothelial risk pathways, but that association does not establish an individual causal relationship. The 2025 AHA/ACC multisociety high-blood-pressure guideline's sexual-dysfunction section describes sexual dysfunction as frequent in people with hypertension and notes shared pathways involving impaired vascular function and atherosclerosis alongside common risk factors. Medication-specific erectile effects remain a separate question requiring drug-class and chronology review; individual review should distinguish vascular risk, comorbid diabetes/dyslipidemia/tobacco exposure, endocrine or neurologic causes, psychogenic contributors, and medication chronology. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+            "evidenceGaps": "Current erectile-dysfunction diagnosis and symptom chronology; Longitudinal hypertension severity and vascular-risk history; Diabetes, lipid, tobacco, endocrine, neurologic, pelvic/urologic, and mental-health contributors; Medication history if a treatment-related theory is separately being considered; Clinician assessment distinguishing population association from the likely contributors in the individual case",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
+      }
+   ]
 }

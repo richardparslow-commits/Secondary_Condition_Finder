@@ -1,6 +1,144 @@
 import { z } from "zod";
 
-export const prevalenceSchema = z.enum(["commonly-explored", "sometimes-explored", "occasionally-explored"]);
+/**
+ * CRG (Causal Relational Graph) schema.
+ *
+ * Every suggestion must declare a nexus pathway. The two VA-recognized legal
+ * pathways under 38 CFR § 3.310 are DIRECT_CAUSATION (the SC condition
+ * proximately caused the secondary condition) and AGGRAVATION (the SC
+ * condition worsened the natural baseline of an already-present condition).
+ * ASSOCIATION_ONLY is an honest third arm for edges where the evidence
+ * supports co-occurrence/association but neither legal pathway is established;
+ * forcing such rows into a causation or aggravation arm would overstate the
+ * evidence. The proposal's two pathways are implemented exactly as specified;
+ * the third arm is additive and required for truthful authoring.
+ *
+ * `prevalence` is deprecated and removed from the schema (it described how
+ * commonly a relationship is explored, not whether A causes B). Ranking now
+ * derives from `evidentiaryProfile.etiologicalConsensus`, which maps to the
+ * VA "at least as likely as not" nexus standard.
+ */
+
+export const nexusClassificationSchema = z.enum(["DIRECT_CAUSATION", "AGGRAVATION", "ASSOCIATION_ONLY"]);
+
+const DirectCausationSchema = z.object({
+  nexusClassification: z.literal("DIRECT_CAUSATION"),
+  etiologicalTrigger: z.string().min(50, "DIRECT_CAUSATION requires a specific biological trigger description of at least 50 characters."),
+  baselineProgression: z.undefined().optional(),
+  aggravatingFactor: z.undefined().optional(),
+  associationBasis: z.undefined().optional(),
+  causationStatus: z.undefined().optional(),
+});
+
+const AggravationSchema = z.object({
+  nexusClassification: z.literal("AGGRAVATION"),
+  etiologicalTrigger: z.undefined().optional(),
+  baselineProgression: z.string().min(50, "AGGRAVATION requires a natural non-SC baseline progression description of at least 50 characters."),
+  aggravatingFactor: z.string().min(50, "AGGRAVATION requires a biomechanical or systemic aggravating factor description of at least 50 characters."),
+  associationBasis: z.undefined().optional(),
+  causationStatus: z.undefined().optional(),
+});
+
+const AssociationOnlySchema = z.object({
+  nexusClassification: z.literal("ASSOCIATION_ONLY"),
+  etiologicalTrigger: z.undefined().optional(),
+  baselineProgression: z.undefined().optional(),
+  aggravatingFactor: z.undefined().optional(),
+  associationBasis: z.string().min(50, "ASSOCIATION_ONLY requires a description of the reported association's basis."),
+  causationStatus: z.string().min(50, "ASSOCIATION_ONLY must state why neither causation nor aggravation is established."),
+});
+
+export const nexusClaimSchema = z.discriminatedUnion("nexusClassification", [
+  DirectCausationSchema,
+  AggravationSchema,
+  AssociationOnlySchema,
+]);
+
+/**
+ * The pathophysiological mechanism gives the edge its biological "weight".
+ * Mechanism categories are a strict enum so authors cannot paste vague text.
+ * NOT_ESTABLISHED is reserved for ASSOCIATION_ONLY edges where the biological
+ * cascade is not established; the vectors then describe the hypothesized link,
+ * never a proven causal pathway.
+ */
+export const mechanismCategorySchema = z.enum([
+  "MICROVASCULAR_METABOLIC",
+  "BIOMECHANICAL_ALTERATION",
+  "NEUROENDOCRINE_CASCADE",
+  "PHARMACOLOGICAL_IATROGENIC",
+  "PSYCHOPHYSIOLOGICAL",
+  "SYSTEMIC_INFLAMMATORY",
+  "IMMUNE_MEDIATED",
+  "THROMBOTIC_OR_VASCULAR",
+  "NEUROLOGICAL_DEGENERATION",
+  "METABOLIC_OR_NUTRITIONAL",
+  "MALIGNANT_TRANSFORMATION",
+  "INFECTIOUS_SPREAD",
+  "MECHANICAL_OR_COMPRESSIVE",
+  "POST_SURGICAL_OR_TREATMENT",
+  "MULTIFACTORIAL",
+  "NOT_ESTABLISHED",
+]);
+
+export const causalMechanismSchema = z.object({
+  mechanismCategory: mechanismCategorySchema,
+  primaryVector: z.string().min(50, "primaryVector must describe the primary physiological or physical cascade (at least 50 characters)."),
+  secondaryVector: z.string().min(1).optional(),
+  iatrogenicFactor: z.string().min(1).nullable().optional(),
+  hypothesizedOnly: z.boolean().default(false),
+}).strict();
+
+/**
+ * Etiological consensus replaces prevalence. Tiers map to the VA ">= 50%
+ * probability" nexus standard used by C&P examiners.
+ */
+export const etiologicalConsensusSchema = z.enum([
+  "WELL_ESTABLISHED",
+  "PROBABLE",
+  "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE",
+  "IATROGENIC_TREATMENT_EFFECT",
+  "NOT_ESTABLISHED",
+]);
+
+export const vaNexusProbabilityAlignmentSchema = z.enum([
+  "AT_LEAST_AS_LIKELY_AS_NOT",
+  "LESS_THAN_AS_LIKELY_AS_NOT",
+  "LEGALLY_PRESUMED",
+  "NOT_ASSERTED",
+]);
+
+export const evidentiaryProfileSchema = z.object({
+  etiologicalConsensus: etiologicalConsensusSchema,
+  vaNexusProbabilityAlignment: vaNexusProbabilityAlignmentSchema,
+  conservativeRationale: z.string().min(50, "conservativeRationale must state, in medically conservative terms, the basis for the nexus claim."),
+  evidenceGaps: z.string().min(1),
+  alternativeEtiologiesToRuleOut: z.array(z.string().min(1)).min(1, "At least one alternative etiology must be listed to rule out."),
+  requiresSpecificDbqEvidence: z.boolean().default(false),
+}).strict().superRefine((profile, ctx) => {
+  const contested = profile.etiologicalConsensus === "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE";
+  if (contested && profile.alternativeEtiologiesToRuleOut.length < 2) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["alternativeEtiologiesToRuleOut"],
+      message: "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE mappings must list at least 2 alternative etiologies to rule out.",
+    });
+  }
+  if (contested && !profile.requiresSpecificDbqEvidence) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["requiresSpecificDbqEvidence"],
+      message: "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE mappings require specific DBQ evidence.",
+    });
+  }
+});
+
+export type NexusClassification = z.infer<typeof nexusClassificationSchema>;
+export type NexusClaim = z.infer<typeof nexusClaimSchema>;
+export type MechanismCategory = z.infer<typeof mechanismCategorySchema>;
+export type CausalMechanism = z.infer<typeof causalMechanismSchema>;
+export type EtiologicalConsensus = z.infer<typeof etiologicalConsensusSchema>;
+export type VaNexusProbabilityAlignment = z.infer<typeof vaNexusProbabilityAlignmentSchema>;
+export type EvidentiaryProfile = z.infer<typeof evidentiaryProfileSchema>;
 
 /**
  * Legacy verification scope retained for backward compatibility with the existing KB.
@@ -193,7 +331,9 @@ export const sourceReferenceSchema = z.object({
 export const suggestionSchema = z.object({
   conditionId: z.string().regex(/^[a-z0-9-]+$/),
   rank: z.number().int().positive(),
-  prevalence: prevalenceSchema,
+  nexusClaim: nexusClaimSchema,
+  causalMechanism: causalMechanismSchema,
+  evidentiaryProfile: evidentiaryProfileSchema,
   rationale: z.string().min(1),
   claimTheories: z.array(claimTheorySchema).min(1).max(4).optional(),
   nexusRequirement: nexusRequirementSchema.optional(),
@@ -202,6 +342,20 @@ export const suggestionSchema = z.object({
   evidenceGaps: z.array(z.string().min(1)).min(1),
   sourceReferences: z.array(sourceReferenceSchema).min(1).max(3),
 }).strict().superRefine((suggestion, ctx) => {
+  if (suggestion.nexusClaim.nexusClassification === "ASSOCIATION_ONLY" && !suggestion.causalMechanism.hypothesizedOnly) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["causalMechanism", "hypothesizedOnly"],
+      message: "ASSOCIATION_ONLY edges must mark causalMechanism as hypothesizedOnly (the cascade is hypothesized, not established).",
+    });
+  }
+  if (suggestion.nexusClaim.nexusClassification === "ASSOCIATION_ONLY" && suggestion.evidentiaryProfile.etiologicalConsensus === "WELL_ESTABLISHED") {
+    ctx.addIssue({
+      code: "custom",
+      path: ["evidentiaryProfile", "etiologicalConsensus"],
+      message: "An ASSOCIATION_ONLY edge cannot claim a WELL_ESTABLISHED etiological consensus.",
+    });
+  }
   if (suggestion.claimTheories && new Set(suggestion.claimTheories).size !== suggestion.claimTheories.length) {
     ctx.addIssue({ code: "custom", path: ["claimTheories"], message: "Claim-theory labels must be unique." });
   }
@@ -261,7 +415,6 @@ export const conditionMappingSchema = z.object({
 });
 
 export const knowledgeBaseSchema = z.array(conditionMappingSchema);
-export type Prevalence = z.infer<typeof prevalenceSchema>;
 export type SourceVerificationScope = z.infer<typeof sourceVerificationScopeSchema>;
 export type AuthorityCategory = z.infer<typeof authorityCategorySchema>;
 export type PropositionRole = z.infer<typeof propositionRoleSchema>;

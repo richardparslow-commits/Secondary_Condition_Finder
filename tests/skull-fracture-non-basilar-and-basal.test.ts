@@ -8,6 +8,11 @@ import { findCondition, indexById } from "@/lib/catalog/lookup";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { conditionMappingSchema } from "@/lib/kb/schema";
 import { validateKnowledgeBaseAgainstCatalog } from "@/lib/kb/validate";
+import {
+  buildCausalMechanism,
+  buildEvidentiaryProfile,
+  buildNexusClaim,
+} from "./helpers/crg-fixtures";
 
 const CONDITION_ID = "skull-fracture-non-basilar-and-basal";
 const catalog = loadConditionCatalog();
@@ -18,7 +23,9 @@ const mapping = kb.find((m) => m.id === CONDITION_ID);
 const syntheticSuggestion = (conditionId: string, rank: number) => ({
   conditionId,
   rank,
-  prevalence: "sometimes-explored" as const,
+  nexusClaim: buildNexusClaim(),
+  causalMechanism: buildCausalMechanism(),
+  evidentiaryProfile: buildEvidentiaryProfile(),
   rationale: "Synthetic schema-validation fixture; not published medical content.",
   evidenceGaps: ["Synthetic evidence gap for schema-validation coverage."],
   sourceReferences: [

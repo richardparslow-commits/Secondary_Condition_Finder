@@ -6,7 +6,6 @@
     {
       "conditionId": "esophageal-cancer",
       "rank": 1,
-      "prevalence": "occasionally-explored",
       "rationale": "Barrett's esophagus is an identifiable precursor condition for esophageal adenocarcinoma, but the broader catalog target also includes other esophageal-cancer histologies. This relationship is therefore limited to an adenocarcinoma progression pathway and should be evaluated with endoscopic, biopsy/pathology, dysplasia, and chronology evidence rather than generalized to squamous-cell carcinoma or treated as an inevitable progression.",
       "pathwayIntelligence": {
         "pathways": [
@@ -41,7 +40,27 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 41125322; abstract and guideline scope; Barrett's esophagus described as the identifiable precursor to esophageal adenocarcinoma"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Documented Barrett's esophagus → metaplastic/dysplastic progression when present → claimed esophageal adenocarcinoma.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Documented Barrett's esophagus → metaplastic/dysplastic progression when present → claimed esophageal adenocarcinoma.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Documented Barrett's esophagus → metaplastic/dysplastic progression when present → claimed esophageal adenocarcinoma. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Endoscopy and pathology confirming Barrett's esophagus and its chronology; Dysplasia history and surveillance biopsy results when present; Pathology confirming esophageal adenocarcinoma histology; Specialist assessment of the individual precursor-to-cancer chronology and competing risk factors",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

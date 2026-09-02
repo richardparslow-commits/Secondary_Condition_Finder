@@ -6,7 +6,6 @@
     {
       "conditionId": "depressive-disorder",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Prospective population evidence supports a temporal association between insomnia and later major depressive disorder. In a population-based cohort restricted to participants without prior major depressive disorder, insomnia symptoms were associated with incident major depressive disorder over eight years of follow-up. This supports focused temporal-association research when a clinically established insomnia disorder clearly precedes a separately diagnosed depressive disorder, but the cohort evidence does not establish individual causation, does not show that every person with insomnia will develop depression, and does not replace a Veteran-specific medical assessment of competing psychiatric, sleep, pain, medication, substance-use, and medical contributors.",
       "evidenceGaps": [
         "Sleep or mental-health documentation establishing an independent insomnia diagnosis and its onset",
@@ -25,12 +24,31 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 38833937; abstract Methods/Results: participants without prior MDD, 8-year psychiatric follow-up; insomnia symptoms HR 1.437 (95% CI 1.064-1.940) for incident MDD"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Prospective population evidence supports a temporal association between insomnia and later major depressive disorder. In a population-based cohort restricted to participants without prior major depressive disorder, insomnia symptoms were associated with incident major depressive disorder over eight years of follow-up. This supports focused temporal-association research when a clinically established insomnia disorder clearly precedes a separately diagnosed depressive disorder, but the cohort evidence does not establish individual causation, does not show that every person with insomnia will develop depression, and does not replace a Veteran-specific medical assessment of competing psychiatric, sleep, pain, medication, substance-use, and medical contributors.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Prospective population evidence supports a temporal association between insomnia and later major depressive disorder. In a population-based cohort restricted to participants without prior major depressive disorder, insomnia symptoms were associated with incident major depressive disorder over eight years of follow-up. This supports focused temporal-association research when a clinically established insomnia disorder clearly precedes a separately diagnosed depressive disorder, but the cohort evidence does not establish individual causation, does not show that every person with insomnia will develop depression, and does not replace a Veteran-specific medical assessment of competing psychiatric, sleep, pain, medication, substance-use, and medical contributors.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Prospective population evidence supports a temporal association between insomnia and later major depressive disorder. In a population-based cohort restricted to participants without prior major depressive disorder, insomnia symptoms were associated with incident major depressive disorder over eight years of follow-up. This supports focused temporal-association research when a clinically established insomnia disorder clearly precedes a separately diagnosed depressive disorder, but the cohort evidence does not establish individual causation, does not show that every person with insomnia will develop depression, and does not replace a Veteran-specific medical assessment of competing psychiatric, sleep, pain, medication, substance-use, and",
+        "evidenceGaps": "Sleep or mental-health documentation establishing an independent insomnia diagnosis and its onset; Qualified depressive-disorder diagnosis and chronology relative to insomnia; Longitudinal records describing insomnia severity, persistence, treatment, and depressive course; Assessment of pre-existing psychiatric disorders, sleep apnea, chronic pain, medications, substance use, and other competing causes; Qualified medical or mental-health opinion addressing causation or aggravation in the individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "hypertension",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Across 14 prospective cohorts involving 395,641 participants, insomnia was associated with increased incident hypertension risk (pooled RR 1.21, 95% CI 1.10-1.33). Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. Preserve obstructive sleep apnea, obesity, age, sex, renal/endocrine disease, medications/substances, sleep duration and other conventional hypertension risks. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of insomnia and hypertension",
@@ -49,7 +67,32 @@
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 33360604; approved ME-11 final source; guard: Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. Preserve obstructive sleep apnea, obesity, age, sex, renal/endocrine disease, medications/substances, sleep duration and other conventional hypertension risks."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Across 14 prospective cohorts involving 395,641 participants, insomnia was associated with increased incident hypertension risk (pooled RR 1.21, 95% CI 1.10-1.33). Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Across 14 prospective cohorts involving 395,641 participants, insomnia was associated with increased incident hypertension risk (pooled RR 1.21, 95% CI 1.10-1.33). Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-11 adds this relationship only as a bounded clinical proposition. Across 14 prospective cohorts involving 395,641 participants, insomnia was associated with increased incident hypertension risk (pooled RR 1.21, 95% CI 1.10-1.33). Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of insomnia and hypertension; Documentation satisfying the approved phenotype restriction: independently established insomnia and separately diagnosed hypertension; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, treatment/transplant context, and selection bias where applicable; Resolution of the approved publication guard: Treat as population-level association/risk only, not individual causation. Evidence was stronger for difficulty maintaining sleep and early-morning awakening than for sleep-onset difficulty. Preserve obstructive sleep apnea, obesity, age, sex, renal/endocrine disease, medications/substances, sleep duration and other conventional hypertension risks.",
+        "alternativeEtiologiesToRuleOut": [
+          "obstructive sleep apnea",
+          "obesity",
+          "age",
+          "sex",
+          "renal/endocrine disease",
+          "medications/substances"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

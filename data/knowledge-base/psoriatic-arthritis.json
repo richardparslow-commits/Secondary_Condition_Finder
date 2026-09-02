@@ -6,7 +6,6 @@
     {
       "conditionId": "depressive-disorder",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require PsA before a separately established depressive disorder; preserve that the cohort endpoint was treated depression. Population-level temporal association only; pain, disability, inflammation, treatment, sleep and psychosocial factors may mediate/confound. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Psoriatic Arthritis and Major Depressive Disorder",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 26882216; PubMed title/abstract retrieved in the master research harvest; guard: Require PsA before a separately established depressive disorder; preserve that the cohort endpoint was treated depression."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require PsA before a separately established depressive disorder;",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require PsA before a separately established depressive disorder;",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require PsA before a separately established depressive disorder; It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Psoriatic Arthritis and Major Depressive Disorder; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "that the cohort endpoint was treated depression"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "tuberculosis",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require PsA plus documented biologic/targeted immunosuppressive exposure (especially TNF-pathway agents where applicable) before TB infection/reactivation/disease. Treatment-associated TB risk; do not infer TB from PsA without immunosuppressive exposure and epidemiologic risk assessment. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation of the qualifying treatment or procedure used for Psoriatic Arthritis",
@@ -47,7 +65,27 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 39963138; PubMed title/abstract retrieved in the master research harvest; guard: Require PsA plus documented biologic/targeted immunosuppressive exposure (especially TNF-pathway agents where applicable) before TB infection/reactivation/disease."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require PsA plus documented biologic/targeted immunosuppressive exposure (especially TNF-pathway agents where applicable) before TB infection/reactivation/disease. Treatment-associated TB risk;",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require PsA plus documented biologic/targeted immunosuppressive exposure (especially TNF-pathway agents where applicable) before TB infection/reactivation/disease. Treatment-associated TB risk;",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require PsA plus documented biologic/targeted immunosuppressive exposure (especially TNF-pathway agents where applicable) before TB infection/reactivation/disease. Treatment-associated TB risk; It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation of the qualifying treatment or procedure used for Psoriatic Arthritis; Independent diagnosis of Mycobacterium Tuberculosis and timing relative to that exposure; Dose, duration, procedure details, and relevant co-exposures where applicable; Qualified clinical assessment of competing causes and source-phenotype fit",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

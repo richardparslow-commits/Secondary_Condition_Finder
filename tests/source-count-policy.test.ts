@@ -1,8 +1,19 @@
 import { describe, it, expect } from "vitest";
 import { suggestionSchema } from "../src/lib/kb/schema";
+import {
+  buildCausalMechanism,
+  buildEvidentiaryProfile,
+  buildNexusClaim,
+} from "./helpers/crg-fixtures";
 
 describe("P1 Ticket 6: Source-Count Policy Enforcement (1 to 3 Sources)", () => {
-  const validSource = {
+  const crgTrio = {
+  nexusClaim: buildNexusClaim(),
+  causalMechanism: buildCausalMechanism(),
+  evidentiaryProfile: buildEvidentiaryProfile(),
+};
+
+const validSource = {
     citation: "38 CFR § 3.310",
     note: "Direct secondary connection authority.",
     verified: false as const
@@ -13,7 +24,7 @@ describe("P1 Ticket 6: Source-Count Policy Enforcement (1 to 3 Sources)", () => 
     const result1 = suggestionSchema.safeParse({
       conditionId: "radiculopathy",
       rank: 1,
-      prevalence: "commonly-explored",
+      ...crgTrio,
       rationale: "Nerve irritation.",
       evidenceGaps: ["Diagnosis"],
       sourceReferences: [validSource]
@@ -24,7 +35,7 @@ describe("P1 Ticket 6: Source-Count Policy Enforcement (1 to 3 Sources)", () => 
     const result3 = suggestionSchema.safeParse({
       conditionId: "radiculopathy",
       rank: 1,
-      prevalence: "commonly-explored",
+      ...crgTrio,
       rationale: "Nerve irritation.",
       evidenceGaps: ["Diagnosis"],
       sourceReferences: [validSource, validSource, validSource]
@@ -36,7 +47,7 @@ describe("P1 Ticket 6: Source-Count Policy Enforcement (1 to 3 Sources)", () => 
     const result = suggestionSchema.safeParse({
       conditionId: "radiculopathy",
       rank: 1,
-      prevalence: "commonly-explored",
+      ...crgTrio,
       rationale: "Nerve irritation.",
       evidenceGaps: ["Diagnosis"],
       sourceReferences: []
@@ -48,7 +59,7 @@ describe("P1 Ticket 6: Source-Count Policy Enforcement (1 to 3 Sources)", () => 
     const result = suggestionSchema.safeParse({
       conditionId: "radiculopathy",
       rank: 1,
-      prevalence: "commonly-explored",
+      ...crgTrio,
       rationale: "Nerve irritation.",
       evidenceGaps: ["Diagnosis"],
       sourceReferences: [validSource, validSource, validSource, validSource]

@@ -1,96 +1,133 @@
 {
-  "id": "depressive-disorder",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "sleep-apnea",
-      "rank": 1,
-      "prevalence": "sometimes-explored",
-      "rationale": "Some antidepressant therapies are associated with weight gain, and weight gain/obesity are established risk factors for obstructive sleep apnea. This supports a clinically plausible intermediate-step theory, but it does not establish that a particular veteran's antidepressant exposure caused obesity or that obesity caused or aggravated OSA; the individual medication, timing, weight trajectory, and alternative OSA risk factors require case-specific medical review.",
-      "pathwayIntelligence": {
-        "pathways": [
-          "medication-related",
-          "intermediate-chain"
-        ],
-        "causalChain": "Depressive disorder → antidepressant treatment, if applicable → medication-associated weight gain or obesity → claimed OSA causation or worsening; each link requires individual medical support.",
-        "developmentQuestions": [
-          "Which antidepressant was prescribed for the service-connected depressive disorder, at what dose, and for what duration?",
-          "Does the documented weight trajectory show clinically meaningful weight gain after the relevant medication exposure?",
-          "Is obstructive sleep apnea currently confirmed by an appropriate sleep study?",
-          "Can a qualified clinician address each link from medication exposure to weight change and from weight/obesity to OSA causation or worsening?",
-          "Which alternative explanations for weight change and other OSA risk factors should be addressed?"
-        ],
-        "issuesToResolve": [
-          "Medication-associated weight gain and obesity/OSA risk evidence do not establish the Veteran-specific intermediate chain by themselves.",
-          "The medication indication, timing, weight trajectory, OSA diagnosis, and alternative risk factors need link-by-link review."
-        ]
+   "id": "depressive-disorder",
+   "draft": false,
+   "suggestions": [
+      {
+         "conditionId": "sleep-apnea",
+         "rank": 1,
+         "rationale": "Some antidepressant therapies are associated with weight gain, and weight gain/obesity are established risk factors for obstructive sleep apnea. This supports a clinically plausible intermediate-step theory, but it does not establish that a particular veteran's antidepressant exposure caused obesity or that obesity caused or aggravated OSA; the individual medication, timing, weight trajectory, and alternative OSA risk factors require case-specific medical review.",
+         "pathwayIntelligence": {
+            "pathways": [
+               "medication-related",
+               "intermediate-chain"
+            ],
+            "causalChain": "Depressive disorder → antidepressant treatment, if applicable → medication-associated weight gain or obesity → claimed OSA causation or worsening; each link requires individual medical support.",
+            "developmentQuestions": [
+               "Which antidepressant was prescribed for the service-connected depressive disorder, at what dose, and for what duration?",
+               "Does the documented weight trajectory show clinically meaningful weight gain after the relevant medication exposure?",
+               "Is obstructive sleep apnea currently confirmed by an appropriate sleep study?",
+               "Can a qualified clinician address each link from medication exposure to weight change and from weight/obesity to OSA causation or worsening?",
+               "Which alternative explanations for weight change and other OSA risk factors should be addressed?"
+            ],
+            "issuesToResolve": [
+               "Medication-associated weight gain and obesity/OSA risk evidence do not establish the Veteran-specific intermediate chain by themselves.",
+               "The medication indication, timing, weight trajectory, OSA diagnosis, and alternative risk factors need link-by-link review."
+            ]
+         },
+         "evidenceGaps": [
+            "Sleep study diagnosis of OSA",
+            "Prescription history identifying the specific antidepressant, dose, duration, and timing",
+            "Documented weight trajectory and clinical assessment of other OSA risk factors",
+            "Medical nexus addressing the medication-to-weight-to-OSA intermediate step in the individual case"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Alonso-Pedrero et al., Effects of antidepressant and antipsychotic use on weight gain: A systematic review, PMID 31524318",
+               "note": "Systematic review of antidepressant and antipsychotic use and weight gain; supports medication-associated weight change, not an individual medication-to-OSA nexus.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31524318/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-18",
+               "sourceLocator": "PMID 31524318; systematic review"
+            },
+            {
+               "citation": "Esmaeili et al., The relationship between obesity and obstructive sleep apnea in four community-based cohorts: an individual participant data meta-analysis, PMID 40330547",
+               "note": "Individual participant data meta-analysis found substantially higher odds of OSA with overweight and obesity; supports the obesity-OSA relationship, not an individual antidepressant causation theory.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40330547/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-18",
+               "sourceLocator": "PMID 40330547; IPD meta-analysis"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "ASSOCIATION_ONLY",
+            "associationBasis": "The published knowledge base includes this relationship as an association: Some antidepressant therapies are associated with weight gain, and weight gain/obesity are established risk factors for obstructive sleep apnea. This supports a clinically plausible intermediate-step theory, but it does not establish that a particular veteran's antidepressant exposure caused obesity or that obesity caused or aggravated OSA; the individual medication, timing, weight trajectory, and alternative OSA risk factors require case-specific medical review.",
+            "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+            "primaryVector": "Some antidepressant therapies are associated with weight gain, and weight gain/obesity are established risk factors for obstructive sleep apnea. This supports a clinically plausible intermediate-step theory, but it does not establish that a particular veteran's antidepressant exposure caused obesity or that obesity caused or aggravated OSA; the individual medication, timing, weight trajectory, and alternative OSA risk factors require case-specific medical review.",
+            "hypothesizedOnly": true
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "NOT_ESTABLISHED",
+            "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+            "conservativeRationale": "This relationship is supported as an association only. Some antidepressant therapies are associated with weight gain, and weight gain/obesity are established risk factors for obstructive sleep apnea. This supports a clinically plausible intermediate-step theory, but it does not establish that a particular veteran's antidepressant exposure caused obesity or that obesity caused or aggravated OSA; the individual medication, timing, weight trajectory, and alternative OSA risk factors require case-specific medical review. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+            "evidenceGaps": "Sleep study diagnosis of OSA; Prescription history identifying the specific antidepressant, dose, duration, and timing; Documented weight trajectory and clinical assessment of other OSA risk factors; Medical nexus addressing the medication-to-weight-to-OSA intermediate step in the individual case",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
       },
-      "evidenceGaps": [
-        "Sleep study diagnosis of OSA",
-        "Prescription history identifying the specific antidepressant, dose, duration, and timing",
-        "Documented weight trajectory and clinical assessment of other OSA risk factors",
-        "Medical nexus addressing the medication-to-weight-to-OSA intermediate step in the individual case"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Alonso-Pedrero et al., Effects of antidepressant and antipsychotic use on weight gain: A systematic review, PMID 31524318",
-          "note": "Systematic review of antidepressant and antipsychotic use and weight gain; supports medication-associated weight change, not an individual medication-to-OSA nexus.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31524318/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-18",
-          "sourceLocator": "PMID 31524318; systematic review"
-        },
-        {
-          "citation": "Esmaeili et al., The relationship between obesity and obstructive sleep apnea in four community-based cohorts: an individual participant data meta-analysis, PMID 40330547",
-          "note": "Individual participant data meta-analysis found substantially higher odds of OSA with overweight and obesity; supports the obesity-OSA relationship, not an individual antidepressant causation theory.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40330547/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-18",
-          "sourceLocator": "PMID 40330547; IPD meta-analysis"
-        }
-      ]
-    },
-    {
-      "conditionId": "erectile-dysfunction",
-      "rank": 2,
-      "prevalence": "commonly-explored",
-      "rationale": "Antidepressant and other psychotropic drug therapies can be associated with male sexual dysfunction, including erectile dysfunction, with clinically important differences among drug classes and individual agents. A medication-related secondary theory therefore requires evidence that the relevant medication was used to treat the depressive disorder, that erectile dysfunction began or worsened after the exposure, and that competing vascular, endocrine, neurologic, psychiatric, medication, and lifestyle causes were considered.",
-      "pathwayIntelligence": {
-        "pathways": [
-          "medication-related"
-        ],
-        "causalChain": "Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required.",
-        "developmentQuestions": [
-          "Was the relevant antidepressant or psychotropic medication prescribed for the service-connected depressive disorder?",
-          "Is erectile dysfunction currently diagnosed, and what was baseline erectile function before the medication exposure?",
-          "How does onset or worsening relate temporally to the specific medication, dose, duration, and any dose or medication changes?",
-          "Can a qualified clinician address whether the specific medication caused or aggravated erectile dysfunction in this individual case?",
-          "Which vascular, endocrine, neurologic, psychiatric, medication, substance-use, or lifestyle causes should be addressed?"
-        ],
-        "issuesToResolve": [
-          "Drug-class population evidence does not establish an individual medication nexus and effects differ among agents.",
-          "The medication indication, exposure timing, baseline function, current diagnosis, and alternative causes require individual review."
-        ]
-      },
-      "evidenceGaps": [
-        "Diagnosis and clinical characterization of erectile dysfunction",
-        "Prescription records showing the specific psychotropic exposure, dose, duration, and timing",
-        "Medical assessment addressing baseline erectile function and vascular, endocrine, neurologic, psychiatric, medication, substance-use, and lifestyle alternatives",
-        "Medical nexus addressing the individual relationship between the specific medication exposure and erectile dysfunction"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Erectile and Ejaculatory Dysfunction Associated with Use of Psychotropic Drugs: A Systematic Review, PMID 34247952",
-          "note": "Systematic review of randomized trials found antidepressant therapy associated with erectile dysfunction overall (OR 2.28, 95% CI 1.31-3.97), while effects differed by drug class; supports agent-specific medication research, not an automatic individual nexus.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34247952/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-18",
-          "sourceLocator": "PMID 34247952; abstract: 41 studies; antidepressant therapy associated with erectile dysfunction overall, with class-specific differences"
-        }
-      ]
-    }
-  ]
+      {
+         "conditionId": "erectile-dysfunction",
+         "rank": 2,
+         "rationale": "Antidepressant and other psychotropic drug therapies can be associated with male sexual dysfunction, including erectile dysfunction, with clinically important differences among drug classes and individual agents. A medication-related secondary theory therefore requires evidence that the relevant medication was used to treat the depressive disorder, that erectile dysfunction began or worsened after the exposure, and that competing vascular, endocrine, neurologic, psychiatric, medication, and lifestyle causes were considered.",
+         "pathwayIntelligence": {
+            "pathways": [
+               "medication-related"
+            ],
+            "causalChain": "Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required.",
+            "developmentQuestions": [
+               "Was the relevant antidepressant or psychotropic medication prescribed for the service-connected depressive disorder?",
+               "Is erectile dysfunction currently diagnosed, and what was baseline erectile function before the medication exposure?",
+               "How does onset or worsening relate temporally to the specific medication, dose, duration, and any dose or medication changes?",
+               "Can a qualified clinician address whether the specific medication caused or aggravated erectile dysfunction in this individual case?",
+               "Which vascular, endocrine, neurologic, psychiatric, medication, substance-use, or lifestyle causes should be addressed?"
+            ],
+            "issuesToResolve": [
+               "Drug-class population evidence does not establish an individual medication nexus and effects differ among agents.",
+               "The medication indication, exposure timing, baseline function, current diagnosis, and alternative causes require individual review."
+            ]
+         },
+         "evidenceGaps": [
+            "Diagnosis and clinical characterization of erectile dysfunction",
+            "Prescription records showing the specific psychotropic exposure, dose, duration, and timing",
+            "Medical assessment addressing baseline erectile function and vascular, endocrine, neurologic, psychiatric, medication, substance-use, and lifestyle alternatives",
+            "Medical nexus addressing the individual relationship between the specific medication exposure and erectile dysfunction"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Erectile and Ejaculatory Dysfunction Associated with Use of Psychotropic Drugs: A Systematic Review, PMID 34247952",
+               "note": "Systematic review of randomized trials found antidepressant therapy associated with erectile dysfunction overall (OR 2.28, 95% CI 1.31-3.97), while effects differed by drug class; supports agent-specific medication research, not an automatic individual nexus.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34247952/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-18",
+               "sourceLocator": "PMID 34247952; abstract: 41 studies; antidepressant therapy associated with erectile dysfunction overall, with class-specific differences"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "DIRECT_CAUSATION",
+            "etiologicalTrigger": "Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+            "primaryVector": "Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required.",
+            "hypothesizedOnly": false
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
+            "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+            "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required.",
+            "evidenceGaps": "Diagnosis and clinical characterization of erectile dysfunction; Prescription records showing the specific psychotropic exposure, dose, duration, and timing; Medical assessment addressing baseline erectile function and vascular, endocrine, neurologic, psychiatric, medication, substance-use, and lifestyle alternatives; Medical nexus addressing the individual relationship between the specific medication exposure and erectile dysfunction",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
+      }
+   ]
 }

@@ -10,18 +10,29 @@ import type {
   RecommendationResult,
 } from "./types";
 
-export const ENGINE_VERSION = "phase-1";
+export const ENGINE_VERSION = "phase-2-crg";
 
-const PREVALENCE_ORDER = {
-  "commonly-explored": 0,
-  "sometimes-explored": 1,
-  "occasionally-explored": 2,
+/**
+ * Etiological-consensus weight: how strongly the medical literature establishes
+ * that A causes (or aggravates) B. Prevalence is deliberately gone; how
+ * "commonly explored" a relationship is says nothing about VA nexus
+ * probability. WELL_ESTABLISHED maps to "at least as likely as not" without
+ * an individual-evidence discount; weaker tiers are discounted accordingly.
+ */
+const CONSENSUS_ORDER = {
+  WELL_ESTABLISHED: 0,
+  IATROGENIC_TREATMENT_EFFECT: 1,
+  PROBABLE: 2,
+  CONTESTED_REQUIRES_SPECIFIC_EVIDENCE: 3,
+  NOT_ESTABLISHED: 4,
 } as const;
 
-const PREVALENCE_BY_RANK = [
-  "commonly-explored",
-  "sometimes-explored",
-  "occasionally-explored",
+const CONSENSUS_BY_RANK = [
+  "WELL_ESTABLISHED",
+  "IATROGENIC_TREATMENT_EFFECT",
+  "PROBABLE",
+  "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE",
+  "NOT_ESTABLISHED",
 ] as const;
 
 /**
@@ -95,7 +106,7 @@ function matchIntakeContext(
 interface Accumulated {
   conditionId: string;
   score: number;
-  prevalenceRank: number;
+  consensusRank: number;
   contributingPrimaries: ContributingPrimary[];
   evidenceGaps: string[];
   sourceReferences: SourceReference[];
@@ -154,6 +165,9 @@ export function recommend(
         rank: suggestion.rank,
         rationale: suggestion.rationale,
         pathwayIntelligence: suggestion.pathwayIntelligence,
+        nexusClaim: suggestion.nexusClaim,
+        causalMechanism: suggestion.causalMechanism,
+        evidentiaryProfile: suggestion.evidentiaryProfile,
       };
 
       if (existing) {
@@ -167,15 +181,15 @@ export function recommend(
           ...existing.sourceReferences,
           ...suggestion.sourceReferences,
         ]);
-        existing.prevalenceRank = Math.min(
-          existing.prevalenceRank,
-          PREVALENCE_ORDER[suggestion.prevalence],
+        existing.consensusRank = Math.min(
+          existing.consensusRank,
+          CONSENSUS_ORDER[suggestion.evidentiaryProfile.etiologicalConsensus],
         );
       } else {
         accumulator.set(suggestion.conditionId, {
           conditionId: suggestion.conditionId,
           score: rankWeight(suggestion.rank),
-          prevalenceRank: PREVALENCE_ORDER[suggestion.prevalence],
+          consensusRank: CONSENSUS_ORDER[suggestion.evidentiaryProfile.etiologicalConsensus],
           contributingPrimaries: [contribution],
           evidenceGaps: [...suggestion.evidenceGaps],
           sourceReferences: [...suggestion.sourceReferences],
@@ -200,7 +214,7 @@ export function recommend(
         conditionId: entry.conditionId,
         condition: catalogEntry.name,
         bodySystem: catalogEntry.bodySystem,
-        prevalence: PREVALENCE_BY_RANK[entry.prevalenceRank],
+        etiologicalConsensus: CONSENSUS_BY_RANK[entry.consensusRank],
         score: Number(entry.score.toFixed(4)),
         contributingPrimaries,
         evidenceGaps: entry.evidenceGaps,

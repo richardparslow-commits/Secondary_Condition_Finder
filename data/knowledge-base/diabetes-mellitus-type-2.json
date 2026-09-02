@@ -6,7 +6,6 @@
     {
       "conditionId": "gerd",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require type 2 diabetes plus documented GLP-1 receptor agonist exposure preceding GERD/GERD complications; model as a treatment-associated pathway, not diabetes itself. Active-comparator cohort evidence concerns GLP-1 RA treatment; do not generalize to untreated T2DM. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation of the qualifying treatment or procedure used for Diabetes Mellitus Type 2",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40658955; PubMed title/abstract retrieved in the master research harvest; guard: Require type 2 diabetes plus documented GLP-1 receptor agonist exposure preceding GERD/GERD complications; model as a treatment-associated pathway, not diabetes itself."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require type 2 diabetes plus documented GLP-1 receptor agonist exposure preceding GERD/GERD complications; model as a treatment-associated pathway, not diabetes itself. Active-comparator cohort evidence concerns GLP-1 RA treatment; do not generalize to untreated T2DM. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require type 2 diabetes plus documented GLP-1 receptor agonist exposure preceding GERD/GERD complications; model as a treatment-associated pathway, not diabetes itself. Active-comparator cohort evidence concerns GLP-1 RA treatment; do not generalize to untreated T2DM. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require type 2 diabetes plus documented GLP-1 receptor agonist exposure preceding GERD/GERD complications; model as a treatment-associated pathway, not diabetes itself. Active-comparator cohort evidence concerns GLP-1 RA treatment; do not generalize to untreated T2DM. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation of the qualifying treatment or procedure used for Diabetes Mellitus Type 2; Independent diagnosis of Gastroesophageal Reflux Disease (GERD) and timing relative to that exposure; Dose, duration, procedure details, and relevant co-exposures where applicable; Qualified clinical assessment of competing causes and source-phenotype fit",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "chronic-kidney-disease",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented type 2 diabetes mellitus and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as diabetes-related CKD, use clinical findings compatible with diabetic kidney disease, including the albuminuria/eGFR pattern and longitudinal course, while evaluating alternative or additional kidney disease when atypical features are present. In the absence of definitive etiologic evidence, describe the phenotype as CKD in a person with type 2 diabetes or presumed diabetic kidney disease, rather than asserting individual causation. Do not relabel transient AKI, an isolated creatinine abnormality, or every CKD diagnosis in a patient with diabetes as diabetic kidney disease. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of diabetes-mellitus-type-2 and chronic-kidney-disease",
@@ -47,12 +65,31 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 41358881; qualified-human-approved Mapping Expansion Batch ME-1 Citation Verification; guard: Require documented type 2 diabetes mellitus and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as diabetes-related CKD, use clinical findings compatible with diabetic kidney disease, including the albuminuria/eGFR pattern and longitudinal course, while evaluating alternative or additional kidney disease when atypical features are present. In the absence of definitive etiologic evidence, describe the phenotype as CKD in a person with type 2 diabetes or presumed diabetic kidney disease, rather than asserting individual causation. Do not relabel transient AKI, an isolated creatinine abnormality, or every CKD diagnosis in a patient with diabetes as diabetic kidney disease."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented type 2 diabetes mellitus and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as diabetes-related CKD, use clinical findings compatible with diabetic kidney disease, including the albuminuria/eGFR pattern and longitudinal course, while evaluating alternative or additional kidney disease when atypical features are present. In the absence of definitive etiologic evidence, describe the phenotype as CKD in a person with type 2 diabetes or presumed diabetic kidney disease, rather than asserting individual causation. Do not relabel transient AKI, an isolated creatinine abnormality, or every CKD diagnosis in a patient with diabetes as diabetic kidney disease. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented type 2 diabetes mellitus and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as diabetes-related CKD, use clinical findings compatible with diabetic kidney disease, including the albuminuria/eGFR pattern and longitudinal course, while evaluating alternative or additional kidney disease when atypical features are present. In the absence of definitive etiologic evidence, describe the phenotype as CKD in a person with type 2 diabetes or presumed diabetic kidney disease, rather than asserting individual causation. Do not relabel transient AKI, an isolated creatinine abnormality, or every CKD diagnosis in a pat",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented type 2 diabetes mellitus and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as diabetes-related CKD, use clinical findings compatible with diabetic kidney disease, including the albuminuria/eGFR pattern and longitudinal course, while evaluating alternative or additional kidney disease when atypical features are present. In the absence of definitive etiologic evidence, describe the phenotype as CKD in a person with type 2 diabetes or presumed diabetic kidney disease, rather than asserting individual causation. Do not relabel transient AKI, an isolated ",
+        "evidenceGaps": "Independent documentation of diabetes-mellitus-type-2 and chronic-kidney-disease; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented type 2 diabetes mellitus and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as diabetes-related CKD, use clinical findings compatible with diabetic kidney disease, including the albuminuria/eGFR pattern and longitudinal course, while evaluating alternative or additional kidney disease when atypical features are present. In the absence of definitive etiologic evidence, describe the phenotype as CKD in a ",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "diabetic-retinopathy",
       "rank": 3,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented type 2 diabetes mellitus and separately diagnosed diabetic retinopathy using appropriate ophthalmologic evidence. Do not infer retinopathy from diabetes alone, and do not use this relationship for unrelated retinal disease or visual impairment without a diabetic-retinopathy diagnosis. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of diabetes-mellitus-type-2 and diabetic-retinopathy",
@@ -70,7 +107,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 41358886; qualified-human-approved Mapping Expansion Batch ME-1 Citation Verification; guard: Require documented type 2 diabetes mellitus and separately diagnosed diabetic retinopathy using appropriate ophthalmologic evidence. Do not infer retinopathy from diabetes alone, and do not use this relationship for unrelated retinal disease or visual impairment without a diabetic-retinopathy diagnosis."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented type 2 diabetes mellitus and separately diagnosed diabetic retinopathy using appropriate ophthalmologic evidence.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented type 2 diabetes mellitus and separately diagnosed diabetic retinopathy using appropriate ophthalmologic evidence.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented type 2 diabetes mellitus and separately diagnosed diabetic retinopathy using appropriate ophthalmologic evidence. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of diabetes-mellitus-type-2 and diabetic-retinopathy; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented type 2 diabetes mellitus and separately diagnosed diabetic retinopathy using appropriate ophthalmologic evidence. Do not infer retinopathy from diabetes alone, and do not use this relationship for unrelated retinal disease or visual impairment without a diabetic-retinopathy diagnosis.",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

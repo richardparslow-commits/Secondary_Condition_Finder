@@ -6,7 +6,6 @@
     {
       "conditionId": "peripheral-neuropathy",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Paclitaxel-containing chemotherapy used to treat ovarian cancer can produce clinically significant peripheral sensory neuropathy. In the randomized MITO-7 phase 3 ovarian-cancer trial, grade 2 or worse neuropathy occurred in both carboplatin-plus-paclitaxel schedules, with a lower frequency in the weekly schedule than the every-three-weeks schedule. This supports a treatment-complication pathway only when the individual received a documented neurotoxic ovarian-cancer regimen and a compatible peripheral neuropathy began or materially worsened afterward; ovarian cancer itself, surgery alone, or a non-neurotoxic treatment history should not be treated as sufficient evidence of causation.",
       "pathwayIntelligence": {
         "pathways": [
@@ -42,12 +41,30 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 24582486; abstract Findings: grade 2 or worse neuropathy 24/399 (6%) weekly versus 68/400 (17%) every three weeks"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Ovarian cancer → documented paclitaxel-containing chemotherapy, if administered → neurotoxic treatment exposure → clinically confirmed peripheral neuropathy with compatible timing and phenotype."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Ovarian cancer → documented paclitaxel-containing chemotherapy, if administered → neurotoxic treatment exposure → clinically confirmed peripheral neuropathy with compatible timing and phenotype.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Ovarian cancer → documented paclitaxel-containing chemotherapy, if administered → neurotoxic treatment exposure → clinically confirmed peripheral neuropathy with compatible timing and phenotype.",
+        "evidenceGaps": "Oncology records identifying the exact chemotherapy regimen, dose, schedule, and cumulative exposure; Baseline neurologic status before chemotherapy; Documentation of neuropathy onset, course, severity, and treatment-response chronology; Neurologic examination and electrodiagnostic testing when clinically indicated; Assessment of competing causes of peripheral neuropathy",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "lymphedema",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of ovarian-cancer and lymphedema",
@@ -66,7 +83,32 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 27400319; approved ME-6 proposition; guard: Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or renal edema, prior pelvic surgery or radiotherapy, malignant obstruction, and other causes of lower-extremity swelling."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of ovarian-cancer and lymphedema; Documentation satisfying the approved phenotype restriction: lower-extremity lymphedema after lymph-node dissection; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented ovarian cancer, documented pelvic and/or para-aortic lymph-node dissection or lymphadenectomy, and separately established lower-extremity lymphedema with compatible postoperative chronology. Do not infer lymphedema from ovarian cancer, chemotherapy, or pelvic surgery without lymphatic-node disruption alone. Preserve venous thrombosis or insufficiency, obesity, infection, cardiac or ren",
+        "alternativeEtiologiesToRuleOut": [
+          "venous thrombosis",
+          "insufficiency",
+          "obesity",
+          "infection",
+          "cardiac",
+          "renal edema"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

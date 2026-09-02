@@ -6,7 +6,6 @@
     {
       "conditionId": "barretts-esophagus",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require a documented hiatal hernia and separately confirmed Barrett's esophagus; use as association/risk evidence only. Meta-analysis does not by itself establish chronology or individual causation; GERD and other factors remain important. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Hiatal Hernia and Barrett's Esophagus",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 22694245; PubMed title/abstract retrieved in the master research harvest; guard: Require a documented hiatal hernia and separately confirmed Barrett's esophagus; use as association/risk evidence only."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require a documented hiatal hernia and separately confirmed Barrett's esophagus; use as association/risk evidence only. Meta-analysis does not by itself establish chronology or individual causation; GERD and other factors remain important. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require a documented hiatal hernia and separately confirmed Barrett's esophagus; use as association/risk evidence only. Meta-analysis does not by itself establish chronology or individual causation; GERD and other factors remain important. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require a documented hiatal hernia and separately confirmed Barrett's esophagus; use as association/risk evidence only. Meta-analysis does not by itself establish chronology or individual causation; GERD and other factors remain important. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Hiatal Hernia and Barrett's Esophagus; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "gerd",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Physiologically relevant hiatal hernia as an anatomic contributor to objectively established gastroesophageal reflux disease. Require a documented hiatal hernia, with the source proposition most directly applicable to a sliding or otherwise physiologically relevant gastroesophageal-junction hernia, and a separately established diagnosis of GERD using appropriate clinical, endoscopic, or reflux-monitoring evidence. Do not infer GERD solely from the presence of a hiatal hernia. Preserve lower-esophageal-sphincter dysfunction, obesity, medications, delayed gastric emptying, dietary or behavioral contributors, prior foregut surgery, and other reflux causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of hiatal-hernia and gerd",
@@ -48,7 +66,32 @@
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 10482693; approved ME-7 proposition; guard: Require a documented hiatal hernia, with the source proposition most directly applicable to a sliding or otherwise physiologically relevant gastroesophageal-junction hernia, and a separately established diagnosis of GERD using appropriate clinical, endoscopic, or reflux-monitoring evidence. Do not infer GERD solely from the presence of a hiatal hernia. Preserve lower-esophageal-sphincter dysfunction, obesity, medications, delayed gastric emptying, dietary or behavioral contributors, prior foregut surgery, and other reflux causes."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Physiologically relevant hiatal hernia as an anatomic contributor to objectively established gastroesophageal reflux disease. Require a documented hiatal hernia, with the source proposition most directly applicable to a sliding or otherwise physiologically relevant gastroesophageal-junction hernia, and a separately established diagnosis of GERD using appropriate clinical, endoscopic, or reflux-monitoring evidence.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Physiologically relevant hiatal hernia as an anatomic contributor to objectively established gastroesophageal reflux disease. Require a documented hiatal hernia, with the source proposition most directly applicable to a sliding or otherwise physiologically relevant gastroesophageal-junction hernia, and a separately established diagnosis of GERD using appropriate clinical, endoscopic, or reflux-monitoring evidence.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Physiologically relevant hiatal hernia as an anatomic contributor to objectively established gastroesophageal reflux disease. Require a documented hiatal hernia, with the source proposition most directly applicable to a sliding or otherwise physiologically relevant gastroesophageal-junction hernia, and a separately established diagnosis of GERD using appropriate clinical, endoscopic, or reflux-monitoring evidence. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of hiatal-hernia and gerd; Documentation satisfying the approved phenotype restriction: physiologically relevant/sliding hiatal hernia with separately established GERD; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require a documented hiatal hernia, with the source proposition most directly applicable to a sliding or otherwise physiologically relevant gastroesophageal-junction hernia, and a separately established diagnosis of GERD using appropriate clinical, endoscopic, or reflux-monitoring evidence. Do not infer GERD solely from the presence of a hiatal hernia. Preserve lower-esophageal-sphincte",
+        "alternativeEtiologiesToRuleOut": [
+          "lower-esophageal-sphincter dysfunction",
+          "obesity",
+          "medications",
+          "delayed gastric emptying",
+          "dietary",
+          "behavioral contributors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

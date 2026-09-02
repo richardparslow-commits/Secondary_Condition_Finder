@@ -8,7 +8,6 @@
     {
       "conditionId": "radiculopathy",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review and meta-analysis explicitly addresses cervical radiculopathy due to degenerative disc disease; the approved mapping is restricted to anatomically concordant cervical nerve-root disease. Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of degenerative-disc-disease and radiculopathy",
@@ -27,7 +26,32 @@
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 34402323; approved ME-13 source; guard: Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review and meta-analysis explicitly addresses cervical radiculopathy due to degenerative disc disease; the approved mapping is restricted to anatomically concordant cervical nerve-root disease. Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review and meta-analysis explicitly addresses cervical radiculopathy due to degenerative disc disease; the approved mapping is restricted to anatomically concordant cervical nerve-root disease. Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review and meta-analysis explicitly addresses cervical radiculopathy due to degenerative disc disease; the approved mapping is restricted to anatomically concordant cervical nerve-root disease. Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of degenerative-disc-disease and radiculopathy; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: anatomically concordant cervical radiculopathy due to cervical degenerative disc disease with nerve-root compromise; Assessment of material competing etiologies and treatment/context confounders; Resolution of publication guard: Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerati",
+        "alternativeEtiologiesToRuleOut": [
+          "peripheral neuropathy",
+          "plexopathy",
+          "entrapment neuropathy",
+          "spinal cord disease",
+          "nondegenerative structural lesions",
+          "other causes as competing explanations"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

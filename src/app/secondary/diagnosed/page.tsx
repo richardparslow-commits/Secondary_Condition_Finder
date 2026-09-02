@@ -7,7 +7,7 @@ import { loadKnowledgeBase } from "@/lib/kb/load";
 import { mappedConditionIds } from "@/lib/kb/lookup";
 import { readSecondaryWorkflowSession } from "@/lib/secondary-workflow/session";
 import { secondaryValidationMessage } from "@/lib/secondary-workflow/validation";
-import { saveDiagnosedSelection } from "../actions";
+import { saveDiagnosedSelection } from "@/lib/actions/secondary";
 
 interface DiagnosedPageProps {
   searchParams?: Promise<{ error?: string | string[] }>;

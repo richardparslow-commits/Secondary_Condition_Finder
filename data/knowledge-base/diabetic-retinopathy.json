@@ -6,7 +6,6 @@
     {
       "conditionId": "retinal-detachment",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific ocular complication. Apply only to proliferative diabetic retinopathy with separately documented tractional retinal detachment. Do not generalize this source to nonproliferative diabetic retinopathy or unrelated rhegmatogenous detachment. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation that Diabetic retinopathy matches the source-specific phenotype",
@@ -24,7 +23,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 34477996; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Apply only to proliferative diabetic retinopathy with separately documented tractional retinal detachment. Do not generalize this source to nonproliferative diabetic retinopathy or unrelated rhegmatogenous detachment."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific ocular complication. Apply only to proliferative diabetic retinopathy with separately documented tractional retinal detachment. Do not generalize this source to nonproliferative diabetic retinopathy or unrelated rhegmatogenous detachment. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific ocular complication. Apply only to proliferative diabetic retinopathy with separately documented tractional retinal detachment. Do not generalize this source to nonproliferative diabetic retinopathy or unrelated rhegmatogenous detachment. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific ocular complication. Apply only to proliferative diabetic retinopathy with separately documented tractional retinal detachment. Do not generalize this source to nonproliferative diabetic retinopathy or unrelated rhegmatogenous detachment. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation that Diabetic retinopathy matches the source-specific phenotype; Independent diagnosis of Retinal Detachment with compatible chronology; Assessment of competing medical, treatment-related, behavioral, and demographic contributors; Resolution of the publication guard: Apply only to proliferative diabetic retinopathy with separately documented tractional retinal detachment. Do not generalize this source to nonproliferative diabetic retinopathy or unrelated rhegmatogenous detachment.",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

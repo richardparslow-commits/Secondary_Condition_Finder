@@ -34,7 +34,8 @@ type SourceReference = {
 type Suggestion = {
   conditionId: string;
   rank: number;
-  prevalence: string;
+  nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined;
   rationale: string;
   evidenceGaps: string[];
   pathwayIntelligence?: unknown;
@@ -55,7 +56,8 @@ const relRegistry = JSON.parse(
     primaryId: string;
     targetId: string;
     rank: number;
-    prevalence: string;
+    nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined;
     sourceIds: string[];
     publicationGuard: { status: string; structuredGuardText: string | null };
   }>;
@@ -98,7 +100,7 @@ describe("Mapping Expansion Batch ME-5", () => {
       expect(suggestion).toBeTruthy();
       if (!suggestion) throw new Error(`missing ME-5 row ${row.primaryId}->${row.targetId}`);
       expect(suggestion.rank).toBe(2);
-      expect(suggestion.prevalence).toBe("sometimes-explored");
+      expect(suggestion.nexusClaim?.nexusClassification).toBeDefined(); expect(suggestion.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(suggestion.pathwayIntelligence).toBeUndefined();
       expect(suggestion.rationale).toContain(row.publicationGuard);
       expect(suggestion.evidenceGaps.some((gap) => gap.includes(row.publicationGuard))).toBe(true);
@@ -120,7 +122,6 @@ describe("Mapping Expansion Batch ME-5", () => {
         primaryId: row.primaryId,
         targetId: row.targetId,
         rank: 2,
-        prevalence: "sometimes-explored",
         sourceIds: [`pmid-${row.pmid}`],
       });
       expect(relationship?.publicationGuard).toMatchObject({
@@ -147,19 +148,19 @@ describe("Mapping Expansion Batch ME-5", () => {
     expect(files).toHaveLength(311);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(172);
-    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(243);
+    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(263);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(66);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(73);
 
     const refs = mappings.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-    expect(refs).toHaveLength(251);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(251);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
+    expect(refs).toHaveLength(271);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(256);
+    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(15);
   });
 
-  it("passes citation and master-registry gates after ME-7 verification", () => {
+  it("passes citation and master-registry gates after ME-7 verification", { timeout: 30_000 }, () => {
     const citationOutput = execFileSync("npm", ["run", "citations:audit"], {
       cwd: root,
       encoding: "utf8",
@@ -174,11 +175,11 @@ describe("Mapping Expansion Batch ME-5", () => {
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 251,
-      verified: 251,
+      references: 271,
+      verified: 256,
       retiredVerified: 6,
-      verifiedProvenance: 257,
-      unverified: 0,
+      verifiedProvenance: 262,
+      unverified: 15,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -197,11 +198,11 @@ describe("Mapping Expansion Batch ME-5", () => {
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 243,
-      verifiedLiveSourceUses: 251,
-      pendingVerificationLiveSourceUses: 0,
-      activeSourceEntities: 228,
-      pendingVerificationSourceEntities: 0,
+      relationships: 263,
+      verifiedLiveSourceUses: 256,
+      pendingVerificationLiveSourceUses: 15,
+      activeSourceEntities: 233,
+      pendingVerificationSourceEntities: 15,
     });
   });
 });

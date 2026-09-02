@@ -7,6 +7,11 @@ import { loadKnowledgeBase } from "@/lib/kb/load";
 import { draftMappings, mappedConditionIds } from "@/lib/kb/lookup";
 import { knowledgeBaseSchema } from "@/lib/kb/schema";
 import { validateKnowledgeBaseAgainstCatalog } from "@/lib/kb/validate";
+import {
+  buildCausalMechanism,
+  buildEvidentiaryProfile,
+  buildNexusClaim,
+} from "./helpers/crg-fixtures";
 
 const catalog = loadConditionCatalog();
 const kb = loadKnowledgeBase();
@@ -151,7 +156,9 @@ describe("validateKnowledgeBaseAgainstCatalog", () => {
           {
             conditionId: "known-secondary",
             rank: 1,
-            prevalence: "commonly-explored",
+            nexusClaim: buildNexusClaim(),
+            causalMechanism: buildCausalMechanism(),
+            evidentiaryProfile: buildEvidentiaryProfile(),
             rationale: "test",
             evidenceGaps: ["test"],
             sourceReferences: [{ citation: "test", note: "test", verified: false }],
@@ -185,7 +192,9 @@ describe("validateKnowledgeBaseAgainstCatalog", () => {
           {
             conditionId: "missing-secondary",
             rank: 1,
-            prevalence: "commonly-explored",
+            nexusClaim: buildNexusClaim(),
+            causalMechanism: buildCausalMechanism(),
+            evidentiaryProfile: buildEvidentiaryProfile(),
             rationale: "test",
             evidenceGaps: ["test"],
             sourceReferences: [{ citation: "test", note: "test", verified: false }],

@@ -1,0 +1,113 @@
+{
+  "phase": "Mapping Expansion ME-17",
+  "ledgerStatus": "APPROVED AND APPLIED LOCALLY — CITATIONS PENDING VERIFICATION",
+  "approvalDate": "2026-09-01",
+  "requiredBaselineCommit": "b3c9745fed30c66e994a92302baf2d78118802df",
+  "previousRegistryBaselineCommit": "b3c9745fed30c66e994a92302baf2d78118802df",
+  "previousRegistryCurrentState": "ME16-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+  "commitSubject": "map: mapping expansion ME-17 (5 relationships)",
+  "issueReference": "issue #360 Mapping Expansion Wave: Mental Disorders (ME-15+)",
+  "approvalRecord": "Qualified-human approval captured on 2026-09-01: all five bounded ME-17 mappings approved, plus approve-as-implemented citation verification pre-captured at planning for all five sources.",
+  "rows": [
+    {
+      "primaryId": "persistent-depressive-disorder",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "16648329",
+      "doi": "10.1176/ajp.2006.163.5.872",
+      "sourceTitle": "Ten-year prospective follow-up study of the naturalistic course of dysthymic disorder and double depression",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16648329/",
+      "claimType": "population-level-temporal-risk",
+      "sourceAction": "approved-fresh-me17-source"
+    },
+    {
+      "primaryId": "somatic-symptom-disorder",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "18433651",
+      "doi": "10.1016/j.genhosppsych.2007.10.008",
+      "sourceTitle": "Depression, anxiety and somatization in primary care: syndrome overlap and functional impairment",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18433651/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me17-source"
+    },
+    {
+      "primaryId": "fibromyalgia",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "16908799",
+      "doi": "10.1001/archinte.166.15.1649",
+      "sourceTitle": "Chronic widespread pain and its comorbidities: a population-based study",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16908799/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me17-source"
+    },
+    {
+      "primaryId": "irritable-bowel-syndrome",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "11910364",
+      "doi": "10.1053/gast.2002.32392",
+      "sourceTitle": "Systematic review of the comorbidity of irritable bowel syndrome with other disorders: what are the causes and implications?",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11910364/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me17-source"
+    },
+    {
+      "primaryId": "tinnitus",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "30909841",
+      "doi": "10.1177/0194599819835178",
+      "sourceTitle": "Depression in Patients with Tinnitus: A Systematic Review",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30909841/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me17-source"
+    }
+  ],
+  "citationStateAfterImplementation": {
+    "kbSourceReferences": "verified:false",
+    "masterSources": "pending-verification",
+    "registryCurrentState": "ME17-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+    "qualifiedHumanCitationReviewRequired": true,
+    "automaticPromotionAuthorized": false
+  },
+  "failurePolicy": "Fail closed. If any exact baseline, publication-state proof, edge, source identity, projection, PubMed identity, validation, or freeze-guard requirement fails, stop. If any repository write has already occurred, preserve the exact dirty state; do not reset, restore, stash, or clean.",
+  "projectionNote": "ME-17 registers five draft primaries (persistent-depressive-disorder, somatic-symptom-disorder, fibromyalgia, irritable-bowel-syndrome, tinnitus) all at rank 1 dep to depressive-disorder. All five primaries move out of the never-used pool. Registered-primary coverage advances 164 -> 169 of 311; remaining primaries partition from 37 target-only / 110 never-used to 37 target-only / 105 never-used. Publication P1/D1 counts are resolved from read-before-write publication-state proof: P1 66 / P2+ 73 unchanged; draft D1 24 -> 29.",
+  "implementationDateLocal": "2026-09-01",
+  "implementationResult": {
+    "rowsImplemented": 5,
+    "rank1Rows": 5,
+    "rank2Rows": 0,
+    "publicationStatesPreserved": {
+      "persistent-depressive-disorder": "draft",
+      "somatic-symptom-disorder": "draft",
+      "fibromyalgia": "draft",
+      "irritable-bowel-syndrome": "draft",
+      "tinnitus": "draft"
+    },
+    "selectedDraftPrimaries": 5,
+    "selectedPublishedPrimaries": 0,
+    "postMatrix": [
+      311,
+      139,
+      172,
+      258,
+      66,
+      73,
+      29
+    ],
+    "kbVerifiedFalseRows": 5,
+    "masterPendingSources": 5,
+    "registeredPrimaries": 169,
+    "remainingPrimaries": 142,
+    "remainingTargetOnlyPrimaries": 37,
+    "remainingNeverUsedPrimaries": 105,
+    "citationPromotions": 0,
+    "publicationStatusChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "semanticBroadening": 0,
+    "remoteWritesPerformed": false
+  }
+}

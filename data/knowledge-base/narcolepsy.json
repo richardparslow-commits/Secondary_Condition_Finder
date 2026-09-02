@@ -6,7 +6,6 @@
     {
       "conditionId": "depressive-disorder",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require narcolepsy diagnosis preceding first-onset depressive disorder; separately establish depression and consider sleep disruption, medication effects, psychosocial burden, and other psychiatric disease. Longitudinal register evidence supports temporal risk only; no direct-secondary/aggravation pathwayIntelligence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Narcolepsy and Major Depressive Disorder",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 31203833; PubMed title/abstract retrieved in the master research harvest; guard: Require narcolepsy diagnosis preceding first-onset depressive disorder; separately establish depression and consider sleep disruption, medication effects, psychosocial burden, and other psychiatric disease."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require narcolepsy diagnosis preceding first-onset depressive disorder; separately establish depression and consider sleep disruption, medication effects, psychosocial burden, and other psychiatric disease. Longitudinal register evidence supports temporal risk only; no direct-secondary/aggravation pathwayIntelligence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require narcolepsy diagnosis preceding first-onset depressive disorder; separately establish depression and consider sleep disruption, medication effects, psychosocial burden, and other psychiatric disease. Longitudinal register evidence supports temporal risk only; no direct-secondary/aggravation pathwayIntelligence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require narcolepsy diagnosis preceding first-onset depressive disorder; separately establish depression and consider sleep disruption, medication effects, psychosocial burden, and other psychiatric disease. Longitudinal register evidence supports temporal risk only; no direct-secondary/aggravation pathwayIntelligence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Narcolepsy and Major Depressive Disorder; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "hypertension",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Hypertension is among the cardiometabolic comorbidities reported in narcolepsy, with greater cardiometabolic burden particularly in narcolepsy type 1; this supports association and screening relevance only. Require separately diagnosed hypertension. Preserve obesity, obstructive sleep apnea, metabolic syndrome, stimulant or other medication exposure, age, sex, renal or endocrine causes, and other conventional hypertension risk factors. Do not state or imply individual causation from the meta-analysis alone. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of narcolepsy and hypertension",
@@ -48,7 +66,32 @@
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 41747645; approved ME-10 proposition; guard: Require separately diagnosed hypertension. Preserve obesity, obstructive sleep apnea, metabolic syndrome, stimulant or other medication exposure, age, sex, renal or endocrine causes, and other conventional hypertension risk factors. Do not state or imply individual causation from the meta-analysis alone."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Hypertension is among the cardiometabolic comorbidities reported in narcolepsy, with greater cardiometabolic burden particularly in narcolepsy type 1; this supports association and screening relevance only. Require separately diagnosed hypertension.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Hypertension is among the cardiometabolic comorbidities reported in narcolepsy, with greater cardiometabolic burden particularly in narcolepsy type 1; this supports association and screening relevance only. Require separately diagnosed hypertension.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Hypertension is among the cardiometabolic comorbidities reported in narcolepsy, with greater cardiometabolic burden particularly in narcolepsy type 1; this supports association and screening relevance only. Require separately diagnosed hypertension. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of narcolepsy and hypertension; Documentation satisfying the approved phenotype restriction: established narcolepsy with separately diagnosed hypertension; association appears strongest in narcolepsy type 1; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require separately diagnosed hypertension. Preserve obesity, obstructive sleep apnea, metabolic syndrome, stimulant or other medication exposure, age, sex, renal or endocrine causes, and other conventional hypertension risk factors. Do not state or imply individual causation from the meta-analysis alone.",
+        "alternativeEtiologiesToRuleOut": [
+          "obesity",
+          "obstructive sleep apnea",
+          "metabolic syndrome",
+          "stimulant",
+          "other medication exposure",
+          "age"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

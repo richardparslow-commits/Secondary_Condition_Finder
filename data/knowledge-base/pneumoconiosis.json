@@ -6,7 +6,6 @@
     {
       "conditionId": "sleep-apnea",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require pneumoconiosis before incident sleep apnea and separately diagnosed sleep apnea; account for obesity, COPD, age, and other sleep-disordered breathing risks. Retrospective cohort association only. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Pneumoconiosis (Asbestosis, Silicosis) and Sleep Apnea (Obstructive, Central, Mixed)",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 38573463; PubMed title/abstract retrieved in the master research harvest; guard: Require pneumoconiosis before incident sleep apnea and separately diagnosed sleep apnea; account for obesity, COPD, age, and other sleep-disordered breathing risks."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require pneumoconiosis before incident sleep apnea and separately diagnosed sleep apnea; account for obesity, COPD, age, and other sleep-disordered breathing risks. Retrospective cohort association only. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require pneumoconiosis before incident sleep apnea and separately diagnosed sleep apnea; account for obesity, COPD, age, and other sleep-disordered breathing risks. Retrospective cohort association only. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require pneumoconiosis before incident sleep apnea and separately diagnosed sleep apnea; account for obesity, COPD, age, and other sleep-disordered breathing risks. Retrospective cohort association only. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Pneumoconiosis (Asbestosis, Silicosis) and Sleep Apnea (Obstructive, Central, Mixed); Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "tuberculosis",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply only to silicosis/silica-exposure pneumoconiosis consistent with the source and separately established tuberculosis. Silicosis-specific meta-analysis; do not generalize to every pneumoconiosis subtype. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation that Pneumoconiosis (Asbestosis, Silicosis) matches the source-specific phenotype or population",
@@ -47,7 +65,27 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 37349198; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to silicosis/silica-exposure pneumoconiosis consistent with the source and separately established tuberculosis."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply only to silicosis/silica-exposure pneumoconiosis consistent with the source and separately established tuberculosis. Silicosis-specific meta-analysis; do not generalize to every pneumoconiosis subtype. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply only to silicosis/silica-exposure pneumoconiosis consistent with the source and separately established tuberculosis. Silicosis-specific meta-analysis; do not generalize to every pneumoconiosis subtype. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific temporal risk. Apply only to silicosis/silica-exposure pneumoconiosis consistent with the source and separately established tuberculosis. Silicosis-specific meta-analysis; do not generalize to every pneumoconiosis subtype. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation that Pneumoconiosis (Asbestosis, Silicosis) matches the source-specific phenotype or population; Independent diagnosis of Mycobacterium Tuberculosis with compatible chronology; Assessment of competing medical, treatment-related, behavioral, and demographic contributors; Qualified clinical opinion before applying the population-level relationship to an individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

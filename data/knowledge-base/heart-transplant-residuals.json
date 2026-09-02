@@ -6,7 +6,6 @@
     {
       "conditionId": "skin-cancer",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment exposure associated malignancy. Require documented heart transplantation, chronic post-transplant immunosuppressive exposure, and a separately histologically diagnosed skin malignancy arising after transplantation. PMID 41322122 provides particularly strong evidence for CNI + azathioprine exposure and SCC risk; do not treat all immunosuppressive regimens as equivalent or infer that transplant status alone establishes individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation of the qualifying treatment/procedure exposure for Heart Transplant Residuals",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 41322122; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented heart transplantation, chronic post-transplant immunosuppressive exposure, and a separately histologically diagnosed skin malignancy arising after transplantation. PMID 41322122 provides particularly strong evidence for CNI + azathioprine exposure and SCC risk; do not treat all immunosuppressive regimens as equivalent or infer that transplant status alone establishes individual causation."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment exposure associated malignancy. Require documented heart transplantation, chronic post-transplant immunosuppressive exposure, and a separately histologically diagnosed skin malignancy arising after transplantation. PMID 41322122 provides particularly strong evidence for CNI + azathioprine exposure and SCC risk; do not treat all immunosuppressive regimens as equivalent or infer that transplant status alone establishes individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment exposure associated malignancy. Require documented heart transplantation, chronic post-transplant immunosuppressive exposure, and a separately histologically diagnosed skin malignancy arising after transplantation. PMID 41322122 provides particularly strong evidence for CNI + azathioprine exposure and SCC risk; do not treat all immunosuppressive regimens as equivalent or infer that transplant status alone establishes individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment exposure associated malignancy. Require documented heart transplantation, chronic post-transplant immunosuppressive exposure, and a separately histologically diagnosed skin malignancy arising after transplantation. PMID 41322122 provides particularly strong evidence for CNI + azathioprine exposure and SCC risk; do not treat all immunosuppressive regimens as equivalent or infer that transplant status alone establishes individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation of the qualifying treatment/procedure exposure for Heart Transplant Residuals; Independent diagnosis of Melanoma / Non-Melanoma Skin Cancers and timing relative to that exposure; Dose, duration, procedure details, and relevant co-exposures where applicable; Qualified clinical assessment of competing causes and exact source-phenotype fit",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "chronic-kidney-disease",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Chronic kidney disease is a recognized post-heart-transplant complication, with calcineurin-inhibitor nephrotoxicity acting within a multifactorial post-transplant risk model. Require an actual heart transplant and separately established post-transplant chronic kidney disease with compatible chronology. Do not infer CKD from transplant status alone. Preserve preexisting CKD, diabetes, hypertension, perioperative acute kidney injury, cardiorenal/hemodynamic factors, rejection-related injury, and other nephrotoxic exposures. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of heart-transplant-residuals and chronic-kidney-disease",
@@ -48,7 +66,32 @@
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 25134671; approved ME-8 proposition; guard: Require an actual heart transplant and separately established post-transplant chronic kidney disease with compatible chronology. Do not infer CKD from transplant status alone. Preserve preexisting CKD, diabetes, hypertension, perioperative acute kidney injury, cardiorenal/hemodynamic factors, rejection-related injury, and other nephrotoxic exposures."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Chronic kidney disease is a recognized post-heart-transplant complication, with calcineurin-inhibitor nephrotoxicity acting within a multifactorial post-transplant risk model. Require an actual heart transplant and separately established post-transplant chronic kidney disease with compatible chronology.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Chronic kidney disease is a recognized post-heart-transplant complication, with calcineurin-inhibitor nephrotoxicity acting within a multifactorial post-transplant risk model. Require an actual heart transplant and separately established post-transplant chronic kidney disease with compatible chronology.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Chronic kidney disease is a recognized post-heart-transplant complication, with calcineurin-inhibitor nephrotoxicity acting within a multifactorial post-transplant risk model. Require an actual heart transplant and separately established post-transplant chronic kidney disease with compatible chronology. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of heart-transplant-residuals and chronic-kidney-disease; Documentation satisfying the approved phenotype restriction: separately established chronic kidney disease arising after actual heart transplantation with compatible chronology; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require an actual heart transplant and separately established post-transplant chronic kidney disease with compatible chronology. Do not infer CKD from transplant status alone. Preserve preexisting CKD, diabetes, hypertension, perioperative acute kidney injury, cardiorenal/hemodynamic factors, rejection-related injury, an",
+        "alternativeEtiologiesToRuleOut": [
+          "preexisting CKD",
+          "diabetes",
+          "hypertension",
+          "perioperative acute kidney injury",
+          "cardiorenal/hemodynamic factors",
+          "rejection-related injury"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

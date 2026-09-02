@@ -3,7 +3,8 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 type SourceReference = { citation?: string; verified: boolean; verificationScope?: string };
-type Suggestion = { conditionId: string; rank: number; prevalence: string; pathwayIntelligence?: unknown; sourceReferences: SourceReference[] };
+type Suggestion = { conditionId: string; rank: number; nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined; pathwayIntelligence?: unknown; sourceReferences: SourceReference[] };
 type Mapping = { draft: boolean; suggestions: Suggestion[] };
 type RelationshipRecord = { relationshipId: string; primaryPublicationState: string; rank: number; publicationGuard: { structuredGuardText: string } };
 type RelationshipRegistry = { baselineCommit: string; currentState: string; relationships: RelationshipRecord[] };
@@ -62,7 +63,7 @@ describe("Mapping Expansion ME-14 local implementation", () => {
       const hits = mapping.suggestions.filter((s: Suggestion) => s.conditionId === row.targetId);
       expect(hits).toHaveLength(1);
       expect(hits[0]!.rank).toBe(1);
-      expect(hits[0]!.prevalence).toBe("sometimes-explored");
+      expect(hits[0]!.nexusClaim?.nexusClassification).toBeDefined(); expect(hits[0]!.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(hits[0]!.pathwayIntelligence).toBeUndefined();
       const refs = hits[0]!.sourceReferences.filter((r: SourceReference) => r.citation?.includes(`PMID ${row.pmid}`));
       expect(refs).toHaveLength(1);
@@ -74,10 +75,10 @@ describe("Mapping Expansion ME-14 local implementation", () => {
   it("preserves five publication-state-preserved relationships and records five verified active sources with exact guards", () => {
     const rel = load<RelationshipRegistry>(path.join(ROOT, "data", "evidence", "master-relationships.json"));
     const src = load<SourceRegistry>(path.join(ROOT, "data", "evidence", "master-sources.json"));
-    expect(rel.baselineCommit).toBe("518524024a8cafeaaca9ebc452138123f816872c");
-    expect(rel.currentState).toBe("ME14-CITATION-VERIFIED");
-    expect(src.baselineCommit).toBe("518524024a8cafeaaca9ebc452138123f816872c");
-    expect(src.currentState).toBe("ME14-CITATION-VERIFIED");
+    expect(rel.baselineCommit).toBe("13812063f0408ea1cf3235370836a0ac867767ce");
+    expect(rel.currentState).toBe("ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(src.baselineCommit).toBe("13812063f0408ea1cf3235370836a0ac867767ce");
+    expect(src.currentState).toBe("ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
     for (const row of rows) {
       const rr = rel.relationships.filter((r: RelationshipRecord) => r.relationshipId === `rel-${row.primaryId}-to-${row.targetId}`);
       expect(rr).toHaveLength(1);
@@ -95,13 +96,13 @@ describe("Mapping Expansion ME-14 local implementation", () => {
     const maps = fs.readdirSync(path.join(ROOT, "data", "knowledge-base")).filter((f) => f.endsWith(".json")).map((f) => load<Mapping>(path.join(ROOT, "data", "knowledge-base", f)));
     const refs = maps.flatMap((m: Mapping) => m.suggestions.flatMap((s: Suggestion) => s.sourceReferences || []));
     const clinical = refs.filter((r: SourceReference) => r.verificationScope === "clinical-evidence");
-    expect(maps.reduce((n: number, m: Mapping) => n + m.suggestions.length, 0)).toBe(243);
+    expect(maps.reduce((n: number, m: Mapping) => n + m.suggestions.length, 0)).toBe(263);
     expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length === 1)).toHaveLength(66);
     expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length >= 2)).toHaveLength(73);
-    expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(16);
-    expect(refs).toHaveLength(251);
-    expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(251);
-    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(0);
-    expect(clinical).toHaveLength(246);
+    expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(34);
+    expect(refs).toHaveLength(271);
+    expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(256);
+    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(15);
+    expect(clinical).toHaveLength(266);
   });
 });

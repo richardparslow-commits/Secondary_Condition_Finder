@@ -6,7 +6,6 @@
     {
       "conditionId": "depressive-disorder",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Systematic-review evidence describes substantial psychological burden in trigeminal neuralgia, including higher risks or prevalence of depressive symptoms/disorders, and some included evidence reports psychological improvement after successful trigeminal-neuralgia treatment. This supports focused association, chronology, pain-burden, functional-impact, and treatment-response research, but it does not establish a directional trigeminal-neuralgia-to-depressive-disorder causal pathway in an individual. Pre-existing psychiatric illness, other pain and sleep disorders, medication effects, substance use, and psychosocial contributors remain important.",
       "evidenceGaps": [
         "Neurology or pain records confirming trigeminal neuralgia phenotype, duration, attack burden, and treatment response",
@@ -25,7 +24,27 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40355578; abstract: 11 included studies; conclusion reports higher risks of sleep, depressive, and anxiety disorders in trigeminal neuralgia"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Systematic-review evidence describes substantial psychological burden in trigeminal neuralgia, including higher risks or prevalence of depressive symptoms/disorders, and some included evidence reports psychological improvement after successful trigeminal-neuralgia treatment. This supports focused association, chronology, pain-burden, functional-impact, and treatment-response research, but it does not establish a directional trigeminal-neuralgia-to-depressive-disorder causal pathway in an individual. Pre-existing psychiatric illness, other pain and sleep disorders, medication effects, substance use, and psychosocial contributors remain important.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Systematic-review evidence describes substantial psychological burden in trigeminal neuralgia, including higher risks or prevalence of depressive symptoms/disorders, and some included evidence reports psychological improvement after successful trigeminal-neuralgia treatment. This supports focused association, chronology, pain-burden, functional-impact, and treatment-response research, but it does not establish a directional trigeminal-neuralgia-to-depressive-disorder causal pathway in an individual. Pre-existing psychiatric illness, other pain and sleep disorders, medication effects, substance use, and psychosocial contributors remain important.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Systematic-review evidence describes substantial psychological burden in trigeminal neuralgia, including higher risks or prevalence of depressive symptoms/disorders, and some included evidence reports psychological improvement after successful trigeminal-neuralgia treatment. This supports focused association, chronology, pain-burden, functional-impact, and treatment-response research, but it does not establish a directional trigeminal-neuralgia-to-depressive-disorder causal pathway in an individual. Pre-existing psychiatric illness, other pain and sleep disorders, medication effects, substance use, and psychosocial contributors remain important. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Neurology or pain records confirming trigeminal neuralgia phenotype, duration, attack burden, and treatment response; Qualified depressive-disorder diagnosis and chronology relative to trigeminal-neuralgia onset and worsening; Documentation of pain-related functional, sleep, eating, social, and occupational effects; Assessment of pre-existing psychiatric illness, other pain disorders, medications, substance use, sleep disorders, and psychosocial contributors; Qualified mental-health or neurologic assessment distinguishing population-level association from individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

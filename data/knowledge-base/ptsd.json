@@ -1,87 +1,144 @@
 {
-  "id": "ptsd",
-  "draft": false,
-  "suggestions": [
-    {
-      "conditionId": "sleep-apnea",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
-      "evidenceGaps": [
-        "Sleep study (polysomnography or qualifying home sleep test) confirming OSA diagnosis",
-        "Medical nexus opinion addressing PTSD, treatment/medications, obesity if applicable, and causation or aggravation",
-        "If relying on obesity as an intermediate step, evidence addressing baseline weight, change in weight, and the medical relationship to OSA"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Zhang et al., Sleep Medicine (2017), PMID 28735910",
-          "note": "Meta-analysis found OSA is commonly seen in patients with PTSD; this supports association/comorbidity, not individual causation.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28735910/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 28735910"
-        }
-      ]
-    },
-    {
-      "conditionId": "migraine-headaches",
-      "rank": 2,
-      "prevalence": "commonly-explored",
-      "rationale": "PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
-      "evidenceGaps": [
-        "Headache log (frequency, duration, severity)",
-        "Neurological or medical nexus opinion addressing causation or aggravation in the individual case"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Nitsche et al., Headache (2026), PMID 41705319",
-          "note": "Systematic review found a positive association between PTSD and migraine across included studies; it does not establish individual-level causation.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41705319/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 41705319"
-        }
-      ]
-    },
-    {
-      "conditionId": "erectile-dysfunction",
-      "rank": 3,
-      "prevalence": "sometimes-explored",
-      "rationale": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. A medication-related secondary theory remains case-specific: the record must establish that the relevant SSRI was actually prescribed for PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed.",
-      "pathwayIntelligence": {
-        "pathways": [
-          "medication-related"
-        ],
-        "causalChain": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction causation or aggravation.",
-        "developmentQuestions": [
-          "Was the relevant SSRI prescribed for the service-connected PTSD?",
-          "Is erectile dysfunction currently diagnosed, and how does its onset or worsening relate temporally to the medication exposure?",
-          "Does the clinician consider the medication a plausible cause or aggravating factor in this individual case?",
-          "Which alternative causes of erectile dysfunction should be addressed?"
-        ],
-        "issuesToResolve": [
-          "A recognized medication association does not establish that the medication caused this Veteran's condition.",
-          "The medication indication, exposure timing, current diagnosis, and alternative causes all need individual evidence."
-        ]
+   "id": "ptsd",
+   "draft": false,
+   "suggestions": [
+      {
+         "conditionId": "sleep-apnea",
+         "rank": 1,
+         "rationale": "PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
+         "evidenceGaps": [
+            "Sleep study (polysomnography or qualifying home sleep test) confirming OSA diagnosis",
+            "Medical nexus opinion addressing PTSD, treatment/medications, obesity if applicable, and causation or aggravation",
+            "If relying on obesity as an intermediate step, evidence addressing baseline weight, change in weight, and the medical relationship to OSA"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Zhang et al., Sleep Medicine (2017), PMID 28735910",
+               "note": "Meta-analysis found OSA is commonly seen in patients with PTSD; this supports association/comorbidity, not individual causation.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28735910/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-19",
+               "sourceLocator": "PMID 28735910"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "ASSOCIATION_ONLY",
+            "associationBasis": "The published knowledge base includes this relationship as an association: PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
+            "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+            "primaryVector": "PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
+            "hypothesizedOnly": true
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "NOT_ESTABLISHED",
+            "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+            "conservativeRationale": "This relationship is supported as an association only. PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+            "evidenceGaps": "Sleep study (polysomnography or qualifying home sleep test) confirming OSA diagnosis; Medical nexus opinion addressing PTSD, treatment/medications, obesity if applicable, and causation or aggravation; If relying on obesity as an intermediate step, evidence addressing baseline weight, change in weight, and the medical relationship to OSA",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
       },
-      "evidenceGaps": [
-        "Prescription records showing the relevant SSRI exposure and timing",
-        "Urology or primary care diagnosis of erectile dysfunction",
-        "Medical opinion addressing medication exposure, alternative causes, and causation or aggravation"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Corona G, Ricca V, Bandini E, et al. Selective serotonin reuptake inhibitor-induced sexual dysfunction. J Sex Med. 2009;6(5):1259-1269. PMID 19473282",
-          "note": "Cross-sectional study of 2,040 men with sexual dysfunction found SSRI use associated with greater impairment of reported erectile function and broader male sexual-response effects; penile blood flow did not differ. Supports an SSRI-exposure association signal, not automatic individual causation.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19473282/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 19473282; abstract; 2,040 men; SSRI use associated with higher impairment of reported erectile function, without a difference in penile blood flow"
-        }
-      ]
-    }
-  ]
+      {
+         "conditionId": "migraine-headaches",
+         "rank": 2,
+         "rationale": "PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
+         "evidenceGaps": [
+            "Headache log (frequency, duration, severity)",
+            "Neurological or medical nexus opinion addressing causation or aggravation in the individual case"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Nitsche et al., Headache (2026), PMID 41705319",
+               "note": "Systematic review found a positive association between PTSD and migraine across included studies; it does not establish individual-level causation.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41705319/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-19",
+               "sourceLocator": "PMID 41705319"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "ASSOCIATION_ONLY",
+            "associationBasis": "The published knowledge base includes this relationship as an association: PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
+            "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+            "primaryVector": "PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
+            "hypothesizedOnly": true
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "NOT_ESTABLISHED",
+            "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+            "conservativeRationale": "This relationship is supported as an association only. PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+            "evidenceGaps": "Headache log (frequency, duration, severity); Neurological or medical nexus opinion addressing causation or aggravation in the individual case",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
+      },
+      {
+         "conditionId": "erectile-dysfunction",
+         "rank": 3,
+         "rationale": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. A medication-related secondary theory remains case-specific: the record must establish that the relevant SSRI was actually prescribed for PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed.",
+         "pathwayIntelligence": {
+            "pathways": [
+               "medication-related"
+            ],
+            "causalChain": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction causation or aggravation.",
+            "developmentQuestions": [
+               "Was the relevant SSRI prescribed for the service-connected PTSD?",
+               "Is erectile dysfunction currently diagnosed, and how does its onset or worsening relate temporally to the medication exposure?",
+               "Does the clinician consider the medication a plausible cause or aggravating factor in this individual case?",
+               "Which alternative causes of erectile dysfunction should be addressed?"
+            ],
+            "issuesToResolve": [
+               "A recognized medication association does not establish that the medication caused this Veteran's condition.",
+               "The medication indication, exposure timing, current diagnosis, and alternative causes all need individual evidence."
+            ]
+         },
+         "evidenceGaps": [
+            "Prescription records showing the relevant SSRI exposure and timing",
+            "Urology or primary care diagnosis of erectile dysfunction",
+            "Medical opinion addressing medication exposure, alternative causes, and causation or aggravation"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Corona G, Ricca V, Bandini E, et al. Selective serotonin reuptake inhibitor-induced sexual dysfunction. J Sex Med. 2009;6(5):1259-1269. PMID 19473282",
+               "note": "Cross-sectional study of 2,040 men with sexual dysfunction found SSRI use associated with greater impairment of reported erectile function and broader male sexual-response effects; penile blood flow did not differ. Supports an SSRI-exposure association signal, not automatic individual causation.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19473282/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-19",
+               "sourceLocator": "PMID 19473282; abstract; 2,040 men; SSRI use associated with higher impairment of reported erectile function, without a difference in penile blood flow"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "AGGRAVATION",
+            "baselineProgression": "The natural, non-service-connected baseline of the secondary condition must be established from the individual's records before any aggravation claim; the service-connected primary may then be evaluated for exacerbation beyond that baseline. PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction causation or aggravation.",
+            "aggravatingFactor": "The aggravating force is the biomechanical or systemic impact of the service-connected primary condition acting on the established baseline"
+         },
+         "causalMechanism": {
+            "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+            "primaryVector": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction causation or aggravation.",
+            "hypothesizedOnly": false
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "PROBABLE",
+            "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+            "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction causation or aggravation.",
+            "evidenceGaps": "Prescription records showing the relevant SSRI exposure and timing; Urology or primary care diagnosis of erectile dysfunction; Medical opinion addressing medication exposure, alternative causes, and causation or aggravation",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
+      }
+   ]
 }

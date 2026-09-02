@@ -6,7 +6,6 @@
     {
       "conditionId": "fecal-incontinence",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Sphincter-cutting treatment for anal fistula, particularly fistulotomy and related procedures that divide continence muscle, can cause postoperative continence impairment. A systematic review of simple fistula-in-ano reported postoperative continence impairment after sphincter-cutting procedures and emphasized that the underlying study quality was generally low. This supports a treatment-complication pathway only when the individual underwent a documented sphincter-involving fistula procedure and fecal incontinence began or materially worsened afterward; anal fistula by itself, and sphincter-sparing treatment without a compatible complication, should not be treated as sufficient evidence of causation.",
       "pathwayIntelligence": {
         "pathways": [
@@ -42,7 +41,26 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 33387100; abstract: 66 eligible studies; 4,883 sphincter-cutting procedures, mainly fistulotomy; postoperative continence impairment 12.7%; study quality generally low"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Anal fistula → documented sphincter-cutting or sphincter-involving treatment, if performed → postoperative sphincter/continence impairment → clinically confirmed fecal incontinence."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Anal fistula → documented sphincter-cutting or sphincter-involving treatment, if performed → postoperative sphincter/continence impairment → clinically confirmed fecal incontinence.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Anal fistula → documented sphincter-cutting or sphincter-involving treatment, if performed → postoperative sphincter/continence impairment → clinically confirmed fecal incontinence.",
+        "evidenceGaps": "Operative reports identifying fistula anatomy and the exact treatment performed; Baseline and postoperative continence history; Anorectal examination and sphincter imaging/function testing when clinically indicated; Documentation of postoperative onset or worsening and subsequent treatment course; Colorectal opinion addressing procedure-related sphincter injury and competing causes of fecal incontinence",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

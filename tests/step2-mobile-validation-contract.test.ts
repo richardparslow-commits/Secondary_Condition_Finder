@@ -12,7 +12,7 @@ function source(relativePath: string): string {
 describe("Step 2 mobile validation ownership", () => {
   it("lets the application validator handle incomplete radio groups", () => {
     const page = source("src/app/secondary/service-connected/page.tsx");
-    const actions = source("src/app/secondary/actions.ts");
+    const actions = source("src/lib/actions/secondary.ts");
 
     expect(page).toContain("serviceConnected-${condition.id}");
     expect(page).not.toMatch(/value="yes"\s+required/);

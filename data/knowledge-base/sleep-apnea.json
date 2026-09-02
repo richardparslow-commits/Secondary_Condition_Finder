@@ -6,7 +6,6 @@
     {
       "conditionId": "hypertension",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Obstructive sleep apnea is strongly associated with hypertension, including resistant hypertension, and current systematic-review evidence describes intermittent hypoxia, sympathetic activation, oxidative stress, inflammation, and related mechanisms as contributors to the OSA-hypertension relationship. This supports condition-specific clinical research of the relationship, but it does not by itself establish that OSA caused or aggravated hypertension in an individual veteran; chronology, OSA severity, blood-pressure phenotype, treatment response, and competing hypertension causes still require case-specific review.",
       "evidenceGaps": [
         "Sleep study confirming obstructive sleep apnea and documenting severity, oxygen desaturation burden, and treatment history",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40364148"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Obstructive sleep apnea is strongly associated with hypertension, including resistant hypertension, and current systematic-review evidence describes intermittent hypoxia, sympathetic activation, oxidative stress, inflammation, and related mechanisms as contributors to the OSA-hypertension relationship. This supports condition-specific clinical research of the relationship, but it does not by itself establish that OSA caused or aggravated hypertension in an individual veteran; chronology, OSA severity, blood-pressure phenotype, treatment response, and competing hypertension causes still require case-specific review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Obstructive sleep apnea is strongly associated with hypertension, including resistant hypertension, and current systematic-review evidence describes intermittent hypoxia, sympathetic activation, oxidative stress, inflammation, and related mechanisms as contributors to the OSA-hypertension relationship. This supports condition-specific clinical research of the relationship, but it does not by itself establish that OSA caused or aggravated hypertension in an individual veteran; chronology, OSA severity, blood-pressure phenotype, treatment response, and competing hypertension causes still require case-specific review.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Obstructive sleep apnea is strongly associated with hypertension, including resistant hypertension, and current systematic-review evidence describes intermittent hypoxia, sympathetic activation, oxidative stress, inflammation, and related mechanisms as contributors to the OSA-hypertension relationship. This supports condition-specific clinical research of the relationship, but it does not by itself establish that OSA caused or aggravated hypertension in an individual veteran; chronology, OSA severity, blood-pressure phenotype, treatment response, and competing hypertension causes still require case-specific review. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Sleep study confirming obstructive sleep apnea and documenting severity, oxygen desaturation burden, and treatment history; Longitudinal blood-pressure records establishing the hypertension phenotype and chronology relative to OSA onset, severity, and treatment; Assessment of competing hypertension contributors such as obesity, kidney disease, endocrine disease, medications, alcohol use, and family history; Sleep-medicine, primary-care, or cardiovascular opinion addressing whether the documented OSA materially caused or aggravated hypertension in the individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "depressive-disorder",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so this association should not be converted into an automatic individual causal or aggravation nexus; psychiatric history, sleep-apnea chronology, symptom overlap, treatment response, and alternative contributors remain important.",
       "evidenceGaps": [
         "Qualified diagnosis of a depressive disorder and documentation distinguishing persistent psychiatric symptoms from sleepiness, fatigue, and concentration symptoms attributable to OSA",
@@ -47,12 +65,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 38888794"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "AGGRAVATION",
+        "baselineProgression": "The natural, non-service-connected baseline of the secondary condition must be established from the individual's records before any aggravation claim; the service-connected primary may then be evaluated for exacerbation beyond that baseline. Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so this association should not be converted into an automatic individual causal or aggravation nexus; psychiatric history, sleep-",
+        "aggravatingFactor": "The aggravating force is the biomechanical or systemic impact of the service-connected primary condition acting on the established baseline"
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so this association should not be converted into an automatic individual causal or aggravation nexus; psychiatric history, sleep-apnea chronology, symptom overlap, treatment response, and alternative contributors remain important.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so this association should not be converted into an automatic individual causal or aggravation nexus; psychiatric history, sleep-apnea chronology, symptom overlap, treatment response, and alternative contributors remain important.",
+        "evidenceGaps": "Qualified diagnosis of a depressive disorder and documentation distinguishing persistent psychiatric symptoms from sleepiness, fatigue, and concentration symptoms attributable to OSA; Chronology comparing depressive-symptom onset or worsening with OSA onset, severity, and treatment; Evaluation of competing psychiatric, medical, medication, substance-use, psychosocial, and sleep-related contributors; Qualified mental-health or sleep-medicine opinion addressing the individual relationship when secondary causation or aggravation is asserted",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "anxiety-disorder",
       "rank": 3,
-      "prevalence": "sometimes-explored",
       "rationale": "Anxiety symptoms are commonly reported in adults with obstructive sleep apnea, but systematic-review evidence characterizes the OSA-anxiety relationship as probably bidirectional rather than proving that OSA causes an anxiety disorder. The relationship should therefore remain association-focused and require individual diagnostic, chronological, and competing-cause evidence before any secondary-service-connection theory is advanced.",
       "evidenceGaps": [
         "Qualified anxiety-disorder diagnosis rather than symptom screening alone",
@@ -70,7 +107,26 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 30453780"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Anxiety symptoms are commonly reported in adults with obstructive sleep apnea, but systematic-review evidence characterizes the OSA-anxiety relationship as probably bidirectional rather than proving that OSA causes an anxiety disorder. The relationship should therefore remain association-focused and require individual diagnostic, chronological, and competing-cause evidence before any secondary-service-connection theory is advanced."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Anxiety symptoms are commonly reported in adults with obstructive sleep apnea, but systematic-review evidence characterizes the OSA-anxiety relationship as probably bidirectional rather than proving that OSA causes an anxiety disorder. The relationship should therefore remain association-focused and require individual diagnostic, chronological, and competing-cause evidence before any secondary-service-connection theory is advanced.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Anxiety symptoms are commonly reported in adults with obstructive sleep apnea, but systematic-review evidence characterizes the OSA-anxiety relationship as probably bidirectional rather than proving that OSA causes an anxiety disorder. The relationship should therefore remain association-focused and require individual diagnostic, chronological, and competing-cause evidence before any secondary-service-connection theory is advanced.",
+        "evidenceGaps": "Qualified anxiety-disorder diagnosis rather than symptom screening alone; Chronology comparing anxiety onset or worsening with OSA onset, severity, sleep fragmentation, and treatment; Evaluation of psychiatric history, medications, substance use, psychosocial stressors, other sleep disorders, and other competing contributors; Qualified mental-health or sleep-medicine opinion addressing directionality and any claimed individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

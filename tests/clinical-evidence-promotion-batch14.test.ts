@@ -34,15 +34,15 @@ describe("clinical evidence promotion batch 14", () => {
     expect(mapping?.draft).toBe(false);
     expect(mapping?.todo).toEqual([]);
     expect(
-      mapping?.suggestions.map(({ conditionId, rank, prevalence }) => ({
+      mapping?.suggestions.map(({ conditionId, rank, evidentiaryProfile }) => ({
         conditionId,
         rank,
-        prevalence,
+        etiologicalConsensus: evidentiaryProfile.etiologicalConsensus,
       })),
     ).toEqual([
-      { conditionId: "hypertension", rank: 1, prevalence: "commonly-explored" },
-      { conditionId: "depressive-disorder", rank: 2, prevalence: "sometimes-explored" },
-      { conditionId: "anxiety-disorder", rank: 3, prevalence: "sometimes-explored" },
+      { conditionId: "hypertension", rank: 1, etiologicalConsensus: "NOT_ESTABLISHED" },
+      { conditionId: "depressive-disorder", rank: 2, etiologicalConsensus: "PROBABLE" },
+      { conditionId: "anxiety-disorder", rank: 3, etiologicalConsensus: "PROBABLE" },
     ]);
 
     for (const suggestion of mapping?.suggestions ?? []) {

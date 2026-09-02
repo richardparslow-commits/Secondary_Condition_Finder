@@ -6,7 +6,7 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { readSecondaryWorkflowSession } from "@/lib/secondary-workflow/session";
 import { secondaryValidationMessage } from "@/lib/secondary-workflow/validation";
-import { saveServiceConnectedSelection } from "../actions";
+import { saveServiceConnectedSelection } from "@/lib/actions/secondary";
 
 interface ServiceConnectedPageProps {
   searchParams?: Promise<{ error?: string | string[] }>;

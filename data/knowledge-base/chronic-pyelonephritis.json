@@ -6,7 +6,6 @@
     {
       "conditionId": "chronic-kidney-disease",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Radiologically proven chronic pyelonephritis is heterogeneous: many adults with preserved renal function remain stable, while patients with bilateral scarring, proteinuria, hypertension, or impaired renal function represent higher-risk phenotypes in whom chronic renal damage and progression should be evaluated. A chronic-kidney-disease relationship should therefore be considered only when longitudinal renal-function loss or structural renal damage is documented and competing renal causes are addressed.",
       "pathwayIntelligence": {
         "pathways": [
@@ -40,12 +39,30 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 11110586; abstract; 255 radiologically proven cases with median follow-up about 95 months"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented chronic pyelonephritis with renal scarring or persistent parenchymal damage → sustained loss of functioning renal tissue or renal impairment → claimed chronic kidney disease."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Documented chronic pyelonephritis with renal scarring or persistent parenchymal damage → sustained loss of functioning renal tissue or renal impairment → claimed chronic kidney disease.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Documented chronic pyelonephritis with renal scarring or persistent parenchymal damage → sustained loss of functioning renal tissue or renal impairment → claimed chronic kidney disease.",
+        "evidenceGaps": "Imaging or nephrology records documenting chronic pyelonephritic scarring or persistent parenchymal damage; Serial creatinine/eGFR, urinalysis or proteinuria measurements, and blood-pressure history showing chronic renal impairment; Medical opinion addressing competing CKD etiologies and whether the documented pyelonephritic damage caused or aggravated renal-function loss",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "hypertension",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-specific risk evidence rather than proof that reflux nephropathy caused hypertension in an individual. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of chronic-pyelonephritis and hypertension",
@@ -64,7 +81,32 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 12411757; approved ME-6 proposition; guard: Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-specific risk evidence rather than proof that reflux nephropathy caused hypertension in an individual. Preserve primary hypertension, diabetes, chronic kidney disease from other causes, renal-artery disease, endocrine causes, medications, and other contributors."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-specific risk evidence rather than proof that reflux nephropathy caused hypertension in an individual.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-specific risk evidence rather than proof that reflux nephropathy caused hypertension in an individual.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-specific risk evidence rather than proof that reflux nephropathy caused hypertension in an individual. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of chronic-pyelonephritis and hypertension; Documentation satisfying the approved phenotype restriction: reflux-nephropathy / pyelonephritic renal-scarring phenotype; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented chronic pyelonephritis only in the presence of objectively established vesicoureteral reflux/reflux nephropathy with renal parenchymal scarring, and require separately established hypertension. Do not generalize this source to chronic pyelonephritis, recurrent urinary infection, or renal scarring without documented reflux nephropathy. Treat the cohort as phenotype-speci",
+        "alternativeEtiologiesToRuleOut": [
+          "primary hypertension",
+          "diabetes",
+          "chronic kidney disease from other causes",
+          "renal-artery disease",
+          "endocrine causes",
+          "medications"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

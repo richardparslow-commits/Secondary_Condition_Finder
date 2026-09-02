@@ -5,5 +5,53 @@
     "Review future secondary suggestions only after adding condition-specific clinical sources.",
     "Batch 18 removes the earlier three suggestions because their attached references were legal or rating sources rather than clinical evidence for those relationships."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "agoraphobia",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found panic disorder commonly co-occurs with agoraphobia in a minority of lifetime panic disorder cases, with the combination marking the most severe presentations; the approved relationship is limited to population-level co-occurrence risk and does not assert that panic disorder inevitably progresses to agoraphobia. Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime panic disorder cases did not carry agoraphobia; do not present co-occurrence as inevitable progression. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Treat this only as population-level co-occurrence risk, not proof that panic disorder caused an individual's agoraphobia. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of panic-disorder and agoraphobia",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-co-occurrence-risk",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime panic disorder cases did not carry agoraphobia; do not present co-occurrence as inevitable progression. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Treat this only as population-level co-occurrence risk, not proof that panic disorder caused an individual's agoraphobia."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Kessler RC, Chiu WT, Jin R, Ruscio AM, Shear K, Walters EE. The epidemiology of panic attacks, panic disorder, and agoraphobia in the National Comorbidity Survey Replication. Arch Gen Psychiatry. 2006;63(4):415-424. PMID 16585471. doi:10.1001/archpsyc.63.4.415.",
+          "note": "Mapping Expansion Batch ME-15 evidence for the bounded panic-disorder to agoraphobia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16585471/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-01",
+          "sourceLocator": "PMID 16585471; approved ME-15 source; guard: Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime panic disorder cases did not carry agoraphobia; do not present co-occurrence as inevitable progression. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Treat this only as population-level co-occurrence risk, not proof that panic disorder caused an individual's agoraphobia."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found panic disorder commonly co-occurs with agoraphobia in a minority of lifetime panic disorder cases, with the combination marking the most severe presentations; the approved relationship is limited to population-level co-occurrence risk and does not assert that panic disorder inevitably progresses to agoraphobia. Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime panic disorder cases did not carry agoraphobia; do not present co-occurrence as inevitable progression.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found panic disorder commonly co-occurs with agoraphobia in a minority of lifetime panic disorder cases, with the combination marking the most severe presentations; the approved relationship is limited to population-level co-occurrence risk and does not assert that panic disorder inevitably progresses to agoraphobia. Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime panic disorder cases did not carry agoraphobia; do not pres",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found panic disorder commonly co-occurs with agoraphobia in a minority of lifetime panic disorder cases, with the combination marking the most severe presentations; the approved relationship is limited to population-level co-occurrence risk and does not assert that panic disorder inevitably progresses to agoraphobia. Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime pani",
+        "evidenceGaps": "Independent documentation of panic-disorder and agoraphobia; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: population-level-co-occurrence-risk; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime panic disorder cases did not carry agoraphobia; do not present co-occurrence as inevitable progression. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episod",
+        "alternativeEtiologiesToRuleOut": [
+          "other anxiety disorders",
+          "depressive disorders",
+          "substance use",
+          "medical causes of episodic symptoms",
+          "avoidance attributable to other conditions as competing explanations"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

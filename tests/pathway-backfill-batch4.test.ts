@@ -95,7 +95,7 @@ describe("controlled pathway backfill batch 4", () => {
       expect(mapping?.suggestions).toHaveLength(1);
       expect(mapping?.suggestions[0]?.conditionId).toBe("depressive-disorder");
       expect(mapping?.suggestions[0]?.rank).toBe(1);
-      expect(mapping?.suggestions[0]?.prevalence).toBe("commonly-explored");
+      expect(mapping?.suggestions[0]?.evidentiaryProfile?.etiologicalConsensus).toBe("NOT_ESTABLISHED");
       expect(mapping?.suggestions.some((entry) => entry.conditionId === "gerd")).toBe(false);
     }
   });

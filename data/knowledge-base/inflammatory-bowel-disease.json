@@ -6,7 +6,6 @@
     {
       "conditionId": "colorectal-cancer",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established Crohn's disease/ulcerative colitis with subsequent colorectal cancer; account for disease duration, extent, inflammation, dysplasia, PSC, family history, and surveillance. Direct observational-study meta-analysis supports increased colorectal-cancer risk in IBD populations; it does not prove an individual tumor was caused by IBD. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Inflammatory Bowel Disease (Crohn's Disease, Ulcerative Colitis) and Colon / Rectal Cancer",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 33433655; replacement source independently confirmed in PubMed before repository edits; guard: Require established Crohn's disease/ulcerative colitis with subsequent colorectal cancer; account for disease duration, extent, inflammation, dysplasia, PSC, family history, and surveillance.; supersedes unverified PMID 33385426."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established Crohn's disease/ulcerative colitis with subsequent colorectal cancer; account for disease duration, extent, inflammation, dysplasia, PSC, family history, and surveillance. Direct observational-study meta-analysis supports increased colorectal-cancer risk in IBD populations; it does not prove an individual tumor was caused by IBD. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established Crohn's disease/ulcerative colitis with subsequent colorectal cancer; account for disease duration, extent, inflammation, dysplasia, PSC, family history, and surveillance. Direct observational-study meta-analysis supports increased colorectal-cancer risk in IBD populations; it does not prove an individual tumor was caused by IBD. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established Crohn's disease/ulcerative colitis with subsequent colorectal cancer; account for disease duration, extent, inflammation, dysplasia, PSC, family history, and surveillance. Direct observational-study meta-analysis supports increased colorectal-cancer risk in IBD populations; it does not prove an individual tumor was caused by IBD. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Inflammatory Bowel Disease (Crohn's Disease, Ulcerative Colitis) and Colon / Rectal Cancer; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "anemia",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented Crohn disease, ulcerative colitis, or otherwise clinically established inflammatory bowel disease and separately documented anemia. Where anemia is attributed to IBD, require clinical evidence supporting an IBD-related mechanism such as chronic gastrointestinal blood loss/iron deficiency, inflammatory anemia, malabsorption, or another established IBD-related pathway. Do not assume every anemia in a person with IBD is caused by IBD. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of inflammatory-bowel-disease and anemia",
@@ -47,7 +65,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 39954228; qualified-human-approved Mapping Expansion Batch ME-1 Citation Verification; guard: Require documented Crohn disease, ulcerative colitis, or otherwise clinically established inflammatory bowel disease and separately documented anemia. Where anemia is attributed to IBD, require clinical evidence supporting an IBD-related mechanism such as chronic gastrointestinal blood loss/iron deficiency, inflammatory anemia, malabsorption, or another established IBD-related pathway. Do not assume every anemia in a person with IBD is caused by IBD."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented Crohn disease, ulcerative colitis, or otherwise clinically established inflammatory bowel disease and separately documented anemia. Where anemia is attributed to IBD, require clinical evidence supporting an IBD-related mechanism such as chronic gastrointestinal blood loss/iron deficiency, inflammatory anemia, malabsorption, or another established IBD-related pathway. Do not assume every anemia in a person with IBD is caused by IBD. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented Crohn disease, ulcerative colitis, or otherwise clinically established inflammatory bowel disease and separately documented anemia. Where anemia is attributed to IBD, require clinical evidence supporting an IBD-related mechanism such as chronic gastrointestinal blood loss/iron deficiency, inflammatory anemia, malabsorption, or another established IBD-related pathway. Do not assume every anemia in a person with IBD is caused by IBD. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-1 adds this relationship only as a bounded clinical proposition. Require documented Crohn disease, ulcerative colitis, or otherwise clinically established inflammatory bowel disease and separately documented anemia. Where anemia is attributed to IBD, require clinical evidence supporting an IBD-related mechanism such as chronic gastrointestinal blood loss/iron deficiency, inflammatory anemia, malabsorption, or another established IBD-related pathway. Do not assume every anemia in a person with IBD is caused by IBD. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondar",
+        "evidenceGaps": "Independent documentation of inflammatory-bowel-disease and anemia; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented Crohn disease, ulcerative colitis, or otherwise clinically established inflammatory bowel disease and separately documented anemia. Where anemia is attributed to IBD, require clinical evidence supporting an IBD-related mechanism such as chronic gastrointestinal blood loss/iron deficiency, inflammatory anemia, malabsorption, or another established IBD-related pathway. Do not assume every anemia in a person with IBD is caused by IBD.",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

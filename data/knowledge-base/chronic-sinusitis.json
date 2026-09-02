@@ -6,7 +6,6 @@
     {
       "conditionId": "sleep-apnea",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Recent systematic-review and meta-analytic evidence supports an association between chronic rhinosinusitis and obstructive sleep apnea, including a modest higher OSA risk among CRS patients. Although Mendelian-randomization results in the same study support a directional CRS-to-OSA signal, this repository does not translate population-level or genetic evidence into an automatic individual causal nexus. The relationship remains association-focused and requires confirmed CRS and OSA diagnoses, chronology, sinonasal phenotype/severity, body-habitus and upper-airway factors, medication context, and competing OSA causes.",
       "evidenceGaps": [
         "ENT documentation confirming chronic rhinosinusitis phenotype, duration, objective findings, and severity",
@@ -25,7 +24,26 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 41969980; abstract Methods/Results/Conclusion: 14 studies, 30,509 participants; OSA prevalence 20% in CRS, observational OR 1.14 and MR IVW OR 1.11"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Recent systematic-review and meta-analytic evidence supports an association between chronic rhinosinusitis and obstructive sleep apnea, including a modest higher OSA risk among CRS patients. Although Mendelian-randomization results in the same study support a directional CRS-to-OSA signal, this repository does not translate population-level or genetic evidence into an automatic individual causal nexus. The relationship remains association-focused and requires confirmed CRS and OSA diagnoses, chronology, sinonasal phenotype/severity, body-habitus and upper-airway factors, medication context, and competing OSA causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Recent systematic-review and meta-analytic evidence supports an association between chronic rhinosinusitis and obstructive sleep apnea, including a modest higher OSA risk among CRS patients. Although Mendelian-randomization results in the same study support a directional CRS-to-OSA signal, this repository does not translate population-level or genetic evidence into an automatic individual causal nexus. The relationship remains association-focused and requires confirmed CRS and OSA diagnoses, chronology, sinonasal phenotype/severity, body-habitus and upper-airway factors, medication context, and competing OSA causes.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Recent systematic-review and meta-analytic evidence supports an association between chronic rhinosinusitis and obstructive sleep apnea, including a modest higher OSA risk among CRS patients. Although Mendelian-randomization results in the same study support a directional CRS-to-OSA signal, this repository does not translate population-level or genetic evidence into an automatic individual causal nexus. The relationship remains association-focused and requires confirmed CRS and OSA diagnoses, chronology, sinonasal phenotype/severity, body-habitus and upper-airway factors, medication context, and competing OSA causes.",
+        "evidenceGaps": "ENT documentation confirming chronic rhinosinusitis phenotype, duration, objective findings, and severity; Polysomnography or validated sleep-study documentation confirming OSA and severity; CRS and OSA chronology, including whether OSA findings changed with effective sinonasal treatment; BMI/weight trajectory, craniofacial or upper-airway factors, age, sedating medications, and other OSA risk factors; ENT/sleep specialist assessment distinguishing population-level association from the individual's causal or aggravation theory",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

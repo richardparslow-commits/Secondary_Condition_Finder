@@ -5,5 +5,53 @@
     "Rebuild any secondary-condition suggestions using agoraphobia-specific clinical evidence before publication.",
     "The prior sleep-apnea, GERD, and migraine suggestions were withdrawn because the medical propositions were supported only by legal/rating authorities rather than condition-specific clinical evidence."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited cross-national World Mental Health Surveys found agoraphobia commonly co-occurs with depressive and other mental disorders, with coexistence marking more severe presentations. Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not present co-occurrence as inevitable progression, and do not treat this population-level association as proof that agoraphobia caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of agoraphobia and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not present co-occurrence as inevitable progression, and do not treat this population-level association as proof that agoraphobia caused an individual's depressive disorder."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "de Jonge P, Roest AM, Lim CCW, et al. Cross-national epidemiology of panic disorder and panic attacks in the World Mental Health Surveys. Depress Anxiety. 2016;33(12):1155-1177. PMID 27775828. doi:10.1002/da.22572.",
+          "note": "Mapping Expansion Batch ME-16 evidence for the bounded agoraphobia to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27775828/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-01",
+          "sourceLocator": "PMID 27775828; approved ME-16 source; guard: Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not present co-occurrence as inevitable progression, and do not treat this population-level association as proof that agoraphobia caused an individual's depressive disorder."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited cross-national World Mental Health Surveys found agoraphobia commonly co-occurs with depressive and other mental disorders, with coexistence marking more severe presentations. Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited cross-national World Mental Health Surveys found agoraphobia commonly co-occurs with depressive and other mental disorders, with coexistence marking more severe presentations. Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited cross-national World Mental Health Surveys found agoraphobia commonly co-occurs with depressive and other mental disorders, with coexistence marking more severe presentations. Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction. It is not asserted that the primary caused or aggravated the secondary in any ",
+        "evidenceGaps": "Independent documentation of agoraphobia and depressive-disorder; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: population-level-comorbidity-association; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episod",
+        "alternativeEtiologiesToRuleOut": [
+          "other anxiety disorders",
+          "depressive disorders",
+          "substance use",
+          "medical causes of episodic symptoms",
+          "avoidance attributable to other conditions as competing explanations"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

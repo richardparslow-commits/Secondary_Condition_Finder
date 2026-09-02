@@ -1,0 +1,113 @@
+{
+  "phase": "Mapping Expansion ME-16",
+  "ledgerStatus": "APPROVED AND APPLIED LOCALLY — CITATIONS PENDING VERIFICATION",
+  "approvalDate": "2026-09-01",
+  "requiredBaselineCommit": "d6783c1652ade0b005ef0a952ba667126523e09c",
+  "previousRegistryBaselineCommit": "126bc0d0983c8b4cfd90457a7a6a68e3f7f30e97",
+  "previousRegistryCurrentState": "ME15-CITATION-VERIFIED",
+  "commitSubject": "map: mapping expansion ME-16 (5 relationships)",
+  "issueReference": "issue #360 Mapping Expansion Wave: Mental Disorders (ME-15+)",
+  "approvalRecord": "Qualified-human approval captured on 2026-09-01: all five bounded mental-disorder mappings approved, plus approve-as-implemented citation verification pre-captured at planning for all five sources.",
+  "rows": [
+    {
+      "primaryId": "bulimia-nervosa",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "21383252",
+      "doi": "10.1001/archgenpsychiatry.2011.22",
+      "sourceTitle": "Prevalence and Correlates of Eating Disorders in Adolescents: Results From the National Comorbidity Survey Replication Adolescent Supplement",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21383252/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me16-source"
+    },
+    {
+      "primaryId": "specific-phobia",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "28222820",
+      "doi": "10.1017/S0033291717000174",
+      "sourceTitle": "The cross-national epidemiology of specific phobia in the World Mental Health Surveys",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28222820/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me16-source"
+    },
+    {
+      "primaryId": "hoarding-disorder",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "24158881",
+      "doi": "10.1192/bjp.bp.113.130195",
+      "sourceTitle": "Epidemiology of hoarding disorder",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24158881/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me16-source"
+    },
+    {
+      "primaryId": "body-dysmorphic-disorder",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "16893571",
+      "doi": "10.1016/j.jad.2006.06.006",
+      "sourceTitle": "Clinical features and correlates of major depressive disorder in individuals with body dysmorphic disorder",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16893571/",
+      "claimType": "clinical-sample-comorbidity-association",
+      "sourceAction": "approved-fresh-me16-source"
+    },
+    {
+      "primaryId": "agoraphobia",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "27775828",
+      "doi": "10.1002/da.22572",
+      "sourceTitle": "Cross-national epidemiology of panic disorder and panic attacks in the World Mental Health Surveys",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27775828/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me16-source"
+    }
+  ],
+  "citationStateAfterImplementation": {
+    "kbSourceReferences": "verified:false",
+    "masterSources": "pending-verification",
+    "registryCurrentState": "ME16-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+    "qualifiedHumanCitationReviewRequired": true,
+    "automaticPromotionAuthorized": false
+  },
+  "failurePolicy": "Fail closed. If any exact baseline, publication-state proof, edge, source identity, projection, PubMed identity, validation, or freeze-guard requirement fails, stop. If any repository write has already occurred, preserve the exact dirty state; do not reset, restore, stash, or clean.",
+  "projectionNote": "ME-16 registers five draft primaries (bulimia-nervosa, specific-phobia, hoarding-disorder, body-dysmorphic-disorder, agoraphobia) all at rank 1. Four primaries move out of the never-used pool; agoraphobia moves out of the target-only pool. Registered-primary coverage advances 159 -> 164 of 311; remaining primaries partition from 38 target-only / 114 never-used to 37 target-only / 110 never-used. Publication P1/D1 counts are resolved from read-before-write publication-state proof: P1 66 / P2+ 73 unchanged; draft D1 19 -> 24.",
+  "implementationDateLocal": "2026-09-01",
+  "implementationResult": {
+    "rowsImplemented": 5,
+    "rank1Rows": 5,
+    "rank2Rows": 0,
+    "publicationStatesPreserved": {
+      "bulimia-nervosa": "draft",
+      "specific-phobia": "draft",
+      "hoarding-disorder": "draft",
+      "body-dysmorphic-disorder": "draft",
+      "agoraphobia": "draft"
+    },
+    "selectedDraftPrimaries": 5,
+    "selectedPublishedPrimaries": 0,
+    "postMatrix": [
+      311,
+      139,
+      172,
+      253,
+      66,
+      73,
+      24
+    ],
+    "kbVerifiedFalseRows": 5,
+    "masterPendingSources": 5,
+    "registeredPrimaries": 164,
+    "remainingPrimaries": 147,
+    "remainingTargetOnlyPrimaries": 37,
+    "remainingNeverUsedPrimaries": 110,
+    "citationPromotions": 0,
+    "publicationStatusChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "semanticBroadening": 0,
+    "remoteWritesPerformed": false
+  }
+}

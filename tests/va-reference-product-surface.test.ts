@@ -84,7 +84,7 @@ describe("VA reference product surfaces", () => {
   it("wires standardized service branches into encrypted intake context but not presumptive matching", () => {
     const page = source("src/app/presumptive/page.tsx");
     const form = source("src/components/ServiceHistoryForm.tsx");
-    const action = source("src/app/presumptive/actions.ts");
+    const action = source("src/lib/actions/presumptive.ts");
     const match = source("src/lib/presumptive/match.ts");
 
     expect(page).toContain("loadServiceBranchReference");

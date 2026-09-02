@@ -16,14 +16,11 @@ const read = (relativePath: string) =>
 function stripPathwayIntelligence(kb: KnowledgeBase): KnowledgeBase {
   return kb.map((mapping) => ({
     ...mapping,
-    suggestions: mapping.suggestions.map((suggestion) => ({
-      conditionId: suggestion.conditionId,
-      rank: suggestion.rank,
-      prevalence: suggestion.prevalence,
-      rationale: suggestion.rationale,
-      evidenceGaps: suggestion.evidenceGaps,
-      sourceReferences: suggestion.sourceReferences,
-    })),
+    suggestions: mapping.suggestions.map((suggestion) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { pathwayIntelligence: _dropped, ...rest } = suggestion;
+      return rest;
+    }),
   }));
 }
 
@@ -99,7 +96,7 @@ describe("Step 5 authored pathway intelligence", () => {
     expect(strippedOsa?.contributingPrimaries[0]?.pathwayIntelligence).toBeUndefined();
   });
 
-  it("does not let pathway intelligence affect recommendation order, score, or prevalence", () => {
+  it("does not let pathway intelligence affect recommendation order, score, or etiological consensus", () => {
     const catalog = loadConditionCatalog();
     const kb = loadKnowledgeBase();
     const intake = {
@@ -114,7 +111,7 @@ describe("Step 5 authored pathway intelligence", () => {
     const enriched = recommend(catalog, kb, intake).recommendations.map((item) => ({
       conditionId: item.conditionId,
       score: item.score,
-      prevalence: item.prevalence,
+      etiologicalConsensus: item.etiologicalConsensus,
     }));
     const stripped = recommend(
       catalog,
@@ -123,7 +120,7 @@ describe("Step 5 authored pathway intelligence", () => {
     ).recommendations.map((item) => ({
       conditionId: item.conditionId,
       score: item.score,
-      prevalence: item.prevalence,
+      etiologicalConsensus: item.etiologicalConsensus,
     }));
 
     expect(enriched).toEqual(stripped);

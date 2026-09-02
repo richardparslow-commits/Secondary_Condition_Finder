@@ -3,7 +3,8 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 type SourceReference = { citation?: string; verified: boolean; verificationScope?: string };
-type Suggestion = { conditionId: string; rank: number; prevalence: string; pathwayIntelligence?: unknown; sourceReferences: SourceReference[] };
+type Suggestion = { conditionId: string; rank: number; nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined; pathwayIntelligence?: unknown; sourceReferences: SourceReference[] };
 type Mapping = { draft: boolean; suggestions: Suggestion[] };
 type MasterSource = { sourceId: string; status: string; verified: boolean; verificationState?: { qualifiedHumanCitationReviewDecision?: string; qualifiedHumanCitationReviewRequired?: boolean } };
 type MasterSourceRegistry = { baselineCommit: string; currentState: string; sources: MasterSource[] };
@@ -55,14 +56,14 @@ describe("Mapping Expansion ME-14 qualified-human citation verification", () => 
       const mapping = load<Mapping>(path.join(ROOT, "data", "knowledge-base", `${row.primaryId}.json`));
       expect(mapping.draft).toBe(true);
       const suggestions = mapping.suggestions.filter((s) => s.conditionId === row.targetId);
-      expect(suggestions).toHaveLength(1); expect(suggestions[0]!.rank).toBe(1); expect(suggestions[0]!.prevalence).toBe("sometimes-explored"); expect(suggestions[0]!.pathwayIntelligence).toBeUndefined();
+      expect(suggestions).toHaveLength(1); expect(suggestions[0]!.rank).toBe(1); expect(suggestions[0]!.nexusClaim?.nexusClassification).toBeDefined(); expect(suggestions[0]!.evidentiaryProfile?.etiologicalConsensus).toBeDefined(); expect(suggestions[0]!.pathwayIntelligence).toBeUndefined();
       const refs = suggestions[0]!.sourceReferences.filter((r) => r.citation?.includes(`PMID ${row.pmid}`));
       expect(refs).toHaveLength(1); expect(refs[0]!.verified).toBe(true); expect(refs[0]!.verificationScope).toBe("clinical-evidence");
     }
   });
   it("promotes exactly the five matching master sources to active qualified-human-verified state", () => {
     const registry = load<MasterSourceRegistry>(path.join(ROOT, "data", "evidence", "master-sources.json"));
-    expect(registry.baselineCommit).toBe("518524024a8cafeaaca9ebc452138123f816872c"); expect(registry.currentState).toBe("ME14-CITATION-VERIFIED");
+    expect(registry.baselineCommit).toBe("13812063f0408ea1cf3235370836a0ac867767ce"); expect(registry.currentState).toBe("ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
     for (const row of rows) {
       const sources = registry.sources.filter((s) => s.sourceId === `pmid-${row.pmid}`);
       expect(sources).toHaveLength(1); expect(sources[0]!.status).toBe("active"); expect(sources[0]!.verified).toBe(true);
@@ -71,7 +72,7 @@ describe("Mapping Expansion ME-14 qualified-human citation verification", () => 
   });
   it("preserves relationship identities, rank 1, draft publication state, exact guards, and source linkage", () => {
     const registry = load<MasterRelationshipRegistry>(path.join(ROOT, "data", "evidence", "master-relationships.json"));
-    expect(registry.baselineCommit).toBe("518524024a8cafeaaca9ebc452138123f816872c"); expect(registry.currentState).toBe("ME14-CITATION-VERIFIED");
+    expect(registry.baselineCommit).toBe("13812063f0408ea1cf3235370836a0ac867767ce"); expect(registry.currentState).toBe("ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
     for (const row of rows) {
       const rels = registry.relationships.filter((r) => r.relationshipId === `rel-${row.primaryId}-to-${row.targetId}`);
       expect(rels).toHaveLength(1); expect(rels[0]!.primaryPublicationState).toBe("draft"); expect(rels[0]!.rank).toBe(1); expect(rels[0]!.publicationGuard.structuredGuardText).toBe(row.guard); expect(rels[0]!.sourceIds).toContain(`pmid-${row.pmid}`);

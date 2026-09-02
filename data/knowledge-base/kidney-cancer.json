@@ -6,7 +6,6 @@
     {
       "conditionId": "chronic-kidney-disease",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment complication. Require documented renal malignancy/renal tumor treated with partial or radical nephrectomy, with separately documented new or materially worsened postoperative CKD satisfying chronicity criteria. PMID 27614693 specifically supports comparative renal outcomes in cT1b/cT2 renal-tumor cohorts, with greater postoperative renal-function loss and CKD risk after radical versus partial nephrectomy. Do not infer CKD from kidney cancer alone, do not treat transient postoperative AKI as CKD, and consider preoperative renal function and other CKD risk factors when assessing an individual case. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation of the qualifying treatment/procedure exposure for Kidney / Renal Cancer",
@@ -24,7 +23,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 27614693; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented renal malignancy/renal tumor treated with partial or radical nephrectomy, with separately documented new or materially worsened postoperative CKD satisfying chronicity criteria. PMID 27614693 specifically supports comparative renal outcomes in cT1b/cT2 renal-tumor cohorts, with greater postoperative renal-function loss and CKD risk after radical versus partial nephrectomy. Do not infer CKD from kidney cancer alone, do not treat transient postoperative AKI as CKD, and consider preoperative renal function and other CKD risk factors when assessing an individual case."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment complication. Require documented renal malignancy/renal tumor treated with partial or radical nephrectomy, with separately documented new or materially worsened postoperative CKD satisfying chronicity criteria. PMID 27614693 specifically supports comparative renal outcomes in cT1b/cT2 renal-tumor cohorts, with greater postoperative renal-function loss and CKD risk after radical versus partial nephrectomy.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment complication. Require documented renal malignancy/renal tumor treated with partial or radical nephrectomy, with separately documented new or materially worsened postoperative CKD satisfying chronicity criteria. PMID 27614693 specifically supports comparative renal outcomes in cT1b/cT2 renal-tumor cohorts, with greater postoperative renal-function loss and CKD risk after radical versus partial nephrectomy.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Resolution 2026 publishes this relationship only as treatment complication. Require documented renal malignancy/renal tumor treated with partial or radical nephrectomy, with separately documented new or materially worsened postoperative CKD satisfying chronicity criteria. PMID 27614693 specifically supports comparative renal outcomes in cT1b/cT2 renal-tumor cohorts, with greater postoperative renal-function loss and CKD risk after radical versus partial nephrectomy. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation of the qualifying treatment/procedure exposure for Kidney / Renal Cancer; Independent diagnosis of Chronic Kidney Disease / Renal Failure and timing relative to that exposure; Dose, duration, procedure details, and relevant co-exposures where applicable; Qualified clinical assessment of competing causes and exact source-phenotype fit",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

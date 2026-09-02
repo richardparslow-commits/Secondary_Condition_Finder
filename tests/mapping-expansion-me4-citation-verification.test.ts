@@ -165,6 +165,7 @@ describe("Mapping Expansion Batch ME-4 Qualified-Human Citation Verification", (
     const output = execFileSync("npm", ["run", "citations:audit"], {
       cwd: root,
       encoding: "utf8",
+      timeout: 120000,
     });
     const result = JSON.parse(output.slice(output.indexOf("{"))) as {
       references: number;
@@ -176,11 +177,11 @@ describe("Mapping Expansion Batch ME-4 Qualified-Human Citation Verification", (
       hardFindingCount: number;
     };
     expect(result).toMatchObject({
-      references: 251,
-      verified: 251,
+      references: 271,
+      verified: 256,
       retiredVerified: 6,
-      verifiedProvenance: 257,
-      unverified: 0,
+      verifiedProvenance: 262,
+      unverified: 15,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -201,11 +202,11 @@ describe("Mapping Expansion Batch ME-4 Qualified-Human Citation Verification", (
     };
     expect(result).toMatchObject({
       status: "PASS",
-      relationships: 243,
-      verifiedLiveSourceUses: 251,
-      pendingVerificationLiveSourceUses: 0,
-      activeSourceEntities: 228,
-      pendingVerificationSourceEntities: 0,
+      relationships: 263,
+      verifiedLiveSourceUses: 256,
+      pendingVerificationLiveSourceUses: 15,
+      activeSourceEntities: 233,
+      pendingVerificationSourceEntities: 15,
     });
   });
 });

@@ -6,7 +6,6 @@
     {
       "conditionId": "depressive-disorder",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish an individual medical nexus.",
       "pathwayIntelligence": {
         "pathways": [
@@ -49,7 +48,27 @@
           "sourceLocator": "§ 3.310(a)-(b)",
           "verificationScope": "legal-framework"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Abdominal hernia → documented chronic pain or functional limitation, if present → claimed causation or worsening of depressive disorder.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Abdominal hernia → documented chronic pain or functional limitation, if present → claimed causation or worsening of depressive disorder.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Abdominal hernia → documented chronic pain or functional limitation, if present → claimed causation or worsening of depressive disorder. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Mental health evaluation and diagnosis; Documentation of chronic pain, functional limitations, and their timing; Clinical opinion addressing the individual relationship when a secondary theory is asserted",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

@@ -8,7 +8,6 @@
     {
       "conditionId": "urinary-incontinence",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The evidence synthesis addresses urinary incontinence after radical cystectomy with orthotopic neobladder reconstruction for bladder cancer; the approved mapping is restricted to that postoperative treatment pathway. Require documented bladder cancer, radical cystectomy with orthotopic neobladder reconstruction, and persistent separately established postoperative urinary incontinence. Do not infer urinary incontinence from bladder cancer alone, from an ileal conduit without the phenotype, or from transient early postoperative leakage. Preserve urinary tract infection, retention or overflow, neurologic or pelvic-floor disease, preexisting urinary incontinence, and other etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of bladder-cancer and urinary-incontinence",
@@ -27,7 +26,32 @@
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 39896758; approved ME-13 source; guard: Require documented bladder cancer, radical cystectomy with orthotopic neobladder reconstruction, and persistent separately established postoperative urinary incontinence. Do not infer urinary incontinence from bladder cancer alone, from an ileal conduit without the phenotype, or from transient early postoperative leakage. Preserve urinary tract infection, retention or overflow, neurologic or pelvic-floor disease, preexisting urinary incontinence, and other etiologies as competing explanations."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The evidence synthesis addresses urinary incontinence after radical cystectomy with orthotopic neobladder reconstruction for bladder cancer; the approved mapping is restricted to that postoperative treatment pathway. Require documented bladder cancer, radical cystectomy with orthotopic neobladder reconstruction, and persistent separately established postoperative urinary incontinence.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The evidence synthesis addresses urinary incontinence after radical cystectomy with orthotopic neobladder reconstruction for bladder cancer; the approved mapping is restricted to that postoperative treatment pathway. Require documented bladder cancer, radical cystectomy with orthotopic neobladder reconstruction, and persistent separately established postoperative urinary incontinence.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The evidence synthesis addresses urinary incontinence after radical cystectomy with orthotopic neobladder reconstruction for bladder cancer; the approved mapping is restricted to that postoperative treatment pathway. Require documented bladder cancer, radical cystectomy with orthotopic neobladder reconstruction, and persistent separately established postoperative urinary incontinence. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of bladder-cancer and urinary-incontinence; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: treatment-mediated urinary incontinence after radical cystectomy with orthotopic neobladder reconstruction; Assessment of material competing etiologies and treatment/context confounders; Resolution of publication guard: Require documented bladder cancer, radical cystectomy with orthotopic neobladder reconstruction, and persistent separately established postoperative urinary incontinence. Do not infer urinary incontinence from bladder cancer alone, from an ileal conduit without the phenotype, or from transient early postoperative leakage. Preserve urinary tract infection, retention or overflow, neurologic or pelvic-floor disease, pr",
+        "alternativeEtiologiesToRuleOut": [
+          "urinary tract infection",
+          "retention",
+          "overflow",
+          "neurologic",
+          "pelvic-floor disease",
+          "preexisting urinary incontinence"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

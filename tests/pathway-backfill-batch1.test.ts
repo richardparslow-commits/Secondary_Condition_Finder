@@ -109,12 +109,12 @@ describe("controlled pathway backfill batch 1", () => {
     expect(mapping?.todo.join(" ")).toMatch(/primary migraine|reclassification|target/i);
   });
 
-  it("preserves the ranking and prevalence of the surviving enriched edges", () => {
+  it("preserves the ranking and etiological consensus of the surviving enriched edges", () => {
     const kb = loadKnowledgeBase();
     const depression = kb.find((entry) => entry.id === "depressive-disorder");
-    expect(depression?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
-      { conditionId: "sleep-apnea", rank: 1, prevalence: "sometimes-explored" },
-      { conditionId: "erectile-dysfunction", rank: 2, prevalence: "commonly-explored" },
+    expect(depression?.suggestions.map(({ conditionId, rank, evidentiaryProfile }) => ({ conditionId, rank, etiologicalConsensus: evidentiaryProfile.etiologicalConsensus }))).toEqual([
+      { conditionId: "sleep-apnea", rank: 1, etiologicalConsensus: "NOT_ESTABLISHED" },
+      { conditionId: "erectile-dysfunction", rank: 2, etiologicalConsensus: "IATROGENIC_TREATMENT_EFFECT" },
     ]);
   });
 

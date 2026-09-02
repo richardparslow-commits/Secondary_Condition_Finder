@@ -5,5 +5,52 @@
     "Review future secondary suggestions only after adding bipolar-disorder-specific clinical evidence.",
     "Batch 19 removes the prior sleep-apnea, GERD, and migraine suggestions because their attached references were legal or rating sources rather than clinical evidence for those relationships."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found most respondents with threshold and subthreshold bipolar spectrum disorder had lifetime comorbidity with other Axis I disorders, particularly anxiety disorders as a class; the approved relationship is limited to class-level population comorbidity association and does not establish onset order, direction, or individual causation. Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety disorders as a class, and does not specify onset order or direction. Distinguish an independent anxiety disorder from anxiety symptoms occurring within manic, hypomanic, or depressive episodes. Preserve substance use, medical illness, medications, and other psychiatric illness as competing explanations. Treat this only as population-level comorbidity association, not proof that bipolar disorder caused an individual's anxiety disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of bipolar-disorder and anxiety-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: class-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety disorders as a class, and does not specify onset order or direction. Distinguish an independent anxiety disorder from anxiety symptoms occurring within manic, hypomanic, or depressive episodes. Preserve substance use, medical illness, medications, and other psychiatric illness as competing explanations. Treat this only as population-level comorbidity association, not proof that bipolar disorder caused an individual's anxiety disorder."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Merikangas KR, Akiskal HS, Angst J, Greenberg PE, Hirschfeld RM, Petukhova M, Kessler RC. Lifetime and 12-month prevalence of bipolar spectrum disorder in the National Comorbidity Survey replication. Arch Gen Psychiatry. 2007;64(5):543-552. PMID 17485606. doi:10.1001/archpsyc.64.5.543.",
+          "note": "Mapping Expansion Batch ME-15 evidence for the bounded bipolar-disorder to anxiety-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17485606/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-01",
+          "sourceLocator": "PMID 17485606; approved ME-15 source; guard: Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety disorders as a class, and does not specify onset order or direction. Distinguish an independent anxiety disorder from anxiety symptoms occurring within manic, hypomanic, or depressive episodes. Preserve substance use, medical illness, medications, and other psychiatric illness as competing explanations. Treat this only as population-level comorbidity association, not proof that bipolar disorder caused an individual's anxiety disorder."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found most respondents with threshold and subthreshold bipolar spectrum disorder had lifetime comorbidity with other Axis I disorders, particularly anxiety disorders as a class; the approved relationship is limited to class-level population comorbidity association and does not establish onset order, direction, or individual causation. Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety disorders as a class, and does not specify onset order or direction. Distinguish an independent anxiety disorder from anxiety symptoms occurring within manic, hypomanic, or depressive episodes.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found most respondents with threshold and subthreshold bipolar spectrum disorder had lifetime comorbidity with other Axis I disorders, particularly anxiety disorders as a class; the approved relationship is limited to class-level population comorbidity association and does not establish onset order, direction, or individual causation. Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety disorders as a class, and does not specify onset order or d",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-15 adds this relationship only as the user-approved bounded clinical proposition. A nationally representative survey found most respondents with threshold and subthreshold bipolar spectrum disorder had lifetime comorbidity with other Axis I disorders, particularly anxiety disorders as a class; the approved relationship is limited to class-level population comorbidity association and does not establish onset order, direction, or individual causation. Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety diso",
+        "evidenceGaps": "Independent documentation of bipolar-disorder and anxiety-disorder; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: class-level-comorbidity-association; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety disorders as a class, and does not specify onset order or direction. Distinguish an independent anxiety disorder from anxiety symptoms occurring within manic, hypomanic, or depressive episodes. Preserve substan",
+        "alternativeEtiologiesToRuleOut": [
+          "substance use",
+          "medical illness",
+          "medications",
+          "other psychiatric illness as competing explanations"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

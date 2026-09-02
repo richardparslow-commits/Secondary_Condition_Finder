@@ -162,6 +162,12 @@ jobs:
           npm run kb:validate 2>&1 | tee ci-kb-validate.log
         continue-on-error: true
         id: kb_validate
+      - name: Audit ME / CRG compliance
+        run: |
+          set -o pipefail
+          npm run audit:me-compliance 2>&1 | tee ci-me-compliance.log
+        continue-on-error: true
+        id: me_compliance
       - name: Run lint
         run: |
           set -o pipefail
@@ -217,6 +223,7 @@ jobs:
             echo "- audit: ${{ steps.audit.outcome }}"
             echo "- citations: ${{ steps.citations.outcome }}"
             echo "- kb-validate: ${{ steps.kb_validate.outcome }}"
+            echo "- me-compliance: ${{ steps.me_compliance.outcome }}"
             echo "- lint: ${{ steps.lint.outcome }}"
             echo "- typecheck: ${{ steps.typecheck.outcome }}"
             echo "- test-composition: ${{ steps.test_composition.outcome }}"
@@ -225,7 +232,7 @@ jobs:
             echo "- browser-e2e: ${{ steps.e2e.outcome }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-citations.log ci-kb-validate.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-build.log ci-e2e.log; do
+            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-build.log ci-e2e.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
@@ -246,7 +253,7 @@ jobs:
       - name: Fail the job if any gate failed
         if: always()
         run: |
-          if [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ]; then
+          if [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ]; then
             echo "One or more CI gates failed. See the diagnostic summary and artifact."
             exit 1
           fi

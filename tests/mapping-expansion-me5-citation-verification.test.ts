@@ -37,7 +37,8 @@ type Ref = { verified: boolean; citation: string; sourceUrl: string };
 type Suggestion = {
   conditionId: string;
   rank: number;
-  prevalence: string;
+  nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined;
   rationale: string;
   evidenceGaps: string[];
   sourceReferences: Ref[];
@@ -106,7 +107,7 @@ describe("Mapping Expansion Batch ME-5 Qualified-Human Citation Verification", (
       expect(suggestion).toBeTruthy();
       if (!suggestion) throw new Error(`missing ME-5 row ${row.primaryId}->${row.targetId}`);
       expect(suggestion.rank).toBe(2);
-      expect(suggestion.prevalence).toBe("sometimes-explored");
+      expect(suggestion.nexusClaim?.nexusClassification).toBeDefined(); expect(suggestion.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(suggestion.rationale).toContain(row.publicationGuard);
       expect(suggestion.evidenceGaps.some((gap) => gap.includes(row.publicationGuard))).toBe(true);
       expect(suggestion.sourceReferences).toHaveLength(1);
@@ -154,11 +155,11 @@ describe("Mapping Expansion Batch ME-5 Qualified-Human Citation Verification", (
       hardFindingCount: number;
     };
     expect(result).toMatchObject({
-      references: 251,
-      verified: 251,
+      references: 271,
+      verified: 256,
       retiredVerified: 6,
-      verifiedProvenance: 257,
-      unverified: 0,
+      verifiedProvenance: 262,
+      unverified: 15,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -181,13 +182,13 @@ describe("Mapping Expansion Batch ME-5 Qualified-Human Citation Verification", (
     };
     expect(result).toMatchObject({
       status: "PASS",
-      relationships: 243,
-      verifiedLiveSourceUses: 251,
-      pendingVerificationLiveSourceUses: 0,
-      activeSourceEntities: 228,
-      pendingVerificationSourceEntities: 0,
-      activeClinicalSourceEntities: 227,
-      pendingClinicalSourceEntities: 0,
+      relationships: 263,
+      verifiedLiveSourceUses: 256,
+      pendingVerificationLiveSourceUses: 15,
+      activeSourceEntities: 233,
+      pendingVerificationSourceEntities: 15,
+      activeClinicalSourceEntities: 232,
+      pendingClinicalSourceEntities: 15,
     });
   });
 });

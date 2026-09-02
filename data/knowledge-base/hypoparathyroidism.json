@@ -6,7 +6,6 @@
     {
       "conditionId": "kidney-stones",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Chronic hypoparathyroidism is associated with renal complications including nephrolithiasis and nephrocalcinosis, but the relationship can reflect both the underlying calcium-phosphate disorder and its long-term conventional calcium/active-vitamin-D treatment context. A 2022 systematic review supporting the international guideline program identified nephrocalcinosis/nephrolithiasis among the complications probably associated with chronic hypoparathyroidism. This is an association-focused research relationship, not an automatic causal attribution of an individual's kidney stones to hypoparathyroidism.",
       "evidenceGaps": [
         "Documentation confirming chronic hypoparathyroidism and its etiology/duration",
@@ -25,12 +24,31 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 36375810; abstract Part I: 93 studies/18,973 patients; nephrocalcinosis/nephrolithiasis among nine complications or symptoms probably associated with chronic hypoparathyroidism"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Chronic hypoparathyroidism is associated with renal complications including nephrolithiasis and nephrocalcinosis, but the relationship can reflect both the underlying calcium-phosphate disorder and its long-term conventional calcium/active-vitamin-D treatment context. A 2022 systematic review supporting the international guideline program identified nephrocalcinosis/nephrolithiasis among the complications probably associated with chronic hypoparathyroidism. This is an association-focused research relationship, not an automatic causal attribution of an individual's kidney stones to hypoparathyroidism.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Chronic hypoparathyroidism is associated with renal complications including nephrolithiasis and nephrocalcinosis, but the relationship can reflect both the underlying calcium-phosphate disorder and its long-term conventional calcium/active-vitamin-D treatment context. A 2022 systematic review supporting the international guideline program identified nephrocalcinosis/nephrolithiasis among the complications probably associated with chronic hypoparathyroidism. This is an association-focused research relationship, not an automatic causal attribution of an individual's kidney stones to hypoparathyroidism.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Chronic hypoparathyroidism is associated with renal complications including nephrolithiasis and nephrocalcinosis, but the relationship can reflect both the underlying calcium-phosphate disorder and its long-term conventional calcium/active-vitamin-D treatment context. A 2022 systematic review supporting the international guideline program identified nephrocalcinosis/nephrolithiasis among the complications probably associated with chronic hypoparathyroidism. This is an association-focused research relationship, not an automatic causal attribution of an individual's kidney stones to hypoparathyroidism. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation confirming chronic hypoparathyroidism and its etiology/duration; Longitudinal calcium, phosphate, PTH, magnesium, creatinine/eGFR, and vitamin D results; Calcium and active-vitamin-D treatment history, doses, and duration; 24-hour urine calcium and other metabolic stone testing when available; Renal imaging, stone chronology/composition, and clinician review of alternative stone causes",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "chronic-kidney-disease",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Chronic hypoparathyroidism, particularly under long-term conventional calcium and active-vitamin-D therapy, is associated with increased renal complications including chronic kidney disease or renal insufficiency. Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology. Preserve pre-existing CKD, diabetes, hypertension, recurrent acute kidney injury, nephrotoxic drugs, obstruction, nephrolithiasis or nephrocalcinosis, and other renal-disease causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of hypoparathyroidism and chronic-kidney-disease",
@@ -49,7 +67,32 @@
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 33599907; approved ME-9 proposition; guard: Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology. Preserve pre-existing CKD, diabetes, hypertension, recurrent acute kidney injury, nephrotoxic drugs, obstruction, nephrolithiasis or nephrocalcinosis, and other renal-disease causes."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Chronic hypoparathyroidism, particularly under long-term conventional calcium and active-vitamin-D therapy, is associated with increased renal complications including chronic kidney disease or renal insufficiency. Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Chronic hypoparathyroidism, particularly under long-term conventional calcium and active-vitamin-D therapy, is associated with increased renal complications including chronic kidney disease or renal insufficiency. Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Chronic hypoparathyroidism, particularly under long-term conventional calcium and active-vitamin-D therapy, is associated with increased renal complications including chronic kidney disease or renal insufficiency. Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chronology. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of hypoparathyroidism and chronic-kidney-disease; Documentation satisfying the approved phenotype restriction: chronic hypoparathyroidism with separately established chronic kidney disease; when conventional calcium/active-vitamin-D therapy is relied upon, documented treatment exposure and compatible chronology are required; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require chronic hypoparathyroidism and separately established chronic kidney disease. Where conventional calcium and active-vitamin-D therapy is relied upon as the pathway, require documented treatment exposure and compatible chron",
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing CKD",
+          "diabetes",
+          "hypertension",
+          "recurrent acute kidney injury",
+          "nephrotoxic drugs",
+          "obstruction"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

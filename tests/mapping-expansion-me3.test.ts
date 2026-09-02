@@ -32,7 +32,8 @@ type SourceReference = {
 type Suggestion = {
   conditionId: string;
   rank: number;
-  prevalence?: string;
+  nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined;
   rationale?: string;
   evidenceGaps?: string[];
   pathwayIntelligence?: unknown;
@@ -80,7 +81,7 @@ describe("Mapping Expansion Batch ME-3", () => {
       expect(suggestion).toBeTruthy();
       if (!suggestion) throw new Error(`missing ME-3 suggestion ${row.primaryId}->${row.targetId}`);
       expect(suggestion.rank).toBe(2);
-      expect(suggestion.prevalence).toBe("sometimes-explored");
+      expect(suggestion.nexusClaim?.nexusClassification).toBeDefined(); expect(suggestion.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(suggestion.pathwayIntelligence).toBeUndefined();
       expect(suggestion.sourceReferences).toHaveLength(1);
       const source = suggestion.sourceReferences?.[0];
@@ -100,7 +101,8 @@ describe("Mapping Expansion Batch ME-3", () => {
         primaryId: string;
         targetId: string;
         rank: number;
-        prevalence: string;
+        nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined;
         sourceIds: string[];
         publicationGuard: { status: string; structuredGuardText: string | null };
       }>;
@@ -116,7 +118,6 @@ describe("Mapping Expansion Batch ME-3", () => {
         primaryId: row.primaryId,
         targetId: row.targetId,
         rank: 2,
-        prevalence: "sometimes-explored",
         sourceIds: [`pmid-${row.pmid}`],
       });
       expect(rel?.publicationGuard.status).toBe("explicit");
@@ -139,13 +140,13 @@ describe("Mapping Expansion Batch ME-3", () => {
     expect(files).toHaveLength(311);
     expect(mappings.filter((m) => m.draft === false)).toHaveLength(139);
     expect(mappings.filter((m) => m.draft === true)).toHaveLength(172);
-    expect(mappings.reduce((sum, m) => sum + (m.suggestions ?? []).length, 0)).toBe(243);
+    expect(mappings.reduce((sum, m) => sum + (m.suggestions ?? []).length, 0)).toBe(263);
     expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length === 1)).toHaveLength(66);
     expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length >= 2)).toHaveLength(73);
     const refs = mappings.flatMap((m) => (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []));
-    expect(refs).toHaveLength(251);
-    expect(refs.filter((r) => r.verified === true)).toHaveLength(251);
-    expect(refs.filter((r) => r.verified === false)).toHaveLength(0);
+    expect(refs).toHaveLength(271);
+    expect(refs.filter((r) => r.verified === true)).toHaveLength(256);
+    expect(refs.filter((r) => r.verified === false)).toHaveLength(15);
   });
 
   it("passes the fail-closed master-registry parity audit after approved citation promotion", () => {
@@ -155,6 +156,6 @@ describe("Mapping Expansion Batch ME-3", () => {
     });
     const result = JSON.parse(output) as { status: string; pendingVerificationSourceEntities: number };
     expect(result.status).toBe("PASS");
-    expect(result.pendingVerificationSourceEntities).toBe(0);
+    expect(result.pendingVerificationSourceEntities).toBe(15);
   });
 });

@@ -6,7 +6,6 @@
     {
       "conditionId": "anemia",
       "rank": 1,
-      "prevalence": "occasionally-explored",
       "rationale": "Paravalvular leak is an uncommon but clinically important residual or complication after prosthetic heart-valve replacement and can produce hemolysis and hemolytic anemia. Meta-analytic evidence on paravalvular-leak treatment identifies hemolysis as a serious clinical consequence. This supports a treatment-complication pathway only when a post-replacement paravalvular leak and objective hemolysis are documented; valve replacement by itself is not sufficient to attribute an individual anemia to the procedure.",
       "pathwayIntelligence": {
         "pathways": [
@@ -43,7 +42,27 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 31039274; PMCID PMC6605004; review of cardiac prosthesis-related hemolytic anemia; includes severe hemolysis due to paravalvular leak after transcatheter aortic/mitral valve replacement and an algorithmic diagnostic approach to suspected prosthesis-related hemolysis"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Heart-valve replacement → documented paravalvular leak around the prosthesis → mechanical red-cell hemolysis → diagnosed hemolytic anemia.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Heart-valve replacement → documented paravalvular leak around the prosthesis → mechanical red-cell hemolysis → diagnosed hemolytic anemia.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Heart-valve replacement → documented paravalvular leak around the prosthesis → mechanical red-cell hemolysis → diagnosed hemolytic anemia. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Operative records identifying the prosthetic valve and replacement procedure; Echocardiography or other imaging documenting a post-replacement paravalvular leak; Laboratory evidence characterizing anemia and hemolysis; Clinical chronology and any response after leak closure or valve re-intervention; Qualified cardiology/hematology assessment excluding other important causes of anemia or hemolysis",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

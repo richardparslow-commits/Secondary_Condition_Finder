@@ -6,7 +6,6 @@
     {
       "conditionId": "cardiac-arrhythmia",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require esophageal cancer treated with thoracic radiotherapy followed by incident atrial fibrillation. This source verifies radiotherapy-associated incident atrial fibrillation; do not generalize it to other arrhythmia phenotypes or esophageal cancer without thoracic RT. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation of the qualifying treatment or procedure used for Esophageal Cancer",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 37574171; PubMed identity/abstract confirmed; qualified-human-approved narrowed guard: Require esophageal cancer treated with thoracic radiotherapy followed by incident atrial fibrillation."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require esophageal cancer treated with thoracic radiotherapy followed by incident atrial fibrillation. This source verifies radiotherapy-associated incident atrial fibrillation; do not generalize it to other arrhythmia phenotypes or esophageal cancer without thoracic RT. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require esophageal cancer treated with thoracic radiotherapy followed by incident atrial fibrillation. This source verifies radiotherapy-associated incident atrial fibrillation; do not generalize it to other arrhythmia phenotypes or esophageal cancer without thoracic RT. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require esophageal cancer treated with thoracic radiotherapy followed by incident atrial fibrillation. This source verifies radiotherapy-associated incident atrial fibrillation; do not generalize it to other arrhythmia phenotypes or esophageal cancer without thoracic RT. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation of the qualifying treatment or procedure used for Esophageal Cancer; Independent diagnosis of Cardiac Arrhythmias (Atrial Fibrillation, Tachycardia) and timing relative to that exposure; Dose, duration, procedure details, and relevant co-exposures where applicable; Qualified clinical assessment of competing causes and source-phenotype fit",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "cardiomyopathy",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Thoracic chemoradiotherapy for esophageal cancer is associated with early left-ventricular functional decline; this source supports a treatment-mediated cardiotoxicity pathway but does not by itself establish cardiomyopathy. Require documented esophageal cancer, actual exposure to thoracic chemoradiotherapy, and a separately established cardiomyopathy diagnosis with compatible post-treatment chronology. Use this source only as evidence that chemoradiotherapy can produce early left-ventricular dysfunction/cardiotoxicity; it does not itself establish cardiomyopathy or individual causation. Do not infer cardiomyopathy from the cancer diagnosis, radiation exposure, a small isolated strain or ejection-fraction change, fatigue, or dyspnea alone. Preserve pre-existing cardiomyopathy or heart failure, ischemic disease, hypertension, valvular disease, arrhythmia, other cardiotoxic therapies, alcohol or toxin exposure, genetic cardiomyopathy, and other recognized myocardial causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of esophageal-cancer and cardiomyopathy",
@@ -48,7 +66,32 @@
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 35289694; approved ME-7 proposition; guard: Require documented esophageal cancer, actual exposure to thoracic chemoradiotherapy, and a separately established cardiomyopathy diagnosis with compatible post-treatment chronology. Use this source only as evidence that chemoradiotherapy can produce early left-ventricular dysfunction/cardiotoxicity; it does not itself establish cardiomyopathy or individual causation. Do not infer cardiomyopathy from the cancer diagnosis, radiation exposure, a small isolated strain or ejection-fraction change, fatigue, or dyspnea alone. Preserve pre-existing cardiomyopathy or heart failure, ischemic disease, hypertension, valvular disease, arrhythmia, other cardiotoxic therapies, alcohol or toxin exposure, genetic cardiomyopathy, and other recognized myocardial causes."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Thoracic chemoradiotherapy for esophageal cancer is associated with early left-ventricular functional decline; this source supports a treatment-mediated cardiotoxicity pathway but does not by itself establish cardiomyopathy. Require documented esophageal cancer, actual exposure to thoracic chemoradiotherapy, and a separately established cardiomyopathy diagnosis with compatible post-treatment chronology. Use this source only as evidence that chemoradiotherapy can produce early left-ventricular dysfunction/cardiotoxicity; it does not itself establish cardiomyopathy or individual causation.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Thoracic chemoradiotherapy for esophageal cancer is associated with early left-ventricular functional decline; this source supports a treatment-mediated cardiotoxicity pathway but does not by itself establish cardiomyopathy. Require documented esophageal cancer, actual exposure to thoracic chemoradiotherapy, and a separately established cardiomyopathy diagnosis with compatible post-treatment chronology. Use this source only as evidence that chemoradiotherapy can produce early left-ventricular dysfunction/cardiotoxicity; it does not itself establish cardiomyopathy or individual causation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-7 adds this relationship only as a bounded clinical proposition. Thoracic chemoradiotherapy for esophageal cancer is associated with early left-ventricular functional decline; this source supports a treatment-mediated cardiotoxicity pathway but does not by itself establish cardiomyopathy. Require documented esophageal cancer, actual exposure to thoracic chemoradiotherapy, and a separately established cardiomyopathy diagnosis with compatible post-treatment chronology. Use this source only as evidence that chemoradiotherapy can produce early left-ventricular dysfunction/cardiotoxicity; it does not itself establish cardiomyopathy or individual causation. It is not asserted that the primary caused or aggravated t",
+        "evidenceGaps": "Independent documentation of esophageal-cancer and cardiomyopathy; Documentation satisfying the approved phenotype restriction: separately established cardiomyopathy after thoracic chemoradiotherapy for esophageal cancer; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented esophageal cancer, actual exposure to thoracic chemoradiotherapy, and a separately established cardiomyopathy diagnosis with compatible post-treatment chronology. Use this source only as evidence that chemoradiotherapy can produce early left-ventricular dysfunction/cardiotoxicity; it does not itself establish cardiomyopathy or individual cau",
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing cardiomyopathy",
+          "heart failure",
+          "ischemic disease",
+          "hypertension",
+          "valvular disease",
+          "arrhythmia"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

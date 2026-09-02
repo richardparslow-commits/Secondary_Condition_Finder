@@ -16,7 +16,7 @@ export interface LinkedNonServiceConnectedCondition {
   conditionId: string;
   conditionName: string;
   bodySystem: string;
-  prevalence: Recommendation["prevalence"];
+  etiologicalConsensus: Recommendation["etiologicalConsensus"];
   /** Which service-connected primaries may link to this condition, and why. */
   linkingPrimaries: ContributingPrimary[];
 }
@@ -87,7 +87,7 @@ export function findLinkedNonServiceConnectedConditions(
       conditionId: r.conditionId,
       conditionName: r.condition,
       bodySystem: r.bodySystem,
-      prevalence: r.prevalence,
+      etiologicalConsensus: r.etiologicalConsensus,
       linkingPrimaries: r.contributingPrimaries,
     }));
 }
