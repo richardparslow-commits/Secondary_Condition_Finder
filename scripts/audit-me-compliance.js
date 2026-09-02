@@ -288,6 +288,104 @@ function auditSuggestion(fileName, mapping, suggestion, index) {
         );
       }
     }
+  } else if (mapping.draft === false) {
+    violation(ref, "GRAPH-EDGE-INTEGRITY", "published edge has zero source references");
+  }
+
+  // --- Mechanism / consensus coherence (CRG graph semantics) ---
+  if (
+    consensus === "IATROGENIC_TREATMENT_EFFECT" &&
+    causalMechanism.mechanismCategory !== "PHARMACOLOGICAL_IATROGENIC" &&
+    causalMechanism.mechanismCategory !== "POST_SURGICAL_OR_TREATMENT"
+  ) {
+    violation(
+      ref,
+      "GRAPH-MECHANISM-CONSENSUS",
+      `IATROGENIC_TREATMENT_EFFECT consensus requires a treatment-based mechanism (got ${causalMechanism.mechanismCategory})`,
+    );
+  }
+  if (
+    causalMechanism.mechanismCategory === "NOT_ESTABLISHED" &&
+    consensus !== "NOT_ESTABLISHED"
+  ) {
+    violation(
+      ref,
+      "GRAPH-MECHANISM-CONSENSUS",
+      `NOT_ESTABLISHED mechanism cannot pair with ${consensus} consensus`,
+    );
+  }
+  if (
+    causalMechanism.hypothesizedOnly === false &&
+    consensus === "NOT_ESTABLISHED"
+  ) {
+    violation(
+      ref,
+      "GRAPH-HYPOTHESIZED",
+      "hypothesizedOnly: false contradicts NOT_ESTABLISHED consensus; a non-established cascade must be marked hypothesized",
+    );
+  }
+  if (
+    causalMechanism.mechanismCategory === "PHARMACOLOGICAL_IATROGENIC" &&
+    consensus !== "IATROGENIC_TREATMENT_EFFECT" &&
+    consensus !== "NOT_ESTABLISHED"
+  ) {
+    warn(
+      ref,
+      "GRAPH-PHARM-CONSENSUS",
+      `PHARMACOLOGICAL_IATROGENIC mechanism with ${consensus} consensus — consider the IATROGENIC_TREATMENT_EFFECT tier or a qualified-human review`,
+    );
+  }
+}
+
+function auditGraph() {
+  const pairs = new Map(); // primary->target -> [files]
+  const publishedWithTodo = [];
+  const rankCounts = new Map(); // file -> rank -> count
+
+  for (const file of fs.readdirSync(kbRoot).filter((f) => f.endsWith(".json"))) {
+    const mapping = JSON.parse(fs.readFileSync(path.join(kbRoot, file), "utf8"));
+    const pair = (s, t) => {
+      pairs.set(`${s}->${t}`, (pairs.get(`${s}->${t}`) ?? []).concat(file));
+    };
+    for (const [index, suggestion] of (mapping.suggestions ?? []).entries()) {
+      const ref = `${file}::suggestions[${index}] (${suggestion.conditionId})`;
+      pair(mapping.id, suggestion.conditionId);
+      const rankKey = `${mapping.id}::rank-${suggestion.rank}`;
+      rankCounts.set(rankKey, (rankCounts.get(rankKey) ?? 0) + 1);
+      if (rankCounts.get(rankKey) > 1) {
+        violation(ref, "GRAPH-RANK", `duplicate rank ${suggestion.rank} within ${mapping.id}`);
+      }
+      if (mapping.id === suggestion.conditionId) {
+        violation(ref, "GRAPH-EDGE-INTEGRITY", "self-loop edge: primary equals secondary");
+      }
+      if (mapping.draft === false && Array.isArray(mapping.todo) && mapping.todo.length > 0) {
+        publishedWithTodo.push(ref);
+      }
+    }
+  }
+
+  for (const p of pairs.keys()) {
+    if (pairs.get(p).length > 1) {
+      violation(p, "GRAPH-EDGE-INTEGRITY", `duplicate edge authored in ${pairs.get(p).join(", ")}`);
+    }
+  }
+
+  const seenBidirectional = new Set();
+  for (const p of pairs.keys()) {
+    const [a, b] = p.split("->");
+    if (!pairs.has(`${b}->${a}`)) continue;
+    const key = [a, b].sort().join(" <-> ");
+    if (seenBidirectional.has(key)) continue;
+    seenBidirectional.add(key);
+    warn(
+      key,
+      "GRAPH-BIDIRECTIONAL",
+      "bidirectional edge pair present — each direction must be independently guarded for causation vs. aggravation; review required",
+    );
+  }
+
+  for (const ref of publishedWithTodo) {
+    violation(ref, "GRAPH-PUBLISH-INTEGRITY", "published mapping still carries TODO items; clear them before publishing");
   }
 }
 
@@ -310,6 +408,7 @@ function main() {
       auditSuggestion(file, mapping, suggestion, index);
     }
   }
+  auditGraph();
 
   const report = {
     auditedFiles: files.length,
