@@ -6,7 +6,6 @@
     {
       "conditionId": "hypertension",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Active acromegaly with chronic GH/IGF-I excess is associated with hypertension through several disease-specific mechanisms, including direct renal sodium and water retention with extracellular-volume expansion and vascular effects. The 2026 acromegaly complications consensus reports that GH acts on distal-nephron epithelial sodium channels, that GH promotes nephron sodium retention and expanded extracellular water, and that biochemical control can lower blood pressure in hypertensive patients. This supports a direct-secondary research pathway when acromegaly activity and blood-pressure chronology are documented; it does not establish that every case of hypertension in a person with acromegaly is attributable to acromegaly.",
       "pathwayIntelligence": {
         "pathways": [
@@ -42,12 +41,31 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 42050227; determinants/hypertension sections: GH acts on distal-nephron epithelial channels causing sodium/water retention, expands extracellular water, and IGF-I normalization or successful treatment can lower blood pressure in hypertensive patients"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Biochemically active acromegaly with sustained GH/IGF-I excess → renal sodium/water retention and extracellular-volume expansion, with additional vascular/metabolic contributors → hypertension.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Biochemically active acromegaly with sustained GH/IGF-I excess → renal sodium/water retention and extracellular-volume expansion, with additional vascular/metabolic contributors → hypertension.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Biochemically active acromegaly with sustained GH/IGF-I excess → renal sodium/water retention and extracellular-volume expansion, with additional vascular/metabolic contributors → hypertension. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Diagnostic and biochemical records confirming acromegaly and periods of active GH/IGF-I excess; Longitudinal blood-pressure records establishing hypertension onset and course; Acromegaly treatment and biochemical-response records, including blood-pressure response when documented; Evaluation of other primary or secondary contributors to hypertension; Clinician assessment of the individual endocrine-to-blood-pressure chronology",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "sleep-apnea",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented acromegaly and separately established obstructive sleep apnea by appropriate sleep-study/clinical diagnostic criteria. The broad sleep-apnea target is used only for the obstructive phenotype supported by PMID 31722411; do not extend this edge to central sleep apnea. Do not infer OSA from acromegaly, obesity, snoring, macroglossia, daytime sleepiness, or upper-airway anatomy alone, and consider other OSA contributors when evaluating an individual nexus. Population-level prevalence and treatment response do not by themselves establish individual causation. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of acromegaly and sleep-apnea",
@@ -65,7 +83,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 31722411; approved ME-3 proposition; guard: Require documented acromegaly and separately established obstructive sleep apnea by appropriate sleep-study/clinical diagnostic criteria. The broad sleep-apnea target is used only for the obstructive phenotype supported by PMID 31722411; do not extend this edge to central sleep apnea. Do not infer OSA from acromegaly, obesity, snoring, macroglossia, daytime sleepiness, or upper-airway anatomy alone, and consider other OSA contributors when evaluating an individual nexus. Population-level prevalence and treatment response do not by themselves establish individual causation."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented acromegaly and separately established obstructive sleep apnea by appropriate sleep-study/clinical diagnostic criteria. The broad sleep-apnea target is used only for the obstructive phenotype supported by PMID 31722411; do not extend this edge to central sleep apnea.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented acromegaly and separately established obstructive sleep apnea by appropriate sleep-study/clinical diagnostic criteria. The broad sleep-apnea target is used only for the obstructive phenotype supported by PMID 31722411; do not extend this edge to central sleep apnea.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-3 adds this relationship only as a bounded clinical proposition. Require documented acromegaly and separately established obstructive sleep apnea by appropriate sleep-study/clinical diagnostic criteria. The broad sleep-apnea target is used only for the obstructive phenotype supported by PMID 31722411; do not extend this edge to central sleep apnea. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of acromegaly and sleep-apnea; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented acromegaly and separately established obstructive sleep apnea by appropriate sleep-study/clinical diagnostic criteria. The broad sleep-apnea target is used only for the obstructive phenotype supported by PMID 31722411; do not extend this edge to central sleep apnea. Do not infer OSA from acromegaly, obesity, snoring, macroglossia, daytime sleepiness, or upper-airway anatomy alone, and consider other OSA contributors when evaluating an individual nexus. Population-level prevalence and treatment response ",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

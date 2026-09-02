@@ -2,6 +2,11 @@ import { describe, expect, it } from "vitest";
 
 import { auditSourceReference, classifySourceReference } from "@/lib/kb/evidence-architecture";
 import { sourceReferenceSchema, suggestionSchema } from "@/lib/kb/schema";
+import {
+  buildCausalMechanism,
+  buildEvidentiaryProfile,
+  buildNexusClaim,
+} from "./helpers/crg-fixtures";
 
 describe("evidence architecture v2", () => {
   it("keeps legacy source references backward compatible", () => {
@@ -106,7 +111,9 @@ describe("evidence architecture v2", () => {
     const suggestion = suggestionSchema.parse({
       conditionId: "chronic-sinusitis",
       rank: 1,
-      prevalence: "commonly-explored",
+      nexusClaim: buildNexusClaim(),
+      causalMechanism: buildCausalMechanism(),
+      evidentiaryProfile: buildEvidentiaryProfile(),
       rationale: "Presumptive pathway fixture.",
       claimTheories: ["presumptive"],
       nexusRequirement: "individual-medical-opinion",

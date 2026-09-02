@@ -6,7 +6,6 @@
     {
       "conditionId": "pulmonary-embolism",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as thromboembolic complication. Require documented isolated distal deep-vein thrombosis preceding separately documented symptomatic pulmonary embolism. PMID 42134598 specifically studied iDDVT and should not by itself be used to quantify or characterize PE risk across all proximal or other DVT phenotypes. Do not infer pulmonary embolism from DVT alone, and do not treat population-level complication rates as proof that an individual's PE arose from a particular DVT without appropriate clinical attribution. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Deep Vein Thrombosis (DVT) / Phlebitis and Pulmonary Embolism",
@@ -24,7 +23,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 42134598; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented isolated distal deep-vein thrombosis preceding separately documented symptomatic pulmonary embolism. PMID 42134598 specifically studied iDDVT and should not by itself be used to quantify or characterize PE risk across all proximal or other DVT phenotypes. Do not infer pulmonary embolism from DVT alone, and do not treat population-level complication rates as proof that an individual's PE arose from a particular DVT without appropriate clinical attribution."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Resolution 2026 publishes this relationship only as thromboembolic complication. Require documented isolated distal deep-vein thrombosis preceding separately documented symptomatic pulmonary embolism. PMID 42134598 specifically studied iDDVT and should not by itself be used to quantify or characterize PE risk across all proximal or other DVT phenotypes.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Clinical Mapping Master Resolution 2026 publishes this relationship only as thromboembolic complication. Require documented isolated distal deep-vein thrombosis preceding separately documented symptomatic pulmonary embolism. PMID 42134598 specifically studied iDDVT and should not by itself be used to quantify or characterize PE risk across all proximal or other DVT phenotypes.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Resolution 2026 publishes this relationship only as thromboembolic complication. Require documented isolated distal deep-vein thrombosis preceding separately documented symptomatic pulmonary embolism. PMID 42134598 specifically studied iDDVT and should not by itself be used to quantify or characterize PE risk across all proximal or other DVT phenotypes. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Deep Vein Thrombosis (DVT) / Phlebitis and Pulmonary Embolism; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of the publication guard: Require documented isolated distal deep-vein thrombosis preceding separately documented symptomatic pulmonary embolism. PMID 42134598 specifically studied iDDVT and should not by itself be used to quantify or characterize PE risk across all proximal or other DVT phenotypes. Do not infer pulmonary embolism from DVT alone, and do not treat population-level complication rates as proof that an individual's PE arose from a particular DVT without appropriate clinical attribution.",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

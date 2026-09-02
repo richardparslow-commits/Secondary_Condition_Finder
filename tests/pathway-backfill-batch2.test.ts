@@ -67,12 +67,12 @@ describe("controlled pathway backfill batch 2", () => {
     }
   });
 
-  it("preserves rank and prevalence for the enriched rheumatoid-arthritis edges", () => {
+  it("preserves rank and etiological consensus for the enriched rheumatoid-arthritis edges", () => {
     const kb = loadKnowledgeBase();
     const mapping = kb.find((entry) => entry.id === "rheumatoid-arthritis");
-    expect(mapping?.suggestions.map(({ conditionId, rank, prevalence }) => ({ conditionId, rank, prevalence }))).toEqual([
-      { conditionId: "depressive-disorder", rank: 1, prevalence: "commonly-explored" },
-      { conditionId: "gerd", rank: 2, prevalence: "sometimes-explored" },
+    expect(mapping?.suggestions.map(({ conditionId, rank, evidentiaryProfile }) => ({ conditionId, rank, etiologicalConsensus: evidentiaryProfile.etiologicalConsensus }))).toEqual([
+      { conditionId: "depressive-disorder", rank: 1, etiologicalConsensus: "NOT_ESTABLISHED" },
+      { conditionId: "gerd", rank: 2, etiologicalConsensus: "IATROGENIC_TREATMENT_EFFECT" },
     ]);
   });
 

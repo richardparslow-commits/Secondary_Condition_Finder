@@ -6,7 +6,6 @@
     {
       "conditionId": "colorectal-cancer",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately diagnosed colorectal cancer; establish chronology independently and account for smoking, obesity, IBD, treatment, and surveillance. Observational meta-analysis supports association only. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Psoriasis and Colon / Rectal Cancer",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 33011316; PubMed title/abstract retrieved in the master research harvest; guard: Require psoriasis and separately diagnosed colorectal cancer; establish chronology independently and account for smoking, obesity, IBD, treatment, and surveillance."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately diagnosed colorectal cancer; establish chronology independently and account for smoking, obesity, IBD, treatment, and surveillance. Observational meta-analysis supports association only. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately diagnosed colorectal cancer; establish chronology independently and account for smoking, obesity, IBD, treatment, and surveillance. Observational meta-analysis supports association only. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately diagnosed colorectal cancer; establish chronology independently and account for smoking, obesity, IBD, treatment, and surveillance. Observational meta-analysis supports association only. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Psoriasis and Colon / Rectal Cancer; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "erectile-dysfunction",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately diagnosed erectile dysfunction; evaluate vascular/metabolic, psychiatric, medication, endocrine, and relationship factors. Association meta-analysis only; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Psoriasis and Erectile Dysfunction",
@@ -47,12 +65,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 29735408; PubMed title/abstract retrieved in the master research harvest; guard: Require psoriasis and separately diagnosed erectile dysfunction; evaluate vascular/metabolic, psychiatric, medication, endocrine, and relationship factors."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately diagnosed erectile dysfunction; evaluate vascular/metabolic, psychiatric, medication, endocrine, and relationship factors. Association meta-analysis only; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately diagnosed erectile dysfunction; evaluate vascular/metabolic, psychiatric, medication, endocrine, and relationship factors. Association meta-analysis only; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately diagnosed erectile dysfunction; evaluate vascular/metabolic, psychiatric, medication, endocrine, and relationship factors. Association meta-analysis only; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Psoriasis and Erectile Dysfunction; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "inflammatory-bowel-disease",
       "rank": 3,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately established Crohn's disease or ulcerative colitis; preserve bidirectional/shared-immune susceptibility and treatment considerations. Meta-analysis supports association; direction and individual causation are not established by the pooled evidence alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Psoriasis and Inflammatory Bowel Disease (Crohn's Disease, Ulcerative Colitis)",
@@ -70,12 +107,32 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 30422277; PubMed title/abstract retrieved in the master research harvest; guard: Require psoriasis and separately established Crohn's disease or ulcerative colitis; preserve bidirectional/shared-immune susceptibility and treatment considerations."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately established Crohn's disease or ulcerative colitis;",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately established Crohn's disease or ulcerative colitis;",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as association risk. Require psoriasis and separately established Crohn's disease or ulcerative colitis; It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Psoriasis and Inflammatory Bowel Disease (Crohn's Disease, Ulcerative Colitis); Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "bidirectional/shared-immune susceptibility",
+          "treatment considerations"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "psoriatic-arthritis",
       "rank": 4,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established psoriasis followed by clinically confirmed psoriatic arthritis. Systematic review/meta-analysis directly addresses psoriatic-arthritis development and incidence in psoriasis populations; individual prediction remains heterogeneous. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Psoriasis and Psoriatic Arthritis",
@@ -93,12 +150,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 34596875; replacement source independently confirmed in PubMed before repository edits; guard: Require established psoriasis followed by clinically confirmed psoriatic arthritis.; supersedes unverified PMID 38251522."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established psoriasis followed by clinically confirmed psoriatic arthritis. Systematic review/meta-analysis directly addresses psoriatic-arthritis development and incidence in psoriasis populations; individual prediction remains heterogeneous. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established psoriasis followed by clinically confirmed psoriatic arthritis. Systematic review/meta-analysis directly addresses psoriatic-arthritis development and incidence in psoriasis populations; individual prediction remains heterogeneous. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require established psoriasis followed by clinically confirmed psoriatic arthritis. Systematic review/meta-analysis directly addresses psoriatic-arthritis development and incidence in psoriasis populations; individual prediction remains heterogeneous. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Psoriasis and Psoriatic Arthritis; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "eczema",
       "rank": 5,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment complication. Require biologic therapy for psoriasis preceding documented paradoxical eczema; model only as treatment complication. Prospective biologic-registry evidence supports paradoxical eczema during psoriasis biologic treatment; qualifying biologic exposure is required and overall incidence is low. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "pathwayIntelligence": {
         "pathways": [
@@ -134,7 +210,27 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 38055239; replacement source independently confirmed in PubMed before repository edits; guard: Require biologic therapy for psoriasis preceding documented paradoxical eczema; model only as treatment complication.; supersedes unverified PMID 40420581."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Psoriasis → documented qualifying treatment/procedure exposure → separately diagnosed Eczema with compatible timing.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Psoriasis → documented qualifying treatment/procedure exposure → separately diagnosed Eczema with compatible timing.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Psoriasis → documented qualifying treatment/procedure exposure → separately diagnosed Eczema with compatible timing. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation of the qualifying treatment or procedure used for Psoriasis; Independent diagnosis of Eczema and timing relative to that exposure; Dose, duration, procedure details, and relevant co-exposures where applicable; Qualified clinical assessment of competing causes and source-phenotype fit",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

@@ -142,11 +142,11 @@ export const assertMasterResolution2026CurrentState = () => {
         expect(suggestions).toHaveLength(1);
         const me12Suggestion = suggestions[0] as Suggestion & {
           rank: number;
-          prevalence: string;
+          evidentiaryProfile: { etiologicalConsensus: string };
         };
         expect(me12Suggestion.conditionId).toBe(me12DraftPrimary.targetId);
         expect(me12Suggestion.rank).toBe(1);
-        expect(me12Suggestion.prevalence).toBe("sometimes-explored");
+        expect(me12Suggestion.evidentiaryProfile.etiologicalConsensus).toBe("NOT_ESTABLISHED");
         expect(me12Suggestion.pathwayIntelligence).toBeUndefined();
         expect(me12Suggestion.sourceReferences).toHaveLength(1);
         const me12SourceReference = me12Suggestion.sourceReferences![0]!;
@@ -161,11 +161,11 @@ export const assertMasterResolution2026CurrentState = () => {
         expect(suggestions).toHaveLength(1);
         const me13Suggestion = suggestions[0] as Suggestion & {
           rank: number;
-          prevalence: string;
+          evidentiaryProfile: { etiologicalConsensus: string };
         };
         expect(me13Suggestion.conditionId).toBe("lymphedema");
         expect(me13Suggestion.rank).toBe(1);
-        expect(me13Suggestion.prevalence).toBe("sometimes-explored");
+        expect(me13Suggestion.evidentiaryProfile.etiologicalConsensus).toBe("NOT_ESTABLISHED");
         expect(me13Suggestion.pathwayIntelligence).toBeUndefined();
         expect(me13Suggestion.sourceReferences).toHaveLength(1);
         const me13SourceReference = me13Suggestion.sourceReferences![0]!;

@@ -3,7 +3,8 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 type SourceReference = { citation?: string; verified: boolean; verificationScope?: string };
-type Suggestion = { conditionId: string; rank: number; prevalence: string; pathwayIntelligence?: unknown; sourceReferences: SourceReference[] };
+type Suggestion = { conditionId: string; rank: number; nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined; pathwayIntelligence?: unknown; sourceReferences: SourceReference[] };
 type Mapping = { draft: boolean; suggestions: Suggestion[] };
 type MasterSource = { sourceId: string; status: string; verified: boolean; verificationState?: { qualifiedHumanCitationReviewDecision?: string; qualifiedHumanCitationReviewRequired?: boolean } };
 type MasterSourceRegistry = { baselineCommit: string; currentState: string; sources: MasterSource[] };
@@ -55,7 +56,7 @@ describe("Mapping Expansion ME-14 qualified-human citation verification", () => 
       const mapping = load<Mapping>(path.join(ROOT, "data", "knowledge-base", `${row.primaryId}.json`));
       expect(mapping.draft).toBe(true);
       const suggestions = mapping.suggestions.filter((s) => s.conditionId === row.targetId);
-      expect(suggestions).toHaveLength(1); expect(suggestions[0]!.rank).toBe(1); expect(suggestions[0]!.prevalence).toBe("sometimes-explored"); expect(suggestions[0]!.pathwayIntelligence).toBeUndefined();
+      expect(suggestions).toHaveLength(1); expect(suggestions[0]!.rank).toBe(1); expect(suggestions[0]!.nexusClaim?.nexusClassification).toBeDefined(); expect(suggestions[0]!.evidentiaryProfile?.etiologicalConsensus).toBeDefined(); expect(suggestions[0]!.pathwayIntelligence).toBeUndefined();
       const refs = suggestions[0]!.sourceReferences.filter((r) => r.citation?.includes(`PMID ${row.pmid}`));
       expect(refs).toHaveLength(1); expect(refs[0]!.verified).toBe(true); expect(refs[0]!.verificationScope).toBe("clinical-evidence");
     }

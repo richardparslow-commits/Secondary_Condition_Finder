@@ -6,7 +6,6 @@
     {
       "conditionId": "sleep-apnea",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Adult meta-analytic evidence supports a higher frequency of obstructive sleep apnea among patients with allergic rhinitis, but the catalog identity chronic rhinitis is broader than allergic rhinitis and the evidence does not establish individual causation or aggravation. This relationship therefore applies only when an allergic-rhinitis phenotype is clinically documented and remains association-focused; sleep-study confirmation, rhinitis phenotype/severity, chronology, body-habitus and upper-airway risk factors, medication context, and competing OSA causes still require individual review.",
       "evidenceGaps": [
         "Documentation establishing an allergic-rhinitis phenotype rather than assuming all chronic rhinitis is allergic",
@@ -25,7 +24,27 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 40774162; abstract Methods/Results/Conclusions: 12 studies, N=19,203; allergic rhinitis OSA frequency OR 2.4 (95% CI 1.1-5.3)"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Adult meta-analytic evidence supports a higher frequency of obstructive sleep apnea among patients with allergic rhinitis, but the catalog identity chronic rhinitis is broader than allergic rhinitis and the evidence does not establish individual causation or aggravation. This relationship therefore applies only when an allergic-rhinitis phenotype is clinically documented and remains association-focused; sleep-study confirmation, rhinitis phenotype/severity, chronology, body-habitus and upper-airway risk factors, medication context, and competing OSA causes still require individual review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Adult meta-analytic evidence supports a higher frequency of obstructive sleep apnea among patients with allergic rhinitis, but the catalog identity chronic rhinitis is broader than allergic rhinitis and the evidence does not establish individual causation or aggravation. This relationship therefore applies only when an allergic-rhinitis phenotype is clinically documented and remains association-focused; sleep-study confirmation, rhinitis phenotype/severity, chronology, body-habitus and upper-airway risk factors, medication context, and competing OSA causes still require individual review.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Adult meta-analytic evidence supports a higher frequency of obstructive sleep apnea among patients with allergic rhinitis, but the catalog identity chronic rhinitis is broader than allergic rhinitis and the evidence does not establish individual causation or aggravation. This relationship therefore applies only when an allergic-rhinitis phenotype is clinically documented and remains association-focused; sleep-study confirmation, rhinitis phenotype/severity, chronology, body-habitus and upper-airway risk factors, medication context, and competing OSA causes still require individual review. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation establishing an allergic-rhinitis phenotype rather than assuming all chronic rhinitis is allergic; Polysomnography or validated sleep-study documentation confirming OSA and severity; Rhinitis onset, severity, nasal-obstruction history, and treatment chronology relative to OSA; BMI/weight trajectory, craniofacial or upper-airway factors, age, sedating medications, and other OSA risk factors; Allergy/ENT/sleep specialist assessment distinguishing population-level association from individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

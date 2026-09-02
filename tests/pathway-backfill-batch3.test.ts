@@ -153,7 +153,7 @@ describe("controlled pathway backfill batch 3", () => {
     }
   });
 
-  it("preserves pre-backfill rank and prevalence for surviving COPD and asthma edges", () => {
+  it("preserves pre-backfill rank and etiological consensus for surviving COPD and asthma edges", () => {
     const kb = loadKnowledgeBase();
     for (const primaryId of ["copd", "asthma"]) {
       const mapping = kb.find((entry) => entry.id === primaryId);
@@ -161,11 +161,11 @@ describe("controlled pathway backfill batch 3", () => {
       expect({
         conditionId: sleepApnea?.conditionId,
         rank: sleepApnea?.rank,
-        prevalence: sleepApnea?.prevalence,
+        etiologicalConsensus: sleepApnea?.evidentiaryProfile?.etiologicalConsensus,
       }).toEqual({
         conditionId: "sleep-apnea",
         rank: 1,
-        prevalence: "commonly-explored",
+        etiologicalConsensus: "NOT_ESTABLISHED",
       });
     }
   });

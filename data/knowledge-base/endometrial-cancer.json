@@ -8,7 +8,6 @@
     {
       "conditionId": "lymphedema",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. In endometrial carcinoma, pelvic or para-aortic lymph-node dissection is associated with lower-extremity lymphedema; the approved mapping is restricted to treatment-mediated lymphedema after lymphatic-disrupting nodal treatment. Require documented endometrial cancer, pelvic or para-aortic lymphatic-disrupting nodal treatment, and separately established lower-extremity lymphedema afterward. Do not infer lymphedema from endometrial cancer alone or from isolated edema. Preserve deep-vein thrombosis or other venous disease, cardiac or renal edema, primary lymphedema, infection, and other unrelated causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of endometrial-cancer and lymphedema",
@@ -27,7 +26,32 @@
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 33396373; approved ME-13 source; guard: Require documented endometrial cancer, pelvic or para-aortic lymphatic-disrupting nodal treatment, and separately established lower-extremity lymphedema afterward. Do not infer lymphedema from endometrial cancer alone or from isolated edema. Preserve deep-vein thrombosis or other venous disease, cardiac or renal edema, primary lymphedema, infection, and other unrelated causes as competing explanations."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. In endometrial carcinoma, pelvic or para-aortic lymph-node dissection is associated with lower-extremity lymphedema; the approved mapping is restricted to treatment-mediated lymphedema after lymphatic-disrupting nodal treatment. Require documented endometrial cancer, pelvic or para-aortic lymphatic-disrupting nodal treatment, and separately established lower-extremity lymphedema afterward.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. In endometrial carcinoma, pelvic or para-aortic lymph-node dissection is associated with lower-extremity lymphedema; the approved mapping is restricted to treatment-mediated lymphedema after lymphatic-disrupting nodal treatment. Require documented endometrial cancer, pelvic or para-aortic lymphatic-disrupting nodal treatment, and separately established lower-extremity lymphedema afterward.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. In endometrial carcinoma, pelvic or para-aortic lymph-node dissection is associated with lower-extremity lymphedema; the approved mapping is restricted to treatment-mediated lymphedema after lymphatic-disrupting nodal treatment. Require documented endometrial cancer, pelvic or para-aortic lymphatic-disrupting nodal treatment, and separately established lower-extremity lymphedema afterward. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of endometrial-cancer and lymphedema; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: treatment-mediated lower-extremity lymphedema after lymphatic-disrupting nodal treatment for endometrial cancer; Assessment of material competing etiologies and treatment/context confounders; Resolution of publication guard: Require documented endometrial cancer, pelvic or para-aortic lymphatic-disrupting nodal treatment, and separately established lower-extremity lymphedema afterward. Do not infer lymphedema from endometrial cancer alone or from isolated edema. Preserve deep-vein thrombosis or other venous disease, cardiac or renal edema, primary lymphedema, infection, and other unrelated causes as competing explanations.",
+        "alternativeEtiologiesToRuleOut": [
+          "deep-vein thrombosis",
+          "other venous disease",
+          "cardiac",
+          "renal edema",
+          "primary lymphedema",
+          "infection"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

@@ -34,7 +34,8 @@ type SourceReference = {
 type Suggestion = {
   conditionId: string;
   rank: number;
-  prevalence: string;
+  nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined;
   rationale: string;
   evidenceGaps: string[];
   pathwayIntelligence?: unknown;
@@ -55,7 +56,8 @@ const relRegistry = JSON.parse(
     primaryId: string;
     targetId: string;
     rank: number;
-    prevalence: string;
+    nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined;
     sourceIds: string[];
     publicationGuard: { status: string; structuredGuardText: string | null };
   }>;
@@ -98,7 +100,7 @@ describe("Mapping Expansion Batch ME-5", () => {
       expect(suggestion).toBeTruthy();
       if (!suggestion) throw new Error(`missing ME-5 row ${row.primaryId}->${row.targetId}`);
       expect(suggestion.rank).toBe(2);
-      expect(suggestion.prevalence).toBe("sometimes-explored");
+      expect(suggestion.nexusClaim?.nexusClassification).toBeDefined(); expect(suggestion.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(suggestion.pathwayIntelligence).toBeUndefined();
       expect(suggestion.rationale).toContain(row.publicationGuard);
       expect(suggestion.evidenceGaps.some((gap) => gap.includes(row.publicationGuard))).toBe(true);
@@ -120,7 +122,6 @@ describe("Mapping Expansion Batch ME-5", () => {
         primaryId: row.primaryId,
         targetId: row.targetId,
         rank: 2,
-        prevalence: "sometimes-explored",
         sourceIds: [`pmid-${row.pmid}`],
       });
       expect(relationship?.publicationGuard).toMatchObject({

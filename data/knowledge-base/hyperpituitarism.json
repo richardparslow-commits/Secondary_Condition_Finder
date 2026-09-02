@@ -6,7 +6,6 @@
     {
       "conditionId": "hypogonadism",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "This catalog identity is specifically scoped to prolactin-secreting pituitary dysfunction. In men with prolactinoma, elevated prolactin can suppress the hypothalamic-pituitary-gonadal axis and larger tumors can additionally impair gonadotroph function by mass effect, producing hypogonadotropic hypogonadism. This supports an endocrine secondary pathway when hyperprolactinemia/prolactinoma and biochemical-clinical hypogonadism are documented with compatible chronology; it does not justify generalizing the relationship to unrelated forms of hyperpituitarism or attributing every low testosterone result to prolactin excess.",
       "pathwayIntelligence": {
         "pathways": [
@@ -44,7 +43,27 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 40812946; abstract: most men with prolactinoma present with hypogonadism; mechanisms include prolactin-mediated HPG-axis suppression and tumor mass effect; >20% may remain hypogonadal after prolactin normalization"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Prolactin-secreting pituitary dysfunction with sustained hyperprolactinemia and/or tumor mass effect → suppression or impairment of the hypothalamic-pituitary-gonadal axis → clinically confirmed hypogonadism.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Prolactin-secreting pituitary dysfunction with sustained hyperprolactinemia and/or tumor mass effect → suppression or impairment of the hypothalamic-pituitary-gonadal axis → clinically confirmed hypogonadism.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Prolactin-secreting pituitary dysfunction with sustained hyperprolactinemia and/or tumor mass effect → suppression or impairment of the hypothalamic-pituitary-gonadal axis → clinically confirmed hypogonadism. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Serial prolactin results and pituitary imaging or other records establishing prolactin-secreting pituitary dysfunction; Symptoms/signs plus repeated biochemical testing confirming hypogonadism; LH, FSH, testosterone and other clinically relevant pituitary-hormone testing; Treatment history and gonadal-axis response after prolactin control or tumor therapy; Endocrinology assessment of alternative causes and the individual endocrine relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

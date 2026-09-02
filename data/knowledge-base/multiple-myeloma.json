@@ -6,7 +6,6 @@
     {
       "conditionId": "chronic-kidney-disease",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as disease complication with chronicity guard. Require documented multiple myeloma and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as myeloma-related CKD, require clinical evidence linking the renal disease to myeloma-associated pathology, such as light-chain/cast nephropathy, monoclonal-protein-associated renal disease, or other appropriately established myeloma-related renal injury. Do not relabel transient AKI, an isolated creatinine elevation, or nonspecific renal impairment as CKD, and do not assume all CKD in a patient with multiple myeloma is caused by the myeloma. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Multiple Myeloma and Chronic Kidney Disease / Renal Failure",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 24288486; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented multiple myeloma and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as myeloma-related CKD, require clinical evidence linking the renal disease to myeloma-associated pathology, such as light-chain/cast nephropathy, monoclonal-protein-associated renal disease, or other appropriately established myeloma-related renal injury. Do not relabel transient AKI, an isolated creatinine elevation, or nonspecific renal impairment as CKD, and do not assume all CKD in a patient with multiple myeloma is caused by the myeloma.; supersedes unverified PMID 29661050."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Resolution 2026 publishes this relationship only as disease complication with chronicity guard. Require documented multiple myeloma and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as myeloma-related CKD, require clinical evidence linking the renal disease to myeloma-associated pathology, such as light-chain/cast nephropathy, monoclonal-protein-associated renal disease, or other appropriately established myeloma-related renal injury. Do not relabel transient AKI, an isolated creatinine elevation, or nonspecific renal impairment as CKD, and do not assume all CKD in a patient with multiple myeloma is caused by the myeloma. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Clinical Mapping Master Resolution 2026 publishes this relationship only as disease complication with chronicity guard. Require documented multiple myeloma and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as myeloma-related CKD, require clinical evidence linking the renal disease to myeloma-associated pathology, such as light-chain/cast nephropathy, monoclonal-protein-associated renal disease, or other appropriately established myeloma-related renal injury. Do not relabel transient AKI, an isolated creatinine elevation, or nonspecific renal impairment as CKD, and do not assume all CKD in a patient with multiple myeloma is caused by the myeloma. The cited literature supports only this bounded proposition and does",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Resolution 2026 publishes this relationship only as disease complication with chronicity guard. Require documented multiple myeloma and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as myeloma-related CKD, require clinical evidence linking the renal disease to myeloma-associated pathology, such as light-chain/cast nephropathy, monoclonal-protein-associated renal disease, or other appropriately established myeloma-related renal injury. Do not relabel transient AKI, an isolated creatinine elevation, or nonspecific renal impairment as CKD, and do not assume all CKD in a patient with multiple myeloma is caused by the myeloma. The cited lit",
+        "evidenceGaps": "Independent diagnoses of Multiple Myeloma and Chronic Kidney Disease / Renal Failure; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of the publication guard: Require documented multiple myeloma and separately documented chronic kidney disease satisfying accepted chronicity criteria. Where the relationship is represented as myeloma-related CKD, require clinical evidence linking the renal disease to myeloma-associated pathology, such as light-chain/cast nephropathy, monoclonal-protein-associated renal disease, or other appropriately established myeloma-related renal injury. Do not relabel transient AKI, an isolated creatinine elevation, or nonspecific renal impairment ",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "anemia",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented multiple myeloma and separately established anemia. The source supports anemia as a common myeloma manifestation but does not establish that every anemia in a patient with myeloma is attributable to the malignancy. Preserve chronic kidney disease, blood loss, nutritional deficiency, hemolysis, treatment-related marrow suppression, other marrow disorders, and other anemia etiologies as competing or contributing explanations. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of multiple-myeloma and anemia",
@@ -47,7 +65,32 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 35103762; approved ME-5 proposition; guard: Require documented multiple myeloma and separately established anemia. The source supports anemia as a common myeloma manifestation but does not establish that every anemia in a patient with myeloma is attributable to the malignancy. Preserve chronic kidney disease, blood loss, nutritional deficiency, hemolysis, treatment-related marrow suppression, other marrow disorders, and other anemia etiologies as competing or contributing explanations."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented multiple myeloma and separately established anemia. The source supports anemia as a common myeloma manifestation but does not establish that every anemia in a patient with myeloma is attributable to the malignancy.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented multiple myeloma and separately established anemia. The source supports anemia as a common myeloma manifestation but does not establish that every anemia in a patient with myeloma is attributable to the malignancy.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require documented multiple myeloma and separately established anemia. The source supports anemia as a common myeloma manifestation but does not establish that every anemia in a patient with myeloma is attributable to the malignancy. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of multiple-myeloma and anemia; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented multiple myeloma and separately established anemia. The source supports anemia as a common myeloma manifestation but does not establish that every anemia in a patient with myeloma is attributable to the malignancy. Preserve chronic kidney disease, blood loss, nutritional deficiency, hemolysis, treatment-related marrow suppression, other marrow disorders, and other anemia etiologies as competing or contributing explanations.",
+        "alternativeEtiologiesToRuleOut": [
+          "chronic kidney disease",
+          "blood loss",
+          "nutritional deficiency",
+          "hemolysis",
+          "treatment-related marrow suppression",
+          "other marrow disorders"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

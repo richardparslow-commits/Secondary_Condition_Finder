@@ -6,7 +6,6 @@
     {
       "conditionId": "cardiac-inflammatory-disease",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as rare infection complication. Require documented Nocardia infection and separately diagnosed Nocardia infective endocarditis. Rare systematic review of reported cases; do not infer endocarditis from nocardiosis alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Nocardiosis and Pericarditis / Endocarditis / Myocarditis",
@@ -24,7 +23,27 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 35787151; PubMed title/abstract retrieved in the master research harvest; guard: Require documented Nocardia infection and separately diagnosed Nocardia infective endocarditis."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as rare infection complication. Require documented Nocardia infection and separately diagnosed Nocardia infective endocarditis. Rare systematic review of reported cases;",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as rare infection complication. Require documented Nocardia infection and separately diagnosed Nocardia infective endocarditis. Rare systematic review of reported cases;",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as rare infection complication. Require documented Nocardia infection and separately diagnosed Nocardia infective endocarditis. Rare systematic review of reported cases; It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Nocardiosis and Pericarditis / Endocarditis / Myocarditis; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

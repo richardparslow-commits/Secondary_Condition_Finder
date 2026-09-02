@@ -4,6 +4,11 @@ import { conditionCatalogSchema } from "@/lib/catalog/schema";
 import { recommend } from "@/lib/engine/recommend";
 import { intakeSchema } from "@/lib/engine/types";
 import { knowledgeBaseSchema } from "@/lib/kb/schema";
+import {
+  buildCausalMechanism,
+  buildEvidentiaryProfile,
+  buildNexusClaim,
+} from "./helpers/crg-fixtures";
 
 const catalog = conditionCatalogSchema.parse([
   {
@@ -60,7 +65,9 @@ const kb = knowledgeBaseSchema.parse([
       {
         conditionId: "shared-secondary",
         rank: 1,
-        prevalence: "sometimes-explored",
+        nexusClaim: buildNexusClaim(),
+        causalMechanism: buildCausalMechanism(),
+        evidentiaryProfile: buildEvidentiaryProfile(),
         rationale: "Primary A rationale",
         evidenceGaps: ["Primary A evidence gap"],
         sourceReferences: [sharedReference],
@@ -73,7 +80,9 @@ const kb = knowledgeBaseSchema.parse([
       {
         conditionId: "shared-secondary",
         rank: 1,
-        prevalence: "sometimes-explored",
+        nexusClaim: buildNexusClaim(),
+        causalMechanism: buildCausalMechanism(),
+        evidentiaryProfile: buildEvidentiaryProfile(),
         rationale: "Primary B rationale",
         evidenceGaps: ["Primary B evidence gap"],
         sourceReferences: [

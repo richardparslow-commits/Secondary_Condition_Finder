@@ -6,7 +6,6 @@
     {
       "conditionId": "visual-impairment",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Inherited retinal dystrophies are heterogeneous retinal degenerative disorders in which pathogenic retinal dysfunction and photoreceptor loss produce visual-impairment phenotypes such as reduced acuity, progressive visual-field loss, night blindness, color-vision abnormalities, and in advanced disease severe vision loss or blindness. This supports a disease-progression pathway when the individual's retinal-dystrophy diagnosis and objective visual deficit are anatomically and functionally concordant; the broad retinal-dystrophy identity should not be used to attribute unrelated ocular or neurologic visual loss without phenotype-specific evaluation.",
       "pathwayIntelligence": {
         "pathways": [
@@ -42,7 +41,27 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 34839010; abstract: inherited retinal diseases are visual-impairment phenotypes caused by pathogenic variants affecting different retinal regions and depleting vision"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Documented inherited retinal dystrophy → retinal/photoreceptor dysfunction or degeneration → objectively measured visual-field and/or visual-acuity impairment compatible with the specific retinal phenotype.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Documented inherited retinal dystrophy → retinal/photoreceptor dysfunction or degeneration → objectively measured visual-field and/or visual-acuity impairment compatible with the specific retinal phenotype.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Documented inherited retinal dystrophy → retinal/photoreceptor dysfunction or degeneration → objectively measured visual-field and/or visual-acuity impairment compatible with the specific retinal phenotype. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Retina-specialist documentation of the specific inherited retinal-dystrophy phenotype and, when available, molecular diagnosis; Objective visual-acuity and visual-field testing; Retinal imaging and functional testing such as OCT, fundus autofluorescence, and electroretinography as clinically applicable; Longitudinal records demonstrating the visual course; Ophthalmology assessment addressing competing causes of visual impairment",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

@@ -19,7 +19,7 @@ export function formatClaimSummary(
   recommendations.forEach((rec, index) => {
     const evaluation = evaluations.find((entry) => entry.conditionId === rec.conditionId);
     lines.push(`${index + 1}. Recommended Theory: ${rec.condition} (${rec.bodySystem})`);
-    lines.push(`   Prevalence Category: ${rec.prevalence}`);
+    lines.push(`   Etiological Consensus: ${rec.etiologicalConsensus}`);
     lines.push(`   Contributing Primaries: ${rec.contributingPrimaries.map((primary) => primary.name).join(", ")}`);
 
     if (evaluation) {

@@ -35,7 +35,7 @@ const rows=[
   }
 ];
 type SourceReference={ citation?:string; verified:boolean; verificationScope:string; sourceUrl?:string };
-type Suggestion={ conditionId:string; rank:number; prevalence:string; pathwayIntelligence?:unknown; sourceReferences:SourceReference[] };
+type Suggestion={ conditionId:string; rank:number; nexusClaim:{nexusClassification:string}|undefined; evidentiaryProfile:{etiologicalConsensus:string}|undefined; pathwayIntelligence?:unknown; sourceReferences:SourceReference[] };
 type Mapping={ draft:boolean; suggestions:Suggestion[] };
 type MasterRelationship={ relationshipId:string; primaryPublicationState:string; rank:number; publicationGuard:{ structuredGuardText:string } };
 type MasterRelationshipRegistry={ relationships:MasterRelationship[] };
@@ -48,7 +48,7 @@ describe("Mapping Expansion ME-12 local implementation",()=>{
       const m=load<Mapping>(path.join(ROOT,"data","knowledge-base",`${row.primaryId}.json`));
       expect(m.draft).toBe(true);
       const hits=m.suggestions.filter((s)=>s.conditionId===row.targetId);
-      expect(hits).toHaveLength(1); expect(hits[0].rank).toBe(1); expect(hits[0].prevalence).toBe("sometimes-explored");
+      expect(hits).toHaveLength(1); expect(hits[0].rank).toBe(1); expect(hits[0].nexusClaim?.nexusClassification).toBeDefined(); expect(hits[0].evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(hits[0].pathwayIntelligence).toBeUndefined();
       const refs=hits[0].sourceReferences.filter((r)=>r.citation?.includes(`PMID ${row.pmid}`));
       expect(refs).toHaveLength(1); expect(refs[0].verified).toBe(true); expect(refs[0].verificationScope).toBe("clinical-evidence");

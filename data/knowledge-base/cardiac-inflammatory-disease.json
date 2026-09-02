@@ -6,7 +6,6 @@
     {
       "conditionId": "cardiac-arrhythmia",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific inflammatory cardiac complication. Apply only to the documented myocarditis phenotype within the broader cardiac-inflammatory identity and separately documented arrhythmia. Do not generalize to every inflammatory cardiac diagnosis. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation that Pericarditis / Endocarditis / Myocarditis matches the source-specific phenotype",
@@ -24,7 +23,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 30476544; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Apply only to the documented myocarditis phenotype within the broader cardiac-inflammatory identity and separately documented arrhythmia. Do not generalize to every inflammatory cardiac diagnosis."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific inflammatory cardiac complication. Apply only to the documented myocarditis phenotype within the broader cardiac-inflammatory identity and separately documented arrhythmia. Do not generalize to every inflammatory cardiac diagnosis. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific inflammatory cardiac complication. Apply only to the documented myocarditis phenotype within the broader cardiac-inflammatory identity and separately documented arrhythmia. Do not generalize to every inflammatory cardiac diagnosis. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Resolution 2026 publishes this relationship only as phenotype specific inflammatory cardiac complication. Apply only to the documented myocarditis phenotype within the broader cardiac-inflammatory identity and separately documented arrhythmia. Do not generalize to every inflammatory cardiac diagnosis. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation that Pericarditis / Endocarditis / Myocarditis matches the source-specific phenotype; Independent diagnosis of Cardiac Arrhythmias (Atrial Fibrillation, Tachycardia) with compatible chronology; Assessment of competing medical, treatment-related, behavioral, and demographic contributors; Resolution of the publication guard: Apply only to the documented myocarditis phenotype within the broader cardiac-inflammatory identity and separately documented arrhythmia. Do not generalize to every inflammatory cardiac diagnosis.",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

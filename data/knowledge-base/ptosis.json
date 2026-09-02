@@ -6,7 +6,6 @@
     {
       "conditionId": "visual-impairment",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Upper-eyelid ptosis can mechanically obstruct the superior visual field and produce functionally significant visual impairment. Evidence-based eyelid-surgery guidance specifically addresses upper visual-field impairment related to ptosis and emphasizes documentation of the underlying cause and functional deficit. This supports a ptosis-to-visual-impairment pathway only when formal or clinically appropriate testing demonstrates a field deficit attributable to the drooping eyelid; ptosis without objective functional obstruction should not be treated as visual impairment by default.",
       "pathwayIntelligence": {
         "pathways": [
@@ -42,7 +41,27 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 35895522; abstract: guideline for upper visual-field impairments related to eyelid ptosis/dermatochalasis; systematic review addressed documentation of underlying cause"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Documented upper-eyelid ptosis → mechanical obstruction of the superior visual axis/field when sufficiently severe → objectively demonstrated visual-field impairment attributable to the eyelid position.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Documented upper-eyelid ptosis → mechanical obstruction of the superior visual axis/field when sufficiently severe → objectively demonstrated visual-field impairment attributable to the eyelid position.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Documented upper-eyelid ptosis → mechanical obstruction of the superior visual axis/field when sufficiently severe → objectively demonstrated visual-field impairment attributable to the eyelid position. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Ophthalmology or oculoplastic examination documenting ptosis severity and laterality; Objective visual-field or other accepted functional testing showing impairment attributable to eyelid position; Taped/elevated-lid comparison or postoperative functional response when available; Assessment of competing ocular and neurologic causes of the visual deficit; Clinician opinion linking the documented functional impairment to the individual ptosis",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

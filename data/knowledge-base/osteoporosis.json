@@ -6,7 +6,6 @@
     {
       "conditionId": "trigeminal-neuralgia",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require osteoporosis in a source-relevant older-adult population (>50 years in the cited cohort) before incident, separately established trigeminal neuralgia. Observational Taiwanese cohort in adults >50 years; temporal association only, with uncertain generalizability outside the studied population and no individual causal claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Osteoporosis, Residuals of and Trigeminal Neuralgia (Tic Douloureux)",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 35334622; PubMed identity/abstract confirmed; qualified-human-approved narrowed guard: Require osteoporosis in a source-relevant older-adult population (>50 years in the cited cohort) before incident, separately established trigeminal neuralgia."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require osteoporosis in a source-relevant older-adult population (>50 years in the cited cohort) before incident, separately established trigeminal neuralgia. Observational Taiwanese cohort in adults >50 years; temporal association only, with uncertain generalizability outside the studied population and no individual causal claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require osteoporosis in a source-relevant older-adult population (>50 years in the cited cohort) before incident, separately established trigeminal neuralgia. Observational Taiwanese cohort in adults >50 years; temporal association only, with uncertain generalizability outside the studied population and no individual causal claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require osteoporosis in a source-relevant older-adult population (>50 years in the cited cohort) before incident, separately established trigeminal neuralgia. Observational Taiwanese cohort in adults >50 years; temporal association only, with uncertain generalizability outside the studied population and no individual causal claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Osteoporosis, Residuals of and Trigeminal Neuralgia (Tic Douloureux); Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "osteonecrosis-of-the-jaw",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment complication. Require antiresorptive exposure such as bisphosphonate or denosumab for osteoporosis before medication-related osteonecrosis of the jaw; confirm MRONJ diagnostic criteria. Treatment complication, not an effect of osteoporosis itself. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "pathwayIntelligence": {
         "pathways": [
@@ -65,7 +83,27 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 30393090; PubMed title/abstract retrieved in the master research harvest; guard: Require antiresorptive exposure such as bisphosphonate or denosumab for osteoporosis before medication-related osteonecrosis of the jaw; confirm MRONJ diagnostic criteria."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Osteoporosis, Residuals of → documented qualifying treatment/procedure exposure → separately diagnosed Osteonecrosis of the Jaw with compatible timing.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Osteoporosis, Residuals of → documented qualifying treatment/procedure exposure → separately diagnosed Osteonecrosis of the Jaw with compatible timing.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Osteoporosis, Residuals of → documented qualifying treatment/procedure exposure → separately diagnosed Osteonecrosis of the Jaw with compatible timing. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation of the qualifying treatment or procedure used for Osteoporosis, Residuals of; Independent diagnosis of Osteonecrosis of the Jaw and timing relative to that exposure; Dose, duration, procedure details, and relevant co-exposures where applicable; Qualified clinical assessment of competing causes and source-phenotype fit",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

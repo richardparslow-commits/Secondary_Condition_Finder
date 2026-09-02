@@ -8,7 +8,6 @@
     {
       "conditionId": "mandibular-nonunion",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A large cohort of adults with isolated mandible fracture documented subsequent mandibular malunion/nonunion; because the catalog primary is broader than the evidence, the approved relationship applies only when the maxillofacial fracture specifically involves the mandible. Apply the broader maxillofacial-fracture identity only when the documented fracture specifically involves the mandible. Require separately established mandibular nonunion after that fracture. Do not infer mandibular nonunion from another facial fracture or from uncomplicated fracture healing. Preserve open-fracture status, infection, diabetes, alcohol use, treatment delay or fixation problems, osteonecrosis, metabolic bone disease, and other causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of maxillofacial-fracture and mandibular-nonunion",
@@ -27,7 +26,32 @@
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 34314633; approved ME-14 source; guard: Apply the broader maxillofacial-fracture identity only when the documented fracture specifically involves the mandible. Require separately established mandibular nonunion after that fracture. Do not infer mandibular nonunion from another facial fracture or from uncomplicated fracture healing. Preserve open-fracture status, infection, diabetes, alcohol use, treatment delay or fixation problems, osteonecrosis, metabolic bone disease, and other causes as competing explanations."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A large cohort of adults with isolated mandible fracture documented subsequent mandibular malunion/nonunion; because the catalog primary is broader than the evidence, the approved relationship applies only when the maxillofacial fracture specifically involves the mandible. Apply the broader maxillofacial-fracture identity only when the documented fracture specifically involves the mandible. Require separately established mandibular nonunion after that fracture.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A large cohort of adults with isolated mandible fracture documented subsequent mandibular malunion/nonunion; because the catalog primary is broader than the evidence, the approved relationship applies only when the maxillofacial fracture specifically involves the mandible. Apply the broader maxillofacial-fracture identity only when the documented fracture specifically involves the mandible. Require separately established mandibular nonunion after that fracture.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A large cohort of adults with isolated mandible fracture documented subsequent mandibular malunion/nonunion; because the catalog primary is broader than the evidence, the approved relationship applies only when the maxillofacial fracture specifically involves the mandible. Apply the broader maxillofacial-fracture identity only when the documented fracture specifically involves the mandible. Require separately established mandibular nonunion after that fracture. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of maxillofacial-fracture and mandibular-nonunion; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: mandibular-fracture-healing-complication; Assessment of material competing etiologies and treatment/context confounders; Resolution of publication guard: Apply the broader maxillofacial-fracture identity only when the documented fracture specifically involves the mandible. Require separately established mandibular nonunion after that fracture. Do not infer mandibular nonunion from another facial fracture or from uncomplicated fracture healing. Preserve open-fracture status, infection, diabetes, alcohol use, treatment delay or fixation problems, osteonecrosis, metabolic bone disease, and other causes as competing explanations",
+        "alternativeEtiologiesToRuleOut": [
+          "open-fracture status",
+          "infection",
+          "diabetes",
+          "alcohol use",
+          "treatment delay",
+          "fixation problems"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

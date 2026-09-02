@@ -3,7 +3,8 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 type SourceReference = { citation?: string; verified: boolean; verificationScope?: string };
-type Suggestion = { conditionId: string; rank: number; prevalence: string; pathwayIntelligence?: unknown; sourceReferences: SourceReference[] };
+type Suggestion = { conditionId: string; rank: number; nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined; pathwayIntelligence?: unknown; sourceReferences: SourceReference[] };
 type Mapping = { draft: boolean; suggestions: Suggestion[] };
 type RelationshipRecord = { relationshipId: string; primaryPublicationState: string; rank: number; publicationGuard: { structuredGuardText: string } };
 type RelationshipRegistry = { baselineCommit: string; currentState: string; relationships: RelationshipRecord[] };
@@ -57,7 +58,7 @@ describe("Mapping Expansion ME-17 local implementation", () => {
       const hits = mapping.suggestions.filter((s: Suggestion) => s.conditionId === row.targetId);
       expect(hits).toHaveLength(1);
       expect(hits[0]!.rank).toBe(row.rank);
-      expect(hits[0]!.prevalence).toBe("sometimes-explored");
+      expect(hits[0]!.nexusClaim?.nexusClassification).toBeDefined(); expect(hits[0]!.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(hits[0]!.pathwayIntelligence).toBeUndefined();
       const refs = hits[0]!.sourceReferences.filter((r: SourceReference) => r.citation?.includes(`PMID ${row.pmid}`));
       expect(refs).toHaveLength(1);

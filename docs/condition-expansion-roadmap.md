@@ -296,3 +296,24 @@ A batch is complete only when:
 Target catalog v2 is complete at **300 recognized conditions**, with **107 expansion identities** added across Waves 1-7. Catalog completion does not publish the 107 draft secondary mappings and does not imply that all possible medical or VA diagnostic identities have been enumerated.
 
 The next controlled workstream is no longer another numbered catalog wave. It is evidence and quality work: promote only individual secondary relationships with adequate condition-specific clinical support, verify eligible citations through the repository's approved verification workflow, and separately address documented catalog-modeling debt without weakening the 300/300 referential-integrity contract.
+
+## Causal Relational Graph (CRG) Migration Strategy
+
+**Status: implemented (breaking migration).** The knowledge base was previously a ranked *association registry with a qualitative `prevalence` label*. Under 38 CFR § 3.310 a secondary condition must be either *caused by* or *aggravated by* the service-connected primary, so the associative `prevalence` model was deprecated and removed. Every suggestion now carries a mandatory CRG trio, enforced by the Zod schema:
+
+1. **`nexusClaim`** — a discriminated union with three arms:
+   - `DIRECT_CAUSATION` — requires `etiologicalTrigger`; forbids aggravation fields.
+   - `AGGRAVATION` — requires `baselineProgression` (natural non-SC course) and `aggravatingFactor` (biomechanical/systemic force from the SC primary); forbids causation fields.
+   - `ASSOCIATION_ONLY` — an honest third arm required by the data: many guards explicitly disclaim that the population-level association establishes an individual nexus. These edges must say so, and must mark `causalMechanism.hypothesizedOnly: true`. Forcing an association into a causation arm would fabricate VA claims.
+2. **`causalMechanism`** — categorized physiological/biomechanical cascade (`BIOMECHANICAL_ALTERATION`, `PHARMACOLOGICAL_IATROGENIC`, `PSYCHOPHYSIOLOGICAL`, `SYSTEMIC_INFLAMMATORY`, etc.) with a `primaryVector` and an iatrogenic/hypothesis flag.
+3. **`evidentiaryProfile`** — replaces `prevalence` with `etiologicalConsensus` mapped to the VA "at least as likely as not" (≥ 50%) standard (`WELL_ESTABLISHED`, `PROBABLE`, `CONTESTED_REQUIRES_SPECIFIC_EVIDENCE`, `IATROGENIC_TREATMENT_EFFECT`, `NOT_ESTABLISHED`), plus `vaNexusProbabilityAlignment`, `conservativeRationale`, `evidenceGaps`, `alternativeEtiologiesToRuleOut`, and `requiresSpecificDbqEvidence`.
+
+**Enforcement:**
+
+- `src/lib/kb/schema.ts` — `nexusClaimSchema`/`causalMechanismSchema`/`evidentiaryProfileSchema` are required on every suggestion; `superRefine` rejects an `ASSOCIATION_ONLY` edge that is not `hypothesizedOnly` or claims a `WELL_ESTABLISHED` consensus, mirrors the source-reference legal-vs-clinical separation, and enforces the CONTESTED ≥ 2 alternative-etiologies requirement.
+- `scripts/validate-knowledge-base.js` (`npm run kb:validate`) — quarantines any suggestion whose references are > 30% unverified (downgraded/excluded) and any mapping that relies on a single unverified citation; reports CRG-field violations.
+- `scripts/audit-citation-decay.js` (`npm run citations:decay`) — link-rot and temporal-staleness audit (flags 4xx/5xx probes and stale `sourceCheckedOn`); enforces a `CITATION_CEILING` of 10 unverified-or-decayed live references.
+- `scripts/audit-master-registry.js` — fails on any drift between KB suggestions and `master-relationships.json` rows, including the recomputed `suggestionObjectHash` over the full CRG objects, so the parity contract now covers the trio, not just rank/rationale/references.
+- Engine (`src/lib/engine/recommend.ts`) — ranking is now consensus-weighted through `CONSENSUS_ORDER` instead of prevalence, and `Recommendation.etiologicalConsensus` is surfaced to the UI as a qualitative tier.
+
+**Migration notes for future contributors:** the migration grandfathers all 263 pre-existing suggestions from their guards. Rows whose guards explicitly disclaim individual causation were classified `ASSOCIATION_ONLY` / `NOT_ESTABLISHED`; rows with bounded causal claims (treatment-effect, device-complication, phenotype-limited chains) kept `DIRECT_CAUSATION` / `AGGRAVATION`. The `prevalence` field must not be reintroduced. Promote an `ASSOCIATION_ONLY` edge to a causal arm only with new condition-specific evidence and a qualified-human citation review.

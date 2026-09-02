@@ -6,7 +6,6 @@
     {
       "conditionId": "asthma",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident asthma and separately established asthma; preserve obesity, smoking, aspiration, medication, and other pulmonary contributors. Cohort meta-analysis supports temporal association only; no individual causation or aggravation claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Asthma",
@@ -24,12 +23,35 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40772230; PubMed title/abstract retrieved in the master research harvest; guard: Require GERD preceding incident asthma and separately established asthma; preserve obesity, smoking, aspiration, medication, and other pulmonary contributors."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident asthma and separately established asthma;",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident asthma and separately established asthma;",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident asthma and separately established asthma; It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Asthma; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "obesity",
+          "smoking",
+          "aspiration",
+          "medication",
+          "other pulmonary contributors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "bronchiectasis",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident bronchiectasis and separately established bronchiectasis; assess aspiration, infection, immune disease, and other pulmonary causes. Cohort meta-analysis supports temporal association only; no individual causation claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Bronchiectasis",
@@ -47,12 +69,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40772230; PubMed title/abstract retrieved in the master research harvest; guard: Require GERD preceding incident bronchiectasis and separately established bronchiectasis; assess aspiration, infection, immune disease, and other pulmonary causes."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident bronchiectasis and separately established bronchiectasis; assess aspiration, infection, immune disease, and other pulmonary causes. Cohort meta-analysis supports temporal association only; no individual causation claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident bronchiectasis and separately established bronchiectasis; assess aspiration, infection, immune disease, and other pulmonary causes. Cohort meta-analysis supports temporal association only; no individual causation claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident bronchiectasis and separately established bronchiectasis; assess aspiration, infection, immune disease, and other pulmonary causes. Cohort meta-analysis supports temporal association only; no individual causation claim. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Bronchiectasis; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "copd",
       "rank": 3,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident COPD and independently established COPD; account for smoking, occupational exposure, obesity, and medication effects. Cohort meta-analysis supports temporal association only and is vulnerable to shared-risk confounding. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Chronic Obstructive Pulmonary Disease (COPD)",
@@ -70,12 +111,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40772230; PubMed title/abstract retrieved in the master research harvest; guard: Require GERD preceding incident COPD and independently established COPD; account for smoking, occupational exposure, obesity, and medication effects."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident COPD and independently established COPD; account for smoking, occupational exposure, obesity, and medication effects. Cohort meta-analysis supports temporal association only and is vulnerable to shared-risk confounding. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident COPD and independently established COPD; account for smoking, occupational exposure, obesity, and medication effects. Cohort meta-analysis supports temporal association only and is vulnerable to shared-risk confounding. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident COPD and independently established COPD; account for smoking, occupational exposure, obesity, and medication effects. Cohort meta-analysis supports temporal association only and is vulnerable to shared-risk confounding. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Chronic Obstructive Pulmonary Disease (COPD); Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "interstitial-lung-disease",
       "rank": 4,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident ILD and separately established ILD; assess autoimmune, occupational, drug, aspiration, and other ILD etiologies. Cohort meta-analysis supports temporal association only; source does not prove GERD caused an individual ILD case. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Interstitial Lung Disease",
@@ -93,12 +153,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40772230; PubMed title/abstract retrieved in the master research harvest; guard: Require GERD preceding incident ILD and separately established ILD; assess autoimmune, occupational, drug, aspiration, and other ILD etiologies."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident ILD and separately established ILD; assess autoimmune, occupational, drug, aspiration, and other ILD etiologies. Cohort meta-analysis supports temporal association only; source does not prove GERD caused an individual ILD case. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident ILD and separately established ILD; assess autoimmune, occupational, drug, aspiration, and other ILD etiologies. Cohort meta-analysis supports temporal association only; source does not prove GERD caused an individual ILD case. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding incident ILD and separately established ILD; assess autoimmune, occupational, drug, aspiration, and other ILD etiologies. Cohort meta-analysis supports temporal association only; source does not prove GERD caused an individual ILD case. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Interstitial Lung Disease; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "pulmonary-fibrosis",
       "rank": 5,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding pulmonary fibrosis and separately established fibrosis; evaluate aspiration, occupational, autoimmune, drug, and idiopathic causes. Population-level temporal association only; no causal pathway metadata. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Pulmonary Fibrosis",
@@ -116,12 +195,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40772230; PubMed title/abstract retrieved in the master research harvest; guard: Require GERD preceding pulmonary fibrosis and separately established fibrosis; evaluate aspiration, occupational, autoimmune, drug, and idiopathic causes."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding pulmonary fibrosis and separately established fibrosis; evaluate aspiration, occupational, autoimmune, drug, and idiopathic causes. Population-level temporal association only; no causal pathway metadata. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding pulmonary fibrosis and separately established fibrosis; evaluate aspiration, occupational, autoimmune, drug, and idiopathic causes. Population-level temporal association only; no causal pathway metadata. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Require GERD preceding pulmonary fibrosis and separately established fibrosis; evaluate aspiration, occupational, autoimmune, drug, and idiopathic causes. Population-level temporal association only; no causal pathway metadata. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Pulmonary Fibrosis; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "respiratory-cancer",
       "rank": 6,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Apply to incident lung/respiratory cancer after GERD; require cancer diagnosis and account for tobacco, occupational, reflux-related surveillance, and other cancer risks. Population-level association only; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Lung Cancer / Tracheal Cancer / Bronchial Cancer",
@@ -139,12 +237,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40772230; PubMed title/abstract retrieved in the master research harvest; guard: Apply to incident lung/respiratory cancer after GERD; require cancer diagnosis and account for tobacco, occupational, reflux-related surveillance, and other cancer risks."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Apply to incident lung/respiratory cancer after GERD; require cancer diagnosis and account for tobacco, occupational, reflux-related surveillance, and other cancer risks. Population-level association only; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Apply to incident lung/respiratory cancer after GERD; require cancer diagnosis and account for tobacco, occupational, reflux-related surveillance, and other cancer risks. Population-level association only; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Apply to incident lung/respiratory cancer after GERD; require cancer diagnosis and account for tobacco, occupational, reflux-related surveillance, and other cancer risks. Population-level association only; no individual causation. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Lung Cancer / Tracheal Cancer / Bronchial Cancer; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "tuberculosis",
       "rank": 7,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Apply to pulmonary tuberculosis occurring after GERD; require microbiologically/clinically established TB and evaluate epidemiologic exposure/immunosuppression. Population-level association only; GERD is not established as an individual cause of TB. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Mycobacterium Tuberculosis",
@@ -162,7 +279,27 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 40772230; PubMed title/abstract retrieved in the master research harvest; guard: Apply to pulmonary tuberculosis occurring after GERD; require microbiologically/clinically established TB and evaluate epidemiologic exposure/immunosuppression."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Apply to pulmonary tuberculosis occurring after GERD; require microbiologically/clinically established TB and evaluate epidemiologic exposure/immunosuppression. Population-level association only; GERD is not established as an individual cause of TB. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Apply to pulmonary tuberculosis occurring after GERD; require microbiologically/clinically established TB and evaluate epidemiologic exposure/immunosuppression. Population-level association only; GERD is not established as an individual cause of TB. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as temporal association risk. Apply to pulmonary tuberculosis occurring after GERD; require microbiologically/clinically established TB and evaluate epidemiologic exposure/immunosuppression. Population-level association only; GERD is not established as an individual cause of TB. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Gastroesophageal Reflux Disease (GERD) and Mycobacterium Tuberculosis; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

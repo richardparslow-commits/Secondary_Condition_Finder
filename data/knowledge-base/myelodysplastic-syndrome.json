@@ -6,7 +6,6 @@
     {
       "conditionId": "leukemia",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific disease transformation. Apply only to therapy-related/secondary MDS phenotype consistent with the source and subsequent acute nonlymphocytic/myeloid leukemia transformation. Older source is therapy-related MDS specific; do not generalize this record to all de novo MDS without stronger matching evidence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation that Myelodysplastic Syndromes matches the source-specific phenotype or population",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 9371291; PubMed title/abstract retrieved in the master research harvest; guard: Apply only to therapy-related/secondary MDS phenotype consistent with the source and subsequent acute nonlymphocytic/myeloid leukemia transformation."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific disease transformation. Apply only to therapy-related/secondary MDS phenotype consistent with the source and subsequent acute nonlymphocytic/myeloid leukemia transformation. Older source is therapy-related MDS specific; do not generalize this record to all de novo MDS without stronger matching evidence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific disease transformation. Apply only to therapy-related/secondary MDS phenotype consistent with the source and subsequent acute nonlymphocytic/myeloid leukemia transformation. Older source is therapy-related MDS specific; do not generalize this record to all de novo MDS without stronger matching evidence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as phenotype specific disease transformation. Apply only to therapy-related/secondary MDS phenotype consistent with the source and subsequent acute nonlymphocytic/myeloid leukemia transformation. Older source is therapy-related MDS specific; do not generalize this record to all de novo MDS without stronger matching evidence. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation that Myelodysplastic Syndromes matches the source-specific phenotype or population; Independent diagnosis of Leukemia (Acute & Chronic) with compatible chronology; Assessment of competing medical, treatment-related, behavioral, and demographic contributors; Qualified clinical opinion before applying the population-level relationship to an individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "anemia",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Anemia is a major clinical manifestation of myelodysplastic syndromes and may arise from ineffective/dysplastic erythropoiesis. Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of myelodysplastic-syndrome and anemia",
@@ -48,7 +66,32 @@
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 26404446; approved ME-8 proposition; guard: Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Anemia is a major clinical manifestation of myelodysplastic syndromes and may arise from ineffective/dysplastic erythropoiesis. Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS;",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Anemia is a major clinical manifestation of myelodysplastic syndromes and may arise from ineffective/dysplastic erythropoiesis. Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS;",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. Anemia is a major clinical manifestation of myelodysplastic syndromes and may arise from ineffective/dysplastic erythropoiesis. Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of myelodysplastic-syndrome and anemia; Documentation satisfying the approved phenotype restriction: separately documented anemia in established myelodysplastic syndrome; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require established myelodysplastic syndrome and separately documented anemia. Do not attribute every anemia automatically to MDS; preserve bleeding, iron/B12/folate deficiency, chronic kidney disease, hemolysis, treatment effects, inflammatory disease, and other marrow disorders.",
+        "alternativeEtiologiesToRuleOut": [
+          "bleeding",
+          "iron/B12/folate deficiency",
+          "chronic kidney disease",
+          "hemolysis",
+          "treatment effects",
+          "inflammatory disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

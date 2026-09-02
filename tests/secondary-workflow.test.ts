@@ -191,7 +191,7 @@ describe("groupSuggestionsByPrimary", () => {
         conditionId: "sleep-apnea",
         condition: "Sleep Apnea",
         bodySystem: "Respiratory",
-        prevalence: "commonly-explored",
+        etiologicalConsensus: "PROBABLE",
         score: 1,
         contributingPrimaries: [
           { id: "ptsd", name: "Post-Traumatic Stress Disorder (PTSD)", rank: 1, rationale: "r1" },
@@ -220,7 +220,7 @@ describe("findLinkedNonServiceConnectedConditions", () => {
     conditionId: "sleep-apnea",
     condition: "Sleep Apnea",
     bodySystem: "Respiratory",
-    prevalence: "commonly-explored",
+    etiologicalConsensus: "PROBABLE",
     score: 1,
     contributingPrimaries: [
       { id: "ptsd", name: "Post-Traumatic Stress Disorder (PTSD)", rank: 1, rationale: "PTSD disrupts sleep architecture." },
@@ -246,7 +246,7 @@ describe("findLinkedNonServiceConnectedConditions", () => {
     expect(linked[0].conditionId).toBe("sleep-apnea");
     expect(linked[0].conditionName).toBe("Sleep Apnea");
     expect(linked[0].bodySystem).toBe("Respiratory");
-    expect(linked[0].prevalence).toBe("commonly-explored");
+    expect(linked[0].etiologicalConsensus).toBeDefined();
     expect(linked[0].linkingPrimaries).toHaveLength(1);
     expect(linked[0].linkingPrimaries[0].rationale).toBe("PTSD disrupts sleep architecture.");
   });
@@ -286,7 +286,7 @@ describe("findLinkedNonServiceConnectedConditions", () => {
       conditionId: "tinnitus",
       condition: "Tinnitus",
       bodySystem: "Auditory",
-      prevalence: "sometimes-explored",
+      etiologicalConsensus: "PROBABLE",
       score: 0.5,
       contributingPrimaries: [
         { id: "ptsd", name: "Post-Traumatic Stress Disorder (PTSD)", rank: 2, rationale: "Hypervigilance worsens tinnitus." },

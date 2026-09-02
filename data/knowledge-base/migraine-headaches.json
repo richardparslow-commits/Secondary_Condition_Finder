@@ -6,7 +6,6 @@
     {
       "conditionId": "depressive-disorder",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Prospective cohort evidence supports a temporal association between migraine and later depression. In a large cohort of women without depression at baseline, active migraine with aura, active migraine without aura, and past migraine were each associated with increased incident depression during long-term follow-up, with higher attack frequency associated with greater risk. This supports focused temporal-association research when a documented migraine disorder predates a separately diagnosed depressive disorder and migraine burden plausibly contributes to functional or psychological deterioration. The evidence does not establish individual causation, is not proof that depression is secondary to migraine in every patient, and should be interpreted with the individual's psychiatric history, headache burden, treatment, sleep, pain, and other competing contributors.",
       "evidenceGaps": [
         "Neurology or headache documentation confirming migraine phenotype, onset, frequency, severity, and longitudinal treatment",
@@ -25,7 +24,27 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 23588795; abstract Methods/Results/Conclusions: 36,016 depression-free women, mean 13.8-year follow-up; adjusted RR 1.53 with aura, 1.40 without aura, 1.56 past migraine; higher attack frequency associated with greater incident-depression risk"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Prospective cohort evidence supports a temporal association between migraine and later depression. In a large cohort of women without depression at baseline, active migraine with aura, active migraine without aura, and past migraine were each associated with increased incident depression during long-term follow-up, with higher attack frequency associated with greater risk. This supports focused temporal-association research when a documented migraine disorder predates a separately diagnosed depressive disorder and migraine burden plausibly contributes to functional or psychological deterioration. The evidence does not establish individual causation, is not proof that depression is secondary to migraine in every patient, and should be interpreted with the individual's psychiatric history, headache burden, treatment, sleep, pain, and other competing contributors.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Prospective cohort evidence supports a temporal association between migraine and later depression. In a large cohort of women without depression at baseline, active migraine with aura, active migraine without aura, and past migraine were each associated with increased incident depression during long-term follow-up, with higher attack frequency associated with greater risk. This supports focused temporal-association research when a documented migraine disorder predates a separately diagnosed depressive disorder and migraine burden plausibly contributes to functional or psychological deterioration. The evidence does not establish individual causation, is not proof that depression is secondary to migraine in every patient, and should be interpreted with the individual's psychiatric history, h",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Prospective cohort evidence supports a temporal association between migraine and later depression. In a large cohort of women without depression at baseline, active migraine with aura, active migraine without aura, and past migraine were each associated with increased incident depression during long-term follow-up, with higher attack frequency associated with greater risk. This supports focused temporal-association research when a documented migraine disorder predates a separately diagnosed depressive disorder and migraine burden plausibly contributes to functional or psychological deterioration. The evidence does not establish individual causation, is not proof that depression is secondary to migraine in every patient, and should be i",
+        "evidenceGaps": "Neurology or headache documentation confirming migraine phenotype, onset, frequency, severity, and longitudinal treatment; Qualified depressive-disorder diagnosis and chronology relative to migraine onset and burden; Documentation of migraine-related occupational, social, sleep, and functional effects; Assessment of pre-existing psychiatric illness, other chronic pain, sleep disorders, medications, substance use, and psychosocial contributors; Qualified medical or mental-health opinion distinguishing population-level association from individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

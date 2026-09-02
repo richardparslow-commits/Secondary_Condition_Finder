@@ -1,47 +1,66 @@
 {
-  "id": "asthma",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "sleep-apnea",
-      "rank": 1,
-      "prevalence": "commonly-explored",
-      "rationale": "Asthma and obstructive sleep apnea have been studied together in observational cohorts and meta-analysis, but the pooled association for asthma overall was imprecise and did not clearly exclude no association. A stronger signal was reported for moderate-to-severe asthma, although that subgroup evidence was limited and imprecise. These population-level findings support focused clinical review but do not establish that asthma caused or aggravated an individual veteran's OSA.",
-      "pathwayIntelligence": {
-        "pathways": [
-          "direct-secondary",
-          "aggravation"
-        ],
-        "causalChain": "Asthma → claimed causation or worsening of diagnosed obstructive sleep apnea; the population-level association requires individual medical assessment before relying on either theory.",
-        "developmentQuestions": [
-          "Is obstructive sleep apnea currently confirmed by an appropriate sleep study?",
-          "How severe and persistent is the asthma, and how does its timeline compare with OSA onset or worsening?",
-          "Does the individual medical history support causation, aggravation, or neither between asthma and OSA?",
-          "Can a pulmonary or sleep-medicine clinician explain whether the asthma materially affected the OSA in this individual case?",
-          "Which alternative OSA risk factors, including obesity and upper-airway factors, should be addressed?"
-        ],
-        "issuesToResolve": [
-          "The overall pooled asthma/OSA estimate was imprecise and crossed the null; the stronger moderate-to-severe asthma signal was limited and very imprecise, so neither establishes an individual medical nexus.",
-          "Asthma severity, OSA severity, timing, and alternative OSA risk factors require case-specific review."
-        ]
-      },
-      "evidenceGaps": [
-        "Sleep study (polysomnography or qualifying home sleep test) confirming OSA",
-        "Clinical assessment of asthma severity, obesity and other OSA risk factors",
-        "Pulmonary or sleep-medicine opinion addressing the individual relationship between asthma and OSA when a secondary theory is asserted"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Ferreira et al., Sleep Medicine (2025), PMID 40774162",
-          "note": "Systematic review/meta-analysis of 12 studies (N=19,203) found an imprecise overall asthma-OSA association, with a stronger but limited signal in moderate-to-severe asthma; supports investigation of the relationship while preserving uncertainty and does not establish individual causation or aggravation.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40774162/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-18",
-          "sourceLocator": "PMID 40774162; abstract/results: 12 studies, N=19,203; overall asthma vs OSA OR 1.4 (95% CI 0.9-2.2); moderate-to-severe asthma OR 10.1 (95% CI 1.3-81.7); authors call for prospective cohorts controlling referral bias and asthma severity"
-        }
-      ]
-    }
-  ]
+   "id": "asthma",
+   "draft": false,
+   "todo": [],
+   "suggestions": [
+      {
+         "conditionId": "sleep-apnea",
+         "rank": 1,
+         "rationale": "Asthma and obstructive sleep apnea have been studied together in observational cohorts and meta-analysis, but the pooled association for asthma overall was imprecise and did not clearly exclude no association. A stronger signal was reported for moderate-to-severe asthma, although that subgroup evidence was limited and imprecise. These population-level findings support focused clinical review but do not establish that asthma caused or aggravated an individual veteran's OSA.",
+         "pathwayIntelligence": {
+            "pathways": [
+               "direct-secondary",
+               "aggravation"
+            ],
+            "causalChain": "Asthma → claimed causation or worsening of diagnosed obstructive sleep apnea; the population-level association requires individual medical assessment before relying on either theory.",
+            "developmentQuestions": [
+               "Is obstructive sleep apnea currently confirmed by an appropriate sleep study?",
+               "How severe and persistent is the asthma, and how does its timeline compare with OSA onset or worsening?",
+               "Does the individual medical history support causation, aggravation, or neither between asthma and OSA?",
+               "Can a pulmonary or sleep-medicine clinician explain whether the asthma materially affected the OSA in this individual case?",
+               "Which alternative OSA risk factors, including obesity and upper-airway factors, should be addressed?"
+            ],
+            "issuesToResolve": [
+               "The overall pooled asthma/OSA estimate was imprecise and crossed the null; the stronger moderate-to-severe asthma signal was limited and very imprecise, so neither establishes an individual medical nexus.",
+               "Asthma severity, OSA severity, timing, and alternative OSA risk factors require case-specific review."
+            ]
+         },
+         "evidenceGaps": [
+            "Sleep study (polysomnography or qualifying home sleep test) confirming OSA",
+            "Clinical assessment of asthma severity, obesity and other OSA risk factors",
+            "Pulmonary or sleep-medicine opinion addressing the individual relationship between asthma and OSA when a secondary theory is asserted"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Ferreira et al., Sleep Medicine (2025), PMID 40774162",
+               "note": "Systematic review/meta-analysis of 12 studies (N=19,203) found an imprecise overall asthma-OSA association, with a stronger but limited signal in moderate-to-severe asthma; supports investigation of the relationship while preserving uncertainty and does not establish individual causation or aggravation.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40774162/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-18",
+               "sourceLocator": "PMID 40774162; abstract/results: 12 studies, N=19,203; overall asthma vs OSA OR 1.4 (95% CI 0.9-2.2); moderate-to-severe asthma OR 10.1 (95% CI 1.3-81.7); authors call for prospective cohorts controlling referral bias and asthma severity"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "ASSOCIATION_ONLY",
+            "associationBasis": "The published knowledge base includes this relationship as an association: Asthma and obstructive sleep apnea have been studied together in observational cohorts and meta-analysis, but the pooled association for asthma overall was imprecise and did not clearly exclude no association. A stronger signal was reported for moderate-to-severe asthma, although that subgroup evidence was limited and imprecise. These population-level findings support focused clinical review but do not establish that asthma caused or aggravated an individual veteran's OSA.",
+            "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "MULTIFACTORIAL",
+            "primaryVector": "Asthma and obstructive sleep apnea have been studied together in observational cohorts and meta-analysis, but the pooled association for asthma overall was imprecise and did not clearly exclude no association. A stronger signal was reported for moderate-to-severe asthma, although that subgroup evidence was limited and imprecise. These population-level findings support focused clinical review but do not establish that asthma caused or aggravated an individual veteran's OSA.",
+            "hypothesizedOnly": true
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "NOT_ESTABLISHED",
+            "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+            "conservativeRationale": "This relationship is supported as an association only. Asthma and obstructive sleep apnea have been studied together in observational cohorts and meta-analysis, but the pooled association for asthma overall was imprecise and did not clearly exclude no association. A stronger signal was reported for moderate-to-severe asthma, although that subgroup evidence was limited and imprecise. These population-level findings support focused clinical review but do not establish that asthma caused or aggravated an individual veteran's OSA. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+            "evidenceGaps": "Sleep study (polysomnography or qualifying home sleep test) confirming OSA; Clinical assessment of asthma severity, obesity and other OSA risk factors; Pulmonary or sleep-medicine opinion addressing the individual relationship between asthma and OSA when a secondary theory is asserted",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
+      }
+   ]
 }

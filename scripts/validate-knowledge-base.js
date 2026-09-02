@@ -127,8 +127,54 @@ for (const { file, data } of kbFiles) {
       ranks.add(suggestion.rank);
     }
 
-    if (typeof suggestion.prevalence !== "string" || !suggestion.prevalence.trim()) {
-      errors.push(`${prefix}: prevalence must be a non-empty string`);
+    // CRG (Causal Relational Graph) required fields. Prevalence is removed;
+    // every edge must declare a nexus pathway, a causal mechanism, and an
+    // etiological consensus profile honest to the evidence.
+    const nexus = suggestion.nexusClaim;
+    if (!nexus || typeof nexus !== "object" || !["DIRECT_CAUSATION", "AGGRAVATION", "ASSOCIATION_ONLY"].includes(nexus.nexusClassification)) {
+      errors.push(`${prefix}: nexusClaim.nexusClassification must be DIRECT_CAUSATION, AGGRAVATION, or ASSOCIATION_ONLY`);
+    } else if (nexus.nexusClassification === "DIRECT_CAUSATION" && (!nexus.etiologicalTrigger || nexus.etiologicalTrigger.trim().length < 50)) {
+      errors.push(`${prefix}: DIRECT_CAUSATION requires etiologicalTrigger of at least 50 characters`);
+    } else if (nexus.nexusClassification === "AGGRAVATION" && ((!nexus.baselineProgression || nexus.baselineProgression.trim().length < 50) || (!nexus.aggravatingFactor || nexus.aggravatingFactor.trim().length < 50))) {
+      errors.push(`${prefix}: AGGRAVATION requires baselineProgression and aggravatingFactor of at least 50 characters each`);
+    } else if (nexus.nexusClassification === "ASSOCIATION_ONLY" && ((!nexus.associationBasis || nexus.associationBasis.trim().length < 50) || (!nexus.causationStatus || nexus.causationStatus.trim().length < 50))) {
+      errors.push(`${prefix}: ASSOCIATION_ONLY requires associationBasis and causationStatus of at least 50 characters each`);
+    }
+
+    const mechanism = suggestion.causalMechanism;
+    if (!mechanism || typeof mechanism !== "object") {
+      errors.push(`${prefix}: causalMechanism is required`);
+    } else {
+      if (typeof mechanism.mechanismCategory !== "string" || !mechanism.mechanismCategory.trim()) {
+        errors.push(`${prefix}: causalMechanism.mechanismCategory is required`);
+      }
+      if (typeof mechanism.primaryVector !== "string" || mechanism.primaryVector.trim().length < 50) {
+        errors.push(`${prefix}: causalMechanism.primaryVector must be at least 50 characters`);
+      }
+      if (mechanism.hypothesizedOnly === true && nexus && nexus.nexusClassification !== "ASSOCIATION_ONLY") {
+        errors.push(`${prefix}: causalMechanism.hypothesizedOnly is only valid for ASSOCIATION_ONLY edges`);
+      }
+    }
+
+    const profile = suggestion.evidentiaryProfile;
+    if (!profile || typeof profile !== "object") {
+      errors.push(`${prefix}: evidentiaryProfile is required`);
+    } else {
+      const validTiers = ["WELL_ESTABLISHED", "PROBABLE", "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE", "IATROGENIC_TREATMENT_EFFECT", "NOT_ESTABLISHED"];
+      if (!validTiers.includes(profile.etiologicalConsensus)) {
+        errors.push(`${prefix}: evidentiaryProfile.etiologicalConsensus must be one of ${validTiers.join(", ")}`);
+      }
+      if (nexus && nexus.nexusClassification === "ASSOCIATION_ONLY" && profile.etiologicalConsensus === "WELL_ESTABLISHED") {
+        errors.push(`${prefix}: an ASSOCIATION_ONLY edge cannot claim WELL_ESTABLISHED etiological consensus`);
+      }
+      if (profile.etiologicalConsensus === "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE") {
+        if (!Array.isArray(profile.alternativeEtiologiesToRuleOut) || profile.alternativeEtiologiesToRuleOut.length < 2) {
+          errors.push(`${prefix}: CONTESTED_REQUIRES_SPECIFIC_EVIDENCE mappings must list at least 2 alternative etiologies to rule out`);
+        }
+        if (profile.requiresSpecificDbqEvidence !== true) {
+          errors.push(`${prefix}: CONTESTED_REQUIRES_SPECIFIC_EVIDENCE mappings require requiresSpecificDbqEvidence: true`);
+        }
+      }
     }
 
     if (typeof suggestion.rationale !== "string" || !suggestion.rationale.trim()) {
@@ -204,6 +250,24 @@ for (const { file, data } of kbFiles) {
     const expectedRanks = Array.from({ length: sortedRanks.length }, (_, index) => index + 1);
     if (JSON.stringify(sortedRanks) !== JSON.stringify(expectedRanks)) {
       errors.push(`${file}: ranks must be contiguous starting at 1`);
+    }
+  }
+
+  // Pillar 4 quarantine: citation purity threshold. A mapping with > 30%
+  // unverified citations must be forced to draft and excluded from published
+  // recommendation output, and a mapping whose only citation is unverified is
+  // immediately quarantined.
+  for (let index = 0; index < data.suggestions.length; index += 1) {
+    const suggestion = data.suggestions[index];
+    const refs = suggestion.sourceReferences || [];
+    const unverifiedCount = refs.filter(reference => reference.verified === false).length;
+    if (refs.length === 1 && refs[0] && refs[0].verified === false) {
+      if (data.draft !== true) {
+        errors.push(`${file}: suggestions[${index}] relies on a single unverified citation and must be quarantined — set the mapping draft: true until the citation is verified`);
+      }
+      warnings.push(`${file}: suggestions[${index}] is quarantined behind a single unverified citation (draft-only)`);
+    } else if (data.draft !== true && unverifiedCount / refs.length > 0.3) {
+      errors.push(`${file}: suggestions[${index}] has ${unverifiedCount}/${refs.length} unverified citations (> 30% threshold) and must be quarantined — set the mapping draft: true until citation debt is cleared`);
     }
   }
 

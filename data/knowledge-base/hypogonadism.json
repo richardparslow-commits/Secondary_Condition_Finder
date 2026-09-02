@@ -6,7 +6,6 @@
     {
       "conditionId": "osteoporosis",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Confirmed male hypogonadism/testosterone deficiency is clinically associated with bone loss and can warrant formal osteoporosis and fracture-risk evaluation. The European Academy of Andrology bone-health guideline states that testosterone deficiency may be clearly associated with bone loss and frailty, recommends complete bone-health assessment and DXA in men with confirmed clinical hypogonadism, and notes that evidence that testosterone replacement prevents fractures is lacking. This mapping therefore supports a bounded hypogonadism-to-bone-loss/osteoporosis research pathway, not an assumption that every case of osteoporosis is caused by androgen deficiency or that testosterone therapy will prevent fractures.",
       "pathwayIntelligence": {
         "pathways": [
@@ -42,12 +41,30 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 29499097; abstract lines on testosterone deficiency, silent osteoporosis, complete bone-health assessment/DXA, and lack of fracture-prevention data"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Confirmed clinical hypogonadism with sustained androgen deficiency → impaired skeletal maintenance and bone loss when present → low bone mineral density/osteoporosis, with age, glucocorticoids, nutrition, smoking, alcohol, immobility, other endocrine disease, and other secondary osteoporosis causes requiring separate review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Confirmed clinical hypogonadism with sustained androgen deficiency → impaired skeletal maintenance and bone loss when present → low bone mineral density/osteoporosis, with age, glucocorticoids, nutrition, smoking, alcohol, immobility, other endocrine disease, and other secondary osteoporosis causes requiring separate review.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Confirmed clinical hypogonadism with sustained androgen deficiency → impaired skeletal maintenance and bone loss when present → low bone mineral density/osteoporosis, with age, glucocorticoids, nutrition, smoking, alcohol, immobility, other endocrine disease, and other secondary osteoporosis causes requiring separate review.",
+        "evidenceGaps": "Clinical and biochemical documentation confirming hypogonadism and duration; DXA results and fracture-risk/vertebral-fracture assessment when clinically indicated; Bone-health laboratory evaluation and longitudinal bone-density records; Medication and treatment history, including glucocorticoids and androgen-replacement therapy; Clinician assessment of competing causes of osteoporosis and the individual's chronology",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "erectile-dysfunction",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Androgen-deficiency hypogonadism is clinically linked to impaired erectile function, and testosterone treatment in late-onset hypogonadism improves erectile-function scores at the population level. Require established androgen-deficiency hypogonadism consistent with the source population, including late-onset hypogonadism when relying on this citation, and separately documented erectile dysfunction. Do not attribute every erectile-dysfunction case to hypogonadism. Preserve vascular and metabolic disease, diabetes, medication effects, neurologic disease, pelvic surgery, psychogenic factors, other endocrine disorders, and structural or urologic causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of hypogonadism and erectile-dysfunction",
@@ -66,7 +83,32 @@
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 34856556; approved ME-9 proposition; guard: Require established androgen-deficiency hypogonadism consistent with the source population, including late-onset hypogonadism when relying on this citation, and separately documented erectile dysfunction. Do not attribute every erectile-dysfunction case to hypogonadism. Preserve vascular and metabolic disease, diabetes, medication effects, neurologic disease, pelvic surgery, psychogenic factors, other endocrine disorders, and structural or urologic causes."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Androgen-deficiency hypogonadism is clinically linked to impaired erectile function, and testosterone treatment in late-onset hypogonadism improves erectile-function scores at the population level. Require established androgen-deficiency hypogonadism consistent with the source population, including late-onset hypogonadism when relying on this citation, and separately documented erectile dysfunction. Do not attribute every erectile-dysfunction case to hypogonadism.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Androgen-deficiency hypogonadism is clinically linked to impaired erectile function, and testosterone treatment in late-onset hypogonadism improves erectile-function scores at the population level. Require established androgen-deficiency hypogonadism consistent with the source population, including late-onset hypogonadism when relying on this citation, and separately documented erectile dysfunction. Do not attribute every erectile-dysfunction case to hypogonadism.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-9 adds this relationship only as a bounded clinical proposition. Androgen-deficiency hypogonadism is clinically linked to impaired erectile function, and testosterone treatment in late-onset hypogonadism improves erectile-function scores at the population level. Require established androgen-deficiency hypogonadism consistent with the source population, including late-onset hypogonadism when relying on this citation, and separately documented erectile dysfunction. Do not attribute every erectile-dysfunction case to hypogonadism. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of hypogonadism and erectile-dysfunction; Documentation satisfying the approved phenotype restriction: adult male androgen-deficiency hypogonadism consistent with the late-onset hypogonadism evidence and separately documented erectile dysfunction; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require established androgen-deficiency hypogonadism consistent with the source population, including late-onset hypogonadism when relying on this citation, and separately documented erectile dysfunction. Do not attribute every erectile-dysfunction case to hypogonadism. Preserve vascular and metabolic disease",
+        "alternativeEtiologiesToRuleOut": [
+          "vascular",
+          "metabolic disease",
+          "diabetes",
+          "medication effects",
+          "neurologic disease",
+          "pelvic surgery"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

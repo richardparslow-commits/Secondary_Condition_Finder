@@ -6,7 +6,6 @@
     {
       "conditionId": "chronic-kidney-disease",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Chronic kidney disease is a recognized microvascular complication of longstanding type 1 diabetes, but kidney disease in a person with diabetes is not automatically diabetic kidney disease. The 2026 ADA Standards of Care recommend annual urinary albumin-to-creatinine ratio and eGFR assessment after at least 5 years of type 1 diabetes and describe the typical diabetic CKD pattern as longstanding diabetes with albuminuria and/or gradual eGFR loss. This supports a disease-progression research pathway when the diabetes duration, renal phenotype, and chronology fit, while active urine sediment, rapid renal decline, nephrotic syndrome, or other atypical features require investigation for alternative kidney disease.",
       "pathwayIntelligence": {
         "pathways": [
@@ -42,12 +41,31 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 41358881; CKD screening/diagnosis sections: annual UACR and eGFR after T1D duration ≥5 years; typical diabetic CKD features and alternative-diagnosis warning signs"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Longstanding type 1 diabetes with chronic hyperglycemic/microvascular injury → albuminuria and/or progressive loss of kidney filtration when present → chronic kidney disease, with non-diabetic renal etiologies requiring review when the phenotype is atypical.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Longstanding type 1 diabetes with chronic hyperglycemic/microvascular injury → albuminuria and/or progressive loss of kidney filtration when present → chronic kidney disease, with non-diabetic renal etiologies requiring review when the phenotype is atypical.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Longstanding type 1 diabetes with chronic hyperglycemic/microvascular injury → albuminuria and/or progressive loss of kidney filtration when present → chronic kidney disease, with non-diabetic renal etiologies requiring review when the phenotype is atypical. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Type 1 diabetes diagnosis and duration with longitudinal glycemic-control records; Serial UACR or other albumin/protein measurements and creatinine/eGFR results; Urinalysis and nephrology records addressing atypical renal features or alternative etiologies; Diabetic retinopathy or other microvascular-complication history when available; Clinician assessment of whether the individual CKD phenotype and chronology are consistent with diabetic kidney disease",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "diabetic-retinopathy",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require established type 1 diabetes mellitus and separately established diabetic retinopathy by appropriate ophthalmic evaluation. Treat the source as population-level prevalence/complication evidence, not automatic individual causation or permission to infer retinopathy from diabetes alone. Preserve diabetes duration, glycemic control, hypertension, nephropathy, smoking, and other retinal or vascular contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of diabetes-mellitus-type-1 and diabetic-retinopathy",
@@ -65,7 +83,32 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 31515657; approved ME-5 proposition; guard: Require established type 1 diabetes mellitus and separately established diabetic retinopathy by appropriate ophthalmic evaluation. Treat the source as population-level prevalence/complication evidence, not automatic individual causation or permission to infer retinopathy from diabetes alone. Preserve diabetes duration, glycemic control, hypertension, nephropathy, smoking, and other retinal or vascular contributors."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require established type 1 diabetes mellitus and separately established diabetic retinopathy by appropriate ophthalmic evaluation. Treat the source as population-level prevalence/complication evidence, not automatic individual causation or permission to infer retinopathy from diabetes alone.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require established type 1 diabetes mellitus and separately established diabetic retinopathy by appropriate ophthalmic evaluation. Treat the source as population-level prevalence/complication evidence, not automatic individual causation or permission to infer retinopathy from diabetes alone.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-5 adds this relationship only as a bounded clinical proposition. Require established type 1 diabetes mellitus and separately established diabetic retinopathy by appropriate ophthalmic evaluation. Treat the source as population-level prevalence/complication evidence, not automatic individual causation or permission to infer retinopathy from diabetes alone. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of diabetes-mellitus-type-1 and diabetic-retinopathy; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require established type 1 diabetes mellitus and separately established diabetic retinopathy by appropriate ophthalmic evaluation. Treat the source as population-level prevalence/complication evidence, not automatic individual causation or permission to infer retinopathy from diabetes alone. Preserve diabetes duration, glycemic control, hypertension, nephropathy, smoking, and other retinal or vascular contributors.",
+        "alternativeEtiologiesToRuleOut": [
+          "diabetes duration",
+          "glycemic control",
+          "hypertension",
+          "nephropathy",
+          "smoking",
+          "other retinal"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

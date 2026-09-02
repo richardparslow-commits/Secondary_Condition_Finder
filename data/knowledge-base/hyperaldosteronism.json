@@ -6,7 +6,6 @@
     {
       "conditionId": "hypertension",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "For confirmed primary aldosteronism, the 2025 Endocrine Society guideline describes excess autonomous aldosterone production as a common cause of hypertension and explains the renal sodium-retention, volume-expansion, and elevated-blood-pressure mechanism. This supports a direct-secondary pathway when the primary-aldosteronism phenotype is actually documented; the broader catalog label 'hyperaldosteronism' must not be used to assume that mechanism in an unspecified endocrine or neoplastic presentation without the corresponding aldosterone/renin and clinical evidence.",
       "pathwayIntelligence": {
         "pathways": [
@@ -43,12 +42,31 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "Abstract and introductory mechanism statement; PA is a common cause of hypertension and excess aldosterone leads to renal sodium retention, volume expansion, elevated blood pressure, and sometimes hypokalemia. Article corrected online after a later typographical-unit correction that did not alter this relationship."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Confirmed primary aldosteronism with autonomous aldosterone excess and suppressed renin → renal sodium retention and volume expansion → elevated blood pressure / hypertension.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Confirmed primary aldosteronism with autonomous aldosterone excess and suppressed renin → renal sodium retention and volume expansion → elevated blood pressure / hypertension.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Confirmed primary aldosteronism with autonomous aldosterone excess and suppressed renin → renal sodium retention and volume expansion → elevated blood pressure / hypertension. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Aldosterone and renin results establishing the primary-aldosteronism phenotype; Blood-pressure diagnosis and longitudinal readings showing chronology; Potassium and relevant adrenal imaging/lateralization records when obtained; Treatment records showing response to mineralocorticoid-receptor antagonism or adrenal-directed therapy when applicable; Clinician assessment addressing alternative causes of hypertension",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "cardiac-arrhythmia",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial fibrillation. Require a confirmed primary-aldosteronism phenotype with autonomous aldosterone excess and suppressed renin; do not generalize this source to unspecified hyperaldosteronism. Treat the meta-analysis as population-level excess-risk evidence, not proof that primary aldosteronism caused atrial fibrillation in an individual. Preserve age, hypertension duration and severity, structural or valvular heart disease, thyroid disease, sleep-disordered breathing, alcohol exposure, and other established atrial-fibrillation contributors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of hyperaldosteronism and cardiac-arrhythmia",
@@ -67,7 +85,32 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 29129575; approved ME-6 proposition; guard: Use the broad cardiac-arrhythmia target only for separately documented atrial fibrillation. Require a confirmed primary-aldosteronism phenotype with autonomous aldosterone excess and suppressed renin; do not generalize this source to unspecified hyperaldosteronism. Treat the meta-analysis as population-level excess-risk evidence, not proof that primary aldosteronism caused atrial fibrillation in an individual. Preserve age, hypertension duration and severity, structural or valvular heart disease, thyroid disease, sleep-disordered breathing, alcohol exposure, and other established atrial-fibrillation contributors."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial fibrillation. Require a confirmed primary-aldosteronism phenotype with autonomous aldosterone excess and suppressed renin; do not generalize this source to unspecified hyperaldosteronism. Treat the meta-analysis as population-level excess-risk evidence, not proof that primary aldosteronism caused atrial fibrillation in an individual.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial fibrillation. Require a confirmed primary-aldosteronism phenotype with autonomous aldosterone excess and suppressed renin; do not generalize this source to unspecified hyperaldosteronism. Treat the meta-analysis as population-level excess-risk evidence, not proof that primary aldosteronism caused atrial fibrillation in an individual.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-6 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial fibrillation. Require a confirmed primary-aldosteronism phenotype with autonomous aldosterone excess and suppressed renin; do not generalize this source to unspecified hyperaldosteronism. Treat the meta-analysis as population-level excess-risk evidence, not proof that primary aldosteronism caused atrial fibrillation in an individual. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of hyperaldosteronism and cardiac-arrhythmia; Documentation satisfying the approved phenotype restriction: atrial fibrillation only; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Use the broad cardiac-arrhythmia target only for separately documented atrial fibrillation. Require a confirmed primary-aldosteronism phenotype with autonomous aldosterone excess and suppressed renin; do not generalize this source to unspecified hyperaldosteronism. Treat the meta-analysis as population-level excess-risk evidence, not proof that primary aldosteronism caused atrial fibrillation in an individual. Preserve ag",
+        "alternativeEtiologiesToRuleOut": [
+          "age",
+          "hypertension duration",
+          "severity",
+          "structural",
+          "valvular heart disease",
+          "thyroid disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

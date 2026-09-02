@@ -6,7 +6,6 @@
     {
       "conditionId": "reactive-arthritis",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Resolution 2026 publishes this relationship only as postinfectious rheumatologic complication. Require documented Salmonella or Shigella infection preceding separately diagnosed reactive arthritis. Preserve the postinfectious temporal relationship and do not infer arthritis from infection alone. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation that Shigella / Salmonella Infections matches the source-specific phenotype",
@@ -24,7 +23,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 38929962; qualified-human-approved Clinical Mapping Master Resolution Citation Verification 2026; guard: Require documented Salmonella or Shigella infection preceding separately diagnosed reactive arthritis. Preserve the postinfectious temporal relationship and do not infer arthritis from infection alone."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Resolution 2026 publishes this relationship only as postinfectious rheumatologic complication. Require documented Salmonella or Shigella infection preceding separately diagnosed reactive arthritis.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Clinical Mapping Master Resolution 2026 publishes this relationship only as postinfectious rheumatologic complication. Require documented Salmonella or Shigella infection preceding separately diagnosed reactive arthritis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Resolution 2026 publishes this relationship only as postinfectious rheumatologic complication. Require documented Salmonella or Shigella infection preceding separately diagnosed reactive arthritis. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation that Shigella / Salmonella Infections matches the source-specific phenotype; Independent diagnosis of Reactive Arthritis with compatible chronology; Assessment of competing medical, treatment-related, behavioral, and demographic contributors; Resolution of the publication guard: Require documented Salmonella or Shigella infection preceding separately diagnosed reactive arthritis. Preserve the postinfectious temporal relationship and do not infer arthritis from infection alone.",
+        "alternativeEtiologiesToRuleOut": [
+          "the postinfectious temporal relationship"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

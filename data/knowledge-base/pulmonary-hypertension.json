@@ -6,7 +6,6 @@
     {
       "conditionId": "congestive-heart-failure",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Pulmonary hypertension is heterogeneous, so this relationship is limited to a documented pulmonary-vascular or pre-capillary phenotype—especially pulmonary arterial hypertension—in which elevated pulmonary vascular load precedes right-ventricular dysfunction and clinically diagnosed right-sided heart failure. The ESC/ERS pulmonary-hypertension guideline describes symptoms as linked to right-ventricular dysfunction and provides a dedicated advanced right-ventricular-failure pathway for patients with pulmonary hypertension. This mapping does not apply when pulmonary hypertension is secondary to pre-existing left-heart failure (group 2 PH), where the direction of the relationship may be reversed, and it does not establish that every diagnosis coded as congestive heart failure was caused by pulmonary hypertension.",
       "pathwayIntelligence": {
         "pathways": [
@@ -43,12 +42,30 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 36017548; guideline sections 3 (classification), 5.1.1 (clinical presentation/right-ventricular dysfunction), 6.3.7 (advanced right-ventricular failure), and 8 (PH associated with left-heart disease)"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Confirmed pre-capillary pulmonary hypertension or pulmonary arterial hypertension → sustained pulmonary vascular load, when documented → right-ventricular dysfunction/failure → clinically characterized right-sided heart failure or congestive-heart-failure syndrome; group 2 pulmonary hypertension caused by left-heart disease must be excluded from this directional pathway."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Confirmed pre-capillary pulmonary hypertension or pulmonary arterial hypertension → sustained pulmonary vascular load, when documented → right-ventricular dysfunction/failure → clinically characterized right-sided heart failure or congestive-heart-failure syndrome; group 2 pulmonary hypertension caused by left-heart disease must be excluded from this directional pathway.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Confirmed pre-capillary pulmonary hypertension or pulmonary arterial hypertension → sustained pulmonary vascular load, when documented → right-ventricular dysfunction/failure → clinically characterized right-sided heart failure or congestive-heart-failure syndrome; group 2 pulmonary hypertension caused by left-heart disease must be excluded from this directional pathway.",
+        "evidenceGaps": "Pulmonary-hypertension classification and haemodynamic documentation; Objective right-ventricular structure/function and heart-failure findings; Chronology establishing pulmonary hypertension before the claimed downstream right-sided heart failure; Evaluation for left-heart disease and other competing causes of heart failure; Specialist assessment addressing the individual's direction of disease progression",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "cardiac-arrhythmia",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. Preserve structural heart disease and other arrhythmia risk factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of pulmonary-hypertension and cardiac-arrhythmia",
@@ -66,7 +83,28 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 38453002; approved ME-4 proposition; guard: Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. Preserve structural heart disease and other arrhythmia risk factors."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-4 adds this relationship only as a bounded clinical proposition. Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of pulmonary-hypertension and cardiac-arrhythmia; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Use the broad cardiac-arrhythmia target only for separately documented atrial-arrhythmia phenotypes supported by the source, especially atrial fibrillation or atrial flutter. Do not extend this source to ventricular arrhythmias, isolated sinus tachycardia, palpitations, or unspecified abnormal rhythm. Preserve structural heart disease and other arrhythmia risk factors.",
+        "alternativeEtiologiesToRuleOut": [
+          "structural heart disease",
+          "other arrhythmia risk factors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

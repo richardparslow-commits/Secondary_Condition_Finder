@@ -165,6 +165,7 @@ describe("Mapping Expansion Batch ME-4 Qualified-Human Citation Verification", (
     const output = execFileSync("npm", ["run", "citations:audit"], {
       cwd: root,
       encoding: "utf8",
+      timeout: 120000,
     });
     const result = JSON.parse(output.slice(output.indexOf("{"))) as {
       references: number;

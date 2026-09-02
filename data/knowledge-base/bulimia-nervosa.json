@@ -8,7 +8,6 @@
     {
       "conditionId": "depressive-disorder",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited National Comorbidity Survey Replication Adolescent Supplement found bulimia nervosa significantly comorbid with mood disorders and many other DSM-IV disorders in a nationally representative adolescent sample. Require independently established bulimia nervosa and separately established depressive disorder; the cited nationally representative adolescent survey reported substantial bulimia nervosa comorbidity with mood disorders without establishing onset order or direction, and its adolescent sample should not be overgeneralized to adult populations. Preserve obesity and metabolic disease, other eating pathology, substance use, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from eating-disorder symptoms, weight concern, or role impairment alone, and do not treat this population-level association as proof that bulimia nervosa caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of bulimia-nervosa and depressive-disorder",
@@ -27,7 +26,32 @@
           "sourceCheckedOn": "2026-09-01",
           "sourceLocator": "PMID 21383252; approved ME-16 source; guard: Require independently established bulimia nervosa and separately established depressive disorder; the cited nationally representative adolescent survey reported substantial bulimia nervosa comorbidity with mood disorders without establishing onset order or direction, and its adolescent sample should not be overgeneralized to adult populations. Preserve obesity and metabolic disease, other eating pathology, substance use, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from eating-disorder symptoms, weight concern, or role impairment alone, and do not treat this population-level association as proof that bulimia nervosa caused an individual's depressive disorder."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited National Comorbidity Survey Replication Adolescent Supplement found bulimia nervosa significantly comorbid with mood disorders and many other DSM-IV disorders in a nationally representative adolescent sample. Require independently established bulimia nervosa and separately established depressive disorder; the cited nationally representative adolescent survey reported substantial bulimia nervosa comorbidity with mood disorders without establishing onset order or direction, and its adolescent sample should not be overgeneralized to adult populations.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited National Comorbidity Survey Replication Adolescent Supplement found bulimia nervosa significantly comorbid with mood disorders and many other DSM-IV disorders in a nationally representative adolescent sample. Require independently established bulimia nervosa and separately established depressive disorder; the cited nationally representative adolescent survey reported substantial bulimia nervosa comorbidity with mood disorders without establishing onset order or direction, and its adolescent sample should not be overgeneralized to adult populations.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited National Comorbidity Survey Replication Adolescent Supplement found bulimia nervosa significantly comorbid with mood disorders and many other DSM-IV disorders in a nationally representative adolescent sample. Require independently established bulimia nervosa and separately established depressive disorder; the cited nationally representative adolescent survey reported substantial bulimia nervosa comorbidity with mood disorders without establishing onset order or direction, and its adolescent sample should not be overgeneralized to adult populations. It is not asserted that the primary caused or aggravated the secondary ",
+        "evidenceGaps": "Independent documentation of bulimia-nervosa and depressive-disorder; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: population-level-comorbidity-association; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require independently established bulimia nervosa and separately established depressive disorder; the cited nationally representative adolescent survey reported substantial bulimia nervosa comorbidity with mood disorders without establishing onset order or direction, and its adolescent sample should not be overgeneralized to adult populations. Preserve obesity and metabolic disease, other eating pathology, substance use, medications, and other psychiatric ill",
+        "alternativeEtiologiesToRuleOut": [
+          "obesity",
+          "metabolic disease",
+          "other eating pathology",
+          "substance use",
+          "medications",
+          "other psychiatric illness as competing explanations"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

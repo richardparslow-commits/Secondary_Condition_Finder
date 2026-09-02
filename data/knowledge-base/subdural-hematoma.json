@@ -9,7 +9,6 @@
     {
       "conditionId": "seizure-disorder",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review evaluates early and late epileptic seizures in adults with acute and chronic subdural hematomas and identifies post-traumatic epileptic seizures as a clinically important complication, with the greatest incidence in acute subdural hematoma. Require objectively documented subdural hematoma and separately established epileptic seizures or a seizure disorder with compatible chronology. Do not infer a chronic seizure disorder from prophylactic antiseizure medication, transient altered mental status, or an unconfirmed spell. Distinguish an isolated acute symptomatic seizure from recurrent unprovoked seizures or epilepsy when the target diagnosis requires that distinction. Preserve pre-existing epilepsy, additional traumatic brain injury, stroke, infection, metabolic or toxic disturbance, medication or substance effects, and other seizure etiologies. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of subdural-hematoma and seizure-disorder",
@@ -28,7 +27,32 @@
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 27914224; approved ME-12 source; guard: Require objectively documented subdural hematoma and separately established epileptic seizures or a seizure disorder with compatible chronology. Do not infer a chronic seizure disorder from prophylactic antiseizure medication, transient altered mental status, or an unconfirmed spell. Distinguish an isolated acute symptomatic seizure from recurrent unprovoked seizures or epilepsy when the target diagnosis requires that distinction. Preserve pre-existing epilepsy, additional traumatic brain injury, stroke, infection, metabolic or toxic disturbance, medication or substance effects, and other seizure etiologies."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review evaluates early and late epileptic seizures in adults with acute and chronic subdural hematomas and identifies post-traumatic epileptic seizures as a clinically important complication, with the greatest incidence in acute subdural hematoma. Require objectively documented subdural hematoma and separately established epileptic seizures or a seizure disorder with compatible chronology.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review evaluates early and late epileptic seizures in adults with acute and chronic subdural hematomas and identifies post-traumatic epileptic seizures as a clinically important complication, with the greatest incidence in acute subdural hematoma. Require objectively documented subdural hematoma and separately established epileptic seizures or a seizure disorder with compatible chronology.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-12 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review evaluates early and late epileptic seizures in adults with acute and chronic subdural hematomas and identifies post-traumatic epileptic seizures as a clinically important complication, with the greatest incidence in acute subdural hematoma. Require objectively documented subdural hematoma and separately established epileptic seizures or a seizure disorder with compatible chronology. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of subdural-hematoma and seizure-disorder; Chronology compatible with the approved bounded proposition; Phenotype/claim boundary: post-subdural epileptic-seizure complication with chronic-disorder boundary; Assessment of competing etiologies and treatment/context confounders; Resolution of publication guard: Require objectively documented subdural hematoma and separately established epileptic seizures or a seizure disorder with compatible chronology. Do not infer a chronic seizure disorder from prophylactic antiseizure medication, transient altered mental status, or an unconfirmed spell. Distinguish an isolated acute symptomatic seizure from recurrent unprovoked seizures or epilepsy when the target diagnosis requires that distinction. Preserve pre-existing epileps",
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing epilepsy",
+          "additional traumatic brain injury",
+          "stroke",
+          "infection",
+          "metabolic",
+          "toxic disturbance"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

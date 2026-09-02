@@ -1,6 +1,8 @@
 import { z } from "zod";
 
 import type {
+  EvidentiaryProfile,
+  NexusClaim,
   PathwayIntelligence,
   SourceReference,
 } from "@/lib/kb/schema";
@@ -23,13 +25,22 @@ export interface ContributingPrimary {
   rank: number;
   rationale: string;
   pathwayIntelligence?: PathwayIntelligence;
+  nexusClaim?: NexusClaim;
+  causalMechanism?: {
+    mechanismCategory: string;
+    primaryVector: string;
+    secondaryVector?: string;
+    iatrogenicFactor?: string | null;
+    hypothesizedOnly: boolean;
+  };
+  evidentiaryProfile?: EvidentiaryProfile;
 }
 
 export interface Recommendation {
   conditionId: string;
   condition: string;
   bodySystem: string;
-  prevalence: "commonly-explored" | "sometimes-explored" | "occasionally-explored";
+  etiologicalConsensus: "WELL_ESTABLISHED" | "IATROGENIC_TREATMENT_EFFECT" | "PROBABLE" | "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE" | "NOT_ESTABLISHED";
   score: number;
   contributingPrimaries: ContributingPrimary[];
   evidenceGaps: string[];

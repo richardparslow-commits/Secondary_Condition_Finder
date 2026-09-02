@@ -6,7 +6,6 @@
     {
       "conditionId": "amputation-or-loss-of-use",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as complication outcome risk. Require established Charcot foot/lower-extremity neuropathic arthropathy and a documented subsequent lower-extremity amputation outcome. Long-term Charcot-foot cohort supports amputation risk/limb preservation only; do not generalize this source to generic loss of use or non-foot Charcot arthropathy. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent diagnoses of Charcot Neuropathic Arthropathy and Amputation / Loss of Use of Limbs or Digits",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 33829302; PubMed identity/abstract confirmed; qualified-human-approved narrowed guard: Require established Charcot foot/lower-extremity neuropathic arthropathy and a documented subsequent lower-extremity amputation outcome."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as complication outcome risk. Require established Charcot foot/lower-extremity neuropathic arthropathy and a documented subsequent lower-extremity amputation outcome. Long-term Charcot-foot cohort supports amputation risk/limb preservation only; do not generalize this source to generic loss of use or non-foot Charcot arthropathy. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as complication outcome risk. Require established Charcot foot/lower-extremity neuropathic arthropathy and a documented subsequent lower-extremity amputation outcome. Long-term Charcot-foot cohort supports amputation risk/limb preservation only; do not generalize this source to generic loss of use or non-foot Charcot arthropathy. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as complication outcome risk. Require established Charcot foot/lower-extremity neuropathic arthropathy and a documented subsequent lower-extremity amputation outcome. Long-term Charcot-foot cohort supports amputation risk/limb preservation only; do not generalize this source to generic loss of use or non-foot Charcot arthropathy. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Charcot Neuropathic Arthropathy and Amputation / Loss of Use of Limbs or Digits; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "osteomyelitis",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Charcot neuroarthropathy can progress to foot deformity and ulceration, creating a clinically recognized pathway to deep infection and osteomyelitis; use of this relationship requires documented wound or infection chronology. Require established Charcot neuroarthropathy of the foot plus documented deformity with ulceration, soft-tissue breakdown, wound infection, or compatible deep-infection chronology before using the osteomyelitis pathway. Osteomyelitis must be separately diagnosed. Preserve diabetes, neuropathy, peripheral vascular disease, trauma or surgery, wound-care history, and other infection risk factors. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of charcot-arthropathy and osteomyelitis",
@@ -48,7 +66,32 @@
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 42141385; approved ME-10 proposition; guard: Require established Charcot neuroarthropathy of the foot plus documented deformity with ulceration, soft-tissue breakdown, wound infection, or compatible deep-infection chronology before using the osteomyelitis pathway. Osteomyelitis must be separately diagnosed. Preserve diabetes, neuropathy, peripheral vascular disease, trauma or surgery, wound-care history, and other infection risk factors."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Charcot neuroarthropathy can progress to foot deformity and ulceration, creating a clinically recognized pathway to deep infection and osteomyelitis; use of this relationship requires documented wound or infection chronology. Require established Charcot neuroarthropathy of the foot plus documented deformity with ulceration, soft-tissue breakdown, wound infection, or compatible deep-infection chronology before using the osteomyelitis pathway. Osteomyelitis must be separately diagnosed.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Charcot neuroarthropathy can progress to foot deformity and ulceration, creating a clinically recognized pathway to deep infection and osteomyelitis; use of this relationship requires documented wound or infection chronology. Require established Charcot neuroarthropathy of the foot plus documented deformity with ulceration, soft-tissue breakdown, wound infection, or compatible deep-infection chronology before using the osteomyelitis pathway. Osteomyelitis must be separately diagnosed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-10 adds this relationship only as a bounded clinical proposition. Charcot neuroarthropathy can progress to foot deformity and ulceration, creating a clinically recognized pathway to deep infection and osteomyelitis; use of this relationship requires documented wound or infection chronology. Require established Charcot neuroarthropathy of the foot plus documented deformity with ulceration, soft-tissue breakdown, wound infection, or compatible deep-infection chronology before using the osteomyelitis pathway. Osteomyelitis must be separately diagnosed. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of charcot-arthropathy and osteomyelitis; Documentation satisfying the approved phenotype restriction: Charcot neuroarthropathy of the foot, especially neuropathic or diabetic Charcot foot, with a separately established osteomyelitis diagnosis; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require established Charcot neuroarthropathy of the foot plus documented deformity with ulceration, soft-tissue breakdown, wound infection, or compatible deep-infection chronology before using the osteomyelitis pathway. Osteomyelitis must be separately diagnosed. Preserve diabetes, neuropathy, peripheral vascula",
+        "alternativeEtiologiesToRuleOut": [
+          "diabetes",
+          "neuropathy",
+          "peripheral vascular disease",
+          "trauma",
+          "surgery",
+          "wound-care history"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

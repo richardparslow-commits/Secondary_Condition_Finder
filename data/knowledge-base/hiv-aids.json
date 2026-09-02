@@ -6,7 +6,6 @@
     {
       "conditionId": "uveitis",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require HIV/AIDS, antiretroviral immune recovery, and separately diagnosed immune-recovery uveitis; document relevant ocular history such as CMV retinitis when present. Treatment/immune-reconstitution phenotype; do not generalize to all uveitis in HIV. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Documentation of the qualifying treatment or procedure used for HIV / AIDS",
@@ -24,12 +23,31 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 39046420; PubMed title/abstract retrieved in the master research harvest; guard: Require HIV/AIDS, antiretroviral immune recovery, and separately diagnosed immune-recovery uveitis; document relevant ocular history such as CMV retinitis when present."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require HIV/AIDS, antiretroviral immune recovery, and separately diagnosed immune-recovery uveitis; document relevant ocular history such as CMV retinitis when present. Treatment/immune-reconstitution phenotype; do not generalize to all uveitis in HIV. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require HIV/AIDS, antiretroviral immune recovery, and separately diagnosed immune-recovery uveitis; document relevant ocular history such as CMV retinitis when present. Treatment/immune-reconstitution phenotype; do not generalize to all uveitis in HIV. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinical Mapping Master Batch 2026 publishes this relationship only as treatment associated risk. Require HIV/AIDS, antiretroviral immune recovery, and separately diagnosed immune-recovery uveitis; document relevant ocular history such as CMV retinitis when present. Treatment/immune-reconstitution phenotype; do not generalize to all uveitis in HIV. The cited literature supports only this bounded proposition and does not, by itself, establish an individual medical nexus. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Documentation of the qualifying treatment or procedure used for HIV / AIDS; Independent diagnosis of Uveitis and timing relative to that exposure; Dose, duration, procedure details, and relevant co-exposures where applicable; Qualified clinical assessment of competing causes and source-phenotype fit",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "peripheral-neuropathy",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. HIV/AIDS is associated with a distinct spectrum of peripheral neuropathies, especially distal predominantly sensory polyneuropathy, through HIV disease mechanisms and, in some patients, treatment-related neurotoxicity. Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and preserve diabetes, alcohol, nutritional deficiency, chemotherapy, compressive neuropathy, opportunistic infection, and other neurologic causes. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of hiv-aids and peripheral-neuropathy",
@@ -48,7 +66,32 @@
           "sourceCheckedOn": "2026-08-21",
           "sourceLocator": "PMID 33226721; approved ME-8 proposition; guard: Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and preserve diabetes, alcohol, nutritional deficiency, chemotherapy, compressive neuropathy, opportunistic infection, and other neurologic causes."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. HIV/AIDS is associated with a distinct spectrum of peripheral neuropathies, especially distal predominantly sensory polyneuropathy, through HIV disease mechanisms and, in some patients, treatment-related neurotoxicity. Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. HIV/AIDS is associated with a distinct spectrum of peripheral neuropathies, especially distal predominantly sensory polyneuropathy, through HIV disease mechanisms and, in some patients, treatment-related neurotoxicity. Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-8 adds this relationship only as a bounded clinical proposition. HIV/AIDS is associated with a distinct spectrum of peripheral neuropathies, especially distal predominantly sensory polyneuropathy, through HIV disease mechanisms and, in some patients, treatment-related neurotoxicity. Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of hiv-aids and peripheral-neuropathy; Documentation satisfying the approved phenotype restriction: separately diagnosed HIV-related peripheral neuropathy, including distal predominantly sensory polyneuropathy; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require established HIV/AIDS and a separately diagnosed peripheral-neuropathy phenotype. Distinguish HIV-related disease mechanisms from antiretroviral neurotoxicity and preserve diabetes, alcohol, nutritional deficiency, chemotherapy, compressive neuropathy, opportunistic infection, and other neurologic causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "diabetes",
+          "alcohol",
+          "nutritional deficiency",
+          "chemotherapy",
+          "compressive neuropathy",
+          "opportunistic infection"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

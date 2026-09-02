@@ -6,7 +6,6 @@
     {
       "conditionId": "heart-valve-disorders",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Permanent pacemaker implantation with a transvenous lead crossing the tricuspid valve is associated with new or worsening tricuspid regurgitation in systematic-review and meta-analytic evidence. Lead interference is an identified risk factor. This supports a device-related treatment-complication pathway only when the individual has a trans-tricuspid lead and objective post-implant valvular worsening; it does not establish that every pacemaker causes a valve disorder and should not be generalized to leadless or epicardial systems without applicable evidence.",
       "pathwayIntelligence": {
         "pathways": [
@@ -42,7 +41,26 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 34389210; abstract: TR deterioration after CIED implantation; lead interference OR 8.704; pacemaker implantation time associated with worsening TR"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Transvenous permanent pacemaker lead crossing the tricuspid valve → documented lead-valve interaction or post-implant worsening of tricuspid regurgitation → claimed heart-valve disorder."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Transvenous permanent pacemaker lead crossing the tricuspid valve → documented lead-valve interaction or post-implant worsening of tricuspid regurgitation → claimed heart-valve disorder.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Transvenous permanent pacemaker lead crossing the tricuspid valve → documented lead-valve interaction or post-implant worsening of tricuspid regurgitation → claimed heart-valve disorder.",
+        "evidenceGaps": "Pacemaker operative/device records identifying lead type and route; Pre-implant and post-implant echocardiography documenting tricuspid-regurgitation severity; Imaging or electrophysiology/cardiology evidence addressing lead-valve interaction where suspected; Clinical chronology and assessment of competing causes of tricuspid regurgitation; Qualified cardiology opinion addressing the individual device-related relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

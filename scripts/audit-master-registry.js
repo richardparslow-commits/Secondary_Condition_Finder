@@ -121,7 +121,6 @@ for (const file of files) {
     if (!master) fail(`Live relationship missing from registry: ${mapping.id} -> ${suggestion.conditionId}`);
     if (master.direction !== `${mapping.id} -> ${suggestion.conditionId}`) fail(`${rid}: direction mismatch`);
     if (master.rank !== suggestion.rank) fail(`${rid}: rank mismatch`);
-    if (master.prevalence !== suggestion.prevalence) fail(`${rid}: prevalence mismatch`);
     if (master.rationale !== suggestion.rationale) fail(`${rid}: rationale mismatch`);
     if (JSON.stringify(master.evidenceGaps) !== JSON.stringify(suggestion.evidenceGaps || [])) fail(`${rid}: evidenceGaps mismatch`);
     if (!suggestionMatchesRelationshipSnapshot(suggestion, master)) fail(`${rid}: suggestion object drifted beyond an authorized verification-only transition`);

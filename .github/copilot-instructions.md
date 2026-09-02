@@ -15,7 +15,13 @@ This application heavily relies on strict JSON file parsing and cross-file refer
 
 1.  **ID Formatting:** All `id` and `conditionId` fields must strictly match the regex pattern `/^[a-z0-9-]+$/` (lowercase, alphanumeric, hyphens only). Never use underscores or spaces.
 2.  **Cross-File Integrity:** Any `conditionId` referenced inside the `suggestions` array of a `data/knowledge-base/*.json` file MUST exist as a primary `id` in one of the catalog files. 
-3.  **Prevalence Enums:** The `prevalence` field must only use exact allowed strings: `"commonly-explored"`, `"sometimes-explored"`, or `"occasionally-explored"`.
+3.  **CRG & VA Secondary Claim Authoring Directives (MANDATORY):** The knowledge base is a Causal Relational Graph, not a flat association list.
+    - NEVER use `prevalence` (deprecated and removed). Use `evidentiaryProfile.etiologicalConsensus` and `evidentiaryProfile.vaNexusProbabilityAlignment` instead.
+    - NEVER write a generic rationale. Every suggestion MUST carry the CRG trio: `nexusClaim` (one of `DIRECT_CAUSATION`, `AGGRAVATION`, `ASSOCIATION_ONLY`), `causalMechanism` (one of the approved mechanism categories), and `evidentiaryProfile` (consensus + alignment). The Zod schema rejects suggestions missing any of the three.
+    - NEVER invent a causal or aggravation claim. If the guard or the literature only supports a co-occurrence, classify `ASSOCIATION_ONLY`, set `etiologicalConsensus` to `NOT_ESTABLISHED` (or weaker), and mark `causalMechanism.hypothesizedOnly: true`. Population-level association is not an individual nexus (38 CFR § 3.310 requires causation or aggravation).
+    - NEVER conflate legal authority with clinical evidence. 38 CFR 3.310 is the legal framework; it is NOT clinical evidence and must never be a `condition_specific_source` for the biological mechanism.
+    - NEVER hallucinate or guess URLs. If you do not have a verified, exact URL for a clinical source, leave `url` null and set `verified: false`.
+    - If mapping an AGGRAVATION claim, you MUST define `baselineProgression` (the natural non-SC course) and `aggravatingFactor` (the biomechanical/systemic force from the SC primary).
 4.  **Verification Status:** All new or automated edits to `sourceReferences` and catalog `ratingSchedule` references must be shipped with `"verified": false`. Only a qualified human citation review may deliberately set a reference to `true`; a schema that accepts `true` is not authorization for an automated agent to promote verification.
 5.  **Draft Status:** New condition mappings should be created with `"draft": true` until fully populated and tested. Change to `"draft": false` to publish.
 

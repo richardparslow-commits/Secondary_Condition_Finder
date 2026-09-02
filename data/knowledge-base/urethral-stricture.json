@@ -6,7 +6,6 @@
     {
       "conditionId": "hydronephrosis",
       "rank": 1,
-      "prevalence": "occasionally-explored",
       "rationale": "A sufficiently severe or prolonged urethral stricture can create urinary outflow obstruction and, in some patients, upper-tract dilation including hydronephrosis. The relationship requires objective evidence that the stricture produced clinically significant obstruction and that other causes of hydronephrosis are less likely.",
       "pathwayIntelligence": {
         "pathways": [
@@ -41,7 +40,26 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 8571802 abstract; ureterohydronephrosis among reported renal-ureteral complications"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented urethral stricture → clinically significant urinary outflow obstruction/back-pressure → claimed hydronephrosis."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Documented urethral stricture → clinically significant urinary outflow obstruction/back-pressure → claimed hydronephrosis.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Documented urethral stricture → clinically significant urinary outflow obstruction/back-pressure → claimed hydronephrosis.",
+        "evidenceGaps": "Urology documentation confirming urethral stricture severity and objective obstruction; Imaging confirming hydronephrosis and its timing relative to the stricture; Clinical evaluation addressing alternative upper- or lower-urinary-tract causes and response after obstruction relief",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

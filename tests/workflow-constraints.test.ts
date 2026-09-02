@@ -3,6 +3,11 @@ import { recommend } from "../src/lib/engine/recommend";
 import type { ConditionCatalog } from "../src/lib/catalog/schema";
 import type { KnowledgeBase } from "../src/lib/kb/schema";
 import type { Recommendation } from "../src/lib/engine/types";
+import {
+  buildCausalMechanism,
+  buildEvidentiaryProfile,
+  buildNexusClaim,
+} from "./helpers/crg-fixtures";
 
 describe("P1 Ticket 5: Suggestion Constraints to Diagnosed Set", () => {
   const mockCatalog: ConditionCatalog = [
@@ -20,7 +25,9 @@ describe("P1 Ticket 5: Suggestion Constraints to Diagnosed Set", () => {
         {
           conditionId: "radiculopathy",
           rank: 1,
-          prevalence: "commonly-explored",
+          nexusClaim: buildNexusClaim(),
+          causalMechanism: buildCausalMechanism(),
+          evidentiaryProfile: buildEvidentiaryProfile(),
           rationale: "Nerve root compression due to lumbar spine pathology.",
           evidenceGaps: ["Current diagnosis"],
           sourceReferences: [{ citation: "38 CFR 3.310", note: "Direct secondary", verificationScope: "legal-framework", verified: false }]
@@ -28,7 +35,9 @@ describe("P1 Ticket 5: Suggestion Constraints to Diagnosed Set", () => {
         {
           conditionId: "depression",
           rank: 2,
-          prevalence: "sometimes-explored",
+          nexusClaim: buildNexusClaim(),
+          causalMechanism: buildCausalMechanism(),
+          evidentiaryProfile: buildEvidentiaryProfile(),
           rationale: "Chronic pain leading to depressive symptoms.",
           evidenceGaps: ["Mental health diagnosis"],
           sourceReferences: [{ citation: "38 CFR 3.310", note: "Secondary pain effect", verificationScope: "legal-framework", verified: false }]

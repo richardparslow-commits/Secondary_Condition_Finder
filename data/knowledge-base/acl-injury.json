@@ -6,7 +6,6 @@
     {
       "conditionId": "osteoarthritis",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Systematic-review evidence reports a substantially increased long-term frequency of knee osteoarthritis after ACL injury. Individual review should confirm that osteoarthritis is documented in the injured knee and should consider associated meniscal or cartilage injury, recurrent instability, treatment history, alignment, age, activity, and other osteoarthritis risk factors rather than inferring an individual relationship from population data alone.",
       "evidenceGaps": [
         "Records establishing the ACL injury and affected knee",
@@ -24,7 +23,27 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 33852440; abstract; 13 reviews and summary meta-analysis of knee osteoarthritis after ACL injury"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Systematic-review evidence reports a substantially increased long-term frequency of knee osteoarthritis after ACL injury. Individual review should confirm that osteoarthritis is documented in the injured knee and should consider associated meniscal or cartilage injury, recurrent instability, treatment history, alignment, age, activity, and other osteoarthritis risk factors rather than inferring an individual relationship from population data alone.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Systematic-review evidence reports a substantially increased long-term frequency of knee osteoarthritis after ACL injury. Individual review should confirm that osteoarthritis is documented in the injured knee and should consider associated meniscal or cartilage injury, recurrent instability, treatment history, alignment, age, activity, and other osteoarthritis risk factors rather than inferring an individual relationship from population data alone.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Systematic-review evidence reports a substantially increased long-term frequency of knee osteoarthritis after ACL injury. Individual review should confirm that osteoarthritis is documented in the injured knee and should consider associated meniscal or cartilage injury, recurrent instability, treatment history, alignment, age, activity, and other osteoarthritis risk factors rather than inferring an individual relationship from population data alone. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Records establishing the ACL injury and affected knee; Longitudinal knee imaging and orthopedic records documenting osteoarthritis after the injury; Meniscal or cartilage injury, instability, treatment, reinjury, alignment, and other osteoarthritis risk-factor history; Orthopedic assessment addressing the individual's chronology and competing explanations",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

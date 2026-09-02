@@ -32,7 +32,8 @@ type SourceReference = {
 type Suggestion = {
   conditionId: string;
   rank: number;
-  prevalence?: string;
+  nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined;
   rationale?: string;
   evidenceGaps?: string[];
   pathwayIntelligence?: unknown;
@@ -80,7 +81,7 @@ describe("Mapping Expansion Batch ME-3", () => {
       expect(suggestion).toBeTruthy();
       if (!suggestion) throw new Error(`missing ME-3 suggestion ${row.primaryId}->${row.targetId}`);
       expect(suggestion.rank).toBe(2);
-      expect(suggestion.prevalence).toBe("sometimes-explored");
+      expect(suggestion.nexusClaim?.nexusClassification).toBeDefined(); expect(suggestion.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(suggestion.pathwayIntelligence).toBeUndefined();
       expect(suggestion.sourceReferences).toHaveLength(1);
       const source = suggestion.sourceReferences?.[0];
@@ -100,7 +101,8 @@ describe("Mapping Expansion Batch ME-3", () => {
         primaryId: string;
         targetId: string;
         rank: number;
-        prevalence: string;
+        nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined;
         sourceIds: string[];
         publicationGuard: { status: string; structuredGuardText: string | null };
       }>;
@@ -116,7 +118,6 @@ describe("Mapping Expansion Batch ME-3", () => {
         primaryId: row.primaryId,
         targetId: row.targetId,
         rank: 2,
-        prevalence: "sometimes-explored",
         sourceIds: [`pmid-${row.pmid}`],
       });
       expect(rel?.publicationGuard.status).toBe("explicit");

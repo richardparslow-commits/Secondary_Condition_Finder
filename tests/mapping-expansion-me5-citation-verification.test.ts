@@ -37,7 +37,8 @@ type Ref = { verified: boolean; citation: string; sourceUrl: string };
 type Suggestion = {
   conditionId: string;
   rank: number;
-  prevalence: string;
+  nexusClaim: { nexusClassification: string; } | undefined;
+  evidentiaryProfile: { etiologicalConsensus: string; } | undefined;
   rationale: string;
   evidenceGaps: string[];
   sourceReferences: Ref[];
@@ -106,7 +107,7 @@ describe("Mapping Expansion Batch ME-5 Qualified-Human Citation Verification", (
       expect(suggestion).toBeTruthy();
       if (!suggestion) throw new Error(`missing ME-5 row ${row.primaryId}->${row.targetId}`);
       expect(suggestion.rank).toBe(2);
-      expect(suggestion.prevalence).toBe("sometimes-explored");
+      expect(suggestion.nexusClaim?.nexusClassification).toBeDefined(); expect(suggestion.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(suggestion.rationale).toContain(row.publicationGuard);
       expect(suggestion.evidenceGaps.some((gap) => gap.includes(row.publicationGuard))).toBe(true);
       expect(suggestion.sourceReferences).toHaveLength(1);

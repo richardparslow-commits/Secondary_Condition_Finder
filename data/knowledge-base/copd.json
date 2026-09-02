@@ -6,7 +6,6 @@
     {
       "conditionId": "sleep-apnea",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "COPD and obstructive sleep apnea commonly coexist as overlap syndrome. Published systematic reviews describe substantial co-occurrence and more pronounced nocturnal oxygen desaturation in people with both conditions, but the literature does not by itself establish that COPD caused or aggravated an individual veteran's OSA.",
       "evidenceGaps": [
         "Sleep study (polysomnography or qualifying home sleep test) confirming OSA",
@@ -23,12 +22,31 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 36672523; systematic review abstract/methods/results: 38 observational studies, 27,064 participants; COPD-OSA overlap syndrome prevalence and clinical characteristics"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: COPD and obstructive sleep apnea commonly coexist as overlap syndrome. Published systematic reviews describe substantial co-occurrence and more pronounced nocturnal oxygen desaturation in people with both conditions, but the literature does not by itself establish that COPD caused or aggravated an individual veteran's OSA.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "COPD and obstructive sleep apnea commonly coexist as overlap syndrome. Published systematic reviews describe substantial co-occurrence and more pronounced nocturnal oxygen desaturation in people with both conditions, but the literature does not by itself establish that COPD caused or aggravated an individual veteran's OSA.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. COPD and obstructive sleep apnea commonly coexist as overlap syndrome. Published systematic reviews describe substantial co-occurrence and more pronounced nocturnal oxygen desaturation in people with both conditions, but the literature does not by itself establish that COPD caused or aggravated an individual veteran's OSA. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Sleep study (polysomnography or qualifying home sleep test) confirming OSA; Pulmonary or sleep-medicine opinion addressing the individual relationship between COPD and OSA; Clinical records addressing severity, nocturnal oxygenation, obesity and other relevant risk factors",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "pulmonary-hypertension",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented COPD and separately established pulmonary hypertension clinically attributable to chronic lung disease/COPD, preferably with appropriate hemodynamic confirmation when clinically available. Evaluate alternative causes of pulmonary hypertension, including left-heart disease, chronic thromboembolic disease, and other pulmonary vascular disorders. Do not infer pulmonary hypertension from COPD severity, hypoxemia, dyspnea, or an elevated echocardiographic estimate alone. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of copd and pulmonary-hypertension",
@@ -46,7 +64,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 39532092; qualified-human-approved Mapping Expansion Batch ME-2 Citation Verification; guard: Require documented COPD and separately established pulmonary hypertension clinically attributable to chronic lung disease/COPD, preferably with appropriate hemodynamic confirmation when clinically available. Evaluate alternative causes of pulmonary hypertension, including left-heart disease, chronic thromboembolic disease, and other pulmonary vascular disorders. Do not infer pulmonary hypertension from COPD severity, hypoxemia, dyspnea, or an elevated echocardiographic estimate alone."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented COPD and separately established pulmonary hypertension clinically attributable to chronic lung disease/COPD, preferably with appropriate hemodynamic confirmation when clinically available. Evaluate alternative causes of pulmonary hypertension, including left-heart disease, chronic thromboembolic disease, and other pulmonary vascular disorders.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented COPD and separately established pulmonary hypertension clinically attributable to chronic lung disease/COPD, preferably with appropriate hemodynamic confirmation when clinically available. Evaluate alternative causes of pulmonary hypertension, including left-heart disease, chronic thromboembolic disease, and other pulmonary vascular disorders.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented COPD and separately established pulmonary hypertension clinically attributable to chronic lung disease/COPD, preferably with appropriate hemodynamic confirmation when clinically available. Evaluate alternative causes of pulmonary hypertension, including left-heart disease, chronic thromboembolic disease, and other pulmonary vascular disorders. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of copd and pulmonary-hypertension; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented COPD and separately established pulmonary hypertension clinically attributable to chronic lung disease/COPD, preferably with appropriate hemodynamic confirmation when clinically available. Evaluate alternative causes of pulmonary hypertension, including left-heart disease, chronic thromboembolic disease, and other pulmonary vascular disorders. Do not infer pulmonary hypertension from COPD severity, hypoxemia, dyspnea, or an elevated echocardiographic estimate alone.",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

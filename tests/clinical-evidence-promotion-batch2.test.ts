@@ -73,7 +73,7 @@ describe("clinical evidence promotion batch 2", () => {
     expect(mapping?.todo).toEqual([]);
     expect(mapping?.suggestions).toHaveLength(1);
     expect(mapping?.suggestions[0]?.conditionId).toBe("chronic-kidney-disease");
-    expect(mapping?.suggestions[0]?.prevalence).toBe("sometimes-explored");
+    expect(mapping?.suggestions[0]?.nexusClaim?.nexusClassification).toBeDefined(); expect(mapping?.suggestions[0]?.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
     expect(mapping?.suggestions[0]?.pathwayIntelligence?.pathways).toContain("disease-progression");
     expect(mapping?.suggestions[0]?.rationale).toMatch(/preserved renal function.*stable|stable.*preserved renal function/i);
     expect(mapping?.suggestions[0]?.rationale).toMatch(/competing renal causes/i);

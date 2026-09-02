@@ -9,7 +9,6 @@
     {
       "conditionId": "hypoparathyroidism",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A meta-analysis of surgery for bilateral multinodular nontoxic goiter found increased transient postoperative hypoparathyroidism after total thyroidectomy; the approved relationship is treatment-mediated and does not extend to permanent hypoparathyroidism or to thyroid enlargement without surgery. Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism; do not infer permanent hypoparathyroidism, and do not infer hypoparathyroidism from the thyroid enlargement itself. Preserve other neck surgery, autoimmune or genetic parathyroid disease, magnesium disorders, and other etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of nontoxic-thyroid-enlargement and hypoparathyroidism",
@@ -28,7 +27,31 @@
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 27256349; approved ME-14 source; guard: Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism; do not infer permanent hypoparathyroidism, and do not infer hypoparathyroidism from the thyroid enlargement itself. Preserve other neck surgery, autoimmune or genetic parathyroid disease, magnesium disorders, and other etiologies as competing explanations."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A meta-analysis of surgery for bilateral multinodular nontoxic goiter found increased transient postoperative hypoparathyroidism after total thyroidectomy; the approved relationship is treatment-mediated and does not extend to permanent hypoparathyroidism or to thyroid enlargement without surgery. Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism;",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A meta-analysis of surgery for bilateral multinodular nontoxic goiter found increased transient postoperative hypoparathyroidism after total thyroidectomy; the approved relationship is treatment-mediated and does not extend to permanent hypoparathyroidism or to thyroid enlargement without surgery. Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism;",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-14 adds this relationship only as the user-approved bounded clinical proposition. A meta-analysis of surgery for bilateral multinodular nontoxic goiter found increased transient postoperative hypoparathyroidism after total thyroidectomy; the approved relationship is treatment-mediated and does not extend to permanent hypoparathyroidism or to thyroid enlargement without surgery. Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism; It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of nontoxic-thyroid-enlargement and hypoparathyroidism; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: treatment-mediated transient postoperative hypoparathyroidism; Assessment of material competing etiologies and treatment/context confounders; Resolution of publication guard: Require multinodular nontoxic thyroid enlargement plus documented total or near-total thyroid surgery followed by separately documented postoperative hypoparathyroidism. The supported proposition is transient postoperative hypoparathyroidism; do not infer permanent hypoparathyroidism, and do not infer hypoparathyroidism from the thyroid enlargement itself. Preserve other neck surgery, autoimmune or genetic parathyroid disease, magnesium disorders, ",
+        "alternativeEtiologiesToRuleOut": [
+          "other neck surgery",
+          "autoimmune",
+          "genetic parathyroid disease",
+          "magnesium disorders",
+          "other etiologies as competing explanations"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

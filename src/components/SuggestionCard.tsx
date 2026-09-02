@@ -1,13 +1,15 @@
 import type { Recommendation } from "@/lib/engine/types";
 import {
-  PREVALENCE_EXPLANATION,
-  PREVALENCE_LABEL,
+  CONSENSUS_EXPLANATION,
+  CONSENSUS_LABEL,
 } from "@/lib/recommendation-prevalence";
 
-const PREVALENCE_STYLE: Record<Recommendation["prevalence"], string> = {
-  "commonly-explored": "bg-slate-900 text-white",
-  "sometimes-explored": "bg-slate-200 text-slate-800",
-  "occasionally-explored": "bg-slate-100 text-slate-600",
+const CONSENSUS_STYLE: Record<Recommendation["etiologicalConsensus"], string> = {
+  WELL_ESTABLISHED: "bg-slate-900 text-white",
+  IATROGENIC_TREATMENT_EFFECT: "bg-slate-800 text-white",
+  PROBABLE: "bg-slate-200 text-slate-800",
+  CONTESTED_REQUIRES_SPECIFIC_EVIDENCE: "bg-amber-100 text-amber-900",
+  NOT_ESTABLISHED: "bg-slate-100 text-slate-600",
 };
 
 export function SuggestionCard({
@@ -28,14 +30,14 @@ export function SuggestionCard({
           {position}. {recommendation.condition}
         </h3>
         <span
-          className={`rounded-full px-2.5 py-1 text-xs font-medium ${PREVALENCE_STYLE[recommendation.prevalence]}`}
-          title={PREVALENCE_EXPLANATION[recommendation.prevalence]}
+          className={`rounded-full px-2.5 py-1 text-xs font-medium ${CONSENSUS_STYLE[recommendation.etiologicalConsensus]}`}
+          title={CONSENSUS_EXPLANATION[recommendation.etiologicalConsensus]}
         >
-          {PREVALENCE_LABEL[recommendation.prevalence]}
+          {CONSENSUS_LABEL[recommendation.etiologicalConsensus]}
         </span>
       </header>
       <p className="mt-2 text-xs text-slate-500">
-        {PREVALENCE_EXPLANATION[recommendation.prevalence]}
+        {CONSENSUS_EXPLANATION[recommendation.etiologicalConsensus]}
       </p>
 
       <section className="mt-4">

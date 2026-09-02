@@ -6,7 +6,6 @@
     {
       "conditionId": "addisons-disease",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Rare infectious complication only. Publish only with documented adrenal histoplasmosis and independently documented Addison disease/primary adrenal insufficiency. Pulmonary histoplasmosis alone does not satisfy this guard; exclude central/pituitary/hypothalamic and glucocorticoid-induced adrenal insufficiency; do not generalize to all histoplasmosis.",
       "evidenceGaps": [
         "Independent diagnoses of Actinomycosis and Pericarditis / Endocarditis / Myocarditis",
@@ -24,7 +23,27 @@
           "sourceCheckedOn": "2026-08-19",
           "sourceLocator": "PMID 30656706; adrenal-histoplasmosis cohort with primary adrenal insufficiency outcome; taxonomy publication approved, qualified-human citation verification approved 2026-08-19."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Rare infectious complication only. Publish only with documented adrenal histoplasmosis and independently documented Addison disease/primary adrenal insufficiency. Pulmonary histoplasmosis alone does not satisfy this guard; exclude central/pituitary/hypothalamic and glucocorticoid-induced adrenal insufficiency; do not generalize to all histoplasmosis.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Rare infectious complication only. Publish only with documented adrenal histoplasmosis and independently documented Addison disease/primary adrenal insufficiency. Pulmonary histoplasmosis alone does not satisfy this guard; exclude central/pituitary/hypothalamic and glucocorticoid-induced adrenal insufficiency; do not generalize to all histoplasmosis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Rare infectious complication only. Publish only with documented adrenal histoplasmosis and independently documented Addison disease/primary adrenal insufficiency. Pulmonary histoplasmosis alone does not satisfy this guard; exclude central/pituitary/hypothalamic and glucocorticoid-induced adrenal insufficiency; do not generalize to all histoplasmosis. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent diagnoses of Actinomycosis and Pericarditis / Endocarditis / Myocarditis; Chronology compatible with the bounded source proposition; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Qualified clinical opinion before using population-level evidence as an individual nexus",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

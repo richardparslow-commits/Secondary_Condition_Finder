@@ -6,7 +6,6 @@
     {
       "conditionId": "osteoarthritis",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Femoroacetabular impingement, particularly cam-type morphology with an elevated alpha angle, is associated with development and radiographic progression of hip osteoarthritis in systematic-review evidence. The evidence for pincer-type morphology is less consistent. This supports a hip-specific biomechanical/disease-progression research pathway when the individual's documented FAI morphology, symptoms, and osteoarthritis involve the same hip; it does not establish that every person with FAI develops osteoarthritis or that FAI caused an individual case without chronology and competing-risk review.",
       "pathwayIntelligence": {
         "pathways": [
@@ -42,7 +41,27 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 26524551; abstract: 35 included studies; cam morphology/elevated alpha angle associated with radiographic hip-OA progression; pincer evidence less well understood"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Documented femoroacetabular impingement morphology, especially cam-type morphology, may produce repetitive abnormal femoroacetabular contact and cartilage/labral damage that contributes to hip osteoarthritis progression in susceptible patients.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "Documented femoroacetabular impingement morphology, especially cam-type morphology, may produce repetitive abnormal femoroacetabular contact and cartilage/labral damage that contributes to hip osteoarthritis progression in susceptible patients.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Documented femoroacetabular impingement morphology, especially cam-type morphology, may produce repetitive abnormal femoroacetabular contact and cartilage/labral damage that contributes to hip osteoarthritis progression in susceptible patients. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Hip imaging documenting the FAI morphology and side, including cam/pincer/mixed characterization where available; Longitudinal imaging documenting osteoarthritis onset or progression in the same hip; Clinical chronology of hip symptoms, FAI diagnosis, treatment, and osteoarthritis progression; Assessment of hip dysplasia, trauma, inflammatory disease, avascular necrosis, age, weight, occupational/athletic loading, and other osteoarthritis contributors; Qualified orthopedic opinion addressing the individual biomechanical and chronological relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

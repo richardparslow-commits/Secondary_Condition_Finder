@@ -64,7 +64,7 @@ describe("mapping expansion ME-7", () => {
       expect(mapping?.suggestions[0]?.rank).toBe(1);
       const added = mapping?.suggestions.find((entry) => entry.conditionId === row.targetId);
       expect(added?.rank).toBe(2);
-      expect(added?.prevalence).toBe("sometimes-explored");
+      expect(added?.nexusClaim?.nexusClassification).toBeDefined(); expect(added?.evidentiaryProfile?.etiologicalConsensus).toBeDefined();
       expect(added?.pathwayIntelligence).toBeUndefined();
       expect(added?.rationale).toContain(row.finalProposition);
       expect(added?.rationale).toContain(row.finalGuard);

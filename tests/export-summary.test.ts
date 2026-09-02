@@ -11,7 +11,7 @@ const mockRecs: Recommendation[] = [
     conditionId: "radiculopathy",
     condition: "Radiculopathy",
     bodySystem: "Neurological",
-    prevalence: "commonly-explored",
+    etiologicalConsensus: "PROBABLE",
     score: 1.0,
     contributingPrimaries: [{ id: "lumbar-strain", name: "Lumbar Strain", rank: 1, rationale: "Direct nerve impact" }],
     evidenceGaps: ["Current diagnosis records"],

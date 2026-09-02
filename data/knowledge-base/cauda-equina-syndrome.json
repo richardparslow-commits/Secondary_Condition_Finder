@@ -6,7 +6,6 @@
     {
       "conditionId": "erectile-dysfunction",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Persistent sexual dysfunction, including erectile dysfunction in men, has been reported after surgically treated cauda equina syndrome in cohorts largely involving lumbar disc herniation. This supports a clinically relevant CES/erectile-dysfunction research pathway when the individual has a compatible CES etiology, documented sacral neurologic involvement, and compatible chronology. These population-level postoperative data do not by themselves establish an individual causal nexus, should not be generalized automatically to every CES etiology, and do not exclude vascular, endocrine, medication-related, psychogenic, or other contributors.",
       "evidenceGaps": [
         "Clinical documentation confirming erectile dysfunction and its onset, persistence, and severity",
@@ -25,12 +24,30 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 40380123; abstract/methods/results: 20 eligible studies from 2014-2024; lumbar disc herniation/CES surgical populations; male erectile dysfunction reported at 14%-100%; long-term CES sexual issues 14%-100%; only 1 of 14 CES studies reported postoperative improvement"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Persistent sexual dysfunction, including erectile dysfunction in men, has been reported after surgically treated cauda equina syndrome in cohorts largely involving lumbar disc herniation. This supports a clinically relevant CES/erectile-dysfunction research pathway when the individual has a compatible CES etiology, documented sacral neurologic involvement, and compatible chronology. These population-level postoperative data do not by themselves establish an individual causal nexus, should not be generalized automatically to every CES etiology, and do not exclude vascular, endocrine, medication-related, psychogenic, or other contributors."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Persistent sexual dysfunction, including erectile dysfunction in men, has been reported after surgically treated cauda equina syndrome in cohorts largely involving lumbar disc herniation. This supports a clinically relevant CES/erectile-dysfunction research pathway when the individual has a compatible CES etiology, documented sacral neurologic involvement, and compatible chronology. These population-level postoperative data do not by themselves establish an individual causal nexus, should not be generalized automatically to every CES etiology, and do not exclude vascular, endocrine, medication-related, psychogenic, or other contributors.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Persistent sexual dysfunction, including erectile dysfunction in men, has been reported after surgically treated cauda equina syndrome in cohorts largely involving lumbar disc herniation. This supports a clinically relevant CES/erectile-dysfunction research pathway when the individual has a compatible CES etiology, documented sacral neurologic involvement, and compatible chronology. These population-level postoperative data do not by themselves establish an individual causal nexus, should not be generalized automatically to every CES etiology, and do not exclude vascular, endocrine, medication-related, psychogenic, or other contributors.",
+        "evidenceGaps": "Clinical documentation confirming erectile dysfunction and its onset, persistence, and severity; Records establishing the cauda equina syndrome diagnosis, underlying etiology (including whether due to lumbar disc herniation), neurologic level and severity, and relevant sacral findings such as bladder, bowel, perianal sensory, or other sacral nerve-root dysfunction; Pre-CES sexual-function history and chronology comparing CES onset or decompression with erectile-dysfunction onset or worsening; Evaluation of competing erectile-dysfunction contributors, including vascular disease, diabetes, endocrine disorders, medications, psychiatric factors, and other neurologic disease; Urology, neurology, spine, or other qualified medical opinion addressing whether the individual erectile dysfunction is ",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     },
     {
       "conditionId": "urinary-incontinence",
       "rank": 2,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented cauda equina syndrome secondary to degenerative lumbar spine disease, with separately documented urinary incontinence or persistent loss of urinary continence attributable to the CES neurologic injury. Where the proposition concerns a persistent postoperative residual, require an appropriate post-decompression temporal course. Do not map urinary retention alone, nonspecific lower urinary tract symptoms, catheter use, or unrelated urologic disease to urinary-incontinence. Establish the bladder phenotype and temporal relationship to CES, and consider competing urologic or neurologic causes where clinically relevant. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of cauda-equina-syndrome and urinary-incontinence",
@@ -48,7 +65,27 @@
           "sourceCheckedOn": "2026-08-20",
           "sourceLocator": "PMID 42480656; qualified-human-approved Mapping Expansion Batch ME-2 Citation Verification; guard: Require documented cauda equina syndrome secondary to degenerative lumbar spine disease, with separately documented urinary incontinence or persistent loss of urinary continence attributable to the CES neurologic injury. Where the proposition concerns a persistent postoperative residual, require an appropriate post-decompression temporal course. Do not map urinary retention alone, nonspecific lower urinary tract symptoms, catheter use, or unrelated urologic disease to urinary-incontinence. Establish the bladder phenotype and temporal relationship to CES, and consider competing urologic or neurologic causes where clinically relevant."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented cauda equina syndrome secondary to degenerative lumbar spine disease, with separately documented urinary incontinence or persistent loss of urinary continence attributable to the CES neurologic injury. Where the proposition concerns a persistent postoperative residual, require an appropriate post-decompression temporal course. Do not map urinary retention alone, nonspecific lower urinary tract symptoms, catheter use, or unrelated urologic disease to urinary-incontinence. Establish the bladder phenotype and temporal relationship to CES, and consider competing urologic or neurologic causes where clinically relevant. The cited literature supports only this constrained relationship and does not, by itself, establish an individual medical nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented cauda equina syndrome secondary to degenerative lumbar spine disease, with separately documented urinary incontinence or persistent loss of urinary continence attributable to the CES neurologic injury. Where the proposition concerns a persistent postoperative residual, require an appropriate post-decompression temporal course. Do not map urinary retention alone, nonspecific lower urinary tract symptoms, catheter use, or unrelated urologic disease to urinary-incontinence. Establish the bladder phenotype and temporal relationship to CES, and consider competing urologic or neurologic causes where clinically relevant. The cited literature supports only this constrained relationship an",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-2 adds this relationship only as a bounded clinical proposition. Require documented cauda equina syndrome secondary to degenerative lumbar spine disease, with separately documented urinary incontinence or persistent loss of urinary continence attributable to the CES neurologic injury. Where the proposition concerns a persistent postoperative residual, require an appropriate post-decompression temporal course. Do not map urinary retention alone, nonspecific lower urinary tract symptoms, catheter use, or unrelated urologic disease to urinary-incontinence. Establish the bladder phenotype and temporal relationship to CES, and consider competing urologic or neurologic causes where clinically relevant. The cited li",
+        "evidenceGaps": "Independent documentation of cauda-equina-syndrome and urinary-incontinence; Chronology and phenotype compatible with the bounded source proposition; Assessment of competing etiologies, shared risk factors, and treatment effects where applicable; Resolution of the approved publication guard: Require documented cauda equina syndrome secondary to degenerative lumbar spine disease, with separately documented urinary incontinence or persistent loss of urinary continence attributable to the CES neurologic injury. Where the proposition concerns a persistent postoperative residual, require an appropriate post-decompression temporal course. Do not map urinary retention alone, nonspecific lower urinary tract symptoms, catheter use, or unrelated urologic disease to urinary-incontinence. Establish th",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

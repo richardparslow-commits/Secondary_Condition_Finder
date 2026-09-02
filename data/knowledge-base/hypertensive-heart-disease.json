@@ -6,7 +6,6 @@
     {
       "conditionId": "congestive-heart-failure",
       "rank": 1,
-      "prevalence": "commonly-explored",
       "rationale": "Hypertensive heart disease can include left-ventricular hypertrophy, fibrosis, and diastolic or systolic dysfunction that progress to clinical heart failure in some patients. The relationship still requires case-specific evidence that the documented hypertensive cardiac remodeling preceded and materially contributed to the individual's heart-failure syndrome, with ischemic, valvular, cardiomyopathic, rhythm-related, renal, and pulmonary causes addressed rather than assumed away.",
       "pathwayIntelligence": {
         "pathways": [
@@ -40,7 +39,26 @@
           "sourceCheckedOn": "2026-08-18",
           "sourceLocator": "PMID 36082670; abstract and hypertensive-heart-disease/heart-failure review scope"
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented hypertensive heart disease → persistent hypertensive cardiac remodeling or dysfunction → claimed progression to clinically diagnosed heart failure."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Documented hypertensive heart disease → persistent hypertensive cardiac remodeling or dysfunction → claimed progression to clinically diagnosed heart failure.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Documented hypertensive heart disease → persistent hypertensive cardiac remodeling or dysfunction → claimed progression to clinically diagnosed heart failure.",
+        "evidenceGaps": "Cardiology records documenting hypertensive cardiac remodeling or dysfunction rather than hypertension alone; Objective heart-failure evidence such as echocardiography, cardiac MRI, natriuretic peptides, or documented congestion; Medical opinion addressing chronology, competing etiologies, and individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

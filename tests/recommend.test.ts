@@ -6,6 +6,11 @@ import { loadKnowledgeBase } from "@/lib/kb/load";
 import { knowledgeBaseSchema } from "@/lib/kb/schema";
 import { recommend } from "@/lib/engine/recommend";
 import { intakeSchema, type Intake } from "@/lib/engine/types";
+import {
+  buildCausalMechanism,
+  buildEvidentiaryProfile,
+  buildNexusClaim,
+} from "./helpers/crg-fixtures";
 
 const catalog = loadConditionCatalog();
 const kb = loadKnowledgeBase();
@@ -196,7 +201,7 @@ describe("recommend", () => {
     expect(migraine?.matchedIntakeContext).toContain("migraine");
   });
 
-  it("never emits a numeric confidence, only a qualitative prevalence band", () => {
+  it("never emits a numeric confidence, only a qualitative etiological-consensus tier", () => {
     const { recommendations } = recommend(
       catalog,
       kb,
@@ -204,10 +209,12 @@ describe("recommend", () => {
     );
     for (const recommendation of recommendations) {
       expect([
-        "commonly-explored",
-        "sometimes-explored",
-        "occasionally-explored",
-      ]).toContain(recommendation.prevalence);
+        "WELL_ESTABLISHED",
+        "IATROGENIC_TREATMENT_EFFECT",
+        "PROBABLE",
+        "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE",
+        "NOT_ESTABLISHED",
+      ]).toContain(recommendation.etiologicalConsensus);
     }
   });
 
@@ -239,7 +246,9 @@ describe("recommend", () => {
           {
             conditionId: "secondary-condition",
             rank: 1,
-            prevalence: "commonly-explored",
+            nexusClaim: buildNexusClaim(),
+            causalMechanism: buildCausalMechanism(),
+            evidentiaryProfile: buildEvidentiaryProfile(),
             rationale: "draft only",
             evidenceGaps: ["draft only"],
             sourceReferences: [{ citation: "test", note: "test", verified: false }],

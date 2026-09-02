@@ -8,7 +8,6 @@
     {
       "conditionId": "peripheral-neuropathy",
       "rank": 1,
-      "prevalence": "sometimes-explored",
       "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. Vincristine used for hematologic malignancies, including non-Hodgkin lymphoma, can cause progressive peripheral sensory and motor neuropathy; the approved mapping is restricted to a documented neurotoxic treatment exposure with compatible chronology. Require documented non-Hodgkin lymphoma, a documented vincristine-containing or otherwise specifically neurotoxic lymphoma regimen, compatible chronology, and separately established peripheral neuropathy. Do not infer peripheral neuropathy from non-Hodgkin lymphoma itself. Preserve diabetic, nutritional, alcohol-related, compressive, paraproteinemic, infectious, hereditary, and other neuropathy etiologies as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
         "Independent documentation of non-hodgkins-lymphoma and peripheral-neuropathy",
@@ -27,7 +26,32 @@
           "sourceCheckedOn": "2026-08-22",
           "sourceLocator": "PMID 31214762; approved ME-13 source; guard: Require documented non-Hodgkin lymphoma, a documented vincristine-containing or otherwise specifically neurotoxic lymphoma regimen, compatible chronology, and separately established peripheral neuropathy. Do not infer peripheral neuropathy from non-Hodgkin lymphoma itself. Preserve diabetic, nutritional, alcohol-related, compressive, paraproteinemic, infectious, hereditary, and other neuropathy etiologies as competing explanations."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. Vincristine used for hematologic malignancies, including non-Hodgkin lymphoma, can cause progressive peripheral sensory and motor neuropathy; the approved mapping is restricted to a documented neurotoxic treatment exposure with compatible chronology. Require documented non-Hodgkin lymphoma, a documented vincristine-containing or otherwise specifically neurotoxic lymphoma regimen, compatible chronology, and separately established peripheral neuropathy.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. Vincristine used for hematologic malignancies, including non-Hodgkin lymphoma, can cause progressive peripheral sensory and motor neuropathy; the approved mapping is restricted to a documented neurotoxic treatment exposure with compatible chronology. Require documented non-Hodgkin lymphoma, a documented vincristine-containing or otherwise specifically neurotoxic lymphoma regimen, compatible chronology, and separately established peripheral neuropathy.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. Vincristine used for hematologic malignancies, including non-Hodgkin lymphoma, can cause progressive peripheral sensory and motor neuropathy; the approved mapping is restricted to a documented neurotoxic treatment exposure with compatible chronology. Require documented non-Hodgkin lymphoma, a documented vincristine-containing or otherwise specifically neurotoxic lymphoma regimen, compatible chronology, and separately established peripheral neuropathy. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of non-hodgkins-lymphoma and peripheral-neuropathy; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: treatment-mediated peripheral neuropathy after vincristine-containing or otherwise specifically neurotoxic lymphoma treatment; Assessment of material competing etiologies and treatment/context confounders; Resolution of publication guard: Require documented non-Hodgkin lymphoma, a documented vincristine-containing or otherwise specifically neurotoxic lymphoma regimen, compatible chronology, and separately established peripheral neuropathy. Do not infer peripheral neuropathy from non-Hodgkin lymphoma itself. Preserve diabetic, nutritional, alcohol-related, compressive, paraproteinemic, infectious, hereditary, and other neuro",
+        "alternativeEtiologiesToRuleOut": [
+          "diabetic",
+          "nutritional",
+          "alcohol-related",
+          "compressive",
+          "paraproteinemic",
+          "infectious"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }
