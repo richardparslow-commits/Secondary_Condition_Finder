@@ -56,8 +56,8 @@ describe("Mapping Expansion ME-13 local implementation",()=>{
   });
   it("preserves five draft-primary relationships and records five verified active master sources with exact guards",()=>{
     const rel=load<RelationshipRegistry>(path.join(ROOT,"data","evidence","master-relationships.json")); const src=load<SourceRegistry>(path.join(ROOT,"data","evidence","master-sources.json"));
-    expect(rel.baselineCommit).toBe("db5b0ef600ce4caefb1fe3b75b9c419c704209e3"); expect(rel.currentState).toBe("ME15-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
-    expect(src.baselineCommit).toBe("db5b0ef600ce4caefb1fe3b75b9c419c704209e3"); expect(src.currentState).toBe("ME15-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(rel.baselineCommit).toBe("126bc0d0983c8b4cfd90457a7a6a68e3f7f30e97"); expect(rel.currentState).toBe("ME15-CITATION-VERIFIED");
+    expect(src.baselineCommit).toBe("126bc0d0983c8b4cfd90457a7a6a68e3f7f30e97"); expect(src.currentState).toBe("ME15-CITATION-VERIFIED");
     for (const row of rows) {
       const rr=rel.relationships.filter((r:RelationshipRecord)=>r.relationshipId===`rel-${row.primaryId}-to-${row.targetId}`);
       expect(rr).toHaveLength(1); expect(rr[0]!.primaryPublicationState).toBe("draft"); expect(rr[0]!.rank).toBe(1); expect(rr[0]!.publicationGuard.structuredGuardText).toBe(row.guard);
@@ -70,6 +70,6 @@ describe("Mapping Expansion ME-13 local implementation",()=>{
     const refs=maps.flatMap((m:Mapping)=>m.suggestions.flatMap((s:Suggestion)=>s.sourceReferences||[])); const clinical=refs.filter((r:SourceReference)=>r.verificationScope==="clinical-evidence");
     expect(maps.reduce((n:number,m:Mapping)=>n+m.suggestions.length,0)).toBe(248);
     expect(maps.filter((m:Mapping)=>m.draft===false&&m.suggestions.length===1)).toHaveLength(66); expect(maps.filter((m:Mapping)=>m.draft===false&&m.suggestions.length>=2)).toHaveLength(73); expect(maps.filter((m:Mapping)=>m.draft===true&&m.suggestions.length===1)).toHaveLength(19);
-    expect(refs).toHaveLength(256); expect(refs.filter((r:SourceReference)=>r.verified===true)).toHaveLength(251); expect(refs.filter((r:SourceReference)=>r.verified===false)).toHaveLength(5); expect(clinical).toHaveLength(251);
+    expect(refs).toHaveLength(256); expect(refs.filter((r:SourceReference)=>r.verified===true)).toHaveLength(256); expect(refs.filter((r:SourceReference)=>r.verified===false)).toHaveLength(0); expect(clinical).toHaveLength(251);
   });
 });

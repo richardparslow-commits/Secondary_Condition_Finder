@@ -24,7 +24,7 @@
           "note": "Mapping Expansion Batch ME-15 evidence for the bounded bipolar-disorder to anxiety-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17485606/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-01",
           "sourceLocator": "PMID 17485606; approved ME-15 source; guard: Require independently established bipolar disorder and a separately established anxiety disorder diagnosis; the cited nationally representative survey reported lifetime comorbidity of bipolar spectrum disorder with other Axis I disorders, particularly anxiety disorders as a class, and does not specify onset order or direction. Distinguish an independent anxiety disorder from anxiety symptoms occurring within manic, hypomanic, or depressive episodes. Preserve substance use, medical illness, medications, and other psychiatric illness as competing explanations. Treat this only as population-level comorbidity association, not proof that bipolar disorder caused an individual's anxiety disorder."
         }

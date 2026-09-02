@@ -24,7 +24,7 @@
           "note": "Mapping Expansion Batch ME-15 evidence for the bounded anxiety-disorder to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17548747/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-01",
           "sourceLocator": "PMID 17548747; approved ME-15 source; guard: Require independently established generalized anxiety disorder and separately established major depressive disorder. The cited prospective birth cohort found cumulative and roughly symmetric sequential comorbidity, with depression onset first, anxiety onset first, and concurrent onset each occurring in about one third of comorbid cases; do not treat either disorder as reliably primary in onset order. Preserve other psychiatric illness, substance use, medical illness, medications, psychosocial stressors, and shared vulnerability as competing explanations. Treat this only as population-level comorbidity association, not proof that generalized anxiety disorder caused an individual's depressive disorder."
         }

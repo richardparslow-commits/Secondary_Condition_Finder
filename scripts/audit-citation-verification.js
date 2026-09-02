@@ -27,13 +27,14 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // PMID 30656706 is proposition-matched to adrenal-histoplasmosis -> addisons-disease; live citation debt is now zero.
 // ME-14 Qualified-Human Citation Verification promotes all 5 ME-14 sources exactly as implemented.
 // Final ME-14 citation state: 251 live verified / 0 unverified / 0 review; 257 verified provenance including 6 retired verified.
-// ME-15 mapping adds 5 bounded mental-disorder sources as verified:false; qualified-human citation verification is separately gated.
+// ME-15 Qualified-Human Citation Verification promotes all 5 ME-15 sources exactly as implemented.
+// Final ME-15 citation state: 256 live verified / 0 unverified / 0 review; 262 verified provenance including 6 retired verified.
 const CITATION_DEBT_BASELINE = Object.freeze({
   references: 256,
-  liveVerified: 251,
+  liveVerified: 256,
   retiredVerified: 6,
-  verifiedProvenance: 257,
-  unverified: 5,
+  verifiedProvenance: 262,
+  unverified: 0,
   reviewFindings: 0,
   liveClinicalEvidenceWithUrls: 251,
   retiredClinicalEvidenceWithUrls: 4,

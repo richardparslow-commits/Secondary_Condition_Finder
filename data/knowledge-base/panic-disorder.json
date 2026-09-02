@@ -24,7 +24,7 @@
           "note": "Mapping Expansion Batch ME-15 evidence for the bounded panic-disorder to agoraphobia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16585471/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-01",
           "sourceLocator": "PMID 16585471; approved ME-15 source; guard: Require independently documented panic disorder and separately established agoraphobia; under DSM-5 these are distinct diagnoses and agoraphobia must not be inferred from panic attacks or panic disorder alone. The cited nationally representative survey found that most lifetime panic disorder cases did not carry agoraphobia; do not present co-occurrence as inevitable progression. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Treat this only as population-level co-occurrence risk, not proof that panic disorder caused an individual's agoraphobia."
         }

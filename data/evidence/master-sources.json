@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "db5b0ef600ce4caefb1fe3b75b9c419c704209e3",
+  "baselineCommit": "126bc0d0983c8b4cfd90457a7a6a68e3f7f30e97",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -17,10 +17,10 @@
   },
   "counts": {
     "liveSourceReferenceUses": 256,
-    "activeSourceEntities": 228,
-    "pendingVerificationSourceEntities": 5,
-    "activeClinicalSourceEntities": 227,
-    "pendingClinicalSourceEntities": 5,
+    "activeSourceEntities": 233,
+    "pendingVerificationSourceEntities": 0,
+    "activeClinicalSourceEntities": 232,
+    "pendingClinicalSourceEntities": 0,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
@@ -8915,7 +8915,7 @@
     },
     {
       "sourceId": "pmid-17548747",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "17548747",
       "doi": "10.1001/archpsyc.64.6.651",
@@ -8930,7 +8930,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-09-01"
       ],
@@ -8948,14 +8948,16 @@
         "dd3671443fa32496898275f42679401d67252cf2f9d1197a673cf23221c05cdf"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-01",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-16585471",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "16585471",
       "doi": "10.1001/archpsyc.63.4.415",
@@ -8970,7 +8972,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-09-01"
       ],
@@ -8988,14 +8990,16 @@
         "57a2da123d009c8fcd28e734e5ac95d3a0b0c071df0739a0b1b32d3fc47a3174"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-01",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-18725912",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "18725912",
       "doi": "10.1038/mp.2008.94",
@@ -9010,7 +9014,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-09-01"
       ],
@@ -9028,14 +9032,16 @@
         "cad8e9e1c7dddff87e00a798d6bb52d3cc9ace74cfd382877f7c07a7becf2ab2"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-01",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-16815322",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "16815322",
       "doi": "10.1016/j.biopsych.2006.03.040",
@@ -9050,7 +9056,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-09-01"
       ],
@@ -9068,14 +9074,16 @@
         "0630fa557dfb86631b2c9d3908f56aabda463dfb628ae55590c6b4bee9d17437"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-01",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
       "sourceId": "pmid-17485606",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "17485606",
       "doi": "10.1001/archpsyc.64.5.543",
@@ -9090,7 +9098,7 @@
       "verificationScopes": [
         "clinical-evidence"
       ],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": [
         "2026-09-01"
       ],
@@ -9108,12 +9116,14 @@
         "5622e37282ce87e2c7ced0079ff6787d8c29c99c00163bdc2fd45f899bd1d750"
       ],
       "verificationState": {
-        "qualifiedHumanCitationReviewRequired": true,
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-01",
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     }
   ],
-  "lastUpdatedBy": "ME-15 Mapping Implementation",
-  "currentState": "ME15-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "ME-15 Qualified-Human Citation Verification",
+  "currentState": "ME15-CITATION-VERIFIED"
 }
