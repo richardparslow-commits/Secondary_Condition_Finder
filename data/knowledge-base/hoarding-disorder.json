@@ -1,6 +1,34 @@
 {
   "id": "hoarding-disorder",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review psychiatric comorbidity, functional impairment, treatment/medication, safety, and aggravation pathways only where applicable; do not infer a VA diagnostic code or secondary nexus from DSM category proximity to OCD."],
-  "suggestions": []
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review psychiatric comorbidity, functional impairment, treatment/medication, safety, and aggravation pathways only where applicable; do not infer a VA diagnostic code or secondary nexus from DSM category proximity to OCD."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited UK community study found DSM-5 hoarding disorder associated with elevated comorbid depressive and anxiety disorders in a population sample. Require independently established DSM-5 hoarding disorder and separately established depressive disorder; the cited community study reported elevated comorbidity of hoarding disorder with mood and anxiety disorders and does not establish onset order or direction. Preserve other psychiatric illness, substance use, medical illness, medications, shared vulnerability, and disorganization or collecting behavior attributable to other conditions as competing explanations. Do not infer a depressive disorder from hoarding-related distress or impairment alone, and do not treat this population-level association as proof that hoarding disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of hoarding-disorder and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established DSM-5 hoarding disorder and separately established depressive disorder; the cited community study reported elevated comorbidity of hoarding disorder with mood and anxiety disorders and does not establish onset order or direction. Preserve other psychiatric illness, substance use, medical illness, medications, shared vulnerability, and disorganization or collecting behavior attributable to other conditions as competing explanations. Do not infer a depressive disorder from hoarding-related distress or impairment alone, and do not treat this population-level association as proof that hoarding disorder caused an individual's depressive disorder."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Nordsletten AE, de la Cruz LF, Billotti D, Mataix-Cols D. Epidemiology of hoarding disorder. Br J Psychiatry. 2013;203(6):445-452. PMID 24158881. doi:10.1192/bjp.bp.113.130195.",
+          "note": "Mapping Expansion Batch ME-16 evidence for the bounded hoarding-disorder to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24158881/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-01",
+          "sourceLocator": "PMID 24158881; approved ME-16 source; guard: Require independently established DSM-5 hoarding disorder and separately established depressive disorder; the cited community study reported elevated comorbidity of hoarding disorder with mood and anxiety disorders and does not establish onset order or direction. Preserve other psychiatric illness, substance use, medical illness, medications, shared vulnerability, and disorganization or collecting behavior attributable to other conditions as competing explanations. Do not infer a depressive disorder from hoarding-related distress or impairment alone, and do not treat this population-level association as proof that hoarding disorder caused an individual's depressive disorder."
+        }
+      ]
+    }
+  ]
 }

@@ -1,6 +1,34 @@
 {
   "id": "body-dysmorphic-disorder",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review psychiatric comorbidity, functional impairment, treatment/medication, and aggravation pathways only where applicable; do not infer a VA diagnostic code or secondary nexus from DSM category proximity to OCD."],
-  "suggestions": []
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review psychiatric comorbidity, functional impairment, treatment/medication, and aggravation pathways only where applicable; do not infer a VA diagnostic code or secondary nexus from DSM category proximity to OCD."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited clinical study found that the large majority of individuals with body dysmorphic disorder had lifetime major depressive disorder, without the study establishing direction of onset. Require independently established body dysmorphic disorder and separately established major depressive disorder; the cited clinical sample reported high lifetime comorbidity of body dysmorphic disorder with major depressive disorder and does not establish onset order or direction. Preserve eating disorders, OCD-spectrum conditions, social anxiety disorder, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from appearance-preoccupation distress or impairment alone, and do not treat this clinical-sample association as proof that body dysmorphic disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of body-dysmorphic-disorder and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: clinical-sample-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established body dysmorphic disorder and separately established major depressive disorder; the cited clinical sample reported high lifetime comorbidity of body dysmorphic disorder with major depressive disorder and does not establish onset order or direction. Preserve eating disorders, OCD-spectrum conditions, social anxiety disorder, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from appearance-preoccupation distress or impairment alone, and do not treat this clinical-sample association as proof that body dysmorphic disorder caused an individual's depressive disorder."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Phillips KA, Didie ER, Menard W, Pagano ME, Fay C, Weisberg RB. Clinical features and correlates of major depressive disorder in individuals with body dysmorphic disorder. J Affect Disord. 2007;97(1-3):129-135. PMID 16893571. doi:10.1016/j.jad.2006.06.006.",
+          "note": "Mapping Expansion Batch ME-16 evidence for the bounded body-dysmorphic-disorder to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16893571/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-01",
+          "sourceLocator": "PMID 16893571; approved ME-16 source; guard: Require independently established body dysmorphic disorder and separately established major depressive disorder; the cited clinical sample reported high lifetime comorbidity of body dysmorphic disorder with major depressive disorder and does not establish onset order or direction. Preserve eating disorders, OCD-spectrum conditions, social anxiety disorder, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from appearance-preoccupation distress or impairment alone, and do not treat this clinical-sample association as proof that body dysmorphic disorder caused an individual's depressive disorder."
+        }
+      ]
+    }
+  ]
 }

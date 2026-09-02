@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "126bc0d0983c8b4cfd90457a7a6a68e3f7f30e97",
+  "baselineCommit": "d6783c1652ade0b005ef0a952ba667126523e09c",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 256,
+    "liveSourceReferenceUses": 261,
     "activeSourceEntities": 233,
-    "pendingVerificationSourceEntities": 0,
+    "pendingVerificationSourceEntities": 5,
     "activeClinicalSourceEntities": 232,
-    "pendingClinicalSourceEntities": 0,
+    "pendingClinicalSourceEntities": 5,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 242,
+    "totalSourceEntitiesIncludingLineage": 247,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -9122,8 +9122,208 @@
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
+    },
+    {
+      "sourceId": "pmid-21383252",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "21383252",
+      "doi": "10.1001/archgenpsychiatry.2011.22",
+      "canonicalCitation": "Swanson SA, Crow SJ, Le Grange D, Swendsen J, Merikangas KR. Prevalence and Correlates of Eating Disorders in Adolescents: Results From the National Comorbidity Survey Replication Adolescent Supplement. Arch Gen Psychiatry. 2011;68(7):714-723. PMID 21383252. doi:10.1001/archgenpsychiatry.2011.22.",
+      "citationVariants": [
+        "Swanson SA, Crow SJ, Le Grange D, Swendsen J, Merikangas KR. Prevalence and Correlates of Eating Disorders in Adolescents: Results From the National Comorbidity Survey Replication Adolescent Supplement. Arch Gen Psychiatry. 2011;68(7):714-723. PMID 21383252. doi:10.1001/archgenpsychiatry.2011.22."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21383252/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/21383252/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bulimia-nervosa-to-depressive-disorder",
+          "primaryId": "bulimia-nervosa",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "26f8f0492f8f5d6102274f91ac302139401a9aeaf5ddbd59d4766306222a43b1"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-28222820",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "28222820",
+      "doi": "10.1017/S0033291717000174",
+      "canonicalCitation": "Wardenaar KJ, Lim CCW, Al-Hamzawi AO, et al. The cross-national epidemiology of specific phobia in the World Mental Health Surveys. Psychol Med. 2017;47(10):1744-1760. PMID 28222820. doi:10.1017/S0033291717000174.",
+      "citationVariants": [
+        "Wardenaar KJ, Lim CCW, Al-Hamzawi AO, et al. The cross-national epidemiology of specific phobia in the World Mental Health Surveys. Psychol Med. 2017;47(10):1744-1760. PMID 28222820. doi:10.1017/S0033291717000174."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28222820/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/28222820/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-specific-phobia-to-depressive-disorder",
+          "primaryId": "specific-phobia",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "49d2d31c39efa301f2597c8fff756aee3a30ecbe8cae8bdd1e9d4c9df029852b"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-24158881",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "24158881",
+      "doi": "10.1192/bjp.bp.113.130195",
+      "canonicalCitation": "Nordsletten AE, de la Cruz LF, Billotti D, Mataix-Cols D. Epidemiology of hoarding disorder. Br J Psychiatry. 2013;203(6):445-452. PMID 24158881. doi:10.1192/bjp.bp.113.130195.",
+      "citationVariants": [
+        "Nordsletten AE, de la Cruz LF, Billotti D, Mataix-Cols D. Epidemiology of hoarding disorder. Br J Psychiatry. 2013;203(6):445-452. PMID 24158881. doi:10.1192/bjp.bp.113.130195."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24158881/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24158881/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hoarding-disorder-to-depressive-disorder",
+          "primaryId": "hoarding-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "3e26213dc038c1de9a8ad28a09c22cb1717e6e569eeefd214555df3a7e24f03e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-16893571",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "16893571",
+      "doi": "10.1016/j.jad.2006.06.006",
+      "canonicalCitation": "Phillips KA, Didie ER, Menard W, Pagano ME, Fay C, Weisberg RB. Clinical features and correlates of major depressive disorder in individuals with body dysmorphic disorder. J Affect Disord. 2007;97(1-3):129-135. PMID 16893571. doi:10.1016/j.jad.2006.06.006.",
+      "citationVariants": [
+        "Phillips KA, Didie ER, Menard W, Pagano ME, Fay C, Weisberg RB. Clinical features and correlates of major depressive disorder in individuals with body dysmorphic disorder. J Affect Disord. 2007;97(1-3):129-135. PMID 16893571. doi:10.1016/j.jad.2006.06.006."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16893571/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16893571/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-body-dysmorphic-disorder-to-depressive-disorder",
+          "primaryId": "body-dysmorphic-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8800956558904cdf5fba8ef4b35501673c881dfea89dda309b7e4c5f5743eef5"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-27775828",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "27775828",
+      "doi": "10.1002/da.22572",
+      "canonicalCitation": "de Jonge P, Roest AM, Lim CCW, et al. Cross-national epidemiology of panic disorder and panic attacks in the World Mental Health Surveys. Depress Anxiety. 2016;33(12):1155-1177. PMID 27775828. doi:10.1002/da.22572.",
+      "citationVariants": [
+        "de Jonge P, Roest AM, Lim CCW, et al. Cross-national epidemiology of panic disorder and panic attacks in the World Mental Health Surveys. Depress Anxiety. 2016;33(12):1155-1177. PMID 27775828. doi:10.1002/da.22572."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27775828/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27775828/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-agoraphobia-to-depressive-disorder",
+          "primaryId": "agoraphobia",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "28b33d146add0b5c78b1e0dfebd563e5701f483ddbdcff710317dc175920fdf6"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
-  "lastUpdatedBy": "ME-15 Qualified-Human Citation Verification",
-  "currentState": "ME15-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-16",
+  "currentState": "ME16-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

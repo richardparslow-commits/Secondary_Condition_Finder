@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "126bc0d0983c8b4cfd90457a7a6a68e3f7f30e97",
+  "baselineCommit": "d6783c1652ade0b005ef0a952ba667126523e09c",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 248,
-    "explicitPublicationGuards": 174,
+    "relationships": 253,
+    "explicitPublicationGuards": 179,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -8350,8 +8350,178 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "233ee334173b150cfe2b0dba690fd5f13ba3010fcad2f95dd650593047e2028f"
+    },
+    {
+      "relationshipId": "rel-bulimia-nervosa-to-depressive-disorder",
+      "primaryId": "bulimia-nervosa",
+      "targetId": "depressive-disorder",
+      "direction": "bulimia-nervosa -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me16-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited National Comorbidity Survey Replication Adolescent Supplement found bulimia nervosa significantly comorbid with mood disorders and many other DSM-IV disorders in a nationally representative adolescent sample. Require independently established bulimia nervosa and separately established depressive disorder; the cited nationally representative adolescent survey reported substantial bulimia nervosa comorbidity with mood disorders without establishing onset order or direction, and its adolescent sample should not be overgeneralized to adult populations. Preserve obesity and metabolic disease, other eating pathology, substance use, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from eating-disorder symptoms, weight concern, or role impairment alone, and do not treat this population-level association as proof that bulimia nervosa caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited National Comorbidity Survey Replication Adolescent Supplement found bulimia nervosa significantly comorbid with mood disorders and many other DSM-IV disorders in a nationally representative adolescent sample. Require independently established bulimia nervosa and separately established depressive disorder; the cited nationally representative adolescent survey reported substantial bulimia nervosa comorbidity with mood disorders without establishing onset order or direction, and its adolescent sample should not be overgeneralized to adult populations. Preserve obesity and metabolic disease, other eating pathology, substance use, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from eating-disorder symptoms, weight concern, or role impairment alone, and do not treat this population-level association as proof that bulimia nervosa caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established bulimia nervosa and separately established depressive disorder; the cited nationally representative adolescent survey reported substantial bulimia nervosa comorbidity with mood disorders without establishing onset order or direction, and its adolescent sample should not be overgeneralized to adult populations. Preserve obesity and metabolic disease, other eating pathology, substance use, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from eating-disorder symptoms, weight concern, or role impairment alone, and do not treat this population-level association as proof that bulimia nervosa caused an individual's depressive disorder.",
+        "boundarySource": "approved-me16-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of bulimia-nervosa and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established bulimia nervosa and separately established depressive disorder; the cited nationally representative adolescent survey reported substantial bulimia nervosa comorbidity with mood disorders without establishing onset order or direction, and its adolescent sample should not be overgeneralized to adult populations. Preserve obesity and metabolic disease, other eating pathology, substance use, medications, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from eating-disorder symptoms, weight concern, or role impairment alone, and do not treat this population-level association as proof that bulimia nervosa caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-21383252"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "c7933e9460752a7e956246591eef5b1401727c2ad0d86bd9e34157c633952dbf"
+    },
+    {
+      "relationshipId": "rel-specific-phobia-to-depressive-disorder",
+      "primaryId": "specific-phobia",
+      "targetId": "depressive-disorder",
+      "direction": "specific-phobia -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me16-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited cross-national World Mental Health Surveys found specific phobia associated with elevated comorbidity with depressive and other mental disorders without establishing onset order or direction. Require independently diagnosed specific phobia and separately established depressive disorder; the cited cross-national survey reported specific phobia comorbidity with other mental disorders and does not establish onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not infer a depressive disorder from phobic avoidance, distress, or impairment alone, and do not treat this population-level association as proof that specific phobia caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited cross-national World Mental Health Surveys found specific phobia associated with elevated comorbidity with depressive and other mental disorders without establishing onset order or direction. Require independently diagnosed specific phobia and separately established depressive disorder; the cited cross-national survey reported specific phobia comorbidity with other mental disorders and does not establish onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not infer a depressive disorder from phobic avoidance, distress, or impairment alone, and do not treat this population-level association as proof that specific phobia caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently diagnosed specific phobia and separately established depressive disorder; the cited cross-national survey reported specific phobia comorbidity with other mental disorders and does not establish onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not infer a depressive disorder from phobic avoidance, distress, or impairment alone, and do not treat this population-level association as proof that specific phobia caused an individual's depressive disorder.",
+        "boundarySource": "approved-me16-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of specific-phobia and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently diagnosed specific phobia and separately established depressive disorder; the cited cross-national survey reported specific phobia comorbidity with other mental disorders and does not establish onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not infer a depressive disorder from phobic avoidance, distress, or impairment alone, and do not treat this population-level association as proof that specific phobia caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-28222820"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "fbe079b08dd69787147f19230e5fd73567f6d579984e5bf255a44f3c7c4075d7"
+    },
+    {
+      "relationshipId": "rel-hoarding-disorder-to-depressive-disorder",
+      "primaryId": "hoarding-disorder",
+      "targetId": "depressive-disorder",
+      "direction": "hoarding-disorder -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me16-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited UK community study found DSM-5 hoarding disorder associated with elevated comorbid depressive and anxiety disorders in a population sample. Require independently established DSM-5 hoarding disorder and separately established depressive disorder; the cited community study reported elevated comorbidity of hoarding disorder with mood and anxiety disorders and does not establish onset order or direction. Preserve other psychiatric illness, substance use, medical illness, medications, shared vulnerability, and disorganization or collecting behavior attributable to other conditions as competing explanations. Do not infer a depressive disorder from hoarding-related distress or impairment alone, and do not treat this population-level association as proof that hoarding disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited UK community study found DSM-5 hoarding disorder associated with elevated comorbid depressive and anxiety disorders in a population sample. Require independently established DSM-5 hoarding disorder and separately established depressive disorder; the cited community study reported elevated comorbidity of hoarding disorder with mood and anxiety disorders and does not establish onset order or direction. Preserve other psychiatric illness, substance use, medical illness, medications, shared vulnerability, and disorganization or collecting behavior attributable to other conditions as competing explanations. Do not infer a depressive disorder from hoarding-related distress or impairment alone, and do not treat this population-level association as proof that hoarding disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established DSM-5 hoarding disorder and separately established depressive disorder; the cited community study reported elevated comorbidity of hoarding disorder with mood and anxiety disorders and does not establish onset order or direction. Preserve other psychiatric illness, substance use, medical illness, medications, shared vulnerability, and disorganization or collecting behavior attributable to other conditions as competing explanations. Do not infer a depressive disorder from hoarding-related distress or impairment alone, and do not treat this population-level association as proof that hoarding disorder caused an individual's depressive disorder.",
+        "boundarySource": "approved-me16-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of hoarding-disorder and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established DSM-5 hoarding disorder and separately established depressive disorder; the cited community study reported elevated comorbidity of hoarding disorder with mood and anxiety disorders and does not establish onset order or direction. Preserve other psychiatric illness, substance use, medical illness, medications, shared vulnerability, and disorganization or collecting behavior attributable to other conditions as competing explanations. Do not infer a depressive disorder from hoarding-related distress or impairment alone, and do not treat this population-level association as proof that hoarding disorder caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-24158881"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "c94a524161b810e2fbce819a644ea145ea4efb85f624c845aaee5ebcc4c2d7d3"
+    },
+    {
+      "relationshipId": "rel-body-dysmorphic-disorder-to-depressive-disorder",
+      "primaryId": "body-dysmorphic-disorder",
+      "targetId": "depressive-disorder",
+      "direction": "body-dysmorphic-disorder -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me16-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited clinical study found that the large majority of individuals with body dysmorphic disorder had lifetime major depressive disorder, without the study establishing direction of onset. Require independently established body dysmorphic disorder and separately established major depressive disorder; the cited clinical sample reported high lifetime comorbidity of body dysmorphic disorder with major depressive disorder and does not establish onset order or direction. Preserve eating disorders, OCD-spectrum conditions, social anxiety disorder, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from appearance-preoccupation distress or impairment alone, and do not treat this clinical-sample association as proof that body dysmorphic disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited clinical study found that the large majority of individuals with body dysmorphic disorder had lifetime major depressive disorder, without the study establishing direction of onset. Require independently established body dysmorphic disorder and separately established major depressive disorder; the cited clinical sample reported high lifetime comorbidity of body dysmorphic disorder with major depressive disorder and does not establish onset order or direction. Preserve eating disorders, OCD-spectrum conditions, social anxiety disorder, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from appearance-preoccupation distress or impairment alone, and do not treat this clinical-sample association as proof that body dysmorphic disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established body dysmorphic disorder and separately established major depressive disorder; the cited clinical sample reported high lifetime comorbidity of body dysmorphic disorder with major depressive disorder and does not establish onset order or direction. Preserve eating disorders, OCD-spectrum conditions, social anxiety disorder, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from appearance-preoccupation distress or impairment alone, and do not treat this clinical-sample association as proof that body dysmorphic disorder caused an individual's depressive disorder.",
+        "boundarySource": "approved-me16-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of body-dysmorphic-disorder and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: clinical-sample-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established body dysmorphic disorder and separately established major depressive disorder; the cited clinical sample reported high lifetime comorbidity of body dysmorphic disorder with major depressive disorder and does not establish onset order or direction. Preserve eating disorders, OCD-spectrum conditions, social anxiety disorder, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from appearance-preoccupation distress or impairment alone, and do not treat this clinical-sample association as proof that body dysmorphic disorder caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-16893571"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "65e55f07d4fd61ec574cecbd8187bd13b991ead5721490d0a60272d780e3d894"
+    },
+    {
+      "relationshipId": "rel-agoraphobia-to-depressive-disorder",
+      "primaryId": "agoraphobia",
+      "targetId": "depressive-disorder",
+      "direction": "agoraphobia -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me16-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited cross-national World Mental Health Surveys found agoraphobia commonly co-occurs with depressive and other mental disorders, with coexistence marking more severe presentations. Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not present co-occurrence as inevitable progression, and do not treat this population-level association as proof that agoraphobia caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-16 adds this relationship only as the user-approved bounded clinical proposition. The cited cross-national World Mental Health Surveys found agoraphobia commonly co-occurs with depressive and other mental disorders, with coexistence marking more severe presentations. Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not present co-occurrence as inevitable progression, and do not treat this population-level association as proof that agoraphobia caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not present co-occurrence as inevitable progression, and do not treat this population-level association as proof that agoraphobia caused an individual's depressive disorder.",
+        "boundarySource": "approved-me16-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of agoraphobia and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not present co-occurrence as inevitable progression, and do not treat this population-level association as proof that agoraphobia caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-27775828"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "0859d0091c359fd69fbe333ca77ca058de103e8879af288ac2a50ab7bf2f3c4d"
     }
   ],
-  "lastUpdatedBy": "ME-15 Qualified-Human Citation Verification",
-  "currentState": "ME15-CITATION-VERIFIED"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-16",
+  "currentState": "ME16-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }
