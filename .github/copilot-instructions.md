@@ -30,3 +30,25 @@ This application heavily relies on strict JSON file parsing and cross-file refer
 2.  **Schema Compliance First:** If modifying Zod schemas, ensure backward compatibility with existing JSON data.
 3.  **Test-Driven Execution:** Always instruct the user to run `npm test` before suggesting a Git commit command.
 4.  **Terminal Commands:** Assume a bash environment on an Ubuntu virtual machine. Chain commands logically and provide exact file paths.
+
+## CRG, Security, and Governance Directives (MANDATORY)
+
+### 1. Track Separation
+- Secondary conditions (CRG edges in `data/knowledge-base/`) and Presumptive conditions (regulatory triggers in `data/presumptives/`) MUST NEVER share JSON files, schemas, or loader modules.
+- `src/lib/secondary-workflow/` must never import `@/lib/presumptive/*` logic, and `src/lib/presumptive/` must never import `@/lib/secondary-workflow/*`, `@/lib/kb/*`, or `@/lib/engine/*` (type-only imports of shared types are allowed). The composition audit (`npm run test:composition`) fails on violations.
+
+### 2. Security & Privacy
+- NEVER use GET requests or URL query parameters for workflow state, condition selections, or service history. All state mutations use Next.js Server Actions (POST). `/results` is a legacy hard redirect and must not process query-based health state.
+- NEVER store full workflow state in cookies. Cookies contain only short-lived, encrypted/authenticated workflow state; never surface tokens, condition selections, or PII in URLs, logs, or screenshots.
+- NEVER send raw file bytes (PDFs/images) through Server Actions. Documents are processed browser-local in `src/lib/evidence/`; only sanitized, bounded extracted text is surfaced.
+- NEVER initialize client-side analytics, telemetry, or third-party SDKs. `connect-src` stays `'self'`.
+- NEVER weaken the nonce-based Content Security Policy in `src/proxy.ts` (no `'unsafe-inline'` for scripts, no third-party connect-src).
+- NEVER hallucinate or guess URLs. If you do not have a verified URL, leave `url` null and set `verified: false`.
+
+### 3. File Placement
+- ALL Server Actions must reside in `src/lib/actions/` and begin with `"use server";` as the first statement. `npm run test:composition` fails on any `"use server"` file outside that directory.
+- `src/lib/evidence/` PDF parsing (`extract.ts`, `document-extract.ts`) MUST be imported only from `"use client"` components or browser-local lib modules — never from `src/app/` pages, actions, or route handlers.
+- `src/lib/kb/`, `src/lib/workflow-session-crypto`, `src/lib/secondary-workflow/session`, `src/lib/presumptive/session`, and `src/lib/store/` MUST NEVER be imported in `"use client"` components.
+
+### 4. Mandatory CI/CD Gates
+Before any PR is merged it must pass: `npm run kb:validate`, `npm run citations:audit`, `npm run test:composition`, `npm run lint`, `npm run typecheck`, and `npm test`. `npm run citations:decay` (link-rot/staleness scan) is run deliberately by maintainers; it performs live network probes and is not wired into per-PR CI.

@@ -75,11 +75,13 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run build` | Production build |
 | `npm test` | Vitest suite; CI runs it once and fails on any failure |
 | `npm run test:watch` | Vitest in watch mode |
-| `npm run test:composition` | Requires executable-test imports for 100% of the audited critical-module manifest |
+| `npm run test:composition` | Requires executable-test imports for 100% of the audited critical-module manifest; also enforces server-action placement, client-boundary, track-separation, and evidence-parser architecture rules |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm run kb:validate` | Knowledge-base structural/integrity validation |
 | `npm run citations:audit` | Citation safety, provenance, and verification-debt audit |
+| `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-18 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
+| `npm run citations:decay` | Live link-rot/staleness probe for citations (deliberate maintainer gate, not per-PR CI) |
 
 CI also builds the production app and runs real Chrome/ChromeDriver journeys for
 the secondary workflow and validation/error behavior. After successful `main`
@@ -113,11 +115,16 @@ limiting.
 
 ## Layout
 
+The consolidated architecture, authoring, and security specification lives in
+[`docs/master-specification.md`](docs/master-specification.md).
+
 ```text
 data/conditions/       Condition catalog, grouped by body system and reviewed expansion/maintenance batches
 data/knowledge-base/   Secondary mappings, one JSON file per primary
 data/presumptives/     Exposure categories, locations, and date windows
 data/demo-scenarios.json
+src/proxy.ts           Edge proxy (Next 16 middleware): per-request nonce CSP, x-nonce, route headers
+src/lib/actions/       All Server Actions ("use server") — secondary, presumptive, scenarios
 src/lib/catalog/       Zod schema, loader, lookup; condition identity
 src/lib/kb/            Zod schema, loader, mapping helpers
 src/lib/engine/        Recommendation and export logic

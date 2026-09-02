@@ -38,7 +38,7 @@ describe("accessible workflow validation", () => {
 
   it("requires explicit neutral service-connected answers and preserves partial answers in the encrypted session", () => {
     const page = read("src/app/secondary/service-connected/page.tsx");
-    const actions = read("src/app/secondary/actions.ts");
+    const actions = read("src/lib/actions/secondary.ts");
     const session = read("src/lib/secondary-workflow/session.ts");
 
     expect(page).not.toMatch(/value="yes"\s+required/);
@@ -62,7 +62,7 @@ describe("accessible workflow validation", () => {
     const diagnosed = read("src/app/secondary/diagnosed/page.tsx");
     const ratings = read("src/app/secondary/ratings/page.tsx");
     const uploadLayout = read("src/app/secondary/upload/layout.tsx");
-    const actions = read("src/app/secondary/actions.ts");
+    const actions = read("src/lib/actions/secondary.ts");
 
     expect(diagnosed).toContain('role="alert"');
     expect(ratings).toContain('role="alert"');
@@ -75,7 +75,7 @@ describe("accessible workflow validation", () => {
   });
 
   it("turns presumptive schema failures into fixed accessible error routes", () => {
-    const actions = read("src/app/presumptive/actions.ts");
+    const actions = read("src/lib/actions/presumptive.ts");
     const page = read("src/app/presumptive/page.tsx");
 
     expect(actions).toContain("serviceHistorySchema.safeParse");

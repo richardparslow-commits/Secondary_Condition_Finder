@@ -67,7 +67,7 @@ describe("demo scenarios", () => {
   it("launches from /scenarios with only a scenario id and no legacy query URL", () => {
     const page = readRepoFile("src/app/scenarios/page.tsx");
     const form = readRepoFile("src/components/ScenarioLaunchForm.tsx");
-    const action = readRepoFile("src/app/scenarios/actions.ts");
+    const action = readRepoFile("src/lib/actions/scenarios.ts");
 
     expect(page).toContain("<ScenarioLaunchForm scenarioId={scenario.id} />");
     expect(page).not.toContain("URLSearchParams");

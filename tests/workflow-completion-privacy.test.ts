@@ -36,7 +36,7 @@ describe("secondary workflow completion privacy lifecycle", () => {
   });
 
   it("uses server actions to clear the encrypted cookie before completion redirects", () => {
-    const actions = readRepoFile("src/app/secondary/actions.ts");
+    const actions = readRepoFile("src/lib/actions/secondary.ts");
 
     expect(actions).toContain("clearSecondaryWorkflowSession");
     expect(actions).toMatch(/finishSecondaryWorkflow[\s\S]*await clearSecondaryWorkflowSession\(\);[\s\S]*redirect\("\/secondary"\)/);

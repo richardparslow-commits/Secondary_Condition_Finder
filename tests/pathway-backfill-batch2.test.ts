@@ -72,7 +72,7 @@ describe("controlled pathway backfill batch 2", () => {
     const mapping = kb.find((entry) => entry.id === "rheumatoid-arthritis");
     expect(mapping?.suggestions.map(({ conditionId, rank, evidentiaryProfile }) => ({ conditionId, rank, etiologicalConsensus: evidentiaryProfile.etiologicalConsensus }))).toEqual([
       { conditionId: "depressive-disorder", rank: 1, etiologicalConsensus: "NOT_ESTABLISHED" },
-      { conditionId: "gerd", rank: 2, etiologicalConsensus: "IATROGENIC_TREATMENT_EFFECT" },
+      { conditionId: "gerd", rank: 2, etiologicalConsensus: "NOT_ESTABLISHED" },
     ]);
   });
 

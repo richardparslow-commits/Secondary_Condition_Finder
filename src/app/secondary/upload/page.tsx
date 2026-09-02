@@ -7,7 +7,7 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { buildEvidenceConditionTerms } from "@/lib/evidence/condition-terms";
 import { readSecondaryWorkflowSession, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
-import { saveDocumentsSelection } from "../actions";
+import { saveDocumentsSelection } from "@/lib/actions/secondary";
 
 interface UploadPageProps { workflowState?: StoredSecondaryWorkflowState; }
 

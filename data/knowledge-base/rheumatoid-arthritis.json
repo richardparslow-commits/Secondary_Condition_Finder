@@ -1,141 +1,142 @@
 {
-  "id": "rheumatoid-arthritis",
-  "draft": false,
-  "todo": [],
-  "suggestions": [
-    {
-      "conditionId": "depressive-disorder",
-      "rank": 1,
-      "rationale": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish that rheumatoid arthritis caused or aggravated an individual's depressive disorder.",
-      "pathwayIntelligence": {
-        "pathways": [
-          "somatopsychic"
-        ],
-        "causalChain": "Rheumatoid arthritis → chronic pain and functional limitation, if documented → claimed causation or worsening of depressive disorder.",
-        "developmentQuestions": [
-          "Is depressive disorder currently diagnosed and clinically distinguished from transient distress?",
-          "How are rheumatoid-arthritis pain and functional limitations documented over time?",
-          "Does the individual timeline support depressive symptoms beginning or worsening after the relevant physical impairment?",
-          "Can a qualified clinician explain whether the physical illness, pain, or functional limitation caused or aggravated the depressive disorder in this individual case?",
-          "Which alternative psychiatric, medical, medication, or social contributors should be addressed?"
-        ],
-        "issuesToResolve": [
-          "Pain/depression comorbidity evidence does not establish an individual rheumatoid-arthritis-to-depression nexus.",
-          "The diagnosis, temporal relationship, functional impact, and plausible alternative causes require individual clinical review."
-        ]
+   "id": "rheumatoid-arthritis",
+   "draft": false,
+   "todo": [],
+   "suggestions": [
+      {
+         "conditionId": "depressive-disorder",
+         "rank": 1,
+         "rationale": "Chronic pain and depression frequently co-occur and can be associated with reduced physical, mental, and social functioning. This population-level relationship does not by itself establish that rheumatoid arthritis caused or aggravated an individual's depressive disorder.",
+         "pathwayIntelligence": {
+            "pathways": [
+               "somatopsychic"
+            ],
+            "causalChain": "Rheumatoid arthritis → chronic pain and functional limitation, if documented → claimed causation or worsening of depressive disorder.",
+            "developmentQuestions": [
+               "Is depressive disorder currently diagnosed and clinically distinguished from transient distress?",
+               "How are rheumatoid-arthritis pain and functional limitations documented over time?",
+               "Does the individual timeline support depressive symptoms beginning or worsening after the relevant physical impairment?",
+               "Can a qualified clinician explain whether the physical illness, pain, or functional limitation caused or aggravated the depressive disorder in this individual case?",
+               "Which alternative psychiatric, medical, medication, or social contributors should be addressed?"
+            ],
+            "issuesToResolve": [
+               "Pain/depression comorbidity evidence does not establish an individual rheumatoid-arthritis-to-depression nexus.",
+               "The diagnosis, temporal relationship, functional impact, and plausible alternative causes require individual clinical review."
+            ]
+         },
+         "evidenceGaps": [
+            "Mental health evaluation and diagnosis",
+            "Documentation of chronic pain, functional limitations, and their timing",
+            "Clinical opinion addressing the individual relationship when a secondary theory is asserted"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "IsHak et al., Pain and Depression: A Systematic Review, PMID 30407234",
+               "note": "Systematic review found pain and depression are frequently comorbid and associated with impaired functioning; supports association, not individual causation.",
+               "verified": true,
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+               "sourceCheckedOn": "2026-08-11",
+               "sourceLocator": "PMID 30407234; systematic review",
+               "verificationScope": "clinical-evidence"
+            },
+            {
+               "citation": "38 CFR 3.310",
+               "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+               "verified": true,
+               "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+               "sourceCheckedOn": "2026-08-11",
+               "sourceLocator": "§ 3.310(a)-(b)",
+               "verificationScope": "legal-framework"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "ASSOCIATION_ONLY",
+            "associationBasis": "The published knowledge base includes this relationship as an association: Rheumatoid arthritis → chronic pain and functional limitation, if documented → claimed causation or worsening of depressive disorder.",
+            "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+            "primaryVector": "Rheumatoid arthritis → chronic pain and functional limitation, if documented → claimed causation or worsening of depressive disorder.",
+            "hypothesizedOnly": true
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "NOT_ESTABLISHED",
+            "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+            "conservativeRationale": "This relationship is supported as an association only. Rheumatoid arthritis → chronic pain and functional limitation, if documented → claimed causation or worsening of depressive disorder. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+            "evidenceGaps": "Mental health evaluation and diagnosis; Documentation of chronic pain, functional limitations, and their timing; Clinical opinion addressing the individual relationship when a secondary theory is asserted",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
       },
-      "evidenceGaps": [
-        "Mental health evaluation and diagnosis",
-        "Documentation of chronic pain, functional limitations, and their timing",
-        "Clinical opinion addressing the individual relationship when a secondary theory is asserted"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "IsHak et al., Pain and Depression: A Systematic Review, PMID 30407234",
-          "note": "Systematic review found pain and depression are frequently comorbid and associated with impaired functioning; supports association, not individual causation.",
-          "verified": true,
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "PMID 30407234; systematic review",
-          "verificationScope": "clinical-evidence"
-        },
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
-          "verified": true,
-          "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "§ 3.310(a)-(b)",
-          "verificationScope": "legal-framework"
-        }
-      ],
-      "nexusClaim": {
-        "nexusClassification": "ASSOCIATION_ONLY",
-        "associationBasis": "The published knowledge base includes this relationship as an association: Rheumatoid arthritis → chronic pain and functional limitation, if documented → claimed causation or worsening of depressive disorder.",
-        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
-      },
-      "causalMechanism": {
-        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
-        "primaryVector": "Rheumatoid arthritis → chronic pain and functional limitation, if documented → claimed causation or worsening of depressive disorder.",
-        "hypothesizedOnly": true
-      },
-      "evidentiaryProfile": {
-        "etiologicalConsensus": "NOT_ESTABLISHED",
-        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
-        "conservativeRationale": "This relationship is supported as an association only. Rheumatoid arthritis → chronic pain and functional limitation, if documented → claimed causation or worsening of depressive disorder. It is not asserted that the primary caused or aggravated the secondary in any individual.",
-        "evidenceGaps": "Mental health evaluation and diagnosis; Documentation of chronic pain, functional limitations, and their timing; Clinical opinion addressing the individual relationship when a secondary theory is asserted",
-        "alternativeEtiologiesToRuleOut": [
-          "Other causes not yet identified in this mapping"
-        ],
-        "requiresSpecificDbqEvidence": false
+      {
+         "conditionId": "gerd",
+         "rank": 2,
+         "rationale": "When NSAID treatment for rheumatoid-arthritis pain is documented in the individual record, observational evidence associating NSAID use with GERD symptoms supports a bounded medication-related research pathway. The clinical source does not establish that rheumatoid arthritis itself causes GERD or that an NSAID caused or aggravated an individual veteran's GERD; the actual prescription indication, exposure, chronology, diagnosis, and competing gastrointestinal contributors remain essential.",
+         "pathwayIntelligence": {
+            "pathways": [
+               "medication-related"
+            ],
+            "causalChain": "Rheumatoid arthritis → individually documented NSAID treatment for RA pain, if present → claimed contribution to or worsening of clinically characterized GERD; the treatment-exposure link must come from the individual medical record and the medication-to-GERD link still requires case-specific medical assessment.",
+            "developmentQuestions": [
+               "Was the relevant NSAID actually prescribed or used to treat rheumatoid-arthritis pain, and at what dose and duration?",
+               "Is GERD currently diagnosed and clinically characterized rather than inferred from nonspecific gastrointestinal symptoms?",
+               "How does GERD symptom onset or worsening relate temporally to the documented NSAID exposure?",
+               "Can a qualified clinician address whether the documented NSAID exposure materially caused or aggravated GERD in this individual case?",
+               "Which alternative GERD causes, medications, obesity, hiatal hernia, diet, tobacco/alcohol exposure, or other risk factors should be addressed?"
+            ],
+            "issuesToResolve": [
+               "The treatment-exposure link is case-specific and must be established from the individual's rheumatoid-arthritis treatment records rather than inferred from population prescribing patterns.",
+               "NSAID/GERD observational evidence does not establish an individual medication nexus; diagnosis, timing, and competing contributors require review."
+            ]
+         },
+         "evidenceGaps": [
+            "Prescription history identifying the specific NSAID exposure, RA indication, dose, duration, and timing",
+            "Documented GERD diagnosis and clinical characterization",
+            "Evaluation of alternative GERD causes and risk factors",
+            "Qualified medical opinion addressing the individual medication-related relationship when asserted"
+         ],
+         "sourceReferences": [
+            {
+               "citation": "Ruszniewski et al., Aliment Pharmacol Ther (2008), PMID 18671778",
+               "note": "Observational study found GERD symptoms significantly more common among NSAID users than non-users and identified NSAID use as an independent predictor of GERD symptoms; supports an association signal, not automatic individual causation. The individual record must separately establish that the NSAID was actually used for rheumatoid arthritis.",
+               "verificationScope": "clinical-evidence",
+               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18671778/",
+               "verified": true,
+               "sourceCheckedOn": "2026-08-19",
+               "sourceLocator": "PMID 18671778"
+            },
+            {
+               "citation": "38 CFR 3.310",
+               "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
+               "verified": true,
+               "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+               "sourceCheckedOn": "2026-08-11",
+               "sourceLocator": "§ 3.310(a)-(b)",
+               "verificationScope": "legal-framework"
+            }
+         ],
+         "nexusClaim": {
+            "nexusClassification": "ASSOCIATION_ONLY",
+            "associationBasis": "Rheumatoid arthritis → individually documented NSAID treatment for RA pain, if present → claimed contribution to or worsening of clinically characterized GERD; the treatment-exposure link must come from the individual medical record. Observational evidence associating NSAID use with GERD symptoms supports this bounded medication-related research pathway.",
+            "causationStatus": "The guard explicitly declines to establish individual causation or aggravation under 38 CFR § 3.310: the clinical source does not establish that rheumatoid arthritis itself causes GERD or that an NSAID caused or aggravated an individual veteran's GERD. Chronology, prescription indication and exposure, and competing gastrointestinal contributors require case-specific medical assessment."
+         },
+         "causalMechanism": {
+            "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+            "primaryVector": "Rheumatoid arthritis → individually documented NSAID treatment for RA pain, if present → claimed contribution to or worsening of clinically characterized GERD; the treatment-exposure link must come from the individual medical record and the medication-to-GERD link still requires case-specific medical assessment.",
+            "hypothesizedOnly": true
+         },
+         "evidentiaryProfile": {
+            "etiologicalConsensus": "NOT_ESTABLISHED",
+            "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+            "conservativeRationale": "This relationship is supported as an association only. NSAID treatment for rheumatoid-arthritis pain, when individually documented, is associated with GERD symptoms, but the current evidence does not establish that the medication caused or aggravated an individual veteran's GERD. The medication-to-GERD link still requires case-specific medical assessment, and no nexus probability is asserted.",
+            "evidenceGaps": "Prescription history identifying the specific NSAID exposure, RA indication, dose, duration, and timing; Documented GERD diagnosis and clinical characterization; Evaluation of alternative GERD causes and risk factors; Qualified medical opinion addressing the individual medication-related relationship when asserted",
+            "alternativeEtiologiesToRuleOut": [
+               "Other causes not yet identified in this mapping"
+            ],
+            "requiresSpecificDbqEvidence": false
+         }
       }
-    },
-    {
-      "conditionId": "gerd",
-      "rank": 2,
-      "rationale": "When NSAID treatment for rheumatoid-arthritis pain is documented in the individual record, observational evidence associating NSAID use with GERD symptoms supports a bounded medication-related research pathway. The clinical source does not establish that rheumatoid arthritis itself causes GERD or that an NSAID caused or aggravated an individual veteran's GERD; the actual prescription indication, exposure, chronology, diagnosis, and competing gastrointestinal contributors remain essential.",
-      "pathwayIntelligence": {
-        "pathways": [
-          "medication-related"
-        ],
-        "causalChain": "Rheumatoid arthritis → individually documented NSAID treatment for RA pain, if present → claimed contribution to or worsening of clinically characterized GERD; the treatment-exposure link must come from the individual medical record and the medication-to-GERD link still requires case-specific medical assessment.",
-        "developmentQuestions": [
-          "Was the relevant NSAID actually prescribed or used to treat rheumatoid-arthritis pain, and at what dose and duration?",
-          "Is GERD currently diagnosed and clinically characterized rather than inferred from nonspecific gastrointestinal symptoms?",
-          "How does GERD symptom onset or worsening relate temporally to the documented NSAID exposure?",
-          "Can a qualified clinician address whether the documented NSAID exposure materially caused or aggravated GERD in this individual case?",
-          "Which alternative GERD causes, medications, obesity, hiatal hernia, diet, tobacco/alcohol exposure, or other risk factors should be addressed?"
-        ],
-        "issuesToResolve": [
-          "The treatment-exposure link is case-specific and must be established from the individual's rheumatoid-arthritis treatment records rather than inferred from population prescribing patterns.",
-          "NSAID/GERD observational evidence does not establish an individual medication nexus; diagnosis, timing, and competing contributors require review."
-        ]
-      },
-      "evidenceGaps": [
-        "Prescription history identifying the specific NSAID exposure, RA indication, dose, duration, and timing",
-        "Documented GERD diagnosis and clinical characterization",
-        "Evaluation of alternative GERD causes and risk factors",
-        "Qualified medical opinion addressing the individual medication-related relationship when asserted"
-      ],
-      "sourceReferences": [
-        {
-          "citation": "Ruszniewski et al., Aliment Pharmacol Ther (2008), PMID 18671778",
-          "note": "Observational study found GERD symptoms significantly more common among NSAID users than non-users and identified NSAID use as an independent predictor of GERD symptoms; supports an association signal, not automatic individual causation. The individual record must separately establish that the NSAID was actually used for rheumatoid arthritis.",
-          "verificationScope": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18671778/",
-          "verified": true,
-          "sourceCheckedOn": "2026-08-19",
-          "sourceLocator": "PMID 18671778"
-        },
-        {
-          "citation": "38 CFR 3.310",
-          "note": "Legal framework for secondary service connection; does not establish the underlying medical relationship.",
-          "verified": true,
-          "sourceUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
-          "sourceCheckedOn": "2026-08-11",
-          "sourceLocator": "§ 3.310(a)-(b)",
-          "verificationScope": "legal-framework"
-        }
-      ],
-      "nexusClaim": {
-        "nexusClassification": "DIRECT_CAUSATION",
-        "etiologicalTrigger": "Rheumatoid arthritis → individually documented NSAID treatment for RA pain, if present → claimed contribution to or worsening of clinically characterized GERD; the treatment-exposure link must come from the individual medical record and the medication-to-GERD link still requires case-specific medical assessment."
-      },
-      "causalMechanism": {
-        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
-        "primaryVector": "Rheumatoid arthritis → individually documented NSAID treatment for RA pain, if present → claimed contribution to or worsening of clinically characterized GERD; the treatment-exposure link must come from the individual medical record and the medication-to-GERD link still requires case-specific medical assessment.",
-        "hypothesizedOnly": false
-      },
-      "evidentiaryProfile": {
-        "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
-        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
-        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Rheumatoid arthritis → individually documented NSAID treatment for RA pain, if present → claimed contribution to or worsening of clinically characterized GERD; the treatment-exposure link must come from the individual medical record and the medication-to-GERD link still requires case-specific medical assessment.",
-        "evidenceGaps": "Prescription history identifying the specific NSAID exposure, RA indication, dose, duration, and timing; Documented GERD diagnosis and clinical characterization; Evaluation of alternative GERD causes and risk factors; Qualified medical opinion addressing the individual medication-related relationship when asserted",
-        "alternativeEtiologiesToRuleOut": [
-          "Other causes not yet identified in this mapping"
-        ],
-        "requiresSpecificDbqEvidence": false
-      }
-    }
-  ]
+   ]
 }

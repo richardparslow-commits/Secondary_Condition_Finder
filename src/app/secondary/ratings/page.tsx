@@ -6,7 +6,7 @@ import { VALID_RATINGS } from "@/lib/secondary-workflow";
 import { ratingFieldName } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
 import { secondaryValidationMessage } from "@/lib/secondary-workflow/validation";
-import { saveRatingsSelection } from "../actions";
+import { saveRatingsSelection } from "@/lib/actions/secondary";
 
 interface RatingOption { label: string; value: string; }
 interface RatingsPageProps {

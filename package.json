@@ -20,6 +20,7 @@
     "citations:audit": "node scripts/audit-citation-verification.js",
     "citations:decay": "node scripts/audit-citation-decay.js",
     "citations:queue": "node scripts/report-citation-verification-queue.js --markdown",
+"audit:me-compliance": "node scripts/audit-me-compliance.js",
     "kb:validate": "node scripts/validate-knowledge-base.js",
     "authoring:tracker": "node scripts/generate-authoring-tracker.js",
     "audit:high": "npm audit --audit-level=high",

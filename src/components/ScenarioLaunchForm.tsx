@@ -1,6 +1,6 @@
 "use client";
 
-import { launchDemoScenario } from "@/app/scenarios/actions";
+import { launchDemoScenario } from "@/lib/actions/scenarios";
 import { clearSecondaryWorkflowLocalState } from "@/lib/secondary-workflow/local-state";
 
 function clearPriorBrowserReviewState(): void {
