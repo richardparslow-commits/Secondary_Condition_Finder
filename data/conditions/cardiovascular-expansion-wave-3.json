@@ -2,60 +2,840 @@
   "bodySystem": "Cardiovascular System",
   "conditions": [
     {
-      "id": "hypertensive-heart-disease",
-      "name": "Hypertensive Heart Disease",
+      "id": "acrocyanosis",
+      "name": "Acrocyanosis",
       "aliases": [],
       "bodySystem": "Cardiovascular System",
-      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7007 covers hypertensive heart disease under the diseases-of-the-heart rating framework.", "verified": false}],
-      "reviewNotes": []
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "arrhythmogenic-right-ventricular-dysplasia",
+      "name": "Arrhythmogenic right ventricular dysplasia",
+      "aliases": [
+        "arrhythmogenic right ventricular cardiomyopathy",
+        "arvc"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "arteriosclerosis",
+      "name": "Arteriosclerosis",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "arteriovenous-fistula",
+      "name": "Arteriovenous fistula",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "atrial-flutter",
+      "name": "Atrial flutter",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "atrial-septal-defect",
+      "name": "Atrial septal defect",
+      "aliases": [
+        "asd"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "brugada-syndrome",
+      "name": "Brugada syndrome",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bundle-branch-block",
+      "name": "Bundle branch block",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "cardiomyopathy",
       "name": "Cardiomyopathy",
       "aliases": [],
       "bodySystem": "Cardiovascular System",
-      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7020 covers cardiomyopathy under the diseases-of-the-heart rating framework.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system; diagnostic code 7020 covers cardiomyopathy under the diseases-of-the-heart rating framework.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "carotid-sinus-hypersensitivity",
+      "name": "Carotid sinus hypersensitivity",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "chilblains",
+      "name": "Chilblains",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "coarctation-of-the-aorta",
+      "name": "Coarctation of the aorta",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "coronary-bypass-residuals",
+      "name": "Coronary Bypass Surgery Residuals",
+      "aliases": [
+        "CABG residuals",
+        "coronary artery bypass graft residuals"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system; diagnostic code 7017 covers coronary bypass surgery and directs subsequent evaluation under the General Rating Formula for Diseases of the Heart.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "eosinophilic-myocarditis",
+      "name": "Eosinophilic myocarditis",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "erythromelalgia",
+      "name": "Erythromelalgia",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "giant-cell-myocarditis",
+      "name": "Giant cell myocarditis",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "glomus-tumor",
+      "name": "Glomus tumor",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "heart-block",
+      "name": "Heart block",
+      "aliases": [
+        "atrioventricular block",
+        "av block"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "heart-transplant-residuals",
+      "name": "Heart Transplant Residuals",
+      "aliases": [
+        "cardiac transplant residuals",
+        "cardiac transplantation residuals"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system; diagnostic code 7019 covers cardiac transplantation and directs later evaluation under the General Rating Formula for Diseases of the Heart after the prescribed transplant period.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
       "id": "heart-valve-replacement-residuals",
       "name": "Heart Valve Replacement Residuals",
-      "aliases": ["prosthetic heart valve residuals", "heart valve prosthesis residuals"],
+      "aliases": [
+        "prosthetic heart valve residuals",
+        "heart valve prosthesis residuals"
+      ],
       "bodySystem": "Cardiovascular System",
-      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7016 covers heart valve replacement (prosthesis), including post-replacement evaluation under the General Rating Formula for Diseases of the Heart after the prescribed post-hospitalization period.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system; diagnostic code 7016 covers heart valve replacement (prosthesis), including post-replacement evaluation under the General Rating Formula for Diseases of the Heart after the prescribed post-hospitalization period.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
-      "id": "coronary-bypass-residuals",
-      "name": "Coronary Bypass Surgery Residuals",
-      "aliases": ["CABG residuals", "coronary artery bypass graft residuals"],
+      "id": "hemangioma",
+      "name": "Hemangioma",
+      "aliases": [],
       "bodySystem": "Cardiovascular System",
-      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7017 covers coronary bypass surgery and directs subsequent evaluation under the General Rating Formula for Diseases of the Heart.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "hypertensive-heart-disease",
+      "name": "Hypertensive Heart Disease",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system; diagnostic code 7007 covers hypertensive heart disease under the diseases-of-the-heart rating framework.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
-      "id": "heart-transplant-residuals",
-      "name": "Heart Transplant Residuals",
-      "aliases": ["cardiac transplant residuals", "cardiac transplantation residuals"],
+      "id": "hypertrophic-obstructive-cardiomyopathy",
+      "name": "Hypertrophic obstructive cardiomyopathy",
+      "aliases": [
+        "hocm"
+      ],
       "bodySystem": "Cardiovascular System",
-      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7019 covers cardiac transplantation and directs later evaluation under the General Rating Formula for Diseases of the Heart after the prescribed transplant period.", "verified": false}],
-      "reviewNotes": []
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "hypotension",
+      "name": "Hypotension",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "implantable-cardiac-pacemaker",
       "name": "Implantable Cardiac Pacemaker",
-      "aliases": ["cardiac pacemaker", "permanent pacemaker"],
+      "aliases": [
+        "cardiac pacemaker",
+        "permanent pacemaker"
+      ],
       "bodySystem": "Cardiovascular System",
-      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7018 covers implantable cardiac pacemakers and directs later evaluation according to the underlying rhythm or conduction disorder, with a stated minimum evaluation.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system; diagnostic code 7018 covers implantable cardiac pacemakers and directs later evaluation according to the underlying rhythm or conduction disorder, with a stated minimum evaluation.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
+    },
+    {
+      "id": "inappropriate-sinus-tachycardia",
+      "name": "Inappropriate sinus tachycardia",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "libman-sacks-endocarditis",
+      "name": "Libman-Sacks endocarditis",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "livedo-reticularis",
+      "name": "Livedo reticularis",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "loeffler-s-endocarditis",
+      "name": "Loeffler's endocarditis",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "long-qt-syndrome",
+      "name": "Long QT syndrome",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "lymphangioma",
+      "name": "Lymphangioma",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "marantic-endocarditis",
+      "name": "Marantic endocarditis",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "orthostatic-hypotension",
+      "name": "Orthostatic hypotension",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "patent-ductus-arteriosus",
+      "name": "Patent ductus arteriosus",
+      "aliases": [
+        "pda"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pericardial-effusion",
+      "name": "Pericardial effusion",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "peripheral-aneurysm",
+      "name": "Peripheral Aneurysm",
+      "aliases": [
+        "peripheral aneurysm"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "postural-orthostatic-tachycardia-syndrome",
+      "name": "Postural orthostatic tachycardia syndrome",
+      "aliases": [
+        "POTS"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "premature-atrial-ventricular-contractions",
+      "name": "Premature Atrial / Ventricular Contractions",
+      "aliases": [
+        "premature atrial contractions",
+        "premature ventricular contractions",
+        "pac",
+        "pvc",
+        "ectopic beats"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "raynaud-s-phenomenon",
+      "name": "Raynaud's phenomenon",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "short-qt-syndrome",
+      "name": "Short QT syndrome",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "sick-sinus-syndrome",
+      "name": "Sick sinus syndrome",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "takotsubo-cardiomyopathy",
+      "name": "Takotsubo cardiomyopathy",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "tetralogy-of-fallot",
+      "name": "Tetralogy of Fallot",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "thromboangiitis-obliterans",
       "name": "Thromboangiitis Obliterans (Buerger's Disease)",
-      "aliases": ["Buerger disease", "Buerger's disease", "thrombo-angiitis obliterans"],
+      "aliases": [
+        "Buerger disease",
+        "Buerger's disease",
+        "thrombo-angiitis obliterans"
+      ],
       "bodySystem": "Cardiovascular System",
-      "ratingSchedule": [{"citation": "38 CFR 4.104", "note": "Schedule of ratings, cardiovascular system; diagnostic code 7115 covers thrombo-angiitis obliterans (Buerger's Disease), with lower-extremity disease rated under diagnostic code 7114 and separate upper-extremity criteria.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Schedule of ratings, cardiovascular system; diagnostic code 7115 covers thrombo-angiitis obliterans (Buerger's Disease), with lower-extremity disease rated under diagnostic code 7114 and separate upper-extremity criteria.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
+    },
+    {
+      "id": "thrombophlebitis",
+      "name": "Thrombophlebitis",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "valvular-heart-disease",
+      "name": "Valvular heart disease",
+      "aliases": [
+        "all valves",
+        "valvular disease"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "vasovagal-syncope",
+      "name": "Vasovagal syncope",
+      "aliases": [],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "ventricular-septal-defect",
+      "name": "Ventricular septal defect",
+      "aliases": [
+        "vsd"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "ventricular-tachycardia-fibrillation",
+      "name": "Ventricular Tachycardia / Fibrillation",
+      "aliases": [
+        "ventricular tachycardia",
+        "ventricular fibrillation",
+        "vt",
+        "vf"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "wolff-parkinson-white-syndrome",
+      "name": "Wolff-Parkinson-White syndrome",
+      "aliases": [
+        "WPW"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.104",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     }
   ]
 }

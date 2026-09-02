@@ -2,9 +2,385 @@
   "bodySystem": "Dental & Oral Conditions",
   "conditions": [
     {
+      "id": "ankyloglossia",
+      "name": "Ankyloglossia",
+      "aliases": [
+        "tongue-tie"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "atrophic-glossitis",
+      "name": "Atrophic glossitis",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "atypical-odontalgia",
+      "name": "Atypical odontalgia",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "benign-migratory-glossitis",
+      "name": "Benign migratory glossitis",
+      "aliases": [
+        "benign migratory glossitis"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bruxism-awake-sleep",
+      "name": "Bruxism (Awake / Sleep)",
+      "aliases": [
+        "awake bruxism",
+        "sleep bruxism",
+        "teeth grinding"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "burning-mouth-syndrome",
+      "name": "Burning mouth syndrome",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cleft-lip-palate-residuals",
+      "name": "Cleft Lip / Palate Residuals",
+      "aliases": [
+        "cleft lip residuals",
+        "cleft palate residuals",
+        "cleft lip and palate"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cracked-tooth-syndrome",
+      "name": "Cracked tooth syndrome",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dental-abrasion-erosion-abfraction",
+      "name": "Dental Abrasion / Erosion / Abfraction",
+      "aliases": [
+        "dental abrasion",
+        "dental erosion",
+        "abfraction"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dentin-hypersensitivity",
+      "name": "Dentin hypersensitivity",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "erythroplakia",
+      "name": "Erythroplakia",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "fissured-tongue",
+      "name": "Fissured tongue",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "geographic-tongue",
+      "name": "Geographic tongue",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "gingivitis",
+      "name": "Gingivitis",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "glossitis",
+      "name": "Glossitis",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "hairy-tongue",
+      "name": "Hairy tongue",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "halitosis",
+      "name": "Halitosis",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "leukoplakia",
+      "name": "Leukoplakia",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "loss-of-jaw",
+      "name": "Loss of jaw",
+      "aliases": [
+        "loss of mandible",
+        "mandibulectomy residuals"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "loss-of-tongue",
+      "name": "Loss of tongue",
+      "aliases": [
+        "glossectomy residuals"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "macroglossia",
+      "name": "Macroglossia",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "malocclusion",
+      "name": "Malocclusion",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
       "id": "mandibular-nonunion",
       "name": "Mandibular Nonunion (Nonunion of Mandible)",
-      "aliases": ["mandible nonunion", "nonunion of mandible"],
+      "aliases": [
+        "mandible nonunion",
+        "nonunion of mandible"
+      ],
       "bodySystem": "Dental & Oral Conditions",
       "ratingSchedule": [
         {
@@ -16,6 +392,230 @@
       "reviewNotes": [
         "Keep this specific nonunion residual distinct from the existing broader maxillofacial-fracture identity. A history of mandibular fracture does not by itself establish nonunion.",
         "DC 9903 is rating context only and does not establish service connection, chronicity, or medical nexus."
+      ]
+    },
+    {
+      "id": "median-rhomboid-glossitis",
+      "name": "Median rhomboid glossitis",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "mucocele",
+      "name": "Mucocele",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "oral-cancer",
+      "name": "Oral cancer",
+      "aliases": [
+        "oral cavity cancer"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "oral-candidiasis",
+      "name": "Oral candidiasis",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "oral-hairy-leukoplakia",
+      "name": "Oral hairy leukoplakia",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "oral-lichen-planus-lichenoid-lesions",
+      "name": "Oral Lichen Planus / Lichenoid Lesions",
+      "aliases": [
+        "oral lichenoid lesions",
+        "oral lichen planus"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "periodontitis",
+      "name": "Periodontitis",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "ranula",
+      "name": "Ranula",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "sialadenitis",
+      "name": "Sialadenitis",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "sialolithiasis",
+      "name": "Sialolithiasis",
+      "aliases": [
+        "salivary stones"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "stomatitis",
+      "name": "Stomatitis",
+      "aliases": [
+        "oral mucositis"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "tmj-dysfunction",
+      "name": "TMJ dysfunction",
+      "aliases": [
+        "Temporomandibular joint",
+        "temporomandibular joint dysfunction",
+        "tmj",
+        "temporomandibular disorder"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "xerostomia",
+      "name": "Xerostomia",
+      "aliases": [
+        "dry mouth"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
       ]
     }
   ]

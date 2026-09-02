@@ -106,7 +106,7 @@ let legalUses = 0;
 const observedUses = new Map();
 
 const files = fs.readdirSync(kbDir).filter((n) => n.endsWith(".json")).sort();
-if (files.length !== 311) fail(`Expected 311 KB files, found ${files.length}.`);
+if (files.length !== 813) fail(`Expected 813 KB files, found ${files.length}.`);
 
 for (const file of files) {
   const mapping = readJson(path.join(kbDir, file));
@@ -176,7 +176,7 @@ for (const file of files) {
   }
 }
 
-if (published !== 139 || draft !== 172) fail(`Publication-state drift: published=${published}, draft=${draft}`);
+if (published !== 139 || draft !== 674) fail(`Publication-state drift: published=${published}, draft=${draft}`);
 if (relationshipCount !== 263) fail(`Relationship count drift: ${relationshipCount}`);
 if (referenceUses !== 271 || verifiedTrue !== 256 || verifiedFalse !== 15) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
 if (clinicalUses !== 266 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);

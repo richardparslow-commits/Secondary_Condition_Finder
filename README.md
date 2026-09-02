@@ -193,20 +193,26 @@ reside in `src/lib/actions/`.
 
 ## Knowledge-base coverage and authoring
 
-The catalog remains fixed at **300 recognized conditions / 300 one-to-one
-knowledge-base mappings** after target-v2 identity expansion. Post-v2 maintenance
-still uses 33 catalog files. Fibromyalgia, hip strain, and ankle strain are
-physically normalized in musculoskeletal maintenance; diabetic retinopathy is
-in the ophthalmologic file; insomnia plus substance-use disorder are in the
-mental-disorders catalog; and Cushing's syndrome, Type 1 diabetes,
-Hyperthyroidism, Hyperparathyroidism, and Hypoparathyroidism are now physically
-maintained in the endocrine catalog with their current DC 7907, DC 7913, DC
-7900, DC 7904, and DC 7905 frameworks. `carried-over.json` remains reduced to
-the intentionally quarantined `contralateral-knee-condition` laterality
-placeholder. Batch 6 also narrowed the existing `hyperpituitarism` display
-identity to the prolactin-secreting pituitary-dysfunction scope of DC 7916
-without changing its stable ID. None of these maintenance changes alters the
-300-condition universe.
+The catalog now holds **813 recognized conditions / 813 one-to-one
+knowledge-base mappings** after the 2026-09 master-list expansion. That
+expansion added **502 framework-only draft identities** across 14 body systems
+(each with a TODO authoring checklist and zero fabricated clinical evidence),
+consolidated 13 duplicate identities into pre-existing catalog entries (for
+example the generic `arthritis` umbrella was retired in favor of
+`osteoarthritis` / `rheumatoid-arthritis` / `gout`, and duplicate CRPS,
+HIV/AIDS, hammertoe, epicondylitis, Paget's, osteomalacia, and frostbite
+identities were folded into their existing entries), and renamed the ambiguous
+`aneurysms` umbrella to `peripheral-aneurysm` so `aortic-aneurysm` keeps its
+identity. Post-v2 maintenance still uses 33 catalog files. Fibromyalgia, hip
+strain, and ankle strain are physically normalized in musculoskeletal
+maintenance; diabetic retinopathy is in the ophthalmologic file; insomnia plus
+substance-use disorder are in the mental-disorders catalog; and Cushing's
+syndrome, Type 1 diabetes, Hyperthyroidism, Hyperparathyroidism, and
+Hypoparathyroidism are now physically maintained in the endocrine catalog with
+their current DC 7907, DC 7913, DC 7900, DC 7904, and DC 7905 frameworks.
+`carried-over.json` remains reduced to the intentionally quarantined
+`contralateral-knee-condition` laterality placeholder. None of these maintenance
+changes alters the 813-condition universe.
 
 Waves 1 through 7 added 107 conditions. Clinical Evidence Promotion Batches 1
 through 11 still account for twelve individually reviewed **expansion** mappings:
@@ -239,11 +245,12 @@ repairs `erectile-dysfunction` → `depressive-disorder`; Batch 11 removes the
 unsupported ILD→cardiac-arrhythmia edge while preserving only clinically sourced
 ILD→OSA association research.
 
-The knowledge base now holds **263 relationships across 311 mapping files**,
+The knowledge base now holds **263 relationships across 813 mapping files**,
 with **271 source references, 256 verified, 15 unverified** — all 15 remaining
 unverified references belong to the ME-16/ME-17/ME-18 mapping-expansion batches
-and await the separate qualified-human citation-verification gate. No automated
-change marks a new source verified.
+and await the separate qualified-human citation-verification gate. The 502
+master-list identities are framework-only draft mappings (empty suggestions)
+awaiting ME-style research; no automated change marks a new source verified.
 
 The knowledge base is a Causal Relational Graph (CRG), not a flat association
 list: every suggestion is enforced by the Zod schema to carry the CRG trio
@@ -258,9 +265,10 @@ gate. `npm run citations:decay` is the maintainer-run link-rot/staleness probe.
 The completed identity-expansion record is maintained in
 `docs/condition-expansion-roadmap.md`; the post-v2 promotion records are in
 `docs/clinical-evidence-promotion-batch-1.md` through
-`docs/clinical-evidence-promotion-batch-11.md`. The 300-condition target is a
-versioned product target, not a claim that medicine or the VA rating schedule
-contains only 300 possible conditions.
+`docs/clinical-evidence-promotion-batch-11.md`. The 813-condition catalog is the
+2026-09 master-list expansion; catalog identities are a versioned product
+target, not a claim that medicine or the VA rating schedule contains only these
+conditions.
 
 To add or change a condition or relationship:
 

@@ -2,12 +2,851 @@
   "bodySystem": "Neurological",
   "conditions": [
     {
+      "id": "alice-in-wonderland-syndrome",
+      "name": "Alice in Wonderland syndrome",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "alzheimer-s-disease",
+      "name": "Alzheimer's disease",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "anterior-cord-syndrome",
+      "name": "Anterior cord syndrome",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "aphasia-dysphasia",
+      "name": "Aphasia / Dysphasia",
+      "aliases": [
+        "dysphasia",
+        "aphasia"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "apraxia",
+      "name": "Apraxia",
+      "aliases": [
+        "motor apraxia"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "arnold-chiari-malformation",
+      "name": "Arnold-Chiari malformation",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "auriculotemporal-neuralgia",
+      "name": "Auriculotemporal neuralgia",
+      "aliases": [
+        "freys syndrome"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "balint-s-syndrome",
+      "name": "Balint's syndrome",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bell-s-palsy",
+      "name": "Bell's palsy",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "brain-abscess",
+      "name": "Brain abscess",
+      "aliases": [
+        "cerebral abscess"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "brain-tumors",
+      "name": "Brain tumors",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "brown-s-quard-syndrome",
+      "name": "Brown-Séquard syndrome",
+      "aliases": [
+        "brown-sequard syndrome"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "central-cord-syndrome",
+      "name": "Central cord syndrome",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cerebral-contusion",
+      "name": "Cerebral contusion",
+      "aliases": [
+        "cerebral contusion residuals"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cerebrovascular-accident-stroke-residuals",
+      "name": "Cerebrovascular Accident (Stroke) Residuals",
+      "aliases": [
+        "stroke residuals",
+        "cva",
+        "cerebrovascular accident"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "charles-bonnet-syndrome",
+      "name": "Charles Bonnet syndrome",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cluster-headache",
+      "name": "Cluster Headache",
+      "aliases": [
+        "cluster headaches"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "coccydynia",
+      "name": "Coccydynia",
+      "aliases": [
+        "coccygodynia",
+        "tailbone pain"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cognitive-disorder",
+      "name": "Cognitive disorder",
+      "aliases": [
+        "cognitive impairment"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "conus-medullaris-syndrome",
+      "name": "Conus medullaris syndrome",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dandy-walker-syndrome",
+      "name": "Dandy-Walker syndrome",
+      "aliases": [
+        "dandy-walker malformation"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dementia",
+      "name": "Dementia",
+      "aliases": [
+        "senile dementia"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "diffuse-axonal-injury",
+      "name": "Diffuse axonal injury",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "encephalitis",
+      "name": "Encephalitis",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "genitofemoral-nerve-neuralgia",
+      "name": "Genitofemoral nerve neuralgia",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "gerstmann-s-syndrome",
+      "name": "Gerstmann's syndrome",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "guyon-s-canal-syndrome",
+      "name": "Guyon's canal syndrome",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "hydrocephalus",
+      "name": "Hydrocephalus",
+      "aliases": [
+        "hydrocephalus residuals"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "iliohypogastric-ilioinguinal-nerve-neuralgia",
+      "name": "Iliohypogastric / Ilioinguinal Nerve Neuralgia",
+      "aliases": [
+        "iliohypogastric neuralgia",
+        "ilioinguinal neuralgia"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "lingual-neuralgia",
+      "name": "Lingual neuralgia",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "memory-loss",
+      "name": "Memory loss",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "meningitis",
+      "name": "Meningitis",
+      "aliases": [
+        "meningitis residuals"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "muscular-dystrophy",
+      "name": "Muscular dystrophy",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
       "id": "narcolepsy",
       "name": "Narcolepsy",
       "aliases": [],
       "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; diagnostic code 8108 covers narcolepsy and directs evaluation as petit mal epilepsy.", "verified": false}],
-      "reviewNotes": ["Narcolepsy is kept in the neurological catalog despite the Wave 4 sleep grouping because the current rating authority is 38 CFR 4.124a, not the respiratory sleep-apnea schedule."]
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; diagnostic code 8108 covers narcolepsy and directs evaluation as petit mal epilepsy.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Narcolepsy is kept in the neurological catalog despite the Wave 4 sleep grouping because the current rating authority is 38 CFR 4.124a, not the respiratory sleep-apnea schedule."
+      ]
+    },
+    {
+      "id": "normal-pressure-hydrocephalus",
+      "name": "Normal pressure hydrocephalus",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "occipital-neuralgia",
+      "name": "Occipital neuralgia",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "peripheral-nerve-paralysis",
+      "name": "Peripheral nerve paralysis",
+      "aliases": [
+        "common peroneal nerve paralysis",
+        "femoral nerve paralysis",
+        "median nerve paralysis",
+        "musculospiral nerve paralysis",
+        "obturator nerve paralysis",
+        "radial nerve paralysis",
+        "sciatic nerve paralysis",
+        "tibial nerve paralysis",
+        "ulnar nerve paralysis"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "phantom-limb-pain",
+      "name": "Phantom limb pain",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "postherpetic-neuralgia",
+      "name": "Postherpetic neuralgia",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pudendal-neuralgia",
+      "name": "Pudendal neuralgia",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "quadrilateral-space-syndrome",
+      "name": "Quadrilateral space syndrome",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "restless-leg-syndrome",
+      "name": "Restless leg syndrome",
+      "aliases": [
+        "restless legs syndrome",
+        "willis-ekbom disease"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "spina-bifida",
+      "name": "Spina bifida",
+      "aliases": [
+        "spina bifida residuals"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "sural-nerve-neuralgia",
+      "name": "Sural nerve neuralgia",
+      "aliases": [],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "syringobulbia",
+      "name": "Syringobulbia",
+      "aliases": [
+        "syringobulbia"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "tension-type-headache",
+      "name": "Tension-Type Headache",
+      "aliases": [
+        "tension headache",
+        "tension-type headaches"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "transient-ischemic-attack-residuals",
+      "name": "Transient ischemic attack residuals",
+      "aliases": [
+        "TIA",
+        "transient ischemic attack"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "traumatic-brain-injury-residuals",
+      "name": "Traumatic brain injury residuals",
+      "aliases": [
+        "TBI",
+        "tbi residuals"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "wernicke-korsakoff-syndrome",
+      "name": "Wernicke-Korsakoff syndrome",
+      "aliases": [
+        "wernicke-korsakoff"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     }
   ]
 }

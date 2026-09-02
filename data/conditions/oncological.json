@@ -2,32 +2,31 @@
   "bodySystem": "Oncological Conditions",
   "conditions": [
     {
-      "id": "respiratory-cancer",
-      "name": "Lung Cancer / Tracheal Cancer / Bronchial Cancer",
-      "aliases": [
-        "bronchial cancer",
-        "lung cancer",
-        "tracheal cancer"
-      ],
-      "bodySystem": "Oncological Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.97",
-          "note": "Schedule of ratings, respiratory system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "prostate-cancer",
-      "name": "Prostate Cancer",
+      "id": "bladder-cancer",
+      "name": "Bladder Cancer",
       "aliases": [],
       "bodySystem": "Oncological Conditions",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.115b",
           "note": "Ratings of the genitourinary system, diagnoses.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "brain-cancer",
+      "name": "Brain Cancer / Glioblastoma",
+      "aliases": [
+        "brain cancer",
+        "glioblastoma"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
           "verified": false
         }
       ],
@@ -52,7 +51,8 @@
       "name": "Colon / Rectal Cancer",
       "aliases": [
         "colon",
-        "rectal cancer"
+        "rectal cancer",
+        "colon cancer"
       ],
       "bodySystem": "Oncological Conditions",
       "ratingSchedule": [
@@ -65,14 +65,28 @@
       "reviewNotes": []
     },
     {
-      "id": "bladder-cancer",
-      "name": "Bladder Cancer",
+      "id": "esophageal-cancer",
+      "name": "Esophageal Cancer",
       "aliases": [],
       "bodySystem": "Oncological Conditions",
       "ratingSchedule": [
         {
-          "citation": "38 CFR 4.115b",
-          "note": "Ratings of the genitourinary system, diagnoses.",
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hodgkins-lymphoma",
+      "name": "Hodgkin's Lymphoma",
+      "aliases": [],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Schedule of ratings, hemic and lymphatic systems.",
           "verified": false
         }
       ],
@@ -96,42 +110,16 @@
       "reviewNotes": []
     },
     {
-      "id": "esophageal-cancer",
-      "name": "Esophageal Cancer",
-      "aliases": [],
-      "bodySystem": "Oncological Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Schedule of ratings, digestive system.",
-          "verified": false
-        }
+      "id": "leukemia",
+      "name": "Leukemia (Acute & Chronic)",
+      "aliases": [
+        "leukemia"
       ],
-      "reviewNotes": []
-    },
-    {
-      "id": "pancreatic-cancer",
-      "name": "Pancreatic Cancer",
-      "aliases": [],
       "bodySystem": "Oncological Conditions",
       "ratingSchedule": [
         {
-          "citation": "38 CFR 4.114",
-          "note": "Schedule of ratings, digestive system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "stomach-cancer",
-      "name": "Stomach Cancer",
-      "aliases": [],
-      "bodySystem": "Oncological Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Schedule of ratings, digestive system.",
+          "citation": "38 CFR 4.117",
+          "note": "Schedule of ratings, hemic and lymphatic systems.",
           "verified": false
         }
       ],
@@ -152,42 +140,8 @@
       "reviewNotes": []
     },
     {
-      "id": "brain-cancer",
-      "name": "Brain Cancer / Glioblastoma",
-      "aliases": [
-        "brain cancer",
-        "glioblastoma"
-      ],
-      "bodySystem": "Oncological Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.124a",
-          "note": "Schedule of ratings, neurological conditions and convulsive disorders.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "skin-cancer",
-      "name": "Melanoma / Non-Melanoma Skin Cancers",
-      "aliases": [
-        "melanoma",
-        "non-melanoma skin cancers"
-      ],
-      "bodySystem": "Oncological Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.118",
-          "note": "Schedule of ratings, skin.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "hodgkins-lymphoma",
-      "name": "Hodgkin's Lymphoma",
+      "id": "multiple-myeloma",
+      "name": "Multiple Myeloma",
       "aliases": [],
       "bodySystem": "Oncological Conditions",
       "ratingSchedule": [
@@ -214,30 +168,79 @@
       "reviewNotes": []
     },
     {
-      "id": "multiple-myeloma",
-      "name": "Multiple Myeloma",
+      "id": "pancreatic-cancer",
+      "name": "Pancreatic Cancer",
       "aliases": [],
       "bodySystem": "Oncological Conditions",
       "ratingSchedule": [
         {
-          "citation": "38 CFR 4.117",
-          "note": "Schedule of ratings, hemic and lymphatic systems.",
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
           "verified": false
         }
       ],
       "reviewNotes": []
     },
     {
-      "id": "leukemia",
-      "name": "Leukemia (Acute & Chronic)",
+      "id": "prostate-cancer",
+      "name": "Prostate Cancer",
+      "aliases": [],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Ratings of the genitourinary system, diagnoses.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "respiratory-cancer",
+      "name": "Lung Cancer / Tracheal Cancer / Bronchial Cancer",
       "aliases": [
-        "leukemia"
+        "bronchial cancer",
+        "lung cancer",
+        "tracheal cancer",
+        "respiratory cancer",
+        "bronchogenic carcinoma"
       ],
       "bodySystem": "Oncological Conditions",
       "ratingSchedule": [
         {
-          "citation": "38 CFR 4.117",
-          "note": "Schedule of ratings, hemic and lymphatic systems.",
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "skin-cancer",
+      "name": "Melanoma / Non-Melanoma Skin Cancers",
+      "aliases": [
+        "melanoma",
+        "non-melanoma skin cancers"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Schedule of ratings, skin.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "stomach-cancer",
+      "name": "Stomach Cancer",
+      "aliases": [],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
           "verified": false
         }
       ],

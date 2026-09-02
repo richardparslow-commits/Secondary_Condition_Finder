@@ -2,6 +2,89 @@
   "bodySystem": "Oncological Conditions",
   "conditions": [
     {
+      "id": "biliary-tract-cancer",
+      "name": "Biliary tract cancer",
+      "aliases": [
+        "bile duct cancer",
+        "cholangiocarcinoma"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "broncho-alveolar-carcinoma",
+      "name": "Broncho-alveolar carcinoma",
+      "aliases": [
+        "bronchioloalveolar carcinoma",
+        "lung adenocarcinoma"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "endometrial-cancer",
+      "name": "Endometrial Cancer",
+      "aliases": [
+        "endometrial carcinoma",
+        "uterine endometrial cancer"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Clinical Mapping Master Resolution 2026 taxonomy identity. No condition-specific VA diagnostic/rating code was assigned or borrowed; retain for qualified catalog/rating review. Malignancy of the endometrium; distinct from ovarian and cervical cancer identities."
+      ]
+    },
+    {
+      "id": "gastrointestinal-cancers",
+      "name": "Gastrointestinal cancers",
+      "aliases": [
+        "gastrointestinal malignancy"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "head-and-neck-cancers",
+      "name": "Head and neck cancers",
+      "aliases": [
+        "head and neck cancer"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "laryngeal-cancer",
+      "name": "Laryngeal Cancer",
+      "aliases": [
+        "cancer of the larynx",
+        "larynx cancer"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "DC 6819, malignant neoplasms of any specified part of the respiratory system exclusive of skin growths; this is a system-level malignancy code rather than a larynx-specific cancer code.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Keep laryngeal cancer distinct from the existing respiratory-cancer identity, which is scoped to lung, tracheal, and bronchial cancers.",
+        "When there is no local recurrence or metastasis after treatment, residuals such as laryngectomy, aphonia, stenosis, swallowing impairment, or other documented functional loss may require separate appropriate diagnostic criteria; do not infer those residuals from the cancer diagnosis alone."
+      ]
+    },
+    {
       "id": "ovarian-cancer",
       "name": "Ovarian Cancer",
       "aliases": [
@@ -22,16 +105,64 @@
       ]
     },
     {
-      "id": "endometrial-cancer",
-      "name": "Endometrial Cancer",
+      "id": "pleura-cancer",
+      "name": "Pleura cancer",
       "aliases": [
-        "endometrial carcinoma",
-        "uterine endometrial cancer"
+        "pleural mesothelioma",
+        "pleural cancer"
       ],
       "bodySystem": "Oncological Conditions",
       "ratingSchedule": [],
       "reviewNotes": [
-        "Clinical Mapping Master Resolution 2026 taxonomy identity. No condition-specific VA diagnostic/rating code was assigned or borrowed; retain for qualified catalog/rating review. Malignancy of the endometrium; distinct from ovarian and cervical cancer identities."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "reproductive-cancers",
+      "name": "Reproductive cancers",
+      "aliases": [
+        "genital cancer"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "salivary-gland-cancer",
+      "name": "Salivary gland cancer",
+      "aliases": [
+        "salivary gland malignancy"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "small-intestine-cancer",
+      "name": "Small intestine cancer",
+      "aliases": [
+        "small bowel cancer"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "soft-tissue-sarcomas",
+      "name": "Soft tissue sarcomas",
+      "aliases": [
+        "soft tissue sarcoma"
+      ],
+      "bodySystem": "Oncological Conditions",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
       ]
     },
     {
@@ -55,23 +186,16 @@
       ]
     },
     {
-      "id": "laryngeal-cancer",
-      "name": "Laryngeal Cancer",
+      "id": "urinary-tract-cancer",
+      "name": "Urinary tract cancer",
       "aliases": [
-        "cancer of the larynx",
-        "larynx cancer"
+        "urothelial cancer",
+        "urothelial carcinoma"
       ],
       "bodySystem": "Oncological Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.97",
-          "note": "DC 6819, malignant neoplasms of any specified part of the respiratory system exclusive of skin growths; this is a system-level malignancy code rather than a larynx-specific cancer code.",
-          "verified": false
-        }
-      ],
+      "ratingSchedule": [],
       "reviewNotes": [
-        "Keep laryngeal cancer distinct from the existing respiratory-cancer identity, which is scoped to lung, tracheal, and bronchial cancers.",
-        "When there is no local recurrence or metastasis after treatment, residuals such as laryngectomy, aphonia, stenosis, swallowing impairment, or other documented functional loss may require separate appropriate diagnostic criteria; do not infer those residuals from the cancer diagnosis alone."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
       ]
     }
   ]

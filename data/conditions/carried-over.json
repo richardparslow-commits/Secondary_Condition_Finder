@@ -1,10 +1,12 @@
 {
-  "bodySystem": "Carried over from the knowledge base",
+  "bodySystem": "Musculoskeletal System",
   "conditions": [
     {
       "id": "contralateral-knee-condition",
       "name": "Contralateral (opposite) knee condition",
-      "aliases": ["opposite knee condition"],
+      "aliases": [
+        "opposite knee condition"
+      ],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [],
       "reviewNotes": [

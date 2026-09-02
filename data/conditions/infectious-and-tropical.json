@@ -2,20 +2,6 @@
   "bodySystem": "Infectious & Tropical Diseases",
   "conditions": [
     {
-      "id": "malaria",
-      "name": "Malaria",
-      "aliases": [],
-      "bodySystem": "Infectious & Tropical Diseases",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.88b",
-          "note": "Schedule of ratings, infectious diseases, immune disorders and nutritional deficiencies.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
       "id": "brucellosis",
       "name": "Brucellosis",
       "aliases": [],
@@ -33,23 +19,6 @@
       "id": "campylobacter-jejuni-infection",
       "name": "Campylobacter Jejuni Infection",
       "aliases": [],
-      "bodySystem": "Infectious & Tropical Diseases",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.88b",
-          "note": "Schedule of ratings, infectious diseases, immune disorders and nutritional deficiencies.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "q-fever",
-      "name": "Coxiella Burnetii (Q Fever)",
-      "aliases": [
-        "coxiella burnetii",
-        "q fever"
-      ],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {
@@ -89,19 +58,14 @@
       "reviewNotes": []
     },
     {
-      "id": "tuberculosis",
-      "name": "Mycobacterium Tuberculosis",
+      "id": "malaria",
+      "name": "Malaria",
       "aliases": [],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {
-          "citation": "38 CFR 4.88c",
-          "note": "Schedule of ratings, inactive nonpulmonary tuberculosis.",
-          "verified": false
-        },
-        {
-          "citation": "38 CFR 4.97",
-          "note": "Schedule of ratings, respiratory system.",
+          "citation": "38 CFR 4.88b",
+          "note": "Schedule of ratings, infectious diseases, immune disorders and nutritional deficiencies.",
           "verified": false
         }
       ],
@@ -111,6 +75,23 @@
       "id": "nontuberculous-mycobacterial-infections",
       "name": "Nontuberculous Mycobacterial Infections",
       "aliases": [],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Schedule of ratings, infectious diseases, immune disorders and nutritional deficiencies.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "q-fever",
+      "name": "Coxiella Burnetii (Q Fever)",
+      "aliases": [
+        "coxiella burnetii",
+        "q fever"
+      ],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {
@@ -133,6 +114,25 @@
         {
           "citation": "38 CFR 4.88b",
           "note": "Schedule of ratings, infectious diseases, immune disorders and nutritional deficiencies.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "tuberculosis",
+      "name": "Mycobacterium Tuberculosis",
+      "aliases": [],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88c",
+          "note": "Schedule of ratings, inactive nonpulmonary tuberculosis.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system.",
           "verified": false
         }
       ],

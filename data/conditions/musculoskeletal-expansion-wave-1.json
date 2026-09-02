@@ -2,83 +2,156 @@
   "bodySystem": "Musculoskeletal System",
   "conditions": [
     {
-      "id": "gout",
-      "name": "Gout",
-      "aliases": [],
+      "id": "amputation-of-arm",
+      "name": "Amputation of arm",
+      "aliases": [
+        "upper arm amputation",
+        "lower arm amputation"
+      ],
       "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5017.", "verified": false}],
-      "reviewNotes": []
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
-      "id": "osteoporosis",
-      "name": "Osteoporosis, Residuals of",
+      "id": "amputation-of-foot",
+      "name": "Amputation of foot",
       "aliases": [],
       "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5013.", "verified": false}],
-      "reviewNotes": []
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
-      "id": "osteomalacia",
-      "name": "Osteomalacia, Residuals of",
+      "id": "amputation-of-hand",
+      "name": "Amputation of hand",
       "aliases": [],
       "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5014.", "verified": false}],
-      "reviewNotes": []
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
-      "id": "osteitis-deformans",
-      "name": "Osteitis Deformans (Paget Disease of Bone)",
-      "aliases": ["Paget disease of bone"],
+      "id": "amputation-of-leg",
+      "name": "Amputation of leg",
+      "aliases": [
+        "upper leg amputation",
+        "lower leg amputation"
+      ],
       "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5016.", "verified": false}],
-      "reviewNotes": []
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "amputation-of-thumb-fingers-toes",
+      "name": "Amputation of Thumb / Fingers / Toes",
+      "aliases": [
+        "thumb amputation",
+        "finger amputation",
+        "toe amputation",
+        "loss of digits"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "ankle-disarticulation",
+      "name": "Ankle disarticulation",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "bursitis",
       "name": "Bursitis",
       "aliases": [],
       "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5019.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5019.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
-      "id": "myositis",
-      "name": "Myositis",
+      "id": "elbow-disarticulation",
+      "name": "Elbow disarticulation",
       "aliases": [],
       "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5021.", "verified": false}],
-      "reviewNotes": []
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
-      "id": "heterotopic-ossification",
-      "name": "Heterotopic Ossification",
-      "aliases": [],
+      "id": "gout",
+      "name": "Gout",
+      "aliases": [
+        "gouty arthritis"
+      ],
       "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5023.", "verified": false}],
-      "reviewNotes": []
-    },
-    {
-      "id": "tendinopathy",
-      "name": "Tendinitis / Tendinosis / Tendinopathy",
-      "aliases": ["tendinitis", "tendinosis", "tendinopathy"],
-      "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5024.", "verified": false}],
-      "reviewNotes": []
-    },
-    {
-      "id": "pes-cavus",
-      "name": "Acquired Pes Cavus (Claw Foot)",
-      "aliases": ["claw foot", "pes cavus"],
-      "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5278.", "verified": false}],
-      "reviewNotes": []
-    },
-    {
-      "id": "metatarsalgia",
-      "name": "Anterior Metatarsalgia (Morton's Disease)",
-      "aliases": ["metatarsalgia", "Morton's disease"],
-      "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5279.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5017.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
@@ -86,16 +159,256 @@
       "name": "Hallux Rigidus",
       "aliases": [],
       "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5281.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5281.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
       "id": "hammertoe",
       "name": "Hammer Toe",
-      "aliases": ["hammertoe"],
+      "aliases": [
+        "hammertoe",
+        "hammertoes"
+      ],
       "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [{"citation": "38 CFR 4.71a", "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5282.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5282.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
+    },
+    {
+      "id": "hemipelvectomy",
+      "name": "Hemipelvectomy",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "heterotopic-ossification",
+      "name": "Heterotopic Ossification",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5023.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hip-disarticulation",
+      "name": "Hip disarticulation",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "knee-disarticulation",
+      "name": "Knee disarticulation",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "loss-of-use-of-extremities",
+      "name": "Loss of use of extremities",
+      "aliases": [
+        "loss of use of limb",
+        "loss of use"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "metatarsalgia",
+      "name": "Anterior Metatarsalgia (Morton's Disease)",
+      "aliases": [
+        "metatarsalgia",
+        "Morton's disease"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5279.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "myositis",
+      "name": "Myositis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5021.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "osteitis-deformans",
+      "name": "Osteitis Deformans (Paget Disease of Bone)",
+      "aliases": [
+        "Paget disease of bone"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5016.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "osteomalacia",
+      "name": "Osteomalacia, Residuals of",
+      "aliases": [
+        "osteomalacia"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5014.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "osteoporosis",
+      "name": "Osteoporosis, Residuals of",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5013.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "pes-cavus",
+      "name": "Acquired Pes Cavus (Claw Foot)",
+      "aliases": [
+        "claw foot",
+        "pes cavus"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5278.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "shoulder-disarticulation",
+      "name": "Shoulder disarticulation",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "tendinopathy",
+      "name": "Tendinitis / Tendinosis / Tendinopathy",
+      "aliases": [
+        "tendinitis",
+        "tendinosis",
+        "tendinopathy"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5024.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "wrist-disarticulation",
+      "name": "Wrist disarticulation",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     }
   ]
 }

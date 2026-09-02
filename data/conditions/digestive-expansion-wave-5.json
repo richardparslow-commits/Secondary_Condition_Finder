@@ -2,23 +2,27 @@
   "bodySystem": "Digestive System",
   "conditions": [
     {
-      "id": "esophageal-stricture",
-      "name": "Esophageal Stricture",
+      "id": "abdominal-migraine",
+      "name": "Abdominal migraine",
       "aliases": [],
       "bodySystem": "Digestive System",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.114",
-          "note": "DC 7203, esophageal stricture.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "achalasia",
       "name": "Achalasia (Esophageal Motility Disorder)",
-      "aliases": ["cardiospasm"],
+      "aliases": [
+        "cardiospasm"
+      ],
       "bodySystem": "Digestive System",
       "ratingSchedule": [
         {
@@ -27,7 +31,110 @@
           "verified": false
         }
       ],
-      "reviewNotes": ["Use the documented esophageal motility diagnosis and manifestations; catalog identity does not establish etiology or secondary nexus."]
+      "reviewNotes": [
+        "Use the documented esophageal motility diagnosis and manifestations; catalog identity does not establish etiology or secondary nexus."
+      ]
+    },
+    {
+      "id": "anal-fissure",
+      "name": "Anal fissure",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "anal-fistula",
+      "name": "Anal Fistula (Fistula in Ano)",
+      "aliases": [
+        "fistula in ano"
+      ],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "DC 7335, fistula in ano; evaluated under the applicable sphincter-control criteria.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "anismus-pelvic-floor-dyssynergia",
+      "name": "Anismus / Pelvic Floor Dyssynergia",
+      "aliases": [
+        "pelvic floor dyssynergia",
+        "anismus"
+      ],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "anorectal-stricture",
+      "name": "Anorectal stricture",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "appendicitis",
+      "name": "Appendicitis",
+      "aliases": [
+        "appendicitis residuals"
+      ],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "autoimmune-metaplastic-atrophic-gastritis",
+      "name": "Autoimmune metaplastic atrophic gastritis",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "barretts-esophagus",
@@ -44,6 +151,318 @@
       "reviewNotes": []
     },
     {
+      "id": "bile-reflux-gastritis",
+      "name": "Bile reflux gastritis",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "blind-loop-syndrome",
+      "name": "Blind loop syndrome",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cannabinoid-hyperemesis-syndrome",
+      "name": "Cannabinoid hyperemesis syndrome",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cholelithiasis",
+      "name": "Cholelithiasis",
+      "aliases": [
+        "gallstones",
+        "cholelithiasis"
+      ],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "chronic-intestinal-pseudo-obstruction",
+      "name": "Chronic intestinal pseudo-obstruction",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "chronic-liver-disease",
+      "name": "Chronic Liver Disease Without Cirrhosis",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "DC 7345, chronic liver disease without cirrhosis.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "This umbrella identity does not replace the existing hepatitis or cirrhosis catalog identities. Select the documented diagnosis and do not merge their aliases."
+      ]
+    },
+    {
+      "id": "cyclic-vomiting-syndrome",
+      "name": "Cyclic vomiting syndrome",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "diffuse-esophageal-spasm",
+      "name": "Diffuse esophageal spasm",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "diverticulosis",
+      "name": "Diverticulosis",
+      "aliases": [
+        "diverticular disease"
+      ],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dumping-syndrome",
+      "name": "Dumping syndrome",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dysphagia",
+      "name": "Dysphagia",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "eosinophilic-esophagitis",
+      "name": "Eosinophilic esophagitis",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "eosinophilic-gastroenteritis",
+      "name": "Eosinophilic gastroenteritis",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "esophageal-stricture",
+      "name": "Esophageal Stricture",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "DC 7203, esophageal stricture.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "esophagitis",
+      "name": "Esophagitis",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "fecal-impaction",
+      "name": "Fecal impaction",
+      "aliases": [
+        "chronic",
+        "chronic fecal impaction"
+      ],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "fecal-incontinence",
+      "name": "Fecal Incontinence / Impairment of Sphincter Control",
+      "aliases": [
+        "bowel incontinence"
+      ],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "DC 7332, impairment of sphincter control of the rectum and anus.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "fitz-hugh-curtis-syndrome",
+      "name": "Fitz-Hugh-Curtis syndrome",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "gastrointestinal-stromal-tumors",
+      "name": "Gastrointestinal stromal tumors",
+      "aliases": [
+        "gist"
+      ],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
       "id": "gastroparesis",
       "name": "Gastroparesis",
       "aliases": [],
@@ -55,7 +474,125 @@
           "verified": false
         }
       ],
-      "reviewNotes": ["Qualified review should select the applicable current digestive criteria from the documented manifestations rather than inferring an analogous diagnostic code."]
+      "reviewNotes": [
+        "Qualified review should select the applicable current digestive criteria from the documented manifestations rather than inferring an analogous diagnostic code."
+      ]
+    },
+    {
+      "id": "hepatic-steatosis",
+      "name": "Hepatic steatosis",
+      "aliases": [
+        "fatty liver",
+        "nonalcoholic fatty liver disease",
+        "nafld"
+      ],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "levator-ani-syndrome",
+      "name": "Levator ani syndrome",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "liver-abscess",
+      "name": "Liver abscess",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "malabsorption-syndrome",
+      "name": "Malabsorption syndrome",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "menetrier-s-disease",
+      "name": "Menetrier's disease",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "microscopic-colitis",
+      "name": "Microscopic colitis",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "nutcracker-esophagus",
+      "name": "Nutcracker esophagus",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "peritoneal-adhesions",
@@ -72,32 +609,36 @@
       "reviewNotes": []
     },
     {
-      "id": "short-bowel-syndrome",
-      "name": "Short Bowel Syndrome",
-      "aliases": ["short gut syndrome"],
+      "id": "proctalgia-fugax",
+      "name": "Proctalgia fugax",
+      "aliases": [],
       "bodySystem": "Digestive System",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.114",
-          "note": "Small-intestine resection/short-bowel residual framework, including DC 7328 when applicable.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": ["Use the documented bowel resection and residual manifestations; the catalog identity does not assume a particular surgical history."]
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
-      "id": "fecal-incontinence",
-      "name": "Fecal Incontinence / Impairment of Sphincter Control",
-      "aliases": ["bowel incontinence"],
+      "id": "pruritus-ani",
+      "name": "Pruritus ani",
+      "aliases": [],
       "bodySystem": "Digestive System",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.114",
-          "note": "DC 7332, impairment of sphincter control of the rectum and anus.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "rectal-prolapse",
@@ -114,32 +655,86 @@
       "reviewNotes": []
     },
     {
-      "id": "anal-fistula",
-      "name": "Anal Fistula (Fistula in Ano)",
-      "aliases": ["fistula in ano"],
-      "bodySystem": "Digestive System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "DC 7335, fistula in ano; evaluated under the applicable sphincter-control criteria.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "chronic-liver-disease",
-      "name": "Chronic Liver Disease Without Cirrhosis",
+      "id": "rumination-syndrome",
+      "name": "Rumination syndrome",
       "aliases": [],
       "bodySystem": "Digestive System",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.114",
-          "note": "DC 7345, chronic liver disease without cirrhosis.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": ["This umbrella identity does not replace the existing hepatitis or cirrhosis catalog identities. Select the documented diagnosis and do not merge their aliases."]
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "short-bowel-syndrome",
+      "name": "Short Bowel Syndrome",
+      "aliases": [
+        "short gut syndrome"
+      ],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Small-intestine resection/short-bowel residual framework, including DC 7328 when applicable.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Use the documented bowel resection and residual manifestations; the catalog identity does not assume a particular surgical history."
+      ]
+    },
+    {
+      "id": "solitary-rectal-ulcer-syndrome",
+      "name": "Solitary rectal ulcer syndrome",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "superior-mesenteric-artery-syndrome",
+      "name": "Superior mesenteric artery syndrome",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "zenker-s-diverticulum",
+      "name": "Zenker's diverticulum",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     }
   ]
 }

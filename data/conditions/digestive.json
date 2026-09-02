@@ -2,37 +2,6 @@
   "bodySystem": "Digestive System",
   "conditions": [
     {
-      "id": "gerd",
-      "name": "Gastroesophageal Reflux Disease (GERD)",
-      "aliases": [
-        "gastroesophageal reflux disease",
-        "gerd"
-      ],
-      "bodySystem": "Digestive System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Schedule of ratings, digestive system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "hiatal-hernia",
-      "name": "Hiatal Hernia",
-      "aliases": [],
-      "bodySystem": "Digestive System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Schedule of ratings, digestive system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
       "id": "abdominal-hernia",
       "name": "Inguinal / Femoral / Ventral Hernia",
       "aliases": [
@@ -51,12 +20,53 @@
       "reviewNotes": []
     },
     {
-      "id": "peptic-ulcer-disease",
-      "name": "Peptic Ulcer Disease (Gastric / Duodenal)",
+      "id": "celiac-disease",
+      "name": "Celiac Disease",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "cirrhosis-of-the-liver",
+      "name": "Cirrhosis of the Liver",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "diverticulitis",
+      "name": "Diverticulitis",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "gallbladder-disease",
+      "name": "Cholecystitis / Gallbladder Disease",
       "aliases": [
-        "duodenal",
-        "gastric",
-        "peptic ulcer disease"
+        "cholecystitis",
+        "gallbladder disease"
       ],
       "bodySystem": "Digestive System",
       "ratingSchedule": [
@@ -71,6 +81,65 @@
     {
       "id": "gastritis",
       "name": "Gastritis",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "gerd",
+      "name": "Gastroesophageal Reflux Disease (GERD)",
+      "aliases": [
+        "gastroesophageal reflux disease",
+        "gerd"
+      ],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hemorrhoids",
+      "name": "Hemorrhoids",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hepatitis",
+      "name": "Hepatitis A, B, or C",
+      "aliases": [],
+      "bodySystem": "Digestive System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.114",
+          "note": "Schedule of ratings, digestive system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hiatal-hernia",
+      "name": "Hiatal Hernia",
       "aliases": [],
       "bodySystem": "Digestive System",
       "ratingSchedule": [
@@ -117,79 +186,6 @@
       "reviewNotes": []
     },
     {
-      "id": "diverticulitis",
-      "name": "Diverticulitis",
-      "aliases": [],
-      "bodySystem": "Digestive System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Schedule of ratings, digestive system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "celiac-disease",
-      "name": "Celiac Disease",
-      "aliases": [],
-      "bodySystem": "Digestive System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Schedule of ratings, digestive system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "cirrhosis-of-the-liver",
-      "name": "Cirrhosis of the Liver",
-      "aliases": [],
-      "bodySystem": "Digestive System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Schedule of ratings, digestive system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "hepatitis",
-      "name": "Hepatitis A, B, or C",
-      "aliases": [],
-      "bodySystem": "Digestive System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Schedule of ratings, digestive system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "gallbladder-disease",
-      "name": "Cholecystitis / Gallbladder Disease",
-      "aliases": [
-        "cholecystitis",
-        "gallbladder disease"
-      ],
-      "bodySystem": "Digestive System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.114",
-          "note": "Schedule of ratings, digestive system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
       "id": "pancreatitis",
       "name": "Pancreatitis",
       "aliases": [],
@@ -204,9 +200,13 @@
       "reviewNotes": []
     },
     {
-      "id": "hemorrhoids",
-      "name": "Hemorrhoids",
-      "aliases": [],
+      "id": "peptic-ulcer-disease",
+      "name": "Peptic Ulcer Disease (Gastric / Duodenal)",
+      "aliases": [
+        "duodenal",
+        "gastric",
+        "peptic ulcer disease"
+      ],
       "bodySystem": "Digestive System",
       "ratingSchedule": [
         {
