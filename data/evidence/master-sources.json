@@ -2,7 +2,7 @@
   "registry": "Master Source Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "d6783c1652ade0b005ef0a952ba667126523e09c",
+  "baselineCommit": "b3c9745fed30c66e994a92302baf2d78118802df",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "identityPolicy": {
     "liveSourceIdentityUsesCitationAndCanonicalUrlNotSourceLocatorProvenance": true,
@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 261,
+    "liveSourceReferenceUses": 266,
     "activeSourceEntities": 233,
-    "pendingVerificationSourceEntities": 5,
+    "pendingVerificationSourceEntities": 10,
     "activeClinicalSourceEntities": 232,
-    "pendingClinicalSourceEntities": 5,
+    "pendingClinicalSourceEntities": 10,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 247,
+    "totalSourceEntitiesIncludingLineage": 252,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -9322,8 +9322,208 @@
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
+    },
+    {
+      "sourceId": "pmid-16648329",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "16648329",
+      "doi": "10.1176/ajp.2006.163.5.872",
+      "canonicalCitation": "Klein DN, Shankman SA, Rose S. Ten-year prospective follow-up study of the naturalistic course of dysthymic disorder and double depression. Am J Psychiatry. 2006;163(5):872-880. PMID 16648329. doi:10.1176/ajp.2006.163.5.872.",
+      "citationVariants": [
+        "Klein DN, Shankman SA, Rose S. Ten-year prospective follow-up study of the naturalistic course of dysthymic disorder and double depression. Am J Psychiatry. 2006;163(5):872-880. PMID 16648329. doi:10.1176/ajp.2006.163.5.872."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16648329/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16648329/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-persistent-depressive-disorder-to-depressive-disorder",
+          "primaryId": "persistent-depressive-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "58d5ebbdd6f404f0190acd957a41cba00abe722116e5ae98feaea99798012f5d"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-18433651",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "18433651",
+      "doi": "10.1016/j.genhosppsych.2007.10.008",
+      "canonicalCitation": "Löwe B, Spitzer RL, Williams JB, Mussell M, Schellberg D, Kroenke K. Depression, anxiety and somatization in primary care: syndrome overlap and functional impairment. Gen Hosp Psychiatry. 2008;30(3):191-199. PMID 18433651. doi:10.1016/j.genhosppsych.2007.10.008.",
+      "citationVariants": [
+        "Löwe B, Spitzer RL, Williams JB, Mussell M, Schellberg D, Kroenke K. Depression, anxiety and somatization in primary care: syndrome overlap and functional impairment. Gen Hosp Psychiatry. 2008;30(3):191-199. PMID 18433651. doi:10.1016/j.genhosppsych.2007.10.008."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18433651/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/18433651/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-somatic-symptom-disorder-to-depressive-disorder",
+          "primaryId": "somatic-symptom-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "df5df269781cd39726faaa33c05d2274fe6671c4c9a97540a53bee83df57e49a"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-16908799",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "16908799",
+      "doi": "10.1001/archinte.166.15.1649",
+      "canonicalCitation": "Kato K, Sullivan PF, Evengård B, Pedersen NL. Chronic widespread pain and its comorbidities: a population-based study. Arch Intern Med. 2006;166(15):1649-1654. PMID 16908799. doi:10.1001/archinte.166.15.1649.",
+      "citationVariants": [
+        "Kato K, Sullivan PF, Evengård B, Pedersen NL. Chronic widespread pain and its comorbidities: a population-based study. Arch Intern Med. 2006;166(15):1649-1654. PMID 16908799. doi:10.1001/archinte.166.15.1649."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16908799/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16908799/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-fibromyalgia-to-depressive-disorder",
+          "primaryId": "fibromyalgia",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "1517bfc4b2bfc326193748b77a0a5d30a2c694075d593686f548fa9939a04a08"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-11910364",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "11910364",
+      "doi": "10.1053/gast.2002.32392",
+      "canonicalCitation": "Whitehead WE, Palsson O, Jones KR. Systematic review of the comorbidity of irritable bowel syndrome with other disorders: what are the causes and implications? Gastroenterology. 2002;122(4):1140-1156. PMID 11910364. doi:10.1053/gast.2002.32392.",
+      "citationVariants": [
+        "Whitehead WE, Palsson O, Jones KR. Systematic review of the comorbidity of irritable bowel syndrome with other disorders: what are the causes and implications? Gastroenterology. 2002;122(4):1140-1156. PMID 11910364. doi:10.1053/gast.2002.32392."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11910364/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/11910364/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-irritable-bowel-syndrome-to-depressive-disorder",
+          "primaryId": "irritable-bowel-syndrome",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "6ca122ddb34abeba489724f0939e269416ff4f045988e0963880a4e49c74731c"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-30909841",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "30909841",
+      "doi": "10.1177/0194599819835178",
+      "canonicalCitation": "Salazar JW, Meisel K, Smith ER, Quiggle A, McCoy DB, Amans MR. Depression in Patients with Tinnitus: A Systematic Review. Otolaryngol Head Neck Surg. 2019;161(1):28-35. PMID 30909841. doi:10.1177/0194599819835178.",
+      "citationVariants": [
+        "Salazar JW, Meisel K, Smith ER, Quiggle A, McCoy DB, Amans MR. Depression in Patients with Tinnitus: A Systematic Review. Otolaryngol Head Neck Surg. 2019;161(1):28-35. PMID 30909841. doi:10.1177/0194599819835178."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30909841/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30909841/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-01"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-tinnitus-to-depressive-disorder",
+          "primaryId": "tinnitus",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0dff1eca3d036993b580a48ba7578c85bb983a7b4f98dfaeb0a98499b0a00ec1"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-16",
-  "currentState": "ME16-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-17",
+  "currentState": "ME17-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

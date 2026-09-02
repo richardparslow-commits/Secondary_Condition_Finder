@@ -5,5 +5,30 @@
     "Review future secondary suggestions only after adding persistent-depressive-disorder-specific clinical evidence.",
     "Batch 19 removes the prior sleep-apnea, GERD, and migraine suggestions because their attached references were legal or rating sources rather than clinical evidence for those relationships."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "rationale": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited ten-year prospective follow-up of patients with dysthymic disorder found that nearly all developed a major depressive episode superimposed on the chronic dysthymia (double depression), establishing temporal risk rather than individual causation. Require independently established persistent depressive disorder (dysthymia) and a separately documented major depressive episode superimposed upon it; the cited prospective follow-up found that most dysthymic patients developed a major depressive episode during ten years of observation; do not treat persistent depressive disorder as proof that any individual's depressive disorder was caused by it. Preserve other psychiatric illness, substance use, medical illness, medications, and shared vulnerability as competing explanations. Treat this only as population-level temporal risk, not proof that persistent depressive disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of persistent-depressive-disorder and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: temporal-risk-comorbidity-progression",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established persistent depressive disorder (dysthymia) and a separately documented major depressive episode superimposed upon it; the cited prospective follow-up found that most dysthymic patients developed a major depressive episode during ten years of observation; do not treat persistent depressive disorder as proof that any individual's depressive disorder was caused by it. Preserve other psychiatric illness, substance use, medical illness, medications, and shared vulnerability as competing explanations. Treat this only as population-level temporal risk, not proof that persistent depressive disorder caused an individual's depressive disorder."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Klein DN, Shankman SA, Rose S. Ten-year prospective follow-up study of the naturalistic course of dysthymic disorder and double depression. Am J Psychiatry. 2006;163(5):872-880. PMID 16648329. doi:10.1176/ajp.2006.163.5.872.",
+          "note": "Mapping Expansion Batch ME-17 evidence for the bounded persistent-depressive-disorder to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16648329/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-01",
+          "sourceLocator": "PMID 16648329; approved ME-17 source; guard: Require independently established persistent depressive disorder (dysthymia) and a separately documented major depressive episode superimposed upon it; the cited prospective follow-up found that most dysthymic patients developed a major depressive episode during ten years of observation; do not treat persistent depressive disorder as proof that any individual's depressive disorder was caused by it. Preserve other psychiatric illness, substance use, medical illness, medications, and shared vulnerability as competing explanations. Treat this only as population-level temporal risk, not proof that persistent depressive disorder caused an individual's depressive disorder."
+        }
+      ]
+    }
+  ]
 }

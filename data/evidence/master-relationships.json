@@ -2,12 +2,12 @@
   "registry": "Master Relationship Registry 2026",
   "schemaVersion": 1,
   "status": "AUTHORITATIVE-CURRENT-STATE",
-  "baselineCommit": "d6783c1652ade0b005ef0a952ba667126523e09c",
+  "baselineCommit": "b3c9745fed30c66e994a92302baf2d78118802df",
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 253,
-    "explicitPublicationGuards": 179,
+    "relationships": 258,
+    "explicitPublicationGuards": 184,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -8520,8 +8520,178 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "0859d0091c359fd69fbe333ca77ca058de103e8879af288ac2a50ab7bf2f3c4d"
+    },
+    {
+      "relationshipId": "rel-persistent-depressive-disorder-to-depressive-disorder",
+      "primaryId": "persistent-depressive-disorder",
+      "targetId": "depressive-disorder",
+      "direction": "persistent-depressive-disorder -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me17-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited ten-year prospective follow-up of patients with dysthymic disorder found that nearly all developed a major depressive episode superimposed on the chronic dysthymia (double depression), establishing temporal risk rather than individual causation. Require independently established persistent depressive disorder (dysthymia) and a separately documented major depressive episode superimposed upon it; the cited prospective follow-up found that most dysthymic patients developed a major depressive episode during ten years of observation; do not treat persistent depressive disorder as proof that any individual's depressive disorder was caused by it. Preserve other psychiatric illness, substance use, medical illness, medications, and shared vulnerability as competing explanations. Treat this only as population-level temporal risk, not proof that persistent depressive disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited ten-year prospective follow-up of patients with dysthymic disorder found that nearly all developed a major depressive episode superimposed on the chronic dysthymia (double depression), establishing temporal risk rather than individual causation. Require independently established persistent depressive disorder (dysthymia) and a separately documented major depressive episode superimposed upon it; the cited prospective follow-up found that most dysthymic patients developed a major depressive episode during ten years of observation; do not treat persistent depressive disorder as proof that any individual's depressive disorder was caused by it. Preserve other psychiatric illness, substance use, medical illness, medications, and shared vulnerability as competing explanations. Treat this only as population-level temporal risk, not proof that persistent depressive disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established persistent depressive disorder (dysthymia) and a separately documented major depressive episode superimposed upon it; the cited prospective follow-up found that most dysthymic patients developed a major depressive episode during ten years of observation; do not treat persistent depressive disorder as proof that any individual's depressive disorder was caused by it. Preserve other psychiatric illness, substance use, medical illness, medications, and shared vulnerability as competing explanations. Treat this only as population-level temporal risk, not proof that persistent depressive disorder caused an individual's depressive disorder.",
+        "boundarySource": "approved-me17-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of persistent-depressive-disorder and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: temporal-risk-comorbidity-progression",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established persistent depressive disorder (dysthymia) and a separately documented major depressive episode superimposed upon it; the cited prospective follow-up found that most dysthymic patients developed a major depressive episode during ten years of observation; do not treat persistent depressive disorder as proof that any individual's depressive disorder was caused by it. Preserve other psychiatric illness, substance use, medical illness, medications, and shared vulnerability as competing explanations. Treat this only as population-level temporal risk, not proof that persistent depressive disorder caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-16648329"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "bcf331bda2d6f2fafe3e86c60b2dd65d4a354ac044c1d8afc50d38cf91950d9c"
+    },
+    {
+      "relationshipId": "rel-somatic-symptom-disorder-to-depressive-disorder",
+      "primaryId": "somatic-symptom-disorder",
+      "targetId": "depressive-disorder",
+      "direction": "somatic-symptom-disorder -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me17-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited primary-care study found that clinically significant somatization syndrome overlaps extensively with depressive and anxiety syndromes, with more than half of cases showing comorbidity among the three syndromes. Require independently established DSM-5 somatic symptom disorder and separately established depressive disorder; the cited primary-care study reports syndromal overlap between somatization, depression, and anxiety and does not establish onset order or direction. Preserve medically explained symptoms, other psychiatric illness, substance use, medications, and shared vulnerability as competing explanations. Do not infer a depressive disorder from somatic symptoms, health concerns, or functional impairment alone, and do not treat this population-level association as proof that somatic symptom disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited primary-care study found that clinically significant somatization syndrome overlaps extensively with depressive and anxiety syndromes, with more than half of cases showing comorbidity among the three syndromes. Require independently established DSM-5 somatic symptom disorder and separately established depressive disorder; the cited primary-care study reports syndromal overlap between somatization, depression, and anxiety and does not establish onset order or direction. Preserve medically explained symptoms, other psychiatric illness, substance use, medications, and shared vulnerability as competing explanations. Do not infer a depressive disorder from somatic symptoms, health concerns, or functional impairment alone, and do not treat this population-level association as proof that somatic symptom disorder caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established DSM-5 somatic symptom disorder and separately established depressive disorder; the cited primary-care study reports syndromal overlap between somatization, depression, and anxiety and does not establish onset order or direction. Preserve medically explained symptoms, other psychiatric illness, substance use, medications, and shared vulnerability as competing explanations. Do not infer a depressive disorder from somatic symptoms, health concerns, or functional impairment alone, and do not treat this population-level association as proof that somatic symptom disorder caused an individual's depressive disorder.",
+        "boundarySource": "approved-me17-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of somatic-symptom-disorder and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: syndrome-overlap-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established DSM-5 somatic symptom disorder and separately established depressive disorder; the cited primary-care study reports syndromal overlap between somatization, depression, and anxiety and does not establish onset order or direction. Preserve medically explained symptoms, other psychiatric illness, substance use, medications, and shared vulnerability as competing explanations. Do not infer a depressive disorder from somatic symptoms, health concerns, or functional impairment alone, and do not treat this population-level association as proof that somatic symptom disorder caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-18433651"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "7a0c8f67da3bd1fe47aded039b20dc1793ec3d930aaa097e0c0ecabcefd624d7"
+    },
+    {
+      "relationshipId": "rel-fibromyalgia-to-depressive-disorder",
+      "primaryId": "fibromyalgia",
+      "targetId": "depressive-disorder",
+      "direction": "fibromyalgia -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me17-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited population-based twin study found strong co-occurrence between chronic widespread pain (the hallmark of fibromyalgia) and depressive and other psychiatric symptoms, with associations substantially mediated by shared genetic and family-environmental factors. Require independently established fibromyalgia or documented chronic widespread pain and a separately established depressive disorder; the cited population-based twin study found strong co-occurrence of chronic widespread pain with depressive symptoms, substantially mediated by shared genetic and family-environmental factors, and did not establish individual causation or direction. Preserve chronic fatigue, other functional somatic syndromes, musculoskeletal disorders, medications, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from pain, fatigue, or impairment alone, and do not treat this population-level association as proof that fibromyalgia caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited population-based twin study found strong co-occurrence between chronic widespread pain (the hallmark of fibromyalgia) and depressive and other psychiatric symptoms, with associations substantially mediated by shared genetic and family-environmental factors. Require independently established fibromyalgia or documented chronic widespread pain and a separately established depressive disorder; the cited population-based twin study found strong co-occurrence of chronic widespread pain with depressive symptoms, substantially mediated by shared genetic and family-environmental factors, and did not establish individual causation or direction. Preserve chronic fatigue, other functional somatic syndromes, musculoskeletal disorders, medications, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from pain, fatigue, or impairment alone, and do not treat this population-level association as proof that fibromyalgia caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established fibromyalgia or documented chronic widespread pain and a separately established depressive disorder; the cited population-based twin study found strong co-occurrence of chronic widespread pain with depressive symptoms, substantially mediated by shared genetic and family-environmental factors, and did not establish individual causation or direction. Preserve chronic fatigue, other functional somatic syndromes, musculoskeletal disorders, medications, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from pain, fatigue, or impairment alone, and do not treat this population-level association as proof that fibromyalgia caused an individual's depressive disorder.",
+        "boundarySource": "approved-me17-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of fibromyalgia and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established fibromyalgia or documented chronic widespread pain and a separately established depressive disorder; the cited population-based twin study found strong co-occurrence of chronic widespread pain with depressive symptoms, substantially mediated by shared genetic and family-environmental factors, and did not establish individual causation or direction. Preserve chronic fatigue, other functional somatic syndromes, musculoskeletal disorders, medications, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from pain, fatigue, or impairment alone, and do not treat this population-level association as proof that fibromyalgia caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-16908799"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "8fbdbe689d2554d5a35b24b04d118e90adeb3c8bc1d5ae8fbbae0084430c73f4"
+    },
+    {
+      "relationshipId": "rel-irritable-bowel-syndrome-to-depressive-disorder",
+      "primaryId": "irritable-bowel-syndrome",
+      "targetId": "depressive-disorder",
+      "direction": "irritable-bowel-syndrome -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me17-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review found that irritable bowel syndrome is frequently comorbid with psychiatric disorders, especially major depression and anxiety, without establishing onset order or direction. Require independently established irritable bowel syndrome and a separately established depressive disorder; the cited systematic review reported frequent comorbidity of irritable bowel syndrome with major depression and anxiety and does not establish onset order or direction. Preserve other functional gastrointestinal disorders, visceral hypersensitivity, infectious or inflammatory bowel disease, medications, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from gastrointestinal symptoms, distress, or impairment alone, and do not treat this population-level association as proof that irritable bowel syndrome caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review found that irritable bowel syndrome is frequently comorbid with psychiatric disorders, especially major depression and anxiety, without establishing onset order or direction. Require independently established irritable bowel syndrome and a separately established depressive disorder; the cited systematic review reported frequent comorbidity of irritable bowel syndrome with major depression and anxiety and does not establish onset order or direction. Preserve other functional gastrointestinal disorders, visceral hypersensitivity, infectious or inflammatory bowel disease, medications, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from gastrointestinal symptoms, distress, or impairment alone, and do not treat this population-level association as proof that irritable bowel syndrome caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established irritable bowel syndrome and a separately established depressive disorder; the cited systematic review reported frequent comorbidity of irritable bowel syndrome with major depression and anxiety and does not establish onset order or direction. Preserve other functional gastrointestinal disorders, visceral hypersensitivity, infectious or inflammatory bowel disease, medications, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from gastrointestinal symptoms, distress, or impairment alone, and do not treat this population-level association as proof that irritable bowel syndrome caused an individual's depressive disorder.",
+        "boundarySource": "approved-me17-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of irritable-bowel-syndrome and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established irritable bowel syndrome and a separately established depressive disorder; the cited systematic review reported frequent comorbidity of irritable bowel syndrome with major depression and anxiety and does not establish onset order or direction. Preserve other functional gastrointestinal disorders, visceral hypersensitivity, infectious or inflammatory bowel disease, medications, substance use, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from gastrointestinal symptoms, distress, or impairment alone, and do not treat this population-level association as proof that irritable bowel syndrome caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-11910364"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "80b4e8994c142d1f1755cf1d9bda5d801b9a38475702357118ef0001726ab0ca"
+    },
+    {
+      "relationshipId": "rel-tinnitus-to-depressive-disorder",
+      "primaryId": "tinnitus",
+      "targetId": "depressive-disorder",
+      "direction": "tinnitus -> depressive-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "prevalence": "sometimes-explored",
+      "clinicalProposition": {
+        "status": "approved-me17-bounded-proposition",
+        "text": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review found a median depression prevalence of approximately one third across tinnitus patient samples, with total sample prevalence estimates ranging widely; the association direction is not established. Require independently established chronic tinnitus and a separately established depressive disorder; the cited systematic review reported frequent depressive comorbidity across tinnitus patient samples and does not establish onset order or direction. Preserve hearing loss, otologic disease, noise exposure, medications, substance use, chronic pain, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from tinnitus-related distress, sleep disturbance, or impairment alone, and do not treat this population-level association as proof that tinnitus caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+      },
+      "rationale": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review found a median depression prevalence of approximately one third across tinnitus patient samples, with total sample prevalence estimates ranging widely; the association direction is not established. Require independently established chronic tinnitus and a separately established depressive disorder; the cited systematic review reported frequent depressive comorbidity across tinnitus patient samples and does not establish onset order or direction. Preserve hearing loss, otologic disease, noise exposure, medications, substance use, chronic pain, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from tinnitus-related distress, sleep disturbance, or impairment alone, and do not treat this population-level association as proof that tinnitus caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Require independently established chronic tinnitus and a separately established depressive disorder; the cited systematic review reported frequent depressive comorbidity across tinnitus patient samples and does not establish onset order or direction. Preserve hearing loss, otologic disease, noise exposure, medications, substance use, chronic pain, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from tinnitus-related distress, sleep disturbance, or impairment alone, and do not treat this population-level association as proof that tinnitus caused an individual's depressive disorder.",
+        "boundarySource": "approved-me17-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "Independent documentation of tinnitus and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established chronic tinnitus and a separately established depressive disorder; the cited systematic review reported frequent depressive comorbidity across tinnitus patient samples and does not establish onset order or direction. Preserve hearing loss, otologic disease, noise exposure, medications, substance use, chronic pain, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from tinnitus-related distress, sleep disturbance, or impairment alone, and do not treat this population-level association as proof that tinnitus caused an individual's depressive disorder."
+      ],
+      "sourceIds": [
+        "pmid-30909841"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "624032d7b261a483b34c3c1aa6424f6267ad2402a22a9d9585f004ceade4590c"
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-16",
-  "currentState": "ME16-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-17",
+  "currentState": "ME17-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }
