@@ -3,7 +3,54 @@
   "draft": true,
   "todo": [
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "ME-31: a single bounded post-amputation-pain association has been authored from amputee-population clinical evidence; the draft-safe association stands until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "phantom-limb-pain",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded post-amputation-pain association. Phantom limb pain is a frequent, well-characterized phenomenon after limb amputation, documented in a nationwide survey of 3,374 unilateral limb amputees that includes upper-limb levels, but the primary diagnosis alone does not establish phantom pain in every person or determine an individual's pain course or severity. Require independently documented hand amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review. Preserve pre-amputation pain, residual limb pain and neuroma, peripheral neuropathy, cervical spinal cord pathology, and psychiatric contributions as competing or coexisting causes of post-amputation pain.",
+      "evidenceGaps": [
+        "Independent documentation of the hand amputation (level, cause, date)",
+        "Documented phantom limb pain by validated assessment with chronology",
+        "Distinguish phantom pain from residual limb pain and neuroma pain",
+        "Assessment of pre-amputation pain, neuropathy, and spinal pathology",
+        "Specialist assessment distinguishing amputation-related phantom pain from other pain generators"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Diers M, Krumm B, Fuchs X. The Prevalence and Characteristics of Phantom Limb Pain and Non-Painful Phantom Phenomena in a Nationwide Survey of 3,374 Unilateral Limb Amputees. J Pain. 2022;23(3):411-423. PMID 34583023. doi:10.1016/j.jpain.2021.09.003.",
+          "note": "Nationwide survey characterizing phantom limb pain prevalence and phenomenology in 3,374 unilateral limb amputees. It supports a bounded disease-association proposition and clinical evaluation, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34583023/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 34583023; nationwide amputee-survey phantom limb pain prevalence"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Phantom limb pain is highly prevalent after limb amputation in population surveys, but population prevalence does not establish an individual medical nexus without documentation of both the amputation and the phantom pain syndrome, compatible chronology, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this association evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "Peripheral nerve transection with dorsal-horn and cortical reorganization is hypothesized to generate phantom sensation and pain in the absent limb, but the individual pathway must be established from pain characterization, amputation records, and specialist evaluation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Phantom limb pain is documented in a substantial share of amputees in nationwide survey evidence, but population prevalence does not establish that amputation caused or aggravated phantom pain in every individual; both diagnoses, chronology, pain characterization, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Documented amputation and phantom pain; chronology; validated pain characterization; pre-amputation pain, neuroma, neuropathy, and spinal alternatives; specialist assessment of the individual relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Residual limb pain, neuroma, or poorly fitting prosthesis as the pain generator",
+          "Peripheral neuropathy or cervical spinal cord pathology",
+          "Pre-amputation or phantom memory pain of independent etiology"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

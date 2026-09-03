@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 331,
+    "liveSourceReferenceUses": 336,
     "activeSourceEntities": 233,
-    "pendingVerificationSourceEntities": 75,
+    "pendingVerificationSourceEntities": 77,
     "activeClinicalSourceEntities": 232,
-    "pendingClinicalSourceEntities": 75,
+    "pendingClinicalSourceEntities": 77,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 317,
+    "totalSourceEntitiesIncludingLineage": 319,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -12103,18 +12103,119 @@
       "sourceCheckedOnValues": [
         "2026-09-03"
       ],
-      "liveUsageCount": 1,
+      "liveUsageCount": 4,
       "liveUses": [
         {
           "relationshipId": "rel-amputation-of-arm-to-phantom-limb-pain",
           "primaryId": "amputation-of-arm",
           "targetId": "phantom-limb-pain",
           "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-amputation-of-foot-to-phantom-limb-pain",
+          "primaryId": "amputation-of-foot",
+          "targetId": "phantom-limb-pain",
+          "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-amputation-of-hand-to-phantom-limb-pain",
+          "primaryId": "amputation-of-hand",
+          "targetId": "phantom-limb-pain",
+          "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-amputation-of-leg-to-phantom-limb-pain",
+          "primaryId": "amputation-of-leg",
+          "targetId": "phantom-limb-pain",
+          "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
+        "577bf79b85894ae343722d4a632f4f7d37f9398664733f3721030d84d8ff6dd6",
+        "577bf79b85894ae343722d4a632f4f7d37f9398664733f3721030d84d8ff6dd6",
+        "577bf79b85894ae343722d4a632f4f7d37f9398664733f3721030d84d8ff6dd6",
         "577bf79b85894ae343722d4a632f4f7d37f9398664733f3721030d84d8ff6dd6"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-41068883",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41068883",
+      "doi": "10.1186/s41182-025-00809-2",
+      "canonicalCitation": "Hasegawa K, Kawashima A, Kuwata R, et al. Intrathoracic rupture of amebic liver abscess: a case report and literature review. Trop Med Health. 2025;53:136. PMID 41068883. doi:10.1186/s41182-025-00809-2.",
+      "citationVariants": [
+        "Hasegawa K, Kawashima A, Kuwata R, et al. Intrathoracic rupture of amebic liver abscess: a case report and literature review. Trop Med Health. 2025;53:136. PMID 41068883. doi:10.1186/s41182-025-00809-2."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41068883/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41068883/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-amebic-liver-abscess-to-pleural-effusion",
+          "primaryId": "amebic-liver-abscess",
+          "targetId": "pleural-effusion",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8b2dc460f35a2638df36253a366d75839640f892832e1642a773622b223fb5e5"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-41713710",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41713710",
+      "doi": "10.1053/j.gastro.2026.01.037",
+      "canonicalCitation": "Rao SSC, Bharucha AE, Carrington EV, Grossi U, Malcolm A, Neshatian L, Remes-Troche JM. Anorectal Disorders. Gastroenterology. 2026;170(6):1318-1346. PMID 41713710. doi:10.1053/j.gastro.2026.01.037.",
+      "citationVariants": [
+        "Rao SSC, Bharucha AE, Carrington EV, Grossi U, Malcolm A, Neshatian L, Remes-Troche JM. Anorectal Disorders. Gastroenterology. 2026;170(6):1318-1346. PMID 41713710. doi:10.1053/j.gastro.2026.01.037."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41713710/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41713710/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anismus-pelvic-floor-dyssynergia-to-fecal-incontinence",
+          "primaryId": "anismus-pelvic-floor-dyssynergia",
+          "targetId": "fecal-incontinence",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "3707da91620da667d5085488fef9d9c19c70a32162fe51dbbea6a5e23bb90e62"
       ],
       "verificationState": {
         "qualifiedHumanCitationReviewRequired": true,
@@ -12123,6 +12224,6 @@
       }
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-30",
-  "currentState": "ME30-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-31",
+  "currentState": "ME31-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

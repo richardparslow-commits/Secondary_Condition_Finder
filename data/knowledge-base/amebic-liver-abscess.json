@@ -2,7 +2,54 @@
   "id": "amebic-liver-abscess",
   "draft": true,
   "todo": [
-    "Target-only taxonomy identity added by Clinical Mapping Master Resolution 2026. Research downstream secondary-condition pathways before any independent publication of this identity."
+    "Target-only taxonomy identity added by Clinical Mapping Master Resolution 2026. Research downstream secondary-condition pathways before any independent publication of this identity.",
+    "ME-31: a single bounded complication association has been authored from amebic-liver-abscess clinical literature; the draft-safe association stands until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "pleural-effusion",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded complication association. Hepatic amebic abscess can rupture through the diaphragm into the pleural space, producing sympathetic effusion or empyema-like collections documented in case-series and literature-review evidence, but the primary diagnosis alone does not establish pleural involvement in every person or determine an individual's course. Require independently documented amebic liver abscess by imaging or serology, documented pleural effusion by imaging compatible in chronology and laterality, and specialist review. Preserve tuberculosis, malignancy, heart failure, bacterial empyema, and other competing causes of pleural effusion.",
+      "evidenceGaps": [
+        "Independent documentation of the amebic liver abscess by imaging and serology",
+        "Pleural effusion documented by imaging with compatible chronology and laterality",
+        "Rupture or sympathetic-involvement pathway assessment",
+        "Assessment of tuberculosis, malignancy, heart failure, and bacterial empyema alternatives",
+        "Specialist assessment distinguishing hepatic-amebiasis-related effusion from other causes"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Hasegawa K, Kawashima A, Kuwata R, et al. Intrathoracic rupture of amebic liver abscess: a case report and literature review. Trop Med Health. 2025;53:136. PMID 41068883. doi:10.1186/s41182-025-00809-2.",
+          "note": "Case report and literature review documenting intrathoracic rupture of amebic liver abscess with pleural involvement. It supports a bounded disease-association proposition and clinical evaluation, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41068883/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 41068883; intrathoracic rupture with pleural-collection synthesis"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Amebic liver abscess is documented to extend into the pleural space by rupture or sympathetic effusion in case-based literature, but that evidence does not establish an individual medical nexus without documentation of both the abscess and the effusion, compatible chronology, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this association evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Transdiaphragmatic extension of a hepatic amebic abscess can seed or irritate the pleural space, producing effusion or empyema, but the individual pathway must be established from imaging, serology, and specialist evaluation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Pleural involvement from hepatic amebiasis is documented in case-based and review evidence, but that evidence does not establish that the abscess caused or aggravated a pleural effusion in every individual; both diagnoses, chronology, laterality, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Documented abscess and effusion; chronology and laterality; imaging and serologic findings; tuberculosis, malignancy, cardiac, and bacterial alternatives; specialist assessment of the individual relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Tuberculosis or other granulomatous pleural disease",
+          "Malignancy or parapneumonic effusion",
+          "Heart failure and other transudative causes"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }
