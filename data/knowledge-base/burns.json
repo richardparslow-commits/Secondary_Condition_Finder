@@ -2,8 +2,55 @@
   "id": "burns",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed burns to contractures association.",
+    "Confirm burn depth, body region, scar formation, objectively documented contracture or joint limitation, chronology, rehabilitation, and competing causes before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "contractures",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded post-burn-scar contracture association. A prospective multicenter cohort studied the prevalence and development of burn-scar contractures, but a burn history alone does not establish a contracture in every person or determine the functional course. Require independently documented burn injury with compatible depth and anatomic site, separately documented scar contracture or objective joint limitation, compatible chronology, and burn or rehabilitation specialist review. Preserve pre-existing joint disease, neurologic weakness, tendon injury, infection, immobilization, surgical effects, and other causes of restricted motion.",
+      "evidenceGaps": [
+        "Independent documentation of burn depth, anatomic site, treatment, grafting, and healing course",
+        "Objective scar contracture or joint-range-of-motion limitation with validated functional assessment",
+        "Chronology of scar maturation, contracture development, rehabilitation, and any release procedure",
+        "Assessment of pre-existing joint disease, neurologic weakness, tendon injury, infection, immobilization, and surgical effects",
+        "Burn, plastic-surgery, or rehabilitation specialist assessment"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Schouten HJ, Nieuwenhuis MK, van Baar ME, van der Schans CP, Niemeijer AS, van Zuijlen PPM. The prevalence and development of burn scar contractures: a prospective multicenter cohort study. Burns. 2019;45(4):783-790. PMID 30948277. doi:10.1016/j.burns.2019.03.007.",
+          "note": "Mapping Expansion Batch ME-34 prospective multicenter cohort evidence for the bounded burn-scar contracture proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30948277/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 30948277; prospective multicenter cohort of burn-scar contracture prevalence and development; approved ME-34 guard requires objective contracture or joint limitation and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The prospective cohort supports burn-scar contracture as a recognized post-burn functional complication, but population-level prevalence does not establish an individual's contracture or its attribution without documented phenotype and chronology.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; burn characteristics, scar phenotype, functional measurements, treatment, chronology, and alternative causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "Maturing burn scar tissue may contract across skin and joint lines, restricting tissue excursion and range of motion, but the extent and attribution of an individual's contracture remain hypothesized until scar characteristics, serial motion measurements, and competing causes are documented.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cohort identifies burn-scar contractures as a common functional sequela but does not establish a deterministic individual relationship from a burn history alone.",
+        "evidenceGaps": "Burn depth and site; scar and contracture phenotype; serial range-of-motion findings; chronology; grafting, surgery, and rehabilitation; and assessment of pre-existing, neurologic, tendon, infectious, immobilization, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing osteoarthritis or joint disease",
+          "Neurologic weakness or peripheral nerve injury",
+          "Tendon injury, infection, or immobilization",
+          "Surgical or treatment-related restriction unrelated to scar contracture"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

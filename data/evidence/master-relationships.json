@@ -6,8 +6,8 @@
    "installedFrom": "Master Registry Discrepancy Resolution 2026",
    "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
    "counts": {
-      "relationships": 333,
-      "explicitPublicationGuards": 259,
+      "relationships": 342,
+      "explicitPublicationGuards": 268,
       "legacyRationaleBoundaries": 74
    },
    "relationships": [
@@ -10907,8 +10907,297 @@
          "sourceReferenceCount": 1,
          "pathwayIntelligencePresent": false,
          "suggestionObjectHash": "dc19150e3e4c3071d946a21ba2b74e2d9f6fdd82dbfe03a6904a2602e19368d2"
-      }
+      },
+   {
+      "relationshipId": "rel-anal-fissure-to-fecal-incontinence",
+      "primaryId": "anal-fissure",
+      "targetId": "fecal-incontinence",
+      "direction": "anal-fissure -> fecal-incontinence",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-33-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded chronic-anal-fissure continence association. A study of patients with chronic anal fissure found that mild fecal incontinence may be present at presentation rather than caused by internal sphincterotomy, so the diagnosis alone does not establish incontinence in every person or determine its cause. Require independently documented chronic anal fissure and fecal incontinence by validated assessment with compatible chronology, and colorectal review. Preserve prior sphincter injury or surgery, obstetric trauma, inflammatory bowel disease, pelvic-floor dysfunction, diarrhea, and other anorectal causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded chronic-anal-fissure continence association. A study of patients with chronic anal fissure found that mild fecal incontinence may be present at presentation rather than caused by internal sphincterotomy, so the diagnosis alone does not establish incontinence in every person or determine its cause. Require independently documented chronic anal fissure and fecal incontinence by validated assessment with compatible chronology, and colorectal review. Preserve prior sphincter injury or surgery, obstetric trauma, inflammatory bowel disease, pelvic-floor dysfunction, diarrhea, and other anorectal causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented chronic anal fissure and fecal incontinence by validated assessment with compatible chronology, and colorectal review.",
+         "boundarySource": "approved-me-33-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of chronic anal fissure and fecal incontinence by validated assessment",
+         "Baseline continence status and chronology relative to fissure onset and any treatment",
+         "Anorectal examination, sphincter assessment, and testing when clinically indicated",
+         "Assessment of prior sphincter injury or surgery, obstetric trauma, inflammatory bowel disease, pelvic-floor dysfunction, and diarrhea",
+         "Colorectal assessment distinguishing fissure-associated symptoms from other causes of incontinence"
+      ],
+      "sourceIds": [
+         "pmid-17665247"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "2a02a0fd420b782810be7d5bcaf0ad25deb1849c24c8e8a1c7aee2dae28b83ce"
+   },
+   {
+      "relationshipId": "rel-ankle-disarticulation-to-phantom-limb-pain",
+      "primaryId": "ankle-disarticulation",
+      "targetId": "phantom-limb-pain",
+      "direction": "ankle-disarticulation -> phantom-limb-pain",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-33-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded lower-limb amputation phantom-pain association. A study of phantom limb complex after lower-limb amputation evaluated how phantom phenomena varied by amputation level, but ankle disarticulation alone does not establish phantom limb pain in every person or determine an individual's pain course. Require independently documented ankle disarticulation, documented phantom limb pain by validated assessment compatible in chronology, and specialist review. Preserve residual-limb pain, neuroma, pre-amputation pain, peripheral neuropathy, spinal pathology, and psychiatric contributors."
+      },
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded lower-limb amputation phantom-pain association. A study of phantom limb complex after lower-limb amputation evaluated how phantom phenomena varied by amputation level, but ankle disarticulation alone does not establish phantom limb pain in every person or determine an individual's pain course. Require independently documented ankle disarticulation, documented phantom limb pain by validated assessment compatible in chronology, and specialist review. Preserve residual-limb pain, neuroma, pre-amputation pain, peripheral neuropathy, spinal pathology, and psychiatric contributors.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented ankle disarticulation, documented phantom limb pain by validated assessment compatible in chronology, and specialist review.",
+         "boundarySource": "approved-me-33-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of ankle disarticulation, indication, level, and date",
+         "Documented phantom limb pain by validated assessment with compatible chronology",
+         "Distinction between phantom pain, residual-limb pain, neuroma, and prosthetic or wound pain",
+         "Assessment of pre-amputation pain, peripheral neuropathy, spinal pathology, and psychiatric contributors",
+         "Pain or rehabilitation specialist assessment of the individual relationship"
+      ],
+      "sourceIds": [
+         "pmid-28242264"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "18832cb6ea4fd87113087d98a68bd944fe1019857f912e1deaaef8967ee54f7a"
+   },
+   {
+      "relationshipId": "rel-ankyloglossia-to-dysphagia",
+      "primaryId": "ankyloglossia",
+      "targetId": "dysphagia",
+      "direction": "ankyloglossia -> dysphagia",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-33-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded pediatric oral-phase swallowing association. Evidence on posterior tongue tie and tongue movement evaluates oral and pharyngeal swallowing function, but ankyloglossia alone does not establish dysphagia in every person or determine its cause. Require independently documented ankyloglossia with clinically relevant restriction, objectively documented dysphagia by feeding or swallowing assessment compatible in chronology, and pediatric otolaryngology or speech-language pathology review. Preserve neurologic, structural, developmental, prematurity-related, and other feeding causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded pediatric oral-phase swallowing association. Evidence on posterior tongue tie and tongue movement evaluates oral and pharyngeal swallowing function, but ankyloglossia alone does not establish dysphagia in every person or determine its cause. Require independently documented ankyloglossia with clinically relevant restriction, objectively documented dysphagia by feeding or swallowing assessment compatible in chronology, and pediatric otolaryngology or speech-language pathology review. Preserve neurologic, structural, developmental, prematurity-related, and other feeding causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented ankyloglossia with clinically relevant restriction, objectively documented dysphagia by feeding or swallowing assessment compatible in chronology, and pediatric otolaryngology or speech-language pathology review.",
+         "boundarySource": "approved-me-33-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of ankyloglossia and clinically meaningful tongue restriction",
+         "Documented dysphagia by validated feeding, clinical swallowing, or instrumental assessment",
+         "Age, developmental status, feeding history, and chronology of symptoms",
+         "Assessment of neurologic, structural, developmental, prematurity-related, and oral-motor alternatives",
+         "Pediatric otolaryngology and speech-language pathology assessment"
+      ],
+      "sourceIds": [
+         "pmid-31367903"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "03c98e9fd051c498dbffe77db3b0911f99c7ffe0c0a7e2182331232b91ea792a"
+   },
+   {
+      "relationshipId": "rel-apraxia-to-dysphagia",
+      "primaryId": "apraxia",
+      "targetId": "dysphagia",
+      "direction": "apraxia -> dysphagia",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-33-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded oral-apraxia swallowing association. In patients with subacute stroke, oral apraxia was associated with dysphagia and increased aspiration risk, but the broad apraxia identity does not establish dysphagia in every person or identify an individual's cause. Require independently documented oral or motor apraxia with a compatible neurologic phenotype, objectively documented dysphagia by clinical or instrumental swallowing assessment compatible in chronology, and neurologic and speech-language pathology review. Preserve stroke lesion, cognitive impairment, weakness, structural disease, and other causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded oral-apraxia swallowing association. In patients with subacute stroke, oral apraxia was associated with dysphagia and increased aspiration risk, but the broad apraxia identity does not establish dysphagia in every person or identify an individual's cause. Require independently documented oral or motor apraxia with a compatible neurologic phenotype, objectively documented dysphagia by clinical or instrumental swallowing assessment compatible in chronology, and neurologic and speech-language pathology review. Preserve stroke lesion, cognitive impairment, weakness, structural disease, and other causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented oral or motor apraxia with a compatible neurologic phenotype, objectively documented dysphagia by clinical or instrumental swallowing assessment compatible in chronology, and neurologic and speech-language pathology review.",
+         "boundarySource": "approved-me-33-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of oral or motor apraxia and its neurologic phenotype",
+         "Documented dysphagia by validated clinical or instrumental swallowing assessment",
+         "Compatible neurologic chronology, lesion findings, cognition, and motor examination",
+         "Assessment of stroke, neurodegenerative, structural, cognitive, weakness-related, and medication alternatives",
+         "Neurology and speech-language pathology assessment of the individual relationship"
+      ],
+      "sourceIds": [
+         "pmid-35508738"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "130ba05cbcc0a455974408a1d62d144eeb0c7b7e7c45e495a1568ce42ed91ba5"
+   },
+   {
+      "relationshipId": "rel-anterior-interosseous-nerve-syndrome-to-peripheral-nerve-paralysis",
+      "primaryId": "anterior-interosseous-nerve-syndrome",
+      "targetId": "peripheral-nerve-paralysis",
+      "direction": "anterior-interosseous-nerve-syndrome -> peripheral-nerve-paralysis",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-33-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded anterior-interosseous motor-palsy association. Anterior interosseous nerve syndrome is a motor neuropathy that can produce loss of flexor pollicis longus and related forearm function, but the diagnosis alone does not establish the severity or persistence of peripheral nerve paralysis in every person. Require independently documented anterior interosseous nerve syndrome with electrodiagnostic or specialist confirmation, objectively documented motor deficit compatible in chronology, and hand or peripheral-nerve review. Preserve cervical radiculopathy, tendon injury, trauma, entrapment, inflammatory neuropathy, and other causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded anterior-interosseous motor-palsy association. Anterior interosseous nerve syndrome is a motor neuropathy that can produce loss of flexor pollicis longus and related forearm function, but the diagnosis alone does not establish the severity or persistence of peripheral nerve paralysis in every person. Require independently documented anterior interosseous nerve syndrome with electrodiagnostic or specialist confirmation, objectively documented motor deficit compatible in chronology, and hand or peripheral-nerve review. Preserve cervical radiculopathy, tendon injury, trauma, entrapment, inflammatory neuropathy, and other causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented anterior interosseous nerve syndrome with electrodiagnostic or specialist confirmation, objectively documented motor deficit compatible in chronology, and hand or peripheral-nerve review.",
+         "boundarySource": "approved-me-33-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of anterior interosseous nerve syndrome and affected motor distributions",
+         "Electrodiagnostic, imaging, and serial motor findings establishing deficit and chronology",
+         "Objective documentation of persistent peripheral nerve paralysis or functional motor loss",
+         "Assessment of cervical radiculopathy, tendon injury, trauma, entrapment, inflammatory neuropathy, and other causes",
+         "Hand or peripheral-nerve specialist assessment of severity, recovery, and attribution"
+      ],
+      "sourceIds": [
+         "pmid-21611763"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "42d3aaadcd1f6d0ff2e7f6040bae82ef3f767447cd561fe5311fafe8f2a63851"
+   },
+   {
+      "relationshipId": "rel-appendicitis-to-female-infertility",
+      "primaryId": "appendicitis",
+      "targetId": "female-infertility",
+      "direction": "appendicitis -> female-infertility",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-34-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded post-appendicitis tubal-fertility association. A systematic review and meta-analysis evaluated appendectomy, tubal infertility, and ectopic pregnancy, while the underlying evidence does not establish that appendicitis or appendectomy caused infertility in every individual. Require independently documented complicated or perforated appendicitis, relevant pelvic or tubal pathology, a separately established female infertility diagnosis, compatible chronology, and gynecologic review. Preserve age, endometriosis, pelvic inflammatory disease, prior pelvic surgery, congenital factors, male-factor infertility, and other competing causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded post-appendicitis tubal-fertility association. A systematic review and meta-analysis evaluated appendectomy, tubal infertility, and ectopic pregnancy, while the underlying evidence does not establish that appendicitis or appendectomy caused infertility in every individual. Require independently documented complicated or perforated appendicitis, relevant pelvic or tubal pathology, a separately established female infertility diagnosis, compatible chronology, and gynecologic review. Preserve age, endometriosis, pelvic inflammatory disease, prior pelvic surgery, congenital factors, male-factor infertility, and other competing causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented complicated or perforated appendicitis, relevant pelvic or tubal pathology, a separately established female infertility diagnosis, compatible chronology, and gynecologic review. Preserve age, endometriosis, pelvic inflammatory disease, prior pelvic surgery, congenital factors, male-factor infertility, and other competing causes.",
+         "boundarySource": "approved-me-34-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of appendicitis severity, perforation, pelvic contamination, operative findings, and treatment",
+         "Separately established female infertility with tubal or other reproductive evaluation",
+         "Chronology connecting complicated appendicitis or appendectomy to later infertility",
+         "Assessment of endometriosis, pelvic inflammatory disease, prior pelvic surgery, congenital factors, male-factor infertility, and other causes",
+         "Gynecologic assessment distinguishing tubal-factor disease from unrelated infertility"
+      ],
+      "sourceIds": ["pmid-25303785"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "c3a1d6baf88ee09d2d8239e1648324c635ea5391e13843c6d9abda65dc9555cc"
+   },
+   {
+      "relationshipId": "rel-arnold-chiari-malformation-to-sleep-apnea",
+      "primaryId": "arnold-chiari-malformation",
+      "targetId": "sleep-apnea",
+      "direction": "arnold-chiari-malformation -> sleep-apnea",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-34-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded Chiari-associated sleep-disordered-breathing association. A pediatric case report describes obstructive sleep apnea in Arnold-Chiari malformation with polysomnographic resolution after posterior-fossa decompression, but a single case does not establish that every sleep-apnea diagnosis in a person with Chiari malformation is caused by the malformation. Require independently documented Arnold-Chiari malformation, separately diagnosed sleep apnea by polysomnography, explicit obstructive or central phenotype characterization, compatible chronology, and neurology and sleep-medicine review. Preserve adenotonsillar or upper-airway obstruction, obesity, craniofacial anatomy, pulmonary disease, medication effects, and other causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded Chiari-associated sleep-disordered-breathing association. A pediatric case report describes obstructive sleep apnea in Arnold-Chiari malformation with polysomnographic resolution after posterior-fossa decompression, but a single case does not establish that every sleep-apnea diagnosis in a person with Chiari malformation is caused by the malformation. Require independently documented Arnold-Chiari malformation, separately diagnosed sleep apnea by polysomnography, explicit obstructive or central phenotype characterization, compatible chronology, and neurology and sleep-medicine review. Preserve adenotonsillar or upper-airway obstruction, obesity, craniofacial anatomy, pulmonary disease, medication effects, and other causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented Arnold-Chiari malformation, separately diagnosed sleep apnea by polysomnography, explicit obstructive or central phenotype characterization, compatible chronology, and neurology and sleep-medicine review. Preserve adenotonsillar or upper-airway obstruction, obesity, craniofacial anatomy, pulmonary disease, medication effects, and other causes.",
+         "boundarySource": "approved-me-34-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent MRI documentation of Arnold-Chiari malformation and clinically relevant brainstem or upper-airway findings",
+         "Separately established sleep apnea by polysomnography with obstructive, central, or mixed phenotype specified",
+         "Chronology, sleep-study severity, oxygenation or hypercarbia, airway evaluation, and decompression response",
+         "Assessment of adenotonsillar disease, obesity, craniofacial anatomy, pulmonary disease, medications, and other causes",
+         "Neurology and sleep-medicine assessment of the individual relationship"
+      ],
+      "sourceIds": ["pmid-31992420"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "cd3ad42f01a90c90f8dda7d0994dd8f5ef3319c3ef5be4f4f6c048272bdcbcc0"
+   },
+   {
+      "relationshipId": "rel-atrial-flutter-to-cerebrovascular-accident-stroke-residuals",
+      "primaryId": "atrial-flutter",
+      "targetId": "cerebrovascular-accident-stroke-residuals",
+      "direction": "atrial-flutter -> cerebrovascular-accident-stroke-residuals",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-34-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded atrial-flutter-associated ischemic-stroke-risk association. A comparative cohort evaluated ischemic-stroke risk in atrial flutter versus atrial fibrillation, but population-level risk does not establish that a particular stroke or persistent residuals were caused by atrial flutter. Require independently documented atrial flutter, a separately established ischemic cerebrovascular accident with objective residuals, compatible chronology, rhythm and anticoagulation records, and cardiovascular-neurologic review. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, structural heart disease, and other competing stroke causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded atrial-flutter-associated ischemic-stroke-risk association. A comparative cohort evaluated ischemic-stroke risk in atrial flutter versus atrial fibrillation, but population-level risk does not establish that a particular stroke or persistent residuals were caused by atrial flutter. Require independently documented atrial flutter, a separately established ischemic cerebrovascular accident with objective residuals, compatible chronology, rhythm and anticoagulation records, and cardiovascular-neurologic review. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, structural heart disease, and other competing stroke causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented atrial flutter, a separately established ischemic cerebrovascular accident with objective residuals, compatible chronology, rhythm and anticoagulation records, and cardiovascular-neurologic review. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, structural heart disease, and other competing stroke causes.",
+         "boundarySource": "approved-me-34-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent electrocardiographic or monitoring documentation of atrial flutter and its burden",
+         "Brain imaging and neurologic examination documenting a completed ischemic stroke with persistent residuals",
+         "Chronology linking the stroke to documented atrial-flutter periods without inferring embolism from rhythm history alone",
+         "Anticoagulation, left-atrial, valvular, carotid, intracranial, and other vascular-source evaluation",
+         "Neurology and cardiology assessment of competing stroke etiologies"
+      ],
+      "sourceIds": ["pmid-29223550"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "aabdf81bd804c3731dad43383ccec26e3028dc8473db8f8ca5852ad2279d9098"
+   },
+   {
+      "relationshipId": "rel-burns-to-contractures",
+      "primaryId": "burns",
+      "targetId": "contractures",
+      "direction": "burns -> contractures",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-34-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded post-burn-scar contracture association. A prospective multicenter cohort studied the prevalence and development of burn-scar contractures, but a burn history alone does not establish a contracture in every person or determine the functional course. Require independently documented burn injury with compatible depth and anatomic site, separately documented scar contracture or objective joint limitation, compatible chronology, and burn or rehabilitation specialist review. Preserve pre-existing joint disease, neurologic weakness, tendon injury, infection, immobilization, surgical effects, and other causes of restricted motion."
+      },
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded post-burn-scar contracture association. A prospective multicenter cohort studied the prevalence and development of burn-scar contractures, but a burn history alone does not establish a contracture in every person or determine the functional course. Require independently documented burn injury with compatible depth and anatomic site, separately documented scar contracture or objective joint limitation, compatible chronology, and burn or rehabilitation specialist review. Preserve pre-existing joint disease, neurologic weakness, tendon injury, infection, immobilization, surgical effects, and other causes of restricted motion.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented burn injury with compatible depth and anatomic site, separately documented scar contracture or objective joint limitation, compatible chronology, and burn or rehabilitation specialist review. Preserve pre-existing joint disease, neurologic weakness, tendon injury, infection, immobilization, surgical effects, and other causes of restricted motion.",
+         "boundarySource": "approved-me-34-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of burn depth, anatomic site, treatment, grafting, and healing course",
+         "Objective scar contracture or joint-range-of-motion limitation with validated functional assessment",
+         "Chronology of scar maturation, contracture development, rehabilitation, and any release procedure",
+         "Assessment of pre-existing joint disease, neurologic weakness, tendon injury, infection, immobilization, and surgical effects",
+         "Burn, plastic-surgery, or rehabilitation specialist assessment"
+      ],
+      "sourceIds": ["pmid-30948277"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "2460583cd6202031d4afd609dfd5dddf130fb952c43375320a90d5ba3b380ee6"
+   }
    ],
-   "lastUpdatedBy": "Mapping Expansion Batch ME-32",
-   "currentState": "ME32-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+   "lastUpdatedBy": "Mapping Expansion Batch ME-34",
+   "currentState": "ME34-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

@@ -2,8 +2,55 @@
   "id": "arnold-chiari-malformation",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed Arnold-Chiari malformation to sleep-apnea association.",
+    "Confirm the Chiari phenotype, separately diagnosed sleep apnea by polysomnography, obstructive versus central phenotype, chronology, airway findings, decompression history, and competing sleep-disordered-breathing causes before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded Chiari-associated sleep-disordered-breathing association. A pediatric case report describes obstructive sleep apnea in Arnold-Chiari malformation with polysomnographic resolution after posterior-fossa decompression, but a single case does not establish that every sleep-apnea diagnosis in a person with Chiari malformation is caused by the malformation. Require independently documented Arnold-Chiari malformation, separately diagnosed sleep apnea by polysomnography, explicit obstructive or central phenotype characterization, compatible chronology, and neurology and sleep-medicine review. Preserve adenotonsillar or upper-airway obstruction, obesity, craniofacial anatomy, pulmonary disease, medication effects, and other causes.",
+      "evidenceGaps": [
+        "Independent MRI documentation of Arnold-Chiari malformation and clinically relevant brainstem or upper-airway findings",
+        "Separately established sleep apnea by polysomnography with obstructive, central, or mixed phenotype specified",
+        "Chronology, sleep-study severity, oxygenation or hypercarbia, airway evaluation, and decompression response",
+        "Assessment of adenotonsillar disease, obesity, craniofacial anatomy, pulmonary disease, medications, and other causes",
+        "Neurology and sleep-medicine assessment of the individual relationship"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Katwa U, Sisniega C, McKeon M, Lee GS. Sleep endoscopy-directed management of Arnold-Chiari malformation: a child with persistent obstructive sleep apnea. J Clin Sleep Med. 2020;16(2):325-329. PMID 31992420. doi:10.5664/jcsm.8194.",
+          "note": "Mapping Expansion Batch ME-34 case-based clinical evidence for the bounded Chiari-associated sleep-apnea proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31992420/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 31992420; pediatric case with polysomnographic obstructive sleep apnea and resolution after posterior-fossa decompression; approved ME-34 guard requires independent sleep-study phenotype review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Chiari malformation can coexist with sleep-related breathing disorders, and the cited pediatric case reports obstructive sleep-apnea resolution after decompression, but case evidence does not establish an individual nexus without phenotype, chronology, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; the mapping is a bounded clinical association and not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Cerebellar tonsillar or brainstem crowding may affect respiratory control or sleep-dependent upper-airway and vocal-cord function, but the relevant obstructive or central pathway remains hypothesized for an individual until MRI, polysomnography, airway evaluation, and neurologic review are integrated.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The source is a pediatric case report with a treatment response and cannot establish that Chiari malformation caused sleep apnea in every individual.",
+        "evidenceGaps": "Chiari imaging and phenotype; polysomnographic classification; chronology; airway and respiratory findings; decompression response; and review of obesity, upper-airway anatomy, pulmonary disease, medications, and other sleep-disordered-breathing causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "Adenotonsillar or other upper-airway obstruction",
+          "Obesity or craniofacial airway anatomy",
+          "Pulmonary disease or neuromuscular respiratory weakness",
+          "Medication-related or other sleep-disordered-breathing causes"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

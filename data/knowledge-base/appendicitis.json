@@ -2,8 +2,55 @@
   "id": "appendicitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed appendicitis to female-infertility association.",
+    "Confirm complicated or perforated appendicitis, operative findings, tubal pathology, independently diagnosed infertility, chronology, and competing reproductive causes before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "female-infertility",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded post-appendicitis tubal-fertility association. A systematic review and meta-analysis evaluated appendectomy, tubal infertility, and ectopic pregnancy, while the underlying evidence does not establish that appendicitis or appendectomy caused infertility in every individual. Require independently documented complicated or perforated appendicitis, relevant pelvic or tubal pathology, a separately established female infertility diagnosis, compatible chronology, and gynecologic review. Preserve age, endometriosis, pelvic inflammatory disease, prior pelvic surgery, congenital factors, male-factor infertility, and other competing causes.",
+      "evidenceGaps": [
+        "Independent documentation of appendicitis severity, perforation, pelvic contamination, operative findings, and treatment",
+        "Separately established female infertility with tubal or other reproductive evaluation",
+        "Chronology connecting complicated appendicitis or appendectomy to later infertility",
+        "Assessment of endometriosis, pelvic inflammatory disease, prior pelvic surgery, congenital factors, male-factor infertility, and other causes",
+        "Gynecologic assessment distinguishing tubal-factor disease from unrelated infertility"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Elraiyah T, Hashim Y, Elamin M, Erwin PJ, Zarroug AE. The effect of appendectomy in future tubal infertility and ectopic pregnancy: a systematic review and meta-analysis. J Surg Res. 2014;192(2):368-374.e1. PMID 25303785. doi:10.1016/j.jss.2014.08.017.",
+          "note": "Mapping Expansion Batch ME-34 systematic-review evidence for the bounded complicated-appendicitis/tubal-fertility proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25303785/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 25303785; systematic review and meta-analysis of appendectomy, tubal infertility, and ectopic pregnancy; approved ME-34 guard requires complicated-appendicitis phenotype and individual gynecologic review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The systematic review addresses a possible relationship between appendectomy, tubal pathology, infertility, and ectopic pregnancy, but heterogeneous population evidence does not establish an individual appendicitis-to-infertility nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; disease severity, pelvic or tubal findings, chronology, and competing reproductive causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Complicated appendiceal inflammation or perforation may produce pelvic contamination, adhesions, or tubal damage that could affect fertility, but this pathway remains hypothesized for an individual until operative, imaging, reproductive, and longitudinal records establish the relevant phenotype.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The evidence evaluates population-level reproductive outcomes after appendectomy and does not prove that an individual's infertility was caused by appendicitis or its treatment.",
+        "evidenceGaps": "Appendicitis severity and perforation; pelvic or tubal findings; independent infertility diagnosis; chronology; operative and imaging records; gynecologic assessment; and review of endometriosis, pelvic inflammatory disease, prior surgery, congenital, male-factor, and other infertility causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "Endometriosis or pelvic inflammatory disease",
+          "Prior pelvic surgery or other adhesive disease",
+          "Congenital or tubal reproductive abnormality",
+          "Male-factor infertility or other non-tubal cause"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

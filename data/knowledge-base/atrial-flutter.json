@@ -2,8 +2,55 @@
   "id": "atrial-flutter",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed atrial-flutter to stroke-residuals association.",
+    "Confirm atrial flutter, independently documented ischemic stroke with persistent residuals, chronology, rhythm burden, anticoagulation, vascular sources, and competing stroke causes before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "cerebrovascular-accident-stroke-residuals",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded atrial-flutter-associated ischemic-stroke-risk association. A comparative cohort evaluated ischemic-stroke risk in atrial flutter versus atrial fibrillation, but population-level risk does not establish that a particular stroke or persistent residuals were caused by atrial flutter. Require independently documented atrial flutter, a separately established ischemic cerebrovascular accident with objective residuals, compatible chronology, rhythm and anticoagulation records, and cardiovascular-neurologic review. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, structural heart disease, and other competing stroke causes.",
+      "evidenceGaps": [
+        "Independent electrocardiographic or monitoring documentation of atrial flutter and its burden",
+        "Brain imaging and neurologic examination documenting a completed ischemic stroke with persistent residuals",
+        "Chronology linking the stroke to documented atrial-flutter periods without inferring embolism from rhythm history alone",
+        "Anticoagulation, left-atrial, valvular, carotid, intracranial, and other vascular-source evaluation",
+        "Neurology and cardiology assessment of competing stroke etiologies"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Al-Kawaz M, Omran SS, Parikh NS, Elkind MSV, Soliman EZ, Kamel H. Comparative risks of ischemic stroke in atrial flutter versus atrial fibrillation. J Stroke Cerebrovasc Dis. 2018;27(4):839-844. PMID 29223550. doi:10.1016/j.jstrokecerebrovasdis.2017.10.025.",
+          "note": "Mapping Expansion Batch ME-34 comparative cohort evidence for the bounded atrial-flutter ischemic-stroke-risk proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29223550/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 29223550; comparative cohort of ischemic-stroke risk in atrial flutter versus atrial fibrillation; approved ME-34 guard requires completed stroke, residuals, chronology, and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The comparative cohort supports a population-level ischemic-stroke risk relationship for atrial flutter, but it does not establish embolic mechanism or individual causation of a completed stroke and residual disability.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; rhythm burden, vascular source, treatment context, chronology, and competing stroke etiologies require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Atrial-flutter-related atrial mechanical dysfunction and blood stasis may increase thromboembolic risk, but the specific stroke mechanism and attribution remain hypothesized until individual rhythm, vascular, imaging, and treatment records are evaluated.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cohort compares population-level stroke risk and does not prove that atrial flutter caused an individual's stroke or residual disability.",
+        "evidenceGaps": "Atrial-flutter documentation and burden; completed ischemic-stroke imaging; persistent residual phenotype; compatible chronology; anticoagulation and vascular-source records; and review of competing stroke causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "Atrial fibrillation or another cardioembolic source",
+          "Carotid or intracranial atherosclerotic disease",
+          "Hypertension, diabetes, smoking, or thrombophilia",
+          "Structural heart disease or other stroke mechanism"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

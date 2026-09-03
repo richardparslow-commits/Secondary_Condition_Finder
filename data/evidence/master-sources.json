@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 341,
+    "liveSourceReferenceUses": 350,
     "activeSourceEntities": 233,
-    "pendingVerificationSourceEntities": 82,
+    "pendingVerificationSourceEntities": 91,
     "activeClinicalSourceEntities": 232,
-    "pendingClinicalSourceEntities": 82,
+    "pendingClinicalSourceEntities": 91,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 324,
+    "totalSourceEntitiesIncludingLineage": 333,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -12344,6 +12344,86 @@
       }
     },
     {
+      "sourceId": "pmid-25303785",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "25303785",
+      "doi": "10.1016/j.jss.2014.08.017",
+      "canonicalCitation": "Elraiyah T, Hashim Y, Elamin M, Erwin PJ, Zarroug AE. The effect of appendectomy in future tubal infertility and ectopic pregnancy: a systematic review and meta-analysis. J Surg Res. 2014;192(2):368-374.e1. PMID 25303785. doi:10.1016/j.jss.2014.08.017.",
+      "citationVariants": [
+        "Elraiyah T, Hashim Y, Elamin M, Erwin PJ, Zarroug AE. The effect of appendectomy in future tubal infertility and ectopic pregnancy: a systematic review and meta-analysis. J Surg Res. 2014;192(2):368-374.e1. PMID 25303785. doi:10.1016/j.jss.2014.08.017."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25303785/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/25303785/"
+      ],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": false,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-appendicitis-to-female-infertility", "primaryId": "appendicitis", "targetId": "female-infertility", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["07aa42143b8b9c0be3213010747c93c2f143d3316099ec2a207b69a2cd45318e"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-31992420",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31992420",
+      "doi": "10.5664/jcsm.8194",
+      "canonicalCitation": "Katwa U, Sisniega C, McKeon M, Lee GS. Sleep endoscopy-directed management of Arnold-Chiari malformation: a child with persistent obstructive sleep apnea. J Clin Sleep Med. 2020;16(2):325-329. PMID 31992420. doi:10.5664/jcsm.8194.",
+      "citationVariants": ["Katwa U, Sisniega C, McKeon M, Lee GS. Sleep endoscopy-directed management of Arnold-Chiari malformation: a child with persistent obstructive sleep apnea. J Clin Sleep Med. 2020;16(2):325-329. PMID 31992420. doi:10.5664/jcsm.8194."],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31992420/",
+      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/31992420/"],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": false,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-arnold-chiari-malformation-to-sleep-apnea", "primaryId": "arnold-chiari-malformation", "targetId": "sleep-apnea", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["6aaaaab0cdb60a3f1f2ff905c0084600bf15fbe9bae35f41c77a383e572fb1d8"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-29223550",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "29223550",
+      "doi": "10.1016/j.jstrokecerebrovasdis.2017.10.025",
+      "canonicalCitation": "Al-Kawaz M, Omran SS, Parikh NS, Elkind MSV, Soliman EZ, Kamel H. Comparative risks of ischemic stroke in atrial flutter versus atrial fibrillation. J Stroke Cerebrovasc Dis. 2018;27(4):839-844. PMID 29223550. doi:10.1016/j.jstrokecerebrovasdis.2017.10.025.",
+      "citationVariants": ["Al-Kawaz M, Omran SS, Parikh NS, Elkind MSV, Soliman EZ, Kamel H. Comparative risks of ischemic stroke in atrial flutter versus atrial fibrillation. J Stroke Cerebrovasc Dis. 2018;27(4):839-844. PMID 29223550. doi:10.1016/j.jstrokecerebrovasdis.2017.10.025."],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29223550/",
+      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/29223550/"],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": false,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-atrial-flutter-to-cerebrovascular-accident-stroke-residuals", "primaryId": "atrial-flutter", "targetId": "cerebrovascular-accident-stroke-residuals", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["fae91d3843b076c66758683c73437591c49e5ad283c289a61ff603599176de2d"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-30948277",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "30948277",
+      "doi": "10.1016/j.burns.2019.03.007",
+      "canonicalCitation": "Schouten HJ, Nieuwenhuis MK, van Baar ME, van der Schans CP, Niemeijer AS, van Zuijlen PPM. The prevalence and development of burn scar contractures: a prospective multicenter cohort study. Burns. 2019;45(4):783-790. PMID 30948277. doi:10.1016/j.burns.2019.03.007.",
+      "citationVariants": ["Schouten HJ, Nieuwenhuis MK, van Baar ME, van der Schans CP, Niemeijer AS, van Zuijlen PPM. The prevalence and development of burn scar contractures: a prospective multicenter cohort study. Burns. 2019;45(4):783-790. PMID 30948277. doi:10.1016/j.burns.2019.03.007."],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30948277/",
+      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/30948277/"],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": false,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-burns-to-contractures", "primaryId": "burns", "targetId": "contractures", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["8dcf0204020101d39d8056b495d5fcec9637dea3c0c8d9dc739186666f5e19df"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
       "sourceId": "pmid-35835550",
       "status": "pending-verification",
       "kind": "clinical-evidence",
@@ -12422,8 +12502,207 @@
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
+    },
+    {
+      "sourceId": "pmid-17665247",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "17665247",
+      "doi": "10.1007/s00268-007-9177-1",
+      "canonicalCitation": "Elsebae MMA. A study of fecal incontinence in patients with chronic anal fissure: prospective, randomized, controlled trial of the extent of internal anal sphincter division during lateral sphincterotomy. World J Surg. 2007;31(10):2052-2057. PMID 17665247. doi:10.1007/s00268-007-9177-1.",
+      "citationVariants": [
+        "Elsebae MMA. A study of fecal incontinence in patients with chronic anal fissure: prospective, randomized, controlled trial of the extent of internal anal sphincter division during lateral sphincterotomy. World J Surg. 2007;31(10):2052-2057. PMID 17665247. doi:10.1007/s00268-007-9177-1."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17665247/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/17665247/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anal-fissure-to-fecal-incontinence",
+          "primaryId": "anal-fissure",
+          "targetId": "fecal-incontinence",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "943c80c25311e3f47a37b071dd33583f2f8eacffd09db957846660016f769fc8"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-28242264",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "28242264",
+      "doi": "10.1016/j.aott.2017.02.007",
+      "canonicalCitation": "Kelle B, Kozanoğlu E, Biçer ÖS, Tan İ. Association between phantom limb complex and the level of amputation in lower limb amputee. Acta Orthop Traumatol Turc. 2017;51(2):142-145. PMID 28242264. doi:10.1016/j.aott.2017.02.007.",
+      "citationVariants": [
+        "Kelle B, Kozanoğlu E, Biçer ÖS, Tan İ. Association between phantom limb complex and the level of amputation in lower limb amputee. Acta Orthop Traumatol Turc. 2017;51(2):142-145. PMID 28242264. doi:10.1016/j.aott.2017.02.007."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28242264/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/28242264/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ankle-disarticulation-to-phantom-limb-pain",
+          "primaryId": "ankle-disarticulation",
+          "targetId": "phantom-limb-pain",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "79be82cf6d04a10885b9c7fdbf7902d6c7d61158a0606c08284e1099884e2c72"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-31367903",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31367903",
+      "canonicalCitation": "Brooks L, Landry A, Deshpande A, Marchica C, Cooley A, Raol N. Posterior tongue tie, base of tongue movement, and pharyngeal dysphagia: what is the connection? Dysphagia. 2020;35(1):129-132. PMID 31367903.",
+      "citationVariants": [
+        "Brooks L, Landry A, Deshpande A, Marchica C, Cooley A, Raol N. Posterior tongue tie, base of tongue movement, and pharyngeal dysphagia: what is the connection? Dysphagia. 2020;35(1):129-132. PMID 31367903."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31367903/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31367903/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ankyloglossia-to-dysphagia",
+          "primaryId": "ankyloglossia",
+          "targetId": "dysphagia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "dd6c4f4eb834dd8679d7055630bee2ed3621244b8b6653771f9514f6a79a0ee6"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-35508738",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35508738",
+      "doi": "10.1007/s00455-022-10458-w",
+      "canonicalCitation": "Myung JH, Pyun SB. Effect of oral apraxia on dysphagia in patients with subacute stroke. Dysphagia. 2023;38(1):227-235. PMID 35508738. doi:10.1007/s00455-022-10458-w.",
+      "citationVariants": [
+        "Myung JH, Pyun SB. Effect of oral apraxia on dysphagia in patients with subacute stroke. Dysphagia. 2023;38(1):227-235. PMID 35508738. doi:10.1007/s00455-022-10458-w."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35508738/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35508738/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-apraxia-to-dysphagia",
+          "primaryId": "apraxia",
+          "targetId": "dysphagia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "9eb54b1806a0c2e14146a30a6f5e1832bde40d1c9f8ee0134f29546353cc9fa8"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-21611763",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "21611763",
+      "doi": "10.1007/s00402-011-1322-5",
+      "canonicalCitation": "Ulrich D, Piatkowski A, Pallua N. Anterior interosseous nerve syndrome: retrospective analysis of 14 patients. Arch Orthop Trauma Surg. 2011;131(11):1561-1565. PMID 21611763. doi:10.1007/s00402-011-1322-5.",
+      "citationVariants": [
+        "Ulrich D, Piatkowski A, Pallua N. Anterior interosseous nerve syndrome: retrospective analysis of 14 patients. Arch Orthop Trauma Surg. 2011;131(11):1561-1565. PMID 21611763. doi:10.1007/s00402-011-1322-5."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21611763/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/21611763/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anterior-interosseous-nerve-syndrome-to-peripheral-nerve-paralysis",
+          "primaryId": "anterior-interosseous-nerve-syndrome",
+          "targetId": "peripheral-nerve-paralysis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "2d6c0d0ce3c17f0e1d8342533eba454b950b68be69bec0499a551b6de5122c98"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-32",
-  "currentState": "ME32-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-34",
+  "currentState": "ME34-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

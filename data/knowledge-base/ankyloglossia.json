@@ -3,7 +3,54 @@
   "draft": true,
   "todo": [
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "ME-33: a single bounded pediatric oral-phase swallowing association has been authored from condition-specific clinical evidence; the draft-safe association stands until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "dysphagia",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded pediatric oral-phase swallowing association. Evidence on posterior tongue tie and tongue movement evaluates oral and pharyngeal swallowing function, but ankyloglossia alone does not establish dysphagia in every person or determine its cause. Require independently documented ankyloglossia with clinically relevant restriction, objectively documented dysphagia by feeding or swallowing assessment compatible in chronology, and pediatric otolaryngology or speech-language pathology review. Preserve neurologic, structural, developmental, prematurity-related, and other feeding causes.",
+      "evidenceGaps": [
+        "Independent documentation of ankyloglossia and clinically meaningful tongue restriction",
+        "Documented dysphagia by validated feeding, clinical swallowing, or instrumental assessment",
+        "Age, developmental status, feeding history, and chronology of symptoms",
+        "Assessment of neurologic, structural, developmental, prematurity-related, and oral-motor alternatives",
+        "Pediatric otolaryngology and speech-language pathology assessment"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Brooks L, Landry A, Deshpande A, Marchica C, Cooley A, Raol N. Posterior tongue tie, base of tongue movement, and pharyngeal dysphagia: what is the connection? Dysphagia. 2020;35(1):129-132. PMID 31367903.",
+          "note": "Condition-specific review and anatomic study addressing posterior tongue tie, tongue movement, and pharyngeal swallowing considerations. Supports a bounded swallowing-function association and specialist evaluation, not automatic individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31367903/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 31367903; posterior tongue-tie, tongue movement, and pharyngeal-swallowing scope"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Ankyloglossia may affect tongue movement and the oral or pharyngeal phases of swallowing, but the evidence does not establish dysphagia in every individual or an individual nexus without objective swallowing assessment, chronology, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current swallowing-function evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Restricted lingual mobility may alter bolus control and oral-phase propulsion, with possible downstream pharyngeal effects, but the individual pathway must be established by feeding history and clinical or instrumental swallowing assessment.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Ankyloglossia may affect tongue mobility and swallowing mechanics, but the evidence does not establish that it caused or aggravated dysphagia in every individual; phenotype, developmental context, objective testing, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Documented tongue restriction and dysphagia; developmental and feeding chronology; clinical or instrumental swallowing findings; neurologic, structural, developmental, prematurity, and oral-motor alternatives; specialist review",
+        "alternativeEtiologiesToRuleOut": [
+          "Neurologic or neuromuscular disease affecting swallowing",
+          "Craniofacial, structural, airway, or esophageal abnormalities",
+          "Developmental delay, prematurity-related feeding difficulty, or other oral-motor disorder"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

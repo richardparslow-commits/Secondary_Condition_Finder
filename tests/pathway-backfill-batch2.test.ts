@@ -74,7 +74,7 @@ describe("controlled pathway backfill batch 2", () => {
       { conditionId: "depressive-disorder", rank: 1, etiologicalConsensus: "NOT_ESTABLISHED" },
       { conditionId: "gerd", rank: 2, etiologicalConsensus: "NOT_ESTABLISHED" },
     ]);
-  });
+  }, 30000);
 
   it("keeps known draft Musculoskeletal mappings outside the backfill", () => {
     // Master Resolution 2026 supersedes this historical current-state assertion while

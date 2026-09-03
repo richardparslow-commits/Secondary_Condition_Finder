@@ -65,16 +65,16 @@ describe("Mapping Expansion Batch ME-31", () => {
     expect(source.liveUses).toContainEqual({ relationshipId, primaryId, targetId, sourceIndex: 0 });
   });
 
-  it("ratchets authoritative registry totals to ME-31", () => {
-    expect(relationships.counts).toEqual({ relationships: 333, explicitPublicationGuards: 259, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(333);
+  it("ratchets authoritative registry totals to the current ME-33 state", () => {
+    expect(relationships.counts).toEqual({ relationships: 342, explicitPublicationGuards: 268, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(342);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 341,
-      pendingVerificationSourceEntities: 82,
-      pendingClinicalSourceEntities: 82,
-      totalSourceEntitiesIncludingLineage: 324,
+      liveSourceReferenceUses: 350,
+      pendingVerificationSourceEntities: 91,
+      pendingClinicalSourceEntities: 91,
+      totalSourceEntitiesIncludingLineage: 333,
     });
-    expect(sources.sources).toHaveLength(324);
+    expect(sources.sources).toHaveLength(333);
   });
 
   it("merges the reused phantom-limb-pain survey into one pending source entity", () => {
@@ -90,8 +90,8 @@ describe("Mapping Expansion Batch ME-31", () => {
     expect(load("data/knowledge-base/anhedonia.json").suggestions).toHaveLength(0);
     // Digit-level amputation is outside the limb-level scope of the nationwide amputee survey evidence.
     expect(load("data/knowledge-base/amputation-of-thumb-fingers-toes.json").suggestions).toHaveLength(0);
-    // Deferred to the next batch pending a credible condition-specific target and citation.
-    expect(load("data/knowledge-base/anal-fissure.json").suggestions).toHaveLength(0);
-    expect(load("data/knowledge-base/ankle-disarticulation.json").suggestions).toHaveLength(0);
+    // These identities were processed in the subsequent ME-33 batch.
+    expect(load("data/knowledge-base/anal-fissure.json").suggestions).toHaveLength(1);
+    expect(load("data/knowledge-base/ankle-disarticulation.json").suggestions).toHaveLength(1);
   });
 });
