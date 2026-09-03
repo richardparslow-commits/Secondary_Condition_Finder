@@ -15,13 +15,17 @@
     "pendingVerificationIsLiveButNotQualifiedHumanVerified": true,
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
-  "counts": {      "liveSourceReferenceUses": 321,
-    "activeSourceEntities": 233,      "pendingVerificationSourceEntities": 65,
-    "activeClinicalSourceEntities": 232,      "pendingClinicalSourceEntities": 65,
+  "counts": {
+    "liveSourceReferenceUses": 326,
+    "activeSourceEntities": 233,
+    "pendingVerificationSourceEntities": 70,
+    "activeClinicalSourceEntities": 232,
+    "pendingClinicalSourceEntities": 70,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
-    "bibliographicCorrectionOnlyEntities": 1,      "totalSourceEntitiesIncludingLineage": 307,
+    "bibliographicCorrectionOnlyEntities": 1,
+    "totalSourceEntitiesIncludingLineage": 312,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -10279,43 +10283,44 @@
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
-    {      "sourceId": "pmid-24843675",
+    {
+      "sourceId": "pmid-24843675",
       "status": "pending-verification",
       "kind": "clinical-evidence",
       "pmid": "24843675",
       "doi": "10.1111/jdi.12075",
       "canonicalCitation": "Shin JA, Lee JH, Lim SY, Ha HS, Kwon HS, Park YM, Lee WC, Kang MI, Yim HW, Yoon KH, Son HY. Metabolic syndrome as a predictor of type 2 diabetes, and its clinical interpretations and usefulness. J Diabetes Investig. 2013;4(4):334-343. PMID 24843675. doi:10.1111/jdi.12075.",
       "citationVariants": [
-         "Shin JA, Lee JH, Lim SY, Ha HS, Kwon HS, Park YM, Lee WC, Kang MI, Yim HW, Yoon KH, Son HY. Metabolic syndrome as a predictor of type 2 diabetes, and its clinical interpretations and usefulness. J Diabetes Investig. 2013;4(4):334-343. PMID 24843675. doi:10.1111/jdi.12075."
+        "Shin JA, Lee JH, Lim SY, Ha HS, Kwon HS, Park YM, Lee WC, Kang MI, Yim HW, Yoon KH, Son HY. Metabolic syndrome as a predictor of type 2 diabetes, and its clinical interpretations and usefulness. J Diabetes Investig. 2013;4(4):334-343. PMID 24843675. doi:10.1111/jdi.12075."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24843675/",
       "sourceUrlVariants": [
-         "https://pubmed.ncbi.nlm.nih.gov/24843675/"
+        "https://pubmed.ncbi.nlm.nih.gov/24843675/"
       ],
       "verificationScopes": [
-         "clinical-evidence"
+        "clinical-evidence"
       ],
       "verified": false,
       "sourceCheckedOnValues": [
-         "2026-09-02"
+        "2026-09-02"
       ],
       "liveUsageCount": 1,
       "liveUses": [
-         {
-            "relationshipId": "rel-metabolic-syndrome-to-diabetes-mellitus-type-2",
-            "primaryId": "metabolic-syndrome",
-            "targetId": "diabetes-mellitus-type-2",
-            "sourceIndex": 0
-         }
+        {
+          "relationshipId": "rel-metabolic-syndrome-to-diabetes-mellitus-type-2",
+          "primaryId": "metabolic-syndrome",
+          "targetId": "diabetes-mellitus-type-2",
+          "sourceIndex": 0
+        }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-         "cc5b05256c3fa6629b29bbd01451e51ba0df2f6efbe25aa6fed23d85d1e7fc4b"
+        "cc5b05256c3fa6629b29bbd01451e51ba0df2f6efbe25aa6fed23d85d1e7fc4b"
       ],
       "verificationState": {
-         "qualifiedHumanCitationReviewRequired": true,
-         "automaticPromotionAuthorized": false,
-         "mappingApprovalDoesNotEqualCitationVerification": true
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
@@ -10326,36 +10331,36 @@
       "doi": "10.1001/archinte.167.22.2417",
       "canonicalCitation": "Wu CM, McLaughlin K, Lorenzetti DL, Hill MD, Manns BJ, Ghali WA. Early risk of stroke after transient ischemic attack: a systematic review and meta-analysis. Arch Intern Med. 2007;167(22):2417-2422. PMID 18071162. doi:10.1001/archinte.167.22.2417.",
       "citationVariants": [
-         "Wu CM, McLaughlin K, Lorenzetti DL, Hill MD, Manns BJ, Ghali WA. Early risk of stroke after transient ischemic attack: a systematic review and meta-analysis. Arch Intern Med. 2007;167(22):2417-2422. PMID 18071162. doi:10.1001/archinte.167.22.2417."
+        "Wu CM, McLaughlin K, Lorenzetti DL, Hill MD, Manns BJ, Ghali WA. Early risk of stroke after transient ischemic attack: a systematic review and meta-analysis. Arch Intern Med. 2007;167(22):2417-2422. PMID 18071162. doi:10.1001/archinte.167.22.2417."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18071162/",
       "sourceUrlVariants": [
-         "https://pubmed.ncbi.nlm.nih.gov/18071162/"
+        "https://pubmed.ncbi.nlm.nih.gov/18071162/"
       ],
       "verificationScopes": [
-         "clinical-evidence"
+        "clinical-evidence"
       ],
       "verified": false,
       "sourceCheckedOnValues": [
-         "2026-09-02"
+        "2026-09-02"
       ],
       "liveUsageCount": 1,
       "liveUses": [
-         {
-            "relationshipId": "rel-transient-ischemic-attack-residuals-to-cerebrovascular-accident-stroke-residuals",
-            "primaryId": "transient-ischemic-attack-residuals",
-            "targetId": "cerebrovascular-accident-stroke-residuals",
-            "sourceIndex": 0
-         }
+        {
+          "relationshipId": "rel-transient-ischemic-attack-residuals-to-cerebrovascular-accident-stroke-residuals",
+          "primaryId": "transient-ischemic-attack-residuals",
+          "targetId": "cerebrovascular-accident-stroke-residuals",
+          "sourceIndex": 0
+        }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-         "5fa8ea16d3467a3afe2162b9447aa59de5f5295f0036fe33bbeff390d5f9d988"
+        "5fa8ea16d3467a3afe2162b9447aa59de5f5295f0036fe33bbeff390d5f9d988"
       ],
       "verificationState": {
-         "qualifiedHumanCitationReviewRequired": true,
-         "automaticPromotionAuthorized": false,
-         "mappingApprovalDoesNotEqualCitationVerification": true
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
@@ -10366,36 +10371,36 @@
       "doi": "10.1055/s-0035-1566096",
       "canonicalCitation": "Lian BSY, Ong CC, Chiang LW, Rai R, Nah SA. Factors Predicting Testicular Atrophy after Testicular Salvage following Torsion. Eur J Pediatr Surg. 2016;26(1):17-21. PMID 26509312. doi:10.1055/s-0035-1566096.",
       "citationVariants": [
-         "Lian BSY, Ong CC, Chiang LW, Rai R, Nah SA. Factors Predicting Testicular Atrophy after Testicular Salvage following Torsion. Eur J Pediatr Surg. 2016;26(1):17-21. PMID 26509312. doi:10.1055/s-0035-1566096."
+        "Lian BSY, Ong CC, Chiang LW, Rai R, Nah SA. Factors Predicting Testicular Atrophy after Testicular Salvage following Torsion. Eur J Pediatr Surg. 2016;26(1):17-21. PMID 26509312. doi:10.1055/s-0035-1566096."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26509312/",
       "sourceUrlVariants": [
-         "https://pubmed.ncbi.nlm.nih.gov/26509312/"
+        "https://pubmed.ncbi.nlm.nih.gov/26509312/"
       ],
       "verificationScopes": [
-         "clinical-evidence"
+        "clinical-evidence"
       ],
       "verified": false,
       "sourceCheckedOnValues": [
-         "2026-09-02"
+        "2026-09-02"
       ],
       "liveUsageCount": 1,
       "liveUses": [
-         {
-            "relationshipId": "rel-testicular-torsion-to-testicular-atrophy",
-            "primaryId": "testicular-torsion",
-            "targetId": "testicular-atrophy",
-            "sourceIndex": 0
-         }
+        {
+          "relationshipId": "rel-testicular-torsion-to-testicular-atrophy",
+          "primaryId": "testicular-torsion",
+          "targetId": "testicular-atrophy",
+          "sourceIndex": 0
+        }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-         "32d7f68f7df0aa8c24409f0de29a5bed94c7de2feece585bf56cfc7fd70e7546"
+        "32d7f68f7df0aa8c24409f0de29a5bed94c7de2feece585bf56cfc7fd70e7546"
       ],
       "verificationState": {
-         "qualifiedHumanCitationReviewRequired": true,
-         "automaticPromotionAuthorized": false,
-         "mappingApprovalDoesNotEqualCitationVerification": true
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
@@ -10406,36 +10411,36 @@
       "doi": "10.1016/j.ygyno.2020.02.020",
       "canonicalCitation": "Spekreijse JJ, Streng B, van der Meijden WI, Verheijen RHM, van Beurden M. The risk of developing squamous cell carcinoma in patients with anogenital lichen sclerosis: A systematic review. Gynecol Oncol. 2020;157(3):671-677. PMID 32089333. doi:10.1016/j.ygyno.2020.02.020.",
       "citationVariants": [
-         "Spekreijse JJ, Streng B, van der Meijden WI, Verheijen RHM, van Beurden M. The risk of developing squamous cell carcinoma in patients with anogenital lichen sclerosis: A systematic review. Gynecol Oncol. 2020;157(3):671-677. PMID 32089333. doi:10.1016/j.ygyno.2020.02.020."
+        "Spekreijse JJ, Streng B, van der Meijden WI, Verheijen RHM, van Beurden M. The risk of developing squamous cell carcinoma in patients with anogenital lichen sclerosis: A systematic review. Gynecol Oncol. 2020;157(3):671-677. PMID 32089333. doi:10.1016/j.ygyno.2020.02.020."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32089333/",
       "sourceUrlVariants": [
-         "https://pubmed.ncbi.nlm.nih.gov/32089333/"
+        "https://pubmed.ncbi.nlm.nih.gov/32089333/"
       ],
       "verificationScopes": [
-         "clinical-evidence"
+        "clinical-evidence"
       ],
       "verified": false,
       "sourceCheckedOnValues": [
-         "2026-09-02"
+        "2026-09-02"
       ],
       "liveUsageCount": 1,
       "liveUses": [
-         {
-            "relationshipId": "rel-lichen-sclerosus-to-squamous-cell-carcinoma",
-            "primaryId": "lichen-sclerosus",
-            "targetId": "squamous-cell-carcinoma",
-            "sourceIndex": 0
-         }
+        {
+          "relationshipId": "rel-lichen-sclerosus-to-squamous-cell-carcinoma",
+          "primaryId": "lichen-sclerosus",
+          "targetId": "squamous-cell-carcinoma",
+          "sourceIndex": 0
+        }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-         "4e132fdd2e1c097aa922b45381663f74220a254aeb15b82c702765dddd87345d"
+        "4e132fdd2e1c097aa922b45381663f74220a254aeb15b82c702765dddd87345d"
       ],
       "verificationState": {
-         "qualifiedHumanCitationReviewRequired": true,
-         "automaticPromotionAuthorized": false,
-         "mappingApprovalDoesNotEqualCitationVerification": true
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
@@ -10446,36 +10451,36 @@
       "doi": "10.1016/j.jaip.2020.09.063",
       "canonicalCitation": "Laidlaw TM, Mullol J, Woessner KM, Amin N, Mannent LP. Chronic Rhinosinusitis with Nasal Polyps and Asthma. J Allergy Clin Immunol Pract. 2021;9(3):1133-1141. PMID 33065369. doi:10.1016/j.jaip.2020.09.063.",
       "citationVariants": [
-         "Laidlaw TM, Mullol J, Woessner KM, Amin N, Mannent LP. Chronic Rhinosinusitis with Nasal Polyps and Asthma. J Allergy Clin Immunol Pract. 2021;9(3):1133-1141. PMID 33065369. doi:10.1016/j.jaip.2020.09.063."
+        "Laidlaw TM, Mullol J, Woessner KM, Amin N, Mannent LP. Chronic Rhinosinusitis with Nasal Polyps and Asthma. J Allergy Clin Immunol Pract. 2021;9(3):1133-1141. PMID 33065369. doi:10.1016/j.jaip.2020.09.063."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33065369/",
       "sourceUrlVariants": [
-         "https://pubmed.ncbi.nlm.nih.gov/33065369/"
+        "https://pubmed.ncbi.nlm.nih.gov/33065369/"
       ],
       "verificationScopes": [
-         "clinical-evidence"
+        "clinical-evidence"
       ],
       "verified": false,
       "sourceCheckedOnValues": [
-         "2026-09-02"
+        "2026-09-02"
       ],
       "liveUsageCount": 1,
       "liveUses": [
-         {
-            "relationshipId": "rel-nasal-polyps-to-asthma",
-            "primaryId": "nasal-polyps",
-            "targetId": "asthma",
-            "sourceIndex": 0
-         }
+        {
+          "relationshipId": "rel-nasal-polyps-to-asthma",
+          "primaryId": "nasal-polyps",
+          "targetId": "asthma",
+          "sourceIndex": 0
+        }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-         "d906e2b6cf137e895aeb2592baf56a243b07ea917abda4b71c7b78ae53f7932c"
+        "d906e2b6cf137e895aeb2592baf56a243b07ea917abda4b71c7b78ae53f7932c"
       ],
       "verificationState": {
-         "qualifiedHumanCitationReviewRequired": true,
-         "automaticPromotionAuthorized": false,
-         "mappingApprovalDoesNotEqualCitationVerification": true
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
@@ -10486,36 +10491,36 @@
       "doi": "10.1210/er.2018-00161",
       "canonicalCitation": "Bharucha AE, Kudva YC, Prichard DO. Diabetic Gastroparesis. Endocr Rev. 2019;40(5):1318-1352. PMID 31081877. doi:10.1210/er.2018-00161.",
       "citationVariants": [
-         "Bharucha AE, Kudva YC, Prichard DO. Diabetic Gastroparesis. Endocr Rev. 2019;40(5):1318-1352. PMID 31081877. doi:10.1210/er.2018-00161."
+        "Bharucha AE, Kudva YC, Prichard DO. Diabetic Gastroparesis. Endocr Rev. 2019;40(5):1318-1352. PMID 31081877. doi:10.1210/er.2018-00161."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31081877/",
       "sourceUrlVariants": [
-         "https://pubmed.ncbi.nlm.nih.gov/31081877/"
+        "https://pubmed.ncbi.nlm.nih.gov/31081877/"
       ],
       "verificationScopes": [
-         "clinical-evidence"
+        "clinical-evidence"
       ],
       "verified": false,
       "sourceCheckedOnValues": [
-         "2026-09-02"
+        "2026-09-02"
       ],
       "liveUsageCount": 1,
       "liveUses": [
-         {
-            "relationshipId": "rel-diabetic-gastroparesis-to-gastroparesis",
-            "primaryId": "diabetic-gastroparesis",
-            "targetId": "gastroparesis",
-            "sourceIndex": 0
-         }
+        {
+          "relationshipId": "rel-diabetic-gastroparesis-to-gastroparesis",
+          "primaryId": "diabetic-gastroparesis",
+          "targetId": "gastroparesis",
+          "sourceIndex": 0
+        }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-         "d6f675ae70a9fe46ea7f65920321db0b21f70e2eb08ed810ce65766a28d66e67"
+        "d6f675ae70a9fe46ea7f65920321db0b21f70e2eb08ed810ce65766a28d66e67"
       ],
       "verificationState": {
-         "qualifiedHumanCitationReviewRequired": true,
-         "automaticPromotionAuthorized": false,
-         "mappingApprovalDoesNotEqualCitationVerification": true
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
       }
     },
     {
@@ -10725,17 +10730,38 @@
       "pmid": "36182260",
       "doi": "10.1016/j.fertnstert.2022.08.011",
       "canonicalCitation": "Donnez J, Carmona F, Maitrot-Mantelet L, Dolmans MM, Chapron C. Uterine disorders and iron deficiency anemia. Fertil Steril. 2022;118(4):615-624. PMID 36182260. doi:10.1016/j.fertnstert.2022.08.011.",
-      "citationVariants": ["Donnez J, Carmona F, Maitrot-Mantelet L, Dolmans MM, Chapron C. Uterine disorders and iron deficiency anemia. Fertil Steril. 2022;118(4):615-624. PMID 36182260. doi:10.1016/j.fertnstert.2022.08.011."],
+      "citationVariants": [
+        "Donnez J, Carmona F, Maitrot-Mantelet L, Dolmans MM, Chapron C. Uterine disorders and iron deficiency anemia. Fertil Steril. 2022;118(4):615-624. PMID 36182260. doi:10.1016/j.fertnstert.2022.08.011."
+      ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36182260/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/36182260/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36182260/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-adenomyosis-to-anemia", "primaryId": "adenomyosis", "targetId": "anemia", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-adenomyosis-to-anemia",
+          "primaryId": "adenomyosis",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["bd0aec11cff5ec6d9888af076637e9454372dea11fc15786131a3b136ca036e2"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "bd0aec11cff5ec6d9888af076637e9454372dea11fc15786131a3b136ca036e2"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-11144035",
@@ -10744,17 +10770,38 @@
       "pmid": "11144035",
       "doi": "10.1097/00005792-200011000-00003",
       "canonicalCitation": "Vourlekis JS, Brown KK, Cool CD, Young DA, Cherniack RM, King TE Jr, Schwarz MI. Acute interstitial pneumonitis: case series and review of the literature. Medicine (Baltimore). 2000;79(6):369-378. PMID 11144035. doi:10.1097/00005792-200011000-00003.",
-      "citationVariants": ["Vourlekis JS, Brown KK, Cool CD, Young DA, Cherniack RM, King TE Jr, Schwarz MI. Acute interstitial pneumonitis: case series and review of the literature. Medicine (Baltimore). 2000;79(6):369-378. PMID 11144035. doi:10.1097/00005792-200011000-00003."],
+      "citationVariants": [
+        "Vourlekis JS, Brown KK, Cool CD, Young DA, Cherniack RM, King TE Jr, Schwarz MI. Acute interstitial pneumonitis: case series and review of the literature. Medicine (Baltimore). 2000;79(6):369-378. PMID 11144035. doi:10.1097/00005792-200011000-00003."
+      ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11144035/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/11144035/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/11144035/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-acute-interstitial-pneumonia-to-pulmonary-fibrosis", "primaryId": "acute-interstitial-pneumonia", "targetId": "pulmonary-fibrosis", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-acute-interstitial-pneumonia-to-pulmonary-fibrosis",
+          "primaryId": "acute-interstitial-pneumonia",
+          "targetId": "pulmonary-fibrosis",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["8faf17668bb00a647aa6b0125f13dcf9396840df9174992e39d86561052b1a33"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "8faf17668bb00a647aa6b0125f13dcf9396840df9174992e39d86561052b1a33"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-31536264",
@@ -10762,17 +10809,38 @@
       "kind": "clinical-evidence",
       "pmid": "31536264",
       "canonicalCitation": "Barney J, Piuzzi NS, Akhondi H. Femoral Head Avascular Necrosis. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2023. PMID 31536264.",
-      "citationVariants": ["Barney J, Piuzzi NS, Akhondi H. Femoral Head Avascular Necrosis. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2023. PMID 31536264."],
+      "citationVariants": [
+        "Barney J, Piuzzi NS, Akhondi H. Femoral Head Avascular Necrosis. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2023. PMID 31536264."
+      ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31536264/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/31536264/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31536264/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-avascular-necrosis-to-osteoarthritis", "primaryId": "avascular-necrosis", "targetId": "osteoarthritis", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-avascular-necrosis-to-osteoarthritis",
+          "primaryId": "avascular-necrosis",
+          "targetId": "osteoarthritis",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["4200bb15ac25db6f327672df42ef6eff1df3d5e314655fca186ad0a7598b7294"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "4200bb15ac25db6f327672df42ef6eff1df3d5e314655fca186ad0a7598b7294"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-36769710",
@@ -10781,17 +10849,38 @@
       "pmid": "36769710",
       "doi": "10.3390/jcm12031062",
       "canonicalCitation": "Chen C, Yang Y, Li P, Hu H. Incidence of Gastric Neoplasms Arising from Autoimmune Metaplastic Atrophic Gastritis: A Systematic Review and Case Reports. J Clin Med. 2023;12(3):1062. PMID 36769710. doi:10.3390/jcm12031062.",
-      "citationVariants": ["Chen C, Yang Y, Li P, Hu H. Incidence of Gastric Neoplasms Arising from Autoimmune Metaplastic Atrophic Gastritis: A Systematic Review and Case Reports. J Clin Med. 2023;12(3):1062. PMID 36769710. doi:10.3390/jcm12031062."],
+      "citationVariants": [
+        "Chen C, Yang Y, Li P, Hu H. Incidence of Gastric Neoplasms Arising from Autoimmune Metaplastic Atrophic Gastritis: A Systematic Review and Case Reports. J Clin Med. 2023;12(3):1062. PMID 36769710. doi:10.3390/jcm12031062."
+      ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36769710/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/36769710/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36769710/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-autoimmune-metaplastic-atrophic-gastritis-to-stomach-cancer", "primaryId": "autoimmune-metaplastic-atrophic-gastritis", "targetId": "stomach-cancer", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-autoimmune-metaplastic-atrophic-gastritis-to-stomach-cancer",
+          "primaryId": "autoimmune-metaplastic-atrophic-gastritis",
+          "targetId": "stomach-cancer",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["db475dd71b2ce169f519d3236c3e8aa30f3343d895182bcd27c49e8aa2475b84"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "db475dd71b2ce169f519d3236c3e8aa30f3343d895182bcd27c49e8aa2475b84"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-32429454",
@@ -10800,17 +10889,38 @@
       "pmid": "32429454",
       "doi": "10.3390/ijms21103531",
       "canonicalCitation": "Losurdo G, Leandro G, D'Aversa F, Iannone A, Di Leo A, Ierardi E. The Influence of Small Intestinal Bacterial Overgrowth in Digestive and Extra-Intestinal Disorders. Int J Mol Sci. 2020;21(10):3531. PMID 32429454. doi:10.3390/ijms21103531.",
-      "citationVariants": ["Losurdo G, Leandro G, D'Aversa F, Iannone A, Di Leo A, Ierardi E. The Influence of Small Intestinal Bacterial Overgrowth in Digestive and Extra-Intestinal Disorders. Int J Mol Sci. 2020;21(10):3531. PMID 32429454. doi:10.3390/ijms21103531."],
+      "citationVariants": [
+        "Losurdo G, Leandro G, D'Aversa F, Iannone A, Di Leo A, Ierardi E. The Influence of Small Intestinal Bacterial Overgrowth in Digestive and Extra-Intestinal Disorders. Int J Mol Sci. 2020;21(10):3531. PMID 32429454. doi:10.3390/ijms21103531."
+      ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32429454/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/32429454/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/32429454/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-blind-loop-syndrome-to-anemia", "primaryId": "blind-loop-syndrome", "targetId": "anemia", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-blind-loop-syndrome-to-anemia",
+          "primaryId": "blind-loop-syndrome",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["db0c85b3adda8f96acd59b9cbe43ac18a094140027800c69b167e305c154b242"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "db0c85b3adda8f96acd59b9cbe43ac18a094140027800c69b167e305c154b242"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-36698243",
@@ -10823,15 +10933,34 @@
         "Leung AKC, Lam JM, Barankin B, Leong KF, Hon KL. Acanthosis Nigricans: An Updated Review. Curr Pediatr Rev. 2023;19(1):68-82. PMID 36698243. doi:10.2174/1573396318666220429085231."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36698243/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/36698243/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36698243/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-acanthosis-nigricans-to-diabetes-mellitus-type-2", "primaryId": "acanthosis-nigricans", "targetId": "diabetes-mellitus-type-2", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-acanthosis-nigricans-to-diabetes-mellitus-type-2",
+          "primaryId": "acanthosis-nigricans",
+          "targetId": "diabetes-mellitus-type-2",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["24b11cbce522030df1eef02a82a667ba48ecaec259ae0f3be9fa241ebeee198b"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "24b11cbce522030df1eef02a82a667ba48ecaec259ae0f3be9fa241ebeee198b"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-29360523",
@@ -10843,15 +10972,34 @@
         "DiNicolantonio JJ, Liu J, O'Keefe JH. Thiamine and Cardiovascular Disease: A Literature Review. Prog Cardiovasc Dis. 2018;61(1):27-32. PMID 29360523."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29360523/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/29360523/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/29360523/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-beriberi-to-congestive-heart-failure", "primaryId": "beriberi", "targetId": "congestive-heart-failure", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-beriberi-to-congestive-heart-failure",
+          "primaryId": "beriberi",
+          "targetId": "congestive-heart-failure",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["2578a5738e69ea61cc7aad104638155f93a232f70223c0b9efb8c1b7143fb409"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "2578a5738e69ea61cc7aad104638155f93a232f70223c0b9efb8c1b7143fb409"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-30305956",
@@ -10865,15 +11013,34 @@
         "Nashat H, Launchedbury R, Abdul-Ghani M, et al. Atrial septal defects and pulmonary arterial hypertension. J Thorac Dis. 2018;10(Suppl 24):S2953-S2965. PMID 30305956. doi:10.21037/jtd.2018.08.92."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30305956/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/30305956/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30305956/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-atrial-septal-defect-to-pulmonary-hypertension", "primaryId": "atrial-septal-defect", "targetId": "pulmonary-hypertension", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-atrial-septal-defect-to-pulmonary-hypertension",
+          "primaryId": "atrial-septal-defect",
+          "targetId": "pulmonary-hypertension",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["16743e8cb0f6a31dc487ee696792e5b9dedace2ecb16360e85e6018c564458fd"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "16743e8cb0f6a31dc487ee696792e5b9dedace2ecb16360e85e6018c564458fd"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-21870048",
@@ -10886,15 +11053,34 @@
         "Chan AL, Juarez MM, Leslie KO, Ismail HA, Albertson TE. Bird fancier's lung: a state-of-the-art review. Clin Rev Allergy Immunol. 2012;43(1-2):69-83. PMID 21870048. doi:10.1007/s12016-011-8282-y."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21870048/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/21870048/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/21870048/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-bird-fancier-s-lung-to-pulmonary-fibrosis", "primaryId": "bird-fancier-s-lung", "targetId": "pulmonary-fibrosis", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-bird-fancier-s-lung-to-pulmonary-fibrosis",
+          "primaryId": "bird-fancier-s-lung",
+          "targetId": "pulmonary-fibrosis",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["d3cf6583b26378f2b646bf3fb9e0f6103c552f7385f0deda86d0ab299c68f925"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "d3cf6583b26378f2b646bf3fb9e0f6103c552f7385f0deda86d0ab299c68f925"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-31076315",
@@ -10907,15 +11093,34 @@
         "Chiang CP, Chang JYF, Wang YP, Wu YH, Wu YC, Sun A. Atrophic glossitis: Etiology, serum autoantibodies, anemia, hematinic deficiencies, hyperhomocysteinemia, and management. J Formos Med Assoc. 2020. PMID 31076315. doi:10.1016/j.jfma.2019.04.015."
       ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31076315/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/31076315/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31076315/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-atrophic-glossitis-to-anemia", "primaryId": "atrophic-glossitis", "targetId": "anemia", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-atrophic-glossitis-to-anemia",
+          "primaryId": "atrophic-glossitis",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["f4ac0827043768affab552898de498fc5171372ba81ee1a5fb6773c647d4dadb"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "f4ac0827043768affab552898de498fc5171372ba81ee1a5fb6773c647d4dadb"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-21208593",
@@ -10924,17 +11129,38 @@
       "pmid": "21208593",
       "doi": "10.4088/JCP.09r05072blu",
       "canonicalCitation": "Bryant RA. Acute stress disorder as a predictor of posttraumatic stress disorder: a systematic review. J Clin Psychiatry. 2011;72(2):233-239. PMID 21208593. doi:10.4088/JCP.09r05072blu.",
-      "citationVariants": ["Bryant RA. Acute stress disorder as a predictor of posttraumatic stress disorder: a systematic review. J Clin Psychiatry. 2011;72(2):233-239. PMID 21208593. doi:10.4088/JCP.09r05072blu."],
+      "citationVariants": [
+        "Bryant RA. Acute stress disorder as a predictor of posttraumatic stress disorder: a systematic review. J Clin Psychiatry. 2011;72(2):233-239. PMID 21208593. doi:10.4088/JCP.09r05072blu."
+      ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21208593/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/21208593/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/21208593/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-acute-stress-reaction-to-ptsd", "primaryId": "acute-stress-reaction", "targetId": "ptsd", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-acute-stress-reaction-to-ptsd",
+          "primaryId": "acute-stress-reaction",
+          "targetId": "ptsd",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["88a73eb782e1f63f5e0379b44dc2d25cf36602559620de1fe4e416805111797f"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "88a73eb782e1f63f5e0379b44dc2d25cf36602559620de1fe4e416805111797f"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-34384834",
@@ -10943,17 +11169,38 @@
       "pmid": "34384834",
       "doi": "10.1016/j.jaad.2021.07.064",
       "canonicalCitation": "Li H, Dai T, Liu C, Liu Q, Tan C. Phenotypes of atopic dermatitis and the risk for subsequent asthma: A systematic review and meta-analysis. J Am Acad Dermatol. 2022;86(2):365-372. PMID 34384834. doi:10.1016/j.jaad.2021.07.064.",
-      "citationVariants": ["Li H, Dai T, Liu C, Liu Q, Tan C. Phenotypes of atopic dermatitis and the risk for subsequent asthma: A systematic review and meta-analysis. J Am Acad Dermatol. 2022;86(2):365-372. PMID 34384834. doi:10.1016/j.jaad.2021.07.064."],
+      "citationVariants": [
+        "Li H, Dai T, Liu C, Liu Q, Tan C. Phenotypes of atopic dermatitis and the risk for subsequent asthma: A systematic review and meta-analysis. J Am Acad Dermatol. 2022;86(2):365-372. PMID 34384834. doi:10.1016/j.jaad.2021.07.064."
+      ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34384834/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/34384834/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34384834/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-atopic-dermatitis-eczema-to-asthma", "primaryId": "atopic-dermatitis-eczema", "targetId": "asthma", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-atopic-dermatitis-eczema-to-asthma",
+          "primaryId": "atopic-dermatitis-eczema",
+          "targetId": "asthma",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["445f92f511e92fe3f4159e7776599154e535b90982bc77fb0ca9e6fcd5fac506"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "445f92f511e92fe3f4159e7776599154e535b90982bc77fb0ca9e6fcd5fac506"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-37443581",
@@ -10962,17 +11209,38 @@
       "pmid": "37443581",
       "doi": "10.3390/diagnostics13132189",
       "canonicalCitation": "Raza S, Aggarwal S, Jenkins P, Kharabish A, Anwer S, Cullington D, Jones J, et al. Coarctation of the Aorta: Diagnosis and Management. Diagnostics (Basel). 2023;13(13):2189. PMID 37443581. doi:10.3390/diagnostics13132189.",
-      "citationVariants": ["Raza S, Aggarwal S, Jenkins P, Kharabish A, Anwer S, Cullington D, Jones J, et al. Coarctation of the Aorta: Diagnosis and Management. Diagnostics (Basel). 2023;13(13):2189. PMID 37443581. doi:10.3390/diagnostics13132189."],
+      "citationVariants": [
+        "Raza S, Aggarwal S, Jenkins P, Kharabish A, Anwer S, Cullington D, Jones J, et al. Coarctation of the Aorta: Diagnosis and Management. Diagnostics (Basel). 2023;13(13):2189. PMID 37443581. doi:10.3390/diagnostics13132189."
+      ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37443581/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/37443581/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37443581/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-coarctation-of-the-aorta-to-hypertension", "primaryId": "coarctation-of-the-aorta", "targetId": "hypertension", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-coarctation-of-the-aorta-to-hypertension",
+          "primaryId": "coarctation-of-the-aorta",
+          "targetId": "hypertension",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["39553ed2933a3c9d6205bd385133c24c52d0d4b3072e1353682bbba36b7d6191"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "39553ed2933a3c9d6205bd385133c24c52d0d4b3072e1353682bbba36b7d6191"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-23204254",
@@ -10981,17 +11249,38 @@
       "pmid": "23204254",
       "doi": "10.1164/rccm.201210-1843CI",
       "canonicalCitation": "Kim V, Criner GJ. Chronic bronchitis and chronic obstructive pulmonary disease. Am J Respir Crit Care Med. 2013;187(3):228-237. PMID 23204254. doi:10.1164/rccm.201210-1843CI.",
-      "citationVariants": ["Kim V, Criner GJ. Chronic bronchitis and chronic obstructive pulmonary disease. Am J Respir Crit Care Med. 2013;187(3):228-237. PMID 23204254. doi:10.1164/rccm.201210-1843CI."],
+      "citationVariants": [
+        "Kim V, Criner GJ. Chronic bronchitis and chronic obstructive pulmonary disease. Am J Respir Crit Care Med. 2013;187(3):228-237. PMID 23204254. doi:10.1164/rccm.201210-1843CI."
+      ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23204254/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/23204254/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/23204254/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-chronic-bronchitis-to-copd", "primaryId": "chronic-bronchitis", "targetId": "copd", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-chronic-bronchitis-to-copd",
+          "primaryId": "chronic-bronchitis",
+          "targetId": "copd",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["240b72931670ae5a14813e63ebf3daf4a33e10789b848c90bcff9cc9968d3e5e"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "240b72931670ae5a14813e63ebf3daf4a33e10789b848c90bcff9cc9968d3e5e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-40227658",
@@ -11000,209 +11289,640 @@
       "pmid": "40227658",
       "doi": "10.1001/jama.2025.1597",
       "canonicalCitation": "Chen SP, Woreta F, Chang DF. Cataracts: A Review. JAMA. 2025;333(23):2093-2103. PMID 40227658. doi:10.1001/jama.2025.1597.",
-      "citationVariants": ["Chen SP, Woreta F, Chang DF. Cataracts: A Review. JAMA. 2025;333(23):2093-2103. PMID 40227658. doi:10.1001/jama.2025.1597."],
+      "citationVariants": [
+        "Chen SP, Woreta F, Chang DF. Cataracts: A Review. JAMA. 2025;333(23):2093-2103. PMID 40227658. doi:10.1001/jama.2025.1597."
+      ],
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40227658/",
-      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/40227658/"],
-      "verificationScopes": ["clinical-evidence"],
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40227658/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
       "verified": false,
-      "sourceCheckedOnValues": ["2026-09-02"],
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
       "liveUsageCount": 1,
-      "liveUses": [{"relationshipId": "rel-cataracts-to-visual-impairment", "primaryId": "cataracts", "targetId": "visual-impairment", "sourceIndex": 0}],
+      "liveUses": [
+        {
+          "relationshipId": "rel-cataracts-to-visual-impairment",
+          "primaryId": "cataracts",
+          "targetId": "visual-impairment",
+          "sourceIndex": 0
+        }
+      ],
       "retiredUses": [],
-      "rawReferenceHashes": ["3a3dde3426ae876f4e56e9fc434b43841bc4a17ee59f64112d8c853dd5ae19bf"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
-    },
-      {
-        "sourceId": "pmid-35051625",
-        "status": "pending-verification",
-        "kind": "clinical-evidence",
-        "pmid": "35051625",
-        "doi": "10.1016/j.jaapos.2021.09.008",
-        "canonicalCitation": "Ernst J, et al. Congenital primary aphakia. J AAPOS. 2022;26(1):4.e1-4.e5. PMID 35051625. doi:10.1016/j.jaapos.2021.09.008.",
-        "citationVariants": ["Ernst J, et al. Congenital primary aphakia. J AAPOS. 2022;26(1):4.e1-4.e5. PMID 35051625. doi:10.1016/j.jaapos.2021.09.008."],
-        "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35051625/",
-        "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/35051625/"],
-        "verificationScopes": ["clinical-evidence"],
-        "verified": false,
-        "sourceCheckedOnValues": ["2026-09-02"],
-        "liveUsageCount": 1,
-        "liveUses": [{"relationshipId": "rel-aphakia-to-visual-impairment", "primaryId": "aphakia", "targetId": "visual-impairment", "sourceIndex": 0}],
-        "retiredUses": [],
-        "rawReferenceHashes": ["cb56aaf9ff78bb1055fe15f9de6f6672be4fab9ae531e957baba141e8f71c9e7"],
-        "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
-      },
-      {
-        "sourceId": "pmid-40202346",
-        "status": "pending-verification",
-        "kind": "clinical-evidence",
-        "pmid": "40202346",
-        "doi": "10.3238/arztebl.m2024.0264",
-        "canonicalCitation": "Kreimer F, Saguner AM, Akin I, Milting H, Eckardt L, El-Battrawy I. Arrhythmogenic Right Ventricular Cardiomyopathy: Diagnosis, Risk Stratification, and Treatment. Dtsch Arztebl Int. 2025;122(9):229-234. PMID 40202346. doi:10.3238/arztebl.m2024.0264.",
-        "citationVariants": ["Kreimer F, Saguner AM, Akin I, Milting H, Eckardt L, El-Battrawy I. Arrhythmogenic Right Ventricular Cardiomyopathy: Diagnosis, Risk Stratification, and Treatment. Dtsch Arztebl Int. 2025;122(9):229-234. PMID 40202346. doi:10.3238/arztebl.m2024.0264."],
-        "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40202346/",
-        "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/40202346/"],
-        "verificationScopes": ["clinical-evidence"],
-        "verified": false,
-        "sourceCheckedOnValues": ["2026-09-02"],
-        "liveUsageCount": 1,
-        "liveUses": [{"relationshipId": "rel-arrhythmogenic-right-ventricular-dysplasia-to-congestive-heart-failure", "primaryId": "arrhythmogenic-right-ventricular-dysplasia", "targetId": "congestive-heart-failure", "sourceIndex": 0}],
-        "retiredUses": [],
-        "rawReferenceHashes": ["5f10128a88b292a6463be5538d1aa3049a5b40c93b88283cda71962353ebecc4"],
-        "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
-      },
-      {
-        "sourceId": "pmid-30299492",
-        "status": "pending-verification",
-        "kind": "clinical-evidence",
-        "pmid": "30299492",
-        "doi": "10.1093/ndt/gfy291",
-        "canonicalCitation": "Ryšavá R. AL amyloidosis: advances in diagnostics and treatment. Nephrol Dial Transplant. 2019;34(9):1460-1466. PMID 30299492. doi:10.1093/ndt/gfy291.",
-        "citationVariants": ["Ryšavá R. AL amyloidosis: advances in diagnostics and treatment. Nephrol Dial Transplant. 2019;34(9):1460-1466. PMID 30299492. doi:10.1093/ndt/gfy291."],
-        "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30299492/",
-        "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/30299492/"],
-        "verificationScopes": ["clinical-evidence"],
-        "verified": false,
-        "sourceCheckedOnValues": ["2026-09-02"],
-        "liveUsageCount": 1,
-        "liveUses": [{"relationshipId": "rel-al-amyloidosis-to-chronic-kidney-disease", "primaryId": "al-amyloidosis", "targetId": "chronic-kidney-disease", "sourceIndex": 0}],
-        "retiredUses": [],
-        "rawReferenceHashes": ["c6b481cfcad1738dc133448e71d1733ec9bcf49da4b162963dce0fd4a6ddd136"],
-        "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
-      },
-      {
-        "sourceId": "pmid-36810235",
-        "status": "pending-verification",
-        "kind": "clinical-evidence",
-        "pmid": "36810235",
-        "doi": "10.1212/WNL.0000000000206866",
-        "canonicalCitation": "Bodilsen J, et al. Risk Factors and Prognosis of Epilepsy Following Brain Abscess: A Nationwide Population-Based Cohort Study. Neurology. 2023;100(15):e1611-e1620. PMID 36810235. doi:10.1212/WNL.0000000000206866.",
-        "citationVariants": ["Bodilsen J, et al. Risk Factors and Prognosis of Epilepsy Following Brain Abscess: A Nationwide Population-Based Cohort Study. Neurology. 2023;100(15):e1611-e1620. PMID 36810235. doi:10.1212/WNL.0000000000206866."],
-        "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36810235/",
-        "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/36810235/"],
-        "verificationScopes": ["clinical-evidence"],
-        "verified": false,
-        "sourceCheckedOnValues": ["2026-09-02"],
-        "liveUsageCount": 1,
-        "liveUses": [{"relationshipId": "rel-brain-abscess-to-seizure-disorder", "primaryId": "brain-abscess", "targetId": "seizure-disorder", "sourceIndex": 0}],
-        "retiredUses": [],
-        "rawReferenceHashes": ["f716cc845fa5683b272416d757d68295e1e4a3e197d35a695dfb1b5df4d08beb"],
-        "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
-      },
-      {
-        "sourceId": "pmid-34830959",
-        "status": "pending-verification",
-        "kind": "clinical-evidence",
-        "pmid": "34830959",
-        "doi": "10.3390/cancers13225804",
-        "canonicalCitation": "Autore F, Pasquale R, Innocenti I, Fresa A, Sora' F, Laurenti L. Autoimmune Hemolytic Anemia in Chronic Lymphocytic Leukemia: A Comprehensive Review. Cancers (Basel). 2021;13(22):5804. PMID 34830959. doi:10.3390/cancers13225804.",
-        "citationVariants": ["Autore F, Pasquale R, Innocenti I, Fresa A, Sora' F, Laurenti L. Autoimmune Hemolytic Anemia in Chronic Lymphocytic Leukemia: A Comprehensive Review. Cancers (Basel). 2021;13(22):5804. PMID 34830959. doi:10.3390/cancers13225804."],
-        "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34830959/",
-        "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/34830959/"],
-        "verificationScopes": ["clinical-evidence"],
-        "verified": false,
-        "sourceCheckedOnValues": ["2026-09-02"],
-        "liveUsageCount": 1,
-        "liveUses": [{"relationshipId": "rel-chronic-b-cell-leukemias-to-anemia", "primaryId": "chronic-b-cell-leukemias", "targetId": "anemia", "sourceIndex": 0}],
-        "retiredUses": [],
-        "rawReferenceHashes": ["6d8dfff57707fbfc5475a5b6c1bf73fe770a79ed46f0d4b5dd979d3fa3b89fc7"],
-        "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
-      },
-      {
-        "sourceId": "pmid-32113575",
-        "status": "pending-verification",
-        "kind": "clinical-evidence",
-        "pmid": "32113575",
-        "doi": "10.1016/S2213-2600(19)30480-1",
-        "canonicalCitation": "Perelas A, Silver RM, Arrossi AV, Highland KB. Systemic sclerosis-associated interstitial lung disease. Lancet Respir Med. 2020;8(3):304-320. PMID 32113575. doi:10.1016/S2213-2600(19)30480-1.",
-        "citationVariants": ["Perelas A, Silver RM, Arrossi AV, Highland KB. Systemic sclerosis-associated interstitial lung disease. Lancet Respir Med. 2020;8(3):304-320. PMID 32113575. doi:10.1016/S2213-2600(19)30480-1."],
-        "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32113575/",
-        "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/32113575/"],
-        "verificationScopes": ["clinical-evidence"],
-        "verified": false,
-        "sourceCheckedOnValues": ["2026-09-02"],
-        "liveUsageCount": 1,
-        "liveUses": [{"relationshipId": "rel-scleroderma-to-interstitial-lung-disease", "primaryId": "scleroderma", "targetId": "interstitial-lung-disease", "sourceIndex": 0}],
-        "retiredUses": [],
-        "rawReferenceHashes": ["076d9878bbc5471b3537e650775c1a74d0f158c789deb8dec4d3a4910f4844c1"],
-        "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
-      },
-      {
-        "sourceId": "pmid-29655822",
-        "status": "pending-verification",
-        "kind": "clinical-evidence",
-        "pmid": "29655822",
-        "doi": "10.1016/j.jchf.2017.09.011",
-        "canonicalCitation": "Maron BJ, Rowin EJ, Udelson JE, Maron MS. Clinical Spectrum and Management of Heart Failure in Hypertrophic Cardiomyopathy. JACC Heart Fail. 2018;6(5):353-363. PMID 29655822. doi:10.1016/j.jchf.2017.09.011.",
-        "citationVariants": ["Maron BJ, Rowin EJ, Udelson JE, Maron MS. Clinical Spectrum and Management of Heart Failure in Hypertrophic Cardiomyopathy. JACC Heart Fail. 2018;6(5):353-363. PMID 29655822. doi:10.1016/j.jchf.2017.09.011."],
-        "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29655822/",
-        "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/29655822/"],
-        "verificationScopes": ["clinical-evidence"],
-        "verified": false,
-        "sourceCheckedOnValues": ["2026-09-02"],
-        "liveUsageCount": 1,
-        "liveUses": [{"relationshipId": "rel-hypertrophic-obstructive-cardiomyopathy-to-congestive-heart-failure", "primaryId": "hypertrophic-obstructive-cardiomyopathy", "targetId": "congestive-heart-failure", "sourceIndex": 0}],
-        "retiredUses": [],
-        "rawReferenceHashes": ["e42e720d8aaa345612f2a42920f92b4b4f074cbf82f8aea6cb8ed2f357f37789"],
-        "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
-      },
-      {
-        "sourceId": "pmid-15021770",
-        "status": "pending-verification",
-        "kind": "clinical-evidence",
-        "pmid": "15021770",
-        "doi": "10.1097/00129492-200403000-00007",
-        "canonicalCitation": "Mikulec AA, McKenna MJ, Ramsey MJ, Rosowski JJ, Herrmann BS, Rauch SD, Curtin HD, Merchant SN. Superior semicircular canal dehiscence presenting as conductive hearing loss without vertigo. Otol Neurotol. 2004;25(2):121-129. PMID 15021770. doi:10.1097/00129492-200403000-00007.",
-        "citationVariants": ["Mikulec AA, McKenna MJ, Ramsey MJ, Rosowski JJ, Herrmann BS, Rauch SD, Curtin HD, Merchant SN. Superior semicircular canal dehiscence presenting as conductive hearing loss without vertigo. Otol Neurotol. 2004;25(2):121-129. PMID 15021770. doi:10.1097/00129492-200403000-00007."],
-        "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15021770/",
-        "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/15021770/"],
-        "verificationScopes": ["clinical-evidence"],
-        "verified": false,
-        "sourceCheckedOnValues": ["2026-09-02"],
-        "liveUsageCount": 1,
-        "liveUses": [{"relationshipId": "rel-superior-semicircular-canal-dehiscence-to-conductive-hearing-loss", "primaryId": "superior-semicircular-canal-dehiscence", "targetId": "conductive-hearing-loss", "sourceIndex": 0}],
-        "retiredUses": [],
-        "rawReferenceHashes": ["8633998d66be2b106e1ebc1d368d8c777a057a4cb3b9c815d27b3c09a5adce8e"],
-        "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
-      },
-      {
-        "sourceId": "pmid-35985419",
-        "status": "pending-verification",
-        "kind": "clinical-evidence",
-        "pmid": "35985419",
-        "doi": "10.1016/j.jamda.2022.07.009",
-        "canonicalCitation": "Ueshima J, Shimizu A, Maeda K, et al. Nutritional Management in Adult Patients With Dysphagia: Position Paper From Japanese Working Group on Integrated Nutrition for Dysphagic People. J Am Med Dir Assoc. 2022. PMID 35985419. doi:10.1016/j.jamda.2022.07.009.",
-        "citationVariants": ["Ueshima J, Shimizu A, Maeda K, et al. Nutritional Management in Adult Patients With Dysphagia: Position Paper From Japanese Working Group on Integrated Nutrition for Dysphagic People. J Am Med Dir Assoc. 2022. PMID 35985419. doi:10.1016/j.jamda.2022.07.009."],
-        "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35985419/",
-        "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/35985419/"],
-        "verificationScopes": ["clinical-evidence"],
-        "verified": false,
-        "sourceCheckedOnValues": ["2026-09-02"],
-        "liveUsageCount": 1,
-        "liveUses": [{"relationshipId": "rel-dysphagia-to-malnutrition-residuals", "primaryId": "dysphagia", "targetId": "malnutrition-residuals", "sourceIndex": 0}],
-        "retiredUses": [],
-        "rawReferenceHashes": ["1ec7138fe842f490f64108ca443f98eed83f5a2f4a42ba8428e155d8cbb221e2"],
-        "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
-      },
-      {
-        "sourceId": "pmid-37497727",
-        "status": "pending-verification",
-        "kind": "clinical-evidence",
-        "pmid": "37497727",
-        "doi": null,
-        "canonicalCitation": "Hassan AB, et al. The prevalence of pulmonary arterial hypertension in patients with mixed connective tissue disease: a systematic review and meta-analysis. Clin Exp Rheumatol. 2023. PMID 37497727.",
-        "citationVariants": ["Hassan AB, et al. The prevalence of pulmonary arterial hypertension in patients with mixed connective tissue disease: a systematic review and meta-analysis. Clin Exp Rheumatol. 2023. PMID 37497727."],
-        "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37497727/",
-        "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/37497727/"],
-        "verificationScopes": ["clinical-evidence"],
-        "verified": false,
-        "sourceCheckedOnValues": ["2026-09-02"],
-        "liveUsageCount": 1,
-        "liveUses": [{"relationshipId": "rel-mixed-connective-tissue-disease-to-pulmonary-hypertension", "primaryId": "mixed-connective-tissue-disease", "targetId": "pulmonary-hypertension", "sourceIndex": 0}],
-        "retiredUses": [],
-        "rawReferenceHashes": ["ed28e6428ccb0fde3c663ac404ee3acbd77e57ab4bfa8be3710b2c90b1cedadd"],
-        "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": [
+        "3a3dde3426ae876f4e56e9fc434b43841bc4a17ee59f64112d8c853dd5ae19bf"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
       }
-   ],
-   "lastUpdatedBy": "Mapping Expansion Batch ME-28",
-   "currentState": "ME28-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+    },
+    {
+      "sourceId": "pmid-35051625",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35051625",
+      "doi": "10.1016/j.jaapos.2021.09.008",
+      "canonicalCitation": "Ernst J, et al. Congenital primary aphakia. J AAPOS. 2022;26(1):4.e1-4.e5. PMID 35051625. doi:10.1016/j.jaapos.2021.09.008.",
+      "citationVariants": [
+        "Ernst J, et al. Congenital primary aphakia. J AAPOS. 2022;26(1):4.e1-4.e5. PMID 35051625. doi:10.1016/j.jaapos.2021.09.008."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35051625/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35051625/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-aphakia-to-visual-impairment",
+          "primaryId": "aphakia",
+          "targetId": "visual-impairment",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "cb56aaf9ff78bb1055fe15f9de6f6672be4fab9ae531e957baba141e8f71c9e7"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-40202346",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40202346",
+      "doi": "10.3238/arztebl.m2024.0264",
+      "canonicalCitation": "Kreimer F, Saguner AM, Akin I, Milting H, Eckardt L, El-Battrawy I. Arrhythmogenic Right Ventricular Cardiomyopathy: Diagnosis, Risk Stratification, and Treatment. Dtsch Arztebl Int. 2025;122(9):229-234. PMID 40202346. doi:10.3238/arztebl.m2024.0264.",
+      "citationVariants": [
+        "Kreimer F, Saguner AM, Akin I, Milting H, Eckardt L, El-Battrawy I. Arrhythmogenic Right Ventricular Cardiomyopathy: Diagnosis, Risk Stratification, and Treatment. Dtsch Arztebl Int. 2025;122(9):229-234. PMID 40202346. doi:10.3238/arztebl.m2024.0264."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40202346/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40202346/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-arrhythmogenic-right-ventricular-dysplasia-to-congestive-heart-failure",
+          "primaryId": "arrhythmogenic-right-ventricular-dysplasia",
+          "targetId": "congestive-heart-failure",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5f10128a88b292a6463be5538d1aa3049a5b40c93b88283cda71962353ebecc4"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-30299492",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "30299492",
+      "doi": "10.1093/ndt/gfy291",
+      "canonicalCitation": "Ryšavá R. AL amyloidosis: advances in diagnostics and treatment. Nephrol Dial Transplant. 2019;34(9):1460-1466. PMID 30299492. doi:10.1093/ndt/gfy291.",
+      "citationVariants": [
+        "Ryšavá R. AL amyloidosis: advances in diagnostics and treatment. Nephrol Dial Transplant. 2019;34(9):1460-1466. PMID 30299492. doi:10.1093/ndt/gfy291."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30299492/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30299492/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-al-amyloidosis-to-chronic-kidney-disease",
+          "primaryId": "al-amyloidosis",
+          "targetId": "chronic-kidney-disease",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c6b481cfcad1738dc133448e71d1733ec9bcf49da4b162963dce0fd4a6ddd136"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-36810235",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "36810235",
+      "doi": "10.1212/WNL.0000000000206866",
+      "canonicalCitation": "Bodilsen J, et al. Risk Factors and Prognosis of Epilepsy Following Brain Abscess: A Nationwide Population-Based Cohort Study. Neurology. 2023;100(15):e1611-e1620. PMID 36810235. doi:10.1212/WNL.0000000000206866.",
+      "citationVariants": [
+        "Bodilsen J, et al. Risk Factors and Prognosis of Epilepsy Following Brain Abscess: A Nationwide Population-Based Cohort Study. Neurology. 2023;100(15):e1611-e1620. PMID 36810235. doi:10.1212/WNL.0000000000206866."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36810235/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36810235/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-brain-abscess-to-seizure-disorder",
+          "primaryId": "brain-abscess",
+          "targetId": "seizure-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f716cc845fa5683b272416d757d68295e1e4a3e197d35a695dfb1b5df4d08beb"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-34830959",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "34830959",
+      "doi": "10.3390/cancers13225804",
+      "canonicalCitation": "Autore F, Pasquale R, Innocenti I, Fresa A, Sora' F, Laurenti L. Autoimmune Hemolytic Anemia in Chronic Lymphocytic Leukemia: A Comprehensive Review. Cancers (Basel). 2021;13(22):5804. PMID 34830959. doi:10.3390/cancers13225804.",
+      "citationVariants": [
+        "Autore F, Pasquale R, Innocenti I, Fresa A, Sora' F, Laurenti L. Autoimmune Hemolytic Anemia in Chronic Lymphocytic Leukemia: A Comprehensive Review. Cancers (Basel). 2021;13(22):5804. PMID 34830959. doi:10.3390/cancers13225804."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34830959/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34830959/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-chronic-b-cell-leukemias-to-anemia",
+          "primaryId": "chronic-b-cell-leukemias",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "6d8dfff57707fbfc5475a5b6c1bf73fe770a79ed46f0d4b5dd979d3fa3b89fc7"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-32113575",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "32113575",
+      "doi": "10.1016/S2213-2600(19)30480-1",
+      "canonicalCitation": "Perelas A, Silver RM, Arrossi AV, Highland KB. Systemic sclerosis-associated interstitial lung disease. Lancet Respir Med. 2020;8(3):304-320. PMID 32113575. doi:10.1016/S2213-2600(19)30480-1.",
+      "citationVariants": [
+        "Perelas A, Silver RM, Arrossi AV, Highland KB. Systemic sclerosis-associated interstitial lung disease. Lancet Respir Med. 2020;8(3):304-320. PMID 32113575. doi:10.1016/S2213-2600(19)30480-1."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32113575/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/32113575/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-scleroderma-to-interstitial-lung-disease",
+          "primaryId": "scleroderma",
+          "targetId": "interstitial-lung-disease",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "076d9878bbc5471b3537e650775c1a74d0f158c789deb8dec4d3a4910f4844c1"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-29655822",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "29655822",
+      "doi": "10.1016/j.jchf.2017.09.011",
+      "canonicalCitation": "Maron BJ, Rowin EJ, Udelson JE, Maron MS. Clinical Spectrum and Management of Heart Failure in Hypertrophic Cardiomyopathy. JACC Heart Fail. 2018;6(5):353-363. PMID 29655822. doi:10.1016/j.jchf.2017.09.011.",
+      "citationVariants": [
+        "Maron BJ, Rowin EJ, Udelson JE, Maron MS. Clinical Spectrum and Management of Heart Failure in Hypertrophic Cardiomyopathy. JACC Heart Fail. 2018;6(5):353-363. PMID 29655822. doi:10.1016/j.jchf.2017.09.011."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29655822/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/29655822/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hypertrophic-obstructive-cardiomyopathy-to-congestive-heart-failure",
+          "primaryId": "hypertrophic-obstructive-cardiomyopathy",
+          "targetId": "congestive-heart-failure",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "e42e720d8aaa345612f2a42920f92b4b4f074cbf82f8aea6cb8ed2f357f37789"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-15021770",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "15021770",
+      "doi": "10.1097/00129492-200403000-00007",
+      "canonicalCitation": "Mikulec AA, McKenna MJ, Ramsey MJ, Rosowski JJ, Herrmann BS, Rauch SD, Curtin HD, Merchant SN. Superior semicircular canal dehiscence presenting as conductive hearing loss without vertigo. Otol Neurotol. 2004;25(2):121-129. PMID 15021770. doi:10.1097/00129492-200403000-00007.",
+      "citationVariants": [
+        "Mikulec AA, McKenna MJ, Ramsey MJ, Rosowski JJ, Herrmann BS, Rauch SD, Curtin HD, Merchant SN. Superior semicircular canal dehiscence presenting as conductive hearing loss without vertigo. Otol Neurotol. 2004;25(2):121-129. PMID 15021770. doi:10.1097/00129492-200403000-00007."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15021770/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/15021770/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-superior-semicircular-canal-dehiscence-to-conductive-hearing-loss",
+          "primaryId": "superior-semicircular-canal-dehiscence",
+          "targetId": "conductive-hearing-loss",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8633998d66be2b106e1ebc1d368d8c777a057a4cb3b9c815d27b3c09a5adce8e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-35985419",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35985419",
+      "doi": "10.1016/j.jamda.2022.07.009",
+      "canonicalCitation": "Ueshima J, Shimizu A, Maeda K, et al. Nutritional Management in Adult Patients With Dysphagia: Position Paper From Japanese Working Group on Integrated Nutrition for Dysphagic People. J Am Med Dir Assoc. 2022. PMID 35985419. doi:10.1016/j.jamda.2022.07.009.",
+      "citationVariants": [
+        "Ueshima J, Shimizu A, Maeda K, et al. Nutritional Management in Adult Patients With Dysphagia: Position Paper From Japanese Working Group on Integrated Nutrition for Dysphagic People. J Am Med Dir Assoc. 2022. PMID 35985419. doi:10.1016/j.jamda.2022.07.009."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35985419/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35985419/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-dysphagia-to-malnutrition-residuals",
+          "primaryId": "dysphagia",
+          "targetId": "malnutrition-residuals",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "1ec7138fe842f490f64108ca443f98eed83f5a2f4a42ba8428e155d8cbb221e2"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-37497727",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37497727",
+      "doi": null,
+      "canonicalCitation": "Hassan AB, et al. The prevalence of pulmonary arterial hypertension in patients with mixed connective tissue disease: a systematic review and meta-analysis. Clin Exp Rheumatol. 2023. PMID 37497727.",
+      "citationVariants": [
+        "Hassan AB, et al. The prevalence of pulmonary arterial hypertension in patients with mixed connective tissue disease: a systematic review and meta-analysis. Clin Exp Rheumatol. 2023. PMID 37497727."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37497727/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37497727/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-mixed-connective-tissue-disease-to-pulmonary-hypertension",
+          "primaryId": "mixed-connective-tissue-disease",
+          "targetId": "pulmonary-hypertension",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "ed28e6428ccb0fde3c663ac404ee3acbd77e57ab4bfa8be3710b2c90b1cedadd"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-24973422",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "24973422",
+      "doi": "10.1093/cid/ciu444",
+      "canonicalCitation": "Stevens DL, Bisno AL, Chambers HF, Dellinger EP, Goldstein EJC, Gorbach SL, Hirschmann JV, Kaplan SL, Montoya JG, Wade JC. Practice guidelines for the diagnosis and management of skin and soft tissue infections: 2014 update by the Infectious Diseases Society of America. Clin Infect Dis. 2014;59(2):e10-e52. PMID 24973422. doi:10.1093/cid/ciu444.",
+      "citationVariants": [
+        "Stevens DL, Bisno AL, Chambers HF, Dellinger EP, Goldstein EJC, Gorbach SL, Hirschmann JV, Kaplan SL, Montoya JG, Wade JC. Practice guidelines for the diagnosis and management of skin and soft tissue infections: 2014 update by the Infectious Diseases Society of America. Clin Infect Dis. 2014;59(2):e10-e52. PMID 24973422. doi:10.1093/cid/ciu444."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24973422/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24973422/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-abscesses-to-cellulitis",
+          "primaryId": "abscesses",
+          "targetId": "cellulitis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "68114424e5dca57361aa483a9ca56965a7737f51d96d57f616bbcfbd626e5595"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-19238360",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "19238360",
+      "doi": "10.1007/s00167-009-0727-y",
+      "canonicalCitation": "Nilsson-Helander K, Thurin A, Karlsson J, Eriksson BI. High incidence of deep venous thrombosis after Achilles tendon rupture: a prospective study. Knee Surg Sports Traumatol Arthrosc. 2009;17(10):1234-1238. PMID 19238360. doi:10.1007/s00167-009-0727-y.",
+      "citationVariants": [
+        "Nilsson-Helander K, Thurin A, Karlsson J, Eriksson BI. High incidence of deep venous thrombosis after Achilles tendon rupture: a prospective study. Knee Surg Sports Traumatol Arthrosc. 2009;17(10):1234-1238. PMID 19238360. doi:10.1007/s00167-009-0727-y."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19238360/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/19238360/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-achilles-tendinopathy-rupture-to-deep-vein-thrombosis",
+          "primaryId": "achilles-tendinopathy-rupture",
+          "targetId": "deep-vein-thrombosis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "2a0b96f9046d3f762cd292ef275bb313da768a3b47c00543648529ab23d2fece"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-40437720",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40437720",
+      "doi": null,
+      "canonicalCitation": "Heah MM, Ng RS, Low DW, Mohd Ali N, Jamil A. The impact of facial acne scars on quality of life, anxiety, depression and its associated risk factors. Med J Malaysia. 2025;80(3):313-320. PMID 40437720.",
+      "citationVariants": [
+        "Heah MM, Ng RS, Low DW, Mohd Ali N, Jamil A. The impact of facial acne scars on quality of life, anxiety, depression and its associated risk factors. Med J Malaysia. 2025;80(3):313-320. PMID 40437720."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40437720/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40437720/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-acne-scarring-to-depressive-disorder",
+          "primaryId": "acne-scarring",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "7cc1c4d72e2cb5fbd4cdf2e641211822a6825d06b07a8f9ad869243ef784bbe0"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-16545526",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "16545526",
+      "doi": "10.1016/j.psyneuen.2006.01.003",
+      "canonicalCitation": "Thomsen AF, Kvist TK, Andersen PK, Kessing LV. The risk of affective disorders in patients with adrenocortical insufficiency. Psychoneuroendocrinology. 2006;31(5):614-622. PMID 16545526. doi:10.1016/j.psyneuen.2006.01.003.",
+      "citationVariants": [
+        "Thomsen AF, Kvist TK, Andersen PK, Kessing LV. The risk of affective disorders in patients with adrenocortical insufficiency. Psychoneuroendocrinology. 2006;31(5):614-622. PMID 16545526. doi:10.1016/j.psyneuen.2006.01.003."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16545526/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16545526/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-addisons-disease-to-depressive-disorder",
+          "primaryId": "addisons-disease",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "9878a2c39c6b416ad0c316b19fd597fd76af67927532ec36e0b948e739fec0c3"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-40700723",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40700723",
+      "doi": "10.1093/nutrit/nuaf134",
+      "canonicalCitation": "Bauer S, Blanar V, Pospichal J, Eglseer D, Chrastecka M. Association Between Taste Disorders and Malnutrition in Older Adults: A Scoping Review. Nutr Rev. 2026;84(2):435-447. PMID 40700723. doi:10.1093/nutrit/nuaf134.",
+      "citationVariants": [
+        "Bauer S, Blanar V, Pospichal J, Eglseer D, Chrastecka M. Association Between Taste Disorders and Malnutrition in Older Adults: A Scoping Review. Nutr Rev. 2026;84(2):435-447. PMID 40700723. doi:10.1093/nutrit/nuaf134."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40700723/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40700723/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-02"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ageusia-to-malnutrition-residuals",
+          "primaryId": "ageusia",
+          "targetId": "malnutrition-residuals",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "3eafb29eff0fef88c7490aa8540ff1e4ad4acf192ad74f1a21fa81632d4fce4b"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    }
+  ],
+  "lastUpdatedBy": "Mapping Expansion Batch ME-29",
+  "currentState": "ME29-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

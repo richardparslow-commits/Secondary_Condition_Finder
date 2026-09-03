@@ -3,7 +3,54 @@
   "draft": true,
   "todo": [
     "Rebuild secondary-condition suggestions using ageusia-specific clinical evidence before publication.",
-    "The prior depression and GERD suggestions were withdrawn because 38 CFR 3.310 supplied only legal framework and did not establish either the mood relationship or an ageusia-specific treatment-to-GI pathway."
+    "The prior depression and GERD suggestions were withdrawn because 38 CFR 3.310 supplied only legal framework and did not establish either the mood relationship or an ageusia-specific treatment-to-GI pathway.",
+    "ME-29: a single bounded nutritional-impairment association has been authored from taste-disorder-specific clinical evidence; the withdrawn-suggestion note remains in force until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "malnutrition-residuals",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-29 adds this relationship only as a bounded chemosensory-intake association. Taste disorders are associated with reduced nutritional intake, unintentional weight loss, and malnutrition risk in review evidence, but the primary diagnosis alone does not establish nutritional impairment in every person or determine an individual's cause, severity, or course. Require independently documented ageusia or another defined taste disorder and objective nutritional impairment, compatible chronology, dietary and weight records, and specialist review. Preserve malignancy and its treatment, other head-and-neck disease, medication effects, neurodegenerative disease, primary nutritional deficiency, psychiatric illness, and other competing causes of reduced intake.",
+      "evidenceGaps": [
+        "Independent documentation of the taste disorder with objective or validated assessment",
+        "Objective nutritional findings: weight trajectory, dietary intake, laboratory markers",
+        "Chronology of taste-loss onset and nutritional decline",
+        "Assessment of malignancy and treatment, head-and-neck disease, medications, neurodegenerative disease, and primary deficiency states",
+        "Specialist assessment distinguishing taste-related intake impairment from other causes of malnutrition"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Bauer S, Blanar V, Pospichal J, Eglseer D, Chrastecka M. Association Between Taste Disorders and Malnutrition in Older Adults: A Scoping Review. Nutr Rev. 2026;84(2):435-447. PMID 40700723. doi:10.1093/nutrit/nuaf134.",
+          "note": "Scoping review associating taste disorders with reduced intake, unintentional weight loss, and malnutrition risk. It supports a bounded disease-association proposition and clinical evaluation, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40700723/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 40700723; taste-disorder and malnutrition-association synthesis"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Taste disorders are associated with reduced intake, weight loss, and malnutrition risk, but review evidence does not establish an individual medical nexus without documentation of both the chemosensory deficit and objective nutritional impairment, compatible chronology, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this association evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Loss of taste can reduce appetite and food enjoyment, lowering intake and promoting weight loss, but the precise contribution and individual clinical pathway must be established from the patient's dietary records, weight trajectory, and objective nutritional assessment.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Taste disorders are consistently associated with malnutrition risk in review evidence, but the review does not establish that ageusia caused or aggravated malnutrition in every individual; both diagnoses, chronology, objective nutritional findings, treatment, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Defined taste disorder and objective nutritional impairment; weight and intake records; chronology; malignancy, treatment, medication, neurodegenerative, deficiency, and psychiatric alternatives; specialist assessment of the individual relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Malignancy, head-and-neck treatment, or other disease causing independent intake impairment",
+          "Medication effects, neurodegenerative disease, or primary psychiatric illness reducing intake",
+          "Primary nutritional deficiency, malabsorption, or another metabolic cause of malnutrition"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }
