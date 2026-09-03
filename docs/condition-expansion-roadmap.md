@@ -312,6 +312,8 @@ Mapping Expansion ME-22 (2026-09-02) added five additional draft-safe relationsh
 
 Mapping Expansion ME-28 (2026-09-02) added five draft-safe relationships over the Wave-8 identities: `scleroderma -> interstitial-lung-disease`, `hypertrophic-obstructive-cardiomyopathy -> congestive-heart-failure`, `superior-semicircular-canal-dehiscence -> conductive-hearing-loss`, `dysphagia -> malnutrition-residuals`, and `mixed-connective-tissue-disease -> pulmonary-hypertension`. Each remains `ASSOCIATION_ONLY`, `NOT_ESTABLISHED`, and pending qualified-human citation verification; no primary publication state changed.
 
+Mapping Expansion ME-29 (2026-09-02) added five additional draft-safe relationships over previously-unmapped Wave-8 identities: `abscesses -> cellulitis`, `achilles-tendinopathy-rupture -> deep-vein-thrombosis`, `acne-scarring -> depressive-disorder`, `addisons-disease -> depressive-disorder`, and `ageusia -> malnutrition-residuals`. Each remains `ASSOCIATION_ONLY`, `NOT_ESTABLISHED`, and pending qualified-human citation verification; no primary publication state changed. The broader `alopecia` identity was deliberately left unmapped because the narrower `alopecia-areata` identity already carries the depressive-disorder edge, avoiding a duplicate-identity violation of expansion rule 11.
+
 
 **Status: implemented (breaking migration).** The knowledge base was previously a ranked *association registry with a qualitative `prevalence` label*. Under 38 CFR § 3.310 a secondary condition must be either *caused by* or *aggravated by* the service-connected primary, so the associative `prevalence` model was deprecated and removed. Every suggestion now carries a mandatory CRG trio, enforced by the Zod schema:
 

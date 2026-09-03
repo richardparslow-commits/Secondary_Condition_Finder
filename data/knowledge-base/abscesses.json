@@ -5,5 +5,51 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "cellulitis",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-29 adds this relationship only as a bounded skin-and-soft-tissue-infection association. Cutaneous abscesses are frequently accompanied by surrounding cellulitis because the same bacterial process can involve both the localized collection and the adjacent dermal and subcutaneous tissue, but the primary diagnosis alone does not establish cellulitis in every person or determine an individual's cause, severity, or course. Require independently documented abscess and cellulitis, compatible anatomic site and chronology, objective examination or imaging findings, and clinical review. Preserve traumatic inoculation, retained foreign material, hygiene and skin-barrier factors, immunosuppression, diabetes, other infection sources, and noninfectious mimics such as venous stasis or inflammatory dermatoses.",
+      "evidenceGaps": [
+        "Independent documentation of the abscess and the cellulitis with anatomic site, extent, and severity",
+        "Objective examination findings, cultures, imaging, and response-to-treatment records",
+        "Chronology of abscess onset, drainage or treatment, and cellulitis course",
+        "Assessment of traumatic inoculation, foreign material, skin-barrier disruption, diabetes, immunosuppression, and other infection sources",
+        "Clinical assessment distinguishing infectious cellulitis from noninfectious mimics"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Stevens DL, Bisno AL, Chambers HF, Dellinger EP, Goldstein EJC, Gorbach SL, Hirschmann JV, Kaplan SL, Montoya JG, Wade JC. Practice guidelines for the diagnosis and management of skin and soft tissue infections: 2014 update by the Infectious Diseases Society of America. Clin Infect Dis. 2014;59(2):e10-e52. PMID 24973422. doi:10.1093/cid/ciu444.",
+          "note": "IDSA skin-and-soft-tissue-infection guideline covering abscess and cellulitis as a clinical spectrum. It supports a bounded disease-association proposition and clinical evaluation, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24973422/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 24973422; guideline classification and spectrum of purulent and nonpurulent SSTI"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Cutaneous abscess and surrounding cellulitis are clinically associated as a contiguous skin-and-soft-tissue infection spectrum, but guideline evidence does not establish an individual medical nexus without documentation of both processes, compatible site and chronology, objective findings, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this association evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "The same bacterial process that produces a localized abscess can extend through adjacent dermal and subcutaneous planes as cellulitis, but the precise contribution and individual clinical pathway must be established from the patient's documented findings and objective evidence.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Abscess and cellulitis commonly coexist as a contiguous soft-tissue infection spectrum, but the guideline does not establish that an abscess caused or aggravated cellulitis in every individual; both diagnoses, anatomic and chronologic compatibility, objective testing, treatment course, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Independent abscess and cellulitis documentation; compatible anatomic site and chronology; cultures, imaging, and treatment-response records; traumatic, barrier, glycemic, immune, and other competing causes; clinical distinction from noninfectious mimics",
+        "alternativeEtiologiesToRuleOut": [
+          "Traumatic inoculation, retained foreign material, or independent wound infection",
+          "Diabetes, immunosuppression, or other host factors predisposing to independent infection",
+          "Noninfectious mimics such as venous stasis dermatitis, inflammatory dermatoses, or drug reactions"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

@@ -3,7 +3,54 @@
   "draft": true,
   "todo": [
     "Rebuild any secondary-condition suggestions using Addison's-disease-specific clinical evidence before publication.",
-    "The prior peripheral-neuropathy, diabetic-retinopathy, and chronic-kidney-disease suggestions were withdrawn because their only sources were rating-schedule authorities and the rationales relied on generic endocrine/metabolic language rather than Addison's-disease-specific relationship evidence."
+    "The prior peripheral-neuropathy, diabetic-retinopathy, and chronic-kidney-disease suggestions were withdrawn because their only sources were rating-schedule authorities and the rationales relied on generic endocrine/metabolic language rather than Addison's-disease-specific relationship evidence.",
+    "ME-29: a single bounded depressive-disorder association has been authored from Addison's-disease-specific clinical evidence; the withdrawn-suggestion note remains in force until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-29 adds this relationship only as a bounded neuropsychiatric association. Primary adrenal insufficiency is associated with increased rates of affective disorder in registry and cohort evidence, and cortisol deficiency can present with depressive symptoms, but the primary diagnosis alone does not establish a depressive disorder in every person or determine an individual's cause, severity, or course. Require independently documented Addison's disease and a diagnosed depressive disorder, compatible chronology and treatment state, objective psychiatric assessment, and mental-health review. Preserve pre-existing mood disorder, psychosocial stressors, other endocrine or autoimmune disease, glucocorticoid over- or under-replacement, substance use, and other competing causes.",
+      "evidenceGaps": [
+        "Independent documentation of Addison's disease with biochemical confirmation and of a diagnosed depressive disorder",
+        "Structured psychiatric assessment and current glucocorticoid-replacement status",
+        "Chronology of adrenal-insufficiency onset, replacement adequacy, and depressive-symptom course",
+        "Assessment of prior mood disorder, psychosocial stressors, autoimmune comorbidity, replacement dosing, and substance use",
+        "Mental-health assessment distinguishing adrenal-insufficiency-associated mood symptoms from other depressive etiologies"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Thomsen AF, Kvist TK, Andersen PK, Kessing LV. The risk of affective disorders in patients with adrenocortical insufficiency. Psychoneuroendocrinology. 2006;31(5):614-622. PMID 16545526. doi:10.1016/j.psyneuen.2006.01.003.",
+          "note": "Registry-based cohort associating adrenocortical insufficiency with increased rates of affective disorder. It supports a bounded disease-association proposition and clinical evaluation, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16545526/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 16545526; affective-disorder incidence-ratio findings"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Affective disorders are reported at increased rates in primary adrenal insufficiency, and cortisol deficiency has recognized neuropsychiatric manifestations, but registry or cohort association evidence does not establish an individual medical nexus without documentation of both conditions, compatible chronology and replacement state, structured psychiatric assessment, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this association evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Cortisol deficiency can affect mood, cognition, and energy homeostasis through HPA-axis and central monoaminergic effects, but the precise contribution and individual clinical pathway must be established from the patient's biochemical status, replacement adequacy, and objective mental-health assessment.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Increased affective-disorder rates in adrenocortical insufficiency are documented in registry data, but the cohort evidence does not establish that Addison's disease caused or aggravated a depressive disorder in every individual; both diagnoses, chronology, replacement state, structured assessment, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Biochemically confirmed Addison's disease and diagnosed depressive disorder; structured psychiatric testing and replacement-status records; prior mood history, autoimmune comorbidity, dosing, and substance review; mental-health assessment of the individual relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing or independent major depressive disorder or bipolar-spectrum illness",
+          "Other endocrine or autoimmune disease, glucocorticoid over- or under-replacement, or medication effects",
+          "Psychosocial stressors, substance use, or other psychiatric comorbidity explaining depressive symptoms"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

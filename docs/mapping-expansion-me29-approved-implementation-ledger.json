@@ -1,0 +1,72 @@
+{
+  "batch": "ME-29",
+  "batchDate": "2026-09-02",
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "relationships": [
+    {
+      "relationshipId": "rel-abscesses-to-cellulitis",
+      "primaryId": "abscesses",
+      "targetId": "cellulitis",
+      "pmid": "24973422",
+      "doi": "10.1093/cid/ciu444",
+      "citation": "Stevens DL, Bisno AL, Chambers HF, Dellinger EP, Goldstein EJC, Gorbach SL, Hirschmann JV, Kaplan SL, Montoya JG, Wade JC. Practice guidelines for the diagnosis and management of skin and soft tissue infections: 2014 update by the Infectious Diseases Society of America. Clin Infect Dis. 2014;59(2):e10-e52. PMID 24973422. doi:10.1093/cid/ciu444.",
+      "publicationGuard": "Require independently documented abscess and cellulitis, compatible anatomic site and chronology, objective examination or imaging findings, and clinical review."
+    },
+    {
+      "relationshipId": "rel-achilles-tendinopathy-rupture-to-deep-vein-thrombosis",
+      "primaryId": "achilles-tendinopathy-rupture",
+      "targetId": "deep-vein-thrombosis",
+      "pmid": "19238360",
+      "doi": "10.1007/s00167-009-0727-y",
+      "citation": "Nilsson-Helander K, Thurin A, Karlsson J, Eriksson BI. High incidence of deep venous thrombosis after Achilles tendon rupture: a prospective study. Knee Surg Sports Traumatol Arthrosc. 2009;17(10):1234-1238. PMID 19238360. doi:10.1007/s00167-009-0727-y.",
+      "publicationGuard": "Require independently documented Achilles tendon rupture and DVT, compatible laterality and chronology, objective venous imaging, and clinical review."
+    },
+    {
+      "relationshipId": "rel-acne-scarring-to-depressive-disorder",
+      "primaryId": "acne-scarring",
+      "targetId": "depressive-disorder",
+      "pmid": "40437720",
+      "doi": null,
+      "citation": "Heah MM, Ng RS, Low DW, Mohd Ali N, Jamil A. The impact of facial acne scars on quality of life, anxiety, depression and its associated risk factors. Med J Malaysia. 2025;80(3):313-320. PMID 40437720.",
+      "publicationGuard": "Require independently documented acne scarring and a diagnosed depressive disorder, compatible chronology and course, objective psychiatric assessment, and mental-health review."
+    },
+    {
+      "relationshipId": "rel-addisons-disease-to-depressive-disorder",
+      "primaryId": "addisons-disease",
+      "targetId": "depressive-disorder",
+      "pmid": "16545526",
+      "doi": "10.1016/j.psyneuen.2006.01.003",
+      "citation": "Thomsen AF, Kvist TK, Andersen PK, Kessing LV. The risk of affective disorders in patients with adrenocortical insufficiency. Psychoneuroendocrinology. 2006;31(5):614-622. PMID 16545526. doi:10.1016/j.psyneuen.2006.01.003.",
+      "publicationGuard": "Require independently documented Addison's disease and a diagnosed depressive disorder, compatible chronology and treatment state, objective psychiatric assessment, and mental-health review."
+    },
+    {
+      "relationshipId": "rel-ageusia-to-malnutrition-residuals",
+      "primaryId": "ageusia",
+      "targetId": "malnutrition-residuals",
+      "pmid": "40700723",
+      "doi": "10.1093/nutrit/nuaf134",
+      "citation": "Bauer S, Blanar V, Pospichal J, Eglseer D, Chrastecka M. Association Between Taste Disorders and Malnutrition in Older Adults: A Scoping Review. Nutr Rev. 2026;84(2):435-447. PMID 40700723. doi:10.1093/nutrit/nuaf134.",
+      "publicationGuard": "Require independently documented ageusia or another defined taste disorder and objective nutritional impairment, compatible chronology, dietary and weight records, and specialist review."
+    }
+  ],
+  "evidenceAndPublicationState": {
+    "primaryKnowledgeBaseRecordsRemainDraft": true,
+    "suggestionsAreAssociationOnly": true,
+    "clinicalReferencesRemainUnverified": true,
+    "qualifiedHumanCitationReviewRequiredBeforePromotion": true,
+    "registryHashesUseRepositoryCanonicalization": true
+  },
+  "aggregateRatchet": {
+    "relationships": "313 -> 318",
+    "liveSourceReferenceUses": "321 -> 326",
+    "verifiedLiveUses": "256 unchanged",
+    "pendingLiveUses": "65 -> 70",
+    "clinicalUses": "316 -> 321",
+    "explicitPublicationGuards": "234 -> 244 cumulative (239 -> 244 this batch)",
+    "sourceEntitiesIncludingLineage": "307 -> 311 (one citation reused from an existing pending entity)"
+  },
+  "identityScopeNotes": [
+    "The broader alopecia identity was deliberately left unmapped this batch because the narrower alopecia-areata identity already carries a depressive-disorder relationship built on areata-specific meta-analytic evidence; authoring the same edge under the broader identity would duplicate a narrower identity contrary to expansion rule 11. Alopecia remains queued for a scope-correct relationship with its own evidence."
+  ],
+  "safetyBoundary": "These records are evidence-navigation aids only. They do not diagnose a condition, establish a VA medical nexus, determine service connection, or replace qualified clinical and accredited-representative review. Pending citation state is intentionally fail-closed."
+}
