@@ -1,0 +1,76 @@
+{
+  "batch": "ME-31",
+  "batchDate": "2026-09-03",
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "relationships": [
+    {
+      "relationshipId": "rel-amebic-liver-abscess-to-pleural-effusion",
+      "primaryId": "amebic-liver-abscess",
+      "targetId": "pleural-effusion",
+      "pmid": "41068883",
+      "doi": "10.1186/s41182-025-00809-2",
+      "citation": "Hasegawa K, Kawashima A, Kuwata R, et al. Intrathoracic rupture of amebic liver abscess: a case report and literature review. Trop Med Health. 2025;53:136. PMID 41068883. doi:10.1186/s41182-025-00809-2.",
+      "publicationGuard": "Require independently documented amebic liver abscess by imaging or serology, documented pleural effusion by imaging compatible in chronology and laterality, and specialist review."
+    },
+    {
+      "relationshipId": "rel-amputation-of-foot-to-phantom-limb-pain",
+      "primaryId": "amputation-of-foot",
+      "targetId": "phantom-limb-pain",
+      "pmid": "34583023",
+      "doi": "10.1016/j.jpain.2021.09.003",
+      "citation": "Diers M, Krumm B, Fuchs X. The Prevalence and Characteristics of Phantom Limb Pain and Non-Painful Phantom Phenomena in a Nationwide Survey of 3,374 Unilateral Limb Amputees. J Pain. 2022;23(3):411-423. PMID 34583023. doi:10.1016/j.jpain.2021.09.003.",
+      "publicationGuard": "Require independently documented amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review."
+    },
+    {
+      "relationshipId": "rel-amputation-of-hand-to-phantom-limb-pain",
+      "primaryId": "amputation-of-hand",
+      "targetId": "phantom-limb-pain",
+      "pmid": "34583023",
+      "doi": "10.1016/j.jpain.2021.09.003",
+      "citation": "Diers M, Krumm B, Fuchs X. The Prevalence and Characteristics of Phantom Limb Pain and Non-Painful Phantom Phenomena in a Nationwide Survey of 3,374 Unilateral Limb Amputees. J Pain. 2022;23(3):411-423. PMID 34583023. doi:10.1016/j.jpain.2021.09.003.",
+      "publicationGuard": "Require independently documented amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review."
+    },
+    {
+      "relationshipId": "rel-amputation-of-leg-to-phantom-limb-pain",
+      "primaryId": "amputation-of-leg",
+      "targetId": "phantom-limb-pain",
+      "pmid": "34583023",
+      "doi": "10.1016/j.jpain.2021.09.003",
+      "citation": "Diers M, Krumm B, Fuchs X. The Prevalence and Characteristics of Phantom Limb Pain and Non-Painful Phantom Phenomena in a Nationwide Survey of 3,374 Unilateral Limb Amputees. J Pain. 2022;23(3):411-423. PMID 34583023. doi:10.1016/j.jpain.2021.09.003.",
+      "publicationGuard": "Require independently documented amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review."
+    },
+    {
+      "relationshipId": "rel-anismus-pelvic-floor-dyssynergia-to-fecal-incontinence",
+      "primaryId": "anismus-pelvic-floor-dyssynergia",
+      "targetId": "fecal-incontinence",
+      "pmid": "41713710",
+      "doi": "10.1053/j.gastro.2026.01.037",
+      "citation": "Rao SSC, Bharucha AE, Carrington EV, Grossi U, Malcolm A, Neshatian L, Remes-Troche JM. Anorectal Disorders. Gastroenterology. 2026;170(6):1318-1346. PMID 41713710. doi:10.1053/j.gastro.2026.01.037.",
+      "publicationGuard": "Require independently documented dyssynergia by anorectal manometry and balloon-expulsion testing, documented fecal incontinence by validated assessment compatible in chronology, and specialist review."
+    }
+  ],
+  "evidenceAndPublicationState": {
+    "primaryKnowledgeBaseRecordsRemainDraft": true,
+    "suggestionsAreAssociationOnly": true,
+    "clinicalReferencesRemainUnverified": true,
+    "qualifiedHumanCitationReviewRequiredBeforePromotion": true,
+    "registryHashesUseRepositoryCanonicalization": true
+  },
+  "aggregateRatchet": {
+    "relationships": "323 -> 328",
+    "liveSourceReferenceUses": "331 -> 336",
+    "verifiedLiveUses": "256 unchanged",
+    "pendingLiveUses": "75 -> 80",
+    "clinicalUses": "326 -> 331",
+    "explicitPublicationGuards": "234 -> 254 cumulative (249 -> 254 this batch)",
+    "sourceEntitiesIncludingLineage": "317 -> 319 (two new entities: PMIDs 41068883, 41713710; one reused entity: PMID 34583023 carrying four live uses)"
+  },
+  "identityScopeNotes": [
+    "The nationwide amputee-survey source (PMID 34583023, introduced in ME-30 for amputation-of-arm) was reused across the three additional limb-level amputation identities rather than duplicated as separate source entities; the pending-verification entity now carries four live uses.",
+    "amputation-of-thumb-fingers-toes was deferred: digit-level amputation is outside the limb-level scope of the survey evidence.",
+    "anhedonia was deferred: it is a transdiagnostic symptom rather than a stand-alone condition, and a -> depressive-disorder edge would assert the wrong direction.",
+    "anal-fissure and ankle-disarticulation were deferred to the next batch pending a credible condition-specific target and citation.",
+    "amebic-liver-abscess is a master-resolution target-only-draft identity; the master-resolution helper now carries a ME-31 special-case branch (following the ME-12/ME-13/ME-29 pattern) permitting exactly one bounded suggestion."
+  ],
+  "safetyBoundary": "These records are evidence-navigation aids only. They do not diagnose a condition, establish a VA medical nexus, determine service connection, or replace qualified clinical and accredited-representative review. Pending citation state is intentionally fail-closed."
+}

@@ -3,7 +3,54 @@
   "draft": true,
   "todo": [
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "ME-31: a single bounded anorectal-function association has been authored from anorectal-disorder clinical evidence; the draft-safe association stands until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "fecal-incontinence",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded anorectal-function association. Anismus (dyssynergic defecation) is a functional defecation disorder defined by paradoxical contraction or failed relaxation of the pelvic floor and anal musculature during attempted defecation, and it coexists with fecal incontinence in anorectal-disorder clinical evidence, but the primary diagnosis alone does not establish incontinence in every person or determine an individual's course. Require independently documented dyssynergia by anorectal manometry and balloon-expulsion testing, documented fecal incontinence by validated assessment compatible in chronology, and specialist review. Preserve obstetric injury, prior anorectal surgery, neurologic disease, diabetes, and other competing causes of fecal incontinence.",
+      "evidenceGaps": [
+        "Independent documentation of dyssynergic defecation by anorectal manometry and balloon-expulsion test",
+        "Documented fecal incontinence by validated assessment with chronology",
+        "Sphincter-strength and nerve-integrity assessment",
+        "Assessment of obstetric injury, prior surgery, neurologic disease, and diabetes",
+        "Specialist assessment distinguishing dyssynergia-associated incontinence from other causes"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Rao SSC, Bharucha AE, Carrington EV, Grossi U, Malcolm A, Neshatian L, Remes-Troche JM. Anorectal Disorders. Gastroenterology. 2026;170(6):1318-1346. PMID 41713710. doi:10.1053/j.gastro.2026.01.037.",
+          "note": "AGA-affiliated clinical review defining diagnostic criteria and clinical evaluation for dyssynergic defecation and fecal incontinence within the anorectal-disorder spectrum. It supports a bounded disease-association proposition and clinical evaluation, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41713710/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 41713710; anorectal-disorder criteria covering dyssynergic defecation and fecal incontinence"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Dyssynergic defecation and fecal incontinence coexist within the anorectal-disorder spectrum and share pelvic-floor neuromuscular dysfunction, but the clinical-review evidence does not establish an individual medical nexus without documentation of both disorders, compatible chronology, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this association evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Shared pelvic-floor neuromuscular incoordination is hypothesized to impair both evacuation and continence, but the individual pathway must be established from manometry, endoanal imaging, and specialist pelvic-floor evaluation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Dyssynergic defecation and fecal incontinence are defined within the same anorectal-disorder framework and can coexist, but the review evidence does not establish that anismus caused or aggravated fecal incontinence in every individual; both diagnoses, chronology, objective findings, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Objective dyssynergia and incontinence documentation; chronology; manometric and imaging findings; obstetric, surgical, neurologic, and metabolic alternatives; specialist assessment of the individual relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Obstetric anal-sphincter injury or prior anorectal surgery",
+          "Neurologic disease or diabetes-related autonomic dysfunction",
+          "Primary sphincter weakness or structural anorectal disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

@@ -6,8 +6,8 @@
    "installedFrom": "Master Registry Discrepancy Resolution 2026",
    "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
    "counts": {
-      "relationships": 323,
-      "explicitPublicationGuards": 249,
+      "relationships": 328,
+      "explicitPublicationGuards": 254,
       "legacyRationaleBoundaries": 74
    },
    "relationships": [
@@ -10577,8 +10577,173 @@
          "sourceReferenceCount": 1,
          "pathwayIntelligencePresent": false,
          "suggestionObjectHash": "67dcf3cc8b2de52eaaa3a8c2cff79731b31f234071080cdfe0971f9a602b555c"
+      },
+      {
+         "relationshipId": "rel-amebic-liver-abscess-to-pleural-effusion",
+         "primaryId": "amebic-liver-abscess",
+         "targetId": "pleural-effusion",
+         "direction": "amebic-liver-abscess -> pleural-effusion",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-31-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded complication association. Hepatic amebic abscess can rupture through the diaphragm into the pleural space, producing sympathetic effusion or empyema-like collections documented in case-series and literature-review evidence, but the primary diagnosis alone does not establish pleural involvement in every person or determine an individual's course. Require independently documented amebic liver abscess by imaging or serology, documented pleural effusion by imaging compatible in chronology and laterality, and specialist review. Preserve tuberculosis, malignancy, heart failure, bacterial empyema, and other competing causes of pleural effusion."
+         },
+         "rationale": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded complication association. Hepatic amebic abscess can rupture through the diaphragm into the pleural space, producing sympathetic effusion or empyema-like collections documented in case-series and literature-review evidence, but the primary diagnosis alone does not establish pleural involvement in every person or determine an individual's course. Require independently documented amebic liver abscess by imaging or serology, documented pleural effusion by imaging compatible in chronology and laterality, and specialist review. Preserve tuberculosis, malignancy, heart failure, bacterial empyema, and other competing causes of pleural effusion.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented amebic liver abscess by imaging or serology, documented pleural effusion by imaging compatible in chronology and laterality, and specialist review.",
+            "boundarySource": "approved-me-31-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of the amebic liver abscess by imaging and serology",
+            "Pleural effusion documented by imaging with compatible chronology and laterality",
+            "Rupture or sympathetic-involvement pathway assessment",
+            "Assessment of tuberculosis, malignancy, heart failure, and bacterial empyema alternatives",
+            "Specialist assessment distinguishing hepatic-amebiasis-related effusion from other causes"
+         ],
+         "sourceIds": [
+            "pmid-41068883"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "b909375ab05f95a340b15084f0d723d3da993097d68f521f8b045e8c1a98c359"
+      },
+      {
+         "relationshipId": "rel-amputation-of-foot-to-phantom-limb-pain",
+         "primaryId": "amputation-of-foot",
+         "targetId": "phantom-limb-pain",
+         "direction": "amputation-of-foot -> phantom-limb-pain",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-31-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded post-amputation-pain association. Phantom limb pain is a frequent, well-characterized phenomenon after limb amputation, documented in a nationwide survey of 3,374 unilateral limb amputees that includes lower-limb levels, but the primary diagnosis alone does not establish phantom pain in every person or determine an individual's pain course or severity. Require independently documented foot amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review. Preserve pre-amputation pain, residual limb pain and neuroma, peripheral neuropathy, spinal cord pathology, and psychiatric contributions as competing or coexisting causes of post-amputation pain."
+         },
+         "rationale": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded post-amputation-pain association. Phantom limb pain is a frequent, well-characterized phenomenon after limb amputation, documented in a nationwide survey of 3,374 unilateral limb amputees that includes lower-limb levels, but the primary diagnosis alone does not establish phantom pain in every person or determine an individual's pain course or severity. Require independently documented foot amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review. Preserve pre-amputation pain, residual limb pain and neuroma, peripheral neuropathy, spinal cord pathology, and psychiatric contributions as competing or coexisting causes of post-amputation pain.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review.",
+            "boundarySource": "approved-me-31-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of the foot amputation (level, cause, date)",
+            "Documented phantom limb pain by validated assessment with chronology",
+            "Distinguish phantom pain from residual limb pain and neuroma pain",
+            "Assessment of pre-amputation pain, neuropathy, and spinal pathology",
+            "Specialist assessment distinguishing amputation-related phantom pain from other pain generators"
+         ],
+         "sourceIds": [
+            "pmid-34583023"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "ca044898ad473484abebd34a9a388a610a790c9209adad777125c1df841ef255"
+      },
+      {
+         "relationshipId": "rel-amputation-of-hand-to-phantom-limb-pain",
+         "primaryId": "amputation-of-hand",
+         "targetId": "phantom-limb-pain",
+         "direction": "amputation-of-hand -> phantom-limb-pain",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-31-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded post-amputation-pain association. Phantom limb pain is a frequent, well-characterized phenomenon after limb amputation, documented in a nationwide survey of 3,374 unilateral limb amputees that includes upper-limb levels, but the primary diagnosis alone does not establish phantom pain in every person or determine an individual's pain course or severity. Require independently documented hand amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review. Preserve pre-amputation pain, residual limb pain and neuroma, peripheral neuropathy, cervical spinal cord pathology, and psychiatric contributions as competing or coexisting causes of post-amputation pain."
+         },
+         "rationale": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded post-amputation-pain association. Phantom limb pain is a frequent, well-characterized phenomenon after limb amputation, documented in a nationwide survey of 3,374 unilateral limb amputees that includes upper-limb levels, but the primary diagnosis alone does not establish phantom pain in every person or determine an individual's pain course or severity. Require independently documented hand amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review. Preserve pre-amputation pain, residual limb pain and neuroma, peripheral neuropathy, cervical spinal cord pathology, and psychiatric contributions as competing or coexisting causes of post-amputation pain.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review.",
+            "boundarySource": "approved-me-31-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of the hand amputation (level, cause, date)",
+            "Documented phantom limb pain by validated assessment with chronology",
+            "Distinguish phantom pain from residual limb pain and neuroma pain",
+            "Assessment of pre-amputation pain, neuropathy, and spinal pathology",
+            "Specialist assessment distinguishing amputation-related phantom pain from other pain generators"
+         ],
+         "sourceIds": [
+            "pmid-34583023"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "d5c5abc911ebd9a6936cbe60d2aa230b7c55f71979d73aa70611b40dd0bd2f7e"
+      },
+      {
+         "relationshipId": "rel-amputation-of-leg-to-phantom-limb-pain",
+         "primaryId": "amputation-of-leg",
+         "targetId": "phantom-limb-pain",
+         "direction": "amputation-of-leg -> phantom-limb-pain",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-31-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded post-amputation-pain association. Phantom limb pain is a frequent, well-characterized phenomenon after limb amputation, documented in a nationwide survey of 3,374 unilateral limb amputees that includes lower-limb levels, but the primary diagnosis alone does not establish phantom pain in every person or determine an individual's pain course or severity. Require independently documented leg amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review. Preserve pre-amputation pain, residual limb pain and neuroma, peripheral neuropathy, lumbosacral spinal cord pathology, and psychiatric contributions as competing or coexisting causes of post-amputation pain."
+         },
+         "rationale": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded post-amputation-pain association. Phantom limb pain is a frequent, well-characterized phenomenon after limb amputation, documented in a nationwide survey of 3,374 unilateral limb amputees that includes lower-limb levels, but the primary diagnosis alone does not establish phantom pain in every person or determine an individual's pain course or severity. Require independently documented leg amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review. Preserve pre-amputation pain, residual limb pain and neuroma, peripheral neuropathy, lumbosacral spinal cord pathology, and psychiatric contributions as competing or coexisting causes of post-amputation pain.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review.",
+            "boundarySource": "approved-me-31-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of the leg amputation (level, cause, date)",
+            "Documented phantom limb pain by validated assessment with chronology",
+            "Distinguish phantom pain from residual limb pain and neuroma pain",
+            "Assessment of pre-amputation pain, neuropathy, and spinal pathology",
+            "Specialist assessment distinguishing amputation-related phantom pain from other pain generators"
+         ],
+         "sourceIds": [
+            "pmid-34583023"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "b2d3a73aa4e4879b82be8e6652ff2dd919f2660fe18a027e3a640b9d036600f8"
+      },
+      {
+         "relationshipId": "rel-anismus-pelvic-floor-dyssynergia-to-fecal-incontinence",
+         "primaryId": "anismus-pelvic-floor-dyssynergia",
+         "targetId": "fecal-incontinence",
+         "direction": "anismus-pelvic-floor-dyssynergia -> fecal-incontinence",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-31-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded anorectal-function association. Anismus (dyssynergic defecation) is a functional defecation disorder defined by paradoxical contraction or failed relaxation of the pelvic floor and anal musculature during attempted defecation, and it coexists with fecal incontinence in anorectal-disorder clinical evidence, but the primary diagnosis alone does not establish incontinence in every person or determine an individual's course. Require independently documented dyssynergia by anorectal manometry and balloon-expulsion testing, documented fecal incontinence by validated assessment compatible in chronology, and specialist review. Preserve obstetric injury, prior anorectal surgery, neurologic disease, diabetes, and other competing causes of fecal incontinence."
+         },
+         "rationale": "Mapping Expansion Batch ME-31 adds this relationship only as a bounded anorectal-function association. Anismus (dyssynergic defecation) is a functional defecation disorder defined by paradoxical contraction or failed relaxation of the pelvic floor and anal musculature during attempted defecation, and it coexists with fecal incontinence in anorectal-disorder clinical evidence, but the primary diagnosis alone does not establish incontinence in every person or determine an individual's course. Require independently documented dyssynergia by anorectal manometry and balloon-expulsion testing, documented fecal incontinence by validated assessment compatible in chronology, and specialist review. Preserve obstetric injury, prior anorectal surgery, neurologic disease, diabetes, and other competing causes of fecal incontinence.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented dyssynergia by anorectal manometry and balloon-expulsion testing, documented fecal incontinence by validated assessment compatible in chronology, and specialist review.",
+            "boundarySource": "approved-me-31-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of dyssynergic defecation by anorectal manometry and balloon-expulsion test",
+            "Documented fecal incontinence by validated assessment with chronology",
+            "Sphincter-strength and nerve-integrity assessment",
+            "Assessment of obstetric injury, prior surgery, neurologic disease, and diabetes",
+            "Specialist assessment distinguishing dyssynergia-associated incontinence from other causes"
+         ],
+         "sourceIds": [
+            "pmid-41713710"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "7a3327975fc158f252d86ebf3697fb7906b8f262419b9e578afda94a7ea3e7f1"
       }
    ],
-   "lastUpdatedBy": "Mapping Expansion Batch ME-30",
-   "currentState": "ME30-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+   "lastUpdatedBy": "Mapping Expansion Batch ME-31",
+   "currentState": "ME31-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

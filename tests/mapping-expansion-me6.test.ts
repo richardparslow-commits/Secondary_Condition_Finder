@@ -155,15 +155,15 @@ describe("Mapping Expansion Batch ME-6", () => {
     expect(files).toHaveLength(813);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(674);
-    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(323);
+    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(328);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(66);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(73);
     const refs = mappings.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-expect(refs).toHaveLength(331);
+expect(refs).toHaveLength(336);
     expect(refs.filter((ref) => ref.verified === true)).toHaveLength(256);
-expect(refs.filter((ref) => ref.verified === false)).toHaveLength(75);
+expect(refs.filter((ref) => ref.verified === false)).toHaveLength(80);
   });
 
   it("passes citation and master-registry gates in the final ME-7 verified state", { timeout: 30_000 }, () => {
@@ -178,11 +178,11 @@ expect(refs.filter((ref) => ref.verified === false)).toHaveLength(75);
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 331,
+      references: 336,
       verified: 256,
       retiredVerified: 6,
       verifiedProvenance: 262,
-      unverified: 75,
+      unverified: 80,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -198,11 +198,11 @@ expect(refs.filter((ref) => ref.verified === false)).toHaveLength(75);
     };
     expect(master).toMatchObject({
       status: "PASS",
-relationships: 323,
+relationships: 328,
       verifiedLiveSourceUses: 256,
-      pendingVerificationLiveSourceUses: 75,
+      pendingVerificationLiveSourceUses: 80,
       activeSourceEntities: 233,
-pendingVerificationSourceEntities: 75,
+pendingVerificationSourceEntities: 77,
     });
   });
 });

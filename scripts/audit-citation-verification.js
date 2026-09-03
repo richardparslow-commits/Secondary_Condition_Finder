@@ -43,15 +43,15 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // ME-29 mapping adds 5 more bounded sources as verified:false; qualified-human citation verification is separately gated.
 // ME-30 mapping adds 5 more bounded sources as verified:false; qualified-human citation verification is separately gated.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 331,
+  references: 336,
   liveVerified: 256,
   retiredVerified: 6,
   verifiedProvenance: 262,
-  unverified: 75,
+  unverified: 80,
   reviewFindings: 0,
-  liveClinicalEvidenceWithUrls: 326,
+  liveClinicalEvidenceWithUrls: 331,
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 330,
+  clinicalEvidenceProvenanceWithUrls: 335,
 });
 
 const hardFindings = [];
