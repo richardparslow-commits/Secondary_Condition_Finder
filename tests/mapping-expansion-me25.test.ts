@@ -87,11 +87,11 @@ describe("Mapping Expansion Batch ME-25", () => {
   });
 
   it("pins the ME-25 pre-qualified-human-citation-verification aggregate state", () => {
-    expect(relationships.currentState).toBe("ME29-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
-    expect(sources.currentState).toBe("ME29-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
-    expect(relationships.counts).toEqual({ relationships: 318, explicitPublicationGuards: 244, legacyRationaleBoundaries: 74 });
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 326, pendingVerificationSourceEntities: 70, totalSourceEntitiesIncludingLineage: 312 });
-    expect(sources.sources.filter((entry) => entry.status === "pending-verification")).toHaveLength(70);
-    expect(sources.sources.filter((entry) => entry.status === "pending-verification" && entry.kind === "clinical-evidence")).toHaveLength(70);
+    expect(relationships.currentState).toBe("ME30-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(sources.currentState).toBe("ME30-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(relationships.counts).toEqual({ relationships: 323, explicitPublicationGuards: 249, legacyRationaleBoundaries: 74 });
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 331, pendingVerificationSourceEntities: 75, totalSourceEntitiesIncludingLineage: 317 });
+    expect(sources.sources.filter((entry) => entry.status === "pending-verification")).toHaveLength(75);
+    expect(sources.sources.filter((entry) => entry.status === "pending-verification" && entry.kind === "clinical-evidence")).toHaveLength(75);
   });
 });

@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 326,
+    "liveSourceReferenceUses": 331,
     "activeSourceEntities": 233,
-    "pendingVerificationSourceEntities": 70,
+    "pendingVerificationSourceEntities": 75,
     "activeClinicalSourceEntities": 232,
-    "pendingClinicalSourceEntities": 70,
+    "pendingClinicalSourceEntities": 75,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 312,
+    "totalSourceEntitiesIncludingLineage": 317,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -11921,8 +11921,208 @@
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
+    },
+    {
+      "sourceId": "pmid-42065956",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42065956",
+      "doi": "10.3928/19382359-20260304-02",
+      "canonicalCitation": "Bandatmakur ASM, Sivaswamy L. Migraine Variants and Precursors in Childhood: Clinical Features, Diagnostic Challenges, and Management Approaches. Pediatr Ann. 2026;55(5):e195-e200. PMID 42065956. doi:10.3928/19382359-20260304-02.",
+      "citationVariants": [
+        "Bandatmakur ASM, Sivaswamy L. Migraine Variants and Precursors in Childhood: Clinical Features, Diagnostic Challenges, and Management Approaches. Pediatr Ann. 2026;55(5):e195-e200. PMID 42065956. doi:10.3928/19382359-20260304-02."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42065956/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42065956/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-alice-in-wonderland-syndrome-to-migraine-headaches",
+          "primaryId": "alice-in-wonderland-syndrome",
+          "targetId": "migraine-headaches",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "d8ea02603d5dfa1e307b16e07e7c5a92f58218e42cf31b4498ac65e6c8b960dd"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-28823525",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "28823525",
+      "doi": "10.1016/j.ejim.2017.08.018",
+      "canonicalCitation": "Andrès E, Mourot-Cottet R, Maloisel F, Vogel T, Tebacher M, Gottenberg JE. History and outcome of febrile neutropenia related to non-chemotherapy drugs: A retrospective study of the Strasbourg's agranulocytosis cohort. Eur J Intern Med. 2017;46:e13-e14. PMID 28823525. doi:10.1016/j.ejim.2017.08.018.",
+      "citationVariants": [
+        "Andrès E, Mourot-Cottet R, Maloisel F, Vogel T, Tebacher M, Gottenberg JE. History and outcome of febrile neutropenia related to non-chemotherapy drugs: A retrospective study of the Strasbourg's agranulocytosis cohort. Eur J Intern Med. 2017;46:e13-e14. PMID 28823525. doi:10.1016/j.ejim.2017.08.018."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28823525/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/28823525/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-agranulocytosis-to-cellulitis",
+          "primaryId": "agranulocytosis",
+          "targetId": "cellulitis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "39d3b56ea642f55bee6b5d6416703ce9a87892ab32194fcec9f766fd6a870ae7"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-41744126",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41744126",
+      "doi": "10.1002/mus.70188",
+      "canonicalCitation": "Yang Q, Wu H, Huang X, Xie M, Shan Y, Dou Z, Li Y, Wen H, Li C. Prevalence and Risk Factors of Dysphagia in Amyotrophic Lateral Sclerosis: A Retrospective Study Using the Nationwide Inpatient Sample Database. Muscle Nerve. 2026;73(5):875-881. PMID 41744126. doi:10.1002/mus.70188.",
+      "citationVariants": [
+        "Yang Q, Wu H, Huang X, Xie M, Shan Y, Dou Z, Li Y, Wen H, Li C. Prevalence and Risk Factors of Dysphagia in Amyotrophic Lateral Sclerosis: A Retrospective Study Using the Nationwide Inpatient Sample Database. Muscle Nerve. 2026;73(5):875-881. PMID 41744126. doi:10.1002/mus.70188."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41744126/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41744126/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-als-to-dysphagia",
+          "primaryId": "als",
+          "targetId": "dysphagia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "080a54999ee7d750882f8f2d61e94e62cccf5801974eefd4e0b18f09c5128168"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-41985272",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41985272",
+      "doi": "10.1016/j.smrv.2026.102289",
+      "canonicalCitation": "Zhang Y, Ren R, Feng X, Wang M, Huang J, Shi J, Lu L, Sanford LD, Vitiello MV, Tang X. Sleep abnormalities across different clinical stages of Alzheimer's disease: A systematic review and network meta-analysis. Sleep Med Rev. 2026;88:102289. PMID 41985272. doi:10.1016/j.smrv.2026.102289.",
+      "citationVariants": [
+        "Zhang Y, Ren R, Feng X, Wang M, Huang J, Shi J, Lu L, Sanford LD, Vitiello MV, Tang X. Sleep abnormalities across different clinical stages of Alzheimer's disease: A systematic review and network meta-analysis. Sleep Med Rev. 2026;88:102289. PMID 41985272. doi:10.1016/j.smrv.2026.102289."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41985272/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41985272/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-alzheimer-s-disease-to-insomnia",
+          "primaryId": "alzheimer-s-disease",
+          "targetId": "insomnia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "2d993ecac0bed2413898dd924759d82586b9a02dd8e0d37695071f1c93d7ab75"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-34583023",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "34583023",
+      "doi": "10.1016/j.jpain.2021.09.003",
+      "canonicalCitation": "Diers M, Krumm B, Fuchs X. The Prevalence and Characteristics of Phantom Limb Pain and Non-Painful Phantom Phenomena in a Nationwide Survey of 3,374 Unilateral Limb Amputees. J Pain. 2022;23(3):411-423. PMID 34583023. doi:10.1016/j.jpain.2021.09.003.",
+      "citationVariants": [
+        "Diers M, Krumm B, Fuchs X. The Prevalence and Characteristics of Phantom Limb Pain and Non-Painful Phantom Phenomena in a Nationwide Survey of 3,374 Unilateral Limb Amputees. J Pain. 2022;23(3):411-423. PMID 34583023. doi:10.1016/j.jpain.2021.09.003."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34583023/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34583023/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-amputation-of-arm-to-phantom-limb-pain",
+          "primaryId": "amputation-of-arm",
+          "targetId": "phantom-limb-pain",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "577bf79b85894ae343722d4a632f4f7d37f9398664733f3721030d84d8ff6dd6"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-29",
-  "currentState": "ME29-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-30",
+  "currentState": "ME30-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

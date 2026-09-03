@@ -2,7 +2,54 @@
   "id": "als",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence; prior generic depression and medication-to-GERD pathways lacked direct supporting citations."
+    "Rebuild secondary-condition suggestions with condition-specific clinical evidence; prior generic depression and medication-to-GERD pathways lacked direct supporting citations.",
+    "ME-30: a single bounded bulbar-dysfunction association has been authored from ALS-population clinical evidence; the withdrawn-suggestion note remains in force until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "dysphagia",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded bulbar-dysfunction association. Dysphagia is a common, well-characterized complication of ALS reflecting bulbar and respiratory muscle degeneration, documented in a large nationwide inpatient cohort of more than 23,000 ALS patients, but the primary diagnosis alone does not establish swallowing impairment in every person or determine an individual's dysphagia course. Require independently documented ALS with bulbar or generalized involvement, objectively documented dysphagia by validated instrumental or non-instrumental assessment compatible in chronology, and specialist review. Preserve stroke, Parkinson disease, myasthenia gravis, structural esophageal and pharyngeal disease, and other competing causes of dysphagia.",
+      "evidenceGaps": [
+        "Independent documentation of ALS diagnosis with bulbar or generalized involvement",
+        "Objective dysphagia documentation by instrumental or validated non-instrumental assessment",
+        "Chronology of ALS onset and swallowing decline",
+        "Assessment of stroke, parkinsonism, myasthenia, and structural pharyngoesophageal disease",
+        "Specialist assessment distinguishing ALS-related dysphagia from other causes"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Yang Q, Wu H, Huang X, Xie M, Shan Y, Dou Z, Li Y, Wen H, Li C. Prevalence and Risk Factors of Dysphagia in Amyotrophic Lateral Sclerosis: A Retrospective Study Using the Nationwide Inpatient Sample Database. Muscle Nerve. 2026;73(5):875-881. PMID 41744126. doi:10.1002/mus.70188.",
+          "note": "Retrospective cohort of 23,997 ALS inpatients documenting dysphagia in 31.7% with associated risk factors and adverse outcomes. It supports a bounded disease-association proposition and clinical evaluation, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41744126/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 41744126; 31.7% dysphagia prevalence in 23,997 hospitalized ALS patients"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Dysphagia is highly prevalent in ALS cohorts and reflects progressive bulbar muscle degeneration, but population prevalence does not establish an individual medical nexus without documentation of both the motor neuron disease and the swallowing impairment, compatible chronology, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this association evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "Progressive degeneration of bulbar motor neurons weakens oral and pharyngeal musculature, impairing bolus control, airway protection, and swallow safety, but the individual pathway must be established from instrumental swallow studies, progression records, and specialist neurologic evaluation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Dysphagia is documented in roughly a third of hospitalized ALS patients and is an expected feature of bulbar progression, but population prevalence does not establish that ALS caused or aggravated dysphagia in every individual; both diagnoses, chronology, instrumental findings, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Documented ALS and objective dysphagia; chronology of bulbar progression; instrumental swallow findings; stroke, parkinsonism, myasthenia, and structural alternatives; specialist assessment of the individual relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Stroke or other cerebrovascular disease causing neurogenic dysphagia",
+          "Parkinson disease and other parkinsonian disorders",
+          "Myasthenia gravis, myopathy, or structural pharyngeal and esophageal disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

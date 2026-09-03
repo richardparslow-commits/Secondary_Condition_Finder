@@ -6,8 +6,8 @@
    "installedFrom": "Master Registry Discrepancy Resolution 2026",
    "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
    "counts": {
-      "relationships": 318,
-      "explicitPublicationGuards": 244,
+      "relationships": 323,
+      "explicitPublicationGuards": 249,
       "legacyRationaleBoundaries": 74
    },
    "relationships": [
@@ -10412,8 +10412,173 @@
          "sourceReferenceCount": 1,
          "pathwayIntelligencePresent": false,
          "suggestionObjectHash": "8e80e5b75253f6bd7d050c605d0d95f2dd0de2e3d7cfbf2cee4d810379f0dc4e"
+      },
+      {
+         "relationshipId": "rel-alice-in-wonderland-syndrome-to-migraine-headaches",
+         "primaryId": "alice-in-wonderland-syndrome",
+         "targetId": "migraine-headaches",
+         "direction": "alice-in-wonderland-syndrome -> migraine-headaches",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-30-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded migraine-variant association. Alice in Wonderland syndrome is described in contemporary clinical literature as a migraine variant and precursor occurring predominantly in pediatric populations, frequently accompanied by personal or family history of migraine, but the primary diagnosis alone does not establish a migraine diagnosis in every person or determine an individual's headache course. Require independently documented AIWS episodes with characteristic visual distortions, documented migraine headache meeting ICHD criteria compatible in chronology, and specialist neurologic review. Preserve epilepsy, infectious and autoimmune encephalitis, psychotropic and other medication effects, cerebrovascular disease, and other competing causes of metamorphopsia and distortory perception."
+         },
+         "rationale": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded migraine-variant association. Alice in Wonderland syndrome is described in contemporary clinical literature as a migraine variant and precursor occurring predominantly in pediatric populations, frequently accompanied by personal or family history of migraine, but the primary diagnosis alone does not establish a migraine diagnosis in every person or determine an individual's headache course. Require independently documented AIWS episodes with characteristic visual distortions, documented migraine headache meeting ICHD criteria compatible in chronology, and specialist neurologic review. Preserve epilepsy, infectious and autoimmune encephalitis, psychotropic and other medication effects, cerebrovascular disease, and other competing causes of metamorphopsia and distortory perception.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented AIWS episodes with characteristic visual distortions",
+            "boundarySource": "approved-me-30-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of AIWS episodes with characteristic perceptual distortions",
+            "Documented migraine headache meeting ICHD criteria with compatible chronology",
+            "Family and personal migraine history correlation",
+            "Assessment of epilepsy, encephalitis, medication effects, and cerebrovascular alternatives",
+            "Specialist neurologic assessment distinguishing migraine-variant AIWS from other causes"
+         ],
+         "sourceIds": [
+            "pmid-42065956"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "c7332ad58bdd2baad5f62efd4ff93f501a5ed7b59f98d76acf18ae70862adc94"
+      },
+      {
+         "relationshipId": "rel-agranulocytosis-to-cellulitis",
+         "primaryId": "agranulocytosis",
+         "targetId": "cellulitis",
+         "direction": "agranulocytosis -> cellulitis",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-30-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded infection-complication association. Profound neutropenia from drug-induced agranulocytosis is complicated by febrile neutropenia and serious bacterial and soft-tissue infections in cohort evidence, but the primary diagnosis alone does not establish a skin or soft-tissue infection in every person or determine an individual's infection course. Require independently documented agranulocytosis with absolute neutrophil counts in the agranulocytosis range, microbiologically or clinically documented cellulitis compatible in chronology, and specialist review. Preserve prior skin disease, trauma, venous insufficiency, diabetes, other immunosuppression, and other competing causes of soft-tissue infection."
+         },
+         "rationale": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded infection-complication association. Profound neutropenia from drug-induced agranulocytosis is complicated by febrile neutropenia and serious bacterial and soft-tissue infections in cohort evidence, but the primary diagnosis alone does not establish a skin or soft-tissue infection in every person or determine an individual's infection course. Require independently documented agranulocytosis with absolute neutrophil counts in the agranulocytosis range, microbiologically or clinically documented cellulitis compatible in chronology, and specialist review. Preserve prior skin disease, trauma, venous insufficiency, diabetes, other immunosuppression, and other competing causes of soft-tissue infection.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented agranulocytosis with absolute neutrophil counts in the agranulocytosis range",
+            "boundarySource": "approved-me-30-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of agranulocytosis with serial absolute neutrophil counts",
+            "Microbiologic or clinical documentation of cellulitis with compatible chronology",
+            "Causative drug exposure and neutropenia duration records",
+            "Assessment of trauma, venous insufficiency, diabetes, and other immunosuppression",
+            "Specialist assessment distinguishing neutropenia-associated infection from other causes"
+         ],
+         "sourceIds": [
+            "pmid-28823525"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "dce42a1f261afbf5aacca4556bc1f8bf06729d4e5bd4fa0c987e57db372fe0c4"
+      },
+      {
+         "relationshipId": "rel-als-to-dysphagia",
+         "primaryId": "als",
+         "targetId": "dysphagia",
+         "direction": "als -> dysphagia",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-30-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded bulbar-dysfunction association. Dysphagia is a common, well-characterized complication of ALS reflecting bulbar and respiratory muscle degeneration, documented in a large nationwide inpatient cohort of more than 23,000 ALS patients, but the primary diagnosis alone does not establish swallowing impairment in every person or determine an individual's dysphagia course. Require independently documented ALS with bulbar or generalized involvement, objectively documented dysphagia by validated instrumental or non-instrumental assessment compatible in chronology, and specialist review. Preserve stroke, Parkinson disease, myasthenia gravis, structural esophageal and pharyngeal disease, and other competing causes of dysphagia."
+         },
+         "rationale": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded bulbar-dysfunction association. Dysphagia is a common, well-characterized complication of ALS reflecting bulbar and respiratory muscle degeneration, documented in a large nationwide inpatient cohort of more than 23,000 ALS patients, but the primary diagnosis alone does not establish swallowing impairment in every person or determine an individual's dysphagia course. Require independently documented ALS with bulbar or generalized involvement, objectively documented dysphagia by validated instrumental or non-instrumental assessment compatible in chronology, and specialist review. Preserve stroke, Parkinson disease, myasthenia gravis, structural esophageal and pharyngeal disease, and other competing causes of dysphagia.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented ALS with bulbar or generalized involvement",
+            "boundarySource": "approved-me-30-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of ALS diagnosis with bulbar or generalized involvement",
+            "Objective dysphagia documentation by instrumental or validated non-instrumental assessment",
+            "Chronology of ALS onset and swallowing decline",
+            "Assessment of stroke, parkinsonism, myasthenia, and structural pharyngoesophageal disease",
+            "Specialist assessment distinguishing ALS-related dysphagia from other causes"
+         ],
+         "sourceIds": [
+            "pmid-41744126"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "4ce16c7da8d462b45b8845a560dcb073b84aadecf7c66a2718cd002426e59bf8"
+      },
+      {
+         "relationshipId": "rel-alzheimer-s-disease-to-insomnia",
+         "primaryId": "alzheimer-s-disease",
+         "targetId": "insomnia",
+         "direction": "alzheimer-s-disease -> insomnia",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-30-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded sleep-disorder association. Sleep abnormalities including insomnia-type complaints are documented across the clinical stages of Alzheimer disease in systematic review and network meta-analysis evidence, but the primary diagnosis alone does not establish an insomnia disorder in every person or determine an individual's sleep course. Require independently documented Alzheimer disease, objectively documented insomnia disorder by validated sleep assessment compatible in chronology, and specialist review. Preserve depression, anxiety, obstructive sleep apnea, medications, other neurodegenerative disease, and primary sleep disorders as competing causes of disturbed sleep."
+         },
+         "rationale": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded sleep-disorder association. Sleep abnormalities including insomnia-type complaints are documented across the clinical stages of Alzheimer disease in systematic review and network meta-analysis evidence, but the primary diagnosis alone does not establish an insomnia disorder in every person or determine an individual's sleep course. Require independently documented Alzheimer disease, objectively documented insomnia disorder by validated sleep assessment compatible in chronology, and specialist review. Preserve depression, anxiety, obstructive sleep apnea, medications, other neurodegenerative disease, and primary sleep disorders as competing causes of disturbed sleep.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented Alzheimer disease",
+            "boundarySource": "approved-me-30-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of Alzheimer disease diagnosis and stage",
+            "Objective insomnia documentation by validated sleep assessment or sleep study",
+            "Chronology of cognitive decline and sleep disturbance",
+            "Assessment of depression, sleep apnea, medications, and primary sleep disorders",
+            "Specialist assessment distinguishing AD-related sleep disturbance from other causes"
+         ],
+         "sourceIds": [
+            "pmid-41985272"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "de1e6ce80313161951542a8219351ca88f921f07809167779551c265cc1525ac"
+      },
+      {
+         "relationshipId": "rel-amputation-of-arm-to-phantom-limb-pain",
+         "primaryId": "amputation-of-arm",
+         "targetId": "phantom-limb-pain",
+         "direction": "amputation-of-arm -> phantom-limb-pain",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-30-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded post-amputation-pain association. Phantom limb pain is a frequent, well-characterized phenomenon after limb amputation, documented in a nationwide survey of 3,374 unilateral limb amputees, but the primary diagnosis alone does not establish phantom pain in every person or determine an individual's pain course or severity. Require independently documented upper-limb amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review. Preserve pre-amputation pain, residual limb pain and neuroma, peripheral neuropathy, spinal cord pathology, and psychiatric contributions as competing or coexisting causes of post-amputation pain."
+         },
+         "rationale": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded post-amputation-pain association. Phantom limb pain is a frequent, well-characterized phenomenon after limb amputation, documented in a nationwide survey of 3,374 unilateral limb amputees, but the primary diagnosis alone does not establish phantom pain in every person or determine an individual's pain course or severity. Require independently documented upper-limb amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review. Preserve pre-amputation pain, residual limb pain and neuroma, peripheral neuropathy, spinal cord pathology, and psychiatric contributions as competing or coexisting causes of post-amputation pain.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented upper-limb amputation",
+            "boundarySource": "approved-me-30-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of the upper-limb amputation (level, cause, date)",
+            "Documented phantom limb pain by validated assessment with chronology",
+            "Distinguish phantom pain from residual limb pain and neuroma pain",
+            "Assessment of pre-amputation pain, neuropathy, and spinal pathology",
+            "Specialist assessment distinguishing amputation-related phantom pain from other pain generators"
+         ],
+         "sourceIds": [
+            "pmid-34583023"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "67dcf3cc8b2de52eaaa3a8c2cff79731b31f234071080cdfe0971f9a602b555c"
       }
    ],
-   "lastUpdatedBy": "Mapping Expansion Batch ME-29",
-   "currentState": "ME29-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+   "lastUpdatedBy": "Mapping Expansion Batch ME-30",
+   "currentState": "ME30-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

@@ -3,7 +3,54 @@
   "draft": true,
   "todo": [
     "Rebuild secondary-condition suggestions using agranulocytosis-specific clinical evidence before publication.",
-    "The prior depression and GERD suggestions were withdrawn because 38 CFR 3.310 supplied legal framework only and did not establish either an agranulocytosis-specific mood relationship or a treatment-to-GI medical pathway."
+    "The prior depression and GERD suggestions were withdrawn because 38 CFR 3.310 supplied legal framework only and did not establish either an agranulocytosis-specific mood relationship or a treatment-to-GI medical pathway.",
+    "ME-30: a single bounded infection-complication association has been authored from agranulocytosis-cohort clinical evidence; the withdrawn-suggestion note remains in force until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "cellulitis",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-30 adds this relationship only as a bounded infection-complication association. Profound neutropenia from drug-induced agranulocytosis is complicated by febrile neutropenia and serious bacterial and soft-tissue infections in cohort evidence, but the primary diagnosis alone does not establish a skin or soft-tissue infection in every person or determine an individual's infection course. Require independently documented agranulocytosis with absolute neutrophil counts in the agranulocytosis range, microbiologically or clinically documented cellulitis compatible in chronology, and specialist review. Preserve prior skin disease, trauma, venous insufficiency, diabetes, other immunosuppression, and other competing causes of soft-tissue infection.",
+      "evidenceGaps": [
+        "Independent documentation of agranulocytosis with serial absolute neutrophil counts",
+        "Microbiologic or clinical documentation of cellulitis with compatible chronology",
+        "Causative drug exposure and neutropenia duration records",
+        "Assessment of trauma, venous insufficiency, diabetes, and other immunosuppression",
+        "Specialist assessment distinguishing neutropenia-associated infection from other causes"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Andrès E, Mourot-Cottet R, Maloisel F, Vogel T, Tebacher M, Gottenberg JE. History and outcome of febrile neutropenia related to non-chemotherapy drugs: A retrospective study of the Strasbourg's agranulocytosis cohort. Eur J Intern Med. 2017;46:e13-e14. PMID 28823525. doi:10.1016/j.ejim.2017.08.018.",
+          "note": "Cohort study of febrile neutropenia and infectious complications in non-chemotherapy drug-induced agranulocytosis from a dedicated agranulocytosis registry. It supports a bounded disease-association proposition and clinical evaluation, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28823525/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 28823525; febrile neutropenia and infection outcomes in drug-induced agranulocytosis cohort"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Drug-induced agranulocytosis is associated with febrile neutropenia and serious infection complications, but cohort evidence does not establish an individual medical nexus without documentation of both the neutropenia and the specific infection, compatible chronology, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this association evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Profound neutrophil depletion removes the primary cellular defense against bacterial invasion of skin and soft tissue, permitting ordinary flora to produce cellulitis and deeper infection, but the individual pathway must be established from neutrophil counts, microbiologic findings, and infection documentation during the nadir period.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Febrile neutropenia and infection complications are documented in agranulocytosis cohorts, but the cohort evidence does not establish that agranulocytosis caused or aggravated cellulitis in every individual; both diagnoses, chronology, nadir counts, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Documented agranulocytosis and documented cellulitis; neutrophil nadir and chronology; microbiologic findings; trauma, vascular, diabetic, and other immunosuppression alternatives; specialist assessment of the individual relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Trauma, venous insufficiency, or lymphedema as independent soft-tissue infection portals",
+          "Diabetes or other immunosuppressive states",
+          "Pre-existing skin disease or prior infection at the same site"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }
