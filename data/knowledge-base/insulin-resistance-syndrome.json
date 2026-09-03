@@ -5,5 +5,53 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "diabetes-mellitus-type-2",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited review describes insulin resistance as a major contributor to the pathogenesis of type 2 diabetes and a key part of its associated metabolic abnormalities. Require a clinically established insulin-resistance syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; the review addresses a central pathophysiologic component but does not establish that insulin resistance alone caused any individual's diabetes or that all insulin-resistant phenotypes progress to diabetes. Preserve beta-cell dysfunction, genetic susceptibility, obesity and adiposity, medications, endocrine disease, pancreatic disease, secondary diabetes, and other metabolic contributors. Do not infer type 2 diabetes from insulin resistance markers alone. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of insulin-resistance-syndrome and diabetes-mellitus-type-2",
+        "Objective metabolic testing and diagnostic records defining the insulin-resistance phenotype",
+        "Longitudinal glycemic records establishing compatible chronology and diabetes classification",
+        "Assessment of beta-cell function, genetic, adiposity, medication, endocrine, pancreatic, and secondary-diabetes contributors",
+        "Resolution of publication guard: Require a clinically established insulin-resistance syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; do not infer type 2 diabetes from insulin-resistance markers alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Goldstein BJ. Insulin resistance as the core defect in type 2 diabetes mellitus. Am J Cardiol. 2002;90(5A):3G-10G. PMID 12231073. doi:10.1016/S0002-9149(02)02553-5.",
+          "note": "Mapping Expansion Batch ME-21 evidence for the bounded insulin-resistance-syndrome to diabetes-mellitus-type-2 proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12231073/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 12231073; approved ME-21 source; guard: Require a clinically established insulin-resistance syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; the review addresses a central pathophysiologic component but does not establish individual attribution."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The review identifies insulin resistance as a major contributor to type 2 diabetes pathogenesis, supporting a bounded pathophysiologic association for research rather than an individual causal conclusion.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; the guard explicitly limits the claim to an association requiring individual metabolic and etiologic review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Reduced insulin responsiveness can impair glucose uptake and increase compensatory insulin demand, while progressive beta-cell dysfunction may permit hyperglycemia and type 2 diabetes; this remains a population-level pathway, not individual proof.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Insulin resistance is a major pathophysiologic contributor, but the source does not establish that insulin resistance alone caused an individual's diabetes or resolve the contribution of beta-cell, genetic, adiposity, medication, endocrine, pancreatic, and secondary causes.",
+        "evidenceGaps": "Independent diagnoses, objective metabolic phenotype, diabetes classification, compatible chronology, and evaluation of competing contributors remain necessary for individual assessment.",
+        "alternativeEtiologiesToRuleOut": [
+          "progressive beta-cell dysfunction or failure",
+          "genetic susceptibility and family history",
+          "obesity or adiposity-related metabolic factors",
+          "medication or endocrine disease",
+          "pancreatic disease or other secondary diabetes"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

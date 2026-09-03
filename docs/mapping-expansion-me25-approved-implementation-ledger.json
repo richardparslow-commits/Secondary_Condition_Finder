@@ -1,0 +1,79 @@
+{
+  "batch": "ME-25",
+  "status": "implemented-locally",
+  "approvalText": "Approve the five ME-25 relationships and their identified clinical sources for local-only, fail-closed implementation against the current authoritative registry state; all five sources enter verified:false / pending-verification, with no citation promotion, semantic broadening, taxonomy change, or remote writes.",
+  "baselineRegistryState": {
+    "previousBatch": "ME-24",
+    "relationships": 293,
+    "liveReferences": 301,
+    "pendingReferences": 45,
+    "explicitPublicationGuards": 219,
+    "totalSourceEntitiesIncludingLineage": 287
+  },
+  "rows": [
+    {
+      "primaryId": "acanthosis-nigricans",
+      "targetId": "diabetes-mellitus-type-2",
+      "pmid": "36698243",
+      "doi": "10.2174/1573396318666220429085231",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36698243/",
+      "publicationGuard": "Require documented acanthosis nigricans, independently established type 2 diabetes, compatible metabolic phenotype/chronology, and competing-cause review; do not infer diabetes from a skin finding alone.",
+      "primaryDraft": true,
+      "verified": false
+    },
+    {
+      "primaryId": "beriberi",
+      "targetId": "congestive-heart-failure",
+      "pmid": "29360523",
+      "doi": null,
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29360523/",
+      "publicationGuard": "Require documented wet-beriberi/thiamine-deficiency phenotype, objective heart failure, compatible chronology, and competing-cause review; do not infer heart failure from beriberi alone.",
+      "primaryDraft": true,
+      "verified": false
+    },
+    {
+      "primaryId": "atrial-septal-defect",
+      "targetId": "pulmonary-hypertension",
+      "pmid": "30305956",
+      "doi": "10.21037/jtd.2018.08.92",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30305956/",
+      "publicationGuard": "Require documented ASD anatomy, objective pulmonary hypertension, compatible shunt/chronology, and competing-cause review; do not infer pulmonary hypertension from an ASD label alone.",
+      "primaryDraft": true,
+      "verified": false
+    },
+    {
+      "primaryId": "bird-fancier-s-lung",
+      "targetId": "pulmonary-fibrosis",
+      "pmid": "21870048",
+      "doi": "10.1007/s12016-011-8282-y",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21870048/",
+      "publicationGuard": "Require documented avian-antigen hypersensitivity-pneumonitis phenotype, objective fibrosis, compatible chronology, and alternative-cause review; do not infer fibrosis from exposure or dyspnea alone.",
+      "primaryDraft": true,
+      "verified": false
+    },
+    {
+      "primaryId": "atrophic-glossitis",
+      "targetId": "anemia",
+      "pmid": "31076315",
+      "doi": "10.1016/j.jfma.2019.04.015",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31076315/",
+      "publicationGuard": "Require documented atrophic glossitis, objective anemia subtype and hematinic findings, compatible chronology, and competing-cause review; do not infer anemia from tongue appearance alone.",
+      "primaryDraft": true,
+      "verified": false
+    }
+  ],
+  "resultingRegistryState": {
+    "relationships": 298,
+    "liveReferences": 306,
+    "verifiedLiveReferences": 256,
+    "pendingReferences": 50,
+    "clinicalUses": 301,
+    "legalUses": 5,
+    "explicitPublicationGuards": 224,
+    "legacyRationaleBoundaries": 74,
+    "totalSourceEntitiesIncludingLineage": 292,
+    "publishedMappings": 139,
+    "draftMappings": 674,
+    "knowledgeBaseFiles": 813
+  }
+}

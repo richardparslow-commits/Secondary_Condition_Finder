@@ -25,23 +25,16 @@ All five targets (`hypertension`, `dry-eye-syndrome`, `oral-cancer`, `hearing-lo
 3. **Registry** — add the 5 relationships to `data/evidence/master-relationships.json` with their canonical `suggestionObjectHash` (and the 5 new `pmid-NNNN` source entities to `data/evidence/master-sources.json`) so `npm run audit:master-registry` parity holds.
 4. **Ledger + tests** — create `docs/mapping-expansion-me20-approved-implementation-ledger.{json,md}`, a `docs/master-registry-2026.md` batch-6 entry, and `tests/mapping-expansion-me20.test.ts` pinning the 5 rows, their guards, and the draft/verified-false state.
 5. **Gates** — `npm run kb:validate`, `audit:me-compliance`, `audit:master-registry`, `citations:audit`, `test:composition`, typecheck, lint, and the full Vitest suite must pass on the exact branch head before commit.
-6. **Commit + push** — commit the batch, push to GitHub (the Desktop folder is this repo, so it stays in sync), wait 5 seconds, then begin ME-21.
+6. **Commit** — commit the batch after all gates pass; remote publication is outside this local implementation workflow.
 
 ## Post-batch human gate (out of agent scope)
 
 Publication of the 5 rows requires the qualified-human citation-verification step (verify each PMID supports the guard, flip `verified: true` + `sourceCheckedOn`, then — and only then — consider publishing the primary). Until then ME-20 rows remain draft, exactly like the 20 pending ME-16..ME-19 refs.
 
-## Ranked backlog for ME-21 onward (same process)
+## Ranked backlog after ME-22
 
-1. `peptic-ulcer-disease` → `anemia`
-2. `eosinophilic-esophagitis` → `dysphagia`
-3. `cholelithiasis` → `pancreatitis`
-4. `insulin-resistance-syndrome` → `diabetes-mellitus-type-2`
-5. `metabolic-syndrome` → `diabetes-mellitus-type-2`
-6. `transient-ischemic-attack-residuals` → `cerebrovascular-accident-stroke-residuals`
-7. `testicular-torsion` → `testicular-atrophy`
-8. `lichen-sclerosus` → `squamous-cell-carcinoma`
-9. `nasal-polyps` → `asthma`
-10. `diabetic-gastroparesis` → `gastroparesis`
+> Backlog rows 1-5 were implemented as **ME-21** and the next five rows were implemented as **ME-22** on 2026-09-02; see `docs/mapping-expansion-me21-approved-implementation-ledger.{json,md}` and `docs/mapping-expansion-me22-approved-implementation-ledger.{json,md}`.
 
-At 5 primaries per batch, the remaining ~10-edge backlog spans ME-21 through roughly ME-22; the ~480 remaining framework-only identities then continue the same loop, prioritized by evidence strength and the availability of published target identities.
+The next batch should continue with the remaining framework-only identities, prioritized by evidence strength and the availability of published target identities. No additional ranked rows are authorized by this plan until the next approved batch ledger is created.
+
+At 5 primaries per batch, the remaining framework-only identities continue through the same research, bounded-authoring, registry-parity, and qualified-human citation-verification workflow.

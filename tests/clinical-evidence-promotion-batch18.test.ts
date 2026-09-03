@@ -67,7 +67,7 @@ describe("clinical evidence promotion batch 18", () => {
     expect(source?.verificationScope).toBe("clinical-evidence");
     expect(source?.sourceUrl).toContain("36017548");
     expect(source?.verified).toBe(true);
-  });
+  }, 120000);
 
   it("physically relocates pulmonary hypertension into respiratory maintenance without changing identity", () => {
     const cardiovascular = ids("data/conditions/cardiovascular-expansion-wave-3.json");

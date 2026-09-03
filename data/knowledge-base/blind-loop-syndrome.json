@@ -5,5 +5,53 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded small-intestinal bacterial-overgrowth and nutrient-deficiency association. The cited review describes blind-loop or small-intestinal bacterial-overgrowth states in which malnutrition and vitamin or mineral deficiencies, including vitamin B12 and iron deficiency, may occur, but it does not establish that any individual's anemia was caused by blind-loop syndrome or exclude gastrointestinal bleeding, dietary deficiency, malabsorption from other disease, chronic inflammation, renal disease, hemolysis, marrow disease, or other causes. Require documented blind-loop syndrome or compatible small-intestinal bacterial-overgrowth phenotype, separately established anemia with appropriate iron/B12/folate studies, compatible chronology, and gastroenterology review. Do not infer anemia from a surgical or altered-anatomy history alone.",
+      "evidenceGaps": [
+        "Independent documentation of blind-loop syndrome or a compatible small-intestinal bacterial-overgrowth phenotype and anemia",
+        "Complete blood count, ferritin, iron studies, vitamin B12, folate, and relevant nutritional testing",
+        "Documentation of altered anatomy, motility disorder, bacterial-overgrowth testing, or other mechanism and chronology",
+        "Evaluation for gastrointestinal blood loss, diet, celiac or inflammatory bowel disease, renal disease, hemolysis, marrow disease, and other causes",
+        "Resolution of publication guard: Require documented blind-loop/SIBO phenotype, objective anemia, compatible nutritional findings and chronology, and competing-cause review; do not infer anemia from altered anatomy alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Losurdo G, et al. The Influence of Small Intestinal Bacterial Overgrowth in Digestive and Extra-Intestinal Disorders. Int J Mol Sci. 2020;21(10):3531. PMID 32429454. doi:10.3390/ijms21103531.",
+          "note": "Mapping Expansion Batch ME-24 evidence for the bounded blind-loop-syndrome to anemia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32429454/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 32429454; review describing blind-loop/SIBO-associated malnutrition and vitamin/mineral deficiencies including B12 and iron; approved ME-24 guard: require documented phenotype, objective anemia/nutritional findings, compatible chronology, and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited review supports possible nutritional deficiencies in blind-loop or small-intestinal bacterial-overgrowth states, including deficiencies relevant to anemia, without establishing an individual anemia pathway.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; objective nutritional findings, chronology, and competing anemia causes are required for individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Blind-loop or small-intestinal bacterial-overgrowth physiology may impair nutrient availability and contribute to iron or vitamin B12 deficiency, but the individual's anemia mechanism remains hypothesized until laboratory findings and competing causes are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited SIBO review discusses malnutrition and micronutrient deficiencies but does not prove that a particular person's anemia was caused by blind-loop syndrome.",
+        "evidenceGaps": "Independent blind-loop/SIBO and anemia diagnoses; CBC, iron, B12 and folate findings; altered anatomy or motility evidence; chronology; and assessment of bleeding, dietary, inflammatory, renal, hemolytic, and marrow causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "gastrointestinal blood loss",
+          "dietary iron, vitamin B12, or folate deficiency",
+          "celiac disease or inflammatory bowel disease",
+          "chronic kidney disease or inflammation",
+          "hemolysis or bone-marrow disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

@@ -5,5 +5,53 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "stomach-cancer",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded autoimmune-gastritis gastric-neoplasia association. The cited systematic review evaluates gastric neoplasms arising in autoimmune metaplastic atrophic gastritis, but it does not establish that any individual's stomach cancer arose from autoimmune gastritis or exclude Helicobacter pylori-associated atrophy, environmental and dietary factors, hereditary susceptibility, prior gastric lesions, smoking, or other causes. Require biopsy-documented autoimmune metaplastic atrophic gastritis, separately established stomach cancer with pathology, compatible anatomic site and chronology, and gastroenterology/pathology review. Do not infer carcinoma from autoimmune gastritis, intestinal metaplasia, hypergastrinemia, or surveillance history alone.",
+      "evidenceGaps": [
+        "Independent endoscopic and histopathologic documentation of autoimmune metaplastic atrophic gastritis",
+        "Pathology confirming stomach cancer, site, histologic type, and relevant precursor findings",
+        "Chronology of gastritis, metaplasia, dysplasia, surveillance, and cancer diagnosis",
+        "Assessment of Helicobacter pylori, environmental/dietary risks, hereditary susceptibility, smoking, prior lesions, and other contributors",
+        "Resolution of publication guard: Require biopsy-documented autoimmune gastritis, pathology-confirmed stomach cancer, compatible site/chronology, and specialist review; do not infer cancer from autoimmune gastritis alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Chen C, Yang Y, Li P, Hu H. Incidence of Gastric Neoplasms Arising from Autoimmune Metaplastic Atrophic Gastritis: A Systematic Review and Case Reports. J Clin Med. 2023;12(3):1062. PMID 36769710. doi:10.3390/jcm12031062.",
+          "note": "Mapping Expansion Batch ME-24 evidence for the bounded autoimmune-metaplastic-atrophic-gastritis to stomach-cancer proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36769710/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 36769710; systematic review and case reports of gastric neoplasms in autoimmune metaplastic atrophic gastritis; approved ME-24 guard: require biopsy-confirmed autoimmune gastritis, pathology-confirmed stomach cancer, compatible site/chronology, and specialist review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited systematic review supports an association between autoimmune metaplastic atrophic gastritis and gastric neoplasms in studied populations, without establishing an individual stomach-cancer origin pathway.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; pathology, chronology, site, risk factors, and specialist review are required for individual assessment."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "Chronic autoimmune oxyntic-gland injury and metaplastic change may create a gastric neoplasia risk environment, but the individual gastritis-to-carcinoma pathway remains hypothesized until pathology, chronology, and alternative causes are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited systematic review evaluates gastric neoplasms in autoimmune metaplastic atrophic gastritis but does not prove that a particular person's stomach cancer arose from that condition.",
+        "evidenceGaps": "Independent biopsy-confirmed gastritis and cancer pathology; compatible site and chronology; surveillance and precursor findings; Helicobacter pylori, environmental, hereditary, smoking, and other risk-factor review.",
+        "alternativeEtiologiesToRuleOut": [
+          "Helicobacter pylori-associated atrophic gastritis",
+          "environmental or dietary gastric-cancer risks",
+          "hereditary cancer susceptibility",
+          "smoking or prior gastric lesions",
+          "other metaplastic, dysplastic, inflammatory, or treatment-related contributors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

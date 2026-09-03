@@ -1,0 +1,100 @@
+{
+  "phase": "Mapping Expansion ME-23",
+  "ledgerStatus": "APPROVED AND APPLIED LOCALLY - CITATIONS PENDING VERIFICATION",
+  "approvalDate": "2026-09-02",
+  "requiredBaselineCommit": "ea005e50ccbc30800dd46f3872f764f98e977c1f",
+  "previousRegistryCurrentState": "ME22-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+  "commitSubject": "map: mapping expansion ME-23 (5 relationships)",
+  "issueReference": "issue #360 Mapping Expansion Wave (ME-15+); ME-23 continues the Wave-8 framework-only backlog (catalog 813)",
+  "approvalRecord": "Qualified-human approval captured on 2026-09-02: five bounded ME-23 mappings from the Wave-8 framework-only backlog were approved at rank 1. Mapping approval is not citation verification; all five clinical sources enter verified:false and pending-verification.",
+  "rows": [
+    {
+      "primaryId": "cholesteatoma",
+      "targetId": "conductive-hearing-loss",
+      "rank": 1,
+      "pmid": "22410730",
+      "doi": "10.1097/MAO.0b013e3182487fb0",
+      "sourceTitle": "The relationship between individual ossicular status and conductive hearing loss in cholesteatoma",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22410730/",
+      "claimType": "otologic-outcome-association",
+      "guard": "Require documented cholesteatoma, objective conductive loss, compatible ear/chronology, and ossicular review; do not infer loss from cholesteatoma alone."
+    },
+    {
+      "primaryId": "otitis-media",
+      "targetId": "hearing-loss",
+      "rank": 1,
+      "pmid": "22558393",
+      "doi": "10.1371/journal.pone.0036226",
+      "sourceTitle": "Burden of disease caused by otitis media: systematic review and global estimates",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22558393/",
+      "claimType": "otologic-sequela-association",
+      "guard": "Require documented otitis media, objective hearing loss, compatible ear/chronology, and competing-cause review."
+    },
+    {
+      "primaryId": "acoustic-neuroma",
+      "targetId": "hearing-loss",
+      "rank": 1,
+      "pmid": "37024333",
+      "doi": "10.1016/j.otc.2023.02.005",
+      "sourceTitle": "Natural History of Hearing Loss in Sporadic Vestibular Schwannoma",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37024333/",
+      "claimType": "neurotologic-outcome-association",
+      "guard": "Require documented vestibular schwannoma, objective hearing loss, compatible laterality/chronology, and tumor/treatment review; do not infer loss from tumor history alone."
+    },
+    {
+      "primaryId": "actinic-keratosis",
+      "targetId": "squamous-cell-carcinoma",
+      "rank": 1,
+      "pmid": "23647091",
+      "doi": "10.1111/bjd.12420",
+      "sourceTitle": "The natural history of actinic keratosis: a systematic review",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23647091/",
+      "claimType": "premalignant-lesion-association",
+      "guard": "Require documented actinic keratosis and cutaneous SCC with compatible site/chronology and pathology review; do not infer carcinoma from a lesion or treatment history alone."
+    },
+    {
+      "primaryId": "abdominal-migraine",
+      "targetId": "migraine-headaches",
+      "rank": 1,
+      "pmid": "29459383",
+      "doi": "10.1136/bmj.k179",
+      "sourceTitle": "Abdominal migraine",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29459383/",
+      "claimType": "migraine-spectrum-phenotype-association",
+      "guard": "Require documented abdominal migraine, separate migraine-headache diagnosis, compatible chronology/phenotype, and competing-cause review; do not infer headache migraine from abdominal pain alone."
+    }
+  ],
+  "citationStateAfterImplementation": {
+    "kbSourceReferences": "verified:false",
+    "masterSources": "pending-verification",
+    "registryCurrentState": "ME23-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+    "qualifiedHumanCitationReviewRequired": true,
+    "automaticPromotionAuthorized": false
+  },
+  "implementationDateLocal": "2026-09-02",
+  "implementationResult": {
+    "rowsImplemented": 5,
+    "rank1Rows": 5,
+    "rank2Rows": 0,
+    "publicationStatesPreserved": {
+      "cholesteatoma": "draft",
+      "otitis-media": "draft",
+      "acoustic-neuroma": "draft",
+      "actinic-keratosis": "draft",
+      "abdominal-migraine": "draft"
+    },
+    "postMatrix": [813, 139, 679, 288, 71, 78, 59],
+    "kbVerifiedFalseRows": 5,
+    "masterPendingSources": 5,
+    "registeredPrimaries": 199,
+    "remainingPrimaries": 614,
+    "remainingTargetOnlyPrimaries": 37,
+    "citationPromotions": 0,
+    "publicationStatusChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "semanticBroadening": 0,
+    "remoteWritesPerformed": false
+  },
+  "failurePolicy": "Fail closed. If any baseline, edge, source identity, projection, validation, registry parity, or publication-state requirement fails, stop and preserve the exact repository state."
+}

@@ -2,7 +2,57 @@
   "id": "cataracts",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before republishing."
+    "Obtain qualified-human citation verification for the proposed cataracts to visual-impairment association.",
+    "Confirm objective lens opacity, independently measure visual impairment, establish compatible laterality and chronology, and assess other ocular causes before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "visual-impairment",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded ocular-function association. Cataracts can reduce visual acuity and cause visual disability or blindness when clinically significant, but visual impairment is not inferred from a cataract label alone and may reflect refractive error, retinal disease, glaucoma, optic neuropathy, amblyopia, corneal disease, or other causes. Require objective cataract documentation, separately measured visual impairment with compatible laterality, anatomy, and chronology, and ophthalmology review. Do not infer the degree or cause of impairment from cataract diagnosis, age, symptoms, or prior surgery alone.",
+      "evidenceGaps": [
+        "Ophthalmic examination documenting lens opacity and clinically significant cataract",
+        "Best-corrected visual acuity, visual-field or other objective impairment measurements, and laterality",
+        "Chronology of cataract progression, visual decline, surgery, and postoperative status",
+        "Assessment of retinal, optic-nerve, glaucoma, corneal, refractive, neurologic, and other competing causes",
+        "Resolution of publication guard: Require objective cataract, separately measured compatible visual impairment, laterality/chronology, and alternative-ocular-cause review; do not infer impairment from cataract alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Chen SP, Woreta F, Chang DF. Cataracts: A Review. JAMA. 2025;333(23):2093-2103. PMID 40227658. doi:10.1001/jama.2025.1597.",
+          "note": "Mapping Expansion Batch ME-26 clinical review for the bounded cataracts to visual-impairment proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40227658/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 40227658; review describing cataract-related visual disability and blindness and evaluation/treatment considerations; approved ME-26 guard requires objective impairment and competing ocular-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited review supports clinically significant cataract as a cause of visual disability or blindness, while individual impairment still requires objective ophthalmic measurement and exclusion of other ocular causes.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; lens findings, measured function, laterality, chronology, and competing ocular diagnoses require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Lens opacity can scatter or obstruct incoming light and reduce retinal image quality, potentially producing visual impairment, but the degree and individual attribution require objective ophthalmic assessment.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Cataracts are a recognized cause of visual disability, but a cataract diagnosis alone does not establish the extent or individual cause of measured visual impairment.",
+        "evidenceGaps": "Objective cataract and visual-function findings; best-corrected acuity and fields; laterality and chronology; surgical history; and evaluation of retinal, optic-nerve, glaucoma, corneal, refractive, neurologic, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "uncorrected refractive error",
+          "retinal or macular disease",
+          "glaucoma or optic neuropathy",
+          "corneal disease",
+          "amblyopia or neurologic visual disorder",
+          "postoperative or posterior-capsule complications"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

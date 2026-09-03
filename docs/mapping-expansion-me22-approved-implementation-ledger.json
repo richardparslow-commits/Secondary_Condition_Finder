@@ -1,0 +1,100 @@
+{
+  "phase": "Mapping Expansion ME-22",
+  "ledgerStatus": "APPROVED AND APPLIED LOCALLY - CITATIONS PENDING VERIFICATION",
+  "approvalDate": "2026-09-02",
+  "requiredBaselineCommit": "ea005e50ccbc30800dd46f3872f764f98e977c1f",
+  "previousRegistryCurrentState": "ME21-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+  "commitSubject": "map: mapping expansion ME-22 (5 relationships)",
+  "issueReference": "issue #360 Mapping Expansion Wave (ME-15+); ME-22 continues the Wave-8 framework-only backlog (catalog 813)",
+  "approvalRecord": "Qualified-human approval captured on 2026-09-02: five bounded ME-22 mappings from the Wave-8 backlog were approved at rank 1. Mapping approval is not citation verification; all five clinical sources enter verified:false and pending-verification.",
+  "rows": [
+    {
+      "primaryId": "transient-ischemic-attack-residuals",
+      "targetId": "cerebrovascular-accident-stroke-residuals",
+      "rank": 1,
+      "pmid": "18071162",
+      "doi": "10.1001/archinte.167.22.2417",
+      "sourceTitle": "Early risk of stroke after transient ischemic attack: a systematic review and meta-analysis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18071162/",
+      "claimType": "population-level-risk-association",
+      "guard": "Require a documented TIA, a separately established later cerebrovascular accident with objective residuals, and compatible chronology; the evidence does not establish that any individual's later stroke or residuals were caused by the TIA. Preserve vascular risk factors and other stroke causes. Do not infer stroke residuals from a TIA history alone."
+    },
+    {
+      "primaryId": "testicular-torsion",
+      "targetId": "testicular-atrophy",
+      "rank": 1,
+      "pmid": "26509312",
+      "doi": "10.1055/s-0035-1566096",
+      "sourceTitle": "Factors Predicting Testicular Atrophy after Testicular Salvage following Torsion",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26509312/",
+      "claimType": "post-event-outcome-association",
+      "guard": "Require documented testicular torsion, separately documented later ipsilateral testicular atrophy or objective volume loss, and compatible chronology; the cohort does not establish that every individual's atrophy was caused by torsion. Preserve ischemia duration, treatment, infection, trauma, cryptorchidism, congenital hypoplasia, and other causes."
+    },
+    {
+      "primaryId": "lichen-sclerosus",
+      "targetId": "squamous-cell-carcinoma",
+      "rank": 1,
+      "pmid": "32089333",
+      "doi": "10.1016/j.ygyno.2020.02.020",
+      "sourceTitle": "The risk of developing squamous cell carcinoma in patients with anogenital lichen sclerosis: A systematic review",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32089333/",
+      "claimType": "population-level-risk-association",
+      "guard": "Restrict to biopsy-documented anogenital lichen sclerosus, separately established anogenital squamous-cell carcinoma, and compatible chronology; do not generalize the review to extragenital disease or infer carcinoma from appearance or dysplasia alone."
+    },
+    {
+      "primaryId": "nasal-polyps",
+      "targetId": "asthma",
+      "rank": 1,
+      "pmid": "33065369",
+      "doi": "10.1016/j.jaip.2020.09.063",
+      "sourceTitle": "Chronic Rhinosinusitis with Nasal Polyps and Asthma",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33065369/",
+      "claimType": "clinical-co-occurrence-association",
+      "guard": "Require documented chronic rhinosinusitis with nasal polyps, separately established asthma by appropriate pulmonary criteria, and compatible chronology; the review does not establish that nasal polyps caused or aggravated an individual's asthma. Preserve allergic, aspirin-related, occupational, smoking, obesity, reflux, medication, and other respiratory contributors."
+    },
+    {
+      "primaryId": "diabetic-gastroparesis",
+      "targetId": "gastroparesis",
+      "rank": 1,
+      "pmid": "31081877",
+      "doi": "10.1210/er.2018-00161",
+      "sourceTitle": "Diabetic Gastroparesis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31081877/",
+      "claimType": "complication-phenotype-association",
+      "guard": "Require documented diabetes mellitus, separately established gastroparesis using compatible objective gastric-emptying evaluation, and compatible chronology; do not infer gastroparesis from symptoms, diabetes, or abnormal glucose values alone. Preserve medication, surgical, neurologic, endocrine, obstructive, functional, and idiopathic alternatives."
+    }
+  ],
+  "citationStateAfterImplementation": {
+    "kbSourceReferences": "verified:false",
+    "masterSources": "pending-verification",
+    "registryCurrentState": "ME22-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+    "qualifiedHumanCitationReviewRequired": true,
+    "automaticPromotionAuthorized": false
+  },
+  "implementationDateLocal": "2026-09-02",
+  "implementationResult": {
+    "rowsImplemented": 5,
+    "rank1Rows": 5,
+    "rank2Rows": 0,
+    "publicationStatesPreserved": {
+      "transient-ischemic-attack-residuals": "draft",
+      "testicular-torsion": "draft",
+      "lichen-sclerosus": "draft",
+      "nasal-polyps": "draft",
+      "diabetic-gastroparesis": "draft"
+    },
+    "postMatrix": [813, 139, 674, 283, 66, 73, 54],
+    "kbVerifiedFalseRows": 5,
+    "masterPendingSources": 5,
+    "registeredPrimaries": 194,
+    "remainingPrimaries": 619,
+    "remainingTargetOnlyPrimaries": 37,
+    "citationPromotions": 0,
+    "publicationStatusChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "semanticBroadening": 0,
+    "remoteWritesPerformed": false
+  },
+  "failurePolicy": "Fail closed. If any baseline, edge, source identity, projection, validation, registry parity, or publication-state requirement fails, stop and preserve the exact repository state."
+}

@@ -5,5 +5,53 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "pancreatitis",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited surgical review describes gallstone disease as the most common cause of acute pancreatitis in the Western world and explains the role of transient biliary obstruction. Require documented cholelithiasis or gallstone migration and separately established acute pancreatitis with compatible chronology and diagnostic findings; gallstones are a recognized cause at the population level but the review does not establish that any individual's pancreatitis was biliary in origin. Preserve alcohol, hypertriglyceridemia, medications, hypercalcemia, structural or genetic disease, trauma, autoimmune disease, malignancy, and other pancreatitis etiologies. Do not infer pancreatitis from cholelithiasis without objective pancreatic evidence or infer biliary attribution from abdominal pain alone. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of cholelithiasis and pancreatitis",
+        "Imaging or operative records documenting gallstones, ductal obstruction, or migration",
+        "Laboratory, imaging, and clinical records establishing acute pancreatitis and its chronology",
+        "Assessment of alcohol, metabolic, medication, structural, genetic, autoimmune, malignant, and traumatic alternatives",
+        "Resolution of publication guard: Require documented cholelithiasis or gallstone migration and separately established acute pancreatitis with compatible chronology and diagnostic findings."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Cucher D, Kulvatunyou N, Green DJ, Jie T, Ong ES. Gallstone pancreatitis: a review. Surg Clin North Am. 2014;94(2):257-280. PMID 24679420. doi:10.1016/j.suc.2014.01.006.",
+          "note": "Mapping Expansion Batch ME-21 evidence for the bounded cholelithiasis to pancreatitis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24679420/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 24679420; approved ME-21 source; guard: Require documented cholelithiasis or gallstone migration and separately established acute pancreatitis with compatible chronology and diagnostic findings; gallstones are a recognized cause at the population level but the review does not establish individual biliary attribution."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The surgical review identifies gallstone disease as a leading cause of acute pancreatitis and describes transient biliary obstruction as a mechanism, supporting a bounded clinical association for research.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; the guard explicitly limits the claim to an association requiring individual diagnostic and etiologic review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A migrating gallstone may transiently obstruct the ampulla or common bile duct and be associated with acute pancreatic inflammation, but individual biliary attribution requires compatible imaging, laboratory, and clinical chronology.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Gallstone disease is a recognized population-level cause of acute pancreatitis, but the source does not resolve whether a particular individual's pancreatitis was biliary or exclude other etiologies.",
+        "evidenceGaps": "Independent diagnoses, objective pancreatitis findings, documentation of gallstone obstruction or migration, and compatible chronology remain necessary for individual assessment.",
+        "alternativeEtiologiesToRuleOut": [
+          "alcohol-related pancreatitis",
+          "hypertriglyceridemia or hypercalcemia",
+          "medication-related pancreatitis",
+          "structural, genetic, or autoimmune pancreatic disease",
+          "trauma or pancreatic malignancy"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

@@ -5,5 +5,54 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "migraine-headaches",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded migraine-spectrum phenotype association. The cited clinical review describes abdominal migraine as a recurrent migraine-related syndrome and discusses its relationship to other migraine phenotypes, but it does not establish that every person with abdominal migraine develops later migraine headaches or that an individual's headache disorder was caused by the abdominal phenotype. Require a clinically established abdominal-migraine phenotype, separately diagnosed migraine headaches, compatible chronology and symptom evolution, and review of gastrointestinal, neurologic, medication, and family-history alternatives. Do not infer migraine headaches from recurrent abdominal pain, vomiting, an abdominal-migraine label without appropriate evaluation, or shared symptoms alone.",
+      "evidenceGaps": [
+        "Independent clinical documentation of abdominal migraine using compatible diagnostic features and exclusion of alternative abdominal disorders",
+        "Neurology or headache evaluation documenting a separately established migraine-headache phenotype",
+        "Chronology of abdominal episodes, later headache symptoms, phenotype transition, and treatment response",
+        "Assessment of gastrointestinal, neurologic, medication-related, metabolic, functional, and family-history contributors",
+        "Resolution of publication guard: Require documented abdominal migraine, separate migraine-headache diagnosis, compatible chronology/phenotype, and competing-cause review; do not infer headache migraine from abdominal pain alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Angus-Leppan H, Saatci D, Sutcliffe A, Guiloff RJ. Abdominal migraine. BMJ. 2018;360:k179. PMID 29459383. doi:10.1136/bmj.k179.",
+          "note": "Mapping Expansion Batch ME-23 evidence for the bounded abdominal-migraine to migraine-headaches proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29459383/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 29459383; clinical review of abdominal migraine as a migraine-spectrum syndrome and its relationship to other migraine phenotypes; approved ME-23 guard: require independent phenotypes, compatible evolution, and alternative-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited clinical review places abdominal migraine within a migraine-spectrum framework and supports focused review of a possible relationship to migraine headaches without establishing that the abdominal phenotype causes a later headache disorder in every individual.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; independent phenotyping, chronology, neurologic evaluation, and competing causes are required for individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Abdominal migraine and migraine headache may share neurobiologic and migraine-spectrum features, but the individual phenotype-transition mechanism remains hypothesized until independent diagnosis, chronology, and neurologic evaluation are documented.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited review describes abdominal migraine as a migraine-spectrum syndrome but does not prove that an individual's abdominal episodes caused a later migraine-headache disorder; independent phenotyping, chronology, and alternative-cause review are required.",
+        "evidenceGaps": "Independent abdominal-migraine and migraine-headache diagnoses; compatible symptom evolution and chronology; neurologic and gastrointestinal evaluation; treatment history; family history; and assessment of metabolic, medication-related, functional, and other alternatives.",
+        "alternativeEtiologiesToRuleOut": [
+          "gastrointestinal structural or inflammatory disease",
+          "cyclic vomiting syndrome or functional abdominal pain",
+          "metabolic or endocrine disorder",
+          "medication or substance effects",
+          "primary neurologic headache disorder unrelated to abdominal episodes",
+          "family-history and other migraine-spectrum contributors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

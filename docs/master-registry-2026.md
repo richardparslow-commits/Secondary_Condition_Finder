@@ -2,17 +2,17 @@
 
 ## Status
 
-The authoritative registry is at the Mapping Expansion Batch ME-11 pre-qualified-human-citation-verification state, derived from closed ME-10 citation-verification commit `adf648abbff619d7546373e0084a1fdc9d09d7e7`.
+The authoritative registry is at the Mapping Expansion Batch ME-22 pre-qualified-human-citation-verification state, with five newly appended Wave-8 relationships and their citations pending qualified-human review.
 
 ## Current state
 
-- 233 relationships.
-- 159 explicit publication guards / 74 legacy rationale boundaries.
-- 236 live relationship-source uses: 236 verified / 0 pending verification.
-- 213 active source entities: 207 clinical + 1 legal authority.
-- 0 pending-verification clinical source entities.
+- 283 relationships.
+- 209 explicit publication guards / 74 legacy rationale boundaries.
+- 291 live relationship-source uses: 256 verified / 35 pending verification.
+- 233 active source entities: 232 clinical + 1 legal authority.
+- 35 pending-verification clinical source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
-- 222 total source entities including lineage/history.
+- 277 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
 
 ## ME-6 qualified-human citation verification
@@ -170,3 +170,11 @@ Five approved bounded relationships were added to previously framework-only draf
 ## Mapping Expansion ME-20 — batch 6 (pre-qualified-human-citation-verification state)
 
 Five approved bounded relationships were added to previously framework-only draft primaries (backlog rows 1-5 from the ME-19 plan, second ME batch over the Wave-8 catalog expansion) while preserving each primary's existing publication state: `pheochromocytoma -> hypertension` (rank 1, PMID 24893135), `sjogren-s-syndrome -> dry-eye-syndrome` (rank 1, PMID 41009391), `leukoplakia -> oral-cancer` (rank 1, PMID 26189354), `erythroplakia -> oral-cancer` (rank 1, PMID 35488780), `meningitis -> hearing-loss` (rank 1, PMID 24618106). Current state: 273 relationships; published P1 66 / P2+ 73; draft D1 44; 281 live references with 256 verified and 25 pending qualified-human citation verification; 233 active and 25 pending source entities (267 total); 199 explicit publication guards and 74 legacy rationale boundaries. Registered-primary coverage is 184/813, leaving 629 primaries; among the remaining primaries, 37 are already used as targets. Read-before-write publication states preserved exactly: pheochromocytoma=draft, sjogren-s-syndrome=draft, leukoplakia=draft, erythroplakia=draft, meningitis=draft. The twenty-five ME-16..ME-20 citations remain pending separate qualified-human citation verification.
+
+## Mapping Expansion ME-21 — batch 7 (pre-qualified-human-citation-verification state)
+
+Five approved bounded relationships were added to previously framework-only draft primaries while preserving each primary's existing publication state: `peptic-ulcer-disease -> anemia` (rank 1, PMID 7942718), `eosinophilic-esophagitis -> dysphagia` (rank 1, PMID 34609446), `cholelithiasis -> pancreatitis` (rank 1, PMID 24679420), `insulin-resistance-syndrome -> diabetes-mellitus-type-2` (rank 1, PMID 12231073), and `metabolic-syndrome -> diabetes-mellitus-type-2` (rank 1, PMID 24843675). Current state: 278 relationships; published P1 66 / P2+ 73; draft D1 49; 286 live references with 256 verified and 30 pending qualified-human citation verification; 233 active and 30 pending source entities (272 total); 204 explicit publication guards and 74 legacy rationale boundaries. Registered-primary coverage is 189/813, leaving 624 primaries; among the remaining primaries, 37 are already used as targets. Read-before-write publication states preserved exactly: peptic-ulcer-disease=draft, eosinophilic-esophagitis=draft, cholelithiasis=draft, insulin-resistance-syndrome=draft, metabolic-syndrome=draft. The thirty ME-16..ME-21 citations remain pending separate qualified-human citation verification.
+
+## Mapping Expansion ME-22 — batch 8 (pre-qualified-human-citation-verification state)
+
+Five approved bounded relationships were added to previously framework-only draft primaries while preserving each primary's existing publication state: `transient-ischemic-attack-residuals -> cerebrovascular-accident-stroke-residuals` (rank 1, PMID 18071162), `testicular-torsion -> testicular-atrophy` (rank 1, PMID 26509312), `lichen-sclerosus -> squamous-cell-carcinoma` (rank 1, PMID 32089333), `nasal-polyps -> asthma` (rank 1, PMID 33065369), and `diabetic-gastroparesis -> gastroparesis` (rank 1, PMID 31081877). Current state: 283 relationships; published P1 66 / P2+ 73; draft D1 54; 291 live references with 256 verified and 35 pending qualified-human citation verification; 233 active and 35 pending source entities (277 total); 209 explicit publication guards and 74 legacy rationale boundaries. Registered-primary coverage is 194/813, leaving 619 primaries; among the remaining primaries, 37 are already used as targets. Read-before-write publication states preserved exactly: transient-ischemic-attack-residuals=draft, testicular-torsion=draft, lichen-sclerosus=draft, nasal-polyps=draft, diabetic-gastroparesis=draft. The thirty-five ME-16..ME-22 citations remain pending separate qualified-human citation verification.

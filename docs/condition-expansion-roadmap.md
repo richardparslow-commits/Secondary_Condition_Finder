@@ -297,6 +297,10 @@ Target catalog v2 is complete at **300 recognized conditions**, with **107 expan
 
 The next controlled workstream is no longer another numbered catalog wave. It is evidence and quality work: promote only individual secondary relationships with adequate condition-specific clinical support, verify eligible citations through the repository's approved verification workflow, and separately address documented catalog-modeling debt without weakening the 300/300 referential-integrity contract.
 
+Mapping Expansion ME-21 (2026-09-02) added five draft-safe relationships over the Wave-8 identities: `peptic-ulcer-disease -> anemia`, `eosinophilic-esophagitis -> dysphagia`, `cholelithiasis -> pancreatitis`, `insulin-resistance-syndrome -> diabetes-mellitus-type-2`, and `metabolic-syndrome -> diabetes-mellitus-type-2`. Each remains `ASSOCIATION_ONLY`, `NOT_ESTABLISHED`, and pending qualified-human citation verification; no primary publication state changed.
+
+Mapping Expansion ME-22 (2026-09-02) added five additional draft-safe relationships: `transient-ischemic-attack-residuals -> cerebrovascular-accident-stroke-residuals`, `testicular-torsion -> testicular-atrophy`, `lichen-sclerosus -> squamous-cell-carcinoma`, `nasal-polyps -> asthma`, and `diabetic-gastroparesis -> gastroparesis`. Each remains `ASSOCIATION_ONLY`, `NOT_ESTABLISHED`, and pending qualified-human citation verification; no primary publication state changed.
+
 ## 2026-09 Master-List Expansion (Wave 8: identity expansion)
 
 **Status: implemented.** The 2026-09 master condition list (14 body-system categories) expanded the catalog from **311 to 813 conditions**, keeping the 813/813 one-to-one catalog-to-knowledge-base coverage contract intact.

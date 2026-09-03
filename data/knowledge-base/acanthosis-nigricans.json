@@ -2,8 +2,57 @@
   "id": "acanthosis-nigricans",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed acanthosis-nigricans to type-2-diabetes association.",
+    "Confirm the individual's insulin-resistance phenotype and independently diagnose type 2 diabetes before any publication decision; do not infer causation from a skin finding alone."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "diabetes-mellitus-type-2",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded insulin-resistance association. Acanthosis nigricans is commonly associated with insulin resistance and may accompany type 2 diabetes, but a skin finding does not establish diabetes, its cause, or an individual medical nexus. Require documented acanthosis nigricans, independently established type 2 diabetes using accepted diagnostic criteria, compatible metabolic phenotype and chronology, and review of obesity, medications, endocrine disease, genetic syndromes, and malignancy-associated acanthosis. Do not infer diabetes from acanthosis nigricans alone or treat this association as proof that the skin condition caused diabetes.",
+      "evidenceGaps": [
+        "Independent dermatologic documentation of acanthosis nigricans and laboratory-confirmed type 2 diabetes",
+        "Hemoglobin A1c, fasting glucose, oral glucose tolerance testing, insulin-resistance findings, and chronology",
+        "Assessment of obesity, medications, endocrine disorders, genetic insulin-receptor disorders, and other causes of acanthosis",
+        "Review for atypical, abrupt, extensive, or mucosal disease that could indicate malignancy-associated acanthosis",
+        "Resolution of publication guard: Require documented acanthosis nigricans, independently established type 2 diabetes, compatible metabolic phenotype/chronology, and competing-cause review; do not infer diabetes from a skin finding alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Leung AKC, Lam JM, Barankin B, Leong KF, Hon KL. Acanthosis Nigricans: An Updated Review. Curr Pediatr Rev. 2023;19(1):68-82. PMID 36698243. doi:10.2174/1573396318666220429085231.",
+          "note": "Mapping Expansion Batch ME-25 clinical review for the bounded acanthosis-nigricans to type-2-diabetes proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36698243/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 36698243; updated review describing acanthosis nigricans and its association with insulin resistance/diabetes; approved ME-25 guard requires independent diabetes diagnosis and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited dermatology review supports acanthosis nigricans as a clinical marker associated with insulin resistance and diabetes, without establishing that acanthosis nigricans caused type 2 diabetes in an individual.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; independent metabolic diagnosis, chronology, phenotype, and alternative-cause review are required."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Acanthosis nigricans may reflect hyperinsulinemia and insulin resistance that can coexist with or precede type 2 diabetes, but the direction and individual metabolic contribution remain hypothesized until laboratory and clinical findings are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited review treats acanthosis nigricans as a marker of insulin resistance and related systemic disease, not as proof that the skin condition caused an individual's diabetes.",
+        "evidenceGaps": "Independent skin and diabetes diagnoses; metabolic laboratory findings; chronology; assessment of obesity, medications, endocrine and genetic disorders; and review for atypical malignancy-associated acanthosis.",
+        "alternativeEtiologiesToRuleOut": [
+          "obesity-related insulin resistance",
+          "medication-associated insulin resistance",
+          "endocrine disorders",
+          "genetic insulin-receptor disorders",
+          "malignancy-associated acanthosis nigricans",
+          "other causes of hyperglycemia"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

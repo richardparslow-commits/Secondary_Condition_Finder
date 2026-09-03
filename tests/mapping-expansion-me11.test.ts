@@ -46,8 +46,8 @@ describe("mapping expansion ME-11", () => {
 
   it("pins the exact ME-11 pending citation totals", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
-    expect(refs).toHaveLength(281);
+expect(refs).toHaveLength(316);
     expect(refs.filter((source) => source.verified === true)).toHaveLength(256);
-    expect(refs.filter((source) => source.verified === false)).toHaveLength(25);
+expect(refs.filter((source) => source.verified === false)).toHaveLength(60);
   });
 });

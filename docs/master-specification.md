@@ -142,7 +142,7 @@ Every PR must pass, enforced by `.github/workflows/ci.yml`:
 | Gate | Command | Enforces |
 | --- | --- | --- |
 | Knowledge-base validation | `npm run kb:validate` | Strict Zod schema, referential integrity, citation purity threshold |
-| ME / CRG compliance | `npm run audit:me-compliance` | CRG trio, nexus-arm discriminated union, consensus/alignment consistency, guard-disclaimer honesty, citation discipline, quarantine (every ME-1..ME-20 relationship attributed) |
+| ME / CRG compliance | `npm run audit:me-compliance` | CRG trio, nexus-arm discriminated union, consensus/alignment consistency, guard-disclaimer honesty, citation discipline, quarantine (every ME-1..ME-22 relationship attributed) |
 | Citation audit | `npm run citations:audit` | Unverified citation ceiling vs. baseline |
 | Composition / architecture audit | `npm run test:composition` | Critical-module test coverage + server-action placement + client boundary + track separation + evidence-parser boundary |
 | Lint | `npm run lint` | ESLint |

@@ -5,5 +5,53 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded abnormal-uterine-bleeding and iron-deficiency association. The cited review discusses adenomyosis as a uterine disorder associated with abnormal or heavy uterine bleeding and iron-deficiency anemia, but it does not establish that every individual's anemia was caused by adenomyosis or exclude fibroids, endometriosis, other uterine disease, gastrointestinal blood loss, nutritional deficiency, pregnancy-related loss, or other causes. Require documented adenomyosis, separately established anemia with iron studies where relevant, compatible bleeding phenotype and chronology, and gynecologic review. Do not infer anemia from adenomyosis alone without documented blood loss, laboratory findings, and competing-cause review.",
+      "evidenceGaps": [
+        "Independent gynecologic documentation of adenomyosis and laboratory-confirmed anemia",
+        "Menstrual bleeding history, hemoglobin trend, ferritin, iron studies, and chronology of bleeding and anemia",
+        "Imaging or pathology supporting adenomyosis and assessment of fibroids, endometriosis, malignancy, and other uterine disease",
+        "Evaluation for gastrointestinal blood loss, nutritional deficiency, pregnancy-related loss, hemolysis, renal disease, and other anemia causes",
+        "Resolution of publication guard: Require documented adenomyosis, separately established anemia, compatible bleeding/chronology, and competing-cause review; do not infer anemia from adenomyosis alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Donnez J, Carmona F, Maitrot-Mantelet L, Dolmans MM, Chapron C. Uterine disorders and iron deficiency anemia. Fertil Steril. 2022;118(4):615-624. PMID 36182260. doi:10.1016/j.fertnstert.2022.08.011.",
+          "note": "Mapping Expansion Batch ME-24 evidence for the bounded adenomyosis-to-anemia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36182260/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 36182260; review of uterine disorders, abnormal/heavy uterine bleeding, and iron-deficiency anemia; approved ME-24 guard: require documented adenomyosis, separately established anemia, compatible bleeding/chronology, and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited review supports review of adenomyosis-associated abnormal or heavy uterine bleeding and iron-deficiency anemia, without establishing a deterministic individual adenomyosis-to-anemia pathway.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; bleeding phenotype, laboratory findings, chronology, and competing causes are required for individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Adenomyosis may contribute to abnormal or heavy uterine bleeding, which can contribute to iron depletion and anemia, but the individual bleeding source and anemia mechanism remain unestablished until documented and competing causes are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited review addresses uterine disorders, adenomyosis, abnormal bleeding, and iron-deficiency anemia but does not prove that a particular person's anemia was caused or aggravated by adenomyosis.",
+        "evidenceGaps": "Independent adenomyosis and anemia diagnoses; bleeding history and laboratory trend; gynecologic imaging or pathology; gastrointestinal, nutritional, pregnancy-related, renal, hemolytic, and other anemia causes; qualified clinical opinion for an individual nexus.",
+        "alternativeEtiologiesToRuleOut": [
+          "uterine fibroids or endometriosis",
+          "gastrointestinal blood loss",
+          "nutritional deficiency or malabsorption",
+          "pregnancy-related blood loss",
+          "hemolysis, renal disease, inflammation, or marrow disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

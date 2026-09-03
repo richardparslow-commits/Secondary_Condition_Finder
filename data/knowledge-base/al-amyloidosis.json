@@ -2,8 +2,57 @@
   "id": "al-amyloidosis",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions using AL-amyloidosis-specific clinical evidence before publication.",
-    "The prior depression and GERD suggestions were withdrawn because 38 CFR 3.310 supplied legal framework only and did not establish either an AL-amyloidosis-specific mood relationship or a treatment-to-GI medical pathway."
+    "Obtain qualified-human citation verification for the proposed AL-amyloidosis to chronic-kidney-disease association.",
+    "Confirm tissue-typed AL amyloidosis, objective renal involvement, proteinuria or renal-function chronology, treatment exposures, and competing kidney disease before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-27 adds this relationship only as a bounded systemic-amyloidosis renal-involvement association. AL amyloidosis frequently involves the kidney and may produce proteinuria, nephrotic syndrome, and renal failure, but the disease label alone does not establish chronic kidney disease in every patient or individual attribution. Require tissue-typed or otherwise clinically established AL amyloidosis, independently documented chronic kidney disease or persistent renal impairment, objective renal findings, compatible chronology, and nephrology review. Preserve diabetes, hypertension, monoclonal-protein kidney diseases other than AL, medication or treatment nephrotoxicity, obstruction, infection, and unrelated glomerular or vascular disease. Do not infer CKD from AL amyloidosis without renal evidence.",
+      "evidenceGaps": [
+        "Independent documentation of AL amyloidosis and chronic kidney disease or persistent renal impairment",
+        "Renal biopsy or other objective evidence of amyloid-related renal involvement, proteinuria, nephrotic syndrome, or declining filtration",
+        "Longitudinal renal-function and proteinuria chronology relative to amyloidosis diagnosis and treatment",
+        "Assessment of light-chain burden, response to therapy, nephrotoxic exposure, and competing kidney disease",
+        "Resolution of publication guard: Require established AL amyloidosis, objective renal involvement/CKD, compatible chronology, and competing kidney-cause review; do not infer CKD from AL amyloidosis alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Ryšavá R. AL amyloidosis: advances in diagnostics and treatment. Nephrol Dial Transplant. 2019;34(9):1460-1466. PMID 30299492. doi:10.1093/ndt/gfy291.",
+          "note": "Mapping Expansion Batch ME-27 review evidence for the bounded AL-amyloidosis renal-involvement proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30299492/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 30299492; review identifies frequent renal involvement in AL amyloidosis and possible progression to nephrotic syndrome or renal failure; approved ME-27 guard requires objective renal findings and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The AL amyloidosis review supports frequent renal involvement and possible renal failure, without establishing that an individual's CKD is caused by AL amyloidosis.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; amyloid typing, objective renal findings, chronology, treatment context, and competing kidney causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Deposition of monoclonal immunoglobulin light-chain amyloid in renal structures may produce proteinuria, glomerular injury, and progressive loss of kidney function, but the renal mechanism and its contribution to an individual's CKD remain hypothesized until tissue and longitudinal clinical evidence are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Renal involvement is common in AL amyloidosis, but the review does not prove that a particular person's CKD was caused or aggravated by AL amyloid deposition.",
+        "evidenceGaps": "AL amyloidosis confirmation and typing; objective proteinuria, biopsy, filtration decline, or CKD documentation; renal chronology; treatment and light-chain response; and review of diabetes, hypertension, other monoclonal kidney disease, nephrotoxicity, obstruction, infection, and unrelated renal causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "diabetic kidney disease",
+          "hypertensive kidney disease",
+          "other monoclonal-protein kidney disease",
+          "medication or treatment nephrotoxicity",
+          "obstructive or infectious kidney disease",
+          "unrelated glomerular or vascular disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

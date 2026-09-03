@@ -2,8 +2,57 @@
   "id": "coarctation-of-the-aorta",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed coarctation-of-the-aorta to hypertension association.",
+    "Confirm the congenital anatomy or repair history, independently establish hypertension, document residual or repaired coarctation physiology, and assess other blood-pressure causes before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "hypertension",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded congenital-hemodynamic association. Coarctation of the aorta is associated with hypertension before and after repair, including residual or recurrent obstruction and abnormal vascular regulation, but the literature does not establish that every person with coarctation develops hypertension or that coarctation caused an individual's hypertension. Require documented coarctation anatomy or repair, independently established hypertension using appropriate measurements, compatible residual-gradient or vascular phenotype and chronology, and cardiology review. Do not infer hypertension from a congenital diagnosis, a single blood-pressure reading, or repair history alone.",
+      "evidenceGaps": [
+        "Cardiology documentation of coarctation anatomy, prior repair, stent, or residual/recurrent obstruction",
+        "Repeated or ambulatory blood-pressure measurements establishing hypertension",
+        "Upper/lower-extremity pressure comparison, imaging, gradients, vascular function, and chronology",
+        "Assessment of renal disease, endocrine causes, obesity, medications, sleep apnea, and primary hypertension risk factors",
+        "Resolution of publication guard: Require documented coarctation anatomy or repair, independently established hypertension, compatible residual physiology/chronology, and competing-cause review; do not infer hypertension from coarctation alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Raza S, Aggarwal S, Jenkins P, Kharabish A, Anwer S, Cullington D, Jones J, et al. Coarctation of the Aorta: Diagnosis and Management. Diagnostics (Basel). 2023;13(13):2189. PMID 37443581. doi:10.3390/diagnostics13132189.",
+          "note": "Mapping Expansion Batch ME-26 review for the bounded coarctation-of-the-aorta to hypertension proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37443581/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 37443581; review of coarctation diagnosis, management, adult presentation, and long-term hypertension; approved ME-26 guard requires independent hypertension diagnosis, residual physiology, chronology, and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited review supports hypertension as a frequent clinical issue in coarctation, including after repair, without proving that coarctation caused an individual's hypertension.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; congenital anatomy, repair status, hemodynamics, chronology, and competing blood-pressure causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Aortic narrowing, residual obstruction, altered vascular reactivity, and abnormal arterial compliance may contribute to elevated blood pressure, but the individual hemodynamic pathway remains hypothesized until documented.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Coarctation reviews describe hypertension as common and clinically important, including following repair, but do not establish an automatic individual nexus.",
+        "evidenceGaps": "Cardiology anatomy and repair records; repeated or ambulatory blood-pressure confirmation; gradients and imaging; vascular phenotype and chronology; renal, endocrine, medication, sleep, obesity, and primary-hypertension assessment.",
+        "alternativeEtiologiesToRuleOut": [
+          "residual or recurrent coarctation obstruction",
+          "primary or essential hypertension",
+          "renal disease or renovascular hypertension",
+          "endocrine hypertension",
+          "medication or substance effects",
+          "obesity or sleep apnea"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

@@ -1,0 +1,28 @@
+{
+  "batch": "ME-26",
+  "status": "implemented-draft-pending-qualified-human-citation-verification",
+  "mappings": [
+    {"primaryId": "acute-stress-reaction", "targetId": "ptsd", "relationshipId": "rel-acute-stress-reaction-to-ptsd", "pmid": "21208593", "verified": false},
+    {"primaryId": "atopic-dermatitis-eczema", "targetId": "asthma", "relationshipId": "rel-atopic-dermatitis-eczema-to-asthma", "pmid": "34384834", "verified": false},
+    {"primaryId": "coarctation-of-the-aorta", "targetId": "hypertension", "relationshipId": "rel-coarctation-of-the-aorta-to-hypertension", "pmid": "37443581", "verified": false},
+    {"primaryId": "chronic-bronchitis", "targetId": "copd", "relationshipId": "rel-chronic-bronchitis-to-copd", "pmid": "23204254", "verified": false},
+    {"primaryId": "cataracts", "targetId": "visual-impairment", "relationshipId": "rel-cataracts-to-visual-impairment", "pmid": "40227658", "verified": false}
+  ],
+  "aggregateRatchet": {
+    "relationships": 303,
+    "liveSourceReferenceUses": 311,
+    "verifiedLiveSourceUses": 256,
+    "pendingVerificationLiveSourceUses": 55,
+    "liveClinicalUses": 306,
+    "explicitPublicationGuards": 229,
+    "legacyRationaleBoundaries": 74,
+    "totalSourceEntitiesIncludingLineage": 297
+  },
+  "policy": {
+    "draftOnly": true,
+    "associationOnly": true,
+    "qualifiedHumanCitationReviewRequired": true,
+    "automaticPromotionAuthorized": false,
+    "pathwayIntelligencePresent": false
+  }
+}

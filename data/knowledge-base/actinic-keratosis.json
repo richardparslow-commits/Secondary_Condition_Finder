@@ -5,5 +5,54 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "squamous-cell-carcinoma",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded cutaneous premalignant-lesion association. The cited systematic review evaluates the natural history of actinic keratosis and progression or regression patterns, but it does not establish that any individual's squamous-cell carcinoma arose from an actinic keratosis or exclude field cancerization, cumulative ultraviolet exposure, immunosuppression, genetic susceptibility, prior lesions, or other causes. Require clinically or biopsy-documented actinic keratosis, separately established cutaneous squamous-cell carcinoma, compatible anatomic site and chronology, and pathology/dermatology review. Do not infer carcinoma from an actinic keratosis diagnosis, lesion appearance, dysplasia, or treatment history alone.",
+      "evidenceGaps": [
+        "Independent dermatologic or pathology documentation of actinic keratosis and cutaneous squamous-cell carcinoma",
+        "Biopsy reports identifying carcinoma, anatomic site, margins, and relevant histopathology",
+        "Chronology of lesion recognition, persistence, progression, biopsy, treatment, recurrence, and cancer diagnosis",
+        "Assessment of ultraviolet exposure, field cancerization, immunosuppression, prior skin cancers, phenotype, and other risk factors",
+        "Resolution of publication guard: Require documented actinic keratosis and cutaneous SCC with compatible site/chronology and pathology review; do not infer carcinoma from a lesion or treatment history alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Werner RN, Sammain A, Erdmann R, Hartmann V, Stockfleth E, Nast A. The natural history of actinic keratosis: a systematic review. Br J Dermatol. 2013;169(3):502-518. PMID 23647091. doi:10.1111/bjd.12420.",
+          "note": "Mapping Expansion Batch ME-23 evidence for the bounded actinic-keratosis to squamous-cell-carcinoma proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23647091/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 23647091; systematic review of actinic-keratosis natural history and progression/regression patterns; approved ME-23 guard: require documented lesions, cutaneous SCC pathology, compatible site/chronology, and dermatology review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited systematic review supports review of actinic keratosis as a premalignant cutaneous lesion with variable progression and regression, without establishing deterministic individual origin of every later squamous-cell carcinoma.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; pathology, anatomic site, chronology, dermatologic findings, and competing risk factors are required for individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "Actinic keratosis and cutaneous squamous-cell carcinoma may share ultraviolet-related field damage and clonal keratinocyte changes, but the individual lesion-to-carcinoma pathway remains hypothesized until pathology, site, chronology, and competing risk factors are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited review addresses actinic-keratosis natural history but does not prove that a particular cutaneous SCC arose from a documented actinic keratosis; pathology, chronology, site, and other skin-cancer risks require review.",
+        "evidenceGaps": "Independent lesion and carcinoma pathology; compatible anatomic site and chronology; dermatology records; ultraviolet and immunosuppression history; prior skin cancer history; and assessment of field cancerization and other competing explanations.",
+        "alternativeEtiologiesToRuleOut": [
+          "cumulative ultraviolet exposure and field cancerization",
+          "immunosuppression",
+          "genetic or phenotypic susceptibility",
+          "prior or recurrent cutaneous malignancy",
+          "chronic wounds, scars, or inflammation",
+          "other premalignant keratinocytic lesions"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

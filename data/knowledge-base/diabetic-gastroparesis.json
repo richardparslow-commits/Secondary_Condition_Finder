@@ -5,5 +5,55 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "gastroparesis",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded diabetes-associated gastroparesis phenotype proposition. The cited Endocrine Reviews article describes diabetic gastroparesis as a complication phenotype of diabetes involving delayed gastric emptying and gastrointestinal symptoms, but it does not establish that diabetes caused every individual's gastroparesis or exclude postsurgical, medication-related, idiopathic, neurologic, metabolic, or mechanical causes. Require documented diabetes mellitus with a separately established gastroparesis diagnosis using compatible objective gastric-emptying evaluation and chronology. Preserve glycemic control, diabetes duration, autonomic or peripheral neuropathy, prior gastric surgery, GLP-1 or other motility-altering medications, neurologic disease, hypothyroidism, obstruction, functional dyspepsia, and idiopathic disease as competing or contributing explanations. Do not infer gastroparesis from nausea, vomiting, abdominal pain, diabetes, or abnormal glucose values alone.",
+      "evidenceGaps": [
+        "Independent documentation of diabetes mellitus and gastroparesis",
+        "Objective gastric-emptying study or equivalent diagnostic records excluding mechanical obstruction",
+        "Diabetes duration, glycemic history, autonomic neuropathy, and compatible chronology",
+        "Assessment of gastric surgery, GLP-1 and other medication exposure, neurologic/endocrine disease, obstruction, and functional dyspepsia",
+        "Resolution of publication guard: Require documented diabetes, objectively established gastroparesis, and compatible chronology; do not infer gastroparesis from diabetes or symptoms alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Bharucha AE, Kudva YC, Prichard DO. Diabetic Gastroparesis. Endocr Rev. 2019;40(5):1318-1352. PMID 31081877. doi:10.1210/er.2018-00161.",
+          "note": "Mapping Expansion Batch ME-22 evidence for the bounded diabetic-gastroparesis to gastroparesis phenotype proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31081877/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 31081877; Endocrine Reviews clinical review; approved ME-22 guard: require documented diabetes, objectively established gastroparesis, and compatible chronology; do not infer gastroparesis from diabetes or symptoms alone."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited clinical review describes diabetic gastroparesis as a diabetes-associated gastroparesis phenotype, supporting targeted evaluation when both diagnoses are present without establishing that diabetes caused an individual's delayed gastric emptying.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; objective gastric-emptying findings, chronology, and competing gastrointestinal causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Long-standing diabetes may be associated with autonomic neuropathy and other metabolic injury affecting gastric motor function, but this proposed pathway is not established for an individual without objective delayed emptying, compatible diabetes chronology, and exclusion of other causes.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The review describes a diabetic gastroparesis phenotype but does not establish that diabetes caused every individual's gastroparesis; objective testing, chronology, medication review, and exclusion of obstruction and other causes are required.",
+        "evidenceGaps": "Independent diabetes and gastroparesis diagnoses; objective gastric-emptying evidence; compatible duration and chronology; and assessment of surgery, medications, neurologic, endocrine, obstructive, functional, and idiopathic alternatives.",
+        "alternativeEtiologiesToRuleOut": [
+          "prior gastric or upper gastrointestinal surgery",
+          "GLP-1 receptor agonists and other motility-altering medications",
+          "neurologic or autonomic disease unrelated to diabetes",
+          "hypothyroidism or other endocrine disease",
+          "mechanical gastric outlet obstruction",
+          "functional dyspepsia",
+          "idiopathic gastroparesis"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

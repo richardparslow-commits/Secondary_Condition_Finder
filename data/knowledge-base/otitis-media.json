@@ -4,5 +4,55 @@
   "todo": [
     "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "hearing-loss",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded otologic hearing-loss association. The cited systematic review describes hearing loss among the global burden and sequelae of otitis media, but it does not establish that any individual's hearing loss was caused by an otitis-media episode or exclude chronic suppurative disease, otosclerosis, age-related loss, noise exposure, congenital disease, ototoxic medication, or other causes. Require documented otitis media phenotype and separately established hearing loss by audiometry with compatible ear and chronology. Preserve otitis media with effusion, chronic suppurative otitis media, tympanic-membrane or ossicular disease, ototoxic medications, noise, congenital or pre-existing loss, presbycusis, and sensorineural or mixed etiologies as competing explanations. Do not infer hearing loss from ear pain, effusion, otorrhea, or a remote otitis-media history without objective audiologic testing.",
+      "evidenceGaps": [
+        "Independent documentation of otitis media phenotype and hearing loss",
+        "Pure-tone audiometry, tympanometry, and speech testing identifying laterality, type, and severity",
+        "Otoscopy, imaging, and records distinguishing effusion, chronic suppurative disease, perforation, and ossicular injury",
+        "Chronology of infection or effusion and the onset or persistence of hearing loss",
+        "Resolution of publication guard: Require documented otitis media, objective hearing loss, compatible ear/chronology, and competing-cause review."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Monasta L, Ronfani L, Marchetti F, Montico M, Brumatti LV, Bavcar A, Grasso D, Barbiero C, Tamburlini G. Burden of disease caused by otitis media: systematic review and global estimates. PLoS One. 2012;7(4):e36226. PMID 22558393. doi:10.1371/journal.pone.0036226.",
+          "note": "Mapping Expansion Batch ME-23 evidence for the bounded otitis-media to hearing-loss proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22558393/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 22558393; systematic review and global estimates of otitis-media burden and related hearing loss; approved ME-23 guard: require documented otitis media, objective hearing loss, compatible ear/chronology, and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited systematic review associates otitis media with hearing-loss burden and sequelae at the population level, supporting focused audiologic review without establishing individual causation.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; otologic phenotype, objective testing, chronology, and alternative causes are required for individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Middle-ear fluid, inflammation, perforation, or ossicular injury may impair sound transmission during or after otitis media, but the individual mechanism remains hypothesized until ear-specific audiology and chronology are documented.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited review describes population burden and hearing-loss sequelae of otitis media but does not prove that otitis media caused every individual's hearing loss; objective testing and competing-cause review are required.",
+        "evidenceGaps": "Independent otitis-media and hearing-loss diagnoses; ear-specific audiology; otoscopic/imaging findings; compatible chronology; and assessment of congenital, age-related, noise, ototoxic, chronic-ear, mixed, and sensorineural alternatives.",
+        "alternativeEtiologiesToRuleOut": [
+          "otitis media with effusion or chronic suppurative otitis media phenotype",
+          "tympanic-membrane perforation or ossicular disease",
+          "otosclerosis",
+          "noise exposure",
+          "ototoxic medication",
+          "congenital or pre-existing hearing loss",
+          "presbycusis or unrelated sensorineural loss"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

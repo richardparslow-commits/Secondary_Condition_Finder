@@ -2,8 +2,57 @@
   "id": "atrophic-glossitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed atrophic-glossitis to anemia association.",
+    "Confirm objective glossitis, anemia subtype, hematinic laboratory abnormalities, chronology, and competing oral/systemic diagnoses before any publication decision."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded hematinic-deficiency association. Atrophic glossitis may occur with iron, vitamin B12, folate, and other nutrient deficiencies and can accompany anemia, but the oral finding is nonspecific and does not establish anemia or its cause. Require documented atrophic glossitis, independently established anemia with subtype and laboratory evaluation, compatible hematinic findings and chronology, and dental, medical, or hematologic review. Assess blood loss, malabsorption, diet, autoimmune disease, infection, medication effects, and other causes. Do not infer anemia from tongue appearance alone or infer a particular deficiency without laboratory support.",
+      "evidenceGaps": [
+        "Independent oral examination documenting atrophic glossitis and laboratory-confirmed anemia",
+        "Complete blood count, indices, ferritin, iron studies, vitamin B12, folate, zinc, and other indicated hematinic testing",
+        "Chronology of glossitis, nutritional abnormality, anemia, diet, blood loss, and treatment response",
+        "Evaluation for gastrointestinal blood loss, malabsorption, autoimmune gastritis, celiac disease, infection, medication effects, and other causes",
+        "Resolution of publication guard: Require documented atrophic glossitis, objective anemia subtype and hematinic findings, compatible chronology, and competing-cause review; do not infer anemia from tongue appearance alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Chiang CP, Chang JYF, Wang YP, Wu YH, Wu YC, Sun A. Atrophic glossitis: Etiology, serum autoantibodies, anemia, hematinic deficiencies, hyperhomocysteinemia, and management. J Formos Med Assoc. 2020. PMID 31076315. doi:10.1016/j.jfma.2019.04.015.",
+          "note": "Mapping Expansion Batch ME-25 clinical review for the bounded atrophic-glossitis to anemia proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31076315/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 31076315; review of atrophic glossitis, anemia, hematinic deficiencies, and associated laboratory findings; approved ME-25 guard requires objective anemia subtype and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited oral-medicine review supports an association between atrophic glossitis and anemia/hematinic deficiencies, while recognizing multiple possible nutritional and systemic causes and the need for laboratory confirmation.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; independent oral and hematologic diagnoses, laboratory findings, chronology, and alternative-cause review are required."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Iron, vitamin B12, folate, or other hematinic deficiency may impair epithelial maintenance and produce atrophic glossitis while also contributing to anemia, but the individual's direction of association and deficiency mechanism remain hypothesized.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The review describes atrophic glossitis alongside anemia and several possible hematinic deficiencies but does not prove that the oral condition caused a particular person's anemia.",
+        "evidenceGaps": "Independent glossitis and anemia diagnoses; anemia subtype and hematinic studies; chronology; dental and hematologic review; and assessment of blood loss, malabsorption, diet, autoimmune, infectious, medication, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "iron deficiency from gastrointestinal or other blood loss",
+          "vitamin B12 or folate deficiency from diet or malabsorption",
+          "autoimmune gastritis or pernicious anemia",
+          "celiac disease or other gastrointestinal disease",
+          "infection, medication effect, or inflammatory oral disease",
+          "hemolytic, renal, marrow, or other anemia causes"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

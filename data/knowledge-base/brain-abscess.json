@@ -2,8 +2,57 @@
   "id": "brain-abscess",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed brain-abscess to seizure-disorder association.",
+    "Confirm the brain-abscess diagnosis, infectious source and location, acute seizures if present, later unprovoked seizures or epilepsy, chronology, treatment, and competing seizure causes before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "seizure-disorder",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-27 adds this relationship only as a bounded post-infectious seizure-risk association. A nationwide cohort found new-onset epilepsy after brain abscess among survivors, but this population-level risk does not establish that every seizure disorder after a brain abscess was caused by the infection. Require a documented brain abscess, separately established seizure disorder or epilepsy, compatible timing, objective neurologic evaluation, and review of admission seizures, abscess location, neurosurgery, stroke, alcohol exposure, structural brain disease, medications, and other seizure causes. Distinguish acute symptomatic seizures during infection from later unprovoked seizures. Do not infer epilepsy from a brain-abscess history or a single acute seizure alone.",
+      "evidenceGaps": [
+        "Independent documentation of brain abscess and a separately established seizure disorder or epilepsy diagnosis",
+        "Chronology distinguishing acute symptomatic seizures during infection from later unprovoked seizures",
+        "Abscess location, imaging, microbiology, neurosurgery, stroke, EEG, and neurologic follow-up records",
+        "Assessment of alcohol exposure, prior seizures, structural brain disease, medications, metabolic triggers, and other causes",
+        "Resolution of publication guard: Require documented brain abscess, later objective seizure-disorder/epilepsy diagnosis, compatible chronology, and competing-cause review; do not infer epilepsy from infection history or one acute seizure."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Bodilsen J, et al. Risk Factors and Prognosis of Epilepsy Following Brain Abscess: A Nationwide Population-Based Cohort Study. Neurology. 2023;100(15):e1611-e1620. PMID 36810235. doi:10.1212/WNL.0000000000206866.",
+          "note": "Mapping Expansion Batch ME-27 nationwide cohort evidence for the bounded post-brain-abscess epilepsy proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36810235/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 36810235; nationwide population-based cohort evaluating new-onset epilepsy after brain abscess; approved ME-27 guard distinguishes acute symptomatic seizures from later epilepsy and requires competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The nationwide cohort supports increased post-abscess epilepsy risk among survivors, without establishing deterministic or individual causation.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; infection chronology, seizure phenotype, structural findings, treatment context, and competing neurologic causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Cerebral infection and subsequent inflammatory or structural injury may leave an epileptogenic scar or alter cortical networks, but the conversion from a particular brain abscess to an individual's later epilepsy remains hypothesized until longitudinal neurologic evidence is reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cohort demonstrates elevated later epilepsy risk after brain abscess, but it does not prove that an individual's epilepsy was caused by the infection.",
+        "evidenceGaps": "Brain-abscess confirmation; distinction between acute symptomatic and later unprovoked seizures; abscess location and treatment; EEG and imaging; and review of prior seizure history, stroke, alcohol, structural disease, medications, metabolic triggers, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing epilepsy or seizure disorder",
+          "stroke or residual structural brain injury",
+          "alcohol or substance exposure",
+          "tumor, vascular malformation, or other structural lesion",
+          "metabolic or medication-related seizure trigger",
+          "other central nervous system infection or inflammatory disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

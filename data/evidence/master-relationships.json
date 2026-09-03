@@ -6,8 +6,8 @@
    "installedFrom": "Master Registry Discrepancy Resolution 2026",
    "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
    "counts": {
-      "relationships": 273,
-      "explicitPublicationGuards": 199,
+      "relationships": 308,
+      "explicitPublicationGuards": 234,
       "legacyRationaleBoundaries": 74
    },
    "relationships": [
@@ -8927,8 +8927,695 @@
          "sourceReferenceCount": 1,
          "pathwayIntelligencePresent": false,
          "suggestionObjectHash": "dddc2a4a0849426738a53ebceb65e504d9c03dca2e15871a1bf75b4bf1a1532c"
-      }
-   ],
-   "lastUpdatedBy": "Mapping Expansion Batch ME-20",
-   "currentState": "ME20-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+      },
+      {
+         "relationshipId": "rel-peptic-ulcer-disease-to-anemia",
+         "primaryId": "peptic-ulcer-disease",
+         "targetId": "anemia",
+         "direction": "peptic-ulcer-disease -> anemia",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-21-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited endoscopy cohort of patients over age 50 with documented iron-deficiency anemia identified peptic ulcer disease among the upper gastrointestinal findings. Require documented peptic-ulcer disease with bleeding or other clinically relevant iron loss and separately established iron-deficiency anemia with compatible chronology; the cohort identifies an upper gastrointestinal source in selected patients but does not establish that any individual's anemia was caused by peptic-ulcer disease. Preserve gastrointestinal malignancy, other gastrointestinal bleeding, malabsorption, dietary deficiency, chronic inflammatory disease, renal disease, hemolysis, medications, and other causes of anemia. Do not infer anemia from a peptic-ulcer diagnosis without objective hematologic evidence or compatible bleeding history. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+         },
+         "rationale": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited endoscopy cohort of patients over age 50 with documented iron-deficiency anemia identified peptic ulcer disease among the upper gastrointestinal findings. Require documented peptic-ulcer disease with bleeding or other clinically relevant iron loss and separately established iron-deficiency anemia with compatible chronology; the cohort identifies an upper gastrointestinal source in selected patients but does not establish that any individual's anemia was caused by peptic-ulcer disease. Preserve gastrointestinal malignancy, other gastrointestinal bleeding, malabsorption, dietary deficiency, chronic inflammatory disease, renal disease, hemolysis, medications, and other causes of anemia. Do not infer anemia from a peptic-ulcer diagnosis without objective hematologic evidence or compatible bleeding history. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require documented peptic-ulcer disease with bleeding or other clinically relevant iron loss and separately established iron-deficiency anemia with compatible chronology; the cohort identifies an upper gastrointestinal source in selected patients but does not establish that any individual's anemia was caused by peptic-ulcer disease. Preserve gastrointestinal malignancy, other gastrointestinal bleeding, malabsorption, dietary deficiency, chronic inflammatory disease, renal disease, hemolysis, medications, and other causes of anemia. Do not infer anemia from a peptic-ulcer diagnosis without objective hematologic evidence or compatible bleeding history.",
+            "boundarySource": "approved-me-21-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of peptic-ulcer-disease and anemia",
+            "Objective iron studies and hemoglobin records establishing iron-deficiency anemia",
+            "Endoscopy or other records documenting ulcer location, activity, and bleeding or iron-loss phenotype",
+            "Chronology compatible with the approved bounded proposition",
+            "Resolution of publication guard: Require documented peptic-ulcer disease with bleeding or other clinically relevant iron loss and separately established iron-deficiency anemia with compatible chronology; preserve competing causes."
+         ],
+         "sourceIds": [
+            "pmid-7942718"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "26be6cfcdb99eca8e9d990d0683b787b129bfd0c6786cca02e489f49571b224d"
+      },
+      {
+         "relationshipId": "rel-eosinophilic-esophagitis-to-dysphagia",
+         "primaryId": "eosinophilic-esophagitis",
+         "targetId": "dysphagia",
+         "direction": "eosinophilic-esophagitis -> dysphagia",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-21-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited JAMA review describes eosinophilic esophagitis as a chronic immune-mediated inflammatory disease that causes dysphagia, food impaction, and esophageal strictures. Require biopsy-confirmed eosinophilic esophagitis and separately documented dysphagia with compatible chronology; the review describes a recognized clinical manifestation but does not establish that every individual's dysphagia is attributable to eosinophilic esophagitis or exclude structural, motility, neurologic, medication-related, or functional causes. Preserve peptic stricture, malignancy, achalasia and other motility disorders, reflux-related disease, neurologic disease, medication injury, and functional dysphagia as competing explanations. Do not infer eosinophilic esophagitis from dysphagia alone or from atopy without appropriate diagnostic evaluation. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+         },
+         "rationale": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited JAMA review describes eosinophilic esophagitis as a chronic immune-mediated inflammatory disease that causes dysphagia, food impaction, and esophageal strictures. Require biopsy-confirmed eosinophilic esophagitis and separately documented dysphagia with compatible chronology; the review describes a recognized clinical manifestation but does not establish that every individual's dysphagia is attributable to eosinophilic esophagitis or exclude structural, motility, neurologic, medication-related, or functional causes. Preserve peptic stricture, malignancy, achalasia and other motility disorders, reflux-related disease, neurologic disease, medication injury, and functional dysphagia as competing explanations. Do not infer eosinophilic esophagitis from dysphagia alone or from atopy without appropriate diagnostic evaluation. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require biopsy-confirmed eosinophilic esophagitis and separately documented dysphagia with compatible chronology; the review describes a recognized clinical manifestation but does not establish that every individual's dysphagia is attributable to eosinophilic esophagitis or exclude structural, motility, neurologic, medication-related, or functional causes. Preserve peptic stricture, malignancy, achalasia and other motility disorders, reflux-related disease, neurologic disease, medication injury, and functional dysphagia as competing explanations. Do not infer eosinophilic esophagitis from dysphagia alone or from atopy without appropriate diagnostic evaluation.",
+            "boundarySource": "approved-me-21-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of eosinophilic-esophagitis and dysphagia",
+            "Endoscopy and esophageal biopsy records satisfying the eosinophilic-esophagitis diagnostic criteria",
+            "Objective evaluation of dysphagia phenotype, obstruction, motility, and chronology",
+            "Assessment of reflux, structural, neurologic, medication-related, and functional alternatives",
+            "Resolution of publication guard: Require biopsy-confirmed eosinophilic esophagitis and separately documented dysphagia with compatible chronology; do not infer EoE from dysphagia alone."
+         ],
+         "sourceIds": [
+            "pmid-34609446"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "2efa41a8b1be478f717d12edbc052c977f33512e03b7d1fb4a162435e94d19fd"
+      },
+      {
+         "relationshipId": "rel-cholelithiasis-to-pancreatitis",
+         "primaryId": "cholelithiasis",
+         "targetId": "pancreatitis",
+         "direction": "cholelithiasis -> pancreatitis",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-21-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited surgical review describes gallstone disease as the most common cause of acute pancreatitis in the Western world and explains the role of transient biliary obstruction. Require documented cholelithiasis or gallstone migration and separately established acute pancreatitis with compatible chronology and diagnostic findings; gallstones are a recognized cause at the population level but the review does not establish that any individual's pancreatitis was biliary in origin. Preserve alcohol, hypertriglyceridemia, medications, hypercalcemia, structural or genetic disease, trauma, autoimmune disease, malignancy, and other pancreatitis etiologies. Do not infer pancreatitis from cholelithiasis without objective pancreatic evidence or infer biliary attribution from abdominal pain alone. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+         },
+         "rationale": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited surgical review describes gallstone disease as the most common cause of acute pancreatitis in the Western world and explains the role of transient biliary obstruction. Require documented cholelithiasis or gallstone migration and separately established acute pancreatitis with compatible chronology and diagnostic findings; gallstones are a recognized cause at the population level but the review does not establish that any individual's pancreatitis was biliary in origin. Preserve alcohol, hypertriglyceridemia, medications, hypercalcemia, structural or genetic disease, trauma, autoimmune disease, malignancy, and other pancreatitis etiologies. Do not infer pancreatitis from cholelithiasis without objective pancreatic evidence or infer biliary attribution from abdominal pain alone. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require documented cholelithiasis or gallstone migration and separately established acute pancreatitis with compatible chronology and diagnostic findings; gallstones are a recognized cause at the population level but the review does not establish that any individual's pancreatitis was biliary in origin. Preserve alcohol, hypertriglyceridemia, medications, hypercalcemia, structural or genetic disease, trauma, autoimmune disease, malignancy, and other pancreatitis etiologies. Do not infer pancreatitis from cholelithiasis without objective pancreatic evidence or infer biliary attribution from abdominal pain alone.",
+            "boundarySource": "approved-me-21-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of cholelithiasis and pancreatitis",
+            "Imaging or operative records documenting gallstones, ductal obstruction, or migration",
+            "Laboratory, imaging, and clinical records establishing acute pancreatitis and its chronology",
+            "Assessment of alcohol, metabolic, medication, structural, genetic, autoimmune, malignant, and traumatic alternatives",
+            "Resolution of publication guard: Require documented cholelithiasis or gallstone migration and separately established acute pancreatitis with compatible chronology and diagnostic findings."
+         ],
+         "sourceIds": [
+            "pmid-24679420"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "a57b5720520b605e3df60cae465e5867a50b5a0846a01f17ecdd0892822a7ee2"
+      },
+      {
+         "relationshipId": "rel-insulin-resistance-syndrome-to-diabetes-mellitus-type-2",
+         "primaryId": "insulin-resistance-syndrome",
+         "targetId": "diabetes-mellitus-type-2",
+         "direction": "insulin-resistance-syndrome -> diabetes-mellitus-type-2",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-21-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited review describes insulin resistance as a major contributor to the pathogenesis of type 2 diabetes and a key part of its associated metabolic abnormalities. Require a clinically established insulin-resistance syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; the review addresses a central pathophysiologic component but does not establish that insulin resistance alone caused any individual's diabetes or that all insulin-resistant phenotypes progress to diabetes. Preserve beta-cell dysfunction, genetic susceptibility, obesity and adiposity, medications, endocrine disease, pancreatic disease, secondary diabetes, and other metabolic contributors. Do not infer type 2 diabetes from insulin resistance markers alone. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+         },
+         "rationale": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited review describes insulin resistance as a major contributor to the pathogenesis of type 2 diabetes and a key part of its associated metabolic abnormalities. Require a clinically established insulin-resistance syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; the review addresses a central pathophysiologic component but does not establish that insulin resistance alone caused any individual's diabetes or that all insulin-resistant phenotypes progress to diabetes. Preserve beta-cell dysfunction, genetic susceptibility, obesity and adiposity, medications, endocrine disease, pancreatic disease, secondary diabetes, and other metabolic contributors. Do not infer type 2 diabetes from insulin resistance markers alone. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require a clinically established insulin-resistance syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; the review addresses a central pathophysiologic component but does not establish that insulin resistance alone caused any individual's diabetes or that all insulin-resistant phenotypes progress to diabetes. Preserve beta-cell dysfunction, genetic susceptibility, obesity and adiposity, medications, endocrine disease, pancreatic disease, secondary diabetes, and other metabolic contributors. Do not infer type 2 diabetes from insulin resistance markers alone.",
+            "boundarySource": "approved-me-21-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of insulin-resistance-syndrome and diabetes-mellitus-type-2",
+            "Objective metabolic testing and diagnostic records defining the insulin-resistance phenotype",
+            "Longitudinal glycemic records establishing compatible chronology and diabetes classification",
+            "Assessment of beta-cell function, genetic, adiposity, medication, endocrine, pancreatic, and secondary-diabetes contributors",
+            "Resolution of publication guard: Require a clinically established insulin-resistance syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; do not infer type 2 diabetes from insulin-resistance markers alone."
+         ],
+         "sourceIds": [
+            "pmid-12231073"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "f3fdfbca98325db11e9012af7b4f2adb5a18d923a7c919ed4e48d4d9cbf2efc5"
+      },
+      {
+         "relationshipId": "rel-metabolic-syndrome-to-diabetes-mellitus-type-2",
+         "primaryId": "metabolic-syndrome",
+         "targetId": "diabetes-mellitus-type-2",
+         "direction": "metabolic-syndrome -> diabetes-mellitus-type-2",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-21-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited review summarizes evidence that metabolic syndrome predicts incident type 2 diabetes and describes its cluster of central obesity, dysglycemia, hypertension, dyslipidemia, and insulin resistance. Require an established metabolic-syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; the review supports population-level risk prediction but does not establish that metabolic syndrome caused any individual's diabetes. Preserve the syndrome's component overlap with diabetes, beta-cell dysfunction, genetic susceptibility, adiposity, medications, endocrine disease, pancreatic disease, and other diabetes etiologies. Do not infer type 2 diabetes from a metabolic-syndrome label or its individual components alone. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus."
+         },
+         "rationale": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited review summarizes evidence that metabolic syndrome predicts incident type 2 diabetes and describes its cluster of central obesity, dysglycemia, hypertension, dyslipidemia, and insulin resistance. Require an established metabolic-syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; the review supports population-level risk prediction but does not establish that metabolic syndrome caused any individual's diabetes. Preserve the syndrome's component overlap with diabetes, beta-cell dysfunction, genetic susceptibility, adiposity, medications, endocrine disease, pancreatic disease, and other diabetes etiologies. Do not infer type 2 diabetes from a metabolic-syndrome label or its individual components alone. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require an established metabolic-syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; the review supports population-level risk prediction but does not establish that metabolic syndrome caused any individual's diabetes. Preserve the syndrome's component overlap with diabetes, beta-cell dysfunction, genetic susceptibility, adiposity, medications, endocrine disease, pancreatic disease, and other diabetes etiologies. Do not infer type 2 diabetes from a metabolic-syndrome label or its individual components alone.",
+            "boundarySource": "approved-me-21-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of metabolic-syndrome and diabetes-mellitus-type-2",
+            "Records showing the diagnostic criteria and phenotype used to establish metabolic syndrome",
+            "Longitudinal glycemic records establishing compatible chronology and diabetes classification",
+            "Assessment of component overlap, beta-cell function, genetic, adiposity, medication, endocrine, pancreatic, and secondary-diabetes contributors",
+            "Resolution of publication guard: Require an established metabolic-syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; do not infer type 2 diabetes from a metabolic-syndrome label or its components alone."
+         ],
+         "sourceIds": [
+            "pmid-24843675"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "9e19f4c00ebfc56cfe7c8e76f3e1a9890cb15531dd0fea1fea0a1d4075c87012"
+      },
+      {
+         "relationshipId": "rel-transient-ischemic-attack-residuals-to-cerebrovascular-accident-stroke-residuals",
+         "primaryId": "transient-ischemic-attack-residuals",
+         "targetId": "cerebrovascular-accident-stroke-residuals",
+         "direction": "transient-ischemic-attack-residuals -> cerebrovascular-accident-stroke-residuals",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-22-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded population-level risk proposition. The cited systematic review and meta-analysis found an elevated early risk of stroke after transient ischemic attack, but a transient ischemic attack is not itself a completed stroke and the evidence does not establish that any individual's later cerebrovascular accident or residuals were caused by the TIA. Require a documented TIA, a separately established later cerebrovascular accident with objective residuals, and compatible chronology. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, medication adherence, and other stroke causes as competing explanations. Do not infer stroke residuals from a TIA history alone or from transient neurologic symptoms that resolved without an infarction."
+         },
+         "rationale": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded population-level risk proposition. The cited systematic review and meta-analysis found an elevated early risk of stroke after transient ischemic attack, but a transient ischemic attack is not itself a completed stroke and the evidence does not establish that any individual's later cerebrovascular accident or residuals were caused by the TIA. Require a documented TIA, a separately established later cerebrovascular accident with objective residuals, and compatible chronology. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, medication adherence, and other stroke causes as competing explanations. Do not infer stroke residuals from a TIA history alone or from transient neurologic symptoms that resolved without an infarction.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require a documented transient ischemic attack, separately established later cerebrovascular accident/stroke with objective residuals, and compatible chronology; the cited systematic review and meta-analysis found elevated early stroke risk after TIA but does not establish that any individual's later stroke or residuals were caused by the TIA. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, medication adherence, and other stroke etiologies. Do not infer stroke residuals from TIA history alone or from transient neurologic symptoms that resolved without infarction.",
+            "boundarySource": "approved-me-22-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of transient ischemic attack and later cerebrovascular accident/stroke residuals",
+            "Brain imaging and neurologic examination documenting the completed stroke and persistent residual phenotype",
+            "Chronology demonstrating the later stroke occurred after the TIA",
+            "Assessment of atrial fibrillation, carotid disease, vascular risk factors, thrombophilia, treatment, and other stroke etiologies",
+            "Resolution of publication guard: Require a documented TIA, separately established later stroke with objective residuals, and compatible chronology; do not infer residuals from TIA alone."
+         ],
+         "sourceIds": [
+            "pmid-18071162"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "6578b0ec81ac336df0f31095dca72a19a7458989bfc5b7bfff5198bd44518021"
+      },
+      {
+         "relationshipId": "rel-testicular-torsion-to-testicular-atrophy",
+         "primaryId": "testicular-torsion",
+         "targetId": "testicular-atrophy",
+         "direction": "testicular-torsion -> testicular-atrophy",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-22-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded post-torsion outcome proposition. The cited pediatric surgical cohort found that testicular atrophy can develop after attempted salvage for testicular torsion, with risk related to factors including symptom duration and intraoperative testicular appearance; it does not establish that every individual's atrophy was caused by torsion or exclude pre-existing, congenital, infectious, traumatic, or other causes. Require documented testicular torsion, separately documented later ipsilateral testicular atrophy or objective volume loss, and compatible chronology. Preserve delayed presentation, degree and duration of ischemia, orchiopexy or other treatment, infection, trauma, cryptorchidism, congenital hypoplasia, and contralateral or bilateral disease as competing explanations. Do not infer atrophy from a torsion history alone or from postoperative symptoms without objective examination or imaging."
+         },
+         "rationale": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded post-torsion outcome proposition. The cited pediatric surgical cohort found that testicular atrophy can develop after attempted salvage for testicular torsion, with risk related to factors including symptom duration and intraoperative testicular appearance; it does not establish that every individual's atrophy was caused by torsion or exclude pre-existing, congenital, infectious, traumatic, or other causes. Require documented testicular torsion, separately documented later ipsilateral testicular atrophy or objective volume loss, and compatible chronology. Preserve delayed presentation, degree and duration of ischemia, orchiopexy or other treatment, infection, trauma, cryptorchidism, congenital hypoplasia, and contralateral or bilateral disease as competing explanations. Do not infer atrophy from a torsion history alone or from postoperative symptoms without objective examination or imaging.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require documented testicular torsion, separately documented later ipsilateral testicular atrophy or objective volume loss, and compatible chronology; the cited pediatric salvage cohort does not establish that every individual's atrophy was caused by torsion. Preserve delayed presentation, ischemia duration, orchiopexy or other treatment, infection, trauma, cryptorchidism, congenital hypoplasia, and contralateral or bilateral disease. Do not infer atrophy from torsion history alone or from postoperative symptoms without objective examination or imaging.",
+            "boundarySource": "approved-me-22-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of testicular torsion and later testicular atrophy",
+            "Serial testicular examination or ultrasound documenting objective ipsilateral volume loss",
+            "Operative findings, degree/duration of torsion, salvage procedure, and postoperative chronology",
+            "Assessment of congenital hypoplasia, cryptorchidism, infection, trauma, and other causes of atrophy",
+            "Resolution of publication guard: Require documented torsion, objective later ipsilateral atrophy, and compatible chronology; do not infer atrophy from torsion history alone."
+         ],
+         "sourceIds": [
+            "pmid-26509312"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "ab7b6e8d1bf4b3c1c2c628e7d11cebe4ef5a1c5f11aad9be1dea34098fa0b19b"
+      },
+      {
+         "relationshipId": "rel-lichen-sclerosus-to-squamous-cell-carcinoma",
+         "primaryId": "lichen-sclerosus",
+         "targetId": "squamous-cell-carcinoma",
+         "direction": "lichen-sclerosus -> squamous-cell-carcinoma",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-22-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded anogenital malignant-transformation risk proposition. The cited systematic review found an increased risk of squamous-cell carcinoma in patients with anogenital lichen sclerosus, but it does not establish that any individual's carcinoma arose from lichen sclerosus or exclude differentiated vulvar intraepithelial neoplasia, chronic inflammation, human papillomavirus, immunosuppression, smoking, or other cancer risks. Require biopsy-documented anogenital lichen sclerosus, separately established anogenital squamous-cell carcinoma, and compatible chronology. Preserve vulvar or penile site, dysplasia/VIN, HPV status, treatment and surveillance history, age, smoking, immunosuppression, and other skin or mucosal cancer causes. Do not infer carcinoma from lichen-sclerosus appearance, symptoms, or dysplasia alone, and do not generalize this edge to extragenital lichen sclerosus without site-specific evidence."
+         },
+         "rationale": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded anogenital malignant-transformation risk proposition. The cited systematic review found an increased risk of squamous-cell carcinoma in patients with anogenital lichen sclerosus, but it does not establish that any individual's carcinoma arose from lichen sclerosus or exclude differentiated vulvar intraepithelial neoplasia, chronic inflammation, human papillomavirus, immunosuppression, smoking, or other cancer risks. Require biopsy-documented anogenital lichen sclerosus, separately established anogenital squamous-cell carcinoma, and compatible chronology. Preserve vulvar or penile site, dysplasia/VIN, HPV status, treatment and surveillance history, age, smoking, immunosuppression, and other skin or mucosal cancer causes. Do not infer carcinoma from lichen-sclerosus appearance, symptoms, or dysplasia alone, and do not generalize this edge to extragenital lichen sclerosus without site-specific evidence.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Restrict to biopsy-documented anogenital lichen sclerosus, separately established anogenital squamous-cell carcinoma, and compatible chronology; the cited systematic review reports increased population-level risk but does not establish that any individual's carcinoma arose from lichen sclerosus. Preserve vulvar or penile site, dysplasia/VIN, HPV status, treatment and surveillance history, age, smoking, immunosuppression, and other cancer risks. Do not infer carcinoma from lichen-sclerosus appearance, symptoms, or dysplasia alone, and do not generalize to extragenital disease.",
+            "boundarySource": "approved-me-22-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent biopsy or specialist documentation of anogenital lichen sclerosus and squamous-cell carcinoma",
+            "Anatomic site, histology, staging, and chronology of the later carcinoma",
+            "Pathology records addressing differentiated vulvar intraepithelial neoplasia or other precursor lesions",
+            "Assessment of HPV, smoking, immunosuppression, treatment, surveillance, and other cancer risk factors",
+            "Resolution of publication guard: Restrict to biopsy-documented anogenital lichen sclerosus and separately established anogenital SCC; do not generalize to extragenital disease."
+         ],
+         "sourceIds": [
+            "pmid-32089333"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "5877c954b2c74739d145491743eea311abc6d9ed85aa3219d8938003fccf1acc"
+      },
+      {
+         "relationshipId": "rel-nasal-polyps-to-asthma",
+         "primaryId": "nasal-polyps",
+         "targetId": "asthma",
+         "direction": "nasal-polyps -> asthma",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-22-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded chronic-rhinosinusitis-with-nasal-polyps and asthma association. The cited clinical review describes frequent co-occurrence and greater airway disease burden when asthma is present with chronic rhinosinusitis with nasal polyps, but it does not establish that nasal polyps caused or aggravated any individual's asthma. Require documented chronic rhinosinusitis with nasal polyps, separately established asthma by appropriate pulmonary criteria, and compatible chronology. Preserve allergic rhinitis, aspirin-exacerbated respiratory disease, atopy, smoking, occupational exposure, obesity, viral triggers, gastroesophageal reflux, medication effects, and other asthma causes. Do not infer asthma from nasal polyps, sinus symptoms, eosinophilia, or upper-airway inflammation alone, and do not generalize from CRSwNP to every nasal-polyp phenotype."
+         },
+         "rationale": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded chronic-rhinosinusitis-with-nasal-polyps and asthma association. The cited clinical review describes frequent co-occurrence and greater airway disease burden when asthma is present with chronic rhinosinusitis with nasal polyps, but it does not establish that nasal polyps caused or aggravated any individual's asthma. Require documented chronic rhinosinusitis with nasal polyps, separately established asthma by appropriate pulmonary criteria, and compatible chronology. Preserve allergic rhinitis, aspirin-exacerbated respiratory disease, atopy, smoking, occupational exposure, obesity, viral triggers, gastroesophageal reflux, medication effects, and other asthma causes. Do not infer asthma from nasal polyps, sinus symptoms, eosinophilia, or upper-airway inflammation alone, and do not generalize from CRSwNP to every nasal-polyp phenotype.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Restrict to documented chronic rhinosinusitis with nasal polyps, separately established asthma by appropriate pulmonary criteria, and compatible chronology; the cited review describes co-occurrence and airway burden but does not establish that nasal polyps caused or aggravated an individual's asthma. Preserve allergic rhinitis, aspirin-exacerbated respiratory disease, atopy, smoking, occupational exposure, obesity, viral triggers, gastroesophageal reflux, medication effects, and other asthma causes. Do not infer asthma from nasal polyps or upper-airway inflammation alone.",
+            "boundarySource": "approved-me-22-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of chronic rhinosinusitis with nasal polyps and asthma",
+            "Objective pulmonary testing and clinical records establishing the asthma phenotype and severity",
+            "Nasal endoscopy or imaging documenting the polyp phenotype and compatible chronology",
+            "Assessment of aspirin-exacerbated respiratory disease, allergic rhinitis, smoking, occupational, obesity, reflux, medication, and other asthma contributors",
+            "Resolution of publication guard: Restrict to documented CRSwNP plus separately established asthma; do not infer asthma from nasal polyps alone."
+         ],
+         "sourceIds": [
+            "pmid-33065369"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "564d999a3a03abb4b1aba3daf167f189f4056064bed926cfec11df0fdeca5625"
+      },
+      {
+         "relationshipId": "rel-diabetic-gastroparesis-to-gastroparesis",
+         "primaryId": "diabetic-gastroparesis",
+         "targetId": "gastroparesis",
+         "direction": "diabetic-gastroparesis -> gastroparesis",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-22-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded diabetes-associated gastroparesis phenotype proposition. The cited Endocrine Reviews article describes diabetic gastroparesis as a complication phenotype of diabetes involving delayed gastric emptying and gastrointestinal symptoms, but it does not establish that diabetes caused every individual's gastroparesis or exclude postsurgical, medication-related, idiopathic, neurologic, metabolic, or mechanical causes. Require documented diabetes mellitus with a separately established gastroparesis diagnosis using compatible objective gastric-emptying evaluation and chronology. Preserve glycemic control, diabetes duration, autonomic or peripheral neuropathy, prior gastric surgery, GLP-1 or other motility-altering medications, neurologic disease, hypothyroidism, obstruction, functional dyspepsia, and idiopathic disease as competing or contributing explanations. Do not infer gastroparesis from nausea, vomiting, abdominal pain, diabetes, or abnormal glucose values alone."
+         },
+         "rationale": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded diabetes-associated gastroparesis phenotype proposition. The cited Endocrine Reviews article describes diabetic gastroparesis as a complication phenotype of diabetes involving delayed gastric emptying and gastrointestinal symptoms, but it does not establish that diabetes caused every individual's gastroparesis or exclude postsurgical, medication-related, idiopathic, neurologic, metabolic, or mechanical causes. Require documented diabetes mellitus with a separately established gastroparesis diagnosis using compatible objective gastric-emptying evaluation and chronology. Preserve glycemic control, diabetes duration, autonomic or peripheral neuropathy, prior gastric surgery, GLP-1 or other motility-altering medications, neurologic disease, hypothyroidism, obstruction, functional dyspepsia, and idiopathic disease as competing or contributing explanations. Do not infer gastroparesis from nausea, vomiting, abdominal pain, diabetes, or abnormal glucose values alone.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require documented diabetes mellitus, separately established gastroparesis using compatible objective gastric-emptying evaluation, and compatible chronology; the cited review describes diabetic gastroparesis as a complication phenotype but does not establish that diabetes caused every individual's gastroparesis. Preserve glycemic control, diabetes duration, autonomic or peripheral neuropathy, prior gastric surgery, GLP-1 or other motility-altering medications, neurologic disease, hypothyroidism, obstruction, functional dyspepsia, and idiopathic disease. Do not infer gastroparesis from symptoms, diabetes, or abnormal glucose values alone.",
+            "boundarySource": "approved-me-22-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of diabetes mellitus and gastroparesis",
+            "Objective gastric-emptying study or equivalent diagnostic records excluding mechanical obstruction",
+            "Diabetes duration, glycemic history, autonomic neuropathy, and compatible chronology",
+            "Assessment of gastric surgery, GLP-1 and other medication exposure, neurologic/endocrine disease, obstruction, and functional dyspepsia",
+            "Resolution of publication guard: Require documented diabetes, objectively established gastroparesis, and compatible chronology; do not infer gastroparesis from diabetes or symptoms alone."
+         ],
+         "sourceIds": [
+            "pmid-31081877"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "80103edbaff47b3180038ef0ab7f1d3b8519373887f8f9201498178fe84ea79e"
+      },
+      {
+        "relationshipId": "rel-cholesteatoma-to-conductive-hearing-loss",
+        "primaryId": "cholesteatoma",
+        "targetId": "conductive-hearing-loss",
+        "direction": "cholesteatoma -> conductive-hearing-loss",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {
+          "status": "approved-me-23-bounded-proposition",
+          "text": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded otologic hearing-loss association. The cited cholesteatoma study found that ossicular erosion was related to the conductive hearing-loss air-bone gap, but it does not establish that every individual's conductive loss was caused by cholesteatoma or exclude tympanic-membrane disease, otitis media, otosclerosis, trauma, congenital abnormalities, or other causes. Require documented cholesteatoma, separately established conductive hearing loss by audiometry, compatible ear and chronology, and review of ossicular and middle-ear findings. Preserve chronic otitis media, tympanic-membrane perforation, ossicular discontinuity, otosclerosis, cerumen or canal disease, trauma, congenital conductive disorders, prior surgery, and mixed or sensorineural loss as competing explanations. Do not infer conductive hearing loss from cholesteatoma history, otorrhea, or subjective hearing difficulty without objective audiologic testing."
+        },
+        "rationale": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded otologic hearing-loss association. The cited cholesteatoma study found that ossicular erosion was related to the conductive hearing-loss air-bone gap, but it does not establish that every individual's conductive loss was caused by cholesteatoma or exclude tympanic-membrane disease, otitis media, otosclerosis, trauma, congenital abnormalities, or other causes. Require documented cholesteatoma, separately established conductive hearing loss by audiometry, compatible ear and chronology, and review of ossicular and middle-ear findings. Preserve chronic otitis media, tympanic-membrane perforation, ossicular discontinuity, otosclerosis, cerumen or canal disease, trauma, congenital conductive disorders, prior surgery, and mixed or sensorineural loss as competing explanations. Do not infer conductive hearing loss from cholesteatoma history, otorrhea, or subjective hearing difficulty without objective audiologic testing.",
+        "publicationGuard": {
+          "status": "explicit",
+          "structuredGuardText": "Require documented cholesteatoma, objective conductive loss, compatible ear/chronology, and ossicular review; do not infer loss from cholesteatoma alone.",
+          "boundarySource": "approved-me-23-implementation-scope",
+          "structuredGuardReviewPending": false,
+          "semanticRewriteAuthorized": false
+        },
+        "evidenceGaps": [
+          "Independent otologic documentation of cholesteatoma and conductive hearing loss",
+          "Pure-tone audiometry, air-bone gap, tympanometry, and speech testing identifying the loss type and severity",
+          "Temporal-bone imaging, otoscopy, operative findings, and ossicular-chain status",
+          "Chronology of cholesteatoma, treatment, recurrence, and hearing change",
+          "Resolution of publication guard: Require documented cholesteatoma, objective conductive loss, compatible ear/chronology, and ossicular review; do not infer loss from cholesteatoma alone."
+        ],
+        "sourceIds": ["pmid-22410730"],
+        "sourceReferenceCount": 1,
+        "pathwayIntelligencePresent": false,
+        "suggestionObjectHash": "c966e79905b5caf6dbd3aec76d2af4047e65812930165cd5c86c20ffb6ffcf48"
+      },
+      {
+        "relationshipId": "rel-otitis-media-to-hearing-loss",
+        "primaryId": "otitis-media",
+        "targetId": "hearing-loss",
+        "direction": "otitis-media -> hearing-loss",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {
+          "status": "approved-me-23-bounded-proposition",
+          "text": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded otologic hearing-loss association. The cited systematic review describes hearing loss among the global burden and sequelae of otitis media, but it does not establish that any individual's hearing loss was caused by an otitis-media episode or exclude chronic suppurative disease, otosclerosis, age-related loss, noise exposure, congenital disease, ototoxic medication, or other causes. Require documented otitis media phenotype and separately established hearing loss by audiometry with compatible ear and chronology. Preserve otitis media with effusion, chronic suppurative otitis media, tympanic-membrane or ossicular disease, ototoxic medications, noise, congenital or pre-existing loss, presbycusis, and sensorineural or mixed etiologies as competing explanations. Do not infer hearing loss from ear pain, effusion, otorrhea, or a remote otitis-media history without objective audiologic testing."
+        },
+        "rationale": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded otologic hearing-loss association. The cited systematic review describes hearing loss among the global burden and sequelae of otitis media, but it does not establish that any individual's hearing loss was caused by an otitis-media episode or exclude chronic suppurative disease, otosclerosis, age-related loss, noise exposure, congenital disease, ototoxic medication, or other causes. Require documented otitis media phenotype and separately established hearing loss by audiometry with compatible ear and chronology. Preserve otitis media with effusion, chronic suppurative otitis media, tympanic-membrane or ossicular disease, ototoxic medications, noise, congenital or pre-existing loss, presbycusis, and sensorineural or mixed etiologies as competing explanations. Do not infer hearing loss from ear pain, effusion, otorrhea, or a remote otitis-media history without objective audiologic testing.",
+        "publicationGuard": {
+          "status": "explicit",
+          "structuredGuardText": "Require documented otitis media, objective hearing loss, compatible ear/chronology, and competing-cause review.",
+          "boundarySource": "approved-me-23-implementation-scope",
+          "structuredGuardReviewPending": false,
+          "semanticRewriteAuthorized": false
+        },
+        "evidenceGaps": [
+          "Independent documentation of otitis media phenotype and hearing loss",
+          "Pure-tone audiometry, tympanometry, and speech testing identifying laterality, type, and severity",
+          "Otoscopy, imaging, and records distinguishing effusion, chronic suppurative disease, perforation, and ossicular injury",
+          "Chronology of infection or effusion and the onset or persistence of hearing loss",
+          "Resolution of publication guard: Require documented otitis media, objective hearing loss, compatible ear/chronology, and competing-cause review."
+        ],
+        "sourceIds": ["pmid-22558393"],
+        "sourceReferenceCount": 1,
+        "pathwayIntelligencePresent": false,
+        "suggestionObjectHash": "3ab88851b3a6ff11280c57a8b84041ce0b6ce3ccb84b6e0a91a94642338f35af"
+      },
+      {
+        "relationshipId": "rel-acoustic-neuroma-to-hearing-loss",
+        "primaryId": "acoustic-neuroma",
+        "targetId": "hearing-loss",
+        "direction": "acoustic-neuroma -> hearing-loss",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {
+          "status": "approved-me-23-bounded-proposition",
+          "text": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded vestibular-schwannoma hearing-loss association. The cited natural-history study describes hearing decline in sporadic vestibular schwannoma, but it does not establish that any individual's hearing loss was caused by an acoustic neuroma or exclude presbycusis, noise exposure, ototoxic medication, middle-ear disease, congenital loss, treatment effects, or other causes. Require documented acoustic neuroma/vestibular schwannoma, separately established hearing loss by audiometry, compatible laterality and chronology, and review of tumor, auditory-nerve, treatment, and competing-ear findings. Do not infer hearing loss from the tumor diagnosis, tinnitus, imbalance, or subjective difficulty without objective audiologic testing."
+        },
+        "rationale": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded vestibular-schwannoma hearing-loss association. The cited natural-history study describes hearing decline in sporadic vestibular schwannoma, but it does not establish that any individual's hearing loss was caused by an acoustic neuroma or exclude presbycusis, noise exposure, ototoxic medication, middle-ear disease, congenital loss, treatment effects, or other causes. Require documented acoustic neuroma/vestibular schwannoma, separately established hearing loss by audiometry, compatible laterality and chronology, and review of tumor, auditory-nerve, treatment, and competing-ear findings. Do not infer hearing loss from the tumor diagnosis, tinnitus, imbalance, or subjective difficulty without objective audiologic testing.",
+        "publicationGuard": {
+          "status": "explicit",
+          "structuredGuardText": "Require documented vestibular schwannoma, objective hearing loss, compatible laterality/chronology, and tumor/treatment review; do not infer loss from tumor history alone.",
+          "boundarySource": "approved-me-23-implementation-scope",
+          "structuredGuardReviewPending": false,
+          "semanticRewriteAuthorized": false
+        },
+        "evidenceGaps": [
+          "Independent documentation of acoustic neuroma/vestibular schwannoma and hearing loss",
+          "Serial pure-tone audiometry, speech discrimination, and laterality identifying the type and course of loss",
+          "MRI tumor location, size, growth, internal auditory canal involvement, and specialist findings",
+          "Chronology of tumor discovery, hearing change, observation, surgery, radiation, and other treatment",
+          "Resolution of publication guard: Require documented vestibular schwannoma, objective hearing loss, compatible laterality/chronology, and tumor/treatment review; do not infer loss from tumor history alone."
+        ],
+        "sourceIds": ["pmid-37024333"],
+        "sourceReferenceCount": 1,
+        "pathwayIntelligencePresent": false,
+        "suggestionObjectHash": "a9e3df2b737c21ac8765e11e9c2bd076dd9a83b5879f4af42275c208204ac78e"
+      },
+      {
+        "relationshipId": "rel-actinic-keratosis-to-squamous-cell-carcinoma",
+        "primaryId": "actinic-keratosis",
+        "targetId": "squamous-cell-carcinoma",
+        "direction": "actinic-keratosis -> squamous-cell-carcinoma",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {
+          "status": "approved-me-23-bounded-proposition",
+          "text": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded cutaneous premalignant-lesion association. The cited systematic review evaluates the natural history of actinic keratosis and progression or regression patterns, but it does not establish that any individual's squamous-cell carcinoma arose from an actinic keratosis or exclude field cancerization, cumulative ultraviolet exposure, immunosuppression, genetic susceptibility, prior lesions, or other causes. Require clinically or biopsy-documented actinic keratosis, separately established cutaneous squamous-cell carcinoma, compatible anatomic site and chronology, and pathology/dermatology review. Do not infer carcinoma from an actinic keratosis diagnosis, lesion appearance, dysplasia, or treatment history alone."
+        },
+        "rationale": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded cutaneous premalignant-lesion association. The cited systematic review evaluates the natural history of actinic keratosis and progression or regression patterns, but it does not establish that any individual's squamous-cell carcinoma arose from an actinic keratosis or exclude field cancerization, cumulative ultraviolet exposure, immunosuppression, genetic susceptibility, prior lesions, or other causes. Require clinically or biopsy-documented actinic keratosis, separately established cutaneous squamous-cell carcinoma, compatible anatomic site and chronology, and pathology/dermatology review. Do not infer carcinoma from an actinic keratosis diagnosis, lesion appearance, dysplasia, or treatment history alone.",
+        "publicationGuard": {
+          "status": "explicit",
+          "structuredGuardText": "Require documented actinic keratosis and cutaneous SCC with compatible site/chronology and pathology review; do not infer carcinoma from a lesion or treatment history alone.",
+          "boundarySource": "approved-me-23-implementation-scope",
+          "structuredGuardReviewPending": false,
+          "semanticRewriteAuthorized": false
+        },
+        "evidenceGaps": [
+          "Independent dermatologic or pathology documentation of actinic keratosis and cutaneous squamous-cell carcinoma",
+          "Biopsy reports identifying carcinoma, anatomic site, margins, and relevant histopathology",
+          "Chronology of lesion recognition, persistence, progression, biopsy, treatment, recurrence, and cancer diagnosis",
+          "Assessment of ultraviolet exposure, field cancerization, immunosuppression, prior skin cancers, phenotype, and other risk factors",
+          "Resolution of publication guard: Require documented actinic keratosis and cutaneous SCC with compatible site/chronology and pathology review; do not infer carcinoma from a lesion or treatment history alone."
+        ],
+        "sourceIds": ["pmid-23647091"],
+        "sourceReferenceCount": 1,
+        "pathwayIntelligencePresent": false,
+        "suggestionObjectHash": "19bb8e09e50bdfff42e7a925481bae25b45e88b71a0346714305651623376703"
+      },
+      {
+        "relationshipId": "rel-abdominal-migraine-to-migraine-headaches",
+        "primaryId": "abdominal-migraine",
+        "targetId": "migraine-headaches",
+        "direction": "abdominal-migraine -> migraine-headaches",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {
+          "status": "approved-me-23-bounded-proposition",
+          "text": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded migraine-spectrum phenotype association. The cited clinical review describes abdominal migraine as a recurrent migraine-related syndrome and discusses its relationship to other migraine phenotypes, but it does not establish that every person with abdominal migraine develops later migraine headaches or that an individual's headache disorder was caused by the abdominal phenotype. Require a clinically established abdominal-migraine phenotype, separately diagnosed migraine headaches, compatible chronology and symptom evolution, and review of gastrointestinal, neurologic, medication, and family-history alternatives. Do not infer migraine headaches from recurrent abdominal pain, vomiting, an abdominal-migraine label without appropriate evaluation, or shared symptoms alone."
+        },
+        "rationale": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded migraine-spectrum phenotype association. The cited clinical review describes abdominal migraine as a recurrent migraine-related syndrome and discusses its relationship to other migraine phenotypes, but it does not establish that every person with abdominal migraine develops later migraine headaches or that an individual's headache disorder was caused by the abdominal phenotype. Require a clinically established abdominal-migraine phenotype, separately diagnosed migraine headaches, compatible chronology and symptom evolution, and review of gastrointestinal, neurologic, medication, and family-history alternatives. Do not infer migraine headaches from recurrent abdominal pain, vomiting, an abdominal-migraine label without appropriate evaluation, or shared symptoms alone.",
+        "publicationGuard": {
+          "status": "explicit",
+          "structuredGuardText": "Require documented abdominal migraine, separate migraine-headache diagnosis, compatible chronology/phenotype, and competing-cause review; do not infer headache migraine from abdominal pain alone.",
+          "boundarySource": "approved-me-23-implementation-scope",
+          "structuredGuardReviewPending": false,
+          "semanticRewriteAuthorized": false
+        },
+        "evidenceGaps": [
+          "Independent clinical documentation of abdominal migraine using compatible diagnostic features and exclusion of alternative abdominal disorders",
+          "Neurology or headache evaluation documenting a separately established migraine-headache phenotype",
+          "Chronology of abdominal episodes, later headache symptoms, phenotype transition, and treatment response",
+          "Assessment of gastrointestinal, neurologic, medication-related, metabolic, functional, and family-history contributors",
+          "Resolution of publication guard: Require documented abdominal migraine, separate migraine-headache diagnosis, compatible chronology/phenotype, and competing-cause review; do not infer headache migraine from abdominal pain alone."
+        ],
+        "sourceIds": ["pmid-29459383"],
+        "sourceReferenceCount": 1,
+        "pathwayIntelligencePresent": false,
+        "suggestionObjectHash": "3eca17e58d82eaef021d373d48852fe1aa75411bac3566da500f32924bc3de66"
+      },
+      {
+         "relationshipId": "rel-adenomyosis-to-anemia",
+         "primaryId": "adenomyosis",
+         "targetId": "anemia",
+         "direction": "adenomyosis -> anemia",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-24-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded abnormal-uterine-bleeding and iron-deficiency association. The cited review discusses adenomyosis as a uterine disorder associated with abnormal or heavy uterine bleeding and iron-deficiency anemia, but it does not establish that every individual's anemia was caused by adenomyosis or exclude fibroids, endometriosis, other uterine disease, gastrointestinal blood loss, nutritional deficiency, pregnancy-related loss, or other causes. Require documented adenomyosis, separately established anemia with iron studies where relevant, compatible bleeding phenotype and chronology, and gynecologic review. Do not infer anemia from adenomyosis alone without documented blood loss, laboratory findings, and competing-cause review."
+         },
+         "rationale": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded abnormal-uterine-bleeding and iron-deficiency association. The cited review discusses adenomyosis as a uterine disorder associated with abnormal or heavy uterine bleeding and iron-deficiency anemia, but it does not establish that every individual's anemia was caused by adenomyosis or exclude fibroids, endometriosis, other uterine disease, gastrointestinal blood loss, nutritional deficiency, pregnancy-related loss, or other causes. Require documented adenomyosis, separately established anemia with iron studies where relevant, compatible bleeding phenotype and chronology, and gynecologic review. Do not infer anemia from adenomyosis alone without documented blood loss, laboratory findings, and competing-cause review.",
+         "publicationGuard": {"status": "explicit", "structuredGuardText": "Require documented adenomyosis, separately established anemia, compatible bleeding/chronology, and competing-cause review; do not infer anemia from adenomyosis alone.", "boundarySource": "approved-me-24-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+         "evidenceGaps": ["Independent gynecologic documentation of adenomyosis and laboratory-confirmed anemia", "Menstrual bleeding history, hemoglobin trend, ferritin, iron studies, and chronology of bleeding and anemia", "Imaging or pathology supporting adenomyosis and assessment of fibroids, endometriosis, malignancy, and other uterine disease", "Evaluation for gastrointestinal blood loss, nutritional deficiency, pregnancy-related loss, hemolysis, renal disease, and other anemia causes", "Resolution of publication guard: Require documented adenomyosis, separately established anemia, compatible bleeding/chronology, and competing-cause review; do not infer anemia from adenomyosis alone."],
+         "sourceIds": ["pmid-36182260"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "1497020fb33736d4cddc3e02467238902002b6a9cf78374f80c695e101bfce5d"
+      },
+      {
+         "relationshipId": "rel-acute-interstitial-pneumonia-to-pulmonary-fibrosis",
+         "primaryId": "acute-interstitial-pneumonia",
+         "targetId": "pulmonary-fibrosis",
+         "direction": "acute-interstitial-pneumonia -> pulmonary-fibrosis",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {"status": "approved-me-24-bounded-proposition", "text": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded post-injury interstitial-lung association. The cited case series and literature review describes persistent pulmonary symptoms and progressive lung fibrosis in a subset after acute interstitial pneumonitis, but it does not establish that every individual's pulmonary fibrosis followed acute interstitial pneumonitis or exclude idiopathic pulmonary fibrosis, connective-tissue disease, occupational or environmental exposure, medication toxicity, infection, hypersensitivity pneumonitis, or other interstitial-lung disease. Require documented acute interstitial pneumonitis, separately established pulmonary fibrosis by compatible imaging and specialist assessment, compatible chronology, and review of the initial insult and alternative etiologies. Do not infer pulmonary fibrosis from an acute pneumonitis label or persistent dyspnea alone."},
+         "rationale": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded post-injury interstitial-lung association. The cited case series and literature review describes persistent pulmonary symptoms and progressive lung fibrosis in a subset after acute interstitial pneumonitis, but it does not establish that every individual's pulmonary fibrosis followed acute interstitial pneumonitis or exclude idiopathic pulmonary fibrosis, connective-tissue disease, occupational or environmental exposure, medication toxicity, infection, hypersensitivity pneumonitis, or other interstitial-lung disease. Require documented acute interstitial pneumonitis, separately established pulmonary fibrosis by compatible imaging and specialist assessment, compatible chronology, and review of the initial insult and alternative etiologies. Do not infer pulmonary fibrosis from an acute pneumonitis label or persistent dyspnea alone.",
+         "publicationGuard": {"status": "explicit", "structuredGuardText": "Require documented acute interstitial pneumonitis, objective pulmonary fibrosis, compatible chronology, and alternative-cause review; do not infer fibrosis from acute pneumonitis or dyspnea alone.", "boundarySource": "approved-me-24-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+         "evidenceGaps": ["Independent pulmonology documentation of acute interstitial pneumonitis and pulmonary fibrosis", "High-resolution CT, pulmonary-function testing, pathology when available, and serial findings establishing persistent fibrotic disease", "Chronology of acute illness, respiratory failure, recovery, persistent symptoms, and later fibrosis", "Evaluation for idiopathic, connective-tissue, occupational, environmental, medication-related, infectious, and hypersensitivity causes", "Resolution of publication guard: Require documented acute interstitial pneumonitis, objective pulmonary fibrosis, compatible chronology, and alternative-cause review; do not infer fibrosis from acute pneumonitis or dyspnea alone."],
+         "sourceIds": ["pmid-11144035"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "5bd7b11b2e318521d0bb769bd67304cbf6a9e8d78b33d50140d22f87cc26eca0"
+      },
+      {
+         "relationshipId": "rel-avascular-necrosis-to-osteoarthritis",
+         "primaryId": "avascular-necrosis",
+         "targetId": "osteoarthritis",
+         "direction": "avascular-necrosis -> osteoarthritis",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {"status": "approved-me-24-bounded-proposition", "text": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded femoral-head structural-collapse association. The cited clinical review describes femoral-head avascular necrosis as a process that can progress through articular-surface collapse and degenerative arthritis, but it does not establish that every individual's osteoarthritis was caused by avascular necrosis or exclude primary osteoarthritis, prior trauma, dysplasia, inflammatory arthritis, infection, corticosteroid or alcohol exposure, or other causes. Require documented avascular necrosis at a compatible joint and site, separately established osteoarthritis, imaging showing compatible collapse or degeneration, chronology, and orthopedic review. Do not infer osteoarthritis from an avascular-necrosis label without objective imaging and competing-cause assessment."},
+         "rationale": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded femoral-head structural-collapse association. The cited clinical review describes femoral-head avascular necrosis as a process that can progress through articular-surface collapse and degenerative arthritis, but it does not establish that every individual's osteoarthritis was caused by avascular necrosis or exclude primary osteoarthritis, prior trauma, dysplasia, inflammatory arthritis, infection, corticosteroid or alcohol exposure, or other causes. Require documented avascular necrosis at a compatible joint and site, separately established osteoarthritis, imaging showing compatible collapse or degeneration, chronology, and orthopedic review. Do not infer osteoarthritis from an avascular-necrosis label without objective imaging and competing-cause assessment.",
+         "publicationGuard": {"status": "explicit", "structuredGuardText": "Require documented compatible-site avascular necrosis, objective osteoarthritis, imaging correlation, chronology, and competing-cause review; do not infer osteoarthritis from AVN alone.", "boundarySource": "approved-me-24-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+         "evidenceGaps": ["Independent orthopedic documentation of avascular necrosis and osteoarthritis at the compatible joint and site", "Serial radiographs or MRI documenting lesion extent, collapse, articular involvement, and degenerative change", "Chronology of avascular necrosis, collapse, pain, functional loss, and osteoarthritis diagnosis", "Assessment of primary osteoarthritis, trauma, dysplasia, inflammatory arthritis, infection, corticosteroid, alcohol, and other risks", "Resolution of publication guard: Require documented compatible-site avascular necrosis, objective osteoarthritis, imaging correlation, chronology, and competing-cause review; do not infer osteoarthritis from AVN alone."],
+         "sourceIds": ["pmid-31536264"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "bba81dc4fa3d1aa9e82e30be4ca1f244fdaf87dd14f191c64512ccec29fb5fa7"
+      },
+      {
+         "relationshipId": "rel-autoimmune-metaplastic-atrophic-gastritis-to-stomach-cancer",
+         "primaryId": "autoimmune-metaplastic-atrophic-gastritis",
+         "targetId": "stomach-cancer",
+         "direction": "autoimmune-metaplastic-atrophic-gastritis -> stomach-cancer",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {"status": "approved-me-24-bounded-proposition", "text": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded autoimmune-gastritis gastric-neoplasia association. The cited systematic review evaluates gastric neoplasms arising in autoimmune metaplastic atrophic gastritis, but it does not establish that any individual's stomach cancer arose from autoimmune gastritis or exclude Helicobacter pylori-associated atrophy, environmental and dietary factors, hereditary susceptibility, prior gastric lesions, smoking, or other causes. Require biopsy-documented autoimmune metaplastic atrophic gastritis, separately established stomach cancer with pathology, compatible anatomic site and chronology, and gastroenterology/pathology review. Do not infer carcinoma from autoimmune gastritis, intestinal metaplasia, hypergastrinemia, or surveillance history alone."},
+         "rationale": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded autoimmune-gastritis gastric-neoplasia association. The cited systematic review evaluates gastric neoplasms arising in autoimmune metaplastic atrophic gastritis, but it does not establish that any individual's stomach cancer arose from autoimmune gastritis or exclude Helicobacter pylori-associated atrophy, environmental and dietary factors, hereditary susceptibility, prior gastric lesions, smoking, or other causes. Require biopsy-documented autoimmune metaplastic atrophic gastritis, separately established stomach cancer with pathology, compatible anatomic site and chronology, and gastroenterology/pathology review. Do not infer carcinoma from autoimmune gastritis, intestinal metaplasia, hypergastrinemia, or surveillance history alone.",
+         "publicationGuard": {"status": "explicit", "structuredGuardText": "Require biopsy-documented autoimmune gastritis, pathology-confirmed stomach cancer, compatible site/chronology, and specialist review; do not infer cancer from autoimmune gastritis alone.", "boundarySource": "approved-me-24-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+         "evidenceGaps": ["Independent endoscopic and histopathologic documentation of autoimmune metaplastic atrophic gastritis", "Pathology confirming stomach cancer, site, histologic type, and relevant precursor findings", "Chronology of gastritis, metaplasia, dysplasia, surveillance, and cancer diagnosis", "Assessment of Helicobacter pylori, environmental/dietary risks, hereditary susceptibility, smoking, prior lesions, and other contributors", "Resolution of publication guard: Require biopsy-documented autoimmune gastritis, pathology-confirmed stomach cancer, compatible site/chronology, and specialist review; do not infer cancer from autoimmune gastritis alone."],
+         "sourceIds": ["pmid-36769710"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "d29d58b68565f9160afd542daa0778c6d83791ebec99ba575f05b475d7ce1158"
+      },
+      {
+         "relationshipId": "rel-blind-loop-syndrome-to-anemia",
+         "primaryId": "blind-loop-syndrome",
+         "targetId": "anemia",
+         "direction": "blind-loop-syndrome -> anemia",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {"status": "approved-me-24-bounded-proposition", "text": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded small-intestinal bacterial-overgrowth and nutrient-deficiency association. The cited review describes blind-loop or small-intestinal bacterial-overgrowth states in which malnutrition and vitamin or mineral deficiencies, including vitamin B12 and iron deficiency, may occur, but it does not establish that any individual's anemia was caused by blind-loop syndrome or exclude gastrointestinal bleeding, dietary deficiency, malabsorption from other disease, chronic inflammation, renal disease, hemolysis, marrow disease, or other causes. Require documented blind-loop syndrome or compatible small-intestinal bacterial-overgrowth phenotype, separately established anemia with appropriate iron/B12/folate studies, compatible chronology, and gastroenterology review. Do not infer anemia from a surgical or altered-anatomy history alone."},
+         "rationale": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded small-intestinal bacterial-overgrowth and nutrient-deficiency association. The cited review describes blind-loop or small-intestinal bacterial-overgrowth states in which malnutrition and vitamin or mineral deficiencies, including vitamin B12 and iron deficiency, may occur, but it does not establish that any individual's anemia was caused by blind-loop syndrome or exclude gastrointestinal bleeding, dietary deficiency, malabsorption from other disease, chronic inflammation, renal disease, hemolysis, marrow disease, or other causes. Require documented blind-loop syndrome or compatible small-intestinal bacterial-overgrowth phenotype, separately established anemia with appropriate iron/B12/folate studies, compatible chronology, and gastroenterology review. Do not infer anemia from a surgical or altered-anatomy history alone.",
+         "publicationGuard": {"status": "explicit", "structuredGuardText": "Require documented blind-loop/SIBO phenotype, objective anemia, compatible nutritional findings and chronology, and competing-cause review; do not infer anemia from altered anatomy alone.", "boundarySource": "approved-me-24-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+         "evidenceGaps": ["Independent documentation of blind-loop syndrome or a compatible small-intestinal bacterial-overgrowth phenotype and anemia", "Complete blood count, ferritin, iron studies, vitamin B12, folate, and relevant nutritional testing", "Documentation of altered anatomy, motility disorder, bacterial-overgrowth testing, or other mechanism and chronology", "Evaluation for gastrointestinal blood loss, diet, celiac or inflammatory bowel disease, renal disease, hemolysis, marrow disease, and other causes", "Resolution of publication guard: Require documented blind-loop/SIBO phenotype, objective anemia, compatible nutritional findings and chronology, and competing-cause review; do not infer anemia from altered anatomy alone."],
+         "sourceIds": ["pmid-32429454"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false,         "suggestionObjectHash": "e7a3978a817c32795fb69191bb4febbcf9c99e5e258f93f48bea4ece31f04428"
+      },
+      {
+        "relationshipId": "rel-acanthosis-nigricans-to-diabetes-mellitus-type-2",
+        "primaryId": "acanthosis-nigricans",
+        "targetId": "diabetes-mellitus-type-2",
+        "direction": "acanthosis-nigricans -> diabetes-mellitus-type-2",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {"status": "approved-me-25-bounded-proposition", "text": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded insulin-resistance association. Acanthosis nigricans is commonly associated with insulin resistance and may accompany type 2 diabetes, but a skin finding does not establish diabetes, its cause, or an individual medical nexus. Require documented acanthosis nigricans, independently established type 2 diabetes using accepted diagnostic criteria, compatible metabolic phenotype and chronology, and review of obesity, medications, endocrine disease, genetic syndromes, and malignancy-associated acanthosis. Do not infer diabetes from acanthosis nigricans alone or treat this association as proof that the skin condition caused diabetes."},
+        "rationale": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded insulin-resistance association. Acanthosis nigricans is commonly associated with insulin resistance and may accompany type 2 diabetes, but a skin finding does not establish diabetes, its cause, or an individual medical nexus. Require documented acanthosis nigricans, independently established type 2 diabetes using accepted diagnostic criteria, compatible metabolic phenotype and chronology, and review of obesity, medications, endocrine disease, genetic syndromes, and malignancy-associated acanthosis. Do not infer diabetes from acanthosis nigricans alone or treat this association as proof that the skin condition caused diabetes.",
+        "publicationGuard": {"status": "explicit", "structuredGuardText": "Require documented acanthosis nigricans, independently established type 2 diabetes, compatible metabolic phenotype/chronology, and competing-cause review; do not infer diabetes from a skin finding alone.", "boundarySource": "approved-me-25-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+        "evidenceGaps": ["Independent dermatologic documentation of acanthosis nigricans and laboratory-confirmed type 2 diabetes", "Hemoglobin A1c, fasting glucose, oral glucose tolerance testing, insulin-resistance findings, and chronology", "Assessment of obesity, medications, endocrine disorders, genetic insulin-receptor disorders, and other causes of acanthosis", "Review for atypical, abrupt, extensive, or mucosal disease that could indicate malignancy-associated acanthosis", "Resolution of publication guard: Require documented acanthosis nigricans, independently established type 2 diabetes, compatible metabolic phenotype/chronology, and competing-cause review; do not infer diabetes from a skin finding alone."],
+        "sourceIds": ["pmid-36698243"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "79169c7a5055239f774d48cc278812efac7b5f6b520d47dcc7dbace9f96af60f"
+      },
+      {
+        "relationshipId": "rel-beriberi-to-congestive-heart-failure",
+        "primaryId": "beriberi",
+        "targetId": "congestive-heart-failure",
+        "direction": "beriberi -> congestive-heart-failure",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {"status": "approved-me-25-bounded-proposition", "text": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded wet-beriberi cardiovascular association. Severe thiamine deficiency can produce wet beriberi with high-output cardiac failure, but the cited review does not establish that every heart-failure diagnosis in a person with beriberi has that mechanism. Require documented beriberi with a compatible wet-beriberi or thiamine-deficiency phenotype, independently characterized congestive heart failure, compatible chronology, nutritional and laboratory assessment, and review of ischemic, hypertensive, valvular, toxic, renal, thyroid, cardiomyopathic, and other causes. Do not infer heart failure from beriberi, edema, dyspnea, or thiamine treatment alone."},
+        "rationale": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded wet-beriberi cardiovascular association. Severe thiamine deficiency can produce wet beriberi with high-output cardiac failure, but the cited review does not establish that every heart-failure diagnosis in a person with beriberi has that mechanism. Require documented beriberi with a compatible wet-beriberi or thiamine-deficiency phenotype, independently characterized congestive heart failure, compatible chronology, nutritional and laboratory assessment, and review of ischemic, hypertensive, valvular, toxic, renal, thyroid, cardiomyopathic, and other causes. Do not infer heart failure from beriberi, edema, dyspnea, or thiamine treatment alone.",
+        "publicationGuard": {"status": "explicit", "structuredGuardText": "Require documented wet-beriberi/thiamine-deficiency phenotype, objective heart failure, compatible chronology, and competing-cause review; do not infer heart failure from beriberi alone.", "boundarySource": "approved-me-25-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+        "evidenceGaps": ["Independent clinical documentation of beriberi and objectively characterized congestive heart failure", "Thiamine status or compatible nutritional history, cardiac output/hemodynamic findings, echocardiography, BNP, and response chronology", "Documentation distinguishing wet beriberi from dry or nonspecific nutritional deficiency", "Assessment of ischemic, hypertensive, valvular, renal, thyroid, toxic, alcohol-related, inflammatory, and other cardiomyopathy causes", "Resolution of publication guard: Require documented wet-beriberi/thiamine-deficiency phenotype, objective heart failure, compatible chronology, and competing-cause review; do not infer heart failure from beriberi alone."],
+        "sourceIds": ["pmid-29360523"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "7e6aaa652bf8e19064bd5926c9ff1feabd4f4349d0c09ab3dce584fa3b266855"
+      },
+      {
+        "relationshipId": "rel-atrial-septal-defect-to-pulmonary-hypertension",
+        "primaryId": "atrial-septal-defect",
+        "targetId": "pulmonary-hypertension",
+        "direction": "atrial-septal-defect -> pulmonary-hypertension",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {"status": "approved-me-25-bounded-proposition", "text": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded congenital-shunt association. Atrial septal defects can expose the pulmonary circulation to increased flow and, in selected patients over time, be associated with pulmonary arterial hypertension or pulmonary vascular disease; however, the relationship is heterogeneous and does not apply to every defect or pulmonary-pressure elevation. Require documented atrial septal defect type and size, shunt direction and magnitude, right-heart and pulmonary-pressure findings under accepted clinical criteria, compatible chronology, and congenital-cardiology review. Exclude left-heart disease, lung disease, chronic thromboembolic disease, hypoxia, portal disease, drugs, and other pulmonary-hypertension groups before attributing the association to the defect. Do not infer pulmonary hypertension from an ASD label, dyspnea, or an isolated echocardiographic estimate."},
+        "rationale": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded congenital-shunt association. Atrial septal defects can expose the pulmonary circulation to increased flow and, in selected patients over time, be associated with pulmonary arterial hypertension or pulmonary vascular disease; however, the relationship is heterogeneous and does not apply to every defect or pulmonary-pressure elevation. Require documented atrial septal defect type and size, shunt direction and magnitude, right-heart and pulmonary-pressure findings under accepted clinical criteria, compatible chronology, and congenital-cardiology review. Exclude left-heart disease, lung disease, chronic thromboembolic disease, hypoxia, portal disease, drugs, and other pulmonary-hypertension groups before attributing the association to the defect. Do not infer pulmonary hypertension from an ASD label, dyspnea, or an isolated echocardiographic estimate.",
+        "publicationGuard": {"status": "explicit", "structuredGuardText": "Require documented ASD anatomy, objective pulmonary hypertension, compatible shunt/chronology, and competing-cause review; do not infer pulmonary hypertension from an ASD label alone.", "boundarySource": "approved-me-25-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+        "evidenceGaps": ["Independent congenital-cardiology documentation of atrial septal defect anatomy and pulmonary hypertension", "Defect type, shunt fraction, right-heart remodeling, oxygenation, right-heart catheterization or other accepted hemodynamic evidence", "Chronology of the defect, shunt burden, pulmonary vascular disease, and any closure or treatment", "Classification and exclusion of group 2, group 3, group 4, drug-related, hypoxic, portal, and other pulmonary-hypertension causes", "Resolution of publication guard: Require documented ASD anatomy, objective pulmonary hypertension, compatible shunt/chronology, and competing-cause review; do not infer pulmonary hypertension from an ASD label alone."],
+        "sourceIds": ["pmid-30305956"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "768e941aa5903f567b9aa414d25214449874ed1a4d2a4d8f1ad495576599ee94"
+      },
+      {
+        "relationshipId": "rel-bird-fancier-s-lung-to-pulmonary-fibrosis",
+        "primaryId": "bird-fancier-s-lung",
+        "targetId": "pulmonary-fibrosis",
+        "direction": "bird-fancier-s-lung -> pulmonary-fibrosis",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {"status": "approved-me-25-bounded-proposition", "text": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded chronic hypersensitivity-pneumonitis association. Bird fancier's lung is an avian-antigen-related form of hypersensitivity pneumonitis, and chronic or recurrent disease may have fibrotic consequences in some patients, but the cited review does not establish that every individual with bird fancier's lung develops pulmonary fibrosis. Require documented avian exposure, compatible hypersensitivity-pneumonitis phenotype, independently established pulmonary fibrosis by serial imaging and physiology, compatible chronology, and pulmonology review. Exclude idiopathic pulmonary fibrosis, connective-tissue disease, occupational dust or asbestos exposure, medication toxicity, infection, sarcoidosis, and other interstitial-lung disease causes. Do not infer fibrosis from bird exposure, dyspnea, or a hypersensitivity-pneumonitis label alone."},
+        "rationale": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded chronic hypersensitivity-pneumonitis association. Bird fancier's lung is an avian-antigen-related form of hypersensitivity pneumonitis, and chronic or recurrent disease may have fibrotic consequences in some patients, but the cited review does not establish that every individual with bird fancier's lung develops pulmonary fibrosis. Require documented avian exposure, compatible hypersensitivity-pneumonitis phenotype, independently established pulmonary fibrosis by serial imaging and physiology, compatible chronology, and pulmonology review. Exclude idiopathic pulmonary fibrosis, connective-tissue disease, occupational dust or asbestos exposure, medication toxicity, infection, sarcoidosis, and other interstitial-lung disease causes. Do not infer fibrosis from bird exposure, dyspnea, or a hypersensitivity-pneumonitis label alone.",
+        "publicationGuard": {"status": "explicit", "structuredGuardText": "Require documented avian-antigen hypersensitivity-pneumonitis phenotype, objective fibrosis, compatible chronology, and alternative-cause review; do not infer fibrosis from exposure or dyspnea alone.", "boundarySource": "approved-me-25-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+        "evidenceGaps": ["Independent pulmonology documentation of bird fancier's lung/hypersensitivity pneumonitis and pulmonary fibrosis", "Avian-antigen exposure history, serum or other exposure assessment, high-resolution CT, pulmonary-function testing, and serial progression", "Chronology of exposure, acute or recurrent episodes, antigen avoidance, treatment, persistent disease, and fibrosis", "Evaluation for idiopathic, connective-tissue, occupational, medication-related, infectious, granulomatous, and other interstitial-lung causes", "Resolution of publication guard: Require documented avian-antigen hypersensitivity-pneumonitis phenotype, objective fibrosis, compatible chronology, and alternative-cause review; do not infer fibrosis from exposure or dyspnea alone."],
+        "sourceIds": ["pmid-21870048"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "756fe36a686880c50c09a310e823a3f9bd828fc100de387f7513b4046a0983ab"
+      },
+      {
+        "relationshipId": "rel-atrophic-glossitis-to-anemia",
+        "primaryId": "atrophic-glossitis",
+        "targetId": "anemia",
+        "direction": "atrophic-glossitis -> anemia",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {"status": "approved-me-25-bounded-proposition", "text": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded hematinic-deficiency association. Atrophic glossitis may occur with iron, vitamin B12, folate, and other nutrient deficiencies and can accompany anemia, but the oral finding is nonspecific and does not establish anemia or its cause. Require documented atrophic glossitis, independently established anemia with subtype and laboratory evaluation, compatible hematinic findings and chronology, and dental, medical, or hematologic review. Assess blood loss, malabsorption, diet, autoimmune disease, infection, medication effects, and other causes. Do not infer anemia from tongue appearance alone or infer a particular deficiency without laboratory support."},
+        "rationale": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded hematinic-deficiency association. Atrophic glossitis may occur with iron, vitamin B12, folate, and other nutrient deficiencies and can accompany anemia, but the oral finding is nonspecific and does not establish anemia or its cause. Require documented atrophic glossitis, independently established anemia with subtype and laboratory evaluation, compatible hematinic findings and chronology, and dental, medical, or hematologic review. Assess blood loss, malabsorption, diet, autoimmune disease, infection, medication effects, and other causes. Do not infer anemia from tongue appearance alone or infer a particular deficiency without laboratory support.",
+        "publicationGuard": {"status": "explicit", "structuredGuardText": "Require documented atrophic glossitis, objective anemia subtype and hematinic findings, compatible chronology, and competing-cause review; do not infer anemia from tongue appearance alone.", "boundarySource": "approved-me-25-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+        "evidenceGaps": ["Independent oral examination documenting atrophic glossitis and laboratory-confirmed anemia", "Complete blood count, indices, ferritin, iron studies, vitamin B12, folate, zinc, and other indicated hematinic testing", "Chronology of glossitis, nutritional abnormality, anemia, diet, blood loss, and treatment response", "Evaluation for gastrointestinal blood loss, malabsorption, autoimmune gastritis, celiac disease, infection, medication effects, and other causes", "Resolution of publication guard: Require documented atrophic glossitis, objective anemia subtype and hematinic findings, compatible chronology, and competing-cause review; do not infer anemia from tongue appearance alone."],
+        "sourceIds": ["pmid-31076315"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "95d1539106977f7ba50d4de58d8d99c702d97f5683dc6a4facbb078d434291f4"
+      },
+      {
+        "relationshipId": "rel-acute-stress-reaction-to-ptsd",
+        "primaryId": "acute-stress-reaction",
+        "targetId": "ptsd",
+        "direction": "acute-stress-reaction -> ptsd",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {"status": "approved-me-26-bounded-proposition", "text": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded temporal-risk association. Acute stress disorder describes clinically significant trauma-related symptoms during the first month after trauma and may identify increased risk for later PTSD, but it does not establish that every person with an acute stress reaction develops PTSD or that the acute reaction caused an individual's later disorder. Require a qualifying traumatic exposure, documented acute-stress-disorder phenotype, separately established PTSD after the relevant interval, compatible chronology, and review of trauma characteristics, prior psychiatric history, ongoing stressors, substance use, medical illness, and other explanations. Do not infer PTSD from an acute stress reaction label alone."},
+        "rationale": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded temporal-risk association. Acute stress disorder describes clinically significant trauma-related symptoms during the first month after trauma and may identify increased risk for later PTSD, but it does not establish that every person with an acute stress reaction develops PTSD or that the acute reaction caused an individual's later disorder. Require a qualifying traumatic exposure, documented acute-stress-disorder phenotype, separately established PTSD after the relevant interval, compatible chronology, and review of trauma characteristics, prior psychiatric history, ongoing stressors, substance use, medical illness, and other explanations. Do not infer PTSD from an acute stress reaction label alone.",
+        "publicationGuard": {"status": "explicit", "structuredGuardText": "Require qualifying trauma, documented acute-stress-disorder phenotype, separately established later PTSD, compatible chronology, and competing-cause review; do not infer PTSD from an acute reaction alone.", "boundarySource": "approved-me-26-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+        "evidenceGaps": ["Independent documentation of the qualifying traumatic exposure and acute-stress-disorder symptom cluster", "Separate PTSD diagnosis meeting applicable clinical criteria after the acute period", "Chronology of trauma, acute symptoms, persistence or recurrence, and PTSD onset", "Assessment of prior PTSD, anxiety, depression, substance use, ongoing stressors, and other psychiatric contributors", "Resolution of publication guard: Require qualifying trauma, documented acute-stress-disorder phenotype, separately established later PTSD, compatible chronology, and competing-cause review; do not infer PTSD from an acute reaction alone."],
+        "sourceIds": ["pmid-21208593"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "2ec2d71121d7544064ae6f4253e3377c188e9d602792be6243b2bc8e0fbe071e"
+      },
+      {
+        "relationshipId": "rel-atopic-dermatitis-eczema-to-asthma",
+        "primaryId": "atopic-dermatitis-eczema",
+        "targetId": "asthma",
+        "direction": "atopic-dermatitis-eczema -> asthma",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {"status": "approved-me-26-bounded-proposition", "text": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded atopic-disease association. Atopic dermatitis, particularly persistent or severe phenotypes, is associated with increased risk of subsequent asthma in systematic-review evidence, but the association does not establish that every patient with atopic dermatitis develops asthma or that the skin disease caused an individual's asthma. Require documented atopic dermatitis phenotype, independently established asthma using appropriate pulmonary criteria, compatible chronology, and review of allergic rhinitis, family atopy, environmental exposure, smoking, occupational factors, infection, obesity, and other respiratory causes. Do not infer asthma from eczema, atopy, cough, or wheeze without objective evaluation."},
+        "rationale": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded atopic-disease association. Atopic dermatitis, particularly persistent or severe phenotypes, is associated with increased risk of subsequent asthma in systematic-review evidence, but the association does not establish that every patient with atopic dermatitis develops asthma or that the skin disease caused an individual's asthma. Require documented atopic dermatitis phenotype, independently established asthma using appropriate pulmonary criteria, compatible chronology, and review of allergic rhinitis, family atopy, environmental exposure, smoking, occupational factors, infection, obesity, and other respiratory causes. Do not infer asthma from eczema, atopy, cough, or wheeze without objective evaluation.",
+        "publicationGuard": {"status": "explicit", "structuredGuardText": "Require documented atopic-dermatitis phenotype, objective asthma diagnosis, compatible chronology, and competing-cause review; do not infer asthma from eczema or atopy alone.", "boundarySource": "approved-me-26-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+        "evidenceGaps": ["Independent dermatologic documentation of atopic dermatitis and pulmonary documentation of asthma", "Spirometry with bronchodilator testing or other appropriate objective asthma assessment", "Atopic-dermatitis onset, persistence/severity, asthma onset, and longitudinal chronology", "Assessment of allergic rhinitis, family atopy, environmental and occupational exposures, smoking, obesity, and other respiratory causes", "Resolution of publication guard: Require documented atopic-dermatitis phenotype, objective asthma diagnosis, compatible chronology, and competing-cause review; do not infer asthma from eczema or atopy alone."],
+        "sourceIds": ["pmid-34384834"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "32fb454566ad70d198e40c38790fb115e253085fbe59cffd57a00e51ce4a6b48"
+      },
+      {
+        "relationshipId": "rel-coarctation-of-the-aorta-to-hypertension",
+        "primaryId": "coarctation-of-the-aorta",
+        "targetId": "hypertension",
+        "direction": "coarctation-of-the-aorta -> hypertension",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {"status": "approved-me-26-bounded-proposition", "text": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded congenital-hemodynamic association. Coarctation of the aorta is associated with hypertension before and after repair, including residual or recurrent obstruction and abnormal vascular regulation, but the literature does not establish that every person with coarctation develops hypertension or that coarctation caused an individual's hypertension. Require documented coarctation anatomy or repair, independently established hypertension using appropriate measurements, compatible residual-gradient or vascular phenotype and chronology, and cardiology review. Do not infer hypertension from a congenital diagnosis, a single blood-pressure reading, or repair history alone."},
+        "rationale": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded congenital-hemodynamic association. Coarctation of the aorta is associated with hypertension before and after repair, including residual or recurrent obstruction and abnormal vascular regulation, but the literature does not establish that every person with coarctation develops hypertension or that coarctation caused an individual's hypertension. Require documented coarctation anatomy or repair, independently established hypertension using appropriate measurements, compatible residual-gradient or vascular phenotype and chronology, and cardiology review. Do not infer hypertension from a congenital diagnosis, a single blood-pressure reading, or repair history alone.",
+        "publicationGuard": {"status": "explicit", "structuredGuardText": "Require documented coarctation anatomy or repair, independently established hypertension, compatible residual physiology/chronology, and competing-cause review; do not infer hypertension from coarctation alone.", "boundarySource": "approved-me-26-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+        "evidenceGaps": ["Cardiology documentation of coarctation anatomy, prior repair, stent, or residual/recurrent obstruction", "Repeated or ambulatory blood-pressure measurements establishing hypertension", "Upper/lower-extremity pressure comparison, imaging, gradients, vascular function, and chronology", "Assessment of renal disease, endocrine causes, obesity, medications, sleep apnea, and primary hypertension risk factors", "Resolution of publication guard: Require documented coarctation anatomy or repair, independently established hypertension, compatible residual physiology/chronology, and competing-cause review; do not infer hypertension from coarctation alone."],
+        "sourceIds": ["pmid-37443581"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "d7c526b40a2313adf6a34063eece9dac332a8c30a3a14cec67ca88a0477edcb4"
+      },
+      {
+        "relationshipId": "rel-chronic-bronchitis-to-copd",
+        "primaryId": "chronic-bronchitis",
+        "targetId": "copd",
+        "direction": "chronic-bronchitis -> copd",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {"status": "approved-me-26-bounded-proposition", "text": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded chronic-airway-disease association. Chronic bronchitis is a clinical phenotype that can occur with or precede airflow limitation and is relevant to COPD heterogeneity, but it is not synonymous with COPD and does not establish that every person with chronic bronchitis develops COPD. Require documented chronic-bronchitis symptoms or diagnosis, separately established COPD with post-bronchodilator spirometry, compatible exposure and chronology, and pulmonology review. Assess smoking, occupational exposure, asthma, bronchiectasis, recurrent infection, alpha-1 antitrypsin deficiency, and other causes. Do not infer COPD from chronic cough or sputum alone."},
+        "rationale": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded chronic-airway-disease association. Chronic bronchitis is a clinical phenotype that can occur with or precede airflow limitation and is relevant to COPD heterogeneity, but it is not synonymous with COPD and does not establish that every person with chronic bronchitis develops COPD. Require documented chronic-bronchitis symptoms or diagnosis, separately established COPD with post-bronchodilator spirometry, compatible exposure and chronology, and pulmonology review. Assess smoking, occupational exposure, asthma, bronchiectasis, recurrent infection, alpha-1 antitrypsin deficiency, and other causes. Do not infer COPD from chronic cough or sputum alone.",
+        "publicationGuard": {"status": "explicit", "structuredGuardText": "Require chronic-bronchitis phenotype, objective COPD, compatible exposure/chronology, and alternative-airway-disease review; do not infer COPD from cough or sputum alone.", "boundarySource": "approved-me-26-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+        "evidenceGaps": ["Independent documentation of chronic bronchitis and COPD with qualifying post-bronchodilator spirometry", "Longitudinal cough/sputum history, airflow measurements, exacerbations, imaging, and chronology", "Smoking, vaping, occupational, environmental, and biomass-exposure history", "Assessment for asthma, bronchiectasis, recurrent infection, alpha-1 antitrypsin deficiency, and other airway disease", "Resolution of publication guard: Require chronic-bronchitis phenotype, objective COPD, compatible exposure/chronology, and alternative-airway-disease review; do not infer COPD from cough or sputum alone."],
+        "sourceIds": ["pmid-23204254"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "e061146e31a50d20a200a5d70d7beb3f78c983432faf1a1bbfbb54cabd97b89d"
+      },
+      {
+        "relationshipId": "rel-cataracts-to-visual-impairment",
+        "primaryId": "cataracts",
+        "targetId": "visual-impairment",
+        "direction": "cataracts -> visual-impairment",
+        "primaryPublicationState": "draft",
+        "rank": 1,
+        "clinicalProposition": {"status": "approved-me-26-bounded-proposition", "text": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded ocular-function association. Cataracts can reduce visual acuity and cause visual disability or blindness when clinically significant, but visual impairment is not inferred from a cataract label alone and may reflect refractive error, retinal disease, glaucoma, optic neuropathy, amblyopia, corneal disease, or other causes. Require objective cataract documentation, separately measured visual impairment with compatible laterality, anatomy, and chronology, and ophthalmology review. Do not infer the degree or cause of impairment from cataract diagnosis, age, symptoms, or prior surgery alone."},
+        "rationale": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded ocular-function association. Cataracts can reduce visual acuity and cause visual disability or blindness when clinically significant, but visual impairment is not inferred from a cataract label alone and may reflect refractive error, retinal disease, glaucoma, optic neuropathy, amblyopia, corneal disease, or other causes. Require objective cataract documentation, separately measured visual impairment with compatible laterality, anatomy, and chronology, and ophthalmology review. Do not infer the degree or cause of impairment from cataract diagnosis, age, symptoms, or prior surgery alone.",
+        "publicationGuard": {"status": "explicit", "structuredGuardText": "Require objective cataract, separately measured compatible visual impairment, laterality/chronology, and alternative-ocular-cause review; do not infer impairment from cataract alone.", "boundarySource": "approved-me-26-implementation-scope", "structuredGuardReviewPending": false, "semanticRewriteAuthorized": false},
+        "evidenceGaps": ["Ophthalmic examination documenting lens opacity and clinically significant cataract", "Best-corrected visual acuity, visual-field or other objective impairment measurements, and laterality", "Chronology of cataract progression, visual decline, surgery, and postoperative status", "Assessment of retinal, optic-nerve, glaucoma, corneal, refractive, neurologic, and other competing causes", "Resolution of publication guard: Require objective cataract, separately measured compatible visual impairment, laterality/chronology, and alternative-ocular-cause review; do not infer impairment from cataract alone."],
+        "sourceIds": ["pmid-40227658"], "sourceReferenceCount": 1, "pathwayIntelligencePresent": false, "suggestionObjectHash": "d66759238637752cae67d9c26f71d327163e663c2ef2e8187590b75f2274ccac"
+      },
+      {"relationshipId":"rel-aphakia-to-visual-impairment","primaryId":"aphakia","targetId":"visual-impairment","direction":"aphakia -> visual-impairment","primaryPublicationState":"draft","rank":1,"clinicalProposition":{"status":"approved-me-27-bounded-proposition","text":"Mapping Expansion Batch ME-27 adds this relationship only as a bounded visual-outcome association. Aphakia, especially congenital or pediatric aphakia, can be associated with reduced visual development or impaired visual outcome, but the diagnosis alone does not establish a particular person's visual impairment or its severity. Require documented aphakia, separately measured compatible visual impairment, relevant laterality and developmental chronology, and review of amblyopia, corneal disease, glaucoma, retinal or optic-nerve disease, refractive error, surgical complications, and optical-rehabilitation history. Do not infer visual impairment from an aphakia label alone."},"rationale":"Mapping Expansion Batch ME-27 adds this relationship only as a bounded visual-outcome association. Aphakia, especially congenital or pediatric aphakia, can be associated with reduced visual development or impaired visual outcome, but the diagnosis alone does not establish a particular person's visual impairment or its severity. Require documented aphakia, separately measured compatible visual impairment, relevant laterality and developmental chronology, and review of amblyopia, corneal disease, glaucoma, retinal or optic-nerve disease, refractive error, surgical complications, and optical-rehabilitation history. Do not infer visual impairment from an aphakia label alone.","publicationGuard":{"status":"explicit","structuredGuardText":"Require documented aphakia, separately measured compatible visual impairment, relevant laterality/chronology, and competing ocular-cause review; do not infer impairment from aphakia alone.","boundarySource":"approved-me-27-implementation-scope","structuredGuardReviewPending":false,"semanticRewriteAuthorized":false},"evidenceGaps":["Independent documentation of aphakia and objectively measured visual impairment","Laterality, age at onset, developmental chronology, visual-acuity/field results, and relevant surgical history","Assessment of amblyopia, glaucoma, corneal disease, retinal or optic-nerve disease, refractive error, and other ocular contributors","Documentation of optical correction or rehabilitation and its effect on measured function","Resolution of publication guard: Require documented aphakia, separately measured compatible visual impairment, relevant laterality/chronology, and competing ocular-cause review; do not infer impairment from aphakia alone."],"sourceIds":["pmid-35051625"],"sourceReferenceCount":1,"pathwayIntelligencePresent":false,"suggestionObjectHash":"4c5240c3f4c23747e012abeff41d5daba9d9f15be84c5a793b412503faadf85a"},
+      {"relationshipId":"rel-arrhythmogenic-right-ventricular-dysplasia-to-congestive-heart-failure","primaryId":"arrhythmogenic-right-ventricular-dysplasia","targetId":"congestive-heart-failure","direction":"arrhythmogenic-right-ventricular-dysplasia -> congestive-heart-failure","primaryPublicationState":"draft","rank":1,"clinicalProposition":{"status":"approved-me-27-bounded-proposition","text":"Mapping Expansion Batch ME-27 adds this relationship only as a bounded cardiomyopathy-to-heart-failure association. Arrhythmogenic right ventricular cardiomyopathy can present with ventricular dysfunction and a heart-failure phenotype, including dilated-cardiomyopathy-like presentations, but an ARVC diagnosis does not establish that every person's heart failure is attributable to ARVC. Require diagnostic criteria supported by imaging, electrocardiography, genetic or family evaluation as appropriate, separately established heart failure with objective ventricular dysfunction, compatible chronology, and cardiology review. Preserve ischemic disease, hypertension, valvular disease, myocarditis, other cardiomyopathies, tachyarrhythmia-mediated dysfunction, and treatment-related contributors. Do not infer heart failure from ARVC, palpitations, ventricular ectopy, or an isolated imaging finding alone."},"rationale":"Mapping Expansion Batch ME-27 adds this relationship only as a bounded cardiomyopathy-to-heart-failure association. Arrhythmogenic right ventricular cardiomyopathy can present with ventricular dysfunction and a heart-failure phenotype, including dilated-cardiomyopathy-like presentations, but an ARVC diagnosis does not establish that every person's heart failure is attributable to ARVC. Require diagnostic criteria supported by imaging, electrocardiography, genetic or family evaluation as appropriate, separately established heart failure with objective ventricular dysfunction, compatible chronology, and cardiology review. Preserve ischemic disease, hypertension, valvular disease, myocarditis, other cardiomyopathies, tachyarrhythmia-mediated dysfunction, and treatment-related contributors. Do not infer heart failure from ARVC, palpitations, ventricular ectopy, or an isolated imaging finding alone.","publicationGuard":{"status":"explicit","structuredGuardText":"Require diagnostic ARVC criteria, objective heart failure, compatible chronology, and competing cardiac-cause review; do not infer heart failure from ARVC alone.","boundarySource":"approved-me-27-implementation-scope","structuredGuardReviewPending":false,"semanticRewriteAuthorized":false},"evidenceGaps":["Independent documentation of arrhythmogenic right ventricular cardiomyopathy/dysplasia and heart failure with objective ventricular dysfunction","Imaging, ECG, rhythm, genetic/family, and longitudinal functional findings establishing phenotype and chronology","Assessment of left-ventricular involvement, arrhythmia-mediated dysfunction, myocarditis, ischemia, valvular disease, and other cardiomyopathies","Treatment history, including ablation, defibrillator therapy, antiarrhythmics, and heart-failure-directed therapy","Resolution of publication guard: Require diagnostic ARVC criteria, objective heart failure, compatible chronology, and competing cardiac-cause review; do not infer heart failure from ARVC alone."],"sourceIds":["pmid-40202346"],"sourceReferenceCount":1,"pathwayIntelligencePresent":false,"suggestionObjectHash":"0608a3a2d29f0af273cd569efe61bc58228221f343e91f26718a51c69896ea36"},
+      {"relationshipId":"rel-al-amyloidosis-to-chronic-kidney-disease","primaryId":"al-amyloidosis","targetId":"chronic-kidney-disease","direction":"al-amyloidosis -> chronic-kidney-disease","primaryPublicationState":"draft","rank":1,"clinicalProposition":{"status":"approved-me-27-bounded-proposition","text":"Mapping Expansion Batch ME-27 adds this relationship only as a bounded systemic-amyloidosis renal-involvement association. AL amyloidosis frequently involves the kidney and may produce proteinuria, nephrotic syndrome, and renal failure, but the disease label alone does not establish chronic kidney disease in every patient or individual attribution. Require tissue-typed or otherwise clinically established AL amyloidosis, independently documented chronic kidney disease or persistent renal impairment, objective renal findings, compatible chronology, and nephrology review. Preserve diabetes, hypertension, monoclonal-protein kidney diseases other than AL, medication or treatment nephrotoxicity, obstruction, infection, and unrelated glomerular or vascular disease. Do not infer CKD from AL amyloidosis without renal evidence."},"rationale":"Mapping Expansion Batch ME-27 adds this relationship only as a bounded systemic-amyloidosis renal-involvement association. AL amyloidosis frequently involves the kidney and may produce proteinuria, nephrotic syndrome, and renal failure, but the disease label alone does not establish chronic kidney disease in every patient or individual attribution. Require tissue-typed or otherwise clinically established AL amyloidosis, independently documented chronic kidney disease or persistent renal impairment, objective renal findings, compatible chronology, and nephrology review. Preserve diabetes, hypertension, monoclonal-protein kidney diseases other than AL, medication or treatment nephrotoxicity, obstruction, infection, and unrelated glomerular or vascular disease. Do not infer CKD from AL amyloidosis without renal evidence.","publicationGuard":{"status":"explicit","structuredGuardText":"Require established AL amyloidosis, objective renal involvement/CKD, compatible chronology, and competing kidney-cause review; do not infer CKD from AL amyloidosis alone.","boundarySource":"approved-me-27-implementation-scope","structuredGuardReviewPending":false,"semanticRewriteAuthorized":false},"evidenceGaps":["Independent documentation of AL amyloidosis and chronic kidney disease or persistent renal impairment","Renal biopsy or other objective evidence of amyloid-related renal involvement, proteinuria, nephrotic syndrome, or declining filtration","Longitudinal renal-function and proteinuria chronology relative to amyloidosis diagnosis and treatment","Assessment of light-chain burden, response to therapy, nephrotoxic exposure, and competing kidney disease","Resolution of publication guard: Require established AL amyloidosis, objective renal involvement/CKD, compatible chronology, and competing kidney-cause review; do not infer CKD from AL amyloidosis alone."],"sourceIds":["pmid-30299492"],"sourceReferenceCount":1,"pathwayIntelligencePresent":false,"suggestionObjectHash":"6a870c8c825e27a853e856d79ab702884ab4155b3e17b3bd45724c450f4fcb8e"},
+      {"relationshipId":"rel-brain-abscess-to-seizure-disorder","primaryId":"brain-abscess","targetId":"seizure-disorder","direction":"brain-abscess -> seizure-disorder","primaryPublicationState":"draft","rank":1,"clinicalProposition":{"status":"approved-me-27-bounded-proposition","text":"Mapping Expansion Batch ME-27 adds this relationship only as a bounded post-infectious seizure-risk association. A nationwide cohort found new-onset epilepsy after brain abscess among survivors, but this population-level risk does not establish that every seizure disorder after a brain abscess was caused by the infection. Require a documented brain abscess, separately established seizure disorder or epilepsy, compatible timing, objective neurologic evaluation, and review of admission seizures, abscess location, neurosurgery, stroke, alcohol exposure, structural brain disease, medications, and other seizure causes. Distinguish acute symptomatic seizures during infection from later unprovoked seizures. Do not infer epilepsy from a brain-abscess history or a single acute seizure alone."},"rationale":"Mapping Expansion Batch ME-27 adds this relationship only as a bounded post-infectious seizure-risk association. A nationwide cohort found new-onset epilepsy after brain abscess among survivors, but this population-level risk does not establish that every seizure disorder after a brain abscess was caused by the infection. Require a documented brain abscess, separately established seizure disorder or epilepsy, compatible timing, objective neurologic evaluation, and review of admission seizures, abscess location, neurosurgery, stroke, alcohol exposure, structural brain disease, medications, and other seizure causes. Distinguish acute symptomatic seizures during infection from later unprovoked seizures. Do not infer epilepsy from a brain-abscess history or a single acute seizure alone.","publicationGuard":{"status":"explicit","structuredGuardText":"Require documented brain abscess, later objective seizure-disorder/epilepsy diagnosis, compatible chronology, and competing-cause review; do not infer epilepsy from infection history or one acute seizure.","boundarySource":"approved-me-27-implementation-scope","structuredGuardReviewPending":false,"semanticRewriteAuthorized":false},"evidenceGaps":["Independent documentation of brain abscess and a separately established seizure disorder or epilepsy diagnosis","Chronology distinguishing acute symptomatic seizures during infection from later unprovoked seizures","Abscess location, imaging, microbiology, neurosurgery, stroke, EEG, and neurologic follow-up records","Assessment of alcohol exposure, prior seizures, structural brain disease, medications, metabolic triggers, and other causes","Resolution of publication guard: Require documented brain abscess, later objective seizure-disorder/epilepsy diagnosis, compatible chronology, and competing-cause review; do not infer epilepsy from infection history or one acute seizure."],"sourceIds":["pmid-36810235"],"sourceReferenceCount":1,"pathwayIntelligencePresent":false,"suggestionObjectHash":"ed455b090c6b14ce0d3050a91cd424ea2a7e575651da38440643b04e0dbb64f4"},
+      {"relationshipId":"rel-chronic-b-cell-leukemias-to-anemia","primaryId":"chronic-b-cell-leukemias","targetId":"anemia","direction":"chronic-b-cell-leukemias -> anemia","primaryPublicationState":"draft","rank":1,"clinicalProposition":{"status":"approved-me-27-bounded-proposition","text":"Mapping Expansion Batch ME-27 adds this relationship only as a bounded chronic-lymphocytic-leukemia/autoimmune-hemolytic-anemia association. The selected review addresses autoimmune hemolytic anemia in CLL and reports it as a recognized complication, but the broad chronic-B-cell-leukemias identity is wider than CLL and neither the leukemia label nor a low hemoglobin value establishes the subtype or individual attribution. Require a documented CLL or source-matched chronic B-cell leukemia phenotype, separately established anemia with appropriate hematologic characterization, compatible disease or treatment chronology, and hematology review. Preserve marrow infiltration, bleeding, nutritional deficiency, renal disease, infection, hemolysis from other causes, treatment effects, and other cytopenias. Do not infer anemia from chronic B-cell leukemia alone."},"rationale":"Mapping Expansion Batch ME-27 adds this relationship only as a bounded chronic-lymphocytic-leukemia/autoimmune-hemolytic-anemia association. The selected review addresses autoimmune hemolytic anemia in CLL and reports it as a recognized complication, but the broad chronic-B-cell-leukemias identity is wider than CLL and neither the leukemia label nor a low hemoglobin value establishes the subtype or individual attribution. Require a documented CLL or source-matched chronic B-cell leukemia phenotype, separately established anemia with appropriate hematologic characterization, compatible disease or treatment chronology, and hematology review. Preserve marrow infiltration, bleeding, nutritional deficiency, renal disease, infection, hemolysis from other causes, treatment effects, and other cytopenias. Do not infer anemia from chronic B-cell leukemia alone.","publicationGuard":{"status":"explicit","structuredGuardText":"Require a source-matched CLL/B-cell leukemia phenotype, objective anemia characterization, compatible chronology, and competing hematologic-cause review; do not infer anemia from a leukemia label alone.","boundarySource":"approved-me-27-implementation-scope","structuredGuardReviewPending":false,"semanticRewriteAuthorized":false},"evidenceGaps":["Independent documentation of the exact chronic B-cell leukemia phenotype and separately established anemia subtype","CBC trend, reticulocyte count, hemolysis studies, marrow findings, and other objective hematologic characterization","Chronology relative to leukemia activity, progression, autoimmune findings, infection, and treatment exposure","Assessment of bleeding, nutritional deficiency, renal disease, marrow failure, drug effects, and other causes of anemia","Resolution of publication guard: Require a source-matched CLL/B-cell leukemia phenotype, objective anemia characterization, compatible chronology, and competing hematologic-cause review; do not infer anemia from a leukemia label alone."],"sourceIds":["pmid-34830959"],"sourceReferenceCount":1,"pathwayIntelligencePresent":false,"suggestionObjectHash":"ef31d2f536ed046a4c0a0cae3f893fa4237176c77e6064fe0d87ba4dac1840a0"}
+   ],   "lastUpdatedBy": "Mapping Expansion Batch ME-27",
+   "currentState": "ME27-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

@@ -2,7 +2,55 @@
   "id": "peptic-ulcer-disease",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-21 adds this relationship only as the user-approved bounded clinical proposition. The cited endoscopy cohort of patients over age 50 with documented iron-deficiency anemia identified peptic ulcer disease among the upper gastrointestinal findings. Require documented peptic-ulcer disease with bleeding or other clinically relevant iron loss and separately established iron-deficiency anemia with compatible chronology; the cohort identifies an upper gastrointestinal source in selected patients but does not establish that any individual's anemia was caused by peptic-ulcer disease. Preserve gastrointestinal malignancy, other gastrointestinal bleeding, malabsorption, dietary deficiency, chronic inflammatory disease, renal disease, hemolysis, medications, and other causes of anemia. Do not infer anemia from a peptic-ulcer diagnosis without objective hematologic evidence or compatible bleeding history. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of peptic-ulcer-disease and anemia",
+        "Objective iron studies and hemoglobin records establishing iron-deficiency anemia",
+        "Endoscopy or other records documenting ulcer location, activity, and bleeding or iron-loss phenotype",
+        "Chronology compatible with the approved bounded proposition",
+        "Resolution of publication guard: Require documented peptic-ulcer disease with bleeding or other clinically relevant iron loss and separately established iron-deficiency anemia with compatible chronology; preserve competing causes."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Gordon SR, Smith RE, Power GC. The role of endoscopy in the evaluation of iron deficiency anemia in patients over the age of 50. Am J Gastroenterol. 1994;89:1963-1967. PMID 7942718.",
+          "note": "Mapping Expansion Batch ME-21 evidence for the bounded peptic-ulcer-disease to anemia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7942718/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 7942718; approved ME-21 source; guard: Require documented peptic-ulcer disease with bleeding or other clinically relevant iron loss and separately established iron-deficiency anemia with compatible chronology; the cohort identifies an upper gastrointestinal source in selected patients but does not establish that any individual's anemia was caused by peptic-ulcer disease."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited endoscopy cohort reports peptic-ulcer disease among upper gastrointestinal findings in selected patients with iron-deficiency anemia, supporting a bounded clinical association for research rather than an individual causal conclusion.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; the guard explicitly limits the claim to an association requiring individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A bleeding or chronically oozing peptic ulcer could provide gastrointestinal iron loss and thereby be temporally associated with iron-deficiency anemia, but this mechanism is only a research hypothesis for an individual until bleeding and hematologic chronology are documented.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The selected endoscopy cohort does not establish that peptic-ulcer disease caused any individual's anemia, and competing sources of blood loss or impaired erythropoiesis must be evaluated before any nexus opinion.",
+        "evidenceGaps": "Independent diagnoses, objective iron studies, ulcer bleeding phenotype, and compatible chronology remain necessary; the selected cohort does not resolve individual attribution.",
+        "alternativeEtiologiesToRuleOut": [
+          "gastrointestinal malignancy or other gastrointestinal bleeding",
+          "malabsorption or dietary iron deficiency",
+          "chronic inflammatory or renal disease",
+          "hemolysis",
+          "medication-related blood loss"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }
