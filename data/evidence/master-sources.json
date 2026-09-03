@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 336,
+    "liveSourceReferenceUses": 341,
     "activeSourceEntities": 233,
-    "pendingVerificationSourceEntities": 77,
+    "pendingVerificationSourceEntities": 82,
     "activeClinicalSourceEntities": 232,
-    "pendingClinicalSourceEntities": 77,
+    "pendingClinicalSourceEntities": 82,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 319,
+    "totalSourceEntitiesIncludingLineage": 324,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -12222,8 +12222,208 @@
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
+    },
+    {
+      "sourceId": "pmid-27259753",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "27259753",
+      "doi": "10.1136/bjsports-2016-096189",
+      "canonicalCitation": "Gribble PA, Bleakley CM, Caulfield BM, et al. Evidence review for the 2016 International Ankle Consortium consensus statement on the prevalence, impact and long-term consequences of lateral ankle sprains. Br J Sports Med. 2016;50(24):1496-1505. PMID 27259753. doi:10.1136/bjsports-2016-096189.",
+      "citationVariants": [
+        "Gribble PA, Bleakley CM, Caulfield BM, et al. Evidence review for the 2016 International Ankle Consortium consensus statement on the prevalence, impact and long-term consequences of lateral ankle sprains. Br J Sports Med. 2016;50(24):1496-1505. PMID 27259753. doi:10.1136/bjsports-2016-096189."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27259753/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27259753/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ankle-strain-to-osteoarthritis",
+          "primaryId": "ankle-strain",
+          "targetId": "osteoarthritis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a0aaef3b5a2ab091355d59fa452e2cdf2347515afe2a3ec73c96b04600e0f641"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-31925464",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31925464",
+      "doi": "10.1007/s00264-019-04476-x",
+      "canonicalCitation": "Krähenbühl N, Susdorf R, Barg A, et al. Supramalleolar osteotomy in post-traumatic valgus ankle osteoarthritis. Int Orthop. 2020;44(3):535-543. PMID 31925464. doi:10.1007/s00264-019-04476-x.",
+      "citationVariants": [
+        "Krähenbühl N, Susdorf R, Barg A, et al. Supramalleolar osteotomy in post-traumatic valgus ankle osteoarthritis. Int Orthop. 2020;44(3):535-543. PMID 31925464. doi:10.1007/s00264-019-04476-x."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31925464/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31925464/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ankylosis-to-osteoarthritis",
+          "primaryId": "ankylosis",
+          "targetId": "osteoarthritis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "659d33002f93dc6da845196475995e16e915de766040740c4ece100fd93e94cb"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-11353583",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "11353583",
+      "doi": "10.1007/s11920-001-0053-7",
+      "canonicalCitation": "Seidman SN, Roose SP. Sexual dysfunction and depression. Curr Psychiatry Rep. 2001;3(3):202-208. PMID 11353583. doi:10.1007/s11920-001-0053-7.",
+      "citationVariants": [
+        "Seidman SN, Roose SP. Sexual dysfunction and depression. Curr Psychiatry Rep. 2001;3(3):202-208. PMID 11353583. doi:10.1007/s11920-001-0053-7."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11353583/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/11353583/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anorgasmia-to-depressive-disorder",
+          "primaryId": "anorgasmia",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f07c3e67074ba8ed2dcf7d7456a237db41801dc998f4342f64ec6db83dfb125f"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-35835550",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35835550",
+      "doi": "10.1136/pn-2022-003441",
+      "canonicalCitation": "Thomas G, Alakbarzade V, Sammaraiee Y, et al. Spontaneous spinal cord infarction: a practical approach. Pract Neurol. 2022;22(6):497-502. PMID 35835550. doi:10.1136/pn-2022-003441.",
+      "citationVariants": [
+        "Thomas G, Alakbarzade V, Sammaraiee Y, et al. Spontaneous spinal cord infarction: a practical approach. Pract Neurol. 2022;22(6):497-502. PMID 35835550. doi:10.1136/pn-2022-003441."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35835550/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35835550/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anterior-cord-syndrome-to-urinary-incontinence",
+          "primaryId": "anterior-cord-syndrome",
+          "targetId": "urinary-incontinence",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "e9be11c3041e8db2ccb2106778e8316a7f24bc4942b2124692f4d2a1095a517d"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-21441765",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "21441765",
+      "doi": "10.3810/hp.2011.02.380",
+      "canonicalCitation": "Leung FW, Rao SSC. Approach to fecal incontinence and constipation in older hospitalized patients. Hosp Pract (1995). 2011;39(1):97-104. PMID 21441765. doi:10.3810/hp.2011.02.380.",
+      "citationVariants": [
+        "Leung FW, Rao SSC. Approach to fecal incontinence and constipation in older hospitalized patients. Hosp Pract (1995). 2011;39(1):97-104. PMID 21441765. doi:10.3810/hp.2011.02.380."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21441765/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/21441765/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anorectal-stricture-to-fecal-incontinence",
+          "primaryId": "anorectal-stricture",
+          "targetId": "fecal-incontinence",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "187f043262f16789f74a36c8f80f93374daeb176814ebf8fc00fc0fca825750e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-31",
-  "currentState": "ME31-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-32",
+  "currentState": "ME32-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

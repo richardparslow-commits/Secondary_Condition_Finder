@@ -1,0 +1,76 @@
+{
+  "batch": "ME-32",
+  "batchDate": "2026-09-03",
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "relationships": [
+    {
+      "relationshipId": "rel-ankle-strain-to-osteoarthritis",
+      "primaryId": "ankle-strain",
+      "targetId": "osteoarthritis",
+      "pmid": "27259753",
+      "doi": "10.1136/bjsports-2016-096189",
+      "citation": "Gribble PA, Bleakley CM, Caulfield BM, et al. Evidence review for the 2016 International Ankle Consortium consensus statement on the prevalence, impact and long-term consequences of lateral ankle sprains. Br J Sports Med. 2016;50(24):1496-1505. PMID 27259753. doi:10.1136/bjsports-2016-096189.",
+      "publicationGuard": "Require independently documented ankle sprain with documented chronic instability or recurrent injury, radiographically documented ipsilateral ankle osteoarthritis compatible in chronology, and orthopedic review."
+    },
+    {
+      "relationshipId": "rel-ankylosis-to-osteoarthritis",
+      "primaryId": "ankylosis",
+      "targetId": "osteoarthritis",
+      "pmid": "31925464",
+      "doi": "10.1007/s00264-019-04476-x",
+      "citation": "Krähenbühl N, Susdorf R, Barg A, et al. Supramalleolar osteotomy in post-traumatic valgus ankle osteoarthritis. Int Orthop. 2020;44(3):535-543. PMID 31925464. doi:10.1007/s00264-019-04476-x.",
+      "publicationGuard": "Require independently documented ankylosis of the affected joint by clinical and imaging assessment, radiographically documented adjacent or ipsilateral-segment osteoarthritis compatible in chronology, and orthopedic review."
+    },
+    {
+      "relationshipId": "rel-anorgasmia-to-depressive-disorder",
+      "primaryId": "anorgasmia",
+      "targetId": "depressive-disorder",
+      "pmid": "11353583",
+      "doi": "10.1007/s11920-001-0053-7",
+      "citation": "Seidman SN, Roose SP. Sexual dysfunction and depression. Curr Psychiatry Rep. 2001;3(3):202-208. PMID 11353583. doi:10.1007/s11920-001-0053-7.",
+      "publicationGuard": "Require independently documented anorgasmia by sexual-medicine assessment, a diagnosed depressive disorder by structured psychiatric evaluation compatible in chronology, and mental-health review."
+    },
+    {
+      "relationshipId": "rel-anterior-cord-syndrome-to-urinary-incontinence",
+      "primaryId": "anterior-cord-syndrome",
+      "targetId": "urinary-incontinence",
+      "pmid": "35835550",
+      "doi": "10.1136/pn-2022-003441",
+      "citation": "Thomas G, Alakbarzade V, Sammaraiee Y, et al. Spontaneous spinal cord infarction: a practical approach. Pract Neurol. 2022;22(6):497-502. PMID 35835550. doi:10.1136/pn-2022-003441.",
+      "publicationGuard": "Require independently documented anterior cord syndrome by imaging and clinical examination, documented urinary incontinence by urodynamic or validated assessment compatible in chronology, and specialist review."
+    },
+    {
+      "relationshipId": "rel-anorectal-stricture-to-fecal-incontinence",
+      "primaryId": "anorectal-stricture",
+      "targetId": "fecal-incontinence",
+      "pmid": "21441765",
+      "doi": "10.3810/hp.2011.02.380",
+      "citation": "Leung FW, Rao SSC. Approach to fecal incontinence and constipation in older hospitalized patients. Hosp Pract (1995). 2011;39(1):97-104. PMID 21441765. doi:10.3810/hp.2011.02.380.",
+      "publicationGuard": "Require independently documented anorectal stricture by endoscopic or radiographic assessment, documented fecal incontinence by validated assessment compatible in chronology, and specialist review."
+    }
+  ],
+  "evidenceAndPublicationState": {
+    "primaryKnowledgeBaseRecordsRemainDraft": true,
+    "suggestionsAreAssociationOnly": true,
+    "clinicalReferencesRemainUnverified": true,
+    "qualifiedHumanCitationReviewRequiredBeforePromotion": true,
+    "registryHashesUseRepositoryCanonicalization": true
+  },
+  "aggregateRatchet": {
+    "relationships": "328 -> 333",
+    "liveSourceReferenceUses": "336 -> 341",
+    "verifiedLiveUses": "256 unchanged",
+    "pendingLiveUses": "80 -> 85",
+    "clinicalUses": "331 -> 336",
+    "explicitPublicationGuards": "234 -> 259 cumulative (254 -> 259 this batch)",
+    "sourceEntitiesIncludingLineage": "319 -> 324 (all five citations were new source entities)"
+  },
+  "identityScopeNotes": [
+    "ankle-strain carries a FINAL-CLOSE-PROPOSITION-MISMATCH resolution (prior knee/flatfoot claims were withdrawn); the new edge is strictly same-ankle degeneration backed by International Ankle Consortium evidence, and both withdrawn-suggestion notes remain in force.",
+    "anosmia was deliberately left unmapped: its FINAL-CLOSE-PROPOSITION-MISMATCH resolution rests on the withdrawal of a depression meta-analysis whose objective-olfactory-impairment finding did not survive publication-bias adjustment.",
+    "anhedonia remains deferred as a transdiagnostic symptom rather than a stand-alone condition.",
+    "acrocyanosis, ankyloglossia, amputation-of-thumb-fingers-toes, and ankle-disarticulation were deferred: no credible condition-specific target or evidence within scope.",
+    "ankle-strain -> osteoarthritis and ankylosis -> osteoarthritis passed the rule-11 check: both are new carriers of a target already carried by distinct primaries, and no narrower identity duplicates these edges."
+  ],
+  "safetyBoundary": "These records are evidence-navigation aids only. They do not diagnose a condition, establish a VA medical nexus, determine service connection, or replace qualified clinical and accredited-representative review. Pending citation state is intentionally fail-closed."
+}

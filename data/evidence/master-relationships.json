@@ -6,8 +6,8 @@
    "installedFrom": "Master Registry Discrepancy Resolution 2026",
    "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
    "counts": {
-      "relationships": 328,
-      "explicitPublicationGuards": 254,
+      "relationships": 333,
+      "explicitPublicationGuards": 259,
       "legacyRationaleBoundaries": 74
    },
    "relationships": [
@@ -10742,8 +10742,173 @@
          "sourceReferenceCount": 1,
          "pathwayIntelligencePresent": false,
          "suggestionObjectHash": "7a3327975fc158f252d86ebf3697fb7906b8f262419b9e578afda94a7ea3e7f1"
+      },
+      {
+         "relationshipId": "rel-ankle-strain-to-osteoarthritis",
+         "primaryId": "ankle-strain",
+         "targetId": "osteoarthritis",
+         "direction": "ankle-strain -> osteoarthritis",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-32-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded same-joint degenerative association. The International Ankle Consortium evidence review associates recurrent lateral ankle sprains and chronic ankle instability with increasing rates of post-traumatic ankle osteoarthritis in the injured ankle, but the primary diagnosis alone does not establish osteoarthritis in every person or determine an individual's degenerative course. Require independently documented ankle sprain with documented chronic instability or recurrent injury, radiographically documented ipsilateral ankle osteoarthritis compatible in chronology, and orthopedic review. Preserve prior ankle fracture, talar osteochondral lesion, malalignment, inflammatory arthropathy, and other competing causes of ankle degeneration."
+         },
+         "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded same-joint degenerative association. The International Ankle Consortium evidence review associates recurrent lateral ankle sprains and chronic ankle instability with increasing rates of post-traumatic ankle osteoarthritis in the injured ankle, but the primary diagnosis alone does not establish osteoarthritis in every person or determine an individual's degenerative course. Require independently documented ankle sprain with documented chronic instability or recurrent injury, radiographically documented ipsilateral ankle osteoarthritis compatible in chronology, and orthopedic review. Preserve prior ankle fracture, talar osteochondral lesion, malalignment, inflammatory arthropathy, and other competing causes of ankle degeneration.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented ankle sprain with documented chronic instability or recurrent injury, radiographically documented ipsilateral ankle osteoarthritis compatible in chronology, and orthopedic review.",
+            "boundarySource": "approved-me-32-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of ankle sprain injury with recurrent episodes or chronic instability",
+            "Radiographic documentation of ipsilateral ankle osteoarthritis with compatible chronology",
+            "Assessment of prior fracture, osteochondral lesion, and malalignment",
+            "Assessment of inflammatory arthropathy and other degenerative alternatives",
+            "Orthopedic assessment distinguishing sprain-related degeneration from other causes"
+         ],
+         "sourceIds": [
+            "pmid-27259753"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "2df35079372b5dd7379024db5fded47fde76cfea4205f8f7068ac0bd06fc2c22"
+      },
+      {
+         "relationshipId": "rel-ankylosis-to-osteoarthritis",
+         "primaryId": "ankylosis",
+         "targetId": "osteoarthritis",
+         "direction": "ankylosis -> osteoarthritis",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-32-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded adjacent-joint degenerative association. Joint ankylosis alters segmental motion and load transfer, and post-traumatic ankle-degeneration literature documents progressive arthritic change in and around stiffened or fused joints, but the primary diagnosis alone does not establish adjacent-segment osteoarthritis in every person or determine an individual's degenerative course. Require independently documented ankylosis of the affected joint by clinical and imaging assessment, radiographically documented adjacent or ipsilateral-segment osteoarthritis compatible in chronology, and orthopedic review. Preserve prior fracture, inflammatory arthropathy, surgical fusion, infection, and primary degenerative disease as competing causes."
+         },
+         "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded adjacent-joint degenerative association. Joint ankylosis alters segmental motion and load transfer, and post-traumatic ankle-degeneration literature documents progressive arthritic change in and around stiffened or fused joints, but the primary diagnosis alone does not establish adjacent-segment osteoarthritis in every person or determine an individual's degenerative course. Require independently documented ankylosis of the affected joint by clinical and imaging assessment, radiographically documented adjacent or ipsilateral-segment osteoarthritis compatible in chronology, and orthopedic review. Preserve prior fracture, inflammatory arthropathy, surgical fusion, infection, and primary degenerative disease as competing causes.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented ankylosis of the affected joint by clinical and imaging assessment, radiographically documented adjacent or ipsilateral-segment osteoarthritis compatible in chronology, and orthopedic review.",
+            "boundarySource": "approved-me-32-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of the ankylosed joint by clinical and imaging assessment",
+            "Radiographic documentation of adjacent-segment or ipsilateral osteoarthritis with compatible chronology",
+            "Assessment of prior fracture, fusion surgery, and infection history",
+            "Assessment of inflammatory arthropathy and primary degenerative alternatives",
+            "Orthopedic assessment distinguishing ankylosis-related degeneration from other causes"
+         ],
+         "sourceIds": [
+            "pmid-31925464"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "39e9e9469118c13e9fd1c144484d83004920c9317559be75c320172a12365f9a"
+      },
+      {
+         "relationshipId": "rel-anorgasmia-to-depressive-disorder",
+         "primaryId": "anorgasmia",
+         "targetId": "depressive-disorder",
+         "direction": "anorgasmia -> depressive-disorder",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-32-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded psychiatric-comorbidity association. Clinical review evidence documents that sexual functioning, including orgasmic capacity, is generally impaired during depression, and that anorgasmia and depression co-occur and interact bidirectionally, but the primary diagnosis alone does not establish a depressive disorder in every person or determine an individual's psychiatric course. Require independently documented anorgasmia by sexual-medicine assessment, a diagnosed depressive disorder by structured psychiatric evaluation compatible in chronology, and mental-health review. Preserve medication effects, particularly serotonergic antidepressants, endocrine disorders, chronic disease, pelvic pathology, and relationship or psychological factors as competing causes."
+         },
+         "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded psychiatric-comorbidity association. Clinical review evidence documents that sexual functioning, including orgasmic capacity, is generally impaired during depression, and that anorgasmia and depression co-occur and interact bidirectionally, but the primary diagnosis alone does not establish a depressive disorder in every person or determine an individual's psychiatric course. Require independently documented anorgasmia by sexual-medicine assessment, a diagnosed depressive disorder by structured psychiatric evaluation compatible in chronology, and mental-health review. Preserve medication effects, particularly serotonergic antidepressants, endocrine disorders, chronic disease, pelvic pathology, and relationship or psychological factors as competing causes.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented anorgasmia by sexual-medicine assessment, a diagnosed depressive disorder by structured psychiatric evaluation compatible in chronology, and mental-health review.",
+            "boundarySource": "approved-me-32-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of anorgasmia by sexual-medicine assessment",
+            "Diagnosed depressive disorder by structured psychiatric evaluation with compatible chronology",
+            "Medication reconciliation including serotonergic agent exposure",
+            "Assessment of endocrine, chronic-disease, and pelvic-pathology alternatives",
+            "Mental-health assessment distinguishing depression-related sexual dysfunction from other causes"
+         ],
+         "sourceIds": [
+            "pmid-11353583"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "18c7d489183408f7c8f39dda7a7897695e91516f1f2853d4246759e984f7d4aa"
+      },
+      {
+         "relationshipId": "rel-anterior-cord-syndrome-to-urinary-incontinence",
+         "primaryId": "anterior-cord-syndrome",
+         "targetId": "urinary-incontinence",
+         "direction": "anterior-cord-syndrome -> urinary-incontinence",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-32-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded neurogenic-bladder association. Anterior cord syndrome from spinal cord infarction produces corticospinal and spinothalamic tract injury below the lesion, and spinal-cord-infarction clinical literature documents neurogenic bladder with urinary incontinence among the disabling complications of the resulting paraplegia, but the primary diagnosis alone does not establish persistent incontinence in every person or determine an individual's recovery course. Require independently documented anterior cord syndrome by imaging and clinical examination, documented urinary incontinence by urodynamic or validated assessment compatible in chronology, and specialist review. Preserve pre-existing urologic disease, diabetes, prostate pathology in men, medication effects, and other competing causes of incontinence."
+         },
+         "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded neurogenic-bladder association. Anterior cord syndrome from spinal cord infarction produces corticospinal and spinothalamic tract injury below the lesion, and spinal-cord-infarction clinical literature documents neurogenic bladder with urinary incontinence among the disabling complications of the resulting paraplegia, but the primary diagnosis alone does not establish persistent incontinence in every person or determine an individual's recovery course. Require independently documented anterior cord syndrome by imaging and clinical examination, documented urinary incontinence by urodynamic or validated assessment compatible in chronology, and specialist review. Preserve pre-existing urologic disease, diabetes, prostate pathology in men, medication effects, and other competing causes of incontinence.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented anterior cord syndrome by imaging and clinical examination, documented urinary incontinence by urodynamic or validated assessment compatible in chronology, and specialist review.",
+            "boundarySource": "approved-me-32-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of anterior cord syndrome by MRI and neurologic examination",
+            "Documented urinary incontinence by urodynamic study or validated assessment with chronology",
+            "Bladder-management and recovery-course records",
+            "Assessment of pre-existing urologic disease, diabetes, prostate pathology, and medications",
+            "Specialist assessment distinguishing cord-injury-related incontinence from other causes"
+         ],
+         "sourceIds": [
+            "pmid-35835550"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "66a323ae45b067ab42a1b267bbbe1c40148000aad47f6b73e08d2633e7adb71b"
+      },
+      {
+         "relationshipId": "rel-anorectal-stricture-to-fecal-incontinence",
+         "primaryId": "anorectal-stricture",
+         "targetId": "fecal-incontinence",
+         "direction": "anorectal-stricture -> fecal-incontinence",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-32-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded overflow-incontinence association. An anorectal stricture obstructs stool passage and promotes fecal impaction with overflow (paradoxical) incontinence, a mechanism documented in the anorectal-disorder and fecal-incontinence clinical literature, but the primary diagnosis alone does not establish incontinence in every person or determine an individual's course. Require independently documented anorectal stricture by endoscopic or radiographic assessment, documented fecal incontinence by validated assessment compatible in chronology, and specialist review. Preserve sphincter injury, obstetric trauma, prior anorectal surgery, radiation, neurologic disease, and diarrhea from other causes as competing etiologies."
+         },
+         "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded overflow-incontinence association. An anorectal stricture obstructs stool passage and promotes fecal impaction with overflow (paradoxical) incontinence, a mechanism documented in the anorectal-disorder and fecal-incontinence clinical literature, but the primary diagnosis alone does not establish incontinence in every person or determine an individual's course. Require independently documented anorectal stricture by endoscopic or radiographic assessment, documented fecal incontinence by validated assessment compatible in chronology, and specialist review. Preserve sphincter injury, obstetric trauma, prior anorectal surgery, radiation, neurologic disease, and diarrhea from other causes as competing etiologies.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented anorectal stricture by endoscopic or radiographic assessment, documented fecal incontinence by validated assessment compatible in chronology, and specialist review.",
+            "boundarySource": "approved-me-32-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of the anorectal stricture by endoscopy or imaging",
+            "Documented fecal incontinence by validated assessment with compatible chronology",
+            "Impaction and overflow-mechanism assessment including digital rectal examination",
+            "Assessment of sphincter integrity, obstetric and surgical history, and radiation exposure",
+            "Specialist assessment distinguishing stricture-related overflow incontinence from other causes"
+         ],
+         "sourceIds": [
+            "pmid-21441765"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "dc19150e3e4c3071d946a21ba2b74e2d9f6fdd82dbfe03a6904a2602e19368d2"
       }
    ],
-   "lastUpdatedBy": "Mapping Expansion Batch ME-31",
-   "currentState": "ME31-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+   "lastUpdatedBy": "Mapping Expansion Batch ME-32",
+   "currentState": "ME32-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

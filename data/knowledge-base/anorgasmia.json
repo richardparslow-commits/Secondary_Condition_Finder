@@ -3,7 +3,54 @@
   "draft": true,
   "todo": [
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "ME-32: a single bounded psychiatric-comorbidity association has been authored from sexual-dysfunction and depression clinical literature; the draft-safe association stands until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded psychiatric-comorbidity association. Clinical review evidence documents that sexual functioning, including orgasmic capacity, is generally impaired during depression, and that anorgasmia and depression co-occur and interact bidirectionally, but the primary diagnosis alone does not establish a depressive disorder in every person or determine an individual's psychiatric course. Require independently documented anorgasmia by sexual-medicine assessment, a diagnosed depressive disorder by structured psychiatric evaluation compatible in chronology, and mental-health review. Preserve medication effects, particularly serotonergic antidepressants, endocrine disorders, chronic disease, pelvic pathology, and relationship or psychological factors as competing causes.",
+      "evidenceGaps": [
+        "Independent documentation of anorgasmia by sexual-medicine assessment",
+        "Diagnosed depressive disorder by structured psychiatric evaluation with compatible chronology",
+        "Medication reconciliation including serotonergic agent exposure",
+        "Assessment of endocrine, chronic-disease, and pelvic-pathology alternatives",
+        "Mental-health assessment distinguishing depression-related sexual dysfunction from other causes"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Seidman SN, Roose SP. Sexual dysfunction and depression. Curr Psychiatry Rep. 2001;3(3):202-208. PMID 11353583. doi:10.1007/s11920-001-0053-7.",
+          "note": "Clinical review documenting that sexual functioning is generally impaired during depression and reviewing the assessment of sexual dysfunction in depressed individuals. It supports a bounded disease-association proposition and clinical evaluation, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11353583/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 11353583; sexual-functioning impairment during depression"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Sexual functioning including orgasmic response is documented to be impaired during depression, but review evidence does not establish an individual medical nexus without documentation of both conditions, compatible chronology, medication reconciliation, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this association evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Depressive illness is hypothesized to impair sexual functioning through serotonergic and dopaminergic dysregulation, diminished libido, and psychosocial burden, but the individual pathway must be established from psychiatric evaluation, medication reconciliation, and specialist assessment.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Impaired sexual functioning during depression is documented in clinical review evidence, but that evidence does not establish that anorgasmia caused or aggravated a depressive disorder in every individual, and the relationship is bidirectional with medication confounding; both diagnoses, chronology, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Documented anorgasmia and depressive disorder; chronology and temporal sequence; medication reconciliation; endocrine, chronic-disease, and psychosocial alternatives; specialist assessment of the individual relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Serotonergic antidepressant or other medication-induced orgasmic dysfunction",
+          "Endocrine disorders including hypogonadism and thyroid disease",
+          "Primary relationship, psychological, or pelvic-pathology causes of sexual dysfunction"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

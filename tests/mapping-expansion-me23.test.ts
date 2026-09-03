@@ -92,11 +92,11 @@ describe("Mapping Expansion ME-23 local implementation", () => {
     const relationships = load<RelationshipRegistry>(path.join(ROOT, "data/evidence/master-relationships.json"));
     const sources = load<SourceRegistry>(path.join(ROOT, "data/evidence/master-sources.json"));
     expect(relationships.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
-    expect(relationships.currentState).toBe("ME31-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
-    expect(relationships.counts).toEqual({ relationships: 328, explicitPublicationGuards: 254, legacyRationaleBoundaries: 74 });
+    expect(relationships.currentState).toBe("ME32-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(relationships.counts).toEqual({ relationships: 333, explicitPublicationGuards: 259, legacyRationaleBoundaries: 74 });
     expect(sources.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
-    expect(sources.currentState).toBe("ME31-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 336, pendingVerificationSourceEntities: 77, totalSourceEntitiesIncludingLineage: 319 });
+    expect(sources.currentState).toBe("ME32-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 341, pendingVerificationSourceEntities: 82, totalSourceEntitiesIncludingLineage: 324 });
     for (const row of rows) {
       const relationship = relationships.relationships.find((item) => item.relationshipId === `rel-${row.primaryId}-to-${row.targetId}`);
       expect(relationship?.primaryPublicationState).toBe("draft");
@@ -112,11 +112,11 @@ describe("Mapping Expansion ME-23 local implementation", () => {
     const mappings = files.map((file) => load<Mapping>(path.join(ROOT, "data/knowledge-base", file)));
     const references = mappings.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences));
     expect(files).toHaveLength(813);
-    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(328);
+    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(333);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
-    expect(mappings.filter((mapping) => mapping.draft === true && mapping.suggestions.length === 1)).toHaveLength(99);
-expect(references).toHaveLength(336);
+    expect(mappings.filter((mapping) => mapping.draft === true && mapping.suggestions.length === 1)).toHaveLength(104);
+expect(references).toHaveLength(341);
     expect(references.filter((reference) => reference.verified === true)).toHaveLength(256);
-expect(references.filter((reference) => reference.verified === false)).toHaveLength(80);
+expect(references.filter((reference) => reference.verified === false)).toHaveLength(85);
   });
 });
