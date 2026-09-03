@@ -1,0 +1,75 @@
+{
+  "batch": "ME-30",
+  "batchDate": "2026-09-03",
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "relationships": [
+    {
+      "relationshipId": "rel-alice-in-wonderland-syndrome-to-migraine-headaches",
+      "primaryId": "alice-in-wonderland-syndrome",
+      "targetId": "migraine-headaches",
+      "pmid": "42065956",
+      "doi": "10.3928/19382359-20260304-02",
+      "citation": "Bandatmakur ASM, Sivaswamy L. Migraine Variants and Precursors in Childhood: Clinical Features, Diagnostic Challenges, and Management Approaches. Pediatr Ann. 2026;55(5):e195-e200. PMID 42065956. doi:10.3928/19382359-20260304-02.",
+      "publicationGuard": "Require independently documented AIWS episodes with characteristic visual distortions, documented migraine headache meeting ICHD criteria compatible in chronology, and specialist neurologic review."
+    },
+    {
+      "relationshipId": "rel-agranulocytosis-to-cellulitis",
+      "primaryId": "agranulocytosis",
+      "targetId": "cellulitis",
+      "pmid": "28823525",
+      "doi": "10.1016/j.ejim.2017.08.018",
+      "citation": "Andrès E, Mourot-Cottet R, Maloisel F, Vogel T, Tebacher M, Gottenberg JE. History and outcome of febrile neutropenia related to non-chemotherapy drugs: A retrospective study of the Strasbourg's agranulocytosis cohort. Eur J Intern Med. 2017;46:e13-e14. PMID 28823525. doi:10.1016/j.ejim.2017.08.018.",
+      "publicationGuard": "Require independently documented agranulocytosis with absolute neutrophil counts in the agranulocytosis range, microbiologically or clinically documented cellulitis compatible in chronology, and specialist review."
+    },
+    {
+      "relationshipId": "rel-als-to-dysphagia",
+      "primaryId": "als",
+      "targetId": "dysphagia",
+      "pmid": "41744126",
+      "doi": "10.1002/mus.70188",
+      "citation": "Yang Q, Wu H, Huang X, Xie M, Shan Y, Dou Z, Li Y, Wen H, Li C. Prevalence and Risk Factors of Dysphagia in Amyotrophic Lateral Sclerosis: A Retrospective Study Using the Nationwide Inpatient Sample Database. Muscle Nerve. 2026;73(5):875-881. PMID 41744126. doi:10.1002/mus.70188.",
+      "publicationGuard": "Require independently documented ALS with bulbar or generalized involvement, objectively documented dysphagia by validated instrumental or non-instrumental assessment compatible in chronology, and specialist review."
+    },
+    {
+      "relationshipId": "rel-alzheimer-s-disease-to-insomnia",
+      "primaryId": "alzheimer-s-disease",
+      "targetId": "insomnia",
+      "pmid": "41985272",
+      "doi": "10.1016/j.smrv.2026.102289",
+      "citation": "Zhang Y, Ren R, Feng X, Wang M, Huang J, Shi J, Lu L, Sanford LD, Vitiello MV, Tang X. Sleep abnormalities across different clinical stages of Alzheimer's disease: A systematic review and network meta-analysis. Sleep Med Rev. 2026;88:102289. PMID 41985272. doi:10.1016/j.smrv.2026.102289.",
+      "publicationGuard": "Require independently documented Alzheimer disease, objectively documented insomnia disorder by validated sleep assessment compatible in chronology, and specialist review."
+    },
+    {
+      "relationshipId": "rel-amputation-of-arm-to-phantom-limb-pain",
+      "primaryId": "amputation-of-arm",
+      "targetId": "phantom-limb-pain",
+      "pmid": "34583023",
+      "doi": "10.1016/j.jpain.2021.09.003",
+      "citation": "Diers M, Krumm B, Fuchs X. The Prevalence and Characteristics of Phantom Limb Pain and Non-Painful Phantom Phenomena in a Nationwide Survey of 3,374 Unilateral Limb Amputees. J Pain. 2022;23(3):411-423. PMID 34583023. doi:10.1016/j.jpain.2021.09.003.",
+      "publicationGuard": "Require independently documented upper-limb amputation, documented phantom limb pain by validated pain assessment compatible in chronology, and specialist review."
+    }
+  ],
+  "evidenceAndPublicationState": {
+    "primaryKnowledgeBaseRecordsRemainDraft": true,
+    "suggestionsAreAssociationOnly": true,
+    "clinicalReferencesRemainUnverified": true,
+    "qualifiedHumanCitationReviewRequiredBeforePromotion": true,
+    "registryHashesUseRepositoryCanonicalization": true
+  },
+  "aggregateRatchet": {
+    "relationships": "318 -> 323",
+    "liveSourceReferenceUses": "326 -> 331",
+    "verifiedLiveUses": "256 unchanged",
+    "pendingLiveUses": "70 -> 75",
+    "clinicalUses": "321 -> 326",
+    "explicitPublicationGuards": "234 -> 249 cumulative (244 -> 249 this batch)",
+    "sourceEntitiesIncludingLineage": "312 -> 317 (all five citations were new source entities)"
+  },
+  "identityScopeNotes": [
+    "adjustment-disorder was deliberately left unmapped: it carries a FINAL-CLOSE-DIRECTION master resolution after its earlier GERD suggestion was withdrawn for non-condition-specific psychosocial evidence, and the defensible review evidence for a depression progression edge is of that same broad category. The closure remains in force pending genuinely adjustment-disorder-specific evidence.",
+    "adjustment-disorders (plural synonym identity) stays empty to avoid duplicating the singular identity.",
+    "acquired-syndactyly and acrocyanosis were deferred: no defensible condition-specific target exists among current identities.",
+    "amputation-of-arm -> phantom-limb-pain passed the rule-11 duplicate check: no existing identity carries a phantom-limb-pain suggestion."
+  ],
+  "safetyBoundary": "These records are evidence-navigation aids only. They do not diagnose a condition, establish a VA medical nexus, determine service connection, or replace qualified clinical and accredited-representative review. Pending citation state is intentionally fail-closed."
+}
