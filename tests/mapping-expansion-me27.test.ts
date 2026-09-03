@@ -64,14 +64,14 @@ describe("Mapping Expansion Batch ME-27", () => {
   });
 
   it("ratchets authoritative registry totals to ME-27", () => {
-    expect(relationships.counts).toEqual({ relationships: 308, explicitPublicationGuards: 234, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(308);
+    expect(relationships.counts).toEqual({ relationships: 313, explicitPublicationGuards: 239, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(313);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 316,
-      pendingVerificationSourceEntities: 60,
-      pendingClinicalSourceEntities: 60,
-      totalSourceEntitiesIncludingLineage: 302,
+      liveSourceReferenceUses: 321,
+      pendingVerificationSourceEntities: 65,
+      pendingClinicalSourceEntities: 65,
+      totalSourceEntitiesIncludingLineage: 307,
     });
-    expect(sources.sources).toHaveLength(302);
+    expect(sources.sources).toHaveLength(307);
   });
 });

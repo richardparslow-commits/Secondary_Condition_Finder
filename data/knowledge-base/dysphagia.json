@@ -5,5 +5,51 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "malnutrition-residuals",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-28 adds this relationship only as a bounded dysphagia-nutrition association. Dysphagia can interfere with adequate oral intake and is clinically relevant to malnutrition risk, but the symptom or diagnosis alone does not establish malnutrition in every person or determine its cause. Require independently documented dysphagia and malnutrition or nutritional deficiency, objective intake and weight data, compatible chronology, and nutrition and swallowing-specialist review. Preserve malignancy, neurologic disease, gastrointestinal disease, malabsorption, depression, social access, medication effects, and other causes of inadequate nutrition.",
+      "evidenceGaps": [
+        "Independent documentation of dysphagia and a defined malnutrition or nutritional-deficiency phenotype",
+        "Swallowing evaluation, dietary intake, weight trajectory, body-composition or laboratory findings, and functional impact",
+        "Chronology of dysphagia, reduced intake, weight loss, treatment modifications, and nutritional intervention",
+        "Assessment of neurologic, structural gastrointestinal, malignant, malabsorptive, psychiatric, social, medication, and systemic contributors",
+        "Speech-language pathology and nutrition assessment distinguishing dysphagia-related intake limitation from other causes"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Ueshima J, Shimizu A, Maeda K, et al. Nutritional Management in Adult Patients With Dysphagia: Position Paper From Japanese Working Group on Integrated Nutrition for Dysphagic People. J Am Med Dir Assoc. 2022. PMID 35985419. doi:10.1016/j.jamda.2022.07.009.",
+          "note": "Position paper addressing nutritional management and the relationship between dysphagia and malnutrition risk. It supports focused assessment, not automatic individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35985419/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 35985419; position-paper scope on dysphagia, intake, and nutrition"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Dysphagia is clinically associated with impaired intake and malnutrition risk, but an individual relationship requires documented nutritional impairment, objective intake and weight findings, chronology, and assessment of competing causes.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this position paper; the mapping is not an individual nutrition or swallowing opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Swallowing impairment may reduce safe or sufficient oral intake and alter the need for texture modification or supplemental nutrition, but the degree and clinical significance of that pathway must be demonstrated in the individual's records.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Dysphagia may coexist with inadequate intake and malnutrition, but the position paper does not establish that dysphagia caused or aggravated malnutrition in every individual; objective nutrition data, chronology, interventions, and competing causes require case-specific review.",
+        "evidenceGaps": "Independent diagnoses; swallow-study and intake findings; weight and nutritional trajectory; chronology; assessment of neurologic, structural, malignant, malabsorptive, psychiatric, social, medication, and systemic alternatives; specialist review",
+        "alternativeEtiologiesToRuleOut": [
+          "Malignancy, neurologic disease, gastrointestinal disease, malabsorption, or chronic infection",
+          "Depression, cognitive impairment, medication effects, food insecurity, or inability to obtain adequate nutrition",
+          "Other systemic illness, increased metabolic demand, or unrelated nutritional deficiency"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

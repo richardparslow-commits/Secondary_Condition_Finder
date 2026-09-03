@@ -310,7 +310,8 @@ Mapping Expansion ME-22 (2026-09-02) added five additional draft-safe relationsh
 - Renamed the ambiguous `aneurysms` umbrella to `peripheral-aneurysm` (keeping `aortic-aneurysm` as its own identity) and removed junk parenthetical aliases (e.g., bare `upper`/`lower`/`all joints`/`plantar`/`Type 1`) plus `Gulf War` duplication from non-umbrella identities.
 - Governance maintained: the full collision scan (duplicate names, alias-alias, alias-vs-name/id, id-vs-name) runs clean; `kb:validate`, `audit:me-compliance`, `audit-master-registry`, typecheck, lint, and the full Vitest suite (now covering the 813-condition state) all pass; the master-resolution current-state contract and the 139-published/674-draft publication-state pins were updated to the new totals.
 
-## Causal Relational Graph (CRG) Migration Strategy
+Mapping Expansion ME-28 (2026-09-02) added five draft-safe relationships over the Wave-8 identities: `scleroderma -> interstitial-lung-disease`, `hypertrophic-obstructive-cardiomyopathy -> congestive-heart-failure`, `superior-semicircular-canal-dehiscence -> conductive-hearing-loss`, `dysphagia -> malnutrition-residuals`, and `mixed-connective-tissue-disease -> pulmonary-hypertension`. Each remains `ASSOCIATION_ONLY`, `NOT_ESTABLISHED`, and pending qualified-human citation verification; no primary publication state changed.
+
 
 **Status: implemented (breaking migration).** The knowledge base was previously a ranked *association registry with a qualitative `prevalence` label*. Under 38 CFR § 3.310 a secondary condition must be either *caused by* or *aggravated by* the service-connected primary, so the associative `prevalence` model was deprecated and removed. Every suggestion now carries a mandatory CRG trio, enforced by the Zod schema:
 

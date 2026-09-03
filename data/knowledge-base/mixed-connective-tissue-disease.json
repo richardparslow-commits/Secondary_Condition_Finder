@@ -5,5 +5,51 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review immunologic, hematologic, infectious, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "pulmonary-hypertension",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-28 adds this relationship only as a bounded mixed-connective-tissue-disease pulmonary-hypertension association. Pulmonary arterial hypertension is reported in mixed connective tissue disease, but the primary diagnosis alone does not establish pulmonary hypertension in every person, its subtype, or an individual's attribution. Require independently documented mixed connective tissue disease and pulmonary hypertension, appropriate cardiopulmonary testing with hemodynamic confirmation when indicated, compatible chronology, and rheumatology/pulmonology review. Preserve interstitial lung disease, thromboembolic disease, left-heart disease, hypoxic lung disease, sleep apnea, infection, and other causes.",
+      "evidenceGaps": [
+        "Independent documentation of mixed connective tissue disease and separately established pulmonary hypertension with defined subtype",
+        "Echocardiography, pulmonary-function testing, imaging, laboratory evaluation, and right-heart catheterization when clinically indicated",
+        "Chronology of connective-tissue-disease activity, pulmonary symptoms, pulmonary hypertension diagnosis, and treatment",
+        "Assessment of interstitial lung disease, chronic thromboembolic disease, left-heart disease, hypoxia, sleep apnea, and other causes",
+        "Pulmonology and rheumatology assessment distinguishing pulmonary arterial hypertension from other pulmonary-hypertension phenotypes"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Hassan AB, et al. The prevalence of pulmonary arterial hypertension in patients with mixed connective tissue disease: a systematic review and meta-analysis. Clin Exp Rheumatol. 2023. PMID 37497727.",
+          "note": "Systematic review and meta-analysis addressing pulmonary arterial hypertension prevalence in mixed connective tissue disease. It supports a bounded population-level association, not automatic individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37497727/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 37497727; systematic-review scope and adult mixed-connective-tissue-disease PAH prevalence"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pulmonary arterial hypertension is reported among people with mixed connective tissue disease, but an individual relationship requires confirmed diagnoses, pulmonary-hypertension subtype, objective testing, chronology, and competing-etiology review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by prevalence evidence; the mapping is not an individual pulmonary-hypertension opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Mixed connective tissue disease may be accompanied by pulmonary vascular or interstitial lung involvement, but the relevant pathway and pulmonary-hypertension subtype must be demonstrated in the individual rather than inferred from the connective-tissue-disease label.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Pulmonary arterial hypertension is a reported complication or comorbidity in mixed connective tissue disease, but prevalence evidence does not establish that the disease caused or aggravated pulmonary hypertension in every individual; subtype, hemodynamics, chronology, treatment, and competing causes require case-specific review.",
+        "evidenceGaps": "Independent diagnoses and pulmonary-hypertension subtype; objective cardiopulmonary testing; chronology; assessment of ILD, thromboembolic, left-heart, hypoxic, sleep-related, infectious, and other causes; specialist opinion",
+        "alternativeEtiologiesToRuleOut": [
+          "Interstitial lung disease, chronic thromboembolic disease, hypoxic lung disease, or sleep apnea",
+          "Left-heart disease, valvular disease, congenital heart disease, or another cardiopulmonary disorder",
+          "Medication, infection, vasculitis, idiopathic pulmonary arterial hypertension, or other vascular causes"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

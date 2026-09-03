@@ -5,5 +5,51 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-28 adds this relationship only as a bounded hypertrophic-cardiomyopathy heart-failure association. Hypertrophic cardiomyopathy can present across a spectrum of heart-failure phenotypes, but the primary diagnosis alone does not establish heart failure in every person or determine an individual's attribution. Require independently documented hypertrophic cardiomyopathy and heart failure, objective structural or functional findings, compatible chronology, and cardiology review. Preserve ischemic disease, hypertension, valvular disease, infiltrative disease, myocarditis, arrhythmia-mediated dysfunction, and treatment-related contributors.",
+      "evidenceGaps": [
+        "Independent documentation of hypertrophic obstructive cardiomyopathy and separately established heart failure phenotype",
+        "Echocardiographic or cardiac-MRI findings, ejection fraction, filling pressures, symptoms, and functional limitation",
+        "Chronology of hypertrophic cardiomyopathy, obstruction, remodeling, decompensation, and heart-failure treatment",
+        "Assessment of ischemia, hypertension, valvular disease, infiltrative disease, myocarditis, arrhythmia, and other cardiac causes",
+        "Cardiology assessment distinguishing a hypertrophic-cardiomyopathy phenotype from other causes of heart failure"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Maron BJ, Rowin EJ, Udelson JE, Maron MS. Clinical Spectrum and Management of Heart Failure in Hypertrophic Cardiomyopathy. JACC Heart Fail. 2018;6(5):353-363. PMID 29655822. doi:10.1016/j.jchf.2017.09.011.",
+          "note": "Clinical review describing heart-failure phenotypes in hypertrophic cardiomyopathy. It supports a bounded association and focused evaluation, not automatic individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29655822/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 29655822; review scope and heart-failure spectrum discussion"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Heart-failure phenotypes occur in hypertrophic cardiomyopathy, but clinical review evidence does not establish an individual nexus without objective heart-failure findings, chronology, phenotype, and competing-cause assessment.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this association evidence; the mapping is not an individual cardiology opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Hypertrophic cardiomyopathy may be accompanied by diastolic dysfunction, outflow obstruction, ischemia, atrial remodeling, or later systolic dysfunction, but the operative pathway in an individual must be demonstrated rather than inferred from the diagnosis label.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Heart failure is a recognized clinical spectrum in hypertrophic cardiomyopathy, but the review does not establish that the primary diagnosis caused or aggravated heart failure in every individual; objective cardiac findings, chronology, treatment, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Independent diagnoses; objective cardiac structure and function; heart-failure phenotype and chronology; obstruction, rhythm, ischemia, hypertension, valvular, infiltrative, inflammatory, and treatment assessment; specialist opinion",
+        "alternativeEtiologiesToRuleOut": [
+          "Ischemic heart disease, hypertension, valvular disease, or congenital heart disease",
+          "Tachyarrhythmia-mediated dysfunction, myocarditis, infiltrative disease, or another cardiomyopathy",
+          "Medication, treatment, renal, pulmonary, or other systemic contributors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }
