@@ -1,0 +1,57 @@
+{
+  "id": "allergic-rhinitis",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "asthma",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma. Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of allergic-rhinitis and asthma",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Tohidinik HR, Mallah N, Takkouche B. History of allergic rhinitis and risk of asthma; a systematic review and meta-analysis. World Allergy Organ J. 2019;12(10):100069. PMID 31660100. doi:10.1016/j.waojou.2019.100069.",
+          "note": "Mapping Expansion Batch ME-19 evidence for the bounded allergic-rhinitis to asthma proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31660100/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 31660100; approved ME-19 source; guard: Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma. Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma. Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma. Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone. It is not asserted that the primary caused or aggravated the secondary in any individual case, and this mapping does not, by itself, establish a VA medical nexus.",
+        "evidenceGaps": "Independent documentation of allergic-rhinitis and asthma; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: population-level-association; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone.",
+        "alternativeEtiologiesToRuleOut": [
+          "other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux)",
+          "non-allergic or vasomotor rhinitis",
+          "smoking",
+          "obesity and other cardiometabolic factors",
+          "shared atopic or familial background"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

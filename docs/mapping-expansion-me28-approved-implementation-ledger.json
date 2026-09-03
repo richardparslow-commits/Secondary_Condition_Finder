@@ -1,0 +1,28 @@
+{
+  "batch": "ME-28",
+  "status": "implemented-draft-pending-qualified-human-citation-verification",
+  "mappings": [
+    {"primaryId": "scleroderma", "targetId": "interstitial-lung-disease", "relationshipId": "rel-scleroderma-to-interstitial-lung-disease", "pmid": "32113575", "verified": false},
+    {"primaryId": "hypertrophic-obstructive-cardiomyopathy", "targetId": "congestive-heart-failure", "relationshipId": "rel-hypertrophic-obstructive-cardiomyopathy-to-congestive-heart-failure", "pmid": "29655822", "verified": false},
+    {"primaryId": "superior-semicircular-canal-dehiscence", "targetId": "conductive-hearing-loss", "relationshipId": "rel-superior-semicircular-canal-dehiscence-to-conductive-hearing-loss", "pmid": "15021770", "verified": false},
+    {"primaryId": "dysphagia", "targetId": "malnutrition-residuals", "relationshipId": "rel-dysphagia-to-malnutrition-residuals", "pmid": "35985419", "verified": false},
+    {"primaryId": "mixed-connective-tissue-disease", "targetId": "pulmonary-hypertension", "relationshipId": "rel-mixed-connective-tissue-disease-to-pulmonary-hypertension", "pmid": "37497727", "verified": false}
+  ],
+  "aggregateRatchet": {
+    "relationships": 313,
+    "liveSourceReferenceUses": 321,
+    "verifiedLiveSourceUses": 256,
+    "pendingVerificationLiveSourceUses": 65,
+    "liveClinicalUses": 316,
+    "explicitPublicationGuards": 239,
+    "legacyRationaleBoundaries": 74,
+    "totalSourceEntitiesIncludingLineage": 307
+  },
+  "policy": {
+    "draftOnly": true,
+    "associationOnly": true,
+    "qualifiedHumanCitationReviewRequired": true,
+    "automaticPromotionAuthorized": false,
+    "pathwayIntelligencePresent": false
+  }
+}

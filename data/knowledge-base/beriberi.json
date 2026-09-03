@@ -1,0 +1,58 @@
+{
+  "id": "beriberi",
+  "draft": true,
+  "todo": [
+    "Obtain qualified-human citation verification for the proposed beriberi to congestive-heart-failure association.",
+    "Confirm wet-beriberi phenotype, objective thiamine deficiency or compatible nutritional findings, and independently characterized heart failure before any publication decision."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded wet-beriberi cardiovascular association. Severe thiamine deficiency can produce wet beriberi with high-output cardiac failure, but the cited review does not establish that every heart-failure diagnosis in a person with beriberi has that mechanism. Require documented beriberi with a compatible wet-beriberi or thiamine-deficiency phenotype, independently characterized congestive heart failure, compatible chronology, nutritional and laboratory assessment, and review of ischemic, hypertensive, valvular, toxic, renal, thyroid, cardiomyopathic, and other causes. Do not infer heart failure from beriberi, edema, dyspnea, or thiamine treatment alone.",
+      "evidenceGaps": [
+        "Independent clinical documentation of beriberi and objectively characterized congestive heart failure",
+        "Thiamine status or compatible nutritional history, cardiac output/hemodynamic findings, echocardiography, BNP, and response chronology",
+        "Documentation distinguishing wet beriberi from dry or nonspecific nutritional deficiency",
+        "Assessment of ischemic, hypertensive, valvular, renal, thyroid, toxic, alcohol-related, inflammatory, and other cardiomyopathy causes",
+        "Resolution of publication guard: Require documented wet-beriberi/thiamine-deficiency phenotype, objective heart failure, compatible chronology, and competing-cause review; do not infer heart failure from beriberi alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "DiNicolantonio JJ, Liu J, O'Keefe JH. Thiamine and Cardiovascular Disease: A Literature Review. Prog Cardiovasc Dis. 2018;61(1):27-32. PMID 29360523.",
+          "note": "Mapping Expansion Batch ME-25 clinical review for the bounded beriberi to congestive-heart-failure proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29360523/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 29360523; review describing severe thiamine deficiency, wet beriberi, and congestive heart failure; approved ME-25 guard requires wet-beriberi phenotype and alternative-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited review supports a recognized cardiovascular manifestation of severe thiamine deficiency/wet beriberi, while the individual heart-failure mechanism and competing cardiac causes remain case-specific.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; wet-beriberi phenotype, objective cardiac findings, chronology, and alternative-cause review are required."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Severe thiamine deficiency may impair cardiac energy metabolism and produce vasodilation, high-output physiology, and wet beriberi, but the individual's congestive-heart-failure phenotype and contribution of thiamine deficiency remain hypothesized until documented.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The review describes wet beriberi as a possible cardiovascular consequence of severe thiamine deficiency but does not prove that any particular heart-failure case was caused by beriberi.",
+        "evidenceGaps": "Independent beriberi and heart-failure diagnoses; thiamine/nutritional and hemodynamic findings; chronology; wet-versus-dry phenotype; and evaluation of ischemic, hypertensive, valvular, renal, thyroid, toxic, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "ischemic heart disease",
+          "hypertensive heart disease",
+          "valvular heart disease",
+          "alcohol-related or other toxic cardiomyopathy",
+          "renal or thyroid disease",
+          "inflammatory or infiltrative cardiomyopathy"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

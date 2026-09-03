@@ -2,32 +2,152 @@
   "bodySystem": "Mental Disorders",
   "conditions": [
     {
-      "id": "specific-phobia",
-      "name": "Specific Phobia",
+      "id": "acute-stress-reaction",
+      "name": "Acute stress reaction",
       "aliases": [],
       "bodySystem": "Mental Disorders",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.130",
-          "note": "DC 9403, specific phobia; the same diagnostic code also names social anxiety disorder.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": ["Keep this identity distinct from the existing social-anxiety-disorder catalog entry even though both are named under DC 9403."]
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
-      "id": "dissociative-disorder",
-      "name": "Dissociative Amnesia / Dissociative Identity Disorder",
-      "aliases": ["dissociative amnesia", "dissociative identity disorder"],
+      "id": "adjustment-disorders",
+      "name": "Adjustment disorders",
+      "aliases": [],
       "bodySystem": "Mental Disorders",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.130",
-          "note": "DC 9416, dissociative amnesia and dissociative identity disorder.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": ["The stable roadmap id is broader than the current VA diagnostic-code label. This catalog identity is intentionally scoped to the diagnoses expressly named under DC 9416 rather than every possible dissociative presentation."]
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "anhedonia",
+      "name": "Anhedonia",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "apathy",
+      "name": "Apathy",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "body-dysmorphic-disorder",
+      "name": "Body Dysmorphic Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "General Rating Formula for Mental Disorders; no single diagnosis-specific diagnostic code is assigned by this automated expansion.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "The current § 4.130 diagnostic-code table does not separately name body dysmorphic disorder. Do not borrow DC 9404 solely because DSM-5 groups the diagnosis with obsessive-compulsive and related disorders; qualified review must determine the proper rating treatment for an individual case."
+      ]
+    },
+    {
+      "id": "capgras-syndrome",
+      "name": "Capgras syndrome",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "circadian-rhythm-sleep-wake-phase-disorders",
+      "name": "Circadian Rhythm Sleep-Wake Phase Disorders",
+      "aliases": [
+        "advanced sleep-wake phase disorder",
+        "delayed sleep-wake phase disorder",
+        "irregular sleep-wake rhythm disorder",
+        "non-24-hour sleep-wake disorder",
+        "free-running sleep disorder"
+      ],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cotard-s-syndrome",
+      "name": "Cotard's syndrome",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "delusional-disorder",
+      "name": "Delusional Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "DC 9208, delusional disorder.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
     },
     {
       "id": "depersonalization-derealization-disorder",
@@ -44,9 +164,98 @@
       "reviewNotes": []
     },
     {
+      "id": "dissociative-disorder",
+      "name": "Dissociative Amnesia / Dissociative Identity Disorder",
+      "aliases": [
+        "dissociative amnesia",
+        "dissociative identity disorder"
+      ],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "DC 9416, dissociative amnesia and dissociative identity disorder.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "The stable roadmap id is broader than the current VA diagnostic-code label. This catalog identity is intentionally scoped to the diagnoses expressly named under DC 9416 rather than every possible dissociative presentation."
+      ]
+    },
+    {
+      "id": "excoriation-disorder",
+      "name": "Excoriation disorder",
+      "aliases": [
+        "skin-picking"
+      ],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "exploding-head-syndrome",
+      "name": "Exploding head syndrome",
+      "aliases": [
+        "exploding head"
+      ],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "factitious-disorder",
+      "name": "Factitious disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "fregoli-syndrome",
+      "name": "Fregoli syndrome",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
       "id": "functional-neurological-symptom-disorder",
       "name": "Functional Neurological Symptom Disorder (Conversion Disorder)",
-      "aliases": ["conversion disorder"],
+      "aliases": [
+        "conversion disorder"
+      ],
       "bodySystem": "Mental Disorders",
       "ratingSchedule": [
         {
@@ -55,7 +264,25 @@
           "verified": false
         }
       ],
-      "reviewNotes": ["Catalog placement follows the mental-disorders rating schedule; this does not imply that neurological symptoms should be diagnosed or medically attributed without qualified evaluation."]
+      "reviewNotes": [
+        "Catalog placement follows the mental-disorders rating schedule; this does not imply that neurological symptoms should be diagnosed or medically attributed without qualified evaluation."
+      ]
+    },
+    {
+      "id": "hoarding-disorder",
+      "name": "Hoarding Disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "General Rating Formula for Mental Disorders; no single diagnosis-specific diagnostic code is assigned by this automated expansion.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "The current § 4.130 diagnostic-code table does not separately name hoarding disorder. Do not borrow DC 9404 solely because DSM-5 groups the diagnosis with obsessive-compulsive and related disorders; qualified review must determine the proper rating treatment for an individual case."
+      ]
     },
     {
       "id": "illness-anxiety-disorder",
@@ -72,46 +299,168 @@
       "reviewNotes": []
     },
     {
-      "id": "body-dysmorphic-disorder",
-      "name": "Body Dysmorphic Disorder",
+      "id": "neurocognitive-disorders",
+      "name": "Neurocognitive disorders",
       "aliases": [],
       "bodySystem": "Mental Disorders",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.130",
-          "note": "General Rating Formula for Mental Disorders; no single diagnosis-specific diagnostic code is assigned by this automated expansion.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": ["The current § 4.130 diagnostic-code table does not separately name body dysmorphic disorder. Do not borrow DC 9404 solely because DSM-5 groups the diagnosis with obsessive-compulsive and related disorders; qualified review must determine the proper rating treatment for an individual case."]
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
-      "id": "hoarding-disorder",
-      "name": "Hoarding Disorder",
+      "id": "nightmare-disorder",
+      "name": "Nightmare disorder",
       "aliases": [],
       "bodySystem": "Mental Disorders",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.130",
-          "note": "General Rating Formula for Mental Disorders; no single diagnosis-specific diagnostic code is assigned by this automated expansion.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": ["The current § 4.130 diagnostic-code table does not separately name hoarding disorder. Do not borrow DC 9404 solely because DSM-5 groups the diagnosis with obsessive-compulsive and related disorders; qualified review must determine the proper rating treatment for an individual case."]
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
-      "id": "delusional-disorder",
-      "name": "Delusional Disorder",
+      "id": "pseudobulbar-affect",
+      "name": "Pseudobulbar affect",
+      "aliases": [
+        "emotional incontinence"
+      ],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "selective-mutism",
+      "name": "Selective mutism",
       "aliases": [],
       "bodySystem": "Mental Disorders",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.130",
-          "note": "DC 9208, delusional disorder.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "separation-anxiety-disorder",
+      "name": "Separation anxiety disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "sleep-related-eating-disorder",
+      "name": "Sleep-related eating disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "sleep-terror-disorder",
+      "name": "Sleep terror disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "sleepwalking-disorder",
+      "name": "Sleepwalking disorder",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "specific-phobia",
+      "name": "Specific Phobia",
+      "aliases": [],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "DC 9403, specific phobia; the same diagnostic code also names social anxiety disorder.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Keep this identity distinct from the existing social-anxiety-disorder catalog entry even though both are named under DC 9403."
+      ]
+    },
+    {
+      "id": "trichotillomania",
+      "name": "Trichotillomania",
+      "aliases": [
+        "hair pulling disorder"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     }
   ]
 }

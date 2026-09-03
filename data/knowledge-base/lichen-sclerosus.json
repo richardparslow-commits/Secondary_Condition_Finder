@@ -1,0 +1,58 @@
+{
+  "id": "lichen-sclerosus",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "squamous-cell-carcinoma",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded anogenital malignant-transformation risk proposition. The cited systematic review found an increased risk of squamous-cell carcinoma in patients with anogenital lichen sclerosus, but it does not establish that any individual's carcinoma arose from lichen sclerosus or exclude differentiated vulvar intraepithelial neoplasia, chronic inflammation, human papillomavirus, immunosuppression, smoking, or other cancer risks. Require biopsy-documented anogenital lichen sclerosus, separately established anogenital squamous-cell carcinoma, and compatible chronology. Preserve vulvar or penile site, dysplasia/VIN, HPV status, treatment and surveillance history, age, smoking, immunosuppression, and other skin or mucosal cancer causes. Do not infer carcinoma from lichen-sclerosus appearance, symptoms, or dysplasia alone, and do not generalize this edge to extragenital lichen sclerosus without site-specific evidence.",
+      "evidenceGaps": [
+        "Independent biopsy or specialist documentation of anogenital lichen sclerosus and squamous-cell carcinoma",
+        "Anatomic site, histology, staging, and chronology of the later carcinoma",
+        "Pathology records addressing differentiated vulvar intraepithelial neoplasia or other precursor lesions",
+        "Assessment of HPV, smoking, immunosuppression, treatment, surveillance, and other cancer risk factors",
+        "Resolution of publication guard: Restrict to biopsy-documented anogenital lichen sclerosus and separately established anogenital SCC; do not generalize to extragenital disease."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Spekreijse JJ, Streng B, van der Meijden WI, Verheijen RHM, van Beurden M. The risk of developing squamous cell carcinoma in patients with anogenital lichen sclerosis: A systematic review. Gynecol Oncol. 2020;157(3):671-677. PMID 32089333. doi:10.1016/j.ygyno.2020.02.020.",
+          "note": "Mapping Expansion Batch ME-22 evidence for the bounded anogenital lichen-sclerosus to squamous-cell-carcinoma proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32089333/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 32089333; systematic review of anogenital lichen sclerosis and SCC risk; approved ME-22 guard: restrict to biopsy-documented anogenital disease and separately established anogenital SCC; do not generalize to extragenital lichen sclerosus."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited systematic review reports increased population-level anogenital squamous-cell-carcinoma risk in patients with lichen sclerosus, supporting site-specific cancer surveillance and individual review without proving that lichen sclerosus caused a particular carcinoma.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; site, pathology, chronology, precursor lesions, and competing cancer risks require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "Chronic anogenital inflammation and epithelial injury in lichen sclerosus may be associated with a dysplasia-to-squamous-cell-carcinoma sequence, but transformation is not established for an individual without site-specific pathology, chronology, and review of independent carcinogenic risks.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited review concerns anogenital lichen sclerosus and SCC risk at the population level and does not prove that any individual's carcinoma arose from lichen sclerosus; pathology, site, chronology, and competing cancer risks are required.",
+        "evidenceGaps": "Biopsy-confirmed anogenital phenotype; separate SCC pathology; compatible chronology; precursor-lesion, HPV, smoking, immunosuppression, treatment, and surveillance review; and qualified specialist assessment.",
+        "alternativeEtiologiesToRuleOut": [
+          "differentiated vulvar intraepithelial neoplasia or other precursor lesion",
+          "human papillomavirus infection",
+          "smoking",
+          "immunosuppression",
+          "chronic infection or inflammatory disease other than lichen sclerosus",
+          "age-related and other independent cancer risks"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

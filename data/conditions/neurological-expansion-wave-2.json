@@ -2,74 +2,153 @@
   "bodySystem": "Neurological",
   "conditions": [
     {
-      "id": "radial-neuropathy",
-      "name": "Radial Neuropathy",
-      "aliases": ["radial nerve neuropathy"],
+      "id": "cauda-equina-syndrome",
+      "name": "Cauda Equina Syndrome",
+      "aliases": [
+        "CES"
+      ],
       "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; musculospiral/radial nerve diagnostic codes 8514, 8614, and 8714 address paralysis, neuritis, and neuralgia.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "No single cauda-equina diagnostic code is assigned here; neurologic residuals are evaluated under the affected peripheral nerve criteria as applicable.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "When a spine disorder is part of the documented disability picture, applicable spine criteria may also govern evaluation; catalog identity does not select a rating code.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "No single condition-specific diagnostic code is assigned in the current schedule; evaluation depends on documented neurologic and other residuals rather than the catalog label alone."
+      ]
+    },
+    {
+      "id": "complex-regional-pain-syndrome",
+      "name": "Complex Regional Pain Syndrome",
+      "aliases": [
+        "CRPS",
+        "reflex sympathetic dystrophy",
+        "causalgia"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "No dedicated CRPS diagnostic code is assigned here; neurologic residuals are evaluated under the affected peripheral nerve criteria as applicable.",
+          "verified": false
+        },
+        {
+          "citation": "38 CFR 4.124",
+          "note": "Neuralgia, cranial or peripheral, is rated on the scale for the involved nerve when the documented manifestations meet that framework.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "No single condition-specific diagnostic code is assigned in the current schedule; the applicable evaluation depends on the documented nerve distribution and residual manifestations."
+      ]
+    },
+    {
+      "id": "cranial-nerve-palsy",
+      "name": "Cranial Nerve Palsy",
+      "aliases": [
+        "cranial nerve paralysis"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "No single generic cranial-nerve-palsy code exists. The schedule provides nerve-specific paralysis codes for the fifth, seventh, ninth, tenth, eleventh, and twelfth cranial nerves; lesions of the peripheral portions of the first, second, third, fourth, sixth, and eighth nerves are rated under the organs of special sense.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "No single condition-specific diagnostic code is assigned because the applicable rating depends on which cranial nerve is involved and the documented residuals."
+      ]
+    },
+    {
+      "id": "femoral-neuropathy",
+      "name": "Femoral Neuropathy",
+      "aliases": [
+        "femoral nerve neuropathy"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; anterior crural/femoral nerve diagnostic codes 8526, 8626, and 8726 address paralysis, neuritis, and neuralgia.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
       "id": "median-neuropathy",
       "name": "Median Neuropathy",
-      "aliases": ["median nerve neuropathy"],
+      "aliases": [
+        "median nerve neuropathy"
+      ],
       "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; median nerve diagnostic codes 8515, 8615, and 8715 address paralysis, neuritis, and neuralgia.", "verified": false}],
-      "reviewNotes": []
-    },
-    {
-      "id": "tibial-neuropathy",
-      "name": "Tibial Neuropathy",
-      "aliases": ["tibial nerve neuropathy"],
-      "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; internal popliteal/tibial nerve diagnostic codes 8524, 8624, and 8724 and posterior tibial nerve codes 8525, 8625, and 8725 apply according to lesion location.", "verified": false}],
-      "reviewNotes": ["The current schedule distinguishes the internal popliteal (tibial) nerve from the posterior tibial nerve; the applicable code set depends on the documented lesion location."]
-    },
-    {
-      "id": "femoral-neuropathy",
-      "name": "Femoral Neuropathy",
-      "aliases": ["femoral nerve neuropathy"],
-      "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; anterior crural/femoral nerve diagnostic codes 8526, 8626, and 8726 address paralysis, neuritis, and neuralgia.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; median nerve diagnostic codes 8515, 8615, and 8715 address paralysis, neuritis, and neuralgia.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
       "id": "meralgia-paresthetica",
       "name": "Meralgia Paresthetica",
-      "aliases": ["lateral femoral cutaneous neuropathy"],
+      "aliases": [
+        "lateral femoral cutaneous neuropathy",
+        "lateral femoral cutaneous nerve entrapment"
+      ],
       "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "Schedule of ratings, neurological conditions and convulsive disorders; external cutaneous nerve of the thigh diagnostic codes 8529, 8629, and 8729 address paralysis, neuritis, and neuralgia.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; external cutaneous nerve of the thigh diagnostic codes 8529, 8629, and 8729 address paralysis, neuritis, and neuralgia.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
-      "id": "complex-regional-pain-syndrome",
-      "name": "Complex Regional Pain Syndrome",
-      "aliases": ["CRPS", "reflex sympathetic dystrophy", "causalgia"],
+      "id": "radial-neuropathy",
+      "name": "Radial Neuropathy",
+      "aliases": [
+        "radial nerve neuropathy"
+      ],
       "bodySystem": "Neurological",
       "ratingSchedule": [
-        {"citation": "38 CFR 4.124a", "note": "No dedicated CRPS diagnostic code is assigned here; neurologic residuals are evaluated under the affected peripheral nerve criteria as applicable.", "verified": false},
-        {"citation": "38 CFR 4.124", "note": "Neuralgia, cranial or peripheral, is rated on the scale for the involved nerve when the documented manifestations meet that framework.", "verified": false}
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; musculospiral/radial nerve diagnostic codes 8514, 8614, and 8714 address paralysis, neuritis, and neuralgia.",
+          "verified": false
+        }
       ],
-      "reviewNotes": ["No single condition-specific diagnostic code is assigned in the current schedule; the applicable evaluation depends on the documented nerve distribution and residual manifestations."]
+      "reviewNotes": []
     },
     {
-      "id": "cauda-equina-syndrome",
-      "name": "Cauda Equina Syndrome",
-      "aliases": ["CES"],
+      "id": "tibial-neuropathy",
+      "name": "Tibial Neuropathy",
+      "aliases": [
+        "tibial nerve neuropathy"
+      ],
       "bodySystem": "Neurological",
       "ratingSchedule": [
-        {"citation": "38 CFR 4.124a", "note": "No single cauda-equina diagnostic code is assigned here; neurologic residuals are evaluated under the affected peripheral nerve criteria as applicable.", "verified": false},
-        {"citation": "38 CFR 4.71a", "note": "When a spine disorder is part of the documented disability picture, applicable spine criteria may also govern evaluation; catalog identity does not select a rating code.", "verified": false}
+        {
+          "citation": "38 CFR 4.124a",
+          "note": "Schedule of ratings, neurological conditions and convulsive disorders; internal popliteal/tibial nerve diagnostic codes 8524, 8624, and 8724 and posterior tibial nerve codes 8525, 8625, and 8725 apply according to lesion location.",
+          "verified": false
+        }
       ],
-      "reviewNotes": ["No single condition-specific diagnostic code is assigned in the current schedule; evaluation depends on documented neurologic and other residuals rather than the catalog label alone."]
-    },
-    {
-      "id": "cranial-nerve-palsy",
-      "name": "Cranial Nerve Palsy",
-      "aliases": ["cranial nerve paralysis"],
-      "bodySystem": "Neurological",
-      "ratingSchedule": [{"citation": "38 CFR 4.124a", "note": "No single generic cranial-nerve-palsy code exists. The schedule provides nerve-specific paralysis codes for the fifth, seventh, ninth, tenth, eleventh, and twelfth cranial nerves; lesions of the peripheral portions of the first, second, third, fourth, sixth, and eighth nerves are rated under the organs of special sense.", "verified": false}],
-      "reviewNotes": ["No single condition-specific diagnostic code is assigned because the applicable rating depends on which cranial nerve is involved and the documented residuals."]
+      "reviewNotes": [
+        "The current schedule distinguishes the internal popliteal (tibial) nerve from the posterior tibial nerve; the applicable code set depends on the documented lesion location."
+      ]
     }
   ]
 }

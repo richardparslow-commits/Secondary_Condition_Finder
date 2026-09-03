@@ -1,0 +1,58 @@
+{
+  "id": "aphakia",
+  "draft": true,
+  "todo": [
+    "Obtain qualified-human citation verification for the proposed aphakia to visual-impairment association.",
+    "Confirm the aphakia phenotype, objective visual-acuity or visual-field deficit, chronology, age/developmental context, optical rehabilitation, and alternative ocular explanations before publication."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "visual-impairment",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-27 adds this relationship only as a bounded visual-outcome association. Aphakia, especially congenital or pediatric aphakia, can be associated with reduced visual development or impaired visual outcome, but the diagnosis alone does not establish a particular person's visual impairment or its severity. Require documented aphakia, separately measured compatible visual impairment, relevant laterality and developmental chronology, and review of amblyopia, corneal disease, glaucoma, retinal or optic-nerve disease, refractive error, surgical complications, and optical-rehabilitation history. Do not infer visual impairment from an aphakia label alone.",
+      "evidenceGaps": [
+        "Independent documentation of aphakia and objectively measured visual impairment",
+        "Laterality, age at onset, developmental chronology, visual-acuity/field results, and relevant surgical history",
+        "Assessment of amblyopia, glaucoma, corneal disease, retinal or optic-nerve disease, refractive error, and other ocular contributors",
+        "Documentation of optical correction or rehabilitation and its effect on measured function",
+        "Resolution of publication guard: Require documented aphakia, separately measured compatible visual impairment, relevant laterality/chronology, and competing ocular-cause review; do not infer impairment from aphakia alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Ernst J, et al. Congenital primary aphakia. J AAPOS. 2022;26(1):4.e1-4.e5. PMID 35051625. doi:10.1016/j.jaapos.2021.09.008.",
+          "note": "Mapping Expansion Batch ME-27 case-series evidence for the bounded aphakia visual-outcome proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35051625/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 35051625; congenital primary aphakia case series describing natural history, management, and visual outcomes; approved ME-27 guard requires objective visual impairment and competing ocular-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The congenital aphakia case series supports a relationship between aphakia phenotype and visual outcome, but does not establish a deterministic or individual visual-impairment pathway.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; objective visual testing, developmental chronology, treatment history, and competing ocular diagnoses require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Absence of the crystalline lens can alter optical focus and, in congenital or early-onset cases, visual development; the extent of any resulting functional visual impairment remains phenotype- and treatment-dependent and is hypothesized for an individual until objectively documented.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Aphakia-related visual outcome depends on onset, laterality, developmental factors, ocular comorbidity, and rehabilitation; the source does not prove an individual's visual impairment was caused by aphakia.",
+        "evidenceGaps": "Aphakia and objective visual impairment; laterality and developmental chronology; acuity or visual-field measurements; optical rehabilitation; amblyopia, glaucoma, retinal, optic-nerve, corneal, refractive, surgical, and other ocular contributors.",
+        "alternativeEtiologiesToRuleOut": [
+          "amblyopia or abnormal visual development",
+          "glaucoma",
+          "corneal disease or scarring",
+          "retinal or optic-nerve disease",
+          "uncorrected or complex refractive error",
+          "surgical complications or other ocular disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

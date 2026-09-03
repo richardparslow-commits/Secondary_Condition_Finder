@@ -2,6 +2,921 @@
   "bodySystem": "Musculoskeletal System",
   "conditions": [
     {
+      "id": "achilles-tendinopathy-rupture",
+      "name": "Achilles Tendinopathy / Rupture",
+      "aliases": [
+        "achilles tendinosis",
+        "achilles tendon rupture",
+        "achilles tendinitis"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "acl-injury",
+      "name": "Anterior Cruciate Ligament (ACL) Injury",
+      "aliases": [
+        "ACL tear",
+        "ACL sprain"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5257 addresses sprain and incomplete or complete ligament tears causing persistent knee instability. Other documented residuals may require other knee criteria.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "acquired-syndactyly",
+      "name": "Acquired syndactyly",
+      "aliases": [
+        "syndactyly"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "ankylosis",
+      "name": "Ankylosis",
+      "aliases": [
+        "ankylosis of joint",
+        "joint ankylosis"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "anterior-interosseous-nerve-syndrome",
+      "name": "Anterior interosseous nerve syndrome",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "avascular-necrosis",
+      "name": "Avascular necrosis",
+      "aliases": [
+        "osteonecrosis",
+        "avn"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "baker-s-cyst",
+      "name": "Baker's cyst",
+      "aliases": [
+        "popliteal cyst"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bankart-lesion",
+      "name": "Bankart lesion",
+      "aliases": [
+        "bankart tear"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bicipital-tendinitis",
+      "name": "Bicipital tendinitis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bone-cysts",
+      "name": "Bone cysts",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bone-tumors",
+      "name": "Bone tumors",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "boutonniere-deformity",
+      "name": "Boutonniere deformity",
+      "aliases": [
+        "boutonniere finger"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "camptodactyly",
+      "name": "Camptodactyly",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "charcot-arthropathy",
+      "name": "Charcot Neuropathic Arthropathy",
+      "aliases": [
+        "Charcot arthropathy",
+        "Charcot joint"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5009 includes Charcot neuropathic arthropathy, with the acute phase rated under diagnostic code 5002 and chronic residuals under diagnostic code 5003.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "chondromalacia-patellae",
+      "name": "Chondromalacia patellae",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "clinodactyly",
+      "name": "Clinodactyly",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "contractures",
+      "name": "Contractures",
+      "aliases": [
+        "muscle and joint",
+        "muscle contracture",
+        "joint contracture"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cubital-tunnel-syndrome",
+      "name": "Cubital tunnel syndrome",
+      "aliases": [
+        "ulnar neuropathy at elbow"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "de-quervain-s-tenosynovitis",
+      "name": "De Quervain's tenosynovitis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dupuytren-s-contracture",
+      "name": "Dupuytren's Contracture",
+      "aliases": [
+        "dupuytren diathesis",
+        "dupuytren disease"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "extensor-digitorum-brevis-strain",
+      "name": "Extensor digitorum brevis strain",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "fasciitis",
+      "name": "Fasciitis",
+      "aliases": [
+        "necrotizing fasciitis"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "femoroacetabular-impingement",
+      "name": "Femoroacetabular Impingement",
+      "aliases": [
+        "femoroacetabular impingement syndrome"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "No single condition-specific diagnostic code is assigned here; documented hip or thigh residuals are evaluated under the applicable hip and thigh criteria, including diagnostic codes 5250 through 5255 as appropriate.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "No single condition-specific diagnostic code is assigned in the current schedule; the applicable code depends on the documented hip or thigh residuals."
+      ]
+    },
+    {
+      "id": "flexor-hallucis-longus-tendinitis",
+      "name": "Flexor hallucis longus tendinitis",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "freiberg-s-infraction",
+      "name": "Freiberg's infraction",
+      "aliases": [
+        "freiberg disease",
+        "freiberg infraction"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "gamekeeper-s-thumb",
+      "name": "Gamekeeper's thumb",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "ganglion-cysts",
+      "name": "Ganglion cysts",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "greater-trochanteric-pain-syndrome",
+      "name": "Greater Trochanteric Pain Syndrome",
+      "aliases": [
+        "GTPS"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "No single condition-specific diagnostic code is assigned here; documented hip or thigh residuals are evaluated under the applicable hip and thigh criteria, including diagnostic codes 5250 through 5255 as appropriate.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "No single condition-specific diagnostic code is assigned in the current schedule. This syndrome can overlap clinically with bursitis or tendinopathy, so catalog identity must not be treated as proof of a separate rating or nexus."
+      ]
+    },
+    {
+      "id": "hill-sachs-lesion",
+      "name": "Hill-Sachs lesion",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "hip-labral-tear",
+      "name": "Hip Labral Tear",
+      "aliases": [
+        "acetabular labral tear"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "No single condition-specific diagnostic code is assigned here; documented hip or thigh residuals are evaluated under the applicable hip and thigh criteria, including diagnostic codes 5250 through 5255 as appropriate.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "No single condition-specific diagnostic code is assigned in the current schedule; the applicable code depends on the documented hip or thigh residuals."
+      ]
+    },
+    {
+      "id": "interosseous-muscle-atrophy",
+      "name": "Interosseous muscle atrophy",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "jersey-finger",
+      "name": "Jersey finger",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "joint-replacement-residuals",
+      "name": "Joint replacement residuals",
+      "aliases": [
+        "prosthetic joint residuals",
+        "total joint replacement residuals"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "kienbock-s-disease",
+      "name": "Kienbock's disease",
+      "aliases": [
+        "kienbock disease",
+        "lunatomalacia"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "legg-calve-perthes-disease",
+      "name": "Legg-Calve-Perthes disease",
+      "aliases": [
+        "legg-calve-perthes disease residuals",
+        "perthes disease"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "limitation-of-motion",
+      "name": "Limitation of motion",
+      "aliases": [
+        "loss of motion",
+        "decreased range of motion"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "mallet-finger",
+      "name": "Mallet finger",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "mallet-toes",
+      "name": "Mallet toes",
+      "aliases": [
+        "mallet toe"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "malunion-nonunion-of-fractures",
+      "name": "Malunion / Nonunion of Fractures",
+      "aliases": [
+        "malunion of fracture",
+        "nonunion of fracture",
+        "non-healing fracture"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "morton-s-neuroma",
+      "name": "Morton's neuroma",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "muscle-atrophy",
+      "name": "Muscle atrophy",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "muscle-hernias",
+      "name": "Muscle hernias",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "osgood-schlatter-disease",
+      "name": "Osgood-Schlatter disease",
+      "aliases": [
+        "osgood-schlatter"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "osteopenia",
+      "name": "Osteopenia",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "panner-s-disease",
+      "name": "Panner's disease",
+      "aliases": [
+        "panner disease"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "patellar-instability",
+      "name": "Patellar Instability",
+      "aliases": [
+        "recurrent patellar instability"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5257 includes recurrent patellar instability within other impairment of the knee.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "patellar-subluxation",
+      "name": "Patellar subluxation",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pcl-injury",
+      "name": "Posterior Cruciate Ligament (PCL) Injury",
+      "aliases": [
+        "PCL tear",
+        "PCL sprain"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5257 addresses sprain and incomplete or complete ligament tears causing persistent knee instability. Other documented residuals may require other knee criteria.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "piriformis-syndrome",
+      "name": "Piriformis syndrome",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "plantar-warts",
+      "name": "Plantar warts",
+      "aliases": [
+        "verruca plantaris"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "posterior-tibial-tendon-dysfunction",
+      "name": "Posterior tibial tendon dysfunction",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "preiser-s-disease",
+      "name": "Preiser's disease",
+      "aliases": [
+        "preiser disease"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pronator-teres-syndrome",
+      "name": "Pronator teres syndrome",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
       "id": "psoriatic-arthritis",
       "name": "Psoriatic Arthritis",
       "aliases": [],
@@ -29,21 +944,36 @@
       ]
     },
     {
-      "id": "charcot-arthropathy",
-      "name": "Charcot Neuropathic Arthropathy",
-      "aliases": [
-        "Charcot arthropathy",
-        "Charcot joint"
-      ],
+      "id": "rickets",
+      "name": "Rickets",
+      "aliases": [],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.71a",
-          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5009 includes Charcot neuropathic arthropathy, with the acute phase rated under diagnostic code 5002 and chronic residuals under diagnostic code 5003.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "rotator-cuff-tear",
+      "name": "Rotator cuff tear",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "sacroiliac-joint-dysfunction",
@@ -63,108 +993,88 @@
       "reviewNotes": []
     },
     {
-      "id": "femoroacetabular-impingement",
-      "name": "Femoroacetabular Impingement",
+      "id": "sever-s-disease",
+      "name": "Sever's disease",
       "aliases": [
-        "femoroacetabular impingement syndrome"
+        "calcaneal apophysitis"
       ],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.71a",
-          "note": "No single condition-specific diagnostic code is assigned here; documented hip or thigh residuals are evaluated under the applicable hip and thigh criteria, including diagnostic codes 5250 through 5255 as appropriate.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
       "reviewNotes": [
-        "No single condition-specific diagnostic code is assigned in the current schedule; the applicable code depends on the documented hip or thigh residuals."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
       ]
     },
     {
-      "id": "hip-labral-tear",
-      "name": "Hip Labral Tear",
-      "aliases": [
-        "acetabular labral tear"
-      ],
+      "id": "skier-s-thumb",
+      "name": "Skier's thumb",
+      "aliases": [],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.71a",
-          "note": "No single condition-specific diagnostic code is assigned here; documented hip or thigh residuals are evaluated under the applicable hip and thigh criteria, including diagnostic codes 5250 through 5255 as appropriate.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
       "reviewNotes": [
-        "No single condition-specific diagnostic code is assigned in the current schedule; the applicable code depends on the documented hip or thigh residuals."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
       ]
     },
     {
-      "id": "greater-trochanteric-pain-syndrome",
-      "name": "Greater Trochanteric Pain Syndrome",
-      "aliases": [
-        "GTPS"
-      ],
+      "id": "slap-tear",
+      "name": "SLAP tear",
+      "aliases": [],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.71a",
-          "note": "No single condition-specific diagnostic code is assigned here; documented hip or thigh residuals are evaluated under the applicable hip and thigh criteria, including diagnostic codes 5250 through 5255 as appropriate.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
       "reviewNotes": [
-        "No single condition-specific diagnostic code is assigned in the current schedule. This syndrome can overlap clinically with bursitis or tendinopathy, so catalog identity must not be treated as proof of a separate rating or nexus."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
       ]
     },
     {
-      "id": "patellar-instability",
-      "name": "Patellar Instability",
-      "aliases": [
-        "recurrent patellar instability"
-      ],
+      "id": "stress-fractures",
+      "name": "Stress fractures",
+      "aliases": [],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.71a",
-          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5257 includes recurrent patellar instability within other impairment of the knee.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
-      "id": "acl-injury",
-      "name": "Anterior Cruciate Ligament (ACL) Injury",
+      "id": "swan-neck-deformity",
+      "name": "Swan neck deformity",
       "aliases": [
-        "ACL tear",
-        "ACL sprain"
+        "swan-neck finger"
       ],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.71a",
-          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5257 addresses sprain and incomplete or complete ligament tears causing persistent knee instability. Other documented residuals may require other knee criteria.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": []
-    },
-    {
-      "id": "pcl-injury",
-      "name": "Posterior Cruciate Ligament (PCL) Injury",
-      "aliases": [
-        "PCL tear",
-        "PCL sprain"
-      ],
-      "bodySystem": "Musculoskeletal System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.71a",
-          "note": "Schedule of ratings, musculoskeletal system; diagnostic code 5257 addresses sprain and incomplete or complete ligament tears causing persistent knee instability. Other documented residuals may require other knee criteria.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "tarsal-metatarsal-malunion-nonunion",
@@ -184,6 +1094,141 @@
         }
       ],
       "reviewNotes": []
+    },
+    {
+      "id": "tarsal-tunnel-syndrome",
+      "name": "Tarsal tunnel syndrome",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "tenosynovitis",
+      "name": "Tenosynovitis",
+      "aliases": [
+        "tenosynovitis"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "thenar-hypothenar-atrophy",
+      "name": "Thenar / Hypothenar Atrophy",
+      "aliases": [
+        "thenar atrophy",
+        "hypothenar atrophy"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "thoracic-outlet-syndrome",
+      "name": "Thoracic outlet syndrome",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "trigger-finger",
+      "name": "Trigger finger",
+      "aliases": [
+        "stenosing tenosynovitis"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "trigger-thumb",
+      "name": "Trigger thumb",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "volkmann-s-ischemic-contracture",
+      "name": "Volkmann's ischemic contracture",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "wartenberg-s-syndrome",
+      "name": "Wartenberg's syndrome",
+      "aliases": [],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.71a",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     }
   ]
 }

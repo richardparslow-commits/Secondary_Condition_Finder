@@ -2,45 +2,49 @@
   "bodySystem": "Endocrine",
   "conditions": [
     {
-      "id": "thyroiditis",
-      "name": "Thyroiditis",
-      "aliases": [],
-      "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7906 covers thyroiditis. Manifestations of hyperthyroidism or hypothyroidism are evaluated under the corresponding thyroid diagnostic code.", "verified": false}],
-      "reviewNotes": []
-    },
-    {
-      "id": "nontoxic-thyroid-enlargement",
-      "name": "Nontoxic Thyroid Enlargement",
-      "aliases": ["nontoxic goiter", "nontoxic thyroid goiter"],
-      "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7902 covers thyroid enlargement, nontoxic, with pressure effects and neck disfigurement evaluated under the appropriate residual criteria.", "verified": false}],
-      "reviewNotes": []
-    },
-    {
       "id": "acromegaly",
       "name": "Acromegaly",
       "aliases": [],
       "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7908 covers acromegaly.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7908 covers acromegaly.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
-      "id": "hyperaldosteronism",
-      "name": "Hyperaldosteronism",
-      "aliases": ["primary aldosteronism"],
+      "id": "bullosis-diabeticorum",
+      "name": "Bullosis diabeticorum",
+      "aliases": [],
       "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7917 covers hyperaldosteronism and directs evaluation as a malignant or benign neoplasm, as appropriate.", "verified": false}],
-      "reviewNotes": []
-    },
-    {
-      "id": "hyperpituitarism",
-      "name": "Hyperpituitarism (Prolactin-Secreting Pituitary Dysfunction)",
-      "aliases": ["prolactin-secreting pituitary dysfunction", "prolactinoma-related hyperpituitarism"],
-      "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7916 covers hyperpituitarism (prolactin-secreting pituitary dysfunction) and directs evaluation as a malignant or benign neoplasm, as appropriate.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
       "reviewNotes": [
-        "Clinical Evidence Promotion Batch 6 narrows the display label to diagnostic code 7916's express prolactin-secreting pituitary-dysfunction scope. The stable ID is retained for catalog continuity and should not be interpreted as a generic identity for every form of pituitary hormone excess."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "carcinoid-syndrome",
+      "name": "Carcinoid syndrome",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
       ]
     },
     {
@@ -48,16 +52,635 @@
       "name": "Diabetes Insipidus",
       "aliases": [],
       "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "Schedule of ratings, endocrine system; diagnostic code 7909 covers diabetes insipidus, with residuals evaluated under the appropriate body system when the condition has subsided.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7909 covers diabetes insipidus, with residuals evaluated under the appropriate body system when the condition has subsided.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
+    },
+    {
+      "id": "diabetes-mellitus",
+      "name": "Diabetes mellitus",
+      "aliases": [
+        "secondary diabetes",
+        "dm"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "diabetic-amyotrophy",
+      "name": "Diabetic amyotrophy",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "diabetic-dermopathy",
+      "name": "Diabetic dermopathy",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "diabetic-gastroparesis",
+      "name": "Diabetic gastroparesis",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "diabetic-nephropathy",
+      "name": "Diabetic nephropathy",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dwarfism",
+      "name": "Dwarfism",
+      "aliases": [
+        "short stature"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "euthyroid-sick-syndrome",
+      "name": "Euthyroid sick syndrome",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "gastrinoma",
+      "name": "Gastrinoma",
+      "aliases": [
+        "Zollinger-Ellison syndrome"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "gigantism",
+      "name": "Gigantism",
+      "aliases": [
+        "pituitary gigantism"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "glucagonoma",
+      "name": "Glucagonoma",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "goiter",
+      "name": "Goiter",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "hashimoto-s-encephalopathy",
+      "name": "Hashimoto's encephalopathy",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "hyperaldosteronism",
+      "name": "Hyperaldosteronism",
+      "aliases": [
+        "primary aldosteronism"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7917 covers hyperaldosteronism and directs evaluation as a malignant or benign neoplasm, as appropriate.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hyperinsulinism",
+      "name": "Hyperinsulinism",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "hyperpituitarism",
+      "name": "Hyperpituitarism (Prolactin-Secreting Pituitary Dysfunction)",
+      "aliases": [
+        "prolactin-secreting pituitary dysfunction",
+        "prolactinoma-related hyperpituitarism"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7916 covers hyperpituitarism (prolactin-secreting pituitary dysfunction) and directs evaluation as a malignant or benign neoplasm, as appropriate.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Clinical Evidence Promotion Batch 6 narrows the display label to diagnostic code 7916's express prolactin-secreting pituitary-dysfunction scope. The stable ID is retained for catalog continuity and should not be interpreted as a generic identity for every form of pituitary hormone excess."
+      ]
+    },
+    {
+      "id": "hypoglycemia",
+      "name": "Hypoglycemia",
+      "aliases": [
+        "reactive/fasting",
+        "reactive hypoglycemia",
+        "fasting hypoglycemia"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "hypopituitarism",
+      "name": "Hypopituitarism",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "insulin-resistance-syndrome",
+      "name": "Insulin resistance syndrome",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "insulinoma",
+      "name": "Insulinoma",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "metabolic-syndrome",
+      "name": "Metabolic Syndrome",
+      "aliases": [
+        "metabolic syndrome x"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "multiple-endocrine-neoplasia",
+      "name": "Multiple endocrine neoplasia",
+      "aliases": [
+        "MEN",
+        "MEN1",
+        "MEN2"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "myxedema-coma",
+      "name": "Myxedema coma",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "necrobiosis-lipoidica",
+      "name": "Necrobiosis lipoidica",
+      "aliases": [
+        "necrobiosis lipoidica diabeticorum"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "neuroblastoma",
+      "name": "Neuroblastoma",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "nontoxic-thyroid-enlargement",
+      "name": "Nontoxic Thyroid Enlargement",
+      "aliases": [
+        "nontoxic goiter",
+        "nontoxic thyroid goiter"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7902 covers thyroid enlargement, nontoxic, with pressure effects and neck disfigurement evaluated under the appropriate residual criteria.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "paraganglioma",
+      "name": "Paraganglioma",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pheochromocytoma",
+      "name": "Pheochromocytoma",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "pituitary-neoplasm",
       "name": "Pituitary Neoplasm",
-      "aliases": ["pituitary tumor", "pituitary tumour"],
+      "aliases": [
+        "pituitary tumor",
+        "pituitary tumour"
+      ],
       "bodySystem": "Endocrine",
-      "ratingSchedule": [{"citation": "38 CFR 4.119", "note": "No single behavior-neutral diagnostic code is assigned here; malignant endocrine neoplasms are evaluated under diagnostic code 7914 and benign endocrine neoplasms under diagnostic code 7915, with residual endocrine dysfunction evaluated as directed by the schedule.", "verified": false}],
-      "reviewNotes": ["Pituitary neoplasm spans benign and malignant disease. The applicable diagnostic code depends on documented tumor behavior; do not assign one code without that information."]
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "No single behavior-neutral diagnostic code is assigned here; malignant endocrine neoplasms are evaluated under diagnostic code 7914 and benign endocrine neoplasms under diagnostic code 7915, with residual endocrine dysfunction evaluated as directed by the schedule.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Pituitary neoplasm spans benign and malignant disease. The applicable diagnostic code depends on documented tumor behavior; do not assign one code without that information."
+      ]
+    },
+    {
+      "id": "postpartum-thyroiditis",
+      "name": "Postpartum thyroiditis",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "riedel-s-thyroiditis",
+      "name": "Riedel's thyroiditis",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "scleredema",
+      "name": "Scleredema",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "somatostatinoma",
+      "name": "Somatostatinoma",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "subacute-thyroiditis",
+      "name": "Subacute thyroiditis",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "thyroid-nodules",
+      "name": "Thyroid nodules",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "thyroid-storm",
+      "name": "Thyroid storm",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "thyroiditis",
+      "name": "Thyroiditis",
+      "aliases": [],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Schedule of ratings, endocrine system; diagnostic code 7906 covers thyroiditis. Manifestations of hyperthyroidism or hypothyroidism are evaluated under the corresponding thyroid diagnostic code.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "vipoma",
+      "name": "VIPoma",
+      "aliases": [
+        "vipoma syndrome",
+        "verner-morrison syndrome"
+      ],
+      "bodySystem": "Endocrine",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     }
   ]
 }

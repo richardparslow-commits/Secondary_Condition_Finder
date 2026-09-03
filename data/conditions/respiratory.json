@@ -16,51 +16,6 @@
       "reviewNotes": []
     },
     {
-      "id": "copd",
-      "name": "Chronic Obstructive Pulmonary Disease (COPD)",
-      "aliases": [
-        "chronic obstructive pulmonary disease",
-        "copd"
-      ],
-      "bodySystem": "Respiratory System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.97",
-          "note": "Schedule of ratings, respiratory system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "chronic-bronchitis",
-      "name": "Chronic Bronchitis",
-      "aliases": [],
-      "bodySystem": "Respiratory System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.97",
-          "note": "Schedule of ratings, respiratory system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "emphysema",
-      "name": "Emphysema",
-      "aliases": [],
-      "bodySystem": "Respiratory System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.97",
-          "note": "Schedule of ratings, respiratory system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
       "id": "bronchiolitis",
       "name": "Constrictive / Obliterative Bronchiolitis",
       "aliases": [
@@ -78,36 +33,8 @@
       "reviewNotes": []
     },
     {
-      "id": "interstitial-lung-disease",
-      "name": "Interstitial Lung Disease",
-      "aliases": [],
-      "bodySystem": "Respiratory System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.97",
-          "note": "Schedule of ratings, respiratory system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "pulmonary-fibrosis",
-      "name": "Pulmonary Fibrosis",
-      "aliases": [],
-      "bodySystem": "Respiratory System",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.97",
-          "note": "Schedule of ratings, respiratory system.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "sarcoidosis",
-      "name": "Sarcoidosis",
+      "id": "chronic-bronchitis",
+      "name": "Chronic Bronchitis",
       "aliases": [],
       "bodySystem": "Respiratory System",
       "ratingSchedule": [
@@ -148,8 +75,53 @@
       "reviewNotes": []
     },
     {
+      "id": "copd",
+      "name": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "aliases": [
+        "chronic obstructive pulmonary disease",
+        "copd"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
       "id": "deviated-nasal-septum",
       "name": "Deviated Nasal Septum",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "emphysema",
+      "name": "Emphysema",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "interstitial-lung-disease",
+      "name": "Interstitial Lung Disease",
       "aliases": [],
       "bodySystem": "Respiratory System",
       "ratingSchedule": [
@@ -176,14 +148,12 @@
       "reviewNotes": []
     },
     {
-      "id": "sleep-apnea",
-      "name": "Sleep Apnea (Obstructive, Central, Mixed)",
+      "id": "pneumoconiosis",
+      "name": "Pneumoconiosis (Asbestosis, Silicosis)",
       "aliases": [
-        "central sleep apnea",
-        "mixed sleep apnea",
-        "obstructive sleep apnea",
-        "osa",
-        "sleep apnea"
+        "asbestosis",
+        "pneumoconiosis",
+        "silicosis"
       ],
       "bodySystem": "Respiratory System",
       "ratingSchedule": [
@@ -196,12 +166,42 @@
       "reviewNotes": []
     },
     {
-      "id": "pneumoconiosis",
-      "name": "Pneumoconiosis (Asbestosis, Silicosis)",
+      "id": "pulmonary-fibrosis",
+      "name": "Pulmonary Fibrosis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "sarcoidosis",
+      "name": "Sarcoidosis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "sleep-apnea",
+      "name": "Sleep Apnea (Obstructive, Central, Mixed)",
       "aliases": [
-        "asbestosis",
-        "pneumoconiosis",
-        "silicosis"
+        "central sleep apnea",
+        "mixed sleep apnea",
+        "obstructive sleep apnea",
+        "osa",
+        "sleep apnea"
       ],
       "bodySystem": "Respiratory System",
       "ratingSchedule": [

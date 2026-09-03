@@ -1,0 +1,9 @@
+{
+  "id": "rhinitis-vasomotor",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": []
+}

@@ -1,0 +1,28 @@
+{
+  "batch": "ME-27",
+  "status": "implemented-draft-pending-qualified-human-citation-verification",
+  "mappings": [
+    {"primaryId": "aphakia", "targetId": "visual-impairment", "relationshipId": "rel-aphakia-to-visual-impairment", "pmid": "35051625", "verified": false},
+    {"primaryId": "arrhythmogenic-right-ventricular-dysplasia", "targetId": "congestive-heart-failure", "relationshipId": "rel-arrhythmogenic-right-ventricular-dysplasia-to-congestive-heart-failure", "pmid": "40202346", "verified": false},
+    {"primaryId": "al-amyloidosis", "targetId": "chronic-kidney-disease", "relationshipId": "rel-al-amyloidosis-to-chronic-kidney-disease", "pmid": "30299492", "verified": false},
+    {"primaryId": "brain-abscess", "targetId": "seizure-disorder", "relationshipId": "rel-brain-abscess-to-seizure-disorder", "pmid": "36810235", "verified": false},
+    {"primaryId": "chronic-b-cell-leukemias", "targetId": "anemia", "relationshipId": "rel-chronic-b-cell-leukemias-to-anemia", "pmid": "34830959", "verified": false}
+  ],
+  "aggregateRatchet": {
+    "relationships": 308,
+    "liveSourceReferenceUses": 316,
+    "verifiedLiveSourceUses": 256,
+    "pendingVerificationLiveSourceUses": 60,
+    "liveClinicalUses": 311,
+    "explicitPublicationGuards": 234,
+    "legacyRationaleBoundaries": 74,
+    "totalSourceEntitiesIncludingLineage": 302
+  },
+  "policy": {
+    "draftOnly": true,
+    "associationOnly": true,
+    "qualifiedHumanCitationReviewRequired": true,
+    "automaticPromotionAuthorized": false,
+    "pathwayIntelligencePresent": false
+  }
+}

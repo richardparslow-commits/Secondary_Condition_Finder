@@ -1,0 +1,57 @@
+{
+  "id": "acute-interstitial-pneumonia",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pulmonary-fibrosis",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded post-injury interstitial-lung association. The cited case series and literature review describes persistent pulmonary symptoms and progressive lung fibrosis in a subset after acute interstitial pneumonitis, but it does not establish that every individual's pulmonary fibrosis followed acute interstitial pneumonitis or exclude idiopathic pulmonary fibrosis, connective-tissue disease, occupational or environmental exposure, medication toxicity, infection, hypersensitivity pneumonitis, or other interstitial-lung disease. Require documented acute interstitial pneumonitis, separately established pulmonary fibrosis by compatible imaging and specialist assessment, compatible chronology, and review of the initial insult and alternative etiologies. Do not infer pulmonary fibrosis from an acute pneumonitis label or persistent dyspnea alone.",
+      "evidenceGaps": [
+        "Independent pulmonology documentation of acute interstitial pneumonitis and pulmonary fibrosis",
+        "High-resolution CT, pulmonary-function testing, pathology when available, and serial findings establishing persistent fibrotic disease",
+        "Chronology of acute illness, respiratory failure, recovery, persistent symptoms, and later fibrosis",
+        "Evaluation for idiopathic, connective-tissue, occupational, environmental, medication-related, infectious, and hypersensitivity causes",
+        "Resolution of publication guard: Require documented acute interstitial pneumonitis, objective pulmonary fibrosis, compatible chronology, and alternative-cause review; do not infer fibrosis from acute pneumonitis or dyspnea alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Vourlekis JS, Brown KK, Cool CD, Young DA, Cherniack RM, King TE Jr, Schwarz MI. Acute interstitial pneumonitis: case series and review of the literature. Medicine (Baltimore). 2000;79(6):369-378. PMID 11144035. doi:10.1097/00005792-200011000-00003.",
+          "note": "Mapping Expansion Batch ME-24 evidence for the bounded acute-interstitial-pneumonia to pulmonary-fibrosis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11144035/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 11144035; case series and literature review describing persistent pulmonary symptoms and progressive fibrosis in a subset; approved ME-24 guard: require documented acute interstitial pneumonitis, objective fibrosis, compatible chronology, and alternative-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited case series and review support a possible persistent or progressive fibrotic outcome after acute interstitial pneumonitis in a subset, without establishing an inevitable or individual pathway.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; objective serial lung findings, chronology, and alternative interstitial-lung disease causes are required for individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Acute interstitial pneumonitis may be followed by persistent inflammatory lung injury and fibrosis in some cases, but the mechanism and individual contribution remain hypothesized until serial imaging, physiology, and competing causes are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited case series reports persistent symptoms and progressive fibrosis in a subset but does not prove that a particular person's pulmonary fibrosis followed acute interstitial pneumonitis.",
+        "evidenceGaps": "Independent acute pneumonitis and fibrosis diagnoses; serial CT and pulmonary-function findings; chronology; initial insult review; and assessment of idiopathic, autoimmune, exposure, medication, infectious, and hypersensitivity causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "idiopathic pulmonary fibrosis",
+          "connective-tissue disease-associated interstitial lung disease",
+          "occupational or environmental exposure",
+          "medication or radiation toxicity",
+          "infection or hypersensitivity pneumonitis"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

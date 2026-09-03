@@ -1,0 +1,59 @@
+{
+  "id": "transient-ischemic-attack-residuals",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cerebrovascular-accident-stroke-residuals",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded population-level risk proposition. The cited systematic review and meta-analysis found an elevated early risk of stroke after transient ischemic attack, but a transient ischemic attack is not itself a completed stroke and the evidence does not establish that any individual's later cerebrovascular accident or residuals were caused by the TIA. Require a documented TIA, a separately established later cerebrovascular accident with objective residuals, and compatible chronology. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, medication adherence, and other stroke causes as competing explanations. Do not infer stroke residuals from a TIA history alone or from transient neurologic symptoms that resolved without an infarction.",
+      "evidenceGaps": [
+        "Independent documentation of transient ischemic attack and later cerebrovascular accident/stroke residuals",
+        "Brain imaging and neurologic examination documenting the completed stroke and persistent residual phenotype",
+        "Chronology demonstrating the later stroke occurred after the TIA",
+        "Assessment of atrial fibrillation, carotid disease, vascular risk factors, thrombophilia, treatment, and other stroke etiologies",
+        "Resolution of publication guard: Require a documented TIA, separately established later stroke with objective residuals, and compatible chronology; do not infer residuals from TIA alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Wu CM, McLaughlin K, Lorenzetti DL, Hill MD, Manns BJ, Ghali WA. Early risk of stroke after transient ischemic attack: a systematic review and meta-analysis. Arch Intern Med. 2007;167(22):2417-2422. PMID 18071162. doi:10.1001/archinte.167.22.2417.",
+          "note": "Mapping Expansion Batch ME-22 evidence for the bounded TIA-to-later-stroke-residuals proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18071162/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 18071162; systematic review/meta-analysis of early stroke risk after TIA; approved ME-22 guard: require a documented TIA, separately established later stroke with objective residuals, and compatible chronology; do not infer residuals from TIA alone."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited systematic review and meta-analysis reports elevated population-level stroke risk after transient ischemic attack, supporting focused review of a later completed stroke but not establishing individual causation or that a TIA itself produces persistent stroke residuals.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; the guard limits this edge to population-level association and requires individual neurologic review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "A transient ischemic attack may identify an underlying vascular or embolic substrate that also increases later stroke risk, but the mechanism and attribution are only a research hypothesis for an individual until a completed stroke, residual phenotype, and competing vascular causes are documented.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited evidence concerns the risk of a later stroke after TIA and does not establish that a TIA caused any individual's completed stroke or residual disability; vascular source, chronology, imaging, and alternative stroke etiologies require case-specific review.",
+        "evidenceGaps": "Independent TIA and completed-stroke diagnoses; objective residual findings; compatible chronology; vascular-source evaluation; and qualified neurologic assessment of individual attribution.",
+        "alternativeEtiologiesToRuleOut": [
+          "atrial fibrillation or other cardioembolic disease",
+          "carotid or intracranial atherosclerotic disease",
+          "hypertension and diabetes",
+          "smoking or other vascular risk factors",
+          "thrombophilia",
+          "medication nonadherence or treatment effects",
+          "stroke mechanisms unrelated to the prior TIA"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

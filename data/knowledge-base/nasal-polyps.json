@@ -1,0 +1,59 @@
+{
+  "id": "nasal-polyps",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "asthma",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-22 adds this relationship only as a bounded chronic-rhinosinusitis-with-nasal-polyps and asthma association. The cited clinical review describes frequent co-occurrence and greater airway disease burden when asthma is present with chronic rhinosinusitis with nasal polyps, but it does not establish that nasal polyps caused or aggravated any individual's asthma. Require documented chronic rhinosinusitis with nasal polyps, separately established asthma by appropriate pulmonary criteria, and compatible chronology. Preserve allergic rhinitis, aspirin-exacerbated respiratory disease, atopy, smoking, occupational exposure, obesity, viral triggers, gastroesophageal reflux, medication effects, and other asthma causes. Do not infer asthma from nasal polyps, sinus symptoms, eosinophilia, or upper-airway inflammation alone, and do not generalize from CRSwNP to every nasal-polyp phenotype.",
+      "evidenceGaps": [
+        "Independent documentation of chronic rhinosinusitis with nasal polyps and asthma",
+        "Objective pulmonary testing and clinical records establishing the asthma phenotype and severity",
+        "Nasal endoscopy or imaging documenting the polyp phenotype and compatible chronology",
+        "Assessment of aspirin-exacerbated respiratory disease, allergic rhinitis, smoking, occupational, obesity, reflux, medication, and other asthma contributors",
+        "Resolution of publication guard: Restrict to documented CRSwNP plus separately established asthma; do not infer asthma from nasal polyps alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Laidlaw TM, Mullol J, Woessner KM, Amin N, Mannent LP. Chronic Rhinosinusitis with Nasal Polyps and Asthma. J Allergy Clin Immunol Pract. 2021;9(3):1133-1141. PMID 33065369. doi:10.1016/j.jaip.2020.09.063.",
+          "note": "Mapping Expansion Batch ME-22 evidence for the bounded chronic-rhinosinusitis-with-nasal-polyps to asthma proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33065369/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 33065369; J Allergy Clin Immunol Pract clinical review; approved ME-22 guard: require documented CRSwNP plus separately established asthma; do not infer asthma from nasal polyps alone."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited review describes frequent co-occurrence and shared inflammatory features of chronic rhinosinusitis with nasal polyps and asthma, supporting coordinated airway evaluation without establishing individual causation or aggravation.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; pulmonary phenotype, chronology, and alternative asthma contributors require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Chronic rhinosinusitis with nasal polyps and asthma may share type-2 inflammatory biology and linked upper- and lower-airway burden, but this shared biology is only a hypothesized association and does not prove that nasal polyps caused or worsened an individual's asthma.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The review concerns CRSwNP and asthma co-occurrence and disease burden, not proof that nasal polyps caused or aggravated an individual's asthma; both phenotypes and competing respiratory risks require case-specific assessment.",
+        "evidenceGaps": "Independent CRSwNP and asthma diagnoses; objective pulmonary testing; upper-airway phenotype; compatible chronology; and assessment of allergic, aspirin-related, occupational, smoking, obesity, reflux, medication, and other contributors.",
+        "alternativeEtiologiesToRuleOut": [
+          "allergic rhinitis and atopy",
+          "aspirin-exacerbated respiratory disease",
+          "smoking or occupational exposure",
+          "obesity",
+          "viral or environmental triggers",
+          "gastroesophageal reflux",
+          "medication effects and other lower-airway causes"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "avascular-necrosis",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "osteoarthritis",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-24 adds this relationship only as a bounded femoral-head structural-collapse association. The cited clinical review describes femoral-head avascular necrosis as a process that can progress through articular-surface collapse and degenerative arthritis, but it does not establish that every individual's osteoarthritis was caused by avascular necrosis or exclude primary osteoarthritis, prior trauma, dysplasia, inflammatory arthritis, infection, corticosteroid or alcohol exposure, or other causes. Require documented avascular necrosis at a compatible joint and site, separately established osteoarthritis, imaging showing compatible collapse or degeneration, chronology, and orthopedic review. Do not infer osteoarthritis from an avascular-necrosis label without objective imaging and competing-cause assessment.",
+      "evidenceGaps": [
+        "Independent orthopedic documentation of avascular necrosis and osteoarthritis at the compatible joint and site",
+        "Serial radiographs or MRI documenting lesion extent, collapse, articular involvement, and degenerative change",
+        "Chronology of avascular necrosis, collapse, pain, functional loss, and osteoarthritis diagnosis",
+        "Assessment of primary osteoarthritis, trauma, dysplasia, inflammatory arthritis, infection, corticosteroid, alcohol, and other risks",
+        "Resolution of publication guard: Require documented compatible-site avascular necrosis, objective osteoarthritis, imaging correlation, chronology, and competing-cause review; do not infer osteoarthritis from AVN alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Barney J, Piuzzi NS, Akhondi H. Femoral Head Avascular Necrosis. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2023. PMID 31536264.",
+          "note": "Mapping Expansion Batch ME-24 evidence for the bounded avascular-necrosis to osteoarthritis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31536264/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 31536264; clinical overview of femoral-head avascular necrosis, articular collapse, and eventual degenerative arthritis; approved ME-24 guard: require compatible-site AVN, objective osteoarthritis, imaging correlation, chronology, and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The clinical overview supports a possible progression from femoral-head avascular necrosis through structural collapse to degenerative arthritis, without establishing that every individual's osteoarthritis followed that pathway.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; compatible-site imaging, chronology, and competing joint-disease causes are required for individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "Avascular necrosis can compromise subchondral bone and the articular surface, with collapse potentially producing secondary degenerative joint change, but the individual structural pathway remains hypothesized until imaging and competing causes are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited clinical overview describes collapse and degenerative arthritis as possible consequences of femoral-head avascular necrosis but does not prove a particular person's osteoarthritis arose from AVN.",
+        "evidenceGaps": "Independent compatible-site diagnoses; serial imaging; chronology of lesion, collapse, and degeneration; and assessment of primary OA, trauma, dysplasia, inflammatory, infectious, medication, alcohol, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "primary osteoarthritis",
+          "prior trauma or fracture",
+          "developmental dysplasia or structural abnormality",
+          "inflammatory or infectious arthritis",
+          "corticosteroid, alcohol, metabolic, or other osteonecrosis risk factors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

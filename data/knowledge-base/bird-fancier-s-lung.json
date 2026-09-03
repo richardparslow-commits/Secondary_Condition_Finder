@@ -1,0 +1,58 @@
+{
+  "id": "bird-fancier-s-lung",
+  "draft": true,
+  "todo": [
+    "Obtain qualified-human citation verification for the proposed bird-fancier's-lung to pulmonary-fibrosis association.",
+    "Confirm avian-antigen exposure, hypersensitivity-pneumonitis phenotype, objective fibrosis, and alternative interstitial-lung disease causes before any publication decision."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pulmonary-fibrosis",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded chronic hypersensitivity-pneumonitis association. Bird fancier's lung is an avian-antigen-related form of hypersensitivity pneumonitis, and chronic or recurrent disease may have fibrotic consequences in some patients, but the cited review does not establish that every individual with bird fancier's lung develops pulmonary fibrosis. Require documented avian exposure, compatible hypersensitivity-pneumonitis phenotype, independently established pulmonary fibrosis by serial imaging and physiology, compatible chronology, and pulmonology review. Exclude idiopathic pulmonary fibrosis, connective-tissue disease, occupational dust or asbestos exposure, medication toxicity, infection, sarcoidosis, and other interstitial-lung disease causes. Do not infer fibrosis from bird exposure, dyspnea, or a hypersensitivity-pneumonitis label alone.",
+      "evidenceGaps": [
+        "Independent pulmonology documentation of bird fancier's lung/hypersensitivity pneumonitis and pulmonary fibrosis",
+        "Avian-antigen exposure history, serum or other exposure assessment, high-resolution CT, pulmonary-function testing, and serial progression",
+        "Chronology of exposure, acute or recurrent episodes, antigen avoidance, treatment, persistent disease, and fibrosis",
+        "Evaluation for idiopathic, connective-tissue, occupational, medication-related, infectious, granulomatous, and other interstitial-lung causes",
+        "Resolution of publication guard: Require documented avian-antigen hypersensitivity-pneumonitis phenotype, objective fibrosis, compatible chronology, and alternative-cause review; do not infer fibrosis from exposure or dyspnea alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Chan AL, Juarez MM, Leslie KO, Ismail HA, Albertson TE. Bird fancier's lung: a state-of-the-art review. Clin Rev Allergy Immunol. 2012;43(1-2):69-83. PMID 21870048. doi:10.1007/s12016-011-8282-y.",
+          "note": "Mapping Expansion Batch ME-25 clinical review for the bounded bird-fancier's-lung to pulmonary-fibrosis proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21870048/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 21870048; state-of-the-art review of avian-antigen hypersensitivity pneumonitis/bird fancier's lung and chronic disease; approved ME-25 guard requires objective fibrosis and alternative-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited review supports bird fancier's lung as an avian-antigen hypersensitivity-pneumonitis phenotype in which chronic disease may be relevant to fibrotic lung outcomes, without proving an individual fibrosis pathway.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; exposure phenotype, serial objective lung findings, chronology, and competing interstitial-lung causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Repeated avian-antigen exposure may sustain immune-mediated alveolar and interstitial inflammation, which can progress to fibrosis in chronic hypersensitivity pneumonitis, but the individual inflammatory-to-fibrotic pathway remains hypothesized.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The review identifies bird fancier's lung as hypersensitivity pneumonitis related to avian antigens, but it does not prove that a particular patient's pulmonary fibrosis resulted from that exposure-related disease.",
+        "evidenceGaps": "Independent exposure-related hypersensitivity-pneumonitis and fibrosis diagnoses; serial CT and physiology; chronology and antigen avoidance; and assessment of idiopathic, autoimmune, occupational, toxic, infectious, granulomatous, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "idiopathic pulmonary fibrosis",
+          "connective-tissue disease-associated interstitial lung disease",
+          "occupational dust, asbestos, or other inhalational exposure",
+          "medication or radiation toxicity",
+          "infection or sarcoidosis",
+          "other chronic hypersensitivity-pneumonitis antigens"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

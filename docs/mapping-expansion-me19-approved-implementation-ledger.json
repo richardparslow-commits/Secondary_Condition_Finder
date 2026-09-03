@@ -1,0 +1,112 @@
+{
+  "phase": "Mapping Expansion ME-19",
+  "ledgerStatus": "APPROVED AND APPLIED LOCALLY — CITATIONS PENDING VERIFICATION",
+  "approvalDate": "2026-09-02",
+  "requiredBaselineCommit": "f4537b5014297c8e1c783a1b38291367636c418a",
+  "previousRegistryBaselineCommit": "13812063f0408ea1cf3235370836a0ac867767ce",
+  "previousRegistryCurrentState": "ME18-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+  "commitSubject": "map: mapping expansion ME-19 (5 relationships)",
+  "issueReference": "issue #360 Mapping Expansion Wave (ME-15+); first batch over the 2026-09 Wave-8 master-list catalog expansion (311 -> 813 conditions)",
+  "approvalRecord": "Qualified-human approval captured on 2026-09-02: all five bounded ME-19 mappings from docs/mapping-expansion-me19-plan.md approved (rank 1 each). Mapping approval is not citation verification; all five clinical sources enter verified:false and the five master sources enter pending-verification, awaiting the separate qualified-human citation-verification gate.",
+  "rows": [
+    {
+      "primaryId": "traumatic-brain-injury-residuals",
+      "targetId": "depressive-disorder",
+      "rank": 1,
+      "pmid": "25038422",
+      "doi": "10.1016/j.neubiorev.2014.07.007",
+      "sourceTitle": "Depression following adult, non-penetrating traumatic brain injury: a meta-analysis examining methodological variables and sample characteristics",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25038422/",
+      "claimType": "population-level-comorbidity-association",
+      "sourceAction": "approved-fresh-me19-source"
+    },
+    {
+      "primaryId": "allergic-rhinitis",
+      "targetId": "asthma",
+      "rank": 1,
+      "pmid": "31660100",
+      "doi": "10.1016/j.waojou.2019.100069",
+      "sourceTitle": "History of allergic rhinitis and risk of asthma; a systematic review and meta-analysis",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31660100/",
+      "claimType": "population-level-association",
+      "sourceAction": "approved-fresh-me19-source"
+    },
+    {
+      "primaryId": "diabetic-nephropathy",
+      "targetId": "chronic-kidney-disease",
+      "rank": 1,
+      "pmid": "36272764",
+      "doi": "10.1016/j.kint.2022.06.008",
+      "sourceTitle": "KDIGO 2022 Clinical Practice Guideline for Diabetes Management in Chronic Kidney Disease",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36272764/",
+      "claimType": "guideline-recognized-association",
+      "sourceAction": "approved-fresh-me19-source"
+    },
+    {
+      "primaryId": "menstrual-disorders",
+      "targetId": "anemia",
+      "rank": 1,
+      "pmid": "37538011",
+      "doi": "10.1002/ijgo.14943",
+      "sourceTitle": "Heavy menstrual bleeding, iron deficiency, and iron deficiency anemia: Framing the issue",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37538011/",
+      "claimType": "population-level-clinical-framing-association",
+      "sourceAction": "approved-fresh-me19-source"
+    },
+    {
+      "primaryId": "oral-lichen-planus-lichenoid-lesions",
+      "targetId": "oral-cancer",
+      "rank": 1,
+      "pmid": "28438300",
+      "doi": "10.1016/j.oraloncology.2017.03.012",
+      "sourceTitle": "Malignant transformation of oral lichen planus and oral lichenoid lesions: A meta-analysis of 20095 patient data",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28438300/",
+      "claimType": "population-level-malignant-transformation-association",
+      "sourceAction": "approved-fresh-me19-source"
+    }
+  ],
+  "citationStateAfterImplementation": {
+    "kbSourceReferences": "verified:false",
+    "masterSources": "pending-verification",
+    "registryCurrentState": "ME19-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+    "qualifiedHumanCitationReviewRequired": true,
+    "automaticPromotionAuthorized": false
+  },
+  "failurePolicy": "Fail closed. If any exact baseline, publication-state proof, edge, source identity, projection, PubMed identity, validation, or freeze-guard requirement fails, stop. If any repository write has already occurred, preserve the exact dirty state; do not reset, restore, stash, or clean.",
+  "projectionNote": "ME-19 registers five draft primaries (traumatic-brain-injury-residuals, allergic-rhinitis, diabetic-nephropathy, menstrual-disorders, oral-lichen-planus-lichenoid-lesions) all at rank 1 — the first ME batch over the Wave-8 framework-only identities (catalog 311 -> 813). All five primaries remain draft; no publication-state change. Registered-primary coverage advances 174 -> 179 of 813; remaining primaries 637 -> 634, with 37 target-only primaries unchanged. Relationships 263 -> 268; live references 271 -> 276 with 256 verified and 20 pending qualified-human citation verification; master source entities 257 -> 262 (233 active / 20 pending / 7 superseded-unverified / 1 correction-only / 1 retired-only); explicit publication guards 189 -> 194, legacy 74 unchanged; clinical uses 266 -> 271, legal 5 unchanged.",
+  "implementationDateLocal": "2026-09-02",
+  "implementationResult": {
+    "rowsImplemented": 5,
+    "rank1Rows": 5,
+    "rank2Rows": 0,
+    "publicationStatesPreserved": {
+      "traumatic-brain-injury-residuals": "draft",
+      "allergic-rhinitis": "draft",
+      "diabetic-nephropathy": "draft",
+      "menstrual-disorders": "draft",
+      "oral-lichen-planus-lichenoid-lesions": "draft"
+    },
+    "selectedDraftPrimaries": 5,
+    "selectedPublishedPrimaries": 0,
+    "postMatrix": [
+      813,
+      139,
+      674,
+      268,
+      66,
+      73,
+      39
+    ],
+    "kbVerifiedFalseRows": 5,
+    "masterPendingSources": 5,
+    "registeredPrimaries": 179,
+    "remainingPrimaries": 634,
+    "remainingTargetOnlyPrimaries": 37,
+    "citationPromotions": 0,
+    "publicationStatusChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "semanticBroadening": 0,
+    "remoteWritesPerformed": false
+  }
+}

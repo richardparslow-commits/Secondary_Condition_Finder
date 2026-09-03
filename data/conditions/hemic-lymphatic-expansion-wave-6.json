@@ -2,6 +2,62 @@
   "bodySystem": "Hemic, Lymphatic & Immune Systems",
   "conditions": [
     {
+      "id": "chronic-b-cell-leukemias",
+      "name": "Chronic B-Cell Leukemias",
+      "aliases": [
+        "chronic lymphocytic leukemia",
+        "b-cell chronic lymphocytic leukemia",
+        "b-cell leukemia"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dermatomyositis",
+      "name": "Dermatomyositis",
+      "aliases": [
+        "dermatomyositis"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "early-onset-peripheral-neuropathy",
+      "name": "Early-onset peripheral neuropathy",
+      "aliases": [
+        "early onset peripheral neuropathy"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
       "id": "essential-thrombocythemia",
       "name": "Essential Thrombocythemia",
       "aliases": [],
@@ -13,7 +69,131 @@
           "verified": false
         }
       ],
-      "reviewNotes": ["DC 7718 is shared with primary myelofibrosis. The conditions remain separate catalog identities and later clinical pathway authoring must remain disease-specific."]
+      "reviewNotes": [
+        "DC 7718 is shared with primary myelofibrosis. The conditions remain separate catalog identities and later clinical pathway authoring must remain disease-specific."
+      ]
+    },
+    {
+      "id": "hairy-cell-leukemia",
+      "name": "Hairy cell leukemia",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "kaposi-s-sarcoma",
+      "name": "Kaposi's sarcoma",
+      "aliases": [
+        "vascular",
+        "kaposi sarcoma",
+        "kaposis sarcoma"
+      ],
+      "bodySystem": "Cardiovascular System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "mixed-connective-tissue-disease",
+      "name": "Mixed connective tissue disease",
+      "aliases": [
+        "mctd"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "myelodysplastic-syndrome",
+      "name": "Myelodysplastic Syndromes",
+      "aliases": [
+        "myelodysplastic syndrome"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "DC 7725, myelodysplastic syndromes.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "neurobehavioral-effects",
+      "name": "Neurobehavioral effects",
+      "aliases": [
+        "neurobehavioral effects gulf war"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "polymyalgia-rheumatica",
+      "name": "Polymyalgia rheumatica",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "polymyositis",
+      "name": "Polymyositis",
+      "aliases": [
+        "polymyositis"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "primary-myelofibrosis",
@@ -27,21 +207,115 @@
           "verified": false
         }
       ],
-      "reviewNotes": ["DC 7718 is shared with essential thrombocythemia. The conditions remain separate catalog identities and later clinical pathway authoring must remain disease-specific."]
+      "reviewNotes": [
+        "DC 7718 is shared with essential thrombocythemia. The conditions remain separate catalog identities and later clinical pathway authoring must remain disease-specific."
+      ]
     },
     {
-      "id": "myelodysplastic-syndrome",
-      "name": "Myelodysplastic Syndromes",
-      "aliases": ["myelodysplastic syndrome"],
+      "id": "scleroderma",
+      "name": "Scleroderma",
+      "aliases": [
+        "systemic sclerosis"
+      ],
       "bodySystem": "Hemic, Lymphatic & Immune Systems",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.117",
-          "note": "DC 7725, myelodysplastic syndromes.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "sjogren-s-syndrome",
+      "name": "Sjogren's syndrome",
+      "aliases": [
+        "sjögren's syndrome",
+        "sjogrens"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "systemic-vasculitis",
+      "name": "Systemic vasculitis",
+      "aliases": [
+        "vasculitis"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "undiagnosed-illnesses-gulf-war",
+      "name": "Undiagnosed Illnesses (Gulf War)",
+      "aliases": [
+        "gulf war undiagnosed illnesses",
+        "medically unexplained symptoms"
+      ],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "unexplained-chronic-pain",
+      "name": "Unexplained chronic pain",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "unexplained-neurological-muscle-conditions-gulf-war",
+      "name": "Unexplained Neurological / Muscle Conditions (Gulf War)",
+      "aliases": [],
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.117",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     }
   ]
 }

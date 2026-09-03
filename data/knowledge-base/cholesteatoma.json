@@ -1,0 +1,59 @@
+{
+  "id": "cholesteatoma",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "conductive-hearing-loss",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-23 adds this relationship only as a bounded otologic hearing-loss association. The cited cholesteatoma study found that ossicular erosion was related to the conductive hearing-loss air-bone gap, but it does not establish that every individual's conductive loss was caused by cholesteatoma or exclude tympanic-membrane disease, otitis media, otosclerosis, trauma, congenital abnormalities, or other causes. Require documented cholesteatoma, separately established conductive hearing loss by audiometry, compatible ear and chronology, and review of ossicular and middle-ear findings. Preserve chronic otitis media, tympanic-membrane perforation, ossicular discontinuity, otosclerosis, cerumen or canal disease, trauma, congenital conductive disorders, prior surgery, and mixed or sensorineural loss as competing explanations. Do not infer conductive hearing loss from cholesteatoma history, otorrhea, or subjective hearing difficulty without objective audiologic testing.",
+      "evidenceGaps": [
+        "Independent otologic documentation of cholesteatoma and conductive hearing loss",
+        "Pure-tone audiometry, air-bone gap, tympanometry, and speech testing identifying the loss type and severity",
+        "Temporal-bone imaging, otoscopy, operative findings, and ossicular-chain status",
+        "Chronology of cholesteatoma, treatment, recurrence, and hearing change",
+        "Resolution of publication guard: Require documented cholesteatoma, objective conductive loss, compatible ear/chronology, and ossicular review; do not infer loss from cholesteatoma alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Martins O, Victor J, Selesnick S. The relationship between individual ossicular status and conductive hearing loss in cholesteatoma. Otol Neurotol. 2012;33(3):387-392. PMID 22410730. doi:10.1097/MAO.0b013e3182487fb0.",
+          "note": "Mapping Expansion Batch ME-23 evidence for the bounded cholesteatoma to conductive-hearing-loss proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22410730/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 22410730; cholesteatoma study relating ossicular status to conductive hearing-loss air-bone gap; approved ME-23 guard: require documented cholesteatoma, objective conductive loss, compatible ear/chronology, and ossicular review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited study associates cholesteatoma-related ossicular status with conductive hearing-loss severity, supporting focused audiologic and otologic review without establishing deterministic individual causation.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; objective audiometry, anatomy, chronology, and competing ear disease are required for individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Cholesteatoma may erode or disrupt the ossicular chain and impair sound conduction, but the individual mechanism remains hypothesized until objective audiometry and anatomic correlation are documented.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cited study links ossicular status with conductive hearing loss in cholesteatoma but does not prove that cholesteatoma caused every individual's loss; objective testing, ear-specific anatomy, chronology, and alternative causes require review.",
+        "evidenceGaps": "Independent cholesteatoma and audiologic diagnoses; objective air-bone gap; ear-specific imaging/operative findings; chronology; and assessment of other conductive, mixed, and sensorineural causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "chronic otitis media or tympanic-membrane perforation",
+          "ossicular discontinuity or fixation from other causes",
+          "otosclerosis",
+          "external auditory canal obstruction or cerumen",
+          "trauma or congenital conductive disorder",
+          "prior ear surgery",
+          "mixed or sensorineural hearing loss"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

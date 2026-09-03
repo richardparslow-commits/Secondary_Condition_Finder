@@ -1,0 +1,58 @@
+{
+  "id": "chronic-b-cell-leukemias",
+  "draft": true,
+  "todo": [
+    "Obtain qualified-human citation verification for the proposed chronic-B-cell-leukemias to anemia association.",
+    "Confirm the exact leukemia phenotype, separately established anemia subtype, hemolysis or marrow-failure evidence, disease/treatment chronology, and competing hematologic causes before publication."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-27 adds this relationship only as a bounded chronic-lymphocytic-leukemia/autoimmune-hemolytic-anemia association. The selected review addresses autoimmune hemolytic anemia in CLL and reports it as a recognized complication, but the broad chronic-B-cell-leukemias identity is wider than CLL and neither the leukemia label nor a low hemoglobin value establishes the subtype or individual attribution. Require a documented CLL or source-matched chronic B-cell leukemia phenotype, separately established anemia with appropriate hematologic characterization, compatible disease or treatment chronology, and hematology review. Preserve marrow infiltration, bleeding, nutritional deficiency, renal disease, infection, hemolysis from other causes, treatment effects, and other cytopenias. Do not infer anemia from chronic B-cell leukemia alone.",
+      "evidenceGaps": [
+        "Independent documentation of the exact chronic B-cell leukemia phenotype and separately established anemia subtype",
+        "CBC trend, reticulocyte count, hemolysis studies, marrow findings, and other objective hematologic characterization",
+        "Chronology relative to leukemia activity, progression, autoimmune findings, infection, and treatment exposure",
+        "Assessment of bleeding, nutritional deficiency, renal disease, marrow failure, drug effects, and other causes of anemia",
+        "Resolution of publication guard: Require a source-matched CLL/B-cell leukemia phenotype, objective anemia characterization, compatible chronology, and competing hematologic-cause review; do not infer anemia from a leukemia label alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Autore F, Pasquale R, Innocenti I, Fresa A, Sora' F, Laurenti L. Autoimmune Hemolytic Anemia in Chronic Lymphocytic Leukemia: A Comprehensive Review. Cancers (Basel). 2021;13(22):5804. PMID 34830959. doi:10.3390/cancers13225804.",
+          "note": "Mapping Expansion Batch ME-27 review evidence for the narrowly bounded CLL/autoimmune-hemolytic-anemia proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34830959/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 34830959; comprehensive review of autoimmune hemolytic anemia as a complication of chronic lymphocytic leukemia; approved ME-27 guard limits the broad catalog identity to a source-matched leukemia and anemia phenotype."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The CLL review supports autoimmune hemolytic anemia as a recognized complication of CLL, without establishing that every anemia in a person with a chronic B-cell leukemia is leukemia-attributable.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; leukemia subtype, anemia phenotype, chronology, disease activity, treatment context, and competing hematologic causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "CLL-associated immune dysregulation may promote antibodies or other immune mechanisms directed against red blood cells and can coexist with marrow failure, but the mechanism and contribution to an individual's anemia remain hypothesized until subtype-specific hematologic evidence is reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The source concerns CLL-associated autoimmune hemolytic anemia, not every chronic B-cell leukemia or every anemia phenotype, and does not prove individual attribution.",
+        "evidenceGaps": "Source-matched leukemia diagnosis; anemia subtype and hemolysis/marrow studies; disease and treatment chronology; and review of bleeding, nutrition, renal disease, marrow failure, infection, medications, and other hematologic causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "marrow infiltration or disease-related marrow failure",
+          "gastrointestinal or other blood loss",
+          "iron, vitamin B12, or folate deficiency",
+          "chronic kidney disease or inflammatory disease",
+          "treatment-related cytopenia or hemolysis",
+          "infection or another hematologic disorder"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "atopic-dermatitis-eczema",
+  "draft": true,
+  "todo": [
+    "Obtain qualified-human citation verification for the proposed atopic-dermatitis-eczema to asthma association.",
+    "Confirm the atopic-dermatitis phenotype, independently diagnose asthma, establish compatible chronology, and assess severity and competing atopic or respiratory causes before publication."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "asthma",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded atopic-disease association. Atopic dermatitis, particularly persistent or severe phenotypes, is associated with increased risk of subsequent asthma in systematic-review evidence, but the association does not establish that every patient with atopic dermatitis develops asthma or that the skin disease caused an individual's asthma. Require documented atopic dermatitis phenotype, independently established asthma using appropriate pulmonary criteria, compatible chronology, and review of allergic rhinitis, family atopy, environmental exposure, smoking, occupational factors, infection, obesity, and other respiratory causes. Do not infer asthma from eczema, atopy, cough, or wheeze without objective evaluation.",
+      "evidenceGaps": [
+        "Independent dermatologic documentation of atopic dermatitis and pulmonary documentation of asthma",
+        "Spirometry with bronchodilator testing or other appropriate objective asthma assessment",
+        "Atopic-dermatitis onset, persistence/severity, asthma onset, and longitudinal chronology",
+        "Assessment of allergic rhinitis, family atopy, environmental and occupational exposures, smoking, obesity, and other respiratory causes",
+        "Resolution of publication guard: Require documented atopic-dermatitis phenotype, objective asthma diagnosis, compatible chronology, and competing-cause review; do not infer asthma from eczema or atopy alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Li H, Dai T, Liu C, Liu Q, Tan C. Phenotypes of atopic dermatitis and the risk for subsequent asthma: A systematic review and meta-analysis. J Am Acad Dermatol. 2022;86(2):365-372. PMID 34384834. doi:10.1016/j.jaad.2021.07.064.",
+          "note": "Mapping Expansion Batch ME-26 systematic review/meta-analysis for the bounded atopic-dermatitis-eczema to asthma proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34384834/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 34384834; systematic review/meta-analysis of atopic-dermatitis phenotypes and subsequent asthma risk; approved ME-26 guard requires independent asthma diagnosis, phenotype, chronology, and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited meta-analysis supports a population-level association between selected atopic-dermatitis phenotypes and later asthma, without proving individual causation.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; atopic phenotype, objective pulmonary findings, chronology, and alternative respiratory causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Shared epithelial-barrier and type-2 inflammatory susceptibility may contribute to sequential atopic disease manifestations, but the individual relationship between dermatitis and asthma remains hypothesized rather than established.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The meta-analysis examines subsequent asthma risk across heterogeneous atopic-dermatitis phenotypes and does not prove that atopic dermatitis caused an individual's asthma.",
+        "evidenceGaps": "Independent skin and asthma diagnoses; objective pulmonary testing; dermatitis phenotype and severity; chronology; allergic-rhinitis and family-atopy history; environmental/occupational exposure; smoking; obesity; and other respiratory causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "allergic rhinitis or other atopic disease",
+          "environmental or occupational irritant exposure",
+          "smoking or vaping-related airway disease",
+          "obesity or deconditioning",
+          "chronic infection or structural lung disease",
+          "vocal-cord dysfunction or other non-asthma wheeze"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

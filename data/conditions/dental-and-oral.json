@@ -2,41 +2,28 @@
   "bodySystem": "Dental & Oral Conditions",
   "conditions": [
     {
-      "id": "tmj-disorder",
-      "name": "Temporomandibular Joint (TMJ) Disorders",
-      "aliases": [
-        "temporomandibular joint disorders"
-      ],
-      "bodySystem": "Dental & Oral Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.150",
-          "note": "Schedule of ratings, dental and oral conditions.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "periodontal-disease",
-      "name": "Periodontal Disease",
-      "aliases": [],
-      "bodySystem": "Dental & Oral Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.150",
-          "note": "Schedule of ratings, dental and oral conditions.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
       "id": "loss-of-teeth",
       "name": "Loss of Occlusal Surface / Loss of Teeth",
       "aliases": [
         "loss of occlusal surface",
         "loss of teeth"
+      ],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Schedule of ratings, dental and oral conditions.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "maxillofacial-fracture",
+      "name": "Structural Maxillofacial / Mandibular Fractures",
+      "aliases": [
+        "mandibular fractures",
+        "structural maxillofacial"
       ],
       "bodySystem": "Dental & Oral Conditions",
       "ratingSchedule": [
@@ -63,11 +50,24 @@
       "reviewNotes": []
     },
     {
-      "id": "maxillofacial-fracture",
-      "name": "Structural Maxillofacial / Mandibular Fractures",
+      "id": "periodontal-disease",
+      "name": "Periodontal Disease",
+      "aliases": [],
+      "bodySystem": "Dental & Oral Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.150",
+          "note": "Schedule of ratings, dental and oral conditions.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "tmj-disorder",
+      "name": "Temporomandibular Joint (TMJ) Disorders",
       "aliases": [
-        "mandibular fractures",
-        "structural maxillofacial"
+        "temporomandibular joint disorders"
       ],
       "bodySystem": "Dental & Oral Conditions",
       "ratingSchedule": [

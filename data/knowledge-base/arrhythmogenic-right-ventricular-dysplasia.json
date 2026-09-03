@@ -1,0 +1,58 @@
+{
+  "id": "arrhythmogenic-right-ventricular-dysplasia",
+  "draft": true,
+  "todo": [
+    "Obtain qualified-human citation verification for the proposed arrhythmogenic-right-ventricular-dysplasia to congestive-heart-failure association.",
+    "Confirm diagnostic ARVC criteria, ventricular structural/function findings, separately established heart failure, chronology, genetic phenotype, arrhythmia burden, and competing cardiac causes before publication."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-27 adds this relationship only as a bounded cardiomyopathy-to-heart-failure association. Arrhythmogenic right ventricular cardiomyopathy can present with ventricular dysfunction and a heart-failure phenotype, including dilated-cardiomyopathy-like presentations, but an ARVC diagnosis does not establish that every person's heart failure is attributable to ARVC. Require diagnostic criteria supported by imaging, electrocardiography, genetic or family evaluation as appropriate, separately established heart failure with objective ventricular dysfunction, compatible chronology, and cardiology review. Preserve ischemic disease, hypertension, valvular disease, myocarditis, other cardiomyopathies, tachyarrhythmia-mediated dysfunction, and treatment-related contributors. Do not infer heart failure from ARVC, palpitations, ventricular ectopy, or an isolated imaging finding alone.",
+      "evidenceGaps": [
+        "Independent documentation of arrhythmogenic right ventricular cardiomyopathy/dysplasia and heart failure with objective ventricular dysfunction",
+        "Imaging, ECG, rhythm, genetic/family, and longitudinal functional findings establishing phenotype and chronology",
+        "Assessment of left-ventricular involvement, arrhythmia-mediated dysfunction, myocarditis, ischemia, valvular disease, and other cardiomyopathies",
+        "Treatment history, including ablation, defibrillator therapy, antiarrhythmics, and heart-failure-directed therapy",
+        "Resolution of publication guard: Require diagnostic ARVC criteria, objective heart failure, compatible chronology, and competing cardiac-cause review; do not infer heart failure from ARVC alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Kreimer F, Saguner AM, Akin I, Milting H, Eckardt L, El-Battrawy I. Arrhythmogenic Right Ventricular Cardiomyopathy: Diagnosis, Risk Stratification, and Treatment. Dtsch Arztebl Int. 2025;122(9):229-234. PMID 40202346. doi:10.3238/arztebl.m2024.0264.",
+          "note": "Mapping Expansion Batch ME-27 review evidence for the bounded ARVC cardiac-dysfunction and heart-failure proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40202346/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 40202346; review notes that ARVC may present with heart failure resembling dilated cardiomyopathy; approved ME-27 guard requires objective heart failure and phenotype-specific cardiology review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The ARVC review supports heart failure as a possible clinical presentation of progressive cardiomyopathic involvement, without establishing that an individual's heart failure is attributable to ARVC.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; diagnostic phenotype, objective dysfunction, chronology, and competing cardiac causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Progressive fibro-fatty myocardial remodeling may impair right- or left-ventricular contractile function and produce a heart-failure phenotype in some ARVC presentations, but the individual disease-to-heart-failure pathway remains hypothesized until objective phenotype and chronology are established.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. ARVC can resemble dilated cardiomyopathy and may involve ventricular dysfunction, but the review does not prove that an individual's heart failure was caused or aggravated by ARVC.",
+        "evidenceGaps": "ARVC diagnostic criteria; objective ventricular dysfunction and heart-failure diagnosis; imaging and rhythm chronology; genetic/family phenotype; and review of ischemic, hypertensive, valvular, inflammatory, tachyarrhythmia-mediated, and other cardiomyopathic causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "ischemic heart disease",
+          "hypertensive heart disease",
+          "valvular heart disease",
+          "myocarditis or inflammatory cardiomyopathy",
+          "tachyarrhythmia-mediated cardiomyopathy",
+          "other inherited or acquired cardiomyopathy"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

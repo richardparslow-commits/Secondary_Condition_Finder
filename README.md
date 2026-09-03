@@ -80,7 +80,7 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run lint` | ESLint |
 | `npm run kb:validate` | Knowledge-base structural/integrity validation |
 | `npm run citations:audit` | Citation safety, provenance, and verification-debt audit |
-| `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-18 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
+| `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-22 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
 | `npm run citations:decay` | Live link-rot/staleness probe for citations (deliberate maintainer gate, not per-PR CI) |
 
 CI also builds the production app and runs real Chrome/ChromeDriver journeys for
@@ -165,6 +165,11 @@ health state.
 
 ## Workflow privacy and browser security
 
+The public security posture and vulnerability-reporting process (including Safe
+Harbor) live in [`SECURITY.md`](SECURITY.md); the operations runbook lives in
+[`docs/security-operations.md`](docs/security-operations.md). All Server Actions
+reside in `src/lib/actions/`.
+
 - Secondary health/disability state is submitted with server actions rather than
   encoded into query strings; the codebase does not expose a helper that
   serializes complete secondary-workflow state back into a URL.
@@ -188,20 +193,26 @@ health state.
 
 ## Knowledge-base coverage and authoring
 
-The catalog remains fixed at **300 recognized conditions / 300 one-to-one
-knowledge-base mappings** after target-v2 identity expansion. Post-v2 maintenance
-still uses 33 catalog files. Fibromyalgia, hip strain, and ankle strain are
-physically normalized in musculoskeletal maintenance; diabetic retinopathy is
-in the ophthalmologic file; insomnia plus substance-use disorder are in the
-mental-disorders catalog; and Cushing's syndrome, Type 1 diabetes,
-Hyperthyroidism, Hyperparathyroidism, and Hypoparathyroidism are now physically
-maintained in the endocrine catalog with their current DC 7907, DC 7913, DC
-7900, DC 7904, and DC 7905 frameworks. `carried-over.json` remains reduced to
-the intentionally quarantined `contralateral-knee-condition` laterality
-placeholder. Batch 6 also narrowed the existing `hyperpituitarism` display
-identity to the prolactin-secreting pituitary-dysfunction scope of DC 7916
-without changing its stable ID. None of these maintenance changes alters the
-300-condition universe.
+The catalog now holds **813 recognized conditions / 813 one-to-one
+knowledge-base mappings** after the 2026-09 master-list expansion. That
+expansion added **502 framework-only draft identities** across 14 body systems
+(each with a TODO authoring checklist and zero fabricated clinical evidence),
+consolidated 13 duplicate identities into pre-existing catalog entries (for
+example the generic `arthritis` umbrella was retired in favor of
+`osteoarthritis` / `rheumatoid-arthritis` / `gout`, and duplicate CRPS,
+HIV/AIDS, hammertoe, epicondylitis, Paget's, osteomalacia, and frostbite
+identities were folded into their existing entries), and renamed the ambiguous
+`aneurysms` umbrella to `peripheral-aneurysm` so `aortic-aneurysm` keeps its
+identity. Post-v2 maintenance still uses 33 catalog files. Fibromyalgia, hip
+strain, and ankle strain are physically normalized in musculoskeletal
+maintenance; diabetic retinopathy is in the ophthalmologic file; insomnia plus
+substance-use disorder are in the mental-disorders catalog; and Cushing's
+syndrome, Type 1 diabetes, Hyperthyroidism, Hyperparathyroidism, and
+Hypoparathyroidism are now physically maintained in the endocrine catalog with
+their current DC 7907, DC 7913, DC 7900, DC 7904, and DC 7905 frameworks.
+`carried-over.json` remains reduced to the intentionally quarantined
+`contralateral-knee-condition` laterality placeholder. None of these maintenance
+changes alters the 813-condition universe.
 
 Waves 1 through 7 added 107 conditions. Clinical Evidence Promotion Batches 1
 through 11 still account for twelve individually reviewed **expansion** mappings:
@@ -234,17 +245,37 @@ repairs `erectile-dysfunction` → `depressive-disorder`; Batch 11 removes the
 unsupported ILD→cardiac-arrhythmia edge while preserving only clinically sourced
 ILD→OSA association research.
 
-After Batch 11, the citation-debt ceilings tighten to **130 total references / 14
-verified / 116 unverified / 114 published-unverified review findings**, while the
-clinical-evidence-with-URL floor rises to **49**. No automated change marks a new
-source verified.
+The knowledge base now holds **283 relationships across 813 mapping files**,
+with **291 source references, 256 verified, 35 unverified** — all 35 remaining
+unverified references belong to the ME-16..ME-22 mapping-expansion batches and
+await the separate qualified-human citation-verification gate. ME-19 (batch 5)
+through ME-22 (batch 8) are the mapping-expansion batches over the 502
+master-list framework-only identities, adding one rank-1 bounded suggestion each
+for twenty identities: `traumatic-brain-injury-residuals`, `allergic-rhinitis`,
+`diabetic-nephropathy`, `menstrual-disorders`, `oral-lichen-planus-lichenoid-lesions`,
+`pheochromocytoma`, `sjogren-s-syndrome`, `leukoplakia`, `erythroplakia`,
+`meningitis`, `peptic-ulcer-disease`, `eosinophilic-esophagitis`, `cholelithiasis`,
+`insulin-resistance-syndrome`, `metabolic-syndrome`, `transient-ischemic-attack-residuals`,
+`testicular-torsion`, `lichen-sclerosus`, `nasal-polyps`, and `diabetic-gastroparesis`; the remaining framework-only draft mappings (empty suggestions)
+continue to await ME-style research, and no automated change marks a new source
+verified.
+
+The knowledge base is a Causal Relational Graph (CRG), not a flat association
+list: every suggestion is enforced by the Zod schema to carry the CRG trio
+(`nexusClaim` as a `DIRECT_CAUSATION`/`AGGRAVATION`/`ASSOCIATION_ONLY`
+discriminated union, `causalMechanism`, and `evidentiaryProfile` with
+`etiologicalConsensus` replacing the deprecated `prevalence` field). `npm run audit:me-compliance` audits every mapping — including each of the 110 ME-1..ME-22
+relationships — for nexus-arm validity, consensus/alignment consistency,
+guard-disclaimer honesty, citation discipline, and quarantine compliance as a CI
+gate. `npm run citations:decay` is the maintainer-run link-rot/staleness probe.
 
 The completed identity-expansion record is maintained in
 `docs/condition-expansion-roadmap.md`; the post-v2 promotion records are in
 `docs/clinical-evidence-promotion-batch-1.md` through
-`docs/clinical-evidence-promotion-batch-11.md`. The 300-condition target is a
-versioned product target, not a claim that medicine or the VA rating schedule
-contains only 300 possible conditions.
+`docs/clinical-evidence-promotion-batch-11.md`. The 813-condition catalog is the
+2026-09 master-list expansion; catalog identities are a versioned product
+target, not a claim that medicine or the VA rating schedule contains only these
+conditions.
 
 To add or change a condition or relationship:
 
@@ -261,16 +292,22 @@ To add or change a condition or relationship:
    separately rather than assuming the grouped label has one etiology or nexus.
    Do not carry obsolete diagnostic codes forward after the governing schedule
    changes; retain any historical-code note only to prevent future regression.
-2. **Mapping:** update/create `data/knowledge-base/<id>.json`. Each published
-   suggestion needs a condition ID, rank, prevalence label, conservative
-   rationale, evidence gaps, and condition-specific source references satisfying
-   the repository's current provenance rules. Legal or rating authority cannot
-   substitute for clinical evidence of a medical relationship.
+2. **Mapping:** update/create `data/knowledge-base/<id>.json`. Each suggestion
+   needs a condition ID, rank, the CRG trio (`nexusClaim` classified as
+   `DIRECT_CAUSATION`, `AGGRAVATION`, or `ASSOCIATION_ONLY`; `causalMechanism`;
+   `evidentiaryProfile.etiologicalConsensus`), conservative rationale, evidence
+   gaps, and condition-specific source references satisfying the repository's
+   current provenance rules. The research-guard posture decides the
+   classification: never force a causation or aggravation claim when the guard
+   or literature only supports association (`ASSOCIATION_ONLY` +
+   `NOT_ESTABLISHED` + `hypothesizedOnly: true`). Legal or rating authority
+   cannot substitute for clinical evidence of a medical relationship.
 3. **Verification:** record source URLs, `sourceCheckedOn`, and `sourceLocator`
    when checked. Keep `verified: false` unless a qualified human completes the
    Citation Verification SOP.
 4. Run `npm run kb:validate`, `npm run citations:audit`, `npm run
-   test:composition`, and `npm test` before review.
+   audit:me-compliance`, `npm run test:composition`, and `npm test` before
+   review.
 
 Strict Zod schemas reject unknown JSON keys, and referential-integrity tests keep
 mapping IDs aligned with the catalog. Drafts may retain explicit TODO items but

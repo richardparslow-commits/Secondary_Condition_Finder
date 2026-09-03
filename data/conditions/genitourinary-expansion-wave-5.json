@@ -2,6 +2,109 @@
   "bodySystem": "Genitourinary & Gynecological Systems",
   "conditions": [
     {
+      "id": "adenomyosis",
+      "name": "Adenomyosis",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.116",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "anorgasmia",
+      "name": "Anorgasmia",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "balanitis-balanoposthitis",
+      "name": "Balanitis / Balanoposthitis",
+      "aliases": [
+        "balanitis",
+        "balanoposthitis"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bladder-contracture",
+      "name": "Bladder contracture",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bladder-pain-syndrome-interstitial-cystitis",
+      "name": "Bladder Pain Syndrome / Interstitial Cystitis",
+      "aliases": [
+        "interstitial cystitis",
+        "bladder pain syndrome",
+        "ics"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "chronic-pelvic-pain-syndrome",
+      "name": "Chronic pelvic pain syndrome",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
       "id": "chronic-pyelonephritis",
       "name": "Chronic Pyelonephritis",
       "aliases": [],
@@ -14,6 +117,139 @@
         }
       ],
       "reviewNotes": []
+    },
+    {
+      "id": "cystitis",
+      "name": "Cystitis",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "delayed-ejaculation",
+      "name": "Delayed ejaculation",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dyspareunia",
+      "name": "Dyspareunia",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.116",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "encopresis",
+      "name": "Encopresis",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "epididymal-cyst",
+      "name": "Epididymal cyst",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "epididymitis-orchitis",
+      "name": "Chronic Epididymitis / Orchitis",
+      "aliases": [
+        "epididymitis",
+        "orchitis"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "DC 7525 framework for chronic epididymitis/orchitis and related male reproductive infections.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Keep this identity distinct from the existing prostatitis entry even where the rating schedule uses a shared infection framework."
+      ]
+    },
+    {
+      "id": "female-reproductive-disorders",
+      "name": "Female reproductive disorders",
+      "aliases": [
+        "gynecologic disorders"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.116",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "fournier-s-gangrene",
+      "name": "Fournier's gangrene",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "hydronephrosis",
@@ -30,6 +266,348 @@
       "reviewNotes": []
     },
     {
+      "id": "loss-of-testicle",
+      "name": "Loss of testicle",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "meatal-stenosis",
+      "name": "Meatal stenosis",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "menstrual-disorders",
+      "name": "Menstrual disorders",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.116",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "mixed-urinary-incontinence",
+      "name": "Mixed urinary incontinence",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "nephritis",
+      "name": "Nephritis",
+      "aliases": [
+        "glomerulonephritis"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "nephrosis",
+      "name": "Nephrosis",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "nocturnal-enuresis",
+      "name": "Nocturnal enuresis",
+      "aliases": [
+        "bedwetting"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "ovarian-cysts",
+      "name": "Ovarian cysts",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "overactive-bladder",
+      "name": "Overactive bladder",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "overflow-incontinence",
+      "name": "Overflow incontinence",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "paraphimosis",
+      "name": "Paraphimosis",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "phimosis",
+      "name": "Phimosis",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "premature-ejaculation",
+      "name": "Premature ejaculation",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "renal-toxicity",
+      "name": "Renal toxicity",
+      "aliases": [
+        "nephrotoxicity"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "retrograde-ejaculation",
+      "name": "Retrograde ejaculation",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "spermatocele",
+      "name": "Spermatocele",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "stress-urinary-incontinence",
+      "name": "Stress urinary incontinence",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "testicular-atrophy",
+      "name": "Testicular atrophy",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "testicular-torsion",
+      "name": "Testicular torsion",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "urethral-caruncle",
+      "name": "Urethral caruncle",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "urethral-diverticulum",
+      "name": "Urethral diverticulum",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
       "id": "urethral-stricture",
       "name": "Urethral Stricture",
       "aliases": [],
@@ -44,9 +622,63 @@
       "reviewNotes": []
     },
     {
+      "id": "urge-urinary-incontinence",
+      "name": "Urge urinary incontinence",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "urinary-frequency-retention",
+      "name": "Urinary Frequency / Retention",
+      "aliases": [
+        "urinary frequency",
+        "urinary retention"
+      ],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.115b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "vaginismus",
+      "name": "Vaginismus",
+      "aliases": [],
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.116",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
       "id": "varicocele-hydrocele",
       "name": "Varicocele / Hydrocele",
-      "aliases": ["hydrocele", "varicocele"],
+      "aliases": [
+        "hydrocele",
+        "varicocele"
+      ],
       "bodySystem": "Genitourinary & Gynecological Systems",
       "ratingSchedule": [
         {
@@ -55,21 +687,29 @@
           "verified": false
         }
       ],
-      "reviewNotes": ["The roadmap intentionally groups varicocele and hydrocele as one user-facing identity. Qualified review should confirm the applicable current diagnostic criteria without borrowing a code from another male reproductive diagnosis."]
+      "reviewNotes": [
+        "The roadmap intentionally groups varicocele and hydrocele as one user-facing identity. Qualified review should confirm the applicable current diagnostic criteria without borrowing a code from another male reproductive diagnosis."
+      ]
     },
     {
-      "id": "epididymitis-orchitis",
-      "name": "Chronic Epididymitis / Orchitis",
-      "aliases": ["epididymitis", "orchitis"],
+      "id": "vulvodynia-vestibulitis",
+      "name": "Vulvodynia / Vestibulitis",
+      "aliases": [
+        "vestibulitis",
+        "vulvar vestibulitis",
+        "vulvodynia"
+      ],
       "bodySystem": "Genitourinary & Gynecological Systems",
       "ratingSchedule": [
         {
-          "citation": "38 CFR 4.115b",
-          "note": "DC 7525 framework for chronic epididymitis/orchitis and related male reproductive infections.",
+          "citation": "38 CFR 4.116",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": ["Keep this identity distinct from the existing prostatitis entry even where the rating schedule uses a shared infection framework."]
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     }
   ]
 }

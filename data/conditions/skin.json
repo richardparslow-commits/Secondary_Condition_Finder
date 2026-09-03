@@ -2,52 +2,6 @@
   "bodySystem": "Skin Conditions",
   "conditions": [
     {
-      "id": "dermatitis",
-      "name": "Dermatitis (Atopic / Contact)",
-      "aliases": [
-        "atopic",
-        "contact",
-        "dermatitis"
-      ],
-      "bodySystem": "Skin Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.118",
-          "note": "Schedule of ratings, skin.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "eczema",
-      "name": "Eczema",
-      "aliases": [],
-      "bodySystem": "Skin Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.118",
-          "note": "Schedule of ratings, skin.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "psoriasis",
-      "name": "Psoriasis",
-      "aliases": [],
-      "bodySystem": "Skin Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.118",
-          "note": "Schedule of ratings, skin.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
       "id": "acne",
       "name": "Acne Vulgaris / Acne Conglobata",
       "aliases": [
@@ -80,20 +34,6 @@
       ]
     },
     {
-      "id": "hidradenitis-suppurativa",
-      "name": "Hidradenitis Suppurativa",
-      "aliases": [],
-      "bodySystem": "Skin Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.118",
-          "note": "Schedule of ratings, skin.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
       "id": "alopecia-areata",
       "name": "Alopecia Areata",
       "aliases": [],
@@ -108,8 +48,90 @@
       "reviewNotes": []
     },
     {
-      "id": "vitiligo",
-      "name": "Vitiligo",
+      "id": "cold-injury-residuals",
+      "name": "Cold Injuries (Frostbite / Immersion Foot Residuals)",
+      "aliases": [
+        "cold injuries",
+        "frostbite",
+        "immersion foot residuals",
+        "frostbite residuals"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Schedule of ratings, skin.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "dermatitis",
+      "name": "Dermatitis (Atopic / Contact)",
+      "aliases": [
+        "atopic",
+        "contact",
+        "dermatitis"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Schedule of ratings, skin.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "eczema",
+      "name": "Eczema",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Schedule of ratings, skin.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "fungal-skin-infection",
+      "name": "Tinea Pedis / Fungal Infections",
+      "aliases": [
+        "fungal infections",
+        "tinea pedis"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Schedule of ratings, skin.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hidradenitis-suppurativa",
+      "name": "Hidradenitis Suppurativa",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Schedule of ratings, skin.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "psoriasis",
+      "name": "Psoriasis",
       "aliases": [],
       "bodySystem": "Skin Conditions",
       "ratingSchedule": [
@@ -139,30 +161,9 @@
       "reviewNotes": []
     },
     {
-      "id": "fungal-skin-infection",
-      "name": "Tinea Pedis / Fungal Infections",
-      "aliases": [
-        "fungal infections",
-        "tinea pedis"
-      ],
-      "bodySystem": "Skin Conditions",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.118",
-          "note": "Schedule of ratings, skin.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "cold-injury-residuals",
-      "name": "Cold Injuries (Frostbite / Immersion Foot Residuals)",
-      "aliases": [
-        "cold injuries",
-        "frostbite",
-        "immersion foot residuals"
-      ],
+      "id": "vitiligo",
+      "name": "Vitiligo",
+      "aliases": [],
       "bodySystem": "Skin Conditions",
       "ratingSchedule": [
         {

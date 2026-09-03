@@ -143,10 +143,10 @@ describe("Mapping Expansion Batch ME-4", () => {
     const mappings = files.map((name) =>
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
     );
-    expect(files).toHaveLength(311);
+    expect(files).toHaveLength(813);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
-    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(172);
-    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(263);
+    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(674);
+    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(313);
     expect(
       mappings.filter((mapping) => mapping.draft === false && (mapping.suggestions ?? []).length === 1),
     ).toHaveLength(66);
@@ -156,9 +156,9 @@ describe("Mapping Expansion Batch ME-4", () => {
     const refs = mappings.flatMap((mapping) =>
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-    expect(refs).toHaveLength(271);
+expect(refs).toHaveLength(321);
     expect(refs.filter((ref) => ref.verified === true)).toHaveLength(256);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(15);
+expect(refs.filter((ref) => ref.verified === false)).toHaveLength(65);
   });
 
   it("passes citation and master-registry gates after ME-7 verification", { timeout: 30_000 }, () => {
@@ -175,10 +175,10 @@ describe("Mapping Expansion Batch ME-4", () => {
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 271,
+      references: 321,
       verified: 256,
       verifiedProvenance: 262,
-      unverified: 15,
+      unverified: 65,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -194,8 +194,8 @@ describe("Mapping Expansion Batch ME-4", () => {
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 263,
-      pendingVerificationSourceEntities: 15,
+      relationships: 313,
+      pendingVerificationSourceEntities: 65,
     });
   });
 });

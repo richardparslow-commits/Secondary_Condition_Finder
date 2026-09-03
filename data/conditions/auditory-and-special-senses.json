@@ -2,8 +2,254 @@
   "bodySystem": "Auditory & Special Senses",
   "conditions": [
     {
-      "id": "tinnitus",
-      "name": "Tinnitus",
+      "id": "acoustic-neuroma",
+      "name": "Acoustic neuroma",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "ageusia",
+      "name": "Loss of Taste (Ageusia)",
+      "aliases": [
+        "ageusia",
+        "loss of taste"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87a",
+          "note": "Schedule of ratings, other sense organs.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "anosmia",
+      "name": "Loss of Smell (Anosmia)",
+      "aliases": [
+        "anosmia",
+        "loss of smell"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87a",
+          "note": "Schedule of ratings, other sense organs.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "benign-paroxysmal-positional-vertigo",
+      "name": "Benign paroxysmal positional vertigo",
+      "aliases": [
+        "BPPV"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cataracts",
+      "name": "Cataracts",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "cholesteatoma",
+      "name": "Cholesteatoma",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "conductive-hearing-loss",
+      "name": "Conductive hearing loss",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.85",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "diplopia",
+      "name": "Diplopia (Double Vision)",
+      "aliases": [
+        "diplopia",
+        "double vision"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "dizziness",
+      "name": "Dizziness",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "glaucoma",
+      "name": "Glaucoma",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hearing-loss",
+      "name": "Hearing loss",
+      "aliases": [
+        "sensorineural",
+        "mixed",
+        "total",
+        "sensorineural hearing loss",
+        "mixed hearing loss",
+        "total deafness"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.85",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "labyrinthitis",
+      "name": "Labyrinthitis",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Schedule of ratings, ear.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "loss-of-auricle",
+      "name": "Loss of auricle",
+      "aliases": [
+        "ear"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "macular-degeneration",
+      "name": "Macular Degeneration",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "mastoiditis",
+      "name": "Mastoiditis",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "menieres-disease",
+      "name": "Meniere's Disease",
       "aliases": [],
       "bodySystem": "Auditory & Special Senses",
       "ratingSchedule": [
@@ -35,6 +281,36 @@
       "reviewNotes": []
     },
     {
+      "id": "optic-neuritis",
+      "name": "Optic Neuritis",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "otitis-externa",
+      "name": "Otitis externa",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
       "id": "otitis-media",
       "name": "Otitis Media",
       "aliases": [],
@@ -49,22 +325,88 @@
       "reviewNotes": []
     },
     {
-      "id": "menieres-disease",
-      "name": "Meniere's Disease",
+      "id": "otosclerosis",
+      "name": "Otosclerosis",
       "aliases": [],
       "bodySystem": "Auditory & Special Senses",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.87",
-          "note": "Schedule of ratings, ear.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "perforated-eardrum",
+      "name": "Perforated eardrum",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "persistent-postural-perceptual-dizziness",
+      "name": "Persistent postural-perceptual dizziness",
+      "aliases": [
+        "PPPD"
+      ],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "retinal-detachment",
+      "name": "Retinal Detachment",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.79",
+          "note": "Schedule of ratings, eye.",
           "verified": false
         }
       ],
       "reviewNotes": []
     },
     {
-      "id": "labyrinthitis",
-      "name": "Labyrinthitis",
+      "id": "superior-semicircular-canal-dehiscence",
+      "name": "Superior semicircular canal dehiscence",
+      "aliases": [],
+      "bodySystem": "Auditory & Special Senses",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.87",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "tinnitus",
+      "name": "Tinnitus",
       "aliases": [],
       "bodySystem": "Auditory & Special Senses",
       "ratingSchedule": [
@@ -94,132 +436,28 @@
       "reviewNotes": []
     },
     {
-      "id": "anosmia",
-      "name": "Loss of Smell (Anosmia)",
-      "aliases": [
-        "anosmia",
-        "loss of smell"
-      ],
-      "bodySystem": "Auditory & Special Senses",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.87a",
-          "note": "Schedule of ratings, other sense organs.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "ageusia",
-      "name": "Loss of Taste (Ageusia)",
-      "aliases": [
-        "ageusia",
-        "loss of taste"
-      ],
-      "bodySystem": "Auditory & Special Senses",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.87a",
-          "note": "Schedule of ratings, other sense organs.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "cataracts",
-      "name": "Cataracts",
+      "id": "vestibular-migraine",
+      "name": "Vestibular migraine",
       "aliases": [],
       "bodySystem": "Auditory & Special Senses",
       "ratingSchedule": [
         {
-          "citation": "38 CFR 4.79",
-          "note": "Schedule of ratings, eye.",
+          "citation": "38 CFR 4.87",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": []
-    },
-    {
-      "id": "glaucoma",
-      "name": "Glaucoma",
-      "aliases": [],
-      "bodySystem": "Auditory & Special Senses",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.79",
-          "note": "Schedule of ratings, eye.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "macular-degeneration",
-      "name": "Macular Degeneration",
-      "aliases": [],
-      "bodySystem": "Auditory & Special Senses",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.79",
-          "note": "Schedule of ratings, eye.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "retinal-detachment",
-      "name": "Retinal Detachment",
-      "aliases": [],
-      "bodySystem": "Auditory & Special Senses",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.79",
-          "note": "Schedule of ratings, eye.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "optic-neuritis",
-      "name": "Optic Neuritis",
-      "aliases": [],
-      "bodySystem": "Auditory & Special Senses",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.79",
-          "note": "Schedule of ratings, eye.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
-    },
-    {
-      "id": "diplopia",
-      "name": "Diplopia (Double Vision)",
-      "aliases": [
-        "diplopia",
-        "double vision"
-      ],
-      "bodySystem": "Auditory & Special Senses",
-      "ratingSchedule": [
-        {
-          "citation": "38 CFR 4.79",
-          "note": "Schedule of ratings, eye.",
-          "verified": false
-        }
-      ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "visual-impairment",
       "name": "Visual Acuity / Field Impairment",
       "aliases": [
         "field impairment",
-        "visual acuity"
+        "visual acuity",
+        "visual impairment"
       ],
       "bodySystem": "Auditory & Special Senses",
       "ratingSchedule": [

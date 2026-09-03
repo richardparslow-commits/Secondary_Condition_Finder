@@ -8,7 +8,7 @@ const kbDir = path.join(root, "data", "knowledge-base");
 const relPath = path.join(root, "data", "evidence", "master-relationships.json");
 const srcPath = path.join(root, "data", "evidence", "master-sources.json");
 const retirementPath = path.join(root, "data", "citation-retirements.json");
-const expectedBaseline = "13812063f0408ea1cf3235370836a0ac867767ce";
+const expectedBaseline = "ea005e50ccbc30800dd46f3872f764f98e977c1f";
 
 const fail = (message) => {
   console.error(JSON.stringify({ status: "FAIL", message }, null, 2));
@@ -47,9 +47,9 @@ if (srcRegistry.status !== "AUTHORITATIVE-CURRENT-STATE") fail("Source registry 
 if (relRegistry.baselineCommit !== expectedBaseline || srcRegistry.baselineCommit !== expectedBaseline) fail("Registry baseline mismatch.");
 
 const relById = new Map(relRegistry.relationships.map((r) => [r.relationshipId, r]));
-if (relById.size !== 263) fail(`Expected 263 master relationships, found ${relById.size}.`);
+if (relById.size !== 313) fail(`Expected 313 master relationships, found ${relById.size}.`);
 const srcById = new Map(srcRegistry.sources.map((s) => [s.sourceId, s]));
-if (srcById.size !== 257) fail(`Expected 257 source entities including lineage, found ${srcById.size}.`);
+if (srcById.size !== 307) fail(`Expected 307 source entities including lineage, found ${srcById.size}.`);
 
 const isApprovedVerificationOnlyPromotion = (source, ref) => {
   const state = source?.verificationState;
@@ -106,7 +106,7 @@ let legalUses = 0;
 const observedUses = new Map();
 
 const files = fs.readdirSync(kbDir).filter((n) => n.endsWith(".json")).sort();
-if (files.length !== 311) fail(`Expected 311 KB files, found ${files.length}.`);
+if (files.length !== 813) fail(`Expected 813 KB files, found ${files.length}.`);
 
 for (const file of files) {
   const mapping = readJson(path.join(kbDir, file));
@@ -176,10 +176,10 @@ for (const file of files) {
   }
 }
 
-if (published !== 139 || draft !== 172) fail(`Publication-state drift: published=${published}, draft=${draft}`);
-if (relationshipCount !== 263) fail(`Relationship count drift: ${relationshipCount}`);
-if (referenceUses !== 271 || verifiedTrue !== 256 || verifiedFalse !== 15) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
-if (clinicalUses !== 266 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);
+if (published !== 139 || draft !== 674) fail(`Publication-state drift: published=${published}, draft=${draft}`);
+if (relationshipCount !== 313) fail(`Relationship count drift: ${relationshipCount}`);
+if (referenceUses !== 321 || verifiedTrue !== 256 || verifiedFalse !== 65) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
+if (clinicalUses !== 316 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);
 
 const statusCounts = {};
 let activeClinical = 0;
@@ -217,7 +217,7 @@ for (const source of srcRegistry.sources) {
 
 const expectedStatuses = {
   active: 233,
-  "pending-verification": 15,
+  "pending-verification": 65,
   "superseded-unverified": 7,
   "bibliographic-correction-only": 1,
   "retired-only": 1,
@@ -226,29 +226,28 @@ if (Object.entries(expectedStatuses).some(([key, value]) => (statusCounts[key] |
     Object.keys(statusCounts).some((key) => !(key in expectedStatuses))) {
   fail(`Source status counts mismatch: ${JSON.stringify(statusCounts)}`);
 }
-if (activeClinical !== 232 || pendingClinical !== 15 || activeLegal !== 1) {
+if (activeClinical !== 232 || pendingClinical !== 65 || activeLegal !== 1) {
   fail(`Source kind counts mismatch: activeClinical=${activeClinical}, pendingClinical=${pendingClinical}, activeLegal=${activeLegal}`);
 }
 if (retiredVerifiedUses !== 6) fail(`Retired verified relationship-source uses mismatch: ${retiredVerifiedUses}`);
 
 const legacyCount = relRegistry.relationships.filter((r) => r.publicationGuard.status === "legacy-rationale-boundary").length;
 const explicitCount = relRegistry.relationships.filter((r) => r.publicationGuard.status === "explicit").length;
-if (legacyCount !== 74 || explicitCount !== 189) fail(`Publication guard counts mismatch: legacy=${legacyCount}, explicit=${explicitCount}`);
+if (legacyCount !== 74 || explicitCount !== 239) fail(`Publication guard counts mismatch: legacy=${legacyCount}, explicit=${explicitCount}`);
 
-const expectedRelCounts = { relationships: 263, explicitPublicationGuards: 189, legacyRationaleBoundaries: 74 };
+const expectedRelCounts = { relationships: 313, explicitPublicationGuards: 239, legacyRationaleBoundaries: 74 };
 if (JSON.stringify(relRegistry.counts) !== JSON.stringify(expectedRelCounts)) fail(`Relationship registry count metadata mismatch: ${JSON.stringify(relRegistry.counts)}`);
 
 const expectedSourceCounts = {
-  liveSourceReferenceUses: 271,
-  activeSourceEntities: 233,
-  pendingVerificationSourceEntities: 15,
+  liveSourceReferenceUses: 321,
+  activeSourceEntities: 233,    pendingVerificationSourceEntities: 65,
   activeClinicalSourceEntities: 232,
-  pendingClinicalSourceEntities: 15,
+  pendingClinicalSourceEntities: 65,
   activeLegalAuthorityEntities: 1,
   retiredOnlySourceEntities: 1,
   supersededUnverifiedSourceEntities: 7,
   bibliographicCorrectionOnlyEntities: 1,
-  totalSourceEntitiesIncludingLineage: 257,
+  totalSourceEntitiesIncludingLineage: 307,
   retiredVerifiedRelationshipSourceUses: 6,
 };
 if (JSON.stringify(srcRegistry.counts) !== JSON.stringify(expectedSourceCounts)) fail(`Source registry count metadata mismatch: ${JSON.stringify(srcRegistry.counts)}`);

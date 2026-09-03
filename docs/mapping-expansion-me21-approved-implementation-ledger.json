@@ -1,0 +1,100 @@
+{
+  "phase": "Mapping Expansion ME-21",
+  "ledgerStatus": "APPROVED AND APPLIED LOCALLY - CITATIONS PENDING VERIFICATION",
+  "approvalDate": "2026-09-02",
+  "requiredBaselineCommit": "ea005e50ccbc30800dd46f3872f764f98e977c1f",
+  "previousRegistryCurrentState": "ME20-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+  "commitSubject": "map: mapping expansion ME-21 (5 relationships)",
+  "issueReference": "issue #360 Mapping Expansion Wave (ME-15+); ME-21 continues the ME-20 backlog over Wave-8 framework-only identities (catalog 813)",
+  "approvalRecord": "Qualified-human approval captured on 2026-09-02: five bounded ME-21 mappings from the ME-20 backlog were approved at rank 1. Mapping approval is not citation verification; all five clinical sources enter verified:false and pending-verification.",
+  "rows": [
+    {
+      "primaryId": "peptic-ulcer-disease",
+      "targetId": "anemia",
+      "rank": 1,
+      "pmid": "7942718",
+      "doi": null,
+      "sourceTitle": "The role of endoscopy in the evaluation of iron deficiency anemia in patients over the age of 50",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7942718/",
+      "claimType": "clinical-sample-association",
+      "guard": "Require documented peptic-ulcer disease with bleeding or other clinically relevant iron loss and separately established iron-deficiency anemia with compatible chronology; the cohort identifies an upper gastrointestinal source in selected patients but does not establish that any individual's anemia was caused by peptic-ulcer disease. Preserve gastrointestinal malignancy, other gastrointestinal bleeding, malabsorption, dietary deficiency, chronic inflammatory disease, renal disease, hemolysis, medications, and other causes of anemia. Do not infer anemia from a peptic-ulcer diagnosis without objective hematologic evidence or compatible bleeding history."
+    },
+    {
+      "primaryId": "eosinophilic-esophagitis",
+      "targetId": "dysphagia",
+      "rank": 1,
+      "pmid": "34609446",
+      "doi": "10.1001/jama.2021.14920",
+      "sourceTitle": "Eosinophilic Esophagitis: A Review",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34609446/",
+      "claimType": "recognized-manifestation-association",
+      "guard": "Require biopsy-confirmed eosinophilic esophagitis and separately documented dysphagia with compatible chronology; the review describes a recognized clinical manifestation but does not establish that every individual's dysphagia is attributable to eosinophilic esophagitis or exclude structural, motility, neurologic, medication-related, or functional causes. Preserve peptic stricture, malignancy, achalasia and other motility disorders, reflux-related disease, neurologic disease, medication injury, and functional dysphagia as competing explanations. Do not infer eosinophilic esophagitis from dysphagia alone or from atopy without appropriate diagnostic evaluation."
+    },
+    {
+      "primaryId": "cholelithiasis",
+      "targetId": "pancreatitis",
+      "rank": 1,
+      "pmid": "24679420",
+      "doi": "10.1016/j.suc.2014.01.006",
+      "sourceTitle": "Gallstone pancreatitis: a review",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24679420/",
+      "claimType": "population-level-cause-association",
+      "guard": "Require documented cholelithiasis or gallstone migration and separately established acute pancreatitis with compatible chronology and diagnostic findings; gallstones are a recognized cause at the population level but the review does not establish that any individual's pancreatitis was biliary in origin. Preserve alcohol, hypertriglyceridemia, medications, hypercalcemia, structural or genetic disease, trauma, autoimmune disease, malignancy, and other pancreatitis etiologies. Do not infer pancreatitis from cholelithiasis without objective pancreatic evidence or infer biliary attribution from abdominal pain alone."
+    },
+    {
+      "primaryId": "insulin-resistance-syndrome",
+      "targetId": "diabetes-mellitus-type-2",
+      "rank": 1,
+      "pmid": "12231073",
+      "doi": "10.1016/S0002-9149(02)02553-5",
+      "sourceTitle": "Insulin resistance as the core defect in type 2 diabetes mellitus",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12231073/",
+      "claimType": "pathophysiologic-association",
+      "guard": "Require a clinically established insulin-resistance syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; the review addresses a central pathophysiologic component but does not establish that insulin resistance alone caused any individual's diabetes or that all insulin-resistant phenotypes progress to diabetes. Preserve beta-cell dysfunction, genetic susceptibility, obesity and adiposity, medications, endocrine disease, pancreatic disease, secondary diabetes, and other metabolic contributors. Do not infer type 2 diabetes from insulin resistance markers alone."
+    },
+    {
+      "primaryId": "metabolic-syndrome",
+      "targetId": "diabetes-mellitus-type-2",
+      "rank": 1,
+      "pmid": "24843675",
+      "doi": "10.1111/jdi.12075",
+      "sourceTitle": "Metabolic syndrome as a predictor of type 2 diabetes, and its clinical interpretations and usefulness",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24843675/",
+      "claimType": "population-level-risk-association",
+      "guard": "Require an established metabolic-syndrome phenotype and separately diagnosed type 2 diabetes with compatible chronology; the review supports population-level risk prediction but does not establish that metabolic syndrome caused any individual's diabetes. Preserve the syndrome's component overlap with diabetes, beta-cell dysfunction, genetic susceptibility, adiposity, medications, endocrine disease, pancreatic disease, and other diabetes etiologies. Do not infer type 2 diabetes from a metabolic-syndrome label or its individual components alone."
+    }
+  ],
+  "citationStateAfterImplementation": {
+    "kbSourceReferences": "verified:false",
+    "masterSources": "pending-verification",
+    "registryCurrentState": "ME21-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+    "qualifiedHumanCitationReviewRequired": true,
+    "automaticPromotionAuthorized": false
+  },
+  "implementationDateLocal": "2026-09-02",
+  "implementationResult": {
+    "rowsImplemented": 5,
+    "rank1Rows": 5,
+    "rank2Rows": 0,
+    "publicationStatesPreserved": {
+      "peptic-ulcer-disease": "draft",
+      "eosinophilic-esophagitis": "draft",
+      "cholelithiasis": "draft",
+      "insulin-resistance-syndrome": "draft",
+      "metabolic-syndrome": "draft"
+    },
+    "postMatrix": [813, 139, 674, 278, 66, 73, 49],
+    "kbVerifiedFalseRows": 5,
+    "masterPendingSources": 5,
+    "registeredPrimaries": 189,
+    "remainingPrimaries": 624,
+    "remainingTargetOnlyPrimaries": 37,
+    "citationPromotions": 0,
+    "publicationStatusChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "semanticBroadening": 0,
+    "remoteWritesPerformed": false
+  },
+  "failurePolicy": "Fail closed. If any baseline, edge, source identity, projection, validation, registry parity, or publication-state requirement fails, stop and preserve the exact repository state."
+}

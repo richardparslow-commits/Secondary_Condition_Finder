@@ -1,0 +1,58 @@
+{
+  "id": "atrial-septal-defect",
+  "draft": true,
+  "todo": [
+    "Obtain qualified-human citation verification for the proposed atrial-septal-defect to pulmonary-hypertension association.",
+    "Confirm the defect type, shunt/hemodynamic burden, pulmonary-hypertension classification, and competing congenital or acquired causes before any publication decision."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pulmonary-hypertension",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-25 adds this relationship only as a bounded congenital-shunt association. Atrial septal defects can expose the pulmonary circulation to increased flow and, in selected patients over time, be associated with pulmonary arterial hypertension or pulmonary vascular disease; however, the relationship is heterogeneous and does not apply to every defect or pulmonary-pressure elevation. Require documented atrial septal defect type and size, shunt direction and magnitude, right-heart and pulmonary-pressure findings under accepted clinical criteria, compatible chronology, and congenital-cardiology review. Exclude left-heart disease, lung disease, chronic thromboembolic disease, hypoxia, portal disease, drugs, and other pulmonary-hypertension groups before attributing the association to the defect. Do not infer pulmonary hypertension from an ASD label, dyspnea, or an isolated echocardiographic estimate.",
+      "evidenceGaps": [
+        "Independent congenital-cardiology documentation of atrial septal defect anatomy and pulmonary hypertension",
+        "Defect type, shunt fraction, right-heart remodeling, oxygenation, right-heart catheterization or other accepted hemodynamic evidence",
+        "Chronology of the defect, shunt burden, pulmonary vascular disease, and any closure or treatment",
+        "Classification and exclusion of group 2, group 3, group 4, drug-related, hypoxic, portal, and other pulmonary-hypertension causes",
+        "Resolution of publication guard: Require documented ASD anatomy, objective pulmonary hypertension, compatible shunt/chronology, and competing-cause review; do not infer pulmonary hypertension from an ASD label alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Nashat H, Launchedbury R, Abdul-Ghani M, et al. Atrial septal defects and pulmonary arterial hypertension. J Thorac Dis. 2018;10(Suppl 24):S2953-S2965. PMID 30305956. doi:10.21037/jtd.2018.08.92.",
+          "note": "Mapping Expansion Batch ME-25 clinical review for the bounded atrial-septal-defect to pulmonary-hypertension proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30305956/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 30305956; review of ASD-associated pulmonary arterial hypertension, congenital shunt physiology, and closure considerations; approved ME-25 guard requires objective hemodynamics and pulmonary-hypertension group review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited congenital-cardiology review supports a possible relationship between atrial septal defects and pulmonary arterial hypertension in selected phenotypes, without establishing that every ASD or every pulmonary-hypertension diagnosis has that origin.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established by the current evidence; defect anatomy, hemodynamics, chronology, classification, and alternative pulmonary-hypertension causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "An atrial-level left-to-right shunt may increase pulmonary blood flow and vascular stress, with pulmonary vascular remodeling and hypertension possible in selected patients, but the individual hemodynamic pathway remains hypothesized until characterized.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The review addresses ASD-related pulmonary vascular disease but emphasizes heterogeneous anatomy, timing, and pulmonary-hypertension classification rather than an automatic individual pathway.",
+        "evidenceGaps": "Independent ASD and pulmonary-hypertension diagnoses; anatomy and shunt/hemodynamics; chronology; pulmonary-hypertension group classification; and exclusion of left-heart, lung, thromboembolic, hypoxic, portal, drug-related, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "left-heart disease or group 2 pulmonary hypertension",
+          "chronic lung disease or hypoxia",
+          "chronic thromboembolic pulmonary hypertension",
+          "connective-tissue or inflammatory pulmonary vascular disease",
+          "portal hypertension",
+          "drug or toxin exposure and other congenital heart disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

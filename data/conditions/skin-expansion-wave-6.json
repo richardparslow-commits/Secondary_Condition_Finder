@@ -2,9 +2,299 @@
   "bodySystem": "Skin Conditions",
   "conditions": [
     {
+      "id": "abscesses",
+      "name": "Abscesses",
+      "aliases": [
+        "abscess"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "acanthosis-nigricans",
+      "name": "Acanthosis nigricans",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "actinic-keratosis",
+      "name": "Actinic keratosis",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "alopecia",
+      "name": "Alopecia",
+      "aliases": [
+        "androgenetic alopecia",
+        "alopecia totalis",
+        "alopecia universalis",
+        "traction alopecia"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "atopic-dermatitis-eczema",
+      "name": "Atopic Dermatitis (Eczema)",
+      "aliases": [
+        "atopic eczema"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "basal-cell-carcinoma",
+      "name": "Basal cell carcinoma",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bowen-s-disease",
+      "name": "Bowen's disease",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bullous-pemphigoid",
+      "name": "Bullous pemphigoid",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "burns",
+      "name": "Burns",
+      "aliases": [
+        "burn residuals",
+        "burns residuals"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cellulitis",
+      "name": "Cellulitis",
+      "aliases": [
+        "skin infection"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "chloracne",
+      "name": "Chloracne",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cicatricial-pemphigoid",
+      "name": "Cicatricial pemphigoid",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "contact-dermatitis",
+      "name": "Contact dermatitis",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "decubitus-ulcers",
+      "name": "Decubitus ulcers",
+      "aliases": [
+        "bedsores"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dermatitis-herpetiformis",
+      "name": "Dermatitis herpetiformis",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dermatofibroma",
+      "name": "Dermatofibroma",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "dermatofibrosarcoma-protuberans",
+      "name": "Dermatofibrosarcoma protuberans",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
       "id": "discoid-lupus",
       "name": "Discoid Lupus Erythematosus",
-      "aliases": ["discoid lupus"],
+      "aliases": [
+        "discoid lupus"
+      ],
       "bodySystem": "Skin Conditions",
       "ratingSchedule": [
         {
@@ -13,21 +303,171 @@
           "verified": false
         }
       ],
-      "reviewNotes": ["Keep this cutaneous identity distinct from the existing systemic-lupus-erythematosus catalog entry. The rating schedule expressly cautions against combining DC 7809 with DC 6350 for the same manifestations."]
+      "reviewNotes": [
+        "Keep this cutaneous identity distinct from the existing systemic-lupus-erythematosus catalog entry. The rating schedule expressly cautions against combining DC 7809 with DC 6350 for the same manifestations."
+      ]
     },
     {
-      "id": "scarring-alopecia",
-      "name": "Scarring Alopecia",
+      "id": "dysplastic-nevus-syndrome",
+      "name": "Dysplastic nevus syndrome",
       "aliases": [],
       "bodySystem": "Skin Conditions",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.118",
-          "note": "DC 7830, scarring alopecia.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
-      "reviewNotes": ["Keep this identity distinct from the existing alopecia-areata catalog entry, which has separate rating criteria under DC 7831."]
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "epidermolysis-bullosa-acquired",
+      "name": "Epidermolysis Bullosa (Acquired)",
+      "aliases": [
+        "acquired epidermolysis bullosa"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "erythema-induratum",
+      "name": "Erythema induratum",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "erythema-multiforme",
+      "name": "Erythema multiforme",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "erythema-nodosum",
+      "name": "Erythema nodosum",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "erythroplasia-of-queyrat",
+      "name": "Erythroplasia of Queyrat",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "erythropoietic-protoporphyria",
+      "name": "Erythropoietic protoporphyria",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "frontal-fibrosizing-alopecia",
+      "name": "Frontal fibrosizing alopecia",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "granuloma-annulare",
+      "name": "Granuloma annulare",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "halo-nevus",
+      "name": "Halo nevus",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "hyperhidrosis",
@@ -42,6 +482,474 @@
         }
       ],
       "reviewNotes": []
+    },
+    {
+      "id": "hyperpigmentation",
+      "name": "Hyperpigmentation",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "hypopigmentation",
+      "name": "Hypopigmentation",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "ichthyosis",
+      "name": "Ichthyosis",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "impetigo",
+      "name": "Impetigo",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "keloids",
+      "name": "Keloids",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "lichen-planopilaris",
+      "name": "Lichen planopilaris",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "lichen-planus",
+      "name": "Lichen planus",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "lichen-sclerosus",
+      "name": "Lichen sclerosus",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "lichen-simplex-chronicus",
+      "name": "Lichen simplex chronicus",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "linear-iga",
+      "name": "Linear IgA",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "lupus-profundus",
+      "name": "Lupus profundus",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "necrobiotic-xanthogranuloma",
+      "name": "Necrobiotic xanthogranuloma",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "poikiloderma",
+      "name": "Poikiloderma",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "porphyria-cutanea-tarda",
+      "name": "Porphyria cutanea tarda",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "prurigo-nodularis",
+      "name": "Prurigo nodularis",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pyoderma",
+      "name": "Pyoderma",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pyoderma-gangrenosum",
+      "name": "Pyoderma gangrenosum",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "rosacea",
+      "name": "Rosacea",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "scarring-alopecia",
+      "name": "Scarring Alopecia",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "DC 7830, scarring alopecia.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Keep this identity distinct from the existing alopecia-areata catalog entry, which has separate rating criteria under DC 7831."
+      ]
+    },
+    {
+      "id": "seborrheic-dermatitis",
+      "name": "Seborrheic dermatitis",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "seborrheic-keratosis",
+      "name": "Seborrheic keratosis",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "squamous-cell-carcinoma",
+      "name": "Squamous cell carcinoma",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "stevens-johnson-syndrome",
+      "name": "Stevens-Johnson syndrome",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "subacute-cutaneous-lupus",
+      "name": "Subacute cutaneous lupus",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "sweet-s-syndrome",
+      "name": "Sweet's syndrome",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "toxic-epidermal-necrolysis",
+      "name": "Toxic epidermal necrolysis",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "tumid-lupus",
+      "name": "Tumid lupus",
+      "aliases": [],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "xanthelasma",
+      "name": "Xanthelasma",
+      "aliases": [
+        "xanthelasma palpebrarum"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "xanthomas",
+      "name": "Xanthomas",
+      "aliases": [
+        "xanthoma"
+      ],
+      "bodySystem": "Skin Conditions",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.118",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     }
   ]
 }

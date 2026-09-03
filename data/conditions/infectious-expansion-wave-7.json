@@ -2,6 +2,40 @@
   "bodySystem": "Infectious & Tropical Diseases",
   "conditions": [
     {
+      "id": "actinomycosis",
+      "name": "Actinomycosis",
+      "aliases": [
+        "pulmonary actinomycosis"
+      ],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "DC 6822 under Bacterial Infections of the Lung; active pulmonary infection is evaluated under that formula and respiratory residuals are rated according to documented findings.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "DC 6822 is a respiratory/pulmonary rating identity. Extra-pulmonary actinomycosis may require evaluation under the body-system criteria for the documented residuals.",
+        "Do not use the rating schedule as evidence of causation or secondary nexus."
+      ]
+    },
+    {
+      "id": "adrenal-histoplasmosis",
+      "name": "Adrenal Histoplasmosis",
+      "aliases": [
+        "histoplasmosis of adrenal gland",
+        "histoplasmosis of adrenal glands",
+        "bilateral adrenal histoplasmosis",
+        "adrenal involvement by histoplasmosis"
+      ],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Taxonomy-only identity added for documented adrenal Histoplasma involvement. No condition-specific VA rating schedule or diagnostic code was assigned by this mapping program; retain for qualified catalog/rating review rather than borrowing the pulmonary histoplasmosis rating metadata."
+      ]
+    },
+    {
       "id": "amebiasis",
       "name": "Amebiasis",
       "aliases": [
@@ -36,41 +70,53 @@
       ]
     },
     {
-      "id": "actinomycosis",
-      "name": "Actinomycosis",
-      "aliases": [
-        "pulmonary actinomycosis"
-      ],
+      "id": "beriberi",
+      "name": "Beriberi",
+      "aliases": [],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {
-          "citation": "38 CFR 4.97",
-          "note": "DC 6822 under Bacterial Infections of the Lung; active pulmonary infection is evaluated under that formula and respiratory residuals are rated according to documented findings.",
+          "citation": "38 CFR 4.88b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
       "reviewNotes": [
-        "DC 6822 is a respiratory/pulmonary rating identity. Extra-pulmonary actinomycosis may require evaluation under the body-system criteria for the documented residuals.",
-        "Do not use the rating schedule as evidence of causation or secondary nexus."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
       ]
     },
     {
-      "id": "nocardiosis",
-      "name": "Nocardiosis",
+      "id": "female-infertility",
+      "name": "Female infertility",
       "aliases": [
-        "pulmonary nocardiosis"
+        "infertility, female"
       ],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {
-          "citation": "38 CFR 4.97",
-          "note": "DC 6823 under Bacterial Infections of the Lung; active pulmonary infection is evaluated under that formula and respiratory residuals are rated according to documented findings.",
+          "citation": "38 CFR 4.88b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
       "reviewNotes": [
-        "DC 6823 is a respiratory/pulmonary rating identity. Extra-pulmonary nocardiosis may require evaluation under the body-system criteria for the documented residuals.",
-        "Do not use the rating schedule as evidence of causation or secondary nexus."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "granulomatous-disease",
+      "name": "Granulomatous disease",
+      "aliases": [],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
       ]
     },
     {
@@ -93,37 +139,58 @@
       ]
     },
     {
-      "id": "adrenal-histoplasmosis",
-      "name": "Adrenal Histoplasmosis",
+      "id": "malnutrition-residuals",
+      "name": "Malnutrition residuals",
       "aliases": [
-        "histoplasmosis of adrenal gland",
-        "histoplasmosis of adrenal glands",
-        "bilateral adrenal histoplasmosis",
-        "adrenal involvement by histoplasmosis"
-      ],
-      "bodySystem": "Infectious & Tropical Diseases",
-      "ratingSchedule": [],
-      "reviewNotes": [
-        "Taxonomy-only identity added for documented adrenal Histoplasma involvement. No condition-specific VA rating schedule or diagnostic code was assigned by this mapping program; retain for qualified catalog/rating review rather than borrowing the pulmonary histoplasmosis rating metadata."
-      ]
-    },
-    {
-      "id": "strongyloidiasis",
-      "name": "Strongyloidiasis",
-      "aliases": [
-        "strongyloides infection"
+        "malnutrition"
       ],
       "bodySystem": "Infectious & Tropical Diseases",
       "ratingSchedule": [
         {
           "citation": "38 CFR 4.88b",
-          "note": "DC 6325 expressly covers hyperinfection syndrome or disseminated strongyloidiasis. Other parasitic presentations may require DC 6320 or rating of residual disability in the appropriate body system.",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
           "verified": false
         }
       ],
       "reviewNotes": [
-        "Do not treat DC 6325 as a diagnosis-specific code for every uncomplicated or localized Strongyloides infection; its express scope is hyperinfection syndrome or disseminated strongyloidiasis.",
-        "The broader stable catalog identity is retained for discovery while coding scope remains explicit."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "miscarriage",
+      "name": "Miscarriage",
+      "aliases": [
+        "spontaneous abortion"
+      ],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "nocardiosis",
+      "name": "Nocardiosis",
+      "aliases": [
+        "pulmonary nocardiosis"
+      ],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "DC 6823 under Bacterial Infections of the Lung; active pulmonary infection is evaluated under that formula and respiratory residuals are rated according to documented findings.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "DC 6823 is a respiratory/pulmonary rating identity. Extra-pulmonary nocardiosis may require evaluation under the body-system criteria for the documented residuals.",
+        "Do not use the rating schedule as evidence of causation or secondary nexus."
       ]
     },
     {
@@ -146,6 +213,75 @@
       ],
       "reviewNotes": [
         "This grouped identity follows the current DC 6317 regulatory grouping. Shared rating identity does not imply that all included infections share one etiology, course, residual pattern, or secondary pathway."
+      ]
+    },
+    {
+      "id": "strongyloidiasis",
+      "name": "Strongyloidiasis",
+      "aliases": [
+        "strongyloides infection"
+      ],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "DC 6325 expressly covers hyperinfection syndrome or disseminated strongyloidiasis. Other parasitic presentations may require DC 6320 or rating of residual disability in the appropriate body system.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Do not treat DC 6325 as a diagnosis-specific code for every uncomplicated or localized Strongyloides infection; its express scope is hyperinfection syndrome or disseminated strongyloidiasis.",
+        "The broader stable catalog identity is retained for discovery while coding scope remains explicit."
+      ]
+    },
+    {
+      "id": "syphilis",
+      "name": "Syphilis",
+      "aliases": [
+        "syphilis residuals"
+      ],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "unexplained-gastrointestinal-issues",
+      "name": "Unexplained gastrointestinal issues",
+      "aliases": [],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "unexplained-skin-conditions",
+      "name": "Unexplained skin conditions",
+      "aliases": [],
+      "bodySystem": "Infectious & Tropical Diseases",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.88b",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
       ]
     }
   ]

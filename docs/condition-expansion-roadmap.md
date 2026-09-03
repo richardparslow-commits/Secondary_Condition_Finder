@@ -297,7 +297,21 @@ Target catalog v2 is complete at **300 recognized conditions**, with **107 expan
 
 The next controlled workstream is no longer another numbered catalog wave. It is evidence and quality work: promote only individual secondary relationships with adequate condition-specific clinical support, verify eligible citations through the repository's approved verification workflow, and separately address documented catalog-modeling debt without weakening the 300/300 referential-integrity contract.
 
-## Causal Relational Graph (CRG) Migration Strategy
+Mapping Expansion ME-21 (2026-09-02) added five draft-safe relationships over the Wave-8 identities: `peptic-ulcer-disease -> anemia`, `eosinophilic-esophagitis -> dysphagia`, `cholelithiasis -> pancreatitis`, `insulin-resistance-syndrome -> diabetes-mellitus-type-2`, and `metabolic-syndrome -> diabetes-mellitus-type-2`. Each remains `ASSOCIATION_ONLY`, `NOT_ESTABLISHED`, and pending qualified-human citation verification; no primary publication state changed.
+
+Mapping Expansion ME-22 (2026-09-02) added five additional draft-safe relationships: `transient-ischemic-attack-residuals -> cerebrovascular-accident-stroke-residuals`, `testicular-torsion -> testicular-atrophy`, `lichen-sclerosus -> squamous-cell-carcinoma`, `nasal-polyps -> asthma`, and `diabetic-gastroparesis -> gastroparesis`. Each remains `ASSOCIATION_ONLY`, `NOT_ESTABLISHED`, and pending qualified-human citation verification; no primary publication state changed.
+
+## 2026-09 Master-List Expansion (Wave 8: identity expansion)
+
+**Status: implemented.** The 2026-09 master condition list (14 body-system categories) expanded the catalog from **311 to 813 conditions**, keeping the 813/813 one-to-one catalog-to-knowledge-base coverage contract intact.
+
+- Added **502 framework-only draft identities** — each is a catalog entry plus a draft mapping file whose `todo` records the authoring checklist and whose `suggestions` are empty. No clinical source, relationship, or consensus claim was invented; rating-schedule citations on new identities are framework-level (`38 CFR 4.xxx`) with `verified: false` pending qualified-human verification, and no identity was published.
+- Consolidated **13 duplicate identities** into pre-existing catalog entries after an alias/name/id collision audit: retired generic `arthritis` (in favor of `osteoarthritis` / `rheumatoid-arthritis` / `gout`, with compensating aliases), and folded duplicates for HIV/AIDS, gigantism, osteomalacia, epicondylitis, hammertoe, Paget's disease (`osteitis-deformans`), CRPS, meralgia paresthetica, colon cancer, lung/respiratory cancers, frostbite residuals, and prostatitis/prostatodynia into their pre-existing identities with aliases so free-text inputs still resolve.
+- Renamed the ambiguous `aneurysms` umbrella to `peripheral-aneurysm` (keeping `aortic-aneurysm` as its own identity) and removed junk parenthetical aliases (e.g., bare `upper`/`lower`/`all joints`/`plantar`/`Type 1`) plus `Gulf War` duplication from non-umbrella identities.
+- Governance maintained: the full collision scan (duplicate names, alias-alias, alias-vs-name/id, id-vs-name) runs clean; `kb:validate`, `audit:me-compliance`, `audit-master-registry`, typecheck, lint, and the full Vitest suite (now covering the 813-condition state) all pass; the master-resolution current-state contract and the 139-published/674-draft publication-state pins were updated to the new totals.
+
+Mapping Expansion ME-28 (2026-09-02) added five draft-safe relationships over the Wave-8 identities: `scleroderma -> interstitial-lung-disease`, `hypertrophic-obstructive-cardiomyopathy -> congestive-heart-failure`, `superior-semicircular-canal-dehiscence -> conductive-hearing-loss`, `dysphagia -> malnutrition-residuals`, and `mixed-connective-tissue-disease -> pulmonary-hypertension`. Each remains `ASSOCIATION_ONLY`, `NOT_ESTABLISHED`, and pending qualified-human citation verification; no primary publication state changed.
+
 
 **Status: implemented (breaking migration).** The knowledge base was previously a ranked *association registry with a qualitative `prevalence` label*. Under 38 CFR § 3.310 a secondary condition must be either *caused by* or *aggravated by* the service-connected primary, so the associative `prevalence` model was deprecated and removed. Every suggestion now carries a mandatory CRG trio, enforced by the Zod schema:
 

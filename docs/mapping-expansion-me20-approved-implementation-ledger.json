@@ -1,0 +1,112 @@
+{
+  "phase": "Mapping Expansion ME-20",
+  "ledgerStatus": "APPROVED AND APPLIED LOCALLY — CITATIONS PENDING VERIFICATION",
+  "approvalDate": "2026-09-02",
+  "requiredBaselineCommit": "ea005e50ccbc30800dd46f3872f764f98e977c1f",
+  "previousRegistryBaselineCommit": "f4537b5014297c8e1c783a1b38291367636c418a",
+  "previousRegistryCurrentState": "ME19-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+  "commitSubject": "map: mapping expansion ME-20 (5 relationships)",
+  "issueReference": "issue #360 Mapping Expansion Wave (ME-15+); ME-20 continues the ME-19 backlog over Wave-8 framework-only identities (catalog 813)",
+  "approvalRecord": "Qualified-human approval captured on 2026-09-02: all five bounded ME-20 mappings from the ME-19 backlog ranked list approved (rank 1 each). Mapping approval is not citation verification; all five clinical sources enter verified:false and the five master sources enter pending-verification, awaiting the separate qualified-human citation-verification gate.",
+  "rows": [
+    {
+      "primaryId": "pheochromocytoma",
+      "targetId": "hypertension",
+      "rank": 1,
+      "pmid": "24893135",
+      "doi": "10.1210/jc.2014-1498",
+      "sourceTitle": "Pheochromocytoma and paraganglioma: an endocrine society clinical practice guideline",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24893135/",
+      "claimType": "guideline-recognized-association",
+      "sourceAction": "approved-fresh-me20-source"
+    },
+    {
+      "primaryId": "sjogren-s-syndrome",
+      "targetId": "dry-eye-syndrome",
+      "rank": 1,
+      "pmid": "41009391",
+      "doi": "10.3390/ijms26188824",
+      "sourceTitle": "Keratoconjunctivitis Sicca in Sjögren Disease: Diagnostic Challenges and Therapeutic Advances",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41009391/",
+      "claimType": "population-level-clinical-framing-association",
+      "sourceAction": "approved-fresh-me20-source"
+    },
+    {
+      "primaryId": "leukoplakia",
+      "targetId": "oral-cancer",
+      "rank": 1,
+      "pmid": "26189354",
+      "doi": "10.1111/jop.12339",
+      "sourceTitle": "Malignant transformation of oral leukoplakia: a systematic review of observational studies",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26189354/",
+      "claimType": "population-level-malignant-transformation-association",
+      "sourceAction": "approved-fresh-me20-source"
+    },
+    {
+      "primaryId": "erythroplakia",
+      "targetId": "oral-cancer",
+      "rank": 1,
+      "pmid": "35488780",
+      "doi": "10.1111/jop.13304",
+      "sourceTitle": "Critical update, systematic review, and meta-analysis of oral erythroplakia as an oral potentially malignant disorder",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35488780/",
+      "claimType": "population-level-malignant-transformation-association",
+      "sourceAction": "approved-fresh-me20-source"
+    },
+    {
+      "primaryId": "meningitis",
+      "targetId": "hearing-loss",
+      "rank": 1,
+      "pmid": "24618106",
+      "doi": "10.1186/1756-0500-7-138",
+      "sourceTitle": "Prevalence of hearing loss in children following bacterial meningitis in a tertiary referral hospital",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24618106/",
+      "claimType": "clinical-sample-comorbidity-association",
+      "sourceAction": "approved-fresh-me20-source"
+    }
+  ],
+  "citationStateAfterImplementation": {
+    "kbSourceReferences": "verified:false",
+    "masterSources": "pending-verification",
+    "registryCurrentState": "ME20-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION",
+    "qualifiedHumanCitationReviewRequired": true,
+    "automaticPromotionAuthorized": false
+  },
+  "failurePolicy": "Fail closed. If any exact baseline, publication-state proof, edge, source identity, projection, PubMed identity, validation, or freeze-guard requirement fails, stop. If any repository write has already occurred, preserve the exact dirty state; do not reset, restore, stash, or clean.",
+  "projectionNote": "ME-20 registers five draft primaries (pheochromocytoma, sjogren-s-syndrome, leukoplakia, erythroplakia, meningitis) all at rank 1, continuing the ME-19 backlog over Wave-8 framework-only identities (catalog 813). All five primaries remain draft; no publication-state change. Registered-primary coverage advances 179 -> 184 of 813; remaining primaries 634 -> 629, with 37 target-only primaries unchanged. Relationships 268 -> 273; live references 276 -> 281 with 256 verified and 25 pending qualified-human citation verification; master source entities 262 -> 267 (233 active / 25 pending / 7 superseded-unverified / 1 correction-only / 1 retired-only); explicit publication guards 194 -> 199, legacy 74 unchanged; clinical uses 271 -> 276, legal 5 unchanged. leukoplakia and erythroplakia both target oral-cancer with independently guarded, subtype-specific malignant-transformation propositions.",
+  "implementationDateLocal": "2026-09-02",
+  "implementationResult": {
+    "rowsImplemented": 5,
+    "rank1Rows": 5,
+    "rank2Rows": 0,
+    "publicationStatesPreserved": {
+      "pheochromocytoma": "draft",
+      "sjogren-s-syndrome": "draft",
+      "leukoplakia": "draft",
+      "erythroplakia": "draft",
+      "meningitis": "draft"
+    },
+    "selectedDraftPrimaries": 5,
+    "selectedPublishedPrimaries": 0,
+    "postMatrix": [
+      813,
+      139,
+      674,
+      273,
+      66,
+      73,
+      44
+    ],
+    "kbVerifiedFalseRows": 5,
+    "masterPendingSources": 5,
+    "registeredPrimaries": 184,
+    "remainingPrimaries": 629,
+    "remainingTargetOnlyPrimaries": 37,
+    "citationPromotions": 0,
+    "publicationStatusChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "semanticBroadening": 0,
+    "remoteWritesPerformed": false
+  }
+}

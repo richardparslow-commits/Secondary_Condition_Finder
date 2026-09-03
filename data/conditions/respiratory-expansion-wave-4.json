@@ -2,43 +2,51 @@
   "bodySystem": "Respiratory System",
   "conditions": [
     {
-      "id": "bronchiectasis",
-      "name": "Bronchiectasis",
+      "id": "acute-interstitial-pneumonia",
+      "name": "Acute interstitial pneumonia",
       "aliases": [],
       "bodySystem": "Respiratory System",
-      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6601 covers bronchiectasis.", "verified": false}],
-      "reviewNotes": []
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
-      "id": "chronic-laryngitis",
-      "name": "Chronic Laryngitis",
+      "id": "allergic-rhinitis",
+      "name": "Allergic rhinitis",
       "aliases": [],
       "bodySystem": "Respiratory System",
-      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6516 covers chronic laryngitis.", "verified": false}],
-      "reviewNotes": []
-    },
-    {
-      "id": "vocal-cord-paralysis",
-      "name": "Vocal Cord Paralysis",
-      "aliases": ["vocal fold paralysis"],
-      "bodySystem": "Respiratory System",
-      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "No single diagnosis-specific diagnostic code is assigned here. Depending on documented residuals, the laryngeal framework may include chronic laryngitis (DC 6516), aphonia (DC 6519), or laryngeal stenosis/airway-obstruction criteria (DC 6520).", "verified": false}],
-      "reviewNotes": ["No single condition-specific diagnostic code is assigned in the current schedule; code selection depends on documented voice and airway residuals."]
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "aphonia",
       "name": "Aphonia",
-      "aliases": ["loss of voice"],
+      "aliases": [
+        "loss of voice"
+      ],
       "bodySystem": "Respiratory System",
-      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6519 covers complete organic aphonia, while incomplete aphonia is evaluated as chronic laryngitis under diagnostic code 6516.", "verified": false}],
-      "reviewNotes": []
-    },
-    {
-      "id": "granulomatous-rhinitis",
-      "name": "Granulomatous Rhinitis",
-      "aliases": [],
-      "bodySystem": "Respiratory System",
-      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6524 covers granulomatous rhinitis.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system; diagnostic code 6519 covers complete organic aphonia, while incomplete aphonia is evaluated as chronic laryngitis under diagnostic code 6516.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
@@ -46,32 +54,874 @@
       "name": "Bacterial Rhinitis",
       "aliases": [],
       "bodySystem": "Respiratory System",
-      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6523 covers bacterial rhinitis.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system; diagnostic code 6523 covers bacterial rhinitis.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
     },
     {
-      "id": "pulmonary-vascular-disease",
-      "name": "Pulmonary Vascular Disease",
-      "aliases": ["chronic pulmonary thromboembolism"],
+      "id": "bagassosis",
+      "name": "Bagassosis",
+      "aliases": [],
       "bodySystem": "Respiratory System",
-      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6817 covers pulmonary vascular disease, including primary pulmonary hypertension and specified chronic pulmonary thromboembolic disease.", "verified": false}],
-      "reviewNotes": ["The pulmonary-hypertension catalog entry is a narrower user-facing identity under the same DC 6817 framework. Its name and aliases are intentionally not duplicated here."]
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
-      "id": "pulmonary-hypertension",
-      "name": "Pulmonary Hypertension",
-      "aliases": ["primary pulmonary hypertension"],
+      "id": "bird-fancier-s-lung",
+      "name": "Bird fancier's lung",
+      "aliases": [],
       "bodySystem": "Respiratory System",
-      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6817 covers pulmonary vascular disease, including primary pulmonary hypertension and specified secondary pulmonary-hypertension presentations.", "verified": false}],
-      "reviewNotes": ["Clinical Evidence Promotion Batch 18 physically relocates this stable narrower pulmonary-hypertension identity from the Wave 3 cardiovascular product grouping into respiratory maintenance, matching its 38 CFR 4.97 / DC 6817 rating authority without changing its ID."]
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bronchiectasis",
+      "name": "Bronchiectasis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system; diagnostic code 6601 covers bronchiectasis.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "bronchitis",
+      "name": "Bronchitis",
+      "aliases": [
+        "acute bronchitis"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "bronchomalacia",
+      "name": "Bronchomalacia",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "byssinosis",
+      "name": "Byssinosis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "chemical-pneumonitis",
+      "name": "Chemical pneumonitis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "chronic-laryngitis",
+      "name": "Chronic Laryngitis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system; diagnostic code 6516 covers chronic laryngitis.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "churg-strauss-syndrome",
+      "name": "Churg-Strauss syndrome",
+      "aliases": [
+        "EGPA"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "cryptogenic-organizing-pneumonia",
+      "name": "Cryptogenic organizing pneumonia",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
     },
     {
       "id": "diaphragm-paralysis",
       "name": "Diaphragm Paralysis / Paresis",
-      "aliases": ["diaphragmatic paralysis", "diaphragm paresis"],
+      "aliases": [
+        "diaphragmatic paralysis",
+        "diaphragm paresis"
+      ],
       "bodySystem": "Respiratory System",
-      "ratingSchedule": [{"citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system; diagnostic code 6840 covers diaphragm paralysis or paresis under the restrictive-lung-disease framework.", "verified": false}],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system; diagnostic code 6840 covers diaphragm paralysis or paresis under the restrictive-lung-disease framework.",
+          "verified": false
+        }
+      ],
       "reviewNotes": []
+    },
+    {
+      "id": "empty-nose-syndrome",
+      "name": "Empty nose syndrome",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "eosinophilic-bronchitis",
+      "name": "Eosinophilic bronchitis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "farmer-s-lung",
+      "name": "Farmer's lung",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "goodpasture-syndrome",
+      "name": "Goodpasture syndrome",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "granulomatosis-with-polyangiitis",
+      "name": "Granulomatosis with polyangiitis",
+      "aliases": [
+        "Wegener's"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "granulomatous-rhinitis",
+      "name": "Granulomatous Rhinitis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system; diagnostic code 6524 covers granulomatous rhinitis.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": []
+    },
+    {
+      "id": "hemothorax",
+      "name": "Hemothorax",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "katayama-fever",
+      "name": "Katayama fever",
+      "aliases": [
+        "Schistosomiasis residuals"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "laryngitis",
+      "name": "Laryngitis",
+      "aliases": [
+        "acute laryngitis"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "laryngocele",
+      "name": "Laryngocele",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "laryngomalacia",
+      "name": "Laryngomalacia",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "laryngospasm",
+      "name": "Laryngospasm",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "lipoid-pneumonia",
+      "name": "Lipoid pneumonia",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "lung-abscess",
+      "name": "Lung abscess",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "lymphangioleiomyomatosis",
+      "name": "Lymphangioleiomyomatosis",
+      "aliases": [
+        "LAM"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "microscopic-polyangiitis",
+      "name": "Microscopic polyangiitis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "nasal-polyps",
+      "name": "Nasal polyps",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "nasal-valve-collapse",
+      "name": "Nasal valve collapse",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "nonspecific-interstitial-pneumonia",
+      "name": "Nonspecific interstitial pneumonia",
+      "aliases": [
+        "NSIP"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "paradoxical-vocal-fold-motion",
+      "name": "Paradoxical vocal fold motion",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pleural-effusion",
+      "name": "Pleural effusion",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pleurisy",
+      "name": "Pleurisy",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pneumonia-residuals",
+      "name": "Pneumonia (Residuals)",
+      "aliases": [
+        "pneumonia residuals"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pneumothorax",
+      "name": "Pneumothorax",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pulmonary-alveolar-microlithiasis",
+      "name": "Pulmonary alveolar microlithiasis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pulmonary-edema",
+      "name": "Pulmonary edema",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pulmonary-hypertension",
+      "name": "Pulmonary Hypertension",
+      "aliases": [
+        "primary pulmonary hypertension"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system; diagnostic code 6817 covers pulmonary vascular disease, including primary pulmonary hypertension and specified secondary pulmonary-hypertension presentations.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Clinical Evidence Promotion Batch 18 physically relocates this stable narrower pulmonary-hypertension identity from the Wave 3 cardiovascular product grouping into respiratory maintenance, matching its 38 CFR 4.97 / DC 6817 rating authority without changing its ID."
+      ]
+    },
+    {
+      "id": "pulmonary-langerhans-cell-histiocytosis",
+      "name": "Pulmonary Langerhans cell histiocytosis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "pulmonary-vascular-disease",
+      "name": "Pulmonary Vascular Disease",
+      "aliases": [
+        "chronic pulmonary thromboembolism"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Schedule of ratings, respiratory system; diagnostic code 6817 covers pulmonary vascular disease, including primary pulmonary hypertension and specified chronic pulmonary thromboembolic disease.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "The pulmonary-hypertension catalog entry is a narrower user-facing identity under the same DC 6817 framework. Its name and aliases are intentionally not duplicated here."
+      ]
+    },
+    {
+      "id": "reinke-s-edema",
+      "name": "Reinke's edema",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "rhinitis-vasomotor",
+      "name": "Rhinitis (Vasomotor)",
+      "aliases": [
+        "vasomotor",
+        "vasomotor rhinitis"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "samter-s-triad",
+      "name": "Samter's triad",
+      "aliases": [
+        "Aspirin-exacerbated respiratory disease"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "sinusitis",
+      "name": "Sinusitis",
+      "aliases": [
+        "sinusitis, all types"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "spasmodic-dysphonia",
+      "name": "Spasmodic dysphonia",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "tracheal-stenosis",
+      "name": "Tracheal stenosis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "tracheitis",
+      "name": "Tracheitis",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "tracheomalacia",
+      "name": "Tracheomalacia",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "tropical-pulmonary-eosinophilia",
+      "name": "Tropical pulmonary eosinophilia",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "vocal-cord-dysfunction",
+      "name": "Vocal cord dysfunction",
+      "aliases": [],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "vocal-cord-nodules-polyps-cysts-paralysis",
+      "name": "Vocal Cord Nodules / Polyps / Cysts / Paralysis",
+      "aliases": [
+        "vocal cord nodules",
+        "vocal cord polyps",
+        "vocal cord cysts"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "Applicable body-system rating framework for this catalog identity; no single diagnosis-specific diagnostic code is asserted here.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+      ]
+    },
+    {
+      "id": "vocal-cord-paralysis",
+      "name": "Vocal Cord Paralysis",
+      "aliases": [
+        "vocal fold paralysis"
+      ],
+      "bodySystem": "Respiratory System",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.97",
+          "note": "No single diagnosis-specific diagnostic code is assigned here. Depending on documented residuals, the laryngeal framework may include chronic laryngitis (DC 6516), aphonia (DC 6519), or laryngeal stenosis/airway-obstruction criteria (DC 6520).",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "No single condition-specific diagnostic code is assigned in the current schedule; code selection depends on documented voice and airway residuals."
+      ]
     }
   ]
 }

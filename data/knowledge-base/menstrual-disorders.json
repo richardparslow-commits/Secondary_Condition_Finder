@@ -1,0 +1,59 @@
+{
+  "id": "menstrual-disorders",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women. Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of menstrual-disorders and anemia",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-clinical-framing-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Munro MG. Heavy menstrual bleeding, iron deficiency, and iron deficiency anemia: Framing the issue. Int J Gynaecol Obstet. 2023;162(Suppl 2):7-13. PMID 37538011. doi:10.1002/ijgo.14943.",
+          "note": "Mapping Expansion Batch ME-19 evidence for the bounded menstrual-disorders to anemia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37538011/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 37538011; approved ME-19 source; guard: Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women. Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women. Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-19 adds this relationship only as the user-approved bounded clinical proposition. The cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women. Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia. It is not asserted that the primary caused or aggravated the secondary in any individual case, and this mapping does not, by itself, establish a VA medical nexus.",
+        "evidenceGaps": "Independent documentation of menstrual-disorders and anemia; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: population-level-clinical-framing-association; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia.",
+        "alternativeEtiologiesToRuleOut": [
+          "gastrointestinal blood loss",
+          "malabsorption",
+          "dietary iron deficiency",
+          "chronic disease or inflammatory anemia",
+          "hemolysis",
+          "renal disease",
+          "other gynecologic causes of bleeding"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

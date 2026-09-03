@@ -1,0 +1,55 @@
+{
+  "id": "superior-semicircular-canal-dehiscence",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "conductive-hearing-loss",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-28 adds this relationship only as a bounded superior-canal-dehiscence auditory association. Superior semicircular canal dehiscence can present with conductive or pseudo-conductive hearing findings, but the diagnosis alone does not establish conductive hearing loss in every person or exclude other otologic causes. Require temporal-bone imaging interpreted with compatible symptoms, audiometry documenting the conductive phenotype, laterality and chronology, and otology review. Preserve otosclerosis, middle-ear disease, ossicular abnormalities, tympanic pathology, trauma, and mixed or sensorineural causes.",
+      "evidenceGaps": [
+        "Independent documentation of superior semicircular canal dehiscence using appropriate high-resolution temporal-bone imaging",
+        "Formal audiometry defining conductive, pseudo-conductive, mixed, or sensorineural findings and laterality",
+        "Chronology of auditory symptoms, imaging, vestibular findings, and any surgical or treatment history",
+        "Assessment of otosclerosis, middle-ear or ossicular disease, tympanic pathology, trauma, and other hearing-loss causes",
+        "Otology or audiology assessment matching the imaging finding to the individual's functional hearing phenotype"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Mikulec AA, McKenna MJ, Ramsey MJ, Rosowski JJ, Herrmann BS, Rauch SD, Curtin HD, Merchant SN. Superior semicircular canal dehiscence presenting as conductive hearing loss without vertigo. Otol Neurotol. 2004;25(2):121-129. PMID 15021770. doi:10.1097/00129492-200403000-00007.",
+          "note": "Clinical report describing superior semicircular canal dehiscence presenting with conductive hearing findings without vertigo. It supports a bounded phenotype association, not automatic individual attribution.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15021770/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 15021770; reported conductive-hearing-loss phenotype without vertigo"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Superior semicircular canal dehiscence is reported with conductive or pseudo-conductive hearing findings, but a case-specific audiologic phenotype and exclusion of other otologic causes are required before any individual relationship is considered.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this clinical report; the mapping is not an individual otology opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A dehiscence may alter inner-ear sound and pressure transmission and produce an apparent conductive or pseudo-conductive audiometric pattern, but the mechanism and functional significance must be confirmed in the individual with imaging and audiology.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Superior semicircular canal dehiscence can be accompanied by conductive-hearing findings, but the cited clinical report does not establish that every hearing deficit in a person with dehiscence is attributable to it; objective audiology, laterality, chronology, imaging, and competing-cause review are required.",
+        "evidenceGaps": "Independent imaging and diagnosis; formal audiometry and laterality; chronology; otologic examination; review of otosclerosis, middle-ear, ossicular, tympanic, traumatic, mixed, and sensorineural alternatives; specialist assessment",
+        "alternativeEtiologiesToRuleOut": [
+          "Otosclerosis or other ossicular-chain abnormality",
+          "Chronic middle-ear disease, tympanic pathology, or trauma",
+          "Sensorineural, mixed, age-related, noise-related, or unrelated hearing loss"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

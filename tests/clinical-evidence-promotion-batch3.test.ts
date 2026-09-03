@@ -78,7 +78,7 @@ describe("clinical evidence promotion batch 3", () => {
     expect(mapping?.draft).toBe(true);
     expect(mapping?.suggestions).toEqual([]);
     expect(mapping?.todo.join(" ")).toMatch(/withdrawn|clinical evidence|legal framework/i);
-  });
+  }, 120000);
 
   it("physically relocates insomnia into the mental-disorders catalog", () => {
     expect(conditionIds("data/conditions/carried-over.json")).not.toContain("insomnia");

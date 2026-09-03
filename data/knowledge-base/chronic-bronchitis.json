@@ -2,8 +2,57 @@
   "id": "chronic-bronchitis",
   "draft": true,
   "todo": [
-    "Rebuild any secondary-condition suggestions using chronic-bronchitis-specific clinical evidence before publication.",
-    "The prior sleep-apnea and cardiac-arrhythmia suggestions were withdrawn because their only sources were legal/rating authorities and the rationales asserted medical mechanisms without chronic-bronchitis-specific clinical evidence."
+    "Obtain qualified-human citation verification for the proposed chronic-bronchitis to COPD association.",
+    "Confirm chronic-bronchitis criteria, independently establish COPD with spirometry, document smoking/exposure and chronology, and assess alternative airway disease before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "copd",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded chronic-airway-disease association. Chronic bronchitis is a clinical phenotype that can occur with or precede airflow limitation and is relevant to COPD heterogeneity, but it is not synonymous with COPD and does not establish that every person with chronic bronchitis develops COPD. Require documented chronic-bronchitis symptoms or diagnosis, separately established COPD with post-bronchodilator spirometry, compatible exposure and chronology, and pulmonology review. Assess smoking, occupational exposure, asthma, bronchiectasis, recurrent infection, alpha-1 antitrypsin deficiency, and other causes. Do not infer COPD from chronic cough or sputum alone.",
+      "evidenceGaps": [
+        "Independent documentation of chronic bronchitis and COPD with qualifying post-bronchodilator spirometry",
+        "Longitudinal cough/sputum history, airflow measurements, exacerbations, imaging, and chronology",
+        "Smoking, vaping, occupational, environmental, and biomass-exposure history",
+        "Assessment for asthma, bronchiectasis, recurrent infection, alpha-1 antitrypsin deficiency, and other airway disease",
+        "Resolution of publication guard: Require chronic-bronchitis phenotype, objective COPD, compatible exposure/chronology, and alternative-airway-disease review; do not infer COPD from cough or sputum alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Kim V, Criner GJ. Chronic bronchitis and chronic obstructive pulmonary disease. Am J Respir Crit Care Med. 2013;187(3):228-237. PMID 23204254. doi:10.1164/rccm.201210-1843CI.",
+          "note": "Mapping Expansion Batch ME-26 dedicated chronic-bronchitis/COPD review for the bounded proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23204254/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 23204254; review distinguishing chronic-bronchitis phenotype from COPD and discussing relationships with airflow limitation and disease heterogeneity; approved ME-26 guard requires spirometric COPD confirmation and competing-airway review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited review supports chronic bronchitis as a variable COPD phenotype that may precede or coexist with airflow limitation, without establishing a deterministic individual progression pathway.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; objective spirometry, exposure history, chronology, and alternative airway diagnoses require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Persistent airway mucus production and bronchial inflammation may coexist with or contribute to progressive airflow limitation in susceptible exposed individuals, but the individual transition from chronic bronchitis to COPD remains hypothesized.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The review emphasizes that chronic bronchitis and COPD are related but distinct constructs and does not prove that chronic bronchitis caused an individual's COPD.",
+        "evidenceGaps": "Chronic-bronchitis and spirometric COPD diagnoses; longitudinal lung function; cough/sputum and exacerbation history; smoking and occupational exposure; and assessment of asthma, bronchiectasis, infection, alpha-1 antitrypsin deficiency, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "asthma or asthma-COPD overlap",
+          "bronchiectasis",
+          "recurrent respiratory infection",
+          "alpha-1 antitrypsin deficiency",
+          "occupational or environmental inhalational disease",
+          "smoking, vaping, or biomass exposure"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

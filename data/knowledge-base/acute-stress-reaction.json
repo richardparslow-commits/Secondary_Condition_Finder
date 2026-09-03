@@ -1,0 +1,58 @@
+{
+  "id": "acute-stress-reaction",
+  "draft": true,
+  "todo": [
+    "Obtain qualified-human citation verification for the proposed acute-stress-reaction to PTSD association.",
+    "Confirm a qualifying traumatic exposure, acute-stress-disorder phenotype, separately established PTSD diagnosis, chronology, and alternative psychiatric explanations before publication."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "ptsd",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-26 adds this relationship only as a bounded temporal-risk association. Acute stress disorder describes clinically significant trauma-related symptoms during the first month after trauma and may identify increased risk for later PTSD, but it does not establish that every person with an acute stress reaction develops PTSD or that the acute reaction caused an individual's later disorder. Require a qualifying traumatic exposure, documented acute-stress-disorder phenotype, separately established PTSD after the relevant interval, compatible chronology, and review of trauma characteristics, prior psychiatric history, ongoing stressors, substance use, medical illness, and other explanations. Do not infer PTSD from an acute stress reaction label alone.",
+      "evidenceGaps": [
+        "Independent documentation of the qualifying traumatic exposure and acute-stress-disorder symptom cluster",
+        "Separate PTSD diagnosis meeting applicable clinical criteria after the acute period",
+        "Chronology of trauma, acute symptoms, persistence or recurrence, and PTSD onset",
+        "Assessment of prior PTSD, anxiety, depression, substance use, ongoing stressors, and other psychiatric contributors",
+        "Resolution of publication guard: Require qualifying trauma, documented acute-stress-disorder phenotype, separately established later PTSD, compatible chronology, and competing-cause review; do not infer PTSD from an acute reaction alone."
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Bryant RA. Acute stress disorder as a predictor of posttraumatic stress disorder: a systematic review. J Clin Psychiatry. 2011;72(2):233-239. PMID 21208593. doi:10.4088/JCP.09r05072blu.",
+          "note": "Mapping Expansion Batch ME-26 systematic review for the bounded acute-stress-reaction to PTSD proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21208593/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-02",
+          "sourceLocator": "PMID 21208593; systematic review evaluating acute stress disorder as a predictor of subsequent PTSD; approved ME-26 guard requires a qualifying trauma, distinct later PTSD diagnosis, compatible chronology, and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cited review supports acute stress disorder as a possible marker of increased later PTSD risk after trauma, without establishing a deterministic or individual causal pathway.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; trauma details, diagnostic criteria, chronology, and competing psychiatric explanations require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A severe early trauma-related stress response may persist or evolve into chronic PTSD symptoms, but persistence, diagnostic transition, and individual causation remain hypothesized until longitudinal clinical evidence is reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The review addresses prediction of later PTSD from acute stress disorder after trauma, not proof that an acute reaction caused a particular person's PTSD.",
+        "evidenceGaps": "Qualifying trauma and acute-stress-disorder documentation; later PTSD diagnostic evidence; longitudinal chronology; prior psychiatric history; ongoing stressors; substance use; and qualified clinical review of competing explanations.",
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing PTSD or trauma-related disorder",
+          "independent later traumatic exposure",
+          "anxiety or depressive disorder",
+          "substance-related symptoms",
+          "ongoing psychosocial stressors",
+          "medical or neurologic conditions"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
+}

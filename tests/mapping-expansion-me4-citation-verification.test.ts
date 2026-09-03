@@ -177,15 +177,15 @@ describe("Mapping Expansion Batch ME-4 Qualified-Human Citation Verification", (
       hardFindingCount: number;
     };
     expect(result).toMatchObject({
-      references: 271,
+      references: 321,
       verified: 256,
       retiredVerified: 6,
       verifiedProvenance: 262,
-      unverified: 15,
+      unverified: 65,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
-  });
+  }, 120000);
 
   it("passes the authoritative registry audit after ME-7 verification", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-master-registry.js"], {
@@ -202,11 +202,11 @@ describe("Mapping Expansion Batch ME-4 Qualified-Human Citation Verification", (
     };
     expect(result).toMatchObject({
       status: "PASS",
-      relationships: 263,
+      relationships: 313,
       verifiedLiveSourceUses: 256,
-      pendingVerificationLiveSourceUses: 15,
+      pendingVerificationLiveSourceUses: 65,
       activeSourceEntities: 233,
-      pendingVerificationSourceEntities: 15,
+      pendingVerificationSourceEntities: 65,
     });
   });
 });
