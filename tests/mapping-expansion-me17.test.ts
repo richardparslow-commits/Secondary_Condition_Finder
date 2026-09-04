@@ -100,4 +100,32 @@ describe("Mapping Expansion ME-17 local implementation", () => {
     expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(94);
     expect(clinical).toHaveLength(350);
   });
+
+  it("documents the current authoritative snapshot and ME-20 implementation state", () => {
+    const rel = load<RelationshipRegistry>(path.join(ROOT, "data", "evidence", "master-relationships.json"));
+    const src = load<SourceRegistry>(path.join(ROOT, "data", "evidence", "master-sources.json"));
+    expect(rel.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
+    expect(src.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
+    expect(rel.currentState).toBe("ME35-CITATION-VERIFIED");
+    expect(src.currentState).toBe("ME35-CITATION-VERIFIED");
+    expect(rel.relationships).toHaveLength(347);
+    expect(src.sources).toHaveLength(338);
+    const me20 = [
+      "rel-pheochromocytoma-to-hypertension",
+      "rel-sjogren-s-syndrome-to-dry-eye-syndrome",
+      "rel-leukoplakia-to-oral-cancer",
+      "rel-erythroplakia-to-oral-cancer",
+      "rel-meningitis-to-hearing-loss",
+    ];
+    for (const id of me20) {
+      expect(rel.relationships.filter((r: RelationshipRecord) => r.relationshipId === id)).toHaveLength(1);
+      expect(rel.relationships.find((r: RelationshipRecord) => r.relationshipId === id)!.primaryPublicationState).toBe("draft");
+    }
+    for (const pmid of ["24893135", "41009391", "26189354", "35488780", "24618106"]) {
+      const s = src.sources.find((s: SourceRecord) => s.sourceId === `pmid-${pmid}`);
+      expect(s).toBeDefined();
+      expect(s!.status).toBe("pending-verification");
+      expect(s!.verified).toBe(false);
+    }
+  });
 });
