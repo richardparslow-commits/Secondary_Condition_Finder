@@ -14,5 +14,9 @@ export default defineConfig({
   test: {
     environment: "node",
     include: ["tests/**/*.test.ts", "src/**/*.test.ts"],
+    // Render-heavy page tests and data-integrity suites sit close to the 5s
+    // default when the suite runs in parallel; observed flakes were timeout
+    // artifacts, not failures. A higher ceiling only affects slow tests.
+    testTimeout: 20_000,
   },
 });
