@@ -66,15 +66,15 @@ describe("Mapping Expansion Batch ME-31", () => {
   });
 
   it("ratchets authoritative registry totals to the current ME-33 state", () => {
-    expect(relationships.counts).toEqual({ relationships: 342, explicitPublicationGuards: 268, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(342);
+    expect(relationships.counts).toEqual({ relationships: 347, explicitPublicationGuards: 273, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(347);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 350,
-      pendingVerificationSourceEntities: 91,
-      pendingClinicalSourceEntities: 91,
-      totalSourceEntitiesIncludingLineage: 333,
+      liveSourceReferenceUses: 355,
+      pendingVerificationSourceEntities: 96,
+      pendingClinicalSourceEntities: 96,
+      totalSourceEntitiesIncludingLineage: 338,
     });
-    expect(sources.sources).toHaveLength(333);
+    expect(sources.sources).toHaveLength(338);
   });
 
   it("merges the reused phantom-limb-pain survey into one pending source entity", () => {

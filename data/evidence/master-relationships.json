@@ -6,8 +6,8 @@
    "installedFrom": "Master Registry Discrepancy Resolution 2026",
    "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
    "counts": {
-      "relationships": 342,
-      "explicitPublicationGuards": 268,
+      "relationships": 347,
+      "explicitPublicationGuards": 273,
       "legacyRationaleBoundaries": 74
    },
    "relationships": [
@@ -11196,8 +11196,133 @@
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
       "suggestionObjectHash": "2460583cd6202031d4afd609dfd5dddf130fb952c43375320a90d5ba3b380ee6"
+   },
+   {
+      "relationshipId": "rel-brown-s-quard-syndrome-to-urinary-incontinence",
+      "primaryId": "brown-s-quard-syndrome",
+      "targetId": "urinary-incontinence",
+      "direction": "brown-s-quard-syndrome -> urinary-incontinence",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-35-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded Brown-Séquard urinary-dysfunction association. A syndrome-specific urodynamic study describes lower-urinary-tract dysfunction in Brown-Séquard syndrome, but the small study does not establish that every urinary-incontinence diagnosis in a person with the syndrome was caused by the spinal lesion. Require independently documented Brown-Séquard syndrome by compatible spinal-cord lesion and neurologic examination, separately documented urinary incontinence or neurogenic lower-urinary-tract dysfunction by validated assessment or urodynamics, compatible chronology, and neurologic or urologic review. Preserve urinary retention or overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded Brown-Séquard urinary-dysfunction association. A syndrome-specific urodynamic study describes lower-urinary-tract dysfunction in Brown-Séquard syndrome, but the small study does not establish that every urinary-incontinence diagnosis in a person with the syndrome was caused by the spinal lesion. Require independently documented Brown-Séquard syndrome by compatible spinal-cord lesion and neurologic examination, separately documented urinary incontinence or neurogenic lower-urinary-tract dysfunction by validated assessment or urodynamics, compatible chronology, and neurologic or urologic review. Preserve urinary retention or overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented Brown-Séquard syndrome by compatible spinal-cord lesion and neurologic examination, separately documented urinary incontinence or neurogenic lower-urinary-tract dysfunction by validated assessment/urodynamics, compatible chronology, and neurologic or urologic review. Do not infer incontinence from spinal pain, weakness, or a nonspecific spinal-cord diagnosis alone. Preserve urinary retention/overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes.",
+         "boundarySource": "approved-me-35-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": ["Independent documentation of Brown-Séquard syndrome, spinal-cord lesion, affected level, and neurologic phenotype", "Validated urinary-incontinence or neurogenic lower-urinary-tract assessment, including urodynamics when clinically indicated", "Chronology connecting the spinal-cord syndrome to urinary dysfunction", "Assessment of retention or overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes", "Neurology and urology assessment of the individual's phenotype and competing explanations"],
+      "sourceIds": ["pmid-11746547"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "67012dbce3a6883c7a8c1fd2aa4b22aec9a6b586e12a91adc20d2809005b217b"
+   },
+   {
+      "relationshipId": "rel-brain-tumors-to-seizure-disorder",
+      "primaryId": "brain-tumors",
+      "targetId": "seizure-disorder",
+      "direction": "brain-tumors -> seizure-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-35-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded brain-tumor seizure-risk association. A longitudinal cohort of pediatric brain-tumor survivors describes seizures and associated tumor and treatment factors, but the population evidence does not establish that every seizure disorder in a person with a brain tumor was caused by the tumor or its treatment. Require independently documented brain tumor with location, pathology, treatment, and chronology, plus a separately established seizure disorder or epilepsy diagnosis supported by neurologic assessment and appropriate EEG or imaging when indicated. Distinguish acute symptomatic seizures during tumor treatment from later unprovoked seizures. Preserve cortical location, surgery, radiation, recurrence, stroke, medication effects, prior epilepsy, metabolic triggers, and other seizure causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded brain-tumor seizure-risk association. A longitudinal cohort of pediatric brain-tumor survivors describes seizures and associated tumor and treatment factors, but the population evidence does not establish that every seizure disorder in a person with a brain tumor was caused by the tumor or its treatment. Require independently documented brain tumor with location, pathology, treatment, and chronology, plus a separately established seizure disorder or epilepsy diagnosis supported by neurologic assessment and appropriate EEG or imaging when indicated. Distinguish acute symptomatic seizures during tumor treatment from later unprovoked seizures. Preserve cortical location, surgery, radiation, recurrence, stroke, medication effects, prior epilepsy, metabolic triggers, and other seizure causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented brain tumor with location, pathology, treatment, and chronology, plus a separately established seizure disorder/epilepsy diagnosis supported by neurologic assessment and appropriate EEG or imaging when indicated. Distinguish acute symptomatic seizures during tumor treatment from later unprovoked seizures. Preserve cortical location, surgery, radiation, recurrence, stroke, medication effects, prior epilepsy, metabolic triggers, and other seizure causes.",
+         "boundarySource": "approved-me-35-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": ["Independent documentation of brain tumor pathology, location, treatment, recurrence, and seizure chronology", "Separately established seizure disorder or epilepsy with neurologic assessment and EEG or imaging when indicated", "Chronology distinguishing acute symptomatic seizures during tumor treatment from later unprovoked seizures", "Assessment of cortical involvement, surgery, radiation, recurrence, stroke, medications, prior epilepsy, metabolic triggers, and other causes", "Neuro-oncology and epilepsy-specialist assessment of the individual's relationship"],
+      "sourceIds": ["pmid-26332282"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "8b5bb5bb6fc7377818f7f1d59a4bdb45d606dfdeed7cf72b2e5b7917f4605956"
+   },
+   {
+      "relationshipId": "rel-brugada-syndrome-to-cardiac-arrhythmia",
+      "primaryId": "brugada-syndrome",
+      "targetId": "cardiac-arrhythmia",
+      "direction": "brugada-syndrome -> cardiac-arrhythmia",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-35-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded Brugada ventricular-arrhythmia risk association. A Québec cohort examined predictors of ventricular arrhythmias and sudden death in Brugada syndrome, but risk-stratification evidence does not establish that every cardiac-arrhythmia diagnosis in a person with Brugada syndrome was caused by the syndrome. Require independently diagnosed Brugada syndrome with documented type-1 ECG phenotype or specialist electrophysiology confirmation, and separately documented ventricular arrhythmia or qualifying arrhythmic event with compatible chronology. Do not infer arrhythmia from a Brugada pattern alone, palpitations, syncope without evaluation, or family history. Preserve structural heart disease, ischemia, channelopathy overlap, electrolyte disturbance, fever or drug triggers, and other arrhythmia causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded Brugada ventricular-arrhythmia risk association. A Québec cohort examined predictors of ventricular arrhythmias and sudden death in Brugada syndrome, but risk-stratification evidence does not establish that every cardiac-arrhythmia diagnosis in a person with Brugada syndrome was caused by the syndrome. Require independently diagnosed Brugada syndrome with documented type-1 ECG phenotype or specialist electrophysiology confirmation, and separately documented ventricular arrhythmia or qualifying arrhythmic event with compatible chronology. Do not infer arrhythmia from a Brugada pattern alone, palpitations, syncope without evaluation, or family history. Preserve structural heart disease, ischemia, channelopathy overlap, electrolyte disturbance, fever or drug triggers, and other arrhythmia causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently diagnosed Brugada syndrome with documented type-1 ECG phenotype or specialist electrophysiology confirmation, and separately documented ventricular arrhythmia or qualifying arrhythmic event with compatible chronology. Do not infer arrhythmia from a Brugada pattern alone, palpitations, syncope without evaluation, or family history. Preserve structural heart disease, ischemia, channelopathy overlap, electrolyte disturbance, fever or drug triggers, and other arrhythmia causes.",
+         "boundarySource": "approved-me-35-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": ["Independent electrophysiology documentation of Brugada syndrome and type-1 ECG phenotype or equivalent specialist confirmation", "Separately documented ventricular arrhythmia or qualifying arrhythmic event with ECG, monitoring, or device records", "Chronology, fever or medication triggers, electrophysiology findings, and treatment context", "Assessment of structural heart disease, ischemia, electrolyte disturbance, channelopathy overlap, and other causes", "Cardiology or electrophysiology assessment of the individual's phenotype and competing explanations"],
+      "sourceIds": ["pmid-27378596"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "8292c7dda742a0ad7a380d70011da8eaa5dd9011b14cd60fab2b4a1ec28eedb2"
+   },
+   {
+      "relationshipId": "rel-bell-s-palsy-to-keratitis",
+      "primaryId": "bell-s-palsy",
+      "targetId": "keratitis",
+      "direction": "bell-s-palsy -> keratitis",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-35-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded facial-palsy exposure-keratopathy association. A 23-year retrospective ophthalmic review describes ocular sequelae among patients with facial palsy, but the clinical sample does not establish that every keratitis diagnosis in a person with Bell's palsy was caused by the palsy. Require independently documented Bell's palsy or facial-nerve palsy with incomplete eyelid closure or other documented ocular-surface exposure, and separately documented exposure keratopathy, corneal epithelial defect, ulcer, or a clinically defined keratitis phenotype with compatible chronology. Do not infer generic keratitis from facial palsy, facial weakness, eye discomfort, or redness alone. Preserve infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded facial-palsy exposure-keratopathy association. A 23-year retrospective ophthalmic review describes ocular sequelae among patients with facial palsy, but the clinical sample does not establish that every keratitis diagnosis in a person with Bell's palsy was caused by the palsy. Require independently documented Bell's palsy or facial-nerve palsy with incomplete eyelid closure or other documented ocular-surface exposure, and separately documented exposure keratopathy, corneal epithelial defect, ulcer, or a clinically defined keratitis phenotype with compatible chronology. Do not infer generic keratitis from facial palsy, facial weakness, eye discomfort, or redness alone. Preserve infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented Bell's palsy or facial-nerve palsy with incomplete eyelid closure or other documented ocular-surface exposure, and separately documented exposure keratopathy, corneal epithelial defect, ulcer, or a clinically defined keratitis phenotype with compatible chronology. Do not infer generic keratitis from facial palsy, facial weakness, eye discomfort, or redness alone. Preserve infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes.",
+         "boundarySource": "approved-me-35-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": ["Independent documentation of Bell's palsy or facial-nerve palsy, eyelid closure, corneal sensation, and ocular exposure", "Ophthalmic examination documenting exposure keratopathy, epithelial defect, ulcer, or a compatible keratitis phenotype", "Chronology connecting facial-nerve dysfunction and ocular-surface disease", "Assessment of infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes", "Ophthalmology and neurology assessment of the individual's phenotype and competing explanations"],
+      "sourceIds": ["pmid-28319442"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "622a7c753b129bbbe6b94fdd485c3f13135efb94d99ffad7249e64cc73b9b7cb"
+   },
+   {
+      "relationshipId": "rel-bowen-s-disease-to-squamous-cell-carcinoma",
+      "primaryId": "bowen-s-disease",
+      "targetId": "squamous-cell-carcinoma",
+      "direction": "bowen-s-disease -> squamous-cell-carcinoma",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-35-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded in-situ-to-invasive cutaneous squamous-cell-carcinoma progression association. A skin-cancer precursor review identifies Bowen's disease as squamous-cell carcinoma in situ and describes possible dermal invasion, but review evidence does not establish that every Bowen's disease lesion progresses to invasive cancer. Require biopsy-confirmed Bowen's disease or cutaneous squamous-cell carcinoma in situ and separately established invasive cutaneous squamous-cell carcinoma at a compatible site and chronology. Do not infer invasion from clinical morphology, dysplasia alone, recurrence, or an untreated lesion without histopathologic confirmation. Preserve field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risk factors."
+      },
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded in-situ-to-invasive cutaneous squamous-cell-carcinoma progression association. A skin-cancer precursor review identifies Bowen's disease as squamous-cell carcinoma in situ and describes possible dermal invasion, but review evidence does not establish that every Bowen's disease lesion progresses to invasive cancer. Require biopsy-confirmed Bowen's disease or cutaneous squamous-cell carcinoma in situ and separately established invasive cutaneous squamous-cell carcinoma at a compatible site and chronology. Do not infer invasion from clinical morphology, dysplasia alone, recurrence, or an untreated lesion without histopathologic confirmation. Preserve field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risk factors.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require biopsy-confirmed Bowen's disease/cutaneous squamous-cell carcinoma in situ and separately established invasive cutaneous squamous-cell carcinoma at a compatible site and chronology. Do not infer invasion from clinical morphology, dysplasia alone, recurrence, or an untreated lesion without histopathologic confirmation. Preserve field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risk factors.",
+         "boundarySource": "approved-me-35-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": ["Biopsy and pathology confirming Bowen's disease or cutaneous squamous-cell carcinoma in situ", "Separate pathology confirming invasive cutaneous squamous-cell carcinoma at a compatible site", "Chronology of lesion persistence, recurrence, treatment, and invasive transformation", "Assessment of field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risks", "Dermatology assessment distinguishing true invasion from recurrent in-situ disease or a separate primary lesion"],
+      "sourceIds": ["pmid-7804989"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "cf502267f4b16606987ac0286175529b09220dbc5928fb9c541fcd8cf7906014"
    }
    ],
-   "lastUpdatedBy": "Mapping Expansion Batch ME-34",
-   "currentState": "ME34-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+   "lastUpdatedBy": "Mapping Expansion Batch ME-35",
+   "currentState": "ME35-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
 }

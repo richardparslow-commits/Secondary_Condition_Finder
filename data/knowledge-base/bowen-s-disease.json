@@ -2,8 +2,56 @@
   "id": "bowen-s-disease",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed Bowen's disease to squamous-cell-carcinoma association.",
+    "Confirm biopsy-proven in-situ disease, separately established invasive cutaneous squamous-cell carcinoma, compatible site and chronology, and competing skin-cancer risks before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "squamous-cell-carcinoma",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded in-situ-to-invasive cutaneous squamous-cell-carcinoma progression association. A skin-cancer precursor review identifies Bowen's disease as squamous-cell carcinoma in situ and describes possible dermal invasion, but review evidence does not establish that every Bowen's disease lesion progresses to invasive cancer. Require biopsy-confirmed Bowen's disease or cutaneous squamous-cell carcinoma in situ and separately established invasive cutaneous squamous-cell carcinoma at a compatible site and chronology. Do not infer invasion from clinical morphology, dysplasia alone, recurrence, or an untreated lesion without histopathologic confirmation. Preserve field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risk factors.",
+      "evidenceGaps": [
+        "Biopsy and pathology confirming Bowen's disease or cutaneous squamous-cell carcinoma in situ",
+        "Separate pathology confirming invasive cutaneous squamous-cell carcinoma at a compatible site",
+        "Chronology of lesion persistence, recurrence, treatment, and invasive transformation",
+        "Assessment of field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risks",
+        "Dermatology assessment distinguishing true invasion from recurrent in-situ disease or a separate primary lesion"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Sober AJ, Burstein JM. Precursors to skin cancer. Cancer. 1995;75(2 Suppl):645-650. PMID 7804989. doi:10.1002/1097-0142(19950115)75:2+<645::AID-CNCR2820751405>3.0.CO;2-1.",
+          "note": "Mapping Expansion Batch ME-35 skin-cancer precursor review for the bounded Bowen's disease to invasive cutaneous squamous-cell-carcinoma proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7804989/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 7804989; review identifying Bowen's disease as a precursor to invasive nonmelanoma skin cancer; approved ME-35 guard requires pathology, site, chronology, and competing-risk review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The precursor review supports possible progression from biopsy-confirmed cutaneous squamous-cell carcinoma in situ to invasive cutaneous squamous-cell carcinoma, without establishing deterministic or individual progression.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; pathology, site, chronology, treatment context, and competing skin-cancer risks require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "Accumulated molecular and cellular changes in an in-situ keratinocytic malignancy may permit breach of the basement membrane and dermal invasion, but the individual's transformation pathway remains hypothesized until serial pathology and clinical records establish it.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The precursor review identifies Bowen's disease as a possible precursor to invasive cutaneous squamous-cell carcinoma but does not prove that an individual's invasive cancer arose from that lesion.",
+        "evidenceGaps": "Pathology confirming in-situ and invasive disease; compatible site and chronology; lesion persistence, recurrence, and treatment history; and assessment of field cancerization, ultraviolet exposure, immunosuppression, HPV, and other risks.",
+        "alternativeEtiologiesToRuleOut": [
+          "A separate cutaneous squamous-cell carcinoma primary",
+          "Field cancerization and cumulative ultraviolet exposure",
+          "Immunosuppression or HPV-related skin-cancer risk",
+          "Treatment-related change or recurrent in-situ disease without invasion",
+          "Other keratinocyte-carcinoma risk factors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

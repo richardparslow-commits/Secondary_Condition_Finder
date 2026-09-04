@@ -2,8 +2,56 @@
   "id": "brugada-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed Brugada syndrome to cardiac-arrhythmia association.",
+    "Confirm type-1 ECG phenotype or electrophysiology diagnosis, documented ventricular arrhythmia, chronology, triggers, and competing cardiac causes before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "cardiac-arrhythmia",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded Brugada ventricular-arrhythmia risk association. A Québec cohort examined predictors of ventricular arrhythmias and sudden death in Brugada syndrome, but risk-stratification evidence does not establish that every cardiac-arrhythmia diagnosis in a person with Brugada syndrome was caused by the syndrome. Require independently diagnosed Brugada syndrome with documented type-1 ECG phenotype or specialist electrophysiology confirmation, and separately documented ventricular arrhythmia or qualifying arrhythmic event with compatible chronology. Do not infer arrhythmia from a Brugada pattern alone, palpitations, syncope without evaluation, or family history. Preserve structural heart disease, ischemia, channelopathy overlap, electrolyte disturbance, fever or drug triggers, and other arrhythmia causes.",
+      "evidenceGaps": [
+        "Independent electrophysiology documentation of Brugada syndrome and type-1 ECG phenotype or equivalent specialist confirmation",
+        "Separately documented ventricular arrhythmia or qualifying arrhythmic event with ECG, monitoring, or device records",
+        "Chronology, fever or medication triggers, electrophysiology findings, and treatment context",
+        "Assessment of structural heart disease, ischemia, electrolyte disturbance, channelopathy overlap, and other causes",
+        "Cardiology or electrophysiology assessment of the individual's phenotype and competing explanations"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Rivard L, Roux A, Nault I, Champagne J, Roux JF, Tadros R, et al. Predictors of Ventricular Arrhythmias and Sudden Death in a Québec Cohort With Brugada Syndrome. Canadian Journal of Cardiology. 2016;32(11):1355.e1-1355.e7. PMID 27378596. doi:10.1016/j.cjca.2016.03.012.",
+          "note": "Mapping Expansion Batch ME-35 Brugada cohort evidence for the bounded ventricular-arrhythmia proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27378596/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 27378596; Québec cohort evaluating ventricular arrhythmia and sudden-death predictors in Brugada syndrome; approved ME-35 guard requires ventricular phenotype and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Brugada cohort supports risk stratification for ventricular arrhythmia and sudden death, without establishing an individual cardiac-arrhythmia nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; ECG phenotype, arrhythmic event, chronology, trigger context, and competing cardiac causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Brugada-related cardiac sodium-channel dysfunction may create an electrical substrate vulnerable to ventricular arrhythmia, with fever, drugs, autonomic state, and other modifiers affecting risk, but the individual's arrhythmic pathway remains hypothesized until electrophysiologic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The cohort identifies ventricular-arrhythmia risk factors in Brugada syndrome but does not prove that any particular arrhythmia was caused by the syndrome.",
+        "evidenceGaps": "Brugada ECG/electrophysiology confirmation; objective ventricular-arrhythmia records; chronology and fever/drug triggers; treatment context; and evaluation of structural, ischemic, electrolyte, overlapping-channelopathy, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "Structural heart disease",
+          "Ischemic heart disease",
+          "Electrolyte or metabolic disturbance",
+          "Fever or medication-triggered arrhythmia without established Brugada attribution",
+          "Other inherited channelopathy or arrhythmia substrate"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

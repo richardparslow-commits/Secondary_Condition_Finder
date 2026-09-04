@@ -146,7 +146,7 @@ describe("Mapping Expansion Batch ME-4", () => {
     expect(files).toHaveLength(813);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(674);
-    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(342);
+    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(347);
     expect(
       mappings.filter((mapping) => mapping.draft === false && (mapping.suggestions ?? []).length === 1),
     ).toHaveLength(66);
@@ -156,9 +156,9 @@ describe("Mapping Expansion Batch ME-4", () => {
     const refs = mappings.flatMap((mapping) =>
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-expect(refs).toHaveLength(350);
+expect(refs).toHaveLength(355);
     expect(refs.filter((ref) => ref.verified === true)).toHaveLength(256);
-expect(refs.filter((ref) => ref.verified === false)).toHaveLength(94);
+expect(refs.filter((ref) => ref.verified === false)).toHaveLength(99);
   });
 
   it("passes citation and master-registry gates after ME-7 verification", { timeout: 30_000 }, () => {
@@ -175,10 +175,10 @@ expect(refs.filter((ref) => ref.verified === false)).toHaveLength(94);
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 350,
+      references: 355,
       verified: 256,
       verifiedProvenance: 262,
-      unverified: 94,
+      unverified: 99,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -194,8 +194,8 @@ expect(refs.filter((ref) => ref.verified === false)).toHaveLength(94);
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 342,
-      pendingVerificationSourceEntities: 91,
+      relationships: 347,
+      pendingVerificationSourceEntities: 96,
     });
   });
 });

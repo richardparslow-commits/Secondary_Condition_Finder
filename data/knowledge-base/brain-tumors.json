@@ -2,8 +2,56 @@
   "id": "brain-tumors",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed brain-tumors to seizure-disorder association.",
+    "Confirm tumor location, pathology, treatment, acute versus unprovoked seizures, chronology, and competing seizure causes before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "seizure-disorder",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded brain-tumor seizure-risk association. A longitudinal cohort of pediatric brain-tumor survivors describes seizures and associated tumor and treatment factors, but the population evidence does not establish that every seizure disorder in a person with a brain tumor was caused by the tumor or its treatment. Require independently documented brain tumor with location, pathology, treatment, and chronology, plus a separately established seizure disorder or epilepsy diagnosis supported by neurologic assessment and appropriate EEG or imaging when indicated. Distinguish acute symptomatic seizures during tumor treatment from later unprovoked seizures. Preserve cortical location, surgery, radiation, recurrence, stroke, medication effects, prior epilepsy, metabolic triggers, and other seizure causes.",
+      "evidenceGaps": [
+        "Independent documentation of brain tumor pathology, location, treatment, recurrence, and seizure chronology",
+        "Separately established seizure disorder or epilepsy with neurologic assessment and EEG or imaging when indicated",
+        "Chronology distinguishing acute symptomatic seizures during tumor treatment from later unprovoked seizures",
+        "Assessment of cortical involvement, surgery, radiation, recurrence, stroke, medications, prior epilepsy, metabolic triggers, and other causes",
+        "Neuro-oncology and epilepsy-specialist assessment of the individual's relationship"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Ullrich NJ, Pomeroy SL, Kapur K, Manley PE, Goumnerova L, Smith ER, et al. Incidence, risk factors, and longitudinal outcome of seizures in long-term survivors of pediatric brain tumors. Epilepsia. 2015;56(10):1599-1604. PMID 26332282. doi:10.1111/epi.13112.",
+          "note": "Mapping Expansion Batch ME-35 longitudinal pediatric survivor-cohort evidence for the bounded brain-tumor seizure-risk proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26332282/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 26332282; longitudinal cohort of pediatric brain-tumor survivors evaluating seizures and risk factors; approved ME-35 guard preserves pediatric/survivor scope and acute-versus-late seizure distinction."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The pediatric survivor cohort supports seizure occurrence and risk stratification after brain tumors, without establishing deterministic or individual causation of a seizure disorder.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; tumor phenotype, treatment context, seizure chronology, and competing neurologic causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Tumor-related cortical irritation, structural disruption, scarring, or treatment-related injury may alter neuronal networks and lower seizure threshold, but the individual's epileptogenic pathway remains hypothesized until longitudinal neuro-oncology and epilepsy records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The pediatric survivor cohort describes seizure risk after brain tumors but does not prove that an individual's seizure disorder was caused by the tumor or treatment.",
+        "evidenceGaps": "Tumor pathology and location; treatment and recurrence; distinction between acute symptomatic and later unprovoked seizures; EEG/imaging; chronology; and review of prior epilepsy, stroke, medications, metabolic triggers, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "Acute symptomatic seizure during tumor illness or treatment",
+          "Prior epilepsy or seizure disorder",
+          "Stroke, radiation injury, or other structural brain lesion",
+          "Medication, metabolic, alcohol, or substance-related trigger",
+          "Other neurologic or inflammatory disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

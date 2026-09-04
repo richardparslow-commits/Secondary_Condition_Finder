@@ -2,8 +2,56 @@
   "id": "brown-s-quard-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed Brown-Séquard syndrome to urinary-incontinence association.",
+    "Confirm the spinal-cord lesion, neurologic phenotype, objective urinary dysfunction, chronology, and competing bladder causes before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "urinary-incontinence",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded Brown-Séquard urinary-dysfunction association. A syndrome-specific urodynamic study describes lower-urinary-tract dysfunction in Brown-Séquard syndrome, but the small study does not establish that every urinary-incontinence diagnosis in a person with the syndrome was caused by the spinal lesion. Require independently documented Brown-Séquard syndrome by compatible spinal-cord lesion and neurologic examination, separately documented urinary incontinence or neurogenic lower-urinary-tract dysfunction by validated assessment or urodynamics, compatible chronology, and neurologic or urologic review. Preserve urinary retention or overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes.",
+      "evidenceGaps": [
+        "Independent documentation of Brown-Séquard syndrome, spinal-cord lesion, affected level, and neurologic phenotype",
+        "Validated urinary-incontinence or neurogenic lower-urinary-tract assessment, including urodynamics when clinically indicated",
+        "Chronology connecting the spinal-cord syndrome to urinary dysfunction",
+        "Assessment of retention or overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes",
+        "Neurology and urology assessment of the individual's phenotype and competing explanations"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Sakakibara R, Hattori T, Uchiyama T, et al. Urinary dysfunction in Brown-Séquard syndrome. Neurourology and Urodynamics. 2001;20(6):661-667. PMID 11746547. doi:10.1002/nau.1017.",
+          "note": "Mapping Expansion Batch ME-35 syndrome-specific urodynamic evidence for the bounded Brown-Séquard urinary-dysfunction proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11746547/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 11746547; syndrome-specific study of urinary dysfunction in Brown-Séquard syndrome; approved ME-35 guard requires objective urinary phenotype, chronology, and competing-cause review."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The syndrome-specific urodynamic study supports urinary dysfunction as a possible manifestation in Brown-Séquard syndrome, without establishing an individual urinary-incontinence nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; spinal-lesion phenotype, objective urinary findings, chronology, and competing bladder causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hemisection-pattern spinal-cord lesion may disrupt descending and segmental pathways that coordinate bladder storage and emptying, but the individual's urinary phenotype and attribution remain hypothesized until neurologic, urodynamic, and longitudinal records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The small syndrome-specific study describes urinary dysfunction but does not prove that any particular person's urinary incontinence was caused by Brown-Séquard syndrome.",
+        "evidenceGaps": "Brown-Séquard lesion and neurologic phenotype; objective urinary or urodynamic findings; chronology; and assessment of retention, infection, prostate or pelvic disease, medications, prior incontinence, and other neurogenic-bladder causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "Urinary retention with overflow",
+          "Urinary tract infection",
+          "Prostate or pelvic disease",
+          "Medication effects or pre-existing incontinence",
+          "Other neurologic causes of bladder dysfunction"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }
