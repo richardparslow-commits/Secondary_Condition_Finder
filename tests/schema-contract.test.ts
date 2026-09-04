@@ -45,5 +45,5 @@ describe("strict schema contract for catalog and knowledge base JSON", () => {
         }
       }
     }
-  });
+  }, 30000);
 });

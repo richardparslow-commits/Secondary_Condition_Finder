@@ -1,0 +1,60 @@
+{
+  "batch": "ME-34",
+  "batchDate": "2026-09-03",
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "relationships": [
+    {
+      "relationshipId": "rel-appendicitis-to-female-infertility",
+      "primaryId": "appendicitis",
+      "targetId": "female-infertility",
+      "pmid": "25303785",
+      "doi": "10.1016/j.jss.2014.08.017",
+      "publicationGuard": "Require independently documented complicated or perforated appendicitis, relevant pelvic or tubal pathology, a separately established female infertility diagnosis, compatible chronology, and gynecologic review. Preserve age, endometriosis, pelvic inflammatory disease, prior pelvic surgery, congenital factors, male-factor infertility, and other competing causes."
+    },
+    {
+      "relationshipId": "rel-arnold-chiari-malformation-to-sleep-apnea",
+      "primaryId": "arnold-chiari-malformation",
+      "targetId": "sleep-apnea",
+      "pmid": "31992420",
+      "doi": "10.5664/jcsm.8194",
+      "publicationGuard": "Require independently documented Arnold-Chiari malformation, separately diagnosed sleep apnea by polysomnography, explicit obstructive or central phenotype characterization, compatible chronology, and neurology and sleep-medicine review. Preserve adenotonsillar or upper-airway obstruction, obesity, craniofacial anatomy, pulmonary disease, medication effects, and other causes."
+    },
+    {
+      "relationshipId": "rel-atrial-flutter-to-cerebrovascular-accident-stroke-residuals",
+      "primaryId": "atrial-flutter",
+      "targetId": "cerebrovascular-accident-stroke-residuals",
+      "pmid": "29223550",
+      "doi": "10.1016/j.jstrokecerebrovasdis.2017.10.025",
+      "publicationGuard": "Require independently documented atrial flutter, a separately established ischemic cerebrovascular accident with objective residuals, compatible chronology, rhythm and anticoagulation records, and cardiovascular-neurologic review. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, structural heart disease, and other competing stroke causes."
+    },
+    {
+      "relationshipId": "rel-burns-to-contractures",
+      "primaryId": "burns",
+      "targetId": "contractures",
+      "pmid": "30948277",
+      "doi": "10.1016/j.burns.2019.03.007",
+      "publicationGuard": "Require independently documented burn injury with compatible depth and anatomic site, separately documented scar contracture or objective joint limitation, compatible chronology, and burn or rehabilitation specialist review. Preserve pre-existing joint disease, neurologic weakness, tendon injury, infection, immobilization, surgical effects, and other causes of restricted motion."
+    }
+  ],
+  "evidenceAndPublicationState": {
+    "primaryKnowledgeBaseRecordsRemainDraft": true,
+    "suggestionsAreAssociationOnly": true,
+    "clinicalReferencesRemainUnverified": true,
+    "qualifiedHumanCitationReviewRequiredBeforePromotion": true,
+    "registryHashesUseRepositoryCanonicalization": true
+  },
+  "aggregateRatchet": {
+    "relationships": "338 -> 342",
+    "liveSourceReferenceUses": "346 -> 350",
+    "verifiedLiveUses": "256 unchanged",
+    "pendingLiveUses": "90 -> 94",
+    "clinicalUses": "341 -> 345",
+    "explicitPublicationGuards": "264 -> 268",
+    "sourceEntitiesIncludingLineage": "329 -> 333"
+  },
+  "deferredCandidates": [
+    "benign-prostatic-hyperplasia -> urinary-incontinence was deferred because its primary mapping already contains published verified suggestions and the pending addition would violate the fail-closed publication gate.",
+    "bruxism-awake-sleep -> tmj-dysfunction was rejected because PMID 9758394 concluded juvenile bruxism appeared unrelated to TMJ symptoms."
+  ],
+  "safetyBoundary": "These records are evidence-navigation aids only. They do not diagnose a condition, establish a VA medical nexus, determine service connection, or replace qualified clinical and accredited-representative review. Pending citation state is intentionally fail-closed."
+}

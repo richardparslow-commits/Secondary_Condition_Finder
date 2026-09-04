@@ -1,0 +1,64 @@
+{
+  "batch": "ME-35",
+  "batchDate": "2026-09-03",
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "relationships": [
+    {
+      "relationshipId": "rel-brown-s-quard-syndrome-to-urinary-incontinence",
+      "primaryId": "brown-s-quard-syndrome",
+      "targetId": "urinary-incontinence",
+      "pmid": "11746547",
+      "doi": "10.1002/nau.1017",
+      "publicationGuard": "Require independently documented Brown-Séquard syndrome by compatible spinal-cord lesion and neurologic examination, separately documented urinary incontinence or neurogenic lower-urinary-tract dysfunction by validated assessment/urodynamics, compatible chronology, and neurologic or urologic review. Do not infer incontinence from spinal pain, weakness, or a nonspecific spinal-cord diagnosis alone. Preserve urinary retention/overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes."
+    },
+    {
+      "relationshipId": "rel-brain-tumors-to-seizure-disorder",
+      "primaryId": "brain-tumors",
+      "targetId": "seizure-disorder",
+      "pmid": "26332282",
+      "doi": "10.1111/epi.13112",
+      "publicationGuard": "Require independently documented brain tumor with location, pathology, treatment, and chronology, plus a separately established seizure disorder/epilepsy diagnosis supported by neurologic assessment and appropriate EEG or imaging when indicated. Distinguish acute symptomatic seizures during tumor treatment from later unprovoked seizures. Preserve cortical location, surgery, radiation, recurrence, stroke, medication effects, prior epilepsy, metabolic triggers, and other seizure causes."
+    },
+    {
+      "relationshipId": "rel-brugada-syndrome-to-cardiac-arrhythmia",
+      "primaryId": "brugada-syndrome",
+      "targetId": "cardiac-arrhythmia",
+      "pmid": "27378596",
+      "doi": "10.1016/j.cjca.2016.03.012",
+      "publicationGuard": "Require independently diagnosed Brugada syndrome with documented type-1 ECG phenotype or specialist electrophysiology confirmation, and separately documented ventricular arrhythmia or qualifying arrhythmic event with compatible chronology. Do not infer arrhythmia from a Brugada pattern alone, palpitations, syncope without evaluation, or family history. Preserve structural heart disease, ischemia, channelopathy overlap, electrolyte disturbance, fever or drug triggers, and other arrhythmia causes."
+    },
+    {
+      "relationshipId": "rel-bell-s-palsy-to-keratitis",
+      "primaryId": "bell-s-palsy",
+      "targetId": "keratitis",
+      "pmid": "28319442",
+      "doi": "10.1080/09286586.2017.1294186",
+      "publicationGuard": "Require independently documented Bell's palsy or facial-nerve palsy with incomplete eyelid closure or other documented ocular-surface exposure, and separately documented exposure keratopathy, corneal epithelial defect, ulcer, or a clinically defined keratitis phenotype with compatible chronology. Do not infer generic keratitis from facial palsy, facial weakness, eye discomfort, or redness alone. Preserve infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes."
+    },
+    {
+      "relationshipId": "rel-bowen-s-disease-to-squamous-cell-carcinoma",
+      "primaryId": "bowen-s-disease",
+      "targetId": "squamous-cell-carcinoma",
+      "pmid": "7804989",
+      "doi": "10.1002/1097-0142(19950115)75:2+<645::AID-CNCR2820751405>3.0.CO;2-1",
+      "publicationGuard": "Require biopsy-confirmed Bowen's disease/cutaneous squamous-cell carcinoma in situ and separately established invasive cutaneous squamous-cell carcinoma at a compatible site and chronology. Do not infer invasion from clinical morphology, dysplasia alone, recurrence, or an untreated lesion without histopathologic confirmation. Preserve field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risk factors."
+    }
+  ],
+  "evidenceAndPublicationState": {
+    "primaryKnowledgeBaseRecordsRemainDraft": true,
+    "suggestionsAreAssociationOnly": true,
+    "clinicalReferencesRemainUnverified": true,
+    "qualifiedHumanCitationReviewRequiredBeforePromotion": true,
+    "registryHashesUseRepositoryCanonicalization": true
+  },
+  "aggregateRatchet": {
+    "relationships": "342 -> 347",
+    "liveSourceReferenceUses": "350 -> 355",
+    "verifiedLiveUses": "256 unchanged",
+    "pendingLiveUses": "94 -> 99",
+    "clinicalUses": "345 -> 350",
+    "explicitPublicationGuards": "268 -> 273",
+    "sourceEntitiesIncludingLineage": "333 -> 338"
+  },
+  "safetyBoundary": "These records are evidence-navigation aids only. They do not diagnose a condition, establish a VA medical nexus, determine service connection, or replace qualified clinical and accredited-representative review. Pending citation state is intentionally fail-closed."
+}

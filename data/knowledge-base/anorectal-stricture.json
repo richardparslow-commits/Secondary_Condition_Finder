@@ -3,7 +3,54 @@
   "draft": true,
   "todo": [
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "ME-32: a single bounded overflow-incontinence association has been authored from anorectal-disorder clinical literature; the draft-safe association stands until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "fecal-incontinence",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded overflow-incontinence association. An anorectal stricture obstructs stool passage and promotes fecal impaction with overflow (paradoxical) incontinence, a mechanism documented in the anorectal-disorder and fecal-incontinence clinical literature, but the primary diagnosis alone does not establish incontinence in every person or determine an individual's course. Require independently documented anorectal stricture by endoscopic or radiographic assessment, documented fecal incontinence by validated assessment compatible in chronology, and specialist review. Preserve sphincter injury, obstetric trauma, prior anorectal surgery, radiation, neurologic disease, and diarrhea from other causes as competing etiologies.",
+      "evidenceGaps": [
+        "Independent documentation of the anorectal stricture by endoscopy or imaging",
+        "Documented fecal incontinence by validated assessment with compatible chronology",
+        "Impaction and overflow-mechanism assessment including digital rectal examination",
+        "Assessment of sphincter integrity, obstetric and surgical history, and radiation exposure",
+        "Specialist assessment distinguishing stricture-related overflow incontinence from other causes"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Leung FW, Rao SSC. Approach to fecal incontinence and constipation in older hospitalized patients. Hosp Pract (1995). 2011;39(1):97-104. PMID 21441765. doi:10.3810/hp.2011.02.380.",
+          "note": "Clinical review documenting the impaction and overflow-incontinence mechanism and recommending digital rectal examination to rule out fecal impaction with overflow incontinence. It supports a bounded disease-association proposition and clinical evaluation, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21441765/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 21441765; impaction with overflow-incontinence mechanism"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Anorectal obstruction from stricture is documented to promote fecal impaction with overflow incontinence, but the clinical literature does not establish an individual medical nexus without documentation of both the stricture and the incontinence, compatible chronology, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this association evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Circumferential narrowing of the anorectal outlet obstructs complete evacuation, promoting fecal impaction whose retained stool causes overflow leakage past the obstruction, but the individual pathway must be established from endoscopic assessment, exclusion imaging, and specialist evaluation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The impaction and overflow-incontinence mechanism is documented in anorectal clinical literature, but that literature does not establish that a stricture caused or aggravated fecal incontinence in every individual; both diagnoses, chronology, exclusion of impaction, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Documented stricture and incontinence; chronology; digital rectal examination and endoscopic findings; sphincter, obstetric, surgical, radiation, neurologic, and diarrheal alternatives; specialist assessment of the individual relationship",
+        "alternativeEtiologiesToRuleOut": [
+          "Anal-sphincter injury from obstetric trauma or prior surgery",
+          "Radiation proctitis or inflammatory stricture of independent etiology",
+          "Neurologic disease and medication- or infection-induced diarrhea"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

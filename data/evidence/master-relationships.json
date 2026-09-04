@@ -6,8 +6,8 @@
    "installedFrom": "Master Registry Discrepancy Resolution 2026",
    "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
    "counts": {
-      "relationships": 328,
-      "explicitPublicationGuards": 254,
+      "relationships": 347,
+      "explicitPublicationGuards": 273,
       "legacyRationaleBoundaries": 74
    },
    "relationships": [
@@ -10742,8 +10742,587 @@
          "sourceReferenceCount": 1,
          "pathwayIntelligencePresent": false,
          "suggestionObjectHash": "7a3327975fc158f252d86ebf3697fb7906b8f262419b9e578afda94a7ea3e7f1"
-      }
+      },
+      {
+         "relationshipId": "rel-ankle-strain-to-osteoarthritis",
+         "primaryId": "ankle-strain",
+         "targetId": "osteoarthritis",
+         "direction": "ankle-strain -> osteoarthritis",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-32-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded same-joint degenerative association. The International Ankle Consortium evidence review associates recurrent lateral ankle sprains and chronic ankle instability with increasing rates of post-traumatic ankle osteoarthritis in the injured ankle, but the primary diagnosis alone does not establish osteoarthritis in every person or determine an individual's degenerative course. Require independently documented ankle sprain with documented chronic instability or recurrent injury, radiographically documented ipsilateral ankle osteoarthritis compatible in chronology, and orthopedic review. Preserve prior ankle fracture, talar osteochondral lesion, malalignment, inflammatory arthropathy, and other competing causes of ankle degeneration."
+         },
+         "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded same-joint degenerative association. The International Ankle Consortium evidence review associates recurrent lateral ankle sprains and chronic ankle instability with increasing rates of post-traumatic ankle osteoarthritis in the injured ankle, but the primary diagnosis alone does not establish osteoarthritis in every person or determine an individual's degenerative course. Require independently documented ankle sprain with documented chronic instability or recurrent injury, radiographically documented ipsilateral ankle osteoarthritis compatible in chronology, and orthopedic review. Preserve prior ankle fracture, talar osteochondral lesion, malalignment, inflammatory arthropathy, and other competing causes of ankle degeneration.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented ankle sprain with documented chronic instability or recurrent injury, radiographically documented ipsilateral ankle osteoarthritis compatible in chronology, and orthopedic review.",
+            "boundarySource": "approved-me-32-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of ankle sprain injury with recurrent episodes or chronic instability",
+            "Radiographic documentation of ipsilateral ankle osteoarthritis with compatible chronology",
+            "Assessment of prior fracture, osteochondral lesion, and malalignment",
+            "Assessment of inflammatory arthropathy and other degenerative alternatives",
+            "Orthopedic assessment distinguishing sprain-related degeneration from other causes"
+         ],
+         "sourceIds": [
+            "pmid-27259753"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "2df35079372b5dd7379024db5fded47fde76cfea4205f8f7068ac0bd06fc2c22"
+      },
+      {
+         "relationshipId": "rel-ankylosis-to-osteoarthritis",
+         "primaryId": "ankylosis",
+         "targetId": "osteoarthritis",
+         "direction": "ankylosis -> osteoarthritis",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-32-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded adjacent-joint degenerative association. Joint ankylosis alters segmental motion and load transfer, and post-traumatic ankle-degeneration literature documents progressive arthritic change in and around stiffened or fused joints, but the primary diagnosis alone does not establish adjacent-segment osteoarthritis in every person or determine an individual's degenerative course. Require independently documented ankylosis of the affected joint by clinical and imaging assessment, radiographically documented adjacent or ipsilateral-segment osteoarthritis compatible in chronology, and orthopedic review. Preserve prior fracture, inflammatory arthropathy, surgical fusion, infection, and primary degenerative disease as competing causes."
+         },
+         "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded adjacent-joint degenerative association. Joint ankylosis alters segmental motion and load transfer, and post-traumatic ankle-degeneration literature documents progressive arthritic change in and around stiffened or fused joints, but the primary diagnosis alone does not establish adjacent-segment osteoarthritis in every person or determine an individual's degenerative course. Require independently documented ankylosis of the affected joint by clinical and imaging assessment, radiographically documented adjacent or ipsilateral-segment osteoarthritis compatible in chronology, and orthopedic review. Preserve prior fracture, inflammatory arthropathy, surgical fusion, infection, and primary degenerative disease as competing causes.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented ankylosis of the affected joint by clinical and imaging assessment, radiographically documented adjacent or ipsilateral-segment osteoarthritis compatible in chronology, and orthopedic review.",
+            "boundarySource": "approved-me-32-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of the ankylosed joint by clinical and imaging assessment",
+            "Radiographic documentation of adjacent-segment or ipsilateral osteoarthritis with compatible chronology",
+            "Assessment of prior fracture, fusion surgery, and infection history",
+            "Assessment of inflammatory arthropathy and primary degenerative alternatives",
+            "Orthopedic assessment distinguishing ankylosis-related degeneration from other causes"
+         ],
+         "sourceIds": [
+            "pmid-31925464"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "39e9e9469118c13e9fd1c144484d83004920c9317559be75c320172a12365f9a"
+      },
+      {
+         "relationshipId": "rel-anorgasmia-to-depressive-disorder",
+         "primaryId": "anorgasmia",
+         "targetId": "depressive-disorder",
+         "direction": "anorgasmia -> depressive-disorder",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-32-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded psychiatric-comorbidity association. Clinical review evidence documents that sexual functioning, including orgasmic capacity, is generally impaired during depression, and that anorgasmia and depression co-occur and interact bidirectionally, but the primary diagnosis alone does not establish a depressive disorder in every person or determine an individual's psychiatric course. Require independently documented anorgasmia by sexual-medicine assessment, a diagnosed depressive disorder by structured psychiatric evaluation compatible in chronology, and mental-health review. Preserve medication effects, particularly serotonergic antidepressants, endocrine disorders, chronic disease, pelvic pathology, and relationship or psychological factors as competing causes."
+         },
+         "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded psychiatric-comorbidity association. Clinical review evidence documents that sexual functioning, including orgasmic capacity, is generally impaired during depression, and that anorgasmia and depression co-occur and interact bidirectionally, but the primary diagnosis alone does not establish a depressive disorder in every person or determine an individual's psychiatric course. Require independently documented anorgasmia by sexual-medicine assessment, a diagnosed depressive disorder by structured psychiatric evaluation compatible in chronology, and mental-health review. Preserve medication effects, particularly serotonergic antidepressants, endocrine disorders, chronic disease, pelvic pathology, and relationship or psychological factors as competing causes.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented anorgasmia by sexual-medicine assessment, a diagnosed depressive disorder by structured psychiatric evaluation compatible in chronology, and mental-health review.",
+            "boundarySource": "approved-me-32-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of anorgasmia by sexual-medicine assessment",
+            "Diagnosed depressive disorder by structured psychiatric evaluation with compatible chronology",
+            "Medication reconciliation including serotonergic agent exposure",
+            "Assessment of endocrine, chronic-disease, and pelvic-pathology alternatives",
+            "Mental-health assessment distinguishing depression-related sexual dysfunction from other causes"
+         ],
+         "sourceIds": [
+            "pmid-11353583"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "18c7d489183408f7c8f39dda7a7897695e91516f1f2853d4246759e984f7d4aa"
+      },
+      {
+         "relationshipId": "rel-anterior-cord-syndrome-to-urinary-incontinence",
+         "primaryId": "anterior-cord-syndrome",
+         "targetId": "urinary-incontinence",
+         "direction": "anterior-cord-syndrome -> urinary-incontinence",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-32-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded neurogenic-bladder association. Anterior cord syndrome from spinal cord infarction produces corticospinal and spinothalamic tract injury below the lesion, and spinal-cord-infarction clinical literature documents neurogenic bladder with urinary incontinence among the disabling complications of the resulting paraplegia, but the primary diagnosis alone does not establish persistent incontinence in every person or determine an individual's recovery course. Require independently documented anterior cord syndrome by imaging and clinical examination, documented urinary incontinence by urodynamic or validated assessment compatible in chronology, and specialist review. Preserve pre-existing urologic disease, diabetes, prostate pathology in men, medication effects, and other competing causes of incontinence."
+         },
+         "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded neurogenic-bladder association. Anterior cord syndrome from spinal cord infarction produces corticospinal and spinothalamic tract injury below the lesion, and spinal-cord-infarction clinical literature documents neurogenic bladder with urinary incontinence among the disabling complications of the resulting paraplegia, but the primary diagnosis alone does not establish persistent incontinence in every person or determine an individual's recovery course. Require independently documented anterior cord syndrome by imaging and clinical examination, documented urinary incontinence by urodynamic or validated assessment compatible in chronology, and specialist review. Preserve pre-existing urologic disease, diabetes, prostate pathology in men, medication effects, and other competing causes of incontinence.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented anterior cord syndrome by imaging and clinical examination, documented urinary incontinence by urodynamic or validated assessment compatible in chronology, and specialist review.",
+            "boundarySource": "approved-me-32-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of anterior cord syndrome by MRI and neurologic examination",
+            "Documented urinary incontinence by urodynamic study or validated assessment with chronology",
+            "Bladder-management and recovery-course records",
+            "Assessment of pre-existing urologic disease, diabetes, prostate pathology, and medications",
+            "Specialist assessment distinguishing cord-injury-related incontinence from other causes"
+         ],
+         "sourceIds": [
+            "pmid-35835550"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "66a323ae45b067ab42a1b267bbbe1c40148000aad47f6b73e08d2633e7adb71b"
+      },
+      {
+         "relationshipId": "rel-anorectal-stricture-to-fecal-incontinence",
+         "primaryId": "anorectal-stricture",
+         "targetId": "fecal-incontinence",
+         "direction": "anorectal-stricture -> fecal-incontinence",
+         "primaryPublicationState": "draft",
+         "rank": 1,
+         "clinicalProposition": {
+            "status": "approved-me-32-bounded-proposition",
+            "text": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded overflow-incontinence association. An anorectal stricture obstructs stool passage and promotes fecal impaction with overflow (paradoxical) incontinence, a mechanism documented in the anorectal-disorder and fecal-incontinence clinical literature, but the primary diagnosis alone does not establish incontinence in every person or determine an individual's course. Require independently documented anorectal stricture by endoscopic or radiographic assessment, documented fecal incontinence by validated assessment compatible in chronology, and specialist review. Preserve sphincter injury, obstetric trauma, prior anorectal surgery, radiation, neurologic disease, and diarrhea from other causes as competing etiologies."
+         },
+         "rationale": "Mapping Expansion Batch ME-32 adds this relationship only as a bounded overflow-incontinence association. An anorectal stricture obstructs stool passage and promotes fecal impaction with overflow (paradoxical) incontinence, a mechanism documented in the anorectal-disorder and fecal-incontinence clinical literature, but the primary diagnosis alone does not establish incontinence in every person or determine an individual's course. Require independently documented anorectal stricture by endoscopic or radiographic assessment, documented fecal incontinence by validated assessment compatible in chronology, and specialist review. Preserve sphincter injury, obstetric trauma, prior anorectal surgery, radiation, neurologic disease, and diarrhea from other causes as competing etiologies.",
+         "publicationGuard": {
+            "status": "explicit",
+            "structuredGuardText": "Require independently documented anorectal stricture by endoscopic or radiographic assessment, documented fecal incontinence by validated assessment compatible in chronology, and specialist review.",
+            "boundarySource": "approved-me-32-implementation-scope",
+            "structuredGuardReviewPending": false,
+            "semanticRewriteAuthorized": false
+         },
+         "evidenceGaps": [
+            "Independent documentation of the anorectal stricture by endoscopy or imaging",
+            "Documented fecal incontinence by validated assessment with compatible chronology",
+            "Impaction and overflow-mechanism assessment including digital rectal examination",
+            "Assessment of sphincter integrity, obstetric and surgical history, and radiation exposure",
+            "Specialist assessment distinguishing stricture-related overflow incontinence from other causes"
+         ],
+         "sourceIds": [
+            "pmid-21441765"
+         ],
+         "sourceReferenceCount": 1,
+         "pathwayIntelligencePresent": false,
+         "suggestionObjectHash": "dc19150e3e4c3071d946a21ba2b74e2d9f6fdd82dbfe03a6904a2602e19368d2"
+      },
+   {
+      "relationshipId": "rel-anal-fissure-to-fecal-incontinence",
+      "primaryId": "anal-fissure",
+      "targetId": "fecal-incontinence",
+      "direction": "anal-fissure -> fecal-incontinence",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-33-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded chronic-anal-fissure continence association. A study of patients with chronic anal fissure found that mild fecal incontinence may be present at presentation rather than caused by internal sphincterotomy, so the diagnosis alone does not establish incontinence in every person or determine its cause. Require independently documented chronic anal fissure and fecal incontinence by validated assessment with compatible chronology, and colorectal review. Preserve prior sphincter injury or surgery, obstetric trauma, inflammatory bowel disease, pelvic-floor dysfunction, diarrhea, and other anorectal causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded chronic-anal-fissure continence association. A study of patients with chronic anal fissure found that mild fecal incontinence may be present at presentation rather than caused by internal sphincterotomy, so the diagnosis alone does not establish incontinence in every person or determine its cause. Require independently documented chronic anal fissure and fecal incontinence by validated assessment with compatible chronology, and colorectal review. Preserve prior sphincter injury or surgery, obstetric trauma, inflammatory bowel disease, pelvic-floor dysfunction, diarrhea, and other anorectal causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented chronic anal fissure and fecal incontinence by validated assessment with compatible chronology, and colorectal review.",
+         "boundarySource": "approved-me-33-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of chronic anal fissure and fecal incontinence by validated assessment",
+         "Baseline continence status and chronology relative to fissure onset and any treatment",
+         "Anorectal examination, sphincter assessment, and testing when clinically indicated",
+         "Assessment of prior sphincter injury or surgery, obstetric trauma, inflammatory bowel disease, pelvic-floor dysfunction, and diarrhea",
+         "Colorectal assessment distinguishing fissure-associated symptoms from other causes of incontinence"
+      ],
+      "sourceIds": [
+         "pmid-17665247"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "2a02a0fd420b782810be7d5bcaf0ad25deb1849c24c8e8a1c7aee2dae28b83ce"
+   },
+   {
+      "relationshipId": "rel-ankle-disarticulation-to-phantom-limb-pain",
+      "primaryId": "ankle-disarticulation",
+      "targetId": "phantom-limb-pain",
+      "direction": "ankle-disarticulation -> phantom-limb-pain",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-33-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded lower-limb amputation phantom-pain association. A study of phantom limb complex after lower-limb amputation evaluated how phantom phenomena varied by amputation level, but ankle disarticulation alone does not establish phantom limb pain in every person or determine an individual's pain course. Require independently documented ankle disarticulation, documented phantom limb pain by validated assessment compatible in chronology, and specialist review. Preserve residual-limb pain, neuroma, pre-amputation pain, peripheral neuropathy, spinal pathology, and psychiatric contributors."
+      },
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded lower-limb amputation phantom-pain association. A study of phantom limb complex after lower-limb amputation evaluated how phantom phenomena varied by amputation level, but ankle disarticulation alone does not establish phantom limb pain in every person or determine an individual's pain course. Require independently documented ankle disarticulation, documented phantom limb pain by validated assessment compatible in chronology, and specialist review. Preserve residual-limb pain, neuroma, pre-amputation pain, peripheral neuropathy, spinal pathology, and psychiatric contributors.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented ankle disarticulation, documented phantom limb pain by validated assessment compatible in chronology, and specialist review.",
+         "boundarySource": "approved-me-33-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of ankle disarticulation, indication, level, and date",
+         "Documented phantom limb pain by validated assessment with compatible chronology",
+         "Distinction between phantom pain, residual-limb pain, neuroma, and prosthetic or wound pain",
+         "Assessment of pre-amputation pain, peripheral neuropathy, spinal pathology, and psychiatric contributors",
+         "Pain or rehabilitation specialist assessment of the individual relationship"
+      ],
+      "sourceIds": [
+         "pmid-28242264"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "18832cb6ea4fd87113087d98a68bd944fe1019857f912e1deaaef8967ee54f7a"
+   },
+   {
+      "relationshipId": "rel-ankyloglossia-to-dysphagia",
+      "primaryId": "ankyloglossia",
+      "targetId": "dysphagia",
+      "direction": "ankyloglossia -> dysphagia",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-33-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded pediatric oral-phase swallowing association. Evidence on posterior tongue tie and tongue movement evaluates oral and pharyngeal swallowing function, but ankyloglossia alone does not establish dysphagia in every person or determine its cause. Require independently documented ankyloglossia with clinically relevant restriction, objectively documented dysphagia by feeding or swallowing assessment compatible in chronology, and pediatric otolaryngology or speech-language pathology review. Preserve neurologic, structural, developmental, prematurity-related, and other feeding causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded pediatric oral-phase swallowing association. Evidence on posterior tongue tie and tongue movement evaluates oral and pharyngeal swallowing function, but ankyloglossia alone does not establish dysphagia in every person or determine its cause. Require independently documented ankyloglossia with clinically relevant restriction, objectively documented dysphagia by feeding or swallowing assessment compatible in chronology, and pediatric otolaryngology or speech-language pathology review. Preserve neurologic, structural, developmental, prematurity-related, and other feeding causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented ankyloglossia with clinically relevant restriction, objectively documented dysphagia by feeding or swallowing assessment compatible in chronology, and pediatric otolaryngology or speech-language pathology review.",
+         "boundarySource": "approved-me-33-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of ankyloglossia and clinically meaningful tongue restriction",
+         "Documented dysphagia by validated feeding, clinical swallowing, or instrumental assessment",
+         "Age, developmental status, feeding history, and chronology of symptoms",
+         "Assessment of neurologic, structural, developmental, prematurity-related, and oral-motor alternatives",
+         "Pediatric otolaryngology and speech-language pathology assessment"
+      ],
+      "sourceIds": [
+         "pmid-31367903"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "03c98e9fd051c498dbffe77db3b0911f99c7ffe0c0a7e2182331232b91ea792a"
+   },
+   {
+      "relationshipId": "rel-apraxia-to-dysphagia",
+      "primaryId": "apraxia",
+      "targetId": "dysphagia",
+      "direction": "apraxia -> dysphagia",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-33-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded oral-apraxia swallowing association. In patients with subacute stroke, oral apraxia was associated with dysphagia and increased aspiration risk, but the broad apraxia identity does not establish dysphagia in every person or identify an individual's cause. Require independently documented oral or motor apraxia with a compatible neurologic phenotype, objectively documented dysphagia by clinical or instrumental swallowing assessment compatible in chronology, and neurologic and speech-language pathology review. Preserve stroke lesion, cognitive impairment, weakness, structural disease, and other causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded oral-apraxia swallowing association. In patients with subacute stroke, oral apraxia was associated with dysphagia and increased aspiration risk, but the broad apraxia identity does not establish dysphagia in every person or identify an individual's cause. Require independently documented oral or motor apraxia with a compatible neurologic phenotype, objectively documented dysphagia by clinical or instrumental swallowing assessment compatible in chronology, and neurologic and speech-language pathology review. Preserve stroke lesion, cognitive impairment, weakness, structural disease, and other causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented oral or motor apraxia with a compatible neurologic phenotype, objectively documented dysphagia by clinical or instrumental swallowing assessment compatible in chronology, and neurologic and speech-language pathology review.",
+         "boundarySource": "approved-me-33-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of oral or motor apraxia and its neurologic phenotype",
+         "Documented dysphagia by validated clinical or instrumental swallowing assessment",
+         "Compatible neurologic chronology, lesion findings, cognition, and motor examination",
+         "Assessment of stroke, neurodegenerative, structural, cognitive, weakness-related, and medication alternatives",
+         "Neurology and speech-language pathology assessment of the individual relationship"
+      ],
+      "sourceIds": [
+         "pmid-35508738"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "130ba05cbcc0a455974408a1d62d144eeb0c7b7e7c45e495a1568ce42ed91ba5"
+   },
+   {
+      "relationshipId": "rel-anterior-interosseous-nerve-syndrome-to-peripheral-nerve-paralysis",
+      "primaryId": "anterior-interosseous-nerve-syndrome",
+      "targetId": "peripheral-nerve-paralysis",
+      "direction": "anterior-interosseous-nerve-syndrome -> peripheral-nerve-paralysis",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-33-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded anterior-interosseous motor-palsy association. Anterior interosseous nerve syndrome is a motor neuropathy that can produce loss of flexor pollicis longus and related forearm function, but the diagnosis alone does not establish the severity or persistence of peripheral nerve paralysis in every person. Require independently documented anterior interosseous nerve syndrome with electrodiagnostic or specialist confirmation, objectively documented motor deficit compatible in chronology, and hand or peripheral-nerve review. Preserve cervical radiculopathy, tendon injury, trauma, entrapment, inflammatory neuropathy, and other causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded anterior-interosseous motor-palsy association. Anterior interosseous nerve syndrome is a motor neuropathy that can produce loss of flexor pollicis longus and related forearm function, but the diagnosis alone does not establish the severity or persistence of peripheral nerve paralysis in every person. Require independently documented anterior interosseous nerve syndrome with electrodiagnostic or specialist confirmation, objectively documented motor deficit compatible in chronology, and hand or peripheral-nerve review. Preserve cervical radiculopathy, tendon injury, trauma, entrapment, inflammatory neuropathy, and other causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented anterior interosseous nerve syndrome with electrodiagnostic or specialist confirmation, objectively documented motor deficit compatible in chronology, and hand or peripheral-nerve review.",
+         "boundarySource": "approved-me-33-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of anterior interosseous nerve syndrome and affected motor distributions",
+         "Electrodiagnostic, imaging, and serial motor findings establishing deficit and chronology",
+         "Objective documentation of persistent peripheral nerve paralysis or functional motor loss",
+         "Assessment of cervical radiculopathy, tendon injury, trauma, entrapment, inflammatory neuropathy, and other causes",
+         "Hand or peripheral-nerve specialist assessment of severity, recovery, and attribution"
+      ],
+      "sourceIds": [
+         "pmid-21611763"
+      ],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "42d3aaadcd1f6d0ff2e7f6040bae82ef3f767447cd561fe5311fafe8f2a63851"
+   },
+   {
+      "relationshipId": "rel-appendicitis-to-female-infertility",
+      "primaryId": "appendicitis",
+      "targetId": "female-infertility",
+      "direction": "appendicitis -> female-infertility",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-34-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded post-appendicitis tubal-fertility association. A systematic review and meta-analysis evaluated appendectomy, tubal infertility, and ectopic pregnancy, while the underlying evidence does not establish that appendicitis or appendectomy caused infertility in every individual. Require independently documented complicated or perforated appendicitis, relevant pelvic or tubal pathology, a separately established female infertility diagnosis, compatible chronology, and gynecologic review. Preserve age, endometriosis, pelvic inflammatory disease, prior pelvic surgery, congenital factors, male-factor infertility, and other competing causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded post-appendicitis tubal-fertility association. A systematic review and meta-analysis evaluated appendectomy, tubal infertility, and ectopic pregnancy, while the underlying evidence does not establish that appendicitis or appendectomy caused infertility in every individual. Require independently documented complicated or perforated appendicitis, relevant pelvic or tubal pathology, a separately established female infertility diagnosis, compatible chronology, and gynecologic review. Preserve age, endometriosis, pelvic inflammatory disease, prior pelvic surgery, congenital factors, male-factor infertility, and other competing causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented complicated or perforated appendicitis, relevant pelvic or tubal pathology, a separately established female infertility diagnosis, compatible chronology, and gynecologic review. Preserve age, endometriosis, pelvic inflammatory disease, prior pelvic surgery, congenital factors, male-factor infertility, and other competing causes.",
+         "boundarySource": "approved-me-34-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of appendicitis severity, perforation, pelvic contamination, operative findings, and treatment",
+         "Separately established female infertility with tubal or other reproductive evaluation",
+         "Chronology connecting complicated appendicitis or appendectomy to later infertility",
+         "Assessment of endometriosis, pelvic inflammatory disease, prior pelvic surgery, congenital factors, male-factor infertility, and other causes",
+         "Gynecologic assessment distinguishing tubal-factor disease from unrelated infertility"
+      ],
+      "sourceIds": ["pmid-25303785"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "c3a1d6baf88ee09d2d8239e1648324c635ea5391e13843c6d9abda65dc9555cc"
+   },
+   {
+      "relationshipId": "rel-arnold-chiari-malformation-to-sleep-apnea",
+      "primaryId": "arnold-chiari-malformation",
+      "targetId": "sleep-apnea",
+      "direction": "arnold-chiari-malformation -> sleep-apnea",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-34-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded Chiari-associated sleep-disordered-breathing association. A pediatric case report describes obstructive sleep apnea in Arnold-Chiari malformation with polysomnographic resolution after posterior-fossa decompression, but a single case does not establish that every sleep-apnea diagnosis in a person with Chiari malformation is caused by the malformation. Require independently documented Arnold-Chiari malformation, separately diagnosed sleep apnea by polysomnography, explicit obstructive or central phenotype characterization, compatible chronology, and neurology and sleep-medicine review. Preserve adenotonsillar or upper-airway obstruction, obesity, craniofacial anatomy, pulmonary disease, medication effects, and other causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded Chiari-associated sleep-disordered-breathing association. A pediatric case report describes obstructive sleep apnea in Arnold-Chiari malformation with polysomnographic resolution after posterior-fossa decompression, but a single case does not establish that every sleep-apnea diagnosis in a person with Chiari malformation is caused by the malformation. Require independently documented Arnold-Chiari malformation, separately diagnosed sleep apnea by polysomnography, explicit obstructive or central phenotype characterization, compatible chronology, and neurology and sleep-medicine review. Preserve adenotonsillar or upper-airway obstruction, obesity, craniofacial anatomy, pulmonary disease, medication effects, and other causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented Arnold-Chiari malformation, separately diagnosed sleep apnea by polysomnography, explicit obstructive or central phenotype characterization, compatible chronology, and neurology and sleep-medicine review. Preserve adenotonsillar or upper-airway obstruction, obesity, craniofacial anatomy, pulmonary disease, medication effects, and other causes.",
+         "boundarySource": "approved-me-34-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent MRI documentation of Arnold-Chiari malformation and clinically relevant brainstem or upper-airway findings",
+         "Separately established sleep apnea by polysomnography with obstructive, central, or mixed phenotype specified",
+         "Chronology, sleep-study severity, oxygenation or hypercarbia, airway evaluation, and decompression response",
+         "Assessment of adenotonsillar disease, obesity, craniofacial anatomy, pulmonary disease, medications, and other causes",
+         "Neurology and sleep-medicine assessment of the individual relationship"
+      ],
+      "sourceIds": ["pmid-31992420"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "cd3ad42f01a90c90f8dda7d0994dd8f5ef3319c3ef5be4f4f6c048272bdcbcc0"
+   },
+   {
+      "relationshipId": "rel-atrial-flutter-to-cerebrovascular-accident-stroke-residuals",
+      "primaryId": "atrial-flutter",
+      "targetId": "cerebrovascular-accident-stroke-residuals",
+      "direction": "atrial-flutter -> cerebrovascular-accident-stroke-residuals",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-34-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded atrial-flutter-associated ischemic-stroke-risk association. A comparative cohort evaluated ischemic-stroke risk in atrial flutter versus atrial fibrillation, but population-level risk does not establish that a particular stroke or persistent residuals were caused by atrial flutter. Require independently documented atrial flutter, a separately established ischemic cerebrovascular accident with objective residuals, compatible chronology, rhythm and anticoagulation records, and cardiovascular-neurologic review. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, structural heart disease, and other competing stroke causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded atrial-flutter-associated ischemic-stroke-risk association. A comparative cohort evaluated ischemic-stroke risk in atrial flutter versus atrial fibrillation, but population-level risk does not establish that a particular stroke or persistent residuals were caused by atrial flutter. Require independently documented atrial flutter, a separately established ischemic cerebrovascular accident with objective residuals, compatible chronology, rhythm and anticoagulation records, and cardiovascular-neurologic review. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, structural heart disease, and other competing stroke causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented atrial flutter, a separately established ischemic cerebrovascular accident with objective residuals, compatible chronology, rhythm and anticoagulation records, and cardiovascular-neurologic review. Preserve atrial fibrillation, carotid or intracranial atherosclerosis, hypertension, diabetes, smoking, thrombophilia, structural heart disease, and other competing stroke causes.",
+         "boundarySource": "approved-me-34-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent electrocardiographic or monitoring documentation of atrial flutter and its burden",
+         "Brain imaging and neurologic examination documenting a completed ischemic stroke with persistent residuals",
+         "Chronology linking the stroke to documented atrial-flutter periods without inferring embolism from rhythm history alone",
+         "Anticoagulation, left-atrial, valvular, carotid, intracranial, and other vascular-source evaluation",
+         "Neurology and cardiology assessment of competing stroke etiologies"
+      ],
+      "sourceIds": ["pmid-29223550"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "aabdf81bd804c3731dad43383ccec26e3028dc8473db8f8ca5852ad2279d9098"
+   },
+   {
+      "relationshipId": "rel-burns-to-contractures",
+      "primaryId": "burns",
+      "targetId": "contractures",
+      "direction": "burns -> contractures",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-34-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded post-burn-scar contracture association. A prospective multicenter cohort studied the prevalence and development of burn-scar contractures, but a burn history alone does not establish a contracture in every person or determine the functional course. Require independently documented burn injury with compatible depth and anatomic site, separately documented scar contracture or objective joint limitation, compatible chronology, and burn or rehabilitation specialist review. Preserve pre-existing joint disease, neurologic weakness, tendon injury, infection, immobilization, surgical effects, and other causes of restricted motion."
+      },
+      "rationale": "Mapping Expansion Batch ME-34 adds this relationship only as a bounded post-burn-scar contracture association. A prospective multicenter cohort studied the prevalence and development of burn-scar contractures, but a burn history alone does not establish a contracture in every person or determine the functional course. Require independently documented burn injury with compatible depth and anatomic site, separately documented scar contracture or objective joint limitation, compatible chronology, and burn or rehabilitation specialist review. Preserve pre-existing joint disease, neurologic weakness, tendon injury, infection, immobilization, surgical effects, and other causes of restricted motion.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented burn injury with compatible depth and anatomic site, separately documented scar contracture or objective joint limitation, compatible chronology, and burn or rehabilitation specialist review. Preserve pre-existing joint disease, neurologic weakness, tendon injury, infection, immobilization, surgical effects, and other causes of restricted motion.",
+         "boundarySource": "approved-me-34-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+         "Independent documentation of burn depth, anatomic site, treatment, grafting, and healing course",
+         "Objective scar contracture or joint-range-of-motion limitation with validated functional assessment",
+         "Chronology of scar maturation, contracture development, rehabilitation, and any release procedure",
+         "Assessment of pre-existing joint disease, neurologic weakness, tendon injury, infection, immobilization, and surgical effects",
+         "Burn, plastic-surgery, or rehabilitation specialist assessment"
+      ],
+      "sourceIds": ["pmid-30948277"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "2460583cd6202031d4afd609dfd5dddf130fb952c43375320a90d5ba3b380ee6"
+   },
+   {
+      "relationshipId": "rel-brown-s-quard-syndrome-to-urinary-incontinence",
+      "primaryId": "brown-s-quard-syndrome",
+      "targetId": "urinary-incontinence",
+      "direction": "brown-s-quard-syndrome -> urinary-incontinence",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-35-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded Brown-Séquard urinary-dysfunction association. A syndrome-specific urodynamic study describes lower-urinary-tract dysfunction in Brown-Séquard syndrome, but the small study does not establish that every urinary-incontinence diagnosis in a person with the syndrome was caused by the spinal lesion. Require independently documented Brown-Séquard syndrome by compatible spinal-cord lesion and neurologic examination, separately documented urinary incontinence or neurogenic lower-urinary-tract dysfunction by validated assessment or urodynamics, compatible chronology, and neurologic or urologic review. Preserve urinary retention or overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded Brown-Séquard urinary-dysfunction association. A syndrome-specific urodynamic study describes lower-urinary-tract dysfunction in Brown-Séquard syndrome, but the small study does not establish that every urinary-incontinence diagnosis in a person with the syndrome was caused by the spinal lesion. Require independently documented Brown-Séquard syndrome by compatible spinal-cord lesion and neurologic examination, separately documented urinary incontinence or neurogenic lower-urinary-tract dysfunction by validated assessment or urodynamics, compatible chronology, and neurologic or urologic review. Preserve urinary retention or overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented Brown-Séquard syndrome by compatible spinal-cord lesion and neurologic examination, separately documented urinary incontinence or neurogenic lower-urinary-tract dysfunction by validated assessment/urodynamics, compatible chronology, and neurologic or urologic review. Do not infer incontinence from spinal pain, weakness, or a nonspecific spinal-cord diagnosis alone. Preserve urinary retention/overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes.",
+         "boundarySource": "approved-me-35-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": ["Independent documentation of Brown-Séquard syndrome, spinal-cord lesion, affected level, and neurologic phenotype", "Validated urinary-incontinence or neurogenic lower-urinary-tract assessment, including urodynamics when clinically indicated", "Chronology connecting the spinal-cord syndrome to urinary dysfunction", "Assessment of retention or overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes", "Neurology and urology assessment of the individual's phenotype and competing explanations"],
+      "sourceIds": ["pmid-11746547"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "67012dbce3a6883c7a8c1fd2aa4b22aec9a6b586e12a91adc20d2809005b217b"
+   },
+   {
+      "relationshipId": "rel-brain-tumors-to-seizure-disorder",
+      "primaryId": "brain-tumors",
+      "targetId": "seizure-disorder",
+      "direction": "brain-tumors -> seizure-disorder",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-35-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded brain-tumor seizure-risk association. A longitudinal cohort of pediatric brain-tumor survivors describes seizures and associated tumor and treatment factors, but the population evidence does not establish that every seizure disorder in a person with a brain tumor was caused by the tumor or its treatment. Require independently documented brain tumor with location, pathology, treatment, and chronology, plus a separately established seizure disorder or epilepsy diagnosis supported by neurologic assessment and appropriate EEG or imaging when indicated. Distinguish acute symptomatic seizures during tumor treatment from later unprovoked seizures. Preserve cortical location, surgery, radiation, recurrence, stroke, medication effects, prior epilepsy, metabolic triggers, and other seizure causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded brain-tumor seizure-risk association. A longitudinal cohort of pediatric brain-tumor survivors describes seizures and associated tumor and treatment factors, but the population evidence does not establish that every seizure disorder in a person with a brain tumor was caused by the tumor or its treatment. Require independently documented brain tumor with location, pathology, treatment, and chronology, plus a separately established seizure disorder or epilepsy diagnosis supported by neurologic assessment and appropriate EEG or imaging when indicated. Distinguish acute symptomatic seizures during tumor treatment from later unprovoked seizures. Preserve cortical location, surgery, radiation, recurrence, stroke, medication effects, prior epilepsy, metabolic triggers, and other seizure causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented brain tumor with location, pathology, treatment, and chronology, plus a separately established seizure disorder/epilepsy diagnosis supported by neurologic assessment and appropriate EEG or imaging when indicated. Distinguish acute symptomatic seizures during tumor treatment from later unprovoked seizures. Preserve cortical location, surgery, radiation, recurrence, stroke, medication effects, prior epilepsy, metabolic triggers, and other seizure causes.",
+         "boundarySource": "approved-me-35-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": ["Independent documentation of brain tumor pathology, location, treatment, recurrence, and seizure chronology", "Separately established seizure disorder or epilepsy with neurologic assessment and EEG or imaging when indicated", "Chronology distinguishing acute symptomatic seizures during tumor treatment from later unprovoked seizures", "Assessment of cortical involvement, surgery, radiation, recurrence, stroke, medications, prior epilepsy, metabolic triggers, and other causes", "Neuro-oncology and epilepsy-specialist assessment of the individual's relationship"],
+      "sourceIds": ["pmid-26332282"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "8b5bb5bb6fc7377818f7f1d59a4bdb45d606dfdeed7cf72b2e5b7917f4605956"
+   },
+   {
+      "relationshipId": "rel-brugada-syndrome-to-cardiac-arrhythmia",
+      "primaryId": "brugada-syndrome",
+      "targetId": "cardiac-arrhythmia",
+      "direction": "brugada-syndrome -> cardiac-arrhythmia",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-35-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded Brugada ventricular-arrhythmia risk association. A Québec cohort examined predictors of ventricular arrhythmias and sudden death in Brugada syndrome, but risk-stratification evidence does not establish that every cardiac-arrhythmia diagnosis in a person with Brugada syndrome was caused by the syndrome. Require independently diagnosed Brugada syndrome with documented type-1 ECG phenotype or specialist electrophysiology confirmation, and separately documented ventricular arrhythmia or qualifying arrhythmic event with compatible chronology. Do not infer arrhythmia from a Brugada pattern alone, palpitations, syncope without evaluation, or family history. Preserve structural heart disease, ischemia, channelopathy overlap, electrolyte disturbance, fever or drug triggers, and other arrhythmia causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded Brugada ventricular-arrhythmia risk association. A Québec cohort examined predictors of ventricular arrhythmias and sudden death in Brugada syndrome, but risk-stratification evidence does not establish that every cardiac-arrhythmia diagnosis in a person with Brugada syndrome was caused by the syndrome. Require independently diagnosed Brugada syndrome with documented type-1 ECG phenotype or specialist electrophysiology confirmation, and separately documented ventricular arrhythmia or qualifying arrhythmic event with compatible chronology. Do not infer arrhythmia from a Brugada pattern alone, palpitations, syncope without evaluation, or family history. Preserve structural heart disease, ischemia, channelopathy overlap, electrolyte disturbance, fever or drug triggers, and other arrhythmia causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently diagnosed Brugada syndrome with documented type-1 ECG phenotype or specialist electrophysiology confirmation, and separately documented ventricular arrhythmia or qualifying arrhythmic event with compatible chronology. Do not infer arrhythmia from a Brugada pattern alone, palpitations, syncope without evaluation, or family history. Preserve structural heart disease, ischemia, channelopathy overlap, electrolyte disturbance, fever or drug triggers, and other arrhythmia causes.",
+         "boundarySource": "approved-me-35-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": ["Independent electrophysiology documentation of Brugada syndrome and type-1 ECG phenotype or equivalent specialist confirmation", "Separately documented ventricular arrhythmia or qualifying arrhythmic event with ECG, monitoring, or device records", "Chronology, fever or medication triggers, electrophysiology findings, and treatment context", "Assessment of structural heart disease, ischemia, electrolyte disturbance, channelopathy overlap, and other causes", "Cardiology or electrophysiology assessment of the individual's phenotype and competing explanations"],
+      "sourceIds": ["pmid-27378596"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "8292c7dda742a0ad7a380d70011da8eaa5dd9011b14cd60fab2b4a1ec28eedb2"
+   },
+   {
+      "relationshipId": "rel-bell-s-palsy-to-keratitis",
+      "primaryId": "bell-s-palsy",
+      "targetId": "keratitis",
+      "direction": "bell-s-palsy -> keratitis",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-35-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded facial-palsy exposure-keratopathy association. A 23-year retrospective ophthalmic review describes ocular sequelae among patients with facial palsy, but the clinical sample does not establish that every keratitis diagnosis in a person with Bell's palsy was caused by the palsy. Require independently documented Bell's palsy or facial-nerve palsy with incomplete eyelid closure or other documented ocular-surface exposure, and separately documented exposure keratopathy, corneal epithelial defect, ulcer, or a clinically defined keratitis phenotype with compatible chronology. Do not infer generic keratitis from facial palsy, facial weakness, eye discomfort, or redness alone. Preserve infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes."
+      },
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded facial-palsy exposure-keratopathy association. A 23-year retrospective ophthalmic review describes ocular sequelae among patients with facial palsy, but the clinical sample does not establish that every keratitis diagnosis in a person with Bell's palsy was caused by the palsy. Require independently documented Bell's palsy or facial-nerve palsy with incomplete eyelid closure or other documented ocular-surface exposure, and separately documented exposure keratopathy, corneal epithelial defect, ulcer, or a clinically defined keratitis phenotype with compatible chronology. Do not infer generic keratitis from facial palsy, facial weakness, eye discomfort, or redness alone. Preserve infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require independently documented Bell's palsy or facial-nerve palsy with incomplete eyelid closure or other documented ocular-surface exposure, and separately documented exposure keratopathy, corneal epithelial defect, ulcer, or a clinically defined keratitis phenotype with compatible chronology. Do not infer generic keratitis from facial palsy, facial weakness, eye discomfort, or redness alone. Preserve infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes.",
+         "boundarySource": "approved-me-35-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": ["Independent documentation of Bell's palsy or facial-nerve palsy, eyelid closure, corneal sensation, and ocular exposure", "Ophthalmic examination documenting exposure keratopathy, epithelial defect, ulcer, or a compatible keratitis phenotype", "Chronology connecting facial-nerve dysfunction and ocular-surface disease", "Assessment of infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes", "Ophthalmology and neurology assessment of the individual's phenotype and competing explanations"],
+      "sourceIds": ["pmid-28319442"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "622a7c753b129bbbe6b94fdd485c3f13135efb94d99ffad7249e64cc73b9b7cb"
+   },
+   {
+      "relationshipId": "rel-bowen-s-disease-to-squamous-cell-carcinoma",
+      "primaryId": "bowen-s-disease",
+      "targetId": "squamous-cell-carcinoma",
+      "direction": "bowen-s-disease -> squamous-cell-carcinoma",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+         "status": "approved-me-35-bounded-proposition",
+         "text": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded in-situ-to-invasive cutaneous squamous-cell-carcinoma progression association. A skin-cancer precursor review identifies Bowen's disease as squamous-cell carcinoma in situ and describes possible dermal invasion, but review evidence does not establish that every Bowen's disease lesion progresses to invasive cancer. Require biopsy-confirmed Bowen's disease or cutaneous squamous-cell carcinoma in situ and separately established invasive cutaneous squamous-cell carcinoma at a compatible site and chronology. Do not infer invasion from clinical morphology, dysplasia alone, recurrence, or an untreated lesion without histopathologic confirmation. Preserve field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risk factors."
+      },
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded in-situ-to-invasive cutaneous squamous-cell-carcinoma progression association. A skin-cancer precursor review identifies Bowen's disease as squamous-cell carcinoma in situ and describes possible dermal invasion, but review evidence does not establish that every Bowen's disease lesion progresses to invasive cancer. Require biopsy-confirmed Bowen's disease or cutaneous squamous-cell carcinoma in situ and separately established invasive cutaneous squamous-cell carcinoma at a compatible site and chronology. Do not infer invasion from clinical morphology, dysplasia alone, recurrence, or an untreated lesion without histopathologic confirmation. Preserve field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risk factors.",
+      "publicationGuard": {
+         "status": "explicit",
+         "structuredGuardText": "Require biopsy-confirmed Bowen's disease/cutaneous squamous-cell carcinoma in situ and separately established invasive cutaneous squamous-cell carcinoma at a compatible site and chronology. Do not infer invasion from clinical morphology, dysplasia alone, recurrence, or an untreated lesion without histopathologic confirmation. Preserve field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risk factors.",
+         "boundarySource": "approved-me-35-implementation-scope",
+         "structuredGuardReviewPending": false,
+         "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": ["Biopsy and pathology confirming Bowen's disease or cutaneous squamous-cell carcinoma in situ", "Separate pathology confirming invasive cutaneous squamous-cell carcinoma at a compatible site", "Chronology of lesion persistence, recurrence, treatment, and invasive transformation", "Assessment of field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risks", "Dermatology assessment distinguishing true invasion from recurrent in-situ disease or a separate primary lesion"],
+      "sourceIds": ["pmid-7804989"],
+      "sourceReferenceCount": 1,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "cf502267f4b16606987ac0286175529b09220dbc5928fb9c541fcd8cf7906014"
+   }
    ],
-   "lastUpdatedBy": "Mapping Expansion Batch ME-31",
-   "currentState": "ME31-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+   "lastUpdatedBy": "Mapping Expansion Batch ME-35",
+   "currentState": "ME35-CITATION-VERIFIED"
 }

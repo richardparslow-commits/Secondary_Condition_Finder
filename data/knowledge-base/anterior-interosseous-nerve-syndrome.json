@@ -3,7 +3,54 @@
   "draft": true,
   "todo": [
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "ME-33: a single bounded anterior-interosseous motor-palsy association has been authored from condition-specific clinical evidence; the draft-safe association stands until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "peripheral-nerve-paralysis",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded anterior-interosseous motor-palsy association. Anterior interosseous nerve syndrome is a motor neuropathy that can produce loss of flexor pollicis longus and related forearm function, but the diagnosis alone does not establish the severity or persistence of peripheral nerve paralysis in every person. Require independently documented anterior interosseous nerve syndrome with electrodiagnostic or specialist confirmation, objectively documented motor deficit compatible in chronology, and hand or peripheral-nerve review. Preserve cervical radiculopathy, tendon injury, trauma, entrapment, inflammatory neuropathy, and other causes.",
+      "evidenceGaps": [
+        "Independent documentation of anterior interosseous nerve syndrome and affected motor distributions",
+        "Electrodiagnostic, imaging, and serial motor findings establishing deficit and chronology",
+        "Objective documentation of persistent peripheral nerve paralysis or functional motor loss",
+        "Assessment of cervical radiculopathy, tendon injury, trauma, entrapment, inflammatory neuropathy, and other causes",
+        "Hand or peripheral-nerve specialist assessment of severity, recovery, and attribution"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Ulrich D, Piatkowski A, Pallua N. Anterior interosseous nerve syndrome: retrospective analysis of 14 patients. Arch Orthop Trauma Surg. 2011;131(11):1561-1565. PMID 21611763. doi:10.1007/s00402-011-1322-5.",
+          "note": "Retrospective clinical analysis describing anterior interosseous nerve motor palsy, including loss of flexor pollicis longus function and associated arm disability. Supports a bounded motor-deficit association and specialist evaluation, not automatic individual severity or persistence.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21611763/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 21611763; retrospective AIN syndrome analysis describing FPL loss and arm disability"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Anterior interosseous nerve syndrome can produce a defined motor palsy and arm disability, but the evidence does not establish persistent peripheral nerve paralysis of a particular severity in every individual without objective findings, chronology, and competing-cause review.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this syndrome-level motor-deficit evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Anterior interosseous motor-nerve dysfunction may interrupt flexor pollicis longus and forearm motor output, but the individual pathway and persistent paralysis must be established by electrodiagnostic, examination, and specialist findings.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Anterior interosseous nerve syndrome can produce motor palsy and arm disability, but the evidence does not establish persistent peripheral nerve paralysis in every individual; objective motor findings, chronology, recovery, and competing causes require case-specific review.",
+        "evidenceGaps": "Confirmed AIN syndrome and motor distribution; electrodiagnostic and serial examination findings; persistence and severity; cervical, tendon, traumatic, entrapment, inflammatory, and other alternatives; specialist review",
+        "alternativeEtiologiesToRuleOut": [
+          "Cervical radiculopathy, brachial plexus disease, or another proximal neurologic lesion",
+          "Flexor tendon injury, trauma, postoperative injury, or local entrapment",
+          "Inflammatory neuropathy, motor neuron disease, or other peripheral nerve disorder"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

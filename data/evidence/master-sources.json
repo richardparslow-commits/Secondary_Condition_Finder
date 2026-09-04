@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 336,
-    "activeSourceEntities": 233,
-    "pendingVerificationSourceEntities": 77,
-    "activeClinicalSourceEntities": 232,
-    "pendingClinicalSourceEntities": 77,
+    "liveSourceReferenceUses": 355,
+    "activeSourceEntities": 238,
+    "pendingVerificationSourceEntities": 91,
+    "activeClinicalSourceEntities": 237,
+    "pendingClinicalSourceEntities": 91,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 319,
+    "totalSourceEntitiesIncludingLineage": 338,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -12222,8 +12222,582 @@
         "automaticPromotionAuthorized": false,
         "mappingApprovalDoesNotEqualCitationVerification": true
       }
+    },
+    {
+      "sourceId": "pmid-27259753",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "27259753",
+      "doi": "10.1136/bjsports-2016-096189",
+      "canonicalCitation": "Gribble PA, Bleakley CM, Caulfield BM, et al. Evidence review for the 2016 International Ankle Consortium consensus statement on the prevalence, impact and long-term consequences of lateral ankle sprains. Br J Sports Med. 2016;50(24):1496-1505. PMID 27259753. doi:10.1136/bjsports-2016-096189.",
+      "citationVariants": [
+        "Gribble PA, Bleakley CM, Caulfield BM, et al. Evidence review for the 2016 International Ankle Consortium consensus statement on the prevalence, impact and long-term consequences of lateral ankle sprains. Br J Sports Med. 2016;50(24):1496-1505. PMID 27259753. doi:10.1136/bjsports-2016-096189."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27259753/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27259753/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ankle-strain-to-osteoarthritis",
+          "primaryId": "ankle-strain",
+          "targetId": "osteoarthritis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a0aaef3b5a2ab091355d59fa452e2cdf2347515afe2a3ec73c96b04600e0f641"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-31925464",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31925464",
+      "doi": "10.1007/s00264-019-04476-x",
+      "canonicalCitation": "Krähenbühl N, Susdorf R, Barg A, et al. Supramalleolar osteotomy in post-traumatic valgus ankle osteoarthritis. Int Orthop. 2020;44(3):535-543. PMID 31925464. doi:10.1007/s00264-019-04476-x.",
+      "citationVariants": [
+        "Krähenbühl N, Susdorf R, Barg A, et al. Supramalleolar osteotomy in post-traumatic valgus ankle osteoarthritis. Int Orthop. 2020;44(3):535-543. PMID 31925464. doi:10.1007/s00264-019-04476-x."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31925464/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31925464/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ankylosis-to-osteoarthritis",
+          "primaryId": "ankylosis",
+          "targetId": "osteoarthritis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "659d33002f93dc6da845196475995e16e915de766040740c4ece100fd93e94cb"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-11353583",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "11353583",
+      "doi": "10.1007/s11920-001-0053-7",
+      "canonicalCitation": "Seidman SN, Roose SP. Sexual dysfunction and depression. Curr Psychiatry Rep. 2001;3(3):202-208. PMID 11353583. doi:10.1007/s11920-001-0053-7.",
+      "citationVariants": [
+        "Seidman SN, Roose SP. Sexual dysfunction and depression. Curr Psychiatry Rep. 2001;3(3):202-208. PMID 11353583. doi:10.1007/s11920-001-0053-7."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11353583/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/11353583/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anorgasmia-to-depressive-disorder",
+          "primaryId": "anorgasmia",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f07c3e67074ba8ed2dcf7d7456a237db41801dc998f4342f64ec6db83dfb125f"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-25303785",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "25303785",
+      "doi": "10.1016/j.jss.2014.08.017",
+      "canonicalCitation": "Elraiyah T, Hashim Y, Elamin M, Erwin PJ, Zarroug AE. The effect of appendectomy in future tubal infertility and ectopic pregnancy: a systematic review and meta-analysis. J Surg Res. 2014;192(2):368-374.e1. PMID 25303785. doi:10.1016/j.jss.2014.08.017.",
+      "citationVariants": [
+        "Elraiyah T, Hashim Y, Elamin M, Erwin PJ, Zarroug AE. The effect of appendectomy in future tubal infertility and ectopic pregnancy: a systematic review and meta-analysis. J Surg Res. 2014;192(2):368-374.e1. PMID 25303785. doi:10.1016/j.jss.2014.08.017."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25303785/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/25303785/"
+      ],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": false,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-appendicitis-to-female-infertility", "primaryId": "appendicitis", "targetId": "female-infertility", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["07aa42143b8b9c0be3213010747c93c2f143d3316099ec2a207b69a2cd45318e"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-31992420",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31992420",
+      "doi": "10.5664/jcsm.8194",
+      "canonicalCitation": "Katwa U, Sisniega C, McKeon M, Lee GS. Sleep endoscopy-directed management of Arnold-Chiari malformation: a child with persistent obstructive sleep apnea. J Clin Sleep Med. 2020;16(2):325-329. PMID 31992420. doi:10.5664/jcsm.8194.",
+      "citationVariants": ["Katwa U, Sisniega C, McKeon M, Lee GS. Sleep endoscopy-directed management of Arnold-Chiari malformation: a child with persistent obstructive sleep apnea. J Clin Sleep Med. 2020;16(2):325-329. PMID 31992420. doi:10.5664/jcsm.8194."],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31992420/",
+      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/31992420/"],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": false,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-arnold-chiari-malformation-to-sleep-apnea", "primaryId": "arnold-chiari-malformation", "targetId": "sleep-apnea", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["6aaaaab0cdb60a3f1f2ff905c0084600bf15fbe9bae35f41c77a383e572fb1d8"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-29223550",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "29223550",
+      "doi": "10.1016/j.jstrokecerebrovasdis.2017.10.025",
+      "canonicalCitation": "Al-Kawaz M, Omran SS, Parikh NS, Elkind MSV, Soliman EZ, Kamel H. Comparative risks of ischemic stroke in atrial flutter versus atrial fibrillation. J Stroke Cerebrovasc Dis. 2018;27(4):839-844. PMID 29223550. doi:10.1016/j.jstrokecerebrovasdis.2017.10.025.",
+      "citationVariants": ["Al-Kawaz M, Omran SS, Parikh NS, Elkind MSV, Soliman EZ, Kamel H. Comparative risks of ischemic stroke in atrial flutter versus atrial fibrillation. J Stroke Cerebrovasc Dis. 2018;27(4):839-844. PMID 29223550. doi:10.1016/j.jstrokecerebrovasdis.2017.10.025."],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29223550/",
+      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/29223550/"],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": false,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-atrial-flutter-to-cerebrovascular-accident-stroke-residuals", "primaryId": "atrial-flutter", "targetId": "cerebrovascular-accident-stroke-residuals", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["fae91d3843b076c66758683c73437591c49e5ad283c289a61ff603599176de2d"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-30948277",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "30948277",
+      "doi": "10.1016/j.burns.2019.03.007",
+      "canonicalCitation": "Schouten HJ, Nieuwenhuis MK, van Baar ME, van der Schans CP, Niemeijer AS, van Zuijlen PPM. The prevalence and development of burn scar contractures: a prospective multicenter cohort study. Burns. 2019;45(4):783-790. PMID 30948277. doi:10.1016/j.burns.2019.03.007.",
+      "citationVariants": ["Schouten HJ, Nieuwenhuis MK, van Baar ME, van der Schans CP, Niemeijer AS, van Zuijlen PPM. The prevalence and development of burn scar contractures: a prospective multicenter cohort study. Burns. 2019;45(4):783-790. PMID 30948277. doi:10.1016/j.burns.2019.03.007."],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30948277/",
+      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/30948277/"],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": false,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-burns-to-contractures", "primaryId": "burns", "targetId": "contractures", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["8dcf0204020101d39d8056b495d5fcec9637dea3c0c8d9dc739186666f5e19df"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-35835550",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35835550",
+      "doi": "10.1136/pn-2022-003441",
+      "canonicalCitation": "Thomas G, Alakbarzade V, Sammaraiee Y, et al. Spontaneous spinal cord infarction: a practical approach. Pract Neurol. 2022;22(6):497-502. PMID 35835550. doi:10.1136/pn-2022-003441.",
+      "citationVariants": [
+        "Thomas G, Alakbarzade V, Sammaraiee Y, et al. Spontaneous spinal cord infarction: a practical approach. Pract Neurol. 2022;22(6):497-502. PMID 35835550. doi:10.1136/pn-2022-003441."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35835550/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35835550/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anterior-cord-syndrome-to-urinary-incontinence",
+          "primaryId": "anterior-cord-syndrome",
+          "targetId": "urinary-incontinence",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "e9be11c3041e8db2ccb2106778e8316a7f24bc4942b2124692f4d2a1095a517d"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-21441765",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "21441765",
+      "doi": "10.3810/hp.2011.02.380",
+      "canonicalCitation": "Leung FW, Rao SSC. Approach to fecal incontinence and constipation in older hospitalized patients. Hosp Pract (1995). 2011;39(1):97-104. PMID 21441765. doi:10.3810/hp.2011.02.380.",
+      "citationVariants": [
+        "Leung FW, Rao SSC. Approach to fecal incontinence and constipation in older hospitalized patients. Hosp Pract (1995). 2011;39(1):97-104. PMID 21441765. doi:10.3810/hp.2011.02.380."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21441765/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/21441765/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anorectal-stricture-to-fecal-incontinence",
+          "primaryId": "anorectal-stricture",
+          "targetId": "fecal-incontinence",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "187f043262f16789f74a36c8f80f93374daeb176814ebf8fc00fc0fca825750e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-17665247",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "17665247",
+      "doi": "10.1007/s00268-007-9177-1",
+      "canonicalCitation": "Elsebae MMA. A study of fecal incontinence in patients with chronic anal fissure: prospective, randomized, controlled trial of the extent of internal anal sphincter division during lateral sphincterotomy. World J Surg. 2007;31(10):2052-2057. PMID 17665247. doi:10.1007/s00268-007-9177-1.",
+      "citationVariants": [
+        "Elsebae MMA. A study of fecal incontinence in patients with chronic anal fissure: prospective, randomized, controlled trial of the extent of internal anal sphincter division during lateral sphincterotomy. World J Surg. 2007;31(10):2052-2057. PMID 17665247. doi:10.1007/s00268-007-9177-1."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17665247/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/17665247/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anal-fissure-to-fecal-incontinence",
+          "primaryId": "anal-fissure",
+          "targetId": "fecal-incontinence",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "943c80c25311e3f47a37b071dd33583f2f8eacffd09db957846660016f769fc8"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-28242264",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "28242264",
+      "doi": "10.1016/j.aott.2017.02.007",
+      "canonicalCitation": "Kelle B, Kozanoğlu E, Biçer ÖS, Tan İ. Association between phantom limb complex and the level of amputation in lower limb amputee. Acta Orthop Traumatol Turc. 2017;51(2):142-145. PMID 28242264. doi:10.1016/j.aott.2017.02.007.",
+      "citationVariants": [
+        "Kelle B, Kozanoğlu E, Biçer ÖS, Tan İ. Association between phantom limb complex and the level of amputation in lower limb amputee. Acta Orthop Traumatol Turc. 2017;51(2):142-145. PMID 28242264. doi:10.1016/j.aott.2017.02.007."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28242264/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/28242264/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ankle-disarticulation-to-phantom-limb-pain",
+          "primaryId": "ankle-disarticulation",
+          "targetId": "phantom-limb-pain",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "79be82cf6d04a10885b9c7fdbf7902d6c7d61158a0606c08284e1099884e2c72"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-31367903",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31367903",
+      "canonicalCitation": "Brooks L, Landry A, Deshpande A, Marchica C, Cooley A, Raol N. Posterior tongue tie, base of tongue movement, and pharyngeal dysphagia: what is the connection? Dysphagia. 2020;35(1):129-132. PMID 31367903.",
+      "citationVariants": [
+        "Brooks L, Landry A, Deshpande A, Marchica C, Cooley A, Raol N. Posterior tongue tie, base of tongue movement, and pharyngeal dysphagia: what is the connection? Dysphagia. 2020;35(1):129-132. PMID 31367903."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31367903/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31367903/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ankyloglossia-to-dysphagia",
+          "primaryId": "ankyloglossia",
+          "targetId": "dysphagia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "dd6c4f4eb834dd8679d7055630bee2ed3621244b8b6653771f9514f6a79a0ee6"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-35508738",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35508738",
+      "doi": "10.1007/s00455-022-10458-w",
+      "canonicalCitation": "Myung JH, Pyun SB. Effect of oral apraxia on dysphagia in patients with subacute stroke. Dysphagia. 2023;38(1):227-235. PMID 35508738. doi:10.1007/s00455-022-10458-w.",
+      "citationVariants": [
+        "Myung JH, Pyun SB. Effect of oral apraxia on dysphagia in patients with subacute stroke. Dysphagia. 2023;38(1):227-235. PMID 35508738. doi:10.1007/s00455-022-10458-w."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35508738/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35508738/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-apraxia-to-dysphagia",
+          "primaryId": "apraxia",
+          "targetId": "dysphagia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "9eb54b1806a0c2e14146a30a6f5e1832bde40d1c9f8ee0134f29546353cc9fa8"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-21611763",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "21611763",
+      "doi": "10.1007/s00402-011-1322-5",
+      "canonicalCitation": "Ulrich D, Piatkowski A, Pallua N. Anterior interosseous nerve syndrome: retrospective analysis of 14 patients. Arch Orthop Trauma Surg. 2011;131(11):1561-1565. PMID 21611763. doi:10.1007/s00402-011-1322-5.",
+      "citationVariants": [
+        "Ulrich D, Piatkowski A, Pallua N. Anterior interosseous nerve syndrome: retrospective analysis of 14 patients. Arch Orthop Trauma Surg. 2011;131(11):1561-1565. PMID 21611763. doi:10.1007/s00402-011-1322-5."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21611763/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/21611763/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-03"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-anterior-interosseous-nerve-syndrome-to-peripheral-nerve-paralysis",
+          "primaryId": "anterior-interosseous-nerve-syndrome",
+          "targetId": "peripheral-nerve-paralysis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "2d6c0d0ce3c17f0e1d8342533eba454b950b68be69bec0499a551b6de5122c98"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": true,
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-11746547",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "11746547",
+      "doi": "10.1002/nau.1017",
+      "canonicalCitation": "Sakakibara R, Hattori T, Uchiyama T, et al. Urinary dysfunction in Brown-Séquard syndrome. Neurourology and Urodynamics. 2001;20(6):661-667. PMID 11746547. doi:10.1002/nau.1017.",
+      "citationVariants": ["Sakakibara R, Hattori T, Uchiyama T, et al. Urinary dysfunction in Brown-Séquard syndrome. Neurourology and Urodynamics. 2001;20(6):661-667. PMID 11746547. doi:10.1002/nau.1017."],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11746547/",
+      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/11746547/"],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": true,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-brown-s-quard-syndrome-to-urinary-incontinence", "primaryId": "brown-s-quard-syndrome", "targetId": "urinary-incontinence", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["75c3d137f24bd14d0ba1fd315879aab4d26fe7341caa560e1cad0df68fb1a5b6"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": false, "qualifiedHumanCitationReviewDecision": "approve-as-implemented", "qualifiedHumanCitationReviewDate": "2026-09-03", "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-26332282",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "26332282",
+      "doi": "10.1111/epi.13112",
+      "canonicalCitation": "Ullrich NJ, Pomeroy SL, Kapur K, Manley PE, Goumnerova L, Smith ER, et al. Incidence, risk factors, and longitudinal outcome of seizures in long-term survivors of pediatric brain tumors. Epilepsia. 2015;56(10):1599-1604. PMID 26332282. doi:10.1111/epi.13112.",
+      "citationVariants": ["Ullrich NJ, Pomeroy SL, Kapur K, Manley PE, Goumnerova L, Smith ER, et al. Incidence, risk factors, and longitudinal outcome of seizures in long-term survivors of pediatric brain tumors. Epilepsia. 2015;56(10):1599-1604. PMID 26332282. doi:10.1111/epi.13112."],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26332282/",
+      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/26332282/"],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": true,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-brain-tumors-to-seizure-disorder", "primaryId": "brain-tumors", "targetId": "seizure-disorder", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["891e49f6215252f88e82343e443af5e52bcbabd7cc717091d6fd16dfc3b62027"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": false, "qualifiedHumanCitationReviewDecision": "approve-as-implemented", "qualifiedHumanCitationReviewDate": "2026-09-03", "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-27378596",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "27378596",
+      "doi": "10.1016/j.cjca.2016.03.012",
+      "canonicalCitation": "Rivard L, Roux A, Nault I, Champagne J, Roux JF, Tadros R, et al. Predictors of Ventricular Arrhythmias and Sudden Death in a Québec Cohort With Brugada Syndrome. Canadian Journal of Cardiology. 2016;32(11):1355.e1-1355.e7. PMID 27378596. doi:10.1016/j.cjca.2016.03.012.",
+      "citationVariants": ["Rivard L, Roux A, Nault I, Champagne J, Roux JF, Tadros R, et al. Predictors of Ventricular Arrhythmias and Sudden Death in a Québec Cohort With Brugada Syndrome. Canadian Journal of Cardiology. 2016;32(11):1355.e1-1355.e7. PMID 27378596. doi:10.1016/j.cjca.2016.03.012."],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27378596/",
+      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/27378596/"],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": true,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-brugada-syndrome-to-cardiac-arrhythmia", "primaryId": "brugada-syndrome", "targetId": "cardiac-arrhythmia", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["25fc1bf0935dd9fa0cdbadcf5f2e6e4e5dd7305ffc1219a3e5f4e063557dd5c1"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": false, "qualifiedHumanCitationReviewDecision": "approve-as-implemented", "qualifiedHumanCitationReviewDate": "2026-09-03", "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-28319442",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "28319442",
+      "doi": "10.1080/09286586.2017.1294186",
+      "canonicalCitation": "Joseph SS, Joseph AW, Smith JI, Niziol LM, Musch DC, Nelson CC. Evaluation of Patients with Facial Palsy and Ophthalmic Sequelae: A 23-Year Retrospective Review. Ophthalmic Epidemiology. 2017;24(5):341-345. PMID 28319442. doi:10.1080/09286586.2017.1294186.",
+      "citationVariants": ["Joseph SS, Joseph AW, Smith JI, Niziol LM, Musch DC, Nelson CC. Evaluation of Patients with Facial Palsy and Ophthalmic Sequelae: A 23-Year Retrospective Review. Ophthalmic Epidemiology. 2017;24(5):341-345. PMID 28319442. doi:10.1080/09286586.2017.1294186."],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28319442/",
+      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/28319442/"],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": true,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-bell-s-palsy-to-keratitis", "primaryId": "bell-s-palsy", "targetId": "keratitis", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["b0761b95860815f4479beb2787b478ab05048abc47a769668384a96e04694496"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": false, "qualifiedHumanCitationReviewDecision": "approve-as-implemented", "qualifiedHumanCitationReviewDate": "2026-09-03", "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-7804989",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "7804989",
+      "doi": "10.1002/1097-0142(19950115)75:2+<645::AID-CNCR2820751405>3.0.CO;2-1",
+      "canonicalCitation": "Sober AJ, Burstein JM. Precursors to skin cancer. Cancer. 1995;75(2 Suppl):645-650. PMID 7804989. doi:10.1002/1097-0142(19950115)75:2+<645::AID-CNCR2820751405>3.0.CO;2-1.",
+      "citationVariants": ["Sober AJ, Burstein JM. Precursors to skin cancer. Cancer. 1995;75(2 Suppl):645-650. PMID 7804989. doi:10.1002/1097-0142(19950115)75:2+<645::AID-CNCR2820751405>3.0.CO;2-1."],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7804989/",
+      "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/7804989/"],
+      "verificationScopes": ["clinical-evidence"],
+      "verified": true,
+      "sourceCheckedOnValues": ["2026-09-03"],
+      "liveUsageCount": 1,
+      "liveUses": [{"relationshipId": "rel-bowen-s-disease-to-squamous-cell-carcinoma", "primaryId": "bowen-s-disease", "targetId": "squamous-cell-carcinoma", "sourceIndex": 0}],
+      "retiredUses": [],
+      "rawReferenceHashes": ["395518f5237a08a23df2e8155c75a46a95d4423759ed46dda9e18daeec1d124a"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": false, "qualifiedHumanCitationReviewDecision": "approve-as-implemented", "qualifiedHumanCitationReviewDate": "2026-09-03", "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
     }
   ],
-  "lastUpdatedBy": "Mapping Expansion Batch ME-31",
-  "currentState": "ME31-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "lastUpdatedBy": "Mapping Expansion Batch ME-35",
+  "currentState": "ME35-CITATION-VERIFIED"
 }

@@ -3,7 +3,54 @@
   "draft": true,
   "todo": [
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "ME-33: a single bounded oral-apraxia swallowing association has been authored from condition-specific clinical evidence; the draft-safe association stands until qualified-human review."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "dysphagia",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-33 adds this relationship only as a bounded oral-apraxia swallowing association. In patients with subacute stroke, oral apraxia was associated with dysphagia and increased aspiration risk, but the broad apraxia identity does not establish dysphagia in every person or identify an individual's cause. Require independently documented oral or motor apraxia with a compatible neurologic phenotype, objectively documented dysphagia by clinical or instrumental swallowing assessment compatible in chronology, and neurologic and speech-language pathology review. Preserve stroke lesion, cognitive impairment, weakness, structural disease, and other causes.",
+      "evidenceGaps": [
+        "Independent documentation of oral or motor apraxia and its neurologic phenotype",
+        "Documented dysphagia by validated clinical or instrumental swallowing assessment",
+        "Compatible neurologic chronology, lesion findings, cognition, and motor examination",
+        "Assessment of stroke, neurodegenerative, structural, cognitive, weakness-related, and medication alternatives",
+        "Neurology and speech-language pathology assessment of the individual relationship"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Myung JH, Pyun SB. Effect of oral apraxia on dysphagia in patients with subacute stroke. Dysphagia. 2023;38(1):227-235. PMID 35508738. doi:10.1007/s00455-022-10458-w.",
+          "note": "Study of subacute stroke patients examining oral apraxia, dysphagia, and aspiration risk. Supports a bounded oral-apraxia association in a compatible neurologic phenotype, not automatic individual causation from the broad apraxia diagnosis.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35508738/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 35508738; subacute-stroke study of oral apraxia, dysphagia, and aspiration risk"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Oral apraxia was associated with dysphagia in a subacute-stroke cohort, but the evidence is phenotype- and context-limited and does not establish dysphagia or an individual medical nexus for every person with apraxia.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this subacute-stroke association evidence; the mapping is not an individual nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "Impaired motor planning for oral movements may disrupt bolus preparation and swallowing coordination, but the individual pathway must be established from neurologic examination, cognitive assessment, and clinical or instrumental swallowing evaluation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Oral apraxia was associated with dysphagia in a subacute-stroke cohort, but the evidence does not establish that apraxia caused or aggravated dysphagia in every individual; neurologic phenotype, chronology, objective swallowing findings, and competing etiologies require case-specific review.",
+        "evidenceGaps": "Documented oral apraxia and dysphagia; neurologic phenotype and chronology; lesion, cognitive, and motor findings; stroke, neurodegenerative, structural, weakness, and medication alternatives; specialist assessment",
+        "alternativeEtiologiesToRuleOut": [
+          "Stroke lesion, neurodegenerative disease, or other central neurologic disorder",
+          "Cognitive impairment, weakness, dysarthria, or generalized motor dysfunction",
+          "Structural or esophageal disease, medication effects, or other swallowing disorders"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

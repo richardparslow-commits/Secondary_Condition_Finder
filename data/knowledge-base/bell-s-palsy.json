@@ -2,8 +2,56 @@
   "id": "bell-s-palsy",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Obtain qualified-human citation verification for the proposed Bell's palsy to keratitis association.",
+    "Confirm facial-nerve palsy with incomplete eyelid closure or ocular exposure, objective exposure-related corneal disease, chronology, and competing corneal causes before publication."
   ],
-  "suggestions": []
+  "suggestions": [
+    {
+      "conditionId": "keratitis",
+      "rank": 1,
+      "rationale": "Mapping Expansion Batch ME-35 adds this relationship only as a bounded facial-palsy exposure-keratopathy association. A 23-year retrospective ophthalmic review describes ocular sequelae among patients with facial palsy, but the clinical sample does not establish that every keratitis diagnosis in a person with Bell's palsy was caused by the palsy. Require independently documented Bell's palsy or facial-nerve palsy with incomplete eyelid closure or other documented ocular-surface exposure, and separately documented exposure keratopathy, corneal epithelial defect, ulcer, or a clinically defined keratitis phenotype with compatible chronology. Do not infer generic keratitis from facial palsy, facial weakness, eye discomfort, or redness alone. Preserve infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes.",
+      "evidenceGaps": [
+        "Independent documentation of Bell's palsy or facial-nerve palsy, eyelid closure, corneal sensation, and ocular exposure",
+        "Ophthalmic examination documenting exposure keratopathy, epithelial defect, ulcer, or a compatible keratitis phenotype",
+        "Chronology connecting facial-nerve dysfunction and ocular-surface disease",
+        "Assessment of infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes",
+        "Ophthalmology and neurology assessment of the individual's phenotype and competing explanations"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Joseph SS, Joseph AW, Smith JI, Niziol LM, Musch DC, Nelson CC. Evaluation of Patients with Facial Palsy and Ophthalmic Sequelae: A 23-Year Retrospective Review. Ophthalmic Epidemiology. 2017;24(5):341-345. PMID 28319442. doi:10.1080/09286586.2017.1294186.",
+          "note": "Mapping Expansion Batch ME-35 retrospective facial-palsy ophthalmic-sequelae evidence for the bounded exposure-keratopathy proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28319442/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-03",
+          "sourceLocator": "PMID 28319442; 23-year retrospective review of facial palsy and ophthalmic sequelae; approved ME-35 guard limits the broad keratitis target to objective exposure-related corneal disease."
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The facial-palsy ophthalmic review supports exposure-related ocular-surface complications as a possible sequela of facial-nerve dysfunction, without establishing an individual keratitis nexus.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR section 3.310 is established; ocular exposure, objective corneal findings, chronology, and competing corneal causes require individual review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Facial-nerve dysfunction may reduce eyelid closure and tear-film protection, allowing exposure-related epithelial injury and inflammation, but the individual's corneal disease mechanism remains hypothesized until ophthalmic findings and alternative causes are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The retrospective facial-palsy review describes ophthalmic sequelae but does not prove that an individual's keratitis was caused by Bell's palsy.",
+        "evidenceGaps": "Facial-nerve palsy and eyelid-closure findings; objective exposure-related corneal disease; chronology; and assessment of infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other causes.",
+        "alternativeEtiologiesToRuleOut": [
+          "Infectious keratitis",
+          "Contact-lens or environmental corneal injury",
+          "Autoimmune or inflammatory ocular-surface disease",
+          "Traumatic or postoperative corneal injury",
+          "Neurotrophic or medication-related keratopathy"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

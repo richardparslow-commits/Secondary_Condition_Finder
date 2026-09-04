@@ -1,0 +1,93 @@
+{
+  "batch": "ME-35",
+  "batchDate": "2026-09-03",
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "approvalRequiredBeforeImplementation": false,
+  "citationVerificationRemainsSeparate": true,
+  "sourceExtractionNote": "Candidate identities and PMID/DOI metadata were confirmed through PubMed-indexed search results; direct PubMed page extraction was cookie-gated in the research environment. Reconfirm bibliographic metadata during any approved implementation.",
+  "relationships": [
+    {
+      "rank": 1,
+      "primaryId": "brown-s-quard-syndrome",
+      "targetId": "urinary-incontinence",
+      "pmid": "11746547",
+      "doi": "10.1002/nau.1017",
+      "citation": "Sakakibara R, Hattori T, Uchiyama T, et al. Urinary dysfunction in Brown-Séquard syndrome. Neurourology and Urodynamics. 2001;20(6):661-667. PMID 11746547. doi:10.1002/nau.1017.",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11746547/",
+      "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+      "publicationGuard": "Require independently documented Brown-Séquard syndrome by compatible spinal-cord lesion and neurologic examination, separately documented urinary incontinence or neurogenic lower-urinary-tract dysfunction by validated assessment/urodynamics, compatible chronology, and neurologic or urologic review. Do not infer incontinence from spinal pain, weakness, or a nonspecific spinal-cord diagnosis alone. Preserve urinary retention/overflow, infection, prostate or pelvic disease, medication effects, prior incontinence, and other neurogenic-bladder causes.",
+      "scopeNote": "Small syndrome-specific study addressing urinary dysfunction broadly; implementation must restrict the target to objectively documented incontinence or a clearly compatible lower-urinary-tract phenotype."
+    },
+    {
+      "rank": 2,
+      "primaryId": "brain-tumors",
+      "targetId": "seizure-disorder",
+      "pmid": "26332282",
+      "doi": "10.1111/epi.13112",
+      "citation": "Ullrich NJ, Pomeroy SL, Kapur K, Manley PE, Goumnerova L, Smith ER, et al. Incidence, risk factors, and longitudinal outcome of seizures in long-term survivors of pediatric brain tumors. Epilepsia. 2015;56(10):1599-1604. PMID 26332282. doi:10.1111/epi.13112.",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26332282/",
+      "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+      "publicationGuard": "Require independently documented brain tumor with location, pathology, treatment, and chronology, plus a separately established seizure disorder/epilepsy diagnosis supported by neurologic assessment and appropriate EEG or imaging when indicated. Distinguish acute symptomatic seizures during tumor treatment from later unprovoked seizures. Preserve cortical location, surgery, radiation, recurrence, stroke, medication effects, prior epilepsy, metabolic triggers, and other seizure causes.",
+      "scopeNote": "Pediatric and survivor-focused evidence; must not be generalized to every adult tumor type or every acute seizure during illness."
+    },
+    {
+      "rank": 3,
+      "primaryId": "brugada-syndrome",
+      "targetId": "cardiac-arrhythmia",
+      "pmid": "27378596",
+      "doi": "10.1016/j.cjca.2016.03.012",
+      "citation": "Rivard L, Roux A, Nault I, Champagne J, Roux JF, Tadros R, et al. Predictors of Ventricular Arrhythmias and Sudden Death in a Québec Cohort With Brugada Syndrome. Canadian Journal of Cardiology. 2016;32(11):1355.e1-1355.e7. PMID 27378596. doi:10.1016/j.cjca.2016.03.012.",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27378596/",
+      "mechanismCategory": "MULTIFACTORIAL",
+      "publicationGuard": "Require independently diagnosed Brugada syndrome with documented type-1 ECG phenotype or specialist electrophysiology confirmation, and separately documented ventricular arrhythmia or qualifying arrhythmic event with compatible chronology. Do not infer arrhythmia from a Brugada pattern alone, palpitations, syncope without evaluation, or family history. Preserve structural heart disease, ischemia, channelopathy overlap, electrolyte disturbance, fever/drug triggers, and other arrhythmia causes.",
+      "scopeNote": "Evidence concerns ventricular arrhythmia and sudden-death risk, not generic benign ectopy or every cardiac-arrhythmia presentation."
+    },
+    {
+      "rank": 4,
+      "primaryId": "bell-s-palsy",
+      "targetId": "keratitis",
+      "pmid": "28319442",
+      "doi": "10.1080/09286586.2017.1294186",
+      "citation": "Joseph SS, Joseph AW, Smith JI, Niziol LM, Musch DC, Nelson CC. Evaluation of Patients with Facial Palsy and Ophthalmic Sequelae: A 23-Year Retrospective Review. Ophthalmic Epidemiology. 2017;24(5):341-345. PMID 28319442. doi:10.1080/09286586.2017.1294186.",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28319442/",
+      "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+      "publicationGuard": "Require independently documented Bell's palsy or facial-nerve palsy with incomplete eyelid closure or other documented ocular-surface exposure, and separately documented exposure keratopathy, corneal epithelial defect, ulcer, or a clinically defined keratitis phenotype with compatible chronology. Do not infer generic keratitis from Bell's palsy, facial weakness, eye discomfort, or redness alone. Preserve infectious, contact-lens, autoimmune, traumatic, postoperative, neurotrophic, medication-related, and other corneal causes.",
+      "scopeNote": "Facial-palsy ophthalmic-sequelae evidence; implementation must constrain the broad keratitis target to exposure-related ocular-surface injury and must not generalize to infectious keratitis."
+    },
+    {
+      "rank": 5,
+      "primaryId": "bowen-s-disease",
+      "targetId": "squamous-cell-carcinoma",
+      "pmid": "7804989",
+      "doi": "10.1002/1097-0142(19950115)75:2+<645::AID-CNCR2820751405>3.0.CO;2-1",
+      "citation": "Sober AJ, Burstein JM. Precursors to skin cancer. Cancer. 1995;75(2 Suppl):645-650. PMID 7804989. doi:10.1002/1097-0142(19950115)75:2+<645::AID-CNCR2820751405>3.0.CO;2-1.",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7804989/",
+      "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+      "publicationGuard": "Require biopsy-confirmed Bowen's disease/cutaneous squamous-cell carcinoma in situ and separately established invasive cutaneous squamous-cell carcinoma at a compatible site and chronology. Do not infer invasion from clinical morphology, dysplasia alone, recurrence, or an untreated lesion without histopathologic confirmation. Preserve field cancerization, ultraviolet exposure, immunosuppression, HPV, treatment effects, and other skin-cancer risk factors.",
+      "scopeNote": "Review evidence for in-situ-to-invasive progression; target must be invasive cutaneous squamous-cell carcinoma, not visceral cancer or an unrestricted generic skin-cancer outcome."
+    }
+  ],
+  "explicitExclusions": [
+    {
+      "relationship": "baker-s-cyst -> deep-vein-thrombosis",
+      "reason": "Strong evidence describes a diagnostic mimic, and a 2022 study reports popliteal cysts are not a DVT risk factor."
+    },
+    {
+      "relationship": "bullous-pemphigoid -> Parkinson's disease/dementia",
+      "reason": "Evidence is association-level with unclear/reverse direction and does not support a downstream causal mapping from bullous pemphigoid."
+    },
+    {
+      "relationship": "bronchitis -> pneumonia",
+      "reason": "Available evidence is acute-care or ventilator-associated and does not establish a durable generic bronchitis-primary target relationship."
+    },
+    {
+      "relationship": "byssinosis -> COPD",
+      "reason": "A source distinguishing occupational byssinosis from generic organic-dust exposure and supporting a target-specific longitudinal proposition remains unresolved."
+    },
+    {
+      "relationship": "basal-cell-carcinoma -> squamous-cell-carcinoma",
+      "reason": "Available evidence supports shared risk and multiple-primary skin-cancer risk, not a defensible direct progression edge."
+    }
+  ],
+  "implementationGate": "ME-35 mapping approval was recorded; citation verification and publication-state promotion remain separately gated."
+}
