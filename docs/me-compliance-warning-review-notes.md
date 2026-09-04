@@ -23,37 +23,49 @@ Review stance:
 Rule: `GRAPH-BIDIRECTIONAL`
 
 Review stance:
-- Both directions exist. Each direction must independently justify its nexus classification, guard, and evidence base.
-- Bidirectional clinical overlap is expected here, but the lexicon expects directionality discipline: one direction may be association-only, another may be a different pathway, or both may be association-only with separate guards.
-- Recommended action: review each direction independently and confirm that neither direction asserts individual causation or aggravation beyond what its guard supports.
+- Both directions exist and both are currently authored as `ASSOCIATION_ONLY`.
+- `anemia -> chronic-kidney-disease`: phenotype-specific temporal risk wording, sickle-cell-specific source guard, no pathway intelligence. Nexus claim explicitly states neither causation nor aggravation under 38 CFR § 3.310 is established; the guard limits the claim to association.
+- `chronic-kidney-disease -> anemia`: disease-complication wording, KDIGO-based source guard requiring documented CKD and independently documented anemia. Nexus claim explicitly states neither causation nor aggravation is established; the guard limits the claim to association.
+- Neither direction is currently asserting individual causation or aggravation. No nexus reclassification is being made here.
+- Illustrative refined wording / tightening option, if a later review decides the direction-specific wording should be sharper: the anemia direction already restricts to sickle-cell-specific anemia; if the CKD direction is ever reviewed again, it could be tightened to also require that the anemia be documented as a separately evaluated finding rather than inferred from CKD stage alone (the current guard already says this, so this is consistency language, not a new restriction).
+- Recommended action: confirm the current association-only posture is the intended permanent framing, or document a reason to keep one direction association-only and upgrade the other direction later under a defensible pathway. No code change is required to clear this warning today.
 
 ## 3. cardiac-arrhythmia <-> cardiomyopathy (bidirectional edge pair)
 
 Rule: `GRAPH-BIDIRECTIONAL`
 
 Review stance:
-- Same bidirectional review requirement as above.
-- Cardiac arrhythmia and cardiomyopathy have clinically plausible bidirectional relationships, which is exactly why the directionality guard matters.
-- Recommended action: review each direction independently before any publish step; confirm the published direction is not conflating a shared downstream phenotype with causation in both directions.
+- Both directions exist. Each direction has a distinct guard and evidence base, so the bidirectional warning is structural, not an automatic inconsistency.
+- `cardiac-arrhythmia -> cardiomyopathy`: phenotype-specific arrhythmia-induced cardiomyopathy wording, sustained/ sufficiently burdensome culprit arrhythmia guard, reversibility-after-rhythm-control strengthening note. Nexus claim is `ASSOCIATION_ONLY` with explicit statement that neither causation nor aggravation is established and the guard limits the claim to association.
+- `cardiomyopathy -> cardiac-arrhythmia`: ME-1 bounded clinical proposition wording, requiring documented cardiomyopathy and separately documented clinically significant ventricular arrhythmia in a compatible structural-cardiomyopathy context. Nexus claim is `ASSOCIATION_ONLY` with explicit statement that neither causation nor aggravation is established.
+- No nexus reclassification is being made here. The issue the bidirectional warning raises is whether both directions are independently honest about what they assert; the current wording is already explicit that neither direction asserts individual causation or aggravation.
+- Illustrative refined wording / tightening option, if a later review wants tighter negation language: either direction could add the standard "it is not asserted that the primary caused or aggravated the secondary in any individual" sentence, which the current text does not include verbatim. That would be a consistency/documentation pass, not a change in the asserted nexus.
+- Recommended action: review each direction independently before any publish step; confirm the arrhythmia-induced-cardiomyopathy direction stays phenotype-specific and the cardiomyopathy-to-arrhythmia direction stays anchored to clinically significant ventricular arrhythmia. No code change is required to clear this warning today.
 
 ## 4. depressive-disorder <-> sleep-apnea (bidirectional edge pair)
 
 Rule: `GRAPH-BIDIRECTIONAL`
 
 Review stance:
-- Same bidirectional review requirement as above.
-- Depression and sleep apnea frequently co-occur for multiple overlapping reasons; bidirectional authoring needs separate guards for each direction.
-- Recommended action: review each direction independently and confirm the guards restrict each to the proposition its evidence actually supports.
+- Both directions exist with different nexus postures, which makes per-direction review necessary.
+- `depressive-disorder -> sleep-apnea`: association-only direction, intermediate-step theory wording around antidepressant-associated weight gain and obesity-OSA risk, no pathway intelligence. Nexus claim is `ASSOCIATION_ONLY` with explicit statement that neither causation nor aggravation is established and the guard limits the claim to association.
+- `sleep-apnea -> depressive-disorder`: aggravation direction, with PROBABLE consensus, at-least-as-likely-as-not alignment, and explicit baseline/aggravating-factor framing. Nexus claim is `AGGRAVATION`.
+- No nexus reclassification is being made here. The review question is whether the two directions remain independently defensible and whether the aggravation direction is overclaiming given the cross-sectional/heterogeneous evidence.
+- Illustrative refined wording / tightening option, if a later review wants the aggravation direction to be more explicit about individual-nexus limits: it could add an explicit sentence that the PROBABLE consensus and at-least-as-likely-as-not alignment are about the association/depression-risk relationship and do not, by themselves, establish that OSA aggravated this individual's depressive disorder. The current text already says the association should not be converted into an automatic individual causal or aggravation nexus, so this would be emphasis language, not a change in the asserted nexus.
+- Recommended action: review each direction independently before any publish step; confirm the depression-to-OSA direction stays association-only and the OSA-to-depression direction stays anchored to the cross-sectional/heterogeneous evidence and explicit non-aggravation caveat. No code change is required to clear this warning today.
 
 ## 5. depressive-disorder <-> erectile-dysfunction (bidirectional edge pair)
 
 Rule: `GRAPH-BIDIRECTIONAL`
 
 Review stance:
-- Same bidirectional review requirement as above.
-- Depression and erectile dysfunction have overlapping behavioral, vascular, endocrine, and treatment-related contributions, which makes directionality discipline important.
-- Recommended action: review each direction independently; pay particular attention to treatment effects and competing explanations in whichever direction is being considered for publication.
-
+- Both directions exist, and the two directions are not mirror images of the same claim.
+- `depressive-disorder -> erectile-dysfunction`: DIRECT_CAUSATION direction with IATROGENIC_TREATMENT_EFFECT consensus, at-least-as-likely-as-not alignment, PHARMACOLOGICAL_IATROGENIC mechanism, and explicit psychotropic-medication intermediate-chain wording (agent-specific, dose/duration/timing, competing vascular/endocrine/neurologic/psychiatric/medication/lifestyle alternatives).
+- `erectile-dysfunction -> depressive-disorder`: association-only direction, wording about erectile dysfunction contributing to reduced quality of life and depressive symptom risk; neither causation nor aggravation is asserted under 38 CFR § 3.310.
+- This pair is flagged partly because it overlaps with the PTSD -> erectile-dysfunction edge, which is authored as a case-specific SSRI-in-the-service-connected-PTSD context medication-related aggravation theory and was qualified earlier in this review queue.
+- No nexus reclassification is being made here. The review question is primarily directionality discipline: the depression-to-ED direction is a treatment-effect theory with conservative individual-nexus limits, and the ED-to-depression direction is association-only.
+- Illustrative refined wording / tightening option, if a later review wants the direct-causation direction to be even more explicit: it could restate that the DIRECT_CAUSATION nexus classification is about the proposed medication-mediated secondary theory and the conservative individual-nexus guard, not a population-level statement that depressive disorder causes erectile dysfunction; the current rationale and evidence gaps already do most of that work.
+- Recommended action: review each direction independently before any publish step that touches either one, and confirm the PTSD -> erectile-dysfunction medication-specific aggravation theory is evaluated in that context rather than assumed to be interchangeable with the depressive-disorder -> erectile-dysfunction treatment-effect theory.
 ## 6. PTSD → erectile-dysfunction (qualified as a medication-related aggravation theory)
 
 File: `ptsd.json::suggestions[2] (erectile-dysfunction)`
