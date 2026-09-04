@@ -6412,7 +6412,13 @@
       "retiredUses": [],
       "rawReferenceHashes": [
         "a81ddf42295badbc5c05c163cbc49452221c0238c19a8dcdaa0c6528b0d49b28"
-      ]
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-38929962",
