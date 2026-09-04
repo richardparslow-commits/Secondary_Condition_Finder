@@ -27,7 +27,7 @@ describe("Priority 1B direct browser-local document ingestion", () => {
       scripts: Record<string, string>;
     };
     expect(pkg.dependencies["pdfjs-dist"]).toBe("6.2.108");
-    expect(pkg.dependencies.mammoth).toBe("1.12.1");
+    expect(pkg.dependencies.mammoth).toBe("1.12.2");
     expect(pkg.scripts.postinstall).toBe("node scripts/copy-pdf-worker.mjs");
 
     const workerScript = fs.readFileSync(path.join(process.cwd(), "scripts/copy-pdf-worker.mjs"), "utf8");
