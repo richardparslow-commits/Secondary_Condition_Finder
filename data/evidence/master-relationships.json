@@ -7093,29 +7093,30 @@
          "rank": 2,
          "clinicalProposition": {
             "status": "preserved-from-current-rationale",
-            "text": "Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so this association should not be converted into an automatic individual causal or aggravation nexus; psychiatric history, sleep-apnea chronology, symptom overlap, treatment response, and alternative contributors remain important."
+            "text": "Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so the higher adjusted risk estimate should not be converted into an automatic individual aggravation conclusion. If a secondary aggravation theory is raised for a specific Veteran, the claim must be anchored to that individual's depressive-disorder baseline and chronology, with explicit attention to symptom overlap and alternative psychiatric, medical, medication, substance-use, psychosocial, and sleep-related contributors. The cited literature supports condition-level depression-risk research, not an automatic individual aggravation nexus."
          },
-         "rationale": "Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so this association should not be converted into an automatic individual causal or aggravation nexus; psychiatric history, sleep-apnea chronology, symptom overlap, treatment response, and alternative contributors remain important.",
+         "rationale": "Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so the higher adjusted risk estimate should not be converted into an automatic individual aggravation conclusion. If a secondary aggravation theory is raised for a specific Veteran, the claim must be anchored to that individual's depressive-disorder baseline and chronology, with explicit attention to symptom overlap and alternative psychiatric, medical, medication, substance-use, psychosocial, and sleep-related contributors. The cited literature supports condition-level depression-risk research, not an automatic individual aggravation nexus.",
          "publicationGuard": {
             "status": "legacy-rationale-boundary",
             "structuredGuardText": null,
             "boundarySource": "current-rationale",
-            "boundaryText": "Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so this association should not be converted into an automatic individual causal or aggravation nexus; psychiatric history, sleep-apnea chronology, symptom overlap, treatment response, and alternative contributors remain important.",
+            "boundaryText": "Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so the higher adjusted risk estimate should not be converted into an automatic individual aggravation conclusion. If a secondary aggravation theory is raised for a specific Veteran, the claim must be anchored to that individual's depressive-disorder baseline and chronology, with explicit attention to symptom overlap and alternative psychiatric, medical, medication, substance-use, psychosocial, and sleep-related contributors. The cited literature supports condition-level depression-risk research, not an automatic individual aggravation nexus.",
             "structuredGuardReviewPending": true,
             "semanticRewriteAuthorized": false
          },
          "evidenceGaps": [
             "Qualified diagnosis of a depressive disorder and documentation distinguishing persistent psychiatric symptoms from sleepiness, fatigue, and concentration symptoms attributable to OSA",
+            "Individual depressive-disorder baseline established before any aggravation claim",
             "Chronology comparing depressive-symptom onset or worsening with OSA onset, severity, and treatment",
             "Evaluation of competing psychiatric, medical, medication, substance-use, psychosocial, and sleep-related contributors",
-            "Qualified mental-health or sleep-medicine opinion addressing the individual relationship when secondary causation or aggravation is asserted"
+            "Qualified mental-health or sleep-medicine opinion addressing whether the documented OSA materially aggravated this individual's depressive disorder beyond its established baseline"
          ],
          "sourceIds": [
             "pmid-38888794"
          ],
          "sourceReferenceCount": 1,
          "pathwayIntelligencePresent": false,
-         "suggestionObjectHash": "fc1eec8e057320cf5ea586af4b60a9d78824fc37522e32314a60349cb5b7a13c"
+         "suggestionObjectHash": "6fbd4ad685c592ccdc1074dd46844b92d0867297801d97a218989653157a5bb7"
       },
       {
          "relationshipId": "rel-sleep-apnea-to-anxiety-disorder",
