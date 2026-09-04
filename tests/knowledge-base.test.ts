@@ -6,7 +6,8 @@ import { conditionCatalogSchema } from "@/lib/catalog/schema";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { draftMappings, mappedConditionIds } from "@/lib/kb/lookup";
 import { knowledgeBaseSchema } from "@/lib/kb/schema";
-import { validateKnowledgeBaseAgainstCatalog } from "@/lib/kb/validate";
+import { assertNoForbiddenPhrases, validateKnowledgeBaseAgainstCatalog } from "@/lib/kb/validate";
+import { FORBIDDEN_PHRASES } from "@/lib/guardrails";
 import {
   buildCausalMechanism,
   buildEvidentiaryProfile,
@@ -206,5 +207,113 @@ describe("validateKnowledgeBaseAgainstCatalog", () => {
     expect(() => validateKnowledgeBaseAgainstCatalog(catalog, kb)).toThrow(
       'Mapping "known-primary" suggests unknown condition "missing-secondary".',
     );
+  });
+});
+
+describe("assertNoForbiddenPhrases", () => {
+  function mappingWithText(rationale: string, evidenceGaps: string[]) {
+    return knowledgeBaseSchema.parse([
+      {
+        id: "known-primary",
+        draft: false,
+        todo: [],
+        suggestions: [
+          {
+            conditionId: "known-secondary",
+            rank: 1,
+            nexusClaim: buildNexusClaim(),
+            causalMechanism: buildCausalMechanism(),
+            evidentiaryProfile: buildEvidentiaryProfile(),
+            rationale,
+            evidenceGaps,
+            sourceReferences: [{ citation: "test", note: "test", verified: false }],
+          },
+        ],
+      },
+    ]);
+  }
+
+  it("throws when rationale contains a forbidden phrase", () => {
+    const kb = mappingWithText(
+      "This supports a guaranteed VA rating for the veteran.",
+      ["test gap"],
+    );
+
+    expect(() => assertNoForbiddenPhrases(kb)).toThrow(/guaranteed VA rating/);
+  });
+
+  it("throws when an evidence gap contains a forbidden phrase", () => {
+    const kb = mappingWithText("test rationale", [
+      "You have been diagnosed with the condition.",
+    ]);
+
+    expect(() => assertNoForbiddenPhrases(kb)).toThrow(/forbidden phrase/);
+  });
+
+  it("is case-insensitive", () => {
+    const kb = mappingWithText("An OFFICIAL MEDICAL DIAGNOSIS is provided.", [
+      "test gap",
+    ]);
+
+    expect(() => assertNoForbiddenPhrases(kb)).toThrow(/OFFICIAL MEDICAL DIAGNOSIS/i);
+  });
+
+  it("reports every violation across mappings and suggestions", () => {
+    const kb = knowledgeBaseSchema.parse([
+      {
+        id: "known-primary",
+        draft: false,
+        todo: [],
+        suggestions: [
+          {
+            conditionId: "known-secondary",
+            rank: 1,
+            nexusClaim: buildNexusClaim(),
+            causalMechanism: buildCausalMechanism(),
+            evidentiaryProfile: buildEvidentiaryProfile(),
+            rationale: "guaranteed VA rating",
+            evidenceGaps: ["test gap"],
+            sourceReferences: [{ citation: "test", note: "test", verified: false }],
+          },
+          {
+            conditionId: "known-secondary",
+            rank: 2,
+            nexusClaim: buildNexusClaim(),
+            causalMechanism: buildCausalMechanism(),
+            evidentiaryProfile: buildEvidentiaryProfile(),
+            rationale: "this replaces a C&P exam",
+            evidenceGaps: ["test gap"],
+            sourceReferences: [{ citation: "test", note: "test", verified: false }],
+          },
+        ],
+      },
+    ]);
+
+    let message = "";
+    try {
+      assertNoForbiddenPhrases(kb);
+    } catch (error) {
+      message = error instanceof Error ? error.message : "";
+    }
+    expect(message).toContain("known-primary -> known-secondary: rationale");
+    expect(message).toContain("guaranteed VA rating");
+    expect(message).toContain("this replaces a C&P exam");
+  });
+
+  it("accepts clean authored text", () => {
+    const kb = mappingWithText(
+      "Population studies suggest a reviewable association worth researching.",
+      ["Individual-level nexus evidence is not established."],
+    );
+
+    expect(() => assertNoForbiddenPhrases(kb)).not.toThrow();
+  });
+
+  it("keeps every shipped knowledge-base mapping free of forbidden phrases", () => {
+    expect(() => assertNoForbiddenPhrases(kb)).not.toThrow();
+  });
+
+  it("keeps the phrase list non-empty so the contract cannot silently vanish", () => {
+    expect(FORBIDDEN_PHRASES.length).toBeGreaterThan(0);
   });
 });

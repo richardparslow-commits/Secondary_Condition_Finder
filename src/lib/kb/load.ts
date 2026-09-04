@@ -11,7 +11,7 @@ import {
   type ConditionMapping,
   type KnowledgeBase,
 } from "./schema";
-import { validateKnowledgeBaseAgainstCatalog } from "./validate";
+import { assertNoForbiddenPhrases, validateKnowledgeBaseAgainstCatalog } from "./validate";
 
 const KB_DIR = path.join(process.cwd(), "data", "knowledge-base");
 
@@ -51,6 +51,7 @@ export function loadKnowledgeBase(): KnowledgeBase {
 
   const parsed = knowledgeBaseSchema.parse(mappings);
   validateKnowledgeBaseAgainstCatalog(loadConditionCatalog(), parsed);
+  assertNoForbiddenPhrases(parsed);
   cached = parsed;
   return cached;
 }

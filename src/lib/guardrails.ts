@@ -1,6 +1,14 @@
 /**
  * Centralized Legal and Medical Guardrails
- * Enforces compliance across /, /secondary, /presumptive, and /results surfaces.
+ *
+ * FORBIDDEN_PHRASES is enforced in two places:
+ * 1. `assertNoForbiddenPhrases` in `src/lib/kb/validate.ts` fails closed at
+ *    knowledge-base load time when authored suggestion text (rationale,
+ *    evidence gaps) contains any phrase below.
+ * 2. `tests/legal-copy-contracts.test.ts` asserts rendered pages never
+ *    contain them.
+ *
+ * `validateGuardrails` is the shared checker behind those contracts.
  */
 
 export const MEDICAL_DISCLAIMER = "Educational guidance tool only. This tool does not provide medical diagnoses, legal advice, or official VA claim adjudication.";
