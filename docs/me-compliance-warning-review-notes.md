@@ -101,3 +101,86 @@ No code changes are required to clear the current gates. These items are the rev
 - any other edge that reaches a publish-oriented review with a similar consensus/mechanism alignment question.
 
 The PTSD → erectile-dysfunction edge no longer generates the `GRAPH-PHARM-CONSENSUS` warning because its consensus tier was moved to `IATROGENIC_TREATMENT_EFFECT` to match the PHARMACOLOGICAL_IATROGENIC mechanism.
+
+## Review queue: bidirectional edge pairs
+
+Measured from the current branch head. All four pairs below are structural `GRAPH-BIDIRECTIONAL` review items, not violations. The review question for each pair is whether the two directions remain independently defensible given their distinct nexus postures and source guards.
+
+### 1. anemia <-> chronic-kidney-disease
+
+- anemia -> chronic-kidney-disease
+  - Nexus: `ASSOCIATION_ONLY`
+  - Mechanism: `NOT_ESTABLISHED`
+  - Consensus: `NOT_ESTABLISHED`
+  - Probability alignment: `NOT_ASSERTED`
+  - Source guard: explicit, sickle-cell-specific phenotype bound
+  - Notes: phenotype-specific temporal risk wording only; not a general anemia-to-CKD claim.
+- chronic-kidney-disease -> anemia
+  - Nexus: `ASSOCIATION_ONLY`
+  - Mechanism: `NOT_ESTABLISHED`
+  - Consensus: `NOT_ESTABLISHED`
+  - Probability alignment: `NOT_ASSERTED`
+  - Source guard: explicit, KDIGO-based CKD-with-independent-anemia bound
+  - Notes: disease-complication wording; anemia is not inferred from CKD stage alone.
+- Review stance: both directions are association-only with distinct phenotype/guard boundaries. The pair is honest as authored; the main review question is whether the sickle-cell-bound anemia direction and the CKD-complication direction are the intended permanent framing for those primaries.
+
+### 2. cardiac-arrhythmia <-> cardiomyopathy
+
+- cardiac-arrhythmia -> cardiomyopathy
+  - Nexus: `ASSOCIATION_ONLY`
+  - Mechanism: `NOT_ESTABLISHED`
+  - Consensus: `NOT_ESTABLISHED`
+  - Probability alignment: `NOT_ASSERTED`
+  - Source guard: explicit, sustained/ sufficiently burdensome culprit arrhythmia + ventricular dysfunction bound
+  - Notes: phenotype-specific arrhythmia-induced cardiomyopathy wording; reversibility after rhythm/rate control is noted as a strengthening factor when documented.
+- cardiomyopathy -> cardiac-arrhythmia
+  - Nexus: `ASSOCIATION_ONLY`
+  - Mechanism: `NOT_ESTABLISHED`
+  - Consensus: `NOT_ESTABLISHED`
+  - Probability alignment: `NOT_ASSERTED`
+  - Source guard: explicit, ME-1 bounded clinical proposition requiring documented cardiomyopathy plus clinically significant ventricular arrhythmia in a compatible structural context
+  - Notes: anchored to ventricular tachycardia / ventricular fibrillation type endpoints, not every nonspecific rhythm abnormality.
+- Review stance: both directions are association-only with distinct explicit guards. The pair is honest as authored; the review question is primarily whether the two direction-specific phenotype bounds remain the intended framing.
+
+### 3. depressive-disorder <-> sleep-apnea
+
+- depressive-disorder -> sleep-apnea
+  - Nexus: `ASSOCIATION_ONLY`
+  - Mechanism: `PHARMACOLOGICAL_IATROGENIC`
+  - Consensus: `NOT_ESTABLISHED`
+  - Probability alignment: `NOT_ASSERTED`
+  - Source guard: legacy-rationale-boundary
+  - Notes: intermediate-step theory wording around antidepressant-associated weight gain and obesity-OSA risk; no pathway intelligence; neither causation nor aggravation is asserted.
+- sleep-apnea -> depressive-disorder
+  - Nexus: `AGGRAVATION`
+  - Mechanism: `POST_SURGICAL_OR_TREATMENT`
+  - Consensus: `PROBABLE`
+  - Probability alignment: `AT_LEAST_AS_LIKELY_AS_NOT`
+  - Source guard: legacy-rationale-boundary
+  - Notes: aggravation direction with explicit baseline/aggravating-factor framing and case-by-case proposition limit; anchored to cross-sectional/heterogeneous dose-response evidence.
+- Review stance: this is the pair your current request opened for a closer look. The depressive-disorder-to-sleep-apnea direction remains association-only with a pharmacological-intermediate-step wording. The sleep-apnea-to-depressive-disorder direction keeps PROBABLE/conservative at-least-as-likely-as-not alignment; in this pass, I tightened the wording only and did not change consensus, mechanism, or nexus. The authoritative registry and source verification state were reconciled to match the tightened wording.
+
+### 4. depressive-disorder <-> erectile-dysfunction
+
+- depressive-disorder -> erectile-dysfunction
+  - Nexus: `DIRECT_CAUSATION`
+  - Mechanism: `PHARMACOLOGICAL_IATROGENIC`
+  - Consensus: `IATROGENIC_TREATMENT_EFFECT`
+  - Probability alignment: `AT_LEAST_AS_LIKELY_AS_NOT`
+  - Source guard: legacy-rationale-boundary
+  - Notes: psychotropic-medication intermediate-chain wording; agent-specific, dose/duration/timing, competing vascular/endocrine/neurologic/psychiatric/medication/lifestyle alternatives.
+- erectile-dysfunction -> depressive-disorder
+  - Nexus: `ASSOCIATION_ONLY`
+  - Mechanism: `NEUROENDOCRINE_CASCADE`
+  - Consensus: `NOT_ESTABLISHED`
+  - Probability alignment: `NOT_ASSERTED`
+  - Source guard: legacy-rationale-boundary
+  - Notes: association-focused wording about erectile dysfunction contributing to reduced quality of life and depressive symptom risk; neither causation nor aggravation is asserted.
+- Review stance: the two directions are not mirror images of the same claim. The pair is flagged partly because it overlaps with the PTSD -> erectile-dysfunction edge, which is authored as a case-specific SSRI-in-the-service-connected-PTSD context medication-related aggravation theory and was qualified earlier in this review queue. The review question here is directionality discipline: the depression-to-ED direction is a treatment-effect theory with conservative individual-nexus limits, and the ED-to-depression direction is association-only.
+
+## State at the current branch head
+
+- `npm run audit:me-compliance`: 0 violations, 4 informational `GRAPH-BIDIRECTIONAL` warnings.
+- `node scripts/audit-master-registry.js`: PASS.
+- Bidirectional pairs with direct registry/KB hash parity: anemia <-> chronic-kidney-disease, cardiac-arrhythmia <-> cardiomyopathy, depressive-disorder -> sleep-apnea, depressive-disorder -> erectile-dysfunction, and erectile-dysfunction -> depressive-disorder.
+- Bidirectional pair with normal/approved normalized verification-only hash parity: sleep-apnea -> depressive-disorder.
