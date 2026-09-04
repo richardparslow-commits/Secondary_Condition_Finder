@@ -2,17 +2,17 @@
 
 ## Status
 
-The authoritative registry is at the Mapping Expansion Batch ME-22 pre-qualified-human-citation-verification state, with five newly appended Wave-8 relationships and their citations pending qualified-human review.
+The authoritative registry is rebaselined at commit `ea005e50` (ME-35): `currentState` is `ME35-CITATION-VERIFIED` in both `data/evidence/master-relationships.json` and `data/evidence/master-sources.json`. Run `node scripts/audit-master-registry.js` to confirm registry/data parity at any time. Citations from the mapping-expansion batches that have not yet completed qualified-human review remain pending verification.
 
 ## Current state
 
-- 283 relationships.
-- 209 explicit publication guards / 74 legacy rationale boundaries.
-- 291 live relationship-source uses: 256 verified / 35 pending verification.
-- 233 active source entities: 232 clinical + 1 legal authority.
-- 35 pending-verification clinical source entities.
+- 347 relationships across 813 mapping files: 139 published / 674 draft.
+- 273 explicit publication guards / 74 legacy rationale boundaries.
+- 355 live relationship-source uses: 261 verified / 94 pending verification.
+- 238 active source entities: 237 clinical + 1 legal authority.
+- 91 pending-verification clinical source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
-- 277 total source entities including lineage/history.
+- 338 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
 
 ## ME-6 qualified-human citation verification
