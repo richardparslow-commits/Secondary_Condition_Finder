@@ -17,10 +17,10 @@
   },
   "counts": {
     "liveSourceReferenceUses": 355,
-    "activeSourceEntities": 233,
-    "pendingVerificationSourceEntities": 96,
-    "activeClinicalSourceEntities": 232,
-    "pendingClinicalSourceEntities": 96,
+    "activeSourceEntities": 238,
+    "pendingVerificationSourceEntities": 91,
+    "activeClinicalSourceEntities": 237,
+    "pendingClinicalSourceEntities": 91,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
@@ -12704,7 +12704,7 @@
     },
     {
       "sourceId": "pmid-11746547",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "11746547",
       "doi": "10.1002/nau.1017",
@@ -12713,17 +12713,17 @@
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11746547/",
       "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/11746547/"],
       "verificationScopes": ["clinical-evidence"],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": ["2026-09-03"],
       "liveUsageCount": 1,
       "liveUses": [{"relationshipId": "rel-brown-s-quard-syndrome-to-urinary-incontinence", "primaryId": "brown-s-quard-syndrome", "targetId": "urinary-incontinence", "sourceIndex": 0}],
       "retiredUses": [],
-      "rawReferenceHashes": ["3feaf4cdfb1450d8b3f8eb9af0dbd1b2da50a8b924ac978adbb00cecfb9315dd"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": ["75c3d137f24bd14d0ba1fd315879aab4d26fe7341caa560e1cad0df68fb1a5b6"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": false, "qualifiedHumanCitationReviewDecision": "approve-as-implemented", "qualifiedHumanCitationReviewDate": "2026-09-03", "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
     },
     {
       "sourceId": "pmid-26332282",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "26332282",
       "doi": "10.1111/epi.13112",
@@ -12732,17 +12732,17 @@
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26332282/",
       "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/26332282/"],
       "verificationScopes": ["clinical-evidence"],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": ["2026-09-03"],
       "liveUsageCount": 1,
       "liveUses": [{"relationshipId": "rel-brain-tumors-to-seizure-disorder", "primaryId": "brain-tumors", "targetId": "seizure-disorder", "sourceIndex": 0}],
       "retiredUses": [],
-      "rawReferenceHashes": ["521711c29d83e279b9ae38dad156f399f93a35307ab2bbd89e9eb4f0baf5d0b4"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": ["891e49f6215252f88e82343e443af5e52bcbabd7cc717091d6fd16dfc3b62027"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": false, "qualifiedHumanCitationReviewDecision": "approve-as-implemented", "qualifiedHumanCitationReviewDate": "2026-09-03", "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
     },
     {
       "sourceId": "pmid-27378596",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "27378596",
       "doi": "10.1016/j.cjca.2016.03.012",
@@ -12751,17 +12751,17 @@
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27378596/",
       "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/27378596/"],
       "verificationScopes": ["clinical-evidence"],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": ["2026-09-03"],
       "liveUsageCount": 1,
       "liveUses": [{"relationshipId": "rel-brugada-syndrome-to-cardiac-arrhythmia", "primaryId": "brugada-syndrome", "targetId": "cardiac-arrhythmia", "sourceIndex": 0}],
       "retiredUses": [],
-      "rawReferenceHashes": ["31248b0d869844e72518725faffb49769fdbe4a2a1a661c02d85c043c0469c47"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": ["25fc1bf0935dd9fa0cdbadcf5f2e6e4e5dd7305ffc1219a3e5f4e063557dd5c1"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": false, "qualifiedHumanCitationReviewDecision": "approve-as-implemented", "qualifiedHumanCitationReviewDate": "2026-09-03", "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
     },
     {
       "sourceId": "pmid-28319442",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "28319442",
       "doi": "10.1080/09286586.2017.1294186",
@@ -12770,17 +12770,17 @@
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28319442/",
       "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/28319442/"],
       "verificationScopes": ["clinical-evidence"],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": ["2026-09-03"],
       "liveUsageCount": 1,
       "liveUses": [{"relationshipId": "rel-bell-s-palsy-to-keratitis", "primaryId": "bell-s-palsy", "targetId": "keratitis", "sourceIndex": 0}],
       "retiredUses": [],
-      "rawReferenceHashes": ["7c5f816164dde5a3afba3d219d36b20ea362a7f154551a32d834fdd72575b610"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": ["b0761b95860815f4479beb2787b478ab05048abc47a769668384a96e04694496"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": false, "qualifiedHumanCitationReviewDecision": "approve-as-implemented", "qualifiedHumanCitationReviewDate": "2026-09-03", "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
     },
     {
       "sourceId": "pmid-7804989",
-      "status": "pending-verification",
+      "status": "active",
       "kind": "clinical-evidence",
       "pmid": "7804989",
       "doi": "10.1002/1097-0142(19950115)75:2+<645::AID-CNCR2820751405>3.0.CO;2-1",
@@ -12789,15 +12789,15 @@
       "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7804989/",
       "sourceUrlVariants": ["https://pubmed.ncbi.nlm.nih.gov/7804989/"],
       "verificationScopes": ["clinical-evidence"],
-      "verified": false,
+      "verified": true,
       "sourceCheckedOnValues": ["2026-09-03"],
       "liveUsageCount": 1,
       "liveUses": [{"relationshipId": "rel-bowen-s-disease-to-squamous-cell-carcinoma", "primaryId": "bowen-s-disease", "targetId": "squamous-cell-carcinoma", "sourceIndex": 0}],
       "retiredUses": [],
-      "rawReferenceHashes": ["935d7660d984da335c3bde4f81cccca1752fe0543807562affbf26f5fb1fd575"],
-      "verificationState": {"qualifiedHumanCitationReviewRequired": true, "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+      "rawReferenceHashes": ["395518f5237a08a23df2e8155c75a46a95d4423759ed46dda9e18daeec1d124a"],
+      "verificationState": {"qualifiedHumanCitationReviewRequired": false, "qualifiedHumanCitationReviewDecision": "approve-as-implemented", "qualifiedHumanCitationReviewDate": "2026-09-03", "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
     }
   ],
   "lastUpdatedBy": "Mapping Expansion Batch ME-35",
-  "currentState": "ME35-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION"
+  "currentState": "ME35-CITATION-VERIFIED"
 }

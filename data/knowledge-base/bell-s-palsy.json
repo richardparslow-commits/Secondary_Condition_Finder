@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-35 retrospective facial-palsy ophthalmic-sequelae evidence for the bounded exposure-keratopathy proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28319442/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-03",
           "sourceLocator": "PMID 28319442; 23-year retrospective review of facial palsy and ophthalmic sequelae; approved ME-35 guard limits the broad keratitis target to objective exposure-related corneal disease."
         }

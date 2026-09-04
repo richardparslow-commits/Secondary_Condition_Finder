@@ -71,9 +71,9 @@ describe("Mapping Expansion ME-15 local implementation", () => {
     const rel = load<RelationshipRegistry>(path.join(ROOT, "data", "evidence", "master-relationships.json"));
     const src = load<SourceRegistry>(path.join(ROOT, "data", "evidence", "master-sources.json"));
     expect(rel.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
-    expect(rel.currentState).toBe("ME35-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(rel.currentState).toBe("ME35-CITATION-VERIFIED");
     expect(src.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
-    expect(src.currentState).toBe("ME35-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(src.currentState).toBe("ME35-CITATION-VERIFIED");
     for (const row of rows) {
       const rr = rel.relationships.filter((r: RelationshipRecord) => r.relationshipId === `rel-${row.primaryId}-to-${row.targetId}`);
       expect(rr).toHaveLength(1);
@@ -96,8 +96,8 @@ describe("Mapping Expansion ME-15 local implementation", () => {
     expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length >= 2)).toHaveLength(73);
     expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(118);
     expect(refs).toHaveLength(355);
-    expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(256);
-    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(99);
+    expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(261);
+    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(94);
     expect(clinical).toHaveLength(350);
   });
 });

@@ -27,7 +27,7 @@ type RelationshipRow = {
   publicationGuard: { status: string; structuredGuardReviewPending: boolean };
   suggestionObjectHash: string;
 };
-type SourceRow = { sourceId: string; status: string; verified: boolean; rawReferenceHashes: string[]; liveUses: unknown[] };
+type SourceRow = { sourceId: string; status: string; verified: boolean; rawReferenceHashes: string[]; liveUses: unknown[]; verificationState?: { qualifiedHumanCitationReviewRequired: boolean; qualifiedHumanCitationReviewDecision: string; qualifiedHumanCitationReviewDate: string } };
 type RelationshipRegistry = { currentState: string; counts: { relationships: number; explicitPublicationGuards: number; legacyRationaleBoundaries: number }; relationships: RelationshipRow[] };
 type SourceRegistry = { currentState: string; counts: { liveSourceReferenceUses: number; pendingVerificationSourceEntities: number; pendingClinicalSourceEntities: number; totalSourceEntitiesIncludingLineage: number }; sources: SourceRow[] };
 
@@ -45,7 +45,7 @@ describe("Mapping Expansion Batch ME-35", () => {
   const relationshipById = new Map(relationships.relationships.map((row) => [row.relationshipId, row]));
   const sourceById = new Map(sources.sources.map((row) => [row.sourceId, row]));
 
-  it.each(pairs)("keeps %s -> %s draft-only and citation-pending", (primaryId, targetId, pmid, expectedHash) => {
+  it.each(pairs)("keeps %s -> %s draft-only with verified bounded evidence", (primaryId, targetId, pmid, expectedHash) => {
     const mapping = load<Mapping>(`data/knowledge-base/${primaryId}.json`);
     const suggestion = mapping.suggestions.find((row) => row.conditionId === targetId);
     expect(mapping.draft).toBe(true);
@@ -56,7 +56,7 @@ describe("Mapping Expansion Batch ME-35", () => {
     expect(suggestion?.evidentiaryProfile.etiologicalConsensus).toBe("NOT_ESTABLISHED");
     expect(suggestion?.evidentiaryProfile.vaNexusProbabilityAlignment).toBe("NOT_ASSERTED");
     expect(suggestion?.sourceReferences).toHaveLength(1);
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
     expect(suggestion?.sourceReferences[0]?.citation).toContain(`PMID ${pmid}`);
 
@@ -69,19 +69,23 @@ describe("Mapping Expansion Batch ME-35", () => {
     expect(relationship?.publicationGuard.status).toBe("explicit");
     expect(relationship?.publicationGuard.structuredGuardReviewPending).toBe(false);
     expect(relationship?.suggestionObjectHash).toBe(expectedHash);
-    expect(relationship?.suggestionObjectHash).toBe(hash(suggestion));
-    expect(source?.status).toBe("pending-verification");
-    expect(source?.verified).toBe(false);
+    if (!suggestion) throw new Error(`Missing suggestion ${primaryId}->${targetId}`);
+    const preVerificationSuggestion = structuredClone(suggestion);
+    preVerificationSuggestion.sourceReferences[0].verified = false;
+    expect(relationship?.suggestionObjectHash).toBe(hash(preVerificationSuggestion));
+    expect(source?.status).toBe("active");
+    expect(source?.verified).toBe(true);
+    expect(source?.verificationState).toMatchObject({ qualifiedHumanCitationReviewRequired: false, qualifiedHumanCitationReviewDecision: "approve-as-implemented", qualifiedHumanCitationReviewDate: "2026-09-03" });
     expect(source?.rawReferenceHashes).toContain(hash(suggestion?.sourceReferences[0]));
     expect(source?.liveUses).toContainEqual({ relationshipId, primaryId, targetId, sourceIndex: 0 });
   });
 
   it("ratchets the authoritative counts without changing publication totals", () => {
-    expect(relationships.currentState).toBe("ME35-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
-    expect(sources.currentState).toBe("ME35-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(relationships.currentState).toBe("ME35-CITATION-VERIFIED");
+    expect(sources.currentState).toBe("ME35-CITATION-VERIFIED");
     expect(relationships.counts).toEqual({ relationships: 347, explicitPublicationGuards: 273, legacyRationaleBoundaries: 74 });
     expect(relationships.relationships).toHaveLength(347);
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 355, pendingVerificationSourceEntities: 96, pendingClinicalSourceEntities: 96, totalSourceEntitiesIncludingLineage: 338 });
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 355, activeSourceEntities: 238, pendingVerificationSourceEntities: 91, activeClinicalSourceEntities: 237, pendingClinicalSourceEntities: 91, totalSourceEntitiesIncludingLineage: 338 });
     expect(sources.sources).toHaveLength(338);
   });
 });

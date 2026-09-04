@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-35 longitudinal pediatric survivor-cohort evidence for the bounded brain-tumor seizure-risk proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26332282/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-03",
           "sourceLocator": "PMID 26332282; longitudinal cohort of pediatric brain-tumor survivors evaluating seizures and risk factors; approved ME-35 guard preserves pediatric/survivor scope and acute-versus-late seizure distinction."
         }

@@ -70,8 +70,8 @@ describe("Mapping Expansion Batch ME-26", () => {
     expect(relationships.relationships).toHaveLength(347);
     expect(sources.counts).toMatchObject({
       liveSourceReferenceUses: 355,
-      pendingVerificationSourceEntities: 96,
-      pendingClinicalSourceEntities: 96,
+      pendingVerificationSourceEntities: 91,
+      pendingClinicalSourceEntities: 91,
       totalSourceEntitiesIncludingLineage: 338,
     });
     expect(sources.sources).toHaveLength(338);

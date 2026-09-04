@@ -89,10 +89,10 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     expect(sources.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
     expect(sources.counts).toEqual({
       liveSourceReferenceUses: 355,
-      activeSourceEntities: 233,
-      pendingVerificationSourceEntities: 96,
-      activeClinicalSourceEntities: 232,
-      pendingClinicalSourceEntities: 96,
+      activeSourceEntities: 238,
+      pendingVerificationSourceEntities: 91,
+      activeClinicalSourceEntities: 237,
+      pendingClinicalSourceEntities: 91,
       activeLegalAuthorityEntities: 1,
       retiredOnlySourceEntities: 1,
       supersededUnverifiedSourceEntities: 7,
@@ -254,8 +254,8 @@ describe("Master Relationship & Evidence Registry 2026", () => {
   });
 
   it("keeps source lineage states distinct while retaining all active ME-3 sources", () => {
-    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(233);
-    expect(sources.sources.filter((source) => source.status === "pending-verification")).toHaveLength(96);
+    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(238);
+    expect(sources.sources.filter((source) => source.status === "pending-verification")).toHaveLength(91);
     expect(sources.sources.filter((source) => source.status === "superseded-unverified")).toHaveLength(7);
     expect(sources.sources.filter((source) => source.status === "bibliographic-correction-only")).toHaveLength(1);
     expect(sources.sources.filter((source) => source.status === "retired-only")).toHaveLength(1);
@@ -301,10 +301,10 @@ describe("Master Relationship & Evidence Registry 2026", () => {
       status: "PASS",
       relationships: 347,
       liveSourceReferenceUses: 355,
-      verifiedLiveSourceUses: 256,
-      pendingVerificationLiveSourceUses: 99,
-      activeSourceEntities: 233,
-      pendingVerificationSourceEntities: 96,
+      verifiedLiveSourceUses: 261,
+      pendingVerificationLiveSourceUses: 94,
+      activeSourceEntities: 238,
+      pendingVerificationSourceEntities: 91,
     });
   });
 

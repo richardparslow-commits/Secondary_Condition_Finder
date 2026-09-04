@@ -114,14 +114,14 @@ describe("Mapping Expansion Batch ME-33", () => {
   });
 
   it("ratchets the authoritative ME-33 counts", () => {
-    expect(relationships.currentState).toBe("ME35-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
-    expect(sources.currentState).toBe("ME35-PRE-QUALIFIED-HUMAN-CITATION-VERIFICATION");
+    expect(relationships.currentState).toBe("ME35-CITATION-VERIFIED");
+    expect(sources.currentState).toBe("ME35-CITATION-VERIFIED");
     expect(relationships.counts).toEqual({ relationships: 347, explicitPublicationGuards: 273, legacyRationaleBoundaries: 74 });
     expect(relationships.relationships).toHaveLength(347);
     expect(sources.counts).toMatchObject({
       liveSourceReferenceUses: 355,
-      pendingVerificationSourceEntities: 96,
-      pendingClinicalSourceEntities: 96,
+      pendingVerificationSourceEntities: 91,
+      pendingClinicalSourceEntities: 91,
       totalSourceEntitiesIncludingLineage: 338,
     });
     expect(sources.sources).toHaveLength(338);
@@ -130,8 +130,8 @@ describe("Mapping Expansion Batch ME-33", () => {
     const references = mappings.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences));
     expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(347);
     expect(references).toHaveLength(355);
-    expect(references.filter((reference) => reference.verified === true)).toHaveLength(256);
-    expect(references.filter((reference) => reference.verified === false)).toHaveLength(99);
+    expect(references.filter((reference) => reference.verified === true)).toHaveLength(261);
+    expect(references.filter((reference) => reference.verified === false)).toHaveLength(94);
   });
 
   it("keeps deferred identities outside the batch", () => {

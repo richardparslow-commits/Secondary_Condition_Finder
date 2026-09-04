@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-35 skin-cancer precursor review for the bounded Bowen's disease to invasive cutaneous squamous-cell-carcinoma proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7804989/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-03",
           "sourceLocator": "PMID 7804989; review identifying Bowen's disease as a precursor to invasive nonmelanoma skin cancer; approved ME-35 guard requires pathology, site, chronology, and competing-risk review."
         }

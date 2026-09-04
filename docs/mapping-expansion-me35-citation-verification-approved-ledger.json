@@ -1,0 +1,111 @@
+{
+  "phase": "Mapping Expansion ME-35 Qualified-Human Citation Verification",
+  "ledgerStatus": "APPROVED-AND-APPLIED-LOCALLY — 5/5 VERIFIED",
+  "approvalDate": "2026-09-03",
+  "approvalRecord": "Qualified-human approval captured in-session on 2026-09-03: approve-as-implemented citation verification for all five ME-35 sources.",
+  "rows": [
+    {
+      "row": 1,
+      "primaryId": "brown-s-quard-syndrome",
+      "targetId": "urinary-incontinence",
+      "relationshipKey": "brown-s-quard-syndrome->urinary-incontinence",
+      "rank": 1,
+      "pmid": "11746547",
+      "doi": "10.1002/nau.1017",
+      "disposition": "approve-as-implemented"
+    },
+    {
+      "row": 2,
+      "primaryId": "brain-tumors",
+      "targetId": "seizure-disorder",
+      "relationshipKey": "brain-tumors->seizure-disorder",
+      "rank": 1,
+      "pmid": "26332282",
+      "doi": "10.1111/epi.13112",
+      "disposition": "approve-as-implemented"
+    },
+    {
+      "row": 3,
+      "primaryId": "brugada-syndrome",
+      "targetId": "cardiac-arrhythmia",
+      "relationshipKey": "brugada-syndrome->cardiac-arrhythmia",
+      "rank": 1,
+      "pmid": "27378596",
+      "doi": "10.1016/j.cjca.2016.03.012",
+      "disposition": "approve-as-implemented"
+    },
+    {
+      "row": 4,
+      "primaryId": "bell-s-palsy",
+      "targetId": "keratitis",
+      "relationshipKey": "bell-s-palsy->keratitis",
+      "rank": 1,
+      "pmid": "28319442",
+      "doi": "10.1080/09286586.2017.1294186",
+      "disposition": "approve-as-implemented"
+    },
+    {
+      "row": 5,
+      "primaryId": "bowen-s-disease",
+      "targetId": "squamous-cell-carcinoma",
+      "relationshipKey": "bowen-s-disease->squamous-cell-carcinoma",
+      "rank": 1,
+      "pmid": "7804989",
+      "doi": "10.1002/1097-0142(19950115)75:2+<645::AID-CNCR2820751405>3.0.CO;2-1",
+      "disposition": "approve-as-implemented"
+    }
+  ],
+  "authorization": {
+    "kbVerifiedFalseToTrue": 5,
+    "masterPendingToActive": 5,
+    "qualifiedHumanDecision": "approve-as-implemented",
+    "relationshipChanges": 0,
+    "rankChanges": 0,
+    "publicationGuardChanges": 0,
+    "semanticChanges": 0,
+    "publicationStatusChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "githubWrite": false,
+    "vercelAction": false
+  },
+  "expectedAfter": {
+    "knowledgeBaseFiles": 813,
+    "published": 139,
+    "draft": 674,
+    "relationships": 347,
+    "references": 355,
+    "verified": 261,
+    "retiredVerified": 6,
+    "verifiedProvenance": 267,
+    "unverified": 94,
+    "reviewFindings": 0,
+    "hardFindings": 0,
+    "clinicalEvidenceReferences": 350,
+    "clinicalEvidenceReferencesWithUrls": 350,
+    "retiredClinicalEvidenceReferencesWithUrls": 4,
+    "clinicalEvidenceProvenanceWithUrls": 354,
+    "activeMasterSources": 238,
+    "pendingMasterSources": 91,
+    "totalMasterSources": 338,
+    "activeClinicalMasterSources": 237,
+    "pendingClinicalMasterSources": 91,
+    "activeLegalMasterSources": 1,
+    "explicitPublicationGuards": 273,
+    "legacyRationaleBoundaries": 74,
+    "registryCurrentState": "ME35-CITATION-VERIFIED"
+  },
+  "implementationResult": {
+    "rowsPromoted": 5,
+    "kbVerifiedTruePromotions": 5,
+    "masterActivePromotions": 5,
+    "relationshipEntityChanges": 0,
+    "rankChanges": 0,
+    "publicationGuardChanges": 0,
+    "publicationStatusChanges": 0,
+    "semanticChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "remoteWritesPerformed": false
+  }
+}
