@@ -6375,28 +6375,28 @@
          "rank": 3,
          "clinicalProposition": {
             "status": "preserved-from-current-rationale",
-            "text": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. A medication-related secondary theory remains case-specific: the record must establish that the relevant SSRI was actually prescribed for PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed."
+            "text": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. This edge is authored as a medication-related aggravation theory, not a general population-level association: the record must establish that the relevant SSRI was actually prescribed for the service-connected PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed. A recognized medication association does not, by itself, establish that the medication caused or aggravated this Veteran's erectile dysfunction."
          },
-         "rationale": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. A medication-related secondary theory remains case-specific: the record must establish that the relevant SSRI was actually prescribed for PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed.",
+         "rationale": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. This edge is authored as a medication-related aggravation theory, not a general population-level association: the record must establish that the relevant SSRI was actually prescribed for the service-connected PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed. A recognized medication association does not, by itself, establish that the medication caused or aggravated this Veteran's erectile dysfunction.",
          "publicationGuard": {
             "status": "legacy-rationale-boundary",
             "structuredGuardText": null,
             "boundarySource": "current-rationale",
-            "boundaryText": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. A medication-related secondary theory remains case-specific: the record must establish that the relevant SSRI was actually prescribed for PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed.",
+            "boundaryText": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. This edge is authored as a medication-related aggravation theory, not a general population-level association: the record must establish that the relevant SSRI was actually prescribed for the service-connected PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed. A recognized medication association does not, by itself, establish that the medication caused or aggravated this Veteran's erectile dysfunction.",
             "structuredGuardReviewPending": true,
             "semanticRewriteAuthorized": false
          },
          "evidenceGaps": [
             "Prescription records showing the relevant SSRI exposure and timing",
             "Urology or primary care diagnosis of erectile dysfunction",
-            "Medical opinion addressing medication exposure, alternative causes, and causation or aggravation"
+            "Medical opinion addressing medication exposure, SSRI-related sexual side effects, alternative causes, and aggravation beyond the established baseline"
          ],
          "sourceIds": [
             "pmid-19473282"
          ],
          "sourceReferenceCount": 1,
          "pathwayIntelligencePresent": true,
-         "suggestionObjectHash": "3e2966ad30c33ee330f8891c842ee8ee361947f26dcfe0ba6d6e15bab315d977"
+         "suggestionObjectHash": "564c262cbe563d2e36dcce4e9ce626b3163b8d04dfca500bd6b0857b686b0b69"
       },
       {
          "relationshipId": "rel-pulmonary-embolism-to-pulmonary-hypertension",

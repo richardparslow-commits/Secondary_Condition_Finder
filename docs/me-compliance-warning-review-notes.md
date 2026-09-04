@@ -54,9 +54,38 @@ Review stance:
 - Depression and erectile dysfunction have overlapping behavioral, vascular, endocrine, and treatment-related contributions, which makes directionality discipline important.
 - Recommended action: review each direction independently; pay particular attention to treatment effects and competing explanations in whichever direction is being considered for publication.
 
+## 6. PTSD → erectile-dysfunction (qualified as a medication-related aggravation theory)
+
+File: `ptsd.json::suggestions[2] (erectile-dysfunction)`
+Rule: previously `GRAPH-PHARM-CONSENSUS`; warning removed by rewriting the edge's nexus posture.
+
+Authoring decision:
+- The edge is qualified as a case-specific medication-related aggravation theory, not a general PTSD-to-erectile-dysfunction causation conclusion.
+- The edge is authored as AGGRAVATION and PHARMACOLOGICAL_IATROGENIC.
+- Etiological consensus was moved to IATROGENIC_TREATMENT_EFFECT so the mechanism label and consensus tier are explicitly coherent for a treatment-effect theory.
+- The live clinical source reference (pmid-19473282) is unchanged.
+
+Reconciliation status:
+- The authoritative registry text for `rel-ptsd-to-erectile-dysfunction` has been updated to match the approved KB rationale.
+- The authoritative registry recognizes the KB edge through an authorized verification-only normalized suggestion-object hash, and the master source `pmid-19473282` also carries the authorized normalized reference hash.
+- This edge is no longer provisional.
+
+Review stance:
+- This qualification removes the `GRAPH-PHARM-CONSENSUS` warning by aligning mechanism and consensus.
+- The edge remains flagged by `GRAPH-BIDIRECTIONAL` because `depressive-disorder <-> erectile-dysfunction` is a bidirectional pair.
+- The bidirectional review requirement still applies before any publish step that touches either direction.
+
+Artifacts:
+- KB edge: `data/knowledge-base/ptsd.json`
+- Registry state: `data/evidence/master-relationships.json`
+- Source state: `data/evidence/master-sources.json`
+- Warning record: `docs/me-compliance-warning-review-notes.md`
+
 ## Summary
 
-No code changes are required to clear the current gates. These five items are the review queue for any future publish-oriented batch that touches:
+No code changes are required to clear the current gates. These items are the review queue for any future publish-oriented batch that touches:
 
-- the PTSD → erectile-dysfunction edge, and/or
-- any of the four bidirectional pairs.
+- the four bidirectional pairs, and
+- any other edge that reaches a publish-oriented review with a similar consensus/mechanism alignment question.
+
+The PTSD → erectile-dysfunction edge no longer generates the `GRAPH-PHARM-CONSENSUS` warning because its consensus tier was moved to `IATROGENIC_TREATMENT_EFFECT` to match the PHARMACOLOGICAL_IATROGENIC mechanism.

@@ -86,32 +86,32 @@
       {
          "conditionId": "erectile-dysfunction",
          "rank": 3,
-         "rationale": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. A medication-related secondary theory remains case-specific: the record must establish that the relevant SSRI was actually prescribed for PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed.",
+         "rationale": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. This edge is authored as a medication-related aggravation theory, not a general population-level association: the record must establish that the relevant SSRI was actually prescribed for the service-connected PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed. A recognized medication association does not, by itself, establish that the medication caused or aggravated this Veteran's erectile dysfunction.",
          "pathwayIntelligence": {
             "pathways": [
                "medication-related"
             ],
-            "causalChain": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction causation or aggravation.",
+            "causalChain": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction aggravation beyond the established baseline.",
             "developmentQuestions": [
                "Was the relevant SSRI prescribed for the service-connected PTSD?",
                "Is erectile dysfunction currently diagnosed, and how does its onset or worsening relate temporally to the medication exposure?",
-               "Does the clinician consider the medication a plausible cause or aggravating factor in this individual case?",
+               "Does the clinician consider the medication a plausible aggravating factor in this individual case?",
                "Which alternative causes of erectile dysfunction should be addressed?"
             ],
             "issuesToResolve": [
-               "A recognized medication association does not establish that the medication caused this Veteran's condition.",
+               "A recognized medication association does not establish that the medication aggravated this Veteran's condition.",
                "The medication indication, exposure timing, current diagnosis, and alternative causes all need individual evidence."
             ]
          },
          "evidenceGaps": [
             "Prescription records showing the relevant SSRI exposure and timing",
             "Urology or primary care diagnosis of erectile dysfunction",
-            "Medical opinion addressing medication exposure, alternative causes, and causation or aggravation"
+            "Medical opinion addressing medication exposure, SSRI-related sexual side effects, alternative causes, and aggravation beyond the established baseline"
          ],
          "sourceReferences": [
             {
                "citation": "Corona G, Ricca V, Bandini E, et al. Selective serotonin reuptake inhibitor-induced sexual dysfunction. J Sex Med. 2009;6(5):1259-1269. PMID 19473282",
-               "note": "Cross-sectional study of 2,040 men with sexual dysfunction found SSRI use associated with greater impairment of reported erectile function and broader male sexual-response effects; penile blood flow did not differ. Supports an SSRI-exposure association signal, not automatic individual causation.",
+               "note": "Cross-sectional study of 2,040 men with sexual dysfunction found SSRI use associated with greater impairment of reported erectile function and broader male sexual-response effects; penile blood flow did not differ. Supports an SSRI-exposure association signal relevant to a case-specific medication-aggravation theory, not automatic individual causation or aggravation.",
                "verificationScope": "clinical-evidence",
                "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19473282/",
                "verified": true,
@@ -121,21 +121,23 @@
          ],
          "nexusClaim": {
             "nexusClassification": "AGGRAVATION",
-            "baselineProgression": "The natural, non-service-connected baseline of the secondary condition must be established from the individual's records before any aggravation claim; the service-connected primary may then be evaluated for exacerbation beyond that baseline. PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction causation or aggravation.",
-            "aggravatingFactor": "The aggravating force is the biomechanical or systemic impact of the service-connected primary condition acting on the established baseline"
+            "baselineProgression": "The natural, non-service-connected baseline of erectile dysfunction must be established from the individual's records before any aggravation claim; the service-connected PTSD may then be evaluated for aggravation only through the medication-exposure theory, if the record supports it.",
+            "aggravatingFactor": "The aggravating force, if established, is SSRI treatment prescribed for the service-connected PTSD rather than PTSD itself acting directly on erectile function."
          },
          "causalMechanism": {
             "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
-            "primaryVector": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction causation or aggravation.",
+            "primaryVector": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction aggravation through SSRI-related sexual side effects.",
             "hypothesizedOnly": false
          },
          "evidentiaryProfile": {
-            "etiologicalConsensus": "PROBABLE",
+            "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
             "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
-            "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction causation or aggravation.",
-            "evidenceGaps": "Prescription records showing the relevant SSRI exposure and timing; Urology or primary care diagnosis of erectile dysfunction; Medical opinion addressing medication exposure, alternative causes, and causation or aggravation",
+            "conservativeRationale": "In medically conservative terms, the evidence supports an SSRI-related sexual side-effect signal at the at-least-as-likely-as-not level only when the record establishes PTSD-directed SSRI exposure, a current erectile-dysfunction diagnosis, compatible timing, and a clinician's assessment that the medication plausibly aggravated the condition in this individual case. That framework is a treatment-effect theory, not a general PTSD-to-erectile-dysfunction causation conclusion.",
+            "evidenceGaps": "Prescription records showing the relevant SSRI exposure and timing; Urology or primary care diagnosis of erectile dysfunction; Medical opinion addressing medication exposure, SSRI-related sexual side effects, alternative causes, and aggravation beyond the established baseline",
             "alternativeEtiologiesToRuleOut": [
-               "Other causes not yet identified in this mapping"
+               "Vascular causes of erectile dysfunction",
+               "Endocrine causes of erectile dysfunction",
+               "Other medication contributors, psychiatric contributors, and relationship factors"
             ],
             "requiresSpecificDbqEvidence": false
          }

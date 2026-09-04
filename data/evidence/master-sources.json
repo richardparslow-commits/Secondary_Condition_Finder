@@ -620,8 +620,16 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "5a2752b8ca4098436413a15b106f1952ee2d3cf2079434a8a7da7b739c48d912"
-      ]
+        "5a2752b8ca4098436413a15b106f1952ee2d3cf2079434a8a7da7b739c48d912",
+        "f9046ecaff4470f9d225c432d6ac994780020d7beddad17bd4eb653435caa129"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-04",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     },
     {
       "sourceId": "pmid-20189345",
