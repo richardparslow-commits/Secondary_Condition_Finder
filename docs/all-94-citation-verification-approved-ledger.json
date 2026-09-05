@@ -1,0 +1,604 @@
+{
+  "phase": "All 94 Pending Clinical Citation Verification",
+  "ledgerStatus": "APPROVED-AND-APPLIED-LOCALLY — 94/94 VERIFIED",
+  "approvalDate": "2026-09-04",
+  "approvalRecord": "User approval captured in-session on 2026-09-04: approve all 94 pending clinical references.",
+  "authorization": {
+    "liveReferencePromotions": 94,
+    "masterSourcePromotions": 91,
+    "qualifiedHumanDecision": "approve-as-implemented",
+    "relationshipChanges": 0,
+    "rankChanges": 0,
+    "publicationGuardChanges": 0,
+    "semanticChanges": 0,
+    "publicationStatusChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "githubWrite": false,
+    "vercelAction": false
+  },
+  "promotedSourceIds": [
+    "pmid-11144035",
+    "pmid-11353583",
+    "pmid-11910364",
+    "pmid-12231073",
+    "pmid-12562565",
+    "pmid-15021770",
+    "pmid-16545526",
+    "pmid-16648329",
+    "pmid-16893571",
+    "pmid-16908799",
+    "pmid-17665247",
+    "pmid-18071162",
+    "pmid-18433651",
+    "pmid-19238360",
+    "pmid-21208593",
+    "pmid-21383252",
+    "pmid-21441765",
+    "pmid-21611763",
+    "pmid-21870048",
+    "pmid-22410730",
+    "pmid-22459786",
+    "pmid-22558393",
+    "pmid-23204254",
+    "pmid-23647091",
+    "pmid-24158881",
+    "pmid-24618106",
+    "pmid-24679420",
+    "pmid-24843675",
+    "pmid-24893135",
+    "pmid-24973422",
+    "pmid-25038422",
+    "pmid-25303785",
+    "pmid-26189354",
+    "pmid-26509312",
+    "pmid-27259753",
+    "pmid-27775828",
+    "pmid-27878819",
+    "pmid-28222820",
+    "pmid-28242264",
+    "pmid-28438300",
+    "pmid-28823525",
+    "pmid-29223550",
+    "pmid-29360523",
+    "pmid-29459383",
+    "pmid-29655822",
+    "pmid-30299492",
+    "pmid-30305956",
+    "pmid-30909841",
+    "pmid-30948277",
+    "pmid-31076315",
+    "pmid-31081877",
+    "pmid-31163237",
+    "pmid-31367903",
+    "pmid-31536264",
+    "pmid-31660100",
+    "pmid-31925464",
+    "pmid-31992420",
+    "pmid-32089333",
+    "pmid-32113575",
+    "pmid-32429454",
+    "pmid-33065369",
+    "pmid-34384834",
+    "pmid-34583023",
+    "pmid-34609446",
+    "pmid-34830959",
+    "pmid-35051625",
+    "pmid-35488780",
+    "pmid-35508738",
+    "pmid-35835550",
+    "pmid-35985419",
+    "pmid-36182260",
+    "pmid-36272764",
+    "pmid-36698243",
+    "pmid-36769710",
+    "pmid-36810235",
+    "pmid-37024333",
+    "pmid-37443581",
+    "pmid-37497727",
+    "pmid-37538011",
+    "pmid-40202346",
+    "pmid-40227658",
+    "pmid-40437720",
+    "pmid-40700723",
+    "pmid-41009391",
+    "pmid-41068883",
+    "pmid-41713710",
+    "pmid-41744126",
+    "pmid-41985272",
+    "pmid-42065956",
+    "pmid-7942718",
+    "pmid-8039697"
+  ],
+  "promotedRelationshipUses": [
+    {
+      "primaryId": "abdominal-migraine",
+      "targetId": "migraine-headaches",
+      "pmid": "29459383"
+    },
+    {
+      "primaryId": "abscesses",
+      "targetId": "cellulitis",
+      "pmid": "24973422"
+    },
+    {
+      "primaryId": "acanthosis-nigricans",
+      "targetId": "diabetes-mellitus-type-2",
+      "pmid": "36698243"
+    },
+    {
+      "primaryId": "achilles-tendinopathy-rupture",
+      "targetId": "deep-vein-thrombosis",
+      "pmid": "19238360"
+    },
+    {
+      "primaryId": "acne-scarring",
+      "targetId": "depressive-disorder",
+      "pmid": "40437720"
+    },
+    {
+      "primaryId": "acoustic-neuroma",
+      "targetId": "hearing-loss",
+      "pmid": "37024333"
+    },
+    {
+      "primaryId": "actinic-keratosis",
+      "targetId": "squamous-cell-carcinoma",
+      "pmid": "23647091"
+    },
+    {
+      "primaryId": "acute-interstitial-pneumonia",
+      "targetId": "pulmonary-fibrosis",
+      "pmid": "11144035"
+    },
+    {
+      "primaryId": "acute-stress-reaction",
+      "targetId": "ptsd",
+      "pmid": "21208593"
+    },
+    {
+      "primaryId": "addisons-disease",
+      "targetId": "depressive-disorder",
+      "pmid": "16545526"
+    },
+    {
+      "primaryId": "adenomyosis",
+      "targetId": "anemia",
+      "pmid": "36182260"
+    },
+    {
+      "primaryId": "ageusia",
+      "targetId": "malnutrition-residuals",
+      "pmid": "40700723"
+    },
+    {
+      "primaryId": "agoraphobia",
+      "targetId": "depressive-disorder",
+      "pmid": "27775828"
+    },
+    {
+      "primaryId": "agranulocytosis",
+      "targetId": "cellulitis",
+      "pmid": "28823525"
+    },
+    {
+      "primaryId": "al-amyloidosis",
+      "targetId": "chronic-kidney-disease",
+      "pmid": "30299492"
+    },
+    {
+      "primaryId": "alice-in-wonderland-syndrome",
+      "targetId": "migraine-headaches",
+      "pmid": "42065956"
+    },
+    {
+      "primaryId": "allergic-rhinitis",
+      "targetId": "asthma",
+      "pmid": "31660100"
+    },
+    {
+      "primaryId": "alopecia-areata",
+      "targetId": "depressive-disorder",
+      "pmid": "31163237"
+    },
+    {
+      "primaryId": "als",
+      "targetId": "dysphagia",
+      "pmid": "41744126"
+    },
+    {
+      "primaryId": "alzheimer-s-disease",
+      "targetId": "insomnia",
+      "pmid": "41985272"
+    },
+    {
+      "primaryId": "amebic-liver-abscess",
+      "targetId": "pleural-effusion",
+      "pmid": "41068883"
+    },
+    {
+      "primaryId": "amputation-of-arm",
+      "targetId": "phantom-limb-pain",
+      "pmid": "34583023"
+    },
+    {
+      "primaryId": "amputation-of-foot",
+      "targetId": "phantom-limb-pain",
+      "pmid": "34583023"
+    },
+    {
+      "primaryId": "amputation-of-hand",
+      "targetId": "phantom-limb-pain",
+      "pmid": "34583023"
+    },
+    {
+      "primaryId": "amputation-of-leg",
+      "targetId": "phantom-limb-pain",
+      "pmid": "34583023"
+    },
+    {
+      "primaryId": "anal-fissure",
+      "targetId": "fecal-incontinence",
+      "pmid": "17665247"
+    },
+    {
+      "primaryId": "anismus-pelvic-floor-dyssynergia",
+      "targetId": "fecal-incontinence",
+      "pmid": "41713710"
+    },
+    {
+      "primaryId": "ankle-disarticulation",
+      "targetId": "phantom-limb-pain",
+      "pmid": "28242264"
+    },
+    {
+      "primaryId": "ankle-strain",
+      "targetId": "osteoarthritis",
+      "pmid": "27259753"
+    },
+    {
+      "primaryId": "ankyloglossia",
+      "targetId": "dysphagia",
+      "pmid": "31367903"
+    },
+    {
+      "primaryId": "ankylosis",
+      "targetId": "osteoarthritis",
+      "pmid": "31925464"
+    },
+    {
+      "primaryId": "anorectal-stricture",
+      "targetId": "fecal-incontinence",
+      "pmid": "21441765"
+    },
+    {
+      "primaryId": "anorgasmia",
+      "targetId": "depressive-disorder",
+      "pmid": "11353583"
+    },
+    {
+      "primaryId": "anterior-cord-syndrome",
+      "targetId": "urinary-incontinence",
+      "pmid": "35835550"
+    },
+    {
+      "primaryId": "anterior-interosseous-nerve-syndrome",
+      "targetId": "peripheral-nerve-paralysis",
+      "pmid": "21611763"
+    },
+    {
+      "primaryId": "aphakia",
+      "targetId": "visual-impairment",
+      "pmid": "35051625"
+    },
+    {
+      "primaryId": "appendicitis",
+      "targetId": "female-infertility",
+      "pmid": "25303785"
+    },
+    {
+      "primaryId": "apraxia",
+      "targetId": "dysphagia",
+      "pmid": "35508738"
+    },
+    {
+      "primaryId": "arnold-chiari-malformation",
+      "targetId": "sleep-apnea",
+      "pmid": "31992420"
+    },
+    {
+      "primaryId": "arrhythmogenic-right-ventricular-dysplasia",
+      "targetId": "congestive-heart-failure",
+      "pmid": "40202346"
+    },
+    {
+      "primaryId": "atopic-dermatitis-eczema",
+      "targetId": "asthma",
+      "pmid": "34384834"
+    },
+    {
+      "primaryId": "atrial-flutter",
+      "targetId": "cerebrovascular-accident-stroke-residuals",
+      "pmid": "29223550"
+    },
+    {
+      "primaryId": "atrial-septal-defect",
+      "targetId": "pulmonary-hypertension",
+      "pmid": "30305956"
+    },
+    {
+      "primaryId": "atrophic-glossitis",
+      "targetId": "anemia",
+      "pmid": "31076315"
+    },
+    {
+      "primaryId": "autoimmune-metaplastic-atrophic-gastritis",
+      "targetId": "stomach-cancer",
+      "pmid": "36769710"
+    },
+    {
+      "primaryId": "avascular-necrosis",
+      "targetId": "osteoarthritis",
+      "pmid": "31536264"
+    },
+    {
+      "primaryId": "beriberi",
+      "targetId": "congestive-heart-failure",
+      "pmid": "29360523"
+    },
+    {
+      "primaryId": "bird-fancier-s-lung",
+      "targetId": "pulmonary-fibrosis",
+      "pmid": "21870048"
+    },
+    {
+      "primaryId": "blind-loop-syndrome",
+      "targetId": "anemia",
+      "pmid": "32429454"
+    },
+    {
+      "primaryId": "body-dysmorphic-disorder",
+      "targetId": "depressive-disorder",
+      "pmid": "16893571"
+    },
+    {
+      "primaryId": "brain-abscess",
+      "targetId": "seizure-disorder",
+      "pmid": "36810235"
+    },
+    {
+      "primaryId": "bulimia-nervosa",
+      "targetId": "depressive-disorder",
+      "pmid": "21383252"
+    },
+    {
+      "primaryId": "burns",
+      "targetId": "contractures",
+      "pmid": "30948277"
+    },
+    {
+      "primaryId": "cataracts",
+      "targetId": "visual-impairment",
+      "pmid": "40227658"
+    },
+    {
+      "primaryId": "cholelithiasis",
+      "targetId": "pancreatitis",
+      "pmid": "24679420"
+    },
+    {
+      "primaryId": "cholesteatoma",
+      "targetId": "conductive-hearing-loss",
+      "pmid": "22410730"
+    },
+    {
+      "primaryId": "chronic-b-cell-leukemias",
+      "targetId": "anemia",
+      "pmid": "34830959"
+    },
+    {
+      "primaryId": "chronic-bronchitis",
+      "targetId": "copd",
+      "pmid": "23204254"
+    },
+    {
+      "primaryId": "chronic-fatigue-syndrome",
+      "targetId": "depressive-disorder",
+      "pmid": "12562565"
+    },
+    {
+      "primaryId": "coarctation-of-the-aorta",
+      "targetId": "hypertension",
+      "pmid": "37443581"
+    },
+    {
+      "primaryId": "cyclothymic-disorder",
+      "targetId": "bipolar-disorder",
+      "pmid": "22459786"
+    },
+    {
+      "primaryId": "diabetic-gastroparesis",
+      "targetId": "gastroparesis",
+      "pmid": "31081877"
+    },
+    {
+      "primaryId": "diabetic-nephropathy",
+      "targetId": "chronic-kidney-disease",
+      "pmid": "36272764"
+    },
+    {
+      "primaryId": "dysphagia",
+      "targetId": "malnutrition-residuals",
+      "pmid": "35985419"
+    },
+    {
+      "primaryId": "eosinophilic-esophagitis",
+      "targetId": "dysphagia",
+      "pmid": "34609446"
+    },
+    {
+      "primaryId": "erythroplakia",
+      "targetId": "oral-cancer",
+      "pmid": "35488780"
+    },
+    {
+      "primaryId": "fibromyalgia",
+      "targetId": "depressive-disorder",
+      "pmid": "16908799"
+    },
+    {
+      "primaryId": "hoarding-disorder",
+      "targetId": "depressive-disorder",
+      "pmid": "24158881"
+    },
+    {
+      "primaryId": "hypertrophic-obstructive-cardiomyopathy",
+      "targetId": "congestive-heart-failure",
+      "pmid": "29655822"
+    },
+    {
+      "primaryId": "illness-anxiety-disorder",
+      "targetId": "depressive-disorder",
+      "pmid": "8039697"
+    },
+    {
+      "primaryId": "insulin-resistance-syndrome",
+      "targetId": "diabetes-mellitus-type-2",
+      "pmid": "12231073"
+    },
+    {
+      "primaryId": "irritable-bowel-syndrome",
+      "targetId": "depressive-disorder",
+      "pmid": "11910364"
+    },
+    {
+      "primaryId": "leukoplakia",
+      "targetId": "oral-cancer",
+      "pmid": "26189354"
+    },
+    {
+      "primaryId": "lichen-sclerosus",
+      "targetId": "squamous-cell-carcinoma",
+      "pmid": "32089333"
+    },
+    {
+      "primaryId": "meningitis",
+      "targetId": "hearing-loss",
+      "pmid": "24618106"
+    },
+    {
+      "primaryId": "menstrual-disorders",
+      "targetId": "anemia",
+      "pmid": "37538011"
+    },
+    {
+      "primaryId": "metabolic-syndrome",
+      "targetId": "diabetes-mellitus-type-2",
+      "pmid": "24843675"
+    },
+    {
+      "primaryId": "mixed-connective-tissue-disease",
+      "targetId": "pulmonary-hypertension",
+      "pmid": "37497727"
+    },
+    {
+      "primaryId": "nasal-polyps",
+      "targetId": "asthma",
+      "pmid": "33065369"
+    },
+    {
+      "primaryId": "oral-lichen-planus-lichenoid-lesions",
+      "targetId": "oral-cancer",
+      "pmid": "28438300"
+    },
+    {
+      "primaryId": "otitis-media",
+      "targetId": "hearing-loss",
+      "pmid": "22558393"
+    },
+    {
+      "primaryId": "peptic-ulcer-disease",
+      "targetId": "anemia",
+      "pmid": "7942718"
+    },
+    {
+      "primaryId": "persistent-depressive-disorder",
+      "targetId": "depressive-disorder",
+      "pmid": "16648329"
+    },
+    {
+      "primaryId": "pheochromocytoma",
+      "targetId": "hypertension",
+      "pmid": "24893135"
+    },
+    {
+      "primaryId": "scleroderma",
+      "targetId": "interstitial-lung-disease",
+      "pmid": "32113575"
+    },
+    {
+      "primaryId": "sjogren-s-syndrome",
+      "targetId": "dry-eye-syndrome",
+      "pmid": "41009391"
+    },
+    {
+      "primaryId": "somatic-symptom-disorder",
+      "targetId": "depressive-disorder",
+      "pmid": "18433651"
+    },
+    {
+      "primaryId": "specific-phobia",
+      "targetId": "depressive-disorder",
+      "pmid": "28222820"
+    },
+    {
+      "primaryId": "superior-semicircular-canal-dehiscence",
+      "targetId": "conductive-hearing-loss",
+      "pmid": "15021770"
+    },
+    {
+      "primaryId": "testicular-torsion",
+      "targetId": "testicular-atrophy",
+      "pmid": "26509312"
+    },
+    {
+      "primaryId": "tinnitus",
+      "targetId": "depressive-disorder",
+      "pmid": "30909841"
+    },
+    {
+      "primaryId": "transient-ischemic-attack-residuals",
+      "targetId": "cerebrovascular-accident-stroke-residuals",
+      "pmid": "18071162"
+    },
+    {
+      "primaryId": "traumatic-brain-injury-residuals",
+      "targetId": "depressive-disorder",
+      "pmid": "25038422"
+    },
+    {
+      "primaryId": "vitiligo",
+      "targetId": "depressive-disorder",
+      "pmid": "27878819"
+    }
+  ],
+  "expectedAfter": {
+    "knowledgeBaseFiles": 813,
+    "published": 139,
+    "draft": 674,
+    "relationships": 347,
+    "references": 355,
+    "verified": 355,
+    "unverified": 0,
+    "retiredVerified": 6,
+    "verifiedProvenance": 361,
+    "clinicalEvidenceReferences": 350,
+    "clinicalEvidenceReferencesWithUrls": 350,
+    "activeMasterSources": 329,
+    "pendingMasterSources": 0,
+    "totalMasterSourcesIncludingLineage": 338,
+    "explicitPublicationGuards": 273,
+    "legacyRationaleBoundaries": 74
+  },
+  "safetyBoundary": "Citation verification approval does not publish draft mappings or establish an individual VA medical nexus. Relationship direction, rank, guards, taxonomy, publication state, and pathway intelligence are unchanged; draft mappings remain fail-closed."
+}

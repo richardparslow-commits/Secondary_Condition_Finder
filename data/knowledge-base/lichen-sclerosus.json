@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-22 evidence for the bounded anogenital lichen-sclerosus to squamous-cell-carcinoma proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32089333/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 32089333; systematic review of anogenital lichen sclerosis and SCC risk; approved ME-22 guard: restrict to biopsy-documented anogenital disease and separately established anogenital SCC; do not generalize to extragenital lichen sclerosus."
         }

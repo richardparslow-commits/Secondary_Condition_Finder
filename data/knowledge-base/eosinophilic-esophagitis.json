@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-21 evidence for the bounded eosinophilic-esophagitis to dysphagia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34609446/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 34609446; approved ME-21 source; guard: Require biopsy-confirmed eosinophilic esophagitis and separately documented dysphagia with compatible chronology; the review describes a recognized clinical manifestation but does not establish individual attribution."
         }

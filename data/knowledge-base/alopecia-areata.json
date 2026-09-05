@@ -22,7 +22,7 @@
           "note": "Mapping Expansion Batch ME-18 evidence for the bounded alopecia-areata to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31163237/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-01",
           "sourceLocator": "PMID 31163237; approved ME-18 source; guard: Require independently established alopecia areata and a separately established depressive disorder; the cited systematic review and meta-analysis reported significantly increased odds of depression among patients with alopecia areata without establishing onset order or direction. Preserve other dermatologic disease, autoimmune disease, thyroid disease, medications, substance use, psychosocial stressors, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from hair-loss-related distress, appearance concern, or impairment alone, and do not treat this population-level association as proof that alopecia areata caused an individual's depressive disorder."
         }

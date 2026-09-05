@@ -8,6 +8,7 @@ import { buildFederalRegisterVaSearchUrl, fetchFederalRegisterVaChanges } from "
 import { decideRegulatoryFreshness } from "@/lib/regulatory/preflight/freshness";
 import { fetchTextWithTimeout } from "@/lib/regulatory/preflight/http";
 import { mergeRegulatoryDiscoveries } from "@/lib/regulatory/preflight/merge";
+import { htmlText, parseXml } from "@/lib/regulatory/preflight/xml";
 import { __oiraParserTestSeams } from "@/lib/regulatory/preflight/oira";
 import type {
   FederalRegisterDiscovery,
@@ -304,5 +305,25 @@ describe("workflow preflight integration", () => {
     expect(recommendCall).toBeGreaterThan(lockRead);
     expect(source).toContain("missingLockedRegulatorySnapshot(lockedSnapshotId)");
     expect(source).toContain("/secondary/suggestions?regSnapshot=");
+  });
+});
+
+describe("regulatory preflight XML entity decoding", () => {
+  it("decodes valid decimal and hex character references", () => {
+    expect(parseXml("<r><t>&#65;&#x42;</t></r>").children[0].children[0].text).toBe("AB");
+  });
+
+  it("degrades out-of-range numeric references to literal text instead of throwing", () => {
+    expect(() => parseXml("<r><t>&#99999999999;</t></r>")).not.toThrow();
+    expect(parseXml("<r><t>&#99999999999;</t></r>").children[0].children[0].text).toContain("&#99999999999;");
+  });
+
+  it("degrades surrogate code points to literal text instead of throwing", () => {
+    expect(() => parseXml("<r><t>&#xD800;</t></r>")).not.toThrow();
+    expect(parseXml("<r><t>&#x2F;</t></r>").children[0].children[0].text).toBe("/");
+  });
+
+  it("keeps htmlText safe for malformed numeric entities", () => {
+    expect(() => htmlText("title &#x110000; excerpt")).not.toThrow();
   });
 });

@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-24 evidence for the bounded blind-loop-syndrome to anemia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32429454/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 32429454; review describing blind-loop/SIBO-associated malnutrition and vitamin/mineral deficiencies including B12 and iron; approved ME-24 guard: require documented phenotype, objective anemia/nutritional findings, compatible chronology, and competing-cause review."
         }

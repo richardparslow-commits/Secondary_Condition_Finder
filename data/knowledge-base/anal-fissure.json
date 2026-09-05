@@ -24,7 +24,7 @@
           "note": "Study of fecal incontinence in patients with chronic anal fissure; the authors concluded that mild incontinence may be present at fissure presentation rather than result from internal sphincterotomy. Supports a bounded association and case-specific evaluation, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17665247/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-03",
           "sourceLocator": "PMID 17665247; study conclusion regarding mild fecal incontinence at chronic anal-fissure presentation"
         }

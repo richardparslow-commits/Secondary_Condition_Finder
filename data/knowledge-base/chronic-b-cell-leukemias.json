@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-27 review evidence for the narrowly bounded CLL/autoimmune-hemolytic-anemia proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34830959/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 34830959; comprehensive review of autoimmune hemolytic anemia as a complication of chronic lymphocytic leukemia; approved ME-27 guard limits the broad catalog identity to a source-matched leukemia and anemia phenotype."
         }

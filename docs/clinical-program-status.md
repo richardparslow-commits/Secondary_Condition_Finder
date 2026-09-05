@@ -1,4 +1,18 @@
-<!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:START -->
+<!-- CURRENT-REPOSITORY-STATE-2026:START -->
+## Authoritative current repository state
+
+The authoritative current state is the ME-35 citation-verified registry (`currentState: ME35-CITATION-VERIFIED`), validated by `node scripts/audit-master-registry.js`:
+
+- **813** catalog identities and **813** knowledge-base mappings.
+- **347** relationships: **139 published / 674 draft**.
+- **355** live source references: **355 verified / 0 unverified**.
+- **329** active source entities: **328 clinical + 1 legal authority**.
+- **0** pending-verification source entities; **338** total source entities including lineage/history.
+- **273** explicit publication guards and **74** legacy rationale boundaries.
+
+The all-94 citation-verification approval was applied on 2026-09-04 as a citation-state transition only. It did not publish draft mappings, change relationship semantics, or establish an individual medical nexus. Sections below this block are retained batch histories and must not be interpreted as current aggregate totals.
+<!-- CURRENT-REPOSITORY-STATE-2026:END -->
+
 ## Clinical Mapping Master Resolution 2026
 
 - Mapping commit parent for verification: `81784b4deb88483f803e0bbd0ec422cb0e176809`.
@@ -58,7 +72,9 @@
 - Local-only: no push, GitHub write, Vercel deploy/promotion, or Vercel configuration change.
 <!-- CLINICAL-MAPPING-MASTER-2026:END -->
 
-# Clinical Evidence Program Status
+<!-- HISTORICAL-BATCH-31-SNAPSHOT:START -->
+## Historical Batch 31 snapshot — superseded by the authoritative state above
+
 
 Status: **Targeted Clinical Mapping Batch 31 is implemented on a production-validated base and awaits exact-head CI, Vercel Agent immutable-head review, protected merge, and production closure. External/human gates remain separate.**
 
@@ -126,10 +142,10 @@ See `docs/external-manual-gates-status.md`. Repository automation does not fabri
 
 Repository automation is complete for Batch 31 only when the repository contains a safe explicit state, tests/audits enforce it, exact-head CI passes, the Vercel Agent immutable-head review is clean on the same SHA, and production closure proves the merge SHA.
 
-<!-- citation-verification-master-current:start -->
-## Current citation-verification position
+<!-- HISTORICAL-CURRENT-SECTIONS:START -->
+## Historical citation-verification position
 
-Master-approved implementation is complete through **Batch 13**.
+
 - Live verified references: **68**
 - Retired verified references: **6**
 - Verified provenance: **74**
@@ -140,10 +156,10 @@ Master-approved implementation is complete through **Batch 13**.
 
 Current unresolved published queue:
 - `mild-tbi.json` → `migraine-headaches`: Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491
-<!-- citation-verification-master-current:end -->
+<!-- HISTORICAL-CURRENT-SECTIONS:END -->
 
 <!-- clinical-mapping-m1-current:start -->
-## Current clinical-mapping position — M1
+## Historical clinical-mapping position — M1
 
 Qualified-human Clinical Mapping Batch M1 is approved and implemented locally.
 
@@ -169,4 +185,4 @@ M1 publishes:
 - `laryngeal-cancer` → `aphonia`: treatment-complication only; documented total laryngectomy and documented aphonia required.
 
 The 5 live unverified published references are PMID 38568491, PMID 11231832, PMID 17679635, PMID 25630206, and PMID 20189345. No M1 source is auto-verified.
-<!-- clinical-mapping-m1-current:end -->
+<!-- HISTORICAL-CURRENT-SECTIONS:END -->

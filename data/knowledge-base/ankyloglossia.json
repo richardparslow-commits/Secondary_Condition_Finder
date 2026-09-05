@@ -24,7 +24,7 @@
           "note": "Condition-specific review and anatomic study addressing posterior tongue tie, tongue movement, and pharyngeal swallowing considerations. Supports a bounded swallowing-function association and specialist evaluation, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31367903/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-03",
           "sourceLocator": "PMID 31367903; posterior tongue-tie, tongue movement, and pharyngeal-swallowing scope"
         }

@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-17 evidence for the bounded persistent-depressive-disorder to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16648329/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-01",
           "sourceLocator": "PMID 16648329; approved ME-17 source; guard: Require independently established persistent depressive disorder (dysthymia) and a separately documented major depressive episode superimposed upon it; the cited prospective follow-up found that most dysthymic patients developed a major depressive episode during ten years of observation; do not treat persistent depressive disorder as proof that any individual's depressive disorder was caused by it. Preserve other psychiatric illness, substance use, medical illness, medications, and shared vulnerability as competing explanations. Treat this only as population-level temporal risk, not proof that persistent depressive disorder caused an individual's depressive disorder."
         }

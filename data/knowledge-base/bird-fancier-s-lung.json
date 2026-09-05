@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-25 clinical review for the bounded bird-fancier's-lung to pulmonary-fibrosis proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21870048/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 21870048; state-of-the-art review of avian-antigen hypersensitivity pneumonitis/bird fancier's lung and chronic disease; approved ME-25 guard requires objective fibrosis and alternative-cause review."
         }

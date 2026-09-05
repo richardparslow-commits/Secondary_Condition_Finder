@@ -23,7 +23,7 @@
           "note": "Position paper addressing nutritional management and the relationship between dysphagia and malnutrition risk. It supports focused assessment, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35985419/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 35985419; position-paper scope on dysphagia, intake, and nutrition"
         }

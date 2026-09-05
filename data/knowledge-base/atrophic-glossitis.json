@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-25 clinical review for the bounded atrophic-glossitis to anemia proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31076315/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 31076315; review of atrophic glossitis, anemia, hematinic deficiencies, and associated laboratory findings; approved ME-25 guard requires objective anemia subtype and competing-cause review."
         }

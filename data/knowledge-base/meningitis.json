@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-20 evidence for the bounded meningitis to hearing-loss proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24618106/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 24618106; approved ME-20 source; guard: Require an established bacterial meningitis episode with compatible chronology and separately documented hearing loss; the cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection, without establishing that an individual's hearing loss was meningitic in origin. Preserve ototoxic medications (including aminoglycosides used to treat the meningitis), suppurative otitis media or labyrinthitis, congenital or pre-existing hearing loss, ototoxic systemic illness, and noise exposure as competing explanations. Do not infer hearing loss from meningitis history alone, and do not treat this clinical-sample association as proof that meningitis caused an individual's hearing loss."
         }

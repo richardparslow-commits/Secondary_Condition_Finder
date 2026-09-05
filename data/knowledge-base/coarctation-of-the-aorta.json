@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-26 review for the bounded coarctation-of-the-aorta to hypertension proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37443581/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 37443581; review of coarctation diagnosis, management, adult presentation, and long-term hypertension; approved ME-26 guard requires independent hypertension diagnosis, residual physiology, chronology, and competing-cause review."
         }

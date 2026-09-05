@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-34 prospective multicenter cohort evidence for the bounded burn-scar contracture proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30948277/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-03",
           "sourceLocator": "PMID 30948277; prospective multicenter cohort of burn-scar contracture prevalence and development; approved ME-34 guard requires objective contracture or joint limitation and competing-cause review."
         }

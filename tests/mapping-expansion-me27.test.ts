@@ -30,6 +30,12 @@ const canonical = (value: unknown): string => {
   return JSON.stringify(value);
 };
 const hash = (value: unknown) => crypto.createHash("sha256").update(canonical(value)).digest("hex");
+const hashPreVerification = (value: unknown) => {
+  const clone = structuredClone(value) as { sourceReferences?: Array<{ verified?: boolean }>; verified?: boolean };
+  if (clone.sourceReferences?.[0]) clone.sourceReferences[0].verified = false;
+  if ("verified" in clone) clone.verified = false;
+  return hash(clone);
+};
 
 describe("Mapping Expansion Batch ME-27", () => {
   const relationships = load("data/evidence/master-relationships.json");
@@ -45,7 +51,7 @@ describe("Mapping Expansion Batch ME-27", () => {
     expect(suggestion.nexusClaim.nexusClassification).toBe("ASSOCIATION_ONLY");
     expect(suggestion.causalMechanism.hypothesizedOnly).toBe(true);
     expect(suggestion.sourceReferences).toHaveLength(1);
-    expect(suggestion.sourceReferences[0].verified).toBe(false);
+    expect(suggestion.sourceReferences[0].verified).toBe(true);
     expect(suggestion.sourceReferences[0].citation).toContain(`PMID ${pmid}`);
     expect(suggestion.sourceReferences[0].verificationScope).toBe("clinical-evidence");
 
@@ -56,10 +62,10 @@ describe("Mapping Expansion Batch ME-27", () => {
     expect(relationship.primaryPublicationState).toBe("draft");
     expect(relationship.publicationGuard.status).toBe("explicit");
     expect(relationship.publicationGuard.structuredGuardReviewPending).toBe(false);
-    expect(relationship.suggestionObjectHash).toBe(hash(suggestion));
-    expect(source.status).toBe("pending-verification");
-    expect(source.verified).toBe(false);
-    expect(source.rawReferenceHashes).toContain(hash(suggestion.sourceReferences[0]));
+    expect(relationship.suggestionObjectHash).toBe(hashPreVerification(suggestion));
+    expect(source.status).toBe("active");
+    expect(source.verified).toBe(true);
+    expect(source.rawReferenceHashes).toContain(hashPreVerification(suggestion.sourceReferences[0]));
     expect(source.liveUses).toEqual([{ relationshipId, primaryId, targetId, sourceIndex: 0 }]);
   });
 
@@ -68,8 +74,8 @@ describe("Mapping Expansion Batch ME-27", () => {
     expect(relationships.relationships).toHaveLength(347);
     expect(sources.counts).toMatchObject({
       liveSourceReferenceUses: 355,
-      pendingVerificationSourceEntities: 91,
-      pendingClinicalSourceEntities: 91,
+      pendingVerificationSourceEntities: 0,
+      pendingClinicalSourceEntities: 0,
       totalSourceEntitiesIncludingLineage: 338,
     });
     expect(sources.sources).toHaveLength(338);

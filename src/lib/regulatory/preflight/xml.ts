@@ -4,14 +4,28 @@ export interface XmlNode {
   children: XmlNode[];
 }
 
+/**
+ * Returns the character for a valid XML numeric character reference, or null
+ * for values outside the Unicode scalar range (negative, surrogates, or above
+ * U+10FFFF). Malformed upstream feeds must degrade to literal text instead of
+ * throwing a RangeError mid-parse.
+ */
+const decodeNumericEntity = (code: number): string | null =>
+  Number.isSafeInteger(code)
+  && code >= 0
+  && code <= 0x10ffff
+  && !(code >= 0xd800 && code <= 0xdfff)
+    ? String.fromCodePoint(code)
+    : null;
+
 const decodeEntities = (value: string): string => value
   .replace(/&lt;/g, "<")
   .replace(/&gt;/g, ">")
   .replace(/&quot;/g, '"')
   .replace(/&apos;/g, "'")
   .replace(/&amp;/g, "&")
-  .replace(/&#(\d+);/g, (_, code: string) => String.fromCodePoint(Number(code)))
-  .replace(/&#x([0-9a-f]+);/gi, (_, code: string) => String.fromCodePoint(Number.parseInt(code, 16)));
+  .replace(/&#(\d+);/g, (_, code: string) => decodeNumericEntity(Number(code)) ?? `&#${code};`)
+  .replace(/&#x([0-9a-f]+);/gi, (_, code: string) => decodeNumericEntity(Number.parseInt(code, 16)) ?? `&#x${code};`);
 
 const normalizeName = (name: string): string => name.split(":").at(-1)!.trim().toUpperCase();
 

@@ -62,7 +62,7 @@ describe("Mapping Expansion ME-17 local implementation", () => {
       expect(hits[0]!.pathwayIntelligence).toBeUndefined();
       const refs = hits[0]!.sourceReferences.filter((r: SourceReference) => r.citation?.includes(`PMID ${row.pmid}`));
       expect(refs).toHaveLength(1);
-      expect(refs[0]!.verified).toBe(false);
+      expect(refs[0]!.verified).toBe(true);
       expect(refs[0]!.verificationScope).toBe("clinical-evidence");
     }
   });
@@ -82,8 +82,8 @@ describe("Mapping Expansion ME-17 local implementation", () => {
       expect(rr[0]!.publicationGuard.structuredGuardText).toBe(row.guard);
       const ss = src.sources.filter((s: SourceRecord) => s.sourceId === `pmid-${row.pmid}`);
       expect(ss).toHaveLength(1);
-      expect(ss[0]!.status).toBe("pending-verification");
-      expect(ss[0]!.verified).toBe(false);
+      expect(ss[0]!.status).toBe("active");
+      expect(ss[0]!.verified).toBe(true);
     }
   });
 
@@ -96,8 +96,36 @@ describe("Mapping Expansion ME-17 local implementation", () => {
     expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length >= 2)).toHaveLength(73);
     expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(118);
     expect(refs).toHaveLength(355);
-    expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(261);
-    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(94);
+    expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(355);
+    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(0);
     expect(clinical).toHaveLength(350);
+  });
+
+  it("documents the current authoritative snapshot and ME-20 implementation state", () => {
+    const rel = load<RelationshipRegistry>(path.join(ROOT, "data", "evidence", "master-relationships.json"));
+    const src = load<SourceRegistry>(path.join(ROOT, "data", "evidence", "master-sources.json"));
+    expect(rel.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
+    expect(src.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
+    expect(rel.currentState).toBe("ME35-CITATION-VERIFIED");
+    expect(src.currentState).toBe("ME35-CITATION-VERIFIED");
+    expect(rel.relationships).toHaveLength(347);
+    expect(src.sources).toHaveLength(338);
+    const me20 = [
+      "rel-pheochromocytoma-to-hypertension",
+      "rel-sjogren-s-syndrome-to-dry-eye-syndrome",
+      "rel-leukoplakia-to-oral-cancer",
+      "rel-erythroplakia-to-oral-cancer",
+      "rel-meningitis-to-hearing-loss",
+    ];
+    for (const id of me20) {
+      expect(rel.relationships.filter((r: RelationshipRecord) => r.relationshipId === id)).toHaveLength(1);
+      expect(rel.relationships.find((r: RelationshipRecord) => r.relationshipId === id)!.primaryPublicationState).toBe("draft");
+    }
+    for (const pmid of ["24893135", "41009391", "26189354", "35488780", "24618106"]) {
+      const s = src.sources.find((s: SourceRecord) => s.sourceId === `pmid-${pmid}`);
+      expect(s).toBeDefined();
+    expect(s!.status).toBe("active");
+      expect(s!.verified).toBe(true);
+    }
   });
 });

@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-34 comparative cohort evidence for the bounded atrial-flutter ischemic-stroke-risk proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29223550/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-03",
           "sourceLocator": "PMID 29223550; comparative cohort of ischemic-stroke risk in atrial flutter versus atrial fibrillation; approved ME-34 guard requires completed stroke, residuals, chronology, and competing-cause review."
         }

@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-24 evidence for the bounded avascular-necrosis to osteoarthritis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31536264/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 31536264; clinical overview of femoral-head avascular necrosis, articular collapse, and eventual degenerative arthritis; approved ME-24 guard: require compatible-site AVN, objective osteoarthritis, imaging correlation, chronology, and competing-cause review."
         }

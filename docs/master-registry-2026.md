@@ -2,18 +2,22 @@
 
 ## Status
 
-The authoritative registry is at the Mapping Expansion Batch ME-22 pre-qualified-human-citation-verification state, with five newly appended Wave-8 relationships and their citations pending qualified-human review.
+The authoritative registry is rebaselined at commit `ea005e50` (ME-35): `currentState` is `ME35-CITATION-VERIFIED` in both `data/evidence/master-relationships.json` and `data/evidence/master-sources.json`. Run `node scripts/audit-master-registry.js` to confirm registry/data parity at any time. The all-94 citation-verification approval was applied on 2026-09-04; the current registry therefore has no pending live citation references. Numbered batch sections below retain their historical verification snapshots and intermediate counts.
 
 ## Current state
 
-- 283 relationships.
-- 209 explicit publication guards / 74 legacy rationale boundaries.
-- 291 live relationship-source uses: 256 verified / 35 pending verification.
-- 233 active source entities: 232 clinical + 1 legal authority.
-- 35 pending-verification clinical source entities.
+The authoritative current state is the ME-35 citation-verified registry:
+
+- 347 relationships across 813 mapping files: 139 published / 674 draft.
+- 273 explicit publication guards / 74 legacy rationale boundaries.
+- 355 live relationship-source uses: **355 verified / 0 pending verification**.
+- 329 active source entities: **328 clinical + 1 legal authority**.
+- 0 pending-verification clinical source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
-- 277 total source entities including lineage/history.
+- 338 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
+
+The all-94 citation-verification approval was applied on 2026-09-04 as a citation-state transition only. It did not publish draft mappings, alter relationship semantics, or establish an individual medical nexus. The numbered ME-6 through ME-35 sections below are immutable historical implementation and verification snapshots; their intermediate counts are not current totals.
 
 ## ME-6 qualified-human citation verification
 

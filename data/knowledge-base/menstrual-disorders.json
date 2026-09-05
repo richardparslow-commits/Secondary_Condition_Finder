@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-19 evidence for the bounded menstrual-disorders to anemia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37538011/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 37538011; approved ME-19 source; guard: Require documented abnormal uterine bleeding/heavy menstrual bleeding and objective iron-deficiency anemia (hemoglobin and/or ferritin compatible with iron deficiency) with compatible chronology; the cited review frames heavy menstrual bleeding as the most common cause of iron deficiency and iron deficiency anemia among reproductive-age women without establishing that an individual's anemia is menstrual in origin. Preserve gastrointestinal blood loss, malabsorption, dietary iron deficiency, chronic disease or inflammatory anemia, hemolysis, renal disease, and other gynecologic causes as competing explanations. Do not infer anemia from bleeding history alone, and do not treat this population-level association as proof that menstrual bleeding caused an individual's anemia."
         }

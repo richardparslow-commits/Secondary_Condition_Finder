@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-27 review evidence for the bounded AL-amyloidosis renal-involvement proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30299492/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 30299492; review identifies frequent renal involvement in AL amyloidosis and possible progression to nephrotic syndrome or renal failure; approved ME-27 guard requires objective renal findings and competing-cause review."
         }

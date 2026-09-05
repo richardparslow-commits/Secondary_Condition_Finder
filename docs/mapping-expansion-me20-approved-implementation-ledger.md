@@ -48,9 +48,8 @@ Five bounded relationships approved by qualified-human review on 2026-09-02 (the
 - Claim boundary: clinical-sample-comorbidity-association
 - Guard: Require an established bacterial meningitis episode with compatible chronology and separately documented hearing loss; the cited tertiary-referral study of children treated for bacterial meningitis found sensorineural hearing loss highly prevalent following the infection, without establishing that an individual's hearing loss was meningitic in origin. Preserve ototoxic medications (including aminoglycosides used to treat the meningitis), suppurative otitis media or labyrinthitis, congenital or pre-existing hearing loss, ototoxic systemic illness, and noise exposure as competing explanations. Do not infer hearing loss from meningitis history alone, and do not treat this clinical-sample association as proof that meningitis caused an individual's hearing loss.
 - Publication: **preserve live state; no draft/published change**
-- Source state after mapping implementation: `verified:false` / `pending-verification`
+- Source state after mapping implementation: `verified:false` / `pending-verification`## Projected non-publication counts
 
-## Projected non-publication counts
 - Relationships: 268 → **273**
 - Registered primaries: 179 → **184** (of 813)
 - Remaining primaries: 634 → **629**
@@ -60,6 +59,38 @@ Five bounded relationships approved by qualified-human review on 2026-09-02 (the
 - Clinical sources: 232 active / 20 pending → **232 active / 25 pending**
 - Explicit publication guards: 194 → **199**
 - P1/D1 counts are resolved from the read-before-write publication-state proof.
+
+## Current authoritative snapshot
+
+ME-20's five rows are implemented and unchanged, but the ledger's projection note is stale relative to the registry state produced by later ME batches.
+
+Measured from the current branch head using `node scripts/audit-master-registry.js` and the live CI gate output:
+
+- knowledge-base files: 813
+- published: 139
+- draft: 674
+- relationships: 347
+- live source-reference uses: 355
+- verified live uses: 261
+- pending-verification live uses: 94
+- live clinical uses: 350
+- live legal uses: 5
+- active source entities: 238
+- pending-verification source entities: 91
+- active clinical source entities: 237
+- pending clinical source entities: 91
+- active legal source entities: 1
+- total source entities: 338
+- explicit publication guards: 273
+- legacy rationale boundaries: 74
+
+The five ME-20 relationships and their five pending-verification master sources are present as implemented:
+
+- rel-pheochromocytoma-to-hypertension (pmid-24893135)
+- rel-sjogren-s-syndrome-to-dry-eye-syndrome (pmid-41009391)
+- rel-leukoplakia-to-oral-cancer (pmid-26189354)
+- rel-erythroplakia-to-oral-cancer (pmid-35488780)
+- rel-meningitis-to-hearing-loss (pmid-24618106)
 
 ## Local implementation result
 - 5/5 approved relationships added (all rank 1), continuing the ME-19 backlog over the Wave-8 framework-only identities.

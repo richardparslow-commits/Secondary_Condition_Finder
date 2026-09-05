@@ -101,8 +101,8 @@ describe("Mapping Expansion ME-14 local implementation", () => {
     expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length >= 2)).toHaveLength(73);
     expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(118);
     expect(refs).toHaveLength(355);
-    expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(261);
-    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(94);
+    expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(355);
+    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(0);
     expect(clinical).toHaveLength(350);
   });
 });

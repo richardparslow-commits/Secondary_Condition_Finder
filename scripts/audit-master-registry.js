@@ -178,7 +178,7 @@ for (const file of files) {
 
 if (published !== 139 || draft !== 674) fail(`Publication-state drift: published=${published}, draft=${draft}`);
 if (relationshipCount !== 347) fail(`Relationship count drift: ${relationshipCount}`);
-if (referenceUses !== 355 || verifiedTrue !== 261 || verifiedFalse !== 94) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
+if (referenceUses !== 355 || verifiedTrue !== 355 || verifiedFalse !== 0) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
 if (clinicalUses !== 350 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);
 
 const statusCounts = {};
@@ -216,8 +216,8 @@ for (const source of srcRegistry.sources) {
 }
 
 const expectedStatuses = {
-  active: 238,
-  "pending-verification": 91,
+  active: 329,
+  "pending-verification": 0,
   "superseded-unverified": 7,
   "bibliographic-correction-only": 1,
   "retired-only": 1,
@@ -226,7 +226,7 @@ if (Object.entries(expectedStatuses).some(([key, value]) => (statusCounts[key] |
     Object.keys(statusCounts).some((key) => !(key in expectedStatuses))) {
   fail(`Source status counts mismatch: ${JSON.stringify(statusCounts)}`);
 }
-if (activeClinical !== 237 || pendingClinical !== 91 || activeLegal !== 1) {
+if (activeClinical !== 328 || pendingClinical !== 0 || activeLegal !== 1) {
   fail(`Source kind counts mismatch: activeClinical=${activeClinical}, pendingClinical=${pendingClinical}, activeLegal=${activeLegal}`);
 }
 if (retiredVerifiedUses !== 6) fail(`Retired verified relationship-source uses mismatch: ${retiredVerifiedUses}`);
@@ -240,9 +240,9 @@ if (JSON.stringify(relRegistry.counts) !== JSON.stringify(expectedRelCounts)) fa
 
 const expectedSourceCounts = {
   liveSourceReferenceUses: 355,
-  activeSourceEntities: 238,    pendingVerificationSourceEntities: 91,
-  activeClinicalSourceEntities: 237,
-  pendingClinicalSourceEntities: 91,
+  activeSourceEntities: 329,    pendingVerificationSourceEntities: 0,
+  activeClinicalSourceEntities: 328,
+  pendingClinicalSourceEntities: 0,
   activeLegalAuthorityEntities: 1,
   retiredOnlySourceEntities: 1,
   supersededUnverifiedSourceEntities: 7,

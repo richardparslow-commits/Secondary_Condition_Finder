@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-34 case-based clinical evidence for the bounded Chiari-associated sleep-apnea proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31992420/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-03",
           "sourceLocator": "PMID 31992420; pediatric case with polysomnographic obstructive sleep apnea and resolution after posterior-fossa decompression; approved ME-34 guard requires independent sleep-study phenotype review."
         }

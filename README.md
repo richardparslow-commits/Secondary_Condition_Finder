@@ -29,13 +29,7 @@ to research with a qualified provider or an accredited representative.
 The application is deployed on Vercel. The canonical production URL is
 `https://secondary-condition-finder.vercel.app`.
 
-The runtime contains environment-aware adapters for the VA Forms API and VA
-Benefits Reference Data endpoints used for public reference information. Those
-adapters are **disabled by default** and fall back to local reference data when
-live access is disabled, unavailable, invalid, or rate-limited. Credentialed VA
-sandbox proof and any future VA production transition are separate external
-validation gates; repository automation must not claim those gates are complete
-without objective credentialed evidence.
+The current knowledge-base snapshot contains **813 mappings, 347 relationships, 139 published mappings, and 674 draft mappings**. Citation verification is complete for the live snapshot: **355 live source references are verified, with 0 unverified references**. Source-registry lineage records **329 active source entities** and **338 total entities including history**; these figures are governed by `data/evidence/master-sources.json` and `scripts/audit-master-registry.js`.
 
 The browser-local evidence feature can extract text from supported PDF, DOCX,
 and text files. Raw local document bytes and raw extracted document text remain
@@ -80,7 +74,7 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run lint` | ESLint |
 | `npm run kb:validate` | Knowledge-base structural/integrity validation |
 | `npm run citations:audit` | Citation safety, provenance, and verification-debt audit |
-| `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-22 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
+| `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-33 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
 | `npm run citations:decay` | Live link-rot/staleness probe for citations (deliberate maintainer gate, not per-PR CI) |
 
 CI also builds the production app and runs real Chrome/ChromeDriver journeys for
@@ -245,26 +239,15 @@ repairs `erectile-dysfunction` → `depressive-disorder`; Batch 11 removes the
 unsupported ILD→cardiac-arrhythmia edge while preserving only clinically sourced
 ILD→OSA association research.
 
-The knowledge base now holds **283 relationships across 813 mapping files**,
-with **291 source references, 256 verified, 35 unverified** — all 35 remaining
-unverified references belong to the ME-16..ME-22 mapping-expansion batches and
-await the separate qualified-human citation-verification gate. ME-19 (batch 5)
-through ME-22 (batch 8) are the mapping-expansion batches over the 502
-master-list framework-only identities, adding one rank-1 bounded suggestion each
-for twenty identities: `traumatic-brain-injury-residuals`, `allergic-rhinitis`,
-`diabetic-nephropathy`, `menstrual-disorders`, `oral-lichen-planus-lichenoid-lesions`,
-`pheochromocytoma`, `sjogren-s-syndrome`, `leukoplakia`, `erythroplakia`,
-`meningitis`, `peptic-ulcer-disease`, `eosinophilic-esophagitis`, `cholelithiasis`,
-`insulin-resistance-syndrome`, `metabolic-syndrome`, `transient-ischemic-attack-residuals`,
-`testicular-torsion`, `lichen-sclerosus`, `nasal-polyps`, and `diabetic-gastroparesis`; the remaining framework-only draft mappings (empty suggestions)
-continue to await ME-style research, and no automated change marks a new source
-verified.
+The knowledge base now holds **347 relationships across 813 mapping files**, with **355 live source references, 355 verified, and 0 unverified**. The authoritative master registry records **329 active source entities** (**328 clinical + 1 legal authority**), **0 pending-verification entities**, and **338 total entities including lineage/history**. The all-94 citation-verification approval was applied on 2026-09-04 as a citation-state change only; it did not publish any draft mapping or establish an individual medical nexus. The knowledge base remains **139 published / 674 draft**, and all 674 draft mappings remain draft-only.
+
+ME-19 (batch 5) through ME-22 (batch 8) were the mapping-expansion batches over the 502 master-list framework-only identities, adding one rank-1 bounded suggestion each for twenty identities: `traumatic-brain-injury-residuals`, `allergic-rhinitis`, `diabetic-nephropathy`, `menstrual-disorders`, `oral-lichen-planus-lichenoid-lesions`, `pheochromocytoma`, `sjogren-s-syndrome`, `leukoplakia`, `erythroplakia`, `meningitis`, `peptic-ulcer-disease`, `eosinophilic-esophagitis`, `cholelithiasis`, `insulin-resistance-syndrome`, `metabolic-syndrome`, `transient-ischemic-attack-residuals`, `testicular-torsion`, `lichen-sclerosus`, `nasal-polyps`, and `diabetic-gastroparesis`; the remaining framework-only draft mappings (empty suggestions) continue to await ME-style research. Verification remains a qualified-human governance decision; no automated source retrieval may authorize `verified: true`.
 
 The knowledge base is a Causal Relational Graph (CRG), not a flat association
 list: every suggestion is enforced by the Zod schema to carry the CRG trio
 (`nexusClaim` as a `DIRECT_CAUSATION`/`AGGRAVATION`/`ASSOCIATION_ONLY`
 discriminated union, `causalMechanism`, and `evidentiaryProfile` with
-`etiologicalConsensus` replacing the deprecated `prevalence` field). `npm run audit:me-compliance` audits every mapping — including each of the 110 ME-1..ME-22
+`etiologicalConsensus` replacing the deprecated `prevalence` field). `npm run audit:me-compliance` audits every mapping — including each of the 125 ME-1..ME-33
 relationships — for nexus-arm validity, consensus/alignment consistency,
 guard-disclaimer honesty, citation discipline, and quarantine compliance as a CI
 gate. `npm run citations:decay` is the maintainer-run link-rot/staleness probe.

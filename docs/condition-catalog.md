@@ -46,7 +46,7 @@ Use these repository-controlled sources instead:
 - `docs/condition-expansion-roadmap.md` — completed Waves 1–7 expansion record and the target catalog-v2 universe.
 - `docs/qualified-human-citation-verification-queue.md` and `docs/citation-verification-sop.md` — current human-review queue and verification policy.
 
-The v2 universe is frozen at **300 catalog identities with 300 corresponding knowledge-base mappings**. Clinical evidence work may change whether a mapping is a published evidence-led relationship or an intentional safe draft without changing that identity contract. The current split must be read from `docs/clinical-program-status.md` and `data/expansion-dispositions.json`, not copied into this file.
+The 2026-09 universe is frozen at **813 catalog identities with 813 corresponding knowledge-base mappings**. Clinical evidence work may change whether a mapping is a published evidence-led relationship or an intentional safe draft without changing that identity contract. The current split must be read from `docs/clinical-program-status.md` and `data/expansion-dispositions.json`, not copied into this file.
 
 ## Catalog quality and maintenance rules
 
@@ -86,7 +86,7 @@ Legal or rating authority may describe eligibility or severity frameworks, but i
 
 Catalog-v2 modeling debt is dispositioned in `docs/modeling-debt-dispositions.md`. That document is authoritative for current quarantine and compatibility states. Do not maintain a second debt list here: doing so risks preserving resolved physical-placement issues or missing later bounded dispositions.
 
-Any future identity retirement, merge, or replacement that would change the frozen 300/300 contract requires a versioned migration design rather than an unreviewed cleanup. Stable IDs can affect saved workflow state, aliases, historical records, and one-to-one KB integrity.
+Any future identity retirement, merge, or replacement that would change the frozen 813/813 contract requires a versioned migration design rather than an unreviewed cleanup. Stable IDs can affect saved workflow state, aliases, historical records, and one-to-one KB integrity.
 
 ## Citation status
 

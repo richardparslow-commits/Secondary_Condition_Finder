@@ -22,7 +22,7 @@
           "note": "Mapping Expansion Batch ME-23 evidence for the bounded otitis-media to hearing-loss proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22558393/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 22558393; systematic review and global estimates of otitis-media burden and related hearing loss; approved ME-23 guard: require documented otitis media, objective hearing loss, compatible ear/chronology, and competing-cause review."
         }

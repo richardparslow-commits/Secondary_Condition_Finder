@@ -43,6 +43,12 @@ const canonical = (value: unknown): string => {
   return JSON.stringify(value);
 };
 const hash = (value: unknown) => crypto.createHash("sha256").update(canonical(value)).digest("hex");
+const hashPreVerification = (value: unknown) => {
+  const clone = structuredClone(value) as { sourceReferences?: Array<{ verified?: boolean }>; verified?: boolean };
+  if (clone.sourceReferences?.[0]) clone.sourceReferences[0].verified = false;
+  if ("verified" in clone) clone.verified = false;
+  return hash(clone);
+};
 
 describe("Mapping Expansion Batch ME-34", () => {
   const relationships = load<RelationshipRegistry>("data/evidence/master-relationships.json");
@@ -61,7 +67,7 @@ describe("Mapping Expansion Batch ME-34", () => {
     expect(suggestion?.evidentiaryProfile.etiologicalConsensus).toBe("NOT_ESTABLISHED");
     expect(suggestion?.evidentiaryProfile.vaNexusProbabilityAlignment).toBe("NOT_ASSERTED");
     expect(suggestion?.sourceReferences).toHaveLength(1);
-    expect(suggestion?.sourceReferences[0]?.verified).toBe(false);
+    expect(suggestion?.sourceReferences[0]?.verified).toBe(true);
     expect(suggestion?.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
     expect(suggestion?.sourceReferences[0]?.citation).toContain(`PMID ${pmid}`);
 
@@ -74,10 +80,10 @@ describe("Mapping Expansion Batch ME-34", () => {
     expect(relationship?.publicationGuard.status).toBe("explicit");
     expect(relationship?.publicationGuard.structuredGuardReviewPending).toBe(false);
     expect(relationship?.suggestionObjectHash).toBe(expectedHash);
-    expect(relationship?.suggestionObjectHash).toBe(hash(suggestion));
-    expect(source?.status).toBe("pending-verification");
-    expect(source?.verified).toBe(false);
-    expect(source?.rawReferenceHashes).toContain(hash(suggestion?.sourceReferences[0]));
+    expect(relationship?.suggestionObjectHash).toBe(hashPreVerification(suggestion));
+    expect(source?.status).toBe("active");
+    expect(source?.verified).toBe(true);
+    expect(source?.rawReferenceHashes).toContain(hashPreVerification(suggestion?.sourceReferences[0]));
     expect(source?.liveUses).toContainEqual({ relationshipId, primaryId, targetId, sourceIndex: 0 });
   });
 
@@ -86,7 +92,7 @@ describe("Mapping Expansion Batch ME-34", () => {
     expect(sources.currentState).toBe("ME35-CITATION-VERIFIED");
     expect(relationships.counts).toEqual({ relationships: 347, explicitPublicationGuards: 273, legacyRationaleBoundaries: 74 });
     expect(relationships.relationships).toHaveLength(347);
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 355, pendingVerificationSourceEntities: 91, pendingClinicalSourceEntities: 91, totalSourceEntitiesIncludingLineage: 338 });
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 355, pendingVerificationSourceEntities: 0, pendingClinicalSourceEntities: 0, totalSourceEntitiesIncludingLineage: 338 });
     expect(sources.sources).toHaveLength(338);
   });
 

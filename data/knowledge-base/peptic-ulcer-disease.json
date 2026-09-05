@@ -22,7 +22,7 @@
           "note": "Mapping Expansion Batch ME-21 evidence for the bounded peptic-ulcer-disease to anemia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7942718/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 7942718; approved ME-21 source; guard: Require documented peptic-ulcer disease with bleeding or other clinically relevant iron loss and separately established iron-deficiency anemia with compatible chronology; the cohort identifies an upper gastrointestinal source in selected patients but does not establish that any individual's anemia was caused by peptic-ulcer disease."
         }

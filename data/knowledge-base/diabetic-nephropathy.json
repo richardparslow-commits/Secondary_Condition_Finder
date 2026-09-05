@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-19 evidence for the bounded diabetic-nephropathy to chronic-kidney-disease proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36272764/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 36272764; approved ME-19 source; guard: Require established diabetic nephropathy (documented albuminuria and/or persistent eGFR decline in a person with diabetes with a compatible phenotype) and separately documented chronic kidney disease; the cited KDIGO clinical practice guideline addresses diabetes management in chronic kidney disease and recognizes diabetic kidney disease as a leading cause of chronic kidney disease, without establishing that any individual's chronic kidney disease is diabetic in origin. Preserve hypertensive, ischemic/renovascular, obstructive, primary glomerular, interstitial, and other chronic kidney disease etiologies as competing explanations. Do not infer diabetic nephropathy from isolated creatinine elevation or from diabetes alone, and do not treat this guideline-framed association as proof that diabetic nephropathy caused an individual's chronic kidney disease."
         }
