@@ -205,7 +205,6 @@ describe("secondary workflow state parsing", () => {
 
     expect(parsed.symptomIds).toEqual(["recurrent-headache"]);
   });
-
   it("rejects chronology years outside the bounded range", () => {
     expect(() => parseDocumentsSelection({
       diagnosed: ["ptsd"],
