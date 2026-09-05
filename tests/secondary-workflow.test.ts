@@ -191,6 +191,21 @@ describe("secondary workflow state parsing", () => {
     });
   });
 
+  it("preserves only controlled symptom prompt ids in parsed workflow state", () => {
+    const parsed = parseDocumentsSelection(
+      {
+        diagnosed: ["ptsd"],
+        serviceConnected: ["ptsd"],
+        "rating-ptsd": "70",
+        documentsShared: "no",
+        symptomIds: ["recurrent-headache", "recurrent-headache", "not-real"],
+      },
+      catalog,
+    );
+
+    expect(parsed.symptomIds).toEqual(["recurrent-headache"]);
+  });
+
   it("rejects chronology years outside the bounded range", () => {
     expect(() => parseDocumentsSelection({
       diagnosed: ["ptsd"],

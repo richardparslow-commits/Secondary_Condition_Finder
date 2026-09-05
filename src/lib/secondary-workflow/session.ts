@@ -34,6 +34,7 @@ const storedWorkflowStateSchema = z.object({
   medications: z.array(contextEntrySchema).max(MAX_CONTEXT_ITEMS).optional(),
   treatments: z.array(contextEntrySchema).max(MAX_CONTEXT_ITEMS).optional(),
   history: z.array(contextEntrySchema).max(MAX_CONTEXT_ITEMS).optional(),
+  symptomIds: z.array(z.string().regex(/^[a-z0-9-]+$/)).max(20).optional(),
   conditionTimeline: z.record(z.string(), timelineEntrySchema).optional(),
 });
 
@@ -121,6 +122,7 @@ export function workflowSessionToQueryParams(
   if (state.medications?.length) params.medications = [...state.medications];
   if (state.treatments?.length) params.treatments = [...state.treatments];
   if (state.history?.length) params.history = [...state.history];
+  if (state.symptomIds?.length) params.symptomIds = [...state.symptomIds];
   if (state.conditionTimeline) {
     for (const [id, timeline] of Object.entries(state.conditionTimeline)) {
       if (timeline.onsetYear !== undefined) params[`onsetYear-${id}`] = String(timeline.onsetYear);
@@ -151,6 +153,7 @@ export function toCompleteWorkflowState(
     medications: [...(state.medications ?? [])],
     treatments: [...(state.treatments ?? [])],
     history: [...(state.history ?? [])],
+    symptomIds: [...(state.symptomIds ?? [])],
     conditionTimeline: Object.fromEntries(
       Object.entries(state.conditionTimeline ?? {}).map(([id, timeline]) => [id, { ...timeline }]),
     ),

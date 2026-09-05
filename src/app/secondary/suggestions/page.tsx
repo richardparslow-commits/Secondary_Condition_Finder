@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { NonServiceConnectedConditionResult } from "@/components/NonServiceConnectedConditionResult";
 import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatus";
@@ -15,6 +16,7 @@ import {
 } from "@/lib/regulatory/preflight";
 import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
 import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workflow/suggestions";
+import { buildSymptomDiscussionPrompts } from "@/lib/secondary-workflow/symptom-bridge";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
 import { buildConditionVaReferenceMap } from "@/lib/va/condition-reference";
@@ -77,6 +79,11 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
     recommendationsResult.recommendations,
   );
   const nonServiceConnectedNames = nonServiceConnectedResults.map((result) => result.conditionName);
+  const conditionNamesById = new Map([...byId].map(([id, condition]) => [id, condition.name] as const));
+  const symptomDiscussionPrompts = buildSymptomDiscussionPrompts(
+    state.symptomIds ?? [],
+    conditionNamesById,
+  );
   const primaryNames = state.serviceConnectedConditionIds.map((id) => byId.get(id)?.name).filter(Boolean);
   const vaReference = await loadDisabilityReference();
   const vaReferenceMap = buildConditionVaReferenceMap(
@@ -112,6 +119,7 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
         <section className="ui-card">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↔</span><div><h2 className="text-xl font-bold">Possible Connections to Review</h2><p className="text-sm text-slate-600">Organized by the diagnosed condition that is not yet service connected.</p></div></div>
           <div className="ui-callout mb-5 text-sm"><strong>Direction matters:</strong> The question on this page is whether an already service-connected condition may have caused, contributed to, aggravated, or otherwise medically related to a diagnosis you already have but that is not service connected. The page does not search for additional diagnoses that might develop in the future.</div>
+          <div className="mb-5"><SymptomDiscussionReview prompts={symptomDiscussionPrompts} /></div>
           {nonServiceConnectedResults.length === 0 ? (
             <p className="rounded-xl border border-slate-200 p-5 text-sm">There are no diagnosed non-service-connected conditions to evaluate in this review.</p>
           ) : (

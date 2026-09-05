@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { indexById } from "@/lib/catalog/lookup";
 import type { ConditionCatalog } from "@/lib/catalog/schema";
+import { parseSymptomBridgeSelection } from "./symptom-bridge";
 
 export const MAX_CONTEXT_ITEMS = 20;
 export const MAX_CONTEXT_ITEM_LENGTH = 160;
@@ -21,6 +22,7 @@ export interface SecondaryWorkflowState {
   medications?: string[];
   treatments?: string[];
   history?: string[];
+  symptomIds?: string[];
   conditionTimeline?: Record<string, ConditionTimelineEntry>;
 }
 
@@ -270,6 +272,7 @@ export function parseDocumentsSelection(
   const medications = parseContextEntries(params.medications, "Medication");
   const treatments = parseContextEntries(params.treatments, "Treatment");
   const history = parseContextEntries(params.history, "History");
+  const symptomIds = parseSymptomBridgeSelection(toArray(params.symptomIds));
   const timeline = parseTimeline(params, ratings.diagnosedConditionIds);
 
   return {
@@ -278,6 +281,7 @@ export function parseDocumentsSelection(
     ...(medications.length > 0 ? { medications } : {}),
     ...(treatments.length > 0 ? { treatments } : {}),
     ...(history.length > 0 ? { history } : {}),
+    ...(symptomIds.length > 0 ? { symptomIds } : {}),
     ...(Object.keys(timeline).length > 0 ? { conditionTimeline: timeline } : {}),
   };
 }
