@@ -28,8 +28,7 @@ The remaining gate is not a code defect: there is still no recorded credentialed
 
 Sandbox credentials:
 
-- `VA_FORMS_SANDBOX_API_KEY`
-- `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`
+The GitHub Actions repository secrets are configured as `VAFORMSSANDBOXAPIKEY` and `VABENEFITSREFERENCESANDBOXAPIKEY`; the smoke workflow maps them into these internal environment variable names before execution.
 
 Production credentials, which must remain unused until VA grants access:
 

@@ -5,9 +5,10 @@ This runbook closes the final external Phase 2 gate tracked in issue #189 withou
 ## Preconditions
 
 1. Obtain issued sandbox credentials for both selected services.
-2. Store them as repository Actions secrets:
-   - `VA_FORMS_SANDBOX_API_KEY`
-   - `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`
+2. Store them as repository Actions secrets using the configured names:
+   - `VAFORMSSANDBOXAPIKEY` — supplied to the workflow as `VA_FORMS_SANDBOX_API_KEY`;
+   - `VABENEFITSREFERENCESANDBOXAPIKEY` — supplied to the workflow as `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`.
+   The workflow keeps these service-specific values separate and does not expose them to logs, artifacts, or the browser.
 3. Do not place either key in source code, workflow inputs, issue comments, pull-request text, terminal transcripts, screenshots, or `NEXT_PUBLIC_*` variables.
 4. The dedicated workflow declares `VA_SANDBOX_ENABLED=true` itself and fails closed if that sandbox-mode precondition is absent.
 

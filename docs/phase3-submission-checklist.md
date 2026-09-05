@@ -98,7 +98,7 @@ Describe the current server-only model:
 - `VA_API_ENV=sandbox|production` selects the intended upstream environment.
 - `VA_API_ENABLED=true` is the explicit environment-neutral activation flag.
 - `VA_SANDBOX_ENABLED=true` remains the backward-compatible Phase 2 sandbox gate.
-- Sandbox keys are separate: `VA_FORMS_SANDBOX_API_KEY` and `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`.
+- Sandbox GitHub Actions secrets are configured as `VAFORMSSANDBOXAPIKEY` and `VABENEFITSREFERENCESANDBOXAPIKEY`; the workflow maps them to the internal runtime names `VA_FORMS_SANDBOX_API_KEY` and `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`.
 - Production keys are separate: `VA_FORMS_PRODUCTION_API_KEY` and `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY`.
 - Production mode remains disabled until VA grants production access.
 - No VA key is stored in source control, exposed through `NEXT_PUBLIC_*`, logged, placed in URLs, or copied into artifacts.

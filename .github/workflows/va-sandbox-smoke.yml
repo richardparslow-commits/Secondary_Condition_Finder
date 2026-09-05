@@ -14,8 +14,8 @@ jobs:
     timeout-minutes: 5
     env:
       VA_SANDBOX_ENABLED: 'true'
-      VA_FORMS_SANDBOX_API_KEY: ${{ secrets.VA_FORMS_SANDBOX_API_KEY }}
-      VA_BENEFITS_REFERENCE_SANDBOX_API_KEY: ${{ secrets.VA_BENEFITS_REFERENCE_SANDBOX_API_KEY }}
+      VA_FORMS_SANDBOX_API_KEY: ${{ secrets.VAFORMSSANDBOXAPIKEY }}
+      VA_BENEFITS_REFERENCE_SANDBOX_API_KEY: ${{ secrets.VABENEFITSREFERENCESANDBOXAPIKEY }}
     steps:
       - name: Require sandbox mode and API keys
         shell: bash

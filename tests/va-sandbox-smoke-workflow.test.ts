@@ -17,8 +17,14 @@ describe("VA sandbox smoke workflow", () => {
     expect(workflow).toContain("workflow_dispatch:");
     expect(workflow).not.toMatch(/^\s*push:/m);
     expect(workflow).not.toMatch(/^\s*pull_request:/m);
-    expect(workflow).toContain("VA_FORMS_SANDBOX_API_KEY");
-    expect(workflow).toContain("VA_BENEFITS_REFERENCE_SANDBOX_API_KEY");
+    expect(workflow).toContain("VA_FORMS_SANDBOX_API_KEY: ${{ secrets.VAFORMSSANDBOXAPIKEY }}");
+    expect(workflow).toContain(
+      "VA_BENEFITS_REFERENCE_SANDBOX_API_KEY: ${{ secrets.VABENEFITSREFERENCESANDBOXAPIKEY }}",
+    );
+    expect(workflow).not.toContain("secrets.VA_FORMS_SANDBOX_API_KEY");
+    expect(workflow).not.toContain(
+      "secrets.VA_BENEFITS_REFERENCE_SANDBOX_API_KEY",
+    );
     expect(workflow).not.toContain("NEXT_PUBLIC_VA_FORMS_SANDBOX_API_KEY");
     expect(workflow).not.toContain(
       "NEXT_PUBLIC_VA_BENEFITS_REFERENCE_SANDBOX_API_KEY",
