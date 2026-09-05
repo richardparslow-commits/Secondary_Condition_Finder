@@ -17,6 +17,8 @@ export function buildSecondaryRecommendationIntake(
     medications: state.medications ?? [],
     treatments: state.treatments ?? [],
     exposures: [],
+    history: state.history ?? [],
+    conditionTimeline: state.conditionTimeline ?? {},
     notes: "",
   };
 }

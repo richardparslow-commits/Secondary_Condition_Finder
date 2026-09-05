@@ -63,7 +63,7 @@ function contextEntries(formData: FormData, key: string): string[] {
 }
 
 function validateContext(formData: FormData): void {
-  for (const key of ["medications", "treatments"] as const) {
+  for (const key of ["medications", "treatments", "history"] as const) {
     const entries = contextEntries(formData, key);
     if (
       entries.length > MAX_CONTEXT_ITEMS ||

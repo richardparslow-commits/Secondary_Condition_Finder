@@ -4,8 +4,12 @@ import type { KnowledgeBase, SourceReference } from "@/lib/kb/schema";
 import { publishedMappings } from "@/lib/kb/lookup";
 
 import type {
+  ClinicalFrictionWarning,
+  ChronologyWarning,
   ContributingPrimary,
   Intake,
+  IntermediatePathEdge,
+  IntermediatePathway,
   Recommendation,
   RecommendationResult,
 } from "./types";
@@ -46,8 +50,124 @@ function rankWeight(rank: number): number {
   return 1 / rank;
 }
 
+const HISTORY_SIGNAL_ALIASES: Record<string, string[]> = {
+  alcohol: ["alcohol", "alcohol use", "alcohol-related", "drinking"],
+  smoking: ["smoking", "tobacco", "cigarette", "nicotine"],
+  obesity: ["obesity", "overweight", "body mass index", "bmi"],
+  "kidney-disease": ["kidney disease", "renal disease", "chronic kidney", "ckd"],
+  "prior-trauma": ["prior trauma", "previous trauma", "injury", "traumatic"],
+  "family-history": ["family history", "familial", "hereditary", "genetic"],
+  "medication-effect": ["medication effect", "medication effects", "drug effect", "side effect"],
+  diabetes: ["diabetes", "diabetic"],
+  hypertension: ["hypertension", "high blood pressure"],
+};
+
+function canonicalHistorySignals(value: string): string[] {
+  const normalized = normalizeHistoryTerm(value);
+  return Object.entries(HISTORY_SIGNAL_ALIASES)
+    .filter(([, aliases]) => aliases.some((alias) => normalized.includes(normalizeHistoryTerm(alias))))
+    .map(([signal]) => signal);
+}
+
 function dedupe(values: string[]): string[] {
   return [...new Set(values)];
+}
+
+function dedupeWarnings<T extends { code: string; primaryId: string; message: string }>(warnings: T[]): T[] {
+  const seen = new Set<string>();
+  return warnings.filter((warning) => {
+    const key = `${warning.code}:${warning.primaryId}:${warning.message}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function normalizeHistoryTerm(value: string): string {
+  return normalizeConditionName(value).replace(/[^a-z0-9 -]/g, "");
+}
+
+function findAlternativeEtiologyWarnings(
+  primary: { id: string; name: string },
+  suggestion: {
+    evidentiaryProfile: {
+      alternativeEtiologiesToRuleOut: string[];
+      alternativeEtiologyTags?: string[];
+    };
+  },
+  intake: Intake,
+): ClinicalFrictionWarning[] {
+  const history = dedupe(
+    (intake.history ?? [])
+      .flatMap((term) => canonicalHistorySignals(term))
+      .filter(Boolean),
+  );
+  const alternatives = suggestion.evidentiaryProfile.alternativeEtiologiesToRuleOut;
+  const tags = (suggestion.evidentiaryProfile.alternativeEtiologyTags ?? []).map(normalizeHistoryTerm);
+  const warnings: ClinicalFrictionWarning[] = [];
+
+  for (const reported of history) {
+    const matchingAlternative = alternatives.find((alternative) => {
+      const alternativeSignals = canonicalHistorySignals(alternative);
+      return alternativeSignals.includes(reported) || normalizeHistoryTerm(alternative).includes(reported);
+    });
+    const matchingTag = tags.find((tag) => tag === reported || tag.includes(reported) || reported.includes(tag));
+    if (!matchingAlternative && !matchingTag) continue;
+
+    warnings.push({
+      code: "ALTERNATIVE_ETIOLOGY_OVERLAP",
+      primaryId: primary.id,
+      primaryName: primary.name,
+      matchedHistory: reported,
+      alternativeEtiology: matchingAlternative ?? matchingTag,
+      message: `Reported history "${reported}" overlaps with an alternative etiology listed for this mapping. A qualified clinician should address whether it contributed to the diagnosed condition; this warning does not determine causation or defeat the relationship.`,
+    });
+  }
+
+  return warnings;
+}
+
+function timelineYear(
+  intake: Intake,
+  conditionId: string,
+): number | undefined {
+  const timeline = intake.conditionTimeline?.[conditionId];
+  return timeline?.onsetYear ?? timeline?.diagnosisYear;
+}
+
+function findChronologyWarnings(
+  primary: { id: string; name: string },
+  targetConditionId: string,
+  nexusClassification: string,
+  intake: Intake,
+): ChronologyWarning[] {
+  const primaryYear = timelineYear(intake, primary.id);
+  const secondaryYear = timelineYear(intake, targetConditionId);
+  if (primaryYear === undefined || secondaryYear === undefined) return [];
+
+  if (nexusClassification === "DIRECT_CAUSATION" && secondaryYear < primaryYear) {
+    return [{
+      code: "SECONDARY_PRECEDES_PRIMARY",
+      primaryId: primary.id,
+      primaryName: primary.name,
+      primaryYear,
+      secondaryYear,
+      message: `The available approximate years place the diagnosed secondary condition (${secondaryYear}) before the service-connected primary condition (${primaryYear}). Review whether the dates reflect delayed diagnosis, a different onset, or an aggravation theory; this is a chronology flag, not a medical conclusion.`,
+    }];
+  }
+
+  if (nexusClassification === "AGGRAVATION" && secondaryYear >= primaryYear) {
+    return [{
+      code: "AGGRAVATION_BASELINE_CHRONOLOGY",
+      primaryId: primary.id,
+      primaryName: primary.name,
+      primaryYear,
+      secondaryYear,
+      message: `The available approximate years do not show the secondary condition predating the service-connected primary condition. Review the documented baseline and whether the dates reflect delayed diagnosis or a different chronology; this is a chronology flag, not a medical conclusion.`,
+    }];
+  }
+
+  return [];
 }
 
 function referenceIdentity(reference: SourceReference): string {
@@ -65,6 +185,106 @@ function dedupeReferences(references: SourceReference[]): SourceReference[] {
     if (!seen.has(identity)) seen.set(identity, reference);
   }
   return [...seen.values()];
+}
+
+function pathEdge(
+  conditionId: string,
+  conditionName: string,
+  suggestion: KnowledgeBase[number]["suggestions"][number],
+  targetName: string,
+): IntermediatePathEdge {
+  return {
+    conditionId,
+    conditionName,
+    targetConditionId: suggestion.conditionId,
+    targetConditionName: targetName,
+    rank: suggestion.rank,
+    nexusClassification: suggestion.nexusClaim.nexusClassification,
+    etiologicalConsensus: suggestion.evidentiaryProfile.etiologicalConsensus,
+    rationale: suggestion.rationale,
+    pathwayTypes: suggestion.pathwayIntelligence?.pathways ?? [],
+    sourceReferences: [...suggestion.sourceReferences],
+  };
+}
+
+function intermediatePathway(
+  primary: { id: string; name: string },
+  intermediate: { id: string; name: string },
+  target: { id: string; name: string },
+  firstSuggestion: KnowledgeBase[number]["suggestions"][number],
+  secondSuggestion: KnowledgeBase[number]["suggestions"][number],
+): IntermediatePathway {
+  const firstEdge = pathEdge(primary.id, primary.name, firstSuggestion, intermediate.name);
+  const secondEdge = pathEdge(intermediate.id, intermediate.name, secondSuggestion, target.name);
+  return {
+    primaryId: primary.id,
+    primaryName: primary.name,
+    intermediateId: intermediate.id,
+    intermediateName: intermediate.name,
+    targetId: target.id,
+    targetName: target.name,
+    label: "INTERMEDIATE_CHAIN",
+    edges: [firstEdge, secondEdge],
+    causalChain: `${primary.name} → ${intermediate.name} → ${target.name}`,
+    sourceReferences: dedupeReferences([
+      ...firstSuggestion.sourceReferences,
+      ...secondSuggestion.sourceReferences,
+    ]),
+  };
+}
+
+/**
+ * Returns only explicit two-edge paths through published mappings. This is a
+ * research-path feature, not transitive causal inference: both source edges
+ * remain visible and the path is never promoted to a direct nexus claim.
+ */
+function findIntermediatePathways(
+  primary: { id: string; name: string },
+  mappings: Map<string, KnowledgeBase[number]>,
+  byId: Map<string, { id: string; name: string }>,
+  diagnosedSet: Set<string>,
+  recognizedIds: Set<string>,
+): IntermediatePathway[] {
+  const firstMapping = mappings.get(primary.id);
+  if (!firstMapping) return [];
+
+  const paths: IntermediatePathway[] = [];
+  for (const firstSuggestion of firstMapping.suggestions) {
+    const intermediate = byId.get(firstSuggestion.conditionId);
+    if (!intermediate || intermediate.id === primary.id || recognizedIds.has(intermediate.id)) continue;
+
+    const secondMapping = mappings.get(intermediate.id);
+    if (!secondMapping) continue;
+
+    for (const secondSuggestion of secondMapping.suggestions) {
+      if (
+        secondSuggestion.conditionId === primary.id ||
+        secondSuggestion.conditionId === intermediate.id ||
+        !diagnosedSet.has(secondSuggestion.conditionId) ||
+        recognizedIds.has(secondSuggestion.conditionId)
+      ) continue;
+
+      const target = byId.get(secondSuggestion.conditionId);
+      if (!target) continue;
+      paths.push(intermediatePathway(primary, intermediate, target, firstSuggestion, secondSuggestion));
+    }
+  }
+
+  return dedupePathways(paths);
+}
+
+function dedupePathways(pathways: IntermediatePathway[]): IntermediatePathway[] {
+  return [...new Map(pathways.map((pathway) => [
+    `${pathway.primaryId}:${pathway.intermediateId}:${pathway.targetId}`,
+    pathway,
+  ])).values()];
+}
+
+function pathConsensusRank(path: IntermediatePathway): number {
+  return Math.max(
+    CONSENSUS_ORDER[path.edges[0].etiologicalConsensus],
+    CONSENSUS_ORDER[path.edges[1].etiologicalConsensus],
+  );
 }
 
 /**
@@ -110,6 +330,9 @@ interface Accumulated {
   contributingPrimaries: ContributingPrimary[];
   evidenceGaps: string[];
   sourceReferences: SourceReference[];
+  clinicalFrictionWarnings: ClinicalFrictionWarning[];
+  chronologyWarnings: ChronologyWarning[];
+  intermediatePathways: IntermediatePathway[];
 }
 
 export function recommend(
@@ -169,6 +392,13 @@ export function recommend(
         causalMechanism: suggestion.causalMechanism,
         evidentiaryProfile: suggestion.evidentiaryProfile,
       };
+      const frictionWarnings = findAlternativeEtiologyWarnings(primary, suggestion, intake);
+      const chronologyWarnings = findChronologyWarnings(
+        primary,
+        suggestion.conditionId,
+        suggestion.nexusClaim.nexusClassification,
+        intake,
+      );
 
       if (existing) {
         existing.score += rankWeight(suggestion.rank);
@@ -180,6 +410,17 @@ export function recommend(
         existing.sourceReferences = dedupeReferences([
           ...existing.sourceReferences,
           ...suggestion.sourceReferences,
+        ]);
+        existing.clinicalFrictionWarnings = dedupeWarnings([
+          ...existing.clinicalFrictionWarnings,
+          ...frictionWarnings,
+        ]);
+        existing.chronologyWarnings = dedupeWarnings([
+          ...existing.chronologyWarnings,
+          ...chronologyWarnings,
+        ]);
+        existing.intermediatePathways = dedupePathways([
+          ...existing.intermediatePathways,
         ]);
         existing.consensusRank = Math.min(
           existing.consensusRank,
@@ -193,8 +434,48 @@ export function recommend(
           contributingPrimaries: [contribution],
           evidenceGaps: [...suggestion.evidenceGaps],
           sourceReferences: [...suggestion.sourceReferences],
+          clinicalFrictionWarnings: frictionWarnings,
+          chronologyWarnings,
+          intermediatePathways: [],
         });
       }
+    }
+
+    const paths = findIntermediatePathways(
+      primary,
+      mappings,
+      byId,
+      new Set(intake.diagnosedConditionIds ?? []),
+      recognizedIds,
+    );
+    for (const pathway of paths) {
+      const existing = accumulator.get(pathway.targetId);
+      if (existing) {
+        existing.intermediatePathways = dedupePathways([
+          ...existing.intermediatePathways,
+          pathway,
+        ]);
+        continue;
+      }
+
+      accumulator.set(pathway.targetId, {
+        conditionId: pathway.targetId,
+        score: 1 / (pathway.edges[0].rank * pathway.edges[1].rank),
+        consensusRank: pathConsensusRank(pathway),
+        contributingPrimaries: [{
+          id: pathway.primaryId,
+          name: pathway.primaryName,
+          rank: pathway.edges[0].rank,
+          rationale: `Bounded intermediate-chain research path: ${pathway.causalChain}. Each edge requires separate individual medical support; the path is not a direct nexus finding.`,
+        }],
+        evidenceGaps: [
+          "Independently establish the intermediate condition and both links in the proposed chain with compatible chronology and individual medical evidence",
+        ],
+        sourceReferences: [...pathway.sourceReferences],
+        clinicalFrictionWarnings: [],
+        chronologyWarnings: [],
+        intermediatePathways: [pathway],
+      });
     }
   }
 
@@ -219,6 +500,9 @@ export function recommend(
         contributingPrimaries,
         evidenceGaps: entry.evidenceGaps,
         sourceReferences: entry.sourceReferences,
+        clinicalFrictionWarnings: entry.clinicalFrictionWarnings,
+        chronologyWarnings: entry.chronologyWarnings,
+        intermediatePathways: entry.intermediatePathways,
         matchedIntakeContext: matchIntakeContext(
           catalogEntry.name,
           contributingPrimaries,

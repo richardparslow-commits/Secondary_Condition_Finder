@@ -113,6 +113,8 @@ export const evidentiaryProfileSchema = z.object({
   conservativeRationale: z.string().min(50, "conservativeRationale must state, in medically conservative terms, the basis for the nexus claim."),
   evidenceGaps: z.string().min(1),
   alternativeEtiologiesToRuleOut: z.array(z.string().min(1)).min(1, "At least one alternative etiology must be listed to rule out."),
+  /** Optional controlled tags support conservative intake-overlap warnings. */
+  alternativeEtiologyTags: z.array(z.string().regex(/^[a-z0-9-]+$/)).max(20).optional(),
   requiresSpecificDbqEvidence: z.boolean().default(false),
 }).strict().superRefine((profile, ctx) => {
   const contested = profile.etiologicalConsensus === "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE";

@@ -218,6 +218,238 @@ describe("recommend", () => {
     }
   });
 
+  it("adds alternative-etiology warnings without changing score or ordering", () => {
+    const syntheticCatalog = conditionCatalogSchema.parse([
+      { id: "primary-condition", name: "Primary Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
+      { id: "secondary-condition", name: "Secondary Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
+      { id: "other-condition", name: "Other Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
+    ]);
+    const syntheticKb = knowledgeBaseSchema.parse([
+      {
+        id: "primary-condition",
+        draft: false,
+        todo: [],
+        suggestions: [
+          {
+            conditionId: "secondary-condition",
+            rank: 1,
+            nexusClaim: buildNexusClaim(),
+            causalMechanism: buildCausalMechanism(),
+            evidentiaryProfile: buildEvidentiaryProfile({
+              alternativeEtiologiesToRuleOut: ["Alcohol exposure or alcohol-related disease"],
+              alternativeEtiologyTags: ["alcohol"],
+            }),
+            rationale: "Bounded association fixture.",
+            evidenceGaps: ["Review alternatives."],
+            sourceReferences: [{ citation: "Fixture", note: "Fixture", verified: false }],
+          },
+          {
+            conditionId: "other-condition",
+            rank: 2,
+            nexusClaim: buildNexusClaim(),
+            causalMechanism: buildCausalMechanism(),
+            evidentiaryProfile: buildEvidentiaryProfile(),
+            rationale: "Second bounded association fixture.",
+            evidenceGaps: ["Review evidence."],
+            sourceReferences: [{ citation: "Fixture 2", note: "Fixture", verified: false }],
+          },
+        ],
+      },
+    ]);
+    const base = recommend(syntheticCatalog, syntheticKb, intake({ primaryConditions: ["primary-condition"] }));
+    const withHistory = recommend(syntheticCatalog, syntheticKb, intake({
+      primaryConditions: ["primary-condition"],
+      history: ["Alcohol"],
+    }));
+
+    expect(withHistory.recommendations.map((recommendation) => recommendation.conditionId)).toEqual(
+      base.recommendations.map((recommendation) => recommendation.conditionId),
+    );
+    expect(withHistory.recommendations.map((recommendation) => recommendation.score)).toEqual(
+      base.recommendations.map((recommendation) => recommendation.score),
+    );
+    expect(withHistory.recommendations[0]?.clinicalFrictionWarnings).toHaveLength(1);
+    expect(withHistory.recommendations[0]?.clinicalFrictionWarnings?.[0]?.code).toBe("ALTERNATIVE_ETIOLOGY_OVERLAP");
+    expect(withHistory.recommendations[1]?.clinicalFrictionWarnings).toEqual([]);
+  });
+
+  it("flags direct-causation chronology conflicts and leaves missing dates neutral", () => {
+    const syntheticCatalog = conditionCatalogSchema.parse([
+      { id: "primary-condition", name: "Primary Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
+      { id: "secondary-condition", name: "Secondary Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
+    ]);
+    const syntheticKb = knowledgeBaseSchema.parse([{
+      id: "primary-condition",
+      draft: false,
+      todo: [],
+      suggestions: [{
+        conditionId: "secondary-condition",
+        rank: 1,
+        nexusClaim: {
+          nexusClassification: "DIRECT_CAUSATION",
+          etiologicalTrigger: "A specific fixture biological trigger is described here with enough detail for schema validation and review.",
+        },
+        causalMechanism: buildCausalMechanism({ hypothesizedOnly: false }),
+        evidentiaryProfile: buildEvidentiaryProfile({ etiologicalConsensus: "PROBABLE" }),
+        rationale: "Direct-causation chronology fixture.",
+        evidenceGaps: ["Review chronology."],
+        sourceReferences: [{ citation: "Fixture", note: "Fixture", verified: false }],
+      }],
+    }]);
+    const conflict = recommend(syntheticCatalog, syntheticKb, intake({
+      primaryConditions: ["primary-condition"],
+      conditionTimeline: {
+        "primary-condition": { onsetYear: 2020 },
+        "secondary-condition": { diagnosisYear: 2015 },
+      },
+    }));
+    const neutral = recommend(syntheticCatalog, syntheticKb, intake({
+      primaryConditions: ["primary-condition"],
+      conditionTimeline: { "primary-condition": { onsetYear: 2020 } },
+    }));
+
+    expect(conflict.recommendations[0]?.chronologyWarnings?.[0]?.code).toBe("SECONDARY_PRECEDES_PRIMARY");
+    expect(neutral.recommendations[0]?.chronologyWarnings).toEqual([]);
+  });
+
+  it("surfaces only bounded published two-hop paths to diagnosed targets with edge provenance", () => {
+    const syntheticCatalog = conditionCatalogSchema.parse([
+      ...["primary-condition", "intermediate-condition", "target-condition", "unrelated-target", "third-hop-condition"].map((id) => ({
+        id,
+        name: id.split("-").map((part) => part[0].toUpperCase() + part.slice(1)).join(" "),
+        aliases: [],
+        bodySystem: "Test",
+        ratingSchedule: [],
+        reviewNotes: ["test"],
+      })),
+    ]);
+    const edge = (conditionId: string, citation: string, rank: number) => ({
+      conditionId,
+      rank,
+      nexusClaim: buildNexusClaim(),
+      causalMechanism: buildCausalMechanism(),
+      evidentiaryProfile: buildEvidentiaryProfile(),
+      rationale: `Published fixture edge to ${conditionId}.`,
+      evidenceGaps: ["Review each individual link."],
+      sourceReferences: [{ citation, note: "Published fixture provenance", verified: false }],
+    });
+    const syntheticKb = knowledgeBaseSchema.parse([
+      {
+        id: "primary-condition",
+        draft: false,
+        todo: [],
+        suggestions: [
+          edge("intermediate-condition", "PRIMARY-INTERMEDIATE", 1),
+          edge("unrelated-target", "PRIMARY-UNRELATED", 2),
+        ],
+      },
+      {
+        id: "intermediate-condition",
+        draft: false,
+        todo: [],
+        suggestions: [
+          edge("target-condition", "INTERMEDIATE-TARGET", 1),
+          edge("third-hop-condition", "INTERMEDIATE-THIRD-HOP", 2),
+        ],
+      },
+    ]);
+
+    const withoutBoundary = recommend(
+      syntheticCatalog,
+      syntheticKb,
+      intake({ primaryConditions: ["primary-condition"] }),
+    );
+    expect(withoutBoundary.recommendations).toHaveLength(2);
+    expect(withoutBoundary.recommendations.some((recommendation) => recommendation.intermediatePathways?.length)).toBe(false);
+
+    const result = recommend(
+      syntheticCatalog,
+      syntheticKb,
+      intake({
+        primaryConditions: ["primary-condition"],
+        diagnosedConditionIds: ["target-condition"],
+      }),
+    );
+    expect(result.recommendations.map((recommendation) => recommendation.conditionId)).toEqual(["target-condition"]);
+
+    const pathway = result.recommendations[0]?.intermediatePathways?.[0];
+    expect(pathway?.label).toBe("INTERMEDIATE_CHAIN");
+    expect(pathway?.causalChain).toBe("Primary Condition → Intermediate Condition → Target Condition");
+    expect(pathway?.edges).toHaveLength(2);
+    expect(pathway?.edges[0]?.sourceReferences[0]?.citation).toBe("PRIMARY-INTERMEDIATE");
+    expect(pathway?.edges[1]?.sourceReferences[0]?.citation).toBe("INTERMEDIATE-TARGET");
+    expect(pathway?.sourceReferences.map((reference) => reference.citation)).toEqual([
+      "PRIMARY-INTERMEDIATE",
+      "INTERMEDIATE-TARGET",
+    ]);
+    expect(result.recommendations[0]?.contributingPrimaries[0]?.rationale).toContain("not a direct nexus finding");
+
+    const draftIntermediateKb = knowledgeBaseSchema.parse([
+      syntheticKb[0],
+      {
+        ...syntheticKb[1],
+        draft: true,
+        todo: ["intermediate mapping requires publication review"],
+      },
+    ]);
+    const draftResult = recommend(
+      syntheticCatalog,
+      draftIntermediateKb,
+      intake({
+        primaryConditions: ["primary-condition"],
+        diagnosedConditionIds: ["target-condition"],
+      }),
+    );
+    expect(draftResult.recommendations).toEqual([]);
+  });
+
+  it("does not change a direct recommendation score when an intermediate path reaches the same diagnosed target", () => {
+    const syntheticCatalog = conditionCatalogSchema.parse([
+      { id: "primary-condition", name: "Primary Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
+      { id: "intermediate-condition", name: "Intermediate Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
+      { id: "target-condition", name: "Target Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
+      { id: "peer-condition", name: "Peer Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
+    ]);
+    const makeSuggestion = (conditionId: string, rank: number, citation: string) => ({
+      conditionId,
+      rank,
+      nexusClaim: buildNexusClaim(),
+      causalMechanism: buildCausalMechanism(),
+      evidentiaryProfile: buildEvidentiaryProfile(),
+      rationale: "Synthetic published edge.",
+      evidenceGaps: ["Review the edge."],
+      sourceReferences: [{ citation, note: "Fixture", verified: false }],
+    });
+    const syntheticKb = knowledgeBaseSchema.parse([
+      {
+        id: "primary-condition",
+        draft: false,
+        todo: [],
+        suggestions: [
+          makeSuggestion("target-condition", 1, "DIRECT-TARGET"),
+          makeSuggestion("peer-condition", 2, "DIRECT-PEER"),
+          makeSuggestion("intermediate-condition", 3, "PRIMARY-INTERMEDIATE"),
+        ],
+      },
+      {
+        id: "intermediate-condition",
+        draft: false,
+        todo: [],
+        suggestions: [makeSuggestion("target-condition", 1, "INTERMEDIATE-TARGET")],
+      },
+    ]);
+    const result = recommend(syntheticCatalog, syntheticKb, intake({
+      primaryConditions: ["primary-condition"],
+      diagnosedConditionIds: ["target-condition", "peer-condition"],
+    }));
+    expect(result.recommendations.map((recommendation) => recommendation.conditionId)).toEqual([
+      "target-condition",
+      "peer-condition",
+    ]);
+    expect(result.recommendations.map((recommendation) => recommendation.score)).toEqual([1, 0.5]);
+    expect(result.recommendations[0]?.intermediatePathways).toHaveLength(1);
+  });
+
   it("ignores draft mappings when building recommendations", () => {
     const syntheticCatalog = conditionCatalogSchema.parse([
       {
