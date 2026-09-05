@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-20 evidence for the bounded leukoplakia to oral-cancer proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26189354/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 26189354; approved ME-20 source; guard: Require a biopsy-documented oral leukoplakia and separately established oral squamous cell carcinoma with compatible chronology; the cited systematic review of observational studies reported that a meaningful proportion of oral leukoplakias undergo malignant transformation to oral squamous cell carcinoma, without establishing that any individual's cancer arose from the leukoplakic lesion. Preserve tobacco use, alcohol use, other potentially malignant disorders (erythroplakia, oral submucous fibrosis), HPV infection, immunocompromise, and other oral-cancer risk factors as competing explanations. Do not infer cancer from clinical appearance or from dysplasia alone, and do not treat this population-level association as proof that oral leukoplakia caused an individual's oral cancer."
         }

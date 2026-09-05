@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-20 evidence for the bounded sjogren-s-syndrome to dry-eye-syndrome proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41009391/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 41009391; approved ME-20 source; guard: Require an established diagnosis of Sjögren's syndrome and objective evidence of dry eye disease/keratoconjunctivitis sicca (for example Schirmer testing, tear-film break-up time, or ocular surface staining) with compatible chronology; the cited review reports that keratoconjunctivitis sicca affects up to 95% of patients with Sjögren disease and is often the earliest and most persistent manifestation, driven by autoimmune-mediated lacrimal gland dysfunction, without establishing that Sjögren's syndrome caused an individual's dry eye as opposed to other causes of aqueous-deficient or evaporative dry eye. Preserve meibomian gland dysfunction, environmental and medication-related dry eye, age-related tear-film changes, contact lens wear, prior ocular surgery, and other autoimmune or ocular-surface conditions as competing explanations. Do not infer Sjögren's syndrome from dry eye symptoms alone, and do not treat this population-level association as proof that Sjögren's syndrome caused an individual's dry eye disease."
         }

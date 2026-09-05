@@ -53,7 +53,7 @@ describe("Mapping Expansion Batch ME-24", () => {
       expect(suggestion?.evidentiaryProfile.vaNexusProbabilityAlignment).toBe("NOT_ASSERTED");
       expect(suggestion?.sourceReferences).toHaveLength(1);
       const reference = suggestion?.sourceReferences[0];
-      expect(reference?.verified).toBe(false);
+      expect(reference?.verified).toBe(true);
       expect(reference?.verificationScope).toBe("clinical-evidence");
       expect(reference?.citation).toContain(`PMID ${row.pmid}`);
       expect(suggestion?.evidenceGaps.at(-1)).toBe(`Resolution of publication guard: ${row.guard}`);
@@ -75,10 +75,10 @@ describe("Mapping Expansion Batch ME-24", () => {
       const source = sources.sources.find((entry) => entry.sourceId === `pmid-${row.pmid}`);
       expect(source).toMatchObject({
         sourceId: `pmid-${row.pmid}`,
-        status: "pending-verification",
+        status: "active",
         kind: "clinical-evidence",
         pmid: row.pmid,
-        verified: false,
+        verified: true,
         liveUsageCount: 1,
         liveUses: [{ relationshipId, primaryId: row.primaryId, targetId: row.targetId, sourceIndex: 0 }],
       });
@@ -89,8 +89,8 @@ describe("Mapping Expansion Batch ME-24", () => {
     expect(relationships.currentState).toBe("ME35-CITATION-VERIFIED");
     expect(sources.currentState).toBe("ME35-CITATION-VERIFIED");
     expect(relationships.counts).toEqual({ relationships: 347, explicitPublicationGuards: 273, legacyRationaleBoundaries: 74 });
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 355, pendingVerificationSourceEntities: 91, totalSourceEntitiesIncludingLineage: 338 });
-    expect(sources.sources.filter((entry) => entry.status === "pending-verification")).toHaveLength(91);
-    expect(sources.sources.filter((entry) => entry.status === "pending-verification" && entry.kind === "clinical-evidence")).toHaveLength(91);
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 355, pendingVerificationSourceEntities: 0, totalSourceEntitiesIncludingLineage: 338 });
+    expect(sources.sources.filter((entry) => entry.status === "pending-verification")).toHaveLength(0);
+    expect(sources.sources.filter((entry) => entry.status === "pending-verification" && entry.kind === "clinical-evidence")).toHaveLength(0);
   });
 });

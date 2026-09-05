@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-18 evidence for the bounded chronic-fatigue-syndrome to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12562565/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-01",
           "sourceLocator": "PMID 12562565; approved ME-18 source; guard: Require independently established chronic fatigue syndrome (CFS/ME) and a separately established depressive disorder; the cited review reported substantial comorbidity and symptom overlap between chronic fatigue syndrome and depressive and other psychiatric disorders without establishing onset order, direction, or individual causation. Preserve other medical illness, sleep disorders, substance use, medications, endocrine disease, anemia, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from fatigue, post-exertional malaise, or impairment alone, and do not treat this population-level association as proof that chronic fatigue syndrome caused an individual's depressive disorder."
         }

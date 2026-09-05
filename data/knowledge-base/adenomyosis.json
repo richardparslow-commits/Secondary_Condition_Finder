@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-24 evidence for the bounded adenomyosis-to-anemia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36182260/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 36182260; review of uterine disorders, abnormal/heavy uterine bleeding, and iron-deficiency anemia; approved ME-24 guard: require documented adenomyosis, separately established anemia, compatible bleeding/chronology, and competing-cause review."
         }

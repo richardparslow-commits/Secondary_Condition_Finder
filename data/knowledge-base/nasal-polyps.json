@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-22 evidence for the bounded chronic-rhinosinusitis-with-nasal-polyps to asthma proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33065369/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 33065369; J Allergy Clin Immunol Pract clinical review; approved ME-22 guard: require documented CRSwNP plus separately established asthma; do not infer asthma from nasal polyps alone."
         }

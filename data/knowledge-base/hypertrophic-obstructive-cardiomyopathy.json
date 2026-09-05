@@ -23,7 +23,7 @@
           "note": "Clinical review describing heart-failure phenotypes in hypertrophic cardiomyopathy. It supports a bounded association and focused evaluation, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29655822/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 29655822; review scope and heart-failure spectrum discussion"
         }

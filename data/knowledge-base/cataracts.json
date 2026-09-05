@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-26 clinical review for the bounded cataracts to visual-impairment proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40227658/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 40227658; review describing cataract-related visual disability and blindness and evaluation/treatment considerations; approved ME-26 guard requires objective impairment and competing ocular-cause review."
         }

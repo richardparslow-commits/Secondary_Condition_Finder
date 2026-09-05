@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-22 evidence for the bounded TIA-to-later-stroke-residuals proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18071162/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 18071162; systematic review/meta-analysis of early stroke risk after TIA; approved ME-22 guard: require a documented TIA, separately established later stroke with objective residuals, and compatible chronology; do not infer residuals from TIA alone."
         }

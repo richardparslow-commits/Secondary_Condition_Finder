@@ -24,7 +24,7 @@
           "note": "Cohort study of febrile neutropenia and infectious complications in non-chemotherapy drug-induced agranulocytosis from a dedicated agranulocytosis registry. It supports a bounded disease-association proposition and clinical evaluation, not automatic individual causation or aggravation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28823525/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-03",
           "sourceLocator": "PMID 28823525; febrile neutropenia and infection outcomes in drug-induced agranulocytosis cohort"
         }

@@ -186,7 +186,7 @@ export const assertMasterResolution2026CurrentState = () => {
         expect(me29Suggestion.pathwayIntelligence).toBeUndefined();
         expect(me29Suggestion.sourceReferences).toHaveLength(1);
         const me29SourceReference = me29Suggestion.sourceReferences![0]!;
-        expect(me29SourceReference.verified).toBe(false);
+        expect(me29SourceReference.verified).toBe(true);
         expect(me29SourceReference.verificationScope).toBe("clinical-evidence");
         expect(me29SourceReference.sourceUrl).toContain("/40437720/");
       } else if (row.id === "amebic-liver-abscess") {
@@ -201,7 +201,7 @@ export const assertMasterResolution2026CurrentState = () => {
         expect(me31Suggestion.pathwayIntelligence).toBeUndefined();
         expect(me31Suggestion.sourceReferences).toHaveLength(1);
         const me31SourceReference = me31Suggestion.sourceReferences![0]!;
-        expect(me31SourceReference.verified).toBe(false);
+        expect(me31SourceReference.verified).toBe(true);
         expect(me31SourceReference.verificationScope).toBe("clinical-evidence");
         expect(me31SourceReference.sourceUrl).toContain("/41068883/");
       } else {
@@ -216,8 +216,8 @@ export const assertMasterResolution2026CurrentState = () => {
     (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []),
   );
   expect(refs).toHaveLength(355);
-  expect(refs.filter((r) => r.verified === true)).toHaveLength(261);
-  expect(refs.filter((r) => r.verified === false)).toHaveLength(94);
+  expect(refs.filter((r) => r.verified === true)).toHaveLength(355);
+  expect(refs.filter((r) => r.verified === false)).toHaveLength(0);
   const clinical = refs.filter((r) => r.verificationScope === "clinical-evidence");
   expect(clinical).toHaveLength(350);
   expect(clinical.filter((r) => Boolean(r.sourceUrl))).toHaveLength(350);

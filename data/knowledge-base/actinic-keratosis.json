@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-23 evidence for the bounded actinic-keratosis to squamous-cell-carcinoma proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23647091/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 23647091; systematic review of actinic-keratosis natural history and progression/regression patterns; approved ME-23 guard: require documented lesions, cutaneous SCC pathology, compatible site/chronology, and dermatology review."
         }

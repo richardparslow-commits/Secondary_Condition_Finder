@@ -29,13 +29,7 @@ to research with a qualified provider or an accredited representative.
 The application is deployed on Vercel. The canonical production URL is
 `https://secondary-condition-finder.vercel.app`.
 
-The runtime contains environment-aware adapters for the VA Forms API and VA
-Benefits Reference Data endpoints used for public reference information. Those
-adapters are **disabled by default** and fall back to local reference data when
-live access is disabled, unavailable, invalid, or rate-limited. Credentialed VA
-sandbox proof and any future VA production transition are separate external
-validation gates; repository automation must not claim those gates are complete
-without objective credentialed evidence.
+The current knowledge-base snapshot contains **813 mappings, 347 relationships, 139 published mappings, and 674 draft mappings**. Citation verification is complete for the live snapshot: **355 live source references are verified, with 0 unverified references**. Source-registry lineage records **329 active source entities** and **338 total entities including history**; these figures are governed by `data/evidence/master-sources.json` and `scripts/audit-master-registry.js`.
 
 The browser-local evidence feature can extract text from supported PDF, DOCX,
 and text files. Raw local document bytes and raw extracted document text remain
@@ -245,20 +239,9 @@ repairs `erectile-dysfunction` → `depressive-disorder`; Batch 11 removes the
 unsupported ILD→cardiac-arrhythmia edge while preserving only clinically sourced
 ILD→OSA association research.
 
-The knowledge base now holds **347 relationships across 813 mapping files**,
-with **355 source references, 261 verified, 94 unverified** — all 94 remaining
-unverified references belong to the ME-16..ME-33 mapping-expansion batches and
-await the separate qualified-human citation-verification gate. ME-19 (batch 5)
-through ME-22 (batch 8) are the mapping-expansion batches over the 502
-master-list framework-only identities, adding one rank-1 bounded suggestion each
-for twenty identities: `traumatic-brain-injury-residuals`, `allergic-rhinitis`,
-`diabetic-nephropathy`, `menstrual-disorders`, `oral-lichen-planus-lichenoid-lesions`,
-`pheochromocytoma`, `sjogren-s-syndrome`, `leukoplakia`, `erythroplakia`,
-`meningitis`, `peptic-ulcer-disease`, `eosinophilic-esophagitis`, `cholelithiasis`,
-`insulin-resistance-syndrome`, `metabolic-syndrome`, `transient-ischemic-attack-residuals`,
-`testicular-torsion`, `lichen-sclerosus`, `nasal-polyps`, and `diabetic-gastroparesis`; the remaining framework-only draft mappings (empty suggestions)
-continue to await ME-style research, and no automated change marks a new source
-verified.
+The knowledge base now holds **347 relationships across 813 mapping files**, with **355 live source references, 355 verified, and 0 unverified**. The authoritative master registry records **329 active source entities** (**328 clinical + 1 legal authority**), **0 pending-verification entities**, and **338 total entities including lineage/history**. The all-94 citation-verification approval was applied on 2026-09-04 as a citation-state change only; it did not publish any draft mapping or establish an individual medical nexus. The knowledge base remains **139 published / 674 draft**, and all 674 draft mappings remain draft-only.
+
+ME-19 (batch 5) through ME-22 (batch 8) were the mapping-expansion batches over the 502 master-list framework-only identities, adding one rank-1 bounded suggestion each for twenty identities: `traumatic-brain-injury-residuals`, `allergic-rhinitis`, `diabetic-nephropathy`, `menstrual-disorders`, `oral-lichen-planus-lichenoid-lesions`, `pheochromocytoma`, `sjogren-s-syndrome`, `leukoplakia`, `erythroplakia`, `meningitis`, `peptic-ulcer-disease`, `eosinophilic-esophagitis`, `cholelithiasis`, `insulin-resistance-syndrome`, `metabolic-syndrome`, `transient-ischemic-attack-residuals`, `testicular-torsion`, `lichen-sclerosus`, `nasal-polyps`, and `diabetic-gastroparesis`; the remaining framework-only draft mappings (empty suggestions) continue to await ME-style research. Verification remains a qualified-human governance decision; no automated source retrieval may authorize `verified: true`.
 
 The knowledge base is a Causal Relational Graph (CRG), not a flat association
 list: every suggestion is enforced by the Zod schema to carry the CRG trio

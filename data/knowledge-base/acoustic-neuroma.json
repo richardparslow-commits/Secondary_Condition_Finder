@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-23 evidence for the bounded acoustic-neuroma to hearing-loss proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37024333/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 37024333; review of hearing-loss natural history in sporadic vestibular schwannoma; approved ME-23 guard: require documented tumor, objective loss, compatible laterality/chronology, and tumor/treatment review."
         }

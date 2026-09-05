@@ -12,7 +12,21 @@ npm run citations:queue
 
 The generated report is authoritative for the exact current human-review row set.
 
-## Current citation-verification baseline
+## Authoritative current citation state
+
+The authoritative current state is the ME-35/all-94 citation-verified registry:
+
+- **355** live references: **355 verified / 0 unverified**.
+- **350** live clinical-evidence references, all with canonical URLs.
+- **5** live legal-framework references.
+- **361** verified provenance uses, including **6** retired verified uses.
+- **329** active source entities (**328 clinical + 1 legal authority**).
+- **0** pending-verification source entities.
+- **0** published-unverified review findings and **0** hard findings.
+
+The all-94 approval was applied on 2026-09-04 as a citation-state transition only. It did not publish draft mappings or establish an individual medical nexus. The batch snapshots below are retained for audit history and are not the current queue; run `npm run citations:queue` for the machine-generated review rows.
+
+## Historical citation-verification baseline
 
 After qualified-human Citation Verification Batches 01 through 13, the repository contains **5 live unverified references** and **5 live unverified published references**.
 
@@ -75,10 +89,11 @@ For each live queue row, a qualified reviewer must independently open the canoni
 
 Automated source retrieval or screening is not the qualified-human verification decision required by repository policy.
 
-<!-- citation-verification-master-current:start -->
-## Current citation-verification position
+<!-- HISTORICAL-CURRENT-SECTIONS:START -->
+> The following Batch 13 and M1 sections are historical snapshots retained for provenance. They predate the ME-35/all-94 promotion and are not current aggregate state; consult the authoritative current state at the top of this file.
 
-Master-approved implementation is complete through **Batch 13**.
+
+Master-approved implementation was complete through **Batch 13** at the time of this historical snapshot.
 - Live verified references: **68**
 - Retired verified references: **6**
 - Verified provenance: **74**
@@ -89,10 +104,10 @@ Master-approved implementation is complete through **Batch 13**.
 
 Current unresolved published queue:
 - `mild-tbi.json` → `migraine-headaches`: Schwedt TJ. Posttraumatic Headache. Continuum (Minneap Minn). 2024;30(2):411-424. PMID 38568491
-<!-- citation-verification-master-current:end -->
+<!-- HISTORICAL-CURRENT-SECTIONS:END -->
 
 <!-- clinical-mapping-m1-current:start -->
-## Current clinical-mapping position — M1
+## Historical clinical-mapping position — M1
 
 Qualified-human Clinical Mapping Batch M1 is approved and implemented locally.
 
@@ -118,7 +133,7 @@ M1 publishes:
 - `laryngeal-cancer` → `aphonia`: treatment-complication only; documented total laryngectomy and documented aphonia required.
 
 The 5 live unverified published references are PMID 38568491, PMID 11231832, PMID 17679635, PMID 25630206, and PMID 20189345. No M1 source is auto-verified.
-<!-- clinical-mapping-m1-current:end -->
+<!-- HISTORICAL-CURRENT-SECTIONS:END -->
 
 <!-- CLINICAL-MAPPING-MASTER-2026:START -->
 ## Clinical Mapping Master Batch 2026 — citation verification complete

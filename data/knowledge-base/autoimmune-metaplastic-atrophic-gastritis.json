@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-24 evidence for the bounded autoimmune-metaplastic-atrophic-gastritis to stomach-cancer proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36769710/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 36769710; systematic review and case reports of gastric neoplasms in autoimmune metaplastic atrophic gastritis; approved ME-24 guard: require biopsy-confirmed autoimmune gastritis, pathology-confirmed stomach cancer, compatible site/chronology, and specialist review."
         }

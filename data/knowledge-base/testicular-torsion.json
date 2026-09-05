@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-22 evidence for the bounded testicular-torsion to testicular-atrophy proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26509312/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 26509312; pediatric testicular-salvage cohort; approved ME-22 guard: require documented torsion, objective later ipsilateral atrophy, and compatible chronology; do not infer atrophy from torsion history alone."
         }

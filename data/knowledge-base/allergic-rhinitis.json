@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-19 evidence for the bounded allergic-rhinitis to asthma proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31660100/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 31660100; approved ME-19 source; guard: Require documented allergic rhinitis and separately established asthma before presenting the relationship; the cited systematic review and meta-analysis reported that a history of allergic rhinitis is strongly associated with increased risk of asthma, consistent with the united-airway/allergic-march concept, without establishing that allergic rhinitis caused an individual's asthma. Preserve other asthma triggers (viral infection, occupational exposures, exercise, irritants, gastroesophageal reflux) and other rhinitis phenotypes (non-allergic, vasomotor, mixed) as competing explanations. Do not infer asthma from rhinitis symptoms, spirometry in isolation, or self-reported wheeze alone."
         }

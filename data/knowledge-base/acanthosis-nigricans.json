@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-25 clinical review for the bounded acanthosis-nigricans to type-2-diabetes proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36698243/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 36698243; updated review describing acanthosis nigricans and its association with insulin resistance/diabetes; approved ME-25 guard requires independent diabetes diagnosis and competing-cause review."
         }

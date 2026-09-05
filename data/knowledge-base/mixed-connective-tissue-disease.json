@@ -23,7 +23,7 @@
           "note": "Systematic review and meta-analysis addressing pulmonary arterial hypertension prevalence in mixed connective tissue disease. It supports a bounded population-level association, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37497727/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 37497727; systematic-review scope and adult mixed-connective-tissue-disease PAH prevalence"
         }

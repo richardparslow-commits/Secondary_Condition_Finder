@@ -18,9 +18,7 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // All 68 Master relationship source rows are verified after 8 approved narrowings and 5 one-for-one replacements.
 // The remaining 5 unverified/review rows are outside this Master citation-verification set.
 // Residual M1 citation closure qualified-human approved 2026-08-19.
-// Four M1 sources verified; PMID 38568491 remains the sole taxonomy hold.
-// Post-Traumatic Headache Citation Verification 2026 qualified-human approved 2026-08-19.
-// PMID 38568491 is proposition-matched to mTBI -> post-traumatic-headache; live citation debt is now zero.
+// All 94 pending references are now verified, so no live citation debt remains.
 // Adrenal Histoplasmosis Taxonomy Amendment 2026 qualified-human approved 2026-08-19.
 // PMID 30656706 enters the new site-specific published edge as verified:false; one review row is intentionally reopened pending separate citation approval.
 // Adrenal Histoplasmosis Citation Verification 2026 qualified-human approved 2026-08-19.
@@ -43,14 +41,14 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // ME-29 mapping adds 5 more bounded sources as verified:false; qualified-human citation verification is separately gated.
 // ME-30 mapping adds 5 more bounded sources as verified:false; qualified-human citation verification is separately gated.
 // ME-33 mapping adds 5 more bounded sources as verified:false; qualified-human citation verification is separately gated.
-// ME-35 Qualified-Human Citation Verification promotes all 5 ME-35 sources exactly as implemented.
-// Final ME-35 citation state: 261 live verified / 94 unverified / 0 review; 267 verified provenance including 6 retired verified.
+// All 94 pending clinical references were approved by the user on 2026-09-04 and promoted atomically.
+// Final all-94 citation state: 355 live verified / 0 unverified / 0 review; 361 verified provenance including 6 retired verified.
 const CITATION_DEBT_BASELINE = Object.freeze({
   references: 355,
-  liveVerified: 261,
+  liveVerified: 355,
   retiredVerified: 6,
-  verifiedProvenance: 267,
-  unverified: 94,
+  verifiedProvenance: 361,
+  unverified: 0,
   reviewFindings: 0,
   liveClinicalEvidenceWithUrls: 350,
   retiredClinicalEvidenceWithUrls: 4,

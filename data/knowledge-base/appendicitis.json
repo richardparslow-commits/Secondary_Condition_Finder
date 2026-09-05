@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-34 systematic-review evidence for the bounded complicated-appendicitis/tubal-fertility proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25303785/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-03",
           "sourceLocator": "PMID 25303785; systematic review and meta-analysis of appendectomy, tubal infertility, and ectopic pregnancy; approved ME-34 guard requires complicated-appendicitis phenotype and individual gynecologic review."
         }

@@ -89,10 +89,10 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     expect(sources.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
     expect(sources.counts).toEqual({
       liveSourceReferenceUses: 355,
-      activeSourceEntities: 238,
-      pendingVerificationSourceEntities: 91,
-      activeClinicalSourceEntities: 237,
-      pendingClinicalSourceEntities: 91,
+      activeSourceEntities: 329,
+      pendingVerificationSourceEntities: 0,
+      activeClinicalSourceEntities: 328,
+      pendingClinicalSourceEntities: 0,
       activeLegalAuthorityEntities: 1,
       retiredOnlySourceEntities: 1,
       supersededUnverifiedSourceEntities: 7,
@@ -254,8 +254,8 @@ describe("Master Relationship & Evidence Registry 2026", () => {
   });
 
   it("keeps source lineage states distinct while retaining all active ME-3 sources", () => {
-    expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(238);
-    expect(sources.sources.filter((source) => source.status === "pending-verification")).toHaveLength(91);
+      expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(329);
+    expect(sources.sources.filter((source) => source.status === "pending-verification")).toHaveLength(0);
     expect(sources.sources.filter((source) => source.status === "superseded-unverified")).toHaveLength(7);
     expect(sources.sources.filter((source) => source.status === "bibliographic-correction-only")).toHaveLength(1);
     expect(sources.sources.filter((source) => source.status === "retired-only")).toHaveLength(1);
@@ -301,10 +301,10 @@ describe("Master Relationship & Evidence Registry 2026", () => {
       status: "PASS",
       relationships: 347,
       liveSourceReferenceUses: 355,
-      verifiedLiveSourceUses: 261,
-      pendingVerificationLiveSourceUses: 94,
-      activeSourceEntities: 238,
-      pendingVerificationSourceEntities: 91,
+      verifiedLiveSourceUses: 355,
+      pendingVerificationLiveSourceUses: 0,
+      activeSourceEntities: 329,
+      pendingVerificationSourceEntities: 0,
     });
   });
 

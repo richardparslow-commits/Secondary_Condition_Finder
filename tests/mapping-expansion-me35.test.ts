@@ -85,7 +85,7 @@ describe("Mapping Expansion Batch ME-35", () => {
     expect(sources.currentState).toBe("ME35-CITATION-VERIFIED");
     expect(relationships.counts).toEqual({ relationships: 347, explicitPublicationGuards: 273, legacyRationaleBoundaries: 74 });
     expect(relationships.relationships).toHaveLength(347);
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 355, activeSourceEntities: 238, pendingVerificationSourceEntities: 91, activeClinicalSourceEntities: 237, pendingClinicalSourceEntities: 91, totalSourceEntitiesIncludingLineage: 338 });
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 355, activeSourceEntities: 329, pendingVerificationSourceEntities: 0, activeClinicalSourceEntities: 328, pendingClinicalSourceEntities: 0, totalSourceEntitiesIncludingLineage: 338 });
     expect(sources.sources).toHaveLength(338);
   });
 });

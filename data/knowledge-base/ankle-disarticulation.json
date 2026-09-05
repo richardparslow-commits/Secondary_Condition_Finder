@@ -24,7 +24,7 @@
           "note": "Lower-limb amputation evidence addressing phantom limb complex and variation by amputation level. Supports a bounded post-amputation association and clinical evaluation, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28242264/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-03",
           "sourceLocator": "PMID 28242264; lower-limb amputation-level analysis of phantom limb complex"
         }

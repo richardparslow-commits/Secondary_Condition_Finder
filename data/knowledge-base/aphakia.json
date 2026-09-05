@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-27 case-series evidence for the bounded aphakia visual-outcome proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35051625/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 35051625; congenital primary aphakia case series describing natural history, management, and visual outcomes; approved ME-27 guard requires objective visual impairment and competing ocular-cause review."
         }

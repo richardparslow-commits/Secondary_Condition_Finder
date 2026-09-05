@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-26 systematic review/meta-analysis for the bounded atopic-dermatitis-eczema to asthma proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34384834/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 34384834; systematic review/meta-analysis of atopic-dermatitis phenotypes and subsequent asthma risk; approved ME-26 guard requires independent asthma diagnosis, phenotype, chronology, and competing-cause review."
         }

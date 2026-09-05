@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-20 evidence for the bounded pheochromocytoma to hypertension proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24893135/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-02",
           "sourceLocator": "PMID 24893135; approved ME-20 source; guard: Require a diagnosed pheochromocytoma (biochemically confirmed catecholamine excess with compatible imaging or histology) and separately established hypertension with compatible chronology; the cited Endocrine Society clinical practice guideline identifies paroxysmal or sustained hypertension as the most common clinical presentation of pheochromocytoma and paraganglioma, without establishing that pheochromocytoma caused an individual's sustained hypertension as opposed to paroxysmal episodes or unrelated essential hypertension. Preserve essential (primary) hypertension, renal and renovascular hypertension, other endocrine causes (primary aldosteronism, thyroid disease, Cushing syndrome), obstructive sleep apnea, medications and substances, and pre-existing hypertension antedating tumor development as competing explanations. Do not infer pheochromocytoma from episodic blood-pressure elevation or from hypertension alone, and do not treat this guideline-framed association as proof that pheochromocytoma caused an individual's hypertensive disease."
         }

@@ -23,7 +23,7 @@
           "note": "Mapping Expansion Batch ME-16 evidence for the bounded agoraphobia to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27775828/",
-          "verified": false,
+          "verified": true,
           "sourceCheckedOn": "2026-09-01",
           "sourceLocator": "PMID 27775828; approved ME-16 source; guard: Require independently documented DSM-5 agoraphobia and separately established depressive disorder; under DSM-5 agoraphobia is distinct from panic disorder and must not be inferred from panic attacks or panic disorder alone. The cited cross-national survey reported agoraphobia comorbidity with depressive and other disorders without establishing onset order or direction. Preserve other anxiety disorders, depressive disorders, substance use, medical causes of episodic symptoms, and avoidance attributable to other conditions as competing explanations. Do not present co-occurrence as inevitable progression, and do not treat this population-level association as proof that agoraphobia caused an individual's depressive disorder."
         }
