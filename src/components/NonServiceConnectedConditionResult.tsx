@@ -136,6 +136,31 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
             </div>
           </section>
 
+          {(recommendation.intermediatePathways?.length ?? 0) > 0 && (
+            <section className="mt-4 rounded-lg border border-violet-300 bg-violet-50 p-4">
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-violet-900">Intermediate-chain research pathway</h4>
+              <p className="mt-2 text-sm text-violet-950">
+                This bounded two-step path is shown because both published edges connect a selected service-connected condition to this diagnosed condition through an intermediate condition. It is not a synthetic direct relationship or an individual nexus finding; each edge requires separate clinical support.
+              </p>
+              <div className="mt-3 space-y-3">
+                {recommendation.intermediatePathways?.map((pathway) => (
+                  <div key={`${pathway.primaryId}-${pathway.intermediateId}-${pathway.targetId}`} className="rounded-lg border border-violet-200 bg-white p-3">
+                    <p className="font-semibold text-violet-950">{pathway.causalChain}</p>
+                    <ol className="mt-2 space-y-2 text-sm text-slate-700">
+                      {pathway.edges.map((edge, index) => (
+                        <li key={`${edge.conditionId}-${edge.targetConditionId}`}>
+                          <span className="font-medium">Edge {index + 1}:</span> {edge.conditionName} → {edge.targetConditionName} ({edge.nexusClassification}; {edge.etiologicalConsensus})
+                          <p className="mt-1 text-xs text-slate-600">{edge.rationale}</p>
+                          <p className="mt-1 text-xs text-slate-500">Provenance: {edge.sourceReferences.map((reference) => reference.citation).join(", ")}</p>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {recommendation.matchedIntakeContext.length > 0 && (
             <section className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
               <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
@@ -151,6 +176,22 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
               <p className="mt-2 text-xs text-slate-600">
                 This is literal text overlap only. It does not establish causation, aggravation, or medical nexus.
               </p>
+            </section>
+          )}
+
+          {(recommendation.clinicalFrictionWarnings?.length ?? 0) > 0 && (
+            <section className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-4">
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-amber-900">Alternative-etiology review</h4>
+              <p className="mt-2 text-sm text-amber-950">Your reported history overlaps with an alternative cause listed for this authored mapping. This is a clinical-friction warning for discussion, not a finding that the alternative cause is present or that the mapped relationship fails.</p>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-amber-950">{recommendation.clinicalFrictionWarnings?.map((warning) => <li key={`${warning.primaryId}-${warning.message}`}>{warning.message}</li>)}</ul>
+            </section>
+          )}
+
+          {(recommendation.chronologyWarnings?.length ?? 0) > 0 && (
+            <section className="mt-4 rounded-lg border border-orange-300 bg-orange-50 p-4">
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-orange-900">Chronology question to resolve</h4>
+              <p className="mt-2 text-sm text-orange-950">Approximate dates created a chronology question for this authored theory. Dates may reflect delayed diagnosis rather than onset, so review the underlying records with a qualified provider or representative.</p>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-orange-950">{recommendation.chronologyWarnings?.map((warning) => <li key={`${warning.primaryId}-${warning.message}`}>{warning.message}</li>)}</ul>
             </section>
           )}
 

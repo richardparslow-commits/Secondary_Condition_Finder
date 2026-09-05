@@ -5,6 +5,13 @@ import type { ConditionCatalog } from "@/lib/catalog/schema";
 
 export const MAX_CONTEXT_ITEMS = 20;
 export const MAX_CONTEXT_ITEM_LENGTH = 160;
+export const MIN_TIMELINE_YEAR = 1900;
+export const MAX_TIMELINE_YEAR = 2100;
+
+export interface ConditionTimelineEntry {
+  onsetYear?: number;
+  diagnosisYear?: number;
+}
 
 export interface SecondaryWorkflowState {
   diagnosedConditionIds: string[];
@@ -13,6 +20,8 @@ export interface SecondaryWorkflowState {
   documentsShared: boolean;
   medications?: string[];
   treatments?: string[];
+  history?: string[];
+  conditionTimeline?: Record<string, ConditionTimelineEntry>;
 }
 
 export type QueryValue = string | string[] | undefined;
@@ -211,6 +220,33 @@ export function parseRatingsPrefill(
   return ratingsByConditionId;
 }
 
+function parseYear(raw: string | undefined, label: string): number | undefined {
+  if (!raw || raw.trim() === "") return undefined;
+  const year = Number(raw);
+  if (!Number.isInteger(year) || year < MIN_TIMELINE_YEAR || year > MAX_TIMELINE_YEAR) {
+    throw new Error(`${label} must be a whole year from ${MIN_TIMELINE_YEAR} through ${MAX_TIMELINE_YEAR}.`);
+  }
+  return year;
+}
+
+function parseTimeline(
+  params: QueryParams,
+  conditionIds: string[],
+): Record<string, ConditionTimelineEntry> {
+  const timeline: Record<string, ConditionTimelineEntry> = {};
+  for (const id of conditionIds) {
+    const onsetYear = parseYear(first(params[`onsetYear-${id}`]), `${id} onset year`);
+    const diagnosisYear = parseYear(first(params[`diagnosisYear-${id}`]), `${id} diagnosis year`);
+    if (onsetYear !== undefined || diagnosisYear !== undefined) {
+      timeline[id] = {
+        ...(onsetYear !== undefined ? { onsetYear } : {}),
+        ...(diagnosisYear !== undefined ? { diagnosisYear } : {}),
+      };
+    }
+  }
+  return timeline;
+}
+
 function parseDocumentsShared(value: QueryValue): boolean {
   const parsed = documentsSharedSchema.parse({
     documentsShared: first(value),
@@ -219,8 +255,11 @@ function parseDocumentsShared(value: QueryValue): boolean {
   return parsed.documentsShared === "yes";
 }
 
-export function parseDocumentsSharedPrefill(value: QueryValue): boolean {
-  return first(value) === "yes";
+export function timelineField(
+  conditionId: string,
+  field: "onsetYear" | "diagnosisYear",
+): string {
+  return `${field}-${conditionId}`;
 }
 
 export function parseDocumentsSelection(
@@ -230,12 +269,16 @@ export function parseDocumentsSelection(
   const ratings = parseRatingsSelection(params, catalog);
   const medications = parseContextEntries(params.medications, "Medication");
   const treatments = parseContextEntries(params.treatments, "Treatment");
+  const history = parseContextEntries(params.history, "History");
+  const timeline = parseTimeline(params, ratings.diagnosedConditionIds);
 
   return {
     ...ratings,
     documentsShared: parseDocumentsShared(params.documentsShared),
     ...(medications.length > 0 ? { medications } : {}),
     ...(treatments.length > 0 ? { treatments } : {}),
+    ...(history.length > 0 ? { history } : {}),
+    ...(Object.keys(timeline).length > 0 ? { conditionTimeline: timeline } : {}),
   };
 }
 

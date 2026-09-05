@@ -18,6 +18,10 @@ import {
 const WORKFLOW_COOKIE = "secondary-workflow-v2";
 export const MAX_WORKFLOW_COOKIE_VALUE_BYTES = 3800;
 const contextEntrySchema = z.string().min(1).max(MAX_CONTEXT_ITEM_LENGTH);
+const timelineEntrySchema = z.object({
+  onsetYear: z.number().int().min(1900).max(2100).optional(),
+  diagnosisYear: z.number().int().min(1900).max(2100).optional(),
+});
 
 const storedWorkflowStateSchema = z.object({
   diagnosedConditionIds: z.array(z.string().min(1)).optional(),
@@ -29,11 +33,11 @@ const storedWorkflowStateSchema = z.object({
   documentsShared: z.boolean().optional(),
   medications: z.array(contextEntrySchema).max(MAX_CONTEXT_ITEMS).optional(),
   treatments: z.array(contextEntrySchema).max(MAX_CONTEXT_ITEMS).optional(),
+  history: z.array(contextEntrySchema).max(MAX_CONTEXT_ITEMS).optional(),
+  conditionTimeline: z.record(z.string(), timelineEntrySchema).optional(),
 });
 
-export type StoredSecondaryWorkflowState = z.infer<
-  typeof storedWorkflowStateSchema
->;
+export type StoredSecondaryWorkflowState = z.infer<typeof storedWorkflowStateSchema>;
 
 export function parseStoredSecondaryWorkflowState(
   value: unknown,
@@ -74,7 +78,6 @@ export async function readSecondaryWorkflowSession(): Promise<StoredSecondaryWor
   const jar = await cookies();
   const raw = jar.get(WORKFLOW_COOKIE)?.value;
   if (!raw) return {};
-
   return openWorkflowState(raw) ?? {};
 }
 
@@ -101,13 +104,8 @@ export function workflowSessionToQueryParams(
 ): QueryParams {
   const params: QueryParams = {};
 
-  if (state.diagnosedConditionIds?.length) {
-    params.diagnosed = [...state.diagnosedConditionIds];
-  }
-
-  if (state.serviceConnectedConditionIds?.length) {
-    params.serviceConnected = [...state.serviceConnectedConditionIds];
-  }
+  if (state.diagnosedConditionIds?.length) params.diagnosed = [...state.diagnosedConditionIds];
+  if (state.serviceConnectedConditionIds?.length) params.serviceConnected = [...state.serviceConnectedConditionIds];
 
   if (state.ratingsByConditionId && state.serviceConnectedConditionIds) {
     for (const id of state.serviceConnectedConditionIds) {
@@ -122,6 +120,13 @@ export function workflowSessionToQueryParams(
   }
   if (state.medications?.length) params.medications = [...state.medications];
   if (state.treatments?.length) params.treatments = [...state.treatments];
+  if (state.history?.length) params.history = [...state.history];
+  if (state.conditionTimeline) {
+    for (const [id, timeline] of Object.entries(state.conditionTimeline)) {
+      if (timeline.onsetYear !== undefined) params[`onsetYear-${id}`] = String(timeline.onsetYear);
+      if (timeline.diagnosisYear !== undefined) params[`diagnosisYear-${id}`] = String(timeline.diagnosisYear);
+    }
+  }
 
   return params;
 }
@@ -145,5 +150,9 @@ export function toCompleteWorkflowState(
     documentsShared: state.documentsShared,
     medications: [...(state.medications ?? [])],
     treatments: [...(state.treatments ?? [])],
+    history: [...(state.history ?? [])],
+    conditionTimeline: Object.fromEntries(
+      Object.entries(state.conditionTimeline ?? {}).map(([id, timeline]) => [id, { ...timeline }]),
+    ),
   };
 }

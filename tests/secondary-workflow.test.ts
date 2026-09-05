@@ -170,6 +170,37 @@ describe("secondary workflow state parsing", () => {
     });
   });
 
+  it("parses bounded history and approximate chronology context", () => {
+    const parsed = parseDocumentsSelection(
+      {
+        diagnosed: ["ptsd", "sleep-apnea"],
+        serviceConnected: ["ptsd"],
+        "rating-ptsd": "70",
+        documentsShared: "yes",
+        history: ["Alcohol exposure", "Prior trauma"],
+        "onsetYear-ptsd": "2010",
+        "diagnosisYear-sleep-apnea": "2018",
+      },
+      catalog,
+    );
+
+    expect(parsed.history).toEqual(["Alcohol exposure", "Prior trauma"]);
+    expect(parsed.conditionTimeline).toEqual({
+      ptsd: { onsetYear: 2010 },
+      "sleep-apnea": { diagnosisYear: 2018 },
+    });
+  });
+
+  it("rejects chronology years outside the bounded range", () => {
+    expect(() => parseDocumentsSelection({
+      diagnosed: ["ptsd"],
+      serviceConnected: ["ptsd"],
+      "rating-ptsd": "70",
+      documentsShared: "no",
+      "onsetYear-ptsd": "1800",
+    }, catalog)).toThrow();
+  });
+
   it("requires upload-step selection before suggestions/evidence", () => {
     expect(() =>
       parseDocumentsSelection(

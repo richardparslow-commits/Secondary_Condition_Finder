@@ -7,6 +7,7 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { buildEvidenceConditionTerms } from "@/lib/evidence/condition-terms";
 import { readSecondaryWorkflowSession, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
+import { MAX_TIMELINE_YEAR, MIN_TIMELINE_YEAR, timelineField } from "@/lib/secondary-workflow/state";
 import { saveDocumentsSelection } from "@/lib/actions/secondary";
 
 interface UploadPageProps { workflowState?: StoredSecondaryWorkflowState; }
@@ -27,6 +28,8 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
   const documentsShared = session.documentsShared ?? false;
   const medications = session.medications ?? [];
   const treatments = session.treatments ?? [];
+  const history = session.history ?? [];
+  const conditionTimeline = session.conditionTimeline ?? {};
 
   if (diagnosedConditionIds.length === 0 || serviceConnectedConditionIds.length === 0 || !ratingsByConditionId || serviceConnectedConditionIds.some((id) => ratingsByConditionId[id] === undefined)) {
     return <main><header className="page-hero"><h1>Enter ratings first</h1><p>Complete the ratings step before continuing to document availability.</p></header><div className="ui-callout mb-5 text-sm"><strong>🔒 Evidence Upload Privacy Contract:</strong> Document review is <strong>strictly optional</strong>. Supported evidence text is analyzed locally in the browser. Raw document text is not sent to the application server, stored in workflow cookies, or written to <strong>raw text logs</strong>.</div><Link href="/secondary/ratings" className="ui-button">Back to current ratings</Link></main>;
@@ -70,8 +73,30 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
                   <p id="treatments-help" className="mt-1 text-sm text-slate-600">Examples: physical therapy, CPAP, knee brace, surgery. This context does not change recommendation ranking or establish causation.</p>
                   <textarea id="treatments" name="treatments" aria-describedby="treatments-help" rows={4} maxLength={3220} defaultValue={treatments.join("\n")} className="mt-2 w-full rounded-lg border border-slate-300 p-3" />
                 </div>
+                <div>
+                  <label htmlFor="history" className="block font-medium">Relevant history or risk factors</label>
+                  <p id="history-help" className="mt-1 text-sm text-slate-600">Optional, bounded entries such as alcohol exposure, smoking, kidney disease, prior trauma, or family history. Exact overlap may create an alternative-etiology warning for clinician review; it never changes ranking or decides causation.</p>
+                  <textarea id="history" name="history" aria-describedby="history-help" rows={4} maxLength={3220} defaultValue={history.join("\n")} className="mt-2 w-full rounded-lg border border-slate-300 p-3" />
+                </div>
               </div>
               <div className="ui-callout mt-4 text-sm"><strong>Workflow privacy:</strong> These optional entries are stored only in the same encrypted, HttpOnly, short-lived workflow cookie used for the current secondary review. They are not placed in URLs, recommendation logs, telemetry, or user accounts.</div>
+            </fieldset>
+
+            <fieldset className="rounded-xl border border-slate-200 p-4 shadow-none">
+              <legend className="font-semibold">Optional chronology context</legend>
+              <p className="mt-1 text-sm text-slate-600">Enter approximate years only if known. The app uses these values to flag chronology questions; diagnosis year is not assumed to equal onset year, and missing dates produce no chronology conclusion.</p>
+              <div className="mt-4 space-y-3">
+                {selectedConditions.map((condition) => {
+                  const timeline = conditionTimeline[condition.id] ?? {};
+                  return (
+                    <div key={condition.id} className="grid gap-3 rounded-lg border border-slate-200 p-3 sm:grid-cols-[1fr_10rem_10rem] sm:items-end">
+                      <div><p className="font-medium">{condition.name}</p><p className="text-xs text-slate-500">{condition.bodySystem}</p></div>
+                      <label className="text-sm">Approximate onset year<input type="number" name={timelineField(condition.id, "onsetYear")} min={MIN_TIMELINE_YEAR} max={MAX_TIMELINE_YEAR} inputMode="numeric" defaultValue={timeline.onsetYear ?? ""} className="mt-1 w-full px-3" /></label>
+                      <label className="text-sm">Formal diagnosis year<input type="number" name={timelineField(condition.id, "diagnosisYear")} min={MIN_TIMELINE_YEAR} max={MAX_TIMELINE_YEAR} inputMode="numeric" defaultValue={timeline.diagnosisYear ?? ""} className="mt-1 w-full px-3" /></label>
+                    </div>
+                  );
+                })}
+              </div>
             </fieldset>
 
             <fieldset className="rounded-xl border border-slate-200 p-4 shadow-none">

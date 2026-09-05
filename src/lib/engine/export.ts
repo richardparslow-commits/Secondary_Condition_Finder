@@ -22,6 +22,25 @@ export function formatClaimSummary(
     lines.push(`   Etiological Consensus: ${rec.etiologicalConsensus}`);
     lines.push(`   Contributing Primaries: ${rec.contributingPrimaries.map((primary) => primary.name).join(", ")}`);
 
+    if (rec.intermediatePathways?.length) {
+      lines.push("   Intermediate-Chain Research Pathways (not direct nexus findings):");
+      rec.intermediatePathways.forEach((pathway) => {
+        lines.push(`     - ${pathway.causalChain}`);
+        pathway.edges.forEach((edge, edgeIndex) => {
+          lines.push(`       Edge ${edgeIndex + 1}: ${edge.conditionName} → ${edge.targetConditionName}`);
+          lines.push(`       Classification: ${edge.nexusClassification}; Consensus: ${edge.etiologicalConsensus}`);
+          lines.push(`       Sources: ${edge.sourceReferences.map((reference) => reference.citation).join(", ")}`);
+        });
+      });
+    }
+
+    if (rec.clinicalFrictionWarnings?.length) {
+      lines.push(`   Alternative-Etiology Review: ${rec.clinicalFrictionWarnings.map((warning) => warning.message).join("; ")}`);
+    }
+    if (rec.chronologyWarnings?.length) {
+      lines.push(`   Chronology Questions: ${rec.chronologyWarnings.map((warning) => warning.message).join("; ")}`);
+    }
+
     if (evaluation) {
       lines.push(`   Satisfied Gaps: ${evaluation.satisfiedGaps.join("; ") || "None yet"}`);
       lines.push(`   Remaining Gaps: ${evaluation.remainingGaps.join("; ") || "None yet"}`);
