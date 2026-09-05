@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDownload";
+import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { EvidenceGapReview } from "@/components/evidence/EvidenceGapReview";
 import { LocalEvidenceReview } from "@/components/evidence/LocalEvidenceReview";
@@ -21,6 +22,7 @@ import {
 } from "@/lib/regulatory/preflight";
 import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
 import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workflow/suggestions";
+import { buildSymptomDiscussionPrompts } from "@/lib/secondary-workflow/symptom-bridge";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams } from "@/lib/secondary-workflow/session";
 
@@ -98,6 +100,11 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
     ...recommendation,
     matchedIntakeContext: [],
   }));
+  const conditionNamesById = new Map([...byId].map(([id, condition]) => [id, condition.name] as const));
+  const symptomDiscussionPrompts = buildSymptomDiscussionPrompts(
+    state.symptomIds ?? [],
+    conditionNamesById,
+  );
   const evidenceGapRecommendations = linkedRecommendations.map((recommendation) => ({
     conditionId: recommendation.conditionId,
     condition: recommendation.condition,
@@ -113,6 +120,7 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
 
       <div className="ui-grid">
         <aside className="ui-card">
+          <SymptomDiscussionReview prompts={symptomDiscussionPrompts} />
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Condition Summary</h2></div>
           <p className="ui-kicker">Already service connected</p>
           <ul className="mt-3 space-y-3">{state.serviceConnectedConditionIds.map((id) => { const condition = byId.get(id); if (!condition) return null; const rating = state.ratingsByConditionId[id]; return <li key={id} className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm"><strong className="block text-blue-900">{condition.name}</strong><span>{rating === null ? "Rating not provided" : `${rating}% current rating entered`}</span></li>; })}</ul>

@@ -8,6 +8,7 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { buildEvidenceConditionTerms } from "@/lib/evidence/condition-terms";
 import { readSecondaryWorkflowSession, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
 import { MAX_TIMELINE_YEAR, MIN_TIMELINE_YEAR, timelineField } from "@/lib/secondary-workflow/state";
+import { listSymptomBridgeEntries } from "@/lib/secondary-workflow/symptom-bridge";
 import { saveDocumentsSelection } from "@/lib/actions/secondary";
 
 interface UploadPageProps { workflowState?: StoredSecondaryWorkflowState; }
@@ -29,7 +30,9 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
   const medications = session.medications ?? [];
   const treatments = session.treatments ?? [];
   const history = session.history ?? [];
+  const symptomIds = session.symptomIds ?? [];
   const conditionTimeline = session.conditionTimeline ?? {};
+  const symptomBridgeEntries = listSymptomBridgeEntries();
 
   if (diagnosedConditionIds.length === 0 || serviceConnectedConditionIds.length === 0 || !ratingsByConditionId || serviceConnectedConditionIds.some((id) => ratingsByConditionId[id] === undefined)) {
     return <main><header className="page-hero"><h1>Enter ratings first</h1><p>Complete the ratings step before continuing to document availability.</p></header><div className="ui-callout mb-5 text-sm"><strong>🔒 Evidence Upload Privacy Contract:</strong> Document review is <strong>strictly optional</strong>. Supported evidence text is analyzed locally in the browser. Raw document text is not sent to the application server, stored in workflow cookies, or written to <strong>raw text logs</strong>.</div><Link href="/secondary/ratings" className="ui-button">Back to current ratings</Link></main>;
@@ -77,6 +80,18 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
                   <label htmlFor="history" className="block font-medium">Relevant history or risk factors</label>
                   <p id="history-help" className="mt-1 text-sm text-slate-600">Optional, bounded entries such as alcohol exposure, smoking, kidney disease, prior trauma, or family history. Exact overlap may create an alternative-etiology warning for clinician review; it never changes ranking or decides causation.</p>
                   <textarea id="history" name="history" aria-describedby="history-help" rows={4} maxLength={3220} defaultValue={history.join("\n")} className="mt-2 w-full rounded-lg border border-slate-300 p-3" />
+                </div>
+              </div>
+              <div className="mt-5 rounded-lg border border-violet-200 bg-violet-50 p-4">
+                <h3 className="font-semibold text-violet-950">Optional symptom research prompts</h3>
+                <p className="mt-1 text-sm text-violet-950">Select symptoms you want to discuss with a qualified provider. The app may show possible discussion topics later, but it will not diagnose you or add these conditions to the review.</p>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {symptomBridgeEntries.map((entry) => (
+                    <label key={entry.id} className="flex items-start gap-2 rounded-lg border border-violet-200 bg-white p-3 text-sm text-slate-800">
+                      <input type="checkbox" name="symptomIds" value={entry.id} defaultChecked={symptomIds.includes(entry.id)} className="mt-0.5 h-4 w-4" />
+                      <span>{entry.label}</span>
+                    </label>
+                  ))}
                 </div>
               </div>
               <div className="ui-callout mt-4 text-sm"><strong>Workflow privacy:</strong> These optional entries are stored only in the same encrypted, HttpOnly, short-lived workflow cookie used for the current secondary review. They are not placed in URLs, recommendation logs, telemetry, or user accounts.</div>
