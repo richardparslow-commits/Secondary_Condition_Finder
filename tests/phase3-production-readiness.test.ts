@@ -56,15 +56,15 @@ describe("Phase 3 production-access package contracts", () => {
   it("keeps credentialed sandbox validation pending until objective evidence exists", () => {
     const request = readRepoFile("docs/phase3-production-access-package.md");
     const checklist = readRepoFile("docs/phase3-submission-checklist.md");
-    const phasePlan = readRepoFile("docs/phase-plan.md");
     const audit = readRepoFile("docs/phase2-completion-audit.md");
+    const gates = readRepoFile("docs/external-manual-gates-status.md");
 
     expect(request).toContain("Credentialed live sandbox proof in issue #189");
-    expect(checklist).toContain("- [ ] Issue #189 is closed with sanitized credentialed sandbox success evidence");
-    expect(phasePlan).toContain("Current status: **code-complete / externally pending**");
-    expect(phasePlan).toContain("workflow ID `332298000`) still has **zero recorded runs**");
+    expect(checklist).toContain("- [x] Issue #189 is closed with sanitized credentialed sandbox success evidence for VA Forms and Benefits Reference Data.");
+    expect(gates).toMatch(/Issue #189[\s\S]*COMPLETE \/ CLOSED/i);
+    expect(gates).toMatch(/Issue #195[\s\S]*OPEN \/ HUMAN-ONLY/i);
     expect(audit).toContain("Phase 2 external completion status: PENDING ONE EXTERNAL GATE");
-    expect(audit).toContain("workflow ID `332298000`) is manual-only and currently has **zero recorded runs**");
+    expect(audit).toContain("it now has one successful credentialed run on `main`");
   });
 
   it("records the current Vercel checkpoint while requiring fresh submission-time verification", () => {
