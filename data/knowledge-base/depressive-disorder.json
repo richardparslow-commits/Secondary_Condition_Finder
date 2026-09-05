@@ -111,17 +111,17 @@
          ],
          "nexusClaim": {
             "nexusClassification": "DIRECT_CAUSATION",
-            "etiologicalTrigger": "Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required."
+            "etiologicalTrigger": "This DIRECT_CAUSATION classification is about the proposed psychotropic-medication secondary theory, not a population-level statement that depressive disorder causes erectile dysfunction. Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required."
          },
          "causalMechanism": {
             "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
-            "primaryVector": "Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required.",
+            "primaryVector": "This DIRECT_CAUSATION classification is about the proposed psychotropic-medication secondary theory, not a population-level statement that depressive disorder causes erectile dysfunction. Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required.",
             "hypothesizedOnly": false
          },
          "evidentiaryProfile": {
             "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
             "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
-            "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required.",
+            "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation. The DIRECT_CAUSATION classification here is about the proposed psychotropic-medication secondary theory, not a population-level statement that depressive disorder causes erectile dysfunction. Depressive disorder → relevant antidepressant or other psychotropic treatment, if applicable → claimed erectile dysfunction; agent-specific exposure and individual chronology are required.",
             "evidenceGaps": "Diagnosis and clinical characterization of erectile dysfunction; Prescription records showing the specific psychotropic exposure, dose, duration, and timing; Medical assessment addressing baseline erectile function and vascular, endocrine, neurologic, psychiatric, medication, substance-use, and lifestyle alternatives; Medical nexus addressing the individual relationship between the specific medication exposure and erectile dysfunction",
             "alternativeEtiologiesToRuleOut": [
                "Other causes not yet identified in this mapping"
