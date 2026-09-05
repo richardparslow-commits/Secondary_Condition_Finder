@@ -4,7 +4,7 @@ Use this immediately before completing the VA API Platform production-access for
 
 ## Blocking submission gate
 
-- [ ] Issue #189 is closed with sanitized credentialed sandbox success evidence for VA Forms and Benefits Reference Data.
+- [x] Issue #189 is closed with sanitized credentialed sandbox success evidence for VA Forms and Benefits Reference Data.
 - [ ] Issue #195 is closed with recorded manual Section 508/accessibility evidence and any material findings remediated/retested.
 - [ ] `docs/section508-manual-review-workbook.md` contains build-specific human evidence rather than automated-test substitutes.
 - [ ] Truthful applicant/organization/business-model details are supplied.
@@ -99,6 +99,7 @@ Describe the current server-only model:
 - `VA_API_ENABLED=true` is the explicit environment-neutral activation flag.
 - `VA_SANDBOX_ENABLED=true` remains the backward-compatible Phase 2 sandbox gate.
 - Sandbox GitHub Actions secrets are configured as `VAFORMSSANDBOXAPIKEY` and `VABENEFITSREFERENCESANDBOXAPIKEY`; the workflow maps them to the internal runtime names `VA_FORMS_SANDBOX_API_KEY` and `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`.
+- The credentialed sandbox smoke test has already been run on `main` using those mapped secrets.
 - Production keys are separate: `VA_FORMS_PRODUCTION_API_KEY` and `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY`.
 - Production mode remains disabled until VA grants production access.
 - No VA key is stored in source control, exposed through `NEXT_PUBLIC_*`, logged, placed in URLs, or copied into artifacts.
@@ -180,7 +181,7 @@ Before answering VA's accessibility question:
 - [ ] Legal/medical scope matches `/terms`.
 - [ ] API scope matches `docs/va-api-access-strategy.md` and current implemented routes.
 - [ ] Runtime/credential description matches `docs/va-api-runtime-configuration.md`.
-- [ ] #189 is closed only with objective sanitized credentialed evidence.
+- [x] #189 is closed only with objective sanitized credentialed evidence.
 - [ ] #195 is closed only with objective manual accessibility evidence recorded in the workbook.
 - [ ] Issue #287 remains open until VA production access is granted and live production connectivity is verified.
 - [ ] No unsupported business, accessibility, security-certification, regulatory-compliance, or production-access claim is included.

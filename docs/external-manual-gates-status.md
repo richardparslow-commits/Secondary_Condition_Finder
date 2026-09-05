@@ -4,19 +4,18 @@ This record separates repository-complete work from evidence that cannot legitim
 
 ## Issue #189 — credentialed VA sandbox smoke test
 
-**Status: OPEN / EXTERNALLY BLOCKED.**
+**Status: COMPLETE / CLOSED.**
 
-The repository-side VA Forms and Benefits Reference Data sandbox adapters/workflow are implemented. Closing the gate requires a real non-production run with issued server-only credentials configured in GitHub Actions secrets `VAFORMSSANDBOXAPIKEY` and `VABENEFITSREFERENCESANDBOXAPIKEY`; the workflow maps those values to the internal `VA_FORMS_SANDBOX_API_KEY` and `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY` variables before execution, followed by objective non-sensitive success evidence.
+The repository-side VA Forms and Benefits Reference Data sandbox adapters/workflow are implemented. Closing the gate required a real non-production run with issued server-only credentials configured in GitHub Actions secrets `VAFORMSSANDBOXAPIKEY` and `VABENEFITSREFERENCESANDBOXAPIKEY`; the workflow maps those values to the internal `VA_FORMS_SANDBOX_API_KEY` and `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY` variables before execution, followed by objective non-sensitive success evidence.
 
-Current automation in this environment cannot complete the gate because:
+This gate was closed by a credentialed dispatch of the existing `VA Sandbox Smoke Test` workflow on `main` after the workflow was corrected to read the configured secret names. The recorded sanitized evidence is:
 
-- no GitHub secret-management action is available through the connected tool surface;
-- no workflow-dispatch action is available through the connected tool surface; and
-- credential values must never be pasted into chat, committed, printed, or inferred.
+- VA Forms: HTTP 200; request ID `4e806cfd-36e6-4aea-b3b8-8765f2f9a828`; validated result count 1.
+- Benefits Reference Data: HTTP 200; request ID `1785c029-bb9b-4384-bd3f-b61d41f363dd`; validated result count 9.
+- Workflow run: [33997305230](https://github.com/richardparslow-commits/Secondary_Condition_Finder/actions/runs/33997305230)
+- No API key or raw response payload was recorded in the evidence.
 
-The remaining action is therefore external configuration plus a credentialed dispatch of the existing `VA Sandbox Smoke Test` workflow on `main`. Only timestamp/service/HTTP-success/request-ID/high-level validation evidence should be recorded; credentials and raw payloads must remain secret.
-
-Repository automation must not close #189 or claim live sandbox verification until that objective run exists.
+Repository automation did not invent this evidence; it was produced by a successful external credentialed workflow run from `main` and recorded only as sanitized timestamp/service/HTTP-success/request-ID/high-level validation evidence.
 
 ## Issue #195 — manual Section 508 accessibility review
 
@@ -24,9 +23,16 @@ Repository automation must not close #189 or claim live sandbox verification unt
 
 Repository CI, Chrome E2E, source-level accessibility contracts, deployment reachability, and Runtime Readiness are supporting evidence only. The issue explicitly requires human keyboard, assistive-technology, zoom/reflow, contrast, and forced-colors testing with synthetic/non-sensitive data plus reviewer sign-off.
 
-Automation can keep the workbook, routes, and supporting evidence ready, but it cannot truthfully record PASS for an unperformed human test. The canonical manual evidence record remains `docs/section508-manual-review-workbook.md`.
+Automation can keep the workbook, routes, and supporting evidence ready, and it can reflect the current gate context in downstream documents, but it cannot truthfully record PASS for an unperformed human test. The canonical manual evidence record remains `docs/section508-manual-review-workbook.md`, and every required row still carries the default state of `NOT TESTED` until a human completes the workbook against the exact identified production build.
 
-Repository automation must not close #195 or state Section 508 conformance until the human evidence matrix, retests for any material findings, and final sign-off are complete.
+Issue #195 remains open. It may stay open until:
+
+1. every required manual item has recorded human evidence on an identified production build;
+2. every material finding has a remediation issue/PR and a recorded retest;
+3. `docs/accessibility-audit.md` is updated with the completed review date, tester/environment evidence, known limitations, and supportable final status; and
+4. `docs/phase3-submission-checklist.md` is updated from objective evidence.
+
+Repository automation must not close #195 or claim Section 508 conformance until the human evidence matrix, retests for any material findings, and final sign-off are complete.
 
 ## Issue #213 — production workflow-session secret
 
