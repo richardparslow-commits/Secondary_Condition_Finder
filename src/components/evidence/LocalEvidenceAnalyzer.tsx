@@ -11,6 +11,11 @@ import {
   type EvidenceTextSegment,
 } from "@/lib/evidence/extract";
 import {
+  detectDocumentKindHint,
+  isClinicianCredential,
+  type EvidenceDocumentKindHint,
+} from "@/lib/evidence/document-kind";
+import {
   EVIDENCE_DEPTH_LIMITS,
   formatLimitBytes,
   formatLimitChars,
@@ -45,6 +50,12 @@ interface PendingEvidenceFile {
   sourceName: string;
   credential: ClinicianCredential;
   analyzed: boolean;
+  hint?: EvidenceDocumentKindHint;
+}
+
+function isPdfFile(file: File): boolean {
+  const lower = file.name.toLocaleLowerCase();
+  return file.type === "application/pdf" || lower.endsWith(".pdf");
 }
 
 let stagedSequence = 0;
@@ -121,6 +132,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   const [busy, setBusy] = useState(false);
   const [depth, setDepth] = useState<EvidenceAnalysisDepth>("standard");
   const [pending, setPending] = useState<PendingEvidenceFile[]>([]);
+  const [ocrProgress, setOcrProgress] = useState<string | null>(null);
   const limits: EvidenceLimits = EVIDENCE_DEPTH_LIMITS[depth];
   const busyRef = useRef(false);
 
@@ -175,9 +187,13 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     });
   }
 
-  function markPendingAnalyzed(id: number) {
+  function setRowOutcome(id: number, hint?: EvidenceDocumentKindHint) {
     setPending((current) =>
-      current.map((row) => (row.id === id ? { ...row, analyzed: true } : row)),
+      current.map((row) =>
+        row.id === id
+          ? { ...row, analyzed: true, hint: hint ?? row.hint }
+          : row,
+      ),
     );
   }
 
@@ -225,7 +241,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   async function analyzeOneFile(
     row: PendingEvidenceFile,
     remainingBatchBytes: number,
-  ): Promise<{ processed: number; warnings: string[]; skipped: boolean }> {
+  ): Promise<{ processed: number; warnings: string[]; skipped: boolean; hint?: EvidenceDocumentKindHint }> {
     const nextWarnings: string[] = [];
     if (row.file.size > limits.fileBytes) {
       nextWarnings.push(`${row.sourceName} was not analyzed because it exceeds the ${formatLimitBytes(limits.fileBytes)} local-analysis limit.`);
@@ -244,7 +260,13 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       const extracted = await extractLocalEvidenceDocument(row.file, limits);
       nextWarnings.push(...extracted.warnings.map((warning) => `${row.sourceName}: ${warning}`));
       if (extracted.segments.length === 0) {
-        return { processed: 0, warnings: nextWarnings, skipped: false };
+        return { processed: 0, warnings: nextWarnings, skipped: false, hint: undefined };
+      }
+      const hint = detectDocumentKindHint(extracted.segments);
+      if (hint === "va-decision-letter" && isClinicianCredential(row.credential)) {
+        nextWarnings.push(
+          `${row.sourceName}: This reads like a VA decision letter or adjudication text. You selected a clinician author, so the app may label adjudication language as clinician-authored. Set this document's author to “Non-clinician” if it is not a medical opinion.`,
+        );
       }
       const analysis = analyzeEvidenceSegments(
         withUserLocatorPrefix(extracted.segments, locatorPrefix),
@@ -252,7 +274,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         conditionTerms,
       );
       commitAnalysis(analysis);
-      return { processed: 1, warnings: nextWarnings, skipped: false };
+      return { processed: 1, warnings: nextWarnings, skipped: false, hint };
     } catch (error) {
       const detail = error instanceof Error ? error.message : "Unknown extraction error";
       nextWarnings.push(`${row.sourceName} could not be analyzed locally: ${detail}`);
@@ -280,7 +302,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       nextWarnings.push(...result.warnings);
       processed += result.processed;
       remainingBatchBytes -= result.skipped ? 0 : Math.min(row.file.size, limits.batchBytes);
-      if (!result.skipped) markPendingAnalyzed(row.id);
+      if (!result.skipped) setRowOutcome(row.id, result.hint);
     }
 
     setWarnings(nextWarnings);
@@ -309,6 +331,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     );
     const result = await analyzeOneFile(updated, Number.MAX_SAFE_INTEGER);
     setWarnings(result.warnings);
+    setRowOutcome(id, result.hint);
     setMessage(
       result.processed > 0
         ? `Re-analyzed ${updated.sourceName} locally with the selected author.`
@@ -316,6 +339,102 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     );
     busyRef.current = false;
     setBusy(false);
+  }
+
+  async function runLocalOcr(id: number) {
+    if (busyRef.current) return;
+    const row = pending.find((item) => item.id === id);
+    if (!row || !isPdfFile(row.file)) {
+      if (row) setMessage("Local OCR supports PDF documents only.");
+      return;
+    }
+
+    busyRef.current = true;
+    setBusy(true);
+    setMessage(null);
+    setWarnings([]);
+    setOcrProgress("Preparing the browser-local OCR worker…");
+    const nextWarnings: string[] = [];
+    let recognizedChars = 0;
+    let ocrPages = 0;
+
+    try {
+      const [{ createWorker }, pdfjs] = await Promise.all([
+        import("tesseract.js"),
+        import("pdfjs-dist"),
+      ]);
+      if (!pdfjs.GlobalWorkerOptions.workerSrc) {
+        pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+      }
+      const worker = await createWorker("eng", 1, {
+        workerPath: "/tesseract/worker.min.js",
+        corePath: "/tesseract/tesseract-core-simd.wasm.js",
+        langPath: "/tesseract",
+      });
+      try {
+        const bytes = new Uint8Array(await row.file.arrayBuffer());
+        const loadingTask = pdfjs.getDocument({ data: bytes });
+        const pdfDocument = await loadingTask.promise;
+        try {
+          const readLimit = Math.min(pdfDocument.numPages, limits.pdfPages);
+          const segments: EvidenceTextSegment[] = [];
+          for (let pageNumber = 1; pageNumber <= readLimit; pageNumber += 1) {
+            setOcrProgress(`OCR page ${pageNumber} of ${readLimit} in ${row.sourceName}…`);
+            const page = await pdfDocument.getPage(pageNumber);
+            const viewport = page.getViewport({ scale: 2 });
+            const canvas = document.createElement("canvas");
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            const context = canvas.getContext("2d");
+            if (context) {
+              context.fillStyle = "#ffffff";
+              context.fillRect(0, 0, viewport.width, viewport.height);
+            }
+            await page.render({ canvas, viewport }).promise;
+            const result = await worker.recognize(canvas);
+            const text = (result?.data?.text ?? "").trim();
+            page.cleanup();
+            if (!text) continue;
+            recognizedChars += text.length;
+            if (recognizedChars > limits.textChars) {
+              nextWarnings.push(
+                `${row.sourceName}: OCR text exceeded ${formatLimitChars(limits.textChars)} characters; pages up to ${pageNumber} were kept.`,
+              );
+              break;
+            }
+            segments.push({ text, locatorPrefix: `page ${pageNumber} (OCR)` });
+            ocrPages += 1;
+          }
+          if (segments.length === 0) {
+            nextWarnings.push(`${row.sourceName}: OCR produced no readable text.`);
+          } else {
+            const analysis = analyzeEvidenceSegments(
+              withUserLocatorPrefix(segments, locatorPrefix),
+              { sourceName: row.sourceName, credential: row.credential },
+              conditionTerms,
+            );
+            commitAnalysis(analysis);
+            setRowOutcome(row.id);
+            setMessage(
+              `Local OCR completed for ${row.sourceName}: ${ocrPages} page(s) recognized in this browser tab.`,
+            );
+          }
+        } finally {
+          await loadingTask.destroy();
+        }
+      } finally {
+        await worker.terminate();
+      }
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : "Unknown OCR error";
+      nextWarnings.push(`${row.sourceName}: browser-local OCR failed (${detail}).`);
+      setMessage(`${row.sourceName} could not be OCR'd locally.`);
+    } finally {
+      setWarnings(nextWarnings);
+      busyRef.current = false;
+      setBusy(false);
+      setOcrProgress(null);
+    }
   }
 
   function analyzePastedText() {
@@ -435,12 +554,18 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
             <p className="mt-1 text-sm text-slate-600">Set each document&apos;s author before analyzing. Changing the author of an already-analyzed document re-runs that document&apos;s local classification.</p>
             <ul className="mt-3 space-y-2">
               {pending.map((row) => (
-                <li key={row.id} className="grid gap-2 rounded-lg border border-slate-200 bg-white p-3 sm:grid-cols-[1fr_auto_auto] sm:items-center">
+                <li key={row.id} className="grid gap-2 rounded-lg border border-slate-200 bg-white p-3 sm:grid-cols-[1fr_auto_auto_auto] sm:items-center">
                   <div className="min-w-0">
                     <p className="truncate text-sm font-medium" title={row.sourceName}>{row.sourceName}</p>
                     <p className="text-xs text-slate-500">
                       {(row.file.size / (1024 * 1024)).toFixed(1)} MB{row.analyzed ? " · analyzed" : " · not yet analyzed"}
                     </p>
+                    {row.hint === "va-decision-letter" && (
+                      <p className="mt-1 text-xs font-medium text-amber-700">Looks like a VA decision letter or adjudication text — set Author to “Non-clinician” unless a clinician wrote the medical opinion.</p>
+                    )}
+                    {row.hint === "clinical-note" && (
+                      <p className="mt-1 text-xs text-slate-500">Looks like a clinical note.</p>
+                    )}
                   </div>
                   <label className="block text-xs font-medium text-slate-600">
                     Author
@@ -466,6 +591,16 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
                       ))}
                     </select>
                   </label>
+                  {isPdfFile(row.file) && (
+                    <button
+                      type="button"
+                      className="text-sm font-medium text-blue-700 hover:underline disabled:opacity-50"
+                      onClick={() => void runLocalOcr(row.id)}
+                      disabled={busy}
+                    >
+                      Local OCR
+                    </button>
+                  )}
                   <button
                     type="button"
                     className="text-sm font-medium text-red-700 hover:underline disabled:opacity-50"
@@ -481,8 +616,9 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
               <button type="button" className="ui-button" onClick={() => void runAllAnalysis()} disabled={busy || selectedForAnalysis === 0}>
                 {busy ? "Analyzing…" : `Analyze ${selectedForAnalysis} document${selectedForAnalysis === 1 ? "" : "s"}`}
               </button>
+              {ocrProgress && <p className="text-sm font-medium text-blue-800">{ocrProgress}</p>}
               {pending.length > 0 && pending.every((row) => row.analyzed) && (
-                <span className="text-xs text-slate-600">All selected documents analyzed. Change an author to re-classify that document.</span>
+                <span className="text-xs text-slate-600">All selected documents analyzed. Change an author to re-classify that document, or run Local OCR on a scanned PDF.</span>
               )}
             </div>
           </div>
@@ -491,7 +627,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
       <div className="rounded-xl border border-slate-200 p-4">
         <h3 className="font-semibold">OCR and manual text fallback</h3>
-        <p className="mt-1 text-sm text-slate-600">Image-only/scanned PDF pages may contain no selectable text. The app reports those pages instead of guessing. Run OCR in a trusted tool first, then paste the exact text here with any available page/section context.</p>
+        <p className="mt-1 text-sm text-slate-600">Image-only/scanned PDF pages may contain no selectable text — the extraction pass reports those pages instead of guessing. Use the <strong>Local OCR</strong> action on that document above (recognized entirely in this browser tab), or paste exact text here with any available page/section context.</p>
         <label className="mt-4 block text-sm font-medium">
           Source name
           <input className="mt-1 w-full px-3" value={pastedSourceName} onChange={(event) => setPastedSourceName(event.target.value)} />

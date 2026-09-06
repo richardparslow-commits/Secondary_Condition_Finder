@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Generated verbatim from the pinned pdfjs-dist package during postinstall.
     "public/pdf.worker.min.mjs",
+    // Generated verbatim from the pinned tesseract.js packages during postinstall.
+    "public/tesseract/**",
   ]),
 ]);
 

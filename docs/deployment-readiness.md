@@ -128,7 +128,9 @@ VA administrative reference data remains outside the decision logic:
 - restrictive `Permissions-Policy`;
 - HSTS with subdomains.
 
-The current production CSP uses `connect-src 'self'`. Do not describe third-party browser telemetry as active production network egress unless CSP and deployment configuration are deliberately changed in a separately reviewed privacy/security change.
+The current production CSP uses `connect-src 'self'`. Do not describe third-party browser telemetry as active production network egress unless CSP and deployment configuration are deliberately changed in a separately reviewed privacy/security change. `script-src` carries one narrow addition beyond the strict-dynamic nonce contract: `'wasm-unsafe-eval'`, which permits WebAssembly compilation only (used by the browser-local OCR core). It does not enable general `eval` and does not open any external egress.
+
+Browser-local OCR assets (the tesseract.js worker, its WASM core, and the English traineddata) are copied verbatim from pinned `node_modules` packages during postinstall into `public/tesseract/`, following the same convention as the PDF.js worker. OCR therefore loads every asset from the application's own origin and makes no external request.
 
 ## Browser-local evidence handling
 

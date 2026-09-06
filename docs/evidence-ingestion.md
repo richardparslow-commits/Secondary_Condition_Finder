@@ -31,13 +31,15 @@ Local analysis uses explicit browser-resource ceilings:
 
 The file-size check is repeated inside the document-extraction library before file bytes are read, so callers cannot bypass the UI check by invoking the parser directly. PDF page count is checked before page-by-page extraction, and cumulative extracted text is checked while PDF pages are processed. DOCX and text extraction are rejected when their extracted text exceeds the same per-source character ceiling. Sources over a limit are rejected with a local notice rather than silently truncated; users can split or narrow a source and analyze it again.
 
-PDF pages that contain no extractable/selectable text are reported to the user rather than guessed. Scanned or image-only records therefore still require OCR in a trusted tool before their text can be analyzed. The paste-text fallback remains available so OCR/exported text can be reviewed with user-supplied locator context.
+PDF pages that contain no extractable/selectable text are reported to the user rather than guessed. Two in-app paths then exist for image-only records, both staying in the browser: (1) the per-document **Local OCR** action recognizes scanned PDF pages with a bundled, self-hosted OCR engine and classifies the recognized text under the document's assigned author (recognized segments carry a `page N (OCR)` locator); and (2) the paste-text fallback remains available so text from a trusted external OCR tool can be reviewed with user-supplied locator context.
 
 DOCX is a flow-oriented format and does not reliably encode stable rendered page numbers. The application therefore uses paragraph locators instead of inventing DOCX page numbers.
 
 ## PDF parser security boundary
 
 The application pins `pdfjs-dist` to 6.3.289, the patched release required by the repository's high-severity dependency gate for the reviewed malicious-PDF advisory. The earlier vulnerable pin was rejected by CI and is not retained. Extraction uses only the PDF.js display-layer text-content API, does not render the PDF viewer or execute document actions, and destroys the `PDFDocumentLoadingTask` after page text extraction. The generated PDF.js worker is copied verbatim from the pinned dependency during installation and is excluded from source-code linting; application-authored parser and worker-copy code remains linted normally.
+
+The browser-local OCR engine (`tesseract.js` and `tesseract.js-core`, plus the `eng` traineddata) is likewise pinned in `package.json`; its worker script, WASM core, and traineddata are copied verbatim from `node_modules` during the same postinstall into `public/tesseract/` and excluded from source-code linting. OCR requests those assets from the application's own origin only — no external OCR or CDN request — and page rendering/recognition happen inside the browser tab. The production CSP adds the narrow `'wasm-unsafe-eval'` script-source allowance (WebAssembly compilation only, no general `eval`) for the WASM core; `connect-src` remains `'self'`.
 
 ## Evidence classification
 

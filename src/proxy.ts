@@ -7,6 +7,9 @@ function buildContentSecurityPolicy(nonce: string): string {
     `'nonce-${nonce}'`,
     "'strict-dynamic'",
     ...(isDevelopment ? ["'unsafe-eval'"] : []),
+    // Narrow WASM allowance for the browser-local OCR core (tesseract.js).
+    // Permits WebAssembly compilation only, not general eval.
+    "'wasm-unsafe-eval'",
   ].join(" ");
   const connectSource = isDevelopment
     ? "connect-src 'self' ws: wss:"
