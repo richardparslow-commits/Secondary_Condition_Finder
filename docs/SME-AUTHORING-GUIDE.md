@@ -5,6 +5,11 @@ This repository maps primary service-connected conditions to potential secondary
 
 Your job is to take `draft: true` JSON files and populate them with accurate clinical rationales and legal citations.
 
+> **Public-facing copy reviews:** the public routes (`/`, `/secondary`, `/terms`)
+> contain legal assertions that follow the same unverified-until-human-review
+> rule as knowledge-base citations. Reviews of that copy are tracked in
+> `docs/landing-legal-content-review.md`.
+
 ### The JSON Structure
 Every draft file lives in `data/knowledge-base/`. To publish a file, you must provide:
 

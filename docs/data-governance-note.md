@@ -27,3 +27,16 @@ A mapping is publishable only when:
 
 - Run `npm run citations:weak` to detect weak citation text in published
   mappings and fail fast before release.
+
+## Presumptive lists vs. the condition catalog
+
+- The presumptive data (`data/presumptives/*.json`) restates VA exposure lists
+  (PACT Act, Agent Orange) whose condition groupings differ from the rating-
+  style catalog (`data/conditions/*.json`). The two are separate identity
+  spaces on purpose.
+- A presumptive `conditionId` must use the exact catalog id when the catalog
+  models the condition; ids that exist only in the VA lists must be
+  allowlisted with a reason in `src/lib/presumptive/nonCatalogConditionIds.ts`.
+- `tests/presumptive-catalog-integrity.test.ts` enforces both directions: no
+  unacknowledged presumptive id may be added, and the allowlist may not keep
+  entries that are no longer shipped.

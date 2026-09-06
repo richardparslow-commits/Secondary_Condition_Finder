@@ -3,7 +3,8 @@ import Link from "next/link";
 import { SecondaryWorkflowHiddenFields } from "@/components/SecondaryWorkflowHiddenFields";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
-import { VALID_RATINGS } from "@/lib/secondary-workflow";
+import { first, toBackQuery } from "@/lib/query";
+import { VALID_RATINGS } from "@/lib/secondary-workflow/ratings";
 import {
   parseRatingsPrefill,
   parseServiceConnectedPrefill,
@@ -21,31 +22,11 @@ interface RatingOption {
   value: string;
 }
 
-function first(value: QueryValue): string | undefined {
-  if (!value) return undefined;
-  return Array.isArray(value) ? value[0] : value;
-}
-
 function normalizeDocumentsShared(value: QueryValue): boolean | undefined {
   const firstValue = first(value);
   if (firstValue === "yes") return true;
   if (firstValue === "no") return false;
   return undefined;
-}
-
-function toBackQuery(params: QueryParams): string {
-  const search = new URLSearchParams();
-
-  for (const [key, value] of Object.entries(params)) {
-    if (!value) continue;
-
-    for (const entry of Array.isArray(value) ? value : [value]) {
-      search.append(key, entry);
-    }
-  }
-
-  const query = search.toString();
-  return query ? `?${query}` : "";
 }
 
 function getRatingOptions(): RatingOption[] {

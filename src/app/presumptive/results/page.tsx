@@ -3,48 +3,14 @@ import Link from "next/link";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { matchPresumptives, serviceHistorySchema } from "@/lib/presumptive/match";
+import { formatDate, toTrimmedValues } from "@/lib/query";
 import type { PresumptiveCondition } from "@/lib/presumptive/schema";
 
 export const dynamic = "force-dynamic";
 
-function toArray(value: string | string[] | undefined): string[] {
-  if (!value) return [];
-  return (Array.isArray(value) ? value : [value]).map((v) => v.trim()).filter(Boolean);
-}
-
 function toDate(value: string | string[] | undefined): string | null {
   const raw = Array.isArray(value) ? value[0] : value;
   return raw && /^\d{4}-\d{2}-\d{2}$/.test(raw) ? raw : null;
-}
-
-function formatDate(iso: string): string {
-  const [year, month, day] = iso.split("-");
-  const monthIndex = Number(month) - 1;
-  const dayNumber = Number(day);
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  if (!year || Number.isNaN(monthIndex) || Number.isNaN(dayNumber)) {
-    return iso;
-  }
-  const monthLabel = monthNames[monthIndex];
-  if (!monthLabel || dayNumber < 1 || dayNumber > 31) {
-    return iso;
-  }
-
-  return `${monthLabel} ${dayNumber}, ${year}`;
 }
 
 function groupConditions(
@@ -65,7 +31,7 @@ export default async function PresumptiveResultsPage({
   const params = await searchParams;
 
   const parsed = serviceHistorySchema.safeParse({
-    locations: toArray(params.location),
+    locations: toTrimmedValues(params.location),
     serviceStart: toDate(params.serviceStart),
     serviceEnd: toDate(params.serviceEnd),
   });

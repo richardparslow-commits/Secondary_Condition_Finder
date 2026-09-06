@@ -16,7 +16,7 @@ appearing in the catalog means only that it exists and is ratable.
 
 ## Structure
 
-One file per body system, 14 systems plus a carried-over file. 181 conditions.
+One file per body system, 14 systems plus a carried-over file. 193 conditions.
 
 ```json
 {
@@ -39,18 +39,25 @@ recommendations are computed.
 
 ## Coverage
 
-- 181 conditions across 14 body systems
-- 185 carry a rating schedule citation, all `verified: false`
-- 6 carry none. Those are entries the knowledge base already referenced that
-  the source list omitted: `hip-strain`, `ankle-strain`,
+- 193 conditions across 14 body systems
+- 160 carry a rating schedule citation, all `verified: false`
+- 33 carry none. No citation was supplied and none was inferred; each entry
+  carries a `reviewNotes` entry saying why. The six originally flagged by the
+  source list (`hip-strain`, `ankle-strain`,
   `contralateral-knee-condition`, `diabetic-retinopathy`, `insomnia`, and
-  `substance-use-disorder`. No citation was supplied and none was inferred.
-  Each carries a `reviewNotes` entry saying so.
-- 181 conditions have authored knowledge-base files and all 181 are published (active in recommendations).
+  `substance-use-disorder`) remain among them.
+- All 193 conditions have authored knowledge-base files and all 193 are published (active in recommendations).
+
+> Counts above are checked against `data/conditions/*.json` and
+> `data/knowledge-base/*.json`; recalculate from the data rather than trusting
+> any copy of this document.
 
 ## Known gaps in the source list
 
-Worth resolving before the catalog is treated as complete.
+> Historical notes from when the catalog was smaller. Most gaps listed below
+> have since been filled (entries now exist for hip/ankle strain, insomnia,
+> substance use disorder, and diabetic retinopathy). Verify against
+> `data/conditions/` before acting on any of these.
 
 - **No hip or ankle joint entries** in the musculoskeletal section, despite
   entries for spine, shoulder, elbow, wrist, knee, and foot. Both are common

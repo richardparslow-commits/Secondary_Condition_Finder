@@ -9,7 +9,7 @@ import {
   TRACK_DISTINCTION_NOTICE,
   UNVERIFIED_REFERENCE_NOTICE,
 } from "@/lib/legal/phrases";
-import { SECONDARY_LEGAL_REFERENCES } from "@/lib/legal/secondaryReferences";
+import { SECONDARY_LEGAL_REFERENCES } from "@/lib/legal/references";
 
 export default async function TermsPage() {
   const catalog = loadConditionCatalog();

@@ -9,16 +9,9 @@ import { intakeSchema } from "@/lib/engine/types";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { getEventLogger } from "@/lib/log";
+import { toArray } from "@/lib/query";
 
 export const dynamic = "force-dynamic";
-
-function toArray(value: string | string[] | undefined): string[] {
-  if (!value) return [];
-  return (Array.isArray(value) ? value : [value])
-    .flatMap((entry) => entry.split(","))
-    .map((entry) => entry.trim())
-    .filter(Boolean);
-}
 
 export default async function ResultsPage({
   searchParams,

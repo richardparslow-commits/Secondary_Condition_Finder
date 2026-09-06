@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { indexById } from "@/lib/catalog/lookup";
 import type { ConditionCatalog } from "@/lib/catalog/schema";
+import { first, toArray, type QueryParams, type QueryValue } from "@/lib/query";
 
 export interface SecondaryWorkflowState {
   diagnosedConditionIds: string[];
@@ -10,8 +11,7 @@ export interface SecondaryWorkflowState {
   documentsShared: boolean;
 }
 
-export type QueryValue = string | string[] | undefined;
-export type QueryParams = Record<string, QueryValue>;
+export type { QueryParams, QueryValue } from "@/lib/query";
 
 const diagnosedSelectionSchema = z.object({
   diagnosedConditionIds: z.array(z.string().min(1)).min(1, {
@@ -41,20 +41,6 @@ const serviceConnectedSelectionSchema = z
 const documentsSharedSchema = z.object({
   documentsShared: z.enum(["yes", "no"]),
 });
-
-function toArray(value: QueryValue): string[] {
-  if (!value) return [];
-
-  return (Array.isArray(value) ? value : [value])
-    .flatMap((entry) => entry.split(","))
-    .map((entry) => entry.trim())
-    .filter(Boolean);
-}
-
-function first(value: QueryValue): string | undefined {
-  if (!value) return undefined;
-  return Array.isArray(value) ? value[0] : value;
-}
 
 function dedupe(values: string[]): string[] {
   return [...new Set(values)];

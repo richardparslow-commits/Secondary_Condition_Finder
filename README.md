@@ -66,6 +66,7 @@ React hydrates, which can cause this warning even when app markup is stable.
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | `EVENT_LOG_SQLITE_PATH` | unset | Path to a SQLite file for recommendation event logs. When unset, events are written as structured stdout lines instead. |
+| `NEXT_PUBLIC_APPLICATIONINSIGHTS_CONNECTION_STRING` | unset | Microsoft Application Insights connection string for optional page-view/error telemetry. When set, telemetry stays off until the visitor opts in via the consent prompt; when unset, the prompt and SDK are not shipped. |
 
 ## Layout
 
@@ -148,3 +149,8 @@ Contribution rules for humans and agents alike are in
 No accounts, no personally identifying information, and no intake free text is
 persisted. Event logs record resolved condition names, counts, and a timestamp
 only, which is enough to explain why a given set of suggestions was produced.
+
+Research runs on the server (Next.js App Router), not in the browser; the
+privacy page describes exactly what is logged and where. Optional Application
+Insights telemetry is opt-in only: visitors are asked before anything is sent,
+and a build without the connection string ships no telemetry code path.

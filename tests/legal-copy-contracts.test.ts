@@ -12,7 +12,7 @@ import {
   TRACK_DISTINCTION_NOTICE,
   UNVERIFIED_REFERENCE_NOTICE,
 } from "@/lib/legal/phrases";
-import { SECONDARY_LEGAL_REFERENCES } from "@/lib/legal/secondaryReferences";
+import { SECONDARY_LEGAL_REFERENCES } from "@/lib/legal/references";
 
 function extractCitations(html: string): string[] {
   return html.match(/38 CFR [0-9.]+(?: and [0-9.]+)?/g) ?? [];

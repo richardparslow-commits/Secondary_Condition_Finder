@@ -19,7 +19,7 @@ This document outlines the operational characteristics, deployment trade-offs, a
 
 Regardless of whether SQLite or Memory logging is active, both backends adhere to strict privacy rules:
 1. **Zero Free Text Persistence:** Intake free text, unstructured user notes, and clinical narratives are **never** persisted to event logs.
-2. **PII Masking:** Social security numbers, patient names, and raw medical diagnoses are automatically rejected or stripped by `sanitizeAndValidateEventPayload`.
+2. **No PII in the Schema:** The event schema only stores anonymized fields (resolved condition names, counts, recommended condition ids, engine version, timestamp), so names, Social Security numbers, and raw medical diagnoses cannot be logged. `sanitizeAndValidateEventPayload` in `src/lib/events/privacy-guard.ts` remains as a defense-in-depth guard for any future event types.
 3. **Audit Trail:** Only structured telemetry events (e.g., step progression, catalog category selection, error telemetry) are recorded.
 
 ---

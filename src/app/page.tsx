@@ -7,7 +7,7 @@ import {
   TRACK_DISTINCTION_NOTICE,
   UNVERIFIED_REFERENCE_NOTICE,
 } from "@/lib/legal/phrases";
-import { SECONDARY_REFERENCE_BY_ID } from "@/lib/legal/secondaryReferences";
+import { SECONDARY_REFERENCE_BY_ID } from "@/lib/legal/references";
 
 const paths = [
   {
@@ -40,6 +40,15 @@ export default function HomePage() {
         </p>
       </header>
 
+      <p
+        role="note"
+        className="mb-6 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900"
+      >
+        {UNVERIFIED_REFERENCE_NOTICE} The legal and medical statements on this
+        page are starting points for discussion with a qualified provider or an
+        accredited representative, not verified authority.
+      </p>
+
       <div className="mb-8 grid grid-cols-1 gap-6 md:ml-[-25%] md:w-[150%] md:grid-cols-2">
         {/* Left column — Secondary Service Connection */}
         <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
@@ -57,14 +66,14 @@ export default function HomePage() {
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
             The Department of Veterans Affairs (VA) grants Secondary Service
             Connection for new health problems that result directly from an
-            existing service-connected condition, as stated in 38 C.F.R.
+            existing service-connected condition, as stated in 38 CFR
             § 3.310(a).
           </p>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
             For the purposes of making a claim, a secondary condition is
             regarded as being linked to your original disability and is given
             its own individual disability rating; this rating is then combined
-            with your other ratings by using whole-person math (38 C.F.R.
+            with your other ratings by using whole-person math (38 CFR
             § 4.25).
           </p>
 
@@ -109,7 +118,7 @@ export default function HomePage() {
             <li>
               Biomechanical stress occurs when injuries to joints or bones alter
               the way you move and place strain on other parts of the body (such
-              as a knee deformity recognised as service-connected leading to
+              as a knee deformity recognized as service-connected leading to
               lower back pain).
             </li>
             <li>
@@ -213,7 +222,7 @@ export default function HomePage() {
               In the case of <em>Allen v. Brown</em> from 1995, the courts
               ruled that it is possible to provide compensation when an NSC
               condition becomes more severe than it would have become naturally.
-              This ruling was formally incorporated into 38 C.F.R. § 3.310(b)
+              This ruling was formally incorporated into 38 CFR § 3.310(b)
               in order to reimburse for the additional severity caused.
             </li>
             <li>
