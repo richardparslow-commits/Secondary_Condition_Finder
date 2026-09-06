@@ -31,11 +31,22 @@ The application is deployed on Vercel. The canonical production URL is
 
 The current knowledge-base snapshot contains **813 mappings, 347 relationships, 139 published mappings, and 674 draft mappings**. Citation verification is complete for the live snapshot: **355 live source references are verified, with 0 unverified references**. Source-registry lineage records **329 active source entities** and **338 total entities including history**; these figures are governed by `data/evidence/master-sources.json` and `scripts/audit-master-registry.js`.
 
-The browser-local evidence feature can extract text from supported PDF, DOCX,
-and text files. Raw local document bytes and raw extracted document text remain
-in the browser tab and are not submitted to the application server. Resource
-limits are enforced before or during extraction, including per-file/batch
-limits, a PDF page cap, a text-character cap, and DOCX archive-expansion
+The browser-local evidence feature reads supported PDF, DOCX, and text files
+entirely in the browser tab: raw bytes and extracted text are never submitted to
+the application server. Step 4 (Supporting Documents) offers two analysis
+depths — **Standard** (the default) and an opt-in **Extended** envelope for
+large local sets such as full C-files — with file, batch, page, character, and
+retention limits derived from one limits module and published verbatim on
+`/privacy`. Each document carries its own author credential (physician,
+psychologist, NP/PA, non-clinician, or unknown), so VA decision letters are not
+counted as clinician-authored medical opinions. The classifier understands
+clinical shorthand (`dx`, `2/2` = secondary to), normalizes hyphen/spelling
+variants, treats `Diagnosis:`/`Assessment:` sections as diagnosis context, and
+excludes regulatory boilerplate from nexus counts. Scanned or image-only PDFs
+can be recognized with **Local OCR** that runs entirely in the tab against
+same-origin tesseract.js assets, and the Step 6 evidence checklist marks which
+evidence-gap questions your uploaded excerpts already address. Every boundary
+is enforced before or during extraction, including DOCX archive-expansion
 preflight bounds.
 
 Published knowledge-base source references may still be marked **unverified**
@@ -201,6 +212,9 @@ reside in `src/lib/actions/`.
   referrer headers, or copied URLs.
 - Optional local evidence documents are processed in-browser; raw bytes/text are
   not placed in workflow cookies or application logs.
+- Local OCR runs entirely in the tab against same-origin assets; the production
+  CSP adds only a narrow `'wasm-unsafe-eval'` allowance for the OCR WASM core
+  while `connect-src` stays first-party only.
 - The application does not initialize a client analytics/telemetry SDK or a
   workflow/recommendation event-history logger. Production `connect-src` remains
   first-party only.
