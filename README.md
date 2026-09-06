@@ -50,7 +50,10 @@ qualified-human decision under `docs/citation-verification-sop.md`.
 
 Next.js App Router, TypeScript, Tailwind, Zod, Vitest, Chrome/ChromeDriver E2E,
 and Vercel. The condition catalog and knowledge base are JSON in version control
-so mapping and citation changes remain reviewable diffs.
+so mapping and citation changes remain reviewable diffs. Server-side
+OpenTelemetry is registered through `@vercel/otel` (`src/instrumentation.ts`);
+there is no client analytics SDK, and production `connect-src` stays
+first-party only.
 
 ## Getting started
 
@@ -76,6 +79,10 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run citations:audit` | Citation safety, provenance, and verification-debt audit |
 | `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-33 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
 | `npm run citations:decay` | Live link-rot/staleness probe for citations (deliberate maintainer gate, not per-PR CI) |
+| `npm run citations:queue` | Reports the qualified-human citation-verification queue as markdown |
+| `npm run evidence:architecture` | Audits the browser-local evidence parser architecture and its security boundaries |
+| `npm run regulatory:validate` | Validates the provenanced regulatory-actions seed data |
+| `npm run regulatory:audit` | Regulatory-intelligence audit (add `:markdown` for the report form) |
 
 CI also builds the production app and runs real Chrome/ChromeDriver journeys for
 the secondary workflow and validation/error behavior. After successful `main`
@@ -96,6 +103,12 @@ alias, the full public route matrix, and the runtime-session readiness marker.
 | `VA_FORMS_PRODUCTION_API_KEY` | unset | VA Forms production credential; external production access is a separate gate. |
 | `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY` | unset | Benefits Reference Data production credential; external production access is a separate gate. |
 | `VA_API_TIMEOUT_MS` | `4000` | Outbound VA request timeout. |
+| `REGULATIONS_GOV_API_KEY` | unset | Optional Regulations.gov docket/comment enrichment for regulatory preflight. |
+| `REGULATORY_PREFLIGHT_MAX_AGE_HOURS` | `24` | Cache-freshness ceiling for regulatory source checks. |
+| `REGULATORY_PREFLIGHT_SOURCE_TIMEOUT_MS` | `8000` | Per-source HTTP timeout for regulatory preflight. |
+| `REGULATORY_PREFLIGHT_CACHE_DIR` | bounded OS temp dir | Optional server-local cache location for regulatory preflight. |
+| `REGULATORY_SYNC_SECRET` | unset | Bearer secret protecting the scheduled regulatory refresh endpoint. |
+| `CRON_SECRET` | unset | Accepted fallback bearer for the regulatory refresh endpoint; also guards scheduled CI jobs. |
 
 See `docs/va-api-runtime-configuration.md` for the complete environment-aware VA
 runtime contract. Production secrets belong only in the deployment secret store;
@@ -113,23 +126,26 @@ The consolidated architecture, authoring, and security specification lives in
 [`docs/master-specification.md`](docs/master-specification.md).
 
 ```text
-data/conditions/       Condition catalog, grouped by body system and reviewed expansion/maintenance batches
-data/knowledge-base/   Secondary mappings, one JSON file per primary
-data/presumptives/     Exposure categories, locations, and date windows
+data/conditions/          Condition catalog, grouped by body system and reviewed expansion/maintenance batches
+data/knowledge-base/      Secondary mappings, one JSON file per primary
+data/presumptives/        Exposure categories, locations, and date windows
+data/evidence/            Master source and relationship registries (lineage source of truth)
+data/regulatory-actions/  Provenanced VA regulatory action seed records
 data/demo-scenarios.json
-src/proxy.ts           Edge proxy (Next 16 middleware): per-request nonce CSP, x-nonce, route headers
-src/lib/actions/       All Server Actions ("use server") — secondary, presumptive, scenarios
-src/lib/catalog/       Zod schema, loader, lookup; condition identity
-src/lib/kb/            Zod schema, loader, mapping helpers
-src/lib/engine/        Recommendation and export logic
-src/lib/presumptive/   Service-history matcher and encrypted session wrapper
-src/lib/evidence/      Browser-local evidence extraction/evaluation helpers
-src/lib/va/            Environment-aware public-reference adapters/cache
-src/app/               App Router pages
-src/components/        UI components
-tests/                 Vitest regression/contract tests
-e2e/                   Real-browser Chrome/ChromeDriver journeys
-docs/                  Product, operations, accessibility, and runtime docs
+src/proxy.ts              Edge proxy (Next 16 middleware): per-request nonce CSP, x-nonce, route headers
+src/lib/actions/          All Server Actions ("use server") — secondary, presumptive, scenarios
+src/lib/catalog/          Zod schema, loader, lookup; condition identity
+src/lib/kb/               Zod schema, loader, mapping helpers
+src/lib/engine/           Recommendation and export logic
+src/lib/presumptive/      Service-history matcher and encrypted session wrapper
+src/lib/evidence/         Browser-local evidence extraction/evaluation helpers
+src/lib/regulatory/       Regulatory intelligence and preflight (Federal Register / OIRA / Regulations.gov)
+src/lib/va/               Environment-aware public-reference adapters/cache
+src/app/                  App Router pages
+src/components/           UI components
+tests/                    Vitest regression/contract tests
+e2e/                      Real-browser Chrome/ChromeDriver journeys
+docs/                     Product, operations, accessibility, and runtime docs
 ```
 
 Primary public routes include:
@@ -156,6 +172,14 @@ Primary public routes include:
 
 `/results` is a legacy redirect to `/secondary` and does not process query-based
 health state.
+
+**Regulatory intelligence.** `src/lib/regulatory/` monitors Federal Register,
+OIRA, and Regulations.gov activity that could affect the catalog's citations.
+`GET /api/regulatory/preflight` is a bearer-protected scheduled refresh endpoint
+(see the `regulatory-intelligence` workflow), and `data/regulatory-actions/`
+holds the provenanced seed records behind it. See
+[`docs/regulatory-preflight-v4.md`](docs/regulatory-preflight-v4.md) and
+[`docs/regulatory-intelligence-v3.md`](docs/regulatory-intelligence-v3.md).
 
 ## Workflow privacy and browser security
 
