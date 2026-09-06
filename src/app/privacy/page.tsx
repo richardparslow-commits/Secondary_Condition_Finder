@@ -1,11 +1,18 @@
 import React from "react";
 import Link from "next/link";
 
+import {
+  EXTENDED_LIMITS,
+  STANDARD_LIMITS,
+  formatLimitBytes,
+  formatLimitChars,
+} from "@/lib/evidence/limits";
+
 export default function PrivacyPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-8 text-gray-900">
       <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
-      <p className="text-sm text-gray-600 mb-6">Last updated: August 2026</p>
+      <p className="text-sm text-gray-600 mb-6">Last updated: September 2026</p>
 
       <section className="space-y-4 text-sm leading-relaxed">
         <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
@@ -47,7 +54,7 @@ export default function PrivacyPage() {
           Supporting-document review is optional. PDF, DOCX, supported text files, and pasted evidence text are analyzed locally in your browser. Raw document bytes and raw document text are not submitted to the application server, added to workflow cookies, written to application logs, or stored in a user account. PDF.js and Mammoth are bundled application libraries; the selected record is not uploaded to those projects, a CDN, or another document-analysis service.
         </p>
         <p>
-          Local analysis is bounded to 20 MB per file, 10 selected files and 50 MB per batch, 300 pages per PDF source, and 500,000 extracted or pasted characters per source. Sources over those limits are rejected rather than silently truncated.
+          Local analysis is bounded by the analysis depth chosen on the Supporting Documents step. The default Standard depth limits a source to {formatLimitBytes(STANDARD_LIMITS.fileBytes)} per file, {STANDARD_LIMITS.batchSources} selected files and {formatLimitBytes(STANDARD_LIMITS.batchBytes)} per batch, {STANDARD_LIMITS.pdfPages} pages per PDF source, and {formatLimitChars(STANDARD_LIMITS.textChars)} extracted or pasted characters per source. The optional Extended depth raises those bounds for large local document sets — {formatLimitBytes(EXTENDED_LIMITS.fileBytes)} per file, {EXTENDED_LIMITS.batchSources} selected files and {formatLimitBytes(EXTENDED_LIMITS.batchBytes)} per batch, {EXTENDED_LIMITS.pdfPages} pages per PDF source, and {formatLimitChars(EXTENDED_LIMITS.textChars)} extracted or pasted characters per source — and should be chosen only when this browser tab can handle the larger in-memory workload. Sources over the active depth&apos;s limits are rejected rather than silently truncated in either depth. Excerpts retained for the Step 6 checklist are likewise bounded per depth: the most recent {STANDARD_LIMITS.storedSources} analyzed sources in Standard and up to {EXTENDED_LIMITS.storedSources} in Extended, each limited to a small excerpt window per source.
         </p>
         <p>
           The browser may temporarily retain only the extracted evidence excerpts and their source/locator metadata, plus user-selected evidence-gap review checkmarks, in session storage so they can be displayed on Step 6. Session storage is scoped to the current browser tab and is cleared when the tab is closed. You can clear local evidence selectively from Step 4 without ending the workflow. Finish Review and Start a new review clear both secondary-workflow session-storage stores before leaving Step 6; the clearing operation does not copy their contents to the server, telemetry, logs, or a VA API.
