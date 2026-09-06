@@ -19,10 +19,10 @@ Complete this block before testing begins.
 | Tester | |
 | Review date/time | |
 | Production URL | `https://secondary-condition-finder.vercel.app` |
-| Deployed `main` commit SHA | |
-| Vercel production deployment ID | |
-| Main CI run | |
-| Production Runtime Readiness run | |
+| Deployed `main` commit SHA | `bbe2935274e1e00b235ac69f6ef1e8ddc4b8bdab` |
+| Vercel production deployment ID | `6287296680` |
+| Main CI run | `34000588157` |
+| Production Runtime Readiness run | `34000588157` |
 | Operating system + version | |
 | Browser + version | |
 | Assistive technology + version | |
@@ -30,6 +30,8 @@ Complete this block before testing begins.
 | Forced-colors/high-contrast configuration | |
 
 Before recording any pass/fail result, verify that the canonical production alias is serving the exact `main` commit named above. If `main` advances during the review, either finish against the recorded exact deployment or start a new session record; do not merge evidence from different builds without identifying them separately.
+
+> The build identifiers above are a blank starter template for the human tester. They identify the target build only. They are not human test results, findings, retest results, or sign-off.
 
 ## Required route and workflow coverage
 
