@@ -152,7 +152,7 @@ Extended (explicit opt-in):
 - 3,000,000 extracted/pasted characters per source;
 - up to 200 retained source analyses per browser tab.
 
-Sources over the active depth's limits are rejected rather than silently truncated. Raw selected document bytes/text are not sent to the application server by this feature in either depth.
+Sources over the active depth's limits are rejected rather than silently truncated. Each selected document is assigned its own author type (clinician vs. lay, defaulting to a per-batch default), so a mixed batch classifies every document under the authorship the user selected for it. Raw selected document bytes/text are not sent to the application server by this feature in either depth.
 
 ## Runtime and pipeline reproducibility
 
