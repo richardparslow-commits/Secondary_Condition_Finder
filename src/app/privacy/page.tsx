@@ -65,7 +65,7 @@ export default function PrivacyPage() {
 
         <h2 className="text-xl font-semibold mt-6">5. Evidence and context classification limits</h2>
         <p>
-          The local evidence classifier is intentionally conservative. An excerpt is labeled “nexus-relevant” only when you identify the source as clinician-authored, the excerpt includes causation, aggravation, or alternative-cause language, and it mentions at least one condition selected in the workflow. This label does not determine legal competency, credibility, probative weight, medical correctness, or whether VA will find the evidence sufficient.
+          The local evidence classifier is intentionally conservative. You assign each selected document its own author type on the Supporting Documents step (the default applies to newly selected documents). An excerpt is labeled “nexus-relevant” only when you identify its document as clinician-authored, the excerpt includes causation, aggravation, or alternative-cause language, and it mentions at least one condition selected in the workflow. Changing a document&apos;s author re-runs that document&apos;s local classification. This label does not determine legal competency, credibility, probative weight, medical correctness, or whether VA will find the evidence sufficient.
         </p>
         <p>
           Medication/treatment entries are used only to surface literal normalized text overlap with authored recommendation rationale or evidence-gap text. A match does not change recommendation ranking, infer a drug class or mechanism, or establish individual causation, aggravation, or medical nexus.
