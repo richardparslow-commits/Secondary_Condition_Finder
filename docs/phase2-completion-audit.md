@@ -94,26 +94,24 @@ This proves repository and production integration behavior. It does **not** prov
 
 ## Final Phase 2 external gate
 
-Workflow **VA Sandbox Smoke Test** (`.github/workflows/va-sandbox-smoke.yml`, workflow ID `332298000`) is manual-only and currently has **zero recorded runs**.
+Workflow **VA Sandbox Smoke Test** (`.github/workflows/va-sandbox-smoke.yml`, workflow ID `332298000`) is manual-only. It previously had no recorded runs; it now has one successful credentialed run on `main` after the workflow was corrected to read the configured secret names.
 
-To convert Phase 2 from **code-complete / externally pending** to **complete**:
+Current sanitized Phase 2 sandbox evidence:
 
-1. Keep the dedicated execution in sandbox mode with `VA_SANDBOX_ENABLED=true`.
-2. Configure issued server-only repository secrets `VA_FORMS_SANDBOX_API_KEY` and `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`.
-3. Run the workflow from `main`.
-4. Require HTTP 200 plus expected response-shape/result validation for the bounded VA Forms request and Benefits Reference Data `/disabilities` request.
-5. Retain only sanitized evidence: timestamp, service, request ID, HTTP success, high-level validated result count, and workflow-run URL.
-6. Do not retain or publish credentials or raw response payloads.
-7. Close issue #189 only through objective successful workflow evidence.
+- VA Forms: HTTP 200; request ID `4e806cfd-36e6-4aea-b3b8-8765f2f9a828`; validated result count 1.
+- Benefits Reference Data: HTTP 200; request ID `1785c029-bb9b-4384-bd3f-b61d41f363dd`; validated result count 9.
+- Workflow run: [33997305230](https://github.com/richardparslow-commits/Secondary_Condition_Finder/actions/runs/33997305230)
+- No API key or raw response payload was retained.
 
-If credentials have not been issued, the repository may continue Phase 3 drafting and internal hardening, but the production-access package must continue to label live sandbox verification as pending.
+Phase 2 therefore moved from **code-complete / externally pending** to **complete** for the VA sandbox verification portion of the package.
 
 ## Phase 3 readiness conclusion
 
 The repository is ready for Phase 3 package maintenance and demo preparation. Submission remains gated on:
 
-- credentialed sandbox verification (#189);
 - manual Section 508/accessibility evidence (#195);
 - truthful applicant/business details;
 - fresh exact-commit Vercel production/readiness evidence at submission time; and
 - final deployed-app demo rehearsal.
+
+Credentialed sandbox verification is no longer a pending gate.

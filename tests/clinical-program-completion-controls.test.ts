@@ -134,10 +134,9 @@ describe("clinical program completion controls", () => {
 
   it("keeps external and human-only gates explicitly open rather than fabricating completion", () => {
     const gates = read("docs/external-manual-gates-status.md");
-    expect(gates).toMatch(/Issue #189[\s\S]*OPEN \/ EXTERNALLY BLOCKED/i);
+    expect(gates).toMatch(/Issue #189[\s\S]*COMPLETE \/ CLOSED/i);
     expect(gates).toMatch(/Issue #195[\s\S]*OPEN \/ HUMAN-ONLY/i);
     expect(gates).toMatch(/Issue #213[\s\S]*COMPLETE \/ CLOSED/i);
-    expect(gates).toMatch(/must not close #189/i);
     expect(gates).toMatch(/must not close #195/i);
   });
 });
