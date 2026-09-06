@@ -96,7 +96,7 @@
       "id": "mild-tbi",
       "name": "Mild Tbi",
       "aliases": [],
-      "bodySystem": "neurological",
+      "bodySystem": "Neurological",
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending human review"
