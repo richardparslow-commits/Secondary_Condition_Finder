@@ -20,7 +20,7 @@
     "citations:audit": "node scripts/audit-citation-verification.js",
     "citations:decay": "node scripts/audit-citation-decay.js",
     "citations:queue": "node scripts/report-citation-verification-queue.js --markdown",
-"audit:me-compliance": "node scripts/audit-me-compliance.js",
+    "audit:me-compliance": "node scripts/audit-me-compliance.js",
     "kb:validate": "node scripts/validate-knowledge-base.js",
     "authoring:tracker": "node scripts/generate-authoring-tracker.js",
     "audit:high": "npm audit --audit-level=high",
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@opentelemetry/api": "1.9.0",
+    "@tesseract.js-data/eng": "^1.0.0",
     "@vercel/otel": "2.1.3",
     "mammoth": "1.12.2",
     "next": "16.3.4",
@@ -41,6 +42,7 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "server-only": "^0.0.1",
+    "tesseract.js": "^6.0.1",
     "zod": "^4.5.4"
   },
   "overrides": {

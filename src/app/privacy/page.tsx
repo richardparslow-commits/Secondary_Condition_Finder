@@ -60,7 +60,7 @@ export default function PrivacyPage() {
           The browser may temporarily retain only the extracted evidence excerpts and their source/locator metadata, plus user-selected evidence-gap review checkmarks, in session storage so they can be displayed on Step 6. Session storage is scoped to the current browser tab and is cleared when the tab is closed. You can clear local evidence selectively from Step 4 without ending the workflow. Finish Review and Start a new review clear both secondary-workflow session-storage stores before leaving Step 6; the clearing operation does not copy their contents to the server, telemetry, logs, or a VA API.
         </p>
         <p>
-          Image-only or scanned PDF pages may contain no extractable text. The app reports those pages instead of guessing or sending the record to an OCR provider. OCR must be performed separately in a trusted tool before that text can be reviewed here.
+          Image-only or scanned PDF pages contain no extractable text layer. The app reports those pages instead of guessing. If you choose to run Local OCR on a scanned PDF, recognition is performed entirely in this browser tab by a bundled, self-hosted OCR engine — the page images and recognized text are not sent to the application server, an OCR provider, a CDN, or another external service. OCR results are then classified under the same local rules and temporary session-storage boundaries described above.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">5. Evidence and context classification limits</h2>
