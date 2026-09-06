@@ -132,7 +132,9 @@ The current production CSP uses `connect-src 'self'`. Do not describe third-part
 
 ## Browser-local evidence handling
 
-Optional evidence review remains browser-local. Current ceilings include:
+Optional evidence review remains browser-local and is bounded by an analysis depth chosen on the Supporting Documents step. The depth defaults to Standard on every visit; the numbers below are the single source of truth in `src/lib/evidence/limits.ts` and are mirrored on `/privacy`.
+
+Standard (default):
 
 - 20 MB per file;
 - 10 selected files per batch;
@@ -141,7 +143,16 @@ Optional evidence review remains browser-local. Current ceilings include:
 - 500,000 extracted/pasted characters per source;
 - 10 retained source analyses per browser tab.
 
-Raw selected document bytes/text are not sent to the application server by this feature.
+Extended (explicit opt-in):
+
+- 100 MB per file;
+- 200 selected files per batch;
+- 1 GB accepted bytes per batch;
+- 2,000 pages per PDF;
+- 3,000,000 extracted/pasted characters per source;
+- up to 200 retained source analyses per browser tab.
+
+Sources over the active depth's limits are rejected rather than silently truncated. Raw selected document bytes/text are not sent to the application server by this feature in either depth.
 
 ## Runtime and pipeline reproducibility
 

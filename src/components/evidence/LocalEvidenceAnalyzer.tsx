@@ -2,18 +2,20 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-import {
-  extractLocalEvidenceDocument,
-  MAX_LOCAL_EVIDENCE_FILE_BYTES,
-  MAX_LOCAL_EVIDENCE_PDF_PAGES,
-  MAX_LOCAL_EVIDENCE_TEXT_CHARS,
-} from "@/lib/evidence/document-extract";
+import { extractLocalEvidenceDocument } from "@/lib/evidence/document-extract";
 import {
   analyzeEvidenceSegments,
   type ClinicianCredential,
   type EvidenceAnalysis,
   type EvidenceTextSegment,
 } from "@/lib/evidence/extract";
+import {
+  EVIDENCE_DEPTH_LIMITS,
+  formatLimitBytes,
+  formatLimitChars,
+  type EvidenceAnalysisDepth,
+  type EvidenceLimits,
+} from "@/lib/evidence/limits";
 import {
   clearStoredEvidence,
   loadStoredEvidence,
@@ -24,8 +26,7 @@ interface Props {
   conditionTerms: string[];
 }
 
-const MAX_SOURCES = 10;
-const MAX_BATCH_BYTES = 50 * 1024 * 1024;
+const evidenceDepthStorageKey = "secondary-condition-finder:evidence-depth:v1";
 const SUPPORTED_TEXT_EXTENSIONS = [".txt", ".md", ".csv", ".json", ".log"];
 
 function isSupportedFile(file: File): boolean {
@@ -54,8 +55,30 @@ function loadStored(): EvidenceAnalysis[] {
   return loadStoredEvidence(getSessionStorage());
 }
 
-function saveStored(analyses: EvidenceAnalysis[]): boolean {
-  return saveStoredEvidence(getSessionStorage(), analyses);
+function saveStored(
+  analyses: EvidenceAnalysis[],
+  limits: EvidenceLimits,
+): boolean {
+  return saveStoredEvidence(getSessionStorage(), analyses, limits);
+}
+
+function loadDepth(): EvidenceAnalysisDepth {
+  try {
+    const value = window.sessionStorage.getItem(evidenceDepthStorageKey);
+    return value === "extended" ? "extended" : "standard";
+  } catch {
+    return "standard";
+  }
+}
+
+function persistDepth(depth: EvidenceAnalysisDepth): void {
+  const storage = getSessionStorage();
+  if (!storage) return;
+  try {
+    storage.setItem(evidenceDepthStorageKey, depth);
+  } catch {
+    // The depth choice is session-only; failure to persist is not fatal.
+  }
 }
 
 function withUserLocatorPrefix(segments: EvidenceTextSegment[], prefix: string): EvidenceTextSegment[] {
@@ -76,6 +99,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   const [message, setMessage] = useState<string | null>(null);
   const [warnings, setWarnings] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
+  const [depth, setDepth] = useState<EvidenceAnalysisDepth>("standard");
+  const limits: EvidenceLimits = EVIDENCE_DEPTH_LIMITS[depth];
 
   useEffect(() => {
     const restoreTimer = window.setTimeout(() => {
@@ -83,6 +108,26 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     }, 0);
     return () => window.clearTimeout(restoreTimer);
   }, []);
+
+  // Restore the depth choice after mount, then reload retained analyses with
+  // the matching retention window so an Extended run is not truncated to the
+  // Standard source window on return to this step.
+  useEffect(() => {
+    const depthTimer = window.setTimeout(() => {
+      setDepth(loadDepth());
+    }, 0);
+    return () => window.clearTimeout(depthTimer);
+  }, []);
+
+  useEffect(() => {
+    if (depth === "standard") return;
+    const reloadTimer = window.setTimeout(() => {
+      setAnalyses(
+        loadStoredEvidence(getSessionStorage(), EVIDENCE_DEPTH_LIMITS[depth]),
+      );
+    }, 0);
+    return () => window.clearTimeout(reloadTimer);
+  }, [depth]);
 
   const totals = useMemo(
     () => ({
@@ -94,8 +139,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
   function commitAnalysis(analysis: EvidenceAnalysis) {
     setAnalyses((current) => {
-      const next = [...current.filter((existing) => existing.sourceName !== analysis.sourceName), analysis].slice(-MAX_SOURCES);
-      saveStored(next);
+      const next = [...current.filter((existing) => existing.sourceName !== analysis.sourceName), analysis].slice(-limits.storedSources);
+      saveStored(next, limits);
       return next;
     });
   }
@@ -108,20 +153,20 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
     const nextWarnings: string[] = [];
     const selectedFiles = Array.from(files);
-    if (selectedFiles.length > MAX_SOURCES) {
-      nextWarnings.push(`Only the first ${MAX_SOURCES} selected documents are considered in one local-analysis batch.`);
+    if (selectedFiles.length > limits.batchSources) {
+      nextWarnings.push(`Only the first ${limits.batchSources} selected documents are considered in one local-analysis batch.`);
     }
     let processed = 0;
     let acceptedBatchBytes = 0;
 
     try {
-      for (const file of selectedFiles.slice(0, MAX_SOURCES)) {
-        if (file.size > MAX_LOCAL_EVIDENCE_FILE_BYTES) {
-          nextWarnings.push(`${file.name} was not analyzed because it exceeds the 20 MB local-analysis limit.`);
+      for (const file of selectedFiles.slice(0, limits.batchSources)) {
+        if (file.size > limits.fileBytes) {
+          nextWarnings.push(`${file.name} was not analyzed because it exceeds the ${formatLimitBytes(limits.fileBytes)} local-analysis limit.`);
           continue;
         }
-        if (acceptedBatchBytes + file.size > MAX_BATCH_BYTES) {
-          nextWarnings.push(`${file.name} was not analyzed because the selected documents would exceed the 50 MB per-batch local-analysis limit.`);
+        if (acceptedBatchBytes + file.size > limits.batchBytes) {
+          nextWarnings.push(`${file.name} was not analyzed because the selected documents would exceed the ${formatLimitBytes(limits.batchBytes)} per-batch local-analysis limit.`);
           continue;
         }
         if (!isSupportedFile(file)) {
@@ -131,7 +176,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
         acceptedBatchBytes += file.size;
         try {
-          const extracted = await extractLocalEvidenceDocument(file);
+          const extracted = await extractLocalEvidenceDocument(file, limits);
           nextWarnings.push(...extracted.warnings.map((warning) => `${file.name}: ${warning}`));
           if (extracted.segments.length === 0) continue;
 
@@ -163,8 +208,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       setMessage("Paste source text before running local evidence analysis.");
       return;
     }
-    if (text.length > MAX_LOCAL_EVIDENCE_TEXT_CHARS) {
-      setMessage(`Pasted text is limited to ${MAX_LOCAL_EVIDENCE_TEXT_CHARS.toLocaleString("en-US")} characters per source.`);
+    if (text.length > limits.textChars) {
+      setMessage(`Pasted text is limited to ${formatLimitChars(limits.textChars)} characters per source.`);
       return;
     }
     const segments = withUserLocatorPrefix([{ text, locatorPrefix: "pasted text" }], locatorPrefix);
@@ -223,9 +268,34 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         </label>
       </div>
 
+      <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center rounded-xl border border-slate-200 p-4">
+        <div>
+          <h3 className="font-semibold">Analysis depth</h3>
+          <p className="mt-1 text-sm text-slate-600">Standard is the default bound. Extended raises file, batch, and retention limits for large local document sets; every file is still analyzed only in this browser tab and is never uploaded.</p>
+        </div>
+        <label className="block text-sm font-medium">
+          Active depth
+          <select
+            className="mt-1 w-full px-3"
+            value={depth}
+            onChange={(event) => {
+              const next = event.target.value as EvidenceAnalysisDepth;
+              setDepth(next);
+              persistDepth(next);
+            }}
+          >
+            <option value="standard">Standard</option>
+            <option value="extended">Extended</option>
+          </select>
+        </label>
+      </div>
+      <p className="rounded-xl border border-blue-100 bg-blue-50 p-3 text-sm text-blue-900">
+        Active limits ({depth === "standard" ? "Standard" : "Extended"}): {formatLimitBytes(limits.fileBytes)} per file, {limits.batchSources} selected files and {formatLimitBytes(limits.batchBytes)} per batch, {limits.pdfPages} PDF pages per source, and {formatLimitChars(limits.textChars)} extracted or pasted characters per source. Up to {limits.storedSources} analyzed sources are retained for the Step 6 checklist. Files stay in the browser.
+      </p>
+
       <label className="block rounded-xl border border-slate-200 p-4">
         <span className="block font-semibold">Analyze evidence files locally</span>
-        <span className="mt-1 block text-sm text-slate-600">Supported directly: PDF, DOCX, TXT, Markdown, CSV, JSON and other text files. Limits: 20 MB per file, 10 selected files and 50 MB per batch, {MAX_LOCAL_EVIDENCE_PDF_PAGES} PDF pages per source, and {MAX_LOCAL_EVIDENCE_TEXT_CHARS.toLocaleString("en-US")} extracted characters per source. Files stay in the browser.</span>
+        <span className="mt-1 block text-sm text-slate-600">Supported directly: PDF, DOCX, TXT, Markdown, CSV, JSON and other text files. Limits: {formatLimitBytes(limits.fileBytes)} per file, {limits.batchSources} selected files and {formatLimitBytes(limits.batchBytes)} per batch, {limits.pdfPages} PDF pages per source, and {formatLimitChars(limits.textChars)} extracted characters per source. Files stay in the browser.</span>
         <input
           type="file"
           multiple
@@ -245,8 +315,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           <input className="mt-1 w-full px-3" value={pastedSourceName} onChange={(event) => setPastedSourceName(event.target.value)} />
         </label>
         <label className="mt-3 block text-sm font-medium">
-          Paste exact extracted text (up to {MAX_LOCAL_EVIDENCE_TEXT_CHARS.toLocaleString("en-US")} characters)
-          <textarea className="mt-1 min-h-40 w-full px-3 py-2" maxLength={MAX_LOCAL_EVIDENCE_TEXT_CHARS} value={pastedText} onChange={(event) => setPastedText(event.target.value)} placeholder="Paste text exactly as it appears in the source record." />
+          Paste exact extracted text (up to {formatLimitChars(limits.textChars)} characters)
+          <textarea className="mt-1 min-h-40 w-full px-3 py-2" maxLength={limits.textChars} value={pastedText} onChange={(event) => setPastedText(event.target.value)} placeholder="Paste text exactly as it appears in the source record." />
         </label>
         <button type="button" className="ui-button mt-3" onClick={analyzePastedText}>Analyze pasted text locally</button>
       </div>
@@ -260,7 +330,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-950"
         >
           <strong>Extraction notices</strong>
-          <ul className="mt-2 list-disc space-y-1 pl-5">{warnings.map((warning) => <li key={warning}>{warning}</li>)}</ul>
+          {warnings.length > 40 && <p className="mt-2 text-xs text-amber-900">Showing the first 40 of {warnings.length} notices (for example, image-only pages).</p>}
+          <ul className="mt-2 list-disc space-y-1 pl-5">{warnings.slice(0, 40).map((warning) => <li key={warning}>{warning}</li>)}</ul>
         </div>
       )}
 

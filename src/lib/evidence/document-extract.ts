@@ -1,18 +1,26 @@
 import type { EvidenceTextSegment } from "./extract";
+import {
+  formatLimitBytes,
+  formatLimitChars,
+  STANDARD_LIMITS,
+  type EvidenceLimits,
+} from "./limits";
 
 export type LocalEvidenceDocumentKind = "pdf" | "docx" | "text";
 
-export const MAX_LOCAL_EVIDENCE_FILE_BYTES = 20 * 1024 * 1024;
-export const MAX_LOCAL_EVIDENCE_PDF_PAGES = 300;
-export const MAX_LOCAL_EVIDENCE_TEXT_CHARS = 500_000;
-export const MAX_LOCAL_EVIDENCE_TEXT_FILE_BYTES = MAX_LOCAL_EVIDENCE_TEXT_CHARS * 4;
-export const MAX_LOCAL_EVIDENCE_DOCX_UNCOMPRESSED_BYTES = 40 * 1024 * 1024;
-export const MAX_LOCAL_EVIDENCE_DOCX_ENTRIES = 2_000;
-
-const ZIP_EOCD_SIGNATURE = 0x06054b50;
-const ZIP_CENTRAL_DIRECTORY_SIGNATURE = 0x02014b50;
-const ZIP_EOCD_MIN_BYTES = 22;
-const ZIP_MAX_COMMENT_BYTES = 0xffff;
+/**
+ * Legacy Standard-mode aliases. Extraction functions take an explicit
+ * EvidenceLimits argument (defaulting to STANDARD_LIMITS) so the same parser
+ * serves both depth modes; these names remain exported for callers and tests
+ * that pin the Standard envelope.
+ */
+export const MAX_LOCAL_EVIDENCE_FILE_BYTES = STANDARD_LIMITS.fileBytes;
+export const MAX_LOCAL_EVIDENCE_PDF_PAGES = STANDARD_LIMITS.pdfPages;
+export const MAX_LOCAL_EVIDENCE_TEXT_CHARS = STANDARD_LIMITS.textChars;
+export const MAX_LOCAL_EVIDENCE_TEXT_FILE_BYTES = STANDARD_LIMITS.textFileBytes;
+export const MAX_LOCAL_EVIDENCE_DOCX_UNCOMPRESSED_BYTES =
+  STANDARD_LIMITS.docxUncompressedBytes;
+export const MAX_LOCAL_EVIDENCE_DOCX_ENTRIES = STANDARD_LIMITS.docxEntries;
 
 export interface LocalDocumentExtraction {
   kind: LocalEvidenceDocumentKind;
@@ -25,19 +33,30 @@ function normalizeName(name: string): string {
   return name.trim() || "Local evidence document";
 }
 
-function assertFileSize(file: File): void {
-  if (file.size > MAX_LOCAL_EVIDENCE_FILE_BYTES) {
-    throw new Error(`${normalizeName(file.name)} exceeds the 20 MB local-analysis limit.`);
-  }
-}
-
-function assertExtractedTextSize(charCount: number, sourceName: string): void {
-  if (charCount > MAX_LOCAL_EVIDENCE_TEXT_CHARS) {
+function assertFileSize(file: File, limits: EvidenceLimits): void {
+  if (file.size > limits.fileBytes) {
     throw new Error(
-      `${sourceName} exceeds the ${MAX_LOCAL_EVIDENCE_TEXT_CHARS.toLocaleString("en-US")} character local-analysis limit. Split or narrow the source before analysis.`,
+      `${normalizeName(file.name)} exceeds the ${formatLimitBytes(limits.fileBytes)} local-analysis limit.`,
     );
   }
 }
+
+function assertExtractedTextSize(
+  charCount: number,
+  sourceName: string,
+  limits: EvidenceLimits,
+): void {
+  if (charCount > limits.textChars) {
+    throw new Error(
+      `${sourceName} exceeds the ${formatLimitChars(limits.textChars)} character local-analysis limit. Split or narrow the source before analysis.`,
+    );
+  }
+}
+
+const ZIP_EOCD_SIGNATURE = 0x06054b50;
+const ZIP_CENTRAL_DIRECTORY_SIGNATURE = 0x02014b50;
+const ZIP_EOCD_MIN_BYTES = 22;
+const ZIP_MAX_COMMENT_BYTES = 0xffff;
 
 function findZipEndOfCentralDirectory(view: DataView): number {
   const minimumOffset = Math.max(
@@ -54,11 +73,13 @@ function findZipEndOfCentralDirectory(view: DataView): number {
  * Performs a cheap DOCX ZIP-directory preflight before Mammoth decompresses the
  * archive. This is not a substitute for parser hardening, but it rejects
  * obviously oversized/ZIP64/multi-disk archives and bounds declared expansion
- * before expensive extraction begins.
+ * before expensive extraction begins. The DOCX expansion bounds are shared by
+ * both depth modes and deliberately do not scale with the per-file byte cap.
  */
 export function assertSafeDocxArchive(
   arrayBuffer: ArrayBuffer,
   sourceName: string,
+  limits: EvidenceLimits = STANDARD_LIMITS,
 ): void {
   const view = new DataView(arrayBuffer);
   const eocdOffset = findZipEndOfCentralDirectory(view);
@@ -83,9 +104,9 @@ export function assertSafeDocxArchive(
   ) {
     throw new Error(`${sourceName} uses an unsupported multi-disk or ZIP64 archive layout.`);
   }
-  if (totalEntries > MAX_LOCAL_EVIDENCE_DOCX_ENTRIES) {
+  if (totalEntries > limits.docxEntries) {
     throw new Error(
-      `${sourceName} contains too many archive entries for local analysis (${totalEntries} > ${MAX_LOCAL_EVIDENCE_DOCX_ENTRIES}).`,
+      `${sourceName} contains too many archive entries for local analysis (${totalEntries} > ${limits.docxEntries}).`,
     );
   }
   if (
@@ -113,10 +134,10 @@ export function assertSafeDocxArchive(
     declaredUncompressedBytes += uncompressedBytes;
     if (
       !Number.isSafeInteger(declaredUncompressedBytes) ||
-      declaredUncompressedBytes > MAX_LOCAL_EVIDENCE_DOCX_UNCOMPRESSED_BYTES
+      declaredUncompressedBytes > limits.docxUncompressedBytes
     ) {
       throw new Error(
-        `${sourceName} declares more than ${Math.floor(MAX_LOCAL_EVIDENCE_DOCX_UNCOMPRESSED_BYTES / (1024 * 1024))} MB of expanded DOCX content. Split or narrow the source before analysis.`,
+        `${sourceName} declares more than ${formatLimitBytes(limits.docxUncompressedBytes)} of expanded DOCX content. Split or narrow the source before analysis.`,
       );
     }
 
@@ -150,8 +171,11 @@ function joinPdfTextItems(items: unknown[]): string {
   return text.trim();
 }
 
-export async function extractPdfEvidence(file: File): Promise<LocalDocumentExtraction> {
-  assertFileSize(file);
+export async function extractPdfEvidence(
+  file: File,
+  limits: EvidenceLimits = STANDARD_LIMITS,
+): Promise<LocalDocumentExtraction> {
+  assertFileSize(file, limits);
   const sourceName = normalizeName(file.name);
   const pdfjs = await import("pdfjs-dist");
   if (!pdfjs.GlobalWorkerOptions.workerSrc) {
@@ -166,9 +190,9 @@ export async function extractPdfEvidence(file: File): Promise<LocalDocumentExtra
   let extractedChars = 0;
 
   try {
-    if (document.numPages > MAX_LOCAL_EVIDENCE_PDF_PAGES) {
+    if (document.numPages > limits.pdfPages) {
       throw new Error(
-        `${sourceName} has ${document.numPages} pages; local PDF analysis is limited to ${MAX_LOCAL_EVIDENCE_PDF_PAGES} pages per source. Split the record into smaller documents before analysis.`,
+        `${sourceName} has ${document.numPages} pages; local PDF analysis is limited to ${limits.pdfPages} pages per source. Split the record into smaller documents before analysis.`,
       );
     }
 
@@ -178,7 +202,7 @@ export async function extractPdfEvidence(file: File): Promise<LocalDocumentExtra
       const text = joinPdfTextItems(content.items as unknown[]);
       if (text) {
         extractedChars += text.length;
-        assertExtractedTextSize(extractedChars, sourceName);
+        assertExtractedTextSize(extractedChars, sourceName, limits);
         segments.push({ text, locatorPrefix: `page ${pageNumber}` });
       } else {
         warnings.push(`Page ${pageNumber} contained no extractable text. It may be image-only or require OCR.`);
@@ -196,15 +220,18 @@ export async function extractPdfEvidence(file: File): Promise<LocalDocumentExtra
   return { kind: "pdf", sourceName, segments, warnings };
 }
 
-export async function extractDocxEvidence(file: File): Promise<LocalDocumentExtraction> {
-  assertFileSize(file);
+export async function extractDocxEvidence(
+  file: File,
+  limits: EvidenceLimits = STANDARD_LIMITS,
+): Promise<LocalDocumentExtraction> {
+  assertFileSize(file, limits);
   const sourceName = normalizeName(file.name);
   const arrayBuffer = await file.arrayBuffer();
-  assertSafeDocxArchive(arrayBuffer, sourceName);
+  assertSafeDocxArchive(arrayBuffer, sourceName, limits);
 
   const mammoth = await import("mammoth");
   const result = await mammoth.extractRawText({ arrayBuffer });
-  assertExtractedTextSize(result.value.length, sourceName);
+  assertExtractedTextSize(result.value.length, sourceName, limits);
   const paragraphs = result.value
     .replace(/\r\n/g, "\n")
     .replace(/\r/g, "\n")
@@ -227,16 +254,19 @@ export async function extractDocxEvidence(file: File): Promise<LocalDocumentExtr
   return { kind: "docx", sourceName, segments, warnings };
 }
 
-export async function extractTextEvidence(file: File): Promise<LocalDocumentExtraction> {
-  assertFileSize(file);
+export async function extractTextEvidence(
+  file: File,
+  limits: EvidenceLimits = STANDARD_LIMITS,
+): Promise<LocalDocumentExtraction> {
+  assertFileSize(file, limits);
   const sourceName = normalizeName(file.name);
-  if (file.size > MAX_LOCAL_EVIDENCE_TEXT_FILE_BYTES) {
+  if (file.size > limits.textFileBytes) {
     throw new Error(
-      `${sourceName} exceeds the ${Math.floor(MAX_LOCAL_EVIDENCE_TEXT_FILE_BYTES / (1024 * 1024))} MB raw text preflight limit. Split or narrow the source before analysis.`,
+      `${sourceName} exceeds the ${formatLimitBytes(limits.textFileBytes)} raw text preflight limit. Split or narrow the source before analysis.`,
     );
   }
   const text = await file.text();
-  assertExtractedTextSize(text.length, sourceName);
+  assertExtractedTextSize(text.length, sourceName, limits);
   return {
     kind: "text",
     sourceName,
@@ -245,15 +275,18 @@ export async function extractTextEvidence(file: File): Promise<LocalDocumentExtr
   };
 }
 
-export async function extractLocalEvidenceDocument(file: File): Promise<LocalDocumentExtraction> {
-  assertFileSize(file);
+export async function extractLocalEvidenceDocument(
+  file: File,
+  limits: EvidenceLimits = STANDARD_LIMITS,
+): Promise<LocalDocumentExtraction> {
+  assertFileSize(file, limits);
   const lower = file.name.toLocaleLowerCase();
-  if (file.type === "application/pdf" || lower.endsWith(".pdf")) return extractPdfEvidence(file);
+  if (file.type === "application/pdf" || lower.endsWith(".pdf")) return extractPdfEvidence(file, limits);
   if (
     file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
     lower.endsWith(".docx")
   ) {
-    return extractDocxEvidence(file);
+    return extractDocxEvidence(file, limits);
   }
-  return extractTextEvidence(file);
+  return extractTextEvidence(file, limits);
 }

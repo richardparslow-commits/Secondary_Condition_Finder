@@ -3,10 +3,21 @@ import {
   type EvidenceAnalysis,
   type EvidenceExcerpt,
 } from "@/lib/evidence/extract";
+import {
+  STANDARD_LIMITS,
+  type EvidenceLimits,
+} from "@/lib/evidence/limits";
 
-export const MAX_STORED_EVIDENCE_SOURCES = 10;
-export const MAX_STORED_EVIDENCE_EXCERPTS_PER_SOURCE = 5;
-export const MAX_STORED_EVIDENCE_BYTES = 256 * 1024;
+/**
+ * Legacy Standard-mode retention aliases. Serialize/load/save take an explicit
+ * EvidenceLimits argument (defaulting to STANDARD_LIMITS) so the same store
+ * serves both depth modes; these names remain exported for callers and tests
+ * that pin the Standard envelope.
+ */
+export const MAX_STORED_EVIDENCE_SOURCES = STANDARD_LIMITS.storedSources;
+export const MAX_STORED_EVIDENCE_EXCERPTS_PER_SOURCE =
+  STANDARD_LIMITS.storedExcerptsPerSource;
+export const MAX_STORED_EVIDENCE_BYTES = STANDARD_LIMITS.storedBytes;
 
 interface StorageReader {
   getItem(key: string): string | null;
@@ -69,24 +80,30 @@ function byteLength(value: string): number {
   return new TextEncoder().encode(value).byteLength;
 }
 
-function boundedAnalysis(analysis: EvidenceAnalysis): EvidenceAnalysis {
+function boundedAnalysis(
+  analysis: EvidenceAnalysis,
+  limits: EvidenceLimits,
+): EvidenceAnalysis {
   return {
     ...analysis,
     excerpts: analysis.excerpts.slice(
       0,
-      MAX_STORED_EVIDENCE_EXCERPTS_PER_SOURCE,
+      limits.storedExcerptsPerSource,
     ),
   };
 }
 
-export function serializeStoredEvidence(analyses: EvidenceAnalysis[]): string {
+export function serializeStoredEvidence(
+  analyses: EvidenceAnalysis[],
+  limits: EvidenceLimits = STANDARD_LIMITS,
+): string {
   let bounded = analyses
-    .slice(-MAX_STORED_EVIDENCE_SOURCES)
-    .map(boundedAnalysis);
+    .slice(-limits.storedSources)
+    .map((analysis) => boundedAnalysis(analysis, limits));
 
   while (bounded.length > 0) {
     const serialized = JSON.stringify(bounded);
-    if (byteLength(serialized) <= MAX_STORED_EVIDENCE_BYTES) {
+    if (byteLength(serialized) <= limits.storedBytes) {
       return serialized;
     }
     bounded = bounded.slice(1);
@@ -97,6 +114,7 @@ export function serializeStoredEvidence(analyses: EvidenceAnalysis[]): string {
 
 export function loadStoredEvidence(
   storage: StorageReader | null,
+  limits: EvidenceLimits = STANDARD_LIMITS,
 ): EvidenceAnalysis[] {
   if (!storage) return [];
 
@@ -105,7 +123,7 @@ export function loadStoredEvidence(
     if (!raw) return [];
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return [];
-    return parsed.filter(isEvidenceAnalysis).slice(-MAX_STORED_EVIDENCE_SOURCES);
+    return parsed.filter(isEvidenceAnalysis).slice(-limits.storedSources);
   } catch {
     return [];
   }
@@ -114,13 +132,14 @@ export function loadStoredEvidence(
 export function saveStoredEvidence(
   storage: StorageWriter | null,
   analyses: EvidenceAnalysis[],
+  limits: EvidenceLimits = STANDARD_LIMITS,
 ): boolean {
   if (!storage) return false;
 
   try {
     storage.setItem(
       evidenceAnalysisStorageKey,
-      serializeStoredEvidence(analyses),
+      serializeStoredEvidence(analyses, limits),
     );
     return true;
   } catch {
