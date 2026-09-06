@@ -132,4 +132,19 @@ describe("indexById and groupByBodySystem", () => {
     expect(total).toBe(catalog.length);
     expect(groups.length).toBeGreaterThan(5);
   });
+
+  it("keeps body system labels case-consistent so groups never split", () => {
+    // "Neurological" vs "neurological" previously created a phantom 15th
+    // group. Two labels that differ only by case are a data-entry error.
+    const byLowercase = new Map<string, string>();
+    for (const condition of catalog) {
+      const key = condition.bodySystem.toLowerCase();
+      const expected = byLowercase.get(key);
+      if (expected !== undefined) {
+        expect(condition.bodySystem).toBe(expected);
+      } else {
+        byLowercase.set(key, condition.bodySystem);
+      }
+    }
+  });
 });

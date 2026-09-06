@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
-import { VALID_RATINGS } from "@/lib/secondary-workflow";
+import { VALID_RATINGS } from "@/lib/secondary-workflow/ratings";
 import { ratingFieldName } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
 import { secondaryValidationMessage } from "@/lib/secondary-workflow/validation";

@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import fs from "fs";
 import path from "path";
-import { VALID_RATINGS } from "../src/lib/secondary-workflow";
+import { VALID_RATINGS } from "../src/lib/secondary-workflow/ratings";
 import { catalogConditionSchema } from "../src/lib/catalog/schema";
 
 interface ConditionCatalogEntry {
