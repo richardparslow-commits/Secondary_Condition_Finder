@@ -62,6 +62,15 @@ describe("recommend", () => {
       "depressive-disorder",
       "insomnia",
       "substance-use-disorder",
+      "metabolic-syndrome",
+      "systemic-lupus-erythematosus",
+      "rheumatoid-arthritis",
+      "inflammatory-bowel-disease",
+      "multiple-sclerosis",
+      "thyroiditis",
+      "irritable-bowel-syndrome",
+      "gerd",
+      "copd",
     ]);
     expect(recommendations[0].condition).toBe(
       "Sleep Apnea (Obstructive, Central, Mixed)",

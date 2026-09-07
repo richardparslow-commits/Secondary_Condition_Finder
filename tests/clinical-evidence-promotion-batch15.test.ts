@@ -44,7 +44,7 @@ describe("clinical evidence promotion batch 15", () => {
     expect(mapping?.todo.join(" ")).toMatch(/prevalence|comorbidity|direction|caused|aggravat/i);
   });
 
-  it("retires only redundant PTSD legal references while preserving all nine clinical relationships", () => {
+  it("retires only redundant PTSD legal references while preserving all eighteen clinical relationships", () => {
     const mapping = byId.get("ptsd");
 
     expect(mapping?.draft).toBe(false);
@@ -58,11 +58,22 @@ describe("clinical evidence promotion batch 15", () => {
       "depressive-disorder",
       "insomnia",
       "substance-use-disorder",
+      "metabolic-syndrome",
+      "systemic-lupus-erythematosus",
+      "rheumatoid-arthritis",
+      "inflammatory-bowel-disease",
+      "multiple-sclerosis",
+      "thyroiditis",
+      "irritable-bowel-syndrome",
+      "gerd",
+      "copd",
     ]);
 
     for (const suggestion of mapping?.suggestions ?? []) {
-      expect(suggestion.sourceReferences).toHaveLength(1);
-      expect(suggestion.sourceReferences[0]?.verificationScope).toBe("clinical-evidence");
+      expect(suggestion.sourceReferences.length).toBeGreaterThan(0);
+      expect(
+        suggestion.sourceReferences.every((source) => source.verificationScope === "clinical-evidence"),
+      ).toBe(true);
       expect(suggestion.sourceReferences.some((source) => /^38 CFR/i.test(source.citation))).toBe(false);
     }
   });
