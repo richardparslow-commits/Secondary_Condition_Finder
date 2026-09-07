@@ -67,6 +67,7 @@ describe("clinical evidence promotion batch 15", () => {
       "irritable-bowel-syndrome",
       "gerd",
       "copd",
+      "rem-sleep-disorder",
     ]);
 
     for (const suggestion of mapping?.suggestions ?? []) {

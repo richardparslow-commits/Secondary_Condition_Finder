@@ -71,6 +71,7 @@ describe("recommend", () => {
       "irritable-bowel-syndrome",
       "gerd",
       "copd",
+      "rem-sleep-disorder",
     ]);
     expect(recommendations[0].condition).toBe(
       "Sleep Apnea (Obstructive, Central, Mixed)",

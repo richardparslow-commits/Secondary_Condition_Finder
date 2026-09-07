@@ -47,9 +47,9 @@ if (srcRegistry.status !== "AUTHORITATIVE-CURRENT-STATE") fail("Source registry 
 if (relRegistry.baselineCommit !== expectedBaseline || srcRegistry.baselineCommit !== expectedBaseline) fail("Registry baseline mismatch.");
 
 const relById = new Map(relRegistry.relationships.map((r) => [r.relationshipId, r]));
-if (relById.size !== 362) fail(`Expected 362 master relationships, found ${relById.size}.`);
+if (relById.size !== 363) fail(`Expected 363 master relationships, found ${relById.size}.`);
 const srcById = new Map(srcRegistry.sources.map((s) => [s.sourceId, s]));
-if (srcById.size !== 352) fail(`Expected 352 source entities including lineage, found ${srcById.size}.`);
+if (srcById.size !== 355) fail(`Expected 355 source entities including lineage, found ${srcById.size}.`);
 
 const isApprovedVerificationOnlyPromotion = (source, ref) => {
   const state = source?.verificationState;
@@ -177,9 +177,9 @@ for (const file of files) {
 }
 
 if (published !== 139 || draft !== 674) fail(`Publication-state drift: published=${published}, draft=${draft}`);
-if (relationshipCount !== 362) fail(`Relationship count drift: ${relationshipCount}`);
-if (referenceUses !== 376 || verifiedTrue !== 376 || verifiedFalse !== 0) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
-if (clinicalUses !== 371 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);
+if (relationshipCount !== 363) fail(`Relationship count drift: ${relationshipCount}`);
+if (referenceUses !== 379 || verifiedTrue !== 379 || verifiedFalse !== 0) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
+if (clinicalUses !== 374 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);
 
 const statusCounts = {};
 let activeClinical = 0;
@@ -216,7 +216,7 @@ for (const source of srcRegistry.sources) {
 }
 
 const expectedStatuses = {
-  active: 343,
+  active: 346,
   "pending-verification": 0,
   "superseded-unverified": 7,
   "bibliographic-correction-only": 1,
@@ -226,28 +226,28 @@ if (Object.entries(expectedStatuses).some(([key, value]) => (statusCounts[key] |
     Object.keys(statusCounts).some((key) => !(key in expectedStatuses))) {
   fail(`Source status counts mismatch: ${JSON.stringify(statusCounts)}`);
 }
-if (activeClinical !== 342 || pendingClinical !== 0 || activeLegal !== 1) {
+if (activeClinical !== 345 || pendingClinical !== 0 || activeLegal !== 1) {
   fail(`Source kind counts mismatch: activeClinical=${activeClinical}, pendingClinical=${pendingClinical}, activeLegal=${activeLegal}`);
 }
 if (retiredVerifiedUses !== 6) fail(`Retired verified relationship-source uses mismatch: ${retiredVerifiedUses}`);
 
 const legacyCount = relRegistry.relationships.filter((r) => r.publicationGuard.status === "legacy-rationale-boundary").length;
 const explicitCount = relRegistry.relationships.filter((r) => r.publicationGuard.status === "explicit").length;
-if (legacyCount !== 74 || explicitCount !== 288) fail(`Publication guard counts mismatch: legacy=${legacyCount}, explicit=${explicitCount}`);
+if (legacyCount !== 74 || explicitCount !== 289) fail(`Publication guard counts mismatch: legacy=${legacyCount}, explicit=${explicitCount}`);
 
-const expectedRelCounts = { relationships: 362, explicitPublicationGuards: 288, legacyRationaleBoundaries: 74 };
+const expectedRelCounts = { relationships: 363, explicitPublicationGuards: 289, legacyRationaleBoundaries: 74 };
 if (JSON.stringify(relRegistry.counts) !== JSON.stringify(expectedRelCounts)) fail(`Relationship registry count metadata mismatch: ${JSON.stringify(relRegistry.counts)}`);
 
 const expectedSourceCounts = {
-  liveSourceReferenceUses: 376,
-  activeSourceEntities: 343,    pendingVerificationSourceEntities: 0,
-  activeClinicalSourceEntities: 342,
+  liveSourceReferenceUses: 379,
+  activeSourceEntities: 346,    pendingVerificationSourceEntities: 0,
+  activeClinicalSourceEntities: 345,
   pendingClinicalSourceEntities: 0,
   activeLegalAuthorityEntities: 1,
   retiredOnlySourceEntities: 1,
   supersededUnverifiedSourceEntities: 7,
   bibliographicCorrectionOnlyEntities: 1,
-  totalSourceEntitiesIncludingLineage: 352,
+  totalSourceEntitiesIncludingLineage: 355,
   retiredVerifiedRelationshipSourceUses: 6,
 };
 if (JSON.stringify(srcRegistry.counts) !== JSON.stringify(expectedSourceCounts)) fail(`Source registry count metadata mismatch: ${JSON.stringify(srcRegistry.counts)}`);

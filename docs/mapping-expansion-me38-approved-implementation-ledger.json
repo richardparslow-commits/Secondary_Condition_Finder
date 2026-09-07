@@ -1,0 +1,30 @@
+{
+  "batch": "ME-38",
+  "batchDate": "2026-09-06",
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "scope": "One published PTSD-to-REM-sleep-behavior-disorder bounded-association relationship over the existing rem-sleep-disorder catalog identity, driven by qualified-human medical-literature supplied in-session (video-polysomnography veteran cohort, 2026 systematic review, and clinical review of PTSD/RBD/trauma-associated sleep disorder). The row carries three qualified-human-verified clinical references entered verified: true at implementation because PTSD is published and published mappings may carry only verified sources. rem-sleep-disorder's own mapping remains draft: true and safe-draft; this change adds only the incoming published edge from ptsd and does not alter REM's primary publication state.",
+  "relationships": [
+    {"relationshipId": "rel-ptsd-to-rem-sleep-disorder", "primaryId": "ptsd", "targetId": "rem-sleep-disorder", "rank": 19, "pmids": ["31587047", "41616415", "32804070"], "dois": ["10.1093/sleep/zsz237", "10.1016/j.smrv.2026.102245", "10.5664/jcsm.8758"], "publicationGuard": "PTSD/REM-sleep-behavior-disorder association proposition: require PTSD and RBD confirmed by overnight polysomnography showing REM sleep without atonia with dream-enactment behavior, compatible chronology, and sleep-medicine/mental-health review preserving TBI, PTSD-related nightmares, trauma-associated sleep disorder, OSA, periodic limb movements, antidepressant/medication effects, alcohol or substance use, and neurodegenerative or prodromal synucleinopathy risk; dream enactment in a person with PTSD does not by itself establish true RBD."}
+  ],
+  "evidenceAndPublicationState": {
+    "primaryKnowledgeBaseRecordsRemainDraft": false,
+    "publishedPrimaryExpansion": "ptsd",
+    "targetMappingPublicationStatePreserved": "rem-sleep-disorder remains draft: true (incoming published edge only)",
+    "suggestionsAreAssociationOnly": true,
+    "clinicalReferencesEnteredVerified": true,
+    "qualifiedHumanCitationReviewCompleted": true,
+    "registryHashesUseRepositoryCanonicalization": true
+  },
+  "aggregateRatchet": {
+    "relationships": "362 -> 363",
+    "liveSourceReferenceUses": "376 -> 379",
+    "verifiedLiveUses": "376 -> 379",
+    "pendingLiveUses": "0 unchanged",
+    "clinicalUses": "371 -> 374",
+    "explicitPublicationGuards": "288 -> 289",
+    "sourceEntitiesIncludingLineage": "352 -> 355"
+  },
+  "documentedConsideredButNotEntered": "Husain 2001 (PMID 11435805, 15/27 veterans with RBD had PTSD) was considered but is superseded by the video-polysomnography cohort evidence (Elliott 2020, PMID 31587047) and was not entered as a fourth reference. Shahkhali 2025 medRxiv preprint (DOI 10.1101/2025.09.05.25335205) was considered and excluded from verified sources because it is a non-peer-reviewed preprint; its Mendelian-randomization analyses found no causal support for PTSD to RBD and are recorded as no-causation guard evidence only.",
+  "documentedCausalityBoundary": "Neither Elliott 2020 nor the Baldini 2026 systematic review establishes that PTSD causes or aggravates an individual's REM sleep behavior disorder; Elliott's authors state that any causal role for PTSD remains uncertain. The ME-38 edge is ASSOCIATION_ONLY / NOT_ESTABLISHED / NOT_ASSERTED with a hypothesized-only mechanism and a mandatory diagnostic-boundary guard: dream enactment alone does not establish RBD, which requires polysomnographic REM sleep without atonia, with trauma-associated sleep disorder, obstructive sleep apnea, periodic limb movements, TBI, medications, and alcohol or substance use among the alternative explanations to rule out.",
+  "safetyBoundary": "These records are evidence-navigation aids only. They do not diagnose a condition, establish a VA medical nexus, determine service connection, or replace qualified clinical and accredited-representative review. The ME-38 edge is ASSOCIATION_ONLY and NOT_ESTABLISHED; it does not assert causation or aggravation for any individual veteran."
+}
