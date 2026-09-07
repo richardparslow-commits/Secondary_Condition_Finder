@@ -114,6 +114,20 @@ describe("coverage", () => {
     expect(mapped.size).toBeLessThanOrEqual(catalog.length);
     expect(mapped.size).toBeGreaterThan(0);
   });
+
+  it("keeps the catalog and the knowledge base one-to-one", () => {
+    const mapped = mappedConditionIds(kb);
+    const catalogOnly = catalog
+      .filter((condition) => !mapped.has(condition.id))
+      .map((condition) => condition.id);
+    const mappingOnly = [...mapped].filter((id) => !byId.has(id));
+
+    // A catalog condition with no mapping silently disappears from
+    // recommendations, and a mapping with no catalog condition cannot resolve
+    // its display name. Either drift is a data bug, so fail loudly.
+    expect(catalogOnly).toEqual([]);
+    expect(mappingOnly).toEqual([]);
+  });
 });
 
 describe("validateKnowledgeBaseAgainstCatalog", () => {
