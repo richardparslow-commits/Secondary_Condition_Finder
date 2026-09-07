@@ -5,7 +5,7 @@ export const CURRENT_DISABILITY_SCOPE_NOTICE =
   "Evidence must establish a current disability. A named medical diagnosis is not an absolute legal prerequisite in every circumstance: under Saunders v. Wilkie, pain can constitute a disability when it reaches the level of functional impairment of earning capacity. This product's six-step recommendation workflow remains intentionally limited to conditions you identify as diagnosed.";
 
 export const CAUSED_AGGRAVATED_DISTINCTION =
-  "A secondary claim can involve a condition that may have been caused by a service-connected disability, or a condition that already existed but may have been aggravated (made worse beyond normal progression) by it.";
+  "A secondary claim can involve a condition that may be the result of, or would not have occurred but for, a service-connected disability (38 CFR § 3.310(a)). Alternatively, a condition that already existed may have been aggravated — made worse, or its treatment interfered with — by the service-connected disability (38 CFR § 3.310(b), Spicer/M21-1 May 2026).";
 
 export const TRACK_DISTINCTION_NOTICE =
   "This is separate from presumptive service connection, which is based on qualifying service exposures rather than one condition causing or aggravating another.";

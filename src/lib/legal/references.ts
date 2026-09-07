@@ -20,7 +20,7 @@ export const CANONICAL_REFERENCES: LegalReference[] = [
     id: "38-cfr-3.310-a",
     citation: "38 CFR § 3.310(a)",
     title: "Direct Secondary Service Connection",
-    description: "Establishes that a disability proximately due to or the result of a service-connected disease or injury shall be service-connected.",
+    description: "Establishes that a disability that is the result of, or would not have occurred but for, a service-connected disability shall be service-connected. The M21-1 (May 2026 Spicer update) uses \"but for\" causation language; the regulation text still reads \"proximately due to or the result of.\"",
     sourceType: "CFR",
     verificationStatus: "unverified"
   },
@@ -28,15 +28,15 @@ export const CANONICAL_REFERENCES: LegalReference[] = [
     id: "38-cfr-3.310-b",
     citation: "38 CFR § 3.310(b)",
     title: "Service Connection by Aggravation",
-    description: "Governs non-service-connected disabilities that are worsened or aggravated beyond natural progress by an established service-connected condition.",
+    description: "Governs non-service-connected disabilities aggravated by an established service-connected disability. After the May 2026 Spicer update, M21-1 defines aggravation to include any increase in severity that would not have occurred but for the SC disability, and cases where the SC disability interfered with or impeded treatment for the NSC disability. Permanent worsening is not required.",
     sourceType: "CFR",
     verificationStatus: "unverified"
   },
   {
     id: "m21-1-v-ii-2",
-    citation: "VA Manual M21-1, Part V, Subpart ii, Chapter 2",
-    title: "Evaluating Medical Nexus Evidence",
-    description: "Provides rating veterans examiners guidelines for weighing medical nexus evidence, physician qualifications, and clinical rationale.",
+    citation: "VA Manual M21-1, Part V, Subpart ii, Chapter 2, Section D",
+    title: "Secondary Service Connection and Aggravation (Spicer Update)",
+    description: "Implements Spicer v. McDonough (Fed. Cir. 2025). Updated May 1, 2026. Defines aggravation to include treatment interference (SC disability delayed, prevented, or impeded treatment for the NSC disability). Uses \"but for\" causation language. A baseline of pre-aggravation severity is still required for aggravation claims.",
     sourceType: "M21-1",
     verificationStatus: "unverified"
   },

@@ -29,7 +29,9 @@ export default function ConditionAggravationPage() {
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">§</span><h2 className="text-xl font-bold">Legal / Regulatory Basis</h2></div>
             <ul className="list-disc space-y-3 pl-5 text-sm">
               <li>38 CFR § 3.310(b) provides the legal framework for aggravation of a non-service-connected disability by a service-connected disability.</li>
-              <li>The research question focuses on worsening beyond the condition&apos;s natural progression and the evidence needed to describe that change.</li>
+              <li>After the May 2026 Spicer update (M21-1 § 5.ii.2.D), aggravation includes any increase in severity that would not have occurred but for the SC disability, and cases where the SC disability interfered with or impeded treatment for the NSC disability.</li>
+              <li>Permanent worsening is not required. The key question is: would the condition be less severe today but for the service-connected disability?</li>
+              <li>A baseline of pre-aggravation severity is still required for aggravation claims under 38 CFR § 3.310(b).</li>
             </ul>
           </article>
 
@@ -40,6 +42,7 @@ export default function ConditionAggravationPage() {
               <li><strong>Metabolic / endocrine:</strong> physiological changes affecting another condition</li>
               <li><strong>Mental health / physiologic interaction:</strong> clinically supported pathways requiring condition-specific evidence</li>
               <li><strong>Medication side effects:</strong> adverse effects or treatment-related pathways</li>
+              <li><strong>Treatment interference (Spicer):</strong> the SC disability delayed, prevented, or impeded treatment for the NSC disability</li>
               <li><strong>Obesity-related chains:</strong> an intermediate-factor theory where supported by evidence</li>
             </ul>
           </article>
@@ -52,7 +55,7 @@ export default function ConditionAggravationPage() {
           <p className="mt-4">{TRACK_DISTINCTION_NOTICE}</p>
           <div className="ui-divider" />
           <p><strong>Important:</strong> {UNVERIFIED_REFERENCE_NOTICE}</p>
-          <div className="ui-callout mt-5"><p>See 38 CFR § 3.310(a) and § 3.310(b) for the legal secondary-service-connection framework. Clinical support still must come from appropriate medical evidence.</p></div>
+          <div className="ui-callout mt-5"><p>See 38 CFR § 3.310(a) and § 3.310(b) for the legal secondary-service-connection framework, as implemented by the May 2026 Spicer update to M21-1 § 5.ii.2.D. The &quot;but for&quot; causation standard and treatment-interference pathway now apply. Clinical support still must come from appropriate medical evidence.</p></div>
           <Link href="/secondary/diagnosed" className="ui-button mt-6 w-full">Proceed to Step 1 <span aria-hidden="true">→</span></Link>
         </article>
 
@@ -60,11 +63,11 @@ export default function ConditionAggravationPage() {
           <article className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Adjudicative Mechanics</h2></div>
             <div className="space-y-5">
-              <div><h3 className="font-bold">Baseline evidence</h3><p className="mt-1 text-sm">Identify evidence describing severity before the claimed aggravation when the regulation requires a baseline comparison.</p></div>
+              <div><h3 className="font-bold">Baseline evidence</h3><p className="mt-1 text-sm">Identify evidence describing severity before the claimed aggravation. A baseline of pre-aggravation severity is still required under 38 CFR § 3.310(b) to determine what part of the current disability resulted from the service-connected condition.</p></div>
               <div className="ui-divider" />
               <div><h3 className="font-bold">Current severity</h3><p className="mt-1 text-sm">Organize evidence describing the present level of severity and the course of the condition.</p></div>
               <div className="ui-divider" />
-              <div><h3 className="font-bold">Medical theory / nexus support</h3><p className="mt-1 text-sm">A condition-specific medical explanation should address how the service-connected disability may have contributed to worsening beyond natural progression.</p></div>
+              <div><h3 className="font-bold">Medical theory / nexus support</h3><p className="mt-1 text-sm">A condition-specific medical explanation should address whether the condition would be less severe today but for the service-connected disability. This includes direct worsening, treatment interference (the SC disability delayed, prevented, or impeded treatment), and medication side effects.</p></div>
             </div>
           </article>
 
