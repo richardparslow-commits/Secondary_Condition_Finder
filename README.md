@@ -112,6 +112,11 @@ Wizard notes:
 - 193 have version-controlled mapping files.
 - 193 are published (`draft: false`) and active in recommendations.
 
+The catalog and the knowledge base are kept strictly one-to-one: every
+catalog condition must have a published mapping and every mapping must resolve
+to a catalog condition. The test suite enforces this, so adding a condition in
+one place without the other fails `npm test`.
+
 
 ## Adding a condition
 
