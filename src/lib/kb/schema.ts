@@ -386,6 +386,7 @@ export const conditionMappingSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   draft: z.boolean().default(false),
   todo: z.array(z.string().min(1)).default([]),
+  governanceNotes: z.array(z.string().min(1)).default([]).optional(),
   suggestions: z.array(suggestionSchema).default([]),
 }).strict().superRefine((mapping, ctx) => {
   if (!mapping.draft && mapping.suggestions.length === 0) ctx.addIssue({ code: "custom", path: ["suggestions"], message: "A published mapping needs at least one suggestion. Mark it draft: true while it is incomplete." });

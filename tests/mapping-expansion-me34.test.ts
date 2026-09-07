@@ -88,8 +88,8 @@ describe("Mapping Expansion Batch ME-34", () => {
   });
 
   it("ratchets the authoritative counts without changing publication totals", () => {
-    expect(relationships.currentState).toBe("ME-38-CITATION-VERIFIED");
-    expect(sources.currentState).toBe("ME-38-CITATION-VERIFIED");
+    expect(relationships.currentState).toBe("ME-39-CITATION-VERIFIED");
+    expect(sources.currentState).toBe("ME-39-CITATION-VERIFIED");
     expect(relationships.counts).toEqual({ relationships: 363, explicitPublicationGuards: 289, legacyRationaleBoundaries: 74 });
     expect(relationships.relationships).toHaveLength(363);
     expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 379, pendingVerificationSourceEntities: 0, pendingClinicalSourceEntities: 0, totalSourceEntitiesIncludingLineage: 355 });

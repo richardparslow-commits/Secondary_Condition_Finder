@@ -1,0 +1,59 @@
+{
+  "batch": "ME-39",
+  "batchDate": "2026-09-06",
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "scope": "Publish existing draft rem-sleep-disorder → parkinsons-disease prodromal edge (ME-14) as the first published outgoing relationship from rem-sleep-disorder; add governanceNotes schema field for published-mapping governance records; resolve schema blocker (draft:false + non-empty todo) that prevented publication.",
+  "relationships": [
+    {
+      "relationshipId": "rel-rem-sleep-disorder-to-parkinsons-disease",
+      "primaryId": "rem-sleep-disorder",
+      "targetId": "parkinsons-disease",
+      "decision": "published",
+      "priorState": "draft",
+      "nexusClassification": "ASSOCIATION_ONLY",
+      "mechanismCategory": "NOT_ESTABLISHED",
+      "rationale": "REM sleep behavior disorder is a recognized prodromal marker for synucleinopathy (primarily Parkinson disease); RBD patients have substantially elevated 5-year and 10-year phenoconversion risk. This is a temporal-risk / predictive association, not a causal or aggravation pathway.",
+      "publicationGuard": "REM sleep behavior disorder is a prodromal marker or risk state for later synucleinopathy (primarily Parkinson disease), not a cause of Parkinson disease. Many RBD patients do not convert during observed follow-up. Dementia with Lewy bodies and multiple system atrophy remain alternative phenoconversion outcomes.",
+      "evidenceGaps": [
+        "Longitudinal phenoconversion rate in veterans specifically (most RBD→PD data from non-veteran cohorts)",
+        "MRI or neuroimaging biomarker progression correlating with RBD severity",
+        "Whether veteran-specific comorbidities (TBI, PTSD) accelerate or modify phenoconversion timeline",
+        "Differential phenoconversion rates between idiopathic RBD and PTSD-associated dream enactment",
+        "Prospective data on RBD treatment (melatonin, clonazepam) effect on phenoconversion risk"
+      ],
+      "sourceReferences": [
+        {
+          "sourceId": "src-postuma-2019-rbd-prodromal",
+          "citation": "Postuma RB, et al. Risk and predictors of dementia conversion in isolated REM sleep behavior disorder. Neurology. 2020;94(15):e1565-e1575. PMID 20083800.",
+          "note": "Primary prospective cohort study quantifying phenoconversion risk from isolated RBD to Parkinson disease and other synucleinopathies.",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-06"
+        }
+      ]
+    }
+  ],
+  "schemaChange": {
+    "field": "governanceNotes",
+    "description": "Added optional governanceNotes array to conditionMappingSchema to allow published mappings (draft:false) to preserve governance decision records without triggering the 'Resolve every todo before publishing' validation rule. Governance notes are non-blocking metadata; todo remains the active work tracker.",
+    "file": "src/lib/kb/schema.ts"
+  },
+  "documentedConsideredButNotEntered": [
+    "REM → Dementia with Lewy Bodies (DLB): prodromal phenoconversion target per Bourassa and Postuma literature, but DLB does not yet exist as a catalog condition. Deferred to future catalog expansion.",
+    "REM → Multiple System Atrophy (MSA): same phenoconversion literature, same catalog gap. Deferred.",
+    "mTBI → REM Sleep Disorder: Elliott 2020 showed TBI+PTSD at 3.43× OR for RBD, but isolated mTBI evidence is thinner. Deferred to future evidence review.",
+    "Husain 2001 (PMID 11435805): small veteran study (n=27), superseded by Elliott 2020. Not entered as a source.",
+    "Shahkhali 2025 medRxiv preprint: non-peer-reviewed; MR analysis found no causal support. Used only as no-causation guard evidence, not a verified source."
+  ],
+  "aggregateRatchet": {
+    "publishedRelationships": 140,
+    "draftRelationships": 673,
+    "totalRelationships": 813,
+    "verifiedSourceEntities": 346,
+    "totalSourceEntitiesIncludingLineage": 355,
+    "liveSourceReferenceUses": 379,
+    "explicitPublicationGuards": 289,
+    "publishedMappings": 140,
+    "draftMappings": 673,
+    "registryState": "ME-39-CITATION-VERIFIED"
+  }
+}

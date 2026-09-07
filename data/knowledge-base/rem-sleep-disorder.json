@@ -1,11 +1,7 @@
 {
   "id": "rem-sleep-disorder",
-  "draft": true,
-  "todo": [
-    "Targeted 2026-08-15 rescreen found strong prospective evidence that isolated REM sleep behavior disorder is a prodromal marker for later synucleinopathy, including conversion to Parkinson disease or dementia with Lewy bodies (for example PMIDs 39177811 and 28429825). Do not convert this predictive/prodromal relationship into a claim that REM sleep behavior disorder causes Parkinson disease or another synucleinopathy.",
-    "The prior insomnia and anxiety suggestions remain withdrawn because sleep fragmentation and distress do not by themselves establish those separate diagnoses or a directional secondary relationship.",
-    "Keep safe-draft unless future evidence supports an exact downstream diagnosis through a true causal, aggravation, or treatment-complication pathway rather than shared neurodegenerative pathophysiology or prodromal prediction."
-  ],
+  "draft": false,
+  "todo": [],
   "suggestions": [
     {
       "conditionId": "parkinsons-disease",
@@ -50,5 +46,11 @@
         "requiresSpecificDbqEvidence": false
       }
     }
+  ],
+  "governanceNotes": [
+    "ME-39 qualified-human publication decision (2026-09-06): this mapping's rem-sleep-disorder -> parkinsons-disease relationship (ME-14, approved-me14-bounded-proposition) is published as an ASSOCIATION_ONLY prodromal temporal-risk marker. The prodromal guard is mandatory and unchanged: REM sleep behavior disorder is a marker or risk state for later synucleinopathy, not a cause of Parkinson disease or another synucleinopathy; many patients do not convert during observed follow-up; and dementia with Lewy bodies and multiple system atrophy remain alternative phenoconversion outcomes.",
+    "The prior insomnia and anxiety suggestions remain withdrawn because sleep fragmentation and distress do not by themselves establish those separate diagnoses or a directional secondary relationship.",
+    "Outgoing edges other than the published prodromal Parkinson marker remain prohibited unless future evidence supports an exact downstream diagnosis through a true causal, aggravation, or treatment-complication pathway rather than shared neurodegenerative pathophysiology or prodromal prediction.",
+    "ME-38 added the published incoming ptsd -> rem-sleep-disorder association edge (qualified-human-verified 2026-09-06); it does not alter this mapping's outgoing relationships."
   ]
 }

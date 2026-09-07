@@ -54,7 +54,7 @@ describe("Mapping Expansion ME-14 qualified-human citation verification", () => 
   it("promotes exactly the five approved ME-14 references to verified without changing mapping semantics", () => {
     for (const row of rows) {
       const mapping = load<Mapping>(path.join(ROOT, "data", "knowledge-base", `${row.primaryId}.json`));
-      expect(mapping.draft).toBe(true);
+      expect(mapping.draft).toBe(row.primaryId === "rem-sleep-disorder" ? false : true);
       const suggestions = mapping.suggestions.filter((s) => s.conditionId === row.targetId);
       expect(suggestions).toHaveLength(1); expect(suggestions[0]!.rank).toBe(1); expect(suggestions[0]!.nexusClaim?.nexusClassification).toBeDefined(); expect(suggestions[0]!.evidentiaryProfile?.etiologicalConsensus).toBeDefined(); expect(suggestions[0]!.pathwayIntelligence).toBeUndefined();
       const refs = suggestions[0]!.sourceReferences.filter((r) => r.citation?.includes(`PMID ${row.pmid}`));
@@ -63,7 +63,7 @@ describe("Mapping Expansion ME-14 qualified-human citation verification", () => 
   });
   it("promotes exactly the five matching master sources to active qualified-human-verified state", () => {
     const registry = load<MasterSourceRegistry>(path.join(ROOT, "data", "evidence", "master-sources.json"));
-    expect(registry.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f"); expect(registry.currentState).toBe("ME-38-CITATION-VERIFIED");
+    expect(registry.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f"); expect(registry.currentState).toBe("ME-39-CITATION-VERIFIED");
     for (const row of rows) {
       const sources = registry.sources.filter((s) => s.sourceId === `pmid-${row.pmid}`);
       expect(sources).toHaveLength(1); expect(sources[0]!.status).toBe("active"); expect(sources[0]!.verified).toBe(true);
@@ -72,10 +72,10 @@ describe("Mapping Expansion ME-14 qualified-human citation verification", () => 
   });
   it("preserves relationship identities, rank 1, draft publication state, exact guards, and source linkage", () => {
     const registry = load<MasterRelationshipRegistry>(path.join(ROOT, "data", "evidence", "master-relationships.json"));
-    expect(registry.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f"); expect(registry.currentState).toBe("ME-38-CITATION-VERIFIED");
+    expect(registry.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f"); expect(registry.currentState).toBe("ME-39-CITATION-VERIFIED");
     for (const row of rows) {
       const rels = registry.relationships.filter((r) => r.relationshipId === `rel-${row.primaryId}-to-${row.targetId}`);
-      expect(rels).toHaveLength(1); expect(rels[0]!.primaryPublicationState).toBe("draft"); expect(rels[0]!.rank).toBe(1); expect(rels[0]!.publicationGuard.structuredGuardText).toBe(row.guard); expect(rels[0]!.sourceIds).toContain(`pmid-${row.pmid}`);
+      expect(rels).toHaveLength(1); expect(rels[0]!.primaryPublicationState).toBe(row.primaryId === "rem-sleep-disorder" ? "published" : "draft"); expect(rels[0]!.rank).toBe(1); expect(rels[0]!.publicationGuard.structuredGuardText).toBe(row.guard); expect(rels[0]!.sourceIds).toContain(`pmid-${row.pmid}`);
     }
   });
 });

@@ -153,10 +153,10 @@ describe("Mapping Expansion Batch ME-6", () => {
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
     );
     expect(files).toHaveLength(813);
-    expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
-    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(674);
+    expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
+    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(673);
     expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(363);
-    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(66);
+    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(67);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(73);
     const refs = mappings.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),

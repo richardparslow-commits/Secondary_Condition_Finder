@@ -2258,9 +2258,11 @@
       "id": "rem-sleep-disorder",
       "name": "REM Sleep Disorder",
       "originalDisposition": "HOLD-DIRECTION",
-      "masterResolution": "FINAL-CLOSE-DIRECTION",
-      "approvedTargets": [],
-      "reason": "REM sleep behavior disorder predicts later synucleinopathy/Parkinson disease as a prodromal marker; that is prediction/prodrome, not RBD-caused secondary disease.",
+      "masterResolution": "PUBLISHED-PRODROMAL-OUTGOING",
+      "approvedTargets": [
+        "parkinsons-disease"
+      ],
+      "reason": "ME-39 published rem-sleep-disorder → parkinsons-disease as an ASSOCIATION_ONLY prodromal temporal-risk marker (ME-14, Postuma 2020). Incoming ptsd → rem-sleep-disorder edge also published (ME-38). Condition no longer draft.",
       "originalReason": "REM sleep behavior disorder predicts later synucleinopathy/Parkinson disease as a prodromal marker; that is prediction/prodrome, not RBD-caused secondary disease."
     },
     {

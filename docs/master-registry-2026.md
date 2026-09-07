@@ -2,13 +2,13 @@
 
 ## Status
 
-The authoritative registry is rebaselined at commit `ea005e50` (ME-35 lineage): `currentState` is `ME-38-CITATION-VERIFIED` in both `data/evidence/master-relationships.json` and `data/evidence/master-sources.json`. Run `node scripts/audit-master-registry.js` to confirm registry/data parity at any time. The all-94 citation-verification approval was applied on 2026-09-04, and ME-36, ME-37, and ME-38 added sixteen published, qualified-human-verified PTSD relationships on 2026-09-06; the current registry therefore has no pending live citation references. Numbered batch sections below retain their historical verification snapshots and intermediate counts.
+The authoritative registry is rebaselined at commit `ea005e50` (ME-35 lineage): `currentState` is `ME-39-CITATION-VERIFIED` in both `data/evidence/master-relationships.json` and `data/evidence/master-sources.json`. Run `node scripts/audit-master-registry.js` to confirm registry/data parity at any time. The all-94 citation-verification approval was applied on 2026-09-04, ME-36/ME-37/ME-38 added sixteen published PTSD relationships on 2026-09-06, and ME-39 published `rem-sleep-disorder → parkinsons-disease` on 2026-09-06; the current registry therefore has no pending live citation references. Numbered batch sections below retain their historical verification snapshots and intermediate counts.
 
 ## Current state
 
-The authoritative current state is the ME-38 citation-verified registry:
+The authoritative current state is the ME-39 citation-verified registry:
 
-- 363 relationships across 813 mapping files: 139 published / 674 draft.
+- 363 relationships across 813 mapping files: 140 published / 673 draft.
 - 289 explicit publication guards / 74 legacy rationale boundaries.
 - 379 live relationship-source uses: **379 verified / 0 pending verification**.
 - 346 active source entities: **345 clinical + 1 legal authority**.
@@ -17,7 +17,7 @@ The authoritative current state is the ME-38 citation-verified registry:
 - 355 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
 
-ME-36, ME-37, and ME-38 (all 2026-09-06) expanded the published `ptsd` mapping with sixteen bounded, `ASSOCIATION_ONLY`, `NOT_ESTABLISHED` relationships: ischemic-heart-disease, hypertension, diabetes-mellitus-type-2, depressive-disorder, insomnia, substance-use-disorder, metabolic-syndrome, systemic-lupus-erythematosus, rheumatoid-arthritis, inflammatory-bowel-disease, multiple-sclerosis, thyroiditis, irritable-bowel-syndrome, gerd, copd, and rem-sleep-disorder — each carrying qualified-human-verified clinical sources (3 distinct ME-38 source entities across 3 citation uses) entered `verified: true` at implementation. ME-38's `ptsd -> rem-sleep-disorder` edge is bounded strictly to association with a polysomnography diagnostic-boundary guard; `rem-sleep-disorder` remains draft as a primary mapping. The all-94 citation-verification approval (2026-09-04) and ME-36/ME-37/ME-38 were citation/relationship-state transitions only: they did not alter draft mappings' semantics or establish an individual medical nexus. The numbered ME-6 through ME-35 sections below are immutable historical implementation and verification snapshots; their intermediate counts are not current totals.
+ME-36, ME-37, and ME-38 (all 2026-09-06) expanded the published `ptsd` mapping with sixteen bounded, `ASSOCIATION_ONLY`, `NOT_ESTABLISHED` relationships. ME-39 (2026-09-06) published `rem-sleep-disorder → parkinsons-disease` as the first published outgoing relationship from `rem-sleep-disorder` — an ASSOCIATION_ONLY prodromal temporal-risk marker (ME-14, Postuma 2020, PMID 20083800) guarded as prediction/prodrome, not causation. ME-39 also added the `governanceNotes` schema field for published-mapping governance records and updated the `rem-sleep-disorder` disposition from `FINAL-CLOSE-DIRECTION` to `PUBLISHED-PRODROMAL-OUTGOING`. The numbered ME-6 through ME-35 sections below are immutable historical implementation and verification snapshots; their intermediate counts are not current totals.
 
 ## ME-6 qualified-human citation verification
 

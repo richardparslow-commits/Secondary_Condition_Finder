@@ -117,8 +117,8 @@ describe("Mapping Expansion Batch ME-36", () => {
   );
 
   it("ratchets the authoritative counts on the published PTSD mapping", () => {
-    expect(relationships.currentState).toBe("ME-38-CITATION-VERIFIED");
-    expect(sources.currentState).toBe("ME-38-CITATION-VERIFIED");
+    expect(relationships.currentState).toBe("ME-39-CITATION-VERIFIED");
+    expect(sources.currentState).toBe("ME-39-CITATION-VERIFIED");
     expect(relationships.counts).toEqual({ relationships: 363, explicitPublicationGuards: 289, legacyRationaleBoundaries: 74 });
     expect(relationships.relationships).toHaveLength(363);
     expect(sources.counts).toMatchObject({
