@@ -42,19 +42,20 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // ME-30 mapping adds 5 more bounded sources as verified:false; qualified-human citation verification is separately gated.
 // ME-33 mapping adds 5 more bounded sources as verified:false; qualified-human citation verification is separately gated.
 // All 94 pending clinical references were approved by the user on 2026-09-04 and promoted atomically.
-// ME-36 adds 6 published PTSD relationships (ischemic-heart-disease, hypertension, diabetes-mellitus-type-2,
-// depressive-disorder, insomnia, substance-use-disorder), each with one qualified-human-verified clinical source.
-// Final ME-36 citation state: 361 live verified / 0 unverified / 0 review; 367 verified provenance including 6 retired verified.
+// ME-36 adds 6 published PTSD relationships; ME-37 adds 9 more (metabolic-syndrome, systemic-lupus-erythematosus,
+// rheumatoid-arthritis, inflammatory-bowel-disease, multiple-sclerosis, thyroiditis, irritable-bowel-syndrome,
+// gerd, copd) over 8 distinct qualified-human-verified clinical sources (15 citation uses, autoimmune sources reused).
+// Final ME-37 citation state: 376 live verified / 0 unverified / 0 review; 382 verified provenance including 6 retired verified.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 361,
-  liveVerified: 361,
+  references: 376,
+  liveVerified: 376,
   retiredVerified: 6,
-  verifiedProvenance: 367,
+  verifiedProvenance: 382,
   unverified: 0,
   reviewFindings: 0,
-  liveClinicalEvidenceWithUrls: 356,
+  liveClinicalEvidenceWithUrls: 371,
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 360,
+  clinicalEvidenceProvenanceWithUrls: 375,
 });
 
 const hardFindings = [];

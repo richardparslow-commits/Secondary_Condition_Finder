@@ -1,0 +1,36 @@
+{
+  "batch": "ME-37",
+  "batchDate": "2026-09-06",
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "scope": "Nine published PTSD-to-secondary bounded-association relationships over existing catalog identities, sourced from the qualified-human synthesis 'PTSD and Secondary Medical Conditions.pdf' (Desktop). Each row carries one or two qualified-human-verified clinical references (8 distinct sources, 15 citation uses; autoimmune sources reused across edges) entered verified: true at implementation because PTSD is published and published mappings may carry only verified sources.",
+  "relationships": [
+    {"relationshipId": "rel-ptsd-to-metabolic-syndrome", "primaryId": "ptsd", "targetId": "metabolic-syndrome", "rank": 10, "pmids": ["23758060", "25982700"], "dois": ["10.1089/met.2013.0010", "10.1016/j.metabol.2015.04.009"], "publicationGuard": "PTSD/metabolic-syndrome association proposition: require PTSD and metabolic syndrome meeting current criteria with measured components, compatible chronology, and metabolic/primary-care review preserving obesity, lifestyle, medication, sleep, and independent metabolic causes."},
+    {"relationshipId": "rel-ptsd-to-systemic-lupus-erythematosus", "primaryId": "ptsd", "targetId": "systemic-lupus-erythematosus", "rank": 11, "pmids": ["40051767", "37322294"], "dois": ["10.3389/fpsyt.2025.1523994", "10.1007/s00406-023-01639-1"], "publicationGuard": "PTSD/SLE association proposition: require PTSD and lupus meeting current classification criteria with objective serologic evaluation, compatible chronology, and rheumatology review preserving genetic, environmental, medication, and alternative autoimmune causes."},
+    {"relationshipId": "rel-ptsd-to-rheumatoid-arthritis", "primaryId": "ptsd", "targetId": "rheumatoid-arthritis", "rank": 12, "pmids": ["40051767", "37322294"], "dois": ["10.3389/fpsyt.2025.1523994", "10.1007/s00406-023-01639-1"], "publicationGuard": "PTSD/rheumatoid-arthritis association proposition: require PTSD and RA meeting current classification criteria with objective evaluation, compatible chronology, and rheumatology review preserving genetic, smoking, infectious, hormonal, and alternative arthropathy causes."},
+    {"relationshipId": "rel-ptsd-to-inflammatory-bowel-disease", "primaryId": "ptsd", "targetId": "inflammatory-bowel-disease", "rank": 13, "pmids": ["40051767", "37322294"], "dois": ["10.3389/fpsyt.2025.1523994", "10.1007/s00406-023-01639-1"], "publicationGuard": "PTSD/IBD association proposition: require PTSD and Crohn's disease or ulcerative colitis with objective endoscopic/histologic evaluation, compatible chronology, distinction from functional IBS, and gastroenterology review preserving genetic, smoking, infectious, and medication causes."},
+    {"relationshipId": "rel-ptsd-to-multiple-sclerosis", "primaryId": "ptsd", "targetId": "multiple-sclerosis", "rank": 14, "pmids": ["40051767"], "dois": ["10.3389/fpsyt.2025.1523994"], "publicationGuard": "PTSD/MS association proposition: require PTSD and MS meeting current diagnostic criteria with objective neurologic and MRI evaluation, compatible chronology, and neurology review preserving genetic, vitamin D, EBV, smoking, and alternative demyelinating causes."},
+    {"relationshipId": "rel-ptsd-to-thyroiditis", "primaryId": "ptsd", "targetId": "thyroiditis", "rank": 15, "pmids": ["37322294", "40051767"], "dois": ["10.1007/s00406-023-01639-1", "10.3389/fpsyt.2025.1523994"], "publicationGuard": "PTSD/thyroiditis association proposition: require PTSD and autoimmune thyroiditis with objective serologic and thyroid-function evaluation, compatible chronology, and endocrine review preserving genetic, iodine, medication, radiation, and non-autoimmune thyroid causes."},
+    {"relationshipId": "rel-ptsd-to-irritable-bowel-syndrome", "primaryId": "ptsd", "targetId": "irritable-bowel-syndrome", "rank": 16, "pmids": ["30144372"], "dois": ["10.1111/jgh.14446"], "publicationGuard": "PTSD/IBS association proposition: require PTSD and IBS meeting current criteria with organic disease excluded, chronology addressing onset order, gut-brain disorder framing, and gastroenterology review preserving diet, post-infectious, medication, substance, and comorbid psychiatric causes."},
+    {"relationshipId": "rel-ptsd-to-gerd", "primaryId": "ptsd", "targetId": "gerd", "rank": 17, "pmids": ["36942766"], "dois": ["10.1111/nmo.14548"], "publicationGuard": "PTSD/GERD self-reported veteran association proposition: narrower bound because GERD-specific causation evidence is less uniform; require PTSD and GERD with symptom pattern and objective evaluation where indicated, compatible chronology, and gastroenterology/primary-care review preserving obesity, diet, alcohol, tobacco, medication, hiatal hernia, and other upper-GI causes."},
+    {"relationshipId": "rel-ptsd-to-copd", "primaryId": "ptsd", "targetId": "copd", "rank": 18, "pmids": ["41350112", "40402632"], "dois": ["10.1093/abm/kaaf095", "10.1097/QAD.0000000000004241"], "publicationGuard": "PTSD/chronic-pulmonary-disease association proposition: require PTSD and COPD with objective spirometry, compatible chronology, and pulmonary review with smoking, occupational/deployment exposures, asthma, alpha-1 antitrypsin, and infection dominating the guard; HIV-affected cohorts carry disease-specific confounding."}
+  ],
+  "evidenceAndPublicationState": {
+    "primaryKnowledgeBaseRecordsRemainDraft": false,
+    "publishedPrimaryExpansion": "ptsd",
+    "suggestionsAreAssociationOnly": true,
+    "clinicalReferencesEnteredVerified": true,
+    "qualifiedHumanCitationReviewCompleted": true,
+    "registryHashesUseRepositoryCanonicalization": true
+  },
+  "aggregateRatchet": {
+    "relationships": "353 -> 362",
+    "liveSourceReferenceUses": "361 -> 376",
+    "verifiedLiveUses": "361 -> 376",
+    "pendingLiveUses": "0 unchanged",
+    "clinicalUses": "356 -> 371",
+    "explicitPublicationGuards": "279 -> 288",
+    "sourceEntitiesIncludingLineage": "344 -> 352"
+  },
+  "documentedNoEdgeBoundary": "Bourassa 2025 (PMID 41350112) primary analyses found no incident PTSD associations with cancer, renal disease, dementia, or liver disease. Per the sourcing synthesis, no PTSD edge for those categories is added without disease-specific literature and a highly individualized medical opinion.",
+  "safetyBoundary": "These records are evidence-navigation aids only. They do not diagnose a condition, establish a VA medical nexus, determine service connection, or replace qualified clinical and accredited-representative review. Every ME-37 edge is ASSOCIATION_ONLY and NOT_ESTABLISHED; no edge asserts causation or aggravation for any individual veteran."
+}

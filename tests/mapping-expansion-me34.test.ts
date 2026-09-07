@@ -88,12 +88,12 @@ describe("Mapping Expansion Batch ME-34", () => {
   });
 
   it("ratchets the authoritative counts without changing publication totals", () => {
-    expect(relationships.currentState).toBe("ME-36-CITATION-VERIFIED");
-    expect(sources.currentState).toBe("ME-36-CITATION-VERIFIED");
-    expect(relationships.counts).toEqual({ relationships: 353, explicitPublicationGuards: 279, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(353);
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 361, pendingVerificationSourceEntities: 0, pendingClinicalSourceEntities: 0, totalSourceEntitiesIncludingLineage: 344 });
-    expect(sources.sources).toHaveLength(344);
+    expect(relationships.currentState).toBe("ME-37-CITATION-VERIFIED");
+    expect(sources.currentState).toBe("ME-37-CITATION-VERIFIED");
+    expect(relationships.counts).toEqual({ relationships: 362, explicitPublicationGuards: 288, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(362);
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 376, pendingVerificationSourceEntities: 0, pendingClinicalSourceEntities: 0, totalSourceEntitiesIncludingLineage: 352 });
+    expect(sources.sources).toHaveLength(352);
   });
 
   it("keeps the deferred and rejected candidates out of ME-34", () => {
