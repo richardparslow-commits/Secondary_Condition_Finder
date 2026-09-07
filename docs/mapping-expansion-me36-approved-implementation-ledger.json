@@ -1,0 +1,81 @@
+{
+  "batch": "ME-36",
+  "batchDate": "2026-09-06",
+  "ledgerStatus": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "scope": "Six published PTSD-to-secondary bounded-association relationships over existing catalog identities, each with one condition-specific clinical reference verified by qualified-human approval at entry. PTSD remains published (draft: false); no other primary publication state changed.",
+  "relationships": [
+    {
+      "relationshipId": "rel-ptsd-to-ischemic-heart-disease",
+      "primaryId": "ptsd",
+      "targetId": "ischemic-heart-disease",
+      "rank": 4,
+      "pmid": "24176435",
+      "doi": "10.1016/j.ahj.2013.07.031",
+      "publicationGuard": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD-to-coronary-heart-disease population-risk association. A meta-analytic review found PTSD independently associated with increased risk of incident coronary heart disease after adjustment for depression and other covariates, but population risk does not establish that PTSD caused or aggravated coronary disease in an individual veteran. Require an independently documented PTSD diagnosis and separately established coronary artery disease or ischemic heart disease supported by objective cardiac evaluation, with a compatible chronology in which the PTSD-related trauma and disorder precede or accompany the cardiac presentation as supported by the individual record. Preserve and evaluate traditional cardiovascular risk factors, including smoking, hypertension, diabetes, dyslipidemia, obesity, sedentary lifestyle, family history, and age, as well as substance use and other stressors. Cardiology review should determine whether the documented coronary disease is attributable to conventional risk factors rather than to PTSD, and any direct, aggravation, or treatment-related theory requires case-specific evidence."
+    },
+    {
+      "relationshipId": "rel-ptsd-to-hypertension",
+      "primaryId": "ptsd",
+      "targetId": "hypertension",
+      "rank": 5,
+      "pmid": "27490852",
+      "doi": "10.1097/PSY.0000000000000376",
+      "publicationGuard": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD-to-incident-hypertension prospective-risk association. A veteran cohort study reported PTSD associated with increased risk of incident hypertension, but prospective association does not establish that PTSD caused or aggravated an individual veteran's hypertension. Require an independently documented PTSD diagnosis and hypertension meeting current blood-pressure criteria based on repeated measurement, with compatible chronology in which PTSD precedes or accompanies the hypertensive course as shown in the record. Preserve and evaluate established hypertension contributors, including age, family history, obesity, metabolic syndrome, diabetes, chronic kidney disease, obstructive sleep apnea, alcohol use, stimulant or other substance use, NSAIDs and other medications, white-coat effect, and secondary causes. Primary-care and specialty review should evaluate whether blood-pressure elevation reflects PTSD-related physiologic or behavioral pathways or an independent hypertensive process; the mapping must not be used to infer hypertension from PTSD alone."
+    },
+    {
+      "relationshipId": "rel-ptsd-to-diabetes-mellitus-type-2",
+      "primaryId": "ptsd",
+      "targetId": "diabetes-mellitus-type-2",
+      "rank": 6,
+      "pmid": "26867081",
+      "doi": "10.1097/PSY.0000000000000297",
+      "publicationGuard": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/type 2 diabetes association proposition. A systematic review and meta-analysis reported higher risk of type 2 diabetes among people with PTSD while cautioning about study design and confounding, so the association does not establish that PTSD caused or aggravated an individual's diabetes. Require an independently documented PTSD diagnosis and a separately established type 2 diabetes diagnosis supported by laboratory criteria, with a compatible chronology in which PTSD precedes or accompanies the diabetic course as reflected in the record. Preserve and evaluate established diabetes risk factors and contributors, including age, obesity and weight trajectory, physical inactivity, family history, metabolic syndrome, hypertension, dyslipidemia, antipsychotic or corticosteroid and other medication effects, alcohol and substance use, and depression. Metabolic and primary-care review should determine whether glycemic dysregulation reflects PTSD-related behavioral or physiologic pathways, medication effects, or an independent metabolic process; the mapping must not be used to infer diabetes from PTSD alone."
+    },
+    {
+      "relationshipId": "rel-ptsd-to-depressive-disorder",
+      "primaryId": "ptsd",
+      "targetId": "depressive-disorder",
+      "rank": 7,
+      "pmid": "23696449",
+      "doi": "10.1002/jts.21814",
+      "publicationGuard": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/major-depressive-disorder co-occurrence association. A meta-analysis of individuals with PTSD found frequent co-occurring current major depressive disorder, but population co-occurrence does not establish that PTSD caused or aggravated a particular veteran's depression, and onset direction is frequently shared or complex. Require independently documented PTSD and a separately established major depressive episode meeting full diagnostic criteria, with chronology and longitudinal course addressing whether depression preceded, accompanied, or followed the PTSD-related trauma and onset. Distinguish trauma-related re-experiencing, avoidance, and numbing from a distinct depressive episode, and address prior mood episodes, substance-induced mood disturbance, bereavement, adjustment presentations, and bipolar-spectrum history. Preserve alcohol or substance use, medication effects, chronic pain, sleep disturbance, medical illness, and other competing causes of depressive symptoms. Mental-health specialty review should separate the disorders and evaluate the individual relationship rather than assume comorbidity means causation."
+    },
+    {
+      "relationshipId": "rel-ptsd-to-insomnia",
+      "primaryId": "ptsd",
+      "targetId": "insomnia",
+      "rank": 8,
+      "pmid": "36163136",
+      "doi": "10.1016/j.sleh.2022.07.005",
+      "publicationGuard": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/insomnia association proposition. A large military cohort found that PTSD and insomnia are bidirectionally predictive, so the presence of insomnia with PTSD does not establish which condition began first or that PTSD caused or aggravated an individual's insomnia. Require an independently documented PTSD diagnosis and chronic insomnia meeting diagnostic criteria for duration, frequency, and daytime impact, with a chronology that distinguishes insomnia beginning with or after the PTSD-related trauma from preexisting or independent insomnia. Because insomnia can be a symptom of PTSD rather than a separate disorder, require clinical evaluation determining whether a distinct insomnia disorder exists beyond trauma-related nightmares, hyperarousal, and fragmented sleep. Preserve obstructive sleep apnea and other sleep-disordered breathing, restless legs syndrome, circadian disruption, shift work, alcohol and substance use, medications, pain, and other medical or psychiatric contributors. Sleep-medicine and mental-health review should address the individual relationship and the adequacy of any sleep evaluation rather than assume PTSD caused the insomnia."
+    },
+    {
+      "relationshipId": "rel-ptsd-to-substance-use-disorder",
+      "primaryId": "ptsd",
+      "targetId": "substance-use-disorder",
+      "rank": 9,
+      "pmid": "11481147",
+      "doi": "10.1176/appi.ajp.158.8.1184",
+      "publicationGuard": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/substance-use-disorder co-occurrence association. A literature review documents frequent co-occurrence of PTSD and substance use disorders with overlapping neurobiologic and behavioral pathways, but co-occurrence does not establish that PTSD caused or aggravated an individual's substance use disorder, and onset sequences vary. The substance-use-disorder catalog identity is broad, so require documentation of a specific substance use disorder meeting diagnostic criteria with functional impairment and an identified substance class. Require a chronology establishing whether substance use began before, with, or after the PTSD-related trauma and PTSD onset, and address whether use reflects self-medication of PTSD symptoms, shared vulnerability, or an independent addictive process. Distinguish substance-induced psychiatric syndromes from primary PTSD. Preserve preexisting substance use disorder, family history of addiction, chronic pain, other psychiatric illness, social and occupational context, and treatment exposure. Addiction-psychiatry review should evaluate the individual relationship and must not treat any substance use in a veteran with PTSD as a secondary substance use disorder."
+    }
+  ],
+  "evidenceAndPublicationState": {
+    "primaryKnowledgeBaseRecordsRemainDraft": false,
+    "publishedPrimaryExpansion": "ptsd",
+    "suggestionsAreAssociationOnly": true,
+    "clinicalReferencesEnteredVerified": true,
+    "qualifiedHumanCitationReviewCompleted": true,
+    "registryHashesUseRepositoryCanonicalization": true
+  },
+  "aggregateRatchet": {
+    "relationships": "347 -> 353",
+    "liveSourceReferenceUses": "355 -> 361",
+    "verifiedLiveUses": "355 -> 361",
+    "pendingLiveUses": "0 unchanged",
+    "clinicalUses": "350 -> 356",
+    "explicitPublicationGuards": "273 -> 279",
+    "sourceEntitiesIncludingLineage": "338 -> 344"
+  },
+  "independentCorroboration": "Qualified-human synthesis document 'PTSD and Secondary Medical Conditions.pdf' (Desktop) independently corroborates the ME-36 source set: it cites the same Edmondson PMID 24176435 (ischemic-heart-disease anchor) and Vancampfort PMID 26867081 (diabetes-mellitus-type-2 anchor), and supports the hypertension, insomnia, depression, and substance-use literature used for the remaining four edges. The document is an evidence-navigation synthesis, not itself a master source; its underlying PubMed/PMC references are tracked for the ME-37 candidate pipeline.",
+  "safetyBoundary": "These records are evidence-navigation aids only. They do not diagnose a condition, establish a VA medical nexus, determine service connection, or replace qualified clinical and accredited-representative review. Every ME-36 edge is ASSOCIATION_ONLY and NOT_ESTABLISHED; no edge asserts causation or aggravation for any individual veteran."
+}

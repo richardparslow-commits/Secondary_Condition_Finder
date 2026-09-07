@@ -33,23 +33,23 @@ describe("all-94 citation verification current state", () => {
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
 
-    expect(relationships.currentState).toBe("ME35-CITATION-VERIFIED");
-    expect(sources.currentState).toBe("ME35-CITATION-VERIFIED");
+    expect(relationships.currentState).toBe("ME-36-CITATION-VERIFIED");
+    expect(sources.currentState).toBe("ME-36-CITATION-VERIFIED");
     expect(relationships.counts).toEqual({
-      relationships: 347,
-      explicitPublicationGuards: 273,
+      relationships: 353,
+      explicitPublicationGuards: 279,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 355,
-      activeSourceEntities: 329,
+      liveSourceReferenceUses: 361,
+      activeSourceEntities: 335,
       pendingVerificationSourceEntities: 0,
-      activeClinicalSourceEntities: 328,
+      activeClinicalSourceEntities: 334,
       pendingClinicalSourceEntities: 0,
-      totalSourceEntitiesIncludingLineage: 338,
+      totalSourceEntitiesIncludingLineage: 344,
     });
-    expect(references).toHaveLength(355);
-    expect(references.filter((reference) => reference.verified === true)).toHaveLength(355);
+    expect(references).toHaveLength(361);
+    expect(references.filter((reference) => reference.verified === true)).toHaveLength(361);
     expect(references.filter((reference) => reference.verified !== true)).toHaveLength(0);
     expect(mappings).toHaveLength(813);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);

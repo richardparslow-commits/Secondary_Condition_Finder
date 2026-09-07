@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 355,
-    "activeSourceEntities": 329,
+    "liveSourceReferenceUses": 361,
+    "activeSourceEntities": 335,
     "pendingVerificationSourceEntities": 0,
-    "activeClinicalSourceEntities": 328,
+    "activeClinicalSourceEntities": 334,
     "pendingClinicalSourceEntities": 0,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 338,
+    "totalSourceEntitiesIncludingLineage": 344,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -12810,8 +12810,260 @@
       "retiredUses": [],
       "rawReferenceHashes": ["395518f5237a08a23df2e8155c75a46a95d4423759ed46dda9e18daeec1d124a"],
       "verificationState": {"qualifiedHumanCitationReviewRequired": false, "qualifiedHumanCitationReviewDecision": "approve-as-implemented", "qualifiedHumanCitationReviewDate": "2026-09-03", "automaticPromotionAuthorized": false, "mappingApprovalDoesNotEqualCitationVerification": true}
+    },
+    {
+      "sourceId": "pmid-24176435",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "24176435",
+      "doi": "10.1016/j.ahj.2013.07.031",
+      "canonicalCitation": "Edmondson D, Kronish IM, Shaffer JA, Falzon L, Burg MM. Posttraumatic stress disorder and risk for coronary heart disease: a meta-analytic review. Am Heart J. 2013;166(5):806-814. PMID 24176435. doi:10.1016/j.ahj.2013.07.031.",
+      "citationVariants": [
+        "Edmondson D, Kronish IM, Shaffer JA, Falzon L, Burg MM. Posttraumatic stress disorder and risk for coronary heart disease: a meta-analytic review. Am Heart J. 2013;166(5):806-814. PMID 24176435. doi:10.1016/j.ahj.2013.07.031."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24176435/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24176435/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-06"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-ischemic-heart-disease",
+          "primaryId": "ptsd",
+          "targetId": "ischemic-heart-disease",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "7339f56e91c0f96e12c4c1146542a4ee88dd9697ce7fcae0bf23275fabe67fab"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-06",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-27490852",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "27490852",
+      "doi": "10.1097/PSY.0000000000000376",
+      "canonicalCitation": "Burg MM, Brandt C, Buta E, Schwartz J, Bathulapalli H, Dziura J, Edmondson DE, Haskell S. Risk for incident hypertension associated with posttraumatic stress disorder in military veterans and the effect of posttraumatic stress disorder treatment. Psychosom Med. 2017;79(2):181-188. PMID 27490852. doi:10.1097/PSY.0000000000000376.",
+      "citationVariants": [
+        "Burg MM, Brandt C, Buta E, Schwartz J, Bathulapalli H, Dziura J, Edmondson DE, Haskell S. Risk for incident hypertension associated with posttraumatic stress disorder in military veterans and the effect of posttraumatic stress disorder treatment. Psychosom Med. 2017;79(2):181-188. PMID 27490852. doi:10.1097/PSY.0000000000000376."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27490852/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27490852/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-06"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-hypertension",
+          "primaryId": "ptsd",
+          "targetId": "hypertension",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "2291895d83270a9b609c42a5e9e6805dfbeaae712b302b207df7dba9c321f074"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-06",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-26867081",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "26867081",
+      "doi": "10.1097/PSY.0000000000000297",
+      "canonicalCitation": "Vancampfort D, Rosenbaum S, Ward PB, Steel Z, Lederman O, Lamwaka AV, Richards JW, Stubbs B. Type 2 diabetes among people with posttraumatic stress disorder: systematic review and meta-analysis. Psychosom Med. 2016;78(4):465-473. PMID 26867081. doi:10.1097/PSY.0000000000000297.",
+      "citationVariants": [
+        "Vancampfort D, Rosenbaum S, Ward PB, Steel Z, Lederman O, Lamwaka AV, Richards JW, Stubbs B. Type 2 diabetes among people with posttraumatic stress disorder: systematic review and meta-analysis. Psychosom Med. 2016;78(4):465-473. PMID 26867081. doi:10.1097/PSY.0000000000000297."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26867081/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/26867081/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-06"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-diabetes-mellitus-type-2",
+          "primaryId": "ptsd",
+          "targetId": "diabetes-mellitus-type-2",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "da10361189d238459a5f12ec207589d18a1dcda640134b7ab280375452cc0484"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-06",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-23696449",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "23696449",
+      "doi": "10.1002/jts.21814",
+      "canonicalCitation": "Rytwinski NK, Scur MD, Feeny NC, Youngstrom EA. The co-occurrence of major depressive disorder among individuals with posttraumatic stress disorder: a meta-analysis. J Trauma Stress. 2013;26(3):299-309. PMID 23696449. doi:10.1002/jts.21814.",
+      "citationVariants": [
+        "Rytwinski NK, Scur MD, Feeny NC, Youngstrom EA. The co-occurrence of major depressive disorder among individuals with posttraumatic stress disorder: a meta-analysis. J Trauma Stress. 2013;26(3):299-309. PMID 23696449. doi:10.1002/jts.21814."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23696449/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/23696449/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-06"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-depressive-disorder",
+          "primaryId": "ptsd",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "6504e07190251099dc6a3fa14ab3a81d824f51c69011fe9c7234d23ad5e8c644"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-06",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-36163136",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "36163136",
+      "doi": "10.1016/j.sleh.2022.07.005",
+      "canonicalCitation": "Chinoy ED, Carey FR, Kolaja CA, Jacobson IG, Cooper AD, Markwald RR. The bi-directional relationship between post-traumatic stress disorder and obstructive sleep apnea and/or insomnia in a large U.S. military cohort. Sleep Health. 2022;8(6):606-614. PMID 36163136. doi:10.1016/j.sleh.2022.07.005.",
+      "citationVariants": [
+        "Chinoy ED, Carey FR, Kolaja CA, Jacobson IG, Cooper AD, Markwald RR. The bi-directional relationship between post-traumatic stress disorder and obstructive sleep apnea and/or insomnia in a large U.S. military cohort. Sleep Health. 2022;8(6):606-614. PMID 36163136. doi:10.1016/j.sleh.2022.07.005."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36163136/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36163136/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-06"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-insomnia",
+          "primaryId": "ptsd",
+          "targetId": "insomnia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4096d15fee49826e40f4483c50452ad3dc08e8799b4f57aac935232df6f3718e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-06",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-11481147",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "11481147",
+      "doi": "10.1176/appi.ajp.158.8.1184",
+      "canonicalCitation": "Jacobsen LK, Southwick SM, Kosten TR. Substance use disorders in patients with posttraumatic stress disorder: a review of the literature. Am J Psychiatry. 2001;158(8):1184-1190. PMID 11481147. doi:10.1176/appi.ajp.158.8.1184.",
+      "citationVariants": [
+        "Jacobsen LK, Southwick SM, Kosten TR. Substance use disorders in patients with posttraumatic stress disorder: a review of the literature. Am J Psychiatry. 2001;158(8):1184-1190. PMID 11481147. doi:10.1176/appi.ajp.158.8.1184."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11481147/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/11481147/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-06"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-substance-use-disorder",
+          "primaryId": "ptsd",
+          "targetId": "substance-use-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "6f514b22a583833ad8fafda5b94e76e508c6eb58e5c3418d93dc80a85e6492b4"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-06",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
-  "lastUpdatedBy": "All 94 Approved Citation Verification",
-  "currentState": "ME35-CITATION-VERIFIED"
+  "lastUpdatedBy": "ME-36 Approved Citation Verification",
+  "currentState": "ME-36-CITATION-VERIFIED"
 }

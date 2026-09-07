@@ -2,22 +2,22 @@
 
 ## Status
 
-The authoritative registry is rebaselined at commit `ea005e50` (ME-35): `currentState` is `ME35-CITATION-VERIFIED` in both `data/evidence/master-relationships.json` and `data/evidence/master-sources.json`. Run `node scripts/audit-master-registry.js` to confirm registry/data parity at any time. The all-94 citation-verification approval was applied on 2026-09-04; the current registry therefore has no pending live citation references. Numbered batch sections below retain their historical verification snapshots and intermediate counts.
+The authoritative registry is rebaselined at commit `ea005e50` (ME-35 lineage): `currentState` is `ME-36-CITATION-VERIFIED` in both `data/evidence/master-relationships.json` and `data/evidence/master-sources.json`. Run `node scripts/audit-master-registry.js` to confirm registry/data parity at any time. The all-94 citation-verification approval was applied on 2026-09-04 and ME-36 added six published, qualified-human-verified PTSD relationships on 2026-09-06; the current registry therefore has no pending live citation references. Numbered batch sections below retain their historical verification snapshots and intermediate counts.
 
 ## Current state
 
-The authoritative current state is the ME-35 citation-verified registry:
+The authoritative current state is the ME-36 citation-verified registry:
 
-- 347 relationships across 813 mapping files: 139 published / 674 draft.
-- 273 explicit publication guards / 74 legacy rationale boundaries.
-- 355 live relationship-source uses: **355 verified / 0 pending verification**.
-- 329 active source entities: **328 clinical + 1 legal authority**.
+- 353 relationships across 813 mapping files: 139 published / 674 draft.
+- 279 explicit publication guards / 74 legacy rationale boundaries.
+- 361 live relationship-source uses: **361 verified / 0 pending verification**.
+- 335 active source entities: **334 clinical + 1 legal authority**.
 - 0 pending-verification clinical source entities.
 - 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
-- 338 total source entities including lineage/history.
+- 344 total source entities including lineage/history.
 - 6 retired-verified relationship-source uses preserved.
 
-The all-94 citation-verification approval was applied on 2026-09-04 as a citation-state transition only. It did not publish draft mappings, alter relationship semantics, or establish an individual medical nexus. The numbered ME-6 through ME-35 sections below are immutable historical implementation and verification snapshots; their intermediate counts are not current totals.
+ME-36 (2026-09-06) expanded the published `ptsd` mapping with six bounded, `ASSOCIATION_ONLY`, `NOT_ESTABLISHED` relationships (ischemic-heart-disease, hypertension, diabetes-mellitus-type-2, depressive-disorder, insomnia, substance-use-disorder), each carrying one qualified-human-verified clinical source entered `verified: true` at implementation. The all-94 citation-verification approval (2026-09-04) and ME-36 were citation/relationship-state transitions only: they did not alter draft mappings' semantics or establish an individual medical nexus. The numbered ME-6 through ME-35 sections below are immutable historical implementation and verification snapshots; their intermediate counts are not current totals.
 
 ## ME-6 qualified-human citation verification
 

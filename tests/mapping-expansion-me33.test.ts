@@ -121,23 +121,23 @@ describe("Mapping Expansion Batch ME-33", () => {
   });
 
   it("ratchets the authoritative ME-33 counts", () => {
-    expect(relationships.currentState).toBe("ME35-CITATION-VERIFIED");
-    expect(sources.currentState).toBe("ME35-CITATION-VERIFIED");
-    expect(relationships.counts).toEqual({ relationships: 347, explicitPublicationGuards: 273, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(347);
+    expect(relationships.currentState).toBe("ME-36-CITATION-VERIFIED");
+    expect(sources.currentState).toBe("ME-36-CITATION-VERIFIED");
+    expect(relationships.counts).toEqual({ relationships: 353, explicitPublicationGuards: 279, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(353);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 355,
+      liveSourceReferenceUses: 361,
       pendingVerificationSourceEntities: 0,
       pendingClinicalSourceEntities: 0,
-      totalSourceEntitiesIncludingLineage: 338,
+      totalSourceEntitiesIncludingLineage: 344,
     });
-    expect(sources.sources).toHaveLength(338);
+    expect(sources.sources).toHaveLength(344);
 
     const mappings = fs.readdirSync(`${root}/data/knowledge-base`).filter((file) => file.endsWith(".json")).map((file) => load<Mapping>(`data/knowledge-base/${file}`));
     const references = mappings.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences));
-    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(347);
-    expect(references).toHaveLength(355);
-    expect(references.filter((reference) => reference.verified === true)).toHaveLength(355);
+    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(353);
+    expect(references).toHaveLength(361);
+    expect(references.filter((reference) => reference.verified === true)).toHaveLength(361);
     expect(references.filter((reference) => reference.verified === false)).toHaveLength(0);
   });
 

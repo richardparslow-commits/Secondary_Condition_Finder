@@ -155,14 +155,14 @@ describe("Mapping Expansion Batch ME-6", () => {
     expect(files).toHaveLength(813);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(674);
-    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(347);
+    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(353);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(66);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(73);
     const refs = mappings.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-expect(refs).toHaveLength(355);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(355);
+expect(refs).toHaveLength(361);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(361);
 expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
   });
 
@@ -178,10 +178,10 @@ expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 355,
-      verified: 355,
+      references: 361,
+      verified: 361,
       retiredVerified: 6,
-      verifiedProvenance: 361,
+      verifiedProvenance: 367,
       unverified: 0,
       reviewFindingCount: 0,
       hardFindingCount: 0,
@@ -198,10 +198,10 @@ expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
     };
     expect(master).toMatchObject({
       status: "PASS",
-relationships: 347,
-      verifiedLiveSourceUses: 355,
+relationships: 353,
+      verifiedLiveSourceUses: 361,
       pendingVerificationLiveSourceUses: 0,
-      activeSourceEntities: 329,
+      activeSourceEntities: 335,
       pendingVerificationSourceEntities: 0,
     });
   });

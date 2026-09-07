@@ -44,7 +44,7 @@ describe("clinical evidence promotion batch 15", () => {
     expect(mapping?.todo.join(" ")).toMatch(/prevalence|comorbidity|direction|caused|aggravat/i);
   });
 
-  it("retires only redundant PTSD legal references while preserving all three clinical relationships", () => {
+  it("retires only redundant PTSD legal references while preserving all nine clinical relationships", () => {
     const mapping = byId.get("ptsd");
 
     expect(mapping?.draft).toBe(false);
@@ -52,6 +52,12 @@ describe("clinical evidence promotion batch 15", () => {
       "sleep-apnea",
       "migraine-headaches",
       "erectile-dysfunction",
+      "ischemic-heart-disease",
+      "hypertension",
+      "diabetes-mellitus-type-2",
+      "depressive-disorder",
+      "insomnia",
+      "substance-use-disorder",
     ]);
 
     for (const suggestion of mapping?.suggestions ?? []) {
