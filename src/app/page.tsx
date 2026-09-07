@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { DisclaimerFooter } from "@/components/Disclaimer";
+import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
 import {
   CAUSED_AGGRAVATED_DISTINCTION,
   SECONDARY_TRACK_OVERVIEW,
@@ -8,3 +8,105 @@ import {
   UNVERIFIED_REFERENCE_NOTICE,
 } from "@/lib/legal/phrases";
 import { SECONDARY_REFERENCE_BY_ID } from "@/lib/legal/secondaryReferences";
+
+const paths = [
+  {
+    href: "/secondary",
+    title: "A condition related to one I already have",
+    mechanism: `Secondary service connection, ${SECONDARY_REFERENCE_BY_ID["secondary-basis"].citation}`,
+    body: SECONDARY_TRACK_OVERVIEW,
+    cta: "Click here to continue",
+  },
+  {
+    href: "/presumptive",
+    title: "A condition tied to where and when I served",
+    mechanism: `Presumptive service connection, ${SECONDARY_REFERENCE_BY_ID["presumptive-distinction"].citation}`,
+    body: "For certain exposures, VA presumes your service caused the condition. No linking opinion is needed and no other service-connected condition is required. This is usually the easier path when it applies.",
+    cta: "Check presumptive conditions",
+  },
+];
+
+export default function HomePage() {
+  return (
+    <main>
+      <header className="mb-8">
+        <h1 className="text-2xl font-semibold tracking-tight">
+          Secondary Condition Finder
+        </h1>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          A research aid for VA claim preparation. Start with how the condition
+          you are researching may connect to your service, since the two paths
+          need different evidence.
+        </p>
+      </header>
+
+      <div className="mb-8">
+        <DisclaimerBanner />
+      </div>
+
+      <div className="space-y-4">
+        {paths.map((path) => (
+          <article
+            key={path.href}
+            className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
+          >
+            <h2 className="text-base font-semibold text-slate-900">
+              {path.title}
+            </h2>
+            <p className="mt-1 text-xs text-slate-500">{path.mechanism}</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-700">
+              {path.body}
+            </p>
+            {path.href === "/secondary" ? (
+              <>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                  {CAUSED_AGGRAVATED_DISTINCTION}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                  {TRACK_DISTINCTION_NOTICE}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                  {UNVERIFIED_REFERENCE_NOTICE}
+                </p>
+              </>
+            ) : null}
+            <Link
+              href={path.href}
+              className="mt-4 inline-block rounded-md bg-slate-900 px-3.5 py-2 text-sm font-medium text-white hover:bg-slate-700"
+            >
+              {path.cta}
+            </Link>
+          </article>
+        ))}
+      </div>
+
+      <p className="mt-6 text-sm leading-relaxed text-slate-600">
+        These paths are not exclusive. A condition can qualify both ways, and
+        you can pursue either or both. If you are unsure which applies, an
+        accredited representative or VSO can tell you quickly and at no cost.
+      </p>
+
+      <p className="mt-6 text-sm text-slate-600">
+        Want to see how it works first?{" "}
+        <Link href="/scenarios" className="underline hover:text-slate-900">
+          Run a demo scenario
+        </Link>
+        .
+      </p>
+
+      <p className="mt-2 text-sm text-slate-600">
+        Read our{" "}
+        <Link href="/privacy" className="underline hover:text-slate-900">
+          privacy policy
+        </Link>{" "}
+        and{" "}
+        <Link href="/terms" className="underline hover:text-slate-900">
+          terms of use
+        </Link>
+        .
+      </p>
+
+      <DisclaimerFooter />
+    </main>
+  );
+}

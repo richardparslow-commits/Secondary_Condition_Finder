@@ -272,6 +272,118 @@
       ],
       "draft": true,
       "verified": false
+    },
+    {
+      "id": "migraine-headaches",
+      "name": "Migraine Headaches",
+      "displayName": "Migraine Headaches",
+      "bodySystem": "Neurological",
+      "aliases": [
+        "Migraine"
+      ],
+      "primaryDiagnosticCodes": [
+        "8100"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.124a",
+        "38 CFR § 3.310"
+      ],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes."
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "als",
+      "name": "ALS",
+      "displayName": "ALS",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "cerebral-palsy",
+      "name": "Cerebral Palsy",
+      "displayName": "Cerebral Palsy",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "radiculopathy",
+      "name": "Radiculopathy",
+      "displayName": "Radiculopathy",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "radiculopathy-sciatic",
+      "name": "Radiculopathy (Sciatic)",
+      "displayName": "Radiculopathy (Sciatic)",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "radiculopathy-femoral",
+      "name": "Radiculopathy (Femoral)",
+      "displayName": "Radiculopathy (Femoral)",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "radiculopathy-upper-extremity",
+      "name": "Radiculopathy (Upper Extremity)",
+      "displayName": "Radiculopathy (Upper Extremity)",
+      "bodySystem": "Neurological",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
     }
   ]
 }

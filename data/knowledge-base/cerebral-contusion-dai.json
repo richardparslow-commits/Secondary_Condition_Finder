@@ -1,21 +1,21 @@
 {
-  "id": "micro-traumatic-brain-injury",
+  "id": "cerebral-contusion-dai",
   "draft": false,
   "suggestions": [
     {
-      "conditionId": "migraine-headaches",
+      "conditionId": "depressive-disorder",
       "rank": 1,
       "prevalence": "commonly-explored",
-      "rationale": "Even low-level traumatic brain injuries can leave chronic post-traumatic headache syndromes.",
+      "rationale": "Diffuse axonal injury and cerebral contusions can leave long-term functional deficits associated with secondary depression.",
       "evidenceGaps": [
-        "Neurology diagnosis of chronic post-traumatic headaches",
-        "Treatment history showing persistent headache burden after injury"
+        "Neuropsychological testing showing persistent deficits",
+        "Mental health documentation linking depressive symptoms to traumatic brain injury residuals"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -23,15 +23,15 @@
       "conditionId": "insomnia",
       "rank": 2,
       "prevalence": "sometimes-explored",
-      "rationale": "Sleep-wake dysregulation commonly follows brain trauma and may meet criteria for chronic insomnia.",
+      "rationale": "DAI-related neurologic disruption can cause chronic sleep initiation and maintenance problems.",
       "evidenceGaps": [
-        "Sleep history documenting persistent difficulty initiating or maintaining sleep"
+        "Sleep-related clinical documentation after contusion/DAI"
       ],
       "sourceReferences": [
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection framework; requires individualized medical nexus evidence.",
-          "verified": true
+          "verified": false
         }
       ]
     }

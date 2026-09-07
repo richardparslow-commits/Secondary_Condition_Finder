@@ -4,17 +4,22 @@ const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, {
   message: "Dates must be ISO yyyy-mm-dd.",
 });
 
-export const presumptiveSourceSchema = z.object({
-  citation: z.string().min(1),
-  note: z.string().min(1),
-  /** Public URL a reviewer can open to check the citation. */
-  url: z.string().url(),
-  /**
-   * True only after a qualified human has confirmed the citation. Never set by
-   * an automated agent, same rule as the secondary-condition knowledge base.
-   */
-  verified: z.boolean(),
-});
+export const presumptiveSourceSchema = z
+  .object({
+    citation: z.string().min(1),
+    note: z.string().min(1),
+    /** Public URL a reviewer can open to check the citation. */
+    url: z.string().url(),
+    /**
+     * True only after a qualified human has confirmed the citation. Never set by
+     * an automated agent, same rule as the secondary-condition knowledge base.
+     */
+    verified: z.boolean(),
+  })
+  .refine((source) => source.verified === false, {
+    message: "Source references cannot be marked verified without human review",
+    path: ["verified"],
+  });
 
 /**
  * A location and date window that establishes presumed exposure. Presumptive

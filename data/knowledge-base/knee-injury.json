@@ -17,12 +17,12 @@
         {
           "citation": "38 CFR 4.71a",
           "note": "Schedule of ratings, musculoskeletal system.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection.",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -40,12 +40,12 @@
         {
           "citation": "38 CFR 4.71a",
           "note": "Schedule of ratings, musculoskeletal system.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection.",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -63,12 +63,12 @@
         {
           "citation": "38 CFR 4.71a",
           "note": "Schedule of ratings, musculoskeletal system, including the General Rating Formula for the spine.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection.",
-          "verified": true
+          "verified": false
         }
       ]
     },
@@ -86,12 +86,12 @@
         {
           "citation": "38 CFR 4.71a",
           "note": "Schedule of ratings, musculoskeletal system.",
-          "verified": true
+          "verified": false
         },
         {
           "citation": "38 CFR 3.310",
           "note": "Secondary service connection.",
-          "verified": true
+          "verified": false
         }
       ]
     }

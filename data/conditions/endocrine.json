@@ -45,6 +45,125 @@
       ],
       "draft": false,
       "verified": true
+    },
+    {
+      "id": "diabetes-mellitus-type-2",
+      "name": "Diabetes Mellitus Type 2",
+      "displayName": "Diabetes Mellitus Type 2",
+      "bodySystem": "Endocrine",
+      "aliases": [
+        "Type 2 Diabetes",
+        "DM2"
+      ],
+      "primaryDiagnosticCodes": [
+        "7913"
+      ],
+      "cfrCitations": [
+        "38 CFR § 4.119",
+        "38 CFR § 3.310"
+      ],
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.119",
+          "note": "Diabetes mellitus (DC 7913).",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "diabetes-mellitus-type-1",
+      "name": "Diabetes Mellitus Type 1",
+      "displayName": "Diabetes Mellitus Type 1",
+      "bodySystem": "Endocrine",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "cushings-syndrome",
+      "name": "Cushing's Syndrome",
+      "displayName": "Cushing's Syndrome",
+      "bodySystem": "Endocrine",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "hyperparathyroidism",
+      "name": "Hyperparathyroidism",
+      "displayName": "Hyperparathyroidism",
+      "bodySystem": "Endocrine",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "hyperthyroidism",
+      "name": "Hyperthyroidism",
+      "displayName": "Hyperthyroidism",
+      "bodySystem": "Endocrine",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "hypoparathyroidism",
+      "name": "Hypoparathyroidism",
+      "displayName": "Hypoparathyroidism",
+      "bodySystem": "Endocrine",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
+    },
+    {
+      "id": "hypothyroidism",
+      "name": "Hypothyroidism",
+      "displayName": "Hypothyroidism",
+      "bodySystem": "Endocrine",
+      "aliases": [],
+      "primaryDiagnosticCodes": [],
+      "cfrCitations": [],
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Auto-added; requires human review"
+      ],
+      "draft": false,
+      "verified": false
     }
   ]
 }
