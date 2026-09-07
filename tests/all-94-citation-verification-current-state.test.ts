@@ -33,8 +33,8 @@ describe("all-94 citation verification current state", () => {
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
 
-    expect(relationships.currentState).toBe("ME-38-CITATION-VERIFIED");
-    expect(sources.currentState).toBe("ME-38-CITATION-VERIFIED");
+    expect(relationships.currentState).toBe("ME-39-CITATION-VERIFIED");
+    expect(sources.currentState).toBe("ME-39-CITATION-VERIFIED");
     expect(relationships.counts).toEqual({
       relationships: 363,
       explicitPublicationGuards: 289,
@@ -52,7 +52,7 @@ describe("all-94 citation verification current state", () => {
     expect(references.filter((reference) => reference.verified === true)).toHaveLength(379);
     expect(references.filter((reference) => reference.verified !== true)).toHaveLength(0);
     expect(mappings).toHaveLength(813);
-    expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(139);
-    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(674);
+    expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
+    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(673);
   });
 });

@@ -176,7 +176,7 @@ for (const file of files) {
   }
 }
 
-if (published !== 139 || draft !== 674) fail(`Publication-state drift: published=${published}, draft=${draft}`);
+if (published !== 140 || draft !== 673) fail(`Publication-state drift: published=${published}, draft=${draft}`);
 if (relationshipCount !== 363) fail(`Relationship count drift: ${relationshipCount}`);
 if (referenceUses !== 379 || verifiedTrue !== 379 || verifiedFalse !== 0) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
 if (clinicalUses !== 374 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);

@@ -39,8 +39,8 @@ describe("mapping expansion ME-11", () => {
 
   it("moves the published matrix to P1 66 / P2+ 73", () => {
     const published = kb.filter((mapping) => mapping.draft === false);
-    expect(published).toHaveLength(139);
-    expect(published.filter((mapping) => mapping.suggestions.length === 1)).toHaveLength(66);
+    expect(published).toHaveLength(140);
+    expect(published.filter((mapping) => mapping.suggestions.length === 1)).toHaveLength(67);
     expect(published.filter((mapping) => mapping.suggestions.length >= 2)).toHaveLength(73);
   });
 

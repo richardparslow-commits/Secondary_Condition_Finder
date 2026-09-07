@@ -49,8 +49,8 @@ const rows = [
     "targetId": "parkinsons-disease",
     "pmid": "20083800",
     "guard": "Require polysomnography-confirmed isolated or idiopathic REM sleep behavior disorder before Parkinson disease, with no Parkinsonism or dementia at the REM sleep behavior disorder baseline and a later independently established Parkinson disease diagnosis. State explicitly that REM sleep behavior disorder is a prodromal marker or risk state, not a cause of Parkinson disease, that many patients do not convert during observed follow-up, and that dementia with Lewy bodies and multiple system atrophy are alternative phenoconversion outcomes.",
-    "draft": true,
-    "publicationState": "draft"
+    "draft": false,
+    "publicationState": "published"
   }
 ];
 const load = <T,>(file: string): T => JSON.parse(fs.readFileSync(file, "utf8")) as T;
@@ -76,9 +76,9 @@ describe("Mapping Expansion ME-14 local implementation", () => {
     const rel = load<RelationshipRegistry>(path.join(ROOT, "data", "evidence", "master-relationships.json"));
     const src = load<SourceRegistry>(path.join(ROOT, "data", "evidence", "master-sources.json"));
     expect(rel.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
-    expect(rel.currentState).toBe("ME-38-CITATION-VERIFIED");
+    expect(rel.currentState).toBe("ME-39-CITATION-VERIFIED");
     expect(src.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
-    expect(src.currentState).toBe("ME-38-CITATION-VERIFIED");
+    expect(src.currentState).toBe("ME-39-CITATION-VERIFIED");
     for (const row of rows) {
       const rr = rel.relationships.filter((r: RelationshipRecord) => r.relationshipId === `rel-${row.primaryId}-to-${row.targetId}`);
       expect(rr).toHaveLength(1);
@@ -97,9 +97,9 @@ describe("Mapping Expansion ME-14 local implementation", () => {
     const refs = maps.flatMap((m: Mapping) => m.suggestions.flatMap((s: Suggestion) => s.sourceReferences || []));
     const clinical = refs.filter((r: SourceReference) => r.verificationScope === "clinical-evidence");
     expect(maps.reduce((n: number, m: Mapping) => n + m.suggestions.length, 0)).toBe(363);
-    expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length === 1)).toHaveLength(66);
+    expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length === 1)).toHaveLength(67);
     expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length >= 2)).toHaveLength(73);
-    expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(118);
+    expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(117);
     expect(refs).toHaveLength(379);
     expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(379);
     expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(0);

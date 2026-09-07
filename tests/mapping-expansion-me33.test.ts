@@ -121,8 +121,8 @@ describe("Mapping Expansion Batch ME-33", () => {
   });
 
   it("ratchets the authoritative ME-33 counts", () => {
-    expect(relationships.currentState).toBe("ME-38-CITATION-VERIFIED");
-    expect(sources.currentState).toBe("ME-38-CITATION-VERIFIED");
+    expect(relationships.currentState).toBe("ME-39-CITATION-VERIFIED");
+    expect(sources.currentState).toBe("ME-39-CITATION-VERIFIED");
     expect(relationships.counts).toEqual({ relationships: 363, explicitPublicationGuards: 289, legacyRationaleBoundaries: 74 });
     expect(relationships.relationships).toHaveLength(363);
     expect(sources.counts).toMatchObject({
