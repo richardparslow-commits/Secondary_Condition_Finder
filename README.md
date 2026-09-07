@@ -41,6 +41,14 @@ npm run dev
 
 Open http://localhost:3000. Try `/scenarios` for repeatable demo walkthroughs.
 
+> **Turbopack workspace-root warning.** If you keep a nested clone of this repo
+> inside the working directory, or a `package-lock.json` exists in an ancestor
+> directory (for example a stray one in your home folder), `next dev` and
+> `next build` may print a warning that the workspace root was inferred from one
+> of those lockfiles. The repo pins `turbopack.root` to itself and ignores the
+> nested `Secondary_Condition_Finder/` clone (git and TypeScript), so serving is
+> unaffected; the message is emitted before the config loads and is cosmetic.
+
 ## Commands
 
 | Command | What it does |
