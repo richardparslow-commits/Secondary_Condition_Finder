@@ -46,16 +46,19 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // rheumatoid-arthritis, inflammatory-bowel-disease, multiple-sclerosis, thyroiditis, irritable-bowel-syndrome,
 // gerd, copd) over 8 distinct qualified-human-verified clinical sources (15 citation uses, autoimmune sources reused).
 // Final ME-37 citation state: 376 live verified / 0 unverified / 0 review; 382 verified provenance including 6 retired verified.
+// ME-38 adds ptsd -> rem-sleep-disorder over 3 qualified-human-verified clinical sources approved in-session on
+// 2026-09-06 (Elliott PMID 31587047, Baldini 2026 systematic review PMID 41616415, Barone PMID 32804070).
+// Final ME-38 citation state: 379 live verified / 0 unverified / 0 review; 385 verified provenance including 6 retired verified.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 376,
-  liveVerified: 376,
+  references: 379,
+  liveVerified: 379,
   retiredVerified: 6,
-  verifiedProvenance: 382,
+  verifiedProvenance: 385,
   unverified: 0,
   reviewFindings: 0,
-  liveClinicalEvidenceWithUrls: 371,
+  liveClinicalEvidenceWithUrls: 374,
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 375,
+  clinicalEvidenceProvenanceWithUrls: 378,
 });
 
 const hardFindings = [];

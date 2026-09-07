@@ -1,16 +1,16 @@
 <!-- CURRENT-REPOSITORY-STATE-2026:START -->
 ## Authoritative current repository state
 
-The authoritative current state is the ME-37 citation-verified registry (`currentState: ME-37-CITATION-VERIFIED`), validated by `node scripts/audit-master-registry.js`:
+The authoritative current state is the ME-38 citation-verified registry (`currentState: ME-38-CITATION-VERIFIED`), validated by `node scripts/audit-master-registry.js`:
 
 - **813** catalog identities and **813** knowledge-base mappings.
-- **362** relationships: **139 published / 674 draft**.
-- **376** live source references: **376 verified / 0 unverified**.
-- **343** active source entities: **342 clinical + 1 legal authority**.
-- **0** pending-verification source entities; **352** total source entities including lineage/history.
-- **288** explicit publication guards and **74** legacy rationale boundaries.
+- **363** relationships: **139 published / 674 draft**.
+- **379** live source references: **379 verified / 0 unverified**.
+- **346** active source entities: **345 clinical + 1 legal authority**.
+- **0** pending-verification source entities; **355** total source entities including lineage/history.
+- **289** explicit publication guards and **74** legacy rationale boundaries.
 
-The ME-36/ME-37 PTSD expansions (2026-09-06) added fifteen published, bounded association-only relationships to the `ptsd` mapping (ischemic-heart-disease, hypertension, diabetes-mellitus-type-2, depressive-disorder, insomnia, substance-use-disorder, metabolic-syndrome, systemic-lupus-erythematosus, rheumatoid-arthritis, inflammatory-bowel-disease, multiple-sclerosis, thyroiditis, irritable-bowel-syndrome, gerd, copd), each with qualified-human-verified clinical sources entered `verified: true` at implementation. The all-94 citation-verification approval (2026-09-04) and ME-36/ME-37 were citation/relationship-state transitions only: they did not publish draft mappings, change relationship semantics, or establish an individual medical nexus. Sections below this block are retained batch histories and must not be interpreted as current aggregate totals.
+The ME-36/ME-37/ME-38 PTSD expansions (2026-09-06) added sixteen published, bounded association-only relationships to the `ptsd` mapping (ischemic-heart-disease, hypertension, diabetes-mellitus-type-2, depressive-disorder, insomnia, substance-use-disorder, metabolic-syndrome, systemic-lupus-erythematosus, rheumatoid-arthritis, inflammatory-bowel-disease, multiple-sclerosis, thyroiditis, irritable-bowel-syndrome, gerd, copd, rem-sleep-disorder), each with qualified-human-verified clinical sources entered `verified: true` at implementation. ME-38 adds `ptsd -> rem-sleep-disorder` as the first published edge targeting REM sleep behavior disorder, bounded strictly to association with a polysomnography diagnostic-boundary guard; `rem-sleep-disorder` remains draft as a primary mapping. The all-94 citation-verification approval (2026-09-04) and ME-36/ME-37/ME-38 were citation/relationship-state transitions only: they did not publish draft mappings, change relationship semantics, or establish an individual medical nexus. Sections below this block are retained batch histories and must not be interpreted as current aggregate totals.
 <!-- CURRENT-REPOSITORY-STATE-2026:END -->
 
 ## Clinical Mapping Master Resolution 2026

@@ -870,6 +870,69 @@
         ],
         "requiresSpecificDbqEvidence": false
       }
+    },
+    {
+      "conditionId": "rem-sleep-disorder",
+      "rank": 19,
+      "rationale": "Mapping Expansion Batch ME-38 adds this relationship only as a bounded PTSD/REM-sleep-behavior-disorder association proposition. A video-polysomnography veteran cohort found confirmed REM sleep behavior disorder in approximately 9% of participants overall, approximately 15% of veterans with PTSD, and approximately 21% of veterans with comorbid traumatic brain injury and PTSD, with PTSD associated with approximately 2.81 times the age-adjusted odds of REM sleep behavior disorder and combined TBI/PTSD with approximately 3.43 times the odds; a systematic review of seven studies (4,152 participants) concluded that PTSD was associated with a higher prevalence of probable or confirmed REM sleep behavior disorder, particularly among veterans. Population association does not establish that PTSD caused or aggravated an individual veteran's REM sleep behavior disorder, and the study authors expressly state that whether PTSD plays a causal role remains uncertain. Require independently documented PTSD and a REM sleep behavior disorder diagnosis confirmed by overnight polysomnography demonstrating REM sleep without atonia in the setting of dream-enactment behavior, with a compatible chronology in which PTSD precedes or accompanies the sleep-disorder course as reflected in the record. Preserve and evaluate traumatic brain injury, PTSD-related nightmares, trauma-associated sleep disorder, obstructive sleep apnea, periodic limb movements, antidepressant and other medication effects, alcohol use or withdrawal, substance use, and neurodegenerative or prodromal synucleinopathy risk, because dream enactment in a person with PTSD does not automatically establish true REM sleep behavior disorder. Sleep-medicine and mental-health review should determine whether dream-enactment behaviors reflect a distinct REM sleep behavior disorder or PTSD-related sleep phenomena; the mapping must not be used to infer REM sleep behavior disorder from PTSD alone.",
+      "evidenceGaps": [
+        "Independent documentation of PTSD and REM sleep behavior disorder confirmed by overnight polysomnography showing REM sleep without atonia with dream-enactment behavior",
+        "Chronology of trauma exposure, PTSD onset, dream-enactment symptom onset and progression, and polysomnography timing",
+        "Sleep-medicine evaluation distinguishing confirmed REM sleep behavior disorder from PTSD-related nightmares, trauma-associated sleep disorder, obstructive sleep apnea, and periodic limb movements",
+        "Assessment of traumatic brain injury, antidepressant and other medication effects, alcohol use or withdrawal, substance use, and neurodegenerative or prodromal synucleinopathy risk",
+        "Resolution of the bounded-association proposition: increased veteran odds and systematic-review prevalence do not establish individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Elliott JE, Opel RA, Pleshakov D, Rachakonda T, Chau AQ, Weymann KB, Lim MM. Posttraumatic stress disorder increases the odds of REM sleep behavior disorder and other parasomnias in Veterans with and without comorbid traumatic brain injury. Sleep. 2020;43(3):zsz237. PMID 31587047. doi:10.1093/sleep/zsz237.",
+          "note": "Video-polysomnography veteran cohort (394 veterans) finding confirmed REM sleep behavior disorder in approximately 9% overall, approximately 15% with PTSD, and approximately 21% with comorbid TBI and PTSD, with PTSD associated with approximately 2.81 times the age-adjusted odds of RBD and combined TBI/PTSD approximately 3.43 times the odds; the authors state the association is supported while any causal role for PTSD remains uncertain. Bounded veteran-association support requiring case-specific polysomnography-confirmed RBD.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31587047/",
+          "sourceLocator": "PMID 31587047; PTSD/REM-sleep-behavior-disorder association proposition scope",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-06"
+        },
+        {
+          "citation": "Baldini V, Gnazzo M, Varallo G, De Ronchi D, Pizza F, Plazzi G, Antelmi E. Investigating the association between post-traumatic stress disorder and REM sleep behavior disorder: a systematic review. Sleep Med Rev. 2026;86:102245. PMID 41616415. doi:10.1016/j.smrv.2026.102245.",
+          "note": "Systematic review of seven studies (4,152 participants) concluding that PTSD was associated with a higher prevalence of probable or confirmed REM sleep behavior disorder, particularly among veterans, and recommending evaluation of PTSD patients presenting with parasomnia symptoms for possible RBD; findings remain primarily observational and do not establish individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41616415/",
+          "sourceLocator": "PMID 41616415; PTSD/REM-sleep-behavior-disorder association proposition scope",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-06"
+        },
+        {
+          "citation": "Barone DA. Dream enactment behavior-a real nightmare: a review of post-traumatic stress disorder, REM sleep behavior disorder, and trauma-associated sleep disorder. J Clin Sleep Med. 2020;16(11):1943-1948. PMID 32804070. doi:10.5664/jcsm.8758.",
+          "note": "Clinical review explaining that PTSD, REM sleep behavior disorder, and trauma-associated sleep disorder can all involve dream-enactment behaviors and that dream enactment in a person with PTSD does not automatically establish true RBD, which requires polysomnographic REM sleep without atonia; PTSD-related nightmares, TASD, obstructive sleep apnea, periodic limb movements, medication effects, and other conditions may mimic RBD. Supports the diagnostic-boundary guard and the alternative-cause evaluation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32804070/",
+          "sourceLocator": "PMID 32804070; PTSD/REM-sleep-behavior-disorder diagnostic-boundary guard scope",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-06"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mapping Expansion Batch ME-38 adds this relationship only as a bounded PTSD/REM-sleep-behavior-disorder association proposition. A video-polysomnography veteran cohort found confirmed REM sleep behavior disorder in approximately 9% of participants overall, approximately 15% of veterans with PTSD, and approximately 21% of veterans with comorbid traumatic brain injury and PTSD, with PTSD associated with approximately 2.81 times the age-adjusted odds of REM sleep behavior disorder and combined TBI/PTSD with approximately 3.43 times the odds; a systematic review of seven studies (4,152 participants) concluded that PTSD was associated with a higher prevalence of probable or confirmed REM sleep behavior disorder, particularly among veterans. Population association does not establish that PTSD caused or aggravated an individual veteran's REM sleep behavior disorder, and the study authors expressly state that whether PTSD plays a causal role remains uncertain. Require independently documented PTSD and a REM sleep behavior disorder diagnosis confirmed by overnight polysomnography demonstrating REM sleep without atonia in the setting of dream-enactment behavior, with a compatible chronology in which PTSD precedes or accompanies the sleep-disorder course as reflected in the record. Preserve and evaluate traumatic brain injury, PTSD-related nightmares, trauma-associated sleep disorder, obstructive sleep apnea, periodic limb movements, antidepressant and other medication effects, alcohol use or withdrawal, substance use, and neurodegenerative or prodromal synucleinopathy risk, because dream enactment in a person with PTSD does not automatically establish true REM sleep behavior disorder. Sleep-medicine and mental-health review should determine whether dream-enactment behaviors reflect a distinct REM sleep behavior disorder or PTSD-related sleep phenomena; the mapping must not be used to infer REM sleep behavior disorder from PTSD alone.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR \u00a7 3.310 is established by this evidence; the mapping is a bounded research association only and is not an individual medical nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Proposed PTSD-related REM-sleep fragmentation, hyperarousal, recurrent nightmares, and dream-enactment behaviors, and possibly a shared underlying vulnerability, are hypothesized to contribute to the increased REM sleep behavior disorder odds observed in veteran cohorts; the pathophysiological relationship remains largely theoretical and requires case-specific polysomnography and alternative-cause evaluation rather than inference from PTSD alone.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Mapping Expansion Batch ME-38 adds this relationship only as a bounded PTSD/REM-sleep-behavior-disorder association proposition. A video-polysomnography veteran cohort found confirmed REM sleep behavior disorder in approximately 9% of participants overall, approximately 15% of veterans with PTSD, and approximately 21% of veterans with comorbid traumatic brain injury and PTSD, with PTSD associated with approximately 2.81 times the age-adjusted odds of REM sleep behavior disorder and combined TBI/PTSD with approximately 3.43 times the odds; a systematic review of seven studies (4,152 participants) concluded that PTSD was associated with a higher prevalence of probable or confirmed REM sleep behavior disorder, particularly among veterans. Population association does not establish that PTSD caused or aggravated an individual veteran's REM sleep behavior disorder, and the study authors expressly state that whether PTSD plays a causal role remains uncertain. Require independently documented PTSD and a REM sleep behavior disorder diagnosis confirmed by overnight polysomnography demonstrating REM sleep without atonia in the setting of dream-enactment behavior, with a compatible chronology in which PTSD precedes or accompanies the sleep-disorder course as reflected in the record. Preserve and evaluate traumatic brain injury, PTSD-related nightmares, trauma-associated sleep disorder, obstructive sleep apnea, periodic limb movements, antidepressant and other medication effects, alcohol use or withdrawal, substance use, and neurodegenerative or prodromal synucleinopathy risk, because dream enactment in a person with PTSD does not automatically establish true REM sleep behavior disorder. Sleep-medicine and mental-health review should determine whether dream-enactment behaviors reflect a distinct REM sleep behavior disorder or PTSD-related sleep phenomena; the mapping must not be used to infer REM sleep behavior disorder from PTSD alone.",
+        "evidenceGaps": "Independent documentation of PTSD and REM sleep behavior disorder confirmed by overnight polysomnography showing REM sleep without atonia with dream-enactment behavior; Chronology of trauma exposure, PTSD onset, dream-enactment symptom onset and progression, and polysomnography timing; Sleep-medicine evaluation distinguishing confirmed REM sleep behavior disorder from PTSD-related nightmares, trauma-associated sleep disorder, obstructive sleep apnea, and periodic limb movements; Assessment of traumatic brain injury, antidepressant and other medication effects, alcohol use or withdrawal, substance use, and neurodegenerative or prodromal synucleinopathy risk; Resolution of the bounded-association proposition: increased veteran odds and systematic-review prevalence do not establish individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Traumatic brain injury and neurodegenerative or prodromal synucleinopathy disease",
+          "PTSD-related nightmares or trauma-associated sleep disorder, obstructive sleep apnea, and periodic limb movements mimicking dream enactment",
+          "Antidepressant and other medication effects, alcohol use or withdrawal, and substance use"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }
