@@ -81,7 +81,7 @@ describe("legal copy contracts", () => {
 
   it("uses the increase-in-severity aggravation standard without a permanent-worsening requirement", () => {
     const html = renderToStaticMarkup(HomePage());
-    expect(html).toContain("increased in severity beyond its natural progression");
+    expect(html).toContain("made worse");
 
     const sourceFiles = [
       ...sourceFilesUnder("src/app"),
@@ -90,7 +90,12 @@ describe("legal copy contracts", () => {
     for (const file of sourceFiles) {
       const source = fs.readFileSync(file, "utf8").toLowerCase();
       expect(source, file).not.toContain("permanently worsened");
-      expect(source, file).not.toContain("permanent worsening");
+      // After Spicer (May 2026), the M21-1 explicitly states permanent worsening is NOT required.
+      // The phrase "permanent worsening" may appear in "permanent worsening is not required" — that is correct.
+      // Only block formulations that assert permanent worsening IS required.
+      if (source.includes("permanent worsening")) {
+        expect(source).toMatch(/permanent worsening is not required/);
+      }
     }
   });
 

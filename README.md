@@ -4,9 +4,11 @@ A claim-preparation research aid for VA disability claims. It keeps secondary
 and presumptive service-connection research separate because they use different
 legal and evidentiary frameworks.
 
-- **Secondary** (38 CFR § 3.310): starts from established service-connected
+- **Secondary** (38 CFR § 3.310, M21-1 Spicer update May 2026): starts from established service-connected
   conditions and organizes diagnosed conditions that may warrant further
   research, along with authored pathways, evidence gaps, and source references.
+  After the Spicer v. McDonough ruling, the M21-1 uses \"but for\" causation language
+  and recognizes treatment-interference as a secondary aggravation pathway.
   Competent nexus evidence may be needed when the relationship requires medical
   expertise; the app does not create or replace a medical opinion.
 - **Presumptive** (38 CFR §§ 3.307 and 3.309): compares authored qualifying

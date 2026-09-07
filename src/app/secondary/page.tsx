@@ -27,8 +27,8 @@ export default function SecondaryLandingPage() {
       <div className="ui-grid">
         <article className="ui-card">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">1</span><h2 className="text-xl font-bold">{SECONDARY_CAUSED_BY_TITLE}</h2></div>
-          <p>A secondary condition that is proximately due to or the result of an already service-connected primary condition.</p>
-          <p className="mt-4 text-sm"><strong>Legal framework:</strong> 38 CFR § 3.310(a).</p>
+          <p>A secondary condition that is the result of, or would not have occurred but for, an already service-connected primary condition.</p>
+          <p className="mt-4 text-sm"><strong>Legal framework:</strong> 38 CFR § 3.310(a), M21-1 Spicer update (May 2026).</p>
           <Link href="/secondary/condition-caused-by" className="ui-button mt-6 w-full">Learn More <span aria-hidden="true">→</span></Link>
         </article>
 
