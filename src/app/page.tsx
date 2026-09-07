@@ -24,7 +24,7 @@ export default function HomePage() {
         <div className="ui-stack">
           <article className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><p className="ui-kicker">Secondary</p><h2 className="text-2xl font-bold">Condition Caused By Service-Connected Condition</h2></div></div>
-            <p>Explore a current condition that may be proximately due to or the result of an already service-connected disability.</p>
+            <p>Explore a current condition that may be the result of, or would not have occurred but for, an already service-connected disability (Spicer/M21-1 May 2026).</p>
             <Link href="/secondary/condition-caused-by" className="ui-button mt-6 w-full">Learn More <span aria-hidden="true">→</span></Link>
           </article>
 

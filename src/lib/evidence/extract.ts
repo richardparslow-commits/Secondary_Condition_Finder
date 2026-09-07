@@ -61,6 +61,9 @@ const CAUSATION_PATTERNS = [
   /\bresult(?:ed|ing)? from\b/i,
   /\battributable to\b/i,
   /\bdue to\b/i,
+  // Spicer/M21-1 May 2026: "but for" causation language.
+  /\bbut for\b/i,
+  /\bwould not have occurred\b/i,
   // VA/medical shorthand "2/2" = "secondary to" (e.g. "Insomnia may be 2/2 OSA").
   /\b2\/2(?!\d|\/)\b/i,
 ];
@@ -71,6 +74,11 @@ const AGGRAVATION_PATTERNS = [
   /\bmade worse\b/i,
   /\bbeyond (?:its |the )?natural progression\b/i,
   /\bincrease(?:d)? in severity\b/i,
+  // Spicer/M21-1 May 2026: treatment-interference pathway.
+  /\binterfered with.*treatment\b/i,
+  /\bimpeded.*treatment\b/i,
+  /\bdelayed.*treatment\b/i,
+  /\bprevented.*treatment\b/i,
 ];
 
 const DIAGNOSIS_PATTERNS = [
