@@ -18,7 +18,7 @@ export const CONSENSUS_EXPLANATION: Record<Recommendation["etiologicalConsensus"
   CONTESTED_REQUIRES_SPECIFIC_EVIDENCE:
     "Contested means the literature is mixed or debated; specific DBQ evidence and alternative etiologies must be addressed.",
   NOT_ESTABLISHED:
-    "Not established means the current evidence supports association only, not causation or aggravation under 38 CFR § 3.310.",
+    "Not established means the current evidence supports association only, not causation or aggravation under 38 CFR § 3.310. After the Spicer update (May 2026), a veteran may still establish service connection by showing the condition would not have occurred but for the SC disability, or that the SC disability interfered with treatment.",
 };
 
 /**
