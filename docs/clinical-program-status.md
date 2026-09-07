@@ -1,16 +1,16 @@
 <!-- CURRENT-REPOSITORY-STATE-2026:START -->
 ## Authoritative current repository state
 
-The authoritative current state is the ME-35 citation-verified registry (`currentState: ME35-CITATION-VERIFIED`), validated by `node scripts/audit-master-registry.js`:
+The authoritative current state is the ME-36 citation-verified registry (`currentState: ME-36-CITATION-VERIFIED`), validated by `node scripts/audit-master-registry.js`:
 
 - **813** catalog identities and **813** knowledge-base mappings.
-- **347** relationships: **139 published / 674 draft**.
-- **355** live source references: **355 verified / 0 unverified**.
-- **329** active source entities: **328 clinical + 1 legal authority**.
-- **0** pending-verification source entities; **338** total source entities including lineage/history.
-- **273** explicit publication guards and **74** legacy rationale boundaries.
+- **353** relationships: **139 published / 674 draft**.
+- **361** live source references: **361 verified / 0 unverified**.
+- **335** active source entities: **334 clinical + 1 legal authority**.
+- **0** pending-verification source entities; **344** total source entities including lineage/history.
+- **279** explicit publication guards and **74** legacy rationale boundaries.
 
-The all-94 citation-verification approval was applied on 2026-09-04 as a citation-state transition only. It did not publish draft mappings, change relationship semantics, or establish an individual medical nexus. Sections below this block are retained batch histories and must not be interpreted as current aggregate totals.
+The ME-36 PTSD expansion (2026-09-06) added six published, bounded association-only relationships (ischemic-heart-disease, hypertension, diabetes-mellitus-type-2, depressive-disorder, insomnia, substance-use-disorder), each with a qualified-human-verified clinical source entered `verified: true` at implementation. The all-94 citation-verification approval (2026-09-04) and ME-36 were citation/relationship-state transitions only: they did not publish draft mappings, change relationship semantics, or establish an individual medical nexus. Sections below this block are retained batch histories and must not be interpreted as current aggregate totals.
 <!-- CURRENT-REPOSITORY-STATE-2026:END -->
 
 ## Clinical Mapping Master Resolution 2026

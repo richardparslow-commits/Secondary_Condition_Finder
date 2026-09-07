@@ -1,146 +1,416 @@
 {
-   "id": "ptsd",
-   "draft": false,
-   "suggestions": [
-      {
-         "conditionId": "sleep-apnea",
-         "rank": 1,
-         "rationale": "PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
-         "evidenceGaps": [
-            "Sleep study (polysomnography or qualifying home sleep test) confirming OSA diagnosis",
-            "Medical nexus opinion addressing PTSD, treatment/medications, obesity if applicable, and causation or aggravation",
-            "If relying on obesity as an intermediate step, evidence addressing baseline weight, change in weight, and the medical relationship to OSA"
-         ],
-         "sourceReferences": [
-            {
-               "citation": "Zhang et al., Sleep Medicine (2017), PMID 28735910",
-               "note": "Meta-analysis found OSA is commonly seen in patients with PTSD; this supports association/comorbidity, not individual causation.",
-               "verificationScope": "clinical-evidence",
-               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28735910/",
-               "verified": true,
-               "sourceCheckedOn": "2026-08-19",
-               "sourceLocator": "PMID 28735910"
-            }
-         ],
-         "nexusClaim": {
-            "nexusClassification": "ASSOCIATION_ONLY",
-            "associationBasis": "The published knowledge base includes this relationship as an association: PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
-            "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
-         },
-         "causalMechanism": {
-            "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
-            "primaryVector": "PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
-            "hypothesizedOnly": true
-         },
-         "evidentiaryProfile": {
-            "etiologicalConsensus": "NOT_ESTABLISHED",
-            "vaNexusProbabilityAlignment": "NOT_ASSERTED",
-            "conservativeRationale": "This relationship is supported as an association only. PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion. It is not asserted that the primary caused or aggravated the secondary in any individual.",
-            "evidenceGaps": "Sleep study (polysomnography or qualifying home sleep test) confirming OSA diagnosis; Medical nexus opinion addressing PTSD, treatment/medications, obesity if applicable, and causation or aggravation; If relying on obesity as an intermediate step, evidence addressing baseline weight, change in weight, and the medical relationship to OSA",
-            "alternativeEtiologiesToRuleOut": [
-               "Other causes not yet identified in this mapping"
-            ],
-            "requiresSpecificDbqEvidence": false
-         }
+  "id": "ptsd",
+  "draft": false,
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 1,
+      "rationale": "PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
+      "evidenceGaps": [
+        "Sleep study (polysomnography or qualifying home sleep test) confirming OSA diagnosis",
+        "Medical nexus opinion addressing PTSD, treatment/medications, obesity if applicable, and causation or aggravation",
+        "If relying on obesity as an intermediate step, evidence addressing baseline weight, change in weight, and the medical relationship to OSA"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Zhang et al., Sleep Medicine (2017), PMID 28735910",
+          "note": "Meta-analysis found OSA is commonly seen in patients with PTSD; this supports association/comorbidity, not individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28735910/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 28735910"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
       },
-      {
-         "conditionId": "migraine-headaches",
-         "rank": 2,
-         "rationale": "PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
-         "evidenceGaps": [
-            "Headache log (frequency, duration, severity)",
-            "Neurological or medical nexus opinion addressing causation or aggravation in the individual case"
-         ],
-         "sourceReferences": [
-            {
-               "citation": "Nitsche et al., Headache (2026), PMID 41705319",
-               "note": "Systematic review found a positive association between PTSD and migraine across included studies; it does not establish individual-level causation.",
-               "verificationScope": "clinical-evidence",
-               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41705319/",
-               "verified": true,
-               "sourceCheckedOn": "2026-08-19",
-               "sourceLocator": "PMID 41705319"
-            }
-         ],
-         "nexusClaim": {
-            "nexusClassification": "ASSOCIATION_ONLY",
-            "associationBasis": "The published knowledge base includes this relationship as an association: PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
-            "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
-         },
-         "causalMechanism": {
-            "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
-            "primaryVector": "PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
-            "hypothesizedOnly": true
-         },
-         "evidentiaryProfile": {
-            "etiologicalConsensus": "NOT_ESTABLISHED",
-            "vaNexusProbabilityAlignment": "NOT_ASSERTED",
-            "conservativeRationale": "This relationship is supported as an association only. PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone. It is not asserted that the primary caused or aggravated the secondary in any individual.",
-            "evidenceGaps": "Headache log (frequency, duration, severity); Neurological or medical nexus opinion addressing causation or aggravation in the individual case",
-            "alternativeEtiologiesToRuleOut": [
-               "Other causes not yet identified in this mapping"
-            ],
-            "requiresSpecificDbqEvidence": false
-         }
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion.",
+        "hypothesizedOnly": true
       },
-      {
-         "conditionId": "erectile-dysfunction",
-         "rank": 3,
-         "rationale": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. This edge is authored as a medication-related aggravation theory, not a general population-level association: the record must establish that the relevant SSRI was actually prescribed for the service-connected PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed. A recognized medication association does not, by itself, establish that the medication caused or aggravated this Veteran's erectile dysfunction.",
-         "pathwayIntelligence": {
-            "pathways": [
-               "medication-related"
-            ],
-            "causalChain": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction aggravation beyond the established baseline.",
-            "developmentQuestions": [
-               "Was the relevant SSRI prescribed for the service-connected PTSD?",
-               "Is erectile dysfunction currently diagnosed, and how does its onset or worsening relate temporally to the medication exposure?",
-               "Does the clinician consider the medication a plausible aggravating factor in this individual case?",
-               "Which alternative causes of erectile dysfunction should be addressed?"
-            ],
-            "issuesToResolve": [
-               "A recognized medication association does not establish that the medication aggravated this Veteran's condition.",
-               "The medication indication, exposure timing, current diagnosis, and alternative causes all need individual evidence."
-            ]
-         },
-         "evidenceGaps": [
-            "Prescription records showing the relevant SSRI exposure and timing",
-            "Urology or primary care diagnosis of erectile dysfunction",
-            "Medical opinion addressing medication exposure, SSRI-related sexual side effects, alternative causes, and aggravation beyond the established baseline"
-         ],
-         "sourceReferences": [
-            {
-               "citation": "Corona G, Ricca V, Bandini E, et al. Selective serotonin reuptake inhibitor-induced sexual dysfunction. J Sex Med. 2009;6(5):1259-1269. PMID 19473282",
-               "note": "Cross-sectional study of 2,040 men with sexual dysfunction found SSRI use associated with greater impairment of reported erectile function and broader male sexual-response effects; penile blood flow did not differ. Supports an SSRI-exposure association signal relevant to a case-specific medication-aggravation theory, not automatic individual causation or aggravation.",
-               "verificationScope": "clinical-evidence",
-               "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19473282/",
-               "verified": true,
-               "sourceCheckedOn": "2026-08-19",
-               "sourceLocator": "PMID 19473282; abstract; 2,040 men; SSRI use associated with higher impairment of reported erectile function, without a difference in penile blood flow"
-            }
-         ],
-         "nexusClaim": {
-            "nexusClassification": "AGGRAVATION",
-            "baselineProgression": "The natural, non-service-connected baseline of erectile dysfunction must be established from the individual's records before any aggravation claim; the service-connected PTSD may then be evaluated for aggravation only through the medication-exposure theory, if the record supports it.",
-            "aggravatingFactor": "The aggravating force, if established, is SSRI treatment prescribed for the service-connected PTSD rather than PTSD itself acting directly on erectile function."
-         },
-         "causalMechanism": {
-            "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
-            "primaryVector": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction aggravation through SSRI-related sexual side effects.",
-            "hypothesizedOnly": false
-         },
-         "evidentiaryProfile": {
-            "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
-            "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
-            "conservativeRationale": "In medically conservative terms, the evidence supports an SSRI-related sexual side-effect signal at the at-least-as-likely-as-not level only when the record establishes PTSD-directed SSRI exposure, a current erectile-dysfunction diagnosis, compatible timing, and a clinician's assessment that the medication plausibly aggravated the condition in this individual case. That framework is a treatment-effect theory, not a general PTSD-to-erectile-dysfunction causation conclusion.",
-            "evidenceGaps": "Prescription records showing the relevant SSRI exposure and timing; Urology or primary care diagnosis of erectile dysfunction; Medical opinion addressing medication exposure, SSRI-related sexual side effects, alternative causes, and aggravation beyond the established baseline",
-            "alternativeEtiologiesToRuleOut": [
-               "Vascular causes of erectile dysfunction",
-               "Endocrine causes of erectile dysfunction",
-               "Other medication contributors, psychiatric contributors, and relationship factors"
-            ],
-            "requiresSpecificDbqEvidence": false
-         }
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. PTSD and obstructive sleep apnea are associated at the population level, and the cited meta-analysis reports that OSA is commonly seen in PTSD populations. That evidence does not establish that PTSD causes or aggravates OSA in an individual veteran, and it does not establish an obesity intermediate-step chain. Any direct, aggravation, treatment-related, or obesity-intermediate theory requires separate veteran-specific medical evidence addressing the confirmed OSA diagnosis, chronology, relevant treatment and weight history, competing OSA risk factors, and a competent medical opinion. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Sleep study (polysomnography or qualifying home sleep test) confirming OSA diagnosis; Medical nexus opinion addressing PTSD, treatment/medications, obesity if applicable, and causation or aggravation; If relying on obesity as an intermediate step, evidence addressing baseline weight, change in weight, and the medical relationship to OSA",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
       }
-   ]
+    },
+    {
+      "conditionId": "migraine-headaches",
+      "rank": 2,
+      "rationale": "PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
+      "evidenceGaps": [
+        "Headache log (frequency, duration, severity)",
+        "Neurological or medical nexus opinion addressing causation or aggravation in the individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Nitsche et al., Headache (2026), PMID 41705319",
+          "note": "Systematic review found a positive association between PTSD and migraine across included studies; it does not establish individual-level causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41705319/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 41705319"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. PTSD and migraine show a consistent positive association in the published literature. The cited systematic review does not establish directionality and does not by itself establish that PTSD caused or aggravated an individual veteran's migraine disorder. Any secondary theory requires a confirmed migraine diagnosis, veteran-specific chronology and symptom/treatment history, assessment of competing migraine contributors, and a qualified medical opinion rather than reliance on population-level association alone. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Headache log (frequency, duration, severity); Neurological or medical nexus opinion addressing causation or aggravation in the individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Other causes not yet identified in this mapping"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    },
+    {
+      "conditionId": "erectile-dysfunction",
+      "rank": 3,
+      "rationale": "SSRI treatment is associated with male sexual dysfunction, including greater impairment of reported erectile function in observational evidence. This edge is authored as a medication-related aggravation theory, not a general population-level association: the record must establish that the relevant SSRI was actually prescribed for the service-connected PTSD, that erectile dysfunction is clinically diagnosed, that onset or worsening is temporally compatible with exposure, and that alternative vascular, endocrine, neurologic, medication, psychiatric, and relationship contributors are addressed. A recognized medication association does not, by itself, establish that the medication caused or aggravated this Veteran's erectile dysfunction.",
+      "pathwayIntelligence": {
+        "pathways": [
+          "medication-related"
+        ],
+        "causalChain": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction aggravation beyond the established baseline.",
+        "developmentQuestions": [
+          "Was the relevant SSRI prescribed for the service-connected PTSD?",
+          "Is erectile dysfunction currently diagnosed, and how does its onset or worsening relate temporally to the medication exposure?",
+          "Does the clinician consider the medication a plausible aggravating factor in this individual case?",
+          "Which alternative causes of erectile dysfunction should be addressed?"
+        ],
+        "issuesToResolve": [
+          "A recognized medication association does not establish that the medication aggravated this Veteran's condition.",
+          "The medication indication, exposure timing, current diagnosis, and alternative causes all need individual evidence."
+        ]
+      },
+      "evidenceGaps": [
+        "Prescription records showing the relevant SSRI exposure and timing",
+        "Urology or primary care diagnosis of erectile dysfunction",
+        "Medical opinion addressing medication exposure, SSRI-related sexual side effects, alternative causes, and aggravation beyond the established baseline"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Corona G, Ricca V, Bandini E, et al. Selective serotonin reuptake inhibitor-induced sexual dysfunction. J Sex Med. 2009;6(5):1259-1269. PMID 19473282",
+          "note": "Cross-sectional study of 2,040 men with sexual dysfunction found SSRI use associated with greater impairment of reported erectile function and broader male sexual-response effects; penile blood flow did not differ. Supports an SSRI-exposure association signal relevant to a case-specific medication-aggravation theory, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19473282/",
+          "verified": true,
+          "sourceCheckedOn": "2026-08-19",
+          "sourceLocator": "PMID 19473282; abstract; 2,040 men; SSRI use associated with higher impairment of reported erectile function, without a difference in penile blood flow"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "AGGRAVATION",
+        "baselineProgression": "The natural, non-service-connected baseline of erectile dysfunction must be established from the individual's records before any aggravation claim; the service-connected PTSD may then be evaluated for aggravation only through the medication-exposure theory, if the record supports it.",
+        "aggravatingFactor": "The aggravating force, if established, is SSRI treatment prescribed for the service-connected PTSD rather than PTSD itself acting directly on erectile function."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "PTSD → SSRI treatment prescribed for PTSD, if applicable → claimed erectile dysfunction aggravation through SSRI-related sexual side effects.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports an SSRI-related sexual side-effect signal at the at-least-as-likely-as-not level only when the record establishes PTSD-directed SSRI exposure, a current erectile-dysfunction diagnosis, compatible timing, and a clinician's assessment that the medication plausibly aggravated the condition in this individual case. That framework is a treatment-effect theory, not a general PTSD-to-erectile-dysfunction causation conclusion.",
+        "evidenceGaps": "Prescription records showing the relevant SSRI exposure and timing; Urology or primary care diagnosis of erectile dysfunction; Medical opinion addressing medication exposure, SSRI-related sexual side effects, alternative causes, and aggravation beyond the established baseline",
+        "alternativeEtiologiesToRuleOut": [
+          "Vascular causes of erectile dysfunction",
+          "Endocrine causes of erectile dysfunction",
+          "Other medication contributors, psychiatric contributors, and relationship factors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    },
+    {
+      "conditionId": "ischemic-heart-disease",
+      "rank": 4,
+      "rationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD-to-coronary-heart-disease population-risk association. A meta-analytic review found PTSD independently associated with increased risk of incident coronary heart disease after adjustment for depression and other covariates, but population risk does not establish that PTSD caused or aggravated coronary disease in an individual veteran. Require an independently documented PTSD diagnosis and separately established coronary artery disease or ischemic heart disease supported by objective cardiac evaluation, with a compatible chronology in which the PTSD-related trauma and disorder precede or accompany the cardiac presentation as supported by the individual record. Preserve and evaluate traditional cardiovascular risk factors, including smoking, hypertension, diabetes, dyslipidemia, obesity, sedentary lifestyle, family history, and age, as well as substance use and other stressors. Cardiology review should determine whether the documented coronary disease is attributable to conventional risk factors rather than to PTSD, and any direct, aggravation, or treatment-related theory requires case-specific evidence.",
+      "evidenceGaps": [
+        "Independent documentation of PTSD and coronary artery disease or ischemic heart disease with objective cardiac testing",
+        "Chronology of trauma exposure, PTSD onset, cardiac symptom onset, and diagnostic evaluation",
+        "Cardiology assessment of ischemia burden, ventricular function, arrhythmia, and functional limitation with longitudinal records",
+        "Evaluation of smoking, hypertension, diabetes, dyslipidemia, obesity, family history, substance use, and other competing cardiovascular risk factors",
+        "Resolution of the bounded-risk proposition: population meta-analytic risk does not establish individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Edmondson D, Kronish IM, Shaffer JA, Falzon L, Burg MM. Posttraumatic stress disorder and risk for coronary heart disease: a meta-analytic review. Am Heart J. 2013;166(5):806-814. PMID 24176435. doi:10.1016/j.ahj.2013.07.031.",
+          "note": "Meta-analysis reporting PTSD independently associated with increased risk of incident coronary heart disease after covariate adjustment. It supports a bounded population-level risk proposition, not individual causation, and requires case-specific cardiac and chronologic review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24176435/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-06",
+          "sourceLocator": "PMID 24176435; incident-CHD meta-analysis scope"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD-to-coronary-heart-disease population-risk association. A meta-analytic review found PTSD independently associated with increased risk of incident coronary heart disease after adjustment for depression and other covariates, but population risk does not establish that PTSD caused or aggravated coronary disease in an individual veteran. Require an independently documented PTSD diagnosis and separately established coronary artery disease or ischemic heart disease supported by objective cardiac evaluation, with a compatible chronology in which the PTSD-related trauma and disorder precede or accompany the cardiac presentation as supported by the individual record. Preserve and evaluate traditional cardiovascular risk factors, including smoking, hypertension, diabetes, dyslipidemia, obesity, sedentary lifestyle, family history, and age, as well as substance use and other stressors. Cardiology review should determine whether the documented coronary disease is attributable to conventional risk factors rather than to PTSD, and any direct, aggravation, or treatment-related theory requires case-specific evidence.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this evidence; the mapping is a bounded research association only and is not an individual medical nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Proposed PTSD-related autonomic, neuroendocrine, inflammatory, and behavioral pathways may contribute to coronary risk, but the precise contribution in an individual veteran must be established from the cardiac phenotype, risk-factor profile, and objective longitudinal cardiac evidence rather than assumed from the PTSD diagnosis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD-to-coronary-heart-disease population-risk association. A meta-analytic review found PTSD independently associated with increased risk of incident coronary heart disease after adjustment for depression and other covariates, but population risk does not establish that PTSD caused or aggravated coronary disease in an individual veteran. Require an independently documented PTSD diagnosis and separately established coronary artery disease or ischemic heart disease supported by objective cardiac evaluation, with a compatible chronology in which the PTSD-related trauma and disorder precede or accompany the cardiac presentation as supported by the individual record. Preserve and evaluate traditional cardiovascular risk factors, including smoking, hypertension, diabetes, dyslipidemia, obesity, sedentary lifestyle, family history, and age, as well as substance use and other stressors. Cardiology review should determine whether the documented coronary disease is attributable to conventional risk factors rather than to PTSD, and any direct, aggravation, or treatment-related theory requires case-specific evidence.",
+        "evidenceGaps": "Independent documentation of PTSD and coronary artery disease or ischemic heart disease with objective cardiac testing; Chronology of trauma exposure, PTSD onset, cardiac symptom onset, and diagnostic evaluation; Cardiology assessment of ischemia burden, ventricular function, arrhythmia, and functional limitation with longitudinal records; Evaluation of smoking, hypertension, diabetes, dyslipidemia, obesity, family history, substance use, and other competing cardiovascular risk factors; Resolution of the bounded-risk proposition: population meta-analytic risk does not establish individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Traditional cardiovascular risk factors, including smoking, hypertension, diabetes, dyslipidemia, obesity, and family history",
+          "Substance use, medication effects, physical inactivity, or other behavioral contributors",
+          "Non-ischemic cardiac disease or alternative explanations for the cardiac presentation"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    },
+    {
+      "conditionId": "hypertension",
+      "rank": 5,
+      "rationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD-to-incident-hypertension prospective-risk association. A veteran cohort study reported PTSD associated with increased risk of incident hypertension, but prospective association does not establish that PTSD caused or aggravated an individual veteran's hypertension. Require an independently documented PTSD diagnosis and hypertension meeting current blood-pressure criteria based on repeated measurement, with compatible chronology in which PTSD precedes or accompanies the hypertensive course as shown in the record. Preserve and evaluate established hypertension contributors, including age, family history, obesity, metabolic syndrome, diabetes, chronic kidney disease, obstructive sleep apnea, alcohol use, stimulant or other substance use, NSAIDs and other medications, white-coat effect, and secondary causes. Primary-care and specialty review should evaluate whether blood-pressure elevation reflects PTSD-related physiologic or behavioral pathways or an independent hypertensive process; the mapping must not be used to infer hypertension from PTSD alone.",
+      "evidenceGaps": [
+        "Independent documentation of PTSD and hypertension meeting current blood-pressure criteria with repeated measurements",
+        "Chronology of trauma exposure, PTSD onset, blood-pressure trend, antihypertensive treatment, and PTSD treatment",
+        "Assessment of age, family history, obesity, metabolic syndrome, diabetes, chronic kidney disease, obstructive sleep apnea, and other secondary causes",
+        "Evaluation of alcohol, stimulant or other substance use, NSAID or other medication effects, and white-coat or measurement artifacts",
+        "Resolution of the bounded-risk proposition: prospective cohort risk does not establish individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Burg MM, Brandt C, Buta E, Schwartz J, Bathulapalli H, Dziura J, Edmondson DE, Haskell S. Risk for incident hypertension associated with posttraumatic stress disorder in military veterans and the effect of posttraumatic stress disorder treatment. Psychosom Med. 2017;79(2):181-188. PMID 27490852. doi:10.1097/PSY.0000000000000376.",
+          "note": "Veteran cohort study reporting PTSD associated with increased risk of incident hypertension. It supports a bounded prospective-risk association, not individual causation, and requires case-specific blood-pressure, chronologic, medication, and competing-cause review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27490852/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-06",
+          "sourceLocator": "PMID 27490852; veteran incident-hypertension cohort scope"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD-to-incident-hypertension prospective-risk association. A veteran cohort study reported PTSD associated with increased risk of incident hypertension, but prospective association does not establish that PTSD caused or aggravated an individual veteran's hypertension. Require an independently documented PTSD diagnosis and hypertension meeting current blood-pressure criteria based on repeated measurement, with compatible chronology in which PTSD precedes or accompanies the hypertensive course as shown in the record. Preserve and evaluate established hypertension contributors, including age, family history, obesity, metabolic syndrome, diabetes, chronic kidney disease, obstructive sleep apnea, alcohol use, stimulant or other substance use, NSAIDs and other medications, white-coat effect, and secondary causes. Primary-care and specialty review should evaluate whether blood-pressure elevation reflects PTSD-related physiologic or behavioral pathways or an independent hypertensive process; the mapping must not be used to infer hypertension from PTSD alone.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this evidence; the mapping is a bounded research association only and is not an individual medical nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Proposed PTSD-related sympathetic and neuroendocrine arousal and associated behavioral factors may contribute to blood-pressure elevation, but the individual contribution must be established from repeated blood-pressure measurement, chronologic record, treatment response, and competing-cause evaluation rather than inferred from PTSD alone.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD-to-incident-hypertension prospective-risk association. A veteran cohort study reported PTSD associated with increased risk of incident hypertension, but prospective association does not establish that PTSD caused or aggravated an individual veteran's hypertension. Require an independently documented PTSD diagnosis and hypertension meeting current blood-pressure criteria based on repeated measurement, with compatible chronology in which PTSD precedes or accompanies the hypertensive course as shown in the record. Preserve and evaluate established hypertension contributors, including age, family history, obesity, metabolic syndrome, diabetes, chronic kidney disease, obstructive sleep apnea, alcohol use, stimulant or other substance use, NSAIDs and other medications, white-coat effect, and secondary causes. Primary-care and specialty review should evaluate whether blood-pressure elevation reflects PTSD-related physiologic or behavioral pathways or an independent hypertensive process; the mapping must not be used to infer hypertension from PTSD alone.",
+        "evidenceGaps": "Independent documentation of PTSD and hypertension meeting current blood-pressure criteria with repeated measurements; Chronology of trauma exposure, PTSD onset, blood-pressure trend, antihypertensive treatment, and PTSD treatment; Assessment of age, family history, obesity, metabolic syndrome, diabetes, chronic kidney disease, obstructive sleep apnea, and other secondary causes; Evaluation of alcohol, stimulant or other substance use, NSAID or other medication effects, and white-coat or measurement artifacts; Resolution of the bounded-risk proposition: prospective cohort risk does not establish individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Essential hypertension with conventional risk factors, age, family history, or metabolic syndrome",
+          "Secondary hypertension, including renal disease, sleep apnea, endocrine causes, or medication or substance effects",
+          "White-coat hypertension or measurement artifact independent of PTSD"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    },
+    {
+      "conditionId": "diabetes-mellitus-type-2",
+      "rank": 6,
+      "rationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/type 2 diabetes association proposition. A systematic review and meta-analysis reported higher risk of type 2 diabetes among people with PTSD while cautioning about study design and confounding, so the association does not establish that PTSD caused or aggravated an individual's diabetes. Require an independently documented PTSD diagnosis and a separately established type 2 diabetes diagnosis supported by laboratory criteria, with a compatible chronology in which PTSD precedes or accompanies the diabetic course as reflected in the record. Preserve and evaluate established diabetes risk factors and contributors, including age, obesity and weight trajectory, physical inactivity, family history, metabolic syndrome, hypertension, dyslipidemia, antipsychotic or corticosteroid and other medication effects, alcohol and substance use, and depression. Metabolic and primary-care review should determine whether glycemic dysregulation reflects PTSD-related behavioral or physiologic pathways, medication effects, or an independent metabolic process; the mapping must not be used to infer diabetes from PTSD alone.",
+      "evidenceGaps": [
+        "Independent documentation of PTSD and type 2 diabetes meeting current laboratory diagnostic criteria",
+        "Chronology of trauma exposure, PTSD onset, weight and metabolic trajectory, diabetes diagnosis, and treatment",
+        "Assessment of age, family history, obesity, metabolic syndrome, hypertension, dyslipidemia, physical inactivity, and other diabetes risk factors",
+        "Evaluation of antipsychotic, corticosteroid, and other medication effects, alcohol and substance use, and depression",
+        "Resolution of the bounded-association proposition: meta-analytic risk does not establish individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Vancampfort D, Rosenbaum S, Ward PB, Steel Z, Lederman O, Lamwaka AV, Richards JW, Stubbs B. Type 2 diabetes among people with posttraumatic stress disorder: systematic review and meta-analysis. Psychosom Med. 2016;78(4):465-473. PMID 26867081. doi:10.1097/PSY.0000000000000297.",
+          "note": "Systematic review and meta-analysis reporting higher type 2 diabetes risk among people with PTSD, with the authors noting design limitations and confounding. It supports a bounded association proposition, not individual causation, and requires case-specific metabolic, treatment, and chronologic review.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26867081/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-06",
+          "sourceLocator": "PMID 26867081; T2DM systematic review and meta-analysis scope"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/type 2 diabetes association proposition. A systematic review and meta-analysis reported higher risk of type 2 diabetes among people with PTSD while cautioning about study design and confounding, so the association does not establish that PTSD caused or aggravated an individual's diabetes. Require an independently documented PTSD diagnosis and a separately established type 2 diabetes diagnosis supported by laboratory criteria, with a compatible chronology in which PTSD precedes or accompanies the diabetic course as reflected in the record. Preserve and evaluate established diabetes risk factors and contributors, including age, obesity and weight trajectory, physical inactivity, family history, metabolic syndrome, hypertension, dyslipidemia, antipsychotic or corticosteroid and other medication effects, alcohol and substance use, and depression. Metabolic and primary-care review should determine whether glycemic dysregulation reflects PTSD-related behavioral or physiologic pathways, medication effects, or an independent metabolic process; the mapping must not be used to infer diabetes from PTSD alone.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this evidence; the mapping is a bounded research association only and is not an individual medical nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Proposed PTSD-related behavioral, neuroendocrine, inflammatory, and medication-associated pathways may contribute to metabolic dysregulation, but the individual contribution must be established from laboratory criteria, weight and metabolic trajectory, medication history, and competing-risk review rather than inferred from PTSD alone.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/type 2 diabetes association proposition. A systematic review and meta-analysis reported higher risk of type 2 diabetes among people with PTSD while cautioning about study design and confounding, so the association does not establish that PTSD caused or aggravated an individual's diabetes. Require an independently documented PTSD diagnosis and a separately established type 2 diabetes diagnosis supported by laboratory criteria, with a compatible chronology in which PTSD precedes or accompanies the diabetic course as reflected in the record. Preserve and evaluate established diabetes risk factors and contributors, including age, obesity and weight trajectory, physical inactivity, family history, metabolic syndrome, hypertension, dyslipidemia, antipsychotic or corticosteroid and other medication effects, alcohol and substance use, and depression. Metabolic and primary-care review should determine whether glycemic dysregulation reflects PTSD-related behavioral or physiologic pathways, medication effects, or an independent metabolic process; the mapping must not be used to infer diabetes from PTSD alone.",
+        "evidenceGaps": "Independent documentation of PTSD and type 2 diabetes meeting current laboratory diagnostic criteria; Chronology of trauma exposure, PTSD onset, weight and metabolic trajectory, diabetes diagnosis, and treatment; Assessment of age, family history, obesity, metabolic syndrome, hypertension, dyslipidemia, physical inactivity, and other diabetes risk factors; Evaluation of antipsychotic, corticosteroid, and other medication effects, alcohol and substance use, and depression; Resolution of the bounded-association proposition: meta-analytic risk does not establish individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Type 2 diabetes with conventional metabolic risk factors, family history, age, or obesity",
+          "Medication-induced hyperglycemia, including antipsychotics or corticosteroids, or alcohol or substance effects",
+          "Other forms of diabetes or glycemic disturbance independent of PTSD"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 7,
+      "rationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/major-depressive-disorder co-occurrence association. A meta-analysis of individuals with PTSD found frequent co-occurring current major depressive disorder, but population co-occurrence does not establish that PTSD caused or aggravated a particular veteran's depression, and onset direction is frequently shared or complex. Require independently documented PTSD and a separately established major depressive episode meeting full diagnostic criteria, with chronology and longitudinal course addressing whether depression preceded, accompanied, or followed the PTSD-related trauma and onset. Distinguish trauma-related re-experiencing, avoidance, and numbing from a distinct depressive episode, and address prior mood episodes, substance-induced mood disturbance, bereavement, adjustment presentations, and bipolar-spectrum history. Preserve alcohol or substance use, medication effects, chronic pain, sleep disturbance, medical illness, and other competing causes of depressive symptoms. Mental-health specialty review should separate the disorders and evaluate the individual relationship rather than assume comorbidity means causation.",
+      "evidenceGaps": [
+        "Independent documentation of PTSD and a separately established major depressive episode meeting full diagnostic criteria",
+        "Chronology and longitudinal course of trauma exposure, PTSD onset, depressive episodes, treatment, and functional impact",
+        "Mental-health evaluation distinguishing a distinct depressive episode from PTSD re-experiencing, avoidance, numbing, and sleep symptoms",
+        "Assessment of prior mood episodes, bipolar-spectrum history, substance use, bereavement, medication effects, chronic pain, and other competing causes",
+        "Psychiatry or psychology assessment of the individual relationship between PTSD and the depressive disorder"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Rytwinski NK, Scur MD, Feeny NC, Youngstrom EA. The co-occurrence of major depressive disorder among individuals with posttraumatic stress disorder: a meta-analysis. J Trauma Stress. 2013;26(3):299-309. PMID 23696449. doi:10.1002/jts.21814.",
+          "note": "Meta-analysis reporting frequent co-occurrence of current major depressive disorder in individuals with PTSD. It supports a bounded comorbidity and association proposition, not automatic individual causation or aggravation, and does not by itself resolve onset direction.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23696449/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-06",
+          "sourceLocator": "PMID 23696449; comorbidity meta-analysis scope"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/major-depressive-disorder co-occurrence association. A meta-analysis of individuals with PTSD found frequent co-occurring current major depressive disorder, but population co-occurrence does not establish that PTSD caused or aggravated a particular veteran's depression, and onset direction is frequently shared or complex. Require independently documented PTSD and a separately established major depressive episode meeting full diagnostic criteria, with chronology and longitudinal course addressing whether depression preceded, accompanied, or followed the PTSD-related trauma and onset. Distinguish trauma-related re-experiencing, avoidance, and numbing from a distinct depressive episode, and address prior mood episodes, substance-induced mood disturbance, bereavement, adjustment presentations, and bipolar-spectrum history. Preserve alcohol or substance use, medication effects, chronic pain, sleep disturbance, medical illness, and other competing causes of depressive symptoms. Mental-health specialty review should separate the disorders and evaluate the individual relationship rather than assume comorbidity means causation.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this evidence; the mapping is a bounded research association only and is not an individual medical nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Shared and PTSD-related neuroendocrine, psychophysiologic, and behavioral pathways are hypothesized to contribute to co-occurring depression, but no single cascade is established; the individual relationship must be determined from diagnostic, chronologic, and treatment records rather than assumed from co-occurrence.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/major-depressive-disorder co-occurrence association. A meta-analysis of individuals with PTSD found frequent co-occurring current major depressive disorder, but population co-occurrence does not establish that PTSD caused or aggravated a particular veteran's depression, and onset direction is frequently shared or complex. Require independently documented PTSD and a separately established major depressive episode meeting full diagnostic criteria, with chronology and longitudinal course addressing whether depression preceded, accompanied, or followed the PTSD-related trauma and onset. Distinguish trauma-related re-experiencing, avoidance, and numbing from a distinct depressive episode, and address prior mood episodes, substance-induced mood disturbance, bereavement, adjustment presentations, and bipolar-spectrum history. Preserve alcohol or substance use, medication effects, chronic pain, sleep disturbance, medical illness, and other competing causes of depressive symptoms. Mental-health specialty review should separate the disorders and evaluate the individual relationship rather than assume comorbidity means causation.",
+        "evidenceGaps": "Independent documentation of PTSD and a separately established major depressive episode meeting full diagnostic criteria; Chronology and longitudinal course of trauma exposure, PTSD onset, depressive episodes, treatment, and functional impact; Mental-health evaluation distinguishing a distinct depressive episode from PTSD re-experiencing, avoidance, numbing, and sleep symptoms; Assessment of prior mood episodes, bipolar-spectrum history, substance use, bereavement, medication effects, chronic pain, and other competing causes; Psychiatry or psychology assessment of the individual relationship between PTSD and the depressive disorder",
+        "alternativeEtiologiesToRuleOut": [
+          "Prior or independent depressive or bipolar-spectrum mood disorder preceding the PTSD-related trauma",
+          "Substance-induced mood disturbance, alcohol or substance use disorder, or medication effects",
+          "Bereavement, adjustment disorder, chronic pain, sleep deprivation, or medical illness as competing causes of depressive symptoms"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    },
+    {
+      "conditionId": "insomnia",
+      "rank": 8,
+      "rationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/insomnia association proposition. A large military cohort found that PTSD and insomnia are bidirectionally predictive, so the presence of insomnia with PTSD does not establish which condition began first or that PTSD caused or aggravated an individual's insomnia. Require an independently documented PTSD diagnosis and chronic insomnia meeting diagnostic criteria for duration, frequency, and daytime impact, with a chronology that distinguishes insomnia beginning with or after the PTSD-related trauma from preexisting or independent insomnia. Because insomnia can be a symptom of PTSD rather than a separate disorder, require clinical evaluation determining whether a distinct insomnia disorder exists beyond trauma-related nightmares, hyperarousal, and fragmented sleep. Preserve obstructive sleep apnea and other sleep-disordered breathing, restless legs syndrome, circadian disruption, shift work, alcohol and substance use, medications, pain, and other medical or psychiatric contributors. Sleep-medicine and mental-health review should address the individual relationship and the adequacy of any sleep evaluation rather than assume PTSD caused the insomnia.",
+      "evidenceGaps": [
+        "Independent documentation of PTSD and chronic insomnia meeting diagnostic criteria for duration, frequency, and daytime impact",
+        "Chronology distinguishing insomnia beginning with or after the PTSD-related trauma from preexisting or independent insomnia",
+        "Sleep-medicine evaluation of whether a distinct insomnia disorder exists beyond PTSD-related nightmares, hyperarousal, and fragmented sleep",
+        "Assessment of obstructive sleep apnea, restless legs syndrome, circadian disruption, shift work, alcohol and substance use, medications, pain, and other contributors",
+        "Resolution of the bounded-bidirectional proposition: cohort bidirectionality does not establish individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Chinoy ED, Carey FR, Kolaja CA, Jacobson IG, Cooper AD, Markwald RR. The bi-directional relationship between post-traumatic stress disorder and obstructive sleep apnea and/or insomnia in a large U.S. military cohort. Sleep Health. 2022;8(6):606-614. PMID 36163136. doi:10.1016/j.sleh.2022.07.005.",
+          "note": "Large military-cohort study reporting bidirectional predictive relationships between PTSD and insomnia and obstructive sleep apnea. It supports a bounded association proposition in which onset direction must be established case by case; it does not establish that PTSD caused or aggravated insomnia in an individual veteran.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36163136/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-06",
+          "sourceLocator": "PMID 36163136; bidirectional military-cohort scope"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/insomnia association proposition. A large military cohort found that PTSD and insomnia are bidirectionally predictive, so the presence of insomnia with PTSD does not establish which condition began first or that PTSD caused or aggravated an individual's insomnia. Require an independently documented PTSD diagnosis and chronic insomnia meeting diagnostic criteria for duration, frequency, and daytime impact, with a chronology that distinguishes insomnia beginning with or after the PTSD-related trauma from preexisting or independent insomnia. Because insomnia can be a symptom of PTSD rather than a separate disorder, require clinical evaluation determining whether a distinct insomnia disorder exists beyond trauma-related nightmares, hyperarousal, and fragmented sleep. Preserve obstructive sleep apnea and other sleep-disordered breathing, restless legs syndrome, circadian disruption, shift work, alcohol and substance use, medications, pain, and other medical or psychiatric contributors. Sleep-medicine and mental-health review should address the individual relationship and the adequacy of any sleep evaluation rather than assume PTSD caused the insomnia.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this evidence; the mapping is a bounded research association only and is not an individual medical nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Proposed PTSD-related hyperarousal, nightmares, and conditioned sleep disturbance may contribute to insomnia, but bidirectionality in cohort data and overlap with PTSD symptoms require case-specific sleep evaluation to establish whether a distinct insomnia disorder exists and how it relates to the PTSD.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/insomnia association proposition. A large military cohort found that PTSD and insomnia are bidirectionally predictive, so the presence of insomnia with PTSD does not establish which condition began first or that PTSD caused or aggravated an individual's insomnia. Require an independently documented PTSD diagnosis and chronic insomnia meeting diagnostic criteria for duration, frequency, and daytime impact, with a chronology that distinguishes insomnia beginning with or after the PTSD-related trauma from preexisting or independent insomnia. Because insomnia can be a symptom of PTSD rather than a separate disorder, require clinical evaluation determining whether a distinct insomnia disorder exists beyond trauma-related nightmares, hyperarousal, and fragmented sleep. Preserve obstructive sleep apnea and other sleep-disordered breathing, restless legs syndrome, circadian disruption, shift work, alcohol and substance use, medications, pain, and other medical or psychiatric contributors. Sleep-medicine and mental-health review should address the individual relationship and the adequacy of any sleep evaluation rather than assume PTSD caused the insomnia.",
+        "evidenceGaps": "Independent documentation of PTSD and chronic insomnia meeting diagnostic criteria for duration, frequency, and daytime impact; Chronology distinguishing insomnia beginning with or after the PTSD-related trauma from preexisting or independent insomnia; Sleep-medicine evaluation of whether a distinct insomnia disorder exists beyond PTSD-related nightmares, hyperarousal, and fragmented sleep; Assessment of obstructive sleep apnea, restless legs syndrome, circadian disruption, shift work, alcohol and substance use, medications, pain, and other contributors; Resolution of the bounded-bidirectional proposition: cohort bidirectionality does not establish individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Primary or preexisting insomnia independent of PTSD, or insomnia that is a symptom of PTSD rather than a separate disorder",
+          "Obstructive sleep apnea, restless legs syndrome, circadian disruption, or shift work",
+          "Alcohol, caffeine, stimulant or other substance use, medications, pain, or other medical and psychiatric contributors"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    },
+    {
+      "conditionId": "substance-use-disorder",
+      "rank": 9,
+      "rationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/substance-use-disorder co-occurrence association. A literature review documents frequent co-occurrence of PTSD and substance use disorders with overlapping neurobiologic and behavioral pathways, but co-occurrence does not establish that PTSD caused or aggravated an individual's substance use disorder, and onset sequences vary. The substance-use-disorder catalog identity is broad, so require documentation of a specific substance use disorder meeting diagnostic criteria with functional impairment and an identified substance class. Require a chronology establishing whether substance use began before, with, or after the PTSD-related trauma and PTSD onset, and address whether use reflects self-medication of PTSD symptoms, shared vulnerability, or an independent addictive process. Distinguish substance-induced psychiatric syndromes from primary PTSD. Preserve preexisting substance use disorder, family history of addiction, chronic pain, other psychiatric illness, social and occupational context, and treatment exposure. Addiction-psychiatry review should evaluate the individual relationship and must not treat any substance use in a veteran with PTSD as a secondary substance use disorder.",
+      "evidenceGaps": [
+        "Independent documentation of PTSD and a specific substance use disorder meeting diagnostic criteria with functional impairment and identified substance class",
+        "Chronology of trauma exposure, PTSD onset, substance-use onset and escalation, treatment, and relapse course",
+        "Addiction-psychiatry evaluation of self-medication, shared vulnerability, or independent addictive processes, distinguishing substance-induced syndromes from primary PTSD",
+        "Assessment of preexisting substance use, family history of addiction, chronic pain, other psychiatric illness, and social and occupational context",
+        "Resolution of the bounded-co-occurrence proposition: comorbidity does not establish individual causation or aggravation"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Jacobsen LK, Southwick SM, Kosten TR. Substance use disorders in patients with posttraumatic stress disorder: a review of the literature. Am J Psychiatry. 2001;158(8):1184-1190. PMID 11481147. doi:10.1176/appi.ajp.158.8.1184.",
+          "note": "Literature review documenting frequent co-occurrence of PTSD and substance use disorders and overlapping neurobiologic and behavioral pathways. It supports a bounded comorbidity and association proposition, not individual causation, and cannot substitute for case-specific substance-use, onset, and specialty evaluation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11481147/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-06",
+          "sourceLocator": "PMID 11481147; PTSD-SUD comorbidity review scope"
+        }
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/substance-use-disorder co-occurrence association. A literature review documents frequent co-occurrence of PTSD and substance use disorders with overlapping neurobiologic and behavioral pathways, but co-occurrence does not establish that PTSD caused or aggravated an individual's substance use disorder, and onset sequences vary. The substance-use-disorder catalog identity is broad, so require documentation of a specific substance use disorder meeting diagnostic criteria with functional impairment and an identified substance class. Require a chronology establishing whether substance use began before, with, or after the PTSD-related trauma and PTSD onset, and address whether use reflects self-medication of PTSD symptoms, shared vulnerability, or an independent addictive process. Distinguish substance-induced psychiatric syndromes from primary PTSD. Preserve preexisting substance use disorder, family history of addiction, chronic pain, other psychiatric illness, social and occupational context, and treatment exposure. Addiction-psychiatry review should evaluate the individual relationship and must not treat any substance use in a veteran with PTSD as a secondary substance use disorder.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by this evidence; the mapping is a bounded research association only and is not an individual medical nexus opinion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Self-medication, shared vulnerability, and neurobiologic overlap are hypothesized pathways between PTSD and substance use disorders, but no single mechanism is established and onset sequences vary; the individual relationship must be evaluated from diagnostic, chronologic, and addiction-specialty records.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Mapping Expansion Batch ME-36 adds this relationship only as a bounded PTSD/substance-use-disorder co-occurrence association. A literature review documents frequent co-occurrence of PTSD and substance use disorders with overlapping neurobiologic and behavioral pathways, but co-occurrence does not establish that PTSD caused or aggravated an individual's substance use disorder, and onset sequences vary. The substance-use-disorder catalog identity is broad, so require documentation of a specific substance use disorder meeting diagnostic criteria with functional impairment and an identified substance class. Require a chronology establishing whether substance use began before, with, or after the PTSD-related trauma and PTSD onset, and address whether use reflects self-medication of PTSD symptoms, shared vulnerability, or an independent addictive process. Distinguish substance-induced psychiatric syndromes from primary PTSD. Preserve preexisting substance use disorder, family history of addiction, chronic pain, other psychiatric illness, social and occupational context, and treatment exposure. Addiction-psychiatry review should evaluate the individual relationship and must not treat any substance use in a veteran with PTSD as a secondary substance use disorder.",
+        "evidenceGaps": "Independent documentation of PTSD and a specific substance use disorder meeting diagnostic criteria with functional impairment and identified substance class; Chronology of trauma exposure, PTSD onset, substance-use onset and escalation, treatment, and relapse course; Addiction-psychiatry evaluation of self-medication, shared vulnerability, or independent addictive processes, distinguishing substance-induced syndromes from primary PTSD; Assessment of preexisting substance use, family history of addiction, chronic pain, other psychiatric illness, and social and occupational context; Resolution of the bounded-co-occurrence proposition: comorbidity does not establish individual causation or aggravation",
+        "alternativeEtiologiesToRuleOut": [
+          "Preexisting or independent substance use disorder preceding the PTSD-related trauma",
+          "Substance use as a coping response to chronic pain, other psychiatric illness, or social context rather than to PTSD",
+          "Family history of addiction or genetic or behavioral vulnerability independent of PTSD"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
+    }
+  ]
 }

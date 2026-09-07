@@ -56,6 +56,12 @@ describe("recommend", () => {
       "sleep-apnea",
       "migraine-headaches",
       "erectile-dysfunction",
+      "ischemic-heart-disease",
+      "hypertension",
+      "diabetes-mellitus-type-2",
+      "depressive-disorder",
+      "insomnia",
+      "substance-use-disorder",
     ]);
     expect(recommendations[0].condition).toBe(
       "Sleep Apnea (Obstructive, Central, Mixed)",

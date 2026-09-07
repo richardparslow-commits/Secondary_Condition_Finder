@@ -1,0 +1,123 @@
+{
+  "phase": "Mapping Expansion ME-36 Qualified-Human Citation Verification",
+  "ledgerStatus": "APPROVED-AND-APPLIED-LOCALLY — 6/6 VERIFIED AT ENTRY",
+  "approvalDate": "2026-09-06",
+  "approvalRecord": "Qualified-human approval captured in-session on 2026-09-06: approve-as-implemented citation verification for all six ME-36 sources, entered verified: true at implementation because the six PTSD relationships are published (draft: false) and published mappings may carry only verified sources.",
+  "rows": [
+    {
+      "row": 1,
+      "primaryId": "ptsd",
+      "targetId": "ischemic-heart-disease",
+      "relationshipKey": "ptsd->ischemic-heart-disease",
+      "rank": 4,
+      "pmid": "24176435",
+      "doi": "10.1016/j.ahj.2013.07.031",
+      "disposition": "approve-as-implemented"
+    },
+    {
+      "row": 2,
+      "primaryId": "ptsd",
+      "targetId": "hypertension",
+      "relationshipKey": "ptsd->hypertension",
+      "rank": 5,
+      "pmid": "27490852",
+      "doi": "10.1097/PSY.0000000000000376",
+      "disposition": "approve-as-implemented"
+    },
+    {
+      "row": 3,
+      "primaryId": "ptsd",
+      "targetId": "diabetes-mellitus-type-2",
+      "relationshipKey": "ptsd->diabetes-mellitus-type-2",
+      "rank": 6,
+      "pmid": "26867081",
+      "doi": "10.1097/PSY.0000000000000297",
+      "disposition": "approve-as-implemented"
+    },
+    {
+      "row": 4,
+      "primaryId": "ptsd",
+      "targetId": "depressive-disorder",
+      "relationshipKey": "ptsd->depressive-disorder",
+      "rank": 7,
+      "pmid": "23696449",
+      "doi": "10.1002/jts.21814",
+      "disposition": "approve-as-implemented"
+    },
+    {
+      "row": 5,
+      "primaryId": "ptsd",
+      "targetId": "insomnia",
+      "relationshipKey": "ptsd->insomnia",
+      "rank": 8,
+      "pmid": "36163136",
+      "doi": "10.1016/j.sleh.2022.07.005",
+      "disposition": "approve-as-implemented"
+    },
+    {
+      "row": 6,
+      "primaryId": "ptsd",
+      "targetId": "substance-use-disorder",
+      "relationshipKey": "ptsd->substance-use-disorder",
+      "rank": 9,
+      "pmid": "11481147",
+      "doi": "10.1176/appi.ajp.158.8.1184",
+      "disposition": "approve-as-implemented"
+    }
+  ],
+  "authorization": {
+    "citationsApprovedAtEntry": 6,
+    "kbVerifiedFalseToTrue": 0,
+    "masterPendingToActive": 0,
+    "qualifiedHumanDecision": "approve-as-implemented",
+    "relationshipChanges": 0,
+    "rankChanges": 0,
+    "publicationGuardChanges": 0,
+    "semanticChanges": 0,
+    "publicationStatusChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "githubWrite": false,
+    "vercelAction": false
+  },
+  "expectedAfter": {
+    "knowledgeBaseFiles": 813,
+    "published": 139,
+    "draft": 674,
+    "relationships": 353,
+    "references": 361,
+    "verified": 361,
+    "retiredVerified": 6,
+    "verifiedProvenance": 367,
+    "unverified": 0,
+    "reviewFindings": 0,
+    "hardFindings": 0,
+    "clinicalEvidenceReferences": 356,
+    "clinicalEvidenceReferencesWithUrls": 356,
+    "retiredClinicalEvidenceReferencesWithUrls": 4,
+    "clinicalEvidenceProvenanceWithUrls": 360,
+    "activeMasterSources": 335,
+    "pendingMasterSources": 0,
+    "totalMasterSources": 344,
+    "activeClinicalMasterSources": 334,
+    "pendingClinicalMasterSources": 0,
+    "activeLegalMasterSources": 1,
+    "explicitPublicationGuards": 279,
+    "legacyRationaleBoundaries": 74,
+    "registryCurrentState": "ME-36-CITATION-VERIFIED"
+  },
+  "implementationResult": {
+    "rowsApproved": 6,
+    "rowsPromotedFromPending": 0,
+    "kbVerifiedTrueAtEntry": 6,
+    "masterActiveAtEntry": 6,
+    "relationshipEntityChanges": 0,
+    "rankChanges": 0,
+    "publicationGuardChanges": 0,
+    "publicationStatusChanges": 0,
+    "semanticChanges": 0,
+    "taxonomyChanges": 0,
+    "pathwayIntelligenceChanges": 0,
+    "remoteWritesPerformed": false
+  }
+}
