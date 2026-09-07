@@ -17,10 +17,11 @@ export const sourceReferenceSchema = z.object({
   /** Plain-language explanation of what the citation covers. */
   note: z.string().trim().min(1),
   /**
-   * True only after a qualified human has confirmed the citation is accurate
-   * and applies to this suggestion. Never set to true by an automated agent.
+   * Locked to false: citations ship unverified until a qualified human has
+   * confirmed the citation is accurate and applies to this suggestion. Never
+   * set to true by an automated agent.
    */
-  verified: z.boolean(),
+  verified: z.literal(false),
 });
 
 export const suggestionSchema = z.object({

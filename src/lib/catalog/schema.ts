@@ -5,10 +5,10 @@ export const ratingReferenceSchema = z.object({
   citation: z.string().min(1),
   note: z.string().min(1),
   /**
-   * True only after a qualified human has confirmed the citation. Never set by
-   * an automated agent.
+   * Locked to false: rating citations ship unverified until a qualified human
+   * has confirmed them. Never set to true by an automated agent.
    */
-  verified: z.boolean(),
+  verified: z.literal(false),
 });
 
 /**
