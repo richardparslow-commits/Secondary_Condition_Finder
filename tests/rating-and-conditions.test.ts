@@ -31,7 +31,14 @@ describe("Phase 1/2 Ratings & Condition Catalog Expansion Suite", () => {
     const conditionsDir = path.join(process.cwd(), "data/conditions");
     const catalogFiles = fs.readdirSync(conditionsDir).filter(f => f.endsWith(".json"));
 
-    const allConditions: any[] = [];
+    interface RawCondition {
+      id: string;
+      primaryDiagnosticCodes?: unknown[];
+      cfrCitations?: unknown[];
+      verified?: boolean;
+    }
+
+    const allConditions: RawCondition[] = [];
     for (const file of catalogFiles) {
       const content = JSON.parse(fs.readFileSync(path.join(conditionsDir, file), "utf8"));
       if (content.conditions && Array.isArray(content.conditions)) {
@@ -42,6 +49,7 @@ describe("Phase 1/2 Ratings & Condition Catalog Expansion Suite", () => {
     for (const id of expectedConditionIds) {
       const found = allConditions.find(c => c.id === id);
       expect(found, `Condition missing from catalog: ${id}`).toBeDefined();
+      if (!found) continue;
       expect(found.primaryDiagnosticCodes).toBeInstanceOf(Array);
       expect(found.cfrCitations).toBeInstanceOf(Array);
       expect(found.verified).toBe(false);

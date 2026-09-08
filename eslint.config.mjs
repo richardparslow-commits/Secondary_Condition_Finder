@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Nested self-contained clone (see .gitignore); it has its own eslint
+    // surface and is not part of this checkout.
+    "Secondary_Condition_Finder/**",
   ]),
 ]);
 

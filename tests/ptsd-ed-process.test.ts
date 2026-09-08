@@ -28,7 +28,6 @@
 import { describe, expect, it } from "vitest";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
-import { indexById } from "@/lib/catalog/lookup";
 import { evaluateEvidence } from "@/lib/engine/evaluation";
 import { processEvidenceFiles } from "@/lib/engine/ingestion";
 import { recommend } from "@/lib/engine/recommend";
@@ -47,7 +46,6 @@ import {
 
 const catalog = loadConditionCatalog();
 const kb = loadKnowledgeBase();
-const byId = indexById(catalog);
 
 const PTSD_ID = "ptsd";
 const ED_ID = "erectile-dysfunction";
