@@ -20,7 +20,7 @@ all required checks are marked complete and linked to objective evidence.
 
 ## P1 gate — Core workflow behavior alignment
 
-- [ ] Diagnosed-condition discoverability enhancements are implemented and tested.
+- [x] Diagnosed-condition discoverability enhancements are implemented and tested. (Evidence: `src/lib/catalog/exposure-tags.ts` + `tests/exposure-discovery.test.ts`, and the "toxic exposure related" badge on `/secondary/diagnosed` covered by `tests/secondary-wizard-routes.test.ts`.)
 - [ ] Suggestions are constrained to diagnosed-not-service-connected target pool.
 - [ ] Suggestion source-count policy is codified in schema, UI, and tests.
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { DisclaimerBanner, DisclaimerFooter } from "@/components/Disclaimer";
+import { isExposureRelated } from "@/lib/catalog/exposure-tags";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { mappedConditionIds } from "@/lib/kb/lookup";
@@ -61,15 +62,22 @@ export default async function DiagnosedConditionsPage({
                     <span className="block font-medium text-slate-900">{condition.name}</span>
                     <span className="block text-xs text-slate-500">{condition.bodySystem}</span>
                   </span>
-                  {mapped.has(condition.id) ? (
-                    <span className="ml-auto shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700">
-                      database mapped
-                    </span>
-                  ) : (
-                    <span className="ml-auto shrink-0 rounded-full bg-amber-50 px-2 py-0.5 text-xs text-amber-800">
-                      mapping in progress
-                    </span>
-                  )}
+                  <span className="ml-auto flex shrink-0 items-center gap-1.5">
+                    {isExposureRelated(condition.id) ? (
+                      <span className="rounded-full bg-teal-50 px-2 py-0.5 text-xs text-teal-800">
+                        toxic exposure related
+                      </span>
+                    ) : null}
+                    {mapped.has(condition.id) ? (
+                      <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700">
+                        database mapped
+                      </span>
+                    ) : (
+                      <span className="rounded-full bg-amber-50 px-2 py-0.5 text-xs text-amber-800">
+                        mapping in progress
+                      </span>
+                    )}
+                  </span>
                 </label>
               </li>
             ))}
