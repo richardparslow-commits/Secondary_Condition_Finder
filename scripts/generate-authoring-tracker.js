@@ -4,28 +4,55 @@ const path = require("path");
 
 const kbDir = "data/knowledge-base";
 const catalogDir = "data/conditions";
-const files = fs.readdirSync(kbDir).filter(f => f.endsWith(".json"));
+
+// Load every catalog condition, remembering which body-system file it came from.
+const catalogByFile = fs
+  .readdirSync(catalogDir)
+  .filter((f) => f.endsWith(".json"))
+  .map((file) => {
+    const slug = file.replace(".json", "");
+    const data = JSON.parse(fs.readFileSync(path.join(catalogDir, file), "utf8"));
+    return { slug, conditions: data.conditions ?? [] };
+  });
+
+// id -> body-system slug for every catalog condition.
+const conditionSystem = new Map();
+for (const { slug, conditions } of catalogByFile) {
+  for (const condition of conditions) {
+    conditionSystem.set(condition.id, slug);
+  }
+}
+
+// id -> true when the mapping file is still draft, false when published.
+const mappingStatus = new Map();
+for (const file of fs.readdirSync(kbDir).filter((f) => f.endsWith(".json"))) {
+  const data = JSON.parse(fs.readFileSync(path.join(kbDir, file), "utf8"));
+  mappingStatus.set(data.id, data.draft === true);
+}
+
+// Backlog: catalog conditions without a published mapping.
+//   - No mapping file at all          -> UNMAPPED
+//   - Mapping file still draft: true  -> DRAFT
+const backlog = [];
+for (const [id, system] of conditionSystem) {
+  if (!mappingStatus.has(id)) {
+    backlog.push({ id, system, status: "UNMAPPED" });
+  } else if (mappingStatus.get(id) === true) {
+    backlog.push({ id, system, status: "DRAFT" });
+  }
+}
+
+backlog.sort((a, b) => a.system.localeCompare(b.system) || a.id.localeCompare(b.id));
 
 let csvContent = "Condition ID,Body System,Status,Assigned To\n";
-let draftCount = 0;
-
-files.forEach(file => {
-  const data = JSON.parse(fs.readFileSync(path.join(kbDir, file), "utf8"));
-  if (data.draft === true) {
-    draftCount++;
-    // Look up body system
-    let system = "Unknown";
-    const catFiles = fs.readdirSync(catalogDir).filter(f => f.endsWith(".json"));
-    for (const catFile of catFiles) {
-      const catData = JSON.parse(fs.readFileSync(path.join(catalogDir, catFile), "utf8"));
-      if (catData.conditions && catData.conditions.some(c => c.id === data.id)) {
-        system = catData.systemName || catFile.replace(".json", "");
-        break;
-      }
-    }
-    csvContent += `${data.id},${system},DRAFT,\n`;
-  }
-});
+for (const entry of backlog) {
+  csvContent += `${entry.id},${entry.system},${entry.status},\n`;
+}
 
 fs.writeFileSync("draft-backlog-tracker.csv", csvContent);
-console.log(`✅ Generated draft-backlog-tracker.csv with ${draftCount} pending conditions!`);
+
+const unmapped = backlog.filter((entry) => entry.status === "UNMAPPED").length;
+const drafts = backlog.filter((entry) => entry.status === "DRAFT").length;
+console.log(
+  `✅ Generated draft-backlog-tracker.csv with ${backlog.length} pending conditions (${unmapped} unmapped, ${drafts} draft)!`,
+);

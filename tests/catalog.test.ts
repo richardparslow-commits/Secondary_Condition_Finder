@@ -88,6 +88,9 @@ describe("findCondition", () => {
     expect(findCondition(catalog, "Tinnitus")?.id).toBe("tinnitus");
     expect(findCondition(catalog, "ptsd")?.id).toBe("ptsd");
     expect(findCondition(catalog, "  PTSD  ")?.id).toBe("ptsd");
+    expect(findCondition(catalog, "Post Traumatic Stress Disorder")?.id).toBe(
+      "ptsd",
+    );
     expect(findCondition(catalog, "diabetes-mellitus-type-2")?.id).toBe(
       "diabetes-mellitus-type-2",
     );
