@@ -71,6 +71,15 @@ export default function PrivacyPage() {
           Medication/treatment entries are used only to surface literal normalized text overlap with authored recommendation rationale or evidence-gap text. A match does not change recommendation ranking, infer a drug class or mechanism, or establish individual causation, aggravation, or medical nexus.
         </p>
 
+        <h2 className="text-xl font-semibold mt-6">5a. Accredited-representative directory search</h2>
+        <p>
+          The accredited-representative finder is a public-directory ZIP lookup. The ZIP you enter is used only for that lookup and is not persisted to a workflow cookie or account. Results are public directory data, not Veteran PII, and are cached for a short window for performance. Verify accreditation on VA&apos;s OGC directory before sharing personal information.
+        </p>
+        <h2 className="text-xl font-semibold mt-6">5b. DD-214 upload (browser-local)</h2>
+        <p>
+          DD-214 upload is optional and browser-local only. PDF or image bytes are not sent to the application server. Text is extracted in this tab (including OCR for scanned pages where needed). SSN is masked to XXX-XX-1234 before any preview; the full SSN is never displayed, persisted, or logged. Extracted dates and locations must be verified by you before the app saves them as service history. Clear the draft at any time to remove in-memory bytes and preview text.
+        </p>
+
         <h2 className="text-xl font-semibold mt-6">6. VA API and claim-submission boundary</h2>
         <p>
           This application does not connect to a Veteran&apos;s VA account, does not submit a disability claim, and does not upload the user&apos;s workflow or local evidence to VA. The environment-aware VA public-reference adapter is disabled by default; credentialed sandbox connectivity and future production connectivity remain separate external gates. Public VA form/reference features fall back to clearly labeled local reference data when configured VA access is disabled or unavailable.

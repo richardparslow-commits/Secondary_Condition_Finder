@@ -14,7 +14,8 @@ export type AuditAction =
   | "presumptive-service-history-saved"
   | "presumptive-service-history-cleared"
   | "regulatory-preflight-triggered"
-  | "regulatory-preflight-unauthorized";
+  | "regulatory-preflight-unauthorized"
+  | "accredited-rep-search";
 
 export interface AuditFields {
   action: AuditAction;

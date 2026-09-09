@@ -34,7 +34,7 @@ function isTestEnv(): boolean {
 function redactFields(fields: LogFields): LogFields {
   // Shallow copy and strip any accidental sensitive keys if present.
   const sanitized: LogFields = { ...fields };
-  for (const key of ["payload", "rawText", "evidence", "cookie", "secret", "apiKey"]) {
+  for (const key of ["payload", "rawText", "evidence", "cookie", "secret", "apiKey", "ssn", "fullSsn", "zip"]) {
     if (key in sanitized) delete (sanitized as Record<string, unknown>)[key];
   }
   return sanitized;

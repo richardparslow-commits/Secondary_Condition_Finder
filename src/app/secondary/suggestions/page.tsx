@@ -29,12 +29,14 @@ import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workfl
 import { buildSymptomDiscussionPrompts } from "@/lib/secondary-workflow/symptom-bridge";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
+import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import { buildConditionVaReferenceMap } from "@/lib/va/condition-reference";
+import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
 import { loadDisabilityReference } from "@/lib/va/disability-reference";
 
 interface SuggestionsPageProps {
   workflowState?: StoredSecondaryWorkflowState;
-  searchParams?: Promise<{ regSnapshot?: string | string[] }>;
+  searchParams?: Promise<{ regSnapshot?: string | string[]; zip?: string; radiusMiles?: string; type?: string; error?: string }>;
 }
 export const dynamic = "force-dynamic";
 
@@ -101,6 +103,17 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
     vaReference.live ? vaReference.items : [],
   );
   const evidenceHref = `/secondary/evidence?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
+  const qp = await searchParams;
+  const zipParam = typeof qp?.zip === "string" ? qp.zip : undefined;
+  const radiusParam = typeof qp?.radiusMiles === "string" ? qp.radiusMiles : undefined;
+  const typeParam = typeof qp?.type === "string" ? qp.type : undefined;
+  const accreditedRepView = zipParam && /^\d{5}$/.test(zipParam)
+    ? await loadAccreditedRepresentatives({
+        zip: zipParam,
+        radiusMiles: radiusParam ? Number(radiusParam) : 50,
+        type: (typeParam as "VSO" | "agent" | "attorney" | undefined),
+      })
+    : null;
 
   const timelineConditions: TimelineConditionInput[] = state.diagnosedConditionIds
     .map((id) => byId.get(id))
@@ -200,6 +213,7 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
       <CombinationInsightsPanel results={nonServiceConnectedResults} />
       <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
       <ActionPlan results={nonServiceConnectedResults} />
+      <AccreditedRepresentativeFinder initialView={accreditedRepView} returnTo="/secondary/suggestions" />
 
       <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href={evidenceHref} className="ui-button">Review Evidence for These Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">Open Evidence Checklist</span></Link></div>
       <DisclaimerFooter />
