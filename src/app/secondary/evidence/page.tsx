@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDownload";
 import { EvidenceGapCoverage } from "@/components/evidence/EvidenceGapCoverage";
 import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
+import { MedicalRecordChecklist } from "@/components/secondary/MedicalRecordChecklist";
 import { PrintReportButton } from "@/components/secondary/PrintReportButton";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { EvidenceGapReview } from "@/components/evidence/EvidenceGapReview";
@@ -24,6 +25,7 @@ import {
   relevantChangesForSnapshot,
 } from "@/lib/regulatory/preflight";
 import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
+import { buildMedicalRecordChecklist } from "@/lib/secondary-workflow/medical-record-checklist";
 import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workflow/suggestions";
 import { buildSymptomDiscussionPrompts } from "@/lib/secondary-workflow/symptom-bridge";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
@@ -157,6 +159,7 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
         </aside>
       </div>
 
+      <MedicalRecordChecklist groups={buildMedicalRecordChecklist(nonServiceConnectedResults)} />
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
 
