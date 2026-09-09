@@ -8,6 +8,8 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { buildEvidenceConditionTerms } from "@/lib/evidence/condition-terms";
 import { readSecondaryWorkflowSession, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
 import { MAX_TIMELINE_YEAR, MIN_TIMELINE_YEAR, timelineField } from "@/lib/secondary-workflow/state";
+import { MedicationContextUploadExplainer } from "@/components/secondary/MedicationContextExplainer";
+import { VoiceInputHotkeyBridge, VoiceInputTextarea } from "@/components/secondary/VoiceInputTextarea";
 import { listSymptomBridgeEntries } from "@/lib/secondary-workflow/symptom-bridge";
 import { saveDocumentsSelection } from "@/lib/actions/secondary";
 
@@ -46,6 +48,7 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
 
   return (
     <main>
+      <VoiceInputHotkeyBridge />
       <header className="page-hero text-center"><p className="ui-kicker">Step 4 of 6</p><h1>Supporting Documents</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Optionally review evidence and add limited medication or treatment context that may help identify authored pathways worth discussing with a qualified professional.</p></header>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><strong className="text-blue-700">4 Documents</strong><span>5 Connections</span><span>6 Evidence</span></div>
 
@@ -69,18 +72,19 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
                 <div>
                   <label htmlFor="medications" className="block font-medium">Medications</label>
                   <p id="medications-help" className="mt-1 text-sm text-slate-600">Examples: SSRI, NSAID, prescribed corticosteroid. A reported term is highlighted only when it literally overlaps authored pathway or evidence-gap text.</p>
-                  <textarea id="medications" name="medications" aria-describedby="medications-help" rows={4} maxLength={3220} defaultValue={medications.join("\n")} className="mt-2 w-full rounded-lg border border-slate-300 p-3" />
+                  <VoiceInputTextarea id="medications" name="medications" ariaDescribedBy="medications-help" rows={4} maxLength={3220} defaultValue={medications.join("\n")} placeholder="One per line — or use the mic to dictate" className="mt-2 w-full rounded-lg border border-slate-300 p-3" />
                 </div>
                 <div>
                   <label htmlFor="treatments" className="block font-medium">Treatments, procedures, or devices</label>
                   <p id="treatments-help" className="mt-1 text-sm text-slate-600">Examples: physical therapy, CPAP, knee brace, surgery. This context does not change recommendation ranking or establish causation.</p>
-                  <textarea id="treatments" name="treatments" aria-describedby="treatments-help" rows={4} maxLength={3220} defaultValue={treatments.join("\n")} className="mt-2 w-full rounded-lg border border-slate-300 p-3" />
+                  <VoiceInputTextarea id="treatments" name="treatments" ariaDescribedBy="treatments-help" rows={4} maxLength={3220} defaultValue={treatments.join("\n")} placeholder="One per line — or use the mic to dictate" className="mt-2 w-full rounded-lg border border-slate-300 p-3" />
                 </div>
                 <div>
                   <label htmlFor="history" className="block font-medium">Relevant history or risk factors</label>
                   <p id="history-help" className="mt-1 text-sm text-slate-600">Optional, bounded entries such as alcohol exposure, smoking, kidney disease, prior trauma, or family history. Exact overlap may create an alternative-etiology warning for clinician review; it never changes ranking or decides causation.</p>
-                  <textarea id="history" name="history" aria-describedby="history-help" rows={4} maxLength={3220} defaultValue={history.join("\n")} className="mt-2 w-full rounded-lg border border-slate-300 p-3" />
+                  <VoiceInputTextarea id="history" name="history" ariaDescribedBy="history-help" rows={4} maxLength={3220} defaultValue={history.join("\n")} placeholder="One per line — or use the mic to dictate" className="mt-2 w-full rounded-lg border border-slate-300 p-3" />
                 </div>
+              <MedicationContextUploadExplainer />
               </div>
               <div className="mt-5 rounded-lg border border-violet-200 bg-violet-50 p-4">
                 <h3 className="font-semibold text-violet-950">Optional symptom research prompts</h3>
@@ -94,7 +98,7 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
                   ))}
                 </div>
               </div>
-              <div className="ui-callout mt-4 text-sm"><strong>Workflow privacy:</strong> These optional entries are stored only in the same encrypted, HttpOnly, short-lived workflow cookie used for the current secondary review. They are not placed in URLs, recommendation logs, telemetry, or user accounts.</div>
+              <div className="ui-callout mt-4 text-sm"><strong>Workflow privacy:</strong> These optional entries are stored only in the same encrypted, HttpOnly, short-lived workflow cookie used for the current secondary review. They are not placed in URLs, recommendation logs, telemetry, or user accounts. Dictated text stays in this field until you submit — it is not sent until form submission.</div>
             </fieldset>
 
             <fieldset className="rounded-xl border border-slate-200 p-4 shadow-none">

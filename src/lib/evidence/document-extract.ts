@@ -118,6 +118,11 @@ export function assertSafeDocxArchive(
 
   let offset = centralDirectoryOffset;
   let declaredUncompressedBytes = 0;
+  // #10: hard iteration ceiling guards against adversarial archive preflight
+  const maxIterations = Math.min(totalEntries, limits.docxEntries, 2000);
+  if (totalEntries > maxIterations) {
+    throw new Error(`${sourceName} contains too many archive entries for local analysis (${totalEntries} > ${maxIterations}).`);
+  }
   for (let index = 0; index < totalEntries; index += 1) {
     if (offset + 46 > view.byteLength || view.getUint32(offset, true) !== ZIP_CENTRAL_DIRECTORY_SIGNATURE) {
       throw new Error(`${sourceName} has a malformed DOCX central directory.`);
@@ -198,16 +203,23 @@ export async function extractPdfEvidence(
 
     for (let pageNumber = 1; pageNumber <= document.numPages; pageNumber += 1) {
       const page = await document.getPage(pageNumber);
-      const content = await page.getTextContent();
-      const text = joinPdfTextItems(content.items as unknown[]);
-      if (text) {
-        extractedChars += text.length;
-        assertExtractedTextSize(extractedChars, sourceName, limits);
-        segments.push({ text, locatorPrefix: `page ${pageNumber}` });
-      } else {
-        warnings.push(`Page ${pageNumber} contained no extractable text. It may be image-only or require OCR.`);
+      try {
+        const content = await page.getTextContent();
+        const text = joinPdfTextItems(content.items as unknown[]);
+        if (text) {
+          extractedChars += text.length;
+          assertExtractedTextSize(extractedChars, sourceName, limits);
+          segments.push({ text, locatorPrefix: `page ${pageNumber}` });
+        } else {
+          warnings.push(`Page ${pageNumber} contained no extractable text. It may be image-only or require OCR.`);
+        }
+      } finally {
+        try {
+          page.cleanup();
+        } catch {
+          // cleanup is best-effort; ignore errors to avoid masking extraction failures
+        }
       }
-      page.cleanup();
     }
   } finally {
     await loadingTask.destroy();

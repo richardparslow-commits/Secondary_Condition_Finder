@@ -4,6 +4,12 @@ import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { NonServiceConnectedConditionResult } from "@/components/NonServiceConnectedConditionResult";
 import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatus";
+import { PrintReportButton } from "@/components/secondary/PrintReportButton";
+import { SecondarySuggestionsTabs } from "@/components/secondary/SecondarySuggestionsTabs";
+import type {
+  TimelineConditionInput,
+  TimelineConnectionInput,
+} from "@/components/secondary/ConditionTimelineVisualization";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
@@ -92,6 +98,40 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
   );
   const evidenceHref = `/secondary/evidence?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
 
+  const timelineConditions: TimelineConditionInput[] = state.diagnosedConditionIds
+    .map((id) => byId.get(id))
+    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
+    .map((condition) => {
+      const entry = state.conditionTimeline?.[condition.id];
+      return {
+        id: condition.id,
+        name: condition.name,
+        bodySystem: condition.bodySystem,
+        isServiceConnected: state.serviceConnectedConditionIds.includes(condition.id),
+        onsetYear: entry?.onsetYear,
+        diagnosisYear: entry?.diagnosisYear,
+      };
+    });
+  const timelineConnections: TimelineConnectionInput[] = nonServiceConnectedResults.flatMap((result) => {
+    if (!result.recommendation) return [];
+    const chronologyIds = new Set(
+      (result.recommendation.chronologyWarnings ?? []).map((warning) => warning.primaryId),
+    );
+    return result.recommendation.contributingPrimaries.map((primary) => ({
+      primaryId: primary.id,
+      primaryName: primary.name,
+      secondaryId: result.conditionId,
+      secondaryName: result.conditionName,
+      nexusClassification: primary.nexusClaim?.nexusClassification,
+      pathways: primary.pathwayIntelligence?.pathways,
+      etiologicalConsensus: result.recommendation?.etiologicalConsensus,
+      hasChronologyWarning: chronologyIds.has(primary.id),
+    }));
+  });
+  const datedTimelineCount = timelineConditions.filter(
+    (condition) => condition.onsetYear !== undefined || condition.diagnosisYear !== undefined,
+  ).length;
+
   return (
     <main>
       <header className="page-hero text-center">
@@ -101,7 +141,7 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
           This step starts with each diagnosis you marked as not service connected. Under each one, it lists only your already service-connected conditions that have an authored published relationship worth evaluating as a possible cause, contributor, aggravating condition, treatment pathway, or other medical connection. It does not generate new diagnoses or list conditions you did not select.
         </p>
       </header>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><strong className="text-blue-700">5 Connections</strong><span>6 Evidence</span></div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><strong className="text-blue-700">5 Connections</strong><span>6 Evidence</span><span className="ml-auto no-print"><PrintReportButton /></span></div>
       <RegulatoryPreflightStatus snapshot={regulatoryReview.snapshot} changes={regulatoryReview.relevantChanges} />
 
       <div className="ui-grid">
@@ -119,25 +159,31 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
         <section className="ui-card">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↔</span><div><h2 className="text-xl font-bold">Possible Connections to Review</h2><p className="text-sm text-slate-600">Organized by the diagnosed condition that is not yet service connected.</p></div></div>
           <div className="ui-callout mb-5 text-sm"><strong>Direction matters:</strong> The question on this page is whether an already service-connected condition may have caused, contributed to, aggravated, or otherwise medically related to a diagnosis you already have but that is not service connected. The page does not search for additional diagnoses that might develop in the future.</div>
-          <div className="mb-5"><SymptomDiscussionReview prompts={symptomDiscussionPrompts} /></div>
-          {nonServiceConnectedResults.length === 0 ? (
-            <p className="rounded-xl border border-slate-200 p-5 text-sm">There are no diagnosed non-service-connected conditions to evaluate in this review.</p>
-          ) : (
-            <div className="space-y-5">
-              {nonServiceConnectedResults.map((result) => (
-                <NonServiceConnectedConditionResult
-                  key={result.conditionId}
-                  result={result}
-                  vaReference={{
-                    live: vaReference.live,
-                    sourceLabel: vaReference.sourceLabel,
-                    environment: vaReference.environment,
-                    match: vaReferenceMap.get(result.conditionId) ?? null,
-                  }}
-                />
-              ))}
-            </div>
-          )}
+          <SecondarySuggestionsTabs
+            conditions={timelineConditions}
+            connections={timelineConnections}
+            datedCount={datedTimelineCount}
+          >
+            <div className="mb-5"><SymptomDiscussionReview prompts={symptomDiscussionPrompts} /></div>
+            {nonServiceConnectedResults.length === 0 ? (
+              <p className="rounded-xl border border-slate-200 p-5 text-sm">There are no diagnosed non-service-connected conditions to evaluate in this review.</p>
+            ) : (
+              <div className="space-y-5">
+                {nonServiceConnectedResults.map((result) => (
+                  <NonServiceConnectedConditionResult
+                    key={result.conditionId}
+                    result={result}
+                    vaReference={{
+                      live: vaReference.live,
+                      sourceLabel: vaReference.sourceLabel,
+                      environment: vaReference.environment,
+                      match: vaReferenceMap.get(result.conditionId) ?? null,
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+          </SecondarySuggestionsTabs>
         </section>
 
         <aside className="ui-stack">

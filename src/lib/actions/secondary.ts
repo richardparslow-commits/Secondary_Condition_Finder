@@ -18,6 +18,7 @@ import {
   workflowSessionToQueryParams,
   writeSecondaryWorkflowSession,
 } from "@/lib/secondary-workflow/session";
+import { auditLog } from "@/lib/observability/audit";
 import {
   secondaryValidationPath,
   type SecondaryValidationCode,
@@ -82,10 +83,18 @@ export async function saveDiagnosedSelection(formData: FormData): Promise<void> 
   const catalog = loadConditionCatalog();
   const parsed = parseDiagnosedSelection(appendFormData({}, formData), catalog);
 
-  await writeSecondaryWorkflowSession({
-    diagnosedConditionIds: parsed.diagnosedConditionIds,
-  });
+  try {
+    await writeSecondaryWorkflowSession({
+      diagnosedConditionIds: parsed.diagnosedConditionIds,
+    });
+  } catch (error) {
+    // #5: do not silently lose data — surface as validation error instead of advancing
+    console.error("[secondary-workflow] Failed to persist diagnosed selection:", error instanceof Error ? error.message : String(error));
+    auditLog("workflow-diagnosed-selected", { status: "failure", route: "/secondary/diagnosed" });
+    redirectValidation("/secondary/diagnosed", "select-diagnosed");
+  }
 
+  auditLog("workflow-diagnosed-selected", { status: "success", route: "/secondary/diagnosed", count: parsed.diagnosedConditionIds.length });
   redirect("/secondary/service-connected");
 }
 
@@ -112,18 +121,26 @@ export async function saveServiceConnectedSelection(formData: FormData): Promise
         serviceConnectedAnswerDraft[id] = answer;
       }
     });
-    await writeSecondaryWorkflowSession({
-      diagnosedConditionIds,
-      serviceConnectedAnswerDraft,
-    });
+    try {
+      await writeSecondaryWorkflowSession({
+        diagnosedConditionIds,
+        serviceConnectedAnswerDraft,
+      });
+    } catch (error) {
+      console.error("[secondary-workflow] Failed to persist service-connected draft:", error instanceof Error ? error.message : String(error));
+    }
     redirectValidation("/secondary/service-connected", "answer-service-connected");
   }
   if (!answers.some((answer) => answer === "yes")) {
-    await writeSecondaryWorkflowSession({
-      diagnosedConditionIds,
-      serviceConnectedConditionIds: [],
-      ratingsByConditionId: {},
-    });
+    try {
+      await writeSecondaryWorkflowSession({
+        diagnosedConditionIds,
+        serviceConnectedConditionIds: [],
+        ratingsByConditionId: {},
+      });
+    } catch (error) {
+      console.error("[secondary-workflow] Failed to persist no-service-connected state:", error instanceof Error ? error.message : String(error));
+    }
     redirectValidation("/secondary/service-connected", "no-service-connected");
   }
 
@@ -137,12 +154,19 @@ export async function saveServiceConnectedSelection(formData: FormData): Promise
     catalog,
   );
 
-  await writeSecondaryWorkflowSession({
-    diagnosedConditionIds: parsed.diagnosedConditionIds,
-    serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
-    ratingsByConditionId: {},
-  });
+  try {
+    await writeSecondaryWorkflowSession({
+      diagnosedConditionIds: parsed.diagnosedConditionIds,
+      serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
+      ratingsByConditionId: {},
+    });
+  } catch (error) {
+    console.error("[secondary-workflow] Failed to persist service-connected selection:", error instanceof Error ? error.message : String(error));
+    auditLog("workflow-service-connected-selected", { status: "failure", route: "/secondary/service-connected" });
+    redirectValidation("/secondary/service-connected", "answer-service-connected");
+  }
 
+  auditLog("workflow-service-connected-selected", { status: "success", route: "/secondary/service-connected", count: parsed.serviceConnectedConditionIds.length });
   redirect("/secondary/ratings");
 }
 
@@ -173,12 +197,19 @@ export async function saveRatingsSelection(formData: FormData): Promise<void> {
     catalog,
   );
 
-  await writeSecondaryWorkflowSession({
-    diagnosedConditionIds: parsed.diagnosedConditionIds,
-    serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
-    ratingsByConditionId: parsed.ratingsByConditionId,
-  });
+  try {
+    await writeSecondaryWorkflowSession({
+      diagnosedConditionIds: parsed.diagnosedConditionIds,
+      serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
+      ratingsByConditionId: parsed.ratingsByConditionId,
+    });
+  } catch (error) {
+    console.error("[secondary-workflow] Failed to persist ratings selection:", error instanceof Error ? error.message : String(error));
+    auditLog("workflow-ratings-selected", { status: "failure", route: "/secondary/ratings" });
+    redirectValidation("/secondary/ratings", "select-rating");
+  }
 
+  auditLog("workflow-ratings-selected", { status: "success", route: "/secondary/ratings", count: Object.keys(parsed.ratingsByConditionId).length });
   redirect("/secondary/upload");
 }
 
@@ -196,16 +227,25 @@ export async function saveDocumentsSelection(formData: FormData): Promise<void> 
     catalog,
   );
 
-  await writeSecondaryWorkflowSession(parsed);
+  try {
+    await writeSecondaryWorkflowSession(parsed);
+  } catch (error) {
+    console.error("[secondary-workflow] Failed to persist documents context:", error instanceof Error ? error.message : String(error));
+    auditLog("workflow-documents-context", { status: "failure", route: "/secondary/upload" });
+    redirectValidation("/secondary/upload", "select-documents");
+  }
+  auditLog("workflow-documents-context", { status: "success", route: "/secondary/upload" });
   redirect("/secondary/suggestions");
 }
 
 export async function finishSecondaryWorkflow(): Promise<void> {
   await clearSecondaryWorkflowSession();
+  auditLog("workflow-completed", { status: "success", route: "/secondary" });
   redirect("/secondary");
 }
 
 export async function restartSecondaryWorkflow(): Promise<void> {
   await clearSecondaryWorkflowSession();
+  auditLog("workflow-restarted", { status: "success", route: "/secondary/diagnosed" });
   redirect("/secondary/diagnosed");
 }

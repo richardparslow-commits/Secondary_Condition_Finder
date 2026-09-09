@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { ServiceHistoryForm } from "@/components/ServiceHistoryForm";
+import { ServiceHistoryTemplateLibrary } from "@/components/presumptive/ServiceHistoryTemplateLibrary";
+import { PRESUMPTIVE_TEMPLATES } from "@/lib/presumptive/templates";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { listLocations } from "@/lib/presumptive/match";
 import { loadServiceBranchReference } from "@/lib/va/service-branches";
@@ -60,6 +62,7 @@ export default async function PresumptivePage({ searchParams }: PresumptivePageP
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">⌖</span><h2 className="text-xl font-bold">Covered Exposure Tracks</h2></div>
             <p className="text-sm">The local presumptive catalog includes exposure/location rules used by the matching tool. Select your actual service locations and dates in the form.</p>
           </section>
+          <ServiceHistoryTemplateLibrary templates={PRESUMPTIVE_TEMPLATES} />
         </aside>
 
         <section className="ui-card">
