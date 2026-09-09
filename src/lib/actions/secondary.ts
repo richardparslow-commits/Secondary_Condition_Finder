@@ -82,9 +82,15 @@ export async function saveDiagnosedSelection(formData: FormData): Promise<void> 
   const catalog = loadConditionCatalog();
   const parsed = parseDiagnosedSelection(appendFormData({}, formData), catalog);
 
-  await writeSecondaryWorkflowSession({
-    diagnosedConditionIds: parsed.diagnosedConditionIds,
-  });
+  try {
+    await writeSecondaryWorkflowSession({
+      diagnosedConditionIds: parsed.diagnosedConditionIds,
+    });
+  } catch (error) {
+    // #5: do not silently lose data — surface as validation error instead of advancing
+    console.error("[secondary-workflow] Failed to persist diagnosed selection:", error instanceof Error ? error.message : String(error));
+    redirectValidation("/secondary/diagnosed", "select-diagnosed");
+  }
 
   redirect("/secondary/service-connected");
 }
@@ -112,18 +118,26 @@ export async function saveServiceConnectedSelection(formData: FormData): Promise
         serviceConnectedAnswerDraft[id] = answer;
       }
     });
-    await writeSecondaryWorkflowSession({
-      diagnosedConditionIds,
-      serviceConnectedAnswerDraft,
-    });
+    try {
+      await writeSecondaryWorkflowSession({
+        diagnosedConditionIds,
+        serviceConnectedAnswerDraft,
+      });
+    } catch (error) {
+      console.error("[secondary-workflow] Failed to persist service-connected draft:", error instanceof Error ? error.message : String(error));
+    }
     redirectValidation("/secondary/service-connected", "answer-service-connected");
   }
   if (!answers.some((answer) => answer === "yes")) {
-    await writeSecondaryWorkflowSession({
-      diagnosedConditionIds,
-      serviceConnectedConditionIds: [],
-      ratingsByConditionId: {},
-    });
+    try {
+      await writeSecondaryWorkflowSession({
+        diagnosedConditionIds,
+        serviceConnectedConditionIds: [],
+        ratingsByConditionId: {},
+      });
+    } catch (error) {
+      console.error("[secondary-workflow] Failed to persist no-service-connected state:", error instanceof Error ? error.message : String(error));
+    }
     redirectValidation("/secondary/service-connected", "no-service-connected");
   }
 
@@ -137,11 +151,16 @@ export async function saveServiceConnectedSelection(formData: FormData): Promise
     catalog,
   );
 
-  await writeSecondaryWorkflowSession({
-    diagnosedConditionIds: parsed.diagnosedConditionIds,
-    serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
-    ratingsByConditionId: {},
-  });
+  try {
+    await writeSecondaryWorkflowSession({
+      diagnosedConditionIds: parsed.diagnosedConditionIds,
+      serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
+      ratingsByConditionId: {},
+    });
+  } catch (error) {
+    console.error("[secondary-workflow] Failed to persist service-connected selection:", error instanceof Error ? error.message : String(error));
+    redirectValidation("/secondary/service-connected", "answer-service-connected");
+  }
 
   redirect("/secondary/ratings");
 }
@@ -173,11 +192,16 @@ export async function saveRatingsSelection(formData: FormData): Promise<void> {
     catalog,
   );
 
-  await writeSecondaryWorkflowSession({
-    diagnosedConditionIds: parsed.diagnosedConditionIds,
-    serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
-    ratingsByConditionId: parsed.ratingsByConditionId,
-  });
+  try {
+    await writeSecondaryWorkflowSession({
+      diagnosedConditionIds: parsed.diagnosedConditionIds,
+      serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
+      ratingsByConditionId: parsed.ratingsByConditionId,
+    });
+  } catch (error) {
+    console.error("[secondary-workflow] Failed to persist ratings selection:", error instanceof Error ? error.message : String(error));
+    redirectValidation("/secondary/ratings", "select-rating");
+  }
 
   redirect("/secondary/upload");
 }
@@ -196,7 +220,12 @@ export async function saveDocumentsSelection(formData: FormData): Promise<void> 
     catalog,
   );
 
-  await writeSecondaryWorkflowSession(parsed);
+  try {
+    await writeSecondaryWorkflowSession(parsed);
+  } catch (error) {
+    console.error("[secondary-workflow] Failed to persist documents context:", error instanceof Error ? error.message : String(error));
+    redirectValidation("/secondary/upload", "select-documents");
+  }
   redirect("/secondary/suggestions");
 }
 
