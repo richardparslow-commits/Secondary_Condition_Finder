@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 
+import { auditLog } from "@/lib/observability/audit";
 import { serviceHistorySchema } from "@/lib/presumptive/match";
 import { writePresumptiveSession } from "@/lib/presumptive/session";
 
@@ -43,5 +44,10 @@ export async function saveServiceHistory(formData: FormData): Promise<void> {
   }
 
   await writePresumptiveSession(parsed.data);
+  auditLog("presumptive-service-history-saved", {
+    status: "success",
+    route: "/presumptive/results",
+    count: parsed.data.locations.length,
+  });
   redirect("/presumptive/results");
 }

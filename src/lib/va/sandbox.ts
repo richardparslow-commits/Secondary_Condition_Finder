@@ -3,9 +3,19 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 
 import {
+  createLogger,
+  recordVaApiError,
+  recordVaApiLatency,
+} from "@/lib/observability/logger";
+import {
   VA_SHARED_STATE_REQUIRED_ERROR,
   vaProcessLocalStateAllowed,
 } from "./runtime-state";
+import {
+  isCircuitOpen,
+  recordCircuitFailure,
+  recordCircuitSuccess,
+} from "./circuit-breaker";
 
 const DEFAULT_FORMS_BASE_URLS = {
   sandbox: "https://sandbox-api.va.gov/services/va_forms/v0",
@@ -48,7 +58,14 @@ export interface VaApiObservation {
   service: "va-forms" | "benefits-reference-data";
   path: string;
   attempt: number;
-  outcome: "success" | "http-error" | "timeout" | "network-error" | "invalid-payload" | "rate-limited";
+  outcome:
+    | "success"
+    | "http-error"
+    | "timeout"
+    | "network-error"
+    | "invalid-payload"
+    | "rate-limited"
+    | "circuit-open";
   status?: number;
   durationMs: number;
 }
@@ -242,6 +259,8 @@ function validatedBaseUrl(
   }
 }
 
+const vaApiLogger = createLogger("va-api");
+
 async function requestVaJson<T>(args: {
   service: VaApiObservation["service"];
   apiKey?: string;
@@ -258,6 +277,30 @@ async function requestVaJson<T>(args: {
   }
   if (!vaProcessLocalStateAllowed()) {
     return fallback(VA_SHARED_STATE_REQUIRED_ERROR, environment);
+  }
+  if (isCircuitOpen(args.service)) {
+    const requestId = randomUUID();
+    const observation: VaApiObservation = {
+      requestId,
+      service: args.service,
+      path: args.path,
+      attempt: 1,
+      outcome: "circuit-open",
+      durationMs: 0,
+    };
+    args.observe?.(observation);
+    vaApiLogger.warn("va request blocked by circuit breaker", {
+      requestId,
+      service: args.service,
+      path: args.path,
+      outcome: "circuit-open",
+    });
+    recordVaApiError({ service: args.service, outcome: "circuit-open", environment });
+    return fallback(
+      `VA ${environment} ${args.service} is temporarily unavailable (circuit open). Using local reference fallback.`,
+      environment,
+      requestId,
+    );
   }
   if (!args.apiKey) {
     return fallback(
@@ -314,22 +357,44 @@ async function requestVaJson<T>(args: {
       });
 
       if (!response.ok) {
-        args.observe?.({
+        const durationMs = Date.now() - startedAt;
+        const observation: VaApiObservation = {
           requestId,
           service: args.service,
           path: endpoint.pathname,
           attempt,
           outcome: "http-error",
           status: response.status,
-          durationMs: Date.now() - startedAt,
+          durationMs,
+        };
+        args.observe?.(observation);
+        vaApiLogger.warn("va request http error", {
+          requestId,
+          service: args.service,
+          path: endpoint.pathname,
+          attempt,
+          outcome: "http-error",
+          status: response.status,
+          durationMs,
+          environment,
         });
+        recordVaApiLatency(durationMs, { service: args.service, outcome: "http-error", environment });
+        recordVaApiError({ service: args.service, outcome: "http-error", environment, status: response.status });
 
         // Do not immediately retry a 429; falling back reduces pressure on the
         // upstream rate limit. Only transient 503/504 responses get one delayed retry.
         if (attempt === 1 && RETRYABLE_STATUS.has(response.status)) {
+          vaApiLogger.info("va request retrying after transient error", {
+            requestId,
+            service: args.service,
+            path: endpoint.pathname,
+            attempt,
+            status: response.status,
+          });
           await sleep(VA_API_RETRY_DELAY_MS);
           continue;
         }
+        recordCircuitFailure(args.service);
         return fallback(
           `VA ${environment} request failed with status ${response.status}.`,
           environment,
@@ -339,27 +404,56 @@ async function requestVaJson<T>(args: {
 
       const parsed = args.schema.safeParse(await response.json());
       if (!parsed.success) {
-        args.observe?.({
+        const durationMs = Date.now() - startedAt;
+        const observation: VaApiObservation = {
           requestId,
           service: args.service,
           path: endpoint.pathname,
           attempt,
           outcome: "invalid-payload",
           status: response.status,
-          durationMs: Date.now() - startedAt,
+          durationMs,
+        };
+        args.observe?.(observation);
+        vaApiLogger.warn("va request invalid payload", {
+          requestId,
+          service: args.service,
+          path: endpoint.pathname,
+          attempt,
+          outcome: "invalid-payload",
+          status: response.status,
+          durationMs,
+          environment,
         });
+        recordVaApiLatency(durationMs, { service: args.service, outcome: "invalid-payload", environment });
+        recordVaApiError({ service: args.service, outcome: "invalid-payload", environment });
+        recordCircuitFailure(args.service);
         return fallback("VA API returned an invalid response payload.", environment, requestId);
       }
 
-      args.observe?.({
+      const durationMs = Date.now() - startedAt;
+      const observation: VaApiObservation = {
         requestId,
         service: args.service,
         path: endpoint.pathname,
         attempt,
         outcome: "success",
         status: response.status,
-        durationMs: Date.now() - startedAt,
+        durationMs,
+      };
+      args.observe?.(observation);
+      vaApiLogger.info("va request success", {
+        requestId,
+        service: args.service,
+        path: endpoint.pathname,
+        attempt,
+        outcome: "success",
+        status: response.status,
+        durationMs,
+        environment,
       });
+      recordVaApiLatency(durationMs, { service: args.service, outcome: "success", environment });
+      recordCircuitSuccess(args.service);
       return {
         success: true,
         data: parsed.data,
@@ -369,19 +463,41 @@ async function requestVaJson<T>(args: {
       };
     } catch (error) {
       const timedOut = error instanceof Error && error.name === "AbortError";
-      args.observe?.({
+      const durationMs = Date.now() - startedAt;
+      const outcome = timedOut ? "timeout" : "network-error";
+      const observation: VaApiObservation = {
         requestId,
         service: args.service,
         path: endpoint.pathname,
         attempt,
-        outcome: timedOut ? "timeout" : "network-error",
-        durationMs: Date.now() - startedAt,
+        outcome,
+        durationMs,
+      };
+      args.observe?.(observation);
+      vaApiLogger.warn(`va request ${outcome}`, {
+        requestId,
+        service: args.service,
+        path: endpoint.pathname,
+        attempt,
+        outcome,
+        durationMs,
+        environment,
       });
+      recordVaApiLatency(durationMs, { service: args.service, outcome, environment });
+      recordVaApiError({ service: args.service, outcome, environment });
 
       if (attempt === 1) {
+        vaApiLogger.info("va request retrying after network/timeout", {
+          requestId,
+          service: args.service,
+          path: endpoint.pathname,
+          attempt,
+          outcome,
+        });
         await sleep(VA_API_RETRY_DELAY_MS);
         continue;
       }
+      recordCircuitFailure(args.service);
       return fallback(
         timedOut
           ? `VA ${environment} request timed out.`
