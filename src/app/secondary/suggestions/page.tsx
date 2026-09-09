@@ -4,9 +4,11 @@ import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { NonServiceConnectedConditionResult } from "@/components/NonServiceConnectedConditionResult";
 import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatus";
+import { ActionPlan } from "@/components/secondary/ActionPlan";
 import { CombinationInsightsPanel } from "@/components/secondary/CombinationInsightsPanel";
 import { ConditionComparisonTool } from "@/components/secondary/ConditionComparisonTool";
 import { PrintReportButton } from "@/components/secondary/PrintReportButton";
+import { RatingGuide } from "@/components/secondary/RatingGuide";
 import { SecondarySuggestionsTabs } from "@/components/secondary/SecondarySuggestionsTabs";
 import type {
   TimelineConditionInput,
@@ -196,6 +198,8 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
 
       <ConditionComparisonTool results={nonServiceConnectedResults} catalog={catalog} />
       <CombinationInsightsPanel results={nonServiceConnectedResults} />
+      <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
+      <ActionPlan results={nonServiceConnectedResults} />
 
       <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href={evidenceHref} className="ui-button">Review Evidence for These Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">Open Evidence Checklist</span></Link></div>
       <DisclaimerFooter />
