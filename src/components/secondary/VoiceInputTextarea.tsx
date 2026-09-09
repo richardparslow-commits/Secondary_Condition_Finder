@@ -56,6 +56,8 @@ export function VoiceInputTextarea({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Sync with browser SpeechRecognition availability (external API)
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSupported(Boolean(getSpeechRecognition()));
     return () => {
       try {

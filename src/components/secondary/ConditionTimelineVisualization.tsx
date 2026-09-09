@@ -363,7 +363,6 @@ export function ConditionTimelineVisualization({
           setHoverConn(null);
         }}
       >
-        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
         <svg
           ref={svgRef}
           role="img"

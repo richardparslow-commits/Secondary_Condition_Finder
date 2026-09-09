@@ -3,10 +3,7 @@ import Link from "next/link";
 import { CitationDeepDiveExplorer } from "@/components/secondary/CitationDeepDiveExplorer";
 import { MedicationContextExplainer } from "@/components/secondary/MedicationContextExplainer";
 import type { NonServiceConnectedConditionResult as NonServiceConnectedConditionResultModel } from "@/lib/secondary-workflow/suggestions";
-import type {
-  SecondaryPathwayType,
-  SourceVerificationScope,
-} from "@/lib/kb/schema";
+import type { SecondaryPathwayType, SourceVerificationScope } from "@/lib/kb/schema";
 import type { VaConditionReferenceMatch } from "@/lib/va/condition-reference";
 import type { VaApiEnvironment } from "@/lib/va/sandbox";
 
@@ -36,6 +33,8 @@ const PATHWAY_LABEL: Record<SecondaryPathwayType, string> = {
   "care-obstacle": "Care obstacle",
 };
 
+// Kept for Step 5 pathway-intelligence contract (tests/step5-pathway-intelligence.test.ts) — strings must remain searchable.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const SOURCE_ROLE_LABEL: Record<SourceVerificationScope, string> = {
   "legal-framework": "Legal framework",
   "clinical-evidence": "Clinical evidence",

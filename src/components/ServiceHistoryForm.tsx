@@ -69,6 +69,8 @@ export function ServiceHistoryForm({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    // Sync with browser SpeechRecognition API (external system) — not a cascading React state update
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setVoiceSupported(Boolean(window.SpeechRecognition ?? window.webkitSpeechRecognition));
   }, []);
 
