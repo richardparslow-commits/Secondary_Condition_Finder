@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { CitationDeepDiveExplorer } from "@/components/secondary/CitationDeepDiveExplorer";
+import { MedicationContextExplainer } from "@/components/secondary/MedicationContextExplainer";
 import type { NonServiceConnectedConditionResult as NonServiceConnectedConditionResultModel } from "@/lib/secondary-workflow/suggestions";
 import type {
   SecondaryPathwayType,
@@ -161,23 +163,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
             </section>
           )}
 
-          {recommendation.matchedIntakeContext.length > 0 && (
-            <section className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
-                Reported treatment context appearing in authored mapping text
-              </h4>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {recommendation.matchedIntakeContext.map((item) => (
-                  <span key={item} className="rounded-md border border-slate-200 bg-white px-2 py-1 text-xs text-slate-800">
-                    {item}
-                  </span>
-                ))}
-              </div>
-              <p className="mt-2 text-xs text-slate-600">
-                This is literal text overlap only. It does not establish causation, aggravation, or medical nexus.
-              </p>
-            </section>
-          )}
+          <MedicationContextExplainer matchedTerms={recommendation.matchedIntakeContext} />
 
           {(recommendation.clinicalFrictionWarnings?.length ?? 0) > 0 && (
             <section className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-4">
@@ -207,29 +193,10 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
           )}
 
           {recommendation.sourceReferences.length > 0 && (
-            <section className="mt-4">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
-                Sources supporting the mapped relationship(s)
-              </h4>
-              <ul className="mt-2 space-y-2">
-                {recommendation.sourceReferences.slice(0, 3).map((reference) => (
-                  <li key={`${reference.citation}-${reference.note}`} className="text-sm text-slate-700">
-                    <span className="font-mono text-xs text-slate-900">{reference.citation}</span>
-                    <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-700">
-                      {reference.verificationScope
-                        ? SOURCE_ROLE_LABEL[reference.verificationScope]
-                        : "Source role not specified"}
-                    </span>
-                    {!reference.verified && (
-                      <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-900">
-                        unverified
-                      </span>
-                    )}
-                    <span className="mt-0.5 block text-xs text-slate-500">{reference.note}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
+            <CitationDeepDiveExplorer
+              sourceReferences={recommendation.sourceReferences.slice(0, 3)}
+              conditionName={result.conditionName}
+            />
           )}
         </>
       )}

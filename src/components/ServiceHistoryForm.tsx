@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { saveServiceHistory } from "@/lib/actions/presumptive";
 
@@ -19,6 +19,25 @@ interface Props {
 const fieldClass =
   "w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900";
 
+type SpeechRecognitionInstance = {
+  lang: string;
+  continuous: boolean;
+  interimResults: boolean;
+  start: () => void;
+  stop: () => void;
+  abort?: () => void;
+  onresult: ((event: { results: Array<Array<{ transcript: string }>> }) => void) | null;
+  onerror: ((event: { error: string }) => void) | null;
+  onend: (() => void) | null;
+};
+
+declare global {
+  interface Window {
+    SpeechRecognition?: new () => SpeechRecognitionInstance;
+    webkitSpeechRecognition?: new () => SpeechRecognitionInstance;
+  }
+}
+
 export function ServiceHistoryForm({
   locations,
   serviceBranches,
@@ -27,6 +46,10 @@ export function ServiceHistoryForm({
 }: Props) {
   const [selected, setSelected] = useState<string[]>([]);
   const [selectedBranches, setSelectedBranches] = useState<string[]>([]);
+  const [voiceSupported, setVoiceSupported] = useState(false);
+  const [voiceListening, setVoiceListening] = useState(false);
+  const [voiceInterim, setVoiceInterim] = useState("");
+  const [voiceError, setVoiceError] = useState<string | null>(null);
 
   function toggle(location: string) {
     setSelected((current) =>
@@ -42,6 +65,48 @@ export function ServiceHistoryForm({
         ? current.filter((item) => item !== code)
         : [...current, code],
     );
+  }
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setVoiceSupported(Boolean(window.SpeechRecognition ?? window.webkitSpeechRecognition));
+  }, []);
+
+  function startVoiceForLocations() {
+    const Ctor = typeof window !== "undefined" ? (window.SpeechRecognition ?? window.webkitSpeechRecognition) : null;
+    if (!Ctor) {
+      setVoiceError("Voice input is not supported in this browser.");
+      return;
+    }
+    const rec = new Ctor();
+    rec.lang = "en-US";
+    rec.continuous = false;
+    rec.interimResults = true;
+    setVoiceError(null);
+    setVoiceInterim("");
+    setVoiceListening(true);
+    rec.onresult = (event) => {
+      const text = Array.from(event.results)
+        .map((r) => r[0]?.transcript ?? "")
+        .join(" ")
+        .trim();
+      setVoiceInterim(text);
+      // Try to map spoken location substrings to exact location values (case-insensitive substring)
+      const lower = text.toLowerCase();
+      const matches = locations.filter((loc) => lower.includes(loc.toLowerCase()));
+      if (matches.length > 0) setSelected((prev) => [...new Set([...prev, ...matches])]);
+    };
+    rec.onerror = (e) => {
+      setVoiceError(e.error === "not-allowed" ? "Microphone permission denied." : `Voice error: ${e.error}`);
+      setVoiceListening(false);
+    };
+    rec.onend = () => setVoiceListening(false);
+    try {
+      rec.start();
+    } catch (err) {
+      setVoiceError(err instanceof Error ? err.message : "Could not start voice input.");
+      setVoiceListening(false);
+    }
   }
 
   return (
@@ -89,6 +154,35 @@ export function ServiceHistoryForm({
           Select every location. Presumptive eligibility depends on location and
           dates, not on any condition you are already service connected for.
         </p>
+        {voiceSupported && (
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={startVoiceForLocations}
+              disabled={voiceListening}
+              aria-label={voiceListening ? "Listening for locations" : "Dictate locations by voice"}
+              className={`rounded-lg border px-2.5 py-1.5 text-xs font-semibold ${voiceListening ? "animate-pulse border-red-300 bg-red-50 text-red-800" : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50"}`}
+            >
+              <span aria-hidden="true">{voiceListening ? "● " : "🎙 "}</span>
+              {voiceListening ? "Listening…" : "Dictate locations"}
+            </button>
+            {voiceInterim && (
+              <span className="text-xs text-slate-600" role="status" aria-live="polite">
+                Heard: “{voiceInterim}”
+              </span>
+            )}
+            {voiceError && (
+              <span className="text-xs text-red-700" role="alert">
+                {voiceError}
+              </span>
+            )}
+          </div>
+        )}
+        {voiceSupported && (
+          <p className="mt-1 text-xs text-slate-500">
+            Voice is optional — say a location name (e.g., “Iraq”, “Republic of Vietnam”). Your speech is processed by your browser’s speech service; nothing is sent until you submit.
+          </p>
+        )}
 
         <div className="mt-3 grid gap-2 sm:grid-cols-2">
           {locations.map((location) => (
