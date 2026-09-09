@@ -25,6 +25,10 @@ const DEFAULT_REFERENCE_BASE_URLS = {
   sandbox: "https://sandbox-api.va.gov/services/benefits-reference-data/v1",
   production: "https://api.va.gov/services/benefits-reference-data/v1",
 } as const;
+const DEFAULT_ACCREDITED_REP_BASE_URLS = {
+  sandbox: "https://sandbox-api.va.gov/services/accredited-representatives/v1",
+  production: "https://api.va.gov/services/accredited-representatives/v1",
+} as const;
 const TRUSTED_API_ORIGINS = {
   sandbox: "https://sandbox-api.va.gov",
   production: "https://api.va.gov",
@@ -40,22 +44,25 @@ type VaApiEnvironmentVariables = Record<string, string | undefined>;
 export type VaApiEnvironment = "sandbox" | "production";
 export type VaApiSource = "va-sandbox-api" | "va-production-api" | "local-fallback";
 
-export interface VaApiConfig {
+export type VaApiConfig = {
   enabled: boolean;
   environment?: VaApiEnvironment;
   formsApiKey?: string;
   benefitsReferenceDataApiKey?: string;
+  accreditedRepApiKey?: string;
   formsBaseUrl: string;
   benefitsReferenceDataBaseUrl: string;
+  accreditedRepBaseUrl?: string;
   timeoutMs: number;
-}
+  accreditedRepEnabled?: boolean;
+} & Record<string, unknown>;
 
 /** Backward-compatible name retained for existing tests and callers. */
 export type VaSandboxConfig = VaApiConfig;
 
 export interface VaApiObservation {
   requestId: string;
-  service: "va-forms" | "benefits-reference-data";
+  service: "va-forms" | "benefits-reference-data" | "accredited-representatives";
   path: string;
   attempt: number;
   outcome:
@@ -199,6 +206,11 @@ export function loadVaApiConfig(
         ? env.VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY
         : env.VA_BENEFITS_REFERENCE_SANDBOX_API_KEY
     )?.trim() || undefined,
+    accreditedRepApiKey: (
+      production
+        ? env.VA_ACCREDITED_REP_PRODUCTION_API_KEY
+        : env.VA_ACCREDITED_REP_SANDBOX_API_KEY
+    )?.trim() || undefined,
     formsBaseUrl:
       (production
         ? env.VA_FORMS_PRODUCTION_BASE_URL
@@ -209,8 +221,14 @@ export function loadVaApiConfig(
         ? env.VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL
         : env.VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL)?.trim() ||
       DEFAULT_REFERENCE_BASE_URLS[environment],
+    accreditedRepBaseUrl:
+      (production
+        ? env.VA_ACCREDITED_REP_PRODUCTION_BASE_URL
+        : env.VA_ACCREDITED_REP_SANDBOX_BASE_URL)?.trim() ||
+      DEFAULT_ACCREDITED_REP_BASE_URLS[environment],
     timeoutMs:
       Number.isFinite(timeout) && timeout > 0 ? Math.floor(timeout) : DEFAULT_TIMEOUT_MS,
+    accreditedRepEnabled: env.VA_ACCREDITED_REP_ENABLED === "true",
   };
 }
 
@@ -563,5 +581,78 @@ export async function fetchVaServiceBranches(
     schema: serviceBranchReferenceSchema,
     config,
     observe: options.observe,
+  });
+}
+
+export interface AccreditedRepresentativeSearchParams {
+  zip: string;
+  radiusMiles?: number;
+  type?: "VSO" | "agent" | "attorney";
+}
+
+const accreditedRepItemSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  organization: z.string().min(1).nullable().optional(),
+  accreditationType: z.enum(["VSO", "agent", "attorney"]),
+  phone: z.string().min(1).nullable().optional(),
+  website: z.string().url().nullable().optional(),
+  address: z.string().min(1).nullable().optional(),
+  zip: z.string().regex(/^\d{5}$/),
+  distanceMiles: z.number().nonnegative().nullable().optional(),
+}).passthrough();
+
+const accreditedRepIndexSchema = z.object({
+  data: z.array(accreditedRepItemSchema),
+}).passthrough();
+
+export type VaAccreditedRepIndex = z.infer<typeof accreditedRepIndexSchema>;
+export type VaAccreditedRepresentative = z.infer<typeof accreditedRepItemSchema>;
+
+export function normalizeAccreditedRepSearchParams(
+  params: AccreditedRepresentativeSearchParams,
+): Required<AccreditedRepresentativeSearchParams> | null {
+  const zip = params.zip.trim();
+  if (!/^\d{5}$/.test(zip)) return null;
+  const radius = params.radiusMiles ?? 50;
+  const allowedRadii = [25, 50, 100] as const;
+  const radiusMiles = (allowedRadii as readonly number[]).includes(radius) ? radius : 50;
+  const allowedTypes = new Set(["VSO", "agent", "attorney"]);
+  const type = params.type && allowedTypes.has(params.type) ? params.type : undefined;
+  return { zip, radiusMiles, type: type as "VSO" | "agent" | "attorney" | undefined } as Required<AccreditedRepresentativeSearchParams>;
+}
+
+export async function fetchVaAccreditedRepresentatives(
+  params: AccreditedRepresentativeSearchParams,
+  options: VaApiRequestOptions = {},
+): Promise<VaApiResult<VaAccreditedRepIndex>> {
+  const config = options.config ?? loadVaApiConfig();
+  const normalized = normalizeAccreditedRepSearchParams(params);
+  if (!normalized) {
+    return fallback<VaAccreditedRepIndex>("Zip must be 5 digits.", config.environment ?? "sandbox");
+  }
+  const query = new URLSearchParams();
+  query.set("zip", normalized.zip);
+  query.set("radius", String(normalized.radiusMiles));
+  if (normalized.type) query.set("type", normalized.type);
+
+  // Per-service flag in addition to generic VA_API_ENABLED — lets the locator
+  // roll independently of forms/reference during credential gating.
+  if (!config.accreditedRepEnabled) {
+    return fallback<VaAccreditedRepIndex>(
+      "VA accredited-representative lookup is disabled by feature flag.",
+      config.environment ?? "sandbox",
+    );
+  }
+
+  return requestVaJson({
+    service: "accredited-representatives",
+    apiKey: config.accreditedRepApiKey,
+    baseUrl: (config.accreditedRepBaseUrl as string) ?? DEFAULT_ACCREDITED_REP_BASE_URLS[config.environment === "production" ? "production" : "sandbox"],
+    path: "/representatives",
+    schema: accreditedRepIndexSchema,
+    config,
+    observe: options.observe,
+    query,
   });
 }

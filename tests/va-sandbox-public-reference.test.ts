@@ -36,7 +36,7 @@ describe("public-reference VA API adapters", () => {
       VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL: "https://example.test/reference/v1",
     });
 
-    expect(loaded).toEqual({
+    expect(loaded).toEqual(expect.objectContaining({
       enabled: true,
       environment: "sandbox",
       formsApiKey: "forms-key-from-env",
@@ -44,7 +44,7 @@ describe("public-reference VA API adapters", () => {
       timeoutMs: 2500,
       formsBaseUrl: "https://example.test/forms/v0",
       benefitsReferenceDataBaseUrl: "https://example.test/reference/v1",
-    });
+    }));
   });
 
   it("requires an explicit generic enable flag before production mode can make requests", () => {

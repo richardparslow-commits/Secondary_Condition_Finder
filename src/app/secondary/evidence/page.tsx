@@ -30,13 +30,15 @@ import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/rec
 import { buildMedicalRecordChecklist } from "@/lib/secondary-workflow/medical-record-checklist";
 import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workflow/suggestions";
 import { buildSymptomDiscussionPrompts } from "@/lib/secondary-workflow/symptom-bridge";
+import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams } from "@/lib/secondary-workflow/session";
+import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
 
 export const dynamic = "force-dynamic";
 
 interface EvidenceReviewStepPageProps {
-  searchParams?: Promise<{ regSnapshot?: string | string[] }>;
+  searchParams?: Promise<{ regSnapshot?: string | string[]; zip?: string; radiusMiles?: string; type?: string }>;
 }
 
 const firstParam = (value: string | string[] | undefined): string | undefined =>
@@ -126,6 +128,15 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
     evidenceGaps: recommendation.evidenceGaps,
   }));
   const suggestionsHref = `/secondary/suggestions?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
+  const qp2 = await searchParams;
+  const zipParam2 = typeof qp2?.zip === "string" ? qp2.zip : undefined;
+  const accreditedRepView2 = zipParam2 && /^\d{5}$/.test(zipParam2)
+    ? await loadAccreditedRepresentatives({
+        zip: zipParam2,
+        radiusMiles: typeof qp2?.radiusMiles === "string" ? Number(qp2.radiusMiles) : 50,
+        type: (typeof qp2?.type === "string" ? qp2.type : undefined) as "VSO" | "agent" | "attorney" | undefined,
+      })
+    : null;
 
   return (
     <main>
@@ -164,6 +175,7 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
       <MedicalRecordChecklist groups={buildMedicalRecordChecklist(nonServiceConnectedResults)} />
       <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
       <ActionPlan results={nonServiceConnectedResults} />
+      <AccreditedRepresentativeFinder initialView={accreditedRepView2} returnTo="/secondary/evidence" />
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
 

@@ -1,10 +1,12 @@
 import Link from "next/link";
 
+import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { matchPresumptives } from "@/lib/presumptive/match";
 import type { PresumptiveCondition } from "@/lib/presumptive/schema";
 import { readPresumptiveSession } from "@/lib/presumptive/session";
+import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
 import { loadServiceBranchReference } from "@/lib/va/service-branches";
 
 export const dynamic = "force-dynamic";
@@ -49,7 +51,22 @@ function groupConditions(
   return [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]));
 }
 
-export default async function PresumptiveResultsPage() {
+export default async function PresumptiveResultsPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ zip?: string; radiusMiles?: string; type?: string }>;
+}) {
+  // Accredited-rep locator uses a non-PII ZIP lookup (public directory, not service history).
+  // Fetch it before the early-return so the results view can still render the finder when no presumptive session exists.
+  const qpZip = await searchParams;
+  const zipForRep = typeof qpZip?.zip === "string" ? qpZip.zip : undefined;
+  const accreditedRepView = zipForRep && /^\d{5}$/.test(zipForRep)
+    ? await loadAccreditedRepresentatives({
+        zip: zipForRep,
+        radiusMiles: typeof qpZip?.radiusMiles === "string" ? Number(qpZip.radiusMiles) : 50,
+        type: (typeof qpZip?.type === "string" ? qpZip.type : undefined) as "VSO" | "agent" | "attorney" | undefined,
+      })
+    : null;
   const history = await readPresumptiveSession();
 
   if (!history) {
@@ -267,6 +284,10 @@ export default async function PresumptiveResultsPage() {
           ))}
         </div>
       )}
+
+      <div className="mt-8">
+        <AccreditedRepresentativeFinder initialView={accreditedRepView} returnTo="/presumptive/results" />
+      </div>
 
       <DisclaimerFooter />
     </main>

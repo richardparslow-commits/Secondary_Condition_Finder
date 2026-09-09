@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
+import { Dd214LocalAnalyzer } from "@/components/presumptive/Dd214LocalAnalyzer";
 import { ServiceHistoryForm } from "@/components/ServiceHistoryForm";
 import { ServiceHistoryTemplateLibrary } from "@/components/presumptive/ServiceHistoryTemplateLibrary";
 import { PRESUMPTIVE_TEMPLATES } from "@/lib/presumptive/templates";
@@ -69,12 +70,15 @@ export default async function PresumptivePage({ searchParams }: PresumptivePageP
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><h2 className="text-2xl font-bold">Presumptive Service Connection</h2><p className="text-sm text-slate-600">Enter service history without putting it in the URL.</p></div></div>
           <p className="mb-5">For some conditions, VA presumes a relationship to service when specific legal criteria are met. This track is separate from secondary service connection, which concerns one disability causing or aggravating another.</p>
           <div role="group" aria-describedby={validationId}>
-            <ServiceHistoryForm
-              locations={locations}
-              serviceBranches={serviceBranchReference.items}
-              serviceBranchSourceLabel={serviceBranchReference.sourceLabel}
-              serviceBranchNotice={serviceBranchReference.notice}
-            />
+            <Dd214LocalAnalyzer locations={locations} />
+            <div className="mt-6">
+              <ServiceHistoryForm
+                locations={locations}
+                serviceBranches={serviceBranchReference.items}
+                serviceBranchSourceLabel={serviceBranchReference.sourceLabel}
+                serviceBranchNotice={serviceBranchReference.notice}
+              />
+            </div>
           </div>
         </section>
 

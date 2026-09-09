@@ -84,7 +84,7 @@ export async function GET() {
     circuitBreaker: {
       status: "ok" as const,
       latencyMs: 0,
-      detail: `va-forms:${circuit["va-forms"].state} benefits-reference-data:${circuit["benefits-reference-data"].state}`,
+      detail: `va-forms:${circuit["va-forms"].state} benefits-reference-data:${circuit["benefits-reference-data"].state} accredited-representatives:${circuit["accredited-representatives"].state}`,
       snapshot: circuit,
     },
   };

@@ -72,6 +72,7 @@ export function getCircuitSnapshot(): Record<VaCircuitService, CircuitBreakerSta
   return {
     "va-forms": { ...getState("va-forms") },
     "benefits-reference-data": { ...getState("benefits-reference-data") },
+    "accredited-representatives": { ...getState("accredited-representatives") },
   };
 }
 

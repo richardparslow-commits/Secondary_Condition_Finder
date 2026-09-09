@@ -39,10 +39,17 @@ describe("workflow privacy", () => {
     expect(form).toContain("action={saveServiceHistory}");
     expect(form).not.toMatch(/method=["']get["']/i);
     expect(form).not.toContain('action="/presumptive/results"');
-    expect(results).not.toContain("searchParams");
+    // Service history (locations/dates/branch) must not be read from query strings;
+    // a narrow ZIP lookup for the accredited-representative public directory is allowed.
     expect(results).not.toContain("params.location");
     expect(results).not.toContain("params.serviceStart");
     expect(results).not.toContain("params.serviceEnd");
+    if (results.includes("searchParams")) {
+      expect(results).toContain("zip");
+      // The ZIP lookup must not also propagate service-history fields via the query string.
+      expect(results).not.toMatch(/qpZip\?\.(location|serviceStart|serviceEnd)/);
+      expect(results).not.toMatch(/searchParams[^]*\bparams\.location\b/);
+    }
   });
 
   it("stores workflow state in short-lived hardened first-party cookies", () => {
