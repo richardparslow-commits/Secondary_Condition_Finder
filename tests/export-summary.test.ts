@@ -89,9 +89,15 @@ describe("P2 Ticket 10: Text Export for Representative Meetings", () => {
   it("wires Step 6 to a browser-only download with explicit privacy exclusions", () => {
     const evidencePage = readRepoFile("src/app/secondary/evidence/page.tsx");
     const downloadComponent = readRepoFile("src/components/ConsultationSummaryDownload.tsx");
+    const mapperComponent = readRepoFile("src/components/evidence/PathwayEvidenceMapper.tsx");
 
-    expect(evidencePage).toContain("<ConsultationSummaryDownload recommendations={consultationRecommendations} />");
+    // The standalone download and combined mapping+summary export now live in
+    // the PathwayEvidenceMapper card; the page passes the same
+    // privacy-stripped recommendations through to it.
+    expect(evidencePage).toContain("recommendations={consultationRecommendations}");
     expect(evidencePage).toContain("matchedIntakeContext: []");
+    expect(mapperComponent).toContain("<ConsultationSummaryDownload recommendations={recommendations} />");
+    expect(mapperComponent).toContain("formatClaimSummary(recommendations, [])");
     expect(downloadComponent).toContain("formatClaimSummary(recommendations, [])");
     expect(downloadComponent).toContain("new Blob([content]");
     expect(downloadComponent).toContain("URL.createObjectURL(blob)");
@@ -99,5 +105,7 @@ describe("P2 Ticket 10: Text Export for Representative Meetings", () => {
     expect(downloadComponent).not.toContain("sendBeacon");
     expect(downloadComponent).toContain("does not include raw local-evidence");
     expect(downloadComponent).toContain("optional medication/treatment context");
+    expect(mapperComponent).not.toContain("fetch(");
+    expect(mapperComponent).not.toContain("sendBeacon");
   });
 });
