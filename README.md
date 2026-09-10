@@ -188,7 +188,7 @@ Primary public routes include:
   - `/secondary/ratings`
   - `/secondary/upload`
   - `/secondary/suggestions` (research aids: comparison, combination insights, rating guide, action plan, pathway record checklist)
-  - `/secondary/evidence` (evidence-gap review, consultation summary, research aids: record checklists, rating guide, action plan, pathway record checklist)
+  - `/secondary/evidence` (evidence-gap review, pathway evidence mapping, consultation summary, research aids: record checklists, rating guide, action plan, pathway record checklist)
 - `/presumptive` and `/presumptive/results`
 - `/scenarios`
 - `/va-forms` and `/va-forms/finder`

@@ -134,7 +134,7 @@ No server-transmitted OCR, no LLM field extraction, no SSN persistence. Any LLM 
 
 ## Deferred
 
-- #6 AI Symptom Reverse Matcher and #7 Medical Evidence Pathway Analyzer — LLM variants remain rejected for the same privacy boundary; the rule-based `symptom-bridge.ts` and `gap-coverage.ts` remain the path.
+- #6 AI Symptom Reverse Matcher and #7 Medical Evidence Pathway Analyzer — LLM variants remain rejected for the same privacy boundary; the rule-based `symptom-bridge.ts` and `gap-coverage.ts` remain the path. Update (2026-09-10, post-#396): the compliant rule-based portion of #7 shipped as `src/lib/evidence/pathway-mapper.ts` + `PathwayEvidenceMapper.tsx` (browser-local excerpt→pathway grouping, research cues only); any LLM/sufficiency-determination variant remains rejected.
 
 ## Open questions for the Phase 3.1 branch
 
