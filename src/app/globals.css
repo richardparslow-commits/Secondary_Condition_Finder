@@ -188,6 +188,19 @@ button, input, select, textarea { font: inherit; }
   }
 }
 
+/* Scoped print: only the action plan card prints when the user chooses
+   "Print action card" on the Action Plan aid. Applied by temporarily adding
+   a class to <body>; removed in the same handler's finally block. */
+@media print {
+  body.print-action-card main > *:not(.print-action-plan-scope) { display: none !important; }
+  body.print-action-card main::before {
+    content: "Your Next Steps — Claim Action Card (research-generated, not VA guidance)  •  Confirm every form and filing step with an accredited representative";
+  }
+  body.print-action-card main::after {
+    content: "Disclaimer: This action card is a research-generated suggestion, not VA guidance. It does not determine eligibility or set a VA deadline. Verify current VA guidance with a qualified provider or accredited representative.";
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
