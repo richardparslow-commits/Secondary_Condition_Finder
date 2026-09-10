@@ -10,6 +10,7 @@ import { RatingGuide } from "@/components/secondary/RatingGuide";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { EvidenceGapReview } from "@/components/evidence/EvidenceGapReview";
 import { LocalEvidenceReview } from "@/components/evidence/LocalEvidenceReview";
+import { PathwayEvidenceMapper } from "@/components/evidence/PathwayEvidenceMapper";
 import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatus";
 import {
   SecondaryWorkflowCompletionActions,
@@ -178,6 +179,7 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
       <AccreditedRepresentativeFinder initialView={accreditedRepView2} returnTo="/secondary/evidence" />
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
+      <PathwayEvidenceMapper results={nonServiceConnectedResults} />
 
       <div className="ui-actions">
         <Link href={suggestionsHref} className="ui-button-secondary">← Back to Connections</Link>
