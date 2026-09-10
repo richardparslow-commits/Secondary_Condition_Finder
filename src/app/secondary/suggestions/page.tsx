@@ -7,6 +7,7 @@ import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatu
 import { ActionPlan } from "@/components/secondary/ActionPlan";
 import { CombinationInsightsPanel } from "@/components/secondary/CombinationInsightsPanel";
 import { ConditionComparisonTool } from "@/components/secondary/ConditionComparisonTool";
+import { PathwayRecordChecklist } from "@/components/secondary/PathwayRecordChecklist";
 import { PrintReportButton } from "@/components/secondary/PrintReportButton";
 import { RatingGuide } from "@/components/secondary/RatingGuide";
 import { SecondarySuggestionsTabs } from "@/components/secondary/SecondarySuggestionsTabs";
@@ -91,6 +92,11 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
     recommendationsResult.recommendations,
   );
   const nonServiceConnectedNames = nonServiceConnectedResults.map((result) => result.conditionName);
+  // matchedIntakeContext is stripped for every export path so reported
+  // medication/treatment context never reaches a downloaded artifact.
+  const checklistSummaryRecommendations = nonServiceConnectedResults.flatMap((result) =>
+    result.recommendation ? [{ ...result.recommendation, matchedIntakeContext: [] }] : [],
+  );
   const conditionNamesById = new Map([...byId].map(([id, condition]) => [id, condition.name] as const));
   const symptomDiscussionPrompts = buildSymptomDiscussionPrompts(
     state.symptomIds ?? [],
@@ -213,6 +219,7 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
       <CombinationInsightsPanel results={nonServiceConnectedResults} />
       <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
       <ActionPlan results={nonServiceConnectedResults} />
+      <PathwayRecordChecklist results={nonServiceConnectedResults} summaryRecommendations={checklistSummaryRecommendations} />
       <AccreditedRepresentativeFinder initialView={accreditedRepView} returnTo="/secondary/suggestions" />
 
       <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href={evidenceHref} className="ui-button">Review Evidence for These Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">Open Evidence Checklist</span></Link></div>

@@ -38,7 +38,7 @@ export default function HomePage() {
         <div className="ui-stack">
           <article className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">This is a research aid, not advice.</h2></div>
-            <p>This tool helps organize claim-preparation research. It does not diagnose conditions, determine eligibility, or provide medical or legal advice. Every suggestion is a possibility to explore with a qualified provider or an accredited representative, not a determination.</p>
+            <p>This tool helps organize claim-preparation research. It does not diagnose conditions, determine eligibility, or provide medical or legal advice. Every suggestion is a possibility to explore with a qualified provider or an accredited representative, not a determination. On the final steps, it also builds a pathway-specific medical record checklist so you know which records to request from providers or VA.</p>
           </article>
 
           <article className="ui-card">
