@@ -62,6 +62,17 @@ silently increase. Automated authoring may record a canonical source URL,
 source-check date, and source locator, but `verified: true` remains a
 qualified-human decision under `docs/citation-verification-sop.md`.
 
+Steps 5 and 6 of the secondary workflow surface research aids built from the
+same authored data: condition comparison, combination insights, a rating
+schedule guide, a prioritized action plan, and a **pathway-specific medical
+record checklist** — for each claim pathway (service-connected primary →
+diagnosed condition via a nexus theory and causal mechanism), it lists the
+concrete records to request from providers or VA (for example, sleep study
+results, neurology records, and sleep-specialist notes for a neurological-
+mechanism theory), each with a short explanation of why it matters. Checkmarks
+are kept only in the current browser tab and can be exported alone or combined
+with the consultation summary.
+
 ## Stack
 
 Next.js App Router, TypeScript, Tailwind, Zod, Vitest, Chrome/ChromeDriver E2E,
@@ -176,8 +187,8 @@ Primary public routes include:
   - `/secondary/service-connected`
   - `/secondary/ratings`
   - `/secondary/upload`
-  - `/secondary/suggestions`
-  - `/secondary/evidence`
+  - `/secondary/suggestions` (research aids: comparison, combination insights, rating guide, action plan, pathway record checklist)
+  - `/secondary/evidence` (evidence-gap review, consultation summary, research aids: record checklists, rating guide, action plan, pathway record checklist)
 - `/presumptive` and `/presumptive/results`
 - `/scenarios`
 - `/va-forms` and `/va-forms/finder`
