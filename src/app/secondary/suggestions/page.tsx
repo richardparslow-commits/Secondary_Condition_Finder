@@ -19,12 +19,15 @@ import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workfl
 import { buildSymptomDiscussionPrompts } from "@/lib/secondary-workflow/symptom-bridge";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
+import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import { buildConditionVaReferenceMap } from "@/lib/va/condition-reference";
 import { loadDisabilityReference } from "@/lib/va/disability-reference";
+import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
+import { accreditedRepValidationMessage, APPROVED_RADIUS_MILES, ZIP_RE } from "@/lib/va/accredited-representative-constants";
 
 interface SuggestionsPageProps {
   workflowState?: StoredSecondaryWorkflowState;
-  searchParams?: Promise<{ regSnapshot?: string | string[] }>;
+  searchParams?: Promise<{ regSnapshot?: string | string[]; zip?: string | string[]; radius?: string | string[]; type?: string | string[]; error?: string | string[] }>;
 }
 export const dynamic = "force-dynamic";
 
@@ -44,7 +47,8 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
   // Regulatory preflight is intentionally completed before recommendation output.
   // If this is a back-navigation inside the same review, reuse the locked snapshot
   // rather than silently changing the legal/regulatory basis mid-review.
-  const lockedSnapshotId = firstParam((await searchParams)?.regSnapshot);
+  const rawSearchParams = await searchParams;
+  const lockedSnapshotId = firstParam(rawSearchParams?.regSnapshot);
   const lockedSnapshot = loadLockedRegulatorySnapshot(lockedSnapshotId);
   const regulatoryReview = lockedSnapshot
     ? {
@@ -91,6 +95,28 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
     vaReference.live ? vaReference.items : [],
   );
   const evidenceHref = `/secondary/evidence?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
+
+  // Accredited-representative locator (Phase 3.1) — optional aid, never blocks recommendation output.
+  const zipParam = firstParam(rawSearchParams?.zip)?.trim() ?? "";
+  const radiusParam = firstParam(rawSearchParams?.radius)?.trim() ?? "";
+  const typeParam = firstParam(rawSearchParams?.type)?.trim() ?? "";
+  const accreditedRepError = accreditedRepValidationMessage(firstParam(rawSearchParams?.error));
+  let accreditedRepView: Awaited<ReturnType<typeof loadAccreditedRepresentatives>> | null = null;
+  if (ZIP_RE.test(zipParam)) {
+    const radiusMiles = radiusParam ? Number(radiusParam) : undefined;
+    const radiusValid =
+      radiusMiles === undefined ||
+      (Number.isInteger(radiusMiles) && (APPROVED_RADIUS_MILES as readonly number[]).includes(radiusMiles));
+    const typeValid = !typeParam || (["VSO", "agent", "attorney"] as const).includes(typeParam as "VSO" | "agent" | "attorney");
+    if (radiusValid && typeValid) {
+      accreditedRepView = await loadAccreditedRepresentatives({
+        zip: zipParam,
+        ...(radiusMiles !== undefined ? { radiusMiles: radiusMiles as (typeof APPROVED_RADIUS_MILES)[number] } : {}),
+        ...(typeParam ? { type: typeParam as "VSO" | "agent" | "attorney" } : {}),
+      });
+    }
+  }
+  const accreditedRepExistingQuery = lockedSnapshotId ? `regSnapshot=${encodeURIComponent(lockedSnapshotId)}` : "";
 
   return (
     <main>
@@ -144,6 +170,18 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">How to Interpret Results</h2></div><ul className="space-y-4 text-sm"><li><strong>Starts with diagnoses you already reported.</strong><p>Step 5 does not suggest new medical conditions. Every top-level result is a diagnosis you selected in Step 1 and marked not service connected in Step 2.</p></li><li><strong>Only existing service-connected conditions appear underneath.</strong><p>A service-connected condition is listed only when the published knowledge base contains an authored relationship to that specific non-service-connected diagnosis.</p></li><li><strong>No match is not a negative medical opinion.</strong><p>If no published relationship is shown, the tool is reporting only that its current curated mappings do not support a match for the selected combination.</p></li><li><strong>Direction and pathway still require evidence.</strong><p>Cause, aggravation, treatment effects, intermediate steps, and other pathway theories must be evaluated against your individual chronology and medical evidence.</p></li><li><strong>Legal and clinical sources have different roles.</strong><p>Administrative or legal authority does not itself establish the medical relationship.</p></li><li><strong>Context match is not proof.</strong><p>A medication/treatment match means only that your reported term appears in authored mapping text.</p></li></ul></section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Next Review</h2></div><p className="text-sm">Step 6 is limited to the same diagnosed non-service-connected conditions and the relationship evidence shown here. It does not reintroduce unrelated possible secondary diagnoses.</p></section>
         </aside>
+      </div>
+
+      <div className="mt-8">
+        <AccreditedRepresentativeFinder
+          initialView={accreditedRepView}
+          returnTo="/secondary/suggestions"
+          existingQuery={accreditedRepExistingQuery}
+          initialZip={zipParam}
+          initialRadius={radiusParam}
+          initialType={typeParam}
+          validationMessage={accreditedRepError}
+        />
       </div>
 
       <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href={evidenceHref} className="ui-button">Review Evidence for These Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">Open Evidence Checklist</span></Link></div>

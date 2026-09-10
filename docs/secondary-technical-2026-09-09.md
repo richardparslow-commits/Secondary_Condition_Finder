@@ -1,0 +1,466 @@
+# Technical Specification: Secondary Condition Finder
+
+## Architecture Overview
+
+Secondary Condition Finder is a Next.js 16 full-stack application deployed on Vercel with an optional Azure static web apps fallback. The architecture separates concerns into three layers:
+
+1. **Client Layer** (React 19, TypeScript): UI components, form handling, in-browser document processing (PDF.js, Tesseract.js, Mammoth)
+2. **Server Layer** (Next.js App Router, Server Actions): Session validation, workflow state mutations, encrypted cookie management, regulatory intelligence
+3. **Data Layer** (JSON in version control, disk-based runtime load): Condition catalog, knowledge base, presumptive categories, regulatory seed records
+
+The application is a research and reference tool that does not maintain persistent user accounts, external database connections, or server-side workflow history. Workflow state is held in short-lived, encrypted, authenticated cookies; evidence documents are processed only in the browser.
+
+## Technology Stack
+
+### Runtime & Framework
+
+- **Node.js 22.x** (LTS): Development and build runtime
+- **Next.js 16.3.4** (App Router): Full-stack framework with edge-proxy support
+- **React 19.2.8** (with React DOM): Client-side UI library
+- **TypeScript 5.x**: Type-safe development language
+- **Vercel Deployment**: Edge-accelerated CDN, serverless compute, middleware/proxy support
+
+**Justification**: Next.js App Router provides server-side rendering, edge-middleware capabilities, and Vercel-native deployment integration. The architecture allows streaming server components, secure Server Actions (with automatic CSRF protection), and edge-level CSP nonce injection. TypeScript ensures type safety across schemas and API surfaces. Node.js 22 aligns with Vercel's LTS support policy.
+
+### Data Validation & Schema
+
+- **Zod 4.5.4**: Runtime schema validation for JSON catalogs, knowledge-base mappings, and API payloads
+- **Strict Schema Enforcement**: All JSON files are validated at parse time; unknown keys are rejected; any schema violation fails the parse and is caught immediately
+
+**Justification**: Zod's discriminated unions enable the CRG (Causal Relational Graph) classification, ensuring each suggestion explicitly declares its nexus pathway (DIRECT_CAUSATION, AGGRAVATION, ASSOCIATION_ONLY). Strict validation prevents silent data errors and ensures consistency across the 813-condition catalog and 363+ relationships.
+
+### Client-Side Document Processing
+
+- **PDF.js (pdfjs-dist 6.3.289)**: PDF text extraction and rendering; no server transmission
+- **Tesseract.js 6.0.1**: OCR for scanned PDFs; runs entirely in the browser using WebAssembly
+- **@tesseract.js-data/eng 1.0.0**: English OCR language data
+- **Mammoth 1.12.2**: DOCX archive parsing and text extraction
+
+**Justification**: These libraries enable in-browser processing of evidence documents without transmitting raw bytes to the server. Tesseract.js WASM avoids backend OCR dependencies and keeps medical data in the user's browser.
+
+### Styling & UI
+
+- **TailwindCSS 4.x** (with @tailwindcss/postcss 4.x): Utility-first CSS framework
+- **PostCSS 8.5.18+**: CSS transformation and plugin system
+- **ESLint 9.x**: Code linting for consistency and security
+
+**Justification**: Tailwind enables rapid, accessible UI development with WCAG 2.1 AA color contrast and semantic HTML. Utility-first approach reduces CSS surface area and makes style changes traceable in diffs.
+
+### Testing & Code Quality
+
+- **Vitest 4.1.11**: Fast unit/integration test runner (ESM-native)
+- **Chrome / ChromeDriver**: E2E browser automation for CI workflows
+- **npm audit**: Dependency vulnerability scanning
+
+**Justification**: Vitest integrates with Next.js and TypeScript without extra configuration. Chrome/ChromeDriver tests real browser behavior for workflows and error boundaries. npm audit with `--audit-level=high` gates the CI on dependency vulnerabilities.
+
+### Observability
+
+- **@opentelemetry/api 1.9.0** (OpenTelemetry SDK) + **@vercel/otel 2.1.3** (Vercel collector) — `src/instrumentation.ts` `register()` → `registerOTel({ serviceName: "secondary-condition-finder" })`; custom metrics lazily via `src/lib/observability/logger.ts` so they inherit the same exporter without extra config
+- **Structured JSON logger** (`src/lib/observability/logger.ts`): `createLogger(component, baseFields)` → `emit(level, component, message, fields)` as `JSON.stringify({timestamp:ISO, level, component, message, ...redactFields(fields)})` to `stdout`/`stderr` (`error|warn` → `console.error`, `debug` non-prod → `console.debug`, else `console.log`); `redactFields` strips `payload|rawText|evidence|cookie|secret|apiKey`; `isTestEnv()` quiets `debug` in `NODE_ENV=test|VITEST=true`; `Logger {debug,info,warn,error,child}`
+- **OTel metric helpers** (best-effort, no-throw, lazy `eval("require")("@opentelemetry/api")` so tests without collector still pass): `getMeter("secondary-condition-finder")` → histograms `recommendation.latency.ms` / `evidence.parser.duration.ms` / `va.api.latency.ms` + counter `va.api.errors`; helpers `recordRecommendationLatency(durationMs, attrs)` (used in `recommend.ts`), `recordEvidenceParserDuration`, `recordVaApiLatency`, `recordVaApiError` (used in `sandbox.ts` on every VA path including `circuit-open`)
+- **Sanitized audit trail** (`src/lib/observability/audit.ts`, `server-only`): `auditLogger = createLogger("audit")`, `AuditAction = "workflow-diagnosed-selected"|"workflow-service-connected-selected"|"workflow-ratings-selected"|"workflow-documents-context"|"workflow-completed"|"workflow-restarted"|"presumptive-service-history-saved"|"presumptive-service-history-cleared"|"regulatory-preflight-triggered"|"regulatory-preflight-unauthorized"`, `auditLog(action, {status:"success"|"failure"|"unauthorized", route?, count?, source?, environment?})` — drops `payload|rawText|evidence|cookie|secret|apiKey|diagnosed|serviceConnected|medications|treatments|history` loudly, `level = warn` on `failure|unauthorized` else `info` → `auditLogger[level]("audit:"+action, safe)`; wired in `src/lib/actions/secondary.ts` (each step + completion/restart), `src/lib/actions/presumptive.ts`, `src/app/api/regulatory/preflight/route.ts`
+- **Server-side only**: No client-side analytics SDK; `error.tsx` boundaries log only `message+digest` via `console.error(JSON.stringify({timestamp, level:"error", component:"…-error-boundary", message, digest}))`
+
+**Justification**: OpenTelemetry is industry-standard for distributed tracing. Vercel's OTel integration provides production visibility without a separate backend, and the JSON logger gives Vercel/OTel ingestors sanitized, structured lines with zero PII — raw evidence, workflow payloads, and secrets are redacted at the emit site. Lazy metric init keeps bundling light and tests green.
+
+### Security & Configuration
+
+- **server-only 0.0.1**: Enforces "use server" boundaries at build time; prevents accidental client-side import of server-only code
+- **AES-256-GCM**: Workflow session token encryption and authentication (Node.js crypto module)
+- **Zod secrets validation**: Configuration validation at runtime with fallbacks for missing/short secrets
+
+## Component / Service Breakdown
+
+### 1. App Router (Next.js Pages) — `src/app` (`force-dynamic` on workflow steps)
+
+- **src/app/layout.tsx** (`await connection()`): Root layout with per-request nonce propagation (from `proxy.ts` `x-nonce`), `globals.css`, `skip-link` + `app-shell` a11y shell, SEO `metadata`
+- **src/app/page.tsx**: Homepage — track overview (secondary 38 CFR §3.310 vs. presumptive §§3.307/3.309), disclaimers, links to `/secondary`, `/presumptive`, `/scenarios`, `/va-forms`, `/va-reference`
+- **src/app/secondary/** (six-step workflow + education):
+  - `page.tsx` (track overview cards: caused-by vs. aggravation), `condition-caused-by/page.tsx` (38 CFR §3.310(a) "but for" explainer), `condition-aggravation/page.tsx` (38 CFR §3.310(b) + Spicer May 2026 treatment-interference), `legal/page.tsx` (`CANONICAL_REFERENCES` + `DISCLAIMERS`), `diagnosed/page.tsx` (Step 1 — catalog checkbox list, `saveDiagnosedSelection`), `service-connected/page.tsx` (Step 2 — `serviceConnected-{id}` yes/no per diagnosed id, `saveServiceConnectedSelection`), `ratings/page.tsx` + `ratings/layout.tsx` + `ratings/RatingsFormValidationBridge.tsx` (Step 3 — `rating-{id}` select `VALID_RATINGS`/`decline`, `saveRatingsSelection`), `upload/page.tsx` + `upload/layout.tsx` (Step 4 — `LocalEvidenceAnalyzer` + bounded `medications`/`treatments`/`history`/`symptomIds`/`conditionTimeline` + `documentsShared` flag, `saveDocumentsSelection`), `suggestions/page.tsx` + `suggestions/layout.tsx` (Step 5 — locks `regSnapshot` via `prepareRegulatoryReview({conditionIds})` before `recommend()` + `buildNonServiceConnectedConditionResults` + `RegulatoryPreflightStatus` + `SecondarySuggestionsTabs` + Phase 1+2 research aids `ConditionComparisonTool` + `CombinationInsightsPanel` + `RatingGuide` + `ActionPlan`), `evidence/page.tsx` + `evidence/layout.tsx` (Step 6 — reuses locked snapshot via `loadLockedRegulatorySnapshot`/`missingLockedRegulatorySnapshot`, `EvidenceGapReview` + `LocalEvidenceReview` + `ConsultationSummaryDownload` + Phase 1+2 research aids `MedicalRecordChecklist` + `RatingGuide` + `ActionPlan`)
+  - Shared: `layout.tsx` (secondary shell), `error.tsx` (`secondary-error-boundary`)
+- **src/app/presumptive/**: `page.tsx` (intake — `ServiceHistoryForm` + `ServiceHistoryTemplateLibrary`), `results/page.tsx` (results via `matchPresumptives`), `layout.tsx`, `error.tsx` (`presumptive-error-boundary`)
+- **src/app/va-forms/**: `page.tsx`, `finder/page.tsx` (bounded `query` search), `layout.tsx`; **src/app/va-reference/**: `page.tsx` (`DisabilityReferenceExplorer`), `service-branches/page.tsx`, `layout.tsx`
+- **src/app/api/**: `api/health/route.ts` (`force-dynamic`, `runtime:nodejs`, `GET` — catalog + sessionCrypto + vaConfig + circuitBreaker, `200 healthy`/`503 degraded`), `api/regulatory/preflight/route.ts` (`force-dynamic`, `runtime:nodejs`, `GET` bearer `timingSafeEqual` + audit), `api/error.tsx` (`api-error-boundary`)
+- **src/app/scenarios/page.tsx**: Lists `data/demo-scenarios.json`, posts bounded `scenarioId` to `launchDemoScenario` via `ScenarioLaunchForm`
+- **src/app/privacy/** (`layout.tsx` + `page.tsx` — publishes Standard/Extended limits verbatim), `/terms`, `/about`, `/runtime-readiness/page.tsx` (deployment + alias + route-matrix + `workflowSessionRuntimeReady` marker), `/results/page.tsx` (legacy redirect → `/secondary`), `error.tsx` (root `root-error-boundary`), `globals.css`, `favicon.ico`, `components/CoverageNotice.tsx`
+
+### 2. Server Actions (Next.js Form Mutations)
+
+- **src/lib/actions/secondary.ts**: Secondary workflow state mutations (canonical — `use server` + `server-only`)
+  - `saveDiagnosedSelection(FormData)` — requires ≥1 `diagnosed` id, `parseDiagnosedSelection(appendFormData, catalog)` → `writeSecondaryWorkflowSession({ diagnosedConditionIds })`; `try/catch` → `console.error` + `auditLog("workflow-diagnosed-selected", failure)` + `redirectValidation("/secondary/diagnosed", "select-diagnosed")` on session-write failure; success → `auditLog(success, count)` → `redirect("/secondary/service-connected")`
+  - `saveServiceConnectedSelection(FormData)` — reads `readSecondaryWorkflowSession()` for `diagnosedConditionIds`, validates `serviceConnected-{id}` = `yes|no` per diagnosed id (saves `serviceConnectedAnswerDraft` for partial answers), requires ≥1 `yes` else persists `serviceConnectedConditionIds: []` + `redirectValidation("no-service-connected")`; success parses via `parseServiceConnectedSelection` → `writeSecondaryWorkflowSession({ diagnosedConditionIds, serviceConnectedConditionIds, ratingsByConditionId: {} })` with same `try/catch` → `answer-service-connected` guard; → `redirect("/secondary/ratings")`
+  - `saveRatingsSelection(FormData)` — requires `rating-{id}` ∈ `decline | 0–100` integer per `serviceConnectedConditionIds`; `parseRatingsSelection` → `writeSecondaryWorkflowSession({ diagnosedConditionIds, serviceConnectedConditionIds, ratingsByConditionId })` with `try/catch` → `select-rating`; → `redirect("/secondary/upload")`
+  - `saveDocumentsSelection(FormData)` — validates `documentsShared` ∈ `yes|no`, `validateContext` for `medications/treatments/history` (≤`MAX_CONTEXT_ITEMS=20` × `MAX_CONTEXT_ITEM_LENGTH=160` chars, split on `\r?\n`, deduped), `parseDocumentsSelection` (also parses `symptomIds` via `parseSymptomBridgeSelection` + `conditionTimeline` via `timelineField` `MIN_TIMELINE_YEAR=1900`–`MAX_TIMELINE_YEAR=2100`) → `writeSecondaryWorkflowSession(parsed)` with `try/catch` → `select-documents`; → `redirect("/secondary/suggestions")`
+  - `finishSecondaryWorkflow()` / `restartSecondaryWorkflow()` — `clearSecondaryWorkflowSession()` (+ client clears `sessionStorage` evidence/checklist), `auditLog("workflow-completed"/"workflow-restarted")` → `redirect("/secondary"/"/secondary/diagnosed")`
+  - Session crypto path: `src/lib/workflow-session-crypto.ts` (`sealSessionPayload`/`openSessionPayload` — AES-256-GCM, SHA-256 derived key, `v2` envelope `{issuedAt, expiresAt, payload}` with `WORKFLOW_SESSION_MAX_AGE_SECONDS=1800`, `IV 12B`/`tag 16B`/`base64url`, fail-closed on tamper/expiry, `WORKFLOW_SESSION_SECRET` ≥32 chars else throw in production + `console.warn` on dev fallback) + `src/lib/secondary-workflow/session.ts` (`secondary-workflow-v2` cookie, `MAX_WORKFLOW_COOKIE_VALUE_BYTES=3800`, `httpOnly:true, sameSite:"strict", secure:production, path:"/secondary"`, `maxAge:1800`; helpers `workflowSessionToQueryParams`/`toCompleteWorkflowState`)
+- **src/lib/actions/presumptive.ts**: Presumptive workflow mutations (`use server`)
+  - `saveServiceHistory(FormData)` — parses `serviceBranchCodes` + `locations` + `serviceStart/serviceEnd` via `serviceHistorySchema` (Zod), maps Zod path → `validationPath` codes `select-location`/`date-order`/`invalid-date` → `redirect("/presumptive?error=…")`; success → `writePresumptiveSession(parsed.data)` (`presumptive-workflow-v1`, same crypto envelope) → `auditLog("presumptive-service-history-saved", success, count: locations.length)` → `redirect("/presumptive/results")`
+- **src/lib/actions/scenarios.ts**: Scenario demo loading (`use server`)
+  - `launchDemoScenario(FormData)` — `scenarioId` bounded `z.string().min(1).max(80).regex(/^[a-z0-9-]+$/)`, `scenarios.find` in `data/demo-scenarios.json` → `parseStoredSecondaryWorkflowState(scenario.workflow)` → `parseWorkflowState(workflowSessionToQueryParams(workflow), catalog)` through the current catalog contract → `writeSecondaryWorkflowSession(workflow)` → `redirect("/secondary/suggestions")`; client clears prior `sessionStorage` evidence/checklist before launch (enforced by `tests/demo-scenarios.test.ts`)
+
+**Security Note**: All Server Actions use `FormData` with Next.js built-in CSRF protection. Payloads are validated via Zod + custom bounds (`MAX_CONTEXT_ITEMS`/`MAX_CONTEXT_ITEM_LENGTH`, `MIN/MAX_TIMELINE_YEAR`, `VALID_RATINGS`, `MAX_WORKFLOW_COOKIE_VALUE_BYTES`) before any `writeSecondaryWorkflowSession` / `writePresumptiveSession`. Session writes are `try/catch`-guarded (code-health #5 fix) and audit-logged sanitized (`src/lib/observability/audit.ts` — no `rawText/payload/cookie/secret`).
+
+### 3. Data Layer Modules
+
+#### Condition Catalog (src/lib/catalog/)
+
+- **schema.ts**: Zod schemas for catalog conditions (id, name, aliases, body system, rating schedule, review notes)
+- **load.ts**: Loads and validates all condition JSON files from disk at app startup
+- **lookup.ts**: O(1) condition ID lookup with fallback to alias search
+- **exposure-tags.ts**: Controlled tags for exposure categories (PACT Act, Agent Orange)
+
+#### Knowledge Base (src/lib/kb/ — 813 files, one per catalog id)
+
+- **schema.ts** (strict Zod, unknown keys rejected): discriminated-union `nexusClaimSchema` (`DIRECT_CAUSATION` requires `etiologicalTrigger≥50`, `AGGRAVATION` requires `baselineProgression≥50` + `aggravatingFactor≥50`, `ASSOCIATION_ONLY` requires `associationBasis≥50` + `causationStatus≥50` + `hypothesizedOnly:true` + forbids `WELL_ESTABLISHED`); `mechanismCategorySchema` (16 values `MICROVASCULAR_METABOLIC` … `NOT_ESTABLISHED`) + `causalMechanismSchema {mechanismCategory, primaryVector≥50, secondaryVector?, iatrogenicFactor?, hypothesizedOnly}`; `etiologicalConsensusSchema` (`WELL_ESTABLISHED|PROBABLE|CONTESTED_REQUIRES_SPECIFIC_EVIDENCE|IATROGENIC_TREATMENT_EFFECT|NOT_ESTABLISHED`) + `vaNexusProbabilityAlignmentSchema` + `evidentiaryProfileSchema {etiologicalConsensus, vaNexusProbabilityAlignment, conservativeRationale≥50, evidenceGaps, alternativeEtiologiesToRuleOut≥1 (≥2 + requiresSpecificDbqEvidence when CONTESTED)}`; `sourceVerificationScopeSchema` + `authorityCategorySchema` (7) + `propositionRoleSchema` (8) + `federalRegisterTypeSchema` (6) + `bindingStatusSchema` + `claimTheorySchema` (9) + `nexusRequirementSchema` + `regulatoryActionRelationSchema` + `secondaryPathwayTypeSchema` (11) + `pathwayIntelligenceSchema {pathways 1–4 unique, causalChain≤500, developmentQuestions≤6×300, issuesToResolve≤5×300}`; `sourceReferenceSchema {citation, note, verificationScope, authorityCategory?, propositionRole?, federalRegisterType?, bindingStatus?, effectiveDate(ISO), applicability?, ruleVersion?, sourceUrl(url)?, verified(false default), sourceCheckedOn(ISO)?, sourceLocator?}` with `superRefine` (verified→requires url+checkedOn+locator; non-final FR cannot be `binding`; final/non-final authority mismatch; legal authority cannot be `clinical-evidence`; medical cannot be `legal-presumption`); `suggestionSchema {conditionId, rank pos int, nexusClaim, causalMechanism, evidentiaryProfile, rationale, claimTheories≤4 unique?, nexusRequirement?, regulatoryActionRefs≤10 unique by RIN:relation?, pathwayIntelligence?, evidenceGaps≥1, sourceReferences 1–3}` with `superRefine` (ASSOCIATION_ONLY→hypothesizedOnly + not WELL_ESTABLISHED, claimTheories unique, legally-presumed→requires presumptive theory); `conditionMappingSchema {id, draft(false), todo[], governanceNotes[], suggestions[]}` with `superRefine` (published→needs ≥1 suggestion + `todo` empty + ranks `1..n` gapless + no self-reference + weak-citation placeholder ban `/\\b(relevant|placeholder|journal study|regulation link|link|example|todo|tbd|unknown)\\b/i` + clinical-evidence→requires `sourceUrl`)
+- **load.ts** (`server-only`): `loadKnowledgeBase()` reads `data/knowledge-base/*.json` (sorted), `catalogFileSchema.safeParse` per file, `conditionMappingSchema.parse`, caches in module `cached: KnowledgeBase|null`, `resetKnowledgeBaseCache()` test seam; throws on invalid JSON or duplicate id
+- **lookup.ts**: `publishedMappings(kb)` → `Map<conditionId, ConditionMapping>` filtered `!draft`, `mappedConditionIds(kb)` → `Set<conditionId>`; used by `getDocument` in engine
+- **validate.ts** (`server-only`): `validateKnowledgeBase(catalog, kb)` — referential integrity (every `suggestion.conditionId` exists in `catalog`), no orphan `suggestions` outside catalog, cross-check against `master-sources.json`/`master-relationships.json` lineage; invoked by `npm run kb:validate`
+- **evidence-architecture.ts**: `auditEvidenceArchitecture()` — enforces browser-local evidence parser never imported by server route, evidence bytes never in cookie/log, `sessionStorage` only; invoked by `npm run evidence:architecture`
+
+#### Presumptive Data (src/lib/presumptive/ — 2 authored categories: PACT Act burn-pit + Agent Orange)
+
+- **schema.ts** (Zod): `ExposureCategory {id, name, qualifyingService: QualifyingService[] {locations[], startDate(ISO), endDate(ISO|null)}, conditions: PresumptiveCondition[] {id,name,group,sourceUrl?,sourceCheckedOn?}}`, `ExposureCatalog = ExposureCategory[]`, `ServiceHistory` (see match.ts) — unknown keys rejected
+- **load.ts** (`server-only`): `loadPresumptiveCatalog()` reads `data/presumptives/*.json` (sorted), validates via schema, caches; `resetPresumptiveCache()` seam
+- **match.ts**: `serviceHistorySchema {serviceBranchCodes?: string[≤8][1–64] (ignored by matcher), locations: string[≥1], serviceStart: ISO|null, serviceEnd: ISO|null} + refine serviceStart≤serviceEnd` → `ServiceHistory`; helpers `rangesOverlap(aStart,aEnd,bStart,bEnd)` + `partialRangeMayOverlap(serviceStart,serviceEnd,periodStart,periodEnd)` (missing bound never collapsed to synthetic one-day interval); `matchPresumptives(catalog, history)` exact-location + inclusive-date, `datesConfirmed = Boolean(serviceStart&&serviceEnd)`, per-`CategoryMatch {category, matchedPeriods: MatchedPeriod[] {period, matchedLocations, datesConfirmed}, conditions sorted group→name}`, plus `unmatchedLocations` + `hasUnconfirmedDates`; `listLocations(catalog)` sorted set; branch codes deliberately not consulted (display context only)
+- **session.ts** (`server-only`): `writePresumptiveSession(history)` / `readPresumptiveSession()` / `clearPresumptiveSession()` — `presumptive-workflow-v1` cookie, same AES-256-GCM `v2` envelope + `WORKFLOW_SESSION_MAX_AGE_SECONDS=1800`, `httpOnly:true, sameSite:"strict", secure:production, path:"/presumptive"`, `MAX_WORKFLOW_COOKIE_VALUE_BYTES=3800` guard; `serviceHistoryToQueryParams` helper
+- **pactAct.ts**: Authored PACT Act burn-pit exposure definitions (qualifying locations + `2001-09-11` forward windows, source URLs + `sourceCheckedOn`) — subset of `presumptives/burn-pits.json`
+- **templates.ts**: `PresumptiveConditionTemplate` curated aliases + `buildPresumptiveConditionTerms` helpers for display
+
+#### Evidence Processing (src/lib/evidence/) — browser-local only, no server transmission
+
+- **extract.ts**: Canonical text-analysis engine — types `EvidenceCategory` (`diagnosis|causation|aggravation|treatment|medication|timeline|alternative-cause`) / `EvidenceStrength` (`nexus-relevant|supporting`) / `ClinicianCredential` (`physician|psychologist|np-pa|other-licensed-clinician|unknown|non-clinician`) / `EvidenceSourceMetadata` / `EvidenceTextSegment` / `EvidenceExcerpt` / `EvidenceAnalysis {version:1, sourceName, excerpts, nexusRelevantCount, supportingCount}`; patterns `CAUSATION_PATTERNS` (incl. `but for`/`2/2`), `AGGRAVATION_PATTERNS` (incl. treatment-interference), `DIAGNOSIS_PATTERNS` (incl. `dx`/`rule out`), `TREATMENT`/`MEDICATION`/`TIMELINE`/`ALTERNATIVE_CAUSE`/`BOILERPLATE_PATTERNS` (`38 CFR|willful misconduct|may be granted`); `DIAGNOSIS_SECTION_HEADERS` (`Diagnosis:/Assessment:/Active problems` → list-mode), `classifyCategory` / `isNexusCategory` (nexus = causation/aggravation/alternative-cause + `CLINICIAN_CREDENTIALS` + `matchedTerms`); `analyzeEvidenceText(text, metadata, conditionTerms)` (line → sentence split `(?<=[.!?])\s+(?=[A-Z0-9])`, `diagnosisList` header state with `isSectionResetLine` `/:\s*$/` + all-caps reset, `conditionTermPattern` unicode-dash/nbsp-tolerant `tokens.join((?:[\\s\\u00a0\\u2009\\u2010-\\u2015-]+)?)` + word-boundary, deduped `category:sentence` key) and `analyzeEvidenceSegments(segments, metadata, conditionTerms)` (deduped `category:quote:locator`); `evidenceAnalysisStorageKey = "secondary-condition-finder:evidence-analysis:v1"`
+- **document-extract.ts**: Browser-local PDF/DOCX/text parsers — `MAX_LOCAL_EVIDENCE_*` aliases on `STANDARD_LIMITS`, `LocalDocumentExtraction {kind: pdf|docx|text, sourceName, segments: EvidenceTextSegment[], warnings}`, `assertFileSize` / `assertExtractedTextSize` / `assertSafeDocxArchive(arrayBuffer, sourceName, limits)` (locates `ZIP_EOCD_SIGNATURE 0x06054b50` within last `ZIP_EOCD_MIN_BYTES 22 + ZIP_MAX_COMMENT_BYTES 0xffff`, rejects `diskNumber/centralDirectoryDisk≠0`, `entriesOnDisk≠totalEntries`, `0xffff/0xffffffff` ZIP64, `totalEntries>limits.docxEntries`, `centralDirectoryOffset+size>EOCD`, then per-entry `ZIP_CENTRAL_DIRECTORY_SIGNATURE 0x02014b50` walk with `maxIterations=min(totalEntries, limits.docxEntries, 2000)` hard ceiling + `uncompressedBytes 0xffffffff` + `declaredUncompressedBytes>limits.docxUncompressedBytes` guard, final `offset` consistency check); `extractPdfEvidence` (sets `pdfjs.GlobalWorkerOptions.workerSrc="/pdf.worker.min.mjs"`, `getDocument({data:bytes})`, `document.numPages>limits.pdfPages` throw, per-page `getPage` → `try{getTextContent→joinPdfTextItems(hasEOL→"\\n")} finally{try{page.cleanup()}catch{}}`, outer `finally{loadingTask.destroy()}`), `extractDocxEvidence` (preflight → `mammoth.extractRawText` → `assertExtractedTextSize` → `split/\\n{2,}/` → `paragraph N` locators + `result.messages` warnings), `extractTextEvidence` (`textFileBytes` preflight + `file.text()`), `extractLocalEvidenceDocument` dispatcher (`application/pdf|\.pdf` → pdf, `vnd.openxmlformats-officedocument.*|\.docx` → docx, else text)
+- **document-kind.ts**: MIME + extension file-type detection/validation (supports `pdf`/`docx`/`text` dispatch)
+- **condition-terms.ts**: `buildEvidenceConditionTerms(selectedConditions)` → normalized aliases + hyphen/spelling variants used by `analyzeEvidenceText` and `EvidenceGapCoverage`
+- **gap-coverage.ts**: `EvidenceGapCoverage` per-gap chip logic — compares `EvidenceAnalysis.excerpts` categories against a Step 5 `evidenceGaps` string to render coverage cues (research cue, not sufficiency determination)
+- **limits.ts**: Dual-profile bounds — `EvidenceLimits {fileBytes, batchSources, batchBytes, pdfPages, textChars, textFileBytes, docxUncompressedBytes, docxEntries, storedSources, storedExcerptsPerSource, storedBytes}`; `STANDARD_LIMITS` (20 MB/file, 10 files & 50 MB/batch, 300 pages, 500k chars, 2 MB textFileBytes, 40 MB docxUncompressed, 2000 docxEntries, 10 storedSources × 5 excerpts, 256 KB storedBytes) and `EXTENDED_LIMITS` (100 MB/file, 200 files & 1 GB/batch, 2000 pages, 3M chars, 12 MB textFileBytes, same 40 MB/2000 docx preflight ceiling, 200×10, 3 MB storedBytes) — DOCX hardening identical across modes; helpers `formatLimitBytes`/`formatLimitChars` + `EVIDENCE_DEPTH_LIMITS`/`EVIDENCE_DEPTH_LABELS`
+- **storage.ts**: Tab-scoped `sessionStorage` retention (not in-memory, not server) — `MAX_STORED_EVIDENCE_SOURCES/STORED_EVIDENCE_EXCERPTS_PER_SOURCE/STORED_EVIDENCE_BYTES` aliases on `STANDARD_LIMITS`; `byteLength(JSON)→TextEncoder`, `boundedAnalysis` (slice excerpts to `storedExcerptsPerSource`), `serializeStoredEvidenceWithInfo(analyses, limits)` (slice to `storedSources` → `boundedAnalysis` → trim oldest sources while `byteLength>storedBytes`, returns `{serialized, dropped}`; `serializeStoredEvidence` alias), `loadStoredEvidence` (fail-closed `try{JSON.parse filter isEvidenceAnalysis} catch{return []}` for `tests/local-evidence-hydration.test.ts`), `loadStoredEvidenceWithWarning` (same but `console.warn("[evidence-storage] Failed to parse…", message, raw.slice(0,500))` + `{analyses, parseError}`), `saveStoredEvidence`/`clearStoredEvidence` (`try/catch→false` on quota), storage interfaces `StorageReader/Writer/Remover`
+- **Client batch/orchestration:** `src/components/evidence/LocalEvidenceAnalyzer.tsx` owns the bounded `pending[]` queue + sequential `runAllAnalysis()` with `busyRef.current||busy` guard on every handler (`stageFiles/clearPending/removePending/runAllAnalysis/reprocessFile/runLocalOcr`) + `stageFiles` file/size validation + `runLocalOcr` per-page `try/finally{page.cleanup()}`, `numPages` positive-integer validation, `getViewport({scale:2})/render().promise` + `worker.recognize(canvas)` per-page `try/catch` with warning + `continue`, outer `worker.terminate()`/`loadingTask.destroy()` in `finally`; truncation surfaces via `serializeStoredEvidenceWithInfo` `dropped>0` → `queueMicrotask(setWarnings(..."Storage limit reached…dropped"))` in amber Extraction notices + byte-budget banner (code-health `e202aa1` #2/#3/#6/#7/#8/#10/#11). Raw bytes/text never enter cookies, server logs, or telemetry (enforced by `audit:evidence-architecture` + `tests/ingestion-privacy.test.ts`)
+
+#### Secondary Workflow (src/lib/secondary-workflow/) — 13 modules (5 Phase 1+2 research-aid modules added in `01ac471` / `a6bed87`)
+
+- **state.ts** (`server-only`): Canonical workflow contract — `SecondaryWorkflowState` / `ConditionTimelineEntry` / `QueryParams`, constants `MAX_CONTEXT_ITEMS=20` / `MAX_CONTEXT_ITEM_LENGTH=160` / `MIN_TIMELINE_YEAR=1900` / `MAX_TIMELINE_YEAR=2100`, parsers `parseDiagnosedSelection` / `parseServiceConnectedSelection` / `parseRatingsSelection` / `parseDocumentsSelection` / `parseWorkflowState` + prefill helpers + `ratingFieldName`/`timelineField` + dedup + `toArray`/`first` form coercions
+- **session.ts** (`server-only`): Encrypted workflow cookie — `secondary-workflow-v2`, `MAX_WORKFLOW_COOKIE_VALUE_BYTES=3800`, Zod `storedWorkflowStateSchema` (includes `serviceConnectedAnswerDraft`, `ratingsByConditionId`, `documentsShared`, `medications`/`treatments`/`history` bounded, `symptomIds`, `conditionTimeline`), `sealWorkflowState`/`openWorkflowState` via `src/lib/workflow-session-crypto.ts`, `readSecondaryWorkflowSession`/`writeSecondaryWorkflowSession`/`clearSecondaryWorkflowSession` (sameSite=strict, httpOnly, secure:production, path=/secondary, maxAge=1800), plus `workflowSessionToQueryParams` / `toCompleteWorkflowState`
+- **validation.ts**: `SECONDARY_VALIDATION_MESSAGES` + `secondaryValidationMessage`/`secondaryValidationPath` — codes `select-diagnosed` / `answer-service-connected` / `no-service-connected` / `select-rating` / `invalid-rating` / `select-documents` / `invalid-context`
+- **ratings.ts**: `VALID_RATINGS` (`"0%" … "100%" + "100% P&T"`) and `ValidRating` type (maps to `number|null` with `decline` = `null` in `ratingsByConditionId`)
+- **recommendation-intake.ts**: Single composition point `buildSecondaryRecommendationIntake(state)` → `Intake { diagnosedConditionIds, primaryConditions: serviceConnectedConditionIds, medications, treatments, history, conditionTimeline, symptoms:[]/exposures:[]/notes:"" }` — prevents a route from dropping the Focus Engine diagnosed boundary
+- **suggestions.ts**: Diagnosis-centered grouping — `NonServiceConnectedConditionResult { conditionId, conditionName, bodySystem, recommendation|null }` + `buildNonServiceConnectedConditionResults(catalog, diagnosedIds, serviceConnectedIds, recommendations)` (every not-service-connected diagnosis is a top-level row, sorted by name); deprecated `findLinkedNonServiceConnectedConditions` / legacy `GroupedSecondarySuggestions`/`groupSuggestionsByPrimary` retained for non-workflow callers
+- **symptom-bridge.ts**: Controlled research-only vocabulary (`SymptomBridgeEntry { id label aliases discussionConditionIds prompt }`) — 6 entries (`distal-numbness-tingling`, `recurrent-headache`, `daytime-sleepiness-snoring`, `persistent-low-mood`, `shortness-of-breath`, `joint-pain-limited-motion`), `listSymptomBridgeEntries` / `parseSymptomBridgeSelection` / `buildSymptomDiscussionPrompts` / `findSymptomBridgeMatches` — prompts do not diagnose and do not create mappings
+- **local-state.ts**: Browser-local key registry — `evidenceGapReviewStorageKey = "secondary-condition-finder:evidence-gap-review:v1"`, `secondaryWorkflowLocalStorageKeys = [evidenceAnalysisStorageKey, evidenceGapReviewStorageKey]`, `clearSecondaryWorkflowLocalState(storage)` / `clearSecondaryWorkflowLocalState` helper used by completion/restart + scenario launch to avoid synthetic-data inheritance
+- **medical-record-checklist.ts** *(Phase 1 #1, 2026-09-09)*: `ChecklistCategory` (`diagnosis`|`specialist`|`imaging`|`treatment`|`chronology`|`nexus-opinion`|`other`) + `categorizeGap` (diagnosis-first keyword: independent-documentation/criteria → imaging → nexus/opinion → specialist → treatment → chronology → other) + `WHY_BY_CATEGORY` + `explainGap` + `buildMedicalRecordChecklist(results)` (filters `recommendation!==null`, maps `evidenceGaps` → `ChecklistItem{gap,category,why}`) + `formatMedicalRecordChecklist` (text export with disclaimer) + `CHECKLIST_CATEGORY_LABEL`
+- **condition-comparison.ts** *(Phase 1 #2)*: `ComparisonRow` (nexus/consensus/citations/gaps/primaries/ratingFramework from `catalog.ratingSchedule[0]`) + `buildComparisonRows(results, selectedIds, catalogById)` (≤3 selected, `recommendation!==null` only) + `formatConditionComparison` + `consensusBadgeTone` (`WELL_ESTABLISHED→strong`, `PROBABLE|IATROGENIC→moderate`, `CONTESTED→contested`, else `not-established`)
+- **combination-insights.ts** *(Phase 1 #10)*: `CombinationRelation` (`synergistic`|`independent`|`conflicting`) + `analyzeCombinationInsights(results, limit=5)` (pairwise over top-5 with `recommendation`: shared `contributingPrimary.id` → synergistic, else `same bodySystem` → conflicting+`riskNote`, else independent; capped 10) + `formatCombinationInsights` / `combinationRelationLabel`
+- **rating-guide.ts** *(Phase 2 #3)*: `RatingGuideEntry` (per-diagnosis `ratingSchedule`+`reviewNotes`+consensus/score/gaps/citations) + `buildRatingGuide(results, catalogById)` + `GENERIC_RATING_SCALE` (`0–100%` ticks) + `RATING_SCALE_NOTE` + `GENERIC_FUNCTIONAL_PROMPTS` (8 neutral prompts) + `formatRatingGuide`; matcher on `RatingGuide.tsx` is notes-only — never infers a percentage
+- **action-plan.ts** *(Phase 2 #5)*: `ActionPlanEntry{rank,conditionId,conditionName,bodySystem,consensus,score,primaries,gaps,nexusClassifications}` + `CONSENSUS_ORDER` (`WELL_ESTABLISHED0→IATROGENIC1→PROBABLE2→CONTESTED3→NOT_ESTABLISHED4`) + `buildActionPlan(results)` (consensus→score desc→fewer gaps→name, 1-based rank) + `actionPlanSteps(entry)` (4 steps: gather checklist→clinician nexus→form via rep→file/track) + `formatActionPlan` (timeline Weeks 1–2/2–4/4+/Months 3–5 + `va.gov/find-forms`+`21-526EZ`+`OGC`+`/vso` + disclaimer)
+
+#### Recommendation Engine (src/lib/engine/ — not under secondary-workflow/)
+
+- **recommend.ts** (`ENGINE_VERSION="phase-2-crg"`): `recommend(catalog, kb, intake)` — `CONSENSUS_ORDER` `WELL_ESTABLISHED(0)→IATROGENIC→PROBABLE→CONTESTED→NOT_ESTABLISHED(4)`, `rankWeight=1/rank`, multi-primary accumulation (deduped gaps/refs/warnings), `HISTORY_SIGNAL_ALIASES` alternative-etiology overlap, `findChronologyWarnings` (onsetYear/diagnosisYear typed chronology), `findIntermediatePathways` (bounded two-edge `INTERMEDIATE_CHAIN` via `publishedMappings` only, never promoted to direct nexus), `matchIntakeContext` literal overlap (excludes `pathwayIntelligence`), then Focus Engine filter `diagnosedConditionIds` strict boundary + `score desc → name` sort; emits `recordRecommendationLatency` + `logger.info("recommendation executed", {durationMs, primaryCount, recommendationCount})` via `src/lib/observability/logger.ts`
+- **types.ts / evaluation.ts / ingestion.ts / export.ts / scenario-adapter.ts**: Shared engine types, evaluation helpers, ingestion normalization, export serialization, and scenario adaptation
+- **Crypto foundation:** `src/lib/workflow-session-crypto.ts` (see Server Actions above) — single source for `WORKFLOW_SESSION_SECRET` / `SECONDARY_WORKFLOW_SESSION_SECRET` fallback (non-prod), `sealSessionPayload`/`openSessionPayload`/`workflowSessionRuntimeReady`
+
+#### Regulatory Intelligence (src/lib/regulatory/ + src/lib/regulatory/preflight/)
+
+- **schema.ts / load.ts / lifecycle.ts / lineage.ts / authenticity.ts / impact.ts / adapters.ts / audit.ts / index.ts**: `RegulatoryAction` Zod schema (RIN, status, FR type `final-rule|interim-final-rule|proposed-rule|notice|correction|other`, binding `binding|nonbinding|context-only`, effectiveDate, authorityCategory, propositionRole, claimTheory, nexusRequirement), provenanced seed records in `data/regulatory-actions/*.json` (e.g. `2900-AR32` etc.), registry load via `loadRegulatoryActionRegistry()`, lifecycle transitions, lineage hash, authenticity checks, cross-KB impact analysis, and `regulatory:validate` / `regulatory:audit` gates
+- **preflight/cache.ts**: Optional server-local cache (bounded OS temp dir default, override `REGULATORY_PREFLIGHT_CACHE_DIR`, TTL `REGULATORY_PREFLIGHT_MAX_AGE_HOURS=24`, `REGULATORY_PREFLIGHT_SOURCE_TIMEOUT_MS=8000` per-source) — `readLatestRegulatoryPreflightCache` / `readRegulatorySnapshotById` / `writeRegulatoryPreflightCache`
+- **preflight/federal-register.ts / oira.ts / regulations-gov.ts / http.ts / xml.ts**: `fetchFederalRegisterVaChanges` (`buildFederalRegisterVaSearchUrl`), `fetchOiraReviews` / `fetchCurrentUnifiedAgenda` / `fetchOiraMeetingSignals`, `fetchRegulationsGovDockets` — each with `8000ms` per-source timeout and request-count limits via `http.ts`
+- **preflight/run-preflight.ts**: `runRegulatoryPreflight({ curatedRegistry, cache, reviewScope, now, regulationsGovApiKey, maxCacheAgeHours, timeoutMs })` → `{ snapshot, registry, sourceValidators }` with `decideRegulatoryFreshness` / `diffRegulatoryPreflight` / `freshness` (`stale` etc.) / `reviewMode` (`medical-only` when legal conclusions not allowed)
+- **preflight/review.ts** (`server-only`): `prepareRegulatoryReview({ reviewScope: {conditionIds}, now, maxCacheAgeHours })` — `readLatestRegulatoryPreflightCache` + `loadRegulatoryActionRegistry` + `runRegulatoryPreflight` + `writeRegulatoryPreflightCache` best-effort, `emergencySnapshot` fail-closed to `medical-only` with `legalRegulatoryConclusionsAllowed:false` + warnings on validation error; helpers `relevantChangesForSnapshot`, `refreshRegulatoryPreflightCache`, `loadLockedRegulatorySnapshot(snapshotId)` / `missingLockedRegulatorySnapshot(snapshotId)` (bounded server cache, fail-closed to `medical-only` + `registryDigest:"unavailable"` when lock missing), used by Steps 5/6 (`/secondary/suggestions` locks `regSnapshot` query param before `recommend()`, `/secondary/evidence` reuses lock via `loadLockedRegulatorySnapshot` or fails closed)
+- **preflight/types.ts / relevance.ts / review.ts / merge.ts / diff.ts / freshness.ts**: `RegulatoryPreflightSnapshot {schemaVersion:1, snapshotId:"reg-…-…", startedAt, finishedAt, asOfDate, registryDigest, previousSnapshotId, sourceResults, changes: RegulatoryPreflightChange[], relevantChangeIds, freshness, reviewMode, legalRegulatoryConclusionsAllowed, officialEditionVerificationComplete, usedCachedRegistry, cacheAgeHours, warnings}` + `ReviewScope` scoping to `conditionIds`
+- **API route** `src/app/api/regulatory/preflight/route.ts` (`force-dynamic`, `runtime:nodejs`): `GET` bearer-protected via `timingSafeEqual` on `REGULATORY_SYNC_SECRET ?? CRON_SECRET` (`Authorization: Bearer …`), `401` + `auditLog("regulatory-preflight-unauthorized")` on fail, else `refreshRegulatoryPreflightCache()` → `auditLog("regulatory-preflight-triggered", count: changes.length)` → `NextResponse.json({ok:true, snapshotId, finishedAt, freshness, reviewMode, legalRegulatoryConclusionsAllowed, changeCount, relevantChangeCount})`
+
+#### VA Public Reference (src/lib/va/) — disabled by default, process-local only
+
+- **sandbox.ts** (`server-only`, env-aware adapter): `loadVaApiConfig(env)` (`VA_API_ENV=sandbox|production`, `VA_API_ENABLED` generic gate, `VA_SANDBOX_ENABLED` legacy, `VA_FORMS_*`/`VA_BENEFITS_REFERENCE_*` per-service keys + `*_BASE_URL` trusted-origin `https://sandbox-api.va.gov|https://api.va.gov` validation, `VA_API_TIMEOUT_MS` default 4000), `requestVaJson` (enabled check → `vaProcessLocalStateAllowed()` → `isCircuitOpen` → `circuit-open` fallback → key/baseUrl validation → `fetch` with `apikey` + `X-Request-ID=randomUUID()` + `AbortController` timeout, one delayed retry `VA_API_RETRY_DELAY_MS=100` only for `503/504` and for `timeout/network-error`, `recordVaApiLatency`/`recordVaApiError` + `vaApiLogger` on every path, `recordCircuitSuccess` on 200 parse success, `recordCircuitFailure` on terminal `http-error`/`invalid-payload`/`timeout`/`network-error`/rate-limit; single-process outbound budget `VA_API_OUTBOUND_WINDOW_MS=60000` / `VA_API_OUTBOUND_MAX_REQUESTS_PER_SERVICE=60` via `claimOutboundRequestSlot`); exported fetchers `fetchVaForms` / `fetchVaDisabilityReference` / `fetchVaServiceBranches` with Zod-validated payloads (`formsIndexSchema`/`disabilityReferenceSchema`/`serviceBranchReferenceSchema`, `z.passthrough()`)
+- **runtime-state.ts** (`server-only`): `vaProcessLocalStateAllowed(env)` — `false` in `NODE_ENV=production` or when `VERCEL|AWS_LAMBDA_FUNCTION_NAME|FUNCTIONS_WORKER_RUNTIME|K_SERVICE` set (non-empty and not `0`/`false`), else `true`; `VA_SHARED_STATE_REQUIRED_ERROR = "VA live integration is unavailable in production or distributed runtimes until a shared rate-limit/cache coordinator is configured."` — gates both live fetch and cache
+- **reference-cache.ts** (`server-only`): Process-local bounded LRU cache — `VA_REFERENCE_CACHE_TTL_MS=300000` (5 min), `VA_REFERENCE_CACHE_MAX_ENTRIES=32`, `VA_REFERENCE_CACHE_MAX_KEY_LENGTH=256`; `readVaReferenceCache` (fail-closed `null` when distributed, TTL-expiry prune, LRU refresh on hit), `writeVaReferenceCache` (prune → evict oldest while `size≥32`), `clearVaReferenceCache(prefix?)`; key `disabilities:{env}` etc.
+- **disability-reference.ts** (`server-only`): `loadDisabilityReference(fetcher=fetchVaDisabilityReference)` — `loadVaApiConfig` → cache-key `disabilities:{env}` via `readVaReferenceCache` on default fetcher only (hit → `{...cached, cacheStatus:"hit"}`), else `fetcher()` → `localFallback()` on `!success|!data|0 items` (catalog names sorted, `source:"local-fallback"`, `live:false`, explicit notice that fallback is not VA), else filter `!endDateTime`, sort, build `DisabilityReferenceView extends VaReferenceSourceStatus {source, sourceLabel:"VA sandbox|production reference", notice, live:true, environment, retrievedAt:ISO, cacheStatus:"miss", items:{id,name}[]}` and `writeVaReferenceCache`; `clearDisabilityReferenceCache()` by prefix
+- **form-reference.ts / forms-finder.ts**: VA Forms Finder — bounded public-form search (`query` param), validated `formIndexItemSchema`, same 5-min cache / status / local fallback contract
+- **service-branches.ts / terminology-match.ts / condition-reference.ts**: Service-branch reference + normalized-exact (no fuzzy) `buildConditionVaReferenceMap` per-result administrative blocks (display-only, never fed into `recommend()`); `src/lib/va/index.ts` re-exports environment-aware adapter surface
+- **circuit-breaker.ts** (`server-only`): Per-service breaker `VaCircuitService="va-forms"|"benefits-reference-data"`, `CircuitBreakerState {failures, openedAt, state:"closed"|"open"|"half-open"}`, `FAILURE_THRESHOLD=5` failures → `open` for `HALF_OPEN_PROBE_AFTER_MS=60000` → `half-open` single probe (`isCircuitOpen` flips to `half-open` and logs `circuit half-open; probing`), `recordCircuitSuccess` (reset to `closed`, log `circuit closed after success`), `recordCircuitFailure` (half-open → re-open, else increment; ≥5 in `closed` → `open` + log `circuit opened`/`re-opened from half-open`), `getCircuitSnapshot`/`clearCircuitBreakerState`/`readCircuitState`; `VaApiObservation.outcome` extended with `"circuit-open"`
+
+### 4. UI Components (src/components/ — 30 files; +5 Phase 1+2 research-aid components in `01ac471`/`a6bed87`)
+
+- **Shared / legal:** `Disclaimer.tsx` (conservative `DISCLAIMERS` banners), `SecondaryValidationQueryAlert.tsx` (`secondaryValidationMessage` display), `NonServiceConnectedConditionResult.tsx` (diagnosis-centered card: every not-service-connected diagnosis as top-level row, with `recommendation|null`, rationale/evidence-gaps/citations/`pathwayIntelligence`/`intermediatePathways`/`clinicalFrictionWarnings`/`chronologyWarnings` + VA reference block + `matchedIntakeContext` cues), `RegulatoryPreflightStatus.tsx` (snapshot `freshness`/`reviewMode`/`legalRegulatoryConclusionsAllowed` + `warnings` + relevant changes), `CitationLabel.tsx` (`verified` badge + `sourceUrl`/`sourceLocator`/`sourceCheckedOn`), `SecondarySuggestionItem.tsx` / `SuggestionCard.tsx` (rank badge + CRG `nexusClassification` indicator + `ContributingPrimary` contributing-primaries list), `ScenarioLaunchForm.tsx` (`launchDemoScenario` bounded `scenarioId` post), `ServiceHistoryForm.tsx` (legacy presumptive form shell), `ConsultationSummaryDownload.tsx` (browser-generated checklist export for supported relationships only), `SecondaryWorkflowHiddenFields.tsx` (workflow hidden-field helper), `CoverageNotice.tsx` (coverage disclosure)
+- **Evidence** `src/components/evidence/`: `LocalEvidenceAnalyzer.tsx` (`use client`, bounded `pending[]` queue, `busyRef||busy` on all handlers, Standard/Extended `EVIDENCE_DEPTH_LIMITS` selector persisted in `sessionStorage`, file-type/size validation, sequential `runAllAnalysis()` with `analyzeOneFile` + per-page `try/finally{page.cleanup()}`, `numPages` validation, `render`/`recognize` `try/catch` + `worker.terminate()/loadingTask.destroy()` + `queueMicrotask` truncation warning), `LocalEvidenceReview.tsx` (`useSyncExternalStore` on `evidenceAnalysisStorageKey`, nexus vs. supporting excerpts), `EvidenceGapCoverage.tsx` (per-gap chip vs. `EvidenceAnalysis`), `EvidenceGapReview.tsx` (user-controlled `localStorage` checklist for Step 6, not auto-satisfied)
+- **Presumptive** `src/components/presumptive/`: `ServiceHistoryTemplateLibrary.tsx` (location/date/branch template picker)
+- **Secondary** `src/components/secondary/` (8 files, incl. 5 Phase 1+2): `SecondarySuggestionsTabs.tsx` (Step 5 tabs: `ConditionTimelineVisualization` `TimelineConditionInput/Connection` → onsetYear/diagnosisYear chronology), `CitationDeepDiveExplorer.tsx` (provenance explorer for `sourceReferences`), `ConditionTimelineVisualization.tsx` (chronology graph for `conditionTimeline`), `MedicationContextExplainer.tsx` (`MedicationContextUploadExplainer`), `PrintReportButton.tsx` (print-to-PDF via browser), `SecondaryWorkflowCompletionActions.tsx` (`SecondaryWorkflowCompletionActions` / `SecondaryWorkflowRestartButton` — `clearSecondaryWorkflowSession` + `clearSecondaryWorkflowLocalState` on `sessionStorage` then `redirect`), `VoiceInputTextarea.tsx` (`VoiceInputTextarea` + `VoiceInputHotkeyBridge` for bounded `medications`/`treatments`/`history` dictation), **`MedicalRecordChecklist.tsx`** *(Phase 1 #1)* (`use client`, `useState<Set<string>>` in-memory checklist NOT in `sessionStorage`, live count, `formatMedicalRecordChecklist` → `Blob text/plain` browser download; fieldset per condition with `CHECKLIST_CATEGORY_LABEL` badge + `why` text), **`ConditionComparisonTool.tsx`** *(Phase 1 #2)* (`use client`, `useMemo catalogById`, comparable=`recommendation!==null`, picker ≤3 with `selected.includes` toggle + disabled at cap, 7-col table `consensusBadgeTone`→`badgeClass` tones, `Download comparison` `formatConditionComparison` blob, `<2` → "Select at least 2"), **`CombinationInsightsPanel.tsx`** *(Phase 1 #10)* (`analyzeCombinationInsights` pairwise cards with `combinationRelationLabel` badge + reason/evidence/strategy+`riskNote`, `Download insights` blob), **`RatingGuide.tsx`** *(Phase 2 #3)* (`use client`, `useState<string[]>` checked prompts + `Set` toggle, generic `GENERIC_RATING_SCALE` ticks + `RATING_SCALE_NOTE`, 8-prompt matcher `does not assign a rating` copy + live count, filterable per-condition `ratingSchedule` cards + `VERIFIED`/`UNVERIFIED` badges + review-notes, `Download rating guide` blob), **`ActionPlan.tsx`** *(Phase 2 #5)* (`buildActionPlan` prioritized `#1…n` numbered cards + static Weeks 1–2/2–4/4+/Months 3–5 timeline + `va.gov/find-forms`/`21-526EZ`/`OGC`/`/vso` links + disclaimer, `Download action plan` blob)
+- **VA** `src/components/va/`: `DisabilityReferenceExplorer.tsx` (VA reference explorer with `sourceLabel/environment/retrievedAt/cacheStatus/live` + local-fallback notice)
+- **Routing shells:** `src/app/components/CoverageNotice.tsx` (global coverage notice)
+
+### 5. Security & Proxy Layer
+
+- **src/proxy.ts** (Edge middleware, `export function proxy(request: NextRequest)`): `buildContentSecurityPolicy(nonce)` — `script-src 'self' 'nonce-{nonce}' 'strict-dynamic' + ('unsafe-eval' in development) + 'wasm-unsafe-eval'` (narrow WASM allowance for `tesseract.js` in `LocalEvidenceAnalyzer`), `script-src-attr 'none'`, `style-src 'self' 'unsafe-inline'` (React/Next styles retained; script nonce is the audit boundary), `img-src 'self' data: blob:`, `font-src 'self' data:`, `connect-src 'self'` (prod) / `'self' ws: wss:` (dev), `worker-src 'self' blob:`, `manifest-src 'self'`, `media-src 'self' blob:`, `frame-src 'none'`, `object-src 'none'`, `base-uri 'self'`, `form-action 'self'`, `frame-ancestors 'none'`, `upgrade-insecure-requests`; per-request `nonce = Buffer.from(crypto.randomUUID()).toString("base64")` injected as `x-nonce` + `Content-Security-Policy` on both request headers (for `connection()` nonce propagation) and response; `config.matcher` excludes `_next/static|_next/image|favicon.ico` and skips `next-router-prefetch` / `purpose:prefetch`
+- **src/instrumentation.ts**: `export function register() { registerOTel({ serviceName: "secondary-condition-finder" }); }` — Vercel `registerOTel` hooks server tracing; custom histograms/counters in `logger.ts` inherit the exporter via lazy `getMeter`
+- **Headers foundation** `next.config.ts`: `securityHeaders = [{Referrer-Policy:no-referrer}, {X-Content-Type-Options:nosniff}, {X-Frame-Options:DENY}, {Permissions-Policy:camera=(),microphone=(),geolocation=(),payment=(),usb=()}, {Strict-Transport-Security:max-age=31536000; includeSubDomains}]` on `/:path*`, `reactStrictMode:true`, `poweredByHeader:false`, `outputFileTracingIncludes {"/**":["./data/**/*.json"]}` so KB/presumptive/regulatory JSON ships in Vercel + Azure standalone; `isAzureStaticWebAppsBuild` toggles `output:"standalone"`
+- **Layout nonce contract** `src/app/layout.tsx`: `await connection()` forces request-time rendering so Next.js applies the per-request nonce to framework/page scripts; `RootLayout` wraps `children` in `app-shell` with `skip-link` accessibility anchor
+
+### 6. Scripts & Automation
+
+- **scripts/audit-test-composition.js**: Verifies 100% of critical-module manifest has executable-test imports; enforces server-action placement, client-boundary, track-separation, and evidence-parser architecture rules
+- **scripts/validate-knowledge-base.js**: Full KB structural and referential-integrity validation
+- **scripts/audit-citation-verification.js**: Citation safety, provenance, and verification-debt audit
+- **scripts/audit-citation-decay.js**: Active link-rot probe (maintainer-run gate, not per-PR)
+- **scripts/audit-me-compliance.js**: Compliance audit for all mappings against CRG schema, nexus-arm, consensus, and guard-honesty rules
+- **scripts/audit-evidence-architecture.js**: Evidence parser security boundary audit
+- **scripts/audit-regulatory-intelligence.js**: Regulatory action seed-record validation
+- **scripts/check-deploy-freeze.js**: Deployment-freeze guard for CI gates
+
+## Data Architecture
+
+### Storage Model
+
+- **Version-Controlled JSON**: All condition catalogs, knowledge-base mappings, presumptive categories, regulatory seed records, and demo scenarios are stored as `.json` files in the repository
+- **Disk-Based Runtime Load**: At application startup (build time for static generation, runtime for dynamic routes), all JSON files are loaded, validated with Zod, and held in process memory
+- **No External Database**: No traditional RDBMS; no separate backend service
+- **Immutable Data Snapshots**: Each production deployment carries a specific knowledge-base snapshot; changes require a new deployment and CI validation
+
+### Data Organization (813 catalog / 813 KB invariant)
+
+```
+data/
+├── conditions/               # 33 JSON files grouped by body system (incl. expansion waves: cardiovascular, digestive, endocrine, hemic, infectious, mental-disorders, musculoskeletal-wave-1/2, dental-oral, carried-over; e.g. endocrine.json carries Cushing's syndrome/DC7907, Type 1 diabetes/DC7913, Hyperthyroidism/DC7900, Hyperparathyroidism/DC7904, Hypoparathyroidism/DC7905; carried-over.json quarantines contralateral-knee-condition)
+├── knowledge-base/           # 813 JSON files, one per catalog id (e.g. ptsd.json, osteoarthritis.json) — each {id, draft, todo[], governanceNotes[], suggestions: Suggestion[]} with CRG trio + sourceReferences; current snapshot 140 published / 673 draft / 363 relationships / 379 verified refs
+├── presumptives/             # 2 authored exposure categories: agent-orange.json, burn-pits.json (+ README) — ExposureCatalog with qualifyingService {locations, startDate, endDate} and presumptive conditions
+├── evidence/                 # Master source registry & lineage (master-sources.json governs 346 active / 355 total entities including history; master-relationships.json, lineage audited by scripts/audit-master-registry.js)
+├── regulatory-actions/       # Provenanced FR/OIRA seed records (e.g. 2900-AR32.json, 2900-AR75.json, 2900-AS40.json, 2900-AS49.json + README.md) + RegulatoryAction registry
+├── demo-scenarios.json       # ≥3 synthetic scenarios (single + multi-primary overlap) in current workflow terms (diagnosedIds, serviceConnectedIds, ratings/decline, documentsShared, medications/treatments/history)
+├── citation-retirements.json # Retired citation audit trail
+└── expansion-dispositions.json # 502-identity expansion authoring disposition metadata
+```
+
+Counts and identities are contract-enforced: `npm run kb:validate` + `tests/…catalog…` fail on catalog/KB drift; 813/813 is a versioned product target, not a medical claim.
+
+### Data Flow (six-step secondary workflow is the canonical path)
+
+1. **Intake FormData** → Server Action (`saveDiagnosedSelection` / `saveServiceConnectedSelection` / `saveRatingsSelection` / `saveDocumentsSelection` via `appendFormData` → `parse*Selection` Zod + bounds `MAX_CONTEXT_ITEMS`/`MAX_CONTEXT_ITEM_LENGTH`/`VALID_RATINGS`/`timelineField`)
+2. **Session write** → `sealWorkflowState` (AES-256-GCM `v2` `{issuedAt,expiresAt,payload}`, SHA-256 key, `WORKFLOW_SESSION_MAX_AGE_SECONDS=1800`, `MAX_WORKFLOW_COOKIE_VALUE_BYTES=3800`) → `Set-Cookie: secondary-workflow-v2` (`httpOnly:true, sameSite:"strict", secure:production, path:"/secondary", maxAge:1800`) + `auditLog` sanitized; `writePresumptiveSession` mirrors for `presumptive-workflow-v1`
+3. **Regulatory preflight lock** → Step 5 `prepareRegulatoryReview({conditionIds: diagnosed+serviceConnected})` establishes `RegulatoryPreflightSnapshot {snapshotId, registryDigest, freshness, reviewMode, legalRegulatoryConclusionsAllowed}` before `recommend()`; `?regSnapshot={id}` carried to Step 6 and resolved via `loadLockedRegulatorySnapshot` / `missingLockedRegulatorySnapshot` fail-closed to `medical-only` (never silent substitute)
+4. **Recommendation** → `buildSecondaryRecommendationIntake(state)` → `recommend(catalog=813, kb=813, intake)` (`CONSENSUS_ORDER` `1/rank`, multi-primary accumulation, `HISTORY_SIGNAL_ALIASES` warnings, `findChronologyWarnings`/`findIntermediatePathways` 2-edge only, `matchIntakeContext` literal, Focus Engine `diagnosedConditionIds` strict filter `score desc→name`) → `buildNonServiceConnectedConditionResults` (every not-service-connected diagnosis as top-level row, `recommendation|null`)
+5. **Evidence (browser-local only)** → `LocalEvidenceAnalyzer` (`pending[]` bounded queue, `busyRef||busy`, `extractLocalEvidenceDocument` dispatcher + `assertSafeDocxArchive`/`assertFileSize` + per-page `page.cleanup()`/`worker.terminate()` + `conditionTermPattern` matching) → `EvidenceAnalysis` → `sessionStorage:secondary-condition-finder:evidence-analysis:v1` via `serializeStoredEvidenceWithInfo` byte-budget (`trim oldest + queueMicrotask dropped warning`), `EvidenceGapCoverage` chips + `EvidenceGapReview` checklist (user-controlled `sessionStorage`/`localStorage`, never auto-satisfied)
+6. **Export** → `ConsultationSummaryDownload` / `PrintReportButton` browser-generates checklist for supported relationships only (no raw excerpts / no `matchedIntakeContext` by default) — never persisted server-side
+
+## Security Architecture
+
+### Authentication & Authorization
+
+- **No User Accounts**: Application is public; all routes are unauthenticated
+- **Workflow State Only**: No individual Veteran account integration; no credentialed VA system access
+- **Server Action CSRF Protection**: Next.js provides built-in CSRF protection for Server Actions
+- **Bearer Token Gates**: `/api/regulatory/preflight` accepts `REGULATORY_SYNC_SECRET` or `CRON_SECRET` (environment-based)
+
+### Encryption & Integrity
+
+- **Session Tokens**: AES-256-GCM encryption + HMAC-SHA256 authentication
+- **Token Structure**: Encrypted payload includes expiry timestamp; server validates both token signature and timestamp
+- **Secret Rotation**: `WORKFLOW_SESSION_SECRET` must be at least 32 characters in production; missing/short secrets fail closed
+- **Fallback**: `SECONDARY_WORKFLOW_SESSION_SECRET` for backward compatibility (non-production only)
+
+### Content Security Policy
+
+- **Per-Request Nonce**: Edge middleware (src/proxy.ts) injects a unique nonce on every response
+- **script-src**: Does not use `'unsafe-inline'`; relies on nonce for Next.js framework scripts
+- **connect-src**: `'self'` only; no third-party CDNs, analytics, or telemetry SDKs
+- **wasm-unsafe-eval**: Narrow allowance for in-browser OCR (Tesseract.js WASM) only
+- **Other Directives**: frame-ancestors 'none', object-src 'none', base-uri 'self', form-action 'self'
+
+### Security Headers
+
+- **Referrer-Policy**: no-referrer (prevent referrer leakage)
+- **X-Content-Type-Options**: nosniff
+- **X-Frame-Options**: DENY (clickjacking prevention)
+- **Strict-Transport-Security**: max-age=31536000; includeSubDomains (HSTS)
+- **Permissions-Policy**: camera=(), microphone=(), geolocation=(), payment=(), usb=() (disable unnecessary APIs)
+
+### Data Boundaries & Privacy Enforcement
+
+- **No Client-Side Analytics**: No Google Analytics, Mixpanel, or similar SDKs; `connect-src 'self'` (prod) in CSP `proxy.ts` + `next.config.ts` headers
+- **Sanitized server logging only**: `src/lib/observability/logger.ts` redacts `payload|rawText|evidence|cookie|secret|apiKey`; `audit.ts` redacts `diagnosed|serviceConnected|medications|treatments|history` — raw evidence, workflow payloads, and secrets never enter `stdout`/`stderr` or OTel; `error.tsx` boundaries log `message+digest` only
+- **Browser-Only Evidence (enforced)**: Raw bytes/text never hit `/api` or `writeSecondaryWorkflowSession`; processed only via `LocalEvidenceAnalyzer` WASM (`pdfjs-dist` + `tesseract.js` same-origin `/public/tesseract/*` + `mammoth`), retained only as `EvidenceAnalysis` excerpts in `sessionStorage:evidence-analysis:v1` (tab-scoped, `STANDARD_LIMITS.storedBytes=256KB` → `EXTENDED 3MB` budget, `serializeStoredEvidenceWithInfo` trims oldest, `loadStoredEvidence` fail-closed) + `evidenceGapReviewStorageKey` (local checklist); `audit:evidence-architecture` + `ingestion-privacy` tests fail if evidence reaches server
+- **Clean URL History**: Every `redirectValidation` and workflow `Link` uses clean route paths (`/secondary/*`, `?error={code}` only); `diagnosedConditionIds`/`serviceConnectedConditionIds`/`ratings`/`medications` never serialize into query/history/referrer — verified by `tests/secondary-workflow-privacy.test.ts`
+- **Cookie Scope & Lifetime**: `secondary-workflow-v2` `path:/secondary` + `presumptive-workflow-v1` `path:/presumptive`, both `httpOnly:true, sameSite:"strict", secure:production, maxAge:1800`, server-authenticated `issuedAt/expiresAt` inside token (not browser `Max-Age` alone), budget `3800B` → `try/catch` + `invalid-context`/`select-*` redirect; cleared by `finishSecondaryWorkflow`/`restartSecondaryWorkflow` + `clearSecondaryWorkflowLocalState(sessionStorage)`
+
+### Rate Limiting & Edge Security
+
+- **Vercel Edge WAF**: Automatic DDoS protection and IP-based rate limiting on Server Actions + `GET /api/health` / `GET /api/regulatory/preflight`
+- **VA API budgets (process-local only, fail-closed in production/distributed):** `VA_API_OUTBOUND_WINDOW_MS=60000` / `VA_API_OUTBOUND_MAX_REQUESTS_PER_SERVICE=60` via `claimOutboundRequestSlot(service)` in `sandbox.ts`; `VA_REFERENCE_CACHE_TTL_MS=300000` LRU-32; `vaProcessLocalStateAllowed()` (`production` or `VERCEL|AWS_LAMBDA_FUNCTION_NAME|FUNCTIONS_WORKER_RUNTIME|K_SERVICE` → live fetch + cache refuse, `VA_SHARED_STATE_REQUIRED_ERROR`); circuit breaker `FAILURE_THRESHOLD=5` → `open 60s` → `half-open` probe (`src/lib/va/circuit-breaker.ts`) gates `requestVaJson` before fetch
+- **Regulatory Preflight:** `REGULATORY_PREFLIGHT_SOURCE_TIMEOUT_MS=8000` per-source (`http.ts` `AbortController`) + bounded server-local cache `latest.json` + `snapshots/` capped at 20 via atomic write `fs.writeFileSync→renameSync` (`cache.ts`), plus `check-deploy-freeze` provider guard in CI
+
+## Infrastructure & Deployment
+
+### Hosting & CDN
+
+- **Primary**: Vercel (edge-accelerated serverless, auto-scaling)
+- **Fallback**: Azure Static Web Apps (legacy manual deployment only)
+- **Build System**: Next.js standalone output for both Vercel and Azure deployments
+- **Environment Detection**: `AZURE_STATIC_WEB_APPS_BUILD` flag switches output mode at build time
+
+### Build & Optimization
+
+- **Static Generation**: Knowledge base is included in the static output via `outputFileTracingIncludes` so Vercel can cache and serve it efficiently
+- **Streaming**: Server components can stream to the client while data loads
+- **Image Optimization**: Next.js Image component for responsive image delivery
+- **Bundle Analysis**: ESLint and TypeScript provide static analysis; no separate bundler instrumentation configured
+
+### Environment Configuration (server-only; never `NEXT_PUBLIC_*`)
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `WORKFLOW_SESSION_SECRET` | dev fallback outside prod | AES-256-GCM workflow token key (HMAC, `v2`, `1800s` maxAge, `3800B` cookie cap). **Production requires ≥32 chars — fails closed** (`workflowSessionSecret()` throws, `workflowSessionRuntimeReady()` → `false`). |
+| `SECONDARY_WORKFLOW_SESSION_SECRET` | unset | Non-production backward-compat fallback. Prefer `WORKFLOW_SESSION_SECRET`. |
+| `VA_API_ENV` | `sandbox` | VA adapter environment `sandbox`|`production` (via `loadVaApiConfig`). |
+| `VA_API_ENABLED` | `false` (disabled) | Generic enable flag — `true` required for any live VA traffic. |
+| `VA_SANDBOX_ENABLED` | `false` | Legacy sandbox-only gate when `VA_API_ENABLED` is unset. |
+| `VA_FORMS_SANDBOX_API_KEY` | unset | VA Forms sandbox credential (server-only). |
+| `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY` | unset | Benefits Reference Data sandbox credential. |
+| `VA_FORMS_PRODUCTION_API_KEY` | unset | VA Forms production credential — external VA production access is a separate gate (`#287`). |
+| `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY` | unset | Benefits Reference Data production credential — same gate. |
+| `VA_FORMS_SANDBOX_BASE_URL` | `https://sandbox-api.va.gov/services/va_forms/v0` | Per-service SANDBOX origin override (must be `https` on `https://sandbox-api.va.gov`). |
+| `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL` | `https://sandbox-api.va.gov/services/benefits-reference-data/v1` | Same. |
+| `VA_FORMS_PRODUCTION_BASE_URL` | `https://api.va.gov/services/va_forms/v0` | Per-service PROD origin override (must be `https` on `https://api.va.gov`). |
+| `VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL` | `https://api.va.gov/services/benefits-reference-data/v1` | Same. |
+| `VA_API_TIMEOUT_MS` | `4000` | Outbound VA per-attempt timeout (ms). Fallback `VA_SANDBOX_TIMEOUT_MS`. |
+| `VA_SANDBOX_TIMEOUT_MS` | `4000` | Legacy sandbox timeout fallback. |
+| `REGULATIONS_GOV_API_KEY` | unset | Optional Regulations.gov docket/comment enrichment for preflight. |
+| `REGULATORY_PREFLIGHT_MAX_AGE_HOURS` | `24` | Regulatory cache freshness ceiling. |
+| `REGULATORY_PREFLIGHT_SOURCE_TIMEOUT_MS` | `8000` | Per-source HTTP timeout for regulatory preflight. |
+| `REGULATORY_PREFLIGHT_CACHE_DIR` | bounded OS temp dir `secondary-condition-finder-regulatory` | Optional server-local preflight cache location (holds `latest.json` + `snapshots/` capped at 20). |
+| `REGULATORY_SYNC_SECRET` | unset | Bearer `Authorization: Bearer …` for `GET /api/regulatory/preflight` (`timingSafeEqual`). |
+| `CRON_SECRET` | unset | Fallback bearer for same endpoint + scheduled CI jobs; also accepted when `REGULATORY_SYNC_SECRET` unset. |
+| `AZURE_STATIC_WEB_APPS_BUILD` | unset | `1` → `nextConfig.output:"standalone"` for legacy Azure fallback. |
+
+**Production Secrets Policy**: All sensitive values belong only in Vercel's env dashboard / deployment secret store; do not expose via `NEXT_PUBLIC_*` or commit. `src/lib/va/sandbox.ts` enforces `https` + exact VA origin + `apikey` header + `X-Request-ID`; `src/lib/workflow-session-crypto.ts` + `src/instrumentation.ts` never log secrets (logger redacts `secret|apiKey`). VA cache/request-budget are intentionally process-local and refuse live traffic in `production`/distributed runtimes until a shared coordinator exists (`vaProcessLocalStateAllowed` / `#287`).
+
+### CI/CD Pipeline (.github/workflows/ — triggers: push to `main`, PRs, `workflow_dispatch`, scheduled jobs)
+
+- **Build:** `npm ci` + `npm run build` (`next build`, tolerates audit `moderate` only; `high|critical` fails) on `e2e/verify.yml` (Node 22), `regulatory-intelligence.yml` (`regulatory:audit`), `verify-regulatory-intelligence.yml`
+- **Validation gates (all required for merge, `verify` workflow):**
+  - `npm run typecheck` (`tsc --noEmit`, strict)
+  - `npm run lint` (`eslint 9.x`, `eslint-config-next`)
+  - `npm test` (`vitest run`, 195/195 files · 1029 tests, fail on any failure)
+  - `npm run kb:validate` (`scripts/validate-knowledge-base.js` — KB structural + referential integrity)
+  - `npm run citations:audit` (`scripts/audit-citation-verification.js` — citation provenance + verification-debt ratchet)
+  - `npm run audit:me-compliance` (`scripts/audit-me-compliance.js` — audits every mapping incl. ME-1..ME-39 for CRG/nexus-arm/consensus/guard-honesty/citation/quarantine)
+  - `npm run test:composition` (`scripts/audit-test-composition.js` — 100% critical-module manifest has executable import; enforces server-action placement in `src/lib/actions/`, client-boundary (`server-only`), track-separation secondary↔presumptive, evidence-parser browser-local boundary)
+  - `npm run evidence:architecture` (`scripts/audit-evidence-architecture.js` — verifies evidence bytes never reach server)
+  - `npm run regulatory:validate` + `npm run regulatory:audit` (`scripts/validate-regulatory-actions.js` / `scripts/audit-regulatory-intelligence.js` — provenanced seed + lifecycle/authenticity/cross-KB)
+  - `npm audit --audit-level=high` (`npm run audit:high` — `0 high` required)
+  - `scripts/check-deploy-freeze.js --provider=vercel` (`npm run deploy:guard:vercel` — deployment freeze guard)
+  - Live `npm run citations:decay` is **maintainer-run only** (not per-PR; probes real URLs)
+- **E2E (Chrome/ChromeDriver, after `next build`):** `npm run dev &` → wait → Chrome headless journeys for secondary 6-step workflow (diagnosed→service-connected→ratings→upload→suggestions→evidence) including Phase 1+2 aids on Steps 5/6 (`MedicalRecordChecklist` checkboxes, `ConditionComparisonTool` picker+table, `CombinationInsightsPanel` pairwise cards, `RatingGuide` prompts+cards, `ActionPlan` ranked cards — verified by `tests/secondary-phase1.test.ts` + `phase2.test.ts` unit contracts and `suggestions`/`evidence` page wiring checks), presumptive track, SC/ratings `aria-describedby`/`aria-invalid`/`role=alert`/`aria-live` contracts, `/privacy` limits verbatim, and `error.tsx` boundary recovery; also `npm run regulatory:preflight:test`
+- **Vercel CI parity:** `vercel-build.sh` runs the full audit chain (including `high` audit) before any preview deploy
+- **Deployment:** Automatic Vercel production deploy after `verify` passes on `main`; `outputFileTracingIncludes` ships `data/**/*.json` in both Vercel and Azure standalone; `VERCEL`/`AWS_LAMBDA_FUNCTION_NAME`/`K_SERVICE` markers gate VA live traffic (`vaProcessLocalStateAllowed`)
+- **Production Runtime Readiness:** Post-`main` CI confirms exact Vercel deployment, canonical alias convergence, full public route matrix (`/`, `/secondary/*`, `/presumptive`, `/privacy`, `/runtime-readiness`, `/api/health`), and `workflowSessionRuntimeReady()` session marker — required freshness evidence for `docs/phase3-production-access-package.md` submission
+
+### Monitoring & Observability
+
+- **OpenTelemetry Tracing**: `src/instrumentation.ts` → `@vercel/otel` `registerOTel({ serviceName: "secondary-condition-finder" })`; lazy histograms `recommendation.latency.ms` / `evidence.parser.duration.ms` / `va.api.latency.ms` + counter `va.api.errors` via `src/lib/observability/logger.ts` (best-effort, no-throw)
+- **Structured logger + audit**: `src/lib/observability/logger.ts` (`createLogger`, JSON lines, redacted `payload|rawText|evidence|cookie|secret|apiKey`) wired into `recommend.ts` (`recommendation executed` + `recordRecommendationLatency`) and `sandbox.ts` (`va request success|http error|invalid payload|timeout|network-error|retrying|circuit-open` + `recordVaApiLatency/Error` per path); `src/lib/observability/audit.ts` (`auditLog` with `workflow-*` / `presumptive-*` / `regulatory-preflight-*` sanitized, `failure|unauthorized→warn` else `info`) invoked in every secondary/presumptive action + regulatory preflight route
+- **Health probe** `src/app/api/health/route.ts` (`force-dynamic`, `runtime:nodejs`, `GET`): parallel `checkCatalog()` (`loadConditionCatalog()` → `{status:"ok"|"error", latencyMs, count?, detail?}`) + `checkSessionCrypto()` (ephemeral `sealSessionPayload`/`openSessionPayload` round-trip with synthetic `health-probe-ephemeral-secret-32-plus-characters-long` so health never depends on env secret) + synchronous `checkVaConfig()` (`loadVaApiConfig()` → `{enabled, environment, detail: enabled ? "enabled ({env}) — live integration requires shared coordinator in production" : "disabled ({env}) — local fallback active"}`) + `getCircuitSnapshot()` (`va-forms` / `benefits-reference-data` `closed|open|half-open`); response `{status: healthy|degraded, components:{catalog, sessionCrypto, vaConfig, circuitBreaker:{status:"ok", latencyMs:0, detail:"va-forms:{state} benefits-reference-data:{state}", snapshot}}, latencyMs, timestamp:ISO}` with `200` when `catalog+sessionCrypto ok` else `503` — no secrets, no payloads; visible in build as `ƒ /api/health`
+- **Runtime Readiness** `src/app/runtime-readiness/page.tsx`: Vercel deployment, canonical alias, public route-matrix (incl. `/secondary/*`, `/presumptive`, `/privacy`), and workflow-session marker (`workflowSessionRuntimeReady()` → ephemeral seal/open with `WORKFLOW_SESSION_SECRET≥32` in production) — required for production-access package freshness checks
+- **Error Boundaries** (`use client`, `console.error(JSON.stringify({timestamp, level:"error", component:"…-error-boundary", message, digest}))` + `Try again (reset()) / Go home (Link)`; never renders stack/PII): `src/app/error.tsx` (root `root-error-boundary`), `src/app/secondary/error.tsx` (`secondary-error-boundary`), `src/app/presumptive/error.tsx` (`presumptive-error-boundary`), `src/app/api/error.tsx` (`api-error-boundary`) — each warns "This is not a VA or medical determination" and "do not paste medical records/credentials/cookies"; plus custom 404 with disclosure/privacy links
+
+## API Design
+
+### Server Actions (Form-Based Mutations — `use server` + `server-only` unless noted)
+
+```
+POST /secondary/diagnosed        → saveDiagnosedSelection(FormData)         → redirect /secondary/service-connected | ?error=select-diagnosed
+POST /secondary/service-connected → saveServiceConnectedSelection(FormData)  → redirect /secondary/ratings | ?error=answer-service-connected|no-service-connected
+POST /secondary/ratings          → saveRatingsSelection(FormData)            → redirect /secondary/upload | ?error=select-rating|invalid-rating
+POST /secondary/upload           → saveDocumentsSelection(FormData)          → redirect /secondary/suggestions | ?error=select-documents|invalid-context
+POST /secondary/* (completion)   → finishSecondaryWorkflow()                 → clear cookie+localStorage → redirect /secondary
+POST /secondary/diagnosed        → restartSecondaryWorkflow()                → clear cookie+localStorage → redirect /secondary/diagnosed
+POST /presumptive                → saveServiceHistory(FormData)              → writePresumptiveSession → redirect /presumptive/results | ?error=select-location|date-order|invalid-date
+POST /scenarios                  → launchDemoScenario(FormData)              → bounded scenarioId → writeSecondaryWorkflowSession → redirect /secondary/suggestions
+```
+
+- **Input:** `FormData` with name-value pairs (no raw evidence bytes; evidence stays in `sessionStorage`). Every action appends via `appendFormData` helper then parses through `src/lib/secondary-workflow/state.ts` Zod + bounds.
+- **Validation:** `MAX_CONTEXT_ITEMS=20` × `MAX_CONTEXT_ITEM_LENGTH=160`, `MIN/MAX_TIMELINE_YEAR 1900–2100`, `VALID_RATINGS` + `decline→null`, `MAX_WORKFLOW_COOKIE_VALUE_BYTES=3800`, `scenarioId` `^[a-z0-9-]+$` ≤80, `serviceHistorySchema` locations/date-order; `try/catch` on every `writeSecondaryWorkflowSession` → `console.error` + `auditLog(failure)` + `redirectValidation` (code-health #5).
+- **Output:** Server `redirect()` to next workflow step; failures surface as `?error={code}` consumed by `secondaryValidationMessage` → `role=alert` + `aria-describedby` on the target page (validated by `tests/workflow-validation-accessibility.test.ts`). Back-links use clean route paths — no workflow state in URLs/history/referrers.
+- **Security:** Next.js built-in CSRF for Server Actions + `server-only` import guard + encrypted `secondary-workflow-v2` / `presumptive-workflow-v1` cookies (`httpOnly`, `SameSite=Strict`, `path` scoped, `maxAge:1800`, AES-256-GCM + HMAC + expiry inside token).
+
+### API Routes (`force-dynamic`, `runtime:nodejs`)
+
+- `GET /api/health` — Parallel `checkCatalog` + ephemeral-AES `checkSessionCrypto` (synthetic secret, never env), `checkVaConfig` (`loadVaApiConfig` → `enabled/environment/detail`), `getCircuitSnapshot` (`va-forms`/`benefits-reference-data` `closed|open|half-open`); `{status:"healthy"|"degraded", components:{catalog,sessionCrypto,vaConfig,circuitBreaker}, latencyMs, timestamp}` → `200` when core `catalog+sessionCrypto ok` else `503`; no secrets/payloads; `ƒ /api/health` in build.
+- `GET /api/regulatory/preflight` — `Authorization: Bearer {REGULATORY_SYNC_SECRET|CRON_SECRET}` via `timingSafeEqual`; `401` + `auditLog("regulatory-preflight-unauthorized")` on fail; else `refreshRegulatoryPreflightCache()` → `auditLog("regulatory-preflight-triggered", count)` → `{ok:true, snapshotId, finishedAt, freshness, reviewMode, legalRegulatoryConclusionsAllowed, changeCount, relevantChangeCount}`. Used by scheduled `regulatory-intelligence` workflow.
+
+### Workflow Pages (cookie-backed, `force-dynamic`, `server-only` session read)
+
+- `GET /secondary/diagnosed` — Step 1 (catalog list, `diagnosed` checkboxes)
+- `GET /secondary/service-connected` — Step 2 (per-diagnosis `serviceConnected-{id}` yes/no, draft retention)
+- `GET /secondary/ratings` — Step 3 (`rating-{id}` select)
+- `GET /secondary/upload` — Step 4 (`LocalEvidenceAnalyzer` depth toggle `Standard|Extended` + `medications/treatments/history/symptomIds/timeline/documentsShared` bounded inputs)
+- `GET /secondary/suggestions?regSnapshot={id}` — Step 5 (locks snapshot via `prepareRegulatoryReview({conditionIds})` before `recommend()`, diagnosis-centered `NonServiceConnectedConditionResult[]`, `RegulatoryPreflightStatus`, `SecondarySuggestionsTabs` + `ConditionTimelineVisualization` + research aids `ConditionComparisonTool` + `CombinationInsightsPanel` + `RatingGuide` + `ActionPlan` (Steps 5/6 parity for printable report))
+- `GET /secondary/evidence?regSnapshot={id}` — Step 6 (reuses lock via `loadLockedRegulatorySnapshot`/`missingLockedRegulatorySnapshot` fail-closed to `medical-only`, `EvidenceGapReview` + `LocalEvidenceReview` + `ConsultationSummaryDownload` + research aids `MedicalRecordChecklist` + `RatingGuide` + `ActionPlan`)
+- `GET /presumptive` / `GET /presumptive/results` — Presumptive intake + `matchPresumptives` results (exact-location + inclusive-date, `datesConfirmed` flag, `unmatchedLocations`, `hasUnconfirmedDates`)
+- `GET /scenarios` — Lists `data/demo-scenarios.json`; `POST` via `ScenarioLaunchForm` → `launchDemoScenario`
+- `GET /privacy` — Publishes Standard/Extended limits verbatim from `src/lib/evidence/limits.ts` (`EVIDENCE_DEPTH_LABELS`) + browser-local privacy contract
+- `GET /runtime-readiness` — Vercel deployment + alias + route-matrix + `workflowSessionRuntimeReady` marker
+- `GET /va-forms` / `/va-forms/finder?query=` + `GET /va-reference` / `/va-reference/service-branches` — VA public-reference pages (disabled by default, local fallback + `sourceLabel`/`cacheStatus`); filtering stays local to browser
+
+## Testing Strategy
+
+### Unit & Integration Tests (Vitest `vitest run` — 197 files / 1044 tests, as of `a6bed87`)
+
+- **Phase 1 + 2 research-aid contracts:** `tests/secondary-phase1.test.ts` (7 cases: `categorizeGap`/`WHY_BY_CATEGORY`, `buildMedicalRecordChecklist`/`CHECKLIST_CATEGORY_LABEL`, `buildComparisonRows`/`formatConditionComparison`/`consensusBadgeTone`, `analyzeCombinationInsights` synergistic/independent/conflicting, page wiring for Steps 5/6, non-determination boundaries) + `tests/secondary-phase2.test.ts` (8 cases: `buildRatingGuide`/`GENERIC_RATING_SCALE`/`GENERIC_FUNCTIONAL_PROMPTS`/`RATING_SCALE_NOTE`/`formatRatingGuide`, informational-only no-prediction language, Step 5+6 wiring for both guides, `buildActionPlan` `CONSENSUS_ORDER` ranking + `actionPlanSteps` 4-step structure + timeline/`va.gov`/`OGC`/`/vso` links + `formatActionPlan` empty-state, no new data collection / LLM / `connect-src` contract)
+
+- **Catalog/KB integrity:** `kb:validate` + referential tests (every `Suggestion.conditionId` exists in `loadConditionCatalog()`), strict Zod unknown-key rejection, CRG `nexusClaim` discriminated-union + `causalMechanism` 16-category + `evidentiaryProfile` consensus + `sourceReference` provenance + `conditionMappingSchema` `draft/todo/suggestions/rank gapless` guards, `audit:me-compliance` across all 813 mappings (ME-1..ME-39)
+- **Recommendation engine:** consensus `1/rank` + multi-primary accumulation + focus-engine `diagnosedConditionIds` strict filter + `score desc→name` sort, intermediate-chain 2-edge `INTERMEDIATE_CHAIN`, literal `matchIntakeContext` (excludes `pathwayIntelligence`), alternative-etiology `HISTORY_SIGNAL_ALIASES` + `canonicalHistorySignals`, chronology `onsetYear/diagnosisYear`, `OTel` `recordRecommendationLatency` emits
+- **Session crypto:** `workflow-session-crypto` AES-256-GCM `v2` `issuedAt/expiresAt` HMAC, `seal/open` round-trip, tamper/expiry fail-closed, `WORKFLOW_SESSION_SECRET≥32` production throw + dev `console.warn`, `MAX_WORKFLOW_COOKIE_VALUE_BYTES=3800` budget, `workflowSessionRuntimeReady` marker, `workflowSessionToQueryParams`/`toCompleteWorkflowState` round-trip; `tests/local-evidence-hydration.test.ts` contracts `loadStoredEvidence` fail-closed `catch{return []}` vs. `loadStoredEvidenceWithWarning` `console.warn`+500-char preview
+- **Evidence pipeline:** `extract.ts` `analyzeEvidenceText/Segments` (causation `but for|2/2` + aggravation treatment-interference + diagnosis `dx|rule out` + `BOILERPLATE_PATTERNS` exclusion, `DIAGNOSIS_SECTION_HEADERS` list-mode, `isSectionResetLine`, unicode-dash `conditionTermPattern`, `category:sentence`/`category:quote:locator` dedup), `document-extract.ts` `assertSafeDocxArchive` ZIP preflight (`0x06054b50` EOCD, `0x02014b50` central, `2000` ceiling, `40MB` declared), `extractPdfEvidence` per-page `try/finally{page.cleanup()}` + `loadingTask.destroy()`, `storage.ts` byte-budget `serializeStoredEvidenceWithInfo` + `dropped` `queueMicrotask` warning, `limits.ts` Standard/Extended invariant (DOCX ceiling identical), `document-kind`/`condition-terms`/`gap-coverage`
+- **LocalEvidenceAnalyzer contracts:** `pending[]` batch limits, `busyRef||busy` every handler, `stageFiles` validation, `runLocalOcr` `numPages` integer validation + per-page cleanup + `render`/`recognize` `try/catch`, truncation warning
+- **Regulatory preflight:** `runRegulatoryPreflight` mocked HTTP (`cache.test.ts`, `diff.test.ts`, `freshness`, `review.ts`), `prepareRegulatoryReview` `emergencySnapshot` fail-closed to `medical-only`, snapshot locking `loadLocked/missingLockedRegulatorySnapshot`, `cache` atomic `latest.json` + `snapshots/` capped at 20
+- **VA adapter:** `sandbox.ts` enabled/origin/key validation, `requestVaJson` retry (`503/504` + `timeout/network-error` one delayed `100ms` retry), `rate-limited` budget (`60/min` per service), `circuit-open` branch, per-path `vaApiLogger` + `recordVaApiLatency/Error`; `circuit-breaker.ts` `5→open 60s→half-open` probe; `runtime-state.ts` `vaProcessLocalStateAllowed` (`production`/distributed fail-closed); `reference-cache.ts` LRU-32 `5min TTL`; `disability-reference.ts` `localFallback` + `writeVaReferenceCache`
+- **Presumptive track:** `matchPresumptives` exact-location + inclusive-date (`rangesOverlap`/`partialRangeMayOverlap`), `datesConfirmed`, `unmatchedLocations`, `serviceHistorySchema` `select-location`/`date-order`/`invalid-date`, `writePresumptiveSession` same crypto envelope
+- **Secondary workflow contract:** `parseDiagnosedSelection/ServiceConnectedSelection/RatingsSelection/DocumentsSelection/WorkflowState`, `MAX_CONTEXT_ITEMS/LENGTH`, `MIN/MAX_TIMELINE_YEAR`, `VALID_RATINGS decline→null`, `secondaryValidationMessages` → `secondaryValidationMessage/Path`, `buildSecondaryRecommendationIntake` diagnosed-boundary, `suggestions.ts` diagnosis-centered `buildNonServiceConnectedConditionResults`, `symptom-bridge` 6-entry vocabulary, `local-state` key registry
+- **Catalog lookup:** `indexById` / `findCondition` (normalized exact + alias), `exposure-tags` controlled `PACT Act`/`Agent Orange` tags
+
+### Composition & Architecture Tests (`npm run test:composition` — `scripts/audit-test-composition.js`)
+
+- **Executable-import coverage 100%** of critical-module manifest (12/12 modules must have at least one executable-test import; not just file existence); emits `{testFiles:195, criticalModules:12, executableImportsCovered:12, executableImportCoveragePercent:100, architectureClean:true}`
+- **Server-action placement:** every `"use server"` function must live in `src/lib/actions/` (`secondary.ts`, `presumptive.ts`, `scenarios.ts`) — fails if a route/page declares `use server`
+- **Client boundary:** `server-only` modules (`sandbox.ts`, `state.ts`, `session.ts`, `workflow-session-crypto.ts`, `circuit-breaker.ts`, `reference-cache.ts`, `audit.ts`, regulatory `review.ts/cache.ts`) cannot be imported from a `"use client"` component (`LocalEvidenceAnalyzer`, `EvidenceGapReview`, etc.)
+- **Track separation:** `src/lib/secondary-workflow/*` and `src/lib/presumptive/*` must not cross-import internals; shared surface is only via `recommend.ts`/`engine` or `catalog`
+- **Evidence-parser architecture:** browser-local extraction (`extract.ts`, `document-extract.ts`, `document-kind.ts`, `limits.ts`, `storage.ts`) must never be imported by a server route or reach `writeSecondaryWorkflowSession` input as raw bytes — evidence stays in `sessionStorage` (`audit:evidence-architecture` also enforces this)
+
+### E2E Tests (Chrome / ChromeDriver — real browser, after `next build`)
+
+- **Secondary 6-step journey:** `/secondary/diagnosed` (checkbox `diagnosed` `formData`) → `/secondary/service-connected` (yes/no per diagnosed id, `serviceConnectedAnswerDraft` partial save, requires ≥1 yes) → `/secondary/ratings` (`rating-{id}` `aria-describedby` + `aria-invalid` contracts) → `/secondary/upload` (file-type acceptance `pdf|docx|txt|md|csv|json|log`, size/character ceilings, bounded `medications/treatments/history/symptomIds/timeline` + `documentsShared` flag, `LocalEvidenceAnalyzer` `Standard|Extended` toggle, `sessionStorage` excerpt retention) → `/secondary/suggestions` (diagnosis-centered `NonServiceConnectedConditionResult` cards, `RegulatoryPreflightStatus`, `SecondarySuggestionsTabs` + chronology, VA reference blocks) → `/secondary/evidence` (locked `regSnapshot` reuse, `EvidenceGapReview` checklist, `LocalEvidenceReview` nexus vs. supporting, `ConsultationSummaryDownload`)
+- **Presumptive journey:** `/presumptive` (location chips + `serviceStart/serviceEnd` + `serviceBranchCode`) → `/presumptive/results` (`matchPresumptives` exact-location + inclusive-date, `datesConfirmed`, `unmatchedLocations`, `hasUnconfirmedDates`)
+- **Validation & a11y contracts:** `select-diagnosed` / `answer-service-connected` / `no-service-connected` / `select-rating` / `invalid-rating` / `select-documents` / `invalid-context` → `?error={code}` → `role=alert` + `aria-describedby` + `aria-live` polite; `tests/workflow-validation-accessibility.test.ts` asserts `aria-*` on SC/ratings pages
+- **Document & OCR paths:** `extractLocalEvidenceDocument` dispatcher, DOCX ZIP preflight rejection, `LocalEvidenceAnalyzer` `Local OCR` (`createWorker` WASM, per-page render+recognize, `ocrProgress` signal), `useSyncExternalStore` hydration of `sessionStorage` excerpts on Step 6
+- **Scenarios:** `tests/demo-scenarios.test.ts` launches each `data/demo-scenarios.json` via `launchDemoScenario` and asserts deterministic `recommend()` output under current `parseWorkflowState` contract; prior `sessionStorage` evidence isolation verified
+- **Error boundaries & session expiry:** `tests/error-boundaries.test.ts` injects throw in each `error.tsx` shell and asserts recovery buttons `Try again/Go home`; expired `secondary-workflow-v2` token (`expiresAt` in past) → fail-closed empty state → `Complete prior steps first` guard with restart link
+- **Privacy limits:** `tests/ingestion-privacy.test.ts` + `tests/privacy-limits-contract.test.ts` assert evidence limits strings on `/privacy` match `src/lib/evidence/limits.ts` verbatim and that raw evidence never enters server logs/cookies
+
+### Security Tests
+
+- **CSP Nonce**: Verify per-request nonce injection at edge
+- **Session Token**: Verify HMAC and AES-256-GCM decryption; expired tokens fail closed
+- **CORS & CSRF**: Verify cross-origin requests are blocked; Server Actions have CSRF protection
+- **Evidence Boundary**: Verify uploaded documents do not appear in cookies, logs, or network traces
+
+## Deployment Checklist (must pass before Vercel production alias convergence)
+
+- [ ] `npm run build` succeeds (`next build` + `outputFileTracingIncludes` ships `data/**/*.json` for Vercel + Azure standalone)
+- [ ] All `verify` gates pass: `typecheck` (`tsc --noEmit`) · `lint` (`eslint`) · `test` (`197/197` · `1044`, `vitest run`) · `kb:validate` · `citations:audit` (ratchet) · `audit:me-compliance` (ME-1..ME-39) · `test:composition` (100% · 12/12) · `evidence:architecture` · `regulatory:validate` + `regulatory:audit` · `audit:high` (`0 high`) · `deploy:guard:vercel` (freeze)
+- [ ] E2E Chrome/ChromeDriver pass after `next build`: 6-step secondary journey + presumptive + `?error={code}` → `role=alert`/`aria-describedby` contracts + `LocalEvidenceAnalyzer` `Standard|Extended` + `/privacy` limits verbatim (`privacy-limits-contract`) + `error.tsx` boundaries + `regulatory:preflight:test`
+- [ ] `WORKFLOW_SESSION_SECRET` ≥32 chars in production secrets store (otherwise `workflowSessionSecret()` throws, `openSessionPayload` fail-closed, `workflowSessionRuntimeReady()` → `false`, auth fails on every `writeSecondaryWorkflowSession`/`writePresumptiveSession`)
+- [ ] VA config correct **or explicitly disabled**: `VA_API_ENV=sandbox|production`, `VA_API_ENABLED=true` only where intended, per-service `VA_FORMS_*`/`VA_BENEFITS_REFERENCE_*` server-only keys + `_BASE_URL` exact-origin `https` validation; production/distributed stays `local-fallback` until `#287` shared coordinator exists (`vaProcessLocalStateAllowed` → `false`)
+- [ ] `REGULATORY_SYNC_SECRET` (or `CRON_SECRET` fallback) set server-only if `GET /api/regulatory/preflight` is scheduled; `REGULATIONS_GOV_API_KEY` optional; `REGULATORY_PREFLIGHT_CACHE_DIR` points to bounded temp dir (verified by `writeRegulatoryPreflightCache` atomic write + 20-snapshot cap)
+- [ ] `src/instrumentation.ts` `registerOTel({ serviceName: "secondary-condition-finder" })` reachable; lazy `recommendation.latency.ms` / `va.api.latency.ms` etc. no-ops locally until collector present — `health` still returns `200` on `sessionCrypto ok`
+- [ ] `src/proxy.ts` CSP nonce `x-nonce` + `Content-Security-Policy` verified (`script-src 'nonce-…' 'strict-dynamic' 'wasm-unsafe-eval'`); `next.config.ts` `securityHeaders` present; `src/app/layout.tsx` `await connection()` keeps nonce contract
+- [ ] Deployment target `https://secondary-condition-finder.vercel.app` confirmed; alias converged
+- [ ] `GET /runtime-readiness` displays `ready` (`workflowSessionRuntimeReady` + route matrix `200`s)
+- [ ] `GET /api/health` returns `200 healthy` (`catalog ok` + `sessionCrypto ok`) with `latencyMs` per component and `circuitBreaker snapshot` `closed`; `503 degraded` otherwise
+
+---
+
+**Version**: 1.2 — adds Phase 1 (`01ac471`) + Phase 2 (`a6bed87`) research-aid inventories on Steps 5/6 (no new data collection, LLM, or `connect-src` change)  
+**Last Updated**: September 10, 2026  
+**Status**: Production (Vercel deployment; `verify` workflow is the merge gate) — `main` @ `a6bed87`  
+**Change note (v1.1→v1.2):** Documented Phase 1 `medical-record-checklist.ts` / `condition-comparison.ts` / `combination-insights.ts` + Phase 2 `rating-guide.ts` / `action-plan.ts` under § Secondary Workflow (now 13 modules) and `MedicalRecordChecklist.tsx` / `ConditionComparisonTool.tsx` / `CombinationInsightsPanel.tsx` / `RatingGuide.tsx` / `ActionPlan.tsx` under § UI Components (now 30 files); refreshed Step 5/6 App Router rows and Workflow Pages wiring; bumped Tests to `197/197·1044` with `tests/secondary-phase1.test.ts` (7) + `phase2.test.ts` (8) contracts; added `docs/phase3-scope-2026-09-09.md` gate for Ideas #8/#9. Prior v1.1 note retained below.
+
+*Prior — v1.0→v1.1:* Corrected Server Actions (`parseDocumentsSelection`→`saveDocumentsSelection` + `finish/restart` + `appendFormData`/`validateContext` bounded forms + `workflow-session-crypto` `v2` envelope path); expanded Secondary Workflow inventory (`ratings`/`recommendation-intake`/`suggestions`/`symptom-bridge`/`local-state` + engine `recommend.ts` not under `secondary-workflow/`); rewrote Evidence Processing from "in-memory" to tab-scoped `sessionStorage` with `limits.ts` Standard/Extended + `serializeStoredEvidenceWithInfo` byte-budget + `condition-terms`/`gap-coverage` + `LocalEvidenceAnalyzer` `busyRef||busy`/`runLocalOcr` guards; filled VA/Health/Regulatory/Observability gaps (`circuit-breaker` `5→60s→half-open`, `/api/health` ephemeral crypto probe + config+circuit, `preflight` `timingSafeEqual` bearer + `review.ts` snapshot locking, `logger.ts` JSON+OTel lazy + `audit.ts` sanitized, `error.tsx`×4 boundaries); refreshed App Router inventory (9 secondary routes incl. `ratings/*` + `upload`+`suggestions`+`evidence` with `force-dynamic`, presumptive/va-forms/va-reference/api/scenerios/privacy/runtime-readiness shells), UI Components (23 files incl. evidence/presumptive/secondary/va quartets), Data org (33 catalog files + 2 presumptive categories + `master-sources.json` `346/355` lineage + `demo-scenarios` + regulatory seeds), Env config (added `VA_FORMS_*_BASE_URL`×4 + `VA_SANDBOX_TIMEOUT_MS` + `AZURE_STATIC_WEB_APPS_BUILD`), and CI/CD + Testing Strategy (full `verify`/`evidence:architecture`/`regulatory:*` gates + Chrome E2E + composition architecture rules).

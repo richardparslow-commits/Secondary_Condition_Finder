@@ -60,7 +60,8 @@ Use only for intentional sandbox operation:
 
 - `VA_FORMS_SANDBOX_API_KEY`
 - `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`
-- optional HTTPS overrides `VA_FORMS_SANDBOX_BASE_URL` and `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL`
+- `VA_ACCREDITED_REP_SANDBOX_API_KEY` (Phase 3.1 locator; optional, additionally gated by `VA_ACCREDITED_REP_ENABLED=true`)
+- optional HTTPS overrides `VA_FORMS_SANDBOX_BASE_URL`, `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL`, `VA_ACCREDITED_REP_SANDBOX_BASE_URL`
 
 ### Production service credentials
 
@@ -68,7 +69,8 @@ Do **not** configure/enable these as an active production path until VA grants p
 
 - `VA_FORMS_PRODUCTION_API_KEY`
 - `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY`
-- optional HTTPS overrides `VA_FORMS_PRODUCTION_BASE_URL` and `VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL`
+- `VA_ACCREDITED_REP_PRODUCTION_API_KEY` (Phase 3.1 locator; optional, additionally gated by `VA_ACCREDITED_REP_ENABLED=true`)
+- optional HTTPS overrides `VA_FORMS_PRODUCTION_BASE_URL`, `VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL`, `VA_ACCREDITED_REP_PRODUCTION_BASE_URL`
 
 Merely setting `VA_API_ENV=production` must not activate production traffic. `VA_API_ENABLED=true` and the relevant service credential are also required. Forms requests use only the Forms credential; Benefits Reference Data requests use only the Benefits Reference Data credential.
 

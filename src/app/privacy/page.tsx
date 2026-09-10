@@ -78,6 +78,9 @@ export default function PrivacyPage() {
         <p>
           A credentialed VA sandbox or production integration must be objectively verified before it is described as live connectivity. Any future scope that transmits Veteran-specific workflow or evidence data to a VA API requires a separately reviewed privacy and security change. Local fallback behavior or mock data must not be described as proof of live VA connectivity.
         </p>
+        <p>
+          <strong>Accredited-representative locator (Phase 3.1).</strong> The “Find Help Near You” card on Steps 5/6 and presumptive results is an optional public-directory lookup. It sends only the 5-digit zip code you enter (and optional radius/type) to the configured VA accredited-representative directory; it does not send your diagnosed conditions, ratings, medications/treatments, evidence excerpts, or workflow selections. The zip is used only for the lookup and is not persisted to the encrypted workflow cookie, session storage, or application logs. Directory results are public data cached for five minutes (LRU-32) under the same VA reference-cache contract as forms/reference data, gated by <code>VA_ACCREDITED_REP_ENABLED</code> and the shared <code>VA_API_ENABLED</code> / distributed-runtime fail-closed boundary. When the integration is disabled or unavailable, the locator shows a clearly labeled local fallback with no directory results and links to VA’s OGC directory on va.gov.
+        </p>
 
         <h2 className="text-xl font-semibold mt-6">7. Retention summary</h2>
         <ul className="list-disc space-y-2 pl-6">

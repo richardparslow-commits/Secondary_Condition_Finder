@@ -25,13 +25,16 @@ import {
 import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
 import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workflow/suggestions";
 import { buildSymptomDiscussionPrompts } from "@/lib/secondary-workflow/symptom-bridge";
+import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
+import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
+import { accreditedRepValidationMessage, APPROVED_RADIUS_MILES, ZIP_RE } from "@/lib/va/accredited-representative-constants";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams } from "@/lib/secondary-workflow/session";
 
 export const dynamic = "force-dynamic";
 
 interface EvidenceReviewStepPageProps {
-  searchParams?: Promise<{ regSnapshot?: string | string[] }>;
+  searchParams?: Promise<{ regSnapshot?: string | string[]; zip?: string | string[]; radius?: string | string[]; type?: string | string[]; error?: string | string[] }>;
 }
 
 const firstParam = (value: string | string[] | undefined): string | undefined =>
@@ -61,7 +64,8 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
   // opens Step 6 directly, establish a snapshot before recommendation/evidence
   // output. If a prior lock disappeared, fail closed to medical-only instead of
   // substituting a newer legal snapshot mid-review.
-  const lockedSnapshotId = firstParam((await searchParams)?.regSnapshot);
+  const rawSearchParams = await searchParams;
+  const lockedSnapshotId = firstParam(rawSearchParams?.regSnapshot);
   const lockedSnapshot = loadLockedRegulatorySnapshot(lockedSnapshotId);
   const regulatoryReview = lockedSnapshot
     ? {
@@ -122,6 +126,28 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
   }));
   const suggestionsHref = `/secondary/suggestions?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
 
+  // Accredited-representative locator (Phase 3.1) — optional aid, never blocks checklist output.
+  const zipParam = firstParam(rawSearchParams?.zip)?.trim() ?? "";
+  const radiusParam = firstParam(rawSearchParams?.radius)?.trim() ?? "";
+  const typeParam = firstParam(rawSearchParams?.type)?.trim() ?? "";
+  const accreditedRepError = accreditedRepValidationMessage(firstParam(rawSearchParams?.error));
+  let accreditedRepView: Awaited<ReturnType<typeof loadAccreditedRepresentatives>> | null = null;
+  if (ZIP_RE.test(zipParam)) {
+    const radiusMiles = radiusParam ? Number(radiusParam) : undefined;
+    const radiusValid =
+      radiusMiles === undefined ||
+      (Number.isInteger(radiusMiles) && (APPROVED_RADIUS_MILES as readonly number[]).includes(radiusMiles));
+    const typeValid = !typeParam || (["VSO", "agent", "attorney"] as const).includes(typeParam as "VSO" | "agent" | "attorney");
+    if (radiusValid && typeValid) {
+      accreditedRepView = await loadAccreditedRepresentatives({
+        zip: zipParam,
+        ...(radiusMiles !== undefined ? { radiusMiles: radiusMiles as (typeof APPROVED_RADIUS_MILES)[number] } : {}),
+        ...(typeParam ? { type: typeParam as "VSO" | "agent" | "attorney" } : {}),
+      });
+    }
+  }
+  const accreditedRepExistingQuery = lockedSnapshotId ? `regSnapshot=${encodeURIComponent(lockedSnapshotId)}` : "";
+
   return (
     <main>
       <header className="page-hero text-center"><p className="ui-kicker">Step 6 of 6</p><h1>Evidence &amp; Research Checklist</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Review evidence questions for the same diagnosed non-service-connected conditions evaluated in Step 5. This page does not add new diagnoses, determine eligibility, or decide whether a relationship has been medically established.</p></header>
@@ -158,6 +184,18 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
 
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
+
+      <div className="mt-8">
+        <AccreditedRepresentativeFinder
+          initialView={accreditedRepView}
+          returnTo="/secondary/evidence"
+          existingQuery={accreditedRepExistingQuery}
+          initialZip={zipParam}
+          initialRadius={radiusParam}
+          initialType={typeParam}
+          validationMessage={accreditedRepError}
+        />
+      </div>
 
       <div className="ui-actions">
         <Link href={suggestionsHref} className="ui-button-secondary">← Back to Connections</Link>

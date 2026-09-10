@@ -5,6 +5,7 @@ import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { matchPresumptives } from "@/lib/presumptive/match";
 import type { PresumptiveCondition } from "@/lib/presumptive/schema";
 import { readPresumptiveSession } from "@/lib/presumptive/session";
+import { PresumptiveAccreditedRepSection } from "@/components/va/PresumptiveAccreditedRepSection";
 import { loadServiceBranchReference } from "@/lib/va/service-branches";
 
 export const dynamic = "force-dynamic";
@@ -49,7 +50,12 @@ function groupConditions(
   return [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]));
 }
 
-export default async function PresumptiveResultsPage() {
+export default async function PresumptiveResultsPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ zip?: string | string[]; radius?: string | string[]; type?: string | string[]; error?: string | string[] }>;
+} = {}) {
+  const rawSearchParams = await searchParams;
   const history = await readPresumptiveSession();
 
   if (!history) {
@@ -267,6 +273,10 @@ export default async function PresumptiveResultsPage() {
           ))}
         </div>
       )}
+
+      <div className="mt-8">
+        <PresumptiveAccreditedRepSection searchParams={rawSearchParams} />
+      </div>
 
       <DisclaimerFooter />
     </main>
