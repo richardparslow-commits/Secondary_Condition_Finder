@@ -1,11 +1,13 @@
 import Link from "next/link";
 
+import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { matchPresumptives } from "@/lib/presumptive/match";
 import type { PresumptiveCondition } from "@/lib/presumptive/schema";
 import { readPresumptiveSession } from "@/lib/presumptive/session";
-import { PresumptiveAccreditedRepSection } from "@/components/va/PresumptiveAccreditedRepSection";
+import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
+import { accreditedRepValidationMessage, APPROVED_RADIUS_MILES, ZIP_RE } from "@/lib/va/accredited-representative-constants";
 import { loadServiceBranchReference } from "@/lib/va/service-branches";
 
 export const dynamic = "force-dynamic";
@@ -54,8 +56,31 @@ export default async function PresumptiveResultsPage({
   searchParams,
 }: {
   searchParams?: Promise<{ zip?: string | string[]; radius?: string | string[]; type?: string | string[]; error?: string | string[] }>;
-} = {}) {
+}) {
+  const firstParam = (value: string | string[] | undefined): string | undefined =>
+    Array.isArray(value) ? value[0] : value;
+
+  // Accredited-representative locator (Phase 3.1) — optional aid, never blocks results.
   const rawSearchParams = await searchParams;
+  const zipParam = firstParam(rawSearchParams?.zip)?.trim() ?? "";
+  const radiusParam = firstParam(rawSearchParams?.radius)?.trim() ?? "";
+  const typeParam = firstParam(rawSearchParams?.type)?.trim() ?? "";
+  const accreditedRepError = accreditedRepValidationMessage(firstParam(rawSearchParams?.error));
+  let accreditedRepView: Awaited<ReturnType<typeof loadAccreditedRepresentatives>> | null = null;
+  if (ZIP_RE.test(zipParam)) {
+    const radiusMiles = radiusParam ? Number(radiusParam) : undefined;
+    const radiusValid =
+      radiusMiles === undefined ||
+      (Number.isInteger(radiusMiles) && (APPROVED_RADIUS_MILES as readonly number[]).includes(radiusMiles));
+    const typeValid = !typeParam || (["VSO", "agent", "attorney"] as const).includes(typeParam as "VSO" | "agent" | "attorney");
+    if (radiusValid && typeValid) {
+      accreditedRepView = await loadAccreditedRepresentatives({
+        zip: zipParam,
+        ...(radiusMiles !== undefined ? { radiusMiles: radiusMiles as (typeof APPROVED_RADIUS_MILES)[number] } : {}),
+        ...(typeParam ? { type: typeParam as "VSO" | "agent" | "attorney" } : {}),
+      });
+    }
+  }
   const history = await readPresumptiveSession();
 
   if (!history) {
@@ -275,7 +300,15 @@ export default async function PresumptiveResultsPage({
       )}
 
       <div className="mt-8">
-        <PresumptiveAccreditedRepSection searchParams={rawSearchParams} />
+        <AccreditedRepresentativeFinder
+          initialView={accreditedRepView}
+          returnTo="/presumptive/results"
+          existingQuery=""
+          initialZip={zipParam}
+          initialRadius={radiusParam}
+          initialType={typeParam}
+          validationMessage={accreditedRepError}
+        />
       </div>
 
       <DisclaimerFooter />

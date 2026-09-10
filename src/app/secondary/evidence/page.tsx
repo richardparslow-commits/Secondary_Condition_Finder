@@ -3,11 +3,14 @@ import Link from "next/link";
 import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDownload";
 import { EvidenceGapCoverage } from "@/components/evidence/EvidenceGapCoverage";
 import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
+import { MedicalRecordChecklist } from "@/components/secondary/MedicalRecordChecklist";
+import { ActionPlan } from "@/components/secondary/ActionPlan";
+import { PrintReportButton } from "@/components/secondary/PrintReportButton";
+import { RatingGuide } from "@/components/secondary/RatingGuide";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { EvidenceGapReview } from "@/components/evidence/EvidenceGapReview";
 import { LocalEvidenceReview } from "@/components/evidence/LocalEvidenceReview";
 import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatus";
-import { MedicalRecordChecklist } from "@/components/secondary/MedicalRecordChecklist";
 import {
   SecondaryWorkflowCompletionActions,
   SecondaryWorkflowRestartButton,
@@ -28,10 +31,10 @@ import { buildMedicalRecordChecklist } from "@/lib/secondary-workflow/medical-re
 import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workflow/suggestions";
 import { buildSymptomDiscussionPrompts } from "@/lib/secondary-workflow/symptom-bridge";
 import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
-import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
-import { accreditedRepValidationMessage, APPROVED_RADIUS_MILES, ZIP_RE } from "@/lib/va/accredited-representative-constants";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams } from "@/lib/secondary-workflow/session";
+import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
+import { accreditedRepValidationMessage, APPROVED_RADIUS_MILES, ZIP_RE } from "@/lib/va/accredited-representative-constants";
 
 export const dynamic = "force-dynamic";
 
@@ -66,8 +69,7 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
   // opens Step 6 directly, establish a snapshot before recommendation/evidence
   // output. If a prior lock disappeared, fail closed to medical-only instead of
   // substituting a newer legal snapshot mid-review.
-  const rawSearchParams = await searchParams;
-  const lockedSnapshotId = firstParam(rawSearchParams?.regSnapshot);
+  const lockedSnapshotId = firstParam((await searchParams)?.regSnapshot);
   const lockedSnapshot = loadLockedRegulatorySnapshot(lockedSnapshotId);
   const regulatoryReview = lockedSnapshot
     ? {
@@ -129,6 +131,7 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
   const suggestionsHref = `/secondary/suggestions?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
 
   // Accredited-representative locator (Phase 3.1) — optional aid, never blocks checklist output.
+  const rawSearchParams = await searchParams;
   const zipParam = firstParam(rawSearchParams?.zip)?.trim() ?? "";
   const radiusParam = firstParam(rawSearchParams?.radius)?.trim() ?? "";
   const typeParam = firstParam(rawSearchParams?.type)?.trim() ?? "";
@@ -153,7 +156,7 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
   return (
     <main>
       <header className="page-hero text-center"><p className="ui-kicker">Step 6 of 6</p><h1>Evidence &amp; Research Checklist</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Review evidence questions for the same diagnosed non-service-connected conditions evaluated in Step 5. This page does not add new diagnoses, determine eligibility, or decide whether a relationship has been medically established.</p></header>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><span>✓ Connections</span><strong className="text-blue-700">6 Evidence</strong></div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><span>✓ Connections</span><strong className="text-blue-700">6 Evidence</strong><span className="ml-auto no-print"><PrintReportButton label="Print this checklist" /></span></div>
       <RegulatoryPreflightStatus snapshot={regulatoryReview.snapshot} changes={regulatoryReview.relevantChanges} />
 
       <div className="ui-grid">
@@ -185,12 +188,9 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
       </div>
 
       <MedicalRecordChecklist groups={buildMedicalRecordChecklist(nonServiceConnectedResults)} />
-
-      <EvidenceGapReview recommendations={evidenceGapRecommendations} />
-      <LocalEvidenceReview />
-
-      <div className="mt-8">
-        <AccreditedRepresentativeFinder
+      <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
+      <ActionPlan results={nonServiceConnectedResults} />
+      <AccreditedRepresentativeFinder
           initialView={accreditedRepView}
           returnTo="/secondary/evidence"
           existingQuery={accreditedRepExistingQuery}
@@ -199,7 +199,8 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
           initialType={typeParam}
           validationMessage={accreditedRepError}
         />
-      </div>
+      <EvidenceGapReview recommendations={evidenceGapRecommendations} />
+      <LocalEvidenceReview />
 
       <div className="ui-actions">
         <Link href={suggestionsHref} className="ui-button-secondary">← Back to Connections</Link>

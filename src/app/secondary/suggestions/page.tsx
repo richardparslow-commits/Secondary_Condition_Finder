@@ -4,6 +4,16 @@ import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { NonServiceConnectedConditionResult } from "@/components/NonServiceConnectedConditionResult";
 import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatus";
+import { ActionPlan } from "@/components/secondary/ActionPlan";
+import { CombinationInsightsPanel } from "@/components/secondary/CombinationInsightsPanel";
+import { ConditionComparisonTool } from "@/components/secondary/ConditionComparisonTool";
+import { PrintReportButton } from "@/components/secondary/PrintReportButton";
+import { RatingGuide } from "@/components/secondary/RatingGuide";
+import { SecondarySuggestionsTabs } from "@/components/secondary/SecondarySuggestionsTabs";
+import type {
+  TimelineConditionInput,
+  TimelineConnectionInput,
+} from "@/components/secondary/ConditionTimelineVisualization";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { recommend } from "@/lib/engine/recommend";
@@ -21,9 +31,9 @@ import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
 import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import { buildConditionVaReferenceMap } from "@/lib/va/condition-reference";
-import { loadDisabilityReference } from "@/lib/va/disability-reference";
 import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
 import { accreditedRepValidationMessage, APPROVED_RADIUS_MILES, ZIP_RE } from "@/lib/va/accredited-representative-constants";
+import { loadDisabilityReference } from "@/lib/va/disability-reference";
 
 interface SuggestionsPageProps {
   workflowState?: StoredSecondaryWorkflowState;
@@ -47,8 +57,7 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
   // Regulatory preflight is intentionally completed before recommendation output.
   // If this is a back-navigation inside the same review, reuse the locked snapshot
   // rather than silently changing the legal/regulatory basis mid-review.
-  const rawSearchParams = await searchParams;
-  const lockedSnapshotId = firstParam(rawSearchParams?.regSnapshot);
+  const lockedSnapshotId = firstParam((await searchParams)?.regSnapshot);
   const lockedSnapshot = loadLockedRegulatorySnapshot(lockedSnapshotId);
   const regulatoryReview = lockedSnapshot
     ? {
@@ -95,8 +104,7 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
     vaReference.live ? vaReference.items : [],
   );
   const evidenceHref = `/secondary/evidence?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
-
-  // Accredited-representative locator (Phase 3.1) — optional aid, never blocks recommendation output.
+  const rawSearchParams = await searchParams;
   const zipParam = firstParam(rawSearchParams?.zip)?.trim() ?? "";
   const radiusParam = firstParam(rawSearchParams?.radius)?.trim() ?? "";
   const typeParam = firstParam(rawSearchParams?.type)?.trim() ?? "";
@@ -118,6 +126,40 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
   }
   const accreditedRepExistingQuery = lockedSnapshotId ? `regSnapshot=${encodeURIComponent(lockedSnapshotId)}` : "";
 
+  const timelineConditions: TimelineConditionInput[] = state.diagnosedConditionIds
+    .map((id) => byId.get(id))
+    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
+    .map((condition) => {
+      const entry = state.conditionTimeline?.[condition.id];
+      return {
+        id: condition.id,
+        name: condition.name,
+        bodySystem: condition.bodySystem,
+        isServiceConnected: state.serviceConnectedConditionIds.includes(condition.id),
+        onsetYear: entry?.onsetYear,
+        diagnosisYear: entry?.diagnosisYear,
+      };
+    });
+  const timelineConnections: TimelineConnectionInput[] = nonServiceConnectedResults.flatMap((result) => {
+    if (!result.recommendation) return [];
+    const chronologyIds = new Set(
+      (result.recommendation.chronologyWarnings ?? []).map((warning) => warning.primaryId),
+    );
+    return result.recommendation.contributingPrimaries.map((primary) => ({
+      primaryId: primary.id,
+      primaryName: primary.name,
+      secondaryId: result.conditionId,
+      secondaryName: result.conditionName,
+      nexusClassification: primary.nexusClaim?.nexusClassification,
+      pathways: primary.pathwayIntelligence?.pathways,
+      etiologicalConsensus: result.recommendation?.etiologicalConsensus,
+      hasChronologyWarning: chronologyIds.has(primary.id),
+    }));
+  });
+  const datedTimelineCount = timelineConditions.filter(
+    (condition) => condition.onsetYear !== undefined || condition.diagnosisYear !== undefined,
+  ).length;
+
   return (
     <main>
       <header className="page-hero text-center">
@@ -127,7 +169,7 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
           This step starts with each diagnosis you marked as not service connected. Under each one, it lists only your already service-connected conditions that have an authored published relationship worth evaluating as a possible cause, contributor, aggravating condition, treatment pathway, or other medical connection. It does not generate new diagnoses or list conditions you did not select.
         </p>
       </header>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><strong className="text-blue-700">5 Connections</strong><span>6 Evidence</span></div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><strong className="text-blue-700">5 Connections</strong><span>6 Evidence</span><span className="ml-auto no-print"><PrintReportButton /></span></div>
       <RegulatoryPreflightStatus snapshot={regulatoryReview.snapshot} changes={regulatoryReview.relevantChanges} />
 
       <div className="ui-grid">
@@ -145,25 +187,31 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
         <section className="ui-card">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↔</span><div><h2 className="text-xl font-bold">Possible Connections to Review</h2><p className="text-sm text-slate-600">Organized by the diagnosed condition that is not yet service connected.</p></div></div>
           <div className="ui-callout mb-5 text-sm"><strong>Direction matters:</strong> The question on this page is whether an already service-connected condition may have caused, contributed to, aggravated, or otherwise medically related to a diagnosis you already have but that is not service connected. The page does not search for additional diagnoses that might develop in the future.</div>
-          <div className="mb-5"><SymptomDiscussionReview prompts={symptomDiscussionPrompts} /></div>
-          {nonServiceConnectedResults.length === 0 ? (
-            <p className="rounded-xl border border-slate-200 p-5 text-sm">There are no diagnosed non-service-connected conditions to evaluate in this review.</p>
-          ) : (
-            <div className="space-y-5">
-              {nonServiceConnectedResults.map((result) => (
-                <NonServiceConnectedConditionResult
-                  key={result.conditionId}
-                  result={result}
-                  vaReference={{
-                    live: vaReference.live,
-                    sourceLabel: vaReference.sourceLabel,
-                    environment: vaReference.environment,
-                    match: vaReferenceMap.get(result.conditionId) ?? null,
-                  }}
-                />
-              ))}
-            </div>
-          )}
+          <SecondarySuggestionsTabs
+            conditions={timelineConditions}
+            connections={timelineConnections}
+            datedCount={datedTimelineCount}
+          >
+            <div className="mb-5"><SymptomDiscussionReview prompts={symptomDiscussionPrompts} /></div>
+            {nonServiceConnectedResults.length === 0 ? (
+              <p className="rounded-xl border border-slate-200 p-5 text-sm">There are no diagnosed non-service-connected conditions to evaluate in this review.</p>
+            ) : (
+              <div className="space-y-5">
+                {nonServiceConnectedResults.map((result) => (
+                  <NonServiceConnectedConditionResult
+                    key={result.conditionId}
+                    result={result}
+                    vaReference={{
+                      live: vaReference.live,
+                      sourceLabel: vaReference.sourceLabel,
+                      environment: vaReference.environment,
+                      match: vaReferenceMap.get(result.conditionId) ?? null,
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+          </SecondarySuggestionsTabs>
         </section>
 
         <aside className="ui-stack">
@@ -172,8 +220,11 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
         </aside>
       </div>
 
-      <div className="mt-8">
-        <AccreditedRepresentativeFinder
+      <ConditionComparisonTool results={nonServiceConnectedResults} catalog={catalog} />
+      <CombinationInsightsPanel results={nonServiceConnectedResults} />
+      <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
+      <ActionPlan results={nonServiceConnectedResults} />
+      <AccreditedRepresentativeFinder
           initialView={accreditedRepView}
           returnTo="/secondary/suggestions"
           existingQuery={accreditedRepExistingQuery}
@@ -182,7 +233,6 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
           initialType={typeParam}
           validationMessage={accreditedRepError}
         />
-      </div>
 
       <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href={evidenceHref} className="ui-button">Review Evidence for These Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">Open Evidence Checklist</span></Link></div>
       <DisclaimerFooter />
