@@ -214,6 +214,16 @@ export function mapEvidenceToPathways(
   return rows;
 }
 
+/**
+ * Combines the pathway mapping text with the consultation-summary text for a
+ * single browser-only download. Both inputs are already-rendered export text:
+ * this helper only joins them and adds no content of its own.
+ */
+export function combineMappingWithClaimSummary(mappingText: string, claimSummaryText: string): string {
+  const divider = "=".repeat(60);
+  return `${mappingText}\n\n${divider}\n\n${claimSummaryText}`;
+}
+
 const STATUS_SUMMARY: Record<PathwayEvidenceStatus, string> = {
   "direct-support": "Nexus-relevant clinician-authored excerpts matching this pathway theory were found in your local analysis.",
   "supporting-only": "Supporting excerpts (diagnosis, treatment, medication, or timeline) name this primary condition, but no excerpt matches the pathway's nexus language yet.",

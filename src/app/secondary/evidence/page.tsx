@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDownload";
 import { EvidenceGapCoverage } from "@/components/evidence/EvidenceGapCoverage";
 import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
 import { MedicalRecordChecklist } from "@/components/secondary/MedicalRecordChecklist";
@@ -167,7 +166,7 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
         </section>
 
         <aside className="ui-stack">
-          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">⇩</span><h2 className="text-xl font-bold">Consultation Summary</h2></div><p className="mb-4 text-sm">Download the authored research checklist for the diagnosed non-service-connected conditions that had a published relationship in Step 5.</p>{consultationRecommendations.length > 0 ? <ConsultationSummaryDownload recommendations={consultationRecommendations} /> : <p className="text-sm text-slate-600">No published relationship recommendations are available to export for this run.</p>}</section>
+          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">⇩</span><h2 className="text-xl font-bold">Consultation Summary</h2></div><p className="mb-4 text-sm">Downloads are in the Pathway Evidence Mapping section below: the standalone summary, or one combined file with the mapping plus summary.</p></section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✎</span><h2 className="text-xl font-bold">Research Notes</h2></div><p className="text-sm">Use your own secure notes or records to track questions such as potential nexus literature, providers to ask, symptom history, and missing treatment records. This app does not store free-text research notes on the server.</p></section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Next Steps</h2></div><ol className="space-y-3 text-sm"><li><strong>1.</strong> Review the relationship rationale and citations for each non-service-connected diagnosis.</li><li><strong>2.</strong> Compare mapped evidence gaps with exact local excerpts and any reported context match.</li><li><strong>3.</strong> Discuss causation, contribution, or aggravation questions with a qualified provider.</li><li><strong>4.</strong> Consider an accredited representative, attorney, or VSO.</li></ol></section>
         </aside>
@@ -179,7 +178,7 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
       <AccreditedRepresentativeFinder initialView={accreditedRepView2} returnTo="/secondary/evidence" />
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
-      <PathwayEvidenceMapper results={nonServiceConnectedResults} />
+      <PathwayEvidenceMapper results={nonServiceConnectedResults} recommendations={consultationRecommendations} />
 
       <div className="ui-actions">
         <Link href={suggestionsHref} className="ui-button-secondary">← Back to Connections</Link>

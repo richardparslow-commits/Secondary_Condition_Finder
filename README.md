@@ -35,7 +35,10 @@ The current knowledge-base snapshot contains **813 mappings, 363 relationships, 
 
 The browser-local evidence feature reads supported PDF, DOCX, and text files
 entirely in the browser tab: raw bytes and extracted text are never submitted to
-the application server. Step 4 (Supporting Documents) offers two analysis
+the application server. Step 6 groups those excerpts under each authored claim
+pathway in a **Pathway Evidence Mapping** table (research cues only — no
+interpretation, no egress), alongside the per-gap coverage chips and checklist.
+Step 4 (Supporting Documents) offers two analysis
 depths — **Standard** (the default) and an opt-in **Extended** envelope for
 large local sets such as full C-files — with file, batch, page, character, and
 retention limits derived from one limits module and published verbatim on

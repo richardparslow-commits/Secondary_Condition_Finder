@@ -20,6 +20,13 @@ const WORKFLOW_SESSION_SECRET =
 
 const PRIMARY_CONDITION = "Post-Traumatic Stress Disorder (PTSD)";
 const DIAGNOSED_SECONDARY = "Sleep Apnea (Obstructive, Central, Mixed)";
+// Realistic clinician-authored note: the aggravation language ("worsened")
+// plus the physician credential plus the PTSD term make the excerpt
+// nexus-relevant, matching the authored AGGRAVATION pathway for the fixture.
+const EVIDENCE_NOTE_TEXT = [
+  "Physician note: patient reports sleep disturbance worsened beyond what would be expected from the natural course of the condition.",
+  "Clinician impression: aggravation related to service-connected PTSD.",
+].join("\n");
 const children = [];
 let sessionId;
 
@@ -217,6 +224,63 @@ async function bodyText() {
   return webdriver("GET", `/session/${sessionId}/element/${body}/text`);
 }
 
+async function waitForText(needle, label, timeoutMs = 20_000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    const text = await bodyText();
+    if (text.includes(needle)) return;
+    await delay(300);
+  }
+  throw new Error(`Timed out waiting for ${label} to render text: ${needle}`);
+}
+
+async function setInputValue(xpath, value) {
+  const elementId = await findByXpath(xpath);
+  const applied = await webdriver(
+    "POST",
+    `/session/${sessionId}/execute/sync`,
+    {
+      script: `
+        const element = arguments[0];
+        const proto = element.tagName === 'TEXTAREA'
+          ? window.HTMLTextAreaElement.prototype
+          : window.HTMLInputElement.prototype;
+        const setter = Object.getOwnPropertyDescriptor(proto, 'value').set;
+        setter.call(element, arguments[1]);
+        element.dispatchEvent(new Event('input', { bubbles: true }));
+        element.dispatchEvent(new Event('change', { bubbles: true }));
+        return element.value;
+      `,
+      args: [{ [ELEMENT_KEY]: elementId }, value],
+    },
+  );
+  if (applied !== value) {
+    throw new Error(`Unable to set input value; browser reported ${applied}`);
+  }
+}
+
+async function selectOptionByValue(optionValue, label) {
+  const applied = await webdriver(
+    "POST",
+    `/session/${sessionId}/execute/sync`,
+    {
+      script: `
+        const selects = [...document.querySelectorAll('select')];
+        const target = selects.find((el) => [...el.options].some((option) => option.value === arguments[0]));
+        if (!target) return null;
+        target.value = arguments[0];
+        target.dispatchEvent(new Event('input', { bubbles: true }));
+        target.dispatchEvent(new Event('change', { bubbles: true }));
+        return target.value;
+      `,
+      args: [optionValue],
+    },
+  );
+  if (applied !== optionValue) {
+    throw new Error(`Unable to select ${label} option ${optionValue}; browser reported ${applied}`);
+  }
+}
+
 async function selectPrimaryRating(value) {
   const selectId = await findByXpath(
     `//label[contains(normalize-space(.), 'Rating for ${PRIMARY_CONDITION}')]/following-sibling::select`,
@@ -282,6 +346,17 @@ async function runJourney() {
   await waitForPath("/secondary/upload");
   checkpoint("reached document choice");
 
+  // Step 4: paste a realistic clinician note and analyze it browser-locally so
+  // Step 6 has real excerpts for the pathway mapper to project.
+  await selectOptionByValue("physician", "credential");
+  await setInputValue(
+    "//textarea[contains(@placeholder, 'Paste text exactly as it appears')]",
+    EVIDENCE_NOTE_TEXT,
+  );
+  await clickXpath("//button[contains(normalize-space(.), 'Analyze pasted text locally')]");
+  await waitForText("nexus-relevant", "browser-local pasted-text analysis");
+  checkpoint("analyzed pasted clinician note locally");
+
   await setSelected("//input[@name='documentsShared' and @value='no']", true);
   await clickXpath("//button[contains(normalize-space(.), 'Review Possible Connections')]");
   await waitForPath("/secondary/suggestions");
@@ -305,7 +380,32 @@ async function runJourney() {
     throw new Error("Connection review regressed to service-connected-primary suggestion grouping.");
   }
 
-  console.log("Real-browser E2E passed: home → diagnosed → service-connected → ratings → documents → diagnosis-centered connections.");
+  await clickXpath("//a[contains(normalize-space(.), 'Review Evidence for These Connections')]");
+  await waitForPath("/secondary/evidence");
+  checkpoint("reached evidence review");
+
+  // Pathway Evidence Mapping: the stored clinician-authored aggravation excerpt
+  // must appear under the authored AGGRAVATION pathway with the theory-matched
+  // chip. React hydration + dev-server compile can lag, so poll the body text.
+  await waitForText("Pathway Evidence Mapping", "pathway mapper section");
+  await waitForText("Pathway: Post-Traumatic Stress Disorder (PTSD) → Sleep Apnea", "mapped fixture pathway");
+  await waitForText("Theory-matched nexus excerpts found", "theory-matched status chip");
+  const step6Text = await bodyText();
+  if (!step6Text.includes("worsened beyond what would be expected")) {
+    throw new Error("Pathway mapper is missing the stored excerpt quote.");
+  }
+  if (!step6Text.includes("Research cues, not determinations")) {
+    throw new Error("Pathway mapper is missing the research-cue boundary copy.");
+  }
+  if (!step6Text.includes("Download mapping + consultation summary")) {
+    throw new Error("Pathway mapper is missing the combined export button.");
+  }
+  if (!step6Text.includes("Download consultation summary")) {
+    throw new Error("Standalone consultation summary is missing from the mapper card.");
+  }
+  checkpoint("pathway evidence mapping rendered with theory-matched excerpt");
+
+  console.log("Real-browser E2E passed: home → diagnosed → service-connected → ratings → documents → connections → evidence review with pathway evidence mapping.");
 }
 
 async function cleanup() {

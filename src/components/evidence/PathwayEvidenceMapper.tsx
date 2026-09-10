@@ -2,17 +2,21 @@
 
 import { useMemo, useSyncExternalStore } from "react";
 
+import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDownload";
+import { formatClaimSummary } from "@/lib/engine/export";
 import {
   evidenceAnalysisStorageKey,
   type EvidenceAnalysis,
 } from "@/lib/evidence/extract";
 import {
+  combineMappingWithClaimSummary,
   formatPathwayEvidenceMapping,
   mapEvidenceToPathways,
   pathwayEvidenceStatusSummary,
   type PathwayEvidenceRow,
   type PathwayEvidenceStatus,
 } from "@/lib/evidence/pathway-mapper";
+import type { Recommendation } from "@/lib/engine/types";
 import type { NonServiceConnectedConditionResult } from "@/lib/secondary-workflow/suggestions";
 
 const EMPTY_SNAPSHOT = "[]";
@@ -90,10 +94,18 @@ function ExcerptList({ row }: { row: PathwayEvidenceRow }) {
   );
 }
 
-export function PathwayEvidenceMapper({ results }: { results: NonServiceConnectedConditionResult[] }) {
+interface Props {
+  results: NonServiceConnectedConditionResult[];
+  /** Privacy-stripped recommendations (`matchedIntakeContext: []`) for the combined export. */
+  recommendations: Recommendation[];
+}
+
+export function PathwayEvidenceMapper({ results, recommendations }: Props) {
   const snapshot = useSyncExternalStore(subscribe, getSnapshot, () => EMPTY_SNAPSHOT);
+  const analyses = useMemo(() => parseAnalyses(snapshot), [snapshot]);
+  const hasAnalyses = analyses.length > 0;
+
   const rowsByCondition = useMemo(() => {
-    const analyses = parseAnalyses(snapshot);
     const rows = mapEvidenceToPathways(results, analyses);
     const grouped = new Map<string, { conditionName: string; rows: PathwayEvidenceRow[] }>();
     for (const row of rows) {
@@ -105,19 +117,33 @@ export function PathwayEvidenceMapper({ results }: { results: NonServiceConnecte
       group.rows.push(row);
     }
     return [...grouped.values()];
-  }, [snapshot, results]);
+  }, [results, analyses]);
 
-  const hasAnalyses = useMemo(() => parseAnalyses(snapshot).length > 0, [snapshot]);
   const hasRows = rowsByCondition.length > 0;
 
   function downloadMapping() {
-    const analyses = parseAnalyses(window.sessionStorage.getItem(evidenceAnalysisStorageKey) ?? EMPTY_SNAPSHOT);
     const content = formatPathwayEvidenceMapping(mapEvidenceToPathways(results, analyses));
     const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
     const objectUrl = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = objectUrl;
     anchor.download = "pathway-evidence-mapping.txt";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(objectUrl);
+  }
+
+  function downloadCombinedExport() {
+    const mapping = formatPathwayEvidenceMapping(mapEvidenceToPathways(results, analyses));
+    // The summary portion uses the exact same privacy-stripped formatter and
+    // inputs as the standalone ConsultationSummaryDownload above.
+    const combined = combineMappingWithClaimSummary(mapping, formatClaimSummary(recommendations, []));
+    const blob = new Blob([combined], { type: "text/plain;charset=utf-8" });
+    const objectUrl = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = objectUrl;
+    anchor.download = "pathway-mapping-and-claim-summary.txt";
     document.body.appendChild(anchor);
     anchor.click();
     anchor.remove();
@@ -206,6 +232,22 @@ export function PathwayEvidenceMapper({ results }: { results: NonServiceConnecte
           </div>
         </div>
       )}
+
+      <div className="mt-4 border-t border-slate-200 pt-4">
+        <p className="text-sm font-semibold text-slate-900">Combined export</p>
+        <p className="mt-1 text-sm text-slate-600">
+          Downloads the pathway mapping together with the consultation summary in one text file. The summary portion is the same privacy-stripped export as the standalone download below — authored research content only; it does not include raw local-evidence excerpts or optional context. When no local excerpts exist in this tab, the file contains the summary only.
+        </p>
+        <button type="button" className="ui-button mt-3" onClick={downloadCombinedExport}>
+          Download mapping + consultation summary
+        </button>
+      </div>
+
+      <div className="mt-4 border-t border-slate-200 pt-4">
+        <p className="text-sm font-semibold text-slate-900">Consultation summary (standalone)</p>
+        <p className="mt-1 text-sm text-slate-600">The authored research checklist on its own, without the pathway mapping.</p>
+        <ConsultationSummaryDownload recommendations={recommendations} />
+      </div>
     </section>
   );
 }

@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import type { EvidenceAnalysis, EvidenceExcerpt } from "../src/lib/evidence/extract";
 import {
   buildPrimaryConditionTerms,
+  combineMappingWithClaimSummary,
   formatPathwayEvidenceMapping,
   mapEvidenceToPathways,
   pathwayEvidenceStatusSummary,
@@ -259,6 +260,18 @@ describe("pathway evidence mapper", () => {
       "matching this pathway theory",
     );
   });
+
+  it("combines mapping and summary text with a divider and adds no content of its own", () => {
+    const combined = combineMappingWithClaimSummary("MAPPING SECTION", "SUMMARY SECTION");
+
+    expect(combined).toContain("MAPPING SECTION");
+    expect(combined).toContain("SUMMARY SECTION");
+    const mappingEnd = combined.indexOf("MAPPING SECTION") + "MAPPING SECTION".length;
+    const summaryStart = combined.indexOf("SUMMARY SECTION");
+    expect(combined.slice(mappingEnd, summaryStart).trim().length).toBeGreaterThan(0);
+    expect(combined.startsWith("MAPPING SECTION")).toBe(true);
+    expect(combined.trimEnd().endsWith("SUMMARY SECTION")).toBe(true);
+  });
 });
 
 describe("pathway evidence mapper governance contracts", () => {
@@ -297,9 +310,26 @@ describe("pathway evidence mapper governance contracts", () => {
     const page = readRepoFile("src/app/secondary/evidence/page.tsx");
 
     expect(page).toContain('import { PathwayEvidenceMapper } from "@/components/evidence/PathwayEvidenceMapper";');
-    const mapperIndex = page.indexOf("<PathwayEvidenceMapper results={nonServiceConnectedResults} />");
+    const mapperIndex = page.indexOf(
+      "<PathwayEvidenceMapper results={nonServiceConnectedResults} recommendations={consultationRecommendations} />",
+    );
     const localReviewIndex = page.indexOf("<LocalEvidenceReview />");
     expect(mapperIndex).toBeGreaterThan(-1);
     expect(mapperIndex).toBeGreaterThan(localReviewIndex);
+  });
+
+  it("offers the combined mapping + summary export with the same privacy-stripped inputs", () => {
+    const component = readRepoFile("src/components/evidence/PathwayEvidenceMapper.tsx");
+    const page = readRepoFile("src/app/secondary/evidence/page.tsx");
+
+    expect(component).toContain("Download mapping + consultation summary");
+    expect(component).toContain('formatClaimSummary(recommendations, [])');
+    expect(component).toContain("combineMappingWithClaimSummary");
+    expect(component).toContain("does not include raw local-evidence excerpts");
+    // The combined download must reuse the consultation-summary component for
+    // the standalone export, and the page must no longer render it twice.
+    expect(component).toContain("ConsultationSummaryDownload");
+    expect(page).not.toContain("<ConsultationSummaryDownload");
+    expect(page).toContain("Downloads are in the Pathway Evidence Mapping section");
   });
 });
