@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 
 import { actionPlanSteps, buildActionPlan, formatActionPlan } from "@/lib/secondary-workflow/action-plan";
+import { PrintReportButton } from "@/components/secondary/PrintReportButton";
 import type { NonServiceConnectedConditionResult } from "@/lib/secondary-workflow/suggestions";
 
 interface Props {
@@ -28,7 +29,7 @@ export function ActionPlan({ results }: Props) {
   }
 
   return (
-    <section className="mt-6 rounded-xl border border-blue-200 bg-white p-5" aria-labelledby="action-plan-heading">
+    <section className="print-action-plan-scope mt-6 rounded-xl border border-blue-200 bg-white p-5" aria-labelledby="action-plan-heading">
       <div className="ui-heading-row">
         <span className="ui-icon" aria-hidden="true">✦</span>
         <div>
@@ -121,7 +122,8 @@ export function ActionPlan({ results }: Props) {
         <button type="button" className="ui-button" onClick={downloadPlan}>
           Download action plan
         </button>
-        <span className="text-xs text-slate-600">Exports the prioritized plan as a text file in this browser. Print the page to include the plan with the report header.</span>
+        <PrintReportButton label="Print action card" printScopeClass="print-action-card" />
+        <span className="text-xs text-slate-600">Exports the prioritized plan as a text file in this browser, or prints just this action card. Print the page header button instead to include the plan with the full research report.</span>
       </div>
     </section>
   );

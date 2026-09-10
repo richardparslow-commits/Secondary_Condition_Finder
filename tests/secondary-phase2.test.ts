@@ -161,6 +161,24 @@ describe("Phase 2 — rating guide and action plan", () => {
     expect(exported).not.toContain("you will be granted");
   });
 
+  it("ActionPlan offers a scoped print action card and the CSS hides everything else", async () => {
+    const fs = await import("node:fs");
+    const component = fs.readFileSync("src/components/secondary/ActionPlan.tsx", "utf8");
+    const css = fs.readFileSync("src/app/globals.css", "utf8");
+    const printButton = fs.readFileSync("src/components/secondary/PrintReportButton.tsx", "utf8");
+
+    expect(component).toContain("print-action-plan-scope");
+    expect(component).toContain('printScopeClass="print-action-card"');
+    expect(component).toContain("Print action card");
+    expect(css).toContain("body.print-action-card main > *:not(.print-action-plan-scope)");
+    expect(css).toContain("research-generated, not VA guidance");
+    expect(css).toContain("research-generated suggestion, not VA guidance");
+    // Scoped class must be removed even when the print dialog is canceled.
+    expect(printButton).toContain("classList.add(printScopeClass)");
+    expect(printButton).toContain("finally");
+    expect(printButton).toContain("classList.remove(printScopeClass)");
+  });
+
   it("empty results produce empty guides/plans gracefully", () => {
     const catalog = loadConditionCatalog();
     const byId = indexById(catalog);
