@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import type { NonServiceConnectedConditionResult } from "@/lib/secondary-workflow/suggestions";
-import { buildRatingGuide, formatRatingGuide, GENERIC_RATING_SCALE, GENERIC_FUNCTIONAL_PROMPTS } from "@/lib/secondary-workflow/rating-guide";
+import { buildRatingGuide, collectSymptomNotes, formatRatingGuide, GENERIC_RATING_SCALE, GENERIC_FUNCTIONAL_PROMPTS, symptomNoteId } from "@/lib/secondary-workflow/rating-guide";
 import { actionPlanSteps, buildActionPlan, formatActionPlan } from "@/lib/secondary-workflow/action-plan";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { indexById } from "@/lib/catalog/lookup";
@@ -61,6 +61,42 @@ describe("Phase 2 — rating guide and action plan", () => {
     for (const prompt of GENERIC_FUNCTIONAL_PROMPTS) expect(exported).toContain(prompt);
   });
 
+  it("symptomNoteId scopes selections per condition and collectSymptomNotes projects only marked prompts", () => {
+    const catalog = loadConditionCatalog();
+    const byId = indexById(catalog);
+    const catalogById = new Map(byId) as Map<string, import("@/lib/catalog/schema").CatalogCondition>;
+    const entries = buildRatingGuide([
+      result("ptsd", "Post-Traumatic Stress Disorder (PTSD)", "Mental Disorders", rec({ conditionId: "ptsd", condition: "PTSD" })),
+      result("migraine-headaches", "Migraine Headaches", "Neurological System", rec()),
+    ], catalogById);
+
+    const selections: Record<string, boolean> = {};
+    selections[symptomNoteId("ptsd", GENERIC_FUNCTIONAL_PROMPTS[0])] = true;
+    selections[symptomNoteId("migraine-headaches", GENERIC_FUNCTIONAL_PROMPTS[1])] = true;
+    // A truthy value under a bare prompt key (legacy/shared shape) must not leak in.
+    selections[GENERIC_FUNCTIONAL_PROMPTS[2]] = true;
+
+    const notes = collectSymptomNotes(entries, selections);
+    expect(notes).toHaveLength(2);
+    expect(notes.map((note) => note.conditionId).sort()).toEqual(["migraine-headaches", "ptsd"]);
+    expect(notes.find((note) => note.conditionId === "ptsd")?.prompt).toBe(GENERIC_FUNCTIONAL_PROMPTS[0]);
+    expect(notes.find((note) => note.conditionId === "migraine-headaches")?.prompt).toBe(GENERIC_FUNCTIONAL_PROMPTS[1]);
+  });
+
+  it("formatRatingGuide renders per-condition marked notes in the export", () => {
+    const catalog = loadConditionCatalog();
+    const byId = indexById(catalog);
+    const catalogById = new Map(byId) as Map<string, import("@/lib/catalog/schema").CatalogCondition>;
+    const entries = buildRatingGuide([result("ptsd", "Post-Traumatic Stress Disorder (PTSD)", "Mental Disorders", rec({ conditionId: "ptsd", condition: "PTSD" }))], catalogById);
+    const selections: Record<string, boolean> = { [symptomNoteId("ptsd", GENERIC_FUNCTIONAL_PROMPTS[0])]: true };
+    const exported = formatRatingGuide(entries, selections);
+    expect(exported).toContain("Notes you marked while exploring");
+    expect(exported).toContain(GENERIC_FUNCTIONAL_PROMPTS[0]);
+    // No percentage inference anywhere in the export, even with selections.
+    expect(exported).not.toMatch(/typically match criteria for \d+%/i);
+    expect(exported).not.toMatch(/likely rating:? \d+%/i);
+  });
+
   it("RatingGuide and ActionPlan are wired into Steps 5 and 6", async () => {
     const fs = await import("node:fs");
     const suggestionsPage = fs.readFileSync("src/app/secondary/suggestions/page.tsx", "utf8");
@@ -72,6 +108,18 @@ describe("Phase 2 — rating guide and action plan", () => {
     for (const file of ["src/lib/secondary-workflow/rating-guide.ts", "src/lib/secondary-workflow/action-plan.ts", "src/components/secondary/RatingGuide.tsx", "src/components/secondary/ActionPlan.tsx"]) {
       expect(fs.existsSync(file)).toBe(true);
     }
+  });
+
+  it("RatingGuide explorer stays condition-selector based with per-condition notes and no percentage inference", async () => {
+    const fs = await import("node:fs");
+    const component = fs.readFileSync("src/components/secondary/RatingGuide.tsx", "utf8");
+    expect(component).toContain("rating-guide-condition-select");
+    expect(component).toContain("symptomNoteId");
+    expect(component).toContain("does not assign or suggest a rating category or percentage");
+    expect(component).not.toMatch(/typically match criteria for/i);
+    expect(component).not.toContain("likely rating");
+    expect(component).not.toContain("fetch(");
+    expect(component).not.toContain("sendBeacon");
   });
 
   it("buildActionPlan ranks by consensus > score > gaps > name and assigns 1-based rank", () => {
