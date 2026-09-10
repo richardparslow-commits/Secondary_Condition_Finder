@@ -7,6 +7,7 @@ import { DisclaimerFooter } from "@/components/Disclaimer";
 import { EvidenceGapReview } from "@/components/evidence/EvidenceGapReview";
 import { LocalEvidenceReview } from "@/components/evidence/LocalEvidenceReview";
 import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatus";
+import { MedicalRecordChecklist } from "@/components/secondary/MedicalRecordChecklist";
 import {
   SecondaryWorkflowCompletionActions,
   SecondaryWorkflowRestartButton,
@@ -23,6 +24,7 @@ import {
   relevantChangesForSnapshot,
 } from "@/lib/regulatory/preflight";
 import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
+import { buildMedicalRecordChecklist } from "@/lib/secondary-workflow/medical-record-checklist";
 import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workflow/suggestions";
 import { buildSymptomDiscussionPrompts } from "@/lib/secondary-workflow/symptom-bridge";
 import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
@@ -181,6 +183,8 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Next Steps</h2></div><ol className="space-y-3 text-sm"><li><strong>1.</strong> Review the relationship rationale and citations for each non-service-connected diagnosis.</li><li><strong>2.</strong> Compare mapped evidence gaps with exact local excerpts and any reported context match.</li><li><strong>3.</strong> Discuss causation, contribution, or aggravation questions with a qualified provider.</li><li><strong>4.</strong> Consider an accredited representative, attorney, or VSO.</li></ol></section>
         </aside>
       </div>
+
+      <MedicalRecordChecklist groups={buildMedicalRecordChecklist(nonServiceConnectedResults)} />
 
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
