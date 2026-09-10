@@ -19,13 +19,18 @@ const WORKFLOW_SESSION_SECRET =
   "browser-e2e-workflow-secret-only-for-local-ci-2026";
 
 const PRIMARY_CONDITION = "Post-Traumatic Stress Disorder (PTSD)";
-const DIAGNOSED_SECONDARY = "Sleep Apnea (Obstructive, Central, Mixed)";
-// Realistic clinician-authored note: the aggravation language ("worsened")
-// plus the physician credential plus the PTSD term make the excerpt
-// nexus-relevant, matching the authored AGGRAVATION pathway for the fixture.
+const DIAGNOSED_SECONDARY_IDS = [
+  "Sleep Apnea (Obstructive, Central, Mixed)",
+  "Erectile Dysfunction",
+];
+// Realistic clinician-authored note: the aggravation language ("worsened",
+// "aggravated") plus the physician credential plus named condition terms make
+// the excerpts nexus-relevant. The second line names Erectile Dysfunction, the
+// fixture's published AGGRAVATION pathway, so the mapper's direct-support tier
+// is exercised; the Sleep Apnea row (ASSOCIATION_ONLY) must fail closed.
 const EVIDENCE_NOTE_TEXT = [
   "Physician note: patient reports sleep disturbance worsened beyond what would be expected from the natural course of the condition.",
-  "Clinician impression: aggravation related to service-connected PTSD.",
+  "Clinician impression: erectile dysfunction aggravated by service-connected PTSD.",
 ].join("\n");
 const children = [];
 let sessionId;
@@ -319,10 +324,12 @@ async function runJourney() {
     `//label[contains(normalize-space(.), '${PRIMARY_CONDITION}')]//input[@type='checkbox']`,
     true,
   );
-  await setSelected(
-    `//label[contains(normalize-space(.), '${DIAGNOSED_SECONDARY}')]//input[@type='checkbox']`,
-    true,
-  );
+  for (const conditionName of DIAGNOSED_SECONDARY_IDS) {
+    await setSelected(
+      `//label[contains(normalize-space(.), '${conditionName}')]//input[@type='checkbox']`,
+      true,
+    );
+  }
   checkpoint("selected diagnosed fixture conditions");
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 2')]");
   await waitForPath("/secondary/service-connected");
@@ -332,10 +339,12 @@ async function runJourney() {
     `//fieldset[.//legend[contains(normalize-space(.), '${PRIMARY_CONDITION}')]]//input[@value='yes']`,
     true,
   );
-  await setSelected(
-    `//fieldset[.//legend[contains(normalize-space(.), '${DIAGNOSED_SECONDARY}')]]//input[@value='no']`,
-    true,
-  );
+  for (const conditionName of DIAGNOSED_SECONDARY_IDS) {
+    await setSelected(
+      `//fieldset[.//legend[contains(normalize-space(.), '${conditionName}')]]//input[@value='no']`,
+      true,
+    );
+  }
   checkpoint("set service-connected fixture status");
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 3')]");
   await waitForPath("/secondary/ratings");
@@ -369,7 +378,7 @@ async function runJourney() {
     "Diagnosed, not service connected",
     "Already service connected",
     PRIMARY_CONDITION,
-    DIAGNOSED_SECONDARY,
+    ...DIAGNOSED_SECONDARY_IDS,
   ];
   for (const phrase of expected) {
     if (!text.includes(phrase)) {
@@ -388,8 +397,9 @@ async function runJourney() {
   // must appear under the authored AGGRAVATION pathway with the theory-matched
   // chip. React hydration + dev-server compile can lag, so poll the body text.
   await waitForText("Pathway Evidence Mapping", "pathway mapper section");
-  await waitForText("Pathway: Post-Traumatic Stress Disorder (PTSD) → Sleep Apnea", "mapped fixture pathway");
+  await waitForText("Pathway: Post-Traumatic Stress Disorder (PTSD) → Erectile Dysfunction", "mapped aggravation pathway");
   await waitForText("Theory-matched nexus excerpts found", "theory-matched status chip");
+  await waitForText("Related causal language only", "fail-closed association-only chip");
   const step6Text = await bodyText();
   if (!step6Text.includes("worsened beyond what would be expected")) {
     throw new Error("Pathway mapper is missing the stored excerpt quote.");
