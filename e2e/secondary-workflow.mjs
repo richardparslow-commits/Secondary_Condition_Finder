@@ -20,6 +20,9 @@ const WORKFLOW_SESSION_SECRET =
 
 const PRIMARY_CONDITION = "Post-Traumatic Stress Disorder (PTSD)";
 const DIAGNOSED_SECONDARY = "Sleep Apnea (Obstructive, Central, Mixed)";
+const PATHWAY_CHECKLIST_STORAGE_KEY = "secondary-condition-finder:pathway-record-checklist:v1";
+const PATHWAY_CHECKBOX_XPATH =
+  "//input[@type='checkbox'][starts-with(@aria-label, 'Post-Traumatic Stress Disorder (PTSD) to Sleep Apnea (Obstructive, Central, Mixed):')]";
 const children = [];
 let sessionId;
 
@@ -217,6 +220,29 @@ async function bodyText() {
   return webdriver("GET", `/session/${sessionId}/element/${body}/text`);
 }
 
+async function isSelected(xpath) {
+  const elementId = await findByXpath(xpath);
+  return webdriver("GET", `/session/${sessionId}/element/${elementId}/selected`);
+}
+
+async function readSessionStorage(key) {
+  return webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: "return window.sessionStorage.getItem(arguments[0]);",
+    args: [key],
+  });
+}
+
+async function waitForSelected(xpath, desired, timeoutMs = 10_000) {
+  const deadline = Date.now() + timeoutMs;
+  let last;
+  while (Date.now() < deadline) {
+    last = await isSelected(xpath);
+    if (last === desired) return;
+    await delay(200);
+  }
+  throw new Error(`Element ${xpath} selection never became ${desired}; last=${last}`);
+}
+
 async function selectPrimaryRating(value) {
   const selectId = await findByXpath(
     `//label[contains(normalize-space(.), 'Rating for ${PRIMARY_CONDITION}')]/following-sibling::select`,
@@ -305,7 +331,82 @@ async function runJourney() {
     throw new Error("Connection review regressed to service-connected-primary suggestion grouping.");
   }
 
-  console.log("Real-browser E2E passed: home → diagnosed → service-connected → ratings → documents → diagnosis-centered connections.");
+  checkpoint("verify Prepare Evidence pathway checklist on Step 5");
+  if (!text.includes("Prepare Evidence — Pathway-Specific Record Checklist")) {
+    throw new Error("Step 5 is missing the Prepare Evidence pathway-specific record checklist.");
+  }
+  // The storage write happens inside the hydrated onChange handler. A click
+  // that lands before React hydrates does not persist anything, so retry the
+  // (idempotent) click until sessionStorage proves the handler ran.
+  let storedSelections = null;
+  const storageDeadline = Date.now() + 30_000;
+  while (Date.now() < storageDeadline) {
+    await setSelected(PATHWAY_CHECKBOX_XPATH, true);
+    await delay(500);
+    const candidate = await readSessionStorage(PATHWAY_CHECKLIST_STORAGE_KEY);
+    if (typeof candidate === "string" && candidate.includes("sleep-apnea:ptsd:")) {
+      storedSelections = candidate;
+      break;
+    }
+  }
+  if (!storedSelections) {
+    throw new Error(`Pathway checklist storage never recorded the fixture pathway selection; last=${storedSelections}`);
+  }
+
+  checkpoint("verify pathway checklist selection survives a page reload");
+  const suggestionsUrl = await webdriver("GET", `/session/${sessionId}/url`);
+  await webdriver("POST", `/session/${sessionId}/url`, { url: suggestionsUrl });
+  await waitForPath("/secondary/suggestions");
+  await waitForSelected(PATHWAY_CHECKBOX_XPATH, true);
+
+  checkpoint("verify pathway checklist selection follows Steps 5 → 6");
+  await clickXpath("//a[contains(normalize-space(.), 'Review Evidence for These Connections')]");
+  await waitForPath("/secondary/evidence");
+  const evidenceText = await bodyText();
+  if (!evidenceText.includes("Prepare Evidence — Pathway-Specific Record Checklist")) {
+    throw new Error("Step 6 is missing the Prepare Evidence pathway-specific record checklist.");
+  }
+  await waitForSelected(PATHWAY_CHECKBOX_XPATH, true);
+
+  checkpoint("verify the Clear checkmarks control resets the pathway checklist store");
+  await clickXpath("//button[contains(normalize-space(.), 'Clear checkmarks')]");
+  const clearDeadline = Date.now() + 10_000;
+  let clearedByButton = null;
+  while (Date.now() < clearDeadline) {
+    clearedByButton = await readSessionStorage(PATHWAY_CHECKLIST_STORAGE_KEY);
+    if (clearedByButton === null) break;
+    await delay(200);
+  }
+  if (clearedByButton !== null) {
+    throw new Error(`Clear checkmarks did not remove the pathway checklist store: ${clearedByButton}`);
+  }
+  await waitForSelected(PATHWAY_CHECKBOX_XPATH, false);
+
+  checkpoint("re-check a pathway record so completion clearing has state to purge");
+  let restocked = false;
+  const restockDeadline = Date.now() + 30_000;
+  while (Date.now() < restockDeadline) {
+    await setSelected(PATHWAY_CHECKBOX_XPATH, true);
+    await delay(500);
+    const candidate = await readSessionStorage(PATHWAY_CHECKLIST_STORAGE_KEY);
+    if (typeof candidate === "string" && candidate.includes("sleep-apnea:ptsd:")) {
+      restocked = true;
+      break;
+    }
+  }
+  if (!restocked) {
+    throw new Error("Pathway checklist selection could not be restored after Clear checkmarks.");
+  }
+
+  checkpoint("verify Start a new review clears the pathway checklist store");
+  await clickXpath("//button[contains(normalize-space(.), 'Start a new review')]");
+  await waitForPath("/secondary/diagnosed");
+  const clearedValue = await readSessionStorage(PATHWAY_CHECKLIST_STORAGE_KEY);
+  if (clearedValue !== null) {
+    throw new Error(`Pathway checklist selections survived Start a new review: ${clearedValue}`);
+  }
+
+  console.log("Real-browser E2E passed: home → diagnosed → service-connected → ratings → documents → diagnosis-centered connections → pathway checklist persistence → evidence review → completion clearing.");
 }
 
 async function cleanup() {

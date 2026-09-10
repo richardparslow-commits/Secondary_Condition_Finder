@@ -4,6 +4,7 @@ import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDow
 import { EvidenceGapCoverage } from "@/components/evidence/EvidenceGapCoverage";
 import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
 import { MedicalRecordChecklist } from "@/components/secondary/MedicalRecordChecklist";
+import { PathwayRecordChecklist } from "@/components/secondary/PathwayRecordChecklist";
 import { ActionPlan } from "@/components/secondary/ActionPlan";
 import { PrintReportButton } from "@/components/secondary/PrintReportButton";
 import { RatingGuide } from "@/components/secondary/RatingGuide";
@@ -173,6 +174,7 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
       </div>
 
       <MedicalRecordChecklist groups={buildMedicalRecordChecklist(nonServiceConnectedResults)} />
+      <PathwayRecordChecklist results={nonServiceConnectedResults} summaryRecommendations={consultationRecommendations} />
       <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
       <ActionPlan results={nonServiceConnectedResults} />
       <AccreditedRepresentativeFinder initialView={accreditedRepView2} returnTo="/secondary/evidence" />
