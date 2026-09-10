@@ -439,7 +439,7 @@ async function runJourney() {
 
   checkpoint("verify pathway checklist selection survives a page reload");
   const suggestionsUrl = await webdriver("GET", `/session/${sessionId}/url`);
-  await webdriver("POST", `/session/${sessionId}/url", { url: suggestionsUrl });
+  await webdriver("POST", `/session/${sessionId}/url`, { url: suggestionsUrl });
   await waitForPath("/secondary/suggestions");
   await waitForSelected(PATHWAY_CHECKBOX_XPATH, true);
 
