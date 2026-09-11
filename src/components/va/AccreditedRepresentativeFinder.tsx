@@ -69,7 +69,7 @@ export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props)
               className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
             >
               <option value="">Any</option>
-              <option value="VSO">VSO</option>
+              <option value="VSO">VSO representative</option>
               <option value="agent">Accredited agent</option>
               <option value="attorney">Attorney</option>
             </select>
@@ -105,6 +105,12 @@ export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props)
                     <span className="ml-2 rounded bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-800">{item.accreditationType}</span>
                   </p>
                   {item.organization && <p className="text-sm text-slate-700">{item.organization}</p>}
+                  {item.specializations && item.specializations.length > 0 && (
+                    <p className="mt-1 text-xs text-slate-600">
+                      <span className="font-medium text-slate-700">Specializations: </span>
+                      {item.specializations.join(", ")}
+                    </p>
+                  )}
                   <p className="text-xs text-slate-500">
                     {item.address ? `${item.address} · ` : ""}
                     {item.zip}
@@ -126,7 +132,7 @@ export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props)
       )}
 
       <p className="mt-4 text-xs text-slate-500">
-        Tip: Verify accreditation and contact details on VA&apos;s OGC directory before sharing personal information. This lookup does not determine eligibility and does not persist your ZIP.
+        Accredited representatives may help prepare and submit a claim at no upfront cost; representatives may only charge for services after VA issues the decision and approves a fee agreement (38 U.S.C. § 5904). Verify accreditation and contact details on VA&apos;s OGC directory before sharing personal information. This lookup does not determine eligibility and does not persist your ZIP.
       </p>
     </section>
   );

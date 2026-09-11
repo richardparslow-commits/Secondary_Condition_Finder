@@ -595,6 +595,9 @@ const accreditedRepItemSchema = z.object({
   name: z.string().min(1),
   organization: z.string().min(1).nullable().optional(),
   accreditationType: z.enum(["VSO", "agent", "attorney"]),
+  // Optional, free-form directory data (e.g. "PTSD claims", "Aid & Attendance").
+  // Rendered only when present — never fabricated locally.
+  specializations: z.array(z.string().min(1)).nullable().optional(),
   phone: z.string().min(1).nullable().optional(),
   website: z.string().url().nullable().optional(),
   address: z.string().min(1).nullable().optional(),
