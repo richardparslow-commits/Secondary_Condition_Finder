@@ -3,6 +3,17 @@
 All notable changes to Secondary Condition Finder. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); merges are grouped by date, newest first.
 
+## 2026-09-11 (later)
+
+- **#407 — PDF page-cleanup regression contract** (`test`) Adds
+  `tests/evidence-pdf-page-cleanup.test.ts`: behavioral pinning (mocked pdfjs) that
+  `page.cleanup()` runs even when `getTextContent()` throws, `loadingTask.destroy()` runs even
+  when `getPage()` fails, and the success path cleans up per page with provenance intact.
+  Response to a circulated audit report claiming a leak at `document-extract.ts:199-211` —
+  investigation found the finally-wrapped cleanup already in place since `99757d7` (hardened in
+  #386), so no source change was needed; only the untested throw-path contract was closed.
+  Suite: 203 files / 1096 tests.
+
 ## 2026-09-11
 
 - **#400 — Locator E2E coverage + flag-on/missing-key contract + `VA_ACCREDITED_REP_*` env docs**
