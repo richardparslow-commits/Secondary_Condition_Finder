@@ -2,6 +2,13 @@ import Link from "next/link";
 
 import { CitationDeepDiveExplorer } from "@/components/secondary/CitationDeepDiveExplorer";
 import { MedicationContextExplainer } from "@/components/secondary/MedicationContextExplainer";
+import {
+  CONSENSUS_BADGE_CLASS,
+  CONSENSUS_EXPLANATION,
+  CONSENSUS_LABEL,
+  consensusLiteratureSentence,
+  consensusTone,
+} from "@/lib/recommendation-prevalence";
 import type { NonServiceConnectedConditionResult as NonServiceConnectedConditionResultModel } from "@/lib/secondary-workflow/suggestions";
 import type { SecondaryPathwayType, SourceVerificationScope } from "@/lib/kb/schema";
 import type { VaConditionReferenceMatch } from "@/lib/va/condition-reference";
@@ -46,12 +53,22 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
 
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-5 shadow-none">
-      <header>
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-          Diagnosed, not service connected
-        </p>
-        <h3 className="mt-1 text-xl font-bold text-slate-900">{result.conditionName}</h3>
-        <p className="mt-1 text-sm text-slate-600">{result.bodySystem}</p>
+      <header className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Diagnosed, not service connected
+          </p>
+          <h3 className="mt-1 text-xl font-bold text-slate-900">{result.conditionName}</h3>
+          <p className="mt-1 text-sm text-slate-600">{result.bodySystem}</p>
+        </div>
+        {recommendation && (
+          <span
+            className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-semibold ${CONSENSUS_BADGE_CLASS[consensusTone(recommendation.etiologicalConsensus)]}`}
+            title={CONSENSUS_EXPLANATION[recommendation.etiologicalConsensus]}
+          >
+            {CONSENSUS_LABEL[recommendation.etiologicalConsensus]}
+          </span>
+        )}
       </header>
 
       {!recommendation ? (
@@ -80,6 +97,13 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
                       Already service connected
                     </p>
                     <h5 className="mt-1 font-bold text-blue-950">{primary.name}</h5>
+                    <p className="mt-1.5 text-sm italic text-slate-700">
+                      {consensusLiteratureSentence(
+                        primary.name,
+                        result.conditionName,
+                        recommendation.etiologicalConsensus,
+                      )}
+                    </p>
                     <p className="mt-2 text-sm leading-relaxed text-slate-800">
                       <span className="font-semibold">Why this relationship is worth evaluating: </span>
                       {primary.rationale}

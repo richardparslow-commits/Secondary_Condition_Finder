@@ -6,8 +6,10 @@ import type {
   SourceVerificationScope,
 } from "@/lib/kb/schema";
 import {
+  CONSENSUS_BADGE_CLASS,
   CONSENSUS_EXPLANATION,
   CONSENSUS_LABEL,
+  consensusTone,
 } from "@/lib/recommendation-prevalence";
 import type { VaConditionReferenceMatch } from "@/lib/va/condition-reference";
 import type { VaApiEnvironment } from "@/lib/va/sandbox";
@@ -59,7 +61,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
           <h3 className="text-base font-semibold text-slate-900">{recommendation.condition}</h3>
         </div>
         <span
-          className="rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-700"
+          className={`shrink-0 rounded-full border px-2 py-1 text-xs font-medium ${CONSENSUS_BADGE_CLASS[consensusTone(recommendation.etiologicalConsensus)]}`}
           title={CONSENSUS_EXPLANATION[recommendation.etiologicalConsensus]}
         >
           {CONSENSUS_LABEL[recommendation.etiologicalConsensus]}
