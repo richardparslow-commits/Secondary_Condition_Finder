@@ -5,6 +5,13 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-11 (later)
 
+- **#411 — DD-214 analyzer cleanup contract + full-surface audit** (`test`) Adds
+  `tests/dd214-local-analyzer-cleanup-contract.test.ts` (5 structural pins): both `page.cleanup()`
+  sites, both `worker.terminate()` sites, and `task.destroy()` sit in `finally` blocks — the third
+  and last browser-local PDF/OCR surface. Component-wide audit also verified all 9
+  `createObjectURL` sites are paired with `revokeObjectURL` (timeline viz revokes early on
+  failure, delays only post-download). Suite: 206 files / 1110 tests.
+
 - **#410 — OCR cleanup contract pinned** (`test`) Adds
   `tests/local-ocr-cleanup-contract.test.ts`: structural pins for `runLocalOcr()`'s guaranteed
   teardown — per-page `finally` with best-effort `page.cleanup()` (handle pre-initialized to
