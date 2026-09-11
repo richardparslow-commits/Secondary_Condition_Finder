@@ -414,7 +414,7 @@ POST /scenarios                  → launchDemoScenario(FormData)              �
 
 ## Testing Strategy
 
-### Unit & Integration Tests (Vitest `vitest run` — 203 files / 1101 tests, as of `5b46bf0`)
+### Unit & Integration Tests (Vitest `vitest run` — 204 files / 1101 tests, as of `5b46bf0`)
 
 - **Phase 1 + 2 research-aid contracts:** `tests/secondary-phase1.test.ts` (7 cases: `categorizeGap`/`WHY_BY_CATEGORY`, `buildMedicalRecordChecklist`/`CHECKLIST_CATEGORY_LABEL`, `buildComparisonRows`/`formatConditionComparison`/`consensusBadgeTone`, `analyzeCombinationInsights` synergistic/independent/conflicting, page wiring for Steps 5/6, non-determination boundaries) + `tests/secondary-phase2.test.ts` (8 cases: `buildRatingGuide`/`GENERIC_RATING_SCALE`/`GENERIC_FUNCTIONAL_PROMPTS`/`RATING_SCALE_NOTE`/`formatRatingGuide`, informational-only no-prediction language, Step 5+6 wiring for both guides, `buildActionPlan` `CONSENSUS_ORDER` ranking + `actionPlanSteps` 4-step structure + timeline/`va.gov`/`OGC`/`/vso` links + `formatActionPlan` empty-state, no new data collection / LLM / `connect-src` contract)
 
