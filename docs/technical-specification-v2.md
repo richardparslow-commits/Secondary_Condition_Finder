@@ -35,7 +35,7 @@ Core layers:
 | Styling | Tailwind CSS ^4 | Utility-first CSS; postcss plugin |
 | State Management | Server Actions (POST) + HttpOnly encrypted cookies | No client-side global state; workflow state AES-256-GCM encrypted in cookies |
 | Schema & Validation | Zod ^4.5 | Runtime validation of JSON data and form inputs; strict unknown-key rejection |
-| Testing | Vitest ^4.1 (204 files / 1101 tests) + Chrome/ChromeDriver E2E | Fast ESM-native regression suite; real-browser journey gates in CI |
+| Testing | Vitest ^4.1 (206 files / 1110 tests) + Chrome/ChromeDriver E2E | Fast ESM-native regression suite; real-browser journey gates in CI |
 | Document Processing | pdfjs-dist 6.3, Tesseract.js ^6.0 (WASM OCR), Mammoth 1.12 | Browser-local PDF/DOCX extraction; OCR without server transmission |
 | Cryptography | Node.js crypto (AES-256-GCM) | Encrypted/authenticated workflow cookies; no external crypto libraries |
 | Observability | @vercel/otel 2.1, @opentelemetry/api 1.9 | Server-side instrumentation only |
@@ -247,7 +247,7 @@ reviewed PR + full CI gate; good-faith safe-harbor for researchers.
 - **CI (`.github/workflows/ci.yml`)** — every PR runs, in order: governance verification
   (main-commit-provenance + active main rules), `audit:high`, `citations:audit`, `kb:validate`,
   `audit:me-compliance`, `lint`, `typecheck`, `test:composition`, the Vitest suite
-  (204 files / 1101 tests, fail-on-any), `next build`, and **real-browser E2E**
+  (206 files / 1110 tests, fail-on-any), `next build`, and **real-browser E2E**
   (`e2e/secondary-workflow.mjs` + `e2e/validation-errors.mjs` under Chrome/ChromeDriver), with
   diagnostic-log collection and an explicit fail-the-job aggregation step.
 - **Post-merge:** automatic Vercel deploy; `/runtime-readiness` confirms deployment identity;
@@ -267,7 +267,7 @@ reviewed PR + full CI gate; good-faith safe-harbor for researchers.
 
 - **T1 — Unit/integration (Vitest):** catalog, KB, engine, presumptive matcher, evidence
   parsers, session crypto, workflow state parsers, research-aid contracts, locator contracts —
-  204 files / 1101 tests, enforced fail-on-any per PR.
+  206 files / 1110 tests, enforced fail-on-any per PR.
 - **T2 — Composition/architecture:** `npm run test:composition` — critical-module test imports,
   Server Action placement, client boundaries, secondary/presumptive track separation,
   no-evidence-extraction-in-Server-Actions rule.
