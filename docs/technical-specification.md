@@ -323,10 +323,15 @@ Counts and identities are contract-enforced: `npm run kb:validate` + `tests/…c
 | `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY` | unset | Benefits Reference Data sandbox credential. |
 | `VA_FORMS_PRODUCTION_API_KEY` | unset | VA Forms production credential — external VA production access is a separate gate (`#287`). |
 | `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY` | unset | Benefits Reference Data production credential — same gate. |
+| `VA_ACCREDITED_REP_ENABLED` | `false` | Per-service accredited-representative locator flag — gates the Idea #8 directory lookup independently of the generic VA gate. |
+| `VA_ACCREDITED_REP_SANDBOX_API_KEY` | unset | Accredited-representative sandbox credential (key issuance = Phase 3.1 gate; missing key fails closed before fetch, breaker stays closed). |
+| `VA_ACCREDITED_REP_PRODUCTION_API_KEY` | unset | Accredited-representative production credential — same `#287` external-access gate. |
 | `VA_FORMS_SANDBOX_BASE_URL` | `https://sandbox-api.va.gov/services/va_forms/v0` | Per-service SANDBOX origin override (must be `https` on `https://sandbox-api.va.gov`). |
 | `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL` | `https://sandbox-api.va.gov/services/benefits-reference-data/v1` | Same. |
 | `VA_FORMS_PRODUCTION_BASE_URL` | `https://api.va.gov/services/va_forms/v0` | Per-service PROD origin override (must be `https` on `https://api.va.gov`). |
 | `VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL` | `https://api.va.gov/services/benefits-reference-data/v1` | Same. |
+| `VA_ACCREDITED_REP_SANDBOX_BASE_URL` | `https://sandbox-api.va.gov/services/accredited-representatives/v1` | Per-service SANDBOX origin override (must be `https` on `https://sandbox-api.va.gov`). |
+| `VA_ACCREDITED_REP_PRODUCTION_BASE_URL` | `https://api.va.gov/services/accredited-representatives/v1` | Per-service PROD origin override (must be `https` on `https://api.va.gov`). |
 | `VA_API_TIMEOUT_MS` | `4000` | Outbound VA per-attempt timeout (ms). Fallback `VA_SANDBOX_TIMEOUT_MS`. |
 | `VA_SANDBOX_TIMEOUT_MS` | `4000` | Legacy sandbox timeout fallback. |
 | `REGULATIONS_GOV_API_KEY` | unset | Optional Regulations.gov docket/comment enrichment for preflight. |
