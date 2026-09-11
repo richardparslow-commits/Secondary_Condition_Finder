@@ -5,6 +5,14 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-11 (later)
 
+- **#414 — Evidence-storage drop-notice contract pinned** (`test`) Adds
+  `tests/evidence-storage-drop-notice.test.ts`: behavioral coverage of `serializeStoredEvidenceWithInfo`
+  (accurate `dropped` count under byte pressure, oldest-first, empty-store full-drop accounting,
+  string/info API parity) + structural pins that `commitAnalysis` surfaces byte-budget eviction as a
+  user warning before saving. Response to a third circulated audit report — the fix was already
+  shipped in #386 as remediation #3 (HIGH) of the same audit series; only the untested contract
+  was closed. Suite: 207 files / 1117 tests.
+
 - **#413 — Backlog closure: #6 confirmed shipped, phase3 Deferred section corrected** (`docs`)
   Investigation for next-phase planning found Idea #6's compliant rule-based surface shipped
   2026-09-05 (`a9120bb`): `SymptomDiscussionReview` renders vetted provider-discussion prompts on
