@@ -1,12 +1,15 @@
 import type { CatalogCondition } from "@/lib/catalog/schema";
 import type { NonServiceConnectedConditionResult } from "@/lib/secondary-workflow/suggestions";
 
+import type { EtiologicalConsensus, ConsensusTone } from "@/lib/recommendation-prevalence";
+import { consensusTone } from "@/lib/recommendation-prevalence";
+
 export interface ComparisonRow {
   conditionId: string;
   conditionName: string;
   bodySystem: string;
   nexusClassifications: string[];
-  etiologicalConsensus: string;
+  etiologicalConsensus: EtiologicalConsensus;
   citationCount: number;
   evidenceGapCount: number;
   contributingPrimaryNames: string[];
@@ -85,9 +88,6 @@ export function formatConditionComparison(rows: ComparisonRow[]): string {
   return lines.join("\n");
 }
 
-export function consensusBadgeTone(consensus: string): string {
-  if (consensus === "WELL_ESTABLISHED") return "strong";
-  if (consensus === "PROBABLE" || consensus === "IATROGENIC_TREATMENT_EFFECT") return "moderate";
-  if (consensus === "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE") return "contested";
-  return "not-established";
+export function consensusBadgeTone(consensus: EtiologicalConsensus): ConsensusTone {
+  return consensusTone(consensus);
 }
