@@ -5,6 +5,13 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-11 (later)
 
+- **#413 — Backlog closure: #6 confirmed shipped, phase3 Deferred section corrected** (`docs`)
+  Investigation for next-phase planning found Idea #6's compliant rule-based surface shipped
+  2026-09-05 (`a9120bb`): `SymptomDiscussionReview` renders vetted provider-discussion prompts on
+  Steps 5/6, pinned by `tests/symptom-bridge.test.ts`. The 2026-09-09 backlog is therefore fully
+  shipped or compliant-shipped (10/10); the phase3-scope Deferred section now records the
+  correction, and the only optional polish is E2E coverage of the symptom panel.
+
 - **#411 — DD-214 analyzer cleanup contract + full-surface audit** (`test`) Adds
   `tests/dd214-local-analyzer-cleanup-contract.test.ts` (5 structural pins): both `page.cleanup()`
   sites, both `worker.terminate()` sites, and `task.destroy()` sit in `finally` blocks — the third

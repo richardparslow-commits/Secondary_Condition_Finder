@@ -141,6 +141,7 @@ No server-transmitted OCR, no LLM field extraction, no SSN persistence. Any LLM 
 ## Deferred
 
 - #6 AI Symptom Reverse Matcher and #7 Medical Evidence Pathway Analyzer — LLM variants remain rejected for the same privacy boundary; the rule-based `symptom-bridge.ts` and `gap-coverage.ts` remain the path. Update (2026-09-10, post-#396): the compliant rule-based portion of #7 shipped as `src/lib/evidence/pathway-mapper.ts` + `PathwayEvidenceMapper.tsx` (browser-local excerpt→pathway grouping, research cues only); any LLM/sufficiency-determination variant remains rejected.
+- **Correction (2026-09-11, post-#411):** the compliant rule-based portion of #6 had already shipped on 2026-09-05 (`a9120bb` "Add conservative symptom discussion bridge"): `symptom-bridge.ts` + `SymptomDiscussionReview` render the vetted provider-discussion prompts on Steps 5/6 (`/secondary/suggestions` + `/secondary/evidence`), with `symptomIds` captured at Step 4 and pinned by `tests/symptom-bridge.test.ts`. **The 2026-09-09 backlog is fully shipped or compliant-shipped (10/10); no Phase 3.3 is needed.** Remaining optional polish: E2E coverage of the symptom panel (the only backlog surface without a journey assertion).
 
 ## Open questions for the Phase 3.1 branch
 
