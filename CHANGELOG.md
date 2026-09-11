@@ -5,6 +5,15 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-11 (later)
 
+- **#410 — OCR cleanup contract pinned** (`test`) Adds
+  `tests/local-ocr-cleanup-contract.test.ts`: structural pins for `runLocalOcr()`'s guaranteed
+  teardown — per-page `finally` with best-effort `page.cleanup()` (handle pre-initialized to
+  `null`), render/recognize failures exiting through the finally via `continue`, and
+  `loadingTask.destroy()` + `worker.terminate()` each in their own `finally`. Response to a
+  second circulated audit report — investigation found the fix already present (remediated
+  against a prior audit finding, `#2` in source); no source change needed. Suite: 205 files /
+  1105 tests.
+
 - **#408 — DOCX/text extractor failure-path contracts** (`test`) Adds
   `tests/evidence-docx-text-failure-paths.test.ts`: a Mammoth parser failure after the ZIP
   preflight passes must propagate (no silent "no text"); Mammoth conversion messages surface as
