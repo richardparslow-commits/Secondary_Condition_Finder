@@ -35,6 +35,7 @@ const EVIDENCE_NOTE_TEXT = [
 const PATHWAY_CHECKLIST_STORAGE_KEY = "secondary-condition-finder:pathway-record-checklist:v1";
 const PATHWAY_CHECKBOX_XPATH =
   "//input[@type='checkbox'][starts-with(@aria-label, 'Post-Traumatic Stress Disorder (PTSD) to Sleep Apnea (Obstructive, Central, Mixed):')]";
+const LOCATOR_ZIP = "22101";
 const children = [];
 let sessionId;
 
@@ -414,6 +415,15 @@ async function runJourney() {
   if (text.includes("Published Secondary Pathways")) {
     throw new Error("Connection review regressed to service-connected-primary suggestion grouping.");
   }
+  // Idea #4 evidence-strength signal: both fixture pathways (PTSD → Sleep Apnea,
+  // PTSD → Erectile Dysfunction) are authored NOT_ESTABLISHED, so the header
+  // badge label and the per-primary literature sentence are deterministic.
+  if (!text.includes("Not established")) {
+    throw new Error("Connection review is missing the consensus strength badge for the NOT_ESTABLISHED fixture pathways.");
+  }
+  if (!text.includes("is not established as causal")) {
+    throw new Error("Connection review is missing the condition-specific consensus literature sentence.");
+  }
 
   checkpoint("verify Prepare Evidence pathway checklist on Step 5");
   if (!text.includes("Prepare Evidence — Pathway-Specific Record Checklist")) {
@@ -439,9 +449,50 @@ async function runJourney() {
 
   checkpoint("verify pathway checklist selection survives a page reload");
   const suggestionsUrl = await webdriver("GET", `/session/${sessionId}/url`);
-  await webdriver("POST", `/session/${sessionId}/url`, { url: suggestionsUrl });
+  // Step 5 server-renders the full aid stack (preflight + recommend + research
+  // aids + locator); give the reload navigation a longer command timeout than
+  // the 15s default so a cold render cannot flake the journey.
+  await webdriver("POST", `/session/${sessionId}/url`, { url: suggestionsUrl }, 60_000);
   await waitForPath("/secondary/suggestions");
   await waitForSelected(PATHWAY_CHECKBOX_XPATH, true);
+
+  checkpoint("verify Find Help accredited-representative locator on Step 5");
+  await setInputValue("//input[@name='zip']", LOCATOR_ZIP);
+  await clickXpath("//button[contains(normalize-space(.), 'Search directory')]");
+  // The fee note is static in the form, so it cannot signal navigation; wait
+  // for the server-action redirect to carry the validated zip first.
+  let locatorUrl = "";
+  const redirectDeadline = Date.now() + 20_000;
+  while (Date.now() < redirectDeadline) {
+    locatorUrl = await webdriver("GET", `/session/${sessionId}/url`);
+    if (locatorUrl.includes("zip=22101")) break;
+    await delay(500);
+  }
+  if (!locatorUrl.includes("zip=22101")) {
+    throw new Error(`Locator search did not redirect with the validated zip param: ${locatorUrl}`);
+  }
+  // Results render server-side with the directory (or fallback) view; poll
+  // for the provenance line, which only exists in the results state.
+  let locatorText = "";
+  const resultsDeadline = Date.now() + 20_000;
+  while (Date.now() < resultsDeadline) {
+    locatorText = await bodyText();
+    if (locatorText.includes("Source:")) break;
+    await delay(500);
+  }
+  if (!locatorText.includes("Source:")) {
+    throw new Error("Locator results are missing the provenance/source line.");
+  }
+  if (!locatorText.includes("Find an accredited representative near you")) {
+    throw new Error("Locator card is missing its heading after the directory search.");
+  }
+  if (!locatorText.includes("Accredited representatives may help prepare and submit a claim at no upfront cost")) {
+    throw new Error("Locator is missing the 38 U.S.C. § 5904 fee note.");
+  }
+  if (!locatorText.includes("va.gov/ogc/apps/accreditation")) {
+    throw new Error("Locator is missing the OGC directory reference (fallback guidance or notice).");
+  }
+  checkpoint("locator search redirected with zip; fee note + provenance + OGC guidance rendered");
 
   checkpoint("verify pathway checklist selection follows Steps 5 → 6 alongside pathway evidence mapping");
   await clickXpath("//a[contains(normalize-space(.), 'Review Evidence for These Connections')]");

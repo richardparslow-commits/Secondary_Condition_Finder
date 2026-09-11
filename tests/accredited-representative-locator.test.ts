@@ -6,6 +6,7 @@ import {
   clearAccreditedRepresentativeCache,
   loadAccreditedRepresentatives,
 } from "@/lib/va/accredited-representatives";
+import { getCircuitSnapshot } from "@/lib/va/circuit-breaker";
 import {
   fetchVaAccreditedRepresentatives,
   normalizeAccreditedRepSearchParams,
@@ -92,6 +93,39 @@ describe("accredited representative locator (Idea #8)", () => {
     expect(result.success).toBe(false);
     expect(result.source).toBe("local-fallback");
     expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it("falls back gracefully when the per-service flag is on but the sandbox key is not yet provisioned", async () => {
+    const fetchSpy = vi.fn();
+    vi.stubGlobal("fetch", fetchSpy);
+    clearAccreditedRepresentativeCache();
+
+    // Rollout shape: generic VA gate + per-service flag on, key issuance
+    // still pending. Must fail closed before any network use and must not
+    // open the circuit breaker (no fetch attempt = no failure signal).
+    const result = await fetchVaAccreditedRepresentatives(
+      { zip: "12345" },
+      {
+        config: {
+          ...baseConfig,
+          enabled: true,
+          accreditedRepEnabled: true,
+          accreditedRepApiKey: undefined,
+        },
+      },
+    );
+
+    expect(result.success).toBe(false);
+    expect(result.source).toBe("local-fallback");
+    expect(result.error).toContain("API key is required");
+    expect(fetchSpy).not.toHaveBeenCalled();
+    expect(getCircuitSnapshot()["accredited-representatives"]?.state).toBe("closed");
+
+    // End-to-end loader view stays the pinned local fallback with OGC guidance.
+    const view = await loadAccreditedRepresentatives({ zip: "12345" }, async () => result);
+    expect(view.live).toBe(false);
+    expect(view.items).toEqual([]);
+    expect(view.notice).toContain("va.gov/ogc/apps/accreditation");
   });
 
   it("maps directory results with distance sorting and provenance status", async () => {

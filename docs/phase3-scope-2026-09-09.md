@@ -72,6 +72,12 @@ Reuse `src/lib/va/` contract; do not invent a second VA integration.
 
 Disabled by default (`VA_ACCREDITED_REP_ENABLED=false`). Preview uses sandbox keys + 5-min cache; production waits on the same shared-coordinator gate as `#287` for distributed runtimes.
 
+### Status (2026-09-10, post-#391/#398/#399): shipped — fully spec-complete
+
+- **Shipped via #391:** `accredited-representatives.ts` + `AccreditedRepresentativeFinder.tsx` + validated server action + cache + `accredited-representatives` circuit-breaker service key + health snapshot entry; wired on Steps 5/6 and `/presumptive/results`; per-service flag `VA_ACCREDITED_REP_ENABLED` as specified.
+- **Spec-complete via #399:** 38 U.S.C. § 5904 fee note (no upfront cost; fees only after decision + approved fee agreement), optional directory-supplied `specializations` line (rendered only when present), "VSO representative" filter label, first test coverage (`tests/accredited-representative-locator.test.ts`, 6 contracts: param normalization fail-closed, feature-flag no-network, distance-sorted view + provenance, local-fallback guidance, finder source pins), and full tech-spec/functional-spec documentation (v1.5). Real-browser E2E covers the Step 5 "Find Help" card (zip submit → redirect-with-param → fee note + provenance + OGC guidance).
+- **Live posture (read-only check, 2026-09-10):** production `/api/health` reports `200 healthy` with the `accredited-representatives` breaker `closed`; VA integration is credential-gated off on the deployment, so the locator serves its local-fallback view with OGC guidance — the pinned fail-closed contract.
+
 ---
 
 ## Idea #9 — DD-214 Auto-Parser for Service History (gated, browser-local only)
