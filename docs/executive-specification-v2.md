@@ -166,7 +166,7 @@ not probabilistic**: a qualifying match is presumed; no clinical judgment is app
 - **NFR4 Availability & Deployment:** Vercel primary; Azure Static Web Apps legacy
   fallback (manual); every PR passes `kb:validate`, `audit:me-compliance`,
   `citations:audit`, `test:composition`, lint, typecheck, and the Vitest suite
-  (204 files / 1101 tests as of this revision); direct pushes to `main` are blocked by
+  (206 files / 1110 tests as of this revision); direct pushes to `main` are blocked by
   repository rules — squash-merge via PR only; production readiness confirmed
   post-deploy via `/runtime-readiness`.
 
