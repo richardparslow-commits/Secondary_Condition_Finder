@@ -228,7 +228,7 @@ The application is a research and reference tool that does not maintain persiste
 ```
 data/
 ├── conditions/               # 33 JSON files grouped by body system (incl. expansion waves: cardiovascular, digestive, endocrine, hemic, infectious, mental-disorders, musculoskeletal-wave-1/2, dental-oral, carried-over; e.g. endocrine.json carries Cushing's syndrome/DC7907, Type 1 diabetes/DC7913, Hyperthyroidism/DC7900, Hyperparathyroidism/DC7904, Hypoparathyroidism/DC7905; carried-over.json quarantines contralateral-knee-condition)
-├── knowledge-base/           # 813 JSON files, one per catalog id (e.g. ptsd.json, osteoarthritis.json) — each {id, draft, todo[], governanceNotes[], suggestions: Suggestion[]} with CRG trio + sourceReferences; current snapshot 140 published / 673 draft / 363 relationships / 379 verified refs
+├── knowledge-base/           # 813 JSON files, one per catalog id (e.g. ptsd.json, osteoarthritis.json) — each {id, draft, todo[], governanceNotes[], suggestions: Suggestion[]} with CRG trio + sourceReferences; current snapshot 140 published / 673 draft mapping files / 363 relationships / 379 verified refs
 ├── presumptives/             # 2 authored exposure categories: agent-orange.json, burn-pits.json (+ README) — ExposureCatalog with qualifyingService {locations, startDate, endDate} and presumptive conditions
 ├── evidence/                 # Master source registry & lineage (master-sources.json governs 346 active / 355 total entities including history; master-relationships.json, lineage audited by scripts/audit-master-registry.js)
 ├── regulatory-actions/       # Provenanced FR/OIRA seed records (e.g. 2900-AR32.json, 2900-AR75.json, 2900-AS40.json, 2900-AS49.json + README.md) + RegulatoryAction registry
