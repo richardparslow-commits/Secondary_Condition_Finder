@@ -5,6 +5,12 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-11 (later)
 
+- **#408 — DOCX/text extractor failure-path contracts** (`test`) Adds
+  `tests/evidence-docx-text-failure-paths.test.ts`: a Mammoth parser failure after the ZIP
+  preflight passes must propagate (no silent "no text"); Mammoth conversion messages surface as
+  `DOCX parser:` warnings; an empty DOCX warns; an oversized text body fails closed on the
+  character budget after preflight; valid text keeps its `document` locator. Suite: 203 files /
+  1101 tests.
 - **#407 — PDF page-cleanup regression contract** (`test`) Adds
   `tests/evidence-pdf-page-cleanup.test.ts`: behavioral pinning (mocked pdfjs) that
   `page.cleanup()` runs even when `getTextContent()` throws, `loadingTask.destroy()` runs even

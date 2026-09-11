@@ -414,7 +414,7 @@ POST /scenarios                  → launchDemoScenario(FormData)              �
 
 ## Testing Strategy
 
-### Unit & Integration Tests (Vitest `vitest run` — 203 files / 1096 tests, as of `3a476d4`)
+### Unit & Integration Tests (Vitest `vitest run` — 203 files / 1101 tests, as of `5b46bf0`)
 
 - **Phase 1 + 2 research-aid contracts:** `tests/secondary-phase1.test.ts` (7 cases: `categorizeGap`/`WHY_BY_CATEGORY`, `buildMedicalRecordChecklist`/`CHECKLIST_CATEGORY_LABEL`, `buildComparisonRows`/`formatConditionComparison`/`consensusBadgeTone`, `analyzeCombinationInsights` synergistic/independent/conflicting, page wiring for Steps 5/6, non-determination boundaries) + `tests/secondary-phase2.test.ts` (8 cases: `buildRatingGuide`/`GENERIC_RATING_SCALE`/`GENERIC_FUNCTIONAL_PROMPTS`/`RATING_SCALE_NOTE`/`formatRatingGuide`, informational-only no-prediction language, Step 5+6 wiring for both guides, `buildActionPlan` `CONSENSUS_ORDER` ranking + `actionPlanSteps` 4-step structure + timeline/`va.gov`/`OGC`/`/vso` links + `formatActionPlan` empty-state, no new data collection / LLM / `connect-src` contract)
 
@@ -457,7 +457,7 @@ POST /scenarios                  → launchDemoScenario(FormData)              �
 ## Deployment Checklist (must pass before Vercel production alias convergence)
 
 - [ ] `npm run build` succeeds (`next build` + `outputFileTracingIncludes` ships `data/**/*.json` for Vercel + Azure standalone)
-- [ ] All `verify` gates pass: `typecheck` (`tsc --noEmit`) · `lint` (`eslint`) · `test` (`203/203` · `1096`, `vitest run`) · `kb:validate` · `citations:audit` (ratchet) · `audit:me-compliance` (ME-1..ME-39) · `test:composition` (100% · 12/12) · `evidence:architecture` · `regulatory:validate` + `regulatory:audit` · `audit:high` (`0 high`) · `deploy:guard:vercel` (freeze)
+- [ ] All `verify` gates pass: `typecheck` (`tsc --noEmit`) · `lint` (`eslint`) · `test` (`203/203` · `1101`, `vitest run`) · `kb:validate` · `citations:audit` (ratchet) · `audit:me-compliance` (ME-1..ME-39) · `test:composition` (100% · 12/12) · `evidence:architecture` · `regulatory:validate` + `regulatory:audit` · `audit:high` (`0 high`) · `deploy:guard:vercel` (freeze)
 - [ ] E2E Chrome/ChromeDriver pass after `next build`: 6-step secondary journey + presumptive + `?error={code}` → `role=alert`/`aria-describedby` contracts + `LocalEvidenceAnalyzer` `Standard|Extended` + `/privacy` limits verbatim (`privacy-limits-contract`) + `error.tsx` boundaries + `regulatory:preflight:test`
 - [ ] `WORKFLOW_SESSION_SECRET` ≥32 chars in production secrets store (otherwise `workflowSessionSecret()` throws, `openSessionPayload` fail-closed, `workflowSessionRuntimeReady()` → `false`, auth fails on every `writeSecondaryWorkflowSession`/`writePresumptiveSession`)
 - [ ] VA config correct **or explicitly disabled**: `VA_API_ENV=sandbox|production`, `VA_API_ENABLED=true` only where intended, per-service `VA_FORMS_*`/`VA_BENEFITS_REFERENCE_*` server-only keys + `_BASE_URL` exact-origin `https` validation; production/distributed stays `local-fallback` until `#287` shared coordinator exists (`vaProcessLocalStateAllowed` → `false`)
