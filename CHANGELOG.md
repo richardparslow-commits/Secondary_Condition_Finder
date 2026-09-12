@@ -5,6 +5,17 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-12 (later still)
 
+- **Sixth audit report — session-write failure contracts pinned** (`test`) Adds
+  `tests/session-write-failure-contract.test.ts` (4 tests): behavioral pins (mocked session
+  module) that a rejected `writeSecondaryWorkflowSession` in `saveDiagnosedSelection` and
+  `saveRatingsSelection` holds the user on the step via validation redirect (never resolves
+  forward), emits a failure `auditLog`, and that a successful write advances with a success audit;
+  plus a structural pin that all 6 write sites in `secondary.ts` remain guarded and the `#386`
+  remediation comment (`#5 do not silently lose data`) stays in place. The report's headline
+  scenario (missing production secret) throws at write time and lands in exactly these catch
+  blocks — fail-fast secret handling was already pinned in `secret-fallback-contract` and
+  `deployment-readiness`. Suite: 215 files / 1151 tests.
+
 - **Fifth audit report — size-limit cleanup path pinned** (`test`) Adds
   `tests/evidence-pdf-size-limit-cleanup.test.ts` (3 tests): when `assertExtractedTextSize`
   throws mid-loop (PDF exceeds the `textChars` budget), the per-page `finally` releases the
