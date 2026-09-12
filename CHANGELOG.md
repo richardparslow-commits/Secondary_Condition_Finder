@@ -5,6 +5,15 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-11 (later)
 
+- **#415 — Symptom-discussion-panel E2E + session round-trip contract** (`test`) The last backlog
+  polish item: the real-browser journey now selects a controlled symptom at Step 4
+  (`daytime-sleepiness-snoring`, matching the fixture sleep-apnea pathway) and asserts the vetted
+  provider-discussion prompts render on Step 5 (label + prompt text) and follow to Step 6. Adds
+  `tests/symptom-session-roundtrip.test.ts` pinning the server chain (seal → open →
+  `workflowSessionToQueryParams`). Debugging note: WebDriver `innerText` returns CSS-transformed
+  text, so the panel's `uppercase` heading must be matched case-insensitively — the first run
+  failed on assertion case, not app behavior. Suite: 208 files / 1119 tests.
+
 - **#414 — Evidence-storage drop-notice contract pinned** (`test`) Adds
   `tests/evidence-storage-drop-notice.test.ts`: behavioral coverage of `serializeStoredEvidenceWithInfo`
   (accurate `dropped` count under byte pressure, oldest-first, empty-store full-drop accounting,
