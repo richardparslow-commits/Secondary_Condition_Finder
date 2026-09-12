@@ -9,7 +9,9 @@ import {
 } from "@/lib/observability/logger";
 import {
   VA_SHARED_STATE_REQUIRED_ERROR,
+  resolveVaReferenceMode,
   vaProcessLocalStateAllowed,
+  type VaReferenceMode,
 } from "./runtime-state";
 import {
   isCircuitOpen,
@@ -46,6 +48,14 @@ export type VaApiSource = "va-sandbox-api" | "va-production-api" | "local-fallba
 
 export type VaApiConfig = {
   enabled: boolean;
+  /**
+   * Deliberate tri-state runtime mode required by issue #287. Derived, never
+   * read from a single variable, so `disabled` is the fail-closed default and
+   * `production` requires an explicit access acknowledgement.
+   */
+  mode: VaReferenceMode;
+  /** Auditable, non-sensitive explanation of how `mode` was resolved. */
+  modeReason: string;
   environment?: VaApiEnvironment;
   formsApiKey?: string;
   benefitsReferenceDataApiKey?: string;
@@ -170,31 +180,27 @@ export type VaFormIndex = z.infer<typeof formsIndexSchema>;
 export type VaDisabilityReference = z.infer<typeof disabilityReferenceSchema>;
 export type VaServiceBranchReference = z.infer<typeof serviceBranchReferenceSchema>;
 
-function requestedEnvironment(env: VaApiEnvironmentVariables): VaApiEnvironment {
-  return env.VA_API_ENV?.trim().toLowerCase() === "production"
-    ? "production"
-    : "sandbox";
-}
-
-function apiEnabled(
-  env: VaApiEnvironmentVariables,
-  environment: VaApiEnvironment,
-): boolean {
-  if (env.VA_API_ENABLED !== undefined) {
-    return env.VA_API_ENABLED === "true";
-  }
-  return environment === "sandbox" && env.VA_SANDBOX_ENABLED === "true";
-}
-
 export function loadVaApiConfig(
   env: VaApiEnvironmentVariables = process.env,
 ): VaApiConfig {
-  const environment = requestedEnvironment(env);
+  // Single deliberate tri-state decision point (issue #287): disabled | sandbox |
+  // production. Production additionally requires an explicit acknowledgement that
+  // VA granted production access, so the #287 gate rule cannot be bypassed by a
+  // lone VA_API_ENV/VA_API_ENABLED pair.
+  const resolution = resolveVaReferenceMode(env);
+  const environment = resolution.environment as VaApiEnvironment;
   const timeout = Number(env.VA_API_TIMEOUT_MS ?? env.VA_SANDBOX_TIMEOUT_MS ?? DEFAULT_TIMEOUT_MS);
-  const production = environment === "production";
+  // Credentials and endpoints follow the *effective* mode, never the merely
+  // requested environment. A production selection that failed closed must not
+  // carry production base URLs or production keys, so even a caller that forgot
+  // to check `enabled` cannot reach or be labelled as production.
+  const production = resolution.mode === "production";
+  const effectiveEnvironment: VaApiEnvironment = production ? "production" : "sandbox";
 
   return {
-    enabled: apiEnabled(env, environment),
+    enabled: resolution.enabled,
+    mode: resolution.mode,
+    modeReason: resolution.reason,
     environment,
     formsApiKey: (
       production
@@ -215,17 +221,17 @@ export function loadVaApiConfig(
       (production
         ? env.VA_FORMS_PRODUCTION_BASE_URL
         : env.VA_FORMS_SANDBOX_BASE_URL)?.trim() ||
-      DEFAULT_FORMS_BASE_URLS[environment],
+      DEFAULT_FORMS_BASE_URLS[effectiveEnvironment],
     benefitsReferenceDataBaseUrl:
       (production
         ? env.VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL
         : env.VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL)?.trim() ||
-      DEFAULT_REFERENCE_BASE_URLS[environment],
+      DEFAULT_REFERENCE_BASE_URLS[effectiveEnvironment],
     accreditedRepBaseUrl:
       (production
         ? env.VA_ACCREDITED_REP_PRODUCTION_BASE_URL
         : env.VA_ACCREDITED_REP_SANDBOX_BASE_URL)?.trim() ||
-      DEFAULT_ACCREDITED_REP_BASE_URLS[environment],
+      DEFAULT_ACCREDITED_REP_BASE_URLS[effectiveEnvironment],
     timeoutMs:
       Number.isFinite(timeout) && timeout > 0 ? Math.floor(timeout) : DEFAULT_TIMEOUT_MS,
     accreditedRepEnabled: env.VA_ACCREDITED_REP_ENABLED === "true",

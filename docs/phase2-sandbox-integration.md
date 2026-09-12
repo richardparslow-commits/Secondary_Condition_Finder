@@ -30,10 +30,13 @@ VA API access is disabled by default. The full environment contract is documente
 - `VA_API_ENABLED=true`
 - `VA_API_TIMEOUT_MS=<milliseconds>` (optional)
 
-Production activation additionally requires the service-specific production keys and must not occur until VA grants production access:
+Production activation is a deliberate tri-state decision (`disabled` / `sandbox` / `production`) resolved by `resolveVaReferenceMode()` — see `docs/va-api-runtime-configuration.md`. It additionally requires an explicit acknowledgement that VA granted production access, the service-specific production keys, and must not occur until VA grants production access:
 
+- `VA_PRODUCTION_ACCESS_GRANTED=true` (issue #287 gate rule acknowledgement; unset everywhere today)
 - `VA_FORMS_PRODUCTION_API_KEY`
 - `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY`
+
+Without the acknowledgement, a production selection fails closed to `disabled` and never carries production endpoints or production keys.
 
 Never expose any VA key through `NEXT_PUBLIC_*` variables.
 

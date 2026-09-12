@@ -98,14 +98,24 @@ describe("VA reference product surfaces", () => {
 
   it("documents environment-aware production preparation without weakening the separate sandbox gate", () => {
     const adapter = source("src/lib/va/sandbox.ts");
+    const runtimeMode = source("src/lib/va/runtime-state.ts");
     const docs = source("docs/va-api-runtime-configuration.md");
 
     expect(adapter).toContain('export type VaApiEnvironment = "sandbox" | "production"');
-    expect(adapter).toContain("VA_API_ENV");
-    expect(adapter).toContain("VA_API_ENABLED");
     expect(adapter).toContain("VA_FORMS_PRODUCTION_API_KEY");
     expect(adapter).toContain("VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY");
-    expect(adapter).toContain("VA_SANDBOX_ENABLED");
+
+    // Issue #287: the deliberate tri-state runtime mode is the single decision
+    // point, and the adapter must delegate to it rather than re-deriving flags.
+    expect(adapter).toContain("resolveVaReferenceMode(env)");
+    expect(runtimeMode).toContain('export type VaReferenceMode = "disabled" | "sandbox" | "production"');
+    expect(runtimeMode).toContain("VA_API_ENV");
+    expect(runtimeMode).toContain("VA_API_ENABLED");
+    // Phase 2 compatibility flag remains honored by the resolver.
+    expect(runtimeMode).toContain("VA_SANDBOX_ENABLED");
+    expect(runtimeMode).toContain("VA_PRODUCTION_ACCESS_GRANTED");
+
     expect(docs).toContain("Issue #189 remains the separate credentialed sandbox connectivity gate");
+    expect(docs).toContain("VA_PRODUCTION_ACCESS_GRANTED");
   });
 });

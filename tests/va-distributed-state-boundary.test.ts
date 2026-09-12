@@ -14,6 +14,8 @@ import { vaProcessLocalStateAllowed } from "@/lib/va/runtime-state";
 
 const config: VaApiConfig = {
   enabled: true,
+  mode: "sandbox",
+  modeReason: "Test fixture: sandbox mode.",
   environment: "sandbox",
   formsApiKey: "forms-test-key",
   benefitsReferenceDataApiKey: "reference-test-key",
