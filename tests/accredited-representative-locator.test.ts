@@ -15,6 +15,8 @@ import {
 
 const baseConfig: VaApiConfig = {
   enabled: true,
+  mode: "sandbox",
+  modeReason: "Test fixture: sandbox mode.",
   environment: "sandbox",
   formsApiKey: "forms-key",
   benefitsReferenceDataApiKey: "reference-key",

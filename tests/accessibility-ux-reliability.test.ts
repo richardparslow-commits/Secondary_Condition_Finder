@@ -170,4 +170,63 @@ describe("accessibility and UX content contracts", () => {
     expect(workbook).toContain("NO — pending human review");
     expect(workbook).not.toContain("- [x]");
   });
+
+  it("keeps workbook build identity resolved live rather than pinned to a stale build", () => {
+    const workbook = readFileSync(
+      "docs/section508-manual-review-workbook.md",
+      "utf8",
+    );
+
+    // A committed SHA/deployment/run id goes stale the moment `main` advances and
+    // silently points a human tester at a superseded build, which issue #195
+    // prohibits. The session-identity rows must therefore stay blank and be
+    // resolved at session start.
+    const blankRows = [
+      "| Deployed `main` commit SHA | |",
+      "| Vercel production deployment ID | |",
+      "| Vercel commit status | |",
+      "| Main CI run | |",
+      "| Production Runtime Readiness run | |",
+      "| Tester | |",
+      "| Assistive technology + version | |",
+    ];
+    for (const row of blankRows) {
+      expect(workbook).toContain(row);
+    }
+
+    expect(workbook).toContain("node scripts/resolve-review-build-identity.mjs");
+    expect(workbook).toContain("Resolve the build identity at session start");
+    // Prior pinned identifiers survive only inside the clearly-labelled
+    // superseded table, never as the active session identity.
+    expect(workbook).toContain("Superseded build identifiers");
+    expect(workbook).toContain("bbe2935274e1e00b235ac69f6ef1e8ddc4b8bdab");
+    const supersededIndex = workbook.indexOf("Superseded build identifiers");
+    expect(workbook.indexOf("bbe2935274e1e00b235ac69f6ef1e8ddc4b8bdab")).toBeGreaterThan(
+      supersededIndex,
+    );
+  });
+
+  it("keeps the build-identity resolver scoped to identity and free of accessibility results", () => {
+    const script = readFileSync(
+      "scripts/resolve-review-build-identity.mjs",
+      "utf8",
+    );
+
+    // The resolver must never be able to emit an accessibility verdict that could
+    // be mistaken for human evidence.
+    expect(script).toContain("not an accessibility PASS");
+    expect(script).toContain("supporting evidence only");
+    expect(script).not.toMatch(/\bPASS\b\s*[|:]\s*PASS/);
+    expect(script).not.toContain("NOT TESTED |");
+
+    // No hardcoded deployment identity: everything is resolved at run time.
+    expect(script).not.toContain("dpl_6GJrwnr7ToGVFHL4RUeGoFTt3YyC");
+    expect(script).not.toContain("6287296680");
+    expect(script).not.toContain("34000588157");
+    expect(script).not.toContain("bbe2935274e1e00b235ac69f6ef1e8ddc4b8bdab");
+
+    // Reachability probing records status only, never bodies or headers.
+    expect(script).toContain('method: "HEAD"');
+    expect(script).toContain("HTTP status only");
+  });
 });

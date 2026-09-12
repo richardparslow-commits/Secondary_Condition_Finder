@@ -19,19 +19,45 @@ Complete this block before testing begins.
 | Tester | |
 | Review date/time | |
 | Production URL | `https://secondary-condition-finder.vercel.app` |
-| Deployed `main` commit SHA | `bbe2935274e1e00b235ac69f6ef1e8ddc4b8bdab` |
-| Vercel production deployment ID | `6287296680` |
-| Main CI run | `34000588157` |
-| Production Runtime Readiness run | `34000588157` |
+| Deployed `main` commit SHA | |
+| Vercel production deployment ID | |
+| Vercel commit status | |
+| Main CI run | |
+| Production Runtime Readiness run | |
 | Operating system + version | |
 | Browser + version | |
 | Assistive technology + version | |
 | Display/zoom configuration | |
 | Forced-colors/high-contrast configuration | |
 
-Before recording any pass/fail result, verify that the canonical production alias is serving the exact `main` commit named above. If `main` advances during the review, either finish against the recorded exact deployment or start a new session record; do not merge evidence from different builds without identifying them separately.
+### Resolve the build identity at session start — do not reuse a committed value
 
-> The build identifiers above are a blank starter template for the human tester. They identify the target build only. They are not human test results, findings, retest results, or sign-off.
+The build-identity rows above are intentionally **blank**. The tester must fill them in at the moment the session begins, because `main` advances and any committed identifier goes stale. A stale identifier silently points the review at a superseded build, which issue #195 prohibits.
+
+Run this immediately before testing and paste the resolved rows into the table:
+
+```bash
+node scripts/resolve-review-build-identity.mjs
+```
+
+The script emits the deployed `main` SHA, the Vercel production deployment id, the Vercel commit status, the main CI run, the Production Runtime Readiness run, and an HTTP reachability probe. Add `--json` for machine-readable output, or `--sha=<sha>` to resolve a specific commit instead of `origin/main`.
+
+Before recording any pass/fail result, verify that the canonical production alias is serving the exact `main` commit you resolved. If `main` advances during the review, either finish against the recorded exact deployment or start a new session record; do not merge evidence from different builds without identifying them separately.
+
+> **Scope limit.** The resolved identifiers are *supporting evidence only*. They establish which build was reviewed. They are not human test results, findings, retest results, or sign-off, and an HTTP 200 from the reachability probe is not an accessibility PASS. Every result cell in this workbook must come from a human tester.
+
+### Superseded build identifiers
+
+These values were previously pinned in this workbook as a starter template. They are retained **only** so that any earlier partial session can be attributed to the correct build. They no longer match `main` and must not be used for a new session:
+
+| Field | Superseded value | Status |
+|---|---|---|
+| Deployed `main` commit SHA | `bbe2935274e1e00b235ac69f6ef1e8ddc4b8bdab` | Superseded — not current `main` |
+| Vercel production deployment ID | `6287296680` | Superseded |
+| Main CI run | `34000588157` | Superseded |
+| Production Runtime Readiness run | `34000588157` | Superseded — this duplicated the CI run id and was never an independent readiness identifier |
+
+No human accessibility evidence was recorded against these builds. Every result table below remains `NOT TESTED`.
 
 ## Required route and workflow coverage
 
