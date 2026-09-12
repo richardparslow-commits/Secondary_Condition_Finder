@@ -3,6 +3,19 @@
 All notable changes to Secondary Condition Finder. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); merges are grouped by date, newest first.
 
+## 2026-09-12
+
+- **#417 — Symptom-bridge expansion (Phase 4 item A)** (`feat`) Adds 8 controlled symptom entries
+  to `SYMPTOM_BRIDGE_ENTRIES` (8 → 16): chronic widespread pain (fibromyalgia), ringing in ears
+  (tinnitus, hearing-loss), heartburn/reflux (gerd, esophagitis), stomach pain (gastritis), bowel
+  changes (irritable-bowel-syndrome), low back pain (lumbar-strain, lumbar-spinal-stenosis,
+  intervertebral-disc-syndrome), neck pain with arm numbness (cervical-strain,
+  carpal-tunnel-syndrome), weight/temperature change (hyperthyroidism, hypothyroidism), pelvic
+  pain (chronic-pelvic-pain-syndrome). Every `discussionConditionIds` entry verified to exist in
+  the catalog (25 unique references, zero missing); all prompts keep the established
+  non-determination voice. Data-only change: no schema, UI, or egress surface touched; the Step 4
+  checkbox grid renders 16 entries within the existing layout. Suite: 209 files / 1124 tests.
+
 ## 2026-09-11 (later)
 
 - **#416 — Secret-fallback contract completed** (`test`) Adds
