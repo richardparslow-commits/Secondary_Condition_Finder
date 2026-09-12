@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { EvidenceGapCoverage } from "@/components/evidence/EvidenceGapCoverage";
 import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
+import { ConsultationPacketDownload } from "@/components/ConsultationPacketDownload";
 import { MedicalRecordChecklist } from "@/components/secondary/MedicalRecordChecklist";
 import { PathwayRecordChecklist } from "@/components/secondary/PathwayRecordChecklist";
 import { ActionPlan } from "@/components/secondary/ActionPlan";
@@ -181,6 +182,11 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
       <PathwayEvidenceMapper results={nonServiceConnectedResults} recommendations={consultationRecommendations} />
+      <ConsultationPacketDownload
+        recommendations={consultationRecommendations}
+        results={nonServiceConnectedResults}
+        catalogById={byId}
+      />
 
       <div className="ui-actions">
         <Link href={suggestionsHref} className="ui-button-secondary">← Back to Connections</Link>

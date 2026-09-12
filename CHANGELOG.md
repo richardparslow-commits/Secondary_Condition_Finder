@@ -3,6 +3,16 @@
 All notable changes to Secondary Condition Finder. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); merges are grouped by date, newest first.
 
+## 2026-09-12 (later)
+
+- **Phase 4 item B — Unified consultation packet** (`feat`) Adds `ConsultationPacketDownload` on
+  the Step 6 evidence page: one printable text download concatenating the existing privacy-stripped
+  exports (claim summary, ranked suggestions, pathway record checklists, action plan, rating guide)
+  behind a section table of contents — all `format*` helpers reused, no new content composition and
+  no new data collection. Contract-pinned by `tests/consultation-packet.test.ts` (5 tests): packet
+  composition, TOC ordering, and privacy exclusions (no condition selections, ratings, or evidence
+  text beyond what the existing exports already carry). Suite: 210 files / 1129 tests.
+
 ## 2026-09-12
 
 - **#417 — Symptom-bridge expansion (Phase 4 item A)** (`feat`) Adds 8 controlled symptom entries
