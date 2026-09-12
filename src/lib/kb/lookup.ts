@@ -20,3 +20,27 @@ export function mappedConditionIds(kb: KnowledgeBase): Set<string> {
 export function draftMappings(kb: KnowledgeBase): ConditionMapping[] {
   return kb.filter((mapping) => mapping.draft);
 }
+
+/**
+ * Secondary-target index: for each condition id that appears as a published
+ * secondary suggestion, the sorted ids of the published primaries mapping to
+ * it. Draft mappings are excluded, matching recommendation output. This is a
+ * display-only index for research-cue surfaces (e.g. the presumptive results
+ * cross-link panel); it is never fed into recommend().
+ */
+export function secondaryTargetIndex(kb: KnowledgeBase): Map<string, string[]> {
+  const index = new Map<string, string[]>();
+  for (const mapping of kb) {
+    if (mapping.draft) continue;
+    for (const suggestion of mapping.suggestions) {
+      const entry = index.get(suggestion.conditionId);
+      if (entry) {
+        if (!entry.includes(mapping.id)) entry.push(mapping.id);
+      } else {
+        index.set(suggestion.conditionId, [mapping.id]);
+      }
+    }
+  }
+  for (const entry of index.values()) entry.sort();
+  return index;
+}

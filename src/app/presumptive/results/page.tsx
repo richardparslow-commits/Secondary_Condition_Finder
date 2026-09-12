@@ -2,12 +2,16 @@ import Link from "next/link";
 
 import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import { DisclaimerFooter } from "@/components/Disclaimer";
+import { loadConditionCatalog } from "@/lib/catalog/load";
+import { loadKnowledgeBase } from "@/lib/kb/load";
+import { SECONDARY_CAUSED_BY_TITLE } from "@/lib/legal/secondary-title";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { matchPresumptives } from "@/lib/presumptive/match";
 import type { PresumptiveCondition } from "@/lib/presumptive/schema";
 import { readPresumptiveSession } from "@/lib/presumptive/session";
 import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
 import { loadServiceBranchReference } from "@/lib/va/service-branches";
+import { buildSecondaryCrossLinks } from "./secondary-cross-link";
 
 export const dynamic = "force-dynamic";
 
@@ -97,6 +101,14 @@ export default async function PresumptiveResultsPage({
     return match ? `${match.description} (${match.code})` : code;
   });
   const result = matchPresumptives(loadExposureCatalog(), history);
+  // Presumptive × secondary research cue (display-only, app-layer):
+  // intersects matched presumptive conditions with the published KB
+  // secondary-target index. No session state crosses the track boundary.
+  const secondaryCrossLinks = buildSecondaryCrossLinks(
+    result.matches.flatMap(({ conditions }) => conditions),
+    loadConditionCatalog(),
+    loadKnowledgeBase(),
+  );
   const hasCompleteDateRange = Boolean(history.serviceStart && history.serviceEnd);
   const hasPartialDateRange = Boolean(history.serviceStart) !== Boolean(history.serviceEnd);
   const serviceDateSummary = history.serviceStart && history.serviceEnd
@@ -141,6 +153,37 @@ export default async function PresumptiveResultsPage({
           condition, and VA can rebut a presumption with affirmative evidence.
         </p>
       </div>
+
+      {secondaryCrossLinks.length > 0 && (
+        <div className="mt-4 rounded-lg border border-slate-300 bg-white p-4 text-sm text-slate-700">
+          <p className="font-medium text-slate-900">Also researchable in the secondary track</p>
+          <p className="mt-1">
+            Some conditions above can also be researched as secondary conditions — that is,
+            caused or worsened by a different condition you already have. The secondary track
+            uses a different legal framework from presumptive service connection.
+          </p>
+          <ul className="mt-2 space-y-1">
+            {secondaryCrossLinks.map((link) => (
+              <li key={link.name}>
+                <span className="font-medium text-slate-900">{link.name}</span>
+                {" "}
+                &mdash; suggested in this app as a possible secondary of{" "}
+                {link.primaryNames.join(", ")}.
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2">
+            To explore those pathways, use{" "}
+            <Link
+              href="/secondary/condition-caused-by"
+              className="underline hover:text-slate-900"
+            >
+              {SECONDARY_CAUSED_BY_TITLE}
+            </Link>
+            . This is a research cue only, not a determination about your claim.
+          </p>
+        </div>
+      )}
 
       {!hasCompleteDateRange && (
         <div className="mt-4 rounded-lg border border-slate-300 bg-white p-4 text-sm text-slate-700">
