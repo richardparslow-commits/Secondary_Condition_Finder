@@ -24,7 +24,7 @@ import {
 } from "@/lib/evidence/limits";
 import {
   clearStoredEvidence,
-  loadStoredEvidence,
+  loadStoredEvidenceWithWarning,
   saveStoredEvidence,
   serializeStoredEvidenceWithInfo,
 } from "@/lib/evidence/storage";
@@ -83,9 +83,11 @@ function getSessionStorage(): Storage | null {
   }
 }
 
-function loadStored(): EvidenceAnalysis[] {
-  return loadStoredEvidence(getSessionStorage());
-}
+// #11: a corrupted evidence store must never reset the tab silently.
+// loadStoredEvidenceWithWarning logs parse failures (with a bounded raw
+// preview) for observability; callers surface the parseError to the user.
+const STORAGE_CORRUPTED_WARNING =
+  "Saved evidence in this browser tab could not be read and was not restored. It may have been corrupted; re-analyze the affected documents.";
 
 function saveStored(
   analyses: EvidenceAnalysis[],
@@ -139,7 +141,17 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
   useEffect(() => {
     const restoreTimer = window.setTimeout(() => {
-      setAnalyses(loadStored());
+      const { analyses, parseError } = loadStoredEvidenceWithWarning(
+        getSessionStorage(),
+      );
+      setAnalyses(analyses);
+      if (parseError) {
+        setWarnings((prev) =>
+          prev.includes(STORAGE_CORRUPTED_WARNING)
+            ? prev
+            : [...prev, STORAGE_CORRUPTED_WARNING],
+        );
+      }
     }, 0);
     return () => window.clearTimeout(restoreTimer);
   }, []);
@@ -157,9 +169,18 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   useEffect(() => {
     if (depth === "standard") return;
     const reloadTimer = window.setTimeout(() => {
-      setAnalyses(
-        loadStoredEvidence(getSessionStorage(), EVIDENCE_DEPTH_LIMITS[depth]),
+      const { analyses, parseError } = loadStoredEvidenceWithWarning(
+        getSessionStorage(),
+        EVIDENCE_DEPTH_LIMITS[depth],
       );
+      setAnalyses(analyses);
+      if (parseError) {
+        setWarnings((prev) =>
+          prev.includes(STORAGE_CORRUPTED_WARNING)
+            ? prev
+            : [...prev, STORAGE_CORRUPTED_WARNING],
+        );
+      }
     }, 0);
     return () => window.clearTimeout(reloadTimer);
   }, [depth]);
