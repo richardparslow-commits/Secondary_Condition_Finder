@@ -5,6 +5,19 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-12 (later still)
 
+- **Phase 4 item D closed + presumptive-track E2E journey** (`test`) Adds
+  `e2e/presumptive-workflow.mjs`, the presumptive track's first real-browser journey:
+  home → intake → Agent Orange quick-start template pre-fill (controlled-checkbox clicks + date
+  fields) → submit → results (category, confirmed-date window, not-an-eligibility-decision
+  notice) → the Phase 4 item C cross-link panel (heading, mapping sentence, secondary-track link)
+  → cross-track navigation to the clean secondary entry route. Harness mirrors
+  `secondary-workflow.mjs` (sessions via `POST /session`; uses `execute/sync` for input reads —
+  local chromedriver does not implement the W3C `property` endpoint). Item D (DD-214 →
+  presumptive prefill) verified one-click and pinned by `tests/dd214-presumptive-handoff.test.ts`
+  (4 contracts: field extraction with SSN redaction, adapter draft validity, locations-override
+  path, full match through to the Agent Orange category). `verify-checklist.sh --full` now runs
+  all three journeys. Suite: 213 files / 1144 tests.
+
 - **Phase 4 item C — Presumptive × secondary research-cue panel** (`feat`) On
   `/presumptive/results`, matched presumptive conditions that also appear as published KB
   secondary targets render a research-cue panel: the condition, the published primaries that map
