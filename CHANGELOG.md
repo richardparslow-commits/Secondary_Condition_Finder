@@ -5,6 +5,15 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-11 (later)
 
+- **#416 — Secret-fallback contract completed** (`test`) Adds
+  `tests/secret-fallback-contract.test.ts` (5 tests): a configured-but-short secret throws in
+  production (length and production gates are independent), production can never return the
+  dev-only secret (throw precedes fallback), the dev fallback warns outside test/prod (#386
+  observability) and stays silent under test. Response to a fourth circulated audit report — the
+  fail-fast claim was already implemented and pinned (`deployment-readiness.test.ts`), with the
+  report's central "silently used in production" scenario unreachable by construction. Suite: 209
+  files / 1124 tests.
+
 - **#415 — Symptom-discussion-panel E2E + session round-trip contract** (`test`) The last backlog
   polish item: the real-browser journey now selects a controlled symptom at Step 4
   (`daytime-sleepiness-snoring`, matching the fixture sleep-apnea pathway) and asserts the vetted
