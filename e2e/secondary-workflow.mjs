@@ -394,6 +394,11 @@ async function runJourney() {
   checkpoint("analyzed pasted clinician note locally");
 
   await setSelected("//input[@name='documentsShared' and @value='no']", true);
+  // Idea #6 fixture: select one controlled symptom (sleep-apnea entry) so the
+  // vetted provider-discussion prompts render on Steps 5/6.
+  const symptomCheckbox = "//input[@name='symptomIds' and @value='daytime-sleepiness-snoring']";
+  await setSelected(symptomCheckbox, true);
+  await waitForSelected(symptomCheckbox, true);
   await clickXpath("//button[contains(normalize-space(.), 'Review Possible Connections')]");
   await waitForPath("/secondary/suggestions");
   checkpoint("reached diagnosis-centered connection review");
@@ -494,6 +499,17 @@ async function runJourney() {
   }
   checkpoint("locator search redirected with zip; fee note + provenance + OGC guidance rendered");
 
+  // Idea #6 compliant surface: the fixture selects the sleep-apnea symptom at
+  // Step 4, so the vetted provider-discussion prompt must render on Step 5.
+  // Poll on the symptom label (the panel heading is CSS-uppercased, and
+  // WebDriver innerText returns transformed text).
+  await waitForText("Loud snoring or daytime sleepiness", "Step 5 symptom discussion panel");
+  const symptomText = await bodyText();
+  if (!symptomText.includes("sleep-disordered breathing")) {
+    throw new Error("Symptom discussion panel is missing the vetted provider-discussion prompt.");
+  }
+  checkpoint("symptom discussion prompts rendered on Step 5 from the Step 4 selection");
+
   checkpoint("verify pathway checklist selection follows Steps 5 → 6 alongside pathway evidence mapping");
   await clickXpath("//a[contains(normalize-space(.), 'Review Evidence for These Connections')]");
   await waitForPath("/secondary/evidence");
@@ -520,6 +536,9 @@ async function runJourney() {
   }
   if (!step6Text.includes("Prepare Evidence — Pathway-Specific Record Checklist")) {
     throw new Error("Step 6 is missing the Prepare Evidence pathway-specific record checklist.");
+  }
+  if (!/symptoms to discuss with a provider/i.test(step6Text)) {
+    throw new Error("Step 6 is missing the symptom discussion panel (prompts follow 5 → 6).");
   }
   await waitForSelected(PATHWAY_CHECKBOX_XPATH, true);
   checkpoint("pathway evidence mapping rendered with theory-matched excerpt; checklist followed 5 → 6");
