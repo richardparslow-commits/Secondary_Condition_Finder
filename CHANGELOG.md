@@ -5,7 +5,17 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-12 (later still)
 
-- **Phase 4 item D closed + presumptive-track E2E journey** (`test`) Adds
+- **Fifth audit report — size-limit cleanup path pinned** (`test`) Adds
+  `tests/evidence-pdf-size-limit-cleanup.test.ts` (3 tests): when `assertExtractedTextSize`
+  throws mid-loop (PDF exceeds the `textChars` budget), the per-page `finally` releases the
+  in-flight page **before** the error propagates, every earlier page cleaned in its own
+  iteration (3 pages → 3 cleanups), and the outer `finally` destroys the loading task. The
+  report's claim of "fragile" cleanup was already-structured-correct in `extractPdfEvidence`
+  (the assertion sits inside the per-page try, so cleanup order is guaranteed by construction);
+  the size-limit path was the one scenario the #407 contract didn't pin — now it is. Suite:
+  214 files / 1147 tests.
+
+- **#420 — Phase 4 item D closed + presumptive-track E2E journey** (`test`) Adds
   `e2e/presumptive-workflow.mjs`, the presumptive track's first real-browser journey:
   home → intake → Agent Orange quick-start template pre-fill (controlled-checkbox clicks + date
   fields) → submit → results (category, confirmed-date window, not-an-eligibility-decision
