@@ -3,7 +3,21 @@
 All notable changes to Secondary Condition Finder. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); merges are grouped by date, newest first.
 
-## 2026-09-12 (later)
+## 2026-09-12 (later still)
+
+- **Phase 4 item C — Presumptive × secondary research-cue panel** (`feat`) On
+  `/presumptive/results`, matched presumptive conditions that also appear as published KB
+  secondary targets render a research-cue panel: the condition, the published primaries that map
+  to it, and a link to the secondary track's clean entry route. Built entirely at the app layer
+  (`src/app/presumptive/results/secondary-cross-link.ts` + page wiring) — the TRACK-SEPARATION
+  composition rules bind only `src/lib/secondary-workflow/` and `src/lib/presumptive/`, so no rule
+  changes were needed. New `secondaryTargetIndex` KB lookup (display-only, draft-excluded, never
+  fed into `recommend()`); no session state crosses the track boundary. Real-data intersection:
+  11 of 48 presumptive conditions carry secondary pathways (hypertension, asthma, COPD, CAD, …).
+  Tests: `tests/secondary-cross-link.test.ts` (7) and
+  `tests/track-separation-cross-link-contract.test.ts` (4) — the latter names the composition
+  rules so a refactor cannot quietly weaken the boundary the panel depends on. Suite: 212 files /
+  1140 tests.
 
 - **Phase 4 item B — Unified consultation packet** (`feat`) Adds `ConsultationPacketDownload` on
   the Step 6 evidence page: one printable text download concatenating the existing privacy-stripped
