@@ -1,6 +1,9 @@
 {
   "id": "functional-neurological-symptom-disorder",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review psychiatric, neurological, pain, mobility/fall, treatment, and aggravation pathways only where supported; do not treat the mental-disorders rating classification as proof of neurological or psychiatric causation."],
+  "todo": [
+    "ME-41 safe-draft rescreen 2026-09-12 (NCBI E-utilities) did not resolve a depressive-disorder edge. A targeted query pairing functional neurological disorder or conversion disorder with depression and comorbidity, prevalence, or epidemiology returned zero records. Tsui, Deptula, and Yuan, \"Conversion Disorder, Functional Neurological Symptom Disorder, and Chronic Pain: Comorbidity, Assessment, and Treatment\" (Curr Pain Headache Rep 2017;21(6):29, PMID 28434123) examines overlap with chronic pain conditions and shared treatment components rather than a depressive-disorder outcome.",
+    "Keep safe-draft until a functional-neurological-symptom-disorder-specific source supports the exact downstream diagnosis and direction. Do not treat the mental-disorders rating classification as proof of neurological or psychiatric causation, and keep structural neurological disease, chronic pain conditions, mobility and fall sequelae, medications, and other psychiatric illness as competing explanations."
+  ],
   "suggestions": []
 }

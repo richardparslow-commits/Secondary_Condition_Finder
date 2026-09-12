@@ -1,6 +1,9 @@
 {
   "id": "dissociative-disorder",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Keep dissociative amnesia and dissociative identity disorder evidence distinct where mechanisms differ; review psychiatric comorbidity, trauma-related, treatment, sleep, and aggravation pathways only where supported."],
+  "todo": [
+    "ME-41 safe-draft rescreen 2026-09-12 (NCBI E-utilities) found only classification literature rather than comorbidity evidence. Spiegel et al., \"Dissociative disorders in DSM-5\" (Depress Anxiety 2011;28(9):824-52, PMID 21910187) and the Annual Review of Clinical Psychology version (2013;9:299-326, PMID 23394228) present DSM-5 criteria recommendations; neither reports co-occurrence with a separately established depressive disorder, and the only comorbidity statement in the 2013 review concerns conversion disorder and dissociation rather than a mood outcome.",
+    "Keep safe-draft until a dissociative-disorder-specific epidemiological or clinical-sample source quantifies co-occurrence with a separately established depressive disorder. Keep dissociative amnesia and dissociative identity disorder evidence distinct where mechanisms differ, and do not infer a depressive disorder from amnesia, identity disruption, possession phenomenology, or trauma history alone."
+  ],
   "suggestions": []
 }
