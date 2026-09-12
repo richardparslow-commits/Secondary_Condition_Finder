@@ -2,7 +2,8 @@
   "id": "schizoaffective-disorder",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+    "ME-41 safe-draft rescreen 2026-09-12 (NCBI E-utilities) confirms a phenotype-identity barrier rather than a simple evidence gap. Miller and Black, \"Schizoaffective disorder: A review\" (Ann Clin Psychiatry 2019;31(1):47-53, PMID 30699217) states that the hallmark of schizoaffective disorder is a major mood episode, depressive or manic, concurrent with symptoms characteristic of schizophrenia, so a depressive episode is partly constitutive of the depressive subtype; a schizoaffective-disorder to depressive-disorder edge would restate a diagnostic criterion as an empirical secondary-condition relationship. The same review records unresolved nosological debate over whether the identity is an independent disorder, a form of schizophrenia, or a mood disorder, and notes inadequate research on its epidemiology, course, and etiologic factors.",
+    "Keep safe-draft. Do not author a depressive-disorder or bipolar-disorder edge from schizoaffective-disorder while a major mood episode remains a diagnostic criterion of the primary identity. Any future proposal must separate an independently established additional mood disorder from the constitutive mood episode and must first resolve the primary's nosological boundary; treatment response to antidepressants or mood stabilizers is not evidence of a distinct secondary condition."
   ],
   "suggestions": []
 }
