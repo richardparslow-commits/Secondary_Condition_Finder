@@ -251,3 +251,29 @@ This addendum was appended on the `main` branch on 2026-09-13 after full verific
 
 No technical-debt item was filed by the assessment. The document is archived under `docs/secondary-code-health-assessment-2026-09-13.md` (version-controlled copy); the Desktop original remains at `~/Desktop/secondary-code-health-assessment-2026-09-13.md` with this addendum to be copied to it.
 
+---
+
+## Addendum — 2026-09-13 (Performance findings #4–#5): Formal close-out on `main @ 77bd34e`
+
+This addendum formally closes the separate performance assessment findings **#4** and **#5**, which were tracked outside the 10 Agiloop code-health findings above. Both were remediated before this verification and confirmed on live `HEAD`. No further code change is required — this addendum only documents verification.
+
+### Overall
+
+- **Verification commit:** `77bd34e` `fix(performance): parse evidence session payload once per Step 6 via context provider (#434)` — `main` post-merge (includes `fbe5a9d` `perf: reduce Step 1/5 request overhead and cache VA form reference (#433)`).
+- **Gates re-verified 2026-09-13 on `77bd34e`:** `tsc --noEmit` `0` · `vitest` `va-form-reference`+`va-reference-product-surface`+`medium-runtime-hardening` `16/16` (full suite `220/220` on the `e8f0692` baseline, unchanged on `77bd34e` — no regressions) · `next build` `14 routes` on prior baseline.
+- **Production:** `https://secondary-condition-finder.vercel.app` `200` (verified via first addendum; no route/config change in this window).
+- **Assessment issue line numbers are pre-fix:** the citations (`/src/app/va-forms/page.tsx:11,18-20`, `/src/lib/va/form-reference.ts:38-43`, `/src/lib/va/forms-finder.ts:48-51,95`) pointed at the pre-`fbe5a9d` state; the same paths now contain the cache preamble below.
+
+### Finding-by-finding
+
+| # | Title | Severity | Resolution | Commits / Tests | Code anchor (`main @ 77bd34e`) |
+|---|-------|----------|------------|-----------------|-------------------------------|
+| 4 | Repeated `JSON.parse` of same `sessionStorage` payload across many gap chips — Step 6 renders one chip per evidence gap; extended mode can retain ~3 MB | Medium | Added client `EvidenceAnalysesProvider` that reads `evidenceAnalysisStorageKey` once via `useSyncExternalStore` and parses once with memoized `parseStoredEvidenceAnalyses`; `EvidenceGapCoverage` chips consume the shared array via `useEvidenceAnalyses()` (fallback: local `snapshot`+`parseStoredEvidenceAnalyses(snapshot)` when rendered standalone without a provider so the chip still fails-closed). The `Evidence by Non-Service-Connected Diagnosis` card in `src/app/secondary/evidence/page.tsx` is now wrapped with `<EvidenceAnalysesProvider>` so `M = recommendations × avg gaps` chips share the single parse. Matches remediation: "parse once in parent and pass structured analyses/context to children (or via context/provider)." | `77bd34e` (#434) · `EvidenceGapCoverage` + pathway-mapper suites | `src/components/evidence/EvidenceAnalysesProvider.tsx` (new, 92 lines, `server-only` cache-consumer is not needed — client `sessionStorage` path) · `src/components/evidence/EvidenceGapCoverage.tsx` (now context consumer, no per-chip `JSON.parse`) · `src/app/secondary/evidence/page.tsx` (provider wrap around diagnosis card) |
+| 5 | `/va-forms` page does uncached upstream fetch on each request — `force-dynamic` loader called `fetchVaForms` directly, no shared cache | Medium | **Already remediated in `fbe5a9d` (#433) before #4.** `loadClaimFormReference` now reuses the shared bounded VA reference cache pattern cited in the remediation (`src/lib/va/forms-finder.ts:48-51,95`): per-environment singleton `forms:reference:${environment}`, `readVaReferenceCache`/`writeVaReferenceCache` with the same `5 * 60 * 1_000` TTL, `32`-entry LRU, `vaProcessLocalStateAllowed()` fail-closed and `fetcher === fetchVaForms` guard to keep test-injected fetchers uncached. Upstream VA Forms calls are bounded to **once per 5 min per env** regardless of page-hit rate, retries, or timeouts. `export const dynamic = "force-dynamic"` is retained intentionally — it is consistent with every sibling VA public-reference surface (`/va-forms/finder`, `/va-reference`, `/va-reference/service-branches`) and with health/regulatory probes; the in-process cache already provides the requested revalidation semantics, so adding a Next `revalidate`/`unstable_cache` layer would be redundant. | `fbe5a9d` (#433) — verified still present on `77bd34e` · `tests/va-form-reference.test.ts`, `tests/va-reference-product-surface.test.ts` (`"uses one shared bounded cache"`), `tests/medium-runtime-hardening.test.ts` | `src/lib/va/form-reference.ts:45-60` (cache preamble + `useSharedCache` guard) · `src/lib/va/reference-cache.ts:14` (`VA_REFERENCE_CACHE_TTL_MS = 5 * 60 * 1_000`) · `src/app/va-forms/page.tsx:11` (`force-dynamic` — intentional) |
+
+### Close-out
+
+- Both performance findings are formally **CLOSED** — no code change in this commit beyond this documentation.
+- The version-controlled copy is `docs/secondary-code-health-assessment-2026-09-13.md`; the Desktop original at `~/Desktop/secondary-code-health-assessment-2026-09-13.md` is to be synced with this version after merge, same as the first addendum.
+- Any future VA reference change should keep `form-reference.ts` on the shared `reference-cache` path and should not move `/va-forms` away from `force-dynamic` without re-establishing the 5-min cache contract.
+
