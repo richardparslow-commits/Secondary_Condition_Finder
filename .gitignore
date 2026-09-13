@@ -53,3 +53,8 @@ __pycache__/
 *.db
 *.db-wal
 *.db-shm
+
+# nested self-contained clone of this repo (has its own .git); not part of this checkout
+/Secondary_Condition_Finder/
+.aider*
+

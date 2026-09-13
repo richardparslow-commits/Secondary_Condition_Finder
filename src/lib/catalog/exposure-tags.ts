@@ -10,8 +10,11 @@ export const TOXIC_EXPOSURE_CONDITION_IDS = new Set([
   "sarcoidosis",
   "brain-cancer",
   "kidney-cancer",
-  "lymphoma",
-  "melanoma",
+  "hodgkins-lymphoma",
+  "non-hodgkins-lymphoma",
+  // Melanoma is a PACT Act-covered skin cancer; the catalog entry for skin
+  // cancer is the closest id that resolves.
+  "skin-cancer",
   "leukemia",
   "multiple-myeloma"
 ]);

@@ -58,13 +58,15 @@ Sandbox:
 
 - `VA_FORMS_SANDBOX_API_KEY`
 - `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`
+- `VA_ACCREDITED_REP_SANDBOX_API_KEY` (Phase 3.1 locator; optional)
 
 Production:
 
 - `VA_FORMS_PRODUCTION_API_KEY`
 - `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY`
+- `VA_ACCREDITED_REP_PRODUCTION_API_KEY` (Phase 3.1 locator; optional)
 
-The Forms adapter sends only the Forms key. Benefits Reference Data requests send only the Benefits Reference Data key.
+The Forms adapter sends only the Forms key. Benefits Reference Data requests send only the Benefits Reference Data key. The accredited-representative locator sends only its own key and is additionally gated by `VA_ACCREDITED_REP_ENABLED=true`; when that flag is `false` no directory request is made even if `VA_API_ENABLED=true`.
 
 ## Optional endpoint overrides
 
@@ -74,11 +76,13 @@ Sandbox:
 
 - `VA_FORMS_SANDBOX_BASE_URL`
 - `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL`
+- `VA_ACCREDITED_REP_SANDBOX_BASE_URL` (Phase 3.1 locator; optional)
 
 Production:
 
 - `VA_FORMS_PRODUCTION_BASE_URL`
 - `VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL`
+- `VA_ACCREDITED_REP_PRODUCTION_BASE_URL` (Phase 3.1 locator; optional)
 
 `VA_API_TIMEOUT_MS` controls the per-attempt timeout. `VA_SANDBOX_TIMEOUT_MS` remains a backward-compatible sandbox-era fallback.
 
@@ -118,7 +122,7 @@ Those variables alone do **not** authorize a production request under the curren
 
 ## Reference caching and status
 
-Forms search, disability terminology, and service-branch reference loaders share a bounded five-minute **process-local** cache only during single-process non-production execution. The cache is an optimization, not an authoritative freshness or safety control. It is disabled in production and known distributed/serverless runtimes so a warm instance cannot be mistaken for a deployment-wide cache.
+Forms search, disability terminology, service-branch, and accredited-representative reference loaders share a bounded five-minute **process-local** cache only during single-process non-production execution. The cache is an optimization, not an authoritative freshness or safety control. It is disabled in production and known distributed/serverless runtimes so a warm instance cannot be mistaken for a deployment-wide cache.
 
 User-facing reference pages expose only non-sensitive status: source label, environment, last successful retrieval time, and cache hit/miss state. Credentials, response payloads, and user workflow selections are never included in this status surface.
 

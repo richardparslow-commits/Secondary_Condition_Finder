@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
+import { isExposureRelated } from "@/lib/catalog/exposure-tags";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { mappedConditionIds } from "@/lib/kb/lookup";
@@ -74,11 +75,16 @@ export default async function DiagnosedConditionsPage({ searchParams }: Diagnose
                       <span className="block font-semibold text-slate-900">{condition.name}</span>
                       <span className="block text-xs text-slate-500">{condition.bodySystem}</span>
                     </span>
-                    {mapped.has(condition.id) ? (
-                      <span className="ml-auto shrink-0 rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-800" title={DATABASE_MAPPED_EXPLANATION}>database mapped</span>
-                    ) : (
-                      <span className="ml-auto shrink-0 rounded-full bg-amber-50 px-2 py-1 text-xs font-medium text-amber-800">mapping in progress</span>
-                    )}
+                    <span className="ml-auto flex shrink-0 items-center gap-1.5">
+                      {isExposureRelated(condition.id) ? (
+                        <span className="rounded-full bg-teal-50 px-2 py-1 text-xs font-medium text-teal-800">toxic exposure related</span>
+                      ) : null}
+                      {mapped.has(condition.id) ? (
+                        <span className="rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-800" title={DATABASE_MAPPED_EXPLANATION}>database mapped</span>
+                      ) : (
+                        <span className="rounded-full bg-amber-50 px-2 py-1 text-xs font-medium text-amber-800">mapping in progress</span>
+                      )}
+                    </span>
                   </label>
                 </li>
               ))}
