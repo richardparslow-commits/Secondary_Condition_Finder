@@ -9,6 +9,11 @@ import {
   traceable,
 } from "@/lib/observability/langsmith";
 
+import {
+  debugLogPhaseTimings,
+  recordEngineCycleAttributes,
+  recordEnginePhaseTimings,
+} from "./metrics";
 import { CONSENSUS_BY_RANK, CONSENSUS_ORDER, rankWeight } from "./ranking";
 import {
   dedupe,
@@ -52,10 +57,15 @@ function recommendImpl(
   kb: KnowledgeBase,
   intake: Intake,
 ): RecommendationResult {
-  const startedAt = Date.now();
+  const totalStartedAt = Date.now();
   const logger = createLogger("recommendation-engine");
   const byId = indexById(catalog);
   const mappings = publishedMappings(kb);
+
+  // Phase accumulators — signals and pathways are called per-primary inside
+  // the consensus loop, so we accumulate their durations across iterations.
+  let signalsDurationMs = 0;
+  let pathwaysDurationMs = 0;
 
   const recognizedPrimaries: string[] = [];
   const unmappedPrimaries: string[] = [];
@@ -106,6 +116,7 @@ function recommendImpl(
         causalMechanism: suggestion.causalMechanism,
         evidentiaryProfile: suggestion.evidentiaryProfile,
       };
+      const signalsStart = Date.now();
       const frictionWarnings = findAlternativeEtiologyWarnings(primary, suggestion, intake);
       const chronologyWarnings = findChronologyWarnings(
         primary,
@@ -113,6 +124,7 @@ function recommendImpl(
         suggestion.nexusClaim.nexusClassification,
         intake,
       );
+      signalsDurationMs += Date.now() - signalsStart;
 
       if (existing) {
         existing.score += rankWeight(suggestion.rank);
@@ -156,6 +168,7 @@ function recommendImpl(
       }
     }
 
+    const pathwaysStart = Date.now();
     const paths = findIntermediatePathways(
       primary,
       mappings,
@@ -163,6 +176,7 @@ function recommendImpl(
       new Set(intake.diagnosedConditionIds ?? []),
       recognizedIds,
     );
+    pathwaysDurationMs += Date.now() - pathwaysStart;
     for (const pathway of paths) {
       const existing = accumulator.get(pathway.targetId);
       if (existing) {
@@ -194,6 +208,7 @@ function recommendImpl(
     }
   }
 
+  const resultStartedAt = Date.now();
   let recommendations: Recommendation[] = [...accumulator.values()]
     .map((entry) => {
       const catalogEntry = byId.get(entry.conditionId);
@@ -237,18 +252,59 @@ function recommendImpl(
     );
   }
 
+  const resultDurationMs = Date.now() - resultStartedAt;
+
   // F-01: single recording point for both sync `recommend` and `recommendTraced`.
   // When LANGSMITH_TRACING=true, `recommendWithTracing` calls `recommendTraced`
   // which delegates to `recommendImpl` here, so latency is recorded exactly once
   // inside this function — the traceable wrapper adds no second metric.
-  const durationMs = Date.now() - startedAt;
+  const totalDurationMs = Date.now() - totalStartedAt;
+  const consensusDurationMs =
+    totalDurationMs - signalsDurationMs - pathwaysDurationMs - resultDurationMs;
+
   try {
-    recordRecommendationLatency(durationMs, {
+    // Phase-level OTEL histograms
+    recordEnginePhaseTimings(
+      {
+        consensusMs: Math.max(0, consensusDurationMs),
+        signalsMs: signalsDurationMs,
+        pathwaysMs: pathwaysDurationMs,
+        resultMs: resultDurationMs,
+        totalMs: totalDurationMs,
+      },
+      {
+        primaryCount: String(recognizedPrimaries.length),
+        recommendationCount: String(recommendations.length),
+      },
+    );
+    recordEngineCycleAttributes(
+      recognizedPrimaries.length,
+      recommendations.length,
+    );
+
+    // Legacy top-level histogram (kept for backward compat with existing dashboards)
+    recordRecommendationLatency(totalDurationMs, {
       primaryCount: String(recognizedPrimaries.length),
       recommendationCount: String(recommendations.length),
     });
+
+    debugLogPhaseTimings(
+      {
+        consensusMs: Math.max(0, consensusDurationMs),
+        signalsMs: signalsDurationMs,
+        pathwaysMs: pathwaysDurationMs,
+        resultMs: resultDurationMs,
+        totalMs: totalDurationMs,
+      },
+      {
+        primaryCount: recognizedPrimaries.length,
+        recommendationCount: recommendations.length,
+        unmappedCount: unmappedPrimaries.length,
+      },
+    );
+
     logger.info("recommendation executed", {
-      durationMs,
+      durationMs: totalDurationMs,
       primaryCount: recognizedPrimaries.length,
       recommendationCount: recommendations.length,
       unmappedCount: unmappedPrimaries.length,
