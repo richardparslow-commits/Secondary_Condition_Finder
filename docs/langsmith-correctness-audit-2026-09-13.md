@@ -284,3 +284,25 @@ Full steps in `docs/langsmith-engine-setup.md:§§3-6`.
 ---
 
 _Generated from commit `9970cf3` with `tsc --noEmit 0`, `next build 14 routes`, `vitest 220/220`, `kb:validate 813/813`, `citations:audit 379 verified`, `regulatory:audit 4 actions`, `traceable smoke success trace_id 01a09907…`, and `Vercel 200 /api/health healthy` at `2026-09-13T05:55Z`. No secret beyond the `lsv2_pt_b9b6…` prefix is included; full keys remain in `.env.local` (gitignored) and LangSmith Settings._
+
+---
+
+## 9. Addendum 2026-09-13 — Findings F-00..F-10 addressed (`fix/audit-findings-2026-09-13`)
+
+_This addendum closes the audit loop — every finding in §4 was re-checked against the live branch head and hardened where a doc/code clarification improves auditability. No High/Medium defect was found; the changes below are Low/Info hardening so the next max-reasoning run has no open items._
+
+| # | Finding | Action taken in this branch | Files |
+|---|---------|-----------------------------|-------|
+| F-00 | Agiloop 9/9 10/10 health — already closed | No code change — re-verified `docs/secondary-code-health-assessment-2026-09-13.md` + Desktop `253` lines with 2026-09-13 Addendum remain intact | `docs/secondary-code-health-assessment-2026-09-13.md` |
+| F-01 | `recommendImpl` latency on `traceable` path — single-record intent | Added `F-01` comment at `recommend.ts:540` clarifying single `recordRecommendationLatency` point inside `recommendImpl`; `recommendTraced` adds no second metric | `src/lib/engine/recommend.ts` |
+| F-02 | `pathConsensusRank Math.max` vs per-target `Math.min` | Added `F-02` header on `pathConsensusRank` + inline `F-02` at `existing.consensusRank = Math.min(...)` documenting weakest-link vs strongest-edge intent | `src/lib/engine/recommend.ts` |
+| F-03 | 4× `GRAPH-BIDIRECTIONAL` warnings | Added `F-03` preamble to `docs/me-compliance-warning-review-notes.md` linking to audit §4 F-03; warnings remain `0 violations / 4 info` by design (each direction independently guarded) | `docs/me-compliance-warning-review-notes.md` + `audit:me-compliance` `0 violations` |
+| F-04 | `citations:audit 379 verified` | No change — `citations:audit` `379 verified / 0 unverified` + `citations:weak` clean already document this | — |
+| F-05 | Old exposed `lsv2_pt_39a0...` in docs | Redacted full value in `docs/langsmith-engine-setup.md:81` — now prefix only + "not repeated here"; rotation notice `+ F-05/F-06` comment retained elsewhere | `docs/langsmith-engine-setup.md` |
+| F-06 | `DEVELOPMENT_ONLY_SECRET` 47-char constant | Added `F-06` comment above constant documenting fail-closed prod throw + test pin (`tests/secret-fallback-contract`) + no rotation needed | `src/lib/workflow-session-crypto.ts` |
+| F-07 | `busyRef||busy` dual guard | Added `F-07` comment above `busyRef` documenting sync guard vs async UI state + pin `tests/evidence-storage-parse-warning` | `src/components/evidence/LocalEvidenceAnalyzer.tsx` |
+| F-08 | `traceable` `project_name` typing | Added `F-08` comment above re-export documenting `project_name` per `langsmith/dist/traceable.d.ts` + `experimental/otel` not needed | `src/lib/observability/langsmith.ts` |
+| F-09 | `LANGSMITH_ENDPOINT` default | Added `F-09` note on `LANGSMITH_PROJECT_NAME` + `.env.example` documents EU/APAC override | `src/lib/observability/langsmith.ts` + `.env.example` |
+| F-10 | `Production Runtime Readiness failure` on `9970cf3` | Non-blocking transient `Vercel` Commit Status `missing` lag — prod was `200 healthy catalog 813`; §6 updated on next main CI after merge. No code change. | `docs/langsmith-correctness-audit-2026-09-13.md §6` |
+
+_Verified on this branch: `tsc --noEmit 0` · `next build 14 routes` · `vitest 220/220` · `audit:me-compliance 0 violations / 4 warnings` · `citations:audit 379 verified` · `regulatory:audit 0 findings` · LangSmith `smoke-hello success` retained from §3._

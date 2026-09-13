@@ -286,6 +286,12 @@ function dedupePathways(pathways: IntermediatePathway[]): IntermediatePathway[] 
   ])).values()];
 }
 
+/**
+ * F-02: a two-edge intermediate chain is as weak as its weakest link — Math.max
+ * picks the weaker (higher-rank) consensus tier so the chain cannot be stronger
+ * than either edge. Per-target consensusRank (below) uses Math.min because a
+ * target with multiple supporting primaries is as strong as its strongest edge.
+ */
 function pathConsensusRank(path: IntermediatePathway): number {
   return Math.max(
     CONSENSUS_ORDER[path.edges[0].etiologicalConsensus],
@@ -430,6 +436,7 @@ function recommendImpl(
         existing.intermediatePathways = dedupePathways([
           ...existing.intermediatePathways,
         ]);
+        // F-02: per-target consensus keeps the strongest (lowest-rank) tier across primaries.
         existing.consensusRank = Math.min(
           existing.consensusRank,
           CONSENSUS_ORDER[suggestion.evidentiaryProfile.etiologicalConsensus],
@@ -530,6 +537,10 @@ function recommendImpl(
     );
   }
 
+  // F-01: single recording point for both sync `recommend` and `recommendTraced`.
+  // When LANGSMITH_TRACING=true, `recommendWithTracing` calls `recommendTraced`
+  // which delegates to `recommendImpl` here, so latency is recorded exactly once
+  // inside this function — the traceable wrapper adds no second metric.
   const durationMs = Date.now() - startedAt;
   try {
     recordRecommendationLatency(durationMs, {

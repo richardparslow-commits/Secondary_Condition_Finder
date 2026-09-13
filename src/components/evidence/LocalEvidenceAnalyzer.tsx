@@ -137,6 +137,11 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   const [pending, setPending] = useState<PendingEvidenceFile[]>([]);
   const [ocrProgress, setOcrProgress] = useState<string | null>(null);
   const limits: EvidenceLimits = EVIDENCE_DEPTH_LIMITS[depth];
+  // F-07: dual guard — `busyRef` is the synchronous guard across `await` gaps
+  // (React state `busy` is async and would re-introduce a race if relied on
+  // alone); `busy` drives the disabled UI. Every handler checks
+  // `busyRef.current || busy` and sets both synchronously before any await.
+  // Pinned by `tests/evidence-storage-parse-warning: busyRef guard at every entry point`.
   const busyRef = useRef(false);
 
   useEffect(() => {

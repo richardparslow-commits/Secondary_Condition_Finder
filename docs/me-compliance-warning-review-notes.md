@@ -2,6 +2,8 @@
 
 Measured from the current branch head using `npm run audit:me-compliance`.
 
+_F-03: the 4 `GRAPH-BIDIRECTIONAL` warnings below are the audit's only warnings at max reasoning — each pair is independently guarded (distinct nexus postures + source guards), not a violation. See `docs/langsmith-correctness-audit-2026-09-13.md §4 F-03`._
+
 Status: informational warnings only; 0 CRG violations.
 
 ## 1. PTSD → erectile-dysfunction (PHARMACOLOGICAL_IATROGENIC mechanism, PROBABLE consensus)

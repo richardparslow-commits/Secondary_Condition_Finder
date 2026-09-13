@@ -10,6 +10,11 @@ const IV_BYTES = 12;
 const AUTH_TAG_BYTES = 16;
 export const MIN_WORKFLOW_SESSION_SECRET_LENGTH = 32;
 export const WORKFLOW_SESSION_MAX_AGE_SECONDS = 30 * 60;
+// F-06: development-only fallback — 47 chars, so it passes the 32-char minimum
+// in non-production, but `workflowSessionSecret()` throws before returning it
+// when `NODE_ENV===production` (fail-closed). The constant is intentionally
+// kept in source so `tests/secret-fallback-contract` can assert the prod
+// guard; it never reaches a cookie or log in production. No rotation needed.
 const DEVELOPMENT_ONLY_SECRET =
   "development-only-workflow-session-secret-not-for-production";
 
