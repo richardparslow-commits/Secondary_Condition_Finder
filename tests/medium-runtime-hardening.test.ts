@@ -27,6 +27,8 @@ import { clearVaFormsFinderCache, loadVaFormsFinder } from "@/lib/va/forms-finde
 
 const config: VaApiConfig = {
   enabled: true,
+  mode: "sandbox",
+  modeReason: "Test fixture: sandbox mode.",
   environment: "sandbox",
   formsApiKey: "forms-test-key",
   benefitsReferenceDataApiKey: "reference-test-key",

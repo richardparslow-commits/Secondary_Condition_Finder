@@ -93,23 +93,36 @@ function boundedAnalysis(
   };
 }
 
-export function serializeStoredEvidence(
+export interface SerializedEvidenceResult {
+  serialized: string;
+  dropped: number;
+}
+
+export function serializeStoredEvidenceWithInfo(
   analyses: EvidenceAnalysis[],
   limits: EvidenceLimits = STANDARD_LIMITS,
-): string {
+): SerializedEvidenceResult {
   let bounded = analyses
     .slice(-limits.storedSources)
     .map((analysis) => boundedAnalysis(analysis, limits));
+  const initialCount = bounded.length;
 
   while (bounded.length > 0) {
     const serialized = JSON.stringify(bounded);
     if (byteLength(serialized) <= limits.storedBytes) {
-      return serialized;
+      return { serialized, dropped: initialCount - bounded.length };
     }
     bounded = bounded.slice(1);
   }
 
-  return "[]";
+  return { serialized: "[]", dropped: initialCount };
+}
+
+export function serializeStoredEvidence(
+  analyses: EvidenceAnalysis[],
+  limits: EvidenceLimits = STANDARD_LIMITS,
+): string {
+  return serializeStoredEvidenceWithInfo(analyses, limits).serialized;
 }
 
 export function loadStoredEvidence(
@@ -126,6 +139,36 @@ export function loadStoredEvidence(
     return parsed.filter(isEvidenceAnalysis).slice(-limits.storedSources);
   } catch {
     return [];
+  }
+}
+
+export function loadStoredEvidenceWithWarning(
+  storage: StorageReader | null,
+  limits: EvidenceLimits = STANDARD_LIMITS,
+): { analyses: EvidenceAnalysis[]; parseError: string | null } {
+  if (!storage) return { analyses: [], parseError: null };
+  try {
+    const raw = storage.getItem(evidenceAnalysisStorageKey);
+    if (!raw) return { analyses: [], parseError: null };
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed)) return { analyses: [], parseError: null };
+    return { analyses: parsed.filter(isEvidenceAnalysis).slice(-limits.storedSources), parseError: null };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    try {
+      const rawPreview = (() => {
+        try {
+          const raw = storage.getItem(evidenceAnalysisStorageKey);
+          return raw ? raw.slice(0, 500) : "<empty>";
+        } catch {
+          return "<unreadable>";
+        }
+      })();
+      console.warn("[evidence-storage] Failed to parse stored evidence:", message, rawPreview);
+    } catch {
+      // observability is best-effort
+    }
+    return { analyses: [], parseError: message };
   }
 }
 

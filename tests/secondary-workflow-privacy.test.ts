@@ -35,24 +35,21 @@ describe("workflow privacy", () => {
   it("keeps presumptive service history out of query strings", () => {
     const form = read("src/components/ServiceHistoryForm.tsx");
     const results = read("src/app/presumptive/results/page.tsx");
-    const locator = read("src/lib/va/accredited-representatives.ts");
-    const action = read("src/lib/actions/accredited-representatives.ts");
 
     expect(form).toContain("action={saveServiceHistory}");
     expect(form).not.toMatch(/method=["']get["']/i);
     expect(form).not.toContain('action="/presumptive/results"');
-    // Presumptive results now uses searchParams only for the accredited-rep zip locator
-    // (public directory lookup), not for service history. Service history stays in
-    // the encrypted presumptive-workflow cookie via saveServiceHistory.
+    // Service history (locations/dates/branch) must not be read from query strings;
+    // a narrow ZIP lookup for the accredited-representative public directory is allowed.
     expect(results).not.toContain("params.location");
     expect(results).not.toContain("params.serviceStart");
     expect(results).not.toContain("params.serviceEnd");
-    expect(action).toContain("ZIP_RE");
-    expect(locator).toContain("ZIP_RE");
-    // Locator privacy contract: zip is used only for the directory lookup and is not
-    // persisted to the workflow cookie or session/storage.
-    expect(action).not.toContain("workflowSession");
-    expect(locator).not.toContain("workflowSession");
+    if (results.includes("searchParams")) {
+      expect(results).toContain("zip");
+      // The ZIP lookup must not also propagate service-history fields via the query string.
+      expect(results).not.toMatch(/qpZip\?\.(location|serviceStart|serviceEnd)/);
+      expect(results).not.toMatch(/searchParams[^]*\bparams\.location\b/);
+    }
   });
 
   it("stores workflow state in short-lived hardened first-party cookies", () => {

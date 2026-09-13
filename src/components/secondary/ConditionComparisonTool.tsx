@@ -9,6 +9,7 @@ import {
   type ComparisonRow,
 } from "@/lib/secondary-workflow/condition-comparison";
 import { indexById } from "@/lib/catalog/lookup";
+import { CONSENSUS_BADGE_CLASS } from "@/lib/recommendation-prevalence";
 import type { ConditionCatalog } from "@/lib/catalog/schema";
 import type { NonServiceConnectedConditionResult } from "@/lib/secondary-workflow/suggestions";
 
@@ -18,13 +19,6 @@ interface Props {
 }
 
 const MAX_SELECT = 3;
-
-function badgeClass(tone: string): string {
-  if (tone === "strong") return "border-emerald-300 bg-emerald-50 text-emerald-900";
-  if (tone === "moderate") return "border-amber-300 bg-amber-50 text-amber-900";
-  if (tone === "contested") return "border-orange-300 bg-orange-50 text-orange-900";
-  return "border-slate-300 bg-slate-100 text-slate-700";
-}
 
 export function ConditionComparisonTool({ results, catalog }: Props) {
   const byId = useMemo(() => indexById(catalog), [catalog]);
@@ -138,7 +132,7 @@ export function ConditionComparisonTool({ results, catalog }: Props) {
                       </td>
                       <td className="border-b border-slate-100 px-3 py-3 text-slate-800">{row.nexusClassifications.join(", ")}</td>
                       <td className="border-b border-slate-100 px-3 py-3">
-                        <span className={`rounded-full border px-2 py-1 text-xs font-semibold ${badgeClass(tone)}`}>{row.etiologicalConsensus}</span>
+                        <span className={`rounded-full border px-2 py-1 text-xs font-semibold ${CONSENSUS_BADGE_CLASS[tone]}`}>{row.etiologicalConsensus}</span>
                       </td>
                       <td className="border-b border-slate-100 px-3 py-3 text-center font-semibold">{row.citationCount}</td>
                       <td className="border-b border-slate-100 px-3 py-3 text-center font-semibold">{row.evidenceGapCount}</td>

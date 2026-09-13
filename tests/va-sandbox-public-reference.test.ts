@@ -11,6 +11,8 @@ import {
 
 const config: VaSandboxConfig = {
   enabled: true,
+  mode: "sandbox",
+  modeReason: "Test fixture: sandbox mode.",
   environment: "sandbox",
   formsApiKey: "forms-sandbox-test-key",
   benefitsReferenceDataApiKey: "reference-sandbox-test-key",
@@ -36,17 +38,15 @@ describe("public-reference VA API adapters", () => {
       VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL: "https://example.test/reference/v1",
     });
 
-    expect(loaded).toEqual(
-      expect.objectContaining({
-        enabled: true,
-        environment: "sandbox",
-        formsApiKey: "forms-key-from-env",
-        benefitsReferenceDataApiKey: "reference-key-from-env",
-        timeoutMs: 2500,
-        formsBaseUrl: "https://example.test/forms/v0",
-        benefitsReferenceDataBaseUrl: "https://example.test/reference/v1",
-      }),
-    );
+    expect(loaded).toEqual(expect.objectContaining({
+      enabled: true,
+      environment: "sandbox",
+      formsApiKey: "forms-key-from-env",
+      benefitsReferenceDataApiKey: "reference-key-from-env",
+      timeoutMs: 2500,
+      formsBaseUrl: "https://example.test/forms/v0",
+      benefitsReferenceDataBaseUrl: "https://example.test/reference/v1",
+    }));
   });
 
   it("requires an explicit generic enable flag before production mode can make requests", () => {
@@ -56,17 +56,35 @@ describe("public-reference VA API adapters", () => {
       VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY: "reference-production-key",
     });
     expect(disabled.enabled).toBe(false);
+    expect(disabled.mode).toBe("disabled");
     expect(disabled.environment).toBe("production");
+
+    // Issue #287: production mode is a deliberate tri-state decision, not a
+    // two-variable switch. Without the access acknowledgement the resolver fails
+    // closed and never serves production base URLs.
+    const enabledWithoutAccessGrant = loadVaApiConfig({
+      VA_API_ENV: "production",
+      VA_API_ENABLED: "true",
+      VA_FORMS_PRODUCTION_API_KEY: " forms-production-key ",
+      VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY: " reference-production-key ",
+    });
+    expect(enabledWithoutAccessGrant.enabled).toBe(false);
+    expect(enabledWithoutAccessGrant.mode).toBe("disabled");
+    expect(enabledWithoutAccessGrant.formsBaseUrl).not.toBe(
+      "https://api.va.gov/services/va_forms/v0",
+    );
 
     const enabled = loadVaApiConfig({
       VA_API_ENV: "production",
       VA_API_ENABLED: "true",
+      VA_PRODUCTION_ACCESS_GRANTED: "true",
       VA_FORMS_PRODUCTION_API_KEY: " forms-production-key ",
       VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY: " reference-production-key ",
     });
     expect(enabled).toEqual(
       expect.objectContaining({
         enabled: true,
+        mode: "production",
         environment: "production",
         formsApiKey: "forms-production-key",
         benefitsReferenceDataApiKey: "reference-production-key",

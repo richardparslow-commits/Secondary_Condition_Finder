@@ -1,7 +1,5 @@
 import "server-only";
 
-import { z } from "zod";
-
 import {
   clearVaReferenceCache,
   readVaReferenceCache,
@@ -11,60 +9,42 @@ import {
 import {
   fetchVaAccreditedRepresentatives,
   loadVaApiConfig,
+  type AccreditedRepresentativeSearchParams,
+  type VaAccreditedRepresentative,
   type VaApiResult,
 } from "./sandbox";
-import {
-  ACCREDITED_REP_TYPE_VALUES,
-  APPROVED_RADIUS_MILES,
-  ZIP_RE,
-  type AccreditedRepType,
-} from "./accredited-representative-constants";
 
-export const accreditedRepSearchParamsSchema = z.object({
-  zip: z.string().regex(ZIP_RE, "Zip must be 5 digits."),
-  radiusMiles: z
-    .number()
-    .int()
-    .refine((v) => (APPROVED_RADIUS_MILES as readonly number[]).includes(v), {
-      message: `Radius must be one of ${APPROVED_RADIUS_MILES.join(", ")}.`,
-    })
-    .optional(),
-  type: z.enum(ACCREDITED_REP_TYPE_VALUES).optional(),
-});
+export type AccreditedRepType = "VSO" | "agent" | "attorney";
 
-export type AccreditedRepSearchParams = z.infer<typeof accreditedRepSearchParamsSchema>;
-
-export interface AccreditedRepresentative {
-  id: string;
-  name: string;
-  organization: string | null;
-  accreditationType: AccreditedRepType | string;
-  phone: string | null;
-  website: string | null;
-  address: string | null;
-  zip: string | null;
-  city: string | null;
-  state: string | null;
-  distanceMiles: number | null;
-}
+export type AccreditedRepresentativeItem = VaAccreditedRepresentative;
 
 export interface AccreditedRepresentativeView extends VaReferenceSourceStatus {
-  params: AccreditedRepSearchParams;
-  items: AccreditedRepresentative[];
+  params: AccreditedRepresentativeSearchParams;
+  items: AccreditedRepresentativeItem[];
 }
 
-// ---------------------------------------------------------------------------
-// Local fallback
-// ---------------------------------------------------------------------------
+type AccreditedRepFetcher = (
+  params: AccreditedRepresentativeSearchParams,
+) => Promise<VaApiResult<{ data: VaAccreditedRepresentative[] }>>;
 
-function localFallback(params: AccreditedRepSearchParams): AccreditedRepresentativeView {
+function cacheKeyFor(
+  params: AccreditedRepresentativeSearchParams,
+  environment: string,
+): string {
+  const normalized = `${params.zip}:${params.radiusMiles ?? 50}:${params.type ?? "any"}`;
+  return `accredited-rep:${environment}:${normalized}`;
+}
+
+function localFallback(
+  params: AccreditedRepresentativeSearchParams,
+): AccreditedRepresentativeView {
   return {
     params,
     items: [],
     source: "local-fallback",
-    sourceLabel: "Local reference fallback",
+    sourceLabel: "Local directory fallback",
     notice:
-      "Accredited representative directory is unavailable or disabled. No local directory is bundled; search VA's OGC directory on va.gov. Your workflow selections and evidence are not sent with this lookup.",
+      "Accredited-representative directory is unavailable or disabled. Search VA's OGC directory on va.gov/ogc/apps/accreditation.",
     live: false,
     environment: null,
     retrievedAt: null,
@@ -72,135 +52,55 @@ function localFallback(params: AccreditedRepSearchParams): AccreditedRepresentat
   };
 }
 
-// ---------------------------------------------------------------------------
-// Cache helpers
-// ---------------------------------------------------------------------------
-
-function cacheKey(params: AccreditedRepSearchParams, env: string): string {
-  return `accredited-rep:${env}:${params.zip}:${params.radiusMiles ?? ""}:${params.type ?? ""}`;
-}
-
-// ---------------------------------------------------------------------------
-// Loader — mirrors disability-reference / forms-finder pattern
-// ---------------------------------------------------------------------------
-
-type AccreditedRepFetcher = (
-  params: AccreditedRepSearchParams,
-) => Promise<
-  VaApiResult<{
-    data: Array<{
-      id: string;
-      type?: string;
-      attributes: {
-        name: string;
-        organization?: string | null;
-        accreditation_type: string;
-        phone?: string | null;
-        website?: string | null;
-        address?: string | null;
-        zip?: string | null;
-        city?: string | null;
-        state?: string | null;
-        distance?: number | null;
-      };
-    }>;
-  }>
->;
-
-function defaultFetcher(
-  params: AccreditedRepSearchParams,
-): Promise<
-  VaApiResult<{
-    data: Array<{
-      id: string;
-      type?: string;
-      attributes: {
-        name: string;
-        organization?: string | null;
-        accreditation_type: string;
-        phone?: string | null;
-        website?: string | null;
-        address?: string | null;
-        zip?: string | null;
-        city?: string | null;
-        state?: string | null;
-        distance?: number | null;
-      };
-    }>;
-  }>
-> {
-  return fetchVaAccreditedRepresentatives(params);
-}
-
 export async function loadAccreditedRepresentatives(
-  params: AccreditedRepSearchParams,
-  fetcher: AccreditedRepFetcher = defaultFetcher,
+  params: AccreditedRepresentativeSearchParams,
+  fetcher: AccreditedRepFetcher = fetchVaAccreditedRepresentatives,
 ): Promise<AccreditedRepresentativeView> {
-  const parsed = accreditedRepSearchParamsSchema.safeParse(params);
-  if (!parsed.success) {
-    return localFallback(params);
-  }
-  const normalized = parsed.data;
   const config = loadVaApiConfig();
-  const environment = config.environment ?? "sandbox";
-  const useSharedCache = fetcher === defaultFetcher;
-  const key = cacheKey(normalized, environment);
+  const configuredEnvironment = config.environment ?? "sandbox";
+  const useSharedCache = fetcher === fetchVaAccreditedRepresentatives;
+  const cacheKey = cacheKeyFor(params, configuredEnvironment);
 
   if (useSharedCache) {
-    const cached = readVaReferenceCache<AccreditedRepresentativeView>(key);
+    const cached = readVaReferenceCache<AccreditedRepresentativeView>(cacheKey);
     if (cached) return { ...cached, cacheStatus: "hit" };
   }
 
-  const result = await fetcher(normalized);
+  const result = await fetcher(params);
+  if (!result.success || !result.data) return localFallback(params);
 
-  if (!result.success || !result.data) {
-    return localFallback(normalized);
-  }
+  const items = [...result.data.data].sort((a, b) => {
+    const da = a.distanceMiles ?? Number.MAX_SAFE_INTEGER;
+    const db = b.distanceMiles ?? Number.MAX_SAFE_INTEGER;
+    if (da !== db) return da - db;
+    return a.name.localeCompare(b.name);
+  });
 
-  const items: AccreditedRepresentative[] = result.data.data.map((entry) => ({
-    id: entry.id,
-    name: entry.attributes.name,
-    organization: entry.attributes.organization ?? null,
-    accreditationType: entry.attributes.accreditation_type,
-    phone: entry.attributes.phone ?? null,
-    website: entry.attributes.website ?? null,
-    address: entry.attributes.address ?? null,
-    zip: entry.attributes.zip ?? null,
-    city: entry.attributes.city ?? null,
-    state: entry.attributes.state ?? null,
-    distanceMiles: entry.attributes.distance ?? null,
-  }));
-
-  const resolvedEnv =
-    result.environment ?? (result.source === "va-production-api" ? "production" : environment);
-
+  const environment =
+    result.environment ??
+    (result.source === "va-production-api" ? "production" : configuredEnvironment);
   const view: AccreditedRepresentativeView = {
-    params: normalized,
-    items: [...items].sort((a, b) => {
-      if (a.distanceMiles !== null && b.distanceMiles !== null) return a.distanceMiles - b.distanceMiles;
-      if (a.distanceMiles !== null) return -1;
-      if (b.distanceMiles !== null) return 1;
-      return a.name.localeCompare(b.name);
-    }),
+    params,
+    items,
     source: result.source,
     sourceLabel:
-      resolvedEnv === "production"
-        ? "VA accredited-representative production"
-        : "VA accredited-representative sandbox",
+      environment === "production"
+        ? "VA accredited-representative production directory"
+        : "VA accredited-representative sandbox directory",
     notice:
-      resolvedEnv === "production"
-        ? "Results came from the VA accredited-representative directory. Confirm accreditation and contact details on va.gov before relying on this listing."
-        : "Results came from the VA accredited-representative sandbox. Sandbox data is for testing and may not be current; confirm on va.gov before relying on this listing.",
+      environment === "production"
+        ? "Results came from VA's accredited-representative directory. Verify accreditation on va.gov/ogc/apps/accreditation before sharing personal information."
+        : "Results came from the VA accredited-representative sandbox. Sandbox data is test data and may not be current; verify on va.gov/ogc/apps/accreditation.",
     live: true,
-    environment: resolvedEnv,
+    environment,
     retrievedAt: new Date().toISOString(),
     cacheStatus: "miss",
   };
 
-  if (useSharedCache) writeVaReferenceCache(key, view);
+  if (useSharedCache) writeVaReferenceCache(cacheKey, view);
   return view;
 }
 
-export function clearAccreditedRepresentativesCache(): void {
+export function clearAccreditedRepresentativeCache(): void {
   clearVaReferenceCache("accredited-rep:");
 }

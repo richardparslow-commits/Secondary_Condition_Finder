@@ -57,7 +57,7 @@ export default function PrivacyPage() {
           Local analysis is bounded by the analysis depth chosen on the Supporting Documents step. The default Standard depth limits a source to {formatLimitBytes(STANDARD_LIMITS.fileBytes)} per file, {STANDARD_LIMITS.batchSources} selected files and {formatLimitBytes(STANDARD_LIMITS.batchBytes)} per batch, {STANDARD_LIMITS.pdfPages} pages per PDF source, and {formatLimitChars(STANDARD_LIMITS.textChars)} extracted or pasted characters per source. The optional Extended depth raises those bounds for large local document sets — {formatLimitBytes(EXTENDED_LIMITS.fileBytes)} per file, {EXTENDED_LIMITS.batchSources} selected files and {formatLimitBytes(EXTENDED_LIMITS.batchBytes)} per batch, {EXTENDED_LIMITS.pdfPages} pages per PDF source, and {formatLimitChars(EXTENDED_LIMITS.textChars)} extracted or pasted characters per source — and should be chosen only when this browser tab can handle the larger in-memory workload. Sources over the active depth&apos;s limits are rejected rather than silently truncated in either depth. Excerpts retained for the Step 6 checklist are likewise bounded per depth: the most recent {STANDARD_LIMITS.storedSources} analyzed sources in Standard and up to {EXTENDED_LIMITS.storedSources} in Extended, each limited to a small excerpt window per source.
         </p>
         <p>
-          The browser may temporarily retain only the extracted evidence excerpts and their source/locator metadata, plus user-selected evidence-gap review checkmarks, in session storage so they can be displayed on Step 6. Session storage is scoped to the current browser tab and is cleared when the tab is closed. You can clear local evidence selectively from Step 4 without ending the workflow. Finish Review and Start a new review clear both secondary-workflow session-storage stores before leaving Step 6; the clearing operation does not copy their contents to the server, telemetry, logs, or a VA API.
+          The browser may temporarily retain only the extracted evidence excerpts and their source/locator metadata, plus user-selected evidence-gap review checkmarks and pathway-record-checklist selections from the Prepare Evidence aid, in session storage so they can be displayed on Steps 5 and 6. Session storage is scoped to the current browser tab and is cleared when the tab is closed. You can clear local evidence selectively from Step 4 without ending the workflow. Finish Review and Start a new review clear all three secondary-workflow session-storage stores before leaving Step 6; the clearing operation does not copy their contents to the server, telemetry, logs, or a VA API.
         </p>
         <p>
           Image-only or scanned PDF pages contain no extractable text layer. The app reports those pages instead of guessing. If you choose to run Local OCR on a scanned PDF, recognition is performed entirely in this browser tab by a bundled, self-hosted OCR engine — the page images and recognized text are not sent to the application server, an OCR provider, a CDN, or another external service. OCR results are then classified under the same local rules and temporary session-storage boundaries described above.
@@ -69,6 +69,15 @@ export default function PrivacyPage() {
         </p>
         <p>
           Medication/treatment entries are used only to surface literal normalized text overlap with authored recommendation rationale or evidence-gap text. A match does not change recommendation ranking, infer a drug class or mechanism, or establish individual causation, aggravation, or medical nexus.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-6">5a. Accredited-representative directory search</h2>
+        <p>
+          The accredited-representative finder is a public-directory ZIP lookup. The ZIP you enter is used only for that lookup and is not persisted to a workflow cookie or account. Results are public directory data, not Veteran PII, and are cached for a short window for performance. Verify accreditation on VA&apos;s OGC directory before sharing personal information.
+        </p>
+        <h2 className="text-xl font-semibold mt-6">5b. DD-214 upload (browser-local)</h2>
+        <p>
+          DD-214 upload is optional and browser-local only. PDF or image bytes are not sent to the application server. Text is extracted in this tab (including OCR for scanned pages where needed). SSN is masked to XXX-XX-1234 before any preview; the full SSN is never displayed, persisted, or logged. Extracted dates and locations must be verified by you before the app saves them as service history. Clear the draft at any time to remove in-memory bytes and preview text.
         </p>
 
         <h2 className="text-xl font-semibold mt-6">6. VA API and claim-submission boundary</h2>
@@ -85,7 +94,7 @@ export default function PrivacyPage() {
         <h2 className="text-xl font-semibold mt-6">7. Retention summary</h2>
         <ul className="list-disc space-y-2 pl-6">
           <li>Encrypted workflow cookies expire after 30 minutes and can also be cleared by the workflow completion controls.</li>
-          <li>Local evidence excerpts and evidence-gap checkmarks use browser session storage scoped to the current tab and can be cleared from the workflow.</li>
+          <li>Local evidence excerpts, evidence-gap checkmarks, and pathway-record-checklist selections use browser session storage scoped to the current tab and can be cleared from the workflow.</li>
           <li>The local evidence feature does not create a server-side medical-record store or user account.</li>
           <li>The current application does not persist workflow or recommendation event history through an application event logger.</li>
         </ul>

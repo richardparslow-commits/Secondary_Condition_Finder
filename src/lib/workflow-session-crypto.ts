@@ -46,6 +46,11 @@ export function workflowSessionSecret(): string {
     );
   }
 
+  // #9 observability: make non-production fallback explicit in logs
+  if (process.env.NODE_ENV !== "test") {
+    console.warn("[workflow-session] Using development-only session secret — not for production. Set WORKFLOW_SESSION_SECRET.");
+  }
+
   return DEVELOPMENT_ONLY_SECRET;
 }
 

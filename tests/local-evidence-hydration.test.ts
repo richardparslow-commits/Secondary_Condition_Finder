@@ -29,8 +29,12 @@ describe("local evidence hydration contract", () => {
     expect(analyzer).toContain(
       'import { useEffect, useMemo, useState } from "react";',
     );
+    // Finding #11: the restore now goes through loadStoredEvidenceWithWarning
+    // so a corrupted store surfaces a warning instead of resetting silently;
+    // the async-restore (setTimeout) shape that keeps SSR/first render equal
+    // is unchanged.
     expect(analyzer).toContain(
-      "const restoreTimer = window.setTimeout(() => {\n      setAnalyses(loadStored());\n    }, 0);",
+      "const restoreTimer = window.setTimeout(() => {\n      const { analyses, parseError } = loadStoredEvidenceWithWarning(\n        getSessionStorage(),\n      );\n      setAnalyses(analyses);",
     );
     expect(analyzer).toContain(
       "return () => window.clearTimeout(restoreTimer);",
@@ -39,7 +43,7 @@ describe("local evidence hydration contract", () => {
     const initialState = analyzer.indexOf(
       'const [analyses, setAnalyses] = useState<EvidenceAnalysis[]>([]);',
     );
-    const restoreEffect = analyzer.indexOf("setAnalyses(loadStored());");
+    const restoreEffect = analyzer.indexOf("setAnalyses(analyses);");
     expect(initialState).toBeGreaterThanOrEqual(0);
     expect(restoreEffect).toBeGreaterThan(initialState);
   });
@@ -49,9 +53,12 @@ describe("local evidence hydration contract", () => {
     const storage = fs.readFileSync(storagePath, "utf8");
 
     expect(analyzer).toContain('if (typeof window === "undefined") return null;');
-    expect(analyzer).toContain("return loadStoredEvidence(getSessionStorage());");
+    expect(analyzer).toContain("loadStoredEvidenceWithWarning(");
     expect(analyzer).toContain("} catch {\n    return null;\n  }");
     expect(storage).toContain("const raw = storage.getItem(evidenceAnalysisStorageKey);");
     expect(storage).toContain("} catch {\n    return [];\n  }");
+    // The warning variant is fail-closed too: parse failures return an empty
+    // store plus the error for observability instead of throwing.
+    expect(storage).toContain("return { analyses: [], parseError: message };");
   });
 });

@@ -1,16 +1,10 @@
 import type { Recommendation } from "@/lib/engine/types";
 import {
+  CONSENSUS_BADGE_CLASS,
   CONSENSUS_EXPLANATION,
   CONSENSUS_LABEL,
+  consensusTone,
 } from "@/lib/recommendation-prevalence";
-
-const CONSENSUS_STYLE: Record<Recommendation["etiologicalConsensus"], string> = {
-  WELL_ESTABLISHED: "bg-slate-900 text-white",
-  IATROGENIC_TREATMENT_EFFECT: "bg-slate-800 text-white",
-  PROBABLE: "bg-slate-200 text-slate-800",
-  CONTESTED_REQUIRES_SPECIFIC_EVIDENCE: "bg-amber-100 text-amber-900",
-  NOT_ESTABLISHED: "bg-slate-100 text-slate-600",
-};
 
 export function SuggestionCard({
   recommendation,
@@ -30,7 +24,7 @@ export function SuggestionCard({
           {position}. {recommendation.condition}
         </h3>
         <span
-          className={`rounded-full px-2.5 py-1 text-xs font-medium ${CONSENSUS_STYLE[recommendation.etiologicalConsensus]}`}
+          className={`rounded-full border px-2.5 py-1 text-xs font-medium ${CONSENSUS_BADGE_CLASS[consensusTone(recommendation.etiologicalConsensus)]}`}
           title={CONSENSUS_EXPLANATION[recommendation.etiologicalConsensus]}
         >
           {CONSENSUS_LABEL[recommendation.etiologicalConsensus]}

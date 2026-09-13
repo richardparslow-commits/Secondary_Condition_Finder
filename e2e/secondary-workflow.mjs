@@ -19,7 +19,23 @@ const WORKFLOW_SESSION_SECRET =
   "browser-e2e-workflow-secret-only-for-local-ci-2026";
 
 const PRIMARY_CONDITION = "Post-Traumatic Stress Disorder (PTSD)";
-const DIAGNOSED_SECONDARY = "Sleep Apnea (Obstructive, Central, Mixed)";
+const DIAGNOSED_SECONDARY_IDS = [
+  "Sleep Apnea (Obstructive, Central, Mixed)",
+  "Erectile Dysfunction",
+];
+// Realistic clinician-authored note: the aggravation language ("worsened",
+// "aggravated") plus the physician credential plus named condition terms make
+// the excerpts nexus-relevant. The second line names Erectile Dysfunction, the
+// fixture's published AGGRAVATION pathway, so the mapper's direct-support tier
+// is exercised; the Sleep Apnea row (ASSOCIATION_ONLY) must fail closed.
+const EVIDENCE_NOTE_TEXT = [
+  "Physician note: patient reports sleep disturbance worsened beyond what would be expected from the natural course of the condition.",
+  "Clinician impression: erectile dysfunction aggravated by service-connected PTSD.",
+].join("\n");
+const PATHWAY_CHECKLIST_STORAGE_KEY = "secondary-condition-finder:pathway-record-checklist:v1";
+const PATHWAY_CHECKBOX_XPATH =
+  "//input[@type='checkbox'][starts-with(@aria-label, 'Post-Traumatic Stress Disorder (PTSD) to Sleep Apnea (Obstructive, Central, Mixed):')]";
+const LOCATOR_ZIP = "22101";
 const children = [];
 let sessionId;
 
@@ -217,6 +233,86 @@ async function bodyText() {
   return webdriver("GET", `/session/${sessionId}/element/${body}/text`);
 }
 
+async function isSelected(xpath) {
+  const elementId = await findByXpath(xpath);
+  return webdriver("GET", `/session/${sessionId}/element/${elementId}/selected`);
+}
+
+async function readSessionStorage(key) {
+  return webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: "return window.sessionStorage.getItem(arguments[0]);",
+    args: [key],
+  });
+}
+
+async function waitForText(needle, label, timeoutMs = 20_000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    const text = await bodyText();
+    if (text.includes(needle)) return;
+    await delay(300);
+  }
+  throw new Error(`Timed out waiting for ${label} to render text: ${needle}`);
+}
+
+async function setInputValue(xpath, value) {
+  const elementId = await findByXpath(xpath);
+  const applied = await webdriver(
+    "POST",
+    `/session/${sessionId}/execute/sync`,
+    {
+      script: `
+        const element = arguments[0];
+        const proto = element.tagName === 'TEXTAREA'
+          ? window.HTMLTextAreaElement.prototype
+          : window.HTMLInputElement.prototype;
+        const setter = Object.getOwnPropertyDescriptor(proto, 'value').set;
+        setter.call(element, arguments[1]);
+        element.dispatchEvent(new Event('input', { bubbles: true }));
+        element.dispatchEvent(new Event('change', { bubbles: true }));
+        return element.value;
+      `,
+      args: [{ [ELEMENT_KEY]: elementId }, value],
+    },
+  );
+  if (applied !== value) {
+    throw new Error(`Unable to set input value; browser reported ${applied}`);
+  }
+}
+
+async function selectOptionByValue(optionValue, label) {
+  const applied = await webdriver(
+    "POST",
+    `/session/${sessionId}/execute/sync`,
+    {
+      script: `
+        const selects = [...document.querySelectorAll('select')];
+        const target = selects.find((el) => [...el.options].some((option) => option.value === arguments[0]));
+        if (!target) return null;
+        target.value = arguments[0];
+        target.dispatchEvent(new Event('input', { bubbles: true }));
+        target.dispatchEvent(new Event('change', { bubbles: true }));
+        return target.value;
+      `,
+      args: [optionValue],
+    },
+  );
+  if (applied !== optionValue) {
+    throw new Error(`Unable to select ${label} option ${optionValue}; browser reported ${applied}`);
+  }
+}
+
+async function waitForSelected(xpath, desired, timeoutMs = 10_000) {
+  const deadline = Date.now() + timeoutMs;
+  let last;
+  while (Date.now() < deadline) {
+    last = await isSelected(xpath);
+    if (last === desired) return;
+    await delay(200);
+  }
+  throw new Error(`Element ${xpath} selection never became ${desired}; last=${last}`);
+}
+
 async function selectPrimaryRating(value) {
   const selectId = await findByXpath(
     `//label[contains(normalize-space(.), 'Rating for ${PRIMARY_CONDITION}')]/following-sibling::select`,
@@ -255,10 +351,12 @@ async function runJourney() {
     `//label[contains(normalize-space(.), '${PRIMARY_CONDITION}')]//input[@type='checkbox']`,
     true,
   );
-  await setSelected(
-    `//label[contains(normalize-space(.), '${DIAGNOSED_SECONDARY}')]//input[@type='checkbox']`,
-    true,
-  );
+  for (const conditionName of DIAGNOSED_SECONDARY_IDS) {
+    await setSelected(
+      `//label[contains(normalize-space(.), '${conditionName}')]//input[@type='checkbox']`,
+      true,
+    );
+  }
   checkpoint("selected diagnosed fixture conditions");
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 2')]");
   await waitForPath("/secondary/service-connected");
@@ -268,10 +366,12 @@ async function runJourney() {
     `//fieldset[.//legend[contains(normalize-space(.), '${PRIMARY_CONDITION}')]]//input[@value='yes']`,
     true,
   );
-  await setSelected(
-    `//fieldset[.//legend[contains(normalize-space(.), '${DIAGNOSED_SECONDARY}')]]//input[@value='no']`,
-    true,
-  );
+  for (const conditionName of DIAGNOSED_SECONDARY_IDS) {
+    await setSelected(
+      `//fieldset[.//legend[contains(normalize-space(.), '${conditionName}')]]//input[@value='no']`,
+      true,
+    );
+  }
   checkpoint("set service-connected fixture status");
   await clickXpath("//button[contains(normalize-space(.), 'Continue to Step 3')]");
   await waitForPath("/secondary/ratings");
@@ -282,7 +382,23 @@ async function runJourney() {
   await waitForPath("/secondary/upload");
   checkpoint("reached document choice");
 
+  // Step 4: paste a realistic clinician note and analyze it browser-locally so
+  // Step 6 has real excerpts for the pathway mapper to project.
+  await selectOptionByValue("physician", "credential");
+  await setInputValue(
+    "//textarea[contains(@placeholder, 'Paste text exactly as it appears')]",
+    EVIDENCE_NOTE_TEXT,
+  );
+  await clickXpath("//button[contains(normalize-space(.), 'Analyze pasted text locally')]");
+  await waitForText("nexus-relevant", "browser-local pasted-text analysis");
+  checkpoint("analyzed pasted clinician note locally");
+
   await setSelected("//input[@name='documentsShared' and @value='no']", true);
+  // Idea #6 fixture: select one controlled symptom (sleep-apnea entry) so the
+  // vetted provider-discussion prompts render on Steps 5/6.
+  const symptomCheckbox = "//input[@name='symptomIds' and @value='daytime-sleepiness-snoring']";
+  await setSelected(symptomCheckbox, true);
+  await waitForSelected(symptomCheckbox, true);
   await clickXpath("//button[contains(normalize-space(.), 'Review Possible Connections')]");
   await waitForPath("/secondary/suggestions");
   checkpoint("reached diagnosis-centered connection review");
@@ -294,7 +410,7 @@ async function runJourney() {
     "Diagnosed, not service connected",
     "Already service connected",
     PRIMARY_CONDITION,
-    DIAGNOSED_SECONDARY,
+    ...DIAGNOSED_SECONDARY_IDS,
   ];
   for (const phrase of expected) {
     if (!text.includes(phrase)) {
@@ -304,8 +420,168 @@ async function runJourney() {
   if (text.includes("Published Secondary Pathways")) {
     throw new Error("Connection review regressed to service-connected-primary suggestion grouping.");
   }
+  // Idea #4 evidence-strength signal: both fixture pathways (PTSD → Sleep Apnea,
+  // PTSD → Erectile Dysfunction) are authored NOT_ESTABLISHED, so the header
+  // badge label and the per-primary literature sentence are deterministic.
+  if (!text.includes("Not established")) {
+    throw new Error("Connection review is missing the consensus strength badge for the NOT_ESTABLISHED fixture pathways.");
+  }
+  if (!text.includes("is not established as causal")) {
+    throw new Error("Connection review is missing the condition-specific consensus literature sentence.");
+  }
 
-  console.log("Real-browser E2E passed: home → diagnosed → service-connected → ratings → documents → diagnosis-centered connections.");
+  checkpoint("verify Prepare Evidence pathway checklist on Step 5");
+  if (!text.includes("Prepare Evidence — Pathway-Specific Record Checklist")) {
+    throw new Error("Step 5 is missing the Prepare Evidence pathway-specific record checklist.");
+  }
+  // The storage write happens inside the hydrated onChange handler. A click
+  // that lands before React hydrates does not persist anything, so retry the
+  // (idempotent) click until sessionStorage proves the handler ran.
+  let storedSelections = null;
+  const storageDeadline = Date.now() + 30_000;
+  while (Date.now() < storageDeadline) {
+    await setSelected(PATHWAY_CHECKBOX_XPATH, true);
+    await delay(500);
+    const candidate = await readSessionStorage(PATHWAY_CHECKLIST_STORAGE_KEY);
+    if (typeof candidate === "string" && candidate.includes("sleep-apnea:ptsd:")) {
+      storedSelections = candidate;
+      break;
+    }
+  }
+  if (!storedSelections) {
+    throw new Error(`Pathway checklist storage never recorded the fixture pathway selection; last=${storedSelections}`);
+  }
+
+  checkpoint("verify pathway checklist selection survives a page reload");
+  const suggestionsUrl = await webdriver("GET", `/session/${sessionId}/url`);
+  // Step 5 server-renders the full aid stack (preflight + recommend + research
+  // aids + locator); give the reload navigation a longer command timeout than
+  // the 15s default so a cold render cannot flake the journey.
+  await webdriver("POST", `/session/${sessionId}/url`, { url: suggestionsUrl }, 60_000);
+  await waitForPath("/secondary/suggestions");
+  await waitForSelected(PATHWAY_CHECKBOX_XPATH, true);
+
+  checkpoint("verify Find Help accredited-representative locator on Step 5");
+  await setInputValue("//input[@name='zip']", LOCATOR_ZIP);
+  await clickXpath("//button[contains(normalize-space(.), 'Search directory')]");
+  // The fee note is static in the form, so it cannot signal navigation; wait
+  // for the server-action redirect to carry the validated zip first.
+  let locatorUrl = "";
+  const redirectDeadline = Date.now() + 20_000;
+  while (Date.now() < redirectDeadline) {
+    locatorUrl = await webdriver("GET", `/session/${sessionId}/url`);
+    if (locatorUrl.includes("zip=22101")) break;
+    await delay(500);
+  }
+  if (!locatorUrl.includes("zip=22101")) {
+    throw new Error(`Locator search did not redirect with the validated zip param: ${locatorUrl}`);
+  }
+  // Results render server-side with the directory (or fallback) view; poll
+  // for the provenance line, which only exists in the results state.
+  let locatorText = "";
+  const resultsDeadline = Date.now() + 20_000;
+  while (Date.now() < resultsDeadline) {
+    locatorText = await bodyText();
+    if (locatorText.includes("Source:")) break;
+    await delay(500);
+  }
+  if (!locatorText.includes("Source:")) {
+    throw new Error("Locator results are missing the provenance/source line.");
+  }
+  if (!locatorText.includes("Find an accredited representative near you")) {
+    throw new Error("Locator card is missing its heading after the directory search.");
+  }
+  if (!locatorText.includes("Accredited representatives may help prepare and submit a claim at no upfront cost")) {
+    throw new Error("Locator is missing the 38 U.S.C. § 5904 fee note.");
+  }
+  if (!locatorText.includes("va.gov/ogc/apps/accreditation")) {
+    throw new Error("Locator is missing the OGC directory reference (fallback guidance or notice).");
+  }
+  checkpoint("locator search redirected with zip; fee note + provenance + OGC guidance rendered");
+
+  // Idea #6 compliant surface: the fixture selects the sleep-apnea symptom at
+  // Step 4, so the vetted provider-discussion prompt must render on Step 5.
+  // Poll on the symptom label (the panel heading is CSS-uppercased, and
+  // WebDriver innerText returns transformed text).
+  await waitForText("Loud snoring or daytime sleepiness", "Step 5 symptom discussion panel");
+  const symptomText = await bodyText();
+  if (!symptomText.includes("sleep-disordered breathing")) {
+    throw new Error("Symptom discussion panel is missing the vetted provider-discussion prompt.");
+  }
+  checkpoint("symptom discussion prompts rendered on Step 5 from the Step 4 selection");
+
+  checkpoint("verify pathway checklist selection follows Steps 5 → 6 alongside pathway evidence mapping");
+  await clickXpath("//a[contains(normalize-space(.), 'Review Evidence for These Connections')]");
+  await waitForPath("/secondary/evidence");
+
+  // Pathway Evidence Mapping: the stored clinician-authored aggravation excerpt
+  // must appear under the authored AGGRAVATION pathway with the theory-matched
+  // chip. React hydration + dev-server compile can lag, so poll the body text.
+  await waitForText("Pathway Evidence Mapping", "pathway mapper section");
+  await waitForText("Pathway: Post-Traumatic Stress Disorder (PTSD) → Erectile Dysfunction", "mapped aggravation pathway");
+  await waitForText("Theory-matched nexus excerpts found", "theory-matched status chip");
+  await waitForText("Related causal language only", "fail-closed association-only chip");
+  const step6Text = await bodyText();
+  if (!step6Text.includes("worsened beyond what would be expected")) {
+    throw new Error("Pathway mapper is missing the stored excerpt quote.");
+  }
+  if (!step6Text.includes("Research cues, not determinations")) {
+    throw new Error("Pathway mapper is missing the research-cue boundary copy.");
+  }
+  if (!step6Text.includes("Download mapping + consultation summary")) {
+    throw new Error("Pathway mapper is missing the combined export button.");
+  }
+  if (!step6Text.includes("Download consultation summary")) {
+    throw new Error("Standalone consultation summary is missing from the mapper card.");
+  }
+  if (!step6Text.includes("Prepare Evidence — Pathway-Specific Record Checklist")) {
+    throw new Error("Step 6 is missing the Prepare Evidence pathway-specific record checklist.");
+  }
+  if (!/symptoms to discuss with a provider/i.test(step6Text)) {
+    throw new Error("Step 6 is missing the symptom discussion panel (prompts follow 5 → 6).");
+  }
+  await waitForSelected(PATHWAY_CHECKBOX_XPATH, true);
+  checkpoint("pathway evidence mapping rendered with theory-matched excerpt; checklist followed 5 → 6");
+
+  checkpoint("verify the Clear checkmarks control resets the pathway checklist store");
+  await clickXpath("//button[contains(normalize-space(.), 'Clear checkmarks')]");
+  const clearDeadline = Date.now() + 10_000;
+  let clearedByButton = null;
+  while (Date.now() < clearDeadline) {
+    clearedByButton = await readSessionStorage(PATHWAY_CHECKLIST_STORAGE_KEY);
+    if (clearedByButton === null) break;
+    await delay(200);
+  }
+  if (clearedByButton !== null) {
+    throw new Error(`Clear checkmarks did not remove the pathway checklist store: ${clearedByButton}`);
+  }
+  await waitForSelected(PATHWAY_CHECKBOX_XPATH, false);
+
+  checkpoint("re-check a pathway record so completion clearing has state to purge");
+  let restocked = false;
+  const restockDeadline = Date.now() + 30_000;
+  while (Date.now() < restockDeadline) {
+    await setSelected(PATHWAY_CHECKBOX_XPATH, true);
+    await delay(500);
+    const candidate = await readSessionStorage(PATHWAY_CHECKLIST_STORAGE_KEY);
+    if (typeof candidate === "string" && candidate.includes("sleep-apnea:ptsd:")) {
+      restocked = true;
+      break;
+    }
+  }
+  if (!restocked) {
+    throw new Error("Pathway checklist selection could not be restored after Clear checkmarks.");
+  }
+
+  checkpoint("verify Start a new review clears the pathway checklist store");
+  await clickXpath("//button[contains(normalize-space(.), 'Start a new review')]");
+  await waitForPath("/secondary/diagnosed");
+  const clearedValue = await readSessionStorage(PATHWAY_CHECKLIST_STORAGE_KEY);
+  if (clearedValue !== null) {
+    throw new Error(`Pathway checklist selections survived Start a new review: ${clearedValue}`);
+  }
+
+  console.log("Real-browser E2E passed: home → diagnosed → service-connected → ratings → documents → diagnosis-centered connections → pathway checklist persistence → evidence review with pathway evidence mapping → completion clearing.");
 }
 
 async function cleanup() {

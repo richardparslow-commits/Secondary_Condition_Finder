@@ -8,6 +8,37 @@ VA API access is disabled by default. With no VA runtime variables configured, t
 
 The current request budget and successful-response cache are process-local controls. They are permitted only in single-process, non-production execution. Production and known distributed/serverless runtimes fail closed before a credentialed VA request and do not use the process-local reference cache. A shared rate-limit/cache coordinator must be implemented and objectively validated before live VA traffic is enabled from the horizontally scaled production runtime.
 
+## Runtime mode
+
+Issue #287 requires a deliberate runtime mode rather than an implicit combination of flags. `resolveVaReferenceMode()` in `src/lib/va/runtime-state.ts` is the single decision point and resolves exactly one of three modes:
+
+| Mode | Meaning | Requirements |
+|---|---|---|
+| `disabled` | No outbound VA request is made; local fallback references are served. **Fail-closed default.** | None — this is what an unconfigured or ambiguous environment resolves to. |
+| `sandbox` | Requests target the VA sandbox endpoints. | `VA_API_ENABLED=true` (or the Phase 2 compatible `VA_SANDBOX_ENABLED=true`) and `VA_API_ENV` unset or `sandbox`. |
+| `production` | Requests target the VA production endpoints and results may be labelled production-sourced. | `VA_API_ENV=production` **and** `VA_API_ENABLED=true` **and** `VA_PRODUCTION_ACCESS_GRANTED=true` **and** both service-specific production credentials present. |
+
+Every resolution carries a non-sensitive `modeReason` explaining the outcome for operator diagnostics. Reasons never echo credential values.
+
+The resolver fails closed to `disabled` — never silently downgrades to `sandbox` — on any of:
+
+- an unrecognised or falsy enable value (`VA_API_ENABLED=maybe`, `=0`, `=no`);
+- `VA_API_ENV=production` without `VA_PRODUCTION_ACCESS_GRANTED=true`;
+- `VA_PRODUCTION_ACCESS_GRANTED=true` without `VA_API_ENABLED=true` (acknowledgement is not enablement);
+- an acknowledged production selection missing any service-specific production credential.
+
+When production fails closed, the loaded configuration deliberately carries **sandbox** endpoints and **no** production keys, so a caller that neglected to check `enabled` still cannot reach production. The `environment` field continues to report the *requested* environment (`production`) so a refused production selection is visible rather than being mistaken for a sandbox configuration.
+
+## `VA_PRODUCTION_ACCESS_GRANTED` (issue #287 gate rule)
+
+```text
+VA_PRODUCTION_ACCESS_GRANTED=true
+```
+
+An explicit operator acknowledgement that **VA has granted production API access**. It is separate from `VA_API_ENABLED`, which expresses only the intent to make requests. Requiring both means no single mis-set variable can repoint the public reference surfaces at production endpoints or cause data to be labelled production-sourced.
+
+Per the #287 gate rule, set this only after VA grants production access **and** live production connectivity has been objectively verified. It is intentionally unset in every current environment.
+
 ## Environment selection
 
 `VA_API_ENV` selects the intended upstream environment:
@@ -79,9 +110,13 @@ Production credentials may be staged only after VA production access is granted,
 ```text
 VA_API_ENV=production
 VA_API_ENABLED=true
+VA_PRODUCTION_ACCESS_GRANTED=true
 VA_FORMS_PRODUCTION_API_KEY=<server-only value>
 VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY=<server-only value>
 ```
+
+Without `VA_PRODUCTION_ACCESS_GRANTED=true` this exact configuration resolves to `disabled` and serves sandbox endpoints with no production key loaded.
+
 
 Those variables alone do **not** authorize a production request under the current architecture. Issue #287 remains the production-transition gate.
 

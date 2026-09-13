@@ -1,6 +1,9 @@
 {
   "id": "delusional-disorder",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review psychiatric comorbidity, treatment/medication, functional impairment, and aggravation pathways only where supported; avoid inferring another psychotic-spectrum diagnosis or causation from shared symptoms."],
+  "todo": [
+    "ME-41 safe-draft rescreen 2026-09-12 (NCBI E-utilities) found no condition-specific delusional-disorder source supporting a bounded depressive-disorder edge. A targeted query pairing delusional disorder with depression and comorbidity returned zero records, and title-level searching surfaced only case reports, antipsychotic-treatment reviews, and non-psychiatric delusional presentations (including PMID 32774942, PMID 32399397, and PMID 36552037), none of which quantify co-occurrence with a separately established depressive disorder.",
+    "Keep safe-draft until a delusional-disorder-specific epidemiological or clinical-sample source quantifies co-occurrence with a separately established depressive disorder and supports the exact downstream diagnosis and direction. Do not infer a depressive disorder from delusional content, distress, or functional impairment alone, and avoid inferring another psychotic-spectrum diagnosis or causation from shared symptoms."
+  ],
   "suggestions": []
 }

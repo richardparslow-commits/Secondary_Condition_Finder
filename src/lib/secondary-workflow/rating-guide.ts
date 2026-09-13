@@ -44,6 +44,40 @@ export const GENERIC_RATING_SCALE = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 export const RATING_SCALE_NOTE =
   "VA disability ratings run from 0% to 100% in 10% increments (some diagnostic codes use a subset such as 0/10/30/50/70/100 for mental disorders). The actual levels available for a diagnosis depend on its rating criteria under 38 CFR Part 4. This scale is educational — it does not calculate or predict a rating.";
 
+/**
+ * Stable id for one user-selected symptom note, scoped to a condition so
+ * selections never blur between conditions: `${conditionId}:${prompt}`.
+ */
+export function symptomNoteId(conditionId: string, prompt: string): string {
+  return `${conditionId}:${prompt}`;
+}
+
+export interface ConditionSymptomNote {
+  conditionId: string;
+  conditionName: string;
+  prompt: string;
+}
+
+/** Projects raw selections into a stable, export-ready shape. */
+export function collectSymptomNotes(
+  entries: RatingGuideEntry[],
+  selections: Record<string, boolean>,
+): ConditionSymptomNote[] {
+  const notes: ConditionSymptomNote[] = [];
+  for (const entry of entries) {
+    for (const prompt of GENERIC_FUNCTIONAL_PROMPTS) {
+      if (selections[symptomNoteId(entry.conditionId, prompt)]) {
+        notes.push({
+          conditionId: entry.conditionId,
+          conditionName: entry.conditionName,
+          prompt,
+        });
+      }
+    }
+  }
+  return notes;
+}
+
 export const GENERIC_FUNCTIONAL_PROMPTS: readonly string[] = [
   "Difficulty completing occupational or daily tasks",
   "Sleep disturbance or non-restorative sleep",
@@ -55,7 +89,10 @@ export const GENERIC_FUNCTIONAL_PROMPTS: readonly string[] = [
   "Impact on social or family activities",
 ] as const;
 
-export function formatRatingGuide(entries: RatingGuideEntry[]): string {
+export function formatRatingGuide(
+  entries: RatingGuideEntry[],
+  selections: Record<string, boolean> = {},
+): string {
   const lines: string[] = [
     "VA RATING SCHEDULE GUIDE — SECONDARY CONDITION FINDER",
     "Research reference only — not a VA rating determination or medical assessment.",
@@ -94,7 +131,25 @@ export function formatRatingGuide(entries: RatingGuideEntry[]): string {
   lines.push("Generic VA scale (educational ticks): " + GENERIC_RATING_SCALE.map((value) => `${value}%`).join("  "));
   lines.push("");
   lines.push("Functional limitations to discuss (check any that apply — notes only):");
-  for (const prompt of GENERIC_FUNCTIONAL_PROMPTS) lines.push(`  [ ] ${prompt}`);
+  const selectedByCondition = new Map<string, string[]>();
+  for (const note of collectSymptomNotes(entries, selections)) {
+    const list = selectedByCondition.get(note.conditionName) ?? [];
+    list.push(note.prompt);
+    selectedByCondition.set(note.conditionName, list);
+  }
+  if (selectedByCondition.size === 0) {
+    for (const prompt of GENERIC_FUNCTIONAL_PROMPTS) lines.push(`  [ ] ${prompt}`);
+  } else {
+    lines.push("Notes you marked while exploring (per condition — still not a rating):");
+    for (const entry of entries) {
+      const prompts = selectedByCondition.get(entry.conditionName);
+      if (!prompts) continue;
+      lines.push(`  ${entry.conditionName}:`);
+      for (const prompt of prompts) lines.push(`    - ${prompt}`);
+    }
+    lines.push("All prompts (for reference):");
+    for (const prompt of GENERIC_FUNCTIONAL_PROMPTS) lines.push(`  [ ] ${prompt}`);
+  }
   lines.push("");
   lines.push("DISCLAIMER: Rating framework text is informational and not a nexus or rating");
   lines.push("determination. VA determines the diagnostic code and percentage from the");

@@ -149,6 +149,58 @@ button, input, select, textarea { font: inherit; }
   .ui-icon { border: 1px solid CanvasText; }
 }
 
+@media print {
+  body { background: #fff !important; color: #0f172a !important; }
+  .app-shell { padding: 12px !important; }
+  .page-hero, .app-shell main > header, .app-shell main > h1 { box-shadow: none !important; border-color: #94a3b8 !important; break-after: avoid; }
+  .ui-card, .app-shell main article, .app-shell main fieldset, .app-shell main > section { box-shadow: none !important; break-inside: avoid; }
+  .ui-actions, .no-print { display: none !important; }
+  a { color: #1d4ed8 !important; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.75em; color: #475569; word-break: break-all; }
+  details { open: true; }
+  details[open] > summary { list-style: none; }
+  @page { margin: 16mm 12mm; }
+  h1, h2, h3, h4 { break-after: avoid; }
+  /* Print header — research report (not a VA form) */
+  main::before {
+    content: "Secondary Condition Finder — Research Report (not a VA form)  •  For preparation with a provider or accredited representative  •  Verify all citations";
+    display: block;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #334155;
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+  main::after {
+    content: "Disclaimer: This report is educational research only — not a medical diagnosis, legal advice, or VA eligibility determination. Citations are research starting points; confirm current VA guidance and discuss all theories with a qualified provider or accredited representative.";
+    display: block;
+    margin-top: 14px;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #334155;
+    font-size: 0.72rem;
+    line-height: 1.45;
+  }
+}
+
+/* Scoped print: only the action plan card prints when the user chooses
+   "Print action card" on the Action Plan aid. Applied by temporarily adding
+   a class to <body>; removed in the same handler's finally block. */
+@media print {
+  body.print-action-card main > *:not(.print-action-plan-scope) { display: none !important; }
+  body.print-action-card main::before {
+    content: "Your Next Steps — Claim Action Card (research-generated, not VA guidance)  •  Confirm every form and filing step with an accredited representative";
+  }
+  body.print-action-card main::after {
+    content: "Disclaimer: This action card is a research-generated suggestion, not VA guidance. It does not determine eligibility or set a VA deadline. Verify current VA guidance with a qualified provider or accredited representative.";
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }

@@ -1,15 +1,17 @@
 import Link from "next/link";
 
-import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDownload";
 import { EvidenceGapCoverage } from "@/components/evidence/EvidenceGapCoverage";
 import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
+import { ConsultationPacketDownload } from "@/components/ConsultationPacketDownload";
 import { MedicalRecordChecklist } from "@/components/secondary/MedicalRecordChecklist";
+import { PathwayRecordChecklist } from "@/components/secondary/PathwayRecordChecklist";
 import { ActionPlan } from "@/components/secondary/ActionPlan";
 import { PrintReportButton } from "@/components/secondary/PrintReportButton";
 import { RatingGuide } from "@/components/secondary/RatingGuide";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { EvidenceGapReview } from "@/components/evidence/EvidenceGapReview";
 import { LocalEvidenceReview } from "@/components/evidence/LocalEvidenceReview";
+import { PathwayEvidenceMapper } from "@/components/evidence/PathwayEvidenceMapper";
 import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatus";
 import {
   SecondaryWorkflowCompletionActions,
@@ -34,12 +36,11 @@ import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepres
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { readSecondaryWorkflowSession, workflowSessionToQueryParams } from "@/lib/secondary-workflow/session";
 import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
-import { accreditedRepValidationMessage, APPROVED_RADIUS_MILES, ZIP_RE } from "@/lib/va/accredited-representative-constants";
 
 export const dynamic = "force-dynamic";
 
 interface EvidenceReviewStepPageProps {
-  searchParams?: Promise<{ regSnapshot?: string | string[]; zip?: string | string[]; radius?: string | string[]; type?: string | string[]; error?: string | string[] }>;
+  searchParams?: Promise<{ regSnapshot?: string | string[]; zip?: string; radiusMiles?: string; type?: string }>;
 }
 
 const firstParam = (value: string | string[] | undefined): string | undefined =>
@@ -129,29 +130,15 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
     evidenceGaps: recommendation.evidenceGaps,
   }));
   const suggestionsHref = `/secondary/suggestions?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
-
-  // Accredited-representative locator (Phase 3.1) — optional aid, never blocks checklist output.
-  const rawSearchParams = await searchParams;
-  const zipParam = firstParam(rawSearchParams?.zip)?.trim() ?? "";
-  const radiusParam = firstParam(rawSearchParams?.radius)?.trim() ?? "";
-  const typeParam = firstParam(rawSearchParams?.type)?.trim() ?? "";
-  const accreditedRepError = accreditedRepValidationMessage(firstParam(rawSearchParams?.error));
-  let accreditedRepView: Awaited<ReturnType<typeof loadAccreditedRepresentatives>> | null = null;
-  if (ZIP_RE.test(zipParam)) {
-    const radiusMiles = radiusParam ? Number(radiusParam) : undefined;
-    const radiusValid =
-      radiusMiles === undefined ||
-      (Number.isInteger(radiusMiles) && (APPROVED_RADIUS_MILES as readonly number[]).includes(radiusMiles));
-    const typeValid = !typeParam || (["VSO", "agent", "attorney"] as const).includes(typeParam as "VSO" | "agent" | "attorney");
-    if (radiusValid && typeValid) {
-      accreditedRepView = await loadAccreditedRepresentatives({
-        zip: zipParam,
-        ...(radiusMiles !== undefined ? { radiusMiles: radiusMiles as (typeof APPROVED_RADIUS_MILES)[number] } : {}),
-        ...(typeParam ? { type: typeParam as "VSO" | "agent" | "attorney" } : {}),
-      });
-    }
-  }
-  const accreditedRepExistingQuery = lockedSnapshotId ? `regSnapshot=${encodeURIComponent(lockedSnapshotId)}` : "";
+  const qp2 = await searchParams;
+  const zipParam2 = typeof qp2?.zip === "string" ? qp2.zip : undefined;
+  const accreditedRepView2 = zipParam2 && /^\d{5}$/.test(zipParam2)
+    ? await loadAccreditedRepresentatives({
+        zip: zipParam2,
+        radiusMiles: typeof qp2?.radiusMiles === "string" ? Number(qp2.radiusMiles) : 50,
+        type: (typeof qp2?.type === "string" ? qp2.type : undefined) as "VSO" | "agent" | "attorney" | undefined,
+      })
+    : null;
 
   return (
     <main>
@@ -181,26 +168,25 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
         </section>
 
         <aside className="ui-stack">
-          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">⇩</span><h2 className="text-xl font-bold">Consultation Summary</h2></div><p className="mb-4 text-sm">Download the authored research checklist for the diagnosed non-service-connected conditions that had a published relationship in Step 5.</p>{consultationRecommendations.length > 0 ? <ConsultationSummaryDownload recommendations={consultationRecommendations} /> : <p className="text-sm text-slate-600">No published relationship recommendations are available to export for this run.</p>}</section>
+          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">⇩</span><h2 className="text-xl font-bold">Consultation Summary</h2></div><p className="mb-4 text-sm">Downloads are in the Pathway Evidence Mapping section below: the standalone summary, or one combined file with the mapping plus summary.</p></section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✎</span><h2 className="text-xl font-bold">Research Notes</h2></div><p className="text-sm">Use your own secure notes or records to track questions such as potential nexus literature, providers to ask, symptom history, and missing treatment records. This app does not store free-text research notes on the server.</p></section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Next Steps</h2></div><ol className="space-y-3 text-sm"><li><strong>1.</strong> Review the relationship rationale and citations for each non-service-connected diagnosis.</li><li><strong>2.</strong> Compare mapped evidence gaps with exact local excerpts and any reported context match.</li><li><strong>3.</strong> Discuss causation, contribution, or aggravation questions with a qualified provider.</li><li><strong>4.</strong> Consider an accredited representative, attorney, or VSO.</li></ol></section>
         </aside>
       </div>
 
       <MedicalRecordChecklist groups={buildMedicalRecordChecklist(nonServiceConnectedResults)} />
+      <PathwayRecordChecklist results={nonServiceConnectedResults} summaryRecommendations={consultationRecommendations} />
       <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
       <ActionPlan results={nonServiceConnectedResults} />
-      <AccreditedRepresentativeFinder
-          initialView={accreditedRepView}
-          returnTo="/secondary/evidence"
-          existingQuery={accreditedRepExistingQuery}
-          initialZip={zipParam}
-          initialRadius={radiusParam}
-          initialType={typeParam}
-          validationMessage={accreditedRepError}
-        />
+      <AccreditedRepresentativeFinder initialView={accreditedRepView2} returnTo="/secondary/evidence" />
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
+      <PathwayEvidenceMapper results={nonServiceConnectedResults} recommendations={consultationRecommendations} />
+      <ConsultationPacketDownload
+        recommendations={consultationRecommendations}
+        results={nonServiceConnectedResults}
+        catalogById={byId}
+      />
 
       <div className="ui-actions">
         <Link href={suggestionsHref} className="ui-button-secondary">← Back to Connections</Link>

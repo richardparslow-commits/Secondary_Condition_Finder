@@ -7,6 +7,7 @@ import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatu
 import { ActionPlan } from "@/components/secondary/ActionPlan";
 import { CombinationInsightsPanel } from "@/components/secondary/CombinationInsightsPanel";
 import { ConditionComparisonTool } from "@/components/secondary/ConditionComparisonTool";
+import { PathwayRecordChecklist } from "@/components/secondary/PathwayRecordChecklist";
 import { PrintReportButton } from "@/components/secondary/PrintReportButton";
 import { RatingGuide } from "@/components/secondary/RatingGuide";
 import { SecondarySuggestionsTabs } from "@/components/secondary/SecondarySuggestionsTabs";
@@ -32,12 +33,11 @@ import { readSecondaryWorkflowSession, workflowSessionToQueryParams, type Stored
 import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import { buildConditionVaReferenceMap } from "@/lib/va/condition-reference";
 import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
-import { accreditedRepValidationMessage, APPROVED_RADIUS_MILES, ZIP_RE } from "@/lib/va/accredited-representative-constants";
 import { loadDisabilityReference } from "@/lib/va/disability-reference";
 
 interface SuggestionsPageProps {
   workflowState?: StoredSecondaryWorkflowState;
-  searchParams?: Promise<{ regSnapshot?: string | string[]; zip?: string | string[]; radius?: string | string[]; type?: string | string[]; error?: string | string[] }>;
+  searchParams?: Promise<{ regSnapshot?: string | string[]; zip?: string; radiusMiles?: string; type?: string; error?: string }>;
 }
 export const dynamic = "force-dynamic";
 
@@ -92,6 +92,11 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
     recommendationsResult.recommendations,
   );
   const nonServiceConnectedNames = nonServiceConnectedResults.map((result) => result.conditionName);
+  // matchedIntakeContext is stripped for every export path so reported
+  // medication/treatment context never reaches a downloaded artifact.
+  const checklistSummaryRecommendations = nonServiceConnectedResults.flatMap((result) =>
+    result.recommendation ? [{ ...result.recommendation, matchedIntakeContext: [] }] : [],
+  );
   const conditionNamesById = new Map([...byId].map(([id, condition]) => [id, condition.name] as const));
   const symptomDiscussionPrompts = buildSymptomDiscussionPrompts(
     state.symptomIds ?? [],
@@ -104,27 +109,17 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
     vaReference.live ? vaReference.items : [],
   );
   const evidenceHref = `/secondary/evidence?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
-  const rawSearchParams = await searchParams;
-  const zipParam = firstParam(rawSearchParams?.zip)?.trim() ?? "";
-  const radiusParam = firstParam(rawSearchParams?.radius)?.trim() ?? "";
-  const typeParam = firstParam(rawSearchParams?.type)?.trim() ?? "";
-  const accreditedRepError = accreditedRepValidationMessage(firstParam(rawSearchParams?.error));
-  let accreditedRepView: Awaited<ReturnType<typeof loadAccreditedRepresentatives>> | null = null;
-  if (ZIP_RE.test(zipParam)) {
-    const radiusMiles = radiusParam ? Number(radiusParam) : undefined;
-    const radiusValid =
-      radiusMiles === undefined ||
-      (Number.isInteger(radiusMiles) && (APPROVED_RADIUS_MILES as readonly number[]).includes(radiusMiles));
-    const typeValid = !typeParam || (["VSO", "agent", "attorney"] as const).includes(typeParam as "VSO" | "agent" | "attorney");
-    if (radiusValid && typeValid) {
-      accreditedRepView = await loadAccreditedRepresentatives({
+  const qp = await searchParams;
+  const zipParam = typeof qp?.zip === "string" ? qp.zip : undefined;
+  const radiusParam = typeof qp?.radiusMiles === "string" ? qp.radiusMiles : undefined;
+  const typeParam = typeof qp?.type === "string" ? qp.type : undefined;
+  const accreditedRepView = zipParam && /^\d{5}$/.test(zipParam)
+    ? await loadAccreditedRepresentatives({
         zip: zipParam,
-        ...(radiusMiles !== undefined ? { radiusMiles: radiusMiles as (typeof APPROVED_RADIUS_MILES)[number] } : {}),
-        ...(typeParam ? { type: typeParam as "VSO" | "agent" | "attorney" } : {}),
-      });
-    }
-  }
-  const accreditedRepExistingQuery = lockedSnapshotId ? `regSnapshot=${encodeURIComponent(lockedSnapshotId)}` : "";
+        radiusMiles: radiusParam ? Number(radiusParam) : 50,
+        type: (typeParam as "VSO" | "agent" | "attorney" | undefined),
+      })
+    : null;
 
   const timelineConditions: TimelineConditionInput[] = state.diagnosedConditionIds
     .map((id) => byId.get(id))
@@ -224,15 +219,8 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
       <CombinationInsightsPanel results={nonServiceConnectedResults} />
       <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
       <ActionPlan results={nonServiceConnectedResults} />
-      <AccreditedRepresentativeFinder
-          initialView={accreditedRepView}
-          returnTo="/secondary/suggestions"
-          existingQuery={accreditedRepExistingQuery}
-          initialZip={zipParam}
-          initialRadius={radiusParam}
-          initialType={typeParam}
-          validationMessage={accreditedRepError}
-        />
+      <PathwayRecordChecklist results={nonServiceConnectedResults} summaryRecommendations={checklistSummaryRecommendations} />
+      <AccreditedRepresentativeFinder initialView={accreditedRepView} returnTo="/secondary/suggestions" />
 
       <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href={evidenceHref} className="ui-button">Review Evidence for These Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">Open Evidence Checklist</span></Link></div>
       <DisclaimerFooter />

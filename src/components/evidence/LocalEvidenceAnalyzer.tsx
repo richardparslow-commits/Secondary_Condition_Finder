@@ -24,8 +24,9 @@ import {
 } from "@/lib/evidence/limits";
 import {
   clearStoredEvidence,
-  loadStoredEvidence,
+  loadStoredEvidenceWithWarning,
   saveStoredEvidence,
+  serializeStoredEvidenceWithInfo,
 } from "@/lib/evidence/storage";
 
 interface Props {
@@ -82,9 +83,11 @@ function getSessionStorage(): Storage | null {
   }
 }
 
-function loadStored(): EvidenceAnalysis[] {
-  return loadStoredEvidence(getSessionStorage());
-}
+// #11: a corrupted evidence store must never reset the tab silently.
+// loadStoredEvidenceWithWarning logs parse failures (with a bounded raw
+// preview) for observability; callers surface the parseError to the user.
+const STORAGE_CORRUPTED_WARNING =
+  "Saved evidence in this browser tab could not be read and was not restored. It may have been corrupted; re-analyze the affected documents.";
 
 function saveStored(
   analyses: EvidenceAnalysis[],
@@ -138,7 +141,17 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
   useEffect(() => {
     const restoreTimer = window.setTimeout(() => {
-      setAnalyses(loadStored());
+      const { analyses, parseError } = loadStoredEvidenceWithWarning(
+        getSessionStorage(),
+      );
+      setAnalyses(analyses);
+      if (parseError) {
+        setWarnings((prev) =>
+          prev.includes(STORAGE_CORRUPTED_WARNING)
+            ? prev
+            : [...prev, STORAGE_CORRUPTED_WARNING],
+        );
+      }
     }, 0);
     return () => window.clearTimeout(restoreTimer);
   }, []);
@@ -156,9 +169,18 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   useEffect(() => {
     if (depth === "standard") return;
     const reloadTimer = window.setTimeout(() => {
-      setAnalyses(
-        loadStoredEvidence(getSessionStorage(), EVIDENCE_DEPTH_LIMITS[depth]),
+      const { analyses, parseError } = loadStoredEvidenceWithWarning(
+        getSessionStorage(),
+        EVIDENCE_DEPTH_LIMITS[depth],
       );
+      setAnalyses(analyses);
+      if (parseError) {
+        setWarnings((prev) =>
+          prev.includes(STORAGE_CORRUPTED_WARNING)
+            ? prev
+            : [...prev, STORAGE_CORRUPTED_WARNING],
+        );
+      }
     }, 0);
     return () => window.clearTimeout(reloadTimer);
   }, [depth]);
@@ -174,6 +196,16 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   function commitAnalysis(analysis: EvidenceAnalysis) {
     setAnalyses((current) => {
       const next = [...current.filter((existing) => existing.sourceName !== analysis.sourceName), analysis].slice(-limits.storedSources);
+      const info = serializeStoredEvidenceWithInfo(next, limits);
+      if (info.dropped > 0) {
+        // Defer warning to avoid calling setState inside the setAnalyses updater (#3 silent-data-loss)
+        queueMicrotask(() => {
+          setWarnings((prev) => {
+            const msg = `Storage limit reached (${formatLimitBytes(limits.storedBytes)}): ${info.dropped} older analyzed source(s) were dropped to fit. Clear old analyses or switch to Extended depth to retain more.`;
+            return prev.includes(msg) ? prev : [...prev, msg];
+          });
+        });
+      }
       saveStored(next, limits);
       return next;
     });
@@ -198,7 +230,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   }
 
   function stageFiles(fileList: FileList | null) {
-    if (busyRef.current || !fileList?.length) return;
+    if (busyRef.current || busy || !fileList?.length) return;
     const selected = Array.from(fileList);
     const room = limits.batchSources - pending.length;
     if (room <= 0) {
@@ -225,14 +257,14 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   }
 
   function clearPending() {
-    if (busyRef.current) return;
+    if (busyRef.current || busy) return;
     setPending([]);
     setWarnings([]);
     setMessage("Selected document list cleared.");
   }
 
   function removePending(id: number) {
-    if (busyRef.current) return;
+    if (busyRef.current || busy) return;
     const row = pending.find((item) => item.id === id);
     setPending((current) => current.filter((item) => item.id !== id));
     if (row?.analyzed) dropAnalysis(row.sourceName);
@@ -283,7 +315,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   }
 
   async function runAllAnalysis() {
-    if (busyRef.current) return;
+    if (busyRef.current || busy) return;
     const targets = pending.filter((row) => !row.analyzed);
     if (targets.length === 0) {
       setMessage("All selected documents have already been analyzed. Adjust a document's author to re-analyze it.");
@@ -316,7 +348,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   }
 
   async function reprocessFile(id: number, nextCredential: ClinicianCredential) {
-    if (busyRef.current) return;
+    if (busyRef.current || busy) return;
     const row = pending.find((item) => item.id === id);
     if (!row?.analyzed) return;
 
@@ -342,7 +374,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   }
 
   async function runLocalOcr(id: number) {
-    if (busyRef.current) return;
+    if (busyRef.current || busy) return;
     const row = pending.find((item) => item.id === id);
     if (!row || !isPdfFile(row.file)) {
       if (row) setMessage("Local OCR supports PDF documents only.");
@@ -376,34 +408,74 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         const loadingTask = pdfjs.getDocument({ data: bytes });
         const pdfDocument = await loadingTask.promise;
         try {
-          const readLimit = Math.min(pdfDocument.numPages, limits.pdfPages);
+          // #7: validate untrusted page count before using it as a loop bound
+          const totalPages = pdfDocument.numPages;
+          if (!Number.isInteger(totalPages) || totalPages <= 0) {
+            throw new Error("Invalid PDF page count");
+          }
+          const readLimit = Math.min(totalPages, limits.pdfPages);
           const segments: EvidenceTextSegment[] = [];
           for (let pageNumber = 1; pageNumber <= readLimit; pageNumber += 1) {
             setOcrProgress(`OCR page ${pageNumber} of ${readLimit} in ${row.sourceName}…`);
-            const page = await pdfDocument.getPage(pageNumber);
-            const viewport = page.getViewport({ scale: 2 });
-            const canvas = document.createElement("canvas");
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-            const context = canvas.getContext("2d");
-            if (context) {
-              context.fillStyle = "#ffffff";
-              context.fillRect(0, 0, viewport.width, viewport.height);
+            let page: Awaited<ReturnType<typeof pdfDocument.getPage>> | null = null;
+            try {
+              page = await pdfDocument.getPage(pageNumber);
+              const viewport = page.getViewport({ scale: 2 });
+              const canvas = document.createElement("canvas");
+              canvas.width = viewport.width;
+              canvas.height = viewport.height;
+              const context = canvas.getContext("2d");
+              if (context) {
+                context.fillStyle = "#ffffff";
+                context.fillRect(0, 0, viewport.width, viewport.height);
+              } else {
+                nextWarnings.push(`${row.sourceName}: page ${pageNumber} canvas context unavailable — rendering may be incomplete.`);
+              }
+              try {
+                await page.render({ canvas, viewport }).promise;
+              } catch (renderError) {
+                const detail = renderError instanceof Error ? renderError.message : String(renderError);
+                nextWarnings.push(`${row.sourceName}: page ${pageNumber} render failed (${detail}) — skipped.`);
+                continue;
+              }
+              let text = "";
+              try {
+                const result = await worker.recognize(canvas);
+                text = (result?.data?.text ?? "").trim();
+              } catch (recognizeError) {
+                const detail = recognizeError instanceof Error ? recognizeError.message : String(recognizeError);
+                nextWarnings.push(`${row.sourceName}: page ${pageNumber} OCR recognition failed (${detail}) — skipped.`);
+                continue;
+              }
+              if (!text) continue;
+              recognizedChars += text.length;
+              if (recognizedChars > limits.textChars) {
+                nextWarnings.push(
+                  `${row.sourceName}: OCR text exceeded ${formatLimitChars(limits.textChars)} characters; pages up to ${pageNumber} were kept.`,
+                );
+                break;
+              }
+              segments.push({ text, locatorPrefix: `page ${pageNumber} (OCR)` });
+              ocrPages += 1;
+            } catch (pageError) {
+              // getPage / getViewport or other unexpected per-page failure
+              if (page === null) {
+                const detail = pageError instanceof Error ? pageError.message : String(pageError);
+                nextWarnings.push(`${row.sourceName}: page ${pageNumber} could not be loaded (${detail}) — skipped.`);
+              } else {
+                // already handled render/recognize above; re-throw if truly unexpected
+                throw pageError;
+              }
+            } finally {
+              // #2: guarantee cleanup even when render/recognize/viewport throws
+              if (page) {
+                try {
+                  page.cleanup();
+                } catch {
+                  // best-effort
+                }
+              }
             }
-            await page.render({ canvas, viewport }).promise;
-            const result = await worker.recognize(canvas);
-            const text = (result?.data?.text ?? "").trim();
-            page.cleanup();
-            if (!text) continue;
-            recognizedChars += text.length;
-            if (recognizedChars > limits.textChars) {
-              nextWarnings.push(
-                `${row.sourceName}: OCR text exceeded ${formatLimitChars(limits.textChars)} characters; pages up to ${pageNumber} were kept.`,
-              );
-              break;
-            }
-            segments.push({ text, locatorPrefix: `page ${pageNumber} (OCR)` });
-            ocrPages += 1;
           }
           if (segments.length === 0) {
             nextWarnings.push(`${row.sourceName}: OCR produced no readable text.`);

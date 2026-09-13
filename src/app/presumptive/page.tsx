@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
+import { Dd214LocalAnalyzer } from "@/components/presumptive/Dd214LocalAnalyzer";
 import { ServiceHistoryForm } from "@/components/ServiceHistoryForm";
+import { ServiceHistoryTemplateLibrary } from "@/components/presumptive/ServiceHistoryTemplateLibrary";
+import { PRESUMPTIVE_TEMPLATES } from "@/lib/presumptive/templates";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { listLocations } from "@/lib/presumptive/match";
 import { loadServiceBranchReference } from "@/lib/va/service-branches";
@@ -60,18 +63,22 @@ export default async function PresumptivePage({ searchParams }: PresumptivePageP
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">⌖</span><h2 className="text-xl font-bold">Covered Exposure Tracks</h2></div>
             <p className="text-sm">The local presumptive catalog includes exposure/location rules used by the matching tool. Select your actual service locations and dates in the form.</p>
           </section>
+          <ServiceHistoryTemplateLibrary templates={PRESUMPTIVE_TEMPLATES} />
         </aside>
 
         <section className="ui-card">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><h2 className="text-2xl font-bold">Presumptive Service Connection</h2><p className="text-sm text-slate-600">Enter service history without putting it in the URL.</p></div></div>
           <p className="mb-5">For some conditions, VA presumes a relationship to service when specific legal criteria are met. This track is separate from secondary service connection, which concerns one disability causing or aggravating another.</p>
           <div role="group" aria-describedby={validationId}>
-            <ServiceHistoryForm
-              locations={locations}
-              serviceBranches={serviceBranchReference.items}
-              serviceBranchSourceLabel={serviceBranchReference.sourceLabel}
-              serviceBranchNotice={serviceBranchReference.notice}
-            />
+            <Dd214LocalAnalyzer locations={locations} />
+            <div className="mt-6">
+              <ServiceHistoryForm
+                locations={locations}
+                serviceBranches={serviceBranchReference.items}
+                serviceBranchSourceLabel={serviceBranchReference.sourceLabel}
+                serviceBranchNotice={serviceBranchReference.notice}
+              />
+            </div>
           </div>
         </section>
 

@@ -2,6 +2,7 @@ import type { ConditionCatalog } from "@/lib/catalog/schema";
 import { findCondition, indexById, normalizeConditionName } from "@/lib/catalog/lookup";
 import type { KnowledgeBase, SourceReference } from "@/lib/kb/schema";
 import { publishedMappings } from "@/lib/kb/lookup";
+import { createLogger, recordRecommendationLatency } from "@/lib/observability/logger";
 
 import type {
   ClinicalFrictionWarning,
@@ -340,6 +341,8 @@ export function recommend(
   kb: KnowledgeBase,
   intake: Intake,
 ): RecommendationResult {
+  const startedAt = Date.now();
+  const logger = createLogger("recommendation-engine");
   const byId = indexById(catalog);
   const mappings = publishedMappings(kb);
 
@@ -520,6 +523,22 @@ export function recommend(
     recommendations = recommendations.filter((recommendation) =>
       diagnosedSet.has(recommendation.conditionId),
     );
+  }
+
+  const durationMs = Date.now() - startedAt;
+  try {
+    recordRecommendationLatency(durationMs, {
+      primaryCount: String(recognizedPrimaries.length),
+      recommendationCount: String(recommendations.length),
+    });
+    logger.info("recommendation executed", {
+      durationMs,
+      primaryCount: recognizedPrimaries.length,
+      recommendationCount: recommendations.length,
+      unmappedCount: unmappedPrimaries.length,
+    });
+  } catch {
+    // metrics/logging are best-effort
   }
 
   return {

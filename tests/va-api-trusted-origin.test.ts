@@ -9,6 +9,8 @@ import {
 
 const sandboxConfig: VaApiConfig = {
   enabled: true,
+  mode: "sandbox",
+  modeReason: "Test fixture: sandbox mode.",
   environment: "sandbox",
   formsApiKey: "forms-sandbox-test-key",
   benefitsReferenceDataApiKey: "reference-sandbox-test-key",
@@ -20,6 +22,8 @@ const sandboxConfig: VaApiConfig = {
 
 const productionConfig: VaApiConfig = {
   enabled: true,
+  mode: "production",
+  modeReason: "Test fixture: acknowledged production mode.",
   environment: "production",
   formsApiKey: "forms-production-test-key",
   benefitsReferenceDataApiKey: "reference-production-test-key",

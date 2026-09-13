@@ -94,15 +94,33 @@ describe("production deployment readiness", () => {
       VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY: "reference-prod-key",
     });
     expect(selectedButDisabled.enabled).toBe(false);
+    expect(selectedButDisabled.mode).toBe("disabled");
     expect(selectedButDisabled.environment).toBe("production");
 
-    const enabled = loadVaApiConfig({
+    // Issue #287 gate rule: enablement plus credentials are still not sufficient.
+    // Production endpoints require an explicit acknowledgement that VA granted
+    // production access, so a lone VA_API_ENABLED=true cannot repoint the public
+    // reference surfaces at production or label data production-sourced.
+    const enabledButUnacknowledged = loadVaApiConfig({
       VA_API_ENV: "production",
       VA_API_ENABLED: "true",
       VA_FORMS_PRODUCTION_API_KEY: "forms-prod-key",
       VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY: "reference-prod-key",
     });
+    expect(enabledButUnacknowledged.enabled).toBe(false);
+    expect(enabledButUnacknowledged.mode).toBe("disabled");
+    expect(enabledButUnacknowledged.environment).toBe("production");
+    expect(enabledButUnacknowledged.modeReason).toContain("VA_PRODUCTION_ACCESS_GRANTED");
+
+    const enabled = loadVaApiConfig({
+      VA_API_ENV: "production",
+      VA_API_ENABLED: "true",
+      VA_PRODUCTION_ACCESS_GRANTED: "true",
+      VA_FORMS_PRODUCTION_API_KEY: "forms-prod-key",
+      VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY: "reference-prod-key",
+    });
     expect(enabled.enabled).toBe(true);
+    expect(enabled.mode).toBe("production");
     expect(enabled.environment).toBe("production");
     expect(enabled.formsApiKey).toBe("forms-prod-key");
     expect(enabled.benefitsReferenceDataApiKey).toBe("reference-prod-key");

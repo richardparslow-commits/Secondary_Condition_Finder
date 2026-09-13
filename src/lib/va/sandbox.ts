@@ -3,9 +3,21 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 
 import {
+  createLogger,
+  recordVaApiError,
+  recordVaApiLatency,
+} from "@/lib/observability/logger";
+import {
   VA_SHARED_STATE_REQUIRED_ERROR,
+  resolveVaReferenceMode,
   vaProcessLocalStateAllowed,
+  type VaReferenceMode,
 } from "./runtime-state";
+import {
+  isCircuitOpen,
+  recordCircuitFailure,
+  recordCircuitSuccess,
+} from "./circuit-breaker";
 
 const DEFAULT_FORMS_BASE_URLS = {
   sandbox: "https://sandbox-api.va.gov/services/va_forms/v0",
@@ -34,18 +46,26 @@ type VaApiEnvironmentVariables = Record<string, string | undefined>;
 export type VaApiEnvironment = "sandbox" | "production";
 export type VaApiSource = "va-sandbox-api" | "va-production-api" | "local-fallback";
 
-export interface VaApiConfig {
+export type VaApiConfig = {
   enabled: boolean;
-  accreditedRepEnabled?: boolean;
+  /**
+   * Deliberate tri-state runtime mode required by issue #287. Derived, never
+   * read from a single variable, so `disabled` is the fail-closed default and
+   * `production` requires an explicit access acknowledgement.
+   */
+  mode: VaReferenceMode;
+  /** Auditable, non-sensitive explanation of how `mode` was resolved. */
+  modeReason: string;
   environment?: VaApiEnvironment;
   formsApiKey?: string;
   benefitsReferenceDataApiKey?: string;
-  accreditedRepresentativeApiKey?: string;
+  accreditedRepApiKey?: string;
   formsBaseUrl: string;
   benefitsReferenceDataBaseUrl: string;
-  accreditedRepresentativesBaseUrl?: string;
+  accreditedRepBaseUrl?: string;
   timeoutMs: number;
-}
+  accreditedRepEnabled?: boolean;
+} & Record<string, unknown>;
 
 /** Backward-compatible name retained for existing tests and callers. */
 export type VaSandboxConfig = VaApiConfig;
@@ -55,7 +75,14 @@ export interface VaApiObservation {
   service: "va-forms" | "benefits-reference-data" | "accredited-representatives";
   path: string;
   attempt: number;
-  outcome: "success" | "http-error" | "timeout" | "network-error" | "invalid-payload" | "rate-limited";
+  outcome:
+    | "success"
+    | "http-error"
+    | "timeout"
+    | "network-error"
+    | "invalid-payload"
+    | "rate-limited"
+    | "circuit-open";
   status?: number;
   durationMs: number;
 }
@@ -153,55 +180,27 @@ export type VaFormIndex = z.infer<typeof formsIndexSchema>;
 export type VaDisabilityReference = z.infer<typeof disabilityReferenceSchema>;
 export type VaServiceBranchReference = z.infer<typeof serviceBranchReferenceSchema>;
 
-const accreditedRepresentativeSchema = z.object({
-  id: z.string().min(1),
-  type: z.string().min(1).optional(),
-  attributes: z.object({
-    name: z.string().min(1),
-    organization: z.string().min(1).nullable().optional(),
-    accreditation_type: z.enum(["VSO", "agent", "attorney", "vso"]).or(z.string().min(1)),
-    phone: z.string().nullable().optional(),
-    website: z.string().url().nullable().optional().or(z.string().min(1).nullable().optional()),
-    address: z.string().nullable().optional(),
-    zip: z.string().nullable().optional(),
-    city: z.string().nullable().optional(),
-    state: z.string().nullable().optional(),
-    distance: z.number().nonnegative().nullable().optional(),
-  }).passthrough(),
-}).passthrough();
-
-const accreditedRepresentativesSchema = z.object({
-  data: z.array(accreditedRepresentativeSchema),
-}).passthrough();
-
-export type VaAccreditedRepresentativeIndex = z.infer<typeof accreditedRepresentativesSchema>;
-
-function requestedEnvironment(env: VaApiEnvironmentVariables): VaApiEnvironment {
-  return env.VA_API_ENV?.trim().toLowerCase() === "production"
-    ? "production"
-    : "sandbox";
-}
-
-function apiEnabled(
-  env: VaApiEnvironmentVariables,
-  environment: VaApiEnvironment,
-): boolean {
-  if (env.VA_API_ENABLED !== undefined) {
-    return env.VA_API_ENABLED === "true";
-  }
-  return environment === "sandbox" && env.VA_SANDBOX_ENABLED === "true";
-}
-
 export function loadVaApiConfig(
   env: VaApiEnvironmentVariables = process.env,
 ): VaApiConfig {
-  const environment = requestedEnvironment(env);
+  // Single deliberate tri-state decision point (issue #287): disabled | sandbox |
+  // production. Production additionally requires an explicit acknowledgement that
+  // VA granted production access, so the #287 gate rule cannot be bypassed by a
+  // lone VA_API_ENV/VA_API_ENABLED pair.
+  const resolution = resolveVaReferenceMode(env);
+  const environment = resolution.environment as VaApiEnvironment;
   const timeout = Number(env.VA_API_TIMEOUT_MS ?? env.VA_SANDBOX_TIMEOUT_MS ?? DEFAULT_TIMEOUT_MS);
-  const production = environment === "production";
+  // Credentials and endpoints follow the *effective* mode, never the merely
+  // requested environment. A production selection that failed closed must not
+  // carry production base URLs or production keys, so even a caller that forgot
+  // to check `enabled` cannot reach or be labelled as production.
+  const production = resolution.mode === "production";
+  const effectiveEnvironment: VaApiEnvironment = production ? "production" : "sandbox";
 
   return {
-    enabled: apiEnabled(env, environment),
-    accreditedRepEnabled: env.VA_ACCREDITED_REP_ENABLED === "true",
+    enabled: resolution.enabled,
+    mode: resolution.mode,
+    modeReason: resolution.reason,
     environment,
     formsApiKey: (
       production
@@ -213,7 +212,7 @@ export function loadVaApiConfig(
         ? env.VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY
         : env.VA_BENEFITS_REFERENCE_SANDBOX_API_KEY
     )?.trim() || undefined,
-    accreditedRepresentativeApiKey: (
+    accreditedRepApiKey: (
       production
         ? env.VA_ACCREDITED_REP_PRODUCTION_API_KEY
         : env.VA_ACCREDITED_REP_SANDBOX_API_KEY
@@ -222,19 +221,20 @@ export function loadVaApiConfig(
       (production
         ? env.VA_FORMS_PRODUCTION_BASE_URL
         : env.VA_FORMS_SANDBOX_BASE_URL)?.trim() ||
-      DEFAULT_FORMS_BASE_URLS[environment],
+      DEFAULT_FORMS_BASE_URLS[effectiveEnvironment],
     benefitsReferenceDataBaseUrl:
       (production
         ? env.VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL
         : env.VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL)?.trim() ||
-      DEFAULT_REFERENCE_BASE_URLS[environment],
-    accreditedRepresentativesBaseUrl:
+      DEFAULT_REFERENCE_BASE_URLS[effectiveEnvironment],
+    accreditedRepBaseUrl:
       (production
         ? env.VA_ACCREDITED_REP_PRODUCTION_BASE_URL
         : env.VA_ACCREDITED_REP_SANDBOX_BASE_URL)?.trim() ||
-      DEFAULT_ACCREDITED_REP_BASE_URLS[environment],
+      DEFAULT_ACCREDITED_REP_BASE_URLS[effectiveEnvironment],
     timeoutMs:
       Number.isFinite(timeout) && timeout > 0 ? Math.floor(timeout) : DEFAULT_TIMEOUT_MS,
+    accreditedRepEnabled: env.VA_ACCREDITED_REP_ENABLED === "true",
   };
 }
 
@@ -283,6 +283,8 @@ function validatedBaseUrl(
   }
 }
 
+const vaApiLogger = createLogger("va-api");
+
 async function requestVaJson<T>(args: {
   service: VaApiObservation["service"];
   apiKey?: string;
@@ -299,6 +301,30 @@ async function requestVaJson<T>(args: {
   }
   if (!vaProcessLocalStateAllowed()) {
     return fallback(VA_SHARED_STATE_REQUIRED_ERROR, environment);
+  }
+  if (isCircuitOpen(args.service)) {
+    const requestId = randomUUID();
+    const observation: VaApiObservation = {
+      requestId,
+      service: args.service,
+      path: args.path,
+      attempt: 1,
+      outcome: "circuit-open",
+      durationMs: 0,
+    };
+    args.observe?.(observation);
+    vaApiLogger.warn("va request blocked by circuit breaker", {
+      requestId,
+      service: args.service,
+      path: args.path,
+      outcome: "circuit-open",
+    });
+    recordVaApiError({ service: args.service, outcome: "circuit-open", environment });
+    return fallback(
+      `VA ${environment} ${args.service} is temporarily unavailable (circuit open). Using local reference fallback.`,
+      environment,
+      requestId,
+    );
   }
   if (!args.apiKey) {
     return fallback(
@@ -355,22 +381,44 @@ async function requestVaJson<T>(args: {
       });
 
       if (!response.ok) {
-        args.observe?.({
+        const durationMs = Date.now() - startedAt;
+        const observation: VaApiObservation = {
           requestId,
           service: args.service,
           path: endpoint.pathname,
           attempt,
           outcome: "http-error",
           status: response.status,
-          durationMs: Date.now() - startedAt,
+          durationMs,
+        };
+        args.observe?.(observation);
+        vaApiLogger.warn("va request http error", {
+          requestId,
+          service: args.service,
+          path: endpoint.pathname,
+          attempt,
+          outcome: "http-error",
+          status: response.status,
+          durationMs,
+          environment,
         });
+        recordVaApiLatency(durationMs, { service: args.service, outcome: "http-error", environment });
+        recordVaApiError({ service: args.service, outcome: "http-error", environment, status: response.status });
 
         // Do not immediately retry a 429; falling back reduces pressure on the
         // upstream rate limit. Only transient 503/504 responses get one delayed retry.
         if (attempt === 1 && RETRYABLE_STATUS.has(response.status)) {
+          vaApiLogger.info("va request retrying after transient error", {
+            requestId,
+            service: args.service,
+            path: endpoint.pathname,
+            attempt,
+            status: response.status,
+          });
           await sleep(VA_API_RETRY_DELAY_MS);
           continue;
         }
+        recordCircuitFailure(args.service);
         return fallback(
           `VA ${environment} request failed with status ${response.status}.`,
           environment,
@@ -380,27 +428,56 @@ async function requestVaJson<T>(args: {
 
       const parsed = args.schema.safeParse(await response.json());
       if (!parsed.success) {
-        args.observe?.({
+        const durationMs = Date.now() - startedAt;
+        const observation: VaApiObservation = {
           requestId,
           service: args.service,
           path: endpoint.pathname,
           attempt,
           outcome: "invalid-payload",
           status: response.status,
-          durationMs: Date.now() - startedAt,
+          durationMs,
+        };
+        args.observe?.(observation);
+        vaApiLogger.warn("va request invalid payload", {
+          requestId,
+          service: args.service,
+          path: endpoint.pathname,
+          attempt,
+          outcome: "invalid-payload",
+          status: response.status,
+          durationMs,
+          environment,
         });
+        recordVaApiLatency(durationMs, { service: args.service, outcome: "invalid-payload", environment });
+        recordVaApiError({ service: args.service, outcome: "invalid-payload", environment });
+        recordCircuitFailure(args.service);
         return fallback("VA API returned an invalid response payload.", environment, requestId);
       }
 
-      args.observe?.({
+      const durationMs = Date.now() - startedAt;
+      const observation: VaApiObservation = {
         requestId,
         service: args.service,
         path: endpoint.pathname,
         attempt,
         outcome: "success",
         status: response.status,
-        durationMs: Date.now() - startedAt,
+        durationMs,
+      };
+      args.observe?.(observation);
+      vaApiLogger.info("va request success", {
+        requestId,
+        service: args.service,
+        path: endpoint.pathname,
+        attempt,
+        outcome: "success",
+        status: response.status,
+        durationMs,
+        environment,
       });
+      recordVaApiLatency(durationMs, { service: args.service, outcome: "success", environment });
+      recordCircuitSuccess(args.service);
       return {
         success: true,
         data: parsed.data,
@@ -410,19 +487,41 @@ async function requestVaJson<T>(args: {
       };
     } catch (error) {
       const timedOut = error instanceof Error && error.name === "AbortError";
-      args.observe?.({
+      const durationMs = Date.now() - startedAt;
+      const outcome = timedOut ? "timeout" : "network-error";
+      const observation: VaApiObservation = {
         requestId,
         service: args.service,
         path: endpoint.pathname,
         attempt,
-        outcome: timedOut ? "timeout" : "network-error",
-        durationMs: Date.now() - startedAt,
+        outcome,
+        durationMs,
+      };
+      args.observe?.(observation);
+      vaApiLogger.warn(`va request ${outcome}`, {
+        requestId,
+        service: args.service,
+        path: endpoint.pathname,
+        attempt,
+        outcome,
+        durationMs,
+        environment,
       });
+      recordVaApiLatency(durationMs, { service: args.service, outcome, environment });
+      recordVaApiError({ service: args.service, outcome, environment });
 
       if (attempt === 1) {
+        vaApiLogger.info("va request retrying after network/timeout", {
+          requestId,
+          service: args.service,
+          path: endpoint.pathname,
+          attempt,
+          outcome,
+        });
         await sleep(VA_API_RETRY_DELAY_MS);
         continue;
       }
+      recordCircuitFailure(args.service);
       return fallback(
         timedOut
           ? `VA ${environment} request timed out.`
@@ -491,35 +590,76 @@ export async function fetchVaServiceBranches(
   });
 }
 
-export async function fetchVaAccreditedRepresentatives(
-  params: { zip: string; radiusMiles?: number; type?: string },
-  options: VaApiRequestOptions = {},
-): Promise<VaApiResult<VaAccreditedRepresentativeIndex>> {
-  const config = options.config ?? loadVaApiConfig();
-  const query = new URLSearchParams();
-  query.set("zip", params.zip);
-  if (params.radiusMiles !== undefined) query.set("radius", String(params.radiusMiles));
-  if (params.type) query.set("type", params.type);
+export interface AccreditedRepresentativeSearchParams {
+  zip: string;
+  radiusMiles?: number;
+  type?: "VSO" | "agent" | "attorney";
+}
 
-  // Accredited-rep locator has its own enable flag so it can be rolled out
-  // independently of forms/reference. Still subject to the generic VA_API_ENABLED
-  // and the distributed-runtime fail-closed gate inside requestVaJson.
+const accreditedRepItemSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  organization: z.string().min(1).nullable().optional(),
+  accreditationType: z.enum(["VSO", "agent", "attorney"]),
+  // Optional, free-form directory data (e.g. "PTSD claims", "Aid & Attendance").
+  // Rendered only when present — never fabricated locally.
+  specializations: z.array(z.string().min(1)).nullable().optional(),
+  phone: z.string().min(1).nullable().optional(),
+  website: z.string().url().nullable().optional(),
+  address: z.string().min(1).nullable().optional(),
+  zip: z.string().regex(/^\d{5}$/),
+  distanceMiles: z.number().nonnegative().nullable().optional(),
+}).passthrough();
+
+const accreditedRepIndexSchema = z.object({
+  data: z.array(accreditedRepItemSchema),
+}).passthrough();
+
+export type VaAccreditedRepIndex = z.infer<typeof accreditedRepIndexSchema>;
+export type VaAccreditedRepresentative = z.infer<typeof accreditedRepItemSchema>;
+
+export function normalizeAccreditedRepSearchParams(
+  params: AccreditedRepresentativeSearchParams,
+): Required<AccreditedRepresentativeSearchParams> | null {
+  const zip = params.zip.trim();
+  if (!/^\d{5}$/.test(zip)) return null;
+  const radius = params.radiusMiles ?? 50;
+  const allowedRadii = [25, 50, 100] as const;
+  const radiusMiles = (allowedRadii as readonly number[]).includes(radius) ? radius : 50;
+  const allowedTypes = new Set(["VSO", "agent", "attorney"]);
+  const type = params.type && allowedTypes.has(params.type) ? params.type : undefined;
+  return { zip, radiusMiles, type: type as "VSO" | "agent" | "attorney" | undefined } as Required<AccreditedRepresentativeSearchParams>;
+}
+
+export async function fetchVaAccreditedRepresentatives(
+  params: AccreditedRepresentativeSearchParams,
+  options: VaApiRequestOptions = {},
+): Promise<VaApiResult<VaAccreditedRepIndex>> {
+  const config = options.config ?? loadVaApiConfig();
+  const normalized = normalizeAccreditedRepSearchParams(params);
+  if (!normalized) {
+    return fallback<VaAccreditedRepIndex>("Zip must be 5 digits.", config.environment ?? "sandbox");
+  }
+  const query = new URLSearchParams();
+  query.set("zip", normalized.zip);
+  query.set("radius", String(normalized.radiusMiles));
+  if (normalized.type) query.set("type", normalized.type);
+
+  // Per-service flag in addition to generic VA_API_ENABLED — lets the locator
+  // roll independently of forms/reference during credential gating.
   if (!config.accreditedRepEnabled) {
-    return {
-      success: false,
-      data: null,
-      source: "local-fallback",
-      environment: config.environment ?? "sandbox",
-      error: "VA accredited-representative lookup is disabled by feature flag.",
-    };
+    return fallback<VaAccreditedRepIndex>(
+      "VA accredited-representative lookup is disabled by feature flag.",
+      config.environment ?? "sandbox",
+    );
   }
 
   return requestVaJson({
     service: "accredited-representatives",
-    apiKey: config.accreditedRepresentativeApiKey,
-    baseUrl: config.accreditedRepresentativesBaseUrl as string,
+    apiKey: config.accreditedRepApiKey,
+    baseUrl: (config.accreditedRepBaseUrl as string) ?? DEFAULT_ACCREDITED_REP_BASE_URLS[config.environment === "production" ? "production" : "sandbox"],
     path: "/representatives",
-    schema: accreditedRepresentativesSchema,
+    schema: accreditedRepIndexSchema,
     config,
     observe: options.observe,
     query,
