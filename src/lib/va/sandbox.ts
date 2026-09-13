@@ -39,7 +39,18 @@ const DEFAULT_TIMEOUT_MS = 4_000;
 const RETRYABLE_STATUS = new Set([503, 504]);
 export const VA_API_OUTBOUND_WINDOW_MS = 60_000;
 export const VA_API_OUTBOUND_MAX_REQUESTS_PER_SERVICE = 60;
-export const VA_API_RETRY_DELAY_MS = 100;
+export const VA_API_RETRY_BASE_DELAY_MS = 100;
+export const VA_API_RETRY_MAX_DELAY_MS = 400;
+export const VA_API_MAX_RETRIES = 2;
+/** @deprecated Use VA_API_RETRY_BASE_DELAY_MS; retained for test compatibility. */
+export const VA_API_RETRY_DELAY_MS = VA_API_RETRY_BASE_DELAY_MS;
+
+function vaApiRetryDelayMs(attempt: number): number {
+  return Math.min(
+    VA_API_RETRY_BASE_DELAY_MS * 2 ** (attempt - 1),
+    VA_API_RETRY_MAX_DELAY_MS,
+  );
+}
 
 type VaApiEnvironmentVariables = Record<string, string | undefined>;
 
@@ -348,7 +359,7 @@ async function requestVaJson<T>(args: {
   if (args.query) endpoint.search = args.query.toString();
   const requestId = randomUUID();
 
-  for (let attempt = 1; attempt <= 2; attempt += 1) {
+  for (let attempt = 1; attempt <= VA_API_MAX_RETRIES + 1; attempt += 1) {
     if (!claimOutboundRequestSlot(args.service)) {
       args.observe?.({
         requestId,
@@ -406,16 +417,22 @@ async function requestVaJson<T>(args: {
         recordVaApiError({ service: args.service, outcome: "http-error", environment, status: response.status });
 
         // Do not immediately retry a 429; falling back reduces pressure on the
-        // upstream rate limit. Only transient 503/504 responses get one delayed retry.
-        if (attempt === 1 && RETRYABLE_STATUS.has(response.status)) {
+        // upstream rate limit. Transient 503/504 responses are retried with
+        // exponential backoff (100ms, 200ms) up to VA_API_MAX_RETRIES attempts.
+        if (
+          attempt <= VA_API_MAX_RETRIES &&
+          RETRYABLE_STATUS.has(response.status)
+        ) {
+          const delayMs = vaApiRetryDelayMs(attempt);
           vaApiLogger.info("va request retrying after transient error", {
             requestId,
             service: args.service,
             path: endpoint.pathname,
             attempt,
             status: response.status,
+            delayMs,
           });
-          await sleep(VA_API_RETRY_DELAY_MS);
+          await sleep(delayMs);
           continue;
         }
         recordCircuitFailure(args.service);
@@ -510,15 +527,17 @@ async function requestVaJson<T>(args: {
       recordVaApiLatency(durationMs, { service: args.service, outcome, environment });
       recordVaApiError({ service: args.service, outcome, environment });
 
-      if (attempt === 1) {
+      if (attempt <= VA_API_MAX_RETRIES) {
+        const delayMs = vaApiRetryDelayMs(attempt);
         vaApiLogger.info("va request retrying after network/timeout", {
           requestId,
           service: args.service,
           path: endpoint.pathname,
           attempt,
           outcome,
+          delayMs,
         });
-        await sleep(VA_API_RETRY_DELAY_MS);
+        await sleep(delayMs);
         continue;
       }
       recordCircuitFailure(args.service);
