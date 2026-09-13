@@ -2,44 +2,17 @@
 
 import { useMemo, useSyncExternalStore } from "react";
 
-import { evidenceAnalysisStorageKey, type EvidenceAnalysis } from "@/lib/evidence/extract";
+import {
+  EMPTY_EVIDENCE_ANALYSES_SNAPSHOT,
+  getEvidenceAnalysesSnapshot,
+  parseStoredEvidenceAnalyses,
+  subscribeToEvidenceAnalyses,
+  useEvidenceAnalyses,
+} from "@/components/evidence/EvidenceAnalysesProvider";
 import {
   assessGapCoverage,
   type GapCoverageResult,
 } from "@/lib/evidence/gap-coverage";
-
-const EMPTY_SNAPSHOT = "[]";
-
-function getSnapshot(): string {
-  try {
-    return window.sessionStorage.getItem(evidenceAnalysisStorageKey) ?? EMPTY_SNAPSHOT;
-  } catch {
-    return EMPTY_SNAPSHOT;
-  }
-}
-
-function subscribe(): () => void {
-  // Evidence excerpts are written on Step 4 before this mounts on Step 6; the
-  // store does not change while the review page is open.
-  return () => undefined;
-}
-
-function parseAnalyses(raw: string): EvidenceAnalysis[] {
-  try {
-    const parsed = JSON.parse(raw) as unknown;
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter(
-      (item): item is EvidenceAnalysis =>
-        Boolean(
-          item &&
-            typeof item === "object" &&
-            (item as EvidenceAnalysis).version === 1,
-        ),
-    );
-  } catch {
-    return [];
-  }
-}
 
 interface Props {
   gap: string;
@@ -65,12 +38,28 @@ const CHIP: Record<GapCoverageResult["status"], { className: string; label: stri
 };
 
 export function EvidenceGapCoverage({ gap, conditionTerms }: Props) {
-  const snapshot = useSyncExternalStore(subscribe, getSnapshot, () => EMPTY_SNAPSHOT);
-  const coverage = useMemo(() => {
-    const analyses = parseAnalyses(snapshot);
-    if (analyses.length === 0) return null;
-    return assessGapCoverage(gap, analyses, conditionTerms);
-  }, [snapshot, gap, conditionTerms]);
+  // Step 6 renders one chip per authored evidence gap. The surrounding
+  // EvidenceAnalysesProvider parses the retained payload once, so this chip
+  // only consumes the shared analyses instead of re-parsing per gap. The local
+  // snapshot/parse remains as a fallback for a chip rendered without a
+  // provider.
+  const sharedAnalyses = useEvidenceAnalyses();
+  const snapshot = useSyncExternalStore(
+    subscribeToEvidenceAnalyses,
+    getEvidenceAnalysesSnapshot,
+    () => EMPTY_EVIDENCE_ANALYSES_SNAPSHOT,
+  );
+  const analyses = useMemo(
+    () => sharedAnalyses ?? parseStoredEvidenceAnalyses(snapshot),
+    [sharedAnalyses, snapshot],
+  );
+  const coverage = useMemo(
+    () =>
+      analyses.length === 0
+        ? null
+        : assessGapCoverage(gap, analyses, conditionTerms),
+    [analyses, gap, conditionTerms],
+  );
 
   if (coverage === null) {
     return (
