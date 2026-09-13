@@ -18,6 +18,7 @@ import {
   recordCircuitFailure,
   recordCircuitSuccess,
 } from "./circuit-breaker";
+import { isVaSharedCacheConfigured } from "./reference-shared-cache";
 
 const DEFAULT_FORMS_BASE_URLS = {
   sandbox: "https://sandbox-api.va.gov/services/va_forms/v0",
@@ -311,7 +312,13 @@ async function requestVaJson<T>(args: {
     return fallback(`VA ${environment} integration is disabled by feature flag.`, environment);
   }
   if (!vaProcessLocalStateAllowed()) {
-    return fallback(VA_SHARED_STATE_REQUIRED_ERROR, environment);
+    // Finding #3: process-local cache/budget has low hit rate in serverless.
+    // When an optional shared KV cache is configured, reference-data fetches
+    // are allowed in distributed runtimes — the shared cache provides cross-
+    // instance coordination (per-process rate limit + circuit breaker still apply).
+    if (!isVaSharedCacheConfigured()) {
+      return fallback(VA_SHARED_STATE_REQUIRED_ERROR, environment);
+    }
   }
   if (isCircuitOpen(args.service)) {
     const requestId = randomUUID();

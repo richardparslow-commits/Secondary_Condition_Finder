@@ -122,11 +122,31 @@ Those variables alone do **not** authorize a production request under the curren
 
 ## Reference caching and status
 
-Forms search, disability terminology, service-branch, and accredited-representative reference loaders share a bounded five-minute **process-local** cache only during single-process non-production execution. The cache is an optimization, not an authoritative freshness or safety control. It is disabled in production and known distributed/serverless runtimes so a warm instance cannot be mistaken for a deployment-wide cache.
+Forms search, disability terminology, service-branch, and accredited-representative reference loaders share a bounded five-minute cache. There are two tiers (all best-effort, non-authoritative):
+
+- **Tier 1 — process-local LRU-32 / 5-min** (`src/lib/va/reference-cache.ts`): always checked first; `write` on every live fetch; disabled in production/distributed so a warm instance cannot be mistaken for a deployment-wide cache (unless tier 2 is configured, see below).
+- **Tier 2 — optional shared KV / edge cache** (`src/lib/va/reference-shared-cache.ts`): checked second on a `process-local miss`, and populated (best-effort `SET … EX 300`) on every live fetch. Uses a Redis-compatible **REST** API (Upstash Redis REST / Vercel KV) so it works from Node and edge/serverless runtimes without a TCP connection. Disabled when not configured — then behavior is unchanged from the process-local-only baseline.
+
+When the shared KV is **configured**, the `requestVaJson` distributed-runtime gate in `src/lib/va/sandbox.ts` no longer blocks live VA fetches in production/Vercel — the shared cache provides the cross-instance coordination that the production fail-closed required. The per-process outbound budget (`60/min`) and circuit breaker (`5 → open 60s → half-open`) still apply per-instance. Without a shared KV, production/distributed still fails closed to local fallback, and the shared cache is simply not consulted.
+
+The shared KV is wired into every reference loader (`forms-finder`, `form-reference`, `disability-reference`, `service-branches`, `accredited-representatives`) as `process-local hit` → `shared hit (rehydrate process-local, return)` → `live fetch` → `write both`. Shared reads/writes are best-effort with a `750ms` timeout, `256 KiB` value guard, and never throw — a KV hiccup just degrades to the next tier or to the local fallback.
+
+Configuration — configure **one** URL+token pair (all aliases are equivalent; use whichever your provider sets):
+
+```text
+VA_REFERENCE_SHARED_CACHE_URL=https://<id>.upstash.io
+VA_REFERENCE_SHARED_CACHE_TOKEN=<server-only REST token>
+VA_REFERENCE_SHARED_CACHE_PREFIX=va:ref:   # optional, default "va:ref:"
+# Aliases: VA_REFERENCE_KV_REST_URL / VA_REFERENCE_KV_REST_TOKEN
+#          UPSTASH_REDIS_REST_URL   / UPSTASH_REDIS_REST_TOKEN  (Vercel Upstash integration)
+#          KV_REST_API_URL          / KV_REST_API_TOKEN         (legacy Vercel KV)
+```
+
+The token must stay **server-only** (never `NEXT_PUBLIC_*`). `loadVaSharedCacheConfig()` validates the URL is `https:` and the key prefix defaults to `va:ref:`; `isVaSharedCacheConfigured()` is the gate used by both the loader fallback and the sandbox's production bypass. No adapter, schema, or page contract changed — only where a hit can be served from.
 
 User-facing reference pages expose only non-sensitive status: source label, environment, last successful retrieval time, and cache hit/miss state. Credentials, response payloads, and user workflow selections are never included in this status surface.
 
-Local fallback responses are not retained as successful VA cache entries. This allows a later single-process request to recover immediately when upstream access becomes available.
+Local fallback responses are not retained as successful VA cache entries in either tier. This allows a later request to recover immediately when upstream access becomes available.
 
 ## Product boundaries
 
