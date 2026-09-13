@@ -16,6 +16,15 @@ function validationPath(code: "select-location" | "date-order" | "invalid-date")
   return `/presumptive?error=${code}`;
 }
 
+/**
+ * Save service branch, location, and date information for presumptive eligibility.
+ *
+ * Form fields: `serviceBranchCode` (string|string[]), `location` (string|string[]),
+ * `serviceStart` (ISO date), `serviceEnd` (ISO date, must be after start).
+ * Success: redirect to /presumptive/results.
+ * Errors: select-location, date-order, invalid-date (via ?error= on /presumptive).
+ * See docs/api-specification.md for full contract.
+ */
 export async function saveServiceHistory(formData: FormData): Promise<void> {
   const parsed = serviceHistorySchema.safeParse({
     serviceBranchCodes: formData

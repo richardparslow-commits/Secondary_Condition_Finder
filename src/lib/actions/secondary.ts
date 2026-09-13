@@ -75,6 +75,14 @@ function validateContext(formData: FormData): void {
   }
 }
 
+/**
+ * Save diagnosed condition selections.
+ *
+ * Form fields: `diagnosed` (string|string[]) — one or more catalog condition IDs.
+ * Success: redirect to /secondary/service-connected.
+ * Error: redirect to /secondary/diagnosed?error=select-diagnosed.
+ * See docs/api-specification.md for full contract.
+ */
 export async function saveDiagnosedSelection(formData: FormData): Promise<void> {
   if (nonEmptyValues(formData, "diagnosed").length === 0) {
     redirectValidation("/secondary/diagnosed", "select-diagnosed");
@@ -98,6 +106,14 @@ export async function saveDiagnosedSelection(formData: FormData): Promise<void> 
   redirect("/secondary/service-connected");
 }
 
+/**
+ * Save service-connected selections for diagnosed conditions.
+ *
+ * Form fields: `serviceConnected-{id}` ("yes"|"no") per diagnosed condition.
+ * Success: redirect to /secondary/ratings.
+ * Errors: select-diagnosed, answer-service-connected, no-service-connected.
+ * See docs/api-specification.md for full contract.
+ */
 export async function saveServiceConnectedSelection(formData: FormData): Promise<void> {
   const catalog = loadConditionCatalog();
   const current = await readSecondaryWorkflowSession();
@@ -170,6 +186,14 @@ export async function saveServiceConnectedSelection(formData: FormData): Promise
   redirect("/secondary/ratings");
 }
 
+/**
+ * Save disability ratings for service-connected conditions.
+ *
+ * Form fields: `rating-{id}` (string) — integer 0-100 or "decline" per condition.
+ * Success: redirect to /secondary/upload.
+ * Errors: no-service-connected, select-rating, invalid-rating.
+ * See docs/api-specification.md for full contract.
+ */
 export async function saveRatingsSelection(formData: FormData): Promise<void> {
   const catalog = loadConditionCatalog();
   const current = await readSecondaryWorkflowSession();
@@ -213,6 +237,15 @@ export async function saveRatingsSelection(formData: FormData): Promise<void> {
   redirect("/secondary/upload");
 }
 
+/**
+ * Save document availability and optional context (medications, treatments, history).
+ *
+ * Form fields: `documentsShared` ("yes"|"no"), `medications`, `treatments`,
+ * `history` (newline-separated strings, max 20 entries × 160 chars each).
+ * Success: redirect to /secondary/suggestions.
+ * Errors: select-documents, invalid-context.
+ * See docs/api-specification.md for full contract.
+ */
 export async function saveDocumentsSelection(formData: FormData): Promise<void> {
   const documentsShared = formData.get("documentsShared");
   if (documentsShared !== "yes" && documentsShared !== "no") {
@@ -238,12 +271,20 @@ export async function saveDocumentsSelection(formData: FormData): Promise<void> 
   redirect("/secondary/suggestions");
 }
 
+/**
+ * Clear the secondary workflow session and redirect to the landing page.
+ * See docs/api-specification.md for full contract.
+ */
 export async function finishSecondaryWorkflow(): Promise<void> {
   await clearSecondaryWorkflowSession();
   auditLog("workflow-completed", { status: "success", route: "/secondary" });
   redirect("/secondary");
 }
 
+/**
+ * Clear the secondary workflow session and restart from the diagnosed step.
+ * See docs/api-specification.md for full contract.
+ */
 export async function restartSecondaryWorkflow(): Promise<void> {
   await clearSecondaryWorkflowSession();
   auditLog("workflow-restarted", { status: "success", route: "/secondary/diagnosed" });
