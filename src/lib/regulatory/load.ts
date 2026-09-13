@@ -22,9 +22,9 @@ async function readRegulatoryActionRegistry(): Promise<RegulatoryActionRegistry>
   for (const file of files) {
     const raw = JSON.parse(await fsp.readFile(path.join(REGULATORY_DIR, file), "utf8"));
     const parsed = regulatoryActionSchema.safeParse(raw);
-    if (!parsed.success) throw new Error(`Invalid regulatory action in ${file}: ${parsed.error.message}`);
+    if (!parsed.success) { console.error(`[regulatory] Invalid regulatory action in ${file}:`, parsed.error.message); throw new Error(`Invalid regulatory action in ${file}: ${parsed.error.message}`); }
     const expected = path.basename(file, ".json").toUpperCase();
-    if (parsed.data.rin !== expected) throw new Error(`Regulatory action id mismatch in ${file}: RIN is ${parsed.data.rin}, expected ${expected}.`);
+    if (parsed.data.rin !== expected) { console.error(`[regulatory] Regulatory action id mismatch in ${file}: RIN is ${parsed.data.rin}, expected ${expected}.`); throw new Error(`Regulatory action id mismatch in ${file}: RIN is ${parsed.data.rin}, expected ${expected}.`); }
     actions.push(parsed.data);
   }
 
@@ -56,9 +56,9 @@ export function loadRegulatoryActionRegistry(): RegulatoryActionRegistry {
   const actions: RegulatoryAction[] = files.map((file) => {
     const raw = JSON.parse(fs.readFileSync(path.join(REGULATORY_DIR, file), "utf8"));
     const parsed = regulatoryActionSchema.safeParse(raw);
-    if (!parsed.success) throw new Error(`Invalid regulatory action in ${file}: ${parsed.error.message}`);
+    if (!parsed.success) { console.error(`[regulatory] Invalid regulatory action in ${file}:`, parsed.error.message); throw new Error(`Invalid regulatory action in ${file}: ${parsed.error.message}`); }
     const expected = path.basename(file, ".json").toUpperCase();
-    if (parsed.data.rin !== expected) throw new Error(`Regulatory action id mismatch in ${file}: RIN is ${parsed.data.rin}, expected ${expected}.`);
+    if (parsed.data.rin !== expected) { console.error(`[regulatory] Regulatory action id mismatch in ${file}: RIN is ${parsed.data.rin}, expected ${expected}.`); throw new Error(`Regulatory action id mismatch in ${file}: RIN is ${parsed.data.rin}, expected ${expected}.`); }
     return parsed.data;
   });
 
