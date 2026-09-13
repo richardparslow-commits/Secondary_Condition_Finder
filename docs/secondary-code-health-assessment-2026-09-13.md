@@ -277,3 +277,44 @@ This addendum formally closes the separate performance assessment findings **#4*
 - The version-controlled copy is `docs/secondary-code-health-assessment-2026-09-13.md`; the Desktop original at `~/Desktop/secondary-code-health-assessment-2026-09-13.md` is to be synced with this version after merge, same as the first addendum.
 - Any future VA reference change should keep `form-reference.ts` on the shared `reference-cache` path and should not move `/va-forms` away from `force-dynamic` without re-establishing the 5-min cache contract.
 
+---
+
+## Addendum — 2026-09-13 (Performance finding #6): Cold-start sync filesystem reads — remediation on `main`
+
+This addendum closes performance finding **#6**"Synchronous filesystem reads on request path can block event loop during cold starts" (`src/lib/catalog/load.ts:21-31`, `src/lib/kb/load.ts:29-37`, `src/lib/presumptive/load.ts:25-33`, `src/lib/regulatory/load.ts:15-18`).
+
+### Diagnosis
+
+Each of the four loaders (`loadConditionCatalog`, `loadKnowledgeBase`, `loadExposureCatalog`, `loadRegulatoryActionRegistry`) did `readdirSync` + N × `readFileSync` + Zod + cross-catalog validation inside the first user's request handler (cold Lambda/Vercel start, cache reset, test reload). `data/knowledge-base` holds 800+ JSON files; blocking the entire Node worker for that wall-clock hurts first-request TTFB and couples cold-start latency to file count.
+
+### Remediation (keeps existing sync contract; adds async startup preload)
+
+- **Async variants with promise dedup** added to all four loaders: `loadConditionCatalogAsync`, `loadKnowledgeBaseAsync`, `loadExposureCatalogAsync`, `loadRegulatoryActionRegistryAsync` plus `loadPublishedMappingIdsAsync`. Each shares the same module-level `cached`/`inflight` as its sync sibling so the first writer wins. Concurrent calls while `inflight` is pending return the same promise (no `N × file-count` parallel-read fanout). Cached hits return via `Promise.resolve(cached)` so they are microtask-fast. Test seams now reset both `cached` and `inflight` (`resetConditionCatalogCache` etc.). The async path uses `fs/promises` (`readdir`/`readFile`/`access`) — no blocking work on the event loop.
+- **New module `src/lib/data/preload.ts`** — `warmupDataCaches()` / `awaitDataWarmup()` / `resetDataWarmupState()`. Loads catalog first (KB cross-validates against it), then `Promise.all([KB, presumptives, regulatory])`. Best-effort: logs on failure but never throws, so the sync fallback remains. Idempotent via `warmupStarted` dedupe. `doWarmup` timing is logged as `[data-preload] warmup complete in Nms` for cold-start observability.
+- **`src/instrumentation.ts` `register()`** — now fire-and-forgets `import("@/lib/data/preload").then(({warmupDataCaches}) => warmupDataCaches())`. `register()` is the Next.js server-startup hook that runs once per worker before any request, so a completed warmup turns the first `force-dynamic` request (Step 1/4/5, `/secondary/suggestions`, `/secondary/evidence`, `/presumptive/results`, etc.) into a pure memory hit. Dynamic import keeps the preload module out of the `next build` collection phase and avoids circular-eager loading; no `require()`.
+- **No request-path migration required.** Pages still call the sync `loadConditionCatalog()` etc.; the async warmup is purely an optimization that fills the same caches.  `preserve` of sync path avoids a wide `await` refactor and keeps `kb:validate` / `regulatory:validate` scripts and `vitest` suites on their existing sync contracts.
+- **Tests:** `tests/data-preload.test.ts` (6 cases) — all four caches populated after warmup, same cache object between async and sync paths, concurrent-warmup dedupe, `awaitDataWarmup` no-op before start, `instrumentation.ts` hook assertion (`import("@/lib/data/preload")`, no `require`), and per-loader `inflight` promise dedupe + reset.
+- **Build note:** remediation follows the issue's second suggestion — "async startup preload; keep in-memory cache but reduce sync work in first user request." A full build-time artifact generation (pre-validated JSON blob) remains a compatible future step — the async warmup already isolates filesystem + parse + validation, so a future artifact can replace just `readCatalog()`/`readKnowledgeBase()` with a single `readFile` of the generated artifact without touching pages. The current fix delivers the cold-start win with minimal churn and zero spec risk.
+
+### Verification
+
+- `tsc --noEmit` `0` · `next build` `14 routes` (ƒ) + proxy · `vitest` `222/222` `1314/1314` including `data-preload` `6/6` — confirmed on `HEAD` before this commit via `npx vitest run --reporter=dot` (full suite) and `npx vitest run tests/data-preload.test.ts`.
+- `warmup complete in ~1.5–4.8s` observed in `vitest` run — consistent with warm `fs/promises` on the runner; production cold-start savings scale with the prior sync blocking wall-clock it replaces.
+- `Vercel` and `verify`/`verify-regulatory-intelligence` gates are unaffected — warmup runs only in the Node server runtime via `instrumentation.ts` (not in edge), and no page moves away from `force-dynamic` or changes its data contract.
+
+### Code anchors (`main` after this PR)
+
+- `src/lib/catalog/load.ts` — `loadConditionCatalogAsync`, shared `cached`/`inflight`, `fs/promises` in `readCatalog()`
+- `src/lib/kb/load.ts` — `loadKnowledgeBaseAsync` + `loadPublishedMappingIdsAsync`, `readKnowledgeBase` awaits `loadConditionCatalogAsync()` for validation, shared caches
+- `src/lib/presumptive/load.ts` — `loadExposureCatalogAsync`, `fs/promises` in `readExposureCatalog()`
+- `src/lib/regulatory/load.ts` — `loadRegulatoryActionRegistryAsync`, `fsp.access` + `fsp.readdir`/`readFile` in `readRegulatoryActionRegistry()`
+- `src/lib/data/preload.ts` — `warmupDataCaches` / `awaitDataWarmup` / `resetDataWarmupState`
+- `src/instrumentation.ts` — `import("@/lib/data/preload")` in `register()`
+- `tests/data-preload.test.ts` — contract for finding #6
+
+### Close-out
+
+- Finding **#6** is **CLOSED** — implemented via instrumentation warmup + async preload, verified by `typecheck` + `build` + `vitest` `222/222`.
+- The sync loaders remain the request-path entry points; no page required an `await` migration.
+- If a future build-time artifact is desired, it should replace the filesystem-scan helpers (`readCatalog` etc.) with a single artifact read while keeping `warmupDataCaches` and the `register()` hook unchanged.
+
