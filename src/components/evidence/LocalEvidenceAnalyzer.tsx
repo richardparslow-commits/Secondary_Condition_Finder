@@ -334,22 +334,25 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     const nextWarnings: string[] = [];
     let remainingBatchBytes = limits.batchBytes;
     let processed = 0;
-    for (const row of targets) {
-      const result = await analyzeOneFile(row, remainingBatchBytes);
-      nextWarnings.push(...result.warnings);
-      processed += result.processed;
-      remainingBatchBytes -= result.skipped ? 0 : Math.min(row.file.size, limits.batchBytes);
-      if (!result.skipped) setRowOutcome(row.id, result.hint);
-    }
+    try {
+      for (const row of targets) {
+        const result = await analyzeOneFile(row, remainingBatchBytes);
+        nextWarnings.push(...result.warnings);
+        processed += result.processed;
+        remainingBatchBytes -= result.skipped ? 0 : Math.min(row.file.size, limits.batchBytes);
+        if (!result.skipped) setRowOutcome(row.id, result.hint);
+      }
 
-    setWarnings(nextWarnings);
-    setMessage(
-      processed > 0
-        ? `Analyzed ${processed} document${processed === 1 ? "" : "s"} locally in this browser tab.`
-        : "No document produced extractable text or passed the active limits.",
-    );
-    busyRef.current = false;
-    setBusy(false);
+      setWarnings(nextWarnings);
+      setMessage(
+        processed > 0
+          ? `Analyzed ${processed} document${processed === 1 ? "" : "s"} locally in this browser tab.`
+          : "No document produced extractable text or passed the active limits.",
+      );
+    } finally {
+      busyRef.current = false;
+      setBusy(false);
+    }
   }
 
   async function reprocessFile(id: number, nextCredential: ClinicianCredential) {
@@ -362,20 +365,23 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     setWarnings([]);
     setMessage(null);
 
-    const updated = { ...row, credential: nextCredential };
-    setPending((current) =>
-      current.map((item) => (item.id === id ? updated : item)),
-    );
-    const result = await analyzeOneFile(updated, Number.MAX_SAFE_INTEGER);
-    setWarnings(result.warnings);
-    setRowOutcome(id, result.hint);
-    setMessage(
-      result.processed > 0
-        ? `Re-analyzed ${updated.sourceName} locally with the selected author.`
-        : `${updated.sourceName} produced no new analysis under the selected author.`,
-    );
-    busyRef.current = false;
-    setBusy(false);
+    try {
+      const updated = { ...row, credential: nextCredential };
+      setPending((current) =>
+        current.map((item) => (item.id === id ? updated : item)),
+      );
+      const result = await analyzeOneFile(updated, Number.MAX_SAFE_INTEGER);
+      setWarnings(result.warnings);
+      setRowOutcome(id, result.hint);
+      setMessage(
+        result.processed > 0
+          ? `Re-analyzed ${updated.sourceName} locally with the selected author.`
+          : `${updated.sourceName} produced no new analysis under the selected author.`,
+      );
+    } finally {
+      busyRef.current = false;
+      setBusy(false);
+    }
   }
 
   async function runLocalOcr(id: number) {
