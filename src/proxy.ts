@@ -1,5 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import {
+  extractClientKey,
+  healthLimiter,
+  regulatoryPreflightLimiter,
+  workflowSessionLimiter,
+} from "@/lib/rate-limiter";
+
 function buildContentSecurityPolicy(nonce: string): string {
   const isDevelopment = process.env.NODE_ENV === "development";
   const scriptSource = [
@@ -44,6 +51,63 @@ export function proxy(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-nonce", nonce);
   requestHeaders.set("Content-Security-Policy", contentSecurityPolicy);
+
+  // --- Application-level rate limiting (defense-in-depth behind edge WAF) ---
+  const clientKey = extractClientKey(requestHeaders);
+  const url = new URL(request.url);
+  const method = request.method;
+
+  // Server Action POSTs (Next.js form submissions to pages with server-only
+  // directives) are rate-limited as workflow session writes.
+  if (method === "POST" && !url.pathname.startsWith("/_next")) {
+    const result = workflowSessionLimiter.check(clientKey);
+    if (result.limited) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(result.retryAfterSeconds),
+            "Content-Security-Policy": contentSecurityPolicy,
+          },
+        },
+      );
+    }
+  }
+
+  // Regulatory preflight sync (authenticated, expensive upstream refresh)
+  if (url.pathname === "/api/regulatory/preflight") {
+    const result = regulatoryPreflightLimiter.check(clientKey);
+    if (result.limited) {
+      return NextResponse.json(
+        { ok: false, error: "Rate limit exceeded. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(result.retryAfterSeconds),
+            "Content-Security-Policy": contentSecurityPolicy,
+          },
+        },
+      );
+    }
+  }
+
+  // Health endpoint (public, lightweight but should not be hammered)
+  if (url.pathname === "/api/health") {
+    const result = healthLimiter.check(clientKey);
+    if (result.limited) {
+      return NextResponse.json(
+        { status: "rate_limited" },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(result.retryAfterSeconds),
+            "Content-Security-Policy": contentSecurityPolicy,
+          },
+        },
+      );
+    }
+  }
 
   const response = NextResponse.next({
     request: {
