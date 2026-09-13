@@ -104,11 +104,11 @@ export function PathwayEvidenceMapper({ results, recommendations }: Props) {
   const snapshot = useSyncExternalStore(subscribe, getSnapshot, () => EMPTY_SNAPSHOT);
   const analyses = useMemo(() => parseAnalyses(snapshot), [snapshot]);
   const hasAnalyses = analyses.length > 0;
+  const mappedRows = useMemo(() => mapEvidenceToPathways(results, analyses), [results, analyses]);
 
   const rowsByCondition = useMemo(() => {
-    const rows = mapEvidenceToPathways(results, analyses);
     const grouped = new Map<string, { conditionName: string; rows: PathwayEvidenceRow[] }>();
-    for (const row of rows) {
+    for (const row of mappedRows) {
       let group = grouped.get(row.conditionId);
       if (!group) {
         group = { conditionName: row.conditionName, rows: [] };
@@ -117,12 +117,12 @@ export function PathwayEvidenceMapper({ results, recommendations }: Props) {
       group.rows.push(row);
     }
     return [...grouped.values()];
-  }, [results, analyses]);
+  }, [mappedRows]);
 
   const hasRows = rowsByCondition.length > 0;
 
   function downloadMapping() {
-    const content = formatPathwayEvidenceMapping(mapEvidenceToPathways(results, analyses));
+    const content = formatPathwayEvidenceMapping(mappedRows);
     const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
     const objectUrl = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
@@ -135,7 +135,7 @@ export function PathwayEvidenceMapper({ results, recommendations }: Props) {
   }
 
   function downloadCombinedExport() {
-    const mapping = formatPathwayEvidenceMapping(mapEvidenceToPathways(results, analyses));
+    const mapping = formatPathwayEvidenceMapping(mappedRows);
     // The summary portion uses the exact same privacy-stripped formatter and
     // inputs as the standalone ConsultationSummaryDownload above.
     const combined = combineMappingWithClaimSummary(mapping, formatClaimSummary(recommendations, []));

@@ -1,19 +1,29 @@
 import type { KnowledgeBase, ConditionMapping } from "./schema";
 
+const publishedMappingsCache = new WeakMap<KnowledgeBase, [string, ConditionMapping][]>();
+const mappedConditionIdsCache = new WeakMap<KnowledgeBase, string[]>();
+const secondaryTargetIndexCache = new WeakMap<KnowledgeBase, [string, string[]][]>();
+
 /** Published mappings, keyed by catalog id. Excludes drafts. */
 export function publishedMappings(
   kb: KnowledgeBase,
 ): Map<string, ConditionMapping> {
-  return new Map(
-    kb.filter((mapping) => !mapping.draft).map((mapping) => [mapping.id, mapping]),
-  );
+  const cached = publishedMappingsCache.get(kb);
+  if (cached) return new Map(cached);
+  const mappings = kb
+    .filter((mapping) => !mapping.draft)
+    .map((mapping) => [mapping.id, mapping] as [string, ConditionMapping]);
+  publishedMappingsCache.set(kb, mappings);
+  return new Map(mappings);
 }
 
 /** Ids that have published mappings, so intake can show which are covered. */
 export function mappedConditionIds(kb: KnowledgeBase): Set<string> {
-  return new Set(
-    kb.filter((mapping) => !mapping.draft).map((mapping) => mapping.id),
-  );
+  const cached = mappedConditionIdsCache.get(kb);
+  if (cached) return new Set(cached);
+  const ids = kb.filter((mapping) => !mapping.draft).map((mapping) => mapping.id);
+  mappedConditionIdsCache.set(kb, ids);
+  return new Set(ids);
 }
 
 /** Draft mappings awaiting human-authored content. For tooling and review. */
@@ -29,6 +39,10 @@ export function draftMappings(kb: KnowledgeBase): ConditionMapping[] {
  * cross-link panel); it is never fed into recommend().
  */
 export function secondaryTargetIndex(kb: KnowledgeBase): Map<string, string[]> {
+  const cached = secondaryTargetIndexCache.get(kb);
+  if (cached) {
+    return new Map(cached.map(([conditionId, primaryIds]) => [conditionId, [...primaryIds]]));
+  }
   const index = new Map<string, string[]>();
   for (const mapping of kb) {
     if (mapping.draft) continue;
@@ -42,5 +56,8 @@ export function secondaryTargetIndex(kb: KnowledgeBase): Map<string, string[]> {
     }
   }
   for (const entry of index.values()) entry.sort();
-  return index;
+  const entries: [string, string[]][] = [...index.entries()]
+    .map(([conditionId, primaryIds]) => [conditionId, [...primaryIds]]);
+  secondaryTargetIndexCache.set(kb, entries);
+  return new Map(entries.map(([conditionId, primaryIds]) => [conditionId, [...primaryIds]]));
 }

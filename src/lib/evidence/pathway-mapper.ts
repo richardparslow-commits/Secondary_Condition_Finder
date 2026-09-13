@@ -84,16 +84,33 @@ function normalizeTerm(value: string): string {
   return value.toLocaleLowerCase().replace(/[^a-z0-9]+/g, "");
 }
 
-function excerptMatchesPrimary(
-  matchedTerms: string[],
-  primaryTerms: string[],
-): boolean {
-  const candidates = primaryTerms.map(normalizeTerm).filter((term) => term.length > 0);
-  if (candidates.length === 0) return false;
-  return matchedTerms.some((term) => {
-    const normalized = normalizeTerm(term);
-    return normalized.length > 0 && candidates.includes(normalized);
-  });
+interface IndexedExcerpt {
+  analysis: EvidenceAnalysis;
+  index: number;
+  sequence: number;
+}
+
+function indexExcerptsByMatchedTerm(analyses: readonly EvidenceAnalysis[]): Map<string, IndexedExcerpt[]> {
+  const index = new Map<string, IndexedExcerpt[]>();
+  let sequence = 0;
+  for (const analysis of analyses) {
+    for (let excerptIndex = 0; excerptIndex < analysis.excerpts.length; excerptIndex += 1) {
+      const excerpt = analysis.excerpts[excerptIndex];
+      const entry: IndexedExcerpt = { analysis, index: excerptIndex, sequence };
+      sequence += 1;
+      const normalizedTerms = new Set(
+        excerpt.matchedTerms
+          .map(normalizeTerm)
+          .filter((term) => term.length > 0),
+      );
+      for (const term of normalizedTerms) {
+        const entries = index.get(term);
+        if (entries) entries.push(entry);
+        else index.set(term, [entry]);
+      }
+    }
+  }
+  return index;
 }
 
 /**
@@ -146,6 +163,7 @@ export function mapEvidenceToPathways(
   results: readonly { conditionId: string; conditionName: string; recommendation: Recommendation | null }[],
   analyses: readonly EvidenceAnalysis[],
 ): PathwayEvidenceRow[] {
+  const excerptsByMatchedTerm = indexExcerptsByMatchedTerm(analyses);
   const rows: PathwayEvidenceRow[] = [];
 
   for (const result of results) {
@@ -153,7 +171,11 @@ export function mapEvidenceToPathways(
     if (!recommendation) continue;
 
     for (const primary of recommendation.contributingPrimaries) {
-      const primaryTerms = buildPrimaryConditionTerms(primary);
+      const primaryTerms = new Set(
+        buildPrimaryConditionTerms(primary)
+          .map(normalizeTerm)
+          .filter((term) => term.length > 0),
+      );
       const mechanismCategory = MECHANISM_CATEGORY_LABEL[
         primary.causalMechanism?.mechanismCategory as MechanismCategory
       ] ?? null;
@@ -164,27 +186,35 @@ export function mapEvidenceToPathways(
       const related: PathwayEvidenceExcerpt[] = [];
       const seen = new Set<string>();
 
-      for (const analysis of analyses) {
-        for (let index = 0; index < analysis.excerpts.length; index += 1) {
-          const excerpt = analysis.excerpts[index];
-          if (!excerptMatchesPrimary(excerpt.matchedTerms, primaryTerms)) continue;
-
-          const key = `${excerpt.category}:${excerpt.quote.toLocaleLowerCase()}:${excerpt.locator}`;
-          if (seen.has(key)) continue;
-          seen.add(key);
-
-          const rowExcerpt = toRowExcerpt(analysis, index);
-          if (theoryAllowsDirect(nexusClaim, excerpt.category, excerpt.strength, excerpt.clinicianAuthored)) {
-            direct.push(rowExcerpt);
-          } else if (SUPPORTING_CATEGORIES.has(excerpt.category)) {
-            supporting.push(rowExcerpt);
-          } else if (CAUSAL_CATEGORIES.has(excerpt.category)) {
-            related.push(rowExcerpt);
-          }
-          // Non-causal, non-supporting categories (e.g. alternative-cause in
-          // a claim theory that never allows direct support) fall into
-          // `related` via the causal check above; anything else is excluded.
+      const candidates = new Map<number, IndexedExcerpt>();
+      for (const term of primaryTerms) {
+        const excerpts = excerptsByMatchedTerm.get(term);
+        if (!excerpts) continue;
+        for (const indexedExcerpt of excerpts) {
+          candidates.set(indexedExcerpt.sequence, indexedExcerpt);
         }
+      }
+      const sortedCandidates = [...candidates.entries()]
+        .sort((a, b) => a[0] - b[0])
+        .map(([, value]) => value);
+      for (const indexedExcerpt of sortedCandidates) {
+        const excerpt = indexedExcerpt.analysis.excerpts[indexedExcerpt.index];
+
+        const key = `${excerpt.category}:${excerpt.quote.toLocaleLowerCase()}:${excerpt.locator}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+
+        const rowExcerpt = toRowExcerpt(indexedExcerpt.analysis, indexedExcerpt.index);
+        if (theoryAllowsDirect(nexusClaim, excerpt.category, excerpt.strength, excerpt.clinicianAuthored)) {
+          direct.push(rowExcerpt);
+        } else if (SUPPORTING_CATEGORIES.has(excerpt.category)) {
+          supporting.push(rowExcerpt);
+        } else if (CAUSAL_CATEGORIES.has(excerpt.category)) {
+          related.push(rowExcerpt);
+        }
+        // Non-causal, non-supporting categories (e.g. alternative-cause in
+        // a claim theory that never allows direct support) fall into
+        // `related` via the causal check above; anything else is excluded.
       }
 
       rows.push({
