@@ -17,7 +17,7 @@ import type {
 } from "@/components/secondary/ConditionTimelineVisualization";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
-import { recommend } from "@/lib/engine/recommend";
+import { recommendWithTracing } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import {
   loadLockedRegulatorySnapshot,
@@ -80,7 +80,10 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
 
   const medications = state.medications ?? [];
   const treatments = state.treatments ?? [];
-  const recommendationsResult = recommend(
+  // Traced via LangSmith when LANGSMITH_TRACING=true so Engine can cluster
+  // recommendation traces and — when the GitHub repo is connected — open
+  // automated diagnostic PRs. Falls through to sync recommend when disabled.
+  const recommendationsResult = await recommendWithTracing(
     catalog,
     kb,
     buildSecondaryRecommendationIntake(state),
