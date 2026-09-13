@@ -14,9 +14,10 @@ export default defineConfig({
   test: {
     environment: "node",
     include: ["tests/**/*.test.ts", "src/**/*.test.ts"],
-    // Render-heavy page tests and data-integrity suites sit close to the 5s
-    // default when the suite runs in parallel; observed flakes were timeout
-    // artifacts, not failures. A higher ceiling only affects slow tests.
-    testTimeout: 20_000,
+    // Data-integrity suites that read large JSON catalogs from disk sit
+    // below 10s after consolidation (data-preload ~8s, citation-verify ~6s).
+    // Lowered from 20s to catch regressions earlier; individual slow tests
+    // are documented in tests/data-preload.test.ts.
+    testTimeout: 10_000,
   },
 });
