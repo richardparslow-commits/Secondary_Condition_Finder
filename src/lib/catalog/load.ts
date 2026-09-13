@@ -29,12 +29,14 @@ async function readCatalog(): Promise<ConditionCatalog> {
     const parsed = catalogFileSchema.safeParse(JSON.parse(raw));
 
     if (!parsed.success) {
+      console.error(`[catalog] Invalid catalog file ${file}:`, parsed.error.message);
       throw new Error(`Invalid catalog file ${file}: ${parsed.error.message}`);
     }
 
     for (const condition of parsed.data.conditions) {
       const previous = seen.get(condition.id);
       if (previous) {
+        console.error(`[catalog] Duplicate condition id "${condition.id}" in ${file}; already defined in ${previous}.`);
         throw new Error(
           `Duplicate condition id "${condition.id}" in ${file}; already defined in ${previous}.`,
         );
@@ -96,12 +98,14 @@ export function loadConditionCatalog(): ConditionCatalog {
     const parsed = catalogFileSchema.safeParse(JSON.parse(raw));
 
     if (!parsed.success) {
+      console.error(`[catalog] Invalid catalog file ${file}:`, parsed.error.message);
       throw new Error(`Invalid catalog file ${file}: ${parsed.error.message}`);
     }
 
     for (const condition of parsed.data.conditions) {
       const previous = seen.get(condition.id);
       if (previous) {
+        console.error(`[catalog] Duplicate condition id "${condition.id}" in ${file}; already defined in ${previous}.`);
         throw new Error(
           `Duplicate condition id "${condition.id}" in ${file}; already defined in ${previous}.`,
         );

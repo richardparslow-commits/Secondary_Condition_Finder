@@ -32,6 +32,7 @@ async function readExposureCatalog(): Promise<ExposureCatalog> {
     const parsed = exposureCategorySchema.safeParse(JSON.parse(raw));
 
     if (!parsed.success) {
+      console.error(`[presumptive] Invalid exposure category in ${file}:`, parsed.error.message);
       throw new Error(
         `Invalid exposure category in ${file}: ${parsed.error.message}`,
       );
@@ -39,6 +40,7 @@ async function readExposureCatalog(): Promise<ExposureCatalog> {
 
     const expectedId = path.basename(file, ".json");
     if (parsed.data.id !== expectedId) {
+      console.error(`[presumptive] Exposure category id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`);
       throw new Error(
         `Exposure category id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`,
       );
@@ -80,6 +82,7 @@ export function loadExposureCatalog(): ExposureCatalog {
     const parsed = exposureCategorySchema.safeParse(JSON.parse(raw));
 
     if (!parsed.success) {
+      console.error(`[presumptive] Invalid exposure category in ${file}:`, parsed.error.message);
       throw new Error(
         `Invalid exposure category in ${file}: ${parsed.error.message}`,
       );
@@ -87,6 +90,7 @@ export function loadExposureCatalog(): ExposureCatalog {
 
     const expectedId = path.basename(file, ".json");
     if (parsed.data.id !== expectedId) {
+      console.error(`[presumptive] Exposure category id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`);
       throw new Error(
         `Exposure category id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`,
       );

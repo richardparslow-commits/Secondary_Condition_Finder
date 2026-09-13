@@ -38,11 +38,13 @@ async function readKnowledgeBase(): Promise<KnowledgeBase> {
     const parsed = conditionMappingSchema.safeParse(JSON.parse(raw));
 
     if (!parsed.success) {
+      console.error(`[knowledge-base] Invalid mapping in ${file}:`, parsed.error.message);
       throw new Error(`Invalid mapping in ${file}: ${parsed.error.message}`);
     }
 
     const expectedId = path.basename(file, ".json");
     if (parsed.data.id !== expectedId) {
+      console.error(`[knowledge-base] Mapping id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`);
       throw new Error(
         `Mapping id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`,
       );
@@ -87,11 +89,13 @@ export function loadKnowledgeBase(): KnowledgeBase {
     const parsed = conditionMappingSchema.safeParse(JSON.parse(raw));
 
     if (!parsed.success) {
+      console.error(`[knowledge-base] Invalid mapping in ${file}:`, parsed.error.message);
       throw new Error(`Invalid mapping in ${file}: ${parsed.error.message}`);
     }
 
     const expectedId = path.basename(file, ".json");
     if (parsed.data.id !== expectedId) {
+      console.error(`[knowledge-base] Mapping id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`);
       throw new Error(
         `Mapping id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`,
       );
