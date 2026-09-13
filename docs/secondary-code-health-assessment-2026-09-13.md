@@ -394,3 +394,41 @@ This is equivalent to "pre-index excerpts by matched term/category once, then ma
 - Finding **#2** is **CLOSED** — remediated in `4f2a521` (#432), verified still present on `78bac56` (no code change in this commit beyond this documentation; `vitest` 222/222 re-confirmed). The "nested loops at 145-214" evidence snippet now points at the indexed implementation, not the pre-#432 scan.
 - Any future pathway-mapping change should keep `indexExcerptsByMatchedTerm` (or an equivalent `Map<term, …>` pre-index) at the top of `mapEvidenceToPathways`; removing it re-introduces the `O(P × N)` client cost that extended retention (200 sources) exposes.
 
+---
+
+## Addendum — 2026-09-13 (Performance finding #3): Process-local caches may miss often in multi-instance/serverless — remediation on `main`
+
+This addendum closes performance finding **#3** "Process-local caches may miss often in multi-instance/serverless" (`src/lib/va/reference-cache.ts:27-33,76-83` — in-memory `Map` LRU-32, process-local hit rate drops when many Vercel/edge instances share the load; `vaProcessLocalStateAllowed()` had already forced a distributed fail-closed before any VA fetch).
+
+### Diagnosis
+
+- `reference-cache.ts` is intentionally process-local (`referenceCache = new Map<…, {value, expiresAt}>()`, `5min TTL`, `LRU-32`, `cacheStatus:"hit"|"miss"` contract). In a single process its hit rate is high — 6 distinct VA reference queries fit easily in 32 slots. On auto-scaled Vercel/Functions that promise breaks: each new instance starts with a cold in-memory cache, so the *deployment-wide* hit rate is `≈ 1 / instanceCount` and upstream VA Forms/Benefits Reference/accredited-rep calls multiply by the same factor.
+- Before this fix, the production/distributed boundary compounded it: `requestVaJson` in `sandbox.ts` returned `local-fallback` *before any credentialed fetch* when `vaProcessLocalStateAllowed() === false`, so no shared coordination was even reachable from production. The "optional shared cache layer (KV/edge cache)" remediation could not have helped until the gate was opened.
+
+### Remediation — optional shared KV / edge cache (zero-config backward-compatible)
+
+- **New module `src/lib/va/reference-shared-cache.ts` (`server-only`)** — Upstash Redis REST / Vercel KV-compatible client. Detects configuration from the canonical pair `VA_REFERENCE_SHARED_CACHE_URL` + `VA_REFERENCE_SHARED_CACHE_TOKEN` or any vendor alias (`VA_REFERENCE_KV_REST_*`, `UPSTASH_REDIS_REST_*`, `KV_REST_API_*` — the Vercel Upstash integration sets the `UPSTASH_*` pair automatically). Validates `https:` only, default key prefix `va:ref:`, `750ms` best-effort timeout, `256 KiB` value guard. `readVaSharedReferenceCache<T>(key)` → `POST [GET key]` → `{result: string}` → `JSON.parse`; `writeVaSharedReferenceCache<T>(key, view, ttl)` → `POST [SET key json EX sec]`. Never throws — network/timeout/`{error}` all degrade to `null` / no-op with a `va-shared-cache` warning. Uses `Buffer.byteLength` + `AbortController` + `Content-Type: application/json` — works from Node and edge/serverless without a TCP library.
+- **`src/lib/va/sandbox.ts` gate relaxed only when the shared KV is present:** `if (!vaProcessLocalStateAllowed()) { if (!isVaSharedCacheConfigured()) return fallback(…) }`. Without a KV, production/distributed still fails closed exactly as before (no new surface). With a KV, live VA fetches are allowed — the shared cache is now the cross-instance coordinator that the production fail-closed required; per-instance `60/min` budget + `circuit-breaker 5→open 60s→half-open` + `120s` Recommendations.gov preflight cache remain per-process.
+- **Every reference loader wired for `process-local → shared → live → write both`:** `forms-finder` (`forms:{env}:{query}`), `form-reference` (`forms:reference:{env}`), `disability-reference` (`disabilities:{env}`), `service-branches` (`service-branches:{env}`), `accredited-representatives` (`accredited-rep:{env}:{zip}:{radius}:{type}`). On a process-local miss, each does `await readVaSharedReferenceCache(key)` and on a shared hit rehydrates the process-local entry (`writeVaReferenceCache(key, sharedHit)`) before returning `hit` so the next same-process hit is instant; on a live fetch each does `writeVaReferenceCache(…)` (sync) + `void writeVaSharedReferenceCache(…)` (best-effort async, never blocks page `→ local-fallback` resolution). Local-fallback responses are never written to either tier.
+- **Docs:** `.env.example` shows the canonical + alias pairs; `docs/va-api-runtime-configuration.md` now has a two-tier "Reference caching and status" section explaining tier 1 (process-local LRU-32) + tier 2 (shared KV), the relaxed production gate, the `750ms`/`256 KiB`/best-effort contract, the prefix (`va:ref:`), and the loader wiring. No adapter, schema, or page contract changed — only hit-rate under scale.
+
+### Verification
+
+- `tsc --noEmit` `0` · `eslint` on the 7 touched files `0` · `next build` `14 routes` (ƒ) + proxy `0` · `vitest` `223/223` `1323/1323` (new `tests/va-shared-reference-cache.test.ts` 9/9: fail-closed when unconfigured, `http:` rejected, canonical/alias accepted + prefix default/override, `GET`/`SET EX` REST contract, graceful degradation on timeout/http/`{error}`, process-local rehydration on shared hit, distributed fetch blocked without KV vs allowed with KV, fallback still local on upstream failure; plus existing `va-distributed-state-boundary` 4/4, `medium-runtime-hardening` 7/7, `va-reference-product-surface` 6/6, `accredited-representative-locator` 7/7).
+- With no KV configured (current prod default), every new test on a previously-unconfigured snapshot stays green — the shared path is simply not entered. With a KV (verified via stubbed Vercel `UPSTASH_*` env + `fetch` mock), reference loaders collapse upstream calls to **once per `VA_REFERENCE_CACHE_TTL_MS` (5 min) per distinct reference key per deployment**, not per instance. Production's distributed fail-closed is lifted only by the KV presence — the prior safety property (no live production fetch without coordination) is preserved.
+
+### Code anchors (`main` after this PR)
+
+- `src/lib/va/reference-shared-cache.ts` — `loadVaSharedCacheConfig` / `isVaSharedCacheConfigured` / `read…` / `write…` (REST POST `[GET]`/`[SET … EX]`, `https:` guard, prefix)
+- `src/lib/va/sandbox.ts` — relaxed distributed gate when `isVaSharedCacheConfigured()`
+- `src/lib/va/forms-finder.ts` / `form-reference.ts` / `disability-reference.ts` / `service-branches.ts` / `accredited-representatives.ts` — `read` shared on miss + `void write` shared on success
+- `docs/va-api-runtime-configuration.md` — two-tier caching section + shared KV configuration block
+- `.env.example` — canonical + alias block for the KV
+- `tests/va-shared-reference-cache.test.ts` — contract for finding #3
+
+### Close-out
+
+- Finding **#3** is **CLOSED** — implemented via the optional shared KV/edge cache, verified by `typecheck` + `build` + `vitest` `223/223` with the new shared-cache contract suite.
+- The process-local LRU-32 stays the primary cache; the shared KV is optional. **Do not** remove the `process-local → shared → live` tier order — collapsing it would either re-introduce the multi-instance miss spike (`shared`-only `750ms` on every hit) or regress to `Map`-only (`shared` never read). Do not point the distributed gate at anything other than `isVaSharedCacheConfigured()` — the gate is the only thing separating "no live prod hit" from "prod hit coordinated by KV."
+- Future production activation should set the KV pair before enabling `VA_API_ENABLED=true` in a distributed runtime; the app will then serve VA reference data with deployment-wide 5-min sharing instead of instance-local churn.
+

@@ -4,9 +4,14 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import {
   clearVaReferenceCache,
   readVaReferenceCache,
+  VA_REFERENCE_CACHE_TTL_MS,
   type VaReferenceSourceStatus,
   writeVaReferenceCache,
 } from "./reference-cache";
+import {
+  readVaSharedReferenceCache,
+  writeVaSharedReferenceCache,
+} from "./reference-shared-cache";
 import {
   fetchVaDisabilityReference,
   loadVaApiConfig,
@@ -61,6 +66,11 @@ export async function loadDisabilityReference(
   if (useSharedCache) {
     const cached = readVaReferenceCache<DisabilityReferenceView>(cacheKey);
     if (cached) return { ...cached, cacheStatus: "hit" };
+    const sharedCached = await readVaSharedReferenceCache<DisabilityReferenceView>(cacheKey);
+    if (sharedCached) {
+      writeVaReferenceCache(cacheKey, sharedCached);
+      return { ...sharedCached, cacheStatus: "hit" };
+    }
   }
 
   const result = await fetcher();
@@ -91,7 +101,10 @@ export async function loadDisabilityReference(
     cacheStatus: "miss",
   };
 
-  if (useSharedCache) writeVaReferenceCache(cacheKey, view);
+  if (useSharedCache) {
+    writeVaReferenceCache(cacheKey, view);
+    void writeVaSharedReferenceCache(cacheKey, view, VA_REFERENCE_CACHE_TTL_MS);
+  }
   return view;
 }
 

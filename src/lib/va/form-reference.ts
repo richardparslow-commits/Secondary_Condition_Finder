@@ -1,7 +1,14 @@
+import "server-only";
+
 import {
   readVaReferenceCache,
+  VA_REFERENCE_CACHE_TTL_MS,
   writeVaReferenceCache,
 } from "./reference-cache";
+import {
+  readVaSharedReferenceCache,
+  writeVaSharedReferenceCache,
+} from "./reference-shared-cache";
 import {
   fetchVaForms,
   loadVaApiConfig,
@@ -53,6 +60,11 @@ export async function loadClaimFormReference(
   if (useSharedCache) {
     const cached = readVaReferenceCache<ClaimFormReference>(cacheKey);
     if (cached) return cached;
+    const sharedCached = await readVaSharedReferenceCache<ClaimFormReference>(cacheKey);
+    if (sharedCached) {
+      writeVaReferenceCache(cacheKey, sharedCached);
+      return sharedCached;
+    }
   }
 
   const result = await fetcher("21-526EZ");
@@ -78,6 +90,9 @@ export async function loadClaimFormReference(
       ? "This metadata came from the VA Forms production API. Confirm the form on VA.gov before filing because forms and revisions can change."
       : "This metadata came from the VA sandbox environment. Sandbox data is for testing and may not be current; confirm the form on VA.gov before filing.",
   };
-  if (useSharedCache) writeVaReferenceCache(cacheKey, view);
+  if (useSharedCache) {
+    writeVaReferenceCache(cacheKey, view);
+    void writeVaSharedReferenceCache(cacheKey, view, VA_REFERENCE_CACHE_TTL_MS);
+  }
   return view;
 }

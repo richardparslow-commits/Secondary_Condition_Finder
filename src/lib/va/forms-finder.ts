@@ -3,9 +3,14 @@ import "server-only";
 import {
   clearVaReferenceCache,
   readVaReferenceCache,
+  VA_REFERENCE_CACHE_TTL_MS,
   type VaReferenceSourceStatus,
   writeVaReferenceCache,
 } from "./reference-cache";
+import {
+  readVaSharedReferenceCache,
+  writeVaSharedReferenceCache,
+} from "./reference-shared-cache";
 import { fetchVaForms, loadVaApiConfig } from "./sandbox";
 
 export interface VaFormSearchItem {
@@ -48,6 +53,11 @@ export async function loadVaFormsFinder(
   const cacheKey = `forms:${environment}:${normalizedQuery.toLowerCase()}`;
   const cached = readVaReferenceCache<VaFormsFinderView>(cacheKey);
   if (cached) return { ...cached, cacheStatus: "hit" };
+  const sharedCached = await readVaSharedReferenceCache<VaFormsFinderView>(cacheKey);
+  if (sharedCached) {
+    writeVaReferenceCache(cacheKey, sharedCached);
+    return { ...sharedCached, cacheStatus: "hit" };
+  }
 
   const result = await fetchVaForms(normalizedQuery, { config });
 
@@ -93,6 +103,7 @@ export async function loadVaFormsFinder(
     cacheStatus: "miss",
   };
   writeVaReferenceCache(cacheKey, view);
+  void writeVaSharedReferenceCache(cacheKey, view, VA_REFERENCE_CACHE_TTL_MS);
   return view;
 }
 
