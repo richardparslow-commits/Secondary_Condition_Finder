@@ -290,7 +290,12 @@ describe("workflow preflight integration", () => {
   it("runs Step 5 regulatory preflight before recommendation generation and locks the snapshot into Step 6", () => {
     const source = fs.readFileSync("src/app/secondary/suggestions/page.tsx", "utf8");
     const preflight = source.indexOf("prepareRegulatoryReview");
-    const recommendCall = source.indexOf("const recommendationsResult = recommend(");
+    // Supports both the sync `recommend(` and the traced `await recommendWithTracing(` path.
+    const recommendCall = Math.max(
+      source.indexOf("const recommendationsResult = recommend("),
+      source.indexOf("const recommendationsResult = await recommend"),
+      source.indexOf("recommendWithTracing"),
+    );
     expect(preflight).toBeGreaterThanOrEqual(0);
     expect(recommendCall).toBeGreaterThan(preflight);
     expect(source).toContain("regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}");
