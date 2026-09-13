@@ -352,3 +352,45 @@ Step 5 (`/secondary/suggestions`) defaults to `"list"` — the chronology view i
 - Finding **#1** is **CLOSED** — implemented via `next/dynamic` lazy-load, verified by `typecheck` + `build` + `vitest` `222/222`. Default list-view users no longer pay the timeline JS.
 - A future refinement can add `dynamic(..., { ssr: false })` coverage to other heavy `"use client"` secondary panels if the same pattern recurs; keep the tab-badge props eager so users can decide before loading.
 
+---
+
+## Addendum — 2026-09-13 (Performance finding #2): Pathway evidence mapping pre-index — verified already remediated on `main`
+
+This addendum formally closes performance finding **#2** "Pathway evidence mapping may get CPU-heavy at upper bounds" (nested loops `src/lib/evidence/pathway-mapper.ts:145-214` over every `analyses × excerpts × contributingPrimaries`, with extended retention up to `src/lib/evidence/limits.ts:61-73` `EXTENDED_LIMITS` 200 sources × 10 excerpts = 2,000 excerpts + 3 MB serialized).
+
+### Diagnosis (pre-#432)
+
+The pre-fix `mapEvidenceToPathways` did for every `(result, primary)` pair: `for (analysis of analyses) for (excerpt of analysis.excerpts) if (!excerptMatchesPrimary(excerpt.matchedTerms, primaryTerms)) continue` where `excerptMatchesPrimary` did `primaryTerms.map(normalizeTerm)` on each call and then `matchedTerms.some(normalizedCandidates.includes)`. That is `O(P × N)` with repeated `normalizeTerm` on the same strings (P = pathway rows, N = total excerpts). At the extended bound this is ~hundreds of primaries × 2,000 excerpts of redundant normalization + linear scans on the client main thread (Step 6 `PathwayEvidenceMapper` is `"use client"` + `useMemo` under `EvidenceAnalysesProvider`).
+
+### Remediation — already on `main` via `4f2a521` (#432)
+
+`src/lib/evidence/pathway-mapper.ts` on `HEAD` (`78bac56`) already implements exactly the remediation requested — "pre-index excerpts by matched term/category once, then map pathways against index":
+
+- New once-per-call `indexExcerptsByMatchedTerm(analyses): Map<string, IndexedExcerpt[]>` — single linear pass over all `analyses × excerpts`, building `Map<normalizedMatchedTerm, IndexedExcerpt[]>` where each `IndexedExcerpt = { analysis, index, sequence }` preserves original document order via a monotonic `sequence`. Per-excerpt `matchedTerms` are deduped via `new Set(matchedTerms.map(normalizeTerm).filter(Boolean))` so each excerpt contributes at most one entry per distinct normalized term.
+- Per-pathway `primaryTerms` are pre-normalized once into `Set<string>` (`new Set(buildPrimaryConditionTerms(primary).map(normalizeTerm).filter(Boolean))`) — matching the finding's "pre-index by matched term" verbatim. `buildPrimaryConditionTerms` itself is O(1) (name + hyphen-split id tokens ≥4).
+- Candidates are collected by hash lookup, not scan: `for (term of primaryTerms) { excerpts = index.get(term); for (entry of excerpts) candidates.set(sequence, entry) }` — `O(sum per-primary distinct terms × posting-list length)` instead of `O(N)` per row. `Map<number, IndexedExcerpt>` on `sequence` dedupes an excerpt that was indexed under multiple terms, then `[...candidates.entries()].sort((a,b)=>a[0]-b[0])` recovers insertion order (identical to the original nested-loop order) without re-scanning.
+- Downstream classification is unchanged (`theoryAllowsDirect` / `SUPPORTING_CATEGORIES` / `CAUSAL_CATEGORIES` + `seen` dedup on `category:quote:locator`) — the change is purely indexing, preserving research-cue semantics and the `"use client"` `PathwayEvidenceMapper` contract (`useMemo(() => mapEvidenceToPathways(results, analyses), [results, analyses])`).
+
+This is equivalent to "pre-index excerpts by matched term/category once, then map pathways against index" with `category` partitioning deferred to the final tier classification (which is O(candidates), not O(N)). Adding a second-level `Map<category, Map<term, …>>` index would not materially reduce work because the per-row category check is a constant-time `Set.has`.
+
+### Verification on `HEAD` (`78bac56`)
+
+- `git log --all -- src/lib/evidence/pathway-mapper.ts` shows `4f2a521 Remediate high-severity performance hot paths … (#432)` is already on `main` — three releases before this addendum.
+- `src/lib/evidence/pathway-mapper.ts:73-115` (`indexExcerptsByMatchedTerm` + `sequence`) + `145-214` (`excerptsByMatchedTerm` singleton → per-primary hash lookup → stable sort → tier) are verbatim the post-`4f2a521` structure. The prior `excerptMatchesPrimary` helper referenced in the ticket no longer exists.
+- `tsc --noEmit` `0` · `next build` `14 routes` (ƒ) + proxy `0` on `78bac56` before this doc change (re-run at addendum authoring) · `vitest` `222/222` `1314/1314` (including `tests/pathway-evidence-mapper.test.ts` 7 suites + `tests/performance-high-remediation.test.ts` 3 suites that explicitly assert the index/single-pass contract: "indexes excerpts by normalized matched term and maps pathways against the index (single excerpt scan)"). No behavior change, no new suite needed.
+- `src/components/evidence/PathwayEvidenceMapper.tsx:107` stays `useMemo(() => mapEvidenceToPathways…)` over the already-single-parse `analyses` from `EvidenceAnalysesProvider` (finding #4) — the two findings compose.
+
+### Code anchors (`main` after this PR — unchanged code, only this doc)
+
+- `src/lib/evidence/pathway-mapper.ts:86-115` — `IndexedExcerpt` + `indexExcerptsByMatchedTerm` (once-per-call `Map<string, IndexedExcerpt[]>`)
+- `src/lib/evidence/pathway-mapper.ts:132-145` — `buildPrimaryConditionTerms` (name + id-token terms)
+- `src/lib/evidence/pathway-mapper.ts:145-215` — `mapEvidenceToPathways` (shared index → `candidates Map<sequence, …>` → stable sort → `direct/supporting/related` tier)
+- `src/components/evidence/PathwayEvidenceMapper.tsx:107` — `useMemo` consumer on Step 6
+- `src/lib/evidence/limits.ts:61-73` — `EXTENDED_LIMITS` upper bound that motivates the index (unchanged bound)
+- `tests/pathway-evidence-mapper.test.ts` + `tests/performance-high-remediation.test.ts` — index contract pins
+
+### Close-out
+
+- Finding **#2** is **CLOSED** — remediated in `4f2a521` (#432), verified still present on `78bac56` (no code change in this commit beyond this documentation; `vitest` 222/222 re-confirmed). The "nested loops at 145-214" evidence snippet now points at the indexed implementation, not the pre-#432 scan.
+- Any future pathway-mapping change should keep `indexExcerptsByMatchedTerm` (or an equivalent `Map<term, …>` pre-index) at the top of `mapEvidenceToPathways`; removing it re-introduces the `O(P × N)` client cost that extended retention (200 sources) exposes.
+
