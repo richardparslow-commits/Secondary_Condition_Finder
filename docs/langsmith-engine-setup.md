@@ -78,7 +78,7 @@ Recommended repository hygiene while Engine is enabled:
 
 ## 6) Key rotation — the screenshot exposed `lsv2_pt_39a0...`
 
-The API key visible in your screenshot (`lsv2_pt_39a010386fc544549ca1bdd4ba2c96_8e1a467833` in the **TRACE AN EXISTING AGENT** box) must be treated as compromised — a screenshot plus the org URL is sufficient to identify the key. You also forwarded the same value in the PDF/screenshot pair.
+The API key visible in your screenshot (prefix `lsv2_pt_39a0...` — full value was in the **TRACE AN EXISTING AGENT** box) must be treated as compromised — a screenshot plus the org URL is sufficient to identify the key. You also forwarded the same value in the PDF/screenshot pair. The full value is deliberately not repeated here.
 
 Do this now, even if the key was project-scoped and tracing was still `Waiting for traces...`:
 

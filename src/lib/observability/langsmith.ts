@@ -36,6 +36,10 @@ import "server-only";
  *   LANGSMITH_ENDPOINT=https://api.smith.langchain.com  (EU/APAC only)
  */
 
+// F-08: correct re-export per `langsmith/dist/traceable.d.ts` — `project_name?: string`
+// is the accepted key (also `dist/traceable.js:622 maybeCreateOtelContext`). No
+// `experimental/otel` import needed: the recommendation engine is deterministic
+// (no LLM call to wrap).
 export { traceable } from "langsmith/traceable";
 
 /**
@@ -49,5 +53,7 @@ export function isLangSmithTracingEnabled(): boolean {
 /**
  * Project name used for all traces from this repo. Keep this stable so
  * Engine's issue clustering works; Engine groups by project.
+ * F-09: default `LANGSMITH_ENDPOINT` is `https://api.smith.langchain.com`
+ * (see `.env.example`); EU/APAC tenants may override via that env var.
  */
 export const LANGSMITH_PROJECT_NAME = "secondary-condition-finder";
