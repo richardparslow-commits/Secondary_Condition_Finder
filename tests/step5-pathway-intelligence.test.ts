@@ -128,11 +128,15 @@ describe("Step 5 authored pathway intelligence", () => {
 
   it("keeps pathway intelligence out of intake matching and wires conservative diagnosis-centered Step 5 presentation", () => {
     const engine = read("src/lib/engine/recommend.ts");
+    const signals = read("src/lib/engine/signals.ts");
     const component = read("src/components/NonServiceConnectedConditionResult.tsx");
     const page = read("src/app/secondary/suggestions/page.tsx");
 
     expect(engine).toContain("pathwayIntelligence: suggestion.pathwayIntelligence");
-    expect(engine).toContain("Authored pathway-intelligence fields are deliberately excluded");
+    // Post-refactor: the intake-matching guard (and its comment) lives in
+    // signals.ts; recommend.ts orchestrates it. Check both so the contract
+    // holds regardless of module layout.
+    expect(engine + signals).toContain("Authored pathway-intelligence fields are deliberately excluded");
 
     expect(component).toContain("Authored pathway to evaluate");
     expect(component).toContain("Questions to develop with a clinician or representative");
