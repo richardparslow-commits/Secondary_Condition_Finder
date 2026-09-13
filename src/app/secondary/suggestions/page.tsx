@@ -49,6 +49,7 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
   const byId = indexById(catalog);
   const kb = loadKnowledgeBase();
   const session = workflowState ?? (await readSecondaryWorkflowSession());
+  const queryParams = await searchParams;
 
   let state;
   try { state = parseWorkflowState(workflowSessionToQueryParams(session), catalog); }
@@ -57,19 +58,19 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
   // Regulatory preflight is intentionally completed before recommendation output.
   // If this is a back-navigation inside the same review, reuse the locked snapshot
   // rather than silently changing the legal/regulatory basis mid-review.
-  const lockedSnapshotId = firstParam((await searchParams)?.regSnapshot);
+  const lockedSnapshotId = firstParam(queryParams?.regSnapshot);
   const lockedSnapshot = loadLockedRegulatorySnapshot(lockedSnapshotId);
-  const regulatoryReview = lockedSnapshot
-    ? {
+  const regulatoryReviewPromise = lockedSnapshot
+    ? Promise.resolve({
         snapshot: lockedSnapshot,
         relevantChanges: relevantChangesForSnapshot(lockedSnapshot),
-      }
+      })
     : lockedSnapshotId
-      ? {
+      ? Promise.resolve({
           snapshot: missingLockedRegulatorySnapshot(lockedSnapshotId),
           relevantChanges: [],
-        }
-      : await prepareRegulatoryReview({
+        })
+      : prepareRegulatoryReview({
           reviewScope: {
             conditionIds: [...new Set([
               ...state.diagnosedConditionIds,
@@ -80,6 +81,17 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
 
   const medications = state.medications ?? [];
   const treatments = state.treatments ?? [];
+  const vaReferencePromise = loadDisabilityReference();
+  const zipParam = typeof queryParams?.zip === "string" ? queryParams.zip : undefined;
+  const radiusParam = typeof queryParams?.radiusMiles === "string" ? queryParams.radiusMiles : undefined;
+  const typeParam = typeof queryParams?.type === "string" ? queryParams.type : undefined;
+  const accreditedRepPromise = zipParam && /^\d{5}$/.test(zipParam)
+    ? loadAccreditedRepresentatives({
+        zip: zipParam,
+        radiusMiles: radiusParam ? Number(radiusParam) : 50,
+        type: (typeParam as "VSO" | "agent" | "attorney" | undefined),
+      })
+    : Promise.resolve(null);
   // Traced via LangSmith when LANGSMITH_TRACING=true so Engine can cluster
   // recommendation traces and — when the GitHub repo is connected — open
   // automated diagnostic PRs. Falls through to sync recommend when disabled.
@@ -88,6 +100,11 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
     kb,
     buildSecondaryRecommendationIntake(state),
   );
+  const [regulatoryReview, vaReference, accreditedRepView] = await Promise.all([
+    regulatoryReviewPromise,
+    vaReferencePromise,
+    accreditedRepPromise,
+  ]);
   const nonServiceConnectedResults = buildNonServiceConnectedConditionResults(
     catalog,
     state.diagnosedConditionIds,
@@ -106,23 +123,11 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
     conditionNamesById,
   );
   const primaryNames = state.serviceConnectedConditionIds.map((id) => byId.get(id)?.name).filter(Boolean);
-  const vaReference = await loadDisabilityReference();
   const vaReferenceMap = buildConditionVaReferenceMap(
     catalog,
     vaReference.live ? vaReference.items : [],
   );
   const evidenceHref = `/secondary/evidence?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
-  const qp = await searchParams;
-  const zipParam = typeof qp?.zip === "string" ? qp.zip : undefined;
-  const radiusParam = typeof qp?.radiusMiles === "string" ? qp.radiusMiles : undefined;
-  const typeParam = typeof qp?.type === "string" ? qp.type : undefined;
-  const accreditedRepView = zipParam && /^\d{5}$/.test(zipParam)
-    ? await loadAccreditedRepresentatives({
-        zip: zipParam,
-        radiusMiles: radiusParam ? Number(radiusParam) : 50,
-        type: (typeParam as "VSO" | "agent" | "attorney" | undefined),
-      })
-    : null;
 
   const timelineConditions: TimelineConditionInput[] = state.diagnosedConditionIds
     .map((id) => byId.get(id))

@@ -16,6 +16,7 @@ import { assertNoForbiddenPhrases, validateKnowledgeBaseAgainstCatalog } from ".
 const KB_DIR = path.join(process.cwd(), "data", "knowledge-base");
 
 let cached: KnowledgeBase | null = null;
+let publishedMappingIdsCached: Set<string> | null = null;
 
 /**
  * Reads and validates every mapping file.
@@ -56,7 +57,39 @@ export function loadKnowledgeBase(): KnowledgeBase {
   return cached;
 }
 
+/**
+ * Lightweight published-mapping index used by Step 1 "database mapped" badges.
+ *
+ * This avoids the full schema + cross-catalog validation path when callers only
+ * need published ids. Full validation remains in loadKnowledgeBase().
+ */
+export function loadPublishedMappingIds(): Set<string> {
+  if (publishedMappingIdsCached) return new Set(publishedMappingIdsCached);
+
+  const files = fs
+    .readdirSync(KB_DIR)
+    .filter((file) => file.endsWith(".json"))
+    .sort();
+
+  const published = new Set<string>();
+  for (const file of files) {
+    const raw = fs.readFileSync(path.join(KB_DIR, file), "utf8");
+    const parsed = JSON.parse(raw) as unknown;
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) continue;
+
+    const id = (parsed as { id?: unknown }).id;
+    const draft = (parsed as { draft?: unknown }).draft;
+    if (typeof id !== "string" || id.length === 0) continue;
+    if (draft === true) continue;
+    published.add(id);
+  }
+
+  publishedMappingIdsCached = published;
+  return new Set(publishedMappingIdsCached);
+}
+
 /** Test seam: clears the module-level cache. */
 export function resetKnowledgeBaseCache(): void {
   cached = null;
+  publishedMappingIdsCached = null;
 }

@@ -1,4 +1,13 @@
-import { fetchVaForms, type VaApiResult, type VaApiSource } from "./sandbox";
+import {
+  readVaReferenceCache,
+  writeVaReferenceCache,
+} from "./reference-cache";
+import {
+  fetchVaForms,
+  loadVaApiConfig,
+  type VaApiResult,
+  type VaApiSource,
+} from "./sandbox";
 
 export interface ClaimFormReference {
   formName: string;
@@ -38,6 +47,14 @@ type FormsFetcher = (
 export async function loadClaimFormReference(
   fetcher: FormsFetcher = fetchVaForms,
 ): Promise<ClaimFormReference> {
+  const configuredEnvironment = loadVaApiConfig().environment ?? "sandbox";
+  const useSharedCache = fetcher === fetchVaForms;
+  const cacheKey = `forms:reference:${configuredEnvironment}`;
+  if (useSharedCache) {
+    const cached = readVaReferenceCache<ClaimFormReference>(cacheKey);
+    if (cached) return cached;
+  }
+
   const result = await fetcher("21-526EZ");
   if (!result.success || !result.data) return LOCAL_FORM_REFERENCE;
 
@@ -50,7 +67,7 @@ export async function loadClaimFormReference(
   if (!current) return LOCAL_FORM_REFERENCE;
 
   const production = result.source === "va-production-api";
-  return {
+  const view: ClaimFormReference = {
     formName: current.attributes.form_name,
     title: current.attributes.title,
     url: current.attributes.url,
@@ -61,4 +78,6 @@ export async function loadClaimFormReference(
       ? "This metadata came from the VA Forms production API. Confirm the form on VA.gov before filing because forms and revisions can change."
       : "This metadata came from the VA sandbox environment. Sandbox data is for testing and may not be current; confirm the form on VA.gov before filing.",
   };
+  if (useSharedCache) writeVaReferenceCache(cacheKey, view);
+  return view;
 }

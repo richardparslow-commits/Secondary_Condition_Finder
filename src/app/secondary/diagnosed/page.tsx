@@ -4,8 +4,7 @@ import Link from "next/link";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { isExposureRelated } from "@/lib/catalog/exposure-tags";
 import { loadConditionCatalog } from "@/lib/catalog/load";
-import { loadKnowledgeBase } from "@/lib/kb/load";
-import { mappedConditionIds } from "@/lib/kb/lookup";
+import { loadPublishedMappingIds } from "@/lib/kb/load";
 import { readSecondaryWorkflowSession } from "@/lib/secondary-workflow/session";
 import { secondaryValidationMessage } from "@/lib/secondary-workflow/validation";
 import { saveDiagnosedSelection } from "@/lib/actions/secondary";
@@ -24,7 +23,7 @@ const DATABASE_MAPPED_EXPLANATION =
 
 export default async function DiagnosedConditionsPage({ searchParams }: DiagnosedPageProps = {}) {
   const catalog = loadConditionCatalog();
-  const mapped = mappedConditionIds(loadKnowledgeBase());
+  const mapped = loadPublishedMappingIds();
   const conditions = [...catalog].sort((a, b) => a.name.localeCompare(b.name));
   const session = await readSecondaryWorkflowSession();
   const selectedDiagnosed = new Set(session.diagnosedConditionIds ?? []);
