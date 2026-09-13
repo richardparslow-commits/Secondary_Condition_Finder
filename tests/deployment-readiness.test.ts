@@ -155,6 +155,19 @@ describe("production deployment readiness", () => {
     expect(proxy).not.toMatch(/script-src[^;\n]*'unsafe-inline'/);
   });
 
+  it("pins style-src unsafe-inline as an intentional React constraint while blocking script-src unsafe-inline", () => {
+    const proxy = read("src/proxy.ts");
+
+    // style-src 'unsafe-inline' is intentional: React's style={{}} prop writes
+    // style="" HTML attributes directly on DOM elements, which CSP cannot nonce.
+    // This is documented in SECURITY.md and the three tech-spec docs.
+    expect(proxy).toContain("style-src 'self' 'unsafe-inline'");
+
+    // script-src must NEVER contain unsafe-inline — nonce-based script execution
+    // is the actual XSS boundary. This is the non-negotiable security contract.
+    expect(proxy).not.toMatch(/script-src[^;\n]*'unsafe-inline'/);
+  });
+
   it("keeps Azure deployment manual-only as legacy fallback", () => {
     const workflow = read(
       ".github/workflows/azure-static-web-apps-gentle-tree-04b340f0f.yml",
