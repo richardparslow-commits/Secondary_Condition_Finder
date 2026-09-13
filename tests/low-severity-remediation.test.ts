@@ -32,11 +32,11 @@ describe("low-severity audit remediations", () => {
     expect(csp).toContain("connect-src 'self'");
   });
 
-  it("forces request-time rendering so Next can apply the CSP nonce", () => {
+  it("does not force request-time rendering in the root layout", () => {
     const layout = read("src/app/layout.tsx");
 
-    expect(layout).toContain('import { connection } from "next/server"');
-    expect(layout).toContain("await connection()");
+    expect(layout).not.toContain('import { connection } from "next/server"');
+    expect(layout).not.toContain("await connection()");
   });
 
   it("does not ship the previously ambiguous browser telemetry initializer", () => {

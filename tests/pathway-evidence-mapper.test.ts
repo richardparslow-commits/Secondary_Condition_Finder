@@ -217,6 +217,33 @@ describe("pathway evidence mapper", () => {
     expect(rows[0].supporting).toHaveLength(1);
   });
 
+  it("preserves excerpt order when one excerpt matches multiple primary terms", () => {
+    const rows = mapEvidenceToPathways(
+      results([recommendation()]),
+      [
+        analysis([
+          excerpt({
+            category: "diagnosis",
+            matchedTerms: ["Posttraumatic Stress Disorder", "ptsd"],
+            quote: "First excerpt",
+            locator: "line 1",
+          }),
+          excerpt({
+            category: "treatment",
+            matchedTerms: ["ptsd"],
+            quote: "Second excerpt",
+            locator: "line 2",
+          }),
+        ]),
+      ],
+    );
+
+    expect(rows[0].supporting.map((item) => item.quote)).toEqual([
+      "First excerpt",
+      "Second excerpt",
+    ]);
+  });
+
   it("builds primary condition terms from the name and id tokens", () => {
     expect(buildPrimaryConditionTerms({ id: "ptsd", name: "Posttraumatic Stress Disorder" })).toEqual([
       "Posttraumatic Stress Disorder",
