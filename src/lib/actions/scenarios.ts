@@ -14,6 +14,14 @@ import {
 
 const scenarioIdSchema = z.string().min(1).max(80).regex(/^[a-z0-9-]+$/);
 
+/**
+ * Load a pre-built demo scenario and populate the secondary workflow session.
+ *
+ * Form fields: `scenarioId` (string, 1-80 chars, lowercase alphanumeric + hyphens).
+ * Success: redirect to /secondary/suggestions.
+ * Error: redirect to /scenarios (invalid or unknown ID).
+ * See docs/api-specification.md for full contract.
+ */
 export async function launchDemoScenario(formData: FormData): Promise<void> {
   const parsedScenarioId = scenarioIdSchema.safeParse(formData.get("scenarioId"));
   if (!parsedScenarioId.success) redirect("/scenarios");

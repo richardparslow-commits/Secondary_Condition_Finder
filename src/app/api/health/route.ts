@@ -70,6 +70,24 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
   }
 }
 
+/**
+ * GET /api/health
+ *
+ * Health check endpoint used by Vercel monitoring and the production readiness
+ * workflow. Returns component-level status for catalog, session crypto, VA API
+ * config, and circuit breaker state.
+ *
+ * Response schema (see docs/api-specification.md):
+ * - status: "healthy" | "degraded"
+ * - components.catalog: { status, latencyMs, count?, detail? }
+ * - components.sessionCrypto: { status, latencyMs, detail? }
+ * - components.vaConfig: { status, latencyMs, enabled?, environment?, detail? }
+ * - components.circuitBreaker: { status, latencyMs, detail, snapshot }
+ * - latencyMs: total endpoint latency
+ * - timestamp: ISO 8601
+ *
+ * HTTP 200 when catalog + sessionCrypto are ok; 503 when either is error.
+ */
 export async function GET() {
   const started = Date.now();
 

@@ -15,6 +15,15 @@ function textValue(formData: FormData, key: string): string | null {
   return trimmed ? trimmed : null;
 }
 
+/**
+ * Redirect to the suggestions page with accredited representative search params.
+ *
+ * Form fields: `zip` (5-digit string, required), `radiusMiles` ("25"|"50"|"100"),
+ * `type` ("VSO"|"agent"|"attorney"), `returnTo` (default: /secondary/suggestions).
+ * Success: redirect to {returnTo}?zip={zip}&radiusMiles={radius}&type={type}.
+ * Errors: invalid-zip, invalid-radius, invalid-type.
+ * See docs/api-specification.md for full contract.
+ */
 export async function searchAccreditedRepresentatives(
   formData: FormData,
 ): Promise<void> {
