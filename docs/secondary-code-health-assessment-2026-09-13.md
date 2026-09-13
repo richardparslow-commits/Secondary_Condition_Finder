@@ -318,3 +318,37 @@ Each of the four loaders (`loadConditionCatalog`, `loadKnowledgeBase`, `loadExpo
 - The sync loaders remain the request-path entry points; no page required an `await` migration.
 - If a future build-time artifact is desired, it should replace the filesystem-scan helpers (`readCatalog` etc.) with a single artifact read while keeping `warmupDataCaches` and the `register()` hook unchanged.
 
+---
+
+## Addendum — 2026-09-13 (Performance finding #1): Timeline bundle eagerly included in list view — lazy-loaded on demand
+
+This addendum closes performance finding **#1** "Timeline bundle loaded even when List view is active" (`src/components/secondary/SecondarySuggestionsTabs.tsx:5-9` statically importing `ConditionTimelineVisualization`, default tab `"list"` at `:24`).
+
+### Diagnosis
+
+Step 5 (`/secondary/suggestions`) defaults to `"list"` — the chronology view is an alternate. The prior `SecondarySuggestionsTabs` did a top-level `import { ConditionTimelineVisualization } from "./ConditionTimelineVisualization"`, so every `/secondary/suggestions` hit paid the client JS for the full interactive SVG timeline (zoom/pan state, tooltip/hit-area logic, PNG export via canvas `toBlob`, large inline SVG + tables) even for list-only users. No `next/dynamic` / `React.lazy` was in use on the project.
+
+### Remediation — `next/dynamic` + on-demand mount
+
+- `src/components/secondary/SecondarySuggestionsTabs.tsx` now uses `next/dynamic(() => import("./ConditionTimelineVisualization").then((m) => m.ConditionTimelineVisualization), { ssr: false, loading: () => <p>Loading timeline…</p> })`. The import is a type-only `import type` for the `Timeline*Input` props — no runtime dependency on the viz module. `ssr: false` wraps it in a CSR bail-out (also keeps any `window`/`canvas` usage — `devicePixelRatio`, `Blob`/`URL.createObjectURL`, `canvas.toBlob` — safely off the server/edge).
+- The timeline is only mounted when the tab is active: `{active === "timeline" ? <ConditionTimelineVisualization … /> : null}` inside the `panel-timeline` (which retains the `hidden` + `className="hidden"` guard). So initial render of a list-view user carries no timeline bundle at all — the chunk is fetched on first "Timeline" click. Once loaded, it is cached by the browser for subsequent tab flips.
+- The `loading` fallback is a plain `<p>` with `aria-live="polite"` + `aria-busy="true"` so the role/tab-panel a11y contract is preserved during the async tick and no extra design debt is added.
+- No change to `src/app/secondary/suggestions/page.tsx` data plumbing — `timelineConditions` / `timelineConnections` / `datedCount` are still derived server-side before the tabs (same props), and the `Timeline` tab badge (`add years` vs. `"N conditions"`) stays synchronous so users still see at a glance whether the view is useful. `ConditionTimelineVisualization.tsx` itself is untouched (still `"use client"`, same SVG + zoom, `select-none`, `Download SVG/PNG`, `details` text alternative).
+- Bundle evidence: before the change, `page_client-reference-manifest.js` listed `CitationDeepDiveExplorer`…`RatingGuide` but the viz was inlined with them (all sharing the single `2ngo8ifua99p_.js` page chunk). After: `SecondarySuggestionsTabs` renders via `next/dist/shared/lib/app-dynamic`'s `Loadable` (`BailoutToCSR` → `Suspense` with the loading fallback) and the manifest keeps `SecondarySuggestionsTabs` as a thin wrapper — the viz module's SVG/canvas/download code is now a separate lazy chunk that is not in the initial `entryJSFiles["/secondary/suggestions/page"]` set and is only `preload(..., { fetchPriority: "low" })` when the chunk is requested.
+
+### Verification
+
+- `tsc --noEmit` `0` · `eslint SecondarySuggestionsTabs.tsx` `0` · `next build` `14 routes` (ƒ) + proxy `0` — `grep -r ConditionTimelineVisualization .next/server` confirms the viz no longer appears in `page_client-reference-manifest.js` `clientModules` and appears only through the `app-dynamic` `Loadable`/`BailoutToCSR` path (CSS/JS `preload` via `low` priority).
+- `vitest` `222/222` `1314/1314` (no new suite needed — behavior is identical; only bundle split changes). No `force-dynamic` / `revalidate` change; Step 5 remains `force-dynamic` and `SecondarySuggestionsTabs` stays `"use client"`.
+
+### Code anchors (`main` after this PR)
+
+- `src/components/secondary/SecondarySuggestionsTabs.tsx` — `dynamic(() => import("./ConditionTimelineVisualization"), { ssr:false, loading })` + `active === "timeline" ? <ConditionTimelineVisualization …/> : null` guard
+- `src/components/secondary/ConditionTimelineVisualization.tsx` — unchanged (client viz, SVG + zoom + `devicePixelRatio`/`canvas`/`URL` usage kept in the lazy chunk)
+- `src/app/secondary/suggestions/page.tsx:13-195` — unchanged props/data path, badge stays eager
+
+### Close-out
+
+- Finding **#1** is **CLOSED** — implemented via `next/dynamic` lazy-load, verified by `typecheck` + `build` + `vitest` `222/222`. Default list-view users no longer pay the timeline JS.
+- A future refinement can add `dynamic(..., { ssr: false })` coverage to other heavy `"use client"` secondary panels if the same pattern recurs; keep the tab-badge props eager so users can decide before loading.
+

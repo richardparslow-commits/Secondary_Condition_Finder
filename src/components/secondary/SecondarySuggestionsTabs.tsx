@@ -1,12 +1,29 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState } from "react";
 
-import {
-  ConditionTimelineVisualization,
-  type TimelineConditionInput,
-  type TimelineConnectionInput,
+import type {
+  TimelineConditionInput,
+  TimelineConnectionInput,
 } from "./ConditionTimelineVisualization";
+
+const ConditionTimelineVisualization = dynamic(
+  () =>
+    import("./ConditionTimelineVisualization").then((m) => m.ConditionTimelineVisualization),
+  {
+    loading: () => (
+      <p
+        className="rounded-xl border border-slate-200 bg-white p-5 text-sm text-slate-600"
+        aria-live="polite"
+        aria-busy="true"
+      >
+        Loading timeline…
+      </p>
+    ),
+    ssr: false,
+  },
+);
 
 interface SecondarySuggestionsTabsProps {
   conditions: TimelineConditionInput[];
@@ -88,7 +105,9 @@ export function SecondarySuggestionsTabs({
         hidden={active !== "timeline"}
         className={active !== "timeline" ? "hidden" : undefined}
       >
-        <ConditionTimelineVisualization conditions={conditions} connections={connections} />
+        {active === "timeline" ? (
+          <ConditionTimelineVisualization conditions={conditions} connections={connections} />
+        ) : null}
         <p className="mt-3 text-xs leading-relaxed text-slate-500">
           Timeline is derived only from the approximate years you entered in Step 4 and the authored
           relationships reviewed in the List view. It does not add diagnoses, estimate likelihood of
