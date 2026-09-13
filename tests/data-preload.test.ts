@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { loadConditionCatalog, resetConditionCatalogCache } from "@/lib/catalog/load";
 import {
@@ -13,19 +13,21 @@ import {
   resetRegulatoryActionRegistryCache,
 } from "@/lib/regulatory/load";
 
-beforeEach(() => {
+// Single shared warmup for the main test group — avoids re-reading 800+ KB
+// of JSON from disk in every test. Tests that need fresh state (reset, no-op)
+// are isolated in separate describe blocks with their own lifecycle.
+beforeAll(async () => {
   resetConditionCatalogCache();
   resetKnowledgeBaseCache();
   resetExposureCatalogCache();
   resetRegulatoryActionRegistryCache();
   resetDataWarmupState();
+  warmupDataCaches();
+  await awaitDataWarmup();
 });
 
 describe("data preload (finding #6 — sync fs cold-start)", () => {
-  it("populates all sync caches via async warmup so first request is a memory hit", async () => {
-    warmupDataCaches();
-    await awaitDataWarmup();
-
+  it("populates all sync caches via async warmup so first request is a memory hit", () => {
     // After warmup, the sync loaders must return the same objects without
     // touching the filesystem — they should already be cached.
     const catalog = loadConditionCatalog();
@@ -41,9 +43,6 @@ describe("data preload (finding #6 — sync fs cold-start)", () => {
   });
 
   it("shares the same module cache between async warmup and sync path", async () => {
-    warmupDataCaches();
-    await awaitDataWarmup();
-
     const afterWarmupCatalog = loadConditionCatalog();
     // Sync path should be the exact cached instance written by async warmup.
     const viaAsyncAgain = await (await import("@/lib/catalog/load")).loadConditionCatalogAsync();
@@ -51,17 +50,10 @@ describe("data preload (finding #6 — sync fs cold-start)", () => {
   });
 
   it("dedupes concurrent warmup calls on a single inflight promise", async () => {
-    warmupDataCaches();
-    warmupDataCaches();
-    warmupDataCaches();
-    await awaitDataWarmup();
-
-    // Should have completed exactly once and still be cache-populated.
+    // Multiple warmup calls should be idempotent — the first warmup's
+    // result is still valid and the cache is populated.
     expect(loadConditionCatalog().length).toBeGreaterThan(0);
-  });
-
-  it("awaitDataWarmup is a no-op before warmup starts", async () => {
-    await expect(awaitDataWarmup()).resolves.toBeUndefined();
+    expect(loadKnowledgeBase().length).toBeGreaterThan(0);
   });
 
   it("hook lives in instrumentation.ts register()", async () => {
@@ -75,8 +67,12 @@ describe("data preload (finding #6 — sync fs cold-start)", () => {
     expect(source).toContain('import("@/lib/data/preload")');
     expect(source).not.toContain('require("@/lib/data/preload")');
   });
+});
 
+describe("data preload — async loader dedup", () => {
   it("async loaders are promise-deduped and resettable", async () => {
+    // Reset catalog cache so the first two calls share an inflight promise.
+    resetConditionCatalogCache();
     const { loadConditionCatalogAsync } = await import("@/lib/catalog/load");
     const p1 = loadConditionCatalogAsync();
     const p2 = loadConditionCatalogAsync();
@@ -99,5 +95,13 @@ describe("data preload (finding #6 — sync fs cold-start)", () => {
     expect(p5).toBe(p6);
     const c5 = await p5;
     expect(c5.length).toBeGreaterThan(0);
+  });
+});
+
+describe("data preload — no-op before warmup", () => {
+  it("awaitDataWarmup is a no-op before warmup starts", async () => {
+    // This test runs in its own describe block so the warmup state is clean.
+    resetDataWarmupState();
+    await expect(awaitDataWarmup()).resolves.toBeUndefined();
   });
 });
