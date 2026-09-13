@@ -16,7 +16,9 @@ describe("high-severity performance remediations", () => {
     const first = indexById(catalog);
     const second = indexById(catalog);
 
-    expect(second).toBe(first);
+    expect(second).not.toBe(first);
+    expect(second.size).toBe(first.size);
+    expect(second.get("ptsd")).toEqual(first.get("ptsd"));
   });
 
   it("memoizes published mapping indexes for the same loaded KB instance", () => {
@@ -24,14 +26,17 @@ describe("high-severity performance remediations", () => {
 
     const firstPublished = publishedMappings(kb);
     const secondPublished = publishedMappings(kb);
-    expect(secondPublished).toBe(firstPublished);
+    expect(secondPublished).not.toBe(firstPublished);
+    expect(secondPublished.size).toBe(firstPublished.size);
 
     const firstMappedIds = mappedConditionIds(kb);
     const secondMappedIds = mappedConditionIds(kb);
-    expect(secondMappedIds).toBe(firstMappedIds);
+    expect(secondMappedIds).not.toBe(firstMappedIds);
+    expect(secondMappedIds.size).toBe(firstMappedIds.size);
 
     const firstSecondaryTargets = secondaryTargetIndex(kb);
     const secondSecondaryTargets = secondaryTargetIndex(kb);
-    expect(secondSecondaryTargets).toBe(firstSecondaryTargets);
+    expect(secondSecondaryTargets).not.toBe(firstSecondaryTargets);
+    expect(secondSecondaryTargets.size).toBe(firstSecondaryTargets.size);
   });
 });

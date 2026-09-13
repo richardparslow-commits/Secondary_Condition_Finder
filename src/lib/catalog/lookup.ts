@@ -1,6 +1,6 @@
 import type { CatalogCondition, ConditionCatalog } from "./schema";
 
-const byIdCache = new WeakMap<ConditionCatalog, Map<string, CatalogCondition>>();
+const byIdEntriesCache = new WeakMap<ConditionCatalog, [string, CatalogCondition][]>();
 
 /** Collapses case, trims, and squeezes internal whitespace. */
 export function normalizeConditionName(condition: string): string {
@@ -11,11 +11,11 @@ export function normalizeConditionName(condition: string): string {
 export function indexById(
   catalog: ConditionCatalog,
 ): Map<string, CatalogCondition> {
-  const cached = byIdCache.get(catalog);
-  if (cached) return cached;
-  const index = new Map(catalog.map((condition) => [condition.id, condition]));
-  byIdCache.set(catalog, index);
-  return index;
+  const cachedEntries = byIdEntriesCache.get(catalog);
+  if (cachedEntries) return new Map(cachedEntries);
+  const entries = catalog.map((condition) => [condition.id, condition] as [string, CatalogCondition]);
+  byIdEntriesCache.set(catalog, entries);
+  return new Map(entries);
 }
 
 /**
