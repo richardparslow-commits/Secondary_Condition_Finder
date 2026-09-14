@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import {
+  adminCacheClearLimiter,
   extractClientKey,
   healthLimiter,
   regulatoryPreflightLimiter,
@@ -78,6 +79,23 @@ export function proxy(request: NextRequest) {
   // Regulatory preflight sync (authenticated, expensive upstream refresh)
   if (url.pathname === "/api/regulatory/preflight") {
     const result = regulatoryPreflightLimiter.check(clientKey);
+    if (result.limited) {
+      return NextResponse.json(
+        { ok: false, error: "Rate limit exceeded. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(result.retryAfterSeconds),
+            "Content-Security-Policy": contentSecurityPolicy,
+          },
+        },
+      );
+    }
+  }
+
+  // Admin cache-clear endpoint (authenticated, destructive)
+  if (url.pathname === "/api/admin/cache-clear") {
+    const result = adminCacheClearLimiter.check(clientKey);
     if (result.limited) {
       return NextResponse.json(
         { ok: false, error: "Rate limit exceeded. Please try again later." },

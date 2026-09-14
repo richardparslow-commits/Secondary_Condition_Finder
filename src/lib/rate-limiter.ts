@@ -144,6 +144,13 @@ export const healthLimiter = createRateLimiter({
   name: "health",
 });
 
+/** Admin cache-clear endpoint (authenticated, destructive). */
+export const adminCacheClearLimiter = createRateLimiter({
+  windowMs: 60_000,
+  max: 5,
+  name: "admin-cache-clear",
+});
+
 // ---------------------------------------------------------------------------
 // Key extraction helpers.
 // ---------------------------------------------------------------------------

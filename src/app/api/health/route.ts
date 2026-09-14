@@ -4,6 +4,7 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { openSessionPayload, sealSessionPayload } from "@/lib/workflow-session-crypto";
 import { loadVaApiConfig } from "@/lib/va/sandbox";
 import { getCircuitSnapshot } from "@/lib/va/circuit-breaker";
+import { peekCacheCounters } from "@/lib/va/reference-cache";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -94,6 +95,7 @@ export async function GET() {
   const [catalog, sessionCrypto] = await Promise.all([checkCatalog(), checkSessionCrypto()]);
   const vaConfig = checkVaConfig();
   const circuit = getCircuitSnapshot();
+  const cacheCounters = peekCacheCounters();
 
   const components = {
     catalog,
@@ -104,6 +106,14 @@ export async function GET() {
       latencyMs: 0,
       detail: `va-forms:${circuit["va-forms"].state} benefits-reference-data:${circuit["benefits-reference-data"].state} accredited-representatives:${circuit["accredited-representatives"].state}`,
       snapshot: circuit,
+    },
+    vaReferenceCache: {
+      hits: cacheCounters.hits,
+      misses: cacheCounters.misses,
+      hitRate:
+        cacheCounters.hits + cacheCounters.misses > 0
+          ? Math.round((cacheCounters.hits / (cacheCounters.hits + cacheCounters.misses)) * 100)
+          : null,
     },
   };
 

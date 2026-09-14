@@ -43,6 +43,11 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
         "benefits-reference-data": { "state": "closed", "failures": 0, "lastFailureAt": null },
         "accredited-representatives": { "state": "closed", "failures": 0, "lastFailureAt": null }
       }
+    },
+    "vaReferenceCache": {
+      "hits": 42,
+      "misses": 8,
+      "hitRate": 84
     }
   },
   "latencyMs": 18,
@@ -266,6 +271,54 @@ Redirects to the suggestions page with query parameters for the accredited repre
 
 ---
 
+### `POST /api/admin/cache-clear`
+
+Clears the process-local VA reference cache. Requires Bearer token authentication (`REGULATORY_SYNC_SECRET` or `CRON_SECRET`). Rate-limited to 5 requests/minute per IP.
+
+**Headers**:
+- `Authorization: Bearer <CRON_SECRET>`
+
+**Query parameters**:
+| Param | Type | Required | Description |
+|---|---|---|---|
+| `prefix` | `string` | No | Only clear entries whose key starts with this prefix (e.g., `va-forms:`). If omitted, clears all entries. |
+
+**Response** (`200 OK`):
+```json
+{
+  "ok": true,
+  "cleared": 5,
+  "prefix": null,
+  "message": "Cleared all 5 cache entries."
+}
+```
+
+**Response** (`200 OK` with prefix):
+```json
+{
+  "ok": true,
+  "cleared": 2,
+  "prefix": "va-forms:",
+  "message": "Cleared 2 cache entries with prefix \"va-forms:\"."
+}
+```
+
+**Response** (`401 Unauthorized`):
+```json
+{ "ok": false, "error": "Unauthorized cache-clear request." }
+```
+
+**Response** (`429 Too Many Requests`): Rate-limited by application-level limiter.
+```json
+{ "ok": false, "error": "Rate limit exceeded. Please try again later." }
+```
+
+**Note**: This only clears the process-local cache on the specific instance that handles the request. In a serverless environment, other instances retain their cache until TTL expiry.
+
+**Runtime**: `force-dynamic`, `nodejs`.
+
+---
+
 ## Rate Limiting
 
 Application-level rate limiting is enforced in `src/proxy.ts` (defense-in-depth behind Vercel's edge WAF):
@@ -274,6 +327,7 @@ Application-level rate limiting is enforced in `src/proxy.ts` (defense-in-depth 
 |---|---|---|---|
 | Server Action POSTs | 60s | 30 | IP (`X-Forwarded-For`) |
 | `/api/regulatory/preflight` | 60s | 5 | IP |
+| `/api/admin/cache-clear` | 60s | 5 | IP |
 | `/api/health` | 60s | 30 | IP |
 
 Exceeded limits return `429 Too Many Requests` with a `Retry-After` header.
