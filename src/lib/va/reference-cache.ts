@@ -5,6 +5,27 @@ import { vaProcessLocalStateAllowed } from "./runtime-state";
 
 export type VaReferenceCacheStatus = "hit" | "miss";
 
+/**
+ * Module-level hit/miss counters for the process-local VA reference cache.
+ * Reset on cold start (process restart) — acceptable for serverless. Exposed
+ * via GET /api/health so operators can monitor cache effectiveness.
+ */
+let cacheHits = 0;
+let cacheMisses = 0;
+
+/** Return a snapshot of the current cache counters and reset them. */
+export function consumeCacheCounters(): { hits: number; misses: number } {
+  const snapshot = { hits: cacheHits, misses: cacheMisses };
+  cacheHits = 0;
+  cacheMisses = 0;
+  return snapshot;
+}
+
+/** Return the current cache counters without resetting. */
+export function peekCacheCounters(): { hits: number; misses: number } {
+  return { hits: cacheHits, misses: cacheMisses };
+}
+
 export interface VaReferenceSourceStatus {
   source: VaApiSource;
   sourceLabel: string;
@@ -44,14 +65,19 @@ export function readVaReferenceCache<T>(
   if (!vaProcessLocalStateAllowed()) return null;
 
   const cached = referenceCache.get(key) as CacheEntry<T> | undefined;
-  if (!cached) return null;
+  if (!cached) {
+    cacheMisses++;
+    return null;
+  }
   if (cached.expiresAt <= now) {
     referenceCache.delete(key);
+    cacheMisses++;
     return null;
   }
 
   // Refresh insertion order on a hit so the bounded single-process cache behaves
   // as a small LRU rather than evicting a frequently used Forms query.
+  cacheHits++;
   referenceCache.delete(key);
   referenceCache.set(key, cached as CacheEntry<unknown>);
   return cached.value;
@@ -82,13 +108,18 @@ export function writeVaReferenceCache<T>(
   });
 }
 
-export function clearVaReferenceCache(prefix?: string): void {
+export function clearVaReferenceCache(prefix?: string): { cleared: number } {
+  let cleared = 0;
   if (!prefix) {
+    cleared = referenceCache.size;
     referenceCache.clear();
-    return;
+  } else {
+    for (const key of [...referenceCache.keys()]) {
+      if (key.startsWith(prefix)) {
+        referenceCache.delete(key);
+        cleared++;
+      }
+    }
   }
-
-  for (const key of referenceCache.keys()) {
-    if (key.startsWith(prefix)) referenceCache.delete(key);
-  }
+  return { cleared };
 }

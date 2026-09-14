@@ -144,6 +144,7 @@ In addition to edge WAF controls, the application implements server-side rate li
 |---|---|---|---|---|
 | Server Action POSTs (workflow session writes) | `workflowSessionLimiter` | 60 s | 30 | IP (`X-Forwarded-For`) |
 | `/api/regulatory/preflight` (authenticated, expensive) | `regulatoryPreflightLimiter` | 60 s | 5 | IP |
+| `/api/admin/cache-clear` (authenticated, destructive) | `adminCacheClearLimiter` | 60 s | 5 | IP |
 | `/api/health` (public, lightweight) | `healthLimiter` | 60 s | 30 | IP |
 
 Rate limiting is enforced in `src/proxy.ts` (Next.js middleware/proxy). Exceeded limits return `429 Too Many Requests` with a `Retry-After` header. All limiters are process-local and reset on cold start — this is intentional for serverless and acceptable as a secondary layer behind the edge.
