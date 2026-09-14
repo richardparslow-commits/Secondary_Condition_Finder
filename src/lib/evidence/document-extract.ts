@@ -1,3 +1,12 @@
+/**
+ * Browser-only document extraction (PDF, DOCX, plain text).
+ *
+ * **Browser-only** — must never be imported from app pages, Server Actions,
+ * or API routes. This module is part of the evidence-parser boundary
+ * (see docs/evidence-parser-boundary.md). It uses client-only libraries
+ * (pdfjs-dist, mammoth) and browser File APIs to extract text from uploaded
+ * medical documents without transmitting raw bytes to the server.
+ */
 import type { EvidenceTextSegment } from "./extract";
 import {
   formatLimitBytes,

@@ -1,3 +1,11 @@
+/**
+ * Browser-local evidence storage (sessionStorage).
+ *
+ * **Browser-only** — must never be imported from app pages, Server Actions,
+ * or API routes. This module is part of the evidence-parser boundary
+ * (see docs/evidence-parser-boundary.md). It reads/writes extracted evidence
+ * excerpts to sessionStorage (tab-scoped) with bounded byte budgets.
+ */
 import {
   evidenceAnalysisStorageKey,
   type EvidenceAnalysis,
