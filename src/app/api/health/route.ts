@@ -92,41 +92,59 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
 export async function GET() {
   const started = Date.now();
 
-  const [catalog, sessionCrypto] = await Promise.all([checkCatalog(), checkSessionCrypto()]);
-  const vaConfig = checkVaConfig();
-  const circuit = getCircuitSnapshot();
-  const cacheCounters = peekCacheCounters();
+  try {
+    const [catalog, sessionCrypto] = await Promise.all([checkCatalog(), checkSessionCrypto()]);
+    const vaConfig = checkVaConfig();
+    const circuit = getCircuitSnapshot();
+    const cacheCounters = peekCacheCounters();
 
-  const components = {
-    catalog,
-    sessionCrypto,
-    vaConfig,
-    circuitBreaker: {
-      status: "ok" as const,
-      latencyMs: 0,
-      detail: `va-forms:${circuit["va-forms"].state} benefits-reference-data:${circuit["benefits-reference-data"].state} accredited-representatives:${circuit["accredited-representatives"].state}`,
-      snapshot: circuit,
-    },
-    vaReferenceCache: {
-      hits: cacheCounters.hits,
-      misses: cacheCounters.misses,
-      hitRate:
-        cacheCounters.hits + cacheCounters.misses > 0
-          ? Math.round((cacheCounters.hits / (cacheCounters.hits + cacheCounters.misses)) * 100)
-          : null,
-    },
-  };
+    const components = {
+      catalog,
+      sessionCrypto,
+      vaConfig,
+      circuitBreaker: {
+        status: "ok" as const,
+        latencyMs: 0,
+        detail: `va-forms:${circuit["va-forms"].state} benefits-reference-data:${circuit["benefits-reference-data"].state} accredited-representatives:${circuit["accredited-representatives"].state}`,
+        snapshot: circuit,
+      },
+      vaReferenceCache: {
+        hits: cacheCounters.hits,
+        misses: cacheCounters.misses,
+        hitRate:
+          cacheCounters.hits + cacheCounters.misses > 0
+            ? Math.round((cacheCounters.hits / (cacheCounters.hits + cacheCounters.misses)) * 100)
+            : null,
+      },
+    };
 
-  const healthy = catalog.status === "ok" && sessionCrypto.status === "ok";
-  const status = healthy ? 200 : 503;
+    const healthy = catalog.status === "ok" && sessionCrypto.status === "ok";
+    const status = healthy ? 200 : 503;
 
-  return NextResponse.json(
-    {
-      status: healthy ? "healthy" : "degraded",
-      components,
-      latencyMs: Date.now() - started,
-      timestamp: new Date().toISOString(),
-    },
-    { status },
-  );
+    return NextResponse.json(
+      {
+        status: healthy ? "healthy" : "degraded",
+        components,
+        latencyMs: Date.now() - started,
+        timestamp: new Date().toISOString(),
+      },
+      { status },
+    );
+  } catch (error) {
+    // Health endpoint must never crash — return 503 with the failure detail
+    // so monitoring systems see "degraded" rather than a 500 opaque error.
+    return NextResponse.json(
+      {
+        status: "degraded",
+        components: {
+          catalog: { status: "error", latencyMs: 0, detail: "Health check aborted" },
+          sessionCrypto: { status: "error", latencyMs: 0, detail: "Health check aborted" },
+        },
+        error: error instanceof Error ? error.message : String(error),
+        latencyMs: Date.now() - started,
+        timestamp: new Date().toISOString(),
+      },
+      { status: 503 },
+    );
+  }
 }
