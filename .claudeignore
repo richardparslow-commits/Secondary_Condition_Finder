@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+vendor/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+
+# Package manager files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# IDE/Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Misc
+.git/
+*.log
+*.min.js
+*.min.css
+*.map

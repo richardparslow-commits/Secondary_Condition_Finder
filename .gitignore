@@ -59,3 +59,8 @@ __pycache__/
 /Secondary_Condition_Finder/
 .aider*
 
+.implement/
+CLAUDE.md
+.claude.md
+.claude/
+.opencode/
