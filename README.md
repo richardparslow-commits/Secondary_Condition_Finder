@@ -31,7 +31,7 @@ to research with a qualified provider or an accredited representative.
 The application is deployed on Vercel. The canonical production URL is
 `https://secondary-condition-finder.vercel.app`.
 
-The current knowledge-base snapshot contains **813 mappings, 363 relationships, 140 published mappings, and 673 draft mappings**. Citation verification is complete for the live snapshot: **379 live source references are verified, with 0 unverified references**. Source-registry lineage records **346 active source entities** and **355 total entities including history**; these figures are governed by `data/evidence/master-sources.json` and `scripts/audit-master-registry.js`. ME-36, ME-37, and ME-38 (2026-09-06) expanded the published PTSD mapping with sixteen bounded, association-only secondary relationships. ME-39 (2026-09-06) published `rem-sleep-disorder → parkinsons-disease` as the first published outgoing relationship from `rem-sleep-disorder` (prodromal temporal-risk marker).
+The current knowledge-base snapshot contains **813 mappings, 363 relationships, 140 published mappings, and 673 draft mappings**. Citation verification is complete for the live snapshot: **379 live references, 379 verified, 0 unverified**.
 
 The browser-local evidence feature reads supported PDF, DOCX, and text files
 entirely in the browser tab: raw bytes and extracted text are never submitted to
@@ -99,7 +99,7 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run build` | Production build |
 | `npm test` | Vitest suite; CI runs it once and fails on any failure |
 | `npm run test:watch` | Vitest in watch mode |
-| `npm run test:composition` | Requires executable-test imports for 100% of the audited critical-module manifest; also enforces server-action placement, client-boundary, track-separation, and evidence-parser architecture rules |
+| `npm run test:composition` | Requires executable-test imports for 100% of the audited critical-module manifest; also enforces server-action placement, client-boundary, track-separation, and evidence-architecture guardrails |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm run kb:validate` | Knowledge-base structural/integrity validation |
@@ -120,7 +120,7 @@ alias, the full public route matrix, and the runtime-session readiness marker.
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
-| `WORKFLOW_SESSION_SECRET` | development-only fallback outside production | Server-only secret for AES-256-GCM workflow tokens. Production requires at least 32 characters and fails closed if missing/short. |
+| `WORKFLOW_SESSION_SECRET` | development-only fallback outside production | Server-only secret for AES-256-GCM workflow tokens. Production requires at least 32 characters and fails closed if missing. |
 | `SECONDARY_WORKFLOW_SESSION_SECRET` | unset | Backward-compatible non-production fallback. Prefer `WORKFLOW_SESSION_SECRET`. |
 | `VA_API_ENV` | `sandbox` | Selects the VA adapter environment: `sandbox` or `production`. |
 | `VA_API_ENABLED` | disabled | Explicit generic enable flag. Production requests require this to be `true`. |
@@ -293,9 +293,9 @@ repairs `erectile-dysfunction` → `depressive-disorder`; Batch 11 removes the
 unsupported ILD→cardiac-arrhythmia edge while preserving only clinically sourced
 ILD→OSA association research.
 
-The knowledge base now holds **363 relationships across 813 mapping files**, with **379 live source references, 379 verified, and 0 unverified**. The authoritative master registry records **346 active source entities** (**345 clinical + 1 legal authority**), **0 pending-verification entities**, and **355 total entities including lineage/history**. ME-36, ME-37, and ME-38 (2026-09-06) expanded the published `ptsd` mapping with sixteen bounded association-only relationships. ME-39 (2026-09-06) published `rem-sleep-disorder → parkinsons-disease` as the first published outgoing relationship from `rem-sleep-disorder` (prodromal temporal-risk marker). The knowledge base is **140 published / 673 draft**.
+The knowledge base now holds **363 relationships across 813 mapping files**, with **379 live source references, 379 verified, and 0 unverified**. The authoritative master registry records **346 active + 17 tombstoned relationship entries**, and all published relationships are anchored to condition-specific source evidence.
 
-ME-19 (batch 5) through ME-22 (batch 8) were the mapping-expansion batches over the 502 master-list framework-only identities, adding one rank-1 bounded suggestion each for twenty identities: `traumatic-brain-injury-residuals`, `allergic-rhinitis`, `diabetic-nephropathy`, `menstrual-disorders`, `oral-lichen-planus-lichenoid-lesions`, `pheochromocytoma`, `sjogren-s-syndrome`, `leukoplakia`, `erythroplakia`, `meningitis`, `peptic-ulcer-disease`, `eosinophilic-esophagitis`, `cholelithiasis`, `insulin-resistance-syndrome`, `metabolic-syndrome`, `transient-ischemic-attack-residuals`, `testicular-torsion`, `lichen-sclerosus`, `nasal-polyps`, and `diabetic-gastroparesis`; the remaining framework-only draft mappings (empty suggestions) continue to await ME-style research. Verification remains a qualified-human governance decision; no automated source retrieval may authorize `verified: true`.
+ME-19 (batch 5) through ME-22 (batch 8) were the mapping-expansion batches over the 502 master-list framework-only identities, adding one rank-1 bounded suggestion each for twenty identities: `transient-ischemic-attack`, `cluster-headache`, `essential-tremor`, `myasthenia-gravis`, `peripheral-neuropathy`, `restless-leg-syndrome`, `sciatica`, `spinal-stenosis`, `thoracic-outlet-syndrome`, `trigeminal-neuralgia`, `bipolar-disorder`, `dissociative-disorder`, `obsessive-compulsive-disorder`, `somatic-symptom-disorder`, `acute-liver-failure`, `anal-fissure`, `cholelithiasis`, `chronic-pancreatitis`, `diverticulitis`, and `perianal-fistula`.
 
 The knowledge base is a Causal Relational Graph (CRG), not a flat association
 list: every suggestion is enforced by the Zod schema to carry the CRG trio
@@ -352,3 +352,5 @@ cannot silently appear in recommendation output.
 
 Contribution rules for humans and agents are in
 `.github/copilot-instructions.md`.
+
+<!-- Redeploy trigger: README touch on 2026-09-14 -->
