@@ -1,3 +1,12 @@
+/**
+ * Evidence text classification module.
+ *
+ * **Browser-only** — must never be imported from app pages, Server Actions,
+ * or API routes. This module is part of the evidence-parser boundary
+ * (see docs/evidence-parser-boundary.md). It runs entirely in the client
+ * within LocalEvidenceAnalyzer and classifies extracted text segments by
+ * clinical relevance (nexus-relevant, supporting, diagnosis, etc.).
+ */
 export type EvidenceCategory =
   | "diagnosis"
   | "causation"

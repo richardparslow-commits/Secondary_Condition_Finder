@@ -167,7 +167,7 @@ for (const file of sourceFiles(sourceRoot)) {
     ) {
       violation(
         "EVIDENCE-PARSER-BOUNDARY",
-        `${relative}: evidence parsers may only be imported from "use client" components or lib, never from app pages/actions`,
+        `${relative}: evidence parsers may only be imported from "use client" components or lib, never from app pages/actions (see docs/evidence-parser-boundary.md)`,
       );
     }
   }
