@@ -73,6 +73,26 @@ mechanism theory), each with a short explanation of why it matters. Checkmarks
 are kept only in the current browser tab and can be exported alone or combined
 with the consultation summary.
 
+Step 4 adds a **guided VA.gov medical-records download walkthrough** for
+veterans who want their complete VA health record: downloading it is a
+multi-page journey — VA.gov signs you in through ID.me (email, password, and a
+multi-factor code), then the download tool asks for a date range, record type,
+and file type before producing the PDF. The walkthrough mirrors that flow as a
+14-step checklist with deep links that open VA.gov in a new tab. It never
+collects, transmits, or stores VA.gov or ID.me credentials, MFA codes, or
+session data — sign-in happens entirely on VA.gov — and its progress checkmarks
+live only in the current browser tab. It appears on the secondary workflow's
+document step and standalone at `/get-records`.
+
+![Guided VA.gov medical-records download walkthrough: 14 steps from VA.gov
+sign-in through ID.me MFA to the PDF report download, with deep links and a
+clear progress store](docs/assets/va-gov-walkthrough.png)
+
+The screenshot is regenerable with `node
+scripts/capture-va-gov-walkthrough-screens.mjs` (starts a dev server and
+headless Chrome, seals a dev-only workflow cookie, and captures the card via
+the DevTools Protocol).
+
 ## Stack
 
 Next.js App Router, TypeScript, Tailwind, Zod, Vitest, Chrome/ChromeDriver E2E,

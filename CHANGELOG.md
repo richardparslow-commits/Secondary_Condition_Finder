@@ -3,6 +3,54 @@
 All notable changes to Secondary Condition Finder. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); merges are grouped by date, newest first.
 
+## 2026-09-14 (later)
+
+- **Standalone `/get-records` page + README screenshot** (`feat`/`docs`) Adds
+  `/get-records`, a standalone route outside the numbered workflow that reuses the
+  `VaGovRecordWalkthrough` component with its own explicit no-credential boundary copy and
+  onward links into the secondary workflow and privacy policy; linked from the home page's
+  utility nav and a new utility-section card. `tests/get-records-page.test.ts` (2 tests) pins
+  the shared-component composition, boundary phrasing, no-fetch/no-password surfaces, and home
+  wiring. Adds `scripts/capture-va-gov-walkthrough-screens.mjs` (maintainer-gate utility):
+  starts a dev server + headless Chrome, seals a dev-only workflow cookie, and captures the
+  walkthrough card over the DevTools Protocol (CDP clip coordinates are CSS px with
+  independent `scale` — combining it with `deviceScaleFactor` double-scales); the regenerated
+  `docs/assets/va-gov-walkthrough.png` is embedded in the README. Suite: 230 files / 1375
+  tests.
+
+## 2026-09-14
+
+- **Guided VA.gov medical-records download walkthrough (Step 4)** (`feat`) Adds a
+  `VaGovRecordWalkthrough` research aid at the top of the Step 4 documents page, mirroring the real
+  VA.gov sign-in → ID.me (email, password, MFA, SMS code) → My VA → My Health → Medical records →
+  Download (All time / Select all VA records / PDF / Download report) flow as a 14-step checklist
+  with deep links that open VA.gov in a new tab. Authored steps live in
+  `src/lib/secondary-workflow/va-gov-record-walkthrough.ts`; progress checkmarks persist in a new
+  tab-scoped `sessionStorage` store (`secondary-condition-finder:va-gov-record-walkthrough:v1`)
+  registered in `local-state.ts` so Finish Review / Start a new review clear it, with a
+  browser-only text export. The aid never collects, transmits, or stores VA.gov/ID.me credentials,
+  MFA codes, or session data — sign-in happens entirely on VA.gov, and ID.me steps are described
+  without hard-coded links (their URLs carry session/event identifiers). Privacy policy, retention
+  list, functional spec, and technical spec updated for the fourth store. Contract-pinned by
+  `tests/va-gov-record-walkthrough.test.ts` (7 tests: step fidelity + URL fragments,
+  no-credential/no-egress boundaries, registry registration, page wiring, text export, disclaimer);
+  completion-privacy and research-aids registry pins updated to four stores. Follow-up: the MFA step
+  now carries an alternate-method note (authenticator app / push / security key / passkey / PIV-CAC)
+  and the download step a "can't find the file" note (browser Downloads/Desktop) — both rendered as
+  small-print `note` fields, not new steps; SSR render of `/secondary/upload` with a sealed v2
+  workflow cookie verified all 14 steps, 8 deep links, notes, counter, and the local analyzer below.
+  Suite: 229 files / 1373 tests.
+
+- **Walkthrough follow-ups — E2E journey, README, copy tune** (`test`/`docs`) Extends
+  `e2e/secondary-workflow.mjs` to cover the aid on Step 4: heading + counter + boundary callout +
+  alternate-MFA note assertions, a count of ≥8 `https://www.va.gov` deep links, step-1 progress
+  written to `secondary-condition-finder:va-gov-record-walkthrough:v1` via hydrated onChange (same
+  retry pattern as the pathway checklist), and Start-a-new-review clearing of the walkthrough store
+  alongside the pathway store; final journey log names the aid. README adds the guided-download
+  blurb (real-flow context, deep links, no-credential boundary, tab-scoped progress). Component
+  copy split into two paragraphs with `space-y-4` step spacing. Suite: 229 files / 1373 tests
+  (e2e journey itself runs in CI with Chrome/ChromeDriver).
+
 ## 2026-09-12 (later still)
 
 - **Sixth audit report — session-write failure contracts pinned** (`test`) Adds

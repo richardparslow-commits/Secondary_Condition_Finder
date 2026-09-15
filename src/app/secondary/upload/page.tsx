@@ -9,6 +9,7 @@ import { buildEvidenceConditionTerms } from "@/lib/evidence/condition-terms";
 import { readSecondaryWorkflowSession, type StoredSecondaryWorkflowState } from "@/lib/secondary-workflow/session";
 import { MAX_TIMELINE_YEAR, MIN_TIMELINE_YEAR, timelineField } from "@/lib/secondary-workflow/state";
 import { MedicationContextUploadExplainer } from "@/components/secondary/MedicationContextExplainer";
+import { VaGovRecordWalkthrough } from "@/components/secondary/VaGovRecordWalkthrough";
 import { VoiceInputHotkeyBridge, VoiceInputTextarea } from "@/components/secondary/VoiceInputTextarea";
 import { listSymptomBridgeEntries } from "@/lib/secondary-workflow/symptom-bridge";
 import { saveDocumentsSelection } from "@/lib/actions/secondary";
@@ -62,6 +63,8 @@ export default async function UploadStepPage({ workflowState }: UploadPageProps 
         </aside>
 
         <section className="ui-card min-w-0">
+          <VaGovRecordWalkthrough />
+
           <LocalEvidenceAnalyzer conditionTerms={conditionTerms} />
 
           <form action={saveDocumentsSelection} className="mt-6 space-y-5">

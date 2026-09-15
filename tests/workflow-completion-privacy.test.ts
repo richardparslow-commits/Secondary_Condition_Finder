@@ -8,6 +8,7 @@ import {
   evidenceGapReviewStorageKey,
   pathwayRecordChecklistStorageKey,
   secondaryWorkflowLocalStorageKeys,
+  vaGovRecordWalkthroughStorageKey,
 } from "../src/lib/secondary-workflow/local-state";
 import { evidenceAnalysisStorageKey } from "../src/lib/evidence/extract";
 
@@ -16,7 +17,7 @@ function readRepoFile(relativePath: string): string {
 }
 
 describe("secondary workflow completion privacy lifecycle", () => {
-  it("clears exactly the three browser-local secondary workflow stores", () => {
+  it("clears exactly the four browser-local secondary workflow stores", () => {
     const removed: string[] = [];
     const storage = {
       removeItem(key: string) {
@@ -30,11 +31,13 @@ describe("secondary workflow completion privacy lifecycle", () => {
       evidenceAnalysisStorageKey,
       evidenceGapReviewStorageKey,
       pathwayRecordChecklistStorageKey,
+      vaGovRecordWalkthroughStorageKey,
     ]);
     expect(removed).toEqual([
       evidenceAnalysisStorageKey,
       evidenceGapReviewStorageKey,
       pathwayRecordChecklistStorageKey,
+      vaGovRecordWalkthroughStorageKey,
     ]);
   });
 

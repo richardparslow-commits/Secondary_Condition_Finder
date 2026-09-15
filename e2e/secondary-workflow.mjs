@@ -35,6 +35,10 @@ const EVIDENCE_NOTE_TEXT = [
 const PATHWAY_CHECKLIST_STORAGE_KEY = "secondary-condition-finder:pathway-record-checklist:v1";
 const PATHWAY_CHECKBOX_XPATH =
   "//input[@type='checkbox'][starts-with(@aria-label, 'Post-Traumatic Stress Disorder (PTSD) to Sleep Apnea (Obstructive, Central, Mixed):')]";
+const VA_GOV_WALKTHROUGH_STORAGE_KEY =
+  "secondary-condition-finder:va-gov-record-walkthrough:v1";
+const VA_GOV_WALKTHROUGH_FIRST_CHECKBOX_XPATH =
+  "//input[@type='checkbox'][contains(@aria-label, 'Step 1: Sign in on VA.gov')]";
 const LOCATOR_ZIP = "22101";
 const children = [];
 let sessionId;
@@ -382,6 +386,48 @@ async function runJourney() {
   await waitForPath("/secondary/upload");
   checkpoint("reached document choice");
 
+  // Step 4 aid: the guided VA.gov medical-records download walkthrough. The
+  // card must render above the local evidence analyzer with all 14 steps, its
+  // eight VA.gov deep links, and a working tab-scoped progress store.
+  // Dev-server compile of the upload route can lag on cold start; the pathway
+  // mapper waits below use the same allowance.
+  await waitForText("Need your full VA medical record? Guided VA.gov download", "VA.gov walkthrough card", 30_000);
+  await waitForText("of 14 steps marked complete", "walkthrough progress counter");
+  const walkthroughText = await bodyText();
+  if (!walkthroughText.includes("Sign-in happens on VA.gov — not here.")) {
+    throw new Error("VA.gov walkthrough is missing the sign-in boundary callout.");
+  }
+  if (!walkthroughText.includes("ID.me — email address")) {
+    throw new Error("VA.gov walkthrough is missing the ID.me email step.");
+  }
+  if (!walkthroughText.includes("authenticator app")) {
+    throw new Error("VA.gov walkthrough is missing the alternate-MFA note.");
+  }
+  const walkthroughLinkCount = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: `return [...document.querySelectorAll('a[target="_blank"][rel="noreferrer"]')].filter((a) => a.href.startsWith('https://www.va.gov')).length;`,
+    args: [],
+  });
+  if (typeof walkthroughLinkCount !== "number" || walkthroughLinkCount < 8) {
+    throw new Error(`VA.gov walkthrough rendered ${walkthroughLinkCount} VA.gov deep links; expected at least 8.`);
+  }
+  // The write happens inside the hydrated onChange handler; retry the
+  // (idempotent) click until sessionStorage proves the handler ran.
+  let walkthroughStored = null;
+  const walkthroughDeadline = Date.now() + 30_000;
+  while (Date.now() < walkthroughDeadline) {
+    await setSelected(VA_GOV_WALKTHROUGH_FIRST_CHECKBOX_XPATH, true);
+    await delay(500);
+    const candidate = await readSessionStorage(VA_GOV_WALKTHROUGH_STORAGE_KEY);
+    if (typeof candidate === "string" && candidate.includes("sign-in-start")) {
+      walkthroughStored = candidate;
+      break;
+    }
+  }
+  if (!walkthroughStored) {
+    throw new Error(`VA.gov walkthrough progress never reached sessionStorage; last=${walkthroughStored}`);
+  }
+  checkpoint("VA.gov walkthrough rendered above the analyzer; step 1 progress persisted in its tab-scoped store");
+
   // Step 4: paste a realistic clinician note and analyze it browser-locally so
   // Step 6 has real excerpts for the pathway mapper to project.
   await selectOptionByValue("physician", "credential");
@@ -573,15 +619,19 @@ async function runJourney() {
     throw new Error("Pathway checklist selection could not be restored after Clear checkmarks.");
   }
 
-  checkpoint("verify Start a new review clears the pathway checklist store");
+  checkpoint("verify Start a new review clears the pathway checklist and VA.gov walkthrough stores");
   await clickXpath("//button[contains(normalize-space(.), 'Start a new review')]");
   await waitForPath("/secondary/diagnosed");
   const clearedValue = await readSessionStorage(PATHWAY_CHECKLIST_STORAGE_KEY);
   if (clearedValue !== null) {
     throw new Error(`Pathway checklist selections survived Start a new review: ${clearedValue}`);
   }
+  const clearedWalkthroughValue = await readSessionStorage(VA_GOV_WALKTHROUGH_STORAGE_KEY);
+  if (clearedWalkthroughValue !== null) {
+    throw new Error(`VA.gov walkthrough progress survived Start a new review: ${clearedWalkthroughValue}`);
+  }
 
-  console.log("Real-browser E2E passed: home → diagnosed → service-connected → ratings → documents → diagnosis-centered connections → pathway checklist persistence → evidence review with pathway evidence mapping → completion clearing.");
+  console.log("Real-browser E2E passed: home → diagnosed → service-connected → ratings → documents (with VA.gov walkthrough aid) → diagnosis-centered connections → pathway checklist persistence → evidence review with pathway evidence mapping → completion clearing.");
 }
 
 async function cleanup() {
