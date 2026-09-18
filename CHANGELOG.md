@@ -3,6 +3,32 @@
 All notable changes to Secondary Condition Finder. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); merges are grouped by date, newest first.
 
+## 2026-09-18
+
+- **Route → rate-limit mapping is now data, checked against the real route files** (`refactor`):
+  `src/proxy.ts` chose its limiter with three `url.pathname === "…"` comparisons and recorded the
+  route list nowhere a machine could check, so a fourth sensitive route would have shipped
+  unlimited behind a passing build. The mapping moves into `src/lib/api-route-policies.ts`
+  (`API_ROUTE_LIMIT_POLICIES`, `API_ROUTES_WITHOUT_LIMITER`, `compileApiRoutePattern`,
+  `findApiRouteLimitPolicy`) and the proxy consults it in a single lookup. Each policy carries its
+  own 429 body plus a recorded rationale, and matching is anchored exact-match with `[param]` for
+  exactly one path segment — one exported implementation shared by the proxy and the test, so the
+  two cannot drift apart. `tests/api-route-rate-limit-coverage.test.ts` (16 tests) derives the real
+  routes from `src/app/api/**/route.ts`, reading both the directory pattern and each route's
+  exported handler methods off disk, then fails when a route is neither policed nor explicitly
+  exempt, when a policy names a route that no longer exists, when two policies could both match one
+  request, or when the proxy stops consulting the registry. Both directions were confirmed
+  non-vacuous by deliberate mutation: adding an unclassified `route.ts` failed the coverage
+  assertion (naming the offending route), and making the proxy skip the lookup failed four wiring
+  tests. Three things are deliberately unchanged. Every 429 status, body, and header is what it was
+  — the routes answer 429 with two different shapes, and clients may parse them. The `POST` rule
+  stays an inline method-scoped branch because it is not route-scoped: it covers **all** non-`_next`
+  POSTs, API POSTs included, so such a request still consumes the workflow-session bucket as well as
+  its own route policy. And one honest limit: the registry cannot be *derived* at request time,
+  because `proxy.ts` runs in the middleware runtime with no filesystem access — the derivation
+  lives in the test, which makes the registry a checked declaration rather than a generated one.
+  Suite: 234 files / 1421 tests.
+
 ## 2026-09-17
 
 - **Single shared VA reference provenance vocabulary** (`refactor`/`fix`): the label/notice pair each

@@ -1,12 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import {
-  adminCacheClearLimiter,
-  extractClientKey,
-  healthLimiter,
-  regulatoryPreflightLimiter,
-  workflowSessionLimiter,
-} from "@/lib/rate-limiter";
+import { findApiRouteLimitPolicy } from "@/lib/api-route-policies";
+import { extractClientKey, workflowSessionLimiter } from "@/lib/rate-limiter";
 
 /**
  * CSP / Trusted-Types violation reporting target.
@@ -225,8 +220,10 @@ export function proxy(request: NextRequest) {
       },
     });
 
-  // Server Action POSTs (Next.js form submissions to pages with server-only
-  // directives) are rate-limited as workflow session writes.
+  // Method-scoped rule, not a route rule: this covers every POST that is not a
+  // Next.js asset request, including Server Action form submissions to pages
+  // with server-only directives *and* API POSTs. An API POST therefore consumes
+  // this bucket as well as its own route policy below.
   if (method === "POST" && !pathname.startsWith("/_next")) {
     const result = workflowSessionLimiter.check(clientKey);
     if (result.limited) {
@@ -237,33 +234,19 @@ export function proxy(request: NextRequest) {
     }
   }
 
-  // Regulatory preflight sync (authenticated, expensive upstream refresh)
-  if (pathname === "/api/regulatory/preflight") {
-    const result = regulatoryPreflightLimiter.check(clientKey);
+  // Route-scoped policies. The registry in `api-route-policies.ts` is the only
+  // place that knows which routes are limited and what each one answers on
+  // rejection, so this loop is all the wiring a new policed route needs.
+  //
+  // Matched against the *normalized* pathname, never the raw `url.pathname`.
+  // The compiled patterns are anchored (`^/api/health$`), so a trailing or
+  // doubled slash would slip past the registry while still reaching the route —
+  // exactly the bypass `normalizePathname` exists to close.
+  const routePolicy = findApiRouteLimitPolicy(pathname);
+  if (routePolicy) {
+    const result = routePolicy.limiter.check(clientKey);
     if (result.limited) {
-      return tooManyRequests(
-        { ok: false, error: "Rate limit exceeded. Please try again later." },
-        result.retryAfterSeconds,
-      );
-    }
-  }
-
-  // Admin cache-clear endpoint (authenticated, destructive)
-  if (pathname === "/api/admin/cache-clear") {
-    const result = adminCacheClearLimiter.check(clientKey);
-    if (result.limited) {
-      return tooManyRequests(
-        { ok: false, error: "Rate limit exceeded. Please try again later." },
-        result.retryAfterSeconds,
-      );
-    }
-  }
-
-  // Health endpoint (public, lightweight but should not be hammered)
-  if (pathname === "/api/health") {
-    const result = healthLimiter.check(clientKey);
-    if (result.limited) {
-      return tooManyRequests({ status: "rate_limited" }, result.retryAfterSeconds);
+      return tooManyRequests(routePolicy.limitedBody, result.retryAfterSeconds);
     }
   }
 
