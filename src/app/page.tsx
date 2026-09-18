@@ -49,6 +49,7 @@ export default function HomePage() {
             <p className="mt-3">{CAUSED_AGGRAVATED_DISTINCTION} {TRACK_DISTINCTION_NOTICE}</p>
             <nav className="mt-6 flex flex-wrap gap-4 text-sm" aria-label="Utility links">
               <Link href="/scenarios">Demo Scenarios</Link>
+              <Link href="/get-records">Get Your VA Medical Record</Link>
               <Link href="/privacy">Privacy</Link>
               <Link href="/terms">Terms</Link>
               <Link href="/about">About</Link>
@@ -74,6 +75,11 @@ export default function HomePage() {
       </div>
 
       <section className="mt-5 grid gap-4 p-5 md:grid-cols-2">
+        <div>
+          <h2 className="text-lg font-bold">Get Your VA Medical Record</h2>
+          <p className="mt-2 text-sm">A guided walkthrough of the VA.gov sign-in (ID.me email, password, multi-factor code) and medical-records download flow — date range, record type, PDF — with deep links to each VA.gov page. The app never sees your credentials.</p>
+          <Link href="/get-records" className="mt-3 inline-block">Open the guided download walkthrough →</Link>
+        </div>
         <div>
           <h2 className="text-lg font-bold">VA Forms Reference</h2>
           <p className="mt-2 text-sm">Search public VA form metadata by form number, keyword, or title through the configured VA reference adapter or a clearly labeled local fallback.</p>
