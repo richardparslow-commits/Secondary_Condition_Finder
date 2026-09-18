@@ -75,8 +75,12 @@ function listSourceFiles(directory: string): string[] {
  * beside the original — and a copy of a module that consults the runtime fact
  * would otherwise be reported as a missing capability entry, failing this suite
  * for a reason that has nothing to do with capabilities. Duplicates add nothing to
- * check, so they are skipped; the debris itself is a separate problem for the
- * environment to fix.
+ * check, so they are skipped here — which keeps every failure in this suite an
+ * answer to the capability question.
+ *
+ * Skipping is not tolerating: their presence is a failure in its own right, caught
+ * by `tests/checkout-fork-hygiene.test.ts`, so a forked copy is reported once, by
+ * the suite that can name the cause.
  */
 function duplicateContentFiles(files: string[]): Set<string> {
   const byDigest = new Map<string, string[]>();

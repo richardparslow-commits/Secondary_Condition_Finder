@@ -5,6 +5,27 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-18
 
+- **A forked copy can no longer hide in the checkout** (`test`): a folder-sync client watching this
+  working copy materializes a second copy of any file it sees mid-write, named `<name> 2.<ext>`, and
+  four such copies appeared in `src/` and `tests/` within a single session. They are real files —
+  TypeScript typechecks them, ESLint lints them, and any suite that derives its expectations from the
+  tree treats a copy as a new module. Deleting them was not enough, because the inspection that found
+  them could not see the worst instance: `.git/index` had been forked five times over three weeks
+  (Aug 21, Sep 3, Sep 9, Sep 17, Sep 18), and `git fsck` and `git status` both report those clean,
+  because git never reads them. The cause was placement — the checkout lived inside iCloud Drive's
+  `~/Desktop` domain — and since a same-volume rename out of that domain fails (`Operation timed
+  out`, then `ESTALE`) while unlink succeeds, it was retired by deleting the source, and only after
+  the destination matched all 1599 of its tracked files byte-for-byte.
+  `tests/checkout-fork-hygiene.test.ts` now makes a return of the debris a failure rather than
+  something the other suites route around: it walks the whole checkout including `.git`, names every
+  forked path, and pins the naming pattern and the walk against vacuity. The capability guard still
+  skips byte-identical duplicates, so that its own failures keep answering the capability question —
+  and its comment now says so, pointing at the suite that reports the copy instead.
+  Mutation-verified in three directions: a byte-identical fork of a runtime-fact module fails only the
+  hygiene suite, with both paths named and the capability suite still green; a forked non-source file
+  fails it; a forked `.git/index` fails it. The placement rule is recorded in
+  `docs/repository-governance.md`. Suite: 238 files / 1457 tests.
+
 - **One place answers what this deployment gives up** (`refactor`): four controls depend on
   process-local state, and each behaves differently once more than one process serves traffic —
   live VA access and the VA reference cache **refuse** to run, rate limiting and the VA circuit
