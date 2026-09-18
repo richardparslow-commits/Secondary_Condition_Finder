@@ -136,14 +136,32 @@ Returns component-level status for:
 | `circuitBreaker` | VA API circuit breaker state (closed/open/half-open per source) |
 | `vaReferenceCache` | Cache `scope` (`process-local` or `disabled`) plus hit/miss counters |
 | `rateLimit` | Whether application-level rate limiting is per-instance or deployment-wide |
+| `runtime` | Aggregate: which process-local capabilities are below full strength, and every capability's regime |
 
-Both `vaReferenceCache.scope` and `rateLimit.scope` answer the same kind of question —
-what regime is this process actually in — because several controls here depend on
-process-local state that behaves differently once more than one instance serves
-traffic. `vaReferenceCache.scope: "disabled"` in production is expected, not a fault:
-it means the cache is refusing to run there for correctness reasons. When that is the
-case, `vaReferenceCache.hits`/`misses` are frozen at zero and `hitRate` is `null`, which
-is why the counters should never be read without the scope.
+### What this deployment gives up
+
+Several controls depend on process-local state, and each behaves differently once more
+than one instance serves traffic. Two **refuse** to run (live VA access, the VA reference
+cache) and two keep running **weaker** than written (rate limiting, the VA circuit
+breaker — the latter was never surfaced anywhere before).
+
+`components.runtime` is the single answer to that question:
+
+| Field | Meaning |
+|-------|---------|
+| `distributed` | Whether this process is one of several |
+| `reduced` | Ids below full strength here: `vaLiveIntegration`, `vaReferenceCache`, `rateLimit`, `circuitBreaker` |
+| `capabilities` | Every id → its regime, including controls with no component of their own |
+| `detail` | One sentence naming each reduced capability and its consequence |
+
+In production **all four are reduced**, which is expected rather than a fault — so an
+empty `runtime.reduced` on a production instance would itself be the surprising reading.
+The per-control components (`vaReferenceCache`, `rateLimit`) carry the same scopes plus
+their own data, and both are generated from the same capabilities report, so they cannot
+disagree with it. `vaReferenceCache.scope: "disabled"` is why `hits`/`misses` stay frozen
+at zero and `hitRate` is `null` there — the counters should never be read without the
+scope. Adding a control that depends on process-local state requires registering it;
+the suite fails if a module consults the runtime classification without a scope.
 
 **HTTP 200** = healthy (catalog + session crypto OK)
 **HTTP 503** = degraded (one or more critical components failing)
@@ -179,6 +197,19 @@ is why the counters should never be read without the scope.
       "latencyMs": 0,
       "scope": "per-instance",
       "detail": "per-IP limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer"
+    },
+    "runtime": {
+      "status": "ok",
+      "latencyMs": 0,
+      "distributed": true,
+      "reduced": ["vaLiveIntegration", "vaReferenceCache", "rateLimit", "circuitBreaker"],
+      "capabilities": {
+        "vaLiveIntegration": "disabled",
+        "vaReferenceCache": "disabled",
+        "rateLimit": "per-instance",
+        "circuitBreaker": "per-instance"
+      },
+      "detail": "4 of 4 process-local capabilities are below full strength here: Live VA API access (refuses, disabled); VA reference cache (refuses, disabled); Application rate limiting (degrades, per-instance); VA API circuit breaker (degrades, per-instance)"
     }
   },
   "latencyMs": 5,

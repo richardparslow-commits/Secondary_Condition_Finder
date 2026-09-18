@@ -56,6 +56,19 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
       "latencyMs": 0,
       "scope": "per-instance" | "single-process",
       "detail": "per-IP limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer"
+    },
+    "runtime": {
+      "status": "ok",
+      "latencyMs": 0,
+      "distributed": false,
+      "reduced": [],
+      "capabilities": {
+        "vaLiveIntegration": "enabled" | "disabled",
+        "vaReferenceCache": "process-local" | "disabled",
+        "rateLimit": "single-process" | "per-instance",
+        "circuitBreaker": "single-process" | "per-instance"
+      },
+      "detail": "all process-local capabilities run at full strength in this runtime"
     }
   },
   "latencyMs": 18,
@@ -65,6 +78,14 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
 
 **Healthy** (`200`): `catalog.status === "ok"` AND `sessionCrypto.status === "ok"`.
 **Degraded** (`503`): Either `catalog` or `sessionCrypto` is `"error"`.
+
+`components.runtime` aggregates every control that depends on process-local state, so
+"what does this deployment give up?" has one answer: `reduced` lists capability ids below
+full strength, `capabilities` maps every id to its regime (including live VA access and
+the circuit breaker, which have no component of their own), and `detail` states it in one
+sentence. A distributed runtime reports all four as reduced; that is expected, not
+degraded. The `scope`/`detail` shown inside `components.vaReferenceCache` and
+`components.rateLimit` are generated from the same report, so they cannot disagree with it.
 
 **Runtime**: `force-dynamic`, `nodejs`.
 

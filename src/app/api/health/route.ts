@@ -1,14 +1,11 @@
 import { NextResponse } from "next/server";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
-import { rateLimitScope } from "@/lib/rate-limiter";
+import { runtimeCapabilities } from "@/lib/runtime-capabilities";
 import { openSessionPayload, sealSessionPayload } from "@/lib/workflow-session-crypto";
 import { loadVaApiConfig } from "@/lib/va/sandbox";
 import { getCircuitSnapshot } from "@/lib/va/circuit-breaker";
-import {
-  peekCacheCounters,
-  vaReferenceCacheScope,
-} from "@/lib/va/reference-cache";
+import { peekCacheCounters } from "@/lib/va/reference-cache";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -94,6 +91,11 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
  * - components.rateLimit: { status, latencyMs, scope, detail } — whether
  *   application-level rate limiting is per-instance here, since the effective
  *   limit scales with instance count and is not otherwise observable
+ * - components.runtime: { status, latencyMs, distributed, reduced, capabilities,
+ *   detail } — the aggregate answer to "what does this deployment give up?",
+ *   covering every process-local control (including live VA access and the
+ *   circuit breaker, which have no component of their own). `reduced` lists the
+ *   capabilities below full strength; `capabilities` maps every id to its regime
  * - latencyMs: total endpoint latency
  * - timestamp: ISO 8601
  *
@@ -107,8 +109,11 @@ export async function GET() {
     const vaConfig = checkVaConfig();
     const circuit = getCircuitSnapshot();
     const cacheCounters = peekCacheCounters();
-    const cacheScope = vaReferenceCacheScope();
-    const rateLimit = rateLimitScope();
+    // Scopes come from the single capabilities report, never re-derived here, so a
+    // control cannot grow a health field that disagrees with its own behaviour.
+    const capabilities = runtimeCapabilities();
+    const cacheScope = capabilities.capabilities.vaReferenceCache;
+    const rateLimit = capabilities.capabilities.rateLimit;
 
     const components = {
       catalog,
@@ -135,6 +140,14 @@ export async function GET() {
         latencyMs: 0,
         scope: rateLimit.scope,
         detail: rateLimit.detail,
+      },
+      runtime: {
+        status: "ok" as const,
+        latencyMs: 0,
+        distributed: capabilities.distributed,
+        reduced: capabilities.summary.reduced,
+        capabilities: capabilities.summary.scopes,
+        detail: capabilities.summary.detail,
       },
     };
 

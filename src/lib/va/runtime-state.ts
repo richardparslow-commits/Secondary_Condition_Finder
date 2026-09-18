@@ -30,6 +30,37 @@ export function vaProcessLocalStateAllowed(
 export const VA_SHARED_STATE_REQUIRED_ERROR =
   "VA live integration is unavailable in production or distributed runtimes until a shared rate-limit/cache coordinator is configured.";
 
+/** Regime label for the VA live-access capability: allowed here, or refused here. */
+export type VaLiveIntegrationRegime = "enabled" | "disabled";
+
+export interface VaLiveIntegrationScope {
+  scope: VaLiveIntegrationRegime;
+  detail: string;
+}
+
+/**
+ * Report whether outbound VA access can run in this runtime, and why not when it
+ * cannot.
+ *
+ * This is the capability behind the gate in `sandbox.ts` (`requestVaJson` refuses
+ * to fetch when process-local state is not allowed): live access has no meaning
+ * without a coordinated outbound budget and cache, so it is refused rather than
+ * served weaker. Reported through `runtime-capabilities.ts`.
+ */
+export function vaLiveIntegrationScope(
+  env: RuntimeEnvironment = process.env,
+): VaLiveIntegrationScope {
+  if (!vaProcessLocalStateAllowed(env)) {
+    return { scope: "disabled", detail: VA_SHARED_STATE_REQUIRED_ERROR };
+  }
+
+  return {
+    scope: "enabled",
+    detail:
+      "one process serves traffic, so the outbound budget and reference cache are enforced across all of it",
+  };
+}
+
 /**
  * The three deliberate VA public-reference runtime modes required by issue #287.
  *

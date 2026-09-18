@@ -5,6 +5,35 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-18
 
+- **One place answers what this deployment gives up** (`refactor`): four controls depend on
+  process-local state, and each behaves differently once more than one process serves traffic —
+  live VA access and the VA reference cache **refuse** to run, rate limiting and the VA circuit
+  breaker keep running **weaker** than written. Each used to answer that question only inside its
+  own file, so `/api/health` could show a hit/miss counter frozen at zero, or a circuit reported
+  closed, with nothing saying either reading was structurally uninformative. The circuit breaker
+  in particular was never surfaced anywhere: it is deliberately **not** gated on the runtime
+  classification, because an absent breaker is worse than a per-instance one, which makes it the
+  control most likely to be misread — `getCircuitSnapshot()` reports only the instance that
+  answered, so a closed circuit there does not mean upstream is healthy.
+  `src/lib/runtime-capabilities.ts` now owns the aggregate — `runtimeCapabilities(env)` returns
+  `{distributed, capabilities, summary}`, each capability declaring
+  `{id, label, behavior, full, scope, detail, sources}` with a `detail` that states the
+  consequence rather than the label. `/api/health` exposes it as `components.runtime`, and takes
+  the `scope`/`detail` for `components.vaReferenceCache` and `components.rateLimit` from that
+  report instead of re-deriving them, so a health field cannot disagree with the control it
+  describes.
+
+  The "a future control cannot hide" property is enforced rather than intended: each capability
+  declares `sources` — the modules that consult the runtime fact on its behalf — and
+  `tests/runtime-capabilities.test.ts` walks `src/` for those call sites and fails in both
+  directions, where an unregistered consumer reports nothing and a claimed source that no longer
+  consults the fact is a stale claim. Mutation-verified: adding a module that consults the fact
+  without registering fails with that file named, and repointing a claim at a real module that
+  does not consult it fails as stale (which also surfaces the now-unaccounted control). `full` is
+  `!isDistributedRuntime(env)` for all four today, asserted on purpose so a future capability that
+  stays full while distributed has to change the claim deliberately. Suite: 237 files / 1454
+  tests.
+
 - **The VA cache control plane stops reporting success it never had** (`fix`): the process-local VA
   reference cache refuses to operate in production and distributed runtimes, which is the intended
   fail-closed behaviour — but nothing said so. `/api/health` reported `hits`/`misses` that are
