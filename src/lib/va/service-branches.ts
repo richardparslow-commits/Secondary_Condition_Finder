@@ -1,5 +1,10 @@
 import "server-only";
 
+import {
+  resolveVaResultEnvironment,
+  vaFallbackStatus,
+  vaLiveStatus,
+} from "./provenance";
 import { type VaReferenceSourceStatus } from "./reference-cache";
 import {
   clearVaReferenceNamespace,
@@ -35,16 +40,10 @@ const LOCAL_BRANCHES: ServiceBranchReferenceItem[] = [
   { code: "SPACE_FORCE", description: "Space Force" },
 ];
 
-function localFallback(notice: string): ServiceBranchReferenceView {
+function localFallback(): ServiceBranchReferenceView {
   return {
     items: LOCAL_BRANCHES,
-    source: "local-fallback",
-    sourceLabel: "Local branch fallback",
-    notice,
-    live: false,
-    environment: null,
-    retrievedAt: null,
-    cacheStatus: "miss",
+    ...vaFallbackStatus("service-branches"),
   };
 }
 
@@ -64,38 +63,20 @@ export async function loadServiceBranchReference(
     async () => {
       const result = await fetcher();
       if (!result.success || !result.data || result.data.items.length === 0) {
-        return {
-          view: localFallback(
-            "VA service-branch reference data is unavailable or disabled.",
-          ),
-          cacheable: false,
-        };
+        return { view: localFallback(), cacheable: false };
       }
 
-      const environment =
-        result.environment ??
-        (result.source === "va-production-api"
-          ? "production"
-          : configuredEnvironment);
+      const environment = resolveVaResultEnvironment(
+        result,
+        configuredEnvironment,
+      );
       return {
         cacheable: true,
         view: {
           items: [...result.data.items].sort((a, b) =>
             a.description.localeCompare(b.description),
           ),
-          source: result.source,
-          sourceLabel:
-            environment === "production"
-              ? "VA service-branch production reference"
-              : "VA service-branch sandbox reference",
-          notice:
-            environment === "production"
-              ? "These standardized branch names came from VA Benefits Reference Data and are used only as administrative reference context."
-              : "These standardized branch names came from VA sandbox reference data and may not be current. They are used only as administrative reference context.",
-          live: true,
-          environment,
-          retrievedAt: new Date().toISOString(),
-          cacheStatus: "miss",
+          ...vaLiveStatus("service-branches", environment, result.source),
         },
       };
     },

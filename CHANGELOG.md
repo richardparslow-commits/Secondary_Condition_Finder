@@ -5,6 +5,36 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-17
 
+- **Single shared VA reference provenance vocabulary** (`refactor`/`fix`): the label/notice pair each
+  public-reference loader shows beside its data now lives once, in
+  `src/lib/va/provenance.ts`. Between them the five loaders carried 25 distinct label/notice
+  strings, each selected by a hand-written ternary per module, so wording and trust semantics
+  were enforced by discipline across five files. `SURFACE_COPY` owns all of it keyed by surface
+  (`service-branches`, `forms-finder`, `form-reference`, `disability-reference`,
+  `accredited-representatives`); `vaProvenanceCopy`/`vaFallbackCopy` return the pair for views that
+  carry no status fields (`ClaimFormReference`), and `vaLiveStatus`/`vaFallbackStatus` return the
+  full `VaReferenceSourceStatus` block for the other four. Centralizing exposed a second, subtler
+  duplication: environment resolution had **three** implementations — `result.environment ??
+  (source === "va-production-api" ? "production" : configured)` in three modules, the raw source
+  check in `form-reference`, and the *configured* environment only in `forms-finder`. Worth being
+  precise about the impact: those three rules were extensionally **equivalent**, because the adapter
+  derives both `environment` and `source` from a single `resolveEnvironment(config)` call, so all
+  three expressions agree for every result it can return today. No live mislabelling was fixed.
+  What changed is the basis of the agreement — from coincidence to construction. A result reporting
+  an environment other than the one requested (a production request downgraded to sandbox, a retry
+  routed elsewhere) would have made three modules disagree with each other and the other two
+  disagree with all of them, with nothing to catch it.
+  `resolveVaResultEnvironment` is now the one rule, preferring the result over configuration and
+  never inventing production, so an under-claiming result is honoured — the fail-safe direction.
+  `tests/va-provenance-copy.test.ts`
+  (9 tests) reads the table through the module's own API — rather than restating the copy — and
+  asserts every surface has distinct production/sandbox wording, that sandbox notices warn the data
+  may not be current and fallback notices say the upstream was unavailable or disabled, that
+  resolution never promotes a sandbox result to production, and that each loader delegates to the
+  shared owner for its own surface. The last check matches a *call site*, not a bare identifier:
+  an earlier version of it passed on the import line alone when the resolver was swapped out, which
+  a deliberate mutation caught. Suite: 233 files / 1405 tests.
+
 - **Single shared VA reference cache protocol** (`refactor`/`fix`): extracts
   `withVaReferenceCache` into `src/lib/va/reference-cache-access.ts` and migrates all five
   public-reference loaders (`service-branches`, `forms-finder`, `form-reference`,

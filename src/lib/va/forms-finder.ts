@@ -1,5 +1,10 @@
 import "server-only";
 
+import {
+  resolveVaResultEnvironment,
+  vaFallbackStatus,
+  vaLiveStatus,
+} from "./provenance";
 import { type VaReferenceSourceStatus } from "./reference-cache";
 import {
   clearVaReferenceNamespace,
@@ -45,10 +50,10 @@ export async function loadVaFormsFinder(
 ): Promise<VaFormsFinderView> {
   const normalizedQuery = query.trim().slice(0, 120) || "21-526EZ";
   const config = loadVaApiConfig();
-  const environment = config.environment ?? "sandbox";
+  const configuredEnvironment = config.environment ?? "sandbox";
   const cacheKey = vaReferenceCacheKey(
     VA_REFERENCE_NAMESPACES.formsFinder,
-    environment,
+    configuredEnvironment,
     normalizedQuery.toLowerCase(),
   );
 
@@ -63,19 +68,15 @@ export async function loadVaFormsFinder(
           view: {
             query: normalizedQuery,
             items: localResults(normalizedQuery),
-            source: "local-fallback",
-            sourceLabel: "Local reference fallback",
-            notice:
-              "VA Forms search is unavailable or disabled. Only matching local references can be shown; confirm current forms on VA.gov.",
-            live: false,
-            environment: null,
-            retrievedAt: null,
-            cacheStatus: "miss",
+            ...vaFallbackStatus("forms-finder"),
           },
         };
       }
 
-      const retrievedAt = new Date().toISOString();
+      const environment = resolveVaResultEnvironment(
+        result,
+        configuredEnvironment,
+      );
       return {
         cacheable: true,
         view: {
@@ -91,19 +92,7 @@ export async function loadVaFormsFinder(
               pages: item.attributes.pages ?? null,
               validPdf: item.attributes.valid_pdf ?? null,
             })),
-          source: result.source,
-          sourceLabel:
-            environment === "production"
-              ? "VA Forms production"
-              : "VA Forms sandbox",
-          notice:
-            environment === "production"
-              ? "Results came from the VA Forms production API. Confirm the form on VA.gov before filing because forms and revisions can change."
-              : "Results came from the VA Forms sandbox. Sandbox data is for testing and may not be current; confirm forms on VA.gov before filing.",
-          live: true,
-          environment,
-          retrievedAt,
-          cacheStatus: "miss",
+          ...vaLiveStatus("forms-finder", environment, result.source),
         },
       };
     },

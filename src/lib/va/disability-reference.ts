@@ -2,6 +2,11 @@ import "server-only";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
 
+import {
+  resolveVaResultEnvironment,
+  vaFallbackStatus,
+  vaLiveStatus,
+} from "./provenance";
 import { type VaReferenceSourceStatus } from "./reference-cache";
 import {
   clearVaReferenceNamespace,
@@ -41,14 +46,7 @@ function localFallback(): DisabilityReferenceView {
 
   return {
     items,
-    source: "local-fallback",
-    sourceLabel: "Local catalog fallback",
-    notice:
-      "VA reference data is unavailable or disabled. These names come from this app's local condition catalog, not from VA Benefits Reference Data. Do not treat this fallback as an official VA list.",
-    live: false,
-    environment: null,
-    retrievedAt: null,
-    cacheStatus: "miss",
+    ...vaFallbackStatus("disability-reference"),
   };
 }
 
@@ -80,28 +78,15 @@ export async function loadDisabilityReference(
         return { view: localFallback(), cacheable: false };
       }
 
-      const environment =
-        result.environment ??
-        (result.source === "va-production-api"
-          ? "production"
-          : configuredEnvironment);
+      const environment = resolveVaResultEnvironment(
+        result,
+        configuredEnvironment,
+      );
       return {
         cacheable: true,
         view: {
           items: currentItems,
-          source: result.source,
-          sourceLabel:
-            environment === "production"
-              ? "VA production reference"
-              : "VA sandbox reference",
-          notice:
-            environment === "production"
-              ? "These public reference values came from VA Benefits Reference Data. A matching name is not a diagnosis, eligibility decision, rating, or proof of service connection."
-              : "These public reference values came from the VA Benefits Reference Data sandbox. Sandbox data is test data and may not be current. A matching name is not a diagnosis, eligibility decision, rating, or proof of service connection.",
-          live: true,
-          environment,
-          retrievedAt: new Date().toISOString(),
-          cacheStatus: "miss",
+          ...vaLiveStatus("disability-reference", environment, result.source),
         },
       };
     },

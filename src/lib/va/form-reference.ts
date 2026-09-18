@@ -7,6 +7,11 @@ import {
   withVaReferenceCache,
 } from "./reference-cache-access";
 import {
+  resolveVaResultEnvironment,
+  vaFallbackCopy,
+  vaProvenanceCopy,
+} from "./provenance";
+import {
   fetchVaForms,
   loadVaApiConfig,
   type VaApiResult,
@@ -29,9 +34,7 @@ const LOCAL_FORM_REFERENCE: ClaimFormReference = {
   url: "https://www.va.gov/find-forms/about-form-21-526ez/",
   lastRevisionOn: null,
   source: "local-fallback",
-  sourceLabel: "Local reference",
-  notice:
-    "VA Forms API data is unavailable or disabled. Confirm the current form and revision on VA.gov before filing.",
+  ...vaFallbackCopy("form-reference"),
 };
 
 type FormsFetcher = (
@@ -76,7 +79,10 @@ export async function loadClaimFormReference(
         return { view: LOCAL_FORM_REFERENCE, cacheable: false };
       }
 
-      const production = result.source === "va-production-api";
+      const environment = resolveVaResultEnvironment(
+        result,
+        configuredEnvironment,
+      );
       return {
         cacheable: true,
         view: {
@@ -85,12 +91,7 @@ export async function loadClaimFormReference(
           url: current.attributes.url,
           lastRevisionOn: current.attributes.last_revision_on ?? null,
           source: result.source,
-          sourceLabel: production
-            ? "VA production reference"
-            : "VA sandbox reference",
-          notice: production
-            ? "This metadata came from the VA Forms production API. Confirm the form on VA.gov before filing because forms and revisions can change."
-            : "This metadata came from the VA sandbox environment. Sandbox data is for testing and may not be current; confirm the form on VA.gov before filing.",
+          ...vaProvenanceCopy("form-reference", environment),
         },
       };
     },
