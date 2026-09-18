@@ -1,14 +1,11 @@
 import "server-only";
 
 import {
-  readVaReferenceCache,
-  VA_REFERENCE_CACHE_TTL_MS,
-  writeVaReferenceCache,
-} from "./reference-cache";
-import {
-  readVaSharedReferenceCache,
-  writeVaSharedReferenceCache,
-} from "./reference-shared-cache";
+  clearVaReferenceNamespace,
+  VA_REFERENCE_NAMESPACES,
+  vaReferenceCacheKey,
+  withVaReferenceCache,
+} from "./reference-cache-access";
 import {
   fetchVaForms,
   loadVaApiConfig,
@@ -56,43 +53,61 @@ export async function loadClaimFormReference(
 ): Promise<ClaimFormReference> {
   const configuredEnvironment = loadVaApiConfig().environment ?? "sandbox";
   const useSharedCache = fetcher === fetchVaForms;
-  const cacheKey = `forms:reference:${configuredEnvironment}`;
-  if (useSharedCache) {
-    const cached = readVaReferenceCache<ClaimFormReference>(cacheKey);
-    if (cached) return cached;
-    const sharedCached = await readVaSharedReferenceCache<ClaimFormReference>(cacheKey);
-    if (sharedCached) {
-      writeVaReferenceCache(cacheKey, sharedCached);
-      return sharedCached;
-    }
-  }
-
-  const result = await fetcher("21-526EZ");
-  if (!result.success || !result.data) return LOCAL_FORM_REFERENCE;
-
-  const current = result.data.data.find(
-    (item) =>
-      item.attributes.form_name.toUpperCase() === "21-526EZ" &&
-      !item.attributes.deleted_at,
+  const cacheKey = vaReferenceCacheKey(
+    VA_REFERENCE_NAMESPACES.formReference,
+    configuredEnvironment,
   );
 
-  if (!current) return LOCAL_FORM_REFERENCE;
+  return withVaReferenceCache<ClaimFormReference>(
+    cacheKey,
+    async () => {
+      const result = await fetcher("21-526EZ");
+      if (!result.success || !result.data) {
+        return { view: LOCAL_FORM_REFERENCE, cacheable: false };
+      }
 
-  const production = result.source === "va-production-api";
-  const view: ClaimFormReference = {
-    formName: current.attributes.form_name,
-    title: current.attributes.title,
-    url: current.attributes.url,
-    lastRevisionOn: current.attributes.last_revision_on ?? null,
-    source: result.source,
-    sourceLabel: production ? "VA production reference" : "VA sandbox reference",
-    notice: production
-      ? "This metadata came from the VA Forms production API. Confirm the form on VA.gov before filing because forms and revisions can change."
-      : "This metadata came from the VA sandbox environment. Sandbox data is for testing and may not be current; confirm the form on VA.gov before filing.",
-  };
-  if (useSharedCache) {
-    writeVaReferenceCache(cacheKey, view);
-    void writeVaSharedReferenceCache(cacheKey, view, VA_REFERENCE_CACHE_TTL_MS);
-  }
-  return view;
+      const current = result.data.data.find(
+        (item) =>
+          item.attributes.form_name.toUpperCase() === "21-526EZ" &&
+          !item.attributes.deleted_at,
+      );
+
+      if (!current) {
+        return { view: LOCAL_FORM_REFERENCE, cacheable: false };
+      }
+
+      const production = result.source === "va-production-api";
+      return {
+        cacheable: true,
+        view: {
+          formName: current.attributes.form_name,
+          title: current.attributes.title,
+          url: current.attributes.url,
+          lastRevisionOn: current.attributes.last_revision_on ?? null,
+          source: result.source,
+          sourceLabel: production
+            ? "VA production reference"
+            : "VA sandbox reference",
+          notice: production
+            ? "This metadata came from the VA Forms production API. Confirm the form on VA.gov before filing because forms and revisions can change."
+            : "This metadata came from the VA sandbox environment. Sandbox data is for testing and may not be current; confirm the form on VA.gov before filing.",
+        },
+      };
+    },
+    // No `decorateHit`: `ClaimFormReference` carries no `cacheStatus` field.
+    { enabled: useSharedCache },
+  );
+}
+
+/**
+ * Clears only this module's `forms-reference:` entries.
+ *
+ * This module previously exported no clear function at all, unlike its four
+ * siblings — an inconsistency copy-paste drift had introduced. It appeared to
+ * work only because `clearVaFormsFinderCache` cleared the shared `"forms:"`
+ * prefix on its behalf. Namespaces are now disjoint and each is cleared by its
+ * own owner.
+ */
+export function clearClaimFormReferenceCache(): number {
+  return clearVaReferenceNamespace(VA_REFERENCE_NAMESPACES.formReference);
 }

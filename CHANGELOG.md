@@ -3,6 +3,31 @@
 All notable changes to Secondary Condition Finder. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); merges are grouped by date, newest first.
 
+## 2026-09-17
+
+- **Single shared VA reference cache protocol** (`refactor`/`fix`): extracts
+  `withVaReferenceCache` into `src/lib/va/reference-cache-access.ts` and migrates all five
+  public-reference loaders (`service-branches`, `forms-finder`, `form-reference`,
+  `disability-reference`, `accredited-representatives`) onto it, collapsing five hand-rolled
+  copies of the process-local → shared → promote → write-both sequence into one. `cacheable` is
+  now a required field on the loader result, so the previously unstated "never cache a local
+  fallback" rule is enforced by the type system instead of by each copy remembering to return
+  early before the write. Key namespaces move from string literals in each loader to one registry
+  (`VA_REFERENCE_NAMESPACES`) with `clearVaReferenceNamespace(ns)`. This fixes a real collision:
+  `clearVaFormsFinderCache()` cleared the `"forms:"` prefix, which also matched
+  `form-reference`'s `forms:reference:` keys, so one module silently evicted another's cache — and
+  `form-reference` had grown no clear function of its own because it appeared to work by accident.
+  Keys are now `forms-finder:{env}:{query}` and `forms-reference:{env}`, and `form-reference.ts`
+  gains `clearClaimFormReferenceCache()` for parity with its four siblings.
+  `tests/va-reference-cache-namespace.test.ts` (10 tests) pins namespace disjointness, per-owner
+  clearing in both directions, clear-function parity across all five modules, and the
+  `withVaReferenceCache` contract (hit decoration, miss caching, fallback never cached, shared-hit
+  promotion into the process-local tier, `enabled: false` bypass). The source-text pin in
+  `tests/va-reference-product-surface.test.ts` that asserted each loader called
+  `readVaReferenceCache<…View>` is replaced by an architecture pin asserting every loader goes
+  through the shared entry point and none reaches into the cache tiers directly. Suite: 231 files /
+  1385 tests.
+
 ## 2026-09-14 (later)
 
 - **Standalone `/get-records` page + README screenshot** (`feat`/`docs`) Adds

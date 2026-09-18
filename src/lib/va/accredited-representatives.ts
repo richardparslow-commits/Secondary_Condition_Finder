@@ -1,16 +1,12 @@
 import "server-only";
 
+import { type VaReferenceSourceStatus } from "./reference-cache";
 import {
-  clearVaReferenceCache,
-  readVaReferenceCache,
-  VA_REFERENCE_CACHE_TTL_MS,
-  type VaReferenceSourceStatus,
-  writeVaReferenceCache,
-} from "./reference-cache";
-import {
-  readVaSharedReferenceCache,
-  writeVaSharedReferenceCache,
-} from "./reference-shared-cache";
+  clearVaReferenceNamespace,
+  VA_REFERENCE_NAMESPACES,
+  vaReferenceCacheKey,
+  withVaReferenceCache,
+} from "./reference-cache-access";
 import {
   fetchVaAccreditedRepresentatives,
   loadVaApiConfig,
@@ -37,7 +33,11 @@ function cacheKeyFor(
   environment: string,
 ): string {
   const normalized = `${params.zip}:${params.radiusMiles ?? 50}:${params.type ?? "any"}`;
-  return `accredited-rep:${environment}:${normalized}`;
+  return vaReferenceCacheKey(
+    VA_REFERENCE_NAMESPACES.accreditedRepresentatives,
+    environment,
+    normalized,
+  );
 }
 
 function localFallback(
@@ -66,54 +66,56 @@ export async function loadAccreditedRepresentatives(
   const useSharedCache = fetcher === fetchVaAccreditedRepresentatives;
   const cacheKey = cacheKeyFor(params, configuredEnvironment);
 
-  if (useSharedCache) {
-    const cached = readVaReferenceCache<AccreditedRepresentativeView>(cacheKey);
-    if (cached) return { ...cached, cacheStatus: "hit" };
-    const sharedCached = await readVaSharedReferenceCache<AccreditedRepresentativeView>(cacheKey);
-    if (sharedCached) {
-      writeVaReferenceCache(cacheKey, sharedCached);
-      return { ...sharedCached, cacheStatus: "hit" };
-    }
-  }
+  return withVaReferenceCache<AccreditedRepresentativeView>(
+    cacheKey,
+    async () => {
+      const result = await fetcher(params);
+      if (!result.success || !result.data) {
+        return { view: localFallback(params), cacheable: false };
+      }
 
-  const result = await fetcher(params);
-  if (!result.success || !result.data) return localFallback(params);
+      const items = [...result.data.data].sort((a, b) => {
+        const da = a.distanceMiles ?? Number.MAX_SAFE_INTEGER;
+        const db = b.distanceMiles ?? Number.MAX_SAFE_INTEGER;
+        if (da !== db) return da - db;
+        return a.name.localeCompare(b.name);
+      });
 
-  const items = [...result.data.data].sort((a, b) => {
-    const da = a.distanceMiles ?? Number.MAX_SAFE_INTEGER;
-    const db = b.distanceMiles ?? Number.MAX_SAFE_INTEGER;
-    if (da !== db) return da - db;
-    return a.name.localeCompare(b.name);
-  });
-
-  const environment =
-    result.environment ??
-    (result.source === "va-production-api" ? "production" : configuredEnvironment);
-  const view: AccreditedRepresentativeView = {
-    params,
-    items,
-    source: result.source,
-    sourceLabel:
-      environment === "production"
-        ? "VA accredited-representative production directory"
-        : "VA accredited-representative sandbox directory",
-    notice:
-      environment === "production"
-        ? "Results came from VA's accredited-representative directory. Verify accreditation on va.gov/ogc/apps/accreditation before sharing personal information."
-        : "Results came from the VA accredited-representative sandbox. Sandbox data is test data and may not be current; verify on va.gov/ogc/apps/accreditation.",
-    live: true,
-    environment,
-    retrievedAt: new Date().toISOString(),
-    cacheStatus: "miss",
-  };
-
-  if (useSharedCache) {
-    writeVaReferenceCache(cacheKey, view);
-    void writeVaSharedReferenceCache(cacheKey, view, VA_REFERENCE_CACHE_TTL_MS);
-  }
-  return view;
+      const environment =
+        result.environment ??
+        (result.source === "va-production-api"
+          ? "production"
+          : configuredEnvironment);
+      return {
+        cacheable: true,
+        view: {
+          params,
+          items,
+          source: result.source,
+          sourceLabel:
+            environment === "production"
+              ? "VA accredited-representative production directory"
+              : "VA accredited-representative sandbox directory",
+          notice:
+            environment === "production"
+              ? "Results came from VA's accredited-representative directory. Verify accreditation on va.gov/ogc/apps/accreditation before sharing personal information."
+              : "Results came from the VA accredited-representative sandbox. Sandbox data is test data and may not be current; verify on va.gov/ogc/apps/accreditation.",
+          live: true,
+          environment,
+          retrievedAt: new Date().toISOString(),
+          cacheStatus: "miss",
+        },
+      };
+    },
+    {
+      enabled: useSharedCache,
+      decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
+    },
+  );
 }
 
-export function clearAccreditedRepresentativeCache(): void {
-  clearVaReferenceCache("accredited-rep:");
+export function clearAccreditedRepresentativeCache(): number {
+  return clearVaReferenceNamespace(
+    VA_REFERENCE_NAMESPACES.accreditedRepresentatives,
+  );
 }

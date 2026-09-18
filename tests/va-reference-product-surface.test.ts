@@ -35,18 +35,40 @@ describe("VA reference product surfaces", () => {
     expect(buildConditionVaReferenceMap([{ id: "osa", name: "Sleep Apnea" }], items).get("osa")?.term).toEqual(items[1]);
   });
 
-  it("uses one shared bounded cache and exposes source status across public-reference loaders", () => {
+  it("routes every public-reference loader through one shared bounded cache", () => {
     const cache = source("src/lib/va/reference-cache.ts");
-    const forms = source("src/lib/va/forms-finder.ts");
-    const disabilities = source("src/lib/va/disability-reference.ts");
-    const branches = source("src/lib/va/service-branches.ts");
+    const access = source("src/lib/va/reference-cache-access.ts");
+    const loaders = [
+      source("src/lib/va/forms-finder.ts"),
+      source("src/lib/va/disability-reference.ts"),
+      source("src/lib/va/service-branches.ts"),
+      source("src/lib/va/form-reference.ts"),
+      source("src/lib/va/accredited-representatives.ts"),
+    ];
 
     expect(cache).toContain("VA_REFERENCE_CACHE_TTL_MS = 5 * 60 * 1_000");
     expect(cache).toContain("retrievedAt: string | null");
     expect(cache).toContain("cacheStatus: VaReferenceCacheStatus");
-    expect(forms).toContain("readVaReferenceCache<VaFormsFinderView>");
-    expect(disabilities).toContain("readVaReferenceCache<DisabilityReferenceView>");
-    expect(branches).toContain("readVaReferenceCache<ServiceBranchReferenceView>");
+
+    // The bounded two-tier read/promote/write sequence lives in exactly one
+    // place: the shared helper.
+    expect(access).toContain("readVaReferenceCache<T>(cacheKey)");
+    expect(access).toContain("readVaSharedReferenceCache<T>(cacheKey)");
+    expect(access).toContain("writeVaSharedReferenceCache(cacheKey, view, ttlMs)");
+
+    for (const loader of loaders) {
+      // Every loader goes through the helper with its own registry namespace...
+      expect(loader).toContain("withVaReferenceCache<");
+      expect(loader).toContain("VA_REFERENCE_NAMESPACES");
+      // ...and none of them hand-rolls the cache dance any more. Pinning the
+      // shared entry point this way is what stops a sixth loader from quietly
+      // re-introducing a copy (and, with it, a new prefix collision).
+      expect(loader).not.toContain("readVaReferenceCache");
+      expect(loader).not.toContain("writeVaReferenceCache");
+      expect(loader).not.toContain("readVaSharedReferenceCache");
+      expect(loader).not.toContain("writeVaSharedReferenceCache");
+      expect(loader).not.toContain("clearVaReferenceCache");
+    }
   });
 
   it("ships a searchable Forms Finder with current-record filtering and visible source status", () => {
