@@ -5,7 +5,10 @@ import { rateLimitScope } from "@/lib/rate-limiter";
 import { openSessionPayload, sealSessionPayload } from "@/lib/workflow-session-crypto";
 import { loadVaApiConfig } from "@/lib/va/sandbox";
 import { getCircuitSnapshot } from "@/lib/va/circuit-breaker";
-import { peekCacheCounters } from "@/lib/va/reference-cache";
+import {
+  peekCacheCounters,
+  vaReferenceCacheScope,
+} from "@/lib/va/reference-cache";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -85,7 +88,9 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
  * - components.sessionCrypto: { status, latencyMs, detail? }
  * - components.vaConfig: { status, latencyMs, enabled?, environment?, detail? }
  * - components.circuitBreaker: { status, latencyMs, detail, snapshot }
- * - components.vaReferenceCache: { hits, misses, hitRate }
+ * - components.vaReferenceCache: { scope, detail, hits, misses, hitRate } —
+ *   `scope: "disabled"` means the counters are structurally frozen at zero and
+ *   must not be read as "a cache that has not been used yet"
  * - components.rateLimit: { status, latencyMs, scope, detail } — whether
  *   application-level rate limiting is per-instance here, since the effective
  *   limit scales with instance count and is not otherwise observable
@@ -102,6 +107,7 @@ export async function GET() {
     const vaConfig = checkVaConfig();
     const circuit = getCircuitSnapshot();
     const cacheCounters = peekCacheCounters();
+    const cacheScope = vaReferenceCacheScope();
     const rateLimit = rateLimitScope();
 
     const components = {
@@ -115,6 +121,8 @@ export async function GET() {
         snapshot: circuit,
       },
       vaReferenceCache: {
+        scope: cacheScope.scope,
+        detail: cacheScope.detail,
         hits: cacheCounters.hits,
         misses: cacheCounters.misses,
         hitRate:

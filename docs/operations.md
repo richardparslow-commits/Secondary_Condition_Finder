@@ -90,6 +90,14 @@ Response:
 
 **Important**: This only clears the **process-local** cache on the specific instance that handles the request. In a serverless environment with multiple concurrent instances, other instances retain their cache until their own TTL expires. For a full flush, you would need to call the endpoint multiple times (one per instance) or rely on the natural TTL expiry.
 
+**In production this endpoint has nothing to clear.** Because process-local state is
+refused in production and distributed runtimes, the cache never stores anything there,
+so the response reports `"scope": "disabled"` alongside `"cleared": 0` — that means
+"cleared nothing because the cache cannot hold anything here", which is different from
+the `"cleared": 0` a working-but-cold cache returns. It still answers `200` and still
+writes an audit entry, now tagged `cacheScope`, so a flush job can tell the two apart
+without guessing from the outcome.
+
 #### Via Shared Cache (if configured)
 
 When the shared KV cache is configured, clearing the process-local cache on one instance also triggers a shared-cache rehydration on the next request. To fully clear the shared cache, you would need to flush the KV store directly (e.g., via the Upstash console or Vercel KV dashboard).
@@ -126,8 +134,16 @@ Returns component-level status for:
 | `sessionCrypto` | Workflow session seal/open round-trip succeeds |
 | `vaConfig` | VA API configuration is valid (enabled/disabled, environment) |
 | `circuitBreaker` | VA API circuit breaker state (closed/open/half-open per source) |
-| `vaReferenceCache` | Process-local cache hit/miss counters |
+| `vaReferenceCache` | Cache `scope` (`process-local` or `disabled`) plus hit/miss counters |
 | `rateLimit` | Whether application-level rate limiting is per-instance or deployment-wide |
+
+Both `vaReferenceCache.scope` and `rateLimit.scope` answer the same kind of question —
+what regime is this process actually in — because several controls here depend on
+process-local state that behaves differently once more than one instance serves
+traffic. `vaReferenceCache.scope: "disabled"` in production is expected, not a fault:
+it means the cache is refusing to run there for correctness reasons. When that is the
+case, `vaReferenceCache.hits`/`misses` are frozen at zero and `hitRate` is `null`, which
+is why the counters should never be read without the scope.
 
 **HTTP 200** = healthy (catalog + session crypto OK)
 **HTTP 503** = degraded (one or more critical components failing)
@@ -151,7 +167,13 @@ Returns component-level status for:
         "accredited-representatives": { "state": "closed", "failures": 0, "lastFailureAt": null }
       }
     },
-    "vaReferenceCache": { "hits": 42, "misses": 8, "hitRate": 84 },
+    "vaReferenceCache": {
+      "scope": "process-local",
+      "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
+      "hits": 42,
+      "misses": 8,
+      "hitRate": 84
+    },
     "rateLimit": {
       "status": "ok",
       "latencyMs": 0,

@@ -5,6 +5,26 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-18
 
+- **The VA cache control plane stops reporting success it never had** (`fix`): the process-local VA
+  reference cache refuses to operate in production and distributed runtimes, which is the intended
+  fail-closed behaviour — but nothing said so. `/api/health` reported `hits`/`misses` that are
+  structurally frozen at zero, and `POST /api/admin/cache-clear` answered `{ ok: true, cleared: 0 }`,
+  which is byte-identical to what a working but cold cache returns. Both now report a `scope`.
+  `vaReferenceCacheScope(env)` returns `{scope, detail}` and takes its verdict from the *same*
+  `vaProcessLocalStateAllowed()` predicate that gates reads and writes rather than re-deriving it,
+  because a status endpoint that computes its own answer can be right while the thing it describes
+  is wrong — which is precisely how the cache came to look healthy while unable to store anything.
+  `/api/health` exposes it as `components.vaReferenceCache.scope`, and the cache-clear endpoint
+  returns it beside a message stating that a disabled cache cleared nothing, with the audit entry
+  tagged `cacheScope` so the trail separates "nothing to clear" from "cannot hold anything here".
+  The HTTP status stays `200` deliberately: the request was authorized and handled, and the
+  disclosure belongs in the body rather than in a status code that existing cron automation would
+  read as a failure. The shape matches the rate-limit report added above, so `/api/health` answers
+  "what regime is this process in?" the same way for both. Mutation-verified: forcing
+  `vaReferenceCacheScope` to report `process-local` unconditionally fails five tests across the
+  module, the health endpoint, and the admin endpoint; reverting cache-clear to its bare response
+  fails two more. `tests/va-cache-scope-reporting.test.ts`. Suite: 236 files / 1443 tests.
+
 - **One owner for the runtime fact, two policies stated instead of implied** (`refactor`/`fix`): the VA
   reference cache failed closed on process-local state in production while the rate limiter kept
   per-instance buckets and called that intentional. Both verdicts are defensible — but each module

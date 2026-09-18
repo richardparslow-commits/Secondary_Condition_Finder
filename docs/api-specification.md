@@ -45,6 +45,8 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
       }
     },
     "vaReferenceCache": {
+      "scope": "process-local" | "disabled",
+      "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
       "hits": 42,
       "misses": 8,
       "hitRate": 84
@@ -295,6 +297,8 @@ Clears the process-local VA reference cache. Requires Bearer token authenticatio
   "ok": true,
   "cleared": 5,
   "prefix": null,
+  "scope": "process-local",
+  "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
   "message": "Cleared all 5 cache entries."
 }
 ```
@@ -305,9 +309,30 @@ Clears the process-local VA reference cache. Requires Bearer token authenticatio
   "ok": true,
   "cleared": 2,
   "prefix": "va-forms:",
+  "scope": "process-local",
+  "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
   "message": "Cleared 2 cache entries with prefix \"va-forms:\"."
 }
 ```
+
+**Response** (`200 OK`, cache disabled in this runtime):
+```json
+{
+  "ok": true,
+  "cleared": 0,
+  "prefix": null,
+  "scope": "disabled",
+  "detail": "process-local cache is disabled in production and distributed runtimes until a shared cache coordinator is configured; reads always miss, writes are discarded, so the hit/miss counters cannot move and cache-clear operations clear nothing",
+  "message": "VA reference cache is disabled in this runtime, so nothing was cleared. ..."
+}
+```
+
+`scope: "disabled"` means the process-local cache is structurally unable to hold
+anything here, so the call cleared nothing by design rather than because the cache
+happened to be empty. Callers that expect a real flush should key off `scope`, since
+`{ "ok": true, "cleared": 0 }` is also exactly what a working but cold cache returns.
+The status stays `200` because the request itself was authorized and handled; the
+disclosure is in the body rather than in the status code.
 
 **Response** (`401 Unauthorized`):
 ```json
