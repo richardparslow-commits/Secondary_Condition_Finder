@@ -3,6 +3,11 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 
 import {
+  DEFAULT_MAX_RESPONSE_BYTES,
+  readBoundedResponseJson,
+  ResponseTooLargeError,
+} from "@/lib/bounded-response";
+import {
   createLogger,
   recordVaApiError,
   recordVaApiLatency,
@@ -43,6 +48,13 @@ export const VA_API_OUTBOUND_MAX_REQUESTS_PER_SERVICE = 60;
 export const VA_API_RETRY_BASE_DELAY_MS = 100;
 export const VA_API_RETRY_MAX_DELAY_MS = 400;
 export const VA_API_MAX_RETRIES = 2;
+/**
+ * Cap on a single VA API response body. Deliberately the shared default used by
+ * the regulatory HTTP stack too, so both outbound families bound identically.
+ * VA reference payloads are small (form metadata, reference lists), so this is
+ * a DoS backstop against a misbehaving upstream rather than a real-data limit.
+ */
+export const VA_API_MAX_RESPONSE_BYTES = DEFAULT_MAX_RESPONSE_BYTES;
 /** @deprecated Use VA_API_RETRY_BASE_DELAY_MS; retained for test compatibility. */
 export const VA_API_RETRY_DELAY_MS = VA_API_RETRY_BASE_DELAY_MS;
 
@@ -93,6 +105,7 @@ export interface VaApiObservation {
     | "timeout"
     | "network-error"
     | "invalid-payload"
+    | "response-too-large"
     | "rate-limited"
     | "circuit-open";
   status?: number;
@@ -450,7 +463,54 @@ async function requestVaJson<T>(args: {
         );
       }
 
-      const parsed = args.schema.safeParse(await response.json());
+      // Read the body through the shared size bound. A bare `response.json()`
+      // buffers whatever the upstream sends, which lets a misbehaving or
+      // hostile upstream exhaust the instance and silently undoes the resource
+      // limits enforced everywhere else (uploads, pages, evidence).
+      let payload: unknown;
+      try {
+        payload = await readBoundedResponseJson(response, {
+          // Origin+path only: request query params can carry user data (e.g. a
+          // zip search), and the rest of this adapter logs `pathname` for the
+          // same reason.
+          url: `${endpoint.origin}${endpoint.pathname}`,
+          maxBytes: VA_API_MAX_RESPONSE_BYTES,
+        });
+      } catch (error) {
+        if (!(error instanceof ResponseTooLargeError)) throw error;
+        const durationMs = Date.now() - startedAt;
+        const observation: VaApiObservation = {
+          requestId,
+          service: args.service,
+          path: endpoint.pathname,
+          attempt,
+          outcome: "response-too-large",
+          status: response.status,
+          durationMs,
+        };
+        args.observe?.(observation);
+        vaApiLogger.warn("va request response too large", {
+          requestId,
+          service: args.service,
+          path: endpoint.pathname,
+          attempt,
+          outcome: "response-too-large",
+          status: response.status,
+          durationMs,
+          maxBytes: VA_API_MAX_RESPONSE_BYTES,
+          environment,
+        });
+        recordVaApiLatency(durationMs, { service: args.service, outcome: "response-too-large", environment });
+        recordVaApiError({ service: args.service, outcome: "response-too-large", environment, status: response.status });
+        recordCircuitFailure(args.service);
+        return fallback(
+          `VA ${environment} response exceeded the ${VA_API_MAX_RESPONSE_BYTES}-byte safety limit.`,
+          environment,
+          requestId,
+        );
+      }
+
+      const parsed = args.schema.safeParse(payload);
       if (!parsed.success) {
         const durationMs = Date.now() - startedAt;
         const observation: VaApiObservation = {

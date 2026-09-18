@@ -28,6 +28,26 @@ All notable changes to Secondary Condition Finder. Format loosely follows
   through the shared entry point and none reaches into the cache tiers directly. Suite: 231 files /
   1385 tests.
 
+- **Bounded VA response bodies** (`fix`/`harden`): the VA adapter now reads every upstream body
+  through a size bound, matching the limit the regulatory HTTP stack already enforced.
+  `requestVaJson` previously called `await response.json()`, so `src/lib/va/sandbox.ts` — the
+  outbound family behind the public `force-dynamic` pages — had no body-size limit at all, while
+  `regulatory/preflight/http.ts` bounded its bodies at 25 MB (12 MB for Federal Register). The
+  bound now lives once, in the new `src/lib/bounded-response.ts`, and both stacks consume it: a
+  declared over-cap `content-length` is rejected before the body is read, and the stream is
+  accumulated with a running total so an under-declaring upstream is still stopped mid-read via
+  `reader.cancel("response-size-limit")`. A breach maps to the new terminal `response-too-large`
+  outcome — recorded in latency/error metrics, logged, counted as a circuit failure, and returned
+  as a `local-fallback` result with **no retry**, so a hostile upstream cannot be amplified with
+  exponential backoff. Request query params (which can carry a user-supplied search value, such as
+  a zip) are kept out of both the error message and the observation, matching the adapter's
+  existing `pathname`-only logging. `tests/bounded-response.test.ts` (10 tests) covers both
+  rejection branches, the at-the-cap boundary, multi-chunk reassembly, the no-stream `text()`
+  fallback, and that malformed JSON still surfaces as `SyntaxError`;
+  `tests/va-sandbox-public-reference.test.ts` gains an end-to-end case asserting the fallback, the
+  `response-too-large` observation, exactly one fetch attempt, and no query-string or API-key
+  leakage. Suite: 232 files / 1396 tests.
+
 ## 2026-09-14 (later)
 
 - **Standalone `/get-records` page + README screenshot** (`feat`/`docs`) Adds
