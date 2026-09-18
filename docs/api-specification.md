@@ -48,6 +48,12 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
       "hits": 42,
       "misses": 8,
       "hitRate": 84
+    },
+    "rateLimit": {
+      "status": "ok",
+      "latencyMs": 0,
+      "scope": "per-instance" | "single-process",
+      "detail": "per-IP limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer"
     }
   },
   "latencyMs": 18,
@@ -325,12 +331,23 @@ Application-level rate limiting is enforced in `src/proxy.ts` (defense-in-depth 
 
 | Route | Window | Max | Key |
 |---|---|---|---|
-| Server Action POSTs | 60s | 30 | IP (`X-Forwarded-For`) |
+| Server Action POSTs (and every other POST) | 60s | 30 | IP (`X-Forwarded-For`, then `X-Real-IP`) |
 | `/api/regulatory/preflight` | 60s | 5 | IP |
 | `/api/admin/cache-clear` | 60s | 5 | IP |
 | `/api/health` | 60s | 30 | IP |
 
 Exceeded limits return `429 Too Many Requests` with a `Retry-After` header.
+The `429` body is route-specific: `{ "ok": false, "error": "Rate limit exceeded. Please try again later." }`
+for `/api/regulatory/preflight` and `/api/admin/cache-clear`, `{ "status": "rate_limited" }`
+for `/api/health`, and `{ "error": "Too many requests. Please try again later." }` for the
+method-scoped `POST` rule.
+
+A request carrying neither `X-Forwarded-For` nor `X-Real-IP` is **not rate limited**:
+with no client identity there is no per-client bucket to charge, and a single shared
+fallback bucket would turn the per-IP allowance into a global cap. Capacity in that
+case rests entirely with the edge WAF. Limits are also per instance, so the effective
+ceiling is roughly the configured value × instance count; `/api/health` reports this
+as `components.rateLimit.scope`.
 
 ---
 

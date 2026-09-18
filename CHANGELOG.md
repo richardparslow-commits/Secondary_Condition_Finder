@@ -5,6 +5,34 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-09-18
 
+- **One owner for the runtime fact, two policies stated instead of implied** (`refactor`/`fix`): the VA
+  reference cache failed closed on process-local state in production while the rate limiter kept
+  per-instance buckets and called that intentional. Both verdicts are defensible — but each module
+  held its **own private copy of the runtime detection**, so the two could disagree about the
+  underlying *fact* while each looked locally reasonable, and editing one copy broke nothing. The
+  fact now has a single owner in `src/lib/runtime-deployment.ts` (`isDistributedRuntime`,
+  `DISTRIBUTED_RUNTIME_MARKERS`, `RuntimeEnvironment`); `vaProcessLocalStateAllowed(env)` is
+  `!isDistributedRuntime(env)`, keeping the fail-closed policy (a per-instance cache can serve the
+  wrong environment's data, and a per-instance outbound budget can permit N× the intended traffic
+  against VA), while `rate-limiter.ts` now states its opposite policy explicitly and publishes what
+  it means for operators — `rateLimitScope()` reports `per-instance` vs `single-process` and is
+  surfaced as `components.rateLimit` on `/api/health`, so the instance-count multiplier is readable
+  instead of buried in a comment. That module deliberately carries no `server-only` marker, because
+  `proxy.ts` runs in the middleware runtime and needs the classification there.
+
+  Separately, the shared `"unknown"` bucket is gone. `resolveClientKey` returns `{key, source}` with
+  `key: null` when a request carries neither `X-Forwarded-For` nor `X-Real-IP` (the latter added for
+  nginx-style proxies), and the proxy then applies **no** per-client limit. The old fallback was not
+  a per-client limit at all: every unattributed client drew from one bucket, so the configured
+  per-IP allowance silently became a *global* cap that a single client could exhaust on everyone
+  else's behalf — and nothing in a response, a log line, or a metric revealed that the control had
+  changed meaning. Capacity is the edge WAF's job, which is why an absent limiter is preferred over
+  a mislabelled one. Both halves were mutation-checked rather than assumed: restoring the
+  `?? "unknown"` fallback fails the new proxy test with `unattributed POST 31: expected 429 not to be
+  429`, and reintroducing a private `NODE_ENV` check in `va/runtime-state.ts` fails both the new
+  cross-module parity assertion and the pre-existing distributed-state boundary tests. Suite: 235
+  files / 1434 tests.
+
 - **Route → rate-limit mapping is now data, checked against the real route files** (`refactor`):
   `src/proxy.ts` chose its limiter with three `url.pathname === "…"` comparisons and recorded the
   route list nowhere a machine could check, so a fourth sensitive route would have shipped

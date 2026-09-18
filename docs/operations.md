@@ -127,6 +127,7 @@ Returns component-level status for:
 | `vaConfig` | VA API configuration is valid (enabled/disabled, environment) |
 | `circuitBreaker` | VA API circuit breaker state (closed/open/half-open per source) |
 | `vaReferenceCache` | Process-local cache hit/miss counters |
+| `rateLimit` | Whether application-level rate limiting is per-instance or deployment-wide |
 
 **HTTP 200** = healthy (catalog + session crypto OK)
 **HTTP 503** = degraded (one or more critical components failing)
@@ -150,7 +151,13 @@ Returns component-level status for:
         "accredited-representatives": { "state": "closed", "failures": 0, "lastFailureAt": null }
       }
     },
-    "vaReferenceCache": { "hits": 42, "misses": 8, "hitRate": 84 }
+    "vaReferenceCache": { "hits": 42, "misses": 8, "hitRate": 84 },
+    "rateLimit": {
+      "status": "ok",
+      "latencyMs": 0,
+      "scope": "per-instance",
+      "detail": "per-IP limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer"
+    }
   },
   "latencyMs": 5,
   "timestamp": "2026-09-14T00:00:00.000Z"
@@ -163,12 +170,27 @@ Application-level rate limiting is enforced in the proxy middleware (`src/proxy.
 
 | Route | Window | Max Requests | Key |
 |-------|--------|-------------|-----|
-| Server Action POSTs | 60s | 30 | IP (X-Forwarded-For) |
+| Server Action POSTs (and every other POST) | 60s | 30 | IP (`X-Forwarded-For`, then `X-Real-IP`) |
 | `/api/regulatory/preflight` | 60s | 5 | IP |
 | `/api/admin/cache-clear` | 60s | 5 | IP |
 | `/api/health` | 60s | 30 | IP |
 
-Rate-limit state is process-local and resets on cold start (intentional for serverless).
+**Client identity.** The key is the first hop of `X-Forwarded-For`, falling back to
+`X-Real-IP`. A request carrying neither is **not charged to any bucket** and passes
+through unthrottled. That is deliberate: a single fallback bucket shared by every
+such request is not a per-client limit but a *global* cap, so one client's traffic
+would reject everyone else's — and no response, log line, or metric would say so.
+Capacity remains the edge WAF's job, which is why an absent limiter is preferred
+over a mislabelled one. If a deployment's proxy does set these headers (Vercel and
+Azure Front Door both do), the limits above apply per client as written.
+
+**Scope.** Buckets are process-local and reset on cold start, so the effective
+limit is roughly the configured limit × instance count. That is an intentional
+trade: it makes the guard weaker than written, never wrong. This differs from the VA
+reference cache, which refuses to use process-local state in production at all —
+because a per-instance cache can serve a wrong answer, whereas a per-instance
+limiter can only permit more traffic than intended. `/api/health` reports the
+current regime as `components.rateLimit.scope` (`per-instance` or `single-process`).
 
 ## Circuit Breaker
 

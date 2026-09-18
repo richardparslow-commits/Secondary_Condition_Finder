@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { findApiRouteLimitPolicy } from "@/lib/api-route-policies";
-import { extractClientKey, workflowSessionLimiter } from "@/lib/rate-limiter";
+import { resolveClientKey, workflowSessionLimiter } from "@/lib/rate-limiter";
 
 /**
  * CSP / Trusted-Types violation reporting target.
@@ -202,7 +202,15 @@ export function proxy(request: NextRequest) {
   const pathname = normalizePathname(url.pathname);
 
   // --- Application-level rate limiting (defense-in-depth behind edge WAF) ---
-  const clientKey = extractClientKey(requestHeaders);
+  //
+  // A request carrying no trustworthy client identity is not charged to a bucket
+  // at all. Every unattributed request used to share one `"unknown"` bucket,
+  // which silently turned the configured per-IP allowance into a *global* cap
+  // that a single client could exhaust on everyone else's behalf. Those requests
+  // now proceed unthrottled: capacity is the edge WAF's job, and an absent
+  // limiter is a better instrument for it than a mislabelled global cap. See
+  // `resolveClientKey` in `rate-limiter.ts` for the resolution rules.
+  const client = resolveClientKey(requestHeaders);
   const method = request.method;
 
   /** 429 response carrying the full security-header set, not just CSP. */
@@ -220,33 +228,35 @@ export function proxy(request: NextRequest) {
       },
     });
 
-  // Method-scoped rule, not a route rule: this covers every POST that is not a
-  // Next.js asset request, including Server Action form submissions to pages
-  // with server-only directives *and* API POSTs. An API POST therefore consumes
-  // this bucket as well as its own route policy below.
-  if (method === "POST" && !pathname.startsWith("/_next")) {
-    const result = workflowSessionLimiter.check(clientKey);
-    if (result.limited) {
-      return tooManyRequests(
-        { error: "Too many requests. Please try again later." },
-        result.retryAfterSeconds,
-      );
+  if (client.key) {
+    // Method-scoped rule, not a route rule: this covers every POST that is not a
+    // Next.js asset request, including Server Action form submissions to pages
+    // with server-only directives *and* API POSTs. An API POST therefore consumes
+    // this bucket as well as its own route policy below.
+    if (method === "POST" && !pathname.startsWith("/_next")) {
+      const result = workflowSessionLimiter.check(client.key);
+      if (result.limited) {
+        return tooManyRequests(
+          { error: "Too many requests. Please try again later." },
+          result.retryAfterSeconds,
+        );
+      }
     }
-  }
 
-  // Route-scoped policies. The registry in `api-route-policies.ts` is the only
-  // place that knows which routes are limited and what each one answers on
-  // rejection, so this loop is all the wiring a new policed route needs.
-  //
-  // Matched against the *normalized* pathname, never the raw `url.pathname`.
-  // The compiled patterns are anchored (`^/api/health$`), so a trailing or
-  // doubled slash would slip past the registry while still reaching the route —
-  // exactly the bypass `normalizePathname` exists to close.
-  const routePolicy = findApiRouteLimitPolicy(pathname);
-  if (routePolicy) {
-    const result = routePolicy.limiter.check(clientKey);
-    if (result.limited) {
-      return tooManyRequests(routePolicy.limitedBody, result.retryAfterSeconds);
+    // Route-scoped policies. The registry in `api-route-policies.ts` is the only
+    // place that knows which routes are limited and what each one answers on
+    // rejection, so this loop is all the wiring a new policed route needs.
+    //
+    // Matched against the *normalized* pathname, never the raw `url.pathname`:
+    // the compiled patterns are anchored (`^/api/health$`), so a trailing or
+    // doubled slash would slip past the registry while still reaching the route,
+    // which is the bypass `normalizePathname` exists to close.
+    const routePolicy = findApiRouteLimitPolicy(pathname);
+    if (routePolicy) {
+      const result = routePolicy.limiter.check(client.key);
+      if (result.limited) {
+        return tooManyRequests(routePolicy.limitedBody, result.retryAfterSeconds);
+      }
     }
   }
 

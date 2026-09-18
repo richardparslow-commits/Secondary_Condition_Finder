@@ -2,7 +2,8 @@ import { describe, expect, it, vi, beforeEach } from "vitest";
 
 import {
   createRateLimiter,
-  extractClientKey,
+  rateLimitScope,
+  resolveClientKey,
   workflowSessionLimiter,
   regulatoryPreflightLimiter,
   healthLimiter,
@@ -112,24 +113,64 @@ describe("pre-configured limiters", () => {
   });
 });
 
-describe("extractClientKey", () => {
-  it("extracts the first IP from X-Forwarded-For", () => {
+describe("resolveClientKey", () => {
+  it("takes the first hop from X-Forwarded-For and records the source", () => {
     const headers = new Headers({ "x-forwarded-for": "1.2.3.4, 5.6.7.8" });
-    expect(extractClientKey(headers)).toBe("1.2.3.4");
+    expect(resolveClientKey(headers)).toEqual({
+      key: "1.2.3.4",
+      source: "x-forwarded-for",
+    });
   });
 
   it("returns a single IP when no commas", () => {
     const headers = new Headers({ "x-forwarded-for": "10.0.0.1" });
-    expect(extractClientKey(headers)).toBe("10.0.0.1");
-  });
-
-  it("returns 'unknown' when header is absent", () => {
-    const headers = new Headers();
-    expect(extractClientKey(headers)).toBe("unknown");
+    expect(resolveClientKey(headers)).toEqual({
+      key: "10.0.0.1",
+      source: "x-forwarded-for",
+    });
   });
 
   it("trims whitespace from IPs", () => {
     const headers = new Headers({ "x-forwarded-for": "  1.2.3.4 , 5.6.7.8" });
-    expect(extractClientKey(headers)).toBe("1.2.3.4");
+    expect(resolveClientKey(headers).key).toBe("1.2.3.4");
+  });
+
+  it("falls through to X-Real-IP when X-Forwarded-For is absent", () => {
+    const headers = new Headers({ "x-real-ip": "10.0.0.9" });
+    expect(resolveClientKey(headers)).toEqual({ key: "10.0.0.9", source: "x-real-ip" });
+  });
+
+  it("ignores an empty first X-Forwarded-For hop and still uses X-Real-IP", () => {
+    const headers = new Headers({
+      "x-forwarded-for": " , 5.6.7.8",
+      "x-real-ip": "10.0.0.9",
+    });
+    expect(resolveClientKey(headers)).toEqual({ key: "10.0.0.9", source: "x-real-ip" });
+  });
+
+  // The regression this replaced, stated as a contract: an unattributable request
+  // is reported as unattributable, never as one shared bucket every client draws
+  // from — that silently converted a per-IP allowance into a global cap.
+  it("reports a null key rather than a shared bucket when identity is absent", () => {
+    expect(resolveClientKey(new Headers())).toEqual({ key: null, source: "none" });
+    expect(resolveClientKey(new Headers({ "x-forwarded-for": "   " })).key).toBeNull();
+  });
+});
+
+describe("rateLimitScope", () => {
+  it("declares limits as per-instance in production and known distributed runtimes", () => {
+    expect(rateLimitScope({ NODE_ENV: "production" }).scope).toBe("per-instance");
+    expect(rateLimitScope({ NODE_ENV: "test", VERCEL: "1" }).scope).toBe("per-instance");
+    expect(rateLimitScope({ NODE_ENV: "test", K_SERVICE: "svc" }).scope).toBe("per-instance");
+  });
+
+  it("declares limits as deployment-wide where one process owns the buckets", () => {
+    expect(rateLimitScope({ NODE_ENV: "test" }).scope).toBe("single-process");
+    // A marker explicitly switched off is not a distributed runtime.
+    expect(rateLimitScope({ NODE_ENV: "test", VERCEL: "0" }).scope).toBe("single-process");
+  });
+
+  it("explains the consequence rather than only naming the regime", () => {
+    expect(rateLimitScope({ NODE_ENV: "production" }).detail).toMatch(/instance count/);
   });
 });

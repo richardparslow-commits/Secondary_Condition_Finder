@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
+import { rateLimitScope } from "@/lib/rate-limiter";
 import { openSessionPayload, sealSessionPayload } from "@/lib/workflow-session-crypto";
 import { loadVaApiConfig } from "@/lib/va/sandbox";
 import { getCircuitSnapshot } from "@/lib/va/circuit-breaker";
@@ -84,6 +85,10 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
  * - components.sessionCrypto: { status, latencyMs, detail? }
  * - components.vaConfig: { status, latencyMs, enabled?, environment?, detail? }
  * - components.circuitBreaker: { status, latencyMs, detail, snapshot }
+ * - components.vaReferenceCache: { hits, misses, hitRate }
+ * - components.rateLimit: { status, latencyMs, scope, detail } — whether
+ *   application-level rate limiting is per-instance here, since the effective
+ *   limit scales with instance count and is not otherwise observable
  * - latencyMs: total endpoint latency
  * - timestamp: ISO 8601
  *
@@ -97,6 +102,7 @@ export async function GET() {
     const vaConfig = checkVaConfig();
     const circuit = getCircuitSnapshot();
     const cacheCounters = peekCacheCounters();
+    const rateLimit = rateLimitScope();
 
     const components = {
       catalog,
@@ -115,6 +121,12 @@ export async function GET() {
           cacheCounters.hits + cacheCounters.misses > 0
             ? Math.round((cacheCounters.hits / (cacheCounters.hits + cacheCounters.misses)) * 100)
             : null,
+      },
+      rateLimit: {
+        status: "ok" as const,
+        latencyMs: 0,
+        scope: rateLimit.scope,
+        detail: rateLimit.detail,
       },
     };
 

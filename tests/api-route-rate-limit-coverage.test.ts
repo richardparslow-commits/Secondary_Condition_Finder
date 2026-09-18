@@ -226,6 +226,63 @@ describe("proxy route-policy wiring", () => {
     expect(await limited.json()).toEqual(policy.limitedBody);
     expect(workflowSessionLimiter.check("probe").limited).toBe(false);
   });
+
+  it("does not collapse unattributed requests into one shared bucket", async () => {
+    // Every request without a forwarding header used to draw from a single
+    // `"unknown"` bucket, so the configured per-IP allowance silently became a
+    // *global* cap: one client's traffic rejected everyone else's, and nothing in
+    // the response said so. These requests are now simply not charged to a
+    // bucket — capacity is the edge WAF's job.
+    const post = () =>
+      proxy(new NextRequest("https://example.test/secondary/diagnosed", { method: "POST" }));
+
+    for (let i = 0; i < workflowSessionLimiter.max + 5; i += 1) {
+      expect((await post()).status, `unattributed POST ${i + 1}`).not.toBe(429);
+    }
+
+    const health = () => proxy(new NextRequest("https://example.test/api/health"));
+    for (let i = 0; i < 40; i += 1) {
+      expect((await health()).status, `unattributed health ${i + 1}`).not.toBe(429);
+    }
+  });
+
+  it("keeps the method-scoped POST rule for a client that does identify itself", async () => {
+    const send = () =>
+      proxy(
+        new NextRequest("https://example.test/secondary/diagnosed", {
+          method: "POST",
+          headers: { "x-forwarded-for": "198.51.100.44" },
+        }),
+      );
+
+    for (let i = 0; i < workflowSessionLimiter.max; i += 1) {
+      expect((await send()).status).not.toBe(429);
+    }
+
+    const limited = await send();
+    expect(limited.status).toBe(429);
+    expect(await limited.json()).toEqual({
+      error: "Too many requests. Please try again later.",
+    });
+  });
+
+  it("still limits a client identified only by X-Real-IP", async () => {
+    const send = () =>
+      proxy(
+        new NextRequest("https://example.test/api/health", {
+          headers: { "x-real-ip": "198.51.100.55" },
+        }),
+      );
+
+    const policy = API_ROUTE_LIMIT_POLICIES.find(
+      (candidate) => candidate.path === "/api/health",
+    )!;
+    for (let i = 0; i < policy.limiter.max; i += 1) await send();
+
+    const limited = await send();
+    expect(limited.status).toBe(429);
+    expect(await limited.json()).toEqual(policy.limitedBody);
+  });
 });
 
 describe("compileApiRoutePattern", () => {
