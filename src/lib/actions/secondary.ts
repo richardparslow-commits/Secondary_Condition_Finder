@@ -18,6 +18,7 @@ import {
   workflowSessionToQueryParams,
   writeSecondaryWorkflowSession,
 } from "@/lib/secondary-workflow/session";
+import { recordWorkflowCookieBudgetExceeded } from "@/lib/observability/workflow-metrics";
 import { auditLog } from "@/lib/observability/audit";
 import {
   secondaryValidationPath,
@@ -47,6 +48,16 @@ function redirectValidation(
   code: SecondaryValidationCode,
 ): never {
   redirect(secondaryValidationPath(path, code));
+}
+
+/**
+ * Name-based detection (not instanceof) so the contract holds across module
+ * boundaries and test mocks: session.ts throws WorkflowCookieBudgetError when
+ * a state cannot fit the cookie budget, and the action must hold the user on
+ * their step with the specific context-too-large guidance.
+ */
+function isCookieBudgetError(error: unknown): boolean {
+  return error instanceof Error && error.name === "WorkflowCookieBudgetError";
 }
 
 function nonEmptyValues(formData: FormData, key: string): string[] {
@@ -97,6 +108,10 @@ export async function saveDiagnosedSelection(formData: FormData): Promise<void> 
     });
   } catch (error) {
     // #5: do not silently lose data — surface as validation error instead of advancing
+    if (isCookieBudgetError(error)) {
+      recordWorkflowCookieBudgetExceeded("diagnosed");
+      redirectValidation("/secondary/diagnosed", "context-too-large");
+    }
     console.error("[secondary-workflow] Failed to persist diagnosed selection:", error instanceof Error ? error.message : String(error));
     auditLog("workflow-diagnosed-selected", { status: "failure", route: "/secondary/diagnosed" });
     redirectValidation("/secondary/diagnosed", "select-diagnosed");
@@ -143,18 +158,37 @@ export async function saveServiceConnectedSelection(formData: FormData): Promise
         serviceConnectedAnswerDraft,
       });
     } catch (error) {
+      if (isCookieBudgetError(error)) {
+        recordWorkflowCookieBudgetExceeded("service-connected");
+        redirectValidation("/secondary/service-connected", "context-too-large");
+      }
       console.error("[secondary-workflow] Failed to persist service-connected draft:", error instanceof Error ? error.message : String(error));
     }
     redirectValidation("/secondary/service-connected", "answer-service-connected");
   }
   if (!answers.some((answer) => answer === "yes")) {
+    // The no-service-connected guidance re-renders Step 2 from session state,
+    // so the answers the veteran already gave must survive the write. Without
+    // carrying the draft forward, the re-rendered form renders every radio
+    // unchecked and the veteran's completed answers silently vanish.
+    const carriedDraft: Record<string, "yes" | "no"> = {};
+    diagnosedConditionIds.forEach((id, index) => {
+      if (answers[index] === "yes" || answers[index] === "no") {
+        carriedDraft[id] = answers[index];
+      }
+    });
     try {
       await writeSecondaryWorkflowSession({
         diagnosedConditionIds,
         serviceConnectedConditionIds: [],
         ratingsByConditionId: {},
+        serviceConnectedAnswerDraft: carriedDraft,
       });
     } catch (error) {
+      if (isCookieBudgetError(error)) {
+        recordWorkflowCookieBudgetExceeded("service-connected");
+        redirectValidation("/secondary/service-connected", "context-too-large");
+      }
       console.error("[secondary-workflow] Failed to persist no-service-connected state:", error instanceof Error ? error.message : String(error));
     }
     redirectValidation("/secondary/service-connected", "no-service-connected");
@@ -177,6 +211,10 @@ export async function saveServiceConnectedSelection(formData: FormData): Promise
       ratingsByConditionId: {},
     });
   } catch (error) {
+    if (isCookieBudgetError(error)) {
+      recordWorkflowCookieBudgetExceeded("service-connected");
+      redirectValidation("/secondary/service-connected", "context-too-large");
+    }
     console.error("[secondary-workflow] Failed to persist service-connected selection:", error instanceof Error ? error.message : String(error));
     auditLog("workflow-service-connected-selected", { status: "failure", route: "/secondary/service-connected" });
     redirectValidation("/secondary/service-connected", "answer-service-connected");
@@ -228,6 +266,10 @@ export async function saveRatingsSelection(formData: FormData): Promise<void> {
       ratingsByConditionId: parsed.ratingsByConditionId,
     });
   } catch (error) {
+    if (isCookieBudgetError(error)) {
+      recordWorkflowCookieBudgetExceeded("ratings");
+      redirectValidation("/secondary/ratings", "context-too-large");
+    }
     console.error("[secondary-workflow] Failed to persist ratings selection:", error instanceof Error ? error.message : String(error));
     auditLog("workflow-ratings-selected", { status: "failure", route: "/secondary/ratings" });
     redirectValidation("/secondary/ratings", "select-rating");
@@ -263,6 +305,10 @@ export async function saveDocumentsSelection(formData: FormData): Promise<void> 
   try {
     await writeSecondaryWorkflowSession(parsed);
   } catch (error) {
+    if (isCookieBudgetError(error)) {
+      recordWorkflowCookieBudgetExceeded("upload");
+      redirectValidation("/secondary/upload", "context-too-large");
+    }
     console.error("[secondary-workflow] Failed to persist documents context:", error instanceof Error ? error.message : String(error));
     auditLog("workflow-documents-context", { status: "failure", route: "/secondary/upload" });
     redirectValidation("/secondary/upload", "select-documents");

@@ -44,9 +44,9 @@ describe("security remediation contracts", () => {
   it("accepts ordinary encrypted workflow state within the cookie budget", () => {
     const sealed = sealWorkflowState(
       {
-        diagnosedConditionIds: ["condition-a", "condition-b"],
-        serviceConnectedConditionIds: ["condition-a"],
-        ratingsByConditionId: { "condition-a": 50 },
+        diagnosedConditionIds: ["ptsd", "sleep-apnea"],
+        serviceConnectedConditionIds: ["ptsd"],
+        ratingsByConditionId: { ptsd: 50 },
         documentsShared: false,
         medications: ["medication-a", "medication-b"],
         treatments: ["treatment-a"],
@@ -60,22 +60,18 @@ describe("security remediation contracts", () => {
   });
 
   it("rejects oversized encrypted workflow state before a browser cookie write", () => {
-    const diagnosedConditionIds = Array.from(
-      { length: 160 },
-      (_, index) => `condition-${index}-${"x".repeat(24)}`,
-    );
+    // Free-text context is the payload component no transport encoding can
+    // shrink; three saturated context fields exceed the budget by design.
+    const oversizedContext = Array.from({ length: 20 }, () => "x".repeat(160));
 
     expect(() =>
       sealWorkflowState(
         {
-          diagnosedConditionIds,
-          serviceConnectedConditionIds: diagnosedConditionIds.slice(0, 80),
-          ratingsByConditionId: Object.fromEntries(
-            diagnosedConditionIds
-              .slice(0, 80)
-              .map((id) => [id, 50]),
-          ),
+          diagnosedConditionIds: ["ptsd"],
           documentsShared: true,
+          medications: oversizedContext,
+          treatments: oversizedContext,
+          history: oversizedContext,
         },
         TEST_SECRET,
       ),

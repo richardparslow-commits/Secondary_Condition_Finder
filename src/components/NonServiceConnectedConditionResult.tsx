@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { CitationDeepDiveExplorer } from "@/components/secondary/CitationDeepDiveExplorer";
 import { MedicationContextExplainer } from "@/components/secondary/MedicationContextExplainer";
+import { getSpicerAggravationGuidance } from "@/lib/secondary-workflow/spicer-aggravation";
 import {
   CONSENSUS_BADGE_CLASS,
   CONSENSUS_EXPLANATION,
@@ -91,6 +92,14 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
             <div className="mt-3 space-y-3">
               {recommendation.contributingPrimaries.map((primary) => {
                 const pathwayIntelligence = primary.pathwayIntelligence;
+                // Spicer (May 2026 M21-1): treatment-interference aggravation
+                // gets its own card so the veteran sees the different record
+                // burden before gathering evidence, not after.
+                const spicerGuidance = getSpicerAggravationGuidance({
+                  nexusClassification: primary.nexusClaim?.nexusClassification,
+                  pathwayTypes: pathwayIntelligence?.pathways,
+                  conditionName: result.conditionName,
+                });
                 return (
                   <section key={primary.id} className="rounded-lg border border-blue-200 bg-blue-50 p-4">
                     <p className="text-xs font-semibold uppercase tracking-wide text-blue-800">
@@ -152,6 +161,27 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
                               ))}
                             </ul>
                           </details>
+                        )}
+                        {spicerGuidance.active && (
+                          <div className="mt-3 rounded-lg border border-teal-300 bg-teal-50 p-3" role="note">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-teal-900">
+                              {spicerGuidance.heading}
+                            </p>
+                            <p className="mt-2 text-sm leading-relaxed text-teal-950">{spicerGuidance.explanation}</p>
+                            <p className="mt-2 text-sm leading-relaxed text-teal-950">{spicerGuidance.burdenLine}</p>
+                            {spicerGuidance.recordKinds.length > 0 && (
+                              <div className="mt-2">
+                                <p className="text-xs font-semibold text-teal-900">
+                                  Treatment-interference records this theory is carried by:
+                                </p>
+                                <ul className="mt-1 list-disc space-y-1 pl-5 text-sm text-teal-950">
+                                  {spicerGuidance.recordKinds.map((kind) => (
+                                    <li key={kind}>{kind}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
                         )}
                       </div>
                     )}

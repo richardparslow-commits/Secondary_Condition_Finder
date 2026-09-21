@@ -215,7 +215,8 @@
       "name": "Osteoarthritis / Degenerative Arthritis",
       "aliases": [
         "degenerative arthritis",
-        "osteoarthritis"
+        "osteoarthritis",
+        "OA"
       ],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
@@ -286,7 +287,9 @@
     {
       "id": "rheumatoid-arthritis",
       "name": "Rheumatoid Arthritis",
-      "aliases": [],
+      "aliases": [
+        "RA"
+      ],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
         {

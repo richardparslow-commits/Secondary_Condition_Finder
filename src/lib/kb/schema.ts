@@ -265,10 +265,22 @@ export const sourceReferenceSchema = z.object({
   verified: z.boolean().default(false),
   sourceCheckedOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   sourceLocator: z.string().trim().min(1).optional(),
+  /**
+   * Self-describing content hash ("sha256-<hex>") of the source body captured
+   * at human verification time. Optional while the backfill is in progress;
+   * citations:decay uses it to detect silent content drift (retractions,
+   * corrections) that link-rot probes cannot see. See
+   * docs/citation-verification-sop.md.
+   */
+  contentDigest: z.string().trim().regex(/^sha256-[0-9a-f]{64}$/i).optional(),
 }).strict().superRefine((reference, ctx) => {
   if (reference.verified && !reference.sourceUrl) ctx.addIssue({ code: "custom", path: ["sourceUrl"], message: "Verified sources require sourceUrl." });
   if (reference.verified && !reference.sourceCheckedOn) ctx.addIssue({ code: "custom", path: ["sourceCheckedOn"], message: "Verified sources require sourceCheckedOn." });
   if (reference.verified && !reference.sourceLocator) ctx.addIssue({ code: "custom", path: ["sourceLocator"], message: "Verified sources require sourceLocator." });
+  // A digest is a hash OF the sourceUrl's content, and it can only have been
+  // captured during a source check.
+  if (reference.contentDigest && !reference.sourceUrl) ctx.addIssue({ code: "custom", path: ["contentDigest"], message: "contentDigest is a hash of the sourceUrl content and requires sourceUrl." });
+  if (reference.contentDigest && !reference.sourceCheckedOn) ctx.addIssue({ code: "custom", path: ["contentDigest"], message: "contentDigest requires the sourceCheckedOn date when the hash was captured." });
 
   const isExplicitlyNonfinalFederalRegister =
     reference.authorityCategory === "federal-register-proposed-or-notice" ||

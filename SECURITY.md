@@ -71,6 +71,33 @@ script-src 'self' 'nonce-<per-request>' 'strict-dynamic' 'wasm-unsafe-eval'
 - `'wasm-unsafe-eval'` permits WebAssembly compilation only (browser-local tesseract.js OCR core); it does not enable general `eval`.
 - In development only, `'unsafe-eval'` is added for Next.js HMR.
 
+### Trusted Types (production enforcement)
+
+Production adds:
+
+```
+require-trusted-types-for 'script'
+trusted-types 'nextjs' 'dompurify' default
+'allow-duplicates'
+```
+
+- `require-trusted-types-for 'script'` closes DOM-XSS sink injection (innerHTML/outerHTML/script src/worker construction) for the application. The repo contains no first-party DOM-sink writes (audited); the framework keeps its `nextjs` policy escape hatch.
+- `default` is the one first-party fallback policy, created by `src/components/security/TrustedTypesGate.tsx` before hydration. It is deliberately strict: script **URLs** must resolve to same-origin http(s) (no `blob:`/`data:`, no cross-origin), and `createScript`/`createHTML` refuse unconditionally. This exists because the pinned tesseract.js v6 contains no `createPolicy` calls and constructs its OCR worker from a plain string — verified in the shipped bundle — so without a gated `default` policy the Local OCR action would fail in TT-enforcing browsers.
+- Development is exempt: React's dev-mode eval and the Turbopack dev chunk loader violate enforcement (verified in headless Chrome), and dev already runs `'unsafe-eval'`. Violation reporting stays active in dev.
+- Verified live against a production build in headless Chrome: pages hydrate with zero violations, the same-origin tesseract worker path succeeds through the gate, and cross-origin/blob worker payloads are blocked.
+- Policy names in `trusted-types` are token-list entries; quoted strings other than the framework's own keyword-style names are invalid tokens and silently disallowed — pin this when adding names.
+
+### CSP / Trusted-Types violation reporting
+
+Violations POST to `/api/csp-report` (`report-uri` plus `Reporting-Endpoints`/`Report-To`). The endpoint:
+
+- redacts every report to a bounded, content-free event **before** logging or counting (`src/lib/observability/csp-report.ts`): URLs reduced to origin only (no path, no query), directive names charset/length-validated, `sample` dropped in favor of a hex-only correlation fingerprint;
+- never persists raw report bodies, never returns errors to the browser (a bare 204 always — no oracle), and sheds abuse via a small in-memory limiter;
+- emits the redacted event to the best-effort OTEL counter `csp.violation` (directive/disposition attributes only);
+- is excluded from the proxy's security matcher so report delivery cannot loop into violations.
+
+Pinned by `tests/csp-trusted-types.test.ts`.
+
 ### Style source (unsafe-inline retained — React constraint)
 
 ```

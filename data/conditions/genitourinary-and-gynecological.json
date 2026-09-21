@@ -23,7 +23,8 @@
       "name": "Chronic Kidney Disease / Renal Failure",
       "aliases": [
         "chronic kidney disease",
-        "renal failure"
+        "renal failure",
+        "CKD"
       ],
       "bodySystem": "Genitourinary & Gynecological Systems",
       "ratingSchedule": [

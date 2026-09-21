@@ -125,7 +125,9 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run kb:validate` | Knowledge-base structural/integrity validation |
 | `npm run citations:audit` | Citation safety, provenance, and verification-debt audit |
 | `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-33 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
+| `npm run audit:crg` | CRG structural audit: simple-cycle enumeration, bidirectional-pair governance notes, and a transitive-redundancy report (`--strict` upgrades review findings to violations) |
 | `npm run citations:decay` | Live link-rot/staleness probe for citations (deliberate maintainer gate, not per-PR CI) |
+| `npm run probe:va-gov-walkthrough` | Probes the VA.gov walkthrough's deep-linked routes for route rot (auth-aware verdicts; scheduled weekly, also maintainer-runnable) |
 | `npm run citations:queue` | Reports the qualified-human citation-verification queue as markdown |
 | `npm run evidence:architecture` | Audits the browser-local evidence parser architecture and its security boundaries |
 | `npm run regulatory:validate` | Validates the provenanced regulatory-actions seed data |

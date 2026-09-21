@@ -1,0 +1,150 @@
+name: VA.gov Walkthrough Link Probe
+
+# Scheduled deep-link probe over the guided VA.gov records-download
+# walkthrough (src/lib/secondary-workflow/va-gov-record-walkthrough.ts).
+# When VA.gov renames or removes a deep-linked route, this probe fails and a
+# tracking issue opens so the walkthrough copy can be corrected before
+# veterans hit a 404 mid-flow. Deliberately NOT a per-PR gate: VA.gov can
+# change at any time and probe flakiness must not block contributions. The
+# walkthrough's own disclaimer still tells users VA.gov is the authority;
+# automation only opens and maintains the tracking issue.
+#
+# No DOM scraping and no automation of VA.gov: one polite GET per deep link
+# with auth-aware verdicts (login redirects are the route being alive).
+
+on:
+  schedule:
+    # Thursdays 06:23 UTC — different day/hour from citation-decay-watch to
+    # spread scheduled load.
+    - cron: "23 6 * * 4"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: va-gov-walkthrough-probe
+  cancel-in-progress: false
+
+jobs:
+  link-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+      # The probe uses only node builtins — no npm ci required.
+      - name: Probe walkthrough deep links
+        id: probe
+        run: |
+          set -o pipefail
+          node scripts/probe-va-gov-links.js --json > va-gov-walkthrough-probe-report.json
+          exit_code=$?
+          node --input-type=module -e "
+            import { readFileSync, writeFileSync } from 'node:fs';
+            const report = JSON.parse(readFileSync('va-gov-walkthrough-probe-report.json', 'utf8'));
+            const lines = [
+              '# VA.gov walkthrough link probe',
+              '',
+              '- status: ' + report.status,
+              '- deep links probed: ' + report.totalUrls,
+              '- alive (incl. auth redirects): ' + report.aliveCount,
+              '- dead routes (404/410): ' + report.deadCount,
+              '- server errors: ' + report.serverErrorCount,
+              '- unreachable: ' + report.unreachableCount,
+              '',
+              'See the uploaded artifact for the full JSON report.',
+              '',
+            ];
+            for (const result of report.results) {
+              lines.push('- [' + result.verdict + '] ' + result.url + ' (status ' + (result.finalStatus ?? 'n/a') + ')');
+            }
+            writeFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n');
+          " || true
+          exit $exit_code
+      - name: Upload probe report
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: va-gov-walkthrough-probe-report-${{ github.run_id }}
+          path: va-gov-walkthrough-probe-report.json
+          retention-days: 30
+
+  track-rot:
+    needs: link-probe
+    if: always() && needs.link-probe.result == 'failure'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      # The report is written in the link-probe workspace; fetch it from the
+      # run's artifacts so this job can build the tracking-issue body.
+      - name: Download probe report artifact
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: va-gov-walkthrough-probe-report-${{ github.run_id }}
+      - name: Open or update walkthrough route-rot tracking issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          node --input-type=module - <<'NODE'
+          import { execFileSync } from "node:child_process";
+          import { readFileSync } from "node:fs";
+
+          const report = JSON.parse(readFileSync("va-gov-walkthrough-probe-report.json", "utf8"));
+          const title = "VA.gov walkthrough route rot detected — update deep links";
+          const marker = "<!-- va-gov-walkthrough-probe -->";
+
+          const dead = (report.dead ?? []).map((r) => `- \`${r.url}\` → HTTP ${r.finalStatus}`).join("\n");
+          const broken = (report.serverErrors ?? []).map((r) => `- \`${r.url}\` → HTTP ${r.finalStatus}`).join("\n");
+
+          const body = [
+            marker,
+            "The scheduled VA.gov walkthrough link probe found dead deep-linked",
+            "routes. Update src/lib/secondary-workflow/va-gov-record-walkthrough.ts",
+            "to match VA.gov's current flow, then walk the affected steps manually",
+            "before publishing — this probe verifies routes, not the sign-in",
+            "experience. This issue is maintained by the va-gov-walkthrough-probe",
+            "workflow; it updates in place while rot persists and is not",
+            "auto-closed.",
+            "",
+            `| metric | count |`,
+            `| --- | --- |`,
+            `| deep links probed | ${report.totalUrls} |`,
+            `| dead routes | ${report.deadCount} |`,
+            `| server errors | ${report.serverErrorCount} |`,
+            `| unreachable | ${report.unreachableCount} |`,
+            "",
+            "## Dead routes (HTTP 404/410)",
+            dead || "- none",
+            "",
+            "## Server errors (VA.gov returned 5xx)",
+            broken || "- none",
+            "",
+            `Run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
+            "",
+          ].join("\n");
+
+          const gh = (args) => execFileSync("gh", args, { encoding: "utf8" });
+          const existing = gh([
+            "issue", "list",
+            "--state", "open",
+            "--search", title + " in:title",
+            "--json", "number,title",
+          ]).trim();
+          const matches = JSON.parse(existing || "[]").filter((issue) => issue.title === title);
+
+          if (matches.length > 0) {
+            gh(["issue", "edit", String(matches[0].number), "--body", body]);
+            console.log(`Updated tracking issue #${matches[0].number}`);
+          } else {
+            gh(["issue", "create", "--title", title, "--body", body]);
+            console.log("Opened new tracking issue");
+          }
+          NODE

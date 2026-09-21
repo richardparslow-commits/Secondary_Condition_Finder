@@ -15,6 +15,7 @@ const REQUIRED_EXECUTABLE_IMPORTS = [
   "@/lib/secondary-workflow/session",
   "@/lib/evidence/extract",
   "@/lib/evidence/document-extract",
+  "@/lib/evidence/ocr-session",
   "@/lib/va/sandbox",
   "@/lib/va/reference-cache",
   "@/lib/va/forms-finder",
@@ -100,6 +101,7 @@ const CLIENT_BOUNDARY_FORBIDDEN = [
 const EVIDENCE_PARSER_MODULES = [
   "@/lib/evidence/extract",
   "@/lib/evidence/document-extract",
+  "@/lib/evidence/ocr-session",
 ];
 
 const architecture = [];

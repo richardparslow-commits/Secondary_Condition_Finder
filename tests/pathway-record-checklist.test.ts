@@ -97,7 +97,7 @@ describe("Pathway-specific medical record checklist", () => {
     expect(joined).not.toMatch(/baseline/i);
   });
 
-  it("adds baseline + escalation + treatment-interference items for AGGRAVATION", () => {
+  it("adds baseline + escalation items for an ordinary AGGRAVATION theory, without treatment-interference records", () => {
     const aggravation = primary({
       id: "knee",
       name: "Knee Injury",
@@ -120,10 +120,66 @@ describe("Pathway-specific medical record checklist", () => {
         contributingPrimaries: [aggravation],
       })),
     ]);
-    const joined = group.pathways[0].items.map((item) => item.record).join(" ");
+    const pathway = group.pathways[0];
+    const joined = pathway.items.map((item) => item.record).join(" ");
     expect(joined).toMatch(/baseline severity documentation/i);
     expect(joined).toMatch(/more treatment, stronger medication, or worse function/i);
+    // Spicer treatment-interference records belong only to the authored
+    // Spicer variant, never to an ordinary aggravation theory.
+    expect(joined).not.toMatch(/interfered with treatment/i);
+    expect(pathway.spicerTreatmentInterference).toBe(false);
+  });
+
+  it("adds the Spicer treatment-interference item only when the authored mapping marks care-obstacle/treatment-complication on AGGRAVATION", () => {
+    const spicerAggravation = primary({
+      id: "ptsd-spicer",
+      name: "PTSD",
+      nexusClaim: {
+        nexusClassification: "AGGRAVATION",
+        baselineProgression: "The condition would have progressed slowly without the service-connected disability.",
+        aggravatingFactor: "Avoidance and appointment non-attendance interfered with treatment.",
+      },
+      causalMechanism: {
+        mechanismCategory: "PSYCHOPHYSIOLOGICAL",
+        primaryVector: "Avoidance symptoms interrupted scheduled treatment for the secondary condition.",
+        hypothesizedOnly: false,
+      },
+      pathwayIntelligence: { pathways: ["aggravation", "care-obstacle"], developmentQuestions: [], issuesToResolve: [] },
+    });
+    const [group] = buildPathwayRecordChecklist([
+      result("knee-osteoarthritis", "Knee Osteoarthritis", "Musculoskeletal System", rec({
+        contributingPrimaries: [spicerAggravation],
+      })),
+    ]);
+    const pathway = group.pathways[0];
+    expect(pathway.spicerTreatmentInterference).toBe(true);
+    const joined = pathway.items.map((item) => item.record).join(" ");
     expect(joined).toMatch(/interfered with treatment/i);
+    // The baseline comparison items remain — Spicer is an additional proof
+    // path, not a replacement for § 3.310(b)'s aggravation requirements.
+    expect(joined).toMatch(/baseline severity documentation/i);
+  });
+
+  it("does not grant the Spicer variant from pathway types alone without an AGGRAVATION classification", () => {
+    const directWithCareObstacle = primary({
+      id: "ptsd-direct-obstacle",
+      name: "PTSD",
+      nexusClaim: {
+        nexusClassification: "DIRECT_CAUSATION",
+        etiologicalTrigger: "Chronic stress-physiology trigger described here for schema parity.",
+      },
+      pathwayIntelligence: { pathways: ["care-obstacle"], developmentQuestions: [], issuesToResolve: [] },
+    });
+    const [group] = buildPathwayRecordChecklist([
+      result("sleep-apnea", "Sleep Apnea", "Respiratory System", rec({
+        contributingPrimaries: [directWithCareObstacle],
+      })),
+    ]);
+    const pathway = group.pathways[0];
+    expect(pathway.spicerTreatmentInterference).toBe(false);
+    expect(pathway.items.map((item) => item.record).join(" ")).not.toMatch(
+      /interfered with treatment/i,
+    );
   });
 
   it("includes alternative-cause items drawn from the authored etiologies to rule out", () => {

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { connection } from "next/server";
 
+import { TrustedTypesGate } from "@/components/security/TrustedTypesGate";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,6 +21,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
+        {/* Creates the gated `default` Trusted Types policy before any
+            library sink assignment (tesseract.js OCR worker). Production
+            enforcement only — mirrors the CSP's dev exemption. */}
+        <TrustedTypesGate />
         <a className="skip-link" href="#main-content">
           Skip to main content
         </a>
