@@ -18,6 +18,7 @@
           "citation": "Arrhythmias in myocarditis: State of the art. Heart rhythm. 2019. doi:10.1016/j.hrthm.2018.11.024. PMID 30476544",
           "note": "Qualified-human-approved as-written clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30476544/",
           "verified": true,
           "sourceCheckedOn": "2026-08-20",

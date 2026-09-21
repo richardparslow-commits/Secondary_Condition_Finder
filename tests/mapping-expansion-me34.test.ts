@@ -4,10 +4,10 @@ import { describe, expect, it } from "vitest";
 
 const root = process.cwd();
 const pairs = [
-  ["appendicitis", "female-infertility", "25303785", "c3a1d6baf88ee09d2d8239e1648324c635ea5391e13843c6d9abda65dc9555cc"],
-  ["arnold-chiari-malformation", "sleep-apnea", "31992420", "cd3ad42f01a90c90f8dda7d0994dd8f5ef3319c3ef5be4f4f6c048272bdcbcc0"],
-  ["atrial-flutter", "cerebrovascular-accident-stroke-residuals", "29223550", "aabdf81bd804c3731dad43383ccec26e3028dc8473db8f8ca5852ad2279d9098"],
-  ["burns", "contractures", "30948277", "2460583cd6202031d4afd609dfd5dddf130fb952c43375320a90d5ba3b380ee6"],
+  ["appendicitis", "female-infertility", "25303785", "e5cfc40da39f7364d8ed9481ed85d5e319e0cfe2d079211267c639be05b29e54"],
+  ["arnold-chiari-malformation", "sleep-apnea", "31992420", "88671e587ad420809c0818e25a10634a15f5ed25c043165595e4d03209f50ad6"],
+  ["atrial-flutter", "cerebrovascular-accident-stroke-residuals", "29223550", "f48bbe335d4546ac01ca125168f7d101941387a2fd0adaf75b13bb533d4bfa25"],
+  ["burns", "contractures", "30948277", "1440c8ab17e3898cd14cf58060d07b96c58df2e10fa0e9e5e6438ca3c9ff3362"],
 ] as const;
 
 type SourceReference = {

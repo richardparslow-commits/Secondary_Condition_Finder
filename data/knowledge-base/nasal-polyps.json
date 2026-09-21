@@ -22,6 +22,7 @@
           "citation": "Laidlaw TM, Mullol J, Woessner KM, Amin N, Mannent LP. Chronic Rhinosinusitis with Nasal Polyps and Asthma. J Allergy Clin Immunol Pract. 2021;9(3):1133-1141. PMID 33065369. doi:10.1016/j.jaip.2020.09.063.",
           "note": "Mapping Expansion Batch ME-22 evidence for the bounded chronic-rhinosinusitis-with-nasal-polyps to asthma proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33065369/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

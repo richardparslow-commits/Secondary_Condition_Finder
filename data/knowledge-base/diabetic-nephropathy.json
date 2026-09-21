@@ -22,6 +22,7 @@
           "citation": "Kidney Disease: Improving Global Outcomes (KDIGO) Diabetes Work Group. KDIGO 2022 Clinical Practice Guideline for Diabetes Management in Chronic Kidney Disease. Kidney Int. 2022;102(5S):S1-S127. PMID 36272764. doi:10.1016/j.kint.2022.06.008.",
           "note": "Mapping Expansion Batch ME-19 evidence for the bounded diabetic-nephropathy to chronic-kidney-disease proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36272764/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

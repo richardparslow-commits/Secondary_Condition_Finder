@@ -21,6 +21,7 @@
           "citation": "Hudson JI, Hiripi E, Pope HG Jr, Kessler RC. The prevalence and correlates of eating disorders in the National Comorbidity Survey Replication. Biol Psychiatry. 2007;61(3):348-358. PMID 16815322. doi:10.1016/j.biopsych.2006.03.040.",
           "note": "Mapping Expansion Batch ME-15 evidence for the bounded binge-eating-disorder to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16815322/",
           "verified": true,
           "sourceCheckedOn": "2026-09-01",

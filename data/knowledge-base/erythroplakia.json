@@ -22,6 +22,7 @@
           "citation": "Lorenzo-Pouso AI, Lafuente-Ibáñez de Mendoza I, Pérez-Sayáns M, Pérez-Jardón A, Chamorro-Petronacci CM, Blanco-Carrión A, Aguirre-Urízar JM. Critical update, systematic review, and meta-analysis of oral erythroplakia as an oral potentially malignant disorder. J Oral Pathol Med. 2022;51(7):585-593. PMID 35488780. doi:10.1111/jop.13304.",
           "note": "Mapping Expansion Batch ME-20 evidence for the bounded erythroplakia to oral-cancer proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35488780/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

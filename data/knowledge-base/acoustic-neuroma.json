@@ -22,6 +22,7 @@
           "citation": "Brooks KA, Vivas EX. Natural History of Hearing Loss in Sporadic Vestibular Schwannoma. Otolaryngol Clin North Am. 2023;56(3):443-453. PMID 37024333. doi:10.1016/j.otc.2023.02.005.",
           "note": "Mapping Expansion Batch ME-23 evidence for the bounded acoustic-neuroma to hearing-loss proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37024333/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

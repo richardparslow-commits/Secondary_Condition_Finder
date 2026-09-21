@@ -22,6 +22,7 @@
           "citation": "Chen C, Yang Y, Li P, Hu H. Incidence of Gastric Neoplasms Arising from Autoimmune Metaplastic Atrophic Gastritis: A Systematic Review and Case Reports. J Clin Med. 2023;12(3):1062. PMID 36769710. doi:10.3390/jcm12031062.",
           "note": "Mapping Expansion Batch ME-24 evidence for the bounded autoimmune-metaplastic-atrophic-gastritis to stomach-cancer proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36769710/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

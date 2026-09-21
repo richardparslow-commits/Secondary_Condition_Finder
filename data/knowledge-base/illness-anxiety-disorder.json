@@ -23,6 +23,7 @@
           "citation": "Noyes R Jr, Kathol RG, Fisher MM, Phillips BM, Suelzer MT, Holt CS. Psychiatric comorbidity among patients with hypochondriasis. Gen Hosp Psychiatry. 1994;16(2):78-87. PMID 8039697. doi:10.1016/0163-8343(94)90049-3.",
           "note": "Mapping Expansion Batch ME-18 evidence for the bounded illness-anxiety-disorder to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8039697/",
           "verified": true,
           "sourceCheckedOn": "2026-09-01",

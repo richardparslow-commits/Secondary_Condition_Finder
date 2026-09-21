@@ -6,7 +6,7 @@ const root = process.cwd();
 
 // targetId, rank, sourceReferenceCount, suggestionObjectHash (computed over the final,
 // qualified-human-verified suggestion object stored in the knowledge base)
-const pair = ["rem-sleep-disorder", 19, 3, "7e09b654a95958ba3aa90444140a24741d723ed92201782daec3d383e6a7ffd8"] as const;
+const pair = ["rem-sleep-disorder", 19, 3, "81e02838536109ca23c0fc2c345e2fc3947bd09b519763165dcb02d163db7a07"] as const;
 
 type SourceReference = { citation: string; verified: boolean; verificationScope: string };
 type Suggestion = {

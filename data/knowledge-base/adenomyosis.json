@@ -22,6 +22,7 @@
           "citation": "Donnez J, Carmona F, Maitrot-Mantelet L, Dolmans MM, Chapron C. Uterine disorders and iron deficiency anemia. Fertil Steril. 2022;118(4):615-624. PMID 36182260. doi:10.1016/j.fertnstert.2022.08.011.",
           "note": "Mapping Expansion Batch ME-24 evidence for the bounded adenomyosis-to-anemia proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36182260/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

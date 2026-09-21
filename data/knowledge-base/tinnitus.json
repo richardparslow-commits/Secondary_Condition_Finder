@@ -21,6 +21,7 @@
           "citation": "Salazar JW, Meisel K, Smith ER, Quiggle A, McCoy DB, Amans MR. Depression in Patients with Tinnitus: A Systematic Review. Otolaryngol Head Neck Surg. 2019;161(1):28-35. PMID 30909841. doi:10.1177/0194599819835178.",
           "note": "Mapping Expansion Batch ME-17 evidence for the bounded tinnitus to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30909841/",
           "verified": true,
           "sourceCheckedOn": "2026-09-01",
