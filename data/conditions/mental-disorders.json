@@ -46,7 +46,10 @@
     {
       "id": "anxiety-disorder",
       "name": "Generalized Anxiety Disorder",
-      "aliases": [],
+      "aliases": [
+        "generalized anxiety disorder",
+        "GAD"
+      ],
       "bodySystem": "Mental Disorders",
       "ratingSchedule": [
         {

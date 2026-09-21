@@ -42,13 +42,17 @@ export function conditionTermPatternFor(term: string): RegExp | null {
  * ("s/p MI", "RA with joint erosion") but also the most dangerous to match
  * bare, because the same letters are standard chart punctuation for other
  * things entirely: "PE:" heads physical-exam lines, "MS" is morphine sulfate
- * on medication lists, "r/o MI" rules a myocardial infarction OUT. A bare
- * acronym match therefore fabricates evidence matches from chart scaffolding.
+ * on medication lists, "dm" is a diabetes-mellitus ICD suffix ("E11.9 dm2")
+ * and "PN" abbreviates "peripheral" on anatomical lines. A bare acronym match
+ * therefore fabricates evidence matches from chart scaffolding.
  *
  * Each guard requires the sentence to carry at least one clinical co-occurring
  * signal (a longer name, a test, a treatment, a finding) before the acronym
  * may count as a condition match. Three-plus-character acronyms (OSA, PTSD,
- * GERD, TBI) are unambiguous enough to stay unguarded.
+ * GERD, TBI) are unambiguous enough to stay unguarded — with three documented
+ * exceptions: "CVA" is costovertebral-angle tenderness in GU charting, "DVT"
+ * is depth-velocity-threshold diving shorthand, and "ESRD" also abbreviates
+ * end-stage respiratory disease, so each needs a co-signal too.
  */
 const CONDITION_TERM_GUARDS: Record<string, RegExp> = {
   ms: /\b(?:multiple\s+sclerosis|relapsing[- ]remitting|primary\s+progressive|demyelinat(?:ing|ion)|mri|neurologist)\b/i,
@@ -57,6 +61,13 @@ const CONDITION_TERM_GUARDS: Record<string, RegExp> = {
   cad: /\b(?:coronary\s+artery|ischemic\s+heart|myocardial\s+infarction|heart\s+attack|angioplasty|stent|cardiac\s+cath)\b/i,
   ra: /\b(?:rheumatoid\s+arthritis|rheumatoid\s+factor|\bra\s+factor\b|anti[- ]?ccp|methotrexate|hydroxychloroquine|sulfasalazine|etanercept|adalimumab|joint\s+(?:erosion|destruction))\b/i,
   oa: /\b(?:osteoarthritis|degenerative\s+(?:arthritis|joint\s+disease)|joint\s+space\s+narrowing|osteophyt\w*|cartilage\s+(?:loss|wear)|djd)\b/i,
+  dm: /\b(?:diabet\w*|hba?1c|a1c\b|glucose|insulin|metformin|glipizide|glyburide|empagliflozin|semaglutide|hemoglobin\s+a1c|fasting\s+(?:blood\s+)?sugar)\b/i,
+  pn: /\b(?:peripheral\s+neurop\w*|neuropathy|paresthesi\w*|numbness|tingling|stocking[- ]glove|nerve\s+conduction|monofilament|gabapentin|pregabalin|duloxetine)\b/i,
+  vt: /\b(?:ventricular\s+(?:tachycardia|fibrillation|tachyarrhythmia)|defibrillat\w*|icd\b|amiodarone|lidocaine|cardioversion)\b/i,
+  vf: /\b(?:ventricular\s+(?:fibrillation|tachycardia|tachyarrhythmia)|defibrillat\w*|icd\b|amiodarone|cardioversion|arrest)\b/i,
+  cva: /\b(?:cerebrovascular\s+accident|stroke|cerebral\s+vascular|hemiparesis|hemiplegia|aphasia|tpa\b|tnk\b|thrombolyt\w*|infarct(?:ion)?)\b/i,
+  dvt: /\b(?:deep[- ]vein\s+thromb(?:osis|us|o\w*)|thrombophlebitis|phlebitis|venous\s+thromb(?:osis|oembolism)|d[- ]?dimer|anticoagul\w*|coumadin|warfarin|apixaban|rivaroxaban|compression\s+(?:stocking|device))\b/i,
+  esrd: /\b(?:end[- ]stage\s+renal|renal\s+failure|kidney\s+failure|dialysis|hemodialysis|peritoneal\s+dialysis|creatinine|egfr|nephrologist|transplant)\b/i,
 };
 
 /**

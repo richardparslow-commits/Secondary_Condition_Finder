@@ -54,7 +54,10 @@ function excerptsFor(
 
 describe("guard registry", () => {
   it("assigns guards to the polysemous acronyms and shares them case-insensitively", () => {
-    for (const acronym of ["MS", "PE", "MI", "CAD", "RA", "OA"]) {
+    for (const acronym of [
+      "MS", "PE", "MI", "CAD", "RA", "OA",
+      "DM", "PN", "VT", "VF", "CVA", "DVT", "ESRD",
+    ]) {
       expect(conditionTermGuardFor(acronym), acronym).toBeInstanceOf(RegExp);
       expect(conditionTermGuardFor(acronym.toLowerCase())).toBe(
         conditionTermGuardFor(acronym),
@@ -63,7 +66,7 @@ describe("guard registry", () => {
   });
 
   it("does not guard unambiguous three-plus-character acronyms", () => {
-    for (const acronym of ["OSA", "PTSD", "GERD", "TBI", "CHF"]) {
+    for (const acronym of ["OSA", "PTSD", "GERD", "TBI", "CHF", "BPH", "AFib", "GAD", "PVD", "TIA", "CKD"]) {
       expect(conditionTermGuardFor(acronym), acronym).toBeNull();
     }
   });
@@ -102,6 +105,13 @@ describe("catalog aliases feed the guards", () => {
       ["ischemic-heart-disease", "CAD"],
       ["rheumatoid-arthritis", "RA"],
       ["osteoarthritis", "OA"],
+      ["diabetes-mellitus", "dm"],
+      ["peripheral-neuropathy", "PN"],
+      ["ventricular-tachycardia-fibrillation", "vt"],
+      ["ventricular-tachycardia-fibrillation", "vf"],
+      ["cerebrovascular-accident-stroke-residuals", "cva"],
+      ["deep-vein-thrombosis", "DVT"],
+      ["chronic-kidney-disease", "ESRD"],
     ] as const) {
       const condition = byId.get(id);
       expect(condition, id).toBeDefined();
@@ -113,6 +123,33 @@ describe("catalog aliases feed the guards", () => {
     const condition = byId.get("myocardial-infarction");
     expect(condition).toBeDefined();
     expect(buildEvidenceConditionTerms([condition!])).toContain("MI");
+  });
+
+  it("carries the newly added shorthand aliases for their catalog entries", () => {
+    for (const [id, acronym] of [
+      ["deep-vein-thrombosis", "DVT"],
+      ["benign-prostatic-hyperplasia", "BPH"],
+      ["osteoarthritis", "DJD"],
+      ["peripheral-vascular-disease", "PVD"],
+      ["cardiac-arrhythmia", "AFib"],
+      ["anxiety-disorder", "GAD"],
+      ["chronic-kidney-disease", "ESRD"],
+      ["diabetes-mellitus", "dm"],
+      ["peripheral-neuropathy", "PN"],
+      ["ventricular-tachycardia-fibrillation", "vt"],
+      ["ventricular-tachycardia-fibrillation", "vf"],
+    ] as const) {
+      const condition = byId.get(id);
+      expect(condition, id).toBeDefined();
+      expect(buildEvidenceConditionTerms([condition!]), id).toContain(acronym);
+    }
+  });
+
+  it("keeps UTI out of the catalog rather than fabricating a rating identity", () => {
+    const utiOwner = [...byId.values()].find((condition) =>
+      /\bUTI\b/.test(condition.name) || condition.aliases.includes("UTI"),
+    );
+    expect(utiOwner).toBeUndefined();
   });
 });
 
@@ -252,5 +289,137 @@ describe("guarded shorthand corpus (negative / negation interplay)", () => {
           excerpt.matchedTerms.includes("ptsd"),
       ),
     ).toBe(true);
+  });
+});
+
+describe("guarded shorthand corpus (dm / PN / VT / VF)", () => {
+  it("matches dm only with glycemic co-signals, not ICD-suffix charting", () => {
+    const hit = excerptsFor(
+      "Assessment:\nDiabetes mellitus, dm uncontrolled; A1c 9.8 on metformin and insulin",
+      ["diabetes-mellitus"],
+    );
+    const dmExcerpt = hit.find((excerpt) => excerpt.matchedTerms.includes("dm"));
+    expect(dmExcerpt).toBeDefined();
+
+    // The trap: "dm" as an ICD-code suffix on a problem line. No glycemic
+    // co-signal — must never fabricate a match.
+    const trap = excerptsFor(
+      "Diagnosis:\nE11.9 dm2, some other text",
+      ["diabetes-mellitus"],
+    );
+    expect(trap.every((excerpt) => !excerpt.matchedTerms.includes("dm"))).toBe(true);
+  });
+
+  it("matches PN only with neuropathy co-signals, not peripheral anatomy lines", () => {
+    const hit = excerptsFor(
+      "Assessment:\nPN with stocking-glove numbness, nerve conduction slowed, on gabapentin",
+      ["peripheral-neuropathy"],
+    );
+    const pnExcerpt = hit.find((excerpt) => excerpt.matchedTerms.includes("PN"));
+    expect(pnExcerpt).toBeDefined();
+
+    const trap = excerptsFor(
+      "Diagnosis:\nRight lower extremity cellulitis, PN pulses intact",
+      ["peripheral-neuropathy"],
+    );
+    expect(trap.every((excerpt) => !excerpt.matchedTerms.includes("PN"))).toBe(true);
+  });
+
+  it("matches VT/VF only with arrhythmia co-signals", () => {
+    const hit = excerptsFor(
+      "Assessment:\nVT episodes documented on telemetry; ICD placed, on amiodarone",
+      ["ventricular-tachycardia-fibrillation"],
+    );
+    const vtExcerpt = hit.find((excerpt) => excerpt.matchedTerms.includes("vt"));
+    expect(vtExcerpt).toBeDefined();
+
+    const vfHit = excerptsFor(
+      "Impression:\nVF arrest, defibrillated, cardioversion successful",
+      ["ventricular-tachycardia-fibrillation"],
+    );
+    const vfExcerpt = vfHit.find((excerpt) => excerpt.matchedTerms.includes("vf"));
+    expect(vfExcerpt).toBeDefined();
+  });
+});
+
+describe("guarded shorthand corpus (polysemous three-letter: CVA, DVT, ESRD)", () => {
+  it("matches CVA with stroke co-signals and never from costovertebral-angle tenderness", () => {
+    const hit = excerptsFor(
+      "Assessment:\nCVA 2021 with residual right hemiparesis and aphasia",
+      ["cerebrovascular-accident-stroke-residuals"],
+    );
+    const cvaExcerpt = hit.find((excerpt) =>
+      excerpt.matchedTerms.some((term) => term.toLowerCase() === "cva"),
+    );
+    expect(cvaExcerpt).toBeDefined();
+
+    // The GU trap: "CVA tenderness" = costovertebral-angle tenderness on a
+    // renal/flank exam. No stroke co-signal — must never match.
+    const trap = excerptsFor(
+      "Diagnosis:\nFlank pain with CVA tenderness, urinalysis pending",
+      ["cerebrovascular-accident-stroke-residuals"],
+    );
+    expect(
+      trap.every(
+        (excerpt) =>
+          !excerpt.matchedTerms.some((term) => term.toLowerCase() === "cva"),
+      ),
+    ).toBe(true);
+  });
+
+  it("matches DVT with venous co-signals and stays silent under sentence-initial negation", () => {
+    const hit = excerptsFor(
+      "Assessment:\nLeft leg DVT on duplex ultrasound, anticoagulation with apixaban",
+      ["deep-vein-thrombosis"],
+    );
+    const dvtExcerpt = hit.find((excerpt) => excerpt.matchedTerms.includes("DVT"));
+    expect(dvtExcerpt).toBeDefined();
+
+    // Sentence-initial negation wins even with a venous co-signal present:
+    // a ruled-out thrombosis must not count as evidence-gap coverage.
+    const trap = excerptsFor(
+      "Diagnosis:\nNo DVT on duplex ultrasound; leg swelling improved",
+      ["deep-vein-thrombosis"],
+    );
+    expect(
+      trap.every((excerpt) => !excerpt.matchedTerms.includes("DVT")),
+    ).toBe(true);
+  });
+
+  it("matches ESRD only with renal-failure co-signals", () => {
+    const hit = excerptsFor(
+      "Assessment:\nESRD on hemodialysis three times weekly, nephrology following",
+      ["chronic-kidney-disease"],
+    );
+    const esrdExcerpt = hit.find((excerpt) => excerpt.matchedTerms.includes("ESRD"));
+    expect(esrdExcerpt).toBeDefined();
+
+    // The respiratory trap: ESRD also abbreviates end-stage respiratory
+    // disease. Without a renal co-signal, no match.
+    const trap = excerptsFor(
+      "Diagnosis:\nSevere dyspnea; concern for end-stage respiratory disease",
+      ["chronic-kidney-disease"],
+    );
+    expect(
+      trap.every((excerpt) => !excerpt.matchedTerms.includes("ESRD")),
+    ).toBe(true);
+  });
+});
+
+describe("guarded shorthand corpus (unambiguous additions)", () => {
+  it("matches unguarded three-plus-character aliases without co-signals", () => {
+    for (const [text, id, acronym] of [
+      ["Assessment:\nBPH with obstructive urinary symptoms", "benign-prostatic-hyperplasia", "BPH"],
+      ["Assessment:\nDJD of bilateral knees on x-ray", "osteoarthritis", "DJD"],
+      ["Assessment:\nPVD with claudication", "peripheral-vascular-disease", "PVD"],
+      ["Assessment:\nAFib rate-controlled on metoprolol", "cardiac-arrhythmia", "AFib"],
+      ["Assessment:\nGAD with panic features, on sertraline", "anxiety-disorder", "GAD"],
+    ] as const) {
+      const excerpts = excerptsFor(text, [id]);
+      expect(
+        excerpts.some((excerpt) => excerpt.matchedTerms.includes(acronym)),
+        `${id} should match ${acronym}`,
+      ).toBe(true);
+    }
   });
 });

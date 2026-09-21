@@ -21,7 +21,8 @@
       "aliases": [
         "atrial fibrillation",
         "cardiac arrhythmias",
-        "tachycardia"
+        "tachycardia",
+        "AFib"
       ],
       "bodySystem": "Cardiovascular System",
       "ratingSchedule": [
@@ -74,7 +75,8 @@
       "aliases": [
         "deep vein thrombosis",
         "deep vein thrombosis / phlebitis",
-        "phlebitis"
+        "phlebitis",
+        "DVT"
       ],
       "bodySystem": "Cardiovascular System",
       "ratingSchedule": [
@@ -170,7 +172,11 @@
     {
       "id": "peripheral-vascular-disease",
       "name": "Peripheral Vascular Disease",
-      "aliases": [],
+      "aliases": [
+        "peripheral vascular disease",
+        "peripheral artery disease",
+        "PVD"
+      ],
       "bodySystem": "Cardiovascular System",
       "ratingSchedule": [
         {

@@ -6,7 +6,8 @@
       "name": "Benign Prostatic Hyperplasia (BPH)",
       "aliases": [
         "benign prostatic hyperplasia",
-        "benign prostatic hypertrophy"
+        "benign prostatic hypertrophy",
+        "BPH"
       ],
       "bodySystem": "Genitourinary & Gynecological Systems",
       "ratingSchedule": [
@@ -24,7 +25,9 @@
       "aliases": [
         "chronic kidney disease",
         "renal failure",
-        "CKD"
+        "CKD",
+        "ESRD",
+        "end stage renal disease"
       ],
       "bodySystem": "Genitourinary & Gynecological Systems",
       "ratingSchedule": [
