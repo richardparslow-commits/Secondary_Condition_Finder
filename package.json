@@ -26,6 +26,7 @@
     "authoring:tracker": "node scripts/generate-authoring-tracker.js",
     "audit:high": "npm audit --audit-level=high",
     "audit:crg": "node scripts/audit-crg-graph.js",
+    "audit:crg:graph": "node --no-warnings scripts/audit-crg.ts",
     "evidence:architecture": "node scripts/audit-evidence-architecture.js",
     "evidence:architecture:markdown": "node scripts/audit-evidence-architecture.js --markdown",
     "deploy:guard:vercel": "node scripts/check-deploy-freeze.js --provider=vercel",

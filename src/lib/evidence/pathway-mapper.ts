@@ -1,7 +1,7 @@
 import type { ContributingPrimary, Recommendation } from "@/lib/engine/types";
 import type { MechanismCategory, NexusClassification } from "@/lib/kb/schema";
 
-import type { EvidenceAnalysis } from "./extract";
+import type { EvidenceAnalysis, EvidenceExcerpt } from "./extract";
 
 /**
  * Rule-based projection of browser-local evidence excerpts (Step 4 local
@@ -242,6 +242,266 @@ export function mapEvidenceToPathways(
   }
 
   return rows;
+}
+
+/* ─── Hop-level annotation (multi-hop pathways) ───────────────────────────── */
+
+/** Minimal structural view of one pathway hop for annotation purposes. */
+export interface HopLike {
+  /** 0-based position of this hop within its pathway. */
+  stepIndex: number;
+  edge: {
+    sourceConditionId: string;
+    targetConditionId: string;
+  };
+}
+
+/** Structural view of one hop for the per-hop text export (adds the legal classification). */
+export type PathwayHopLike = HopLike & {
+  edge: HopLike["edge"] & { nexusClassification: NexusClassification };
+};
+
+/** Composite legal nexus of a whole pathway chain (mirrors the canonical enum). */
+export type CompositeNexus = "DIRECT_CAUSATION" | "AGGRAVATION" | "ASSOCIATION_ONLY_CHAIN_BROKEN";
+
+/**
+ * Structural view of a traversed 1–2 hop pathway for the per-hop text export,
+ * mirroring the client view-model without importing it (this module stays
+ * engine-agnostic and is also consumed before the view layer exists).
+ */
+export interface ClaimPathwayLike {
+  originConditionId: string;
+  terminalConditionId: string;
+  hops: readonly PathwayHopLike[];
+  compositeNexus: CompositeNexus;
+}
+
+/**
+ * A browser-local excerpt annotated with the pathway hop it supports.
+ * `supportedHopIndex` is the `stepIndex` (0-based) of the hop whose legal
+ * theory the excerpt speaks to; `PathwayEvidenceTable` joins on it with
+ * strict equality.
+ */
+export type HopAnnotatedExcerpt = EvidenceExcerpt & { supportedHopIndex: number };
+
+/**
+ * Annotates stored excerpts with the hop (`stepIndex`) of the given pathway
+ * they support, ready for `PathwayEvidenceTable`.
+ *
+ * Assignment is a stable two-tier match per hop:
+ *
+ *   1. **Target match** — the excerpt's matched terms include a term of the
+ *      hop's *target* condition. For the final hop this is the claimed
+ *      condition itself; for an upstream hop it is the intermediate link.
+ *      Named evidence is the stronger cue for a hop's nexus theory, so it
+ *      wins over context-only matching.
+ *   2. **Source match** — otherwise, the excerpt matched a term of the hop's
+ *      *source* condition: diagnosis, treatment, medication, or timeline
+ *      excerpts that anchor the condition the hop departs from are the
+ *      context every nexus theory needs.
+ *
+ * An excerpt matching several hops lands under the first one (lowest
+ * `stepIndex`), so each excerpt renders under exactly one hop section.
+ * Condition terms are derived from the catalog ID (its kebab-case form and
+ * its tokens of four or more characters, mirroring
+ * `buildPrimaryConditionTerms`) plus, when supplied, the display name —
+ * excerpts that matched only a catalog alias or guarded acronym may therefore
+ * land in `unmatched` rather than being misassigned.
+ *
+ * Deterministic only: it re-labels excerpts that already exist. It never
+ * interprets findings beyond the stored classification, never invents
+ * clinical text, and performs no network egress. An annotated excerpt is a
+ * research cue for a hop — it does not establish that hop's nexus.
+ *
+ * @param hops - The pathway's hops in traversal order (1–2 hops).
+ * @param analyses - Step 4 browser-local analyses (sessionStorage payload).
+ * @param conditionNameById - Optional catalog ID → display-name lookup that
+ *   widens the term match to excerpts stored under the full condition name.
+ * @returns Annotated excerpts in stored order, plus excerpts that matched no
+ *   hop — surfaced to the UI, never silently dropped.
+ */
+export function annotateExcerptsWithHopIndex(
+  hops: readonly HopLike[],
+  analyses: readonly EvidenceAnalysis[],
+  conditionNameById?: Readonly<Record<string, string>>,
+): { annotated: HopAnnotatedExcerpt[]; unmatched: EvidenceExcerpt[] } {
+  const stored = normalizeStoredExcerpts(analyses);
+
+  const assignment = new Map<EvidenceExcerpt, number>();
+  for (const hop of [...hops].sort((a, b) => a.stepIndex - b.stepIndex)) {
+    const targetTerms = hopConditionTerms(hop.edge.targetConditionId, conditionNameById);
+    const sourceTerms = hopConditionTerms(hop.edge.sourceConditionId, conditionNameById);
+    for (const entry of stored) {
+      if (assignment.has(entry.excerpt)) continue;
+      if (intersects(entry.terms, targetTerms) || intersects(entry.terms, sourceTerms)) {
+        assignment.set(entry.excerpt, hop.stepIndex);
+      }
+    }
+  }
+
+  const annotated: HopAnnotatedExcerpt[] = [];
+  const unmatched: EvidenceExcerpt[] = [];
+  for (const entry of stored) {
+    const stepIndex = assignment.get(entry.excerpt);
+    if (stepIndex === undefined) unmatched.push(entry.excerpt);
+    else annotated.push({ ...entry.excerpt, supportedHopIndex: stepIndex });
+  }
+  return { annotated, unmatched };
+}
+
+function normalizeStoredExcerpts(
+  analyses: readonly EvidenceAnalysis[],
+): { excerpt: EvidenceExcerpt; terms: Set<string> }[] {
+  const stored: { excerpt: EvidenceExcerpt; terms: Set<string> }[] = [];
+  for (const analysis of analyses) {
+    for (const excerpt of analysis.excerpts) {
+      const terms = new Set<string>();
+      for (const term of excerpt.matchedTerms) {
+        const normalized = normalizeTerm(term);
+        if (normalized) terms.add(normalized);
+      }
+      stored.push({ excerpt, terms });
+    }
+  }
+  return stored;
+}
+
+/**
+ * Term strings stored excerpts may carry for a hop endpoint: the kebab-case
+ * catalog ID, its separator-free form, its tokens of four or more characters,
+ * and (when known) the display name — mirroring the term conventions of
+ * `buildPrimaryConditionTerms`.
+ */
+function hopConditionTerms(
+  conditionId: string,
+  conditionNameById: Readonly<Record<string, string>> | undefined,
+): Set<string> {
+  const terms = new Set<string>();
+  const id = conditionId.trim();
+  if (!id) return terms;
+  terms.add(normalizeTerm(id));
+  for (const token of id.split("-")) {
+    if (token.length >= 4) terms.add(normalizeTerm(token));
+  }
+  const name = conditionNameById?.[id]?.trim();
+  if (name) terms.add(normalizeTerm(name));
+  return terms;
+}
+
+function intersects(a: Set<string>, b: Set<string>): boolean {
+  if (a.size === 0 || b.size === 0) return false;
+  for (const value of a) {
+    if (b.has(value)) return true;
+  }
+  return false;
+}
+
+/* ─── Per-hop text export (mirrors the PathwayEvidenceTable review) ────────── */
+
+/** One-sentence, plain-language summary of the whole chain's legal nexus. */
+export const COMPOSITE_NEXUS_SUMMARY: Record<CompositeNexus, string> = {
+  DIRECT_CAUSATION: "Every hop in this chain asserts direct causation.",
+  AGGRAVATION: "At least one hop in this chain is an aggravation claim.",
+  ASSOCIATION_ONLY_CHAIN_BROKEN: "This chain includes an association-only link, which breaks the legal nexus between hops.",
+};
+
+/**
+ * Formats one hop of a pathway as text-export lines: the numbered heading,
+ * the hop's legal theory, and its mapped excerpts — or the explicit empty
+ * state, so an evidence gap travels to the printed packet instead of
+ * vanishing. Excerpt lines carry only what is already on screen (quote,
+ * source, locator, category, strength) and use ASCII punctuation only for
+ * safe plain-text rendering.
+ */
+export function formatPathwayHopEvidenceLines(
+  hop: PathwayHopLike,
+  hopNumber: number,
+  excerpts: readonly HopAnnotatedExcerpt[],
+  conditionNameById: Readonly<Record<string, string>> = {},
+): string[] {
+  const sourceName = conditionNameById[hop.edge.sourceConditionId] ?? hop.edge.sourceConditionId;
+  const targetName = conditionNameById[hop.edge.targetConditionId] ?? hop.edge.targetConditionId;
+
+  const lines: string[] = [
+    `Hop ${hopNumber}: ${sourceName} -> ${targetName}`,
+    `  Theory: ${NEXUS_CLAIM_LABEL[hop.edge.nexusClassification]}`,
+  ];
+
+  if (excerpts.length === 0) {
+    lines.push("  No evidence mapped for this step.");
+    return lines;
+  }
+
+  lines.push("  Evidence excerpts (exact quote):");
+  for (const excerpt of excerpts) {
+    lines.push(
+      `   - "${excerpt.quote}" (${excerpt.sourceName}, ${excerpt.locator}; ${excerpt.category}${excerpt.strength === "nexus-relevant" ? ", nexus-relevant" : ""})`,
+    );
+  }
+  return lines;
+}
+
+/**
+ * Plain-text export of the per-hop evidence review: one numbered section per
+ * pathway, one numbered sub-section per hop, with the chain's composite legal
+ * nexus in the pathway header so the whole chain's strength travels with its
+ * evidence. Renders the same stored excerpts, hop groupings, and empty states
+ * as the on-screen `PathwayEvidenceTable` — it adds no analysis, no
+ * probabilities, and no determination language.
+ *
+ * Deterministic only: like `formatPathwayEvidenceMapping`, it prints what is
+ * already in browser-local state. Nothing leaves the tab until the veteran
+ * chooses to download.
+ *
+ * @param entries - Per-pathway entries: the pathway view-model plus the
+ *   excerpts already annotated against that pathway (as produced by
+ *   `annotateExcerptsWithHopIndex`). Excerpts are bucketed per hop here by
+ *   strict `supportedHopIndex` equality.
+ * @param conditionNameById - Catalog ID → display name; missing IDs fall back
+ *   to the ID, exactly as the table renders them.
+ */
+export function formatPathwayHopEvidenceMapping(
+  entries: readonly {
+    pathway: ClaimPathwayLike;
+    excerpts: readonly HopAnnotatedExcerpt[];
+  }[],
+  conditionNameById: Readonly<Record<string, string>> = {},
+): string {
+  const lines: string[] = [
+    "Evidence by Pathway Hop (browser-local research cues)",
+    "",
+    "Sections below mirror the on-screen per-hop review: your Step 4 local",
+    "document analysis grouped under the specific hop of each claim pathway it",
+    "supports. Matching text is a research cue only — it does not establish",
+    "causation, aggravation, competency, probative weight, or VA's",
+    "at-least-as-likely-as-not standard. Final determinations are made by VA.",
+    "",
+  ];
+
+  if (entries.length === 0) {
+    lines.push("No research pathways were available to map.");
+    return lines.join("\n");
+  }
+
+  for (const [pathwayIndex, entry] of entries.entries()) {
+    const { pathway, excerpts } = entry;
+    const originName = conditionNameById[pathway.originConditionId] ?? pathway.originConditionId;
+    const terminalName = conditionNameById[pathway.terminalConditionId] ?? pathway.terminalConditionId;
+
+    lines.push(`Pathway ${pathwayIndex + 1}: ${originName} -> ${terminalName}`);
+    lines.push(`  Composite nexus: ${COMPOSITE_NEXUS_SUMMARY[pathway.compositeNexus]}`);
+
+    for (const hop of pathway.hops) {
+      const hopExcerpts = excerpts.filter(
+        (excerpt) => excerpt.supportedHopIndex === hop.stepIndex,
+      );
+      lines.push(...formatPathwayHopEvidenceLines(hop, hop.stepIndex + 1, hopExcerpts, conditionNameById));
+    }
+
+    lines.push("");
+  }
+
+  return lines.join("\n").trimEnd();
 }
 
 /**

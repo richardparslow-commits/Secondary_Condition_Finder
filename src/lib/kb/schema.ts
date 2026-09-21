@@ -1,17 +1,55 @@
 import { z } from "zod";
 
 /**
- * CRG (Causal Relational Graph) schema.
+ * CRG (Causal Relational Graph) schema — multi-hop directed graph.
  *
- * Every suggestion must declare a nexus pathway. The two VA-recognized legal
- * pathways under 38 CFR § 3.310 are DIRECT_CAUSATION (the SC condition
- * proximately caused the secondary condition) and AGGRAVATION (the SC
- * condition worsened the natural baseline of an already-present condition).
- * ASSOCIATION_ONLY is an honest third arm for edges where the evidence
- * supports co-occurrence/association but neither legal pathway is established;
+ * ## Architecture
+ *
+ * The knowledge base models VA secondary-service-connection medicine as a
+ * directed graph over catalog conditions. v1 assumed a rigid two-node
+ * "service-connected primary → secondary" tree. This refactor decouples
+ * relationships from the primary root so any catalog condition can be an
+ * intermediate node, enabling tertiary claims (Primary → Secondary →
+ * Tertiary) and any other depth-2 pathway:
+ *
+ *   - `KbEdgeSchema` — a single directed relationship whose
+ *     `sourceConditionId`/`targetConditionId` are explicit catalog IDs. Edges
+ *     are self-describing: they no longer derive "source" from the file they
+ *     happen to live in.
+ *   - `KbNodeMappingSchema` — the on-disk adjacency list. One JSON file per
+ *     root condition (`nodeId`), listing its outgoing edges. The graph is the
+ *     union of all node files; the recommendation engine traverses it to a
+ *     depth of 2 (`ClaimPathwaySchema` bounds `hops` to `.min(1).max(2)`).
+ *   - `PathwayHopSchema` / `ClaimPathwaySchema` — a traversed pathway with a
+ *     composite legal nexus derived from the hop chain (see
+ *     `deriveCompositeNexus` in `./utils`).
+ *
+ * ## Legal framework (38 CFR § 3.310)
+ *
+ * Every edge must declare a nexus pathway. The two VA-recognized pathways are
+ * DIRECT_CAUSATION (the source condition proximately caused the target
+ * condition) and AGGRAVATION (the source condition worsened the natural
+ * baseline of an already-present target condition, per Spicer v. McDonough's
+ * "but for" standard). ASSOCIATION_ONLY is an honest third arm for edges where
+ * the evidence supports co-occurrence but neither legal pathway is established;
  * forcing such rows into a causation or aggravation arm would overstate the
- * evidence. The proposal's two pathways are implemented exactly as specified;
- * the third arm is additive and required for truthful authoring.
+ * evidence. In a multi-hop chain a single ASSOCIATION_ONLY hop breaks the legal
+ * chain end-to-end — `deriveCompositeNexus` enforces this, and
+ * `compositeNexusSchema` models the result.
+ *
+ * ## Canonical vs. authored (bridge) nexus claims
+ *
+ *   - `KbNexusClaimSchema` is the canonical, edge-level union. On
+ *     ASSOCIATION_ONLY it *strictly enforces* `hypothesizedOnly: true` and
+ *     `status: "NOT_ESTABLISHED"` (literal fields with defaults that
+ *     materialize when absent and reject any contradicting value), so an
+ *     association edge can never present as established causation.
+ *   - `nexusClaimSchema` is the authored union consumed by the existing 813
+ *     condition-mapping files and the tamper-evidence ledger. It is a bridge:
+ *     the same three arms plus the authored per-arm clinical narrative fields,
+ *     with the canonical edge-level fields accepted as optional spellings. New
+ *     edges should be authored canonically (`KbEdgeSchema`); the bridge keeps
+ *     historical files parsing without a data migration.
  *
  * `prevalence` is deprecated and removed from the schema (it described how
  * commonly a relationship is explored, not whether A causes B). Ranking now
@@ -21,37 +59,111 @@ import { z } from "zod";
 
 export const nexusClassificationSchema = z.enum(["DIRECT_CAUSATION", "AGGRAVATION", "ASSOCIATION_ONLY"]);
 
-const DirectCausationSchema = z.object({
-  nexusClassification: z.literal("DIRECT_CAUSATION"),
-  etiologicalTrigger: z.string().min(50, "DIRECT_CAUSATION requires a specific biological trigger description of at least 50 characters."),
+/**
+ * Authored per-arm narrative fields, forbidden on the arms that don't use
+ * them via the undefined-guard idiom (declared, but only ever `undefined`).
+ * Shared across the authored and canonical arm variants.
+ */
+const authoredNexusGuards = {
+  etiologicalTrigger: z.undefined().optional(),
   baselineProgression: z.undefined().optional(),
   aggravatingFactor: z.undefined().optional(),
   associationBasis: z.undefined().optional(),
   causationStatus: z.undefined().optional(),
+} as const;
+
+/**
+ * Canonical edge-level nexus fields. On the authored (bridge) arms these stay
+ * undefined-guards; the canonical ASSOCIATION_ONLY arm overrides them with
+ * strictly enforced literals.
+ */
+const graphNexusGuards = {
+  sourceConditionId: z.undefined().optional(),
+  targetConditionId: z.undefined().optional(),
+  hypothesizedOnly: z.undefined().optional(),
+  status: z.undefined().optional(),
+} as const;
+
+/* ─── Authored (bridge) nexus union — parses the historical 813-file KB ─── */
+
+const DirectCausationSchema = z.object({
+  ...authoredNexusGuards,
+  ...graphNexusGuards,
+  nexusClassification: z.literal("DIRECT_CAUSATION"),
+  etiologicalTrigger: z.string().min(50, "DIRECT_CAUSATION requires a specific biological trigger description of at least 50 characters."),
 });
 
 const AggravationSchema = z.object({
+  ...authoredNexusGuards,
+  ...graphNexusGuards,
   nexusClassification: z.literal("AGGRAVATION"),
-  etiologicalTrigger: z.undefined().optional(),
   baselineProgression: z.string().min(50, "AGGRAVATION requires a natural non-SC baseline progression description of at least 50 characters."),
   aggravatingFactor: z.string().min(50, "AGGRAVATION requires a biomechanical or systemic aggravating factor description of at least 50 characters."),
-  associationBasis: z.undefined().optional(),
-  causationStatus: z.undefined().optional(),
 });
 
 const AssociationOnlySchema = z.object({
+  ...authoredNexusGuards,
+  ...graphNexusGuards,
   nexusClassification: z.literal("ASSOCIATION_ONLY"),
-  etiologicalTrigger: z.undefined().optional(),
-  baselineProgression: z.undefined().optional(),
-  aggravatingFactor: z.undefined().optional(),
   associationBasis: z.string().min(50, "ASSOCIATION_ONLY requires a description of the reported association's basis."),
   causationStatus: z.string().min(50, "ASSOCIATION_ONLY must state why neither causation nor aggravation is established."),
 });
 
+/**
+ * Authored nexus union (discriminated on `nexusClassification`). Bridge
+ * layer: accepts the authored per-arm narrative fields and — additively — the
+ * canonical edge-level fields, so authored KB files keep validating unchanged
+ * while new graph edges can reuse this union during migration.
+ */
 export const nexusClaimSchema = z.discriminatedUnion("nexusClassification", [
   DirectCausationSchema,
   AggravationSchema,
   AssociationOnlySchema,
+]);
+
+/* ─── Canonical (edge-level) nexus union — strict association enforcement ─── */
+
+const EdgeDirectCausationSchema = z.object({
+  ...authoredNexusGuards,
+  ...graphNexusGuards,
+  nexusClassification: z.literal("DIRECT_CAUSATION"),
+});
+
+const EdgeAggravationSchema = z.object({
+  ...authoredNexusGuards,
+  ...graphNexusGuards,
+  nexusClassification: z.literal("AGGRAVATION"),
+});
+
+/**
+ * Canonical ASSOCIATION_ONLY arm. `hypothesizedOnly: true` and
+ * `status: "NOT_ESTABLISHED"` are strictly enforced: the literals materialize
+ * via defaults when authored data omits them, and any explicit contradicting
+ * value (e.g. `hypothesizedOnly: false`, `status: "WELL_ESTABLISHED"`) is a
+ * hard parse error. An association edge is therefore incapable of presenting
+ * as an established causal claim at the type level and the parse level.
+ */
+const EdgeAssociationOnlySchema = z.object({
+  ...authoredNexusGuards,
+  ...graphNexusGuards,
+  nexusClassification: z.literal("ASSOCIATION_ONLY"),
+  hypothesizedOnly: z.literal(true).default(true),
+  status: z.literal("NOT_ESTABLISHED").default("NOT_ESTABLISHED"),
+});
+
+/**
+ * Canonical nexus union for graph edges. Deliberately EXCLUDES the authored
+ * per-arm narrative fields (they are undefined-guarded here): an edge carries
+ * its evidence in `rationale` and `evidentiaryProfile.conservativeRationale`,
+ * so migrated narrative text cannot masquerade as edge-level data. Because
+ * the guards keep those keys present-as-undefined in the inferred type, a
+ * canonical claim remains structurally assignable to the authored
+ * `NexusClaim` union. ASSOCIATION_ONLY carries the enforced literals.
+ */
+export const KbNexusClaimSchema = z.discriminatedUnion("nexusClassification", [
+  EdgeDirectCausationSchema,
+  EdgeAggravationSchema,
+  EdgeAssociationOnlySchema,
 ]);
 
 /**
@@ -136,6 +248,7 @@ export const evidentiaryProfileSchema = z.object({
 
 export type NexusClassification = z.infer<typeof nexusClassificationSchema>;
 export type NexusClaim = z.infer<typeof nexusClaimSchema>;
+export type KbNexusClaim = z.infer<typeof KbNexusClaimSchema>;
 export type MechanismCategory = z.infer<typeof mechanismCategorySchema>;
 export type CausalMechanism = z.infer<typeof causalMechanismSchema>;
 export type EtiologicalConsensus = z.infer<typeof etiologicalConsensusSchema>;
@@ -430,6 +543,213 @@ export const conditionMappingSchema = z.object({
 });
 
 export const knowledgeBaseSchema = z.array(conditionMappingSchema);
+
+/* ─── Multi-hop graph layer ────────────────────────────────────────────────
+ *
+ * These are the canonical graph contracts. `KbNodeMappingSchema` files form
+ * an adjacency list keyed by catalog condition ID; the recommendation engine
+ * stitches node files into pathways of at most 2 hops (Primary → Secondary →
+ * Tertiary) and reports each traversal's composite legal nexus.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+/** Catalog condition identifier (kebab-case), shared by nodes and edges. */
+export const catalogConditionIdSchema = z.string().regex(/^[a-z0-9-]+$/);
+
+/**
+ * A single directed CRG edge. `sourceConditionId`/`targetConditionId` are
+ * explicit so an edge is self-describing and independent of whichever node
+ * file carries it — this is what decouples edges from the service-connected
+ * primary root. Source citations intentionally live in the authored mapping
+ * layer (`sourceReferenceSchema`); an edge references that evidence without
+ * duplicating it.
+ */
+export const KbEdgeSchema = z.object({
+  sourceConditionId: catalogConditionIdSchema,
+  targetConditionId: catalogConditionIdSchema,
+  /** Ordering of outgoing edges from the same source (1 = strongest). */
+  rank: z.number().int().positive(),
+  nexusClaim: KbNexusClaimSchema,
+  causalMechanism: causalMechanismSchema,
+  evidentiaryProfile: evidentiaryProfileSchema,
+  rationale: z.string().min(1),
+  /** Development targets the veteran must close for this edge's nexus opinion. */
+  evidenceGaps: z.array(z.string().min(1)).min(1),
+}).strict().superRefine((edge, ctx) => {
+  if (edge.sourceConditionId === edge.targetConditionId) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["targetConditionId"],
+      message: "An edge cannot be self-referential (sourceConditionId must differ from targetConditionId).",
+    });
+  }
+  if (edge.nexusClaim.nexusClassification === "ASSOCIATION_ONLY") {
+    if (!edge.causalMechanism.hypothesizedOnly) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["causalMechanism", "hypothesizedOnly"],
+        message: "ASSOCIATION_ONLY edges must mark causalMechanism.hypothesizedOnly: true (the cascade is hypothesized, not established).",
+      });
+    }
+    if (edge.nexusClaim.status !== "NOT_ESTABLISHED") {
+      ctx.addIssue({
+        code: "custom",
+        path: ["nexusClaim", "status"],
+        message: "ASSOCIATION_ONLY nexus claims must carry status \"NOT_ESTABLISHED\".",
+      });
+    }
+    if (edge.evidentiaryProfile.etiologicalConsensus === "WELL_ESTABLISHED") {
+      ctx.addIssue({
+        code: "custom",
+        path: ["evidentiaryProfile", "etiologicalConsensus"],
+        message: "An ASSOCIATION_ONLY edge cannot claim a WELL_ESTABLISHED etiological consensus.",
+      });
+    }
+  }
+});
+
+/**
+ * The on-disk adjacency list for one JSON file: a root condition (`nodeId`)
+ * plus every edge whose source is that condition. The `.refine()` guarantees
+ * the adjacency invariant — an edge stored in this file must actually depart
+ * from this node — so the union of all node files is a well-formed directed
+ * graph with no orphaned edges and no cross-file ambiguity about a source.
+ */
+export const KbNodeMappingSchema = z.object({
+  /** Root catalog condition ID; every outgoing edge must depart from it. */
+  nodeId: catalogConditionIdSchema,
+  outgoingEdges: z.array(KbEdgeSchema).default([]),
+}).strict().superRefine((node, ctx) => {
+  const mismatchedEdgeIndex = node.outgoingEdges.findIndex((edge) => edge.sourceConditionId !== node.nodeId);
+  if (mismatchedEdgeIndex !== -1) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["outgoingEdges", mismatchedEdgeIndex, "sourceConditionId"],
+      message: `Every outgoing edge's sourceConditionId must equal this file's root nodeId ("${node.nodeId}").`,
+    });
+  }
+  const targets = node.outgoingEdges.map((edge) => edge.targetConditionId);
+  if (new Set(targets).size !== targets.length) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["outgoingEdges"],
+      message: "outgoingEdges must not contain duplicate targetConditionId values; author one edge per relationship.",
+    });
+  }
+  const ranks = node.outgoingEdges.map((edge) => edge.rank).sort((a, b) => a - b);
+  if (ranks.some((rank, index) => rank !== index + 1)) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["outgoingEdges"],
+      message: "Edge ranks must be unique and gapless, starting at 1.",
+    });
+  }
+});
+
+/**
+ * The legal quality of a traversed pathway, derived by `deriveCompositeNexus`
+ * from the nexus classification of each hop in the chain. AGGRAVATION
+ * dominates DIRECT_CAUSATION because VA proximate-cause analysis follows the
+ * weakest legally recognized link; an ASSOCIATION_ONLY hop breaks the chain
+ * entirely (no statutory nexus between service and the terminal condition).
+ */
+export const compositeNexusSchema = z.enum([
+  "DIRECT_CAUSATION",
+  "AGGRAVATION",
+  "ASSOCIATION_ONLY_CHAIN_BROKEN",
+]);
+
+/**
+ * One hop of a traversed pathway. `stepIndex` is 0-based and positional:
+ * hop N's `targetConditionId` must equal hop N+1's `sourceConditionId` for
+ * the chain to be contiguous (validated by `ClaimPathwaySchema`).
+ */
+export const PathwayHopSchema = z.object({
+  /** 0-based position of this hop within the pathway. */
+  stepIndex: z.number().int().min(0),
+  edge: KbEdgeSchema,
+}).strict();
+
+/**
+ * A fully traversed pathway of 1–2 hops. One-hop pathways are the classic
+ * service-connected-primary → secondary claim; two-hop pathways are tertiary
+ * claims (Primary → Secondary → Tertiary) or an aggravation link somewhere in
+ * the chain. `originConditionId` and `terminalConditionId` pin the traversal
+ * endpoints, and `compositeNexus` must be derived from the hops via
+ * `deriveCompositeNexus` (mirrored inline below to avoid a schema → utils
+ * import cycle; pinned equivalent by tests).
+ */
+export const ClaimPathwaySchema = z.object({
+  /** Catalog ID where the traversal begins (the service-connected origin). */
+  originConditionId: catalogConditionIdSchema,
+  /** Catalog ID where the traversal ends (the condition being claimed). */
+  terminalConditionId: catalogConditionIdSchema,
+  /** Contiguous hop chain; depth is capped at 2 (tertiary claims). */
+  hops: z.array(PathwayHopSchema).min(1).max(2),
+  /** Derived legal nexus of the whole chain — never authored by hand. */
+  compositeNexus: compositeNexusSchema,
+}).strict().superRefine((pathway, ctx) => {
+  const firstHop = pathway.hops[0];
+  const lastHop = pathway.hops[pathway.hops.length - 1];
+  if (pathway.originConditionId !== firstHop.edge.sourceConditionId) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["originConditionId"],
+      message: "originConditionId must equal the first hop's sourceConditionId.",
+    });
+  }
+  if (pathway.terminalConditionId !== lastHop.edge.targetConditionId) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["terminalConditionId"],
+      message: "terminalConditionId must equal the final hop's targetConditionId.",
+    });
+  }
+  for (const [index, hop] of pathway.hops.entries()) {
+    if (hop.stepIndex !== index) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["hops", index, "stepIndex"],
+        message: "Hops must be contiguous: stepIndex must equal the hop's array position.",
+      });
+      break;
+    }
+    const next = pathway.hops[index + 1];
+    if (next && next.edge.sourceConditionId !== hop.edge.targetConditionId) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["hops", index + 1, "edge", "sourceConditionId"],
+        message: "Pathway hops must form a contiguous chain: each hop's source must equal the previous hop's target.",
+      });
+      break;
+    }
+  }
+
+  // Mirror of deriveCompositeNexus (./utils): keep both in sync — tests pin
+  // them equal.
+  let composite: "DIRECT_CAUSATION" | "AGGRAVATION" | "ASSOCIATION_ONLY_CHAIN_BROKEN" = "DIRECT_CAUSATION";
+  for (const hop of pathway.hops) {
+    const classification = hop.edge.nexusClaim.nexusClassification;
+    if (classification === "ASSOCIATION_ONLY") {
+      composite = "ASSOCIATION_ONLY_CHAIN_BROKEN";
+      break;
+    }
+    if (classification === "AGGRAVATION") composite = "AGGRAVATION";
+  }
+  if (pathway.compositeNexus !== composite) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["compositeNexus"],
+      message: `compositeNexus must be derived from the hop chain (expected "${composite}"; derive it with deriveCompositeNexus).`,
+    });
+  }
+});
+
+export type KbEdge = z.infer<typeof KbEdgeSchema>;
+export type KbNodeMapping = z.infer<typeof KbNodeMappingSchema>;
+export type CompositeNexus = z.infer<typeof compositeNexusSchema>;
+export type PathwayHop = z.infer<typeof PathwayHopSchema>;
+export type ClaimPathway = z.infer<typeof ClaimPathwaySchema>;
+
 export type SourceVerificationScope = z.infer<typeof sourceVerificationScopeSchema>;
 export type AuthorityCategory = z.infer<typeof authorityCategorySchema>;
 export type PropositionRole = z.infer<typeof propositionRoleSchema>;
