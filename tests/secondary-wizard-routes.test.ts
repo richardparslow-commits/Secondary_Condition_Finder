@@ -2,9 +2,14 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 
+import DiagnosedConditionsPage from "@/app/secondary/diagnosed/page";
 import RatingsStepPage from "@/app/secondary/ratings/page";
 import SuggestionsStepPage from "@/app/secondary/suggestions/page";
 import UploadStepPage from "@/app/secondary/upload/page";
+
+vi.mock("next/headers", () => ({
+  cookies: async () => new Map(),
+}));
 
 vi.mock("next/link", () => ({
   default: ({
@@ -19,6 +24,22 @@ vi.mock("next/link", () => ({
 }));
 
 describe("secondary wizard route progression", () => {
+  it("flags toxic-exposure-related conditions on the diagnosed step", async () => {
+    const html = renderToStaticMarkup(
+      await DiagnosedConditionsPage({
+        searchParams: Promise.resolve({}),
+      }),
+    );
+
+    const labels = html.match(/<label[\s\S]*?<\/label>/g) ?? [];
+    const asthmaLabel = labels.find((label) => label.includes(">Asthma<")) ?? "";
+    expect(asthmaLabel).toContain("toxic exposure related");
+
+    const tinnitusLabel =
+      labels.find((label) => label.includes(">Tinnitus<")) ?? "";
+    expect(tinnitusLabel).not.toContain("toxic exposure related");
+  });
+
   it("keeps ratings back navigation free of workflow query state", async () => {
     const html = renderToStaticMarkup(
       await RatingsStepPage({
