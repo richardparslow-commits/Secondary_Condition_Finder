@@ -18,6 +18,7 @@
           "citation": "Battisha et al., Journal of Clinical Medicine (2025), PMID 40364148",
           "note": "Systematic review describes OSA as an independent hypertension risk factor and reviews intermittent-hypoxia, sympathetic, oxidative-stress, inflammatory, and related mechanisms; supports a clinically important OSA-hypertension relationship without establishing an individual nexus.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40364148/",
           "verified": true,
           "sourceCheckedOn": "2026-08-19",
@@ -61,6 +62,7 @@
           "citation": "Zhao et al., Sleep and Breathing (2024), PMID 38888794",
           "note": "Systematic review and dose-response meta-analysis of cross-sectional studies found greater depression risk with increasing OSA severity, while substantial heterogeneity and study design limit individual causal inference.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38888794/",
           "verified": true,
           "sourceCheckedOn": "2026-08-19",
@@ -78,7 +80,8 @@
         "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
         "primaryVector": "Obstructive sleep apnea is associated with depressive symptoms, and a 2024 dose-response meta-analysis reported higher adjusted depression risk with more severe OSA. The underlying studies were cross-sectional and heterogeneous, so this association should not be converted into an automatic individual causal or aggravation nexus; psychiatric history, sleep-apnea chronology, symptom overlap, treatment response, and alternative contributors remain important.",
         "hypothesizedOnly": false
-      },       "evidentiaryProfile": {
+      },
+      "evidentiaryProfile": {
         "etiologicalConsensus": "PROBABLE",
         "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
         "conservativeRationale": "If a qualified clinician addresses secondary aggravation in an individual case, the conservative posture is that the cited cross-sectional dose-response evidence can support an at-least-as-likely-as-not consideration of OSA-related depression risk as part of that individual review, but only alongside a documented depressive-disorder baseline, compatible chronology, symptom-overlap assessment, and explicit consideration of alternative psychiatric, medical, medication, substance-use, psychosocial, and sleep-related contributors. The evidence does not, by itself, establish that OSA aggravated this individual's depressive disorder.",
@@ -104,6 +107,7 @@
           "citation": "Garbarino et al., Behavioral Sleep Medicine (2020), PMID 30453780",
           "note": "Systematic review and meta-analysis found anxiety symptoms common in adults with OSA and described the relationship among OSA, anxiety, and depression as probably bidirectional; supports association, not automatic individual causation.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30453780/",
           "verified": true,
           "sourceCheckedOn": "2026-08-19",

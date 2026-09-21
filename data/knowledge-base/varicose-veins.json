@@ -21,6 +21,7 @@
           "citation": "Chang SL, Huang YL, Lee MC, et al. Association of Varicose Veins With Incident Venous Thromboembolism and Peripheral Artery Disease. JAMA. 2018;319(8):807-817. PMID 29486040. doi:10.1001/jama.2018.0246.",
           "note": "Mapping Expansion Batch ME-14 evidence for the bounded varicose-veins to deep-vein-thrombosis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29486040/",
           "verified": true,
           "sourceCheckedOn": "2026-08-22",

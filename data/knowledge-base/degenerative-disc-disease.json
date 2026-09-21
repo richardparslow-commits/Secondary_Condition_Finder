@@ -21,6 +21,7 @@
           "citation": "Alomar SA, Maghrabi Y, Baeesa SS, Alves OL. Outcome of Anterior and Posterior Endoscopic Procedures for Cervical Radiculopathy Due to Degenerative Disk Disease: A Systematic Review and Meta-Analysis. Global Spine J. 2022;12(7):1546-1560. PMID 34402323. doi:10.1177/21925682211037270.",
           "note": "Mapping Expansion Batch ME-13 evidence for the bounded degenerative-disc-disease to radiculopathy proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34402323/",
           "verified": true,
           "sourceCheckedOn": "2026-08-22",

@@ -22,6 +22,7 @@
           "citation": "Afari N, Buchwald D. Chronic fatigue syndrome: a review. Am J Psychiatry. 2003;160(2):221-236. PMID 12562565. doi:10.1176/appi.ajp.160.2.221.",
           "note": "Mapping Expansion Batch ME-18 evidence for the bounded chronic-fatigue-syndrome to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12562565/",
           "verified": true,
           "sourceCheckedOn": "2026-09-01",

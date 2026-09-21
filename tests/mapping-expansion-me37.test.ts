@@ -4,15 +4,15 @@ import { describe, expect, it } from "vitest";
 
 const root = process.cwd();
 const pairs = [
-  ["metabolic-syndrome", 10, 2, "d13299124ad519e905cf30cd89d1f0f5a9693a7c8bfd45c86fe90bbad4d9837c"],
-  ["systemic-lupus-erythematosus", 11, 2, "80400eda4751949e27ea61ad6efa545d7c9710a689f794e24a8f07fc1076a416"],
-  ["rheumatoid-arthritis", 12, 2, "c9324846e60e56291dd4ffda5f19fdc27672914b98abb94229826323a26d1f13"],
-  ["inflammatory-bowel-disease", 13, 2, "b255f4ae8c2b3d0b0fa1d416b8f7e3e204704cdd9458d1769b26f1211e41efe2"],
-  ["multiple-sclerosis", 14, 1, "12432cd54d36ffe68f4d962c8023dd18a97d876577ff3a46af0a93ac8895e5da"],
-  ["thyroiditis", 15, 2, "afdcdd0f2f0e0664b33c450e84986d44872dc7e5dcf7f4ca870a7484a6e0fb14"],
-  ["irritable-bowel-syndrome", 16, 1, "5039c8ec5a7f11bed61da072fc0d9d3a2a1eeceff465c6113e0316e4fb5f557f"],
-  ["gerd", 17, 1, "15073b5acc6d2a0ea69491009b831f8428eec42104552016137a860fd7fcc3d4"],
-  ["copd", 18, 2, "064d2080b60202141127146cba546ce235d5c61f38483dcea98f18b487e79292"],
+  ["metabolic-syndrome", 10, 2, "193c3034bce6e61954b83cd883cbe45c43240ad2b63a84c611b1152939b7343d"],
+  ["systemic-lupus-erythematosus", 11, 2, "70bfca060300011fcf04e1f4a60d6716ac8dcbabf728b41139633c0711b3d0c3"],
+  ["rheumatoid-arthritis", 12, 2, "3566f42e0661f949ded22ff6789598c42ce362586af067673a4ce4664cc37875"],
+  ["inflammatory-bowel-disease", 13, 2, "50efc649fee66666005134b1614686b16d9b13806ddf11a9d8d59c3fccbcbe5b"],
+  ["multiple-sclerosis", 14, 1, "7d6fc132e5ab895e692a44dd265a1b0109db35b3cad70fab810dbb32598e783e"],
+  ["thyroiditis", 15, 2, "7e6fe2d8529987df1b4fc88c5e2b63d3657181740b072f987d4be8e20dc9ce0e"],
+  ["irritable-bowel-syndrome", 16, 1, "71f39c5ce8aaae30a28c05bee1e3b45f340cd077674d21794235f113941dabd3"],
+  ["gerd", 17, 1, "3d7ed0193aa63ef376994516e6342e1749ed61b1e50ee806a139d5d653b69897"],
+  ["copd", 18, 2, "a18812bf47127d662d0110e3d3acf5c5d3e4e40b72972a6e75bb290c72024147"],
 ] as const;
 
 type SourceReference = { citation: string; verified: boolean; verificationScope: string };

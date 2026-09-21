@@ -21,6 +21,7 @@
           "citation": "Ciapa MA, Salaru DL, Statescu C, Sascau RA, Bogdanici CM. Optic Neuritis in Multiple Sclerosis-A Review of Molecular Mechanisms Involved in the Degenerative Process. Curr Issues Mol Biol. 2022;44(9):3959-3979. PMID 36135184. doi:10.3390/cimb44090272.",
           "note": "Mapping Expansion Batch ME-12 evidence for the bounded multiple-sclerosis to optic-neuritis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36135184/",
           "verified": true,
           "sourceCheckedOn": "2026-08-22",

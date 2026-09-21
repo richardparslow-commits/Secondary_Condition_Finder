@@ -21,6 +21,7 @@
           "citation": "Pinnix CC, Cella L, Andraos TY, et al. Predictors of Hypothyroidism in Hodgkin Lymphoma Survivors After Intensity Modulated Versus 3-Dimensional Radiation Therapy. Int J Radiat Oncol Biol Phys. 2018;101(3):530-540. PMID 29681481. doi:10.1016/j.ijrobp.2018.03.003.",
           "note": "Mapping Expansion Batch ME-12 evidence for the bounded hodgkins-lymphoma to hypothyroidism proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29681481/",
           "verified": true,
           "sourceCheckedOn": "2026-08-22",

@@ -22,6 +22,7 @@
           "citation": "Cucher D, Kulvatunyou N, Green DJ, Jie T, Ong ES. Gallstone pancreatitis: a review. Surg Clin North Am. 2014;94(2):257-280. PMID 24679420. doi:10.1016/j.suc.2014.01.006.",
           "note": "Mapping Expansion Batch ME-21 evidence for the bounded cholelithiasis to pancreatitis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24679420/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

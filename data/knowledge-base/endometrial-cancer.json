@@ -21,6 +21,7 @@
           "citation": "Helgers RJA, Winkens B, Slangen BFM, Werner HMJ. Lymphedema and Post-Operative Complications after Sentinel Lymph Node Biopsy versus Lymphadenectomy in Endometrial Carcinomas-A Systematic Review and Meta-Analysis. J Clin Med. 2020;10(1):120. PMID 33396373. doi:10.3390/jcm10010120.",
           "note": "Mapping Expansion Batch ME-13 evidence for the bounded endometrial-cancer to lymphedema proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33396373/",
           "verified": true,
           "sourceCheckedOn": "2026-08-22",

@@ -22,6 +22,7 @@
           "citation": "Aghbari SMH, Abushouk AI, Attia A, Elmaraezy A, Menshawy A, Ahmed MS, Elsaadany BA, Ahmed EM. Malignant transformation of oral lichen planus and oral lichenoid lesions: A meta-analysis of 20095 patient data. Oral Oncol. 2017;68:92-102. PMID 28438300. doi:10.1016/j.oraloncology.2017.03.012.",
           "note": "Mapping Expansion Batch ME-19 evidence for the bounded oral-lichen-planus-lichenoid-lesions to oral-cancer proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28438300/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",
