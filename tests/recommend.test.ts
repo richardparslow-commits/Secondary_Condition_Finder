@@ -339,12 +339,18 @@ describe("recommend", () => {
         reviewNotes: ["test"],
       })),
     ]);
+    // F-03: chains compose only through edges that assert a nexus theory, so
+    // the pathway fixtures use DIRECT_CAUSATION edges instead of the
+    // association-only defaults.
     const edge = (conditionId: string, citation: string, rank: number) => ({
       conditionId,
       rank,
-      nexusClaim: buildNexusClaim(),
-      causalMechanism: buildCausalMechanism(),
-      evidentiaryProfile: buildEvidentiaryProfile(),
+      nexusClaim: {
+        nexusClassification: "DIRECT_CAUSATION",
+        etiologicalTrigger: "A specific fixture biological trigger is described here with enough detail for schema validation and review.",
+      },
+      causalMechanism: buildCausalMechanism({ hypothesizedOnly: false }),
+      evidentiaryProfile: buildEvidentiaryProfile({ etiologicalConsensus: "PROBABLE" }),
       rationale: `Published fixture edge to ${conditionId}.`,
       evidenceGaps: ["Review each individual link."],
       sourceReferences: [{ citation, note: "Published fixture provenance", verified: false }],
@@ -419,6 +425,83 @@ describe("recommend", () => {
     expect(draftResult.recommendations).toEqual([]);
   });
 
+  it("does not compose intermediate chains through ASSOCIATION_ONLY edges", () => {
+    const syntheticCatalog = conditionCatalogSchema.parse([
+      ...["primary-condition", "assoc-intermediate", "causal-intermediate", "target-condition"].map((id) => ({
+        id,
+        name: id.split("-").map((part) => part[0].toUpperCase() + part.slice(1)).join(" "),
+        aliases: [],
+        bodySystem: "Test",
+        ratingSchedule: [],
+        reviewNotes: ["test"],
+      })),
+    ]);
+    const associationEdge = (conditionId: string, citation: string, rank: number) => ({
+      conditionId,
+      rank,
+      nexusClaim: buildNexusClaim(),
+      causalMechanism: buildCausalMechanism(),
+      evidentiaryProfile: buildEvidentiaryProfile(),
+      rationale: "Association fixture edge.",
+      evidenceGaps: ["Review each individual link."],
+      sourceReferences: [{ citation, note: "Association fixture provenance", verified: false }],
+    });
+    const causationEdge = (conditionId: string, citation: string, rank: number) => ({
+      conditionId,
+      rank,
+      nexusClaim: {
+        nexusClassification: "DIRECT_CAUSATION",
+        etiologicalTrigger: "A specific fixture biological trigger is described here with enough detail for schema validation and review.",
+      },
+      causalMechanism: buildCausalMechanism({ hypothesizedOnly: false }),
+      evidentiaryProfile: buildEvidentiaryProfile({ etiologicalConsensus: "PROBABLE" }),
+      rationale: "Causation fixture edge.",
+      evidenceGaps: ["Review each individual link."],
+      sourceReferences: [{ citation, note: "Causation fixture provenance", verified: false }],
+    });
+    const syntheticKb = knowledgeBaseSchema.parse([
+      {
+        id: "primary-condition",
+        draft: false,
+        todo: [],
+        suggestions: [
+          causationEdge("causal-intermediate", "PRIMARY-CAUSAL", 1),
+          associationEdge("assoc-intermediate", "PRIMARY-ASSOC", 2),
+        ],
+      },
+      {
+        id: "assoc-intermediate",
+        draft: false,
+        todo: [],
+        suggestions: [causationEdge("target-condition", "ASSOC-TARGET", 1)],
+      },
+      {
+        id: "causal-intermediate",
+        draft: false,
+        todo: [],
+        suggestions: [causationEdge("target-condition", "CAUSAL-TARGET", 1)],
+      },
+    ]);
+
+    // Both intermediates reach the diagnosed target with a causation second
+    // edge, but only the chain whose FIRST edge asserts a nexus theory may
+    // compose: the association-only route must not surface as a pathway.
+    const result = recommend(
+      syntheticCatalog,
+      syntheticKb,
+      intake({
+        primaryConditions: ["primary-condition"],
+        diagnosedConditionIds: ["target-condition"],
+      }),
+    );
+
+    const target = result.recommendations.find((recommendation) => recommendation.conditionId === "target-condition");
+    expect(target?.intermediatePathways).toHaveLength(1);
+    expect(target?.intermediatePathways?.[0]?.causalChain).toBe(
+      "Primary Condition → Causal Intermediate → Target Condition",
+    );
+  });
+
   it("does not change a direct recommendation score when an intermediate path reaches the same diagnosed target", () => {
     const syntheticCatalog = conditionCatalogSchema.parse([
       { id: "primary-condition", name: "Primary Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
@@ -426,12 +509,16 @@ describe("recommend", () => {
       { id: "target-condition", name: "Target Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
       { id: "peer-condition", name: "Peer Condition", aliases: [], bodySystem: "Test", ratingSchedule: [], reviewNotes: ["test"] },
     ]);
+    // F-03: causation edges so the primary->intermediate->target chain composes.
     const makeSuggestion = (conditionId: string, rank: number, citation: string) => ({
       conditionId,
       rank,
-      nexusClaim: buildNexusClaim(),
-      causalMechanism: buildCausalMechanism(),
-      evidentiaryProfile: buildEvidentiaryProfile(),
+      nexusClaim: {
+        nexusClassification: "DIRECT_CAUSATION",
+        etiologicalTrigger: "A specific fixture biological trigger is described here with enough detail for schema validation and review.",
+      },
+      causalMechanism: buildCausalMechanism({ hypothesizedOnly: false }),
+      evidentiaryProfile: buildEvidentiaryProfile({ etiologicalConsensus: "PROBABLE" }),
       rationale: "Synthetic published edge.",
       evidenceGaps: ["Review the edge."],
       sourceReferences: [{ citation, note: "Fixture", verified: false }],

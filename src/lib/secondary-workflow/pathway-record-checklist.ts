@@ -9,6 +9,7 @@ import type {
   SecondaryPathwayType,
 } from "@/lib/kb/schema";
 import type { NonServiceConnectedConditionResult } from "@/lib/secondary-workflow/suggestions";
+import { SPICER_PATHWAY_TYPES } from "@/lib/secondary-workflow/spicer-aggravation";
 
 /**
  * Pathway-specific record checklist.
@@ -44,6 +45,8 @@ export interface PathwayRecordPathway {
   mechanismCategory: MechanismCategory | null;
   mechanismHypothesizedOnly: boolean;
   pathwayTypes: SecondaryPathwayType[];
+  /** Authored Spicer treatment-interference aggravation variant (M21-1 May 2026). */
+  spicerTreatmentInterference: boolean;
   etiologicalConsensus: EtiologicalConsensus | null;
   items: PathwayRecordItem[];
 }
@@ -137,9 +140,10 @@ function theoryItems(
   conditionName: string,
   primaryName: string,
   classification: NexusClassification,
+  spicerVariant: boolean,
 ): PathwayRecordItem[] {
   if (classification === "AGGRAVATION") {
-    return [
+    const items: PathwayRecordItem[] = [
       {
         record: `Baseline severity documentation for ${conditionName} from before ${primaryName} worsened it`,
         category: "baseline",
@@ -150,12 +154,18 @@ function theoryItems(
         category: "treatment",
         why: "Aggravation rests on the difference between the baseline and now. Escalating prescriptions, new referrals, or documented functional loss make that difference concrete.",
       },
-      {
-        record: `Records showing ${primaryName} interfered with treatment of ${conditionName} (if it did)`,
-        category: "treatment",
-        why: "M21-1 (Spicer, May 2026) treats interference with treatment as aggravation under § 3.310(b). Missed appointments, halted therapy, or medication conflicts documented by a provider support this theory.",
-      },
     ];
+    // Treatment-interference (Spicer) records are listed only when the authored
+    // mapping actually marks that pathway — an ordinary aggravation theory is
+    // carried by baseline + worsening, not by interference records.
+    if (spicerVariant) {
+      items.push({
+        record: `Records showing ${primaryName} interfered with treatment of ${conditionName} (missed appointments, halted therapy, or medication conflicts)`,
+        category: "treatment",
+        why: "M21-1 (May 2026), implementing Spicer v. McDonough, treats interference with treatment as aggravation under § 3.310(b) — a different proof path from the before-and-after severity comparison. Provider-documented interference records are the evidence this variant is carried by.",
+      });
+    }
+    return items;
   }
   if (classification === "ASSOCIATION_ONLY") {
     return [
@@ -384,9 +394,16 @@ function buildPathway(
   const mechanismCategory: MechanismCategory | null =
     rawMechanism && rawMechanism in MECHANISM_ITEMS ? (rawMechanism as MechanismCategory) : null;
 
+  const authoredPathwayTypes = primary.pathwayIntelligence?.pathways ?? [];
+  const spicerVariant =
+    classification === "AGGRAVATION" &&
+    SPICER_PATHWAY_TYPES.some((type) => authoredPathwayTypes.includes(type));
+
   const items = dedupeByRecord([
     ...baseItems(conditionName, primary.name, primary),
-    ...(classification ? theoryItems(conditionName, primary.name, classification) : []),
+    ...(classification
+      ? theoryItems(conditionName, primary.name, classification, spicerVariant)
+      : []),
     ...(mechanismCategory ? MECHANISM_ITEMS[mechanismCategory] : []),
     nexusItem(conditionName, primary.name),
   ]);
@@ -397,7 +414,8 @@ function buildPathway(
     nexusClassification: classification,
     mechanismCategory,
     mechanismHypothesizedOnly: primary.causalMechanism?.hypothesizedOnly ?? false,
-    pathwayTypes: primary.pathwayIntelligence?.pathways ?? [],
+    pathwayTypes: authoredPathwayTypes,
+    spicerTreatmentInterference: spicerVariant,
     etiologicalConsensus: primary.evidentiaryProfile?.etiologicalConsensus ?? null,
     items,
   };
@@ -440,6 +458,9 @@ export function formatPathwayRecordChecklist(groups: PathwayRecordGroup[]): stri
     group.pathways.forEach((pathway, index) => {
       lines.push(`Pathway ${index + 1}: ${pathway.primaryName} → ${group.conditionName}`);
       lines.push(`  Claim theory: ${pathway.nexusClassification ?? "(not specified in authored mapping)"}${pathway.nexusClassification ? ` (${NEXUS_THEORY_LABEL[pathway.nexusClassification]})` : ""}`);
+      if (pathway.spicerTreatmentInterference) {
+        lines.push("  Spicer variant: treatment-interference aggravation (M21-1 May 2026, Spicer v. McDonough) — provider-documented interference with treatment carries this theory under 38 CFR § 3.310(b).");
+      }
       if (pathway.mechanismCategory) {
         lines.push(`  Mechanism: ${MECHANISM_CATEGORY_LABEL[pathway.mechanismCategory]}${pathway.mechanismHypothesizedOnly ? " (hypothesized, not established)" : ""}`);
       }

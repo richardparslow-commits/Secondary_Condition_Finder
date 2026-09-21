@@ -116,7 +116,10 @@
     {
       "id": "depressive-disorder",
       "name": "Major Depressive Disorder",
-      "aliases": [],
+      "aliases": [
+        "MDD",
+        "depression"
+      ],
       "bodySystem": "Mental Disorders",
       "ratingSchedule": [
         {

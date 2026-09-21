@@ -23,6 +23,17 @@ import {
   type EvidenceLimits,
 } from "@/lib/evidence/limits";
 import {
+  clearOcrCheckpoint,
+  computeOcrRenderMetrics,
+  loadOcrCheckpoint,
+  OCR_PAGES_PER_CHUNK,
+  probeWorkerHealth,
+  releaseCanvas,
+  saveOcrCheckpoint,
+  sourceFingerprintForFile,
+  yieldToBrowser,
+} from "@/lib/evidence/ocr-session";
+import {
   clearStoredEvidence,
   loadStoredEvidenceWithWarning,
   saveStoredEvidence,
@@ -426,19 +437,45 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           }
           const readLimit = Math.min(totalPages, limits.pdfPages);
           const segments: EvidenceTextSegment[] = [];
-          for (let pageNumber = 1; pageNumber <= readLimit; pageNumber += 1) {
+          const sourceFingerprint = sourceFingerprintForFile(row.file);
+          const storage = getSessionStorage();
+          const savedCheckpoint = loadOcrCheckpoint(storage, sourceFingerprint);
+          if (savedCheckpoint && savedCheckpoint.lastCompletedPage > 0 && savedCheckpoint.segments.length > 0) {
+            for (const checkpointSegment of savedCheckpoint.segments) {
+              segments.push({
+                text: checkpointSegment.text,
+                locatorPrefix: `page ${checkpointSegment.page} (OCR)`,
+              });
+            }
+            recognizedChars = savedCheckpoint.recognizedChars;
+            ocrPages = savedCheckpoint.segments.length;
+            setOcrProgress(`Resuming OCR of ${row.sourceName} after page ${savedCheckpoint.lastCompletedPage}…`);
+          } else if (savedCheckpoint) {
+            clearOcrCheckpoint(storage);
+          }
+          const resumeFromPage = savedCheckpoint?.lastCompletedPage ?? 0;
+          let checkpointEnabled = true;
+          let abortedForDeadWorker = false;
+          let downscaledWarned = false;
+          for (let pageNumber = resumeFromPage + 1; pageNumber <= readLimit; pageNumber += 1) {
             setOcrProgress(`OCR page ${pageNumber} of ${readLimit} in ${row.sourceName}…`);
             let page: Awaited<ReturnType<typeof pdfDocument.getPage>> | null = null;
             try {
               page = await pdfDocument.getPage(pageNumber);
-              const viewport = page.getViewport({ scale: 2 });
+              const unitViewport = page.getViewport({ scale: 1 });
+              const renderMetrics = computeOcrRenderMetrics(unitViewport.width, unitViewport.height);
+              if (renderMetrics.downscaled && !downscaledWarned) {
+                downscaledWarned = true;
+                nextWarnings.push(`${row.sourceName}: page ${pageNumber} is large; rendered at reduced scale to stay under the browser canvas memory cap — recognition may be less accurate on oversized pages.`);
+              }
+              const viewport = page.getViewport({ scale: renderMetrics.scale });
               const canvas = document.createElement("canvas");
-              canvas.width = viewport.width;
-              canvas.height = viewport.height;
+              canvas.width = renderMetrics.canvasWidth;
+              canvas.height = renderMetrics.canvasHeight;
               const context = canvas.getContext("2d");
               if (context) {
                 context.fillStyle = "#ffffff";
-                context.fillRect(0, 0, viewport.width, viewport.height);
+                context.fillRect(0, 0, canvas.width, canvas.height);
               } else {
                 nextWarnings.push(`${row.sourceName}: page ${pageNumber} canvas context unavailable — rendering may be incomplete.`);
               }
@@ -446,6 +483,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
                 await page.render({ canvas, viewport }).promise;
               } catch (renderError) {
                 const detail = renderError instanceof Error ? renderError.message : String(renderError);
+                releaseCanvas(canvas);
                 nextWarnings.push(`${row.sourceName}: page ${pageNumber} render failed (${detail}) — skipped.`);
                 continue;
               }
@@ -455,9 +493,28 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
                 text = (result?.data?.text ?? "").trim();
               } catch (recognizeError) {
                 const detail = recognizeError instanceof Error ? recognizeError.message : String(recognizeError);
+                releaseCanvas(canvas);
+                // Probe worker health: a dead WASM worker (typical OOM) must
+                // stop the loop — retrying every remaining page only burns
+                // minutes and accumulates garbage — while a page-specific
+                // failure just skips the page.
+                const probeCanvas = document.createElement("canvas");
+                probeCanvas.width = 1;
+                probeCanvas.height = 1;
+                const workerAlive = await probeWorkerHealth({
+                  recognize: (input: unknown) => worker.recognize(input as HTMLCanvasElement),
+                  createProbeInput: () => probeCanvas,
+                });
+                releaseCanvas(probeCanvas);
+                if (!workerAlive) {
+                  abortedForDeadWorker = true;
+                  nextWarnings.push(`${row.sourceName}: page ${pageNumber} OCR failed and the browser-local OCR worker is no longer responding (${detail}); the tab most likely hit its memory limit. Pages through ${pageNumber - 1} are kept and the job can be resumed.`);
+                  break;
+                }
                 nextWarnings.push(`${row.sourceName}: page ${pageNumber} OCR recognition failed (${detail}) — skipped.`);
                 continue;
               }
+              releaseCanvas(canvas);
               if (!text) continue;
               recognizedChars += text.length;
               if (recognizedChars > limits.textChars) {
@@ -487,6 +544,35 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
                 }
               }
             }
+            // Chunk boundary: yield to the browser and persist the resume
+            // checkpoint so an interrupted/crashed job resumes where it
+            // stopped instead of re-recognizing from page 1.
+            if (pageNumber % OCR_PAGES_PER_CHUNK === 0) {
+              await yieldToBrowser();
+              if (checkpointEnabled) {
+                const persisted = saveOcrCheckpoint(storage, {
+                  version: 1,
+                  sourceFingerprint,
+                  lastCompletedPage: pageNumber,
+                  segments: segments.map((segment) => ({
+                    page: Number.parseInt(segment.locatorPrefix.replace(/^page (\d+).*$/, "$1"), 10) || 0,
+                    text: segment.text,
+                  })),
+                  recognizedChars,
+                  updatedAt: Date.now(),
+                });
+                if (!persisted) {
+                  checkpointEnabled = false;
+                  nextWarnings.push(`${row.sourceName}: OCR resume checkpoint unavailable (storage limit); continuing in memory. An interruption restarts the job from page 1.`);
+                }
+              }
+            }
+          }
+          if (abortedForDeadWorker) {
+            // Keep the checkpoint so the next Local OCR run resumes where the
+            // dead worker stopped.
+          } else {
+            clearOcrCheckpoint(storage);
           }
           if (segments.length === 0) {
             nextWarnings.push(`${row.sourceName}: OCR produced no readable text.`);
@@ -499,7 +585,9 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
             commitAnalysis(analysis);
             setRowOutcome(row.id);
             setMessage(
-              `Local OCR completed for ${row.sourceName}: ${ocrPages} page(s) recognized in this browser tab.`,
+              abortedForDeadWorker
+                ? `Local OCR paused for ${row.sourceName} after ${ocrPages} page(s): the OCR worker stopped responding. Run Local OCR again on this document to resume from where it stopped.`
+                : `Local OCR completed for ${row.sourceName}: ${ocrPages} page(s) recognized in this browser tab.`,
             );
           }
         } finally {

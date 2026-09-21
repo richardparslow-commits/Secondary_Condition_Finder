@@ -54,7 +54,10 @@
     {
       "id": "congestive-heart-failure",
       "name": "Congestive Heart Failure",
-      "aliases": [],
+      "aliases": [
+        "CHF",
+        "heart failure"
+      ],
       "bodySystem": "Cardiovascular System",
       "ratingSchedule": [
         {
@@ -102,7 +105,8 @@
       "name": "Hypertensive Vascular Disease (Hypertension)",
       "aliases": [
         "hypertension",
-        "hypertensive vascular disease"
+        "hypertensive vascular disease",
+        "HTN"
       ],
       "bodySystem": "Cardiovascular System",
       "ratingSchedule": [
@@ -119,7 +123,8 @@
       "name": "Coronary Artery Disease / Ischemic Heart Disease",
       "aliases": [
         "coronary artery disease",
-        "ischemic heart disease"
+        "ischemic heart disease",
+        "CAD"
       ],
       "bodySystem": "Cardiovascular System",
       "ratingSchedule": [
@@ -149,7 +154,8 @@
       "name": "Myocardial Infarction (Heart Attack)",
       "aliases": [
         "heart attack",
-        "myocardial infarction"
+        "myocardial infarction",
+        "MI"
       ],
       "bodySystem": "Cardiovascular System",
       "ratingSchedule": [

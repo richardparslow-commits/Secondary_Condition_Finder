@@ -7,6 +7,10 @@
  * within LocalEvidenceAnalyzer and classifies extracted text segments by
  * clinical relevance (nexus-relevant, supporting, diagnosis, etc.).
  */
+import {
+  conditionTermGuardFor,
+  conditionTermPatternFor,
+} from "@/lib/evidence/condition-terms";
 export type EvidenceCategory =
   | "diagnosis"
   | "causation"
@@ -73,6 +77,12 @@ const CAUSATION_PATTERNS = [
   // Spicer/M21-1 May 2026: "but for" causation language.
   /\bbut for\b/i,
   /\bwould not have occurred\b/i,
+  // Favorable nexus-opinion language: the VA "at least as likely as not"
+  // standard as clinicians phrase it in DBQs and nexus letters. Without this,
+  // the strongest nexus sentence a veteran owns (an IMO conclusion) classified
+  // as nothing at all.
+  /\bmore likely than not\b/i,
+  /\bat least as likely as not\b/i,
   // VA/medical shorthand "2/2" = "secondary to" (e.g. "Insomnia may be 2/2 OSA").
   /\b2\/2(?!\d|\/)\b/i,
 ];
@@ -88,6 +98,13 @@ const AGGRAVATION_PATTERNS = [
   /\bimpeded.*treatment\b/i,
   /\bdelayed.*treatment\b/i,
   /\bprevented.*treatment\b/i,
+  // VA notes use "exacerbation"/"flare-up" for aggravation of a pre-existing
+  // condition. Only with-cause forms are captured so bare problem-list entries
+  // ("asthma exacerbation") do not read as nexus statements.
+  /\bexacerbated by\b/i,
+  /\bexacerbations? of\b/i,
+  /\bexacerbations? (?:are|were|is|was)? ?(?:caused|triggered|provoked|precipitated) by\b/i,
+  /\b(?:flare|flare-up)s? (?:are|were|is|was)? ?(?:caused|triggered|provoked|precipitated) by\b/i,
 ];
 
 const DIAGNOSIS_PATTERNS = [
@@ -125,10 +142,26 @@ const TIMELINE_PATTERNS = [
 const ALTERNATIVE_CAUSE_PATTERNS = [
   /\bnot caused by\b/i,
   /\bnot due to\b/i,
+  /\bnot aggravat(?:ed|ing|ion)\b/i,
   /\bless likely than not\b/i,
+  // Unfavorable nexus phrasings must surface as alternative-cause context,
+  // never as positive evidence for the claim.
+  /\bnot more likely than not\b/i,
+  /\bnot at least as likely as not\b/i,
   /\bmore likely (?:due|related) to\b/i,
   /\balternative (?:cause|etiology)\b/i,
 ];
+
+/**
+ * Sentence-initial negation openers. A negated sentence is not positive
+ * evidence: "no evidence that the OSA was caused by PTSD" or "denies a
+ * diagnosis of PTSD" must not count toward the evidence-gap checklist, or gaps
+ * are falsely reported as addressed. Explicit adversarial phrasings ("not
+ * caused by", "not aggravated", "ruled out") are evaluated earlier as
+ * alternative-cause evidence so unfavorable opinions stay visible.
+ */
+const NEGATION_PREFIX_PATTERN =
+  /^\s*(?:no|not|without|denies|denied|negative for|never had|free of|ruled out)\b/i;
 
 /**
  * Regulatory/adjudication boilerplate that describes general VA rules rather
@@ -169,31 +202,24 @@ function normalizeWhitespace(value: string): string {
   return value.replace(/\s+/g, " ").trim();
 }
 
-function escapeRegExp(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function conditionTermPattern(term: string): RegExp | null {
-  const normalized = normalizeWhitespace(term);
-  if (normalized.length < 3) return null;
-
-  // Allow hyphens/spaces (including unicode dashes and non-breaking spaces) to
-  // be flexible between words so common spellings match: "Post-Traumatic" and
-  // "posttraumatic" both hit "Post Traumatic Stress Disorder"-style terms, and
-  // "REM Sleep Behavior Disorder" matches when a source omits "sleep".
-  const tokens = normalized
-    .split(/[\s\u00a0\u2009\u2010-\u2015-]+/)
-    .map(escapeRegExp)
-    .filter(Boolean);
-  if (tokens.length === 0) return null;
-
-  const separator = String.raw`(?:[\s\u00a0\u2009\u2010-\u2015-]+)?`;
-  const phrase = tokens.join(separator);
-  return new RegExp(`(?:^|[^\\p{L}\\p{N}])${phrase}(?=$|[^\\p{L}\\p{N}])`, "iu");
-}
-
+/**
+ * Condition terms matched in a sentence. A term counts only when its exact
+ * pattern matches AND — for guarded two-letter acronyms (MI, PE, RA, OA, MS;
+ * see conditionTermGuardFor) — the sentence carries at least one clinical
+ * co-signal. The match-time guard is the second layer behind the terms
+ * builder's admission check, so a guarded acronym can never cover an evidence
+ * gap from chart scaffolding alone ("PE: alert, oriented x3", "MS 4mg IV")
+ * regardless of how the terms list was constructed.
+ */
 function matchingTerms(text: string, terms: string[]): string[] {
-  return terms.filter((term) => conditionTermPattern(term)?.test(text) === true);
+  const matched: string[] = [];
+  for (const term of terms) {
+    if (conditionTermPatternFor(term)?.test(text) !== true) continue;
+    const guard = conditionTermGuardFor(term);
+    if (guard && !guard.test(text)) continue;
+    matched.push(term);
+  }
+  return matched;
 }
 
 function hasPattern(text: string, patterns: RegExp[]): boolean {
@@ -203,6 +229,10 @@ function hasPattern(text: string, patterns: RegExp[]): boolean {
 function classifyCategory(text: string): EvidenceCategory | null {
   if (hasPattern(text, BOILERPLATE_PATTERNS)) return null;
   if (hasPattern(text, ALTERNATIVE_CAUSE_PATTERNS)) return "alternative-cause";
+  // Negated findings are not positive evidence (see NEGATION_PREFIX_PATTERN).
+  // Alternative-cause phrasing above is deliberately evaluated first so
+  // explicit unfavorable opinions stay visible.
+  if (NEGATION_PREFIX_PATTERN.test(text)) return null;
   if (hasPattern(text, AGGRAVATION_PATTERNS)) return "aggravation";
   if (hasPattern(text, CAUSATION_PATTERNS)) return "causation";
   if (hasPattern(text, DIAGNOSIS_PATTERNS)) return "diagnosis";
@@ -249,7 +279,11 @@ export function analyzeEvidenceText(
     const candidateSentences = sentences.length === 0 ? [line] : sentences;
 
     for (const sentence of candidateSentences) {
-      if (sentence.length < 12 || sentence.length > 1200) continue;
+      // The floor must stay low enough for standalone clinical-shorthand lines
+      // ("2/2 OSA", "dx PTSD", "s/p CVA") to reach the classifier; anything
+      // shorter is noise. Nexus relevance is still gated on a matched
+      // selected-condition term, so short non-condition lines stay inert.
+      if (sentence.length < 6 || sentence.length > 1200) continue;
       let category = classifyCategory(sentence);
       const matched = matchingTerms(sentence, conditionTerms);
       // Under a Diagnosis:/Assessment: header, a line naming a selected

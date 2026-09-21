@@ -72,6 +72,11 @@ function intermediatePathway(
  * Returns only explicit two-edge paths through published mappings. This is a
  * research-path feature, not transitive causal inference: both source edges
  * remain visible and the path is never promoted to a direct nexus claim.
+ *
+ * F-03: every composed edge must itself assert a nexus theory. An
+ * ASSOCIATION_ONLY edge is hypothesized-only by schema contract, so composing
+ * one into a chain would present a hypothesized cascade as a connectable
+ * research path; association edges stay visible on their own cards only.
  */
 export function findIntermediatePathways(
   primary: { id: string; name: string },
@@ -87,6 +92,7 @@ export function findIntermediatePathways(
   for (const firstSuggestion of firstMapping.suggestions) {
     const intermediate = byId.get(firstSuggestion.conditionId);
     if (!intermediate || intermediate.id === primary.id || recognizedIds.has(intermediate.id)) continue;
+    if (firstSuggestion.nexusClaim.nexusClassification === "ASSOCIATION_ONLY") continue;
 
     const secondMapping = mappings.get(intermediate.id);
     if (!secondMapping) continue;
@@ -95,6 +101,7 @@ export function findIntermediatePathways(
       if (
         secondSuggestion.conditionId === primary.id ||
         secondSuggestion.conditionId === intermediate.id ||
+        secondSuggestion.nexusClaim.nexusClassification === "ASSOCIATION_ONLY" ||
         !diagnosedSet.has(secondSuggestion.conditionId) ||
         recognizedIds.has(secondSuggestion.conditionId)
       )

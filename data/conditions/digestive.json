@@ -173,7 +173,8 @@
       "id": "irritable-bowel-syndrome",
       "name": "Irritable Bowel Syndrome (IBS)",
       "aliases": [
-        "irritable bowel syndrome"
+        "irritable bowel syndrome",
+        "IBS"
       ],
       "bodySystem": "Digestive System",
       "ratingSchedule": [

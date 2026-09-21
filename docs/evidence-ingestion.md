@@ -33,6 +33,16 @@ The file-size check is repeated inside the document-extraction library before fi
 
 PDF pages that contain no extractable/selectable text are reported to the user rather than guessed. Two in-app paths then exist for image-only records, both staying in the browser: (1) the per-document **Local OCR** action recognizes scanned PDF pages with a bundled, self-hosted OCR engine and classifies the recognized text under the document's assigned author (recognized segments carry a `page N (OCR)` locator); and (2) the paste-text fallback remains available so text from a trusted external OCR tool can be reviewed with user-supplied locator context.
 
+The Local OCR path runs under explicit memory-safety bounds (`src/lib/evidence/ocr-session.ts`) so large scanned records do not crash the browser tab:
+
+- page renders are capped at 16,777,216 canvas pixels (4096 × 4096); oversized scans are rendered at a reduced scale with a visible accuracy notice rather than crashing mobile renderers;
+- recognition runs in 8-page chunks separated by browser yields, so the compositor and garbage collector can run between bursts;
+- recognized pages are checkpointed to tab-scoped `sessionStorage` (same privacy envelope as the excerpt store, never transmitted) after each chunk, so an interrupted or memory-killed job resumes at its last completed page on the next Local OCR run instead of re-recognizing from page 1; the checkpoint is cleared on successful completion and is keyed to the selected file's name/size/last-modified so a different document never inherits another's transcript;
+- a failed page recognition triggers a worker-health probe: a page-specific failure skips the page, but a dead OCR worker (typically a WASM out-of-memory crash) stops the loop with a resume message instead of retrying every remaining page; and
+- the rendered canvas is released immediately after each page instead of waiting for garbage collection.
+
+When `sessionStorage` is unavailable or full, OCR continues in memory with checkpointing disabled and a visible notice; resume then restarts from page 1. These bounds never transmit document bytes or recognized text anywhere — they only shape local computation.
+
 DOCX is a flow-oriented format and does not reliably encode stable rendered page numbers. The application therefore uses paragraph locators instead of inventing DOCX page numbers.
 
 ## PDF parser security boundary
