@@ -49,6 +49,45 @@ const CITATION_CEILING = 10;
 const PROBE_TIMEOUT_MS = 15_000;
 const MAX_REDIRECTS = 5;
 const PROBE_USER_AGENT = "citation-decay-audit";
+/**
+ * Politeness + resilience knobs. The first version of this probe fired every
+ * URL concurrently (Promise.all over the whole corpus); hosts like PubMed
+ * throttle bursts with 429s, which manufactured hundreds of phantom
+ * "decayed" rows — a false alarm that swamps the real dead-link queue. Probes
+ * now run through a small worker pool (per-host spacing keeps a single host
+ * from being hammered), and transient throttling responses are retried with
+ * exponential backoff before being believed.
+ */
+const PROBE_CONCURRENCY = 4;
+const PROBE_INTER_REQUEST_DELAY_MS = 100;
+const PER_HOST_MIN_INTERVAL_MS = 600;
+const TRANSIENT_RETRY_STATUSES = new Set([425, 429, 500, 502, 503, 504]);
+const TRANSIENT_MAX_RETRIES = 3;
+const TRANSIENT_RETRY_BASE_DELAY_MS = 1_500;
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * Runs `tasks` (thunks returning promises) with a bounded number executing
+ * concurrently, preserving input order in the resolved array.
+ */
+async function mapWithConcurrency(tasks, concurrency) {
+  const results = new Array(tasks.length);
+  let nextIndex = 0;
+  const workers = Array.from({ length: Math.min(concurrency, tasks.length) }, async () => {
+    for (;;) {
+      const index = nextIndex;
+      nextIndex += 1;
+      if (index >= tasks.length) return;
+      results[index] = await tasks[index]();
+    }
+  });
+  await Promise.all(workers);
+  return results;
+}
+
 const DEFAULT_STALE_AFTER_DAYS = 365;
 const MAX_DOWNLOAD_BYTES = 2 * 1024 * 1024;
 
@@ -147,6 +186,14 @@ function requestOnce(target, method) {
 }
 
 /**
+ * True when a probe result should be retried after a delay (throttling and
+ * transient gateway failures) rather than reported as a probe verdict.
+ */
+function isTransientProbeResult(result) {
+  return result.status === 0 || TRANSIENT_RETRY_STATUSES.has(result.status);
+}
+
+/**
  * Probe plus content-drift evaluation for one URL: HEAD first (following up
  * to MAX_REDIRECTS), then GET on bot-wall statuses. A 200 GET also carries
  * the body so callers can check content drift against a recorded digest.
@@ -191,6 +238,20 @@ async function probeUrlWithContent(url, expectedDigestHex) {
     }
     return { ok: false, status: head.status };
   }
+}
+
+/**
+ * Probe with retry: transient throttling/gateway statuses (and network
+ * failures) are retried with exponential backoff before being believed, so a
+ * busy host is never misreported as a dead link.
+ */
+async function probeUrlWithContentResilient(url, expectedDigestHex) {
+  let result = await probeUrlWithContent(url, expectedDigestHex);
+  for (let attempt = 1; isTransientProbeResult(result) && attempt <= TRANSIENT_MAX_RETRIES; attempt += 1) {
+    await sleep(TRANSIENT_RETRY_BASE_DELAY_MS * 2 ** (attempt - 1));
+    result = await probeUrlWithContent(url, expectedDigestHex);
+  }
+  return result;
 }
 
 function buildReport(files, probeResults, todayIso) {
@@ -297,10 +358,26 @@ async function main() {
     }
   });
 
+  const urls = [...urlsToProbe.entries()];
+  const lastProbeAtByHost = new Map();
   const probeResults = new Map();
-  await Promise.all([...urlsToProbe.entries()].map(async ([url, digestHex]) => {
-    probeResults.set(url, await probeUrlWithContent(url, digestHex));
-  }));
+  await mapWithConcurrency(
+    urls.map(([url, digestHex]) => async () => {
+      let hostDelayMs = 0;
+      try {
+        const host = new URL(url).host;
+        const now = Date.now();
+        const last = lastProbeAtByHost.get(host) ?? 0;
+        hostDelayMs = Math.max(0, last + PER_HOST_MIN_INTERVAL_MS - now);
+        lastProbeAtByHost.set(host, Math.max(now, now + hostDelayMs) + PROBE_INTER_REQUEST_DELAY_MS);
+      } catch {
+        hostDelayMs = 0;
+      }
+      if (hostDelayMs > 0) await sleep(hostDelayMs);
+      probeResults.set(url, await probeUrlWithContentResilient(url, digestHex));
+    }),
+    PROBE_CONCURRENCY,
+  );
 
   const report = buildReport(files, probeResults, new Date().toISOString().slice(0, 10));
 
@@ -322,4 +399,11 @@ module.exports = {
   hashContent,
   STALE_AFTER_DAYS_BY_CATEGORY,
   DEFAULT_STALE_AFTER_DAYS,
+  isTransientProbeResult,
+  mapWithConcurrency,
+  PROBE_CONCURRENCY,
+  PROBE_INTER_REQUEST_DELAY_MS,
+  PER_HOST_MIN_INTERVAL_MS,
+  TRANSIENT_RETRY_STATUSES,
+  TRANSIENT_MAX_RETRIES,
 };
