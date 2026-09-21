@@ -13,6 +13,7 @@ import { DisclaimerFooter } from "@/components/Disclaimer";
 import { EvidenceGapReview } from "@/components/evidence/EvidenceGapReview";
 import { LocalEvidenceReview } from "@/components/evidence/LocalEvidenceReview";
 import { PathwayEvidenceMapper } from "@/components/evidence/PathwayEvidenceMapper";
+import { PathwayEvidenceReview } from "@/components/evidence/PathwayEvidenceReview";
 import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatus";
 import {
   SecondaryWorkflowCompletionActions,
@@ -22,6 +23,7 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { buildEvidenceConditionTerms } from "@/lib/evidence/condition-terms";
 import { recommend } from "@/lib/engine/recommend";
+import { intermediatePathwaysToView } from "@/lib/engine/pathway-view";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import {
   loadLockedRegulatorySnapshot,
@@ -130,6 +132,16 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
     condition: recommendation.condition,
     evidenceGaps: recommendation.evidenceGaps,
   }));
+  // Multi-hop evidence review: adapt the engine's intermediate chains into the
+  // client-safe view-model here (server side), so the client component never
+  // touches the kb layer. Hops and names are resolved from the same catalog
+  // used by every other section on this step.
+  const pathwayViews = intermediatePathwaysToView(
+    nonServiceConnectedResults.flatMap(
+      (result) => result.recommendation?.intermediatePathways ?? [],
+    ),
+  );
+  const conditionNames = Object.fromEntries(conditionNamesById);
   const suggestionsHref = `/secondary/suggestions?regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}`;
   const qp2 = await searchParams;
   const zipParam2 = typeof qp2?.zip === "string" ? qp2.zip : undefined;
@@ -185,6 +197,7 @@ export default async function EvidenceReviewStepPage({ searchParams }: EvidenceR
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
       <PathwayEvidenceMapper results={nonServiceConnectedResults} recommendations={consultationRecommendations} />
+      <PathwayEvidenceReview pathways={pathwayViews} conditionNameById={conditionNames} />
       <ConsultationPacketDownload
         recommendations={consultationRecommendations}
         results={nonServiceConnectedResults}
