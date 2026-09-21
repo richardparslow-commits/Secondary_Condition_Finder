@@ -167,11 +167,22 @@ export async function saveServiceConnectedSelection(formData: FormData): Promise
     redirectValidation("/secondary/service-connected", "answer-service-connected");
   }
   if (!answers.some((answer) => answer === "yes")) {
+    // The no-service-connected guidance re-renders Step 2 from session state,
+    // so the answers the veteran already gave must survive the write. Without
+    // carrying the draft forward, the re-rendered form renders every radio
+    // unchecked and the veteran's completed answers silently vanish.
+    const carriedDraft: Record<string, "yes" | "no"> = {};
+    diagnosedConditionIds.forEach((id, index) => {
+      if (answers[index] === "yes" || answers[index] === "no") {
+        carriedDraft[id] = answers[index];
+      }
+    });
     try {
       await writeSecondaryWorkflowSession({
         diagnosedConditionIds,
         serviceConnectedConditionIds: [],
         ratingsByConditionId: {},
+        serviceConnectedAnswerDraft: carriedDraft,
       });
     } catch (error) {
       if (isCookieBudgetError(error)) {

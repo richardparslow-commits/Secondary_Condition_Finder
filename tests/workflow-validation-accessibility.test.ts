@@ -54,6 +54,11 @@ describe("accessible workflow validation", () => {
     expect(actions).toContain("serviceConnectedAnswerDraft[id] = answer");
     expect(actions).toContain('redirectValidation("/secondary/service-connected", "answer-service-connected")');
     expect(actions).toContain("serviceConnectedConditionIds: [],");
+    // The no-service-connected guidance re-renders Step 2 from session state,
+    // so that write must carry the veteran's already-given answers forward —
+    // otherwise the re-rendered form wipes them (uncontrolled radios render
+    // from server-provided defaults, not browser memory).
+    expect(actions).toContain("serviceConnectedAnswerDraft: carriedDraft,");
     expect(actions).toContain('redirectValidation("/secondary/service-connected", "no-service-connected")');
     expect(session).toContain('serviceConnectedAnswerDraft: z.record(z.string(), z.enum(["yes", "no"])).optional()');
   });
