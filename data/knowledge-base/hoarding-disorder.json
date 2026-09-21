@@ -22,6 +22,7 @@
           "citation": "Nordsletten AE, de la Cruz LF, Billotti D, Mataix-Cols D. Epidemiology of hoarding disorder. Br J Psychiatry. 2013;203(6):445-452. PMID 24158881. doi:10.1192/bjp.bp.113.130195.",
           "note": "Mapping Expansion Batch ME-16 evidence for the bounded hoarding-disorder to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24158881/",
           "verified": true,
           "sourceCheckedOn": "2026-09-01",

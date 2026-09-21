@@ -19,6 +19,7 @@
           "citation": "Zhai JH, Zhu LL, Chen SQ, Jian X, Chen C. Association between chronic rhinosinusitis and obstructive sleep apnea: evidence from systematic review, meta-analysis, and Mendelian Randomization. Sleep Biol Rhythms. 2026;24(2):183-194. PMID 41969980",
           "note": "Systematic review/meta-analysis of 14 observational studies (30,509 participants) found 20% OSA prevalence among CRS patients and modestly elevated OSA risk (OR 1.14, 95% CI 1.08-1.20); MR supported a CRS-to-OSA directional signal. Repository wording remains association-focused for individual claim research.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41969980/",
           "verified": true,
           "sourceCheckedOn": "2026-08-18",

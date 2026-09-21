@@ -22,6 +22,7 @@
           "citation": "Nashat H, Launchedbury R, Abdul-Ghani M, et al. Atrial septal defects and pulmonary arterial hypertension. J Thorac Dis. 2018;10(Suppl 24):S2953-S2965. PMID 30305956. doi:10.21037/jtd.2018.08.92.",
           "note": "Mapping Expansion Batch ME-25 clinical review for the bounded atrial-septal-defect to pulmonary-hypertension proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30305956/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

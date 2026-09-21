@@ -18,6 +18,7 @@
           "citation": "Dietary Management of Chronic Kidney Disease and Secondary Hyperoxaluria in Patients with Short Bowel Syndrome and Type 3 Intestinal Failure. Nutrients. 2022. doi:10.3390/nu14081646. PMID 35458207",
           "note": "Qualified-human-approved source-specific narrowing clinical evidence under Clinical Mapping Master Resolution Citation Verification 2026. Verification applies only to the bounded approved proposition and does not, by itself, establish an individual medical nexus.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35458207/",
           "verified": true,
           "sourceCheckedOn": "2026-08-20",

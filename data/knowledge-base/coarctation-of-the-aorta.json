@@ -22,6 +22,7 @@
           "citation": "Raza S, Aggarwal S, Jenkins P, Kharabish A, Anwer S, Cullington D, Jones J, et al. Coarctation of the Aorta: Diagnosis and Management. Diagnostics (Basel). 2023;13(13):2189. PMID 37443581. doi:10.3390/diagnostics13132189.",
           "note": "Mapping Expansion Batch ME-26 review for the bounded coarctation-of-the-aorta to hypertension proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37443581/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

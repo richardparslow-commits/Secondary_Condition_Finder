@@ -4,11 +4,11 @@ import { describe, expect, it } from "vitest";
 
 const root = process.cwd();
 const pairs = [
-  ["brown-s-quard-syndrome", "urinary-incontinence", "11746547", "67012dbce3a6883c7a8c1fd2aa4b22aec9a6b586e12a91adc20d2809005b217b"],
-  ["brain-tumors", "seizure-disorder", "26332282", "8b5bb5bb6fc7377818f7f1d59a4bdb45d606dfdeed7cf72b2e5b7917f4605956"],
-  ["brugada-syndrome", "cardiac-arrhythmia", "27378596", "8292c7dda742a0ad7a380d70011da8eaa5dd9011b14cd60fab2b4a1ec28eedb2"],
-  ["bell-s-palsy", "keratitis", "28319442", "622a7c753b129bbbe6b94fdd485c3f13135efb94d99ffad7249e64cc73b9b7cb"],
-  ["bowen-s-disease", "squamous-cell-carcinoma", "7804989", "cf502267f4b16606987ac0286175529b09220dbc5928fb9c541fcd8cf7906014"],
+  ["brown-s-quard-syndrome", "urinary-incontinence", "11746547", "c508c99e03b55f7274f0f0daf9f1d2b7c326465df8c1e772ab275a933a612f52"],
+  ["brain-tumors", "seizure-disorder", "26332282", "5825ee8da529f9a401a05e7c03c4a449bdfce0562e0c48da0d1e988660ec1619"],
+  ["brugada-syndrome", "cardiac-arrhythmia", "27378596", "10e95bdc744dd1b8a1a339129d50bb7a6927383bbd897268b1df09072fe01713"],
+  ["bell-s-palsy", "keratitis", "28319442", "e226e6a50e9be0f30174dcb8706270df4071d433722477a3f0d7565dd75e363d"],
+  ["bowen-s-disease", "squamous-cell-carcinoma", "7804989", "bf652f4a0eef9d19a6dbccb213b475f2620c8bc6a7364789779c3f83b0dc6906"],
 ] as const;
 
 type SourceReference = { citation: string; verified: boolean; verificationScope: string };

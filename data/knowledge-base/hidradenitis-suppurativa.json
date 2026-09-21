@@ -21,6 +21,7 @@
           "citation": "Holgersen N, Rosenø NAL, Nielsen VW, et al. Risk of New-Onset and Recurrent Depression and Anxiety Among Patients With Hidradenitis Suppurativa. JAMA Dermatol. 2025;161(10):1014-1021. PMID 40737006. doi:10.1001/jamadermatol.2025.2298.",
           "note": "Mapping Expansion Batch ME-14 evidence for the bounded hidradenitis-suppurativa to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40737006/",
           "verified": true,
           "sourceCheckedOn": "2026-08-22",

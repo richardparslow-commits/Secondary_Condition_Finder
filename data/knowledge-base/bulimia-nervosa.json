@@ -21,6 +21,7 @@
           "citation": "Swanson SA, Crow SJ, Le Grange D, Swendsen J, Merikangas KR. Prevalence and Correlates of Eating Disorders in Adolescents: Results From the National Comorbidity Survey Replication Adolescent Supplement. Arch Gen Psychiatry. 2011;68(7):714-723. PMID 21383252. doi:10.1001/archgenpsychiatry.2011.22.",
           "note": "Mapping Expansion Batch ME-16 evidence for the bounded bulimia-nervosa to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21383252/",
           "verified": true,
           "sourceCheckedOn": "2026-09-01",

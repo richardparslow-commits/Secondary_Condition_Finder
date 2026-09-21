@@ -19,6 +19,7 @@
           "citation": "Postuma RB, Gagnon JF, Rompré S, Montplaisir JY. Severity of REM atonia loss in idiopathic REM sleep behavior disorder predicts Parkinson disease. Neurology. 2010;74(3):239-244. PMID 20083800. doi:10.1212/WNL.0b013e3181ca0166.",
           "note": "Mapping Expansion Batch ME-14 evidence for the bounded rem-sleep-disorder to parkinsons-disease proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20083800/",
           "verified": true,
           "sourceCheckedOn": "2026-08-22",

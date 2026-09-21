@@ -22,6 +22,7 @@
           "citation": "Vourlekis JS, Brown KK, Cool CD, Young DA, Cherniack RM, King TE Jr, Schwarz MI. Acute interstitial pneumonitis: case series and review of the literature. Medicine (Baltimore). 2000;79(6):369-378. PMID 11144035. doi:10.1097/00005792-200011000-00003.",
           "note": "Mapping Expansion Batch ME-24 evidence for the bounded acute-interstitial-pneumonia to pulmonary-fibrosis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11144035/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

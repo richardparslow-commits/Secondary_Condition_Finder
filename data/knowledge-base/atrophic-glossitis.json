@@ -22,6 +22,7 @@
           "citation": "Chiang CP, Chang JYF, Wang YP, Wu YH, Wu YC, Sun A. Atrophic glossitis: Etiology, serum autoantibodies, anemia, hematinic deficiencies, hyperhomocysteinemia, and management. J Formos Med Assoc. 2020. PMID 31076315. doi:10.1016/j.jfma.2019.04.015.",
           "note": "Mapping Expansion Batch ME-25 clinical review for the bounded atrophic-glossitis to anemia proposition. Mapping approval is not citation verification; this source remains pending qualified-human review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31076315/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

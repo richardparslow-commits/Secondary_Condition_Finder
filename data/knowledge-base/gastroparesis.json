@@ -36,6 +36,7 @@
           "citation": "Gastroparesis: pharmacotherapy and cardiac risk. Scandinavian journal of gastroenterology. 2018. doi:10.1080/00365521.2017.1401117. PMID 29157021",
           "note": "Master-disposition clinical evidence for the bounded treatment complication proposition. The source is pharmacotherapy/cardiac-safety focused; gastroparesis itself is not established as causing arrhythmia.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29157021/",
           "verified": true,
           "sourceCheckedOn": "2026-08-19",
