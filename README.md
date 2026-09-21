@@ -28,61 +28,66 @@ to research with a qualified provider or an accredited representative.
 
 ## Current status
 
+### Deployment
+
 The application is deployed on Vercel. The canonical production URL is
 `https://secondary-condition-finder.vercel.app`.
 
-The current knowledge-base snapshot contains **813 mappings, 363 relationships, 140 published mappings, and 673 draft mappings**. Citation verification is complete for the live snapshot: **379 live references, 379 verified, 0 unverified**.
+### Knowledge-base snapshot — generated, not documented
 
-The browser-local evidence feature reads supported PDF, DOCX, and text files
-entirely in the browser tab: raw bytes and extracted text are never submitted to
-the application server. Step 6 groups those excerpts under each authored claim
-pathway in a **Pathway Evidence Mapping** table (research cues only — no
-interpretation, no egress), alongside the per-gap coverage chips and checklist.
-Step 4 (Supporting Documents) offers two analysis
-depths — **Standard** (the default) and an opt-in **Extended** envelope for
-large local sets such as full C-files — with file, batch, page, character, and
-retention limits derived from one limits module and published verbatim on
-`/privacy`. Each document carries its own author credential (physician,
-psychologist, NP/PA, non-clinician, or unknown), so VA decision letters are not
-counted as clinician-authored medical opinions. The classifier understands
-clinical shorthand (`dx`, `2/2` = secondary to), normalizes hyphen/spelling
-variants, treats `Diagnosis:`/`Assessment:` sections as diagnosis context, and
-excludes regulatory boilerplate from nexus counts. Scanned or image-only PDFs
-can be recognized with **Local OCR** that runs entirely in the tab against
-same-origin tesseract.js assets, and the Step 6 evidence checklist marks which
-evidence-gap questions your uploaded excerpts already address. Every boundary
-is enforced before or during extraction, including DOCX archive-expansion
-preflight bounds.
+The knowledge base changes with every authoring commit, so this README does not
+hardcode snapshot counts (mappings, relationships, published/draft split,
+verified references). Each was a recurring source of documentation-only
+commits and merge conflicts. Generate the current numbers instead:
 
-Published knowledge-base source references may still be marked **unverified**
-until they are independently checked. Unverified references remain research
-starting points, not verified authority. `npm run citations:audit` enforces
-unsafe-provenance rules and a non-regression ratchet so verification debt cannot
-silently increase. Automated authoring may record a canonical source URL,
-source-check date, and source locator, but `verified: true` remains a
-qualified-human decision under `docs/citation-verification-sop.md`.
+| Snapshot metric | Generator |
+|-----------------|-----------|
+| Catalog + mapping integrity, file/condition counts | `npm run kb:validate` |
+| Citation verification state and the verification-debt ratchet | `npm run citations:audit` |
+| Published/draft authoring coverage by wave and batch | `npm run authoring:tracker` |
+| References below the provenance bar | `npm run citations:weak` |
+| CRG relationship-graph structure (cycles, bidirectional pairs, redundancy) | `npm run audit:crg` |
+| Qualified-human citation-verification queue | `npm run citations:queue` |
 
-Steps 5 and 6 of the secondary workflow surface research aids built from the
-same authored data: condition comparison, combination insights, a rating
-schedule guide, a prioritized action plan, and a **pathway-specific medical
-record checklist** — for each claim pathway (service-connected primary →
-diagnosed condition via a nexus theory and causal mechanism), it lists the
-concrete records to request from providers or VA (for example, sleep study
-results, neurology records, and sleep-specialist notes for a neurological-
-mechanism theory), each with a short explanation of why it matters. Checkmarks
-are kept only in the current browser tab and can be exported alone or combined
-with the consultation summary.
+### Browser-local evidence processing
 
-Step 4 adds a **guided VA.gov medical-records download walkthrough** for
-veterans who want their complete VA health record: downloading it is a
+Supported PDF, DOCX, and text files are read **entirely in the browser tab** —
+raw bytes and extracted text are never submitted to the application server.
+
+- **Step 6** groups excerpts under each authored claim pathway in a
+  **Pathway Evidence Mapping** table (research cues only — no interpretation,
+  no egress), alongside per-gap coverage chips and the evidence checklist.
+- **Step 4** offers two analysis depths — **Standard** (the default) and an
+  opt-in **Extended** envelope for large local sets such as full C-files — with
+  file, batch, page, character, and retention limits derived from one limits
+  module and published verbatim on `/privacy`.
+- Each document carries its own **author credential** (physician, psychologist,
+  NP/PA, non-clinician, or unknown), so VA decision letters are not counted as
+  clinician-authored medical opinions.
+- The classifier understands clinical shorthand (`dx`, `2/2` = secondary to),
+  normalizes hyphen/spelling variants, treats `Diagnosis:`/`Assessment:`
+  sections as diagnosis context, and excludes regulatory boilerplate from
+  nexus counts.
+- Scanned or image-only PDFs are recognized with **Local OCR** that runs
+  entirely in the tab against same-origin tesseract.js assets.
+- Every boundary is enforced before or during extraction, including DOCX
+  archive-expansion preflight bounds.
+
+### Guided VA.gov records walkthrough
+
+Step 4 includes a **guided VA.gov medical-records download walkthrough** for
+veterans who want their complete VA health record. Downloading it is a
 multi-page journey — VA.gov signs you in through ID.me (email, password, and a
 multi-factor code), then the download tool asks for a date range, record type,
-and file type before producing the PDF. The walkthrough mirrors that flow as a
-14-step checklist with deep links that open VA.gov in a new tab. It never
-collects, transmits, or stores VA.gov or ID.me credentials, MFA codes, or
-session data — sign-in happens entirely on VA.gov — and its progress checkmarks
-live only in the current browser tab. It appears on the secondary workflow's
-document step and standalone at `/get-records`.
+and file type before producing the PDF.
+
+- The walkthrough mirrors that flow as a **14-step checklist** with deep links
+  that open VA.gov in a new tab.
+- It never collects, transmits, or stores VA.gov or ID.me credentials, MFA
+  codes, or session data — sign-in happens entirely on VA.gov.
+- Progress checkmarks live only in the current browser tab.
+- It appears on the secondary workflow's document step and standalone at
+  `/get-records`.
 
 ![Guided VA.gov medical-records download walkthrough: 14 steps from VA.gov
 sign-in through ID.me MFA to the PDF report download, with deep links and a
@@ -92,6 +97,33 @@ The screenshot is regenerable with `node
 scripts/capture-va-gov-walkthrough-screens.mjs` (starts a dev server and
 headless Chrome, seals a dev-only workflow cookie, and captures the card via
 the DevTools Protocol).
+
+### Step 5–6 research aids
+
+Steps 5 and 6 surface research aids built from the same authored data:
+
+- Condition comparison, combination insights, a rating schedule guide, and a
+  prioritized action plan.
+- A **pathway-specific medical record checklist**: for each claim pathway
+  (service-connected primary → diagnosed condition via a nexus theory and
+  causal mechanism), it lists the concrete records to request from providers or
+  VA — for example, sleep study results, neurology records, and
+  sleep-specialist notes for a neurological-mechanism theory — each with a
+  short explanation of why it matters.
+- Checkmarks are kept only in the current browser tab and can be exported
+  alone or combined with the consultation summary.
+
+### Citation verification posture
+
+Published knowledge-base source references may still be marked **unverified**
+until they are independently checked. Unverified references remain research
+starting points, not verified authority.
+
+- `npm run citations:audit` enforces unsafe-provenance rules and a
+  non-regression ratchet so verification debt cannot silently increase.
+- Automated authoring may record a canonical source URL, source-check date, and
+  source locator, but `verified: true` remains a qualified-human decision under
+  `docs/citation-verification-sop.md`.
 
 ## Stack
 
@@ -103,6 +135,34 @@ there is no client analytics SDK, and production `connect-src` stays
 first-party only.
 
 ## Getting started
+
+### Prerequisites
+
+| Requirement | Detail |
+|-------------|--------|
+| **Node.js 22.x** | Enforced by the `engines` field in `package.json`. |
+| **npm** | The package manager of record — `package-lock.json` is committed. Use `npm ci` for a reproducible, CI-identical install. |
+| **Google Chrome + ChromeDriver** (E2E only) | Needed to run the real-browser journeys in `e2e/` locally (CI provisions its own). The ChromeDriver major version must match the installed Chrome major version, and `chromedriver` must be on `PATH` (the journeys also probe for a binary beside the runner script). |
+| **No external services required** | The app runs with development-only fallbacks; VA API adapters and outbound integrations are disabled by default (see [Configuration](#configuration)). |
+
+> `npm install` runs a postinstall step (`scripts/copy-pdf-worker.mjs`) that
+> generates the client runtime assets `public/pdf.worker.min.mjs` and
+> `public/tesseract/` — these are machine-generated and intentionally not
+> tracked in git.
+
+### Environment
+
+```bash
+cp .env.example .env.local
+```
+
+Most variables are optional in development — the app runs with
+development-only fallbacks and outbound integrations disabled. Production
+secrets belong only in the deployment secret store; never commit them (all
+private `.env*` files are git-ignored; the `.env.example` template is the
+tracked starting point).
+
+### Install and run
 
 ```bash
 npm install
@@ -126,9 +186,12 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run citations:audit` | Citation safety, provenance, and verification-debt audit |
 | `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-33 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
 | `npm run audit:crg` | CRG structural audit: simple-cycle enumeration, bidirectional-pair governance notes, and a transitive-redundancy report (`--strict` upgrades review findings to violations) |
+| `npm run audit:crg:graph` | Adjacency-file graph audit: 3-color DFS cycle detection over `KbNodeMapping` files (self-tightening — vacuous until the first adjacency file migrates, then strict) |
 | `npm run citations:decay` | Live link-rot/staleness probe for citations (deliberate maintainer gate, not per-PR CI) |
-| `npm run probe:va-gov-walkthrough` | Probes the VA.gov walkthrough's deep-linked routes for route rot (auth-aware verdicts; scheduled weekly, also maintainer-runnable) |
+| `npm run citations:weak` | Weak-citation report (references below the repository's provenance bar) |
 | `npm run citations:queue` | Reports the qualified-human citation-verification queue as markdown |
+| `npm run authoring:tracker` | Generates the current authoring-state tracker across the catalog and knowledge base |
+| `npm run probe:va-gov-walkthrough` | Probes the VA.gov walkthrough's deep-linked routes for route rot (auth-aware verdicts; scheduled weekly, also maintainer-runnable) |
 | `npm run evidence:architecture` | Audits the browser-local evidence parser architecture and its security boundaries |
 | `npm run regulatory:validate` | Validates the provenanced regulatory-actions seed data |
 | `npm run regulatory:audit` | Regulatory-intelligence audit (add `:markdown` for the report form) |
@@ -263,78 +326,135 @@ reside in `src/lib/actions/`.
 
 ## Knowledge-base coverage and authoring
 
-The catalog now holds **813 recognized conditions / 813 one-to-one
-knowledge-base mappings** after the 2026-09 master-list expansion. That
-expansion added **502 framework-only draft identities** across 14 body systems
-(each with a TODO authoring checklist and zero fabricated clinical evidence),
-consolidated 13 duplicate identities into pre-existing catalog entries (for
-example the generic `arthritis` umbrella was retired in favor of
-`osteoarthritis` / `rheumatoid-arthritis` / `gout`, and duplicate CRPS,
-HIV/AIDS, hammertoe, epicondylitis, Paget's, osteomalacia, and frostbite
-identities were folded into their existing entries), and renamed the ambiguous
-`aneurysms` umbrella to `peripheral-aneurysm` so `aortic-aneurysm` keeps its
-identity. Post-v2 maintenance still uses 33 catalog files. Fibromyalgia, hip
-strain, and ankle strain are physically normalized in musculoskeletal
-maintenance; diabetic retinopathy is in the ophthalmologic file; insomnia plus
-substance-use disorder are in the mental-disorders catalog; and Cushing's
-syndrome, Type 1 diabetes, Hyperthyroidism, Hyperparathyroidism, and
-Hypoparathyroidism are now physically maintained in the endocrine catalog with
-their current DC 7907, DC 7913, DC 7900, DC 7904, and DC 7905 frameworks.
-`carried-over.json` remains reduced to the intentionally quarantined
-`contralateral-knee-condition` laterality placeholder. None of these maintenance
-changes alters the 813-condition universe.
+### Catalog universe
 
-Waves 1 through 7 added 107 conditions. Clinical Evidence Promotion Batches 1
-through 11 still account for twelve individually reviewed **expansion** mappings:
-`cardiomyopathy` → `congestive-heart-failure`, `urethral-stricture` →
-`hydronephrosis`, `hypertensive-heart-disease` → `congestive-heart-failure`,
-`chronic-pyelonephritis` → `chronic-kidney-disease`, `chronic-liver-disease` →
-`cirrhosis-of-the-liver`, `acl-injury` → `osteoarthritis`, `pcl-injury` →
-`osteoarthritis`, `barretts-esophagus` → `esophageal-cancer`, `achalasia` →
-`esophageal-cancer`, `hyperaldosteronism` → `hypertension`, `acromegaly` →
-`hypertension`, and `diabetes-mellitus-type-1` → `chronic-kidney-disease`.
-**95 of the 107 expansion mappings remain safe drafts**. Batches 10 and 11
-instead improve legacy coverage: primary-hyperparathyroidism/hypoparathyroidism
-kidney-stone research, association-focused hypothyroidism/depression research,
-bounded hypogonadism/osteoporosis research, and a clinically repaired ILD/OSA
+The catalog is the **2026-09 master-list expansion**: 813 recognized conditions
+with one-to-one knowledge-base mappings. Catalog identities are a versioned
+product target, not a claim that medicine or the VA rating schedule contains
+only these conditions.
+
+- The expansion added **framework-only draft identities** across 14 body
+  systems, each with a TODO authoring checklist and **zero fabricated clinical
+  evidence**.
+- **13 duplicate identities were consolidated** into pre-existing catalog
+  entries — for example the generic `arthritis` umbrella was retired in favor
+  of `osteoarthritis` / `rheumatoid-arthritis` / `gout`, and duplicate CRPS,
+  HIV/AIDS, hammertoe, epicondylitis, Paget's, osteomalacia, and frostbite
+  identities were folded into their existing entries.
+- The ambiguous `aneurysms` umbrella was renamed to `peripheral-aneurysm` so
+  `aortic-aneurysm` keeps its distinct identity.
+- Post-v2 maintenance still uses **33 catalog files**. Physical placement
+  follows clinical authority: fibromyalgia, hip strain, and ankle strain are
+  maintained in musculoskeletal maintenance; diabetic retinopathy in the
+  ophthalmologic file; insomnia and substance-use disorder in the
+  mental-disorders catalog; and Cushing's syndrome, Type 1 diabetes,
+  hyperthyroidism, hyperparathyroidism, and hypoparathyroidism in the endocrine
+  catalog with their current DC 7907, DC 7913, DC 7900, DC 7904, and DC 7905
+  frameworks.
+- `carried-over.json` remains reduced to the intentionally quarantined
+  `contralateral-knee-condition` laterality placeholder.
+
+None of these maintenance changes alters the 813-condition universe.
+
+### Expansion and promotion roadmap
+
+| Milestone | Scope | State |
+|-----------|-------|-------|
+| **Waves 1–7** | 107 conditions added with authored mappings | Complete |
+| **2026-09 master-list expansion** | Catalog universe set to 813; framework-only drafts added across 14 body systems; 13 duplicates consolidated; ambiguous umbrellas renamed | Complete — framework drafts await clinical authoring |
+| **ME-19 – ME-22 (expansion batches)** | One rank-1 bounded suggestion for twenty framework-only identities | Complete |
+| **Clinical Evidence Promotion Batches 1–9** | Twelve individually reviewed expansion mappings published; legacy repairs and unsupported-chain removals | Complete |
+| **Clinical Evidence Promotion Batches 10–11** | Legacy-coverage improvements and unsupported-edge pruning | Complete |
+
+The current published/draft split per wave and batch is generated — run
+`npm run authoring:tracker` rather than relying on any count written here.
+
+**Clinically reviewed expansion mappings published by Promotion Batches 1–9:**
+
+| From (primary) | To (secondary) |
+|----------------|----------------|
+| `cardiomyopathy` | `congestive-heart-failure` |
+| `urethral-stricture` | `hydronephrosis` |
+| `hypertensive-heart-disease` | `congestive-heart-failure` |
+| `chronic-pyelonephritis` | `chronic-kidney-disease` |
+| `chronic-liver-disease` | `cirrhosis-of-the-liver` |
+| `acl-injury` | `osteoarthritis` |
+| `pcl-injury` | `osteoarthritis` |
+| `barretts-esophagus` | `esophageal-cancer` |
+| `achalasia` | `esophageal-cancer` |
+| `hyperaldosteronism` | `hypertension` |
+| `acromegaly` | `hypertension` |
+| `diabetes-mellitus-type-1` | `chronic-kidney-disease` |
+
+The remainder of the wave mappings remain intentionally **safe drafts** pending
+individual clinical review — they cannot surface in recommendation output until
+promoted.
+
+**Batches 10 and 11 improve legacy coverage** instead of publishing expansions:
+primary-hyperparathyroidism/hypoparathyroidism kidney-stone research,
+association-focused hypothyroidism/depression research, bounded
+hypogonadism/osteoporosis research, and a clinically repaired ILD/OSA
 association.
 
-Safety review has returned `ankle-strain`, `knee-injury`, `osteoarthritis`,
-`ageusia`, `agranulocytosis`, `al-amyloidosis`, `addisons-disease`,
-`anorexia-nervosa`, `emphysema`, `chronic-bronchitis`, and `pulmonary-fibrosis`
-to draft where previously published claims were stronger than the reviewed
-evidence or relied on rating/legal authority rather than condition-specific
-clinical evidence. Existing relationships for `amputation-or-loss-of-use` →
-`depressive-disorder`, `anosmia` → `depressive-disorder`, `alopecia-areata` →
-`depressive-disorder`, `hypertension`, and now `interstitial-lung-disease` →
-`sleep-apnea` have been repaired with condition-specific clinical evidence and
-conservative safeguards. Batch 8 also publishes `cushings-syndrome` →
-`hypertension` under a bounded endocrine pathway. Batch 9 removes the
-unsupported `erectile-dysfunction` → `gerd` treatment chain and clinically
-repairs `erectile-dysfunction` → `depressive-disorder`; Batch 11 removes the
-unsupported ILD→cardiac-arrhythmia edge while preserving only clinically sourced
-ILD→OSA association research.
+**ME-19 through ME-22** each added one rank-1 bounded suggestion for these
+twenty framework-only identities: `transient-ischemic-attack`,
+`cluster-headache`, `essential-tremor`, `myasthenia-gravis`,
+`peripheral-neuropathy`, `restless-leg-syndrome`, `sciatica`, `spinal-stenosis`,
+`thoracic-outlet-syndrome`, `trigeminal-neuralgia`, `bipolar-disorder`,
+`dissociative-disorder`, `obsessive-compulsive-disorder`,
+`somatic-symptom-disorder`, `acute-liver-failure`, `anal-fissure`,
+`cholelithiasis`, `chronic-pancreatitis`, `diverticulitis`, and
+`perianal-fistula`.
 
-The knowledge base now holds **363 relationships across 813 mapping files**, with **379 live source references, 379 verified, and 0 unverified**. The authoritative master registry records **346 active + 17 tombstoned relationship entries**, and all published relationships are anchored to condition-specific source evidence.
+### Safety review actions
 
-ME-19 (batch 5) through ME-22 (batch 8) were the mapping-expansion batches over the 502 master-list framework-only identities, adding one rank-1 bounded suggestion each for twenty identities: `transient-ischemic-attack`, `cluster-headache`, `essential-tremor`, `myasthenia-gravis`, `peripheral-neuropathy`, `restless-leg-syndrome`, `sciatica`, `spinal-stenosis`, `thoracic-outlet-syndrome`, `trigeminal-neuralgia`, `bipolar-disorder`, `dissociative-disorder`, `obsessive-compulsive-disorder`, `somatic-symptom-disorder`, `acute-liver-failure`, `anal-fissure`, `cholelithiasis`, `chronic-pancreatitis`, `diverticulitis`, and `perianal-fistula`.
+Evidence review is allowed to *demote* as well as promote:
 
-The knowledge base is a Causal Relational Graph (CRG), not a flat association
-list: every suggestion is enforced by the Zod schema to carry the CRG trio
-(`nexusClaim` as a `DIRECT_CAUSATION`/`AGGRAVATION`/`ASSOCIATION_ONLY`
-discriminated union, `causalMechanism`, and `evidentiaryProfile` with
-`etiologicalConsensus` replacing the deprecated `prevalence` field). `npm run audit:me-compliance` audits every mapping — including each of the 125 ME-1..ME-33
-relationships — for nexus-arm validity, consensus/alignment consistency,
-guard-disclaimer honesty, citation discipline, and quarantine compliance as a CI
-gate. `npm run citations:decay` is the maintainer-run link-rot/staleness probe.
+- **Returned to draft** where previously published claims were stronger than
+  the reviewed evidence, or relied on rating/legal authority rather than
+  condition-specific clinical evidence: `ankle-strain`, `knee-injury`,
+  `osteoarthritis`, `ageusia`, `agranulocytosis`, `al-amyloidosis`,
+  `addisons-disease`, `anorexia-nervosa`, `emphysema`, `chronic-bronchitis`,
+  and `pulmonary-fibrosis`.
+- **Repaired with condition-specific clinical evidence and conservative
+  safeguards**: existing relationships for `amputation-or-loss-of-use` →
+  `depressive-disorder`, `anosmia` → `depressive-disorder`,
+  `alopecia-areata` → `depressive-disorder`, `hypertension`, and
+  `interstitial-lung-disease` → `sleep-apnea`.
+- **Batch 8** publishes `cushings-syndrome` → `hypertension` under a bounded
+  endocrine pathway.
+- **Batch 9** removes the unsupported `erectile-dysfunction` → `gerd` treatment
+  chain and clinically repairs `erectile-dysfunction` → `depressive-disorder`.
+- **Batch 11** removes the unsupported ILD → cardiac-arrhythmia edge while
+  preserving only the clinically sourced ILD → OSA association research.
 
-The completed identity-expansion record is maintained in
-`docs/condition-expansion-roadmap.md`; the post-v2 promotion records are in
-`docs/clinical-evidence-promotion-batch-1.md` through
-`docs/clinical-evidence-promotion-batch-11.md`. The 813-condition catalog is the
-2026-09 master-list expansion; catalog identities are a versioned product
-target, not a claim that medicine or the VA rating schedule contains only these
-conditions.
+### The CRG data model
+
+The knowledge base is a **Causal Relational Graph (CRG)**, not a flat
+association list. Strict Zod schemas enforce that every suggestion carries:
+
+- `nexusClaim` — a `DIRECT_CAUSATION` / `AGGRAVATION` / `ASSOCIATION_ONLY`
+  discriminated union. The research-guard posture decides the classification:
+  never force a causation or aggravation claim when the guard or literature
+  only supports association (`ASSOCIATION_ONLY` + `NOT_ESTABLISHED` +
+  `hypothesizedOnly: true`). Legal or rating authority cannot substitute for
+  clinical evidence of a medical relationship.
+- `causalMechanism` — the authored biological mechanism category.
+- `evidentiaryProfile.etiologicalConsensus` — replaced the deprecated
+  `prevalence` field.
+
+Enforcement and auditing:
+
+- `npm run audit:me-compliance` audits every mapping — including each
+  ME-1..ME-33 relationship — for nexus-arm validity, consensus/alignment
+  consistency, guard-disclaimer honesty, citation discipline, and quarantine
+  compliance as a CI gate.
+- `npm run citations:decay` is the maintainer-run link-rot/staleness probe.
+- Strict Zod schemas reject unknown JSON keys, and referential-integrity tests
+  keep mapping IDs aligned with the catalog. Drafts may retain explicit TODO
+  items but cannot silently appear in recommendation output.
+
+### Authoring workflow
 
 To add or change a condition or relationship:
 
@@ -356,23 +476,22 @@ To add or change a condition or relationship:
    `DIRECT_CAUSATION`, `AGGRAVATION`, or `ASSOCIATION_ONLY`; `causalMechanism`;
    `evidentiaryProfile.etiologicalConsensus`), conservative rationale, evidence
    gaps, and condition-specific source references satisfying the repository's
-   current provenance rules. The research-guard posture decides the
-   classification: never force a causation or aggravation claim when the guard
-   or literature only supports association (`ASSOCIATION_ONLY` +
-   `NOT_ESTABLISHED` + `hypothesizedOnly: true`). Legal or rating authority
-   cannot substitute for clinical evidence of a medical relationship.
+   current provenance rules.
 3. **Verification:** record source URLs, `sourceCheckedOn`, and `sourceLocator`
    when checked. Keep `verified: false` unless a qualified human completes the
    Citation Verification SOP.
-4. Run `npm run kb:validate`, `npm run citations:audit`, `npm run
+4. **Gate:** run `npm run kb:validate`, `npm run citations:audit`, `npm run
    audit:me-compliance`, `npm run test:composition`, and `npm test` before
    review.
 
-Strict Zod schemas reject unknown JSON keys, and referential-integrity tests keep
-mapping IDs aligned with the catalog. Drafts may retain explicit TODO items but
-cannot silently appear in recommendation output.
+### Records and further reading
+
+- Completed identity-expansion record:
+  `docs/condition-expansion-roadmap.md`
+- Post-v2 promotion records: `docs/clinical-evidence-promotion-batch-1.md`
+  through `docs/clinical-evidence-promotion-batch-11.md`
 
 Contribution rules for humans and agents are in
 `.github/copilot-instructions.md`.
 
-<!-- Redeploy trigger: README touch on 2026-09-14 -->
+<!-- Redeploy trigger: README touch on 2026-09-21 -->
