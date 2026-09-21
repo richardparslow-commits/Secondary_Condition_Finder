@@ -21,6 +21,7 @@
           "citation": "Madsen ML, Due H, Ejskjaer N, et al. Aspects of vincristine-induced neuropathy in hematologic malignancies: a systematic review. Cancer Chemother Pharmacol. 2019;84(3):471-485. PMID 31214762. doi:10.1007/s00280-019-03884-5.",
           "note": "Mapping Expansion Batch ME-13 evidence for the bounded non-hodgkins-lymphoma to peripheral-neuropathy proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31214762/",
           "verified": true,
           "sourceCheckedOn": "2026-08-22",

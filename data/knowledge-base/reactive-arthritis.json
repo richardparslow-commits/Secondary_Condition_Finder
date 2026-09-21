@@ -21,6 +21,7 @@
           "citation": "Jubber A, Moorthy A. Reactive arthritis: a clinical review. J R Coll Physicians Edinb. 2021;51(3):288-297. PMID 34528623. doi:10.4997/JRCPE.2021.319.",
           "note": "Mapping Expansion Batch ME-12 evidence for the bounded reactive-arthritis to uveitis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34528623/",
           "verified": true,
           "sourceCheckedOn": "2026-08-22",

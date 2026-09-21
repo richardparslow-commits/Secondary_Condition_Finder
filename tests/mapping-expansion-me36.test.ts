@@ -4,12 +4,12 @@ import { describe, expect, it } from "vitest";
 
 const root = process.cwd();
 const pairs = [
-  ["ischemic-heart-disease", "24176435", 4, "d1821c51de60779896f5a1d7de5fb0e913dad64ad034e480fa81316cfd854849"],
-  ["hypertension", "27490852", 5, "c4fe7929ec63f859e87cc68ce01079bd7e98bcac37f5e15543babbf9aaf84e7d"],
-  ["diabetes-mellitus-type-2", "26867081", 6, "2719c34964049b2224ba89f340f25662f3593c8c20c8065dbfe6bf576539f359"],
-  ["depressive-disorder", "23696449", 7, "cbb2139619de9d76dd244aa9ea6f6a482baa9a6cd21efffb4cff2cc222580d13"],
-  ["insomnia", "36163136", 8, "4e2336f781a57dca0fe4848187c60ab2edefa8a0e7450876589516c6949a98f4"],
-  ["substance-use-disorder", "11481147", 9, "98f643e700577d70e59747ce37fd0b216b70ab774f9ca16db1ede86e86d2c90a"],
+  ["ischemic-heart-disease", "24176435", 4, "b45e9520845a7c195c9722427cf7ac89333a7e0cd6a766eb7e431471d03616ce"],
+  ["hypertension", "27490852", 5, "3746311522f0e5f87c75ffc6b25a61d80003ffc24ab3170701c5cbc73c79c4d3"],
+  ["diabetes-mellitus-type-2", "26867081", 6, "e1851109455fdeacb32b7184cf237b673c95c886bbd26d5894a4bfceba7f4301"],
+  ["depressive-disorder", "23696449", 7, "7d6fd403b576182a23853d20a368e5f7719a1be548695e5ca93d6ef7be0d55fe"],
+  ["insomnia", "36163136", 8, "ad83421bfd295f048dc0361be704143405e2b47b773e64b311fdbef6a5c14110"],
+  ["substance-use-disorder", "11481147", 9, "0ed7299ffffe91760292136e0384e6ffb3c064d17bb979c07afc77b4bc3df63c"],
 ] as const;
 
 type SourceReference = { citation: string; verified: boolean; verificationScope: string };

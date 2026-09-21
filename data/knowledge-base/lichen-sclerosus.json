@@ -22,6 +22,7 @@
           "citation": "Spekreijse JJ, Streng B, van der Meijden WI, Verheijen RHM, van Beurden M. The risk of developing squamous cell carcinoma in patients with anogenital lichen sclerosis: A systematic review. Gynecol Oncol. 2020;157(3):671-677. PMID 32089333. doi:10.1016/j.ygyno.2020.02.020.",
           "note": "Mapping Expansion Batch ME-22 evidence for the bounded anogenital lichen-sclerosus to squamous-cell-carcinoma proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32089333/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

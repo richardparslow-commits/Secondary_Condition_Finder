@@ -22,6 +22,7 @@
           "citation": "Lian BSY, Ong CC, Chiang LW, Rai R, Nah SA. Factors Predicting Testicular Atrophy after Testicular Salvage following Torsion. Eur J Pediatr Surg. 2016;26(1):17-21. PMID 26509312. doi:10.1055/s-0035-1566096.",
           "note": "Mapping Expansion Batch ME-22 evidence for the bounded testicular-torsion to testicular-atrophy proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26509312/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

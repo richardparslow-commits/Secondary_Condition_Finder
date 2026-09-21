@@ -22,6 +22,7 @@
           "citation": "Jiang T, Zhang X, Wu J, Gao L, Tung TH. Risk Factors for Incontinence-Associated Dermatitis in Adults: A Systematic Review and Meta-Analysis. J Wound Ostomy Continence Nurs. 2025;52(1):66-75. PMID 39836004. doi:10.1097/WON.0000000000001146.",
           "note": "Mapping Expansion Batch ME-13 evidence for the bounded fecal-incontinence to dermatitis proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39836004/",
           "verified": true,
           "sourceCheckedOn": "2026-08-22",

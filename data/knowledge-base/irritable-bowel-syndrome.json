@@ -21,6 +21,7 @@
           "citation": "Whitehead WE, Palsson O, Jones KR. Systematic review of the comorbidity of irritable bowel syndrome with other disorders: what are the causes and implications? Gastroenterology. 2002;122(4):1140-1156. PMID 11910364. doi:10.1053/gast.2002.32392.",
           "note": "Mapping Expansion Batch ME-17 evidence for the bounded irritable-bowel-syndrome to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11910364/",
           "verified": true,
           "sourceCheckedOn": "2026-09-01",

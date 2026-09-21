@@ -21,6 +21,7 @@
           "citation": "Kato K, Sullivan PF, Evengård B, Pedersen NL. Chronic widespread pain and its comorbidities: a population-based study. Arch Intern Med. 2006;166(15):1649-1654. PMID 16908799. doi:10.1001/archinte.166.15.1649.",
           "note": "Mapping Expansion Batch ME-17 evidence for the bounded fibromyalgia to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16908799/",
           "verified": true,
           "sourceCheckedOn": "2026-09-01",

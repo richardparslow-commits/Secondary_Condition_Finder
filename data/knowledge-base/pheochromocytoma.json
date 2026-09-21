@@ -22,6 +22,7 @@
           "citation": "Lenders JW, Duh QY, Eisenhofer G, Gimenez-Roqueplo AP, Grebe SK, Murad MH, Naruse M, Pacak K, Young WF Jr; Endocrine Society. Pheochromocytoma and paraganglioma: an endocrine society clinical practice guideline. J Clin Endocrinol Metab. 2014;99(6):1915-1942. PMID 24893135. doi:10.1210/jc.2014-1498.",
           "note": "Mapping Expansion Batch ME-20 evidence for the bounded pheochromocytoma to hypertension proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24893135/",
           "verified": true,
           "sourceCheckedOn": "2026-09-02",

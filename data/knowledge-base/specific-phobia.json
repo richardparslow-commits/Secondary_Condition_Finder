@@ -22,6 +22,7 @@
           "citation": "Wardenaar KJ, Lim CCW, Al-Hamzawi AO, et al. The cross-national epidemiology of specific phobia in the World Mental Health Surveys. Psychol Med. 2017;47(10):1744-1760. PMID 28222820. doi:10.1017/S0033291717000174.",
           "note": "Mapping Expansion Batch ME-16 evidence for the bounded specific-phobia to depressive-disorder proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28222820/",
           "verified": true,
           "sourceCheckedOn": "2026-09-01",

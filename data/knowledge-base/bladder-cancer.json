@@ -21,6 +21,7 @@
           "citation": "Xu M, Chen S, Liu X, et al. Best evidence for rehabilitation management of urinary incontinence in patients with bladder cancer following orthotopic neobladder reconstruction. Asia Pac J Oncol Nurs. 2024;12:100647. PMID 39896758. doi:10.1016/j.apjon.2024.100647.",
           "note": "Mapping Expansion Batch ME-13 evidence for the bounded bladder-cancer to urinary-incontinence proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39896758/",
           "verified": true,
           "sourceCheckedOn": "2026-08-22",
