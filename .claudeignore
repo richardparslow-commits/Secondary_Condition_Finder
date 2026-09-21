@@ -12,7 +12,6 @@ out/
 
 # Package manager files
 pnpm-lock.yaml
-package-lock.json
 yarn.lock
 
 # IDE/Editor
