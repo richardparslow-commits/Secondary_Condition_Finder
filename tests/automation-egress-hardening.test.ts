@@ -66,6 +66,37 @@ describe("automation and CI hardening", () => {
     expect(browserJourney).toContain("/session/${sessionId}/element");
   });
 
+  it("keeps the production COI isolation journey in the CI gate", () => {
+    const workflow = read(".github/workflows/ci.yml");
+    const coiJourney = read("e2e/coi-isolation.mjs");
+
+    // The journey rides the same real-browser E2E step as the other journeys
+    // (which runs only after the production build, so `next start` has
+    // build output to serve).
+    expect(workflow).toContain("node e2e/coi-isolation.mjs");
+    expect(workflow).toContain("ci-e2e.log");
+
+    // The journey asserts production responses (next start), not dev.
+    expect(coiJourney).toContain('"start", "-H", "127.0.0.1"');
+    expect(coiJourney).toContain("BUILD_ID");
+    expect(coiJourney).not.toContain('["dev"');
+
+    // COI header + worker-context assertions are load-bearing source, not
+    // comments.
+    expect(coiJourney).toContain('coop !== "same-origin"');
+    expect(coiJourney).toContain('coep !== "require-corp"');
+    expect(coiJourney).toContain("self.crossOriginIsolated === true");
+    expect(coiJourney).toContain("new Worker(");
+
+    // The worker probe must be the static same-origin file (the Trusted
+    // Types default policy refuses blob:/data: script URLs), mirroring the
+    // tesseract.js OCR worker construction.
+    expect(coiJourney).toContain('new Worker("/tesseract/coi-probe.js")');
+    const coiProbe = read("public/tesseract/coi-probe.js");
+    expect(coiProbe).toContain("self.crossOriginIsolated === true");
+    expect(coiProbe).toContain("postMessage");
+  });
+
   it("bounds Chrome session startup retries without retrying browser journey failures", () => {
     const browserJourney = read("e2e/secondary-workflow.mjs");
 

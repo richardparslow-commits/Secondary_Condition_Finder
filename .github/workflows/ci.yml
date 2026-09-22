@@ -202,7 +202,7 @@ jobs:
         if: steps.build.outcome == 'success'
         run: |
           set -o pipefail
-          (node e2e/secondary-workflow.mjs && node e2e/validation-errors.mjs) 2>&1 | tee ci-e2e.log
+          (node e2e/secondary-workflow.mjs && node e2e/validation-errors.mjs && node e2e/coi-isolation.mjs) 2>&1 | tee ci-e2e.log
         continue-on-error: true
         id: e2e
       - name: Collect diagnostic summary
