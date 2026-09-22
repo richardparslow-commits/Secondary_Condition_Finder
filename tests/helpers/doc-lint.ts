@@ -388,3 +388,154 @@ export function volatileHitsOutsideHistoricalZones(
   }
   return hits;
 }
+
+/* ─── Marker-pairing symmetry audit ──────────────────────────────────────── *
+ *
+ * `parseHistoricalZones` is deliberately tolerant (it must keep computing
+ * usable zones even from imperfect markers), but tolerance must never become
+ * acceptance: a zone opened and never closed, a stray END, an END that closes
+ * a differently-named zone, or a pair whose marker spellings mix casing
+ * (`:START` … `:end`) all mean the fencing convention itself is broken and
+ * the historical exemption could silently widen. `auditMarkerPairing`
+ * enforces that symmetry as a hard, corpus-wide gate with line-precise
+ * diagnostics, and `markerPairingReport` returns the structured zone table
+ * the lint suite pins.
+ *
+ * Markers inside fenced code blocks are documentation examples of the
+ * convention, not structure, and are ignored.
+ *
+ * ─────────────────────────────────────────────────────────────────────── */
+
+export type MarkerDiagnosticType =
+  | "stray-end"
+  | "unclosed-start"
+  | "name-mismatch"
+  | "casing-mismatch";
+
+export type MarkerDiagnostic = {
+  type: MarkerDiagnosticType;
+  /** 1-indexed line the diagnostic is reported at. */
+  line: number;
+  label: string;
+  detail: string;
+};
+
+export type MarkerZone = {
+  label: string;
+  /** 1-indexed line of the opening marker. */
+  startLine: number;
+  /** 1-indexed line of the closing marker. */
+  endLine: number;
+  /** Exact opening marker text, e.g. "CLINICAL-MAPPING-MASTER-2026:START". */
+  startMarker: string;
+  /** Exact closing marker text, e.g. "CLINICAL-MAPPING-MASTER-2026:END". */
+  endMarker: string;
+};
+
+export type MarkerPairingReport = {
+  /** Properly paired, correctly nested zones in document order. */
+  zones: MarkerZone[];
+  diagnostics: MarkerDiagnostic[];
+};
+
+/** Uppercase-style kinds (`START`/`END`) vs lowercase-style (`start`/`end`). */
+function isUppercaseMarkerStyle(rawKind: string): boolean {
+  return rawKind === rawKind.toUpperCase();
+}
+
+/**
+ * Audit a single document's historical-zone markers for pairing symmetry.
+ * Handles fenced code blocks and returns line-precise diagnostics for every
+ * asymmetry class; zones are only emitted for fully valid pairs.
+ */
+export function auditMarkerPairing(text: string): MarkerPairingReport {
+  const zones: MarkerZone[] = [];
+  const diagnostics: MarkerDiagnostic[] = [];
+  const lines = text.split("\n");
+  const stack: {
+    label: string;
+    rawKind: string;
+    line: number;
+  }[] = [];
+  let inFence = false;
+  for (let i = 0; i < lines.length; i++) {
+    if (/^```/.test(lines[i] ?? "")) {
+      inFence = !inFence;
+      continue;
+    }
+    if (inFence) continue;
+    const match = lines[i]?.match(HISTORICAL_MARKER);
+    if (!match) continue;
+    const label = match[1] ?? "";
+    const rawKind = match[2] ?? "";
+    const kind = rawKind.toUpperCase();
+    if (kind === "START") {
+      stack.push({ label, rawKind, line: i + 1 });
+      continue;
+    }
+    const open = stack.pop();
+    if (!open) {
+      diagnostics.push({
+        type: "stray-end",
+        line: i + 1,
+        label,
+        detail: `END marker "${label}:${rawKind}" has no open START.`,
+      });
+      continue;
+    }
+    if (open.label.toLowerCase() !== label.toLowerCase()) {
+      diagnostics.push({
+        type: "name-mismatch",
+        line: i + 1,
+        label,
+        detail: `END marker "${label}" closes a zone opened as "${open.label}" at line ${open.line}.`,
+      });
+      continue;
+    }
+    if (isUppercaseMarkerStyle(open.rawKind) !== isUppercaseMarkerStyle(rawKind)) {
+      diagnostics.push({
+        type: "casing-mismatch",
+        line: i + 1,
+        label,
+        detail: `END marker casing ("${rawKind}") does not match the opening "${open.rawKind}" at line ${open.line}; each pair must use one style consistently.`,
+      });
+      continue;
+    }
+    zones.push({
+      label,
+      startLine: open.line,
+      endLine: i + 1,
+      startMarker: `${open.label}:${open.rawKind}`,
+      endMarker: `${label}:${rawKind}`,
+    });
+  }
+  for (const open of stack) {
+    diagnostics.push({
+      type: "unclosed-start",
+      line: open.line,
+      label: open.label,
+      detail: `START marker "${open.label}:${open.rawKind}" is never closed.`,
+    });
+  }
+  return { zones, diagnostics };
+}
+
+export type DocMarkerReport = MarkerPairingReport & {
+  /** Doc file name relative to the scanned directory. */
+  file: string;
+};
+
+/**
+ * Scan every markdown file in a directory (the docs corpus) and produce the
+ * per-document marker-pairing table. Files with no markers yield empty
+ * reports, so the corpus table is complete, not filtered.
+ */
+export function corpusMarkerReports(docsDir: string): DocMarkerReport[] {
+  return readdirSync(docsDir)
+    .filter((name) => name.endsWith(".md"))
+    .sort()
+    .map((file) => ({
+      file,
+      ...auditMarkerPairing(readFileSync(join(docsDir, file), "utf8")),
+    }));
+}

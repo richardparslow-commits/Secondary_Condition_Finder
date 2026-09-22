@@ -183,4 +183,6 @@ M1 publishes:
 - `laryngeal-cancer` → `aphonia`: treatment-complication only; documented total laryngectomy and documented aphonia required.
 
 The 5 live unverified published references are PMID 38568491, PMID 11231832, PMID 17679635, PMID 25630206, and PMID 20189345. No M1 source is auto-verified.
-<!-- HISTORICAL-CURRENT-SECTIONS:END -->
+<!-- clinical-mapping-m1-current:end -->
+
+<!-- HISTORICAL-BATCH-31-SNAPSHOT:END -->

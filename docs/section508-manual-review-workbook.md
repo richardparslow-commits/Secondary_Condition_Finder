@@ -53,6 +53,7 @@ These values were previously pinned in this workbook as a starter template. They
 | Field | Superseded value | Status |
 |---|---|---|
 | Deployed `main` commit SHA | `bbe2935274e1e00b235ac69f6ef1e8ddc4b8bdab` | Superseded — not current `main` |
+| Deployed `main` commit SHA | `6293f002a00a614b86c508ad4fa452dcaa87317e` | Superseded — build frozen for manual review in issue #195 (main CI #807, Production Runtime Readiness #166, Vercel deployment `dpl_6GJrwnr7ToGVFHL4RUeGoFTt3YyC`, READY on the canonical alias); superseded by later `main` advances |
 | Vercel production deployment ID | `6287296680` | Superseded |
 | Main CI run | `34000588157` | Superseded |
 | Production Runtime Readiness run | `34000588157` | Superseded — this duplicated the CI run id and was never an independent readiness identifier |

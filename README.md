@@ -38,8 +38,9 @@ The application is deployed on Vercel. The canonical production URL is
 The knowledge base changes with every authoring commit, so this README does not
 hardcode snapshot counts (mappings, relationships, published/draft split,
 verified references). Each was a recurring source of documentation-only
-commits and merge conflicts. Generate the current numbers instead:
+commits and merge conflicts. Generate the current numbers instead (the table below is generated from the `snapshotGenerators` metadata in `package.json` by `npm run readme:snapshot` — edit the metadata, not the table):
 
+<!-- generated:snapshot-generators:start -->
 | Snapshot metric | Generator |
 |-----------------|-----------|
 | Catalog + mapping integrity, file/condition counts | `npm run kb:validate` |
@@ -48,6 +49,7 @@ commits and merge conflicts. Generate the current numbers instead:
 | References below the provenance bar | `npm run citations:weak` |
 | CRG relationship-graph structure (cycles, bidirectional pairs, redundancy) | `npm run audit:crg` |
 | Qualified-human citation-verification queue | `npm run citations:queue` |
+<!-- generated:snapshot-generators:end -->
 
 ### Browser-local evidence processing
 

@@ -3,8 +3,10 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
 import {
+  auditMarkerPairing,
   collectNpmScripts,
   collectVolatileCounts,
+  corpusMarkerReports,
   missingFileReferences,
   parseHistoricalZones,
   readRepoMarkdown,
@@ -262,14 +264,22 @@ describe("per-doc lint enforcement", () => {
         // Narrow OUTSIDE the deferred callback: TS control-flow narrowing of
         // property accesses does not cross closure boundaries.
         const expectedZones: string[] = policy.historicalZones;
-        it("retains exactly its pinned historical zones", () => {
-          const labels = parseHistoricalZones(text).map((zone) => zone.label);
+        it("retains exactly its pinned historical zones, symmetrically fenced", () => {
+          const report = auditMarkerPairing(text);
+          const labels = report.zones.map((zone) => zone.label);
           for (const expected of expectedZones) {
             expect(
               labels,
               `${policy.file} is missing historical zone "${expected}"`,
             ).toContain(expected);
           }
+          // The zones must be properly paired: a zone listed in the policy
+          // but emitting stray/mismatched/unclosed diagnostics is not a
+          // usable fence.
+          expect(
+            report.diagnostics.map(({ type, line, detail }) => `${type} at line ${line}: ${detail}`),
+            `${policy.file} historical-zone markers are not symmetrically paired`,
+          ).toEqual([]);
         });
       }
     });
@@ -277,6 +287,46 @@ describe("per-doc lint enforcement", () => {
 });
 
 /* ─── Harness self-tests: the zone parser and pattern guards ─────────────── */
+
+describe("historical-marker pairing symmetry across all docs", () => {
+  // The corpus-wide table: every doc in docs/, including the ~150 historical
+  // batch/ledger records. An asymmetry anywhere — a stray END, an unclosed
+  // START, a name mismatch, or mixed casing within a pair — breaks the
+  // fencing convention and silently widens the historical exemption.
+  const reports = corpusMarkerReports(join(process.cwd(), DOCS_DIR));
+
+  it("emits a report for every markdown doc in docs/", () => {
+    expect(reports.length).toBeGreaterThan(100);
+  });
+
+  it("pairs every historical-zone marker symmetrically across the corpus", () => {
+    const asymmetric = reports.filter((report) => report.diagnostics.length > 0);
+    const summary = asymmetric
+      .map((report) =>
+        `${report.file}: ${report.diagnostics.map(({ type, line, detail }) => `${type} at line ${line}: ${detail}`).join(" | ")}`,
+      )
+      .join("\n");
+    expect(
+      summary,
+      "historical-zone markers must pair symmetrically (no stray END, no unclosed START, no name mismatch, no mixed casing within a pair); see docs marker table below",
+    ).toBe("");
+  });
+
+  it("pins the corpus marker-zone table (add an entry when fencing a new doc)", () => {
+    const zones = reports.filter((report) => report.zones.length > 0);
+    expect(
+      zones.map(({ file, zones: zs }) => `${file}: ${zs.length} zone(s)`),
+    ).toEqual([
+      "adrenal-histoplasmosis-taxonomy-amendment-2026-disposition.md: 1 zone(s)",
+      "clinical-mapping-master-2026-implementation.md: 1 zone(s)",
+      "clinical-mapping-master-resolution-2026-implementation.md: 1 zone(s)",
+      "clinical-program-status.md: 9 zone(s)",
+      "kb-coverage-tracker.md: 10 zone(s)",
+      "post-traumatic-headache-taxonomy-addition-2026-disposition.md: 1 zone(s)",
+      "qualified-human-citation-verification-queue.md: 7 zone(s)",
+    ]);
+  });
+});
 
 describe("doc-lint harness self-tests", () => {
   it("pairs nested START/END zones innermost-first", () => {

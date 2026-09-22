@@ -5,6 +5,14 @@
   "engines": {
     "node": "22.x"
   },
+  "snapshotGenerators": {
+    "kb:validate": "Catalog + mapping integrity, file/condition counts",
+    "citations:audit": "Citation verification state and the verification-debt ratchet",
+    "authoring:tracker": "Published/draft authoring coverage by wave and batch",
+    "citations:weak": "References below the provenance bar",
+    "audit:crg": "CRG relationship-graph structure (cycles, bidirectional pairs, redundancy)",
+    "citations:queue": "Qualified-human citation-verification queue"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,6 +24,8 @@
     "test:watch": "vitest",
     "test:composition": "node scripts/audit-test-composition.js",
     "test:doc-lint": "vitest run tests/doc-lint.test.ts tests/doc-example-schema.test.ts tests/readme-consistency.test.ts",
+    "readme:snapshot": "node scripts/readme-snapshot-table.js",
+    "readme:snapshot:check": "node scripts/readme-snapshot-table.js --check",
     "typecheck": "tsc --noEmit",
     "citations:weak": "node scripts/report-weak-citations.js",
     "citations:audit": "node scripts/audit-citation-verification.js",
