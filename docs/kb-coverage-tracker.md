@@ -2,10 +2,11 @@
 ## All 94 pending citation verification — current state
 
 - User approval: **all 94 pending clinical references approved** on **2026-09-04**.
-- Live references: **355**; live verified: **355**; live unverified: **0**.
-- Verified provenance including six retired verified uses: **361**.
-- Active master sources: **329**; pending master sources: **0**; total source entities including lineage: **338**.
-- Knowledge-base state remains **139 published / 674 draft**; all 674 draft mappings remain draft-only.
+- Live reference/verification state and the live publication split are **generated, not
+  transcribed**: `npm run citations:audit` (reference counts and verification state) and
+  `npm run authoring:tracker` (publication split into `draft-backlog-tracker.csv`). Snapshot
+  counts at the time of this approval are preserved in the historical blocks below and in
+  `docs/all-94-citation-verification-approved-ledger.json`.
 - Approval ledger: docs/all-94-citation-verification-approved-ledger.json.
 - This promotion changes citation state only; it does not establish an individual medical nexus or publish any draft relationship.
 <!-- ALL-94-CITATION-VERIFICATION-2026:END -->

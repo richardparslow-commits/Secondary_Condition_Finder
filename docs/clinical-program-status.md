@@ -1,14 +1,12 @@
 <!-- CURRENT-REPOSITORY-STATE-2026:START -->
 ## Authoritative current repository state
 
-The authoritative current state is the ME-39 citation-verified registry (`currentState: ME-39-CITATION-VERIFIED`), validated by `node scripts/audit-master-registry.js`:
-
-- **813** catalog identities and **813** knowledge-base mappings.
-- **363** relationships: **140 published / 673 draft**.
-- **379** live source references: **379 verified / 0 unverified**.
-- **346** active source entities: **345 clinical + 1 legal authority**.
-- **0** pending-verification source entities; **355** total source entities including lineage/history.
-- **289** explicit publication guards and **74** legacy rationale boundaries.
+Current-state numbers are **generated, not transcribed**: run `npm run kb:validate`
+(catalog/KB identity coverage, 813/813 with zero drift at the ME-39 registry),
+`npm run authoring:tracker` (publication split into `draft-backlog-tracker.csv`), and
+`npm run citations:audit` (reference counts and verification state — 379 verified /
+0 unverified at the ME-39 registry). The registry record itself is validated by
+`node scripts/audit-master-registry.js`:
 
 ME-39 (2026-09-06) published `rem-sleep-disorder → parkinsons-disease` as the first published outgoing relationship from `rem-sleep-disorder` — an ASSOCIATION_ONLY prodromal temporal-risk marker (ME-14, Postuma 2020, PMID 20083800) guarded as prediction/prodrome, not causation. ME-39 also added the `governanceNotes` schema field to allow published mappings to preserve governance decision records, and resolved the `rem-sleep-disorder` approved disposition from `FINAL-CLOSE-DIRECTION` to `PUBLISHED-PRODROMAL-OUTGOING`. The ME-36/ME-37/ME-38 PTSD expansions added sixteen published association-only relationships to the `ptsd` mapping, each with qualified-human-verified clinical sources. Sections below this block are retained batch histories and must not be interpreted as current aggregate totals.
 <!-- CURRENT-REPOSITORY-STATE-2026:END -->
