@@ -6,6 +6,12 @@ import {
   missingFileReferences,
   readRepoMarkdown,
 } from "./helpers/doc-lint";
+import {
+  REGION_END as SNAPSHOT_REGION_END,
+  REGION_START as SNAPSHOT_REGION_START,
+  loadSnapshotGenerators,
+  renderSnapshotTable,
+} from "../scripts/readme-snapshot-table";
 
 /**
  * README consistency contract.
@@ -91,5 +97,47 @@ describe("README consistency", () => {
       expect(readme).toContain(generator);
     }
     expect(readme).toMatch(/does not\s+hardcode snapshot counts/);
+  });
+
+  it("renders the snapshot-generator table from package.json metadata, not by hand", () => {
+    // The table rows are GENERATED from the snapshotGenerators metadata block
+    // in package.json (scripts/readme-snapshot-table.js). Re-rendering the
+    // table here and comparing against the README's marker-fenced region
+    // means neither side can drift: editing the table by hand, renaming a
+    // script without updating metadata, or dropping a generator all fail
+    // this test (and the verify-doc-lint gate) until regenerated.
+    const pkg = JSON.parse(readRepoMarkdown(root, "package.json")) as Parameters<
+      typeof loadSnapshotGenerators
+    >[0];
+    const expected = renderSnapshotTable(loadSnapshotGenerators(pkg));
+
+    const regionPattern = new RegExp(
+      `${SNAPSHOT_REGION_START.replace(/[/*]/g, "\\$&")}\\n([\\s\\S]*?)\\n\\s*${SNAPSHOT_REGION_END.replace(/[/*]/g, "\\$&")}`,
+    );
+    const match = readme.match(regionPattern);
+    expect(
+      match,
+      `README.md is missing the ${SNAPSHOT_REGION_START} / ${SNAPSHOT_REGION_END} generated region`,
+    ).not.toBeNull();
+    const current = match?.[1]?.trim() ?? "";
+    expect(
+      current,
+      "README snapshot-generator table is stale; regenerate with: npm run readme:snapshot",
+    ).toBe(expected);
+  });
+
+  it("rejects snapshot metadata that would reference scripts or unsafe table text", () => {
+    // Guards the generator itself: a metadata entry naming a nonexistent
+    // script (dead `npm run` in the README) or containing table-breaking
+    // characters must throw at generation time.
+    expect(() =>
+      loadSnapshotGenerators({ scripts: {}, snapshotGenerators: { "no:such": "Metric" } }),
+    ).toThrow(/does not correspond to a script/);
+    expect(() =>
+      loadSnapshotGenerators({
+        scripts: { "ok:script": "node x" },
+        snapshotGenerators: { "ok:script": "Metric | with pipes" },
+      }),
+    ).toThrow(/must not contain/);
   });
 });
