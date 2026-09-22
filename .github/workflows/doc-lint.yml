@@ -1,0 +1,88 @@
+name: Doc Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: doc-lint-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+# Documentation-drift gate, run independently of the main test suite.
+#
+# tests/doc-lint.test.ts (per-doc living-documentation policy: banned
+# volatile snapshot counts, historical-zone fencing, policy anchors),
+# tests/doc-example-schema.test.ts (fenced JSON examples must parse and
+# schema-bearing examples must validate against the real Zod schemas), and
+# tests/readme-consistency.test.ts (README file/script/volatile-count
+# contract) fail the build when a documentation edit lets the docs silently
+# drift from the repository they describe.
+#
+# `verify-doc-lint` is the branch-protection required check name: it is kept
+# as a gate aggregator so restructuring the underlying jobs cannot silently
+# weaken the gate. It fails closed — any failed or cancelled upstream fails
+# the check.
+jobs:
+  doc-lint:
+    name: Doc lint (references, counts, examples)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ARTIFACT_DIR: doc-lint-artifacts
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      # pipefail makes the step fail on the vitest exit code even though the
+      # output is piped through tee, so the log is persisted for upload while
+      # the job still fails correctly.
+      - name: Run doc-lint suites
+        run: |
+          set -o pipefail
+          mkdir -p "$ARTIFACT_DIR"
+          npm run test:doc-lint 2>&1 | tee "$ARTIFACT_DIR/vitest-output.log"
+      - name: Collect failure diagnostics
+        if: failure()
+        run: |
+          {
+            echo "Doc-lint suites failed. A documentation edit references a missing file or npm script, transcribes a volatile snapshot count, breaks a historical-zone fence, or ships an example the real Zod schemas reject."
+            echo "UTC time: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "node: $(node --version)  npm: $(npm --version)"
+            echo "sha: $GITHUB_SHA  ref: $GITHUB_REF  run: $GITHUB_RUN_ID attempt $GITHUB_RUN_ATTEMPT"
+          } > "$ARTIFACT_DIR/environment.txt"
+      - name: Upload doc-lint failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: doc-lint-failures-${{ github.run_id }}-${{ github.run_attempt }}
+          path: doc-lint-artifacts/
+          if-no-files-found: error
+          retention-days: 7
+
+  # Required-check gate. Runs even when upstream jobs are cancelled/skipped,
+  # and fails unless every one succeeded.
+  verify-doc-lint:
+    name: verify-doc-lint
+    needs:
+      - doc-lint
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require every doc-lint job to succeed
+        run: |
+          echo "Upstream results: ${{ toJSON(needs.*.result) }}"
+          if ! echo '${{ toJSON(needs) }}' | jq -e 'to_entries | all(.value.result == "success")' > /dev/null; then
+            echo "::error::One or more doc-lint jobs failed or were cancelled."
+            exit 1
+          fi
+          echo "All doc-lint validations passed."
