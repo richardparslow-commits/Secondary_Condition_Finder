@@ -24,9 +24,10 @@ import { setTimeout as delay } from "node:timers/promises";
  *     SharedArrayBuffer is constructible.
  *  3. In a same-origin classic dedicated worker — the exact construction
  *     tesseract.js uses via `workerPath: "/tesseract/worker.min.js"` —
- *     `self.crossOriginIsolated === true` and SharedArrayBuffer is available.
- *     The worker here is a minimal blob script with the same construction
- *     type and origin as the OCR worker; a dedicated worker inherits its
+ *     `self.crossOriginIsolated === true` and SharedArrayBuffer is
+ *     available. The probe lives at /tesseract/coi-probe.js (static,
+ *     same-origin) because the app's Trusted Types default policy refuses
+ *     blob:/data: script URLs by design; a dedicated worker inherits its
  *     creator's agent-cluster isolation, so this is the property the OCR
  *     pipeline depends on (no OCR inference is run and no model bytes are
  *     loaded).
@@ -224,12 +225,17 @@ async function assertDocumentIsolation(label) {
 /**
  * Assert Cross-Origin Isolation inside a dedicated worker.
  *
- * Mirrors the tesseract.js OCR worker construction: a classic dedicated
- * worker from the page's own origin (blob URL instead of
- * /tesseract/worker.min.js so no OCR core bytes are loaded). A dedicated
- * worker inherits its creator's agent-cluster isolation, so
- * `self.crossOriginIsolated === true` here is exactly the property the OCR
- * pipeline needs for its SharedArrayBuffer-based transfers.
+ * Uses the static same-origin probe worker at /tesseract/coi-probe.js —
+ * the same construction type, origin, and path prefix as the tesseract.js
+ * OCR worker (/tesseract/worker.min.js). A same-origin path is required by
+ * the app's Trusted Types default policy, which refuses blob:/data: script
+ * URLs by design (see src/components/security/TrustedTypesGate.tsx) — the
+ * same constraint tesseract.js itself satisfies. A dedicated worker
+ * inherits its creator's agent-cluster isolation, so
+ * `self.crossOriginIsolated === true` in the probe is exactly the property
+ * the OCR pipeline needs for its SharedArrayBuffer-based transfers. No OCR
+ * model bytes are loaded and no inference runs — the probe only reports
+ * isolation state.
  */
 async function assertWorkerIsolation(label) {
   const reportJson = await webdriver("POST", `/session/${sessionId}/execute/async`, {
@@ -238,10 +244,7 @@ async function assertWorkerIsolation(label) {
       const finish = (value) => done(JSON.stringify(value));
       const timeout = setTimeout(() => finish({ error: "worker report timed out" }), 5_000);
       try {
-        const bootstrap =
-          "self.onmessage = () => { postMessage({ " + "crossOriginIsolated: self.crossOriginIsolated === true, " +
-          "sharedArrayBuffer: typeof SharedArrayBuffer !== 'undefined' }); };";
-        const worker = new Worker(URL.createObjectURL(new Blob([bootstrap], { type: "application/javascript" })));
+        const worker = new Worker("/tesseract/coi-probe.js");
         worker.onmessage = (event) => {
           clearTimeout(timeout);
           worker.terminate();

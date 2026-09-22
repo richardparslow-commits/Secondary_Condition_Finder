@@ -87,6 +87,14 @@ describe("automation and CI hardening", () => {
     expect(coiJourney).toContain('coep !== "require-corp"');
     expect(coiJourney).toContain("self.crossOriginIsolated === true");
     expect(coiJourney).toContain("new Worker(");
+
+    // The worker probe must be the static same-origin file (the Trusted
+    // Types default policy refuses blob:/data: script URLs), mirroring the
+    // tesseract.js OCR worker construction.
+    expect(coiJourney).toContain('new Worker("/tesseract/coi-probe.js")');
+    const coiProbe = read("public/tesseract/coi-probe.js");
+    expect(coiProbe).toContain("self.crossOriginIsolated === true");
+    expect(coiProbe).toContain("postMessage");
   });
 
   it("bounds Chrome session startup retries without retrying browser journey failures", () => {
