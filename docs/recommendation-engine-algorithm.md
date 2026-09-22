@@ -15,10 +15,12 @@ A test (`tests/non-service-connected-focus.test.ts`) enforces the diagnosed-set 
 
 ## Inputs
 
+Live counts for these sources (catalog size, mapping-file totals, publication split) are **generated, not transcribed**: run `npm run kb:validate` and `npm run authoring:tracker`. This document records the contract-stable algorithm, not current-state totals.
+
 | Input | Source | Role |
 |---|---|---|
-| `catalog` | `data/conditions/*.json` (813 conditions) | Display names, body system, identity |
-| `kb` | `data/knowledge-base/*.json` (813 mappings) | Authored `suggestions[]` per primary; only `published` mappings contribute |
+| `catalog` | `data/conditions/*.json` | Display names, body system, identity |
+| `kb` | `data/knowledge-base/*.json` | Authored `suggestions[]` per primary; only `published` mappings contribute |
 | `intake.primaryConditions` | Workflow step 2 — service-connected primaries | Primaries to evaluate |
 | `intake.diagnosedConditionIds` | Workflow step 1 — diagnosed set | **Output boundary** — recommendations are filtered to this set |
 | `intake.medications/treatments/history` | Workflow step 4 — bounded context | **Display-only** literal overlap cues (see below) |
@@ -190,5 +192,5 @@ recommend(catalog, kb, intake):
 ## 9. Related surfaces
 
 - `src/lib/secondary-workflow/suggestions.ts` — builds `NonServiceConnectedConditionResult[]` from `recommend()` output for Step 5/Step 6.
-- `src/lib/secondary-workflow/export.ts` — browser-generated consultation summary (Step 6) — excludes raw evidence and intake context by default.
+- `src/lib/engine/export.ts` — browser-generated consultation summary (Step 6) — excludes raw evidence and intake context by default.
 - `tests/step5-pathway-intelligence.test.ts`, `tests/non-service-connected-focus.test.ts` — boundary tests.

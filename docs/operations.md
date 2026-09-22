@@ -144,7 +144,11 @@ Returns component-level status for:
       "status": "ok",
       "latencyMs": 0,
       "detail": "va-forms:closed benefits-reference-data:closed accredited-representatives:closed",
-      "snapshot": { ... }
+      "snapshot": {
+        "va-forms": { "state": "closed", "failures": 0, "lastFailureAt": null },
+        "benefits-reference-data": { "state": "closed", "failures": 0, "lastFailureAt": null },
+        "accredited-representatives": { "state": "closed", "failures": 0, "lastFailureAt": null }
+      }
     },
     "vaReferenceCache": { "hits": 42, "misses": 8, "hitRate": 84 }
   },

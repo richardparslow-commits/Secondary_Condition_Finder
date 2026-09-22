@@ -76,6 +76,8 @@
 
 <!-- HISTORICAL-BATCH-SNAPSHOTS-2026:END -->
 
+<!-- HISTORICAL-BATCH-31-SNAPSHOT:START -->
+
 # Historical Batch 31 coverage tracker
 
 > This former current-state tracker is retained as a historical Batch 31 snapshot. Consult the authoritative repository state at the top of this file for current totals.
@@ -186,3 +188,5 @@ M1 publishes:
 
 The 5 live unverified published references are PMID 38568491, PMID 11231832, PMID 17679635, PMID 25630206, and PMID 20189345. No M1 source is auto-verified.
 <!-- clinical-mapping-m1-current:end -->
+
+<!-- HISTORICAL-BATCH-31-SNAPSHOT:END -->

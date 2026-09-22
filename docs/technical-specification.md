@@ -346,11 +346,11 @@ Counts and identities are contract-enforced: `npm run kb:validate` + `tests/…c
 
 ### CI/CD Pipeline (.github/workflows/ — triggers: push to `main`, PRs, `workflow_dispatch`, scheduled jobs)
 
-- **Build:** `npm ci` + `npm run build` (`next build`, tolerates audit `moderate` only; `high|critical` fails) on `e2e/verify.yml` (Node 22), `regulatory-intelligence.yml` (`regulatory:audit`), `verify-regulatory-intelligence.yml`
+- **Build:** `npm ci` + `npm run build` (`next build`, tolerates audit `moderate` only; `high|critical` fails) on `.github/workflows/ci.yml` (Node 22), `regulatory-intelligence.yml` (`regulatory:audit`), `verify-regulatory-intelligence.yml`
 - **Validation gates (all required for merge, `verify` workflow):**
   - `npm run typecheck` (`tsc --noEmit`, strict)
   - `npm run lint` (`eslint 9.x`, `eslint-config-next`)
-  - `npm test` (`vitest run`, 195/195 files · 1029 tests, fail on any failure)
+  - `npm test` (`vitest run`, whatever the suite reports at execution time — the count changes with every contribution, so this document does not transcribe it; fail on any failure)
   - `npm run kb:validate` (`scripts/validate-knowledge-base.js` — KB structural + referential integrity)
   - `npm run citations:audit` (`scripts/audit-citation-verification.js` — citation provenance + verification-debt ratchet)
   - `npm run audit:me-compliance` (`scripts/audit-me-compliance.js` — audits every mapping incl. ME-1..ME-39 for CRG/nexus-arm/consensus/guard-honesty/citation/quarantine)
@@ -444,8 +444,8 @@ POST /scenarios                  → launchDemoScenario(FormData)              �
 - **Validation & a11y contracts:** `select-diagnosed` / `answer-service-connected` / `no-service-connected` / `select-rating` / `invalid-rating` / `select-documents` / `invalid-context` → `?error={code}` → `role=alert` + `aria-describedby` + `aria-live` polite; `tests/workflow-validation-accessibility.test.ts` asserts `aria-*` on SC/ratings pages
 - **Document & OCR paths:** `extractLocalEvidenceDocument` dispatcher, DOCX ZIP preflight rejection, `LocalEvidenceAnalyzer` `Local OCR` (`createWorker` WASM, per-page render+recognize, `ocrProgress` signal), `useSyncExternalStore` hydration of `sessionStorage` excerpts on Step 6
 - **Scenarios:** `tests/demo-scenarios.test.ts` launches each `data/demo-scenarios.json` via `launchDemoScenario` and asserts deterministic `recommend()` output under current `parseWorkflowState` contract; prior `sessionStorage` evidence isolation verified
-- **Error boundaries & session expiry:** `tests/error-boundaries.test.ts` injects throw in each `error.tsx` shell and asserts recovery buttons `Try again/Go home`; expired `secondary-workflow-v2` token (`expiresAt` in past) → fail-closed empty state → `Complete prior steps first` guard with restart link
-- **Privacy limits:** `tests/ingestion-privacy.test.ts` + `tests/privacy-limits-contract.test.ts` assert evidence limits strings on `/privacy` match `src/lib/evidence/limits.ts` verbatim and that raw evidence never enters server logs/cookies
+- **Error boundaries & session expiry:** the `error.tsx` shells under `src/app/` (including `src/app/secondary/error.tsx` and `src/app/presumptive/error.tsx`) render recovery buttons `Try again/Go home`; expired `secondary-workflow-v2` token (`expiresAt` in past) → fail-closed empty state → `Complete prior steps first` guard with restart link
+- **Privacy limits:** `tests/ingestion-privacy.test.ts` + `tests/evidence-storage-drop-notice.test.ts` assert evidence limits strings on `/privacy` match `src/lib/evidence/limits.ts` verbatim and that raw evidence never enters server logs/cookies
 
 ### Security Tests
 

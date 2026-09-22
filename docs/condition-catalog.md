@@ -20,10 +20,10 @@ Catalog files are grouped by body system. Expansion work may use reviewed batch 
 {
   "id": "sleep-apnea",
   "name": "Sleep Apnea (Obstructive, Central, Mixed)",
-  "aliases": ["obstructive", "central", "mixed"],
+  "aliases": ["central sleep apnea", "mixed sleep apnea", "obstructive sleep apnea", "osa", "sleep apnea"],
   "bodySystem": "Respiratory System",
   "ratingSchedule": [
-    { "citation": "38 CFR 4.97", "note": "...", "verified": false }
+    { "citation": "38 CFR 4.97", "note": "Schedule of ratings, respiratory system.", "verified": false }
   ],
   "reviewNotes": []
 }
