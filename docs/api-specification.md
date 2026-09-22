@@ -245,7 +245,7 @@ Loads a pre-built demo scenario and populates the secondary workflow session.
 | `scenarioId` | `string` | Yes | Scenario ID (1-80 chars, lowercase alphanumeric + hyphens). |
 
 **Success**: Redirects to `/secondary/suggestions`.
-**Validation errors**: Invalid or unknown scenario ID → redirect to `/scenarios`.
+**Validation errors**: Invalid or unknown scenario ID → redirect to `/scenarios`. Scenario state that fails parsing or session-write validation → redirect to `/scenarios?error=invalid_state` (never an unhandled server error).
 
 ---
 
