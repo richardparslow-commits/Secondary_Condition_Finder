@@ -14,17 +14,9 @@ The generated report is authoritative for the exact current human-review row set
 
 ## Authoritative current citation state
 
-The authoritative current state is the ME-35/all-94 citation-verified registry:
+The authoritative current citation state is **generated, not transcribed**: run `npm run citations:audit` for live reference counts and verification state, and `npm run citations:queue` for the exact machine-generated human-review row set. At the ME-35/all-94 registry snapshot this state was 355 live references, all verified; subsequent ME-36–ME-39 citations were qualified-human verified at authoring time (see `docs/master-registry-2026.md`).
 
-- **355** live references: **355 verified / 0 unverified**.
-- **350** live clinical-evidence references, all with canonical URLs.
-- **5** live legal-framework references.
-- **361** verified provenance uses, including **6** retired verified uses.
-- **329** active source entities (**328 clinical + 1 legal authority**).
-- **0** pending-verification source entities.
-- **0** published-unverified review findings and **0** hard findings.
-
-The all-94 approval was applied on 2026-09-04 as a citation-state transition only. It did not publish draft mappings or establish an individual medical nexus. The batch snapshots below are retained for audit history and are not the current queue; run `npm run citations:queue` for the machine-generated review rows.
+The all-94 approval was applied on 2026-09-04 as a citation-state transition only. It did not publish draft mappings or establish an individual medical nexus. The batch snapshots below are retained for audit history and are not the current queue.
 
 ## Historical citation-verification baseline
 

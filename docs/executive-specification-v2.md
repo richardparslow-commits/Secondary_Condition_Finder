@@ -108,9 +108,9 @@ not probabilistic**: a qualifying match is presumed; no clinical judgment is app
 ### R4: Knowledge-Base Curation and Citation Verification
 
 - **Data:** 813-condition catalog; **813 KB mapping files** — one per catalog id —
-  carrying **363 authored relationships**, of which **140 mapping files are published and
-  673 are draft** (counts are by *mapping file*, not relationship); 379 live source
-  references, all verified.
+  validated as 813/813 by `npm run kb:validate`. Publication split, relationship counts,
+  and reference counts are generated, not documented: `npm run authoring:tracker` (publication
+  split), `npm run citations:audit` (reference counts and verification state).
 - **Architecture:** conditions in `data/conditions/*.json` (33 body-system files);
   relationships as CRG edges in `data/knowledge-base/<primary-id>.json`, each carrying the
   CRG trio (nexus claim, causal mechanism, evidentiary profile); master registries in
@@ -166,7 +166,7 @@ not probabilistic**: a qualifying match is presumed; no clinical judgment is app
 - **NFR4 Availability & Deployment:** Vercel primary; Azure Static Web Apps legacy
   fallback (manual); every PR passes `kb:validate`, `audit:me-compliance`,
   `citations:audit`, `test:composition`, lint, typecheck, and the Vitest suite
-  (206 files / 1110 tests as of this revision); direct pushes to `main` are blocked by
+  (full Vitest suite, fail-on-any); direct pushes to `main` are blocked by
   repository rules — squash-merge via PR only; production readiness confirmed
   post-deploy via `/runtime-readiness`.
 
@@ -194,9 +194,11 @@ already address and what remains.
 
 ## Data Requirements
 
-- **Condition** (813): stable slug id, display name, aliases, body system, VA rating
+- **Condition** (813 per the versioned 2026-09 milestone; live count via `npm run
+  kb:validate`): stable slug id, display name, aliases, body system, VA rating
   schedule references, review notes. Schema: `src/lib/catalog/schema.ts` (Zod).
-- **Secondary relationship (CRG edge)** (363 authored): primary/secondary condition ids,
+- **Secondary relationship (CRG edge)** (authored count reported by `npm run
+  authoring:tracker` / `kb:validate`): primary/secondary condition ids,
   rank, rationale, causal mechanism category, nexus claim (`DIRECT_CAUSATION` |
   `AGGRAVATION` | `ASSOCIATION_ONLY`), evidentiary profile (e.g.,
   `WELL_ESTABLISHED`/`PROBABLE`/`NOT_ESTABLISHED` consensus), evidence gaps, source
@@ -204,7 +206,7 @@ already address and what remains.
   referential integrity).
 - **Presumptive exposure category** (~5–10 active): category id, display name, qualifying
   location/date windows, presumed condition ids. Schema: `src/lib/presumptive/schema.ts`.
-- **Source reference** (379 live, all verified): citation, URL, verification scope,
+- **Source reference** (live count and verification state via `npm run citations:audit`): citation, URL, verification scope,
   verified flag (qualified-human governance decision per
   `docs/citation-verification-sop.md`), source-checked date, locator (PMID/DOI/page),
   decay status. Lineage tracked in `data/evidence/master-sources.json`.

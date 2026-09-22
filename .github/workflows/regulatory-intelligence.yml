@@ -13,8 +13,19 @@ concurrency:
   group: regulatory-intelligence-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+# The four npm validation scripts are IO/CPU-independent of each other, so they
+# run as parallel jobs instead of sequential steps — total pipeline time drops
+# from the sum of all steps to the slowest single job. Every job repeats the
+# pinned checkout + setup-node (npm cache) + `npm ci` sequence so each is
+# self-sufficient and starts from the exact dependency set CI expects.
+#
+# `verify-regulatory-intelligence` is the branch-protection required check name:
+# it is preserved as a gate aggregator so renaming/parallelizing the underlying
+# jobs cannot silently weaken the merge gate. It fails closed — any failed or
+# cancelled upstream fails the check.
 jobs:
-  verify-regulatory-intelligence:
+  validate-knowledge-base:
+    name: Validate knowledge base
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -27,11 +38,112 @@ jobs:
         run: npm ci
       - name: Validate knowledge base
         run: npm run kb:validate
+
+  audit-evidence-architecture:
+    name: Audit evidence architecture
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
       - name: Audit evidence architecture
         run: npm run evidence:architecture
+
+  validate-regulatory-registry:
+    name: Validate regulatory action registry
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
       - name: Validate regulatory action registry
         run: npm run regulatory:validate
+
+  audit-regulatory-intelligence:
+    name: Audit regulatory intelligence
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
       - name: Audit regulatory intelligence
         run: npm run regulatory:audit
+
+  regulatory-contract-tests:
+    name: Regulatory contract tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ARTIFACT_DIR: regulatory-test-artifacts
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      # pipefail makes the step fail on the vitest exit code even though the
+      # output is piped through tee, so the log is persisted for upload while
+      # the job still fails correctly.
       - name: Run regulatory contract tests
-        run: npx vitest run tests/evidence-architecture.test.ts tests/regulatory-intelligence.test.ts tests/regulatory-preflight.test.ts
+        run: |
+          set -o pipefail
+          mkdir -p "$ARTIFACT_DIR"
+          npx vitest run tests/evidence-architecture.test.ts tests/regulatory-intelligence.test.ts tests/regulatory-preflight.test.ts 2>&1 | tee "$ARTIFACT_DIR/vitest-output.log"
+      - name: Collect failure diagnostics
+        if: failure()
+        run: |
+          {
+            echo "Regulatory contract tests failed."
+            echo "UTC time: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "node: $(node --version)  npm: $(npm --version)"
+            echo "sha: $GITHUB_SHA  ref: $GITHUB_REF  run: $GITHUB_RUN_ID attempt $GITHUB_RUN_ATTEMPT"
+          } > "$ARTIFACT_DIR/environment.txt"
+      - name: Upload test failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: regulatory-test-failures-${{ github.run_id }}-${{ github.run_attempt }}
+          path: regulatory-test-artifacts/
+          if-no-files-found: error
+          retention-days: 7
+
+  # Required-check gate. Kept the historical job name so branch protection
+  # keeps pointing at this workflow without admin changes. Runs even when
+  # upstream jobs are cancelled/skipped, and fails unless every one succeeded.
+  verify-regulatory-intelligence:
+    name: verify-regulatory-intelligence
+    needs:
+      - validate-knowledge-base
+      - audit-evidence-architecture
+      - validate-regulatory-registry
+      - audit-regulatory-intelligence
+      - regulatory-contract-tests
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require every validation job to succeed
+        run: |
+          echo "Upstream results: ${{ toJSON(needs.*.result) }}"
+          if ! echo '${{ toJSON(needs) }}' | jq -e 'to_entries | all(.value.result == "success")' > /dev/null; then
+            echo "::error::One or more regulatory-intelligence validation jobs failed or were cancelled."
+            exit 1
+          fi
+          echo "All regulatory-intelligence validations passed."

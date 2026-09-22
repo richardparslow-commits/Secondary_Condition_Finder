@@ -6,16 +6,13 @@ The authoritative registry is rebaselined at commit `ea005e50` (ME-35 lineage): 
 
 ## Current state
 
-The authoritative current state is the ME-39 citation-verified registry:
+Current-state numbers are **generated, not transcribed**. The ME-39 citation-verified registry is the authoritative record; confirm registry/data parity at any time with:
 
-- 363 relationships across 813 mapping files: 140 published / 673 draft.
-- 289 explicit publication guards / 74 legacy rationale boundaries.
-- 379 live relationship-source uses: **379 verified / 0 pending verification**.
-- 346 active source entities: **345 clinical + 1 legal authority**.
-- 0 pending-verification clinical source entities.
-- 7 superseded-unverified, 1 correction-only, and 1 retired-only source entity.
-- 355 total source entities including lineage/history.
-- 6 retired-verified relationship-source uses preserved.
+- `node scripts/audit-master-registry.js` — registry/data parity and registry state.
+- `npm run authoring:tracker` — live publication split (into `draft-backlog-tracker.csv`).
+- `npm run citations:audit` — live relationship-source uses, verification state, and review findings.
+
+Do not copy those counts into this document; the numbered ME-6 through ME-39 sections below retain their immutable historical implementation snapshots.
 
 ME-36, ME-37, and ME-38 (all 2026-09-06) expanded the published `ptsd` mapping with sixteen bounded, `ASSOCIATION_ONLY`, `NOT_ESTABLISHED` relationships. ME-39 (2026-09-06) published `rem-sleep-disorder → parkinsons-disease` as the first published outgoing relationship from `rem-sleep-disorder` — an ASSOCIATION_ONLY prodromal temporal-risk marker (ME-14, Postuma 2020, PMID 20083800) guarded as prediction/prodrome, not causation. ME-39 also added the `governanceNotes` schema field for published-mapping governance records and updated the `rem-sleep-disorder` disposition from `FINAL-CLOSE-DIRECTION` to `PUBLISHED-PRODROMAL-OUTGOING`. The numbered ME-6 through ME-35 sections below are immutable historical implementation and verification snapshots; their intermediate counts are not current totals.
 

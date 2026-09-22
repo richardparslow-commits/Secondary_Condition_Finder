@@ -35,7 +35,7 @@ Core layers:
 | Styling | Tailwind CSS ^4 | Utility-first CSS; postcss plugin |
 | State Management | Server Actions (POST) + HttpOnly encrypted cookies | No client-side global state; workflow state AES-256-GCM encrypted in cookies |
 | Schema & Validation | Zod ^4.5 | Runtime validation of JSON data and form inputs; strict unknown-key rejection |
-| Testing | Vitest ^4.1 (206 files / 1110 tests) + Chrome/ChromeDriver E2E | Fast ESM-native regression suite; real-browser journey gates in CI |
+| Testing | Vitest ^4.1 + Chrome/ChromeDriver E2E | Fast ESM-native regression suite; real-browser journey gates in CI. Suite size is whatever `vitest run` reports — not pinned here |
 | Document Processing | pdfjs-dist 6.3, Tesseract.js ^6.0 (WASM OCR), Mammoth 1.12 | Browser-local PDF/DOCX extraction; OCR without server transmission |
 | Cryptography | Node.js crypto (AES-256-GCM) | Encrypted/authenticated workflow cookies; no external crypto libraries |
 | Observability | @vercel/otel 2.1, @opentelemetry/api 1.9 | Server-side instrumentation only |
@@ -93,16 +93,18 @@ page between service-connected and ratings) and **no** `saveDocumentsShared` (th
 ### C4: Condition Catalog (`src/lib/catalog/`)
 
 - Data: `data/conditions/` — **33 JSON files** (base body-system files + numbered expansion-wave
-  files) covering **14 distinct body-system categories**, **813 conditions** total.
+  files) covering **14 distinct body-system categories**, **813 conditions** total (live count
+  and 813/813 KB-coverage integrity: `npm run kb:validate`).
 - Modules: `schema.ts` (strict Zod), `load.ts` (synchronous load + cache), `lookup.ts`
   (id/name/alias search, body-system filtering), `exposure-tags.ts`.
 - Validation: `npm run kb:validate` enforces schema and referential integrity on every PR.
 
 ### C5: Knowledge Base / CRG (`src/lib/kb/`)
 
-- Data: `data/knowledge-base/` — **813 mapping files** (one per condition id), of which **140 are
-  published** and **673 draft**; the published set carries **363 authored causal relationships**
-  (units matter: files are counted by publication state, relationships by authored edges).
+- Data: `data/knowledge-base/` — one mapping file per condition id. Publication split and
+  relationship counts are generated, not documented: `npm run authoring:tracker` (publication
+  split into `draft-backlog-tracker.csv`) and `npm run citations:audit` (reference counts and
+  verification state).
 - Each mapping is a set of CRG edges carrying the trio: `nexusClaim` (discriminated union:
   `DIRECT_CAUSATION` requires `etiologicalTrigger ≥ 50`; `AGGRAVATION` requires
   `baselineProgression ≥ 50` + `aggravatingFactor ≥ 50`; `ASSOCIATION_ONLY` requires
@@ -184,9 +186,11 @@ page between service-connected and ratings) and **no** `saveDocumentsShared` (th
 
 ## Data Architecture
 
-- `data/conditions/` — 33 files, 14 body-system categories, 813 conditions.
-- `data/knowledge-base/` — 813 mapping files (140 published / 673 draft), 363 authored
-  relationships; the 813/813 catalog-to-KB coverage invariant is validated in CI.
+- `data/conditions/` — 33 files, 14 body-system categories, 813 conditions (versioned
+  2026-09 milestone; live integrity check: `npm run kb:validate`).
+- `data/knowledge-base/` — one mapping file per catalog condition; the 813/813 catalog-to-KB
+  coverage invariant is validated in CI, and `npm run authoring:tracker` reports the live
+  publication split.
 - `data/presumptives/` — exposure categories and qualifying windows.
 - `data/evidence/` — `master-sources.json`, `master-relationships.json`, `regulatory-actions/`.
 - `data/demo-scenarios.json` — E2E/demo fixtures.
@@ -246,8 +250,8 @@ reviewed PR + full CI gate; good-faith safe-harbor for researchers.
   (`AZURE_STATIC_WEB_APPS_BUILD=1` switches output mode at build time).
 - **CI (`.github/workflows/ci.yml`)** — every PR runs, in order: governance verification
   (main-commit-provenance + active main rules), `audit:high`, `citations:audit`, `kb:validate`,
-  `audit:me-compliance`, `lint`, `typecheck`, `test:composition`, the Vitest suite
-  (206 files / 1110 tests, fail-on-any), `next build`, and **real-browser E2E**
+  `audit:me-compliance`, `lint`, `typecheck`, `test:composition`,  the Vitest suite
+  (fail-on-any, full suite), `next build`, and **real-browser E2E**
   (`e2e/secondary-workflow.mjs` + `e2e/validation-errors.mjs` under Chrome/ChromeDriver), with
   diagnostic-log collection and an explicit fail-the-job aggregation step.
 - **Post-merge:** automatic Vercel deploy; `/runtime-readiness` confirms deployment identity;
@@ -267,7 +271,7 @@ reviewed PR + full CI gate; good-faith safe-harbor for researchers.
 
 - **T1 — Unit/integration (Vitest):** catalog, KB, engine, presumptive matcher, evidence
   parsers, session crypto, workflow state parsers, research-aid contracts, locator contracts —
-  206 files / 1110 tests, enforced fail-on-any per PR.
+  full suite, enforced fail-on-any per PR (live counts are whatever `vitest run` reports).
 - **T2 — Composition/architecture:** `npm run test:composition` — critical-module test imports,
   Server Action placement, client boundaries, secondary/presumptive track separation,
   no-evidence-extraction-in-Server-Actions rule.
