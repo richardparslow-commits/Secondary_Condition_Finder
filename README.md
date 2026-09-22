@@ -180,6 +180,7 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm test` | Vitest suite; CI runs it once and fails on any failure |
 | `npm run test:watch` | Vitest in watch mode |
 | `npm run test:composition` | Requires executable-test imports for 100% of the audited critical-module manifest; also enforces server-action placement, client-boundary, track-separation, and evidence-architecture guardrails |
+| `npm run test:doc-lint` | Documentation-drift gate: living-doc lint policy (banned snapshot counts, historical-zone fences, file/script references) and schema-validated JSON examples; CI runs it as the required `verify-doc-lint` check |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm run kb:validate` | Knowledge-base structural/integrity validation |
