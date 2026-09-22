@@ -14,21 +14,21 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
 
 ```json
 {
-  "status": "healthy" | "degraded",
+  "status": "healthy",
   "components": {
     "catalog": {
-      "status": "ok" | "error",
+      "status": "ok",
       "latencyMs": 12,
       "count": 302,
       "detail": "optional error message"
     },
     "sessionCrypto": {
-      "status": "ok" | "error",
+      "status": "ok",
       "latencyMs": 5,
       "detail": "optional error message"
     },
     "vaConfig": {
-      "status": "ok" | "error",
+      "status": "ok",
       "latencyMs": 1,
       "enabled": false,
       "environment": "sandbox",

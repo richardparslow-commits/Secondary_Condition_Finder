@@ -72,7 +72,7 @@ A parallel workflow for researching presumptive service-connection eligibility:
 ### 3. Knowledge Base & Condition Catalog
 
 - **Catalog:** 813 recognized medical conditions grouped by body system across 33 catalog files (`data/conditions/*.json`), display `name`, `aliases`, `bodySystem`, and VA rating-schedule citations where applicable (joint/nerve/spine/neoplasm/laryngeal/ocular/digestive/genitourinary/mental-disorder/hematologic/skin/infectious/oncological/dental-or residual framework with explicit review notes when a single diagnosis-specific DC does not exist)
-- **Knowledge Base:** 813 mapping files (`data/knowledge-base/*.json`, one per catalog id). Live counts are generated, not documented: `npm run kb:validate` (813/813 referential integrity), `npm run authoring:tracker` (live publication split, reported into `draft-backlog-tracker.csv`), and `npm run citations:audit` (live reference count and verification state). Historical promotions include the all-94 citation-verification approval, the ME-36/ME-37/ME-38 PTSD expansions, and ME-39 (`rem-sleep-disorder → parkinsons-disease`). Each published suggestion is authored with:
+- **Knowledge Base:** one mapping file per catalog condition under `data/knowledge-base/*.json`. Live counts are generated, not documented: `npm run kb:validate` reports the referential-integrity state (currently 813/813 — a versioned product target, not a medical claim), `npm run authoring:tracker` (live publication split, reported into `draft-backlog-tracker.csv`), and `npm run citations:audit` (live reference count and verification state). Historical promotions include the all-94 citation-verification approval, the ME-36/ME-37/ME-38 PTSD expansions, and ME-39 (`rem-sleep-disorder → parkinsons-disease`). Each published suggestion is authored with:
   - Causal Relational Graph (CRG) classification `nexusClassification`: `DIRECT_CAUSATION`, `AGGRAVATION`, or `ASSOCIATION_ONLY` (Zod discriminated union in `src/lib/kb/schema.ts`)
   - Causal mechanism (`causalMechanism`, 16-category controlled vocabulary — e.g., microvascular, neuroendocrine, inflammatory)
   - Etiological consensus tier (`etiologicalConsensus`: `WELL_ESTABLISHED` → `NOT_ESTABLISHED`, ordered via `CONSENSUS_ORDER`; guards enforce honesty vs. citation discipline)
@@ -113,7 +113,7 @@ The application processes user-uploaded documents entirely within the browser (v
 
 ### 7. Regulatory Intelligence & Monitoring
 
-- **Regulatory Preflight:** Monitors Federal Register, OIRA, and Regulations.gov for rulemaking activity that could affect the knowledge base or catalog citations (`src/lib/regulatory/preflight.ts` — per-source 8000 ms timeout, request-count limits, `REGULATORY_PREFLIGHT_*` env)
+- **Regulatory Preflight:** Monitors Federal Register, OIRA, and Regulations.gov for rulemaking activity that could affect the knowledge base or catalog citations (`src/lib/regulatory/preflight/` — per-source 8000 ms timeout, request-count limits, `REGULATORY_PREFLIGHT_*` env)
 - **Snapshot locking:** `prepareRegulatoryReview()` establishes a `RegulatorySnapshot` (with `snapshotId`) before recommendation output. Step 5 locks that id in the `regSnapshot` query param and Step 6 reuses the locked snapshot via `loadLockedRegulatorySnapshot()`; a missing lock `fail-closed`s to `missingLockedRegulatorySnapshot()` rather than substituting a newer legal basis mid-review. Displayed via `RegulatoryPreflightStatus`
 - **Scheduled Refresh Endpoint:** Bearer-protected `/api/regulatory/preflight` (`REGULATORY_SYNC_SECRET` or `CRON_SECRET`) for scheduled regulatory data refresh
 - **Provenanced Seed Records:** `data/regulatory-actions/` holds seed regulatory action records with traceable lineage (validated by `audit:regulatory-intelligence`)
@@ -193,7 +193,7 @@ Informational projections of authored KB/catalog data via `recommend()` — no n
 - All mappings and citations must satisfy strict Zod schemas enforced at parse time
 - Citation verification is a qualified-human decision; automated tools may record verification metadata but cannot authorize `verified: true`
 - Knowledge base authoring follows established SOPs for citation verification, evidence grading, and draft/published status management
-- Regulatory intelligence integrates with Federal Register and OIRA monitoring per `docs/regulatory-intelligence-v3.md` and snapshot-locking per `src/lib/regulatory/preflight.ts`
+- Regulatory intelligence integrates with Federal Register and OIRA monitoring per `docs/regulatory-intelligence-v3.md` and snapshot-locking per `src/lib/regulatory/preflight/`
 
 ## Core User Workflows
 

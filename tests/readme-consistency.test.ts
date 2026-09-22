@@ -1,6 +1,11 @@
-import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+
+import {
+  collectNpmScripts,
+  collectVolatileCounts,
+  missingFileReferences,
+  readRepoMarkdown,
+} from "./helpers/doc-lint";
 
 /**
  * README consistency contract.
@@ -31,85 +36,21 @@ import { describe, expect, it } from "vitest";
  */
 
 const root = process.cwd();
-const readme = readFileSync(join(root, "README.md"), "utf8");
-const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8")) as {
+const readme = readRepoMarkdown(root, "README.md");
+const pkg = JSON.parse(readRepoMarkdown(root, "package.json")) as {
   scripts?: Record<string, string>;
 };
 
-/**
- * Extract candidate file references from markdown links/images and inline code.
- *
- * The README writes many non-path phrases in backticks (clinical shorthand
- * like `2/2`, medical terms like `HIV/AIDS`, packages like `@vercel/otel`,
- * concepts like `published/draft`), so a bare "looks like a path" regex would
- * drown in false positives. Two precise sources instead:
- *
- * 1. Markdown link/image targets (`[text](path)`) — checked as-is.
- * 2. Inline-code spans that are either a known slash-less root file
- *    (package.json, SECURITY.md, ...) or begin with a real repository root
- *    directory (data/, src/, docs/, tests/, e2e/, scripts/, public/, .github/).
- *    Anything else in backticks is prose, a route, a command, or a term and is
- *    not an on-disk path claim.
+/*
+ * Reference, script, and volatile-count extraction lives in the shared
+ * doc-lint harness (./helpers/doc-lint) so the per-doc living-documentation
+ * policy in tests/doc-lint.test.ts enforces the identical rules. The harness
+ * doc-comments document the false-positive rationale in full.
  */
-const repoRoots = [
-  "data/",
-  "src/",
-  "docs/",
-  "tests/",
-  "e2e/",
-  "scripts/",
-  "public/",
-  ".github/",
-];
-const rootFiles = new Set([
-  "package.json",
-  "package-lock.json",
-  "SECURITY.md",
-  "README.md",
-  ".env.example",
-  ".env.template",
-]);
-
-function readmeFileReferences(): string[] {
-  const linkTargets = [...readme.matchAll(/\[[^\]]*\]\(([^)\s]+)\)/g)].map(
-    (match) => match[1],
-  );
-
-  const codePaths: string[] = [];
-  // Single-line spans only: a stray unpaired backtick in one prose line must
-  // not invert span pairing for the entire rest of the document.
-  for (const span of [...readme.matchAll(/`([^`\n]+)`/g)].map((m) => m[1])) {
-    if (rootFiles.has(span)) {
-      codePaths.push(span);
-      continue;
-    }
-    if (repoRoots.some((rootDir) => span.startsWith(rootDir))) {
-      codePaths.push(span);
-    }
-  }
-  return [...linkTargets, ...codePaths];
-}
-
-/** References that are not on-disk paths and must never be existence-checked. */
-function isNotARepoPath(reference: string): boolean {
-  return (
-    reference.startsWith("http://") ||
-    reference.startsWith("https://") ||
-    reference.startsWith("#") || // markdown anchors
-    reference.startsWith("localhost") ||
-    reference.includes("<") || // doc templates like data/knowledge-base/<id>.json
-    reference.includes(">")
-  );
-}
 
 describe("README consistency", () => {
   it("references only files that exist in the repository", () => {
-    const candidates = readmeFileReferences().filter(
-      (reference) => !isNotARepoPath(reference),
-    );
-    const missing = [...new Set(candidates)].filter(
-      (reference) => !existsSync(join(root, reference)),
-    );
+    const missing = missingFileReferences(readme, root);
 
     expect(
       missing,
@@ -118,9 +59,7 @@ describe("README consistency", () => {
   });
 
   it("references only npm scripts that exist in package.json", () => {
-    const referenced = [
-      ...readme.matchAll(/\bnpm run\s+([a-z0-9][a-z0-9:-]*)/g),
-    ].map((match) => match[1]);
+    const referenced = collectNpmScripts(readme);
     const scripts = pkg.scripts ?? {};
     const missing = [...new Set(referenced)].filter(
       (name) => !(name in scripts),
@@ -133,46 +72,10 @@ describe("README consistency", () => {
   });
 
   it("does not hardcode volatile snapshot counts", () => {
-    // Each pattern matches a class of current-state snapshot number that the
-    // README policy requires to be generated (see the snapshot-generator
-    // table) rather than transcribed. The (?<![\w-]) guard keeps counts glued
-    // to identifiers (e.g. the "33" in "ME-33 relationship") from matching.
-    // Extend this list when a new volatile metric class appears; do not loosen
-    // it to make a regression pass.
-    const bannedPatterns: Array<{ name: string; pattern: RegExp }> = [
-      {
-        name: "published/draft split",
-        pattern:
-          /(?<![\w-])\d[\d,]*\s+published\b|(?<![\w-])\d[\d,]*\s+draft\b|(?<![\w-])\d[\d,]*\s+published\s*\/\s*\d[\d,]*\s+draft\b/,
-      },
-      {
-        name: "relationship totals",
-        pattern: /(?<![\w-])\d[\d,]*\+?\s+(?:authored\s+)?relationships?\b/,
-      },
-      {
-        name: "mapping-file totals",
-        pattern: /(?<![\w-])\d[\d,]*\s+mappings?\b/,
-      },
-      {
-        name: "reference/verification totals",
-        pattern:
-          /(?<![\w-])\d[\d,]*\s+(?:live\s+)?(?:relationship-source\s+)?(?:source\s+)?(?:references|refs|verified|unverified)\b/,
-      },
-      {
-        name: "test-suite totals",
-        pattern:
-          /(?<![\w-])\d[\d,]*\s+(?:tests|test files)\b|(?<![\w-])\d[\d,]*\s+files\s*\/\s*\d[\d,]*\s+tests\b/,
-      },
-    ];
-
-    const hits = bannedPatterns.flatMap(({ name, pattern }) =>
-      [...readme.matchAll(new RegExp(pattern.source, "gi"))].map(
-        (match) => `${name}: "${match[0]}"`,
-      ),
-    );
+    const hits = collectVolatileCounts(readme);
 
     expect(
-      hits,
+      hits.map(({ patternName, match }) => `${patternName}: "${match}"`),
       "README must not hardcode volatile snapshot counts; point at the generator CLI instead",
     ).toEqual([]);
   });

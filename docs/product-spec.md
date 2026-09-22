@@ -157,7 +157,7 @@ When the rating schedule does not provide a single diagnosis-specific diagnostic
 
 Clinical source provenance is separate from citation verification status. An automated or agent-authored change may record a canonical source URL, `sourceCheckedOn`, `sourceLocator`, and `verificationScope`, but must keep `verified: false` until qualified-human verification is completed under `docs/citation-verification-sop.md`.
 
-After Batch 11, the automated citation-debt ceilings tighten to **130 total references, 14 verified, 116 unverified, and 114 published-unverified review findings**, while the clinical-evidence-with-canonical-URL floor rises to **49**. Tightening that floor does not constitute qualified-human source verification.
+After Batch 11, the automated citation-debt ceilings tighten (the clinical-evidence-with-canonical-URL floor rises at the same time). The audit reports and enforces the current ceilings itself — run `npm run citations:audit`; these values are deliberately not copied into this document.
 
 JSON in git rather than an opaque production database keeps mapping, pathway intelligence, and citation changes reviewable as pull request diffs.
 
