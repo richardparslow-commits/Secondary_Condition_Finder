@@ -79,12 +79,19 @@ describe("demo scenarios", () => {
     expect(form).not.toContain("fetch(");
     expect(form).not.toContain("sendBeacon");
 
-    expect(action).toContain('scenarioIdSchema.safeParse(formData.get("scenarioId"))');
+    expect(action).toContain('const scenarioId = typeof scenarioIdRaw === "string" ? scenarioIdRaw : null;');
+    expect(action).toContain("scenarioIdSchema.safeParse(scenarioId)");
     expect(action).toContain('if (!parsedScenarioId.success) redirect("/scenarios")');
     expect(action).toContain('if (!scenario) redirect("/scenarios")');
+    // Runtime validation of the build-time-imported scenario JSON.
+    expect(action).toContain("workflow: scenarioWorkflowSchema");
+    // Guarded parse/write region with redirect-safe error handling.
+    expect(action).toContain("if (isRedirectError(error)) throw error;");
+    expect(action).toContain('redirect("/scenarios?error=invalid_state")');
     expect(action).toContain("parseStoredSecondaryWorkflowState(scenario.workflow)");
     expect(action).toContain("parseWorkflowState(workflowSessionToQueryParams(workflow), catalog)");
     expect(action).toContain("await writeSecondaryWorkflowSession(workflow)");
+    // Success redirect sits after and outside the guarded region.
     expect(action).toContain('redirect("/secondary/suggestions")');
     expect(action).not.toContain("throw new Error");
     expect(action).not.toContain("console.");
