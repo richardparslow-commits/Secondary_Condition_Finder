@@ -2,8 +2,67 @@
   "id": "enophthalmos",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 28 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The diplopia target is a closed symptom-identity under the batch-23 disposition: this edge is a different-nexus authoring by a condition identity (enophthalmos), not a reopening of the deferred diplopia outgoing edges."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 28 (2026-09-23): one bounded diplopia association authored from orbital-floor-fracture cohorts quantifying diplopia by enophthalmos status (56.3% versus 8.6% in 109 patients, Yasar 2026; postoperative diplopia up to 52%, Hassan 2024); the shared-trauma-driver confound (both findings are consequences of the same orbital injury rather than one causing the other) is the central guard and is why the edge stops at association.",
+    "A dry-eye edge was screened and closed: the targeted NCBI esearch for enophthalmos with dry-eye/lagophthalmos outcomes returned zero PubMed records (2026-09-23), so the exposure pathway is recorded as an evidence gap rather than an edge."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "diplopia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "In a 109-patient orbital-floor-fracture series, 56.3% of patients with enophthalmos exhibited diplopia compared with 8.6% without (Yasar 2026), and in a 254-patient orbital-fracture repair cohort postoperative diplopia was reported in up to 52% with preoperative enophthalmos and fracture morphology among the predictors (Hassan 2024); enophthalmos and diplopia co-occur after orbital injury far above chance.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: both findings are consequences of the same orbital trauma (shared-driver confound - globe malposition and extraocular-muscle or nerve injury arise together from the fracture, and the literature does not establish that the positional change itself produces the misalignment); etiologic heterogeneity (post-traumatic, post-surgical, congenital, and atrophic enophthalmos) further limits generalization, and diplopia must be separately diagnosed by examination rather than symptom report."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized globe-malposition misalignment pathway: posterior-inferior displacement of the globe within the orbit alters the arc of contact and effective lever arms of the extraocular muscles and shifts the globes' relative alignment, hypothesized to produce image disparity on gaze; in practice the misalignment attributed to positional change is inseparable from direct muscle entrapment, edema, and nerve injury of the same injury event, so the individual pathway requires orthoptic and imaging evaluation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The co-occurrence quantification is fracture-cohort data applied to an identity that also arises from surgery, congenital variation, and atrophy; the shared-trauma-driver confound means neither the direction nor the independence of the positional contribution can be established from the cited designs; diplopia must be confirmed by examination (cover testing, forced duction) rather than symptom report; no probability estimate is asserted.",
+        "evidenceGaps": "Documented enophthalmos (etiology, quantified by Hertel exophthalmometry or imaging); documented diplopia by orthoptic examination with gaze pattern and chronology; orbital imaging defining fracture or volume-change anatomy; exclusion of muscle entrapment, cranial-nerve palsy, and pre-existing strabismus as the misalignment driver; ophthalmology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Extraocular-muscle entrapment or contusion rather than globe malposition",
+          "Cranial-nerve III, IV, or VI palsy of traumatic or independent cause",
+          "Pre-existing strabismus or decompensated phoria",
+          "Post-surgical iatrogenic misalignment from prior orbital or strabismus surgery",
+          "Myasthenia, thyroid eye disease, or other neuromuscular misalignment drivers"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented enophthalmos (etiology, quantified by Hertel exophthalmometry or imaging); documented diplopia by orthoptic examination with gaze pattern and chronology; orbital imaging defining fracture or volume-change anatomy; exclusion of muscle entrapment, cranial-nerve palsy, and pre-existing strabismus as the misalignment driver; ophthalmology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the enophthalmos-diplopia co-occurrence is cohort-quantified, but the shared orbital-trauma driver makes the pathway undetermined and the direction unverifiable from the cited designs; no causation is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Yasar EK, Gurbuz CM, Uzun C, et al. Risk factors for residual diplopia in orbital trauma: a retrospective analysis of 109 orbital floor fracture patients. Arch Craniofac Surg. 2026 Jun;27(3):129-134. PMID 42036113.",
+          "note": "Retrospective 109-patient orbital-floor-fracture series: diplopia in 56.3% of patients with enophthalmos versus 8.6% without - the co-occurrence quantification anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42036113/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42036113; 56.3% versus 8.6% diplopia-by-enophthalmos finding"
+        },
+        {
+          "citation": "Hassan B, Yoon J, Er S, et al. Predictors of Postoperative Diplopia following Orbital Fracture Repair in Adults. Plast Reconstr Surg. 2024 Nov 1;154(5):1048-1056. PMID 37815322.",
+          "note": "Retrospective 254-patient orbital-fracture-repair cohort: postoperative diplopia reported in up to 52% of orbital bone reconstruction cases, with preoperative findings among the predictors - the repair-context and predictor anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37815322/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 37815322; postoperative diplopia predictors in orbital fracture repair"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,12 @@
   "id": "extensor-digitorum-brevis-strain",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 32 (2026-09-23): deferred on evidence-ground zero-record screening - no edges authored; the identity is retained as a draft with suggestions: [] pending qualified-human governance decision.",
+    "Revisit only if cohort, registry, or case-series literature of EDB strain outcomes (chronic ankle instability, osteoarthritis, gait alteration, or catalog-fit sequelae) emerges; do not author an edge from mechanical plausibility alone, and do not infer medical causation from rating-schedule authority."
+  ],
+  "governanceNotes": [
+    "D1 batch 32 (2026-09-23): deferred. Targeted PubMed screening for extensor digitorum brevis strain outcome evidence returned anatomy, surgical-flap, and anatomic-variant literature: the Chattar-Cora 2006 and del Pinal 2000 papers concern the EDB muscle flap for foot and ankle reconstruction, the Coskey 2022 paper concerns spontaneous extensor pollicis longus rupture associated with an extensor digitorum brevis manus hand-variant muscle, and the remaining records concern EDB anatomy and graft use; no clinical cohort, case series, or outcome study of EDB strain itself was found (zero-record screen per the camptodactyly precedent).",
+    "Alternative-target check recorded: chronic lateral-ankle pain, ankle osteoarthritis, and gait alteration are plausible strain sequelae, but the literature that connects ankle-region strain to those outcomes concerns the peroneal and other lateral ligamentous or musculotendinous structures rather than the EDB identity specifically; authoring an edge from biomechanical plausibility would force a causal claim the evidence does not carry, so the identity stays unmapped."
   ],
   "suggestions": []
 }

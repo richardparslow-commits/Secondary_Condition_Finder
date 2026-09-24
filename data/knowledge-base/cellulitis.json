@@ -1,9 +1,80 @@
 {
-  "id": "cellulitis",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "cellulitis",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 9 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Evidence ceiling is case-report plus imaging-anatomic class; promote only if a qualified human finds cohort evidence with incidence denominators for cellulitis-to-bone infection progression."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: the cellulitis-to-osteomyelitis literature consists of case reports of contiguous spread and radiologic-anatomic descriptions in which osteomyelitis is confirmed adjacent to overlying cellulitis or ulcer, with no cohort reporting incidence of osteomyelitis after cellulitis, so no directional claim beyond co-occurrence is supportable at the mapping level.",
+  "Confusion-scope note recorded: in diabetic-foot imaging the pairing of cellulitis with osteomyelitis is common because both are manifestations of the same deep-space infection, and the foot-ulcer source population carries independent vascular and neuropathic drivers; the edge does not attribute osteomyelitis to superficial cellulitis alone."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "osteomyelitis",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "Case reports document osteomyelitis arising by contiguous spread from secondarily infected skin disease overlying the affected bone (Masuka 2020, phalangeal and tibial osteomyelitis complicating infected atopic eczema), and radiologic-anatomic studies in pedal infection localize confirmed osteomyelitis immediately deep to a focus of overlying skin disruption, cellulitis, abscess, or sinus tract (Toledano 2011, Ledermann 2002).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the identified records are case reports and imaging-anatomic descriptions without incidence denominators, in pedal populations the cellulitis-osteomyelitis pairing usually reflects a shared deep infection rather than superficial-to-bone progression, and hematogenous osteomyelitis, penetrating injury, surgery, and vascular insufficiency are active competing drivers, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "INFECTIOUS_SPREAD",
+    "primaryVector": "A hypothesized contiguous-spread pathway has been described: untreated or inadequately treated bacterial cellulitis (most commonly Streptococcus pyogenes or Staphylococcus aureus) extends infection along fascial and periosteal planes from dermis and subcutis to the cortical bone surface, where direct cortical inoculation produces osteomyelitis; the imaging signature of a cortical marrow focus directly beneath a soft-tissue infection with an intervening skin-break pathway is consistent with this route. The case literature fits the mechanism, but progression frequency is unmeasured, host and organism factors dominate individual risk, and the same macroscopic pairing arises from primary deep infection spreading outward, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Osteomyelitis is documented contiguous to overlying cellulitis in case and imaging literature, but individual determination requires imaging or microbiologic documentation of bone infection with an anatomic relationship to the soft-tissue infection, exclusion of hematogenous and iatrogenic routes, and review case by case by a qualified medical professional.",
+    "evidenceGaps": "MRI or nuclear-medicine imaging documenting osteomyelitis with its anatomic relationship to the overlying soft-tissue infection; microbiologic cultures identifying the infecting organism in both compartments; clinical course records establishing chronology and treatment response between cellulitis and bone involvement; workup excluding hematogenous seeding, penetrating trauma, surgery, and vascular insufficiency as the primary route; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Hematogenous osteomyelitis seeding the bone independent of the soft-tissue infection",
+     "Penetrating trauma or surgical contamination as the primary inoculation route",
+     "Diabetic neuroarthropathy or peripheral vascular disease driving the deep infection",
+     "Primary deep-space abscess spreading outward with secondary overlying cellulitis"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the contiguous-spread pathway is anatomic and case-supported but incidence is unmeasured, the pedal-imaging pairing reflects shared deep infection as often as progression, and the direction of spread is frequently indeterminate; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "evidenceGaps": [
+    "MRI or nuclear-medicine imaging documenting osteomyelitis with its anatomic relationship to the overlying soft-tissue infection",
+    "Microbiologic cultures identifying the infecting organism in both compartments",
+    "Clinical course records establishing chronology and treatment response between cellulitis and bone involvement",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ],
+   "sourceReferences": [
+    {
+     "citation": "Masuka JT, Troisi K, Mkhize Z. Osteomyelitis complicating secondarily infected atopic eczema: two case reports and a narrative literature review. BMC Dermatol. 2020;20(1):2. PMID 32008574. doi:10.1186/s12895-019-0098-0.",
+     "note": "Two case reports of osteomyelitis arising by contiguous spread from secondarily infected skin overlying the affected bone (phalangeal, tibial), with a narrative review of osteo-articular complications of infected skin disease; supports the contiguity pathway at case level only.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32008574/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 32008574; case presentation and conclusions"
+    },
+    {
+     "citation": "Toledano TR, Fatone EA, Weis A, Cotten A, Beltran J. MRI evaluation of bone marrow changes in the diabetic foot: a practical approach. Semin Musculoskelet Radiol. 2011;15(3):257-268. PMID 21644199. doi:10.1055/s-0031-1278425.",
+     "note": "Radiologic review describing confirmed osteomyelitis localized adjacent to a skin ulcer, cellulitis, abscess, or sinus tract in the diabetic foot, while explicitly distinguishing the shared deep-infection presentation from true progression; supports the anatomic pairing and simultaneously documents the confounding recorded in the causation boundary.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21644199/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 21644199; imaging-approach discussion"
+    },
+    {
+     "citation": "Ledermann HP, Morrison WB, Schweitzer ME, Raikin SM. Tendon involvement in pedal infection: MR analysis of frequency, distribution, and spread of infection. AJR Am J Roentgenol. 2002;179(4):939-947. PMID 12239042. doi:10.2214/ajr.179.4.1790939.",
+     "note": "Contrast-MR cohort (159 infected feet) defining peritendinous enhancement contiguous to an adjacent ulcer or cellulitis and documenting deep soft-tissue involvement in roughly half of surgical pedal infections; supports the contiguity anatomy at population-prevalence level without incidence-of-progression data.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12239042/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 12239042; methods and results"
+    }
+   ]
+  }
+ ]
 }

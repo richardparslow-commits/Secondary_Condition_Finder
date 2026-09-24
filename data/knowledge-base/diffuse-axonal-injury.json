@@ -1,9 +1,81 @@
 {
-  "id": "diffuse-axonal-injury",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "diffuse-axonal-injury",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 22 (2026-09-23): draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Outcome-heterogeneity guard: DAI spans Adams grade I-III and the literature records both substantial recovery and permanent deficit; the claim is scoped to documented DAI with neuropsychological testing at least 6-12 months post-injury, once spontaneous recovery has plateaued.",
+  "Competing-cause guard: hypoxic-ischemic injury, secondary brain damage, hydrocephalus, and post-traumatic hypopituitarism produce overlapping cognitive deficits and must be excluded before the DAI pathway carries individual weight."
+ ],
+ "governanceNotes": [
+  "Authored at DIRECT_CAUSATION with PROBABLE consensus and hypothesizedOnly:false, following the cerebral-contusion -> seizure-disorder structural-lesion precedent: the expert neuropsychology overview attributes the moderate-to-severe TBI cognitive-deficit syndrome to diffuse axonal injury explicitly (Azouvi 2017), and the DAI pathology chapter documents connectivity disruption as a cause of long-term disability (Su & Bell 2016).",
+  "The claim is scoped to documented DAI (MRI/DTI findings or grade at presentation) with neuropsychological confirmation of the deficit pattern; it is not a nexus probability assertion for any individual claim."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "cognitive-disorder",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "DIRECT_CAUSATION",
+    "etiologicalTrigger": "Documented diffuse axonal injury (grade I-III or MRI/DTI-confirmed axonal shearing) -> widespread disruption of cerebral connectivity across corpus callosum, parasagittal white matter, and brainstem -> neuropsychologically confirmed cognitive deficits (processing speed, memory, attention, executive function) persisting beyond the spontaneous-recovery window."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+    "primaryVector": "A connectivity-disruption pathway: acceleration/deceleration torque shears axons at the corpus callosum, parasagittal white matter, and brainstem; axonal disconnection and secondary Wallerian degeneration impair integration across distributed networks governing processing speed, memory encoding, attention, and executive control; the deficit syndrome corresponds to the disrupted networks rather than a focal lesion, and recovery reflects partial reorganization rather than axonal regrowth. Secondary injury (edema, ischemia) can extend the axonal loss, so acute-severity documentation is required.",
+    "hypothesizedOnly": false
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "PROBABLE",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "The expert neuropsychology literature attributes the moderate-to-severe TBI cognitive-deficit syndrome to diffuse axonal injury, and the pathology literature documents DAI as a cause of long-term disability in 40%-50% of TBI admissions; the mechanism is the established consequence of axonal shearing and the claim is scoped to documented DAI with neuropsychological confirmation. Consensus is PROBABLE for the scoped structural claim; it is not a nexus probability assertion for any individual claim.",
+    "evidenceGaps": "acute-imaging documentation of DAI (MRI with DTI/SWI, or grade at presentation) and injury severity (GCS, PTA duration); neuropsychological testing at least 6-12 months post-injury identifying the deficit pattern; chronology from injury to deficits; exclusion of hypoxic-ischemic injury, hydrocephalus, medication effects, and post-traumatic hypopituitarism (endocrine evaluation where indicated)",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Hypoxic-ischemic brain injury from circulatory or respiratory arrest",
+     "Post-traumatic hydrocephalus",
+     "Post-traumatic hypopituitarism (overlapping cognitive and mood symptoms)",
+     "Medication and sedative effects during the testing period",
+     "Pre-existing neurodegenerative disease"
+    ]
+   },
+   "evidenceGaps": [
+    "acute-imaging documentation of DAI (MRI with DTI/SWI, or grade at presentation) and injury severity (GCS, PTA duration)",
+    "neuropsychological testing at least 6-12 months post-injury identifying the deficit pattern",
+    "chronology from injury to deficits",
+    "exclusion of hypoxic-ischemic injury, hydrocephalus, medication effects, and post-traumatic hypopituitarism"
+   ],
+   "rationale": "Authored at DIRECT_CAUSATION following the cerebral-contusion structural-lesion precedent, with the claim scoped to documented DAI and neuropsychologically confirmed deficits under the outcome-heterogeneity and competing-cause guards.",
+   "sourceReferences": [
+    {
+     "citation": "Azouvi P, Arnould A, Dromer E, Vallat-Azouvi C. Neuropsychology of traumatic brain injury: An expert overview. Rev Neurol (Paris). 2017;173(7-8):461-472. PMID 28847474.",
+     "note": "Expert overview: patients who survive moderate-to-severe TBI frequently suffer a wide range of cognitive deficits and behavioral changes due to diffuse axonal injury - slowed information processing, impaired long-term memory, attention, working memory, executive function, social cognition, and self-awareness; mental fatigue frequently exacerbates the deficits.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28847474/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 28847474; cognitive deficits attributed to diffuse axonal injury"
+    },
+    {
+     "citation": "Su E, Bell M. Diffuse Axonal Injury. In: Translational Research in Traumatic Brain Injury. CRC Press/Taylor and Francis; 2016. PMID 26583181.",
+     "note": "DAI review chapter: widespread axonal damage produces deficits in cerebral connectivity that may or may not recover; DAI is a component of injury in 40%-50% of TBI hospital admissions, commonly affecting brainstem, parasagittal white matter, and corpus callosum, and is increasingly recognized as an important cause of long-term disability.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26583181/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 26583181; connectivity-disruption mechanism and 40-50% admission share"
+    },
+    {
+     "citation": "Pavlovic D, Pekic S, Stojanovic M, Popovic V. Traumatic brain injury: neuropathological, neurocognitive and neurobehavioral sequelae. Pituitary. 2019;22(3):270-282. PMID 30929221.",
+     "note": "Sequelae review: DAI is visible only with advanced neuroimaging (DTI for white-matter pathology, SWI for microbleeds); chronic TBI patients have lower neuropsychological scores and higher mental-distress symptoms; TBI-related hypopituitarism overlaps with and can mimic cognitive disability - recorded as a competing cause requiring endocrine evaluation.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30929221/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 30929221; advanced-imaging characterization and hypopituitarism competing cause"
+    }
+   ]
+  }
+ ]
 }

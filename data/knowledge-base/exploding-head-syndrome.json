@@ -2,8 +2,77 @@
   "id": "exploding-head-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review psychiatric, neuropsychiatric, medication-related, and sleep-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 32 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the parasomnia-sleep-quality co-occurrence documented in cross-sectional and review literature; the causal direction is unresolved (disturbed sleep may precipitate EHS or EHS distress may fragment sleep), so individual claims require polysomnographic or clinical documentation of both conditions with chronology and exclusion of mimics."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 32 (2026-09-23): one bounded insomnia association authored from the EHS sleep-literature - the Kirwan 2021 young-adult study documents lifetime EHS prevalence of 20% with participants experiencing EHS reporting poorer Pittsburgh Sleep Quality Index scores and more anxiety symptoms, and parasomnia co-occurrence in logistic regression (OR 1.62), the Sharpless 2014 Sleep Med Rev review documents EHS episodes as abrupt loud-noise perceptions with fear and distress at wake-sleep transitions, and the Mars 2025 StatPearls review documents the benign parasomnia identity with abrupt awakening from sleep; the association is cross-sectional, not directional.",
+    "Reverse-direction guard recorded: the literature does not establish whether EHS worsens sleep or whether poor sleep quality and arousal instability precipitate EHS episodes - the wake-sleep transition dysregulation hypothesis is compatible with both directions, so the edge is a co-occurrence mapping only. Duplicate-scope note: the registry's six existing insomnia source edges (dry-eye-syndrome, erythromelalgia, alzheimer-s-disease, dermatitis, episcleritis, ptsd - all ASSOCIATION_ONLY) carry pain, degenerative, inflammatory, and trauma-arousal mechanisms; this edge adds the parasomnia-transition pathway and does not duplicate any of them."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "insomnia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Kirwan 2021 study of 135 young adults found lifetime EHS in 20.0% and that participants with EHS reported poorer sleep quality on the PSQI and more anxiety symptoms in univariate analysis, with parasomnia co-occurrence (OR 1.62, 95% CI 1.02-2.57) and action-related sleep disorders (OR 1.87) associated with lifetime EHS in logistic regression; the Sharpless 2014 review documents EHS as loud-noise perceptions at sleep-wake transitions associated with fear and distress; the literature documents co-occurrence but no directional or individual nexus.",
+        "causationStatus": "The mapping does not assert that EHS causes an individual's insomnia: the association is cross-sectional and univariate (age, gender, and depression symptoms were not related to EHS in the same analysis), the causal direction is unresolved because sleep fragmentation and arousal instability are hypothesized to precipitate parasomnias as well as result from them, and primary insomnia has many independent drivers; individual claims require documented EHS episodes with polysomnographic exclusion of mimics, documented insomnia phenotype, chronology, and exclusion of other sleep pathology."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized sleep-wake transition dysregulation pathway: the leading etiological theories localize EHS to reduced reticular-formation or sensory-motor gating activity during transitions between wakefulness and sleep, so the same arousal-instability substrate that permits the aberrant loud-noise perception also fragments sleep initiation and maintenance; episode-related startle, fear, and conditioned anticipatory anxiety at bedtime (patients begin to dread sleep) are the proposed routes by which recurrent EHS co-occurs with poor sleep quality, while chronically disturbed sleep conversely lowers the transition-stability threshold that is hypothesized to trigger episodes - both directions remain hypotheses.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the co-occurrence evidence is a single univariate analysis in young adults plus case-series observation, none of the five etiological theories for EHS has reached dominance per the Sharpless review, the causal direction between EHS and sleep quality is unresolved, and anxiety - which independently degrades sleep - was also elevated in the EHS group and is a confounder the study design cannot remove; no probability estimate is asserted.",
+        "evidenceGaps": "Clinical or polysomnographic documentation of EHS episodes with exclusion of nocturnal seizures, hypnic headaches, night terrors, and obstructive sleep apnea; validated insomnia characterization (duration, phenotype, severity); chronology relating EHS onset to sleep disruption; anxiety and psychiatric comorbidity assessment; medication, caffeine, and substance review; sleep-medicine assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary insomnia with independent psychiatric or medical drivers",
+          "Obstructive sleep apnea or other primary sleep disorders",
+          "Nocturnal seizures or hypnic headache mimicking EHS",
+          "Anxiety or depressive disorders fragmenting sleep",
+          "Caffeine, stimulant, or medication-related sleep disruption"
+        ]
+      },
+      "evidenceGaps": [
+        "Clinical or polysomnographic documentation of EHS episodes with exclusion of nocturnal seizures, hypnic headaches, night terrors, and obstructive sleep apnea; validated insomnia characterization (duration, phenotype, severity); chronology relating EHS onset to sleep disruption; anxiety and psychiatric comorbidity assessment; medication, caffeine, and substance review; sleep-medicine assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY consistent with the registry's other insomnia edges: cross-sectional co-occurrence data support a relationship but cannot order it in time, so the mapping asserts co-occurrence with the reverse-direction guard and requires individual sleep-medicine documentation.",
+      "sourceReferences": [
+        {
+          "citation": "Kirwan E, Fortune DG. Exploding head syndrome, chronotype, parasomnias and mental health in young adults. J Sleep Res. 2021 Apr;30(2):e13044. PMID 32282101.",
+          "note": "135-participant young-adult study: lifetime EHS 20.0%, participants with EHS reported poorer PSQI sleep quality and more anxiety symptoms, parasomnia co-occurrence OR 1.62 - the co-occurrence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32282101/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 32282101; EHS with poorer sleep quality and parasomnia co-occurrence"
+        },
+        {
+          "citation": "Sharpless BA. Exploding head syndrome. Sleep Med Rev. 2014 Dec;18(6):489-493. PMID 24703829.",
+          "note": "Comprehensive review: EHS characterized by abrupt loud noises at sleep-wake transitions with fear and distress, five etiological theories none of which is dominant - the disorder-identity and mechanism-uncertainty anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24703829/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 24703829; EHS review and etiological theories"
+        },
+        {
+          "citation": "Mars JA, Khan I, Slowik JM. Exploding Head Syndrome. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; updated 2025 Feb 3. PMID 32809652.",
+          "note": "StatPearls review: benign parasomnia with sudden loud-noise perception and abrupt awakening during wake-sleep transitions - the diagnostic-identity and transition-timing anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32809652/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 32809652; EHS as benign parasomnia with abrupt awakening"
+        }
+      ]
+    }
+  ]
 }

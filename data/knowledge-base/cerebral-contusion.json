@@ -1,9 +1,79 @@
 {
-  "id": "cerebral-contusion",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "cerebral-contusion",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 9 (2026-09-22): direct-causation draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Mirrors the brain-cancer -> seizure-disorder direct-edge precedent: a source-supported symptomatic-manifestation proposition whose classification rests on the cited meta-analysis and prospective cohorts surviving qualified-human review."
+ ],
+ "governanceNotes": [
+  "Authored as DIRECT_CAUSATION with PROBABLE consensus because post-traumatic seizure occurrence after documented contusion is the strongest-evidenced relationship authored by the D1 batches: a systematic review and meta-analysis of TBI-related neuroimaging findings reports brain contusion as a strong PTE risk factor (RR 2.35, 95% CI 1.69-3.28), and a 3,093-patient prospective multicenter cohort independently identifies frontal-temporal lobar contusion among three significant multivariate predictors of post-traumatic seizures, with the cumulative two-year rate of 9.8% establishing population-level incidence rather than mere co-occurrence.",
+  "Chronology boundary enforced: early seizures within the first week are a different phenomenon from unprovoked late seizures defining post-traumatic epilepsy; the edge targets the late seizures the meta-analysis and cohort quantify, and the wound-consideration boundary (seizures are a separate ratable sequela, not a restatement of the head-injury symptom complex) is what distinguishes this edge from the phenotype-identity barrier applied in the carotid-sinus-hypersensitivity deferral."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "seizure-disorder",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "DIRECT_CAUSATION",
+    "etiologicalTrigger": "Cerebral contusion → cortical tissue disruption, hemosiderin deposition, and glial scarring in contused (most commonly frontal and temporal) cortex → pathologic neuronal hyperexcitability and electroclinically characterized post-traumatic seizures; late seizures after a documented contusion are a direct symptomatic manifestation of the structural brain injury rather than a co-occurring condition, with chronology and imaging-documented contusion required in every case."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+    "primaryVector": "A structurally supported cortical-injury pathway: traumatic contusion produces focal cortical necrosis, microvascular hemorrhage, and hemosiderin-laden (iron-containing) breakdown products whose deposition in the cortex is a established pro-epileptogenic stimulus; over weeks to years the lesion evolves into a glial scar with distorted local connectivity, reduced inhibitory interneuron function, and axonal sprouting, producing a hyperexcitable cortical focus capable of generating unprovoked seizures. The risk gradient observed in the meta-analysis (contusion RR 2.35 relative to TBI without contusion) and the prospective cohort's independent identification of frontal-temporal lobar contusion as a multivariate predictor fit this lesion-driven pathway; the elevated risk persists beyond ten years, consistent with progressive epileptogenic scarring rather than an acute irritative phenomenon.",
+    "hypothesizedOnly": false
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "PROBABLE",
+    "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+    "conservativeRationale": "This relationship is supported as direct causation at the population level: the meta-analytic risk gradient, prospective multivariate confirmation, and biologically plausible iron-deposition and gliotic-scar mechanism together support that documented cerebral contusion can cause post-traumatic seizure disorder. Individual determination still requires electrographic confirmation of epileptiform activity, imaging documentation of the contusion, exclusion of alternative seizure causes, and assessment of seizure chronology, all reviewed case by case by a qualified medical professional.",
+    "evidenceGaps": "Electroencephalographic documentation of epileptiform activity or electroclinical seizure characterization; neuroimaging documenting the cerebral contusion and any encephalomalacia or hemosiderin burden; injury records and chronology establishing the temporal relationship between contusion and seizure onset beyond the early post-traumatic window; workup excluding metabolic, toxic, infectious, and genetic seizure causes; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Metabolic or toxic provocation (hyponatremia, alcohol withdrawal, drug effects)",
+     "CNS infection or post-infectious epileptogenesis",
+     "Genetic or developmental epilepsy unrelated to the contusion",
+     "Stroke or other structural lesions arising after the trauma"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored as a direct-causation edge on the strength of meta-analytic and prospective-cohort evidence with a structurally supported mechanism, while keeping the individual-nexus determination with a qualified medical professional: the edge asserts that documented contusion can cause seizure disorder, not that any given seizure in a given veteran is attributable to a given contusion.",
+   "evidenceGaps": [
+    "Electroencephalographic documentation of epileptiform activity or electroclinical seizure characterization",
+    "Neuroimaging documenting the cerebral contusion and any encephalomalacia or hemosiderin burden",
+    "Injury records and chronology establishing the temporal relationship between contusion and seizure onset beyond the early post-traumatic window",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ],
+   "sourceReferences": [
+    {
+     "citation": "Xu T, Yu X, Ou S, Liu X, Yuan J, Huang H, Yang J, He L, Chen Y. Risk factors for posttraumatic epilepsy: a systematic review and meta-analysis. Epilepsy Behav. 2017;67:1-6. PMID 28076834. doi:10.1016/j.yebeh.2016.10.026.",
+     "note": "Systematic review and meta-analysis of PTE risk factors reporting brain contusion as a strong risk factor (RR 2.35, 95% CI 1.69-3.28) among TBI-related neuroimaging findings, with elevated risk sustained beyond ten years; supports the direct lesion-seizure pathway at the highest evidence tier available for this edge.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28076834/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 28076834; results and conclusion"
+    },
+    {
+     "citation": "Wang H, Xin T, Sun X, Wang S, Guo H, Holton-Burke C, Pang Q. Post-traumatic seizures—a prospective, multicenter, large case study after head injury in China. Epilepsy Res. 2013;107(3):272-278. PMID 24239245. doi:10.1016/j.eplepsyres.2013.10.006.",
+     "note": "Prospective multicenter cohort (3,093 TBI patients, two-year follow-up) identifying frontal-temporal lobar contusion among three independent multivariate predictors of post-traumatic seizures, with a cumulative 24-month seizure rate of 9.8% establishing population incidence; independently corroborates the meta-analytic finding.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24239245/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 24239245; results and conclusion"
+    },
+    {
+     "citation": "Lutkenhoff ES, Shrestha V, Ruiz Tejeda J, Real C, McArthur DL, Duncan D, La Rocca M, Garner R, Toga AW, Vespa PM, Monti MM. Early brain biomarkers of post-traumatic seizures: initial report of the multicentre epilepsy bioinformatics study for antiepileptogenic therapy (EpiBioS4Rx) prospective study. J Neurol Neurosurg Psychiatry. 2020;91(11):1154-1157. PMID 32848013. doi:10.1136/jnnp-2020-322780.",
+     "note": "Multicenter prospective cohort (96 moderate-to-severe TBI patients) associating focal cortical volume deficits, including hippocampal and temporal-cortex thinning, with early and late post-traumatic seizures; supports the lesion-burden gradient underlying the pathway, at biomarker-association strength.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32848013/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 32848013; results and conclusions"
+    }
+   ]
+  }
+ ]
 }

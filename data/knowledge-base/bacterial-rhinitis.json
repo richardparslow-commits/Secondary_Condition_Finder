@@ -1,6 +1,82 @@
 {
   "id": "bacterial-rhinitis",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, infectious, treatment, obstruction, and upper-airway pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 17 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The guideline literature records that acute rhinosinusitis is mainly viral-triggered and only a minority of cases develop bacterial infection; if a qualified human finds prospective progression-rate data specific to bacterial rhinitis (rather than viral URI), the tier may be revisited."
+  ],
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: the rhinitis-to-sinusitis continuum is the guideline-standard disease model (the very nomenclature 'rhinosinusitis' records it), but the same sources state most acute rhinosinusitis is viral and few cases become bacterial, so a bacterial-rhinitis diagnosis cannot be treated as an antecedent of clinically significant sinusitis without individual documentation.",
+    "Viral-confounder guard recorded: in practice bacterial rhinitis is rarely diagnosed as a distinct entity, and the antecedent of most bacterial sinusitis is a viral URI, so the edge's population pathway runs through undifferentiated upper-respiratory infection; individual attribution requires chronology and examination findings."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "sinusitis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The 2020 management review defines acute rhinosinusitis (ARS) as mainly an inflammatory disease triggered by viral infection in which few cases end up developing bacterial infection, with bacterial and non-bacterial ARS discriminated by specific sign-symptom combinations (Jaume 2020); the primary-care review states most acute rhinosinusitis is viral (common-cold associated), guides antibiotics for suspected bacterial cases, and warns that non-responders should be suspected of chronic sinusitis (DeCastro 2014); the American Family Physician review records that acute rhinosinusitis is specified as bacterial or viral, most cases are viral, antibiotics are reserved for persistent or worsening courses, and rare bacterial complications include orbital, intracranial, and bony involvement (Aring 2011).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the population pathway runs predominantly through viral URIs, only a minority of ARS episodes develop bacterial infection, and no cohort reports progression rates from documented bacterial rhinitis specifically, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A contiguous-mucosa/ostial-obstruction pathway is hypothesized: bacterial inflammation of the nasal mucosa extends to the ostiomeatal complex, obstructing sinus ostia and impairing mucociliary drainage, allowing bacterial proliferation within the paranasal sinuses; the shared mucosa and the guideline-standard 'rhinosinusitis' nomenclature record this continuum. The pathway is anatomically direct and guideline-recognized, but only a minority of acute rhinosinusitis episodes become bacterial and the antecedent is usually viral, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Nasal and sinus mucosal disease is a recognized continuum, but individual determination requires documentation of the rhinitis episode with chronology, sinus-specific examination or imaging findings, and review by a qualified medical professional.",
+        "evidenceGaps": "Documentation of the rhinitis diagnosis (duration, purulence, culture if obtained) with chronology; sinus-specific findings (facial pain/pressure, nasal obstruction, discolored discharge, hyposmia) meeting guideline criteria or CT/imaging confirmation; treatment response documentation; exclusion of allergic and noninfectious rhinitis, odontogenic sinusitis, and anatomic obstruction as primary drivers; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Viral URI as the true antecedent of most acute bacterial rhinosinusitis",
+          "Allergic rhinitis with inflammation-driven ostial obstruction and no bacterial infection",
+          "Odontogenic (dental-origin) sinusitis",
+          "Anatomic variants and septal deviation with recurrent obstruction",
+          "Chronic rhinosinusitis with separate, non-acute pathophysiology"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the continuum is guideline-standard nomenclature, but the sources themselves record that few ARS cases become bacterial and the antecedent is usually viral; the edge records the recognized pathway only.",
+      "sourceReferences": [
+        {
+          "citation": "Jaume F, Valls-Mateus M, Mullol J. Common Cold and Acute Rhinosinusitis: Up-to-Date Management in 2020. Curr Allergy Asthma Rep. 2020;20(7):28. PMID 32495003. doi:10.1007/s11882-020-00917-5.",
+          "note": "Guideline-current review: ARS is mainly viral-triggered inflammation and few cases develop bacterial infection, with bacterial and non-bacterial ARS discriminated by sign-symptom combinations; the central continuum-and-minority anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32495003/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 32495003; results and conclusions"
+        },
+        {
+          "citation": "DeCastro A, Mims L, Hueston WJ. Rhinosinusitis. Prim Care. 2014;41(1):47-61. PMID 24439880. doi:10.1016/j.pop.2013.10.006.",
+          "note": "Primary-care review: most acute rhinosinusitis is viral, antibiotics for suspected bacterial cases, non-responders suspected of chronic sinusitis; the diagnostic-criteria anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24439880/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 24439880; results and conclusions"
+        },
+        {
+          "citation": "Aring AM, Chan MM. Acute rhinosinusitis in adults. Am Fam Physician. 2011;83(9):1057-1063. PMID 21534518.",
+          "note": "Review: acute rhinosinusitis specified bacterial or viral with most cases viral and rare bacterial complications (orbital, intracranial, bony); the subtype-and-complication-spectrum anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21534518/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 21534518; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "Documentation of the rhinitis diagnosis (duration, purulence, culture if obtained) with chronology",
+        "sinus-specific findings (facial pain/pressure, nasal obstruction, discolored discharge, hyposmia) meeting guideline criteria or CT/imaging confirmation",
+        "treatment response documentation",
+        "exclusion of allergic and noninfectious rhinitis, odontogenic sinusitis, and anatomic obstruction as primary drivers",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

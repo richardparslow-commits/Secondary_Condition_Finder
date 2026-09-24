@@ -146,7 +146,7 @@ describe("Mapping Expansion Batch ME-4", () => {
     expect(files).toHaveLength(813);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(673);
-    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(363);
+    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(500);
     expect(
       mappings.filter((mapping) => mapping.draft === false && (mapping.suggestions ?? []).length === 1),
     ).toHaveLength(67);
@@ -156,9 +156,9 @@ describe("Mapping Expansion Batch ME-4", () => {
     const refs = mappings.flatMap((mapping) =>
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-expect(refs).toHaveLength(379);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(379);
-expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
+expect(refs).toHaveLength(746);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(380);
+expect(refs.filter((r) => r.verified === false)).toHaveLength(366);
   });
 
   it("passes citation and master-registry gates after ME-7 verification", { timeout: 30_000 }, () => {
@@ -175,10 +175,10 @@ expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 379,
-      verified: 379,
-      verifiedProvenance: 385,
-      unverified: 0,
+      references: 746,
+      verified: 380,
+      verifiedProvenance: 386,
+      unverified: 366,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -194,8 +194,8 @@ expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 363,
-      pendingVerificationSourceEntities: 0,
+      relationships: 500,
+      pendingVerificationSourceEntities: 327,
     });
   });
 });

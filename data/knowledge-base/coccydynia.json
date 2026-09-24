@@ -2,8 +2,83 @@
   "id": "coccydynia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 13 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The coccydynia literature quantifies pain and functional disability thoroughly but documents psychiatric comorbidity only qualitatively; if a qualified human finds a controlled depression-prevalence cohort in chronic coccydynia (as exists for other chronic-pain populations), a higher tier may be appropriate."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: the reference and outcomes literature consistently characterizes chronic coccydynia as severe, disabling, and quality-of-life reducing, but no controlled study quantifies depression prevalence in coccydynia specifically; the edge therefore imports only the chronic-pain-to-depression comorbidity framing, explicitly conditioned on the general chronic-pain literature rather than condition-specific rates.",
+    "Population-skew note recorded: the interventional series are 77-92% female and postpartum and idiopathic etiologies dominate, while the VA-claimant population skews male and post-traumatic (the Mulpuri series found trauma the etiology in 41%); comorbidity rates from the predominantly female cohorts may not transfer, which is a further reason no quantitative claim is asserted.",
+    "The StatPearls reference documents the diagnostic-dismissal burden (patients report difficulty getting a specific diagnosis and feeling dismissed by clinicians) as a distinctive psychosocial stressor recorded in the governance notes rather than claimed as a mechanism.",
+    "Three-reference-cap note: the 173-patient coccygectomy series (Mulpuri 2022, PMID 35177527, mean follow-up 5.58 years, 77% female, trauma etiology 41%) documents long-horizon functional burden with ODI/VAS/PROMIS/EQ-5D outcomes and residual disability in a subset; its substance is recorded here and in the association-basis narrative, but it is not carried as a fourth citation because the schema caps sourceReferences at 3 per edge."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The condition-specific literature consistently documents the chronic-burden profile that the general chronic-pain literature links to depression: the reference work states many cases are notoriously persistent, challenging to treat, and associated with severe and disabling chronic pain, and records the psychosocial burden of diagnostic dismissal (Bain, Mabrouk & Foye 2025); the clinical review states coccyx pain substantially decreases quality of life with classic sitting-exacerbated symptoms (Foye 2017); the interventional case series documents mean baseline pain of 8.4-8.5 on an 11-point numerical rating scale in refractory patients with significant functional impairment (Saldanha 2025), and the 173-patient coccygectomy series shows disability-index outcomes that remain abnormal in a subset at mean 5.6-year follow-up with trauma the etiology in 41% (Mulpuri 2022, PMID 35177527 — retained in the registry relationship record, not cited on this edge to respect the three-reference cap).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: no controlled depression-prevalence study exists in coccydynia specifically, the burden-to-depression inference crosses from the general chronic-pain literature, bidirectionality is plausible (depression amplifies pain reporting and reduces treatment engagement), and the interventional cohorts are small, treatment-selected, and heavily female, so only comorbidity-consistent burden documentation is recorded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A chronic-pain-disability pathway is hypothesized, following the established general chronic-pain-to-depression model: persistent sitting-exacerbated midline pain forces postural adaptation, limits sedentary work and travel, disrupts sleep, and degrades the activities that structure daily life, while central sensitization of persistent nociceptive input converges with the learned helplessness and anhedonia pathways documented across chronic-pain populations; the distinctive coccydynia stressors (a condition patients describe as dismissed and hard to diagnose, affecting such basic functions as sitting) plausibly amplify the burden. The mechanism is model-coherent but untested in coccydynia specifically, so no directional claim is made.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Chronic coccydynia produces the severe, persistent, function-limiting burden that general chronic-pain research links to depression, but no coccydynia-specific controlled psychiatric data exist; individual determination requires psychiatric diagnostic documentation with chronology relative to pain onset, and review by a qualified medical professional.",
+        "evidenceGaps": "Psychiatric diagnostic evaluation documenting the depressive disorder and its chronology relative to coccydynia onset; pain documentation establishing severity, persistence, and functional limitation (sitting tolerance, occupational impact); treatment history demonstrating persistence despite conservative management; workup excluding primary depressive disorder with incidental pain and substance or medication effects; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Primary depressive disorder independent of pain status",
+          "Chronic low back or sacroiliac pain syndromes with their own depression association",
+          "Medication effects (opioids, gabapentinoids, corticosteroids) on mood",
+          "Substance use as a mood and pain confounder",
+          "Life-stressor or service-related psychosocial factors independent of pain"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the burden documentation is condition-specific and strong, but the depression link is imported from the general chronic-pain literature and untested in coccydynia; the edge records the burden base only and leaves every causal judgment to a qualified medical professional.",
+      "sourceReferences": [
+        {
+          "citation": "Bain HL, Mabrouk A, Foye PM. Coccyx Pain. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2025 Aug 9. PMID 33085286.",
+          "note": "Reference work stating that many cases are notoriously persistent, challenging to treat, and associated with severe and disabling chronic pain, and documenting the diagnostic-dismissal burden patients report; the condition-characterization anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33085286/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 33085286; introduction"
+        },
+        {
+          "citation": "Foye PM. Coccydynia: Tailbone Pain. Phys Med Rehabil Clin N Am. 2017;28(3):539-549. PMID 28676363. doi:10.1016/j.pmr.2017.03.006.",
+          "note": "Clinical review stating coccyx pain substantially decreases quality of life, with classic sitting-exacerbated midline symptoms and focal tenderness; the burden and functional-limitation documentation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28676363/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 28676363; abstract"
+        },
+        {
+          "citation": "Saldanha J, Crispiniano M, Carvalho JL. Ganglion Impar Block and Pulsed Radiofrequency Under Fluoroscopic Guidance in Chronic Coccydynia: A Retrospective Case Series. Cureus. 2025;17(11):e97753. PMID 41458750. doi:10.7759/cureus.97753.",
+          "note": "Retrospective series of 24 refractory chronic-coccydynia patients (91.7% female) with mean baseline NRS 8.4-8.5 quantifying the severity ceiling of persistent pain despite conservative care; burden quantification without psychiatric outcomes.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41458750/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 41458750; introduction, results"
+        }
+      ],
+      "evidenceGaps": [
+        "Psychiatric diagnostic evaluation documenting the depressive disorder and its chronology relative to coccydynia onset",
+        "Pain documentation establishing severity, persistence, and functional limitation (sitting tolerance, occupational impact)",
+        "Treatment history demonstrating persistence despite conservative management",
+        "Workup excluding primary depressive disorder with incidental pain and substance or medication effects",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

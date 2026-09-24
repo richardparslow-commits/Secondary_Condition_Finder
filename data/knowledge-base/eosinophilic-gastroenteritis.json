@@ -2,8 +2,141 @@
   "id": "eosinophilic-gastroenteritis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 28 (2026-09-23): draft edges pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Evidence-class guard: the EGE literature is case-series and small-cohort class (the disease is rare); the anchors are used with the case-class limitation recorded rather than presented as cohort-prevalence evidence."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 28 (2026-09-23): two bounded edges authored - an ASSOCIATION_ONLY malnutrition-residuals edge anchored on the Klein-classification mucosal-absorption literature and the Chehade PLE pediatric series, and an ASSOCIATION_ONLY anemia edge anchored on the 2,469-patient prospective colonoscopy cohort and the same literature; both are capped at association because Klein-layer heterogeneity means only the mucosal-dominant phenotype has the absorption/blood-loss pathway and the serosal or muscularis phenotypes lack it entirely.",
+    "The malnutrition-residuals and anemia targets each already carry multiple incoming edges from distinct mechanisms (biliary obstruction, carcinoid, dysphagia, dumping; liver disease, malignancy, hemolysis); these edges add a distinct eosinophilic-mucosal-disease pathway rather than restating any existing one."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "malnutrition-residuals",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The mucosal-dominant Klein phenotype of eosinophilic gastroenteritis presents with malabsorption, protein-losing enteropathy, and weight loss (Goel 2026 StatPearls review), and the Chehade 2006 pediatric series documents hypoalbuminemia and edema from intestinal protein loss in allergic EGE with PLE responding to antigen-avoidance therapy; malabsorptive weight loss is a recognized mucosal-EGE presentation across the case literature.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the evidence is case-series class without denominators, Klein-layer heterogeneity means the muscularis and serosal phenotypes lack the mucosal absorption pathway entirely, and weight loss in an EGE patient must be separated from dietary elimination, corticosteroid effects, and the allergic diathesis's other drivers; the mapping asserts the association recorded in the literature, not an individual outcome."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "A hypothesized mucosal-malabsorption pathway: eosinophil-predominant infiltration of the mucosal layer disrupts villous architecture and enterocyte function, while activated eosinophils release major basic protein and leukotrienes that increase epithelial permeability; the combination impairs nutrient absorption and permits protein-rich lymphatic leakage, presenting clinically as weight loss, hypoalbuminemic edema, and micronutrient deficiency. Only the mucosal-dominant phenotype carries this pathway.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The malnutrition association rests on case-series evidence without population denominators and applies only to the mucosal-dominant Klein phenotype; malnutrition must meet validated screening criteria, protein loss must be documented (alpha-1-antitrypsin clearance or hypoalbuminemia), and the strict elimination diets and corticosteroid therapy used for EGE are themselves competing nutritional drivers; no probability estimate is asserted.",
+        "evidenceGaps": "Histologic diagnosis of EGE with Klein layer classification; documented weight trend and validated malnutrition screening (e.g., GLIM criteria); documentation of malabsorption or protein loss (stool alpha-1-antitrypsin clearance, serum albumin trend); exclusion of celiac disease, inflammatory bowel disease, and independent causes of weight loss; gastroenterology and dietitian assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Celiac disease or inflammatory bowel disease as the malabsorption driver",
+          "Corticosteroid or elimination-diet nutritional effects of EGE treatment itself",
+          "Small-intestinal bacterial overgrowth or pancreatic insufficiency",
+          "Malignancy or chronic infection causing weight loss independently",
+          "Serosal or muscularis EGE phenotype without mucosal involvement"
+        ]
+      },
+      "evidenceGaps": [
+        "Histologic diagnosis of EGE with Klein layer classification; documented weight trend and validated malnutrition screening (e.g., GLIM criteria); documentation of malabsorption or protein loss (stool alpha-1-antitrypsin clearance, serum albumin trend); exclusion of celiac disease, inflammatory bowel disease, and independent causes of weight loss; gastroenterology and dietitian assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the mucosal-phenotype malabsorption pathway is biologically specific and literature-documented, but the evidence is case-class, phenotype-limited, and confounded by the treatment itself; no causation is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Goel M, Nathani RR, Sodhani S. Eosinophilic Gastroenteritis. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; updated 2026 Apr 15. PMID 31613509.",
+          "note": "Current-evidence review: EGE defined by eosinophilic inflammation beyond the esophagus with Klein mucosal/muscularis/serosal classification, symptom presentation dependent on layer and depth involved - the phenotype-stratification and mucosal-presentation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31613509/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 31613509; Klein-classification phenotype-presentation mapping"
+        },
+        {
+          "citation": "Chehade M, Magid MS, Mofidi S, et al. Allergic eosinophilic gastroenteritis with protein-losing enteropathy: intestinal pathology, clinical course, and long-term follow-up. J Pediatr Gastroenterol Nutr. 2006 May;42(5):516-521. PMID 16707973.",
+          "note": "Pediatric series of allergic EGE with protein-losing enteropathy: hypoalbuminemia and edema from intestinal protein loss with response to antigen-avoidance - the mucosal protein-loss anchor, used with the case-series-class guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16707973/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 16707973; EGE-PLE pathology and course"
+        },
+        {
+          "citation": "Hui CK, Hui N. A Prospective Study on the Prevalence, Extent of Disease and Outcome of Eosinophilic Gastroenteritis in Patients Presenting with Lower Abdominal Symptoms. Gut Liver. 2018 May 15;12(3):288-296. PMID 29212311.",
+          "note": "Prospective 2,469-patient colonoscopy cohort with 64 EGE cases: disease extent, peripheral eosinophilia, and outcome by severity - the population-context anchor for disease burden.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29212311/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 29212311; 64/2,469 prevalence and outcome findings"
+        }
+      ]
+    },
+    {
+      "conditionId": "anemia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The 2,469-patient prospective cohort documented EGE in 64 patients presenting with lower abdominal symptoms and characterized disease extent and severity outcomes (Hui 2018), and the review literature records occult gastrointestinal blood loss with iron-deficiency anemia among the recognized mucosal-EGE presentations (Goel 2026); eosinophil-mediated mucosal injury is the proposed bleeding substrate.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the prevalence cohort does not report anemia incidence by Klein layer, the anemia association is review-level for a disease whose English-language evidence is case-series class, and iron deficiency in an EGE patient must be separated from elimination-diet iron intake, corticosteroid-related gastropathy, and menstrual or other independent losses."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "A hypothesized mucosal-blood-loss pathway: eosinophil-predominant mucosal inflammation produces epithelial erosion and capillary fragility in the involved gastric or intestinal segments, generating chronic occult blood loss that depletes iron stores and presents as iron-deficiency anemia; in allergic-phenotype patients, concurrent malabsorption of dietary iron compounds the deficit. The pathway requires mucosal-layer involvement and is absent in serosal-predominant disease.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The anemia association is review-level and phenotype-limited in a rare disease without anemia-incidence denominators; iron deficiency must be documented by ferritin and studies, blood loss must be localized to the involved segment, and treatment effects (steroid gastropathy, elimination diets) are competing drivers; anemia must meet documented criteria rather than a single low hemoglobin; no probability estimate is asserted.",
+        "evidenceGaps": "Histologic diagnosis of EGE with Klein layer classification; documented anemia by complete blood count with iron studies and ferritin; documentation of occult gastrointestinal blood loss or iron malabsorption; exclusion of celiac disease, IBD, menorrhagia, and other bleeding or nutritional causes; gastroenterology and hematology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Celiac disease or autoimmune gastritis as the iron-deficiency driver",
+          "Inflammatory bowel disease or colorectal neoplasia causing occult bleeding",
+          "Menstrual blood loss or other non-gastrointestinal iron loss",
+          "Corticosteroid-associated gastropathy from EGE treatment",
+          "Elimination-diet iron insufficiency without mucosal disease activity"
+        ]
+      },
+      "evidenceGaps": [
+        "Histologic diagnosis of EGE with Klein layer classification; documented anemia by complete blood count with iron studies and ferritin; documentation of occult gastrointestinal blood loss or iron malabsorption; exclusion of celiac disease, IBD, menorrhagia, and other bleeding or nutritional causes; gastroenterology and hematology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: iron-deficiency anemia is a recognized mucosal-EGE association, but the evidence is review-level for a rare disease without incidence denominators and the competing nutritional and treatment drivers are substantial; no causation is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Hui CK, Hui N. A Prospective Study on the Prevalence, Extent of Disease and Outcome of Eosinophilic Gastroenteritis in Patients Presenting with Lower Abdominal Symptoms. Gut Liver. 2018 May 15;12(3):288-296. PMID 29212311.",
+          "note": "Prospective 2,469-patient colonoscopy cohort with 64 EGE cases: prevalence, extent of disease, and severity outcomes - the population-context anchor in a rare-disease literature dominated by case reports.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29212311/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 29212311; 64/2,469 prevalence and outcome findings"
+        },
+        {
+          "citation": "Goel M, Nathani RR, Sodhani S. Eosinophilic Gastroenteritis. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; updated 2026 Apr 15. PMID 31613509.",
+          "note": "Current-evidence review: mucosal-dominant EGE presents with bleeding, anemia, malabsorption, and protein loss depending on layer involvement - the phenotype-presentation anchor for the anemia association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31613509/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 31613509; mucosal-phenotype anemia presentation"
+        },
+        {
+          "citation": "Chehade M, Magid MS, Mofidi S, et al. Allergic eosinophilic gastroenteritis with protein-losing enteropathy: intestinal pathology, clinical course, and long-term follow-up. J Pediatr Gastroenterol Nutr. 2006 May;42(5):516-521. PMID 16707973.",
+          "note": "Pediatric EGE-PLE series documenting mucosal eosinophilic injury to epithelium and vasculature - the mucosal-injury substrate anchor, used with the case-series-class guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16707973/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 16707973; mucosal injury pathology"
+        }
+      ]
+    }
+  ]
 }

@@ -1,8 +1,158 @@
 {
-  "id": "cystitis-or-neurogenic-bladder",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before republishing."
-  ],
-  "suggestions": []
+ "id": "cystitis-or-neurogenic-bladder",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 19 (2026-09-23): drafts pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "The hydronephrosis edge is the repo's second obstruction-mechanical DIRECT_CAUSATION after urethral-stricture -> hydronephrosis; keep the clinically-significant-dilatation scoping when reviewing."
+ ],
+ "governanceNotes": [
+  "Hydronephrosis edge authored at DIRECT_CAUSATION with PROBABLE consensus and hypothesizedOnly:false, following the urethral-stricture precedent: detrusor-sphincter dyssynergia/underactive-bladder outflow obstruction and high-pressure storage mechanically overwhelm the ureterovesical junction, producing vesicoureteral reflux and upper-tract dilatation; the claim is scoped to documented dysfunctional voiding with clinically significant upper-tract change, not to any cystitis diagnosis.",
+  "Stones edge held at ASSOCIATION_ONLY: the StatPearls etiology language and SCI excess-risk review document the stasis pathway qualitatively, but no cohort quantifies incident stone formation in non-SCI neurogenic-bladder populations, and catheter use confounds attribution (catheter encrustation and infection are independent stone drivers).",
+  "Treatment-interruption guard recorded in-file: CIC, antimuscarinics, botulinum toxin, and surgical management each interrupt the stasis/high-pressure pathway; chronology and persistence under documented management must be shown."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "hydronephrosis",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "DIRECT_CAUSATION",
+    "etiologicalTrigger": "Documented neurogenic bladder dysfunction (detrusor-sphincter dyssynergia or detrusor underactivity) -> clinically significant high-pressure storage/voiding or incomplete emptying -> overwhelmed ureterovesical junction with vesicoureteral reflux or direct back-pressure -> claimed hydronephrosis."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+    "primaryVector": "An outflow-obstruction/back-pressure pathway: neurogenic detrusor-sphincter dyssynergia or an underactive bladder produces high-pressure storage against a closed sphincter or chronic residual urine; when the normal ureterovesical junction is overwhelmed, urine refluxes to the upper tract and sustained back-pressure dilates the renal pelvis - the same mechanical dilatation pathway the knowledge base records for urethral stricture. Treatment (catheterization, antimuscarinics, botulinum toxin, augmentation) interrupts the pathway, so documented chronology under management is required.",
+    "hypothesizedOnly": false
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "PROBABLE",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "The mechanism is the established urodynamic consequence of dysfunctional voiding and is the same obstruction-mechanical pathway already modeled as DIRECT_CAUSATION for urethral stricture -> hydronephrosis; the claim is scoped to documented neurogenic dysfunction with imaging-confirmed upper-tract dilatation. Etiological consensus is PROBABLE for the scoped mechanical claim.",
+    "evidenceGaps": "urodynamic or documented neurogenic-bladder diagnosis (detrusor-sphincter dyssynergia, neurogenic detrusor underactivity, or comparable high-pressure/retention phenotype); renal-bladder ultrasound or CT documenting hydronephrosis with laterality and grade; chronology linking the bladder diagnosis to the dilatation; exclusion of independent upper-tract obstruction (stones, stricture, tumor); documentation of bladder-management status at the time dilatation was found",
+    "alternativeEtiologiesToRuleOut": [
+     "Urolithiasis at the ureterovesical junction or ureter",
+     "Urethral stricture or other anatomical obstruction",
+     "Retroperitoneal fibrosis or tumor",
+     "Congenital ureteropelvic/ureterovesical junction obstruction",
+     "Medication-related obstruction"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored at DIRECT_CAUSATION following the urethral-stricture precedent, with the mechanical pathway scoped to clinically significant dilatation and independent obstruction excluded; hypothesizedOnly is false because the pathway is the established urodynamic consequence, not a speculation.",
+   "sourceReferences": [
+    {
+     "citation": "Leslie SW, Aeddula NR. Vesicoureteral Reflux. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; updated 2024 Apr 30. PMID 33085409.",
+     "note": "StatPearls review: neurogenic bladder is a recognized cause of vesicoureteral reflux, and high-pressure bladder conditions are key predictors of additional renal damage and scarring; reflux nephropathy accounts for about 5% of pediatric renal transplants.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33085409/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 33085409; etiology (neurogenic bladder association) and renal-damage predictors"
+    },
+    {
+     "citation": "Wu CQ, Franco I. Management of vesicoureteral reflux in neurogenic bladder. Investig Clin Urol. 2017;58(Suppl 1):S54-S58. PMID 28612061. doi:10.4111/icu.2017.58.S1.S54.",
+     "note": "Review: VUR in neurogenic bladder develops through a defective ureterovesical junction or an overwhelmed normal UVJ mechanism caused by bladder dysfunction; VUR is a significant risk factor for pyelonephritis and renal scarring.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28612061/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 28612061; introduction (UVJ overwhelm mechanism, pyelonephritis/renal-scarring risk)"
+    },
+    {
+     "citation": "Belko NA, Pohl HG. Pediatric Urinary Tract Infections. Urol Clin North Am. 2024;51(4):537-549. PMID 39349021. doi:10.1016/j.ucl.2024.06.004.",
+     "note": "Review: neurogenic bladder conveys an increased risk of urinary tract infection; in the obstructed/refluxing bladder, UTI and stasis are the standard drivers of upper-tract dilatation and pyelonephritis.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39349021/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 39349021; introduction (neurogenic bladder as UTI risk factor)"
+    }
+   ],
+   "evidenceGaps": [
+    "urodynamic or documented neurogenic-bladder diagnosis (detrusor-sphincter dyssynergia, neurogenic detrusor underactivity, or comparable high-pressure/retention phenotype)",
+    "renal-bladder ultrasound or CT documenting hydronephrosis with laterality and grade",
+    "chronology linking the bladder diagnosis to the dilatation",
+    "exclusion of independent upper-tract obstruction (stones, stricture, tumor)",
+    "documentation of bladder-management status at the time dilatation was found",
+    "Urodynamics or specialty-documented neurogenic bladder phenotype",
+    "Imaging-documented hydronephrosis with grade and laterality",
+    "negative workup for independent obstructive causes",
+    "voiding/management chronology"
+   ]
+  },
+  {
+   "conditionId": "kidney-stones",
+   "rank": 2,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The StatPearls bladder-stone review states adult bladder stone formation is most often associated with urinary stasis from bladder outlet obstruction or neurogenic bladder dysfunction (Leslie 2026); the SCI-focused literature review documents excess kidney and bladder stone risk in neurogenic bladder populations (Ruffion 2007); the neurogenic-bladder UTI review lists urinary stasis, high bladder pressure, and bladder stones among the population's risk factors, documenting the reciprocal stasis-stone-infection interaction (Dinh 2019).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the quantified excess-risk data are spinal-cord-injury cohorts rather than all-cause neurogenic bladder, catheter use independently drives encrustation and infection stones, immobilization and metabolic factors contribute in SCI, and no incidence denominator exists for non-SCI neurogenic bladder populations."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+    "primaryVector": "A urinary-stasis pathway is hypothesized: incomplete emptying and high residual volumes allow crystal nucleation and stone growth in the bladder, while stasis plus recurrent infection raises upper-tract stone risk; the pathway is anatomically and chemically standard but its magnitude in non-SCI neurogenic bladder is unquantified, and intermittent catheterization both mitigates and (via catheter-related infection) complicates it.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "Stasis-mediated stone formation is the standard teaching and the SCI excess risk is documented, but population-specific incidence, catheter confounding, and treatment interruption keep this below causal strength. Etiological consensus is therefore NOT_ESTABLISHED and the mapping asserts no nexus probability.",
+    "evidenceGaps": "stone documentation by imaging or passage with composition analysis where available; neurogenic-bladder diagnosis with urodynamic phenotype and chronology; residual-volume/voiding documentation showing stasis; catheter-use history (indwelling vs intermittent, encrustation history); metabolic stone workup (24-hour urine or serum studies)",
+    "alternativeEtiologiesToRuleOut": [
+     "Catheter encrustation or device-related stones",
+     "Metabolic hypercalciuria/hyperoxaluria",
+     "Chronic UTI with urease-producing organisms independent of stasis",
+     "Dehydration and dietary factors",
+     "Medication stones (e.g., indinavir, triamterene)"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: the stasis pathway is standard but the quantified evidence is SCI-specific and catheter use confounds attribution; no causal or aggravation claim is made.",
+   "sourceReferences": [
+    {
+     "citation": "Leslie SW, Sajjad H, Murphy PB. Bladder Stones. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; updated 2026 Jun 8. PMID 28722973.",
+     "note": "StatPearls review: in adults, bladder stone formation is most often associated with urinary stasis from bladder outlet obstruction or neurogenic bladder dysfunction, chronic infection, augmentation, or catheters; recurrence is expected without correction of underlying etiologic factors.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28722973/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 28722973; etiology (neurogenic bladder stasis) and prognosis (recurrence)"
+    },
+    {
+     "citation": "Ruffion A, Traxer O, Chartier-Kastler E. [Stones and neurogenic bladder]. Prog Urol. 2007;17(3):417-423. PMID 17622069. doi:10.1016/s1166-7087(07)92340-4.",
+     "note": "Literature review: excess risk of kidney and bladder stones in spinal-cord-injury neurogenic bladder populations; discusses prevention and identification of high-risk groups for intensive follow-up.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17622069/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 17622069; abstract (excess stone risk in neurogenic bladder populations)"
+    },
+    {
+     "citation": "Dinh A, Davido B, Duran C, Bouchand F, Gaillard JL, Even A, Denys P, Chartier-Kastler E, Bernard L. Urinary tract infections in patients with neurogenic bladder. Med Mal Infect. 2019;49(7):495-504. PMID 30885540. doi:10.1016/j.medmal.2019.02.006.",
+     "note": "Narrative review: risk factors for UTI in neurogenic bladder include indwelling catheter, urinary stasis, high bladder pressure, and bladder stones - the reciprocal stasis-stone-infection interaction documented in the population.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30885540/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 30885540; risk-factor list (stasis, high pressure, stones)"
+    }
+   ],
+   "evidenceGaps": [
+    "stone documentation by imaging or passage with composition analysis where available",
+    "neurogenic-bladder diagnosis with urodynamic phenotype and chronology",
+    "residual-volume/voiding documentation showing stasis",
+    "catheter-use history (indwelling vs intermittent, encrustation history)",
+    "metabolic stone workup (24-hour urine or serum studies)",
+    "Imaging/stone-analysis documentation with laterality and chronology",
+    "neurogenic-bladder phenotype and residual-volume documentation",
+    "metabolic workup results",
+    "catheter-history record"
+   ]
+  }
+ ]
 }

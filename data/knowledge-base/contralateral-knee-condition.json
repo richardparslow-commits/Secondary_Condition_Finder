@@ -2,7 +2,14 @@
   "id": "contralateral-knee-condition",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "D1 draft-authoring batch 18 (2026-09-22): deferred with a documented identity/directionality barrier instead of an authored edge, per the repo's established deferral convention (ME-30/ME-32 precedents; common-peroneal-neuropathy batch-17 deferral).",
+    "Revisit only if the workflow represents the opposite-knee claim differently (e.g., resolving the actual contralateral diagnosis as its own catalog identity with its own authored edges) or if condition-specific natural-history literature for a distinct outcome identity becomes available; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [],
+  "governanceNotes": [
+    "Deliberate deferral, not an authored suggestion: the catalog identity 'Contralateral (opposite) knee condition' is a relational claim-position concept (the knee opposite a service-connected knee), not a clinical phenotype, so its outgoing edges would need a concrete contralateral diagnosis to target - and the strongest quantified literature inverts the direction: in contralateral-ACL-injury risk cohorts the index condition is the reconstructed knee and the outcome 'contralateral condition' IS the anterior cruciate ligament injury, so an edge from this identity to the catalog acl-injury identity would restate the identity's own content rather than assert a downstream relationship.",
+    "No defensible target identity exists on the catalog: the contralateral-degeneration literature (increased radiographic and clinical osteoarthritis after ACL reconstruction or meniscectomy) is treatment-class and confounded by the original injury and meniscal status, and the common downstream outcomes (contralateral quadriceps weakness, functional asymmetry) lack catalog identities; authoring an edge to osteoarthritis or acl-injury from a relational concept would force a causal claim the source design cannot support."
+  ]
 }

@@ -1,9 +1,82 @@
 {
-  "id": "bronchitis",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "bronchitis",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 6 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Review the childhood-illness/early-life infection pathway only where documented in this identity's records; do not infer medical causation from rating-schedule authority.",
+  "Duplicate-identity boundary: this is the acute-bronchitis identity (aliases: acute bronchitis); chronic-bronchitis is a separate catalog identity whose -> copd edge was authored earlier at relationship scope. This edge covers the early-life/acute-illness trajectory literature only and must not be merged with the chronic-bronchitis relationship."
+ ],
+ "governanceNotes": [
+  "Authored as ASSOCIATION_ONLY with NOT_ESTABLISHED consensus: prospective-cohort trajectory modeling (Tasmanian Longitudinal Health Study) lists childhood bronchitis and pneumonia among early-life predictors of the low-lung-function trajectories carrying most adult COPD burden, and a referral-clinic cohort reports worse spirometry among COPD patients with childhood pneumonia; neither design supports an individual causal claim.",
+  "Conservatism boundaries: the strongest longitudinal evidence (1958 British birth cohort spirometry at 35 and 45 years) found childhood chest illness NOT associated with accelerated mid-adult lung-function decline, and the trajectory studies are confounded by tobacco, occupational exposure, and developmental factors, so the edge records the association and the honest null together; direction (childhood illness predates adult COPD) is chronological, not demonstrated causal.",
+  "Duplicate-scope check: copd already carries outgoing edges (sleep-apnea, pulmonary-hypertension) authored in earlier batches; an incoming edge from a distinct primary is not duplicate scope. The chronic-bronchitis -> copd relationship belongs to the other identity per the duplicate-identity convention."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "copd",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "A prospective birth-cohort trajectory study (8,583 participants followed to age 53) identifies childhood bronchitis and pneumonia among the early-life predictors of the below-average and accelerated-decline lung-function trajectories that carry approximately 75 percent of adult COPD burden, and a referral-clinic cohort (803 COPD patients among 4,345 recruited) reports significantly lower FEV1, FVC, and FEF25-75 with more frequent chronic expectoration and recurrent infections among COPD patients reporting childhood pneumonia; a separate 1958-birth-cohort spirometry study found no association between childhood chest illness and accelerated mid-adult lung-function decline.",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the trajectory association is confounded by tobacco exposure, occupational exposures, asthma, and developmental lung-function deficits, the clinic cohort is referral-sampled without population denominators, the one birth-cohort study measuring within-person decline found no effect, and no study provides an individual-level causal estimate, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "INFECTIOUS_SPREAD",
+    "primaryVector": "A hypothesized early-life infection pathway has been described: lower-respiratory infection during lung development may disrupt alveolarization and airway growth (the developmental-origin hypothesis) and provoke persistent airway remodeling and chronic inflammation, reducing peak attained lung function and accelerating susceptibility to airflow obstruction in adulthood; cohort literature reports the co-travel of childhood chest illness with reduced adult spirometry in some cohorts and not others, which would fit a developmental-deficit mechanism rather than a progressive post-infectious decline, but the coupling is not demonstrated for any individual and reverse pathways (shared socioeconomic and smoke exposures driving both illness and deficit) remain active competing explanations, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Childhood bronchitis and pneumonia co-travel with reduced adult lung function in trajectory cohorts, but confounding is substantial, one longitudinal decline study is null, and individual determination requires documentation of the childhood illness with chronology, spirometrically confirmed COPD against accepted criteria, and exclusion of tobacco, occupational, and developmental explanations, all reviewed case by case by a qualified medical professional.",
+    "evidenceGaps": "Documentation of the childhood or early-life lower-respiratory illness (type, severity, chronology); adult spirometry confirming COPD against accepted criteria with severity staging; smoking history in pack-years and occupational-exposure history; growth and developmental history where available; a medical professional's opinion weighing post-infectious against smoking-predominant, occupational, and developmental contributors in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Tobacco smoking as the predominant cause of airflow obstruction",
+     "Occupational dust, fume, or vapor exposures",
+     "Childhood asthma or developmental lung-function deficit unrelated to infection",
+     "Post-tuberculous or other post-infectious structural lung disease outside this identity's scope"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the childhood-illness to adult-COPD association rests on observational trajectory and clinic-cohort data with a documented null in birth-cohort decline measurement, confounding is heavy, and the early-life infection mechanism remains hypothesized, so this edge flags the comorbidity for evidence-gap review only and must never be presented as established causation or aggravation.",
+   "evidenceGaps": [
+    "Documented childhood lower-respiratory illness with chronology",
+    "Spirometrically confirmed adult COPD against accepted criteria",
+    "Smoking and occupational-exposure history quantified",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ],
+   "sourceReferences": [
+    {
+     "citation": "Bui DS, Lodge CJ, Burgess JA, et al. Childhood predictors of lung function trajectories and future COPD risk: a prospective cohort study from the first to the sixth decade of life. Lancet Respir Med. 2018;6(7):535-544. PMID 29628376. doi:10.1016/S2213-2600(18)30100-0.",
+     "note": "Tasmanian Longitudinal Health Study trajectory modeling (2,438 participants analyzed from 8,583) identifying childhood bronchitis and pneumonia among early-life predictors of the three low-lung-function trajectories carrying approximately 75 percent of COPD burden at age 53; observational trajectory association with explicit acknowledgment that modifiable early-life exposures interact with adult factors, not an individual causal estimate.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29628376/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 29628376; TAHS trajectory-cohort results and interpretation"
+    },
+    {
+     "citation": "Dey D, Bhattacharyya P, Roy D, et al. Does childhood TB or pneumonia impact COPD or asthma in adulthood? Int J Tuberc Lung Dis. 2025;29(8):349-354. PMID 40751209. doi:10.5588/ijtld.24.0570.",
+     "note": "Referral-clinic cohort (803 COPD and 841 asthma patients among 4,345 recruited) reporting significantly declined FEV1, FVC, and FEF25-75 and more frequent chronic expectoration and recurrent lung infections among COPD patients with childhood pneumonia; conclusion frames childhood pneumonia as a risk-factor association with worse symptoms and lower spirometry, referral-sampled without population denominators.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40751209/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 40751209; clinic-cohort results and conclusion"
+    },
+    {
+     "citation": "Marossy AE, Strachan DP, Rudnicka AR, Anderson HR. Childhood chest illness and the rate of decline of adult lung function between ages 35 and 45 years. Am J Respir Crit Care Med. 2007;175(4):355-359. PMID 17023728. doi:10.1164/rccm.200607-1023OC.",
+     "note": "British 1958 birth-cohort spirometry at 35 and 45 years finding no significant association between childhood pneumonia or chest illness and the rate of mid-adult FEV1 decline; recorded deliberately as the competing longitudinal evidence constraining this edge to association strength rather than a progressive post-infectious decline mechanism.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17023728/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 17023728; birth-cohort results and conclusions"
+    }
+   ]
+  }
+ ]
 }

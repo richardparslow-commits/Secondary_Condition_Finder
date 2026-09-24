@@ -2,8 +2,131 @@
   "id": "dementia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 25 (2026-09-23): ASSOCIATION_ONLY drafts pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Duplicate-scope note: the typed alzheimer-s-disease identity already carries an insomnia edge; this batch authors no dementia-insomnia edge to avoid the parallel-pathway pattern, and generic-dementia consolidation is recorded as a governance decision.",
+    "Anxiety is measured as a neuropsychiatric symptom (NPI); whether any patient's presentation meets independent anxiety-disorder criteria is an individual clinician determination this mapping cannot make."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Alzheimer's NPS meta-analysis (48 studies) found anxiety the fourth most prevalent neuropsychiatric symptom in AD at 39% (95% CI 32-46%) (Zhao 2016); the mild-AD cross-sectional study found anxiety in 65% of mild-AD patients, independently associated with worse basic and instrumental daily functioning (Spalletta 2010).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: anxiety here is mostly measured as a neuropsychiatric SYMPTOM of the dementing process rather than as an independent disorder diagnosis; emotional or behavioral symptoms are partly defining features of dementia (identity-restatement guard); caregiver-population prevalence studies do not transfer to the patient; and no directional cohort separates dementia-driven anxiety from awareness-of-deficit reactive anxiety."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "A hypothesized network-disintegration pathway: progressive loss of limbic and prefrontal regulatory circuitry reduces top-down inhibition of the fear/anxiety networks, so threat appraisal becomes dysregulated as neurodegeneration advances, presenting clinically as NPI-scored anxiety. Whether any patient's anxiety reflects this mechanism rather than preserved-insight distress is individual and unquantified.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Anxiety prevalence is AD-population NPI measurement, not independent-disorder incidence; behavioral and psychiatric symptoms are partly defining features of dementia, so symptom-to-disorder attribution is a clinical judgment; delirium, medications, and thyroid disease must be excluded; caregiver studies do not transfer to patients.",
+        "evidenceGaps": "Documented dementia diagnosis with anxiety features predating or independent of delirium; DSM-5-TR delirium exclusion; medication and thyroid review; a qualified clinician's assessment of whether the anxiety meets independent disorder criteria rather than dementia-behavior description",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Delirium (DSM-5-TR exclusion)",
+          "Depression with anxious distress",
+          "Anticholinergic, dopaminergic, or corticosteroid medication effects",
+          "Thyroid disease and metabolic derangement",
+          "Caregiver-report measurement artifact"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented dementia diagnosis with anxiety features predating or independent of delirium; DSM-5-TR delirium exclusion; medication and thyroid review; a qualified clinician's assessment of whether the anxiety meets independent disorder criteria rather than dementia-behavior description"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: in-dementia anxiety is highly prevalent and mechanistically plausible, but it is measured as a neuropsychiatric symptom of the disease and any independent disorder diagnosis requires individual clinician determination; no causal claim is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Zhao QF, Tan L, Wang HF, Jiang T, Tan MS, Tan L, Xu W, Li JQ, Wang J, Lai TJ, Yu JT. The prevalence of neuropsychiatric symptoms in Alzheimer's disease: Systematic review and meta-analysis. J Affect Disord. 2016 Jan 15;190:264-271. PMID 26540080.",
+          "note": "Meta-analysis of 48 studies: anxiety is the fourth most prevalent neuropsychiatric symptom in Alzheimer's disease at 39% (95% CI 32-46%); sleep disorder 39%, depression 42%.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26540080/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 26540080; anxiety 39% pooled prevalence"
+        },
+        {
+          "citation": "Spalletta G, Girardi P, Caltagirone C, Orfei MD. Neuropsychiatric symptoms and IADL in mild Alzheimer's disease: anxiety as a clinical marker. J Alzheimers Dis. 2010;21(1):45-54. PMID 20308732.",
+          "note": "Cross-sectional study: anxiety was present in 65% of mild-AD patients and independently associated with worse basic and instrumental daily functioning.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20308732/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 20308732; 65% anxiety in mild AD"
+        }
+      ]
+    },
+    {
+      "conditionId": "urinary-incontinence",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The interRAI national cohort (n=7775 community-dwelling people with dementia) found 1-year UI prevalence of 50.1% and an adjusted 5-year incident-UI hazard ratio of 1.4 versus non-dementia controls (Burholt 2024); the global meta-analysis pooled UI prevalence in dementia at 39.7% (95% CI 23.9-58.1%), higher in clinic/hospital than community settings (Moradi Sarcheshmeh 2026).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the CNS small vessel disease review documents that the same small-vessel pathology independently causes both dementia and urinary incontinence (shared-cause confound); the meta-analysis's 4%-88% prevalence span reflects setting and assessment-method heterogeneity; no directional cohort separates neurogenic detrusor overactivity from mobility, communication, or toileting-access components of incontinence in dementia."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "A hypothesized frontal-micturition-disinhibition pathway: progressive frontal and white-matter neurodegeneration disrupts the prefrontal and pontine micturition-control networks that normally inhibit voiding reflexes; reduced inhibition plus impaired mobility, recognition of need, and communication presents clinically as urge incontinence. How much of any patient's UI is neurogenic versus functional is individual and unquantified.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Cohort prevalence does not establish etiology; CSVD independently causes both conditions; functional (mobility, access, communication) incontinence components are indistinguishable from neurogenic components in dementia populations; Parkinson's disease, prostate disease, impaction, and diuretics dominate individual risk in the same cohorts; institutional-care measurement settings inflate prevalence.",
+        "evidenceGaps": "Documented dementia with incontinence chronology; urologic workup excluding outlet obstruction, prostate disease in men, atrophic changes in women, and fecal impaction; medication review (diuretics, sedatives, anticholinergics); mobility and toileting-access assessment",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Benign prostatic hyperplasia and bladder outlet obstruction (men)",
+          "Stress incontinence from pelvic-floor weakness (women)",
+          "Fecal impaction with overflow incontinence",
+          "Diuretic and sedative medication effects",
+          "CNS small vessel disease as an independent shared cause of both dementia and incontinence",
+          "Parkinson's disease comorbidity (OR 3.0 in the same cohort)"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented dementia with incontinence chronology; urologic workup excluding outlet obstruction, prostate disease in men, atrophic changes in women, and fecal impaction; medication review (diuretics, sedatives, anticholinergics); mobility and toileting-access assessment"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: prevalence is large-cohort quantified, but the shared small-vessel-cause confound is documented in the pathway literature and the functional component of incontinence in dementia cannot be separated at the mapping level; no causal claim is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Burholt V, Cheung G, Awatere SA, Daltrey JF. Incidence, Prevalence, and Risk for Urinary Incontinence for People with Dementia in the Community in Aotearoa New Zealand: An interRAI Study. J Am Med Dir Assoc. 2024 Nov;25(11):105285. PMID 39326857.",
+          "note": "National retrospective cohort (n=7775): 1-year UI prevalence 50.1% among community-dwelling people with dementia; 5-year incident UI 30.2 per 100 person-years versus 24.5 in non-dementia controls; adjusted HR 1.4 for dementia.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39326857/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39326857; prevalence, incidence, and adjusted hazard ratio"
+        },
+        {
+          "citation": "Moradi Sarcheshmeh MS, Shahedi A, Zabihirad J, Taghipour M, Kargar Jahromi H, Delam H. Global Prevalence of Urinary Incontinence in Individuals With Dementia: A Systematic Review and Meta-Analysis. Neurourol Urodyn. 2026. PMID 42485548.",
+          "note": "Meta-analysis (10 studies, n=286,544): pooled UI prevalence in dementia 39.7% (95% CI 23.9-58.1%), I2 > 95%; higher in clinic/hospital (47.5%) than community (28.7%) settings - the ascertainment guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42485548/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42485548; pooled prevalence and setting heterogeneity"
+        },
+        {
+          "citation": "Cannistraro RJ, Badi M, Eidelman BH, Dickson DW, Middlebrooks EH, Meschia JF. CNS small vessel disease: A clinical review. Neurology. 2019 Jun 11;92(24):1146-1156. PMID 31142635.",
+          "note": "Clinical review: CSVD lesions can cause dementia, mood disorders, and urinary incontinence as direct manifestations - cited as the documented shared-cause confound (the same pathology drives both conditions).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31142635/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 31142635; CSVD-causes-both passage"
+        }
+      ]
+    }
+  ]
 }

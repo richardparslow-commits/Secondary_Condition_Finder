@@ -2,8 +2,82 @@
   "id": "contact-dermatitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 13 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The superinfection literature is strongest for atopic dermatitis; if a qualified human finds a contact-dermatitis-specific infection-complication cohort (including occupationally exposed populations), the mechanism note may be sharpened, but the barrier-disruption pathway is shared across eczematous dermatitides."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: superinfection of dermatitic skin (impetiginization, and in atopic disease disseminated viral infection) is a recognized dermatologic complication that the therapeutic literature treats as a standard indication for topical antibiotics, but the evidence base is review/guideline class with no population denominators quantifying progression from contact dermatitis to cellulitis specifically.",
+    "Phenotype-boundary note recorded: cellulitis is a deeper dermal and subcutaneous bacterial infection, a step beyond surface impetiginization of the epidermis; the mechanism chain (barrier disruption -> colonization -> deeper invasion) is coherent and anchored in the eczema-superinfection literature, but the specific deeper-invasion step is documented mainly through the atopic-disease and general-dermatitis literature rather than contact-dermatitis cohorts, which is why association-only was retained rather than a direct-causation tier.",
+    "Sibling-consistency note: tiered identically to the abscesses -> cellulitis and agranulocytosis -> cellulitis drafts already in the registry, keeping the cellulitis target's incoming edge family internally consistent."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cellulitis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The dermatologic literature recognizes superinfection of dermatitic skin as a standard complication: the topical-antibiotic review names impetigo and other superinfected dermatitis among the central indications for antibacterial therapy (Bonamonte 2020); the eczema-herpeticum review documents how a defective epidermal barrier with Th2-skewed immunity, reduced antimicrobial peptides, and Staphylococcus-aureus dysbiosis predisposes eczematous skin to disseminated infection (Traidl 2021); and the reference review records that atopic patients tend to develop viral infections with eczema herpeticum the most feared complication (Wetzel & Wollenberg 2004).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the superinfection evidence is concentrated in atopic dermatitis rather than contact dermatitis specifically, the step from epidermal impetiginization to deeper dermal cellulitis is mechanistically coherent but not quantified in contact-dermatitis cohorts, and local wound care in modern practice interrupts the chain, so only the complication pathway is recorded without a causal claim."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A barrier-failure-and-contiguous-spread pathway is hypothesized: contact dermatitis (irritant or allergic) disrupts the stratum-corneum barrier and inflames the epidermis through spongiotic edema and scratching trauma, opening entry points for Streptococcus pyogenes and Staphylococcus aureus that first produce impetiginized surface crust, then can extend through lymphatics and dermal planes into the deeper dermis and subcutis as cellulitis; the same barrier and immune defects that the eczema-herpeticum literature documents (reduced antimicrobial peptides, dysbiotic microbiome) plausibly apply across eczematous dermatitides. The pathway is biologically coherent and the superinfection endpoint is treatment-recognized, but the deeper-invasion step is not quantified for contact dermatitis, so only association is claimed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Superinfection of dermatitic skin is a recognized complication and the contiguous-spread pathway to deeper infection is biologically coherent, but the progression is not quantified in contact-dermatitis populations and modern wound care interrupts it; individual determination requires infection documentation with culture or clinical criteria, and review by a qualified medical professional.",
+        "evidenceGaps": "Clinical or culture documentation of cellulitis (spreading erythema, warmth, systemic markers) with chronology relative to the dermatitis flare; documentation of the dermatitis distribution and severity at the infection site; occupational or exposure history identifying the contactant; workup excluding cellulitis mimics (stasis dermatitis, contact reaction itself, venous insufficiency); a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Stasis dermatitis or venous insufficiency with recurrent cellulitis",
+          "Cellulitis arising from unrelated skin breaks (trauma, tinea pedis, ulcers)",
+          "The contactant itself mimicking infection (acute irritant reaction)",
+          "Immunosuppression from diabetes, medications, or other host factors",
+          "Prior ipsilateral cellulitis or saphenous-vein harvest as a recurrence driver"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the superinfection complication is dermatology-textbook recognized, but the specific progression from contact dermatitis to deeper cellulitis rests on a shared-barrier-biology inference from the atopic literature rather than condition-specific cohort data; the edge records the complication pathway and leaves every causal judgment to a qualified medical professional.",
+      "sourceReferences": [
+        {
+          "citation": "Bonamonte D, De Marco A, Giuffrida R, Conforti C, Barlusconi C, Foti C, Romita P. Topical antibiotics in the dermatological clinical practice: Indications, efficacy, and adverse effects. Dermatol Ther. 2020;33(6):e13824. PMID 32531105. doi:10.1111/dth.13824.",
+          "note": "Narrative review naming impetigo and other superinfected dermatitis among the central indications for topical antibiotic therapy; establishes superinfection of dermatitic skin as a treatment-recognized complication.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32531105/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 32531105; abstract"
+        },
+        {
+          "citation": "Traidl S, Roesner L, Zeitvogel J, Werfel T. Eczema herpeticum in atopic dermatitis. Allergy. 2021;76(10):3017-3027. PMID 33844308. doi:10.1111/all.14853.",
+          "note": "Review documenting the barrier-plus-immune predisposition of eczematous skin to disseminated infection: type-2-skewed antiviral T cells, impaired dendritic and NK-cell function, reduced antimicrobial peptides, and Staphylococcus-aureus dysbiosis; the mechanistic anchor for barrier-failure superinfection across eczematous dermatitides.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33844308/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 33844308; abstract"
+        },
+        {
+          "citation": "Wetzel S, Wollenberg A. [Eczema herpeticatum]. Hautarzt. 2004;55(7):646-652. PMID 15150652. doi:10.1007/s00105-004-0744-1.",
+          "note": "Reference review recording that atopic dermatitis patients tend to develop viral infections, with eczema herpeticum the most feared complication; corroborates the infection-predisposition framing in eczematous skin.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15150652/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 15150652; abstract"
+        }
+      ],
+      "evidenceGaps": [
+        "Clinical or culture documentation of cellulitis (spreading erythema, warmth, systemic markers) with chronology relative to the dermatitis flare",
+        "Documentation of the dermatitis distribution and severity at the infection site",
+        "Occupational or exposure history identifying the contactant",
+        "Workup excluding cellulitis mimics (stasis dermatitis, contact reaction itself, venous insufficiency)",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

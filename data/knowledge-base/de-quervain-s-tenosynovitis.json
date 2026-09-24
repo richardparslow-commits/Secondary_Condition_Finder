@@ -1,9 +1,85 @@
 {
-  "id": "de-quervain-s-tenosynovitis",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "de-quervain-s-tenosynovitis",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 19 (2026-09-23): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "The single co-occurrence cohort (9.9%) is a clinical-referred CTS population, not a longitudinal DQT cohort - the directionality question (DQT hands developing CTS) has no cohort evidence at all; keep the association framing when reviewing."
+ ],
+ "governanceNotes": [
+  "Authored at ASSOCIATION_ONLY with NOT_ESTABLISHED consensus and hypothesizedOnly mechanism: the only quantified co-occurrence study (Mandiroglu 2021) reports 9.9% DQT prevalence in CTS hands, above the population baseline the authors cite, but it is cross-sectional and referral-based, so shared-substrate and ascertainment explanations cannot be excluded.",
+  "Shared-substrate guard recorded in-file: peritendinous/fibrotic tenosynovial change and repetitive-overuse exposure are common to both conditions, and the JAMA spectrum review groups the four hand conditions under shared risk factors - either condition can precede or follow the other with no documented directional risk.",
+  "Treatment-interruption guard: steroid injection, splinting, and surgical release effectively treat both conditions (72% symptom relief in the JAMA review), so co-occurrence claims require chronology and persistence documentation."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "carpal-tunnel-syndrome",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "In a 310-patient electrodiagnostic CTS cohort, ultrasound-confirmed de Quervain's tenosynovitis was found in 9.9% of hands, which the authors report as a higher prevalence than the normal population (Mandiroglu 2021); the JAMA spectrum review groups de Quervain tenosynovitis and carpal tunnel syndrome among the common hand conditions sharing risk factors (female sex, diabetes, occupational exposures) and first-line therapies (Currie 2022); de Quervain's is characterized as an overuse thickening of the first extensor compartment (Goel 2015), the same degenerative/fibrotic tenosynovial biology that underlies stenosing tenosynovial disease elsewhere in the wrist.",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the co-occurrence study is cross-sectional in a referred population (ascertainment bias possible), no cohort quantifies incident CTS after de Quervain's onset, the common substrate (tenosynovial fibrosis from repetitive use, diabetes, female sex, hormonal factors) can produce either condition independently, and effective treatment of either condition interrupts any shared pathway."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+    "primaryVector": "A shared-tenosynovial/overuse pathway is hypothesized: repetitive thumb-wrist motion and associated systemic risk factors produce fibrotic thickening of tendon sheaths; extension of the same process to the carpal tunnel's flexor tenosynovium increases carpal tunnel tissue pressure and compresses the median nerve. The pathway is biologically standard but its magnitude, direction, and tempo in de Quervain's patients are unmeasured.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "One cross-sectional co-occurrence cohort plus a shared-risk-factor spectrum review support an association claim only. Etiological consensus is therefore NOT_ESTABLISHED and the mapping asserts no nexus probability.",
+    "evidenceGaps": "electrodiagnostically confirmed CTS (NCS) with chronology relative to the de Quervain's diagnosis; documented de Quervain's diagnosis (Finkelstein sign, ultrasound) with onset dates; shared-exposure documentation (occupational/repetitive use, diabetes, pregnancy/postpartum state); exclusion of hypothyroidism, rheumatoid arthritis, amyloidosis, and trauma as primary drivers",
+    "alternativeEtiologiesToRuleOut": [
+     "Independent metabolic drivers (diabetes, hypothyroidism, amyloid)",
+     "Rheumatoid tenosynovitis",
+     "Pregnancy/hormonal transient states",
+     "Direct wrist trauma or fracture",
+     "Occupational vibration exposure as the common cause"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: co-occurrence above baseline is documented once, cross-sectionally; direction, magnitude, and independence from shared drivers are unestablished.",
+   "sourceReferences": [
+    {
+     "citation": "Mandiroglu S, Alemdaroglu E. Idiopathic carpal tunnel syndrome and de Quervain's tenosynovitis: is there an association? Somatosens Mot Res. 2021;38(4):353-356. PMID 34632917. doi:10.1080/08990220.2021.1986378.",
+     "note": "Cohort of 310 patients/356 hands evaluated for idiopathic CTS: de Quervain's tenosynovitis was present in 9.9% of CTS hands (29 cases), a prevalence the authors report as higher than the normal population baseline; ultrasound-confirmed DQT with electrodiagnostic CTS.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34632917/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 34632917; results (9.9% co-occurrence above baseline) and conclusion"
+    },
+    {
+     "citation": "Currie KB, Tadisina KK, Mackinnon SE. Common Hand Conditions: A Review. JAMA. 2022;327(24):2434-2445. PMID 35762992. doi:10.1001/jama.2022.8481.",
+     "note": "JAMA review of the four common compressive/stenosing hand conditions - carpal tunnel syndrome, trigger finger, de Quervain tenosynovitis, and thumb basilar arthritis - as a spectrum with shared risk factors (female sex, diabetes, occupation) and common first-line therapy.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35762992/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 35762992; Importance/Observations (shared risk profile across the hand-condition spectrum)"
+    },
+    {
+     "citation": "Goel R, Abzug JM. de Quervain's tenosynovitis: a review of the rehabilitative options. Hand (N Y). 2015;10(1):1-5. PMID 25762881. doi:10.1155/2014/9649-3.",
+     "note": "Review characterizing de Quervain's as an overuse disease with thickening of the first dorsal compartment extensor retinaculum; documents conservative and surgical management that interrupts the tendinopathy pathway.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25762881/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 25762881; introduction (overuse tendinopathy definition) and management"
+    }
+   ],
+   "evidenceGaps": [
+    "electrodiagnostically confirmed CTS (NCS) with chronology relative to the de Quervain's diagnosis",
+    "documented de Quervain's diagnosis (Finkelstein sign, ultrasound) with onset dates",
+    "shared-exposure documentation (occupational/repetitive use, diabetes, pregnancy/postpartum state)",
+    "exclusion of hypothyroidism, rheumatoid arthritis, amyloidosis, and trauma as primary drivers",
+    "NCS-confirmed CTS with onset chronology",
+    "documented de Quervain's diagnosis and treatment history",
+    "shared-exposure record"
+   ]
+  }
+ ]
 }

@@ -1,9 +1,146 @@
 {
-  "id": "dermatomyositis",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review immunologic, hematologic, infectious, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "dermatomyositis",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 21 (2026-09-23): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Paraneoplastic guard for both edges: in the IIM meta-analysis dysphagia is also a marker of increased cancer risk (RR 2.09) and ILD of reduced cancer risk (RR 0.49) (Oldroyd 2021); a dysphagia or ILD presentation in DM requires concurrent malignancy workup, so any secondary claim must record whether a paraneoplastic phenotype was excluded."
+ ],
+ "governanceNotes": [
+  "Both edges authored at ASSOCIATION_ONLY with NOT_ESTABLISHED consensus and hypothesizedOnly mechanisms, following the scleroderma -> interstitial-lung-disease precedent: ILD and dysphagia are defining-feature-level associations of a systemic autoimmune disease, but subtype heterogeneity (classic vs amyopathic vs anti-synthetase vs anti-MDA5), autoantibody-stratified phenotypes, and treatment-era cohorts prevent a population-level causal quantification without individual subtype documentation.",
+  "Mortality-direction guard: ILD is the dominant mortality predictor in DM cohorts (HR 3.57, Fornaro 2024), so the ILD edge carries severity documentation requirements disproportionate to its rank position."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "interstitial-lung-disease",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The IIM cohort (n=91) found interstitial lung disease in 43.8% of clinically amyopathic DM versus 15.9% of classic DM, and ILD was the strongest mortality predictor overall (HR 3.57) (Fornaro 2024); the 69-study IIM meta-analysis documents ILD as an established clinical factor with inverse paraneoplastic weighting (RR 0.49 for cancer) (Oldroyd 2021); the 546-patient DM cancer-prediction model explicitly scores ILD as an inverse cancer-likelihood factor (Ye 2026).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: ILD in dermatomyositis is subtype-stratified (amyopathic DM, anti-MDA5, anti-synthetase phenotypes) with prevalence spanning roughly 16%-44% across subtypes; the autoimmune-lung pathway is the accepted biology but no cohort quantifies incident ILD attributable to DM within the heterogeneous population; and malignancy workup is standard in DM, so competing paraneoplastic or drug-induced lung injury must be excluded before any individual attribution."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+    "primaryVector": "A hypothesized autoimmune-interstitial pathway: dermatomyositis autoimmunity (type-I interferon signature, myositis-specific antibodies) targets capillary endothelium and mesenchyme as well as muscle and skin; alveolar-interstitial inflammation progresses through a nonspecific interstitial pneumonia or organizing-pneumonia pattern to fibrotic interstitial lung disease. The pathway's expression is antibody-dependent (anti-MDA5 and anti-synthetase carry the highest ILD risk), so the same disease label spans phenotypes with different lung trajectories.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "Subtype heterogeneity (classic vs amyopathic, antibody-defined phenotypes) prevents population-level quantification; paraneoplastic workup is standard in DM and malignancy-associated myositis confounds attribution; drug-induced pneumonitis (methotrexate, biologics) and aspiration-related lung change are competing causes; no incident-cohort denominator exists.",
+    "evidenceGaps": "HRCT and PFT documentation of ILD pattern with chronology relative to DM onset; myositis-specific-antibody panel placing the ILD in its phenotype; exclusion of drug-induced pneumonitis and paraneoplastic lung involvement; severity documentation (FVC, DLCO)",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Malignancy-associated myositis with paraneoplastic lung disease",
+     "Drug-induced pneumonitis (methotrexate, biologics)",
+     "Anti-synthetase syndrome as a distinct antibody-defined entity",
+     "Aspiration-related lung disease in myopathic dysphagia"
+    ]
+   },
+   "evidenceGaps": [
+    "high-resolution CT and pulmonary-function documentation of ILD pattern (NSIP, organizing pneumonia, usual interstitial pneumonia) with chronology relative to DM onset",
+    "myositis-specific-antibody panel (anti-MDA5, anti-synthetase, anti-TIF1-gamma) to place the ILD in its antibody-defined phenotype",
+    "exclusion of drug-induced pneumonitis and of malignancy-associated myositis with paraneoplastic lung involvement",
+    "severity documentation (FVC, DLCO, oxygen requirement) given ILD's role as the dominant DM mortality predictor"
+   ],
+   "rationale": "Authored at ASSOCIATION_ONLY following the scleroderma->ILD precedent: defining-feature association without population-level causal quantification across heterogeneous subtypes; no causal claim is forced.",
+   "sourceReferences": [
+    {
+     "citation": "Fornaro M, Girolamo F, Giannini M, et al. Clinical, histologic and prognostic features of clinically amyopathic dermatomyositis. Clin Exp Rheumatol. 2024;42(2):288-294. PMID 38488091.",
+     "note": "Retrospective cohort (n=91 IIM): interstitial lung disease in 43.8% of clinically amyopathic DM vs 15.9% of classic DM; ILD was the strongest mortality predictor in the overall cohort (HR 3.57, CI 1.11-11.5), alongside cancer.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38488091/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 38488091; ILD prevalence by DM subtype and mortality prediction"
+    },
+    {
+     "citation": "Oldroyd AGS, Allard AB, Callen JP, et al. A systematic review and meta-analysis to inform cancer screening guidelines in idiopathic inflammatory myopathies. Rheumatology (Oxford). 2021;60(6):2615-2628. PMID 33599244.",
+     "note": "Systematic review and meta-analysis (69 studies): in IIM, dysphagia was associated with significantly increased cancer risk (RR 2.09); interstitial lung disease was associated with reduced cancer risk (RR 0.49) - documenting both as established IIM clinical factors with opposing paraneoplastic significance.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33599244/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 33599244; dysphagia and ILD as IIM clinical factors with paraneoplastic weighting"
+    },
+    {
+     "citation": "Ye J, Wu W, Wu H, et al. A Novel Tool for Predicting Malignant Disease in Adult Patients With Dermatomyositis. JAMA Dermatol. 2026;162(2):176-180. PMID 41335433.",
+     "note": "Multicenter retrospective cohort (n=546): the TIP-CA prediction model includes interstitial lung disease (present scored -1) and anti-TIF1-gamma antibody as cancer-associated-likelihood factors in adult DM, reflecting the established cross-phenotype structure of the disease.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41335433/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 41335433; ILD's inverse weighting in the DM cancer-prediction model"
+    }
+   ]
+  },
+  {
+   "conditionId": "dysphagia",
+   "rank": 2,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The IIM systematic review and meta-analysis (69 studies) documents dysphagia as an established clinical factor of the disease, associated with increased cancer risk (RR 2.09) in the paraneoplastic direction (Oldroyd 2021); the therapeutic-rationale review lists dysphagia among the core clinical features of DM (Paik 2025); the dedicated prognosis report confirms pharyngeal/upper-esophageal involvement as a clinically tracked manifestation (Ogawa-Momohara 2019).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: inflammatory involvement of striated pharyngeal and upper-esophageal muscle is the accepted biology, but no cohort quantifies incident dysphagia in the general DM population; dysphagia marks the severe myositis phenotype and simultaneously flags malignancy-associated myositis; glucocorticoid myopathy and cricopharyngeal dysfunction are competing mechanisms producing the same symptom."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+    "primaryVector": "A hypothesized inflammatory-myopathy pathway: dermatomyositis autoimmunity involves striated muscle beyond the limb girdles, including the pharyngeal constrictors and upper esophageal sphincter; inflammatory infiltration and perifascicular atrophy weaken the swallowing musculature, producing nasal regurgitation, cough with swallows, and penetrations/aspirations; velopharyngeal incompetence and cricopharyngeal spasm can compound the deficit. Steroid-induced proximal myopathy is a competing mechanism once treatment begins.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "No incidence denominator in the general DM population; phenotype and paraneoplastic confounding (dysphagia flags cancer-associated myositis); competing steroid-myopathy and cricopharyngeal mechanisms; and the association evidence is expert-review and cohort-structure level rather than quantified incidence - association strength is the supportable ceiling.",
+    "evidenceGaps": "Video-fluoroscopic or FEES swallowing study with chronology relative to DM onset; active-myositis documentation at onset; exclusion of steroid myopathy and cricopharyngeal dysfunction; recorded malignancy-workup status",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Glucocorticoid-induced myopathy",
+     "Cricopharyngeal dysfunction (non-inflammatory)",
+     "Malignancy-associated myositis with paraneoplastic dysphagia",
+     "Neurological dysphagia (stroke, motor neuron disease)"
+    ]
+   },
+   "evidenceGaps": [
+    "video-fluoroscopic or fiberoptic-endoscopic swallowing study documenting the pharyngeal/upper-esophageal pattern with chronology relative to DM onset",
+    "muscle-disease documentation (CK, MRI, or electromyography) showing active myositis at or near the dysphagia onset",
+    "exclusion of glucocorticoid-induced myopathy and cricopharyngeal dysfunction as the operative mechanism",
+    "malignancy workup status - the meta-analysis associates dysphagia with cancer (RR 2.09), so paraneoplastic exclusion is required"
+   ],
+   "rationale": "Authored at ASSOCIATION_ONLY: accepted inflammatory biology but no incidence denominator, phenotype confounding, and a documented paraneoplastic marker role; no causal claim is forced.",
+   "sourceReferences": [
+    {
+     "citation": "Oldroyd AGS, Allard AB, Callen JP, et al. A systematic review and meta-analysis to inform cancer screening guidelines in idiopathic inflammatory myopathies. Rheumatology (Oxford). 2021;60(6):2615-2628. PMID 33599244.",
+     "note": "Systematic review and meta-analysis (69 studies): in IIM, dysphagia was associated with significantly increased cancer risk (RR 2.09); interstitial lung disease was associated with reduced cancer risk (RR 0.49) - documenting both as established IIM clinical factors with opposing paraneoplastic significance.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33599244/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 33599244; dysphagia and ILD as IIM clinical factors with paraneoplastic weighting"
+    },
+    {
+     "citation": "Paik JJ, Vencovsky J, Charles-Schoeman C, et al. Brepocitinib, a potent and selective TYK2/JAK1 inhibitor: scientific and clinical rationale for dermatomyositis. Clin Exp Rheumatol. 2025;43(2):354-363. PMID 39008325.",
+     "note": "Therapeutic rationale review: dermatomyositis is a systemic autoimmune disease characterised by skin and muscle disease that may include dysphagia among its associated clinical features.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39008325/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 39008325; dysphagia listed among core DM clinical features"
+    },
+    {
+     "citation": "Ogawa-Momohara M, Muro Y, Kono M, Akiyama M. Prognosis of dysphagia in dermatomyositis. Clin Exp Rheumatol. 2019;37(1):165. PMID 30557132.",
+     "note": "Dedicated prognosis report on dysphagia in dermatomyositis, confirming pharyngeal/upper-esophageal involvement as a recognized and clinically tracked manifestation of the disease.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30557132/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 30557132; dysphagia prognosis in DM"
+    }
+   ]
+  }
+ ]
 }

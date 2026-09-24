@@ -2,8 +2,77 @@
   "id": "fecal-impaction",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 33 (2026-09-23): DIRECT_CAUSATION draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the DIRECT_CAUSATION classification follows the obstruction-mechanical precedents (urethral-stricture -> hydronephrosis and esophageal-stricture -> dysphagia): fecal incontinence is listed among the clinical manifestations of impaction and the overflow phenotype reverses with disimpaction; the edge is scoped to documented retained stool mass with overflow leakage, not to sphincter-injury, neurogenic, or diarrheal fecal incontinence."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 33 (2026-09-23): one DIRECT_CAUSATION fecal-incontinence edge authored from the impaction-management literature - the Wald 2008 management review lists fecal incontinence among the clinical manifestations of fecal impaction alongside distention, obstruction, and stercoral ulceration, the Wald 2005 fecal-incontinence review documents fecal impaction with overflow incontinence as an identifiable-and-treatable syndrome (treatment-dependency: relieving the impaction resolves the leakage, the Pregun 2009 treatment-response pattern used for the esophagitis -> stricture edge), and the Fox 1988 geriatric presentation series documents fecal impaction with incontinence as a recognized clinical presentation; the mechanical overflow sequence is the accepted physiology.",
+    "Duplicate-scope note: the fecal-incontinence target carries seven incoming edges (rectal-prolapse, anorectal-stricture, anal-fissure, anismus-pelvic-floor-dyssynergia, conus-medullaris-syndrome, colorectal-cancer, anal-fistula), all on anorectal-sphincter, pelvic-floor, neurogenic, or oncologic mechanisms; this edge adds the intraluminal-obstruction mechanism and shares no evidence base with those pathways. No chronic-constipation identity exists in the catalog, so this impaction identity is the obstruction-side record for the retention-to-overflow chain."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "fecal-incontinence",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented retained fecal mass in the rectum or sigmoid -> progressive colonic distension with impairment of rectal reservoir sensation -> mass effect exceeding internal sphincter closure pressure -> liquid stool percolating around the obstruction -> passive overflow leakage (fecal incontinence) that resolves when the mass is removed.",
+        "mechanismSummary": "The Wald 2008 impaction-management review lists fecal incontinence among the clinical manifestations of fecal impaction, the Wald 2005 review documents impaction-with-overflow-incontinence as identifiable by history and examination and appropriately treatable - the disimpaction-response dependency demonstrating the mechanical chain - and the Fox 1988 geriatric series documents the impaction-with-incontinence presentation; the overflow sequence is the accepted physiology of the obstruction, the same obstruction-mechanical family as the esophageal-stricture and urethral-stricture precedents."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized mechanical-overflow pathway: chronic retained stool consolidates into a bolus that mechanically obstructs the rectal lumen; distension stretches the rectal wall beyond its reservoir compliance, blunts the sampling reflex and rectoanal inhibitory response, and the intraluminal mass pressure overcomes sphincter closure force, so liquid or softened stool percolating past the obstruction leaks passively until the mass is disimpacted; individual claims require documented retained stool mass with documented leakage temporally linked to the mass and resolution of leakage following disimpaction, with sphincter and neurogenic function independently assessed.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The direct classification applies where impaction is confirmed (digital examination or abdominal radiography) and the leakage phenotype is overflow around the documented mass that resolves with disimpaction: primary sphincter-insufficiency, neurogenic, prolapse, and diarrheal incontinence have their own mechanisms and must be excluded independently, and chronic long-standing distension may secondarily impair sphincter function so attribution requires chronology rather than co-presence; no VA probability language is asserted.",
+        "evidenceGaps": "Documented retained stool mass by digital examination or abdominal radiography with chronology of leakage episodes temporally linked to the mass; documentation that leakage is passive overflow (resolution of incontinence following successful disimpaction); anorectal physiology or neurologic assessment excluding independent sphincter or neurogenic incontinence; exclusion of diarrheal, prolapse, post-surgical, and obstetric incontinence etiologies; medication, mobility, and care-context review; gastroenterology or colorectal assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Obstetric or post-surgical sphincter-insufficiency incontinence",
+          "Neurogenic incontinence (cauda equina, multiple sclerosis, diabetes)",
+          "Diarrhea-predominant or IBS-driven fecal incontinence",
+          "Rectal prolapse with mechanical incontinence",
+          "Chronic idiopathic fecal incontinence unrelated to retention"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented retained stool mass by digital examination or abdominal radiography with chronology of leakage episodes temporally linked to the mass; documentation that leakage is passive overflow (resolution of incontinence following successful disimpaction); anorectal physiology or neurologic assessment excluding independent sphincter or neurogenic incontinence; exclusion of diarrheal, prolapse, post-surgical, and obstetric incontinence etiologies; medication, mobility, and care-context review; gastroenterology or colorectal assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION following the obstruction-mechanical precedents: incontinence is listed among impaction's clinical manifestations and the overflow phenotype reverses when the obstruction is cleared, so the mechanical chain is accepted physiology; the claim is scoped to documented impaction with the overflow phenotype and independent sphincter causes excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Wald A. Management and prevention of fecal impaction. Curr Gastroenterol Rep. 2008 Oct;10(5):499-501. PMID 18799126.",
+          "note": "Management review listing fecal incontinence among the clinical manifestations of fecal impaction alongside distention, obstruction, and stercoral complications - the impaction-manifestation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18799126/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 18799126; fecal incontinence as manifestation of impaction"
+        },
+        {
+          "citation": "Wald A. Fecal incontinence. Curr Treat Options Gastroenterol. 2005 Aug;8(4):319-324. PMID 16009033.",
+          "note": "Fecal-incontinence review documenting fecal impaction with overflow incontinence as identifiable by history and examination and appropriately treatable - the disimpaction-response dependency anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16009033/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 16009033; impaction with overflow incontinence treatable"
+        },
+        {
+          "citation": "Fox RA. Atypical presentation of geriatric infections. Geriatrics. 1988 May;43(5):58-64. PMID 3360329.",
+          "note": "Geriatric presentation series documenting fecal impaction with incontinence as a recognized clinical presentation in elderly patients - the presentation-confirmation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/3360329/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 3360329; fecal impaction with incontinence presentation"
+        }
+      ]
+    }
+  ]
 }

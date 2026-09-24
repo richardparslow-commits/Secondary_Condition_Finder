@@ -2,8 +2,150 @@
   "id": "conus-medullaris-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 13 (2026-09-22): association-only drafts pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The strongest available evidence is a 5-record burst-fracture case series plus a case report; if a qualified human finds a large urodynamic cohort of conus medullaris lesions with lesion-level stratification, a higher tier or a refined mechanism may be appropriate."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: the defining clinical literature itself names bladder/bowel dysfunction among the presenting signs of conus medullaris syndrome, but the quantified evidence base is case-series class (Chiu & Liao 2019: 8 patients) without population denominators or onset-ordering, so no causal claim is forced at the mapping level; the signature is the pattern of the syndrome, not an independent claim the veteran must separately prove by population statistics.",
+    "Etiologic heterogeneity is preserved: conus medullaris syndrome arises from traumatic burst fractures, disc herniation, spinal dural arteriovenous fistulas, tumors, and ischemia (Stevens 2009 case documents an occult DAVF presenting as rapidly progressive conus syndrome with urinary retention and fecal incontinence); the downstream incontinence edges inherit that heterogeneity, which is why aggravation was not drafted.",
+    "Sibling-consistency note: this edge is tiered identically to the anterior-cord-syndrome -> urinary-incontinence association-only precedent (ME-32) and the central-cord-syndrome -> urinary-incontinence batch-9 draft, keeping the incomplete-spinal-cord-syndrome family internally consistent."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "urinary-incontinence",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The defining-presentation and case-series literature documents bladder dysfunction as a core feature of conus medullaris syndrome: the pure-conus surgical cohort (8 patients, L1 burst fractures) recorded urodynamic-confirmed neurogenic bladder in all patients, split between overactive and underactive types, with only half regaining normal voiding function at final follow-up (Chiu & Liao 2019); the lumbar burst-fracture case study documents bladder dysfunction from conus injury after a 25-foot fall (Storch 2005); the DAVF case report presents urinary retention as part of a rapidly progressive conus syndrome (Stevens 2009).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the quantified evidence is a single 8-patient surgical series plus case reports, the injury-level-to-bladder-phenotype mapping varies patient to patient, and the neurogenic-bladder literature defines the dysfunction as a direct expression of the lesion rather than an independently progressing condition, so only co-occurrence within the syndrome picture is recorded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "A sacral-segment-injury pathway is hypothesized: the conus medullaris houses the S2-S4 sacral micturition center, so a lesion compressing or destroying the conus (burst fracture retropulsion, venous congestive myelopathy, mass effect) interrupts supraspinal and parasympathetic bladder control simultaneously, producing urodynamic patterns ranging from detrusor overactivity with urge incontinence to detrusor areflexia with retention and overflow incontinence depending on whether the injury is irritative or destructive at the segment; recovery depends on residual viable tissue rather than a progressive process. The mechanism is anatomically direct and treatment-validated (the neurogenic-bladder management literature exists precisely because of this lesion class), but the mapping-level evidence is case-series class without denominators, so only association is claimed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Bladder dysfunction co-occurs as a defining feature of conus medullaris syndrome across presentation, surgical-series, and case-report evidence, but the mapping-level record cannot substitute for individual-case proof: determination requires urodynamic documentation, lesion-level imaging correlation, and review by a qualified medical professional.",
+        "evidenceGaps": "Urodynamic study (or documented catheterization dependence) characterizing the neurogenic bladder phenotype; MRI or surgical documentation establishing the conus lesion and its level; chronology establishing bladder dysfunction onset relative to the conus injury; workup excluding independent urologic disease (prostatic obstruction, stress incontinence, diabetic cystopathy); a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Benign prostatic hyperplasia or other bladder-outlet obstruction",
+          "Stress urinary incontinence from pelvic-floor weakness",
+          "Diabetic or other autonomic neuropathy causing cystopathy",
+          "Cauda equina syndrome with roots involved below the conus",
+          "Medication effects (anticholinergics, diuretics, sedatives) on voiding"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: bladder dysfunction is a presenting sign of the syndrome itself, so a higher tier would partly restate the diagnostic picture; the edge records co-occurrence and leaves every individual determination to a qualified medical professional.",
+      "sourceReferences": [
+        {
+          "citation": "Chiu PY, Liao JC. Surgical outcomes in thoracolumbar fractures with pure conus medullaris syndrome. Biomed J. 2019;42(4):277-284. PMID 31627870. doi:10.1016/j.bj.2019.02.004.",
+          "note": "Eight-patient pure-conus L1 burst-fracture cohort with urodynamic assessment: all had neurogenic bladder (four overactive, four underactive), five regained self-voiding, three required intermittent catheterization, and only half regained normal bladder and sexual function; the central quantified outcome evidence.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31627870/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 31627870; background, results, conclusions"
+        },
+        {
+          "citation": "Storch JS. Lumbar burst fracture associated with bowel, bladder, and sexual dysfunction: case study. J Neurosci Nurs. 2005;37(2):68-71. PMID 15902947. doi:10.1097/01376517-200504000-00002.",
+          "note": "Case study of L1 burst fracture after a 25-foot fall producing conus medullaris injury with bowel, bladder, and sexual dysfunction; documents the combined sacral-dysfunction picture in a single injury mechanism.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15902947/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 15902947; abstract"
+        },
+        {
+          "citation": "Stevens EA, Powers AK, Morris PP, Wilson JA. Occult dural arteriovenous fistula causing rapidly progressive conus medullaris syndrome and paraplegia after lumbar microdiscectomy. Spine J. 2009;9(9):e8-12. PMID 19442586. doi:10.1016/j.spinee.2009.03.015.",
+          "note": "Case report of an occult spinal DAVF presenting as rapidly progressive conus medullaris syndrome with urinary retention and fecal incontinence; entered deliberately as the etiologic-heterogeneity anchor showing non-traumatic conus lesions produce the same downstream picture.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19442586/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 19442586; background, results"
+        }
+      ],
+      "evidenceGaps": [
+        "Urodynamic study (or documented catheterization dependence) characterizing the neurogenic bladder phenotype",
+        "MRI or surgical documentation establishing the conus lesion and its level",
+        "Chronology establishing bladder dysfunction onset relative to the conus injury",
+        "Workup excluding independent urologic disease (prostatic obstruction, stress incontinence, diabetic cystopathy)",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    },
+    {
+      "conditionId": "fecal-incontinence",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The defining-presentation and case literature documents bowel dysfunction among the core features of conus medullaris syndrome: the pure-conus definition used by the surgical literature is itself a combination of bladder/bowel incontinence and impotence signs (Chiu & Liao 2019), the lumbar burst-fracture case study documents bowel dysfunction from conus injury (Storch 2005), and the DAVF case report presents frank fecal incontinence as part of a rapidly progressive conus syndrome (Stevens 2009).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the evidence is case-report and small-series class with no population denominators, bowel dysfunction is defined as part of the syndrome's own presentation rather than an independently progressing condition, and anorectal-manometry quantification of conus-lesion bowel dysfunction is not reported in the available records, so only co-occurrence within the syndrome picture is recorded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "A sacral-defecation-control pathway is hypothesized: the S2-S4 Onuf nucleus and sacral parasympathetic outflow in the conus coordinate external-anal-sphincter tone, rectal sensation, and the defecation urge, so a conus lesion can simultaneously weaken voluntary squeeze, blunt rectal sensitivity, and dyscoordinate the rectoanal gradient, producing fecal seepage or frank incontinence that tracks the same lesion level as the bladder findings; recovery parallels sacral-segment viability rather than a progressive course. The mechanism is anatomically coherent and consistent with the presented cases, but the mapping-level evidence is case-report class without anorectal-physiology quantification, so only association is claimed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Bowel dysfunction co-occurs as a defining feature of conus medullaris syndrome in the presentation and case literature, but no anorectal-manometry cohort quantifies the outcome, so individual determination requires sphincter testing, lesion correlation, and review by a qualified medical professional.",
+        "evidenceGaps": "Anorectal manometry and endoanal imaging (or documented continence-product dependence) characterizing the fecal-incontinence phenotype; MRI or surgical documentation establishing the conus lesion and its level; chronology establishing bowel dysfunction onset relative to the conus injury; workup excluding independent anorectal disease (sphincter trauma, prolapse, diarrhea-predominant disorders); a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Obstetric or surgical anal-sphincter injury",
+          "Rectal prolapse or hemorrhoidal disease",
+          "Diarrhea-predominant irritable bowel or inflammatory bowel disease",
+          "Diabetic or other autonomic neuropathy",
+          "Cauda equina syndrome with roots involved below the conus"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: bowel dysfunction is a presenting sign of the syndrome itself and the quantified base is case-report class, so the edge records co-occurrence and leaves every individual determination to a qualified medical professional.",
+      "sourceReferences": [
+        {
+          "citation": "Chiu PY, Liao JC. Surgical outcomes in thoracolumbar fractures with pure conus medullaris syndrome. Biomed J. 2019;42(4):277-284. PMID 31627870. doi:10.1016/j.bj.2019.02.004.",
+          "note": "Surgical cohort whose working definition of pure conus medullaris syndrome is itself bladder/bowel incontinence plus impotence signs; anchors bowel dysfunction as a defining feature while its outcomes quantify only voiding and sexual recovery.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31627870/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 31627870; background"
+        },
+        {
+          "citation": "Storch JS. Lumbar burst fracture associated with bowel, bladder, and sexual dysfunction: case study. J Neurosci Nurs. 2005;37(2):68-71. PMID 15902947. doi:10.1097/01376517-200504000-00002.",
+          "note": "Case study of L1 burst fracture producing conus medullaris injury with bowel and bladder dysfunction; the direct bowel-outcome documentation in the batch.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15902947/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 15902947; abstract"
+        },
+        {
+          "citation": "Stevens EA, Powers AK, Morris PP, Wilson JA. Occult dural arteriovenous fistula causing rapidly progressive conus medullaris syndrome and paraplegia after lumbar microdiscectomy. Spine J. 2009;9(9):e8-12. PMID 19442586. doi:10.1016/j.spinee.2009.03.015.",
+          "note": "Case report presenting frank fecal incontinence and urinary retention from an occult DAVF congestive myelopathy; the etiologic-heterogeneity anchor for non-traumatic conus lesions.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19442586/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 19442586; background"
+        }
+      ],
+      "evidenceGaps": [
+        "Anorectal manometry and endoanal imaging (or documented continence-product dependence) characterizing the fecal-incontinence phenotype",
+        "MRI or surgical documentation establishing the conus lesion and its level",
+        "Chronology establishing bowel dysfunction onset relative to the conus injury",
+        "Workup excluding independent anorectal disease (sphincter trauma, prolapse, diarrhea-predominant disorders)",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

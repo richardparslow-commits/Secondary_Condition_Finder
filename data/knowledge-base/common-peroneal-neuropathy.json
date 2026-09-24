@@ -1,6 +1,15 @@
 {
   "id": "common-peroneal-neuropathy",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "D1 draft-authoring batch 17 (2026-09-22): identity deferred with a documented identity barrier instead of an authored edge, per the repo's established deferral convention (ME-30/ME-32 precedents and the cubital-tunnel-syndrome batch-16 deferral).",
+    "Revisit only if the catalog adds a distinct outcome identity (gait deviation, falls, ankle-foot-orthosis dependence, trip-related injury) separable from the neuropathy itself, and only with condition-specific outcome literature; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [],
+  "governanceNotes": [
+    "Deliberate deferral, not an authored suggestion: common peroneal (fibular) neuropathy IS the clinical identity whose defining presentation is foot drop with dorsiflexion weakness and sensory loss in the peroneal distribution, so an edge from this identity to any catalog outcome expressing foot drop, dorsiflexion weakness, or peroneal sensory deficit would restate the diagnostic presentation (the ME-41 phenotype-identity barrier).",
+    "The natural downstream candidates lack catalog identities (falls and trip-related injury, gait deviation, ankle-foot-orthosis dependence, chronic paresthesia), and the remaining catalog neuropathy targets are sibling identities whose edges would run sideways rather than downstream; the surgical-decompression and tendon-transfer literature is treatment-class rather than natural-history evidence, so no defensible target identity exists."
+  ]
 }

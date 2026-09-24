@@ -1,9 +1,13 @@
 {
-  "id": "diabetic-dermopathy",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "diabetic-dermopathy",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 22 (2026-09-23): identity deferred - a benign marker lesion whose candidate downstream outcomes lack catalog identities and whose clinical significance is as a cutaneous marker of diabetic microvascular disease, not as a cause of further conditions.",
+  "Candidate targets screened: skin-cancer family rejected on identity grounds (diabetic dermopathy has no malignant-transformation pathway); cellulitis and impetigo rejected because the lesion is not a recognized infection portal in the literature (unlike excoriated dermatitis); pruritus and cosmetic impact lack catalog identities."
+ ],
+ "governanceNotes": [
+  "Direction finding: diabetic dermopathy is associated with retinopathy, nephropathy, and neuropathy as a co-marker of microvascular disease - the shared underlying driver is diabetes itself, so any dermopathy -> complication edge would be confounded by the common cause rather than a genuine causal pathway (the association is epiphenomenon, not etiology).",
+  "No sources cited (no edge authored)."
+ ],
+ "suggestions": []
 }

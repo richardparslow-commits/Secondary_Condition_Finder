@@ -2,8 +2,77 @@
   "id": "factitious-disorder",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review psychiatric, neuropsychiatric, medication-related, and sleep-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 32 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the self-injury-to-wound-outcome association documented in the dermatitis-artefacta literature; individual claims require documented self-inflicted lesions preceding documented scarring and exclusion of organic dermatologic disease and independent scar etiologies."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 32 (2026-09-23): one bounded scars association authored from the dermatitis-artefacta outcome literature - the Alcolado 1993 report documents four decades of persistent excoriation of a scar site producing an enlarged disfiguring lesion and death from Marjolin-type malignant transformation, the Rodríguez Pichardo 2013 review of 201 patients documents chronic self-inflicted lesions including ulcers, and the Choudhary 2009 case documents keloids and foreign-body granuloma from self-inflicted acupuncture-ideation injury; the self-injury-to-wound-repair sequence is the accepted biology but individual scar burden is self-injury pattern dependent.",
+    "Duplicate-scope note: the excoriation-disorder identity carries its own scars edge scoped to compulsive picking behavior, so this factitious-disorder edge is the sole conscious-self-injury-to-scar pathway; dermatitis artefacta is the cutaneous presentation of factitious disorder, keeping the two behavioral identities on their own mechanisms."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "scars",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Rodríguez Pichardo 2013 review of 201 patients with dermatitis artefacta (the cutaneous presentation of factitious disorder) documents chronic self-inflicted lesions including ulcers at accessible sites, the Alcolado 1993 case documents four decades of persistent self-excoriation of a scar site with malignant transformation and death from metastatic squamous carcinoma, and the Choudhary 2009 case documents keloids and foreign-body granuloma produced by deliberate self-inflicted injury; the literature connects conscious self-injury to wound outcomes but does not quantify an individual scarring nexus.",
+        "causationStatus": "The mapping does not assert that every scar in a person with factitious disorder was self-inflicted: organic dermatologic disease, surgical scars, and self-harm from other psychiatric conditions independently scar; individual claims require documented self-inflicted lesions preceding documented scars, anatomic distribution over accessible skin that does not match organic disease patterns, and exclusion of organic scarring disease."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized deliberate-self-injury wound-repair pathway: repeated deliberate trauma to accessible skin (excoriation, manipulation, or introduction of foreign material) breaches the epidermis and dermis; each wound triggers the normal repair sequence - inflammation, granulation, and collagen deposition - and chronic unhealed lesions, repeated re-injury of the same sites, and foreign-body reaction produce hypertrophic scarring, keloids, and chronic ulcers that are clinically documented in the dermatitis-artefacta series and case reports; individual scar burden tracks self-injury pattern, chronicity, and secondarily infected lesions rather than the disorder label itself.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the 201-patient series and case reports document chronic self-inflicted lesions and their outcomes, but scarring also follows organic dermatologic disease, surgery, trauma, and self-harm from other psychiatric conditions, diagnosis of dermatitis artefacta is by exclusion, and no cohort quantifies scar risk attributable to the factitious behavior independent of these confounders; no probability estimate is asserted.",
+        "evidenceGaps": "Documented self-inflicted lesions with anatomic distribution over accessible skin; dermatologic examination documenting scars and their chronology relative to self-injury episodes; exclusion of organic dermatologic disease by biopsy or clinical characterization; assessment of keloidal predisposition and foreign-body reaction; psychiatric assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Organic dermatologic disease independently causing scarring",
+          "Surgical, traumatic, or burn scars unrelated to self-injury",
+          "Deliberate self-harm from depressive or other psychiatric disease (distinct mechanism)",
+          "Delusional infestation with skin disruption",
+          "Keloidal predisposition (keloid disorder) with incidental trauma"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented self-inflicted lesions with anatomic distribution over accessible skin; dermatologic examination documenting scars and their chronology relative to self-injury episodes; exclusion of organic dermatologic disease by biopsy or clinical characterization; assessment of keloidal predisposition and foreign-body reaction; psychiatric assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: case reports and the 201-patient review document chronic self-inflicted ulcers and scar outcomes, but no condition-specific cohort establishes an individual causal nexus, so the mapping asserts the association and requires individual psychiatric and dermatologic documentation.",
+      "sourceReferences": [
+        {
+          "citation": "Rodríguez Pichardo A, García Bravo B. Dermatitis artefacta: a review. Actas Dermosifiliogr. 2013 Dec;104(10):854-866. PMID 23266056.",
+          "note": "201-patient series: chronic self-inflicted lesions including ulcers at accessible sites - the DA-population outcome anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23266056/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 23266056; 201-patient DA series"
+        },
+        {
+          "citation": "Alcolado JC, Ray K, Baxter M, Edwards CW, Dodson PM. Malignant change in dermatitis artefacta. Postgrad Med J. 1993 Aug;69(814):648-650. PMID 8234114.",
+          "note": "Case report: four decades of persistent self-excoriation with Marjolin-type malignant transformation - the chronic-self-injury severity anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8234114/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 8234114; Marjolin transformation case"
+        },
+        {
+          "citation": "Choudhary SV, Khairkar P, Singh A, Gupta S. Dermatitis artefacta: keloids and foreign body granuloma due to overvalued ideation of acupuncture. Indian J Dermatol Venereol Leprol. 2009 Nov-Dec;75(6):606-608. PMID 19915244.",
+          "note": "Case report: keloids and foreign-body granuloma from deliberate self-inflicted injury - the self-injury-to-keloid outcome anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19915244/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 19915244; keloids and foreign-body granuloma case"
+        }
+      ]
+    }
+  ]
 }

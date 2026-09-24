@@ -2,8 +2,77 @@
   "id": "esophagitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 31 (2026-09-23): DIRECT_CAUSATION draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the DIRECT_CAUSATION classification follows the ulcer-to-stricture mechanical precedents (peptic-ulcer-disease family and the Pregun 2009 finding that healing the coexistent esophagitis reduces stricture dilation need); the edge is scoped to documented esophagitis with fibrotic stricture outcome, not to transient reflux symptoms."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 31 (2026-09-23): one DIRECT_CAUSATION esophageal-stricture edge authored from the esophagitis-to-stricture outcome literature - the Pregun 2009 review documents acid-suppressive healing of esophagitis as essential to peptic-stricture outcome (reducing repeated dilations), the Cohen 2021 100-patient series documents reflux esophagitis ulcers as the principal stricture source, and the Pearson 2010 30-year pediatric series documents untreated reflux esophagitis progressing to refractory strictures; the fibrotic-repair mechanism is the injury-healing-scar sequence.",
+    "Duplicate-scope note: the gerd identity carries respiratory-target edges (asthma, bronchiectasis, copd, interstitial-lung-disease, pulmonary-fibrosis, respiratory-cancer, tuberculosis) and carries no esophageal-stricture edge, so this esophagitis-mediated pathway is not a parallel pathway; gerd-to-esophagitis is upstream etiology and esophagitis-to-stricture is the injury-healing outcome, keeping each edge on its own mechanism."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "esophageal-stricture",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented esophagitis (reflux, infectious, pill-induced, or eosinophilic) with mucosal injury -> ulceration and inflammation extending to the submucosa -> fibrotic repair with collagen deposition and circumferential scar contracture -> fixed esophageal stricture.",
+        "mechanismSummary": "The Pregun 2009 review documents that healing the coexistent esophagitis is essential to peptic-stricture outcome - acid-suppressive therapy reduces repeated dilations, demonstrating the inflammation-to-stricture dependency; the Cohen 2021 series documents reflux esophagitis ulcers as the principal source of chronic stricture, and the Pearson 2010 series documents reflux esophagitis progressing to refractory strictures in 114 children; the injury-to-scar sequence is the accepted biology."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "A hypothesized injury-fibrosis-stricture pathway: repeated mucosal injury (acid-peptic, infectious, pill, or eosinophilic inflammation) produces ulcers that extend into the submucosa; wound repair deposits collagen, and myofibroblast-mediated circumferential contraction of the scar narrows the lumen into a fixed stricture; durable acid suppression or inflammation control halts the cycle, which is why healing esophagitis reduces dilation requirements. Individual claims require documented inflammation preceding documented narrowing.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The direct classification applies where esophagitis is endoscopically documented before or at stricture diagnosis and other stricture etiologies are excluded: caustic and radiation strictures have their own injury histories, malignancy must be excluded by biopsy, and eosinophilic esophagitis produces both inflammatory and fibrostenotic phenotypes that require separate documentation; no VA probability language is asserted.",
+        "evidenceGaps": "Endoscopically documented esophagitis (grade, etiology) with chronology preceding the stricture; endoscopic or radiographic documentation of the stricture; biopsy excluding malignancy; documentation of inflammatory activity control or its absence; exclusion of caustic, radiation, and anastomotic injury histories; gastroenterology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Esophageal malignancy at the stricture site",
+          "Caustic ingestion or radiation exposure history",
+          "Eosinophilic esophagitis as an independent fibrostenotic driver",
+          "Pill-induced injury with independent scar formation",
+          "Anastomotic or post-surgical scarring"
+        ]
+      },
+      "evidenceGaps": [
+        "Endoscopically documented esophagitis (grade, etiology) with chronology preceding the stricture; endoscopic or radiographic documentation of the stricture; biopsy excluding malignancy; documentation of inflammatory activity control or its absence; exclusion of caustic, radiation, and anastomotic injury histories; gastroenterology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION: the injury-healing-scar sequence is the accepted biology of peptic and ulcerative strictures, and the Pregun review demonstrates the inflammation-dependency through treatment response; the claim is scoped to documented esophagitis with malignancy excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Pregun I, Hritz I, Tulassay Z, Herszenyi L. Peptic esophageal stricture: medical treatment. Dig Dis. 2009;27(1):31-37. PMID 19439958.",
+          "note": "Review: healing the coexistent esophagitis is essential to peptic-stricture outcome and effective acid suppression reduces the need for repeated dilations - the inflammation-dependency anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19439958/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 19439958; esophagitis healing reducing stricture dilations"
+        },
+        {
+          "citation": "Cohen DL, Bermont A, Richter V, Shirin H. Real world management of esophageal ulcers: analysis of their presentation, complications and outcomes. Acta Gastroenterol Belg. 2021 Jul-Sep;84(3):417-422. PMID 34599565.",
+          "note": "11-year 100-patient series: most esophageal ulcers are reflux-related with stricture the principal chronic sequela - the ulcer-to-stricture outcome anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34599565/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 34599565; ulcer complication outcomes"
+        },
+        {
+          "citation": "Pearson EG, Downey EC, Barnhart DC, et al. Reflux esophageal stricture - a review of 30 years' experience in children. J Pediatr Surg. 2010 Dec;45(12):2356-2360. PMID 21129544.",
+          "note": "30-year 114-child series of reflux esophagitis strictures requiring 486 dilations with refractory disease needing surgery - the untreated-inflammation progression anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21129544/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 21129544; 30-year stricture experience"
+        }
+      ]
+    }
+  ]
 }

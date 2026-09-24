@@ -1,9 +1,222 @@
 {
-  "id": "cyclic-vomiting-syndrome",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "cyclic-vomiting-syndrome",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 19 (2026-09-23): association-only drafts pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "The migraine association rests on adult-review plus pediatric-guideline sources with shared-pathophysiology language but no directional cohort; keep the shared-substrate (not causation) framing when reviewing."
+ ],
+ "governanceNotes": [
+  "All three edges authored conservatively at ASSOCIATION_ONLY with NOT_ESTABLISHED consensus and hypothesizedOnly mechanisms: the strongest CVS literature is comorbidity/overlap language from reviews and guidelines, and no cohort quantifies incident esophageal injury, migraine conversion, or depression attributable to CVS.",
+  "Directionality guard recorded in-file: stress/anxiety can trigger CVS episodes (reverse direction documented in the same sources), migraine and CVS may share a common genetic/autonomic substrate rather than one causing the other, and Mallory-Weiss tears are acute lacerations distinct from chronic esophagitis.",
+  "Population guard: the quantified CVS literature is largely pediatric/tertiary-center; adult veteran claims require adult-onset documentation and exclusion of cannabinoid hyperemesis syndrome, which the same sources describe as a CVS subset with distinct management."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "migraine-headaches",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The critical review states CVS is closely associated with migraine headaches and likely shares pathophysiology (Frazier 2023); the 2025 NASPGHAN guideline panel records considerable symptom overlap with migraine and issued a strong recommendation for anti-migraine abortive agents specifically in patients with a personal or family migraine history (Karrento 2025); the earlier review describes a strong association with migraine in the patient and the mother and proposes a mitochondrial mechanism (Kaul 2015).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: anti-migraine efficacy and family-history overlap support a shared trigeminal-autonomic substrate but do not show migraine causing CVS or vice versa; no prospective cohort quantifies migraine development after CVS onset; symptom overlap can reflect the same episodic disorder spectrum rather than a causal link."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+    "primaryVector": "A shared episodic pathway is hypothesized: common genetic/autonomic susceptibility (possibly mitochondrial) produces hypothalamic-pituitary-adrenal hyperreactivity and trigeminal-autonomic activation, manifesting as migraine in one context and stereotyped vomiting episodes in another; the co-occurrence within patients and families, and response to anti-migraine agents, are consistent with a shared substrate but do not establish directional causation.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "The migraine-CVS relationship is reported as association/shared-pathophysiology in the strongest available sources (critical review, GRADE guideline, task-force review), with no directional cohort. Etiological consensus is therefore NOT_ESTABLISHED and the mapping asserts no nexus probability.",
+    "evidenceGaps": "personal/family migraine diagnosis with chronology relative to CVS onset; Rome-criteria CVS phenotype with stereotyped episodes and symptom-free intervals; exclusion of cannabinoid hyperemesis and secondary causes; specialist documentation linking the episodic patterns",
+    "alternativeEtiologiesToRuleOut": [
+     "Cannabinoid hyperemesis syndrome misclassified as CVS",
+     "Abdominal migraine as the same episodic entity",
+     "Medication-overuse headache",
+     "Intracranial structural pathology",
+     "Mitochondrial/metabolic disorder"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: the sources support comorbidity and shared-pathophysiology hypotheses, and the guideline's strong anti-migraine recommendation is a treatment inference, not causal proof. No directional claim is made.",
+   "sourceReferences": [
+    {
+     "citation": "Frazier R, Li BUK, Venkatesan T. Diagnosis and Management of Cyclic Vomiting Syndrome: A Critical Review. Am J Gastroenterol. 2023;118(7):1157-1167. PMID 36791365. doi:10.14309/ajg.0000000000002216.",
+     "note": "Critical review: CVS is 'closely associated with migraine headaches' with likely shared pathophysiology, and is 'frequently associated with anxiety, depression, and autonomic dysfunction'; minimal testing includes upper endoscopy, where esophageal mucosal injury would be assessed.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36791365/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 36791365; Discussion (migraine/psychiatric comorbidity) and minimal-testing recommendations"
+    },
+    {
+     "citation": "Karrento K, Rosen JM, Tarbell SE, Issenman RM, Gelfand AA, Gamboa H, Parikh S, Adams K, Wiercioch W, Li BUK. North American Society for Pediatric Gastroenterology, Hepatology, and Nutrition 2025 guidelines for management of cyclic vomiting syndrome in children. J Pediatr Gastroenterol Nutr. 2025;80(6):1028-1061. PMID 40223700. doi:10.1002/jpn3.70020.",
+     "note": "NASPGHAN 2025 evidence-based guidelines (GRADE): considerable symptom overlap with migraine, strong recommendation for anti-migraine abortive agents with personal/family migraine history, and explicit recognition of inordinate quality-of-life impact and biopsychosocial management.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40223700/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 40223700; Background/Results (migraine overlap, anti-migraine recommendation, QoL)"
+    },
+    {
+     "citation": "Kaul A, Kaul KK. Cyclic Vomiting Syndrome: A Functional Disorder. Pediatr Gastroenterol Hepatol Nutr. 2015;18(4):224-229. PMID 26770896. doi:10.5223/pghn.2015.18.4.224.",
+     "note": "Review: strong association with migraine headaches in the patient and the mother (mitochondrial hypothesis); severe episodes can produce dehydration and hematemesis from Mallory-Weiss tears of the esophageal mucosa.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26770896/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 26770896; pathophysiology and complications sections"
+    }
+   ],
+   "evidenceGaps": [
+    "personal/family migraine diagnosis with chronology relative to CVS onset",
+    "Rome-criteria CVS phenotype with stereotyped episodes and symptom-free intervals",
+    "exclusion of cannabinoid hyperemesis and secondary causes",
+    "specialist documentation linking the episodic patterns",
+    "Documented stereotyped episodic vomiting pattern with prodrome and symptom-free intervals",
+    "Personal or family migraine diagnosis with onset chronology",
+    "Exclusion of cannabis-related hyperemesis and other secondary causes"
+   ]
+  },
+  {
+   "conditionId": "depressive-disorder",
+   "rank": 2,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The critical review states CVS is frequently associated with anxiety and depression and recommends treatment of comorbid conditions to improve outcomes (Frazier 2023); the task-force review characterizes CVS as marked by frequent hospitalizations, multiple comorbidities, and poor quality of life (Raucci 2020); the guideline panel records the syndrome's inordinate impact on quality of life and endorses biopsychosocial management (Karrento 2025).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: chronic episodic illness burden plausibly contributes to depression, but the same sources document stress and anxiety triggering episodes (reverse direction), no incidence cohort quantifies depressive-disorder development after CVS onset, and psychiatric comorbidity may share the autonomic/central substrate rather than result from vomiting burden."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+    "primaryVector": "A chronic-relapsing-illness pathway is hypothesized: recurrent disabling episodes, emergency visits, and hospitalizations produce sustained stress-axis activation, anticipatory anxiety, and functional impairment that contribute to depressive symptoms; the biopsychosocial model endorsed by guidelines is consistent with bidirectional mind-gut interaction but does not establish direction or magnitude.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "Comorbidity language is consistent across the review, task-force, and guideline sources, but all are cross-sectional or expert consensus; no directional or incidence evidence exists. Etiological consensus is therefore NOT_ESTABLISHED and the mapping asserts no nexus probability.",
+    "evidenceGaps": "DSM/PHQ-documented depressive disorder with onset chronology relative to CVS onset; episode-frequency and hospitalization documentation; exclusion of pre-existing primary mood disorder",
+    "alternativeEtiologiesToRuleOut": [
+     "Pre-existing mood disorder driving symptom exacerbation",
+     "Shared autonomic/central substrate",
+     "Medication side effects (e.g., antidepressants, antiemetics)",
+     "Chronic cannabis use"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: comorbidity is repeatedly described but never quantified directionally; reverse-causation and shared-substrate alternatives are recorded in-file.",
+   "sourceReferences": [
+    {
+     "citation": "Frazier R, Li BUK, Venkatesan T. Diagnosis and Management of Cyclic Vomiting Syndrome: A Critical Review. Am J Gastroenterol. 2023;118(7):1157-1167. PMID 36791365. doi:10.14309/ajg.0000000000002216.",
+     "note": "Critical review: CVS is 'closely associated with migraine headaches' with likely shared pathophysiology, and is 'frequently associated with anxiety, depression, and autonomic dysfunction'; minimal testing includes upper endoscopy, where esophageal mucosal injury would be assessed.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36791365/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 36791365; Discussion (migraine/psychiatric comorbidity) and minimal-testing recommendations"
+    },
+    {
+     "citation": "Raucci U, Borrelli O, Di Nardo G, et al. Cyclic Vomiting Syndrome in Children. Front Neurol. 2020;11:583425. PMID 33224097. doi:10.3389/fneur.2020.583425.",
+     "note": "Joint SIGENP/SINP task-force review: CVS is an underdiagnosed episodic syndrome characterized by frequent hospitalizations, multiple comorbidities, and poor quality of life; HPA-axis hyperactivity and aberrant brain-gut pathways are implicated in the episodic pattern.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33224097/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 33224097; etiopathogenesis and quality-of-life sections"
+    },
+    {
+     "citation": "Karrento K, Rosen JM, Tarbell SE, Issenman RM, Gelfand AA, Gamboa H, Parikh S, Adams K, Wiercioch W, Li BUK. North American Society for Pediatric Gastroenterology, Hepatology, and Nutrition 2025 guidelines for management of cyclic vomiting syndrome in children. J Pediatr Gastroenterol Nutr. 2025;80(6):1028-1061. PMID 40223700. doi:10.1002/jpn3.70020.",
+     "note": "NASPGHAN 2025 evidence-based guidelines (GRADE): considerable symptom overlap with migraine, strong recommendation for anti-migraine abortive agents with personal/family migraine history, and explicit recognition of inordinate quality-of-life impact and biopsychosocial management.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40223700/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 40223700; Background/Results (migraine overlap, anti-migraine recommendation, QoL)"
+    }
+   ],
+   "evidenceGaps": [
+    "DSM/PHQ-documented depressive disorder with onset chronology relative to CVS onset",
+    "episode-frequency and hospitalization documentation",
+    "exclusion of pre-existing primary mood disorder",
+    "DSM/PHQ-documented depressive disorder with onset chronology",
+    "CVS episode frequency, hospitalization, and functional-impairment documentation",
+    "bidirectional stress-trigger history"
+   ]
+  },
+  {
+   "conditionId": "esophagitis",
+   "rank": 3,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The review literature documents that severe CVS episodes can produce hematemesis from Mallory-Weiss tears of the esophageal mucosa (Kaul 2015), and that upper endoscopy is minimal recommended testing in CVS (Frazier 2023), the modality by which reflux and mucosal injury are assessed; repeated forceful emesis with acid exposure is the recognized injury pathway for esophageal mucosal disease in chronic vomiting syndromes.",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: Mallory-Weiss tears are acute mucosal lacerations, not chronic esophagitis, and no cohort reports esophagitis incidence in CVS; GERD can coexist as an antecedent or comorbid condition rather than an outcome; endoscopy-based testing acknowledges mucosal evaluation but does not quantify injury frequency."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+    "primaryVector": "A repetitive-retching/acid-injury pathway is hypothesized: forceful coordinated retching raises intraesophageal pressure and repeatedly exposes the distal esophageal mucosa to gastric acid, producing mucosal tears in severe episodes and, with chronic recurrence, inflammation consistent with esophagitis; the pathway is anatomically standard but its frequency in CVS is undocumented.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "The complication is documented qualitatively (Mallory-Weiss occurrence; endoscopy as standard testing) with no incidence denominator for esophagitis specifically. Etiological consensus is therefore NOT_ESTABLISHED and the mapping asserts no nexus probability.",
+    "evidenceGaps": "endoscopic esophagitis grade with chronology relative to episode onset; episode-severity documentation; exclusion of GERD and other esophagitis etiologies",
+    "alternativeEtiologiesToRuleOut": [
+     "Independent GERD as the primary driver",
+     "Pill-induced esophagitis",
+     "Eosinophilic esophagitis",
+     "Infectious esophagitis",
+     "Alcohol-related mucosal disease"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: mucosal injury is a recognized severe-episode complication domain but no source quantifies esophagitis incidence; the acute-tear-versus-chronic-esophagitis distinction is recorded in-file.",
+   "sourceReferences": [
+    {
+     "citation": "Kaul A, Kaul KK. Cyclic Vomiting Syndrome: A Functional Disorder. Pediatr Gastroenterol Hepatol Nutr. 2015;18(4):224-229. PMID 26770896. doi:10.5223/pghn.2015.18.4.224.",
+     "note": "Review: strong association with migraine headaches in the patient and the mother (mitochondrial hypothesis); severe episodes can produce dehydration and hematemesis from Mallory-Weiss tears of the esophageal mucosa.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26770896/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 26770896; pathophysiology and complications sections"
+    },
+    {
+     "citation": "Frazier R, Li BUK, Venkatesan T. Diagnosis and Management of Cyclic Vomiting Syndrome: A Critical Review. Am J Gastroenterol. 2023;118(7):1157-1167. PMID 36791365. doi:10.14309/ajg.0000000000002216.",
+     "note": "Critical review: CVS is 'closely associated with migraine headaches' with likely shared pathophysiology, and is 'frequently associated with anxiety, depression, and autonomic dysfunction'; minimal testing includes upper endoscopy, where esophageal mucosal injury would be assessed.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36791365/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 36791365; Discussion (migraine/psychiatric comorbidity) and minimal-testing recommendations"
+    },
+    {
+     "citation": "Karrento K, Rosen JM, Tarbell SE, Issenman RM, Gelfand AA, Gamboa H, Parikh S, Adams K, Wiercioch W, Li BUK. North American Society for Pediatric Gastroenterology, Hepatology, and Nutrition 2025 guidelines for management of cyclic vomiting syndrome in children. J Pediatr Gastroenterol Nutr. 2025;80(6):1028-1061. PMID 40223700. doi:10.1002/jpn3.70020.",
+     "note": "NASPGHAN 2025 evidence-based guidelines (GRADE): considerable symptom overlap with migraine, strong recommendation for anti-migraine abortive agents with personal/family migraine history, and explicit recognition of inordinate quality-of-life impact and biopsychosocial management.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40223700/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 40223700; Background/Results (migraine overlap, anti-migraine recommendation, QoL)"
+    }
+   ],
+   "evidenceGaps": [
+    "endoscopic esophagitis grade with chronology relative to episode onset",
+    "episode-severity documentation",
+    "exclusion of GERD and other esophagitis etiologies",
+    "Endoscopic esophagitis grading (LA classification) with chronology",
+    "CVS episode-severity documentation (hematemesis, IV treatment)",
+    "exclusion of primary GERD and other esophagitis etiologies"
+   ]
+  }
+ ]
 }

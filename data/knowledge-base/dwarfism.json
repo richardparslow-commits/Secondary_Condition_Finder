@@ -2,8 +2,128 @@
   "id": "dwarfism",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 26 (2026-09-23): ASSOCIATION_ONLY drafts pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "The quantified OSA anchor is pediatric achondroplasia-specific; adult generic-dwarfism transfer is recorded as the batch's main generalization guard.",
+    "Obstructive and central components have different mechanisms (airway narrowing vs cervicomedullary compression); individual PSG classification is mandatory."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The national reference-center PSG review found 24 of 43 consecutive children (59%) with achondroplasia had obstructive sleep apnea (Tenconi 2017); the multisite CLARITY infant database documented age-evolving obstructive indices and improvement after adenoidectomy or cervicomedullary decompression (Legare 2025); GeneReviews lists obstructive apnea among the medical complications common to achondroplasia requiring routine surveillance (Bober 2025).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the quantified prevalence is pediatric achondroplasia-specific and does not transfer to the generic adult dwarfism identity; the obstructive component is mixed with central apnea and foramen-magnum mechanisms that require individual neurosurgical assessment; obesity and adenotonsillar hypertrophy are competing drivers within the same population."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized craniofacial-narrowing pathway: midface hypoplasia, relative macroglossia, and foramen magnum/cervicomedullary crowding narrow the pharyngeal airway and destabilize respiratory control, presenting clinically as obstructive and central sleep-disordered breathing on polysomnography. Whether an adult veteran's apnea reflects dysplasia anatomy versus independent weight or airway factors is individual and unquantified.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Pediatric-to-adult transfer is unquantified; achondroplasia-specific evidence cannot carry the whole dwarfism identity; central versus obstructive phenotypes have different mechanisms and different service-connection implications; obesity-dominant phenotype excluded; infant sleep-study interpretation is age-dependent per the CLARITY cohort.",
+        "evidenceGaps": "Documented skeletal dysplasia/dwarfism with sleep-disordered breathing; polysomnographic confirmation with obstructive and central apnea indices; foramen-magnum and craniofacial assessment; adenotonsillar status; adult transfer of pediatric-anchored prevalence recorded",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Obesity-dominant OSA phenotype",
+          "Adenotonsillar hypertrophy without dysplasia",
+          "Central apnea from foramen magnum/cervicomedullary compression (distinct mechanism)",
+          "Chronic rhinitis and independent airway disease"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented skeletal dysplasia/dwarfism with sleep-disordered breathing; polysomnographic confirmation with obstructive and central apnea indices; foramen-magnum and craniofacial assessment; adenotonsillar status; adult transfer of pediatric-anchored prevalence recorded"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: PSG-confirmed prevalence is high (59%) in the reference-center cohort, but the anchor is pediatric achondroplasia and the generic adult identity is broader; mixed obstructive-central physiology requires individual classification; no causal claim is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Tenconi R, Khirani S, Amaddeo A, et al. Sleep-disordered breathing and its management in children with achondroplasia. Am J Med Genet A. 2017 Apr;173(4):868-878. PMID 28239978.",
+          "note": "Retrospective PSG review (n=43 consecutive children, national reference center): 59% had obstructive sleep apnea; improvement after adeno-tonsillectomy.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28239978/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 28239978; 59% PSG-confirmed OSA prevalence"
+        },
+        {
+          "citation": "Legare JM, Ingram DG, Pauli RM, et al. Evolution of sleep disordered breathing in infants with achondroplasia. Sleep Breath. 2025 Jan 23;29(1):88. PMID 39847128.",
+          "note": "Multisite CLARITY database (86 infants, 172 PSGs): obstructive indices evolve with age; adenoidectomy improved OSA and cervicomedullary decompression improved central apnea - the mixed-physiology guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39847128/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39847128; age evolution and surgical-response differences"
+        },
+        {
+          "citation": "Bober MB, Bellus GA, Cheung MS, Jain M, Nikkel SM, Tiller GE. Hypochondroplasia. GeneReviews. 2025 Sep 25. PMID 20301650.",
+          "note": "GeneReviews: obstructive apnea and spinal stenosis are medical complications common to achondroplasia requiring routine sleep-apnea and cord-compression surveillance.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20301650/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 20301650; surveillance guidance"
+        }
+      ]
+    },
+    {
+      "conditionId": "spinal-stenosis",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "GeneReviews lists spinal stenosis and foramen magnum stenosis as medical complications common to achondroplasia, managed by orthopedists and neurosurgeons with strategies employed in achondroplasia, and requires spinal-cord-compression surveillance at routine visits (Bober 2025); the CLARITY cohort documents cervicomedullary decompression improving central apnea, confirming symptomatic foramen-magnum stenosis in this population (Legare 2025).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: canal narrowing is a defining anatomic feature of achondroplasia (identity-overlap guard), so the edge largely restates the dysplasia's own anatomy; symptomatic stenosis versus asymptomatic anatomic narrowing is an individual neurosurgical determination; the generic dwarfism identity spans dysplasias with differing stenosis risk (hypochondroplasia less frequently affected per GeneReviews); degenerative acquired stenosis must be excluded in adults."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized canal-diameter pathway: shortened pedicles and reduced interpedicular distances congenitally narrow the lumbar spinal canal and foramen magnum; the small-diameter canal decompensates with minor disc degeneration or hypertrophy earlier than average-stature anatomy, presenting clinically as neurogenic claudication or cervical myelopathy. Whether any adult veteran's symptomatic stenosis reflects dysplasia anatomy versus acquired degeneration is individual and unquantified.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Anatomic feature versus distinct secondary condition is the central classification question; achondroplasia-anchored guidance does not carry all dwarfism etiologies (hypochondroplasia affected less frequently); adult presentation mixes congenital and degenerative mechanisms; imaging confirmation with neurosurgical assessment is required.",
+        "evidenceGaps": "Documented skeletal dysplasia with MRI-confirmed spinal stenosis (lumbar or cervicomedullary); neurogenic claudication or cord-compression symptom chronology; exclusion of degenerative acquired stenosis of the general population type; neurosurgical assessment",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Degenerative acquired lumbar stenosis of the general-population type",
+          "Disc herniation independent of dysplasia",
+          "Hypochondroplasia and other dysplasias with lower stenosis frequency",
+          "Asymptomatic anatomic canal narrowing (imaging finding only)"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented skeletal dysplasia with MRI-confirmed spinal stenosis (lumbar or cervicomedullary); neurogenic claudication or cord-compression symptom chronology; exclusion of degenerative acquired stenosis of the general population type; neurosurgical assessment"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the surveillance guidance and decompression evidence confirm symptomatic stenosis risk in dysplasia populations, but the congenital canal narrowing is part of the dysplasia identity itself and the generic dwarfism umbrella spans heterogeneous dysplasias; no causal claim is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Bober MB, Bellus GA, Cheung MS, Jain M, Nikkel SM, Tiller GE. Hypochondroplasia. GeneReviews. 2025 Sep 25. PMID 20301650.",
+          "note": "GeneReviews: foramen magnum stenosis, spinal stenosis, and obstructive apnea are complications common to achondroplasia (less frequent in hypochondroplasia), managed with achondroplasia strategies; spinal cord compression surveillance required.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20301650/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 20301650; stenosis-surveillance guidance"
+        },
+        {
+          "citation": "Legare JM, Ingram DG, Pauli RM, et al. Evolution of sleep disordered breathing in infants with achondroplasia. Sleep Breath. 2025 Jan 23;29(1):88. PMID 39847128.",
+          "note": "CLARITY multisite cohort: cervicomedullary decompression improved central apnea, confirming symptomatic foramen-magnum stenosis in this population.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39847128/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39847128; decompression response"
+        }
+      ]
+    }
+  ]
 }

@@ -1,9 +1,82 @@
 {
-  "id": "churg-strauss-syndrome",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "churg-strauss-syndrome",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 11 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Asthma is a defining EGPA feature, so this edge is deliberately confined to co-occurrence; if a qualified human later determines the asthma-EGPA relationship belongs at a different tier, the identity-boundary call should be revisited with the ME-41 precedent in view."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: asthma is strongly associated with and antecedent to EGPA in the defining literature (McBrien 2018; Gendelman 2013; Fijolek 2023), but asthma is part of EGPA's own prodromal presentation, so a causal claim in either direction would restate the syndrome's diagnostic criteria (the ME-41 phenotype-identity barrier); the edge records co-occurrence only.",
+  "Identity boundary recorded: the EGPA prodrome (rhinitis, asthma, eosinophilia) precedes vasculitic organ involvement by years in the documented cohorts; the edge must not be read as asthma independently causing vasculitis or as EGPA causing asthma as a separable outcome."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "asthma",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The EGPA treatment review describes EGPA as strongly associated with asthma, with eosinophilic inflammation as the shared pathobiology (McBrien 2018); the childhood-onset Cleveland Clinic cohort documented upper airway disease and pulmonary involvement in all nine patients, with median asthma/rhinitis symptom onset at age 13 preceding EGPA diagnosis at 15 (Gendelman 2013); the Polish pneumonology-center cohort of 86 patients documented sinusitis correlating with better prognosis and prolonged low-dose corticosteroid treatment mainly for asthma as a characteristic management pattern (Fijolek 2023).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: asthma is part of EGPA's defining prodromal presentation rather than an independently caused outcome, the cohorts are small single-center series without general-population denominators, and shared eosinophilic pathobiology makes the direction of any causal claim indeterminate, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "IMMUNE_MEDIATED",
+    "primaryVector": "A shared eosinophilic-inflammation pathway is hypothesized: IL-5-driven eosinophilic airway inflammation produces the asthma phenotype, and the same eosinophilic effector pathology, when it progresses to granulomatous and vasculitic involvement, constitutes EGPA; the antineutrophil cytoplasmic antibody-negative eosinophilic variant in particular overlaps with severe eosinophilic asthma, and anti-IL-5 therapy's efficacy across both conditions (mepolizumab approvals in severe eosinophilic asthma and EGPA) supports the shared-biology framing. The mechanism is coherent and treatment-validated, but it describes a common inflammatory substrate rather than one condition causing the other, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Asthma co-occurs with and typically antecedes EGPA as part of its defined prodrome, but individual determination requires EGPA classification by accepted criteria with chronology relative to the asthma diagnosis, eosinophilia documentation, and review by a qualified medical professional.",
+    "evidenceGaps": "EGPA classification records meeting ACR or Lanham criteria with onset chronology relative to asthma diagnosis; serial eosinophil counts and ANCA serologies with their temporal relationship to asthma severity changes; documentation of asthma severity trajectory, especially corticosteroid-dependence patterns preceding vasculitic manifestations; organ-involvement documentation (cardiac, neurologic, renal, GI) with dates; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Severe eosinophilic asthma without vasculitic progression",
+     "Allergic bronchopulmonary aspergillosis with eosinophilia",
+     "Hypereosinophilic syndromes",
+     "Corticosteroid-dependent asthma mimicking EGPA prodrome",
+     "Drug or occupational eosinophilic pneumonitis"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the asthma-EGPA association is definitional and treatment-validated, but any causal claim would restate the syndrome's own diagnostic picture (the ME-41 barrier), and the cohorts are small single-center series; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "sourceReferences": [
+    {
+     "citation": "McBrien CN, Menzies-Gow A. Mepolizumab for the treatment of eosinophilic granulomatosis with polyangiitis. Drugs Today (Barc). 2018;54(2):93-101. PMID 29637936. doi:10.1358/dot.2018.54.2.2788013.",
+     "note": "EGPA review describing the strong association with asthma and the shared eosinophilic pathobiology, with anti-IL-5 efficacy validated across severe eosinophilic asthma and EGPA; supports the shared-substrate framing without causal direction.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29637936/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 29637936; abstract"
+    },
+    {
+     "citation": "Gendelman S, Zeft A, Spalding SJ. Childhood-onset eosinophilic granulomatosis with polyangiitis (formerly Churg-Strauss syndrome): a contemporary single-center cohort. J Rheumatol. 2013;40(6):929-935. PMID 23637321. doi:10.3899/jrheum.120808.",
+     "note": "Cleveland Clinic cohort documenting eosinophilia, upper airway disease, and pulmonary involvement in all nine childhood-onset patients, with asthma/rhinitis onset preceding EGPA diagnosis; documents the prodrome pattern at small-cohort level.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23637321/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 23637321; results"
+    },
+    {
+     "citation": "Fijolek J, Wiatr E, Bujnowski P, Piotrowska-Kownacka D, Roszkowski-Sliz K. Evaluation of prognostic factors for patients with eosinophilic granulomatosis with polyangiitis recruited at the pneumonological centre and mainly ANCA negativity: A retrospective analysis of a single cohort in Poland. Mod Rheumatol. 2023;34(1):157-166. PMID 36658715. doi:10.1093/mr/road001.",
+     "note": "86-patient EGPA cohort documenting sinusitis correlation with better prognosis and prolonged low-dose corticosteroid treatment mainly for asthma as the characteristic management pattern; documents the airway-disease overlap without causal claims.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36658715/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 36658715; results"
+    }
+   ],
+   "evidenceGaps": [
+    "EGPA classification records meeting ACR or Lanham criteria with onset chronology relative to asthma diagnosis",
+    "Serial eosinophil counts and ANCA serologies with their temporal relationship to asthma severity changes",
+    "Documentation of asthma severity trajectory, especially corticosteroid-dependence patterns preceding vasculitic manifestations",
+    "Organ-involvement documentation (cardiac, neurologic, renal, GI) with dates",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ]
+  }
+ ]
 }

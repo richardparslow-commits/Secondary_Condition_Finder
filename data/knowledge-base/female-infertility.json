@@ -2,8 +2,77 @@
   "id": "female-infertility",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review infectious, immunologic, and post-infectious pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 33 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the infertility-burden depression co-occurrence documented in screening-based studies; individual claims require a documented infertility diagnosis with its etiology and treatment course, an independently diagnosed depression with chronology, and exclusion of pre-existing depression and shared medical drivers - the recorded reverse arrow (depression associated with subsequent infertility risk) precludes directional assertion."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 33 (2026-09-23): one bounded depressive-disorder association authored from the infertility psychological-burden literature - the Crawford 2017 prospective cohort paper records depression and anxiety in approximately 40% of infertile women (twice the rate of fertile women) and documents that infertile women screening positive for depression are less likely to initiate fertility treatment, the Kucur Suna 2016 cross-sectional study of 142 infertile women documents depression prevalence by Beck Depression Inventory across infertility etiologies, and the Yang 2024 analysis documents the opposite arrow (depression associated with infertility risk in American women 18-45) and is cited as live reverse-direction counter-evidence; the quantification is screening-based rather than structured-diagnosis-based.",
+    "Duplicate-scope note: the endometriosis and polycystic-ovary-syndrome identities carry their own depressive-disorder edges on disease-symptom pathways; this edge asserts the infertility-state psychological-burden pathway that spans tubal, ovulatory, endometrial, and unexplained etiologies with the treatment-course mechanism, so the pathways are distinct (disease-symptom versus state-burden) rather than parallel restatements of the typed-children edges."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Crawford 2017 prospective cohort of 416 infertile women records depression and anxiety screening positivity in approximately 40% of infertile women - twice that of fertile women - and documents that infertile women screening positive for depression are less likely to initiate fertility treatment, and the Kucur Suna 2016 cross-sectional study of 142 infertile women documents depression prevalence on the Beck Depression Inventory across infertility etiologies with sexual-function impairment; the literature documents co-occurrence and burden without establishing an individual directional nexus.",
+        "causationStatus": "The mapping does not assert that infertility caused an individual's depression: the quantification comes from screening instruments rather than structured diagnostic interviews, the Yang 2024 analysis documents the reverse arrow (depression associated with subsequent infertility risk), depression may predate the infertility diagnosis, shared drivers (age, chronic gynecologic disease, treatment failure, sexual dysfunction, and social strain) can produce both, and the two conditions can each amplify the other; individual claims require documented infertility with etiology and treatment course, independently diagnosed depression with chronology relative to the infertility course, and exclusion of pre-existing or independently arising depression."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized burden-to-depletion pathway: involuntary childlessness and the assisted-reproduction course (repeated cycles, failed attempts, invasive procedures, financial and relational strain, and stigma in some contexts) sustain chronic psychological stress and loss-of-control appraisals that erode mood regulation; the HPA-axis stress response, sleep disruption, and infertility-associated sexual dysfunction reinforce the loop, and vulnerability factors (prior mood history, coping style, partner support) determine whether sustained distress crosses into a depressive episode; the pathway is a hypothesis about an individual's course because many infertile women remain depression-free.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the approximately 40% figure is screening-positive prevalence rather than structured diagnosis, the designs are cross-sectional or prospective-observational without randomizable exposure, the reverse arrow (depression preceding infertility) is documented in population data, depression may predate and contribute to the infertility workup, and etiology-specific disease pathways (endometriosis, PCOS) carry their own separate records; no probability estimate is asserted.",
+        "evidenceGaps": "Documented infertility diagnosis with duration and etiology (tubal, ovulatory, endometrial, male-factor, unexplained) and treatment course including cycles attempted and outcomes; independently diagnosed depressive disorder (structured interview or clinical diagnosis, not screening alone) with onset chronology relative to the infertility diagnosis or treatment course; exclusion of pre-existing or recurrent depression and prior psychiatric history; medical confounders (thyroid dysfunction, hyperprolactinemia, chronic illness); treatment-context factors including cycle discontinuation; reproductive-medicine and mental-health assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing or recurrent depressive disorder independent of fertility status",
+          "Thyroid or endocrine disease driving both mood and fertility",
+          "Adjustment disorder or grief reaction to treatment outcomes (distinct diagnosis)",
+          "Chronic gynecologic disease with its own disease-symptom mood pathway",
+          "Medication or hormone-treatment mood effects during fertility therapy"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented infertility diagnosis with duration and etiology (tubal, ovulatory, endometrial, male-factor, unexplained) and treatment course including cycles attempted and outcomes; independently diagnosed depressive disorder (structured interview or clinical diagnosis, not screening alone) with onset chronology relative to the infertility diagnosis or treatment course; exclusion of pre-existing or recurrent depression and prior psychiatric history; medical confounders (thyroid dysfunction, hyperprolactinemia, chronic illness); treatment-context factors including cycle discontinuation; reproductive-medicine and mental-health assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY consistent with the registry's other infertility-adjacent mood edges: screening-based co-occurrence with a documented reverse arrow cannot order the relationship in time, so the mapping asserts co-occurrence with the reverse-direction guard and requires individual diagnostic and chronological documentation.",
+      "sourceReferences": [
+        {
+          "citation": "Crawford NM, Hoff HS, Mersereau JE. Infertile women who screen positive for depression are less likely to initiate fertility treatments. Hum Reprod. 2017 Mar 1;32(3):582-587. PMID 28073974.",
+          "note": "Prospective cohort of 416 infertile women: depression and anxiety in approximately 40% of infertile women (twice fertile controls) with depressed screeners less likely to initiate treatment - the burden-quantification anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28073974/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 28073974; 40% depression/anxiety prevalence in infertile women"
+        },
+        {
+          "citation": "Kucur Suna K, Ilay G, Aysenur A, et al. Effects of infertility etiology and depression on female sexual function. J Sex Marital Ther. 2016 Jan 2;42(1):27-35. PMID 25629442.",
+          "note": "Cross-sectional study of 142 infertile women assessing Beck Depression Inventory prevalence across infertility etiologies with sexual-function impairment - the etiology-stratified depression anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25629442/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 25629442; BDI depression prevalence in 142 infertile women"
+        },
+        {
+          "citation": "Yang Q, Tao J, Xin X, et al. Association between depression and infertility risk among American women aged 18-45 years: the mediating effect of the NHHR. Lipids Health Dis. 2024 Jun 10;23(1):178. PMID 38858764.",
+          "note": "Population analysis documenting the opposite arrow - depression associated with infertility risk - cited as live reverse-direction counter-evidence for the guard rather than as support.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38858764/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38858764; depression-to-infertility association (reverse arrow)"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,77 @@
   "id": "excoriation-disorder",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review psychiatric, neuropsychiatric, medication-related, and sleep-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 32 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the picking-to-scar wound-outcome association documented in the SPD and acne-excoriée literature; individual claims require documented picking behavior preceding documented scarring and exclusion of primary dermatologic scarring disease."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 32 (2026-09-23): one bounded scars association authored from the skin-picking outcome literature - the Bowes 2004 report documents compulsive picking producing facial ulcers and hypertrophic and erythematous scars, the Ekore 2021 study documents excoriation disorder among adolescents and young adults with acne-induced postinflammatory hyperpigmentation and scars, and the Grant 2012 review documents repetitive picking causing tissue damage; the behavioral-self-injury-to-wound-repair sequence is the accepted biology but individual scarring extent is picking-pattern dependent.",
+    "Duplicate-scope note: no scars edge exists from any other skin-picking or body-focused-repetitive-behavior identity in the registry (trichotillomania and factitious-disorder are separate identities with their own files), so this edge is the sole picking-to-scar pathway; factitious-disorder carries its own scars edge scoped to conscious self-injury, keeping the two behavioral identities on their own mechanisms."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "scars",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Bowes 2004 report documents compulsive skin picking (acne excoriée) producing linear and stellate facial ulcers with hypertrophic and erythematous scarring, the Ekore 2021 study documents excoriation disorder in adolescents and young adults presenting with acne-induced postinflammatory hyperpigmentation and scars, and the Grant 2012 review documents repetitive picking causing tissue damage as the core clinical presentation; the literature connects the behavior to cutaneous outcomes but does not quantify an individual scarring nexus.",
+        "causationStatus": "The mapping does not assert that every scar in a person with excoriation disorder was caused by picking: acne and other primary dermatologic disease independently scar, and postinflammatory pigment change can mimic scar; individual claims require documented picking behavior preceding documented scars, compatible anatomic distribution over accessible skin, and exclusion of primary scarring disease."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized behavioral-self-injury wound-repair pathway: recurrent compulsive picking repeatedly breaches the epidermis and papillary dermis on accessible skin; each wound triggers the normal repair sequence - inflammation, granulation, and collagen deposition - and repeated injury to the same sites, deeper dermal excoriation, or impulse-driven re-injury of healing wounds produces fibrotic repair with hypertrophic, erythematous, or pitted scarring that is clinically documented in the acne-excoriée and skin-picking literature; individual scar extent tracks picking intensity, depth, and chronicity rather than the disorder label itself.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: clinical reports document scars and ulcers at picked sites, but scarring also follows acne and primary dermatologic disease common in the same patients, postinflammatory hyperpigmentation is frequently confused with scar, and no cohort quantifies scar risk attributable to picking independent of coexisting skin disease; no probability estimate is asserted.",
+        "evidenceGaps": "Documented skin-picking behavior with anatomic distribution over accessible skin; dermatologic examination documenting scars and their chronology relative to picking episodes; biopsy or clinical characterization distinguishing scar from postinflammatory hyperpigmentation; assessment of coexisting acne or other primary scarring disease; treatment history and healing-interval documentation; dermatology and mental-health assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Acne vulgaris or other primary dermatologic disease causing independent scarring",
+          "Postinflammatory hyperpigmentation or erythema mistaken for scar",
+          "Dermatitis artefacta or deliberate self-injury (factitious identity)",
+          "Delusional infestation with skin disruption",
+          "Surgical, traumatic, or burn scars unrelated to picking"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented skin-picking behavior with anatomic distribution over accessible skin; dermatologic examination documenting scars and their chronology relative to picking episodes; biopsy or clinical characterization distinguishing scar from postinflammatory hyperpigmentation; assessment of coexisting acne or other primary scarring disease; treatment history and healing-interval documentation; dermatology and mental-health assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the behavioral-wound-outcome convention: case reports and cross-sectional studies document scars at picked sites, but no condition-specific cohort establishes an individual causal nexus, so the mapping asserts the association and requires individual behavioral and dermatologic documentation.",
+      "sourceReferences": [
+        {
+          "citation": "Grant JE, Odlaug BL, Chamberlain SR, Keuthen NJ, Lochner C, Stein DJ. Skin picking disorder. Am J Psychiatry. 2012 Nov;169(11):1143-1149. PMID 23128921.",
+          "note": "DSM-5-era review: repetitive picking causes tissue damage with clinical evaluation and management recommendations - the disorder-identity and tissue-damage anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23128921/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 23128921; picking causing tissue damage"
+        },
+        {
+          "citation": "Bowes LE, Alster TS. Treatment of facial scarring and ulceration resulting from acne excoriée with 585-nm pulsed dye laser irradiation and cognitive psychotherapy. Dermatol Surg. 2004 Jun;30(6):934-938. PMID 15171775.",
+          "note": "Case reports of compulsive picking producing linear and stellate facial ulcers with hypertrophic and erythematous scars - the picking-to-scar outcome anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15171775/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 15171775; self-inflicted ulcers and scars from compulsive picking"
+        },
+        {
+          "citation": "Ekore RI, Ekore JO. Excoriation (skin-picking) disorder among adolescents and young adults with acne-induced postinflammatory hyperpigmentation and scars. Int J Dermatol. 2021 Dec;60(12):1488-1493. PMID 33860536.",
+          "note": "Cross-sectional study documenting excoriation disorder among adolescents and young adults presenting with acne-induced postinflammatory hyperpigmentation and scars - the SPD-scar-coexistence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33860536/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 33860536; SPD with hyperpigmentation and scars"
+        }
+      ]
+    }
+  ]
 }

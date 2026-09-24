@@ -1,6 +1,14 @@
 {
   "id": "bursitis",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "suggestions": [],
+  "todo": [
+    "D1 draft-authoring batch 24 (2026-09-22): identity deferred — the batch-7 reaffirmation of the promotion-batch-24 safe-draft disposition stands after re-screening; no edge authored.",
+    "Clinical-evidence promotion batch 24 (docs/clinical-evidence-promotion-batch-24.md) already retained this identity as a safe-draft disposition because no condition-specific secondary disease relationship met the publication bar; revisit only if a qualified human reopens the disposition.",
+    "Revisit only if a qualified human reopens the safe-draft disposition with a condition-specific, in-scope secondary relationship; do not author an edge to broader joint or musculoskeletal identities without over-generalizing the phenotype."
+  ],
+  "governanceNotes": [
+    "Deferral reason (reaffirmed 2026-09-22, D1 batch 24): the clinically discussed downstream concerns (chronic pain, functional limitation, septic-bursitis systemic spread) are each phenotype-specific — trochanteric, olecranon, prepatellar, and septic bursitis behave differently — and the catalog holds no identity able to receive a single in-scope edge (no tendinitis or septic-arthritis identity; the rheumatoid-arthritis and gout relationships are upstream causes of bursitis, not downstream effects).",
+    "Evidence-ground barrier unchanged on re-screen: trochanteric-bursitis/outcome literature is intervention-class (corticosteroid-injection cohorts) rather than secondary-condition class, and the 2026-09-22 NCBI screen found no new directional cohort. The batch-7 record and this reaffirmation together document three independent screens reaching the same disposition."
+  ]
 }

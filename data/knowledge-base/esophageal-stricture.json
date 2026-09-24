@@ -1,6 +1,78 @@
 {
   "id": "esophageal-stricture",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, reflux/inflammatory, medication/treatment, procedural, nutritional, and intermediate-factor pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 31 (2026-09-23): DIRECT_CAUSATION draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the DIRECT_CAUSATION classification follows the obstruction-mechanical precedents (urethral-stricture -> hydronephrosis and kidney-stones, cystitis-or-neurogenic-bladder -> hydronephrosis) - the stricture IS the luminal narrowing that produces the obstruction symptoms; the edge is scoped to anatomically documented strictures rather than symptomatic reflux alone."
+  ],
+  "governanceNotes": [
+    "D1 batch 31 (2026-09-23): one DIRECT_CAUSATION dysphagia edge authored from the stricture-outcome literature - Pregun 2009 documents dysphagia as the presenting outcome of peptic stricture with acid-suppression healing the coexistent esophagitis reducing repeated dilations, Cohen 2021's 11-year 100-patient esophageal-ulcer series documents ulcer-to-stricture dysphagia outcomes, and the Pearson 2010 30-year 114-child series documents stricture dysphagia and its surgical management; the etiologic-heterogeneity guard (peptic, eosinophilic, caustic, radiation, and anastomotic strictures share the mechanical pathway but differ in natural history) is recorded.",
+    "The dysphagia target carries five incoming edges (apraxia, ankyloglossia, eosinophilic-esophagitis, ALS, dermatomyositis) from distinct mechanisms; this edge adds the fixed-luminal-narrowing pathway rather than restating any existing one, and no malnutrition edge is authored because the dysphagia identity already carries the nutritional-outcome mapping (dysphagia -> malnutrition-residuals) - chaining stricture to malnutrition would duplicate the dysphagia-mediated pathway."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "dysphagia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Endoscopically documented esophageal stricture (fixed luminal narrowing from peptic, eosinophilic, caustic, radiation, or anastomotic injury) -> mechanical impedance of bolus transit through the narrowed lumen -> solid-food dysphagia and, in tighter strictures, dysphagia to liquids with food impaction requiring dilation.",
+        "mechanismSummary": "The stricture is the physical narrowing: the Pregun 2009 review documents dysphagia as the defining clinical outcome of peptic stricture with dilation as the mechanical treatment, the Cohen 2021 series documents dysphagia outcomes across 100 esophageal-ulcer patients with stricture the principal chronic sequela, and the Pearson 2010 30-year series documents refractory strictures requiring serial dilation or surgery in 114 children; the mechanism is the lesion itself, not an association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Fixed fibrotic narrowing of the esophageal lumen physically impedes bolus passage: circumferential scar contracture reduces luminal diameter, producing progressive solid-food dysphagia, regurgitation, and impaction risk proportional to residual lumen caliber; the pathway requires no hypothesis - the narrowing is the symptom's mechanism. Individual claims still require endoscopic documentation of the stricture and compatible symptom chronology.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The direct classification applies where the stricture is endoscopically or radiographically documented and dysphagia is anatomically compatible: motility disorders (achalasia, spasm) produce dysphagia without narrowing and must be excluded by manometry, malignancy must be excluded by biopsy at stricture biopsy, and intermittent inflammatory dysphagia without fixed narrowing does not qualify; no VA probability language is asserted.",
+        "evidenceGaps": "Endoscopic or radiographic documentation of the stricture (location, caliber, length); documented dysphagia with level-compatible chronology; biopsy of the stricture excluding malignancy; etiologic classification of the stricture; exclusion of primary motility disorders by manometry; gastroenterology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Esophageal malignancy (must be excluded at stricture biopsy)",
+          "Achalasia or distal esophageal spasm (manometry-defined motility disorders)",
+          "Eosinophilic esophagitis without fibrostenotic change",
+          "Extrinsic compression from mediastinal or vascular structures",
+          "Oropharyngeal dysphagia of neurologic origin"
+        ]
+      },
+      "evidenceGaps": [
+        "Endoscopic or radiographic documentation of the stricture (location, caliber, length); documented dysphagia with level-compatible chronology; biopsy of the stricture excluding malignancy; etiologic classification of the stricture; exclusion of primary motility disorders by manometry; gastroenterology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION under the obstruction-mechanical precedents: a fixed stricture is by definition the mechanical cause of its dysphagia, quantified across peptic, ulcer-related, and pediatric strictures in the cited series; the claim is scoped to documented strictures with malignancy excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Pregun I, Hritz I, Tulassay Z, Herszenyi L. Peptic esophageal stricture: medical treatment. Dig Dis. 2009;27(1):31-37. PMID 19439958.",
+          "note": "Review of peptic stricture management: dilation and surgery are the therapeutic mainstays for the mechanical narrowing, and healing coexistent esophagitis with PPI reduces repeated dilations - the stricture-as-obstruction anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19439958/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 19439958; stricture outcome and dilation findings"
+        },
+        {
+          "citation": "Cohen DL, Bermont A, Richter V, Shirin H. Real world management of esophageal ulcers: analysis of their presentation, complications and outcomes. Acta Gastroenterol Belg. 2021 Jul-Sep;84(3):417-422. PMID 34599565.",
+          "note": "11-year 100-patient esophageal-ulcer series: most ulcers due to gastroesophageal reflux with stricture the principal chronic sequela - the ulcer-to-stricture-to-dysphagia outcome anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34599565/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 34599565; esophageal-ulcer complication outcomes"
+        },
+        {
+          "citation": "Pearson EG, Downey EC, Barnhart DC, et al. Reflux esophageal stricture - a review of 30 years' experience in children. J Pediatr Surg. 2010 Dec;45(12):2356-2360. PMID 21129544.",
+          "note": "30-year 114-child series: reflux strictures requiring 486 dilations with refractory disease needing surgery - the severity-burden anchor for stricture dysphagia.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21129544/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 21129544; 30-year stricture management experience"
+        }
+      ]
+    }
+  ]
 }

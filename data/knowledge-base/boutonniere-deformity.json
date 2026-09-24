@@ -2,8 +2,17 @@
   "id": "boutonniere-deformity",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): identity deferred with a documented evidence and scope barrier instead of an authored edge, per the repo's established deferral convention (ME-30/ME-32 precedents).",
+    "The dominant literature direction is upstream (rheumatoid synovitis and trauma producing the deformity), not downstream; the only catalog-compatible downstream candidate (post-traumatic or degenerative PIP-joint osteoarthritis) returned zero target-specific PubMed hits in the 2026-09-22 pre-authoring screen, and the single surgical case report found addresses technique, not a deformity-to-osteoarthritis outcome.",
+    "Revisit only if the catalog adds a PIP-joint-arthritis or extensor-mechanism-dysfunction target with a condition-specific evidence base; do not author an edge to a broader target identity (for example generic osteoarthritis) without lesion-level evidence, and do not infer medical causation from rating-schedule authority.",
+    "D1 draft-authoring batch 15 (2026-09-22): identity deferred with a documented evidence and scope barrier instead of an authored edge, per the repo's established deferral convention (ME-30/ME-32 precedents).",
+    "Revisit only if the catalog adds a distal-interphalangeal-hyperextension or independent finger-deformity-progression outcome identity, and only if controlled progression literature beyond the current zero PubMed records emerges; do not infer medical causation from rating-schedule authority."
+  ],
+  "governanceNotes": [
+    "Deliberate deferral, not an authored suggestion: the boutonniere-deformity literature documents etiology (central-slip disruption from trauma or rheumatoid synovitis with volar lateral-band migration) rather than downstream sequelae, so an outgoing association edge from this primary currently lacks a target with a defensible condition-specific evidence base.",
+    "Directionality check recorded: rheumatoid arthritis -> boutonniere deformity is the documented direction (synovitis -> central-slip elongation -> lateral-band subluxation), which is backwards for this primary; authoring boutonniere-deformity -> rheumatoid-arthritis would invert the clinical literature, and authoring boutonniere-deformity -> post-traumatic-osteoarthritis or generic osteoarthritis found no condition-specific supporting studies in the pre-authoring screen (zero PubMed hits for the PIP degenerative-outcome question).",
+    "The StatPearls and Ferlic reviews remain the correct anchors for the upstream direction and are recorded here as screening context only; they are not entered as sourceReferences because no outgoing edge is being authored and entering them would imply an edge that the evidence does not support in this direction.",
+    "Deliberate deferral, not an authored suggestion: a boutonniere-to-swan-neck-deformity progression search returned zero PubMed records on 2026-09-22, so a progression claim would be pure biomechanical speculation; boutonniere deformity is itself a proximal-interphalangeal flexion contracture, so an edge to the catalog's contractures identity would restate the diagnostic presentation (the ME-41 phenotype-identity barrier); and the chronic-boutonniere literature is rheumatoid-treatment-outcome class (surgical reconstruction series) rather than natural-history evidence, so no defensible target identity exists."
   ],
   "suggestions": []
 }

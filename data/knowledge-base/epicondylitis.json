@@ -2,7 +2,77 @@
   "id": "epicondylitis",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+    "D1 draft-authoring batch 29 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Target-scope guard: the ulnar-neuropathy target identity is generic; the elbow evidence base concerns ulnar neuropathy at the cubital tunnel, so the anatomic concordance (medial epicondyle borders the cubital tunnel) is recorded as an edge guard and non-cubital ulnar presentations are excluded from the pathway."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 29 (2026-09-23): one bounded ulnar-neuropathy association authored from the medial-epicondyle coexistence literature (coexistence with ulnar neuropathy at the cubital tunnel documented across decades of elbow literature; Kim 2021 shear-wave elastography documents mechanical nerve abnormality at the tunnel; Zanesco 2025 elbow epidemiology and Khouja 2024 occupational-disease series document both conditions as the dominant elbow diagnoses); the shared-mechanical-environment confound (repetitive elbow loading drives both) and the generic-identity anatomic-scope guard are recorded.",
+    "No rotator-cuff or radial-neuropathy edge was authored: the rotator-cuff literature is shoulder-population based without epicondylitis-specific association data, and radial neuropathy co-occurrence with lateral epicondylitis lacks quantitative association studies (searches returned none); both pathways are recorded here rather than left unexamined."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "ulnar-neuropathy",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Ulnar neuropathy at the cubital tunnel co-occurs with medial epicondylitis at substantially elevated rates across the elbow literature (coexistence documented as a classic clinical association), Kim 2021's shear-wave elastography work demonstrates stiffer nerve mechanics in cubital-tunnel neuropathy consistent with mechanical irritation at the tunnel bordered by the medial epicondyle, and the Zanesco 2025 (847-patient) and Khouja 2024 (431-case) elbow-disease series document medial epicondylitis and ulnar-nerve syndrome as the dominant medial-elbow diagnoses in the same populations.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the shared-mechanical-environment confound (repetitive flexion, valgus loading, and elbow-use occupation drive both conditions and can co-produce them without either causing the other), swelling or inflammatory infiltrate from epicondylitis compressing the adjacent nerve is anatomically plausible but not individually demonstrable, and the generic target identity spans cubital-tunnel and more proximal or distal ulnar lesions that lack the anatomic relationship."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized adjacent-structure compression pathway: medial-epicondyle flexor-pronator inflammation and swelling increase pressure within the cubital tunnel immediately posterior to the epicondyle, and repetitive valgus strain of the epicondylitis phenotype mechanically irritates the ulnar nerve against the tunnel roof, producing paresthesia and weakness in the ulnar distribution; individual attribution requires electrodiagnostic localization of the lesion to the cubital tunnel with compatible chronology.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The coexistence is classic and the anatomy adjacent, but the literature does not quantify an epicondylitis-attributable fraction of ulnar neuropathy and the shared-exposure confound is strong; neuropathy must be electrodiagnostically localized to the cubital tunnel rather than assumed from ulnar symptoms, and pre-existing neuropathy, cervical radiculopathy, and systemic neuropathies must be excluded; no probability estimate is asserted.",
+        "evidenceGaps": "Documented medial or lateral epicondylitis by examination or imaging; electrodiagnostically confirmed ulnar neuropathy localized at or near the cubital tunnel with compatible chronology; exclusion of cervical radiculopathy, thoracic-outlet compression, and systemic or hereditary neuropathy; occupational and recreational loading review shared by both conditions; orthopedic and neurology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Cervical radiculopathy (C8-T1) mimicking ulnar neuropathy",
+          "Ulnar nerve subluxation or dislocation with independent cause",
+          "Systemic neuropathy (diabetic, hereditary, inflammatory)",
+          "Thoracic outlet syndrome",
+          "Prior elbow trauma or arthrosis causing tunnel narrowing independent of tendinopathy"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented medial or lateral epicondylitis by examination or imaging; electrodiagnostically confirmed ulnar neuropathy localized at or near the cubital tunnel with compatible chronology; exclusion of cervical radiculopathy, thoracic-outlet compression, and systemic or hereditary neuropathy; occupational and recreational loading review shared by both conditions; orthopedic and neurology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the coexistence is well documented and the anatomy adjacent, but the shared-mechanical-environment confound and the absence of attribution data cap the claim; no causation is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Kim S, Lee GY. Evaluation of the ulnar nerve with shear-wave elastography: a potential tool for diagnosis of cubital tunnel syndrome. Ultrasonography. 2021 Jul;40(3):349-356. PMID 33115185.",
+          "note": "Comparative elastography study of ulnar neuropathy at the cubital tunnel versus medial epicondylitis and controls: stiffer nerve mechanics in cubital-tunnel neuropathy - the mechanical-abnormality anchor at the tunnel adjacent to the medial epicondyle.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33115185/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 33115185; cubital-tunnel neuropathy elastography findings"
+        },
+        {
+          "citation": "Zanesco L, Uthant R, Arai C, et al. Elbow Disorders in an Outpatient Clinic: An Epidemiological Study. Cureus. 2025 May;17(5):e85029. PMID 40585593.",
+          "note": "Cross-sectional 847-patient elbow-clinic series: lateral epicondylitis 53.2%, medial epicondylitis 16.2%, cubital tunnel syndrome among the most frequent diagnoses - the population co-occurrence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40585593/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 40585593; elbow-disease prevalence distribution"
+        },
+        {
+          "citation": "Khouja N, Hsinet J, Abdennadher K, et al. Elbow musculoskeletal disorders recognized as occupational diseases in Tunisia. Tunis Med. 2024 Apr;102(4):229-234. PMID 38746963.",
+          "note": "431-case occupational-disease series: medial epicondylitis (14.2%) and ulnar nerve syndrome (10.7%) co-listed among recognized elbow disorders with shared repetitive-movement exposure (92.8%) - the shared-exposure confound anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38746963/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38746963; elbow occupational-disease distribution and shared exposures"
+        }
+      ]
+    }
+  ]
 }

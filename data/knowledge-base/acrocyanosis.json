@@ -1,9 +1,13 @@
 {
   "id": "acrocyanosis",
   "draft": true,
+  "suggestions": [],
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "D1 draft-authoring batch 24 (2026-09-22): identity deferred — prior qualified-human dispositions (ME-30, ME-32) reaffirmed after NCBI re-screening; no edge authored.",
     "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Deferral reason (reaffirmed 2026-09-22, D1 batch 24): the catalog holds no Raynaud's-phenomenon identity, so the cross-condition differential edge has no target; erythromelalgia and pernio (chilblains) are separate diagnostic entities whose inclusion would misclassify identity under the ME-41 phenotype-identity barrier; and the primary-acrocyanosis/secondary-acrocyanosis split means any generic vascular-disease edge would aggregate unrelated disease mechanisms.",
+    "Evidence-ground barrier unchanged on re-screen: the only comorbidity-bearing literature is pediatric surgical-outcome class (Purdy 2023, PMC11096815) without denominators, the benign-benign cosmetic/anxiety psychosocial literature (Kurklinsky 2013, PMID 23635010) carries no downstream catalog identity, and the 2026-09-22 NCBI re-screen found no quantified disease-modifying secondary-acrocyanosis cohort. Revisit only if a Raynaud's-phenomenon identity is added to the catalog or a qualified human identifies a directional secondary-acrocyanosis outcome study."
+  ]
 }

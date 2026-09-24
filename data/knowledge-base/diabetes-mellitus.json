@@ -1,9 +1,13 @@
 {
-  "id": "diabetes-mellitus",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "diabetes-mellitus",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 22 (2026-09-23): identity deferred - the typed identities diabetes-mellitus-type-1 and diabetes-mellitus-type-2 (published) already carry the diabetic-complication edges (chronic-kidney-disease, diabetic-retinopathy, gerd), so authoring from the generic identity would create parallel duplicate-scope pathways to the same targets.",
+  "If a qualified human later dispositions the generic identity, the correct modeling is either edge inheritance from the typed files or a catalog consolidation merging the generic identity into its typed children - both are governance decisions, not automation decisions."
+ ],
+ "governanceNotes": [
+  "Duplicate-scope finding (2026-09-23): diabetes-mellitus-type-1 -> chronic-kidney-disease and -> diabetic-retinopathy, and diabetes-mellitus-type-2 -> gerd, -> chronic-kidney-disease, and -> diabetic-retinopathy are the existing published pathways; a generic-DM file with the classic complication edges (peripheral-neuropathy, chronic-kidney-disease, cellulitis, ischemic-heart-disease) would double-map the same mechanisms without adding a distinct clinical population.",
+  "No sources cited (no edge authored); the typed files' existing sources are the verification base for any future consolidation."
+ ],
+ "suggestions": []
 }

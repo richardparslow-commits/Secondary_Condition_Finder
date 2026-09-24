@@ -121,24 +121,24 @@ describe("Mapping Expansion Batch ME-33", () => {
   });
 
   it("ratchets the authoritative ME-33 counts", () => {
-    expect(relationships.currentState).toBe("ME-39-CITATION-VERIFIED");
-    expect(sources.currentState).toBe("ME-39-CITATION-VERIFIED");
-    expect(relationships.counts).toEqual({ relationships: 363, explicitPublicationGuards: 289, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(363);
+    expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
+    expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
+    expect(relationships.counts).toEqual({ relationships: 500, explicitPublicationGuards: 426, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(500);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 379,
-      pendingVerificationSourceEntities: 0,
-      pendingClinicalSourceEntities: 0,
-      totalSourceEntitiesIncludingLineage: 355,
+      liveSourceReferenceUses: 746,
+      pendingVerificationSourceEntities: 327,
+      pendingClinicalSourceEntities: 327,
+      totalSourceEntitiesIncludingLineage: 682,
     });
-    expect(sources.sources).toHaveLength(355);
+    expect(sources.sources).toHaveLength(682);
 
     const mappings = fs.readdirSync(`${root}/data/knowledge-base`).filter((file) => file.endsWith(".json")).map((file) => load<Mapping>(`data/knowledge-base/${file}`));
     const references = mappings.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences));
-    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(363);
-    expect(references).toHaveLength(379);
-    expect(references.filter((reference) => reference.verified === true)).toHaveLength(379);
-    expect(references.filter((reference) => reference.verified === false)).toHaveLength(0);
+    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(500);
+    expect(references).toHaveLength(746);
+    expect(references.filter((reference) => reference.verified === true)).toHaveLength(380);
+    expect(references.filter((r) => r.verified === false)).toHaveLength(366);
   });
 
   it("keeps deferred identities outside the batch", () => {

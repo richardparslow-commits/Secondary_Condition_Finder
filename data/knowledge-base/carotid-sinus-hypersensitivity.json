@@ -2,8 +2,13 @@
   "id": "carotid-sinus-hypersensitivity",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 8 (2026-09-22): identity deferred with a documented evidence and scope barrier instead of an authored edge, per the repo's established deferral convention (ME-30/ME-32 precedents).",
+    "Revisit only if the catalog adds a falls or accidental-injury identity with condition-specific CSH evidence, or a qualified human re-adjudicates the phenotype boundary under the ME-41 convention."
+  ],
+  "governanceNotes": [
+    "Deliberate deferral on the ME-41 phenotype-identity barrier: the strongest literature relationship (carotid sinus hypersensitivity present in 23 percent of unexplained recurrent fallers, with pacing reducing fall rates by two thirds, Kenny 2001; Richardson 1997) describes the cardioinhibitory response as the diagnostic finding of the syndrome itself and its symptomatic expression, so an edge to a syncope-family target would restate the diagnostic criterion as an empirical relationship.",
+    "Alternative-target check recorded: the catalog's only candidate targets are vasovagal-syncope (a distinct diagnostic entity with its own mechanism and workup, so mapping CSH into it would misclassify identity) and cardiac-arrhythmia (the sinus pauses are an expression of the same cardioinhibitory reflex finding); the clinically dominant downstream outcomes in the literature are falls and fall-related injury, which have no distinct catalog identity.",
+    "No edge was authored because a condition whose defining abnormality produces its presenting symptoms cannot support a legally meaningful secondary edge: the veteran's own standard (symptoms within the same diagnostic finding) is exactly the boundary this knowledge base enforces."
   ],
   "suggestions": []
 }

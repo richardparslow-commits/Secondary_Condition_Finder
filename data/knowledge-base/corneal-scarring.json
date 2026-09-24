@@ -2,8 +2,81 @@
   "id": "corneal-scarring",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 16 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The Ting review's global-burden framing is recorded: corneal opacity is the fifth leading cause of blindness worldwide; if a qualified human finds population-level proportions specific to developed-world trauma or surgical scarring, the tier may be revisited."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: the global-burden literature establishes corneal opacity as a leading cause of blindness with millions affected, and the myofibroblast transdifferentiation mechanism is the established biology of opacity, but no claimant-population data quantify the proportion of corneal scars that produce functionally significant acuity loss.",
+    "Visual-significance guard recorded: peripheral, paracentral, or faint scars may be visually insignificant, and the catalog target spans acuity and field impairment generally, so the edge records the population-level pathway only and leaves the individual determination of visual significance entirely to examination findings and a qualified medical professional."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "visual-impairment",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The infectious-keratitis update states that corneal opacity is the fifth leading cause of blindness and visual impairment globally, affecting approximately six million people, with 1.5-2.0 million new cases of monocular blindness per year and infection, trauma, and inflammation among its etiologies (Ting 2021); the Global Burden of Disease vision-loss meta-analysis models corneal opacity as a distinct cause of blindness with regionally varying proportions (Flaxman 2017); the corneal-scarring nanomedicine review describes keratocyte-to-myofibroblast transformation and irregular extracellular-matrix synthesis as the prominent cause of opacity and hazy vision (Al-Mashahedah 2019).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the population statistics establish the global pathway but not the probability that a given scar causes functionally significant loss, the catalog target spans acuity and field impairment across many causes, and competing ocular disease is common in the same populations, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "An optical-barrier pathway is hypothesized: corneal wound repair transforms transparent keratocytes into opaque myofibroblasts that deposit disorganized extracellular matrix, replacing the precisely ordered stromal lamellae; the resulting scar scatters and blocks light transmission, reducing retinal image quality in proportion to the scar's size, density, and centrality, and producing the visual impairment documented in global eye-health statistics. The mechanism is the established biology of corneal opacity, but the population statistics do not quantify functional significance for an individual scar, so no directional claim beyond the population pathway is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Corneal opacity is a leading global cause of blindness and visual impairment through the myofibroblast opacity mechanism; individual determination requires best-corrected visual acuity testing, slit-lamp documentation of the scar's size, density, and centrality, exclusion of competing causes of acuity loss, and review by a qualified medical professional.",
+        "evidenceGaps": "Best-corrected visual acuity with refraction documenting the acuity loss and its monocular versus binocular significance; slit-lamp examination and corneal imaging documenting the scar's size, density, depth, and centrality; exclusion of uncorrected refractive error, cataract, retinal disease, glaucoma, and ocular surface disease as competing causes; documentation of the scar's etiology (infectious, traumatic, inflammatory, surgical) and chronology; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Uncorrected refractive error and presbyopia as the dominant global causes of vision impairment",
+          "Cataract and age-related macular degeneration co-occurring in the same age groups",
+          "Glaucoma and retinal disease as independent causes of acuity or field loss",
+          "Dry-eye and ocular surface disease degrading acuity independent of stromal scar",
+          "Peripheral or faint scars without functional significance"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the population pathway is globally established and the mechanism is the accepted biology, but individual visual significance cannot be inferred from the existence of a scar; the edge records co-occurrence at population scale and leaves every individual determination to a qualified medical professional.",
+      "sourceReferences": [
+        {
+          "citation": "Ting DSJ, Ho CS, Deshmukh R, Said DG, Dua HS. Infectious keratitis: an update on epidemiology, causative microorganisms, risk factors, and antimicrobial resistance. Eye (Lond). 2021;35(4):1084-1101. PMID 33414529. doi:10.1038/s41433-020-01339-3.",
+          "note": "States corneal opacity is the fifth leading cause of blindness and visual impairment globally affecting ~6 million people, with 1.5-2.0 million new monocular blindness cases yearly and trauma, inflammation, and infection among etiologies; the central burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33414529/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 33414529; results and conclusions"
+        },
+        {
+          "citation": "Flaxman SR, Bourne RRA, Resnikoff S, et al. Global causes of blindness and distance vision impairment 1990-2020: a systematic review and meta-analysis. Lancet Glob Health. 2017;5(12):e1221-e1234. PMID 29032195. doi:10.1016/S2214-109X(17)30393-5.",
+          "note": "GBD Vision Loss Expert Group meta-analysis modelling corneal opacity as a distinct cause of blindness with regionally varying proportions; the population-architecture anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29032195/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 29032195; results and conclusions"
+        },
+        {
+          "citation": "Ibrahim Al-Mashahedah AM, Kanwar RK, Kanwar JR. Utility of nanomedicine targeting scar-forming myofibroblasts to attenuate corneal scarring and haze. Nanomedicine (Lond). 2019;14(8):1049-1072. PMID 30901304. doi:10.2217/nnm-2017-0305.",
+          "note": "Describes keratocyte-to-myofibroblast transformation and disorganized extracellular-matrix deposition as the prominent mechanism of corneal opacity and hazy vision; the mechanism anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30901304/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 30901304; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "Best-corrected visual acuity with refraction documenting the acuity loss and its monocular versus binocular significance",
+        "slit-lamp examination and corneal imaging documenting the scar's size, density, depth, and centrality",
+        "exclusion of uncorrected refractive error, cataract, retinal disease, glaucoma, and ocular surface disease as competing causes",
+        "documentation of the scar's etiology (infectious, traumatic, inflammatory, surgical) and chronology",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

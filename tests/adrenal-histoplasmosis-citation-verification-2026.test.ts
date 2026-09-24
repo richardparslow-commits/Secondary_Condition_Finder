@@ -123,9 +123,9 @@ describe("Adrenal Histoplasmosis Citation Verification 2026", () => {
         };
         return mapping.suggestions.flatMap((row) => row.sourceReferences ?? []);
       });
-    expect(refs).toHaveLength(142);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(142);
-    expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
+    expect(refs).toHaveLength(160);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(160);
+    expect(refs.filter((r) => r.verified === false)).toHaveLength(366);
     const clinical = refs.filter((ref) => ref.verificationScope === "clinical-evidence");
     expect(clinical).toHaveLength(137);
     expect(clinical.filter((ref) => Boolean(ref.sourceUrl))).toHaveLength(137);

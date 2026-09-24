@@ -1,6 +1,81 @@
 {
-  "id": "diaphragm-paralysis",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, neurologic, surgical/treatment, restrictive-respiratory, and cardiopulmonary pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+ "id": "diaphragm-paralysis",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 22 (2026-09-23): draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Phenotype-scope guard: the sleep-disordered breathing of diaphragm dysfunction is predominantly REM-related hypoventilation (ventilatory-pump failure), not classic obstructive apnea; the sleep-apnea catalog identity is broader, so PSG confirmation of the SDB phenotype and exclusion of an obesity-dominant obstructive phenotype are required for individual attribution.",
+  "Referred-population guard: both PSG cohorts studied patients referred for sleep evaluation, so the near-universal SDB findings cannot be read as population prevalence."
+ ],
+ "governanceNotes": [
+  "Authored at ASSOCIATION_ONLY with NOT_ESTABLISHED consensus and hypothesizedOnly mechanism despite quantified REM-SDB anchors (RDI 26.0 vs 0.7 controls): the quantified cohorts are small (n=11 instrumented; n=66 referred) with ascertainment bias, the SDB phenotype is REM-hypoventilation rather than the obstructive phenotype the target identity most often denotes, and no incident cohort establishes progression from stable unilateral dysfunction to clinically diagnosed sleep-apnea.",
+  "Bilateral-dysfunction severity gradient recorded: bilateral dysfunction carried 6.8-fold CPAP failure, so laterality/bilaterality documentation materially affects the pathway's clinical weight."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "sleep-apnea",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The instrumented PSG cohort found a REM respiratory disturbance index of 26.0 events/h in hemidiaphragm paralysis or severe weakness versus 0.7 in matched controls, with diaphragm EMG drive doubled and rising further in REM (Steier 2008); the Mayo referral cohort found significant sleep-disordered breathing (mean AHI 26.6) in all 66 patients with isolated diaphragmatic dysfunction, with CPAP controlling SDB in only 37.9% (Khan 2014); the perioperative review documents phrenic-nerve-output inhibition causing diaphragmatic dysfunction with post-surgical sleep-disordered breathing (Rock 2003).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the ventilatory-pump pathway is quantitatively anchored but both cohorts are sleep-laboratory-referred populations; the SDB phenotype is REM-related hypoventilation rather than the obstructive phenotype that dominates the target identity; no incident cohort tracks progression from stable dysfunction to diagnosed sleep-apnea; and obesity-related obstructive disease operates independently in the same patients."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+    "primaryVector": "A hypothesized ventilatory-pump pathway: diaphragm paralysis removes the primary inspiratory muscle's contribution; during REM sleep the diaphragm is the only active inspiratory muscle and accessory-muscle tone falls, so the weakened hemidiaphragm paradoxically moves and alveolar ventilation drops; recurrent REM hypoventilation, desaturation, and arousals present as sleep-disordered breathing with an apnea-hypopnea pattern. Bilateral dysfunction amplifies the same pathway, which is why bilateral patients fail single-level CPAP support more often.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "The REM-dependence of SDB in diaphragm dysfunction is physiologically well characterized and quantified in two cohorts, but referral ascertainment, the phenotype mismatch with the obstructive-dominant target identity, and the absence of an incidence denominator keep the mapping at association strength. Etiological consensus is NOT_ESTABLISHED and no nexus probability is asserted.",
+    "evidenceGaps": "transdiaphragmatic pressure or fluoroscopic/ultrasound confirmation of diaphragm paralysis or severe weakness with laterality; polysomnographic documentation of the SDB phenotype (REM-related hypoventilation versus obstructive events) with AHI and desaturation data; chronology linking the dysfunction to the sleep findings; exclusion of obesity-dominant obstructive sleep apnea and coexisting neuromuscular disease",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Obesity-related obstructive sleep apnea",
+     "Coexisting neuromuscular disease (motor neuron disease, myopathy)",
+     "Phrenic neuropathy from cardiac or thoracic surgery as the independent driver",
+     "COPD and overlapping respiratory comorbidity"
+    ]
+   },
+   "evidenceGaps": [
+    "transdiaphragmatic pressure or fluoroscopic/ultrasound confirmation of diaphragm paralysis or severe weakness with laterality",
+    "polysomnographic documentation of the SDB phenotype (REM-related hypoventilation versus obstructive events) with AHI and desaturation data",
+    "chronology linking the dysfunction to the sleep findings",
+    "exclusion of obesity-dominant obstructive sleep apnea and coexisting neuromuscular disease"
+   ],
+   "rationale": "Authored at ASSOCIATION_ONLY: quantified REM-SDB anchors exist but come from referred cohorts, the phenotype is hypoventilatory rather than obstructive, and no incidence denominator ties dysfunction onset to diagnosed sleep-apnea; no causal claim is forced.",
+   "sourceReferences": [
+    {
+     "citation": "Steier J, Jolley CJ, Seymour J, Kaul S, Luo YM, Rafferty GF, Hart N, Polkey MI, Moxham J. Sleep-disordered breathing in unilateral diaphragm paralysis or severe weakness. Eur Respir J. 2008;32(6):1479-87. PMID 18684853.",
+     "note": "Instrumented PSG cohort (n=11 hemidiaphragm paralysis/severe weakness vs 11 matched controls): respiratory disturbance index 8.1 events/h in NREM and 26.0 events/h in REM sleep versus 0.4 and 0.7 in controls; diaphragm EMG drive doubled and increased further in REM; unilateral diaphragm dysfunction puts patients at risk of REM sleep-disordered breathing.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18684853/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 18684853; REM-dominant SDB quantification in hemidiaphragm paralysis"
+    },
+    {
+     "citation": "Khan A, Morgenthaler TI, Ramar K. Sleep disordered breathing in isolated unilateral and bilateral diaphragmatic dysfunction. J Clin Sleep Med. 2014;10(5):509-15. PMID 24910552.",
+     "note": "Retrospective Mayo cohort (n=66 referred for PSG): all patients with isolated diaphragmatic dysfunction had significant sleep-disordered breathing (mean AHI 26.6); CPAP controlled SDB in only 37.9%, with bilateral dysfunction 6.8 times more likely to fail CPAP - referred-population ascertainment and PAP-modality guards recorded.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24910552/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 24910552; AHI in isolated diaphragmatic dysfunction and CPAP failure"
+    },
+    {
+     "citation": "Rock P, Rich PB. Postoperative pulmonary complications. Curr Opin Anaesthesiol. 2003;16(2):123-31. PMID 17021450.",
+     "note": "Perioperative review: inhibition of phrenic nerve output produces postoperative diaphragmatic dysfunction, and sleep-disordered breathing occurs after surgery even in patients without obstructive sleep apnea - supporting the ventilatory-pump pathway and the post-surgical context of acquired diaphragm dysfunction.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17021450/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 17021450; phrenic-inhibition diaphragmatic dysfunction and post-surgical SDB context"
+    }
+   ]
+  }
+ ]
 }

@@ -2,8 +2,76 @@
   "id": "dumping-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 26 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "The nutritional effect direction is subtype-heterogeneous (early vs late dumping) per the cited systematic review; both directions are recorded so the human verifier sees the full picture.",
+    "Dumping syndrome is itself a postoperative complication; attribution versus the surgery's intended effect is an individual determination."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "malnutrition-residuals",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The international consensus defines dietary adjustment as the agreed first treatment step, making symptom-driven caloric management inherent to the syndrome (Scarpellini 2020); the management review documents continuous enteral feeding as necessary for treatment-refractory cases (van Beek 2017; Tack 2025), and the bariatric systematic review found late dumping promotes higher caloric intake while early dumping drives food avoidance (D'hoedt 2023).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the direction of the nutritional effect is heterogeneous by subtype (early-dumping food avoidance versus late-dumping increased intake per D'hoedt 2023), the syndrome itself is a postoperative complication rather than an independent disease process, and weight loss attributable to the underlying surgery, malignancy, or the intended bariatric effect must be separated from dumping-specific nutritional harm; the D'hoedt review found no significant dumping-to-degree-of-weight-loss relationship."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "A hypothesized avoidance-malnutrition pathway: rapid gastric emptying produces postprandial vasomotor and gastrointestinal symptoms that patients manage by restricting meal size and avoiding carbohydrate-dense foods; over time the restriction and malabsorptive transit reduce total caloric and micronutrient intake, presenting clinically as involuntary weight loss and protein-energy malnutrition. How much of any patient's malnutrition is dumping-specific versus surgery-intended is individual and unquantified.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Early- and late-dumping phenotypes move caloric intake in opposite directions; the bariatric-surgery population's weight loss is partly the intended effect and cannot be attributed to dumping without individual dietary documentation; the consensus evidence is expert-opinion and management-class rather than cohort prevalence; malnutrition must meet validated screening criteria.",
+        "evidenceGaps": "Documented dumping syndrome after gastric/esophageal/bariatric surgery with symptomatic food-avoidance or caloric-restriction pattern; validated malnutrition screening (e.g., GLIM criteria); weight and laboratory trend chronology; exclusion of recurrence, stricture, or independent causes of weight loss; dietitian assessment",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Intended weight-loss effect of bariatric surgery",
+          "Cancer recurrence or progression (post-oncologic resection)",
+          "Anastomotic stricture or small-bowel bacterial overgrowth",
+          "Independent depression-driven appetite loss",
+          "Post-surgical taste change and food intolerance"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented dumping syndrome after gastric/esophageal/bariatric surgery with symptomatic food-avoidance or caloric-restriction pattern; validated malnutrition screening (e.g., GLIM criteria); weight and laboratory trend chronology; exclusion of recurrence, stricture, or independent causes of weight loss; dietitian assessment"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the dietary-management burden is built into first-line care and refractory cases require enteral support, but the nutritional direction is subtype-heterogeneous and confounded by the surgical indication itself; no causal claim is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Scarpellini E, Arts J, Karamanolis G, et al. International consensus on the diagnosis and management of dumping syndrome. Nat Rev Endocrinol. 2020 Aug;16(8):448-466. PMID 32457534.",
+          "note": "Delphi international consensus (18 experts, 62 statements): dietary adjustment is the agreed first treatment step; decreased gastric volume capacity and rapid nutrient passage to the small bowel are pathophysiologically relevant.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32457534/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 32457534; dietary-adjustment-first-line consensus statement"
+        },
+        {
+          "citation": "van Beek AP, Emous M, Laville M, Tack J. Dumping syndrome after esophageal, gastric or bariatric surgery: pathophysiology, diagnosis, and management. Obes Rev. 2017 Jan;18(1):68-85. PMID 27749997.",
+          "note": "Systematic review: surgical re-intervention or continuous enteral feeding may be necessary for treatment-refractory dumping syndrome - the refractory-nutrition-support anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27749997/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 27749997; refractory-case enteral-feeding passage"
+        },
+        {
+          "citation": "D'hoedt A, Vanuytsel T. Dumping syndrome after bariatric surgery: prevalence, pathophysiology and role in weight reduction - a systematic review. Acta Gastroenterol Belg. 2023 Jul-Sep;86(3):417-427. PMID 37814558.",
+          "note": "Systematic review: early dumping can become a tool to maintain strict dietary patterns, but late dumping is detrimental and promotes overall higher caloric intake; no significant dumping-to-weight-loss relationship shown - the directionality guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37814558/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 37814558; subtype-direction heterogeneity passage"
+        }
+      ]
+    }
+  ]
 }

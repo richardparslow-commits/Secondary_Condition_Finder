@@ -2,8 +2,68 @@
   "id": "bicipital-tendinitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Review biomechanical, degenerative, and post-injury pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: arthroscopic cohort data show significant co-prevalence between long-head-of-biceps tendon pathology (tenosynovitis, pulley lesions, instability) and rotator cuff injury, but the evidence is cross-sectional surgical cohorts that cannot separate shared degenerative loading from any directional causal effect, so the mapping asserts comorbidity only."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "rotator-cuff-injury",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "A prospective arthroscopic cohort of 207 shoulders found pulley tears and long-head-of-biceps pathology significantly associated with rotator cuff injury (P < .001), and shoulder-surgery reviews describe bicipital tenosynovitis and rotator cuff disease as commonly co-occurring degenerative findings in the same shoulder; several surgical-indications reviews list biceps disease persisting after failed decompression for rotator cuff tendinitis.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the co-prevalence data are cross-sectional surgical cohorts selected for arthroscopy, the shared degenerative microtrauma environment of the bicipital groove and cuff insertion can explain co-occurrence without either structure causing the other, and biceps symptoms can reflect cuff pathology rather than cause it, so direction cannot be inferred for any individual."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A hypothesized shared-degeneration pathway is described in the shoulder literature: repetitive overhead loading and subacromial impingement mechanics subject the long head of the biceps tendon within the bicipital groove and the adjacent rotator cuff (particularly the subscapularis and supraspinatus insertions) to the same abrasive and degenerative stresses, and reflection-pulley disruption can permit biceps subluxation that secondarily alters cuff loading; this would explain co-occurrence without establishing that bicipital tendinitis caused a rotator cuff tear in any individual, and reverse causation (cuff insufficiency destabilizing the biceps pulley) is an equally supported direction.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Surgical cohort data report significant co-prevalence between biceps-labral complex pathology and rotator cuff injury, but individual determination requires orthopedic documentation of both conditions (examination with imaging or arthroscopy) with chronology, and exclusion of a single shared traumatic or degenerative event, all reviewed case by case by a qualified medical professional.",
+        "evidenceGaps": "Orthopedic documentation of bicipital tendinitis (examination findings such as biceps groove tenderness or Speed/Yergason testing with MRI or arthroscopic correlation) and of rotator cuff pathology with onset chronology; operative or imaging findings distinguishing separate progression from a single shared insult; functional impact records for each condition; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "A single traumatic or degenerative event (e.g., fall, overhead overuse period) explaining both findings concurrently",
+          "Primary rotator cuff pathology with secondary biceps-pulley involvement rather than the reverse",
+          "Subacromial impingement or acromial morphology driving both tendinopathies independently",
+          "Age-related degenerative change affecting both structures without any causal link"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the biceps-cuff co-prevalence is well documented in arthroscopic cohorts but directionally unresolvable at the population level, so this edge flags the comorbidity for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Documented bicipital tendinitis diagnosis with examination and imaging correlation",
+        "Documented rotator cuff pathology with onset chronology relative to the biceps findings",
+        "Operative or imaging assessment distinguishing shared degeneration from progression",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Braun S, Horan MP, Elser F, Millett PJ. Lesions of the biceps pulley. Am J Sports Med. 2011;39(4):790-795. PMID 21335355. doi:10.1177/0363546510393942.",
+          "note": "Prospective arthroscopic cohort of 207 shoulders reporting a significant association between reflection-pulley tears and rotator cuff injury (P < .001) and between pulley lesions and biceps tendon instability; supports the co-prevalence proposition only, not a directional causal claim.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21335355/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 21335355; cohort results and conclusion"
+        },
+        {
+          "citation": "Sethi N, Wright R, Yamaguchi K. Disorders of the long head of the biceps tendon. J Shoulder Elbow Surg. 1999;8(6):644-654. PMID 10633904. doi:10.1016/s1058-2746(99)90105-2.",
+          "note": "Review of long-head-of-biceps disorders describing chronic inflammatory and structural biceps changes co-occurring with rotator cuff disease and listing biceps disease after failed rotator-cuff decompression among tenodesis indications; supports the clinical co-occurrence proposition, not causation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10633904/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 10633904; review discussion of biceps-cuff interaction"
+        }
+      ]
+    }
+  ]
 }

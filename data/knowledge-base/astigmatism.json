@@ -2,8 +2,68 @@
   "id": "astigmatism",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Review visual-comfort and headache pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: the refractive-error headache literature is observational with mixed findings, and ICHD-3 classifies headache attributed to refractive error as a descriptive category whose causality is contested; the cited studies cannot establish that an individual's astigmatism caused or aggravated a headache disorder."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "tension-type-headache",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Optometry clinic studies report headaches co-occurring with uncorrected refractive error including astigmatism, and the International Classification of Headache Disorders includes a descriptive category for headache attributed to refractive error, based on reported temporal association with visual tasks in observational settings.",
+        "causationStatus": "Neither causation nor aggravation is established: the reported astigmatism-headache association is observational with mixed findings across studies, the ICHD-3 refractive-error headache category is descriptive and its causal mechanism is contested in the headache literature, and tension-type headache has strong competing drivers (stress, posture, sleep, cervicogenic factors) that cannot be excluded without individual assessment."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized visual-effort pathway has been described: uncorrected astigmatic blur may drive sustained accommodative effort and extraocular strain during near and intermediate tasks, with onward triggering of pericranial muscle tension, but the mechanism has never been isolated experimentally and headache improvement after refractive correction is reported inconsistently, so no directional causal claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Clinic-based studies report headache co-occurrence with uncorrected refractive error, but study designs cannot exclude indication and selection bias, the ICHD-3 category is explicitly descriptive, and the individual determination requires ophthalmic documentation, headache characterization, chronology with visual-task association, and a treatment-response signal after refractive correction, all of which must be reviewed case by case by a qualified medical professional.",
+        "evidenceGaps": "Objective refraction and ophthalmic examination quantifying astigmatism and correction status; headache characterization against ICHD-3 tension-type criteria with chronology relative to visual tasks; trial of corrected refraction documenting headache trajectory; exclusion of cervicogenic, stress-related, medication-overuse, and other competing headache etiologies",
+        "alternativeEtiologiesToRuleOut": [
+          "Tension-type headache driven by stress, posture, or musculoskeletal factors independent of refractive status",
+          "Migraine or other primary headache disorder with coincidental astigmatism",
+          "Cervicogenic headache or medication-overuse headache",
+          "Ocular surface disease, elevated intraocular pressure, or other ophthalmic causes of eye pain misreported as headache"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the astigmatism-headache relationship rests on observational co-occurrence reports and a descriptive ICHD-3 category with contested mechanism, so the mapping flags the association for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Current refraction and ophthalmic documentation of astigmatism magnitude and correction status",
+        "Headache diary or clinical characterization establishing temporality with visual tasks",
+        "Documented headache trajectory after refractive correction, where attempted",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Wajuihian SO. Exploring correlations between headaches and refractive errors in an optometry clinic sample. Br Ir Orthopt J. 2024;20(1):1-15. PMID 38187096. doi:10.22599/bioj.313.",
+          "note": "Optometry clinic study reporting correlations between headaches and refractive error including astigmatism; explicitly observational, supporting the bounded co-occurrence proposition only, not individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38187096/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 38187096; headache and refractive-error correlation results",
+          "authorityCategory": "medical-scientific-evidence"
+        },
+        {
+          "citation": "Khoo NT, Burgos-Blasco B, Antoniou A, Jenkins B, Fraser CL, Moloney G. Headache attributed to refractive error: improvement after topography-guided photorefractive keratectomy with corneal cross-linking in patients with keratoconus. J Clin Med. 2024;13(3):690. PMID 38337384. doi:10.3390/jcm13030690.",
+          "note": "Case series reporting headache improvement after refractive correction in keratoconus patients, illustrating the refractive-error headache concept and its contested, treatment-signal-based support; reinforces the association-only framing rather than establishing individual causation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38337384/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 38337384; headache outcomes after refractive correction",
+          "authorityCategory": "medical-scientific-evidence"
+        }
+      ]
+    }
+  ]
 }

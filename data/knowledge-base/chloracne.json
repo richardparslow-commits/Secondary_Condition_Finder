@@ -1,9 +1,14 @@
 {
-  "id": "chloracne",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "chloracne",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 10 (2026-09-22): identity deferred — zero target-specific literature; the documented persistent-lesion and scarring course has no catalog outcome identity, per the repo's deferral convention.",
+  "PubMed searches for chloracne with scarring, persistent-lesion, and clinical-course outcomes returned no target-specific records; if a qualified human identifies a catalog identity for toxin-associated acne scarring or a cohort study of chloracne sequelae, this deferral should be revisited."
+ ],
+ "governanceNotes": [
+  "Deferral reason: chloracne is the cutaneous hallmark of dioxin and halogenated-aromatic toxicity, and general toxicology references describe persistent comedonal lesions and secondary scarring, but no PubMed-indexed record connects chloracne to any catalogued outcome condition, and the catalog has no scar-forming acne or toxic-deropathy identity; authoring an edge on general toxicology narrative alone would violate the condition-specific-source rule applied across the D1 program.",
+  "Agent Orange context noted but not relied upon: chloracne's regulatory salience under 38 CFR 3.309 (Agent Orange presumptive, resolved-onset rule) is rating authority, which under the repo guardrail cannot substitute for clinical-evidence mapping; no presumptive relationship is drafted here.",
+  "Evidence-gap checklist retained in the batch-10 roadmap ledger record (top-level evidenceGaps is not a valid mapping-level schema key)."
+ ],
+ "suggestions": []
 }

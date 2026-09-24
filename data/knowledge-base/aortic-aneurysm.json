@@ -2,7 +2,138 @@
   "id": "aortic-aneurysm",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with aortic-aneurysm-specific clinical evidence; prior generic depression and medication-to-GERD pathways lacked direct supporting citations."
+    "D1 draft-authoring batch 15 (2026-09-22): association-only drafts pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Pre-D1 draft suggestions (generic depression, medication-to-GERD) were withdrawn before the D1 program for lacking condition-specific citations (recorded in the pre-batch todo); this batch rebuilds from aortic-aneurysm-specific literature only."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength for both edges: the aneurysm-valve link is best documented as shared bicuspid-aortic-valve aortopathy (media disease producing both identities), which is genotype-level co-expression rather than population-level 'aneurysm causes valve disease', and the aneurysm-hydronephrosis link rests on case reports/series of inflammatory aneurysm with perianeurysmal fibrosis, not population denominators.",
+    "Direction-of-arrow guard recorded: chronic aortic regurgitation can itself produce post-stenotic root dilation (reverse direction), and most aortic aneurysms are degenerative/atherosclerotic without any valvular involvement; either fact defeats a causal reading, so no directional claim is made."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "valvular-heart-disease",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The definitive bicuspid-aortic-valve review documents that the most frequent associated finding is dilatation of the proximal ascending aorta secondary to aortic-media abnormalities, that media changes are present whether the valve is normal, stenotic, or incompetent, and that complications include aortic regurgitation, aneurysm formation, and dissection (Siu 2010); the 2022 guideline update confirms that BAV aortopathy can develop independent of valvular alterations and can lead to aneurysm or dissection (Verma 2022).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the evidence describes co-expression of aneurysm and valvular disease within bicuspid aortopathy (a shared-cause structure, not a causal chain), most aortic aneurysms are degenerative without valvular involvement, chronic regurgitation can itself cause root dilation (reverse arrow), and the literature is review/guideline class without population transition rates, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A shared-aortic-media pathway is hypothesized: in bicuspid aortic valve aortopathy, intrinsic abnormalities of the aortic media produce proximal ascending dilatation (aneurysm formation) and valvular complications as parallel expressions of one underlying media disease, occurring independent of valve function; alternatively, root dilatation can geometrically coapt-fail the aortic valve, producing regurgitation, and chronic regurgitation can secondarily dilate the root. Both mechanisms are physiologically coherent and review-supported, but they describe co-expression or reverse hemodynamics within a defined genotype, not a population-level causal arrow from aneurysm to valve disease, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Aneurysm and valvular pathology co-occur most clearly as shared aortopathy in bicuspid aortic valve disease; individual determination requires echocardiographic and CTA documentation of both the aneurysm morphology and valve function with chronology, exclusion of degenerative aneurysm without valve involvement, and review by a qualified medical professional.",
+        "evidenceGaps": "Echocardiographic and CT-angiographic documentation of aneurysm location, size, and morphology together with valvular function and their chronology; genetic/syndromic evaluation (bicuspid aortic valve, Marfan, Loeys-Dietz, vascular Ehlers-Danlos); workup excluding degenerative atherosclerotic aneurysm without valve involvement and prior aortitis; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Degenerative atherosclerotic aneurysm without any valvular involvement",
+          "Genetic connective-tissue syndromes (Marfan, Loeys-Dietz, vascular Ehlers-Danlos) producing both",
+          "Chronic aortic regurgitation producing secondary root dilatation (reverse direction)",
+          "Hypertension as a shared mechanical stressor",
+          "Prior aortitis (giant-cell, Takayasu, syphilitic) with secondary valve and wall disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the strongest literature documents shared-media co-expression in bicuspid aortopathy, which is a common-cause structure; the edge records co-occurrence only and leaves every causal and reverse-direction judgment to a qualified medical professional.",
+      "sourceReferences": [
+        {
+          "citation": "Siu SC, Silversides CK. Bicuspid aortic valve disease. J Am Coll Cardiol. 2010;55(25):2789-2800. PMID 20579534. doi:10.1016/j.jacc.2009.12.068.",
+          "note": "Definitive review documenting proximal ascending dilatation from aortic-media abnormalities as the most frequent BAV association, media changes independent of valve function, and regurgitation/aneurysm/dissection among complications; the central shared-media evidence.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20579534/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 20579534; results and conclusions"
+        },
+        {
+          "citation": "Verma R, Cohen G, Colbert J, Fedak PWM. Bicuspid aortic valve associated aortopathy: 2022 guideline update. Curr Opin Cardiol. 2023;38(2):61-67. PMID 36718616. doi:10.1097/HCO.0000000000001020.",
+          "note": "ACC/AHA-aligned update confirming BAV aortopathy develops independent of valvular alterations and can lead to aneurysm, dissection, or rupture; supports the shared-media rather than causal reading.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36718616/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 36718616; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "Echocardiographic and CT-angiographic documentation of aneurysm location, size, and morphology together with valvular function and their chronology",
+        "genetic/syndromic evaluation (bicuspid aortic valve, Marfan, Loeys-Dietz, vascular Ehlers-Danlos)",
+        "workup excluding degenerative atherosclerotic aneurysm without valve involvement and prior aortitis",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    },
+    {
+      "conditionId": "hydronephrosis",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "A review of 348 abdominal aortic aneurysms identified 15 inflammatory aneurysms, with unilateral ureteral obstruction in 4 patients and bilateral in 1, and documented that hydronephrosis due to ureteral obstruction could disappear or decrease after repair (Siebenmann 1988); a case report of non-inflammatory aortoiliac aneurysm with ureteral obstruction cites ureteral obstruction in 20% to 71% of inflammatory aneurysm cases (Babic 2012); a case report of abdominal aortic aneurysm causing duodenal and ureteric obstruction notes that as many as 71% of patients may show radiologic ureteric involvement and that obstruction runs through inflammatory perianeurysmal fibrosis encasement rather than simple compression (Hodgson 1986).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the evidence is case reports and surgical-series reviews without population denominators, the frequently cited 71% figure reflects radiologic ureteric involvement in selected surgical cohorts rather than hydronephrosis incidence, and the intermediate fibrosis mechanism means the aneurysm is one of several retroperitoneal processes that can entrap the ureter, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A perianeurysmal-fibrosis-encasement pathway is hypothesized: inflammatory aneurysm wall thickening with retroperitoneal fibrosis entraps the ureters along their retroperitoneal course (rather than simple mass compression), obstructing drainage and producing hydronephrosis proximal to the obstruction; series document regression of hydronephrosis after aneurysm repair and corticosteroid-mediated regression of the fibrosis. The mechanism is anatomically coherent and series-supported, but the evidence is case-report and single-center series class with selected surgical populations, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Hydronephrosis is a documented complication predominantly of inflammatory abdominal aortic aneurysm with perianeurysmal fibrosis in case series; individual determination requires CT urography or nuclear-medicine studies documenting the obstruction level and function, exclusion of other obstructive causes, and review by a qualified medical professional.",
+        "evidenceGaps": "CT urography or diuretic renography documenting hydronephrosis with the obstruction level and differential renal function; imaging documentation of the anatomic relationship (perianeurysmal fibrosis encasement versus compression); exclusion of urolithiasis, malignancy, retroperitoneal fibrosis of other causes, and prostatic obstruction; surgical or pathologic correlation where available; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Idiopathic or drug-induced retroperitoneal fibrosis without aneurysm",
+          "Urolithiasis and other intrinsic ureteral obstruction",
+          "Pelvic or retroperitoneal malignancy",
+          "Benign prostatic hyperplasia and other lower-tract obstruction",
+          "Prior surgery or radiation causing ureteral stricture"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the aneurysm-hydronephrosis literature is case-series class, the mechanism runs through intermediate perianeurysmal fibrosis, and competing retroperitoneal processes are common; the edge records the documented complication pattern only.",
+      "sourceReferences": [
+        {
+          "citation": "Siebenmann R, Schneider K, von Segesser L, Turina M. [Inflammatory abdominal aortic aneurysm]. Schweiz Med Wochenschr. 1988;118(23):881-888. PMID 3393898.",
+          "note": "348-case review identifying 15 inflammatory aneurysms with ureteral obstruction in 5 patients and post-repair regression of hydronephrosis; the central series evidence with the reversible-mechanism observation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/3393898/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 3393898; case series and post-repair outcomes"
+        },
+        {
+          "citation": "Babic S, Radak D, Matic P, Kovacevic V, Jocic D. [Non-inflammatory aortoiliac aneurysm with ureteral obstruction and consequent hydronephrosis: case report]. Srp Arh Celok Lek. 2012;140(1-2):91-93. PMID 22462354. doi:10.2298/sarh1202091b.",
+          "note": "Case report documenting that even non-inflammatory aneurysms can obstruct the ureter and citing ureteral obstruction in 20-71% of inflammatory cases; scope-context evidence.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22462354/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 22462354; case report and cited prevalence range"
+        },
+        {
+          "citation": "Hodgson KJ, Webster DJ. Abdominal aortic aneurysm causing duodenal and ureteric obstruction. J Vasc Surg. 1986;3(2):364-368. PMID 3511305. doi:10.1067/mva.1986.avs0030364.",
+          "note": "Documents that ureteric obstruction runs through perianeurysmal fibrosis encasement rather than simple compression and that up to 71% of surgical AAA patients show radiologic ureteric involvement; mechanism-nuance evidence.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/3511305/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 3511305; case report and literature review"
+        }
+      ],
+      "evidenceGaps": [
+        "CT urography or diuretic renography documenting hydronephrosis with the obstruction level and differential renal function",
+        "imaging documentation of the anatomic relationship (perianeurysmal fibrosis encasement versus compression)",
+        "exclusion of urolithiasis, malignancy, retroperitoneal fibrosis of other causes, and prostatic obstruction",
+        "surgical or pathologic correlation where available",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

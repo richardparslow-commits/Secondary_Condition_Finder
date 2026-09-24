@@ -2,8 +2,12 @@
   "id": "fissured-tongue",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 34 (2026-09-23): deferred on evidence-ground and directionality grounds - no edges authored; the identity is retained as a draft with suggestions: [] pending qualified-human governance decision.",
+    "Revisit only if a directional cohort links fissured tongue to a catalog-fit secondary identity, or if a Melkersson-Rosenthal-syndrome identity enters the catalog; do not author an edge from co-occurrence alone or from the direction-reversed geographic-tongue finding, and do not infer medical causation from rating-schedule authority."
+  ],
+  "governanceNotes": [
+    "D1 batch 34 (2026-09-23): deferred. Negative screen recorded 2026-09-23: (i) the dedicated identity paper (Rajeev 2021 'Cerebriform Tongue', PMID 34447218) documents lingua fissurata as a benign clinical condition with grooves and synonyms, with no secondary outcome data; (ii) the only quantified association found (Cetin 2025 geographic-tongue severity study, PMID 41121042) is direction-reversed for our purposes - among geographic-tongue patients, symptomatic disease was significantly associated with fissured tongue rather than GT severity, i.e., fissured tongue as a correlate of symptom burden inside a GT-recruited sample, which cannot support a fissured-tongue-to-geographic-tongue incidence arrow; (iii) the remaining association hits are context papers (an asthma oral-manifestations comparison, PMID 26564298) with no fissured-tongue outcome. Zero-record screening follows the camptodactyly precedent: a static benign developmental variant with no outcome cohort fails the minimum condition-specific evidence bar, and the direction-reversed single cross-section fails directionality.",
+    "Alternative-target check recorded: fissured tongue is conventionally associated with geographic tongue and forms one leg of the Melkersson-Rosenthal triad (fissured tongue, facial nerve palsy, orofacial granulomatosis), but no Melkersson-Rosenthal identity exists in the catalog and both bell-s-palsy (already carrying its own edges) and the granulomatosis family are separate identities whose pathways an fissured-tongue edge would merely restate as co-occurrence; burning-mouth-syndrome carries an outgoing depressive-disorder edge but no incoming fissured-tongue evidence was found. Reopening condition: a directional cohort (fissured tongue preceding a catalog-fit outcome) or a catalog identity for the Melkersson-Rosenthal syndrome."
   ],
   "suggestions": []
 }

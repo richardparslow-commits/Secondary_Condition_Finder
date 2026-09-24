@@ -20,7 +20,7 @@ The all-94 approval was applied on 2026-09-04 as a citation-state transition onl
 
 ## Historical citation-verification baseline
 
-The citation-verification batches left the repository **fully verified** — as of the latest `npm run citations:audit`, `unverifiedCitationCounts` is empty. The transiently unverified rows described in earlier revisions of this document (Batch 31's two bounded `verified: false` source rows) have since been qualified-human verified.
+The published surface remains fully verified: for published mappings, `npm run citations:queue` reports an empty row set. The citation-verification batches left the repository fully verified at the time they ran, and every transiently unverified published row since (including Batch 31's two bounded `verified: false` source rows) has been qualified-human verified.
 
 Batch 31 added exactly two bounded clinical source rows as `verified: false` at the time; both have since been qualified-human verified:
 
@@ -29,7 +29,7 @@ Batch 31 added exactly two bounded clinical source rows as `verified: false` at 
 
 Both are prospective incident-depression sources. Their published rationales explicitly distinguish population-level temporal risk from an individual medical nexus and require diagnosis-specific chronology and competing-cause review.
 
-No source is automatically verified. Citation Verification Batches 01 through 13 record explicit qualified-human decisions, reducing the then-current ceilings to a single live unverified reference and a single published-unverified review finding without changing the live-reference denominator. Batch 08 intentionally held one reviewed source unverified because the knowledge-base target was broader/different than the cited post-traumatic-headache evidence; that row has since been resolved and the live audit reports zero unverified citations.
+No source is automatically verified. Citation Verification Batches 01 through 13 record explicit qualified-human decisions, reducing the then-current ceilings to a single live unverified reference and a single published-unverified review finding without changing the live-reference denominator. Batch 08 intentionally held one reviewed source unverified because the knowledge-base target was broader/different than the cited post-traumatic-headache evidence; that row has since been resolved.
 
 The targeted screen also records several nonpublished evidence dispositions without adding live source rows: carpal tunnel syndrome psychiatric association (PMID 37639884); ME/CFS psychiatric temporal/comorbidity literature (including PMIDs 40785390, 15184691, 19566769); hypothyroidism/CTS evidence (PMID 41002938); narcolepsy/depression meta-analysis (PMID 32671534); peripheral-neuropathy/falls-fractures evidence (PMID 36945108); radial mononeuropathy characterization (PMID 41392533); REM sleep behavior disorder prodromal synucleinopathy evidence (PMIDs 39177811 and 28429825); and social-anxiety/depression prospective evidence (PMID 11231832). These are screening notes, not live published citation rows.
 
@@ -64,6 +64,18 @@ Five additional live clinical-evidence references were explicitly approved by th
 ## Completed Citation Verification Batch 05
 
 Five additional live clinical-evidence references were explicitly approved by the repository owner acting as the qualified human reviewer: erectile dysfunction↔depressive disorder association evidence (PMID 29960891) after removing unsupported directional `somatopsychic` pathway intelligence; femoroacetabular impingement→hip osteoarthritis (PMID 26524551) as written; heart-valve-replacement residuals→hemolytic anemia after one-for-one source replacement with Alkhouli et al. (PMID 31039274); confirmed primary aldosteronism→hypertension as written; and confirmed primary hyperparathyroidism→kidney stones (PMID 36245251) as written. The reproducible decision record is `docs/citation-verification-batch-05.md`.
+
+## D1 draft-authoring verification queue (2026-09)
+
+The D1 condition-expansion batches of 2026-09-22 authored draft-quarantined `ASSOCIATION_ONLY` suggestions whose source references are deliberately `verified: false` pending this queue. These rows are **not** surfaced by the default published-surface command above; the machine queue for them is:
+
+```bash
+node scripts/report-citation-verification-queue.js --markdown --include-drafts
+```
+
+Rows are generated directly from the mapping files — never transcribed here — and each row carries its publication state so a reviewer can see it is a draft-quarantined mapping citation, not a published one. The reviewer-facing worksheets (proposition, causation boundary, per-source note under review, and decision-record template) are in `docs/d1-citation-verification-packet-2026-09.md`, generated from the same mapping records.
+
+Approving a D1 row verifies only that the source supports the bounded association-only proposition as authored; it does not publish the mapping, convert association into causation, or constitute an individual VA nexus determination. The debt ratchet in `scripts/audit-citation-verification.js` closes only through these qualified-human decisions, applied in lockstep with the master registries.
 
 ## Human review procedure
 

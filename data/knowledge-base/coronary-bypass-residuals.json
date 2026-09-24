@@ -1,6 +1,150 @@
 {
   "id": "coronary-bypass-residuals",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, treatment/procedure, medication, intermediate-factor, cardiovascular, and other organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 18 (2026-09-22): treatment-mediated drafts pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Both edges follow the repository's iatrogenic convention (DIRECT_CAUSATION with IATROGENIC_TREATMENT_EFFECT, hypothesizedOnly false), matching the cauda-equina-syndrome -> erectile-dysfunction precedent; the exposure is the surgery, not the underlying coronary disease - do not generalize to post-MI arrhythmia or vascular dementia pathways, which are separate theories requiring separate documentation."
+  ],
+  "governanceNotes": [
+    "Postoperative atrial fibrillation is documented in roughly 23% of isolated-CABG patients without prior AF (both 2025 cohorts), but the Kuroda CREDO-Kyoto analysis found no excess adjusted all-cause mortality at 5 years with numerically higher stroke and heart failure, so long-term clinical significance beyond the perioperative window is actively debated and must be individually documented rather than presumed.",
+    "The cognitive-disorder incidence figures (80-90% at discharge, 42% at 5 years) are review-cited literature values from Román 2002, not a single cohort; POCD studies are sensitive to test-battery and control-group choices (Funder 2009), and delirium-trajectory data (Saczynski 2012) show substantial individual recovery - persistence beyond the typical recovery window is the claim-relevant question for a qualified professional."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cardiac-arrhythmia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "This DIRECT_CAUSATION classification is about the proposed treatment-mediated theory, not a population-level statement that coronary artery disease causes arrhythmia: coronary bypass surgery residuals (the post-CABG state) -> postoperative atrial fibrillation arising from the surgery itself, if documented -> claimed cardiac arrhythmia identity; the exposure is the surgery, not the underlying atherosclerosis, and agent-specific documentation (operation date, arrhythmia onset, persistence) is required. Postoperative atrial fibrillation is recognized as a common complication of isolated CABG in patients with no prior AF."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "A post-surgical atrial substrate pathway is documented: pericardial inflammation, autonomic surge, atrial stretch from fluid shifts, and ischemia-reperfusion after cardiopulmonary bypass and cross-clamping produce the transient atrial electrical substrate of postoperative atrial fibrillation, classically in the first postoperative week; cohort data show POAF in roughly 23% of isolated-CABG patients with no prior AF, with prolonged cross-clamp time, age, and reduced GFR as predictors. The mechanism is surgical, so the classification is the treatment-mediated theory only.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The treatment-mediated theory is classified DIRECT_CAUSATION per the repository's iatrogenic convention because the arrhythmia arises as a direct complication of the surgery itself, not as an association requiring population-level inference; whether the individual veteran's documented arrhythmia satisfies the theory is a determination for a qualified medical professional.",
+        "evidenceGaps": "operative report establishing the CABG date and cardiopulmonary-bypass/cross-clamp details; rhythm documentation (ECG/monitor) of the arrhythmia with onset relative to surgery; persistence or recurrence pattern after discharge; pre-operative rhythm history excluding prior atrial fibrillation; exclusion of hyperthyroidism, valvular disease, alcohol, and pulmonary causes; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing paroxysmal atrial fibrillation unmasked by perioperative monitoring",
+          "Underlying valvular or congenital heart disease",
+          "Hyperthyroidism, alcohol use, pulmonary embolism, or pneumonia",
+          "Atherosclerotic atrial ischemia independent of the surgery",
+          "Medication effects (inotropes, vasopressors, beta-agonist weaning)"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored at the repository's treatment-mediation convention: POAF after isolated CABG is a documented surgical complication with large-cohort incidence (~23%), classified DIRECT_CAUSATION for the surgery->arrhythmia theory with hypothesizedOnly false, while individual attribution remains a medical determination.",
+      "sourceReferences": [
+        {
+          "citation": "Kuroda Y, Shiomi H, Morimoto T, Hirao S, Tsubota H, Matsuo T, et al. Postoperative Atrial Fibrillation After Coronary Artery Bypass Grafting. Circ J. 2025;90(1):24-34. PMID 41242757. doi:10.1253/circj.CJ-25-0581.",
+          "note": "CREDO-Kyoto Cohort-3 (n=1,483 CABG without prior AF): new-onset POAF during the index hospitalization in 337 (23%), with numerically higher 5-year stroke and heart failure and significantly higher major bleeding; the large-cohort incidence and long-term-outcome anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41242757/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 41242757; results and conclusions"
+        },
+        {
+          "citation": "Rum M, Er H, Yilmaz F, Ceylan L, Ketenci B. Postoperative Atrial Fibrillation Following Isolated Coronary Artery Bypass Grafting: Incidence, Predictors, and Clinical Outcomes. J Coll Physicians Surg Pak. 2025;35(9):1083-1087. PMID 40948152. doi:10.29271/jcpsp.2025.09.1083.",
+          "note": "Observational cohort (n=489 isolated CABG, prior AF and valvular disease excluded): POAF associated with advanced age, reduced GFR, chronic kidney disease, and prolonged cross-clamp time, and with increased postoperative morbidity and mortality; the predictor and outcome anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40948152/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 40948152; results and conclusions"
+        },
+        {
+          "citation": "Royster RL, Deng H, Whalen SP. Postoperative Atrial Fibrillation. Anesth Analg. 2017;125(1):10-12. PMID 28628573. doi:10.1213/ANE.0000000000002070.",
+          "note": "Editorial overview positioning POAF as the most common arrhythmia complication after cardiac surgery; the clinical-recognition anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28628573/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 28628573; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "operative report establishing the CABG date and cardiopulmonary-bypass/cross-clamp details",
+        "rhythm documentation (ECG/monitor) of the arrhythmia with onset relative to surgery",
+        "persistence or recurrence pattern after discharge",
+        "pre-operative rhythm history excluding prior atrial fibrillation",
+        "exclusion of hyperthyroidism, valvular disease, alcohol, and pulmonary causes",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    },
+    {
+      "conditionId": "cognitive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "This DIRECT_CAUSATION classification is about the proposed treatment-mediated theory, not a population-level statement that coronary artery disease causes dementia: coronary bypass surgery residuals (the post-CABG state) -> postoperative cognitive dysfunction/neurocognitive decline arising from the surgery itself, if documented -> claimed cognitive disorder identity; the exposure is the surgery, not the underlying atherosclerosis, and documentation of the cognitive trajectory across the operation is required."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "A post-surgical neurocognitive-injury pathway is documented: microemboli from cardiopulmonary bypass and aortic manipulation, cerebral hypoperfusion, systemic inflammatory response, and perioperative delirium produce measurable cognitive dysfunction after CABG; longitudinal data show lower MMSE trajectories through one year in delirium patients with 40% not returned to baseline at six months, and reviews record measurable dysfunction in 80-90% at hospital discharge with a 42% five-year incidence, with long-term consequences for quality of life and survival. The mechanism is surgical, so the classification is the treatment-mediated theory only.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The treatment-mediated theory is classified DIRECT_CAUSATION per the repository's iatrogenic convention because the cognitive injury arises as a direct consequence of the surgery itself, not as an association requiring population-level inference; whether the individual veteran's documented deficits satisfy the theory, and whether they persist beyond the typical recovery window, is a determination for a qualified medical professional.",
+        "evidenceGaps": "operative report establishing the CABG date, bypass strategy (on/off-pump), and complications; pre-operative and post-operative cognitive testing or documentation showing decline with chronology; delirium documentation during the index admission where available; persistence pattern (recovery versus sustained deficit) over follow-up; exclusion of stroke, hypoxia, medication effects, depression-related pseudodementia, and pre-existing neurodegenerative disease; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Intraoperative stroke or documented hypoxic injury (a distinct mechanism requiring separate documentation)",
+          "Pre-existing mild cognitive impairment or neurodegenerative disease progressing independently",
+          "Post-operative depression presenting as cognitive complaints (pseudodementia)",
+          "Medication effects (benzodiazepines, opioids, anticholinergics) during recovery",
+          "Vascular cognitive impairment from the underlying atherosclerotic disease itself rather than the surgery"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored at the repository's treatment-mediation convention: postoperative cognitive dysfunction after CABG is a documented surgical complication with longitudinal trajectory data and high early incidence, classified DIRECT_CAUSATION for the surgery->cognition theory with hypothesizedOnly false, while individual attribution and persistence remain medical determinations.",
+      "sourceReferences": [
+        {
+          "citation": "Saczynski JS, Marcantonio ER, Quach L, Fong TG, Gross A, Inouye SK, Jones RN. Cognitive trajectories after postoperative delirium. N Engl J Med. 2012;367(1):30-39. PMID 22762316. doi:10.1056/NEJMoa1112923.",
+          "note": "Longitudinal cohort (n=225 cardiac surgery, CABG or valve): delirium in 46%, with larger immediate MMSE decline and lower cognitive function at 1 month and 1 year, and 40% not returned to baseline at 6 months; the trajectory anchor with its recovery-uncertainty limit recorded.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22762316/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 22762316; results and conclusions"
+        },
+        {
+          "citation": "Roman GC. Vascular dementia may be the most common form of dementia in the elderly. J Neurol Sci. 2002;203-204:7-10. PMID 12417349. doi:10.1016/s0022-510x(02)00252-6.",
+          "note": "Review recording measurable cognitive dysfunction post-CABG in 80-90% of patients at hospital discharge and a long-term (5-year) incidence of cognitive defects of 42%; the incidence anchor (figures are review-cited literature values).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12417349/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 12417349; results and conclusions"
+        },
+        {
+          "citation": "Funder KS, Steinmetz J, Rasmussen LS. Cognitive dysfunction after cardiovascular surgery. Minerva Anestesiol. 2009;75(5):329-332. PMID 19412153.",
+          "note": "Review of POCD after cardiovascular surgery: high incidence, contradictory on- versus off-pump evidence, and important long-term consequences for quality of life and survival; the scope-and-context anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19412153/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 19412153; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "operative report establishing the CABG date, bypass strategy (on/off-pump), and complications",
+        "pre-operative and post-operative cognitive testing or documentation showing decline with chronology",
+        "delirium documentation during the index admission where available",
+        "persistence pattern (recovery versus sustained deficit) over follow-up",
+        "exclusion of stroke, hypoxia, medication effects, depression-related pseudodementia, and pre-existing neurodegenerative disease",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

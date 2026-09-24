@@ -1,9 +1,79 @@
 {
-  "id": "diverticulosis",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "diverticulosis",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 23 (2026-09-23): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification."
+ ],
+ "governanceNotes": [
+  "Identity-progression guard: diverticulitis is by definition inflamed diverticula, so an authoritative DIRECT_CAUSATION reading exists; the repository's conservative convention (Barrett's-to-cancer precedent) maps defining progressions as ASSOCIATION_ONLY because most carriers never develop the complication and rating pathways require the distinct diagnosis.",
+  "Progression estimates conflict by an order of magnitude across sources (1-4% JAMA 2025 vs 10-25%/5% Hawkins 2020); no progress estimate is asserted here."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "diverticulitis",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The JAMA 2025 diverticulitis review states approximately 1-4% of patients with diverticulosis will develop acute diverticulitis in their lifetime, with incidence approximately 180 per 100,000 people annually (Brown 2025); the surgical update estimates lifetime risk of 10-25% with more recent studies at approximately 5% progression (Hawkins 2020); the pathophysiology review reports around 5% of patients with diverticula experiencing an acute episode while most remain asymptomatic (Piscopo & Ellul 2020).",
+    "causationStatus": "The inflammatory transition is the defining complication of the same anatomic disease process rather than an independent secondary condition; because only a minority of diverticulosis carriers (estimates spanning 1-4% to 5-25% depending on cohort and case definition) ever develop clinically evident diverticulitis, the mapping cannot assert individual-level causation - most diverticula never become inflamed. Graded ASSOCIATION_ONLY to preserve the distinction between the anatomic finding and the inflammatory complication, following the repository's Barrett's-to-esophageal-cancer precedent for defining-progressions."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "INFECTIOUS_SPREAD",
+    "primaryVector": "A hypothesized inflammatory-transition pathway: fecalith entrapment within a diverticulum raises intraluminal pressure and injures the mucosa where vasa recta penetrate the circular muscle; bacterial proliferation with mucosal edema and toxin accumulation produces microperforation, pericolic fat stranding, and the acute inflammatory response clinically recognized as diverticulitis. Age-related wall-structure change (elastin and collagen deposition, taeniae shortening) and low-fiber, high-red-meat dietary patterns modulate the transition, and a distinct ischemic microperforation mechanism is proposed for younger patients with sparse diverticula.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "CT-documented acute diverticulitis (contrast-enhanced CT sensitivity 98-99%, specificity 99-100%) after imaging-documented diverticulosis; Hinchey severity classification including complicated features (abscess, perforation, stricture, fistula); exclusion of colorectal cancer and other mimics by colonoscopy after the acute episode where indicated",
+    "evidenceGaps": "Contrast-enhanced CT confirming acute diverticulitis with documented preceding diverticulosis on the same or prior imaging; severity classification distinguishing uncomplicated from complicated disease; colonoscopic exclusion of malignancy and mimics after the episode where indicated",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Colorectal cancer presenting with left-lower-quadrant symptoms",
+     "Ischemic colitis",
+     "Segmental colitis associated with diverticula (SCAD) and inflammatory bowel disease",
+     "Appendicitis for right-sided disease"
+    ]
+   },
+   "evidenceGaps": [
+    "Contrast-enhanced CT confirming acute diverticulitis with documented preceding diverticulosis on the same or prior imaging",
+    "Severity classification distinguishing uncomplicated disease from complicated features (abscess, free perforation, stricture, fistula) that change management and rating relevance",
+    "Colonoscopic exclusion of colorectal cancer, ischemic colitis, and inflammatory-bowel-disease mimics after the episode where age or atypical features apply",
+    "Recurrence documentation when claimed (multiple treated episodes) rather than a single episode"
+   ],
+   "rationale": "Authored at ASSOCIATION_ONLY: the complication is the natural-history progression of the same anatomic disease, quantified at 1-4% lifetime in the current JAMA review; an individual-level causal claim is not supportable because most diverticulosis never becomes inflamed, and the mapping preserves the source-target distinction for rating purposes.",
+   "sourceReferences": [
+    {
+     "citation": "Brown RF, Lopez K, Smith CB, Charles A. Diverticulitis: A Review. JAMA. 2025 Jul 24. doi:10.1001/jama.2025.10234. PMID 40705318.",
+     "note": "JAMA review: approximately 1-4% of patients with diverticulosis develop acute diverticulitis in their lifetime; US incidence approximately 180 per 100,000 annually with ~200,000 hospital admissions; CT sensitivity 98-99% and specificity 99-100%.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40705318/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 40705318; diverticulosis-to-diverticulitis lifetime progression 1-4%"
+    },
+    {
+     "citation": "Hawkins AT, Wise PE, Chan T, et al. Diverticulitis: An Update From the Age Old Paradigm. Curr Probl Surg. 2020;57(10):100862. PMID 33077029.",
+     "note": "Surgical update: over 50% of people over 60 and over 60% over 80 have colonic diverticula; lifetime risk of developing diverticulitis estimated at 10-25% although more recent studies estimate a 5% rate of progression; the exact mechanism leading from diverticulosis to diverticulitis is not definitively known.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33077029/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 33077029; progression estimates and unknown transition mechanism"
+    },
+    {
+     "citation": "Piscopo N, Ellul P. Diverticular Disease: A Review on Pathophysiology and Recent Evidence. Ulster Med J. 2020;89(2):83-88. PMID 33093692.",
+     "note": "Pathophysiology review: around 5% of patients with diverticula experience an episode of acute diverticulitis; fecolith entrapment produces mucosal damage, bacterial proliferation and toxin accumulation leading to perforation; an ischemic mechanism is proposed for younger patients with sparse diverticula.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33093692/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 33093692; fecolith/ischemia transition mechanisms"
+    }
+   ]
+  }
+ ]
 }

@@ -2,8 +2,13 @@
   "id": "color-blindness",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 13 (2026-09-22): identity deferred — the acquired-dyschromatopsia literature positions color-vision deficiency as a diagnostic marker of underlying optic-nerve and retinal disease rather than as a condition with its own outgoing sequelae, and no catalog identity exists for the underlying optic neuropathies a claim would actually run through, per the repo's deferral convention.",
+    "If a qualified human adds optic-neuropathy, retinal-disease, or visual-dysfunction identities that color deficiency could secondarily support, this deferral should be revisited with the acquired-dyschromatopsia evidence."
+  ],
+  "governanceNotes": [
+    "Deferral reason 1 (marker-versus-outcome directionality): the classic acquired-dyschromatopsia review documents color-vision impairment as a common, largely nonspecific accompaniment of retinal and optic-nerve disease rather than as an independent progressive condition (Hart 1987); the dysthyroid-optic-neuropathy review likewise uses decreased color vision as a diagnostic criterion of the underlying neuropathy (Potvin 2023). The causal arrow in the literature runs INTO color deficiency from optic nerve and retinal disease, not out of it toward other catalogued conditions, so authoring an outgoing edge would invert the documented directionality and violate the CRG's etiological-integrity requirement.",
+    "Deferral reason 2 (static-phenotype versus acquired-progression split): congenital color-vision deficiency — the dominant meaning of the color-blindness identity — is a static X-linked retinal phenotype with no progressive sequelae, while the acquired literature describes color loss as a sign of a separate primary disease; the two readings require different mapping strategies and neither yields a defensible outgoing edge to the current catalog.",
+    "No-catalog-target note: visual impairment exists in the catalog, but a color-deficiency-to-visual-impairment edge would restate the sensory overlap of the two phenotypes rather than a disease pathway (the ME-41 phenotype-identity barrier), and no catalog identity exists for optic neuritis, toxic optic neuropathy, or the retinal dystrophies that the acquired-dyschromatopsia literature would actually support."
   ],
   "suggestions": []
 }

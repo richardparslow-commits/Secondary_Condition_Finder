@@ -1,9 +1,82 @@
 {
-  "id": "burning-mouth-syndrome",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "burning-mouth-syndrome",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 7 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Review the comorbidity and shared-neuropathic pathways only where documented in this identity's records; do not infer medical causation from rating-schedule authority.",
+  "Directionality boundary: the strongest cohort evidence on this pair runs from depression to burning mouth syndrome (upstream), not from this primary; this edge documents only the comorbidity association and must never be presented as depression caused by burning mouth syndrome."
+ ],
+ "governanceNotes": [
+  "Authored as ASSOCIATION_ONLY with NOT_ESTABLISHED consensus: a 1:4 propensity-matched nationwide cohort reports roughly 3.4-fold higher adjusted hazard of incident burning mouth syndrome among patients with depression (and roughly 5.1-fold for anxiety), clinical reviews consistently rank depression and anxiety among the most frequent associated conditions, and the pain is understood as a chronic neuropathic orofacial pain disorder; but the dominant measured direction is the upstream one and the literature explicitly frames psychological factors as contributors the diagnosis must exclude, so the edge documents comorbidity only.",
+  "Conservatism boundaries: the cohort cannot establish which condition came first in any pair, case definitions vary across studies, reviews warn against invoking psychiatric causation without thorough evaluation, and BMS by definition has no identifiable organic cause at diagnosis, making any unidirectional mood-consequence claim unfounded at the mapping level.",
+  "Duplicate-scope check: no edges exist from this primary or into depressive-disorder from another orofacial-pain identity in the registry; the trigeminal-neuralgia -> depressive-disorder edge belongs to a different primary with its own evidence base and is not duplicate scope."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "depressive-disorder",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "A nationwide propensity-matched cohort (1:4 matching, survival analysis) reports an adjusted hazard ratio of 3.37 (95 percent CI 1.67-6.80) for incident burning mouth syndrome among patients with depression and 5.09 (95 percent CI 2.19-11.80) for anxiety, with female sex carrying higher risk, while dermatology and orofacial-pain reviews consistently list depression, anxiety, and cancerphobia among the most frequently associated conditions in BMS populations; the evidence base is explicitly bidirectional or reverse-directed, since the cohort measured mood disorders as the upstream exposure.",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the strongest cohort evidence runs from depression to burning mouth syndrome (the reverse of this edge's direction), cross-sectional psychiatric comorbidity in pain populations cannot establish direction, chronic orofacial pain and mood disorders share neurotransmitter and stress-axis pathways that could produce the association in either direction, and a depressive disorder can only be attributed as a consequence of the pain after excluding preexisting mood disorder and the sensory, endocrine, nutritional, and medication causes that the BMS diagnostic algorithm itself requires ruling out, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+    "primaryVector": "A hypothesized chronic-neuropathic-pain comorbidity pathway has been described: burning mouth syndrome is characterized as a chronic neuropathic orofacial pain disorder, and chronic pain states share central monoamine dysregulation, stress-axis activation, sleep disruption, and functional-disability pathways with depressive disorders, which would explain the documented co-occurrence; the mood-to-pain direction is equally plausible under the same shared pathways (the cohort's upstream finding), and reviews emphasize that psychological factors may contribute to symptom intensity without being the cause, so the coupling explains the comorbidity without establishing that burning mouth syndrome caused a depressive disorder in any individual, and preexisting mood disorder, medication effects, and shared neurotransmitter substrate remain active competing explanations, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Burning mouth syndrome and depressive disorders co-occur at multiples of background rates in cohort and review data, but the measured direction is predominantly reverse, so individual determination requires documented BMS against accepted criteria (normal mucosa, exclusion of organic causes) with chronology, psychiatric diagnosis of a depressive disorder against accepted criteria at a defined time point, mood and pain documentation at relevant time points, and exclusion of preexisting mood disorder and medication effects, all reviewed case by case by a qualified medical professional.",
+    "evidenceGaps": "Documented burning mouth syndrome against accepted criteria (chronic oral burning with normal clinical mucosal examination and exclusion of organic causes) with onset chronology; psychiatric assessment establishing a depressive disorder against accepted criteria with temporality relative to the oral pain; mood-measure and pain-intensity documentation at relevant time points; medication and substance review including antidepressant and anxiolytic effects; competing-explanation review including preexisting mood disorder, xerostomia, nutritional deficiency, candidiasis, and endocrine contributors; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Preexisting or independent major depressive disorder unrelated to the oral pain",
+     "Medication effects on mood related to treatment of the oral pain or comorbid conditions",
+     "Dry mouth, nutritional deficiency, candidiasis, or endocrine dysfunction as both pain driver and mood contributor",
+     "Anxiety or cancerphobia syndromes masquerading as or amplifying the pain-mood association"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the comorbidity is documented in cohort and review literature, but the measured direction is predominantly depression-to-BMS, the reviews warn against invoking psychiatric causation without thorough evaluation, and chronic-pain mood comorbidity is bidirectional by nature, so this edge flags the comorbidity for evidence-gap review only and must never be presented as established causation or aggravation.",
+   "evidenceGaps": [
+    "Documented burning mouth syndrome against accepted criteria with chronology",
+    "Psychiatric assessment establishing a depressive disorder with temporality",
+    "Mood and pain documentation at relevant time points with medication review",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ],
+   "sourceReferences": [
+    {
+     "citation": "Lee SJ, Kim C, Yu H, Kim DK. Relationship of Depression, Anxiety, and Bipolar Disease with Burning Mouth Syndrome: A Nationwide Cohort Study. Int J Environ Res Public Health. 2023;20(4):3391. PMID 36834086. doi:10.3390/ijerph20043391.",
+     "note": "Nationwide 1:4 propensity-matched cohort reporting adjusted hazard ratios of 3.37 (depression) and 5.09 (anxiety) for incident burning mouth syndrome, with bipolar disorder showing no significant risk; the abstract frames mood disorders as the upstream exposure, which is why this edge records the direction as reverse-dominant and stays at association strength.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36834086/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 36834086; cohort results and conclusion"
+    },
+    {
+     "citation": "Drage LA, Rogers RS 3rd. Burning mouth syndrome. Dermatol Clin. 2003;21(1):135-145. PMID 12622276. doi:10.1016/s0733-8635(02)00063-3.",
+     "note": "Clinical review listing depression, anxiety, and cancerphobia as the most frequently associated conditions in burning mouth syndrome populations while warning that psychiatric causes should not be invoked without thorough evaluation and that multiple contributing factors are common; anchors the comorbidity proposition and the exclusion discipline the diagnostic algorithm requires.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12622276/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 12622276; review associated-conditions and evaluation passages"
+    },
+    {
+     "citation": "Canfora F, Calabria E, Armogida NG, et al. Burning mouth syndrome: updates on pathogenesis and diagnostic algorithms. J Oral Facial Pain Headache. 2025;39(4):1-30. PMID 41436103. doi:10.22514/jofph.2025.064.",
+     "note": "Contemporary pathogenesis and diagnostic-algorithm review characterizing burning mouth syndrome as a chronic neuropathic orofacial pain disorder requiring exclusion of oral infections, nutritional deficiencies, hormonal imbalances, autoimmune disorders, and medication side effects, with psychological-profile assessment part of the diagnostic workup; anchors the mechanism framing and the competing-cause exclusions this edge's evidence gaps require.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41436103/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 41436103; pathogenesis and diagnostic-algorithm sections"
+    }
+   ]
+  }
+ ]
 }

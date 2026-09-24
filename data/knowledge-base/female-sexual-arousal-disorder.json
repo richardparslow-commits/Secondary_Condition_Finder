@@ -2,7 +2,12 @@
   "id": "female-sexual-arousal-disorder",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
+    "D1 batch 34 (2026-09-23): deferred on evidence-gap and nosology-stability grounds - no edges authored; the identity is retained as a draft with suggestions: [] pending qualified-human governance decision.",
+    "Revisit only if FSAD-stratified mood-outcome cohort evidence (depression or anxiety quantified specifically in FSAD populations) emerges and the catalog identity is resolved against the DSM-5 Female Sexual Interest/Arousal Disorder naming; do not author an edge from general-FSD-class literature, and do not infer medical causation from rating-schedule authority."
+  ],
+  "governanceNotes": [
+    "D1 batch 34 (2026-09-23): deferred. Negative screen recorded 2026-09-23: the targeted query ('female sexual arousal disorder'[Title/Abstract] AND (depressive symptoms OR 'depression scale' OR PHQ OR BDI)) returned ZERO records, and all seven top hits of the broader FSAD-plus-depression query fail the condition-specific outcome bar on inspection - the StatPearls identity review (PMID 38753946) is definitional, the FSDS-DAO psychometric validation (PMID 34559353) measures distress as the diagnostic criterion rather than a downstream outcome, the Czech prevalence study (PMID 19758283) reports psychosexual correlates without mood quantification, the ISSM review (PMID 22974112) records comorbidity with other sexual problems and biopsychosocial etiology without mood-outcome figures, and three sildenafil treatment trials (PMID 20733587, 39564518, 39059373) are efficacy studies. No FSAD-specific depression or anxiety outcome quantification exists to support any outgoing edge.",
+    "Nosology-instability guard recorded: the StatPearls review documents that DSM-5 merged FSAD and hypoactive sexual desire disorder into Female Sexual Interest/Arousal Disorder while the catalog carries the DSM-IV-era FSAD identity, and the batch-26 dyspareunia deferral recorded the adjacent genito-pelvic pain/penetration disorder merger as a directionality barrier for this identity family; authoring mood edges under an unstable identity would risk restatement under a nosology the manual itself declined to draw. Reopening condition: FSAD-stratified cohort evidence of mood outcomes with chronology, plus a qualified-human decision resolving the catalog identity against current DSM-5 naming."
   ],
   "suggestions": []
 }

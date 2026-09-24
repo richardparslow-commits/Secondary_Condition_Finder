@@ -1,9 +1,14 @@
 {
-  "id": "clinodactyly",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "clinodactyly",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 12 (2026-09-22): identity deferred — clinodactyly is a congenital anatomic variant whose literature is syndrome-association and surgical-technique class, and no catalog identity exists for the functional outcomes a secondary claim would require, per the repo's deferral convention.",
+  "PubMed searches return predominantly syndrome GeneReviews entries (Wiedemann-Steiner, Feingold) and congenital-anomaly classifications; the StatPearls entry defines <10 degrees as a normal physiologic variant. If a qualified human adds a finger-deviation or digital-dysfunction catalog identity and identifies acquired-progression cohort data, this deferral should be revisited."
+ ],
+ "governanceNotes": [
+  "Deferral reason 1 (variant-versus-disease identity): the reference literature itself defines clinodactyly under 10 degrees as a normal physiologic variant, and pathologic cases are described anatomically (trapezoidal/triangular phalangeal shape causing coronal-plane deviation) rather than as a progressive acquired condition; there is no acquired secondary condition in the catalog that clinodactyly could cause or aggravate, and authoring an edge to trigger-finger or contracture identities would invent a mechanical relationship the literature does not document.",
+  "Deferral reason 2 (syndrome-confounded literature): the clinodactyly literature is dominated by genetic-syndrome associations (dozens of GeneReviews entries list it as a feature), which document co-occurrence with syndromic diagnoses rather than outcomes; drafting an edge on that base would map a congenital-anomaly marker as if it were a disease pathway, violating the CRG's etiological-integrity requirement.",
+  "Surgical-technique context recorded: the osteotomy literature treats severe clinodactyly as a static deformity corrected for cosmesis or function, with no documented progression to other catalogued conditions; recorded as context, not as comorbidity evidence."
+ ],
+ "suggestions": []
 }

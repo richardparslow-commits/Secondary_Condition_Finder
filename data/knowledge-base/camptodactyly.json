@@ -2,8 +2,13 @@
   "id": "camptodactyly",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 8 (2026-09-22): identity deferred with a documented evidence and scope barrier instead of an authored edge, per the repo's established deferral convention (ME-30/ME-32 precedents).",
+    "Revisit only if the literature adds a cohort or registry study of contracture-driven joint degeneration or a catalog identity for skin/maceration or adaptive-use sequelae with condition-specific evidence; do not author an edge from mechanical-plausibility alone, and do not infer medical causation from rating-schedule authority."
+  ],
+  "governanceNotes": [
+    "Deliberate deferral on evidence-ground zero-record screening: the targeted PubMed query for camptodactyly with osteoarthritic or degenerative outcomes returned exactly one record (PMID 27783110), a German-language surgical-technique paper whose camptodactyly mention is an arthrodesis indication list alongside congenital disorders generally, with no comorbidity, incidence, or mechanistic content.",
+    "Alternative-target check recorded: the fixed proximal-interphalangeal flexion posture plausibly drives chronic joint pain, skin maceration or breakdown, and adaptive grip strain, but the catalog carries no identity for those sequelae, and the only candidate target (osteoarthritis) has no condition-specific evidence connecting camptodactyly posture to degenerative joint change.",
+    "No edge was authored because a mechanically plausible cascade is not clinical evidence; a congenital-flexion-deformity primary with zero outcome-specific records fails the minimum evidence bar the D1 batches apply."
   ],
   "suggestions": []
 }

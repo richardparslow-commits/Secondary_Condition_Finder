@@ -2,8 +2,77 @@
   "id": "eosinophilic-myocarditis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 29 (2026-09-23): draft edge pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the DIRECT_CAUSATION classification follows the acute-myocarditis structural-injury convention - inflammatory myocardial destruction is the definition of the disease's severe phenotype - and is scoped to biopsy-proven eosinophilic myocarditis; the target already carries multiple incoming edges from distinct mechanisms (ischemic, hypertensive, toxic), so this edge adds the eosinophilic-inflammatory pathway only."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 29 (2026-09-23): one DIRECT_CAUSATION heart-failure edge authored from the international 156-patient natural-history cohort (median LVEF 32% at presentation; high in-hospital and midterm mortality or transplantation), with the hypersensitivity-myocarditis literature anchoring the eosinophil-mediated injury mechanism; the etiologic-heterogeneity guard (hypersensitivity, hypereosinophilic syndrome, and immune etiologies differ in reversibility) and the no-peripheral-eosinophilia diagnostic guard are recorded.",
+    "The congestive-heart-failure target already carries incoming edges from ischemic, hypertensive, and other cardiomyopathic mechanisms; this edge adds a distinct eosinophilic-inflammatory pathway and does not restate any existing one."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Endomyocardial-biopsy-proven eosinophilic myocarditis -> eosinophil-mediated myocyte necrosis with eosinophilic microabscesses and endomyocardial fibrosis -> reduced systolic function and clinical heart failure (median LVEF 32% at presentation in the international natural-history cohort).",
+        "mechanismSummary": "Activated eosinophils degranulate within the myocardium, releasing major basic protein and cationic peptides that are directly myocytotoxic; the resulting acute necrotizing eosinophilic myocarditis destroys contractile tissue and produces acute heart failure and cardiogenic shock, and healing with endomyocardial fibrosis can convert the acute injury into a chronic restrictive or dilated heart-failure phenotype (Ammirati 2026)."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Eosinophil degranulation (major basic protein, eosinophil cationic protein, leukotrienes) causes direct myocyte injury and microvascular thrombosis; the acute phase produces fulminant systolic dysfunction and cardiogenic shock, and the healing phase lays down endomyocardial fibrosis that restricts filling. The pathway is the established biology of the disease's severe presentations and requires no extrapolation; the individual claim still requires biopsy-proven diagnosis and documented ventricular dysfunction.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The direct classification is scoped to biopsy-proven eosinophilic myocarditis with documented ventricular dysfunction: peripheral eosinophilia is absent in over 40% of cases so the diagnosis cannot rest on blood counts, etiologic heterogeneity is material (hypersensitivity reactions are often reversible after drug withdrawal while hypereosinophilic-syndrome myocarditis may be fibrotic at diagnosis), and no VA probability language is asserted.",
+        "evidenceGaps": "Endomyocardial biopsy or autopsy confirmation of eosinophilic myocarditis; documented left or right ventricular dysfunction by echocardiography or equivalent with chronology compatible with the myocarditis; etiologic workup (drug-timeline review, hypereosinophilic-syndrome evaluation); exclusion of ischemic, viral, giant-cell, and hypertensive heart failure; cardiology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Ischemic heart disease or myocardial infarction",
+          "Viral myocarditis or giant-cell myocarditis",
+          "Hypertensive heart disease or valvular cardiomyopathy",
+          "Anthracycline or other cardiotoxic drug exposure without eosinophilic histology",
+          "Alcohol or metabolic cardiomyopathy"
+        ]
+      },
+      "evidenceGaps": [
+        "Endomyocardial biopsy or autopsy confirmation of eosinophilic myocarditis; documented left or right ventricular dysfunction by echocardiography or equivalent with chronology compatible with the myocarditis; etiologic workup (drug-timeline review, hypereosinophilic-syndrome evaluation); exclusion of ischemic, viral, giant-cell, and hypertensive heart failure; cardiology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION: eosinophil-mediated myocyte destruction with fibrotic healing is the established severe-phenotype biology of the disease, quantified in the 156-patient natural-history cohort at a median LVEF of 32% with high mortality or transplantation; the claim is scoped to biopsy-proven disease with documented dysfunction.",
+      "sourceReferences": [
+        {
+          "citation": "Ammirati E, Palazzini M, Lehtonen J, et al. Natural History of Patients With Histologically Proven Acute Eosinophilic Myocarditis. Circulation. 2026 Mar 3;153(9):634-652. PMID 41645905.",
+          "note": "International 53-center retrospective cohort of 156 biopsy-proven acute eosinophilic myocarditis patients: median LVEF 32% at presentation, high in-hospital and midterm mortality or heart transplantation, peripheral eosinophilia absent in 42.6% - the natural-history quantification anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41645905/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 41645905; LVEF 32% and outcome findings in the natural-history cohort"
+        },
+        {
+          "citation": "Ammirati E, Selimi A, Palazzini M, et al. Acute and Chronic Myocarditis in Men and Women. Curr Heart Fail Rep. 2026 Jun 24;23(1):28. PMID 42340531.",
+          "note": "Review: eosinophilic myocarditis in men predominate (67-82%) with distinct etiologic spectra across acute myocarditis subtypes - the etiologic-heterogeneity and demographic anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42340531/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42340531; eosinophilic-myocarditis sex and etiology findings"
+        },
+        {
+          "citation": "Aljudaibi A, Dutta K, Allam S, et al. Case Report: When inotropy backfires - dobutamine-associated eosinophilic myocarditis. Front Cardiovasc Med. 2026;13:1781601. PMID 42147059.",
+          "note": "Case report of hypersensitivity eosinophilic myocarditis presenting as refractory cardiogenic shock requiring LVAD, resolving after drug withdrawal and corticosteroids - the drug-hypersensitivity mechanism and reversibility guard anchor, used with the case-report-class guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42147059/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42147059; dobutamine-associated eosinophilic myocarditis course"
+        }
+      ]
+    }
+  ]
 }

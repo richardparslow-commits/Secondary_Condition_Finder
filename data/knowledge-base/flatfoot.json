@@ -2,7 +2,77 @@
   "id": "flatfoot",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+    "D1 draft-authoring batch 34 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the foot-posture-to-knee-osteoarthritis association documented in cross-sectional and epidemiological studies; the designs cannot order the relationship in time (reverse direction via gait compensation is live), so individual claims require documented adult symptomatic flatfoot with arch-collapse measurement preceding documented knee osteoarthritis, with age, obesity, prior injury, and activity confounders addressed."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 34 (2026-09-23): one bounded osteoarthritis association authored from the pes-planus knee literature - the Liang 2025 Ann Med epidemiological analysis examines knee osteoarthritis and foot deformities including flatfoot at population level, the Zhang 2022 Front Surg study of 95 knee-OA patients reports a strong correlation between flatfoot severity and knee-OA symptoms, and the Patil 2024 case-control-style study documents the impact of pes planus on knee function and its association with medial-compartment knee osteoarthritis through lower-limb biomechanical alteration; the arch-collapse-to-altered-knee-load axis is accepted biomechanics but progression attribution is unproven.",
+    "Duplicate-scope note: the osteoarthritis target carries seven incoming edges (avascular-necrosis, osteitis-deformans, ankylosis, pcl-injury, acl-injury, femoroacetabular-impingement, ankle-strain), all on local-joint or structural mechanisms; the ankle-strain edge is the closest precedent (local ankle biomechanics), while this edge adds the foot-posture-to-knee-axis pathway with independent evidence. Guards recorded in-file: pediatric flatfoot is physiologic and usually resolves (Carr 2016 review context) so the edge is scoped to adult symptomatic flatfoot; the Wearing 2006 pathomechanics review was screened for a plantar-fasciitis alternative edge and rejected because it explicitly records that histological evidence does not support the tensile-strain doctrine, which would force rather than support a causal claim."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "osteoarthritis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Liang 2025 epidemiological analysis examines knee osteoarthritis and flatfoot at population level and documents an association between the foot deformity and knee OA, the Zhang 2022 study of 95 knee-OA patients reports a strong correlation between flatfoot severity and knee-OA symptom burden, and the Patil 2024 study documents pes planus associated with medial-compartment knee osteoarthritis through altered knee function; the literature documents cross-sectional association and severity correlation without establishing that flatfoot caused an individual's osteoarthritis.",
+        "causationStatus": "The mapping does not assert that flatfoot caused an individual's osteoarthritis: the studies are cross-sectional or hospital-based without temporal ordering, age and body-mass index are shared drivers of both arch collapse and knee OA, the reverse arrow is live (knee OA pain alters gait and loading, secondarily collapsing the arch), local-joint injury histories independently produce knee OA, and pediatric flatfoot is physiologic and usually resolves; individual claims require documented arch collapse preceding knee-OA diagnosis with confounders addressed and alternative joint causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A hypothesized altered-load-axis pathway: collapse of the medial longitudinal arch lowers the hindfoot into eversion, tibial internal rotation, and valgus stress transmission at the knee, shifting the knee adduction/rotation moment and concentrating medial-compartment contact stress during gait; chronic repetitive overload of already-stressed cartilage is hypothesized to accelerate degenerative change in a susceptible joint, while the reverse arrow (OA-driven gait change collapsing the arch) and shared drivers (age, obesity) keep the pathway an association hypothesis about an individual's course.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the severity-correlation and epidemiological designs are cross-sectional without temporal ordering, one anchor study is a 95-patient hospital sample, confounders (age, BMI, prior knee injury, activity) are uncontrolled across the cited set, the reverse gait-compensation arrow is biomechanically symmetric, and no prospective cohort shows flatfoot preceding incident knee OA; no probability estimate is asserted.",
+        "evidenceGaps": "Documented adult symptomatic flatfoot with weight-bearing arch measurement (arch index or lateral talus-first metatarsal angle) and symptom chronology; knee-osteoarthritis diagnosis (radiographic Kellgren-Lawrence grade or clinical criteria) with onset chronology relative to documented flatfoot; age, BMI, prior knee injury, and activity-level documentation to address shared drivers; exclusion of inflammatory arthritis, prior meniscal or ligament injury, and crystal arthropathy as independent knee-OA causes; orthopedic and rheumatology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Prior knee ligament or meniscal injury causing post-traumatic OA",
+          "Inflammatory arthritis or crystal arthropathy",
+          "Obesity or occupational loading as shared drivers",
+          "Genu varum malalignment independent of foot posture",
+          "Age-related degeneration with secondary gait-related arch collapse"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented adult symptomatic flatfoot with weight-bearing arch measurement (arch index or lateral talus-first metatarsal angle) and symptom chronology; knee-osteoarthritis diagnosis (radiographic Kellgren-Lawrence grade or clinical criteria) with onset chronology relative to documented flatfoot; age, BMI, prior knee injury, and activity-level documentation to address shared drivers; exclusion of inflammatory arthritis, prior meniscal or ligament injury, and crystal arthropathy as independent knee-OA causes; orthopedic and rheumatology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY consistent with the osteoarthritis target's other incoming edges: severity-correlation and cross-sectional epidemiology document the foot-knee association while shared drivers and the symmetric reverse arrow defeat directional attribution, so the mapping asserts the association with confounder and chronology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Liang YF, Li XS, Zha FD, et al. Association between knee osteoarthritis and foot deformities: epidemiological analysis of hallux valgus and flatfoot. Ann Med. 2025 Dec;57(1):2536213. PMID 40693861.",
+          "note": "Population-level epidemiological analysis of knee osteoarthritis association with flatfoot (and hallux valgus) - the epidemiological anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40693861/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 40693861; knee OA with flatfoot epidemiological association"
+        },
+        {
+          "citation": "Zhang M, Nie MD, Qi XZ, et al. A Strong Correlation Between the Severity of Flatfoot and Symptoms of Knee Osteoarthritis in 95 Patients. Front Surg. 2022;9:936720. PMID 35846950.",
+          "note": "95-patient study reporting strong correlation between flatfoot severity and knee-OA symptoms - the severity-correlation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35846950/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 35846950; flatfoot severity with knee OA symptom correlation"
+        },
+        {
+          "citation": "Patil V, Shah M, Krishnani K, et al. The Impact of Pes Planus on Knee Function and Its Association with Medial Compartment Knee Osteoarthritis. J Orthop Case Rep. 2024 Oct;14(10):275-281. PMID 39381308.",
+          "note": "Study documenting pes planus impact on knee function through altered lower-limb biomechanics with medial-compartment knee-OA association - the biomechanical-axis anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39381308/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39381308; pes planus with medial compartment knee OA"
+        }
+      ]
+    }
+  ]
 }

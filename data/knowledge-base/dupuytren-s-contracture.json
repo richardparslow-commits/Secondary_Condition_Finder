@@ -2,8 +2,65 @@
   "id": "dupuytren-s-contracture",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 26 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "The bidirectionality conclusion in the source cohort precludes any directional claim; both orderings remain hypotheses.",
+    "The frozen-shoulder association was screened and rejected for this file: Van Nuffel 2022 (PMID 36001848) found the difference NOT statistically significant, and no frozen-shoulder catalog identity exists."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "trigger-finger",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The single-surgeon retrospective cohort (n=238) identified 43 patients carrying both diagnoses in the same hand; trigger finger, sex, and age were significantly associated with Dupuytren's contracture in the multivariate model, and the authors conclude patients with stenosing tenosynovitis may be at increased risk of developing Dupuytren's contracture or vice versa (Yang 2019); the diabetic comparative study co-observed the cluster with limited joint motion and flexor tenosynovitis (Chammas 1995).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the same cohort documents bidirectionality (each condition associated with the other), the study design is a referral-population retrospective chart review without incidence denominators, and the fibrotic-tendon phenotype shared with diabetes raises a documented shared-substrate question (Chammas 1995 co-observed the cluster in diabetics, though Yang 2019 found diabetes not significant in the multivariate model)."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A hypothesized myofibroblast-proliferation pathway: the same fibroproliferative process that produces palmar fascial cords in Dupuytren disease also thickens the A1 pulley and flexor tendon sheath, creating stenosing tenosynovitis; shared fibroblast-myofibroblast biology presents clinically as co-occurring trigger finger in the same hand. Whether any patient's trigger finger is fibrotic-phenotype related rather than independent is individual and unquantified.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Bidirectionality is stated in the source itself; retrospective single-surgeon design carries ascertainment bias; diabetes is a documented co-driver of the hand-fibrosis cluster even where not independently significant; no prospective incidence data exists.",
+        "evidenceGaps": "Documented Dupuytren contracture with same-hand trigger finger; distinction between fibrotic A1-pulley involvement and stenosing tenosynovitis; diabetes and glycemic status documentation; chronology of the two diagnoses",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Diabetes mellitus as a shared driver of hand fibrosis",
+          "Occupational hand use and vibration exposure",
+          "Stenosing tenosynovitis independent of fibroproliferative disease",
+          "Age and male sex as common demographic factors"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented Dupuytren contracture with same-hand trigger finger; distinction between fibrotic A1-pulley involvement and stenosing tenosynovitis; diabetes and glycemic status documentation; chronology of the two diagnoses"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: same-hand co-occurrence is quantified in a multivariate-adjusted cohort, but the evidence is bidirectional, retrospective, and referral-population based; no causal claim is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Yang K, Gehring M, Bou Zein Eddine S, Hettinger P. Association between Stenosing Tenosynovitis and Dupuytren's Contracture in the Hand. Plast Reconstr Surg Glob Open. 2019 Jan 11;7(1):e2088. PMID 30859045.",
+          "note": "Retrospective cohort (n=238): 43 patients carried both diagnoses in the same hand; trigger finger significantly associated with Dupuytren's in the multivariate model; bidirectionality explicitly concluded; diabetes not significant.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30859045/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 30859045; same-hand co-occurrence and multivariate result"
+        },
+        {
+          "citation": "Chammas M, Bousquet P, Renard E, Poirier JL, Jaffiol C, Allieu Y. Dupuytren's disease, carpal tunnel syndrome, trigger finger, and diabetes mellitus. J Hand Surg Am. 1995 Jan;20(1):109-14. PMID 7722249.",
+          "note": "Comparative prospective study (120 diabetics vs 120 controls): significantly higher incidence of Dupuytren's, limited joint motion, carpal tunnel syndrome, and flexor tenosynovitis in diabetics - cited as the shared-substrate confound.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7722249/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 7722249; diabetic hand-fibrosis cluster"
+        }
+      ]
+    }
+  ]
 }

@@ -1,9 +1,13 @@
 {
-  "id": "dermatofibrosarcoma-protuberans",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "dermatofibrosarcoma-protuberans",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 21 (2026-09-23): identity deferred - DFSP is a low-grade cutaneous sarcoma whose candidate downstream outcomes lack catalog identities and whose natural history is local recurrence, not metastasis or a mapped secondary condition.",
+  "Recurrence, fibrosarcomatous transformation, and metastasis (fibrosarcomatous variant ~10-15%) have no catalog identities; post-excision morbidity (graft/flare reconstruction) likewise has none. The knowledge base's skin-cancer identity is Melanoma / Non-Melanoma Skin Cancers - DFSP is neither melanoma nor a squamous/basal carcinoma, so a skin-cancer target would misclassify the entity."
+ ],
+ "governanceNotes": [
+  "Candidate targets screened and rejected: local recurrence and fibrosarcomatous transformation lack catalog identities; skin-cancer family mapping rejected on identity grounds (DFSP is a sarcoma outside the melanoma/non-melanoma-carcinoma scope of the catalog's skin-cancer entry); the dermatofibroma relationship is diagnostic-mimic confusion (DF is the benign lesion DFSP is excised to exclude), not an etiologic pathway between two cataloged conditions.",
+  "No sources cited (no edge authored); if a future catalog expansion adds a soft-tissue-sarcoma or local-recurrence identity, the Mohs/WLE-outcome literature (recurrence 0-6% after clear-margin excision) becomes the natural source base."
+ ],
+ "suggestions": []
 }

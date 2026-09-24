@@ -1,9 +1,79 @@
 {
-  "id": "dizziness",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "dizziness",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 23 (2026-09-23): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification."
+ ],
+ "governanceNotes": [
+  "Bidirectionality is the controlling guard: the same sources that quantify comorbidity describe anxiety as a predisposing factor for chronic dizziness, so neither direction is asserted; the anxiety-disorder source-identity direction (anxiety producing psychogenic dizziness) would belong on that file's edge set if authored separately.",
+  "Referred-population ascertainment: 79.3% and 88% figures come from tertiary neuro-otology cohorts enriched for chronic functional dizziness; general-dizziness populations show lower rates."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "anxiety-disorder",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "Tertiary neuro-otology cohort of 1,552 consecutive vertigo patients: chronic subjective dizziness diagnosed in 164 patients (10.6%), with psychiatric disorder - mainly anxiety - found in 79.3% of cases and anxiety described as a strong predisposing factor (Odman & Maire 2008); Barany-criteria PPPD cohort (n=75): psychiatric comorbidity present in 88%, most commonly combined anxiety and depression (Kothari 2026); neuro-otology review: psychiatric comorbidity rates near 50% in structural vestibular syndromes with the highest rates in vestibular migraine and Meniere's disease, and anxiety-related postural-strategy change as a proposed mechanism (Dieterich & Staab 2017).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the comorbidity is quantified in referred tertiary populations with ascertainment bias; anxiety is documented as a predisposing factor for chronic dizziness, demonstrating bidirectionality (anxiety can precede and follow vestibular symptoms); the PPPD construct itself involves anxiety as the bridge between acute vestibular events and chronic dizziness; shared vestibular-limbic pathways are hypothesized, not validated as one-direction causation."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+    "primaryVector": "A hypothesized maladaptive postural-control pathway: a vestibular insult or chronic dizziness state triggers heightened vigilance to motion and postural threat; anxiety-related changes in postural strategy (high-frequency corrective movements, leg-muscle co-contraction, visual dependence) and altered cortical integration of vestibular, visual, and proprioceptive signals produce persistent non-spinning dizziness with avoidance behavior; recurrent attacks consolidate anticipatory anxiety meeting anxiety-disorder criteria. Shared vestibular-limbic connectivity makes the loop bidirectional, so chronic dizziness can precipitate an anxiety disorder while pre-existing anxiety amplifies dizziness chronification.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "GAD-7 or structured-clinical-interview diagnosis of an anxiety disorder in a patient with documented vestibular disorder or chronic dizziness; temporal documentation distinguishing antecedent anxiety from anxiety developing after vestibular onset; exclusion of medication-induced dizziness and vestibular-migraine interictal states",
+    "evidenceGaps": "Documented vestibular diagnosis or chronic-dizziness syndrome as the antecedent condition; anxiety-disorder diagnosis by GAD-7 threshold or structured interview; clinical chronology distinguishing anxiety developing after vestibular onset from pre-existing anxiety disorder",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Pre-existing anxiety disorder predisposing to chronic dizziness (reverse direction)",
+     "Medication-induced dizziness including SSRIs and vestibular suppressants",
+     "Vestibular migraine with interictal dizziness",
+     "Cardiovascular or metabolic presyncope"
+    ]
+   },
+   "evidenceGaps": [
+    "Documented vestibular diagnosis or chronic-dizziness syndrome (PPPD criteria, chronic subjective dizziness) as the antecedent condition",
+    "Anxiety-disorder diagnosis by GAD-7 threshold or structured interview rather than transient situational anxiety",
+    "Clinical chronology distinguishing anxiety developing after vestibular onset from pre-existing anxiety disorder",
+    "Exclusion of vestibular suppressant medication effects and vestibular-migraine phenotypes as alternative explanations for both symptoms"
+   ],
+   "rationale": "Authored at ASSOCIATION_ONLY: comorbidity is quantified (79.3% of chronic subjective dizziness; 88% of PPPD) but in tertiary-referred populations with documented bidirectionality - anxiety predisposes to chronic dizziness and chronic dizziness precipitates anxiety - precluding one-direction attribution.",
+   "sourceReferences": [
+    {
+     "citation": "Odman M, Maire R. Chronic subjective dizziness. Acta Otolaryngol. 2008;128(10):1085-8. PMID 18607990.",
+     "note": "Retrospective cohort (n=1,552 vertigo referrals): CSD in 164 patients (10.6%); psychiatric disorder, mainly anxiety, found in 79.3% of CSD cases; anxiety a strong predisposing factor; balance and emotion share common neurologic pathways allowing reciprocal provocation.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18607990/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 18607990; anxiety in 79.3% of chronic subjective dizziness"
+    },
+    {
+     "citation": "Dieterich M, Staab JP. Functional dizziness: from phobic postural vertigo and chronic subjective dizziness to persistent postural-perceptual dizziness. Curr Opin Neurol. 2017;30(1):107-113. PMID 28002123.",
+     "note": "Review: functional dizziness is the primary cause in ~10% of neuro-otology presentations; psychiatric comorbidity near 50% in structural vestibular syndromes, highest with vestibular migraine and Meniere's; precipitating events trigger anxiety-related postural-strategy changes with increased motion vigilance and muscle co-contraction.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28002123/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 28002123; anxiety-related postural mechanism and comorbidity rates"
+    },
+    {
+     "citation": "Kothari S, Bhansali D, Phalgune DS, Bhandari N, Vats AK, Kaski D. Persistent postural-perceptual dizziness: subjective-objective dissociation and response to neurologist-led multimodal therapy. J Neurol. 2026;273(7):386. PMID 42268441.",
+     "note": "Prospective Barany-criteria PPPD cohort (n=75): psychiatric comorbidity in 88%, most commonly combined anxiety and depression; GAD-7 median 8.0 improving to 0.0 after multimodal therapy including CBT and low-dose antidepressants.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42268441/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 42268441; 88% psychiatric comorbidity in PPPD"
+    }
+   ]
+  }
+ ]
 }

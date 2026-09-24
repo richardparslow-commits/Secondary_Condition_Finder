@@ -2,8 +2,12 @@
   "id": "epididymal-cyst",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 29 (2026-09-23): deferred on evidence-ground and manifestation-guard grounds - no edges authored; the identity is retained as a draft with suggestions: [] pending qualified-human governance decision.",
+    "Negative screen recorded 2026-09-23: targeted NCBI esearch for epididymal-cyst/spermatocele outcome and complication evidence returned no association or progression data (management literature only - aspiration/sclerotherapy series treat incidentally detected, benign, asymptomatic cysts); no catalog-fit downstream outcome has published association evidence."
+  ],
+  "governanceNotes": [
+    "D1 batch 29 (2026-09-23): deferred. The management literature (Brockman 2022 aspiration-sclerotherapy series and the urology reviews) characterizes epididymal cysts and spermatoceles as benign incidental findings with no documented downstream morbidity, so no catalog target (chronic-pelvic-pain-syndrome, complex-regional-pain-syndrome, unexplained-chronic-pain, testicular-atrophy, varicocele-hydrocele, testicular-torsion) has association evidence; a post-surgical chronic-pain edge would attribute to the cyst identity what the literature attributes to the surgical procedure itself (wrong-identity guard, batch-25 contractures precedent).",
+    "Reproductive-effect attribution (obstruction of epididymal ducts) is discussed in review literature as a theoretical concern but lacks outcome quantification, and the catalog holds no male-infertility identity to receive the edge; reopening condition: cohort evidence of cyst-attributable outcomes (pain syndromes, obstructive azoospermia with a catalog identity) would justify re-screening."
   ],
   "suggestions": []
 }

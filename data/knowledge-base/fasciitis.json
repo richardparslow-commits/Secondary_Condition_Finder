@@ -2,8 +2,77 @@
   "id": "fasciitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 33 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the necrotizing-fasciitis limb-loss association documented in the surgical outcome literature; individual claims require operative or histologic confirmation of necrotizing fasciitis with limb involvement, documented progression to non-salvageability or source-control amputation, and exclusion of vascular, diabetic-foot, and traumatic amputation etiologies."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 33 (2026-09-23): one bounded amputation-or-loss-of-use association authored from the necrotizing-fasciitis outcome literature - the catalog alias for this identity is necrotizing fasciitis, the White 2026 Bone Joint J review documents an incidence of 0.63 per 100,000 per year with the limbs affected in 40% of cases and 22% 30-day mortality, the Itsiopoulos 2020 case report with literature review is dedicated to the amputation dilemma in NF, and the Momtaz 2024 retrospective cohort documents amputation and mortality as the primary unfavorable outcome with rates varying by socioeconomic status and care access; the edge is scoped to the necrotizing (invasive) form under the identity's alias, not to simple or eosinophilic fasciitis presentations without necrosis.",
+    "Duplicate-scope note: the amputation-or-loss-of-use target carries three existing ASSOCIATION_ONLY edges (thromboangiitis-obliterans, peripheral-vascular-disease, charcot-arthropathy), all on chronic vascular or neuroarthropathic mechanisms; this edge adds the acute fulminant-infection mechanism and shares no evidence base with those pathways."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "amputation-or-loss-of-use",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The White 2026 review documents that necrotizing fasciitis affects the limbs in 40% of cases with 22% 30-day mortality, the Itsiopoulos 2020 case report with literature review documents amputation as an established limb-outcome decision point in NF progression, and the Momtaz 2024 cohort documents amputation and mortality as the composite unfavorable NF outcome with amputation rates varying by socioeconomic status and care access; the literature documents limb loss as an NF outcome without establishing an individual causal nexus.",
+        "causationStatus": "The mapping does not assert that a given NF patient's amputation was caused by the disease: amputation is a surgical decision mediated by diagnosis delay, comorbidity (diabetes, peripheral arterial disease), debridement adequacy, and access to care, not every limb NF progresses to limb loss, and vascular and traumatic amputations occur independently in the same risk populations; individual claims require operative or histologic confirmation of necrotizing fasciitis, anatomic documentation of limb involvement, chronology of progression to non-salvageability or source-control amputation, and exclusion of independent vascular, diabetic, and traumatic amputation etiologies."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A hypothesized fascial-plane destruction pathway: virulent organisms (Group A streptococcus, Staphylococcus aureus, or polymicrobial flora) spread rapidly along the fascial plane, inciting fulminant inflammation, small-vessel thrombosis, and ischemic necrosis of fascia and underlying muscle that outpaces antibiotic delivery; when serial debridement cannot control the spreading source or the limb remains non-viable, amputation becomes the source-control necessity, producing permanent limb loss; progression speed, organism virulence, and delay to first debridement determine whether the limb survives, so the pathway remains a hypothesis about an individual's course.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: limb involvement and amputation are documented NF outcomes, but the amputation rate is care-pathway-dependent per the Momtaz cohort (socioeconomic variation), the evidence class is one recent review plus case-level and single-center retrospective data without multi-center denominators for limb-specific progression, and independent vascular and diabetic amputation etiologies are common in the same populations; no probability estimate is asserted.",
+        "evidenceGaps": "Operative report or histologic confirmation of necrotizing fasciitis with anatomic limb documentation; microbiology documenting organism and polymicrobial status; serial operative findings documenting fascial-plane progression; chronology from infection onset through debridements to amputation or documented loss of function; vascular and diabetic limb assessment to exclude independent amputation etiologies; surgical and infectious-disease assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Peripheral arterial disease or diabetic foot ulceration with gangrene",
+          "Traumatic crush or degloving injury with secondary infection",
+          "Chronic osteomyelitis with unrelated surgical amputation",
+          "Non-necrotizing infection or simple fasciitis without tissue loss",
+          "Vasculitic or thrombotic limb ischemia mimicking necrotizing spread"
+        ]
+      },
+      "evidenceGaps": [
+        "Operative report or histologic confirmation of necrotizing fasciitis with anatomic limb documentation; microbiology documenting organism and polymicrobial status; serial operative findings documenting fascial-plane progression; chronology from infection onset through debridements to amputation or documented loss of function; vascular and diabetic limb assessment to exclude independent amputation etiologies; surgical and infectious-disease assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY consistent with the amputation target's existing vascular and neuroarthropathic edges: the NF literature documents limb loss as an outcome but the decision-mediated, care-pathway-dependent progression defeats individual causal attribution, so the mapping asserts the association with full alternative-etiology preservation.",
+      "sourceReferences": [
+        {
+          "citation": "White TO, Ablett AD, Neo C, et al. Necrotizing fasciitis. Bone Joint J. 2026 Sep 1;108-B(9):1078-1086. PMID 42674562.",
+          "note": "Contemporary review: incidence 0.63 per 100,000 per year, limbs affected in 40% of cases, 22% 30-day mortality - the limb-scope and burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42674562/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42674562; NF review with limb-involvement share and mortality"
+        },
+        {
+          "citation": "Itsiopoulos I, Vasiliadis AV, Tsitouras D, et al. Amputation in Necrotizing Fasciitis - Dilemma or Reality: A Case Report and Literature Review. J Orthop Case Rep. 2020 Jul;10(4):54-58. PMID 33623768.",
+          "note": "Dedicated case report with literature review of the amputation decision in NF progression - the limb-loss-outcome anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33623768/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 33623768; amputation in NF case plus literature review"
+        },
+        {
+          "citation": "Momtaz D, Heath D, Ghali A, et al. Socioeconomic status affects amputation and mortality rates in necrotizing fasciitis patients. Int Orthop. 2024 Oct;48(10):2505-2512. PMID 39136700.",
+          "note": "Retrospective NF cohort with amputation and mortality as composite unfavorable outcome, rates varying by socioeconomic status - the care-pathway-dependence guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39136700/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39136700; amputation and mortality rates with SES variation"
+        }
+      ]
+    }
+  ]
 }

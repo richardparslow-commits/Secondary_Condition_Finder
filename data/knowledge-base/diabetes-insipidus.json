@@ -1,6 +1,82 @@
 {
-  "id": "diabetes-insipidus",
-  "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, medication/treatment, intermediate-factor, endocrine, cardiovascular, and other organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+ "id": "diabetes-insipidus",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 21 (2026-09-23): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Adherence guard is the controlling constraint: the dilatation pathway is documented for untreated or undertreated polyuria (GeneReviews: common in untreated individuals; Wang 2022: management improves grades); an adequately managed DI patient with normal urine output does not expose the upper tract to the claimed volume load - management chronology is mandatory."
+ ],
+ "governanceNotes": [
+  "Authored at DIRECT_CAUSATION with PROBABLE consensus and hypothesizedOnly:false, following the repo's obstruction/dilatation precedent pair (urethral stricture -> hydronephrosis; cystitis-or-neurogenic-bladder -> hydronephrosis): chronic high-output low-osmolality polyuria is the established mechanical driver of upper-tract dilatation, with GeneReviews surveillance guidance, a dedicated 26-patient urodynamics cohort, and the pediatric review's untreated-complication spectrum.",
+  "The claim is scoped to documented clinically significant DI with sustained polyuria and imaging-confirmed dilatation; congenital obstruction and independent uropathy are excluded through the alternative-etiology list.",
+  "Neurogenic-bladder overlap guard: 23.1% of the Wang cohort had confirmed neurogenic bladder, so where bladder dysfunction coexists, the dilatation mechanism may be mixed (volume overload plus high-pressure storage) and the individual record must state which mechanism the imaging and urodynamics support."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "hydronephrosis",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "DIRECT_CAUSATION",
+    "etiologicalTrigger": "Documented clinically significant diabetes insipidus with sustained polyuria (inadequately controlled or untreated) -> chronic high-volume, low-osmolality urine output -> bladder and ureteral distension beyond baseline capacity with elevated post-void residuals -> retrograde pressure transmission -> upper urinary tract dilatation (hydronephrosis/hydroureter)."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+    "primaryVector": "A volume-overload dilatation pathway: sustained polyuria in uncontrolled diabetes insipidus presents the collecting system with a continuous output load far above baseline; the bladder distends, trabeculates, and loses sensation (post-void residuals rise), and the ureters transport urine against a distended reservoir; chronic transmission of this pressure dilates the renal pelvis and calyces - the same back-pressure dilatation pathway the knowledge base models for urethral stricture and neurogenic bladder, driven here by volume rather than outflow obstruction. Reducing urine output (desmopressin, thiazides, scheduled voiding) interrupts the pathway, so documented management chronology is required.",
+    "hypothesizedOnly": false
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "PROBABLE",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "The mechanism is the established urological consequence of sustained polyuria, documented by GeneReviews surveillance guidance, a dedicated urodynamics cohort of DI patients with upper-tract dilatation, and the untreated-NDI complication spectrum; the claim is scoped to documented DI with sustained polyuria and imaging-confirmed dilatation. Consensus is PROBABLE for the scoped mechanical claim; it is not a nexus probability assertion for any individual claim.",
+    "evidenceGaps": "Confirmed DI diagnosis with quantified sustained polyuria; ultrasound/CT dilatation grading with post-void residual; desmopressin/thiazide management chronology; exclusion of congenital obstruction, stones, and retroperitoneal disease; urodynamics when bladder dysfunction coexists",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Congenital ureteropelvic or ureterovesical junction obstruction",
+     "Urolithiasis",
+     "Retroperitoneal fibrosis or tumor",
+     "Neurogenic bladder from unrelated causes",
+     "Chronic lithium exposure as an independent acquired-NDI and renal driver"
+    ]
+   },
+   "evidenceGaps": [
+    "documentation of clinically significant DI (water-deprivation or copeptin testing, or established AVPR2/AQP2 diagnosis) with sustained polyuria quantified by volume",
+    "renal-bladder ultrasound or CT documenting hydronephrosis with laterality and grade, plus post-void residual",
+    "management chronology: urine-output control status (desmopressin/thiazide regimen, voiding schedule) at the time dilatation was found",
+    "exclusion of congenital ureteropelvic or ureterovesical junction obstruction, urolithiasis, retroperitoneal fibrosis, and tumor",
+    "video-urodynamics where neurogenic bladder coexists, to establish the dominant mechanism (volume overload versus high-pressure storage)"
+   ],
+   "rationale": "Authored at DIRECT_CAUSATION following the urethral-stricture and neurogenic-bladder dilatation precedents, with the claim scoped to documented sustained polyuria and imaging-confirmed dilatation under the adherence guard.",
+   "sourceReferences": [
+    {
+     "citation": "Knoers N, Lemmink H. Hereditary Nephrogenic Diabetes Insipidus. GeneReviews. University of Washington, Seattle; 2000 Feb 12 [updated 2020 Feb 27]. PMID 20301356.",
+     "note": "GeneReviews: inability to concentrate urine produces polyuria; short stature and secondary dilatation of the ureters and bladder from the high urine volume are common in untreated individuals; annual kidney ultrasound surveillance for hydronephrosis and megacystis is recommended; reducing urine production and scheduled voiding may prevent or reduce serious renal, ureteral, or bladder dilatation.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20301356/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 20301356; urinary-tract dilatation from polyuria with surveillance guidance"
+    },
+    {
+     "citation": "Wang X, Ying X, Zhang F, Li X, Chen G, Zhou Z, Liao L. Upper urinary dilatation and treatment of 26 patients with diabetes insipidus: A single-center retrospective study. Front Endocrinol (Lausanne). 2022;13:941453. PMID 35937824.",
+     "note": "Retrospective cohort (n=26 DI patients with upper urinary tract dilatation): video-urodynamics showed mean bladder capacity 575 mL with compliance 51.5 cmH2O and post-void residual >100 mL in 42.3%; neurogenic bladder was present in 23.1%; bladder distension, trabeculation, and decreased/absent sensations were common features; treatment improved dilatation grades and renal function.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35937824/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 35937824; upper urinary tract dilatation phenotype and management in DI"
+    },
+    {
+     "citation": "Duicu C, Pitea AM, Sasaran OM, Cozea I, Man L, Banescu C. Nephrogenic diabetes insipidus in children (Review). Exp Ther Med. 2021;22(1):746. PMID 34055061.",
+     "note": "Pediatric NDI review: without treatment most patients present with urological complications including megacystis, trabeculated bladder, hydroureter, and hydronephrosis; treatment combines sufficient water intake, low-sodium diet, and thiazide diuretics to reduce urine output.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34055061/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 34055061; untreated NDI urological complication spectrum"
+    }
+   ]
+  }
+ ]
 }

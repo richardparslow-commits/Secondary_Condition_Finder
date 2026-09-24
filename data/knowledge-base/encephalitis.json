@@ -2,8 +2,142 @@
   "id": "encephalitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 28 (2026-09-23): draft edges pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the DIRECT_CAUSATION edges follow the cerebral-contusion and diffuse-axonal-injury structural-lesion precedents (documented cortical/limbic destruction -> the deficit syndrome); the epidemiologic comorbidity evidence alone (prevalence without lesion linkage) is association-class and cannot support a causal classification.",
+    "The generic seizure-disorder identity is used rather than epilepsy (already carrying six incoming edges) under the target-independence rule."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 28 (2026-09-23): two bounded edges authored - a DIRECT_CAUSATION seizure-disorder edge anchored on the pediatric HSE longitudinal cohort (post-encephalitic epilepsy 53.6%, 63.3% drug-refractory, with cortical/limbic destruction as the accepted epileptogenic substrate) and an ASSOCIATION_ONLY cognitive-disorder edge anchored on the ENCEIF multicenter functional-outcome cohort and anti-LGI1 neurofunctional follow-up; the etiologic-heterogeneity guard (infectious, autoimmune, and toxic etiologies share the syndrome label but not a single lesion mechanism) is recorded on both edges.",
+    "The cognitive-disorder edge is held at ASSOCIATION_ONLY despite a plausible parenchymal-injury mechanism because the cohort evidence documents outcome association without individual lesion-to-deficit linkage; a future promotion would require documented parenchymal injury with neuropsychological confirmation on the cerebral-contusion precedent."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "seizure-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented encephalitis with cortical or limbic parenchymal involvement (MRI-demonstrated temporal-lobe or cortical signal change, or etiology with established tropism such as herpes simplex encephalitis) -> focal cortical scar, gliosis, and excitatory-network remodeling in the injured parenchyma -> spontaneous recurrent seizures (post-encephalitic epilepsy) persisting beyond the acute illness.",
+        "mechanismSummary": "Cortical and limbic neuronal destruction from the inflammatory process is the classic epileptogenic substrate; the Wang 2026 longitudinal HSE cohort documents post-encephalitic epilepsy in 53.6% of 56 confirmed pediatric HSE patients with 63.3% of those drug-refractory, and prior adult HSE studies report chronic epilepsy in roughly two-thirds of survivors - the mechanism is the lesion, not a systemic association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Direct viral cytopathic destruction and inflammatory injury of cortical and mesial temporal neurons produces gliotic cavities and hippocampal sclerosis; the surviving network within and adjacent to the scar develops axonal sprouting, glutamatergic hyperexcitability, and loss of inhibitory interneurons, generating spontaneous recurrent seizures. Where the etiology is autoimmune (antibody-mediated) or toxic-metabolic rather than necrotizing, the lesion mechanism is not established and the relationship is assessed as an association.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The direct classification applies only where the inflammatory parenchymal lesion is documented (MRI signal change, necrotizing encephalitis, or etiologies with established cortical tropism) and the seizure syndrome is compatible in chronology and focality; etiologic heterogeneity is material - autoimmune encephalitis and mild systemic presentations carry far lower and unquantified epilepsy risk, chronic epilepsy must be distinguished from acute symptomatic seizures, and no VA probability language is asserted.",
+        "evidenceGaps": "Documented encephalitis (etiology, MRI lesion location, acute course); documented chronic seizure disorder or epilepsy by clinical description and EEG with compatible chronology and focality; distinction of chronic epilepsy from acute symptomatic seizures of the acute illness; exclusion of antecedent epilepsy, structural lesions predating the infection, and toxic-metabolic seizure drivers; neurology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Epilepsy or febrile seizures predating the encephalitis",
+          "Post-traumatic, vascular, or neoplastic cortical lesions of independent cause",
+          "Acute symptomatic seizures misclassified as chronic epilepsy",
+          "Alcohol withdrawal, medication, or metabolic seizure provocation",
+          "Psychogenic nonepileptic events"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented encephalitis (etiology, MRI lesion location, acute course); documented chronic seizure disorder or epilepsy by clinical description and EEG with compatible chronology and focality; distinction of chronic epilepsy from acute symptomatic seizures of the acute illness; exclusion of antecedent epilepsy, structural lesions predating the infection, and toxic-metabolic seizure drivers; neurology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION under the structural-lesion precedents: necrotizing cortical injury is a classical epileptogenic substrate and the HSE cohort quantifies the outcome in over half of confirmed patients; the claim is scoped to documented lesion-producing encephalitis and chronic epilepsy, with etiologic heterogeneity preserved as an explicit guard.",
+      "sourceReferences": [
+        {
+          "citation": "Wang Y, Ma Y, Wang Y, et al. Age-stratified clinical characteristics and long-term neurological outcomes of pediatric herpes simplex virus encephalitis: a longitudinal cohort study. Front Neurol. 2026;17:1882046. PMID 42564238.",
+          "note": "Longitudinal cohort of 56 confirmed pediatric HSE patients (median follow-up 62.5 months): post-encephalitic epilepsy in 53.6% with 63.3% drug-refractory, plus acquired anti-NMDAR encephalitis in 17.9% - the lesion-to-epilepsy quantification anchor for a necrotizing, limbic-tropic etiology.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42564238/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42564238; 53.6% post-encephalitic epilepsy finding"
+        },
+        {
+          "citation": "Fillatre P, Mailles A, Stahl JP, et al. Functional outcome after infectious encephalitis: a longitudinal multicentre cohort study. Clin Microbiol Infect. 2025 Mar;31(3):459-465. PMID 39522606.",
+          "note": "ENCEIF prospective multicenter cohort (322 survivors, 896 modified-Rankin evaluations): substantial residual neurological disability after infectious encephalitis - the outcome-burden anchor supporting the direct-injury proposition for the infectious subgroup.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39522606/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39522606; longitudinal functional outcome of the ENCEIF cohort"
+        },
+        {
+          "citation": "Hawkes MA, Carabenciov ID, Wijdicks EFM, Rabinstein AA. Outcomes in Patients With Severe West Nile Neuroinvasive Disease. Crit Care Med. 2018 Sep;46(9):e955-e958. PMID 29985213.",
+          "note": "Long-term follow-up of severe West Nile neuroinvasive disease: persistent functional disability and cognitive impairment in many survivors - the etiologic-heterogeneity guard anchor (severe necrotizing presentations carry the injury pathway; mild systemic presentations do not).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29985213/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 29985213; long-term outcomes after severe neuroinvasive disease"
+        }
+      ]
+    },
+    {
+      "conditionId": "cognitive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The ENCEIF longitudinal multicenter cohort followed 322 infectious-encephalitis survivors with 896 modified-Rankin evaluations and documents substantial residual disability with incomplete functional recovery (Fillatre 2025), and the anti-LGI1 autoimmune-encephalitis cohort found persistent neurofunctional deficits after a median 33-month follow-up in most of 86 patients (Chen 2021); cognition is the domain most consistently affected in both literatures.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the cohort designs document outcome association without individual lesion-to-deficit linkage, the encephalitis identity spans infectious, autoimmune, and toxic etiologies with different injury mechanisms, and premorbid cognition, medication effects, and systemic-illness sequelae must be separated in any individual case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "A hypothesized parenchymal-injury pathway: inflammatory neuronal loss and gliosis in memory-critical limbic and association cortex (hippocampi, medial temporal structures) disrupts encoding and retrieval networks, producing persistent deficits in memory, processing speed, and executive function; the mechanism is plausible and etiology-specific, but individual linkage requires neuropsychological confirmation and lesion documentation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is cohort-documented across infectious and autoimmune etiologies, but the mapping-level claim stops at association: lesion-deficit linkage is not individualized in the cited designs, cognitive impairment must meet documented deficit criteria rather than subjective complaint, and premorbid function and competing causes require case-specific review; no probability estimate is asserted.",
+        "evidenceGaps": "Documented encephalitis episode (etiology, severity, treatment); formal neuropsychological testing establishing the deficit pattern with pre-illness comparison; MRI or equivalent documentation of parenchymal injury where claimed; exclusion of antecedent cognitive disorder, medication neurotoxicity, and independent psychiatric or systemic drivers; neurology and neuropsychology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Antecedent cognitive impairment or dementia unrelated to the encephalitis",
+          "Anticonvulsant or corticosteroid medication neurotoxicity",
+          "Depression, anxiety, or post-ICU syndrome as the functional driver",
+          "Sleep disruption, hearing loss, or sensory deafferentation impairing test performance",
+          "Independent traumatic or vascular brain injury"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented encephalitis episode (etiology, severity, treatment); formal neuropsychological testing establishing the deficit pattern with pre-illness comparison; MRI or equivalent documentation of parenchymal injury where claimed; exclusion of antecedent cognitive disorder, medication neurotoxicity, and independent psychiatric or systemic drivers; neurology and neuropsychology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the residual-cognitive-burden association is multicenter cohort-documented, but the lesion-to-deficit pathway is not individualized in the cited evidence and the syndrome label spans heterogeneous etiologies; promotion to a direct claim would require documented parenchymal injury with neuropsychological confirmation on the structural-lesion precedents.",
+      "sourceReferences": [
+        {
+          "citation": "Fillatre P, Mailles A, Stahl JP, et al. Functional outcome after infectious encephalitis: a longitudinal multicentre cohort study. Clin Microbiol Infect. 2025 Mar;31(3):459-465. PMID 39522606.",
+          "note": "ENCEIF prospective multicenter cohort (322 survivors, 896 mRS evaluations): incomplete functional recovery after infectious encephalitis - the residual-disability anchor for the cognitive-outcome association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39522606/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39522606; longitudinal functional outcome of the ENCEIF cohort"
+        },
+        {
+          "citation": "Chen W, Wang M, Gao L, et al. Neurofunctional outcomes in patients with anti-leucine-rich glioma inactivated 1 protein encephalitis. Acta Neurol Scand. 2021 Dec;144(6):632-639. PMID 34314015.",
+          "note": "Cohort follow-up (86 anti-LGI1 patients, median 33 months): persistent neurofunctional deficits despite functional survival - the autoimmune-etiologic anchor with memory-domain emphasis.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34314015/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 34314015; neurofunctional outcome of the anti-LGI1 cohort"
+        },
+        {
+          "citation": "Hawkes MA, Carabenciov ID, Wijdicks EFM, Rabinstein AA. Outcomes in Patients With Severe West Nile Neuroinvasive Disease. Crit Care Med. 2018 Sep;46(9):e955-e958. PMID 29985213.",
+          "note": "Long-term severe West Nile neuroinvasive disease follow-up: cognitive impairment and functional disability persist in many survivors - the severe-presentation anchor supporting the parenchymal-injury pathway while illustrating etiologic heterogeneity.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29985213/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 29985213; cognitive outcomes after severe neuroinvasive disease"
+        }
+      ]
+    }
+  ]
 }

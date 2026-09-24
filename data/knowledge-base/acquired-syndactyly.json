@@ -2,8 +2,11 @@
   "id": "acquired-syndactyly",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 14 (2026-09-22): identity deferred \u2014 prior qualified-human dispositions reaffirmed after re-screening; no edge authored.",
+    "ME-30 deferred this identity (no defensible condition-specific target among current identities: a benign/localized process) and the ME-41 phenotype-identity barrier independently blocks the only catalog-fit target: acquired syndactyly is itself cicatricial webbing, so an edge to the painful-or-unstable-scar identity would largely restate the diagnostic presentation. Revisit only if the catalog adds a distinct residual-functional-outcome identity and a qualified human sources cohort-class evidence."
+  ],
+  "governanceNotes": [
+    "Deferral reason (reaffirmed 2026-09-22): the postburn-hand literature documents webspace contracture and burn syndactyly as common functionally limiting sequelae with an active release-reconstruction literature (Fufa 2014, PMID 25154575; Browne 1978, PMID 208092; Brown & Chung 2017, PMID 28363298), but that record is surgical-series class without population denominators, the syndrome-identity/scar-identity overlap triggers the ME-41 phenotype-identity barrier, and no prior qualified-human disposition authorizes an edge. Every individual determination remains with a qualified medical professional under docs/citation-verification-sop.md."
   ],
   "suggestions": []
 }

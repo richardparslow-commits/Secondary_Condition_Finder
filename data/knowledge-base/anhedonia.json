@@ -1,9 +1,13 @@
 {
   "id": "anhedonia",
   "draft": true,
+  "suggestions": [],
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "D1 draft-authoring batch 24 (2026-09-22): identity deferred — the ME-31 transdiagnostic-symptom deferral was re-screened and reaffirmed; no edge authored.",
     "Review psychiatric, neuropsychiatric, medication-related, and sleep-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Deferral reason (reaffirmed 2026-09-22, D1 batch 24): anhedonia is a transdiagnostic symptom of reward-circuit dysfunction, not a disease process, so an anhedonia -> depressive-disorder edge would assert the wrong direction (ME-31's original basis). The 2026-09-22 NCBI re-screen adds the Rizvi 2016 transdiagnostic review (PMID 27216903) and Husain & Roiser 2018 (PMID 29606861) as confirmation that anhedonia cuts across MDD, bipolar disorder, schizophrenia, and Parkinson's disease, making any single-direction edge a symptom-to-syndrome misclassification.",
+    "Outgoing evidence barrier unchanged on re-screen: the anhedonia-outcome literature is disorder-specific and dose-shaped by antidepressant treatment (Exercise 2023 trial, PMID 37300159, measures anhedonia as an outcome). Manifestation coverage is already carried by each causative source condition. Revisit only if a qualified human adds a distinct anhedonia-syndrome identity to the catalog."
+  ]
 }

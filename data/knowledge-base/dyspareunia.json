@@ -2,8 +2,12 @@
   "id": "dyspareunia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "D1 draft-authoring batch 26 (2026-09-23): identity deferred - directionality unresolvable against vaginismus under the DSM-5 GPPPD merger and the outgoing psychiatric evidence is descriptive-only; no edge authored.",
     "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "governanceNotes": [
+    "Deferral reason (2026-09-23, D1 batch 26): the DSM-5 merged dyspareunia and vaginismus into genito-pelvic pain/penetration disorder because the Lahaie 2015 experimental study found large overlap between the conditions despite statistical fear/muscle-tension differences - a dyspareunia -> vaginismus edge would assert a direction DSM-5 declined to draw, and the conditions share the same identity space. Genital pain did not differ between the groups.",
+    "Outgoing evidence barrier: the dyspareunia-to-depression/anxiety literature is descriptive-only (Carlson 2026 StatPearls; Fernandez-Perez 2023 review background) without cohort denominators, and the Yong 2017 deep-dyspareunia cohort measures depression symptoms as correlates of tender-site exam findings in an endometriosis referral population - below the repo's authoring bar (diplopia precedent). Revisit only if a qualified human accepts descriptive evidence or a dyspareunia-specific outcome cohort appears."
   ],
   "suggestions": []
 }

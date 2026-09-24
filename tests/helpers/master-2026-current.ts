@@ -98,7 +98,7 @@ export function assertMaster2026CurrentState(): void {
   const mappings = loadMappings();
   expect(mappings).toHaveLength(302);
   expect(mappings.filter((mapping) => !mapping.draft)).toHaveLength(104);
-  expect(mappings.filter((mapping) => mapping.draft)).toHaveLength(198);
+  expect(mappings.filter((mapping) => mapping.draft)).toHaveLength(212);
   const byId = new Map(mappings.map((mapping) => [mapping.id, mapping]));
 
   for (const row of citation.relationshipDispositions) {
@@ -121,9 +121,9 @@ export function assertMaster2026CurrentState(): void {
   const refs = mappings.flatMap((mapping) =>
     mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
   );
-  expect(refs).toHaveLength(142);
-  expect(refs.filter((ref) => ref.verified === true)).toHaveLength(142);
-  expect(refs.filter((ref) => ref.verified === false)).toHaveLength(0);
+  expect(refs).toHaveLength(160);
+  expect(refs.filter((ref) => ref.verified === true)).toHaveLength(160);
+  expect(refs.filter((r) => r.verified === false)).toHaveLength(236);
   const clinical = refs.filter(
     (ref) => ref.verificationScope === "clinical-evidence",
   );

@@ -1,6 +1,130 @@
 {
   "id": "dry-eye-syndrome",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, ocular-surface/lacrimal, autoimmune, medication/treatment, and visual-function pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 25 (2026-09-23): ASSOCIATION_ONLY drafts pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification."
+  ],
+  "governanceNotes": [
+    "The reverse direction (poor sleep aggravating dry eye) is documented in the same literature and is recorded as a guard, not as evidence for this edge.",
+    "No sleep-disorder-targeted prevalence denominator exists; individual insomnia diagnosis requires excluding primary sleep disorders and psychiatric comorbidity."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "insomnia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Lifelines population cohort (n=71,761) found dry eye associated with poor sleep quality after correction for age, sex, BMI, education, income, and 51 comorbidities including autoimmune and psychiatric disease (OR 1.20, 95% CI 1.11-1.28), with 44.9% poor sleep among those with frequent or constant symptoms (Magno 2021); the Miami VA eye-clinic cohort found ocular symptoms tied most strongly to the PSQI sleep-disturbance subscore (OSDI r=0.49, p<0.0005) (Ayoubi 2024).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the Hangzhou community study documents the reverse direction (worse sleep predicting worse dry-eye severity), shared systemic and psychiatric comorbidity partially confounds even the fully adjusted estimate, the veteran-clinic cohort is cross-sectional without severity-exclusion denominators, and insomnia diagnosis at the individual level requires excluding the common primary sleep disorders."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized ocular-pain-arousal pathway: tear-film instability and ocular surface inflammation produce foreign-body sensation and pain that worsen with eye closure and nocturnal tear production; recurring ocular discomfort and arousal repeatedly fragment sleep onset and maintenance, presenting clinically as insomnia. Whether the pattern persists once the ocular surface is controlled is individual and unquantified.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The fully adjusted population estimate is modest (OR 1.20) and residual confounding remains; the strongest symptom-sleep correlations are cross-sectional VA-clinic data; the reverse direction (poor sleep aggravating dry eye via tear osmolarity) is documented; sleep-disorder and psychiatric exclusions are required before any individual attribution.",
+        "evidenceGaps": "Documented dry eye disease with symptom-frequency grading and flare-locked sleep disruption chronology; exclusion of primary insomnia, obstructive sleep apnea, restless legs, and circadian disorders; psychiatric comorbidity assessment; medication-effect review",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Obstructive sleep apnea and restless legs syndrome",
+          "Primary insomnia and circadian rhythm disorders",
+          "Depression and anxiety (documented bidirectional confound)",
+          "Systemic inflammation and autoimmune comorbidity",
+          "Sleep-aggravating medications and alcohol"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented dry eye disease with symptom-frequency grading and flare-locked sleep disruption chronology; exclusion of primary insomnia, obstructive sleep apnea, restless legs, and circadian disorders; psychiatric comorbidity assessment; medication-effect review"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the population-grade adjusted association is strong and the mechanism is biologically standard, but bidirectionality is documented in the same literature and cross-sectional designs cannot order the relationship; no causal claim is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Magno MS, Utheim TP, Snieder H, Hammond CJ, Vehof J. The relationship between dry eye and sleep quality. Ocul Surf. 2021 Apr;20:13-19. PMID 33421635.",
+          "note": "Lifelines cohort (n=71,761): dry eye associated with poor sleep quality after correcting for 51 comorbidities (OR 1.20, 95% CI 1.11-1.28); 44.9% poor sleep among those with frequent/constant symptoms.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33421635/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 33421635; fully adjusted population association"
+        },
+        {
+          "citation": "Ayoubi M, Cabrera K, Mangwani S, Locatelli EVT, Galor A. Associations between dry eye disease and sleep quality: a cross-sectional analysis. BMJ Open Ophthalmol. 2024 Jan 4;9(1):e001584. PMID 38177080.",
+          "note": "Miami VA eye-clinic cohort (n=141 veterans): ocular symptoms more related to sleep metrics than signs; strongest association between OSDI and the PSQI sleep-disturbance subscore (r=0.49, p<0.0005).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38177080/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38177080; veteran-population symptom-sleep association"
+        },
+        {
+          "citation": "Yu X, Guo H, Liu X, Wang G, Min Y, Chen SS, Han SS, Chang RT, Zhao X, Hsing A, Zhu S, Yao K. Dry eye and sleep quality: a large community-based study in Hangzhou. Sleep. 2019 Oct 21;42(11):zsz160. PMID 31310315.",
+          "note": "Community study (n=3,070): poor sleep quality associated with increased dry-eye severity in dose-response - cited as the documented reverse-direction guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31310315/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 31310315; reverse-direction dose-response"
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The multimodal meta-analysis (26 case-control studies) found dry eye associated with increased depression prevalence (OR 1.83) and, in 48 Mendelian-randomization experiments across two biobanks, supported bidirectional DED-to-DEP and DEP-to-DED causation (Chang 2025, Taipei Veterans General Hospital); the 22-study meta-analysis (n=2,980,026) found depression OR 2.92 (95% CI 2.13-4.01) with severity greatest in primary Sjogren's patients (Wan 2016).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the strongest source itself demonstrates bidirectional causation (depression-to-DED OR 2.34), so one-direction attribution is precluded by the evidence's own design; the Chang MR causation claim is instrument-dependent and has not settled into consensus; Sjogren's strata carry the severity but represent a distinct autoimmune identity; antidepressant treatment itself aggravates dry eye, inverting chronology in treated patients."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized chronic-symptom-burden pathway: persistent ocular pain, visual fluctuation, and functional limitation (reading, screens, driving) impose sustained psychosocial burden; shared immune-activation biology between ocular surface inflammation and depression may amplify the association, presenting clinically as major depressive disorder. Whether any patient's depression is attributable to dry-eye burden versus shared biology or reverse direction is individual and unquantified.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Bidirectional causation is the central finding of the strongest source; the MR instruments are population-specific and contested; Sjogren's strata are a distinct identity; reverse-chronology via antidepressant-induced dry eye must be excluded individually; prevalence does not order the relationship.",
+        "evidenceGaps": "Documented dry eye disease with validated depression-instrument scores (PHQ-9/BDI) and symptom chronology; psychiatric interview establishing independent disorder criteria; autoimmune and Sjogren's assessment; medication-effect review (antidepressants themselves aggravate dry eye)",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Antidepressant-induced dry eye (reverse chronology)",
+          "Sjogren's syndrome as a shared autoimmune cause of both conditions",
+          "Sleep disruption as the mediating pathway",
+          "Primary mood disorder with coincidental dry eye"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented dry eye disease with validated depression-instrument scores (PHQ-9/BDI) and symptom chronology; psychiatric interview establishing independent disorder criteria; autoimmune and Sjogren's assessment; medication-effect review (antidepressants themselves aggravate dry eye)"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the association is meta-analytically confirmed, but the same sources document bidirectional causation and shared immune activation, making one-direction attribution unsupportable at the mapping level; no causal claim is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Chang KJ, Wu HY, Chiang PH, Hsu YT, Weng PY, Yu TH, Li CY, Chen YH, Dai HJ, Tsai HY, Chang YJ, Wu YR, Yang YP, Li CT, Hsu CC, Chen SJ, Chen YC, Cheng CY, Hsieh AR, Chiou SH. Decoding and reconstructing disease relations between dry eye and depression: a multimodal investigation comprising meta-analysis, genetic pathways and Mendelian randomization. J Adv Res. 2025 Mar;69:197-213. PMID 38548265.",
+          "note": "Meta-analysis (26 studies) plus 48 MR experiments: DED associated with increased depression prevalence (OR 1.83); bidirectional DED-to-DEP and DEP-to-DED causation supported in TWB and UKB biobanks; shared immune-activation genetic architecture (rG=0.19). The bidirectionality is the guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38548265/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38548265; OR 1.83 and bidirectional MR findings"
+        },
+        {
+          "citation": "Wan KH, Chen LJ, Young AL. Depression and anxiety in dry eye disease: a systematic review and meta-analysis. Eye (Lond). 2016 Dec;30(12):1558-1567. PMID 27518547.",
+          "note": "Meta-analysis (22 studies, n=2,980,026): depression OR 2.92 (95% CI 2.13-4.01) and anxiety OR 2.80 in dry eye disease; severity greatest in primary Sjogren's patients - the autoimmune-subtype guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27518547/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 27518547; depression/anxiety pooled ORs and Sjogren's subgroup"
+        }
+      ]
+    }
+  ]
 }

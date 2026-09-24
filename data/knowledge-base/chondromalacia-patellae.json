@@ -1,9 +1,15 @@
 {
-  "id": "chondromalacia-patellae",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "chondromalacia-patellae",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 11 (2026-09-22): identity deferred — the only catalog target (patellofemoral-pain-syndrome) overlaps the CMP diagnostic presentation, and the progression literature is contradictory, per the repo's deferral convention.",
+  "Zheng 2021 (PMID 34275494) states CMP 'may progress to develop patellofemoral osteoarthritis', while Bentley 1984 (PMID 6383677) found 'no evidence of progression to patellofemoral osteoarthritis, which is probably a different entity'; reconciling that 37-year contradiction, and deciding whether a CMP->PFPS edge would restate the phenotype (the ME-41 barrier, since anterior knee pain is part of CMP's own definition), requires qualified-human adjudication."
+ ],
+ "governanceNotes": [
+  "Deferral reason 1 (phenotype-identity barrier): the single viable catalog target, patellofemoral-pain-syndrome, is defined by the anterior knee pain that is itself a defining feature of chondromalacia patellae; authoring an edge between them would largely restate the diagnostic presentation rather than map a distinct secondary condition, the same barrier ME-41 applied to schizoaffective-style identity overlaps.",
+  "Deferral reason 2 (contradictory progression literature): the modern cell-therapy review asserts CMP may progress to patellofemoral osteoarthritis while the classic clinical-concepts paper explicitly found no evidence of progression and called PFOA probably a different entity; automation cannot adjudicate a 37-year evidentiary contradiction, and the catalog contains no patellofemoral-osteoarthritis identity in any case.",
+  "Long-term surgical-series context recorded (Fonseca 2013, PMID 23631358): 27-year Maquet III follow-up documents modest persistent patellofemoral disease (40% Kellgren-Lawrence grade 1), consistent with a slowly progressive course in operated populations; recorded as context, not as comorbidity evidence.",
+  "Evidence-gap checklist retained in the batch ledger record (top-level evidenceGaps is not a valid mapping-level schema key)."
+ ],
+ "suggestions": []
 }

@@ -2,8 +2,77 @@
   "id": "farmer-s-lung",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 33 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the chronic-FL fibrosis-outcome association documented in the long-term outcome cohorts; individual claims require documented farmer's lung episodes preceding imaging-proven fibrosis with continued-exposure history and exclusion of alternative interstitial-lung-disease etiologies."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 33 (2026-09-23): one bounded pulmonary-fibrosis association authored from the farmer's-lung long-term outcome literature - the Braun 1979 141-patient cohort with mean 14.8 years of follow-up documents radiographic interstitial changes in 39% of survivors with abnormal lung volumes in a further subset, the Lalancette 1993 33-patient long-term outcome study with HRCT and BAL fibrosing markers characterizes persistent fibrotic change in chronic FL, and the Soumagne 2017 review-context paper records fibrosis as the most frequent finding in chronic FL while documenting emphysema as an alternative chronic outcome across three cohort studies; progression is exposure- and recurrence-dependent, not inevitable.",
+    "Duplicate-scope note: the bird-fancier-s-lung identity carries the parallel pulmonary-fibrosis edge (avian-antigen exposure, SYSTEMIC_INFLAMMATORY) and the bagassosis identity carries an interstitial-lung-disease edge (bagasse-thermophile exposure, IMMUNE_MEDIATED), both ASSOCIATION_ONLY; this farmer's-lung edge is the moldy-hay/Micropolyspora faeni exposure identity on its own antigen literature (141-patient and 33-patient FL cohorts), so the three edges are sibling exposure identities with distinct evidence bases rather than synonym restatements of one another."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pulmonary-fibrosis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Braun 1979 cohort followed 141 farmer's lung patients for a mean of 14.8 years and documented radiographic interstitial changes in 39% of surviving subjects with abnormal vital capacity in a further subset, the Lalancette 1993 long-term outcome study of 33 FL patients with HRCT characterized persistent fibrotic change years after the acute episode, and the Soumagne 2017 paper records fibrosis as the most frequent finding in chronic FL while noting three cohort studies documenting emphysema as an alternative chronic outcome; the literature connects recurrent and chronic FL to fibrotic change in documented subsets without establishing an individual fibrosis nexus.",
+        "causationStatus": "The mapping does not assert that a given farmer's lung patient's fibrosis was caused by the disease: acute FL frequently resolves without residual fibrosis, emphysema is a documented alternative chronic outcome of the same exposure, fibrosis may reflect continued antigen exposure or recurrent acute episodes rather than a single disease course, and interstitial fibrosis has many independent etiologies; individual claims require documented FL episodes (exposure history, precipitins, PFTs) preceding imaging-proven fibrosis, a plausible interval and exposure course, and exclusion of idiopathic, connective-tissue-disease, asbestos, and drug-related causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A hypothesized immune-complex alveolitis-to-fibrosis pathway: repeated inhalation of thermophilic-actinomycete antigen (Micropolyspora faeni and related organisms in moldy hay) drives precipitin-mediated type III and cell-mediated type IV alveolar and interstitial inflammation; recurrent or sustained alveolitis that does not fully resolve organizes into fibroblastic proliferation and collagen deposition in the interstitium, producing the radiographic and physiologic fibrotic pattern documented in chronic FL cohorts; progression tracks exposure continuation, episode recurrence, and episode severity, and the pathway remains a hypothesis about an individual's course because many acute episodes resolve completely.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: fibrotic change is documented in chronic FL cohorts but cohort progression rates vary with exposure cessation and follow-up methodology, emphysema is a co-documented alternative chronic outcome in the same literature, the quantitative figures come from cohorts decades old with evolving HRCT criteria, and no population-level fibrosis-attribution figure exists for FL specifically; no probability estimate is asserted.",
+        "evidenceGaps": "Documented farmer's lung episode(s) with exposure history, precipitin or sensitization testing, and pulmonary function results; high-resolution CT documenting fibrosis with chronology relative to documented FL episodes and continued or ended antigen exposure; exclusion of idiopathic pulmonary fibrosis, connective-tissue-disease interstitial lung disease, asbestosis and occupational dust exposure, and drug-induced pneumonitis; assessment of emphysema as the alternative chronic-FL outcome; pulmonology and radiology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Idiopathic pulmonary fibrosis or other idiopathic interstitial pneumonia",
+          "Connective-tissue-disease-associated interstitial lung disease",
+          "Asbestos or other occupational dust-related fibrosis",
+          "Drug-induced pneumonitis with fibrotic progression",
+          "Chronic-FL-associated emphysema rather than fibrosis as the chronic outcome"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented farmer's lung episode(s) with exposure history, precipitin or sensitization testing, and pulmonary function results; high-resolution CT documenting fibrosis with chronology relative to documented FL episodes and continued or ended antigen exposure; exclusion of idiopathic pulmonary fibrosis, connective-tissue-disease interstitial lung disease, asbestosis and occupational dust exposure, and drug-induced pneumonitis; assessment of emphysema as the alternative chronic-FL outcome; pulmonology and radiology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the bird-fancier-s-lung and bagassosis HP-family precedents: the long-term FL cohorts document fibrotic change in subsets with an alternative emphysema outcome co-documented, so the mapping asserts the association and requires individual exposure, imaging, and alternative-cause documentation.",
+      "sourceReferences": [
+        {
+          "citation": "Lalancette M, Carrier G, Laviolette M, et al. Farmer's lung. Long-term outcome and lack of predictive value of bronchoalveolar lavage fibrosing factors. Am Rev Respir Dis. 1993 Jul;148(1):216-221. PMID 8317802.",
+          "note": "33-patient FL long-term outcome study with HRCT and BAL fibrosing markers at 6-year follow-up - the identity-specific chronic-outcome anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8317802/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 8317802; farmer's lung long-term outcome with HRCT"
+        },
+        {
+          "citation": "Braun SR, doPico GA, Tsiatis A, et al. Farmer's lung disease: long-term clinical and physiologic outcome. Am Rev Respir Dis. 1979 Feb;119(2):185-191. PMID 434591.",
+          "note": "141-patient FL cohort with mean 14.8 years of follow-up: radiographic interstitial changes in 39% of survivors with abnormal lung volumes in a subset - the progression-burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/434591/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 434591; 141-patient long-term outcome with interstitial-change share"
+        },
+        {
+          "citation": "Soumagne T, Chardon ML, Dournes G, et al. Emphysema in active farmer's lung disease. PLoS One. 2017;12(6):e0178263. PMID 28614400.",
+          "note": "Records fibrosis as the most frequent finding in chronic FL and documents emphysema as the alternative chronic outcome across three cohort studies - the alternative-outcome guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28614400/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 28614400; fibrosis as most frequent chronic-FL finding with emphysema alternative"
+        }
+      ]
+    }
+  ]
 }

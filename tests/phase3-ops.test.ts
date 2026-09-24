@@ -13,7 +13,7 @@ describe("Phase 3 Operational Readiness", () => {
     expect(fs.existsSync(sop)).toBe(true);
 
     const header = fs.readFileSync(tracker, "utf8").split(/\r?\n/, 1)[0];
-    expect(header.split(",")).toEqual([
+    expect(header.split(",").map((cell) => cell.replaceAll("\"", ""))).toEqual([
       "Condition ID",
       "Body System",
       "Status",

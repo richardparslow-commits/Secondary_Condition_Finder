@@ -2,8 +2,80 @@
   "id": "conductive-hearing-loss",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 18 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The strongest quantified cohorts are otosclerosis-specific; other conductive mechanisms (chronic otitis media, ossicular discontinuity) are covered by the mechanism generalization but lack equivalent validated-questionnaire cohorts - keep the otosclerosis anchor explicit when reviewing."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: both quantified prevalence cohorts (68.2% n=157 Polish otosclerosis series; 72.7% n=66 Portuguese series) are otosclerosis populations, so the edge generalizes the conductive-deprivation mechanism to other conductive etiologies without equivalent cohort evidence for them.",
+    "Severity-decoupling guard recorded in-file: both cohorts report tinnitus severity NOT correlating with audiometric degree (Lima 2022 explicitly; Skarzynski 2019 p>0.05), and Deggouj records prevalence improvement after corrective surgery, so presence, laterality, and severity must each be individually documented rather than inferred from the hearing-loss rating."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "tinnitus",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The validated-questionnaire otosclerosis cohort found preoperative tinnitus in 107 of 157 patients (68.2%), 47.7% unilateral in the surgical ear and 52.3% bilateral, moderately severe on THI/TFI instruments (Skarzynski 2019); the Portuguese acuphenometry cohort found tinnitus in 72.7% of 66 otosclerosis patients, mostly unilateral and low-frequency, with THI median 37 (mild handicap modal, severe 22.9%) (Lima 2022); the literature review identifies middle-ear and secondary inner-ear dysfunction from stapes blockage as the major etiopathogenic factors and documents considerable tinnitus-prevalence improvement after corrective surgery, indicating a substantial reversible conductive component (Deggouj 2009).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the cohorts are otosclerosis-specific rather than all-cause conductive-loss populations, tinnitus severity does not correlate with hearing-loss degree in either cohort, cochlear (sensorineural) involvement can coexist and independently generate tinnitus, and surgery-improvement data show reversible contributions - so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A conductive-deprivation/middle-ear-dysfunction pathway is hypothesized: ossicular fixation or deficit attenuates energy delivery to the cochlea, and the resulting auditory deprivation plus possible secondary inner-ear involvement from stapes blockage produces limited, partly reversible central-auditory-pathway changes experienced as tinnitus; stapes surgery reduces tinnitus prevalence, consistent with a conductive contribution. The cohorts are otosclerosis-specific and severity is decoupled from hearing-loss degree, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Tinnitus accompanies conductive hearing loss in roughly two-thirds of otosclerosis cohorts; individual determination requires audiometric documentation of the conductive component, tinnitus characterization with chronology, exclusion of independent tinnitus generators, and review by a qualified medical professional.",
+        "evidenceGaps": "validated audiometric documentation of the conductive loss with air-bone gap and chronology; tinnitus characterization (laterality, pitch, loudness) with onset relative to the hearing loss; exclusion of sensorineural, noise-induced, ototoxic, and presbycusis contributors; otologic examination identifying the conductive mechanism (otosclerosis, chronic otitis media, ossicular chain); a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Coexisting sensorineural loss (presbycusis, noise-induced, ototoxic) as the tinnitus generator",
+          "Somatic and temporomandibular tinnitus unrelated to the ear",
+          "Middle-ear disease (effusion, cholesteatoma) as an independent cause rather than the conductive loss identity itself",
+          "Reverse direction: tinnitus prominence driving care-seeking that reveals the conductive loss (ascertainment bias)"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the quantified prevalence anchor is otosclerosis-specific and severity is decoupled from hearing degree, so the edge records the documented co-occurrence and the reversible conductive-deprivation mechanism without a causal claim.",
+      "sourceReferences": [
+        {
+          "citation": "Skarzynski PH, Dziendziel B, Gos E, Wlodarczyk E, Miaskiewicz B, Rajchel JJ, Skarzynski H. Prevalence and Severity of Tinnitus in Otosclerosis: Preliminary Findings from Validated Questionnaires. J Int Adv Otol. 2019;15(2):277-282. PMID 31418718. doi:10.5152/iao.2019.5512.",
+          "note": "Validated-questionnaire cohort (n=157): preoperative tinnitus in 68.2%, moderately severe on THI/TFI, no correlation between tinnitus severity and audiometric results; the quantified prevalence anchor with its severity-decoupling limit recorded.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31418718/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 31418718; results and conclusions"
+        },
+        {
+          "citation": "Lima AF, Moreira FC, Costa IE, Azevedo C, Mar F, Dias L. Tinnitus and Otosclerosis: An Exploratory Study about the Prevalence, Features and Impact in Daily Life. Int Arch Otorhinolaryngol. 2022;26(3):e390-e395. PMID 35846815. doi:10.1055/s-0041-1739967.",
+          "note": "Acuphenometry cohort (n=66): tinnitus in 72.7%, mostly unilateral low-frequency, THI median 37 with 22.9% severe handicap; corroborating anchor recording that tinnitus existence and severity were not associated with hearing-loss degree.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35846815/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 35846815; results and conclusions"
+        },
+        {
+          "citation": "Deggouj N, Castelein S, Gerard JM, Decat M, Gersdorff M. Tinnitus and otosclerosis. B-ENT. 2009;5(4):241-244. PMID 20163050.",
+          "note": "Literature review identifying middle-ear and secondary inner-ear dysfunction from stapes blockage as major etiopathogenic factors and documenting tinnitus-prevalence improvement after corrective surgery; the mechanistic and reversibility anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20163050/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 20163050; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "validated audiometric documentation of the conductive loss with air-bone gap and chronology",
+        "tinnitus characterization (laterality, pitch, loudness) with onset relative to the hearing loss",
+        "exclusion of sensorineural, noise-induced, ototoxic, and presbycusis contributors",
+        "otologic examination identifying the conductive mechanism (otosclerosis, chronic otitis media, ossicular chain)",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

@@ -2,8 +2,82 @@
   "id": "bronchomalacia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 15 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The Thomas case-control's own conclusion is recorded: causality cannot be inferred; if a qualified human finds longitudinal or adult-cohort data separating airway-collapse effects from shared inflammatory substrates, a higher tier may be appropriate."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: the single controlled study (Thomas 2022, 45 cases vs 90 controls) documents a strong tracheomalacia-bronchiectasis association (adjusted OR 13.2-24.4), but it is pediatric, single-center, age-imbalanced by design, and its authors explicitly disclaim causality.",
+    "Shared-terrain confounder recorded: connective-tissue disease literature documents TBM and bronchiectasis as parallel structural and inflammatory manifestations within Ehlers-Danlos syndromes (Bascom 2021), and COPD/smoking confounds the adult literature, so either shared-substrate structure defeats a simple causal reading.",
+    "Supersedes the batch-6 automation deferral (2026-09-22, same day): that deferral withheld an edge because the screened adult recurrent-infection literature was confounded by the shared COPD/smoking substrate and asked to revisit only with collapse-specific evidence; the Thomas 2022 pediatric case-control is tracheomalacia-specific, bronchoscopy-verified against controls, and free of the smoking confound, satisfying the deferral's own reopening condition. The deferral's broader caution is preserved in the edge guards (no causality, shared-substrate alternatives listed)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "bronchiectasis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "A single-center case-control study (45 CT-confirmed bronchiectasis cases vs 90 disease controls, bronchoscopy videos reviewed blinded) found any tracheomalacia significantly associated with bronchiectasis (adjusted OR 13.2, 95% CI 3.2-55) and ERS-defined tracheomalacia further increasing that estimate (ORadj 24.4, 95% CI 3.4-infinity), with the authors explicitly concluding that causality cannot be inferred (Thomas 2022); the Ehlers-Danlos respiratory review documents tracheobronchomalacia as a structural manifestation and bronchiectasis as an inflammatory manifestation within the same syndrome population (Bascom 2021); the spirometry 'knee'-pattern study documents tracheomalacia in 65.4% of pattern-positive children, supporting case-finding context (Boonjindasup 2022).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the only controlled association comes from a pediatric single-center case-control design with age imbalance between groups, its authors explicitly disclaim causality, shared inflammatory and connective-tissue substrates can generate both conditions in parallel, and post-infectious causes dominate adult bronchiectasis, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "An impaired-clearance/chronic-infection pathway is hypothesized: excessive expiratory collapse of the tracheobronchial walls impairs mucociliary transport and cough-mediated secretion expectoration, promoting chronic bacterial colonization and neutrophilic airway inflammation, which drive the bronchial-wall remodeling that defines bronchiectasis; the same vicious-cycle biology that maintains bronchiectasis is plausibly initiated or amplified by the mechanical clearance failure. The mechanism is physiologically coherent and is the working hypothesis of the case-control literature, but no longitudinal incidence data establish the progression rate in bronchomalacia populations, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Tracheobronchomalacia is strongly associated with bronchiectasis in the one controlled study available; individual determination requires CT documentation of bronchiectasis, bronchoscopic grading of airway collapse with chronology, exclusion of post-infectious and systemic causes, and review by a qualified medical professional.",
+        "evidenceGaps": "Chest high-resolution CT documenting bronchiectasis with lobar distribution; bronchoscopic grading of expiratory airway collapse (ERS >50% criterion) with chronology relative to bronchiectasis onset; documentation of recurrent wet cough and infection history bridging the two conditions; workup excluding primary ciliary dyskinesia, immunodeficiency, cystic fibrosis, prior necrotizing infection, and connective-tissue disease; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Post-infectious bronchiectasis (pneumonia, adenovirus, tuberculosis) independent of airway collapse",
+          "COPD and smoking as a shared substrate for both conditions",
+          "Primary ciliary dyskinesia causing both impaired clearance and bronchiectasis",
+          "Immunodeficiency with recurrent infection",
+          "Ehlers-Danlos or other connective-tissue disease producing both manifestations in parallel"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the association estimate is large but rests on one pediatric case-control whose authors disclaim causality, and the shared-substrate alternatives are well documented; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+      "sourceReferences": [
+        {
+          "citation": "Thomas R, Chang A, Masters IB, Grimwood K, Marchant J, Yerkovich S, Chatfield M, O'Brien C, Goyal V. Association of childhood tracheomalacia with bronchiectasis: a case-control study. Arch Dis Child. 2022;107(6):565-569. PMID 34649867. doi:10.1136/archdischild-2021-322578.",
+          "note": "The only controlled association study (ORadj 13.2, 95% CI 3.2-55; ERS-defined ORadj 24.4), explicitly concluding causality cannot be inferred; the central association evidence with its own limitation built in.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34649867/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 34649867; results and conclusions"
+        },
+        {
+          "citation": "Bascom R, Dhingra R, Francomano CA. Respiratory manifestations in the Ehlers-Danlos syndromes. Am J Med Genet C Semin Med Genet. 2021;187(4):533-548. PMID 34811894. doi:10.1002/ajmg.c.31953.",
+          "note": "Review documenting tracheobronchomalacia and bronchiectasis as parallel structural and inflammatory manifestations within one syndrome population; the shared-terrain confounder anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34811894/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 34811894; results and conclusions"
+        },
+        {
+          "citation": "Boonjindasup W, Marchant JM, McElrea MS, Yerkovich ST, Thomas RJ, Masters IB, Chang AB. The 'knee' pattern in spirometry flow-volume curves in children: Does it relate to tracheomalacia? Respir Med. 2022;204:107029. PMID 36335911. doi:10.1016/j.rmed.2022.107029.",
+          "note": "Documents tracheomalacia in 65.4% of 'knee'-pattern children with lower spirometry values; case-finding and severity context.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36335911/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 36335911; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "Chest high-resolution CT documenting bronchiectasis with lobar distribution",
+        "bronchoscopic grading of expiratory airway collapse (ERS >50% criterion) with chronology relative to bronchiectasis onset",
+        "documentation of recurrent wet cough and infection history bridging the two conditions",
+        "workup excluding primary ciliary dyskinesia, immunodeficiency, cystic fibrosis, prior necrotizing infection, and connective-tissue disease",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

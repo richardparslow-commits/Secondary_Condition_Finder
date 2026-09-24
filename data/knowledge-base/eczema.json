@@ -2,7 +2,12 @@
   "id": "eczema",
   "draft": true,
   "todo": [
-    "Rebuild eczema-related secondary-condition suggestions with condition-specific clinical evidence; prior generic mood and medication-to-GERD pathways lacked direct supporting citations."
+    "D1 batch 27 (2026-09-23): deferred on duplicate-scope - no edges authored; the identity is retained as a draft with suggestions: [] pending qualified-human consolidation decision.",
+    "Negative screen recorded 2026-09-23: targeted NCBI esearch for eczema/atopic-dermatitis sleep-insomnia evidence returned the Ni 2025 two-sample Mendelian-randomization record (PMID 40320904: genetically predicted insomnia associated with higher AD risk, OR 1.79 - the insomnia-to-eczema direction, incompatible with an outgoing eczema-to-insomnia edge and in any case blocked by the parallel-pathway ban) and a pediatric multi-inflammatory-skin-disease record (PMID 39922285, psoriasis-anchored), neither of which supplies a condition-specific outgoing anchor; no new pathway was found that would justify a parallel edge."
+  ],
+  "governanceNotes": [
+    "D1 batch 27 (2026-09-23): deferred on duplicate-scope under the diabetes-mellitus-typed-identities and atopic-march precedents - the published atopic-dermatitis evidence base (Bawany 2021 sleep review, Silverberg 2021 US population survey, Fasseeh 2021 burden systematic review, Mann 2020 ISI flare cohort, Cranendonk 2018 cellulitis pathophysiology, Hartman-Adams 2014 impetigo, Moses 2003 pruritus scratch-complications review, all batch-20 sources on the dermatitis identity) is already carried by the dermatitis -> insomnia/cellulitis/impetigo/depressive-disorder/anxiety-disorder edges, and atopic-dermatitis-eczema -> asthma already exists (atopic-march precedent), so authoring eczema -> any of those targets would create parallel pathways restating the same disease process under a synonym identity.",
+    "The identity is a common clinical synonym for atopic dermatitis rather than a distinct disease process; consolidation or inheritance of the dermatitis edges is a qualified-human governance decision and is not made here. Reopening condition: a condition-specific pathway with its own published evidence base distinct from the atopic-dermatitis literature (for example, an eczema-specific cohort outcome not explained by the AD evidence) would justify re-screening this identity."
   ],
   "suggestions": []
 }

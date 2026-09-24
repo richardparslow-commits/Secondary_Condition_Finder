@@ -1,9 +1,15 @@
 {
-  "id": "bruxism-awake-sleep",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "bruxism-awake-sleep",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 6 (2026-09-22): identity deferred — an authored edge was drafted and then withdrawn in favor of the recorded qualified-human determination, per the repo's deferral convention.",
+  "ME-34 (docs/mapping-expansion-me34-approved-implementation-ledger.md) already REJECTED `bruxism-awake-sleep -> tmj-dysfunction` because PMID 9758394 concluded juvenile bruxism appeared unrelated to TMJ symptoms, and its contract test pins this identity's suggestions at zero. A batch-6 draft targeting the sibling identity (tmj-disorder) on adult meta-analytic evidence was withdrawn precisely because re-adjudicating a recorded human rejection is a qualified-human decision, not an automation decision.",
+  "Revisit only if a qualified human reopens the ME-34 rejection with an explicit disposition that reconciles the negative juvenile evidence with the adult meta-analytic association (Mortazavi 2023, PMID 37474733; Jiménez-Silva 2017, PMID 27796166); do not infer medical causation from rating-schedule authority."
+ ],
+ "governanceNotes": [
+  "Deliberate deferral honoring an explicit prior disposition: the ME-34 qualified-human batch examined the bruxism-to-TMJ relationship and rejected it on evidence grounds (PMID 9758394, juvenile bruxism unrelated to TMJ symptoms). The batch-6 pre-authoring screen had checked disposition ledgers but missed the ME-34 entry because its notation named the tmj-dysfunction target rather than the primary identity; the repo's own contract test (tests/mapping-expansion-me34.test.ts) correctly failed the drafted edge.",
+  "Evidence state recorded for any future human review: adult observational evidence is meta-analytically positive (bruxism associated with roughly 2.25-fold higher odds of temporomandibular disorders; awake 2.51, sleep 2.06), diagnosis method conditions the association, and the relationship is bidirectional; the juvenile negative finding (PMID 9758394) and the ME-34 rejection remain part of the record and weigh against an edge until reconciled by a human disposition.",
+  "No registry entries were left behind by the withdrawal: the batch-6 relationship and source entities for this edge were removed in lockstep with the file revert (registry parity re-verified by scripts/audit-master-registry.js)."
+ ],
+ "suggestions": []
 }

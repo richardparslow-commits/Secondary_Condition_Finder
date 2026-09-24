@@ -2,8 +2,15 @@
   "id": "balint-s-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): identity deferred with a documented scope barrier instead of an authored edge, per the repo's established deferral convention (ME-30/ME-32 precedents).",
+    "No catalog target identity exists for the genuinely documented sequelae of Balint syndrome (severe visuomotor and visual-search impairment after bilateral parieto-occipital injury): the catalog's visual-impairment target is defined for acuity/pathology-driven vision loss and cannot represent Balint-syndrome functional deficits without violating the duplicate-scope and phenotype-fidelity rules used throughout the registry.",
+    "The modern literature for this rare syndrome is overwhelmingly small case series; no catalog-compatible target with a defensible condition-specific evidence base currently exists. Revisit only if the catalog adds a neurocognitive-visuomotor deficit identity or target-specific evidence emerges; do not infer medical causation from rating-schedule authority.",
+    "D1 draft-authoring batch 15 (2026-09-22): identity deferred with a documented scope barrier instead of an authored edge, per the repo's established deferral convention (ME-30/ME-32 precedents).",
+    "Revisit only if the catalog adds an independent acquired visual-processing or sensory-outcome identity distinct from the syndrome's defining triad, and only with outcome literature beyond the attention-network phenotype literature; do not author an edge whose causal claim restates the diagnostic presentation."
+  ],
+  "governanceNotes": [
+    "Deliberate deferral, not an authored suggestion: Balint syndrome's functional sequelae (optic ataxia, oculomotor apraxia, simultanagnosia) have no honest catalog target. Mapping the syndrome to generic visual impairment would misrepresent the phenotype (acuity is typically preserved), and the case-series evidence base cannot support a defensible proposition for any other target.",
+    "Deliberate deferral, not an authored suggestion: Balint's syndrome is itself defined by the visuomotor outcomes a downstream edge would target (simultanagnosia, oculomotor apraxia, optic ataxia from bilateral occipito-parietal injury), so a Balint's-to-visual-impairment or blindness edge would largely restate the diagnostic presentation (the ME-41 phenotype-identity barrier), and the classic acquired-attention-deficit literature (Rizzo 1992, PMID 1529165) positions Balint's as a phenotype of dorsal-attention-network damage rather than a cause of an independent visual-acuity or field outcome; the dominant causal arrow runs into the identity (parieto-occipital lesions producing Balint's), not out of it."
   ],
   "suggestions": []
 }

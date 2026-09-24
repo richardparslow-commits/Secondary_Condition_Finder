@@ -1,8 +1,80 @@
 {
-  "id": "cervical-strain",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+ "id": "cervical-strain",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 9 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "The Schrader 1996 no-difference cohort is deliberately entered as competing evidence; promote toward directional language only if a qualified human weighs it against the symptomatic-cohort data and records that determination."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: headache is among the most frequent presenting symptoms after whiplash-type cervical strain in symptomatic cohorts, but the only controlled cohort comparing victims against matched uninjured controls (Schrader 1996, Lancet) found chronic headache in similar proportions in both groups, so the post-strain headache literature is genuinely contested and no directional claim beyond co-occurrence is supportable at the mapping level.",
+  "Competing-cause note recorded: the cervicogenic pathway (upper-cervical nociceptive convergence) and the concurrent-mild-head-injury pathway are both active explanations in any given case, and cohort data show accident-mechanism factors (unprepared occupant, rotated head position) modulate headache severity, but no study isolates the cervical-strain contribution from simultaneous head impact."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "post-traumatic-headache",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "Symptomatic-cohort data document headache among the most frequent presenting complaints after whiplash injury, with unprepared occupants showing more severe headache and rotated or inclined head position associated with more severe cervical-strain and radicular findings (Sturzenegger 1994, 137 consecutive patients, examined within days of trauma); however, the only controlled natural-history cohort found chronic headache at similar rates in collision victims and matched uninjured controls (9.4 versus 5.9 percent, not significant; Schrader 1996), leaving the association contested rather than established.",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the controlled cohort shows no victim-control difference in chronic headache, concurrent mild head injury is difficult to exclude in the same accidents, cervicogenic headache is operationally hard to distinguish from post-traumatic headache of intracranial origin, and litigation and expectation effects are documented determinants in this literature, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+    "primaryVector": "A hypothesized cervicogenic-nociception pathway has been described: rapid acceleration-deceleration strains the cervical musculoligamentous structures and upper-cervical zygapophysial joints, whose afferents converge on trigeminocervical nucleus neurons also receiving trigeminal nociceptive input, allowing cervical nociception to be perceived as headache; accident-mechanism cohort data linking head posture and occupant preparedness to headache severity are consistent with biomechanical modulation of this pathway. The mechanism is anatomically coherent, but the controlled cohort's null chronic-headache difference implies the pathway either attenuates with time or explains only a subgroup, and simultaneous head impact cannot be excluded as the generator in most cases, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only, and a controlled cohort actively contests the chronic-headache link. Individual determination requires headache characterization against accepted post-traumatic-headache criteria with onset chronology after the strain, examination and imaging findings supporting (or excluding) a cervical source, exclusion of concurrent head injury and pre-existing headache syndromes, and review case by case by a qualified medical professional.",
+    "evidenceGaps": "Headache characterization meeting accepted post-traumatic-headache criteria with onset chronology relative to the cervical strain; cervical examination and imaging findings localizing a nociceptive source; neuroimaging and history excluding concurrent mild head injury; pre-injury headache history separating new-onset from continuing syndromes; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Concurrent mild traumatic brain injury generating the headache directly",
+     "Pre-existing tension-type or migraine syndromes re-emerging after the accident",
+     "Medication-overuse headache developing during analgesic treatment",
+     "Psychological and litigation-related symptom amplification"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength with the strongest controlled evidence recorded as a null: headache is common after cervical strain in symptomatic cohorts, but the matched-control cohort found no chronic-headache difference and confounding by concurrent head injury is pervasive; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "evidenceGaps": [
+    "Headache characterization meeting accepted post-traumatic-headache criteria with onset chronology relative to the cervical strain",
+    "Cervical examination and imaging findings localizing a nociceptive source",
+    "Neuroimaging and history excluding concurrent mild head injury",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ],
+   "sourceReferences": [
+    {
+     "citation": "Sturzenegger M, DiStefano G, Radanov BP, Schnidrig A. Presenting symptoms and signs after whiplash injury: the influence of accident mechanisms. Neurology. 1994;44(4):688-693. PMID 8164827. doi:10.1212/wnl.44.4.688.",
+     "note": "Cohort of 137 consecutive whiplash patients examined within days of trauma reporting headache among the most frequent presenting symptoms, with unprepared occupants showing more severe headache and head posture modulating musculoligamentous and radicular severity; supports early symptomatic co-occurrence and biomechanical modulation without chronic-outcome attribution.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8164827/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 8164827; results and conclusion"
+    },
+    {
+     "citation": "Schrader H, Obelieniene D, Bovim G, Surkiene D, Mickeviciene D, Miseviciene I, Sand T. Natural evolution of late whiplash syndrome outside the medicolegal context. Lancet. 1996;347(9010):1207-1211. PMID 8622449. doi:10.1016/s0140-6736(96)90733-3.",
+     "note": "Controlled retrospective cohort (202 collision victims versus matched uninjured controls, outside medicolegal context) finding chronic headache in 9.4 versus 5.9 percent (not significant) and daily headache often predating the accident; deliberately entered as the competing-evidence anchor recorded in the causation boundary.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8622449/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 8622449; findings and interpretation"
+    },
+    {
+     "citation": "Gross A, Forget M, St George K, Fraser MM, Graham N, Perry L, Burnie SJ, Goldsmith CH, Haines T, Brunarski D. Patient education for neck pain. Cochrane Database Syst Rev. 2012;(3):CD005106. PMID 22419306. doi:10.1002/14651858.CD005106.pub4.",
+     "note": "Cochrane review framing the whiplash and mechanical neck-pain population including cervicogenic headache and documenting the modest, time-limited benefit of structured education interventions on acute whiplash-related pain; supports the population framing without outcome-attribution strength.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22419306/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 22419306; background and main results"
+    }
+   ]
+  }
+ ]
 }

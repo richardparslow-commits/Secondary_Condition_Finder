@@ -2,8 +2,12 @@
   "id": "encopresis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 28 (2026-09-23): deferred on duplicate-scope and manifestation-identity grounds - no edges authored; the identity is retained as a draft with suggestions: [] pending qualified-human governance decision.",
+    "Negative screen recorded 2026-09-23: the targeted NCBI esearch for encopresis with rectal-prolapse, anal-fissure, and straining-outcome targets returned zero records; the encopresis literature is diagnosis-and-management scoped (disimpaction and bowel-regimen reviews) with no published comorbidity or complication-outcome quantification for any catalog target."
+  ],
+  "governanceNotes": [
+    "D1 batch 28 (2026-09-23): deferred on duplicate-scope and manifestation-identity grounds. Encopresis (fecal soiling with retention overflow) is a functional presentation defined by fecal incontinence occurring against a constipation-and-retention background; an encopresis -> fecal-incontinence edge would largely restate the identity (ME-41 phenotype-identity barrier, carpal-tunnel/medial-neuropathy precedent), and the anal-fissure, anorectal-stricture, and rectal-prolapse targets already carry incoming edges from the underlying constipation-and-straining drivers, so an encopresis edge would create parallel pathways already carried by the primary driver identities (diabetes-mellitus-typed-identities precedent).",
+    "The upstream causation is inverted in the literature: chronic constipation with retention causes overflow soiling, so the defensible clinical arrow belongs to the constipation identity rather than the soiling presentation; consolidation or inheritance decisions belong to qualified-human governance. Reopening condition: an evidence base quantifying outcomes downstream of the encopresis identity itself (not of constipation generally) would justify re-screening."
   ],
   "suggestions": []
 }
