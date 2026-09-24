@@ -1,9 +1,15 @@
 {
-  "id": "bullous-pemphigoid",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "bullous-pemphigoid",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 7 (2026-09-22): identity deferred with a documented evidence and scope barrier instead of an authored edge, per the repo's established deferral convention (ME-30/ME-32 precedents).",
+  "ME-35 (docs/mapping-expansion-me35-proposed-research-ledger.md) already excluded the only catalog-compatible candidate edge (`bullous-pemphigoid -> parkinsons-disease` or dementia targets) because the documented evidence is an association in the reverse or unclear direction (neurologic disease preceding and plausibly driving the autoimmune blistering propensity) and does not support a downstream causal mapping from this primary.",
+  "Revisit only if a qualified human reopens the ME-35 exclusion or the catalog adds a target with genuinely downstream condition-specific evidence; do not author an edge against the recorded direction of the literature, and do not infer medical causation from rating-schedule authority."
+ ],
+ "governanceNotes": [
+  "Deliberate deferral honoring an explicit prior disposition: the ME-35 proposed-research ledger examined the bullous-pemphigoid to neurodegenerative-disease relationship and excluded it on directionality grounds. The skin-blistering disease literature does document associations with Parkinson disease and dementia, but cohort data consistently show the neurologic diagnosis preceding the pemphigoid diagnosis, and proposed mechanisms (neuronal antigens, blood-brain barrier change, drug effects) run from the neurologic disease toward the skin disease.",
+  "Directionality check recorded: parkinsons-disease -> bullous-pemphigoid is the documented direction, which is backwards for any outgoing edge from this primary; authoring bullous-pemphigoid -> parkinsons-disease would invert the literature exactly as ME-35 recorded, and no catalog identity exists for other downstream sequelae (secondary infection of blisters, treatment complications) at a defensible condition-specific evidence level.",
+  "Alternative-target check recorded: secondary-infection and treatment-complication pathways (glucocorticoid and immunosuppressant effects) have no distinct catalog target identity, and the ME-35 exclusion stands for the neurodegenerative candidates."
+ ],
+ "suggestions": []
 }

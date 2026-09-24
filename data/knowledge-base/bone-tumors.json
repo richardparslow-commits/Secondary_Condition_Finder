@@ -2,8 +2,70 @@
   "id": "bone-tumors",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Review structural-weakening, local-aggressiveness, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: the benign-bone-tumor literature documents pathological fracture as a common surgical indication and giant cell tumor's locally aggressive, recurrence-prone behavior, but the mapping is bounded to the fracture-healing-complication pathway the catalog target actually represents, and the individual determinants of malunion and nonunion (lesion anatomy, fracture geometry, treatment choices, biology) require orthopedic separation in every case, so the mapping asserts lesion-population co-occurrence only.",
+    "Malignant transformation was deliberately not authored: the catalog target identity is malunion / nonunion of fractures, and the giant-cell-tumor metastasis literature addresses rare pulmonary spread, which has no catalog-compatible target here. Do not widen the target scope without a new governance disposition.",
+    "Duplicate-scope check: no existing registry edge from bone-tumors or bone-cysts to any target; both primaries remain distinct catalog identities (cyst versus neoplasm) with separate mappings rather than one shared edge."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "malunion-nonunion-of-fractures",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The benign-bone-tumor literature documents pathological fracture through tumor-weakened bone as a standard presentation and surgical indication (a Nigerian orthopedic series lists pathological fracture among the most common indications for surgery in 67 surgically treated benign bone tumors), and a femoral head and neck benign-lesion systematic review reports 20.8 percent pathological-fracture presentation with documented post-treatment recurrence (33.3 percent for giant cell tumor after curettage) and fracture cases treated with joint preservation.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level for this edge: the cited studies document lesion-population co-occurrence rather than controlled fracture-healing-complication rates attributable to bone tumors, malunion and nonunion have competing determinants (tumor site and extent, fracture displacement, curettage and reconstruction choices, biology) that the orthopedic record must separate, and recurrence-and-revision pathways confound any simple attribution, so the mapping asserts lesion-population co-occurrence only."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A hypothesized structural-weakening pathway is described in the bone-tumor literature: expanding lytic tumor tissue (giant cell tumor, chondroblastoma, aneurysmal and simple cysts) replaces and resorbs load-bearing bone, reducing the mechanical cross-section until fracture occurs through the lesion, and the residual cavity, curettage defect, and locally aggressive tumor biology (high recurrence in giant cell tumor) can impair stable consolidation, predisposing to malunion or nonunion; the systematic-review data document exactly this fracture-through-lesion population with its reconstruction challenges. This physiology explains co-occurrence within the tumor population, but it does not establish that any individual's healing complication was caused by the tumor rather than by fracture geometry, treatment, or biology, so no directional claim is asserted here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Pathological fracture and healing complications co-occur in the benign-bone-tumor population, but individual determination requires imaging and pathology documentation of the tumor with chronology, orthopedic assessment of the healing outcome against accepted radiographic criteria, and exclusion of competing mechanical, treatment-related, and biological determinants, all reviewed case by case by a qualified medical professional.",
+        "evidenceGaps": "Imaging and histopathologic documentation of the bone tumor with location and chronology; documentation of the pathological or subsequent fracture with date; radiographic healing assessment establishing malunion or nonunion against accepted criteria; operative records separating tumor-related from treatment-related determinants (curettage extent, graft or cement, fixation); a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Fracture geometry, displacement, or inadequate fixation as the primary determinant of the healing complication",
+          "Curettage-related bone loss or reconstruction choices rather than the tumor itself",
+          "Underlying metabolic bone disease, osteoporosis, or infection impairing consolidation independently",
+          "Radiotherapy-related bone-healing impairment where adjuvant treatment was used"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the fracture co-occurrence and healing-complication environment of benign bone tumors is documented in series and systematic-review data, but individual attribution is multifactorial and the evidence base is uncontrolled, so this edge flags the lesion-population association for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Imaging and pathology-documented bone tumor with chronology",
+        "Documented fracture with radiographic healing outcome",
+        "Orthopedic assessment separating tumor-related from treatment-related determinants",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Eyesan SU, Idowu OK, Obalum DC, Nnodu OE, Abdulkareem FB. Surgical consideration for benign bone tumors. Niger J Clin Pract. 2011;14(2):146-150. PMID 21860128. doi:10.4103/1119-3077.84003.",
+          "note": "Prospective series of 67 surgically treated benign bone tumors listing pathological fracture among the most common surgical indications alongside painful swelling, with recurrence concentrated in giant cell tumor; supports the lesion-population fracture co-occurrence proposition, not a healing-complication causal estimate.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21860128/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 21860128; series results and indications"
+        },
+        {
+          "citation": "Shi J, Zhao Z, Yan T, Guo W, Yang R, Tang X, Qu H, Dong S. Surgical treatment of benign osteolytic lesions in the femoral head and neck: a systematic review. BMC Musculoskelet Disord. 2021;22(1):549. PMID 34134687. doi:10.1186/s12891-021-04442-y.",
+          "note": "Systematic review of 33 articles (274 patients) reporting 20.8 percent pathological-fracture presentation and giant-cell-tumor local recurrence of 33.3 percent after curettage with joint-preservation outcomes; supports the fracture co-occurrence and local-aggressiveness propositions in the lesion population, not individual causation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34134687/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 34134687; systematic review results"
+        }
+      ]
+    }
+  ]
 }

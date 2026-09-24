@@ -2,8 +2,58 @@
   "id": "arteriosclerosis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Review cerebrovascular and systemic-vascular pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: arteriosclerosis is an umbrella vascular-identity term; cohort literature links vascular risk burden and silent brain infarction to cognitive impairment and depression, but the catalog label alone does not identify the affected vascular bed or establish individual-level progression to any target condition."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cerebrovascular-accident-stroke-residuals",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Cohort literature reports that arteriosclerotic vascular risk burden, carotid thickening, and silent brain infarction associate with increased risk of clinical stroke events and with poststroke depression, and that vascular depression associations exist between cerebrovascular disease burden and late-life depressive symptoms.",
+        "causationStatus": "Neither causation nor aggravation is established: the cited literature reports population-level associations between vascular disease burden and stroke or mood outcomes, but the arteriosclerosis catalog label does not identify which vascular bed is affected, when disease progressed, or whether the individual's specific cerebrovascular event or residual mood disturbance arose from the documented arteriosclerotic process rather than from competing etiologies such as cardioembolism, arrhythmia, or dissection."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "A hypothesized vascular pathway has been described: progressive intimal thickening and reduced arterial compliance may reduce perfusion reserve, promote thrombus formation on disrupted plaques, and produce embolic or hemodynamic brain injury, and cerebrovascular disease burden has been associated with mood-circuit disruption, but this population-level pathway would require individual vessel-specific documentation before any causal inference, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Population studies associate arteriosclerotic burden with stroke risk and poststroke mood disturbance, but arteriosclerosis is an etiologically heterogeneous umbrella identity: the individual vessel bed, the stage of disease, and the pathway to any specific cerebrovascular event or depressive syndrome require individual documentation and medical review, none of which the catalog label provides.",
+        "evidenceGaps": "Vessel-specific imaging (carotid duplex, CT/MR angiography, or catheter angiography) identifying the affected arterial bed; chronology establishing arteriosclerotic progression before any cerebrovascular event; event-mechanism documentation distinguishing atherosclerotic thromboembolism from competing stroke mechanisms; neuropsychiatric documentation of any depressive syndrome with temporality; risk-factor and competing-etiology review",
+        "alternativeEtiologiesToRuleOut": [
+          "Cardioembolic stroke from arrhythmia, valvular disease, or intracardiac thrombus",
+          "Arterial dissection, vasculitis, or non-atherosclerotic vasculopathy",
+          "Hematologic hypercoagulable states",
+          "Depressive disorder arising from psychosocial disability reaction or independent psychiatric history rather than vascular disease burden"
+        ],
+        "requiresSpecificDbqEvidence": true
+      },
+      "rationale": "Authored conservatively at association-only strength: arteriosclerosis is an umbrella identity whose population-level associations with stroke and mood outcomes are well reported, but mapping the umbrella label to a specific cerebrovascular outcome would let the catalog label substitute for vessel-specific individual evidence, which this edge refuses to do; it flags the association for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Vessel-specific imaging identifying the arteriosclerotic bed and stenosis grade",
+        "Chronology showing disease progression preceding any cerebrovascular event",
+        "Stroke-mechanism workup distinguishing atherosclerotic from competing etiologies",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Sacco RL, Blanton SL, Slifer S. Atherosclerotic disease and risk of stroke: epidemiologic evidence. Adv Neurol. 2003;92:343-350. PMID 14794445.",
+          "note": "Epidemiologic review of the association between atherosclerotic disease burden and incident stroke risk; supports the population-level association proposition only, with no individual causal determination.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/14794445/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 14794445; epidemiologic association between atherosclerosis and stroke risk",
+          "authorityCategory": "medical-scientific-evidence"
+        }
+      ]
+    }
+  ]
 }

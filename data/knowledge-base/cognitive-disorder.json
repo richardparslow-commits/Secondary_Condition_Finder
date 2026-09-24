@@ -2,8 +2,83 @@
   "id": "cognitive-disorder",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 13 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Cognitive-disorder is an umbrella identity spanning many primary etiologies; if a qualified human splits it into dementia and mild-cognitive-impairment sub-identities, this edge should be revisited per sub-identity with etiology-specific evidence."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: the state-of-the-science MCI literature records greater depression symptoms as part of the MCI phenomenology, and the dementia umbrella literature treats depression comorbidity as prevalent, but the relationship is explicitly bidirectional (depressive disorder is also a reversible cognitive mimic, and cognitive decline is a depression risk factor), so no directional claim is supportable at the mapping level.",
+    "Reverse-causality note recorded deliberately, matching the chronic-pelvic-pain-syndrome -> endometriosis and benign-mass-lesion precedents: depressive disorder is a recognized reversible cause of subjective and measurable cognitive impairment (pseudodementia), meaning the causal arrow plausibly runs the opposite way in a substantial fraction of cases; this dominates the guard and is the primary reason aggravation was not drafted.",
+    "Etiologic-heterogeneity note recorded: cognitive-disorder as an umbrella spans degenerative, vascular, traumatic, toxic-metabolic, infectious, and sleep-related etiologies, each with its own depression-comorbidity structure; the OSA-cognition meta-analytic literature (Bucks 2013; Wang 2020) is entered deliberately as the competing-etiology anchor showing how a treatable sleep disorder generates both cognitive impairment and mood disturbance in parallel.",
+    "Three-reference-cap note: the CPAP randomized-trial meta-analysis (Wang 2020, PMID 32310179, 14 RCTs, 1926 participants — attention/processing-speed improvement in severe OSA after treatment) reinforces the sleep-confounder guard; its substance is folded into the Bucks 2013 note and the alternative-etiologies list, but it is not carried as a fourth citation because the schema caps sourceReferences at 3 per edge."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The state-of-the-science review of mild cognitive impairment records the MCI phenomenology as comprising lower quality of life, greater symptoms of depression, and avoidant coping including social withdrawal, in a condition affecting 10-15% of the over-65 population (Anderson 2019); the umbrella review of potentially modifiable risk factors for dementia and MCI synthesizes the depression-comorbidity literature among risk and associate factors (Jones 2024); and the neurocognitive meta-reviews document how cognitive dysfunction co-occurs with mood disturbance across etiologies while reversible and confounded causes remain active (Bucks 2013).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the association is cross-sectional with bidirectionality built into the literature itself (depressive disorder both co-occurs with and reversibly mimics cognitive impairment), the umbrella identity mixes etiologies with distinct comorbidity structures, and sleep-disorder and medication confounding is pervasive, so only co-occurrence is recorded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A dual-direction cognitive-burden pathway is hypothesized: in the cognitive-to-mood direction, progressive loss of memory and executive function erodes occupational and social role function, produces awareness-of-deficit distress, and withdraws the individual from reinforcing activities through the same anhedonia-and-withdrawal pathways recorded in the MCI phenomenology; in the mood-to-cognition direction, depressive disorder itself degrades attention, processing speed, and executive performance through motivational and neurovegetative mechanisms, and can present as a reversible cognitive disorder. Because both arrows are documented and the evidence base is cross-sectional, no single directional mechanism is claimed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Depression co-occurs with and is part of the recorded phenomenology of cognitive impairment, but the relationship is bidirectional with depressive disorder a reversible cognitive mimic in its own right; individual determination requires psychiatric and neuropsychological documentation with chronology, and review by a qualified medical professional.",
+        "evidenceGaps": "Psychiatric diagnostic evaluation documenting the depressive disorder and its chronology relative to cognitive-symptom onset; formal neuropsychological testing characterizing the cognitive domains affected and their trajectory; trial-of-treatment or longitudinal documentation distinguishing reversible depressive cognitive impairment from progressive etiology; sleep-disorder and medication review covering confounders; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Reversible depressive pseudodementia as the primary process",
+          "Obstructive sleep apnea or other sleep disorders driving both cognition and mood",
+          "Medication effects (anticholinergics, benzodiazepines, opioids, corticosteroids)",
+          "Substance use including alcohol-related cognitive impairment with mood disturbance",
+          "Thyroid disease, B12 deficiency, and other reversible metabolic causes"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the depression-cognition comorbidity is among the best documented in neuropsychiatry, but the umbrella identity and the explicit bidirectionality (including reversible depressive cognitive impairment) make any directional claim untenable at the mapping level; the edge records co-occurrence and leaves every causal judgment to a qualified medical professional.",
+      "sourceReferences": [
+        {
+          "citation": "Anderson ND. State of the science on mild cognitive impairment (MCI). CNS Spectr. 2019;24(1):78-87. PMID 30651152. doi:10.1017/S1092852918001347.",
+          "note": "State-of-the-science review recording the MCI phenomenology as including lower quality of life, greater depression symptoms, and avoidant coping with social withdrawal, in a condition affecting 10-15% of the over-65 population; the central comorbidity-phenomenology evidence.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30651152/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 30651152; abstract"
+        },
+        {
+          "citation": "Jones A, Ali MU, Kenny M, Mayhew A, Mokashi V, He H, Lin S, Yavari E, Paik K, Subramanian D, Dydynsky R, Aryal K, Correia RH, Dash D, Manis DR, O'Connell M, Liu-Ambrose T, Taler V, McMillan JM, Hogan DB, Kirkland S, Costa AP, Wolfson C, Raina P, Griffith L. Potentially Modifiable Risk Factors for Dementia and Mild Cognitive Impairment: An Umbrella Review and Meta-Analysis. Dement Geriatr Cogn Disord. 2024;53(2):91-106. PMID 38346414. doi:10.1159/000536643.",
+          "note": "Umbrella review and meta-analysis synthesizing the risk-factor and comorbidity literature for mild and major neurocognitive disorders; the broad associate-factor context for depression in the dementia/MCI spectrum.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38346414/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 38346414; introduction, methods"
+        },
+        {
+          "citation": "Bucks RS, Olaithe M, Eastwood P. Neurocognitive function in obstructive sleep apnoea: a meta-review. Respirology. 2013;18(1):61-70. PMID 22913604. doi:10.1111/j.1440-1843.2012.02255.x.",
+          "note": "Meta-review of 33 reviews documenting OSA-associated deficits in attention, memory, and executive function with sleep-fragmentation and hypoxaemia associations, and CPAP-treatment reversibility of those deficits (RCT meta-analysis PMID 32310179: attention/processing-speed improvement in severe OSA); entered deliberately as the competing-etiology anchor showing a treatable sleep disorder generating cognitive impairment and mood disturbance in parallel.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22913604/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 22913604; abstract"
+        }
+      ],
+      "evidenceGaps": [
+        "Psychiatric diagnostic evaluation documenting the depressive disorder and its chronology relative to cognitive-symptom onset",
+        "Formal neuropsychological testing characterizing the cognitive domains affected and their trajectory",
+        "Trial-of-treatment or longitudinal documentation distinguishing reversible depressive cognitive impairment from progressive etiology",
+        "Sleep-disorder and medication review covering confounders",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

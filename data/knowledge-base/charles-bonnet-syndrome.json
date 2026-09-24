@@ -1,9 +1,81 @@
 {
-  "id": "charles-bonnet-syndrome",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "charles-bonnet-syndrome",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 10 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Directional cohort or intervention data for distress reduction from hallucination management would justify revisiting strength at a higher tier only with qualified-human review."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: cross-sectional and survey data (n=70; n=126) document elevated psychological distress, anxiety, and reduced quality of life among Charles Bonnet syndrome patients, but the evidence base contains no control group, no onset-ordering, and no longitudinal cohort, and the visual-loss context carries heavy confounding, so no directional claim is supportable at the mapping level.",
+  "Phenomenology boundary recorded: Charles Bonnet hallucinations are recognized as insight-preserved, non-psychiatric phenomena in most patients; the association edge is deliberately confined to distress and affective comorbidity and does not extend to psychotic disorders, which would rest on a different and unsupported mechanism."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "anxiety-disorder",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "Cross-sectional survey of 70 Charles Bonnet syndrome patients documented that 65.7% experienced distress from hallucinations and 44% reported associated anxiety and depression (Walker 2025); a 126-patient cross-sectional study reported that 42% of patients were bothered by hallucinations, with higher bother associated with psychological distress symptoms (Higgins 2021); a clinical review recommends routine evaluation for emotional distress and quality-of-life impact in CBS (Jones 2021).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the studies are cross-sectional or survey designs without comparison groups, onset ordering between hallucination burden and anxious symptoms is not established, shared drivers (severity of visual loss, social isolation, sensory deprivation) confound the association, and no intervention study demonstrates distress reduction by treating hallucinations, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+    "primaryVector": "A sensory-deprivation/psychophysiological pathway is hypothesized: deafferentation of visual association cortex from severe visual loss produces spontaneous cortical release phenomenology (the deafferentation model of CBS), and the unpredictable, intrusive nature of the hallucinations, combined with fear of losing reality testing and loss of independence from the underlying eye disease, generates persistent vigilance and anxious symptomatology. The mechanism is biologically plausible and mechanistically discussed in the literature, but the deafferentation model itself remains unproven and no longitudinal data connect hallucination burden to incident anxiety disorder, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Elevated anxious-distress comorbidity is documented in cross-sectional CBS series, but individual determination requires psychiatric evaluation documenting the anxious disorder, its chronology relative to the visual loss and hallucinations, and exclusion of independent etiologies by a qualified medical professional.",
+    "evidenceGaps": "Psychiatric diagnostic evaluation documenting the anxious disorder and its chronology relative to visual loss and hallucination onset; severity and frequency documentation of hallucinations and their subjective burden; workup excluding primary anxiety disorder, adjustment disorder to visual loss, and medication or substance contributions; longitudinal or treatment-response evidence linking hallucination management to anxiety course; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Primary anxiety disorder independent of visual status",
+     "Adjustment disorder driven by the underlying visual loss and disability rather than the hallucinations",
+     "Depressive or psychotic disorders with anxious features misclassified",
+     "Medication, stimulant, or substance-induced anxiety"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the comorbidity evidence is real but entirely cross-sectional, the mechanism is a plausible-but-unproven deafferentation model, and the confounding from shared visual-loss severity is heavy; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "sourceReferences": [
+    {
+     "citation": "Walker C, et al. Charles Bonnet syndrome: hallucination characteristics and psychological impact in a large cross-sectional survey. 2025. PMID 41771640.",
+     "note": "Cross-sectional survey of 70 CBS patients documenting hallucination characteristics with 65.7% reporting distress and 44% reporting anxiety and depression; establishes comorbidity prevalence without control or longitudinal data.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41771640/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 41771640; survey results"
+    },
+    {
+     "citation": "Higgins KE, et al. Visual hallucinations and bother in low-vision patients. 2021. PMID 34377938.",
+     "note": "Cross-sectional study of 126 low-vision patients in which hallucination bother was associated with psychological distress symptoms; extends the association into a measured bother-distress relationship without onset ordering.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34377938/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 34377938; results"
+    },
+    {
+     "citation": "Jones CA, et al. Charles Bonnet syndrome: a review of the literature. 2021. PMID 39351142.",
+     "note": "Clinical review recommending routine evaluation of emotional distress and quality-of-life impact in CBS; supports the clinical recognition of the association without directional evidence.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39351142/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 39351142; review discussion"
+    }
+   ],
+   "evidenceGaps": [
+    "Psychiatric diagnostic evaluation documenting the anxious disorder and its chronology relative to visual loss and hallucination onset",
+    "Severity and frequency documentation of hallucinations and their subjective burden",
+    "Workup excluding primary anxiety disorder, adjustment disorder to visual loss, and medication or substance contributions",
+    "Longitudinal or treatment-response evidence linking hallucination management to anxiety course",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ]
+  }
+ ]
 }

@@ -1,6 +1,78 @@
 {
   "id": "femoral-neuropathy",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 34 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: case-matching edge following the batch-30 episcleritis and erythromelalgia unexplained-chronic-pain precedent - the documented neuropathic pain feature of femoral neuropathy is mapped as a pain-burden association only, with the target's own criteria requiring competing pain generators excluded at the individual level; individual claims require documented femoral mononeuropathy with electrodiagnostic confirmation, documented pain distribution, and exclusion of lumbar, vascular, hip, and centralized pain generators."
+  ],
+  "governanceNotes": [
+    "D1 batch 34 (2026-09-23): one bounded unexplained-chronic-pain association authored under the batch-30 pain-constitutive case-matching precedent - the Santilli 2024 Mayo Clinic clinical and electrodiagnostic review of 159 isolated femoral neuropathy patients documents pain as a presenting feature in 53% alongside weakness in 96% with only 48% achieving nearly complete recovery at follow-up, the Martinoli 2013 Eur J Radiol review documents that neuropathies about the hip (including the femoral nerve) may be a cause of chronic pain and disability, and the Malik 2023 case documents severe neuropathic pain with femoral nerve palsy after cardiac intervention; the pain feature is constitutive/presenting rather than a proven downstream outcome, so the edge serves case-matching only exactly as the batch-30 pain edges do.",
+    "Negative screens recorded 2026-09-23: (i) falls and knee-injury outcomes - the targeted femoral-neuropathy-with-falls search returned only three records (a five-patient knee-immobilizer series by Jones 2004 with falls as an outcome measure, the Kromoser 2025 synovial-cyst recurrent-falls case, and the Lyme femoral-mononeuropathy case), all case-level with no cohort quantification, and no falls identity exists in the catalog; (ii) knee-instability outcomes - the 23 knee hits are dominated by knee-extension-deficit descriptions (the deficit itself) and etiology papers, with no knee-injury outcome cohort. Duplicate-scope note: the unexplained-chronic-pain target carries two batch-30 edges (episcleritis, erythromelalgia) on small-fiber mechanisms; this edge adds the large-fiber mononeuropathic pain mechanism with an independent evidence base."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "unexplained-chronic-pain",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Santilli 2024 Mayo Clinic review of 159 isolated femoral neuropathy patients documents pain as a presenting feature in 53% with weakness in 96% and only 48% achieving nearly complete recovery over a mean 14.8-month recovery course, the Martinoli 2013 review documents that neuropathies about the hip may be a cause of chronic pain and disability, and the Malik 2023 case documents severe neuropathic pain with femoral nerve palsy; the literature documents the pain feature of the identity without establishing that femoral neuropathy produces a primary chronic-pain syndrome in an individual.",
+        "causationStatus": "The mapping does not assert that femoral neuropathy causes the target's unexplained-pain state: pain is a presenting feature rather than a demonstrated downstream outcome, the documented nerve lesion is itself a pain generator that the target's own criteria treat as a competing generator to characterize carefully, and lumbar radiculopathy, vascular claudication, hip osteoarthritis, complex regional pain syndrome, and centralized pain all mimic or accompany femoral-distribution pain; individual claims require electrodiagnostically documented femoral mononeuropathy, documented pain distribution and chronology, and exclusion of the competing generators per the target's criteria."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized peripheral-nerve-injury central-sensitization pathway: femoral-nerve compression, stretch, or inflammatory injury generates persistent nociceptive input from the anterior thigh and knee region; sustained input can centralize in dorsal-horn and supraspinal pain-processing circuits, lowering pain thresholds and extending pain beyond the acute injury window - consistent with the Santilli finding that improvement is often prolonged and incomplete; the pathway remains a hypothesis about an individual's course because most cohorts describe pain at presentation without characterizing chronic-pain evolution.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is a case-matching association only: the pain evidence is a presenting-symptom share from a single-center retrospective review plus case-level reports, no femoral-neuropathy cohort quantifies chronic-pain incidence or chronic-pain-syndrome evolution, the identity's defining deficit is weakness (96%) rather than pain, and competing generators are common in the same distributions; no probability estimate is asserted.",
+        "evidenceGaps": "Electrodiagnostic or clinical documentation of femoral mononeuropathy with etiology (compressive, perioperative stretch, inflammatory); pain documentation with distribution, severity scale, and chronology relative to the neuropathy; persistence of pain beyond the expected recovery course if chronic pain is claimed; exclusion of lumbar radiculopathy, peripheral arterial disease, hip osteoarthritis, complex regional pain syndrome, and centralized pain; neurology and pain-medicine assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Lumbar radiculopathy or lumbosacral plexopathy",
+          "Peripheral arterial disease with claudication or critical ischemia",
+          "Hip osteoarthritis or other intra-articular hip pathology",
+          "Complex regional pain syndrome",
+          "Fibromyalgia or centralized pain of independent origin"
+        ]
+      },
+      "evidenceGaps": [
+        "Electrodiagnostic or clinical documentation of femoral mononeuropathy with etiology (compressive, perioperative stretch, inflammatory); pain documentation with distribution, severity scale, and chronology relative to the neuropathy; persistence of pain beyond the expected recovery course if chronic pain is claimed; exclusion of lumbar radiculopathy, peripheral arterial disease, hip osteoarthritis, complex regional pain syndrome, and centralized pain; neurology and pain-medicine assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the batch-30 pain-constitutive case-matching precedent: the documented pain feature supports case matching with the chronic-pain target while the target's competing-generator criteria govern individual claims; no causal claim of primary-pain-syndrome evolution is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Santilli AR, Martinez-Thompson JM, Speelziek SJA, et al. Femoral neuropathy: A clinical and electrodiagnostic review. Muscle Nerve. 2024 Jan;69(1):64-71. PMID 37941415.",
+          "note": "Mayo Clinic review of 159 isolated femoral neuropathy patients: pain presenting in 53%, weakness 96%, only 48% nearly complete or complete recovery with mean 14.8 months to recovery - the identity-and-pain anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37941415/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 37941415; pain 53% at presentation with incomplete recovery share"
+        },
+        {
+          "citation": "Malik KN, Chan J, Vu B. A Case Report of Neuropathic Pain and Unilateral Lower Extremity Weakness Following a Cardiac Arrest. Cureus. 2023 Dec 9;15(12):e50240. PMID 38192939.",
+          "note": "Case report documenting femoral nerve palsy after cardiac intervention presenting with severe neuropathic pain and weakness - the severe-pain-case anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38192939/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38192939; femoral palsy with severe neuropathic pain"
+        },
+        {
+          "citation": "Martinoli C, Miguel-Perez M, Padua L, et al. Imaging of neuropathies about the hip. Eur J Radiol. 2013 Jan;82(1):17-26. PMID 21549536.",
+          "note": "Review documenting that neuropathies about the hip, including femoral distribution, may be a cause of chronic pain and disability - the chronic-pain-outcome anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21549536/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 21549536; hip-region neuropathies as chronic pain cause"
+        }
+      ]
+    }
+  ]
 }

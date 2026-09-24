@@ -2,8 +2,12 @@
   "id": "erythema-induratum",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 30 (2026-09-23): deferred on manifestation-identity and evidence-ground grounds - no edges authored; the identity is retained as a draft with suggestions: [] pending qualified-human governance decision.",
+    "Negative screen recorded 2026-09-23: the targeted NCBI searches for erythema-induratum/nodular-vasculitis outcome evidence (scarring, ulcer complications, lymphedema, tuberculosis association) returned review and pathology-class literature only - no cohort quantifies downstream outcomes attributable to the EI identity itself."
+  ],
+  "governanceNotes": [
+    "D1 batch 30 (2026-09-23): deferred. Erythema induratum/nodular vasculitis is a lobular panniculitis whose ulceration and residual scarring are part of the lesion's own natural course (Borroni 2013 lists ulceration among the diagnostic findings of the entity itself; Carlson 2007 documents the vasculitis-panniculitis pathology), so an outgoing scar-target edge would largely restate the presentation - the same manifestation-identity barrier that closed diplopia (ME-41 pattern). The tuberculosis association runs in the direction tuberculosis -> EI (EI as a tuberculid), so any tuberculosis-linked outcome belongs to the tuberculosis mapping rather than the EI identity (wrong-direction guard), and the Requena 2002 review confirms the reactive-classification framework.",
+    "No catalog identity exists for chronic pretibial ulceration as a distinct entity (the decubitus-ulcers identity is pressure-scoped and clinically discordant), and the lymphedema literature for EI is case-report class without denominators. Reopening condition: cohort evidence of an EI-attributable functional outcome with a catalog-fit target would justify re-screening."
   ],
   "suggestions": []
 }

@@ -2,8 +2,67 @@
   "id": "dysplastic-nevus-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 27 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The skin-cancer target identity is a melanoma/non-melanoma umbrella; the evidence base is nevus-count melanoma risk quantification, so any non-melanoma (keratinocyte-carcinoma) component of the target is not covered by the cited evidence and is recorded as a guard."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 27 (2026-09-23): one bounded skin-cancer-risk association authored from nevus-count melanoma epidemiology; the pooled atypical-nevi relative risk is melanoma-specific, and the umbrella target identity's non-melanoma share is an explicit evidence-scope guard recorded on the edge.",
+    "The risk-factor relationship is a marker-of-risk proposition (nevi as clinical indicators of constitutive and UV-interaction melanoma risk), not a progressive disease pathway; no somatic transformation-of-individual-nevi claim is asserted at the mapping level."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "skin-cancer",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The pooled 46-study meta-analysis found a substantially increased melanoma relative risk with increasing nevus burden (atypical nevi 5 versus 0: RR 6.36, 95% CI 3.80-10.33; 101-120 common nevi versus <15: RR 6.89, 95% CI 4.63-10.25; Gandini 2005), and the Brisbane Naevus Morphology Study quantified the joint effect of high nevus count with MC1R red-hair genotype on melanoma odds (MC1R R/R with >=20 naevi: OR 25.1, 95% CI 8.4-82.7 versus wild-type with 0-4 naevi; absolute risk to age 75 of 23.3% in the highest-risk group; Duffy 2019).",
+        "causationStatus": "The meta-analytic and cohort risk estimates are population-level associations from a risk-marker phenotype, not established causation for an individual lesion: nevus count is a composite marker of melanocytic propensity and sun-exposure history, and the individual pathway from a given dysplastic nevus to a diagnosed melanoma (versus de novo melanoma or an intervening unrelated lesion) cannot be established from these designs; the identity's clinical meaning as a surveillance designation is retained."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "A hypothesized nevus-burden melanoma-risk pathway: an increased number of melanocytic nevi, including cytologically atypical nevi, reflects an expanded population of melanocytes that have acquired or are predisposed to acquire oncogenic changes, so a larger nevus burden raises the statistical probability that melanoma arises in association with the nevus field; the Duffy 2019 genotype analysis shows this risk is multiplicative with inherited MC1R red-hair alleles and high ultraviolet exposure, meaning the nevus phenotype operates as one component of a multifactorial risk state rather than an autonomous causal agent.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The cited evidence quantifies population melanoma risk by nevus count and genotype, not individual lesion-to-tumor causation; whether any diagnosed melanoma arose from a documented dysplastic nevus versus de novo, whether the nevus phenotype is the operative marker in the individual, and how the umbrella target's non-melanoma share relates to the melanoma-specific evidence all require case-specific dermatologic review; no probability estimate is asserted.",
+        "evidenceGaps": "Documented dysplastic-nevus-syndrome phenotype (multiple clinically atypical nevi, histologic confirmation where performed); pathology-confirmed melanoma diagnosis with anatomic and chronologic relationship to the nevus field; dermoscopic or histologic linkage of the melanoma to a specific nevus where claimed; UV-exposure and phenotypic risk-factor documentation; dermatology review of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "De novo melanoma unassociated with any pre-existing nevus",
+          "Melanoma driven by UV-exposure history independent of nevus phenotype",
+          "Keratinocyte (basal- or squamous-cell) carcinoma outside the melanoma evidence scope",
+          "CDKN2A-family melanoma syndrome or other inherited predisposition as the operative driver",
+          "Metastatic or misclassified pigmented lesion not arising in the nevus field"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented dysplastic-nevus-syndrome phenotype (multiple clinically atypical nevi, histologic confirmation where performed); pathology-confirmed melanoma diagnosis with anatomic and chronologic relationship to the nevus field; dermoscopic or histologic linkage of the melanoma to a specific nevus where claimed; UV-exposure and phenotypic risk-factor documentation; dermatology review of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the nevus-count melanoma risk gradient is one of the strongest risk-marker associations in dermatology, but it is a population risk-factor relationship and a surveillance proposition, not an established individual causal pathway; no causation or probability is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Gandini S, Sera F, Cattaruzza MS, et al. Meta-analysis of risk factors for cutaneous melanoma: I. Common and atypical naevi. Eur J Cancer. 2005 Jan;41(1):28-44. PMID 15617989.",
+          "note": "Pooled random-effects meta-analysis of 46 observational studies: atypical nevi 5 versus 0 carried melanoma RR 6.36 (95% CI 3.80-10.33) and 101-120 common naevi versus <15 carried RR 6.89 (95% CI 4.63-10.25); the dose-response anchor for the nevus-count-to-melanoma-risk association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15617989/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 15617989; pooled atypical-nevi and common-naevi dose-response relative risks"
+        },
+        {
+          "citation": "Duffy DL, Lee KJ, Jagirdar K, et al. High naevus count and MC1R red hair alleles contribute synergistically to increased melanoma risk. Br J Dermatol. 2019 Nov;181(5):1009-1016. PMID 30820946.",
+          "note": "Brisbane Naevus Morphology Study (n=1,267): MC1R R/R genotype with >=20 naevi had melanoma OR 25.1 (95% CI 8.4-82.7) and the highest-risk group reached 23.3% absolute melanoma risk to age 75 - the genotype-by-phenotype risk-modification and UV-context guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30820946/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 30820946; MC1R-by-naevus-count synergistic odds ratios"
+        }
+      ]
+    }
+  ]
 }

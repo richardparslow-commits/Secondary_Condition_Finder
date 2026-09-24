@@ -2,8 +2,13 @@
   "id": "carpal-tunnel-syndrome",
   "draft": true,
   "todo": [
+    "D1 draft-authoring batch 26 (2026-09-23): safe-draft disposition reaffirmed after re-screening - no edge authored.",
     "Targeted 2026-08-15 rescreen found a large matched cohort reporting higher subsequent depression and anxiety incidence after carpal tunnel syndrome (PMID 37639884), but the study reports association and explicitly leaves mediating mechanisms unresolved. Keep safe-draft unless stronger evidence supports an individual directional somatopsychic or aggravation pathway rather than population comorbidity.",
     "Do not map carpal tunnel syndrome to median neuropathy, or median neuropathy to carpal tunnel syndrome, merely from terminology: carpal tunnel syndrome is an anatomic median-nerve entrapment phenotype and that relationship is taxonomy/diagnostic overlap rather than a distinct secondary condition."
+  ],
+  "governanceNotes": [
+    "Reaffirmation (2026-09-23, D1 batch 26): the promotion-batch-31 safe-draft disposition stands - the Hidaka matched-cohort association (PMID 37639884) remains association-only with unresolved mediation, and the CTS/median-neuropathy taxonomy rejection is preserved. File-level record added under the corrected per-file disposition convention.",
+    "Note for future batches: the de-quervain-s-tenosynovitis file already carries an inbound ASSOCIATION_ONLY edge into this identity; any new CTS-outgoing authoring must re-check duplicate scope in both directions."
   ],
   "suggestions": []
 }

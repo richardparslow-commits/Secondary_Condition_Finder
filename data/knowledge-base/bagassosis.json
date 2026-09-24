@@ -2,8 +2,68 @@
   "id": "bagassosis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
     "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: bagassosis is a recognized cause of hypersensitivity pneumonitis, but the historic literature is small-case-series based and the fibrotic outcome in chronic hypersensitivity pneumonitis is reviewed at the syndrome level, not for bagassosis specifically; the umbrella catalog identity also cannot substitute for individual exposure and phenotype documentation, so the mapping cannot assert causation or aggravation for any individual."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "interstitial-lung-disease",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Bagassosis is an occupational hypersensitivity pneumonitis caused by thermophilic actinomycetes in molded sugar-cane bagasse, and chronic hypersensitivity pneumonitis from inhaled antigen exposure is reviewed as a fibrotic interstitial lung disease with imaging and pathology descriptions of fibrotic evolution; bagassosis cases are reported within this interstitial-lung-disease spectrum.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the exposure-disease literature for bagassosis consists of historic case series without population denominators, the fibrotic outcome is documented for chronic hypersensitivity pneumonitis generally rather than for bagassosis specifically, and other antigen exposures, idiopathic interstitial pneumonias, and connective-tissue disease must be excluded before any individual attribution."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A hypothesized immune pathway has been described: repeated inhalation of thermophilic-actinomycete antigen from bagasse dust drives an alveolitis mediated by antigen-specific T-cell responses and granulomatous inflammation, and persistent antigen exposure is associated in the chronic-hypersensitivity-pneumonitis literature with centrilobular fibrosis progressing to interstitial fibrosis, but the chronic-fibrotic trajectory is reviewed at the syndrome level and requires individual exposure chronology, antigen identification, and phenotype confirmation before any causal inference, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Bagassosis is described in the occupational and pulmonary literature as a hypersensitivity pneumonitis from bagasse-dust exposure, and chronic hypersensitivity pneumonitis is reviewed as a fibrotic interstitial lung disease; individual determination requires documented bagasse exposure with chronology, characteristic HRCT or histologic phenotype, exclusion of other antigens and idiopathic interstitial pneumonias, and specialist review, none of which the catalog label provides.",
+        "evidenceGaps": "Documented sugar-cane bagasse or similar organic-dust exposure with chronology and duration; HRCT and pulmonary-function documentation of an interstitial-lung-disease phenotype with temporal relationship to exposure; exposure-avoidance response data where available; exclusion of other inhaled antigens (farmer's lung, bird-related, hot-tub lung) and non-HP interstitial pneumonias; histology where obtained; pulmonology opinion connecting the documented findings",
+        "alternativeEtiologiesToRuleOut": [
+          "Other organic-dust hypersensitivity pneumonitis antigens (farmer's lung, avian proteins, metalworking fluids)",
+          "Idiopathic pulmonary fibrosis and other idiopathic interstitial pneumonias",
+          "Connective-tissue-disease-associated interstitial lung disease",
+          "Drug-induced pneumonitis or pneumoconioses from inorganic dust (silicosis, asbestosis)"
+        ],
+        "requiresSpecificDbqEvidence": true
+      },
+      "rationale": "Authored conservatively at association-only strength: bagassosis is a recognized hypersensitivity-pneumonitis syndrome whose chronic form produces fibrotic interstitial lung disease, but the bagassosis-specific evidence base is historic and small, the fibrotic outcome literature is syndrome-level, and the catalog identity cannot substitute for individual exposure and phenotype documentation; this edge flags the pathway for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Occupational and environmental exposure history documenting bagasse or organic-dust contact with chronology",
+        "HRCT and pulmonary-function evidence of the interstitial-lung-disease phenotype and its progression",
+        "Serologic or provocation evidence identifying the inciting antigen where feasible",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Pereira CA, Gimenez A, Kuranishi L, Storrer K. Chronic hypersensitivity pneumonitis. J Asthma Allergy. 2016;9:171-181. PMID 27703382. doi:10.2147/JAA.S81540.",
+          "note": "Review of chronic hypersensitivity pneumonitis as a fibrotic interstitial lung disease including clinical, imaging, and outcome features; supports the bounded syndrome-level proposition and the evidence-gap framing, not automatic individual causation or aggravation for bagassosis specifically.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27703382/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 27703382; chronic-HP natural history and fibrotic evolution discussion"
+        },
+        {
+          "citation": "Buechner HA. Bagassosis. GP. 1967;35(3):108-114. PMID 5609030.",
+          "note": "Historic clinical review describing bagassosis as hypersensitivity pneumonitis from thermophilic-actinomycete-contaminated sugar-cane bagasse; supports the exposure-syndrome identification only; the small historic evidence base is itself a reason this edge remains association-strength.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/5609030/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 5609030; clinical description and exposure relationship"
+        }
+      ]
+    }
+  ]
 }

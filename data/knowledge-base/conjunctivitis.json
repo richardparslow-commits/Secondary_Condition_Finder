@@ -2,8 +2,81 @@
   "id": "conjunctivitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 18 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The scar anchor is adenoviral-EKC-specific (subepithelial infiltrates); ordinary bacterial and allergic conjunctivitis rarely scar the cornea, so the edge must not be read as applying to all conjunctivitis - keep the adenoviral anchor explicit when reviewing."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: the subepithelial-infiltrate pathway is documented for adenoviral keratoconjunctivitis specifically, while the catalog conjunctivitis identity spans viral, bacterial, and allergic etiologies that differ sharply in corneal behavior; no cohort reports scarring incidence across the full conjunctivitis population.",
+    "Reversibility guard recorded: the adenoviral literature describes subepithelial infiltrates as difficult-to-treat but also frequently resolving (immune deposits on Bowman layer rather than true stromal scarring), so persistence to permanent opacity must be individually documented; steroid-use complication risk noted in the source literature."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "corneal-scarring",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The adenoviral-keratoconjunctivitis review records that viral protein remnants on Bowman layer provoke an immune reaction forming subepithelial infiltrates, described as the major sequelae and difficult to treat (Renard 2010); the update review confirms keratitis nummularis as the corneal manifestation of adenoviral infection (Gonzalez-Lopez 2013); the mechanism study resolves the pathway - HMGB1 secreted by infected corneal epithelial cells induces leukocytic infiltrates directly and via stimulated stromal cells, explaining subepithelial infiltrate formation in epidemic keratoconjunctivitis (Saha 2025).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the scar pathway is documented for adenoviral EKC specifically rather than conjunctivitis broadly, subepithelial infiltrates often resolve rather than persisting as permanent scarring, no cohort reports permanent-opacity incidence after conjunctivitis, and unrelated corneal disease produces identical scarring - so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "An immune-mediated corneal-involvement pathway is documented for adenoviral keratoconjunctivitis: viral protein retention on Bowman layer triggers an immune reaction forming subepithelial infiltrates, with the HMGB1-alarmin mechanism now experimentally resolved; whether infiltrates persist as permanent opacity varies individually. The pathway is adenovirus-specific, so no directional claim is made at the conjunctivitis level.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Corneal subepithelial infiltrates are a recognized adenoviral-EKC sequelae; individual determination requires documentation of the adenoviral episode with chronology, corneal findings localizing the opacity, exclusion of other corneal disease, and review by a qualified medical professional.",
+        "evidenceGaps": "documentation of the conjunctivitis episode(s) with etiology where available (adenoviral/EKC, bacterial, other) and chronology; corneal examination findings localizing the scarring (subepithelial infiltrates, stromal opacity) with laterality; exclusion of prior trauma, herpetic keratitis, contact-lens pathology, and degenerations; treatment history including topical-steroid use; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Herpes simplex keratitis scarring (misremembered as conjunctivitis)",
+          "Trauma, corneal abrasion, or contact-lens-related scarring",
+          "Pre-existing corneal degenerations and dystrophies",
+          "Topical-steroid or medication toxicity effects during treatment",
+          "Bacterial or allergic conjunctivitis without corneal involvement (the majority)"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the subepithelial-infiltrate pathway is well documented for adenoviral EKC with the mechanism experimentally resolved, but the edge records the association without a causal claim because infiltrates often resolve and the conjunctivitis identity spans etiologies that rarely scar.",
+      "sourceReferences": [
+        {
+          "citation": "Renard G. [Adenoviral keratoconjunctivitis]. J Fr Ophtalmol. 2010;33(8):586-592. PMID 20724026. doi:10.1016/j.jfo.2010.07.003.",
+          "note": "Adenoviral keratoconjunctivitis review: viral protein remnants on Bowman layer provoke immune-reaction subepithelial infiltrates, described as the major difficult-to-treat sequelae; the scar-pathway anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20724026/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 20724026; results and conclusions"
+        },
+        {
+          "citation": "Gonzalez-Lopez JJ, Morcillo-Laiz R, Munoz-Negrete FJ. Adenoviral keratoconjunctivitis: an update. Arch Soc Esp Oftalmol. 2013;88(3):108-115. PMID 23473088. doi:10.1016/j.oftal.2012.07.007.",
+          "note": "Update review confirming keratitis nummularis as the corneal manifestation of adenoviral infection; the clinical-recognition anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23473088/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 23473088; results and conclusions"
+        },
+        {
+          "citation": "Saha A, Islam MM, Kumar R, Ismail AM, Garcia E, Gullapali RR, Chodosh J, Rajaiya J. Virus and cell specific HMGB1 secretion and subepithelial infiltrate formation in adenovirus keratitis. PLoS Pathog. 2025;21(5):e1013184. PMID 40367285. doi:10.1371/journal.ppat.1013184.",
+          "note": "Mechanism study resolving SEI formation: HMGB1 secreted by infected corneal epithelial cells induces leukocytic infiltrates directly and via stromal chemokine stimulation; the experimental-mechanism anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40367285/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 40367285; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "documentation of the conjunctivitis episode(s) with etiology where available (adenoviral/EKC, bacterial, other) and chronology",
+        "corneal examination findings localizing the scarring (subepithelial infiltrates, stromal opacity) with laterality",
+        "exclusion of prior trauma, herpetic keratitis, contact-lens pathology, and degenerations",
+        "treatment history including topical-steroid use",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

@@ -2,8 +2,77 @@
   "id": "eosinophilic-bronchitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 28 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: long-term follow-up treats NAEB as a distinct entity rather than an early stage of asthma (Lai 2017/2018), and CT geometry shows no wall thickening in NAEB (Siddiqui 2009) - the edge is held at ASSOCIATION_ONLY on this counter-evidence and would require prospectively documented progression rates to be revisited."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 28 (2026-09-23): one bounded asthma association authored from the shared-eosinophilic-inflammation literature with the distinct-entity literature recorded as a live guard; the asthma target already carries six incoming edges from distinct mechanisms (churg-strauss-syndrome, nasal-polyps, gerd, bronchiolitis, allergic-rhinitis, atopic-dermatitis-eczema), and this edge adds a separate eosinophilic-airway-inflammatory pathway, not a restatement of any existing one.",
+    "The asthma target is used rather than the plural or variant identities; no cough-variant-asthma edge is authored because CVA is defined by bronchial hyperresponsiveness that NAEB lacks by definition (identity-mismatch guard, ME-41 pattern)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "asthma",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Non-asthmatic eosinophilic bronchitis and eosinophilic asthma share the same sputum-eosinophilic airway inflammation and corticosteroid responsiveness while differing in airflow obstruction and bronchial hyperresponsiveness (Lai 2017/2018 review); NAEB patients show elevated airway eosinophil progenitors comparable to eosinophilic asthma (Zhan 2022), and transcriptomic work links FCN1+ macrophage activation to airway remodeling across eosinophilic airway disease (Wu 2024).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the long-term follow-up literature treats NAEB as a distinct entity rather than an early stage of asthma, CT imaging shows maintained airway patency without wall thickening in NAEB (Siddiqui 2009), and no prospective progression-rate evidence demonstrates that EB causes later asthma; the shared inflammation could as easily reflect a common eosinophilic diathesis."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A hypothesized eosinophilic-airway-progression pathway: sustained airway eosinophilic inflammation with elevated eosinophil progenitors releases cationic proteins, leukotrienes, and profibrotic mediators that over time could induce basement-membrane thickening, airway smooth-muscle changes, and bronchial hyperresponsiveness - the phenotype shift that would define asthma; the cited imaging and follow-up evidence shows this transition neither occurs in most patients nor produces the geometric remodeling of asthmatic airways, so the pathway remains an unproven subset hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The two conditions share inflammatory biology, but the natural-history evidence on record contests rather than supports progression: no cohort quantifies EB-to-asthma transition rate, airway geometry and clinical follow-up weigh against an early-asthma reading, and a new asthma diagnosis after EB requires documented variable airflow obstruction or bronchial hyperresponsiveness, not eosinophilia alone; no probability estimate is asserted.",
+        "evidenceGaps": "Documented NAEB by induced-sputum eosinophilia without bronchial hyperresponsiveness at index; subsequent asthma diagnosis by documented variable airflow obstruction or positive bronchoprovocation with chronology; serial spirometry or FeNO trend; exclusion of antecedent or misdiagnosed asthma at the EB index; smoking and occupational exposure review; pulmonology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Cough-variant asthma misdiagnosed as NAEB at the index evaluation",
+          "Antecedent asthma in remission rather than new-onset disease",
+          "Occupational or irritant-induced airway disease from workplace exposure",
+          "GERD or upper-airway cough syndrome driving cough independent of asthma",
+          "COPD or chronic bronchitis with fixed obstruction"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented NAEB by induced-sputum eosinophilia without bronchial hyperresponsiveness at index; subsequent asthma diagnosis by documented variable airflow obstruction or positive bronchoprovocation with chronology; serial spirometry or FeNO trend; exclusion of antecedent or misdiagnosed asthma at the EB index; smoking and occupational exposure review; pulmonology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the shared eosinophilic biology is well documented, but the distinct-entity follow-up literature and the absence of remodeling on CT cap the claim; progression remains an unproven subset hypothesis and no causation is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Lai K, Chen R, Peng W, Zhan W. Non-asthmatic eosinophilic bronchitis and its relationship with asthma. Pulm Pharmacol Ther. 2017 Dec;47:66-71. PMID 28687463.",
+          "note": "Review of the NAEB-asthma relationship: NAEB shares eosinophilic airway inflammation and corticosteroid responsiveness with asthma but lacks airflow obstruction and bronchial hyperresponsiveness; long-term follow-up supports NAEB as a distinct entity rather than an early stage of asthma, with high relapse after treatment - the shared-biology anchor and the distinct-entity guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28687463/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 28687463; distinct-entity long-term follow-up discussion"
+        },
+        {
+          "citation": "Zhan C, Xu R, Li B, et al. Eosinophil Progenitors in Patients With Non-Asthmatic Eosinophilic Bronchitis, Eosinophilic Asthma, and Healthy Controls. Front Immunol. 2022;13:737968. PMID 35432356.",
+          "note": "Case-control flow-cytometry study (NAEB n=15, eosinophilic asthma n=15, controls n=14): NAEB airway eosinophil-progenitor levels comparable to eosinophilic asthma - the shared-biology mechanistic anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35432356/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 35432356; NAEB versus eosinophilic-asthma progenitor comparison"
+        },
+        {
+          "citation": "Siddiqui S, Gupta S, Cruse G, et al. Airway wall geometry in asthma and nonasthmatic eosinophilic bronchitis. Allergy. 2009 Jun;64(6):951-958. PMID 19210350.",
+          "note": "CT airway-geometry study (10 NAEB, 26 asthma, 11 controls): NAEB shows maintained airway patency without wall thickening in contrast to asthma - the remodeling-absence counter-evidence capping the progression pathway.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19210350/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 19210350; NAEB airway-geometry comparison against asthma"
+        }
+      ]
+    }
+  ]
 }

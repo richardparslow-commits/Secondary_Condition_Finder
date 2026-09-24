@@ -1,9 +1,82 @@
 {
-  "id": "circadian-rhythm-sleep-wake-phase-disorders",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review psychiatric, neuropsychiatric, medication-related, and sleep-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "circadian-rhythm-sleep-wake-phase-disorders",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 12 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "The chronotype-depression association is cross-sectional with bidirectional-plausible mechanisms; if a qualified human finds longitudinal bidirectional-cohort data separating circadian phase from sleep debt, a higher tier may be appropriate."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: chronotype and circadian-disruption associations with depressive symptoms are documented across reviews and cohorts (Zou 2022; Bruni 2025; Che 2023; Meyer 2022), but the evidence is cross-sectional or review class without onset ordering, and behavioral and environmental confounding (light exposure, social schedules, sleep debt) is pervasive and acknowledged in the Lancet Series itself, so no directional claim is supportable at the mapping level.",
+  "Identity boundary recorded: mood symptoms commonly comorbid with circadian disorders are a distinct ratable condition; the edge must not be read as the circadian diagnosis restating sleep-fragmentation consequences of a mood disorder (bidirectionality is explicitly preserved as a competing explanation)."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "depressive-disorder",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The chronotype review documents that the evening chronotype is a risk factor for depressive disorders, with clock genes, neuroendocrinology, and light/dark-cycle mechanisms described (Zou 2022); the neurodevelopmental review documents sleep and circadian disturbances, including circadian rhythm disorders, closely linked to internalizing symptoms such as anxiety and depression (Bruni 2025); the adolescent review documents close association between circadian rhythm disorder and comorbidity of anxiety and depression (Che 2023); the Lancet Series on circadian rhythm sleep-wake disorders notes consequences of disturbed alignment for mental health while emphasizing that not all disruption is driven by underlying circadian disturbance (Meyer 2022).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the association evidence is cross-sectional or review class without longitudinal onset ordering, bidirectionality is plausible (depressive illness also disrupts sleep timing), and behavioral and environmental factors (light exposure, schedules, sleep debt) confound the circadian-specific attribution, as the Lancet Series itself emphasizes, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+    "primaryVector": "A circadian-neuroendocrine pathway is hypothesized: misalignment between the endogenous circadian pacemaker and the environmental light/dark and social cycle desynchronizes melatonin and cortisol rhythms, alters monoaminergic neurotransmission, and fragments sleep; the cumulative neuroendocrine and sleep-disruption burden plausibly lowers mood-regulation reserve and facilitates depressive symptomatology, while clock-gene polymorphisms documented in the chronotype literature provide a shared-biology substrate. The mechanism is plausible and mechanism-discussed, but longitudinal directionality is unproven, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Circadian disorders and depressive disorders co-occur at elevated rates with plausible shared mechanisms, but individual determination requires psychiatric diagnostic documentation with chronology relative to the circadian disturbance, objective circadian-phase measurement, and review by a qualified medical professional.",
+    "evidenceGaps": "Psychiatric diagnostic evaluation documenting the depressive disorder and its chronology relative to circadian-symptom onset; objective circadian-phase documentation (actigraphy, sleep diary, dim-light melatonin onset where available); workup excluding primary mood disorder with secondary sleep disruption, obstructive sleep apnea, medication or substance effects, and shift-work confounding; treatment-response records correlating circadian realignment with mood course; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Primary depressive disorder with secondary sleep-timing disruption (bidirectionality)",
+     "Obstructive sleep apnea with fragmented sleep mimicking circadian disorder",
+     "Shift work or irregular schedule misalignment",
+     "Medication, caffeine, or substance effects on sleep timing",
+     "Delayed behavior without intrinsic circadian-phase abnormality"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the comorbidity is well documented with mechanism discussion, but directionality is unproven and confounding pervasive; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "sourceReferences": [
+    {
+     "citation": "Zou H, Zhou H, Yan R, Yao Z, Lu Q. Chronotype, circadian rhythm, and psychiatric disorders: Recent evidence and potential mechanisms. Front Neurosci. 2022;16:811771. PMID 36033630. doi:10.3389/fnins.2022.811771.",
+     "note": "Narrative review documenting the evening chronotype as a risk factor for depressive disorders, with clock-gene, neuroendocrine, and light/dark-cycle mechanisms described; association-level evidence without longitudinal onset ordering.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36033630/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 36033630; abstract findings (1)-(5)"
+    },
+    {
+     "citation": "Bruni O, Breda M, Mammarella V, Mogavero MP, Ferri R. Sleep and circadian disturbances in children with neurodevelopmental disorders. Nat Rev Neurol. 2025;21(2):103-120. PMID 39779841. doi:10.1038/s41582-024-01052-9.",
+     "note": "Review documenting circadian rhythm disorders among the sleep disturbances closely linked to internalizing symptoms including anxiety and depression, with neurotransmitter, hormonal, and inflammatory mechanisms discussed.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39779841/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 39779841; abstract"
+    },
+    {
+     "citation": "Meyer N, Harvey AG, Lockley SW, Dijk DJ. Circadian rhythms and disorders of the timing of sleep. Lancet. 2022;400(10357):1061-1078. PMID 36115370. doi:10.1016/S0140-6736(22)00877-7.",
+     "note": "Lancet Series review of circadian rhythm sleep-wake disorders noting mental-health consequences of disturbed alignment while explicitly cautioning that not all disruption is driven by underlying circadian disturbance; framework support with built-in confounding caveat.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36115370/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 36115370; abstract"
+    }
+   ],
+   "evidenceGaps": [
+    "Psychiatric diagnostic evaluation documenting the depressive disorder and its chronology relative to circadian-symptom onset",
+    "Objective circadian-phase documentation (actigraphy, sleep diary, dim-light melatonin onset where available)",
+    "Workup excluding primary mood disorder with secondary sleep disruption, obstructive sleep apnea, medication or substance effects, and shift-work confounding",
+    "Treatment-response records correlating circadian realignment with mood course",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ]
+  }
+ ]
 }

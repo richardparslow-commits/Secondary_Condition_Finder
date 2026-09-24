@@ -1,9 +1,83 @@
 {
-  "id": "dandy-walker-syndrome",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "dandy-walker-syndrome",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 19 (2026-09-23): draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Congenital-malformation edge: the nexus theory of the claim is the mechanical CSF-flow obstruction pathway; service-connection theory (in-service onset/aggravation) is a separate legal question the mapping does not address."
+ ],
+ "governanceNotes": [
+  "Authored at DIRECT_CAUSATION with PROBABLE consensus and hypothesizedOnly:false following the urethral-stricture -> hydronephrosis obstruction precedent: the posterior-fossa cystic malformation with vermian hypoplasia obstructs CSF flow and produces hydrocephalus; the largest dedicated reviews (Spennato 2011; Ocampo-Navia 2025) and the surgical series (hydrocephalus in 100% of 70 presenting patients) anchor the pathway.",
+  "Penetrance guard recorded in-file: not every Dandy-Walker malformation develops progressive hydrocephalus (phenotypic spectrum runs from asymptomatic mega cisterna magna to classic DWM), so the claim is scoped to documented hydrocephalus in an individual with the malformation, with the temporal/progressive course documented.",
+  "Treatment-interruption guard: shunting or endoscopic third ventriculostomy controls the dilatation; post-treatment ventricular size alone does not establish the pre-treatment course, which must be documented from imaging chronology."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "hydrocephalus",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "DIRECT_CAUSATION",
+    "etiologicalTrigger": "Documented Dandy-Walker malformation (posterior-fossa cyst communicating with the fourth ventricle with vermian hypoplasia) -> obstructed CSF flow from the posterior fossa -> claimed hydrocephalus."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+    "primaryVector": "A CSF-flow-obstruction pathway: the enlarged posterior-fossa cyst and vermian malformation impair outflow and resorption dynamics of cerebrospinal fluid, producing dilatation of the supratentorial ventricular system; this is the presenting feature in the large presenting cohorts and the target of definitive management (ventriculoperitoneal or cystoperitoneal shunting, endoscopic third ventriculostomy). Not every malformation phenotype progresses to shunt-requiring hydrocephalus, so individual imaging chronology remains required.",
+    "hypothesizedOnly": false
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "PROBABLE",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "The pathway is the established mechanical consequence of the malformation and the malformation-hydrocephalus relationship is the defining clinical feature of the syndrome in the dedicated literature, including a 70-patient series with 100% presentation; penetrance variability is recorded as a guard rather than a classification downgrade. Etiological consensus is PROBABLE for the scoped mechanical claim.",
+    "evidenceGaps": "neuroimaging (MRI) documenting the Dandy-Walker phenotype (vermian hypoplasia, cystic fourth-ventricle dilatation, enlarged posterior fossa); ventricular-size documentation with chronology establishing hydrocephalus and its progression; neurosurgical evaluation records; documentation of treatment (shunt/ETV) where performed",
+    "alternativeEtiologiesToRuleOut": [
+     "Isolated ventriculomegaly without the Dandy-Walker phenotype",
+     "Aqueductal stenosis as an independent cause",
+     "Post-hemorrhagic or post-infectious hydrocephalus",
+     "Blake's pouch cyst or mega cisterna magna variants without hydrocephalus"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored at DIRECT_CAUSATION: the CSF-flow obstruction is the established mechanism, the relationship defines the syndrome's presentation in cohort data, and the claim is scoped to documented hydrocephalus with imaging chronology; hypothesizedOnly is false.",
+   "sourceReferences": [
+    {
+     "citation": "Ocampo-Navia MI, Perez-Mendez W, Rodriguez-Alvarez MP, Chadid-Contreras J, Vergara MF. Dandy-Walker syndrome: an updated literature review. Childs Nerv Syst. 2025;41(1):194. PMID 40445443. doi:10.1007/s00381-025-06842-0.",
+     "note": "Updated review: DWS occurs in 1 in 25,000-35,000 live births and often presents with hydrocephalus and other CNS anomalies; management involves treating hydrocephalus, and prognosis hinges on associated malformations.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40445443/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 40445443; abstract (hydrocephalus presentation, management, prognosis)"
+    },
+    {
+     "citation": "Spennato P, Mirone G, Nastro A, Buonocore MC, Ruggiero C, Trischitta V, Aliberti F, Cinalli G. Hydrocephalus in Dandy-Walker malformation. Childs Nerv Syst. 2011;27(10):1665-1681. PMID 21928031. doi:10.1007/s00381-011-1544-4.",
+     "note": "Definitive review dedicated to the hydrocephalus-DWM relationship: therapeutic control of hydrocephalus (single shunting of ventricle or cyst, or endoscopic third ventriculostomy) is effective, and prognosis and intellectual outcome depend on associated malformations and the adequate control of hydrocephalus.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21928031/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 21928031; conclusion (hydrocephalus control determines outcome)"
+    },
+    {
+     "citation": "Bokhari I, Rehman L, Hassan S, Hashim MS. Dandy-Walker Malformation: A Clinical and Surgical Outcome Analysis. J Coll Physicians Surg Pak. 2015;25(6):431-433. PMID 26100996.",
+     "note": "Surgical case series (n=70): hydrocephalus was present in all patients as the predominant presenting feature; shunt malfunction and infection were the commonest post-treatment complications.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26100996/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 26100996; results (hydrocephalus in 100% of presenting cohort)"
+    }
+   ],
+   "evidenceGaps": [
+    "neuroimaging (MRI) documenting the Dandy-Walker phenotype (vermian hypoplasia, cystic fourth-ventricle dilatation, enlarged posterior fossa)",
+    "ventricular-size documentation with chronology establishing hydrocephalus and its progression",
+    "neurosurgical evaluation records",
+    "documentation of treatment (shunt/ETV) where performed",
+    "MRI-documented malformation phenotype",
+    "ventricular-dilatation documentation with progression chronology",
+    "neurosurgical assessment"
+   ]
+  }
+ ]
 }

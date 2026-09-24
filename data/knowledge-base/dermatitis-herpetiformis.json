@@ -1,9 +1,13 @@
 {
-  "id": "dermatitis-herpetiformis",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "dermatitis-herpetiformis",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 20 (2026-09-23): identity deferred - DH is a specific cutaneous manifestation of celiac disease, so an outgoing edge would restate the identity; recorded as a deferral per the repo's deferral convention.",
+  "The meaningful CRG edge is celiac-disease -> dermatitis-herpetiformis (gluten-driven IgA-tissue-transglutaminase deposition in papillary dermis; GeneReviews lists DH among celiac manifestations; the 1:8 DH:CD prevalence ratio is in the Reunala 2021 cohort reviewed for this batch). That edge belongs to the celiac-disease mapping, not to this draft; no suggestion is authored here."
+ ],
+ "governanceNotes": [
+  "Direction finding (Rybak-d'Obyrn 2022, PMID 35369614; GeneReviews celiac 2008/updated 2025, PMID 20301720): dermatitis herpetiformis is currently considered a specific cutaneous manifestation of celiac disease - an autoimmune bullous disease linked to gluten sensitivity where exposure to gluten initiates the IgA immune-complex cascade ending in papillary-dermis deposition. Authored edges run cause-to-effect; authoring DH -> anything-cliac would invert the documented direction, and DH -> downstream candidates (chronic pruritus, post-inflammatory pigment change, dapsone-related morbidity) lack catalog identities.",
+  "Sources inspected and verified on NCBI this batch but NOT cited in any edge (no edge authored): PMID 35369614 (etiology review), PMID 20301720 (GeneReviews celiac manifestations including DH, fertility issues, and dental enamel hypoplasia). These remain available to the human verifier if the celiac-disease file's owners later author the celiac -> DH edge."
+ ],
+ "suggestions": []
 }

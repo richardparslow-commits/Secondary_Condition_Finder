@@ -2,7 +2,70 @@
   "id": "brain-cancer",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with brain-cancer-specific clinical evidence; prior generic depression and medication-to-GERD pathways lacked direct supporting citations."
+    "D1 draft-authoring batch (2026-09-22): draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Review tumor-epileptogenic, treatment-related, and comorbidity pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "This is the batch's one DIRECT_CAUSATION edge: tumor-associated seizures are a symptomatic manifestation of intracranial tumor biology, not a statistical comorbidity. The draft-quarantine and human verification requirements are identical to the association edges; the stronger classification rests entirely on the source review surviving qualified-human verification."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored as DIRECT_CAUSATION with PROBABLE consensus: neuro-oncology literature documents seizures as a direct symptomatic manifestation of glioblastoma tumor biology (molecular mechanisms including increased glutamate release, ion-channel dysfunction, and inflammatory disruption of surrounding neurons), with seizure prevalence across glioma populations among the highest of any secondary-cause epilepsy etiology; this is mechanistic symptom production rather than population correlation, so the association-only guardrail does not apply.",
+    "Conservatism boundaries preserved despite the direct classification: the edge requires tumor-confirmed diagnosis and electroclinically characterized seizures with chronology, excludes preexisting epilepsy and non-tumor drivers, and leaves individual case determination to a qualified medical professional; it does not assert any VA nexus probability for any claimant, only that the mapping-level evidence supports the at-least-as-likely-as-not framework where the individual clinical facts support it.",
+    "Duplicate-scope check: brain-tumors (the other catalog identity) already holds a seizure-disorder edge authored at ASSOCIATION_ONLY in an earlier batch; this brain-cancer edge is identity-specific to the glioblastoma primary per the duplicate-identity convention — separate files, separate scopes, no cross-contamination of the earlier identity's records."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "seizure-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Brain cancer (glioblastoma and related glial tumors) → tumor-driven cortical disruption (glutamate excitotoxicity, ion-channel dysfunction, inflammatory tumor microenvironment) → electroclinically characterized seizures; seizures are a direct symptomatic manifestation of the tumor rather than a co-occurring condition, with chronology and tumor-confirmed diagnosis required in every case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "The tumor-epileptogenic mechanism is established in the neuro-oncology literature: glioblastoma and related glial tumors disrupt surrounding cortex through increased glutamate release, ion-channel dysfunction, genetic alterations, and inflammatory signaling within the tumor microenvironment, producing spontaneous electrographic and clinical seizures; reviews report tumor-associated epilepsy as a common presenting and disease-course manifestation with molecular pathways increasingly characterized, and symptomatic seizure control through surgery, radiotherapy, chemotherapy, and antiseizure drugs further demonstrates the tumor-driven physiology. Chronology, tumor confirmation, and electroclinical characterization remain required in every individual case, and preexisting epilepsy or non-tumor drivers must be excluded by a qualified medical professional.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "The mapping-level evidence supports a direct causation framework: tumor-associated seizures are a recognized symptomatic manifestation of glioblastoma biology with characterized molecular mechanisms, consistent with an at-least-as-likely-as-not determination in an individual where neuro-oncology documentation confirms the tumor diagnosis with chronology before or concurrent with electroclinically characterized seizures. Individual determination additionally requires exclusion of preexisting epilepsy, prior traumatic brain injury sequelae, metabolic provocation, and non-tumor structural causes, all reviewed case by case by a qualified medical professional; this mapping does not assert any probability for any specific claimant.",
+        "evidenceGaps": "Neuro-oncology documentation of the brain-cancer diagnosis (imaging and, where performed, histopathology) with chronology; electroclinical characterization of the seizures (EEG, seizure semiology, neurologist assessment) with onset dates relative to the tumor; treatment records separating tumor-driven from treatment-driven seizure change; exclusion workup for preexisting epilepsy and competing structural, metabolic, and toxic causes; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Preexisting epilepsy unrelated to the tumor",
+          "Prior traumatic brain injury, stroke, or other structural cause of seizures",
+          "Metabolic or toxic provocation (medication, withdrawal, infection) independent of tumor biology",
+          "Treatment-related seizure contribution (post-surgical, radiotherapy, chemotherapy effects) rather than tumor-driven seizure activity"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored at direct-causation strength on mechanistic and clinical grounds: the cited reviews document seizures as a common symptomatic manifestation of glioblastoma with characterized tumor-driven mechanisms, so this edge represents symptom production by the primary condition rather than statistical comorbidity; the classification must nevertheless survive qualified-human citation verification before any promotion, and individual claims still require tumor confirmation, electroclinical characterization, chronology, and competing-cause exclusion.",
+      "evidenceGaps": [
+        "Neuro-oncology-documented brain-cancer diagnosis with chronology",
+        "Electroclinically characterized seizures with onset dates relative to the tumor",
+        "Exclusion workup for preexisting epilepsy and competing causes",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Scheffel TB, Diz FM, Wieck A, Begnini KR, da Costa JC. The molecular landscape of glioblastoma-associated epilepsy. J Mol Med (Berl). 2025;103(8):923-933. PMID 40576825. doi:10.1007/s00109-025-02567-4.",
+          "note": "Review of glioblastoma-associated epilepsy documenting seizures as a common symptom reflecting tumor microenvironment interactions, with molecular mechanisms including increased glutamate release, ion-channel dysfunction, inflammation, and shared synaptic and immune pathways; supports the direct tumor-driven seizure mechanism, not a statistical comorbidity framing.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40576825/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 40576825; molecular-mechanism review results"
+        },
+        {
+          "citation": "Kerkhof M, Benit C, Duran-Pena A, Vecht CJ. Seizures in oligodendroglial tumors. CNS Oncol. 2015;4(5):347-356. PMID 26478444. doi:10.2217/cns.15.29.",
+          "note": "Review reporting epilepsy development in more than 70 to 90 percent of oligodendroglial tumors with glutamate and GABA metabolism alterations implicated in glioma-associated epilepsy and seizure outcomes after surgery, radiotherapy, and chemotherapy; supports the tumor-driven seizure physiology within the glial-tumor spectrum, not individual claim determination.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26478444/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 26478444; epilepsy prevalence and mechanism discussion"
+        }
+      ]
+    }
+  ]
 }

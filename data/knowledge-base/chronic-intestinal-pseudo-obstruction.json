@@ -1,9 +1,82 @@
 {
-  "id": "chronic-intestinal-pseudo-obstruction",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "chronic-intestinal-pseudo-obstruction",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 11 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "The nutrition-maintenance literature makes malnutrition a management target of CIPO; if a qualified human finds cohort prevalence data (e.g., HPN-dependence rates in CIPO intestinal-failure registries), a higher tier may be appropriate."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: the CIPO literature names malnutrition as a key complication and the management literature is organized around preventing it (Downes 2018; Billiauws 2014; ESPEN 2021), but the evidence base is review and guideline class without population prevalence denominators for CIPO-specific malnutrition, so no directional claim beyond co-occurrence is supportable at the mapping level.",
+  "Mechanism-category boundary recorded: the edge is categorized METABOLIC_OR_NUTRITIONAL because the outcome is a nutritional-deficiency state driven by failed intestinal absorption and intake; the CIPO diagnosis itself is defined by motility failure, so the edge must not be read as restating the phenotype (the ME-41 barrier)."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "malnutrition-residuals",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The comprehensive CIPO pathophysiology-and-management review names malnutrition and small intestinal bacterial overgrowth as the complications requiring prompt recognition and treatment, with management directed at maintaining adequate nutrition (Downes 2018); the dysmotility nutritional-approach review states the main goals of CIPO management are to improve propulsion and maintain adequate nutrition status, with home parenteral nutrition a frequently used, high-dependence therapy and CIPO now a significant cause of chronic intestinal failure (Billiauws 2014); the ESPEN practical guideline for chronic intestinal failure, which includes CIPO-related intestinal failure, devotes 112 recommendations to nutrition management including home parenteral nutrition and its complications (Cuerda 2021).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the evidence is review and guideline class organized around management targets rather than cohort-measured prevalence of malnutrition in CIPO populations, secondary etiologies (systemic disease, post-surgical, neuropathic) confound the attribution, and individual nutritional status depends on intake, absorption, and treatment access, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+    "primaryVector": "A failed-absorption-and-intake pathway is hypothesized: CIPO's impairment of coordinated propulsive activity produces stasis, early satiety and intolerable distension that limit oral intake, while bacterial overgrowth of static luminal contents impairs mucosal absorption; the combination drives progressive macronutrient, micronutrient, fluid, and electrolyte deficits that culminate in the malnutrition the management literature exists to prevent, and in severe cases chronic intestinal failure requiring home parenteral nutrition. The mechanism is physiologically coherent and consistently described, but prevalence denominators for CIPO-specific malnutrition are absent from the identified literature, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Malnutrition is a named, management-defining complication of CIPO in reviews and guidelines, but individual determination requires objective nutritional assessment with chronology relative to the dysmotility, exclusion of independent causes, and review by a qualified medical professional.",
+    "evidenceGaps": "Objective nutritional assessment (weight trajectory, BMI, labs including prealbumin and micronutrient panels) with chronology relative to CIPO onset and flares; documentation of CIPO diagnosis and severity (manometry, imaging, transit studies) and of any parenteral-nutrition dependence; workup excluding independent malnutrition causes (celiac disease, inflammatory bowel disease, malignancy, chronic pancreatitis); dietary-intake and absorption records; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Celiac disease or other primary malabsorption syndromes",
+     "Inflammatory bowel disease with independent malabsorption",
+     "Malignancy-associated cachexia",
+     "Chronic pancreatitis or pancreatic insufficiency",
+     "Dietary insufficiency or eating disorder independent of dysmotility"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the complication relationship is management-defining in the CIPO literature, but the evidence is review-and-guideline class without prevalence denominators and secondary etiologies confound attribution; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "sourceReferences": [
+    {
+     "citation": "Downes TJ, Cheruvu MS, Karunaratne TB, De Giorgio R, Farmer AD. Pathophysiology, Diagnosis, and Management of Chronic Intestinal Pseudo-Obstruction. J Clin Gastroenterol. 2018;52(6):477-489. PMID 29877952. doi:10.1097/MCG.0000000000001047.",
+     "note": "Comprehensive CIPO review naming malnutrition and small intestinal bacterial overgrowth as complications requiring prompt recognition, with management directed at maintaining adequate nutrition and electrolyte balance; establishes the complication relationship at review level.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29877952/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 29877952; abstract complications and management"
+    },
+    {
+     "citation": "Billiauws L, Corcos O, Joly F. Dysmotility disorders: a nutritional approach. Curr Opin Clin Nutr Metab Care. 2014;17(5):483-488. PMID 25023191. doi:10.1097/MCO.0000000000000095.",
+     "note": "Nutritional-management review of CIPO: goals are improving propulsion and maintaining nutrition status; home parenteral nutrition is frequently used with high dependence, and CIPO is a significant cause of chronic intestinal failure; supports the pathway without prevalence denominators.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25023191/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 25023191; abstract"
+    },
+    {
+     "citation": "Cuerda C, Pironi L, Arends J, et al. ESPEN practical guideline: Clinical nutrition in chronic intestinal failure. Clin Nutr. 2021;40(9):5196-5220. PMID 34479179. doi:10.1016/j.clnu.2021.07.002.",
+     "note": "ESPEN guideline (112 recommendations) for chronic intestinal failure management including home parenteral nutrition and complications; documents the clinical framework in which CIPO-related nutritional failure is managed, guideline class without CIPO-specific prevalence data.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34479179/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 34479179; abstract"
+    }
+   ],
+   "evidenceGaps": [
+    "Objective nutritional assessment (weight trajectory, BMI, labs including prealbumin and micronutrient panels) with chronology relative to CIPO onset and flares",
+    "Documentation of CIPO diagnosis and severity (manometry, imaging, transit studies) and of any parenteral-nutrition dependence",
+    "Workup excluding independent malnutrition causes (celiac disease, inflammatory bowel disease, malignancy, chronic pancreatitis)",
+    "Dietary-intake and absorption records",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ]
+  }
+ ]
 }

@@ -47,9 +47,78 @@ if (srcRegistry.status !== "AUTHORITATIVE-CURRENT-STATE") fail("Source registry 
 if (relRegistry.baselineCommit !== expectedBaseline || srcRegistry.baselineCommit !== expectedBaseline) fail("Registry baseline mismatch.");
 
 const relById = new Map(relRegistry.relationships.map((r) => [r.relationshipId, r]));
-if (relById.size !== 363) fail(`Expected 363 master relationships, found ${relById.size}.`);
+// D1 batch 19 (2026-09-23): cyclic-vomiting-syndrome -> migraine-headaches/depressive-disorder/
+// esophagitis (association with reverse-direction/acute-tear guards); cystitis-or-neurogenic-bladder
+// -> hydronephrosis (second obstruction-mechanical DIRECT_CAUSATION, urethral-stricture precedent)
+// and -> kidney-stones (SCI-specific risk, catheter confound); dandy-walker-syndrome -> hydrocephalus
+// (CSF-flow obstruction, penetrance guard); de-quervain-s-tenosynovitis -> carpal-tunnel-syndrome
+// (single cross-sectional co-occurrence cohort); decubitus-ulcers -> osteomyelitis (biopsy-denominator
+// guard) over 19 sources; zero deferrals this batch.
+// D1 batch 17 (2026-09-22): aphonia -> depressive-disorder and anxiety-disorder
+// (dysphonia-population cross-sectional co-occurrence, R49.0 exposure guard); bacterial-rhinitis ->
+// sinusitis (rhinosinusitis continuum with the viral-majority guard); chronic-laryngitis ->
+// vocal-cord-nodules-polyps-cysts-paralysis (edematous-polypoid spectrum only, 8.5% form share);
+// complex-regional-pain-syndrome -> osteoporosis (DXA-quantified regional deficit with the
+// reverse-direction and disuse guards) and -> contractures (review-class sequelae, no denominators)
+// over 15 sources; common-peroneal-neuropathy deferred on the ME-41 phenotype-identity barrier
+// (foot drop IS the identity).
+// D1 batch 20 (2026-09-23): dermatitis -> insomnia/cellulitis/impetigo/depressive-disorder/
+// anxiety-disorder (adult-AD-anchored sleep/burden/infection pathways, all cross-sectional with
+// bidirectionality guards); delayed-ejaculation -> depressive-disorder (psychotropic-confound
+// reverse direction); dental-abrasion-erosion-abfraction -> dentin-hypersensitivity
+// (hydrodynamic substrate, cross-sectional co-occurrence); dentin-hypersensitivity and
+// dermatitis-herpetiformis deferred on direction/identity grounds; 13 new pending sources.
+// D1 batch 21 (2026-09-23): dermatomyositis -> interstitial-lung-disease and -> dysphagia
+// (scleroderma->ILD precedent; paraneoplastic-weighting guards from the IIM meta-analysis);
+// deviated-nasal-septum -> sinusitis (CT-referral OR 2.74, normal-variant guard) and ->
+// sleep-apnea (PSG cohort with the craniofacial shared-driver confound);
+// diabetes-insipidus -> hydronephrosis (volume-overload dilatation, the third
+// obstruction/dilatation-family edge, adherence guard); dermatofibroma and
+// dermatofibrosarcoma-protuberans deferred on identity grounds; 14 new pending sources.
+// D1 batch 22 (2026-09-23): diaphragm-paralysis -> sleep-apnea (REM-hypoventilation
+// phenotype, PSG-anchored with referred-population and phenotype-scope guards) and
+// diffuse-axonal-injury -> cognitive-disorder (DIRECT_CAUSATION per the
+// cerebral-contusion structural-lesion precedent; connectivity-disruption mechanism);
+// diabetes-mellitus deferred on duplicate-scope against the published typed identities,
+// diabetic-amyotrophy on the manifestation barrier, diabetic-dermopathy on the
+// shared-cause confound; 6 new pending sources.
+// Batch 23 (2026-09-23): +4 relationships (diffuse-esophageal-spasm->gerd,
+// diverticulosis->diverticulitis, diverticulitis->irritable-bowel-syndrome,
+// dizziness->anxiety-disorder) and +12 pending-verification sources.
+// diplopia deferred (symptom-identity; no quantified downstream cohort).
 const srcById = new Map(srcRegistry.sources.map((s) => [s.sourceId, s]));
-if (srcById.size !== 355) fail(`Expected 355 source entities including lineage, found ${srcById.size}.`);
+// Batch 34 (2026-09-23): +3 pending-verification relationships across 3 authored
+// identities (femoral-neuropathy->unexplained-chronic-pain case-matching edge,
+// fitz-hugh-curtis-syndrome->female-infertility shared-driver edge,
+// flatfoot->osteoarthritis biomechanical edge) over +9 new pending-verification
+// clinical sources; every citation was NCBI-verified via efetch before file
+// authoring (batch-30 lesson institutionalized); female-sexual-arousal-disorder
+// deferred on evidence-gap and nosology-stability grounds and fissured-tongue
+// deferred on zero-record and directionality grounds.
+// Batch 33 (2026-09-23): +4 pending-verification relationships across 4 authored
+// identities (farmer-s-lung->pulmonary-fibrosis, fasciitis->amputation-or-loss-of-use,
+// fecal-impaction->fecal-incontinence DIRECT_CAUSATION,
+// female-infertility->depressive-disorder) over +12 new pending-verification
+// clinical sources; every citation was NCBI-verified via efetch before file
+// authoring (batch-30 lesson institutionalized); female-reproductive-disorders
+// deferred on duplicate-scope class-identity grounds (diabetes-mellitus and
+// eczema precedents).
+// Batch 32 (2026-09-23): +4 pending-verification relationships across 4 authored
+// identities (excoriation-disorder->scars, factitious-disorder->scars,
+// exophthalmos->keratitis, exploding-head-syndrome->insomnia) over +11 new
+// pending-verification clinical sources; every citation was NCBI-verified via
+// efetch before file authoring (batch-30 lesson institutionalized);
+// extensor-digitorum-brevis-strain deferred on evidence-ground zero-record
+// screening (camptodactyly precedent).
+// Batch 31 (2026-09-23): +5 pending-verification relationships across 4 authored
+// identities (erythroplasia-of-queyrat->squamous-cell-carcinoma,
+// erythropoietic-protoporphyria->cholelithiasis and ->chronic-liver-disease,
+// esophageal-stricture->dysphagia DIRECT_CAUSATION and esophagitis->esophageal-stricture
+// DIRECT_CAUSATION) over +9 new pending-verification clinical sources (the Levy 2025
+// registry shared across both EPP edges, so live uses rose by 14); every citation was
+// NCBI-verified via efetch before file authoring (batch-30 lesson institutionalized);
+// euthyroid-sick-syndrome deferred on manifestation-identity grounds.
+if (srcById.size !== 682) fail(`Expected 682 source entities including lineage, found ${srcById.size}.`);
 
 const isApprovedVerificationOnlyPromotion = (source, ref) => {
   const state = source?.verificationState;
@@ -177,9 +246,12 @@ for (const file of files) {
 }
 
 if (published !== 140 || draft !== 673) fail(`Publication-state drift: published=${published}, draft=${draft}`);
-if (relationshipCount !== 363) fail(`Relationship count drift: ${relationshipCount}`);
-if (referenceUses !== 379 || verifiedTrue !== 379 || verifiedFalse !== 0) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
-if (clinicalUses !== 374 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);
+if (relationshipCount !== 500) fail(`Relationship count drift: ${relationshipCount}`);
+// D1 batch 5 (2026-09-22): 4 draft-quarantined edges (blindness -> depressive-disorder,
+// bone-cysts and bone-tumors -> malunion-nonunion-of-fractures, brain-cancer -> seizure-disorder
+// as the batches' first DIRECT_CAUSATION draft), 7 new pending-verification clinical sources.
+if (referenceUses !== 746 || verifiedTrue !== 380 || verifiedFalse !== 366  /* batch 34 (2026-09-23): +9 unverified clinical reference uses (3 new edges over 9 new sources) */  /* batch 32 (2026-09-23): +11 unverified clinical reference uses (4 new edges over 11 new sources) */  /* batch 31 (2026-09-23): +14 unverified clinical reference uses (5 new edges over 9 new sources, the Levy registry shared across both EPP edges) */) fail(`Reference state drift: uses=${referenceUses}, verified=${verifiedTrue}, unverified=${verifiedFalse}`);
+if (clinicalUses !== 741 || legalUses !== 5) fail(`Reference scope drift: clinical=${clinicalUses}, legal=${legalUses}`);
 
 const statusCounts = {};
 let activeClinical = 0;
@@ -217,7 +289,7 @@ for (const source of srcRegistry.sources) {
 
 const expectedStatuses = {
   active: 346,
-  "pending-verification": 0,
+  "pending-verification": 327,  /* batch 34 (2026-09-23): +9 pending-verification sources */
   "superseded-unverified": 7,
   "bibliographic-correction-only": 1,
   "retired-only": 1,
@@ -226,28 +298,28 @@ if (Object.entries(expectedStatuses).some(([key, value]) => (statusCounts[key] |
     Object.keys(statusCounts).some((key) => !(key in expectedStatuses))) {
   fail(`Source status counts mismatch: ${JSON.stringify(statusCounts)}`);
 }
-if (activeClinical !== 345 || pendingClinical !== 0 || activeLegal !== 1) {
+if (activeClinical !== 345 || pendingClinical !== 327 || activeLegal !== 1) {
   fail(`Source kind counts mismatch: activeClinical=${activeClinical}, pendingClinical=${pendingClinical}, activeLegal=${activeLegal}`);
 }
 if (retiredVerifiedUses !== 6) fail(`Retired verified relationship-source uses mismatch: ${retiredVerifiedUses}`);
 
 const legacyCount = relRegistry.relationships.filter((r) => r.publicationGuard.status === "legacy-rationale-boundary").length;
 const explicitCount = relRegistry.relationships.filter((r) => r.publicationGuard.status === "explicit").length;
-if (legacyCount !== 74 || explicitCount !== 289) fail(`Publication guard counts mismatch: legacy=${legacyCount}, explicit=${explicitCount}`);
+if (legacyCount !== 74 || explicitCount !== 426) fail(`Publication guard counts mismatch: legacy=${legacyCount}, explicit=${explicitCount}`);
 
-const expectedRelCounts = { relationships: 363, explicitPublicationGuards: 289, legacyRationaleBoundaries: 74 };
+const expectedRelCounts = { relationships: 500, explicitPublicationGuards: 426, legacyRationaleBoundaries: 74 }  /* batch 34 (2026-09-23): +3 relationships (femoral-neuropathy->unexplained-chronic-pain, fitz-hugh-curtis-syndrome->female-infertility, flatfoot->osteoarthritis) */  /* batch 32 (2026-09-23): +4 relationships (excoriation-disorder->scars, factitious-disorder->scars, exophthalmos->keratitis, exploding-head-syndrome->insomnia) */  /* batch 31 (2026-09-23): +5 relationships (erythroplasia-of-queyrat->squamous-cell-carcinoma, erythropoietic-protoporphyria->cholelithiasis, erythropoietic-protoporphyria->chronic-liver-disease, esophageal-stricture->dysphagia, esophagitis->esophageal-stricture) */  /* batch 30 (2026-09-23): +4 relationships (episcleritis->insomnia, episcleritis->unexplained-chronic-pain, erythromelalgia->insomnia, erythromelalgia->unexplained-chronic-pain) */;
 if (JSON.stringify(relRegistry.counts) !== JSON.stringify(expectedRelCounts)) fail(`Relationship registry count metadata mismatch: ${JSON.stringify(relRegistry.counts)}`);
 
-const expectedSourceCounts = {
-  liveSourceReferenceUses: 379,
-  activeSourceEntities: 346,    pendingVerificationSourceEntities: 0,
+const expectedSourceCounts = {  /* batch 34 (2026-09-23): +3 relationships, +9 pending-verification sources, +9 live uses */  /* batch 32 (2026-09-23): +4 relationships, +11 pending-verification sources, +11 live uses */  /* batch 31 (2026-09-23): +5 relationships, +9 pending-verification sources, +14 live uses (registry shared across EPP edges) */
+  liveSourceReferenceUses: 746,
+  activeSourceEntities: 346,    pendingVerificationSourceEntities: 327,
   activeClinicalSourceEntities: 345,
-  pendingClinicalSourceEntities: 0,
+  pendingClinicalSourceEntities: 327,
   activeLegalAuthorityEntities: 1,
   retiredOnlySourceEntities: 1,
   supersededUnverifiedSourceEntities: 7,
   bibliographicCorrectionOnlyEntities: 1,
-  totalSourceEntitiesIncludingLineage: 355,
+  totalSourceEntitiesIncludingLineage: 682,
   retiredVerifiedRelationshipSourceUses: 6,
 };
 if (JSON.stringify(srcRegistry.counts) !== JSON.stringify(expectedSourceCounts)) fail(`Source registry count metadata mismatch: ${JSON.stringify(srcRegistry.counts)}`);

@@ -2,8 +2,12 @@
   "id": "euthyroid-sick-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 31 (2026-09-23): deferred on manifestation-identity grounds - no edges authored; the identity is retained as a draft with suggestions: [] pending qualified-human governance decision.",
+    "Negative screen recorded 2026-09-23: the targeted NCBI searches for euthyroid-sick-syndrome outcome evidence (ICU mortality, cardiac outcomes, thyroid-target outcomes) returned ICU-population and critical-illness literature in which ESS is a laboratory marker of the underlying illness rather than an independently attributable outcome driver; no ESS-specific outcome cohort with catalog-fit targets was found."
+  ],
+  "governanceNotes": [
+    "D1 batch 31 (2026-09-23): deferred. Euthyroid sick syndrome (non-thyroidal illness syndrome) is an adaptive laboratory phenotype of severe systemic illness - low T3/T4 with nonspecific TSH changes occurring in critical illness, sepsis, starvation, and catabolic states - and is not an independent disease process (ME-41 manifestation-identity barrier, diplopia and encopresis precedents): any outcome edge would restate the severity of the underlying illness rather than an ESS-attributable effect. The literature direction is inverted (illness -> ESS), causation of downstream outcomes is confounded by the driving illness, and treating the laboratory changes has no established benefit. The thyroid identity targets (hypothyroidism, thyroiditis, thyroid-nodules) are true thyroid disease identities that ESS does not become.",
+    "Reopening condition: evidence that the ESS phenotype independently modifies outcomes after controlling for illness severity, with a catalog-fit target, would justify re-screening this identity."
   ],
   "suggestions": []
 }

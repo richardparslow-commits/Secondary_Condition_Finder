@@ -1,9 +1,70 @@
 {
-  "id": "central-cord-syndrome",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "central-cord-syndrome",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 9 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Tiered consistently with the ME-32 sibling edge (anterior-cord-syndrome -> urinary-incontinence, association-only); a qualified human may revisit both together if cohort prevalence data mature."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength for consistency with the recorded qualified-human disposition of the sibling spinal-cord edge: the urodynamic cohort documenting bladder dysfunction in central cord syndrome comprises 22 men evaluated a mean of 34.5 months post-injury at a single VA spinal cord registry, without a control arm, onset-ordering, or population incidence, so no directional claim beyond co-occurrence is supportable at the mapping level.",
+  "Sphincter-continuity note recorded: detrusor-sphincter dyssynergia and detrusor overactivity are physiologic expressions of the same cervical cord injury, and the registry counts also record outlet obstruction and areflexia subtypes; the edge targets the clinically dominant overactivity-retention phenotype while preserving non-neurogenic causes as competing explanations."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "urinary-incontinence",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "A video-urodynamic cohort of 22 men with central cord syndrome from the Houston VA spinal cord registry found vesicourethral dysfunction in 19 of 22, with external detrusor-sphincter dyssynergia in 11, detrusor areflexia in 4, detrusor hyperreflexia in 1, and hypocontractility in 1, plus recurrent urinary tract infection in dyssynergia patients (Smith 2000); spinal-cord disease literature generally documents the overactive-bladder with retained-residual pattern reflecting descending and ascending pathway lesions (Sakakibara 2019).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the urodynamic series is small, uncontrolled, and cross-sectional with evaluation delayed years after injury, dysfunction subtypes are heterogeneous within the syndrome, age and prostatic obstruction independently produce the same symptoms, and no study reports population incidence of neurogenic bladder after central cord syndrome, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+    "primaryVector": "A hypothesized suprasacral-pathway-injury pathway has been described: central cord syndrome preferentially affects the central cervical cord segments carrying the descending reticulospinal control of the pontine micturition center and the ascending sensory pathways, producing detrusor overactivity with dyssynergic sphincter coordination and incomplete emptying; the urodynamic pattern observed in the registry cohort (detrusor hyperreflexia, dyssynergia, retained residuals) fits this suprasacral pattern. The pathway is anatomically coherent, but the small uncontrolled series cannot separate syndrome-specific injury from age-related and prostatic contributions, and areflexia in four patients suggests additional sacral or retention-pathology involvement, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Urodynamic-documented bladder dysfunction is highly prevalent in the single reported central cord syndrome series, but individual determination requires video-urodynamic characterization of the dysfunction pattern, exclusion of prostatic obstruction and other non-neurogenic causes, and review case by case by a qualified medical professional.",
+    "evidenceGaps": "Video-urodynamic or uroflowmetry documentation of the bladder-dysfunction pattern with chronology relative to the cord injury; imaging characterizing the cord lesion and its level; workup excluding benign prostatic hyperplasia, medications, and metabolic contributors; renal-imaging and laboratory surveillance records for upper-tract status; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Benign prostatic hyperplasia or other bladder-outlet obstruction",
+     "Diabetes-related cystopathy and peripheral neuropathy",
+     "Medication effects (anticholinergics, alpha-agonists, diuretics)",
+     "Age-related detrusor dysfunction unrelated to the cord lesion"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the urodynamic evidence is a small uncontrolled series with delayed evaluation, the dysfunction subtypes are heterogeneous, and non-neurogenic obstruction is ubiquitous in the affected age group; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "evidenceGaps": [
+    "Video-urodynamic or uroflowmetry documentation of the bladder-dysfunction pattern with chronology relative to the cord injury",
+    "Imaging characterizing the cord lesion and its level",
+    "Workup excluding benign prostatic hyperplasia, medications, and metabolic contributors",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ],
+   "sourceReferences": [
+    {
+     "citation": "Smith CP, Kraus SR, Nickell KG, Boone TB. Video urodynamic findings in men with the central cord syndrome. J Urol. 2000;164(6):2014-2017. PMID 11061905.",
+     "note": "Video-urodynamic cohort (22 men, Houston VA spinal cord registry, mean 34.5 months post-injury) reporting vesicourethral dysfunction in 19 of 22 with external detrusor-sphincter dyssynergia most common (11), plus areflexia, hyperreflexia, and hypocontractility subtypes; supports co-occurrence at series level without control or incidence data.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11061905/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 11061905; results and conclusions"
+    },
+    {
+     "citation": "Sakakibara R. Neurogenic lower urinary tract dysfunction in multiple sclerosis, neuromyelitis optica, and related disorders. Clin Auton Res. 2019;29(3):313-320. PMID 30076494. doi:10.1007/s10286-018-0551-x.",
+     "note": "Systematic review of spinal cord immune-mediated disease documenting that bladder dysfunction reflects lesions in spinal descending and ascending pathways with an overactive-bladder plus retention pattern; supports the pathway-level mechanism by analogy across spinal cord disease without central-cord-syndrome-specific denominators.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30076494/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 30076494; results and conclusions"
+    }
+   ]
+  }
+ ]
 }

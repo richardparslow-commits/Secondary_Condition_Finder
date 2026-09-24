@@ -1,9 +1,85 @@
 {
-  "id": "decubitus-ulcers",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "decubitus-ulcers",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 19 (2026-09-23): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "The biopsy-denominator finding (many exposed-bone patients lack osteomyelitis on biopsy, Wong 2019) is the controlling guard: without biopsy or culture confirmation, imaging alone cannot support the claim - keep the biopsy-confirmation requirement when reviewing."
+ ],
+ "governanceNotes": [
+  "Authored at ASSOCIATION_ONLY with NOT_ESTABLISHED consensus and hypothesizedOnly mechanism despite qualitatively standard contiguous-spread biology: the systematic review (Wong 2019) documents that many stage IV patients with chronically exposed bone have no biopsy evidence of osteomyelitis and that MRI cannot reliably distinguish infection from bone remodeling, so the pathway's actual incidence in exposed-bone populations is unknown.",
+  "Subset guard recorded in-file: the pathway applies to advanced (stage III-IV) ulcers with deep soft-tissue loss over bony prominences; superficial or early-stage ulcers lack the depth for contiguous osseous spread.",
+  "Management-interruption guard: off-loading, debridement, and flap closure interrupt the pathway; antibiotic therapy without debridement shows no demonstrated benefit in the reviewed literature, so treatment chronology matters for both directions of the claim."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "osteomyelitis",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The StatPearls pathophysiology review documents that unchecked pressure-injury necrosis can spread into the bony architecture and cause osteomyelitis, with tissue destruction deepest at the bone-muscle interface (Zaidi 2026); the primary-care management review directs monitoring of all pressure injuries for osteomyelitis (Visconti 2023); however, the systematic review of stage IV sacral ulcers found many patients with chronically exposed bone lack biopsy-confirmed osteomyelitis and MRI cannot accurately distinguish osteomyelitis from bone remodeling (Wong 2019).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the contiguous-spread pathway is qualitatively standard but its actual incidence in exposed-bone populations is unquantified and, per the biopsy data, likely a minority of advanced ulcers; imaging over-calls infection versus remodeling; healing-stage wounds and treated wounds interrupt the pathway; and diabetic foot-ulcer osteomyelitis literature (a different population) cannot be transposed without cohort-specific data."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "INFECTIOUS_SPREAD",
+    "primaryVector": "A contiguous-infection pathway is hypothesized: progressive full-thickness soft-tissue loss over a bony prominence exposes periosteum; bacterial colonization of the wound tracks along fascial planes to bone, producing cortical and medullary infection; the conical destruction pattern makes deep extension likely before surface findings suggest it. Actual conversion frequency is unmeasured and biopsy evidence shows many exposed-bone patients never develop it.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "Pathway biology is standard and surveillance is guideline-directed, but the biopsy denominator, imaging unreliability, and unquantified incidence keep the claim at association strength. Etiological consensus is therefore NOT_ESTABLISHED and the mapping asserts no nexus probability.",
+    "evidenceGaps": "bone-biopsy or operative-culture confirmation of osteomyelitis (not MRI alone) with chronology relative to the ulcer course; NPIAP stage documentation (III-IV) with wound depth over the bony prominence; exclusion of hematogenous osteomyelitis and adjacent non-pressure infection sources; off-loading/debridement/flap management chronology",
+    "alternativeEtiologiesToRuleOut": [
+     "Hematogenous osteomyelitis from a distant source",
+     "Diabetic foot infection (different population)",
+     "Charcot arthropathy in the sacral/heel region differential",
+     "Refracture or hardware infection",
+     "Radiation osteonecrosis"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: the spread pathway is biologically standard but the systematic review's biopsy denominator shows many exposed-bone patients lack the disease, and imaging cannot substitute for histology; no causal claim is forced.",
+   "sourceReferences": [
+    {
+     "citation": "Zaidi SRH, El Khatib S, Sharma S. Pressure Injury. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; updated 2026 Jul 5. PMID 31971747.",
+     "note": "StatPearls review: unchecked necrotic breakdown can migrate vertically, promote localized cellulitis, spread into the bony architecture and cause osteomyelitis, or invade the vascular network and cause sepsis; conical deep-tissue destruction is highest at the bone-muscle interface.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31971747/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 31971747; pathophysiology (vertical spread to bony architecture)"
+    },
+    {
+     "citation": "Wong D, Holtom P, Spellberg B. Osteomyelitis Complicating Sacral Pressure Ulcers: Whether or Not to Treat With Antibiotic Therapy. Clin Infect Dis. 2019;68(2):338-342. PMID 29986022. doi:10.1093/cid/ciy559.",
+     "note": "Systematic review of stage IV sacral pressure-ulcer osteomyelitis: many patients with chronically exposed bone do not have evidence of osteomyelitis when biopsied, and MRI may not accurately distinguish osteomyelitis from bone remodeling - biopsy-confirmed disease is the standard, with treatment benefit contingent on surgical debridement and wound coverage.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29986022/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 29986022; abstract (biopsy denominator, MRI limitation, debridement contingency)"
+    },
+    {
+     "citation": "Visconti AJ, Sola OI, Raghavan PV. Pressure Injuries: Prevention, Evaluation, and Management. Am Fam Physician. 2023;108(2):166-174. PMID 37590857.",
+     "note": "Primary-care management review: all pressure injuries should be monitored for local infection, biofilms, and osteomyelitis; debridement of devitalized tissue and staging per NPIAP guide surveillance for deep extension.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37590857/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 37590857; treatment section (osteomyelitis surveillance)"
+    }
+   ],
+   "evidenceGaps": [
+    "bone-biopsy or operative-culture confirmation of osteomyelitis (not MRI alone) with chronology relative to the ulcer course",
+    "NPIAP stage documentation (III-IV) with wound depth over the bony prominence",
+    "exclusion of hematogenous osteomyelitis and adjacent non-pressure infection sources",
+    "off-loading/debridement/flap management chronology",
+    "Bone-biopsy or deep-culture confirmation",
+    "documented ulcer stage, depth, and chronology",
+    "exclusion of hematogenous and other contiguous sources"
+   ]
+  }
+ ]
 }

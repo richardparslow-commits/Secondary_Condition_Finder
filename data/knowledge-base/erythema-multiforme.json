@@ -2,8 +2,13 @@
   "id": "erythema-multiforme",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 30 (2026-09-23): deferred on manifestation-identity and citation-verification grounds - no edges authored; the identity is retained as a draft with suggestions: [] pending qualified-human governance decision.",
+    "Negative screen recorded 2026-09-23: the candidate EM-to-hyperpigmentation edge was drafted and then WITHDRAWN during self-audit because the drafted citations could not be verified against NCBI on the checked date (the PMIDs first written resolved to unrelated papers); under the citation-verification SOP no unverifiable citation may enter a mapping, and the manifestation-identity barrier independently blocks the edge."
+  ],
+  "governanceNotes": [
+    "D1 batch 30 (2026-09-23): deferred. Post-inflammatory pigmentary change at resolved EM target lesions is part of the identity's own resolution course, so an outgoing hyperpigmentation edge would largely restate the presentation (ME-41 manifestation-identity barrier, diplopia and encopresis precedents); no EM-specific persistent-pigmentation prevalence cohort was found. The Stevens-Johnson-syndrome and toxic-epidermal-necrolysis catalog identities are distinguished from EM in modern consensus classification (lesion morphology, distribution, mucosal severity), so no SJS/TEN-progression edge exists to author - the historical EM-major overlap is classification context, not a disease pathway (negative screen).",
+    "Corneal scarring and ocular-surface outcomes belong to the SJS/TEN and severe-scleral-disease identities (Tuft 1991 documents scleral-disease ocular complications), and the scar-target edges would restate resolved-lesion healing. Reopening condition: a cohort quantifying persistent EM-attributable pigmentation beyond the transient resolution window, with a verifiable citation base, would justify re-screening this identity.",
+    "Process record (batch 30, 2026-09-23): an earlier draft of this file carried a hyperpigmentation edge whose three citations failed NCBI verification (PMIDs resolved to unrelated papers) and one misplaced source reference; the file was withdrawn and rewritten as this deferral. The error was caught by the batch self-audit before registry lockstep, so no registry record, packet row, or ledger count ever carried the unverifiable citations."
   ],
   "suggestions": []
 }

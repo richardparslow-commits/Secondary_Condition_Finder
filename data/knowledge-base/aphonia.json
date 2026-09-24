@@ -1,6 +1,149 @@
 {
   "id": "aphonia",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, neurologic, laryngeal, surgical/treatment, and communication-function pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 17 (2026-09-22): association-only drafts pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The controlling study defines its exposure by ICD-10 R49.0 (dysphonia, which includes aphonia) and is cross-sectional; if a qualified human finds longitudinal or treatment-discordant-cohort data separating communication-disability effects from reverse causation, the tier may be revisited."
+  ],
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: the large All of Us cross-sectional analysis found elevated odds of depression and anxiety in dysphonia (aOR 1.34 and 1.44) and voice-clinic cohorts show elevated psychological-distress caseness, but all evidence is cross-sectional, reverse causation is untested, and the exposure is broader than complete voice loss.",
+    "Severity-transparency guard recorded: the epidemiologic exposure (R49.0 dysphonia) spans hoarseness through complete voice loss, so the recorded associations cannot be assumed to scale to aphonia severity; individual determination belongs entirely to examination findings and a qualified medical professional."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The All of Us cross-sectional analysis of 283,137 adults, whose exposure was the ICD-10 dysphonia code R49.0 encompassing aphonia, found 1.34 times the adjusted odds of depression (95% CI 1.27-1.41) in dysphonia after controlling for demographics, smoking, alcohol, and comorbidities (Weinstein 2026); a prospective voice-clinic cohort found 17% HADS caseness for anxiety and/or depression with strong emotional-VoiSS/HADS correlation, and noted organic laryngeal disorders carried more distress than functional dysphonia (Montgomery 2016); the retrospective voice-clinic cohort found 31.2% of voice-disorder patients with elevated depression scores, varying by diagnosis (Dietrich 2008).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: all three sources are cross-sectional or retrospective, depressive illness can itself alter voice use and care-seeking, the exposure code spans hoarseness to complete loss, and no longitudinal or treatment-discordant cohort separates disability effects from reverse causation, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A communication-disability pathway is hypothesized: loss of voiced communication degrades identity, social participation, and occupational voice function, and the resulting isolation, frustration, and loss of agency feed the depressive cascade; shared neural links between laryngeal control and affect regulation are also proposed. The pathway is plausible and the co-occurrence is documented at scale, but the epidemiology is cross-sectional and reverse causation is untested, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Voice-disorder populations show elevated depression prevalence across large epidemiologic and clinic-cohort data; individual determination requires psychiatric diagnostic documentation of the depressive episode with chronology relative to the voice loss, exclusion of premorbid and independent depression, and review by a qualified medical professional.",
+        "evidenceGaps": "Structured psychiatric evaluation documenting the depressive episode (duration, severity, functional impact) with chronology relative to voice-loss onset; ENT documentation of the voice disorder (laryngoscopy findings, etiology, treatment history); exclusion of premorbid depression, substance use, and independent psychosocial stressors of equal potency; occupational and social-participation impact documentation; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Premorbid or independent depressive disorder preceding the voice loss",
+          "Shared drivers (smoking, head-and-neck disease, chronic illness burden) depressing mood directly",
+          "Reactive adjustment naturally resolving without depressive-disorder threshold",
+          "Functional (psychogenic) voice loss as a manifestation of the psychiatric condition itself (reverse direction)",
+          "Medication effects (e.g., inhaled corticosteroid dysphonia populations with comorbid disease)"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the co-occurrence is documented at scale in the largest available dataset, but cross-sectional design defeats directional claims and the exposure is broader than aphonia; the edge records documented co-occurrence only.",
+      "sourceReferences": [
+        {
+          "citation": "Weinstein HNW, Denham MW, Tucker LH, Golub JS, Born HL. Dysphonia Is Associated With Anxiety and Depression in the All of Us Research Program. Laryngoscope. 2026;136(6):2648-2654. PMID 41555208. doi:10.1002/lary.70372.",
+          "note": "Cross-sectional All of Us analysis (n=283,137) with exposure ICD-10 R49.0 dysphonia: adjusted OR 1.34 (1.27-1.41) for depression; the population-scale anchor with its cross-sectional design and dysphonia-span exposure recorded.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41555208/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 41555208; results and conclusions"
+        },
+        {
+          "citation": "Montgomery J, Hendry J, Wilson JA, Deary IJ, MacKenzie K. Pragmatic detection of anxiety and depression in a prospective cohort of voice outpatient clinic attenders. Clin Otolaryngol. 2016;41(1):2-7. PMID 25973976. doi:10.1111/coa.12459.",
+          "note": "Prospective voice-clinic cohort (n=210): 17% HADS caseness, strong emotional-VoiSS/HADS correlation, organic laryngeal disorders more distressed than functional dysphonia; the clinic-cohort anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25973976/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 25973976; results and conclusions"
+        },
+        {
+          "citation": "Dietrich M, Verdolini Abbott K, Gartner-Schmidt J, Rosen CA. The frequency of perceived stress, anxiety, and depression in patients with common pathologies affecting voice. J Voice. 2008;22(4):472-488. PMID 18395419. doi:10.1016/j.jvoice.2006.08.007.",
+          "note": "Retrospective voice-clinic cohort (n=160): 31.2% elevated depression scores varying by diagnosis; the diagnosis-stratified burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18395419/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 18395419; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "Structured psychiatric evaluation documenting the depressive episode (duration, severity, functional impact) with chronology relative to voice-loss onset",
+        "ENT documentation of the voice disorder (laryngoscopy findings, etiology, treatment history)",
+        "exclusion of premorbid depression, substance use, and independent psychosocial stressors of equal potency",
+        "occupational and social-participation impact documentation",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The All of Us cross-sectional analysis found 1.44 times the adjusted odds of anxiety (95% CI 1.37-1.52) in ICD-10 R49.0 dysphonia, the largest psychiatric association in that dataset (Weinstein 2026); the voice-clinic cohort found 20% borderline and 17% positive HADS anxiety and/or depression caseness with the emotional VoiSS subscale tracking anxiety at Spearman's rho 0.68 (Montgomery 2016); the retrospective voice-clinic cohort found 36.9% of patients with elevated anxiety scores, the most frequent elevation among the measured domains and highest in paradoxical vocal fold movement disorder (Dietrich 2008).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: all evidence is cross-sectional or retrospective, anxiety states can themselves produce or amplify voice symptoms (including paradoxical vocal fold motion), and the exposure spans hoarseness to complete loss, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A communication-threat pathway is hypothesized: inability to produce voice creates anticipatory anxiety about communication failures, social evaluation, and occupational consequences, with hypervigilance to vocal symptoms maintaining the anxiety cycle; the same psychosocial disability substrate proposed for depression underlies the anxiety association. The pathway is plausible and co-occurrence is documented at scale, but the epidemiology is cross-sectional and reverse causation is untested, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Voice-disorder populations show elevated anxiety prevalence across large epidemiologic and clinic-cohort data; individual determination requires psychiatric diagnostic documentation of the anxiety disorder with chronology relative to the voice loss, exclusion of premorbid and independent anxiety, and review by a qualified medical professional.",
+        "evidenceGaps": "Structured psychiatric evaluation documenting the anxiety disorder (duration, severity, panic/social/anticipatory features) with chronology relative to voice-loss onset; ENT documentation of the voice disorder including laryngoscopy; exclusion of premorbid anxiety, paradoxical vocal fold motion disorder as a separate diagnosis, and independent stressors; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Premorbid or independent anxiety disorder preceding the voice loss",
+          "Paradoxical vocal fold motion disorder as an anxiety-spectrum presentation (reverse direction)",
+          "Situational adjustment anxiety below disorder threshold",
+          "Shared drivers (thyroid disease, respiratory illness, head-and-neck conditions) driving both",
+          "Stimulant or bronchodilator medication effects"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the co-occurrence is documented at scale, but cross-sectional design, the reverse-direction possibility, and the broader exposure defeat directional claims; the edge records documented co-occurrence only.",
+      "sourceReferences": [
+        {
+          "citation": "Weinstein HNW, Denham MW, Tucker LH, Golub JS, Born HL. Dysphonia Is Associated With Anxiety and Depression in the All of Us Research Program. Laryngoscope. 2026;136(6):2648-2654. PMID 41555208. doi:10.1002/lary.70372.",
+          "note": "Cross-sectional All of Us analysis: adjusted OR 1.44 (1.37-1.52) for anxiety in ICD-10 R49.0 dysphonia, the stronger of the two psychiatric associations; the population-scale anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41555208/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 41555208; results and conclusions"
+        },
+        {
+          "citation": "Montgomery J, Hendry J, Wilson JA, Deary IJ, MacKenzie K. Pragmatic detection of anxiety and depression in a prospective cohort of voice outpatient clinic attenders. Clin Otolaryngol. 2016;41(1):2-7. PMID 25973976. doi:10.1111/coa.12459.",
+          "note": "Prospective voice-clinic cohort: 20% borderline and 17% positive HADS caseness with emotional-VoiSS/HADS anxiety correlation rho 0.68; the clinic-cohort anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25973976/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 25973976; results and conclusions"
+        },
+        {
+          "citation": "Dietrich M, Verdolini Abbott K, Gartner-Schmidt J, Rosen CA. The frequency of perceived stress, anxiety, and depression in patients with common pathologies affecting voice. J Voice. 2008;22(4):472-488. PMID 18395419. doi:10.1016/j.jvoice.2006.08.007.",
+          "note": "Retrospective voice-clinic cohort: 36.9% elevated anxiety scores, the most frequent elevation, highest in paradoxical vocal fold movement disorder; the diagnosis-stratified anchor with its reverse-direction caveat recorded.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18395419/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 18395419; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "Structured psychiatric evaluation documenting the anxiety disorder (duration, severity, panic/social/anticipatory features) with chronology relative to voice-loss onset",
+        "ENT documentation of the voice disorder including laryngoscopy",
+        "exclusion of premorbid anxiety, paradoxical vocal fold motion disorder as a separate diagnosis, and independent stressors",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

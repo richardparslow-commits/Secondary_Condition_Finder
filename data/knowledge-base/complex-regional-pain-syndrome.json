@@ -1,6 +1,150 @@
 {
   "id": "complex-regional-pain-syndrome",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 17 (2026-09-22): association-only drafts pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The Baronio review records osteoporosis as a risk factor FOR developing CRPS (reverse direction); that reverse evidence is recorded as a direction guard and does not support the forward edge. The Bazika-Gerasch finding of bilaterally lower Z-scores (including the unaffected limb) is recorded as a systemic-confounder guard."
+  ],
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength for both edges: the bone-loss literature is DXA/ultrasonographic cross-sectional and small-cohort class (17-65 patients) with the affected-limb deficit quantified but causality not established, and the contracture literature is review/clinical-guidance class describing chronic sequelae without incidence denominators.",
+    "Immobilization-confounder guard recorded: disuse from guarded, painful limb use is itself a recognized driver of both regional osteopenia and joint contracture, so the CRPS-specific (inflammatory/neurogenic) contribution cannot be separated from disuse in the available literature; the catalog osteoporosis target also represents systemic 'Residuals of Osteoporosis' rating, which only partially overlaps regional disease."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "osteoporosis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Buenos Aires DXA cross-sectional study found significantly lower bone mineral density in both regions of interest of the CRPS-affected foot versus the contralateral foot (median difference -8.4% and -8.9%, n=17, Budapest criteria) (Abdala 2025); the Bochum ultrasonographic osteodensitometry study found lower calcaneal Z-scores in both affected and nonaffected limbs of CRPS patients compared with other unilateral pain and healthy controls, with shorter disease duration showing lower Z-scores, and 'local osteopenia and altered bone metabolism' described as major complications of CRPS (Bazika-Gerasch 2019); the lower-extremity CRPS treatment review lists regional osteoporosis among the syndrome's target components for therapy (Hogan 2002).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the quantified studies are cross-sectional with small samples, disuse osteopenia is an alternative explanation, the systemic component lowers both limbs (confounding 'regional' attribution), reverse-direction evidence exists (osteoporosis as a risk factor for CRPS), and the catalog target represents systemic osteoporosis residuals rather than regional atrophy, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "A neurogenic-inflammation/disuse pathway is hypothesized: CRPS combines neurogenic inflammation and sympathetic dysregulation with guarded disuse of the painful limb, suppressing osteoblast activity and accelerating regional bone resorption (the historical Sudeck's atrophy picture), while systemic inflammatory mediators may lower bone mineral density more broadly. DXA and ultrasonographic studies document the affected-limb deficit, but designs are cross-sectional and small, disuse is inseparable, and the reverse direction (osteoporosis as a CRPS risk factor) is also reported, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Regional bone-density loss accompanies CRPS in quantified imaging studies; individual determination requires DXA documentation of the regional deficit with chronology, exclusion of disuse and systemic bone disease as primary drivers, and review by a qualified medical professional.",
+        "evidenceGaps": "DXA documentation of affected and contralateral limb bone density with side-to-side comparison and chronology relative to CRPS onset; systemic DXA (spine/hip) distinguishing regional from systemic deficit; CRPS documentation per Budapest criteria; weight-bearing and disuse history; exclusion of systemic osteoporosis causes (age, menopause, steroids, endocrine disease); a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Disuse osteopenia from guarded limb use (the dominant alternative)",
+          "Systemic osteoporosis (age, postmenopausal, steroid-induced, endocrine) with coincidental asymmetry",
+          "Post-fracture regional bone loss independent of CRPS",
+          "Reverse direction: pre-existing low BMD as a risk factor for developing CRPS",
+          "Medication effects (bisphosphonate exposure in CRPS treatment itself altering measured trajectory)"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the regional deficit is quantified in imaging studies and regional osteoporosis is a recognized syndrome component, but cross-sectional design, disuse confounding, and reverse-direction evidence defeat causal claims; the edge records the documented imaging association only.",
+      "sourceReferences": [
+        {
+          "citation": "Abdala R, Tantau I, Mastronardi G, Weiss F, Micone D, Pizarro GM, Spina M, Zanchetta MB. Impaired bone mineral density in patients with complex regional pain syndrome. J Clin Densitom. 2025;28(4):101632. PMID 41161020. doi:10.1016/j.jocd.2025.101632.",
+          "note": "DXA cross-sectional study (n=17, Budapest criteria): significantly lower affected-foot BMD in both regions of interest (median -8.4% / -8.9%); the quantified regional-deficit anchor with its small-sample limit stated.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41161020/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 41161020; results and conclusions"
+        },
+        {
+          "citation": "Bazika-Gerasch B, Maier C, Kumowski N, Fiege C, Kaisler M, Vollert J, Dietrich JW. Compared to limb pain of other origin, ultrasonographic osteodensitometry reveals loss of bone density in complex regional pain syndrome. Pain. 2019;160(6):1261-1269. PMID 30747906. doi:10.1097/j.pain.0000000000001520.",
+          "note": "Ultrasonographic osteodensitometry case-control: lower calcaneal Z-scores bilaterally in CRPS versus other unilateral pain and controls, duration-dependent, with local osteopenia described as a major CRPS complication; the comparative anchor with its systemic-component caveat recorded.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30747906/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 30747906; results and conclusions"
+        },
+        {
+          "citation": "Hogan CJ, Hurwitz SR. Treatment of complex regional pain syndrome of the lower extremity. J Am Acad Orthop Surg. 2002;10(4):281-289. PMID 15089077. doi:10.5435/00124635-200207000-00006.",
+          "note": "Lower-extremity CRPS treatment review listing regional osteoporosis among the syndrome components targeted by therapy; the clinical-recognition anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15089077/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 15089077; treatment-component review"
+        }
+      ],
+      "evidenceGaps": [
+        "DXA documentation of affected and contralateral limb bone density with side-to-side comparison and chronology relative to CRPS onset",
+        "systemic DXA (spine/hip) distinguishing regional from systemic deficit",
+        "CRPS documentation per Budapest criteria",
+        "weight-bearing and disuse history",
+        "exclusion of systemic osteoporosis causes (age, menopause, steroids, endocrine disease)",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    },
+    {
+      "conditionId": "contractures",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The upper-extremity CRPS review records that chronic sequelae of contracture may be addressed surgically in patients with controllable sympathetically maintained pain, and lists stiffness and difficulty sleeping among onset harbingers with progression possible despite intervention (Patterson 2011); the Croatian CRPS review records that physical therapy both prevents atrophy and contractures and reduces analgesic use, positioning contracture prevention as a standard-of-care goal (Blažeković 2015); the foot-and-ankle CRPS review characterizes the natural history as chronicity and relapses producing significant disability, with motor-function abnormality among hallmark features (Shah 2011).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: no cohort reports contracture incidence in CRPS populations, the sources are clinical reviews rather than longitudinal studies, disuse and guarded positioning are alternative explanations, and the catalog contractures identity spans many etiologies, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A guarded-position/dystrophic-soft-tissue pathway is hypothesized: CRPS pain and allodynia produce protective posturing and disuse, while dystrophic skin, fascial, and capsular changes and trophic motor impairment (weakness, tremor, dystonia) progressively fix the limb in flexion, producing the chronic contracture sequelae the hand-surgery literature describes as surgically addressable. The pathway is clinically recognized, but the literature is review class without incidence denominators and disuse is inseparable from CRPS-specific dystrophy, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Contracture is a recognized chronic CRPS sequelae and a physical-therapy prevention goal, but individual determination requires documentation of the contracture with chronology relative to CRPS onset, exclusion of independent causes, and review by a qualified medical professional.",
+        "evidenceGaps": "Documentation of the contracture (joint, degrees of motion, functional limitation) with chronology relative to Budapest-criteria CRPS onset; physical-therapy history and response; exclusion of pre-existing arthropathy, casting/immobilization from unrelated treatment, and independent neurologic causes; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Prolonged immobilization from fracture treatment itself (the common antecedent)",
+          "Pre-existing or independent arthropathy and joint disease",
+          "Disuse without CRPS-specific dystrophic change",
+          "Tendon and capsular injury from the original trauma",
+          "Dystonia as a separate movement-disorder diagnosis rather than fixed contracture"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: contracture prevention is a standard-of-care goal in CRPS and chronic sequelae are surgically recognized, but no incidence denominators exist and the trauma-immobilization antecedent confounds attribution; the edge records the recognized sequelae pathway only.",
+      "sourceReferences": [
+        {
+          "citation": "Patterson RW, Li Z, Smith BP, Smith TL, Koman LA. Complex regional pain syndrome of the upper extremity. J Hand Surg Am. 2011;36(9):1553-1562. PMID 21872098. doi:10.1016/j.jhsa.2011.06.027.",
+          "note": "Upper-extremity CRPS review: chronic contracture sequelae surgically addressable with controllable pain, stiffness among onset harbingers, progression possible despite intervention; the clinical-recognition anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21872098/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 21872098; clinical review of sequelae and management"
+        },
+        {
+          "citation": "Blažeković I, Bilić E, Žagar M, Anić B. [Complex regional pain syndrome]. Lijec Vjesn. 2015;137(9-10):297-306. PMID 26749953.",
+          "note": "CRPS review recording that physical therapy prevents atrophy and contractures and reduces analgesic use; the prevention-standard-of-care anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26749953/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 26749953; review of therapy goals"
+        },
+        {
+          "citation": "Shah A, Kirchner JS. Complex regional pain syndrome. Foot Ankle Clin. 2011;16(2):351-366. PMID 21600455. doi:10.1016/j.fcl.2011.03.001.",
+          "note": "Foot-and-ankle CRPS review: natural history of chronicity and relapses producing significant disability with motor-function abnormality among hallmark features; the natural-history context anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21600455/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 21600455; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "Documentation of the contracture (joint, degrees of motion, functional limitation) with chronology relative to Budapest-criteria CRPS onset",
+        "physical-therapy history and response",
+        "exclusion of pre-existing arthropathy, casting/immobilization from unrelated treatment, and independent neurologic causes",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

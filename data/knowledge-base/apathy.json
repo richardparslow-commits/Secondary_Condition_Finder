@@ -2,8 +2,70 @@
   "id": "apathy",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review psychiatric, neuropsychiatric, medication-related, and sleep-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Identity-symptom overlap must be resolved before any promotion: apathy is categorized as a symptom in the roadmap; do not treat the syndrome label as a stand-alone service-connected diagnosis without clinical documentation.",
+    "Review neurologic and psychiatric pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Roadmap identity note (2026-09 expansion): apathy is categorized as a symptom; any individual claim needs a documented syndrome diagnosis from a clinician before this identity is used.",
+    "Authored conservatively as ASSOCIATION_ONLY: the Marin apathy literature defines apathy as distinct from depression with co-occurrence reported; it does not establish that apathy causes or aggravates depressive disorders in an individual."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Clinical literature defines apathy as a syndrome of diminished goal-directed behavior and motivation that is dissociable from major depression yet frequently co-occurring with it; population and clinical studies report elevated depressive symptom rates among patients exhibiting apathy syndromes across neurologic and psychiatric settings.",
+        "causationStatus": "Neither causation nor aggravation is established: apathy and major depression share overlapping symptom domains (diminished motivation, anhedonia, psychomotor slowing) that make co-occurrence expected without any directional causal pathway, and the cited literature does not demonstrate that apathy causes, worsens, or prolongs a depressive disorder in an individual veteran."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "A hypothesized frontostriatal dysregulation pathway (prelimbic and orbitofrontal circuit disruption) has been proposed to underlie both apathy syndromes and depressive episodes, but shared neural substrates would explain co-occurrence without establishing that one condition produces the other, so no directional mechanism is claimed here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The clinical literature distinguishes apathy from major depression while reporting that the two co-occur; it does not establish that a documented apathy syndrome caused or aggravated a depressive disorder in any individual. Chronology between the two conditions, syndrome-level documentation of apathy by a clinician, and review of competing explanations (including primary depressive disorder presenting with apparent apathy) all require case-specific review by a qualified medical professional.",
+        "evidenceGaps": "Clinician-documented apathy syndrome diagnosis distinct from depressive symptoms; chronology establishing whether apathy preceded or followed any depressive-disorder diagnosis; standardized apathy rating (such as a validated apathy scale) at relevant time points; psychiatric records distinguishing apathy from depression-related amotivation; competing etiologies including primary depressive disorder, medication effects, thyroid disease, and neurodegenerative processes",
+        "alternativeEtiologiesToRuleOut": [
+          "Primary major depressive disorder presenting with apparent amotivation rather than a distinct apathy syndrome",
+          "Medication effects (including sedatives, antipsychotics, and antiepileptics) producing motivation deficit",
+          "Neurodegenerative disease, prior neurologic injury, or other structural neurologic cause independent of any service-connected condition",
+          "Metabolic or endocrine contributors such as hypothyroidism or anemia"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: apathy is a clinically distinct amotivation syndrome that co-occurs with depression often enough to be mistaken for it, but the definitional overlap cuts against any causal inference, so this edge exists only to flag the association for evidence-gap review and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Formal apathy-syndrome diagnosis documented by a clinician with a validated instrument, distinct from depressive amotivation",
+        "Chronology between documented apathy and any depressive-disorder diagnosis or treatment",
+        "Psychiatric and neurologic records addressing competing explanations for diminished motivation",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Marin RS. Differential diagnosis and classification of apathy. Am J Psychiatry. 1990;147(1):22-30. PMID 2403472. doi:10.1176/ajp.147.1.22.",
+          "note": "Definitional review establishing apathy as a distinct clinical syndrome dissociable from major depression; supports the bounded co-occurrence/differential-diagnosis proposition and the identity-overlap caution, not individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/2403472/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 2403472; differential-diagnosis section distinguishing apathy from major depression",
+          "authorityCategory": "medical-scientific-evidence"
+        },
+        {
+          "citation": "Marin RS. Apathy: concept, syndrome, neural mechanisms, and treatment. Semin Clin Neuropsychiatry. 1996;1(4):304-314. PMID 10320433. doi:10.1053/SCNP00100304.",
+          "note": "Syndrome and neural-mechanism review describing frontostriatal circuit involvement in apathy and its co-occurrence with depressive states; supports the hypothesized shared-substrate framing only, with no directional causal claim.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10320433/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 10320433; syndrome definition and neural mechanisms discussion",
+          "authorityCategory": "medical-scientific-evidence"
+        }
+      ]
+    }
+  ]
 }

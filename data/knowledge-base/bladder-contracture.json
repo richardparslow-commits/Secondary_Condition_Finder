@@ -2,8 +2,68 @@
   "id": "bladder-contracture",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Review inflammatory-fibrosis, postsurgical, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: the cystitis literature documents contracted (small-capacity) bladder as the gross pathologic outcome of severe chronic inflammatory cystitis syndromes (ketamine-related cystitis is the best-documented modern example, and classic interstitial cystitis teaching includes advanced contracted-bladder disease), but the published evidence is syndrome-descriptive and etiologically heterogeneous, so the mapping asserts the co-occurrence proposition within chronic cystitis syndromes only and requires exclusion of non-inflammatory drivers in every case."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "urinary-frequency-retention",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The chronic-cystitis literature documents contracted bladder with bladder-wall thickening as the typical gross pathologic change in ketamine-related cystitis, characterized clinically by urinary frequency and bladder pain, and severe chronic cystitis syndromes broadly are described as producing small-capacity fibrotic bladders whose storage physiology manifests as severe frequency with variable emptying dysfunction; urologic-cause reviews (including genitourinary schistosomiasis systematic review data) document chronic inflammatory bladder disease progressing to fibrotic contracture with storage symptoms.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the evidence is syndrome-descriptive (case series, reviews, and etiology-specific cohorts such as ketamine and schistosomiasis) rather than controlled studies linking a diagnosed bladder contracture to urinary frequency/retention residuals in individual patients; a contracted bladder can coexist with neurogenic bladder, prior pelvic surgery or radiation, outlet obstruction, and medication effects that independently produce frequency and retention, and the fibrosis-symptom relationship in any individual requires urodynamic confirmation by a qualified medical professional, so no directional claim is asserted here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "A hypothesized chronic-inflammation-fibrosis pathway is described in the cystitis literature: sustained urothelial injury and mast-cell/eosinophil-rich inflammation drive denudation of the urothelium, submucosal edema, and progressive deposition of collagen within the bladder wall, reducing compliance and functional capacity until the chronically inflamed bladder becomes a contracted, small-capacity reservoir with severe storage symptoms (frequency, urgency) and sometimes impaired emptying; the ketamine-cystitis literature documents exactly this gross pathology with urinary frequency and bladder pain. This pathway explains the co-occurrence proposition within chronic inflammatory cystitis syndromes, but it does not establish that any individual's diagnosed contracture caused their frequency/retention pattern, because neurogenic, obstructive, postsurgical, and radiation etiologies produce overlapping physiology, and reverse contributions (primary voiding dysfunction sustaining inflammation) cannot be excluded without urodynamics.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only within chronic inflammatory cystitis syndromes. Individual determination requires urologic documentation of the bladder contracture (cystoscopy with capacity measurement and biopsy where performed), urodynamic characterization of the frequency/retention pattern with chronology, and exclusion of neurogenic, obstructive, surgical, and radiation drivers, all reviewed case by case by a qualified medical professional.",
+        "evidenceGaps": "Cystoscopic and imaging documentation of the bladder contracture with measured capacity and chronology; urodynamic studies characterizing the frequency/retention physiology; biopsy or laboratory evidence of the chronic inflammatory etiology; medication, surgical, and radiation history excluding iatrogenic contracture; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Neurogenic bladder (spinal cord injury, diabetes, multiple sclerosis) as the primary cause of frequency and retention",
+          "Bladder outlet obstruction (prostatic enlargement, urethral stricture) driving the storage and emptying pattern",
+          "Prior pelvic surgery or pelvic radiation producing a non-inflammatory contracted bladder",
+          "Medication effects (anticholinergics, opioids) causing retention with secondary frequency"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the contracted-bladder phenotype of severe chronic cystitis is well described in the syndrome literature, but symptom attribution in an individual depends on urodynamic and etiologic workup that the mapping cannot perform, so this edge flags the co-occurrence for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Cystoscopically documented bladder contracture with capacity measurement",
+        "Urodynamic confirmation of the frequency/retention pattern with chronology",
+        "Etiologic workup of the chronic cystitis (biopsy, laboratory, exposure history)",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Jhang JF, Hsu YH, Kuo HC. Possible pathophysiology of ketamine-related cystitis and associated treatment strategies. Int J Urol. 2015;22(9):816-825. PMID 26087832. doi:10.1111/iju.12841.",
+          "note": "Review documenting contracted bladder with bladder-wall thickening as the most typical gross pathologic change of ketamine-related cystitis, presenting with urinary frequency and bladder pain; supports the chronic-cystitis-to-contracted-bladder co-occurrence proposition within that syndrome, not general causation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26087832/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 26087832; gross pathology and presentation description"
+        },
+        {
+          "citation": "Khalaf I, Shokeir A, Shalaby M. Urologic complications of genitourinary schistosomiasis. World J Urol. 2012;30(1):31-38. PMID 21909645. doi:10.1007/s00345-011-0751-7.",
+          "note": "Systematic review documenting chronic inflammatory bladder disease (schistosomal cystitis) progressing to fibrotic contracture with storage and obstructive urinary symptoms; illustrates the inflammation-to-contracture sequence in an etiologically specific population, supporting the co-occurrence proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21909645/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 21909645; bladder complications sections"
+        }
+      ]
+    }
+  ]
 }

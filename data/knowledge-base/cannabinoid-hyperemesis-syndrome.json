@@ -1,9 +1,70 @@
 {
-  "id": "cannabinoid-hyperemesis-syndrome",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "cannabinoid-hyperemesis-syndrome",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 8 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Evidence ceiling is case-report class; promote only if a qualified human finds cohort or endoscopy-series evidence with denominators."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: the esophageal-injury literature for cannabinoid hyperemesis syndrome consists of individual case reports and case series embedded in treatment reviews, with no cohort denominators, so no directional claim beyond co-occurrence is supportable at the mapping level.",
+  "Duplicate-scope respected: no existing registry relationship originates from this primary, and the chronic-cannabis-use pathway itself is out of scope for a medical-causation mapping because substance etiology is the exposure, not a service-connected comorbidity edge."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "esophagitis",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "Case-report literature documents esophageal injury in the course of cannabinoid hyperemesis syndrome: a pregnant patient with syndrome-typical intractable emesis developed Mallory-Weiss esophageal tears during repeated admissions (Alaniz 2015), and an endoscopic workup in a syndrome case recorded mild reflux esophagitis before the syndrome diagnosis was reached (Aziz 2020); a pediatric case of syndrome-driven pneumomediastinum raised occult esophageal perforation as a managed concern (Klazura 2022).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: every identified record is a single case or a case series without denominators, esophagitis in these patients has competing explanations (gastroesophageal reflux, infection, medication use, alcohol, pregnancy-associated reflux), and no study reports esophagitis prevalence among unselected cannabinoid hyperemesis cohorts, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+    "primaryVector": "A hypothesized repetitive-emesis mechanical-injury pathway has been described: the syndrome's episodic intractable vomiting and retching exposes the distal esophageal mucosa to repeated acid-gastric contact and transient pressure spikes at the gastroesophageal junction, the same mechanical stress that produces Mallory-Weiss tears in forceful emesis of any cause; repeated mucosal exposure would manifest endoscopically as reflux-type esophagitis, with the most severe expression being mucosal or full-thickness tearing. The case reports fit this mechanism, but the mechanical pathway is generic to severe emesis rather than syndrome-specific, and no study measures esophageal injury incidence against emesis frequency in this population, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Esophageal injury is documented in individual cannabinoid hyperemesis cases, but individual determination requires endoscopic documentation of esophagitis with chronology relative to syndrome episodes, exclusion of reflux, infectious, eosinophilic, medication, alcohol, and pregnancy-associated contributors, and review case by case by a qualified medical professional.",
+    "evidenceGaps": "Esophagogastroduodenoscopy reports documenting esophagitis grade with chronology relative to syndrome episodes; symptom diaries or admission records establishing emetic frequency and severity; workup excluding gastroesophageal reflux disease, infection, eosinophilic and medication-induced esophagitis, alcohol use, and pregnancy-associated contributors; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Gastroesophageal reflux disease independent of emetic episodes",
+     "Infectious, eosinophilic, or medication-induced esophagitis",
+     "Alcohol or tobacco co-use with independent mucosal injury",
+     "Pregnancy-associated reflux or hyperemesis gravidarum as the emesis driver"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the esophageal-injury literature is entirely case-level, the mechanical-emesis pathway is generic rather than syndrome-specific, and no denominator-bearing study exists; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "evidenceGaps": [
+    "Esophagogastroduodenoscopy reports documenting esophagitis with chronology relative to cannabinoid hyperemesis syndrome episodes",
+    "Admission or symptom records establishing emetic frequency and severity",
+    "Workup excluding gastroesophageal reflux disease, infectious, eosinophilic, and medication-induced esophagitis, and alcohol or pregnancy-associated contributors",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ],
+   "sourceReferences": [
+    {
+     "citation": "Alaniz VI, Liss J, Metz TD, Stickrath E. Cannabinoid hyperemesis syndrome: a cause of refractory nausea and vomiting in pregnancy. Obstet Gynecol. 2015;125(6):1484-1486. PMID 25774930. doi:10.1097/AOG.0000000000000595.",
+     "note": "Case report of a pregnant patient with syndrome-typical intractable emesis and compulsive bathing who sustained Mallory-Weiss esophageal tears during repeated admissions; supports co-occurrence of esophageal injury with syndrome episodes at case level only, without prevalence or denominator data.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25774930/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 25774930; case report and conclusion"
+    },
+    {
+     "citation": "Aziz A, Waheed T, Oladunjoye O, Oladunjoye A, Hanif M, Latif F. Topical capsaicin for treating cannabinoid hyperemesis syndrome. Case Rep Gastrointest Med. 2020;2020:8868385. PMID 33294233. doi:10.1155/2020/8868385.",
+     "note": "Case report in which endoscopic evaluation during a cannabinoid hyperemesis workup recorded mild reflux esophagitis at initial presentation, with a negative repeat examination after symptom control; documents esophagitis co-occurrence at case level and illustrates the confounding role of independent reflux disease.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33294233/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 33294233; case presentation endoscopy findings"
+    }
+   ]
+  }
+ ]
 }

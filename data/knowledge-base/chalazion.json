@@ -1,9 +1,81 @@
 {
-  "id": "chalazion",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "chalazion",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 10 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "The mechanical pathway is supported by excision-reversal experiments (topographic astigmatism resolving after removal); promote toward directional language only if a qualified human finds population incidence data for vision loss from chalazion-induced corneal distortion."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: the chalazion-to-refractive-error literature documents measurable corneal topographic change and reversible visual blurring from eyelid-lesion compression, but visual acuity changes are small on average, populations include post-LASIK and pediatric special cases, and no study reports the incidence of lasting visual impairment, so no directional claim beyond co-occurrence is supportable at the mapping level.",
+  "Reversibility note recorded: the strongest evidence for the pathway is that excision or resolution of the lesion reverses the induced astigmatism and topographic flattening, which supports mechanism while simultaneously bounding the clinical significance for persistent visual-impairment claims to chronic, untreated, centrally located lesions."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "visual-impairment",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "Prospective quasi-experimental data (253 eyelids, 195 patients) document chalazion-induced corneal astigmatism (mean keratometry difference 0.34 D) and topographic surface-regularity change that decrease after excision, with larger effects from single, firm, centrally located lesions (Bagheri 2009); case documentation describes chalazion-induced hyperopic shift with 20/60 uncorrected acuity resolving completely as the lesion resolved (Cosar 2001); early optometric measurement demonstrated astigmatic change in the axis of the lesion (Nisted 1974).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the observed refractive and topographic changes are largely reversible and small on average, the strongest data derive from excision trials rather than natural-history cohorts, lasting visual impairment is not reported as an outcome in the general chalazion population, and coexisting blepharokeratoconjunctivitis, dry eye, and amblyopia risk factors are active competing explanations, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+    "primaryVector": "A mechanically supported compression pathway: a chalazion is a chronic lipogranulomatous nodule of the tarsal (meibomian) gland; its mass effect against the globe through the eyelid produces focal corneal compression and distortion in the region of contact, altering corneal curvature and generating irregular (often against-the-lesion-axis) astigmatism; the post-LASIK case demonstrating topographic central flattening geometrically corresponding to the lesion position and the excision trials demonstrating reversal of keratometric change after removal together support the mechanical vector directly. The mechanism explains the measured refractive change, but whether chronic compression produces lasting corneal or visual impairment in untreated lesions is not documented in any identified cohort, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Chalazion produces measurable, largely reversible corneal topographic change in measured series, but individual determination requires refraction and corneal topography documenting the visual effect with its relationship to lesion position, exclusion of coexisting corneal disease, and review case by case by a qualified medical professional.",
+    "evidenceGaps": "Best-corrected and uncorrected visual acuity records with refraction and corneal topography documenting the effect and its correspondence to lesion location; lesion documentation (size, position, duration, recurrence) with chronology relative to the visual change; workup excluding coexisting blepharokeratoconjunctivitis, dry-eye disease, and amblyopia risk factors; treatment-response records showing resolution or persistence of the visual effect; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Coexisting blepharokeratoconjunctivitis with its own corneal scarring and vascularization",
+     "Dry-eye disease and tear-film instability as the refractive fluctuation source",
+     "Amblyopia or refractive error independent of the eyelid lesion",
+     "Prior refractive surgery or corneal ectasia as the topographic-change driver"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the compression pathway is the best-mechanism-supported of the D1 association edges but the outcome evidence is reversible refractive change rather than lasting visual impairment, and no incidence data exist; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "sourceReferences": [
+    {
+     "citation": "Bagheri A, Hasani HR, Karimian F, Abrishami M, Yazdani S. Effect of chalazion excision on refractive error and corneal topography. Eur J Ophthalmol. 2009;19(4):521-526. PMID 19551663. doi:10.1177/112067210901900401.",
+     "note": "Prospective quasi-experimental trial (253 eyelids, 195 patients) reporting mean 0.34 D keratometric-astigmatism change and significant surface-regularity improvement after excision, with larger effects from single, firm, central upper-lid lesions; supports the mechanical pathway with excision-reversal evidence rather than natural-history impairment data.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19551663/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 19551663; results and conclusions"
+    },
+    {
+     "citation": "Cosar CB, Rapuano CJ, Cohen EJ, Laibson PR. Chalazion as a cause of decreased vision after LASIK. Cornea. 2001;20(8):890-892. PMID 11685074. doi:10.1097/00003226-200111000-00024.",
+     "note": "Case documentation of chalazion-induced hyperopic shift with uncorrected acuity 20/60 and topographic central corneal flattening geometrically matching the lesion, resolving completely as the chalazion resolved; supports the compression mechanism directly at case level and illustrates the reversibility bounding the impairment claim.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11685074/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 11685074; results and conclusion"
+    },
+    {
+     "citation": "Nisted M, Hofstetter HW. Effect of chalazion on astigmatism. Am J Optom Physiol Opt. 1974;51(8):579-582. PMID 4413027. doi:10.1097/00006324-197408000-00007.",
+     "note": "Early optometric measurement demonstrating chalazion-associated astigmatic change oriented to the lesion; supports the mechanical effect at measurement level without outcome-attribution data.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/4413027/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 4413027; title-recorded measurement finding"
+    }
+   ],
+   "evidenceGaps": [
+    "Best-corrected and uncorrected visual acuity records with refraction and corneal topography documenting the effect and its correspondence to lesion location",
+    "Lesion documentation (size, position, duration, recurrence) with chronology relative to the visual change",
+    "Workup excluding coexisting blepharokeratoconjunctivitis, dry-eye disease, and amblyopia risk factors",
+    "Treatment-response records showing resolution or persistence of the visual effect",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ]
+  }
+ ]
 }

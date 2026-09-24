@@ -2,8 +2,141 @@
   "id": "erythropoietic-protoporphyria",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 31 (2026-09-23): draft edges pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Population-scope guard: the national-registry figures (Levy 2025) pool EPP with X-linked protoporphyria (8.7% of the cohort); the EPP-specific share is not separately stratified for every outcome and is recorded as a guard on the edges."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 31 (2026-09-23): two bounded associations authored - an EPP-to-cholelithiasis association anchored on the early-age pigment-gallstone literature (Minder 1993 review: gallstone development at an early age is a recognized complication; Lock 1996 documents symptomatic gallstones over 20 years in a protoporphyric patient with porphyrin-rich stones) and an EPP-to-chronic-liver-disease association anchored on the Levy 2025 national longitudinal registry (322 patients: 56.2% with any liver-chemistry abnormality, 3.4% with advanced protoporphyric hepatopathy mostly requiring transplant, 62.5% of deaths attributable to liver disease) and the Meerman 2000 hepatic overview documenting protoporphyrin deposition as the hepatotoxic mechanism.",
+    "The cholelithiasis and chronic-liver-disease targets carry zero incoming edges, so no duplicate-scope conflict arises; no anemia or scarring edge is authored because EPP is not an anemia-producing porphyria (iron studies are typically normal or elevated) and cutaneous scarring lacks a catalog-fit quantified outcome - recorded as evidence gaps."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cholelithiasis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Gallstone development at an early age is a recognized EPP complication (Minder 1993 review of the disease course), porphyrin-rich pigment stones are documented in EPP patients including the Lock 1996 case with more than 20 years of symptomatic gallstones, and the mechanism literature attributes stones to excess protoporphyrin excreted in bile precipitating as pigment calculi; the overview literature records cholelithiasis as a characteristic childhood-or-early-adulthood feature of the disease.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: EPP-population gallstone prevalence is not precisely stratified in the registry literature, pigment stones share risk factors with other cholestatic and hemolytic states, and ultrasound documentation of stones with composition assessment is required rather than symptom attribution."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "A hypothesized protoporphyrin-pigment-stone pathway: free protoporphyrin from the heme-biosynthesis defect is excreted in bile, where its poor solubility promotes precipitation with bilirubin and calcium as dark pigment calculi; stones can form from childhood onward and may complicate the biliary tree (choledocholithiasis), compounding the protoporphyrin-induced cholestasis of severe hepatic involvement. Individual attribution requires imaging documentation of stones.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The gallstone association is mechanistically specific and review-documented but lacks precise EPP-population prevalence denominators in the cited literature; stones must be documented by imaging, composition where available, and competing stone risk factors (hemolysis, obesity, biliary disease) excluded; no probability estimate is asserted.",
+        "evidenceGaps": "Documented EPP (plasma or erythrocyte protoporphyrin elevation, genetic confirmation); imaging-documented cholelithiasis with chronology compatible with the disease course; stone composition where available; exclusion of hemolytic anemia, obesity, and independent biliary disease; gastroenterology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Hemolytic anemia as the pigment-stone driver",
+          "Obesity, rapid weight loss, or dietary stone risk",
+          "Independent biliary or gallbladder disease",
+          "Medication-induced bile changes",
+          "Choledochal or biliary anatomic abnormality"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented EPP (plasma or erythrocyte protoporphyrin elevation, genetic confirmation); imaging-documented cholelithiasis with chronology compatible with the disease course; stone composition where available; exclusion of hemolytic anemia, obesity, and independent biliary disease; gastroenterology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the early-age pigment-gallstone association is characteristic of the disease and mechanistically specific, but population denominators are imprecise and imaging documentation is required; no causation is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Minder EI, Schneider-Yin X. Often unrecognized: erythropoietic protoporphyria. Schweiz Med Wochenschr. 1993 Feb 13;123(6):229-233. PMID 8434252.",
+          "note": "Disease-course review: development of gallstones at an early age is one possible complication of EPP, and terminal liver failure from intrahepatic protoporphyrin deposition is rare but fatal - the early-gallstone and liver-complication anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8434252/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 8434252; early-age gallstone complication statement"
+        },
+        {
+          "citation": "Lock G, Holstege A, Mueller AR, et al. Liver failure in erythropoietic protoporphyria associated with choledocholithiasis and severe post-transplantation polyneuropathy. Liver. 1996 Jun;16(3):211-217. PMID 8873010.",
+          "note": "Case documenting more than 20 years of symptomatic gallstones in an EPP patient with porphyrin-rich stone physiology and the interaction of choledocholithiasis with protoporphyric cholestasis - the pigment-stone case anchor, used with the case-report-class guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8873010/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 8873010; symptomatic gallstones and porphyrin physiology in EPP"
+        },
+        {
+          "citation": "Levy C, Naik H, Overbey J, et al. Liver involvement in a large cohort of patients with erythropoietic protoporphyria and X-linked protoporphyria. Hepatol Commun. 2025 Mar 1;9(3):e0657. PMID 39969427.",
+          "note": "National longitudinal registry (322 patients): 56.2% with any liver-chemistry abnormality, 3.4% with advanced protoporphyric hepatopathy, 62.5% of deaths attributable to liver disease - the population liver-burden anchor (used on both EPP edges with the EPP/XLP pooling guard).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39969427/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39969427; 56.2% liver-chemistry abnormality and hepatopathy findings"
+        }
+      ]
+    },
+    {
+      "conditionId": "chronic-liver-disease",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "In the Levy 2025 national longitudinal registry of 322 EPP/XLP patients, 56.2% had liver-chemistry abnormalities (associated with higher erythrocyte protoporphyrin levels), 3.4% had advanced protoporphyric hepatopathy with most requiring transplantation, and 62.5% of cohort deaths were attributable to liver disease; the Meerman 2000 overview documents intrahepatic protoporphyrin deposition with canalicular obstruction and progressive fibrosis as the hepatotoxic mechanism.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the registry pools EPP with X-linked protoporphyria, most chemistry abnormalities remain mild without progressive disease, and advanced hepatopathy is uncommon; individual claims require documented hepatic involvement with protoporphyrin physiology confirmed and other liver diseases excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "A hypothesized protoporphyrin-cholestasis fibrosis pathway: excess free protoporphyrin is taken up by the liver and precipitates in canaliculi and hepatocytes, producing cholestatic injury; in a small minority the obstruction, inflammation, and repeated protoporphyrin deposition drive progressive periportal fibrosis and cirrhosis with liver failure that is transplant-dependent. The pathway is the accepted biology of protoporphyric hepatopathy; individual claims require biopsy or imaging confirmation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Liver-chemistry abnormalities are common but advanced hepatopathy is uncommon (3.4%) and the registry pools EPP with XLP; chronic liver disease must be documented by persistent chemistry changes with imaging or histology, viral, alcoholic, and metabolic liver diseases excluded, and the transplant-requiring minority not generalized to all EPP patients; no probability estimate is asserted.",
+        "evidenceGaps": "Documented EPP with persistent liver-chemistry abnormalities; imaging or histologic documentation of hepatic involvement (fibrosis, protoporphyrin deposits); exclusion of viral hepatitis, alcohol-related liver disease, and metabolic causes; hepatology assessment of the individual relationship; surveillance chronology",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Viral hepatitis B or C",
+          "Alcohol-associated liver disease",
+          "Hemochromatosis, Wilson disease, or other metabolic liver disease",
+          "Drug- or supplement-induced liver injury",
+          "Biliary obstruction from unrelated causes"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented EPP with persistent liver-chemistry abnormalities; imaging or histologic documentation of hepatic involvement (fibrosis, protoporphyrin deposits); exclusion of viral hepatitis, alcohol-related liver disease, and metabolic causes; hepatology assessment of the individual relationship; surveillance chronology"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: protoporphyric hepatopathy is a recognized severe complication documented in the national registry, but it affects a small minority, most chemistry changes remain mild, and the registry pools EPP with XLP; no causation or population-level severity claim is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Levy C, Naik H, Overbey J, et al. Liver involvement in a large cohort of patients with erythropoietic protoporphyria and X-linked protoporphyria. Hepatol Commun. 2025 Mar 1;9(3):e0657. PMID 39969427.",
+          "note": "National longitudinal registry (322 patients): 56.2% liver-chemistry abnormalities tied to protoporphyrin levels, 3.4% advanced hepatopathy mostly transplant-requiring, 62.5% of deaths liver-attributable - the population anchor for the hepatic association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39969427/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39969427; hepatopathy prevalence and mortality findings"
+        },
+        {
+          "citation": "Meerman L. Erythropoietic protoporphyria. An overview with emphasis on the liver. Scand J Gastroenterol Suppl. 2000;(232):79-85. PMID 11232498.",
+          "note": "Hepatic overview: protoporphyrin insolubility produces canalicular deposition, cholestasis, and progressive fibrosis in the severe minority - the mechanism anchor for the hepatic pathway.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11232498/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 11232498; protoporphyrin hepatotoxicity overview"
+        },
+        {
+          "citation": "Minder EI, Schneider-Yin X. Often unrecognized: erythropoietic protoporphyria. Schweiz Med Wochenschr. 1993 Feb 13;123(6):229-233. PMID 8434252.",
+          "note": "Disease-course review: terminal liver failure from intrahepatic protoporphyrin deposition is a rare but fatal complication treatable only by transplantation - the severity-distribution anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8434252/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 8434252; liver-failure rarity and severity statement"
+        }
+      ]
+    }
+  ]
 }

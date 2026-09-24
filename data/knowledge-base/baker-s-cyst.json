@@ -2,8 +2,12 @@
   "id": "baker-s-cyst",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): identity deferred with a documented scope barrier instead of an authored edge, per the repo's established deferral convention (see ME-30/ME-32 precedents and the ME-35 proposed-research-ledger exclusion record).",
+    "ME-35 explicitly excluded `baker-s-cyst -> deep-vein-thrombosis` because the strongest evidence describes a diagnostic mimic relationship and a 2022 study reports popliteal cysts are not a DVT risk factor; no other catalog target identity currently has a defensible condition-specific evidence base.",
+    "Revisit only if a target-specific source emerges that establishes a durable, non-mimic relationship; do not infer medical causation from rating-schedule authority."
+  ],
+  "governanceNotes": [
+    "Deliberate deferral, not an authored suggestion: the ME-35 screening already examined this identity and excluded the only candidate edge on evidence grounds (popliteal cyst as a diagnostic DVT mimic, not a risk factor for DVT). Authoring a weaker substitute edge would contradict the recorded exclusion reasoning, so the identity remains intentionally suggestion-free."
   ],
   "suggestions": []
 }

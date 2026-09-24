@@ -1,9 +1,13 @@
 {
   "id": "alopecia",
   "draft": true,
+  "suggestions": [],
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 24 (2026-09-22): identity deferred — the ME-29 / batch-14 deferral was re-screened and reaffirmed; no edge authored.",
+    "ME-29 deliberately left the broad alopecia identity unmapped because the narrower alopecia-areata identity already carries areata-specific psychiatric edges (expansion rule 11). The 2026-09-22 NCBI re-screen confirmed the psychiatric hair-loss comorbidity evidence remains areata-scoped (Toussi 2021 PMID 32561373; Villasante Fricke 2015 PMID 26244028; Drake 2023 PMID 37900780), so any broad-identity edge would recycle that evidence."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Deferral reason (reaffirmed 2026-09-22, D1 batch 24): the only available psychiatric comorbidity evidence for hair loss is alopecia-areata-specific; authoring the broad identity would duplicate the narrower areata edges contrary to expansion rule 11. Verified on re-screen: the alopecia-areata file continues to carry its depressive-disorder edge, so no coverage gap is created by leaving this identity unmapped.",
+    "Outgoing evidence barrier unchanged: scarring (cicatricial) alopecia outcome cohorts report scarring prevalence, not secondary conditions, and no catalog identity exists for the appearance-distress pathway outside the areata-scoped evidence. Revisit only if a qualified human adds condition-specific, directional evidence for a non-areata alopecia etiology."
+  ]
 }

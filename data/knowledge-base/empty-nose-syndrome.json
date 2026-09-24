@@ -2,8 +2,77 @@
   "id": "empty-nose-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 27 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "An insomnia/sleep edge was screened and closed: the targeted NCBI esearch for empty nose syndrome with sleep/insomnia outcomes returned zero records (2026-09-23), and the only sleep-related record (Huang 2022, PMID 35665478) is a brief without retrievable abstract content, insufficient to anchor an edge; the sleep pathway is recorded as an evidence gap rather than an assertion."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 27 (2026-09-23): one bounded depressive-disorder association authored from the prospective Chang Gung BDI-II/BAI case-control data and the suicidal-ideation case series, with the 2025 systematic review's evidence-paucity conclusion recorded as a guard; the mood pathway is chronic-disease-burden mediated and the reverse direction (depression amplifying symptom reporting) is documented in the sources and recorded.",
+    "The direct ENS-to-insomnia search returned zero PubMed records (2026-09-23 screen), so no sleep edge was authored despite the symptom cluster's plausibility; this negative screen is preserved so future batches do not re-treat the pathway as unexamined."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "In a prospective case-control study of 40 ENS patients and 40 age- and sex-matched controls, ENS patients had significantly elevated Beck Depression Inventory-II and Beck Anxiety Inventory scores versus controls, improved after nasal reconstruction yet remained significantly worse than controls, and 22.5% carried residual postoperative psychological symptoms with preoperative BDI-II > 28.5 predicting residual burden (Huang 2023); suicidal thoughts were identified in 23 of 62 ENS patients preoperatively and tracked with SNOT-25, ENS6Q, BDI-II, and BAI severity (Huang 2022); the 2025 systematic review pooled 957 ENS patients across 35 articles and concluded the evidence base remains sparse (Hussain 2025).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the case-control design cannot exclude reverse direction (chronic breathlessness dissatisfaction and disability amplify both depression and symptom reporting), the cohort is a single tertiary referral center with surgically selected patients, and the systematic review's evidence-paucity conclusion caps the inference; depression comorbidity in a chronic-symptom population is shared-driver confounded and case-specific review is required."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized chronic-airflow-symptom-burden pathway: persistent paradoxical nasal obstruction despite a patent airway produces disabling breathlessness dissatisfaction, sleep fragmentation, impaired nasal-airway quality of life, and frustration with prior sinus surgery, and this cumulative symptom burden is hypothesized to drive or amplify depressive symptomatology; the reconstruction-linked improvement in BDI-II scores alongside persistent residual symptoms supports a symptom-burden-linked component while showing the mood burden is not fully reversible by airway surgery alone.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The mood association rests on a 40-patient single-center case-control and a suicidal-ideation case series with the systematic review recording evidence paucity; reverse direction and shared tertiary-referral selection cannot be excluded, depression must meet structured diagnostic criteria rather than scale elevations alone, and no probability estimate is asserted.",
+        "evidenceGaps": "Documented empty nose syndrome after turbinate-reducing sinonasal surgery with ENS6Q or equivalent instrumentation; structured depression diagnosis (DSM-5 criteria or structured interview) rather than scale elevation alone; chronology of mood symptoms relative to the nasal surgery and ENS onset; exclusion of premorbid mood disorder and independent psychosocial drivers; otolaryngology and psychiatry review of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Premorbid or independent major depressive disorder predating the nasal surgery",
+          "Chronic rhinosinusitis recurrence or other active sinonasal disease driving symptoms",
+          "Depressive symptoms attributable to opioid, corticosteroid, or other medication exposure",
+          "Sleep-disordered breathing of independent etiology",
+          "Compensation-seeking or litigation-related symptom amplification"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented empty nose syndrome after turbinate-reducing sinonasal surgery with ENS6Q or equivalent instrumentation; structured depression diagnosis (DSM-5 criteria or structured interview) rather than scale elevation alone; chronology of mood symptoms relative to the nasal surgery and ENS onset; exclusion of premorbid mood disorder and independent psychosocial drivers; otolaryngology and psychiatry review of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the ENS-depression association is prospectively documented against matched controls with dose-response-like severity tracking, but the evidence base is case-series class at a single center, the systematic review records evidence paucity, and the reverse direction is live; no causation or probability is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Huang CC, Wu PW, Huang CC, et al. Identifying Residual Psychological Symptoms after Nasal Reconstruction Surgery in Patients with Empty Nose Syndrome. J Clin Med. 2023 Mar 31;12(7):2635. PMID 37048718.",
+          "note": "Prospective case-control study (40 ENS patients, 40 age- and sex-matched controls): BDI-II and BAI significantly elevated versus controls, improved after reconstruction but remained significantly greater than controls, 22.5% with residual postoperative psychological symptoms, preoperative BDI-II > 28.5 predictive - the mood-burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37048718/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 37048718; BDI-II/BAI case-control comparisons and 22.5% residual-symptom finding"
+        },
+        {
+          "citation": "Huang CC, Wu PW, Lee CC, et al. Suicidal thoughts in patients with empty nose syndrome. Laryngoscope Investig Otolaryngol. 2022 Jan 19;7(1):22-28. PMID 35155779.",
+          "note": "Prospective case series (n=62): suicidal thoughts in 23 patients preoperatively, tracking with SNOT-25, ENS6Q, BDI-II, and BAI severity - the severity-tracking and clinical-burden anchor, used with the case-series-class guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35155779/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 35155779; 23/62 preoperative suicidal-thoughts finding"
+        },
+        {
+          "citation": "Hussain S, Hayat J, Almhanedi H, et al. A Systematic Review and Meta-Analysis of Management Options for Empty Nose Syndrome: A Proposed Management Algorithm. Otolaryngol Head Neck Surg. 2025 Jan;172(1):1-12. PMID 39126290.",
+          "note": "Systematic review of 35 articles comprising 957 individual ENS patients: concludes there is a paucity of evidence on the management of ENS - the evidence-scope guard capping the inferential weight of the case-series literature.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39126290/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39126290; evidence-paucity conclusion over 957 pooled patients"
+        }
+      ]
+    }
+  ]
 }

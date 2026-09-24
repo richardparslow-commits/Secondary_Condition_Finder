@@ -1,9 +1,82 @@
 {
-  "id": "choroiditis",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "choroiditis",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 11 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "The blood-retinal-barrier mechanism is supported by review-level exudative-detachment pathogenesis and VKH-defined serous detachments; if a qualified human finds cohort incidence data for detachment in non-VKH choroiditis populations, a higher tier may be appropriate."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: exudative retinal detachment is a recognized complication of inflammatory chorioretinal disease, and in Vogt-Koyanagi-Harada the serous detachments are part of the defined presentation, but the strongest association data come from uveitis-clinic case series and pathogenesis reviews rather than population incidence cohorts, so no directional claim beyond co-occurrence is supportable at the mapping level.",
+  "Identity boundary recorded: VKH serous detachment is part of that syndrome's own diagnostic picture, so the edge must not be read as a claim that choroiditis independently causes retinal detachment in all etiologies; infectious and infiltrative etiologies carry different mechanisms and outcomes."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "retinal-detachment",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The definitive review of exudative retinal detachment identifies inflammatory disruption of the blood-retinal barrier, including choroiditis within the uveitis spectrum, as an established mechanism category for serous subretinal fluid collection in uveitis-clinic populations (Amer 2017); Vogt-Koyanagi-Harada disease, a severe bilateral granulomatous panuveitis with choroiditis, is defined by bilateral serous retinal detachments among its presenting features (Bonnet 2017; Baltmr 2016).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the association rests on uveitis-clinic series and pathogenesis reviews without population denominators, in VKH the serous detachments are part of the syndrome's own defined presentation rather than an independently caused outcome, and competing mechanisms (infectious, neoplastic, vascular, iatrogenic) account for many detachments, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "IMMUNE_MEDIATED",
+    "primaryVector": "An inflammatory barrier-failure pathway is hypothesized: choroidal inflammation increases vascular permeability and disrupts the blood-retinal barrier at the retinal pigment epithelium and choriocapillaris; protein-rich exudate then accumulates in the subretinal space, separating the neurosensory retina from the RPE and producing the exudative (serous) detachments documented in uveitis-clinic series and defined within the VKH presentation. The mechanism is physiologically coherent and review-supported, but no cohort incidence data establish the progression rate in general choroiditis populations, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Exudative detachment co-occurs with inflammatory choroidal disease in series and reviews, but individual determination requires OCT or clinical documentation of the detachment with its relationship to active inflammation, exclusion of other mechanisms, and review by a qualified medical professional.",
+    "evidenceGaps": "OCT or clinical documentation characterizing the retinal detachment and its serous versus rhegmatogenous nature with chronology relative to choroiditis activity; inflammatory-activity records (angiography, OCT choroidal thickness, cell grades) contemporaneous with the detachment; workup excluding infectious, neoplastic, vascular, and iatrogenic detachment mechanisms; treatment-response records showing detachment resolution with inflammation control; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Rhegmatogenous retinal detachment from lattice degeneration or trauma",
+     "Infectious chorioretinitis with independent exudative behavior",
+     "Neoplastic or infiltrative subretinal processes (lymphoma, metastases)",
+     "Central serous chorioretinopathy with its own endocrine and stress-related drivers",
+     "Iatrogenic or post-surgical detachment"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the barrier-failure mechanism is review-supported and the VKH association is definitional, but no incidence denominators exist and competing mechanisms are pervasive; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "sourceReferences": [
+    {
+     "citation": "Amer R, Nalcı H, Yalçındağ N. Exudative retinal detachment. Surv Ophthalmol. 2017;62(6):723-769. PMID 28506603. doi:10.1016/j.survophthal.2017.05.001.",
+     "note": "Definitive pathogenesis review identifying inflammatory blood-retinal-barrier breakdown, including choroiditis within the uveitis spectrum, as an established mechanism category for exudative retinal detachment in uveitis-clinic populations.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28506603/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 28506603; abstract pathogenesis discussion"
+    },
+    {
+     "citation": "Bonnet C, Daudin JB, Monnet D, Brézin A. Vogt-Koyanagi-Harada disease. J Fr Ophtalmol. 2017;40(6):512-519. PMID 28579215. doi:10.1016/j.jfo.2017.02.006.",
+     "note": "VKH review defining the disease as severe bilateral granulomatous panuveitis associated with serous retinal detachments; supports the co-occurrence at syndrome-definition level rather than as an independently caused outcome.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28579215/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 28579215; abstract definition"
+    },
+    {
+     "citation": "Baltmr A, Lightman S, Tomkins-Netzer O. Vogt-Koyanagi-Harada syndrome - current perspectives. Clin Ophthalmol. 2016;10:2345-2361. PMID 27932857. doi:10.2147/OPTH.S94866.",
+     "note": "Moorfields uveitis-service review describing bilateral panuveitis with serous retinal detachments and significant vision loss; documents the clinical association and its treatment dependence without population incidence data.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27932857/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 27932857; abstract"
+    }
+   ],
+   "evidenceGaps": [
+    "OCT or clinical documentation characterizing the retinal detachment and its serous versus rhegmatogenous nature with chronology relative to choroiditis activity",
+    "Inflammatory-activity records (angiography, OCT choroidal thickness, cell grades) contemporaneous with the detachment",
+    "Workup excluding infectious, neoplastic, vascular, and iatrogenic detachment mechanisms",
+    "Treatment-response records showing detachment resolution with inflammation control",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ]
+  }
+ ]
 }

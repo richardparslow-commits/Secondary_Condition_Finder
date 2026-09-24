@@ -1,8 +1,311 @@
 {
-  "id": "dermatitis",
-  "draft": true,
-  "todo": [
-    "Rebuild dermatitis-related secondary-condition suggestions with condition-specific clinical evidence; prior generic mood and medication-to-GERD pathways lacked direct supporting citations."
-  ],
-  "suggestions": []
+ "id": "dermatitis",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 20 (2026-09-23): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Generic-identity guard: the quantified anchors are adult atopic-dermatitis populations; the generic dermatitis identity subsumes contact, stasis, and nummular subtypes whose burdens are not separately characterized - individual-level attribution must anchor to the patient's specific subtype.",
+  "Misdiagnosis guard for the cellulitis edge: the pathway source itself documents eczema among conditions frequently mistaken for cellulitis; diagnostic substitution must be excluded before any sequence claim."
+ ],
+ "governanceNotes": [
+  "All four edges authored at ASSOCIATION_ONLY with NOT_ESTABLISHED consensus and hypothesizedOnly mechanisms: the burden and infection pathways are biologically standard, but every quantified anchor is cross-sectional or small-cohort, bidirectionality (itch-sleep, mood-itch) is documented in the same sources, and no incidence denominator ties outcomes to the generic dermatitis identity.",
+  "Sleep-mediated pathway recorded via the Silverberg mediation analysis (AD severity -> sleep disturbance -> HADS anxiety/depression), with the explicit caveat that statistical mediation in cross-sectional data does not order variables causally.",
+  "Medication-confound guard: first-generation antihistamines used for itch carry cognitive/sedation effects (documented in the antihistamine NMA literature reviewed for this batch), relevant to both sleep and mood attribution."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "insomnia",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The sleep-disorder review documents sleep disturbance in 33%-90% of adults with atopic dermatitis, driven by nocturnal pruritus and disease pathophysiology (Bawany 2021); the US population survey (n=2,893) found 40.7% of AD adults reporting 1+ disturbed nights weekly, rising with disease severity (Silverberg 2022); the ISI-scored pilot cohort quantified a flare-dependent increase from a mean 8.7 between flares to 16 during flares (Mann 2020).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the itch-arousal pathway is standard but the evidence base is cross-sectional or small-cohort; bidirectionality is documented (sleep loss itself amplifies itch and scratch cycles); flares confound chronic-disease attribution; and the same sources state pruritus is not the only insomnia driver, so subset attribution within dermatitis requires individual documentation."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+    "primaryVector": "A hypothesized itch-arousal pathway: chronic dermatitis sustains nocturnal pruritus; scratching and cytokine-mediated arousal (the literature implicates both mechanical stimulation and inflammatory mediators) repeatedly fragment sleep; over time the recurring sleep-interruption pattern presents clinically as insomnia. Whether the pattern persists once the dermatitis is controlled, and how much of each patient's insomnia is attributable to it, is individual and unquantified.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "Prevalence and mechanism data are adult-AD-anchored; generic dermatitis subsumes additional entities (contact, stasis, nummular) whose sleep burden is not separately characterized; the mediation analysis is cross-sectional and cannot order the itch-sleep-mood relationships; bidirectional itch-sleep amplification prevents one-direction attribution without individual chronology.",
+    "evidenceGaps": "Documented dermatitis diagnosis with nocturnal itch and flare-locked insomnia chronology; exclusion of primary insomnia, sleep apnea, restless legs, and circadian disorders; medication-effect review (sedating antihistamines); validated instrument scores",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Primary insomnia and independent sleep disorders",
+     "Obstructive sleep apnea and restless legs syndrome",
+     "Sedating medication effects (first-generation antihistamines)",
+     "Depression/anxiety-driven sleep disruption (reverse direction)"
+    ]
+   },
+   "evidenceGaps": [
+    "Documented dermatitis diagnosis with nocturnal itch and flare-locked insomnia chronology; exclusion of primary insomnia, sleep apnea, restless legs, and circadian disorders; medication-effect review (sedating antihistamines); validated instrument scores"
+   ],
+   "rationale": "Authored at ASSOCIATION_ONLY: the itch-arousal pathway is biologically standard and prevalence is well quantified, but the evidence is cross-sectional with documented bidirectionality and flare confounding; no causal claim is forced.",
+   "sourceReferences": [
+    {
+     "citation": "Bawany F, Northcott CA, Beck LA, Pigeon WR. Sleep Disturbances and Atopic Dermatitis: Relationships, Methods for Assessment, and Therapies. J Allergy Clin Immunol Pract. 2021 Apr;9(4):1488-1500. PMID 33321263.",
+     "note": "Review: sleep disturbances affect 33%-90% of adults with atopic dermatitis; nocturnal pruritus and the complex AD pathophysiology underlie sleep disruption; most evidence uses subjective measures.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33321263/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 33321263; adult sleep-disturbance prevalence band and mechanisms"
+    },
+    {
+     "citation": "Silverberg JI, Chiesa-Fuxench Z, Margolis D, et al. Epidemiology and Burden of Sleep Disturbances in Atopic Dermatitis in US Adults. Dermatitis. 2022 Nov-Dec;33(6S):S104-S113. PMID 33675326.",
+     "note": "US population-based cross-sectional survey (n=2,893): 40.7% of adults meeting UK criteria for AD reported 1+ nights of sleep disturbance in the past week; more severe sleep disturbance was associated with higher HADS anxiety/depression scores, and sleep-disturbance severity mediated the AD-to-anxiety/depression associations.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33675326/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 33675326; sleep-disturbance prevalence and HADS mediation analysis"
+    },
+    {
+     "citation": "Mann C, Dreher M, Weess HG, Staubach P. Sleep Disturbance in Patients with Urticaria and Atopic Dermatitis: An Underestimated Burden. Acta Derm Venereol. 2020;100(6):adv00073. PMID 32016441.",
+     "note": "Pilot cohort (n=61, ISI-scored): mean Insomnia Severity Index rose from 8.7 between flares to 16 during AD flares; authors note pruritus may not be the only driver of insomnia in AD.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32016441/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 32016441; flare-dependent insomnia severity in AD"
+    }
+   ]
+  },
+  {
+   "conditionId": "cellulitis",
+   "rank": 2,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The pathophysiology review establishes impaired skin barrier as the portal for cellulitis and names chronic barrier diseases as predisposing contexts (Cranendonk 2017); the primary-care review links untreated pruritus-scratch cycles to bacterial skin complications and directs itch treatment at preventing them (Moses 2003). The same review that supports the pathway also documents that eczema is frequently mistaken for cellulitis, so a claimed sequence may in fact be a diagnostic substitution.",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: barrier-failure entry is qualitatively standard biology, but no incidence denominator quantifies cellulitis occurrence in dermatitis populations; fissuring/erosion severity varies by subtype; venous insufficiency, diabetes, obesity, and lymphatic damage are independent and often dominant risk factors; and the misdiagnosis guard means some apparent sequences are reclassifications rather than outcomes."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "INFECTIOUS_SPREAD",
+    "primaryVector": "A hypothesized barrier-failure pathway: chronic dermatitis produces fissures, excoriations, and impaired stratum-corneum integrity; beta-hemolytic streptococci or Staphylococcus aureus enter through these breaks; superficial infection extends into the dermis and subcutis as cellulitis. Conversion frequency is unmeasured, and persistent post-inflammatory lymphatic damage can compound recurrence once infection occurs.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "The pathway is the standard teaching but its actual incidence in dermatitis populations is unquantified; the misdiagnosis finding (eczema among the conditions frequently mistaken for cellulitis) creates a systematic over-call risk; patient-level attribution requires excluding the independent major risk factors before the dermatitis pathway can carry any weight.",
+    "evidenceGaps": "Culture or firm clinical cellulitis documentation with a dermatitis-attributable entry site; exclusion of venous insufficiency, tinea pedis, lymphedema, and diabetes; recognition that eczema mimics cellulitis (misdiagnosis guard)",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Venous insufficiency and stasis dermatitis (the mimic)",
+     "Tinea pedis as the portal",
+     "Lymphedema and prior lymphatic damage",
+     "Diabetes and obesity-related barrier/immune defects"
+    ]
+   },
+   "evidenceGaps": [
+    "Culture or firm clinical cellulitis documentation with a dermatitis-attributable entry site; exclusion of venous insufficiency, tinea pedis, lymphedema, and diabetes; recognition that eczema mimics cellulitis (misdiagnosis guard)"
+   ],
+   "rationale": "Authored at ASSOCIATION_ONLY: barrier-failure entry is standard biology but no population denominator exists and the leading review documents eczema as a frequent cellulitis mimic; no causal claim is forced.",
+   "sourceReferences": [
+    {
+     "citation": "Cranendonk DR, Lavrijsen APM, Prins JM, Wiersinga WJ. Cellulitis: current insights into pathophysiology and clinical management. Neth J Med. 2017 Nov;75(9):366-378. PMID 29219814.",
+     "note": "Pathophysiology review: cellulitis occurs when the physical skin barrier, immune system, and/or circulatory system are impaired; the same review documents that venous insufficiency, eczema, deep vein thrombosis, and gout are frequently mistaken for cellulitis - a misdiagnosis guard for any dermatitis-to-cellulitis claim.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29219814/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 29219814; barrier-impairment pathophysiology and eczema-mimics finding"
+    },
+    {
+     "citation": "Moses S. Pruritus. Am Fam Physician. 2003 Sep 15;68(6):1135-42. PMID 14524401.",
+     "note": "Primary-care review: effective treatment of pruritus prevents scratch-induced complications such as lichen simplex chronicus and impetigo, linking chronic itch-scratch cycles to bacterial skin infection.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/14524401/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 14524401; pruritus treatment preventing scratch-induced impetigo"
+    }
+   ]
+  },
+  {
+   "conditionId": "impetigo",
+   "rank": 3,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The primary-care impetigo review documents that impetigo commonly develops secondarily in broken skin including eczematous (impetiginized) dermatitis (Hartman-Adams 2014); the pruritus review directs treatment at preventing scratch-induced impetigo (Moses 2003); the cellulitis review's barrier-impairment framework covers the same entry mechanism (Cranendonk 2017).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: impetiginization of eczematous skin is a recognized clinical entity, but occurrence is concentrated in specific contexts (children, colonization carriers, warm seasons) that are not characterized for the general dermatitis population; Staphylococcus aureus colonization rather than dermatitis severity may be the operative variable; and no cohort quantifies incident impetigo attributable to dermatitis."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "INFECTIOUS_SPREAD",
+    "primaryVector": "A hypothesized autoinoculation pathway: chronic itch leads to scratching that breaches the epidermis; colonizing or transient Staphylococcus aureus or Streptococcus pyogenes inoculates the excoriated sites; honey-colored crusted lesions of impetigo develop at and beyond the scratch sites. Incident attribution is confounded by carrier state, and topical-therapy adherence is a modifying variable.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "The superinfection pathway is standard clinical teaching and prevention-by-itch-control is guideline-consistent, but no incidence denominator ties impetigo episodes to dermatitis in the general adult population and colonization status is the stronger short-term determinant; association strength is the supportable ceiling.",
+    "evidenceGaps": "Culture-confirmed impetigo arising at excoriated dermatitis sites with temporality; exclusion of household outbreak exposure and carrier-state recurrence; documentation of itch-scratch activity and therapy adherence",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "S. aureus carrier state (independent driver)",
+     "Household or institutional outbreak exposure",
+     "Other inflammatory skin disease with excoriations",
+     "Mupirocin-resistance or treatment-failure recurrences"
+    ]
+   },
+   "evidenceGaps": [
+    "Culture-confirmed impetigo arising at excoriated dermatitis sites with temporality; exclusion of household outbreak exposure and carrier-state recurrence; documentation of itch-scratch activity and therapy adherence"
+   ],
+   "rationale": "Authored at ASSOCIATION_ONLY: impetiginized eczema is standard teaching but colonization and exposure confounders dominate short-term risk and no denominator exists; no causal claim is forced.",
+   "sourceReferences": [
+    {
+     "citation": "Hartman-Adams H, Banvard C, Juckett G. Impetigo: diagnosis and treatment. Am Fam Physician. 2014 Aug 15;90(4):229-35. PMID 25250996.",
+     "note": "Primary-care review: impetigo is the most common bacterial skin infection and commonly develops secondarily in areas of broken skin, including eczematous (impetiginized) dermatitis.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25250996/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 25250996; impetiginized eczema as a recognized presentation"
+    },
+    {
+     "citation": "Moses S. Pruritus. Am Fam Physician. 2003 Sep 15;68(6):1135-42. PMID 14524401.",
+     "note": "Primary-care review: effective treatment of pruritus prevents scratch-induced complications such as lichen simplex chronicus and impetigo, linking chronic itch-scratch cycles to bacterial skin infection.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/14524401/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 14524401; pruritus treatment preventing scratch-induced impetigo"
+    },
+    {
+     "citation": "Cranendonk DR, Lavrijsen APM, Prins JM, Wiersinga WJ. Cellulitis: current insights into pathophysiology and clinical management. Neth J Med. 2017 Nov;75(9):366-378. PMID 29219814.",
+     "note": "Pathophysiology review: cellulitis occurs when the physical skin barrier, immune system, and/or circulatory system are impaired; the same review documents that venous insufficiency, eczema, deep vein thrombosis, and gout are frequently mistaken for cellulitis - a misdiagnosis guard for any dermatitis-to-cellulitis claim.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29219814/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 29219814; barrier-impairment pathophysiology and eczema-mimics finding"
+    }
+   ]
+  },
+  {
+   "conditionId": "depressive-disorder",
+   "rank": 4,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The burden systematic review names depression among the most frequently reported humanistic burden parameters in adult AD across 233 studies (Fasseeh 2022); the US population survey found sleep-disturbance severity mediated the association between AD severity and HADS-depression scores (Silverberg 2022); the sleep review independently ties disturbed sleep to psychological morbidity in AD adults (Bawany 2021).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the visible-chronic-disease and sleep-mediated pathways are consistent with the burden literature, but every anchor is cross-sectional; reverse direction is documented in dermatology-psychology literature (mood states amplify itch perception and scratching); and the mediation does not order variables causally. The generic dermatitis identity also includes less visible subtypes with unknown psychological burden."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+    "primaryVector": "A hypothesized chronic-disease burden pathway: persistent visible lesions, social stigmatization, occupational and clothing limitations, and nightly pruritus-driven sleep loss operate jointly; sleep fragmentation (the Silverberg mediation) carries a portion of the mood effect. Whether any given patient's depressive disorder follows this pathway or an independent one is individual; no incidence cohort exists.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "Prevalence-level association without cohort incidence; documented reverse direction (mood-itch amplification); mediation is cross-sectional; generic dermatitis identity is broader than the adult-AD evidence base - all keep the claim at association strength.",
+    "evidenceGaps": "Depressive-disorder diagnosis with chronology and severity-gradient documentation relative to dermatitis flares; exclusion of primary mood disorder, thyroid disease, anemia, and medication effects; sleep-fragmentation evidence where the sleep pathway is asserted",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Primary mood disorder independent of skin disease",
+     "Thyroid disease and anemia",
+     "Sedating or immunomodulating medication mood effects",
+     "Reverse direction: mood-driven itch amplification"
+    ]
+   },
+   "evidenceGaps": [
+    "Depressive-disorder diagnosis with chronology and severity-gradient documentation relative to dermatitis flares; exclusion of primary mood disorder, thyroid disease, anemia, and medication effects; sleep-fragmentation evidence where the sleep pathway is asserted"
+   ],
+   "rationale": "Authored at ASSOCIATION_ONLY: burden literature is consistent but cross-sectional with documented reverse direction; no causal claim is forced.",
+   "sourceReferences": [
+    {
+     "citation": "Fasseeh AN, Elezbawy B, Korra N, et al. Burden of Atopic Dermatitis in Adults and Adolescents: a Systematic Literature Review. Dermatol Ther (Heidelb). 2022 Dec;12(12):2653-2668. PMID 36197589.",
+     "note": "Systematic review (233 studies): itch, depression, sleep disturbance, and anxiety were the most frequently reported clinical and humanistic burden parameters in adult AD; magnitude scales with severity.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36197589/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 36197589; depression/anxiety as top-ranked humanistic burden parameters"
+    },
+    {
+     "citation": "Silverberg JI, Chiesa-Fuxench Z, Margolis D, et al. Epidemiology and Burden of Sleep Disturbances in Atopic Dermatitis in US Adults. Dermatitis. 2022 Nov-Dec;33(6S):S104-S113. PMID 33675326.",
+     "note": "US population-based cross-sectional survey (n=2,893): 40.7% of adults meeting UK criteria for AD reported 1+ nights of sleep disturbance in the past week; more severe sleep disturbance was associated with higher HADS anxiety/depression scores, and sleep-disturbance severity mediated the AD-to-anxiety/depression associations.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33675326/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 33675326; sleep-disturbance prevalence and HADS mediation analysis"
+    },
+    {
+     "citation": "Bawany F, Northcott CA, Beck LA, Pigeon WR. Sleep Disturbances and Atopic Dermatitis: Relationships, Methods for Assessment, and Therapies. J Allergy Clin Immunol Pract. 2021 Apr;9(4):1488-1500. PMID 33321263.",
+     "note": "Review: sleep disturbances affect 33%-90% of adults with atopic dermatitis; nocturnal pruritus and the complex AD pathophysiology underlie sleep disruption; most evidence uses subjective measures.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33321263/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 33321263; adult sleep-disturbance prevalence band and mechanisms"
+    }
+   ]
+  },
+  {
+   "conditionId": "anxiety-disorder",
+   "rank": 5,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The burden systematic review names anxiety among the most frequently reported humanistic burden parameters in adult AD (Fasseeh 2022); the US population survey found more frequent/severe sleep disturbance associated with higher HADS-anxiety scores and mediated the AD-to-diagnosed-anxiety association (Silverberg 2022).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: cross-sectional anchors only; reverse direction (anxiety amplifies itch and scratching) is documented; the mediation does not establish order; and the flare-dependent character of the burden means stable-disease periods are uncharacterized."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+    "primaryVector": "A hypothesized visible-disease vigilance pathway: unpredictable flares, appearance concerns, and anticipatory itch-scratch cycling sustain hypervigilance and avoidance behaviors; sleep fragmentation again carries part of the effect per the mediation analysis. Attribution at the individual level requires flare-locked symptom chronology.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "Same cross-sectional, bidirectional, and identity-breadth guards as the depression edge; anxiety's two-way relationship with itch is stronger in the literature than depression's, making one-direction attribution even less supportable.",
+    "evidenceGaps": "Anxiety-disorder diagnosis with flare-locked chronology; exclusion of primary anxiety disorder, thyroid disease, stimulants, and medication effects; flare-anticipation trigger documentation where the vigilance pathway is asserted",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Primary anxiety disorder independent of skin disease",
+     "Thyroid disease and stimulant excess",
+     "Medication effects (corticosteroid courses, antihistamines)",
+     "Reverse direction: anxiety-driven itch-scratch amplification"
+    ]
+   },
+   "evidenceGaps": [
+    "Anxiety-disorder diagnosis with flare-locked chronology; exclusion of primary anxiety disorder, thyroid disease, stimulants, and medication effects; flare-anticipation trigger documentation where the vigilance pathway is asserted"
+   ],
+   "rationale": "Authored at ASSOCIATION_ONLY: burden literature is consistent but cross-sectional with a strong documented reverse direction; no causal claim is forced.",
+   "sourceReferences": [
+    {
+     "citation": "Silverberg JI, Chiesa-Fuxench Z, Margolis D, et al. Epidemiology and Burden of Sleep Disturbances in Atopic Dermatitis in US Adults. Dermatitis. 2022 Nov-Dec;33(6S):S104-S113. PMID 33675326.",
+     "note": "US population-based cross-sectional survey (n=2,893): 40.7% of adults meeting UK criteria for AD reported 1+ nights of sleep disturbance in the past week; more severe sleep disturbance was associated with higher HADS anxiety/depression scores, and sleep-disturbance severity mediated the AD-to-anxiety/depression associations.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33675326/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 33675326; sleep-disturbance prevalence and HADS mediation analysis"
+    },
+    {
+     "citation": "Fasseeh AN, Elezbawy B, Korra N, et al. Burden of Atopic Dermatitis in Adults and Adolescents: a Systematic Literature Review. Dermatol Ther (Heidelb). 2022 Dec;12(12):2653-2668. PMID 36197589.",
+     "note": "Systematic review (233 studies): itch, depression, sleep disturbance, and anxiety were the most frequently reported clinical and humanistic burden parameters in adult AD; magnitude scales with severity.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36197589/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 36197589; depression/anxiety as top-ranked humanistic burden parameters"
+    }
+   ]
+  }
+ ]
 }

@@ -1,9 +1,79 @@
 {
-  "id": "diffuse-esophageal-spasm",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "diffuse-esophageal-spasm",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 23 (2026-09-23): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification."
+ ],
+ "governanceNotes": [
+  "Directional ambiguity is the controlling guard: the primary cohort (Seltzer 2024) found no clinical or physiologic difference between reflux-positive and reflux-negative DES, so the mapping does not assert either direction.",
+  "Sildenafil/nitrates and PPI therapy responses overlap between constructs and cannot adjudicate direction; opioid-induced dysmotility is an increasingly prevalent mimic per the same literature."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "gerd",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "Retrospective manometry cohort of 69 distal-esophageal-spasm (DES) patients: 32 (46.3%) had objective GERD defined by Los Angeles Grade B/C/D esophagitis, Barrett's metaplasia, or abnormal pH testing (Seltzer 2024); the DES pathophysiology review notes the interaction between DES and GERD and recommends 24-hour pH monitoring during evaluation (Roman & Kahrilas 2012); non-cardiac-chest-pain reviews attribute 15-18% of NCCP to hypercontractile motility disorders including DES alongside GERD's 50-60% share (Frieling 2018).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the same cohort found no distinguishing clinical or physiologic phenotype between DES patients with and without GERD, with the authors explicitly challenging the historical emphasis of GERD in DES pathogenesis and leaving the impact of GERD management on DES natural history uncertain (Seltzer 2024); the direction can run either way (reflux-induced spasm versus spasm-impaired acid clearance promoting reflux), and shared dysmotility susceptibility remains a competing explanation."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MULTIFACTORIAL",
+    "primaryVector": "A hypothesized bidirectional dysmotility-clearance pathway: DES reflects impaired esophageal inhibitory neural function producing premature, non-peristaltic distal contractions; the loss of organized peristalsis degrades acid clearance from the distal esophagus and may increase reflux exposure through transient lower-esophageal-sphincter relaxation and reduced stripping-wave efficacy, producing objective reflux evidence. The reverse direction is equally plausible - acid exposure alters smooth-muscle response and triggers spasm - which is why the cohort found no distinguishing phenotype between reflux-positive and reflux-negative DES.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "Co-occurrence quantified in a single retrospective manometry cohort (n=69) whose source explicitly refutes a distinct GERD-related DES phenotype; bidirectional plausibility precludes one-direction attribution; PPI-response overlap and opioid-induced dysmotility confound; no incidence cohort quantifying DES-first reflux development.",
+    "evidenceGaps": "High-resolution manometry-documented DES (premature contractions with reduced distal latency per Chicago classification) plus objective reflux evidence (abnormal pH-impedance, LA Grade B/C/D esophagitis, or Barrett's metaplasia); temporal documentation that dysmotility preceded objective reflux; exclusion of opioid-induced esophageal dysmotility and achalasia-spectrum outflow obstruction",
+    "requiresSpecificDbqEvidence": false,
+    "alternativeEtiologiesToRuleOut": [
+     "Primary GERD with secondary dysmotility (reverse direction)",
+     "Opioid-induced esophageal dysmotility",
+     "Functional heartburn and reflux hypersensitivity",
+     "Achalasia or EGJ outflow obstruction spectra"
+    ]
+   },
+   "evidenceGaps": [
+    "High-resolution manometry confirming DES per Chicago classification (premature contractions, reduced distal latency) rather than a symptom-only diagnosis",
+    "Objective reflux documentation by pH-impedance testing, endoscopic esophagitis, or Barrett's metaplasia rather than empirical PPI use",
+    "Clinical chronology establishing esophageal dysmotility before objectively documented GERD, with LES tone and clearance metrics recorded",
+    "Exclusion of opioid-induced esophageal dysmotility, EGJ outflow obstruction, and functional heartburn/reflux hypersensitivity mimics"
+   ],
+   "rationale": "Authored at ASSOCIATION_ONLY: co-occurrence is quantified (46.3% of DES patients) but the source cohort found no distinguishing GERD-related phenotype and explicitly challenges the historical GERD-causation emphasis; bidirectional mechanisms preclude one-direction attribution.",
+   "sourceReferences": [
+    {
+     "citation": "Seltzer ES, Sehmbhi M, Sandhu R, Cavaliere K, Luo Y, Smith MS, Jodorkovsky D. Distal esophageal spasm and gastroesophageal reflux disease: re-examining the association. Dis Esophagus. 2024;37(11):doae077. PMID 39341683.",
+     "note": "Retrospective HRM cohort (n=69): 46.3% of DES patients had objective GERD, but R-DES and NR-DES shared similar symptom profiles and HRM metrics apart from basal LES tone/IRP; authors conclude the data challenge the historical emphasis of GERD in DES pathogenesis.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39341683/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 39341683; DES-GERD co-occurrence without distinct phenotype"
+    },
+    {
+     "citation": "Roman S, Kahrilas PJ. Distal esophageal spasm. Dysphagia. 2012;27(1):115-23. PMID 22215281.",
+     "note": "Pathophysiology review: DES implies impairment of esophageal inhibitory neural function; premature contractions with normal EGJ relaxation define DES; because of the interaction between DES and GERD, 24-hour pH monitoring should be considered during evaluation.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22215281/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 22215281; DES-GERD interaction and pH-monitoring recommendation"
+    },
+    {
+     "citation": "Frieling T. Non-cardiac chest pain. Visc Med. 2018;34(2):92-96. PMID 29888236.",
+     "note": "NCCP review: GERD causes 50-60% of non-cardiac chest pain and hypercontractile motility disorders including diffuse esophageal spasm 15-18%; the two populations overlap in the same symptomatic patients.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29888236/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-23",
+     "sourceLocator": "PMID 29888236; DES and GERD shares of non-cardiac chest pain"
+    }
+   ]
+  }
+ ]
 }

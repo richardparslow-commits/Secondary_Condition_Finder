@@ -5,5 +5,8 @@
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "suggestions": [],
+  "governanceNotes": [
+    "Deliberate deferral, not an authored suggestion: cubital tunnel syndrome IS a compression neuropathy of the ulnar nerve at the elbow, so an edge to the catalog's ulnar-neuropathy identity would restate the diagnostic presentation (the ME-41 phenotype-identity barrier), and the remaining downstream candidates (claw-hand deformity, intrinsic atrophy, grip-strength loss) lack catalog identities; the surgical-outcome literature is decompression-treatment class rather than natural-history evidence, so no defensible target identity exists."
+  ]
 }

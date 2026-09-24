@@ -1,9 +1,15 @@
 {
-  "id": "byssinosis",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "byssinosis",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 7 (2026-09-22): identity deferred with a documented evidence and scope barrier instead of an authored edge, per the repo's established deferral convention (ME-30/ME-32 precedents).",
+  "ME-35 (docs/mapping-expansion-me35-proposed-research-ledger.md) already excluded `byssinosis -> copd` pending a source that distinguishes occupational byssinosis from generic organic-dust exposure and supplies a target-specific longitudinal proposition; that condition remains unmet in the 2026-09-22 screen.",
+  "Revisit only if a qualified human reopens the ME-35 exclusion with condition-specific longitudinal evidence separating byssinosis from generic cotton-dust and smoking effects; do not author an edge to broader respiratory identities without that separation, and do not infer medical causation from rating-schedule authority."
+ ],
+ "governanceNotes": [
+  "Deliberate deferral honoring an explicit prior disposition: the ME-35 proposed-research ledger examined the byssinosis-to-COPD pathway and excluded it pending a source that distinguishes occupational byssinosis from generic organic-dust exposure with a target-specific longitudinal proposition. The pre-authoring screen confirmed that condition is still unmet: byssinosis literature centers on cotton-textile worker populations where chronic bronchitis and airflow obstruction co-occur with smoking and generic dust exposure, making an identity-specific byssinosis-outcome attribution the exact gap ME-35 recorded.",
+  "Duplicate-scope check recorded: chronic-bronchitis -> copd exists in the registry (a distinct identity relationship), and copd carries multiple outgoing edges; an incoming byssinosis edge would not collide by pair, but the ME-35 evidence condition is the binding constraint, not the pair.",
+  "Textiles-dust exposure for veterans is sparse in the indexed literature compared with mining and silica cohorts; any future edge should be revisited only with condition-specific longitudinal exposure-response evidence."
+ ],
+ "suggestions": []
 }

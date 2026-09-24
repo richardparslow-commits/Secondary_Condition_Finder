@@ -2,8 +2,68 @@
   "id": "aphasia-dysphasia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Review poststroke neuropsychiatric and communication-disorder pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: poststroke cohort studies report aphasia co-occurring with elevated depression rates and correlating with cognitive and neurologic deficit burden, but co-occurrence within stroke populations does not establish that aphasia caused or aggravated a depressive disorder in an individual."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Poststroke cohort research reports that aphasic stroke patients show elevated depression rates and that poststroke depression correlates with the degree of cognitive impairment and neurologic deficit; aphasia and depression co-occur within stroke populations more often than chance would predict.",
+        "causationStatus": "Neither causation nor aggravation is established: the cited cohort literature reports correlations between communication deficit, cognitive burden, and depressive symptoms, but study designs report associations within stroke cohorts and do not demonstrate that an individual's aphasia caused, worsened, or prolonged a depressive disorder; shared stroke lesion burden and psychosocial reaction to acquired communication disability remain competing explanations for the observed co-occurrence."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized bidirectional pathway has been described: acquired loss of expressive and receptive communication can produce social isolation, loss of occupational and social role function, and learned disengagement, any of which may accompany depressive symptom development, while conversely depressive withdrawal can reduce communication practice and participation, but this participation-withdrawal framing explains observed co-occurrence without establishing direction or causation in an individual.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Cohort studies report that aphasia and depression co-occur after stroke and that depression correlates with deficit burden, but correlation within a shared etiologic population (stroke) cannot establish that aphasia caused or aggravated a depressive disorder in any individual. Chronology, syndrome-level psychiatric diagnosis, lesion burden, psychosocial context, and competing explanations all require case-specific review by a qualified medical professional.",
+        "evidenceGaps": "Stroke-lesion and neuroimaging documentation of the aphasia etiology; psychiatric diagnosis of a depressive disorder at a defined time point with chronology relative to aphasia onset; aphasia severity and communication-participation measures; psychosocial and occupational history after onset; competing-explanation review including direct lesion effects on mood circuits",
+        "alternativeEtiologiesToRuleOut": [
+          "Direct stroke-lesion disruption of mood-regulation circuits independent of the communication deficit",
+          "Pre-stroke or independent major depressive disorder unrelated to the aphasia",
+          "Psychosocial reaction to acquired disability occurring without a syndromic depressive disorder",
+          "Medication effects, other poststroke complications, or neurodegenerative processes"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: poststroke cohorts consistently report aphasia-depression co-occurrence and deficit-burden correlation, but because both arise within the same stroke population the literature cannot separate aphasia-specific causation from shared lesion burden or disability reaction, so this edge flags the association for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Neuroimaging and neurology documentation of the stroke lesion underlying aphasia",
+        "Psychiatric diagnosis and treatment records establishing a depressive disorder with chronology relative to aphasia onset",
+        "Aphasia severity and communication-participation assessment at relevant time points",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Kauhanen ML, Korpelainen JT, Hiltunen P, Määttä R, Mononen H, Brusin E, Sotaniemi KA, Myllylä VV. Aphasia, depression, and non-verbal cognitive impairment in ischaemic stroke. Cerebrovasc Dis. 2000;10(6):455-461. PMID 11070376. doi:10.1159/000016107.",
+          "note": "Ischaemic-stroke cohort reporting aphasia and depression co-occurrence with non-verbal cognitive impairment; supports the bounded co-occurrence proposition and the deficit-burden context, not individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11070376/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 11070376; cohort results on aphasia, depression, and cognitive impairment",
+          "authorityCategory": "medical-scientific-evidence"
+        },
+        {
+          "citation": "Kauhanen M, Korpelainen JT, Hiltunen P, Brusin E, Mononen H, Määttä R, Nieminen P, Sotaniemi KA, Myllylä VV. Poststroke depression correlates with cognitive impairment and neurological deficits. Stroke. 1999;30(9):1875-1880. PMID 10471439. doi:10.1161/01.str.30.9.1875.",
+          "note": "Cohort study reporting that poststroke depression correlates with cognitive impairment and neurologic deficit burden; supports the association framing and the competing-explanation caution, not a directional causal claim.",
+          "verificationScope": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10471439/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 10471439; correlation results between poststroke depression and deficit measures",
+          "authorityCategory": "medical-scientific-evidence"
+        }
+      ]
+    }
+  ]
 }

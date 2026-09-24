@@ -134,18 +134,18 @@ describe("Mapping Expansion ME-41 — Mental Disorders safe-draft dispositions",
   });
 
   it("does not mutate the master relationship registry", () => {
-    expect(relationships.currentState).toBe("ME-39-CITATION-VERIFIED");
+    expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(relationships.counts).toEqual({
-      relationships: 363,
-      explicitPublicationGuards: 289,
+      relationships: 500,
+      explicitPublicationGuards: 426,
       legacyRationaleBoundaries: 74,
     });
-    expect(relationships.relationships).toHaveLength(363);
+    expect(relationships.relationships).toHaveLength(500);
   });
 
   it("does not add or verify any master source", () => {
-    expect(sources.currentState).toBe("ME-39-CITATION-VERIFIED");
-    expect(sources.sources).toHaveLength(355);
+    expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
+    expect(sources.sources).toHaveLength(682);
     const examined = SAFE_DRAFTS.flatMap(([, pmids]) => pmids).map((pmid) => `pmid-${pmid}`);
     for (const sourceId of examined) {
       expect(

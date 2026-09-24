@@ -2,8 +2,69 @@
   "id": "blindness",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Review sensory-loss psychiatric-comorbidity and functional-adaptation pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: systematic-review and cross-sectional data document depression comorbidity in blind and visually impaired adults (depression associated with visual impairment in all ten studies of one systematic review; 9.4-22.8 percent diagnostic-algorithm depression prevalence in a large cross-sectional survey), but the evidence is cross-sectional or cohort-level with acknowledged bidirectionality and no meta-analytic pooling, so the mapping asserts comorbidity only and cannot attribute any individual's depression to vision loss or vice versa.",
+    "Duplicate-scope check: no existing registry edge from blindness to depressive-disorder; the nearest edges are pituitary-neoplasm -> visual-impairment and ptosis/retinal-dystrophy -> visual-impairment, which address acuity impairment itself and do not overlap this psychiatric-comorbidity scope. The blindness -> visual-impairment identity-overlap direction was deliberately not authored: the catalog visual-impairment target is acuity/field impairment that blindness already subsumes."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "A systematic review of visual impairment and depression in the elderly (ten included studies ranging from 31 to 21,995 participants) reports depression associated with visual impairment in every included study, while noting that heterogeneous diagnostic instruments prevented meta-analysis or a pooled causal estimate, and a large age-stratified cross-sectional survey of blind and partially sighted adults reports diagnostic-algorithm depression prevalence of 9.4 to 22.8 percent across age and sex strata, highest among younger adults, with late-onset vision loss associated with higher depression rates.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the systematic review explicitly could not establish a pooled relationship because of unstandardized diagnostics, the cross-sectional design of the prevalence data cannot establish direction, depression can amplify functional disability from vision loss and vision loss can drive depressive symptoms through loss of independence and social participation, and competing drivers (preexisting mood disorder, other sensory impairments, comorbid medical disease) require individual exclusion, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized sensory-loss functional-disruption pathway has been described: acquired blindness restricts independent mobility, employment, and social participation, and the literature documents lower employment and reduced life satisfaction alongside depression in visually impaired adults, with loss-of-independence and social-isolation mechanisms proposed to link vision loss to depressive symptoms; this coupling would explain the documented co-occurrence without establishing that blindness caused a depressive disorder in any individual, and reverse causation (depressive withdrawal amplifying functional disability) plus shared drivers (diabetic disease, trauma sequelae, other impairments) remain active competing explanations, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Depression is consistently reported as comorbid with visual impairment and blindness, but individual determination requires ophthalmologic documentation of the blindness with chronology, psychiatric diagnosis of a depressive disorder against accepted criteria at a defined time point, and exclusion of competing explanations including other impairments and preexisting mood disorder, all reviewed case by case by a qualified medical professional.",
+        "evidenceGaps": "Ophthalmologic documentation of blindness (best-corrected acuity or field criteria) with onset chronology; psychiatric diagnosis of a depressive disorder against accepted criteria at a defined time point; mood-measure and functional-status documentation at relevant time points; vision rehabilitation and treatment-response records; competing-explanation review including other sensory impairments, comorbid medical disease, and preexisting mood disorder",
+        "alternativeEtiologiesToRuleOut": [
+          "Preexisting or independent major depressive disorder unrelated to vision loss",
+          "Additional impairments (hearing loss, amputation, traumatic brain injury sequelae) driving both functional loss and depression",
+          "Comorbid medical disease (diabetes, vascular disease) causing both the blindness and depressive symptoms",
+          "Medication effects on mood related to treatment of the underlying eye disease"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the depression comorbidity of blindness is consistently reported across studies, but the evidence cannot establish direction, the systematic review explicitly refrained from a pooled causal estimate, and mood-vision bidirectionality is well recognized, so this edge flags the comorbidity for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Ophthalmologically documented blindness with onset chronology",
+        "Psychiatric assessment establishing a depressive disorder with temporality",
+        "Mood and functional-status documentation at relevant time points",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Ribeiro MV, Hasten-Reiter Júnior HN, Ribeiro EA, Jucá MJ, Barbosa FT, Sousa-Rodrigues CF. Association between visual impairment and depression in the elderly: a systematic review. Arq Bras Oftalmol. 2015;78(3):197-201. PMID 26222114. doi:10.5935/0004-2749.20150051.",
+          "note": "Systematic review of ten studies (31 to 21,995 participants) reporting depression associated with visual impairment in all included studies while explicitly stating that unstandardized diagnostic tests prevented meta-analysis or establishment of a relationship; supports the bounded comorbidity proposition and the no-pooled-causal-estimate caution, not individual causation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26222114/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 26222114; systematic review results and limitation statement"
+        },
+        {
+          "citation": "Brunes A, Heir T. Visual impairment and depression: Age-specific prevalence, associations with vision loss, and relation to life satisfaction. World J Psychiatry. 2020;10(6):139-149. PMID 32742947. doi:10.5498/wjp.v10.i6.139.",
+          "note": "Age-stratified cross-sectional survey of 736 blind and partially sighted adults reporting diagnostic-algorithm depression prevalence of 9.4 to 22.8 percent with late-onset vision loss and additional impairments associated with higher rates; supports the prevalence proposition at the cross-sectional level only, not a directional causal claim.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32742947/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 32742947; prevalence estimates and regression results"
+        }
+      ]
+    }
+  ]
 }

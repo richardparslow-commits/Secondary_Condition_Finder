@@ -1,6 +1,15 @@
 {
   "id": "cranial-nerve-palsy",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "D1 draft-authoring batch 18 (2026-09-22): deferred with a documented manifestation-identity barrier instead of an authored edge, per the repo's established deferral convention (ME-41 phenotype-identity barrier; balint-s-syndrome batch-15 precedent; common-peroneal-neuropathy batch-17 deferral).",
+    "Revisit only if the catalog adds distinct outcome identities (chronic diplopia with functional vision loss, amblyopia decompensation, exposure keratopathy) separable from the palsy presentation, and only with condition-specific natural-history literature; do not infer medical causation from rating-schedule authority."
+  ],
+  "suggestions": [],
+  "governanceNotes": [
+    "Deliberate deferral, not an authored suggestion: an isolated third, fourth, or sixth cranial-nerve palsy IS the nerve identity whose defining presentation includes binocular diplopia - the acute-diplopia cohort found 53.7% of acute-onset diplopia cases are an isolated third/fourth/sixth nerve palsy (O'Colmain 2014) - so an edge from this identity to the catalog diplopia identity would restate the diagnostic presentation (the ME-41 phenotype-identity barrier applied identically to balint-s-syndrome and common-peroneal-neuropathy).",
+    "The natural downstream candidates lack catalog identities (persistent diplopia-related functional vision loss, amblyopia from chronic strabismus, exposure keratopathy from lagophthalmos), and the palsy-etiology literature (microvascular ischemia, aneurysm, tumor, trauma, inflammation) describes causes rather than downstream outcomes; the differential-diagnosis and management literature is diagnostic/treatment-class rather than natural-history evidence, so no defensible target identity exists."
+  ]
 }

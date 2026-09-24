@@ -2,8 +2,68 @@
   "id": "atypical-odontalgia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
     "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: atypical odontalgia is a diagnosis of exclusion of uncertain origin whose reviews place it within the neuropathic orofacial-pain spectrum alongside the trigeminal neuralgias; classification proximity and shared deafferentation hypotheses explain co-occurrence and mimicry without establishing that either condition causes or aggravates the other."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "trigeminal-neuralgia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The atypical-odontalgia literature classifies the condition among persistent idiopathic or neuropathic orofacial pain states that share diagnostic space with the cranial neuralgias, and reviews discuss shared neuropathic features, deafferentation-type mechanisms, and co-occurrence within the same trigeminal distribution as trigeminal neuralgia.",
+        "causationStatus": "Neither causation nor aggravation is established: atypical odontalgia is a diagnosis of exclusion with uncertain origin, and the cited literature reports classification proximity and mechanistic hypotheses, not that atypical odontalgia caused or aggravated trigeminal neuralgia in any individual; the two entities also enter the same differential diagnosis, so observed co-occurrence can reflect diagnostic substitution or shared neuropathic susceptibility rather than a directional pathway."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "A hypothesized shared deafferentation and central-sensitization pathway has been proposed for persistent idiopathic orofacial pain states: peripheral nerve injury (including dental interventions) may initiate ectopic firing and central sensitization within the trigeminal system, and the same mechanisms are discussed for neuralgic pain, but shared mechanism would explain co-occurrence without establishing that one diagnosis produces the other, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The literature defines atypical odontalgia as tooth pain without pathology, frequently post-interventional, of uncertain neuropathic origin, and places it near the trigeminal neuralgias in orofacial-pain classification; it does not establish that atypical odontalgia caused or aggravated trigeminal neuralgia in an individual. Chronology, diagnostic confirmation by an orofacial-pain specialist, exclusion of active dental pathology, and competing explanations all require case-specific review by a qualified medical professional.",
+        "evidenceGaps": "Orofacial-pain or neurology documentation establishing both diagnoses against accepted criteria; chronology between atypical odontalgia onset and any trigeminal-neuralgia diagnosis; imaging and dental evaluation excluding active odontogenic pathology; treatment-response records; competing-explanation review including post-traumatic neuropathy and idiopathic facial pain",
+        "alternativeEtiologiesToRuleOut": [
+          "Trigeminal neuralgia from vascular compression or other primary cause with coincidental atypical odontalgia",
+          "Persistent idiopathic (atypical) facial pain as a separate unifying diagnosis",
+          "Post-traumatic or post-surgical neuropathy following dental procedures as the single underlying process",
+          "Missed odontogenic pathology, temporomandibular disorder, or myofascial orofacial pain"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the literature supports classification proximity and hypothesized shared neuropathic mechanisms between atypical odontalgia and the trigeminal neuralgias, but a diagnosis of exclusion with uncertain origin cannot be mapped as a cause of a distinct neuralgia without individual evidence, so this edge flags the association for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Specialist confirmation of both diagnoses with documented criteria and chronology",
+        "Dental and imaging evaluation excluding active odontogenic pathology",
+        "Treatment history and response records relevant to both conditions",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Patel SB, Boros AL, Kumar SK. Atypical odontalgia--an update. J Calif Dent Assoc. 2012;40(9):739-747. PMID 23097829.",
+          "note": "Review describing atypical odontalgia as a commonly misdiagnosed neuropathic condition of uncertain etiology within the orofacial-pain spectrum; supports the classification-proximity and diagnostic-caution proposition only, not individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23097829/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 23097829; etiology, pathophysiology, and diagnostic-approach sections"
+        },
+        {
+          "citation": "Melis M, Lobo SL, Ceneviz C, Zawawi K, Al-Badawi E, Maloney G, Mehta N. Atypical odontalgia: a review of the literature. Headache. 2003;43(10):1060-1074. PMID 14629241. doi:10.1046/j.1526-4610.2003.03207.x.",
+          "note": "Literature review reporting deafferentation as the most likely initiating mechanism with psychological and idiopathic factors implicated, and warning against unnecessary dental intervention; supports the hypothesized shared-mechanism framing only, with no directional causal claim.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/14629241/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 14629241; etiology, mechanism, and management-review sections"
+        }
+      ]
+    }
+  ]
 }

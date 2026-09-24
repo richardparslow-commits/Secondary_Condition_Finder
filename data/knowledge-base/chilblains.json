@@ -1,9 +1,14 @@
 {
-  "id": "chilblains",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "chilblains",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 10 (2026-09-22): identity deferred — no catalog identity exists for the documented ulceration, scarring, or joint-swelling sequelae, per the repo's deferral convention (batch-1 exemplar: acrocyanosis).",
+  "PMID 23414913 (Padeh cohort) documents ulceration in 54.5% of a pediatric chilblains cohort and joint swelling/arthralgia requiring rheumatology follow-up; if a qualified human adds a skin-ulceration or arthropathy catalog identity, this deferral should be revisited for an association edge on that evidence."
+ ],
+ "governanceNotes": [
+  "Deferral reason: the chilblains literature documents clinically significant sequelae (ulceration in over half of a referred pediatric cohort, blistering, and pernio-associated joint swelling), but the catalog contains no target identity for skin ulceration, scarring, or chilblain-associated arthropathy; authoring an edge to a wrong-body-system target would violate the same ME-30/ME-32 identity-boundary precedents that rejected acrocyanosis-to-cold-injury and similar misfit edges.",
+  "Directionality context recorded: the prospective cohort evidence (Juvenile Chilblains Cohort) also documents progression from pernio to lupus erythematosus in a minority of patients; a pernio-to-lupus edge would require catalog confirmation of a lupus identity and qualified-human review of the progression literature, which is out of scope for draft automation.",
+  "Evidence-gap checklist retained in the batch-10 roadmap ledger record (top-level evidenceGaps is not a valid mapping-level schema key)."
+ ],
+ "suggestions": []
 }

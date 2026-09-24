@@ -187,7 +187,7 @@ describe("targeted clinical mapping batch 31", () => {
       (reference) => reference.verificationScope === "clinical-evidence" && Boolean(reference.sourceUrl),
     );
 
-    expect(liveReferences).toHaveLength(142);
+    expect(liveReferences).toHaveLength(160);
     expect(liveUnverified).toHaveLength(0);
     expect(publishedUnverified).toHaveLength(0);
     expect(clinicalWithUrls).toHaveLength(137);

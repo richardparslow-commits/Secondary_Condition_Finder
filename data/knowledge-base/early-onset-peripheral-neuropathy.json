@@ -2,8 +2,67 @@
   "id": "early-onset-peripheral-neuropathy",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review immunologic, hematologic, infectious, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 27 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The pes-cavus target is an acquired-claw-foot musculoskeletal identity; the evidence base is inherited-neuropathy cohort epidemiology, so the CMT-population anchor is recorded as a phenotype-population guard on the edge."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 27 (2026-09-23): one bounded pes-cavus association authored from inherited-neuropathy cohort evidence (Inherited Neuropathies Consortium 71% foot-deformity prevalence; CMT4C early-onset series); the neuro-proprioceptive mechanism is hypothesis-class, and the CMT-population anchor is guarded because the primary identity is broader than CMT.",
+    "Generic peripheral-neuropathy and the named mononeuropathy identities have no edges and were not treated as blocking; this edge is authored per-identity from early-onset-specific literature under the amputation-family precedent that each identity waits for its own level-appropriate evidence."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pes-cavus",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "In the Inherited Neuropathies Consortium cohort, foot deformities were reported in 71% of Charcot-Marie-Tooth disease patients and 30% underwent orthopedic surgery (Laura 2018), and the CMT4C case series documents pes cavus appearing among the earliest manifestations of early-onset hereditary neuropathy (Okhovat 2026); early-onset hereditary motor-sensory neuropathy is the classic clinical association of the pes-cavus phenotype.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the 71% prevalence is CMT-population cohort data and the identity spans acquired and hereditary early-onset etiologies, pes cavus can be congenital or independently acquired (trauma, compartment syndrome, spasticity), and an individual's deformity may precede, accompany, or be unrelated to the neuropathy; chronologic primacy cannot be established from population data."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A hypothesized denervation-imbalance foot-deformity pathway: early-onset motor-sensory neuropathy produces chronic weakness of intrinsic foot muscles with relative sparing of extrinsic flexors and peroneus brevis-type imbalance, so the denervated foot develops progressive plantar-flexed first ray, hindfoot varus, and high medial longitudinal arch under continued weight bearing; the same imbalance also recruits peroneus longus overaction in some phenotypes. The individual pathway from a documented neuropathy to a documented deformity must be established case by case from electrodiagnostics, genetics, and orthopedic evaluation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The population anchor is CMT-specific cohort data applied to a broader early-onset identity; congenital and independently acquired pes cavus must be excluded, the deformity's onset chronology relative to the neuropathy requires documentation, and the denervation-imbalance mechanism is hypothesis-class anatomy rather than quantified individual causation; no probability estimate is asserted.",
+        "evidenceGaps": "Documented early-onset peripheral neuropathy with electrodiagnostic or genetic confirmation; documented pes-cavus morphology by validated foot examination or imaging with onset chronology; exclusion of congenital deformity, prior trauma, or spasticity as the deformity driver; CMT genetic testing or equivalent etiologic workup where indicated; orthopedic and neurology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Congenital pes cavus or developmental deformity unrelated to neuropathy",
+          "Prior foot trauma, compartment syndrome, or crush injury",
+          "Spastic hemiplegia or cerebral palsy-driven deformity",
+          "Idiopathic pes cavus with incidental electrodiagnostic abnormality",
+          "Charcot-Marie-Tooth disease as an independent inherited diagnosis rather than the documented early-onset identity"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented early-onset peripheral neuropathy with electrodiagnostic or genetic confirmation; documented pes-cavus morphology by validated foot examination or imaging with onset chronology; exclusion of congenital deformity, prior trauma, or spasticity as the deformity driver; CMT genetic testing or equivalent etiologic workup where indicated; orthopedic and neurology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the hereditary-neuropathy-to-pes-cavus association is clinically classic and cohort-quantified, but the primary identity is broader than the CMT evidence base, the mechanism is hypothesis-class, and congenital or traumatic alternatives are common; no causation is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Laura M, Singh D, Ramdharry G, et al. Prevalence and orthopedic management of foot and ankle deformities in Charcot-Marie-Tooth disease. Muscle Nerve. 2018 Feb;57(2):255-259. PMID 28632967.",
+          "note": "Inherited Neuropathies Consortium cohort: foot deformities were reported in 71% of CMT patients and 30% underwent orthopedic surgery - the population anchor for the neuropathy-to-foot-deformity association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28632967/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 28632967; 71% foot-deformity prevalence in the INC cohort"
+        },
+        {
+          "citation": "Okhovat AA, Shahriyari H, Ghasemi A, et al. Charcot-Marie-Tooth type 4C misdiagnosed as CIDP: electrodiagnostic pitfalls and genetic confirmation. Neurogenetics. 2026 Jun 30;27(1):48. PMID 42377577.",
+          "note": "Genetically confirmed CMT4C series: all five patients exhibited early-onset symptoms including progressive muscle weakness, pes cavus, and spinal deformities - the early-onset phenotype anchor, used with the caution that it is a case-series class and a single CMT subtype.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42377577/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42377577; early-onset pes-cavus phenotype in the CMT4C series"
+        }
+      ]
+    }
+  ]
 }

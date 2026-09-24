@@ -2,8 +2,77 @@
   "id": "fitz-hugh-curtis-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 34 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: shared-cause association on the enophthalmos -> diplopia shared-driver pattern - Fitz-Hugh-Curtis syndrome is a marker of upper-genital spread of the same ascending infection that damages the fallopian tubes, so the edge asserts the documented FHCS-infertility co-occurrence only; individual claims require laparoscopy- or imaging-documented FHCS, documented tubal-factor or ovulatory infertility workup, microbiologic confirmation of the causative pathogen, and exclusion of male-factor and independent infertility etiologies."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 34 (2026-09-23): one bounded female-infertility association authored from the FHCS tubal-damage and infertility-workup literature - the Kobayashi 2006 pathological study reviewed 3,568 laparoscopies with 108 FHCS cases and divided 104 chronic FHCS cases by hydrosalpinx status, directly documenting fallopian-tube damage in chronic FHCS; the Sharma 2002 prospective study found incidental FHCS at laparoscopy across 320 women including a 60-patient infertility-workup group; and the Onoh 2016 case documents FHCS discovered during a four-year infertility workup with bilateral tubal blockage and Chlamydia trachomatis findings. The shared-cause guard is central: the same chlamydial or gonococcal PID episode produces both the perihepatitis and the tubal salpingitis that scars the tubes, so infertility attribution runs through documented tubal damage rather than through the perihepatic inflammation itself.",
+    "Duplicate-scope note: the pelvic-inflammatory-disease identity carries its own outgoing edge to ovarian-cancer and no infertility edge, so this is the perihepatitis-marker pathway rather than a parallel restatement of a PID edge; the appendicitis -> female-infertility edge already on the target is an appendiceal-spread mechanism with an independent evidence base. The peritoneal-adhesions identity was screened as an alternative target and rejected: violin-string perihepatic adhesions are constitutive of the FHCS identity itself, so an FHCS -> peritoneal-adhesions edge would restate the definition under the ME-41 manifestation-identity barrier (balint-s-syndrome precedent)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "female-infertility",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Kobayashi 2006 pathological study of laparoscopy-diagnosed FHCS (108 cases of 3,568 laparoscopies, 104 chronic cases stratified by hydrosalpinx) documents fallopian-tube damage accompanying chronic Fitz-Hugh-Curtis syndrome, the Sharma 2002 prospective study documents incidental FHCS at laparoscopy among women including an infertility-workup group, and the Onoh 2016 case documents FHCS identified during a four-year infertility evaluation with bilateral tubal blockage and Chlamydia trachomatis; the literature documents co-occurrence of FHCS and tubal-factor infertility without establishing that the perihepatic inflammation itself causes an individual's infertility.",
+        "causationStatus": "The mapping does not assert that FHCS causes an individual's infertility: the perihepatitis and the tubal damage are parallel products of the same ascending chlamydial or gonococcal infection (shared-cause confound), infertility attribution requires documented tubal factor rather than perihepatic adhesions, male-factor and ovulatory etiologies are common independent contributors, and case-level workup findings cannot establish direction; individual claims require documented FHCS, a completed infertility evaluation with etiology, microbiologic confirmation of the pathogen, and exclusion of independent infertility causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A hypothesized shared-infection dissemination pathway: ascending Chlamydia trachomatis or Neisseria gonorrhoeae infection spreads within the female genital tract, and the same organism reaches the peritoneal cavity by lymphatic, hematogenous, or trans-tubal routes to inflame the liver capsule (perihepatitis with violin-string adhesions = FHCS) while concurrent salpingitis heals by fibrosis, producing tubal adhesions, hydrosalpinx, and occlusion that obstruct ovum transport; the infertility risk is carried by the tubal arm of the shared infection, with FHCS serving as the clinical marker of upper-genital spread - the mechanism is the accepted PID pathophysiology but remains a hypothesis about any individual's tubal patency outcome.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the tubal-damage evidence is a laparoscopic pathological study without fertility-outcome denominators, the infertility-workup evidence is cross-sectional or case-level, FHCS marks shared infection rather than a directed causal arm, documented tubal factor must be demonstrated rather than assumed, and male-factor and ovulatory etiologies are uncontrolled in the cited populations; no probability estimate is asserted.",
+        "evidenceGaps": "Laparoscopic or imaging documentation of Fitz-Hugh-Curtis syndrome with dates; completed infertility evaluation documenting tubal-factor (hysterosalpingogram or laparoscopy), ovulatory, and male-factor results; microbiologic confirmation of Chlamydia trachomatis or Neisseria gonorrhoeae or tuberculous etiology with chronology linking PID, FHCS, and the fertility workup; exclusion of endometriosis, prior tubal surgery, and other independent tubal or ovulatory causes; reproductive-medicine and gynecology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Male-factor infertility",
+          "Ovulatory or endometrial-factor infertility",
+          "Endometriosis-associated tubal or peritoneal factor",
+          "Prior tubal surgery or ectopic-pregnancy sequelae",
+          "Tuberculous salpingitis as an independent tubal cause"
+        ]
+      },
+      "evidenceGaps": [
+        "Laparoscopic or imaging documentation of Fitz-Hugh-Curtis syndrome with dates; completed infertility evaluation documenting tubal-factor (hysterosalpingogram or laparoscopy), ovulatory, and male-factor results; microbiologic confirmation of Chlamydia trachomatis or Neisseria gonorrhoeae or tuberculous etiology with chronology linking PID, FHCS, and the fertility workup; exclusion of endometriosis, prior tubal surgery, and other independent tubal or ovulatory causes; reproductive-medicine and gynecology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the shared-driver pattern: FHCS and tubal-factor infertility co-occur as products of the same infection, and the cited literature documents the tubal-damage link without isolating a perihepatitis-to-infertility arrow, so the mapping asserts co-occurrence with the shared-cause guard and individual workup requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Kobayashi Y, Takeuchi H, Kitade M, et al. Pathological study of Fitz-Hugh-Curtis syndrome evaluated from fallopian tube damage. J Obstet Gynaecol Res. 2006 Jun;32(3):280-285. PMID 16764617.",
+          "note": "Review of 3,568 laparoscopies with 108 FHCS cases and 104 chronic FHCS cases stratified by hydrosalpinx - the FHCS tubal-damage anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16764617/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 16764617; chronic FHCS with hydrosalpinx stratification"
+        },
+        {
+          "citation": "Sharma JB, Malhotra M, Arora R. Incidentally Fitz-Hugh-Curtis syndrome at laparoscopy for benign gynecologic conditions. Int J Gynaecol Obstet. 2002 Dec;79(3):237-240. PMID 12445989.",
+          "note": "Prospective 320-woman laparoscopy study including a 60-patient infertility-workup group with incidental FHCS detection - the infertility-workup co-occurrence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12445989/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 12445989; incidental FHCS across infertility laparoscopies"
+        },
+        {
+          "citation": "Onoh RC, Mgbafuru CC, Onubuogu SE, et al. Fitz-Hugh-Curtis syndrome: An incidental diagnostic finding in an infertility workup. Niger J Clin Pract. 2016 Nov-Dec;19(6):834-836. PMID 27811461.",
+          "note": "Case of FHCS identified during a four-year infertility workup with bilateral tubal blockage and Chlamydia trachomatis findings - the workup-case anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27811461/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 27811461; FHCS with bilateral tubal blockage in infertility workup"
+        }
+      ]
+    }
+  ]
 }

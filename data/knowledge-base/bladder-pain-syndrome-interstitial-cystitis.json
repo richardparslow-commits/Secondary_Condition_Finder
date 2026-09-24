@@ -2,8 +2,69 @@
   "id": "bladder-pain-syndrome-interstitial-cystitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Review pain-psychiatry comorbidity, central-sensitization, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: systematic review and population-based cohort data document substantially elevated depression and anxiety burden in IC/BPS populations, but the literature is cross-sectional and cohort-level with acknowledged bidirectionality (chronic pain amplifies mood symptoms and mood conditions amplify pain perception), so the mapping asserts comorbidity only and cannot attribute any individual's depression to IC/BPS or vice versa.",
+    "Duplication check: the registry has no existing edge from this primary to depressive-disorder; the closest existing edges are urethral-bladder conditions to urinary-incontinence, which do not overlap this scope."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "A PRISMA systematic review of psychosocial comorbidities in IC/BPS (34 studies, meta-analytic pooling) reports population mean CES-D depression scores of 19.89 (SD 13.12) consistent with the range seen in clinical depression and mean HADS-A anxiety scores of 8.15, with psychosocial difficulty worse than average on essentially all measures, and a nationwide population-based cohort study reports increased healthcare-seeking risks of anxiety, depression, and insomnia among patients with bladder pain syndrome/interstitial cystitis.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the systematic review pools predominantly cross-sectional studies that cannot establish direction, the population cohort measures healthcare-seeking behavior rather than incident depression attribution, chronic pelvic pain and mood disorders are bidirectionally intertwined (depression amplifies pain perception and pain burden drives depressive symptoms), and shared drivers (central sensitization, other chronic pain syndromes, psychosocial stressors) require individual exclusion, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized chronic-pain central-sensitization pathway has been described: persistent bladder pain and nocturia drive sleep fragmentation, activity restriction, and sustained sympathetic arousal, while centralized pain processing shared across visceral pain syndromes couples bladder afferent signaling with affective circuits; this physiology would explain the documented comorbidity burden, but it explains co-occurrence without establishing that IC/BPS caused a depressive disorder in any individual, and reverse causation (depressive amplification of symptom perception) plus shared central-sensitization diatheses remain active competing explanations, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Systematic review and cohort data document elevated depression burden in IC/BPS populations, but individual determination requires urologic documentation of IC/BPS against accepted criteria (symptoms, cystoscopy or bladder-pain pattern) with chronology, psychiatric diagnosis of a depressive disorder at a defined time point, and exclusion of competing explanations, all reviewed case by case by a qualified medical professional.",
+        "evidenceGaps": "Urologic documentation of the IC/BPS diagnosis (symptom pattern with cystoscopy or hydrodistention findings where performed) with chronology; psychiatric assessment establishing a depressive disorder against accepted criteria at a defined time point; symptom-severity and mood-measure documentation at relevant time points; competing-explanation review including other chronic pain syndromes and independent mood etiology; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Preexisting or independent major depressive disorder unrelated to bladder symptoms",
+          "Other chronic pain syndromes (fibromyalgia, chronic pelvic pain, irritable bowel syndrome) driving both bladder symptoms and depression",
+          "Central sensitization diathesis explaining the co-occurrence without a directional link",
+          "Medication effects on mood (including opioids and anticholinergic burden) related to IC/BPS treatment"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the depression comorbidity burden in IC/BPS is quantitatively documented in systematic review and cohort data, but the evidence cannot establish direction and mood-pain bidirectionality is well recognized, so this edge flags the comorbidity for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Documented IC/BPS diagnosis against accepted criteria with chronology",
+        "Psychiatric assessment establishing a depressive disorder with temporality",
+        "Symptom-severity and mood documentation at relevant time points",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "McKernan LC, Walsh CG, Reynolds WS, Crofford LJ, Dmochowski RR, Williams DA. Psychosocial co-morbidities in Interstitial Cystitis/Bladder Pain syndrome (IC/BPS): A systematic review. Neurourol Urodyn. 2018;37(3):926-941. PMID 28990698. doi:10.1002/nau.23421.",
+          "note": "PRISMA systematic review with meta-analytic pooling reporting IC/BPS population mean CES-D depression scores (19.89, SD 13.12) in the range seen in clinical depression and elevated HADS-A anxiety scores, with pervasive psychosocial difficulty; supports the comorbidity proposition, not a directional causal claim.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28990698/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 28990698; meta-analysis results and conclusion"
+        },
+        {
+          "citation": "Chuang YC, Weng SF, Hsu YW, Huang CL, Wu MP. Increased risks of healthcare-seeking behaviors of anxiety, depression and insomnia among patients with bladder pain syndrome/interstitial cystitis: a nationwide population-based study. Int Urol Nephrol. 2015;47(2):275-281. PMID 25577231. doi:10.1007/s11255-014-0908-6.",
+          "note": "Nationwide population-based cohort study reporting increased healthcare-seeking risks of anxiety, depression, and insomnia among IC/BPS patients; supports the population-level comorbidity proposition while measuring care-seeking rather than incident attribution, so no directional claim is supported.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25577231/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 25577231; cohort risk results"
+        }
+      ]
+    }
+  ]
 }

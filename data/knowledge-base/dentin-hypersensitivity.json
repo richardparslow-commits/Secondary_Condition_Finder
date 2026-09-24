@@ -1,9 +1,13 @@
 {
-  "id": "dentin-hypersensitivity",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "dentin-hypersensitivity",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 20 (2026-09-23): identity deferred - no distinct downstream catalog target exists for hypersensitivity as a primary source; recorded as a deferral per the repo's deferral convention.",
+  "The direction problem: the one quantified downstream association (anxiety, Zimmer 2025 PMID 39793751) is bidirectionally confounded - anxiety-linked bruxism is an upstream driver of the cervical lesions that produce hypersensitivity, so anxiety operates on both sides of any DH edge. The association is already recorded on the dental-abrasion-erosion-abfraction file's alternative-etiology list where it belongs."
+ ],
+ "governanceNotes": [
+  "Candidate targets screened and rejected: tooth loss, caries, and pulpitis lack catalog identities; restorative-intervention and chronic-orofacial-pain outcomes likewise have no catalog mapping; the anxiety association is a shared-upstream-driver confound rather than a hypersensitivity consequence.",
+  "Sources inspected and verified on NCBI this batch but NOT cited (no edge authored): PMID 39793751 (Zimmer cross-sectional: anxiety associated with DH presence via Poisson regression, n=157), PMID 38034251 (Sakkaria SEM study), PMID 29330655 (Moraschini meta-analysis of DH treatments). Available to the human verifier if a future catalog expansion adds tooth-loss or orofacial-pain identities."
+ ],
+ "suggestions": []
 }

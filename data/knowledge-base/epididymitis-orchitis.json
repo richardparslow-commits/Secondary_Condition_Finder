@@ -1,6 +1,78 @@
 {
   "id": "epididymitis-orchitis",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review infectious, urinary/reflux, postoperative/traumatic, inflammatory, fertility/testicular, treatment, aggravation, and intermediate-factor pathways only where applicable; keep this identity distinct from prostatitis despite any shared rating framework."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 29 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Identity-scope guard: no infertility or sterility edge is authored - no catalog identity for male infertility exists (female-infertility is out of scope), and the mumps-orchitis fertility literature concerns that viral identity rather than the generic epididymitis-orchitis identity; the fertility pathway is recorded as an evidence gap."
+  ],
+  "governanceNotes": [
+    "D1 batch 29 (2026-09-23): one bounded testicular-atrophy association authored from the post-orchitis atrophy literature - Choi 2020's ultrasonographic series documents testicular volume loss of 23-55% (mean 44.7%) occurring 25-230 days after mumps orchitis, and Yapanoglu 2010's semen-and-hormone follow-up documents testicular function loss after orchitis with FSH/LH elevation in the atrophy groups; the mumps-anchored guard (the quantified evidence is mumps-virus scoped; bacterial epididymo-orchitis atrophy is ultrasound-documented but less quantified) and the unilateral-compensation guard (contralateral testis may preserve endocrine function) are recorded.",
+    "No abscesses or varicocele-hydrocele edge was authored: the epididymo-orchitis abscess literature is imaging-review class without complication denominators, and reactive hydrocele is an acute-phase finding rather than a catalog-fit chronic outcome; both pathways are recorded here."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "testicular-atrophy",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Testicular atrophy after orchitis is ultrasonographically documented: Choi 2020's series of eight post-mumps-orchitis patients found atrophic testes 23-55% smaller in volume (mean 44.7% loss) at 25-230 days after the orchitis episode, Yapanoglu 2010's long-term follow-up documents significantly lower sperm density and counts with elevated FSH and LH in the orchitis-atrophy groups, and the imaging literature reviews testicular atrophy as a recognized sequela of severe epididymo-orchitis generally.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the quantified volume-loss evidence is mumps-orchitis scoped while the primary identity is generic (bacterial epididymitis, viral orchitis, and non-infectious inflammations differ in severity and tissue pressure), atrophy must be distinguished from pre-existing volume asymmetry and prior torsion or trauma, and endocrine compensation by the contralateral testis means sonographic atrophy does not equal functional failure in the individual."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A hypothesized pressure-and-autoimmune-tissue-loss pathway: severe intratesticular inflammation and edema raise intratesticular pressure against the tunica albuginea, compressing seminiferous tubules and the microvasculature; direct viral or bacterial cytopathic injury to germ cells combines with pressure ischemia and, in some cases, secondary autoimmune sensitization to sperm antigens after blood-testis barrier breakdown, producing progressive tubular atrophy and volume loss over weeks to months. Individual attribution requires sonographic documentation with compatible chronology.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The atrophy association is quantified mainly in the mumps-orchitis subset and case-series class for the generic identity; sonographic volume loss must be documented bilaterally with serial measurements, pre-existing asymmetry and prior torsion or trauma excluded, and endocrine function assessed separately because sonographic atrophy does not establish hypogonadism; no probability estimate is asserted.",
+        "evidenceGaps": "Documented epididymitis-orchitis episode (etiology, severity, treatment); testicular volume by ultrasound with serial measurements and compatible chronology; endocrine evaluation (testosterone, FSH, LH) and semen analysis where fertility is at issue; exclusion of pre-existing atrophy, prior torsion, varicocele, and trauma; urology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing testicular volume asymmetry or congenital hypoplasia",
+          "Prior testicular torsion or trauma",
+          "Varicocele with ipsilateral volume loss",
+          "Klinefelter syndrome or other primary testicular failure",
+          "Anabolic-steroid or exogenous-hormone exposure"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented epididymitis-orchitis episode (etiology, severity, treatment); testicular volume by ultrasound with serial measurements and compatible chronology; endocrine evaluation (testosterone, FSH, LH) and semen analysis where fertility is at issue; exclusion of pre-existing atrophy, prior torsion, varicocele, and trauma; urology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: post-orchitis atrophy is ultrasonographically and functionally documented, but the quantified evidence is mumps-scoped and the generic identity's non-viral subsets are case-class; no causation is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Choi HI, Yang DM, Kim HC, et al. Testicular atrophy after mumps orchitis: ultrasonographic findings. Ultrasonography. 2020 Jul;39(3):266-271. PMID 32299198.",
+          "note": "Ultrasonographic series of eight post-mumps-orchitis patients: atrophic testes 23-55% (mean 44.7%) smaller at 25-230 days after the episode - the volume-loss quantification anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32299198/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 32299198; post-orchitis volume-loss findings"
+        },
+        {
+          "citation": "Yapanoglu T, Kocaturk H, Aksoy Y, et al. Long-term efficacy and safety of interferon-alpha-2B in patients with mumps orchitis. Int Urol Nephrol. 2010 Dec;42(4):867-871. PMID 20431945.",
+          "note": "Follow-up study with semen analysis and FSH/LH comparison across orchitis-atrophy and hypotrophy groups: significantly impaired sperm parameters and elevated gonadotropins in the atrophy groups - the functional-consequence anchor, used with the mumps-scope guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20431945/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 20431945; post-orchitis testicular function follow-up"
+        },
+        {
+          "citation": "Ramachandran A, Das CJ, Razik A, et al. Male genital tract tuberculosis: a comprehensive review of imaging findings. Abdom Radiol (NY). 2021 Apr;46(4):1677-1686. PMID 33044653.",
+          "note": "Imaging review documenting testicular atrophy, fibrosis, and calcification as healing sequelae of severe granulomatous epididymo-orchitis - the non-viral (bacterial/granulomatous) pathway anchor, used with the review-class guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33044653/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 33044653; post-infectious testicular atrophy and fibrosis imaging findings"
+        }
+      ]
+    }
+  ]
 }

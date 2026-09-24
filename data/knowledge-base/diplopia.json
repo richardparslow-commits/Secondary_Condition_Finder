@@ -1,8 +1,14 @@
 {
-  "id": "diplopia",
-  "draft": true,
-  "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
-  ],
-  "suggestions": []
+ "id": "diplopia",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 23 (2026-09-23): identity deferred - diplopia is a symptom-identity (double vision), not a distinct disease process; no quantified diplopia-specific downstream cohort exists; recorded as a deferral per the repo's deferral convention.",
+  "The quantified-looking anchor is unquantified on inspection: Glisson 2019 calls new diplopia 'debilitating for most patients' but reports no outcome cohort; the Wu-Chen 2011 quality-of-life item is a letter without extractable measures; falls and dizziness outcomes are generic multi-cause without diplopia-specific incidence."
+ ],
+ "governanceNotes": [
+  "Candidate targets screened and rejected: anxiety-disorder and depressive-disorder (only indirect QoL distress, no diplopia-specific psychiatric cohort); dizziness and fall-related outcomes (generic multi-cause, no diplopia-stratified incidence); the 850,000 annual ED/outpatient visits quantify presentation volume, not downstream outcomes.",
+  "Sources inspected and verified on NCBI this batch but NOT cited (no edge authored): PMID 31584541 (Glisson, Approach to Diplopia - 'debilitating for most patients', unquantified), PMID 30096086 (Bartiss, nonsurgical treatment - risk of patient injuries and QoL framing, no measures), PMID 21724046 (Wu-Chen, Diplopia and quality of life - letter, no extractable data). Available to the human verifier if a future quantified diplopia-outcome cohort appears.",
+  "Diplopia as a manifestation of a broader service-connected process (TBI cranial-nerve injury, ocular myasthenia, thyroid orbitopathy) is captured by those source conditions' own edges; a symptom-identity outgoing edge would restate the identity."
+ ],
+ "suggestions": []
 }

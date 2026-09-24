@@ -2,8 +2,151 @@
   "id": "cracked-tooth-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 16 (2026-09-22): association-only drafts pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The Ferracane Registry's natural-history data are the controlling numbers: only 3% fracture and 12% show crack progression in three years with >98% survival, so any individual claim of crack-caused tooth loss requires documentation of actual progression or failure; treatment (cuspal coverage) interrupts the pathway and is itself part of the differential."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength for both edges: the cracked-tooth literature is overwhelmingly treatment-outcome class, and its best natural-history data show most monitored cracks never worsen; neither tooth loss nor periapical infection can be inferred from the crack diagnosis alone.",
+    "Treatment-dependence guard recorded: the extraction-risk estimates in the literature (up to 8.1-fold without cuspal coverage; 11-fold for pulpal-floor extension) are treatment-stratified and selected-cohort values, not natural-history rates; modern restorative dentistry interrupts the pathway, which is why no aggravation tier is drafted despite the mechanism's coherence."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "loss-of-teeth",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The National Dental Practice-Based Research Network Registry's 3-year multisite observational data document that few cracks fracture (3%) or progress (12%) in three years, with tooth survival exceeding 98% and about 80% of monitored teeth never crossing to treatment (Ferracane 2023); the treatment-outcomes meta-analysis of 26 studies found direct restorations without cuspal coverage increased the risk ratio of tooth extraction 8.1-fold versus full crowns, and root-canal-treated cracked teeth without crowns carried 11.3-fold higher extraction risk (Zhang 2024); the 5-year retrospective found cracks extending onto the pulpal floor independently increased the odds of extraction 11-fold (Sim 2016).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the natural-history cohorts show most cracks never cause loss, the large extraction-risk estimates come from treatment-stratified and referral-cohort designs, and the outcome depends decisively on restorative care that interrupts the pathway, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A crack-propagation pathway is hypothesized: masticatory cyclic loading propagates the crack through enamel and dentin toward the pulp chamber and root; propagation to the pulpal floor or complete crown-root fracture eliminates restorability and precipitates extraction, while partial propagation exposes the pulp and drives the pulpal-complication cascade that ends in loss. The mechanism is biomechanically direct, but the best cohort data show 3% fracture and 12% progression over three years with survival above 98%, treatment-dependent extraction risk stratifies the literature, and most cracks never cause loss, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Crack progression is the recognized route by which cracked teeth are lost, but the population data show loss is the exception and is treatment-dependent; individual determination requires documentation of the crack with progression or failure, the treatment history, exclusion of competing causes of loss, and review by a qualified dental professional.",
+        "evidenceGaps": "Documentation of the crack diagnosis (transillumination, staining, bite test, explorer catch, or exploratory preparation) with chronology; serial documentation of progression, pulpal or periapical involvement, or fracture events; restorative treatment history including cuspal coverage or its absence; documentation of the extraction indication; exclusion of caries, periodontal disease, and traumatic fracture as competing causes; a dental professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Dental caries as the independent dominant cause of tooth loss",
+          "Periodontal disease with mobility-driven extraction",
+          "Traumatic fracture unrelated to the pre-existing crack",
+          "Non-crack endodontic failure in the same tooth",
+          "Restorative decision-making (extraction for prosthetic reasons) independent of crack status"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the pathway is biomechanically direct and literature-recognized, but the Registry's own numbers show most cracks never cause loss and treatment dependence dominates the risk estimates; the edge records the recognized pathway only and leaves every individual determination to a qualified dental professional.",
+      "sourceReferences": [
+        {
+          "citation": "Ferracane JL, Hilton TJ, Funkhouser E; National Dental Practice-Based Research Network Collaborative Group. Lessons learned from the Cracked Tooth Registry: A 3-year clinical study in the Nation's Network. J Am Dent Assoc. 2023;154(3):235-244. PMID 36690539. doi:10.1016/j.adaj.2022.11.020.",
+          "note": "Multisite Registry synthesis: 3% fracture, 12% progression in three years, >98% survival, treatment characteristics and clinician decision-making; the natural-history anchor with its low progression rates built in.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36690539/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 36690539; results and conclusions"
+        },
+        {
+          "citation": "Zhang S, Xu Y, Ma Y, Zhao W, Jin X, Fu B. The treatment outcomes of cracked teeth: A systematic review and meta-analysis. J Dent. 2024;142:104843. PMID 38272437. doi:10.1016/j.jdent.2024.104843.",
+          "note": "Meta-analysis of 26 studies: extraction risk RR 8.1 without cuspal coverage in vital cracked teeth and 11.3-fold without crowns after root canal treatment; the treatment-stratified risk anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38272437/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 38272437; results and conclusions"
+        },
+        {
+          "citation": "Sim IG, Lim TS, Krishnaswamy G, Chen NN. Decision Making for Retention of Endodontically Treated Posterior Cracked Teeth: A 5-year Follow-up Study. J Endod. 2016;42(2):225-229. PMID 26723485. doi:10.1016/j.joen.2015.11.011.",
+          "note": "Five-year retrospective: crack extension onto the pulpal floor independently increased extraction odds 11-fold; the depth-of-crack prognostic anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26723485/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 26723485; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "Documentation of the crack diagnosis (transillumination, staining, bite test, explorer catch, or exploratory preparation) with chronology",
+        "serial documentation of progression, pulpal or periapical involvement, or fracture events",
+        "restorative treatment history including cuspal coverage or its absence",
+        "documentation of the extraction indication",
+        "exclusion of caries, periodontal disease, and traumatic fracture as competing causes",
+        "a dental professional's opinion connecting the documented findings in this individual case"
+      ]
+    },
+    {
+      "conditionId": "abscesses",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The cracked-teeth treatment meta-analysis documents pulpal complications as a quantified outcome of cracked-tooth management, with direct restorations without cuspal coverage raising pulpal-complication risk 3.2-fold versus full crowns (Zhang 2024); the practice-based Registry identifies biting pain and crack characteristics that guide intervention, reflecting the recognized symptom cascade from crack toward pulpal involvement (Ferracane 2023); the endodontic-outcomes literature documents bacterial persistence within the root-canal system as the established substrate of posttreatment apical periodontitis, the downstream infection state of this pathway (Siqueira 2008).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: no cohort reports abscess incidence in untreated cracked-tooth populations, pulpal involvement depends on crack depth and treatment that interrupts it, and periapical abscess in the same teeth can arise from caries-driven pulpitis or failed restorations without any crack, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A pulpal-exposure/infection pathway is hypothesized: crack propagation reaching or breaching the pulp chamber allows oral microorganisms to colonize the pulp, producing pulpal necrosis whose products extend through the apical foramen to establish periapical inflammation and abscess formation; the same bacterial colonization-and-persistence biology documented for endodontic infections underlies the periapical disease. The pathway is microbiologically coherent and treatment-recognized, but the literature quantifies pulpal complications in treatment-stratified cohorts rather than abscess incidence in cracked teeth, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Crack-driven pulpal exposure is a recognized route to periapical infection, but abscess cannot be inferred from the crack diagnosis alone; individual determination requires documentation of pulpal necrosis with periapical abscess and chronology, exclusion of competing etiologies, and review by a qualified dental professional.",
+        "evidenceGaps": "Pulp sensibility testing and radiographic documentation of pulpal necrosis; periapical imaging (periapical radiograph or CBCT) documenting radiolucency or abscess with chronology relative to the crack diagnosis; clinical documentation of swelling, sinus tract, or drainage; treatment history including restorations and endodontics; exclusion of caries-driven pulpitis, periodontal abscess, and failed restorations as competing etiologies; a dental professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Dental caries-driven pulpitis and periapical abscess without any crack",
+          "Failed or leaking restorations causing pulp death",
+          "Primary periodontal abscess mimicking periapical origin",
+          "Traumatic pulp exposure unrelated to the crack",
+          "Cracked teeth with vital pulp indefinitely (no infection pathway engaged)"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the infection pathway is the standard endodontic model and pulpal complications are quantified outcomes of cracked-tooth care, but abscess incidence in cracked-teeth populations is unreported and competing etiologies are common; the edge records the recognized pathway only.",
+      "sourceReferences": [
+        {
+          "citation": "Zhang S, Xu Y, Ma Y, Zhao W, Jin X, Fu B. The treatment outcomes of cracked teeth: A systematic review and meta-analysis. J Dent. 2024;142:104843. PMID 38272437. doi:10.1016/j.jdent.2024.104843.",
+          "note": "Meta-analysis documenting pulpal complications as a quantified cracked-tooth outcome (RR 3.2 without cuspal coverage); the pulpal-complication anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38272437/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 38272437; results and conclusions"
+        },
+        {
+          "citation": "Ferracane JL, Hilton TJ, Funkhouser E; National Dental Practice-Based Research Network Collaborative Group. Lessons learned from the Cracked Tooth Registry: A 3-year clinical study in the Nation's Network. J Am Dent Assoc. 2023;154(3):235-244. PMID 36690539. doi:10.1016/j.adaj.2022.11.020.",
+          "note": "Registry synthesis identifying biting pain and crack characteristics guiding intervention; the symptom-cascade context anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36690539/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 36690539; results and conclusions"
+        },
+        {
+          "citation": "Siqueira JF Jr, Rocas IN. Clinical implications and microbiology of bacterial persistence after treatment procedures. J Endod. 2008;34(11):1291-1301. PMID 18928835. doi:10.1016/j.joen.2008.07.028.",
+          "note": "Review establishing root-canal bacterial colonization and persistence as the substrate of apical periodontitis; the downstream-infection mechanism anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18928835/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 18928835; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "Pulp sensibility testing and radiographic documentation of pulpal necrosis",
+        "periapical imaging (periapical radiograph or CBCT) documenting radiolucency or abscess with chronology relative to the crack diagnosis",
+        "clinical documentation of swelling, sinus tract, or drainage",
+        "treatment history including restorations and endodontics",
+        "exclusion of caries-driven pulpitis, periodontal abscess, and failed restorations as competing etiologies",
+        "a dental professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

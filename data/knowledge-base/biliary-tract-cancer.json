@@ -2,8 +2,69 @@
   "id": "biliary-tract-cancer",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oncologic, treatment-related (iatrogenic), and metastatic pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Review malignant-obstruction, hepatic, and nutritional pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: prognostic cohort studies document a high prevalence of malnutrition (CONUT-defined) in cholangiocarcinoma populations, consistent with malignant-obstruction and cancer-anorexia physiology, but the primary studies use malnutrition as a prognostic stratifier rather than establishing the cancer as the cause of a separately diagnosed malnutrition condition in individual patients, and competing etiologies (surgery, cirrhosis, parasitic and chronic liver disease) require individual exclusion, so the mapping asserts population-level co-occurrence only."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "malnutrition-residuals",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Prognostic cohort studies in intrahepatic cholangiocarcinoma report that roughly half or more of patients fall into CONUT-defined mild-or-worse malnutrition before any treatment (53.5% mild plus 7% moderate-severe in one 101-patient cohort; 43.7% at CONUT >= 2 in a 71-patient cohort), and higher malnutrition scores independently predicted shorter survival, consistent with the malignant-obstruction and cancer-anorexia burden described for biliary tract cancers.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: these are retrospective treatment-cohort studies using nutritional scores for prognosis, not etiologic studies attributing a malnutrition diagnosis to the cancer; cholangiocarcinoma populations carry competing wasting drivers including prior hepatectomy, chronic liver disease and parasitic-biliary disease endemic to the studied regions, and tumor-related cachexia overlaps with treatment-related anorexia, so attribution of malnutrition residuals to the cancer in any individual requires medical professional review rather than this mapping."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized malignant-obstruction and cancer-anorexia pathway is described in the hepatobiliary literature: progressive biliary tract tumor obstructs bile flow, producing cholestasis with fat malabsorption, early satiety, and progressive protein-calorie depletion, while tumor-mediated inflammatory cytokine activity drives the broader cancer-anorexia syndrome; this physiology would explain the documented prevalence of CONUT-defined malnutrition in surgical cholangiocarcinoma cohorts, but the cited studies stratify prognosis rather than attributing cause, so the pathway explains co-occurrence without establishing that the cancer caused a diagnosed malnutrition condition in any individual, and treatment and comorbidity drivers remain active alternatives.",
+        "secondaryVector": "Iatrogenic contribution of curative-intent hepatectomy and adjuvant therapy to post-treatment nutritional depletion, which the prognostic cohorts do not separate from tumor-related depletion.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Malnutrition is highly prevalent and prognostically important in cholangiocarcinoma cohorts, but individual determination requires oncology documentation of the biliary tract cancer with stage and chronology, objective nutritional assessment (serum markers, anthropometrics, or validated scores) establishing a malnutrition diagnosis with temporality, and exclusion of surgical, hepatic, and treatment-related wasting drivers, all reviewed case by case by a qualified medical professional.",
+        "evidenceGaps": "Oncology documentation of the biliary tract cancer (imaging, pathology, or operative findings) with chronology; objective nutritional assessment establishing malnutrition at defined time points (albumin, prealbumin, BMI, validated scores); documentation separating tumor-related depletion from hepatectomy, adjuvant-therapy, and chronic-liver-disease contributions; dietary-intake and weight-trend records across the disease course; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Nutritional depletion from curative-intent hepatectomy or adjuvant therapy rather than the tumor itself",
+          "Chronic liver disease, cirrhosis, or hepatobiliary parasitic disease (e.g., liver flukes) as the primary wasting driver",
+          "Preexisting diabetes, depression-related anorexia, or other cachectic comorbidity",
+          "Age-related sarcopenia or unrelated gastrointestinal disease causing malabsorption"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the malnutrition burden in cholangiocarcinoma is quantitatively documented in prognostic cohorts, but etiologic attribution in an individual requires excluding treatment, hepatic, and comorbidity drivers, so this edge flags the association for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Oncology-documented biliary tract cancer with stage and chronology",
+        "Objective malnutrition assessment at defined time points",
+        "Records separating tumor-related from treatment-related and hepatic depletion",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Titapun A, Sookprasert A, Sripanuskul Y, Watcharenwong P, Loilome W, Twinprai P, Srisuk T, Prajumwongs P, Chindaprasirt J. Preoperative controlling nutritional status (CONUT) score is an independent prognostic factor in cholangiocarcinoma patients treated with hepatectomy. Heliyon. 2023;9(10):e20473. PMID 37822625. doi:10.1016/j.heliyon.2023.e20473.",
+          "note": "Retrospective 101-patient intrahepatic cholangiocarcinoma cohort reporting 53.5% mild and 7% moderate-severe CONUT-defined malnutrition preoperatively, with high CONUT an independent poor-prognosis factor (HR 4.71); supports the prevalence proposition, not individual etiologic attribution.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37822625/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 37822625; cohort results and CONUT distribution"
+        },
+        {
+          "citation": "Miyata T, Yamashita YI, Higashi T, Taki K, Izumi D, Kosumi K, Tokunaga R, Nakagawa S, Okabe H, Imai K, Hashimoto D, Chikamoto A, Baba H. The Prognostic Impact of Controlling Nutritional Status (CONUT) in Intrahepatic Cholangiocarcinoma Following Curative Hepatectomy: A Retrospective Single Institution Study. World J Surg. 2018;42(4):1085-1091. PMID 28887635. doi:10.1007/s00268-017-4214-1.",
+          "note": "Retrospective 71-patient intrahepatic cholangiocarcinoma cohort reporting 43.7% of patients at CONUT >= 2 with significantly shorter overall survival (HR 3.02); supports the malnutrition-burden proposition at the cohort level only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28887635/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 28887635; cohort results and conclusion"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,12 @@
   "id": "erythema-nodosum",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 30 (2026-09-23): deferred on manifestation-identity and duplicate-scope grounds - no edges authored; the identity is retained as a draft with suggestions: [] pending qualified-human governance decision.",
+    "Negative screens recorded 2026-09-23: (1) no erythema-nodosum-specific arthritis outcome cohort was found - the association literature is Löfgren-syndrome and primary-disease scoped; (2) no catalog identity exists for the Löfgren triad; (3) the joint-involvement literature is shared-driver confounded."
+  ],
+  "governanceNotes": [
+    "D1 batch 30 (2026-09-23): deferred. Erythema nodosum is a reactive panniculitis defined by its response to upstream triggers (streptococcal infection, sarcoidosis, inflammatory bowel disease, medications, pregnancy), so any outgoing edge to a catalog target restates either the presentation of a listed driver (sarcoidosis, inflammatory-bowel-disease and reactive-arthritis identities already carry edges) or a co-occurring manifestation of the same driver (ankle arthralgia in Löfgren syndrome parallels the EN lesions as parallel expressions of the sarcoidosis process) - a shared-upstream-driver confound that defeats an EN-attributable outcome claim (batch-22 diabetes-mellitus and batch-23 diplopia precedents).",
+    "The arthritis co-occurrence literature is Löfgren-syndrome scoped with no EN-specific attribution cohort; ulceration is not a feature of EN (that belongs to erythema induratum). Reopening condition: cohort evidence of an EN-attributable outcome independent of the driving disease would justify re-screening."
   ],
   "suggestions": []
 }

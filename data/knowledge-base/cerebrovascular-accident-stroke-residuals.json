@@ -1,9 +1,80 @@
 {
-  "id": "cerebrovascular-accident-stroke-residuals",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "cerebrovascular-accident-stroke-residuals",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 9 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Post-traumatic-headache target check recorded: the migraine-headache family overlaps the post-traumatic-headache identity and stroke literature is diffuse; the psychiatric-comorbidity edge carries the population-level evidence and was authored instead. Revisit headache targets only with stroke-population-specific data."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: post-stroke depression affects a quarter to a half of stroke survivors in pooled cohort data, but the primary here is the residuals identity (persisting neurologic deficit after stroke), the quantitative literature is stroke-population-based rather than residuals-specific, and the pre-stroke-depression confounder is documented at pooled OR 3.0, so no directional claim beyond co-occurrence is supportable at the mapping level.",
+  "Lesion-location note recorded: the neurobiologic pathway (disruption of frontal-limbic circuits) is lesion-pattern dependent and the psychosocial pathway (disability-driven demoralization) scales with residual deficit, which makes the residuals identity a plausible specific substrate, but no identified study stratifies depression incidence by residual-deficit severity rather than stroke diagnosis alone."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "depressive-disorder",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "Meta-analytic and pooled cohort data establish post-stroke depression as a high-prevalence, prognostically consequential comorbidity of stroke populations: 25-50 percent prevalence in recent pooled cohorts (Liu 2026, seven cohorts n=10,643), pooled all-cause mortality hazard of 1.59 with PSD in 15 cohorts of 250,294 participants (Cai 2019), and inflammatory and metabolic markers (Hs-CRP SMD 0.16, homocysteine SMD 0.14, acute hyperglycemia) elevated in PSD patients across pooled prospective studies (Jaiswal 2023, Wang 2022).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the primary is the residuals identity while the quantitative literature defines incidence within stroke populations generally, pre-stroke depression raises the odds of post-stroke depression roughly threefold (pooled OR 3.0) and is a documented dominant confounder, lesion location predicts depression inconsistently across studies, and disability, medication, and psychosocial-loss pathways are each independently sufficient, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+    "primaryVector": "A hypothesized dual-pathway mechanism has been described: (1) a neurobiologic route in which cerebrovascular lesions interrupt frontal-limbic and basal-ganglia serotonergic and noradrenergic circuits that regulate mood, supported by the elevated inflammatory and metabolic markers observed in PSD cohorts; and (2) a psychophysiological route in which persisting neurologic deficit produces loss of function, role change, and demoralization meeting depressive-disorder thresholds. Both routes are mechanistically plausible and mutually reinforcing, the pooled data establish high comorbidity and prognosis, but no study separates the routes within a residuals-defined population, and the pre-stroke-depression confounder (OR 3.0) operates upstream of both, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Depressive disorder is highly prevalent after stroke and carries prognostic weight in pooled cohort data, but individual determination requires diagnostic documentation of a depressive disorder meeting criteria with chronology relative to the stroke, characterization of the residual deficit, exclusion of pre-stroke mood disorder as the operative driver, and review case by case by a qualified medical professional.",
+    "evidenceGaps": "Diagnostic documentation of a depressive disorder meeting accepted criteria with onset chronology relative to the stroke; clinical records characterizing the residual neurologic deficit and its severity; history establishing pre-stroke mood status to separate new-onset from continuing depression; medication and psychosocial history quantifying contributing determinants; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Pre-stroke depressive disorder persisting or re-emerging after the stroke",
+     "Medication effects (beta-blockers, sedatives, antihypertensives) on mood",
+     "Post-stroke fatigue, apathy, or cognitive-affective blunting mischaracterized as depression",
+     "Psychosocial loss and role change independent of lesion-driven neurobiology"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the comorbidity and prognosis are meta-analytically established, but the literature defines stroke populations rather than the residuals identity, the pre-stroke-depression confounder is large and documented, and competing routes are individually sufficient; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "evidenceGaps": [
+    "Diagnostic documentation of a depressive disorder meeting accepted criteria with onset chronology relative to the stroke",
+    "Clinical records characterizing the residual neurologic deficit and its severity",
+    "History establishing pre-stroke mood status to separate new-onset from continuing depression",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ],
+   "sourceReferences": [
+    {
+     "citation": "Liu L, Zhang G, He Y, Zhang H. Post-stroke depression and its impact on mortality and functional outcomes: a systematic review and meta-analysis. NeuroRehabilitation. 2026;59(1):48-62. PMID 42506930. doi:10.1177/10538135261462562.",
+     "note": "Pooled cohort analysis (seven cohorts, n=10,643) reporting 25-50 percent post-stroke depression prevalence with 3.5-fold disability odds independent of stroke severity; establishes population-level comorbidity burden without attributing depression causally to residual deficit.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42506930/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 42506930; background, results, conclusions"
+    },
+    {
+     "citation": "Cai W, Mueller C, Li YJ, Shen WD, Stewart R. Post stroke depression and risk of stroke recurrence and mortality: a systematic review and meta-analysis. Ageing Res Rev. 2019;50:102-109. PMID 30711712. doi:10.1016/j.arr.2019.01.013.",
+     "note": "Meta-analysis of 15 prospective cohorts (250,294 participants) reporting pooled all-cause mortality hazard of 1.59 (95% CI 1.30-1.96) with post-stroke depression; documents the prognostic weight of the comorbidity at population scale, at observational strength.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30711712/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 30711712; results and conclusion"
+    },
+    {
+     "citation": "Taylor-Rowan M, Momoh O, Ayerbe L, Evans JJ, Stott DJ, Quinn TJ. Prevalence of pre-stroke depression and its association with post-stroke depression: a systematic review and meta-analysis. Psychol Med. 2019;49(4):685-696. PMID 30107864. doi:10.1017/S0033291718002003.",
+     "note": "Meta-analysis (29 studies, n=164,993) reporting pre-stroke depression prevalence of 11.6 percent and a pooled odds ratio of 3.0 (95% CI 2.3-4.0) for post-stroke depression; deliberately entered as the documented competing-evidence anchor for the confounder recorded in the causation boundary.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30107864/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 30107864; results and conclusions"
+    }
+   ]
+  }
+ ]
 }

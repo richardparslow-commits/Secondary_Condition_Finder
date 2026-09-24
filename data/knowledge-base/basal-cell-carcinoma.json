@@ -2,8 +2,12 @@
   "id": "basal-cell-carcinoma",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch (2026-09-22): identity deferred with a documented scope barrier instead of an authored edge, per the repo's established deferral convention and the ME-35 proposed-research-ledger exclusion record.",
+    "ME-35 explicitly excluded `basal-cell-carcinoma -> squamous-cell-carcinoma` because the available evidence supports shared ultraviolet risk and multiple-primary skin-cancer risk, not a defensible direct progression edge between the two malignancies; authoring that or a similar edge would contradict the recorded exclusion reasoning.",
+    "Basal-cell carcinoma's clinically significant local destructive sequelae (tissue invasion, perineural spread, need for ablative surgery) have no catalog-compatible target identity with a defensible condition-specific evidence base. Revisit only if the catalog adds a local-destructive skin-cancer-complication identity or target-specific evidence emerges; do not infer medical causation from rating-schedule authority."
+  ],
+  "governanceNotes": [
+    "Deliberate deferral, not an authored suggestion: the only screened candidate edge was excluded by ME-35 on evidence grounds (shared UV risk explains multiple-primary skin cancers; BCC does not progress to SCC), and BCC's genuine destructive complications lack an honest catalog target. The identity remains intentionally suggestion-free rather than carrying a manufactured edge."
   ],
   "suggestions": []
 }

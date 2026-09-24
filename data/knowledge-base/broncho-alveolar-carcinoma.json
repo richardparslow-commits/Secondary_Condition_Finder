@@ -1,9 +1,71 @@
 {
-  "id": "broncho-alveolar-carcinoma",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oncologic, treatment-related (iatrogenic), and metastatic pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "broncho-alveolar-carcinoma",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 6 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "Review the pneumonic-type and pleural-involvement pathways only where documented in this identity's records; do not infer medical causation from rating-schedule authority."
+ ],
+ "governanceNotes": [
+  "Authored as ASSOCIATION_ONLY with NOT_ESTABLISHED consensus: lepidic-pattern adenocarcinoma (bronchioloalveolar carcinoma) is documented to produce diffuse pneumonic-type disease and, in case reports, malignant pleural effusion and hydropneumothorax, but the supporting evidence is case-report level plus a radiology review of CT findings; no cohort or pooled estimate quantifies effusion risk for this histology, so the edge stays at association strength rather than claiming tumor-produced effusion as an established mechanism.",
+  "Duplicate-identity boundary: the catalog holds separate lung-cancer identities (including respiratory-cancer umbrella and this lepidic/bronchioloalveolar identity with the lung adenocarcinoma alias); this edge is identity-specific to the lepidic/bronchioloalveolar primary and its distinctive aerogenous spread pattern, and does not substitute for or merge with any other lung-cancer identity's relationships.",
+  "Cytology-proven effusion is the gate: the case evidence establishes that pleural fluid cytology and pleural biopsy can return positive for lepidic adenocarcinoma, so the evidence gaps center on cytologic confirmation, which also excludes parapneumonic, paramalignant, and unrelated effusion causes."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "pleural-effusion",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "A radiology review of air-space disease lists bronchioloalveolar carcinoma among the CT-demonstrable causes of pneumonia-pattern consolidation with accompanying pleural effusion, and published case documentation of lepidic-predominant adenocarcinoma reports bilateral pleural effusion and hydropneumothorax with pleural fluid cytology and pleural biopsy positive for lepidic adenocarcinoma; no cohort study or pooled estimate quantifies pleural-effusion frequency for this histologic pattern.",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the supporting evidence is a radiology review plus case reports, case series cannot provide incidence or risk estimates, effusion in cancer populations also arises from parapneumonic, paramalignant, treatment-related, and comorbid causes (heart failure, renal disease) that require individual exclusion, and the malignancy association would only be cytology-proven in a subset of cases, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+    "primaryVector": "A hypothesized tumor-pleura involvement pathway has been described: the lepidic growth pattern spreads aerogenously along alveolar walls producing pneumonia-like consolidation, and tumor cells can seed the pleural space or obstruct lymphatic drainage, producing malignant pleural effusion; the case documentation demonstrates that pleural fluid and pleural tissue can harbor the tumor (cytology- and biopsy-positive effusion), which would fit direct pleural seeding, but effusion frequency and mechanism at the population level are unquantified for this histology, and paramalignant mechanisms (lymphatic obstruction without pleural seeding) plus unrelated causes remain active competing explanations, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Pneumonic-type lepidic adenocarcinoma with pleural involvement is documented in radiology reviews and case reports, but individual determination requires histopathologic confirmation of the tumor, thoracentesis with pleural fluid cytology (and where performed pleural biopsy) characterizing the effusion, and exclusion of parapneumonic, paramalignant, treatment-related, and comorbid causes, all reviewed case by case by a qualified medical professional.",
+    "evidenceGaps": "Histopathologic or cytologic confirmation of bronchioloalveolar/lepidic adenocarcinoma with stage and chronology; thoracentesis with pleural fluid cytology, chemistry ( Lights criteria distinguishing exudate from transudate), and where performed pleural biopsy; imaging characterizing the effusion and the underlying parenchymal disease; treatment and timeline records; a medical professional's opinion separating malignant, paramalignant, and unrelated effusion mechanisms in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Parapneumonic effusion from concurrent infection",
+     "Paramalignant effusion from lymphatic or venous obstruction without pleural seeding",
+     "Effusion secondary to cancer treatment (radiation pleuritis, drug reaction)",
+     "Transudative effusion from congestive heart failure, hepatic, or renal disease"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the pleural-involvement evidence for lepidic adenocarcinoma is case-report and radiology-review level without cohort denominators, effusion causation requires cytologic proof in the individual case, and competing effusion mechanisms are common in the relevant populations, so this edge flags the comorbidity for evidence-gap review only and must never be presented as established causation or aggravation.",
+   "evidenceGaps": [
+    "Histopathologically confirmed bronchioloalveolar/lepidic adenocarcinoma",
+    "Thoracentesis with pleural fluid cytology characterizing the effusion",
+    "Imaging of effusion and parenchymal disease with chronology",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ],
+   "sourceReferences": [
+    {
+     "citation": "Hommeyer SH, Godwin JD, Takasugi JE. Computed tomography of air-space disease. Radiol Clin North Am. 1991;29(5):1065-1084. PMID 1871256.",
+     "note": "Radiology review of CT findings in air-space disease listing bronchioloalveolar carcinoma among the pneumonia-pattern causes and noting that accompanying abnormalities such as pleural effusion are often clearly demonstrated by CT; establishes the imaging co-occurrence, not an etiologic estimate.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/1871256/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 1871256; air-space disease review, BAC and pleural-effusion passages"
+    },
+    {
+     "citation": "Akhtar Z, Laageide L, Robles J, et al. Unusual presentation of lepidic adenocarcinoma in a healthy female. BMC Pulm Med. 2022;22(1):197. PMID 35578218. doi:10.1186/s12890-022-01969-1.",
+     "note": "Case report of lepidic-predominant adenocarcinoma with diffuse pneumonic-type bilateral aerogenous disease, right hydropneumothorax and left pleural effusion, with pleural fluid cytology and pleural biopsy positive for lepidic adenocarcinoma; demonstrates the malignant-effusion pathway is biologically real in individual cases while explicitly acknowledging its rarity and the absence of cohort-level frequency data.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35578218/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 35578218; case presentation and conclusion"
+    }
+   ]
+  }
+ ]
 }

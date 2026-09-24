@@ -1,8 +1,13 @@
 {
   "id": "anosmia",
   "draft": true,
+  "suggestions": [],
   "todo": [
+    "D1 draft-authoring batch 24 (2026-09-22): identity left unmapped — the FINAL-CLOSE-PROPOSITION-MISMATCH withdrawal (ME-32) was re-screened and stands; no edge authored.",
     "The prior depressive-disorder suggestion was withdrawn because the cited population meta-analysis found an association between olfactory impairment and depression but explicitly called for longitudinal and mechanistic work to clarify causal pathways; objective olfactory impairment also became nonsignificant after publication-bias adjustment in the primary pooled analysis. Reconsider only with directional, anosmia-specific evidence that supports an individual secondary-condition pathway rather than comorbidity screening."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Re-screen result (2026-09-22, D1 batch 24): the prior withdrawn suggestion remains correctly withdrawn. The population meta-analysis evidence base is cross-sectional with the objective-impairment finding nonsignificant after publication-bias adjustment, and the batch-24 screen confirmed the catalog holds no hyposmia or parosmia identity for the nutrition/safety sequelae pathways and that anosmia-specific outcome cohorts remain absent.",
+    "Manifestation-coverage note (batch 24): COVID-19 olfactory-dysfunction coverage sits on the covid-19-residuals identity and traumatic anosmia on the head-injury/post-concussive identities, so an outgoing anosmia edge would largely restate existing manifestation coverage."
+  ]
 }

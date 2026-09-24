@@ -1,9 +1,83 @@
 {
-  "id": "cicatricial-pemphigoid",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "cicatricial-pemphigoid",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 12 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "The mechanical scarring pathway is series-supported with defined staging; if a qualified human finds cohort incidence data for vision loss in OCP populations, a higher tier may be appropriate."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: corneal scarring and vision loss are the recognized end-stage complications of ocular cicatricial pemphigoid in case series and reviews, but the evidence base is case-series class without population denominators, and the scarring route is mechanical (via dry eye, trichiasis, entropion) rather than a direct tissue effect, so no directional claim beyond co-occurrence is supportable at the mapping level.",
+  "Identity boundary recorded: ocular cicatricial pemphigoid is a subtype of the same disease; the edge concerns the systemic/mucosal disease as source and the corneal outcome, which is a distinct ratable condition, not a restatement of the diagnosis."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "corneal-scarring",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The OCP case series documents severe dry eye syndrome, entropion, corneal erosions, and ultimately permanent vision loss in three patients with ocular cicatricial pemphigoid (Stan 2020); the comprehensive review describes bilateral chronic cicatricial conjunctivitis producing fornix foreshortening, symblepharon, trichiasis, and entropion whose mechanical factors drive progressive scarring and vascularization of the ocular surface, with blinding keratopathy prevalent in advanced disease (Holsclaw 1998); the diagnostics review identifies antibasement-membrane-mediated subepithelial blistering and conjunctival fibrosis causing severe entropion, trichiasis, symblepharon, and corneal epithelial erosions or ulceration (Brydak-Godowska 2005).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the evidence is case-series and review class without population denominators, the corneal outcome arises through a multi-step mechanical cascade (dry eye, lid malposition, trichiasis) rather than direct corneal involvement, and individual trajectories vary widely with treatment access, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+    "primaryVector": "A chronic-cicatrix mechanical pathway is hypothesized: autoantibodies against basement-membrane components trigger subepithelial blistering and fibrotic repair of the conjunctiva; progressive fornix shortening, symblepharon, and lid-margin scarring produce entropion and trichiasis whose lashes abrade the cornea, while conjunctival keratinization and aqueous deficiency generate severe dry eye; the combined abrasive and desiccating injury drives repeated epithelial breakdown, ulceration, and ultimately corneal scarring, keratinization, and vascularization. The mechanism is coherent and consistently described, but the evidence remains series-level without incidence denominators, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Corneal scarring co-occurs with cicatricial pemphigoid through a well-described mechanical cascade, but individual determination requires slit-lamp documentation of the corneal changes with chronology relative to the pemphigoid diagnosis and activity, exclusion of independent corneal disease, and review by a qualified medical professional.",
+    "evidenceGaps": "Slit-lamp documentation of corneal scarring, keratinization, or vascularization with chronology relative to cicatricial pemphigoid onset and activity; documentation of the cicatricial stage (fornix shortening, symblepharon, trichiasis, entropion); biopsy or immunofluorescence confirmation of the autoimmune diagnosis; workup excluding independent corneal disease (trauma, infection, prior surgery); treatment-response records correlating systemic disease control with corneal course; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Corneal trauma or foreign-body injury",
+     "Microbial keratitis with independent scarring",
+     "Prior corneal surgery or refractive procedures",
+     "Stevens-Johnson syndrome or other mucocutaneous blistering disease",
+     "Severe dry eye from independent aqueous-deficiency etiologies"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the mechanical scarring cascade is consistently described in series and reviews, but the evidence base lacks denominators and the outcome depends on multi-step mechanical progression; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "sourceReferences": [
+    {
+     "citation": "Stan C, Diaconu E, Hopirca L, Petra N, Rednic A, Stan C. Ocular cicatricial pemphigoid. Rom J Ophthalmol. 2020;64(2):226-230. PMID 32685792.",
+     "note": "Case series of three OCP patients documenting severe dry eye syndrome, entropion, corneal erosions, and ultimately permanent vision loss; establishes the end-stage outcome at case-series level.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32685792/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 32685792; abstract"
+    },
+    {
+     "citation": "Holsclaw DS. Ocular cicatricial pemphigoid. Int Ophthalmol Clin. 1998;38(4):89-106. PMID 10200078. doi:10.1097/00004397-199803840-00009.",
+     "note": "Comprehensive review describing the mechanical cascade from cicatricial conjunctivitis through symblepharon, trichiasis, and entropion to progressive scarring, vascularization, and blinding keratopathy in advanced disease.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10200078/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 10200078; abstract"
+    },
+    {
+     "citation": "Brydak-Godowska J, Moneta-Wielgoś J, Pauk-Domańska M, et al. Diagnostics and pharmacological treatment of ocular cicatricial pemphigoid. Klin Oczna. 2005;107(10-12):725-727. PMID 16619831.",
+     "note": "Diagnostics review identifying antibasement-membrane-mediated subepithelial blistering and conjunctival fibrosis as the pathophysiologic basis for entropion, trichiasis, symblepharon, and corneal erosions or ulceration; also names secondary glaucoma as a frequent complication.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16619831/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 16619831; abstract"
+    }
+   ],
+   "evidenceGaps": [
+    "Slit-lamp documentation of corneal scarring, keratinization, or vascularization with chronology relative to cicatricial pemphigoid onset and activity",
+    "Documentation of the cicatricial stage (fornix shortening, symblepharon, trichiasis, entropion)",
+    "Biopsy or immunofluorescence confirmation of the autoimmune diagnosis",
+    "Workup excluding independent corneal disease (trauma, infection, prior surgery)",
+    "Treatment-response records correlating systemic disease control with corneal course",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ]
+  }
+ ]
 }

@@ -2,8 +2,80 @@
   "id": "cotard-s-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review psychiatric, neuropsychiatric, medication-related, and sleep-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 16 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The Berrios factor structure is the governing frame: Cotard's syndrome cuts across diagnostic categories (psychotic-depression factor, pure type I closer to delusional disorders, mixed type II), so the depressive-disorder edge records embedding within a syndrome population, not causation; the reverse reading (severe depression generating the syndrome) is equally documented and is recorded in the guard."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: the 100-case series and the 2005-2018 case-review both document major depression in the large majority of Cotard presentations (89%; psychotic-depression the leading factor), but the syndrome is explicitly a cross-cutting presentation with a pure non-affective form, so neither direction is asserted.",
+    "Bidirectionality/identity guard recorded: Cotard's syndrome is not in ICD-10 or DSM-5 and is best modeled as a delusional presentation occurring within psychotic depression, other psychoses, or organic disease; an edge in either direction risks restating the diagnostic picture (the ME-41 barrier noted for other syndrome identities), so the edge records documented co-occurrence only, mirroring the capgras-syndrome precedent."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The analysis of 100 historical and modern cases found depression reported in 89% of subjects, with exploratory factor analysis extracting psychotic-depression, Cotard type I (no depression loadings, closer to delusional disorders), and mixed type II factors, concluding the syndrome cuts across diagnostic categories (Berrios 1995); the systematic review of 69 reported cases from 2005-2018 found major depression significantly more frequent in older patients and extracted the same psychotic-depression factor leading the structure (Huarcaya-Victoria 2020); the case report and review situates Cotard's within psychotic depression with ECT as the most reported successful treatment and records associated organic conditions (Moschopoulos 2016).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the co-occurrence is better modeled as embedding of the syndrome within severe depressive episodes (or within non-affective psychosis and organic disease in other cases), the pure type I form shows no depression loadings, and reverse generation (depressive illness producing the syndrome) is the standard clinical reading, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A shared-severity pathway is hypothesized: nihilistic delusions arise within the most severe depressive episodes as psychotic elaborations of mood-congruent negation (guilt, damnation, bodily nonexistence), while in the pure form the same delusions occur without affective illness; shared dopaminergic-limbic and self-referential-processing disturbances are the proposed substrate for both. Both directions are biologically coherent and documented, but the syndrome's cross-cutting factor structure defeats a single directional arrow, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Depressive disorder co-occurs with Cotard's syndrome in the large majority of documented cases as part of the syndrome's psychotic-depression factor; individual determination requires psychiatric diagnostic documentation of the depressive episode and the delusional content with chronology, exclusion of organic and substance causes, and review by a qualified medical professional.",
+        "evidenceGaps": "Structured psychiatric diagnostic evaluation documenting the depressive episode (duration, severity, melancholic and psychotic features) and the nihilistic delusional content with chronology; neuromedical workup excluding organic etiologies (infarction, encephalitis, tumor, epilepsy, traumatic brain injury) and substance-induced psychosis; treatment-response documentation; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Pure Cotard type I without affective illness (delusional-disorder proximity)",
+          "Organic etiologies (cerebral infarction, encephalitis, tumor, epilepsy, traumatic brain injury)",
+          "Schizophrenia-spectrum psychosis with nihilistic content",
+          "Substance-induced or medication-induced psychosis",
+          "Postpartum and catatonic presentations without primary depression"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the co-occurrence is the best-documented fact in the syndrome's literature (89% depression; psychotic-depression the leading factor), but the syndrome's cross-cutting structure and the standard reverse reading defeat any causal arrow; the edge records documented co-occurrence only, mirroring the capgras-syndrome precedent.",
+      "sourceReferences": [
+        {
+          "citation": "Berrios GE, Luque R. Cotard's syndrome: analysis of 100 cases. Acta Psychiatr Scand. 1995;91(3):185-188. PMID 7625193. doi:10.1111/j.1600-0447.1995.tb09764.x.",
+          "note": "The largest case analysis: depression in 89%, three-factor structure separating psychotic depression from pure type I and mixed type II; the central cross-cutting-structure anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7625193/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 7625193; results and conclusions"
+        },
+        {
+          "citation": "Huarcaya-Victoria J, Bojorquez-De la Torre J, De la Cruz-Ore J. Factor Structure of Cotard's Syndrome: Systematic Review of Case Reports. Rev Colomb Psiquiatr (Engl Ed). 2020;49(3):187-193. PMID 32888662. doi:10.1016/j.rcp.2018.10.008.",
+          "note": "Systematic review of 69 cases from 2005-2018 confirming major-depression predominance and the psychotic-depression factor; the modern-confirmation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32888662/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 32888662; results and conclusions"
+        },
+        {
+          "citation": "Moschopoulos NP, Kaprinis S, Nimatoudis J. [Cotard's syndrome: Case report and a brief review of literature]. Psychiatriki. 2016;27(4):296-302. PMID 28114093.",
+          "note": "Case report and review situating the syndrome within psychotic depression, recording associated organic conditions and ECT as the most reported successful treatment; the clinical-context anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28114093/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 28114093; case report and literature review"
+        }
+      ],
+      "evidenceGaps": [
+        "Structured psychiatric diagnostic evaluation documenting the depressive episode (duration, severity, melancholic and psychotic features) and the nihilistic delusional content with chronology",
+        "neuromedical workup excluding organic etiologies (infarction, encephalitis, tumor, epilepsy, traumatic brain injury) and substance-induced psychosis",
+        "treatment-response documentation",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

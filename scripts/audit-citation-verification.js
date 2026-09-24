@@ -49,16 +49,142 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // ME-38 adds ptsd -> rem-sleep-disorder over 3 qualified-human-verified clinical sources approved in-session on
 // 2026-09-06 (Elliott PMID 31587047, Baldini 2026 systematic review PMID 41616415, Barone PMID 32804070).
 // Final ME-38 citation state: 379 live verified / 0 unverified / 0 review; 385 verified provenance including 6 retired verified.
+// D1 draft-authoring batches (2026-09-22): batch 1 authored 5 draft-quarantined ASSOCIATION_ONLY
+// suggestions (apathy, aphasia-dysphasia, arteriosclerosis, arteriovenous-fistula, astigmatism) over 8
+// sources; batch 2 authored 4 more over 6 sources with baker-s-cyst deferred per the ME-35 exclusion;
+// batch 3 authored 3 more (bankart-lesion -> post-traumatic-osteoarthritis, benign-migratory-glossitis ->
+// psoriasis, benign-paroxysmal-positional-vertigo -> anxiety-disorder) over 5 sources, with
+// balint-s-syndrome deferred (no honest catalog target) and basal-cell-carcinoma deferred per the ME-35
+// exclusion. All are bibliography-confirmed and pending qualified-human verification; per the
+// citation-purity quarantine they remain draft: true and verified: false; the unverified ratchet holds
+// that debt visible until the human SOP closes it. Batch 4 authored 5 more (bicipital-tendinitis ->
+// rotator-cuff-injury, bile-reflux-gastritis -> esophagitis, biliary-tract-cancer -> malnutrition-residuals,
+// bladder-contracture -> urinary-frequency-retention, bladder-pain-syndrome-interstitial-cystitis ->
+// depressive-disorder) over 10 sources. Batch 5 authored 4 more (blindness ->
+// depressive-disorder, bone-cysts and bone-tumors -> malunion-nonunion-of-fractures, and the
+// batches' first DIRECT_CAUSATION draft, brain-cancer -> seizure-disorder) over 8 sources, with
+// boutonniere-deformity deferred (no target-specific literature; the documented RA direction is upstream).
+// Batch 6 authored 2 more (bronchitis -> copd early-life-infection trajectory, broncho-alveolar-carcinoma
+// -> pleural-effusion) over 5 sources; a drafted bruxism edge was withdrawn to honor the ME-34 rejection,
+// and bronchomalacia and bullosis-diabeticorum were deferred with governance records. Batch 7 authored 2
+// more (bundle-branch-block -> implantable-cardiac-pacemaker spontaneous-progression association with the
+// post-TAVI procedural literature deliberately excluded from scope, and burning-mouth-syndrome ->
+// depressive-disorder with the reverse-direction cohort dominance recorded) over 5 sources;
+// bullous-pemphigoid (ME-35 directionality exclusion), byssinosis (ME-35 evidence-condition exclusion),
+// and bursitis (promotion-batch-24 safe-draft disposition) were deferred honoring prior dispositions.
+// D1 batch 16 (2026-09-22): corneal-scarring -> visual-impairment; cracked-tooth-syndrome ->
+// loss-of-teeth and abscesses; cryptogenic-organizing-pneumonia -> pulmonary-fibrosis; and
+// cotard-s-syndrome -> depressive-disorder (capgras-precedent co-occurrence modeling) over
+// 13 sources; cubital-tunnel-syndrome deferred on the ME-41 phenotype-identity barrier
+// (ulnar neuropathy IS the identity) and catalog-gap grounds.
+// D1 batch 19 (2026-09-23): cyclic-vomiting-syndrome -> migraine-headaches/depressive-disorder/
+// esophagitis (comorbidity/complication association with reverse-direction and acute-tear guards);
+// cystitis-or-neurogenic-bladder -> hydronephrosis (second obstruction-mechanical DIRECT_CAUSATION
+// after urethral stricture, urethral-stricture precedent) and -> kidney-stones (SCI-specific
+// excess risk, catheter confound); dandy-walker-syndrome -> hydrocephalus (CSF-flow obstruction,
+// penetrance guard); de-quervain-s-tenosynovitis -> carpal-tunnel-syndrome (single cross-sectional
+// co-occurrence cohort); decubitus-ulcers -> osteomyelitis (biopsy-denominator guard) over 19 sources.
+// D1 batch 18 (2026-09-22): conductive-hearing-loss -> tinnitus (otosclerosis-specific cohorts,
+// severity decoupled from hearing degree); conjunctivitis -> corneal-scarring (adenoviral-EKC-specific
+// SEI pathway); coronary-bypass-residuals -> cardiac-arrhythmia/cognitive-disorder (treatment-mediated
+// POAF/POCD per the iatrogenic convention) over 13 sources; contralateral-knee-condition and
+// cranial-nerve-palsy deferred on identity/directionality and manifestation-identity barriers.
+// D1 batch 17 (2026-09-22): aphonia -> depressive-disorder/anxiety-disorder;
+// bacterial-rhinitis -> sinusitis; chronic-laryngitis -> vocal-cord-nodules-polyps-cysts-paralysis
+// (edematous-polypoid spectrum only); complex-regional-pain-syndrome -> osteoporosis/contractures
+// over 15 sources; common-peroneal-neuropathy deferred on the ME-41 phenotype-identity barrier.
+// Batch 34 (2026-09-23): +3 pending-verification relationships across 3 authored
+// identities (femoral-neuropathy->unexplained-chronic-pain,
+// fitz-hugh-curtis-syndrome->female-infertility, flatfoot->osteoarthritis);
+// female-sexual-arousal-disorder deferred on evidence-gap and nosology-stability
+// grounds (zero TiAb FSAD-specific mood quantification) and fissured-tongue
+// deferred on zero-record and directionality grounds. Every citation NCBI-verified
+// via efetch before file authoring (batch-30 lesson institutionalized). Debt
+// ratchet advances per the SOP: the 9 new sources (9 reference uses, no sharing)
+// stay pending-verification pending qualified-human review.
+// Batch 33 (2026-09-23): +4 pending-verification relationships across 4 authored
+// identities (farmer-s-lung->pulmonary-fibrosis,
+// fasciitis->amputation-or-loss-of-use, fecal-impaction->fecal-incontinence
+// DIRECT_CAUSATION, female-infertility->depressive-disorder);
+// female-reproductive-disorders deferred on duplicate-scope class-identity
+// grounds (diabetes-mellitus and eczema precedents). Every citation NCBI-verified
+// via efetch before file authoring (batch-30 lesson institutionalized). Debt
+// ratchet advances per the SOP: the 12 new sources (12 reference uses, no
+// sharing) stay pending-verification pending qualified-human review.
+// Batch 32 (2026-09-23): +4 pending-verification relationships across 4 authored
+// identities (excoriation-disorder->scars, factitious-disorder->scars,
+// exophthalmos->keratitis, exploding-head-syndrome->insomnia);
+// extensor-digitorum-brevis-strain deferred on evidence-ground zero-record screening
+// (camptodactyly precedent). Every citation NCBI-verified via efetch before file
+// authoring (batch-30 lesson institutionalized). Debt ratchet advances per the SOP:
+// the 11 new sources (11 reference uses, no sharing) stay pending-verification
+// pending qualified-human review.
+// Batch 31 (2026-09-23): +5 pending-verification relationships across 4 authored
+// identities (erythroplasia-of-queyrat->squamous-cell-carcinoma,
+// erythropoietic-protoporphyria->cholelithiasis and ->chronic-liver-disease,
+// esophageal-stricture->dysphagia and esophagitis->esophageal-stricture, both
+// DIRECT_CAUSATION); euthyroid-sick-syndrome deferred on manifestation-identity
+// grounds. Every citation NCBI-verified via efetch before file authoring (batch-30
+// lesson institutionalized). Debt ratchet advances per the SOP: the 9 new sources
+// (14 reference uses, the Levy registry shared across both EPP edges) stay
+// pending-verification pending qualified-human review.
+// Batch 30 (2026-09-23): +4 pending-verification relationships across 2 authored
+// identities (episcleritis and erythromelalgia, each -> insomnia and
+// -> unexplained-chronic-pain); erythema-nodosum and erythema-induratum deferred on
+// manifestation-identity grounds, erythema-multiforme deferred after its candidate
+// edge failed citation verification in self-audit (incident recorded in-file). Debt
+// ratchet advances per the SOP: the 4 new sources (12 reference uses, each source
+// shared across both sibling edges of its identity) stay pending-verification
+// pending qualified-human review.
+// Batch 29 (2026-09-23): +4 pending-verification relationships across 4 authored
+// identities (eosinophilic-myocarditis->congestive-heart-failure DIRECT_CAUSATION,
+// epicondylitis->ulnar-neuropathy, epidermolysis-bullosa-acquired->esophageal-stricture,
+// epididymitis-orchitis->testicular-atrophy); epididymal-cyst deferred (benign
+// incidental finding, no outcome association evidence). Debt ratchet advances per
+// the SOP: the 12 new sources (12 reference uses, no sharing) stay pending-verification
+// pending qualified-human review.
+// Batch 28 (2026-09-23): +6 pending-verification relationships across 4 authored
+// identities (encephalitis->seizure-disorder DIRECT_CAUSATION and ->cognitive-disorder,
+// enophthalmos->diplopia, eosinophilic-bronchitis->asthma,
+// eosinophilic-gastroenteritis->malnutrition-residuals and ->anemia); encopresis
+// deferred on duplicate-scope and manifestation-identity grounds. Debt ratchet
+// advances per the SOP: the 12 new sources (17 reference uses, 5 sources shared
+// across sibling edges) stay pending-verification pending qualified-human review.
+// Batch 27 (2026-09-23): +4 pending-verification relationships across 4 authored
+// identities (dysplastic-nevus-syndrome->skin-cancer, early-onset-peripheral-neuropathy->pes-cavus,
+// elbow-disarticulation->phantom-limb-pain, empty-nose-syndrome->depressive-disorder);
+// eczema deferred on duplicate-scope (the atopic-dermatitis evidence base is already carried by
+// the batch-20 dermatitis edges and the atopic-march edge). Debt ratchet advances per the SOP:
+// the 8 new sources (9 reference uses, including the reused verified Diers 2022 on the elbow
+// edge) stay pending-verification pending qualified-human review.
+// Batch 26 (2026-09-23): +4 pending-verification relationships across 4 authored
+// identities (dumping-syndrome->malnutrition-residuals,
+// dupuytren-s-contracture->trigger-finger, dwarfism->sleep-apnea,
+// dwarfism->spinal-stenosis); carpal-tunnel-syndrome reaffirmed as a safe draft,
+// dyspareunia deferred (DSM-5 GPPPD merger defeats directionality). Debt ratchet
+// advances per the SOP: the 8 new sources (10 reference uses) stay
+// pending-verification pending qualified-human review.
+// Batch 25 (2026-09-23): +5 pending-verification relationships across 4 authored
+// identities (cystitis->overactive-bladder, dementia->anxiety-disorder,
+// dementia->urinary-incontinence, dry-eye-syndrome->insomnia,
+// dry-eye-syndrome->depressive-disorder); contractures deferred (wrong-identity
+// evidence for the bladder-neck-contracture literature). Debt ratchet advances per
+// the SOP: the 13 new refs stay pending-verification pending qualified-human review.
+// Batch 23 (2026-09-23): +12 pending-verification sources across 4 authored
+// edges (diffuse-esophageal-spasm->gerd, diverticulosis->diverticulitis,
+// diverticulitis->irritable-bowel-syndrome, dizziness->anxiety-disorder);
+// diplopia deferred (symptom-identity). Debt ratchet advances per the SOP:
+// the 12 new refs stay pending-verification pending qualified-human review.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 379,
-  liveVerified: 379,
+  references: 746,  /* batch 34 (2026-09-23): +9 reference uses */
+  liveVerified: 380,
   retiredVerified: 6,
-  verifiedProvenance: 385,
-  unverified: 0,
+  verifiedProvenance: 386,
+  unverified: 366,  /* batch 34 (2026-09-23): +9 pending-verification */
   reviewFindings: 0,
-  liveClinicalEvidenceWithUrls: 374,
+  liveClinicalEvidenceWithUrls: 741,  /* batch 34 (2026-09-23): +9 */
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 378,
+  clinicalEvidenceProvenanceWithUrls: 745,  /* batch 34 (2026-09-23): +9 */
 });
 
 const hardFindings = [];

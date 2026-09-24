@@ -2,8 +2,67 @@
   "id": "exophthalmos",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 32 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the incomplete-eyelid-closure exposure-keratopathy association documented in the exposure-keratopathy literature; individual claims require documented proptosis with objective lagophthalmos preceding documented corneal disease and exclusion of the alternative keratitis etiologies the ME-35 Bell's-palsy guard preserves."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 32 (2026-09-23): one bounded keratitis association authored from the exposure-keratopathy literature - the Rodriguez-Garcia 2025 Surv Ophthalmol review names ocular globe protrusion among the causes of eyelid insufficiency producing corneal exposure with progression from superficial punctate keratitis to epithelial defects, stromal melting, and visual loss, and the Gheorghe 2007 review identifies exophthalmos/proptosis (alongside facial-nerve palsy) as one of the most frequent causes of lagophthalmos; the exposed-cornea pathway is the accepted biology but individual corneal disease depends on lagophthalmos severity, tear-film status, and protective measures.",
+    "Duplicate-scope note: the bell-s-palsy identity carries the registry's existing keratitis edge (ME-35, ASSOCIATION_ONLY, exposure-keratopathy mechanism), so this exophthalmos edge is the parallel globular-proptosis pathway on the same ME-35 mechanism family rather than a duplicate; dry-eye-syndrome carries no keratitis edge and no other identity carries an exophthalmos source edge, so there is no overlap."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "keratitis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Rodriguez-Garcia 2025 review groups proptosis with eyelid malformations and malfunction as the principal causes of exposure keratopathy, documenting progression from superficial punctate keratitis of the lower third of the cornea through persistent epithelial defects and stromal melting when untreated, and the Gheorghe 2007 review lists exophthalmos/proptosis among the most frequent causes of lagophthalmos; exposure of the unprotected cornea is the documented mechanism, but severity is graded and many proptotic patients never develop keratitis with adequate lubrication and lid protection.",
+        "causationStatus": "The mapping does not assert that keratitis in a person with exophthalmos was caused by the proptosis: thyroid eye disease, the leading exophthalmos cause, independently produces dry-eye and restrictive orbitopathy, and infectious, autoimmune, neurotrophic, and traumatic keratitis occurs independently; individual claims require documented proptosis with objective lagophthalmos, exposure-pattern corneal findings (typically inferior or interpalpebral), chronology, and exclusion of competing etiologies."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized incomplete-eyelid-closure exposure pathway: forward globe displacement from increased orbital fat, extraocular muscle enlargement, or orbital mass effect exceeds the protective reach of the eyelids, producing lagophthalmos and an incomplete blink; the interpalpebral and inferior cornea loses the tear film that would normally re-wet it between blinks, and sustained desiccation drives epithelial breakdown - superficial punctate keratitis first, then persistent epithelial defects, stromal melting, vascularization, and opportunistic infection if untreated; individual risk tracks lagophthalmos severity, Bell's phenomenon, baseline tear function, and whether protective lubrication is used.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: exposure keratopathy is well documented as a consequence of corneal exposure from proptosis, but most literature is mechanistic review and case series rather than exophthalmos-population incidence data, severity spans asymptomatic punctate change to perforation, and coexisting thyroid eye disease contributes independent ocular-surface disease; no probability estimate is asserted.",
+        "evidenceGaps": "Ophthalmic measurement of proptosis (exophthalmometry) and lagophthalmos; slit-lamp documentation of the keratitis phenotype and its exposure-compatible distribution; chronology connecting proptosis onset and corneal disease; assessment of tear function and protective measures used; exclusion of infectious, contact-lens, autoimmune, neurotrophic, traumatic, and medication-related keratitis; ophthalmology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Infectious keratitis",
+          "Contact-lens or environmental corneal injury",
+          "Thyroid eye disease with independent dry-eye or restrictive orbitopathy",
+          "Neurotrophic or medication-related keratopathy",
+          "Autoimmune or inflammatory ocular-surface disease"
+        ]
+      },
+      "evidenceGaps": [
+        "Ophthalmic measurement of proptosis (exophthalmometry) and lagophthalmos; slit-lamp documentation of the keratitis phenotype and its exposure-compatible distribution; chronology connecting proptosis onset and corneal disease; assessment of tear function and protective measures used; exclusion of infectious, contact-lens, autoimmune, neurotrophic, traumatic, and medication-related keratitis; ophthalmology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the bell-s-palsy ME-35 exposure-keratopathy precedent: the proptosis-to-exposure mechanism is review-documented, but no exophthalmos-population cohort quantifies keratitis incidence and competing corneal etiologies are common, so the mapping asserts the association with the same alternative-cause preservation the guard applies.",
+      "sourceReferences": [
+        {
+          "citation": "Rodriguez-Garcia A, Ruiz-Lozano RE, Barcelo-Canton RH, Marines-Sanchez HM, Homar Paez-Garza J. The etiologic and pathogenic spectrum of exposure keratopathy: Diagnostic and therapeutic implications. Surv Ophthalmol. 2025 Sep-Oct;70(5):882-899. PMID 40064304.",
+          "note": "Comprehensive review: exposure keratopathy results from eyelid insufficiency or blinking dysfunction with ocular globe protrusion named among the causes, progressing from superficial punctate keratitis to epithelial defects, stromal melting, and vision loss when untreated - the proptosis-to-EK mechanism anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40064304/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 40064304; proptosis among EK causes and progression spectrum"
+        },
+        {
+          "citation": "Gheorghe O. [Lagophthalmic keratopathy]. Oftalmologia. 2007;51(2):3-12. PMID 17937027.",
+          "note": "Review: exposure keratopathy follows any process limiting eyelid closure, with peripheral facial nerve palsy and exophthalmos/proptosis the most frequent causes of lagophthalmos - the exophthalmos-specific lagophthalmos anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17937027/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 17937027; exophthalmos/proptosis as frequent lagophthalmos cause"
+        }
+      ]
+    }
+  ]
 }

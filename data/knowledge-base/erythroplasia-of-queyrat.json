@@ -2,8 +2,67 @@
   "id": "erythroplasia-of-queyrat",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 31 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Identity guard: erythroplasia of Queyrat is itself squamous cell carcinoma in situ, so the edge asserts an association between an in-situ lesion identity and the invasive SCC identity, not a normal-tissue-to-cancer pathway; progression and coexistence figures are PeIN-population scoped."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 31 (2026-09-23): one bounded squamous-cell-carcinoma association authored under the established pre-malignant-identity precedent (bowen-s-disease -> SCC and actinic-keratosis -> SCC are already carried as ASSOCIATION_ONLY) - the Kravvas 2022 345-patient PeIN series documents concomitant invasive penile SCC at presentation in 8.7% and progression in 2.6%, and the Proietti 2021 series confirms EQ as SCC in situ; the in-situ-identity and PeIN-population-scope guards are recorded on the edge.",
+    "No penile-cancer-specific catalog identity exists (skin-cancer is melanoma/non-melanoma-scoped and is sun-exposure anchored, while SCC is the penile-lesion-histology target used by the lichen-sclerosus and bowen's-disease precedents), so this edge follows the squamous-cell-carcinoma target rather than inventing a new identity."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "squamous-cell-carcinoma",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "In the largest PeIN series (345 patients, Kravvas 2022), 8.7% had concomitant invasive penile squamous cell carcinoma at presentation and 2.6% progressed to invasive SCC during follow-up, and the Proietti 2021 series reiterates that erythroplasia of Queyrat is squamous cell carcinoma in situ of the glans with invasive potential; population series place progression risk broadly in the low single digits to one-third range depending on duration and treatment.",
+        "causationStatus": "The mapping does not assert a normal-tissue carcinogenesis pathway: EQ is SCC in situ, so the relationship is the in-situ-to-invasive identity transition of the same neoplasm; individual claims require biopsy-proven in-situ disease at baseline, histologic confirmation of invasion, and exclusion of de novo invasive carcinoma; the coexistence figures are PeIN-population scoped and cannot establish individual progression timing."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "A hypothesized in-situ-to-invasive progression pathway: the same HPV-driven or lichen-sclerosus-associated keratinocyte dysplasia that constitutes erythroplasia of Queyrat acquires invasive capability when malignant cells breach the basement membrane, converting in-situ carcinoma into invasive penile SCC with metastatic potential; the pathway is the accepted biology of in-situ lesions and requires no extrapolation, but individual progression timing is not predictable from population series.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association between the in-situ identity and the invasive identity of the same neoplasm: population figures are PeIN-scoped rather than EQ-specific, progression timing is not individually predictable, HPV and lichen-sclerosus co-drivers must be documented, and biopsy of any suspicious area is required rather than assumed; no probability estimate is asserted.",
+        "evidenceGaps": "Biopsy-proven erythroplasia of Queyrat (SCC in situ) with HPV and lichen-sclerosus status documented; histologic confirmation of invasion for any suspected progression; surveillance history and interval chronology; exclusion of de novo invasive carcinoma arising outside the in-situ field; dermatology and urology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "De novo invasive penile SCC unrelated to the in-situ field",
+          "Zoon's plasma cell balanitis or inflammatory mimics misdiagnosed as EQ",
+          "Melanoma or other non-squamous penile malignancy",
+          "Metastatic disease to the penis from another primary",
+          "Pseudoepitheliomatous hyperplasia without invasion"
+        ]
+      },
+      "evidenceGaps": [
+        "Biopsy-proven erythroplasia of Queyrat (SCC in situ) with HPV and lichen-sclerosus status documented; histologic confirmation of invasion for any suspected progression; surveillance history and interval chronology; exclusion of de novo invasive carcinoma arising outside the in-situ field; dermatology and urology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the bowen's-disease and actinic-keratosis precedents: the in-situ-to-invasive relationship is documented in the largest PeIN series, but the mapping asserts the association and not an individual progression claim; no causation or probability is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Kravvas G, Ge L, Ng J, et al. The management of penile intraepithelial neoplasia (PeIN): clinical and histological characteristics, treatments and outcomes of 345 patients. J Dermatolog Treat. 2022 Mar;33(2):1047-1062. PMID 32705920.",
+          "note": "Largest PeIN series (345 patients): concomitant invasive penile SCC at presentation 8.7%, progression to invasive SCC 2.6%, HPV present in 58% and lichen-sclerosus features in 12-41% - the coexistence and progression anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32705920/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 32705920; 8.7% concomitant and 2.6% progression findings"
+        },
+        {
+          "citation": "Proietti I, Michelini S, Skroza N, et al. Ingenol mebutate therapy in erythroplasia of Queyrat: a new approach. Ital J Dermatol Venerol. 2021 Jun;156(3):388-391. PMID 31804047.",
+          "note": "EQ treatment series opening with the identity statement that erythroplasia of Queyrat is a rare squamous cell carcinoma in situ of the glans - the in-situ identity anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31804047/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 31804047; EQ as SCC in situ"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,76 @@
   "id": "cystitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 25 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "The OAB definition itself excludes active infection, so this edge can never outrank ASSOCIATION_ONLY at the mapping level; episode-level chronology and infection exclusion are mandatory individual determinations.",
+    "The reverse direction (OAB and its treatment associating with UTI) is documented in the same sources and is recorded as a guard, not as evidence for this edge."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "overactive-bladder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The pathophysiology review summarizes clinical studies finding OAB patients significantly more likely than controls to have pathogenic bacteriuria and bladder inflammation, and supports UTI as an underappreciated contributor to OAB pathophysiology in some patients (Mansfield 2022); the Taiwanese urology review found recurrent-UTI women with highly prevalent voiding dysfunction and detrusor overactivity, proposing chronic suburothelial inflammation as the shared mechanism (Ke 2020).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the same literature defines OAB as an idiopathic syndrome diagnosed in the ABSENCE of urinary tract infection; the review itself documents bidirectionality (OAB and its treatment associate with subsequent UTI), chronic low-grade colonization confounds episode-level attribution, and no cohort quantifies incident OAB after resolved cystitis."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "A hypothesized inflammatory sensory-activation pathway: cystitis damages the urothelial barrier and sustains suburothelial inflammation; inflammatory mediators and afferent sensitization lower the bladder's urgency threshold, presenting clinically as urgency, frequency, and nocturia even after bacterial clearance. Whether the sensitization persists and how much of any patient's OAB is attributable to prior cystitis is individual and unquantified.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "OAB is idiopathic by definition and diagnosed in the absence of infection; the cited evidence is review-level and cross-sectional with documented bidirectional UTI-OAB reinforcement; chronic low-grade bacterial colonization may confound episode attribution; storage symptoms after cystitis require individual documentation and infection exclusion.",
+        "evidenceGaps": "Documented cystitis/UTI episode with new-onset storage symptoms thereafter; negative urine culture and cytology at the time of OAB diagnosis; exclusion of bladder outlet obstruction, neurogenic bladder, and interstitial cystitis/bladder pain syndrome; cystoscopy or urodynamics where indicated",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Active or recurrent urinary tract infection (the OAB definition itself excludes it)",
+          "Bladder outlet obstruction and benign prostatic hyperplasia",
+          "Neurogenic bladder (suprasacral or cauda equina pathology)",
+          "Interstitial cystitis/bladder pain syndrome",
+          "Anticholinergic or diuretic medication effects"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented cystitis/UTI episode with new-onset storage symptoms thereafter; negative urine culture and cytology at the time of OAB diagnosis; exclusion of bladder outlet obstruction, neurogenic bladder, and interstitial cystitis/bladder pain syndrome; cystoscopy or urodynamics where indicated"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the UTI-inflammation-OAB pathway has direct clinical support, but the diagnostic definition of OAB excludes active infection, bidirectionality is documented in the same sources, and no post-cystitis incidence denominator exists; no causal claim is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Mansfield KJ, Chen Z, Moore KH, Grundy L. Urinary Tract Infection in Overactive Bladder: An Update on Pathophysiological Mechanisms. Front Physiol. 2022 Jul 4;13:886782. PMID 35860658.",
+          "note": "Review: OAB patients are significantly more likely than controls to have pathogenic bacteriuria and increased bladder inflammation; UTI may be an underappreciated contributor to OAB pathophysiology in some patients; laboratory work shows how infection and inflammation can induce urgency and frequency.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35860658/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 35860658; UTI-OAB association and bidirectionality passages"
+        },
+        {
+          "citation": "Ke QS, Lee CL, Kuo HC. Recurrent urinary tract infection in women and overactive bladder - Is there a relationship? Tzu Chi Med J. 2021 Jan-Mar;33(1):13-21. PMID 33505873.",
+          "note": "Review: women with recurrent UTI show highly prevalent voiding dysfunction and detrusor overactivity; chronic suburothelial inflammation is proposed to drive both sensory activation (OAB symptoms) and failure to clear intracellular bacterial communities (recurrent UTI) - a shared-mechanism confound.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33505873/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 33505873; recurrent-UTI detrusor overactivity and shared-inflammation mechanism"
+        },
+        {
+          "citation": "Liao KM, Lio KL, Chou YJ, Kuo CC, Chen CY. The Association Between Urinary Tract Infection and Overactive Bladder Treatment. Front Pharmacol. 2022 Jan 25;12:803970. PMID 35145406.",
+          "note": "Nationwide NHIRD cohort (n=21,869): 12-month UTI risk was not influenced by OAB medication class or adherence; cited as the treatment-direction guard (the reverse direction does not support a cystitis-to-OAB pathway).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35145406/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 35145406; null medication-adherence result"
+        }
+      ]
+    }
+  ]
 }

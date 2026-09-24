@@ -2,8 +2,12 @@
   "id": "female-reproductive-disorders",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 33 (2026-09-23): deferred on duplicate-scope class-identity grounds - no edges authored; the identity is retained as a draft with suggestions: [] pending qualified-human governance decision.",
+    "Revisit only if qualified-human governance resolves the umbrella against the typed-children set (merge or retire the class identity) or a gynecologic-process-outcome pathway is documented that no typed child can carry; do not author an edge from the class label alone, and do not infer medical causation from rating-schedule authority."
+  ],
+  "governanceNotes": [
+    "D1 batch 33 (2026-09-23): deferred on duplicate-scope grounds under the diabetes-mellitus (batch 22) and eczema (batch 27) precedents. The catalog alias for this identity is 'gynecologic disorders' - a class label rather than a disease entity - and the genitourinary-gynecological catalog carries the typed children endometriosis, ovarian-cysts, pelvic-inflammatory-disease, polycystic-ovary-syndrome, uterine-fibroids, and vaginismus, plus ovarian-cancer under the oncological schedule; four of the six typed children already carry published outgoing edges (endometriosis -> ovarian-cancer and -> depressive-disorder, pelvic-inflammatory-disease -> ovarian-cancer, polycystic-ovary-syndrome -> endometrial-cancer and -> depressive-disorder, uterine-fibroids -> anemia and -> endometriosis). Any edge authored under this umbrella would restate one typed child's pathway under a class identity, creating a parallel pathway that double-counts the same disease process.",
+    "Negative screen recorded 2026-09-23: a class identity has no condition-specific literature of its own - PubMed evidence for any gynecologic-outcome claim resolves to named diseases (endometriosis, PCOS, fibroids, PID, ovarian pathology) whose evidence bases are already or will be carried by their own identities - so no condition-specific source set exists for this identity. Reopening condition: a qualified-human governance decision on the umbrella's scope, or a documented pathway attributable to the class as such that no typed child carries (the class-merge or new-typed-child scenario)."
   ],
   "suggestions": []
 }

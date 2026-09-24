@@ -2,8 +2,80 @@
   "id": "bullosis-diabeticorum",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 15 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "The Bustan systematic review's evidence-class finding is recorded: the diabetes-bullous-lesion association rests on case reports and series; if a qualified human finds cohort incidence data for bulla-site superinfection, a higher tier may be appropriate."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively at ASSOCIATION_ONLY strength: secondary infection of diabetic bullae is a management-recognized hazard (conservative management 'to prevent secondary infection reduces morbidity'; antibiotic-treated superinfection documented in case practice), but the evidence base for bullosis diabeticorum itself is exclusively case reports and case series (Bustan 2017 systematic review), with no denominator data on infection incidence.",
+    "Shared-terrain guard recorded: the diabetic-foot population carries the dominant competing pathway to cellulitis (neuropathy, arterial insufficiency, skin fragility from autonomic dysfunction), so cellulitis in a diabetic patient with bullae cannot be attributed to the bullae without excluding the broader diabetic-foot substrate."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cellulitis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The systematic review of specific skin signs as cutaneous markers of diabetes found that association between bullous skin lesions and diabetes was documented only by case reports and case series (Bustan 2017); the bullosis diabeticorum case report describing conservative management notes that clinical recognition and conservative management to prevent secondary infection reduces morbidity (Mota 2013); the Haitian case report documented a bullosis diabeticorum presentation treated with antibiotics for signs of superinfection until resolution (Paul 2023).",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the underlying diabetes-bullae literature is entirely case-report and series class without incidence denominators, the secondary-infection pathway is documented as management recognition and case practice rather than measured risk, and the shared diabetic-foot substrate (peripheral neuropathy, arterial insufficiency, autonomic skin fragility) is the dominant competing route to cellulitis, so no directional claim is made here."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A barrier-failure/superinfection pathway is hypothesized: tense acral bullae on neuropathic, poorly perfused skin create devitalized fluid-filled cavities and eroded entry sites; bacterial invasion of the bulla roof or base produces local impetiginization that can extend into surrounding dermis and subcutis as cellulitis, the same barrier-to-contiguous-spread biology recognized across chronic-wound populations. The mechanism is physiologically coherent and is the explicit rationale for conservative management, but no cohort data quantify superinfection incidence in bullosis diabeticorum, so no directional claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Secondary infection of diabetic bullae is a recognized management hazard documented in case reports, but the condition itself is series-evidence class and cellulitis in a diabetic foot has dominant competing pathways; individual determination requires documentation of the bullae with microbiology of any superinfection, exclusion of the broader diabetic-foot substrate, and review by a qualified medical professional.",
+        "evidenceGaps": "Documentation of bullosis diabeticorum (characteristic painless acral tense bullae without trauma, with biopsy or immunofluorescence excluding autoimmune blistering disease) with chronology; clinical and microbiological documentation of any superinfection or cellulitis at bulla sites with chronology relative to the bullae; glycemic-control history and peripheral-neuropathy/arterial assessment separating local wound invasion from the shared diabetic-foot substrate; a medical professional's opinion connecting the documented findings in this individual case",
+        "alternativeEtiologiesToRuleOut": [
+          "Diabetic-foot ulceration or tinea pedis as the portal for cellulitis independent of bullae",
+          "Peripheral arterial disease and neuropathy as the shared substrate for both bullae and infection",
+          "Autoimmune blistering disease (bullous pemphigoid, porphyria cutanea tarda, pseudoporphyria) misdiagnosed as bullosis diabeticorum",
+          "Deep abscess, necrotizing infection, or osteomyelitis presenting as cellulitis",
+          "Medication or edema-related skin fragility"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authored conservatively at association-only strength: the superinfection pathway is management-recognized and mechanistically coherent, but the entire bullosis diabeticorum evidence base is case-report class and the shared diabetic-foot substrate dominates the cellulitis differential; the edge records the recognized complication pattern only and leaves every causal judgment to a qualified medical professional.",
+      "sourceReferences": [
+        {
+          "citation": "Bustan RS, Wasim D, Yderstraede KB, Bygum A. Specific skin signs as a cutaneous marker of diabetes mellitus and the prediabetic state - a systematic review. Dan Med J. 2017;64(1):A5316. PMID 28007053.",
+          "note": "Systematic review documenting that the association between bullous skin lesions and diabetes rests exclusively on case reports and case series; the evidence-class anchor for the conservative tier.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28007053/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 28007053; results and conclusions"
+        },
+        {
+          "citation": "Mota AN, Nery NS, Barcaui CB. Case for diagnosis: bullosis diabeticorum. An Bras Dermatol. 2013;88(4):652-654. PMID 24068147. doi:10.1590/abd1806-4841.20132114.",
+          "note": "Case report stating that clinical recognition and conservative management to prevent secondary infection reduces morbidity in diabetic patients; the complication-prevention anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24068147/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 24068147; results and conclusions"
+        },
+        {
+          "citation": "Paul AJ, Louis RS, Julien AAI, Florvil F, Blaise W. Bullosis diabeticorum in a morbidly obese woman in Haiti. Arch Clin Cases. 2023;10(4):196-199. PMID 38155997. doi:10.22551/2023.41.1004.10274.",
+          "note": "Case report documenting antibiotic treatment of superinfection signs in bullosis diabeticorum with resolution; practice-documented superinfection anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38155997/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 38155997; results and conclusions"
+        }
+      ],
+      "evidenceGaps": [
+        "Documentation of bullosis diabeticorum (characteristic painless acral tense bullae without trauma, with biopsy or immunofluorescence excluding autoimmune blistering disease) with chronology",
+        "clinical and microbiological documentation of any superinfection or cellulitis at bulla sites with chronology relative to the bullae",
+        "glycemic-control history and peripheral-neuropathy/arterial assessment separating local wound invasion from the shared diabetic-foot substrate",
+        "a medical professional's opinion connecting the documented findings in this individual case"
+      ]
+    }
+  ]
 }

@@ -2,8 +2,58 @@
   "id": "bankart-lesion",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
+    "D1 draft-authoring batch (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
     "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "Authored conservatively as ASSOCIATION_ONLY: the Bankart-lesion literature documents recurrent instability and progressive glenoid bone loss after untreated or recurrent traumatic injury, and dislocation arthropathy is described in shoulder-dislocation cohorts, but individual arthropathy attribution requires excluding primary osteoarthritis and documenting the chondral-injury chronology, so the mapping cannot assert causation or aggravation for any individual."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "post-traumatic-osteoarthritis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Bankart-lesion literature identifies the lesion as an anteroinferior glenoid-rim fracture occurring in a substantial fraction of first-time traumatic anterior shoulder dislocations and documents that untreated or recurrent lesions lead to recurrent anterior instability and glenoid bone loss; shoulder-dislocation cohorts and meta-analyses report dislocation arthropathy as a recognized long-term outcome after traumatic anterior instability.",
+        "causationStatus": "Neither causation nor aggravation is established at the mapping level: the cited literature documents the untreated-course association and the arthropathy outcome at cohort level, but individual attribution requires documenting the initial chondral injury, recurrent-instability episodes, and progression chronology, and excluding primary osteoarthritis, prior trauma, and other arthropathy drivers, none of which the catalog label provides."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A hypothesized post-traumatic degeneration pathway has been described: the index dislocation produces an anteroinferior glenoid-rim fracture with possible articular-surface impaction, and recurrent instability episodes add shear loading and further chondral and labral injury; cumulative incongruity of the glenohumeral joint surface is associated with progressive cartilage wear and dislocation arthropathy, but individual progression depends on lesion size, activity, and treatment course, so no automatic causal claim is made here.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. The literature documents Bankart lesions as traumatic anteroinferior glenoid fractures whose untreated course leads to recurrent instability and bone loss, and identifies dislocation arthropathy as a recognized long-term outcome of traumatic anterior instability; individual determination requires orthopedic documentation of the lesion and its chronology, imaging of progressive joint degeneration, and exclusion of primary and other secondary osteoarthritis causes, all reviewed case by case by a qualified medical professional.",
+        "evidenceGaps": "Index-injury documentation with imaging confirming the Bankart lesion; serial imaging documenting progressive glenohumeral degeneration compatible with post-traumatic etiology; recurrent-instability episode history; exclusion of primary osteoarthritis, prior separate trauma, and inflammatory arthropathy; treatment history (repair versus conservative) and its relationship to the degenerative course; orthopedic opinion connecting the documented findings",
+        "alternativeEtiologiesToRuleOut": [
+          "Primary idiopathic glenohumeral osteoarthritis",
+          "Prior separate shoulder trauma or fracture unrelated to the documented lesion",
+          "Inflammatory or crystal arthropathy",
+          "Osteonecrosis of the humeral head from corticosteroid use or other causes"
+        ],
+        "requiresSpecificDbqEvidence": true
+      },
+      "rationale": "Authored conservatively at association-only strength: the Bankart literature supports the traumatic-lesion to recurrent-instability association and recognizes dislocation arthropathy as a cohort-level long-term outcome, but mapping the lesion to an individual's arthropathy requires injury chronology, progressive-imaging documentation, and competing-cause exclusion that only case-specific review can supply; this edge flags the pathway for evidence-gap review only and must never be presented as established causation or aggravation.",
+      "evidenceGaps": [
+        "Imaging confirmation of the Bankart lesion at index injury with chronology",
+        "Serial imaging demonstrating progressive joint degeneration",
+        "Documented recurrent-instability history between injury and arthropathy",
+        "A medical professional's opinion connecting the documented findings in this individual case"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Weisberg Z, Cole W, Rumps MV, Vopat B, Mulcahey MK. Bony Bankart Lesion: Diagnosis, Management, and Outcomes. JBJS Rev. 2024;12(5). PMID 38709911. doi:10.2106/JBJS.RVW.23.00200.",
+          "note": "Review of bony Bankart lesions documenting their occurrence in first-time anterior dislocations and the untreated course of recurrent anterior instability and glenoid bone loss; supports the bounded injury-outcome association proposition and the evidence-gap framing, not automatic individual causation or aggravation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38709911/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-22",
+          "sourceLocator": "PMID 38709911; natural-history and untreated-course discussion"
+        }
+      ]
+    }
+  ]
 }

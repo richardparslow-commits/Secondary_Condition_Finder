@@ -2,8 +2,66 @@
   "id": "elbow-disarticulation",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 27 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 27 (2026-09-23): one bounded post-amputation phantom-pain association authored per-identity under the ME-30/ME-31/ME-33 amputation-family precedent (arm, foot, hand, leg, and ankle disarticulation each carry their own level-appropriate phantom-limb edge); this identity had been deferred in ME-31/ME-32 only pending credible targets and carries no negative disposition.",
+    "The veterans upper-limb survey anchor reports transradial and transhumeral levels specifically; elbow disarticulation is a distinct level not separately stratified in that survey, so the level-proximity extrapolation is recorded as a guard on the edge."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "phantom-limb-pain",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "In a national survey of 776 veterans with major upper-limb amputation, 73% reported phantom limb pain with mean intensity 4.2/10, and 42% reported daily-to-always PLP frequency, with higher-level amputations showing higher odds of any PLP (transhumeral OR 1.76, shoulder OR 3.78 versus transradial; Balakhanlou 2021); the nationwide 3,374-amputee survey independently characterizes PLP prevalence and phenomenology across amputation levels (Diers 2022).",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR 3.310 is established by this association evidence: population prevalence does not establish an individual nexus without documentation of the amputation, the phantom pain syndrome, compatible chronology, and competing-cause review; the survey's level odds cover transradial, transhumeral, and shoulder strata rather than elbow disarticulation specifically, and residual-limb pain, neuroma, and prosthetic factors can coexist with or mimic phantom pain."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "A hypothesized transection-reorganization pathway: elbow-disarticulation nerve transection interrupts afferent input from the missing forearm and hand, and the resulting dorsal-horn sensitization and cortical reorganization are hypothesized to generate phantom sensation and pain perceived in the absent limb segments; the level-odds gradient in the veterans survey is consistent with more proximal transection carrying greater phantom-pain burden, but the individual pathway must be established from pain characterization, amputation records, and specialist evaluation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The evidence documents high PLP prevalence after upper-limb amputation generally and a proximal-level gradient, but elbow disarticulation as a specific level was not separately stratified in the cited surveys; phantom pain must be distinguished from residual-limb and neuroma pain, pre-amputation pain and neuropathy must be assessed, and the individual relationship requires case-specific review; no probability estimate is asserted.",
+        "evidenceGaps": "Independent documentation of the elbow disarticulation (level, cause, date); documented phantom limb pain by validated assessment with chronology; distinction of phantom pain from residual-limb and neuroma pain; assessment of pre-amputation pain, peripheral neuropathy, and cervical pathology; prosthetic-fit and use review; specialist assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Residual limb pain, neuroma, or poorly fitting prosthesis as the pain generator",
+          "Peripheral neuropathy or cervical spinal cord pathology",
+          "Pre-amputation or phantom memory pain of independent etiology",
+          "Complex regional pain syndrome of the residual limb",
+          "Spinal cord injury or psychiatric contributions to post-amputation pain"
+        ]
+      },
+      "evidenceGaps": [
+        "Independent documentation of the elbow disarticulation (level, cause, date); documented phantom limb pain by validated assessment with chronology; distinction of phantom pain from residual-limb and neuroma pain; assessment of pre-amputation pain, peripheral neuropathy, and cervical pathology; prosthetic-fit and use review; specialist assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: phantom limb pain is documented in 73% of a national upper-limb amputee cohort with a proximal-level gradient consistent with elbow disarticulation, but population prevalence does not establish an individual nexus and the specific level was not separately stratified; no causation is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Balakhanlou E, Webster J, Borgia M, Resnik L. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey. PM R. 2021 Aug;13(8):827-835. PMID 32896094.",
+          "note": "National survey of 776 veterans with major upper-limb amputation: 73% reported phantom limb pain (mean intensity 4.2/10), 42% daily-to-always frequency, with level odds of transhumeral OR 1.76 and shoulder OR 3.78 versus transradial - the upper-limb population anchor and the proximal-level gradient.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32896094/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 32896094; 73% PLP prevalence and level odds in the veterans upper-limb survey"
+        },
+        {
+          "citation": "Diers M, Krumm B, Fuchs X. The Prevalence and Characteristics of Phantom Limb Pain and Non-Painful Phantom Phenomena in a Nationwide Survey of 3,374 Unilateral Limb Amputees. J Pain. 2022;23(3):411-423. PMID 34583023. doi:10.1016/j.jpain.2021.09.003.",
+          "note": "Nationwide survey characterizing phantom limb pain prevalence and phenomenology in 3,374 unilateral limb amputees; reused across the amputation-family edges (ME-30 arm, ME-31 foot/hand/leg) as the cross-level phenomenology anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34583023/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 34583023; nationwide amputee-survey phantom limb pain prevalence"
+        }
+      ]
+    }
+  ]
 }

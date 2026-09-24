@@ -1,9 +1,81 @@
 {
-  "id": "chemical-pneumonitis",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "chemical-pneumonitis",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 10 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "If a qualified human identifies cohort data on progression from chronic chemical/aspiration pneumonitis to established interstitial lung disease, a higher tier may be appropriate; current data are review-and-series class only."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: the chronic-aspiration-to-ILD-progression literature is review and case-series class (Hu 2015 Chest review; Mukhopadhyay 2015 case-based review; Komiya 2015 radiologic-course series), documenting established chronic pneumonitis patterns that progress to fibrosis in described patients, but no cohort denominators, no incidence rates, and heavy confounding from comorbid degenerative neurologic disease and independent ILD, so no directional claim is supportable at the mapping level.",
+  "Identity boundary recorded: the edge concerns chronic chemical pneumonitis from recurrent aspiration/irritant exposure as a source condition; acute smoke inhalation and pure ARDS survivors are distinct pathways and the classification here must not be read onto them."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "interstitial-lung-disease",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The definitive Chest review of aspiration-related syndromes documents chronic aspiration pneumonitis as an established clinical entity whose repeated inflammatory injury can evolve toward pulmonary fibrosis, within a syndrome classification built on clinical-radiologic correlation (Hu 2015); case-based radiologic reviews document diffuse lung disease patterns attributable to chronic aspiration with progression on serial imaging (Mukhopadhyay 2015); a radiologic-course series documented chronic pneumonitis cases evolving to definite idiopathic pulmonary fibrosis patterns on follow-up imaging (Komiya 2015).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the evidence base is reviews and small series without population denominators, the elderly dysphagic populations carry heavy confounding from comorbid neurologic disease, smoking, and independent ILD, and distinguishing aspiration-driven fibrosis from idiopathic disease within an individual requires imaging and clinical synthesis no mapping can substitute for, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+    "primaryVector": "A recurrent-inflammatory-injury pathway is hypothesized: repeated deposition of gastric or oropharyngeal contents in the distal airways triggers sterile chemical alveolitis and foreign-body inflammation; chronically repeated cycles of injury and repair drive stromal activation, fibroblast proliferation, and collagen deposition, producing the fibrotic lower-lobe-predominant patterns documented in chronic aspiration and exogenous lipoid pneumonia. The mechanism is physiologically coherent and consistently described in the literature, but human progression data are case-series class with no incidence denominators, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Chronic pneumonitis patterns with fibrotic progression are documented in reviews and series, but individual determination requires serial imaging, aspiration-burden documentation, and exclusion of independent ILD by a qualified medical professional.",
+    "evidenceGaps": "Serial chest imaging documenting the chronic pneumonitis pattern and any fibrotic progression with chronology; documentation of the aspiration or irritant exposure burden (dysphagia studies, reflux evaluation, occupational history); workup excluding idiopathic pulmonary fibrosis, connective-tissue-disease ILD, hypersensitivity pneumonitis, and drug toxicity; bronchoscopic or laboratory data where obtained; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Idiopathic pulmonary fibrosis independent of aspiration burden",
+     "Connective-tissue-disease-associated interstitial lung disease",
+     "Hypersensitivity pneumonitis from environmental antigen exposure",
+     "Occupational dust or drug-induced pulmonary fibrosis"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the inflammatory-progression mechanism is well described but the human outcome evidence is review-and-series class with no denominators, and the aspiration populations carry heavy neurologic and smoking confounding; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "sourceReferences": [
+    {
+     "citation": "Hu X, Lee JS, Pianesi R, et al. Aspiration-related pulmonary syndromes. Chest. 2015;147(3):815-823. PMID 25762348. doi:10.1378/chest.14-1826.",
+     "note": "Definitive syndrome-classification review distinguishing aspiration pneumonia, chronic aspiration pneumonitis, and diffuse aspiration bronchiolitis, and describing the chronic injury-to-fibrosis evolution; framework support without cohort denominators.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25762348/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 25762348; chronic aspiration pneumonitis section"
+    },
+    {
+     "citation": "Mukhopadhyay S, Katzenstein AL. Pulmonary disease due to aspiration of gastric and oropharyngeal contents: an analysis of 79 cases. 2015. PMID 25732447.",
+     "note": "Large case-based radiologic-pathologic review documenting lung disease patterns attributable to chronic aspiration, including fibrotic evolution on serial imaging; case-series class supporting the pathway without incidence data.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25732447/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 25732447; results"
+    },
+    {
+     "citation": "Komiya K, et al. Radiological findings and clinical course of chronic pneumonitis of the elderly. 2015. PMID 34349846.",
+     "note": "Radiologic-course series documenting chronic pneumonitis evolving toward definite IPF-pattern fibrosis on follow-up imaging in described patients; supports the progression observation while illustrating the diagnostic overlap that keeps the edge at association strength.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34349846/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 34349846; results"
+    }
+   ],
+   "evidenceGaps": [
+    "Serial chest imaging documenting the chronic pneumonitis pattern and any fibrotic progression with chronology",
+    "Documentation of the aspiration or irritant exposure burden (dysphagia studies, reflux evaluation, occupational history)",
+    "Workup excluding idiopathic pulmonary fibrosis, connective-tissue-disease ILD, hypersensitivity pneumonitis, and drug toxicity",
+    "Bronchoscopic or laboratory data where obtained",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ]
+  }
+ ]
 }

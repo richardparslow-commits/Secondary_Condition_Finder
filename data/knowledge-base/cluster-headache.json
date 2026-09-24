@@ -1,9 +1,82 @@
 {
-  "id": "cluster-headache",
-  "draft": true,
-  "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
-  ],
-  "suggestions": []
+ "id": "cluster-headache",
+ "draft": true,
+ "todo": [
+  "D1 draft-authoring batch 12 (2026-09-22): association-only draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+  "The Louter cohort's sleep-disturbance correction is the key confounder; if a qualified human finds longitudinal data separating attack-burden effects from sleep disruption, a higher tier may be appropriate."
+ ],
+ "governanceNotes": [
+  "Authored conservatively at ASSOCIATION_ONLY strength: the strongest evidence (Louter 2016, n=462 vs 177 controls) documents nearly threefold increased odds of lifetime depression in cluster headache, but current depression lost significance after correction for sleep disturbances, so the association is real yet its mechanism-confounding structure is explicitly mixed; no directional claim is supportable at the mapping level.",
+  "Shared-hypothalamic note recorded: the cluster-headache sleep-apnea literature proposes that CH and sleep disorders may be parallel hypothalamic processes rather than causal chains (Graff-Radford 2009); that framing is preserved here as the reason no aggravation tier is drafted despite the high attack-burden burden data (Karnieg 2026: 10.34% suicidality)."
+ ],
+ "suggestions": [
+  {
+   "conditionId": "depressive-disorder",
+   "rank": 1,
+   "nexusClaim": {
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "associationBasis": "The LUCA cross-sectional questionnaire study (462 ICHD-III-defined cluster headache patients vs 177 controls) documented almost threefold higher odds of lifetime depression in cluster headache (OR 2.77, 95% CI 1.70-4.51), with current depression associated with active attacks but no effect remaining after correction for sleep disturbances (Louter 2016); the psychiatric-comorbidity review discusses depression, anxiety, and suicide in cluster headache along with confounding variables (Robbins 2013); the Brazilian real-world study documented anxiety, insomnia, and depression among the most common comorbidities with 10.34% of patients having considered suicide (Karnieg 2026).",
+    "causationStatus": "Neither causation nor aggravation is established at the mapping level: the flagship association attenuated to non-significance after sleep-disturbance correction, bidirectionality is plausible (depressive illness worsens pain coping and sleep), shared hypothalamic mechanisms may generate both conditions in parallel, and the comorbidity surveys are cross-sectional without onset ordering, so no directional claim is made here."
+   },
+   "causalMechanism": {
+    "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+    "primaryVector": "A chronic-burden/sleep-disruption pathway is hypothesized: recurrent severe nocturnal attacks fragment sleep and drive the sleep disturbances that Louter's cohort showed mediate much of the depression association, while the extraordinary attack severity, seasonal clustering, and lifetime burden plausibly deplete psychological coping reserves through the same chronic-pain-to-depression pathways documented across pain populations; shared hypothalamic regulation may underlie both the chronobiological attacks and mood instability in parallel. The mechanism is plausible and partially tested, but the sleep-mediation finding cuts against a direct causal claim, so no directional claim is made here.",
+    "hypothesizedOnly": true
+   },
+   "evidentiaryProfile": {
+    "etiologicalConsensus": "NOT_ESTABLISHED",
+    "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+    "conservativeRationale": "This relationship is supported as an association only. Depression co-occurs with cluster headache at roughly threefold increased odds, but the association is substantially sleep-mediated and directionality is unproven; individual determination requires psychiatric diagnostic documentation with chronology relative to the headache disorder, sleep-disorder characterization, and review by a qualified medical professional.",
+    "evidenceGaps": "Psychiatric diagnostic evaluation documenting the depressive disorder and its chronology relative to cluster-headache onset and bout pattern; sleep evaluation (polysomnography or validated instruments) characterizing sleep disturbance and its treatment response; workup excluding primary depressive disorder with incidental headache, medication effects, and substance use; documentation of attack frequency, chronicity, and treatment burden; a medical professional's opinion connecting the documented findings in this individual case",
+    "alternativeEtiologiesToRuleOut": [
+     "Primary depressive disorder independent of headache status",
+     "Sleep apnea or other primary sleep disorders driving both mood and headache",
+     "Medication effects (corticosteroids, verapamil, lithium) on mood",
+     "Substance use as a mood and headache confounder",
+     "Comorbid migraine with its own depression association"
+    ],
+    "requiresSpecificDbqEvidence": false
+   },
+   "rationale": "Authored conservatively at association-only strength: the association is the best-controlled of the D1 psychiatric edges but its flagship finding is sleep-mediated, and parallel-hypothalamic biology is a live alternative; the edge records co-occurrence only and leaves every causal judgment to a qualified medical professional.",
+   "sourceReferences": [
+    {
+     "citation": "Louter MA, Wilbrink LA, Haan J, van Zwet EW, van Oosterhout WPJ, Zitman FG, Ferrari MD, Terwindt GM. Cluster headache and depression. Neurology. 2016;87(18):1899-1906. PMID 27694264. doi:10.1212/WNL.0000000000003282.",
+     "note": "Controlled cross-sectional study (462 patients vs 177 controls) documenting OR 2.77 for lifetime depression in cluster headache, with current depression associated with active attacks but no residual effect after sleep-disturbance correction; the central association evidence with its key confounder built in.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27694264/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 27694264; results and conclusions"
+    },
+    {
+     "citation": "Robbins MS. The psychiatric comorbidities of cluster headache. Curr Pain Headache Rep. 2013;17(2):313. PMID 23296640. doi:10.1007/s11916-012-0313-8.",
+     "note": "Review discussing depression, anxiety, bipolar disorder, aggression, and suicide in cluster headache with explicit attention to confounding variables; supports the comorbidity framing without directional claims.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23296640/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 23296640; abstract"
+    },
+    {
+     "citation": "Karnieg T, Vincent M, Martinez J, Whitton W, Hargreaves L, Papadimitropoulos E. Clinical Characteristics and Patient Burden of Cluster Headache in Brazil: A Real-World Study. Adv Ther. 2026;43(2):583-599. PMID 41335330. doi:10.1007/s12325-025-03424-z.",
+     "note": "Real-world burden study (n=450 physician forms, 177 patient forms) documenting anxiety, insomnia, and depression among the most common comorbidities with 10.34% suicidality; burden documentation without onset-ordering data.",
+     "verificationScope": "clinical-evidence",
+     "authorityCategory": "medical-scientific-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41335330/",
+     "verified": false,
+     "sourceCheckedOn": "2026-09-22",
+     "sourceLocator": "PMID 41335330; results"
+    }
+   ],
+   "evidenceGaps": [
+    "Psychiatric diagnostic evaluation documenting the depressive disorder and its chronology relative to cluster-headache onset and bout pattern",
+    "Sleep evaluation (polysomnography or validated instruments) characterizing sleep disturbance and its treatment response",
+    "Workup excluding primary depressive disorder with incidental headache, medication effects, and substance use",
+    "Documentation of attack frequency, chronicity, and treatment burden",
+    "A medical professional's opinion connecting the documented findings in this individual case"
+   ]
+  }
+ ]
 }

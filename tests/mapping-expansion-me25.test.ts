@@ -87,11 +87,11 @@ describe("Mapping Expansion Batch ME-25", () => {
   });
 
   it("pins the ME-25 pre-qualified-human-citation-verification aggregate state", () => {
-    expect(relationships.currentState).toBe("ME-39-CITATION-VERIFIED");
-    expect(sources.currentState).toBe("ME-39-CITATION-VERIFIED");
-    expect(relationships.counts).toEqual({ relationships: 363, explicitPublicationGuards: 289, legacyRationaleBoundaries: 74 });
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 379, pendingVerificationSourceEntities: 0, totalSourceEntitiesIncludingLineage: 355 });
-    expect(sources.sources.filter((entry) => entry.status === "pending-verification")).toHaveLength(0);
-    expect(sources.sources.filter((entry) => entry.status === "pending-verification" && entry.kind === "clinical-evidence")).toHaveLength(0);
+    expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
+    expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
+    expect(relationships.counts).toEqual({ relationships: 500, explicitPublicationGuards: 426, legacyRationaleBoundaries: 74 });
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 746, pendingVerificationSourceEntities: 327, totalSourceEntitiesIncludingLineage: 682, });
+    expect(sources.sources.filter((entry) => entry.status === "pending-verification")).toHaveLength(327);
+    expect(sources.sources.filter((entry) => entry.status === "pending-verification" && entry.kind === "clinical-evidence")).toHaveLength(327);
   });
 });
